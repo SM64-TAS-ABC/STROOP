@@ -17,8 +17,91 @@ namespace SM64_Diagnostic.ManagerClasses
         ProcessStream _stream;
         ObjectAssociations _objAssoc;
         ObjectDataGui _objGui;
+        uint _currentAddress;
+        int _slotIndex;
+        int _slotPos;
+        uint _behavior;
 
-        public uint CurrentAddress;
+        #region Fields
+
+        public uint CurrentAddress
+        {
+            get
+            {
+                return _currentAddress;
+            }
+            set
+            {
+                if (_currentAddress != value)
+                {
+                    _currentAddress = value;
+                    _objGui.ObjAddressLabel.Text = "0x" + _currentAddress.ToString("X8");
+                }
+            }
+        }
+
+        public int SlotIndex
+        {
+            get
+            {
+                return _slotIndex;
+            }
+            set
+            {
+                if (_slotIndex != value)
+                {
+                    _slotIndex = value;
+                    _objGui.ObjSlotIndexLabel.Text = _slotIndex.ToString();
+                }
+            }
+        }
+
+        public int SlotPos
+        {
+            get
+            {
+                return _slotPos;
+            }
+            set
+            {
+                if (_slotPos != value)
+                {
+                    _slotPos = value;
+                    _objGui.ObjSlotPositionLabel.Text = _slotPos.ToString();
+                }
+            }
+        }
+
+        public uint Behavior
+        {
+            get
+            {
+                return _behavior;
+            }
+            set
+            {
+                if (_behavior != value)
+                {
+                    _behavior = value;
+                    _objGui.ObjBehaviorLabel.Text = "0x" + _behavior.ToString("X4");
+                }
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return _objGui.ObjectNameLabel.Text;
+            }
+            set
+            {
+                if (_objGui.ObjectNameLabel.Text != value)
+                {
+                    _objGui.ObjectNameLabel.Text = value;
+                }
+            }
+        }
 
         public Color BackColor
         {
@@ -50,6 +133,8 @@ namespace SM64_Diagnostic.ManagerClasses
                 return _objGui.ObjectImagePictureBox.Image;
             }
         }
+
+        #endregion
 
         public ObjectManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, List<WatchVariable> objectData, ObjectDataGui objectGui)
         { 

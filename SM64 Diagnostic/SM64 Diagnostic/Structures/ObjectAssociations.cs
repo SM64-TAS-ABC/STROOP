@@ -13,6 +13,7 @@ namespace SM64_Diagnostic.Structs
     {
         Dictionary<uint, Image> _objectTransparentImageAssoc = new Dictionary<uint, Image>();
         Dictionary<uint, Image> _objectImageAssoc = new Dictionary<uint, Image>();
+        Dictionary<uint, string> _objectNameAssoc = new Dictionary<uint, string>();
 
         Image _defaultImage;
         Image _transparentDefaultImage;
@@ -34,11 +35,12 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        public void AddAssociation(uint behaviorAddress, Image image)
+        public void AddAssociation(uint behaviorAddress, Image image, string name)
         {
             _objectImageAssoc.Add(behaviorAddress, image);
             var transparentImage = image.GetOpaqueImage(0.5f);
             _objectTransparentImageAssoc.Add(behaviorAddress, transparentImage);
+            _objectNameAssoc.Add(behaviorAddress, name);
         }
 
         public Image GetObjectImage(uint behaviorAddress, bool transparent)
@@ -50,6 +52,14 @@ namespace SM64_Diagnostic.Structs
                 return transparent ? _transparentDefaultImage : _defaultImage;
 
             return transparent ? _objectTransparentImageAssoc[behaviorAddress] : _objectImageAssoc[behaviorAddress];
+        }
+
+        public string GetObjectName(uint behaviorAddress)
+        {
+            if (!_objectNameAssoc.ContainsKey(behaviorAddress))
+                return "Unknown Object";
+
+            return _objectNameAssoc[behaviorAddress];
         }
 
         ~ObjectAssociations()

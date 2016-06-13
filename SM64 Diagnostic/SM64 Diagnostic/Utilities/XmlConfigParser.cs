@@ -261,7 +261,7 @@ namespace SM64_Diagnostic.Utilities
             doc.Validate(schemaSet, Validation);
 
             // Create Behavior-ImagePath list
-            var behaviorImageAssoc = new Dictionary<uint, string>();
+            var behaviorImageAssoc = new Dictionary<uint, Tuple<string, string>>();
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", marioImagePath = "";
             var usedBehaviors = new List<uint>();
             uint ramToBehaviorOffset = 0;
@@ -300,10 +300,11 @@ namespace SM64_Diagnostic.Utilities
                         uint behaviorAddress = ParsingUtilities.ParseHex(
                             element.Attribute(XName.Get("behaviorScriptAddress")).Value);
                         string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
+                        string name = element.Attribute(XName.Get("name")).Value;
                         if (usedBehaviors.Contains(behaviorAddress))
                             throw new Exception();
                         usedBehaviors.Add(behaviorAddress);
-                        behaviorImageAssoc.Add(behaviorAddress, imagePath);
+                        behaviorImageAssoc.Add(behaviorAddress, Tuple.Create<string,string>(imagePath, name));
                         break;
                 }
             }
@@ -315,11 +316,11 @@ namespace SM64_Diagnostic.Utilities
             assoc.MarioImage = Bitmap.FromFile(imageDir + marioImagePath);
             foreach(var v in behaviorImageAssoc)
             {
-                var preLoad = Bitmap.FromFile(imageDir + v.Value);
+                var preLoad = Bitmap.FromFile(imageDir + v.Value.Item1);
                 var image = new Bitmap(preLoad, new Size(32, 32));
                
                 preLoad.Dispose();
-                assoc.AddAssociation(v.Key - ramToBehaviorOffset, image);
+                assoc.AddAssociation(v.Key - ramToBehaviorOffset, image, v.Value.Item2);
             }
 
             return assoc;

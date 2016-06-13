@@ -156,7 +156,7 @@ namespace SM64_Diagnostic.ManagerClasses
                         return null;
 
                     // Get data
-                    newObjectSlotData[currentSlot].Address =currentGroupObject;
+                    newObjectSlotData[currentSlot].Address = currentGroupObject;
                     newObjectSlotData[currentSlot].ObjectProcessGroup = objectProcessGroup;
                     newObjectSlotData[currentSlot].Index = currentSlot;
                     newObjectSlotData[currentSlot].VacantSlotIndex = null;
@@ -202,6 +202,18 @@ namespace SM64_Diagnostic.ManagerClasses
             if (newObjectSlotData == null)
                 return;
 
+            // Create Memory-SlotIndex lookup table
+            if (_memoryAddressSlotIndex == null)
+            {
+                _memoryAddressSlotIndex = new Dictionary<uint, int>();
+                var sortedList = newObjectSlotData.OrderBy((objData) => objData.Address).ToList();
+                foreach (var objectData in newObjectSlotData)
+                {
+                    _memoryAddressSlotIndex.Add(objectData.Address,
+                        sortedList.FindIndex((objData) => objectData.Address == objData.Address));
+                }
+            }
+
             // Processing sort order
             switch (SortMethod)
             {
@@ -210,17 +222,6 @@ namespace SM64_Diagnostic.ManagerClasses
                     break;
 
                 case SortMethodType.MemoryOrder:
-                    // Create Memory-SlotIndex lookup table
-                    if (_memoryAddressSlotIndex == null)
-                    {
-                        _memoryAddressSlotIndex = new Dictionary<uint, int>();
-                        var sortedList = newObjectSlotData.OrderBy((objData) => objData.Address).ToList();
-                        foreach (var objectData in newObjectSlotData)
-                        {
-                            _memoryAddressSlotIndex.Add(objectData.Address,
-                                sortedList.FindIndex((objData) => objectData.Address == objData.Address));
-                        }
-                    }
                     // Order by address
                     for (int i = 0; i < slotConfig.MaxSlots; i++)
                     {
@@ -255,10 +256,14 @@ namespace SM64_Diagnostic.ManagerClasses
                     String.Format("VS{1}", objectData.Index, objectData.VacantSlotIndex.Value) : objectData.Index.ToString();
 
                 // Update object manager image
-                if (SelectedAddress.HasValue && SelectedAddress.Value == objectData.Address)
+                if (SelectedAddress.HasValue && SelectedAddress.Value == currentAddress)
                 {
                     _objManager.BackColor = newColor;
                     _objManager.Image = newImage;
+                    _objManager.Behavior = behaviorScriptAdd;
+                    _objManager.SlotIndex = index;
+                    _objManager.SlotPos = _memoryAddressSlotIndex[currentAddress];
+                    _objManager.Name = _objectAssoc.GetObjectName(behaviorScriptAdd);
                     _objManager.Update();   
                 }
             }
