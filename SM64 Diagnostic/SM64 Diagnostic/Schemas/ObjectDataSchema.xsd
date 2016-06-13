@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ObjectDataSchema"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/ObjectDataSchema.xsd"
+    xmlns:mstns="http://tempuri.org/ObjectDataSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:types="http://tempuri.org/ReusableTypes.xsd"
+>
+  <xs:import namespace="http://tempuri.org/ReusableTypes.xsd" schemaLocation="ReusableTypes.xsd"/>
+  <xs:element name="ObjectData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Data" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="types:watch-variable">
+                <xs:attribute name="objectOffset" type="xs:boolean" use="optional"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

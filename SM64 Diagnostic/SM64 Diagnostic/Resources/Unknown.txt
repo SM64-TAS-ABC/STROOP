@@ -1,0 +1,6 @@
+﻿Bowser red flame
+0x13001AA4/0x90
+ Breakable box (can't pick up)
+0x130014E0/0x81
+Breakable box with three coins (can be picked up)
+0x13004218/0x82

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MarioData>
+  <Data type="float" address="0x3C" marioOffset="true">X</Data>
+  <Data type="float" address="0x40" marioOffset="true">Y</Data>
+  <Data type="float" address="0x44" marioOffset="true">Z</Data>
+  <Data type="float" address="0x48" marioOffset="true">X Speed</Data>
+  <Data type="float" address="0x5C" marioOffset="true">Y Speed</Data>
+  <Data type="float" address="0x60" marioOffset="true">Z Speed</Data>
+  <Data type="float" address="0x54" marioOffset="true">Speed</Data>
+  <Data type="uint32" address="0x68" marioOffset="true" useHex="true">Col. Tri.</Data>
+  <Data type="uint16" address="0xA8" marioOffset="true">Coins</Data>
+  <Data type="uint16" address="0xAA" marioOffset="true">Stars</Data>
+  <Data type="uint16" address="0xAC" marioOffset="true">Lives</Data>
+  <Data type="uint16" address="0xAE" marioOffset="true">Power</Data>
+  <Data type="uint32" address="0x04" marioOffset="true" useHex="true">Flags</Data>
+  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x10">Hat On Head</Data>
+  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x02">Vanish Cap</Data>
+  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x04">Metal Cap</Data>
+  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x08">Wing Cap</Data>
+  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x20">Hat In Hand</Data>
+  <Data type="uint16" address="0x0038EEE0" absoluteAddress="false">RNG Value</Data>
+</MarioData>

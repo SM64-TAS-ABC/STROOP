@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ObjectData>
+  <Data type="float" address="0xA0" objectOffset="true">X</Data>
+  <Data type="float" address="0xA4" objectOffset="true">Y</Data>
+  <Data type="float" address="0xA8" objectOffset="true">Z</Data>
+</ObjectData>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ConfigSchema"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/ConfigSchema.xsd"
+    xmlns:mstns="http://tempuri.org/ConfigSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:types="http://tempuri.org/ReusableTypes.xsd"
+>
+  <xs:import namespace="http://tempuri.org/ReusableTypes.xsd" schemaLocation="ReusableTypes.xsd"/>
+  <xs:element name="Config">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="RefreshRateFreq">
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="0"/>
+              <xs:maxInclusive value="1000"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="ProcessDefaultName" type="xs:string"/>
+        <xs:element name="RAMStartAddress" type="types:address"/>
+        <xs:element name="RAMSize" type="types:address"/>
+        <xs:element name ="ObjectSlots">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="FirstObjectAddress" type="types:address"/>
+              <xs:element name="ObjectStructSize" type="types:address"/>
+              <xs:element name="HeaderOffset" type="types:address"/>
+              <xs:element name="ListNextLinkOffset" type="types:address"/>
+              <xs:element name="ListPreviousLinkOffset" type="types:address"/>
+              <xs:element name="BehaviorScriptOffset" type="types:address"/>
+              <xs:element name="ObjectActiveOffset" type="types:address"/>
+              <xs:element name="CoordinateOffsetX" type="types:address"/>
+              <xs:element name="CoordinateOffsetY" type="types:address"/>
+              <xs:element name="CoordinateOffsetZ" type="types:address"/>
+              <xs:element name="MaxObjectSlots" type="xs:int"/>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name ="ObjectGroups">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="ProcessNextLinkOffset" type="types:address"/>
+              <xs:element name="ProcessPreviousLinkOffset" type="types:address"/>
+              <xs:element name="ParentObjectOffset" type="types:address"/>
+              <xs:element name="FirstObjectGroupingAddress" type="types:address"/>
+              <xs:element name="ProcessGroupStructSize" type="types:address"/>
+              <xs:element name="ProcessGroupsOrdering">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Group" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="index" use="required" type="types:byte"/>
+                        <xs:attribute name="color" use="required" type="types:color"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="VacantPointerAddress">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="types:address">
+                      <xs:attribute name="color" use="required" type="types:color"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Mario">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="CoordinateOffsetX" type="types:address"/>
+              <xs:element name="CoordinateOffsetY" type="types:address"/>
+              <xs:element name="CoordinateOffsetZ" type="types:address"/>
+              <xs:element name="MarioPointerAddress" type="types:address"/>
+              <xs:element name="MarioStructSize" type="types:address"/>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

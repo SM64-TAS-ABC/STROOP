@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ObjectAssociationsSchema"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/ObjectAssociationsSchema.xsd"
+    xmlns:mstns="http://tempuri.org/ObjectAssociationsSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:types="http://tempuri.org/ReusableTypes.xsd"
+>
+  <xs:import namespace="http://tempuri.org/ReusableTypes.xsd" schemaLocation="ReusableTypes.xsd"/>
+  <xs:element name ="ObjectAssociations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Config">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="ImageDirectory" type="xs:string"/>
+              <xs:element name="DefaultImage" type="xs:string"/>
+              <xs:element name="EmptyImage" type="xs:string"/>
+              <xs:element name="RamToBehaviorOffset" type="types:address"/>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Mario">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="Image">
+                <xs:complexType>
+                  <xs:attribute name="path" use="required" type="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Color" type="types:color"/>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Object" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="Image">
+                <xs:complexType>
+                  <xs:attribute name="path" use="required" type="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+            <xs:attribute name="behaviorScriptAddress" use="required" type="types:address"/>
+            <xs:attribute name="name" use="required" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

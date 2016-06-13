@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ObjectAssociations>
+  <Object GfxId="0x05">
+    <Image>
+      1-Up.png
+    </Image>
+  </Object>
+  <Object GfxId="0xC2">
+    <Image>
+      Amp.png
+    </Image>
+  </Object>
+  <Object GfxId="0x57">
+    <Image>
+      Baby Penguin.png
+    </Image>
+  </Object>
+  <Object GfxId="0x57">
+    <Image>
+      Baby Penguin.png
+    </Image>
+  </Object>
+  <Object GfxId="0x57">
+    <Image>
+      Baby Penguin.png
+    </Image>
+  </Object>
+</ObjectAssociations>

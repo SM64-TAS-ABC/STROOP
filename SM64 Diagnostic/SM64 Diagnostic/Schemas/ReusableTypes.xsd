@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReusableTypes"
+    targetNamespace="http://tempuri.org/ReusableTypes.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/ReusableTypes.xsd"
+    xmlns:mstns="http://tempuri.org/ReusableTypes.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:simpleType name="address">
+    <xs:restriction base = "xs:string">
+      <xs:pattern value="0x[0-9A-Fa-f]+|[0-9]+"/>
+      <xs:whiteSpace value="collapse"/>
+      <xs:minLength value="3"/>
+      <xs:maxLength value="10"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="byte">
+    <xs:restriction base = "xs:string">
+      <xs:pattern value="0x[0-9A-Fa-f]{2}"/>
+      <xs:whiteSpace value="collapse"/>
+      <xs:length value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="color">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="#[0-9A-Fa-f]{6}"/>
+      <xs:whiteSpace value="collapse"/>
+      <xs:length value="7"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="watch-variable">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="type" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="byte"/>
+              <xs:enumeration value="char"/>
+              <xs:enumeration value="int16"/>
+              <xs:enumeration value="uint16"/>
+              <xs:enumeration value="int32"/>
+              <xs:enumeration value="uint32"/>
+              <xs:enumeration value="int64"/>
+              <xs:enumeration value="uint64"/>
+              <xs:enumeration value="float"/>
+              <xs:enumeration value="double"/>
+              <xs:enumeration value="bool"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="address" use="required">
+          <xs:simpleType>
+            <xs:restriction base = "xs:string">
+              <xs:pattern value="0x[0-9A-Fa-f]+|[0-9]+"/>
+              <xs:whiteSpace value="collapse"/>
+              <xs:minLength value="3"/>
+              <xs:maxLength value="10"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="absoluteAddress" type="xs:boolean"/>
+        <xs:attribute name="mask" type="address"/>
+        <xs:attribute name="useHex" type="xs:boolean"/>
+        <xs:attribute name="isBool" type="xs:boolean"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>
