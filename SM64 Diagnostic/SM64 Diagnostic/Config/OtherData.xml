@@ -1,7 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <OtherData>
   <Data type="uint16" address="0x00C7A962" absoluteAddress="true">RNG Value</Data>
-  <Data type="uint16" address="0x00C7A962" absoluteAddress="false">RNG Value Farts</Data>
-  <Data type="uint16" address="0x00C7A962" absoluteAddress="false">RNG Value More Farts</Data>
-  <Data type="uint16" address="0x0038EEE0" absoluteAddress="false">RNG Value Load Farticus</Data>
 </OtherData>

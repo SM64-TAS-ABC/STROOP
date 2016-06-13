@@ -7,12 +7,21 @@
   <Data type="float" address="0x5C" marioOffset="true">Y Speed</Data>
   <Data type="float" address="0x60" marioOffset="true">Z Speed</Data>
   <Data type="float" address="0x54" marioOffset="true">Speed</Data>
-  <Data type="uint32" address="0x68" marioOffset="true" useHex="true">Col. Tri.</Data>
+  <Data type="float" address="0x70" marioOffset="true">Ground Y</Data>
+  <Data type="float" address="8033B1DC">Ceiling Y</Data>
+  <Data type="uint32" address="0x68" marioOffset="true" useHex="true">Col. Triangle</Data>
+  <Data type="uint32" address="0x0C" marioOffset="true" useHex="true">Action</Data>
+  <Data type="uint32" address="0x8033B1EC" useHex="true">Held Object</Data>
+  <Data type="float" address="0x8033B3C8">HOLP X</Data>
+  <Data type="float" address="0x8033B3D0">HOLP Y</Data>
+  <Data type="float" address="0x8033B3D4">HOLP Z</Data>
+  <Data type="float" address="0x8033C6AC">Camera X</Data>
+  <Data type="float" address="0x8033C6B0">Camera Y</Data>
+  <Data type="float" address="0x8033C6B4">Camera Z</Data>
   <Data type="uint16" address="0xA8" marioOffset="true">Coins</Data>
   <Data type="uint16" address="0xAA" marioOffset="true">Stars</Data>
   <Data type="uint16" address="0xAC" marioOffset="true">Lives</Data>
   <Data type="uint16" address="0xAE" marioOffset="true">Power</Data>
-  <Data type="uint32" address="0x04" marioOffset="true" useHex="true">Flags</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x10">Hat On Head</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x02">Vanish Cap</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x04">Metal Cap</Data>

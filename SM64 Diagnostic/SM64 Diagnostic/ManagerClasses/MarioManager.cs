@@ -31,7 +31,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _marioDataControls = new List<WatchVariableControl>();
             foreach (WatchVariable watchVar in marioData)
             {
-                WatchVariableControl watchControl = new WatchVariableControl(watchVar);
+                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, _config.Mario.MarioPointerAddress);
                 variableTable.Controls.Add(watchControl.Control);
                 _marioDataControls.Add(watchControl);
             }
@@ -43,7 +43,7 @@ namespace SM64_Diagnostic.ManagerClasses
             // Update watch variables
             foreach (var watchVar in _marioDataControls)
             {
-                watchVar.Update(_stream, _config.Mario.MarioPointerAddress);
+                watchVar.Update();
             }
         }
 

@@ -151,7 +151,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _objectDataControls = new List<WatchVariableControl>();
             foreach (WatchVariable watchVar in objectData)
             {
-                WatchVariableControl watchControl = new WatchVariableControl(watchVar);
+                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, 0);
                 objectGui.ObjectFlowLayout.Controls.Add(watchControl.Control);
                 _objectDataControls.Add(watchControl);
             }
@@ -164,7 +164,8 @@ namespace SM64_Diagnostic.ManagerClasses
             // Update watch variables
             foreach (var watchVar in _objectDataControls)
             {
-                watchVar.Update(_stream, CurrentAddress);
+                watchVar.OtherOffset = CurrentAddress;
+                watchVar.Update();
             }
         }
 

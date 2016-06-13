@@ -66,6 +66,43 @@ namespace SM64_Diagnostic.Utilities
             return (dataValue != 0x00);
         }
 
+
+        public static void SetBoolValue(this WatchVariable watchVar, ProcessStream stream, uint offset, bool value)
+        {
+            // Get dataBytes
+            var byteCount = TypeSize[watchVar.Type];
+            var address = watchVar.OtherOffset ? offset + watchVar.Address : watchVar.Address;
+            var dataBytes = stream.ReadRam(address, byteCount, watchVar.AbsoluteAddressing);
+
+            // Get Uint64 value
+            var intBytes = new byte[8];
+            dataBytes.CopyTo(intBytes, 0);
+            UInt64 dataValue = BitConverter.ToUInt64(intBytes, 0);
+
+            // Apply mask
+            if (watchVar.Mask.HasValue)
+            {
+                if (value)
+                    dataValue |= watchVar.Mask.Value;
+                else
+                    dataValue &= ~watchVar.Mask.Value;
+            }
+            else
+            {
+                if (value)
+                    dataValue = 1;
+                else
+                    dataValue = 0;
+            }
+
+            var writeBytes = new byte[byteCount];
+            var valueBytes = BitConverter.GetBytes(dataValue);
+            Array.Copy(valueBytes, 0, writeBytes, 0, byteCount);
+
+            stream.WriteRam(writeBytes, address, watchVar.AbsoluteAddressing);
+
+        }
+
         public static int GetByteCount(this WatchVariable watchVar)
         {
             return TypeSize[watchVar.Type];

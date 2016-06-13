@@ -1,6 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ObjectData>
+  <Data type="uint32" address="0xF4" objectOffset="true">Form</Data>
   <Data type="float" address="0xA0" objectOffset="true">X</Data>
   <Data type="float" address="0xA4" objectOffset="true">Y</Data>
   <Data type="float" address="0xA8" objectOffset="true">Z</Data>
+  <Data type="float" address="0xAC" objectOffset="true">X Speed</Data>
+  <Data type="float" address="0xB0" objectOffset="true">Y Speed</Data>
+  <Data type="float" address="0xB4" objectOffset="true">Z Speed</Data>
+  <Data type="float" address="0xB8" objectOffset="true">Speed</Data>
+  <Data type="uint32" address="0xC4" objectOffset="true">Front Tilt (M)</Data>
+  <Data type="uint32" address="0xC8" objectOffset="true">Hor. Tilt (M)</Data>
+  <Data type="uint32" address="0xCC" objectOffset="true">Lat. Tilt (M)</Data>
+  <Data type="uint32" address="0xD0" objectOffset="true">Front Tilt (F)</Data>
+  <Data type="uint32" address="0xD4" objectOffset="true">Hor. Tilt (F)</Data>
+  <Data type="uint32" address="0xD8" objectOffset="true">Lat. Tilt (F)</Data>
+  <Data type="float" address="0x015C" objectOffset="true">Dis. To Mario</Data>
+  <Data type="float" address="0x019C" objectOffset="true">Drawing Dis.</Data>
 </ObjectData>
