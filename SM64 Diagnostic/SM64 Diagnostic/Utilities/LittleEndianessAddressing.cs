@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Utilities
 {
-    public unsafe static class LittleEndianessAddressing
+    public static class LittleEndianessAddressing
     {
         public static int AddressFix(int address, int dataSize)
         {
