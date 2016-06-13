@@ -39,9 +39,18 @@
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageObjects = new System.Windows.Forms.TabPage();
+            this.labelObjSlotIndValue = new System.Windows.Forms.Label();
+            this.labelObjSlotPosValue = new System.Windows.Forms.Label();
+            this.labelObjBhvValue = new System.Windows.Forms.Label();
+            this.labelObjAdd = new System.Windows.Forms.Label();
             this.flowLayoutPanelObject = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelObjSlotInd = new System.Windows.Forms.Label();
+            this.labelObjSlotPos = new System.Windows.Forms.Label();
+            this.labelObjBhv = new System.Windows.Forms.Label();
+            this.labelObjName = new System.Windows.Forms.Label();
             this.panelObjectBorder = new System.Windows.Forms.Panel();
             this.pictureBoxObject = new System.Windows.Forms.PictureBox();
+            this.labelObjAddValue = new System.Windows.Forms.Label();
             this.tabPageMario = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelMario = new System.Windows.Forms.FlowLayoutPanel();
             this.panelMarioBorder = new System.Windows.Forms.Panel();
@@ -59,15 +68,6 @@
             this.richTextBoxDissasembly = new System.Windows.Forms.RichTextBox();
             this.buttonPauseResume = new System.Windows.Forms.Button();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
-            this.labelObjName = new System.Windows.Forms.Label();
-            this.labelObjBhv = new System.Windows.Forms.Label();
-            this.labelObjSlotPos = new System.Windows.Forms.Label();
-            this.labelObjSlotInd = new System.Windows.Forms.Label();
-            this.labelObjAdd = new System.Windows.Forms.Label();
-            this.labelObjBhvValue = new System.Windows.Forms.Label();
-            this.labelObjSlotPosValue = new System.Windows.Forms.Label();
-            this.labelObjSlotIndValue = new System.Windows.Forms.Label();
-            this.labelObjAddValue = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrash)).BeginInit();
             this.tabControlMain.SuspendLayout();
@@ -207,6 +207,40 @@
             this.tabPageObjects.TabIndex = 0;
             this.tabPageObjects.Text = "Object";
             // 
+            // labelObjSlotIndValue
+            // 
+            this.labelObjSlotIndValue.Location = new System.Drawing.Point(184, 72);
+            this.labelObjSlotIndValue.Name = "labelObjSlotIndValue";
+            this.labelObjSlotIndValue.Size = new System.Drawing.Size(58, 20);
+            this.labelObjSlotIndValue.TabIndex = 11;
+            this.labelObjSlotIndValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelObjSlotPosValue
+            // 
+            this.labelObjSlotPosValue.Location = new System.Drawing.Point(172, 51);
+            this.labelObjSlotPosValue.Name = "labelObjSlotPosValue";
+            this.labelObjSlotPosValue.Size = new System.Drawing.Size(70, 21);
+            this.labelObjSlotPosValue.TabIndex = 10;
+            this.labelObjSlotPosValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelObjBhvValue
+            // 
+            this.labelObjBhvValue.Location = new System.Drawing.Point(140, 31);
+            this.labelObjBhvValue.Name = "labelObjBhvValue";
+            this.labelObjBhvValue.Size = new System.Drawing.Size(102, 20);
+            this.labelObjBhvValue.TabIndex = 9;
+            this.labelObjBhvValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelObjAdd
+            // 
+            this.labelObjAdd.AutoSize = true;
+            this.labelObjAdd.Location = new System.Drawing.Point(97, 92);
+            this.labelObjAdd.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.labelObjAdd.Name = "labelObjAdd";
+            this.labelObjAdd.Size = new System.Drawing.Size(42, 20);
+            this.labelObjAdd.TabIndex = 8;
+            this.labelObjAdd.Text = "Add:";
+            // 
             // flowLayoutPanelObject
             // 
             this.flowLayoutPanelObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -218,6 +252,43 @@
             this.flowLayoutPanelObject.Name = "flowLayoutPanelObject";
             this.flowLayoutPanelObject.Size = new System.Drawing.Size(441, 111);
             this.flowLayoutPanelObject.TabIndex = 3;
+            // 
+            // labelObjSlotInd
+            // 
+            this.labelObjSlotInd.AutoSize = true;
+            this.labelObjSlotInd.Location = new System.Drawing.Point(97, 72);
+            this.labelObjSlotInd.Name = "labelObjSlotInd";
+            this.labelObjSlotInd.Size = new System.Drawing.Size(84, 20);
+            this.labelObjSlotInd.TabIndex = 7;
+            this.labelObjSlotInd.Text = "Slot Index:";
+            // 
+            // labelObjSlotPos
+            // 
+            this.labelObjSlotPos.AutoSize = true;
+            this.labelObjSlotPos.Location = new System.Drawing.Point(97, 51);
+            this.labelObjSlotPos.Name = "labelObjSlotPos";
+            this.labelObjSlotPos.Size = new System.Drawing.Size(72, 20);
+            this.labelObjSlotPos.TabIndex = 6;
+            this.labelObjSlotPos.Text = "Slot Pos:";
+            // 
+            // labelObjBhv
+            // 
+            this.labelObjBhv.AutoSize = true;
+            this.labelObjBhv.Location = new System.Drawing.Point(97, 31);
+            this.labelObjBhv.Name = "labelObjBhv";
+            this.labelObjBhv.Size = new System.Drawing.Size(40, 20);
+            this.labelObjBhv.TabIndex = 5;
+            this.labelObjBhv.Text = "Bhv:";
+            // 
+            // labelObjName
+            // 
+            this.labelObjName.AutoSize = true;
+            this.labelObjName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelObjName.Location = new System.Drawing.Point(97, 11);
+            this.labelObjName.Name = "labelObjName";
+            this.labelObjName.Size = new System.Drawing.Size(61, 20);
+            this.labelObjName.TabIndex = 4;
+            this.labelObjName.Text = "Object";
             // 
             // panelObjectBorder
             // 
@@ -240,6 +311,15 @@
             this.pictureBoxObject.TabIndex = 0;
             this.pictureBoxObject.TabStop = false;
             // 
+            // labelObjAddValue
+            // 
+            this.labelObjAddValue.Location = new System.Drawing.Point(132, 92);
+            this.labelObjAddValue.Margin = new System.Windows.Forms.Padding(0);
+            this.labelObjAddValue.Name = "labelObjAddValue";
+            this.labelObjAddValue.Size = new System.Drawing.Size(113, 26);
+            this.labelObjAddValue.TabIndex = 12;
+            this.labelObjAddValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // tabPageMario
             // 
             this.tabPageMario.BackColor = System.Drawing.SystemColors.Control;
@@ -248,7 +328,7 @@
             this.tabPageMario.Location = new System.Drawing.Point(4, 29);
             this.tabPageMario.Name = "tabPageMario";
             this.tabPageMario.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMario.Size = new System.Drawing.Size(695, 115);
+            this.tabPageMario.Size = new System.Drawing.Size(695, 121);
             this.tabPageMario.TabIndex = 1;
             this.tabPageMario.Text = "Mario";
             // 
@@ -261,7 +341,7 @@
             this.flowLayoutPanelMario.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelMario.Location = new System.Drawing.Point(98, 4);
             this.flowLayoutPanelMario.Name = "flowLayoutPanelMario";
-            this.flowLayoutPanelMario.Size = new System.Drawing.Size(591, 105);
+            this.flowLayoutPanelMario.Size = new System.Drawing.Size(591, 111);
             this.flowLayoutPanelMario.TabIndex = 1;
             // 
             // panelMarioBorder
@@ -295,7 +375,7 @@
             this.tabPageOther.Controls.Add(this.dataGridViewOther);
             this.tabPageOther.Location = new System.Drawing.Point(4, 29);
             this.tabPageOther.Name = "tabPageOther";
-            this.tabPageOther.Size = new System.Drawing.Size(695, 115);
+            this.tabPageOther.Size = new System.Drawing.Size(695, 121);
             this.tabPageOther.TabIndex = 2;
             this.tabPageOther.Text = "Other";
             // 
@@ -303,7 +383,7 @@
             // 
             this.checkBoxAbsoluteAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxAbsoluteAddress.AutoSize = true;
-            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(493, 85);
+            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(493, 91);
             this.checkBoxAbsoluteAddress.Name = "checkBoxAbsoluteAddress";
             this.checkBoxAbsoluteAddress.Size = new System.Drawing.Size(199, 24);
             this.checkBoxAbsoluteAddress.TabIndex = 4;
@@ -313,7 +393,7 @@
             // buttonOtherDelete
             // 
             this.buttonOtherDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherDelete.Location = new System.Drawing.Point(159, 80);
+            this.buttonOtherDelete.Location = new System.Drawing.Point(159, 86);
             this.buttonOtherDelete.Name = "buttonOtherDelete";
             this.buttonOtherDelete.Size = new System.Drawing.Size(72, 32);
             this.buttonOtherDelete.TabIndex = 3;
@@ -324,7 +404,7 @@
             // buttonOtherModify
             // 
             this.buttonOtherModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherModify.Location = new System.Drawing.Point(81, 80);
+            this.buttonOtherModify.Location = new System.Drawing.Point(81, 86);
             this.buttonOtherModify.Name = "buttonOtherModify";
             this.buttonOtherModify.Size = new System.Drawing.Size(72, 32);
             this.buttonOtherModify.TabIndex = 2;
@@ -335,7 +415,7 @@
             // buttonOtherAdd
             // 
             this.buttonOtherAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherAdd.Location = new System.Drawing.Point(3, 80);
+            this.buttonOtherAdd.Location = new System.Drawing.Point(3, 86);
             this.buttonOtherAdd.Name = "buttonOtherAdd";
             this.buttonOtherAdd.Size = new System.Drawing.Size(72, 32);
             this.buttonOtherAdd.TabIndex = 1;
@@ -360,7 +440,7 @@
             this.dataGridViewOther.RowTemplate.Height = 20;
             this.dataGridViewOther.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewOther.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOther.Size = new System.Drawing.Size(689, 71);
+            this.dataGridViewOther.Size = new System.Drawing.Size(689, 77);
             this.dataGridViewOther.TabIndex = 0;
             this.dataGridViewOther.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOther_CellMouseDoubleClick);
             // 
@@ -373,7 +453,7 @@
             this.tabPageDisassembly.Controls.Add(this.richTextBoxDissasembly);
             this.tabPageDisassembly.Location = new System.Drawing.Point(4, 29);
             this.tabPageDisassembly.Name = "tabPageDisassembly";
-            this.tabPageDisassembly.Size = new System.Drawing.Size(695, 115);
+            this.tabPageDisassembly.Size = new System.Drawing.Size(695, 121);
             this.tabPageDisassembly.TabIndex = 3;
             this.tabPageDisassembly.Text = "Disassembly";
             // 
@@ -414,7 +494,7 @@
             this.richTextBoxDissasembly.Location = new System.Drawing.Point(4, 35);
             this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
             this.richTextBoxDissasembly.ReadOnly = true;
-            this.richTextBoxDissasembly.Size = new System.Drawing.Size(688, 77);
+            this.richTextBoxDissasembly.Size = new System.Drawing.Size(688, 83);
             this.richTextBoxDissasembly.TabIndex = 0;
             this.richTextBoxDissasembly.Text = "";
             // 
@@ -449,86 +529,6 @@
             this.splitContainerMain.SplitterDistance = 156;
             this.splitContainerMain.TabIndex = 4;
             // 
-            // labelObjName
-            // 
-            this.labelObjName.AutoSize = true;
-            this.labelObjName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelObjName.Location = new System.Drawing.Point(97, 11);
-            this.labelObjName.Name = "labelObjName";
-            this.labelObjName.Size = new System.Drawing.Size(61, 20);
-            this.labelObjName.TabIndex = 4;
-            this.labelObjName.Text = "Object";
-            // 
-            // labelObjBhv
-            // 
-            this.labelObjBhv.AutoSize = true;
-            this.labelObjBhv.Location = new System.Drawing.Point(97, 31);
-            this.labelObjBhv.Name = "labelObjBhv";
-            this.labelObjBhv.Size = new System.Drawing.Size(40, 20);
-            this.labelObjBhv.TabIndex = 5;
-            this.labelObjBhv.Text = "Bhv:";
-            // 
-            // labelObjSlotPos
-            // 
-            this.labelObjSlotPos.AutoSize = true;
-            this.labelObjSlotPos.Location = new System.Drawing.Point(97, 51);
-            this.labelObjSlotPos.Name = "labelObjSlotPos";
-            this.labelObjSlotPos.Size = new System.Drawing.Size(72, 20);
-            this.labelObjSlotPos.TabIndex = 6;
-            this.labelObjSlotPos.Text = "Slot Pos:";
-            // 
-            // labelObjSlotInd
-            // 
-            this.labelObjSlotInd.AutoSize = true;
-            this.labelObjSlotInd.Location = new System.Drawing.Point(97, 72);
-            this.labelObjSlotInd.Name = "labelObjSlotInd";
-            this.labelObjSlotInd.Size = new System.Drawing.Size(84, 20);
-            this.labelObjSlotInd.TabIndex = 7;
-            this.labelObjSlotInd.Text = "Slot Index:";
-            // 
-            // labelObjAdd
-            // 
-            this.labelObjAdd.AutoSize = true;
-            this.labelObjAdd.Location = new System.Drawing.Point(97, 92);
-            this.labelObjAdd.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.labelObjAdd.Name = "labelObjAdd";
-            this.labelObjAdd.Size = new System.Drawing.Size(42, 20);
-            this.labelObjAdd.TabIndex = 8;
-            this.labelObjAdd.Text = "Add:";
-            // 
-            // labelObjBhvValue
-            // 
-            this.labelObjBhvValue.Location = new System.Drawing.Point(140, 31);
-            this.labelObjBhvValue.Name = "labelObjBhvValue";
-            this.labelObjBhvValue.Size = new System.Drawing.Size(102, 20);
-            this.labelObjBhvValue.TabIndex = 9;
-            this.labelObjBhvValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelObjSlotPosValue
-            // 
-            this.labelObjSlotPosValue.Location = new System.Drawing.Point(172, 51);
-            this.labelObjSlotPosValue.Name = "labelObjSlotPosValue";
-            this.labelObjSlotPosValue.Size = new System.Drawing.Size(70, 21);
-            this.labelObjSlotPosValue.TabIndex = 10;
-            this.labelObjSlotPosValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelObjSlotIndValue
-            // 
-            this.labelObjSlotIndValue.Location = new System.Drawing.Point(184, 72);
-            this.labelObjSlotIndValue.Name = "labelObjSlotIndValue";
-            this.labelObjSlotIndValue.Size = new System.Drawing.Size(58, 20);
-            this.labelObjSlotIndValue.TabIndex = 11;
-            this.labelObjSlotIndValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelObjAddValue
-            // 
-            this.labelObjAddValue.Location = new System.Drawing.Point(132, 92);
-            this.labelObjAddValue.Margin = new System.Windows.Forms.Padding(0);
-            this.labelObjAddValue.Name = "labelObjAddValue";
-            this.labelObjAddValue.Size = new System.Drawing.Size(113, 26);
-            this.labelObjAddValue.TabIndex = 12;
-            this.labelObjAddValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // SM64DiagnosticForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -538,6 +538,7 @@
             this.Controls.Add(this.buttonPauseResume);
             this.Controls.Add(this.labelProcessSelect);
             this.Controls.Add(this.comboBoxProcessSelection);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SM64DiagnosticForm";
             this.Text = "Stroop";
             this.Load += new System.EventHandler(this.Form1_Load);
