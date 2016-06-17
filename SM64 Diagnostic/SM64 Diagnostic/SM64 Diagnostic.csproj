@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\BitmapExtensions.cs" />
+    <Compile Include="ManagerClasses\DataContainer.cs" />
     <Compile Include="ManagerClasses\DisassemblyManager.cs" />
     <Compile Include="ManagerClasses\MapManager.cs" />
     <Compile Include="ManagerClasses\MarioManager.cs" />

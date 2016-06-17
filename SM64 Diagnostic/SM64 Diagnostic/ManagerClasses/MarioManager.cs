@@ -15,7 +15,8 @@ namespace SM64_Diagnostic.ManagerClasses
         List<WatchVariableControl> _marioDataControls;
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
-
+        DataContainer _rngIndex;
+        ushort[] _rngTableIndex = new ushort[65536];
 
         public MarioManager(ProcessStream stream, Config config, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable)
         {
@@ -35,7 +36,12 @@ namespace SM64_Diagnostic.ManagerClasses
                 variableTable.Controls.Add(watchControl.Control);
                 _marioDataControls.Add(watchControl);
             }
-            
+
+            // Add rng index
+            _rngIndex = new DataContainer("RNG Index");
+            variableTable.Controls.Add(_rngIndex.Control);
+
+            GenerateRngTable();
         }
 
         public void Update()
@@ -45,6 +51,46 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 watchVar.Update();
             }
+            _rngIndex.Text = GetRngIndex().ToString();
+        }
+
+        private ushort GetRngIndex()
+        {
+            return _rngTableIndex[BitConverter.ToUInt16(_stream.ReadRam(0x8038EEE0, 2),0)];
+        }
+
+        private void GenerateRngTable()
+        {
+            ushort _currentRng = 0;
+            for (ushort i = 0; i < 65114; i++)
+            {
+                _rngTableIndex[_currentRng] = i;
+                _currentRng = NextRNG(_currentRng);
+            }
+        }
+
+        private ushort NextRNG(ushort _rng)
+        {
+
+            if (_rng == 0x560A)
+                _rng = 0;
+            ushort s0 = (ushort)(_rng << 8);
+            s0 ^= _rng;
+            _rng = (ushort)((s0 >> 8) | (s0 << 8));
+            s0 = (ushort)((s0 & 0x00FF) << 1);
+            s0 ^= _rng;
+            ushort s1 = (ushort)(0xFF80 ^ (s0 >> 1));
+            if ((s0 & 1) == 0)
+            {
+                if (s1 == 0xAA55)
+                    _rng = 0;
+                else
+                    _rng = (ushort)(s1 ^ 0x1FF4);
+            }
+            else
+                _rng = (ushort)(s1 ^ 0x8180);
+
+            return _rng;
         }
 
         private void RegisterControlEvents(Control control)

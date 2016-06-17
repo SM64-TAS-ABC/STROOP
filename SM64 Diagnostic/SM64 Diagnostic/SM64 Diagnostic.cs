@@ -56,7 +56,7 @@ namespace SM64_Diagnostic
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Temp: Remove "Other" tab
+           // Temp: Remove "Other" tab
 #if RELEASE
             tabControlMain.TabPages.Remove(tabPageOther);
 #endif
