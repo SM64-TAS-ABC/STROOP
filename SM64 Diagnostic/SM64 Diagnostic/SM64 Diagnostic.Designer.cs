@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SM64DiagnosticForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxProcessSelection = new System.Windows.Forms.ComboBox();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.pictureBoxTrash = new System.Windows.Forms.PictureBox();
             this.labelSortMethod = new System.Windows.Forms.Label();
             this.flowLayoutPanelObjects = new System.Windows.Forms.FlowLayoutPanel();
@@ -66,6 +67,13 @@
             this.maskedTextBoxDisStart = new System.Windows.Forms.MaskedTextBox();
             this.labelDisStart = new System.Windows.Forms.Label();
             this.richTextBoxDissasembly = new System.Windows.Forms.RichTextBox();
+            this.tabPageMap = new System.Windows.Forms.TabPage();
+            this.pictureBoxMapObject = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMapMario = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMap = new System.Windows.Forms.PictureBox();
+            this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.buttonPauseResume = new System.Windows.Forms.Button();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.groupBoxObjects.SuspendLayout();
@@ -80,6 +88,11 @@
             this.tabPageOther.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOther)).BeginInit();
             this.tabPageDisassembly.SuspendLayout();
+            this.tabPageMap.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMapObject)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMapMario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).BeginInit();
+            this.tabPageOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -114,6 +127,7 @@
             this.groupBoxObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxObjects.Controls.Add(this.checkBox1);
             this.groupBoxObjects.Controls.Add(this.pictureBoxTrash);
             this.groupBoxObjects.Controls.Add(this.labelSortMethod);
             this.groupBoxObjects.Controls.Add(this.flowLayoutPanelObjects);
@@ -124,6 +138,16 @@
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 27);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(120, 24);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "Lock Labels";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // pictureBoxTrash
             // 
@@ -178,6 +202,8 @@
             this.tabControlMain.Controls.Add(this.tabPageMario);
             this.tabControlMain.Controls.Add(this.tabPageOther);
             this.tabControlMain.Controls.Add(this.tabPageDisassembly);
+            this.tabControlMain.Controls.Add(this.tabPageMap);
+            this.tabControlMain.Controls.Add(this.tabPageOptions);
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(3, 3);
             this.tabControlMain.Name = "tabControlMain";
@@ -428,8 +454,8 @@
             this.dataGridViewOther.AllowUserToAddRows = false;
             this.dataGridViewOther.AllowUserToDeleteRows = false;
             this.dataGridViewOther.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewOther.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewOther.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewOther.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -498,6 +524,78 @@
             this.richTextBoxDissasembly.TabIndex = 0;
             this.richTextBoxDissasembly.Text = "";
             // 
+            // tabPageMap
+            // 
+            this.tabPageMap.Controls.Add(this.pictureBoxMapObject);
+            this.tabPageMap.Controls.Add(this.pictureBoxMapMario);
+            this.tabPageMap.Controls.Add(this.pictureBoxMap);
+            this.tabPageMap.Location = new System.Drawing.Point(4, 29);
+            this.tabPageMap.Name = "tabPageMap";
+            this.tabPageMap.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMap.Size = new System.Drawing.Size(695, 121);
+            this.tabPageMap.TabIndex = 4;
+            this.tabPageMap.Text = "Map";
+            // 
+            // pictureBoxMapObject
+            // 
+            this.pictureBoxMapObject.Location = new System.Drawing.Point(626, 27);
+            this.pictureBoxMapObject.Name = "pictureBoxMapObject";
+            this.pictureBoxMapObject.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxMapObject.TabIndex = 2;
+            this.pictureBoxMapObject.TabStop = false;
+            // 
+            // pictureBoxMapMario
+            // 
+            this.pictureBoxMapMario.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxMapMario.Location = new System.Drawing.Point(497, 51);
+            this.pictureBoxMapMario.Name = "pictureBoxMapMario";
+            this.pictureBoxMapMario.Size = new System.Drawing.Size(36, 36);
+            this.pictureBoxMapMario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxMapMario.TabIndex = 1;
+            this.pictureBoxMapMario.TabStop = false;
+            // 
+            // pictureBoxMap
+            // 
+            this.pictureBoxMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMap.Location = new System.Drawing.Point(6, 6);
+            this.pictureBoxMap.Name = "pictureBoxMap";
+            this.pictureBoxMap.Size = new System.Drawing.Size(683, 109);
+            this.pictureBoxMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxMap.TabIndex = 0;
+            this.pictureBoxMap.TabStop = false;
+            // 
+            // tabPageOptions
+            // 
+            this.tabPageOptions.Controls.Add(this.checkBox2);
+            this.tabPageOptions.Controls.Add(this.checkBoxStartSlotIndexOne);
+            this.tabPageOptions.Location = new System.Drawing.Point(4, 29);
+            this.tabPageOptions.Name = "tabPageOptions";
+            this.tabPageOptions.Size = new System.Drawing.Size(695, 121);
+            this.tabPageOptions.TabIndex = 5;
+            this.tabPageOptions.Text = "Options";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(4, 34);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(75, 24);
+            this.checkBox2.TabIndex = 1;
+            this.checkBox2.Text = "Show";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxStartSlotIndexOne
+            // 
+            this.checkBoxStartSlotIndexOne.AutoSize = true;
+            this.checkBoxStartSlotIndexOne.Location = new System.Drawing.Point(4, 4);
+            this.checkBoxStartSlotIndexOne.Name = "checkBoxStartSlotIndexOne";
+            this.checkBoxStartSlotIndexOne.Size = new System.Drawing.Size(199, 24);
+            this.checkBoxStartSlotIndexOne.TabIndex = 0;
+            this.checkBoxStartSlotIndexOne.Text = "Start Slot Index From 1";
+            this.checkBoxStartSlotIndexOne.UseVisualStyleBackColor = true;
+            // 
             // buttonPauseResume
             // 
             this.buttonPauseResume.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -558,6 +656,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOther)).EndInit();
             this.tabPageDisassembly.ResumeLayout(false);
             this.tabPageDisassembly.PerformLayout();
+            this.tabPageMap.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMapObject)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMapMario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).EndInit();
+            this.tabPageOptions.ResumeLayout(false);
+            this.tabPageOptions.PerformLayout();
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
@@ -607,6 +711,14 @@
         private System.Windows.Forms.Label labelObjBhv;
         private System.Windows.Forms.Label labelObjName;
         private System.Windows.Forms.Label labelObjAddValue;
+        private System.Windows.Forms.TabPage tabPageMap;
+        private System.Windows.Forms.PictureBox pictureBoxMapObject;
+        private System.Windows.Forms.PictureBox pictureBoxMapMario;
+        private System.Windows.Forms.PictureBox pictureBoxMap;
+        private System.Windows.Forms.TabPage tabPageOptions;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBoxStartSlotIndexOne;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

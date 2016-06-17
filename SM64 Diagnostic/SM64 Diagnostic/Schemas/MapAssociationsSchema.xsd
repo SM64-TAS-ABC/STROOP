@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MapAssociationsSchema"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/MapAssociationsSchema.xsd"
+    xmlns:mstns="http://tempuri.org/MapAssociationsSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:types="http://tempuri.org/ReusableTypes.xsd"
+>
+  <xs:import namespace="http://tempuri.org/ReusableTypes.xsd" schemaLocation="ReusableTypes.xsd"/>
+  <xs:element name ="MapAssociations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Config">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="ImageDirectory" type="xs:string"/>
+              <xs:element name="DefaultImage" type="xs:string"/>
+              <xs:element name="DefaultCoordinates">
+                <xs:complexType>
+                  <xs:attribute name="x1" use="required" type="xs:float"/>
+                  <xs:attribute name="x2" use="required" type="xs:float"/>
+                  <xs:attribute name="z1" use="required" type="xs:float"/>
+                  <xs:attribute name="z2" use="required" type="xs:float"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Map" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="Image">
+                <xs:complexType>
+                  <xs:attribute name="path" use="required" type="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Coordinates">
+                <xs:complexType>
+                  <xs:attribute name="x1" use="required" type="xs:float"/>
+                  <xs:attribute name="x2" use="required" type="xs:float"/>
+                  <xs:attribute name="z1" use="required" type="xs:float"/>
+                  <xs:attribute name="z2" use="required" type="xs:float"/>
+                  <xs:attribute name="y" type="xs:float"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+            <xs:attribute name="level" use="required" type="xs:byte"/>
+            <xs:attribute name="area" use="required" type="xs:byte"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

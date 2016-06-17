@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="ManagerClasses\DisassemblyManager.cs" />
+    <Compile Include="ManagerClasses\MapManager.cs" />
     <Compile Include="ManagerClasses\MarioManager.cs" />
     <Compile Include="ManagerClasses\ObjectManager.cs" />
     <Compile Include="ManagerClasses\WatchVariableControl.cs" />
@@ -83,6 +84,8 @@
     <Compile Include="ManagerClasses\ObjectSlot.cs" />
     <Compile Include="ManagerClasses\ObjectSlotManager.cs" />
     <Compile Include="Structures\DropAction.cs" />
+    <Compile Include="Structures\Map.cs" />
+    <Compile Include="Structures\MapAssociations.cs" />
     <Compile Include="Structures\MarioConfig.cs" />
     <Compile Include="Structures\ObjectAssociations.cs" />
     <Compile Include="Structures\ObjectDataGui.cs" />
@@ -154,6 +157,9 @@
     <EmbeddedResource Include="Schemas\ReusableTypes.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\MapAssociationsSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -178,6 +184,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Config\MapAssociations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Config\MarioData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -194,1219 +203,1225 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="icon.ico" />
-    <Content Include="Resources\Images\! Switch.png">
+    <Content Include="Resources\Maps\BBH.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\1-Up Activator Spawner.png">
+    <Content Include="Resources\Maps\default.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\1-Up Activator.png">
+    <Content Include="Resources\Object Images\! Switch.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\1-Up _ 1-Up Activator Spawner.png">
+    <Content Include="Resources\Object Images\1-Up Activator Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\1-Up.png">
+    <Content Include="Resources\Object Images\1-Up Activator.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Amp.png">
+    <Content Include="Resources\Object Images\1-Up _ 1-Up Activator Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Aquarium Bubble Spawner.png">
+    <Content Include="Resources\Object Images\1-Up.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Arrow Lift.png">
+    <Content Include="Resources\Object Images\Amp.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Arrow Platform.png">
+    <Content Include="Resources\Object Images\Aquarium Bubble Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Baby Penguin.png">
+    <Content Include="Resources\Object Images\Arrow Lift.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Back-and-Forth Platform.png">
+    <Content Include="Resources\Object Images\Arrow Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\BBH Lobby Step.png">
+    <Content Include="Resources\Object Images\Baby Penguin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Big Boo.png">
+    <Content Include="Resources\Object Images\Back-and-Forth Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Big Bully.png">
+    <Content Include="Resources\Object Images\BBH Lobby Step.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Big Mr. I Body.png">
+    <Content Include="Resources\Object Images\Big Boo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Big Mr. I Pupil.png">
+    <Content Include="Resources\Object Images\Big Bully.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bird.png">
+    <Content Include="Resources\Object Images\Big Mr. I Body.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\BitDW Trap Door.png">
+    <Content Include="Resources\Object Images\Big Mr. I Pupil.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\BitFS Fight Platform.png">
+    <Content Include="Resources\Object Images\Bird.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\BitFS Tilting Inverted Pyramid Platform.png">
+    <Content Include="Resources\Object Images\BitDW Trap Door.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Black Smoke.png">
+    <Content Include="Resources\Object Images\BitFS Fight Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Blank.png">
+    <Content Include="Resources\Object Images\BitFS Tilting Inverted Pyramid Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Blastable Corner.png">
+    <Content Include="Resources\Object Images\Black Smoke.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Blue Coin Block.png">
+    <Content Include="Resources\Object Images\Blank.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Blue Coin.png">
+    <Content Include="Resources\Object Images\Blastable Corner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Blue Fish Spawner.png">
+    <Content Include="Resources\Object Images\Blue Coin Block.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Blue Fish.png">
+    <Content Include="Resources\Object Images\Blue Coin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Blue Flame.png">
+    <Content Include="Resources\Object Images\Blue Fish Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Blue Lava Bubble Flame.png">
+    <Content Include="Resources\Object Images\Blue Fish.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Blue Lava Bubble Spawner.png">
+    <Content Include="Resources\Object Images\Blue Flame.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bob-omb Buddy.png">
+    <Content Include="Resources\Object Images\Blue Lava Bubble Flame.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bob-omb Explosion.png">
+    <Content Include="Resources\Object Images\Blue Lava Bubble Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bob-omb Fuse Smoke.png">
+    <Content Include="Resources\Object Images\Bob-omb Buddy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bob-omb Spawner.png">
+    <Content Include="Resources\Object Images\Bob-omb Explosion.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bob-omb.png">
+    <Content Include="Resources\Object Images\Bob-omb Fuse Smoke.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Boiling Bully Smoke.png">
+    <Content Include="Resources\Object Images\Bob-omb Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Boo Cage.png">
+    <Content Include="Resources\Object Images\Bob-omb.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Boo Coin.png">
+    <Content Include="Resources\Object Images\Boiling Bully Smoke.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Boo Spawner.png">
+    <Content Include="Resources\Object Images\Boo Cage.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Boo.png">
+    <Content Include="Resources\Object Images\Boo Coin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Book Switch.png">
+    <Content Include="Resources\Object Images\Boo Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bookend Spawner.png">
+    <Content Include="Resources\Object Images\Boo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bookend.png">
+    <Content Include="Resources\Object Images\Book Switch.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bookshelf.png">
+    <Content Include="Resources\Object Images\Bookend Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bowling Ball Spawner.png">
+    <Content Include="Resources\Object Images\Bookend.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bowling Ball.png">
+    <Content Include="Resources\Object Images\Bookshelf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bowser Body Anchor.png">
+    <Content Include="Resources\Object Images\Bowling Ball Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bowser Breathing.png">
+    <Content Include="Resources\Object Images\Bowling Ball.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bowser Key.png">
+    <Content Include="Resources\Object Images\Bowser Body Anchor.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bowser Puzzle Coin Spawner.png">
+    <Content Include="Resources\Object Images\Bowser Breathing.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bowser Puzzle Piece.png">
+    <Content Include="Resources\Object Images\Bowser Key.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bowser Puzzle.png">
+    <Content Include="Resources\Object Images\Bowser Puzzle Coin Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bowser Tail Anchor.png">
+    <Content Include="Resources\Object Images\Bowser Puzzle Piece.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bowser Tail.png">
+    <Content Include="Resources\Object Images\Bowser Puzzle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bowser%27s Sub Gate.png">
+    <Content Include="Resources\Object Images\Bowser Tail Anchor.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bowser%27s Sub.png">
+    <Content Include="Resources\Object Images\Bowser Tail.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bowser.png">
+    <Content Include="Resources\Object Images\Bowser%27s Sub Gate.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Box Shard.png">
+    <Content Include="Resources\Object Images\Bowser%27s Sub.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bub Spawner.png">
+    <Content Include="Resources\Object Images\Bowser.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bub.png">
+    <Content Include="Resources\Object Images\Box Shard.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bubba.png">
+    <Content Include="Resources\Object Images\Bub Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bubble Bomb Shadow.png">
+    <Content Include="Resources\Object Images\Bub.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bubble Bomb Spawner.png">
+    <Content Include="Resources\Object Images\Bubba.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bubble Bomb.png">
+    <Content Include="Resources\Object Images\Bubble Bomb Shadow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bubble Spawner.png">
+    <Content Include="Resources\Object Images\Bubble Bomb Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bubble.png">
+    <Content Include="Resources\Object Images\Bubble Bomb.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bullet Bill Blaster.png">
+    <Content Include="Resources\Object Images\Bubble Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bullet Bill.png">
+    <Content Include="Resources\Object Images\Bubble.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bulletin Board.png">
+    <Content Include="Resources\Object Images\Bullet Bill Blaster.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Bully.png">
+    <Content Include="Resources\Object Images\Bullet Bill.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Butterfly Spawner.png">
+    <Content Include="Resources\Object Images\Bulletin Board.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Butterfly.png">
+    <Content Include="Resources\Object Images\Bully.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Caged Island.png">
+    <Content Include="Resources\Object Images\Butterfly Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Camera Lakitu.png">
+    <Content Include="Resources\Object Images\Butterfly.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Cannon Base.png">
+    <Content Include="Resources\Object Images\Caged Island.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Cannon Lid.png">
+    <Content Include="Resources\Object Images\Camera Lakitu.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Cannon Shaft.png">
+    <Content Include="Resources\Object Images\Cannon Base.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Cap Switch Base.png">
+    <Content Include="Resources\Object Images\Cannon Lid.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Cap Switch Button.png">
+    <Content Include="Resources\Object Images\Cannon Shaft.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Carpet.png">
+    <Content Include="Resources\Object Images\Cap Switch Base.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Castle Flag.png">
+    <Content Include="Resources\Object Images\Cap Switch Button.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Celebration Star _ Key.png">
+    <Content Include="Resources\Object Images\Carpet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Chain Chomp Chain.png">
+    <Content Include="Resources\Object Images\Castle Flag.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Chain Chomp Gate.png">
+    <Content Include="Resources\Object Images\Celebration Star _ Key.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Chain Chomp Pivot.png">
+    <Content Include="Resources\Object Images\Chain Chomp Chain.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Chain Chomp.png">
+    <Content Include="Resources\Object Images\Chain Chomp Gate.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Checkered Elevator Group.png">
+    <Content Include="Resources\Object Images\Chain Chomp Pivot.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Checkered Elevator Spawner.png">
+    <Content Include="Resources\Object Images\Chain Chomp.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Checkered Elevator.png">
+    <Content Include="Resources\Object Images\Checkered Elevator Group.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Chest Bottom.png">
+    <Content Include="Resources\Object Images\Checkered Elevator Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Chest Star Spawner 2.png">
+    <Content Include="Resources\Object Images\Checkered Elevator.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Chest Star Spawner.png">
+    <Content Include="Resources\Object Images\Chest Bottom.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Chest Top.png">
+    <Content Include="Resources\Object Images\Chest Star Spawner 2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Chest.png">
+    <Content Include="Resources\Object Images\Chest Star Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Chill Bully.png">
+    <Content Include="Resources\Object Images\Chest Top.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Chuckya.png">
+    <Content Include="Resources\Object Images\Chest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Clam.png">
+    <Content Include="Resources\Object Images\Chill Bully.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Cloud Puff.png">
+    <Content Include="Resources\Object Images\Chuckya.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Cloud Puffs.png">
+    <Content Include="Resources\Object Images\Clam.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Cloud Spawner.png">
+    <Content Include="Resources\Object Images\Cloud Puff.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Coffin.png">
+    <Content Include="Resources\Object Images\Cloud Puffs.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Coin Arrow Spawner.png">
+    <Content Include="Resources\Object Images\Cloud Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Coin Line Spawner.png">
+    <Content Include="Resources\Object Images\Coffin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Coin Ring Spawner.png">
+    <Content Include="Resources\Object Images\Coin Arrow Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Cork Box Dust.png">
+    <Content Include="Resources\Object Images\Coin Line Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Cork Box.png">
+    <Content Include="Resources\Object Images\Coin Ring Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Course Select.png">
+    <Content Include="Resources\Object Images\Cork Box Dust.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Crazy Box.png">
+    <Content Include="Resources\Object Images\Cork Box.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Crown.png">
+    <Content Include="Resources\Object Images\Course Select.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Cruiser Wing.png">
+    <Content Include="Resources\Object Images\Crazy Box.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Crystal Tap.png">
+    <Content Include="Resources\Object Images\Crown.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\DDD Pole.png">
+    <Content Include="Resources\Object Images\Cruiser Wing.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\default.png">
+    <Content Include="Resources\Object Images\Crystal Tap.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Dirt.png">
+    <Content Include="Resources\Object Images\DDD Pole.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Donut Lift Group.png">
+    <Content Include="Resources\Object Images\default.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Donut Lift Spawner.png">
+    <Content Include="Resources\Object Images\Dirt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Donut Lift.png">
+    <Content Include="Resources\Object Images\Donut Lift Group.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Door.png">
+    <Content Include="Resources\Object Images\Donut Lift Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Dorrie.png">
+    <Content Include="Resources\Object Images\Donut Lift.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Dust Glow.png">
+    <Content Include="Resources\Object Images\Door.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Dust Spawner.png">
+    <Content Include="Resources\Object Images\Dorrie.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Dust.png">
+    <Content Include="Resources\Object Images\Dust Glow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Enemy Cannon Base.png">
+    <Content Include="Resources\Object Images\Dust Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Enemy Cannon Shaft.png">
+    <Content Include="Resources\Object Images\Dust.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Exclamation Mark.png">
+    <Content Include="Resources\Object Images\Enemy Cannon Base.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Express Elevator.png">
+    <Content Include="Resources\Object Images\Enemy Cannon Shaft.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Eyerok Behavior.png">
+    <Content Include="Resources\Object Images\Exclamation Mark.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Eyerok Hand.png">
+    <Content Include="Resources\Object Images\Express Elevator.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Falling Block Spawner.png">
+    <Content Include="Resources\Object Images\Eyerok Behavior.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Falling Block.png">
+    <Content Include="Resources\Object Images\Eyerok Hand.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Falling Bridge.png">
+    <Content Include="Resources\Object Images\Falling Block Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Falling Flame.png">
+    <Content Include="Resources\Object Images\Falling Block.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Falling Pillar Base.png">
+    <Content Include="Resources\Object Images\Falling Bridge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Falling Pillar.png">
+    <Content Include="Resources\Object Images\Falling Flame.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Falling Plank.png">
+    <Content Include="Resources\Object Images\Falling Pillar Base.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Finishing Line Checkpoint.png">
+    <Content Include="Resources\Object Images\Falling Pillar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Fire Bar.png">
+    <Content Include="Resources\Object Images\Falling Plank.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Fire.png">
+    <Content Include="Resources\Object Images\Finishing Line Checkpoint.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Flame Breath Spawner.png">
+    <Content Include="Resources\Object Images\Fire Bar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Flame Breath.png">
+    <Content Include="Resources\Object Images\Fire.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Flame Spawner.png">
+    <Content Include="Resources\Object Images\Flame Breath Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Flame.png">
+    <Content Include="Resources\Object Images\Flame Breath.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Flames.png">
+    <Content Include="Resources\Object Images\Flame Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Floating Mine Explosion.png">
+    <Content Include="Resources\Object Images\Flame.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Floating Mine Smoke.png">
+    <Content Include="Resources\Object Images\Flames.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Floating Mine.png">
+    <Content Include="Resources\Object Images\Floating Mine Explosion.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Fly Guy 2.png">
+    <Content Include="Resources\Object Images\Floating Mine Smoke.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Fly Guy.png">
+    <Content Include="Resources\Object Images\Floating Mine.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Fwoosh Face.png">
+    <Content Include="Resources\Object Images\Fly Guy 2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Fwoosh Puff.png">
+    <Content Include="Resources\Object Images\Fly Guy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Fwoosh Spawner.png">
+    <Content Include="Resources\Object Images\Fwoosh Face.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Fwoosh.png">
+    <Content Include="Resources\Object Images\Fwoosh Puff.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Glow.png">
+    <Content Include="Resources\Object Images\Fwoosh Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Goomba %28Squished%29.png">
+    <Content Include="Resources\Object Images\Fwoosh.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Goomba Triplet Spawner.png">
+    <Content Include="Resources\Object Images\Glow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Goomba.png">
+    <Content Include="Resources\Object Images\Goomba %28Squished%29.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Grabbable Cork Box Bob-omb Spawner.png">
+    <Content Include="Resources\Object Images\Goomba Triplet Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Grabbable Cork Box Spawner.png">
+    <Content Include="Resources\Object Images\Goomba.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Grabbable Cork Box.png">
+    <Content Include="Resources\Object Images\Grabbable Cork Box Bob-omb Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Grey Smoke.png">
+    <Content Include="Resources\Object Images\Grabbable Cork Box Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Grills.png">
+    <Content Include="Resources\Object Images\Grabbable Cork Box.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Grindel.png">
+    <Content Include="Resources\Object Images\Grey Smoke.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Haunted Book.png">
+    <Content Include="Resources\Object Images\Grills.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Haunted Chair.png">
+    <Content Include="Resources\Object Images\Grindel.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Health Meter.png">
+    <Content Include="Resources\Object Images\Haunted Book.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Heave-Ho Anchor.png">
+    <Content Include="Resources\Object Images\Haunted Chair.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Heave-Ho.png">
+    <Content Include="Resources\Object Images\Health Meter.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Hidden Wooden Block.png">
+    <Content Include="Resources\Object Images\Heave-Ho Anchor.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\HMC Directional Elevator Button.png">
+    <Content Include="Resources\Object Images\Heave-Ho.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\HMC Directional Elevator.png">
+    <Content Include="Resources\Object Images\Hidden Wooden Block.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\HMC Elevator.png">
+    <Content Include="Resources\Object Images\HMC Directional Elevator Button.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Hoot.png">
+    <Content Include="Resources\Object Images\HMC Directional Elevator.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\HP Bubble.png">
+    <Content Include="Resources\Object Images\HMC Elevator.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\imageTable.txt">
+    <Content Include="Resources\Object Images\Hoot.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Item Block Star Particle.png">
+    <Content Include="Resources\Object Images\HP Bubble.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Item Block.png">
+    <Content Include="Resources\Object Images\imageTable.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Jet Stream Bubble.png">
+    <Content Include="Resources\Object Images\Item Block Star Particle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Jet Stream Bubbles.png">
+    <Content Include="Resources\Object Images\Item Block.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\JRB Rock.png">
+    <Content Include="Resources\Object Images\Jet Stream Bubble.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\JRB Ship Part.png">
+    <Content Include="Resources\Object Images\Jet Stream Bubbles.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\JRB Ship.png">
+    <Content Include="Resources\Object Images\JRB Rock.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\JRB Wooden Board.png">
+    <Content Include="Resources\Object Images\JRB Ship Part.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\King Bob-omb Anchor.png">
+    <Content Include="Resources\Object Images\JRB Ship.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\King Bob-omb.png">
+    <Content Include="Resources\Object Images\JRB Wooden Board.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\King Whomp.png">
+    <Content Include="Resources\Object Images\King Bob-omb Anchor.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Klepto.png">
+    <Content Include="Resources\Object Images\King Bob-omb.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Koopa the Quick Flag.png">
+    <Content Include="Resources\Object Images\King Whomp.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Koopa the Quick.png">
+    <Content Include="Resources\Object Images\Klepto.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Koopa.png">
+    <Content Include="Resources\Object Images\Koopa the Quick Flag.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Lakitu.png">
+    <Content Include="Resources\Object Images\Koopa the Quick.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Landscape Visual.png">
+    <Content Include="Resources\Object Images\Koopa.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Large Bomp.png">
+    <Content Include="Resources\Object Images\Lakitu.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Lava Bubble Spawner.png">
+    <Content Include="Resources\Object Images\Landscape Visual.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Lava Bubble.png">
+    <Content Include="Resources\Object Images\Large Bomp.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Leaf.png">
+    <Content Include="Resources\Object Images\Lava Bubble Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\LLL Drawbridge.png">
+    <Content Include="Resources\Object Images\Lava Bubble.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\LLL Metal Mesh Platform.png">
+    <Content Include="Resources\Object Images\Leaf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\LLL Rotating Hexagonal Platform.png">
+    <Content Include="Resources\Object Images\LLL Drawbridge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\LLL Sinking Stone Platform.png">
+    <Content Include="Resources\Object Images\LLL Metal Mesh Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\LLL Tilting Inverted Pyramid Platform.png">
+    <Content Include="Resources\Object Images\LLL Rotating Hexagonal Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\LLL Transporting Cage Platform.png">
+    <Content Include="Resources\Object Images\LLL Sinking Stone Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Long Wooden Board.png">
+    <Content Include="Resources\Object Images\LLL Tilting Inverted Pyramid Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Loose Floor Panel.png">
+    <Content Include="Resources\Object Images\LLL Transporting Cage Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Mad Piano.png">
+    <Content Include="Resources\Object Images\Long Wooden Board.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Manta Ray.png">
+    <Content Include="Resources\Object Images\Loose Floor Panel.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Manta Ring Spawner.png">
+    <Content Include="Resources\Object Images\Mad Piano.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Manta Ring.png">
+    <Content Include="Resources\Object Images\Manta Ray.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Mario Burning Flame.png">
+    <Content Include="Resources\Object Images\Manta Ring Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Mario Burning.png">
+    <Content Include="Resources\Object Images\Manta Ring.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Mario Holding 2.png">
+    <Content Include="Resources\Object Images\Mario Burning Flame.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Mario Holding.png">
+    <Content Include="Resources\Object Images\Mario Burning.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Mario Spawner.png">
+    <Content Include="Resources\Object Images\Mario Holding 2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Mario%27s Cap.png">
+    <Content Include="Resources\Object Images\Mario Holding.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Mario.png">
+    <Content Include="Resources\Object Images\Mario Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Merry-Go-Round.png">
+    <Content Include="Resources\Object Images\Mario%27s Cap.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Mesh Elevator.png">
+    <Content Include="Resources\Object Images\Mario.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Metal Cap Block.png">
+    <Content Include="Resources\Object Images\Merry-Go-Round.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Metal Cap.png">
+    <Content Include="Resources\Object Images\Mesh Elevator.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\MIPS.png">
+    <Content Include="Resources\Object Images\Metal Cap Block.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Moneybag Coin.png">
+    <Content Include="Resources\Object Images\Metal Cap.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Moneybag.png">
+    <Content Include="Resources\Object Images\MIPS.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Monkey Cage.png">
+    <Content Include="Resources\Object Images\Moneybag Coin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Monty Mole Hole.png">
+    <Content Include="Resources\Object Images\Moneybag.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Monty Mole.png">
+    <Content Include="Resources\Object Images\Monkey Cage.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Mr. Blizzard.png">
+    <Content Include="Resources\Object Images\Monty Mole Hole.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Mr. I Body.png">
+    <Content Include="Resources\Object Images\Monty Mole.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Mr. I Particle.png">
+    <Content Include="Resources\Object Images\Mr. Blizzard.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Mr. I Pupil.png">
+    <Content Include="Resources\Object Images\Mr. I Body.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Null.png">
+    <Content Include="Resources\Object Images\Mr. I Particle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Number.png">
+    <Content Include="Resources\Object Images\Mr. I Pupil.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Openable Gate Behavior 2.png">
+    <Content Include="Resources\Object Images\Null.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Openable Gate Behavior.png">
+    <Content Include="Resources\Object Images\Number.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Openable Gate.png">
+    <Content Include="Resources\Object Images\Openable Gate Behavior 2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Palm Tree.png">
+    <Content Include="Resources\Object Images\Openable Gate Behavior.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\path.txt">
+    <Content Include="Resources\Object Images\Openable Gate.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Peach.png">
+    <Content Include="Resources\Object Images\Palm Tree.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Pebble.png">
+    <Content Include="Resources\Object Images\path.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Penguin.png">
+    <Content Include="Resources\Object Images\Peach.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Pine Tree.png">
+    <Content Include="Resources\Object Images\Pebble.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Piranha Plant.png">
+    <Content Include="Resources\Object Images\Penguin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Pokey Body Part.png">
+    <Content Include="Resources\Object Images\Pine Tree.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Pokey Head.png">
+    <Content Include="Resources\Object Images\Piranha Plant.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Pokey Spawner.png">
+    <Content Include="Resources\Object Images\Pokey Body Part.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Pokey.png">
+    <Content Include="Resources\Object Images\Pokey Head.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Pole Behavior.png">
+    <Content Include="Resources\Object Images\Pokey Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Post.png">
+    <Content Include="Resources\Object Images\Pokey.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Poundable Pillar.png">
+    <Content Include="Resources\Object Images\Pole Behavior.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Power Star.png">
+    <Content Include="Resources\Object Images\Post.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Pushable Block.png">
+    <Content Include="Resources\Object Images\Poundable Pillar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Pyramid Elevator.png">
+    <Content Include="Resources\Object Images\Power Star.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Pyramid Top Activator.png">
+    <Content Include="Resources\Object Images\Pushable Block.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Pyramid Top.png">
+    <Content Include="Resources\Object Images\Pyramid Elevator.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Pyramid Up-and-Down Step.png">
+    <Content Include="Resources\Object Images\Pyramid Top Activator.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Red Coin Star Spawner.png">
+    <Content Include="Resources\Object Images\Pyramid Top.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Red Coin.png">
+    <Content Include="Resources\Object Images\Pyramid Up-and-Down Step.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Red Fish.png">
+    <Content Include="Resources\Object Images\Red Coin Star Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Residual Fire.png">
+    <Content Include="Resources\Object Images\Red Coin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Revolving Diamond Platform.png">
+    <Content Include="Resources\Object Images\Red Fish.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Revolving Elevator Group.png">
+    <Content Include="Resources\Object Images\Residual Fire.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Revolving Elevator Platform.png">
+    <Content Include="Resources\Object Images\Revolving Diamond Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Rising and Lowering 3-Platform Group.png">
+    <Content Include="Resources\Object Images\Revolving Elevator Group.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Rising and Lowering 4-Platform Group.png">
+    <Content Include="Resources\Object Images\Revolving Elevator Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Rising and Lowering Long Platform.png">
+    <Content Include="Resources\Object Images\Rising and Lowering 3-Platform Group.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Rising and Lowering Mesh Platform.png">
+    <Content Include="Resources\Object Images\Rising and Lowering 4-Platform Group.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Rising and Lowering Pole.png">
+    <Content Include="Resources\Object Images\Rising and Lowering Long Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Rising and Lowering Wood Group.png">
+    <Content Include="Resources\Object Images\Rising and Lowering Mesh Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Rising and Lowering Wood Spawner.png">
+    <Content Include="Resources\Object Images\Rising and Lowering Pole.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Rising and Lowering Wood.png">
+    <Content Include="Resources\Object Images\Rising and Lowering Wood Group.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Rolling Log.png">
+    <Content Include="Resources\Object Images\Rising and Lowering Wood Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Rolling Rock Spawner.png">
+    <Content Include="Resources\Object Images\Rising and Lowering Wood.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Rolling Rock.png">
+    <Content Include="Resources\Object Images\Rolling Log.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Rotating Octagonal Platform.png">
+    <Content Include="Resources\Object Images\Rolling Rock Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Rotating Volcano Platform.png">
+    <Content Include="Resources\Object Images\Rolling Rock.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\RR Back-and-Forth Platform.png">
+    <Content Include="Resources\Object Images\Rotating Octagonal Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\RR Elevator Platform.png">
+    <Content Include="Resources\Object Images\Rotating Volcano Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\RR Rotating Flame Shooter Platform.png">
+    <Content Include="Resources\Object Images\RR Back-and-Forth Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Sand Spawner.png">
+    <Content Include="Resources\Object Images\RR Elevator Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Scuttlebug Spawner.png">
+    <Content Include="Resources\Object Images\RR Rotating Flame Shooter Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Scuttlebug.png">
+    <Content Include="Resources\Object Images\Sand Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Seaweed Bundle.png">
+    <Content Include="Resources\Object Images\Scuttlebug Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Seaweed Spawner.png">
+    <Content Include="Resources\Object Images\Scuttlebug.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Seaweed.png">
+    <Content Include="Resources\Object Images\Seaweed Bundle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Secret 2.png">
+    <Content Include="Resources\Object Images\Seaweed Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Secret Star Spawner 2.png">
+    <Content Include="Resources\Object Images\Seaweed.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Secret Star Spawner 3.png">
+    <Content Include="Resources\Object Images\Secret 2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Secret Star Spawner.png">
+    <Content Include="Resources\Object Images\Secret Star Spawner 2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Secret.png">
+    <Content Include="Resources\Object Images\Secret Star Spawner 3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\See Saw Bridge.png">
+    <Content Include="Resources\Object Images\Secret Star Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\See Saw Platform.png">
+    <Content Include="Resources\Object Images\Secret.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Selected.png">
+    <Content Include="Resources\Object Images\See Saw Bridge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Shell.png">
+    <Content Include="Resources\Object Images\See Saw Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Shockwave.png">
+    <Content Include="Resources\Object Images\Selected.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Short Wooden Board.png">
+    <Content Include="Resources\Object Images\Shell.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Shortcut Checkpoint.png">
+    <Content Include="Resources\Object Images\Shockwave.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Sign.png">
+    <Content Include="Resources\Object Images\Short Wooden Board.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Skeeter 2.png">
+    <Content Include="Resources\Object Images\Shortcut Checkpoint.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Skeeter.png">
+    <Content Include="Resources\Object Images\Sign.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Ski Lift.png">
+    <Content Include="Resources\Object Images\Skeeter 2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Skull Crate.png">
+    <Content Include="Resources\Object Images\Skeeter.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Sliding Snow Mound Spawner.png">
+    <Content Include="Resources\Object Images\Ski Lift.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Sliding Snow Mound.png">
+    <Content Include="Resources\Object Images\Skull Crate.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Small Bomp.png">
+    <Content Include="Resources\Object Images\Sliding Snow Mound Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Snow Spawner.png">
+    <Content Include="Resources\Object Images\Sliding Snow Mound.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Snow.png">
+    <Content Include="Resources\Object Images\Small Bomp.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Snowball.png">
+    <Content Include="Resources\Object Images\Snow Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Snowman Path Checkpoint.png">
+    <Content Include="Resources\Object Images\Snow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Snowman%27s Body.png">
+    <Content Include="Resources\Object Images\Snowball.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Snowman%27s Head.png">
+    <Content Include="Resources\Object Images\Snowman Path Checkpoint.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Snowman.png">
+    <Content Include="Resources\Object Images\Snowman%27s Body.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Snufit.png">
+    <Content Include="Resources\Object Images\Snowman%27s Head.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Sound Effect.png">
+    <Content Include="Resources\Object Images\Snowman.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Sparkles %28Big%29.png">
+    <Content Include="Resources\Object Images\Snufit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Sparkles %28Small%29.png">
+    <Content Include="Resources\Object Images\Sound Effect.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Sparkles Spawner.png">
+    <Content Include="Resources\Object Images\Sparkles %28Big%29.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Sparkles.png">
+    <Content Include="Resources\Object Images\Sparkles %28Small%29.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Spindel.png">
+    <Content Include="Resources\Object Images\Sparkles Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Spindrift.png">
+    <Content Include="Resources\Object Images\Sparkles.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Spinning Heart.png">
+    <Content Include="Resources\Object Images\Spindel.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Spiny.png">
+    <Content Include="Resources\Object Images\Spindrift.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Splash Bubble 2.png">
+    <Content Include="Resources\Object Images\Spinning Heart.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Splash Bubble.png">
+    <Content Include="Resources\Object Images\Spiny.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Splash.png">
+    <Content Include="Resources\Object Images\Splash Bubble 2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Springy Staircase.png">
+    <Content Include="Resources\Object Images\Splash Bubble.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Star Door.png">
+    <Content Include="Resources\Object Images\Splash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Star Marker.png">
+    <Content Include="Resources\Object Images\Springy Staircase.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Star on Unagi%27s Tail.png">
+    <Content Include="Resources\Object Images\Star Door.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Star Particle Spawner.png">
+    <Content Include="Resources\Object Images\Star Marker.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Star Particle.png">
+    <Content Include="Resources\Object Images\Star on Unagi%27s Tail.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Sushi Hitbox.png">
+    <Content Include="Resources\Object Images\Star Particle Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Sushi.png">
+    <Content Include="Resources\Object Images\Star Particle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Swing.png">
+    <Content Include="Resources\Object Images\Sushi Hitbox.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Swooper.png">
+    <Content Include="Resources\Object Images\Sushi.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Teleport.png">
+    <Content Include="Resources\Object Images\Swing.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\THI Wiggler%27s Cave Cover.png">
+    <Content Include="Resources\Object Images\Swooper.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Thwomp.png">
+    <Content Include="Resources\Object Images\Teleport.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Toad.png">
+    <Content Include="Resources\Object Images\THI Wiggler%27s Cave Cover.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Tox Box.png">
+    <Content Include="Resources\Object Images\Thwomp.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Tree Particle Spawner.png">
+    <Content Include="Resources\Object Images\Toad.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Tree.png">
+    <Content Include="Resources\Object Images\Tox Box.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Triangle Particle.png">
+    <Content Include="Resources\Object Images\Tree Particle Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Triangular Prism.png">
+    <Content Include="Resources\Object Images\Tree.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Tricky Triangles.png">
+    <Content Include="Resources\Object Images\Triangle Particle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC 2D Cog.png">
+    <Content Include="Resources\Object Images\Triangular Prism.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Elevator Platform.png">
+    <Content Include="Resources\Object Images\Tricky Triangles.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Moving Bar.png">
+    <Content Include="Resources\Object Images\TTC 2D Cog.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Painting Hour Hand.png">
+    <Content Include="Resources\Object Images\TTC Elevator Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Painting Minute Hand.png">
+    <Content Include="Resources\Object Images\TTC Moving Bar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Painting Pendulum.png">
+    <Content Include="Resources\Object Images\TTC Painting Hour Hand.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Pendulum.png">
+    <Content Include="Resources\Object Images\TTC Painting Minute Hand.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Pit Block.png">
+    <Content Include="Resources\Object Images\TTC Painting Pendulum.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Red Coin Spinner.png">
+    <Content Include="Resources\Object Images\TTC Pendulum.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Rotating Block _ Triangular Prism.png">
+    <Content Include="Resources\Object Images\TTC Pit Block.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Rotating Block.png">
+    <Content Include="Resources\Object Images\TTC Red Coin Spinner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Rotating Cog _ Triangle.png">
+    <Content Include="Resources\Object Images\TTC Rotating Block _ Triangular Prism.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Rotating Cog.png">
+    <Content Include="Resources\Object Images\TTC Rotating Block.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Rotating Hand _ 2D Cog.png">
+    <Content Include="Resources\Object Images\TTC Rotating Cog _ Triangle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Rotating Hand.png">
+    <Content Include="Resources\Object Images\TTC Rotating Cog.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Rotating Triangle.png">
+    <Content Include="Resources\Object Images\TTC Rotating Hand _ 2D Cog.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Rotating Triangular Prism.png">
+    <Content Include="Resources\Object Images\TTC Rotating Hand.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\TTC Treadmill.png">
+    <Content Include="Resources\Object Images\TTC Rotating Triangle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Tweester.png">
+    <Content Include="Resources\Object Images\TTC Rotating Triangular Prism.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Ukiki.png">
+    <Content Include="Resources\Object Images\TTC Treadmill.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Unactivated Metal Cap Block.png">
+    <Content Include="Resources\Object Images\Tweester.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Unagi Hitbox.png">
+    <Content Include="Resources\Object Images\Ukiki.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Unagi.png">
+    <Content Include="Resources\Object Images\Unactivated Metal Cap Block.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Unknown.png">
+    <Content Include="Resources\Object Images\Unagi Hitbox.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Vanish Cap Block.png">
+    <Content Include="Resources\Object Images\Unagi.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Vanish Cap.png">
+    <Content Include="Resources\Object Images\Unknown.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Volcano Crusher.png">
+    <Content Include="Resources\Object Images\Vanish Cap Block.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Volcano Flame.png">
+    <Content Include="Resources\Object Images\Vanish Cap.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Warp 2.png">
+    <Content Include="Resources\Object Images\Volcano Crusher.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Warp Door.png">
+    <Content Include="Resources\Object Images\Volcano Flame.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Warp Pipe.png">
+    <Content Include="Resources\Object Images\Warp 2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Warp.png">
+    <Content Include="Resources\Object Images\Warp Door.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Water Ripples.png">
+    <Content Include="Resources\Object Images\Warp Pipe.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Water Waves.png">
+    <Content Include="Resources\Object Images\Warp.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Waterfall Mist.png">
+    <Content Include="Resources\Object Images\Water Ripples.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\WDW Rotating Platform.png">
+    <Content Include="Resources\Object Images\Water Waves.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\WF Arrow Platform.png">
+    <Content Include="Resources\Object Images\Waterfall Mist.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\WF Big Pole.png">
+    <Content Include="Resources\Object Images\WDW Rotating Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\WF Floating Island.png">
+    <Content Include="Resources\Object Images\WF Arrow Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\WF Floating Square Platform.png">
+    <Content Include="Resources\Object Images\WF Big Pole.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\WF In-and-Out Platform.png">
+    <Content Include="Resources\Object Images\WF Floating Island.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\WF Pole Ball.png">
+    <Content Include="Resources\Object Images\WF Floating Square Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\WF Rotating Bridge.png">
+    <Content Include="Resources\Object Images\WF In-and-Out Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\WF Tower Breakable Block.png">
+    <Content Include="Resources\Object Images\WF Pole Ball.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\WF Tower Platform.png">
+    <Content Include="Resources\Object Images\WF Rotating Bridge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\WF Tower.png">
+    <Content Include="Resources\Object Images\WF Tower Breakable Block.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\WF Water Level Checker.png">
+    <Content Include="Resources\Object Images\WF Tower Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Whirlpool.png">
+    <Content Include="Resources\Object Images\WF Tower.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\White Puff Spawner 2.png">
+    <Content Include="Resources\Object Images\WF Water Level Checker.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\White Puff Spawner.png">
+    <Content Include="Resources\Object Images\Whirlpool.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\White Puff.png">
+    <Content Include="Resources\Object Images\White Puff Spawner 2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Whomp.png">
+    <Content Include="Resources\Object Images\White Puff Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Wiggler Body Part.png">
+    <Content Include="Resources\Object Images\White Puff.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Wiggler Cave Platform.png">
+    <Content Include="Resources\Object Images\Whomp.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Wiggler Head.png">
+    <Content Include="Resources\Object Images\Wiggler Body Part.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Wiggler.png">
+    <Content Include="Resources\Object Images\Wiggler Cave Platform.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Wind Behavior.png">
+    <Content Include="Resources\Object Images\Wiggler Head.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Wind Particle Spawner.png">
+    <Content Include="Resources\Object Images\Wiggler.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Wind Particle.png">
+    <Content Include="Resources\Object Images\Wind Behavior.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Wing Cap Block.png">
+    <Content Include="Resources\Object Images\Wind Particle Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Wing Cap.png">
+    <Content Include="Resources\Object Images\Wind Particle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Yellow Coin.png">
+    <Content Include="Resources\Object Images\Wing Cap Block.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\Yoshi.png">
+    <Content Include="Resources\Object Images\Wing Cap.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Object Images\Yellow Coin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Object Images\Yoshi.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\trash_icon.png" />

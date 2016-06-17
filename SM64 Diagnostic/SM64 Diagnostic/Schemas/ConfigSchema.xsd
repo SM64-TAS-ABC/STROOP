@@ -81,6 +81,8 @@
             </xs:all>
           </xs:complexType>
         </xs:element>
+        <xs:element name="LevelAddress" type="types:address"/>
+        <xs:element name="AreaAddress" type="types:address"/>
       </xs:all>
     </xs:complexType>
   </xs:element>

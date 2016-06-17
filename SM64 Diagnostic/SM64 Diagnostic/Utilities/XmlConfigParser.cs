@@ -157,6 +157,14 @@ namespace SM64_Diagnostic.Utilities
                             }
                         }
                         break;
+
+                    case "LevelAddress":
+                        config.LevelAddress = ParsingUtilities.ParseHex(element.Value);
+                        break;
+
+                    case "AreaAddress":
+                        config.AreaAddress = ParsingUtilities.ParseHex(element.Value);
+                        break;
                 }
             }
 
@@ -321,6 +329,73 @@ namespace SM64_Diagnostic.Utilities
                
                 preLoad.Dispose();
                 assoc.AddAssociation(v.Key - ramToBehaviorOffset, image, v.Value.Item2);
+            }
+
+            return assoc;
+        }
+
+        public static MapAssociations OpenMapAssoc(string path)
+        {
+            var assoc = new MapAssociations();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet();
+            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.MapAssociationsSchema.xsd"), null));
+            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                switch (element.Name.ToString())
+                {
+                    case "Config":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "ImageDirectory":
+                                    assoc.FolderPath = subElement.Value;
+                                    break;
+                                case "DefaultImage":
+                                    var defaultMap = new Map() { ImagePath = subElement.Value };
+                                    assoc.DefaultMap = defaultMap;
+                                    break;
+                                case "DefaultCoordinates":
+                                    float dx1 = float.Parse(subElement.Attribute(XName.Get("x1")).Value);
+                                    float dx2 = float.Parse(subElement.Attribute(XName.Get("x2")).Value);
+                                    float dz1 = float.Parse(subElement.Attribute(XName.Get("z1")).Value);
+                                    float dz2 = float.Parse(subElement.Attribute(XName.Get("z2")).Value);
+                                    var dCoordinates = new RectangleF(dx1, dz1, dx2 - dx1, dz2 - dz1);
+                                    assoc.DefaultMap.Coordinates = dCoordinates;
+                                    break;
+                            }
+                        }
+                        break;
+
+                    case "Map":
+                        byte level = byte.Parse(element.Attribute(XName.Get("level")).Value);
+                        byte area = byte.Parse(element.Attribute(XName.Get("area")).Value);
+                        string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
+
+                        var coordinatesElement = element.Element(XName.Get("Coordinates"));
+                        float x1 = float.Parse(coordinatesElement.Attribute(XName.Get("x1")).Value);
+                        float x2 = float.Parse(coordinatesElement.Attribute(XName.Get("x2")).Value);
+                        float z1 = float.Parse(coordinatesElement.Attribute(XName.Get("z1")).Value);
+                        float z2 = float.Parse(coordinatesElement.Attribute(XName.Get("z2")).Value);
+                        float y = (coordinatesElement.Attribute(XName.Get("y")) != null) ?
+                            float.Parse(coordinatesElement.Attribute(XName.Get("y")).Value) : float.MinValue;
+                        var coordinates = new RectangleF(x1, z1, x2 - x1, z2 - z1);
+
+                        Map map = new Map() { Level = level, Area = area, Coordinates = coordinates,
+                            ImagePath = imagePath, Y = y };
+
+                        assoc.AddAssociation(map);
+                        break;
+                }
             }
 
             return assoc;

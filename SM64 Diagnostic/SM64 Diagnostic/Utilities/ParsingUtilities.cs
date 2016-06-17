@@ -36,5 +36,26 @@ namespace SM64_Diagnostic.Utilities
 
             return true;
         }
+
+        public static bool IsHex(string str)
+        {
+            return (str.Contains("0x"));
+        }
+
+        public static bool TryParseExtHex(string str, out UInt64 hex)
+        {
+            // This is what you call lazy programming
+            try
+            {
+                hex = ParseExtHex(str);
+            }
+            catch (FormatException)
+            {
+                hex = new UInt64();
+                return false;
+            }
+
+            return true;
+        }
     }
 }

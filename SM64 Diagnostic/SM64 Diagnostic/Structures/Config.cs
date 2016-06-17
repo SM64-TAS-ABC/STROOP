@@ -15,5 +15,7 @@ namespace SM64_Diagnostic.Structs
         public ObjectGroupsConfig ObjectGroups;
         public ObjectSlotsConfig ObjectSlots;
         public MarioConfig Mario;
+        public uint LevelAddress;
+        public uint AreaAddress;
     }
 }

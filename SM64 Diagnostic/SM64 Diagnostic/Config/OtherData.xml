@@ -1,4 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <OtherData>
   <Data type="uint16" address="0x00C7A962" absoluteAddress="true">RNG Value</Data>
+  <Data type="byte" address="0x033B24A" absoluteAddress="false">Level</Data>
+  <Data type="byte" address="0x033B249" absoluteAddress="false">Area</Data>
 </OtherData>

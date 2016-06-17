@@ -18,15 +18,20 @@ namespace SM64_Diagnostic
     {
         ProcessStream _sm64Stream = null;
         Config _config;
+
         Dictionary<int, WatchVariable> _otherData;
         List<WatchVariable> _objectData, _marioData;
         ObjectAssociations _objectAssoc = new ObjectAssociations();
+        MapAssociations _mapAssoc = new MapAssociations();
+
         DataTable _tableOtherData = new DataTable();
         Dictionary<int, DataRow> _otherDataRowAssoc = new Dictionary<int, DataRow>();
+
         ObjectSlotManager _objectSlotManager;
         DisassemblyManager _disManager;
         MarioManager _marioManager;
         ObjectManager _objectManager;
+        MapManager _mapManager;
 
         bool _resizing = false;
         int _resizeTimeLeft = 0;
@@ -51,19 +56,28 @@ namespace SM64_Diagnostic
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Temp: Remove "Other" tab
+#if RELEASE
+            tabControlMain.TabPages.Remove(tabPageOther);
+#endif
+
             // Read configuration
             _config = XmlConfigParser.OpenConfig(@"Config/Config.xml");
             _otherData = XmlConfigParser.OpenOtherData(@"Config/OtherData.xml");
             _objectData = XmlConfigParser.OpenObjectData(@"Config/ObjectData.xml");
             _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml");
             _marioData = XmlConfigParser.OpenMarioData(_config, @"Config/MarioData.xml");
+            _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
 
             _sm64Stream = new ProcessStream(_config);
             _sm64Stream.OnUpdate += OnUpdate;
 
             _disManager = new DisassemblyManager(_config, this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
             _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario);
+            _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, pictureBoxMap, pictureBoxMapMario);
             var objectGui = new ObjectDataGui();
+
+            pictureBoxMapMario.Image = _objectAssoc.MarioImage;
 
             // Create object manager
             objectGui.ObjectBorderPanel = panelObjectBorder;
@@ -112,6 +126,7 @@ namespace SM64_Diagnostic
 
         private void OnUpdate(object sender, EventArgs e)
         {
+            _mapManager.Update();
             if (tabControlMain.SelectedTab == tabPageMario)
                 _marioManager.Update();
             UpdateMemoryValues();
@@ -265,6 +280,7 @@ namespace SM64_Diagnostic
             flowLayoutPanelObjects.Visible = false;
             flowLayoutPanelObject.Visible = false;
             flowLayoutPanelMario.Visible = false;
+            _mapManager.Visible = false;
             await Task.Run(() =>
             {
                 while (_resizeTimeLeft > 0)
@@ -276,6 +292,7 @@ namespace SM64_Diagnostic
             flowLayoutPanelObjects.Visible = true;
             flowLayoutPanelObject.Visible = true;
             flowLayoutPanelMario.Visible = true;
+            _mapManager.Visible = true;
             _resizing = false;
         }
 

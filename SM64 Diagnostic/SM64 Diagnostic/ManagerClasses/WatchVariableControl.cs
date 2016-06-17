@@ -20,6 +20,22 @@ namespace SM64_Diagnostic.ManagerClasses
         ProcessStream _stream;
         public uint OtherOffset;
         bool _changedByUser = true;
+        bool _editMode = false;
+
+        private static ContextMenuStrip _menu;
+        private static WatchVariableControl _lastSelected;
+        public static ContextMenuStrip Menu
+        {
+            get
+            {
+                if (_menu == null)
+                {
+                    WatchVariableControl._menu = new ContextMenuStrip();
+                    WatchVariableControl._menu.Items.Add("Edit");
+                }
+                return _menu;
+            }
+        }
 
         public string Name
         {
@@ -72,6 +88,11 @@ namespace SM64_Diagnostic.ManagerClasses
                 this._textBoxValue.Width = 200;
                 this._textBoxValue.Margin = new Padding(6, 3, 6, 3);
                 this._textBoxValue.TextChanged += OnModified;
+                this._textBoxValue.ContextMenuStrip = WatchVariableControl.Menu;
+                this._textBoxValue.KeyDown += OnTextValueKeyDown;
+                this._textBoxValue.MouseHover += (sender, e) => _lastSelected = this;
+                this._textBoxValue.LostFocus += (sender, e) => { _editMode = false; this._textBoxValue.ReadOnly = true; };
+                WatchVariableControl.Menu.ItemClicked += OnMenuStripClick;
             }
 
             this._tablePanel = new TableLayoutPanel();
@@ -100,6 +121,8 @@ namespace SM64_Diagnostic.ManagerClasses
             }
             else
             {
+                if (_editMode)
+                    return;
                 _textBoxValue.Text = _watchVar.GetStringValue(_stream, OtherOffset);
             }
         }
@@ -113,6 +136,28 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 _watchVar.SetBoolValue(_stream, OtherOffset, _checkBoxBool.Checked);
             }
+        }
+
+        private void OnMenuStripClick(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (this != _lastSelected)
+                return;
+
+            if (e.ClickedItem.Text == "Edit")
+            {
+                _textBoxValue.ReadOnly = false;
+                _editMode = true;
+            }
+        }
+
+        private void OnTextValueKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData != Keys.Enter)
+                return;
+
+            _textBoxValue.ReadOnly = true;
+            _editMode = false;
+            _watchVar.SetStringValue(_stream, OtherOffset, _textBoxValue.Text);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace SM64_Diagnostic.Utilities
         {
             // Get dataBytes
             var byteCount = TypeSize[watchVar.Type];
-            var dataBytes = stream.ReadRam(watchVar.OtherOffset ? offset + watchVar.Address 
+            var dataBytes = stream.ReadRam(watchVar.OtherOffset ? offset + watchVar.Address
                 : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
 
             // Parse floating point
@@ -101,6 +101,67 @@ namespace SM64_Diagnostic.Utilities
 
             stream.WriteRam(writeBytes, address, watchVar.AbsoluteAddressing);
 
+        }
+
+        public static bool SetStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset, string value)
+        {
+            // Get dataBytes
+            var byteCount = TypeSize[watchVar.Type];
+            var address = watchVar.OtherOffset ? offset + watchVar.Address : watchVar.Address;
+            var dataBytes = new byte[8];
+            stream.ReadRam(address, byteCount, watchVar.AbsoluteAddressing).CopyTo(dataBytes,0);
+            UInt64 oldValue = BitConverter.ToUInt64(dataBytes, 0);
+            UInt64 newValue;
+
+            // Handle hex variable
+            if (ParsingUtilities.IsHex(value))
+            {
+                if (!ParsingUtilities.TryParseExtHex(value, out newValue))
+                    return false;
+            }
+            // Handle floats
+            else if (watchVar.Type == typeof(float))
+            {
+                float newFloatValue;
+                if (!float.TryParse(value, out newFloatValue))
+                    return false;
+
+                // Get bytes
+                newValue = BitConverter.ToUInt32(BitConverter.GetBytes(newFloatValue), 0);
+            }
+            else if (watchVar.Type == typeof(double))
+            {
+                double newFloatValue;
+                if (double.TryParse(value, out newFloatValue))
+                    return false;
+
+                // Get bytes
+                newValue = BitConverter.ToUInt64(BitConverter.GetBytes(newFloatValue), 0);
+            }
+            else if (watchVar.Type == typeof(UInt64))
+            {
+                if (!UInt64.TryParse(value, out newValue))
+                    return false;
+            }
+            else
+            {
+                Int64 tempInt;
+                if (!Int64.TryParse(value, out tempInt))
+                    return false;
+                newValue = (UInt64)tempInt;
+            }
+
+            // Apply mask
+            if (watchVar.Mask.HasValue)
+                newValue = (newValue & watchVar.Mask.Value) | ((~watchVar.Mask.Value) & oldValue);
+
+
+            var writeBytes = new byte[byteCount];
+            var valueBytes = BitConverter.GetBytes(newValue);
+            Array.Copy(valueBytes, 0, writeBytes, 0, byteCount);
+
+            stream.WriteRam(writeBytes, address, watchVar.AbsoluteAddressing);
+            return true;
         }
 
         public static int GetByteCount(this WatchVariable watchVar)

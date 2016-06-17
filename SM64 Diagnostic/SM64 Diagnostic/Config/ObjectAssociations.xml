@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ObjectAssociations>
   <Config>
-    <ImageDirectory>Resources\Images\</ImageDirectory>
+    <ImageDirectory>Resources\Object Images\</ImageDirectory>
     <DefaultImage>default.png</DefaultImage>
     <EmptyImage>null.png</EmptyImage>
     <RamToBehaviorOffset>0x12F14E80</RamToBehaviorOffset>

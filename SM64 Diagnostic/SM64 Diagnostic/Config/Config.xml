@@ -44,5 +44,6 @@
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
     <MarioStructSize>0xC4</MarioStructSize>
   </Mario>
-
+  <LevelAddress>0x033B249</LevelAddress>
+  <AreaAddress>0x033B24A</AreaAddress>
 </Config>

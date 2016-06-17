@@ -1,0 +1,537 @@
+Behavior ID	Object Name	Image Name	Raw Kaze Description
+0x0000	Star Door	Star Door.png	Star Door Behavior
+0x0054	Mr. I Pupil	Mr. I Pupil.png	Mr I. Behavior
+0x008C	Mr. I Body	Mr. I Body.png	Mr. I Body
+0x00AC	Mr. I Particle	Mr. I Particle.png	Mr I Particle
+0x00F8	Pink Particle	Mr. I Particle.png	Giant Piranha Particle [also getting hit with mr. I particle]
+0x0118	WF Big Pole	WF Big Pole.png	Giant Pole (Whomp's Fortress)
+0x0144	Pole Behavior	Pole Behavior.png	Pole Grabbing
+0x0174	THI Wiggler's Cave Cover	THI Wiggler's Cave Cover.png	TH Island Top Trap Behavior
+0x0194	THI Wiggler's Cave Cover	THI Wiggler's Cave Cover.png	Tiny Island Top
+0x01AC	Cap Switch Base	Cap Switch Base.png	cap switch collision child
+0x01CC	Cap Switch Button	Cap Switch Button.png	Activate Cap Switch
+0x01F4	King Bob-omb	King Bob-omb.png	King Bob-omb behavior
+0x0254	King Bob-omb Anchor	King Bob-omb Anchor.png	Anchor Mario (King Bob-Omb)
+0x0278			Beta chest
+0x029C	Chest Top	Chest Top.png	Beta chest upper part - subobject
+0x02B8	Bubble Spawner	Bubble Spawner.png	Bubble (Mario)
+0x02C4			swimming related
+0x02E4	Splash Bubble	Splash Bubble.png	Spawned with model id A8 (bubble?)
+0x0338	Bubble	Bubble.png	Small water wave (Mario)
+0x03BC	HP Bubble	HP Bubble.png	water bubble replenishing health
+0x0400	Splash Bubble (Under Water)	Splash Bubble 2.png	small reddish particle//Water particles
+0x0428			Water waves
+0x0444			small reddish particle//Snow particle
+0x046C	Aquarium Bubble	Splash Bubble.png	small reddish particle//Snow particle//bubbles?
+0x0494	Aquarium Bubble Spawner	Aquarium Bubble Spawner.png	Aquarium Fish Group
+0x04A8	Cannon Base	Cannon Base.png	Opened Cannon
+0x04E4	Cannon Shaft	Cannon Shaft.png	Cannon barrel
+0x0500	Cannon Base	Cannon Base.png	Cannon base
+0x0528	Chuckya	Chuckya.png	Chuckya Behavior
+0x0584	Chuckya Anchor	Chuckya Anchor.png	Anchor Mario (Chuckya)
+0x05A8			>>>>>>>>>>Unused Behavior?
+0x05B4	Rotating Platform	WDW Rotating Platform.png	Rotating Platform Behavior
+0x05D8	WF Tower	WF Tower.png	Tower Behav
+0x0600	Bullet Bill Blaster	Bullet Bill Blaster.png	Bullet Bill Cannon Behav
+0x0624	Blastable Corner	Blastable Corner.png	Breakable Wall
+0x0638	Blastable Corner	Blastable Corner.png	Breakable Wall 2 
+0x066C	Falling Plank	Falling Plank.png	Kickable Board
+0x06A4	WF Tower Breakable Block	WF Tower Breakable Block.png	Tower Door Behav
+0x06D8	Rotating Bridge	Rotating Bridge.png	Rotating counter-clockwise (bridge in Whomp's Fortress) (srsly?)
+0x06E0	WF Rotating Bridge	WF Rotating Bridge.png	Clock-Like Rotation
+0x0708	Water Shell	Shell.png	Koopa Shell PowerUp (underwater)
+0x0720			Exit Podium Warp
+0x075C	Teleport	Teleport.png	Fading Warp
+0x0780	Warp	Warp.png	Warp
+0x07A0	Warp Pipe	Warp Pipe.png	Warp (Pipe)
+0x07DC	White Puff / Sand / Dirt / Snow	White Puff.png	Scutlebug explosion (or any other white puff)
+0x07F8	Power Star	Power Star.png	Spawned star (takes mother object coordinates)
+0x080C	Power Star	Power Star.png	>>>>>>>>>>Unused Behavior? (Runs By 100 Coin), toad star
+0x0830	Blue Coin	Blue Coin.png	Blue coin from Mr.I
+0x0888	Boo Coin	Boo Coin.png	Coin inside of Boo
+0x08D0			coin in formation spawn+deactivator?
+0x08EC	Coin Spawner	Coin Ring Spawner.png	Coin Formation
+0x090C	One Coin	Yellow Coin.png	One Coin
+0x091C	Yellow / Blue Coin	Yellow Coin.png	Collectable Coin
+0x0940	Temporary Coin	Yellow Coin.png	temporary coin
+0x0964			Three coins spawn
+0x0984			Ten coins spawn
+0x09A4			single coin gets spawned
+0x09E0	Sparkles (Big)	Sparkles (Big).png	Sparkles (from all types of coins)
+0x0A14	Sparkles (Small)	Sparkles (Small).png	Sparkles (from golden coins)
+0x0A34	Star Particle	Star Particle.png	Tiny star particle (when Mario bumps a wall)
+0x0A54	Star Particle Spawner	Star Particle Spawner.png	Tiny star particle spawn (when Mario bumps a wall)
+0x0A64			spawns tiny star particles
+0x0A78	Star Particle	Star Particle.png	Tiny star particle (from ground pound)
+0x0A98	Star Particle Spawner	Star Particle Spawner.png	Tiny star particle spawn (from ground pound)
+0x0ABC	Triangle Particle	Triangle Particle.png	Tiny triangle (punching something) //dirt (model ID 8a)
+0x0AD8			Tiny triangle spawn (punching something)
+0x0AE8			Tiny triangle spawn (punching something)
+0x0AFC	Warp Door	Warp Door.png	Door Warp Behavior
+0x0B0C	Door	Door.png	Door Behavior
+0x0B58	Grindel	Grindel.png	Grindel Behavior
+0x0B8C	Thwomp	Thwomp.png	Thwomp Behavior 2
+0x0BC8	Thwomp	Thwomp.png	Thwomp Behavior
+0x0C04	Falling Block	Falling Block.png	Used by all tumbling bridge platforms
+0x0C28	Falling Block Spawner	Falling Block Spawner.png	Tumbling Bridge Behavior(WF)
+0x0C44	Falling Block Spawner	Falling Block Spawner.png	Tumbling platform group (Big Boo's Haunt)
+0x0C64	Falling Block Spawner	Falling Block Spawner.png	Tumbling platform
+0x0C84	Wall Flame	Flame.png	Burning
+0x0CC8			trolls you. warps up, if you are down, warps down, if you are up//Another elevator (re-check)
+0x0CFC	RR Elevator Platform	RR Elevator Platform.png	Elevator platform in RR (param2 = track#)
+0x0D30	HMC Elevator	HMC Elevator.png	Elevator platform in HMC (param2 = track#)
+0x0D6C			Water Mist Behavior
+0x0D98			Spawn behavior 0x13000D6C
+0x0DB4	Shard	Box Shard.png	>>>>>>>>>>Unused Behavior?
+0x0DD8	Waterfall Mist	Waterfall Mist.png	Water Mist Behav
+0x0DFC			>>>>>>>>>>Unused Behavior?
+0x0E24	White Puff Spawner	White Puff Spawner.png	>White puffs (from ground pound)
+0x0E3C	Sand Spawner	Sand Spawner.png	Sand (from ground)
+0x0E40			>>>>>>>>>>Unused Behavior?
+0x0E58	Snow Spawner	Snow Spawner.png	Snow (from ground)
+0x0E70	Wind Particle	Wind Particle.png	Wind (from collision mapped areas)
+0x0E88	Toad	Toad.png	Toad at end
+0x0EAC	Peach	Peach.png	Peach at the end
+0x0ED0			spawns piranha particles?
+0x0F08	Monkey Cage	Monkey Cage.png	Ukiki Behavior
+0x0F14			>>>>>>>>>>Unused Behavior?
+0x0F2C			>>>>>>>>>>Unused Behavior?
+0x0F48	Monkey Cage	Monkey Cage.png	Little Cage Behavior
+0x0F9C	Rising and Lowering 3-Platform Group	Rising and Lowering 3-Platform Group.png	Sinking Platforms (Bowser's Fire Sea)
+0x0FC8	Rising and Lowering Mesh Platform	Rising and Lowering Mesh Platform.png	Sinking Cage Platform (Bowser's Fire Sea)
+0x1000	Rising and Lowering Pole	Rising and Lowering Pole.png	Moving pole (Dire, Dire Docks)
+0x1030	BitFS Tilting Inverted Pyramid Platform	BitFS Tilting Inverted Pyramid Platform.png	Tilting Inverted Pyramid
+0x1064	Springy Staircase	Springy Staircase.png	Squishable Platforms
+0x1098			related to unused beta flame
+0x10B8			Flame moving back and forth (unused)
+0x10D8	RR Rotating Flame Shooter Platform	RR Rotating Flame Shooter Platform.png	Rotating platform with fire (Rainbow Ride) 
+0x1108	Flame Spawner	Flame Spawner.png	Flame Thrower Behavior 
+0x1124	Flame	Flame.png	flame from flamethrower
+0x1168	Lava Bubble Spawner	Lava Bubble Spawner.png	Jumping FireBall (fireball spawner)
+0x1184	Lava Bubble	Lava Bubble.png	Flame (from jumping fireballs)
+0x11D0	Shockwave	Shockwave.png	Bowser shock wave
+0x11EC	Mario Burning Flame	Mario Burning Flame.png	Flame (from Mario)
+0x1214	Mario Burning Smoke	Black Smoke.png	Black smoke (from Mario)
+0x1254	Black Flame Smoke	Black Smoke.png	Black smoke (from Bowser flames)
+0x127C	Grey Flame Smoke	Grey Smoke.png	Black smoke (moving upward)
+0x1298	WF Water Level Checker	WF Water Level Checker.png	Multiple Coins
+0x12B4	Spindrift	Spindrift.png	SpinDrift Behavior
+0x12F4			Tower Platform Group (also disables collision type 0x65 camera settings)
+0x1318	WF Tower Platform	WF Tower Platform.png	Whomp's Fortress sliding platforms
+0x1340	Checkered Elevator	Checkered Elevator.png	Whomp's Fortress elevator platform
+0x1368	WF Floating Square Platform	WF Floating Square Platform.png	Whomp's Fortress solid platform
+0x1390	Tree Particle Spawner	Tree Particle Spawner.png	>>>>>>>>>>Unused Behavior?
+0x13A8	Snow	Snow.png	Snow from tree
+0x13C4	Leaf	Leaf.png	Leaves from tree
+0x13DC			Another tilting platform
+0x1408	Revolving Diamond Platform	Revolving Diamond Platform.png	Moving on a Squarish Path
+0x142C	Piranha Plant Sleeping Bubble	Bubble.png	Bubble from Piranha Plant
+0x1448	Piranha Plant Wake Up Bubble	Bubble.png	Bubbles (after waking Piranha Plant)
+0x1468	! Switch	! Switch.png	Purple switch (Bowser staircase)
+0x1478	! Switch	! Switch.png	Floor Switch For Grills
+0x1484	! Switch	! Switch.png	floor switch with hardcoded modell
+0x14AC	! Switch	! Switch.png	Floor Switch Shows Hidden Objects
+0x14BC	Hidden Box	Cork Box.png	Hidden Object
+0x14E0	Cork Box	Cork Box.png	Breakable Box
+0x1518	Pushable Block	Pushable Block.png	Pushable
+0x1548	Heave-Ho	Heave-Ho.png	Heave-Ho Behavior
+0x15A4	Heave-Ho Anchor	Heave-Ho Anchor.png	Unknown, GFX 78/64?
+0x15C0			Cabin Door?
+0x15E4			Explodes when pounded (unused ice square in Snowman's Land)
+0x1608			Beta trampoline behavior?
+0x1634			spawned by beta rampoline?
+0x1650	Crazy Box	Crazy Box.png	Jumping Box
+0x167C	Boo Cage	Boo Cage.png	Cage (inside of Boo)
+0x16AC			>>>>>>>>>>Unused Behavior?
+0x16B8			Igloo Thing
+0x16E4	Bowser Key (Collectible)	Bowser Key.png	Bowser Key 2 Behavior
+0x1714	Grand Star	Power Star.png	Grand Star
+0x1744			Beta Boo key (inside of Boo)
+0x1778			Beta Boo key (outside of Boo)
+0x179C	Bullet Bill	Bullet Bill.png	Bullet Bill Behav
+0x17F4	White Puff	White Puff.png	White puff / smoke type
+0x1820			>>>>>>>>>>Unused Behavior?
+0x1828	Bowser Tail Anchor	Bowser Tail Anchor.png	Bowser tail anchor
+0x1850	Bowser	Bowser.png	Bowser Behavior
+0x18CC	Bowser Body Anchor	Bowser Body Anchor.png	Bowser body anchor
+0x1904	Flame Breath Spawner	Flame Breath Spawner.png	Bowser flame spawn
+0x1920	BitFS Fight Platform	BitFS Fight Platform.png	Tilting Bowser Lava Platform
+0x1958	Falling Block	Falling Block.png	Falling Bowser Platform
+0x1984	Flame Breath	Flame Breath.png	Blue flame (from Bowser)
+0x19C8	Falling Flame	Falling Flame.png	Flame (floating and landing)
+0x1A0C	Blue Lava Bubble Spawner	Blue Lava Bubble Spawner.png	Blue flames group (x3)
+0x1A30	Blue Lava Bubble Flame	Blue Flame.png	Flame (bouncing) unused?
+0x1A74	Flame Breath	Flame Breath.png	Flame (moving forward growing)
+0x1AA4	Flame	Flame.png	Flame (from Bowser)
+0x1AE8	Flame	Flame.png	Flame (large and burning out)
+0x1B2C	Aquarium Fish	Blue Fish.png	Blue fish
+0x1B54	Aquarium Fish Spawner	Blue Fish Spawner.png	Fish groups in castle tanks
+0x1B70	Checkered Elevator Spawner	Checkered Elevator Spawner.png	Checkerboard elevators group
+0x1B88	Checkered Elevator	Checkered Elevator.png	rotates 180, stop, rotates 180;Rotating checkered platform (unused?)
+0x1BB4	Bowser Key (Opening Door)	Bowser Key.png	Bowser key (going into hole and turning) 1
+0x1BD4	Bowser Key (Putting Away)	Bowser Key.png	Bowser key (going into hole and turning) 2
+0x1BF4			Invisible object underneath castle bridge ??
+0x1C04	Poundable Pillar	Poundable Pillar.png	Water Level Pillar
+0x1C34			Dire, Dire Docks warp
+0x1C58	Moat Grills	Grills.png	Moat grills (disable if water is drained)
+0x1C7C	TTC Painting Minute Hand	TTC Painting Minute Hand.png	Clock Big Arm
+0x1C8C	TTC Painting Hour Hand	TTC Painting Hour Hand.png	Rotating Small Clock Arm
+0x1CB0	Ukiki	Ukiki.png	Ukiki the monkey (opens cage)
+0x1D0C			>>>>>>>>>>Unused Behavior?
+0x1D14	LLL Rotating Hexagonal Platform	LLL Rotating Hexagonal Platform.png	Rotating CCW
+0x1D40	LLL Sinking Stone Platform	LLL Sinking Stone Platform.png	Sinks When Stepping on it
+0x1D70			>>>>>>>>>>Unused Behavior?
+0x1D78	LLL Transporting Cage Platform	LLL Transporting Cage Platform.png	Moving Horizontally
+0x1DA4			Snow Ball
+0x1DA8	Fire Bar	Fire Bar.png	Rotating CW With Fire Bars
+0x1DCC	Flame	Flame.png	Flame (on rotating hexagon in LLL)
+0x1E04	Rising and Lowering Wood	Rising and Lowering Wood.png	Piece of wood (LLL)//slightly moving up and down
+0x1E30	Rising and Lowering Wood Spawner	Rising and Lowering Wood Spawner.png	Floating Wood Bridge
+0x1E4C	Volcano Flame	Volcano Flame.png	Flames (from volcano)
+0x1E6C	Rotating Volcano Platform	Rotating Volcano Platform.png	Rotating platform (stops and produces fire if stepped on) (LLL)
+0x1E94	Rising and Lowering Long Platform	Rising and Lowering Long Platform.png	Slow and minimal tilting movement (LLL)
+0x1EC4	Rising and Lowering 4-Platform Group	Rising and Lowering 4-Platform Group.png	Slow and minimal up-down movement (LLL)
+0x1EF8	LLL Tilting Inverted Pyramid Platform	LLL Tilting Inverted Pyramid Platform.png	Tilting Inverted Pyramid
+0x1F30			>>>>>>>>>>Unused Behavior?
+0x1F3C	Koopa Shell	Shell.png	koopa shell
+0x1F68			Flame (Koopa shell in lava)
+0x1F90	Tox Box	Tox Box.png	Tox Box
+0x1FBC	Piranha Plant	Piranha Plant.png	Piranha Plant Behav 2
+0x2018	LLL Metal Mesh Platform	LLL Metal Mesh Platform.png	Solid object (LLL hexagonal mesh)
+0x2038	Bowser Puzzle Piece	Bowser Puzzle Piece.png	Bowser puzzle piece
+0x2068	Bowser Puzzle Coin Spawner	Bowser Puzzle Coin Spawner.png	Bowser Puzzle (Only in Lethal Lava Land)
+0x2088	Mother Penguin	Penguin.png	Tuxie's Mother Behavior
+0x20D8			related to penguin baby?
+0x20E0			>>>>>>>>>>Unused Behavior?
+0x20E8	Baby Penguin	Baby Penguin.png	Small Penguin
+0x213C	Fish Spawner	Blue Fish Spawner.png	Fish 2
+0x214C	Fish Spawner	Blue Fish Spawner.png	Fish 3
+0x215C	Fish Spawner	Blue Fish Spawner.png	Large group of fish
+0x2178	Blue Fish	Blue Fish.png	Group of fish
+0x2194	Express Elevator	Express Elevator.png	Moves down when stepped on, and then back to initial position (WDW "express elevators")
+0x21C0	Express Elevator	Express Elevator.png	Solid object (WDW express elevator platform)
+0x21E4	Bub Spawner	Bub Spawner.png	Chirp Chirp
+0x220C	Bub	Bub.png	Cheep-cheep
+0x2250	Item Block	Item Block	[!] Box Behavior 
+0x227C	Exclamation Mark	Exclamation Mark.png	Rotating exclamation mark
+0x229C	Sound Effect	Sound Effect.png	This behavior just plays a sound // Called by some spawned objects
+0x22B8	JRB Rock	JRB Rock.png	Rock Solid
+0x22D8	Bowser's Sub Gate	Bowser's Sub Gate.png	Bowser Sub Door Behavior // Disable if first star is complete
+0x2308	Bowser's Sub	Bowser's Sub.png	Bowser's Sub Behavior //Disable if first star is complete
+0x2338	Sushi	Sushi.png	Sushi the shark
+0x2388	Sushi Hitbox	Sushi Hitbox.png	Sushi the shark collision child
+0x23A4	Skull Crate	Skull Crate.png	Sliding box (Jolly Roger Bay
+0x23D0	JRB Floating Ship Part	JRB Ship Part.png	Ship Part 3
+0x23EC			In Sunken Ship 3?
+0x241C			Sunken Ship part
+0x243C			>>>>>>>>>>>>>>>unused?
+0x244C	JRB Sunken Ship Part	JRB Ship Part.png	Sunken Ship Part 2
+0x246C			In Sunken Ship?
+0x2480			Description: In Sunken Ship 2?
+0x24AC	Dust Spawner	Dust Spawner.png	Marios dust //White puff generator
+0x24DC	Dust Glow	Dust Glow.png	spawned by 24AC // White puff (from Mario)
+0x2500	Dust	Dust.png	spawned by 24AC // White puff from Mario 2
+0x2528	White Puff	White Puff.png	White puff / smoke type
+0x2558			Purple switch (for hidden boxes)
+0x2568	Blue Coin Block	Blue Coin Block.png	Blue Coins Switching
+0x2588	Blue Coin	Blue Coin.png	Hidden Blue Coin
+0x25C0	Openable Gate	Openable Gate.png	Cage door (BOB & HMC)
+0x25E0	Openable Gate Behavior	Openable Gate Behavior 2.png	Openable grills
+0x25F8	Crystal Tap	Crystal Tap.png	Water Level Trigger
+0x2620			Initialize behavior 0x130025F8
+0x2634	Tweester Sand	Dirt.png	Sand particle from Tweester
+0x2650	Tweester	Tweester.png	Tweester Behav
+0x2684	Boo Spawner	Boo Spawner.png	Spawn ghosts (spawn Big Boo when all are destroyed)
+0x269C			Animated texture ??
+0x26D4	Castle Boo	Boo.png	Boo in Castle
+0x2710	Cage Boo	Big Boo.png	Boo Buddy With Cage
+0x2768	Big Boo (Balcony)	Big Boo.png	Patrolling Boo Buddy (gives star)
+0x277C	Big Boo (Merry-Go-Round)	Big Boo.png	spawned boo
+0x2790	Big Boo (Lobby)	Big Boo.png	Boo giving star
+0x27D0			Boo Buddy group (x3)
+0x27E4	Boo	Boo.png	Boo Buddy 3 Behavior
+0x27F4	Boo (Merry-Go-Round)	Boo.png	spawned boo 2 gives star?
+0x2804	Boo (Activates Text)	Boo.png	Boo Buddy 2 Behavior
+0x286C	BBH Lobby Step	BBH Lobby Step.png	Hidden Staircase Step
+0x2898			spawned from first boo boss, tumbling bridge
+0x28CC	Loose Floor Panel	Loose Floor Panel.png	Tilts on z-axis when stepped on (Haunted House floor platforms)
+0x28FC	Bookshelf	Bookshelf.png	Tumbling Bookshelf
+0x292C	Mesh Elevator	Mesh Elevator.png	Mesh Elevator
+0x2968	Merry-Go-Round	Merry-Go-Round.png	Rotating Merry-Go-Round
+0x2998	Shortcut Sound Effect	Sound Effect.png	Plays music track when touched (used along with penguin shortcut)
+0x29B0			Inside Cannon
+0x29B4			>>>>>>>>>>Unused Behavior?
+0x29E4			Static checkered platform (unused?)
+0x2A10			>>>>>>>>>>Unused Behavior?
+0x2A20	Star??	Power Star.png	Star ??
+0x2A48	Landscape Visual	Landscape Visual.png	Static object
+0x2A54			>>>>>>>>>>Unused Behavior?
+0x2A5C			Castle Floor Trap
+0x2A7C	BitDW Trap Door	BitDW Trap Door.png	Floor trap in castle
+0x2AA4	Tree	Tree.png	Tree Behavior
+0x2AD0	Glow	Glow.png	Sparkles (power-ups)
+0x2AF0	Glow	Glow.png	Sparkles (power-ups)
+0x2B08	Sparkles	Sparkles.png	Sparkles (from special triple jump)
+0x2B14			>>>>>>>>>>Unused Behavior?
+0x2B5C	Scuttlebug	Scuttlebug.png	Scutlebug Behavior
+0x2BA0	Scuttlebug Spawner	Scuttlebug Spawner.png	Scutlebug spawner
+0x2BB8	King Whomp	King Whomp.png	Whomp King Boss Behav
+0x2BCC	Whomp	Whomp.png	Small Whomp
+0x2C14	Splash	Splash.png	Water Splash
+0x2C60	Splash Bubble (In Air)	Splash Bubble.png	Water drops//starting at 2C60? [also blue fish that randomly appears from splashing]
+0x2C7C	Water Ripples	Water Ripples.png	White wave on water surface
+0x2CB0	Object Bubble Ripples	Water Ripples.png	>>>>>>>>>>Unused Behavior?
+0x2CE0	Mario Water Waves	Water Waves.png	Waves on surface
+0x2D28	Water Ripples	Water Ripples.png	White wave on water surface 2//spot on ground?
+0x2D50			Waves generator
+0x2D7C			Wave on surface (shrinking)
+0x2DB0	Sushi Water Waves	Water Waves.png	Water type
+0x2DC0	Water Waves	Water Waves.png	Wave trail on surface
+0x2E04	Wind Particle	Wind Particle.png	Tiny white particles from wind generators
+0x2E20	Wind Behavior	Wind Behavior.png	Wind particle (blows Mario away)
+0x2E3C	Wind Particle Spawner	Wind Particle Spawner.png	Wind Blowing (Snow Man)
+0x2E58	Walking Penguin	Penguin.png	Walking Penguin
+0x2EA8	WF Pole Ball	WF Pole Ball.png	Yellow Ball (Pole in WF)
+0x2EC0	Mario	Mario.png	Mario's behavior!
+0x2EF8	Toad	Toad.png	Toad Message
+0x2F40	Star to Unlock Door	Power Star.png	SStar (held up when opening a sealed door)
+0x2F60	Mario Spawner	Mario Spawner.png	WARPS
+0x2F64	Mario Spawner	Mario Spawner.png	WARPS
+0x2F68	Mario Spawner	Mario Spawner.png	
+0x2F6C	Mario Spawner	Mario Spawner.png	
+0x2F70	Mario Spawner	Mario Spawner.png	
+0x2F74	Mario Spawner	Mario Spawner.png	
+0x2F78	Mario Spawner	Mario Spawner.png	
+0x2F7C	Mario Spawner	Mario Spawner.png	
+0x2F80	Mario Spawner	Mario Spawner.png	
+0x2F84	Mario Spawner	Mario Spawner.png	
+0x2F8C	Mario Spawner	Mario Spawner.png	
+0x2F88	Mario Spawner	Mario Spawner.png	
+0x2F90	Mario Spawner	Mario Spawner.png	
+0x2F94	Mario Spawner	Mario Spawner.png	
+0x2FA0			>>>>>>>>>>Unused Behavior?
+0x2FC0			Yellow background in menu
+0x2FE4			Menu Growing button
+0x3008			Gray button
+0x302C	Selectable Star	Power Star.png	Star in act selector
+0x3048	Course Select	Course Select.png	act selector
+0x3068	Yellow Coin	Yellow Coin.png	Coin inside of formation
+0x30A4	Blue Coin	Blue Coin.png	Moving Blue Coin
+0x30D4	Blue Coin	Blue Coin.png	Blue coin (sliding)
+0x3104	Blue Coin	Blue Coin.png	Blue coin (jumping)
+0x3134	Seaweed	Seaweed.png	Seaweed
+0x3158	Seaweed Spawner	Seaweed Spawner.png	seaweed boundle
+0x3174	Bob-omb	Bob-omb.png	Bob-Omb Behavior
+0x31AC	Bob-omb Fuse Smoke	Bob-omb Fuse Smoke.png	bob omb DUST
+0x31DC	Bob-omb Buddy	Bob-omb Buddy.png	Pink Bob-omb with message
+0x3228	Bob-omb Buddy	Bob-omb Buddy.png	Pink Bob-omb Opening Cannon Behav
+0x3274	Cannon Lid	Cannon Lid.png	Cannon Trap Door
+0x32A8	Whirlpool	Whirlpool.png	Whirlpool death
+0x32C8	Jet Stream Bubbles	Jet Stream Bubbles.png	Bubbles
+0x32E0	Sign	Sign.png	Message Panel
+0x3324	Bulletin Board	Bulletin Board.png	Sign On Wall
+0x3354	Amp	Amp.png	Amp 2 Behavior
+0x3388	Amp	Amp.png	Amp Behavior
+0x33BC	Butterfly	Butterfly.png	Butterfly Behav
+0x33EC	Hoot	Hoot.png	Owl Behavior
+0x3420			beta green shell?
+0x3454			carry something
+0x345C			carry something
+0x3464			carry something
+0x346C			carry something
+0x3474			carry something
+0x347C			carry something
+0x3484	Object Bubble	Splash Bubble.png	Dirt Behavior
+0x34C4	Object Water Waves	Water Waves.png	Water Wave
+0x3510	Explosion	Bob-omb Explosion.png	Explosion Behavior
+0x3558	Explosion Smoke	Grey Smoke.png	Large white smoke cloud
+0x3588	Cork Box Dust	Cork Box Dust.png	Smoke behavior
+0x35B0			White particle / water drop
+0x3604			>>>>>>>>>>Unused Behavior?
+0x360C			>>>>>>>>>>Unused Behavior?
+0x3614	Grabbable Cork Box / Bob-omb Spawner	Grabbable Cork Box Bob-omb Spawner.png	breakable box "backup", spawnf obj->f4
+0x362C	Bully	Bully.png	Small Bully Behavior
+0x3660	Big Bully	Big Bully.png	Big Bully Boss Behavior
+0x3694	Bully	Bully.png	Bully Behavior
+0x36C8			small ice bully
+0x3700	Chill Bully	Chill Bully.png	Chill Bully Boss Behavior
+0x3738	Manta Ring Spawner	Manta Ring Spawner.png	Manta Rings Generator
+0x3750	Manta Ring	Manta Ring.png	water bubble replenishes health//Water rings
+0x3798	Manta Ring	Manta Ring.png	water bubble replenishes health (used under water) // Water rings
+0x37E0			something invisible, that just does nothing.
+0x37EC	Floating Mine	Floating Mine.png	Bowser Bomb Behavior
+0x381C	Floating Mine Explosion	Floating Mine Explosion.png	Explosion (from spikey bombs) pt.1
+0x3840	Floating Mine Smoke	Floating Mine Smoke.png	Explosion (from spikey bombs) pt.2
+0x3868	Celebration Star / Key	Celebration Star & Key.png	STAR CELEBRATION STAR
+0x3888	Sparkles (Big)	Sparkles (Big).png	Sparkles (when Mario grabs a key)
+0x38B0	White Puff Spawner	White Puff Spawner 2.png	related to act selector? //White puff type?! [collecting grand star puff spawner]
+0x38D0			Bascule Bridge Behavior
+0x38E8	LLL Drawbridge	LLL Drawbridge.png	rotates 45 degree around x, then goes back. mario is not affected//Tilting bridge part (LLL)
+0x3910	Small Bomp	Small Bomp.png	Moves Back & Forth 1 //Rock Formation with eyes
+0x3940	Large Bomp	Large Bomp.png	Moves Back & Forth 2 // Large Rock With Eyes
+0x3970	WF In-and-Out Platform	WF In-and-Out Platform.png	Sliding Brick Platform 2
+0x39A0	Moneybag	Moneybag.png	Moneybag transforming
+0x39D4	Moneybag Coin	Moneybag Coin.png	Moneybag Behav
+0x3A08	Bowling Ball	Bowling Ball.png	Rolling Ball
+0x3A30	Bowling Ball	Bowling Ball.png	Rolling metal ball
+0x3A58	Bowling Ball	Bowling Ball.png	Tiny metal ball
+0x3A80	Bowling Ball Spawner	Bowling Ball Spawner.png	Metal Ball Generator 2
+0x3AA4	Bowling Ball Spawner	Bowling Ball Spawner.png	Metal Ball Generator
+0x3AC8	Bowling Ball Spawner	Bowling Ball Spawner.png	Mini Metal Balls Generator
+0x3AE0	Cruiser Wing	Cruiser Wing.png	Flapping Wing
+0x3B00	Spindel	Spindel.png	Spindel Behavior
+0x3B30	Pyramid Up-and-Down Step	Pyramid Up-and-Down Step.png	Moving Up And Down
+0x3B60	Pyramid Elevator	Pyramid Elevator.png	Pyramid Elevator
+0x3B98	Elevator Track Ball	Bowling Ball.png	Metal balls for pyramid elevator
+0x3BB4	Pyramid Top	Pyramid Top.png	Pyramid Top Behav
+0x3BEC	Pyramid Shard	Box Shard.png	Pyramid top explosion
+0x3C0C	Pyramid Top Activator	Pyramid Top Activator.png	>>>>>>>>>>Unused Behavior?
+0x3C30	Waterfall Sound Effect	Sound Effect.png	PlaySound loop (waterfall)
+0x3C44	Lavafall Sound Effect	Sound Effect.png	PlaySound loop (volcano)
+0x3C58	Castle Flag	Castle Flag.png	Castle Flag Waving
+0x3C7C	Bird Sound Effect	Sound Effect.png	PlaySound loop (birds)
+0x3C90			L Is Real 2041 // Ambient Sounds?
+0x3CA4	Falling Sand Sound Effect	Sound Effect.png	PlaySound loop (sand)
+0x3CB8	Cannon Grills	Grills.png	Hidden at 120 Stars
+0x3CE4	Snowman's Body	Snowman's Body.png	Snowman's Bottom Behavior
+0x3D0C	Snowman's Head	Snowman's Head.png	Snowman's Head Behav
+0x3D34	Snowman Path Checkpoint	Snowman Path Checkpoint.png	Checkpoint for big snowman's body
+0x3D4C	Snowman's Body	Snowman's Body.png	Big snowman (whole body)
+0x3D74	Rolling Rock	Rolling Rock.png	Big boulder
+0x3DA0	Rolling Rock Spawner	Rolling Rock Spawner.png	Drops Giant Boulders
+0x3DB8	Wing Cap	Wing Cap.png	Wing cap
+0x3DD8	Metal Cap	Metal Cap.png	metal cap
+0x3DF8	Mario's Cap	Mario's Cap.png	normal cap
+0x3E1C	Vanish Cap	Vanish Cap.png	Vanish cap
+0x3E3C	Power Star	Power Star.png	Collect Star
+0x3E64	Power Star	Power Star.png	Star spawn (with coordinates)
+0x3E8C	Red Coin Star Spawner	Red Coin Star Spawner.png	Hidden Red Coin Star Behavior 
+0x3EAC	Red Coin	Red Coin.png	Red Coin Behavior
+0x3EE4	Red Coin Star Spawner	Red Coin Star Spawner.png	Red coin star for bowser courses with save
+0x3EFC	Secret Star Spawner	Secret Star Spawner 3.png	Hidden Star
+0x3F1C	Secret	Secret.png	Check Point
+0x3F40	Rolling Log 2?	Rolling Log.png	Pitoune 2
+0x3F78	Volcano Crusher	Volcano Crusher.png	falling when mario is near // Falling block inside volcano
+0x3FA4	Rolling Log	Rolling Log.png	Pitoune
+0x3FDC	1-Up	1-Up.png	1up "walking"
+0x4010	1-Up	1-Up.png	1up running away
+0x4044	1-Up	1-Up.png	Sliding 1-up
+0x407C	1-Up	1-Up.png	1-up!
+0x40B4	1-Up	1-Up.png	1-up (jumps when approached)
+0x40EC	1-Up	1-Up.png	Hidden 1-up (enable when behavior 0x13004124 is touched)
+0x4124	1-Up Activator	1-Up Activator.png	Hidden 1-up Trigger
+0x4148	1-Up	1-Up.png	1-up (hidden in tree/pole)
+0x4180	1-Up Activator	1-Up Activator.png	Unused collectible item?
+0x41A4	1-Up & 1-Up Activator Spawner	1-Up & 1-Up Activator Spawner.png	Hidden 1-up in Tree
+0x41BC	HMC Directional Elevator	HMC Directional Elevator.png	Controlable Platform
+0x41F0	HMC Directional Elevator Button	HMC Directional Elevator Button.png	Controlable Platform sub behavior
+0x4218	Grabbable Cork Box	Grabbable Cork Box.png	Breakable Box
+0x4244	Sliding Snow Mound	Sliding Snow Mound.png	Sliding snow mound
+0x4270	Sliding Snow Mound Spawner	Sliding Snow Mound Spawner.png	Snow mound spawn (Only in Snow Man's Land)
+0x4284	Short Wooden Board	Short Wooden Board.png	Platform floating on water (square)
+0x42B4	Long Wooden Board	Long Wooden Board.png	Platform floating on water (rectangular)
+0x42E4	JRB Wooden Board	JRB Wooden Board.png	Platform floating on water (Jolly Roger Bay)
+0x4314	Arrow Lift	Arrow Lift.png	Arrow Lift Behavior
+0x4348	Number	Number.png	Orange number
+0x4370	Manta Ray	Manta Ray.png	Manta Ray
+0x43A0	Falling Pillar	Falling Pillar.png	Falling Pillar
+0x43C4			>>>>>>>>>>Unused Behavior?
+0x43E0	Falling Pillar Base	Falling Pillar Base.png	Pillar Base Behav
+0x4400			beta skull box // Floating Jolly Roger box (unused)
+0x442C	TTC Painting Pendulum	TTC Painting Pendulum.png	Oscillating Pendulum
+0x444C	Chest Star Spawner	Chest Star Spawner.png	Treasure Chests (Ship)
+0x4470	Chest Star Spawner	Chest Star Spawner.png	Treasure Chests (Jolly)
+0x4494	Chest Star Spawner	Chest Star Spawner.png	Treasure Chests
+0x44B8	Chest Bottom	Chest Bottom.png	>>>>>>>>>>Unused Behavior?
+0x44E0	Chest Top	Chest Top.png	>>>>>>>>>>Unused Behavior?
+0x44FC	MIPS	MIPS.png	MIPS Rabbit Behavior
+0x4538	Yoshi	Yoshi.png	Description: Yoshi behavior
+0x4580	Koopa	Koopa.png	Koopa Behavior
+0x45D0	Koopa the Quick Flag	Koopa the Quick Flag.png	Waving Koopa Flag // Koopa message save point
+0x45F8	Koopa the Quick Flag	Koopa the Quick Flag.png	Koopa flag Behavior
+0x4634	Pokey Spawner	Pokey Spawner.png	Pokey Behavior
+0x4668	Pokey Head / Body Part	Pokey Body Part.png	Pokey head
+0x4698	Swooper	Swooper.png	Description: Bat Behavior
+0x46DC	Fly Guy	Fly Guy.png	Fly Guy Behavior
+0x472C	Goomba	Goomba.png	Goomba Walk
+0x4770	Goomba Triplet Spawner	Goomba Triplet Spawner.png	Goombas Group
+0x478C	Chain Chomp	Chain Chomp.png	Chain Chomp
+0x47E4	Chain Chomp Pivot / Chain	Chain Chomp Chain.png	Chain-Chomp chains
+0x481C	Post	Post.png	Poundable
+0x4868	Chain Chomp Gate	Chain Chomp Gate.png	Exploding When Chain Chomp is Freed
+0x4898	Wiggler Head	Wiggler Head.png	Wiggler Behavior
+0x48E0	Wiggler Body Part	Wiggler Body Part.png	Wiggler body parts
+0x4918	Lakitu	Lakitu.png	Evil Lakitu Behavior
+0x4954	Camera Lakitu	Camera Lakitu.png	Lakitu Behavior
+0x4988	Cloud Spawner	Cloud Spawner.png	Fwoosh Blowing Wind
+0x49AC	Cloud Puff	Cloud Puff.png	Fwoosh (cloud enemy) face
+0x49C8	Spiny	Spiny.png	spinny
+0x4A00	Monty Mole	Monty Mole.png	Monty Mole Behavior
+0x4A58	Monty Mole Hole	Monty Mole Hole.png	Monty Mole in Hole
+0x4A78	Pebble	Pebble.png	Monty Mole rock
+0x4AB0	Carpet / Ski Lift / Fixed Track Elevator	Carpet.png	DPlatform on tracks (param1 = collision pointer, param2 = track#)
+0x4AF4	Elevator Track Ball	Bowling Ball.png	Metal Balls for elevators (not actual paths)
+0x4B1C	See Saw Platform	See Saw Platform.png	Solid & Moving
+0x4B44	Revolving Elevator Group	Revolving Elevator Group.png	Four Rotating Platforms
+0x4B6C	Revolving Elevator Platform	Revolving Elevator Platform.png	Ferris Wheel Platform
+0x4B8C	Bubble Bomb Spawner	Bubble Bomb Spawner.png	Water Bubble Drop
+0x4BA8	Bubble Bomb	Bubble Bomb.png	Water bomb
+0x4BD4	Bubble Bomb Shadow	Bubble Bomb Shadow.png	Water bomb shadow
+0x4BF0	TTC Rotating Block / Triangular Prism	TTC Rotating Block & Triangular Prism.png	Rotating Clock Platform
+0x4C24	TTC Pendulum	TTC Pendulum.png	Clock Pendulum Behavior
+0x4C5C	TTC Treadmill	TTC Treadmill.png	Clock Metal Platform
+0x4C94	TTC Moving Bar	TTC Moving Bar.png	Sliding Platform
+0x4CCC	TTC Rotating Cog / Triangle	TTC Rotating Cog & Triangle.png	Rotating Gear Platform
+0x4CF8	TTC Pit Block	TTC Pit Block.png	Pushable Clock Box
+0x4D28	TTC Elevator Platform	TTC Elevator Platform.png	Clock Platform Behavior (moving up and down custom)
+0x4D64	TTC Rotating Hand / 2D Cog	TTC Rotating Hand & 2D Cog.png	Clock Main Rotation
+0x4D90	TTC Red Coin Spinner	TTC Red Coin Spinner.png	Rotating Clock Platform
+0x4DBC	Mr. Blizzard	Mr. Blizzard.png	Mr. Blizzard
+0x4E08	Snowball	Snowball.png	Snowball from Snowman
+0x4E4C	Back-and-Forth Platform	Back-and-Forth Platform.png	Sliding Platform
+0x4E78	Rotating Octagonal Platform	Rotating Octagonal Platform.png	Octogonal Platform Rotating
+0x4EA0	Structure Activated by ! Switch	Tricky Triangles.png	Animates On Floor Switch Press (bowser staircase // Pyramidal Platforms)
+0x4ECC	BitFS Elevator / BitS Arrow Platform	Arrow Platform.png	Moves When Stepping on It // Climbable Cage
+0x4EF8	Spinning Heart	Spinning Heart.png	Recover Life
+0x4F10	Enemy Cannon Base	Enemy Cannon Base.png	Cannon Behavior
+0x4F28	Enemy Cannon Shaft	Enemy Cannon Shaft.png	Cannon barrel (shoots bubbles)
+0x4F40	Unagi	Unagi.png	Unagi the eel (swimming)
+0x4F78	Unagi Hitbox	Unagi Hitbox.png	>>>>>>>>>>Unused Behavior?
+0x4F90	Dorrie	Dorrie.png	Dorrie
+0x4FD4	Haunted Chair	Haunted Chair.png	Haunted Chair Behavior
+0x5024	Mad Piano	Mad Piano.png	Mad Piano Behavior
+0x506C	Bookend	Bookend.png	Flying Bookend
+0x50B4	Bookend Spawner	Bookend Spawner.png	spawns bookends
+0x50D4			BookShelf Thing?
+0x50F4	Book Switch	Book Switch.png	Book switch (Big Boo's Haunt)
+0x5120	Piranha Plant	Piranha Plant.png	Piranha Plant Behavior
+0x5158	Fire	Fire.png	Flame (spawned from small Piranha Plant)
+0x518C	Fire Spitter	Bowling Ball.png	Fire Spewer Behavior
+0x51AC	Residual Fire	Residual Fire.png	Flame (spawned from Fly Guys flame)
+0x51E0	Snufit	Snufit.png	Snufit Behavior
+0x521C	Snufit Bullet	Bowling Ball.png	snufit balls
+0x525C	Grindel	Grindel.png	Grindel Behavior
+0x52B4	Eyerok Behavior	Eyerok Behavior.png	Eyerok Boss Behavior
+0x52D0	Eyerok Hand	Eyerok Hand.png	Eyerok hand
+0x5310	Klepto	Klepto.png	Klepto Behav
+0x5354	Bird	Bird.png	Description: Multiple Birds flying
+0x5380	Racing Penguin	Penguin.png	Racing Penguin
+0x53C4	Finishing Line Checkpoint	Finishing Line Checkpoint.png	Finishing Line Check
+0x53DC	Shortcut Checkpoint	Shortcut Checkpoint.png	Shortcut Check
+0x53F4			Haunted Room Check?
+0x5414	Coffin	Coffin.png	>>>>>>>>>>Unused Behavior?
+0x5440	Clam	Clam.png	Clam Shell Behav
+0x5468	Skeeter	Skeeter 2.png	Skeeter Behavior
+0x54A0	Skeeter Water Waves	Water Waves.png	Water wave type?
+0x54B8	Swing	Swing.png	Pendulum-Like Movement
+0x54EC	Donut Lift Spawner	Donut Lift Spawner.png	Donut platform group
+0x5504	Donut Lift	Donut Lift.png	Donut platform (falls and explodes when stepped on)
+0x5528	DDD Pole	DDD Pole.png	Yellow Poles (Dire, Dire Docks)
+0x556C	Star Marker	Star Marker.png	Shadow star for red star
+0x5598	Butterfly Spawner	Butterfly Spawner.png	Three butterflies group (2 turn into bombs, 1 gives a mushroom)
+0x55DC	Bubba	Bubba.png	Bubba Behavior
+0x5610			Lakitu at the beginning
+0x5638	Peach	Peach.png	Peach at the beginning
+0x565C	Bird	Bird.png	Birds at end 1
+0x5680	Bird	Bird.png	Birds at end 2
+0x56A4			Calls intro scene stuff (Lakitu, Peach, etc.)
