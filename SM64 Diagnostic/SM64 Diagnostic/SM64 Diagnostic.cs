@@ -33,7 +33,7 @@ namespace SM64_Diagnostic
         ObjectManager _objectManager;
         MapManager _mapManager;
 
-        bool _resizing = false;
+        bool _resizing = true;
         int _resizeTimeLeft = 0;
 
         public SM64DiagnosticForm()
@@ -102,6 +102,8 @@ namespace SM64_Diagnostic
             comboBoxSortMethod.SelectedIndex = 0;
 
             SetupViews();
+
+            _resizing = false;
         }
 
         private void comboBoxProcessSelection_DropDown(object sender, EventArgs e)
