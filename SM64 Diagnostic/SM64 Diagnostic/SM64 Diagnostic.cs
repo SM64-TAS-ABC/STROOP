@@ -11,6 +11,7 @@ using System.Diagnostics;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.ManagerClasses;
+using OpenTK;
 
 namespace SM64_Diagnostic
 {
@@ -32,6 +33,7 @@ namespace SM64_Diagnostic
         MarioManager _marioManager;
         ObjectManager _objectManager;
         MapManager _mapManager;
+        OptionsManager _optionsManager;
 
         bool _resizing = true;
         int _resizeTimeLeft = 0;
@@ -41,17 +43,21 @@ namespace SM64_Diagnostic
             InitializeComponent();
         }
 
+        private void AttachToProcess(Process process)
+        {
+            if (!_sm64Stream.SwitchProcess(process))
+            {
+                MessageBox.Show("Could not attach to process!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxProcessSelection.SelectedItem == null)
                 return;
 
-            if (!_sm64Stream.SwitchProcess(
-                ((ProcessSelection)(comboBoxProcessSelection.SelectedItem)).Process))
-            {
-                MessageBox.Show("Could not attach to process!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            AttachToProcess(((ProcessSelection)(comboBoxProcessSelection.SelectedItem)).Process);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -74,10 +80,7 @@ namespace SM64_Diagnostic
 
             _disManager = new DisassemblyManager(_config, this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
             _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario);
-            _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, pictureBoxMap, pictureBoxMapMario);
             var objectGui = new ObjectDataGui();
-
-            pictureBoxMapMario.Image = _objectAssoc.MarioImage;
 
             // Create object manager
             objectGui.ObjectBorderPanel = panelObjectBorder;
@@ -90,8 +93,13 @@ namespace SM64_Diagnostic
             objectGui.ObjSlotPositionLabel = labelObjSlotPosValue;
             _objectManager = new ObjectManager(_sm64Stream, _config, _objectAssoc, _objectData, objectGui);
 
+            // Create options manager
+            var optionGui = new OptionsGui();
+            optionGui.CheckBoxStartFromOne = checkBoxStartSlotIndexOne;
+            _optionsManager = new OptionsManager(optionGui, _config);
+
             // Create Object Slots
-            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, pictureBoxTrash);
+            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, pictureBoxTrash, tabControlMain);
             _objectSlotManager.AddToControls(flowLayoutPanelObjects.Controls);
 
             // Add SortMethods
@@ -104,31 +112,49 @@ namespace SM64_Diagnostic
             SetupViews();
 
             _resizing = false;
+
+            // Load process
+            var processes = GetAvailableProcesses();
+            if (processes.Count == 1)
+                if (MessageBox.Show(String.Format("Found process \"{0}\". Connect?", processes[0].ProcessName),
+                    "Process Found", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var processSelect = new ProcessSelection(processes[0]);
+                    comboBoxProcessSelection.Items.Add(processSelect);
+                    comboBoxProcessSelection.SelectedIndex = 0;
+                }
+
         }
 
         private void comboBoxProcessSelection_DropDown(object sender, EventArgs e)
         {
             comboBoxProcessSelection.Items.Clear();
             buttonPauseResume.Text = "Pause";
+
+            foreach (Process p in GetAvailableProcesses())
+            {
+                comboBoxProcessSelection.Items.Add(new ProcessSelection(p));
+            }
+        }
+
+        private List<Process> GetAvailableProcesses()
+        {
             var AvailableProcesses = Process.GetProcesses();
+            // Why the f--- I named this a resort list? I will never know
             List<Process> resortList = new List<Process>();
-            foreach(Process p in AvailableProcesses)
+            foreach (Process p in AvailableProcesses)
             {
                 if (!p.ProcessName.ToLower().Contains(_config.ProcessName.ToLower()))
                     continue;
 
                 resortList.Add(p);
             }
-
-            foreach (Process p in resortList)
-            {
-                comboBoxProcessSelection.Items.Add(new ProcessSelection(p));
-            }
+            return resortList;
         }
 
         private void OnUpdate(object sender, EventArgs e)
         {
-            _mapManager.Update();
+            _mapManager?.Update();
             if (tabControlMain.SelectedTab == tabPageMario)
                 _marioManager.Update();
             UpdateMemoryValues();
@@ -282,7 +308,8 @@ namespace SM64_Diagnostic
             flowLayoutPanelObjects.Visible = false;
             flowLayoutPanelObject.Visible = false;
             flowLayoutPanelMario.Visible = false;
-            _mapManager.Visible = false;
+            if (_mapManager != null)
+                _mapManager.Visible = false;
             await Task.Run(() =>
             {
                 while (_resizeTimeLeft > 0)
@@ -294,8 +321,20 @@ namespace SM64_Diagnostic
             flowLayoutPanelObjects.Visible = true;
             flowLayoutPanelObject.Visible = true;
             flowLayoutPanelMario.Visible = true;
-            _mapManager.Visible = true;
+            if (_mapManager != null)
+                _mapManager.Visible = true;
+
             _resizing = false;
+        }
+
+        private void glControlMap_Load(object sender, EventArgs e)
+        {
+            _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, glControlMap);
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            throw new Exception("User is a dumb@$$");
         }
 
         private void tabControlMain_DragEnter(object sender, DragEventArgs e)

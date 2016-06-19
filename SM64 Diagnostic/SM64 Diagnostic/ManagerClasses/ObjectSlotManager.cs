@@ -19,6 +19,7 @@ namespace SM64_Diagnostic.ManagerClasses
         ObjectAssociations _objectAssoc;
         ObjectManager _objManager;
         ProcessStream _stream;
+        TabControl _tabControl;
 
         Dictionary<uint, int> _memoryAddressSlotIndex;
         int _selectedSlot;
@@ -53,7 +54,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public ObjectSlotManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, ObjectManager objManager, PictureBox trash)
+        public ObjectSlotManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, ObjectManager objManager, PictureBox trash, TabControl tabControl)
         {
             Trash = trash;
             Trash.AllowDrop = true;
@@ -65,6 +66,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _stream = stream;
             _stream.OnUpdate += OnUpdate;
             _objManager = objManager;
+            _tabControl = tabControl;
 
             // Create and setup object slots
             ObjectSlots = new ObjectSlot[_config.ObjectSlots.MaxSlots];
@@ -74,6 +76,20 @@ namespace SM64_Diagnostic.ManagerClasses
                 var objectSlot = new ObjectSlot(i, this);
                 ObjectSlots[i] = objectSlot;
                 objectSlot.Image = _objectAssoc.EmptyImage;
+                int localI = i;
+                objectSlot.OnClick += (sender, e) => OnClick(sender, e, localI);
+            }
+        }
+
+        private void OnClick(object sender, MouseEventArgs e, int slotIndex)
+        {
+            switch (_tabControl.SelectedTab.Text)
+            {
+                case "Object":
+                    SelectedSlot = slotIndex;
+                    break;
+                case "Map":
+                    break;
             }
         }
 
@@ -253,14 +269,15 @@ namespace SM64_Diagnostic.ManagerClasses
                 ObjectSlots[index].BackColor = newColor;
 
                 ObjectSlots[index].Text = (SortMethod == SortMethodType.ProcessingOrder && objectData.VacantSlotIndex.HasValue) ?
-                    String.Format("VS{1}", objectData.Index, objectData.VacantSlotIndex.Value) : objectData.Index.ToString();
+                    String.Format("VS{0}", objectData.VacantSlotIndex.Value + (_config.SlotIndexsFromOne ? 1 : 0)) 
+                    : (objectData.Index + (_config.SlotIndexsFromOne ? 1 : 0)).ToString();
 
                 // Update object manager image
                 if (SelectedAddress.HasValue && SelectedAddress.Value == currentAddress)
                 {
                     _objManager.BackColor = newColor;
                     _objManager.Image = newImage;
-                    _objManager.Behavior = behaviorScriptAdd;
+                    _objManager.Behavior = (behaviorScriptAdd + _objectAssoc.RamOffset) & 0x00FFFFFF;
                     _objManager.SlotIndex = index;
                     _objManager.SlotPos = _memoryAddressSlotIndex[currentAddress];
                     _objManager.Name = _objectAssoc.GetObjectName(behaviorScriptAdd);

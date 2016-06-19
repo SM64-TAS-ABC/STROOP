@@ -56,6 +56,8 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4" />
+    <Reference Include="OpenTK.GLControl, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -72,9 +74,11 @@
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="ManagerClasses\DataContainer.cs" />
     <Compile Include="ManagerClasses\DisassemblyManager.cs" />
+    <Compile Include="ManagerClasses\MapGraphicsControl.cs" />
     <Compile Include="ManagerClasses\MapManager.cs" />
     <Compile Include="ManagerClasses\MarioManager.cs" />
     <Compile Include="ManagerClasses\ObjectManager.cs" />
+    <Compile Include="ManagerClasses\OptionsManager.cs" />
     <Compile Include="ManagerClasses\WatchVariableControl.cs" />
     <Compile Include="ModifyAddWatchVariableForm.cs">
       <SubType>Form</SubType>
@@ -84,9 +88,11 @@
     </Compile>
     <Compile Include="ManagerClasses\ObjectSlot.cs" />
     <Compile Include="ManagerClasses\ObjectSlotManager.cs" />
+    <Compile Include="Structures\OptionsGui.cs" />
     <Compile Include="Structures\DropAction.cs" />
     <Compile Include="Structures\Map.cs" />
     <Compile Include="Structures\MapAssociations.cs" />
+    <Compile Include="Structures\MapObject.cs" />
     <Compile Include="Structures\MarioConfig.cs" />
     <Compile Include="Structures\ObjectAssociations.cs" />
     <Compile Include="Structures\ObjectDataGui.cs" />
@@ -131,9 +137,9 @@
     <EmbeddedResource Include="Schemas\ConfigSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="LICENSE">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Content Include="nj64 License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -204,6 +210,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="icon.ico" />
+    <Content Include="OpenTK License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Maps\BBH.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1426,7 +1435,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\trash_icon.png" />
-    <Content Include="Resources\Unknown.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -39,11 +39,11 @@ namespace SM64_Diagnostic.Utilities
 
         public static uint _target(uint i) { return (i) & 0x3ffffff; }
         public static uint _imm(uint i) { return (i) & 0xffff; }
-        public static uint _imms(uint i) { return (_imm(i) << 16) >> 16; }   // treat immediate value as signed
+        public static short _imms(uint i) { return (short)_imm(i); }   // treat immediate value as signed
         public static uint _base(uint i) { return (i >> 21) & 0x1f; }
 
 
-        private static uint _branchAddress(uint a, uint i) { return (a + 4) + (_imms(i) * 4); }
+        private static uint _branchAddress(uint a, uint i) { return (uint)((a + 4) + _imms(i) * 4); }
         private static uint _jumpAddress(uint a, uint i) { return (a & 0xf0000000) | (_target(i) * 4); }
 
         static string[] gprRegisterNames = {
@@ -100,7 +100,7 @@ namespace SM64_Diagnostic.Utilities
             public uint[] dstRegs = new uint[64];
             public uint target;
             public string mode = "";
-            public uint offset;
+            public short offset;
             public uint register;
 
             public Instruction(uint add, uint op)
@@ -132,7 +132,8 @@ namespace SM64_Diagnostic.Utilities
             public string gs() { var reg = cop2RegisterNames[_rs(this.opcode)]; return makeRegSpan(reg); }
                    
             public string imm() { return toHex(_imm(this.opcode), 16); }
-                   
+            public string immwd() { return toHex(_imm(this.opcode), 16) + " (" + _imms(this.opcode) + ")"; }
+
             public string branchAddress() { this.target = _branchAddress(this.address, this.opcode); return makeLabelText(this.target); }
             public string jumpAddress() { this.target = _jumpAddress(this.address, this.opcode); return makeLabelText(this.target); }
 
@@ -641,9 +642,9 @@ namespace SM64_Diagnostic.Utilities
             (i) =>
             { return "BGTZ      " + i.rs() + " > 0 --> " + i.branchAddress(); },
             (i) =>
-            { return "ADDI      " + i.rt_d() + " = " + i.rs() + " + " + i.imm(); },
+            { return "ADDI      " + i.rt_d() + " = " + i.rs() + " + " + i.immwd(); },
             (i) =>
-            { return "ADDIU     " + i.rt_d() + " = " + i.rs() + " + " + i.imm(); },
+            { return "ADDIU     " + i.rt_d() + " = " + i.rs() + " + " + i.immwd(); },
             (i) =>
             { return "SLTI      " + i.rt_d() + " = (" + i.rs() + " < " + i.imm() + ")"; },
             (i) =>

@@ -17,5 +17,6 @@ namespace SM64_Diagnostic.Structs
         public MarioConfig Mario;
         public uint LevelAddress;
         public uint AreaAddress;
+        public bool SlotIndexsFromOne;
     }
 }

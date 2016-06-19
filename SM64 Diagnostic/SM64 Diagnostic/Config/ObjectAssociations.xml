@@ -236,7 +236,7 @@
     <Image path="Peach.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000F08" name="Monkey Cage">
-    <Image path="Monkey Cage.png"/>
+    <Image path="Ukiki.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000F48" name="Monkey Cage">
     <Image path="Monkey Cage.png"/>
@@ -1360,4 +1360,7 @@
   <Object behaviorScriptAddress="0x13005680" name="Bird">
     <Image path="Bird.png"/>
   </Object>
+  <!--<Object behaviorScriptAddress="0x130EDED0" name="Bubble Splash Spawner">
+    <Image path="Bird.png"/>
+  </Object>-->
 </ObjectAssociations>

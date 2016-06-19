@@ -16,7 +16,7 @@ namespace SM64_Diagnostic.ManagerClasses
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
         DataContainer _rngIndex;
-        ushort[] _rngTableIndex = new ushort[65536];
+        int[] _rngTableIndex;
 
         public MarioManager(ProcessStream stream, Config config, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable)
         {
@@ -51,21 +51,33 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 watchVar.Update();
             }
-            _rngIndex.Text = GetRngIndex().ToString();
+            int rngIndex = GetRngIndex();
+            _rngIndex.Text = (rngIndex < 0) ? "N/A [" + (-rngIndex).ToString() + "]" : rngIndex.ToString();
         }
 
-        private ushort GetRngIndex()
+        private int GetRngIndex()
         {
             return _rngTableIndex[BitConverter.ToUInt16(_stream.ReadRam(0x8038EEE0, 2),0)];
         }
 
         private void GenerateRngTable()
         {
+            _rngTableIndex = Enumerable.Repeat<int>(-1, ushort.MaxValue + 1).ToArray();
             ushort _currentRng = 0;
             for (ushort i = 0; i < 65114; i++)
             {
                 _rngTableIndex[_currentRng] = i;
                 _currentRng = NextRNG(_currentRng);
+            }
+
+            int naIndex = -1;
+            for (int i = 0; i < _rngTableIndex.Length; i++)
+            {
+                if (_rngTableIndex[i] == -1)
+                {
+                    _rngTableIndex[i] = naIndex;
+                    naIndex--;
+                }
             }
         }
 

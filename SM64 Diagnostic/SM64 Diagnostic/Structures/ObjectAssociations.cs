@@ -21,6 +21,7 @@ namespace SM64_Diagnostic.Structs
         public Image EmptyImage;
         public Image MarioImage;
         public Color MarioColor;
+        public uint RamOffset;
 
         public Image DefaultImage
         {

@@ -116,7 +116,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
                 // Write Disassembly
                 uint instruction = BitConverter.ToUInt32(nextBytes, 0);
-                uint address = (uint)(((uint)_lastProcessAddress) & 0x80000000);
+                uint address = (uint)(((uint)_lastProcessAddress) & 0x0FFFFFFF);
                 string disassembly = "\t" + N64Disassembler.DisassembleInstruction(address, instruction);
                 _output.AppendText(disassembly, Color.Red);
 

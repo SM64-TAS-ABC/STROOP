@@ -9,6 +9,21 @@ namespace SM64_Diagnostic.Utilities
 {
     public static class WatchVariableParsingExtensions
     {
+
+        public static uint GetRamAddress(this WatchVariable watchVar, uint offset)
+        {
+            var address = watchVar.OtherOffset ? offset + watchVar.Address : watchVar.Address;
+            return address & 0x0FFFFFFF;
+        }
+
+        public static uint GetProcessAddress(this WatchVariable watchVar, ProcessStream stream, uint offset)
+        {
+            var address = watchVar.OtherOffset ? offset + watchVar.Address : watchVar.Address;
+            return (uint) LittleEndianessAddressing.AddressFix(
+                (int)((address & 0x0FFFFFFF) + stream.ProcessMemoryOffset), watchVar.GetByteCount())
+                & 0x0FFFFFFF;
+        }
+
         public static string GetStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset)
         {
             // Get dataBytes

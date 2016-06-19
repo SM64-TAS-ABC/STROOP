@@ -7,6 +7,9 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Utilities;
 using System.Windows.Forms;
 using System.Drawing;
+using OpenTK;
+using OpenTK.Graphics;
+using OpenTK.Graphics.OpenGL;
 
 namespace SM64_Diagnostic.ManagerClasses
 {
@@ -15,37 +18,40 @@ namespace SM64_Diagnostic.ManagerClasses
         ProcessStream _stream;
         Config _config;
         MapAssociations _assoc;
-        PictureBox _pictureBoxMap, _pictureBoxMario;
         byte _currentLevel, _currentArea;
         Map _currentMap;
         List<Map> _currentMapList = null;
+        MapGraphicsControl _mapGraphics;
+        MapObject _marioMapObj;
 
         public bool Visible
         {
             get
             {
-                return _pictureBoxMap.Visible;
+                return _mapGraphics.Control.Visible;
             }
             set
             {
-                _pictureBoxMap.Visible = value;
-                _pictureBoxMario.Visible = value;
+                _mapGraphics.Control.Visible = value;
             }
         }
 
         public MapManager(ProcessStream stream, Config config, MapAssociations mapAssoc,
-            PictureBox pictureBoxMap, PictureBox pictureBoxMario)
+            GLControl mapControl)
         {
             _stream = stream;
             _config = config;
             _assoc = mapAssoc;
-            _pictureBoxMap = pictureBoxMap;
-            _pictureBoxMario = pictureBoxMario;
-            _pictureBoxMap.Image = _assoc.GetMapImage(_assoc.DefaultMap);
-            _currentMap = _assoc.DefaultMap;
-            _pictureBoxMap.Controls.Add(_pictureBoxMario);
-            _pictureBoxMario.BackColor = Color.Transparent;
+
+            _mapGraphics = new MapGraphicsControl(mapControl);
+            _mapGraphics.Load();
+
+            _marioMapObj = new MapObject(new Bitmap("Resources\\Object Images\\Mario.png"), new PointF());
+            _mapGraphics.AddMapObject(_marioMapObj);
+            ChangeCurrentMap(_assoc.DefaultMap);
         }
+
+
 
         public void Update()
         {
@@ -86,6 +92,8 @@ namespace SM64_Diagnostic.ManagerClasses
             }
 
             UpdateMapCoordinates(marioCoord[0], marioCoord[2]);
+
+            _mapGraphics.OnPaint(this, new EventArgs());
         }
 
         private void ChangeCurrentMap(Map map)
@@ -93,25 +101,19 @@ namespace SM64_Diagnostic.ManagerClasses
             if (_currentMap == map)
                 return;
 
-            _pictureBoxMap.Image?.Dispose();
-            _pictureBoxMap.Image = _assoc.GetMapImage(map);
+            _mapGraphics.SetMap(_assoc.GetMapImage(map));
             _currentMap = map;
         }
 
         private void UpdateMapCoordinates(float marioX, float marioZ)
         {
-            RectangleF mapView = GetMapViewRegion();
+
+            RectangleF mapView = _mapGraphics.MapView;
             PointF marioCoord = new PointF(marioX, marioZ);
 
             // Calculate position on picture;
-            marioCoord.X = mapView.X + (marioCoord.X - _currentMap.Coordinates.X) * (mapView.Width / _currentMap.Coordinates.Width);
-            marioCoord.Y = mapView.Y + (marioCoord.Y - _currentMap.Coordinates.Y) * (mapView.Height / _currentMap.Coordinates.Height);
-
-            // Make sure we don't go out of the image bounds
-            marioCoord.X = Math.Max(Math.Min(marioCoord.X, mapView.Right), mapView.Left);
-            marioCoord.Y = Math.Max(Math.Min(marioCoord.Y, mapView.Bottom), mapView.Top);
-
-            SetPictureBoxLocation(_pictureBoxMario, marioCoord);
+            _marioMapObj.Location.X = mapView.X + (marioCoord.X - _currentMap.Coordinates.X) * (mapView.Width / _currentMap.Coordinates.Width);
+            _marioMapObj.Location.Y = mapView.Y + (marioCoord.Y - _currentMap.Coordinates.Y) * (mapView.Height / _currentMap.Coordinates.Height);
         }
 
         private void SetPictureBoxLocation(PictureBox box, PointF point)
@@ -119,21 +121,6 @@ namespace SM64_Diagnostic.ManagerClasses
             box.Location = new Point((int)point.X - box.Width / 2,
                 (int)point.Y - box.Height / 2);
         }
-
-        private RectangleF GetMapViewRegion()
-        {
-            float hScale = (float)_pictureBoxMap.Width / _pictureBoxMap.Image.Width;
-            float vScale = (float)_pictureBoxMap.Height / _pictureBoxMap.Image.Height;
-            float scale = Math.Min(hScale, vScale);
-
-            float marginV = 0;
-            float marginH = 0;
-            if (hScale > vScale)
-                marginH = (_pictureBoxMap.Width - scale * _pictureBoxMap.Image.Width) / 2;
-            else
-                marginV = (_pictureBoxMap.Height - scale * _pictureBoxMap.Image.Height) / 2;
-
-            return new RectangleF(marginH, marginV, _pictureBoxMap.Width - 2 * marginH, _pictureBoxMap.Height - 2 * marginV);
-        }
+        
     }
 }

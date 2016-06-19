@@ -32,8 +32,30 @@ namespace SM64_Diagnostic.ManagerClasses
                 {
                     WatchVariableControl._menu = new ContextMenuStrip();
                     WatchVariableControl._menu.Items.Add("Edit");
+                    var nextItem = new ToolStripMenuItem("View As Hexadecimal");
+                    nextItem.Name = "HexView";
+                    WatchVariableControl._menu.Items.Add(nextItem);
                 }
                 return _menu;
+            }
+        }
+
+        static ToolTip _toolTip;
+        public static ToolTip AddressToolTip
+        {
+            get
+            {
+                if (_toolTip == null)
+                {
+                    _toolTip = new ToolTip();
+                    _toolTip.IsBalloon = true;
+                    _toolTip.ShowAlways = true;
+                }
+                return _toolTip;
+            }
+            set
+            {
+                _toolTip = value;
             }
         }
 
@@ -73,6 +95,9 @@ namespace SM64_Diagnostic.ManagerClasses
             this._nameLabel.Text = _watchVar.Name;
             this._nameLabel.Margin = new Padding(3, 3, 3, 3);
 
+            AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
+                _watchVar.GetRamAddress(OtherOffset), _watchVar.GetProcessAddress(_stream, OtherOffset), _stream.ProcessName));
+
             if (_watchVar.IsBool)
             {
                 this._checkBoxBool = new CheckBox();
@@ -90,7 +115,11 @@ namespace SM64_Diagnostic.ManagerClasses
                 this._textBoxValue.TextChanged += OnModified;
                 this._textBoxValue.ContextMenuStrip = WatchVariableControl.Menu;
                 this._textBoxValue.KeyDown += OnTextValueKeyDown;
-                this._textBoxValue.MouseHover += (sender, e) => _lastSelected = this;
+                this._textBoxValue.MouseHover += (sender, e) =>
+                {
+                    _lastSelected = this;
+                    (_menu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
+                };
                 this._textBoxValue.LostFocus += (sender, e) => { _editMode = false; this._textBoxValue.ReadOnly = true; };
                 WatchVariableControl.Menu.ItemClicked += OnMenuStripClick;
             }
@@ -143,10 +172,16 @@ namespace SM64_Diagnostic.ManagerClasses
             if (this != _lastSelected)
                 return;
 
-            if (e.ClickedItem.Text == "Edit")
+            switch (e.ClickedItem.Text)
             {
-                _textBoxValue.ReadOnly = false;
-                _editMode = true;
+                case "Edit":
+                    _textBoxValue.ReadOnly = false;
+                    _editMode = true;
+                    break;
+                case "View As Hexadecimal":
+                    _watchVar.UseHex = !(e.ClickedItem as ToolStripMenuItem).Checked;
+                    (e.ClickedItem as ToolStripMenuItem).Checked = !(e.ClickedItem as ToolStripMenuItem).Checked;
+                    break;
             }
         }
 

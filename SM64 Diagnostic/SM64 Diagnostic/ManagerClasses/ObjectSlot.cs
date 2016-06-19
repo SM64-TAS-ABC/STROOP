@@ -22,6 +22,8 @@ namespace SM64_Diagnostic
         public int Index;
         public int? ObjectAddress = null;
 
+        public event MouseEventHandler OnClick;
+
         public Control Control
         {
             get
@@ -128,22 +130,16 @@ namespace SM64_Diagnostic
             control.MouseDown += OnDrag;
             control.DragEnter += DragEnter;
             control.DragDrop += OnDrop;
-            control.Click += OnClick;
         }
 
-        private void OnClick(object sender, EventArgs e)
+        private void OnDrag(object sender, MouseEventArgs e)
         {
-            //_manager.SelectedSlot = Index;
-        }
+            OnClick?.Invoke(sender, e);
 
-        private void OnDrag(object sender, EventArgs e)
-        {
             // Start the drag and drop but setting the object slot index in Drag and Drop data
             var objectAddress = _manager.ObjectSlotData.First((objData) => objData.Index == Index).Address;
             var dropAction = new DropAction(DropAction.ActionType.Object, objectAddress); 
             PictureBox.DoDragDrop(dropAction, DragDropEffects.All);
-
-            _manager.SelectedSlot = Index;
         }
 
         private void DragEnter(object sender, DragEventArgs e)

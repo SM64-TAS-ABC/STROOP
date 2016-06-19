@@ -3,4 +3,6 @@
   <Data type="uint16" address="0x00C7A962" absoluteAddress="true">RNG Value</Data>
   <Data type="byte" address="0x033B24A" absoluteAddress="false">Level</Data>
   <Data type="byte" address="0x033B249" absoluteAddress="false">Area</Data>
+  <Data type="byte" address="0x033B248" absoluteAddress="false">Something1</Data>
+  <Data type="byte" address="0x033BAC9" absoluteAddress="false">Working</Data>
 </OtherData>

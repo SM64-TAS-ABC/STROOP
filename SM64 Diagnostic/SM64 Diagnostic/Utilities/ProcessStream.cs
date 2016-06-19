@@ -18,6 +18,7 @@ namespace SM64_Diagnostic.Utilities
         int _offset;
         byte[] _ram;
         bool _lastUpdateBeforePausing = false;
+        Config _config;
 
         [Flags]
         private enum ThreadAccess : int
@@ -61,6 +62,14 @@ namespace SM64_Diagnostic.Utilities
         public event EventHandler OnUpdate;
         public event EventHandler OnStatusChanged;
 
+        public uint ProcessMemoryOffset
+        {
+            get
+            {
+                return (uint) _offset;
+            }
+        }
+
         public byte[] Ram
         {
             get
@@ -69,10 +78,19 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
+        public string ProcessName
+        {
+            get
+            {
+                return _config.ProcessName;
+            }
+        }
+
         public ProcessStream(Config config, Process process = null)
         {
             _offset = (int)(config.RamStartAddress & 0x0FFFFFFF);
             _process = process;
+            _config = config;
 
             _timer = new Timer();
             _timer.Interval = (int) (1000.0f / config.RefreshRateFreq);

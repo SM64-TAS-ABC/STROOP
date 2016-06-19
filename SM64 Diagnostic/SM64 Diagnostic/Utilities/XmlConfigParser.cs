@@ -294,6 +294,7 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                                 case "RamToBehaviorOffset":
                                     ramToBehaviorOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    assoc.RamOffset = ramToBehaviorOffset;
                                     break;
                             }
                         }
