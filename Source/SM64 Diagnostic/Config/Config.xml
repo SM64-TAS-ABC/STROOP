@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config>
+  <RefreshRateFreq>10</RefreshRateFreq>
+  <RAMStartAddress>0x808eba80</RAMStartAddress>
+  <ProcessDefaultName>Mupen</ProcessDefaultName>
+  <RAMSize>0x3D0900</RAMSize>
+  <ObjectSlots>
+    <FirstObjectAddress>0x8033D488</FirstObjectAddress>
+    <ObjectStructSize>0x0260</ObjectStructSize>
+    <HeaderOffset>0x00</HeaderOffset>
+    <ListNextLinkOffset>0x08</ListNextLinkOffset>
+    <ListPreviousLinkOffset>0x04</ListPreviousLinkOffset>
+    <BehaviorScriptOffset>0x020C</BehaviorScriptOffset>
+    <ObjectActiveOffset>0x74</ObjectActiveOffset>
+    <CoordinateOffsetX>0xA0</CoordinateOffsetX>
+    <CoordinateOffsetY>0xA4</CoordinateOffsetY>
+    <CoordinateOffsetZ>0xA8</CoordinateOffsetZ>
+    <MaxObjectSlots>240</MaxObjectSlots>
+  </ObjectSlots>
+  <ObjectGroups>
+    <ProcessNextLinkOffset>0x60</ProcessNextLinkOffset>
+    <ProcessPreviousLinkOffset>0x64</ProcessPreviousLinkOffset>
+    <ParentObjectOffset>0x68</ParentObjectOffset>
+    <FirstObjectGroupingAddress>0x8033CBE0</FirstObjectGroupingAddress>
+    <ProcessGroupStructSize>0x68</ProcessGroupStructSize>
+    <ProcessGroupsOrdering>
+      <Group index ="0x0B" color="#ff00a5"/>
+      <Group index ="0x09" color="#ff0000"/>
+      <Group index ="0x0A" color="#ff5400"/>
+      <Group index ="0x00" color="#ffa100"/>
+      <Group index ="0x05" color="#fff600"/>
+      <Group index ="0x04" color="#10ff00"/>
+      <Group index ="0x02" color="#00ffe9"/>
+      <Group index ="0x06" color="#0015ff"/>
+      <Group index ="0x08" color="#a100ff"/>
+      <Group index ="0x0C" color="#f200ff"/>
+    </ProcessGroupsOrdering>
+    <VacantPointerAddress color="#aaaaaa">0x80361150</VacantPointerAddress>
+  </ObjectGroups>
+  <Mario>
+    <MarioPointerAddress>0x8033b170</MarioPointerAddress>
+    <CoordinateOffsetX>0x3C</CoordinateOffsetX>
+    <CoordinateOffsetY>0x40</CoordinateOffsetY>
+    <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
+    <MarioStructSize>0xC4</MarioStructSize>
+  </Mario>
+  <LevelAddress>0x033B249</LevelAddress>
+  <AreaAddress>0x033B24A</AreaAddress>
+</Config>

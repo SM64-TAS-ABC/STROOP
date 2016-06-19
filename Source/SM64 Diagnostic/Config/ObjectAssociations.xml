@@ -1,0 +1,1366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ObjectAssociations>
+  <Config>
+    <ImageDirectory>Resources\Object Images\</ImageDirectory>
+    <DefaultImage>default.png</DefaultImage>
+    <EmptyImage>null.png</EmptyImage>
+    <RamToBehaviorOffset>0x12F14E80</RamToBehaviorOffset>
+  </Config>
+  <Mario>
+    <Image path="Mario.png"/>
+    <Color>#aaaaaa</Color>
+  </Mario>
+  <Object behaviorScriptAddress="0x13000000" name="Star Door">
+    <Image path="Star Door.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000054" name="Mr. I Pupil">
+    <Image path="Mr. I Pupil.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300008C" name="Mr. I Body">
+    <Image path="Mr. I Body.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130000AC" name="Mr. I Particle">
+    <Image path="Mr. I Particle.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130000F8" name="Pink Particle">
+    <Image path="Mr. I Particle.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000118" name="WF Big Pole">
+    <Image path="WF Big Pole.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000144" name="Pole Behavior">
+    <Image path="Pole Behavior.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000174" name="THI Wiggler's Cave Cover">
+    <Image path="THI Wiggler's Cave Cover.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000194" name="THI Wiggler's Cave Cover">
+    <Image path="THI Wiggler's Cave Cover.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130001AC" name="Cap Switch Base">
+    <Image path="Cap Switch Base.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130001CC" name="Cap Switch Button">
+    <Image path="Cap Switch Button.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130001F4" name="King Bob-omb">
+    <Image path="King Bob-omb.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000254" name="King Bob-omb Anchor">
+    <Image path="King Bob-omb Anchor.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300029C" name="Chest Top">
+    <Image path="Chest Top.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130002B8" name="Bubble Spawner">
+    <Image path="Bubble Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130002E4" name="Splash Bubble">
+    <Image path="Splash Bubble.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000338" name="Bubble">
+    <Image path="Bubble.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130003BC" name="HP Bubble">
+    <Image path="HP Bubble.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000400" name="Splash Bubble (Under Water)">
+    <Image path="Splash Bubble 2.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300046C" name="Aquarium Bubble">
+    <Image path="Splash Bubble.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000494" name="Aquarium Bubble Spawner">
+    <Image path="Aquarium Bubble Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130004A8" name="Cannon Base">
+    <Image path="Cannon Base.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130004E4" name="Cannon Shaft">
+    <Image path="Cannon Shaft.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000500" name="Cannon Base">
+    <Image path="Cannon Base.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000528" name="Chuckya">
+    <Image path="Chuckya.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000584" name="Chuckya Anchor">
+    <Image path="Chuckya.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130005B4" name="Rotating Platform">
+    <Image path="WDW Rotating Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130005D8" name="WF Tower">
+    <Image path="WF Tower.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000600" name="Bullet Bill Blaster">
+    <Image path="Bullet Bill Blaster.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000624" name="Blastable Corner">
+    <Image path="Blastable Corner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000638" name="Blastable Corner">
+    <Image path="Blastable Corner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300066C" name="Falling Plank">
+    <Image path="Falling Plank.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130006A4" name="WF Tower Breakable Block">
+    <Image path="WF Tower Breakable Block.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130006D8" name="Rotating Bridge">
+    <Image path="WF Rotating Bridge.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130006E0" name="WF Rotating Bridge">
+    <Image path="WF Rotating Bridge.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000708" name="Water Shell">
+    <Image path="Shell.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300075C" name="Teleport">
+    <Image path="Teleport.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000780" name="Warp">
+    <Image path="Warp.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130007A0" name="Warp Pipe">
+    <Image path="Warp Pipe.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130007DC" name="White Puff / Sand / Dirt / Snow">
+    <Image path="White Puff.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130007F8" name="Power Star">
+    <Image path="Power Star.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300080C" name="Power Star">
+    <Image path="Power Star.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000830" name="Blue Coin">
+    <Image path="Blue Coin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000888" name="Boo Coin">
+    <Image path="Boo Coin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130008EC" name="Coin Spawner">
+    <Image path="Coin Ring Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300090C" name="One Coin">
+    <Image path="Yellow Coin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300091C" name="Yellow / Blue Coin">
+    <Image path="Yellow Coin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000940" name="Temporary Coin">
+    <Image path="Yellow Coin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130009E0" name="Sparkles (Big)">
+    <Image path="Sparkles (Big).png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000A14" name="Sparkles (Small)">
+    <Image path="Sparkles (Small).png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000A34" name="Star Particle">
+    <Image path="Star Particle.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000A54" name="Star Particle Spawner">
+    <Image path="Star Particle Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000A78" name="Star Particle">
+    <Image path="Star Particle.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000A98" name="Star Particle Spawner">
+    <Image path="Star Particle Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000ABC" name="Triangle Particle">
+    <Image path="Triangle Particle.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000AFC" name="Warp Door">
+    <Image path="Warp Door.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000B0C" name="Door">
+    <Image path="Door.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000B58" name="Grindel">
+    <Image path="Grindel.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000B8C" name="Thwomp">
+    <Image path="Thwomp.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000BC8" name="Thwomp">
+    <Image path="Thwomp.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000C04" name="Falling Block">
+    <Image path="Falling Block.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000C28" name="Falling Block Spawner">
+    <Image path="Falling Block Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000C44" name="Falling Block Spawner">
+    <Image path="Falling Block Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000C64" name="Falling Block Spawner">
+    <Image path="Falling Block Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000C84" name="Wall Flame">
+    <Image path="Flame.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000CFC" name="RR Elevator Platform">
+    <Image path="RR Elevator Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000D30" name="HMC Elevator">
+    <Image path="HMC Elevator.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000DB4" name="Shard">
+    <Image path="Box Shard.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000DD8" name="Waterfall Mist">
+    <Image path="Waterfall Mist.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000E24" name="White Puff Spawner">
+    <Image path="White Puff Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000E3C" name="Sand Spawner">
+    <Image path="Sand Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000E58" name="Snow Spawner">
+    <Image path="Snow Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000E70" name="Wind Particle">
+    <Image path="Wind Particle.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000E88" name="Toad">
+    <Image path="Toad.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000EAC" name="Peach">
+    <Image path="Peach.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000F08" name="Monkey Cage">
+    <Image path="Ukiki.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000F48" name="Monkey Cage">
+    <Image path="Monkey Cage.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000F9C" name="Rising and Lowering 3-Platform Group">
+    <Image path="Rising and Lowering 3-Platform Group.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000FC8" name="Rising and Lowering Mesh Platform">
+    <Image path="Rising and Lowering Mesh Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001000" name="Rising and Lowering Pole">
+    <Image path="Rising and Lowering Pole.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001030" name="BitFS Tilting Inverted Pyramid Platform">
+    <Image path="BitFS Tilting Inverted Pyramid Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001064" name="Springy Staircase">
+    <Image path="Springy Staircase.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130010D8" name="RR Rotating Flame Shooter Platform">
+    <Image path="RR Rotating Flame Shooter Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001108" name="Flame Spawner">
+    <Image path="Flame Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001124" name="Flame">
+    <Image path="Flame.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001168" name="Lava Bubble Spawner">
+    <Image path="Lava Bubble Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001184" name="Lava Bubble">
+    <Image path="Lava Bubble.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130011D0" name="Shockwave">
+    <Image path="Shockwave.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130011EC" name="Mario Burning Flame">
+    <Image path="Mario Burning Flame.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001214" name="Mario Burning Smoke">
+    <Image path="Black Smoke.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001254" name="Black Flame Smoke">
+    <Image path="Black Smoke.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300127C" name="Grey Flame Smoke">
+    <Image path="Grey Smoke.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001298" name="WF Water Level Checker">
+    <Image path="WF Water Level Checker.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130012B4" name="Spindrift">
+    <Image path="Spindrift.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001318" name="WF Tower Platform">
+    <Image path="WF Tower Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001340" name="Checkered Elevator">
+    <Image path="Checkered Elevator.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001368" name="WF Floating Square Platform">
+    <Image path="WF Floating Square Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001390" name="Tree Particle Spawner">
+    <Image path="Tree Particle Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130013A8" name="Snow">
+    <Image path="Snow.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130013C4" name="Leaf">
+    <Image path="Leaf.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001408" name="Revolving Diamond Platform">
+    <Image path="Revolving Diamond Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300142C" name="Piranha Plant Sleeping Bubble">
+    <Image path="Bubble.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001448" name="Piranha Plant Wake Up Bubble">
+    <Image path="Bubble.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001468" name="! Switch">
+    <Image path="! Switch.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001478" name="! Switch">
+    <Image path="! Switch.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001484" name="! Switch">
+    <Image path="! Switch.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130014AC" name="! Switch">
+    <Image path="! Switch.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130014BC" name="Hidden Box">
+    <Image path="Cork Box.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130014E0" name="Cork Box">
+    <Image path="Cork Box.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001518" name="Pushable Block">
+    <Image path="Pushable Block.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001548" name="Heave-Ho">
+    <Image path="Heave-Ho.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130015A4" name="Heave-Ho Anchor">
+    <Image path="Heave-Ho Anchor.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001650" name="Crazy Box">
+    <Image path="Crazy Box.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300167C" name="Boo Cage">
+    <Image path="Boo Cage.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130016E4" name="Bowser Key (Collectible)">
+    <Image path="Bowser Key.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001714" name="Grand Star">
+    <Image path="Power Star.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300179C" name="Bullet Bill">
+    <Image path="Bullet Bill.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130017F4" name="White Puff">
+    <Image path="White Puff.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001828" name="Bowser Tail Anchor">
+    <Image path="Bowser Tail Anchor.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001850" name="Bowser">
+    <Image path="Bowser.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130018CC" name="Bowser Body Anchor">
+    <Image path="Bowser Body Anchor.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001904" name="Flame Breath Spawner">
+    <Image path="Flame Breath Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001920" name="BitFS Fight Platform">
+    <Image path="BitFS Fight Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001958" name="Falling Block">
+    <Image path="Falling Block.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001984" name="Flame Breath">
+    <Image path="Flame Breath.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130019C8" name="Falling Flame">
+    <Image path="Falling Flame.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001A0C" name="Blue Lava Bubble Spawner">
+    <Image path="Blue Lava Bubble Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001A30" name="Blue Lava Bubble Flame">
+    <Image path="Blue Flame.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001A74" name="Flame Breath">
+    <Image path="Flame Breath.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001AA4" name="Flame">
+    <Image path="Flame.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001AE8" name="Flame">
+    <Image path="Flame.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001B2C" name="Aquarium Fish">
+    <Image path="Blue Fish.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001B54" name="Aquarium Fish Spawner">
+    <Image path="Blue Fish Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001B70" name="Checkered Elevator Spawner">
+    <Image path="Checkered Elevator Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001B88" name="Checkered Elevator">
+    <Image path="Checkered Elevator.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001BB4" name="Bowser Key (Opening Door)">
+    <Image path="Bowser Key.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001BD4" name="Bowser Key (Putting Away)">
+    <Image path="Bowser Key.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001C04" name="Poundable Pillar">
+    <Image path="Poundable Pillar.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001C58" name="Moat Grills">
+    <Image path="Grills.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001C7C" name="TTC Painting Minute Hand">
+    <Image path="TTC Painting Minute Hand.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001C8C" name="TTC Painting Hour Hand">
+    <Image path="TTC Painting Hour Hand.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001CB0" name="Ukiki">
+    <Image path="Ukiki.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001D14" name="LLL Rotating Hexagonal Platform">
+    <Image path="LLL Rotating Hexagonal Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001D40" name="LLL Sinking Stone Platform">
+    <Image path="LLL Sinking Stone Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001D78" name="LLL Transporting Cage Platform">
+    <Image path="LLL Transporting Cage Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001DA8" name="Fire Bar">
+    <Image path="Fire Bar.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001DCC" name="Flame">
+    <Image path="Flame.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001E04" name="Rising and Lowering Wood">
+    <Image path="Rising and Lowering Wood.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001E30" name="Rising and Lowering Wood Spawner">
+    <Image path="Rising and Lowering Wood Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001E4C" name="Volcano Flame">
+    <Image path="Volcano Flame.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001E6C" name="Rotating Volcano Platform">
+    <Image path="Rotating Volcano Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001E94" name="Rising and Lowering Long Platform">
+    <Image path="Rising and Lowering Long Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001EC4" name="Rising and Lowering 4-Platform Group">
+    <Image path="Rising and Lowering 4-Platform Group.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001EF8" name="LLL Tilting Inverted Pyramid Platform">
+    <Image path="LLL Tilting Inverted Pyramid Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001F3C" name="Koopa Shell">
+    <Image path="Shell.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001F90" name="Tox Box">
+    <Image path="Tox Box.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001FBC" name="Piranha Plant">
+    <Image path="Piranha Plant.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002018" name="LLL Metal Mesh Platform">
+    <Image path="LLL Metal Mesh Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece">
+    <Image path="Bowser Puzzle Piece.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002068" name="Bowser Puzzle Coin Spawner">
+    <Image path="Bowser Puzzle Coin Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002088" name="Mother Penguin">
+    <Image path="Penguin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130020E8" name="Baby Penguin">
+    <Image path="Baby Penguin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300213C" name="Fish Spawner">
+    <Image path="Blue Fish Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300214C" name="Fish Spawner">
+    <Image path="Blue Fish Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300215C" name="Fish Spawner">
+    <Image path="Blue Fish Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002178" name="Blue Fish">
+    <Image path="Blue Fish.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002194" name="Express Elevator">
+    <Image path="Express Elevator.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130021C0" name="Express Elevator">
+    <Image path="Express Elevator.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130021E4" name="Bub Spawner">
+    <Image path="Bub Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300220C" name="Bub">
+    <Image path="Bub.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002250" name="Item Block">
+    <Image path="Item Block.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300227C" name="Exclamation Mark">
+    <Image path="Exclamation Mark.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300229C" name="Sound Effect">
+    <Image path="Sound Effect.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130022B8" name="JRB Rock">
+    <Image path="JRB Rock.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130022D8" name="Bowser's Sub Gate">
+    <Image path="Bowser's Sub Gate.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002308" name="Bowser's Sub">
+    <Image path="Bowser's Sub.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002338" name="Sushi">
+    <Image path="Sushi.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002388" name="Sushi Hitbox">
+    <Image path="Sushi Hitbox.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130023A4" name="Skull Crate">
+    <Image path="Skull Crate.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130023D0" name="JRB Floating Ship Part">
+    <Image path="JRB Ship Part.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300244C" name="JRB Sunken Ship Part">
+    <Image path="JRB Ship Part.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130024AC" name="Dust Spawner">
+    <Image path="Dust Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130024DC" name="Dust Glow">
+    <Image path="Dust Glow.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002500" name="Dust">
+    <Image path="Dust.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002528" name="White Puff">
+    <Image path="White Puff.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002568" name="Blue Coin Block">
+    <Image path="Blue Coin Block.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002588" name="Blue Coin">
+    <Image path="Blue Coin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130025C0" name="Openable Gate">
+    <Image path="Openable Gate.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130025E0" name="Openable Gate Behavior">
+    <Image path="Openable Gate Behavior 2.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130025F8" name="Crystal Tap">
+    <Image path="Crystal Tap.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002634" name="Tweester Sand">
+    <Image path="Dirt.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002650" name="Tweester">
+    <Image path="Tweester.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002684" name="Boo Spawner">
+    <Image path="Boo Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130026D4" name="Castle Boo">
+    <Image path="Boo.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002710" name="Cage Boo">
+    <Image path="Big Boo.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002768" name="Big Boo (Balcony)">
+    <Image path="Big Boo.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300277C" name="Big Boo (Merry-Go-Round)">
+    <Image path="Big Boo.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002790" name="Big Boo (Lobby)">
+    <Image path="Big Boo.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130027E4" name="Boo">
+    <Image path="Boo.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130027F4" name="Boo (Merry-Go-Round)">
+    <Image path="Boo.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002804" name="Boo (Activates Text)">
+    <Image path="Boo.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300286C" name="BBH Lobby Step">
+    <Image path="BBH Lobby Step.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130028CC" name="Loose Floor Panel">
+    <Image path="Loose Floor Panel.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130028FC" name="Bookshelf">
+    <Image path="Bookshelf.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300292C" name="Mesh Elevator">
+    <Image path="Mesh Elevator.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002968" name="Merry-Go-Round">
+    <Image path="Merry-Go-Round.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002998" name="Shortcut Sound Effect">
+    <Image path="Sound Effect.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002A20" name="Star??">
+    <Image path="Power Star.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002A48" name="Landscape Visual">
+    <Image path="Landscape Visual.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002A7C" name="BitDW Trap Door">
+    <Image path="BitDW Trap Door.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002AA4" name="Tree">
+    <Image path="Tree.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002AD0" name="Glow">
+    <Image path="Glow.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002AF0" name="Glow">
+    <Image path="Glow.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002B08" name="Sparkles">
+    <Image path="Sparkles.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002B5C" name="Scuttlebug">
+    <Image path="Scuttlebug.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002BA0" name="Scuttlebug Spawner">
+    <Image path="Scuttlebug Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002BB8" name="King Whomp">
+    <Image path="King Whomp.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002BCC" name="Whomp">
+    <Image path="Whomp.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002C14" name="Splash">
+    <Image path="Splash.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002C60" name="Splash Bubble (In Air)">
+    <Image path="Splash Bubble.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002C7C" name="Water Ripples">
+    <Image path="Water Ripples.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002CB0" name="Object Bubble Ripples">
+    <Image path="Water Ripples.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002CE0" name="Mario Water Waves">
+    <Image path="Water Waves.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002D28" name="Water Ripples">
+    <Image path="Water Ripples.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002DB0" name="Sushi Water Waves">
+    <Image path="Water Waves.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002DC0" name="Water Waves">
+    <Image path="Water Waves.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002E04" name="Wind Particle">
+    <Image path="Wind Particle.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002E20" name="Wind Behavior">
+    <Image path="Wind Behavior.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002E3C" name="Wind Particle Spawner">
+    <Image path="Wind Particle Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002E58" name="Walking Penguin">
+    <Image path="Penguin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002EA8" name="WF Pole Ball">
+    <Image path="WF Pole Ball.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002EC0" name="Mario">
+    <Image path="Mario.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002EF8" name="Toad">
+    <Image path="Toad.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F40" name="Star to Unlock Door">
+    <Image path="Power Star.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F60" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F64" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F68" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F6C" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F70" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F74" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F78" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F7C" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F80" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F84" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F8C" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F88" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F90" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002F94" name="Mario Spawner">
+    <Image path="Mario Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300302C" name="Selectable Star">
+    <Image path="Power Star.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003048" name="Course Select">
+    <Image path="Course Select.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003068" name="Yellow Coin">
+    <Image path="Yellow Coin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130030A4" name="Blue Coin">
+    <Image path="Blue Coin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130030D4" name="Blue Coin">
+    <Image path="Blue Coin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003104" name="Blue Coin">
+    <Image path="Blue Coin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003134" name="Seaweed">
+    <Image path="Seaweed.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003158" name="Seaweed Spawner">
+    <Image path="Seaweed Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003174" name="Bob-omb">
+    <Image path="Bob-omb.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130031AC" name="Bob-omb Fuse Smoke">
+    <Image path="Bob-omb Fuse Smoke.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130031DC" name="Bob-omb Buddy">
+    <Image path="Bob-omb Buddy.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003228" name="Bob-omb Buddy">
+    <Image path="Bob-omb Buddy.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003274" name="Cannon Lid">
+    <Image path="Cannon Lid.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130032A8" name="Whirlpool">
+    <Image path="Whirlpool.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130032C8" name="Jet Stream Bubbles">
+    <Image path="Jet Stream Bubbles.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130032E0" name="Sign">
+    <Image path="Sign.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003324" name="Bulletin Board">
+    <Image path="Bulletin Board.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003354" name="Amp">
+    <Image path="Amp.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003388" name="Amp">
+    <Image path="Amp.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130033BC" name="Butterfly">
+    <Image path="Butterfly.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130033EC" name="Hoot">
+    <Image path="Hoot.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003484" name="Object Bubble">
+    <Image path="Splash Bubble.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130034C4" name="Object Water Waves">
+    <Image path="Water Waves.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003510" name="Explosion">
+    <Image path="Bob-omb Explosion.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003558" name="Explosion Smoke">
+    <Image path="Grey Smoke.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003588" name="Cork Box Dust">
+    <Image path="Cork Box Dust.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003614" name="Grabbable Cork Box / Bob-omb Spawner">
+    <Image path="Grabbable Cork Box Bob-omb Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300362C" name="Bully">
+    <Image path="Bully.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003660" name="Big Bully">
+    <Image path="Big Bully.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003694" name="Bully">
+    <Image path="Bully.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003700" name="Chill Bully">
+    <Image path="Chill Bully.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003738" name="Manta Ring Spawner">
+    <Image path="Manta Ring Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003750" name="Manta Ring">
+    <Image path="Manta Ring.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003798" name="Manta Ring">
+    <Image path="Manta Ring.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130037EC" name="Floating Mine">
+    <Image path="Floating Mine.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300381C" name="Floating Mine Explosion">
+    <Image path="Floating Mine Explosion.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003840" name="Floating Mine Smoke">
+    <Image path="Floating Mine Smoke.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003868" name="Celebration Star / Key">
+    <Image path="Celebration Star _ Key.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003888" name="Sparkles (Big)">
+    <Image path="Sparkles (Big).png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130038B0" name="White Puff Spawner">
+    <Image path="White Puff Spawner 2.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130038E8" name="LLL Drawbridge">
+    <Image path="LLL Drawbridge.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003910" name="Small Bomp">
+    <Image path="Small Bomp.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003940" name="Large Bomp">
+    <Image path="Large Bomp.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003970" name="WF In-and-Out Platform">
+    <Image path="WF In-and-Out Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130039A0" name="Moneybag">
+    <Image path="Moneybag.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130039D4" name="Moneybag Coin">
+    <Image path="Moneybag Coin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003A08" name="Bowling Ball">
+    <Image path="Bowling Ball.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003A30" name="Bowling Ball">
+    <Image path="Bowling Ball.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003A58" name="Bowling Ball">
+    <Image path="Bowling Ball.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003A80" name="Bowling Ball Spawner">
+    <Image path="Bowling Ball Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003AA4" name="Bowling Ball Spawner">
+    <Image path="Bowling Ball Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003AC8" name="Bowling Ball Spawner">
+    <Image path="Bowling Ball Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003AE0" name="Cruiser Wing">
+    <Image path="Cruiser Wing.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003B00" name="Spindel">
+    <Image path="Spindel.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003B30" name="Pyramid Up-and-Down Step">
+    <Image path="Pyramid Up-and-Down Step.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003B60" name="Pyramid Elevator">
+    <Image path="Pyramid Elevator.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003B98" name="Elevator Track Ball">
+    <Image path="Bowling Ball.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003BB4" name="Pyramid Top">
+    <Image path="Pyramid Top.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003BEC" name="Pyramid Shard">
+    <Image path="Box Shard.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003C0C" name="Pyramid Top Activator">
+    <Image path="Pyramid Top Activator.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003C30" name="Waterfall Sound Effect">
+    <Image path="Sound Effect.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003C44" name="Lavafall Sound Effect">
+    <Image path="Sound Effect.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003C58" name="Castle Flag">
+    <Image path="Castle Flag.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003C7C" name="Bird Sound Effect">
+    <Image path="Sound Effect.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003CA4" name="Falling Sand Sound Effect">
+    <Image path="Sound Effect.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003CB8" name="Cannon Grills">
+    <Image path="Grills.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003CE4" name="Snowman's Body">
+    <Image path="Snowman's Body.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003D0C" name="Snowman's Head">
+    <Image path="Snowman's Head.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003D34" name="Snowman Path Checkpoint">
+    <Image path="Snowman Path Checkpoint.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003D4C" name="Snowman's Body">
+    <Image path="Snowman's Body.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003D74" name="Rolling Rock">
+    <Image path="Rolling Rock.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003DA0" name="Rolling Rock Spawner">
+    <Image path="Rolling Rock Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003DB8" name="Wing Cap">
+    <Image path="Wing Cap.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003DD8" name="Metal Cap">
+    <Image path="Metal Cap.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003DF8" name="Mario's Cap">
+    <Image path="Mario's Cap.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003E1C" name="Vanish Cap">
+    <Image path="Vanish Cap.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003E3C" name="Power Star">
+    <Image path="Power Star.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003E64" name="Power Star">
+    <Image path="Power Star.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003E8C" name="Red Coin Star Spawner">
+    <Image path="Red Coin Star Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003EAC" name="Red Coin">
+    <Image path="Red Coin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003EE4" name="Red Coin Star Spawner">
+    <Image path="Red Coin Star Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003EFC" name="Secret Star Spawner">
+    <Image path="Secret Star Spawner 3.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003F1C" name="Secret">
+    <Image path="Secret.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003F40" name="Rolling Log 2?">
+    <Image path="Rolling Log.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003F78" name="Volcano Crusher">
+    <Image path="Volcano Crusher.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003FA4" name="Rolling Log">
+    <Image path="Rolling Log.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003FDC" name="1-Up">
+    <Image path="1-Up.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004010" name="1-Up">
+    <Image path="1-Up.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004044" name="1-Up">
+    <Image path="1-Up.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300407C" name="1-Up">
+    <Image path="1-Up.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130040B4" name="1-Up">
+    <Image path="1-Up.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130040EC" name="1-Up">
+    <Image path="1-Up.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004124" name="1-Up Activator">
+    <Image path="1-Up Activator.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004148" name="1-Up">
+    <Image path="1-Up.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004180" name="1-Up Activator">
+    <Image path="1-Up Activator.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130041A4" name="1-Up &amp; 1-Up Activator Spawner">
+    <Image path="1-Up _ 1-Up Activator Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130041BC" name="HMC Directional Elevator">
+    <Image path="HMC Directional Elevator.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130041F0" name="HMC Directional Elevator Button">
+    <Image path="HMC Directional Elevator Button.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004218" name="Grabbable Cork Box">
+    <Image path="Grabbable Cork Box.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004244" name="Sliding Snow Mound">
+    <Image path="Sliding Snow Mound.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004270" name="Sliding Snow Mound Spawner">
+    <Image path="Sliding Snow Mound Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004284" name="Short Wooden Board">
+    <Image path="Short Wooden Board.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130042B4" name="Long Wooden Board">
+    <Image path="Long Wooden Board.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130042E4" name="JRB Wooden Board">
+    <Image path="JRB Wooden Board.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004314" name="Arrow Lift">
+    <Image path="Arrow Lift.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004348" name="Number">
+    <Image path="Number.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004370" name="Manta Ray">
+    <Image path="Manta Ray.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130043A0" name="Falling Pillar">
+    <Image path="Falling Pillar.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130043E0" name="Falling Pillar Base">
+    <Image path="Falling Pillar Base.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300442C" name="TTC Painting Pendulum">
+    <Image path="TTC Painting Pendulum.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300444C" name="Chest Star Spawner">
+    <Image path="Chest Star Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004470" name="Chest Star Spawner">
+    <Image path="Chest Star Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004494" name="Chest Star Spawner">
+    <Image path="Chest Star Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130044B8" name="Chest Bottom">
+    <Image path="Chest Bottom.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130044E0" name="Chest Top">
+    <Image path="Chest Top.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130044FC" name="MIPS">
+    <Image path="MIPS.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004538" name="Yoshi">
+    <Image path="Yoshi.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004580" name="Koopa">
+    <Image path="Koopa.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130045D0" name="Koopa the Quick Flag">
+    <Image path="Koopa the Quick Flag.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130045F8" name="Koopa the Quick Flag">
+    <Image path="Koopa the Quick Flag.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004634" name="Pokey Spawner">
+    <Image path="Pokey Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004668" name="Pokey Head / Body Part">
+    <Image path="Pokey Body Part.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004698" name="Swooper">
+    <Image path="Swooper.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130046DC" name="Fly Guy">
+    <Image path="Fly Guy.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300472C" name="Goomba">
+    <Image path="Goomba.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004770" name="Goomba Triplet Spawner">
+    <Image path="Goomba Triplet Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300478C" name="Chain Chomp">
+    <Image path="Chain Chomp.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130047E4" name="Chain Chomp Pivot / Chain">
+    <Image path="Chain Chomp Chain.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300481C" name="Post">
+    <Image path="Post.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004868" name="Chain Chomp Gate">
+    <Image path="Chain Chomp Gate.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004898" name="Wiggler Head">
+    <Image path="Wiggler Head.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130048E0" name="Wiggler Body Part">
+    <Image path="Wiggler Body Part.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004918" name="Lakitu">
+    <Image path="Lakitu.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004954" name="Camera Lakitu">
+    <Image path="Camera Lakitu.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004988" name="Cloud Spawner">
+    <Image path="Cloud Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130049AC" name="Cloud Puff">
+    <Image path="Cloud Puff.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130049C8" name="Spiny">
+    <Image path="Spiny.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004A00" name="Monty Mole">
+    <Image path="Monty Mole.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004A58" name="Monty Mole Hole">
+    <Image path="Monty Mole Hole.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004A78" name="Pebble">
+    <Image path="Pebble.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004AB0" name="Carpet / Ski Lift / Fixed Track Elevator">
+    <Image path="Carpet.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004AF4" name="Elevator Track Ball">
+    <Image path="Bowling Ball.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004B1C" name="See Saw Platform">
+    <Image path="See Saw Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004B44" name="Revolving Elevator Group">
+    <Image path="Revolving Elevator Group.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004B6C" name="Revolving Elevator Platform">
+    <Image path="Revolving Elevator Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004B8C" name="Bubble Bomb Spawner">
+    <Image path="Bubble Bomb Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004BA8" name="Bubble Bomb">
+    <Image path="Bubble Bomb.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004BD4" name="Bubble Bomb Shadow">
+    <Image path="Bubble Bomb Shadow.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004BF0" name="TTC Rotating Block / Triangular Prism">
+    <Image path="TTC Rotating Block _ Triangular Prism.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004C24" name="TTC Pendulum">
+    <Image path="TTC Pendulum.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004C5C" name="TTC Treadmill">
+    <Image path="TTC Treadmill.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004C94" name="TTC Moving Bar">
+    <Image path="TTC Moving Bar.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004CCC" name="TTC Rotating Cog / Triangle">
+    <Image path="TTC Rotating Cog _ Triangle.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004CF8" name="TTC Pit Block">
+    <Image path="TTC Pit Block.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004D28" name="TTC Elevator Platform">
+    <Image path="TTC Elevator Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004D64" name="TTC Rotating Hand / 2D Cog">
+    <Image path="TTC Rotating Hand _ 2D Cog.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004D90" name="TTC Red Coin Spinner">
+    <Image path="TTC Red Coin Spinner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004DBC" name="Mr. Blizzard">
+    <Image path="Mr. Blizzard.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004E08" name="Snowball">
+    <Image path="Snowball.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004E4C" name="Back-and-Forth Platform">
+    <Image path="Back-and-Forth Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004E78" name="Rotating Octagonal Platform">
+    <Image path="Rotating Octagonal Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004EA0" name="Structure Activated by ! Switch">
+    <Image path="Tricky Triangles.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004ECC" name="BitFS Elevator / BitS Arrow Platform">
+    <Image path="Arrow Platform.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004EF8" name="Spinning Heart">
+    <Image path="Spinning Heart.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004F10" name="Enemy Cannon Base">
+    <Image path="Enemy Cannon Base.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004F28" name="Enemy Cannon Shaft">
+    <Image path="Enemy Cannon Shaft.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004F40" name="Unagi">
+    <Image path="Unagi.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004F78" name="Unagi Hitbox">
+    <Image path="Unagi Hitbox.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004F90" name="Dorrie">
+    <Image path="Dorrie.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004FD4" name="Haunted Chair">
+    <Image path="Haunted Chair.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005024" name="Mad Piano">
+    <Image path="Mad Piano.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300506C" name="Bookend">
+    <Image path="Bookend.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130050B4" name="Bookend Spawner">
+    <Image path="Bookend Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130050F4" name="Book Switch">
+    <Image path="Book Switch.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005120" name="Piranha Plant">
+    <Image path="Piranha Plant.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005158" name="Fire">
+    <Image path="Fire.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300518C" name="Fire Spitter">
+    <Image path="Bowling Ball.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130051AC" name="Residual Fire">
+    <Image path="Residual Fire.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130051E0" name="Snufit">
+    <Image path="Snufit.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300521C" name="Snufit Bullet">
+    <Image path="Bowling Ball.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300525C" name="Grindel">
+    <Image path="Grindel.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130052B4" name="Eyerok Behavior">
+    <Image path="Eyerok Behavior.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130052D0" name="Eyerok Hand">
+    <Image path="Eyerok Hand.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005310" name="Klepto">
+    <Image path="Klepto.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005354" name="Bird">
+    <Image path="Bird.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005380" name="Racing Penguin">
+    <Image path="Penguin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130053C4" name="Finishing Line Checkpoint">
+    <Image path="Finishing Line Checkpoint.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130053DC" name="Shortcut Checkpoint">
+    <Image path="Shortcut Checkpoint.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005414" name="Coffin">
+    <Image path="Coffin.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005440" name="Clam">
+    <Image path="Clam.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005468" name="Skeeter">
+    <Image path="Skeeter 2.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130054A0" name="Skeeter Water Waves">
+    <Image path="Water Waves.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130054B8" name="Swing">
+    <Image path="Swing.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130054EC" name="Donut Lift Spawner">
+    <Image path="Donut Lift Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005504" name="Donut Lift">
+    <Image path="Donut Lift.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005528" name="DDD Pole">
+    <Image path="DDD Pole.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300556C" name="Star Marker">
+    <Image path="Star Marker.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005598" name="Butterfly Spawner">
+    <Image path="Butterfly Spawner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130055DC" name="Bubba">
+    <Image path="Bubba.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005638" name="Peach">
+    <Image path="Peach.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300565C" name="Bird">
+    <Image path="Bird.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005680" name="Bird">
+    <Image path="Bird.png"/>
+  </Object>
+  <!--<Object behaviorScriptAddress="0x130EDED0" name="Bubble Splash Spawner">
+    <Image path="Bird.png"/>
+  </Object>-->
+</ObjectAssociations>
