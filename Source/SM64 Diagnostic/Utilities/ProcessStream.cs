@@ -238,8 +238,15 @@ namespace SM64_Diagnostic.Utilities
         {
             byte[] readBytes = new byte[length];
             address &= ~0x80000000U;
-            bool success = ReadProcessMemory(fixAddress ? LittleEndianessAddressing.AddressFix((int) address, length) : (int)address, 
-                readBytes, absoluteAddress);
+            int fixedAddress = fixAddress ? LittleEndianessAddressing.AddressFix((int)address, length) : (int)address;
+
+            if (!absoluteAddress)
+            {
+                Array.Copy(_ram, fixedAddress, readBytes, 0, length);
+                return readBytes;
+            }
+
+            bool success = ReadProcessMemory(fixedAddress, readBytes, absoluteAddress);
 
             return readBytes;
         }

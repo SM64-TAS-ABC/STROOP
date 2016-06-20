@@ -14,6 +14,8 @@ namespace SM64_Diagnostic.Structs
         public byte Area;
         public RectangleF Coordinates;
         public float Y;
+        public string Name;
+        public string SubName;
 
         public static bool operator ==(Map a, Map b)
         {

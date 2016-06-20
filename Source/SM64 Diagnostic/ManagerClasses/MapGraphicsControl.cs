@@ -55,13 +55,13 @@ namespace SM64_Diagnostic.ManagerClasses
             }
 
             GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
 
-            DrawTexture(_mapText, MapView);
+            GL.LoadIdentity();
+            DrawTexture(_mapText, new PointF(MapView.X + MapView.Width / 2, MapView.Y + MapView.Height / 2), MapView.Size);
 
             foreach (var mapObj in _mapObjects)
             {
-                DrawTexture(mapObj.TextureId, new RectangleF(mapObj.Location.X - 30/2, mapObj.Location.Y - 30/2, 30.0f, 30.0f));
+                DrawTexture(mapObj.TextureId, mapObj.LocationOnContol, new SizeF(30.0f, 30.0f), mapObj.Rotation);
             }
 
             Control.SwapBuffers();
@@ -112,15 +112,18 @@ namespace SM64_Diagnostic.ManagerClasses
                 GL.DeleteTexture(oldText);
         }
 
-        static void DrawTexture(int texId, RectangleF loc)
+        static void DrawTexture(int texId, PointF loc, SizeF size, float angle = 0)
         {
+            GL.LoadIdentity();
+            GL.Translate(new Vector3(loc.X, loc.Y, 0));
+            GL.Rotate(360-angle, Vector3.UnitZ);
             GL.BindTexture(TextureTarget.Texture2D, texId);
             GL.Begin(PrimitiveType.Quads);
 
-            GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(loc.Left, loc.Bottom);
-            GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(loc.Right, loc.Bottom);
-            GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(loc.Right, loc.Top);
-            GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(loc.Left, loc.Top);
+            GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(-size.Width / 2, size.Height / 2);
+            GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(size.Width / 2, size.Height / 2);
+            GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(size.Width / 2, -size.Height / 2);
+            GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(-size.Width / 2, -size.Height / 2);
 
             GL.End();
         }
@@ -133,14 +136,20 @@ namespace SM64_Diagnostic.ManagerClasses
             // We will not upload mipmaps, so disable mipmapping (otherwise the texture will not appear).
             // We can use GL.GenerateMipmaps() or GL.Ext.GenerateMipmaps() to create
             // mipmaps automatically. In that case, use TextureMinFilter.LinearMipmapLinear to enable them.
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapNearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+   
             BitmapData bmp_data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
-            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, bmp_data.Width, bmp_data.Height, 0,
-                OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, bmp_data.Scan0);
+            //GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, bmp_data.Width, bmp_data.Height, 0,
+                //OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, bmp_data.Scan0);
 
+            GL.TexStorage2D(TextureTarget2d.Texture2D, 8, SizedInternalFormat.Rgba8, bmp.Width, bmp.Height);
+            GL.TexSubImage2D(
+                TextureTarget.Texture2D, 0, 0, 0, bmp.Width, bmp.Height​, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, bmp_data.Scan0);
             bmp.UnlockBits(bmp_data);
+
+            GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
 
             return id;
         }

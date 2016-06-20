@@ -14,6 +14,7 @@
           <xs:complexType>
             <xs:all>
               <xs:element name="ImageDirectory" type="xs:string"/>
+              <xs:element name="MapImageDirectory" type="xs:string"/>
               <xs:element name="DefaultImage" type="xs:string"/>
               <xs:element name="EmptyImage" type="xs:string"/>
               <xs:element name="RamToBehaviorOffset" type="types:address"/>
@@ -28,6 +29,12 @@
                   <xs:attribute name="path" use="required" type="xs:string"/>
                 </xs:complexType>
               </xs:element>
+              <xs:element name="MapImage" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute name="path" use="required" type="xs:string"/>
+                  <xs:attribute name="rotates" use="optional" type="xs:boolean"/>
+                </xs:complexType>
+              </xs:element>
               <xs:element name="Color" type="types:color"/>
             </xs:all>
           </xs:complexType>
@@ -38,6 +45,12 @@
               <xs:element name="Image">
                 <xs:complexType>
                   <xs:attribute name="path" use="required" type="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="MapImage" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute name="path" use="required" type="xs:string"/>
+                  <xs:attribute name="rotates" use="optional" type="xs:boolean"/>
                 </xs:complexType>
               </xs:element>
             </xs:all>

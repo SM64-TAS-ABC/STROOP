@@ -23,6 +23,20 @@ namespace SM64_Diagnostic.ManagerClasses
         List<Map> _currentMapList = null;
         MapGraphicsControl _mapGraphics;
         MapObject _marioMapObj;
+        MapGui _mapGui;
+        bool _isLoaded = false;
+
+        public MapObject MarioMapObject
+        {
+            get
+            {
+                return _marioMapObj;
+            }
+            set
+            {
+                _marioMapObj = value;
+            }
+        }
 
         public bool Visible
         {
@@ -37,29 +51,32 @@ namespace SM64_Diagnostic.ManagerClasses
         }
 
         public MapManager(ProcessStream stream, Config config, MapAssociations mapAssoc,
-            GLControl mapControl)
+            MapGui mapGui)
         {
             _stream = stream;
             _config = config;
             _assoc = mapAssoc;
+            _mapGui = mapGui;
 
-            _mapGraphics = new MapGraphicsControl(mapControl);
-            _mapGraphics.Load();
+            _mapGraphics = new MapGraphicsControl(mapGui.GLControl);
 
-            _marioMapObj = new MapObject(new Bitmap("Resources\\Object Images\\Mario.png"), new PointF());
-            _mapGraphics.AddMapObject(_marioMapObj);
-            ChangeCurrentMap(_assoc.DefaultMap);
+            _marioMapObj = new MapObject(new Bitmap("Resources\\Maps\\Object Images\\Mario Top.png"));
+            _marioMapObj.UsesRotation = true;
         }
 
+        public void Load()
+        {
+            _mapGraphics.Load();
+            _isLoaded = true;
+            ChangeCurrentMap(_assoc.DefaultMap);
 
+            _mapGraphics.AddMapObject(_marioMapObj);
+        }
 
         public void Update()
         {
-            // Get Mario's coordinates
-            var marioCoord = new float[3];
-            marioCoord[0] = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.XOffset + _config.Mario.MarioPointerAddress, 4), 0);
-            marioCoord[1] = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.YOffset + _config.Mario.MarioPointerAddress, 4), 0);
-            marioCoord[2] = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.ZOffset + _config.Mario.MarioPointerAddress, 4), 0);
+            if (!_isLoaded)
+                return;
 
             // Get level and area
             byte level = _stream.ReadRam(_config.LevelAddress, 1)[0];
@@ -70,7 +87,7 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 _currentLevel = level;
                 _currentArea = area;
-                _currentMapList = _assoc.GetLevelAreaMaps(level, area).Where((map) => marioCoord[1] >= map.Y).ToList();
+                _currentMapList = _assoc.GetLevelAreaMaps(level, area).Where((map) => _marioMapObj.Y >= map.Y).ToList();
             }
 
             // Find map from list
@@ -91,9 +108,24 @@ namespace SM64_Diagnostic.ManagerClasses
                 ChangeCurrentMap(bestMap);
             }
 
-            UpdateMapCoordinates(marioCoord[0], marioCoord[2]);
+            // Update PU;
+            int puX = (int)((_marioMapObj.X + 8192) / 16384);
+            int puY = (int)((_marioMapObj.Z + 8192) / 16384);
+            if (_marioMapObj.X < -8192)
+                puX--;
+            if (_marioMapObj.Z < -8192)
+                puY--;
+            int qpuX = puX / 4;
+            int qpuY = puY / 4;
+            _mapGui.PuValueLabel.Text = string.Format("[{0}:{1}]", puX.ToString(), puY.ToString());
+            _mapGui.QpuValueLabel.Text = string.Format("[{0}:{1}]", qpuX.ToString(), qpuY.ToString());
 
-            _mapGraphics.OnPaint(this, new EventArgs());
+            var marioCoord = new PointF(_marioMapObj.X - puX * 16384, _marioMapObj.Z - puY * 16384);
+
+            var mapView = _mapGraphics.MapView;
+            _marioMapObj.LocationOnContol = CalculateLocationOnControl(marioCoord, mapView);
+
+            _mapGraphics.Control.Invalidate();
         }
 
         private void ChangeCurrentMap(Map map)
@@ -105,15 +137,14 @@ namespace SM64_Diagnostic.ManagerClasses
             _currentMap = map;
         }
 
-        private void UpdateMapCoordinates(float marioX, float marioZ)
+        private PointF CalculateLocationOnControl(PointF mapLoc, RectangleF mapView)
         {
-
-            RectangleF mapView = _mapGraphics.MapView;
-            PointF marioCoord = new PointF(marioX, marioZ);
-
-            // Calculate position on picture;
-            _marioMapObj.Location.X = mapView.X + (marioCoord.X - _currentMap.Coordinates.X) * (mapView.Width / _currentMap.Coordinates.Width);
-            _marioMapObj.Location.Y = mapView.Y + (marioCoord.Y - _currentMap.Coordinates.Y) * (mapView.Height / _currentMap.Coordinates.Height);
+            PointF locCtrl = new PointF();
+            locCtrl.X = mapView.X + (mapLoc.X - _currentMap.Coordinates.X) 
+                * (mapView.Width / _currentMap.Coordinates.Width);
+            locCtrl.Y = mapView.Y + (mapLoc.Y - _currentMap.Coordinates.Y) 
+                * (mapView.Height / _currentMap.Coordinates.Height);
+            return locCtrl;
         }
 
         private void SetPictureBoxLocation(PictureBox box, PointF point)
