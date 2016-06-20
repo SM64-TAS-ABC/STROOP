@@ -19,6 +19,7 @@ namespace SM64_Diagnostic.ManagerClasses
         Config _config;
         MapAssociations _assoc;
         byte _currentLevel, _currentArea;
+        ushort _currentLoadingPoint;
         Map _currentMap;
         List<Map> _currentMapList = null;
         MapGraphicsControl _mapGraphics;
@@ -86,23 +87,32 @@ namespace SM64_Diagnostic.ManagerClasses
             ushort loadingPoint = BitConverter.ToUInt16(_stream.ReadRam(_config.LoadingPointAddress, 1), 0);
 
             // Find new map list
-            if (_currentMapList == null || _currentLevel != level || _currentArea != area)
+            if (_currentMapList == null || _currentLevel != level || _currentArea != area | _currentLoadingPoint != loadingPoint)
             {
                 _currentLevel = level;
                 _currentArea = area;
-                _currentMapList = _assoc.GetLevelAreaMaps(level, area).Where((map) => _marioMapObj.Y >= map.Y).ToList();
+                _currentLoadingPoint = loadingPoint;
+                _currentMapList = _assoc.GetLevelAreaMaps(level, area);
+
+                // Look for maps with correct loading points
+                var mapListLPFiltered = _currentMapList.Where((map) => map.LoadingPoint == loadingPoint).ToList();
+                if (mapListLPFiltered.Count >= 0)
+                    _currentMapList = mapListLPFiltered;
             }
 
-            // Find map from list
-            if (_currentMapList.Count <= 0)
+            // Filter out all maps that are lower than Mario
+            var mapListYFiltered = _currentMapList.Where((map) => map.Y >= _marioMapObj.Y).ToList();
+
+            // If no map is available display the default image
+            if (mapListYFiltered.Count <= 0)
             {
                 ChangeCurrentMap(_assoc.DefaultMap);
             }
             else
             {
-                // Find the best map to use
-                Map bestMap = _currentMapList[0];
-                foreach (Map map in _currentMapList)
+                // Pick the map closest to mario (yet still above Mario)
+                Map bestMap = mapListYFiltered[0];
+                foreach (Map map in mapListYFiltered)
                 {
                     if (map.Y < bestMap.Y)
                         bestMap = map;
@@ -128,6 +138,8 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapGui.PuValueLabel.Text = string.Format("[{0}:{1}]", puX, puY);
             _mapGui.QpuValueLabel.Text = string.Format("[{0}:{1}]", qpuX, qpuY);
             _mapGui.MapIdLabel.Text = string.Format("[{0}:{1}:{2}]", level, area, loadingPoint);
+            _mapGui.MapNameLabel.Text = _currentMap.Name;
+            _mapGui.MapSubNameLabel.Text = (_currentMap.SubName != null) ? _currentMap.SubName : "";
 
             // Adjust mario coordinates relative from current PU
             var marioCoord = new PointF(_marioMapObj.X - puX * 16384, _marioMapObj.Z - puY * 16384);

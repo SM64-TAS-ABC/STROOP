@@ -393,6 +393,8 @@ namespace SM64_Diagnostic.Utilities
                     case "Map":
                         byte level = byte.Parse(element.Attribute(XName.Get("level")).Value);
                         byte area = byte.Parse(element.Attribute(XName.Get("area")).Value);
+                        ushort? loadingPoint = element.Attribute(XName.Get("loadingPoint")) != null ?
+                            (ushort?)ushort.Parse(element.Attribute(XName.Get("loadingPoint")).Value) : null;
                         string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
 
                         var coordinatesElement = element.Element(XName.Get("Coordinates"));
@@ -402,10 +404,15 @@ namespace SM64_Diagnostic.Utilities
                         float z2 = float.Parse(coordinatesElement.Attribute(XName.Get("z2")).Value);
                         float y = (coordinatesElement.Attribute(XName.Get("y")) != null) ?
                             float.Parse(coordinatesElement.Attribute(XName.Get("y")).Value) : float.MinValue;
+
+                        string name = element.Attribute(XName.Get("name")).Value;
+                        string subName = (element.Attribute(XName.Get("subName")) != null) ?
+                            element.Attribute(XName.Get("subName")).Value : null;
+
                         var coordinates = new RectangleF(x1, z1, x2 - x1, z2 - z1);
 
-                        Map map = new Map() { Level = level, Area = area, Coordinates = coordinates,
-                            ImagePath = imagePath, Y = y };
+                        Map map = new Map() { Level = level, Area = area, LoadingPoint = loadingPoint, Coordinates = coordinates,
+                            ImagePath = imagePath, Y = y, Name = name, SubName = subName};
 
                         assoc.AddAssociation(map);
                         break;

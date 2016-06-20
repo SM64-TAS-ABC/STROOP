@@ -44,8 +44,11 @@
                 </xs:complexType>
               </xs:element>
             </xs:all>
+            <xs:attribute name="name" use="required" type="xs:string"/>
+            <xs:attribute name="subName" type="xs:string"/>
             <xs:attribute name="level" use="required" type="xs:byte"/>
             <xs:attribute name="area" use="required" type="xs:byte"/>
+            <xs:attribute name="loadingPoint" type="xs:unsignedShort"/>
           </xs:complexType>
         </xs:element>
       </xs:sequence>

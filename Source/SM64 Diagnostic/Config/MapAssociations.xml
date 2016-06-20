@@ -5,7 +5,7 @@
     <DefaultImage>default.png</DefaultImage>
     <DefaultCoordinates x1="-8192" x2="8192" z1="-8192" z2="8192"/>
   </Config>
-  <Map level="4" area="1">
+  <Map name="Big Boo's Haunt" level="4" area="1">
     <Image path="BBH.png"/>
     <Coordinates x1="-4197" x2="5530" z1="-3993" z2="6758"/>
   </Map>

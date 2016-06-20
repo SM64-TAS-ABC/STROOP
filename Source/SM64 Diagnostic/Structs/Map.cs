@@ -12,6 +12,7 @@ namespace SM64_Diagnostic.Structs
         public string ImagePath;
         public byte Level;
         public byte Area;
+        public ushort? LoadingPoint;
         public RectangleF Coordinates;
         public float Y;
         public string Name;
