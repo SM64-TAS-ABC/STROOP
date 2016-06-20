@@ -347,7 +347,7 @@ namespace SM64_Diagnostic
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            throw new Exception("User is a dumb@$$");
+            throw new Exception("");
         }
 
         private void tabControlMain_DragEnter(object sender, DragEventArgs e)
