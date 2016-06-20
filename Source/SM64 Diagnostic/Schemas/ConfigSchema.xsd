@@ -76,6 +76,7 @@
               <xs:element name="CoordinateOffsetX" type="types:address"/>
               <xs:element name="CoordinateOffsetY" type="types:address"/>
               <xs:element name="CoordinateOffsetZ" type="types:address"/>
+              <xs:element name="FacingAngleOffset" type="types:address"/>
               <xs:element name="MarioPointerAddress" type="types:address"/>
               <xs:element name="MarioStructSize" type="types:address"/>
             </xs:all>
@@ -83,6 +84,7 @@
         </xs:element>
         <xs:element name="LevelAddress" type="types:address"/>
         <xs:element name="AreaAddress" type="types:address"/>
+        <xs:element name="LoadingPointAddress" type="types:address"/>
       </xs:all>
     </xs:complexType>
   </xs:element>

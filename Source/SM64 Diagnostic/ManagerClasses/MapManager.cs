@@ -83,6 +83,7 @@ namespace SM64_Diagnostic.ManagerClasses
             // Get level and area
             byte level = _stream.ReadRam(_config.LevelAddress, 1)[0];
             byte area = _stream.ReadRam(_config.AreaAddress, 1)[0];
+            ushort loadingPoint = BitConverter.ToUInt16(_stream.ReadRam(_config.LoadingPointAddress, 1), 0);
 
             // Find new map list
             if (_currentMapList == null || _currentLevel != level || _currentArea != area)
@@ -124,8 +125,9 @@ namespace SM64_Diagnostic.ManagerClasses
             int qpuY = puY / 4;
 
             // Update labels
-            _mapGui.PuValueLabel.Text = string.Format("[{0}:{1}]", puX.ToString(), puY.ToString());
-            _mapGui.QpuValueLabel.Text = string.Format("[{0}:{1}]", qpuX.ToString(), qpuY.ToString());
+            _mapGui.PuValueLabel.Text = string.Format("[{0}:{1}]", puX, puY);
+            _mapGui.QpuValueLabel.Text = string.Format("[{0}:{1}]", qpuX, qpuY);
+            _mapGui.MapIdLabel.Text = string.Format("[{0}:{1}:{2}]", level, area, loadingPoint);
 
             // Adjust mario coordinates relative from current PU
             var marioCoord = new PointF(_marioMapObj.X - puX * 16384, _marioMapObj.Z - puY * 16384);

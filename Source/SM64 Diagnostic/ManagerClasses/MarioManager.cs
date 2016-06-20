@@ -54,7 +54,9 @@ namespace SM64_Diagnostic.ManagerClasses
             x = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.XOffset, 4), 0);
             y = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.YOffset, 4), 0);
             z = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.ZOffset, 4), 0);
-            rot = (float) (((BitConverter.ToUInt32(_stream.ReadRam(0x33b19A, 4), 0) >> 16) % 65536) / 65536f * 360f); 
+            rot = (float) (((BitConverter.ToUInt32(_stream.ReadRam(marioAddress + _config.Mario.RotationOffset, 4), 0)
+                >> 16) % 65536) / 65536f * 360f); 
+
             _mapManager.MarioMapObject.X = x;
             _mapManager.MarioMapObject.Y = y;
             _mapManager.MarioMapObject.Z = z;

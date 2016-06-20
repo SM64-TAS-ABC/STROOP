@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MarioData>
-  <Data type="byte" address="8033B249">Level</Data>
-  <Data type="byte" address="8033B24A">Area</Data>
-  <Data type="uint32" address="0x33b19A" absoluteAddress="false">Working</Data>
-  <Data type="byte" address="0x8033BACB" absoluteAddress="false">Working2</Data>
   <Data type="float" address="0x3C" marioOffset="true">X</Data>
   <Data type="float" address="0x40" marioOffset="true">Y</Data>
   <Data type="float" address="0x44" marioOffset="true">Z</Data>

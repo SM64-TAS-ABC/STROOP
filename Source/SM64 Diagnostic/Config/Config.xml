@@ -42,8 +42,10 @@
     <CoordinateOffsetX>0x3C</CoordinateOffsetX>
     <CoordinateOffsetY>0x40</CoordinateOffsetY>
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
+    <FacingAngleOffset>0x2A</FacingAngleOffset>
     <MarioStructSize>0xC4</MarioStructSize>
   </Mario>
-  <LevelAddress>0x033B249</LevelAddress>
-  <AreaAddress>0x033B24A</AreaAddress>
+  <LevelAddress>0x8033B249</LevelAddress>
+  <AreaAddress>0x8033B24A</AreaAddress>
+  <LoadingPointAddress>0x8033BACA</LoadingPointAddress>
 </Config>

@@ -151,6 +151,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "CoordinateOffsetZ":
                                     config.Mario.ZOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "FacingAngleOffset":
+                                    config.Mario.RotationOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "MarioStructSize":
                                     config.Mario.StructSize = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
@@ -164,6 +167,10 @@ namespace SM64_Diagnostic.Utilities
 
                     case "AreaAddress":
                         config.AreaAddress = ParsingUtilities.ParseHex(element.Value);
+                        break;
+
+                    case "LoadingPointAddress":
+                        config.LoadingPointAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
                 }
             }

@@ -134,7 +134,6 @@ namespace SM64_Diagnostic
                     comboBoxProcessSelection.Items.Add(processSelect);
                     comboBoxProcessSelection.SelectedIndex = 0;
                 }
-
         }
 
         private void comboBoxProcessSelection_DropDown(object sender, EventArgs e)
