@@ -34,7 +34,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _marioDataControls = new List<WatchVariableControl>();
             foreach (WatchVariable watchVar in marioData)
             {
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, _config.Mario.MarioPointerAddress);
+                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, _config.Mario.MarioStructAddress);
                 variableTable.Controls.Add(watchControl.Control);
                 _marioDataControls.Add(watchControl);
             }
@@ -50,7 +50,7 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             // Get Mario position
             float x, y, z, rot;
-            var marioAddress = _config.Mario.MarioPointerAddress;
+            var marioAddress = _config.Mario.MarioStructAddress;
             x = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.XOffset, 4), 0);
             y = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.YOffset, 4), 0);
             z = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.ZOffset, 4), 0);
@@ -136,7 +136,7 @@ namespace SM64_Diagnostic.ManagerClasses
         private void OnDrag(object sender, EventArgs e)
         {
             // Start the drag and drop but setting the object slot index in Drag and Drop data
-            var dropAction = new DropAction(DropAction.ActionType.Mario, _config.Mario.MarioPointerAddress);
+            var dropAction = new DropAction(DropAction.ActionType.Mario, _config.Mario.MarioStructAddress);
             (sender as Control).DoDragDrop(dropAction, DragDropEffects.All);
         }
 
@@ -169,22 +169,7 @@ namespace SM64_Diagnostic.ManagerClasses
             if (dropAction.Action != DropAction.ActionType.Object)
                 return;
 
-            // Move object to Mario
-            var marioAddress = _config.Mario.MarioPointerAddress;
-
-            // Get Mario position
-            float x, y, z;
-            x = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.XOffset, 4), 0);
-            y = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.YOffset, 4), 0);
-            z = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.ZOffset, 4), 0);
-
-            // Add offset
-            y += 300f;
-
-            // Move object to Mario
-            _stream.WriteRam(BitConverter.GetBytes(x), dropAction.Address + _config.ObjectSlots.ObjectXOffset);
-            _stream.WriteRam(BitConverter.GetBytes(y), dropAction.Address + _config.ObjectSlots.ObjectYOffset);
-            _stream.WriteRam(BitConverter.GetBytes(z), dropAction.Address + _config.ObjectSlots.ObjectZOffset);
+            ObjectActions.MoveObjectToMario(_stream, _config, dropAction.Address);
         }
     }
 }

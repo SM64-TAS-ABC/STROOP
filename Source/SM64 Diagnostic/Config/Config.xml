@@ -38,11 +38,13 @@
     <VacantPointerAddress color="#aaaaaa">0x80361150</VacantPointerAddress>
   </ObjectGroups>
   <Mario>
-    <MarioPointerAddress>0x8033b170</MarioPointerAddress>
+    <MarioStructAddress>0x8033b170</MarioStructAddress>
+    <ActionOffset>0x0C</ActionOffset>
     <CoordinateOffsetX>0x3C</CoordinateOffsetX>
     <CoordinateOffsetY>0x40</CoordinateOffsetY>
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
     <FacingAngleOffset>0x2A</FacingAngleOffset>
+    <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>
     <MarioStructSize>0xC4</MarioStructSize>
   </Mario>
   <LevelAddress>0x8033B249</LevelAddress>

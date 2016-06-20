@@ -24,7 +24,6 @@ namespace SM64_Diagnostic.ManagerClasses
         Dictionary<uint, int> _memoryAddressSlotIndex;
         int _selectedSlot;
 
-        public PictureBox Trash;
         public uint? SelectedAddress = null;
         public const byte VacantGroup = 0xFF;
 
@@ -54,12 +53,14 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public ObjectSlotManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, ObjectManager objManager, PictureBox trash, TabControl tabControl)
+        public ObjectSlotManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, ObjectManager objManager, PictureBox trash, PictureBox clone, TabControl tabControl)
         {
-            Trash = trash;
-            Trash.AllowDrop = true;
-            Trash.DragEnter += OnTrashDragOver;
-            Trash.DragDrop += OnTrashDrop;
+            trash.AllowDrop = true;
+            trash.DragEnter += OnObjectDragOver;
+            trash.DragDrop += OnTrashDrop;
+
+            clone.DragEnter += OnObjectDragOver;
+            clone.DragDrop += Clone_DragDrop;
 
             _config = config;
             _objectAssoc = objAssoc;
@@ -79,6 +80,21 @@ namespace SM64_Diagnostic.ManagerClasses
                 int localI = i;
                 objectSlot.OnClick += (sender, e) => OnClick(sender, e, localI);
             }
+
+        }
+
+        private void Clone_DragDrop(object sender, DragEventArgs e)
+        {
+            // Make sure we have valid Drag and Drop data (it is an index)
+            if (!e.Data.GetDataPresent(typeof(DropAction)))
+                return;
+
+            var dropAction = ((DropAction)e.Data.GetData(typeof(DropAction)));
+            if (dropAction.Action != DropAction.ActionType.Object)
+                return;
+
+            // Clone object
+            ObjectActions.CloneObject(_stream, _config, dropAction.Address);
         }
 
         private void OnClick(object sender, MouseEventArgs e, int slotIndex)
@@ -101,7 +117,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public void OnTrashDragOver(object sender, DragEventArgs e)
+        public void OnObjectDragOver(object sender, DragEventArgs e)
         {
             // Make sure we have valid Drag and Drop data (it is an index)
             if (!e.Data.GetDataPresent(typeof(DropAction)))
@@ -120,12 +136,6 @@ namespace SM64_Diagnostic.ManagerClasses
             e.Effect = DragDropEffects.Move;
         }
 
-        public void SwapSlots(int index1, int index2)
-        {
-            MessageBox.Show("Currently Unimplemented!");
-            return;
-        }
-
         public void OnTrashDrop(object sender, DragEventArgs e)
         {
             // Make sure we have valid Drag and Drop data (it is an index)
@@ -136,12 +146,7 @@ namespace SM64_Diagnostic.ManagerClasses
             if (dropAction.Action != DropAction.ActionType.Object)
                 return;
 
-            UnloadSlot(dropAction.Address);
-        }
-
-        private void UnloadSlot(uint address)
-        {
-            _stream.WriteRam(new byte[] { 0x00, 0x00 }, address + _config.ObjectSlots.ObjectActiveOffset);
+            ObjectActions.UnloadObject(_stream, _config, dropAction.Address);
         }
 
         private ObjectSlotData[] GetProcessedObjects(ObjectGroupsConfig groupConfig, ObjectSlotsConfig slotConfig)
@@ -293,22 +298,8 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 case DropAction.ActionType.Mario:
                     // Move mario to object
-                    var marioAddress = _config.Mario.MarioPointerAddress;
                     var objectAddress = ObjectSlotData.First((objData) => objData.Index == objSlot.Index).Address;
-
-                    // Get object position
-                    float x, y, z;
-                    x = BitConverter.ToSingle(_stream.ReadRam(objectAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
-                    y = BitConverter.ToSingle(_stream.ReadRam(objectAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
-                    z = BitConverter.ToSingle(_stream.ReadRam(objectAddress + _config.ObjectSlots.ObjectZOffset, 4), 0);
-
-                    // Add offset
-                    y += 300f;
-
-                    // Move mario to object
-                    _stream.WriteRam(BitConverter.GetBytes(x), marioAddress + _config.Mario.XOffset);
-                    _stream.WriteRam(BitConverter.GetBytes(y), marioAddress + _config.Mario.YOffset);
-                    _stream.WriteRam(BitConverter.GetBytes(z), marioAddress + _config.Mario.ZOffset);
+                    ObjectActions.MoveMarioToObject(_stream, _config, objectAddress);
                     break;
 
                 case DropAction.ActionType.Object:

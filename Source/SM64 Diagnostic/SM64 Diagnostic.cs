@@ -102,6 +102,10 @@ namespace SM64_Diagnostic
             objectGui.ObjectNameLabel = labelObjName;
             objectGui.ObjSlotIndexLabel = labelObjSlotIndValue;
             objectGui.ObjSlotPositionLabel = labelObjSlotPosValue;
+            objectGui.CloneButton = buttonObjClone;
+            objectGui.MoveMarioToButton = buttonObjGoTo;
+            objectGui.MoveToMarioButton = buttonObjRetrieve;
+            objectGui.UnloadButton = buttonObjUnload;
             _objectManager = new ObjectManager(_sm64Stream, _config, _objectAssoc, _objectData, objectGui);
 
             // Create options manager
@@ -110,7 +114,7 @@ namespace SM64_Diagnostic
             _optionsManager = new OptionsManager(optionGui, _config);
 
             // Create Object Slots
-            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, pictureBoxTrash, tabControlMain);
+            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, pictureBoxTrash, pictureBoxObjClone, tabControlMain);
             _objectSlotManager.AddToControls(flowLayoutPanelObjects.Controls);
 
             // Add SortMethods

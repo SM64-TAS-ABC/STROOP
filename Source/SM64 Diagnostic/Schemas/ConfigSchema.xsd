@@ -73,11 +73,13 @@
         <xs:element name="Mario">
           <xs:complexType>
             <xs:all>
+              <xs:element name="ActionOffset" type="types:address"/>
               <xs:element name="CoordinateOffsetX" type="types:address"/>
               <xs:element name="CoordinateOffsetY" type="types:address"/>
               <xs:element name="CoordinateOffsetZ" type="types:address"/>
               <xs:element name="FacingAngleOffset" type="types:address"/>
-              <xs:element name="MarioPointerAddress" type="types:address"/>
+              <xs:element name="HoldingObjectPointerOffset" type="types:address"/>
+              <xs:element name="MarioStructAddress" type="types:address"/>
               <xs:element name="MarioStructSize" type="types:address"/>
             </xs:all>
           </xs:complexType>

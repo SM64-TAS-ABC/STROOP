@@ -139,8 +139,8 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "MarioPointerAddress":
-                                    config.Mario.MarioPointerAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                case "MarioStructAddress":
+                                    config.Mario.MarioStructAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "CoordinateOffsetX":
                                     config.Mario.XOffset = ParsingUtilities.ParseHex(subElement.Value);
@@ -156,6 +156,12 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                                 case "MarioStructSize":
                                     config.Mario.StructSize = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "ActionOffset":
+                                    config.Mario.ActionOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "HoldingObjectPointerOffset":
+                                    config.Mario.HoldingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         }

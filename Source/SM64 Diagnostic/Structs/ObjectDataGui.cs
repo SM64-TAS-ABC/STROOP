@@ -12,6 +12,10 @@ namespace SM64_Diagnostic.Structs
         public Panel ObjectBorderPanel;
         public PictureBox ObjectImagePictureBox;
         public FlowLayoutPanel ObjectFlowLayout;
+        public Button CloneButton;
+        public Button UnloadButton;
+        public Button MoveToMarioButton;
+        public Button MoveMarioToButton;
         public Label ObjectNameLabel;
         public Label ObjBehaviorLabel;
         public Label ObjSlotIndexLabel;

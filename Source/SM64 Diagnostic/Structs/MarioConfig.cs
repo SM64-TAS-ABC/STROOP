@@ -8,11 +8,13 @@ namespace SM64_Diagnostic.Structs
 {
     public struct MarioConfig
     {
-        public uint MarioPointerAddress;
+        public uint MarioStructAddress;
+        public uint ActionOffset;
         public uint XOffset;
         public uint YOffset;
         public uint ZOffset;
         public uint RotationOffset;
+        public uint HoldingObjectPointerOffset;
         public uint StructSize;
     }
 }

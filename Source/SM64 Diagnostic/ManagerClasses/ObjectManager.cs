@@ -156,6 +156,31 @@ namespace SM64_Diagnostic.ManagerClasses
                 _objectDataControls.Add(watchControl);
             }
 
+            // Register buttons
+            objectGui.CloneButton.Click += CloneButton_Click;
+            objectGui.UnloadButton.Click += UnloadButton_Click;
+            objectGui.MoveMarioToButton.Click += MoveMarioToButton_Click;
+            objectGui.MoveToMarioButton.Click += MoveToMarioButton_Click;
+        }
+
+        private void MoveToMarioButton_Click(object sender, EventArgs e)
+        {
+            ObjectActions.MoveObjectToMario(_stream, _config, CurrentAddress);
+        }
+
+        private void MoveMarioToButton_Click(object sender, EventArgs e)
+        {
+            ObjectActions.MoveMarioToObject(_stream, _config, CurrentAddress);
+        }
+
+        private void UnloadButton_Click(object sender, EventArgs e)
+        {
+            ObjectActions.UnloadObject(_stream, _config, CurrentAddress);
+        }
+
+        private void CloneButton_Click(object sender, EventArgs e)
+        {
+            ObjectActions.CloneObject(_stream, _config, CurrentAddress);
         }
 
         public void Update()
