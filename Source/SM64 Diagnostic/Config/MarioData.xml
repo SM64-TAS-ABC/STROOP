@@ -27,5 +27,7 @@
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x04">Metal Cap</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x08">Wing Cap</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x20">Hat In Hand</Data>
-  <Data type="uint16" address="0x0038EEE0" absoluteAddress="false">RNG Value</Data>
+  <Data type="byte" address="0x0022261B" isBool="true" mask="0x20">Music</Data>
+  <Data type="float" address ="0x80222630">Volume</Data>
+  <Data type="uint16" address="0x0038EEE0">RNG Value</Data>
 </MarioData>
