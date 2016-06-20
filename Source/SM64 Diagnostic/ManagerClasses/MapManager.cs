@@ -68,6 +68,7 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             _mapGraphics.Load();
             _isLoaded = true;
+
             ChangeCurrentMap(_assoc.DefaultMap);
 
             _mapGraphics.AddMapObject(_marioMapObj);
@@ -75,6 +76,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void Update()
         {
+            // Make sure the control has successfully loaded
             if (!_isLoaded)
                 return;
 
@@ -111,20 +113,28 @@ namespace SM64_Diagnostic.ManagerClasses
             // Update PU;
             int puX = (int)((_marioMapObj.X + 8192) / 16384);
             int puY = (int)((_marioMapObj.Z + 8192) / 16384);
+
             if (_marioMapObj.X < -8192)
                 puX--;
             if (_marioMapObj.Z < -8192)
                 puY--;
+
+            // Update Qpu
             int qpuX = puX / 4;
             int qpuY = puY / 4;
+
+            // Update labels
             _mapGui.PuValueLabel.Text = string.Format("[{0}:{1}]", puX.ToString(), puY.ToString());
             _mapGui.QpuValueLabel.Text = string.Format("[{0}:{1}]", qpuX.ToString(), qpuY.ToString());
 
+            // Adjust mario coordinates relative from current PU
             var marioCoord = new PointF(_marioMapObj.X - puX * 16384, _marioMapObj.Z - puY * 16384);
 
+            // Calculate mario's location on the OpenGl control
             var mapView = _mapGraphics.MapView;
             _marioMapObj.LocationOnContol = CalculateLocationOnControl(marioCoord, mapView);
 
+            // Update gui by drawing images (invokes _mapGraphics.OnPaint())
             _mapGraphics.Control.Invalidate();
         }
 

@@ -59,6 +59,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapManager.MarioMapObject.Y = y;
             _mapManager.MarioMapObject.Z = z;
             _mapManager.MarioMapObject.Rotation = rot;
+            _mapManager.MarioMapObject.Show = true;
 
             if (!updateView)
                 return;

@@ -3,7 +3,7 @@
   <RefreshRateFreq>10</RefreshRateFreq>
   <RAMStartAddress>0x008eba80</RAMStartAddress>
   <ProcessDefaultName>Mupen</ProcessDefaultName>
-  <RAMSize>0x3D0900</RAMSize>
+  <RAMSize>0x400000</RAMSize>
   <ObjectSlots>
     <FirstObjectAddress>0x8033D488</FirstObjectAddress>
     <ObjectStructSize>0x0260</ObjectStructSize>
