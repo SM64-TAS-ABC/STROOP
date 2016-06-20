@@ -88,17 +88,18 @@
     </Compile>
     <Compile Include="ManagerClasses\ObjectSlot.cs" />
     <Compile Include="ManagerClasses\ObjectSlotManager.cs" />
-    <Compile Include="Structures\OptionsGui.cs" />
-    <Compile Include="Structures\DropAction.cs" />
-    <Compile Include="Structures\Map.cs" />
-    <Compile Include="Structures\MapAssociations.cs" />
-    <Compile Include="Structures\MapObject.cs" />
-    <Compile Include="Structures\MarioConfig.cs" />
-    <Compile Include="Structures\ObjectAssociations.cs" />
-    <Compile Include="Structures\ObjectDataGui.cs" />
-    <Compile Include="Structures\ObjectSlotData.cs" />
-    <Compile Include="Structures\ObjectSlotsConfig.cs" />
-    <Compile Include="Structures\ObjectGroupsConfig.cs" />
+    <Compile Include="Structs\MapGui.cs" />
+    <Compile Include="Structs\OptionsGui.cs" />
+    <Compile Include="Structs\DropAction.cs" />
+    <Compile Include="Structs\Map.cs" />
+    <Compile Include="Structs\MapAssociations.cs" />
+    <Compile Include="Structs\MapObject.cs" />
+    <Compile Include="Structs\MarioConfig.cs" />
+    <Compile Include="Structs\ObjectAssociations.cs" />
+    <Compile Include="Structs\ObjectDataGui.cs" />
+    <Compile Include="Structs\ObjectSlotData.cs" />
+    <Compile Include="Structs\ObjectSlotsConfig.cs" />
+    <Compile Include="Structs\ObjectGroupsConfig.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Utilities\N64Disassembler.cs" />
     <Compile Include="Utilities\ProcessSelection.cs" />
@@ -112,8 +113,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\ProcessStream.cs" />
     <Compile Include="Utilities\ParsingUtilities.cs" />
-    <Compile Include="Structures\Config.cs" />
-    <Compile Include="Structures\WatchVariable.cs" />
+    <Compile Include="Structs\Config.cs" />
+    <Compile Include="Structs\WatchVariable.cs" />
     <Compile Include="Utilities\LittleEndianessAddressing.cs" />
     <Compile Include="Extensions\RichTextBoxExtensions.cs" />
     <Compile Include="Extensions\SizeExtensions.cs" />
@@ -210,10 +211,13 @@
     <Content Include="Licenses.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Maps\BBH.png">
+    <Content Include="Resources\Maps\Map Images\BBH.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Maps\default.png">
+    <Content Include="Resources\Maps\Map Images\default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Maps\Object Images\Mario Top.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Object Images\! Switch.png">

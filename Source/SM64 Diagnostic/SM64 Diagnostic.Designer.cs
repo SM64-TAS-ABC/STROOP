@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SM64DiagnosticForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxProcessSelection = new System.Windows.Forms.ComboBox();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.pictureBoxTrash = new System.Windows.Forms.PictureBox();
             this.labelSortMethod = new System.Windows.Forms.Label();
@@ -42,6 +43,10 @@
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageObjects = new System.Windows.Forms.TabPage();
+            this.buttonObjRetrieve = new System.Windows.Forms.Button();
+            this.buttonObjClone = new System.Windows.Forms.Button();
+            this.buttonObjGoTo = new System.Windows.Forms.Button();
+            this.buttonUnload = new System.Windows.Forms.Button();
             this.labelObjSlotIndValue = new System.Windows.Forms.Label();
             this.labelObjSlotPosValue = new System.Windows.Forms.Label();
             this.labelObjBhvValue = new System.Windows.Forms.Label();
@@ -70,11 +75,19 @@
             this.labelDisStart = new System.Windows.Forms.Label();
             this.richTextBoxDissasembly = new System.Windows.Forms.RichTextBox();
             this.tabPageMap = new System.Windows.Forms.TabPage();
+            this.labelMapPuValue = new System.Windows.Forms.Label();
+            this.labelMapSubName = new System.Windows.Forms.Label();
+            this.labelMapQpu = new System.Windows.Forms.Label();
+            this.labelMapPu = new System.Windows.Forms.Label();
+            this.labelMapId = new System.Windows.Forms.Label();
+            this.labelMapName = new System.Windows.Forms.Label();
+            this.labelMapQpuValue = new System.Windows.Forms.Label();
+            this.glControlMap = new OpenTK.GLControl(); // new OpenTK.Graphics.GraphicsMode(32,24,0,8));
             this.tabPageOptions = new System.Windows.Forms.TabPage();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
-            this.glControlMap = new OpenTK.GLControl();
             this.groupBoxObjects.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -122,6 +135,7 @@
             this.groupBoxObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxObjects.Controls.Add(this.pictureBox1);
             this.groupBoxObjects.Controls.Add(this.checkBox1);
             this.groupBoxObjects.Controls.Add(this.pictureBoxTrash);
             this.groupBoxObjects.Controls.Add(this.labelSortMethod);
@@ -129,10 +143,21 @@
             this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
             this.groupBoxObjects.Location = new System.Drawing.Point(3, 3);
             this.groupBoxObjects.Name = "groupBoxObjects";
-            this.groupBoxObjects.Size = new System.Drawing.Size(703, 466);
+            this.groupBoxObjects.Size = new System.Drawing.Size(703, 382);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(359, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(34, 28);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // checkBox1
             // 
@@ -151,7 +176,7 @@
             this.pictureBoxTrash.Location = new System.Drawing.Point(399, 20);
             this.pictureBoxTrash.Name = "pictureBoxTrash";
             this.pictureBoxTrash.Size = new System.Drawing.Size(34, 28);
-            this.pictureBoxTrash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxTrash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxTrash.TabIndex = 6;
             this.pictureBoxTrash.TabStop = false;
             // 
@@ -173,7 +198,7 @@
             this.flowLayoutPanelObjects.AutoScroll = true;
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(6, 59);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(691, 401);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(691, 317);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -215,7 +240,7 @@
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.groupBoxObjects);
             this.splitContainerMain.Size = new System.Drawing.Size(709, 632);
-            this.splitContainerMain.SplitterDistance = 156;
+            this.splitContainerMain.SplitterDistance = 240;
             this.splitContainerMain.TabIndex = 4;
             // 
             // tabControlMain
@@ -234,13 +259,17 @@
             this.tabControlMain.Location = new System.Drawing.Point(3, 3);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(703, 154);
+            this.tabControlMain.Size = new System.Drawing.Size(703, 238);
             this.tabControlMain.TabIndex = 3;
             this.tabControlMain.DragEnter += new System.Windows.Forms.DragEventHandler(this.tabControlMain_DragEnter);
             // 
             // tabPageObjects
             // 
             this.tabPageObjects.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageObjects.Controls.Add(this.buttonObjRetrieve);
+            this.tabPageObjects.Controls.Add(this.buttonObjClone);
+            this.tabPageObjects.Controls.Add(this.buttonObjGoTo);
+            this.tabPageObjects.Controls.Add(this.buttonUnload);
             this.tabPageObjects.Controls.Add(this.labelObjSlotIndValue);
             this.tabPageObjects.Controls.Add(this.labelObjSlotPosValue);
             this.tabPageObjects.Controls.Add(this.labelObjBhvValue);
@@ -255,9 +284,45 @@
             this.tabPageObjects.Location = new System.Drawing.Point(4, 29);
             this.tabPageObjects.Name = "tabPageObjects";
             this.tabPageObjects.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageObjects.Size = new System.Drawing.Size(695, 121);
+            this.tabPageObjects.Size = new System.Drawing.Size(695, 205);
             this.tabPageObjects.TabIndex = 0;
             this.tabPageObjects.Text = "Object";
+            // 
+            // buttonObjRetrieve
+            // 
+            this.buttonObjRetrieve.Location = new System.Drawing.Point(6, 160);
+            this.buttonObjRetrieve.Name = "buttonObjRetrieve";
+            this.buttonObjRetrieve.Size = new System.Drawing.Size(96, 33);
+            this.buttonObjRetrieve.TabIndex = 15;
+            this.buttonObjRetrieve.Text = "Retrieve";
+            this.buttonObjRetrieve.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjClone
+            // 
+            this.buttonObjClone.Location = new System.Drawing.Point(108, 160);
+            this.buttonObjClone.Name = "buttonObjClone";
+            this.buttonObjClone.Size = new System.Drawing.Size(96, 33);
+            this.buttonObjClone.TabIndex = 14;
+            this.buttonObjClone.Text = "Clone";
+            this.buttonObjClone.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjGoTo
+            // 
+            this.buttonObjGoTo.Location = new System.Drawing.Point(6, 121);
+            this.buttonObjGoTo.Name = "buttonObjGoTo";
+            this.buttonObjGoTo.Size = new System.Drawing.Size(96, 33);
+            this.buttonObjGoTo.TabIndex = 13;
+            this.buttonObjGoTo.Text = "Go To";
+            this.buttonObjGoTo.UseVisualStyleBackColor = true;
+            // 
+            // buttonUnload
+            // 
+            this.buttonUnload.Location = new System.Drawing.Point(108, 121);
+            this.buttonUnload.Name = "buttonUnload";
+            this.buttonUnload.Size = new System.Drawing.Size(96, 33);
+            this.buttonUnload.TabIndex = 5;
+            this.buttonUnload.Text = "Unload";
+            this.buttonUnload.UseVisualStyleBackColor = true;
             // 
             // labelObjSlotIndValue
             // 
@@ -302,7 +367,7 @@
             this.flowLayoutPanelObject.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelObject.Location = new System.Drawing.Point(248, 5);
             this.flowLayoutPanelObject.Name = "flowLayoutPanelObject";
-            this.flowLayoutPanelObject.Size = new System.Drawing.Size(441, 111);
+            this.flowLayoutPanelObject.Size = new System.Drawing.Size(441, 195);
             this.flowLayoutPanelObject.TabIndex = 3;
             // 
             // labelObjSlotInd
@@ -380,7 +445,7 @@
             this.tabPageMario.Location = new System.Drawing.Point(4, 29);
             this.tabPageMario.Name = "tabPageMario";
             this.tabPageMario.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMario.Size = new System.Drawing.Size(695, 121);
+            this.tabPageMario.Size = new System.Drawing.Size(695, 205);
             this.tabPageMario.TabIndex = 1;
             this.tabPageMario.Text = "Mario";
             // 
@@ -393,7 +458,7 @@
             this.flowLayoutPanelMario.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelMario.Location = new System.Drawing.Point(98, 4);
             this.flowLayoutPanelMario.Name = "flowLayoutPanelMario";
-            this.flowLayoutPanelMario.Size = new System.Drawing.Size(591, 111);
+            this.flowLayoutPanelMario.Size = new System.Drawing.Size(591, 195);
             this.flowLayoutPanelMario.TabIndex = 1;
             // 
             // panelMarioBorder
@@ -427,7 +492,7 @@
             this.tabPageOther.Controls.Add(this.dataGridViewOther);
             this.tabPageOther.Location = new System.Drawing.Point(4, 29);
             this.tabPageOther.Name = "tabPageOther";
-            this.tabPageOther.Size = new System.Drawing.Size(695, 121);
+            this.tabPageOther.Size = new System.Drawing.Size(695, 205);
             this.tabPageOther.TabIndex = 2;
             this.tabPageOther.Text = "Other";
             // 
@@ -435,7 +500,7 @@
             // 
             this.checkBoxAbsoluteAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxAbsoluteAddress.AutoSize = true;
-            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(493, 91);
+            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(493, 175);
             this.checkBoxAbsoluteAddress.Name = "checkBoxAbsoluteAddress";
             this.checkBoxAbsoluteAddress.Size = new System.Drawing.Size(199, 24);
             this.checkBoxAbsoluteAddress.TabIndex = 4;
@@ -445,7 +510,7 @@
             // buttonOtherDelete
             // 
             this.buttonOtherDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherDelete.Location = new System.Drawing.Point(159, 86);
+            this.buttonOtherDelete.Location = new System.Drawing.Point(159, 170);
             this.buttonOtherDelete.Name = "buttonOtherDelete";
             this.buttonOtherDelete.Size = new System.Drawing.Size(72, 32);
             this.buttonOtherDelete.TabIndex = 3;
@@ -456,7 +521,7 @@
             // buttonOtherModify
             // 
             this.buttonOtherModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherModify.Location = new System.Drawing.Point(81, 86);
+            this.buttonOtherModify.Location = new System.Drawing.Point(81, 170);
             this.buttonOtherModify.Name = "buttonOtherModify";
             this.buttonOtherModify.Size = new System.Drawing.Size(72, 32);
             this.buttonOtherModify.TabIndex = 2;
@@ -467,7 +532,7 @@
             // buttonOtherAdd
             // 
             this.buttonOtherAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherAdd.Location = new System.Drawing.Point(3, 86);
+            this.buttonOtherAdd.Location = new System.Drawing.Point(3, 170);
             this.buttonOtherAdd.Name = "buttonOtherAdd";
             this.buttonOtherAdd.Size = new System.Drawing.Size(72, 32);
             this.buttonOtherAdd.TabIndex = 1;
@@ -480,8 +545,8 @@
             this.dataGridViewOther.AllowUserToAddRows = false;
             this.dataGridViewOther.AllowUserToDeleteRows = false;
             this.dataGridViewOther.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewOther.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewOther.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewOther.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -492,7 +557,7 @@
             this.dataGridViewOther.RowTemplate.Height = 20;
             this.dataGridViewOther.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewOther.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOther.Size = new System.Drawing.Size(689, 77);
+            this.dataGridViewOther.Size = new System.Drawing.Size(689, 161);
             this.dataGridViewOther.TabIndex = 0;
             this.dataGridViewOther.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOther_CellMouseDoubleClick);
             // 
@@ -505,7 +570,7 @@
             this.tabPageDisassembly.Controls.Add(this.richTextBoxDissasembly);
             this.tabPageDisassembly.Location = new System.Drawing.Point(4, 29);
             this.tabPageDisassembly.Name = "tabPageDisassembly";
-            this.tabPageDisassembly.Size = new System.Drawing.Size(695, 121);
+            this.tabPageDisassembly.Size = new System.Drawing.Size(695, 205);
             this.tabPageDisassembly.TabIndex = 3;
             this.tabPageDisassembly.Text = "Disassembly";
             // 
@@ -546,19 +611,106 @@
             this.richTextBoxDissasembly.Location = new System.Drawing.Point(4, 35);
             this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
             this.richTextBoxDissasembly.ReadOnly = true;
-            this.richTextBoxDissasembly.Size = new System.Drawing.Size(688, 83);
+            this.richTextBoxDissasembly.Size = new System.Drawing.Size(688, 167);
             this.richTextBoxDissasembly.TabIndex = 0;
             this.richTextBoxDissasembly.Text = "";
             // 
             // tabPageMap
             // 
+            this.tabPageMap.Controls.Add(this.labelMapPuValue);
+            this.tabPageMap.Controls.Add(this.labelMapSubName);
+            this.tabPageMap.Controls.Add(this.labelMapQpu);
+            this.tabPageMap.Controls.Add(this.labelMapPu);
+            this.tabPageMap.Controls.Add(this.labelMapId);
+            this.tabPageMap.Controls.Add(this.labelMapName);
+            this.tabPageMap.Controls.Add(this.labelMapQpuValue);
             this.tabPageMap.Controls.Add(this.glControlMap);
             this.tabPageMap.Location = new System.Drawing.Point(4, 29);
             this.tabPageMap.Name = "tabPageMap";
             this.tabPageMap.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMap.Size = new System.Drawing.Size(695, 121);
+            this.tabPageMap.Size = new System.Drawing.Size(695, 205);
             this.tabPageMap.TabIndex = 4;
             this.tabPageMap.Text = "Map";
+            // 
+            // labelMapPuValue
+            // 
+            this.labelMapPuValue.AutoSize = true;
+            this.labelMapPuValue.Location = new System.Drawing.Point(85, 78);
+            this.labelMapPuValue.Name = "labelMapPuValue";
+            this.labelMapPuValue.Size = new System.Drawing.Size(57, 20);
+            this.labelMapPuValue.TabIndex = 8;
+            this.labelMapPuValue.Text = "testing";
+            // 
+            // labelMapSubName
+            // 
+            this.labelMapSubName.AutoSize = true;
+            this.labelMapSubName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMapSubName.Location = new System.Drawing.Point(6, 23);
+            this.labelMapSubName.Name = "labelMapSubName";
+            this.labelMapSubName.Size = new System.Drawing.Size(0, 20);
+            this.labelMapSubName.TabIndex = 7;
+            // 
+            // labelMapQpu
+            // 
+            this.labelMapQpu.AutoSize = true;
+            this.labelMapQpu.Location = new System.Drawing.Point(3, 58);
+            this.labelMapQpu.Name = "labelMapQpu";
+            this.labelMapQpu.Size = new System.Drawing.Size(85, 20);
+            this.labelMapQpu.TabIndex = 6;
+            this.labelMapQpu.Text = "QPU [X:Y]:";
+            // 
+            // labelMapPu
+            // 
+            this.labelMapPu.AutoSize = true;
+            this.labelMapPu.Location = new System.Drawing.Point(6, 78);
+            this.labelMapPu.Name = "labelMapPu";
+            this.labelMapPu.Size = new System.Drawing.Size(73, 20);
+            this.labelMapPu.TabIndex = 5;
+            this.labelMapPu.Text = "PU [X:Y]:";
+            // 
+            // labelMapId
+            // 
+            this.labelMapId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelMapId.AutoSize = true;
+            this.labelMapId.Location = new System.Drawing.Point(3, 177);
+            this.labelMapId.Name = "labelMapId";
+            this.labelMapId.Size = new System.Drawing.Size(52, 20);
+            this.labelMapId.TabIndex = 4;
+            this.labelMapId.Text = "[0:0:0]";
+            this.labelMapId.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelMapName
+            // 
+            this.labelMapName.AutoSize = true;
+            this.labelMapName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMapName.Location = new System.Drawing.Point(3, 3);
+            this.labelMapName.Name = "labelMapName";
+            this.labelMapName.Size = new System.Drawing.Size(83, 20);
+            this.labelMapName.TabIndex = 3;
+            this.labelMapName.Text = "Unknown";
+            // 
+            // labelMapQpuValue
+            // 
+            this.labelMapQpuValue.AutoSize = true;
+            this.labelMapQpuValue.Location = new System.Drawing.Point(94, 58);
+            this.labelMapQpuValue.Name = "labelMapQpuValue";
+            this.labelMapQpuValue.Size = new System.Drawing.Size(48, 20);
+            this.labelMapQpuValue.TabIndex = 1;
+            this.labelMapQpuValue.Text = "testig";
+            // 
+            // glControlMap
+            // 
+            this.glControlMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.glControlMap.BackColor = System.Drawing.Color.Black;
+            this.glControlMap.Location = new System.Drawing.Point(242, 5);
+            this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.glControlMap.Name = "glControlMap";
+            this.glControlMap.Size = new System.Drawing.Size(449, 192);
+            this.glControlMap.TabIndex = 0;
+            this.glControlMap.VSync = false;
+            this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
             // 
             // tabPageOptions
             // 
@@ -566,7 +718,7 @@
             this.tabPageOptions.Controls.Add(this.checkBoxStartSlotIndexOne);
             this.tabPageOptions.Location = new System.Drawing.Point(4, 29);
             this.tabPageOptions.Name = "tabPageOptions";
-            this.tabPageOptions.Size = new System.Drawing.Size(695, 121);
+            this.tabPageOptions.Size = new System.Drawing.Size(695, 205);
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
             // 
@@ -591,20 +743,6 @@
             this.checkBoxStartSlotIndexOne.Text = "Start Slot Index From 1";
             this.checkBoxStartSlotIndexOne.UseVisualStyleBackColor = true;
             // 
-            // glControlMap
-            // 
-            this.glControlMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.glControlMap.BackColor = System.Drawing.Color.Black;
-            this.glControlMap.Location = new System.Drawing.Point(4, 4);
-            this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(687, 112);
-            this.glControlMap.TabIndex = 0;
-            this.glControlMap.VSync = false;
-            this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
-            // 
             // SM64DiagnosticForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -620,6 +758,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrash)).EndInit();
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
@@ -639,6 +778,7 @@
             this.tabPageDisassembly.ResumeLayout(false);
             this.tabPageDisassembly.PerformLayout();
             this.tabPageMap.ResumeLayout(false);
+            this.tabPageMap.PerformLayout();
             this.tabPageOptions.ResumeLayout(false);
             this.tabPageOptions.PerformLayout();
             this.ResumeLayout(false);
@@ -692,6 +832,18 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBoxStartSlotIndexOne;
         private OpenTK.GLControl glControlMap;
+        private System.Windows.Forms.Button buttonObjRetrieve;
+        private System.Windows.Forms.Button buttonObjClone;
+        private System.Windows.Forms.Button buttonObjGoTo;
+        private System.Windows.Forms.Button buttonUnload;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label labelMapPuValue;
+        private System.Windows.Forms.Label labelMapSubName;
+        private System.Windows.Forms.Label labelMapQpu;
+        private System.Windows.Forms.Label labelMapPu;
+        private System.Windows.Forms.Label labelMapId;
+        private System.Windows.Forms.Label labelMapName;
+        private System.Windows.Forms.Label labelMapQpuValue;
     }
 }
 

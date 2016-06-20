@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Config>
   <RefreshRateFreq>10</RefreshRateFreq>
-  <RAMStartAddress>0x808eba80</RAMStartAddress>
+  <RAMStartAddress>0x008eba80</RAMStartAddress>
   <ProcessDefaultName>Mupen</ProcessDefaultName>
   <RAMSize>0x3D0900</RAMSize>
   <ObjectSlots>

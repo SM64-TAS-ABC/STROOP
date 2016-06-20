@@ -17,8 +17,9 @@ namespace SM64_Diagnostic.ManagerClasses
         ProcessStream _stream;
         DataContainer _rngIndex;
         int[] _rngTableIndex;
+        MapManager _mapManager;
 
-        public MarioManager(ProcessStream stream, Config config, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable)
+        public MarioManager(ProcessStream stream, Config config, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable, MapManager mapManager)
         {
             // Register controls on the control (for drag-and-drop)
             RegisterControlEvents(marioControl);
@@ -28,6 +29,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _config = config;
             _variableTable = variableTable;
             _stream = stream;
+            _mapManager = mapManager;
 
             _marioDataControls = new List<WatchVariableControl>();
             foreach (WatchVariable watchVar in marioData)
@@ -44,8 +46,23 @@ namespace SM64_Diagnostic.ManagerClasses
             GenerateRngTable();
         }
 
-        public void Update()
+        public void Update(bool updateView)
         {
+            // Get Mario position
+            float x, y, z, rot;
+            var marioAddress = _config.Mario.MarioPointerAddress;
+            x = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.XOffset, 4), 0);
+            y = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.YOffset, 4), 0);
+            z = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.ZOffset, 4), 0);
+            rot = (float) (((BitConverter.ToUInt32(_stream.ReadRam(0x33b19A, 4), 0) >> 16) % 65536) / 65536f * 360f); 
+            _mapManager.MarioMapObject.X = x;
+            _mapManager.MarioMapObject.Y = y;
+            _mapManager.MarioMapObject.Z = z;
+            _mapManager.MarioMapObject.Rotation = rot;
+
+            if (!updateView)
+                return;
+
             // Update watch variables
             foreach (var watchVar in _marioDataControls)
             {

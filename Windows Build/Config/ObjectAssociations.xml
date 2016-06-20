@@ -2,12 +2,14 @@
 <ObjectAssociations>
   <Config>
     <ImageDirectory>Resources\Object Images\</ImageDirectory>
+    <MapImageDirectory>Resources\Maps\Object Images\</MapImageDirectory>
     <DefaultImage>default.png</DefaultImage>
     <EmptyImage>null.png</EmptyImage>
     <RamToBehaviorOffset>0x12F14E80</RamToBehaviorOffset>
   </Config>
   <Mario>
     <Image path="Mario.png"/>
+    <MapImage path="Mario Top.png"/>
     <Color>#aaaaaa</Color>
   </Mario>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">

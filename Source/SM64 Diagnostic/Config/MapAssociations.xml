@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MapAssociations>
   <Config>
-    <ImageDirectory>Resources\Maps\</ImageDirectory>
+    <ImageDirectory>Resources\Maps\Map Images\</ImageDirectory>
     <DefaultImage>default.png</DefaultImage>
     <DefaultCoordinates x1="-8192" x2="8192" z1="-8192" z2="8192"/>
   </Config>

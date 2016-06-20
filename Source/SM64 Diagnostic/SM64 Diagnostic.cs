@@ -79,10 +79,21 @@ namespace SM64_Diagnostic
             _sm64Stream.OnUpdate += OnUpdate;
 
             _disManager = new DisassemblyManager(_config, this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
-            _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario);
-            var objectGui = new ObjectDataGui();
+
+            // Create map manager
+            MapGui mapGui = new MapGui();
+            mapGui.GLControl = glControlMap;
+            mapGui.MapIdLabel = labelMapId;
+            mapGui.MapNameLabel = labelMapName;
+            mapGui.MapSubNameLabel = labelMapSubName;
+            mapGui.PuValueLabel = labelMapPuValue;
+            mapGui.QpuValueLabel = labelMapQpuValue;
+            _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, mapGui);
+
+            _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
 
             // Create object manager
+            var objectGui = new ObjectDataGui();
             objectGui.ObjectBorderPanel = panelObjectBorder;
             objectGui.ObjectFlowLayout = flowLayoutPanelObject;
             objectGui.ObjectImagePictureBox = pictureBoxObject;
@@ -154,9 +165,8 @@ namespace SM64_Diagnostic
 
         private void OnUpdate(object sender, EventArgs e)
         {
+            _marioManager.Update(tabControlMain.SelectedTab == tabPageMario);
             _mapManager?.Update();
-            if (tabControlMain.SelectedTab == tabPageMario)
-                _marioManager.Update();
             UpdateMemoryValues();
         }
 
@@ -329,7 +339,7 @@ namespace SM64_Diagnostic
 
         private void glControlMap_Load(object sender, EventArgs e)
         {
-            _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, glControlMap);
+            _mapManager.Load();
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
