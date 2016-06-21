@@ -59,14 +59,13 @@ namespace SM64_Diagnostic.ManagerClasses
             _assoc = mapAssoc;
             _mapGui = mapGui;
 
-            _mapGraphics = new MapGraphicsControl(mapGui.GLControl);
-
             _marioMapObj = new MapObject(new Bitmap("Resources\\Maps\\Object Images\\Mario Top.png"));
             _marioMapObj.UsesRotation = true;
         }
 
         public void Load()
         {
+            _mapGraphics = new MapGraphicsControl(_mapGui.GLControl);
             _mapGraphics.Load();
             _isLoaded = true;
 

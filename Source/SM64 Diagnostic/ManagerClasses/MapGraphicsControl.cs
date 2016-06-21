@@ -29,7 +29,8 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void Load()
         {
-            return;
+            //Control.Context.LoadAll();
+
             //Control.VSync = true;
             Control.Paint += OnPaint;
             Control.Resize += OnResize;
@@ -45,10 +46,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void OnPaint(object sender, EventArgs e)
         {
-            return;
-            // Do not draw if we are disposing
-            if (Control.Disposing)
-                return;
+            Control.MakeCurrent();
 
             // Set default background color (clear drawing area)
             GL.Clear(ClearBufferMask.ColorBufferBit);
