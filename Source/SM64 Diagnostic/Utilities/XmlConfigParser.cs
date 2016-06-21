@@ -10,6 +10,7 @@ using System.Reflection;
 using SM64_Diagnostic.Structs;
 using System.Drawing;
 using System.Windows.Forms;
+using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -434,8 +435,10 @@ namespace SM64_Diagnostic.Utilities
             watchVar.Name = element.Value;
             watchVar.IsBool = element.Attribute(XName.Get("isBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isBool")).Value) : false;
-            watchVar.Type = WatchVariableParsingExtensions.GetStringType(element.Attribute(XName.Get("type")).Value);
+            watchVar.Type = WatchVariableExtensions.GetStringType(element.Attribute(XName.Get("type")).Value);
             watchVar.Address = ParsingUtilities.ParseHex(element.Attribute(XName.Get("address")).Value);
+            watchVar.InvertBool = element.Attribute(XName.Get("invertBool")) != null ?
+                bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : false;
             return watchVar;
         }
 
