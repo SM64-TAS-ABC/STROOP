@@ -24,12 +24,12 @@
         <xs:element name="Mario">
           <xs:complexType>
             <xs:all>
-              <xs:element name="Image">
+              <xs:element name="Image" maxOccurs="1">
                 <xs:complexType>
                   <xs:attribute name="path" use="required" type="xs:string"/>
                 </xs:complexType>
               </xs:element>
-              <xs:element name="MapImage" minOccurs="0">
+              <xs:element name="MapImage" minOccurs="0" maxOccurs="1">
                 <xs:complexType>
                   <xs:attribute name="path" use="required" type="xs:string"/>
                   <xs:attribute name="rotates" use="optional" type="xs:boolean"/>
