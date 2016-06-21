@@ -84,10 +84,10 @@ namespace SM64_Diagnostic.ManagerClasses
             // Get level and area
             byte level = _stream.ReadRam(_config.LevelAddress, 1)[0];
             byte area = _stream.ReadRam(_config.AreaAddress, 1)[0];
-            ushort loadingPoint = BitConverter.ToUInt16(_stream.ReadRam(_config.LoadingPointAddress, 1), 0);
+            ushort loadingPoint = BitConverter.ToUInt16(_stream.ReadRam(_config.LoadingPointAddress, 2), 0);
 
             // Find new map list
-            if (_currentMapList == null || _currentLevel != level || _currentArea != area | _currentLoadingPoint != loadingPoint)
+            if (_currentMapList == null || _currentLevel != level || _currentArea != area || _currentLoadingPoint != loadingPoint)
             {
                 _currentLevel = level;
                 _currentArea = area;
@@ -96,12 +96,12 @@ namespace SM64_Diagnostic.ManagerClasses
 
                 // Look for maps with correct loading points
                 var mapListLPFiltered = _currentMapList.Where((map) => map.LoadingPoint == loadingPoint).ToList();
-                if (mapListLPFiltered.Count >= 0)
+                if (mapListLPFiltered.Count > 0)
                     _currentMapList = mapListLPFiltered;
             }
 
             // Filter out all maps that are lower than Mario
-            var mapListYFiltered = _currentMapList.Where((map) => map.Y >= _marioMapObj.Y).ToList();
+            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= _marioMapObj.Y).ToList();
 
             // If no map is available display the default image
             if (mapListYFiltered.Count <= 0)

@@ -63,7 +63,7 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.WriteRam(BitConverter.GetBytes(objAddress), marioAddress + config.Mario.HoldingObjectPointerOffset);
 
             // Set clone action flags
-            success &= stream.WriteRam(BitConverter.GetBytes(0x8000207), marioAddress + config.Mario.ActionOffset);
+            success &= stream.WriteRam(BitConverter.GetBytes(0x8000207U), marioAddress + config.Mario.ActionOffset);
 
             return success;
         }

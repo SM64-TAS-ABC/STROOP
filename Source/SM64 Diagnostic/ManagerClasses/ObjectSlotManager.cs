@@ -59,6 +59,7 @@ namespace SM64_Diagnostic.ManagerClasses
             trash.DragEnter += OnObjectDragOver;
             trash.DragDrop += OnTrashDrop;
 
+            clone.AllowDrop = true;
             clone.DragEnter += OnObjectDragOver;
             clone.DragDrop += Clone_DragDrop;
 
