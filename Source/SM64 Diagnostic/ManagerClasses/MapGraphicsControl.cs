@@ -29,7 +29,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void Load()
         {
-            //Control.Context.LoadAll();
+            Control.Context.LoadAll();
 
             //Control.VSync = true;
             Control.Paint += OnPaint;
