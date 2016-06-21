@@ -29,6 +29,8 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void Load()
         {
+            MessageBox.Show(GL.GetString(StringName.Version));
+            Control.MakeCurrent();
             Control.Context.LoadAll();
 
             //Control.VSync = true;
