@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic
 {
@@ -64,7 +65,7 @@ namespace SM64_Diagnostic
 
             WatchVariable watchVar = new WatchVariable();
             watchVar.Name = textBoxName.Text;
-            watchVar.Type = WatchVariableParsingExtensions.GetStringType((string)comboBoxType.SelectedItem);
+            watchVar.Type = WatchVariableExtensions.GetStringType((string)comboBoxType.SelectedItem);
             watchVar.Address = address;
             watchVar.AbsoluteAddressing = checkBoxAbsolute.Checked;
             _value = watchVar;

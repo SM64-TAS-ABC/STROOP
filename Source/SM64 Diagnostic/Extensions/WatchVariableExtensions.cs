@@ -1,13 +1,14 @@
 ﻿using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SM64_Diagnostic.Utilities
+namespace SM64_Diagnostic.Extensions
 {
-    public static class WatchVariableParsingExtensions
+    public static class WatchVariableExtensions
     {
 
         public static uint GetRamAddress(this WatchVariable watchVar, uint offset)
@@ -78,7 +79,9 @@ namespace SM64_Diagnostic.Utilities
                 dataValue &= watchVar.Mask.Value;
 
             // Boolean parsing
-            return (dataValue != 0x00);
+            bool value = (dataValue != 0x00);
+            value = watchVar.InvertBool ? !value : value;
+            return value;
         }
 
 
@@ -88,6 +91,9 @@ namespace SM64_Diagnostic.Utilities
             var byteCount = TypeSize[watchVar.Type];
             var address = watchVar.OtherOffset ? offset + watchVar.Address : watchVar.Address;
             var dataBytes = stream.ReadRam(address, byteCount, watchVar.AbsoluteAddressing);
+
+            if (watchVar.InvertBool)
+                value = !value;
 
             // Get Uint64 value
             var intBytes = new byte[8];
@@ -104,10 +110,7 @@ namespace SM64_Diagnostic.Utilities
             }
             else
             {
-                if (value)
-                    dataValue = 1;
-                else
-                    dataValue = 0;
+                dataValue = value ? 1U : 0U;
             }
 
             var writeBytes = new byte[byteCount];
