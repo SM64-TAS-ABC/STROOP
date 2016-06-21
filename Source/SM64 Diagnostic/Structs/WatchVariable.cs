@@ -16,5 +16,6 @@ namespace SM64_Diagnostic.Structs
         public bool IsBool;
         public bool UseHex;
         public bool OtherOffset;
+        public bool InvertBool;
     }
 }

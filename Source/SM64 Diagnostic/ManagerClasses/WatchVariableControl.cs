@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic.ManagerClasses
 {

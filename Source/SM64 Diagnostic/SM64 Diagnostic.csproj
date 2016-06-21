@@ -119,7 +119,7 @@
     <Compile Include="Utilities\LittleEndianessAddressing.cs" />
     <Compile Include="Extensions\RichTextBoxExtensions.cs" />
     <Compile Include="Extensions\SizeExtensions.cs" />
-    <Compile Include="Utilities\WatchVariableParsing.cs" />
+    <Compile Include="Extensions\WatchVariableExtensions.cs" />
     <Compile Include="Utilities\XmlConfigParser.cs" />
     <EmbeddedResource Include="ModifyAddWatchVariableForm.resx">
       <DependentUpon>ModifyAddWatchVariableForm.cs</DependentUpon>
