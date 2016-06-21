@@ -12,6 +12,7 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.ManagerClasses;
 using OpenTK;
+using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic
 {
@@ -227,7 +228,7 @@ namespace SM64_Diagnostic
                     continue;
 
                 // Get data
-                byte[] data = new byte[WatchVariableParsingExtensions.GetByteCount(watchVar)];
+                byte[] data = new byte[watchVar.GetByteCount()];
                 _sm64Stream.ReadProcessMemory((int)(watchVar.Address & 0x0FFFFFFF), data, watchVar.AbsoluteAddressing);
                 _otherDataRowAssoc[i]["Value"] = String.Join("", data);
             }

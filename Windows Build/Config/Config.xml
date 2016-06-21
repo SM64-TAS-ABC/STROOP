@@ -3,7 +3,7 @@
   <RefreshRateFreq>10</RefreshRateFreq>
   <RAMStartAddress>0x008eba80</RAMStartAddress>
   <ProcessDefaultName>Mupen</ProcessDefaultName>
-  <RAMSize>0x3D0900</RAMSize>
+  <RAMSize>0x400000</RAMSize>
   <ObjectSlots>
     <FirstObjectAddress>0x8033D488</FirstObjectAddress>
     <ObjectStructSize>0x0260</ObjectStructSize>
@@ -38,12 +38,16 @@
     <VacantPointerAddress color="#aaaaaa">0x80361150</VacantPointerAddress>
   </ObjectGroups>
   <Mario>
-    <MarioPointerAddress>0x8033b170</MarioPointerAddress>
+    <MarioStructAddress>0x8033b170</MarioStructAddress>
+    <ActionOffset>0x0C</ActionOffset>
     <CoordinateOffsetX>0x3C</CoordinateOffsetX>
     <CoordinateOffsetY>0x40</CoordinateOffsetY>
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
+    <FacingAngleOffset>0x2A</FacingAngleOffset>
+    <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>
     <MarioStructSize>0xC4</MarioStructSize>
   </Mario>
-  <LevelAddress>0x033B249</LevelAddress>
-  <AreaAddress>0x033B24A</AreaAddress>
+  <LevelAddress>0x8033B249</LevelAddress>
+  <AreaAddress>0x8033B24A</AreaAddress>
+  <LoadingPointAddress>0x8033BACA</LoadingPointAddress>
 </Config>
