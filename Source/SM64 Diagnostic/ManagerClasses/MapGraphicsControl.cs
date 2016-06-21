@@ -48,6 +48,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void OnPaint(object sender, EventArgs e)
         {
+            MessageBox.Show("You should have already received a message. This will crash in 1...");
             Control.MakeCurrent();
 
             // Set default background color (clear drawing area)
@@ -118,6 +119,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void SetMap(Image map)
         {
+            MessageBox.Show("You should have already received a message. This will crash in 3...");
             int oldTex = _mapTex;
 
             _mapTex = LoadTexture(map as Bitmap);
@@ -176,6 +178,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void AddMapObject(MapObject mapObj)
         {
+            MessageBox.Show("You should have already received a message. This will crash in 2...");
             mapObj.TextureId = LoadTexture(mapObj.Image as Bitmap);
             _mapObjects.Add(mapObj);
         }
