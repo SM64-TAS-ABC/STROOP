@@ -17,9 +17,9 @@ namespace SM64_Diagnostic
             SetProcessDPIAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.ThreadException += (sender, e) =>
+            AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
             {
-                string text = e.Exception.Message + "\n\n" + e.Exception.StackTrace;
+                string text = e.ExceptionObject.ToString();
                 Clipboard.SetText(text);
                 MessageBox.Show(text);
             };
