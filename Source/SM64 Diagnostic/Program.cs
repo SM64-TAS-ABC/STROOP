@@ -17,7 +17,12 @@ namespace SM64_Diagnostic
             SetProcessDPIAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.OnThreadException
+            Application.ThreadException += (sender, e) =>
+            {
+                string text = e.Exception.Message + "\n\n" + e.Exception.StackTrace;
+                Clipboard.SetText(text);
+                MessageBox.Show(text);
+            };
             Application.Run(new SM64DiagnosticForm());
         }
 
