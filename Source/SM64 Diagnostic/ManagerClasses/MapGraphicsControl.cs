@@ -55,7 +55,7 @@ namespace SM64_Diagnostic.ManagerClasses
             if (state == 0)
             {
                 state = 1;
-                MessageBox.Show("You should have already received a message. This will crash in 1...");
+                MessageBox.Show("Point 3 hit.");
                 state = 2;
             }
             Control.MakeCurrent();
