@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Config>
-  <RefreshRateFreq>10</RefreshRateFreq>
+  <RefreshRateFreq>60</RefreshRateFreq>
   <RAMStartAddress>0x008eba80</RAMStartAddress>
   <ProcessDefaultName>Mupen</ProcessDefaultName>
   <RAMSize>0x400000</RAMSize>
