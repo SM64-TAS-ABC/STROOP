@@ -27,6 +27,14 @@ namespace SM64_Diagnostic.ManagerClasses
         MapGui _mapGui;
         bool _isLoaded = false;
 
+        public bool IsLoaded
+        {
+            get
+            {
+                return _isLoaded;
+            }
+        }
+
         public MapObject MarioMapObject
         {
             get

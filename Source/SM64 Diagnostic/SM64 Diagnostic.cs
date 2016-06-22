@@ -322,7 +322,7 @@ namespace SM64_Diagnostic
             flowLayoutPanelObjects.Visible = false;
             flowLayoutPanelObject.Visible = false;
             flowLayoutPanelMario.Visible = false;
-            if (_mapManager != null)
+            if (_mapManager != null && _mapManager.IsLoaded)
                 _mapManager.Visible = false;
             await Task.Run(() =>
             {
@@ -335,7 +335,7 @@ namespace SM64_Diagnostic
             flowLayoutPanelObjects.Visible = true;
             flowLayoutPanelObject.Visible = true;
             flowLayoutPanelMario.Visible = true;
-            if (_mapManager != null)
+            if (_mapManager != null && _mapManager.IsLoaded)
                 _mapManager.Visible = true;
 
             _resizing = false;
