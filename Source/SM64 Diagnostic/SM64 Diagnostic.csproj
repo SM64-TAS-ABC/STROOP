@@ -103,7 +103,7 @@
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Utilities\N64Disassembler.cs" />
     <Compile Include="Utilities\ObjectActions.cs" />
-    <Compile Include="Utilities\ProcessSelection.cs" />
+    <Compile Include="Structs\ProcessSelection.cs" />
     <Compile Include="SM64 Diagnostic.cs">
       <SubType>Form</SubType>
     </Compile>

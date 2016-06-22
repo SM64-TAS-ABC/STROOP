@@ -20,6 +20,8 @@ namespace SM64_Diagnostic.ManagerClasses
         Size _mapImageSize;
         List<MapObject> _mapObjects = new List<MapObject>();
 
+        int state = 0;
+
         public GLControl Control;
 
         public MapGraphicsControl(GLControl control)
@@ -48,7 +50,14 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void OnPaint(object sender, EventArgs e)
         {
-            MessageBox.Show("You should have already received a message. This will crash in 1...");
+            if (state == 1)
+                return;
+            if (state == 0)
+            {
+                state = 1;
+                MessageBox.Show("You should have already received a message. This will crash in 1...");
+                state = 2;
+            }
             Control.MakeCurrent();
 
             // Set default background color (clear drawing area)
@@ -119,7 +128,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void SetMap(Image map)
         {
-            MessageBox.Show("You should have already received a message. This will crash in 3...");
+            MessageBox.Show("Point 1 Hit.");
             int oldTex = _mapTex;
 
             _mapTex = LoadTexture(map as Bitmap);
@@ -178,7 +187,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void AddMapObject(MapObject mapObj)
         {
-            MessageBox.Show("You should have already received a message. This will crash in 2...");
+            MessageBox.Show("Point 2 Hit");
             mapObj.TextureId = LoadTexture(mapObj.Image as Bitmap);
             _mapObjects.Add(mapObj);
         }
