@@ -19,7 +19,6 @@ namespace SM64_Diagnostic.ManagerClasses
         ObjectAssociations _objectAssoc;
         ObjectManager _objManager;
         ProcessStream _stream;
-        TabControl _tabControl;
         ObjectSlotManagerGui _managerGui;
 
         Dictionary<uint, int> _memoryAddressSlotIndex;
@@ -103,8 +102,12 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private void OnClick(object sender, MouseEventArgs e, int slotIndex)
         {
-            switch (_tabControl.SelectedTab.Text)
+            switch (_managerGui.TabControl.SelectedTab.Text)
             {
+                case "Mario":
+                    _managerGui.TabControl.SelectedTab = _managerGui.TabControl.TabPages["Mario"];
+                    SelectedSlot = slotIndex;
+                    break;
                 case "Object":
                     SelectedSlot = slotIndex;
                     break;
