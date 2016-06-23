@@ -34,6 +34,7 @@
               <xs:element name="CoordinateOffsetX" type="types:address"/>
               <xs:element name="CoordinateOffsetY" type="types:address"/>
               <xs:element name="CoordinateOffsetZ" type="types:address"/>
+              <xs:element name ="MoveToMarioYOffset" type="xs:float"/>
               <xs:element name="MaxObjectSlots" type="xs:int"/>
             </xs:all>
           </xs:complexType>
@@ -79,6 +80,7 @@
               <xs:element name="CoordinateOffsetZ" type="types:address"/>
               <xs:element name="FacingAngleOffset" type="types:address"/>
               <xs:element name="HoldingObjectPointerOffset" type="types:address"/>
+              <xs:element name ="MoveToObjectYOffset" type="xs:float"/>
               <xs:element name="MarioStructAddress" type="types:address"/>
               <xs:element name="MarioStructSize" type="types:address"/>
             </xs:all>

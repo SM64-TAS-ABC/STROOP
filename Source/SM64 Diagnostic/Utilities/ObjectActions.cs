@@ -21,7 +21,7 @@ namespace SM64_Diagnostic.Utilities
             z = BitConverter.ToSingle(stream.ReadRam(objAddress + config.ObjectSlots.ObjectZOffset, 4), 0);
 
             // Add offset
-            y += 300f;
+            y += config.Mario.MoveToObjectYOffset;
 
             // Move mario to object
             bool success = true;
@@ -43,7 +43,7 @@ namespace SM64_Diagnostic.Utilities
             z = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.ZOffset, 4), 0);
 
             // Add offset
-            y += 300f;
+            y += config.ObjectSlots.MoveToMarioYOffset;
 
             // Move object to Mario
             bool success = true;
