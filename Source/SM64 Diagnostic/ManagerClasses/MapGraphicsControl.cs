@@ -15,13 +15,11 @@ namespace SM64_Diagnostic.ManagerClasses
 {
     class MapGraphicsControl
     {
-        public RectangleF MapView;
         int _mapTex = -1;
         Size _mapImageSize;
         List<MapObject> _mapObjects = new List<MapObject>();
 
-        int state = 0;
-
+        public RectangleF MapView;
         public GLControl Control;
 
         public MapGraphicsControl(GLControl control)
@@ -49,14 +47,6 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void OnPaint(object sender, EventArgs e)
         {
-            if (state == 1)
-                return;
-            if (state == 0)
-            {
-                state = 1;
-                MessageBox.Show("Point 14 hit.");
-                state = 2;
-            }
             Control.MakeCurrent();
 
             // Set default background color (clear drawing area)
@@ -129,18 +119,14 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             int oldTex = _mapTex;
 
-            MessageBox.Show("Point 9 hit");
             _mapTex = LoadTexture(map as Bitmap);
-            MessageBox.Show("Point 10 hit");
             _mapImageSize = map.Size;
             SetMapView();
-            MessageBox.Show("Point 11 hit");
 
             // Delete old map image
             if (oldTex != -1)
             {
                 GL.DeleteTexture(oldTex);
-                MessageBox.Show("Point 15 hit");
             }
         }
 
@@ -161,7 +147,7 @@ namespace SM64_Diagnostic.ManagerClasses
         static void DrawTexture(int texId, PointF loc, SizeF size, float angle = 0)
         {
             // Place and rotate texture to correct location on control
-            /*GL.LoadIdentity();
+            GL.LoadIdentity();
             GL.Translate(new Vector3(loc.X, loc.Y, 0));
             GL.Rotate(360-angle, Vector3.UnitZ);
 
@@ -171,37 +157,12 @@ namespace SM64_Diagnostic.ManagerClasses
             GL.Begin(PrimitiveType.Quads);
 
             // Set drawing coordinates
-            GL.TexCoord2(0.0f, 1.0f); GL.;
+            GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(-size.Width / 2, size.Height / 2); ;
             GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(size.Width / 2, size.Height / 2);
             GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(size.Width / 2, -size.Height / 2);
             GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(-size.Width / 2, -size.Height / 2);
 
-            GL.End();*/
-            GL.BindTexture(TextureTarget.Texture2D, texId);
-
-            ushort[] Indices = { 0, 1, 2, 3 };
-            Vertex2d[] Vertices = new Vertex2d[4];
-            Vertices[0] = new Vertex2d(new Vector2(0.0f, 1.0f), new Vector2(-size.Width / 2, size.Height / 2));
-            Vertices[1] = new Vertex2d(new Vector2(1.0f, 1.0f), new Vector2(size.Width / 2, size.Height / 2));
-            Vertices[2] = new Vertex2d(new Vector2(1.0f, 0.0f), new Vector2(size.Width / 2, -size.Height / 2));
-            Vertices[3] = new Vertex2d(new Vector2(0.0f, 0.0f), new Vector2(-size.Width / 2, -size.Height / 2));
-            Vertices[0] = new Vertex2d(new Vector2(0.0f, 1.0f), new Vector2(0, 100));
-            Vertices[1] = new Vertex2d(new Vector2(1.0f, 1.0f), new Vector2(100, 100));
-            Vertices[2] = new Vertex2d(new Vector2(1.0f, 0.0f), new Vector2(100, 0));
-            Vertices[3] = new Vertex2d(new Vector2(0.0f, 0.0f), new Vector2(0, 0));
-
-            uint[] VBOid = new uint[2];
-            GL.GenBuffers(2, VBOid);
-
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, VBOid[1]);
-            GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(Indices.Length * sizeof(ushort)), Indices, BufferUsageHint.StaticDraw);
-
-            GL.BindBuffer(BufferTarget.ArrayBuffer, VBOid[0]);
-            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(Vertices.Length * 8 * sizeof(float)), Vertices, BufferUsageHint.StaticDraw);
-
-            GL.DrawArrays(PrimitiveType.Points, 0, Indices.Length);
-
-            GL.DeleteBuffers(2, VBOid);
+            GL.End();
         }
 
         static int LoadTexture(Bitmap bmp)
@@ -230,9 +191,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void AddMapObject(MapObject mapObj)
         {
-            MessageBox.Show("Point 12 Hit");
             mapObj.TextureId = LoadTexture(mapObj.Image as Bitmap);
-            MessageBox.Show("Point 13 hit");
             _mapObjects.Add(mapObj);
         }
 

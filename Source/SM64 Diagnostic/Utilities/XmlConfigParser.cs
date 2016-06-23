@@ -27,8 +27,8 @@ namespace SM64_Diagnostic.Utilities
 
             // Create schema set
             var schemaSet = new XmlSchemaSet();
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ConfigSchema.xsd"), null));
             schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
+            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ConfigSchema.xsd"), null));
 
             // Load and validate document
             var doc = XDocument.Load(path);
@@ -192,8 +192,8 @@ namespace SM64_Diagnostic.Utilities
 
             // Create schema set
             var schemaSet = new XmlSchemaSet();
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.OtherDataSchema.xsd"), null));
             schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
+            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.OtherDataSchema.xsd"), null));
 
             // Load and validate document
             var doc = XDocument.Load(path);
@@ -217,8 +217,8 @@ namespace SM64_Diagnostic.Utilities
 
             // Create schema set
             var schemaSet = new XmlSchemaSet();
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ObjectDataSchema.xsd"), null));
             schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
+            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ObjectDataSchema.xsd"), null));
 
             // Load and validate document
             var doc = XDocument.Load(path);
@@ -246,8 +246,8 @@ namespace SM64_Diagnostic.Utilities
 
             // Create schema set
             var schemaSet = new XmlSchemaSet();
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.MarioDataSchema.xsd"), null));
             schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
+            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.MarioDataSchema.xsd"), null));
 
             // Load and validate document
             var doc = XDocument.Load(path);
@@ -356,8 +356,8 @@ namespace SM64_Diagnostic.Utilities
 
             // Create schema set
             var schemaSet = new XmlSchemaSet();
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.MapAssociationsSchema.xsd"), null));
             schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
+            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.MapAssociationsSchema.xsd"), null));
 
             // Load and validate document
             var doc = XDocument.Load(path);
