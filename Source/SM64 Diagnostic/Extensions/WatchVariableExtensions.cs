@@ -13,15 +13,15 @@ namespace SM64_Diagnostic.Extensions
 
         public static uint GetRamAddress(this WatchVariable watchVar, uint offset)
         {
-            var address = watchVar.OtherOffset ? offset + watchVar.Address : watchVar.Address;
+            uint address = watchVar.OtherOffset ? offset + watchVar.Address : watchVar.Address;
             return address & 0x0FFFFFFF;
         }
 
         public static uint GetProcessAddress(this WatchVariable watchVar, ProcessStream stream, uint offset)
         {
-            var address = watchVar.OtherOffset ? offset + watchVar.Address : watchVar.Address;
+            uint address = GetRamAddress(watchVar, offset);
             return (uint) LittleEndianessAddressing.AddressFix(
-                (int)((address & 0x0FFFFFFF) + stream.ProcessMemoryOffset), watchVar.GetByteCount())
+                (int)(address + stream.ProcessMemoryOffset), watchVar.GetByteCount())
                 & 0x0FFFFFFF;
         }
 

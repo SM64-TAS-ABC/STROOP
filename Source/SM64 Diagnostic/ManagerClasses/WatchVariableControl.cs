@@ -95,9 +95,20 @@ namespace SM64_Diagnostic.ManagerClasses
             this._nameLabel.Width = 210;
             this._nameLabel.Text = _watchVar.Name;
             this._nameLabel.Margin = new Padding(3, 3, 3, 3);
-
-            AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
-                _watchVar.GetRamAddress(OtherOffset), _watchVar.GetProcessAddress(_stream, OtherOffset), _stream.ProcessName));
+            this._nameLabel.MouseHover += (sender, e) =>
+            {
+                if (!_watchVar.OtherOffset)
+                {
+                    AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
+                        _watchVar.Address, _watchVar.GetProcessAddress(_stream, _watchVar.Address), _stream.ProcessName));
+                }
+                else
+                {
+                    AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{1:X8} + 0x{0:X8} = 0x{2:X8} [{4} + 0x{3:X8}]",
+                        _watchVar.Address, OtherOffset, _watchVar.GetRamAddress(OtherOffset), 
+                        _watchVar.GetProcessAddress(_stream, OtherOffset), _stream.ProcessName));
+                }
+            };
 
             if (_watchVar.IsBool)
             {
