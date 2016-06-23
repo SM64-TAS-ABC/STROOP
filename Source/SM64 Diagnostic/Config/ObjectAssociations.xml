@@ -4,7 +4,7 @@
     <ImageDirectory>Resources\Object Images\</ImageDirectory>
     <MapImageDirectory>Resources\Maps\Object Images\</MapImageDirectory>
     <DefaultImage>default.png</DefaultImage>
-    <EmptyImage>null.png</EmptyImage>
+    <EmptyImage>Empty.png</EmptyImage>
     <RamToBehaviorOffset>0x12F14E80</RamToBehaviorOffset>
   </Config>
   <Mario>
