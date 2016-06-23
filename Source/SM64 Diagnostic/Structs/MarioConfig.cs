@@ -15,6 +15,7 @@ namespace SM64_Diagnostic.Structs
         public uint ZOffset;
         public uint RotationOffset;
         public uint HoldingObjectPointerOffset;
+        public float MoveToObjectYOffset;
         public uint StructSize;
     }
 }

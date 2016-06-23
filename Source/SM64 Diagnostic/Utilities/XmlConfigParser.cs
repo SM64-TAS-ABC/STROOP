@@ -88,6 +88,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "CoordinateOffsetZ":
                                     config.ObjectSlots.ObjectZOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "MoveToMarioYOffset":
+                                    config.ObjectSlots.MoveToMarioYOffset = float.Parse(subElement.Value);
+                                    break;
                                 case "MaxObjectSlots":
                                     config.ObjectSlots.MaxSlots = int.Parse(subElement.Value);
                                     break;
@@ -160,6 +163,9 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                                 case "ActionOffset":
                                     config.Mario.ActionOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "MoveToObjectYOffset":
+                                    config.Mario.MoveToObjectYOffset = float.Parse(subElement.Value);
                                     break;
                                 case "HoldingObjectPointerOffset":
                                     config.Mario.HoldingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);

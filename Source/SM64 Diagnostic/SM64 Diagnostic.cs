@@ -115,7 +115,12 @@ namespace SM64_Diagnostic
             _optionsManager = new OptionsManager(optionGui, _config);
 
             // Create Object Slots
-            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, pictureBoxTrash, pictureBoxObjClone, tabControlMain);
+            var slotManagerGui = new ObjectSlotManagerGui();
+            slotManagerGui.ClonePictureBox = pictureBoxObjClone;
+            slotManagerGui.TrashPictureBox = pictureBoxObjTrash;
+            slotManagerGui.TabControl = tabControlMain;
+            slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
+            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, slotManagerGui);
             _objectSlotManager.AddToControls(flowLayoutPanelObjects.Controls);
 
             // Add SortMethods
@@ -345,8 +350,14 @@ namespace SM64_Diagnostic
             _resizing = false;
         }
 
-        private void glControlMap_Load(object sender, EventArgs e)
+        private async void glControlMap_Load(object sender, EventArgs e)
         {
+            await Task.Run(() => {
+                while (_mapManager == null)
+                {
+                    Task.Delay(1).Wait();
+                }
+            });
             _mapManager.Load();
         }
 
