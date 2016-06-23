@@ -31,25 +31,18 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void Load()
         {
-            MessageBox.Show("Point 1 hit");
             Control.MakeCurrent();
-            MessageBox.Show("Point 2 hit");
             Control.Context.LoadAll();
-            MessageBox.Show("Point 3 hit");
 
             Control.Paint += OnPaint;
             Control.Resize += OnResize;
-            MessageBox.Show("Point 4 hit");
 
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
-            MessageBox.Show("Point 5 hit");
             GL.Enable(EnableCap.Texture2D);
             GL.Enable(EnableCap.Blend);
-            MessageBox.Show("Point 6 hit");
+            GL.EnableClientState(ArrayCap.VertexArray);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-            MessageBox.Show("Point 7 hit");
             GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);
-            MessageBox.Show("Point 8 hit");
 
             SetupViewport();
         }
@@ -151,24 +144,64 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
+        struct Vertex2d
+        {
+            public Vector2 TexCoord;
+            public Vector3 Normal;
+            public Vector3 Position;
+
+            public Vertex2d(Vector2 texCoord, Vector2 position)
+            {
+                TexCoord = texCoord;
+                Normal = Vector3.UnitX;
+                Position = new Vector3(position.X, position.Y, 0);
+            }
+        }
+
         static void DrawTexture(int texId, PointF loc, SizeF size, float angle = 0)
         {
             // Place and rotate texture to correct location on control
-            GL.LoadIdentity();
+            /*GL.LoadIdentity();
             GL.Translate(new Vector3(loc.X, loc.Y, 0));
             GL.Rotate(360-angle, Vector3.UnitZ);
 
+            
             // Start drawing texture
             GL.BindTexture(TextureTarget.Texture2D, texId);
             GL.Begin(PrimitiveType.Quads);
 
             // Set drawing coordinates
-            GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(-size.Width / 2, size.Height / 2);
+            GL.TexCoord2(0.0f, 1.0f); GL.;
             GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(size.Width / 2, size.Height / 2);
             GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(size.Width / 2, -size.Height / 2);
             GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(-size.Width / 2, -size.Height / 2);
 
-            GL.End();
+            GL.End();*/
+            GL.BindTexture(TextureTarget.Texture2D, texId);
+
+            ushort[] Indices = { 0, 1, 2, 3 };
+            Vertex2d[] Vertices = new Vertex2d[4];
+            Vertices[0] = new Vertex2d(new Vector2(0.0f, 1.0f), new Vector2(-size.Width / 2, size.Height / 2));
+            Vertices[1] = new Vertex2d(new Vector2(1.0f, 1.0f), new Vector2(size.Width / 2, size.Height / 2));
+            Vertices[2] = new Vertex2d(new Vector2(1.0f, 0.0f), new Vector2(size.Width / 2, -size.Height / 2));
+            Vertices[3] = new Vertex2d(new Vector2(0.0f, 0.0f), new Vector2(-size.Width / 2, -size.Height / 2));
+            Vertices[0] = new Vertex2d(new Vector2(0.0f, 1.0f), new Vector2(0, 100));
+            Vertices[1] = new Vertex2d(new Vector2(1.0f, 1.0f), new Vector2(100, 100));
+            Vertices[2] = new Vertex2d(new Vector2(1.0f, 0.0f), new Vector2(100, 0));
+            Vertices[3] = new Vertex2d(new Vector2(0.0f, 0.0f), new Vector2(0, 0));
+
+            uint[] VBOid = new uint[2];
+            GL.GenBuffers(2, VBOid);
+
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, VBOid[1]);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(Indices.Length * sizeof(ushort)), Indices, BufferUsageHint.StaticDraw);
+
+            GL.BindBuffer(BufferTarget.ArrayBuffer, VBOid[0]);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(Vertices.Length * 8 * sizeof(float)), Vertices, BufferUsageHint.StaticDraw);
+
+            GL.DrawArrays(PrimitiveType.Points, 0, Indices.Length);
+
+            GL.DeleteBuffers(2, VBOid);
         }
 
         static int LoadTexture(Bitmap bmp)
@@ -180,14 +213,13 @@ namespace SM64_Diagnostic.ManagerClasses
             // Set Bi-Linear Texture Filtering
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapNearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
-   
+
             // Get data from bitmap image
             BitmapData bmp_data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
             // Store bitmap data as OpenGl texture
-            GL.TexStorage2D(TextureTarget2d.Texture2D, 8, SizedInternalFormat.Rgba8, bmp.Width, bmp.Height);
-            GL.TexSubImage2D(
-                TextureTarget.Texture2D, 0, 0, 0, bmp.Width, bmp.Height​, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, bmp_data.Scan0);
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, bmp.Width, bmp.Height, 0, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, bmp_data.Scan0);
+
             bmp.UnlockBits(bmp_data);
 
             // Generate mipmaps for texture filtering
