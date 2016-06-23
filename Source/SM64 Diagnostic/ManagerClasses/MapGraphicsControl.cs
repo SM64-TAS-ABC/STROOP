@@ -31,18 +31,25 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void Load()
         {
-            MessageBox.Show(GL.GetString(StringName.Version));
+            MessageBox.Show("Point 1 hit");
             Control.MakeCurrent();
+            MessageBox.Show("Point 2 hit");
             Control.Context.LoadAll();
+            MessageBox.Show("Point 3 hit");
 
             Control.Paint += OnPaint;
             Control.Resize += OnResize;
+            MessageBox.Show("Point 4 hit");
 
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
+            MessageBox.Show("Point 5 hit");
             GL.Enable(EnableCap.Texture2D);
             GL.Enable(EnableCap.Blend);
+            MessageBox.Show("Point 6 hit");
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            MessageBox.Show("Point 7 hit");
             GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);
+            MessageBox.Show("Point 8 hit");
 
             SetupViewport();
         }
@@ -54,7 +61,7 @@ namespace SM64_Diagnostic.ManagerClasses
             if (state == 0)
             {
                 state = 1;
-                MessageBox.Show("Point 3 hit.");
+                MessageBox.Show("Point 14 hit.");
                 state = 2;
             }
             Control.MakeCurrent();
@@ -129,13 +136,19 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             int oldTex = _mapTex;
 
+            MessageBox.Show("Point 9 hit");
             _mapTex = LoadTexture(map as Bitmap);
+            MessageBox.Show("Point 10 hit");
             _mapImageSize = map.Size;
             SetMapView();
+            MessageBox.Show("Point 11 hit");
 
             // Delete old map image
             if (oldTex != -1)
+            {
                 GL.DeleteTexture(oldTex);
+                MessageBox.Show("Point 15 hit");
+            }
         }
 
         static void DrawTexture(int texId, PointF loc, SizeF size, float angle = 0)
@@ -185,8 +198,9 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void AddMapObject(MapObject mapObj)
         {
-            MessageBox.Show("Point 2 Hit");
+            MessageBox.Show("Point 12 Hit");
             mapObj.TextureId = LoadTexture(mapObj.Image as Bitmap);
+            MessageBox.Show("Point 13 hit");
             _mapObjects.Add(mapObj);
         }
 
