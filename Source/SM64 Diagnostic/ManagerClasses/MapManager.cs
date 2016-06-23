@@ -129,12 +129,12 @@ namespace SM64_Diagnostic.ManagerClasses
             }
 
             //---- Update PU -----
-            int colAreaX = (int)((_marioMapObj.X + 8192) / 16384);
-            int colAreaZ = (int)((_marioMapObj.Z + 8192) / 16384);
+            int colAreaX = (int)((_marioMapObj.X + 32768) / 65536);
+            int colAreaZ = (int)((_marioMapObj.Z + 32768) / 65536);
 
-            if (_marioMapObj.X < -8192)
+            if (_marioMapObj.X < -32768)
                 colAreaX--;
-            if (_marioMapObj.Z < -8192)
+            if (_marioMapObj.Z < -32768)
                 colAreaZ--;
 
             // Pu's are actually 4 "collision areas" away
@@ -153,7 +153,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapGui.MapSubNameLabel.Text = (_currentMap.SubName != null) ? _currentMap.SubName : "";
 
             // Adjust mario coordinates relative from current PU
-            var marioCoord = new PointF(_marioMapObj.X - puX * 16384, _marioMapObj.Z - puZ * 16384);
+            var marioCoord = new PointF(_marioMapObj.X - puX * 65566, _marioMapObj.Z - puZ * 65566);
 
             // Calculate mario's location on the OpenGl control
             var mapView = _mapGraphics.MapView;
