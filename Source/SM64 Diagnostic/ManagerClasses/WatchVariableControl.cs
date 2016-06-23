@@ -127,12 +127,12 @@ namespace SM64_Diagnostic.ManagerClasses
                 this._textBoxValue.TextChanged += OnModified;
                 this._textBoxValue.ContextMenuStrip = WatchVariableControl.Menu;
                 this._textBoxValue.KeyDown += OnTextValueKeyDown;
-                this._textBoxValue.MouseHover += (sender, e) =>
+                this._textBoxValue.MouseEnter += (sender, e) =>
                 {
                     _lastSelected = this;
                     (_menu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
                 };
-                this._textBoxValue.LostFocus += (sender, e) => { _editMode = false; this._textBoxValue.ReadOnly = true; };
+                this._textBoxValue.Leave += (sender, e) => { _editMode = false; this._textBoxValue.ReadOnly = true; };
                 WatchVariableControl.Menu.ItemClicked += OnMenuStripClick;
             }
 
@@ -188,6 +188,7 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 case "Edit":
                     _textBoxValue.ReadOnly = false;
+                    _textBoxValue.Focus();
                     _editMode = true;
                     break;
                 case "View As Hexadecimal":

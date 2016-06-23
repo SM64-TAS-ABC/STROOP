@@ -46,6 +46,7 @@
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
     <FacingAngleOffset>0x2A</FacingAngleOffset>
     <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>
+    <!--<CurrentFloorTrianglePointerOffset></CurrentFloorTrianglePointerOffset>-->
     <MarioStructSize>0xC4</MarioStructSize>
     <MoveToObjectYOffset>300</MoveToObjectYOffset>
   </Mario>
