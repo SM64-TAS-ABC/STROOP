@@ -35,7 +35,6 @@ namespace SM64_Diagnostic.ManagerClasses
             Control.MakeCurrent();
             Control.Context.LoadAll();
 
-            //Control.VSync = true;
             Control.Paint += OnPaint;
             Control.Resize += OnResize;
 
@@ -128,7 +127,6 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void SetMap(Image map)
         {
-            MessageBox.Show("Point 1 Hit.");
             int oldTex = _mapTex;
 
             _mapTex = LoadTexture(map as Bitmap);
