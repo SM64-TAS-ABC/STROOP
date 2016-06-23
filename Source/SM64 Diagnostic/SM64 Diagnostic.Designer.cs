@@ -34,8 +34,8 @@
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.pictureBoxObjClone = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.pictureBoxTrash = new System.Windows.Forms.PictureBox();
+            this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
+            this.pictureBoxObjTrash = new System.Windows.Forms.PictureBox();
             this.labelSortMethod = new System.Windows.Forms.Label();
             this.flowLayoutPanelObjects = new System.Windows.Forms.FlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
@@ -88,7 +88,7 @@
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrash)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjTrash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -115,9 +115,9 @@
             this.comboBoxProcessSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxProcessSelection.FormattingEnabled = true;
             this.comboBoxProcessSelection.Location = new System.Drawing.Point(127, 8);
-            this.comboBoxProcessSelection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxProcessSelection.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxProcessSelection.Name = "comboBoxProcessSelection";
-            this.comboBoxProcessSelection.Size = new System.Drawing.Size(199, 21);
+            this.comboBoxProcessSelection.Size = new System.Drawing.Size(495, 21);
             this.comboBoxProcessSelection.TabIndex = 0;
             this.comboBoxProcessSelection.DropDown += new System.EventHandler(this.comboBoxProcessSelection_DropDown);
             this.comboBoxProcessSelection.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
@@ -138,16 +138,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxObjects.Controls.Add(this.pictureBoxObjClone);
-            this.groupBoxObjects.Controls.Add(this.checkBox1);
-            this.groupBoxObjects.Controls.Add(this.pictureBoxTrash);
+            this.groupBoxObjects.Controls.Add(this.checkBoxObjLockLabels);
+            this.groupBoxObjects.Controls.Add(this.pictureBoxObjTrash);
             this.groupBoxObjects.Controls.Add(this.labelSortMethod);
             this.groupBoxObjects.Controls.Add(this.flowLayoutPanelObjects);
             this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
             this.groupBoxObjects.Location = new System.Drawing.Point(2, 2);
-            this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
-            this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(485, 251);
+            this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBoxObjects.Size = new System.Drawing.Size(781, 348);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -156,42 +156,42 @@
             // 
             this.pictureBoxObjClone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxObjClone.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxObjClone.Image")));
-            this.pictureBoxObjClone.Location = new System.Drawing.Point(255, 13);
-            this.pictureBoxObjClone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBoxObjClone.Location = new System.Drawing.Point(551, 13);
+            this.pictureBoxObjClone.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxObjClone.Name = "pictureBoxObjClone";
             this.pictureBoxObjClone.Size = new System.Drawing.Size(23, 18);
             this.pictureBoxObjClone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxObjClone.TabIndex = 8;
             this.pictureBoxObjClone.TabStop = false;
             // 
-            // checkBox1
+            // checkBoxObjLockLabels
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(4, 18);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(84, 17);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Lock Labels";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxObjLockLabels.AutoSize = true;
+            this.checkBoxObjLockLabels.Location = new System.Drawing.Point(4, 18);
+            this.checkBoxObjLockLabels.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxObjLockLabels.Name = "checkBoxObjLockLabels";
+            this.checkBoxObjLockLabels.Size = new System.Drawing.Size(84, 17);
+            this.checkBoxObjLockLabels.TabIndex = 7;
+            this.checkBoxObjLockLabels.Text = "Lock Labels";
+            this.checkBoxObjLockLabels.UseVisualStyleBackColor = true;
             // 
-            // pictureBoxTrash
+            // pictureBoxObjTrash
             // 
-            this.pictureBoxTrash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxTrash.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTrash.Image")));
-            this.pictureBoxTrash.Location = new System.Drawing.Point(282, 13);
-            this.pictureBoxTrash.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBoxTrash.Name = "pictureBoxTrash";
-            this.pictureBoxTrash.Size = new System.Drawing.Size(23, 18);
-            this.pictureBoxTrash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxTrash.TabIndex = 6;
-            this.pictureBoxTrash.TabStop = false;
+            this.pictureBoxObjTrash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxObjTrash.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxObjTrash.Image")));
+            this.pictureBoxObjTrash.Location = new System.Drawing.Point(578, 13);
+            this.pictureBoxObjTrash.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxObjTrash.Name = "pictureBoxObjTrash";
+            this.pictureBoxObjTrash.Size = new System.Drawing.Size(23, 18);
+            this.pictureBoxObjTrash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxObjTrash.TabIndex = 6;
+            this.pictureBoxObjTrash.TabStop = false;
             // 
             // labelSortMethod
             // 
             this.labelSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelSortMethod.AutoSize = true;
-            this.labelSortMethod.Location = new System.Drawing.Point(309, 18);
+            this.labelSortMethod.Location = new System.Drawing.Point(605, 18);
             this.labelSortMethod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSortMethod.Name = "labelSortMethod";
             this.labelSortMethod.Size = new System.Drawing.Size(68, 13);
@@ -205,9 +205,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelObjects.AutoScroll = true;
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 38);
-            this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(477, 208);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(773, 305);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -215,8 +215,8 @@
             // 
             this.comboBoxSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortMethod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBoxSortMethod.Location = new System.Drawing.Point(380, 16);
-            this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxSortMethod.Location = new System.Drawing.Point(676, 16);
+            this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSortMethod.Name = "comboBoxSortMethod";
             this.comboBoxSortMethod.Size = new System.Drawing.Size(102, 21);
             this.comboBoxSortMethod.TabIndex = 4;
@@ -225,8 +225,8 @@
             // buttonPauseResume
             // 
             this.buttonPauseResume.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPauseResume.Location = new System.Drawing.Point(329, 6);
-            this.buttonPauseResume.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonPauseResume.Location = new System.Drawing.Point(625, 6);
+            this.buttonPauseResume.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPauseResume.Name = "buttonPauseResume";
             this.buttonPauseResume.Size = new System.Drawing.Size(64, 21);
             this.buttonPauseResume.TabIndex = 4;
@@ -240,7 +240,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainerMain.Location = new System.Drawing.Point(12, 30);
-            this.splitContainerMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainerMain.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainerMain.Name = "splitContainerMain";
             this.splitContainerMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -251,8 +251,8 @@
             // splitContainerMain.Panel2
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.groupBoxObjects);
-            this.splitContainerMain.Size = new System.Drawing.Size(489, 411);
-            this.splitContainerMain.SplitterDistance = 155;
+            this.splitContainerMain.Size = new System.Drawing.Size(785, 564);
+            this.splitContainerMain.SplitterDistance = 212;
             this.splitContainerMain.SplitterWidth = 3;
             this.splitContainerMain.TabIndex = 4;
             // 
@@ -270,10 +270,10 @@
             this.tabControlMain.Controls.Add(this.tabPageOptions);
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(2, 2);
-            this.tabControlMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControlMain.Margin = new System.Windows.Forms.Padding(2);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(485, 154);
+            this.tabControlMain.Size = new System.Drawing.Size(781, 211);
             this.tabControlMain.TabIndex = 3;
             this.tabControlMain.DragEnter += new System.Windows.Forms.DragEventHandler(this.tabControlMain_DragEnter);
             // 
@@ -296,17 +296,17 @@
             this.tabPageObjects.Controls.Add(this.panelObjectBorder);
             this.tabPageObjects.Controls.Add(this.labelObjAddValue);
             this.tabPageObjects.Location = new System.Drawing.Point(4, 22);
-            this.tabPageObjects.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageObjects.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageObjects.Name = "tabPageObjects";
-            this.tabPageObjects.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPageObjects.Size = new System.Drawing.Size(477, 128);
+            this.tabPageObjects.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPageObjects.Size = new System.Drawing.Size(773, 185);
             this.tabPageObjects.TabIndex = 0;
             this.tabPageObjects.Text = "Object";
             // 
             // buttonObjRetrieve
             // 
             this.buttonObjRetrieve.Location = new System.Drawing.Point(4, 104);
-            this.buttonObjRetrieve.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonObjRetrieve.Margin = new System.Windows.Forms.Padding(2);
             this.buttonObjRetrieve.Name = "buttonObjRetrieve";
             this.buttonObjRetrieve.Size = new System.Drawing.Size(64, 21);
             this.buttonObjRetrieve.TabIndex = 15;
@@ -316,7 +316,7 @@
             // buttonObjClone
             // 
             this.buttonObjClone.Location = new System.Drawing.Point(72, 104);
-            this.buttonObjClone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonObjClone.Margin = new System.Windows.Forms.Padding(2);
             this.buttonObjClone.Name = "buttonObjClone";
             this.buttonObjClone.Size = new System.Drawing.Size(64, 21);
             this.buttonObjClone.TabIndex = 14;
@@ -326,7 +326,7 @@
             // buttonObjGoTo
             // 
             this.buttonObjGoTo.Location = new System.Drawing.Point(4, 79);
-            this.buttonObjGoTo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonObjGoTo.Margin = new System.Windows.Forms.Padding(2);
             this.buttonObjGoTo.Name = "buttonObjGoTo";
             this.buttonObjGoTo.Size = new System.Drawing.Size(64, 21);
             this.buttonObjGoTo.TabIndex = 13;
@@ -336,7 +336,7 @@
             // buttonObjUnload
             // 
             this.buttonObjUnload.Location = new System.Drawing.Point(72, 79);
-            this.buttonObjUnload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonObjUnload.Margin = new System.Windows.Forms.Padding(2);
             this.buttonObjUnload.Name = "buttonObjUnload";
             this.buttonObjUnload.Size = new System.Drawing.Size(64, 21);
             this.buttonObjUnload.TabIndex = 5;
@@ -387,10 +387,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelObject.AutoScroll = true;
             this.flowLayoutPanelObject.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelObject.Location = new System.Drawing.Point(165, 3);
-            this.flowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanelObject.Location = new System.Drawing.Point(208, 3);
+            this.flowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObject.Name = "flowLayoutPanelObject";
-            this.flowLayoutPanelObject.Size = new System.Drawing.Size(310, 121);
+            this.flowLayoutPanelObject.Size = new System.Drawing.Size(563, 178);
             this.flowLayoutPanelObject.TabIndex = 3;
             // 
             // labelObjSlotInd
@@ -438,7 +438,7 @@
             // 
             this.panelObjectBorder.Controls.Add(this.pictureBoxObject);
             this.panelObjectBorder.Location = new System.Drawing.Point(4, 5);
-            this.panelObjectBorder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelObjectBorder.Margin = new System.Windows.Forms.Padding(2);
             this.panelObjectBorder.Name = "panelObjectBorder";
             this.panelObjectBorder.Size = new System.Drawing.Size(57, 55);
             this.panelObjectBorder.TabIndex = 2;
@@ -449,7 +449,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxObject.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxObject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBoxObject.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxObject.MaximumSize = new System.Drawing.Size(133, 130);
             this.pictureBoxObject.Name = "pictureBoxObject";
             this.pictureBoxObject.Size = new System.Drawing.Size(51, 50);
@@ -472,9 +472,9 @@
             this.tabPageMario.Controls.Add(this.flowLayoutPanelMario);
             this.tabPageMario.Controls.Add(this.panelMarioBorder);
             this.tabPageMario.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageMario.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageMario.Name = "tabPageMario";
-            this.tabPageMario.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageMario.Padding = new System.Windows.Forms.Padding(2);
             this.tabPageMario.Size = new System.Drawing.Size(477, 128);
             this.tabPageMario.TabIndex = 1;
             this.tabPageMario.Text = "Mario";
@@ -487,7 +487,7 @@
             this.flowLayoutPanelMario.AutoScroll = true;
             this.flowLayoutPanelMario.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelMario.Location = new System.Drawing.Point(65, 3);
-            this.flowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelMario.Name = "flowLayoutPanelMario";
             this.flowLayoutPanelMario.Size = new System.Drawing.Size(410, 121);
             this.flowLayoutPanelMario.TabIndex = 1;
@@ -496,7 +496,7 @@
             // 
             this.panelMarioBorder.Controls.Add(this.pictureBoxMario);
             this.panelMarioBorder.Location = new System.Drawing.Point(4, 4);
-            this.panelMarioBorder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelMarioBorder.Margin = new System.Windows.Forms.Padding(2);
             this.panelMarioBorder.Name = "panelMarioBorder";
             this.panelMarioBorder.Size = new System.Drawing.Size(57, 55);
             this.panelMarioBorder.TabIndex = 0;
@@ -507,7 +507,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxMario.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxMario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBoxMario.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxMario.MaximumSize = new System.Drawing.Size(133, 130);
             this.pictureBoxMario.Name = "pictureBoxMario";
             this.pictureBoxMario.Size = new System.Drawing.Size(51, 50);
@@ -524,7 +524,7 @@
             this.tabPageOther.Controls.Add(this.buttonOtherAdd);
             this.tabPageOther.Controls.Add(this.dataGridViewOther);
             this.tabPageOther.Location = new System.Drawing.Point(4, 22);
-            this.tabPageOther.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageOther.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageOther.Name = "tabPageOther";
             this.tabPageOther.Size = new System.Drawing.Size(477, 128);
             this.tabPageOther.TabIndex = 2;
@@ -535,7 +535,7 @@
             this.checkBoxAbsoluteAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxAbsoluteAddress.AutoSize = true;
             this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(342, 114);
-            this.checkBoxAbsoluteAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxAbsoluteAddress.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxAbsoluteAddress.Name = "checkBoxAbsoluteAddress";
             this.checkBoxAbsoluteAddress.Size = new System.Drawing.Size(134, 17);
             this.checkBoxAbsoluteAddress.TabIndex = 4;
@@ -546,7 +546,7 @@
             // 
             this.buttonOtherDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonOtherDelete.Location = new System.Drawing.Point(106, 112);
-            this.buttonOtherDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonOtherDelete.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOtherDelete.Name = "buttonOtherDelete";
             this.buttonOtherDelete.Size = new System.Drawing.Size(48, 21);
             this.buttonOtherDelete.TabIndex = 3;
@@ -558,7 +558,7 @@
             // 
             this.buttonOtherModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonOtherModify.Location = new System.Drawing.Point(54, 112);
-            this.buttonOtherModify.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonOtherModify.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOtherModify.Name = "buttonOtherModify";
             this.buttonOtherModify.Size = new System.Drawing.Size(48, 21);
             this.buttonOtherModify.TabIndex = 2;
@@ -570,7 +570,7 @@
             // 
             this.buttonOtherAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonOtherAdd.Location = new System.Drawing.Point(2, 112);
-            this.buttonOtherAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonOtherAdd.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOtherAdd.Name = "buttonOtherAdd";
             this.buttonOtherAdd.Size = new System.Drawing.Size(48, 21);
             this.buttonOtherAdd.TabIndex = 1;
@@ -591,7 +591,7 @@
             this.dataGridViewOther.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewOther.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewOther.Location = new System.Drawing.Point(2, 2);
-            this.dataGridViewOther.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewOther.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewOther.Name = "dataGridViewOther";
             this.dataGridViewOther.RowTemplate.Height = 20;
             this.dataGridViewOther.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -608,7 +608,7 @@
             this.tabPageDisassembly.Controls.Add(this.labelDisStart);
             this.tabPageDisassembly.Controls.Add(this.richTextBoxDissasembly);
             this.tabPageDisassembly.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDisassembly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageDisassembly.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageDisassembly.Name = "tabPageDisassembly";
             this.tabPageDisassembly.Size = new System.Drawing.Size(477, 128);
             this.tabPageDisassembly.TabIndex = 3;
@@ -618,7 +618,7 @@
             // 
             this.buttonDisGo.Enabled = false;
             this.buttonDisGo.Location = new System.Drawing.Point(171, 2);
-            this.buttonDisGo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonDisGo.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDisGo.Name = "buttonDisGo";
             this.buttonDisGo.Size = new System.Drawing.Size(50, 20);
             this.buttonDisGo.TabIndex = 5;
@@ -629,7 +629,7 @@
             // 
             this.maskedTextBoxDisStart.Enabled = false;
             this.maskedTextBoxDisStart.Location = new System.Drawing.Point(79, 2);
-            this.maskedTextBoxDisStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maskedTextBoxDisStart.Margin = new System.Windows.Forms.Padding(2);
             this.maskedTextBoxDisStart.Mask = "\\0xaaAAAAAA";
             this.maskedTextBoxDisStart.Name = "maskedTextBoxDisStart";
             this.maskedTextBoxDisStart.Size = new System.Drawing.Size(87, 20);
@@ -652,7 +652,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBoxDissasembly.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxDissasembly.Location = new System.Drawing.Point(3, 23);
-            this.richTextBoxDissasembly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBoxDissasembly.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
             this.richTextBoxDissasembly.ReadOnly = true;
             this.richTextBoxDissasembly.Size = new System.Drawing.Size(472, 103);
@@ -670,9 +670,9 @@
             this.tabPageMap.Controls.Add(this.labelMapQpuValue);
             this.tabPageMap.Controls.Add(this.glControlMap);
             this.tabPageMap.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageMap.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageMap.Name = "tabPageMap";
-            this.tabPageMap.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageMap.Padding = new System.Windows.Forms.Padding(2);
             this.tabPageMap.Size = new System.Drawing.Size(477, 128);
             this.tabPageMap.TabIndex = 4;
             this.tabPageMap.Text = "Map";
@@ -767,7 +767,7 @@
             this.tabPageOptions.Controls.Add(this.checkBox2);
             this.tabPageOptions.Controls.Add(this.checkBoxStartSlotIndexOne);
             this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
-            this.tabPageOptions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageOptions.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageOptions.Name = "tabPageOptions";
             this.tabPageOptions.Size = new System.Drawing.Size(477, 128);
             this.tabPageOptions.TabIndex = 5;
@@ -777,7 +777,7 @@
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(3, 22);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(101, 17);
             this.checkBox2.TabIndex = 1;
@@ -789,7 +789,7 @@
             // 
             this.checkBoxStartSlotIndexOne.AutoSize = true;
             this.checkBoxStartSlotIndexOne.Location = new System.Drawing.Point(3, 3);
-            this.checkBoxStartSlotIndexOne.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxStartSlotIndexOne.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxStartSlotIndexOne.Name = "checkBoxStartSlotIndexOne";
             this.checkBoxStartSlotIndexOne.Size = new System.Drawing.Size(133, 17);
             this.checkBoxStartSlotIndexOne.TabIndex = 0;
@@ -800,20 +800,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 448);
+            this.ClientSize = new System.Drawing.Size(805, 601);
             this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.buttonPauseResume);
             this.Controls.Add(this.labelProcessSelect);
             this.Controls.Add(this.comboBoxProcessSelection);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SM64DiagnosticForm";
             this.Text = "Stroop";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrash)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjTrash)).EndInit();
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
@@ -850,8 +850,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelObjects;
         private System.Windows.Forms.Button buttonPauseResume;
         private System.Windows.Forms.SplitContainer splitContainerMain;
-        private System.Windows.Forms.PictureBox pictureBoxTrash;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.PictureBox pictureBoxObjTrash;
+        private System.Windows.Forms.CheckBox checkBoxObjLockLabels;
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage tabPageObjects;
         private System.Windows.Forms.Label labelObjSlotIndValue;

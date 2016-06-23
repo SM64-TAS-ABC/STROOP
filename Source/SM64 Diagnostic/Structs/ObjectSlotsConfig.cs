@@ -18,6 +18,7 @@ namespace SM64_Diagnostic.Structs
         public uint ObjectXOffset;
         public uint ObjectYOffset;
         public uint ObjectZOffset;
+        public float MoveToMarioYOffset;
         public int MaxSlots;
     }
 }

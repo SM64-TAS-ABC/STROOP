@@ -130,6 +130,7 @@ namespace SM64_Diagnostic
             control.MouseDown += OnDrag;
             control.DragEnter += DragEnter;
             control.DragDrop += OnDrop;
+            control.Cursor = Cursors.Hand;
         }
 
         private void OnDrag(object sender, MouseEventArgs e)

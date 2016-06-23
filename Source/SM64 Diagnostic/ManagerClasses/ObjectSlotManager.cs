@@ -20,9 +20,11 @@ namespace SM64_Diagnostic.ManagerClasses
         ObjectManager _objManager;
         ProcessStream _stream;
         TabControl _tabControl;
+        ObjectSlotManagerGui _managerGui;
 
         Dictionary<uint, int> _memoryAddressSlotIndex;
         int _selectedSlot;
+        bool _objectsLocked = false;
 
         public uint? SelectedAddress = null;
         public const byte VacantGroup = 0xFF;
@@ -53,22 +55,23 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public ObjectSlotManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, ObjectManager objManager, PictureBox trash, PictureBox clone, TabControl tabControl)
+        public ObjectSlotManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, ObjectManager objManager, ObjectSlotManagerGui managerGui)
         {
-            trash.AllowDrop = true;
-            trash.DragEnter += OnObjectDragOver;
-            trash.DragDrop += OnTrashDrop;
-
-            clone.AllowDrop = true;
-            clone.DragEnter += OnObjectDragOver;
-            clone.DragDrop += Clone_DragDrop;
 
             _config = config;
             _objectAssoc = objAssoc;
             _stream = stream;
             _stream.OnUpdate += OnUpdate;
             _objManager = objManager;
-            _tabControl = tabControl;
+            _managerGui = managerGui;
+
+            _managerGui.TrashPictureBox.AllowDrop = true;
+            _managerGui.TrashPictureBox.DragEnter += OnObjectDragOver;
+            _managerGui.TrashPictureBox.DragDrop += OnTrashDrop;
+            
+            _managerGui.ClonePictureBox.AllowDrop = true;
+            _managerGui.ClonePictureBox.DragEnter += OnObjectDragOver;
+            _managerGui.ClonePictureBox.DragDrop += Clone_DragDrop;
 
             // Create and setup object slots
             ObjectSlots = new ObjectSlot[_config.ObjectSlots.MaxSlots];
