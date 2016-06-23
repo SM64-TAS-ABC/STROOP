@@ -200,6 +200,10 @@ namespace SM64_Diagnostic
                 var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.Type.ToString(), "", watchVar.Address);
                 _otherDataRowAssoc.Add(index, row);
             }
+
+#if !DEBUG
+            tabControlMain.TabPages.Remove(tabPageOther);
+#endif
         }
 
         private void buttonPauseResume_Click(object sender, EventArgs e)
