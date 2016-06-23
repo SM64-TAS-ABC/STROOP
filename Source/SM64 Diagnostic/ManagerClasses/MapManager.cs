@@ -128,28 +128,32 @@ namespace SM64_Diagnostic.ManagerClasses
                 ChangeCurrentMap(bestMap);
             }
 
-            // Update PU;
-            int puX = (int)((_marioMapObj.X + 8192) / 16384);
-            int puY = (int)((_marioMapObj.Z + 8192) / 16384);
+            //---- Update PU -----
+            int colAreaX = (int)((_marioMapObj.X + 8192) / 16384);
+            int colAreaZ = (int)((_marioMapObj.Z + 8192) / 16384);
 
             if (_marioMapObj.X < -8192)
-                puX--;
+                colAreaX--;
             if (_marioMapObj.Z < -8192)
-                puY--;
+                colAreaZ--;
+
+            // Pu's are actually 4 "collision areas" away
+            int puX = colAreaX / 4;
+            int puZ = colAreaZ / 4;
 
             // Update Qpu
             int qpuX = puX / 4;
-            int qpuY = puY / 4;
+            int qpuZ = puZ / 4;
 
             // Update labels
-            _mapGui.PuValueLabel.Text = string.Format("[{0}:{1}]", puX, puY);
-            _mapGui.QpuValueLabel.Text = string.Format("[{0}:{1}]", qpuX, qpuY);
+            _mapGui.PuValueLabel.Text = string.Format("[{0}:{1}]", puX, puZ);
+            _mapGui.QpuValueLabel.Text = string.Format("[{0}:{1}]", qpuX, qpuZ);
             _mapGui.MapIdLabel.Text = string.Format("[{0}:{1}:{2}]", level, area, loadingPoint);
             _mapGui.MapNameLabel.Text = _currentMap.Name;
             _mapGui.MapSubNameLabel.Text = (_currentMap.SubName != null) ? _currentMap.SubName : "";
 
             // Adjust mario coordinates relative from current PU
-            var marioCoord = new PointF(_marioMapObj.X - puX * 16384, _marioMapObj.Z - puY * 16384);
+            var marioCoord = new PointF(_marioMapObj.X - puX * 16384, _marioMapObj.Z - puZ * 16384);
 
             // Calculate mario's location on the OpenGl control
             var mapView = _mapGraphics.MapView;
