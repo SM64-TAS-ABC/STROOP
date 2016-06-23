@@ -275,7 +275,9 @@ namespace SM64_Diagnostic.Utilities
 
             // Read whole ram value to buffer
             ReadProcessMemory(0, _ram);
+            _timer.Enabled = false;
             OnUpdate?.Invoke(this, e);
+            _timer.Enabled = true;
         }
     }
 }
