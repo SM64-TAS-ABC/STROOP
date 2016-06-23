@@ -102,10 +102,13 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private void OnClick(object sender, MouseEventArgs e, int slotIndex)
         {
+            if (_managerGui.TabControl.SelectedTab == null)
+                return;
+
             switch (_managerGui.TabControl.SelectedTab.Text)
             {
                 case "Mario":
-                    _managerGui.TabControl.SelectedTab = _managerGui.TabControl.TabPages["Mario"];
+                    _managerGui.TabControl.SelectedTab = _managerGui.TabControl.TabPages[0];
                     SelectedSlot = slotIndex;
                     break;
                 case "Object":

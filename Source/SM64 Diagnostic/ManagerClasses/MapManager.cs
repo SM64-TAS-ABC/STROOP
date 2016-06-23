@@ -153,7 +153,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapGui.MapSubNameLabel.Text = (_currentMap.SubName != null) ? _currentMap.SubName : "";
 
             // Adjust mario coordinates relative from current PU
-            var marioCoord = new PointF(_marioMapObj.X - puX * 65566, _marioMapObj.Z - puZ * 65566);
+            var marioCoord = new PointF(_marioMapObj.X - puX * 65536 * 4, _marioMapObj.Z - puZ * 65536 * 4);
 
             // Calculate mario's location on the OpenGl control
             var mapView = _mapGraphics.MapView;
