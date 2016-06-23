@@ -16,6 +16,7 @@
     <CoordinateOffsetY>0xA4</CoordinateOffsetY>
     <CoordinateOffsetZ>0xA8</CoordinateOffsetZ>
     <MaxObjectSlots>240</MaxObjectSlots>
+    <MoveToMarioYOffset>300</MoveToMarioYOffset>
   </ObjectSlots>
   <ObjectGroups>
     <ProcessNextLinkOffset>0x60</ProcessNextLinkOffset>
@@ -45,7 +46,9 @@
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
     <FacingAngleOffset>0x2A</FacingAngleOffset>
     <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>
+    <!--<CurrentFloorTrianglePointerOffset></CurrentFloorTrianglePointerOffset>-->
     <MarioStructSize>0xC4</MarioStructSize>
+    <MoveToObjectYOffset>300</MoveToObjectYOffset>
   </Mario>
   <LevelAddress>0x8033B249</LevelAddress>
   <AreaAddress>0x8033B24A</AreaAddress>
