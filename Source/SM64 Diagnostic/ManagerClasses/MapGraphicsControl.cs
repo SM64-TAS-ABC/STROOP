@@ -21,6 +21,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public RectangleF MapView;
         public GLControl Control;
+        public int ImageSize = 30;
 
         public MapGraphicsControl(GLControl control)
         {
@@ -66,14 +67,14 @@ namespace SM64_Diagnostic.ManagerClasses
             DrawTexture(_mapTex, new PointF(MapView.X + MapView.Width / 2, MapView.Y + MapView.Height / 2), MapView.Size);
 
             // Loop through and draw all map objects
-            foreach (var mapObj in _mapObjects)
+            foreach (var mapObj in _mapObjects.OrderBy((mapObj) => mapObj.Y))
             {
                 // Make sure we want to show the map object
-                if (!mapObj.Show)
+                if (!mapObj.Draw)
                     continue;
 
                 // Draw the map object
-                DrawTexture(mapObj.TextureId, mapObj.LocationOnContol, new SizeF(30.0f, 30.0f), mapObj.Rotation);
+                DrawTexture(mapObj.TextureId, mapObj.LocationOnContol, new SizeF(ImageSize, ImageSize), mapObj.Rotation);
             }
 
             Control.SwapBuffers();

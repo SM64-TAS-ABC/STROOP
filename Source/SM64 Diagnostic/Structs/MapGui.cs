@@ -17,5 +17,6 @@ namespace SM64_Diagnostic.Structs
         public Label MapIdLabel;
         public Label MapNameLabel;
         public Label MapSubNameLabel;
+        public TrackBar MapObjectImageSize;
     }
 }
