@@ -39,6 +39,9 @@ namespace SM64_Diagnostic
         bool _resizing = true;
         int _resizeTimeLeft = 0;
 
+        bool _splitterIsExpanded = false;
+        static int _defaultSplitValue;
+
         public SM64DiagnosticForm()
         {
             InitializeComponent();
@@ -89,7 +92,7 @@ namespace SM64_Diagnostic
             mapGui.MapSubNameLabel = labelMapSubName;
             mapGui.PuValueLabel = labelMapPuValue;
             mapGui.QpuValueLabel = labelMapQpuValue;
-            mapGui.MapObjectImageSize = trackBarMapIconSize;
+            mapGui.MapIconSizeTrackbar = trackBarMapIconSize;
             _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, mapGui);
 
             _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
@@ -134,6 +137,7 @@ namespace SM64_Diagnostic
             SetupViews();
 
             _resizing = false;
+            _defaultSplitValue = splitContainerMain.SplitterDistance;
 
             // Load process
             var processes = GetAvailableProcesses();
@@ -365,6 +369,22 @@ namespace SM64_Diagnostic
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             throw new Exception("");
+        }
+
+        private void buttonMapExpand_Click(object sender, EventArgs e)
+        {
+            if (!_splitterIsExpanded)
+            {
+                buttonMapExpand.Text = "Minimize Map";
+                splitContainerMain.SplitterDistance = splitContainerMain.Height;
+            }
+            else
+            {
+                buttonMapExpand.Text = "Expand Map";
+                splitContainerMain.SplitterDistance = _defaultSplitValue;
+            }
+
+            _splitterIsExpanded = !_splitterIsExpanded;
         }
 
         private void tabControlMain_DragEnter(object sender, DragEventArgs e)
