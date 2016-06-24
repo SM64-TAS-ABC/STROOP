@@ -23,8 +23,8 @@ namespace SM64_Diagnostic
 
         Dictionary<int, WatchVariable> _otherData;
         List<WatchVariable> _objectData, _marioData;
-        ObjectAssociations _objectAssoc = new ObjectAssociations();
-        MapAssociations _mapAssoc = new MapAssociations();
+        ObjectAssociations _objectAssoc;
+        MapAssociations _mapAssoc;
 
         DataTable _tableOtherData = new DataTable();
         Dictionary<int, DataRow> _otherDataRowAssoc = new Dictionary<int, DataRow>();
@@ -89,6 +89,7 @@ namespace SM64_Diagnostic
             mapGui.MapSubNameLabel = labelMapSubName;
             mapGui.PuValueLabel = labelMapPuValue;
             mapGui.QpuValueLabel = labelMapQpuValue;
+            mapGui.MapObjectImageSize = trackBarMapIconSize;
             _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, mapGui);
 
             _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
@@ -120,7 +121,7 @@ namespace SM64_Diagnostic
             slotManagerGui.TrashPictureBox = pictureBoxObjTrash;
             slotManagerGui.TabControl = tabControlMain;
             slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
-            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, slotManagerGui);
+            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, slotManagerGui, _mapManager);
             _objectSlotManager.AddToControls(flowLayoutPanelObjects.Controls);
 
             // Add SortMethods

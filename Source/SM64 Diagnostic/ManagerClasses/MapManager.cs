@@ -17,13 +17,14 @@ namespace SM64_Diagnostic.ManagerClasses
     {
         ProcessStream _stream;
         Config _config;
-        MapAssociations _assoc;
+        public MapAssociations MapAssoc;
         byte _currentLevel, _currentArea;
         ushort _currentLoadingPoint;
         Map _currentMap;
         List<Map> _currentMapList = null;
         MapGraphicsControl _mapGraphics;
         MapObject _marioMapObj;
+        List<MapObject> _mapObjects = new List<MapObject>();
         MapGui _mapGui;
         bool _isLoaded = false;
 
@@ -64,11 +65,12 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             _stream = stream;
             _config = config;
-            _assoc = mapAssoc;
+            MapAssoc = mapAssoc;
             _mapGui = mapGui;
 
             _marioMapObj = new MapObject(new Bitmap("Resources\\Maps\\Object Images\\Mario Top.png"));
             _marioMapObj.UsesRotation = true;
+
         }
 
         public void Load()
@@ -77,9 +79,10 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapGraphics.Load();
             _isLoaded = true;
 
-            ChangeCurrentMap(_assoc.DefaultMap);
+            ChangeCurrentMap(MapAssoc.DefaultMap);
 
             _mapGraphics.AddMapObject(_marioMapObj);
+            _mapGui.MapObjectImageSize.ValueChanged += (sender, e) => _mapGraphics.ImageSize = _mapGui.MapObjectImageSize.Value;
         }
 
         public void Update()
@@ -99,7 +102,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 _currentLevel = level;
                 _currentArea = area;
                 _currentLoadingPoint = loadingPoint;
-                _currentMapList = _assoc.GetLevelAreaMaps(level, area);
+                _currentMapList = MapAssoc.GetLevelAreaMaps(level, area);
 
                 // Look for maps with correct loading points
                 var mapListLPFiltered = _currentMapList.Where((map) => map.LoadingPoint == loadingPoint).ToList();
@@ -113,7 +116,7 @@ namespace SM64_Diagnostic.ManagerClasses
             // If no map is available display the default image
             if (mapListYFiltered.Count <= 0)
             {
-                ChangeCurrentMap(_assoc.DefaultMap);
+                ChangeCurrentMap(MapAssoc.DefaultMap);
             }
             else
             {
@@ -129,17 +132,9 @@ namespace SM64_Diagnostic.ManagerClasses
             }
 
             //---- Update PU -----
-            int colAreaX = (int)((_marioMapObj.X + 32768) / 65536);
-            int colAreaZ = (int)((_marioMapObj.Z + 32768) / 65536);
-
-            if (_marioMapObj.X < -32768)
-                colAreaX--;
-            if (_marioMapObj.Z < -32768)
-                colAreaZ--;
-
-            // Pu's are actually 4 "collision areas" away
-            int puX = colAreaX / 4;
-            int puZ = colAreaZ / 4;
+            var puCoord = GetPUFromCoord(new PointF(_marioMapObj.X, _marioMapObj.Z));
+            int puX = puCoord.X;
+            int puZ = puCoord.Y;
 
             // Update Qpu
             int qpuX = puX / 4;
@@ -153,14 +148,46 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapGui.MapSubNameLabel.Text = (_currentMap.SubName != null) ? _currentMap.SubName : "";
 
             // Adjust mario coordinates relative from current PU
-            var marioCoord = new PointF(_marioMapObj.X - puX * 65536 * 4, _marioMapObj.Z - puZ * 65536 * 4);
+            var marioCoord = new PointF(_marioMapObj.X - puX * 65536, _marioMapObj.Z - puZ * 65536);
 
             // Calculate mario's location on the OpenGl control
             var mapView = _mapGraphics.MapView;
             _marioMapObj.LocationOnContol = CalculateLocationOnControl(marioCoord, mapView);
+            _marioMapObj.Draw = true;
+
+            foreach (var mapObj in _mapObjects)
+            {
+                var objCoords = new PointF(mapObj.X, mapObj.Z);
+                var objPu = GetPUFromCoord(objCoords);
+                if (objPu != puCoord)
+                {
+                    mapObj.Draw = false;
+                    continue;
+                }
+
+                mapObj.Draw = mapObj.Show;
+                objCoords = new PointF(objCoords.X - objPu.X * 65535, objCoords.Y - objPu.Y * 65535);
+                mapObj.LocationOnContol = CalculateLocationOnControl(objCoords, mapView);
+            }
 
             // Update gui by drawing images (invokes _mapGraphics.OnPaint())
             _mapGraphics.Control.Invalidate();
+        }
+
+        private static Point GetPUFromCoord(PointF coord)
+        {
+            int colAreaX = (int)((coord.X + 32768) / 65536);
+            int colAreaZ = (int)((coord.Y + 32768) / 65536);
+
+            if (coord.X < -32768)
+                colAreaX--;
+            if (coord.Y < -32768)
+                colAreaZ--;
+
+            // PU's are actually 4 "collision areas" away
+            int puX = colAreaX;
+            int puZ = colAreaZ;
+            return new Point(puX, puZ);
         }
 
         private void ChangeCurrentMap(Map map)
@@ -168,7 +195,7 @@ namespace SM64_Diagnostic.ManagerClasses
             if (_currentMap == map)
                 return;
 
-            _mapGraphics.SetMap(_assoc.GetMapImage(map));
+            _mapGraphics.SetMap(MapAssoc.GetMapImage(map));
             _currentMap = map;
         }
 
@@ -188,5 +215,16 @@ namespace SM64_Diagnostic.ManagerClasses
                 (int)point.Y - box.Height / 2);
         }
         
+        public void AddMapObject(MapObject mapObj)
+        {
+            _mapObjects.Add(mapObj);
+            _mapGraphics.AddMapObject(mapObj);
+        }
+
+        public void RemoveMapObject(MapObject mapObj)
+        {
+            _mapObjects.Remove(mapObj);
+            _mapGraphics.RemoveMapObject(mapObj);
+        }
     }
 }

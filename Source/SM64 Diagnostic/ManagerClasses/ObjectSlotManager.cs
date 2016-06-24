@@ -18,12 +18,14 @@ namespace SM64_Diagnostic.ManagerClasses
         Config _config;
         ObjectAssociations _objectAssoc;
         ObjectManager _objManager;
+        MapManager _mapManager;
         ProcessStream _stream;
         ObjectSlotManagerGui _managerGui;
 
+        Dictionary<uint, MapObject> _mapObjects = new Dictionary<uint, MapObject>();
         Dictionary<uint, int> _memoryAddressSlotIndex;
         int _selectedSlot;
-        bool _objectsLocked = false;
+        bool _labelsLocked = false; 
 
         public uint? SelectedAddress = null;
         public const byte VacantGroup = 0xFF;
@@ -54,7 +56,8 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public ObjectSlotManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, ObjectManager objManager, ObjectSlotManagerGui managerGui)
+        public ObjectSlotManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, 
+            ObjectManager objManager, ObjectSlotManagerGui managerGui, MapManager mapManager)
         {
 
             _config = config;
@@ -63,6 +66,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _stream.OnUpdate += OnUpdate;
             _objManager = objManager;
             _managerGui = managerGui;
+            _mapManager = mapManager;
 
             _managerGui.TrashPictureBox.AllowDrop = true;
             _managerGui.TrashPictureBox.DragEnter += OnObjectDragOver;
@@ -259,11 +263,6 @@ namespace SM64_Diagnostic.ManagerClasses
                         newObjectSlotData[i].Index = _memoryAddressSlotIndex[newObjectSlotData[i].Address];
                     }
                     break;
-
-                case SortMethodType.LinkListOrder:
-                    SortMethod = SortMethodType.ProcessingOrder;
-                    MessageBox.Show("Currently Unimplemented!");
-                    break;
             }
 
             // Update slots
@@ -297,6 +296,30 @@ namespace SM64_Diagnostic.ManagerClasses
                     _objManager.SlotPos = _memoryAddressSlotIndex[currentAddress];
                     _objManager.Name = _objectAssoc.GetObjectName(behaviorScriptAdd);
                     _objManager.Update();   
+                }
+
+                // Update the map
+                if (_managerGui.TabControl.SelectedTab.Text == "Map" && _mapManager.IsLoaded) 
+                {
+                    // Update image
+                    var mapObjImage = _objectAssoc.GetObjectImage(behaviorScriptAdd, !isActive);
+                    if (!_mapObjects.ContainsKey(currentAddress))
+                    {
+                        _mapObjects.Add(currentAddress, new MapObject(mapObjImage));
+                        _mapManager.AddMapObject(_mapObjects[currentAddress]);
+                    }
+                    else if (_mapObjects[currentAddress].Image != mapObjImage)
+                    {
+                        _mapManager.RemoveMapObject(_mapObjects[currentAddress]);
+                        _mapObjects[currentAddress] = new MapObject(mapObjImage);
+                        _mapManager.AddMapObject(_mapObjects[currentAddress]);
+                    }
+
+                    // Update coordinates
+                    _mapObjects[currentAddress].Show = true;
+                    _mapObjects[currentAddress].X = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
+                    _mapObjects[currentAddress].Y = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
+                    _mapObjects[currentAddress].Z = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectZOffset, 4), 0);
                 }
             }
             ObjectSlotData = newObjectSlotData;
