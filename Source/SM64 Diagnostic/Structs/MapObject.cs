@@ -17,7 +17,9 @@ namespace SM64_Diagnostic.Structs
         public float Z;
         public float Rotation;
         public bool UsesRotation; 
+
         public int TextureId;
+        public bool Draw;
 
         public MapObject(Image image, PointF location = new PointF())
         {
