@@ -70,19 +70,25 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _marioMapObj = new MapObject(new Bitmap("Resources\\Maps\\Object Images\\Mario Top.png"));
             _marioMapObj.UsesRotation = true;
-
         }
 
         public void Load()
         {
+            // Create new graphics control
             _mapGraphics = new MapGraphicsControl(_mapGui.GLControl);
             _mapGraphics.Load();
+
             _isLoaded = true;
 
+            // Set the default map
             ChangeCurrentMap(MapAssoc.DefaultMap);
 
+            // Add Mario's map object
             _mapGraphics.AddMapObject(_marioMapObj);
-            _mapGui.MapObjectImageSize.ValueChanged += (sender, e) => _mapGraphics.ImageSize = _mapGui.MapObjectImageSize.Value;
+
+            //----- Register events ------
+            // Set image
+            _mapGui.MapIconSizeTrackbar.ValueChanged += (sender, e) => _mapGraphics.ImageSize = _mapGui.MapIconSizeTrackbar.Value;
         }
 
         public void Update()
@@ -131,10 +137,11 @@ namespace SM64_Diagnostic.ManagerClasses
                 ChangeCurrentMap(bestMap);
             }
 
-            //---- Update PU -----
-            var puCoord = GetPUFromCoord(new PointF(_marioMapObj.X, _marioMapObj.Z));
-            int puX = puCoord.X;
-            int puZ = puCoord.Y;
+            // ---- Update PU -----
+            var marioCoord = new PointF(_marioMapObj.X, _marioMapObj.Z);
+            var marioPu = GetPUFromCoord(marioCoord);
+            int puX = marioPu.X;
+            int puZ = marioPu.Y;
 
             // Update Qpu
             int qpuX = puX / 4;
@@ -148,25 +155,29 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapGui.MapSubNameLabel.Text = (_currentMap.SubName != null) ? _currentMap.SubName : "";
 
             // Adjust mario coordinates relative from current PU
-            var marioCoord = new PointF(_marioMapObj.X - puX * 65536, _marioMapObj.Z - puZ * 65536);
+            marioCoord = GetRelativePuPosition(marioCoord, marioPu);
 
             // Calculate mario's location on the OpenGl control
             var mapView = _mapGraphics.MapView;
             _marioMapObj.LocationOnContol = CalculateLocationOnControl(marioCoord, mapView);
             _marioMapObj.Draw = true;
 
+            // Calculate object slot's cooridnates
             foreach (var mapObj in _mapObjects)
             {
+                // Make sure the object is in the same PU as Mario
                 var objCoords = new PointF(mapObj.X, mapObj.Z);
                 var objPu = GetPUFromCoord(objCoords);
-                if (objPu != puCoord)
-                {
-                    mapObj.Draw = false;
-                    continue;
-                }
 
-                mapObj.Draw = mapObj.Show;
-                objCoords = new PointF(objCoords.X - objPu.X * 65535, objCoords.Y - objPu.Y * 65535);
+                // Don't draw the object if it is in a separate PU as mario
+                mapObj.Draw = (mapObj.Show && objPu == marioPu);
+                if (!mapObj.Draw)
+                    continue;
+
+                // Adjust object coordinates relative from current PU
+                objCoords = GetRelativePuPosition(objCoords, objPu);
+
+                // Calculate object's location on control
                 mapObj.LocationOnContol = CalculateLocationOnControl(objCoords, mapView);
             }
 
@@ -176,25 +187,32 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private static Point GetPUFromCoord(PointF coord)
         {
-            int colAreaX = (int)((coord.X + 32768) / 65536);
-            int colAreaZ = (int)((coord.Y + 32768) / 65536);
+            int puX = (int)((coord.X + 32768) / 65536);
+            int puZ = (int)((coord.Y + 32768) / 65536);
 
+            // If the object is located in the center of the (-1,-1) pu its coordinates will be (-0.5, -0.5). 
+            // Because we used division this rounds down to (0,0), which is incorrect, we therefore add -1 to all negative PUs
             if (coord.X < -32768)
-                colAreaX--;
+                puX--;
             if (coord.Y < -32768)
-                colAreaZ--;
+                puZ--;
 
-            // PU's are actually 4 "collision areas" away
-            int puX = colAreaX;
-            int puZ = colAreaZ;
             return new Point(puX, puZ);
+        }
+
+        private static PointF GetRelativePuPosition(PointF coord, Point puCoord)
+        {
+            // We find the relative object positon by subtracting the PU starting coordinates from the object
+            return new PointF(coord.X - puCoord.X * 65535, coord.Y - puCoord.Y * 65535);
         }
 
         private void ChangeCurrentMap(Map map)
         {
+            // Don't change the map if it isn't different
             if (_currentMap == map)
                 return;
 
+            // Change and set a new map
             _mapGraphics.SetMap(MapAssoc.GetMapImage(map));
             _currentMap = map;
         }
@@ -207,12 +225,6 @@ namespace SM64_Diagnostic.ManagerClasses
             locCtrl.Y = mapView.Y + (mapLoc.Y - _currentMap.Coordinates.Y) 
                 * (mapView.Height / _currentMap.Coordinates.Height);
             return locCtrl;
-        }
-
-        private void SetPictureBoxLocation(PictureBox box, PointF point)
-        {
-            box.Location = new Point((int)point.X - box.Width / 2,
-                (int)point.Y - box.Height / 2);
         }
         
         public void AddMapObject(MapObject mapObj)
