@@ -15,6 +15,7 @@ namespace SM64_Diagnostic.Structs
         public float X;
         public float Y;
         public float Z;
+        public bool IsActive;
         public float Rotation;
         public bool UsesRotation; 
 

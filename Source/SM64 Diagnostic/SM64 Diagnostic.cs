@@ -93,6 +93,9 @@ namespace SM64_Diagnostic
             mapGui.PuValueLabel = labelMapPuValue;
             mapGui.QpuValueLabel = labelMapQpuValue;
             mapGui.MapIconSizeTrackbar = trackBarMapIconSize;
+            mapGui.MapZoomTrackbar = trackBarMapZoom;
+            mapGui.MapShowInactiveObjects = checkBoxMapShowInactive;
+            mapGui.MapShowMario = checkBoxMapShowMario;
             _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, mapGui);
 
             _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
