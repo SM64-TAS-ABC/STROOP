@@ -50,7 +50,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
             set
             {
-                SelectedAddress = ObjectSlotData.First((objData) => objData.Index == value).Address;
+                SelectedAddress = GetAddressFromSlot(value);
                 _objManager.CurrentAddress = SelectedAddress.Value;
                 _selectedSlot = value;
             }
@@ -90,6 +90,11 @@ namespace SM64_Diagnostic.ManagerClasses
 
         }
 
+        private uint GetAddressFromSlot(int slot)
+        {
+            return ObjectSlotData.First((objData) => objData.Index == slot).Address;
+        }
+
         private void Clone_DragDrop(object sender, DragEventArgs e)
         {
             // Make sure we have valid Drag and Drop data (it is an index)
@@ -119,6 +124,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     SelectedSlot = slotIndex;
                     break;
                 case "Map":
+                    _mapObjects[GetAddressFromSlot(slotIndex)].Show = !_mapObjects[GetAddressFromSlot(slotIndex)].Show;
                     break;
             }
         }
@@ -307,6 +313,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     {
                         _mapObjects.Add(currentAddress, new MapObject(mapObjImage));
                         _mapManager.AddMapObject(_mapObjects[currentAddress]);
+                        _mapObjects[currentAddress].Show = true;
                     }
                     else if (_mapObjects[currentAddress].Image != mapObjImage)
                     {
@@ -316,10 +323,10 @@ namespace SM64_Diagnostic.ManagerClasses
                     }
 
                     // Update coordinates
-                    _mapObjects[currentAddress].Show = true;
                     _mapObjects[currentAddress].X = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
                     _mapObjects[currentAddress].Y = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
                     _mapObjects[currentAddress].Z = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectZOffset, 4), 0);
+                    _mapObjects[currentAddress].IsActive = isActive;
                 }
             }
             ObjectSlotData = newObjectSlotData;

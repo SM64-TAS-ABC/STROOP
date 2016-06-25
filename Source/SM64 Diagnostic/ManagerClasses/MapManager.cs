@@ -160,7 +160,7 @@ namespace SM64_Diagnostic.ManagerClasses
             // Calculate mario's location on the OpenGl control
             var mapView = _mapGraphics.MapView;
             _marioMapObj.LocationOnContol = CalculateLocationOnControl(marioCoord, mapView);
-            _marioMapObj.Draw = true;
+            _marioMapObj.Draw = _mapGui.MapShowMario.Checked;
 
             // Calculate object slot's cooridnates
             foreach (var mapObj in _mapObjects)
@@ -170,7 +170,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 var objPu = GetPUFromCoord(objCoords);
 
                 // Don't draw the object if it is in a separate PU as mario
-                mapObj.Draw = (mapObj.Show && objPu == marioPu);
+                mapObj.Draw = (mapObj.Show && objPu == marioPu && (_mapGui.MapShowInactiveObjects.Checked || mapObj.IsActive));
                 if (!mapObj.Draw)
                     continue;
 
