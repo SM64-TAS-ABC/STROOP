@@ -45,6 +45,7 @@
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageObjects = new System.Windows.Forms.TabPage();
+            this.textBoxObjName = new System.Windows.Forms.TextBox();
             this.buttonObjRetrieve = new System.Windows.Forms.Button();
             this.buttonObjClone = new System.Windows.Forms.Button();
             this.buttonObjGoTo = new System.Windows.Forms.Button();
@@ -95,7 +96,6 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.labelVersionNumber = new System.Windows.Forms.Label();
-            this.textBoxObjName = new System.Windows.Forms.TextBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjTrash)).BeginInit();
@@ -157,7 +157,7 @@
             this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
             this.groupBoxObjects.Location = new System.Drawing.Point(3, 3);
             this.groupBoxObjects.Name = "groupBoxObjects";
-            this.groupBoxObjects.Size = new System.Drawing.Size(1172, 542);
+            this.groupBoxObjects.Size = new System.Drawing.Size(1172, 541);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -230,7 +230,7 @@
             this.flowLayoutPanelObjects.AutoScroll = true;
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(6, 58);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(1160, 476);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(1160, 475);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -321,6 +321,18 @@
             this.tabPageObjects.Size = new System.Drawing.Size(1164, 289);
             this.tabPageObjects.TabIndex = 0;
             this.tabPageObjects.Text = "Object";
+            // 
+            // textBoxObjName
+            // 
+            this.textBoxObjName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxObjName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxObjName.Location = new System.Drawing.Point(98, 8);
+            this.textBoxObjName.Multiline = true;
+            this.textBoxObjName.Name = "textBoxObjName";
+            this.textBoxObjName.ReadOnly = true;
+            this.textBoxObjName.Size = new System.Drawing.Size(208, 40);
+            this.textBoxObjName.TabIndex = 16;
+            this.textBoxObjName.Text = "Object\r\n";
             // 
             // buttonObjRetrieve
             // 
@@ -744,7 +756,7 @@
             // labelMapPuValue
             // 
             this.labelMapPuValue.AutoSize = true;
-            this.labelMapPuValue.Location = new System.Drawing.Point(86, 78);
+            this.labelMapPuValue.Location = new System.Drawing.Point(99, 78);
             this.labelMapPuValue.Name = "labelMapPuValue";
             this.labelMapPuValue.Size = new System.Drawing.Size(0, 20);
             this.labelMapPuValue.TabIndex = 8;
@@ -763,9 +775,9 @@
             this.labelMapQpu.AutoSize = true;
             this.labelMapQpu.Location = new System.Drawing.Point(3, 58);
             this.labelMapQpu.Name = "labelMapQpu";
-            this.labelMapQpu.Size = new System.Drawing.Size(84, 20);
+            this.labelMapQpu.Size = new System.Drawing.Size(99, 20);
             this.labelMapQpu.TabIndex = 6;
-            this.labelMapQpu.Text = "QPU [X:Z]:";
+            this.labelMapQpu.Text = "QPU [X:Y:Z]:";
             // 
             // labelMapId
             // 
@@ -783,9 +795,9 @@
             this.labelMapPu.AutoSize = true;
             this.labelMapPu.Location = new System.Drawing.Point(6, 78);
             this.labelMapPu.Name = "labelMapPu";
-            this.labelMapPu.Size = new System.Drawing.Size(72, 20);
+            this.labelMapPu.Size = new System.Drawing.Size(87, 20);
             this.labelMapPu.TabIndex = 5;
-            this.labelMapPu.Text = "PU [X:Z]:";
+            this.labelMapPu.Text = "PU [X:Y:Z]:";
             // 
             // labelMapName
             // 
@@ -800,7 +812,7 @@
             // labelMapQpuValue
             // 
             this.labelMapQpuValue.AutoSize = true;
-            this.labelMapQpuValue.Location = new System.Drawing.Point(94, 58);
+            this.labelMapQpuValue.Location = new System.Drawing.Point(108, 58);
             this.labelMapQpuValue.Name = "labelMapQpuValue";
             this.labelMapQpuValue.Size = new System.Drawing.Size(0, 20);
             this.labelMapQpuValue.TabIndex = 1;
@@ -859,20 +871,8 @@
             this.labelVersionNumber.Name = "labelVersionNumber";
             this.labelVersionNumber.Size = new System.Drawing.Size(51, 20);
             this.labelVersionNumber.TabIndex = 5;
-            this.labelVersionNumber.Text = "v0.1.2";
+            this.labelVersionNumber.Text = "v0.1.3";
             this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // textBoxObjName
-            // 
-            this.textBoxObjName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxObjName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxObjName.Location = new System.Drawing.Point(98, 8);
-            this.textBoxObjName.Multiline = true;
-            this.textBoxObjName.Name = "textBoxObjName";
-            this.textBoxObjName.ReadOnly = true;
-            this.textBoxObjName.Size = new System.Drawing.Size(208, 40);
-            this.textBoxObjName.TabIndex = 16;
-            this.textBoxObjName.Text = "Object\r\n";
             // 
             // SM64DiagnosticForm
             // 
