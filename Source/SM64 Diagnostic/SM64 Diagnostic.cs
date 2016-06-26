@@ -395,12 +395,14 @@ namespace SM64_Diagnostic
         {
             if (tabControlMain.SelectedTab == tabPageMap)
             {
+                _objectSlotManager.UpdateSelectedObjectSlots();
                 comboBoxMapToggleMode.Visible = true;
                 if (_splitterIsExpanded)
                     splitContainerMain.SplitterDistance = splitContainerMain.Height;
             }
             else
             {
+                _objectSlotManager.SetAllSelectedObjectSlots();
                 comboBoxMapToggleMode.Visible = false;
                 if (_splitterIsExpanded)
                     splitContainerMain.SplitterDistance = _defaultSplitValue;
