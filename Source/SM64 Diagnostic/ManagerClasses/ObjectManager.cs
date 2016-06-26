@@ -92,13 +92,13 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             get
             {
-                return _objGui.ObjectNameLabel.Text;
+                return _objGui.ObjectNameTextBox.Text;
             }
             set
             {
-                if (_objGui.ObjectNameLabel.Text != value)
+                if (_objGui.ObjectNameTextBox.Text != value)
                 {
-                    _objGui.ObjectNameLabel.Text = value;
+                    _objGui.ObjectNameTextBox.Text = value;
                 }
             }
         }

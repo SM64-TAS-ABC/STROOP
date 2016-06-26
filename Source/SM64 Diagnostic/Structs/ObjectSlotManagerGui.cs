@@ -13,5 +13,7 @@ namespace SM64_Diagnostic.Structs
         public PictureBox TrashPictureBox;
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
+        public ComboBox MapObjectToggleModeComboBox;
+        public FlowLayoutPanel FlowLayoutContainer;
     }
 }

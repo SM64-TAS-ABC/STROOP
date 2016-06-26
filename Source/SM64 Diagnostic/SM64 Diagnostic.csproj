@@ -80,6 +80,7 @@
     <Compile Include="ManagerClasses\MarioManager.cs" />
     <Compile Include="ManagerClasses\ObjectManager.cs" />
     <Compile Include="ManagerClasses\OptionsManager.cs" />
+    <Compile Include="ManagerClasses\ScriptManager.cs" />
     <Compile Include="ManagerClasses\WatchVariableControl.cs" />
     <Compile Include="ModifyAddWatchVariableForm.cs">
       <SubType>Form</SubType>
@@ -89,6 +90,7 @@
     </Compile>
     <Compile Include="ManagerClasses\ObjectSlot.cs" />
     <Compile Include="ManagerClasses\ObjectSlotManager.cs" />
+    <Compile Include="Structs\GameScript.cs" />
     <Compile Include="Structs\MapGui.cs" />
     <Compile Include="Structs\ObjectSlotManagerGui.cs" />
     <Compile Include="Structs\OptionsGui.cs" />
@@ -187,12 +189,15 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\Scripts\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Config\Config.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Config\GameHacks.xml" />
     <Content Include="Config\MapAssociations.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs
 {
-    public struct Config
+    public class Config
     {
         public int RefreshRateFreq;
         public string ProcessName;

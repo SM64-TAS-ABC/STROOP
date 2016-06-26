@@ -20,17 +20,22 @@ namespace SM64_Diagnostic.ManagerClasses
         ObjectManager _objManager;
         MapManager _mapManager;
         ProcessStream _stream;
-        ObjectSlotManagerGui _managerGui;
+        public ObjectSlotManagerGui ManagerGui;
 
         Dictionary<uint, MapObject> _mapObjects = new Dictionary<uint, MapObject>();
         Dictionary<uint, int> _memoryAddressSlotIndex;
         int _selectedSlot;
-        bool _labelsLocked = false; 
+        bool _labelsLocked = false;
+
+        List<byte> _toggleGroups = new List<byte>();
+        List<uint> _toggleBehaviors = new List<uint>();
+        List<uint> _toggleSlots = new List<uint>();
 
         public uint? SelectedAddress = null;
         public const byte VacantGroup = 0xFF;
 
         public enum SortMethodType {ProcessingOrder, MemoryOrder, LinkListOrder };
+        public enum MapToggleModeType {Single, ObjectType, ProcessGroup};
 
         public SortMethodType SortMethod = SortMethodType.ProcessingOrder;
 
@@ -50,7 +55,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
             set
             {
-                SelectedAddress = GetAddressFromSlot(value);
+                SelectedAddress = GetObjectDataFromSlot(value).Address;
                 _objManager.CurrentAddress = SelectedAddress.Value;
                 _selectedSlot = value;
             }
@@ -65,16 +70,20 @@ namespace SM64_Diagnostic.ManagerClasses
             _stream = stream;
             _stream.OnUpdate += OnUpdate;
             _objManager = objManager;
-            _managerGui = managerGui;
+            ManagerGui = managerGui;
             _mapManager = mapManager;
 
-            _managerGui.TrashPictureBox.AllowDrop = true;
-            _managerGui.TrashPictureBox.DragEnter += OnObjectDragOver;
-            _managerGui.TrashPictureBox.DragDrop += OnTrashDrop;
+            ManagerGui.TrashPictureBox.AllowDrop = true;
+            ManagerGui.TrashPictureBox.DragEnter += OnObjectDragOver;
+            ManagerGui.TrashPictureBox.DragDrop += OnTrashDrop;
             
-            _managerGui.ClonePictureBox.AllowDrop = true;
-            _managerGui.ClonePictureBox.DragEnter += OnObjectDragOver;
-            _managerGui.ClonePictureBox.DragDrop += Clone_DragDrop;
+            ManagerGui.ClonePictureBox.AllowDrop = true;
+            ManagerGui.ClonePictureBox.DragEnter += OnObjectDragOver;
+            ManagerGui.ClonePictureBox.DragDrop += Clone_DragDrop;
+
+            foreach (var mode in Enum.GetValues(typeof(MapToggleModeType)))
+                ManagerGui.MapObjectToggleModeComboBox.Items.Add(mode);
+            ManagerGui.MapObjectToggleModeComboBox.SelectedIndex = 0;
 
             // Create and setup object slots
             ObjectSlots = new ObjectSlot[_config.ObjectSlots.MaxSlots];
@@ -86,13 +95,14 @@ namespace SM64_Diagnostic.ManagerClasses
                 objectSlot.Image = _objectAssoc.EmptyImage;
                 int localI = i;
                 objectSlot.OnClick += (sender, e) => OnClick(sender, e, localI);
+                ManagerGui.FlowLayoutContainer.Controls.Add(objectSlot.Control);
             }
 
         }
 
-        private uint GetAddressFromSlot(int slot)
+        private ObjectSlotData GetObjectDataFromSlot(int slot)
         {
-            return ObjectSlotData.First((objData) => objData.Index == slot).Address;
+            return ObjectSlotData.First((objData) => objData.Index == slot);
         }
 
         private void Clone_DragDrop(object sender, DragEventArgs e)
@@ -111,29 +121,44 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private void OnClick(object sender, MouseEventArgs e, int slotIndex)
         {
-            if (_managerGui.TabControl.SelectedTab == null)
+            if (ManagerGui.TabControl.SelectedTab == null)
                 return;
 
-            switch (_managerGui.TabControl.SelectedTab.Text)
+            switch (ManagerGui.TabControl.SelectedTab.Text)
             {
                 case "Mario":
-                    _managerGui.TabControl.SelectedTab = _managerGui.TabControl.TabPages[0];
+                    ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages[0];
                     SelectedSlot = slotIndex;
                     break;
                 case "Object":
                     SelectedSlot = slotIndex;
                     break;
                 case "Map":
-                    _mapObjects[GetAddressFromSlot(slotIndex)].Show = !_mapObjects[GetAddressFromSlot(slotIndex)].Show;
+                    switch ((MapToggleModeType)ManagerGui.MapObjectToggleModeComboBox.SelectedItem)
+                    {
+                        case MapToggleModeType.Single:
+                            var address = GetObjectDataFromSlot(slotIndex).Address;
+                            if (_toggleSlots.Contains(address))
+                                _toggleSlots.Remove(address);
+                            else
+                                _toggleSlots.Add(address);
+                            break;
+                        case MapToggleModeType.ObjectType:
+                            var behavior = ObjectSlots[slotIndex].Behavior;
+                            if (_toggleBehaviors.Contains(behavior))
+                                _toggleBehaviors.Remove(behavior);
+                            else
+                                _toggleBehaviors.Add(behavior);
+                            break;
+                        case MapToggleModeType.ProcessGroup:
+                            var group = ObjectSlots[slotIndex].ProcessGroup;
+                            if (_toggleGroups.Contains(group))
+                                _toggleGroups.Remove(group);
+                            else
+                                _toggleGroups.Add(group);
+                            break;
+                    }
                     break;
-            }
-        }
-
-        public void AddToControls(Control.ControlCollection controls)
-        {
-            foreach (ObjectSlot obj in ObjectSlots)
-            {
-                controls.Add(obj.Control);
             }
         }
 
@@ -281,6 +306,11 @@ namespace SM64_Diagnostic.ManagerClasses
                 var behaviorScriptAdd = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorScriptOffset, 4), 0)
                     & 0x0FFFFFFF;
 
+                ObjectSlots[index].Behavior = behaviorScriptAdd;
+
+                var processGroup = objectData.ObjectProcessGroup;
+                ObjectSlots[index].ProcessGroup = processGroup;
+
                 var newImage = _objectAssoc.GetObjectImage(behaviorScriptAdd, !isActive);
                 ObjectSlots[index].Image = newImage;
 
@@ -305,15 +335,15 @@ namespace SM64_Diagnostic.ManagerClasses
                 }
 
                 // Update the map
-                if (_managerGui.TabControl.SelectedTab.Text == "Map" && _mapManager.IsLoaded) 
+                if (ManagerGui.TabControl.SelectedTab.Text == "Map" && _mapManager.IsLoaded) 
                 {
+
                     // Update image
                     var mapObjImage = _objectAssoc.GetObjectImage(behaviorScriptAdd, !isActive);
                     if (!_mapObjects.ContainsKey(currentAddress))
                     {
                         _mapObjects.Add(currentAddress, new MapObject(mapObjImage));
                         _mapManager.AddMapObject(_mapObjects[currentAddress]);
-                        _mapObjects[currentAddress].Show = true;
                     }
                     else if (_mapObjects[currentAddress].Image != mapObjImage)
                     {
@@ -322,11 +352,20 @@ namespace SM64_Diagnostic.ManagerClasses
                         _mapManager.AddMapObject(_mapObjects[currentAddress]);
                     }
 
-                    // Update coordinates
-                    _mapObjects[currentAddress].X = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
-                    _mapObjects[currentAddress].Y = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
-                    _mapObjects[currentAddress].Z = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectZOffset, 4), 0);
-                    _mapObjects[currentAddress].IsActive = isActive;
+                    if (behaviorScriptAdd == (_objectAssoc.MarioBehavior & 0x0FFFFFFF))
+                    {
+                        _mapObjects[currentAddress].Show = false;
+                    }
+                    else
+                    {
+                        // Update coordinates
+                        _mapObjects[currentAddress].Show = !_toggleBehaviors.Contains(behaviorScriptAdd)
+                            && !_toggleGroups.Contains(processGroup) && !_toggleSlots.Contains(currentAddress);
+                        _mapObjects[currentAddress].X = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
+                        _mapObjects[currentAddress].Y = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
+                        _mapObjects[currentAddress].Z = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectZOffset, 4), 0);
+                        _mapObjects[currentAddress].IsActive = isActive;
+                    }
                 }
             }
             ObjectSlotData = newObjectSlotData;

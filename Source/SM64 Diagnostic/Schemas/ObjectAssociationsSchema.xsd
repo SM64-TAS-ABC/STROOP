@@ -37,6 +37,7 @@
               </xs:element>
               <xs:element name="Color" type="types:color"/>
             </xs:all>
+            <xs:attribute name="behaviorScriptAddress" use="required" type="types:address"/>
           </xs:complexType>
         </xs:element>
         <xs:element name="Object" minOccurs="0" maxOccurs="unbounded">
