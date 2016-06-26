@@ -68,7 +68,7 @@ namespace SM64_Diagnostic.ManagerClasses
             MapAssoc = mapAssoc;
             _mapGui = mapGui;
 
-            _marioMapObj = new MapObject(new Bitmap("Resources\\Maps\\Object Images\\Mario Top.png"));
+            _marioMapObj = new MapObject(new Bitmap("Resources\\Maps\\Object Images\\Mario Top.png"), 1);
             _marioMapObj.UsesRotation = true;
         }
 
@@ -88,7 +88,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
             //----- Register events ------
             // Set image
-            _mapGui.MapIconSizeTrackbar.ValueChanged += (sender, e) => _mapGraphics.ImageSize = _mapGui.MapIconSizeTrackbar.Value;
+            _mapGui.MapIconSizeTrackbar.ValueChanged += (sender, e) => _mapGraphics.IconSize = _mapGui.MapIconSizeTrackbar.Value;
         }
 
         public void Update()
@@ -117,7 +117,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
 
             // Filter out all maps that are lower than Mario
-            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= _marioMapObj.Y).ToList();
+            var mapListYFiltered = _currentMapList.Where((map) => map.Y >= _marioMapObj.Y).OrderByDescending((map) => map.Y).ToList();
 
             // If no map is available display the default image
             if (mapListYFiltered.Count <= 0)

@@ -16,7 +16,7 @@ namespace SM64_Diagnostic.Structs
         public Button UnloadButton;
         public Button MoveToMarioButton;
         public Button MoveMarioToButton;
-        public Label ObjectNameLabel;
+        public TextBox ObjectNameTextBox;
         public Label ObjBehaviorLabel;
         public Label ObjSlotIndexLabel;
         public Label ObjSlotPositionLabel;

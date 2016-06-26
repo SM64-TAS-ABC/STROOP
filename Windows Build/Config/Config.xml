@@ -50,6 +50,16 @@
     <MarioStructSize>0xC4</MarioStructSize>
     <MoveToObjectYOffset>300</MoveToObjectYOffset>
   </Mario>
+  <!--<Map>
+    <TriangleOffsets>
+      <x1>0x0A</x1>
+      <z1>0x0E</z1>
+      <x2>0x10</x2>
+      <z2>0x14</z2>
+      <x3>0x16</x3>
+      <z3>0x1A</z3>
+    </Triangles>
+  </Map>-->
   <LevelAddress>0x8033B249</LevelAddress>
   <AreaAddress>0x8033B24A</AreaAddress>
   <LoadingPointAddress>0x8033BACA</LoadingPointAddress>

@@ -18,10 +18,23 @@ namespace SM64_Diagnostic.ManagerClasses
         int _mapTex = -1;
         Size _mapImageSize;
         List<MapObject> _mapObjects = new List<MapObject>();
+        float _renderIconSize = 30;
+        int _iconSize = 30;
 
         public RectangleF MapView;
         public GLControl Control;
-        public int ImageSize = 30;
+        public int IconSize
+        {
+            set
+            {
+                _iconSize = value;
+                SetRenderIconSize();
+            }
+            get
+            {
+                return _iconSize;
+            }
+        }
 
         public MapGraphicsControl(GLControl control)
         {
@@ -67,14 +80,14 @@ namespace SM64_Diagnostic.ManagerClasses
             DrawTexture(_mapTex, new PointF(MapView.X + MapView.Width / 2, MapView.Y + MapView.Height / 2), MapView.Size);
 
             // Loop through and draw all map objects
-            foreach (var mapObj in _mapObjects.OrderBy((mapObj) => mapObj.Y))
+            foreach (var mapObj in _mapObjects.OrderBy((mapObj) => mapObj.Y + mapObj.Depth * 65536d))
             {
                 // Make sure we want to show the map object
                 if (!mapObj.Draw)
                     continue;
 
                 // Draw the map object
-                DrawTexture(mapObj.TextureId, mapObj.LocationOnContol, new SizeF(ImageSize, ImageSize), mapObj.Rotation);
+                DrawTexture(mapObj.TextureId, mapObj.LocationOnContol, new SizeF(_renderIconSize, _renderIconSize), mapObj.Rotation);
             }
 
             Control.SwapBuffers();
@@ -86,6 +99,11 @@ namespace SM64_Diagnostic.ManagerClasses
             SetMapView();
         }
 
+        private void SetRenderIconSize()
+        {
+            _renderIconSize = Math.Min(Control.Height, Control.Width) / 500f * IconSize;
+        }
+
         private void SetupViewport()
         {
             int w = Control.Width;
@@ -95,6 +113,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
             GL.Ortho(0, w, h, 0, -1, 1); // Bottom-left corner pixel has coordinate (0, 0)
             GL.Viewport(0, 0, w, h); // Use all of the glControl painting area
+            SetRenderIconSize();
         }
 
         private void SetMapView()

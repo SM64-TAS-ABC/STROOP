@@ -293,6 +293,7 @@ namespace SM64_Diagnostic.Utilities
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", marioImagePath = "";
             var usedBehaviors = new List<uint>();
             uint ramToBehaviorOffset = 0;
+            uint marioBehavior = 0;
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -323,15 +324,15 @@ namespace SM64_Diagnostic.Utilities
                     case "Mario":
                         marioImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                         assoc.MarioColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
+                        marioBehavior = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
                         break;
 
                     case "Object":
-                        uint behaviorAddress = ParsingUtilities.ParseHex(
-                            element.Attribute(XName.Get("behaviorScriptAddress")).Value);
+                        uint behaviorAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
                         string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                         string name = element.Attribute(XName.Get("name")).Value;
                         if (usedBehaviors.Contains(behaviorAddress))
-                            throw new Exception();
+                            throw new Exception("More than one behavior address was defined.");
                         usedBehaviors.Add(behaviorAddress);
                         behaviorImageAssoc.Add(behaviorAddress, Tuple.Create<string,string>(imagePath, name));
                         break;
@@ -343,7 +344,8 @@ namespace SM64_Diagnostic.Utilities
             assoc.DefaultImage = Bitmap.FromFile(imageDir + defaultImagePath);
             assoc.EmptyImage = Bitmap.FromFile(imageDir + emptyImagePath);
             assoc.MarioImage = Bitmap.FromFile(imageDir + marioImagePath);
-            foreach(var v in behaviorImageAssoc)
+            assoc.MarioBehavior = marioBehavior - ramToBehaviorOffset;
+            foreach (var v in behaviorImageAssoc)
             {
                 var preLoad = Bitmap.FromFile(imageDir + v.Value.Item1);
                 var image = new Bitmap(preLoad, new Size(32, 32));

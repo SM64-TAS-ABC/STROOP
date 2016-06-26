@@ -11,6 +11,7 @@ namespace SM64_Diagnostic.Structs
     {
         public uint Address;
         public byte ObjectProcessGroup;
+        public uint Behavior;
         public int Index;
         public int? VacantSlotIndex;
     }
