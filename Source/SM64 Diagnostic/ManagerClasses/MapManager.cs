@@ -117,7 +117,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
 
             // Filter out all maps that are lower than Mario
-            var mapListYFiltered = _currentMapList.Where((map) => map.Y >= _marioMapObj.Y).OrderByDescending((map) => map.Y).ToList();
+            var mapListYFiltered = _currentMapList.Where((map) => map.Y >= _marioMapObj.Y).OrderBy((map) => map.Y).ToList();
 
             // If no map is available display the default image
             if (mapListYFiltered.Count <= 0)
