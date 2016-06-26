@@ -17,16 +17,18 @@ namespace SM64_Diagnostic.Structs
         public float Z;
         public bool IsActive;
         public float Rotation;
-        public bool UsesRotation; 
+        public bool UsesRotation;
+        public int Depth;
 
         public int TextureId;
         public bool Draw;
 
-        public MapObject(Image image, PointF location = new PointF())
+        public MapObject(Image image, int depth = 0, PointF location = new PointF())
         {
             Image = image;
             X = location.X;
             Y = location.Y;
+            Depth = depth;
         }
     }
 }

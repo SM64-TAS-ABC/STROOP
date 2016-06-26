@@ -107,7 +107,7 @@ namespace SM64_Diagnostic
             objectGui.ObjectImagePictureBox = pictureBoxObject;
             objectGui.ObjAddressLabel = labelObjAddValue;
             objectGui.ObjBehaviorLabel = labelObjBhvValue;
-            objectGui.ObjectNameLabel = labelObjName;
+            objectGui.ObjectNameTextBox = textBoxObjName;
             objectGui.ObjSlotIndexLabel = labelObjSlotIndValue;
             objectGui.ObjSlotPositionLabel = labelObjSlotPosValue;
             objectGui.CloneButton = buttonObjClone;
@@ -127,8 +127,9 @@ namespace SM64_Diagnostic
             slotManagerGui.TrashPictureBox = pictureBoxObjTrash;
             slotManagerGui.TabControl = tabControlMain;
             slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
+            slotManagerGui.MapObjectToggleModeComboBox = comboBoxMapToggleMode;
+            slotManagerGui.FlowLayoutContainer = flowLayoutPanelObjects;
             _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, slotManagerGui, _mapManager);
-            _objectSlotManager.AddToControls(flowLayoutPanelObjects.Controls);
 
             // Add SortMethods
             foreach (var sm in Enum.GetValues(typeof(ObjectSlotManager.SortMethodType)))
@@ -388,6 +389,22 @@ namespace SM64_Diagnostic
             }
 
             _splitterIsExpanded = !_splitterIsExpanded;
+        }
+
+        private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControlMain.SelectedTab == tabPageMap)
+            {
+                comboBoxMapToggleMode.Visible = true;
+                if (_splitterIsExpanded)
+                    splitContainerMain.SplitterDistance = splitContainerMain.Height;
+            }
+            else
+            {
+                comboBoxMapToggleMode.Visible = false;
+                if (_splitterIsExpanded)
+                    splitContainerMain.SplitterDistance = _defaultSplitValue;
+            }
         }
 
         private void tabControlMain_DragEnter(object sender, DragEventArgs e)

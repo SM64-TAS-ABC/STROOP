@@ -7,7 +7,7 @@
     <EmptyImage>Empty.png</EmptyImage>
     <RamToBehaviorOffset>0x12F14E80</RamToBehaviorOffset>
   </Config>
-  <Mario>
+  <Mario behaviorScriptAddress="0x13002EC0">
     <Image path="Mario.png"/>
     <MapImage path="Mario Top.png"/>
     <Color>#aaaaaa</Color>

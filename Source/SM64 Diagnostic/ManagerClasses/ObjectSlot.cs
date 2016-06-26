@@ -19,8 +19,25 @@ namespace SM64_Diagnostic
         Panel BorderPanel;
         Panel ContentPanel;
         Label Label;
+        bool _selected = false;
+
+        public bool Selected
+        {
+            get
+            {
+                return _selected;
+            }
+            set
+            {
+                _selected = value;
+
+            }
+        }
         public int Index;
         public int? ObjectAddress = null;
+
+        public byte ProcessGroup;
+        public uint Behavior;
 
         public event MouseEventHandler OnClick;
 
@@ -47,7 +64,7 @@ namespace SM64_Diagnostic
                 if (BorderPanel.BackColor != value)
                 {
                     BorderPanel.BackColor = value;
-                    ContentPanel.BackColor = ControlPaint.Light(ControlPaint.Light(ControlPaint.Light(value)));
+                    ContentPanel.BackColor = value.Lighten(0.5);
                 }
             }
             get
@@ -122,6 +139,19 @@ namespace SM64_Diagnostic
             this.ContentPanel.Controls.Add(PictureBox);
             this.ContentPanel.Controls.Add(Label);
             this.BorderPanel.Controls.Add(ContentPanel);
+
+            _manager.ManagerGui.FlowLayoutContainer.Paint += Control_Paint;
+        }
+
+        private void Control_Paint(object sender, PaintEventArgs e)
+        {
+            Rectangle position = new Rectangle();
+            const int size = 2;
+            position.X = BorderPanel.Location.X - size;
+            position.Y = BorderPanel.Location.Y - size;
+            position.Width = BorderPanel.Width + 2 * size;
+            position.Height = BorderPanel.Height + 2 * size;
+            e.Graphics.FillRectangle(Brushes.Blue, position);
         }
 
         private void RegisterControl(Control control)
