@@ -19,7 +19,11 @@ namespace SM64_Diagnostic
         Panel BorderPanel;
         Panel ContentPanel;
         Label Label;
-        bool _selected = false;
+
+        Color _mainColor = Color.White;
+        bool _selected = true;
+        bool _active = false;
+        uint _behavior;
 
         public bool Selected
         {
@@ -30,14 +34,52 @@ namespace SM64_Diagnostic
             set
             {
                 _selected = value;
-
+                UpdateGui();
             }
         }
         public int Index;
-        public int? ObjectAddress = null;
+        public uint Address;
 
         public byte ProcessGroup;
-        public uint Behavior;
+        public uint Behavior
+        {
+            get
+            {
+                return _behavior;
+            }
+            set
+            {
+                if (_behavior != value)
+                {
+                    _behavior = value;
+                    UpdateGui();
+                }
+            }
+        }
+
+        public bool IsActive
+        {
+            get
+            {
+                return _active;
+            }
+            set
+            {
+                if (_active != value)
+                {
+                    _active = value;
+                    UpdateGui();
+                }
+            }
+        }
+
+        public Image Image
+        {
+            get
+            {
+                return PictureBox.Image;
+            }
+        }
 
         public event MouseEventHandler OnClick;
 
@@ -61,30 +103,15 @@ namespace SM64_Diagnostic
         {
             set
             {
-                if (BorderPanel.BackColor != value)
+                if (_mainColor != value)
                 {
-                    BorderPanel.BackColor = value;
-                    ContentPanel.BackColor = value.Lighten(0.5);
+                    _mainColor = value;
+                    UpdateGui();
                 }
             }
             get
             {
                 return BorderPanel.BackColor;
-            }
-        }
-
-        public Image Image
-        {
-            set
-            {
-                if (PictureBox.Image != value)
-                {
-                    PictureBox.Image = value;
-                }
-            }
-            get
-            {
-                return PictureBox.Image;
             }
         }
 
@@ -97,6 +124,26 @@ namespace SM64_Diagnostic
             set
             {
                 Label.Text = value;
+            }
+        }
+
+        void UpdateGui()
+        {
+            if (!_selected)
+            {
+                BorderPanel.BackColor = _mainColor.Lighten(0.5);
+                ContentPanel.BackColor = _mainColor.Lighten(0.85);
+                Image newImage = _manager.ObjectImageAssoc.GetObjectImage(_behavior, true);
+                if (PictureBox.Image != newImage)
+                    PictureBox.Image = newImage;
+            }
+            else
+            {
+                BorderPanel.BackColor = _mainColor;
+                ContentPanel.BackColor = _mainColor.Lighten(0.7);
+                Image newImage = _manager.ObjectImageAssoc.GetObjectImage(_behavior, !_active);
+                if (PictureBox.Image != newImage)
+                    PictureBox.Image = newImage;
             }
         }
 
@@ -116,7 +163,7 @@ namespace SM64_Diagnostic
             this.ContentPanel.Location = new Point(borderSize, borderSize);
 
             this.Label = new Label();
-            this.Label.Text = "1";
+            this.Label.Text = "";
             this.Label.Font = new Font(FontFamily.GenericSansSerif, 6);
             this.Label.TextAlign = ContentAlignment.TopCenter;
             this.Label.Anchor = AnchorStyles.None;
@@ -139,19 +186,6 @@ namespace SM64_Diagnostic
             this.ContentPanel.Controls.Add(PictureBox);
             this.ContentPanel.Controls.Add(Label);
             this.BorderPanel.Controls.Add(ContentPanel);
-
-            _manager.ManagerGui.FlowLayoutContainer.Paint += Control_Paint;
-        }
-
-        private void Control_Paint(object sender, PaintEventArgs e)
-        {
-            Rectangle position = new Rectangle();
-            const int size = 2;
-            position.X = BorderPanel.Location.X - size;
-            position.Y = BorderPanel.Location.Y - size;
-            position.Width = BorderPanel.Width + 2 * size;
-            position.Height = BorderPanel.Height + 2 * size;
-            e.Graphics.FillRectangle(Brushes.Blue, position);
         }
 
         private void RegisterControl(Control control)

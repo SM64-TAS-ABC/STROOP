@@ -16,7 +16,7 @@ namespace SM64_Diagnostic.ManagerClasses
         public ObjectSlotData[] ObjectSlotData;
 
         Config _config;
-        ObjectAssociations _objectAssoc;
+        public ObjectAssociations ObjectImageAssoc;
         ObjectManager _objManager;
         MapManager _mapManager;
         ProcessStream _stream;
@@ -34,7 +34,7 @@ namespace SM64_Diagnostic.ManagerClasses
         public uint? SelectedAddress = null;
         public const byte VacantGroup = 0xFF;
 
-        public enum SortMethodType {ProcessingOrder, MemoryOrder, LinkListOrder };
+        public enum SortMethodType {ProcessingOrder, MemoryOrder};
         public enum MapToggleModeType {Single, ObjectType, ProcessGroup};
 
         public SortMethodType SortMethod = SortMethodType.ProcessingOrder;
@@ -66,7 +66,7 @@ namespace SM64_Diagnostic.ManagerClasses
         {
 
             _config = config;
-            _objectAssoc = objAssoc;
+            ObjectImageAssoc = objAssoc;
             _stream = stream;
             _stream.OnUpdate += OnUpdate;
             _objManager = objManager;
@@ -92,7 +92,6 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 var objectSlot = new ObjectSlot(i, this);
                 ObjectSlots[i] = objectSlot;
-                objectSlot.Image = _objectAssoc.EmptyImage;
                 int localI = i;
                 objectSlot.OnClick += (sender, e) => OnClick(sender, e, localI);
                 ManagerGui.FlowLayoutContainer.Controls.Add(objectSlot.Control);
@@ -142,6 +141,8 @@ namespace SM64_Diagnostic.ManagerClasses
                                 _toggleSlots.Remove(address);
                             else
                                 _toggleSlots.Add(address);
+
+                            UpdateSelectedObjectSlots();
                             break;
                         case MapToggleModeType.ObjectType:
                             var behavior = ObjectSlots[slotIndex].Behavior;
@@ -149,6 +150,8 @@ namespace SM64_Diagnostic.ManagerClasses
                                 _toggleBehaviors.Remove(behavior);
                             else
                                 _toggleBehaviors.Add(behavior);
+
+                            UpdateSelectedObjectSlots();
                             break;
                         case MapToggleModeType.ProcessGroup:
                             var group = ObjectSlots[slotIndex].ProcessGroup;
@@ -156,6 +159,8 @@ namespace SM64_Diagnostic.ManagerClasses
                                 _toggleGroups.Remove(group);
                             else
                                 _toggleGroups.Add(group);
+
+                            UpdateSelectedObjectSlots();
                             break;
                     }
                     break;
@@ -192,6 +197,26 @@ namespace SM64_Diagnostic.ManagerClasses
                 return;
 
             ObjectActions.UnloadObject(_stream, _config, dropAction.Address);
+        }
+
+        public void SetAllSelectedObjectSlots()
+        {
+            for (int index = 0; index < ObjectSlots.Length; index++)
+            {
+                ObjectSlots[index].Selected = true;
+            }
+        }
+
+        public void UpdateSelectedObjectSlots()
+        {
+            for (int index = 0; index < ObjectSlots.Length; index++)
+            {
+                bool selected = !_toggleGroups.Contains(ObjectSlots[index].ProcessGroup)
+                    && !_toggleBehaviors.Contains(ObjectSlots[index].Behavior)
+                    && !_toggleSlots.Contains(ObjectSlots[index].Address);
+
+                ObjectSlots[index].Selected = selected;
+            }
         }
 
         private ObjectSlotData[] GetProcessedObjects(ObjectGroupsConfig groupConfig, ObjectSlotsConfig slotConfig)
@@ -302,6 +327,8 @@ namespace SM64_Diagnostic.ManagerClasses
                 uint currentAddress = objectData.Address;
                 int index = objectData.Index;
                 var isActive = BitConverter.ToUInt16(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectActiveOffset, 2), 0) != 0x0000;
+                ObjectSlots[index].IsActive = isActive;
+                ObjectSlots[index].Address = currentAddress;
 
                 var behaviorScriptAdd = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorScriptOffset, 4), 0)
                     & 0x0FFFFFFF;
@@ -310,9 +337,6 @@ namespace SM64_Diagnostic.ManagerClasses
 
                 var processGroup = objectData.ObjectProcessGroup;
                 ObjectSlots[index].ProcessGroup = processGroup;
-
-                var newImage = _objectAssoc.GetObjectImage(behaviorScriptAdd, !isActive);
-                ObjectSlots[index].Image = newImage;
 
                 var newColor = objectData.ObjectProcessGroup == VacantGroup ? groupConfig.VacantSlotColor :
                     groupConfig.ProcessingGroupsColor[objectData.ObjectProcessGroup];
@@ -326,11 +350,11 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (SelectedAddress.HasValue && SelectedAddress.Value == currentAddress)
                 {
                     _objManager.BackColor = newColor;
-                    _objManager.Image = newImage;
-                    _objManager.Behavior = (behaviorScriptAdd + _objectAssoc.RamOffset) & 0x00FFFFFF;
+                    _objManager.Behavior = (behaviorScriptAdd + ObjectImageAssoc.RamOffset) & 0x00FFFFFF;
                     _objManager.SlotIndex = index;
                     _objManager.SlotPos = _memoryAddressSlotIndex[currentAddress];
-                    _objManager.Name = _objectAssoc.GetObjectName(behaviorScriptAdd);
+                    _objManager.Name = ObjectImageAssoc.GetObjectName(behaviorScriptAdd);
+                    _objManager.Image = ObjectSlots[index].Image;
                     _objManager.Update();   
                 }
 
@@ -339,7 +363,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 {
 
                     // Update image
-                    var mapObjImage = _objectAssoc.GetObjectImage(behaviorScriptAdd, !isActive);
+                    var mapObjImage = ObjectImageAssoc.GetObjectImage(behaviorScriptAdd, !isActive);
                     if (!_mapObjects.ContainsKey(currentAddress))
                     {
                         _mapObjects.Add(currentAddress, new MapObject(mapObjImage));
@@ -352,7 +376,7 @@ namespace SM64_Diagnostic.ManagerClasses
                         _mapManager.AddMapObject(_mapObjects[currentAddress]);
                     }
 
-                    if (behaviorScriptAdd == (_objectAssoc.MarioBehavior & 0x0FFFFFFF))
+                    if (behaviorScriptAdd == (ObjectImageAssoc.MarioBehavior & 0x0FFFFFFF))
                     {
                         _mapObjects[currentAddress].Show = false;
                     }
