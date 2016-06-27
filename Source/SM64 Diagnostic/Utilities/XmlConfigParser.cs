@@ -423,6 +423,8 @@ namespace SM64_Diagnostic.Utilities
                         ushort? loadingPoint = element.Attribute(XName.Get("loadingPoint")) != null ?
                             (ushort?)ushort.Parse(element.Attribute(XName.Get("loadingPoint")).Value) : null;
                         string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
+                        string bgImagePath = (element.Element(XName.Get("BackgroundImage")) != null) ?
+                          element.Element(XName.Get("BackgroundImage")).Attribute(XName.Get("path")).Value : null;
 
                         var coordinatesElement = element.Element(XName.Get("Coordinates"));
                         float x1 = float.Parse(coordinatesElement.Attribute(XName.Get("x1")).Value);
@@ -439,7 +441,7 @@ namespace SM64_Diagnostic.Utilities
                         var coordinates = new RectangleF(x1, z1, x2 - x1, z2 - z1);
 
                         Map map = new Map() { Level = level, Area = area, LoadingPoint = loadingPoint, Coordinates = coordinates,
-                            ImagePath = imagePath, Y = y, Name = name, SubName = subName};
+                            ImagePath = imagePath, Y = y, Name = name, SubName = subName, BackgroundPath = bgImagePath};
 
                         assoc.AddAssociation(map);
                         break;

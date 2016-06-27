@@ -226,6 +226,12 @@
     <Content Include="Resources\Maps\Map Images\default.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Maps\Map Images\RR.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Maps\Map Images\RR_back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Maps\Object Images\HOLP.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
