@@ -11,11 +11,34 @@ using SM64_Diagnostic.Structs;
 using System.Drawing;
 using System.Windows.Forms;
 using SM64_Diagnostic.Extensions;
+using System.Xml;
+using System.Net;
 
 namespace SM64_Diagnostic.Utilities
 {
     public static class XmlConfigParser
     {
+        public class ResourceXmlResolver : XmlResolver
+        {
+            /// <summary>
+            /// When overridden in a derived class, maps a URI to an object containing the actual resource.
+            /// </summary>
+            /// <returns>
+            /// A System.IO.Stream object or null if a type other than stream is specified.
+            /// </returns>
+            /// <param name="absoluteUri">The URI returned from <see cref="M:System.Xml.XmlResolver.ResolveUri(System.Uri,System.String)"/>. </param><param name="role">The current version does not use this parameter when resolving URIs. This is provided for future extensibility purposes. For example, this can be mapped to the xlink:role and used as an implementation specific argument in other scenarios. </param><param name="ofObjectToReturn">The type of object to return. The current version only returns System.IO.Stream objects. </param><exception cref="T:System.Xml.XmlException"><paramref name="ofObjectToReturn"/> is not a Stream type. </exception><exception cref="T:System.UriFormatException">The specified URI is not an absolute URI. </exception><exception cref="T:System.ArgumentNullException"><paramref name="absoluteUri"/> is null. </exception><exception cref="T:System.Exception">There is a runtime error (for example, an interrupted server connection). </exception>
+            public override object GetEntity(Uri absoluteUri, string role, Type ofObjectToReturn)
+            {
+                // If ofObjectToReturn is null, then any of the following types can be returned for correct processing:
+                // Stream, TextReader, XmlReader or descendants of XmlSchema
+                var result = this.GetType().Assembly.GetManifestResourceStream(
+                    string.Format("SM64_Diagnostic.Schemas.{0}", Path.GetFileName(absoluteUri.ToString())));
+
+                // set a conditional breakpoint "result==null" here
+                return result;
+            }
+        }
+
         public static Config OpenConfig(string path)
         {
             Config config = new Config();
@@ -26,9 +49,10 @@ namespace SM64_Diagnostic.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet();
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ConfigSchema.xsd"), null));
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/ConfigSchema.xsd", "ConfigSchema.xsd");
+            schemaSet.Compile();
 
             // Load and validate document
             var doc = XDocument.Load(path);
@@ -207,9 +231,10 @@ namespace SM64_Diagnostic.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet();
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.OtherDataSchema.xsd"), null));
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/OtherDataSchema.xsd", "OtherDataSchema.xsd");
+            schemaSet.Compile();
 
             // Load and validate document
             var doc = XDocument.Load(path);
@@ -232,9 +257,10 @@ namespace SM64_Diagnostic.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet();
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ObjectDataSchema.xsd"), null));
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/ObjectDataSchema.xsd", "ObjectDataSchema.xsd");
+            schemaSet.Compile();
 
             // Load and validate document
             var doc = XDocument.Load(path);
@@ -261,9 +287,10 @@ namespace SM64_Diagnostic.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet();
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.MarioDataSchema.xsd"), null));
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/MarioDataSchema.xsd", "MarioDataSchema.xsd");
+            schemaSet.Compile();
 
             // Load and validate document
             var doc = XDocument.Load(path);
@@ -290,9 +317,10 @@ namespace SM64_Diagnostic.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet();
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ObjectAssociationsSchema.xsd"), null));
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/ObjectAssociationsSchema.xsd", "ObjectAssociationsSchema.xsd");
+            schemaSet.Compile();
 
             // Load and validate document
             var doc = XDocument.Load(path);
@@ -381,9 +409,10 @@ namespace SM64_Diagnostic.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet();
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.MapAssociationsSchema.xsd"), null));
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/MapAssociationsSchema.xsd", "MapAssociationsSchema.xsd");
+            schemaSet.Compile();
 
             // Load and validate document
             var doc = XDocument.Load(path);
@@ -457,9 +486,10 @@ namespace SM64_Diagnostic.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet();
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
-            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ScriptsSchema.xsd"), null));
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/ScriptsSchema.xsd", "ScriptsSchema.xsd");
+            schemaSet.Compile();
 
             // Load and validate document
             var doc = XDocument.Load(path);

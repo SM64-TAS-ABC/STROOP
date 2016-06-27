@@ -11,7 +11,7 @@ namespace SM64_Diagnostic.Structs
 {
     public class ScriptParser
     {
-        public List<GameScript> Scripts;
+        public List<GameScript> Scripts = new List<GameScript>();
         public uint FreeMemoryArea;
 
         public void AddScript(string scriptFile, uint insertAddress)
@@ -60,6 +60,7 @@ namespace SM64_Diagnostic.Structs
             }
 
             newScript.Script = scriptBytes.ToArray();
+            Scripts.Add(newScript);
         }
     }
 }

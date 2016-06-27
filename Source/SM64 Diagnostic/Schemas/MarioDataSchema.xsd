@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="MarioData"
-    targetNamespace="http://tempuri.org/MarioData.xsd"
     elementFormDefault="qualified"
-    xmlns="http://tempuri.org/MarioData.xsd"
-    xmlns:mstns="http://tempuri.org/MarioData.xsd"
+    xmlns="http://tempuri.org/MarioDataSchema.xsd"
+    xmlns:mstns="http://tempuri.org/MarioDataSchema.xsd"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:types="http://tempuri.org/ReusableTypes.xsd"
 >

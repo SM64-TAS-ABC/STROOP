@@ -24,7 +24,6 @@ namespace SM64_Diagnostic.ManagerClasses
         bool _editMode = false;
         bool _valueLocked = false;
         string _lockedStringValue = "0";
-        bool _lockedBoolValue = false;
 
         private static ContextMenuStrip _menu;
         private static WatchVariableControl _lastSelected;
@@ -36,8 +35,12 @@ namespace SM64_Diagnostic.ManagerClasses
                 {
                     WatchVariableControl._menu = new ContextMenuStrip();
                     WatchVariableControl._menu.Items.Add("Edit");
-                    WatchVariableControl._menu.Items.Add("View As Hexadecimal");
-                    WatchVariableControl._menu.Items.Add("Lock Value");
+                    var newItem = new ToolStripMenuItem("View As Hexadecimal");
+                    newItem.Name = "HexView";
+                    WatchVariableControl._menu.Items.Add(newItem);
+                    newItem = new ToolStripMenuItem("Lock Value");
+                    newItem.Name = "LockValue";
+                    WatchVariableControl._menu.Items.Add(newItem);
                 }
                 return _menu;
             }
@@ -133,6 +136,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 {
                     _lastSelected = this;
                     (_menu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
+                    (_menu.Items["LockValue"] as ToolStripMenuItem).Checked = _valueLocked;
                 };
                 this._textBoxValue.Leave += (sender, e) => { _editMode = false; this._textBoxValue.ReadOnly = true; };
                 WatchVariableControl.Menu.ItemClicked += OnMenuStripClick;
@@ -158,10 +162,7 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             if (_valueLocked)
             {
-                if (_watchVar.IsBool)
-                    _watchVar.SetBoolValue(_stream, OtherOffset, _lockedBoolValue);
-                else
-                    _watchVar.SetStringValue(_stream, OtherOffset, _lockedStringValue);
+                _watchVar.SetStringValue(_stream, OtherOffset, _lockedStringValue);
             }
             if (_watchVar.IsBool)
             {
@@ -209,15 +210,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     _textBoxValue.ReadOnly = true;
                     _editMode = false;
                     (e.ClickedItem as ToolStripMenuItem).Checked = !(e.ClickedItem as ToolStripMenuItem).Checked;
-                    if (_watchVar.IsBool)
-                    {
-                        _checkBoxBool.Enabled = !_valueLocked;
-                        _lockedBoolValue = _checkBoxBool.Checked;
-                    }
-                    else
-                    {
-                        _lockedStringValue = _textBoxValue.Text;
-                    }
+                    _lockedStringValue = _textBoxValue.Text;
                     break;
             }
         }
