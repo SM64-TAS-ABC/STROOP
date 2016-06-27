@@ -185,6 +185,16 @@ namespace SM64_Diagnostic.Utilities
                     case "LoadingPointAddress":
                         config.LoadingPointAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
+
+                    case "HolpX":
+                        config.HolpX = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "HolpY":
+                        config.HolpY = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "HolpZ":
+                        config.HolpZ = ParsingUtilities.ParseHex(element.Value);
+                        break;
                 }
             }
 
@@ -290,7 +300,7 @@ namespace SM64_Diagnostic.Utilities
 
             // Create Behavior-ImagePath list
             var behaviorImageAssoc = new Dictionary<uint, Tuple<string, string>>();
-            string defaultImagePath = "", emptyImagePath = "", imageDir = "", marioImagePath = "";
+            string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", marioImagePath = "", holpMapImagePath = "";
             var usedBehaviors = new List<uint>();
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
@@ -310,6 +320,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "DefaultImage":
                                     defaultImagePath = subElement.Value;
                                     break;
+                                case "MapImageDirectory":
+                                    mapImageDir = subElement.Value;
+                                    break;
                                 case "EmptyImage":
                                     emptyImagePath = subElement.Value;
                                     break;
@@ -325,6 +338,10 @@ namespace SM64_Diagnostic.Utilities
                         marioImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                         assoc.MarioColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
                         marioBehavior = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
+                        break;
+
+                    case "Holp":
+                        holpMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "Object":
@@ -344,6 +361,7 @@ namespace SM64_Diagnostic.Utilities
             assoc.DefaultImage = Bitmap.FromFile(imageDir + defaultImagePath);
             assoc.EmptyImage = Bitmap.FromFile(imageDir + emptyImagePath);
             assoc.MarioImage = Bitmap.FromFile(imageDir + marioImagePath);
+            assoc.HolpImage = Bitmap.FromFile(mapImageDir + holpMapImagePath);
             assoc.MarioBehavior = marioBehavior - ramToBehaviorOffset;
             foreach (var v in behaviorImageAssoc)
             {

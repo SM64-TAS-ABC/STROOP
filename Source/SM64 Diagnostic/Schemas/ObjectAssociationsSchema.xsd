@@ -40,6 +40,17 @@
             <xs:attribute name="behaviorScriptAddress" use="required" type="types:address"/>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Holp">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="MapImage" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="path" use="required" type="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
         <xs:element name="Object" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType>
             <xs:all>
