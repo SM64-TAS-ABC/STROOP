@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SM64DiagnosticForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxProcessSelection = new System.Windows.Forms.ComboBox();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -168,7 +168,7 @@
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(781, 351);
+            this.groupBoxObjects.Size = new System.Drawing.Size(781, 321);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -248,7 +248,7 @@
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 38);
             this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(773, 308);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(773, 278);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -341,7 +341,7 @@
             this.tabPageObjects.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageObjects.Name = "tabPageObjects";
             this.tabPageObjects.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPageObjects.Size = new System.Drawing.Size(773, 191);
+            this.tabPageObjects.Size = new System.Drawing.Size(773, 211);
             this.tabPageObjects.TabIndex = 0;
             this.tabPageObjects.Text = "Object";
             // 
@@ -445,7 +445,7 @@
             this.flowLayoutPanelObject.Location = new System.Drawing.Point(208, 3);
             this.flowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanelObject.Name = "flowLayoutPanelObject";
-            this.flowLayoutPanelObject.Size = new System.Drawing.Size(563, 179);
+            this.flowLayoutPanelObject.Size = new System.Drawing.Size(563, 204);
             this.flowLayoutPanelObject.TabIndex = 3;
             // 
             // labelObjSlotInd
@@ -519,7 +519,7 @@
             this.tabPageMario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageMario.Name = "tabPageMario";
             this.tabPageMario.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPageMario.Size = new System.Drawing.Size(773, 191);
+            this.tabPageMario.Size = new System.Drawing.Size(773, 211);
             this.tabPageMario.TabIndex = 1;
             this.tabPageMario.Text = "Mario";
             // 
@@ -533,7 +533,7 @@
             this.flowLayoutPanelMario.Location = new System.Drawing.Point(65, 3);
             this.flowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanelMario.Name = "flowLayoutPanelMario";
-            this.flowLayoutPanelMario.Size = new System.Drawing.Size(706, 179);
+            this.flowLayoutPanelMario.Size = new System.Drawing.Size(706, 204);
             this.flowLayoutPanelMario.TabIndex = 1;
             // 
             // panelMarioBorder
@@ -570,7 +570,7 @@
             this.tabPageOther.Location = new System.Drawing.Point(4, 22);
             this.tabPageOther.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageOther.Name = "tabPageOther";
-            this.tabPageOther.Size = new System.Drawing.Size(773, 191);
+            this.tabPageOther.Size = new System.Drawing.Size(773, 211);
             this.tabPageOther.TabIndex = 2;
             this.tabPageOther.Text = "Other";
             // 
@@ -578,7 +578,7 @@
             // 
             this.checkBoxAbsoluteAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxAbsoluteAddress.AutoSize = true;
-            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(638, 173);
+            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(638, 193);
             this.checkBoxAbsoluteAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBoxAbsoluteAddress.Name = "checkBoxAbsoluteAddress";
             this.checkBoxAbsoluteAddress.Size = new System.Drawing.Size(134, 17);
@@ -589,7 +589,7 @@
             // buttonOtherDelete
             // 
             this.buttonOtherDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherDelete.Location = new System.Drawing.Point(106, 170);
+            this.buttonOtherDelete.Location = new System.Drawing.Point(106, 190);
             this.buttonOtherDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonOtherDelete.Name = "buttonOtherDelete";
             this.buttonOtherDelete.Size = new System.Drawing.Size(48, 21);
@@ -601,7 +601,7 @@
             // buttonOtherModify
             // 
             this.buttonOtherModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherModify.Location = new System.Drawing.Point(54, 170);
+            this.buttonOtherModify.Location = new System.Drawing.Point(54, 190);
             this.buttonOtherModify.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonOtherModify.Name = "buttonOtherModify";
             this.buttonOtherModify.Size = new System.Drawing.Size(48, 21);
@@ -613,7 +613,7 @@
             // buttonOtherAdd
             // 
             this.buttonOtherAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherAdd.Location = new System.Drawing.Point(2, 170);
+            this.buttonOtherAdd.Location = new System.Drawing.Point(2, 190);
             this.buttonOtherAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonOtherAdd.Name = "buttonOtherAdd";
             this.buttonOtherAdd.Size = new System.Drawing.Size(48, 21);
@@ -627,8 +627,8 @@
             this.dataGridViewOther.AllowUserToAddRows = false;
             this.dataGridViewOther.AllowUserToDeleteRows = false;
             this.dataGridViewOther.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewOther.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewOther.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewOther.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -640,7 +640,7 @@
             this.dataGridViewOther.RowTemplate.Height = 20;
             this.dataGridViewOther.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewOther.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOther.Size = new System.Drawing.Size(771, 164);
+            this.dataGridViewOther.Size = new System.Drawing.Size(771, 184);
             this.dataGridViewOther.TabIndex = 0;
             this.dataGridViewOther.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOther_CellMouseDoubleClick);
             // 
@@ -654,7 +654,7 @@
             this.tabPageDisassembly.Location = new System.Drawing.Point(4, 22);
             this.tabPageDisassembly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageDisassembly.Name = "tabPageDisassembly";
-            this.tabPageDisassembly.Size = new System.Drawing.Size(773, 191);
+            this.tabPageDisassembly.Size = new System.Drawing.Size(773, 211);
             this.tabPageDisassembly.TabIndex = 3;
             this.tabPageDisassembly.Text = "Disassembly";
             // 
@@ -699,7 +699,7 @@
             this.richTextBoxDissasembly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
             this.richTextBoxDissasembly.ReadOnly = true;
-            this.richTextBoxDissasembly.Size = new System.Drawing.Size(768, 161);
+            this.richTextBoxDissasembly.Size = new System.Drawing.Size(768, 186);
             this.richTextBoxDissasembly.TabIndex = 0;
             this.richTextBoxDissasembly.Text = "";
             // 

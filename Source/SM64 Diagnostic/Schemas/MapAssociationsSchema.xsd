@@ -32,6 +32,8 @@
               <xs:element name="Image">
                 <xs:complexType>
                   <xs:attribute name="path" use="required" type="xs:string"/>
+                  <xs:attribute name="sizeX" use="required" type="xs:unsignedInt"/>
+                  <xs:attribute name="sizeY" use="required" type="xs:unsignedInt"/>
                 </xs:complexType>
               </xs:element>
               <xs:element name="BackgroundImage" minOccurs="0" maxOccurs="1">
