@@ -50,5 +50,25 @@ namespace SM64_Diagnostic.Structs
             }
             return image;
         }
+
+        public Image GetMapBackgroundImage(Map map)
+        {
+            if (map.BackgroundPath == null)
+                return null;
+
+            var path = Path.Combine(FolderPath, map.BackgroundPath);
+            Bitmap image;
+            using (Bitmap preLoad = Bitmap.FromFile(path) as Bitmap)
+            {
+                int maxSize = 1080;
+                int largest = Math.Max(preLoad.Width, preLoad.Height);
+                float scale = 1;
+                if (largest > maxSize)
+                    scale = largest / maxSize;
+
+                image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
+            }
+            return image;
+        }
     }
 }

@@ -5,9 +5,13 @@
     <DefaultImage>default.png</DefaultImage>
     <DefaultCoordinates x1="-8192" x2="8192" z1="-8192" z2="8192"/>
   </Config>
-  <Map name="Big Boo's Haunt" subName="Basement" level="4" area="1"><!--loadingZone="1"-->
+  <Map name="Big Boo's Haunt" subName="Roof" level="4" area="1">
     <Image path="BBH.png"/>
-    <!--<Background path="BBH_background.png"/>-->
     <Coordinates x1="-4197" x2="5530" z1="-3993" z2="6758"/>
+  </Map>
+  <Map name="Rainbow Ride" level="15" area="1" loadingPoint="1">
+    <Image path="RR.png"/>
+    <Coordinates x1="-8192" x2="8192" z1="-8192" z2="8192" y="-8192"/>
+    <BackgroundImage path="RR_back.png"/>
   </Map>
 </MapAssociations>

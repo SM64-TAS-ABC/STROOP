@@ -16,6 +16,7 @@ namespace SM64_Diagnostic.ManagerClasses
     class MapGraphicsControl
     {
         int _mapTex = -1;
+        int _mapBackgroundTex = -1;
         Size _mapImageSize;
         List<MapObject> _mapObjects = new List<MapObject>();
         float _renderIconSize = 30;
@@ -66,6 +67,13 @@ namespace SM64_Diagnostic.ManagerClasses
             // Set default background color (clear drawing area)
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
+            GL.MatrixMode(MatrixMode.Modelview);
+
+            if (_mapBackgroundTex != -1)
+            {
+                DrawTexture(_mapBackgroundTex, new PointF(Control.Width / 2, Control.Height / 2), Control.Size);
+            }
+
             // Don't draw if no map is loaded
             if (_mapTex == -1)
             {
@@ -73,10 +81,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 return;
             }
 
-            GL.MatrixMode(MatrixMode.Modelview);
-
             // Draw map image
-            GL.LoadIdentity();
             DrawTexture(_mapTex, new PointF(MapView.X + MapView.Width / 2, MapView.Y + MapView.Height / 2), MapView.Size);
 
             // Loop through and draw all map objects
@@ -133,6 +138,26 @@ namespace SM64_Diagnostic.ManagerClasses
 
             // Calculate where the map image should be drawn
             MapView = new RectangleF(marginH / 2, marginV / 2, Control.Width - marginH, Control.Height - marginV);
+        }
+
+        public void SetBackground(Image background)
+        {
+            int oldTex = _mapBackgroundTex;
+
+            if (background != null)
+            { 
+                _mapBackgroundTex = LoadTexture(background as Bitmap);
+            }
+            else
+            {
+                _mapBackgroundTex = -1;
+            }
+
+            // Delete old map image
+            if (oldTex != -1)
+            {
+                GL.DeleteTexture(oldTex);
+            }
         }
 
         public void SetMap(Image map)

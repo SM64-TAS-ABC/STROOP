@@ -34,6 +34,11 @@
                   <xs:attribute name="path" use="required" type="xs:string"/>
                 </xs:complexType>
               </xs:element>
+              <xs:element name="BackgroundImage" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="path" use="required" type="xs:string"/>
+                </xs:complexType>
+              </xs:element>
               <xs:element name="Coordinates">
                 <xs:complexType>
                   <xs:attribute name="x1" use="required" type="xs:float"/>
