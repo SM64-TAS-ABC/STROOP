@@ -63,6 +63,16 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapManager.MarioMapObject.Rotation = rot;
             _mapManager.MarioMapObject.Show = true;
 
+            float holpX, holpY, holpZ;
+            holpX = BitConverter.ToSingle(_stream.ReadRam(_config.HolpX, 4), 0);
+            holpY = BitConverter.ToSingle(_stream.ReadRam(_config.HolpY, 4), 0);
+            holpZ = BitConverter.ToSingle(_stream.ReadRam(_config.HolpZ, 4), 0);
+
+            _mapManager.HolpMapObject.X = holpX;
+            _mapManager.HolpMapObject.Y = holpY;
+            _mapManager.HolpMapObject.Z = holpZ;
+            _mapManager.HolpMapObject.Show = true;
+
             if (!updateView)
                 return;
 

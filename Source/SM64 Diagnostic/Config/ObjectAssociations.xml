@@ -12,6 +12,9 @@
     <MapImage path="Mario Top.png"/>
     <Color>#aaaaaa</Color>
   </Mario>
+  <Holp>
+    <MapImage path="HOLP.png"/>
+  </Holp>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <Image path="Star Door.png"/>
   </Object>

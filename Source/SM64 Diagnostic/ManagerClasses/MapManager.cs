@@ -24,6 +24,7 @@ namespace SM64_Diagnostic.ManagerClasses
         List<Map> _currentMapList = null;
         MapGraphicsControl _mapGraphics;
         MapObject _marioMapObj;
+        MapObject _holpMapObj;
         List<MapObject> _mapObjects = new List<MapObject>();
         MapGui _mapGui;
         bool _isLoaded = false;
@@ -42,9 +43,13 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 return _marioMapObj;
             }
-            set
+        }
+
+        public MapObject HolpMapObject
+        {
+            get
             {
-                _marioMapObj = value;
+                return _holpMapObj;
             }
         }
 
@@ -60,7 +65,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public MapManager(ProcessStream stream, Config config, MapAssociations mapAssoc,
+        public MapManager(ProcessStream stream, Config config, MapAssociations mapAssoc, ObjectAssociations objAssoc,
             MapGui mapGui)
         {
             _stream = stream;
@@ -70,6 +75,8 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _marioMapObj = new MapObject(new Bitmap("Resources\\Maps\\Object Images\\Mario Top.png"), 1);
             _marioMapObj.UsesRotation = true;
+
+            _holpMapObj = new MapObject(objAssoc.HolpImage);
         }
 
         public void Load()
@@ -85,6 +92,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
             // Add Mario's map object
             _mapGraphics.AddMapObject(_marioMapObj);
+            _mapGraphics.AddMapObject(_holpMapObj);
 
             //----- Register events ------
             // Set image
@@ -164,9 +172,24 @@ namespace SM64_Diagnostic.ManagerClasses
             _marioMapObj.LocationOnContol = CalculateLocationOnControl(marioCoord, mapView);
             _marioMapObj.Draw = _mapGui.MapShowMario.Checked;
 
+            int holpPuX = GetPUFromCoord(_holpMapObj.X);
+            int holpPuY = GetPUFromCoord(_holpMapObj.Y);
+            int holpPuZ = GetPUFromCoord(_holpMapObj.Z);
+            float holpRelX = GetRelativePuPosition(_holpMapObj.X, holpPuX);
+            float holpRelZ = GetRelativePuPosition(_holpMapObj.Z, holpPuX);
+            var holpCoord = new PointF(holpRelX, holpRelZ);
+            _holpMapObj.Draw = _mapGui.MapShowHolp.Checked && puX == holpPuX && puY == holpPuY && puZ == holpPuZ;
+            _holpMapObj.LocationOnContol = CalculateLocationOnControl(holpCoord, mapView);
+
             // Calculate object slot's cooridnates
             foreach (var mapObj in _mapObjects)
             {
+                if (!_mapGui.MapShowObjects.Checked)
+                {
+                    mapObj.Draw = false;
+                    continue;
+                }
+
                 // Make sure the object is in the same PU as Mario
                 var objPuX = GetPUFromCoord(mapObj.X);
                 var objPuY = GetPUFromCoord(mapObj.Y);
