@@ -14,9 +14,12 @@ namespace SM64_Diagnostic.Utilities
             double red = (255 - color.R) * amount + color.R;
             double green = (255 - color.G) * amount + color.G;
             double blue = (255 - color.B) * amount + color.B;
-            Color lighterColor = Color.FromArgb(color.A, (int)red, (int)green, (int)blue);
+            return Color.FromArgb(color.A, (int)red, (int)green, (int)blue);
+        }
 
-            return lighterColor;
+        public static Color Darken(this Color color, double amount)
+        {
+            return Lighten(color, -amount);
         }
     }
 }
