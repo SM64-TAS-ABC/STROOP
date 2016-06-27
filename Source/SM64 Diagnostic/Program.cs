@@ -14,7 +14,7 @@ namespace SM64_Diagnostic
         [STAThread]
         static void Main()
         {
-            SetProcessDPIAware();
+            //SetProcessDPIAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             AppDomain.CurrentDomain.UnhandledException += (sender, e) =>

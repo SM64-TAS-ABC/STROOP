@@ -10,6 +10,7 @@ namespace SM64_Diagnostic.Structs
     public struct Map
     {
         public string ImagePath;
+        public string BackgroundPath;
         public byte Level;
         public byte Area;
         public ushort? LoadingPoint;
@@ -20,7 +21,8 @@ namespace SM64_Diagnostic.Structs
 
         public static bool operator ==(Map a, Map b)
         {
-            return (a.ImagePath == b.ImagePath && a.Area == b.Area && a.Level == b.Level && a.Y == b.Y );
+            return (a.ImagePath == b.ImagePath && a.Area == b.Area && a.Level == b.Level && a.Y == b.Y
+                && a.LoadingPoint == b.LoadingPoint);
         }
 
         public static bool operator !=(Map a, Map b)

@@ -124,27 +124,6 @@ namespace SM64_Diagnostic.ManagerClasses
                     _currentMapList = mapListLPFiltered;
             }
 
-            // Filter out all maps that are lower than Mario
-            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= _marioMapObj.Y).OrderByDescending((map) => map.Y).ToList();
-
-            // If no map is available display the default image
-            if (mapListYFiltered.Count <= 0)
-            {
-                ChangeCurrentMap(MapAssoc.DefaultMap);
-            }
-            else
-            {
-                // Pick the map closest to mario (yet still above Mario)
-                Map bestMap = mapListYFiltered[0];
-                foreach (Map map in mapListYFiltered)
-                {
-                    if (map.Y < bestMap.Y)
-                        bestMap = map;
-                }
-
-                ChangeCurrentMap(bestMap);
-            }
-
             // ---- Update PU -----
             int puX = GetPUFromCoord(_marioMapObj.X);
             int puY = GetPUFromCoord(_marioMapObj.Y);
@@ -164,8 +143,30 @@ namespace SM64_Diagnostic.ManagerClasses
 
             // Adjust mario coordinates relative from current PU
             float marioRelX = GetRelativePuPosition(_marioMapObj.X, puX);
+            float marioRelY = GetRelativePuPosition(_marioMapObj.Y, puY);
             float marioRelZ = GetRelativePuPosition(_marioMapObj.Z, puZ);
             var marioCoord = new PointF(marioRelX, marioRelZ);
+
+            // Filter out all maps that are lower than Mario
+            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= marioRelY).OrderByDescending((map) => map.Y).ToList();
+
+            // If no map is available display the default image
+            if (mapListYFiltered.Count <= 0)
+            {
+                ChangeCurrentMap(MapAssoc.DefaultMap);
+            }
+            else
+            {
+                // Pick the map closest to mario (yet still above Mario)
+                Map bestMap = mapListYFiltered[0];
+                foreach (Map map in mapListYFiltered)
+                {
+                    if (map.Y < bestMap.Y)
+                        bestMap = map;
+                }
+
+                ChangeCurrentMap(bestMap);
+            }
 
             // Calculate mario's location on the OpenGl control
             var mapView = _mapGraphics.MapView;
@@ -239,7 +240,14 @@ namespace SM64_Diagnostic.ManagerClasses
                 return;
 
             // Change and set a new map
-            _mapGraphics.SetMap(MapAssoc.GetMapImage(map));
+            using (var mapImage = MapAssoc.GetMapImage(map))
+            {
+                _mapGraphics.SetMap(mapImage);
+            }
+            using (var mapBackground = MapAssoc.GetMapBackgroundImage(map))
+            {
+                _mapGraphics.SetBackground(mapBackground);
+            }
             _currentMap = map;
         }
 
