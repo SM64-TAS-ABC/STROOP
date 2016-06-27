@@ -205,13 +205,20 @@ namespace SM64_Diagnostic.ManagerClasses
             }
 
             // Get object position
+            // Get Mario position
+            var marioAddress = _config.Mario.MarioStructAddress;
+            float mX, mY, mZ;
+            mX = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.XOffset, 4), 0);
+            mY = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.YOffset, 4), 0);
+            mZ = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.ZOffset, 4), 0);
+
             float x, y, z;
             x = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
             y = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
             z = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + _config.ObjectSlots.ObjectZOffset, 4), 0);
 
-            float latDisToMario = (float)Math.Sqrt(Math.Pow(x, 2) + Math.Pow(z, 2));
-            float disToMario = (float)Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2));
+            float latDisToMario = (float)Math.Sqrt(Math.Pow(x - mX, 2) + Math.Pow(z - mZ, 2));
+            float disToMario = (float)Math.Sqrt(Math.Pow(x - mX, 2) + Math.Pow(y - mY, 2) + Math.Pow(z - mZ, 2));
 
             _latDisToMario.Text = latDisToMario.ToString();
             _disToMario.Text = disToMario.ToString();
