@@ -96,7 +96,9 @@ namespace SM64_Diagnostic
             mapGui.MapZoomTrackbar = trackBarMapZoom;
             mapGui.MapShowInactiveObjects = checkBoxMapShowInactive;
             mapGui.MapShowMario = checkBoxMapShowMario;
-            _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, mapGui);
+            mapGui.MapShowObjects = checkBoxMapShowObj;
+            mapGui.MapShowHolp = checkBoxShowHolp;
+            _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, _objectAssoc, mapGui);
 
             _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
 

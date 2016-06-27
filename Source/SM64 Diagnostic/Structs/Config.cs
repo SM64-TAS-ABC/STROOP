@@ -19,5 +19,8 @@ namespace SM64_Diagnostic.Structs
         public uint AreaAddress;
         public uint LoadingPointAddress;
         public bool SlotIndexsFromOne;
+        public uint HolpX;
+        public uint HolpY;
+        public uint HolpZ;
     }
 }
