@@ -54,9 +54,9 @@ namespace SM64_Diagnostic.Structs
 
             // Parse data bytes
             var scriptBytes = new List<uint>();
-            for (int i = 0; i <= fullScript.Length - 4; i += 4)
+            for (int i = 0; i <= fullScript.Length - 8; i += 8)
             {
-                scriptBytes.Add(uint.Parse(fullScript.Substring(i, 4), NumberStyles.HexNumber));
+                scriptBytes.Add(uint.Parse(fullScript.Substring(i, 8), NumberStyles.HexNumber));
             }
 
             newScript.Script = scriptBytes.ToArray();

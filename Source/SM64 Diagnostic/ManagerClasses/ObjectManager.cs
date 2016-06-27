@@ -17,6 +17,10 @@ namespace SM64_Diagnostic.ManagerClasses
         ProcessStream _stream;
         ObjectAssociations _objAssoc;
         ObjectDataGui _objGui;
+
+        DataContainer _disToMario;
+        DataContainer _latDisToMario;
+
         uint _currentAddress;
         int _slotIndex;
         int _slotPos;
@@ -156,6 +160,14 @@ namespace SM64_Diagnostic.ManagerClasses
                 _objectDataControls.Add(watchControl);
             }
 
+            // Add distance to mario watchvar
+            _disToMario = new DataContainer("Dis. to Mario");
+            objectGui.ObjectFlowLayout.Controls.Add(_disToMario.Control);
+
+            // Add lateral distance to mario watchvar
+            _latDisToMario = new DataContainer("Lat. Dis. to Mario");
+            objectGui.ObjectFlowLayout.Controls.Add(_latDisToMario.Control);
+
             // Register buttons
             objectGui.CloneButton.Click += CloneButton_Click;
             objectGui.UnloadButton.Click += UnloadButton_Click;
@@ -185,13 +197,24 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void Update()
         {
-
             // Update watch variables
             foreach (var watchVar in _objectDataControls)
             {
                 watchVar.OtherOffset = CurrentAddress;
                 watchVar.Update();
             }
+
+            // Get object position
+            float x, y, z;
+            x = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
+            y = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
+            z = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + _config.ObjectSlots.ObjectZOffset, 4), 0);
+
+            float latDisToMario = (float)Math.Sqrt(Math.Pow(x, 2) + Math.Pow(z, 2));
+            float disToMario = (float)Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2));
+
+            _latDisToMario.Text = latDisToMario.ToString();
+            _disToMario.Text = disToMario.ToString();
         }
 
         private void RegisterControlEvents(Control control)
