@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ScriptsSchema"
+    targetNamespace="http://tempuri.org/ScriptsSchema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/ScriptsSchema.xsd"
+    xmlns:mstns="http://tempuri.org/ScriptsSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:types="http://tempuri.org/ReusableTypes.xsd"
+>
+  <xs:import namespace="http://tempuri.org/ReusableTypes.xsd" schemaLocation="ReusableTypes.xsd"/>
+  <xs:element name="Scripts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Config">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="ScriptDirectory" type="xs:string"/>
+              <xs:element name="FreeMemoryArea" type="types:address"/>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Script" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="insertAddress" use="required" type="types:address"/>
+            <xs:attribute name="path" use="required" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

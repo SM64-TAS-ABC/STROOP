@@ -17,6 +17,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -31,7 +32,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -101,20 +101,21 @@
     <Compile Include="ManagerClasses\ObjectSlot.cs" />
     <Compile Include="ManagerClasses\ObjectSlotManager.cs" />
     <Compile Include="Structs\GameScript.cs" />
-    <Compile Include="Structs\MapGui.cs" />
-    <Compile Include="Structs\ObjectSlotManagerGui.cs" />
-    <Compile Include="Structs\OptionsGui.cs" />
+    <Compile Include="Structs\Gui\MapGui.cs" />
+    <Compile Include="Structs\Gui\ObjectSlotManagerGui.cs" />
+    <Compile Include="Structs\Gui\OptionsGui.cs" />
     <Compile Include="Structs\DropAction.cs" />
     <Compile Include="Structs\Map.cs" />
     <Compile Include="Structs\MapAssociations.cs" />
     <Compile Include="Structs\MapObject.cs" />
     <Compile Include="Structs\MarioConfig.cs" />
     <Compile Include="Structs\ObjectAssociations.cs" />
-    <Compile Include="Structs\ObjectDataGui.cs" />
+    <Compile Include="Structs\Gui\ObjectDataGui.cs" />
     <Compile Include="Structs\ObjectSlotData.cs" />
     <Compile Include="Structs\ObjectSlotsConfig.cs" />
     <Compile Include="Structs\ObjectGroupsConfig.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Structs\ScriptParser.cs" />
     <Compile Include="Utilities\N64Disassembler.cs" />
     <Compile Include="Utilities\ObjectActions.cs" />
     <Compile Include="Structs\ProcessSelection.cs" />
@@ -181,6 +182,16 @@
     <EmbeddedResource Include="Schemas\MapAssociationsSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="Resources\Scripts\RNGObjectEndProc.src64">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Scripts\RNGObjectStartProc.src64">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Scripts\RNGFrameProc.src64" />
+    <None Include="Schemas\ScriptsSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -199,15 +210,13 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Config\Config.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Config\GameHacks.xml" />
+    <Content Include="Config\Scripts.xml" />
     <Content Include="Config\MapAssociations.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -237,13 +246,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Maps\Map Images\RR.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Maps\Map Images\RR_back.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Maps\Object Images\HOLP.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Maps\Object Images\Mario Top.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
