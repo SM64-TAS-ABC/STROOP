@@ -25,6 +25,7 @@ namespace SM64_Diagnostic
         List<WatchVariable> _objectData, _marioData;
         ObjectAssociations _objectAssoc;
         MapAssociations _mapAssoc;
+        ScriptParser _scriptParser;
 
         DataTable _tableOtherData = new DataTable();
         Dictionary<int, DataRow> _otherDataRowAssoc = new Dictionary<int, DataRow>();
@@ -78,6 +79,7 @@ namespace SM64_Diagnostic
             _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml");
             _marioData = XmlConfigParser.OpenMarioData(_config, @"Config/MarioData.xml");
             _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
+            _scriptParser = XmlConfigParser.OpenScripts(@"Config/Scripts.xml");
 
             _sm64Stream = new ProcessStream(_config);
             _sm64Stream.OnUpdate += OnUpdate;
