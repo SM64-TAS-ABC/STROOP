@@ -77,28 +77,28 @@
             this.labelDisStart = new System.Windows.Forms.Label();
             this.richTextBoxDissasembly = new System.Windows.Forms.RichTextBox();
             this.tabPageMap = new System.Windows.Forms.TabPage();
-            this.checkBoxMapShowMario = new System.Windows.Forms.CheckBox();
-            this.labelMapIconSize = new System.Windows.Forms.Label();
-            this.labelMapZoom = new System.Windows.Forms.Label();
-            this.trackBarMapIconSize = new System.Windows.Forms.TrackBar();
-            this.trackBarMapZoom = new System.Windows.Forms.TrackBar();
-            this.labelMapPuValue = new System.Windows.Forms.Label();
-            this.labelMapSubName = new System.Windows.Forms.Label();
-            this.labelMapQpu = new System.Windows.Forms.Label();
-            this.labelMapPu = new System.Windows.Forms.Label();
-            this.labelMapQpuValue = new System.Windows.Forms.Label();
             this.splitContainerMap = new System.Windows.Forms.SplitContainer();
+            this.checkBoxShowHolp = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapShowObj = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapShowMario = new System.Windows.Forms.CheckBox();
             this.labelMapName = new System.Windows.Forms.Label();
+            this.trackBarMapIconSize = new System.Windows.Forms.TrackBar();
+            this.labelMapIconSize = new System.Windows.Forms.Label();
             this.checkBoxMapShowInactive = new System.Windows.Forms.CheckBox();
+            this.labelMapZoom = new System.Windows.Forms.Label();
             this.buttonMapExpand = new System.Windows.Forms.Button();
             this.labelMapId = new System.Windows.Forms.Label();
+            this.labelMapSubName = new System.Windows.Forms.Label();
+            this.labelMapPuValue = new System.Windows.Forms.Label();
+            this.labelMapQpu = new System.Windows.Forms.Label();
+            this.labelMapQpuValue = new System.Windows.Forms.Label();
+            this.labelMapPu = new System.Windows.Forms.Label();
+            this.trackBarMapZoom = new System.Windows.Forms.TrackBar();
             this.glControlMap = new OpenTK.GLControl();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.labelVersionNumber = new System.Windows.Forms.Label();
-            this.checkBoxMapShowObj = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowHolp = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjTrash)).BeginInit();
@@ -117,12 +117,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOther)).BeginInit();
             this.tabPageDisassembly.SuspendLayout();
             this.tabPageMap.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).BeginInit();
             this.splitContainerMap.Panel1.SuspendLayout();
             this.splitContainerMap.Panel2.SuspendLayout();
             this.splitContainerMap.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).BeginInit();
             this.tabPageOptions.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -164,7 +164,7 @@
             this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
             this.groupBoxObjects.Location = new System.Drawing.Point(3, 3);
             this.groupBoxObjects.Name = "groupBoxObjects";
-            this.groupBoxObjects.Size = new System.Drawing.Size(1172, 526);
+            this.groupBoxObjects.Size = new System.Drawing.Size(1172, 525);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -237,7 +237,7 @@
             this.flowLayoutPanelObjects.AutoScroll = true;
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(6, 58);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(1160, 460);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(1160, 459);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -325,7 +325,7 @@
             this.tabPageObjects.Location = new System.Drawing.Point(4, 29);
             this.tabPageObjects.Name = "tabPageObjects";
             this.tabPageObjects.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageObjects.Size = new System.Drawing.Size(1164, 289);
+            this.tabPageObjects.Size = new System.Drawing.Size(1164, 301);
             this.tabPageObjects.TabIndex = 0;
             this.tabPageObjects.Text = "Object";
             // 
@@ -420,7 +420,7 @@
             this.flowLayoutPanelObject.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelObject.Location = new System.Drawing.Point(312, 5);
             this.flowLayoutPanelObject.Name = "flowLayoutPanelObject";
-            this.flowLayoutPanelObject.Size = new System.Drawing.Size(844, 256);
+            this.flowLayoutPanelObject.Size = new System.Drawing.Size(844, 268);
             this.flowLayoutPanelObject.TabIndex = 3;
             // 
             // labelObjSlotInd
@@ -488,7 +488,7 @@
             this.tabPageMario.Location = new System.Drawing.Point(4, 29);
             this.tabPageMario.Name = "tabPageMario";
             this.tabPageMario.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMario.Size = new System.Drawing.Size(1164, 289);
+            this.tabPageMario.Size = new System.Drawing.Size(1164, 301);
             this.tabPageMario.TabIndex = 1;
             this.tabPageMario.Text = "Mario";
             // 
@@ -501,7 +501,7 @@
             this.flowLayoutPanelMario.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelMario.Location = new System.Drawing.Point(98, 5);
             this.flowLayoutPanelMario.Name = "flowLayoutPanelMario";
-            this.flowLayoutPanelMario.Size = new System.Drawing.Size(1059, 256);
+            this.flowLayoutPanelMario.Size = new System.Drawing.Size(1059, 268);
             this.flowLayoutPanelMario.TabIndex = 1;
             // 
             // panelMarioBorder
@@ -535,7 +535,7 @@
             this.tabPageOther.Controls.Add(this.dataGridViewOther);
             this.tabPageOther.Location = new System.Drawing.Point(4, 29);
             this.tabPageOther.Name = "tabPageOther";
-            this.tabPageOther.Size = new System.Drawing.Size(1164, 289);
+            this.tabPageOther.Size = new System.Drawing.Size(1164, 301);
             this.tabPageOther.TabIndex = 2;
             this.tabPageOther.Text = "Other";
             // 
@@ -543,7 +543,7 @@
             // 
             this.checkBoxAbsoluteAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxAbsoluteAddress.AutoSize = true;
-            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(959, 249);
+            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(959, 261);
             this.checkBoxAbsoluteAddress.Name = "checkBoxAbsoluteAddress";
             this.checkBoxAbsoluteAddress.Size = new System.Drawing.Size(199, 24);
             this.checkBoxAbsoluteAddress.TabIndex = 4;
@@ -553,7 +553,7 @@
             // buttonOtherDelete
             // 
             this.buttonOtherDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherDelete.Location = new System.Drawing.Point(159, 242);
+            this.buttonOtherDelete.Location = new System.Drawing.Point(159, 254);
             this.buttonOtherDelete.Name = "buttonOtherDelete";
             this.buttonOtherDelete.Size = new System.Drawing.Size(72, 32);
             this.buttonOtherDelete.TabIndex = 3;
@@ -564,7 +564,7 @@
             // buttonOtherModify
             // 
             this.buttonOtherModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherModify.Location = new System.Drawing.Point(81, 242);
+            this.buttonOtherModify.Location = new System.Drawing.Point(81, 254);
             this.buttonOtherModify.Name = "buttonOtherModify";
             this.buttonOtherModify.Size = new System.Drawing.Size(72, 32);
             this.buttonOtherModify.TabIndex = 2;
@@ -575,7 +575,7 @@
             // buttonOtherAdd
             // 
             this.buttonOtherAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherAdd.Location = new System.Drawing.Point(3, 242);
+            this.buttonOtherAdd.Location = new System.Drawing.Point(3, 254);
             this.buttonOtherAdd.Name = "buttonOtherAdd";
             this.buttonOtherAdd.Size = new System.Drawing.Size(72, 32);
             this.buttonOtherAdd.TabIndex = 1;
@@ -600,7 +600,7 @@
             this.dataGridViewOther.RowTemplate.Height = 20;
             this.dataGridViewOther.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewOther.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOther.Size = new System.Drawing.Size(1156, 234);
+            this.dataGridViewOther.Size = new System.Drawing.Size(1156, 246);
             this.dataGridViewOther.TabIndex = 0;
             this.dataGridViewOther.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOther_CellMouseDoubleClick);
             // 
@@ -613,7 +613,7 @@
             this.tabPageDisassembly.Controls.Add(this.richTextBoxDissasembly);
             this.tabPageDisassembly.Location = new System.Drawing.Point(4, 29);
             this.tabPageDisassembly.Name = "tabPageDisassembly";
-            this.tabPageDisassembly.Size = new System.Drawing.Size(1164, 289);
+            this.tabPageDisassembly.Size = new System.Drawing.Size(1164, 301);
             this.tabPageDisassembly.TabIndex = 3;
             this.tabPageDisassembly.Text = "Disassembly";
             // 
@@ -654,7 +654,7 @@
             this.richTextBoxDissasembly.Location = new System.Drawing.Point(4, 35);
             this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
             this.richTextBoxDissasembly.ReadOnly = true;
-            this.richTextBoxDissasembly.Size = new System.Drawing.Size(1150, 226);
+            this.richTextBoxDissasembly.Size = new System.Drawing.Size(1150, 238);
             this.richTextBoxDissasembly.TabIndex = 0;
             this.richTextBoxDissasembly.Text = "";
             // 
@@ -667,107 +667,6 @@
             this.tabPageMap.Size = new System.Drawing.Size(1164, 301);
             this.tabPageMap.TabIndex = 4;
             this.tabPageMap.Text = "Map";
-            // 
-            // checkBoxMapShowMario
-            // 
-            this.checkBoxMapShowMario.AutoSize = true;
-            this.checkBoxMapShowMario.Checked = true;
-            this.checkBoxMapShowMario.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMapShowMario.Location = new System.Drawing.Point(169, 182);
-            this.checkBoxMapShowMario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.checkBoxMapShowMario.Name = "checkBoxMapShowMario";
-            this.checkBoxMapShowMario.Size = new System.Drawing.Size(118, 24);
-            this.checkBoxMapShowMario.TabIndex = 15;
-            this.checkBoxMapShowMario.Text = "Show Mario";
-            this.checkBoxMapShowMario.UseVisualStyleBackColor = true;
-            // 
-            // labelMapIconSize
-            // 
-            this.labelMapIconSize.AutoSize = true;
-            this.labelMapIconSize.Location = new System.Drawing.Point(195, 114);
-            this.labelMapIconSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelMapIconSize.Name = "labelMapIconSize";
-            this.labelMapIconSize.Size = new System.Drawing.Size(79, 20);
-            this.labelMapIconSize.TabIndex = 13;
-            this.labelMapIconSize.Text = "Icon Size:";
-            // 
-            // labelMapZoom
-            // 
-            this.labelMapZoom.AutoSize = true;
-            this.labelMapZoom.Location = new System.Drawing.Point(44, 114);
-            this.labelMapZoom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelMapZoom.Name = "labelMapZoom";
-            this.labelMapZoom.Size = new System.Drawing.Size(54, 20);
-            this.labelMapZoom.TabIndex = 12;
-            this.labelMapZoom.Text = "Zoom:";
-            // 
-            // trackBarMapIconSize
-            // 
-            this.trackBarMapIconSize.Location = new System.Drawing.Point(160, 137);
-            this.trackBarMapIconSize.Maximum = 100;
-            this.trackBarMapIconSize.Minimum = 5;
-            this.trackBarMapIconSize.Name = "trackBarMapIconSize";
-            this.trackBarMapIconSize.Size = new System.Drawing.Size(141, 69);
-            this.trackBarMapIconSize.SmallChange = 5;
-            this.trackBarMapIconSize.TabIndex = 10;
-            this.trackBarMapIconSize.TickFrequency = 10;
-            this.trackBarMapIconSize.Value = 5;
-            // 
-            // trackBarMapZoom
-            // 
-            this.trackBarMapZoom.Location = new System.Drawing.Point(9, 137);
-            this.trackBarMapZoom.Maximum = 100;
-            this.trackBarMapZoom.Name = "trackBarMapZoom";
-            this.trackBarMapZoom.Size = new System.Drawing.Size(136, 69);
-            this.trackBarMapZoom.SmallChange = 5;
-            this.trackBarMapZoom.TabIndex = 9;
-            this.trackBarMapZoom.TickFrequency = 10;
-            // 
-            // labelMapPuValue
-            // 
-            this.labelMapPuValue.AutoSize = true;
-            this.labelMapPuValue.Location = new System.Drawing.Point(98, 83);
-            this.labelMapPuValue.Name = "labelMapPuValue";
-            this.labelMapPuValue.Size = new System.Drawing.Size(40, 20);
-            this.labelMapPuValue.TabIndex = 8;
-            this.labelMapPuValue.Text = "Test";
-            // 
-            // labelMapSubName
-            // 
-            this.labelMapSubName.AutoSize = true;
-            this.labelMapSubName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMapSubName.Location = new System.Drawing.Point(3, 24);
-            this.labelMapSubName.Name = "labelMapSubName";
-            this.labelMapSubName.Size = new System.Drawing.Size(44, 20);
-            this.labelMapSubName.TabIndex = 7;
-            this.labelMapSubName.Text = "Test";
-            // 
-            // labelMapQpu
-            // 
-            this.labelMapQpu.AutoSize = true;
-            this.labelMapQpu.Location = new System.Drawing.Point(5, 63);
-            this.labelMapQpu.Name = "labelMapQpu";
-            this.labelMapQpu.Size = new System.Drawing.Size(99, 20);
-            this.labelMapQpu.TabIndex = 6;
-            this.labelMapQpu.Text = "QPU [X:Y:Z]:";
-            // 
-            // labelMapPu
-            // 
-            this.labelMapPu.AutoSize = true;
-            this.labelMapPu.Location = new System.Drawing.Point(5, 83);
-            this.labelMapPu.Name = "labelMapPu";
-            this.labelMapPu.Size = new System.Drawing.Size(87, 20);
-            this.labelMapPu.TabIndex = 5;
-            this.labelMapPu.Text = "PU [X:Y:Z]:";
-            // 
-            // labelMapQpuValue
-            // 
-            this.labelMapQpuValue.AutoSize = true;
-            this.labelMapQpuValue.Location = new System.Drawing.Point(110, 63);
-            this.labelMapQpuValue.Name = "labelMapQpuValue";
-            this.labelMapQpuValue.Size = new System.Drawing.Size(40, 20);
-            this.labelMapQpuValue.TabIndex = 1;
-            this.labelMapQpuValue.Text = "Test";
             // 
             // splitContainerMap
             // 
@@ -804,6 +703,41 @@
             this.splitContainerMap.SplitterDistance = 386;
             this.splitContainerMap.TabIndex = 16;
             // 
+            // checkBoxShowHolp
+            // 
+            this.checkBoxShowHolp.AutoSize = true;
+            this.checkBoxShowHolp.Location = new System.Drawing.Point(169, 214);
+            this.checkBoxShowHolp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxShowHolp.Name = "checkBoxShowHolp";
+            this.checkBoxShowHolp.Size = new System.Drawing.Size(122, 24);
+            this.checkBoxShowHolp.TabIndex = 17;
+            this.checkBoxShowHolp.Text = "Show HOLP";
+            this.checkBoxShowHolp.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapShowObj
+            // 
+            this.checkBoxMapShowObj.AutoSize = true;
+            this.checkBoxMapShowObj.Location = new System.Drawing.Point(9, 214);
+            this.checkBoxMapShowObj.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxMapShowObj.Name = "checkBoxMapShowObj";
+            this.checkBoxMapShowObj.Size = new System.Drawing.Size(133, 24);
+            this.checkBoxMapShowObj.TabIndex = 16;
+            this.checkBoxMapShowObj.Text = "Show Objects";
+            this.checkBoxMapShowObj.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapShowMario
+            // 
+            this.checkBoxMapShowMario.AutoSize = true;
+            this.checkBoxMapShowMario.Checked = true;
+            this.checkBoxMapShowMario.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMapShowMario.Location = new System.Drawing.Point(169, 182);
+            this.checkBoxMapShowMario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxMapShowMario.Name = "checkBoxMapShowMario";
+            this.checkBoxMapShowMario.Size = new System.Drawing.Size(118, 24);
+            this.checkBoxMapShowMario.TabIndex = 15;
+            this.checkBoxMapShowMario.Text = "Show Mario";
+            this.checkBoxMapShowMario.UseVisualStyleBackColor = true;
+            // 
             // labelMapName
             // 
             this.labelMapName.AutoSize = true;
@@ -813,6 +747,28 @@
             this.labelMapName.Size = new System.Drawing.Size(83, 20);
             this.labelMapName.TabIndex = 3;
             this.labelMapName.Text = "Unknown";
+            // 
+            // trackBarMapIconSize
+            // 
+            this.trackBarMapIconSize.Location = new System.Drawing.Point(160, 137);
+            this.trackBarMapIconSize.Maximum = 100;
+            this.trackBarMapIconSize.Minimum = 5;
+            this.trackBarMapIconSize.Name = "trackBarMapIconSize";
+            this.trackBarMapIconSize.Size = new System.Drawing.Size(141, 69);
+            this.trackBarMapIconSize.SmallChange = 5;
+            this.trackBarMapIconSize.TabIndex = 10;
+            this.trackBarMapIconSize.TickFrequency = 10;
+            this.trackBarMapIconSize.Value = 5;
+            // 
+            // labelMapIconSize
+            // 
+            this.labelMapIconSize.AutoSize = true;
+            this.labelMapIconSize.Location = new System.Drawing.Point(195, 114);
+            this.labelMapIconSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelMapIconSize.Name = "labelMapIconSize";
+            this.labelMapIconSize.Size = new System.Drawing.Size(79, 20);
+            this.labelMapIconSize.TabIndex = 13;
+            this.labelMapIconSize.Text = "Icon Size:";
             // 
             // checkBoxMapShowInactive
             // 
@@ -824,6 +780,16 @@
             this.checkBoxMapShowInactive.TabIndex = 14;
             this.checkBoxMapShowInactive.Text = "Show Inactive";
             this.checkBoxMapShowInactive.UseVisualStyleBackColor = true;
+            // 
+            // labelMapZoom
+            // 
+            this.labelMapZoom.AutoSize = true;
+            this.labelMapZoom.Location = new System.Drawing.Point(44, 114);
+            this.labelMapZoom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelMapZoom.Name = "labelMapZoom";
+            this.labelMapZoom.Size = new System.Drawing.Size(54, 20);
+            this.labelMapZoom.TabIndex = 12;
+            this.labelMapZoom.Text = "Zoom:";
             // 
             // buttonMapExpand
             // 
@@ -848,6 +814,62 @@
             this.labelMapId.Text = "[0:0:0]";
             this.labelMapId.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // labelMapSubName
+            // 
+            this.labelMapSubName.AutoSize = true;
+            this.labelMapSubName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMapSubName.Location = new System.Drawing.Point(3, 24);
+            this.labelMapSubName.Name = "labelMapSubName";
+            this.labelMapSubName.Size = new System.Drawing.Size(44, 20);
+            this.labelMapSubName.TabIndex = 7;
+            this.labelMapSubName.Text = "Test";
+            // 
+            // labelMapPuValue
+            // 
+            this.labelMapPuValue.AutoSize = true;
+            this.labelMapPuValue.Location = new System.Drawing.Point(98, 83);
+            this.labelMapPuValue.Name = "labelMapPuValue";
+            this.labelMapPuValue.Size = new System.Drawing.Size(40, 20);
+            this.labelMapPuValue.TabIndex = 8;
+            this.labelMapPuValue.Text = "Test";
+            // 
+            // labelMapQpu
+            // 
+            this.labelMapQpu.AutoSize = true;
+            this.labelMapQpu.Location = new System.Drawing.Point(5, 63);
+            this.labelMapQpu.Name = "labelMapQpu";
+            this.labelMapQpu.Size = new System.Drawing.Size(99, 20);
+            this.labelMapQpu.TabIndex = 6;
+            this.labelMapQpu.Text = "QPU [X:Y:Z]:";
+            // 
+            // labelMapQpuValue
+            // 
+            this.labelMapQpuValue.AutoSize = true;
+            this.labelMapQpuValue.Location = new System.Drawing.Point(110, 63);
+            this.labelMapQpuValue.Name = "labelMapQpuValue";
+            this.labelMapQpuValue.Size = new System.Drawing.Size(40, 20);
+            this.labelMapQpuValue.TabIndex = 1;
+            this.labelMapQpuValue.Text = "Test";
+            // 
+            // labelMapPu
+            // 
+            this.labelMapPu.AutoSize = true;
+            this.labelMapPu.Location = new System.Drawing.Point(5, 83);
+            this.labelMapPu.Name = "labelMapPu";
+            this.labelMapPu.Size = new System.Drawing.Size(87, 20);
+            this.labelMapPu.TabIndex = 5;
+            this.labelMapPu.Text = "PU [X:Y:Z]:";
+            // 
+            // trackBarMapZoom
+            // 
+            this.trackBarMapZoom.Location = new System.Drawing.Point(9, 137);
+            this.trackBarMapZoom.Maximum = 100;
+            this.trackBarMapZoom.Name = "trackBarMapZoom";
+            this.trackBarMapZoom.Size = new System.Drawing.Size(136, 69);
+            this.trackBarMapZoom.SmallChange = 5;
+            this.trackBarMapZoom.TabIndex = 9;
+            this.trackBarMapZoom.TickFrequency = 10;
+            // 
             // glControlMap
             // 
             this.glControlMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -868,7 +890,7 @@
             this.tabPageOptions.Controls.Add(this.checkBoxStartSlotIndexOne);
             this.tabPageOptions.Location = new System.Drawing.Point(4, 29);
             this.tabPageOptions.Name = "tabPageOptions";
-            this.tabPageOptions.Size = new System.Drawing.Size(1164, 289);
+            this.tabPageOptions.Size = new System.Drawing.Size(1164, 301);
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
             // 
@@ -902,30 +924,8 @@
             this.labelVersionNumber.Name = "labelVersionNumber";
             this.labelVersionNumber.Size = new System.Drawing.Size(51, 20);
             this.labelVersionNumber.TabIndex = 5;
-            this.labelVersionNumber.Text = "v0.1.3";
+            this.labelVersionNumber.Text = "v0.1.4";
             this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // checkBoxMapShowObj
-            // 
-            this.checkBoxMapShowObj.AutoSize = true;
-            this.checkBoxMapShowObj.Location = new System.Drawing.Point(9, 214);
-            this.checkBoxMapShowObj.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.checkBoxMapShowObj.Name = "checkBoxMapShowObj";
-            this.checkBoxMapShowObj.Size = new System.Drawing.Size(133, 24);
-            this.checkBoxMapShowObj.TabIndex = 16;
-            this.checkBoxMapShowObj.Text = "Show Objects";
-            this.checkBoxMapShowObj.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowHOLP
-            // 
-            this.checkBoxShowHolp.AutoSize = true;
-            this.checkBoxShowHolp.Location = new System.Drawing.Point(169, 214);
-            this.checkBoxShowHolp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.checkBoxShowHolp.Name = "checkBoxShowHOLP";
-            this.checkBoxShowHolp.Size = new System.Drawing.Size(122, 24);
-            this.checkBoxShowHolp.TabIndex = 17;
-            this.checkBoxShowHolp.Text = "Show HOLP";
-            this.checkBoxShowHolp.UseVisualStyleBackColor = true;
             // 
             // SM64DiagnosticForm
             // 
@@ -963,13 +963,13 @@
             this.tabPageDisassembly.ResumeLayout(false);
             this.tabPageDisassembly.PerformLayout();
             this.tabPageMap.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).EndInit();
             this.splitContainerMap.Panel1.ResumeLayout(false);
             this.splitContainerMap.Panel1.PerformLayout();
             this.splitContainerMap.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).EndInit();
             this.splitContainerMap.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).EndInit();
             this.tabPageOptions.ResumeLayout(false);
             this.tabPageOptions.PerformLayout();
             this.ResumeLayout(false);
