@@ -451,6 +451,53 @@ namespace SM64_Diagnostic.Utilities
             return assoc;
         }
 
+        public static ScriptParser OpenScripts(string path)
+        {
+            var parser = new ScriptParser();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet();
+            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ReusableTypes.xsd"), null));
+            schemaSet.Add(XmlSchema.Read(assembly.GetManifestResourceStream("SM64_Diagnostic.Schemas.ScriptsSchema.xsd"), null));
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            string scriptDir = "";
+            List<Tuple<string, uint>> scriptLocations = new List<Tuple<string, uint>>();
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                switch (element.Name.ToString())
+                {
+                    case "Config":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "ScriptDirectory":
+                                    scriptDir = subElement.Value;
+                                    break;
+                                case "FreeMemoryArea":
+                                    parser.FreeMemoryArea = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                            }
+                        }
+                        break;
+
+                    case "Script":
+                        string scriptPath = element.Attribute(XName.Get("path")).Value;
+                        uint insertAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("insertAddress")).Value);
+                        parser.AddScript(scriptDir + scriptPath, insertAddress);
+                        break;
+                }
+            }
+
+            return parser;
+        }
+
         public static WatchVariable GetWatchVariableFromElement(XElement element)
         {
             var watchVar = new WatchVariable();
