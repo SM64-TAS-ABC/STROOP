@@ -374,7 +374,7 @@ namespace SM64_Diagnostic
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            throw new Exception("");
+            throw new Exception("User crashed program");
         }
 
         private void buttonMapExpand_Click(object sender, EventArgs e)

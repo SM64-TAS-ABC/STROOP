@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<GameHacks>
-  <Config>
-    <ScriptDirectory>Resources\Scripts\</ScriptDirectory>
-    <FreeMemoryArea>0x3e0000</FreeMemoryArea>
-  </Config>
-  <Script insertAddress="" executeMode="every">
-  </Script>
-</GameHacks>

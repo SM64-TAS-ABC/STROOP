@@ -29,5 +29,5 @@
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x20">Hat In Hand</Data>
   <Data type="byte" address="0x00222618" isBool="true" mask="0x20" invertBool="true">Music</Data>
   <Data type="float" address ="0x80222630">Volume</Data>
-  <Data type="uint16" address="0x0038EEE0">RNG Value</Data>
+  <Data type="uint16" address="0x8038EEE0">RNG Value</Data>
 </MarioData>
