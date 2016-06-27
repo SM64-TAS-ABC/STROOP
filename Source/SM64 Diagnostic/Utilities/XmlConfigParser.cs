@@ -394,7 +394,8 @@ namespace SM64_Diagnostic.Utilities
             foreach (var v in behaviorImageAssoc)
             {
                 var preLoad = Bitmap.FromFile(imageDir + v.Value.Item1);
-                var image = new Bitmap(preLoad, new Size(32, 32));
+                float scale = Math.Max(preLoad.Height / 32f, preLoad.Width / 32f);
+                var image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
                
                 preLoad.Dispose();
                 assoc.AddAssociation(v.Key - ramToBehaviorOffset, image, v.Value.Item2);
