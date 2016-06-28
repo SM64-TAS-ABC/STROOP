@@ -184,7 +184,7 @@ namespace SM64_Diagnostic.ManagerClasses
             int holpPuY = GetPUFromCoord(_holpMapObj.Y);
             int holpPuZ = GetPUFromCoord(_holpMapObj.Z);
             float holpRelX = GetRelativePuPosition(_holpMapObj.X, holpPuX);
-            float holpRelZ = GetRelativePuPosition(_holpMapObj.Z, holpPuX);
+            float holpRelZ = GetRelativePuPosition(_holpMapObj.Z, holpPuZ);
             var holpCoord = new PointF(holpRelX, holpRelZ);
             _holpMapObj.Draw = _mapGui.MapShowHolp.Checked && puX == holpPuX && puY == holpPuY && puZ == holpPuZ;
             _holpMapObj.LocationOnContol = CalculateLocationOnControl(holpCoord, mapView);
