@@ -89,6 +89,7 @@
         <xs:element name="LevelAddress" type="types:address"/>
         <xs:element name="AreaAddress" type="types:address"/>
         <xs:element name="LoadingPointAddress" type="types:address"/>
+        <xs:element name="MissionAddress" type="types:address"/>
         <xs:element name="HolpX" type="types:address"/>
         <xs:element name="HolpY" type="types:address"/>
         <xs:element name="HolpZ" type="types:address"/>

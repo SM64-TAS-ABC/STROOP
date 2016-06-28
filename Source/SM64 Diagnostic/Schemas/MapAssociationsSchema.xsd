@@ -56,6 +56,7 @@
             <xs:attribute name="level" use="required" type="xs:byte"/>
             <xs:attribute name="area" use="required" type="xs:byte"/>
             <xs:attribute name="loadingPoint" type="xs:unsignedShort"/>
+            <xs:attribute name="missionLayout" type="xs:unsignedShort"/>
           </xs:complexType>
         </xs:element>
       </xs:sequence>
