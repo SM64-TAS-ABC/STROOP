@@ -25,6 +25,9 @@ namespace SM64_Diagnostic
         bool _active = false;
         uint _behavior;
 
+        public enum MouseStateType {None, Over, Down};
+        public MouseStateType MouseState;
+
         public bool Selected
         {
             get
@@ -131,16 +134,44 @@ namespace SM64_Diagnostic
         {
             if (!_selected)
             {
-                BorderPanel.BackColor = _mainColor.Lighten(0.5);
-                ContentPanel.BackColor = _mainColor.Lighten(0.85);
+                var newColor = _mainColor;
+                switch (MouseState)
+                {
+                    case MouseStateType.Down:
+                        BorderPanel.BackColor = newColor.Darken(0.5);
+                        ContentPanel.BackColor = newColor.Darken(0.5).Lighten(0.5);
+                        break;
+                    case MouseStateType.Over:
+                        BorderPanel.BackColor = newColor.Lighten(0.75);
+                        ContentPanel.BackColor = newColor.Lighten(0.92);
+                        break;
+                    default:
+                        BorderPanel.BackColor = newColor.Lighten(0.5);
+                        ContentPanel.BackColor = newColor.Lighten(0.85);
+                        break;
+                }
                 Image newImage = _manager.ObjectImageAssoc.GetObjectImage(_behavior, true);
                 if (PictureBox.Image != newImage)
                     PictureBox.Image = newImage;
             }
             else
             {
-                BorderPanel.BackColor = _mainColor;
-                ContentPanel.BackColor = _mainColor.Lighten(0.7);
+                var newColor = _mainColor;
+                switch (MouseState)
+                {
+                    case MouseStateType.Down:
+                        BorderPanel.BackColor = newColor.Darken(0.5);
+                        ContentPanel.BackColor = newColor.Darken(0.5).Lighten(0.5);
+                        break;
+                    case MouseStateType.Over:
+                        BorderPanel.BackColor = newColor.Lighten(0.5);
+                        ContentPanel.BackColor = newColor.Lighten(0.85);
+                        break;
+                    default:
+                        BorderPanel.BackColor = newColor;
+                        ContentPanel.BackColor = newColor.Lighten(0.7);
+                        break;
+                }
                 Image newImage = _manager.ObjectImageAssoc.GetObjectImage(_behavior, !_active);
                 if (PictureBox.Image != newImage)
                     PictureBox.Image = newImage;
@@ -192,6 +223,10 @@ namespace SM64_Diagnostic
         {
             control.AllowDrop = true;
             control.MouseDown += OnDrag;
+            control.MouseUp += (s, e) => { MouseState = MouseStateType.None; UpdateGui(); };
+            control.MouseEnter += (s, e) => { MouseState = MouseStateType.Over; UpdateGui(); };
+            control.MouseLeave += (s, e) => { MouseState = MouseStateType.None; UpdateGui(); };
+
             control.DragEnter += DragEnter;
             control.DragDrop += OnDrop;
             control.Cursor = Cursors.Hand;
@@ -200,6 +235,9 @@ namespace SM64_Diagnostic
         private void OnDrag(object sender, MouseEventArgs e)
         {
             OnClick?.Invoke(sender, e);
+
+            MouseState = MouseStateType.Down; UpdateGui();
+            BorderPanel.Refresh();
 
             // Start the drag and drop but setting the object slot index in Drag and Drop data
             var objectAddress = _manager.ObjectSlotData.First((objData) => objData.Index == Index).Address;

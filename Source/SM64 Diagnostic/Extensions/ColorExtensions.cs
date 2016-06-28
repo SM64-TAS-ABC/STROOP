@@ -19,7 +19,10 @@ namespace SM64_Diagnostic.Utilities
 
         public static Color Darken(this Color color, double amount)
         {
-            return Lighten(color, -amount);
+            double red = (0 - color.R) * amount + color.R;
+            double green = (0 - color.G) * amount + color.G;
+            double blue = (0 - color.B) * amount + color.B;
+            return Color.FromArgb(color.A, (int)red, (int)green, (int)blue);
         }
     }
 }
