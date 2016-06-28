@@ -12,11 +12,22 @@ namespace SM64_Diagnostic.ManagerClasses
     public class ScriptManager
     {
         ProcessStream _stream;
-        const int startPadding = 0x00;
+        ScriptParser _parser;
 
-        public ScriptManager(ProcessStream stream)
+        uint _freeMemPtr;
+
+        public ScriptManager(ProcessStream stream, ScriptParser parser)
         {
             _stream = stream;
+            _parser = parser;
+
+            _freeMemPtr = _parser.FreeMemoryArea; 
+        }
+
+        public void Update()
+        {
+            foreach (var script in _parser.Scripts)
+                ExecuteScript(script);
         }
 
         public void ExecuteScript(GameScript script)
@@ -28,7 +39,7 @@ namespace SM64_Diagnostic.ManagerClasses
             uint inst2 = BitConverter.ToUInt32(_stream.ReadRam(script.InsertAddress + 4, 4), 0);
 
             // Get jump instruction
-            uint jumpInst1 = (uint)(script.ExecutionSpace + startPadding) >> 2 & 0x03FFFFFF | 0x08000000;
+            uint jumpInst1 = (uint)(script.ExecutionSpace) >> 2 & 0x03FFFFFF | 0x08000000;
             uint jumpInst2 = 0;
             byte[] jumpInstBytes = new byte[8];
             BitConverter.GetBytes(jumpInst1).ToArray().CopyTo(jumpInstBytes, 0);
@@ -46,6 +57,21 @@ namespace SM64_Diagnostic.ManagerClasses
                 _stream.WriteRam(jumpInstBytes, script.InsertAddress);
                 return;
             }
+
+            uint[] postInstructions = new uint[4];
+
+            script.ExecutionSpace = _freeMemPtr;
+
+            var scriptLength = (uint)(script.Script.Length + postInstructions.Length) * 4;
+            byte[] scriptBytes = new byte[scriptLength];
+
+            // Write script
+            //_stream.WriteRam(BitConverter.GetBytes())
+
+                //Buffer.BlockCopy(script.Script, 0, result, 0, result.Length);
+
+            //_freeMemPtr += ;
+            script.Allocated = true;
 
             // Write jump
             _stream.WriteRam(jumpInstBytes, script.InsertAddress);
