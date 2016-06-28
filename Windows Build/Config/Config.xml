@@ -59,8 +59,8 @@
       <z3>0x1A</z3>
     </Triangles>-->
   <HolpX>0x8033B3C8</HolpX>
-  <HolpY>0x8033B3D0</HolpY>
-  <HolpZ>0x8033B3D4</HolpZ>
+  <HolpY>0x8033B3CC</HolpY>
+  <HolpZ>0x8033B3D0</HolpZ>
   <LevelAddress>0x8033B249</LevelAddress>
   <AreaAddress>0x8033B24A</AreaAddress>
   <LoadingPointAddress>0x8033BACA</LoadingPointAddress>
