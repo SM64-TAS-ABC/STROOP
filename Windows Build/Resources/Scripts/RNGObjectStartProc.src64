@@ -1,0 +1,28 @@
+﻿/*
+This script 
+*/
+
+/*
+Memory Table (0x803e0000)
+
+[0-3]: bool isValid
+[4-7]: ushort tempValue
+[8-B]: ushort nextObjRngValuesPtr
+[C-D]: ushort framePreviousValue 
+[E-F]: ushort frameCurrentValue
+[10 + 4i] ushort objRngStartValue
+[12 + 4i] ushort objRngEndValue
+
+currentRng = (ushort) *0x8038EEE0
+*/
+
+// [a0 = 0x803e0000]
+// LUI a0, 0x803e
+// ORI a0, a0, 0x00
+
+// [tempValue = currentRng]
+// LUI a1, 0x8038
+// ORI a1, a1, 0xEEE0
+// LHU a1, a1(0x00)
+// SH a1, a0(0x04)
+
