@@ -39,7 +39,7 @@ namespace SM64_Diagnostic.ManagerClasses
             uint inst2 = BitConverter.ToUInt32(_stream.ReadRam(script.InsertAddress + 4, 4), 0);
 
             // Get jump instruction
-            uint jumpInst1 = (uint)(script.ExecutionSpace) >> 2 & 0x03FFFFFF | 0x08000000;
+            uint jumpInst1 = JumpToAddressInst(script.ExecutionSpace);
             uint jumpInst2 = 0;
             byte[] jumpInstBytes = new byte[8];
             BitConverter.GetBytes(jumpInst1).ToArray().CopyTo(jumpInstBytes, 0);
@@ -52,29 +52,63 @@ namespace SM64_Diagnostic.ManagerClasses
             if (!scriptExecuted)
                 return;
 
-            if (script.Allocated)
+
+            // Write post instructions
+            uint[] writeInstBackInsts = new uint[9];
+            // [a0 = instAddress]
+            // LUI a0, instAddress >> 16
+            // ORI a0, a0, instAddress && 0xFFFF
+            writeInstBackInsts[0] = (uint)(0x3C00 | (script.InsertAddress >> 16));
+            writeInstBackInsts[1] = (uint)(0x3400 | (script.InsertAddress >> 16));
+            // [a1 = *instAddress]
+            // LUI a1, *instAddress >> 16
+            // ORI a1, a1, *instAddress && 0xFFFF
+            writeInstBackInsts[2] = (uint)(0x3C00 | (inst1 >> 16));
+            writeInstBackInsts[3] = (uint)(0x3400 | (inst1 >> 16));
+            // [instrAddress = *instAddress]
+            // SW a1, a0(0)
+            writeInstBackInsts[5] = 0xA8000000;
+            // [a1 = *(instAddress+1)]
+            // LUI a1, *(instAddress+1) >> 16
+            // ORI a1, a1, *(instAddress+1) && 0xFFFF
+            writeInstBackInsts[6] = (uint)(0x3C00 | (inst2 >> 16));
+            writeInstBackInsts[7] = (uint)(0x3400 | (inst2 >> 16));
+            // [instrAddress = *(instAddress+1)]
+            // SW a1, a0(1)
+            writeInstBackInsts[8] = 0xA8000001;
+
+            byte[] writeInstrBackBytes = new byte[writeInstBackInsts.Length * sizeof(byte)];
+            Buffer.BlockCopy(writeInstBackInsts, 0, writeInstrBackBytes, 0, writeInstrBackBytes.Length);
+            _stream.WriteRam(writeInstrBackBytes, _freeMemPtr);
+
+            if (!script.Allocated)
             {
-                _stream.WriteRam(jumpInstBytes, script.InsertAddress);
-                return;
+                script.ExecutionSpace = _freeMemPtr;
+
+                var scriptLength = script.Script.Length * sizeof(uint);
+                byte[] scriptBytes = new byte[scriptLength];
+
+                // Write script
+                Buffer.BlockCopy(script.Script, 0, scriptBytes, 0, scriptLength);
+                _stream.WriteRam(scriptBytes, _freeMemPtr);
+
+                _freeMemPtr += (uint)(scriptLength + writeInstBackInsts.Length * sizeof(uint));
+
+                uint jumpBackToInsertPointInst = JumpToAddressInst(script.InsertAddress);
+                _stream.WriteRam(BitConverter.GetBytes(jumpBackToInsertPointInst), _freeMemPtr);
+
+                _freeMemPtr += sizeof(uint);
+
+                script.Allocated = true;
             }
-
-            uint[] postInstructions = new uint[4];
-
-            script.ExecutionSpace = _freeMemPtr;
-
-            var scriptLength = (uint)(script.Script.Length + postInstructions.Length) * 4;
-            byte[] scriptBytes = new byte[scriptLength];
-
-            // Write script
-            //_stream.WriteRam(BitConverter.GetBytes())
-
-                //Buffer.BlockCopy(script.Script, 0, result, 0, result.Length);
-
-            //_freeMemPtr += ;
-            script.Allocated = true;
 
             // Write jump
             _stream.WriteRam(jumpInstBytes, script.InsertAddress);
+        }
+
+        private uint JumpToAddressInst(uint address)
+        {
+            return (uint)(address) >> 2 & 0x03FFFFFF | 0x08000000;
         }
     }
 }

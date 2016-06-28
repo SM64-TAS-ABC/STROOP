@@ -551,6 +551,8 @@ namespace SM64_Diagnostic.Utilities
             watchVar.Address = ParsingUtilities.ParseHex(element.Attribute(XName.Get("address")).Value);
             watchVar.InvertBool = element.Attribute(XName.Get("invertBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : false;
+            watchVar.IsAngle = element.Attribute(XName.Get("isAngle")) != null ?
+                bool.Parse(element.Attribute(XName.Get("isAngle")).Value) : false;
             return watchVar;
         }
 

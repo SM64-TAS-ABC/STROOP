@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SM64_Diagnostic.ManagerClasses;
 
 namespace SM64_Diagnostic.Extensions
 {
@@ -60,6 +61,53 @@ namespace SM64_Diagnostic.Extensions
                 return "0x" + dataValue.ToString("X" + byteCount * 2);
             else
                 return dataValue.ToString();
+        }
+
+        public static string GetAngleStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset, WatchVariableControl.AngleViewModeType viewMode)
+        {
+            // Get dataBytes
+            var byteCount = TypeSize[watchVar.Type];
+            var dataBytes = stream.ReadRam(watchVar.OtherOffset ? offset + watchVar.Address
+                : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
+
+            if (watchVar.Type != typeof(UInt32))
+                return "Error: angle not UInt32";
+
+            // Get Uint64 value
+            UInt32 dataValue = BitConverter.ToUInt32(dataBytes, 0);
+
+            // Apply mask
+            if (watchVar.Mask.HasValue)
+                dataValue = (UInt32)(dataValue & watchVar.Mask.Value);
+
+            // Print hex
+            if (watchVar.UseHex)
+            {
+                if (viewMode == WatchVariableControl.AngleViewModeType.Raw)
+                    return "0x" + dataValue.ToString("X8"); 
+                else
+                    return "0x" + (dataValue >> 16).ToString("X4");
+            }
+
+            switch(viewMode)
+            {
+                case WatchVariableControl.AngleViewModeType.Raw:
+                    return dataValue.ToString();
+
+                case WatchVariableControl.AngleViewModeType.Unsigned:
+                    return (dataValue >> 16).ToString();
+
+                case WatchVariableControl.AngleViewModeType.Signed:
+                    return ((Int16)(dataValue >> 16)).ToString();
+
+                case WatchVariableControl.AngleViewModeType.Degrees:
+                    return ((dataValue >> 16) * (360f / 65536)).ToString();
+
+                case WatchVariableControl.AngleViewModeType.Radians:
+                    return ((dataValue >> 16) * (2 * Math.PI / 65536)).ToString();
+            }
+
+            return "Error: ang. parse";
         }
 
         public static bool GetBoolValue(this WatchVariable watchVar, ProcessStream stream, uint offset)
