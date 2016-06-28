@@ -9,7 +9,7 @@
     <Image path="BBH.png"/>
     <Coordinates x1="-4197" x2="5530" z1="-3993" z2="6758"/>
   </Map>
-  <Map name="Rainbow Ride" level="15" area="1" loadingPoint="1">
+  <Map name="Rainbow Ride" level="15" area="1" loadingPoint="1" missionLayout="1">
     <Image path="RR.png"/>
     <Coordinates x1="-8192" x2="8192" z1="-8192" z2="8192" y="-8192"/>
     <BackgroundImage path="RR_back.png"/>
