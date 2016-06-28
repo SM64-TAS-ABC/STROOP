@@ -155,7 +155,7 @@ namespace SM64_Diagnostic.ManagerClasses
             var marioCoord = new PointF(marioRelX, marioRelZ);
 
             // Filter out all maps that are lower than Mario
-            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= marioRelY).OrderByDescending((map) => map.Y).ToList();
+            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= marioRelY).ToList();
 
             // If no map is available display the default image
             if (mapListYFiltered.Count <= 0)
@@ -168,7 +168,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 Map bestMap = mapListYFiltered[0];
                 foreach (Map map in mapListYFiltered)
                 {
-                    if (map.Y < bestMap.Y)
+                    if (map.Y > bestMap.Y)
                         bestMap = map;
                 }
 
