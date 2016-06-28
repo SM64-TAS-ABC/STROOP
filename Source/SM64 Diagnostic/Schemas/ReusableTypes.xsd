@@ -62,6 +62,7 @@
         <xs:attribute name="mask" type="address"/>
         <xs:attribute name="useHex" type="xs:boolean"/>
         <xs:attribute name="isBool" type="xs:boolean"/>
+        <xs:attribute name="isAngle" type="xs:boolean"/>
         <xs:attribute name="invertBool" type="xs:boolean"/>
       </xs:extension>
     </xs:simpleContent>

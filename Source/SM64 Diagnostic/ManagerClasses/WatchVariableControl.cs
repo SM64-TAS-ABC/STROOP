@@ -11,7 +11,7 @@ using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic.ManagerClasses
 {
-    class WatchVariableControl
+    public class WatchVariableControl
     {
         TableLayoutPanel _tablePanel;
         Label _nameLabel;
@@ -19,30 +19,76 @@ namespace SM64_Diagnostic.ManagerClasses
         CheckBox _checkBoxBool;
         TextBox _textBoxValue;
         ProcessStream _stream;
+
         public uint OtherOffset;
         bool _changedByUser = true;
         bool _editMode = false;
         bool _valueLocked = false;
         string _lockedStringValue = "0";
 
+        static WatchVariableControl _lastSelected;
+
+        public enum AngleViewModeType {Raw, Signed, Unsigned, Degrees, Radians};
+
+        AngleViewModeType AngleViewMode = AngleViewModeType.Raw;
+
         private static ContextMenuStrip _menu;
-        private static WatchVariableControl _lastSelected;
         public static ContextMenuStrip Menu
         {
             get
             {
                 if (_menu == null)
                 {
-                    WatchVariableControl._menu = new ContextMenuStrip();
-                    WatchVariableControl._menu.Items.Add("Edit");
+                    _menu = new ContextMenuStrip();
+                    _menu.Items.Add("Edit");
                     var newItem = new ToolStripMenuItem("View As Hexadecimal");
                     newItem.Name = "HexView";
-                    WatchVariableControl._menu.Items.Add(newItem);
+                    _menu.Items.Add(newItem);
                     newItem = new ToolStripMenuItem("Lock Value");
                     newItem.Name = "LockValue";
-                    WatchVariableControl._menu.Items.Add(newItem);
+                    _menu.Items.Add(newItem);
                 }
                 return _menu;
+            }
+        }
+
+        private static ContextMenuStrip _angleMenu;
+        public static ContextMenuStrip AngleMenu
+        {
+            get
+            {
+                if (_angleMenu == null)
+                {
+                    _angleMenu = new ContextMenuStrip();
+                    _angleMenu.Items.Add("Edit");
+                    var newItem = new ToolStripMenuItem("View As Hexadecimal");
+                    newItem.Name = "HexView";
+                    _angleMenu.Items.Add(newItem);
+                    newItem = new ToolStripMenuItem("Lock Value");
+                    newItem.Name = "LockValue";
+                    _angleMenu.Items.Add(newItem);
+
+                    _angleMenu.Items.Add(AngleDropDownMenu);
+                }
+                return _angleMenu;
+            }
+        }
+        private static ToolStripMenuItem _angleMenuDropDown;
+
+        public static ToolStripMenuItem AngleDropDownMenu
+        {
+            get
+            {
+                if (_angleMenuDropDown == null)
+                {
+                    _angleMenuDropDown = new ToolStripMenuItem("View Angle As");
+                    _angleMenuDropDown.DropDownItems.Add("Raw");
+                    _angleMenuDropDown.DropDownItems.Add("Unsigned (short)");
+                    _angleMenuDropDown.DropDownItems.Add("Signed (short)");
+                    _angleMenuDropDown.DropDownItems.Add("Degrees");
+                    _angleMenuDropDown.DropDownItems.Add("Radians");
+                }
+                return _angleMenuDropDown;
             }
         }
 
@@ -130,16 +176,17 @@ namespace SM64_Diagnostic.ManagerClasses
                 this._textBoxValue.Width = 200;
                 this._textBoxValue.Margin = new Padding(6, 3, 6, 3);
                 this._textBoxValue.TextChanged += OnModified;
-                this._textBoxValue.ContextMenuStrip = WatchVariableControl.Menu;
+                this._textBoxValue.ContextMenuStrip = _watchVar.IsAngle ? WatchVariableControl.AngleMenu : WatchVariableControl.Menu;
                 this._textBoxValue.KeyDown += OnTextValueKeyDown;
-                this._textBoxValue.MouseEnter += (sender, e) =>
-                {
-                    _lastSelected = this;
-                    (_menu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
-                    (_menu.Items["LockValue"] as ToolStripMenuItem).Checked = _valueLocked;
-                };
+                this._textBoxValue.MouseEnter += _textBoxValue_MouseEnter;
                 this._textBoxValue.Leave += (sender, e) => { _editMode = false; this._textBoxValue.ReadOnly = true; };
-                WatchVariableControl.Menu.ItemClicked += OnMenuStripClick;
+                if (_watchVar.IsAngle)
+                {
+                    WatchVariableControl.AngleMenu.ItemClicked += OnMenuStripClick;
+                    WatchVariableControl.AngleDropDownMenu.DropDownItemClicked += AngleDropDownMenu_DropDownItemClicked;
+                }
+                else
+                    WatchVariableControl.Menu.ItemClicked += OnMenuStripClick;
             }
 
             this._tablePanel = new TableLayoutPanel();
@@ -158,22 +205,71 @@ namespace SM64_Diagnostic.ManagerClasses
             this._tablePanel.Controls.Add(_watchVar.IsBool ? this._checkBoxBool as Control: this._textBoxValue, 1, 0);
         }
 
+        private void _textBoxValue_MouseEnter(object sender, EventArgs e)
+        {
+            _lastSelected = this;
+            if (_watchVar.IsAngle)
+            {
+                (AngleMenu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
+                (AngleMenu.Items["LockValue"] as ToolStripMenuItem).Checked = _valueLocked;
+                (AngleDropDownMenu.DropDownItems[0] as ToolStripMenuItem).Checked = (AngleViewMode == AngleViewModeType.Raw);
+                (AngleDropDownMenu.DropDownItems[1] as ToolStripMenuItem).Checked = (AngleViewMode == AngleViewModeType.Unsigned);
+                (AngleDropDownMenu.DropDownItems[2] as ToolStripMenuItem).Checked = (AngleViewMode == AngleViewModeType.Signed);
+                (AngleDropDownMenu.DropDownItems[3] as ToolStripMenuItem).Checked = (AngleViewMode == AngleViewModeType.Degrees);
+                (AngleDropDownMenu.DropDownItems[4] as ToolStripMenuItem).Checked = (AngleViewMode == AngleViewModeType.Radians);
+            }
+            else
+            {
+                (Menu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
+                (Menu.Items["LockValue"] as ToolStripMenuItem).Checked = _valueLocked;
+            }
+        }
+
+        private void AngleDropDownMenu_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (this != _lastSelected)
+                return;
+
+            switch (e.ClickedItem.Text)
+            {
+                case "Raw":
+                    AngleViewMode = AngleViewModeType.Raw;
+                    break;
+                case "Unsigned (short)":
+                    AngleViewMode = AngleViewModeType.Unsigned;
+                    break;
+                case "Signed (short)":
+                    AngleViewMode = AngleViewModeType.Signed;
+                    break;
+                case "Degrees":
+                    AngleViewMode = AngleViewModeType.Degrees;
+                    break;
+                case "Radians":
+                    AngleViewMode = AngleViewModeType.Radians;
+                    break;
+            }
+        }
+
         public void Update()
         {
             if (_valueLocked)
-            {
                 _watchVar.SetStringValue(_stream, OtherOffset, _lockedStringValue);
-            }
+
+            if (_editMode)
+                return;
+
             if (_watchVar.IsBool)
             {
                 _changedByUser = false;
                 _checkBoxBool.Checked = _watchVar.GetBoolValue(_stream, OtherOffset);
                 _changedByUser = true;
             }
+            else if (_watchVar.IsAngle)
+            {
+                _textBoxValue.Text = _watchVar.GetAngleStringValue(_stream, OtherOffset, AngleViewMode);
+            }
             else
             {
-                if (_editMode)
-                    return;
                 _textBoxValue.Text = _watchVar.GetStringValue(_stream, OtherOffset);
             }
         }
