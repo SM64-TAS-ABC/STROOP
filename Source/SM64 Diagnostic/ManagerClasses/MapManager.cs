@@ -76,7 +76,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _marioMapObj = new MapObject(new Bitmap("Resources\\Maps\\Object Images\\Mario Top.png"), 1);
             _marioMapObj.UsesRotation = true;
 
-            _holpMapObj = new MapObject(objAssoc.HolpImage);
+            _holpMapObj = new MapObject(objAssoc.HolpImage, 2);
         }
 
         public void Load()
