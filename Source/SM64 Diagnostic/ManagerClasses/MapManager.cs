@@ -19,7 +19,7 @@ namespace SM64_Diagnostic.ManagerClasses
         Config _config;
         public MapAssociations MapAssoc;
         byte _currentLevel, _currentArea;
-        ushort _currentLoadingPoint;
+        ushort _currentLoadingPoint, _currentMissionLayout;
         Map _currentMap;
         List<Map> _currentMapList = null;
         MapGraphicsControl _mapGraphics;
@@ -109,19 +109,26 @@ namespace SM64_Diagnostic.ManagerClasses
             byte level = _stream.ReadRam(_config.LevelAddress, 1)[0];
             byte area = _stream.ReadRam(_config.AreaAddress, 1)[0];
             ushort loadingPoint = BitConverter.ToUInt16(_stream.ReadRam(_config.LoadingPointAddress, 2), 0);
+            ushort missionLayout = BitConverter.ToUInt16(_stream.ReadRam(_config.MissionAddress, 2), 0);
 
             // Find new map list
-            if (_currentMapList == null || _currentLevel != level || _currentArea != area || _currentLoadingPoint != loadingPoint)
+            if (_currentMapList == null || _currentLevel != level || _currentArea != area 
+                || _currentLoadingPoint != loadingPoint || _currentMissionLayout != missionLayout)
             {
                 _currentLevel = level;
                 _currentArea = area;
                 _currentLoadingPoint = loadingPoint;
+                _currentMissionLayout = missionLayout;
                 _currentMapList = MapAssoc.GetLevelAreaMaps(level, area);
 
                 // Look for maps with correct loading points
                 var mapListLPFiltered = _currentMapList.Where((map) => map.LoadingPoint == loadingPoint).ToList();
                 if (mapListLPFiltered.Count > 0)
                     _currentMapList = mapListLPFiltered;
+
+                var mapListMLFiltered = _currentMapList.Where((map) => map.MissionLayout == missionLayout).ToList();
+                if (mapListMLFiltered.Count > 0)
+                    _currentMapList = mapListMLFiltered;
             }
 
             // ---- Update PU -----
@@ -137,7 +144,7 @@ namespace SM64_Diagnostic.ManagerClasses
             // Update labels
             _mapGui.PuValueLabel.Text = string.Format("[{0}:{1}:{2}]", puX, puY, puZ);
             _mapGui.QpuValueLabel.Text = string.Format("[{0}:{1}:{2}]", qpuX, qpuY, qpuZ);
-            _mapGui.MapIdLabel.Text = string.Format("[{0}:{1}:{2}]", level, area, loadingPoint);
+            _mapGui.MapIdLabel.Text = string.Format("[{0}:{1}:{2}:{3}]", level, area, loadingPoint, missionLayout);
             _mapGui.MapNameLabel.Text = _currentMap.Name;
             _mapGui.MapSubNameLabel.Text = (_currentMap.SubName != null) ? _currentMap.SubName : "";
 

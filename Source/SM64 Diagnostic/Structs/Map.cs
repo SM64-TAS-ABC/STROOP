@@ -14,6 +14,7 @@ namespace SM64_Diagnostic.Structs
         public byte Level;
         public byte Area;
         public ushort? LoadingPoint;
+        public ushort? MissionLayout;
         public RectangleF Coordinates;
         public float Y;
         public string Name;
@@ -22,7 +23,7 @@ namespace SM64_Diagnostic.Structs
         public static bool operator ==(Map a, Map b)
         {
             return (a.ImagePath == b.ImagePath && a.Area == b.Area && a.Level == b.Level && a.Y == b.Y
-                && a.LoadingPoint == b.LoadingPoint);
+                && a.LoadingPoint == b.LoadingPoint && a.MissionLayout == b.MissionLayout);
         }
 
         public static bool operator !=(Map a, Map b)
@@ -40,7 +41,8 @@ namespace SM64_Diagnostic.Structs
 
         public override int GetHashCode()
         {
-            return ImagePath.GetHashCode() * 127 + Level.GetHashCode() * 31 + Area.GetHashCode() * 17 + Y.GetHashCode(); 
+            return ImagePath.GetHashCode() * 127 + Level.GetHashCode() * 31 + Area.GetHashCode() * 17 + Y.GetHashCode()
+                + 257 * MissionLayout.GetHashCode() + 67 * LoadingPoint.GetHashCode(); 
         }
     }
 }
