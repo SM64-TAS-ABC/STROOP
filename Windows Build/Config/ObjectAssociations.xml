@@ -775,6 +775,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13002EC0" name="Mario">
     <Image path="Mario.png"/>
+	<MapImage path="Mario Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002EF8" name="Toad">
     <Image path="Toad.png"/>
