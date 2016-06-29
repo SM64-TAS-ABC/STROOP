@@ -4,5 +4,5 @@
     <ScriptDirectory>Resources\Scripts\</ScriptDirectory>
     <FreeMemoryArea>0x803e0400</FreeMemoryArea>
   </Config>
-  <Script insertAddress="0x8029cd28" path="RNGFrameProc.src64"/>
+  <Script insertAddress="0x29cd28" path="RNGFrameProc.src64"/>
 </Scripts>

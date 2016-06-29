@@ -13,6 +13,7 @@ namespace SM64_Diagnostic.Structs
         public uint InsertAddress;
         public ExecuteModeType ExecuteMode;
         public uint ExecutionSpace;
+        public uint PostInstrSpace;
         public bool Allocated;
     }
 }
