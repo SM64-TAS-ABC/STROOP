@@ -17,9 +17,11 @@
   </Holp>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <Image path="Star Door.png"/>
+	<MapImage path="Star Door Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000054" name="Mr. I Pupil">
     <Image path="Mr. I Pupil.png"/>
+	<MapImage path="Mr. I Pupil Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300008C" name="Mr. I Body">
     <Image path="Mr. I Body.png"/>
@@ -47,9 +49,11 @@
   </Object>
   <Object behaviorScriptAddress="0x130001CC" name="Cap Switch Button">
     <Image path="Cap Switch Button.png"/>
+	<MapImage path="Cap Switch Button Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130001F4" name="King Bob-omb">
     <Image path="King Bob-omb.png"/>
+	<MapImage path="King Bob-omb Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000254" name="King Bob-omb Anchor">
     <Image path="King Bob-omb Anchor.png"/>
@@ -89,18 +93,22 @@
   </Object>
   <Object behaviorScriptAddress="0x13000528" name="Chuckya">
     <Image path="Chuckya.png"/>
+	<MapImage path="Chuckya Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000584" name="Chuckya Anchor">
-    <Image path="Chuckya.png"/>
+    <Image path="Chuckya Anchor.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130005B4" name="Rotating Platform">
     <Image path="WDW Rotating Platform.png"/>
+	<MapImage path="WDW Rotating Platform Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130005D8" name="WF Tower">
     <Image path="WF Tower.png"/>
+	<MapImage path="WF Tower Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000600" name="Bullet Bill Blaster">
     <Image path="Bullet Bill Blaster.png"/>
+	<MapImage path="Bullet Bill Blaster Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000624" name="Blastable Corner">
     <Image path="Blastable Corner.png"/>
@@ -116,12 +124,15 @@
   </Object>
   <Object behaviorScriptAddress="0x130006D8" name="Rotating Bridge">
     <Image path="WF Rotating Bridge.png"/>
+	<MapImage path="WF Rotating Bridge Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130006E0" name="WF Rotating Bridge">
     <Image path="WF Rotating Bridge.png"/>
+	<MapImage path="WF Rotating Bridge Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000708" name="Water Shell">
     <Image path="Shell.png"/>
+	<MapImage path="Shell Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300075C" name="Teleport">
     <Image path="Teleport.png"/>
@@ -131,6 +142,7 @@
   </Object>
   <Object behaviorScriptAddress="0x130007A0" name="Warp Pipe">
     <Image path="Warp Pipe.png"/>
+	<MapImage path="Warp Pipe Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130007DC" name="White Puff / Sand / Dirt / Snow">
     <Image path="White Puff.png"/>
@@ -185,15 +197,18 @@
   </Object>
   <Object behaviorScriptAddress="0x13000B0C" name="Door">
     <Image path="Door.png"/>
+	<MapImage path="Door Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000B58" name="Grindel">
     <Image path="Grindel.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000B8C" name="Thwomp">
     <Image path="Thwomp.png"/>
+	<MapImage path="Thwomp Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000BC8" name="Thwomp">
     <Image path="Thwomp.png"/>
+	<MapImage path="Thwomp Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000C04" name="Falling Block">
     <Image path="Falling Block.png"/>
@@ -236,21 +251,25 @@
   </Object>
   <Object behaviorScriptAddress="0x13000E88" name="Toad">
     <Image path="Toad.png"/>
+	<MapImage path="Toad Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000EAC" name="Peach">
     <Image path="Peach.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000F08" name="Monkey Cage">
+  <Object behaviorScriptAddress="0x13000F08" name="Ukiki">
     <Image path="Ukiki.png"/>
+	<MapImage path="Ukiki Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000F48" name="Monkey Cage">
     <Image path="Monkey Cage.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000F9C" name="Rising and Lowering 3-Platform Group">
     <Image path="Rising and Lowering 3-Platform Group.png"/>
+	<MapImage path="Rising and Lowering 3-Platform Group Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000FC8" name="Rising and Lowering Mesh Platform">
     <Image path="Rising and Lowering Mesh Platform.png"/>
+	<MapImage path="Rising and Lowering Mesh Platform Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13001000" name="Rising and Lowering Pole">
     <Image path="Rising and Lowering Pole.png"/>
@@ -296,6 +315,7 @@
   </Object>
   <Object behaviorScriptAddress="0x130012B4" name="Spindrift">
     <Image path="Spindrift.png"/>
+	<MapImage path="Spindrift Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13001318" name="WF Tower Platform">
     <Image path="WF Tower Platform.png"/>
@@ -317,6 +337,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13001408" name="Revolving Diamond Platform">
     <Image path="Revolving Diamond Platform.png"/>
+	<MapImage path="Revolving Diamond Platform Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300142C" name="Piranha Plant Sleeping Bubble">
     <Image path="Bubble.png"/>
@@ -326,33 +347,42 @@
   </Object>
   <Object behaviorScriptAddress="0x13001468" name="! Switch">
     <Image path="! Switch.png"/>
+	<MapImage path="! Switch Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13001478" name="! Switch">
     <Image path="! Switch.png"/>
+	<MapImage path="! Switch Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13001484" name="! Switch">
     <Image path="! Switch.png"/>
+	<MapImage path="! Switch Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130014AC" name="! Switch">
     <Image path="! Switch.png"/>
+	<MapImage path="! Switch Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130014BC" name="Hidden Box">
     <Image path="Cork Box.png"/>
+	<MapImage path="Cork Box Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130014E0" name="Cork Box">
     <Image path="Cork Box.png"/>
+	<MapImage path="Cork Box Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13001518" name="Pushable Block">
     <Image path="Pushable Block.png"/>
+	<MapImage path="Pushable Block Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13001548" name="Heave-Ho">
     <Image path="Heave-Ho.png"/>
+	<MapImage path="Heave-Ho Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130015A4" name="Heave-Ho Anchor">
     <Image path="Heave-Ho Anchor.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001650" name="Crazy Box">
     <Image path="Crazy Box.png"/>
+	<MapImage path="Crazy Box Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300167C" name="Boo Cage">
     <Image path="Boo Cage.png"/>
@@ -374,6 +404,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13001850" name="Bowser">
     <Image path="Bowser.png"/>
+	<MapImage path="Bowser Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130018CC" name="Bowser Body Anchor">
     <Image path="Bowser Body Anchor.png"/>
@@ -410,6 +441,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13001B2C" name="Aquarium Fish">
     <Image path="Blue Fish.png"/>
+	<MapImage path="Blue Fish Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13001B54" name="Aquarium Fish Spawner">
     <Image path="Blue Fish Spawner.png"/>
@@ -452,6 +484,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13001DA8" name="Fire Bar">
     <Image path="Fire Bar.png"/>
+	<MapImage path="Fire Bar Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13001DCC" name="Flame">
     <Image path="Flame.png"/>
@@ -470,21 +503,26 @@
   </Object>
   <Object behaviorScriptAddress="0x13001E94" name="Rising and Lowering Long Platform">
     <Image path="Rising and Lowering Long Platform.png"/>
+	<MapImage path="Rising and Lowering Long Platform Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13001EC4" name="Rising and Lowering 4-Platform Group">
     <Image path="Rising and Lowering 4-Platform Group.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001EF8" name="LLL Tilting Inverted Pyramid Platform">
     <Image path="LLL Tilting Inverted Pyramid Platform.png"/>
+	<MapImage path="LLL Tilting Inverted Pyramid Platform Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13001F3C" name="Koopa Shell">
     <Image path="Shell.png"/>
+	<MapImage path="Shell Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13001F90" name="Tox Box">
     <Image path="Tox Box.png"/>
+	<MapImage path="Tox Box Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13001FBC" name="Piranha Plant">
     <Image path="Piranha Plant.png"/>
+	<MapImage path="Piranha Plant Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002018" name="LLL Metal Mesh Platform">
     <Image path="LLL Metal Mesh Platform.png"/>
@@ -497,9 +535,11 @@
   </Object>
   <Object behaviorScriptAddress="0x13002088" name="Mother Penguin">
     <Image path="Penguin.png"/>
+	<MapImage path="Penguin Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130020E8" name="Baby Penguin">
     <Image path="Baby Penguin.png"/>
+	<MapImage path="Penguin Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300213C" name="Fish Spawner">
     <Image path="Blue Fish Spawner.png"/>
@@ -512,21 +552,26 @@
   </Object>
   <Object behaviorScriptAddress="0x13002178" name="Blue Fish">
     <Image path="Blue Fish.png"/>
+	<MapImage path="Blue Fish Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002194" name="Express Elevator">
     <Image path="Express Elevator.png"/>
+	<MapImage path="Express Elevator Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130021C0" name="Express Elevator">
     <Image path="Express Elevator.png"/>
+	<MapImage path="Express Elevator Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130021E4" name="Bub Spawner">
     <Image path="Bub Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x1300220C" name="Bub">
     <Image path="Bub.png"/>
+	<MapImage path="Bub Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002250" name="Item Block">
     <Image path="Item Block.png"/>
+	<MapImage path="Item Block Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300227C" name="Exclamation Mark">
     <Image path="Exclamation Mark.png"/>
@@ -536,15 +581,18 @@
   </Object>
   <Object behaviorScriptAddress="0x130022B8" name="JRB Rock">
     <Image path="JRB Rock.png"/>
+	<MapImage path="JRB Rock Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130022D8" name="Bowser's Sub Gate">
     <Image path="Bowser's Sub Gate.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002308" name="Bowser's Sub">
     <Image path="Bowser's Sub.png"/>
+	<MapImage path="Bowser's Sub Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002338" name="Sushi">
     <Image path="Sushi.png"/>
+	<MapImage path="Sushi Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002388" name="Sushi Hitbox">
     <Image path="Sushi Hitbox.png"/>
@@ -572,6 +620,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13002568" name="Blue Coin Block">
     <Image path="Blue Coin Block.png"/>
+	<MapImage path="Blue Coin Block Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002588" name="Blue Coin">
     <Image path="Blue Coin.png"/>
@@ -584,6 +633,7 @@
   </Object>
   <Object behaviorScriptAddress="0x130025F8" name="Crystal Tap">
     <Image path="Crystal Tap.png"/>
+	<MapImage path="Crystal Tap Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002634" name="Tweester Sand">
     <Image path="Dirt.png"/>
@@ -596,42 +646,53 @@
   </Object>
   <Object behaviorScriptAddress="0x130026D4" name="Castle Boo">
     <Image path="Boo.png"/>
+	<MapImage path="Boo Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002710" name="Cage Boo">
     <Image path="Big Boo.png"/>
+	<MapImage path="Big Boo Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002768" name="Big Boo (Balcony)">
     <Image path="Big Boo.png"/>
+	<MapImage path="Big Boo Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300277C" name="Big Boo (Merry-Go-Round)">
     <Image path="Big Boo.png"/>
+	<MapImage path="Big Boo Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002790" name="Big Boo (Lobby)">
     <Image path="Big Boo.png"/>
+	<MapImage path="Big Boo Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130027E4" name="Boo">
     <Image path="Boo.png"/>
+	<MapImage path="Boo Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130027F4" name="Boo (Merry-Go-Round)">
     <Image path="Boo.png"/>
+	<MapImage path="Boo Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002804" name="Boo (Activates Text)">
     <Image path="Boo.png"/>
+	<MapImage path="Boo Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300286C" name="BBH Lobby Step">
     <Image path="BBH Lobby Step.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130028CC" name="Loose Floor Panel">
     <Image path="Loose Floor Panel.png"/>
+	<MapImage path="Loose Floor Panel Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130028FC" name="Bookshelf">
     <Image path="Bookshelf.png"/>
   </Object>
   <Object behaviorScriptAddress="0x1300292C" name="Mesh Elevator">
     <Image path="Mesh Elevator.png"/>
+	<MapImage path="Mesh Elevator Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002968" name="Merry-Go-Round">
     <Image path="Merry-Go-Round.png"/>
+	<MapImage path="Merry-Go-Round Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002998" name="Shortcut Sound Effect">
     <Image path="Sound Effect.png"/>
@@ -659,15 +720,18 @@
   </Object>
   <Object behaviorScriptAddress="0x13002B5C" name="Scuttlebug">
     <Image path="Scuttlebug.png"/>
+	<MapImage path="Scuttlebug Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002BA0" name="Scuttlebug Spawner">
     <Image path="Scuttlebug Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002BB8" name="King Whomp">
     <Image path="King Whomp.png"/>
+	<MapImage path="Whomp Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002BCC" name="Whomp">
     <Image path="Whomp.png"/>
+	<MapImage path="Whomp Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002C14" name="Splash">
     <Image path="Splash.png"/>
@@ -704,6 +768,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13002E58" name="Walking Penguin">
     <Image path="Penguin.png"/>
+	<MapImage path="Penguin Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002EA8" name="WF Pole Ball">
     <Image path="WF Pole Ball.png"/>
@@ -785,18 +850,22 @@
   </Object>
   <Object behaviorScriptAddress="0x13003174" name="Bob-omb">
     <Image path="Bob-omb.png"/>
+	<MapImage path="Bob-omb Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130031AC" name="Bob-omb Fuse Smoke">
     <Image path="Bob-omb Fuse Smoke.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130031DC" name="Bob-omb Buddy">
     <Image path="Bob-omb Buddy.png"/>
+	<MapImage path="Bob-omb Buddy Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003228" name="Bob-omb Buddy">
     <Image path="Bob-omb Buddy.png"/>
+	<MapImage path="Bob-omb Buddy Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003274" name="Cannon Lid">
     <Image path="Cannon Lid.png"/>
+	<MapImage path="Cannon Lid Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130032A8" name="Whirlpool">
     <Image path="Whirlpool.png"/>
@@ -806,15 +875,18 @@
   </Object>
   <Object behaviorScriptAddress="0x130032E0" name="Sign">
     <Image path="Sign.png"/>
+	<MapImage path="Sign Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003324" name="Bulletin Board">
     <Image path="Bulletin Board.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003354" name="Amp">
     <Image path="Amp.png"/>
+	<MapImage path="Amp Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003388" name="Amp">
     <Image path="Amp.png"/>
+	<MapImage path="Amp Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130033BC" name="Butterfly">
     <Image path="Butterfly.png"/>
@@ -842,12 +914,15 @@
   </Object>
   <Object behaviorScriptAddress="0x1300362C" name="Bully">
     <Image path="Bully.png"/>
+	<MapImage path="Bully Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003660" name="Big Bully">
     <Image path="Big Bully.png"/>
+	<MapImage path="Big Bully Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003694" name="Bully">
     <Image path="Bully.png"/>
+	<MapImage path="Bully Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003700" name="Chill Bully">
     <Image path="Chill Bully.png"/>
@@ -863,6 +938,7 @@
   </Object>
   <Object behaviorScriptAddress="0x130037EC" name="Floating Mine">
     <Image path="Floating Mine.png"/>
+	<MapImage path="Floating Mine Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300381C" name="Floating Mine Explosion">
     <Image path="Floating Mine Explosion.png"/>
@@ -893,6 +969,7 @@
   </Object>
   <Object behaviorScriptAddress="0x130039A0" name="Moneybag">
     <Image path="Moneybag.png"/>
+	<MapImage path="Moneybag Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130039D4" name="Moneybag Coin">
     <Image path="Moneybag Coin.png"/>
@@ -920,6 +997,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13003B00" name="Spindel">
     <Image path="Spindel.png"/>
+	<MapImage path="Spindel Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003B30" name="Pyramid Up-and-Down Step">
     <Image path="Pyramid Up-and-Down Step.png"/>
@@ -1049,12 +1127,15 @@
   </Object>
   <Object behaviorScriptAddress="0x130041BC" name="HMC Directional Elevator">
     <Image path="HMC Directional Elevator.png"/>
+	<MapImage path="HMC Directional Elevator Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130041F0" name="HMC Directional Elevator Button">
     <Image path="HMC Directional Elevator Button.png"/>
+	<MapImage path="HMC Directional Elevator Button Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004218" name="Grabbable Cork Box">
     <Image path="Grabbable Cork Box.png"/>
+	<MapImage path="Cork Box Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004244" name="Sliding Snow Mound">
     <Image path="Sliding Snow Mound.png"/>
@@ -1073,12 +1154,14 @@
   </Object>
   <Object behaviorScriptAddress="0x13004314" name="Arrow Lift">
     <Image path="Arrow Lift.png"/>
+	<MapImage path="Arrow Lift Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004348" name="Number">
     <Image path="Number.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004370" name="Manta Ray">
     <Image path="Manta Ray.png"/>
+	<MapImage path="Manta Ray Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130043A0" name="Falling Pillar">
     <Image path="Falling Pillar.png"/>
@@ -1106,12 +1189,15 @@
   </Object>
   <Object behaviorScriptAddress="0x130044FC" name="MIPS">
     <Image path="MIPS.png"/>
+	<MapImage path="MIPS Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004538" name="Yoshi">
     <Image path="Yoshi.png"/>
+	<MapImage path="Yoshi Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa">
     <Image path="Koopa.png"/>
+	<MapImage path="Koopa Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130045D0" name="Koopa the Quick Flag">
     <Image path="Koopa the Quick Flag.png"/>
@@ -1124,39 +1210,48 @@
   </Object>
   <Object behaviorScriptAddress="0x13004668" name="Pokey Head / Body Part">
     <Image path="Pokey Body Part.png"/>
+	<MapImage path="Pokey Head Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004698" name="Swooper">
     <Image path="Swooper.png"/>
+	<MapImage path="Swooper Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130046DC" name="Fly Guy">
     <Image path="Fly Guy.png"/>
+	<MapImage path="Fly Guy Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300472C" name="Goomba">
     <Image path="Goomba.png"/>
+	<MapImage path="Goomba Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004770" name="Goomba Triplet Spawner">
     <Image path="Goomba Triplet Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x1300478C" name="Chain Chomp">
     <Image path="Chain Chomp.png"/>
+	<MapImage path="Chain Chomp Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130047E4" name="Chain Chomp Pivot / Chain">
     <Image path="Chain Chomp Chain.png"/>
   </Object>
   <Object behaviorScriptAddress="0x1300481C" name="Post">
     <Image path="Post.png"/>
+	<MapImage path="Post Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004868" name="Chain Chomp Gate">
     <Image path="Chain Chomp Gate.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004898" name="Wiggler Head">
     <Image path="Wiggler Head.png"/>
+	<MapImage path="Wiggler Head Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130048E0" name="Wiggler Body Part">
     <Image path="Wiggler Body Part.png"/>
+	<MapImage path="Wiggler Body Part Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004918" name="Lakitu">
     <Image path="Lakitu.png"/>
+	<MapImage path="Lakitu Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004954" name="Camera Lakitu">
     <Image path="Camera Lakitu.png"/>
@@ -1172,6 +1267,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13004A00" name="Monty Mole">
     <Image path="Monty Mole.png"/>
+	<MapImage path="Monty Mole Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004A58" name="Monty Mole Hole">
     <Image path="Monty Mole Hole.png"/>
@@ -1187,6 +1283,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13004B1C" name="See Saw Platform">
     <Image path="See Saw Platform.png"/>
+	<MapImage path="See Saw Platform Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004B44" name="Revolving Elevator Group">
     <Image path="Revolving Elevator Group.png"/>
@@ -1205,6 +1302,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13004BF0" name="TTC Rotating Block / Triangular Prism">
     <Image path="TTC Rotating Block _ Triangular Prism.png"/>
+	<MapImage path="TTC Rotating Block Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004C24" name="TTC Pendulum">
     <Image path="TTC Pendulum.png"/>
@@ -1214,9 +1312,11 @@
   </Object>
   <Object behaviorScriptAddress="0x13004C94" name="TTC Moving Bar">
     <Image path="TTC Moving Bar.png"/>
+	<MapImage path="TTC Moving Bar Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004CCC" name="TTC Rotating Cog / Triangle">
     <Image path="TTC Rotating Cog _ Triangle.png"/>
+	<MapImage path="TTC Cog Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004CF8" name="TTC Pit Block">
     <Image path="TTC Pit Block.png"/>
@@ -1226,12 +1326,14 @@
   </Object>
   <Object behaviorScriptAddress="0x13004D64" name="TTC Rotating Hand / 2D Cog">
     <Image path="TTC Rotating Hand _ 2D Cog.png"/>
+	<MapImage path="TTC Rotating Hand Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004D90" name="TTC Red Coin Spinner">
     <Image path="TTC Red Coin Spinner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004DBC" name="Mr. Blizzard">
     <Image path="Mr. Blizzard.png"/>
+	<MapImage path="Mr. Blizzard Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004E08" name="Snowball">
     <Image path="Snowball.png"/>
@@ -1247,6 +1349,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13004ECC" name="BitFS Elevator / BitS Arrow Platform">
     <Image path="Arrow Platform.png"/>
+	<MapImage path="Arrow Platform Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004EF8" name="Spinning Heart">
     <Image path="Spinning Heart.png"/>
@@ -1259,18 +1362,21 @@
   </Object>
   <Object behaviorScriptAddress="0x13004F40" name="Unagi">
     <Image path="Unagi.png"/>
+	<MapImage path="Unagi Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004F78" name="Unagi Hitbox">
     <Image path="Unagi Hitbox.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004F90" name="Dorrie">
     <Image path="Dorrie.png"/>
+	<MapImage path="Dorrie Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004FD4" name="Haunted Chair">
     <Image path="Haunted Chair.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13005024" name="Mad Piano">
     <Image path="Mad Piano.png"/>
+	<MapImage path="Mad Piano Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300506C" name="Bookend">
     <Image path="Bookend.png"/>
@@ -1283,6 +1389,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13005120" name="Piranha Plant">
     <Image path="Piranha Plant.png"/>
+	<MapImage path="Piranha Plant Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13005158" name="Fire">
     <Image path="Fire.png"/>
@@ -1301,6 +1408,7 @@
   </Object>
   <Object behaviorScriptAddress="0x1300525C" name="Grindel">
     <Image path="Grindel.png"/>
+	<MapImage path="Grindel Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130052B4" name="Eyerok Behavior">
     <Image path="Eyerok Behavior.png"/>
@@ -1310,12 +1418,14 @@
   </Object>
   <Object behaviorScriptAddress="0x13005310" name="Klepto">
     <Image path="Klepto.png"/>
+	<MapImage path="Klepto Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13005354" name="Bird">
     <Image path="Bird.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13005380" name="Racing Penguin">
     <Image path="Penguin.png"/>
+	<MapImage path="Penguin Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130053C4" name="Finishing Line Checkpoint">
     <Image path="Finishing Line Checkpoint.png"/>
@@ -1328,9 +1438,11 @@
   </Object>
   <Object behaviorScriptAddress="0x13005440" name="Clam">
     <Image path="Clam.png"/>
+	<MapImage path="Clam Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13005468" name="Skeeter">
     <Image path="Skeeter 2.png"/>
+	<MapImage path="Skeeter Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130054A0" name="Skeeter Water Waves">
     <Image path="Water Waves.png"/>
@@ -1346,6 +1458,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13005528" name="DDD Pole">
     <Image path="DDD Pole.png"/>
+	<MapImage path="DDD Pole Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300556C" name="Star Marker">
     <Image path="Star Marker.png"/>
@@ -1355,6 +1468,7 @@
   </Object>
   <Object behaviorScriptAddress="0x130055DC" name="Bubba">
     <Image path="Bubba.png"/>
+	<MapImage path="Bubba Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13005638" name="Peach">
     <Image path="Peach.png"/>
