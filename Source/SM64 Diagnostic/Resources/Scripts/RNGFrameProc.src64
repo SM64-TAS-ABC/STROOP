@@ -16,31 +16,31 @@ Memory Table (0x803e0000)
 currentRng = (ushort) *0x8038EEE0
 */
 
-// [a0 = 0x803e0000]
-// LUI a0, 0x803e
-// ORI a0, a0, 0x00
+// [t8 = 0x803e0000]
+// LUI t8, 0x803e
+// ORI t8, t8, 0x00
 
 // [isValid = false]
-// ANDI a1, a1, 0x00
-// SW a1, a0(0x00) 
+// ANDI t9, t9, 0x00
+// SW t9, t8(0x00) 
 
 // [framePreviousValue = frameCurrentValue]
-// LHU a1, a0(0x0E)
-// SH a1, a0(0x0C)
+// LHU t9, t8(0x0E)
+// SH t9, t8(0x0C)
 
 // [frameCurrentValue = currentRng] 
-// LUI a1, 0x8038
-// ORI a1, a1, 0xEEE0
-// LHU a1, a1(0x00)
-// SH a1, a0(0x0E)
+// LUI t9, 0x8038
+// ORI t9, t9, 0xEEE0
+// LHU t9, t9(0x00)
+// SH t9, t8(0x0E)
 
 // [isValid = true]
-// ANDI a1, a1, 0x00
-// ORI a1, a1, 0x01
-// SW a1, a0(0x00)
+// ANDI t9, t9, 0x00
+// ORI t9, t9, 0x01
+// SW t9, t8(0x00)
 
 // [nextObjRngValuesPtr = 0x803e000C]
-// LUI a1, 0x803e
-// ORI a1, a1, 0x10
-// SW a1, a0(0x08)
+// LUI t9, 0x803e
+// ORI t9, t9, 0x10
+// SW t9, t8(0x08)
 

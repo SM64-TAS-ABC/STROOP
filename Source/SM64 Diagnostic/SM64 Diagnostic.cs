@@ -36,6 +36,7 @@ namespace SM64_Diagnostic
         ObjectManager _objectManager;
         MapManager _mapManager;
         OptionsManager _optionsManager;
+        ScriptManager _scriptManager;
 
         bool _resizing = true;
         int _resizeTimeLeft = 0;
@@ -85,6 +86,7 @@ namespace SM64_Diagnostic
             _sm64Stream.OnUpdate += OnUpdate;
 
             _disManager = new DisassemblyManager(_config, this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
+            _scriptManager = new ScriptManager(_sm64Stream, _scriptParser);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -190,6 +192,7 @@ namespace SM64_Diagnostic
             _marioManager.Update(tabControlMain.SelectedTab == tabPageMario);
             _mapManager?.Update();
             UpdateMemoryValues();
+            _scriptManager.Update();
         }
 
         private void SetupViews()

@@ -258,6 +258,9 @@
     <Content Include="Resources\Maps\Map Images\BBH Roof.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Maps\Map Images\BitDW.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Maps\Map Images\BitFS 1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -306,7 +309,10 @@
     <Content Include="Resources\Maps\Map Images\Castle Courtyard.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Maps\Map Images\Castle Floor 1.png">
+    <Content Include="Resources\Maps\Map Images\Castle Floor 1 Lower.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Maps\Map Images\Castle Floor 1 Upper.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Maps\Map Images\Castle Floor 2.png">

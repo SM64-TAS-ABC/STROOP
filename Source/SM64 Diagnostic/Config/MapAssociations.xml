@@ -3,7 +3,7 @@
   <Config>
     <ImageDirectory>Resources\Maps\Map Images\</ImageDirectory>
     <DefaultImage>default.png</DefaultImage>
-    <DefaultCoordinates x1="-8192" x2="8192" z1="-8192" z2="8192"/>
+    <DefaultCoordinates x1="-8191" x2="8192" z1="-8191" z2="8192"/>
   </Config>
   <Map name="Castle Grounds" level="16" area="1">
     <Image path="Castle Grounds.png"/>
@@ -11,8 +11,13 @@
     <BackgroundImage path="Blue Background.png"/>
   </Map>
   <Map name="Castle" subName="Floor 1" level="6" area="1">
-    <Image path="Castle Floor 1.png"/>
+    <Image path="Castle Floor 1 Lower.png"/>
     <Coordinates x1="-7431" x2="4836" z1="-6242" z2="3174"/>
+    <BackgroundImage path="Black Background.png"/>
+  </Map>
+  <Map name="Castle" subName="Floor 1" level="6" area="1">
+    <Image path="Castle Floor 1 Upper.png"/>
+    <Coordinates x1="-7431" x2="4836" z1="-6242" z2="3174" y="-50"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Castle Courtyard" level="26" area="1" >
@@ -72,22 +77,22 @@
   </Map>
   <Map name="Big Boo's Haunt" subName="Floor 1" level="4" area="1">
     <Image path="BBH Floor 1.png"/>
-    <Coordinates x1="-4197" x2="5530" z1="3993" z2="6758" y="1000"/>
+    <Coordinates x1="-4197" x2="5530" z1="-3993" z2="6758" y="-205"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Big Boo's Haunt" subName="Floor 2" level="4" area="1">
     <Image path="BBH Floor 2.png"/>
-    <Coordinates x1="-4197" x2="5530" z1="3993" z2="6758" y="2000"/>
+    <Coordinates x1="-4197" x2="5530" z1="-3993" z2="6758" y="819"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Big Boo's Haunt" subName="Floor 3" level="4" area="1">
     <Image path="BBH Floor 3.png"/>
-    <Coordinates x1="-4197" x2="5530" z1="3993" z2="6758" y="3000"/>
+    <Coordinates x1="-4197" x2="5530" z1="-3993" z2="6758" y="1741"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Big Boo's Haunt" subName="Roof" level="4" area="1">
     <Image path="BBH Roof.png"/>
-    <Coordinates x1="-4197" x2="5530" z1="3993" z2="6758" y="4000"/>
+    <Coordinates x1="-4197" x2="5530" z1="-3993" z2="6758" y="1922"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Hazy Maze Cave" level="7" area="1">
@@ -97,27 +102,27 @@
   </Map>
   <Map name="Hazy Maze Cave" level="7" area="1">
     <Image path="HMC 2.png"/>
-    <Coordinates x1="-8089" x2="7680" z1="-8191" z2="8064" y="1000"/>
+    <Coordinates x1="-8089" x2="7680" z1="-8191" z2="8064" y="-1023"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Lethal Lava Land" level="22" area="1">
     <Image path="LLL.png"/>
-    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="-8192"/>
-    <BackgroundImage path="Lava Background.png"/>
+    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="-8191"/>
+    <BackgroundImage path="Black Background.png"/>
   </Map>
-  <Map name="Lethal Lava Land" subName="Volacano" level="22" area="2">
+  <Map name="Lethal Lava Land" subName="Volcano" level="22" area="2">
     <Image path="LLL Volcano 1.png"/>
     <Coordinates x1="-2942" x2="2943" z1="-2942" z2="2943"/>
-    <BackgroundImage path="Lava Background.png"/>
+    <BackgroundImage path="Black Background.png"/>
   </Map>
-  <Map name="Lethal Lava Land" subName="Volacano" level="22" area="2">
+  <Map name="Lethal Lava Land" subName="Volcano" level="22" area="2">
     <Image path="LLL Volcano 2.png"/>
-    <Coordinates x1="-2942" x2="2943" z1="-2942" z2="2943" y="1000"/>
-    <BackgroundImage path="Lava Background.png"/>
+    <Coordinates x1="-2942" x2="2943" z1="-2942" z2="2943" y="2150"/>
+    <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Shifting Sand Land" level="8" area="1">
     <Image path="SSL.png"/>
-    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="-8192"/>
+    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="-8191"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Shifting Sand Land" subName="Pyramid" level="8" area="2" loadingPoint="2">
@@ -127,22 +132,22 @@
   </Map>
   <Map name="Shifting Sand Land" subName="Pyramid" level="8" area="2" loadingPoint="2">
     <Image path="SSL Pyramid 2.png"/>
-    <Coordinates x1="-3993" x2="3994" z1="-4148" z2="6758" y="1000"/>
+    <Coordinates x1="-3993" x2="3994" z1="-4148" z2="6758" y="435"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Shifting Sand Land" subName="Pyramid" level="8" area="2" loadingPoint="2">
     <Image path="SSL Pyramid 3.png"/>
-    <Coordinates x1="-3993" x2="3994" z1="-4148" z2="6758" y="2000"/>
+    <Coordinates x1="-3993" x2="3994" z1="-4148" z2="6758" y="1229"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Shifting Sand Land" subName="Pyramid" level="8" area="2" loadingPoint="2">
     <Image path="SSL Pyramid 4.png"/>
-    <Coordinates x1="-3993" x2="3994" z1="-4148" z2="6758" y="3000"/>
+    <Coordinates x1="-3993" x2="3994" z1="-4148" z2="6758" y="1920"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Shifting Sand Land" subName="Eyerok Fight" level="8" area="2" loadingPoint="3">
     <Image path="SSL Eyerok Fight.png"/>
-    <Coordinates x1="-2559" x2="2560" z1="-3954" z2="255"/>
+    <Coordinates x1="-2559" x2="2560" z1="-3954" z2="-255"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Dire, Dire Docks" subName="First Part" level="23" area="1" loadingPoint="1">
@@ -152,12 +157,12 @@
   </Map>
   <Map name="Dire, Dire Docks" subName="Second Part Sub" level="23" area="2" loadingPoint="2">
     <Image path="DDD 2 Sub.png"/>
-    <Coordinates x1="-6401" x2="6989" z1="-7167" z2="6659"/>
+    <Coordinates x1="-6041" x2="6989" z1="-7167" z2="6659"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Dire, Dire Docks" subName="Second Part Poles" level="23" area="1" loadingPoint="2">
     <Image path="DDD 2 Poles.png"/>
-    <Coordinates x1="-6401" x2="6989" z1="-7167" z2="6659"/>
+    <Coordinates x1="-6041" x2="6989" z1="-7167" z2="6659"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Snowman's Land" level="10" area="1" >
@@ -172,17 +177,17 @@
   </Map>
   <Map name="Wet-Dry World" subName="Part 1" level="11" area="1" loadingPoint="1">
     <Image path="WDW 1 Low.png"/>
-    <Coordinates x1="-3839" x2="4608" z1="-3839" z2="4608"/>
+    <Coordinates x1="-3839" x2="4608" z1="-4351" z2="4608"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Wet-Dry World" subName="Part 1" level="11" area="1" loadingPoint="1">
     <Image path="WDW 1 High.png"/>
-    <Coordinates x1="-3839" x2="4608" z1="-3839" z2="4608" y="1000"/>
+    <Coordinates x1="-3839" x2="4608" z1="-4351" z2="4608" y="0"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Wet-Dry World" subName="Part 2" level="11" area="1" loadingPoint="2">
     <Image path="WDW 2.png"/>
-    <Coordinates x1="-3839" x2="4608" z1="-3839" z2="4608"/>
+    <Coordinates x1="-3839" x2="4569" z1="-3800" z2="3840"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Tall, Tall Mountain" level="36" area="1">
@@ -222,12 +227,12 @@
   </Map>
   <Map name="Tiny-Huge Island" subName="Wiggler's Cave" level="13" area="3">
     <Image path="THI Cave 2.png"/>
-    <Coordinates x1="-2047" x2="2048" z1="-2047" z2="2458" y="1000"/>
+    <Coordinates x1="-2047" x2="2048" z1="-2047" z2="2458" y="1843"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Tiny-Huge Island" subName="Wiggler's Cave" level="13" area="3">
     <Image path="THI Cave 3.png"/>
-    <Coordinates x1="-2047" x2="2048" z1="-2047" z2="2458" y="2000"/>
+    <Coordinates x1="-2047" x2="2048" z1="-2047" z2="2458" y="2560"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Tick Tock Clock" level="14" area="1">
@@ -237,22 +242,22 @@
   </Map>
   <Map name="Tick Tock Clock" level="14" area="1">
     <Image path="TTC 2.png"/>
-    <Coordinates x1="-2080" x2="2081" z1="-2080" z2="2081" y="1000"/>
+    <Coordinates x1="-2080" x2="2081" z1="-2080" z2="2081" y="-2488"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Tick Tock Clock" level="14" area="1">
     <Image path="TTC 3.png"/>
-    <Coordinates x1="-2080" x2="2081" z1="-2080" z2="2081" y="2000"/>
+    <Coordinates x1="-2080" x2="2081" z1="-2080" z2="2081" y="-71"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Tick Tock Clock" level="14" area="1">
     <Image path="TTC 4.png"/>
-    <Coordinates x1="-2080" x2="2081" z1="-2080" z2="2081" y="3000"/>
+    <Coordinates x1="-2080" x2="2081" z1="-2080" z2="2081" y="1065"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Tick Tock Clock" level="14" area="1">
     <Image path="TTC 5.png"/>
-    <Coordinates x1="-2080" x2="2081" z1="-2080" z2="2081" y="4000"/>
+    <Coordinates x1="-2080" x2="3301" z1="-2080" z2="3301" y="3860"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Rainbow Ride" level="15" area="1">
@@ -277,7 +282,7 @@
   </Map>
   <Map name="The Princess's Secret Slide" level="27" area="1">
     <Image path="PSS 1.png"/>
-    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="1000"/>
+    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="624"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="The Princess's Secret Slide" level="27" area="1">
@@ -290,7 +295,7 @@
     <Coordinates x1="-3276" x2="3277" z1="-3276" z2="3277"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
-  <Map name="Wing Mario Over the Rainbow" level="31" area="1">
+  <Map name="Wing Mario over the Rainbow" level="31" area="1">
     <Image path="WMotR.png"/>
     <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192"/>
     <BackgroundImage path="Cloud Background.png"/>
@@ -305,50 +310,49 @@
     <Coordinates x1="-7167" x2="7168" z1="-7167" z2="7168"/>
     <BackgroundImage path="Stalagmite Background.png"/>
   </Map>
-  
   <Map name="Bowser in the Fire Sea" level="19" area="1">
     <Image path="BitFS 1.png"/>
     <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192"/>
-    <BackgroundImage path="Lava Background.png"/>
+    <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Bowser in the Fire Sea" level="19" area="1">
     <Image path="BitFS 2.png"/>
-    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="1000"/>
-    <BackgroundImage path="Lava Background.png"/>
+    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="-1279"/>
+    <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Bowser in the Fire Sea" level="19" area="1">
     <Image path="BitFS 3.png"/>
-    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="2000"/>
-    <BackgroundImage path="Lava Background.png"/>
+    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="205"/>
+    <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Bowser in the Fire Sea" level="19" area="1">
     <Image path="BitFS 4.png"/>
-    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="3000"/>
-    <BackgroundImage path="Lava Background.png"/>
+    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="2765"/>
+    <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Bowser in the Fire Sea" subName="Bowser Fight" level="33" area="1">
     <Image path="Bowser 2.png"/>
     <Coordinates x1="-6545" x2="6546" z1="-6545" z2="6546"/>
-    <BackgroundImage path="Lava Background.png"/>
+    <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Bowser in the Sky" level="21" area="1">
     <Image path="BitS 1.png"/>
-    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="1000"/>
+    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192"/>
     <BackgroundImage path="Purple Background.png"/>
   </Map>
   <Map name="Bowser in the Sky" level="21" area="1">
     <Image path="BitS 2.png"/>
-    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="2000"/>
+    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="-490"/>
     <BackgroundImage path="Purple Background.png"/>
   </Map>
   <Map name="Bowser in the Sky" level="21" area="1">
     <Image path="BitS 3.png"/>
-    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="3000"/>
+    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="1302"/>
     <BackgroundImage path="Purple Background.png"/>
   </Map>
   <Map name="Bowser in the Sky" level="21" area="1">
     <Image path="BitS 4.png"/>
-    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="4000"/>
+    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="3749"/>
     <BackgroundImage path="Purple Background.png"/>
   </Map>
   <Map name="Bowser in the Sky" subName="Bowser Fight" level="34" area="1">

@@ -86,7 +86,7 @@ namespace SM64_Diagnostic.Extensions
                 if (viewMode == WatchVariableControl.AngleViewModeType.Raw)
                     return "0x" + dataValue.ToString("X8"); 
                 else
-                    return "0x" + (dataValue >> 16).ToString("X4");
+                    return "0x" + ((UInt16)dataValue).ToString("X4");
             }
 
             switch(viewMode)
@@ -95,16 +95,16 @@ namespace SM64_Diagnostic.Extensions
                     return dataValue.ToString();
 
                 case WatchVariableControl.AngleViewModeType.Unsigned:
-                    return (dataValue >> 16).ToString();
+                    return ((UInt16)dataValue).ToString();
 
                 case WatchVariableControl.AngleViewModeType.Signed:
-                    return ((Int16)(dataValue >> 16)).ToString();
+                    return ((Int16)(dataValue)).ToString();
 
                 case WatchVariableControl.AngleViewModeType.Degrees:
-                    return ((dataValue >> 16) * (360f / 65536)).ToString();
+                    return (((UInt16)dataValue) * (360f / 65536)).ToString();
 
                 case WatchVariableControl.AngleViewModeType.Radians:
-                    return ((dataValue >> 16) * (2 * Math.PI / 65536)).ToString();
+                    return (((UInt16)dataValue) * (2 * Math.PI / 65536)).ToString();
             }
 
             return "Error: ang. parse";
