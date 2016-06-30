@@ -1027,6 +1027,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13003BB4" name="Pyramid Top">
     <Image path="Pyramid Top.png"/>
+	<MapImage path="Pyramid Top Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003BEC" name="Pyramid Shard">
     <Image path="Box Shard.png"/>
