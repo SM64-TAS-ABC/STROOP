@@ -15,6 +15,9 @@
   <Holp>
     <MapImage path="HOLP.png"/>
   </Holp>
+  <Camera>
+    <MapImage path="Camera.png"/>
+  </Camera>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <Image path="Star Door.png"/>
 	<MapImage path="Star Door Top.png" rotates="true"/>
