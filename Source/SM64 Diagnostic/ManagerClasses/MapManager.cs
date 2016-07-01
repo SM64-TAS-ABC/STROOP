@@ -149,9 +149,9 @@ namespace SM64_Diagnostic.ManagerClasses
             int puZ = GetPUFromCoord(_marioMapObj.Z);
 
             // Update Qpu
-            int qpuX = puX / 4;
-            int qpuY = puY / 4;
-            int qpuZ = puZ / 4;
+            double qpuX = puX / 4;
+            double qpuY = puY / 4;
+            double qpuZ = puZ / 4;
 
             // Update labels
             _mapGui.PuValueLabel.Text = string.Format("[{0}:{1}:{2}]", puX, puY, puZ);
