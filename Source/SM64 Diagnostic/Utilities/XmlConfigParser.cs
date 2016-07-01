@@ -343,7 +343,7 @@ namespace SM64_Diagnostic.Utilities
             doc.Validate(schemaSet, Validation);
 
             // Create Behavior-ImagePath list
-            var behaviorImageAssoc = new Dictionary<uint, Tuple<string, string>>();
+            var behaviorImageAssoc = new Dictionary<uint, Tuple<string, string, bool, string>>();
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", 
                 marioImagePath = "", marioMapImagePath = "", holpMapImagePath = "" , cameraMapImagePath = "";
             var usedBehaviors = new List<uint>();
@@ -381,6 +381,8 @@ namespace SM64_Diagnostic.Utilities
 
                     case "Mario":
                         marioImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
+                        marioMapImagePath = element.Element(XName.Get("MapImage")) != null ?
+                            element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value : null;
                         assoc.MarioColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
                         marioBehavior = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
                         break;
@@ -396,11 +398,18 @@ namespace SM64_Diagnostic.Utilities
                     case "Object":
                         uint behaviorAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
                         string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
+                        string mapImagePath = null;
+                        bool rotates = false;
+                        if (element.Element(XName.Get("MapImage")) != null)
+                        {
+                            mapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                            rotates = bool.Parse(element.Element(XName.Get("MapImage")).Attribute(XName.Get("rotates")).Value);
+                        }
                         string name = element.Attribute(XName.Get("name")).Value;
                         if (usedBehaviors.Contains(behaviorAddress))
                             throw new Exception("More than one behavior address was defined.");
                         usedBehaviors.Add(behaviorAddress);
-                        behaviorImageAssoc.Add(behaviorAddress, Tuple.Create<string,string>(imagePath, name));
+                        behaviorImageAssoc.Add(behaviorAddress, Tuple.Create<string,string,bool, string>(imagePath, mapImagePath, rotates, name));
                         break;
                 }
             }
@@ -410,17 +419,32 @@ namespace SM64_Diagnostic.Utilities
             assoc.DefaultImage = Bitmap.FromFile(imageDir + defaultImagePath);
             assoc.EmptyImage = Bitmap.FromFile(imageDir + emptyImagePath);
             assoc.MarioImage = Bitmap.FromFile(imageDir + marioImagePath);
+            assoc.MarioMapImage = marioMapImagePath == "" ? assoc.MarioImage : Bitmap.FromFile(imageDir + marioMapImagePath);
             assoc.HolpImage = Bitmap.FromFile(mapImageDir + holpMapImagePath);
             assoc.CameraImage = Bitmap.FromFile(mapImageDir + cameraMapImagePath);
             assoc.MarioBehavior = marioBehavior - ramToBehaviorOffset;
             foreach (var v in behaviorImageAssoc)
             {
-                var preLoad = Bitmap.FromFile(imageDir + v.Value.Item1);
-                float scale = Math.Max(preLoad.Height / 32f, preLoad.Width / 32f);
-                var image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
-               
-                preLoad.Dispose();
-                assoc.AddAssociation(v.Key - ramToBehaviorOffset, image, v.Value.Item2);
+                Image image, mapImage;
+                using (var preLoad = Bitmap.FromFile(imageDir + v.Value.Item1))
+                {
+                    float scale = Math.Max(preLoad.Height / 32f, preLoad.Width / 32f);
+                    image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
+                }
+                if (v.Value.Item2 == null)
+                {
+                    mapImage = image;
+                }
+                else
+                {
+                    using (var preLoad = Bitmap.FromFile(mapImageDir + v.Value.Item2))
+                    {
+                        float scale = Math.Max(preLoad.Height / 32f, preLoad.Width / 32f);
+                        mapImage = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
+                    }
+                }
+
+                assoc.AddAssociation(v.Key - ramToBehaviorOffset, image, mapImage, v.Value.Item4, v.Value.Item3);
             }
 
             return assoc;
