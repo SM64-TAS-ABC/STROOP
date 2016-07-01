@@ -61,6 +61,10 @@
   <HolpX>0x8033B3C8</HolpX>
   <HolpY>0x8033B3CC</HolpY>
   <HolpZ>0x8033B3D0</HolpZ>
+  <CameraX>0x8033c6a4</CameraX>
+  <CameraY>0x8033c6a8</CameraY>
+  <CameraZ>0x8033c6aC</CameraZ>
+  <CameraRot>0x8033c6e4</CameraRot>
   <LevelAddress>0x8033B249</LevelAddress>
   <AreaAddress>0x8033B24A</AreaAddress>
   <LoadingPointAddress>0x8033BACA</LoadingPointAddress>

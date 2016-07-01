@@ -25,6 +25,7 @@ namespace SM64_Diagnostic.ManagerClasses
         MapGraphicsControl _mapGraphics;
         MapObject _marioMapObj;
         MapObject _holpMapObj;
+        MapObject _cameraMapObj;
         List<MapObject> _mapObjects = new List<MapObject>();
         MapGui _mapGui;
         bool _isLoaded = false;
@@ -53,6 +54,14 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
+        public MapObject CameraMapObject
+        {
+            get
+            {
+                return _cameraMapObj;
+            }
+        }
+
         public bool Visible
         {
             get
@@ -77,6 +86,8 @@ namespace SM64_Diagnostic.ManagerClasses
             _marioMapObj.UsesRotation = true;
 
             _holpMapObj = new MapObject(objAssoc.HolpImage, 2);
+
+            _cameraMapObj = new MapObject(objAssoc.CameraImage, 1);
         }
 
         public void Load()
@@ -93,6 +104,7 @@ namespace SM64_Diagnostic.ManagerClasses
             // Add Mario's map object
             _mapGraphics.AddMapObject(_marioMapObj);
             _mapGraphics.AddMapObject(_holpMapObj);
+            _mapGraphics.AddMapObject(_cameraMapObj);
 
             //----- Register events ------
             // Set image
@@ -188,6 +200,15 @@ namespace SM64_Diagnostic.ManagerClasses
             var holpCoord = new PointF(holpRelX, holpRelZ);
             _holpMapObj.Draw = _mapGui.MapShowHolp.Checked && puX == holpPuX && puY == holpPuY && puZ == holpPuZ;
             _holpMapObj.LocationOnContol = CalculateLocationOnControl(holpCoord, mapView);
+
+            int cameraPuX = GetPUFromCoord(_cameraMapObj.X);
+            int cameraPuY = GetPUFromCoord(_cameraMapObj.Y);
+            int cameraPuZ = GetPUFromCoord(_cameraMapObj.Z);
+            float cameraRelX = GetRelativePuPosition(_cameraMapObj.X, cameraPuX);
+            float cameraRelZ = GetRelativePuPosition(_cameraMapObj.Z, cameraPuZ);
+            var cameraCoord = new PointF(cameraRelX, cameraRelZ);
+            _cameraMapObj.Draw = _mapGui.MapShowCamera.Checked && puX == cameraPuX && puY == cameraPuY && puZ == cameraPuZ;
+            _cameraMapObj.LocationOnContol = CalculateLocationOnControl(cameraCoord, mapView);
 
             // Calculate object slot's cooridnates
             foreach (var mapObj in _mapObjects)

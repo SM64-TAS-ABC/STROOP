@@ -223,6 +223,18 @@ namespace SM64_Diagnostic.Utilities
                     case "HolpZ":
                         config.HolpZ = ParsingUtilities.ParseHex(element.Value);
                         break;
+                    case "CameraX":
+                        config.CameraX = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "CameraY":
+                        config.CameraY = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "CameraZ":
+                        config.CameraZ = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "CameraRot":
+                        config.CameraRot = ParsingUtilities.ParseHex(element.Value);
+                        break;
                 }
             }
 
@@ -332,7 +344,8 @@ namespace SM64_Diagnostic.Utilities
 
             // Create Behavior-ImagePath list
             var behaviorImageAssoc = new Dictionary<uint, Tuple<string, string>>();
-            string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", marioImagePath = "", holpMapImagePath = "";
+            string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", 
+                marioImagePath = "", marioMapImagePath = "", holpMapImagePath = "" , cameraMapImagePath = "";
             var usedBehaviors = new List<uint>();
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
@@ -376,6 +389,10 @@ namespace SM64_Diagnostic.Utilities
                         holpMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
+                    case "Camera":
+                        cameraMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
                     case "Object":
                         uint behaviorAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
                         string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
@@ -394,6 +411,7 @@ namespace SM64_Diagnostic.Utilities
             assoc.EmptyImage = Bitmap.FromFile(imageDir + emptyImagePath);
             assoc.MarioImage = Bitmap.FromFile(imageDir + marioImagePath);
             assoc.HolpImage = Bitmap.FromFile(mapImageDir + holpMapImagePath);
+            assoc.CameraImage = Bitmap.FromFile(mapImageDir + cameraMapImagePath);
             assoc.MarioBehavior = marioBehavior - ramToBehaviorOffset;
             foreach (var v in behaviorImageAssoc)
             {
