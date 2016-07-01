@@ -43,12 +43,13 @@ namespace SM64_Diagnostic.ManagerClasses
             _rngIndex = new DataContainer("RNG Index");
             variableTable.Controls.Add(_rngIndex.Control);
 
+            // Generate rng value to index table
             GenerateRngTable();
         }
 
         public void Update(bool updateView)
         {
-            // Get Mario position
+            // Get Mario position and rotation
             float x, y, z, rot;
             var marioAddress = _config.Mario.MarioStructAddress;
             x = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.XOffset, 4), 0);
@@ -57,30 +58,49 @@ namespace SM64_Diagnostic.ManagerClasses
             rot = (float) (((BitConverter.ToUInt32(_stream.ReadRam(marioAddress + _config.Mario.RotationOffset, 4), 0)
                 >> 16) % 65536) / 65536f * 360f); 
 
+            // Update Mario map object
             _mapManager.MarioMapObject.X = x;
             _mapManager.MarioMapObject.Y = y;
             _mapManager.MarioMapObject.Z = z;
             _mapManager.MarioMapObject.Rotation = rot;
             _mapManager.MarioMapObject.Show = true;
 
+            // Get holp position
             float holpX, holpY, holpZ;
             holpX = BitConverter.ToSingle(_stream.ReadRam(_config.HolpX, 4), 0);
             holpY = BitConverter.ToSingle(_stream.ReadRam(_config.HolpY, 4), 0);
             holpZ = BitConverter.ToSingle(_stream.ReadRam(_config.HolpZ, 4), 0);
 
+            // Update holp map object position
             _mapManager.HolpMapObject.X = holpX;
             _mapManager.HolpMapObject.Y = holpY;
             _mapManager.HolpMapObject.Z = holpZ;
             _mapManager.HolpMapObject.Show = true;
 
+
+            // Update camera position and rotation
+            float cameraX, cameraY, cameraZ , cameraRot;
+            cameraX = BitConverter.ToSingle(_stream.ReadRam(_config.CameraX, 4), 0);
+            cameraY = BitConverter.ToSingle(_stream.ReadRam(_config.CameraY, 4), 0);
+            cameraZ = BitConverter.ToSingle(_stream.ReadRam(_config.CameraZ, 4), 0);
+            cameraRot = (float)(((BitConverter.ToUInt32(_stream.ReadRam(_config.CameraRot, 4), 0)
+                                >> 16) % 65536) / 65536f * 360f);
+
+            // Update camera map object position
+            _mapManager.CameraMapObject.X = cameraX;
+            _mapManager.CameraMapObject.Y = cameraY;
+            _mapManager.CameraMapObject.Z = cameraZ;
+            _mapManager.CameraMapObject.Rotation = cameraRot;
+
+            // We are done if we don't need to update the Mario Manager view
             if (!updateView)
                 return;
 
             // Update watch variables
             foreach (var watchVar in _marioDataControls)
-            {
                 watchVar.Update();
-            }
+
+            // Update the rng index
             int rngIndex = GetRngIndex();
             _rngIndex.Text = (rngIndex < 0) ? "N/A [" + (-rngIndex).ToString() + "]" : rngIndex.ToString();
         }

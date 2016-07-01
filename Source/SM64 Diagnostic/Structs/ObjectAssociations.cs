@@ -20,7 +20,9 @@ namespace SM64_Diagnostic.Structs
 
         public Image EmptyImage;
         public Image MarioImage;
+        public Image MarioMapImage;
         public Image HolpImage;
+        public Image CameraImage;
         public Color MarioColor;
         public uint MarioBehavior;
         public uint RamOffset;

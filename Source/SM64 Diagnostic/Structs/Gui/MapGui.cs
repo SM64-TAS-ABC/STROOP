@@ -23,5 +23,6 @@ namespace SM64_Diagnostic.Structs
         public CheckBox MapShowInactiveObjects;
         public CheckBox MapShowObjects;
         public CheckBox MapShowHolp;
+        public CheckBox MapShowCamera;
     }
 }
