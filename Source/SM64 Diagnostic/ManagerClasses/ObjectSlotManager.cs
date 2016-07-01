@@ -363,7 +363,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 {
 
                     // Update image
-                    var mapObjImage = ObjectImageAssoc.GetObjectImage(behaviorScriptAdd, !isActive);
+                    var mapObjImage = ObjectImageAssoc.GetObjectMapImage(behaviorScriptAdd, !isActive);
                     if (!_mapObjects.ContainsKey(currentAddress))
                     {
                         _mapObjects.Add(currentAddress, new MapObject(mapObjImage));
@@ -382,13 +382,17 @@ namespace SM64_Diagnostic.ManagerClasses
                     }
                     else
                     {
-                        // Update coordinates
+                        // Update map object coordinates and rotation
                         _mapObjects[currentAddress].Show = !_toggleBehaviors.Contains(behaviorScriptAdd)
                             && !_toggleGroups.Contains(processGroup) && !_toggleSlots.Contains(currentAddress);
                         _mapObjects[currentAddress].X = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
                         _mapObjects[currentAddress].Y = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
                         _mapObjects[currentAddress].Z = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectZOffset, 4), 0);
                         _mapObjects[currentAddress].IsActive = isActive;
+                        _mapObjects[currentAddress].Rotation = (float)(((BitConverter.ToUInt32(
+                            _stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectRotationOffset, 4), 0)
+                            >> 16) % 65536) / 65536f * 360f);
+                        _mapObjects[currentAddress].UsesRotation = ObjectImageAssoc.GetObjectMapRotates(behaviorScriptAdd);
                     }
                 }
             }
