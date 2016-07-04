@@ -138,7 +138,14 @@ namespace SM64_Diagnostic.Utilities
                 return false;
             }
 
-            _process.EnableRaisingEvents = true;
+            try
+            {
+                _process.EnableRaisingEvents = true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
             _process.Exited += ProcessClosed;
 
             IsSuspended = false;
@@ -274,7 +281,8 @@ namespace SM64_Diagnostic.Utilities
             _lastUpdateBeforePausing = false;
 
             // Read whole ram value to buffer
-            ReadProcessMemory(0, _ram);
+            if (!ReadProcessMemory(0, _ram))
+                return;
             _timer.Enabled = false;
             OnUpdate?.Invoke(this, e);
             _timer.Enabled = true;

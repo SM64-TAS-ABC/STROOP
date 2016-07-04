@@ -223,6 +223,9 @@ namespace SM64_Diagnostic.Utilities
                     case "HolpZ":
                         config.HolpZ = ParsingUtilities.ParseHex(element.Value);
                         break;
+                    case "RngRecordingAreaAddress":
+                        config.RngRecordingAreaAddress = ParsingUtilities.ParseHex(element.Value);
+                        break;
                 }
             }
 
@@ -527,7 +530,7 @@ namespace SM64_Diagnostic.Utilities
                     case "Script":
                         string scriptPath = element.Attribute(XName.Get("path")).Value;
                         uint insertAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("insertAddress")).Value);
-                        parser.AddScript(scriptDir + scriptPath, insertAddress);
+                        parser.AddScript(scriptDir + scriptPath, insertAddress, 0, 0);
                         break;
                 }
             }
