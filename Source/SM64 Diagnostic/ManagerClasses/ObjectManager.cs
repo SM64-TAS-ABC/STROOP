@@ -20,6 +20,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         DataContainer _disToMario;
         DataContainer _latDisToMario;
+        DataContainer _rngCalls;
 
         uint _currentAddress;
         int _slotIndex;
@@ -168,6 +169,10 @@ namespace SM64_Diagnostic.ManagerClasses
             _latDisToMario = new DataContainer("Lat. Dis. to Mario");
             objectGui.ObjectFlowLayout.Controls.Add(_latDisToMario.Control);
 
+            // Add rng calls watchvar
+            _rngCalls = new DataContainer("Rng Calls Last Frame");
+            objectGui.ObjectFlowLayout.Controls.Add(_rngCalls.Control);
+
             // Register buttons
             objectGui.CloneButton.Click += CloneButton_Click;
             objectGui.UnloadButton.Click += UnloadButton_Click;
@@ -222,6 +227,31 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _latDisToMario.Text = latDisToMario.ToString();
             _disToMario.Text = disToMario.ToString();
+
+            UpdateRngCalls();
+        }
+
+        private void UpdateRngCalls()
+        {
+            var numberOfRngObjs = BitConverter.ToUInt32(_stream.ReadRam(_config.RngRecordingAreaAddress, 4), 0);
+
+            int numOfCalls = 0;
+
+            for (int i = 0; i < numberOfRngObjs; i++)
+            {
+                uint rngStructAdd = (uint)(_config.RngRecordingAreaAddress + 0x10 + 0x08 * i);
+                var address = BitConverter.ToUInt32(_stream.ReadRam(rngStructAdd + 0x04, 4), 0);
+                if (address != _currentAddress)
+                    continue;
+
+                var preRng = BitConverter.ToUInt16(_stream.ReadRam(rngStructAdd + 0x00, 2), 0);
+                var postRng = BitConverter.ToUInt16(_stream.ReadRam(rngStructAdd + 0x02, 2), 0);
+
+                numOfCalls = RngIndexer.GetRngIndexDiff(preRng, postRng);
+                break;
+            }
+
+            _rngCalls.Text = numOfCalls.ToString();
         }
 
         private void RegisterControlEvents(Control control)

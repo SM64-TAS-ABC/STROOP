@@ -23,5 +23,6 @@ namespace SM64_Diagnostic.Structs
         public uint HolpX;
         public uint HolpY;
         public uint HolpZ;
+        public uint RngRecordingAreaAddress;
     }
 }

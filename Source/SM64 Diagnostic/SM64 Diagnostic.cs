@@ -86,7 +86,7 @@ namespace SM64_Diagnostic
             _sm64Stream.OnUpdate += OnUpdate;
 
             _disManager = new DisassemblyManager(_config, this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
-            _scriptManager = new ScriptManager(_sm64Stream, _scriptParser);
+            _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -414,6 +414,11 @@ namespace SM64_Diagnostic
                 if (_splitterIsExpanded)
                     splitContainerMain.SplitterDistance = _defaultSplitValue;
             }
+        }
+
+        private void tabPageOptions_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void tabControlMain_DragEnter(object sender, DragEventArgs e)

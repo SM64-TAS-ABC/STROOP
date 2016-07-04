@@ -23,6 +23,8 @@
           <xs:complexType>
             <xs:attribute name="insertAddress" use="required" type="types:address"/>
             <xs:attribute name="path" use="required" type="xs:string"/>
+            <xs:attribute name="reg1" use="required" type="xs:byte"/>
+            <xs:attribute name="reg2" use="required" type="xs:byte"/>
           </xs:complexType>
         </xs:element>
       </xs:sequence>

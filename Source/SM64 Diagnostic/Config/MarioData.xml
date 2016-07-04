@@ -4,8 +4,8 @@
   <Data type="float" address="0x40" marioOffset="true">Y</Data>
   <Data type="float" address="0x44" marioOffset="true">Z</Data>
   <Data type="float" address="0x48" marioOffset="true">X Speed</Data>
-  <Data type="float" address="0x5C" marioOffset="true">Y Speed</Data>
-  <Data type="float" address="0x60" marioOffset="true">Z Speed</Data>
+  <Data type="float" address="0x4C" marioOffset="true">Y Speed</Data>
+  <Data type="float" address="0x50" marioOffset="true">Z Speed</Data>
   <Data type="float" address="0x54" marioOffset="true">H Speed</Data>
   <Data type="float" address="0x70" marioOffset="true">Ground Y</Data>
   <Data type="float" address="8033B1DC">Ceiling Y</Data>
@@ -30,4 +30,6 @@
   <Data type="byte" address="0x00222618" isBool="true" mask="0x20" invertBool="true">Music</Data>
   <Data type="float" address ="0x80222630">Volume</Data>
   <Data type="uint16" address="0x8038EEE0">RNG Value</Data>
+  <Data type="uint16" address="0x803e000E">RNG Value C</Data>
+  <Data type="uint16" address="0x803e000C">RNG Value P</Data>
 </MarioData>

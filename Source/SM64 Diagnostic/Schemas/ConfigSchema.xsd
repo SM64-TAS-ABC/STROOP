@@ -93,6 +93,7 @@
         <xs:element name="HolpX" type="types:address"/>
         <xs:element name="HolpY" type="types:address"/>
         <xs:element name="HolpZ" type="types:address"/>
+        <xs:element name="RngRecordingAreaAddress" type="types:address"/>
       </xs:all>
     </xs:complexType>
   </xs:element>
