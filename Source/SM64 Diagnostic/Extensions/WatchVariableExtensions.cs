@@ -62,6 +62,53 @@ namespace SM64_Diagnostic.Extensions
             else
                 return dataValue.ToString();
         }
+  
+        public static void SetAngleStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset, string value, WatchVariableControl.AngleViewModeType viewMode)
+        {
+            if (watchVar.Type != typeof(UInt32))
+                return;
+
+            UInt32 writeValue = 0;
+
+            // Print hex
+            if (ParsingUtilities.IsHex(value))
+            {
+                ParsingUtilities.TryParseHex(value, out writeValue);
+                if (viewMode != WatchVariableControl.AngleViewModeType.Raw)
+                    writeValue <<= 16;
+            }
+            else
+            {
+                switch (viewMode)
+                {
+                    case WatchVariableControl.AngleViewModeType.Raw:
+                        uint.TryParse(value, out writeValue);
+                        break;
+
+                    case WatchVariableControl.AngleViewModeType.Signed:
+                    case WatchVariableControl.AngleViewModeType.Unsigned:
+                        uint.TryParse(value, out writeValue);
+                        writeValue <<= 16;
+                        break;
+                        
+
+                    case WatchVariableControl.AngleViewModeType.Degrees:
+                        var degValue = double.Parse(value);
+                        writeValue = (UInt16)(degValue / (360d / 65536));
+                        writeValue <<= 16;
+                        break;
+
+                    case WatchVariableControl.AngleViewModeType.Radians:
+                        var radValue = double.Parse(value);
+                        writeValue = (UInt16)(radValue / (2 * Math.PI / 65536));
+                        writeValue <<= 16;
+                        break;
+                }
+            }
+            var byteCount = TypeSize[watchVar.Type];
+            var dataBytes = stream.WriteRam(BitConverter.GetBytes(writeValue), watchVar.OtherOffset ? offset + watchVar.Address
+                : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
+        }
 
         public static string GetAngleStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset, WatchVariableControl.AngleViewModeType viewMode)
         {
@@ -101,7 +148,7 @@ namespace SM64_Diagnostic.Extensions
                     return ((Int16)(dataValue)).ToString();
 
                 case WatchVariableControl.AngleViewModeType.Degrees:
-                    return (((UInt16)dataValue) * (360f / 65536)).ToString();
+                    return (((UInt16)dataValue) * (360d / 65536)).ToString();
 
                 case WatchVariableControl.AngleViewModeType.Radians:
                     return (((UInt16)dataValue) * (2 * Math.PI / 65536)).ToString();

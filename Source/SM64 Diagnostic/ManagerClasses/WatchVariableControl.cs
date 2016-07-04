@@ -318,7 +318,10 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _textBoxValue.ReadOnly = true;
             _editMode = false;
-            _watchVar.SetStringValue(_stream, OtherOffset, _textBoxValue.Text);
+            if (_watchVar.IsAngle)
+                _watchVar.SetAngleStringValue(_stream, OtherOffset, _textBoxValue.Text, AngleViewMode);
+            else
+                _watchVar.SetStringValue(_stream, OtherOffset, _textBoxValue.Text);
         }
     }
 }
