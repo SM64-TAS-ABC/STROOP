@@ -82,6 +82,8 @@
               <xs:element name="HoldingObjectPointerOffset" type="types:address"/>
               <xs:element name ="MoveToObjectYOffset" type="xs:float"/>
               <xs:element name="MarioStructAddress" type="types:address"/>
+              <xs:element name="CeilingYOffset" type="types:address"/>
+              <xs:element name="GroundYOffset" type="types:address"/>
               <xs:element name="MarioStructSize" type="types:address"/>
             </xs:all>
           </xs:complexType>

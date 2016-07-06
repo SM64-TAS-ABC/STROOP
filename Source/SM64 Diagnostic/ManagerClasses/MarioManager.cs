@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.ManagerClasses
         List<WatchVariableControl> _marioDataControls;
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
-        DataContainer _rngIndex, _rngPerFrame;
+        DataContainer _rngIndex, _rngPerFrame, _heightAboveGround, _heightBelowCeil;
         MapManager _mapManager;
 
         public MarioManager(ProcessStream stream, Config config, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable, MapManager mapManager)
@@ -44,6 +44,12 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _rngPerFrame = new DataContainer("RNG Calls/Frame");
             variableTable.Controls.Add(_rngPerFrame.Control);
+
+            _heightAboveGround = new DataContainer("Dis Abv Floor");
+            variableTable.Controls.Add(_heightAboveGround.Control);
+
+            _heightBelowCeil = new DataContainer("Dis Below Ceil");
+            variableTable.Controls.Add(_heightBelowCeil.Control);
         }
 
         public void Update(bool updateView)
@@ -85,6 +91,9 @@ namespace SM64_Diagnostic.ManagerClasses
             _rngIndex.Text = (rngIndex < 0) ? "N/A [" + (-rngIndex).ToString() + "]" : rngIndex.ToString();
 
             _rngPerFrame.Text = GetRngCallsPerFrame().ToString();
+
+            _heightBelowCeil.Text = (BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.CeilingYOffset, 4), 0) - y).ToString();
+            _heightAboveGround.Text = (y - BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.GroundYOffset, 4), 0)).ToString();
         }
 
         private int GetRngCallsPerFrame()

@@ -8,7 +8,7 @@
   <Data type="float" address="0x50" marioOffset="true">Z Speed</Data>
   <Data type="float" address="0x54" marioOffset="true">H Speed</Data>
   <Data type="float" address="0x70" marioOffset="true">Ground Y</Data>
-  <Data type="float" address="8033B1DC">Ceiling Y</Data>
+  <Data type="float" address="0x6C" marioOffset="true">Ceiling Y</Data>
   <Data type="uint32" address="0x68" marioOffset="true" useHex="true">Col. Triangle</Data>
   <Data type="uint32" address="0x0C" marioOffset="true" useHex="true">Action</Data>
   <Data type="uint32" address="0x8033B1EC" useHex="true">Held Object</Data>
