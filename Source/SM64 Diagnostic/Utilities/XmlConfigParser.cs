@@ -194,6 +194,12 @@ namespace SM64_Diagnostic.Utilities
                                 case "HoldingObjectPointerOffset":
                                     config.Mario.HoldingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "CeilingYOffset":
+                                    config.Mario.CeilingYOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "GroundYOffset":
+                                    config.Mario.GroundYOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;

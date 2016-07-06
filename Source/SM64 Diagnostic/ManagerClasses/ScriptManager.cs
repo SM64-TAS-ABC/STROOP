@@ -34,9 +34,6 @@ namespace SM64_Diagnostic.ManagerClasses
             if (!_useRomHackChecBox.Checked)
                 return;
 
-            if (_stream.ReadRam(_parser.FreeMemoryArea, 4).SequenceEqual(byteUintFF))
-                return;
-
             _freeMemPtr = _parser.FreeMemoryArea;
 
             foreach (var script in _parser.Scripts)
