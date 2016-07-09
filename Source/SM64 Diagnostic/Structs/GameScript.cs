@@ -15,9 +15,9 @@ namespace SM64_Diagnostic.Structs
         public byte Reg2;
         public ExecuteModeType ExecuteMode;
         public uint ExecutionSpace;
-        public uint PostInstrSpace;
         public byte[] JumpInstBytes;
         public uint JumpInstr;
+        public uint PostInstrSpace;
         public bool Allocated;
     }
 }

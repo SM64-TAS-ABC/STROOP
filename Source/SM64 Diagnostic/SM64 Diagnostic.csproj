@@ -83,10 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\BitmapExtensions.cs" />
+    <Compile Include="ManagerClasses\HudManager.cs" />
     <Compile Include="ManagerClasses\DataContainer.cs" />
     <Compile Include="ManagerClasses\DisassemblyManager.cs" />
     <Compile Include="ManagerClasses\MapGraphicsControl.cs" />
     <Compile Include="ManagerClasses\MapManager.cs" />
+    <Compile Include="ManagerClasses\CameraManager.cs" />
     <Compile Include="ManagerClasses\MarioManager.cs" />
     <Compile Include="ManagerClasses\ObjectManager.cs" />
     <Compile Include="ManagerClasses\OptionsManager.cs" />
@@ -195,6 +197,12 @@
     <EmbeddedResource Include="Schemas\ScriptsSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\CameraDataSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\HudDataSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -215,9 +223,18 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Config\CameraData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Config\Config.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\HudData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\ObjectData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\Scripts.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -232,7 +249,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Config\ObjectData.xml">
+    <Content Include="ObjectData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
@@ -712,6 +729,9 @@
     <Content Include="Resources\Object Images\Camera Lakitu.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Object Images\Camera.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Object Images\Cannon Base.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1010,6 +1030,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Object Images\HP Bubble.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Object Images\HUD.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Object Images\Item Block Star Particle.png">

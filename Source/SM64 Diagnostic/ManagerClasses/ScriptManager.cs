@@ -16,7 +16,7 @@ namespace SM64_Diagnostic.ManagerClasses
         ScriptParser _parser;
         readonly byte[] byteUintFF = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
         CheckBox _useRomHackChecBox;
-
+      
         uint _freeMemPtr;
 
         public ScriptManager(ProcessStream stream, ScriptParser parser, CheckBox useRomHackChecBox)
@@ -26,6 +26,14 @@ namespace SM64_Diagnostic.ManagerClasses
             _useRomHackChecBox = useRomHackChecBox;
 
             _freeMemPtr = _parser.FreeMemoryArea; 
+
+            // Find spots to allocate script memory
+            foreach (var script in _parser.Scripts)
+            {
+                script.ExecutionSpace = _freeMemPtr;
+                _freeMemPtr += (uint)(script.Script.Length * sizeof(uint));
+                _freeMemPtr += (uint)(4 * sizeof(uint));
+            }
         }
 
         public void Update()
@@ -34,13 +42,11 @@ namespace SM64_Diagnostic.ManagerClasses
             if (!_useRomHackChecBox.Checked)
                 return;
 
-            _freeMemPtr = _parser.FreeMemoryArea;
-
             foreach (var script in _parser.Scripts)
                 ExecuteScript(script);
         }
 
-        public async void ExecuteScript(GameScript script)
+        public void ExecuteScript(GameScript script)
         {
             // Copy jump bytes
             uint prevInst1 = BitConverter.ToUInt32(_stream.ReadRam(script.InsertAddress, 4), 0);
@@ -49,14 +55,23 @@ namespace SM64_Diagnostic.ManagerClasses
             BitConverter.GetBytes(prevInst1).CopyTo(prevInstBytes, 0);
             BitConverter.GetBytes(prevInst2).CopyTo(prevInstBytes, 4);
 
-            if (!AllocateScript(script))
-            {
-                return;
-            }
+            if (script.Allocated)
+                script.Allocated &= prevInstBytes.SequenceEqual(script.JumpInstBytes);
 
-            // Write jump
-            _stream.WriteRam(prevInstBytes, script.PostInstrSpace);
-            _stream.WriteRam(script.JumpInstBytes, script.InsertAddress);
+            if (script.Allocated)
+                return;
+
+            // Finish loading a state
+            Task.Delay(100).Wait();
+
+            // Copy jump bytes (They may have changed)
+            prevInst1 = BitConverter.ToUInt32(_stream.ReadRam(script.InsertAddress, 4), 0);
+            prevInst2 = BitConverter.ToUInt32(_stream.ReadRam(script.InsertAddress + 4, 4), 0);
+            prevInstBytes = new byte[8];
+            BitConverter.GetBytes(prevInst1).CopyTo(prevInstBytes, 0);
+            BitConverter.GetBytes(prevInst2).CopyTo(prevInstBytes, 4);
+
+            AllocateScript(script, prevInstBytes);
         }
         
         private uint JumpToAddressInst(uint address)
@@ -64,13 +79,9 @@ namespace SM64_Diagnostic.ManagerClasses
             return (uint)(address) >> 2 & 0x03FFFFFF | 0x08000000;
         }
 
-        private bool AllocateScript(GameScript script)
+        private bool AllocateScript(GameScript script, byte[] prevInstBytes)
         {
-            _stream.WriteRam(byteUintFF, _freeMemPtr);
-            _freeMemPtr += 4;
-
-            script.ExecutionSpace = _freeMemPtr;
-
+            uint scriptAddress = script.ExecutionSpace;
             bool success = true;
 
             // Get jump instruction
@@ -85,19 +96,23 @@ namespace SM64_Diagnostic.ManagerClasses
 
             // Write script
             Buffer.BlockCopy(script.Script, 0, scriptBytes, 0, scriptLength);
-            success &= _stream.WriteRam(scriptBytes, _freeMemPtr);
+            success &= _stream.WriteRam(scriptBytes, scriptAddress);
 
-            _freeMemPtr += (uint)(scriptLength);
-            script.PostInstrSpace = _freeMemPtr;
+            scriptAddress += (uint)(scriptLength);
+            script.PostInstrSpace = scriptAddress;
 
-            _freeMemPtr += (uint)(2*sizeof(uint));
+            scriptAddress += (uint)(2*sizeof(uint));
 
             uint jumpBackToInsertPointInst = JumpToAddressInst(script.InsertAddress + 8);
-            success &= _stream.WriteRam(BitConverter.GetBytes(jumpBackToInsertPointInst), _freeMemPtr);
+            success &= _stream.WriteRam(BitConverter.GetBytes(jumpBackToInsertPointInst), scriptAddress);
 
-            _freeMemPtr += sizeof(uint) * 2;
+            script.Allocated = success;
+            if (!script.Allocated)
+                return false;
 
-            script.Allocated = true;
+            // Write jump
+            script.Allocated &= _stream.WriteRam(prevInstBytes, script.PostInstrSpace);
+            script.Allocated &= _stream.WriteRam(script.JumpInstBytes, script.InsertAddress);
 
             return success;
         }
