@@ -15,9 +15,6 @@
   <Data type="float" address="0x8033B3C8">HOLP X</Data>
   <Data type="float" address="0x8033B3D0">HOLP Y</Data>
   <Data type="float" address="0x8033B3D4">HOLP Z</Data>
-  <Data type="float" address="0x8033C6AC">Camera X</Data>
-  <Data type="float" address="0x8033C6B0">Camera Y</Data>
-  <Data type="float" address="0x8033C6B4">Camera Z</Data>
   <Data type="uint16" address="0xA8" marioOffset="true">Coins</Data>
   <Data type="uint16" address="0xAA" marioOffset="true">Stars</Data>
   <Data type="uint16" address="0xAC" marioOffset="true">Lives</Data>
@@ -30,6 +27,5 @@
   <Data type="byte" address="0x00222618" isBool="true" mask="0x20" invertBool="true">Music</Data>
   <Data type="float" address ="0x80222630">Volume</Data>
   <Data type="uint16" address="0x8038EEE0">RNG Value</Data>
-  <Data type="uint16" address="0x803e000E">RNG Value C</Data>
-  <Data type="uint16" address="0x803e000C">RNG Value P</Data>
+  <Data type="float" address="0x00c26cac" absoluteAddress="true">Peak Height</Data>
 </MarioData>

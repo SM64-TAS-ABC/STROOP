@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SM64DiagnosticForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxProcessSelection = new System.Windows.Forms.ComboBox();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -65,6 +65,8 @@
             this.flowLayoutPanelMario = new System.Windows.Forms.FlowLayoutPanel();
             this.panelMarioBorder = new System.Windows.Forms.Panel();
             this.pictureBoxMario = new System.Windows.Forms.PictureBox();
+            this.tabPageHud = new System.Windows.Forms.TabPage();
+            this.tabPageCamera = new System.Windows.Forms.TabPage();
             this.tabPageOther = new System.Windows.Forms.TabPage();
             this.checkBoxAbsoluteAddress = new System.Windows.Forms.CheckBox();
             this.buttonOtherDelete = new System.Windows.Forms.Button();
@@ -96,10 +98,16 @@
             this.trackBarMapZoom = new System.Windows.Forms.TrackBar();
             this.glControlMap = new OpenTK.GLControl();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.labelVersionNumber = new System.Windows.Forms.Label();
-            this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanelHud = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelHudBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxHud = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanelCamera = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelCameraBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxCamera = new System.Windows.Forms.PictureBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjTrash)).BeginInit();
@@ -114,6 +122,8 @@
             this.tabPageMario.SuspendLayout();
             this.panelMarioBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).BeginInit();
+            this.tabPageHud.SuspendLayout();
+            this.tabPageCamera.SuspendLayout();
             this.tabPageOther.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOther)).BeginInit();
             this.tabPageDisassembly.SuspendLayout();
@@ -125,6 +135,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).BeginInit();
             this.tabPageOptions.SuspendLayout();
+            this.panelHudBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).BeginInit();
+            this.panelCameraBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxProcessSelection
@@ -165,7 +179,7 @@
             this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
             this.groupBoxObjects.Location = new System.Drawing.Point(3, 3);
             this.groupBoxObjects.Name = "groupBoxObjects";
-            this.groupBoxObjects.Size = new System.Drawing.Size(1172, 498);
+            this.groupBoxObjects.Size = new System.Drawing.Size(1172, 496);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -238,7 +252,7 @@
             this.flowLayoutPanelObjects.AutoScroll = true;
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(6, 58);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(1160, 432);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(1160, 430);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -292,6 +306,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlMain.Controls.Add(this.tabPageObjects);
             this.tabControlMain.Controls.Add(this.tabPageMario);
+            this.tabControlMain.Controls.Add(this.tabPageHud);
+            this.tabControlMain.Controls.Add(this.tabPageCamera);
             this.tabControlMain.Controls.Add(this.tabPageOther);
             this.tabControlMain.Controls.Add(this.tabPageDisassembly);
             this.tabControlMain.Controls.Add(this.tabPageMap);
@@ -325,7 +341,7 @@
             this.tabPageObjects.Controls.Add(this.labelObjAddValue);
             this.tabPageObjects.Location = new System.Drawing.Point(4, 29);
             this.tabPageObjects.Name = "tabPageObjects";
-            this.tabPageObjects.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageObjects.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageObjects.Size = new System.Drawing.Size(1164, 329);
             this.tabPageObjects.TabIndex = 0;
             this.tabPageObjects.Text = "Object";
@@ -488,8 +504,8 @@
             this.tabPageMario.Controls.Add(this.panelMarioBorder);
             this.tabPageMario.Location = new System.Drawing.Point(4, 29);
             this.tabPageMario.Name = "tabPageMario";
-            this.tabPageMario.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageMario.Size = new System.Drawing.Size(1164, 330);
+            this.tabPageMario.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMario.Size = new System.Drawing.Size(1164, 329);
             this.tabPageMario.TabIndex = 1;
             this.tabPageMario.Text = "Mario";
             // 
@@ -502,7 +518,7 @@
             this.flowLayoutPanelMario.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelMario.Location = new System.Drawing.Point(98, 5);
             this.flowLayoutPanelMario.Name = "flowLayoutPanelMario";
-            this.flowLayoutPanelMario.Size = new System.Drawing.Size(1059, 297);
+            this.flowLayoutPanelMario.Size = new System.Drawing.Size(1059, 296);
             this.flowLayoutPanelMario.TabIndex = 1;
             // 
             // panelMarioBorder
@@ -526,6 +542,26 @@
             this.pictureBoxMario.TabIndex = 0;
             this.pictureBoxMario.TabStop = false;
             // 
+            // tabPageHud
+            // 
+            this.tabPageHud.Controls.Add(this.flowLayoutPanelHud);
+            this.tabPageHud.Controls.Add(this.panelHudBorder);
+            this.tabPageHud.Location = new System.Drawing.Point(4, 29);
+            this.tabPageHud.Name = "tabPageHud";
+            this.tabPageHud.Size = new System.Drawing.Size(1164, 329);
+            this.tabPageHud.TabIndex = 6;
+            this.tabPageHud.Text = "HUD";
+            // 
+            // tabPageCamera
+            // 
+            this.tabPageCamera.Controls.Add(this.flowLayoutPanelCamera);
+            this.tabPageCamera.Controls.Add(this.panelCameraBorder);
+            this.tabPageCamera.Location = new System.Drawing.Point(4, 29);
+            this.tabPageCamera.Name = "tabPageCamera";
+            this.tabPageCamera.Size = new System.Drawing.Size(1164, 329);
+            this.tabPageCamera.TabIndex = 7;
+            this.tabPageCamera.Text = "Camera";
+            // 
             // tabPageOther
             // 
             this.tabPageOther.BackColor = System.Drawing.SystemColors.Control;
@@ -536,7 +572,7 @@
             this.tabPageOther.Controls.Add(this.dataGridViewOther);
             this.tabPageOther.Location = new System.Drawing.Point(4, 29);
             this.tabPageOther.Name = "tabPageOther";
-            this.tabPageOther.Size = new System.Drawing.Size(1164, 330);
+            this.tabPageOther.Size = new System.Drawing.Size(1164, 329);
             this.tabPageOther.TabIndex = 2;
             this.tabPageOther.Text = "Other";
             // 
@@ -544,7 +580,7 @@
             // 
             this.checkBoxAbsoluteAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxAbsoluteAddress.AutoSize = true;
-            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(959, 282);
+            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(959, 281);
             this.checkBoxAbsoluteAddress.Name = "checkBoxAbsoluteAddress";
             this.checkBoxAbsoluteAddress.Size = new System.Drawing.Size(199, 24);
             this.checkBoxAbsoluteAddress.TabIndex = 4;
@@ -554,7 +590,7 @@
             // buttonOtherDelete
             // 
             this.buttonOtherDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherDelete.Location = new System.Drawing.Point(159, 277);
+            this.buttonOtherDelete.Location = new System.Drawing.Point(159, 276);
             this.buttonOtherDelete.Name = "buttonOtherDelete";
             this.buttonOtherDelete.Size = new System.Drawing.Size(72, 32);
             this.buttonOtherDelete.TabIndex = 3;
@@ -565,7 +601,7 @@
             // buttonOtherModify
             // 
             this.buttonOtherModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherModify.Location = new System.Drawing.Point(81, 277);
+            this.buttonOtherModify.Location = new System.Drawing.Point(81, 276);
             this.buttonOtherModify.Name = "buttonOtherModify";
             this.buttonOtherModify.Size = new System.Drawing.Size(72, 32);
             this.buttonOtherModify.TabIndex = 2;
@@ -576,7 +612,7 @@
             // buttonOtherAdd
             // 
             this.buttonOtherAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherAdd.Location = new System.Drawing.Point(3, 277);
+            this.buttonOtherAdd.Location = new System.Drawing.Point(3, 276);
             this.buttonOtherAdd.Name = "buttonOtherAdd";
             this.buttonOtherAdd.Size = new System.Drawing.Size(72, 32);
             this.buttonOtherAdd.TabIndex = 1;
@@ -589,8 +625,8 @@
             this.dataGridViewOther.AllowUserToAddRows = false;
             this.dataGridViewOther.AllowUserToDeleteRows = false;
             this.dataGridViewOther.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewOther.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewOther.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewOther.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -601,7 +637,7 @@
             this.dataGridViewOther.RowTemplate.Height = 20;
             this.dataGridViewOther.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewOther.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOther.Size = new System.Drawing.Size(1156, 266);
+            this.dataGridViewOther.Size = new System.Drawing.Size(1156, 265);
             this.dataGridViewOther.TabIndex = 0;
             this.dataGridViewOther.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOther_CellMouseDoubleClick);
             // 
@@ -614,7 +650,7 @@
             this.tabPageDisassembly.Controls.Add(this.richTextBoxDissasembly);
             this.tabPageDisassembly.Location = new System.Drawing.Point(4, 29);
             this.tabPageDisassembly.Name = "tabPageDisassembly";
-            this.tabPageDisassembly.Size = new System.Drawing.Size(1164, 330);
+            this.tabPageDisassembly.Size = new System.Drawing.Size(1164, 329);
             this.tabPageDisassembly.TabIndex = 3;
             this.tabPageDisassembly.Text = "Disassembly";
             // 
@@ -655,7 +691,7 @@
             this.richTextBoxDissasembly.Location = new System.Drawing.Point(4, 35);
             this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
             this.richTextBoxDissasembly.ReadOnly = true;
-            this.richTextBoxDissasembly.Size = new System.Drawing.Size(1150, 267);
+            this.richTextBoxDissasembly.Size = new System.Drawing.Size(1150, 266);
             this.richTextBoxDissasembly.TabIndex = 0;
             this.richTextBoxDissasembly.Text = "";
             // 
@@ -664,8 +700,8 @@
             this.tabPageMap.Controls.Add(this.splitContainerMap);
             this.tabPageMap.Location = new System.Drawing.Point(4, 29);
             this.tabPageMap.Name = "tabPageMap";
-            this.tabPageMap.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageMap.Size = new System.Drawing.Size(1164, 330);
+            this.tabPageMap.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMap.Size = new System.Drawing.Size(1164, 329);
             this.tabPageMap.TabIndex = 4;
             this.tabPageMap.Text = "Map";
             // 
@@ -700,7 +736,7 @@
             // splitContainerMap.Panel2
             // 
             this.splitContainerMap.Panel2.Controls.Add(this.glControlMap);
-            this.splitContainerMap.Size = new System.Drawing.Size(1158, 297);
+            this.splitContainerMap.Size = new System.Drawing.Size(1158, 296);
             this.splitContainerMap.SplitterDistance = 384;
             this.splitContainerMap.TabIndex = 16;
             // 
@@ -795,7 +831,7 @@
             // buttonMapExpand
             // 
             this.buttonMapExpand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonMapExpand.Location = new System.Drawing.Point(4, 255);
+            this.buttonMapExpand.Location = new System.Drawing.Point(4, 254);
             this.buttonMapExpand.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonMapExpand.Name = "buttonMapExpand";
             this.buttonMapExpand.Size = new System.Drawing.Size(135, 35);
@@ -807,7 +843,7 @@
             // labelMapId
             // 
             this.labelMapId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelMapId.Location = new System.Drawing.Point(214, 270);
+            this.labelMapId.Location = new System.Drawing.Point(214, 269);
             this.labelMapId.Name = "labelMapId";
             this.labelMapId.Size = new System.Drawing.Size(165, 20);
             this.labelMapId.TabIndex = 4;
@@ -879,7 +915,7 @@
             this.glControlMap.Location = new System.Drawing.Point(6, 5);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(760, 283);
+            this.glControlMap.Size = new System.Drawing.Size(760, 282);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -895,6 +931,16 @@
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
             this.tabPageOptions.Click += new System.EventHandler(this.tabPageOptions_Click);
+            // 
+            // checkBoxUseRomHack
+            // 
+            this.checkBoxUseRomHack.AutoSize = true;
+            this.checkBoxUseRomHack.Location = new System.Drawing.Point(4, 35);
+            this.checkBoxUseRomHack.Name = "checkBoxUseRomHack";
+            this.checkBoxUseRomHack.Size = new System.Drawing.Size(312, 24);
+            this.checkBoxUseRomHack.TabIndex = 2;
+            this.checkBoxUseRomHack.Text = "Enable ROM hack (requires interpreter)";
+            this.checkBoxUseRomHack.UseVisualStyleBackColor = true;
             // 
             // checkBox2
             // 
@@ -929,15 +975,71 @@
             this.labelVersionNumber.Text = "v0.1.5";
             this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // checkBoxUseRomHack
+            // flowLayoutPanelHud
             // 
-            this.checkBoxUseRomHack.AutoSize = true;
-            this.checkBoxUseRomHack.Location = new System.Drawing.Point(4, 35);
-            this.checkBoxUseRomHack.Name = "checkBoxUseRomHack";
-            this.checkBoxUseRomHack.Size = new System.Drawing.Size(312, 24);
-            this.checkBoxUseRomHack.TabIndex = 2;
-            this.checkBoxUseRomHack.Text = "Enable ROM hack (requires interpreter)";
-            this.checkBoxUseRomHack.UseVisualStyleBackColor = true;
+            this.flowLayoutPanelHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelHud.AutoScroll = true;
+            this.flowLayoutPanelHud.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanelHud.Location = new System.Drawing.Point(99, 16);
+            this.flowLayoutPanelHud.Name = "flowLayoutPanelHud";
+            this.flowLayoutPanelHud.Size = new System.Drawing.Size(1059, 296);
+            this.flowLayoutPanelHud.TabIndex = 3;
+            // 
+            // panelHudBorder
+            // 
+            this.panelHudBorder.Controls.Add(this.pictureBoxHud);
+            this.panelHudBorder.Location = new System.Drawing.Point(7, 17);
+            this.panelHudBorder.Name = "panelHudBorder";
+            this.panelHudBorder.Size = new System.Drawing.Size(86, 85);
+            this.panelHudBorder.TabIndex = 2;
+            // 
+            // pictureBoxHud
+            // 
+            this.pictureBoxHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxHud.Location = new System.Drawing.Point(4, 5);
+            this.pictureBoxHud.MaximumSize = new System.Drawing.Size(200, 200);
+            this.pictureBoxHud.Name = "pictureBoxHud";
+            this.pictureBoxHud.Size = new System.Drawing.Size(76, 77);
+            this.pictureBoxHud.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxHud.TabIndex = 0;
+            this.pictureBoxHud.TabStop = false;
+            // 
+            // flowLayoutPanelCamera
+            // 
+            this.flowLayoutPanelCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelCamera.AutoScroll = true;
+            this.flowLayoutPanelCamera.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanelCamera.Location = new System.Drawing.Point(99, 16);
+            this.flowLayoutPanelCamera.Name = "flowLayoutPanelCamera";
+            this.flowLayoutPanelCamera.Size = new System.Drawing.Size(1059, 296);
+            this.flowLayoutPanelCamera.TabIndex = 3;
+            // 
+            // panelCameraBorder
+            // 
+            this.panelCameraBorder.Controls.Add(this.pictureBoxCamera);
+            this.panelCameraBorder.Location = new System.Drawing.Point(7, 17);
+            this.panelCameraBorder.Name = "panelCameraBorder";
+            this.panelCameraBorder.Size = new System.Drawing.Size(86, 85);
+            this.panelCameraBorder.TabIndex = 2;
+            // 
+            // pictureBoxCamera
+            // 
+            this.pictureBoxCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxCamera.Location = new System.Drawing.Point(4, 5);
+            this.pictureBoxCamera.MaximumSize = new System.Drawing.Size(200, 200);
+            this.pictureBoxCamera.Name = "pictureBoxCamera";
+            this.pictureBoxCamera.Size = new System.Drawing.Size(76, 77);
+            this.pictureBoxCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCamera.TabIndex = 0;
+            this.pictureBoxCamera.TabStop = false;
             // 
             // SM64DiagnosticForm
             // 
@@ -969,6 +1071,8 @@
             this.tabPageMario.ResumeLayout(false);
             this.panelMarioBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).EndInit();
+            this.tabPageHud.ResumeLayout(false);
+            this.tabPageCamera.ResumeLayout(false);
             this.tabPageOther.ResumeLayout(false);
             this.tabPageOther.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOther)).EndInit();
@@ -984,6 +1088,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).EndInit();
             this.tabPageOptions.ResumeLayout(false);
             this.tabPageOptions.PerformLayout();
+            this.panelHudBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).EndInit();
+            this.panelCameraBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1061,6 +1169,14 @@
         private System.Windows.Forms.CheckBox checkBoxShowHolp;
         private System.Windows.Forms.CheckBox checkBoxMapShowObj;
         private System.Windows.Forms.CheckBox checkBoxUseRomHack;
+        private System.Windows.Forms.TabPage tabPageHud;
+        private System.Windows.Forms.TabPage tabPageCamera;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelHud;
+        private System.Windows.Forms.Panel panelHudBorder;
+        private System.Windows.Forms.PictureBox pictureBoxHud;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCamera;
+        private System.Windows.Forms.Panel panelCameraBorder;
+        private System.Windows.Forms.PictureBox pictureBoxCamera;
     }
 }
 
