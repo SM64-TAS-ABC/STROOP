@@ -151,12 +151,12 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (!_watchVar.OtherOffset)
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
-                        _watchVar.Address, _watchVar.GetProcessAddress(_stream, _watchVar.Address), _stream.ProcessName));
+                        _watchVar.GetRamAddress(_stream), _watchVar.GetProcessAddress(_stream, 0), _stream.ProcessName));
                 }
                 else
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{1:X8} + 0x{0:X8} = 0x{2:X8} [{4} + 0x{3:X8}]",
-                        _watchVar.Address, OtherOffset, _watchVar.GetRamAddress(_stream, OtherOffset), 
+                        _watchVar.GetRamAddress(_stream, false), OtherOffset, _watchVar.GetRamOffsetAddress(_stream, OtherOffset), 
                         _watchVar.GetProcessAddress(_stream, OtherOffset), _stream.ProcessName));
                 }
             };
