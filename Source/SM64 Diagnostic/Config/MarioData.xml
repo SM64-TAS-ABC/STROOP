@@ -16,10 +16,6 @@
   <Data type="float" address="0x8033B3D0">HOLP Y</Data>
   <Data type="float" address="0x8033B3D4">HOLP Z</Data>
   <Data type="uint32" address="0xC19054" absoluteAddress="true">Global Timer</Data>
-  <Data type="uint16" address="0xA8" marioOffset="true">Coins</Data>
-  <Data type="uint16" address="0xAA" marioOffset="true">Stars</Data>
-  <Data type="uint16" address="0xAC" marioOffset="true">Lives</Data>
-  <Data type="uint16" address="0xAE" marioOffset="true">Power</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x10">Hat On Head</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x02">Vanish Cap</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x04">Metal Cap</Data>
