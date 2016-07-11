@@ -68,6 +68,20 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool UnCloneObject(ProcessStream stream, Config config, uint objAddress)
+        {
+            bool success = true;
+            var marioAddress = config.Mario.MarioStructAddress;
+
+            // Make clone object mario's holding object
+            success &= stream.WriteRam(new byte[] { 0x00, 0x00, 0x00, 0x00 }, marioAddress + config.Mario.HoldingObjectPointerOffset);
+
+            // Set clone action flags
+            success &= stream.WriteRam(BitConverter.GetBytes(0x0C400201U), marioAddress + config.Mario.ActionOffset);
+
+            return success;
+        }
+
         public static bool UnloadObject(ProcessStream stream, Config config, uint address)
         {
             return stream.WriteRam(new byte[] { 0x00, 0x00 }, address + config.ObjectSlots.ObjectActiveOffset);
