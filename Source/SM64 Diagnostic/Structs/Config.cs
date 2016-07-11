@@ -27,5 +27,6 @@ namespace SM64_Diagnostic.Structs
         public uint CameraY;
         public uint CameraZ;
         public uint CameraRot;
+        public uint RngRecordingAreaAddress;
     }
 }

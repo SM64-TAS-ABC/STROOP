@@ -15,8 +15,7 @@ namespace SM64_Diagnostic.ManagerClasses
         List<WatchVariableControl> _marioDataControls;
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
-        DataContainer _rngIndex;
-        int[] _rngTableIndex;
+        DataContainer _rngIndex, _rngPerFrame, _heightAboveGround, _heightBelowCeil;
         MapManager _mapManager;
 
         public MarioManager(ProcessStream stream, Config config, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable, MapManager mapManager)
@@ -42,6 +41,15 @@ namespace SM64_Diagnostic.ManagerClasses
             // Add rng index
             _rngIndex = new DataContainer("RNG Index");
             variableTable.Controls.Add(_rngIndex.Control);
+
+            _rngPerFrame = new DataContainer("RNG Calls/Frame");
+            variableTable.Controls.Add(_rngPerFrame.Control);
+
+            _heightAboveGround = new DataContainer("Dis Abv Floor");
+            variableTable.Controls.Add(_heightAboveGround.Control);
+
+            _heightBelowCeil = new DataContainer("Dis Below Ceil");
+            variableTable.Controls.Add(_heightBelowCeil.Control);
 
             // Generate rng value to index table
             GenerateRngTable();
@@ -103,56 +111,19 @@ namespace SM64_Diagnostic.ManagerClasses
             // Update the rng index
             int rngIndex = GetRngIndex();
             _rngIndex.Text = (rngIndex < 0) ? "N/A [" + (-rngIndex).ToString() + "]" : rngIndex.ToString();
+
+            _rngPerFrame.Text = GetRngCallsPerFrame().ToString();
+
+            _heightBelowCeil.Text = (BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.CeilingYOffset, 4), 0) - y).ToString();
+            _heightAboveGround.Text = (y - BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.GroundYOffset, 4), 0)).ToString();
         }
 
-        private int GetRngIndex()
+        private int GetRngCallsPerFrame()
         {
-            return _rngTableIndex[BitConverter.ToUInt16(_stream.ReadRam(0x8038EEE0, 2),0)];
-        }
+            var currentRng = BitConverter.ToUInt16(_stream.ReadRam(_config.RngRecordingAreaAddress + 0x0E, 2), 0);
+            var preRng = BitConverter.ToUInt16(_stream.ReadRam(_config.RngRecordingAreaAddress + 0x0C, 2), 0);
 
-        private void GenerateRngTable()
-        {
-            _rngTableIndex = Enumerable.Repeat<int>(-1, ushort.MaxValue + 1).ToArray();
-            ushort _currentRng = 0;
-            for (ushort i = 0; i < 65114; i++)
-            {
-                _rngTableIndex[_currentRng] = i;
-                _currentRng = NextRNG(_currentRng);
-            }
-
-            int naIndex = -1;
-            for (int i = 0; i < _rngTableIndex.Length; i++)
-            {
-                if (_rngTableIndex[i] == -1)
-                {
-                    _rngTableIndex[i] = naIndex;
-                    naIndex--;
-                }
-            }
-        }
-
-        private ushort NextRNG(ushort _rng)
-        {
-
-            if (_rng == 0x560A)
-                _rng = 0;
-            ushort s0 = (ushort)(_rng << 8);
-            s0 ^= _rng;
-            _rng = (ushort)((s0 >> 8) | (s0 << 8));
-            s0 = (ushort)((s0 & 0x00FF) << 1);
-            s0 ^= _rng;
-            ushort s1 = (ushort)(0xFF80 ^ (s0 >> 1));
-            if ((s0 & 1) == 0)
-            {
-                if (s1 == 0xAA55)
-                    _rng = 0;
-                else
-                    _rng = (ushort)(s1 ^ 0x1FF4);
-            }
-            else
-                _rng = (ushort)(s1 ^ 0x8180);
-
-            return _rng;
+            return RngIndexer.GetRngIndexDiff(preRng, currentRng);
         }
 
         private void RegisterControlEvents(Control control)

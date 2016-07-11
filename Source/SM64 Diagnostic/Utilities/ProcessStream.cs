@@ -138,7 +138,14 @@ namespace SM64_Diagnostic.Utilities
                 return false;
             }
 
-            _process.EnableRaisingEvents = true;
+            try
+            {
+                _process.EnableRaisingEvents = true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
             _process.Exited += ProcessClosed;
 
             IsSuspended = false;
@@ -234,11 +241,11 @@ namespace SM64_Diagnostic.Utilities
             OnStatusChanged?.Invoke(this, new EventArgs());
         }
 
-        public byte[] ReadRam(uint address, int length, bool absoluteAddress = false, bool fixAddress = true)
+        public byte[] ReadRam(uint address, int length, bool absoluteAddress = false, bool? fixAddress = null)
         {
             byte[] readBytes = new byte[length];
             address &= ~0x80000000U;
-            if (fixAddress)
+            if ((fixAddress.HasValue && fixAddress.Value) || (fixAddress == null && !absoluteAddress))
                 address = (uint)LittleEndianessAddressing.AddressFix((int)address, length);
             if (absoluteAddress)
                 address = (uint)(address - _offset);
@@ -247,23 +254,27 @@ namespace SM64_Diagnostic.Utilities
             return readBytes;
         }
 
-        public bool WriteRam(byte[] buffer, uint address, bool absoulteAddress = false, bool fixAddress = true)
+        public bool WriteRam(byte[] buffer, uint address, bool absoluteAddress = false, bool? fixAddress = null)
         {
-            return WriteRam(buffer, address, buffer.Length, absoulteAddress, fixAddress);
+            return WriteRam(buffer, address, buffer.Length, absoluteAddress, fixAddress);
         }
 
-        public bool WriteRam(byte[] buffer, int bufferStart, uint address, int length, bool absoulteAddress = false, bool fixAddress = true)
+        public bool WriteRam(byte[] buffer, int bufferStart, uint address, int length, bool absoluteAddress = false, bool? fixAddress = null)
         {
             byte[] writeBytes = new byte[length];
             address &= ~0x80000000U;
             Array.Copy(buffer, bufferStart, writeBytes, 0, length);
-            return WriteProcessMemory(fixAddress ? LittleEndianessAddressing.AddressFix((int)address, buffer.Length) : (int)address,
-                writeBytes, absoulteAddress);
-        }
 
-        public bool WriteRam(byte[] buffer, uint address, int length, bool absoulteAddress = false, bool fixAddress = true)
+            if ((fixAddress.HasValue && fixAddress.Value) || (fixAddress == null && !absoluteAddress))
+                address = (uint)LittleEndianessAddressing.AddressFix((int)address, length);
+
+            return WriteProcessMemory((int)address,
+                writeBytes, absoluteAddress);
+        }
+        
+        public bool WriteRam(byte[] buffer, uint address, int length, bool absoluteAddress = false, bool? fixAddress = null)
         {
-            return WriteRam(buffer, 0, address, buffer.Length, absoulteAddress, fixAddress);
+            return WriteRam(buffer, 0, address, buffer.Length, absoluteAddress, fixAddress);
         }
 
         private void OnTick(object sednder, EventArgs e)
@@ -274,7 +285,8 @@ namespace SM64_Diagnostic.Utilities
             _lastUpdateBeforePausing = false;
 
             // Read whole ram value to buffer
-            ReadProcessMemory(0, _ram);
+            if (!ReadProcessMemory(0, _ram))
+                return;
             _timer.Enabled = false;
             OnUpdate?.Invoke(this, e);
             _timer.Enabled = true;

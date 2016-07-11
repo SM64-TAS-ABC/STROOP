@@ -46,6 +46,8 @@
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
     <FacingAngleOffset>0x2A</FacingAngleOffset>
     <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>
+    <CeilingYOffset>0x6C</CeilingYOffset>
+    <GroundYOffset>0x70</GroundYOffset>
     <!--<CurrentFloorTrianglePointerOffset>0x00</CurrentFloorTrianglePointerOffset>-->
     <MarioStructSize>0xC4</MarioStructSize>
     <MoveToObjectYOffset>300</MoveToObjectYOffset>
@@ -69,4 +71,5 @@
   <AreaAddress>0x8033B24A</AreaAddress>
   <LoadingPointAddress>0x8033BACA</LoadingPointAddress>
   <MissionLayoutAddress>0x8033BAC8</MissionLayoutAddress>
+  <RngRecordingAreaAddress>0x803e0000</RngRecordingAreaAddress>
 </Config>

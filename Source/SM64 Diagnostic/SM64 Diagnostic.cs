@@ -22,7 +22,7 @@ namespace SM64_Diagnostic
         Config _config;
 
         Dictionary<int, WatchVariable> _otherData;
-        List<WatchVariable> _objectData, _marioData;
+        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData;
         ObjectAssociations _objectAssoc;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
@@ -37,6 +37,8 @@ namespace SM64_Diagnostic
         MapManager _mapManager;
         OptionsManager _optionsManager;
         ScriptManager _scriptManager;
+        HudManager _hudManager;
+        CameraManager _cameraManager;
 
         bool _resizing = true;
         int _resizeTimeLeft = 0;
@@ -79,6 +81,8 @@ namespace SM64_Diagnostic
             _objectData = XmlConfigParser.OpenObjectData(@"Config/ObjectData.xml");
             _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml");
             _marioData = XmlConfigParser.OpenMarioData(_config, @"Config/MarioData.xml");
+            _cameraData = XmlConfigParser.OpenCameraData(_config, @"Config/CameraData.xml");
+            _hudData = XmlConfigParser.OpenHudData(_config, @"Config/HudData.xml");
             _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
             _scriptParser = XmlConfigParser.OpenScripts(@"Config/Scripts.xml");
 
@@ -86,7 +90,7 @@ namespace SM64_Diagnostic
             _sm64Stream.OnUpdate += OnUpdate;
 
             _disManager = new DisassemblyManager(_config, this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
-            _scriptManager = new ScriptManager(_sm64Stream, _scriptParser);
+            _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -106,6 +110,8 @@ namespace SM64_Diagnostic
             _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, _objectAssoc, mapGui);
 
             _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
+            _hudManager = new HudManager(_sm64Stream, _config, _hudData, panelHudBorder, flowLayoutPanelHud);
+            _cameraManager = new CameraManager(_sm64Stream, _config, _cameraData, panelCameraBorder, flowLayoutPanelCamera);
 
             // Create object manager
             var objectGui = new ObjectDataGui();
@@ -191,6 +197,8 @@ namespace SM64_Diagnostic
         private void OnUpdate(object sender, EventArgs e)
         {
             _marioManager.Update(tabControlMain.SelectedTab == tabPageMario);
+            _cameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
+            _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
             _mapManager?.Update();
             UpdateMemoryValues();
             _scriptManager.Update();
@@ -201,7 +209,17 @@ namespace SM64_Diagnostic
             // Mario Image
             pictureBoxMario.Image = _objectAssoc.MarioImage;
             panelMarioBorder.BackColor = _objectAssoc.MarioColor;
-            pictureBoxMario.BackColor = ControlPaint.Light(ControlPaint.Light(ControlPaint.Light(_objectAssoc.MarioColor)));
+            pictureBoxMario.BackColor = _objectAssoc.MarioColor.Lighten(0.5);
+
+            // Camera Image
+            pictureBoxCamera.Image = _objectAssoc.CameraImage;
+            panelCameraBorder.BackColor = _objectAssoc.CameraColor;
+            pictureBoxCamera.BackColor = _objectAssoc.CameraColor.Lighten(0.5);
+
+            // Hud Image
+            pictureBoxHud.Image = _objectAssoc.HudImage;
+            panelHudBorder.BackColor = _objectAssoc.CameraColor;
+            pictureBoxHud.BackColor = _objectAssoc.CameraColor.Lighten(0.5);
 
             // Setup data columns
             var nameColumn = new DataColumn("Name");
@@ -415,6 +433,11 @@ namespace SM64_Diagnostic
                 if (_splitterIsExpanded)
                     splitContainerMain.SplitterDistance = _defaultSplitValue;
             }
+        }
+
+        private void tabPageOptions_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void tabControlMain_DragEnter(object sender, DragEventArgs e)

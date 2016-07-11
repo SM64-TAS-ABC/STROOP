@@ -23,10 +23,14 @@ namespace SM64_Diagnostic.Structs
 
         public Image EmptyImage;
         public Image MarioImage;
-        public Image MarioMapImage;
+        public Image HudImage;
+        public Image CameraImage;
         public Image HolpImage;
+        public Image MarioMapImage;
         public Image CameraImage;
         public Color MarioColor;
+        public Color HudColor;
+        public Color CameraColor;
         public uint MarioBehavior;
         public uint RamOffset;
 
@@ -117,6 +121,8 @@ namespace SM64_Diagnostic.Structs
             MarioImage?.Dispose();
             MarioMapImage?.Dispose();
             HolpImage?.Dispose();
+            HudImage?.Dispose();
+            CameraImage?.Dispose();
         }
     }
 }
