@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\BitmapExtensions.cs" />
+    <Compile Include="Extensions\WatchExpressionExtensions.cs" />
     <Compile Include="ManagerClasses\HudManager.cs" />
     <Compile Include="Controls\DataContainer.cs" />
     <Compile Include="ManagerClasses\DisassemblyManager.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Structs\ObjectGroupsConfig.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Structs\ScriptParser.cs" />
+    <Compile Include="Structs\WatchExpression.cs" />
     <Compile Include="Utilities\N64Disassembler.cs" />
     <Compile Include="Utilities\ObjectActions.cs" />
     <Compile Include="Structs\ProcessSelection.cs" />

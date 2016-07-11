@@ -71,7 +71,7 @@ namespace SM64_Diagnostic
         {
            // Temp: Remove "Other" tab
 #if RELEASE
-            tabControlMain.TabPages.Remove(tabPageOther);
+            tabControlMain.TabPages.Remove(tabPageExpressions);
 #endif
 
             // Read configuration
@@ -230,7 +230,7 @@ namespace SM64_Diagnostic
             _tableOtherData.Columns.Add("Address", typeof(uint));
 
             // Setup grid view
-            dataGridViewOther.DataSource = _tableOtherData;
+            dataGridViewExpressions.DataSource = _tableOtherData;
 
             // Setup other data table
             for (int index = 0; index < _otherData.Count; index++)
@@ -241,7 +241,7 @@ namespace SM64_Diagnostic
             }
 
 #if !DEBUG
-            tabControlMain.TabPages.Remove(tabPageOther);
+            tabControlMain.TabPages.Remove(tabPageExpressions);
 #endif
         }
 
@@ -265,8 +265,8 @@ namespace SM64_Diagnostic
             {
                 WatchVariable watchVar = _otherData[i];
                 // Make sure cell is not being edited
-                if (dataGridViewOther.IsCurrentCellInEditMode
-                    && dataGridViewOther.SelectedRows[0].Index
+                if (dataGridViewExpressions.IsCurrentCellInEditMode
+                    && dataGridViewExpressions.SelectedRows[0].Index
                     == _tableOtherData.Rows.IndexOf(_otherDataRowAssoc[i]))
                     continue;
 
@@ -279,7 +279,7 @@ namespace SM64_Diagnostic
 
         private void buttonOtherModify_Click(object sender, EventArgs e)
         {
-            var row = _tableOtherData.Rows[dataGridViewOther.SelectedRows[0].Index];
+            var row = _tableOtherData.Rows[dataGridViewExpressions.SelectedRows[0].Index];
             int assoc = _otherDataRowAssoc.FirstOrDefault(v => v.Value == row).Key;
 
             var modifyVar = new ModifyAddWatchVariableForm(_otherData[assoc]);
@@ -293,7 +293,7 @@ namespace SM64_Diagnostic
             {
                 // Find indexes to delete
                 var deleteVars = new List<int>();
-                foreach (DataGridViewRow selectedRow in dataGridViewOther.SelectedRows)
+                foreach (DataGridViewRow selectedRow in dataGridViewExpressions.SelectedRows)
                 {
                     var row = _tableOtherData.Rows[selectedRow.Index];
                     int assoc = _otherDataRowAssoc.FirstOrDefault(v => v.Value == row).Key;
@@ -319,7 +319,7 @@ namespace SM64_Diagnostic
             if (e.ColumnIndex == 2)
                 return;
 
-            var row = _tableOtherData.Rows[dataGridViewOther.SelectedRows[0].Index];
+            var row = _tableOtherData.Rows[dataGridViewExpressions.SelectedRows[0].Index];
             int assoc = _otherDataRowAssoc.FirstOrDefault(v => v.Value == row).Key;
 
             var modifyVar = new ModifyAddWatchVariableForm(_otherData[assoc]);
