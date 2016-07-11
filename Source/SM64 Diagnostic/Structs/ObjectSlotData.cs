@@ -13,6 +13,7 @@ namespace SM64_Diagnostic.Structs
         public byte ObjectProcessGroup;
         public uint Behavior;
         public int Index;
+        public int ProcessIndex;
         public int? VacantSlotIndex;
     }
 }

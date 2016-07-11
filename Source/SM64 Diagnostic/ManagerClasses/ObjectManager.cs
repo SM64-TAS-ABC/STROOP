@@ -21,6 +21,7 @@ namespace SM64_Diagnostic.ManagerClasses
         DataContainer _disToMario;
         DataContainer _latDisToMario;
         DataContainer _rngCalls;
+        DataContainer _activeObjCnt;
 
         uint _currentAddress;
         int _slotIndex;
@@ -139,6 +140,8 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
+        public int ActiveObjectCount = 0;
+
         #endregion
 
         public ObjectManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, List<WatchVariable> objectData, ObjectDataGui objectGui)
@@ -166,12 +169,16 @@ namespace SM64_Diagnostic.ManagerClasses
             objectGui.ObjectFlowLayout.Controls.Add(_disToMario.Control);
 
             // Add lateral distance to mario watchvar
-            _latDisToMario = new DataContainer("Lat. Dis. to Mario");
+            _latDisToMario = new DataContainer("Lat. Dis. to M");
             objectGui.ObjectFlowLayout.Controls.Add(_latDisToMario.Control);
 
             // Add rng calls watchvar
             _rngCalls = new DataContainer("Rng Calls");
             objectGui.ObjectFlowLayout.Controls.Add(_rngCalls.Control);
+
+            // Add active object count watchvar
+            _activeObjCnt = new DataContainer("Active Objects");
+            objectGui.ObjectFlowLayout.Controls.Add(_activeObjCnt.Control);
 
             // Register buttons
             objectGui.CloneButton.Click += CloneButton_Click;
@@ -227,6 +234,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _latDisToMario.Text = latDisToMario.ToString();
             _disToMario.Text = disToMario.ToString();
+            _activeObjCnt.Text = ActiveObjectCount.ToString();
 
             UpdateRngCalls();
         }

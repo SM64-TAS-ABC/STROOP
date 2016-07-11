@@ -24,8 +24,8 @@ namespace SM64_Diagnostic.ManagerClasses
 
         Dictionary<uint, MapObject> _mapObjects = new Dictionary<uint, MapObject>();
         Dictionary<uint, int> _memoryAddressSlotIndex;
+        Dictionary<uint, string> _lastSlotLabel = new Dictionary<uint, string>();
         int _selectedSlot;
-        bool _labelsLocked = false;
 
         List<byte> _toggleGroups = new List<byte>();
         List<uint> _toggleBehaviors = new List<uint>();
@@ -237,7 +237,6 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (currentGroupObject == processGroupStructAddress)
                     continue;
 
-
                 // Loop through every object within the group
                 while ((currentGroupObject != processGroupStructAddress && currentSlot < slotConfig.MaxSlots))
                 {
@@ -250,6 +249,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     newObjectSlotData[currentSlot].Address = currentGroupObject;
                     newObjectSlotData[currentSlot].ObjectProcessGroup = objectProcessGroup;
                     newObjectSlotData[currentSlot].Index = currentSlot;
+                    newObjectSlotData[currentSlot].ProcessIndex = currentSlot;
                     newObjectSlotData[currentSlot].VacantSlotIndex = null;
 
                     // Move to next object
@@ -274,6 +274,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 newObjectSlotData[currentSlot].Address = currentObject;
                 newObjectSlotData[currentSlot].ObjectProcessGroup = VacantGroup;
                 newObjectSlotData[currentSlot].Index = currentSlot;
+                newObjectSlotData[currentSlot].ProcessIndex = currentSlot;
                 newObjectSlotData[currentSlot].VacantSlotIndex = currentSlot - vacantSlotStart;
 
                 currentObject = BitConverter.ToUInt32(
@@ -320,6 +321,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     }
                     break;
             }
+            int activeObjCnt = 0;
 
             // Update slots
             foreach (var objectData in newObjectSlotData)
@@ -329,6 +331,9 @@ namespace SM64_Diagnostic.ManagerClasses
                 var isActive = BitConverter.ToUInt16(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectActiveOffset, 2), 0) != 0x0000;
                 ObjectSlots[index].IsActive = isActive;
                 ObjectSlots[index].Address = currentAddress;
+
+                if (isActive)
+                    activeObjCnt++;
 
                 var behaviorScriptAdd = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorScriptOffset, 4), 0)
                     & 0x0FFFFFFF;
@@ -351,8 +356,8 @@ namespace SM64_Diagnostic.ManagerClasses
                 {
                     _objManager.BackColor = newColor;
                     _objManager.Behavior = (behaviorScriptAdd + ObjectImageAssoc.RamOffset) & 0x00FFFFFF;
-                    _objManager.SlotIndex = index;
-                    _objManager.SlotPos = _memoryAddressSlotIndex[currentAddress];
+                    _objManager.SlotIndex = _memoryAddressSlotIndex[currentAddress] + (_config.SlotIndexsFromOne ? 1 : 0); 
+                    _objManager.SlotPos = objectData.ProcessIndex + (_config.SlotIndexsFromOne ? 1 : 0);
                     _objManager.Name = ObjectImageAssoc.GetObjectName(behaviorScriptAdd);
                     _objManager.Image = ObjectSlots[index].Image;
                     _objManager.Update();   
@@ -392,6 +397,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     }
                 }
             }
+            _objManager.ActiveObjectCount = activeObjCnt;
             ObjectSlotData = newObjectSlotData;
         }
 
