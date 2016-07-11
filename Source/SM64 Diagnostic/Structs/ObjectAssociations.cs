@@ -27,7 +27,6 @@ namespace SM64_Diagnostic.Structs
         public Image CameraImage;
         public Image HolpImage;
         public Image MarioMapImage;
-        public Image CameraImage;
         public Color MarioColor;
         public Color HudColor;
         public Color CameraColor;
