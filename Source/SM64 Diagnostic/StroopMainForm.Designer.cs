@@ -73,12 +73,12 @@
             this.flowLayoutPanelCamera = new System.Windows.Forms.FlowLayoutPanel();
             this.panelCameraBorder = new System.Windows.Forms.Panel();
             this.pictureBoxCamera = new System.Windows.Forms.PictureBox();
-            this.tabPageOther = new System.Windows.Forms.TabPage();
+            this.tabPageExpressions = new System.Windows.Forms.TabPage();
             this.checkBoxAbsoluteAddress = new System.Windows.Forms.CheckBox();
             this.buttonOtherDelete = new System.Windows.Forms.Button();
             this.buttonOtherModify = new System.Windows.Forms.Button();
             this.buttonOtherAdd = new System.Windows.Forms.Button();
-            this.dataGridViewOther = new System.Windows.Forms.DataGridView();
+            this.dataGridViewExpressions = new System.Windows.Forms.DataGridView();
             this.tabPageDisassembly = new System.Windows.Forms.TabPage();
             this.buttonDisGo = new System.Windows.Forms.Button();
             this.maskedTextBoxDisStart = new System.Windows.Forms.MaskedTextBox();
@@ -130,8 +130,8 @@
             this.tabPageCamera.SuspendLayout();
             this.panelCameraBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
-            this.tabPageOther.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOther)).BeginInit();
+            this.tabPageExpressions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressions)).BeginInit();
             this.tabPageDisassembly.SuspendLayout();
             this.tabPageMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).BeginInit();
@@ -325,7 +325,7 @@
             this.tabControlMain.Controls.Add(this.tabPageMario);
             this.tabControlMain.Controls.Add(this.tabPageHud);
             this.tabControlMain.Controls.Add(this.tabPageCamera);
-            this.tabControlMain.Controls.Add(this.tabPageOther);
+            this.tabControlMain.Controls.Add(this.tabPageExpressions);
             this.tabControlMain.Controls.Add(this.tabPageDisassembly);
             this.tabControlMain.Controls.Add(this.tabPageMap);
             this.tabControlMain.Controls.Add(this.tabPageOptions);
@@ -673,20 +673,20 @@
             this.pictureBoxCamera.TabIndex = 0;
             this.pictureBoxCamera.TabStop = false;
             // 
-            // tabPageOther
+            // tabPageExpressions
             // 
-            this.tabPageOther.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageOther.Controls.Add(this.checkBoxAbsoluteAddress);
-            this.tabPageOther.Controls.Add(this.buttonOtherDelete);
-            this.tabPageOther.Controls.Add(this.buttonOtherModify);
-            this.tabPageOther.Controls.Add(this.buttonOtherAdd);
-            this.tabPageOther.Controls.Add(this.dataGridViewOther);
-            this.tabPageOther.Location = new System.Drawing.Point(4, 22);
-            this.tabPageOther.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageOther.Name = "tabPageOther";
-            this.tabPageOther.Size = new System.Drawing.Size(773, 208);
-            this.tabPageOther.TabIndex = 2;
-            this.tabPageOther.Text = "Other";
+            this.tabPageExpressions.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageExpressions.Controls.Add(this.checkBoxAbsoluteAddress);
+            this.tabPageExpressions.Controls.Add(this.buttonOtherDelete);
+            this.tabPageExpressions.Controls.Add(this.buttonOtherModify);
+            this.tabPageExpressions.Controls.Add(this.buttonOtherAdd);
+            this.tabPageExpressions.Controls.Add(this.dataGridViewExpressions);
+            this.tabPageExpressions.Location = new System.Drawing.Point(4, 22);
+            this.tabPageExpressions.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageExpressions.Name = "tabPageExpressions";
+            this.tabPageExpressions.Size = new System.Drawing.Size(773, 208);
+            this.tabPageExpressions.TabIndex = 2;
+            this.tabPageExpressions.Text = "Expressions";
             // 
             // checkBoxAbsoluteAddress
             // 
@@ -736,27 +736,27 @@
             this.buttonOtherAdd.UseVisualStyleBackColor = true;
             this.buttonOtherAdd.Click += new System.EventHandler(this.buttonOtherAdd_Click);
             // 
-            // dataGridViewOther
+            // dataGridViewExpressions
             // 
-            this.dataGridViewOther.AllowUserToAddRows = false;
-            this.dataGridViewOther.AllowUserToDeleteRows = false;
-            this.dataGridViewOther.AllowUserToResizeRows = false;
+            this.dataGridViewExpressions.AllowUserToAddRows = false;
+            this.dataGridViewExpressions.AllowUserToDeleteRows = false;
+            this.dataGridViewExpressions.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewOther.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewOther.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewOther.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewOther.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOther.Location = new System.Drawing.Point(2, 2);
-            this.dataGridViewOther.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridViewOther.Name = "dataGridViewOther";
-            this.dataGridViewOther.RowTemplate.Height = 20;
-            this.dataGridViewOther.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridViewOther.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOther.Size = new System.Drawing.Size(771, 178);
-            this.dataGridViewOther.TabIndex = 0;
-            this.dataGridViewOther.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOther_CellMouseDoubleClick);
+            this.dataGridViewExpressions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewExpressions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewExpressions.Location = new System.Drawing.Point(2, 2);
+            this.dataGridViewExpressions.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewExpressions.Name = "dataGridViewExpressions";
+            this.dataGridViewExpressions.RowTemplate.Height = 20;
+            this.dataGridViewExpressions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewExpressions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewExpressions.Size = new System.Drawing.Size(771, 178);
+            this.dataGridViewExpressions.TabIndex = 0;
+            this.dataGridViewExpressions.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOther_CellMouseDoubleClick);
             // 
             // tabPageDisassembly
             // 
@@ -1161,9 +1161,9 @@
             this.tabPageCamera.ResumeLayout(false);
             this.panelCameraBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).EndInit();
-            this.tabPageOther.ResumeLayout(false);
-            this.tabPageOther.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOther)).EndInit();
+            this.tabPageExpressions.ResumeLayout(false);
+            this.tabPageExpressions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressions)).EndInit();
             this.tabPageDisassembly.ResumeLayout(false);
             this.tabPageDisassembly.PerformLayout();
             this.tabPageMap.ResumeLayout(false);
@@ -1211,12 +1211,12 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMario;
         private System.Windows.Forms.Panel panelMarioBorder;
         private System.Windows.Forms.PictureBox pictureBoxMario;
-        private System.Windows.Forms.TabPage tabPageOther;
+        private System.Windows.Forms.TabPage tabPageExpressions;
         private System.Windows.Forms.CheckBox checkBoxAbsoluteAddress;
         private System.Windows.Forms.Button buttonOtherDelete;
         private System.Windows.Forms.Button buttonOtherModify;
         private System.Windows.Forms.Button buttonOtherAdd;
-        private System.Windows.Forms.DataGridView dataGridViewOther;
+        private System.Windows.Forms.DataGridView dataGridViewExpressions;
         private System.Windows.Forms.TabPage tabPageDisassembly;
         private System.Windows.Forms.Button buttonDisGo;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxDisStart;
