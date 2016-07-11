@@ -1167,9 +1167,11 @@
   </Object>
   <Object behaviorScriptAddress="0x13004284" name="Short Wooden Board">
     <Image path="Short Wooden Board.png"/>
+	<MapImage path="Short Wooden Board Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130042B4" name="Long Wooden Board">
     <Image path="Long Wooden Board.png"/>
+	<MapImage path="Long Wooden Board Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130042E4" name="JRB Wooden Board">
     <Image path="JRB Wooden Board.png"/>

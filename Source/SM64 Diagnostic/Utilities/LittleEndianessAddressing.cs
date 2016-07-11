@@ -20,5 +20,18 @@ namespace SM64_Diagnostic.Utilities
                     return address;
             }
         }
+
+        public static uint AddressFix(uint address, int dataSize)
+        {
+            switch (dataSize)
+            {
+                case 1:
+                    return (uint)(address & 0xFFFFFFFC) | (0x03 - (address & 0x03));
+                case 2:
+                    return (uint)(address & 0xFFFFFFFD) | (0x02 - (address & 0x02));
+                default:
+                    return address;
+            }
+        }
     }
 }

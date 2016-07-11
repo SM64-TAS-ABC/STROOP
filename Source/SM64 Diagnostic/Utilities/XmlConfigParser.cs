@@ -194,6 +194,12 @@ namespace SM64_Diagnostic.Utilities
                                 case "HoldingObjectPointerOffset":
                                     config.Mario.HoldingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "CeilingYOffset":
+                                    config.Mario.CeilingYOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "GroundYOffset":
+                                    config.Mario.GroundYOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;
@@ -234,6 +240,9 @@ namespace SM64_Diagnostic.Utilities
                         break;
                     case "CameraRot":
                         config.CameraRot = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "RngRecordingAreaAddress":
+                        config.RngRecordingAreaAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
                 }
             }
@@ -280,7 +289,7 @@ namespace SM64_Diagnostic.Utilities
 
             // Load and validate document
             var doc = XDocument.Load(path);
-            //doc.Validate(schemaSet, Validation);
+            doc.Validate(schemaSet, Validation);
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -310,7 +319,7 @@ namespace SM64_Diagnostic.Utilities
 
             // Load and validate document
             var doc = XDocument.Load(path);
-            //doc.Validate(schemaSet, Validation);
+            doc.Validate(schemaSet, Validation);
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -320,6 +329,61 @@ namespace SM64_Diagnostic.Utilities
                 var watchVar = GetWatchVariableFromElement(element);
                 watchVar.OtherOffset = (element.Attribute(XName.Get("marioOffset")) != null) ?
                     bool.Parse(element.Attribute(XName.Get("marioOffset")).Value) : false;
+
+                objectData.Add(watchVar);
+            }
+
+            return objectData;
+        }
+
+        public static List<WatchVariable> OpenHudData(Config config, string path)
+        {
+            var objectData = new List<WatchVariable>();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/HudDataSchema.xsd", "HudDataSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                if (element.Name.ToString() != "Data")
+                    continue;
+
+                var watchVar = GetWatchVariableFromElement(element);
+                objectData.Add(watchVar);
+            }
+
+            return objectData;
+        }
+
+        public static List<WatchVariable> OpenCameraData(Config config, string path)
+        {
+            var objectData = new List<WatchVariable>();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/CameraDataSchema.xsd", "CameraDataSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                if (element.Name.ToString() != "Data")
+                    continue;
+
+                var watchVar = GetWatchVariableFromElement(element);
 
                 objectData.Add(watchVar);
             }
@@ -343,9 +407,10 @@ namespace SM64_Diagnostic.Utilities
             doc.Validate(schemaSet, Validation);
 
             // Create Behavior-ImagePath list
-            var behaviorImageAssoc = new Dictionary<uint, Tuple<string, string, bool, string>>();
-            string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", 
-                marioImagePath = "", marioMapImagePath = "", holpMapImagePath = "" , cameraMapImagePath = "";
+            var behaviorImageAssoc = new Dictionary<uint, Tuple<string, string>>();
+            string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "",
+                marioImagePath = "", holpMapImagePath = "", hudImagePath = "", cameraImagePath = "",
+                marioMapImagePath = "", cameraMapImagePath = "";
             var usedBehaviors = new List<uint>();
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
@@ -387,6 +452,16 @@ namespace SM64_Diagnostic.Utilities
                         marioBehavior = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
                         break;
 
+                    case "Hud":
+                        hudImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
+                        assoc.HudColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
+                            break;
+
+                    case "Camera":
+                        cameraImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
+                        assoc.CameraColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
+                        break;
+
                     case "Holp":
                         holpMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
@@ -419,7 +494,9 @@ namespace SM64_Diagnostic.Utilities
             assoc.DefaultImage = Bitmap.FromFile(imageDir + defaultImagePath);
             assoc.EmptyImage = Bitmap.FromFile(imageDir + emptyImagePath);
             assoc.MarioImage = Bitmap.FromFile(imageDir + marioImagePath);
+            assoc.CameraImage = Bitmap.FromFile(imageDir + cameraImagePath);
             assoc.MarioMapImage = marioMapImagePath == "" ? assoc.MarioImage : Bitmap.FromFile(imageDir + marioMapImagePath);
+            assoc.HudImage = Bitmap.FromFile(imageDir + hudImagePath);
             assoc.HolpImage = Bitmap.FromFile(mapImageDir + holpMapImagePath);
             assoc.CameraImage = Bitmap.FromFile(mapImageDir + cameraMapImagePath);
             assoc.MarioBehavior = marioBehavior - ramToBehaviorOffset;
@@ -569,7 +646,7 @@ namespace SM64_Diagnostic.Utilities
                     case "Script":
                         string scriptPath = element.Attribute(XName.Get("path")).Value;
                         uint insertAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("insertAddress")).Value);
-                        parser.AddScript(scriptDir + scriptPath, insertAddress);
+                        parser.AddScript(scriptDir + scriptPath, insertAddress, 0, 0);
                         break;
                 }
             }

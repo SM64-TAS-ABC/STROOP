@@ -15,7 +15,13 @@
   <Holp>
     <MapImage path="HOLP.png"/>
   </Holp>
+  <Hud>
+    <Image path="HUD.png"/>
+    <Color>#aaaaaa</Color>
+  </Hud>
   <Camera>
+    <Image path="Camera.png"/>
+    <Color>#aaaaaa</Color>
     <MapImage path="Camera.png"/>
   </Camera>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">

@@ -14,12 +14,14 @@ namespace SM64_Diagnostic.Structs
         public List<GameScript> Scripts = new List<GameScript>();
         public uint FreeMemoryArea;
 
-        public void AddScript(string scriptFile, uint insertAddress)
+        public void AddScript(string scriptFile, uint insertAddress, byte reg1, byte reg2)
         {
             var newScript = new GameScript();
             newScript.Allocated = false;
             newScript.ExecuteMode = ExecuteModeType.Always;
             newScript.InsertAddress = insertAddress;
+            newScript.Reg1 = reg1;
+            newScript.Reg2 = reg2;
 
             string[] scriptLines = File.ReadAllLines(scriptFile);
             string fullScript = "";

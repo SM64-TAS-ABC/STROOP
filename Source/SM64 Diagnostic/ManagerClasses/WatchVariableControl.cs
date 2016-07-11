@@ -151,12 +151,12 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (!_watchVar.OtherOffset)
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
-                        _watchVar.Address, _watchVar.GetProcessAddress(_stream, _watchVar.Address), _stream.ProcessName));
+                        _watchVar.GetRamAddress(_stream), _watchVar.GetProcessAddress(_stream, 0), _stream.ProcessName));
                 }
                 else
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{1:X8} + 0x{0:X8} = 0x{2:X8} [{4} + 0x{3:X8}]",
-                        _watchVar.Address, OtherOffset, _watchVar.GetRamAddress(OtherOffset), 
+                        _watchVar.GetRamAddress(_stream, false), OtherOffset, _watchVar.GetRamOffsetAddress(_stream, OtherOffset), 
                         _watchVar.GetProcessAddress(_stream, OtherOffset), _stream.ProcessName));
                 }
             };
@@ -179,6 +179,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 this._textBoxValue.ContextMenuStrip = _watchVar.IsAngle ? WatchVariableControl.AngleMenu : WatchVariableControl.Menu;
                 this._textBoxValue.KeyDown += OnTextValueKeyDown;
                 this._textBoxValue.MouseEnter += _textBoxValue_MouseEnter;
+                this._textBoxValue.DoubleClick += _textBoxValue_DoubleClick;
                 this._textBoxValue.Leave += (sender, e) => { _editMode = false; this._textBoxValue.ReadOnly = true; };
                 if (_watchVar.IsAngle)
                 {
@@ -203,6 +204,13 @@ namespace SM64_Diagnostic.ManagerClasses
             this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
             this._tablePanel.Controls.Add(_nameLabel, 0, 0);
             this._tablePanel.Controls.Add(_watchVar.IsBool ? this._checkBoxBool as Control: this._textBoxValue, 1, 0);
+        }
+
+        private void _textBoxValue_DoubleClick(object sender, EventArgs e)
+        {
+            _textBoxValue.ReadOnly = false;
+            _textBoxValue.Focus();
+            _editMode = true;
         }
 
         private void _textBoxValue_MouseEnter(object sender, EventArgs e)
@@ -318,7 +326,10 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _textBoxValue.ReadOnly = true;
             _editMode = false;
-            _watchVar.SetStringValue(_stream, OtherOffset, _textBoxValue.Text);
+            if (_watchVar.IsAngle)
+                _watchVar.SetAngleStringValue(_stream, OtherOffset, _textBoxValue.Text, AngleViewMode);
+            else
+                _watchVar.SetStringValue(_stream, OtherOffset, _textBoxValue.Text);
         }
     }
 }

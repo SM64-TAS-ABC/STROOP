@@ -11,8 +11,12 @@ namespace SM64_Diagnostic.Structs
     {
         public uint[] Script;
         public uint InsertAddress;
+        public byte Reg1;
+        public byte Reg2;
         public ExecuteModeType ExecuteMode;
         public uint ExecutionSpace;
+        public byte[] JumpInstBytes;
+        public uint JumpInstr;
         public uint PostInstrSpace;
         public bool Allocated;
     }
