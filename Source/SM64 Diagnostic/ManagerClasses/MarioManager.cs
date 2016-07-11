@@ -50,9 +50,6 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _heightBelowCeil = new DataContainer("Dis Below Ceil");
             variableTable.Controls.Add(_heightBelowCeil.Control);
-
-            // Generate rng value to index table
-            GenerateRngTable();
         }
 
         public void Update(bool updateView)
@@ -109,7 +106,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 watchVar.Update();
 
             // Update the rng index
-            int rngIndex = GetRngIndex();
+            int rngIndex = RngIndexer.GetRngIndex(BitConverter.ToUInt16(_stream.ReadRam(_config.RngAddress, 2), 0));
             _rngIndex.Text = (rngIndex < 0) ? "N/A [" + (-rngIndex).ToString() + "]" : rngIndex.ToString();
 
             _rngPerFrame.Text = GetRngCallsPerFrame().ToString();

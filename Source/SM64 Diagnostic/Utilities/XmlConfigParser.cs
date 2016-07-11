@@ -244,6 +244,9 @@ namespace SM64_Diagnostic.Utilities
                     case "RngRecordingAreaAddress":
                         config.RngRecordingAreaAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
+                    case "RngAddress":
+                        config.RngAddress = ParsingUtilities.ParseHex(element.Value);
+                        break;
                 }
             }
 
@@ -407,7 +410,7 @@ namespace SM64_Diagnostic.Utilities
             doc.Validate(schemaSet, Validation);
 
             // Create Behavior-ImagePath list
-            var behaviorImageAssoc = new Dictionary<uint, Tuple<string, string>>();
+            var behaviorImageAssoc = new Dictionary<uint, Tuple<string, string, bool, string>>();
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "",
                 marioImagePath = "", holpMapImagePath = "", hudImagePath = "", cameraImagePath = "",
                 marioMapImagePath = "", cameraMapImagePath = "";
@@ -460,14 +463,11 @@ namespace SM64_Diagnostic.Utilities
                     case "Camera":
                         cameraImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                         assoc.CameraColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
+                        cameraMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "Holp":
                         holpMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
-                        break;
-
-                    case "Camera":
-                        cameraMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "Object":
@@ -484,7 +484,7 @@ namespace SM64_Diagnostic.Utilities
                         if (usedBehaviors.Contains(behaviorAddress))
                             throw new Exception("More than one behavior address was defined.");
                         usedBehaviors.Add(behaviorAddress);
-                        behaviorImageAssoc.Add(behaviorAddress, Tuple.Create<string,string,bool, string>(imagePath, mapImagePath, rotates, name));
+                        behaviorImageAssoc.Add(behaviorAddress, Tuple.Create<string,string, bool, string>(imagePath, mapImagePath, rotates, name));
                         break;
                 }
             }
@@ -495,7 +495,7 @@ namespace SM64_Diagnostic.Utilities
             assoc.EmptyImage = Bitmap.FromFile(imageDir + emptyImagePath);
             assoc.MarioImage = Bitmap.FromFile(imageDir + marioImagePath);
             assoc.CameraImage = Bitmap.FromFile(imageDir + cameraImagePath);
-            assoc.MarioMapImage = marioMapImagePath == "" ? assoc.MarioImage : Bitmap.FromFile(imageDir + marioMapImagePath);
+            assoc.MarioMapImage = marioMapImagePath == "" ? assoc.MarioImage : Bitmap.FromFile(mapImageDir + marioMapImagePath);
             assoc.HudImage = Bitmap.FromFile(imageDir + hudImagePath);
             assoc.HolpImage = Bitmap.FromFile(mapImageDir + holpMapImagePath);
             assoc.CameraImage = Bitmap.FromFile(mapImageDir + cameraMapImagePath);

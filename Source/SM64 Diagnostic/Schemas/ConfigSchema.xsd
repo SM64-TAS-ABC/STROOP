@@ -99,6 +99,7 @@
         <xs:element name="CameraY" type="types:address"/>
         <xs:element name="CameraZ" type="types:address"/>
         <xs:element name="CameraRot" type="types:address"/>
+        <xs:element name="RngAddress" type="types:address"/>
         <xs:element name="RngRecordingAreaAddress" type="types:address"/>
       </xs:all>
     </xs:complexType>

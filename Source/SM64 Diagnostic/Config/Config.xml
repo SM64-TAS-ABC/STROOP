@@ -71,5 +71,6 @@
   <AreaAddress>0x8033B24A</AreaAddress>
   <LoadingPointAddress>0x8033BACA</LoadingPointAddress>
   <MissionLayoutAddress>0x8033BAC8</MissionLayoutAddress>
+  <RngAddress>0x8038EEE0</RngAddress>
   <RngRecordingAreaAddress>0x803e0000</RngRecordingAreaAddress>
 </Config>

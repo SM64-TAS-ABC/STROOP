@@ -523,7 +523,7 @@
     <Content Include="Resources\Maps\Object Images\Big Bully Top.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Maps\Object Images\Bird Top.png.png">
+    <Content Include="Resources\Maps\Object Images\Bird Top.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Maps\Object Images\BitS Seesaw Platform Top.png">
@@ -670,7 +670,7 @@
     <Content Include="Resources\Maps\Object Images\Item Block Top.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Maps\Object Images\JRB Rock Top.png.png">
+    <Content Include="Resources\Maps\Object Images\JRB Rock Top.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Maps\Object Images\King Bob-omb Top.png">
@@ -685,7 +685,7 @@
     <Content Include="Resources\Maps\Object Images\Koopa Top.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Maps\Object Images\Laktiu Top.png">
+    <Content Include="Resources\Maps\Object Images\Lakitu Top.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Maps\Object Images\LLL Back and Forth Platform Top.png">
