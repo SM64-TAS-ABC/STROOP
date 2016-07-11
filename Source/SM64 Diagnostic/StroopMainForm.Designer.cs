@@ -1,6 +1,6 @@
 ﻿namespace SM64_Diagnostic
 {
-    partial class SM64DiagnosticForm
+    partial class StroopMainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SM64DiagnosticForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxProcessSelection = new System.Windows.Forms.ComboBox();
             this.labelProcessSelect = new System.Windows.Forms.Label();
@@ -1128,7 +1128,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SM64DiagnosticForm";
             this.Text = "Stroop";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.StroopMainForm_Load);
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).EndInit();

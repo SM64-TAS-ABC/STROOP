@@ -11,12 +11,11 @@ using System.Diagnostics;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.ManagerClasses;
-using OpenTK;
 using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic
 {
-    public partial class SM64DiagnosticForm : Form
+    public partial class StroopMainForm : Form
     {
         ProcessStream _sm64Stream = null;
         Config _config;
@@ -46,7 +45,7 @@ namespace SM64_Diagnostic
         bool _splitterIsExpanded = false;
         static int _defaultSplitValue;
 
-        public SM64DiagnosticForm()
+        public StroopMainForm()
         {
             InitializeComponent();
         }
@@ -68,7 +67,7 @@ namespace SM64_Diagnostic
             AttachToProcess(((ProcessSelection)(comboBoxProcessSelection.SelectedItem)).Process);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void StroopMainForm_Load(object sender, EventArgs e)
         {
            // Temp: Remove "Other" tab
 #if RELEASE

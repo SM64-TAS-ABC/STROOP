@@ -27,9 +27,9 @@ namespace SM64_Diagnostic.ManagerClasses
         Dictionary<uint, string> _lastSlotLabel = new Dictionary<uint, string>();
         int _selectedSlot;
 
-        List<byte> _toggleGroups = new List<byte>();
-        List<uint> _toggleBehaviors = new List<uint>();
-        List<uint> _toggleSlots = new List<uint>();
+        List<byte> _toggleMapGroups = new List<byte>();
+        List<uint> _toggleMapBehaviors = new List<uint>();
+        List<uint> _toggleMapSlots = new List<uint>();
 
         public uint? SelectedAddress = null;
         public const byte VacantGroup = 0xFF;
@@ -137,28 +137,28 @@ namespace SM64_Diagnostic.ManagerClasses
                     {
                         case MapToggleModeType.Single:
                             var address = GetObjectDataFromSlot(slotIndex).Address;
-                            if (_toggleSlots.Contains(address))
-                                _toggleSlots.Remove(address);
+                            if (_toggleMapSlots.Contains(address))
+                                _toggleMapSlots.Remove(address);
                             else
-                                _toggleSlots.Add(address);
+                                _toggleMapSlots.Add(address);
 
                             UpdateSelectedObjectSlots();
                             break;
                         case MapToggleModeType.ObjectType:
                             var behavior = ObjectSlots[slotIndex].Behavior;
-                            if (_toggleBehaviors.Contains(behavior))
-                                _toggleBehaviors.Remove(behavior);
+                            if (_toggleMapBehaviors.Contains(behavior))
+                                _toggleMapBehaviors.Remove(behavior);
                             else
-                                _toggleBehaviors.Add(behavior);
+                                _toggleMapBehaviors.Add(behavior);
 
                             UpdateSelectedObjectSlots();
                             break;
                         case MapToggleModeType.ProcessGroup:
                             var group = ObjectSlots[slotIndex].ProcessGroup;
-                            if (_toggleGroups.Contains(group))
-                                _toggleGroups.Remove(group);
+                            if (_toggleMapGroups.Contains(group))
+                                _toggleMapGroups.Remove(group);
                             else
-                                _toggleGroups.Add(group);
+                                _toggleMapGroups.Add(group);
 
                             UpdateSelectedObjectSlots();
                             break;
@@ -211,9 +211,9 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             for (int index = 0; index < ObjectSlots.Length; index++)
             {
-                bool selected = !_toggleGroups.Contains(ObjectSlots[index].ProcessGroup)
-                    && !_toggleBehaviors.Contains(ObjectSlots[index].Behavior)
-                    && !_toggleSlots.Contains(ObjectSlots[index].Address);
+                bool selected = !_toggleMapGroups.Contains(ObjectSlots[index].ProcessGroup)
+                    && !_toggleMapBehaviors.Contains(ObjectSlots[index].Behavior)
+                    && !_toggleMapSlots.Contains(ObjectSlots[index].Address);
 
                 ObjectSlots[index].Selected = selected;
             }
@@ -347,9 +347,17 @@ namespace SM64_Diagnostic.ManagerClasses
                     groupConfig.ProcessingGroupsColor[objectData.ObjectProcessGroup];
                 ObjectSlots[index].BackColor = newColor;
 
-                ObjectSlots[index].Text = (SortMethod == SortMethodType.ProcessingOrder && objectData.VacantSlotIndex.HasValue) ?
-                    String.Format("VS{0}", objectData.VacantSlotIndex.Value + (_config.SlotIndexsFromOne ? 1 : 0)) 
+                var labelText = (SortMethod == SortMethodType.ProcessingOrder && objectData.VacantSlotIndex.HasValue) ?
+                    String.Format("VS{0}", objectData.VacantSlotIndex.Value + (_config.SlotIndexsFromOne ? 1 : 0))
                     : (objectData.Index + (_config.SlotIndexsFromOne ? 1 : 0)).ToString();
+                if (ManagerGui.LockLabelsCheckbox.Checked)
+                {
+                    if (!_lastSlotLabel.ContainsKey(currentAddress))
+                        _lastSlotLabel.Add(currentAddress, labelText);
+                    else
+                        _lastSlotLabel[currentAddress] = labelText;
+                }
+                ObjectSlots[index].Text = ManagerGui.LockLabelsCheckbox.Checked ? _lastSlotLabel[currentAddress] : labelText;
 
                 // Update object manager image
                 if (SelectedAddress.HasValue && SelectedAddress.Value == currentAddress)
@@ -388,8 +396,8 @@ namespace SM64_Diagnostic.ManagerClasses
                     else
                     {
                         // Update map object coordinates and rotation
-                        _mapObjects[currentAddress].Show = !_toggleBehaviors.Contains(behaviorScriptAdd)
-                            && !_toggleGroups.Contains(processGroup) && !_toggleSlots.Contains(currentAddress);
+                        _mapObjects[currentAddress].Show = !_toggleMapBehaviors.Contains(behaviorScriptAdd)
+                            && !_toggleMapGroups.Contains(processGroup) && !_toggleMapSlots.Contains(currentAddress);
                         _mapObjects[currentAddress].X = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
                         _mapObjects[currentAddress].Y = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
                         _mapObjects[currentAddress].Z = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectZOffset, 4), 0);
