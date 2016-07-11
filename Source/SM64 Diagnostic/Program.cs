@@ -17,7 +17,7 @@ namespace SM64_Diagnostic
             SetProcessDPIAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SM64DiagnosticForm());
+            Application.Run(new StroopMainForm());
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
