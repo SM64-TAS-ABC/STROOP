@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CameraData>
+  <Data type="byte" address="0x00C28106" absoluteAddress="true" isBool="true" mask="0x0001" >Mario Cam</Data>
+  <Data type="byte" address="0x00C28106" absoluteAddress="true" isBool="true" mask="0x0004" >Mario Cam Mode</Data>
+  <Data type="byte" address="0x00C2810E" absoluteAddress="true" isBool="true" mask="0x0020" >Fixed Cam</Data>
+  <Data type="byte" address="0x00C282CA" absoluteAddress="true" isBool="true" mask="0x0002" >Far Cam</Data>
+  <Data type="byte" address="0x00C282CB" absoluteAddress="true" isBool="true" mask="0x0020" >Close Cam</Data>
+  <Data type="float" address="0x8033C6A4">Camera X</Data>
+  <Data type="float" address="0x8033C6A8">Camera Y</Data>
+  <Data type="float" address="0x8033C6AC">Camera Z</Data>
+  <Data type="uint16" address="0x8033C6E6" isAngle="true">Cam Hor Ang</Data>
+  <Data type="uint16" address="0x8033C6E4" isAngle="true">Cam Vert Ang</Data>
+  <Data type="uint16" address="0x8033C704" isAngle="true">Cam Centr Ang</Data>
+</CameraData>

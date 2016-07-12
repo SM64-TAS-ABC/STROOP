@@ -5,7 +5,7 @@
 /*
 Memory Table (0x803e0000)
 
-[0-3]: bool isValid
+[0-3]: uint counter
 [4-7]: ushort tempValue
 [8-B]: ushort nextObjRngValuesPtr
 [C-D]: ushort framePreviousValue 
@@ -16,31 +16,36 @@ Memory Table (0x803e0000)
 currentRng = (ushort) *0x8038EEE0
 */
 
-// [a0 = 0x803e0000]
-// LUI a0, 0x803e
-// ORI a0, a0, 0x00
-
-// [isValid = false]
-// ANDI a1, a1, 0x00
-// SW a1, a0(0x00) 
+// [t8 = 0x803e0000]
+// LUI t8, 0x803e
+// ORI t8, t8, 0x00
+3C 18 80 3E
+37 18 00 00
 
 // [framePreviousValue = frameCurrentValue]
-// LHU a1, a0(0x0E)
-// SH a1, a0(0x0C)
+// LHU t7, t8(0x0E)
+// SH t7, t8(0x0C)
+97 17 00 0E
+A7 17 00 0C
 
 // [frameCurrentValue = currentRng] 
-// LUI a1, 0x8038
-// ORI a1, a1, 0xEEE0
-// LHU a1, a1(0x00)
-// SH a1, a0(0x0E)
+// LUI t7, 0x8038
+// ORI t7, t7, 0xEEE0
+// LHU t7, t7(0x00)
+// SH t7, t8(0x0E)
+3C 17 80 38
+36 F7 EE E0
+96 F7 00 00
+A7 17 00 0E
 
-// [isValid = true]
-// ANDI a1, a1, 0x00
-// ORI a1, a1, 0x01
-// SW a1, a0(0x00)
+// [nextObjRngValuesPtr = 0x803e0008]
+// LUI t7, 0x803e
+// ORI t7, t7, 0x10
+// SW t7, t8(0x08)
+3C 17 80 3E
+36 F7 00 10
+AF 17 00 08
 
-// [nextObjRngValuesPtr = 0x803e000C]
-// LUI a1, 0x803e
-// ORI a1, a1, 0x10
-// SW a1, a0(0x08)
-
+// [counter = 0]
+// SW r0, t8(0)
+AF 10 00 00
