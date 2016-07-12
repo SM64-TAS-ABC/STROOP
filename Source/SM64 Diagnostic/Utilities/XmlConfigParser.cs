@@ -112,6 +112,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "CoordinateOffsetZ":
                                     config.ObjectSlots.ObjectZOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "RotationOffset":
+                                    config.ObjectSlots.ObjectRotationOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "MoveToMarioYOffset":
                                     config.ObjectSlots.MoveToMarioYOffset = float.Parse(subElement.Value);
                                     break;

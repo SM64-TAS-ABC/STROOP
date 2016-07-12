@@ -92,7 +92,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     continue;
 
                 // Draw the map object
-                DrawTexture(mapObj.TextureId, mapObj.LocationOnContol, new SizeF(_renderIconSize, _renderIconSize), mapObj.Rotation);
+                DrawTexture(mapObj.TextureId, mapObj.LocationOnContol, ScaleImageSize(mapObj.Image.Size, _renderIconSize), mapObj.Rotation);
             }
 
             Control.SwapBuffers();
@@ -108,7 +108,12 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             _renderIconSize = Math.Min(Control.Height, Control.Width) / 500f * IconSize;
         }
-
+        
+        private SizeF ScaleImageSize(Size imageSize, float desiredSize)
+        {
+            float scale = Math.Max(imageSize.Height / desiredSize, imageSize.Width / desiredSize);
+            return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
+        }
         private void SetupViewport()
         {
             int w = Control.Width;
