@@ -16,13 +16,19 @@ Memory Table (0x803e0000)
 currentRng = (ushort) *0x8038EEE0
 */
 
-// [a0 = 0x803e0000]
-// LUI a0, 0x803e
-// ORI a0, a0, 0x00
+// [t8 = 0x803e0000]
+// LUI t8, 0x803e
+// ORI t8, t8, 0x00
+3C 18 80 3E
+37 18 00 00
 
-// [tempValue = currentRng]
-// LUI a1, 0x8038
-// ORI a1, a1, 0xEEE0
-// LHU a1, a1(0x00)
-// SH a1, a0(0x04)
+// [temp = currentRng]
+// LUI t9, 0x8038
+// ORI t9, t9, 0xEEE0
+// LHU t9, t9(0x00)
+// SH t9, t8(0x04)
+3C 19 80 38
+37 39 EE E0
+97 39 00 00
+A7 19 00 04
 

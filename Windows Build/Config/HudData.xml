@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HudData>
+  <Data type="uint16" address="0x00C26C98" absoluteAddress="true">Stars HUD</Data>
+  <Data type="uint16" address="0x00C26C9A" absoluteAddress="true">Coins</Data>
+  <Data type="uint16" address="0x00C26C9C" absoluteAddress="true">HP</Data>
+  <Data type="byte" address="0x00C26C9C" absoluteAddress="true">HP (Rem)</Data>
+  <Data type="byte" address="0x00C26C9D" absoluteAddress="true">HP (int)</Data>
+  <Data type="uint16" address="0x00C26C9E" absoluteAddress="true">Lives</Data>
+  <Data type="uint16" address="0x00C26CE4" absoluteAddress="true">HP HUD</Data>
+  <Data type="byte" address="0x00C26CE8" absoluteAddress="true" isBool="true" mask="0x40">HUD Time</Data>
+  <Data type="byte" address="0x00C26CE8" absoluteAddress="true" isBool="true" mask="0x01">HUD Lives</Data>
+  <Data type="byte" address="0x00C26CE8" absoluteAddress="true" isBool="true" mask="0x02">HUD Coins</Data>
+  <Data type="byte" address="0x00C26CE8" absoluteAddress="true" isBool="true" mask="0x04">HUD Stars</Data>
+  <Data type="byte" address="0x00C26CE8" absoluteAddress="true" isBool="true" mask="0x08">HUD Camera</Data>
+</HudData>
