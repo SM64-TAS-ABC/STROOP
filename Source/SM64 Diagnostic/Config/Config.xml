@@ -15,6 +15,7 @@
     <CoordinateOffsetX>0xA0</CoordinateOffsetX>
     <CoordinateOffsetY>0xA4</CoordinateOffsetY>
     <CoordinateOffsetZ>0xA8</CoordinateOffsetZ>
+    <RotationOffset>0xC8</RotationOffset>
     <MaxObjectSlots>240</MaxObjectSlots>
     <MoveToMarioYOffset>300</MoveToMarioYOffset>
   </ObjectSlots>
