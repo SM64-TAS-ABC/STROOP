@@ -7,6 +7,9 @@
   <Data type="float" address="0x4C" marioOffset="true">Y Speed</Data>
   <Data type="float" address="0x50" marioOffset="true">Z Speed</Data>
   <Data type="float" address="0x54" marioOffset="true">H Speed</Data>
+  <Data type="uint16" address="0x00C26C1C" absoluteAddress="true" isAngle="true">Angle (Facing)</Data>
+  <Data type="uint16" address="0x00C26C2A" absoluteAddress="true" isAngle="true">Angle (Moving)</Data>
+  <Data type="uint16" address="0x00C26C16" absoluteAddress="true" isAngle="true">Angle (Intended)</Data>
   <Data type="float" address="0x70" marioOffset="true">Ground Y</Data>
   <Data type="float" address="0x6C" marioOffset="true">Ceiling Y</Data>
   <Data type="uint32" address="0x68" marioOffset="true" useHex="true">Col. Triangle</Data>
@@ -23,6 +26,11 @@
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x20">Hat In Hand</Data>
   <Data type="byte" address="0x00222618" isBool="true" mask="0x20" invertBool="true">Music</Data>
   <Data type="float" address ="0x80222630">Volume</Data>
-  <Data type="uint16" address="0x8038EEE0">RNG Value</Data>
+  <Data type="uint16" address="0x00C26C0A" absoluteAddress="true">Action Phase</Data>
+  <Data type="uint16" address="0x00C26C08" absoluteAddress="true">Action Timer</Data>
+  <Data type="uint16" address="0x00C26C0C" absoluteAddress="true">Squished Timer</Data>
+  <Data type="uint16" address="0x00C26C14" absoluteAddress="true">Hitstun Timer</Data>
   <Data type="float" address="0x00c26cac" absoluteAddress="true">Peak Height</Data>
+  <Data type="uint16" address="0x8038EEE0">RNG Value</Data>
+
 </MarioData>

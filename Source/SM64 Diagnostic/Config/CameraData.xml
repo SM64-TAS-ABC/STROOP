@@ -10,5 +10,5 @@
   <Data type="float" address="0x8033C6AC">Camera Z</Data>
   <Data type="uint16" address="0x8033C6E6" isAngle="true">Cam Hor Ang</Data>
   <Data type="uint16" address="0x8033C6E4" isAngle="true">Cam Vert Ang</Data>
-  <Data type="uint16" address="0x8033C704" isAngle="true">Cam Centr Ang</Data>
+  <Data type="uint16" address="0x8033C714" isAngle="true">Cam Centr Ang</Data>
 </CameraData>
