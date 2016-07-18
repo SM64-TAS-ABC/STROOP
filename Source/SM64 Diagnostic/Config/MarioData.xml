@@ -13,9 +13,10 @@
   <Data type="uint32" address="0x0C" marioOffset="true" useHex="true">Action</Data>
   <Data type="uint32" address="0x8033B1EC" useHex="true">Held Object</Data>
   <Data type="float" address="0x8033B3C8">HOLP X</Data>
-  <Data type="float" address="0x8033B3D0">HOLP Y</Data>
-  <Data type="float" address="0x8033B3D4">HOLP Z</Data>
+  <Data type="float" address="0x8033B3CC">HOLP Y</Data>
+  <Data type="float" address="0x8033B3D0">HOLP Z</Data>
   <Data type="uint32" address="0xC19054" absoluteAddress="true">Global Timer</Data>
+  <Data type="uint16" address="0x00C26CA4" absoluteAddress="true">Cap Timer</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x10">Hat On Head</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x02">Vanish Cap</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x04">Metal Cap</Data>
