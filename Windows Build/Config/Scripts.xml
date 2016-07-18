@@ -2,7 +2,9 @@
 <Scripts>
   <Config>
     <ScriptDirectory>Resources\Scripts\</ScriptDirectory>
-    <FreeMemoryArea>0x803e0400</FreeMemoryArea>
+    <FreeMemoryArea>0x803e1000</FreeMemoryArea>
   </Config>
-  <Script insertAddress="0x8029cd28" path="RNGFrameProc.src64"/>
+  <Script insertAddress="0x8024BCD8" path="RNGFrameProc.src64" />
+  <Script insertAddress="0x80385ce4 " path="RNGObjectStartProc.src64" />
+  <Script insertAddress="0x80385d2C" path="RNGObjectEndProc.src64" />
 </Scripts>

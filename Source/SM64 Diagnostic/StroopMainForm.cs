@@ -17,6 +17,7 @@ namespace SM64_Diagnostic
 {
     public partial class StroopMainForm : Form
     {
+        const string _version = "v0.2.0";
         ProcessStream _sm64Stream = null;
         Config _config;
 
@@ -154,6 +155,7 @@ namespace SM64_Diagnostic
 
             _resizing = false;
             _defaultSplitValue = splitContainerMain.SplitterDistance;
+            labelVersionNumber.Text = _version;
 
             // Load process
             var processes = GetAvailableProcesses();

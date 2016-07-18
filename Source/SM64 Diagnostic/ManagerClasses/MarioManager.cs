@@ -88,8 +88,7 @@ namespace SM64_Diagnostic.ManagerClasses
             cameraX = BitConverter.ToSingle(_stream.ReadRam(_config.CameraX, 4), 0);
             cameraY = BitConverter.ToSingle(_stream.ReadRam(_config.CameraY, 4), 0);
             cameraZ = BitConverter.ToSingle(_stream.ReadRam(_config.CameraZ, 4), 0);
-            cameraRot = (float)(((BitConverter.ToUInt32(_stream.ReadRam(_config.CameraRot, 4), 0)
-                                >> 16) % 65536) / 65536f * 360f);
+            cameraRot = (float)(((UInt16)(BitConverter.ToUInt32(_stream.ReadRam(_config.CameraRot, 4), 0))) / 65536f * 360f);
 
             // Update camera map object position
             _mapManager.CameraMapObject.X = cameraX;

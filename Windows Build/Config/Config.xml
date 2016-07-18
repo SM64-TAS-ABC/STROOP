@@ -15,6 +15,7 @@
     <CoordinateOffsetX>0xA0</CoordinateOffsetX>
     <CoordinateOffsetY>0xA4</CoordinateOffsetY>
     <CoordinateOffsetZ>0xA8</CoordinateOffsetZ>
+    <RotationOffset>0xC8</RotationOffset>
     <MaxObjectSlots>240</MaxObjectSlots>
     <MoveToMarioYOffset>300</MoveToMarioYOffset>
   </ObjectSlots>
@@ -46,6 +47,8 @@
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
     <FacingAngleOffset>0x2A</FacingAngleOffset>
     <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>
+    <CeilingYOffset>0x6C</CeilingYOffset>
+    <GroundYOffset>0x70</GroundYOffset>
     <!--<CurrentFloorTrianglePointerOffset>0x00</CurrentFloorTrianglePointerOffset>-->
     <MarioStructSize>0xC4</MarioStructSize>
     <MoveToObjectYOffset>300</MoveToObjectYOffset>
@@ -61,8 +64,14 @@
   <HolpX>0x8033B3C8</HolpX>
   <HolpY>0x8033B3CC</HolpY>
   <HolpZ>0x8033B3D0</HolpZ>
+  <CameraX>0x8033c6a4</CameraX>
+  <CameraY>0x8033c6a8</CameraY>
+  <CameraZ>0x8033c6aC</CameraZ>
+  <CameraRot>0x8033c6e4</CameraRot>
   <LevelAddress>0x8033B249</LevelAddress>
   <AreaAddress>0x8033B24A</AreaAddress>
   <LoadingPointAddress>0x8033BACA</LoadingPointAddress>
   <MissionLayoutAddress>0x8033BAC8</MissionLayoutAddress>
+  <RngAddress>0x8038EEE0</RngAddress>
+  <RngRecordingAreaAddress>0x803e0000</RngRecordingAreaAddress>
 </Config>
