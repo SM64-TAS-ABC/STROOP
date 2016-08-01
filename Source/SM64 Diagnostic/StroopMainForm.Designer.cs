@@ -105,11 +105,15 @@
             this.trackBarMapZoom = new System.Windows.Forms.TrackBar();
             this.glControlMap = new OpenTK.GLControl();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.labelVersionNumber = new System.Windows.Forms.Label();
-            this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.tabPageDebug = new System.Windows.Forms.TabPage();
+            this.tabPageMisc = new System.Windows.Forms.TabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjTrash)).BeginInit();
@@ -142,6 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).BeginInit();
             this.tabPageOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            this.tabPageDebug.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxProcessSelection
@@ -186,7 +191,7 @@
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(781, 324);
+            this.groupBoxObjects.Size = new System.Drawing.Size(781, 325);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -266,7 +271,7 @@
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 38);
             this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(773, 281);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(773, 282);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -325,6 +330,8 @@
             this.tabControlMain.Controls.Add(this.tabPageMario);
             this.tabControlMain.Controls.Add(this.tabPageHud);
             this.tabControlMain.Controls.Add(this.tabPageCamera);
+            this.tabControlMain.Controls.Add(this.tabPageDebug);
+            this.tabControlMain.Controls.Add(this.tabPageMisc);
             this.tabControlMain.Controls.Add(this.tabPageExpressions);
             this.tabControlMain.Controls.Add(this.tabPageDisassembly);
             this.tabControlMain.Controls.Add(this.tabPageMap);
@@ -550,7 +557,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelMario.AutoScroll = true;
             this.flowLayoutPanelMario.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelMario.Location = new System.Drawing.Point(65, 3);
+            this.flowLayoutPanelMario.Location = new System.Drawing.Point(65, 6);
             this.flowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelMario.Name = "flowLayoutPanelMario";
             this.flowLayoutPanelMario.Size = new System.Drawing.Size(706, 198);
@@ -597,7 +604,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelHud.AutoScroll = true;
             this.flowLayoutPanelHud.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelHud.Location = new System.Drawing.Point(66, 10);
+            this.flowLayoutPanelHud.Location = new System.Drawing.Point(63, 1);
             this.flowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelHud.Name = "flowLayoutPanelHud";
             this.flowLayoutPanelHud.Size = new System.Drawing.Size(706, 198);
@@ -606,7 +613,7 @@
             // panelHudBorder
             // 
             this.panelHudBorder.Controls.Add(this.pictureBoxHud);
-            this.panelHudBorder.Location = new System.Drawing.Point(5, 11);
+            this.panelHudBorder.Location = new System.Drawing.Point(2, 2);
             this.panelHudBorder.Margin = new System.Windows.Forms.Padding(2);
             this.panelHudBorder.Name = "panelHudBorder";
             this.panelHudBorder.Size = new System.Drawing.Size(57, 55);
@@ -644,7 +651,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelCamera.AutoScroll = true;
             this.flowLayoutPanelCamera.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelCamera.Location = new System.Drawing.Point(66, 10);
+            this.flowLayoutPanelCamera.Location = new System.Drawing.Point(65, 2);
             this.flowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelCamera.Name = "flowLayoutPanelCamera";
             this.flowLayoutPanelCamera.Size = new System.Drawing.Size(706, 198);
@@ -653,7 +660,7 @@
             // panelCameraBorder
             // 
             this.panelCameraBorder.Controls.Add(this.pictureBoxCamera);
-            this.panelCameraBorder.Location = new System.Drawing.Point(5, 11);
+            this.panelCameraBorder.Location = new System.Drawing.Point(4, 3);
             this.panelCameraBorder.Margin = new System.Windows.Forms.Padding(2);
             this.panelCameraBorder.Name = "panelCameraBorder";
             this.panelCameraBorder.Size = new System.Drawing.Size(57, 55);
@@ -1053,7 +1060,7 @@
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(507, 188);
+            this.glControlMap.Size = new System.Drawing.Size(508, 188);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -1071,6 +1078,13 @@
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
             this.tabPageOptions.Click += new System.EventHandler(this.tabPageOptions_Click);
+            // 
+            // trackBarObjSlotSize
+            // 
+            this.trackBarObjSlotSize.Location = new System.Drawing.Point(3, 64);
+            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
+            this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
+            this.trackBarObjSlotSize.TabIndex = 3;
             // 
             // checkBoxUseRomHack
             // 
@@ -1117,12 +1131,45 @@
             this.labelVersionNumber.Text = "v0.1.5";
             this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // trackBarObjSlotSize
+            // tabPageDebug
             // 
-            this.trackBarObjSlotSize.Location = new System.Drawing.Point(3, 64);
-            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
-            this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
-            this.trackBarObjSlotSize.TabIndex = 3;
+            this.tabPageDebug.Controls.Add(this.radioButton1);
+            this.tabPageDebug.Controls.Add(this.checkBox1);
+            this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDebug.Name = "tabPageDebug";
+            this.tabPageDebug.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDebug.Size = new System.Drawing.Size(773, 208);
+            this.tabPageDebug.TabIndex = 8;
+            this.tabPageDebug.Text = "Debug";
+            // 
+            // tabPageMisc
+            // 
+            this.tabPageMisc.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMisc.Name = "tabPageMisc";
+            this.tabPageMisc.Size = new System.Drawing.Size(773, 208);
+            this.tabPageMisc.TabIndex = 9;
+            this.tabPageMisc.Text = "Misc.";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(77, 6);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(77, 30);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(85, 17);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "radioButton1";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -1177,6 +1224,8 @@
             this.tabPageOptions.ResumeLayout(false);
             this.tabPageOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.tabPageDebug.ResumeLayout(false);
+            this.tabPageDebug.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1264,6 +1313,10 @@
         private System.Windows.Forms.PictureBox pictureBoxCamera;
         private System.Windows.Forms.CheckBox checkBoxMapShowCamera;
         private System.Windows.Forms.TrackBar trackBarObjSlotSize;
+        private System.Windows.Forms.TabPage tabPageDebug;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TabPage tabPageMisc;
     }
 }
 
