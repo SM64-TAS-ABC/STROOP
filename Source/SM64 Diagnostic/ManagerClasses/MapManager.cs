@@ -87,7 +87,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _holpMapObj = new MapObject(objAssoc.HolpImage, 2);
 
-            _cameraMapObj = new MapObject(objAssoc.CameraImage, 1);
+            _cameraMapObj = new MapObject(objAssoc.CameraMapImage, 1);
         }
 
         public void Load()

@@ -21,8 +21,7 @@ namespace SM64_Diagnostic
         ProcessStream _sm64Stream = null;
         Config _config;
 
-        Dictionary<int, WatchVariable> _otherData;
-        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData;
+        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData;
         ObjectAssociations _objectAssoc;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
@@ -37,11 +36,12 @@ namespace SM64_Diagnostic
         MapManager _mapManager;
         OptionsManager _optionsManager;
         ScriptManager _scriptManager;
-        HudManager _hudManager;
+        DataManager _hudManager;
+        DataManager _miscManager;
         CameraManager _cameraManager;
 
-        bool _resizing = true;
-        int _resizeTimeLeft = 0;
+        bool _resizing = true, _objSlotResizing = false;
+        int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
 
         bool _splitterIsExpanded = false;
         static int _defaultSplitValue;
@@ -77,7 +77,7 @@ namespace SM64_Diagnostic
 
             // Read configuration
             _config = XmlConfigParser.OpenConfig(@"Config/Config.xml");
-            _otherData = XmlConfigParser.OpenOtherData(@"Config/OtherData.xml");
+            _miscData = XmlConfigParser.OpenMiscData(@"Config/MiscData.xml");
             _objectData = XmlConfigParser.OpenObjectData(@"Config/ObjectData.xml");
             _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml");
             _marioData = XmlConfigParser.OpenMarioData(_config, @"Config/MarioData.xml");
@@ -110,7 +110,8 @@ namespace SM64_Diagnostic
             _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, _objectAssoc, mapGui);
 
             _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
-            _hudManager = new HudManager(_sm64Stream, _config, _hudData, panelHudBorder, flowLayoutPanelHud);
+            _hudManager = new DataManager(_sm64Stream, _config, _hudData, flowLayoutPanelHud);
+            _miscManager = new DataManager(_sm64Stream, _config, _miscData, flowLayoutPanelMisc);
             _cameraManager = new CameraManager(_sm64Stream, _config, _cameraData, panelCameraBorder, flowLayoutPanelCamera);
 
             // Create object manager
@@ -219,8 +220,18 @@ namespace SM64_Diagnostic
 
             // Hud Image
             pictureBoxHud.Image = _objectAssoc.HudImage;
-            panelHudBorder.BackColor = _objectAssoc.CameraColor;
-            pictureBoxHud.BackColor = _objectAssoc.CameraColor.Lighten(0.5);
+            panelHudBorder.BackColor = _objectAssoc.HudColor;
+            pictureBoxHud.BackColor = _objectAssoc.HudColor.Lighten(0.5);
+
+            // Debug Image
+            pictureBoxDebug.Image = _objectAssoc.DebugImage;
+            panelDebugBorder.BackColor = _objectAssoc.DebugColor;
+            pictureBoxDebug.BackColor = _objectAssoc.DebugColor.Lighten(0.5);
+
+            // Misc Image
+            pictureBoxMisc.Image = _objectAssoc.MiscImage;
+            panelMiscBorder.BackColor = _objectAssoc.MiscColor;
+            pictureBoxMisc.BackColor = _objectAssoc.MiscColor.Lighten(0.5);
 
             // Setup data columns
             var nameColumn = new DataColumn("Name");
@@ -235,15 +246,16 @@ namespace SM64_Diagnostic
             dataGridViewExpressions.DataSource = _tableOtherData;
 
             // Setup other data table
-            for (int index = 0; index < _otherData.Count; index++)
+            for (int index = 0; index < _miscData.Count; index++)
             {
-                var watchVar = _otherData[index];
+                var watchVar = _miscData[index];
                 var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.Type.ToString(), "", watchVar.Address);
                 _otherDataRowAssoc.Add(index, row);
             }
 
 #if !DEBUG
             tabControlMain.TabPages.Remove(tabPageExpressions);
+            tabControlMain.TabPages.Remove(tabPageStars);
 #endif
         }
 
@@ -263,9 +275,9 @@ namespace SM64_Diagnostic
 
         private void UpdateMemoryValues()
         {
-            for (int i = 0; i < _otherData.Count; i++)
+            for (int i = 0; i < _miscData.Count; i++)
             {
-                WatchVariable watchVar = _otherData[i];
+                WatchVariable watchVar = _miscData[i];
                 // Make sure cell is not being edited
                 if (dataGridViewExpressions.IsCurrentCellInEditMode
                     && dataGridViewExpressions.SelectedRows[0].Index
@@ -284,7 +296,7 @@ namespace SM64_Diagnostic
             var row = _tableOtherData.Rows[dataGridViewExpressions.SelectedRows[0].Index];
             int assoc = _otherDataRowAssoc.FirstOrDefault(v => v.Value == row).Key;
 
-            var modifyVar = new ModifyAddWatchVariableForm(_otherData[assoc]);
+            var modifyVar = new ModifyAddWatchVariableForm(_miscData[assoc]);
             modifyVar.ShowDialog();
         }
 
@@ -306,7 +318,7 @@ namespace SM64_Diagnostic
                 foreach (int i in deleteVars)
                 {
                     DataRow row = _otherDataRowAssoc[i];
-                    _otherData.Remove(i);
+                    _miscData.RemoveAt(i);
                     _otherDataRowAssoc.Remove(i);
                     row.Delete();
                 }
@@ -324,7 +336,7 @@ namespace SM64_Diagnostic
             var row = _tableOtherData.Rows[dataGridViewExpressions.SelectedRows[0].Index];
             int assoc = _otherDataRowAssoc.FirstOrDefault(v => v.Value == row).Key;
 
-            var modifyVar = new ModifyAddWatchVariableForm(_otherData[assoc]);
+            var modifyVar = new ModifyAddWatchVariableForm(_miscData[assoc]);
             modifyVar.ShowDialog();
         }
 
@@ -341,8 +353,8 @@ namespace SM64_Diagnostic
                     : watchVar.Address + _config.RamStartAddress);
 
                 // Add variable to lists
-                int newIndex = _otherData.Count;
-                _otherData.Add(newIndex, watchVar);
+                int newIndex = _miscData.Count;
+                _miscData.Add(watchVar);
                 _otherDataRowAssoc.Add(newIndex, row);
 
                 XmlConfigParser.AddWatchVariableOtherData(watchVar);
@@ -417,6 +429,93 @@ namespace SM64_Diagnostic
 
             _splitterIsExpanded = !_splitterIsExpanded;
         }
+
+        #region Debug Tab
+
+        private void radioButtonDbgOff_CheckedChanged(object sender, EventArgs e)
+        {
+            // Turn debug off
+            _sm64Stream.WriteRam(new byte[] { 0 }, _config.Debug.Toggle);
+        }
+
+        private void radioButtonDbgObjCnt_CheckedChanged(object sender, EventArgs e)
+        {
+            // Turn debug on
+            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+
+            // Set mode
+            _sm64Stream.WriteRam(new byte[] { 0 }, _config.Debug.Setting);
+        }
+
+        private void radioButtonDbgChkInfo_CheckedChanged(object sender, EventArgs e)
+        {
+            // Turn debug on
+            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+
+            // Set mode
+            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Setting);
+        }
+
+        private void radioButtonDbgMapInfo_CheckedChanged(object sender, EventArgs e)
+        {
+            // Turn debug on
+            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+
+            // Set mode
+            _sm64Stream.WriteRam(new byte[] { 2 }, _config.Debug.Setting);
+        }
+
+        private void radioButtonDbgStgInfo_CheckedChanged(object sender, EventArgs e)
+        {
+            // Turn debug on
+            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+
+            // Set mode
+            _sm64Stream.WriteRam(new byte[] { 3 }, _config.Debug.Setting);
+        }
+
+        private void radioButtonDbgFxInfo_CheckedChanged(object sender, EventArgs e)
+        {
+            // Turn debug on
+            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+
+            // Set mode
+            _sm64Stream.WriteRam(new byte[] { 4 }, _config.Debug.Setting);
+        }
+
+        private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
+        {
+            _resizeObjSlotTime = 500;
+            if (_objSlotResizing)
+                return;
+
+            _objSlotResizing = true;
+
+            await Task.Run(() =>
+            {
+                while (_resizeObjSlotTime > 0)
+                {
+                    Task.Delay(100).Wait();
+                    _resizeObjSlotTime -= 100;
+                }
+            });
+
+            flowLayoutPanelObjects.Visible = false;
+            _objectSlotManager.ChangeSlotSize(trackBarObjSlotSize.Value);
+            flowLayoutPanelObjects.Visible = true;
+            _objSlotResizing = false;
+        }
+
+        private void radioButtonDbgEnemyInfo_CheckedChanged(object sender, EventArgs e)
+        {
+            // Turn debug on
+            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+
+            // Set mode
+            _sm64Stream.WriteRam(new byte[] { 5 }, _config.Debug.Setting);
+        }
+
+        #endregion
 
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {

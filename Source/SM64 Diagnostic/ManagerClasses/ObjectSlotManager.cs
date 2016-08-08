@@ -55,10 +55,17 @@ namespace SM64_Diagnostic.ManagerClasses
             }
             set
             {
-                SelectedAddress = GetObjectDataFromSlot(value).Address;
+                var selectedObjData = GetObjectDataFromSlot(value);
+                SelectedAddress = selectedObjData.HasValue ? selectedObjData.Value.Address : (uint?) null;
                 _objManager.CurrentAddress = SelectedAddress.Value;
                 _selectedSlot = value;
             }
+        }
+
+        public void ChangeSlotSize(int newSize)
+        {
+            foreach (var objSlot in ObjectSlots)
+                objSlot.Size = newSize;
         }
 
         public ObjectSlotManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, 
@@ -99,8 +106,11 @@ namespace SM64_Diagnostic.ManagerClasses
 
         }
 
-        private ObjectSlotData GetObjectDataFromSlot(int slot)
+        private ObjectSlotData? GetObjectDataFromSlot(int slot)
         {
+            if (ObjectSlotData.Count((objData) => objData.Index == slot) == 0)
+                return null;
+
             return ObjectSlotData.First((objData) => objData.Index == slot);
         }
 
@@ -136,13 +146,17 @@ namespace SM64_Diagnostic.ManagerClasses
                     switch ((MapToggleModeType)ManagerGui.MapObjectToggleModeComboBox.SelectedItem)
                     {
                         case MapToggleModeType.Single:
-                            var address = GetObjectDataFromSlot(slotIndex).Address;
-                            if (_toggleMapSlots.Contains(address))
-                                _toggleMapSlots.Remove(address);
-                            else
-                                _toggleMapSlots.Add(address);
+                            var objectData = GetObjectDataFromSlot(slotIndex);
+                            if (objectData.HasValue)
+                            {
+                                if (!_toggleMapSlots.Contains(objectData.Value.Address))
+                                    _toggleMapSlots.Remove(objectData.Value.Address);
+                                else
+                                    _toggleMapSlots.Add(objectData.Value.Address);
 
-                            UpdateSelectedObjectSlots();
+                                UpdateSelectedObjectSlots();
+                            }
+
                             break;
                         case MapToggleModeType.ObjectType:
                             var behavior = ObjectSlots[slotIndex].Behavior;

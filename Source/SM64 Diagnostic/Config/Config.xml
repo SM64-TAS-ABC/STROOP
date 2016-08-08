@@ -53,6 +53,10 @@
     <MarioStructSize>0xC4</MarioStructSize>
     <MoveToObjectYOffset>300</MoveToObjectYOffset>
   </Mario>
+  <Debug>
+    <ToggleAddress>0x8033d263</ToggleAddress>
+    <SettingAddress>0x80330e94</SettingAddress>
+  </Debug>
     <!--<TriangleOffsets>
       <x1>0x0A</x1>
       <z1>0x0E</z1>

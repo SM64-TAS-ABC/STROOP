@@ -73,6 +73,8 @@ namespace SM64_Diagnostic.Utilities
             bool success = true;
             var marioAddress = config.Mario.MarioStructAddress;
 
+            stream.Suspend();
+
             // Make clone object mario's holding object
             success &= stream.WriteRam(new byte[] { 0x00, 0x00, 0x00, 0x00 }, marioAddress + config.Mario.HoldingObjectPointerOffset);
 
