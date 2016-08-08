@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Structs
 {
@@ -15,6 +16,7 @@ namespace SM64_Diagnostic.Structs
         public ObjectGroupsConfig ObjectGroups;
         public ObjectSlotsConfig ObjectSlots;
         public MarioConfig Mario;
+        public DebugConfig Debug;
         public uint LevelAddress;
         public uint AreaAddress;
         public uint LoadingPointAddress;

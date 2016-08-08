@@ -13,6 +13,8 @@ namespace SM64_Diagnostic
 {
     public class ObjectSlot
     {
+        const int BorderSize = 2;
+
         ObjectSlotManager _manager;
 
         PictureBox PictureBox;
@@ -24,9 +26,33 @@ namespace SM64_Diagnostic
         bool _selected = true;
         bool _active = false;
         uint _behavior;
+        int _size;
 
         public enum MouseStateType {None, Over, Down};
         public MouseStateType MouseState;
+
+        public int Size
+        {
+            get
+            {
+                return _size;
+            }
+            set
+            {
+                _size = value;
+
+                BorderPanel.Size = new Size(_size, _size);
+
+                this.ContentPanel.Size = new Size(this.BorderPanel.Size.Width - BorderSize * 2, this.BorderPanel.Size.Height - BorderSize * 2);
+                this.ContentPanel.Location = new Point(BorderSize, BorderSize);
+
+                this.Label.Location =
+                    new Point((this.ContentPanel.Width - this.Label.Size.Width) / 2, this.ContentPanel.Height - this.Label.Font.Height);
+
+                this.PictureBox.Size = new Size(this.ContentPanel.Width, this.Label.Location.Y - 1);
+                this.PictureBox.Location = new Point((ContentPanel.Width - PictureBox.Width) / 2, 1);
+            }
+        }
 
         public bool Selected
         {
@@ -184,14 +210,14 @@ namespace SM64_Diagnostic
             _manager = manager;
 
             // Create picture box
-            const int borderSize = 2;
+            _size = 40;
 
             this.BorderPanel = new Panel();
-            this.BorderPanel.Size = new Size(40, 40);
+            this.BorderPanel.Size = new Size(_size, _size);
 
             this.ContentPanel = new Panel();
-            this.ContentPanel.Size = new Size(this.BorderPanel.Size.Width - borderSize * 2, this.BorderPanel.Size.Height - borderSize * 2);
-            this.ContentPanel.Location = new Point(borderSize, borderSize);
+            this.ContentPanel.Size = new Size(this.BorderPanel.Size.Width - BorderSize * 2, this.BorderPanel.Size.Height - BorderSize * 2);
+            this.ContentPanel.Location = new Point(BorderSize, BorderSize);
 
             this.Label = new Label();
             this.Label.Text = "";

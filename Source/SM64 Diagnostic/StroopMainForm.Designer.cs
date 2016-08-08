@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxProcessSelection = new System.Windows.Forms.ComboBox();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -73,17 +73,49 @@
             this.flowLayoutPanelCamera = new System.Windows.Forms.FlowLayoutPanel();
             this.panelCameraBorder = new System.Windows.Forms.Panel();
             this.pictureBoxCamera = new System.Windows.Forms.PictureBox();
-            this.tabPageExpressions = new System.Windows.Forms.TabPage();
-            this.checkBoxAbsoluteAddress = new System.Windows.Forms.CheckBox();
-            this.buttonOtherDelete = new System.Windows.Forms.Button();
-            this.buttonOtherModify = new System.Windows.Forms.Button();
-            this.buttonOtherAdd = new System.Windows.Forms.Button();
-            this.dataGridViewExpressions = new System.Windows.Forms.DataGridView();
-            this.tabPageDisassembly = new System.Windows.Forms.TabPage();
-            this.buttonDisGo = new System.Windows.Forms.Button();
-            this.maskedTextBoxDisStart = new System.Windows.Forms.MaskedTextBox();
-            this.labelDisStart = new System.Windows.Forms.Label();
-            this.richTextBoxDissasembly = new System.Windows.Forms.RichTextBox();
+            this.tabPageDebug = new System.Windows.Forms.TabPage();
+            this.radioButtonDbgEnemyInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonDbgFxInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonDbgStgInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonDbgMapInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonDbgChkInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonDbgObjCnt = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panelDebugBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxDebug = new System.Windows.Forms.PictureBox();
+            this.radioButtonDbgOff = new System.Windows.Forms.RadioButton();
+            this.tabPageMisc = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanelMisc = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelMiscBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxMisc = new System.Windows.Forms.PictureBox();
+            this.tabPageStars = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelStrCourse = new System.Windows.Forms.Panel();
+            this.flowLayoutPanelCourse = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBoxStrStar1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxStrStar2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxStrStar3 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxStrStar4 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxStrStar5 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxStrStar6 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxStrStar7 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxStrCannon = new System.Windows.Forms.PictureBox();
+            this.labelStrCoinRecord = new System.Windows.Forms.Label();
+            this.textBoxStrCoinRecord = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.radioButtonFileD = new System.Windows.Forms.RadioButton();
+            this.radioButtonFileC = new System.Windows.Forms.RadioButton();
+            this.radioButtonFileB = new System.Windows.Forms.RadioButton();
+            this.radioButtonFileA = new System.Windows.Forms.RadioButton();
             this.tabPageMap = new System.Windows.Forms.TabPage();
             this.splitContainerMap = new System.Windows.Forms.SplitContainer();
             this.checkBoxMapShowCamera = new System.Windows.Forms.CheckBox();
@@ -104,16 +136,23 @@
             this.labelMapPu = new System.Windows.Forms.Label();
             this.trackBarMapZoom = new System.Windows.Forms.TrackBar();
             this.glControlMap = new OpenTK.GLControl();
+            this.tabPageExpressions = new System.Windows.Forms.TabPage();
+            this.checkBoxAbsoluteAddress = new System.Windows.Forms.CheckBox();
+            this.buttonOtherDelete = new System.Windows.Forms.Button();
+            this.buttonOtherModify = new System.Windows.Forms.Button();
+            this.buttonOtherAdd = new System.Windows.Forms.Button();
+            this.dataGridViewExpressions = new System.Windows.Forms.DataGridView();
+            this.tabPageDisassembly = new System.Windows.Forms.TabPage();
+            this.buttonDisGo = new System.Windows.Forms.Button();
+            this.maskedTextBoxDisStart = new System.Windows.Forms.MaskedTextBox();
+            this.labelDisStart = new System.Windows.Forms.Label();
+            this.richTextBoxDissasembly = new System.Windows.Forms.RichTextBox();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.labelVersionNumber = new System.Windows.Forms.Label();
-            this.tabPageDebug = new System.Windows.Forms.TabPage();
-            this.tabPageMisc = new System.Windows.Forms.TabPage();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjTrash)).BeginInit();
@@ -134,9 +173,34 @@
             this.tabPageCamera.SuspendLayout();
             this.panelCameraBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
-            this.tabPageExpressions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressions)).BeginInit();
-            this.tabPageDisassembly.SuspendLayout();
+            this.tabPageDebug.SuspendLayout();
+            this.panelDebugBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
+            this.tabPageMisc.SuspendLayout();
+            this.panelMiscBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
+            this.tabPageStars.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.panelStrCourse.SuspendLayout();
+            this.flowLayoutPanelCourse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrCannon)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.tabPageMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).BeginInit();
             this.splitContainerMap.Panel1.SuspendLayout();
@@ -144,9 +208,11 @@
             this.splitContainerMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).BeginInit();
+            this.tabPageExpressions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressions)).BeginInit();
+            this.tabPageDisassembly.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.tabPageDebug.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxProcessSelection
@@ -159,7 +225,7 @@
             this.comboBoxProcessSelection.Location = new System.Drawing.Point(127, 8);
             this.comboBoxProcessSelection.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxProcessSelection.Name = "comboBoxProcessSelection";
-            this.comboBoxProcessSelection.Size = new System.Drawing.Size(495, 21);
+            this.comboBoxProcessSelection.Size = new System.Drawing.Size(682, 21);
             this.comboBoxProcessSelection.TabIndex = 0;
             this.comboBoxProcessSelection.DropDown += new System.EventHandler(this.comboBoxProcessSelection_DropDown);
             this.comboBoxProcessSelection.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
@@ -191,7 +257,7 @@
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(781, 325);
+            this.groupBoxObjects.Size = new System.Drawing.Size(968, 321);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -220,7 +286,7 @@
             // 
             this.pictureBoxObjClone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxObjClone.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxObjClone.Image")));
-            this.pictureBoxObjClone.Location = new System.Drawing.Point(551, 13);
+            this.pictureBoxObjClone.Location = new System.Drawing.Point(738, 13);
             this.pictureBoxObjClone.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxObjClone.Name = "pictureBoxObjClone";
             this.pictureBoxObjClone.Size = new System.Drawing.Size(23, 18);
@@ -243,7 +309,7 @@
             // 
             this.pictureBoxObjTrash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxObjTrash.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxObjTrash.Image")));
-            this.pictureBoxObjTrash.Location = new System.Drawing.Point(578, 13);
+            this.pictureBoxObjTrash.Location = new System.Drawing.Point(765, 13);
             this.pictureBoxObjTrash.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxObjTrash.Name = "pictureBoxObjTrash";
             this.pictureBoxObjTrash.Size = new System.Drawing.Size(23, 18);
@@ -255,7 +321,7 @@
             // 
             this.labelSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelSortMethod.AutoSize = true;
-            this.labelSortMethod.Location = new System.Drawing.Point(605, 18);
+            this.labelSortMethod.Location = new System.Drawing.Point(792, 18);
             this.labelSortMethod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSortMethod.Name = "labelSortMethod";
             this.labelSortMethod.Size = new System.Drawing.Size(68, 13);
@@ -271,7 +337,7 @@
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 38);
             this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(773, 282);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 278);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -279,7 +345,7 @@
             // 
             this.comboBoxSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortMethod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBoxSortMethod.Location = new System.Drawing.Point(676, 16);
+            this.comboBoxSortMethod.Location = new System.Drawing.Point(863, 16);
             this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSortMethod.Name = "comboBoxSortMethod";
             this.comboBoxSortMethod.Size = new System.Drawing.Size(102, 21);
@@ -289,7 +355,7 @@
             // buttonPauseResume
             // 
             this.buttonPauseResume.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPauseResume.Location = new System.Drawing.Point(625, 6);
+            this.buttonPauseResume.Location = new System.Drawing.Point(812, 6);
             this.buttonPauseResume.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPauseResume.Name = "buttonPauseResume";
             this.buttonPauseResume.Size = new System.Drawing.Size(64, 21);
@@ -315,7 +381,7 @@
             // splitContainerMain.Panel2
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.groupBoxObjects);
-            this.splitContainerMain.Size = new System.Drawing.Size(785, 564);
+            this.splitContainerMain.Size = new System.Drawing.Size(972, 564);
             this.splitContainerMain.SplitterDistance = 236;
             this.splitContainerMain.SplitterWidth = 3;
             this.splitContainerMain.TabIndex = 4;
@@ -332,16 +398,17 @@
             this.tabControlMain.Controls.Add(this.tabPageCamera);
             this.tabControlMain.Controls.Add(this.tabPageDebug);
             this.tabControlMain.Controls.Add(this.tabPageMisc);
+            this.tabControlMain.Controls.Add(this.tabPageStars);
+            this.tabControlMain.Controls.Add(this.tabPageMap);
             this.tabControlMain.Controls.Add(this.tabPageExpressions);
             this.tabControlMain.Controls.Add(this.tabPageDisassembly);
-            this.tabControlMain.Controls.Add(this.tabPageMap);
             this.tabControlMain.Controls.Add(this.tabPageOptions);
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(2, 2);
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(2);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(781, 234);
+            this.tabControlMain.Size = new System.Drawing.Size(968, 234);
             this.tabControlMain.TabIndex = 3;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             this.tabControlMain.DragEnter += new System.Windows.Forms.DragEventHandler(this.tabControlMain_DragEnter);
@@ -368,7 +435,7 @@
             this.tabPageObjects.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageObjects.Name = "tabPageObjects";
             this.tabPageObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageObjects.Size = new System.Drawing.Size(773, 208);
+            this.tabPageObjects.Size = new System.Drawing.Size(960, 208);
             this.tabPageObjects.TabIndex = 0;
             this.tabPageObjects.Text = "Object";
             // 
@@ -472,7 +539,7 @@
             this.flowLayoutPanelObject.Location = new System.Drawing.Point(208, 3);
             this.flowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObject.Name = "flowLayoutPanelObject";
-            this.flowLayoutPanelObject.Size = new System.Drawing.Size(563, 196);
+            this.flowLayoutPanelObject.Size = new System.Drawing.Size(750, 196);
             this.flowLayoutPanelObject.TabIndex = 3;
             // 
             // labelObjSlotInd
@@ -546,7 +613,7 @@
             this.tabPageMario.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageMario.Name = "tabPageMario";
             this.tabPageMario.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageMario.Size = new System.Drawing.Size(773, 208);
+            this.tabPageMario.Size = new System.Drawing.Size(960, 208);
             this.tabPageMario.TabIndex = 1;
             this.tabPageMario.Text = "Mario";
             // 
@@ -560,7 +627,7 @@
             this.flowLayoutPanelMario.Location = new System.Drawing.Point(65, 6);
             this.flowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelMario.Name = "flowLayoutPanelMario";
-            this.flowLayoutPanelMario.Size = new System.Drawing.Size(706, 198);
+            this.flowLayoutPanelMario.Size = new System.Drawing.Size(893, 198);
             this.flowLayoutPanelMario.TabIndex = 1;
             // 
             // panelMarioBorder
@@ -593,7 +660,7 @@
             this.tabPageHud.Location = new System.Drawing.Point(4, 22);
             this.tabPageHud.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageHud.Name = "tabPageHud";
-            this.tabPageHud.Size = new System.Drawing.Size(773, 208);
+            this.tabPageHud.Size = new System.Drawing.Size(960, 208);
             this.tabPageHud.TabIndex = 6;
             this.tabPageHud.Text = "HUD";
             // 
@@ -607,7 +674,7 @@
             this.flowLayoutPanelHud.Location = new System.Drawing.Point(63, 1);
             this.flowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelHud.Name = "flowLayoutPanelHud";
-            this.flowLayoutPanelHud.Size = new System.Drawing.Size(706, 198);
+            this.flowLayoutPanelHud.Size = new System.Drawing.Size(893, 198);
             this.flowLayoutPanelHud.TabIndex = 3;
             // 
             // panelHudBorder
@@ -640,7 +707,7 @@
             this.tabPageCamera.Location = new System.Drawing.Point(4, 22);
             this.tabPageCamera.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageCamera.Name = "tabPageCamera";
-            this.tabPageCamera.Size = new System.Drawing.Size(773, 208);
+            this.tabPageCamera.Size = new System.Drawing.Size(960, 208);
             this.tabPageCamera.TabIndex = 7;
             this.tabPageCamera.Text = "Camera";
             // 
@@ -654,7 +721,7 @@
             this.flowLayoutPanelCamera.Location = new System.Drawing.Point(65, 2);
             this.flowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelCamera.Name = "flowLayoutPanelCamera";
-            this.flowLayoutPanelCamera.Size = new System.Drawing.Size(706, 198);
+            this.flowLayoutPanelCamera.Size = new System.Drawing.Size(893, 198);
             this.flowLayoutPanelCamera.TabIndex = 3;
             // 
             // panelCameraBorder
@@ -680,149 +747,469 @@
             this.pictureBoxCamera.TabIndex = 0;
             this.pictureBoxCamera.TabStop = false;
             // 
-            // tabPageExpressions
+            // tabPageDebug
             // 
-            this.tabPageExpressions.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageExpressions.Controls.Add(this.checkBoxAbsoluteAddress);
-            this.tabPageExpressions.Controls.Add(this.buttonOtherDelete);
-            this.tabPageExpressions.Controls.Add(this.buttonOtherModify);
-            this.tabPageExpressions.Controls.Add(this.buttonOtherAdd);
-            this.tabPageExpressions.Controls.Add(this.dataGridViewExpressions);
-            this.tabPageExpressions.Location = new System.Drawing.Point(4, 22);
-            this.tabPageExpressions.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageExpressions.Name = "tabPageExpressions";
-            this.tabPageExpressions.Size = new System.Drawing.Size(773, 208);
-            this.tabPageExpressions.TabIndex = 2;
-            this.tabPageExpressions.Text = "Expressions";
+            this.tabPageDebug.Controls.Add(this.radioButtonDbgEnemyInfo);
+            this.tabPageDebug.Controls.Add(this.radioButtonDbgFxInfo);
+            this.tabPageDebug.Controls.Add(this.radioButtonDbgStgInfo);
+            this.tabPageDebug.Controls.Add(this.radioButtonDbgMapInfo);
+            this.tabPageDebug.Controls.Add(this.radioButtonDbgChkInfo);
+            this.tabPageDebug.Controls.Add(this.radioButtonDbgObjCnt);
+            this.tabPageDebug.Controls.Add(this.label2);
+            this.tabPageDebug.Controls.Add(this.panelDebugBorder);
+            this.tabPageDebug.Controls.Add(this.radioButtonDbgOff);
+            this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDebug.Name = "tabPageDebug";
+            this.tabPageDebug.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDebug.Size = new System.Drawing.Size(960, 208);
+            this.tabPageDebug.TabIndex = 8;
+            this.tabPageDebug.Text = "Debug";
             // 
-            // checkBoxAbsoluteAddress
+            // radioButtonDbgEnemyInfo
             // 
-            this.checkBoxAbsoluteAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxAbsoluteAddress.AutoSize = true;
-            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(638, 187);
-            this.checkBoxAbsoluteAddress.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxAbsoluteAddress.Name = "checkBoxAbsoluteAddress";
-            this.checkBoxAbsoluteAddress.Size = new System.Drawing.Size(134, 17);
-            this.checkBoxAbsoluteAddress.TabIndex = 4;
-            this.checkBoxAbsoluteAddress.Text = "View Absolute Address";
-            this.checkBoxAbsoluteAddress.UseVisualStyleBackColor = true;
+            this.radioButtonDbgEnemyInfo.AutoSize = true;
+            this.radioButtonDbgEnemyInfo.Location = new System.Drawing.Point(87, 161);
+            this.radioButtonDbgEnemyInfo.Name = "radioButtonDbgEnemyInfo";
+            this.radioButtonDbgEnemyInfo.Size = new System.Drawing.Size(78, 17);
+            this.radioButtonDbgEnemyInfo.TabIndex = 10;
+            this.radioButtonDbgEnemyInfo.Text = "Enemy Info";
+            this.radioButtonDbgEnemyInfo.UseVisualStyleBackColor = true;
+            this.radioButtonDbgEnemyInfo.CheckedChanged += new System.EventHandler(this.radioButtonDbgEnemyInfo_CheckedChanged);
             // 
-            // buttonOtherDelete
+            // radioButtonDbgFxInfo
             // 
-            this.buttonOtherDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherDelete.Location = new System.Drawing.Point(106, 185);
-            this.buttonOtherDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonOtherDelete.Name = "buttonOtherDelete";
-            this.buttonOtherDelete.Size = new System.Drawing.Size(48, 21);
-            this.buttonOtherDelete.TabIndex = 3;
-            this.buttonOtherDelete.Text = "Delete";
-            this.buttonOtherDelete.UseVisualStyleBackColor = true;
-            this.buttonOtherDelete.Click += new System.EventHandler(this.buttonOtherDelete_Click);
+            this.radioButtonDbgFxInfo.AutoSize = true;
+            this.radioButtonDbgFxInfo.Location = new System.Drawing.Point(87, 138);
+            this.radioButtonDbgFxInfo.Name = "radioButtonDbgFxInfo";
+            this.radioButtonDbgFxInfo.Size = new System.Drawing.Size(74, 17);
+            this.radioButtonDbgFxInfo.TabIndex = 9;
+            this.radioButtonDbgFxInfo.Text = "Effect Info";
+            this.radioButtonDbgFxInfo.UseVisualStyleBackColor = true;
+            this.radioButtonDbgFxInfo.CheckedChanged += new System.EventHandler(this.radioButtonDbgFxInfo_CheckedChanged);
             // 
-            // buttonOtherModify
+            // radioButtonDbgStgInfo
             // 
-            this.buttonOtherModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherModify.Location = new System.Drawing.Point(54, 185);
-            this.buttonOtherModify.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonOtherModify.Name = "buttonOtherModify";
-            this.buttonOtherModify.Size = new System.Drawing.Size(48, 21);
-            this.buttonOtherModify.TabIndex = 2;
-            this.buttonOtherModify.Text = "Modify";
-            this.buttonOtherModify.UseVisualStyleBackColor = true;
-            this.buttonOtherModify.Click += new System.EventHandler(this.buttonOtherModify_Click);
+            this.radioButtonDbgStgInfo.AutoSize = true;
+            this.radioButtonDbgStgInfo.Location = new System.Drawing.Point(87, 115);
+            this.radioButtonDbgStgInfo.Name = "radioButtonDbgStgInfo";
+            this.radioButtonDbgStgInfo.Size = new System.Drawing.Size(74, 17);
+            this.radioButtonDbgStgInfo.TabIndex = 8;
+            this.radioButtonDbgStgInfo.Text = "Stage Info";
+            this.radioButtonDbgStgInfo.UseVisualStyleBackColor = true;
+            this.radioButtonDbgStgInfo.CheckedChanged += new System.EventHandler(this.radioButtonDbgStgInfo_CheckedChanged);
             // 
-            // buttonOtherAdd
+            // radioButtonDbgMapInfo
             // 
-            this.buttonOtherAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherAdd.Location = new System.Drawing.Point(2, 185);
-            this.buttonOtherAdd.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonOtherAdd.Name = "buttonOtherAdd";
-            this.buttonOtherAdd.Size = new System.Drawing.Size(48, 21);
-            this.buttonOtherAdd.TabIndex = 1;
-            this.buttonOtherAdd.Text = "Add";
-            this.buttonOtherAdd.UseVisualStyleBackColor = true;
-            this.buttonOtherAdd.Click += new System.EventHandler(this.buttonOtherAdd_Click);
+            this.radioButtonDbgMapInfo.AutoSize = true;
+            this.radioButtonDbgMapInfo.Location = new System.Drawing.Point(87, 92);
+            this.radioButtonDbgMapInfo.Name = "radioButtonDbgMapInfo";
+            this.radioButtonDbgMapInfo.Size = new System.Drawing.Size(67, 17);
+            this.radioButtonDbgMapInfo.TabIndex = 7;
+            this.radioButtonDbgMapInfo.Text = "Map Info";
+            this.radioButtonDbgMapInfo.UseVisualStyleBackColor = true;
+            this.radioButtonDbgMapInfo.CheckedChanged += new System.EventHandler(this.radioButtonDbgMapInfo_CheckedChanged);
             // 
-            // dataGridViewExpressions
+            // radioButtonDbgChkInfo
             // 
-            this.dataGridViewExpressions.AllowUserToAddRows = false;
-            this.dataGridViewExpressions.AllowUserToDeleteRows = false;
-            this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.radioButtonDbgChkInfo.AutoSize = true;
+            this.radioButtonDbgChkInfo.Location = new System.Drawing.Point(87, 69);
+            this.radioButtonDbgChkInfo.Name = "radioButtonDbgChkInfo";
+            this.radioButtonDbgChkInfo.Size = new System.Drawing.Size(77, 17);
+            this.radioButtonDbgChkInfo.TabIndex = 6;
+            this.radioButtonDbgChkInfo.Text = "Check Info";
+            this.radioButtonDbgChkInfo.UseVisualStyleBackColor = true;
+            this.radioButtonDbgChkInfo.CheckedChanged += new System.EventHandler(this.radioButtonDbgChkInfo_CheckedChanged);
+            // 
+            // radioButtonDbgObjCnt
+            // 
+            this.radioButtonDbgObjCnt.AutoSize = true;
+            this.radioButtonDbgObjCnt.Location = new System.Drawing.Point(87, 46);
+            this.radioButtonDbgObjCnt.Name = "radioButtonDbgObjCnt";
+            this.radioButtonDbgObjCnt.Size = new System.Drawing.Size(96, 17);
+            this.radioButtonDbgObjCnt.TabIndex = 5;
+            this.radioButtonDbgObjCnt.Text = "Object Counter";
+            this.radioButtonDbgObjCnt.UseVisualStyleBackColor = true;
+            this.radioButtonDbgObjCnt.CheckedChanged += new System.EventHandler(this.radioButtonDbgObjCnt_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(68, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Debug:";
+            // 
+            // panelDebugBorder
+            // 
+            this.panelDebugBorder.Controls.Add(this.pictureBoxDebug);
+            this.panelDebugBorder.Location = new System.Drawing.Point(5, 5);
+            this.panelDebugBorder.Margin = new System.Windows.Forms.Padding(2);
+            this.panelDebugBorder.Name = "panelDebugBorder";
+            this.panelDebugBorder.Size = new System.Drawing.Size(57, 55);
+            this.panelDebugBorder.TabIndex = 3;
+            // 
+            // pictureBoxDebug
+            // 
+            this.pictureBoxDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewExpressions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewExpressions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewExpressions.Location = new System.Drawing.Point(2, 2);
-            this.dataGridViewExpressions.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridViewExpressions.Name = "dataGridViewExpressions";
-            this.dataGridViewExpressions.RowTemplate.Height = 20;
-            this.dataGridViewExpressions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridViewExpressions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewExpressions.Size = new System.Drawing.Size(771, 178);
-            this.dataGridViewExpressions.TabIndex = 0;
-            this.dataGridViewExpressions.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOther_CellMouseDoubleClick);
+            this.pictureBoxDebug.Location = new System.Drawing.Point(2, 2);
+            this.pictureBoxDebug.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxDebug.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxDebug.Name = "pictureBoxDebug";
+            this.pictureBoxDebug.Size = new System.Drawing.Size(51, 50);
+            this.pictureBoxDebug.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDebug.TabIndex = 0;
+            this.pictureBoxDebug.TabStop = false;
             // 
-            // tabPageDisassembly
+            // radioButtonDbgOff
             // 
-            this.tabPageDisassembly.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageDisassembly.Controls.Add(this.buttonDisGo);
-            this.tabPageDisassembly.Controls.Add(this.maskedTextBoxDisStart);
-            this.tabPageDisassembly.Controls.Add(this.labelDisStart);
-            this.tabPageDisassembly.Controls.Add(this.richTextBoxDissasembly);
-            this.tabPageDisassembly.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDisassembly.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageDisassembly.Name = "tabPageDisassembly";
-            this.tabPageDisassembly.Size = new System.Drawing.Size(773, 208);
-            this.tabPageDisassembly.TabIndex = 3;
-            this.tabPageDisassembly.Text = "Disassembly";
+            this.radioButtonDbgOff.AutoSize = true;
+            this.radioButtonDbgOff.Checked = true;
+            this.radioButtonDbgOff.Location = new System.Drawing.Point(87, 23);
+            this.radioButtonDbgOff.Name = "radioButtonDbgOff";
+            this.radioButtonDbgOff.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonDbgOff.TabIndex = 1;
+            this.radioButtonDbgOff.TabStop = true;
+            this.radioButtonDbgOff.Text = "Off";
+            this.radioButtonDbgOff.UseVisualStyleBackColor = true;
+            this.radioButtonDbgOff.CheckedChanged += new System.EventHandler(this.radioButtonDbgOff_CheckedChanged);
             // 
-            // buttonDisGo
+            // tabPageMisc
             // 
-            this.buttonDisGo.Enabled = false;
-            this.buttonDisGo.Location = new System.Drawing.Point(171, 2);
-            this.buttonDisGo.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDisGo.Name = "buttonDisGo";
-            this.buttonDisGo.Size = new System.Drawing.Size(50, 20);
-            this.buttonDisGo.TabIndex = 5;
-            this.buttonDisGo.Text = "Go";
-            this.buttonDisGo.UseVisualStyleBackColor = true;
+            this.tabPageMisc.Controls.Add(this.flowLayoutPanelMisc);
+            this.tabPageMisc.Controls.Add(this.panelMiscBorder);
+            this.tabPageMisc.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMisc.Name = "tabPageMisc";
+            this.tabPageMisc.Size = new System.Drawing.Size(960, 208);
+            this.tabPageMisc.TabIndex = 9;
+            this.tabPageMisc.Text = "Misc.";
             // 
-            // maskedTextBoxDisStart
+            // flowLayoutPanelMisc
             // 
-            this.maskedTextBoxDisStart.Enabled = false;
-            this.maskedTextBoxDisStart.Location = new System.Drawing.Point(79, 2);
-            this.maskedTextBoxDisStart.Margin = new System.Windows.Forms.Padding(2);
-            this.maskedTextBoxDisStart.Mask = "\\0xaaAAAAAA";
-            this.maskedTextBoxDisStart.Name = "maskedTextBoxDisStart";
-            this.maskedTextBoxDisStart.Size = new System.Drawing.Size(87, 20);
-            this.maskedTextBoxDisStart.TabIndex = 4;
-            // 
-            // labelDisStart
-            // 
-            this.labelDisStart.AutoSize = true;
-            this.labelDisStart.Location = new System.Drawing.Point(2, 6);
-            this.labelDisStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDisStart.Name = "labelDisStart";
-            this.labelDisStart.Size = new System.Drawing.Size(73, 13);
-            this.labelDisStart.TabIndex = 3;
-            this.labelDisStart.Text = "Start Address:";
-            // 
-            // richTextBoxDissasembly
-            // 
-            this.richTextBoxDissasembly.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.flowLayoutPanelMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxDissasembly.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxDissasembly.Location = new System.Drawing.Point(3, 23);
-            this.richTextBoxDissasembly.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
-            this.richTextBoxDissasembly.ReadOnly = true;
-            this.richTextBoxDissasembly.Size = new System.Drawing.Size(768, 180);
-            this.richTextBoxDissasembly.TabIndex = 0;
-            this.richTextBoxDissasembly.Text = "";
+            this.flowLayoutPanelMisc.AutoScroll = true;
+            this.flowLayoutPanelMisc.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanelMisc.Location = new System.Drawing.Point(64, 5);
+            this.flowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanelMisc.Name = "flowLayoutPanelMisc";
+            this.flowLayoutPanelMisc.Size = new System.Drawing.Size(893, 198);
+            this.flowLayoutPanelMisc.TabIndex = 5;
+            // 
+            // panelMiscBorder
+            // 
+            this.panelMiscBorder.Controls.Add(this.pictureBoxMisc);
+            this.panelMiscBorder.Location = new System.Drawing.Point(3, 6);
+            this.panelMiscBorder.Margin = new System.Windows.Forms.Padding(2);
+            this.panelMiscBorder.Name = "panelMiscBorder";
+            this.panelMiscBorder.Size = new System.Drawing.Size(57, 55);
+            this.panelMiscBorder.TabIndex = 4;
+            // 
+            // pictureBoxMisc
+            // 
+            this.pictureBoxMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMisc.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxMisc.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxMisc.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxMisc.Name = "pictureBoxMisc";
+            this.pictureBoxMisc.Size = new System.Drawing.Size(51, 50);
+            this.pictureBoxMisc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxMisc.TabIndex = 0;
+            this.pictureBoxMisc.TabStop = false;
+            // 
+            // tabPageStars
+            // 
+            this.tabPageStars.Controls.Add(this.flowLayoutPanel1);
+            this.tabPageStars.Controls.Add(this.radioButtonFileD);
+            this.tabPageStars.Controls.Add(this.radioButtonFileC);
+            this.tabPageStars.Controls.Add(this.radioButtonFileB);
+            this.tabPageStars.Controls.Add(this.radioButtonFileA);
+            this.tabPageStars.Location = new System.Drawing.Point(4, 22);
+            this.tabPageStars.Name = "tabPageStars";
+            this.tabPageStars.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageStars.Size = new System.Drawing.Size(960, 208);
+            this.tabPageStars.TabIndex = 10;
+            this.tabPageStars.Text = "Stars";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.panelStrCourse);
+            this.flowLayoutPanel1.Controls.Add(this.panel2);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(63, 7);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(891, 195);
+            this.flowLayoutPanel1.TabIndex = 4;
+            this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // panelStrCourse
+            // 
+            this.panelStrCourse.Controls.Add(this.flowLayoutPanelCourse);
+            this.panelStrCourse.Location = new System.Drawing.Point(0, 0);
+            this.panelStrCourse.Margin = new System.Windows.Forms.Padding(0);
+            this.panelStrCourse.Name = "panelStrCourse";
+            this.panelStrCourse.Size = new System.Drawing.Size(665, 62);
+            this.panelStrCourse.TabIndex = 0;
+            // 
+            // flowLayoutPanelCourse
+            // 
+            this.flowLayoutPanelCourse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar1);
+            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar2);
+            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar3);
+            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar4);
+            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar5);
+            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar6);
+            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar7);
+            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrCannon);
+            this.flowLayoutPanelCourse.Controls.Add(this.labelStrCoinRecord);
+            this.flowLayoutPanelCourse.Controls.Add(this.textBoxStrCoinRecord);
+            this.flowLayoutPanelCourse.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelCourse.Name = "flowLayoutPanelCourse";
+            this.flowLayoutPanelCourse.Size = new System.Drawing.Size(659, 56);
+            this.flowLayoutPanelCourse.TabIndex = 0;
+            // 
+            // pictureBoxStrStar1
+            // 
+            this.pictureBoxStrStar1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxStrStar1.Name = "pictureBoxStrStar1";
+            this.pictureBoxStrStar1.Size = new System.Drawing.Size(59, 50);
+            this.pictureBoxStrStar1.TabIndex = 0;
+            this.pictureBoxStrStar1.TabStop = false;
+            // 
+            // pictureBoxStrStar2
+            // 
+            this.pictureBoxStrStar2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar2.Location = new System.Drawing.Point(68, 3);
+            this.pictureBoxStrStar2.Name = "pictureBoxStrStar2";
+            this.pictureBoxStrStar2.Size = new System.Drawing.Size(59, 50);
+            this.pictureBoxStrStar2.TabIndex = 1;
+            this.pictureBoxStrStar2.TabStop = false;
+            // 
+            // pictureBoxStrStar3
+            // 
+            this.pictureBoxStrStar3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar3.Location = new System.Drawing.Point(133, 3);
+            this.pictureBoxStrStar3.Name = "pictureBoxStrStar3";
+            this.pictureBoxStrStar3.Size = new System.Drawing.Size(59, 50);
+            this.pictureBoxStrStar3.TabIndex = 2;
+            this.pictureBoxStrStar3.TabStop = false;
+            // 
+            // pictureBoxStrStar4
+            // 
+            this.pictureBoxStrStar4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar4.Location = new System.Drawing.Point(198, 3);
+            this.pictureBoxStrStar4.Name = "pictureBoxStrStar4";
+            this.pictureBoxStrStar4.Size = new System.Drawing.Size(59, 50);
+            this.pictureBoxStrStar4.TabIndex = 3;
+            this.pictureBoxStrStar4.TabStop = false;
+            // 
+            // pictureBoxStrStar5
+            // 
+            this.pictureBoxStrStar5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar5.Location = new System.Drawing.Point(263, 3);
+            this.pictureBoxStrStar5.Name = "pictureBoxStrStar5";
+            this.pictureBoxStrStar5.Size = new System.Drawing.Size(59, 50);
+            this.pictureBoxStrStar5.TabIndex = 4;
+            this.pictureBoxStrStar5.TabStop = false;
+            // 
+            // pictureBoxStrStar6
+            // 
+            this.pictureBoxStrStar6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar6.Location = new System.Drawing.Point(328, 3);
+            this.pictureBoxStrStar6.Name = "pictureBoxStrStar6";
+            this.pictureBoxStrStar6.Size = new System.Drawing.Size(59, 50);
+            this.pictureBoxStrStar6.TabIndex = 5;
+            this.pictureBoxStrStar6.TabStop = false;
+            // 
+            // pictureBoxStrStar7
+            // 
+            this.pictureBoxStrStar7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar7.Location = new System.Drawing.Point(393, 3);
+            this.pictureBoxStrStar7.Name = "pictureBoxStrStar7";
+            this.pictureBoxStrStar7.Size = new System.Drawing.Size(59, 50);
+            this.pictureBoxStrStar7.TabIndex = 6;
+            this.pictureBoxStrStar7.TabStop = false;
+            // 
+            // pictureBoxStrCannon
+            // 
+            this.pictureBoxStrCannon.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrCannon.Location = new System.Drawing.Point(458, 3);
+            this.pictureBoxStrCannon.Name = "pictureBoxStrCannon";
+            this.pictureBoxStrCannon.Size = new System.Drawing.Size(59, 50);
+            this.pictureBoxStrCannon.TabIndex = 7;
+            this.pictureBoxStrCannon.TabStop = false;
+            // 
+            // labelStrCoinRecord
+            // 
+            this.labelStrCoinRecord.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelStrCoinRecord.AutoSize = true;
+            this.labelStrCoinRecord.Location = new System.Drawing.Point(523, 21);
+            this.labelStrCoinRecord.Name = "labelStrCoinRecord";
+            this.labelStrCoinRecord.Size = new System.Drawing.Size(72, 13);
+            this.labelStrCoinRecord.TabIndex = 9;
+            this.labelStrCoinRecord.Text = "Coint Record:";
+            // 
+            // textBoxStrCoinRecord
+            // 
+            this.textBoxStrCoinRecord.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxStrCoinRecord.Location = new System.Drawing.Point(601, 18);
+            this.textBoxStrCoinRecord.Name = "textBoxStrCoinRecord";
+            this.textBoxStrCoinRecord.Size = new System.Drawing.Size(44, 20);
+            this.textBoxStrCoinRecord.TabIndex = 8;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.flowLayoutPanel2);
+            this.panel2.Location = new System.Drawing.Point(0, 62);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(529, 62);
+            this.panel2.TabIndex = 1;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox1);
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox2);
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox3);
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox4);
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox5);
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox6);
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox7);
+            this.flowLayoutPanel2.Controls.Add(this.pictureBox8);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(523, 56);
+            this.flowLayoutPanel2.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(59, 50);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox2.Location = new System.Drawing.Point(68, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(59, 50);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox3.Location = new System.Drawing.Point(133, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(59, 50);
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox4.Location = new System.Drawing.Point(198, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(59, 50);
+            this.pictureBox4.TabIndex = 3;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox5.Location = new System.Drawing.Point(263, 3);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(59, 50);
+            this.pictureBox5.TabIndex = 4;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox6.Location = new System.Drawing.Point(328, 3);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(59, 50);
+            this.pictureBox6.TabIndex = 5;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox7.Location = new System.Drawing.Point(393, 3);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(59, 50);
+            this.pictureBox7.TabIndex = 6;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox8.Location = new System.Drawing.Point(458, 3);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(59, 50);
+            this.pictureBox8.TabIndex = 7;
+            this.pictureBox8.TabStop = false;
+            // 
+            // radioButtonFileD
+            // 
+            this.radioButtonFileD.AutoSize = true;
+            this.radioButtonFileD.Location = new System.Drawing.Point(6, 75);
+            this.radioButtonFileD.Name = "radioButtonFileD";
+            this.radioButtonFileD.Size = new System.Drawing.Size(52, 17);
+            this.radioButtonFileD.TabIndex = 3;
+            this.radioButtonFileD.Text = "File D";
+            this.radioButtonFileD.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFileC
+            // 
+            this.radioButtonFileC.AutoSize = true;
+            this.radioButtonFileC.Location = new System.Drawing.Point(6, 52);
+            this.radioButtonFileC.Name = "radioButtonFileC";
+            this.radioButtonFileC.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonFileC.TabIndex = 2;
+            this.radioButtonFileC.Text = "File C";
+            this.radioButtonFileC.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFileB
+            // 
+            this.radioButtonFileB.AutoSize = true;
+            this.radioButtonFileB.Location = new System.Drawing.Point(6, 29);
+            this.radioButtonFileB.Name = "radioButtonFileB";
+            this.radioButtonFileB.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonFileB.TabIndex = 1;
+            this.radioButtonFileB.Text = "File B";
+            this.radioButtonFileB.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFileA
+            // 
+            this.radioButtonFileA.AutoSize = true;
+            this.radioButtonFileA.Checked = true;
+            this.radioButtonFileA.Location = new System.Drawing.Point(6, 6);
+            this.radioButtonFileA.Name = "radioButtonFileA";
+            this.radioButtonFileA.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonFileA.TabIndex = 0;
+            this.radioButtonFileA.TabStop = true;
+            this.radioButtonFileA.Text = "File A";
+            this.radioButtonFileA.UseVisualStyleBackColor = true;
             // 
             // tabPageMap
             // 
@@ -831,7 +1218,7 @@
             this.tabPageMap.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageMap.Name = "tabPageMap";
             this.tabPageMap.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageMap.Size = new System.Drawing.Size(773, 208);
+            this.tabPageMap.Size = new System.Drawing.Size(960, 208);
             this.tabPageMap.TabIndex = 4;
             this.tabPageMap.Text = "Map";
             // 
@@ -868,8 +1255,8 @@
             // splitContainerMap.Panel2
             // 
             this.splitContainerMap.Panel2.Controls.Add(this.glControlMap);
-            this.splitContainerMap.Size = new System.Drawing.Size(772, 198);
-            this.splitContainerMap.SplitterDistance = 256;
+            this.splitContainerMap.Size = new System.Drawing.Size(959, 198);
+            this.splitContainerMap.SplitterDistance = 318;
             this.splitContainerMap.SplitterWidth = 3;
             this.splitContainerMap.TabIndex = 16;
             // 
@@ -981,7 +1368,7 @@
             // labelMapId
             // 
             this.labelMapId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelMapId.Location = new System.Drawing.Point(142, 179);
+            this.labelMapId.Location = new System.Drawing.Point(204, 179);
             this.labelMapId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapId.Name = "labelMapId";
             this.labelMapId.Size = new System.Drawing.Size(110, 13);
@@ -1060,10 +1447,154 @@
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(508, 188);
+            this.glControlMap.Size = new System.Drawing.Size(639, 188);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
+            // 
+            // tabPageExpressions
+            // 
+            this.tabPageExpressions.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageExpressions.Controls.Add(this.checkBoxAbsoluteAddress);
+            this.tabPageExpressions.Controls.Add(this.buttonOtherDelete);
+            this.tabPageExpressions.Controls.Add(this.buttonOtherModify);
+            this.tabPageExpressions.Controls.Add(this.buttonOtherAdd);
+            this.tabPageExpressions.Controls.Add(this.dataGridViewExpressions);
+            this.tabPageExpressions.Location = new System.Drawing.Point(4, 22);
+            this.tabPageExpressions.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageExpressions.Name = "tabPageExpressions";
+            this.tabPageExpressions.Size = new System.Drawing.Size(960, 208);
+            this.tabPageExpressions.TabIndex = 2;
+            this.tabPageExpressions.Text = "Expressions";
+            // 
+            // checkBoxAbsoluteAddress
+            // 
+            this.checkBoxAbsoluteAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxAbsoluteAddress.AutoSize = true;
+            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(825, 187);
+            this.checkBoxAbsoluteAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxAbsoluteAddress.Name = "checkBoxAbsoluteAddress";
+            this.checkBoxAbsoluteAddress.Size = new System.Drawing.Size(134, 17);
+            this.checkBoxAbsoluteAddress.TabIndex = 4;
+            this.checkBoxAbsoluteAddress.Text = "View Absolute Address";
+            this.checkBoxAbsoluteAddress.UseVisualStyleBackColor = true;
+            // 
+            // buttonOtherDelete
+            // 
+            this.buttonOtherDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonOtherDelete.Location = new System.Drawing.Point(106, 185);
+            this.buttonOtherDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonOtherDelete.Name = "buttonOtherDelete";
+            this.buttonOtherDelete.Size = new System.Drawing.Size(48, 21);
+            this.buttonOtherDelete.TabIndex = 3;
+            this.buttonOtherDelete.Text = "Delete";
+            this.buttonOtherDelete.UseVisualStyleBackColor = true;
+            this.buttonOtherDelete.Click += new System.EventHandler(this.buttonOtherDelete_Click);
+            // 
+            // buttonOtherModify
+            // 
+            this.buttonOtherModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonOtherModify.Location = new System.Drawing.Point(54, 185);
+            this.buttonOtherModify.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonOtherModify.Name = "buttonOtherModify";
+            this.buttonOtherModify.Size = new System.Drawing.Size(48, 21);
+            this.buttonOtherModify.TabIndex = 2;
+            this.buttonOtherModify.Text = "Modify";
+            this.buttonOtherModify.UseVisualStyleBackColor = true;
+            this.buttonOtherModify.Click += new System.EventHandler(this.buttonOtherModify_Click);
+            // 
+            // buttonOtherAdd
+            // 
+            this.buttonOtherAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonOtherAdd.Location = new System.Drawing.Point(2, 185);
+            this.buttonOtherAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonOtherAdd.Name = "buttonOtherAdd";
+            this.buttonOtherAdd.Size = new System.Drawing.Size(48, 21);
+            this.buttonOtherAdd.TabIndex = 1;
+            this.buttonOtherAdd.Text = "Add";
+            this.buttonOtherAdd.UseVisualStyleBackColor = true;
+            this.buttonOtherAdd.Click += new System.EventHandler(this.buttonOtherAdd_Click);
+            // 
+            // dataGridViewExpressions
+            // 
+            this.dataGridViewExpressions.AllowUserToAddRows = false;
+            this.dataGridViewExpressions.AllowUserToDeleteRows = false;
+            this.dataGridViewExpressions.AllowUserToResizeRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewExpressions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewExpressions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewExpressions.Location = new System.Drawing.Point(2, 2);
+            this.dataGridViewExpressions.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewExpressions.Name = "dataGridViewExpressions";
+            this.dataGridViewExpressions.RowTemplate.Height = 20;
+            this.dataGridViewExpressions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewExpressions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewExpressions.Size = new System.Drawing.Size(958, 178);
+            this.dataGridViewExpressions.TabIndex = 0;
+            this.dataGridViewExpressions.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOther_CellMouseDoubleClick);
+            // 
+            // tabPageDisassembly
+            // 
+            this.tabPageDisassembly.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageDisassembly.Controls.Add(this.buttonDisGo);
+            this.tabPageDisassembly.Controls.Add(this.maskedTextBoxDisStart);
+            this.tabPageDisassembly.Controls.Add(this.labelDisStart);
+            this.tabPageDisassembly.Controls.Add(this.richTextBoxDissasembly);
+            this.tabPageDisassembly.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDisassembly.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageDisassembly.Name = "tabPageDisassembly";
+            this.tabPageDisassembly.Size = new System.Drawing.Size(960, 208);
+            this.tabPageDisassembly.TabIndex = 3;
+            this.tabPageDisassembly.Text = "Disassembly";
+            // 
+            // buttonDisGo
+            // 
+            this.buttonDisGo.Enabled = false;
+            this.buttonDisGo.Location = new System.Drawing.Point(171, 2);
+            this.buttonDisGo.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDisGo.Name = "buttonDisGo";
+            this.buttonDisGo.Size = new System.Drawing.Size(50, 20);
+            this.buttonDisGo.TabIndex = 5;
+            this.buttonDisGo.Text = "Go";
+            this.buttonDisGo.UseVisualStyleBackColor = true;
+            // 
+            // maskedTextBoxDisStart
+            // 
+            this.maskedTextBoxDisStart.Enabled = false;
+            this.maskedTextBoxDisStart.Location = new System.Drawing.Point(79, 2);
+            this.maskedTextBoxDisStart.Margin = new System.Windows.Forms.Padding(2);
+            this.maskedTextBoxDisStart.Mask = "\\0xaaAAAAAA";
+            this.maskedTextBoxDisStart.Name = "maskedTextBoxDisStart";
+            this.maskedTextBoxDisStart.Size = new System.Drawing.Size(87, 20);
+            this.maskedTextBoxDisStart.TabIndex = 4;
+            // 
+            // labelDisStart
+            // 
+            this.labelDisStart.AutoSize = true;
+            this.labelDisStart.Location = new System.Drawing.Point(2, 6);
+            this.labelDisStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDisStart.Name = "labelDisStart";
+            this.labelDisStart.Size = new System.Drawing.Size(73, 13);
+            this.labelDisStart.TabIndex = 3;
+            this.labelDisStart.Text = "Start Address:";
+            // 
+            // richTextBoxDissasembly
+            // 
+            this.richTextBoxDissasembly.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxDissasembly.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxDissasembly.Location = new System.Drawing.Point(3, 23);
+            this.richTextBoxDissasembly.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
+            this.richTextBoxDissasembly.ReadOnly = true;
+            this.richTextBoxDissasembly.Size = new System.Drawing.Size(955, 180);
+            this.richTextBoxDissasembly.TabIndex = 0;
+            this.richTextBoxDissasembly.Text = "";
             // 
             // tabPageOptions
             // 
@@ -1074,7 +1605,7 @@
             this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
             this.tabPageOptions.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageOptions.Name = "tabPageOptions";
-            this.tabPageOptions.Size = new System.Drawing.Size(773, 208);
+            this.tabPageOptions.Size = new System.Drawing.Size(960, 208);
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
             this.tabPageOptions.Click += new System.EventHandler(this.tabPageOptions_Click);
@@ -1082,9 +1613,14 @@
             // trackBarObjSlotSize
             // 
             this.trackBarObjSlotSize.Location = new System.Drawing.Point(3, 64);
+            this.trackBarObjSlotSize.Maximum = 100;
+            this.trackBarObjSlotSize.Minimum = 15;
             this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
             this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
             this.trackBarObjSlotSize.TabIndex = 3;
+            this.trackBarObjSlotSize.TickFrequency = 10;
+            this.trackBarObjSlotSize.Value = 15;
+            this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
             // checkBoxUseRomHack
             // 
@@ -1124,58 +1660,18 @@
             // 
             this.labelVersionNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelVersionNumber.AutoSize = true;
-            this.labelVersionNumber.Location = new System.Drawing.Point(760, 6);
+            this.labelVersionNumber.Location = new System.Drawing.Point(947, 6);
             this.labelVersionNumber.Name = "labelVersionNumber";
-            this.labelVersionNumber.Size = new System.Drawing.Size(37, 13);
+            this.labelVersionNumber.Size = new System.Drawing.Size(41, 13);
             this.labelVersionNumber.TabIndex = 5;
-            this.labelVersionNumber.Text = "v0.1.5";
+            this.labelVersionNumber.Text = "version";
             this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // tabPageDebug
-            // 
-            this.tabPageDebug.Controls.Add(this.radioButton1);
-            this.tabPageDebug.Controls.Add(this.checkBox1);
-            this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDebug.Name = "tabPageDebug";
-            this.tabPageDebug.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDebug.Size = new System.Drawing.Size(773, 208);
-            this.tabPageDebug.TabIndex = 8;
-            this.tabPageDebug.Text = "Debug";
-            // 
-            // tabPageMisc
-            // 
-            this.tabPageMisc.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMisc.Name = "tabPageMisc";
-            this.tabPageMisc.Size = new System.Drawing.Size(773, 208);
-            this.tabPageMisc.TabIndex = 9;
-            this.tabPageMisc.Text = "Misc.";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(77, 6);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(77, 30);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 601);
+            this.ClientSize = new System.Drawing.Size(992, 601);
             this.Controls.Add(this.labelVersionNumber);
             this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.buttonPauseResume);
@@ -1208,11 +1704,37 @@
             this.tabPageCamera.ResumeLayout(false);
             this.panelCameraBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).EndInit();
-            this.tabPageExpressions.ResumeLayout(false);
-            this.tabPageExpressions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressions)).EndInit();
-            this.tabPageDisassembly.ResumeLayout(false);
-            this.tabPageDisassembly.PerformLayout();
+            this.tabPageDebug.ResumeLayout(false);
+            this.tabPageDebug.PerformLayout();
+            this.panelDebugBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
+            this.tabPageMisc.ResumeLayout(false);
+            this.panelMiscBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
+            this.tabPageStars.ResumeLayout(false);
+            this.tabPageStars.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.panelStrCourse.ResumeLayout(false);
+            this.flowLayoutPanelCourse.ResumeLayout(false);
+            this.flowLayoutPanelCourse.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrCannon)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.tabPageMap.ResumeLayout(false);
             this.splitContainerMap.Panel1.ResumeLayout(false);
             this.splitContainerMap.Panel1.PerformLayout();
@@ -1221,11 +1743,14 @@
             this.splitContainerMap.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).EndInit();
+            this.tabPageExpressions.ResumeLayout(false);
+            this.tabPageExpressions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressions)).EndInit();
+            this.tabPageDisassembly.ResumeLayout(false);
+            this.tabPageDisassembly.PerformLayout();
             this.tabPageOptions.ResumeLayout(false);
             this.tabPageOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.tabPageDebug.ResumeLayout(false);
-            this.tabPageDebug.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1314,9 +1839,48 @@
         private System.Windows.Forms.CheckBox checkBoxMapShowCamera;
         private System.Windows.Forms.TrackBar trackBarObjSlotSize;
         private System.Windows.Forms.TabPage tabPageDebug;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.RadioButton radioButtonDbgOff;
         private System.Windows.Forms.TabPage tabPageMisc;
+        private System.Windows.Forms.RadioButton radioButtonDbgEnemyInfo;
+        private System.Windows.Forms.RadioButton radioButtonDbgFxInfo;
+        private System.Windows.Forms.RadioButton radioButtonDbgStgInfo;
+        private System.Windows.Forms.RadioButton radioButtonDbgMapInfo;
+        private System.Windows.Forms.RadioButton radioButtonDbgChkInfo;
+        private System.Windows.Forms.RadioButton radioButtonDbgObjCnt;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panelDebugBorder;
+        private System.Windows.Forms.PictureBox pictureBoxDebug;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMisc;
+        private System.Windows.Forms.Panel panelMiscBorder;
+        private System.Windows.Forms.PictureBox pictureBoxMisc;
+        private System.Windows.Forms.TabPage tabPageStars;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.RadioButton radioButtonFileD;
+        private System.Windows.Forms.RadioButton radioButtonFileC;
+        private System.Windows.Forms.RadioButton radioButtonFileB;
+        private System.Windows.Forms.RadioButton radioButtonFileA;
+        private System.Windows.Forms.Panel panelStrCourse;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCourse;
+        private System.Windows.Forms.PictureBox pictureBoxStrStar1;
+        private System.Windows.Forms.PictureBox pictureBoxStrStar2;
+        private System.Windows.Forms.PictureBox pictureBoxStrStar3;
+        private System.Windows.Forms.PictureBox pictureBoxStrStar4;
+        private System.Windows.Forms.PictureBox pictureBoxStrStar5;
+        private System.Windows.Forms.PictureBox pictureBoxStrStar6;
+        private System.Windows.Forms.PictureBox pictureBoxStrStar7;
+        private System.Windows.Forms.PictureBox pictureBoxStrCannon;
+        private System.Windows.Forms.Label labelStrCoinRecord;
+        private System.Windows.Forms.TextBox textBoxStrCoinRecord;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }
 

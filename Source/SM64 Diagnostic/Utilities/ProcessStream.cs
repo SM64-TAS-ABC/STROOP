@@ -194,6 +194,7 @@ namespace SM64_Diagnostic.Utilities
 
             _lastUpdateBeforePausing = true;
 
+            // Pause all threads
             foreach (ProcessThread pT in _process.Threads)
             {
                 IntPtr pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
@@ -214,6 +215,7 @@ namespace SM64_Diagnostic.Utilities
             if (!IsSuspended || _process == null)
                 return;
 
+            // Resume all threads
             foreach (ProcessThread pT in _process.Threads)
             {
                 IntPtr pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
@@ -245,12 +247,18 @@ namespace SM64_Diagnostic.Utilities
         {
             byte[] readBytes = new byte[length];
             address &= ~0x80000000U;
+
+            // Fix little endianess addressing
             if ((fixAddress.HasValue && fixAddress.Value) || (fixAddress == null && !absoluteAddress))
                 address = (uint)LittleEndianessAddressing.AddressFix((int)address, length);
+
+            // Handling absolute addressing (remove process offset from address)
             if (absoluteAddress)
                 address = (uint)(address - _offset);
 
+            // Retrieve ram bytes from final address
             Array.Copy(_ram, address, readBytes, 0, length);
+
             return readBytes;
         }
 
@@ -259,17 +267,28 @@ namespace SM64_Diagnostic.Utilities
             return WriteRam(buffer, address, buffer.Length, absoluteAddress, fixAddress);
         }
 
-        public bool WriteRam(byte[] buffer, int bufferStart, uint address, int length, bool absoluteAddress = false, bool? fixAddress = null)
+        public bool WriteRam(byte[] buffer, int bufferStart, uint address, int length, bool absoluteAddress = false, bool? fixAddress = null, bool safeWrite = true)
         {
             byte[] writeBytes = new byte[length];
             address &= ~0x80000000U;
             Array.Copy(buffer, bufferStart, writeBytes, 0, length);
-
+            
+            // Fix little endianess addresssing
             if ((fixAddress.HasValue && fixAddress.Value) || (fixAddress == null && !absoluteAddress))
                 address = (uint)LittleEndianessAddressing.AddressFix((int)address, length);
 
-            return WriteProcessMemory((int)address,
-                writeBytes, absoluteAddress);
+            // Attempt to pause the game before writing 
+            if (safeWrite)
+                Suspend();
+
+            // Write memory to game/process
+            bool result =  WriteProcessMemory((int)address, writeBytes, absoluteAddress);
+
+            // Resume stream 
+            if (safeWrite)
+                Resume();
+
+            return result;
         }
         
         public bool WriteRam(byte[] buffer, uint address, int length, bool absoluteAddress = false, bool? fixAddress = null)

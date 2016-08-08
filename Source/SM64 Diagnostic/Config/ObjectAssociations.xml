@@ -19,6 +19,14 @@
     <Image path="HUD.png"/>
     <Color>#aaaaaa</Color>
   </Hud>
+  <Debug>
+    <Image path="DEBUG.png"/>
+    <Color>#aaaaaa</Color>
+  </Debug>
+  <Misc>
+    <Image path="MISC.png"/>
+    <Color>#aaaaaa</Color>
+  </Misc>
   <Camera>
     <Image path="Camera.png"/>
     <Color>#aaaaaa</Color>

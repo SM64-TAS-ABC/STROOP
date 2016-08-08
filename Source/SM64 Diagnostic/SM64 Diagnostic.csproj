@@ -84,7 +84,7 @@
   <ItemGroup>
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\WatchExpressionExtensions.cs" />
-    <Compile Include="ManagerClasses\HudManager.cs" />
+    <Compile Include="ManagerClasses\DataManager.cs" />
     <Compile Include="Controls\DataContainer.cs" />
     <Compile Include="ManagerClasses\DisassemblyManager.cs" />
     <Compile Include="Controls\MapGraphicsControl.cs" />
@@ -103,6 +103,7 @@
     </Compile>
     <Compile Include="Controls\ObjectSlot.cs" />
     <Compile Include="ManagerClasses\ObjectSlotManager.cs" />
+    <Compile Include="Structs\Configurations\DebugConfig.cs" />
     <Compile Include="Structs\GameScript.cs" />
     <Compile Include="Structs\Gui\MapGui.cs" />
     <Compile Include="Structs\Gui\ObjectSlotManagerGui.cs" />
@@ -111,12 +112,12 @@
     <Compile Include="Structs\Map.cs" />
     <Compile Include="Structs\MapAssociations.cs" />
     <Compile Include="Structs\MapObject.cs" />
-    <Compile Include="Structs\MarioConfig.cs" />
+    <Compile Include="Structs\Configurations\MarioConfig.cs" />
     <Compile Include="Structs\ObjectAssociations.cs" />
     <Compile Include="Structs\Gui\ObjectDataGui.cs" />
     <Compile Include="Structs\ObjectSlotData.cs" />
-    <Compile Include="Structs\ObjectSlotsConfig.cs" />
-    <Compile Include="Structs\ObjectGroupsConfig.cs" />
+    <Compile Include="Structs\Configurations\ObjectSlotsConfig.cs" />
+    <Compile Include="Structs\Configurations\ObjectGroupsConfig.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Structs\ScriptParser.cs" />
     <Compile Include="Structs\WatchExpression.cs" />
@@ -133,7 +134,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\ProcessStream.cs" />
     <Compile Include="Utilities\ParsingUtilities.cs" />
-    <Compile Include="Structs\Config.cs" />
+    <Compile Include="Structs\Configurations\Config.cs" />
     <Compile Include="Structs\WatchVariable.cs" />
     <Compile Include="Utilities\LittleEndianessAddressing.cs" />
     <Compile Include="Extensions\RichTextBoxExtensions.cs" />
@@ -169,7 +170,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Schemas\OtherDataSchema.xsd">
+    <EmbeddedResource Include="Schemas\MiscDataSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Schemas\ObjectAssociationsSchema.xsd">
@@ -251,7 +252,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Config\OtherData.xml">
+    <Content Include="Config\MiscData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
@@ -1250,6 +1251,9 @@
     <Content Include="Resources\Object Images\DDD Pole.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Object Images\DEBUG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Object Images\default.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1572,6 +1576,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Object Images\MIPS.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Object Images\MISC.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Object Images\Moneybag Coin.png">

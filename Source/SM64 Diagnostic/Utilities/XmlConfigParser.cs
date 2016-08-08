@@ -207,6 +207,21 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
+                    case "Debug":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "ToggleAddress":
+                                    config.Debug.Toggle = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "SettingAddress":
+                                    config.Debug.Setting = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                            }
+                        }
+                        break;
+
                     case "LevelAddress":
                         config.LevelAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
@@ -256,15 +271,15 @@ namespace SM64_Diagnostic.Utilities
             return config;
         }
 
-        public static Dictionary<int, WatchVariable> OpenOtherData(string path)
+        public static List<WatchVariable> OpenMiscData(string path)
         {
-            var otherData = new Dictionary<int, WatchVariable>();
+            var miscData = new List<WatchVariable>();
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
             var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/OtherDataSchema.xsd", "OtherDataSchema.xsd");
+            schemaSet.Add("http://tempuri.org/MiscDataSchema.xsd", "MiscDataSchema.xsd");
             schemaSet.Compile();
 
             // Load and validate document
@@ -276,10 +291,10 @@ namespace SM64_Diagnostic.Utilities
             {
                 var element = mainElements[i];
                 var watchVar = GetWatchVariableFromElement(element);
-                otherData.Add(i, watchVar);
+                miscData.Add(watchVar);
             }
 
-            return otherData;
+            return miscData;
         }
 
         public static List<WatchVariable> OpenObjectData(string path)
@@ -415,8 +430,8 @@ namespace SM64_Diagnostic.Utilities
             // Create Behavior-ImagePath list
             var behaviorImageAssoc = new Dictionary<uint, Tuple<string, string, bool, string>>();
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "",
-                marioImagePath = "", holpMapImagePath = "", hudImagePath = "", cameraImagePath = "",
-                marioMapImagePath = "", cameraMapImagePath = "";
+                marioImagePath = "", holpMapImagePath = "", hudImagePath = "", debugImagePath = "", 
+                miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "";
             var usedBehaviors = new List<uint>();
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
@@ -463,6 +478,16 @@ namespace SM64_Diagnostic.Utilities
                         assoc.HudColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
                             break;
 
+                    case "Debug":
+                        debugImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
+                        assoc.DebugColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
+                        break;
+
+                    case "Misc":
+                        miscImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
+                        assoc.MiscColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
+                        break;
+
                     case "Camera":
                         cameraImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                         assoc.CameraColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
@@ -500,8 +525,10 @@ namespace SM64_Diagnostic.Utilities
             assoc.CameraImage = Bitmap.FromFile(imageDir + cameraImagePath);
             assoc.MarioMapImage = marioMapImagePath == "" ? assoc.MarioImage : Bitmap.FromFile(mapImageDir + marioMapImagePath);
             assoc.HudImage = Bitmap.FromFile(imageDir + hudImagePath);
+            assoc.DebugImage = Bitmap.FromFile(imageDir + debugImagePath);
+            assoc.MiscImage = Bitmap.FromFile(imageDir + miscImagePath);
             assoc.HolpImage = Bitmap.FromFile(mapImageDir + holpMapImagePath);
-            assoc.CameraImage = Bitmap.FromFile(mapImageDir + cameraMapImagePath);
+            assoc.CameraMapImage = Bitmap.FromFile(mapImageDir + cameraMapImagePath);
             assoc.MarioBehavior = marioBehavior - ramToBehaviorOffset;
             foreach (var v in behaviorImageAssoc)
             {

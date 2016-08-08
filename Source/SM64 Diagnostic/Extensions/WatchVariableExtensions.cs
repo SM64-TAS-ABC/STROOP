@@ -303,7 +303,7 @@ namespace SM64_Diagnostic.Extensions
         public static Dictionary<Type, int> TypeSize = new Dictionary<Type, int>()
         {
             {typeof(byte), 1},
-            {typeof(char), 1},
+            {typeof(sbyte), 1},
             {typeof(Int16), 2},
             {typeof(UInt16), 2},
             {typeof(Int32), 4},
@@ -317,7 +317,7 @@ namespace SM64_Diagnostic.Extensions
         public static Dictionary<String, Type> StringToType = new Dictionary<string, Type>()
         {
             { "byte", typeof(byte) },
-            { "char", typeof(char) },
+            { "sbyte", typeof(sbyte) },
             { "int16", typeof(Int16) },
             { "uint16", typeof(UInt16) },
             { "int32", typeof(Int32) },
