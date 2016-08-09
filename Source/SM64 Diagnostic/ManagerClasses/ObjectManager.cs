@@ -25,7 +25,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         uint _currentAddress;
         int _slotIndex;
-        int _slotPos;
+        string _slotPos;
         uint _behavior;
         bool _unclone = false;
 
@@ -63,7 +63,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public int SlotPos
+        public string SlotPos
         {
             get
             {
@@ -74,7 +74,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (_slotPos != value)
                 {
                     _slotPos = value;
-                    _objGui.ObjSlotPositionLabel.Text = _slotPos.ToString();
+                    _objGui.ObjSlotPositionLabel.Text = _slotPos;
                 }
             }
         }
