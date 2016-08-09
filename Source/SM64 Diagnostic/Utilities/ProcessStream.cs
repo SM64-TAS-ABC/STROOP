@@ -256,6 +256,9 @@ namespace SM64_Diagnostic.Utilities
             if (absoluteAddress)
                 address = (uint)(address - _offset);
 
+            if (address + length > _ram.Length)
+                return new byte[length];
+
             // Retrieve ram bytes from final address
             Array.Copy(_ram, address, readBytes, 0, length);
 

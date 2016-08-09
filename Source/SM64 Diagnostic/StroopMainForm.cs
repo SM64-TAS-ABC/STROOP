@@ -17,7 +17,7 @@ namespace SM64_Diagnostic
 {
     public partial class StroopMainForm : Form
     {
-        const string _version = "v0.2.0";
+        const string _version = "v0.2.1";
         ProcessStream _sm64Stream = null;
         Config _config;
 
@@ -185,6 +185,7 @@ namespace SM64_Diagnostic
         {
             var AvailableProcesses = Process.GetProcesses();
             // Why the f--- I named this a resort list? I will never know
+            // Note to self: Re-Sort not resort
             List<Process> resortList = new List<Process>();
             foreach (Process p in AvailableProcesses)
             {
@@ -201,6 +202,7 @@ namespace SM64_Diagnostic
             _marioManager.Update(tabControlMain.SelectedTab == tabPageMario);
             _cameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
             _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
+            _miscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
             _mapManager?.Update();
             UpdateMemoryValues();
             _scriptManager.Update();
