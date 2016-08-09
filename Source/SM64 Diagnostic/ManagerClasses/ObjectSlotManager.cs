@@ -378,8 +378,10 @@ namespace SM64_Diagnostic.ManagerClasses
                 {
                     _objManager.BackColor = newColor;
                     _objManager.Behavior = (behaviorScriptAdd + ObjectImageAssoc.RamOffset) & 0x00FFFFFF;
+                    int slotPos = objectData.ObjectProcessGroup == VacantGroup ? objectData.VacantSlotIndex.Value : objectData.ProcessIndex;
                     _objManager.SlotIndex = _memoryAddressSlotIndex[currentAddress] + (_config.SlotIndexsFromOne ? 1 : 0); 
-                    _objManager.SlotPos = objectData.ProcessIndex + (_config.SlotIndexsFromOne ? 1 : 0);
+                    _objManager.SlotPos = (objectData.ObjectProcessGroup == VacantGroup ? "VS " : "")
+                        + (slotPos + (_config.SlotIndexsFromOne ? 1 : 0)).ToString();
                     _objManager.Name = ObjectImageAssoc.GetObjectName(behaviorScriptAdd);
                     _objManager.Image = ObjectSlots[index].Image;
                     _objManager.Update();   
