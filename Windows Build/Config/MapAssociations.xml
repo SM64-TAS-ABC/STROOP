@@ -10,6 +10,11 @@
     <Coordinates x1="-8191" x2="8192" z1="-8085" z2="6813"/>
     <BackgroundImage path="Blue Background.png"/>
   </Map>
+  <Map name="Castle Grounds" level="0" area="0">
+    <Image path="Castle Grounds.png"/>
+    <Coordinates x1="-8191" x2="8192" z1="-8085" z2="6813"/>
+    <BackgroundImage path="Blue Background.png"/>
+  </Map>
   <Map name="Castle" subName="Floor 1" level="6" area="1">
     <Image path="Castle Floor 1 Lower.png"/>
     <Coordinates x1="-7431" x2="4836" z1="-6242" z2="3174"/>

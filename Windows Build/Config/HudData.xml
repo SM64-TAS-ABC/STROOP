@@ -11,6 +11,7 @@
   <Data type="uint16" address="0x00C26C9E" absoluteAddress="true">Lives</Data>
   <Data type="uint16" address="0x00C26CE4" absoluteAddress="true">HP HUD</Data>
   <Data type="uint16" address="0x00C26CEE" absoluteAddress="true">Time</Data>
+  <Data type="byte" address="0x00C26CDD" absoluteAddress="true" isBool="true" mask="0x01">Time Counting</Data>
   <Data type="byte" address="0x00C26CE8" absoluteAddress="true" isBool="true" mask="0x40">HUD Time</Data>
   <Data type="byte" address="0x00C26CE8" absoluteAddress="true" isBool="true" mask="0x01">HUD Lives</Data>
   <Data type="byte" address="0x00C26CE8" absoluteAddress="true" isBool="true" mask="0x02">HUD Coins</Data>
