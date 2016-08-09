@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxProcessSelection = new System.Windows.Forms.ComboBox();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -85,6 +85,10 @@
             this.pictureBoxDebug = new System.Windows.Forms.PictureBox();
             this.radioButtonDbgOff = new System.Windows.Forms.RadioButton();
             this.tabPageMisc = new System.Windows.Forms.TabPage();
+            this.groupBoxPuController = new System.Windows.Forms.GroupBox();
+            this.buttonPuConZpPu = new System.Windows.Forms.Button();
+            this.buttonPuConZpQpu = new System.Windows.Forms.Button();
+            this.buttonPuConHome = new System.Windows.Forms.Button();
             this.flowLayoutPanelMisc = new System.Windows.Forms.FlowLayoutPanel();
             this.panelMiscBorder = new System.Windows.Forms.Panel();
             this.pictureBoxMisc = new System.Windows.Forms.PictureBox();
@@ -153,6 +157,16 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.labelVersionNumber = new System.Windows.Forms.Label();
+            this.buttonPuConXpPu = new System.Windows.Forms.Button();
+            this.buttonPuConZnQpu = new System.Windows.Forms.Button();
+            this.buttonPuConXnPu = new System.Windows.Forms.Button();
+            this.buttonPuConXnQpu = new System.Windows.Forms.Button();
+            this.buttonPuConXpQpu = new System.Windows.Forms.Button();
+            this.buttonPuConZnPu = new System.Windows.Forms.Button();
+            this.labelPuContZm = new System.Windows.Forms.Label();
+            this.labelPuContZp = new System.Windows.Forms.Label();
+            this.labelPuContXm = new System.Windows.Forms.Label();
+            this.labelPuContXp = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjTrash)).BeginInit();
@@ -177,6 +191,7 @@
             this.panelDebugBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
             this.tabPageMisc.SuspendLayout();
+            this.groupBoxPuController.SuspendLayout();
             this.panelMiscBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
             this.tabPageStars.SuspendLayout();
@@ -257,7 +272,7 @@
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(968, 321);
+            this.groupBoxObjects.Size = new System.Drawing.Size(968, 322);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -337,7 +352,7 @@
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 38);
             this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 278);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 279);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -878,6 +893,7 @@
             // 
             // tabPageMisc
             // 
+            this.tabPageMisc.Controls.Add(this.groupBoxPuController);
             this.tabPageMisc.Controls.Add(this.flowLayoutPanelMisc);
             this.tabPageMisc.Controls.Add(this.panelMiscBorder);
             this.tabPageMisc.Location = new System.Drawing.Point(4, 22);
@@ -885,6 +901,61 @@
             this.tabPageMisc.Size = new System.Drawing.Size(960, 208);
             this.tabPageMisc.TabIndex = 9;
             this.tabPageMisc.Text = "Misc.";
+            // 
+            // groupBoxPuController
+            // 
+            this.groupBoxPuController.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxPuController.Controls.Add(this.labelPuContXp);
+            this.groupBoxPuController.Controls.Add(this.labelPuContXm);
+            this.groupBoxPuController.Controls.Add(this.labelPuContZp);
+            this.groupBoxPuController.Controls.Add(this.labelPuContZm);
+            this.groupBoxPuController.Controls.Add(this.buttonPuConZnPu);
+            this.groupBoxPuController.Controls.Add(this.buttonPuConXpQpu);
+            this.groupBoxPuController.Controls.Add(this.buttonPuConXnQpu);
+            this.groupBoxPuController.Controls.Add(this.buttonPuConXnPu);
+            this.groupBoxPuController.Controls.Add(this.buttonPuConZnQpu);
+            this.groupBoxPuController.Controls.Add(this.buttonPuConXpPu);
+            this.groupBoxPuController.Controls.Add(this.buttonPuConZpPu);
+            this.groupBoxPuController.Controls.Add(this.buttonPuConZpQpu);
+            this.groupBoxPuController.Controls.Add(this.buttonPuConHome);
+            this.groupBoxPuController.Location = new System.Drawing.Point(772, 13);
+            this.groupBoxPuController.Name = "groupBoxPuController";
+            this.groupBoxPuController.Size = new System.Drawing.Size(185, 190);
+            this.groupBoxPuController.TabIndex = 6;
+            this.groupBoxPuController.TabStop = false;
+            this.groupBoxPuController.Text = "PU Controller";
+            // 
+            // buttonPuConZpPu
+            // 
+            this.buttonPuConZpPu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConZpPu.Location = new System.Drawing.Point(79, 119);
+            this.buttonPuConZpPu.Name = "buttonPuConZpPu";
+            this.buttonPuConZpPu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonPuConZpPu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConZpPu.TabIndex = 8;
+            this.buttonPuConZpPu.Text = "$";
+            this.buttonPuConZpPu.UseVisualStyleBackColor = true;
+            // 
+            // buttonPuConZpQpu
+            // 
+            this.buttonPuConZpQpu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConZpQpu.Location = new System.Drawing.Point(79, 150);
+            this.buttonPuConZpQpu.Name = "buttonPuConZpQpu";
+            this.buttonPuConZpQpu.Padding = new System.Windows.Forms.Padding(2, 1, 0, 0);
+            this.buttonPuConZpQpu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConZpQpu.TabIndex = 7;
+            this.buttonPuConZpQpu.Text = "K";
+            this.buttonPuConZpQpu.UseVisualStyleBackColor = true;
+            // 
+            // buttonPuConHome
+            // 
+            this.buttonPuConHome.Font = new System.Drawing.Font("Webdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConHome.Location = new System.Drawing.Point(77, 83);
+            this.buttonPuConHome.Name = "buttonPuConHome";
+            this.buttonPuConHome.Size = new System.Drawing.Size(30, 30);
+            this.buttonPuConHome.TabIndex = 1;
+            this.buttonPuConHome.Text = "H";
+            this.buttonPuConHome.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelMisc
             // 
@@ -896,7 +967,7 @@
             this.flowLayoutPanelMisc.Location = new System.Drawing.Point(64, 5);
             this.flowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelMisc.Name = "flowLayoutPanelMisc";
-            this.flowLayoutPanelMisc.Size = new System.Drawing.Size(893, 198);
+            this.flowLayoutPanelMisc.Size = new System.Drawing.Size(703, 198);
             this.flowLayoutPanelMisc.TabIndex = 5;
             // 
             // panelMiscBorder
@@ -1447,7 +1518,7 @@
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(639, 188);
+            this.glControlMap.Size = new System.Drawing.Size(640, 188);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -1520,8 +1591,8 @@
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1667,6 +1738,108 @@
             this.labelVersionNumber.Text = "version";
             this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // buttonPuConXpPu
+            // 
+            this.buttonPuConXpPu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConXpPu.Location = new System.Drawing.Point(113, 86);
+            this.buttonPuConXpPu.Name = "buttonPuConXpPu";
+            this.buttonPuConXpPu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonPuConXpPu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConXpPu.TabIndex = 9;
+            this.buttonPuConXpPu.Text = "\"";
+            this.buttonPuConXpPu.UseVisualStyleBackColor = true;
+            // 
+            // buttonPuConZnQpu
+            // 
+            this.buttonPuConZnQpu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConZnQpu.Location = new System.Drawing.Point(79, 21);
+            this.buttonPuConZnQpu.Name = "buttonPuConZnQpu";
+            this.buttonPuConZnQpu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonPuConZnQpu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConZnQpu.TabIndex = 10;
+            this.buttonPuConZnQpu.Text = "J";
+            this.buttonPuConZnQpu.UseVisualStyleBackColor = true;
+            // 
+            // buttonPuConXnPu
+            // 
+            this.buttonPuConXnPu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConXnPu.Location = new System.Drawing.Point(46, 86);
+            this.buttonPuConXnPu.Name = "buttonPuConXnPu";
+            this.buttonPuConXnPu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonPuConXnPu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConXnPu.TabIndex = 11;
+            this.buttonPuConXnPu.Text = "!";
+            this.buttonPuConXnPu.UseVisualStyleBackColor = true;
+            // 
+            // buttonPuConXnQpu
+            // 
+            this.buttonPuConXnQpu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConXnQpu.Location = new System.Drawing.Point(15, 86);
+            this.buttonPuConXnQpu.Name = "buttonPuConXnQpu";
+            this.buttonPuConXnQpu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonPuConXnQpu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConXnQpu.TabIndex = 12;
+            this.buttonPuConXnQpu.Text = "H";
+            this.buttonPuConXnQpu.UseVisualStyleBackColor = true;
+            // 
+            // buttonPuConXpQpu
+            // 
+            this.buttonPuConXpQpu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConXpQpu.Location = new System.Drawing.Point(144, 86);
+            this.buttonPuConXpQpu.Name = "buttonPuConXpQpu";
+            this.buttonPuConXpQpu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonPuConXpQpu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConXpQpu.TabIndex = 13;
+            this.buttonPuConXpQpu.Text = "I";
+            this.buttonPuConXpQpu.UseVisualStyleBackColor = true;
+            // 
+            // buttonPuConZnPu
+            // 
+            this.buttonPuConZnPu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConZnPu.Location = new System.Drawing.Point(79, 52);
+            this.buttonPuConZnPu.Name = "buttonPuConZnPu";
+            this.buttonPuConZnPu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonPuConZnPu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConZnPu.TabIndex = 14;
+            this.buttonPuConZnPu.Text = "#";
+            this.buttonPuConZnPu.UseVisualStyleBackColor = true;
+            // 
+            // labelPuContZm
+            // 
+            this.labelPuContZm.AutoSize = true;
+            this.labelPuContZm.Location = new System.Drawing.Point(56, 21);
+            this.labelPuContZm.Name = "labelPuContZm";
+            this.labelPuContZm.Size = new System.Drawing.Size(17, 13);
+            this.labelPuContZm.TabIndex = 15;
+            this.labelPuContZm.Text = "Z-";
+            // 
+            // labelPuContZp
+            // 
+            this.labelPuContZp.AutoSize = true;
+            this.labelPuContZp.Location = new System.Drawing.Point(56, 162);
+            this.labelPuContZp.Name = "labelPuContZp";
+            this.labelPuContZp.Size = new System.Drawing.Size(20, 13);
+            this.labelPuContZp.TabIndex = 16;
+            this.labelPuContZp.Text = "Z+";
+            // 
+            // labelPuContXm
+            // 
+            this.labelPuContXm.AutoSize = true;
+            this.labelPuContXm.Location = new System.Drawing.Point(16, 70);
+            this.labelPuContXm.Name = "labelPuContXm";
+            this.labelPuContXm.Size = new System.Drawing.Size(17, 13);
+            this.labelPuContXm.TabIndex = 17;
+            this.labelPuContXm.Text = "X-";
+            // 
+            // labelPuContXp
+            // 
+            this.labelPuContXp.AutoSize = true;
+            this.labelPuContXp.Location = new System.Drawing.Point(152, 70);
+            this.labelPuContXp.Name = "labelPuContXp";
+            this.labelPuContXp.Size = new System.Drawing.Size(20, 13);
+            this.labelPuContXp.TabIndex = 18;
+            this.labelPuContXp.Text = "X+";
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1709,6 +1882,8 @@
             this.panelDebugBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
             this.tabPageMisc.ResumeLayout(false);
+            this.groupBoxPuController.ResumeLayout(false);
+            this.groupBoxPuController.PerformLayout();
             this.panelMiscBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
             this.tabPageStars.ResumeLayout(false);
@@ -1881,6 +2056,20 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.GroupBox groupBoxPuController;
+        private System.Windows.Forms.Button buttonPuConZpPu;
+        private System.Windows.Forms.Button buttonPuConZpQpu;
+        private System.Windows.Forms.Button buttonPuConHome;
+        private System.Windows.Forms.Label labelPuContXp;
+        private System.Windows.Forms.Label labelPuContXm;
+        private System.Windows.Forms.Label labelPuContZp;
+        private System.Windows.Forms.Label labelPuContZm;
+        private System.Windows.Forms.Button buttonPuConZnPu;
+        private System.Windows.Forms.Button buttonPuConXpQpu;
+        private System.Windows.Forms.Button buttonPuConXnQpu;
+        private System.Windows.Forms.Button buttonPuConXnPu;
+        private System.Windows.Forms.Button buttonPuConZnQpu;
+        private System.Windows.Forms.Button buttonPuConXpPu;
     }
 }
 
