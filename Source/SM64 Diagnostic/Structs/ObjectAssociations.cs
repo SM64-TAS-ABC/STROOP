@@ -11,12 +11,7 @@ namespace SM64_Diagnostic.Structs
 {
     public class ObjectAssociations
     {
-        Dictionary<uint, Image> _objectTransparentImageAssoc = new Dictionary<uint, Image>();
-        Dictionary<uint, Image> _objectImageAssoc = new Dictionary<uint, Image>();
-        Dictionary<uint, Image> _objectMapImageAssoc = new Dictionary<uint, Image>();
-        Dictionary<uint, Image> _objectTransparentMapImageAssoc = new Dictionary<uint, Image>();
-        Dictionary<uint, bool> _objectMapRotates = new Dictionary<uint, bool>();
-        Dictionary<uint, string> _objectNameAssoc = new Dictionary<uint, string>();
+        Dictionary<uint, ObjectBehaviorAssociation> _objAssoc = new Dictionary<uint, ObjectBehaviorAssociation>();
         
         Image _defaultImage;
         Image _transparentDefaultImage;
@@ -38,6 +33,14 @@ namespace SM64_Diagnostic.Structs
         public uint MarioBehavior;
         public uint RamOffset;
 
+        public Dictionary<uint, ObjectBehaviorAssociation> BehaviorAssociations
+        {
+            get
+            {
+                return _objAssoc;
+            }
+        }
+
         public Image DefaultImage
         {
             get
@@ -51,19 +54,9 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        public void AddAssociation(uint behaviorAddress, Image image, Image mapImage, string name, bool rotates)
+        public void AddAssociation(ObjectBehaviorAssociation obj)
         {
-            _objectImageAssoc.Add(behaviorAddress, image);
-            var transparentImage = image.GetOpaqueImage(0.5f);
-            _objectTransparentImageAssoc.Add(behaviorAddress, transparentImage);
-
-            _objectNameAssoc.Add(behaviorAddress, name);
-
-            var transparentMapImage = mapImage.GetOpaqueImage(0.5f);
-            _objectMapImageAssoc.Add(behaviorAddress, mapImage);
-            _objectTransparentMapImageAssoc.Add(behaviorAddress, transparentMapImage);
-
-            _objectMapRotates.Add(behaviorAddress, rotates);
+            _objAssoc.Add(obj.Behavior, obj);
         }
 
         public Image GetObjectImage(uint behaviorAddress, bool transparent)
@@ -71,10 +64,10 @@ namespace SM64_Diagnostic.Structs
             if (behaviorAddress == 0)
                 return EmptyImage;
 
-            if (!_objectImageAssoc.ContainsKey(behaviorAddress))
+            if (!_objAssoc.ContainsKey(behaviorAddress))
                 return transparent ? _transparentDefaultImage : _defaultImage;
 
-            return transparent ? _objectTransparentImageAssoc[behaviorAddress] : _objectImageAssoc[behaviorAddress];
+            return transparent ? _objAssoc[behaviorAddress].TransparentImage : _objAssoc[behaviorAddress].Image;
         }
 
         public Image GetObjectMapImage(uint behaviorAddress, bool transparent)
@@ -82,44 +75,49 @@ namespace SM64_Diagnostic.Structs
             if (behaviorAddress == 0)
                 return EmptyImage;
 
-            if (!_objectMapImageAssoc.ContainsKey(behaviorAddress))
+            if (!_objAssoc.ContainsKey(behaviorAddress))
                 return _defaultImage;
 
-            return transparent ? _objectTransparentMapImageAssoc[behaviorAddress] : _objectMapImageAssoc[behaviorAddress];
+            return transparent ? _objAssoc[behaviorAddress].TransparentMapImage : _objAssoc[behaviorAddress].MapImage;
         }
 
         public bool GetObjectMapRotates(uint behaviorAddress)
         {
-            if (!_objectMapRotates.ContainsKey(behaviorAddress))
+            if (!_objAssoc.ContainsKey(behaviorAddress))
                 return false;
 
-            return _objectMapRotates[behaviorAddress];
+            return _objAssoc[behaviorAddress].RotatesOnMap;
         }
 
         public string GetObjectName(uint behaviorAddress)
         {
-            return "Uninitialized Object";
+            if (behaviorAddress == 0)
+                return "Uninitialized Object";
 
-            if (!_objectNameAssoc.ContainsKey(behaviorAddress))
+            if (!_objAssoc.ContainsKey(behaviorAddress))
                 return "Unknown Object";
 
-            return _objectNameAssoc[behaviorAddress];
+            return _objAssoc[behaviorAddress].Name;
+        }
+
+        public List<WatchVariable> GetWatchVariables(uint behaviorAddress)
+        {
+            if (!_objAssoc.ContainsKey(behaviorAddress))
+                return new List<WatchVariable>();
+
+            else return _objAssoc[behaviorAddress].WatchVariables;
         }
 
         ~ObjectAssociations()
         {
             // Unload and dipose of all images
-            foreach (Image image in _objectImageAssoc.Values)
-                image.Dispose();
-
-            foreach (Image image in _objectMapImageAssoc.Values)
-                image.Dispose();
-
-            foreach (Image image in _objectTransparentImageAssoc.Values)
-                image.Dispose();
-
-            foreach (Image image in _objectTransparentMapImageAssoc.Values)
-                image.Dispose();
+            foreach (ObjectBehaviorAssociation obj in _objAssoc.Values)
+            {
+                obj.Image?.Dispose();
+                obj.TransparentImage?.Dispose();
+                obj.MapImage?.Dispose();
+                obj.TransparentMapImage?.Dispose();
+            }
 
             _transparentDefaultImage?.Dispose();
             _defaultImage?.Dispose();

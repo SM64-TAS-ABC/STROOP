@@ -108,7 +108,7 @@
         </xs:element>
         <xs:element name="Object" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType>
-            <xs:all>
+            <xs:sequence>
               <xs:element name="Image">
                 <xs:complexType>
                   <xs:attribute name="path" use="required" type="xs:string"/>
@@ -120,7 +120,16 @@
                   <xs:attribute name="rotates" use="optional" type="xs:boolean"/>
                 </xs:complexType>
               </xs:element>
-            </xs:all>
+              <xs:element name="Data" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="types:watch-variable">
+                      <xs:attribute name="objectOffset" type="xs:boolean" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
             <xs:attribute name="behaviorScriptAddress" use="required" type="types:address"/>
             <xs:attribute name="name" use="required" type="xs:string"/>
           </xs:complexType>

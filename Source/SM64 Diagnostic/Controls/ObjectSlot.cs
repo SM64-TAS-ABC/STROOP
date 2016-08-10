@@ -176,7 +176,7 @@ namespace SM64_Diagnostic
                         ContentPanel.BackColor = newColor.Lighten(0.85);
                         break;
                 }
-                Image newImage = _manager.ObjectImageAssoc.GetObjectImage(_behavior, true);
+                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, true);
                 if (PictureBox.Image != newImage)
                     PictureBox.Image = newImage;
             }
@@ -198,7 +198,7 @@ namespace SM64_Diagnostic
                         ContentPanel.BackColor = newColor.Lighten(0.7);
                         break;
                 }
-                Image newImage = _manager.ObjectImageAssoc.GetObjectImage(_behavior, !_active);
+                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, !_active);
                 if (PictureBox.Image != newImage)
                     PictureBox.Image = newImage;
             }

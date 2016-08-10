@@ -115,6 +115,7 @@
     <Compile Include="Structs\MapAssociations.cs" />
     <Compile Include="Structs\MapObject.cs" />
     <Compile Include="Structs\Configurations\MarioConfig.cs" />
+    <Compile Include="Structs\ObjectBehaviorAssociation.cs" />
     <Compile Include="Structs\ObjectAssociations.cs" />
     <Compile Include="Structs\Gui\ObjectDataGui.cs" />
     <Compile Include="Structs\ObjectSlotData.cs" />
