@@ -34,8 +34,8 @@
       <Group index ="0x04" color="#10ff00"/>
       <Group index ="0x02" color="#00ffe9"/>
       <Group index ="0x06" color="#0015ff"/>
-      <Group index ="0x08" color="#a100ff"/>
-      <Group index ="0x0C" color="#f200ff"/>
+      <Group index ="0x08" color="#8000ff"/>
+      <Group index ="0x0C" color="#ff00ff"/>
     </ProcessGroupsOrdering>
     <VacantPointerAddress color="#aaaaaa">0x80361150</VacantPointerAddress>
   </ObjectGroups>
