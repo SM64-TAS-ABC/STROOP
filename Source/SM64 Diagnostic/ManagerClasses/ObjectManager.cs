@@ -14,6 +14,7 @@ namespace SM64_Diagnostic.ManagerClasses
     {
         Config _config;
         List<WatchVariableControl> _objectDataControls;
+        List<WatchVariableControl> _behaviorDataControls = new List<WatchVariableControl>();
         ProcessStream _stream;
         ObjectAssociations _objAssoc;
         ObjectDataGui _objGui;
@@ -23,6 +24,8 @@ namespace SM64_Diagnostic.ManagerClasses
         DataContainer _rngCalls;
         DataContainer _activeObjCnt;
 
+        object _watchVarLocker = new object();
+
         uint _currentAddress;
         int _slotIndex;
         string _slotPos;
@@ -30,6 +33,31 @@ namespace SM64_Diagnostic.ManagerClasses
         bool _unclone = false;
 
         #region Fields
+        public List<WatchVariable> BehaviorWatchVariables
+        {
+            get
+            {
+                return _behaviorDataControls.Select(data => data.WatchVariable).ToList();
+            }
+            set
+            {
+                lock (_watchVarLocker)
+                {
+                    // Remove old watchVars from list
+                    foreach (var watchVar in _behaviorDataControls)
+                        _objectDataControls.Remove(watchVar);
+                    _behaviorDataControls.Clear();
+
+                    // Add new watchVars
+                    foreach (var watchVar in value)
+                    {
+                        var newWatchVarControl = new WatchVariableControl(_stream, watchVar);
+                        _behaviorDataControls.Add(newWatchVarControl);
+                        _objectDataControls.Add(newWatchVarControl);
+                    }
+                }
+            }
+        }
 
         public uint CurrentAddress
         {
@@ -160,7 +188,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _objectDataControls = new List<WatchVariableControl>();
             foreach (WatchVariable watchVar in objectData)
             {
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, 0);
+                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar);
                 objectGui.ObjectFlowLayout.Controls.Add(watchControl.Control);
                 _objectDataControls.Add(watchControl);
             }
@@ -213,11 +241,14 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void Update()
         {
-            // Update watch variables
-            foreach (var watchVar in _objectDataControls)
+            lock (_watchVarLocker)
             {
-                watchVar.OtherOffset = CurrentAddress;
-                watchVar.Update();
+                // Update watch variables
+                foreach (var watchVar in _objectDataControls)
+                {
+                    watchVar.OtherOffset = CurrentAddress;
+                    watchVar.Update();
+                }
             }
 
             // Get Mario position

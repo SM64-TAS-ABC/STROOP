@@ -72,6 +72,7 @@
   <Object behaviorScriptAddress="0x130001F4" name="King Bob-omb">
     <Image path="King Bob-omb.png"/>
 	<MapImage path="King Bob-omb Top.png" rotates="true"/>
+    <Data type="uint32" address="0x020C" objectOffset="true" useHex="true">Behavior Script Address</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000254" name="King Bob-omb Anchor">
     <Image path="King Bob-omb Anchor.png"/>

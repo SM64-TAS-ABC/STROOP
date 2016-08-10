@@ -16,7 +16,7 @@ namespace SM64_Diagnostic.ManagerClasses
         public ObjectSlotData[] ObjectSlotData;
 
         Config _config;
-        public ObjectAssociations ObjectImageAssoc;
+        public ObjectAssociations ObjectAssoc;
         ObjectManager _objManager;
         MapManager _mapManager;
         ProcessStream _stream;
@@ -73,7 +73,7 @@ namespace SM64_Diagnostic.ManagerClasses
         {
 
             _config = config;
-            ObjectImageAssoc = objAssoc;
+            ObjectAssoc = objAssoc;
             _stream = stream;
             _stream.OnUpdate += OnUpdate;
             _objManager = objManager;
@@ -377,13 +377,14 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (SelectedAddress.HasValue && SelectedAddress.Value == currentAddress)
                 {
                     _objManager.BackColor = newColor;
-                    _objManager.Behavior = (behaviorScriptAdd + ObjectImageAssoc.RamOffset) & 0x00FFFFFF;
+                    _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
                     int slotPos = objectData.ObjectProcessGroup == VacantGroup ? objectData.VacantSlotIndex.Value : objectData.ProcessIndex;
                     _objManager.SlotIndex = _memoryAddressSlotIndex[currentAddress] + (_config.SlotIndexsFromOne ? 1 : 0); 
                     _objManager.SlotPos = (objectData.ObjectProcessGroup == VacantGroup ? "VS " : "")
                         + (slotPos + (_config.SlotIndexsFromOne ? 1 : 0)).ToString();
-                    _objManager.Name = ObjectImageAssoc.GetObjectName(behaviorScriptAdd);
+                    _objManager.Name = ObjectAssoc.GetObjectName(behaviorScriptAdd);
                     _objManager.Image = ObjectSlots[index].Image;
+                    _objManager.BehaviorWatchVariables = ObjectAssoc.GetWatchVariables(behaviorScriptAdd);
                     _objManager.Update();   
                 }
 
@@ -392,7 +393,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 {
 
                     // Update image
-                    var mapObjImage = ObjectImageAssoc.GetObjectMapImage(behaviorScriptAdd, !isActive);
+                    var mapObjImage = ObjectAssoc.GetObjectMapImage(behaviorScriptAdd, !isActive);
                     if (!_mapObjects.ContainsKey(currentAddress))
                     {
                         _mapObjects.Add(currentAddress, new MapObject(mapObjImage));
@@ -405,7 +406,7 @@ namespace SM64_Diagnostic.ManagerClasses
                         _mapManager.AddMapObject(_mapObjects[currentAddress]);
                     }
 
-                    if (behaviorScriptAdd == (ObjectImageAssoc.MarioBehavior & 0x0FFFFFFF))
+                    if (behaviorScriptAdd == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF))
                     {
                         _mapObjects[currentAddress].Show = false;
                     }
@@ -420,7 +421,7 @@ namespace SM64_Diagnostic.ManagerClasses
                         _mapObjects[currentAddress].IsActive = isActive;
                         _mapObjects[currentAddress].Rotation = (float)((UInt16)(BitConverter.ToUInt32(
                             _stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectRotationOffset, 4), 0)) / 65536f * 360f);
-                        _mapObjects[currentAddress].UsesRotation = ObjectImageAssoc.GetObjectMapRotates(behaviorScriptAdd);
+                        _mapObjects[currentAddress].UsesRotation = ObjectAssoc.GetObjectMapRotates(behaviorScriptAdd);
                     }
                 }
             }
