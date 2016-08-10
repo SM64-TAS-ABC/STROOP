@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxProcessSelection = new System.Windows.Forms.ComboBox();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -167,6 +167,7 @@
             this.labelPuContZp = new System.Windows.Forms.Label();
             this.labelPuContXm = new System.Windows.Forms.Label();
             this.labelPuContXp = new System.Windows.Forms.Label();
+            this.labelSlotSize = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjTrash)).BeginInit();
@@ -260,6 +261,8 @@
             this.groupBoxObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxObjects.Controls.Add(this.labelSlotSize);
+            this.groupBoxObjects.Controls.Add(this.trackBarObjSlotSize);
             this.groupBoxObjects.Controls.Add(this.label1);
             this.groupBoxObjects.Controls.Add(this.comboBoxMapToggleMode);
             this.groupBoxObjects.Controls.Add(this.pictureBoxObjClone);
@@ -280,7 +283,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(88, 19);
+            this.label1.Location = new System.Drawing.Point(535, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 13);
@@ -290,7 +293,7 @@
             // comboBoxMapToggleMode
             // 
             this.comboBoxMapToggleMode.FormattingEnabled = true;
-            this.comboBoxMapToggleMode.Location = new System.Drawing.Point(162, 17);
+            this.comboBoxMapToggleMode.Location = new System.Drawing.Point(612, 15);
             this.comboBoxMapToggleMode.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxMapToggleMode.Name = "comboBoxMapToggleMode";
             this.comboBoxMapToggleMode.Size = new System.Drawing.Size(122, 21);
@@ -301,7 +304,7 @@
             // 
             this.pictureBoxObjClone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxObjClone.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxObjClone.Image")));
-            this.pictureBoxObjClone.Location = new System.Drawing.Point(738, 13);
+            this.pictureBoxObjClone.Location = new System.Drawing.Point(738, 17);
             this.pictureBoxObjClone.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxObjClone.Name = "pictureBoxObjClone";
             this.pictureBoxObjClone.Size = new System.Drawing.Size(23, 18);
@@ -324,7 +327,7 @@
             // 
             this.pictureBoxObjTrash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxObjTrash.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxObjTrash.Image")));
-            this.pictureBoxObjTrash.Location = new System.Drawing.Point(765, 13);
+            this.pictureBoxObjTrash.Location = new System.Drawing.Point(765, 17);
             this.pictureBoxObjTrash.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxObjTrash.Name = "pictureBoxObjTrash";
             this.pictureBoxObjTrash.Size = new System.Drawing.Size(23, 18);
@@ -349,10 +352,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelObjects.AutoScroll = true;
-            this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 38);
+            this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 65);
             this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 279);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 252);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -360,7 +363,7 @@
             // 
             this.comboBoxSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortMethod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBoxSortMethod.Location = new System.Drawing.Point(863, 16);
+            this.comboBoxSortMethod.Location = new System.Drawing.Point(862, 15);
             this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSortMethod.Name = "comboBoxSortMethod";
             this.comboBoxSortMethod.Size = new System.Drawing.Size(102, 21);
@@ -1591,8 +1594,8 @@
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1669,7 +1672,6 @@
             // 
             // tabPageOptions
             // 
-            this.tabPageOptions.Controls.Add(this.trackBarObjSlotSize);
             this.tabPageOptions.Controls.Add(this.checkBoxUseRomHack);
             this.tabPageOptions.Controls.Add(this.checkBox2);
             this.tabPageOptions.Controls.Add(this.checkBoxStartSlotIndexOne);
@@ -1683,7 +1685,7 @@
             // 
             // trackBarObjSlotSize
             // 
-            this.trackBarObjSlotSize.Location = new System.Drawing.Point(3, 64);
+            this.trackBarObjSlotSize.Location = new System.Drawing.Point(167, 15);
             this.trackBarObjSlotSize.Maximum = 100;
             this.trackBarObjSlotSize.Minimum = 15;
             this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
@@ -1839,6 +1841,15 @@
             this.labelPuContXp.Size = new System.Drawing.Size(20, 13);
             this.labelPuContXp.TabIndex = 18;
             this.labelPuContXp.Text = "X+";
+            // 
+            // labelSlotSize
+            // 
+            this.labelSlotSize.AutoSize = true;
+            this.labelSlotSize.Location = new System.Drawing.Point(110, 19);
+            this.labelSlotSize.Name = "labelSlotSize";
+            this.labelSlotSize.Size = new System.Drawing.Size(51, 13);
+            this.labelSlotSize.TabIndex = 11;
+            this.labelSlotSize.Text = "Slot Size:";
             // 
             // StroopMainForm
             // 
@@ -2070,6 +2081,7 @@
         private System.Windows.Forms.Button buttonPuConXnPu;
         private System.Windows.Forms.Button buttonPuConZnQpu;
         private System.Windows.Forms.Button buttonPuConXpPu;
+        private System.Windows.Forms.Label labelSlotSize;
     }
 }
 
