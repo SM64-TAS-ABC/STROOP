@@ -89,7 +89,7 @@
     <Compile Include="ManagerClasses\DataManager.cs" />
     <Compile Include="Controls\DataContainer.cs" />
     <Compile Include="ManagerClasses\DisassemblyManager.cs" />
-    <Compile Include="Controls\MapGraphicsControl.cs" />
+    <Compile Include="Controls\Map\MapGraphicsControl.cs" />
     <Compile Include="ManagerClasses\MapManager.cs" />
     <Compile Include="ManagerClasses\CameraManager.cs" />
     <Compile Include="ManagerClasses\MarioManager.cs" />
@@ -106,14 +106,15 @@
     <Compile Include="Controls\ObjectSlot.cs" />
     <Compile Include="ManagerClasses\ObjectSlotManager.cs" />
     <Compile Include="Structs\Configurations\DebugConfig.cs" />
+    <Compile Include="Structs\Configurations\TriangleOffsetsConfig.cs" />
     <Compile Include="Structs\GameScript.cs" />
     <Compile Include="Structs\Gui\MapGui.cs" />
     <Compile Include="Structs\Gui\ObjectSlotManagerGui.cs" />
     <Compile Include="Structs\Gui\OptionsGui.cs" />
     <Compile Include="Structs\DropAction.cs" />
-    <Compile Include="Structs\Map.cs" />
-    <Compile Include="Structs\MapAssociations.cs" />
-    <Compile Include="Structs\MapObject.cs" />
+    <Compile Include="Structs\Map\Map.cs" />
+    <Compile Include="Structs\Map\MapAssociations.cs" />
+    <Compile Include="Controls\Map\MapObject.cs" />
     <Compile Include="Structs\Configurations\MarioConfig.cs" />
     <Compile Include="Structs\ObjectBehaviorAssociation.cs" />
     <Compile Include="Structs\ObjectAssociations.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="Structs\Configurations\ObjectGroupsConfig.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Structs\ScriptParser.cs" />
+    <Compile Include="Controls\Map\TriangleMapObject.cs" />
     <Compile Include="Structs\WatchExpression.cs" />
     <Compile Include="Utilities\N64Disassembler.cs" />
     <Compile Include="Utilities\MarioActions.cs" />

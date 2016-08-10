@@ -57,14 +57,20 @@
     <ToggleAddress>0x8033d263</ToggleAddress>
     <SettingAddress>0x80330e94</SettingAddress>
   </Debug>
-    <!--<TriangleOffsets>
-      <x1>0x0A</x1>
-      <z1>0x0E</z1>
-      <x2>0x10</x2>
-      <z2>0x14</z2>
-      <x3>0x16</x3>
-      <z3>0x1A</z3>
-    </Triangles>-->
+  <TriangleOffsets>
+    <x1>0x0A</x1>
+    <y1>0x0C</y1>
+    <z1>0x0E</z1>
+    <x2>0x10</x2>
+    <y2>0x12</y2>
+    <z2>0x14</z2>
+    <x3>0x16</x3>
+    <y3>0x18</y3>
+    <z3>0x1A</z3>
+    <normX>0x1C</normX>
+    <normY>0x20</normY>
+    <normZ>0x24</normZ>
+  </TriangleOffsets>
   <HolpX>0x8033B3C8</HolpX>
   <HolpY>0x8033B3CC</HolpY>
   <HolpZ>0x8033B3D0</HolpZ>
