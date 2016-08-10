@@ -190,25 +190,25 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private void MoveToMarioButton_Click(object sender, EventArgs e)
         {
-            ObjectActions.MoveObjectToMario(_stream, _config, CurrentAddress);
+            MarioActions.MoveObjectToMario(_stream, _config, CurrentAddress);
         }
 
         private void MoveMarioToButton_Click(object sender, EventArgs e)
         {
-            ObjectActions.MoveMarioToObject(_stream, _config, CurrentAddress);
+            MarioActions.MoveMarioToObject(_stream, _config, CurrentAddress);
         }
 
         private void UnloadButton_Click(object sender, EventArgs e)
         {
-            ObjectActions.UnloadObject(_stream, _config, CurrentAddress);
+            MarioActions.UnloadObject(_stream, _config, CurrentAddress);
         }
 
         private void CloneButton_Click(object sender, EventArgs e)
         {
             if (_unclone)
-                ObjectActions.UnCloneObject(_stream, _config, CurrentAddress);
+                MarioActions.UnCloneObject(_stream, _config, CurrentAddress);
             else
-                ObjectActions.CloneObject(_stream, _config, CurrentAddress);
+                MarioActions.CloneObject(_stream, _config, CurrentAddress);
         }
 
         public void Update()

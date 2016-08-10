@@ -7,7 +7,7 @@ using SM64_Diagnostic.Structs;
 
 namespace SM64_Diagnostic.Utilities
 {
-    public static class ObjectActions
+    public static class MarioActions
     {
         public static bool MoveMarioToObject(ProcessStream stream, Config config, uint objAddress)
         {

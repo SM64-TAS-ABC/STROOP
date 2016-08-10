@@ -125,7 +125,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 return;
 
             // Clone object
-            ObjectActions.CloneObject(_stream, _config, dropAction.Address);
+            MarioActions.CloneObject(_stream, _config, dropAction.Address);
         }
 
         private void OnClick(object sender, MouseEventArgs e, int slotIndex)
@@ -210,7 +210,7 @@ namespace SM64_Diagnostic.ManagerClasses
             if (dropAction.Action != DropAction.ActionType.Object)
                 return;
 
-            ObjectActions.UnloadObject(_stream, _config, dropAction.Address);
+            MarioActions.UnloadObject(_stream, _config, dropAction.Address);
         }
 
         public void SetAllSelectedObjectSlots()
@@ -435,7 +435,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 case DropAction.ActionType.Mario:
                     // Move mario to object
                     var objectAddress = ObjectSlotData.First((objData) => objData.Index == objSlot.Index).Address;
-                    ObjectActions.MoveMarioToObject(_stream, _config, objectAddress);
+                    MarioActions.MoveMarioToObject(_stream, _config, objectAddress);
                     break;
 
                 case DropAction.ActionType.Object:

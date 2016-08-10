@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.ManagerClasses
         List<WatchVariableControl> _marioDataControls;
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
-        DataContainer _rngIndex, _rngPerFrame, _heightAboveGround, _heightBelowCeil;
+        DataContainer _heightAboveGround, _heightBelowCeil;
         MapManager _mapManager;
 
         public MarioManager(ProcessStream stream, Config config, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable, MapManager mapManager)
@@ -37,13 +37,6 @@ namespace SM64_Diagnostic.ManagerClasses
                 variableTable.Controls.Add(watchControl.Control);
                 _marioDataControls.Add(watchControl);
             }
-
-            // Add rng index
-            _rngIndex = new DataContainer("RNG Index");
-            variableTable.Controls.Add(_rngIndex.Control);
-
-            _rngPerFrame = new DataContainer("RNG Calls/Frame");
-            variableTable.Controls.Add(_rngPerFrame.Control);
 
             _heightAboveGround = new DataContainer("Dis Abv Floor");
             variableTable.Controls.Add(_heightAboveGround.Control);
@@ -104,22 +97,8 @@ namespace SM64_Diagnostic.ManagerClasses
             foreach (var watchVar in _marioDataControls)
                 watchVar.Update();
 
-            // Update the rng index
-            int rngIndex = RngIndexer.GetRngIndex(BitConverter.ToUInt16(_stream.ReadRam(_config.RngAddress, 2), 0));
-            _rngIndex.Text = (rngIndex < 0) ? "N/A [" + (-rngIndex).ToString() + "]" : rngIndex.ToString();
-
-            _rngPerFrame.Text = GetRngCallsPerFrame().ToString();
-
             _heightBelowCeil.Text = (BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.CeilingYOffset, 4), 0) - y).ToString();
             _heightAboveGround.Text = (y - BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.GroundYOffset, 4), 0)).ToString();
-        }
-
-        private int GetRngCallsPerFrame()
-        {
-            var currentRng = BitConverter.ToUInt16(_stream.ReadRam(_config.RngRecordingAreaAddress + 0x0E, 2), 0);
-            var preRng = BitConverter.ToUInt16(_stream.ReadRam(_config.RngRecordingAreaAddress + 0x0C, 2), 0);
-
-            return RngIndexer.GetRngIndexDiff(preRng, currentRng);
         }
 
         private void RegisterControlEvents(Control control)
@@ -166,7 +145,7 @@ namespace SM64_Diagnostic.ManagerClasses
             if (dropAction.Action != DropAction.ActionType.Object)
                 return;
 
-            ObjectActions.MoveObjectToMario(_stream, _config, dropAction.Address);
+            MarioActions.MoveObjectToMario(_stream, _config, dropAction.Address);
         }
     }
 }
