@@ -98,6 +98,8 @@ namespace SM64_Diagnostic.Structs
 
         public string GetObjectName(uint behaviorAddress)
         {
+            return "Uninitialized Object";
+
             if (!_objectNameAssoc.ContainsKey(behaviorAddress))
                 return "Unknown Object";
 
