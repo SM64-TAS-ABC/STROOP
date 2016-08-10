@@ -222,6 +222,52 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
+                    case "TriangleOffsets":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "x1":
+                                    config.TriangleOffsets.X1 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "y1":
+                                    config.TriangleOffsets.Y1 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "z1":
+                                    config.TriangleOffsets.Z1 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "x2":
+                                    config.TriangleOffsets.X2 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "y2":
+                                    config.TriangleOffsets.Y2 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "z2":
+                                    config.TriangleOffsets.Z2 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "x3":
+                                    config.TriangleOffsets.X3 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "y3":
+                                    config.TriangleOffsets.Y3 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "z3":
+                                    config.TriangleOffsets.Z3 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "normX":
+                                    config.TriangleOffsets.NormX = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "normY":
+                                    config.TriangleOffsets.NormY = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "normZ":
+                                    config.TriangleOffsets.NormZ = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                            }
+                        } 
+                        break;
+
                     case "LevelAddress":
                         config.LevelAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
