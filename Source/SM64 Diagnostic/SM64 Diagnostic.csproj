@@ -82,6 +82,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\IntPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\WatchExpressionExtensions.cs" />
     <Compile Include="ManagerClasses\DataManager.cs" />

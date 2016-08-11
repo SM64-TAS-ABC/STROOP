@@ -535,7 +535,7 @@ namespace SM64_Diagnostic.Utilities
                 Image image, mapImage;
                 using (var preLoad = Bitmap.FromFile(imageDir + v.Value.Item1))
                 {
-                    float scale = Math.Max(preLoad.Height / 32f, preLoad.Width / 32f);
+                    float scale = Math.Max(preLoad.Height / 256f, preLoad.Width / 256f);
                     image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
                 }
                 if (v.Value.Item2 == null)
