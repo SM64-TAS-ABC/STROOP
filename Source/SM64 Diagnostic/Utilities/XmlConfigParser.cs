@@ -222,6 +222,52 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
+                    case "TriangleOffsets":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "x1":
+                                    config.TriangleOffsets.X1 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "y1":
+                                    config.TriangleOffsets.Y1 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "z1":
+                                    config.TriangleOffsets.Z1 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "x2":
+                                    config.TriangleOffsets.X2 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "y2":
+                                    config.TriangleOffsets.Y2 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "z2":
+                                    config.TriangleOffsets.Z2 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "x3":
+                                    config.TriangleOffsets.X3 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "y3":
+                                    config.TriangleOffsets.Y3 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "z3":
+                                    config.TriangleOffsets.Z3 = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "normX":
+                                    config.TriangleOffsets.NormX = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "normY":
+                                    config.TriangleOffsets.NormY = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "normZ":
+                                    config.TriangleOffsets.NormZ = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                            }
+                        } 
+                        break;
+
                     case "LevelAddress":
                         config.LevelAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
@@ -428,11 +474,9 @@ namespace SM64_Diagnostic.Utilities
             doc.Validate(schemaSet, Validation);
 
             // Create Behavior-ImagePath list
-            var behaviorImageAssoc = new Dictionary<uint, Tuple<string, string, bool, string>>();
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "",
                 marioImagePath = "", holpMapImagePath = "", hudImagePath = "", debugImagePath = "", 
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "";
-            var usedBehaviors = new List<uint>();
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
 
@@ -499,7 +543,7 @@ namespace SM64_Diagnostic.Utilities
                         break;
 
                     case "Object":
-                        uint behaviorAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
+                        uint behaviorAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value) - ramToBehaviorOffset;
                         string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                         string mapImagePath = null;
                         bool rotates = false;
@@ -509,10 +553,25 @@ namespace SM64_Diagnostic.Utilities
                             rotates = bool.Parse(element.Element(XName.Get("MapImage")).Attribute(XName.Get("rotates")).Value);
                         }
                         string name = element.Attribute(XName.Get("name")).Value;
-                        if (usedBehaviors.Contains(behaviorAddress))
+                        var watchVars = new List<WatchVariable>();
+                        foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
+                            watchVars.Add(GetWatchVariableFromElement(subElement));
+
+                        if (assoc.BehaviorAssociations.ContainsKey(behaviorAddress))
                             throw new Exception("More than one behavior address was defined.");
-                        usedBehaviors.Add(behaviorAddress);
-                        behaviorImageAssoc.Add(behaviorAddress, Tuple.Create<string,string, bool, string>(imagePath, mapImagePath, rotates, name));
+
+                        var newBehavior = new ObjectBehaviorAssociation()
+                        {
+                            Behavior = behaviorAddress,
+                            ImagePath = imagePath,
+                            MapImagePath = mapImagePath,
+                            Name = name,
+                            RotatesOnMap = rotates,
+                            WatchVariables  = watchVars
+                        };
+
+                        assoc.AddAssociation(newBehavior);
+
                         break;
                 }
             }
@@ -530,28 +589,27 @@ namespace SM64_Diagnostic.Utilities
             assoc.HolpImage = Bitmap.FromFile(mapImageDir + holpMapImagePath);
             assoc.CameraMapImage = Bitmap.FromFile(mapImageDir + cameraMapImagePath);
             assoc.MarioBehavior = marioBehavior - ramToBehaviorOffset;
-            foreach (var v in behaviorImageAssoc)
+            foreach (var obj in assoc.BehaviorAssociations.Values)
             {
-                Image image, mapImage;
-                using (var preLoad = Bitmap.FromFile(imageDir + v.Value.Item1))
+                using (var preLoad = Bitmap.FromFile(imageDir + obj.ImagePath))
                 {
-                    float scale = Math.Max(preLoad.Height / 256f, preLoad.Width / 256f);
-                    image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
+                    float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);
+                    obj.Image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
                 }
-                if (v.Value.Item2 == null)
+                if (obj.MapImagePath == "" || obj.MapImagePath == null)
                 {
-                    mapImage = image;
+                    obj.MapImage = obj.Image;
                 }
                 else
                 {
-                    using (var preLoad = Bitmap.FromFile(mapImageDir + v.Value.Item2))
+                    using (var preLoad = Bitmap.FromFile(mapImageDir + obj.MapImagePath))
                     {
-                        float scale = Math.Max(preLoad.Height / 32f, preLoad.Width / 32f);
-                        mapImage = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
+                        float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);
+                        obj.MapImage = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
                     }
                 }
-
-                assoc.AddAssociation(v.Key - ramToBehaviorOffset, image, mapImage, v.Value.Item4, v.Value.Item3);
+                obj.TransparentImage = obj.Image.GetOpaqueImage(0.5f);
+                obj.TransparentMapImage = obj.Image.GetOpaqueImage(0.5f);
             }
 
             return assoc;

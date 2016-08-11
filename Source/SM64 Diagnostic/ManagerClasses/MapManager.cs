@@ -82,7 +82,7 @@ namespace SM64_Diagnostic.ManagerClasses
             MapAssoc = mapAssoc;
             _mapGui = mapGui;
 
-            _marioMapObj = new MapObject(new Bitmap("Resources\\Maps\\Object Images\\Mario Top.png"), 1);
+            _marioMapObj = new MapObject(objAssoc.MarioMapImage, 1);
             _marioMapObj.UsesRotation = true;
 
             _holpMapObj = new MapObject(objAssoc.HolpImage, 2);
@@ -144,9 +144,9 @@ namespace SM64_Diagnostic.ManagerClasses
             }
 
             // ---- Update PU -----
-            int puX = GetPUFromCoord(_marioMapObj.X);
-            int puY = GetPUFromCoord(_marioMapObj.Y);
-            int puZ = GetPUFromCoord(_marioMapObj.Z);
+            int puX = PuUtilities.GetPUFromCoord(_marioMapObj.X);
+            int puY = PuUtilities.GetPUFromCoord(_marioMapObj.Y);
+            int puZ = PuUtilities.GetPUFromCoord(_marioMapObj.Z);
 
             // Update Qpu
             double qpuX = puX / 4d;
@@ -161,9 +161,9 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapGui.MapSubNameLabel.Text = (_currentMap.SubName != null) ? _currentMap.SubName : "";
 
             // Adjust mario coordinates relative from current PU
-            float marioRelX = GetRelativePuPosition(_marioMapObj.X, puX);
-            float marioRelY = GetRelativePuPosition(_marioMapObj.Y, puY);
-            float marioRelZ = GetRelativePuPosition(_marioMapObj.Z, puZ);
+            float marioRelX = PuUtilities.GetRelativePuPosition(_marioMapObj.X, puX);
+            float marioRelY = PuUtilities.GetRelativePuPosition(_marioMapObj.Y, puY);
+            float marioRelZ = PuUtilities.GetRelativePuPosition(_marioMapObj.Z, puZ);
             var marioCoord = new PointF(marioRelX, marioRelZ);
 
             // Filter out all maps that are lower than Mario
@@ -192,20 +192,20 @@ namespace SM64_Diagnostic.ManagerClasses
             _marioMapObj.LocationOnContol = CalculateLocationOnControl(marioCoord, mapView);
             _marioMapObj.Draw = _mapGui.MapShowMario.Checked;
 
-            int holpPuX = GetPUFromCoord(_holpMapObj.X);
-            int holpPuY = GetPUFromCoord(_holpMapObj.Y);
-            int holpPuZ = GetPUFromCoord(_holpMapObj.Z);
-            float holpRelX = GetRelativePuPosition(_holpMapObj.X, holpPuX);
-            float holpRelZ = GetRelativePuPosition(_holpMapObj.Z, holpPuZ);
+            int holpPuX = PuUtilities.GetPUFromCoord(_holpMapObj.X);
+            int holpPuY = PuUtilities.GetPUFromCoord(_holpMapObj.Y);
+            int holpPuZ = PuUtilities.GetPUFromCoord(_holpMapObj.Z);
+            float holpRelX = PuUtilities.GetRelativePuPosition(_holpMapObj.X, holpPuX);
+            float holpRelZ = PuUtilities.GetRelativePuPosition(_holpMapObj.Z, holpPuZ);
             var holpCoord = new PointF(holpRelX, holpRelZ);
             _holpMapObj.Draw = _mapGui.MapShowHolp.Checked && puX == holpPuX && puY == holpPuY && puZ == holpPuZ;
             _holpMapObj.LocationOnContol = CalculateLocationOnControl(holpCoord, mapView);
 
-            int cameraPuX = GetPUFromCoord(_cameraMapObj.X);
-            int cameraPuY = GetPUFromCoord(_cameraMapObj.Y);
-            int cameraPuZ = GetPUFromCoord(_cameraMapObj.Z);
-            float cameraRelX = GetRelativePuPosition(_cameraMapObj.X, cameraPuX);
-            float cameraRelZ = GetRelativePuPosition(_cameraMapObj.Z, cameraPuZ);
+            int cameraPuX = PuUtilities.GetPUFromCoord(_cameraMapObj.X);
+            int cameraPuY = PuUtilities.GetPUFromCoord(_cameraMapObj.Y);
+            int cameraPuZ = PuUtilities.GetPUFromCoord(_cameraMapObj.Z);
+            float cameraRelX = PuUtilities.GetRelativePuPosition(_cameraMapObj.X, cameraPuX);
+            float cameraRelZ = PuUtilities.GetRelativePuPosition(_cameraMapObj.Z, cameraPuZ);
             var cameraCoord = new PointF(cameraRelX, cameraRelZ);
             _cameraMapObj.Draw = _mapGui.MapShowCamera.Checked && puX == cameraPuX && puY == cameraPuY && puZ == cameraPuZ;
             _cameraMapObj.LocationOnContol = CalculateLocationOnControl(cameraCoord, mapView);
@@ -220,9 +220,9 @@ namespace SM64_Diagnostic.ManagerClasses
                 }
 
                 // Make sure the object is in the same PU as Mario
-                var objPuX = GetPUFromCoord(mapObj.X);
-                var objPuY = GetPUFromCoord(mapObj.Y);
-                var objPuZ = GetPUFromCoord(mapObj.Z);
+                var objPuX = PuUtilities.GetPUFromCoord(mapObj.X);
+                var objPuY = PuUtilities.GetPUFromCoord(mapObj.Y);
+                var objPuZ = PuUtilities.GetPUFromCoord(mapObj.Z);
 
                 // Don't draw the object if it is in a separate PU as mario
                 mapObj.Draw = (mapObj.Show && objPuX == puX && objPuY == puY && objPuZ == puZ 
@@ -231,8 +231,8 @@ namespace SM64_Diagnostic.ManagerClasses
                     continue;
 
                 // Adjust object coordinates relative from current PU
-                float objPosX = GetRelativePuPosition(mapObj.X, objPuX);
-                float objPosZ = GetRelativePuPosition(mapObj.Z, objPuZ);
+                float objPosX = PuUtilities.GetRelativePuPosition(mapObj.X, objPuX);
+                float objPosZ = PuUtilities.GetRelativePuPosition(mapObj.Z, objPuZ);
                 var objCoords = new PointF(objPosX, objPosZ);
 
                 // Calculate object's location on control
@@ -241,24 +241,6 @@ namespace SM64_Diagnostic.ManagerClasses
 
             // Update gui by drawing images (invokes _mapGraphics.OnPaint())
             _mapGraphics.Control.Invalidate();
-        }
-
-        private static int GetPUFromCoord(float coord)
-        {
-            int pu = (int)((coord + 32768) / 65536);
-
-            // If the object is located in the center of the (-1,-1) pu its coordinates will be (-0.5, -0.5). 
-            // Because we used division this rounds down to (0,0), which is incorrect, we therefore add -1 to all negative PUs
-            if (coord < -32768)
-                pu--;
-
-            return pu;
-        }
-
-        private static float GetRelativePuPosition(float coord, int puCoord)
-        {
-            // We find the relative object positon by subtracting the PU starting coordinates from the object
-            return coord - puCoord * 65535;
         }
 
         private void ChangeCurrentMap(Map map)
