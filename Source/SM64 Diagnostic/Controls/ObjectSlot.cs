@@ -8,6 +8,7 @@ using System.Drawing;
 using SM64_Diagnostic.ManagerClasses;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic
 {
@@ -17,7 +18,7 @@ namespace SM64_Diagnostic
 
         ObjectSlotManager _manager;
 
-        PictureBox PictureBox;
+        IntPictureBox PictureBox;
         Panel BorderPanel;
         Panel ContentPanel;
         Label Label;
@@ -227,13 +228,14 @@ namespace SM64_Diagnostic
             this.Label.Location =
                 new Point((this.ContentPanel.Width - this.Label.Size.Width) / 2, this.ContentPanel.Height - this.Label.Font.Height);
 
-            this.PictureBox = new PictureBox();
+            this.PictureBox = new IntPictureBox();
             this.PictureBox.Size = new Size(this.ContentPanel.Width, this.Label.Location.Y - 1);
             this.PictureBox.AllowDrop = true;
             this.PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             this.PictureBox.BackColor = Color.FromKnownColor(KnownColor.Transparent);
             this.PictureBox.Location = new Point((ContentPanel.Width - PictureBox.Width) / 2, 1);
             this.PictureBox.Anchor = AnchorStyles.None;
+            this.PictureBox.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
 
             RegisterControl(this.PictureBox);
             RegisterControl(this.Label);
