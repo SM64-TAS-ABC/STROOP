@@ -49,7 +49,8 @@
     <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>
     <CeilingYOffset>0x6C</CeilingYOffset>
     <GroundYOffset>0x70</GroundYOffset>
-    <!--<CurrentFloorTrianglePointerOffset>0x00</CurrentFloorTrianglePointerOffset>-->
+    <FloorTriangleOffset>0x68</FloorTriangleOffset>
+    <HSpeedOffset>0x54</HSpeedOffset>
     <MarioStructSize>0xC4</MarioStructSize>
     <MoveToObjectYOffset>300</MoveToObjectYOffset>
   </Mario>

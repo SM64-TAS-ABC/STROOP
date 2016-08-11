@@ -1,4 +1,5 @@
-﻿using SM64_Diagnostic.Controls.Map;
+﻿using OpenTK.Graphics.OpenGL;
+using SM64_Diagnostic.Controls.Map;
 using SM64_Diagnostic.ManagerClasses;
 using System;
 using System.Collections.Generic;
@@ -21,12 +22,17 @@ namespace SM64_Diagnostic.Structs
 
         public TriangleMapObject()
         {
-
         }
 
         public override void DrawOnControl(MapGraphics graphics)
         {
-            
+            GL.LoadIdentity();
+            GL.Begin(PrimitiveType.Triangles);
+            GL.Color4(1, 0, 0, 0.5);
+            GL.Vertex3(P1OnControl.X, 0, P1OnControl.Y);
+            GL.Vertex3(P2OnControl.X, 0, P2OnControl.Y);
+            GL.Vertex3(P3OnControl.X, 0, P3OnControl.Y);
+            GL.End();
         }
     }
 }
