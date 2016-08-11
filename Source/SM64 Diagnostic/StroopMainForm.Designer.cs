@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxProcessSelection = new System.Windows.Forms.ComboBox();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -146,12 +146,12 @@
             this.buttonMapExpand = new System.Windows.Forms.Button();
             this.labelMapId = new System.Windows.Forms.Label();
             this.labelMapSubName = new System.Windows.Forms.Label();
+            this.trackBarMapZoom = new System.Windows.Forms.TrackBar();
+            this.glControlMap = new OpenTK.GLControl();
+            this.labelMapPu = new System.Windows.Forms.Label();
             this.labelMapPuValue = new System.Windows.Forms.Label();
             this.labelMapQpu = new System.Windows.Forms.Label();
             this.labelMapQpuValue = new System.Windows.Forms.Label();
-            this.labelMapPu = new System.Windows.Forms.Label();
-            this.trackBarMapZoom = new System.Windows.Forms.TrackBar();
-            this.glControlMap = new OpenTK.GLControl();
             this.tabPageExpressions = new System.Windows.Forms.TabPage();
             this.checkBoxAbsoluteAddress = new System.Windows.Forms.CheckBox();
             this.buttonOtherDelete = new System.Windows.Forms.Button();
@@ -168,6 +168,7 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.labelVersionNumber = new System.Windows.Forms.Label();
+            this.checkBoxMapShowFloor = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).BeginInit();
@@ -275,7 +276,7 @@
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(968, 323);
+            this.groupBoxObjects.Size = new System.Drawing.Size(968, 324);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -376,7 +377,7 @@
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 65);
             this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 253);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 254);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -1431,6 +1432,7 @@
             // 
             // splitContainerMap.Panel1
             // 
+            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowFloor);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowCamera);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowHolp);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowObj);
@@ -1584,6 +1586,42 @@
             this.labelMapSubName.TabIndex = 7;
             this.labelMapSubName.Text = "Unknown";
             // 
+            // trackBarMapZoom
+            // 
+            this.trackBarMapZoom.Location = new System.Drawing.Point(5, 52);
+            this.trackBarMapZoom.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarMapZoom.Maximum = 100;
+            this.trackBarMapZoom.Name = "trackBarMapZoom";
+            this.trackBarMapZoom.Size = new System.Drawing.Size(91, 45);
+            this.trackBarMapZoom.SmallChange = 5;
+            this.trackBarMapZoom.TabIndex = 9;
+            this.trackBarMapZoom.TickFrequency = 10;
+            // 
+            // glControlMap
+            // 
+            this.glControlMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.glControlMap.BackColor = System.Drawing.Color.Black;
+            this.glControlMap.Location = new System.Drawing.Point(4, 3);
+            this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.glControlMap.Name = "glControlMap";
+            this.glControlMap.Size = new System.Drawing.Size(642, 172);
+            this.glControlMap.TabIndex = 0;
+            this.glControlMap.VSync = false;
+            this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
+            // 
+            // labelMapPu
+            // 
+            this.labelMapPu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelMapPu.AutoSize = true;
+            this.labelMapPu.Location = new System.Drawing.Point(2, 180);
+            this.labelMapPu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapPu.Name = "labelMapPu";
+            this.labelMapPu.Size = new System.Drawing.Size(61, 13);
+            this.labelMapPu.TabIndex = 5;
+            this.labelMapPu.Text = "PU [X:Y:Z]:";
+            // 
             // labelMapPuValue
             // 
             this.labelMapPuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1616,42 +1654,6 @@
             this.labelMapQpuValue.Size = new System.Drawing.Size(37, 13);
             this.labelMapQpuValue.TabIndex = 1;
             this.labelMapQpuValue.Text = "[0:0:0]";
-            // 
-            // labelMapPu
-            // 
-            this.labelMapPu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMapPu.AutoSize = true;
-            this.labelMapPu.Location = new System.Drawing.Point(2, 180);
-            this.labelMapPu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapPu.Name = "labelMapPu";
-            this.labelMapPu.Size = new System.Drawing.Size(61, 13);
-            this.labelMapPu.TabIndex = 5;
-            this.labelMapPu.Text = "PU [X:Y:Z]:";
-            // 
-            // trackBarMapZoom
-            // 
-            this.trackBarMapZoom.Location = new System.Drawing.Point(5, 52);
-            this.trackBarMapZoom.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarMapZoom.Maximum = 100;
-            this.trackBarMapZoom.Name = "trackBarMapZoom";
-            this.trackBarMapZoom.Size = new System.Drawing.Size(91, 45);
-            this.trackBarMapZoom.SmallChange = 5;
-            this.trackBarMapZoom.TabIndex = 9;
-            this.trackBarMapZoom.TickFrequency = 10;
-            // 
-            // glControlMap
-            // 
-            this.glControlMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.glControlMap.BackColor = System.Drawing.Color.Black;
-            this.glControlMap.Location = new System.Drawing.Point(4, 3);
-            this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(641, 172);
-            this.glControlMap.TabIndex = 0;
-            this.glControlMap.VSync = false;
-            this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
             // 
             // tabPageExpressions
             // 
@@ -1721,8 +1723,8 @@
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1854,6 +1856,16 @@
             this.labelVersionNumber.TabIndex = 5;
             this.labelVersionNumber.Text = "version";
             this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // checkBoxMapShowFloor
+            // 
+            this.checkBoxMapShowFloor.AutoSize = true;
+            this.checkBoxMapShowFloor.Location = new System.Drawing.Point(5, 122);
+            this.checkBoxMapShowFloor.Name = "checkBoxMapShowFloor";
+            this.checkBoxMapShowFloor.Size = new System.Drawing.Size(97, 17);
+            this.checkBoxMapShowFloor.TabIndex = 19;
+            this.checkBoxMapShowFloor.Text = "Show Floor Tri.";
+            this.checkBoxMapShowFloor.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -2087,6 +2099,7 @@
         private System.Windows.Forms.Button buttonPuConZnQpu;
         private System.Windows.Forms.Button buttonPuConXpPu;
         private System.Windows.Forms.Label labelSlotSize;
+        private System.Windows.Forms.CheckBox checkBoxMapShowFloor;
     }
 }
 

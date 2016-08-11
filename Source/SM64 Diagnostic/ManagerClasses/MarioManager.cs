@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SM64_Diagnostic.Structs;
 using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
+using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic.ManagerClasses
 {
@@ -45,7 +46,7 @@ namespace SM64_Diagnostic.ManagerClasses
             variableTable.Controls.Add(_heightBelowCeil.Control);
 
             _deFactoSpeed = new DataContainer("De Facto Speed");
-            variableTable.Controls.Add(_deFactoSpeed.Control);
+            variableTable.Controls.Insert(_deFactoSpeed.Control, 7);
         }
 
         public void Update(bool updateView)
@@ -85,6 +86,30 @@ namespace SM64_Diagnostic.ManagerClasses
             cameraZ = BitConverter.ToSingle(_stream.ReadRam(_config.CameraZ, 4), 0);
             cameraRot = (float)(((UInt16)(BitConverter.ToUInt32(_stream.ReadRam(_config.CameraRot, 4), 0))) / 65536f * 360f);
 
+            // Update floor triangle
+            UInt32 floorTriangle = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.FloorTriangleOffset, 4), 0);
+            if (floorTriangle != 0x00)
+            {
+                UInt16 x1 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.X1, 2), 0);
+                UInt16 y1 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Y1, 2), 0);
+                UInt16 z1 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Z1, 2), 0);
+                UInt16 x2 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.X2, 2), 0);
+                UInt16 y2 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Y2, 2), 0);
+                UInt16 z2 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Z2, 2), 0);
+                UInt16 x3 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.X3, 2), 0);
+                UInt16 y3 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Y3, 2), 0);
+                UInt16 z3 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Z3, 2), 0);
+                _mapManager.FloorTriangleMapObject.X1 = x1;
+                _mapManager.FloorTriangleMapObject.Z1 = z1;
+                _mapManager.FloorTriangleMapObject.X2 = x2;
+                _mapManager.FloorTriangleMapObject.Z2 = z2;
+                _mapManager.FloorTriangleMapObject.X3 = x3;
+                _mapManager.FloorTriangleMapObject.Z3 = z3;
+                _mapManager.FloorTriangleMapObject.Y = (y1 + y2 + y3) / 3;
+            }
+            _mapManager.FloorTriangleMapObject.Show = (floorTriangle != 0x00);
+
+
             // Update camera map object position
             _mapManager.CameraMapObject.X = cameraX;
             _mapManager.CameraMapObject.Y = cameraY;
@@ -102,11 +127,15 @@ namespace SM64_Diagnostic.ManagerClasses
             _heightBelowCeil.Text = (BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.CeilingYOffset, 4), 0) - y).ToString();
             _heightAboveGround.Text = (y - BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.GroundYOffset, 4), 0)).ToString();
 
-            float hSpeed = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.HSpeedOffset, 4), 0);
-            UInt32 floorTriangle = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.FloorTriangleOffset, 4), 0);
-            float normY = BitConverter.ToSingle(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.NormY, 4), 0);
+            if (floorTriangle != 0x00)
+            {
+                float hSpeed = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.HSpeedOffset, 4), 0);
+                float normY = BitConverter.ToSingle(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.NormY, 4), 0);
+                _deFactoSpeed.Text = (hSpeed * normY).ToString();
+            }
+            else
+                _deFactoSpeed.Text = "(No Floor)";
 
-            _deFactoSpeed.Text = (hSpeed * normY).ToString();
         }
 
         private void RegisterControlEvents(Control control)

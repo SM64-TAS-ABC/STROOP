@@ -24,5 +24,6 @@ namespace SM64_Diagnostic.Structs
         public CheckBox MapShowObjects;
         public CheckBox MapShowHolp;
         public CheckBox MapShowCamera;
+        public CheckBox MapShowFloorTriangle;
     }
 }
