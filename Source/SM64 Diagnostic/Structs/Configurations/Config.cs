@@ -22,7 +22,6 @@ namespace SM64_Diagnostic.Structs
         public uint AreaAddress;
         public uint LoadingPointAddress;
         public uint MissionAddress;
-        public bool SlotIndexsFromOne;
         public uint HolpX;
         public uint HolpY;
         public uint HolpZ;
@@ -32,5 +31,8 @@ namespace SM64_Diagnostic.Structs
         public uint CameraRot;
         public uint RngRecordingAreaAddress;
         public uint RngAddress;
+
+        public bool SlotIndexsFromOne;
+        public bool MoveCameraWithPu = true;
     }
 }
