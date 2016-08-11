@@ -86,11 +86,13 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Extensions\BitmapExtensions.cs" />
+    <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
     <Compile Include="Extensions\WatchExpressionExtensions.cs" />
+    <Compile Include="ManagerClasses\MiscManager.cs" />
     <Compile Include="ManagerClasses\DataManager.cs" />
     <Compile Include="Controls\DataContainer.cs" />
     <Compile Include="ManagerClasses\DisassemblyManager.cs" />
-    <Compile Include="Controls\MapGraphicsControl.cs" />
+    <Compile Include="Controls\Map\MapGraphicsControl.cs" />
     <Compile Include="ManagerClasses\MapManager.cs" />
     <Compile Include="ManagerClasses\CameraManager.cs" />
     <Compile Include="ManagerClasses\MarioManager.cs" />
@@ -107,15 +109,17 @@
     <Compile Include="Controls\ObjectSlot.cs" />
     <Compile Include="ManagerClasses\ObjectSlotManager.cs" />
     <Compile Include="Structs\Configurations\DebugConfig.cs" />
+    <Compile Include="Structs\Configurations\TriangleOffsetsConfig.cs" />
     <Compile Include="Structs\GameScript.cs" />
     <Compile Include="Structs\Gui\MapGui.cs" />
     <Compile Include="Structs\Gui\ObjectSlotManagerGui.cs" />
     <Compile Include="Structs\Gui\OptionsGui.cs" />
     <Compile Include="Structs\DropAction.cs" />
-    <Compile Include="Structs\Map.cs" />
-    <Compile Include="Structs\MapAssociations.cs" />
-    <Compile Include="Structs\MapObject.cs" />
+    <Compile Include="Structs\Map\Map.cs" />
+    <Compile Include="Structs\Map\MapAssociations.cs" />
+    <Compile Include="Controls\Map\MapObject.cs" />
     <Compile Include="Structs\Configurations\MarioConfig.cs" />
+    <Compile Include="Structs\ObjectBehaviorAssociation.cs" />
     <Compile Include="Structs\ObjectAssociations.cs" />
     <Compile Include="Structs\Gui\ObjectDataGui.cs" />
     <Compile Include="Structs\ObjectSlotData.cs" />
@@ -123,9 +127,10 @@
     <Compile Include="Structs\Configurations\ObjectGroupsConfig.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Structs\ScriptParser.cs" />
+    <Compile Include="Controls\Map\TriangleMapObject.cs" />
     <Compile Include="Structs\WatchExpression.cs" />
     <Compile Include="Utilities\N64Disassembler.cs" />
-    <Compile Include="Utilities\ObjectActions.cs" />
+    <Compile Include="Utilities\MarioActions.cs" />
     <Compile Include="Structs\ProcessSelection.cs" />
     <Compile Include="StroopMainForm.cs">
       <SubType>Form</SubType>
@@ -143,6 +148,7 @@
     <Compile Include="Extensions\RichTextBoxExtensions.cs" />
     <Compile Include="Extensions\SizeExtensions.cs" />
     <Compile Include="Extensions\WatchVariableExtensions.cs" />
+    <Compile Include="Utilities\PuUtilities.cs" />
     <Compile Include="Utilities\RngIndexer.cs" />
     <Compile Include="Utilities\XmlConfigParser.cs" />
     <EmbeddedResource Include="ModifyAddWatchVariableForm.resx">

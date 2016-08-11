@@ -131,7 +131,15 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public WatchVariableControl(ProcessStream stream, WatchVariable watchVar, uint otherOffset)
+        public WatchVariable WatchVariable
+        {
+            get
+            {
+                return _watchVar;
+            }
+        }
+
+        public WatchVariableControl(ProcessStream stream, WatchVariable watchVar, uint otherOffset = 0)
         {
             _watchVar = watchVar;
             _stream = stream;

@@ -37,7 +37,7 @@ namespace SM64_Diagnostic
         OptionsManager _optionsManager;
         ScriptManager _scriptManager;
         DataManager _hudManager;
-        DataManager _miscManager;
+        MiscManager _miscManager;
         CameraManager _cameraManager;
 
         bool _resizing = true, _objSlotResizing = false;
@@ -111,7 +111,7 @@ namespace SM64_Diagnostic
 
             _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
             _hudManager = new DataManager(_sm64Stream, _config, _hudData, flowLayoutPanelHud);
-            _miscManager = new DataManager(_sm64Stream, _config, _miscData, flowLayoutPanelMisc);
+            _miscManager = new MiscManager(_sm64Stream, _config, _miscData, flowLayoutPanelMisc, groupBoxPuController);
             _cameraManager = new CameraManager(_sm64Stream, _config, _cameraData, panelCameraBorder, flowLayoutPanelCamera);
 
             // Create object manager

@@ -12,7 +12,7 @@
   <Data type="byte" address="0x00C1D0A3" absoluteAddress="true">Mission Name</Data>
   <Data type="uint16" address="0x00C4CCDA" absoluteAddress="true">TTC Speed Setting</Data>
   <Data type="byte" address="0x00C19076" absoluteAddress="true">Demo Counter</Data>
-  <Data type="byte" address="0x00C341B0" absoluteAddress="true">BBH 'Go Round Boo Counter</Data>
+  <Data type="byte" address="0x00C341B0" absoluteAddress="true">BBH 'Go Round Boo Cnt</Data>
   <Data type="uint16" address="0x009FCD60" absoluteAddress="true">WDW Main Water Level</Data>
   <Data type="uint16" address="0x009FEEAC" absoluteAddress="true">WDW Town Water Level</Data>
   <Data type="byte" address="0x00C1C9BE" absoluteAddress="true">WDW Painting Level</Data>

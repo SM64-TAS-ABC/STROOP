@@ -17,6 +17,7 @@ namespace SM64_Diagnostic.Structs
         public ObjectSlotsConfig ObjectSlots;
         public MarioConfig Mario;
         public DebugConfig Debug;
+        public TriangleOffsetsConfig TriangleOffsets;
         public uint LevelAddress;
         public uint AreaAddress;
         public uint LoadingPointAddress;

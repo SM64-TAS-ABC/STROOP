@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxProcessSelection = new System.Windows.Forms.ComboBox();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
+            this.labelSlotSize = new System.Windows.Forms.Label();
+            this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxMapToggleMode = new System.Windows.Forms.ComboBox();
             this.pictureBoxObjClone = new System.Windows.Forms.PictureBox();
@@ -86,6 +88,16 @@
             this.radioButtonDbgOff = new System.Windows.Forms.RadioButton();
             this.tabPageMisc = new System.Windows.Forms.TabPage();
             this.groupBoxPuController = new System.Windows.Forms.GroupBox();
+            this.labelPuContXp = new System.Windows.Forms.Label();
+            this.labelPuContXm = new System.Windows.Forms.Label();
+            this.labelPuContZp = new System.Windows.Forms.Label();
+            this.labelPuContZm = new System.Windows.Forms.Label();
+            this.buttonPuConZnPu = new System.Windows.Forms.Button();
+            this.buttonPuConXpQpu = new System.Windows.Forms.Button();
+            this.buttonPuConXnQpu = new System.Windows.Forms.Button();
+            this.buttonPuConXnPu = new System.Windows.Forms.Button();
+            this.buttonPuConZnQpu = new System.Windows.Forms.Button();
+            this.buttonPuConXpPu = new System.Windows.Forms.Button();
             this.buttonPuConZpPu = new System.Windows.Forms.Button();
             this.buttonPuConZpQpu = new System.Windows.Forms.Button();
             this.buttonPuConHome = new System.Windows.Forms.Button();
@@ -152,22 +164,12 @@
             this.labelDisStart = new System.Windows.Forms.Label();
             this.richTextBoxDissasembly = new System.Windows.Forms.RichTextBox();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
-            this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.labelVersionNumber = new System.Windows.Forms.Label();
-            this.buttonPuConXpPu = new System.Windows.Forms.Button();
-            this.buttonPuConZnQpu = new System.Windows.Forms.Button();
-            this.buttonPuConXnPu = new System.Windows.Forms.Button();
-            this.buttonPuConXnQpu = new System.Windows.Forms.Button();
-            this.buttonPuConXpQpu = new System.Windows.Forms.Button();
-            this.buttonPuConZnPu = new System.Windows.Forms.Button();
-            this.labelPuContZm = new System.Windows.Forms.Label();
-            this.labelPuContZp = new System.Windows.Forms.Label();
-            this.labelPuContXm = new System.Windows.Forms.Label();
-            this.labelPuContXp = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjTrash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -227,7 +229,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressions)).BeginInit();
             this.tabPageDisassembly.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxProcessSelection
@@ -260,6 +261,8 @@
             this.groupBoxObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxObjects.Controls.Add(this.labelSlotSize);
+            this.groupBoxObjects.Controls.Add(this.trackBarObjSlotSize);
             this.groupBoxObjects.Controls.Add(this.label1);
             this.groupBoxObjects.Controls.Add(this.comboBoxMapToggleMode);
             this.groupBoxObjects.Controls.Add(this.pictureBoxObjClone);
@@ -272,15 +275,36 @@
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(968, 322);
+            this.groupBoxObjects.Size = new System.Drawing.Size(968, 323);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
             // 
+            // labelSlotSize
+            // 
+            this.labelSlotSize.AutoSize = true;
+            this.labelSlotSize.Location = new System.Drawing.Point(110, 19);
+            this.labelSlotSize.Name = "labelSlotSize";
+            this.labelSlotSize.Size = new System.Drawing.Size(51, 13);
+            this.labelSlotSize.TabIndex = 11;
+            this.labelSlotSize.Text = "Slot Size:";
+            // 
+            // trackBarObjSlotSize
+            // 
+            this.trackBarObjSlotSize.Location = new System.Drawing.Point(167, 15);
+            this.trackBarObjSlotSize.Maximum = 100;
+            this.trackBarObjSlotSize.Minimum = 15;
+            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
+            this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
+            this.trackBarObjSlotSize.TabIndex = 3;
+            this.trackBarObjSlotSize.TickFrequency = 10;
+            this.trackBarObjSlotSize.Value = 15;
+            this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(88, 19);
+            this.label1.Location = new System.Drawing.Point(535, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 13);
@@ -290,7 +314,7 @@
             // comboBoxMapToggleMode
             // 
             this.comboBoxMapToggleMode.FormattingEnabled = true;
-            this.comboBoxMapToggleMode.Location = new System.Drawing.Point(162, 17);
+            this.comboBoxMapToggleMode.Location = new System.Drawing.Point(612, 15);
             this.comboBoxMapToggleMode.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxMapToggleMode.Name = "comboBoxMapToggleMode";
             this.comboBoxMapToggleMode.Size = new System.Drawing.Size(122, 21);
@@ -301,7 +325,7 @@
             // 
             this.pictureBoxObjClone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxObjClone.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxObjClone.Image")));
-            this.pictureBoxObjClone.Location = new System.Drawing.Point(738, 13);
+            this.pictureBoxObjClone.Location = new System.Drawing.Point(738, 17);
             this.pictureBoxObjClone.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxObjClone.Name = "pictureBoxObjClone";
             this.pictureBoxObjClone.Size = new System.Drawing.Size(23, 18);
@@ -324,7 +348,7 @@
             // 
             this.pictureBoxObjTrash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxObjTrash.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxObjTrash.Image")));
-            this.pictureBoxObjTrash.Location = new System.Drawing.Point(765, 13);
+            this.pictureBoxObjTrash.Location = new System.Drawing.Point(765, 17);
             this.pictureBoxObjTrash.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxObjTrash.Name = "pictureBoxObjTrash";
             this.pictureBoxObjTrash.Size = new System.Drawing.Size(23, 18);
@@ -349,10 +373,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelObjects.AutoScroll = true;
-            this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 38);
+            this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 65);
             this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 279);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 253);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -360,7 +384,7 @@
             // 
             this.comboBoxSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortMethod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBoxSortMethod.Location = new System.Drawing.Point(863, 16);
+            this.comboBoxSortMethod.Location = new System.Drawing.Point(862, 15);
             this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSortMethod.Name = "comboBoxSortMethod";
             this.comboBoxSortMethod.Size = new System.Drawing.Size(102, 21);
@@ -465,7 +489,7 @@
             this.textBoxObjName.ReadOnly = true;
             this.textBoxObjName.Size = new System.Drawing.Size(139, 26);
             this.textBoxObjName.TabIndex = 16;
-            this.textBoxObjName.Text = "Object\r\n";
+            this.textBoxObjName.Text = "No Object Selected\r\n";
             // 
             // buttonObjRetrieve
             // 
@@ -925,6 +949,108 @@
             this.groupBoxPuController.TabStop = false;
             this.groupBoxPuController.Text = "PU Controller";
             // 
+            // labelPuContXp
+            // 
+            this.labelPuContXp.AutoSize = true;
+            this.labelPuContXp.Location = new System.Drawing.Point(152, 70);
+            this.labelPuContXp.Name = "labelPuContXp";
+            this.labelPuContXp.Size = new System.Drawing.Size(20, 13);
+            this.labelPuContXp.TabIndex = 18;
+            this.labelPuContXp.Text = "X+";
+            // 
+            // labelPuContXm
+            // 
+            this.labelPuContXm.AutoSize = true;
+            this.labelPuContXm.Location = new System.Drawing.Point(16, 70);
+            this.labelPuContXm.Name = "labelPuContXm";
+            this.labelPuContXm.Size = new System.Drawing.Size(17, 13);
+            this.labelPuContXm.TabIndex = 17;
+            this.labelPuContXm.Text = "X-";
+            // 
+            // labelPuContZp
+            // 
+            this.labelPuContZp.AutoSize = true;
+            this.labelPuContZp.Location = new System.Drawing.Point(56, 162);
+            this.labelPuContZp.Name = "labelPuContZp";
+            this.labelPuContZp.Size = new System.Drawing.Size(20, 13);
+            this.labelPuContZp.TabIndex = 16;
+            this.labelPuContZp.Text = "Z+";
+            // 
+            // labelPuContZm
+            // 
+            this.labelPuContZm.AutoSize = true;
+            this.labelPuContZm.Location = new System.Drawing.Point(56, 21);
+            this.labelPuContZm.Name = "labelPuContZm";
+            this.labelPuContZm.Size = new System.Drawing.Size(17, 13);
+            this.labelPuContZm.TabIndex = 15;
+            this.labelPuContZm.Text = "Z-";
+            // 
+            // buttonPuConZnPu
+            // 
+            this.buttonPuConZnPu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConZnPu.Location = new System.Drawing.Point(79, 52);
+            this.buttonPuConZnPu.Name = "buttonPuConZnPu";
+            this.buttonPuConZnPu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonPuConZnPu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConZnPu.TabIndex = 14;
+            this.buttonPuConZnPu.Text = "#";
+            this.buttonPuConZnPu.UseVisualStyleBackColor = true;
+            // 
+            // buttonPuConXpQpu
+            // 
+            this.buttonPuConXpQpu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConXpQpu.Location = new System.Drawing.Point(144, 86);
+            this.buttonPuConXpQpu.Name = "buttonPuConXpQpu";
+            this.buttonPuConXpQpu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonPuConXpQpu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConXpQpu.TabIndex = 13;
+            this.buttonPuConXpQpu.Text = "I";
+            this.buttonPuConXpQpu.UseVisualStyleBackColor = true;
+            // 
+            // buttonPuConXnQpu
+            // 
+            this.buttonPuConXnQpu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConXnQpu.Location = new System.Drawing.Point(15, 86);
+            this.buttonPuConXnQpu.Name = "buttonPuConXnQpu";
+            this.buttonPuConXnQpu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonPuConXnQpu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConXnQpu.TabIndex = 12;
+            this.buttonPuConXnQpu.Text = "H";
+            this.buttonPuConXnQpu.UseVisualStyleBackColor = true;
+            // 
+            // buttonPuConXnPu
+            // 
+            this.buttonPuConXnPu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConXnPu.Location = new System.Drawing.Point(46, 86);
+            this.buttonPuConXnPu.Name = "buttonPuConXnPu";
+            this.buttonPuConXnPu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonPuConXnPu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConXnPu.TabIndex = 11;
+            this.buttonPuConXnPu.Text = "!";
+            this.buttonPuConXnPu.UseVisualStyleBackColor = true;
+            // 
+            // buttonPuConZnQpu
+            // 
+            this.buttonPuConZnQpu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConZnQpu.Location = new System.Drawing.Point(79, 21);
+            this.buttonPuConZnQpu.Name = "buttonPuConZnQpu";
+            this.buttonPuConZnQpu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonPuConZnQpu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConZnQpu.TabIndex = 10;
+            this.buttonPuConZnQpu.Text = "J";
+            this.buttonPuConZnQpu.UseVisualStyleBackColor = true;
+            // 
+            // buttonPuConXpPu
+            // 
+            this.buttonPuConXpPu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonPuConXpPu.Location = new System.Drawing.Point(113, 86);
+            this.buttonPuConXpPu.Name = "buttonPuConXpPu";
+            this.buttonPuConXpPu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonPuConXpPu.Size = new System.Drawing.Size(25, 25);
+            this.buttonPuConXpPu.TabIndex = 9;
+            this.buttonPuConXpPu.Text = "\"";
+            this.buttonPuConXpPu.UseVisualStyleBackColor = true;
+            // 
             // buttonPuConZpPu
             // 
             this.buttonPuConZpPu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
@@ -1317,15 +1443,15 @@
             this.splitContainerMap.Panel1.Controls.Add(this.buttonMapExpand);
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapId);
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapSubName);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapPuValue);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapQpu);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapQpuValue);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapPu);
             this.splitContainerMap.Panel1.Controls.Add(this.trackBarMapZoom);
             // 
             // splitContainerMap.Panel2
             // 
             this.splitContainerMap.Panel2.Controls.Add(this.glControlMap);
+            this.splitContainerMap.Panel2.Controls.Add(this.labelMapPu);
+            this.splitContainerMap.Panel2.Controls.Add(this.labelMapPuValue);
+            this.splitContainerMap.Panel2.Controls.Add(this.labelMapQpu);
+            this.splitContainerMap.Panel2.Controls.Add(this.labelMapQpuValue);
             this.splitContainerMap.Size = new System.Drawing.Size(959, 198);
             this.splitContainerMap.SplitterDistance = 318;
             this.splitContainerMap.SplitterWidth = 3;
@@ -1334,7 +1460,7 @@
             // checkBoxMapShowCamera
             // 
             this.checkBoxMapShowCamera.AutoSize = true;
-            this.checkBoxMapShowCamera.Location = new System.Drawing.Point(113, 159);
+            this.checkBoxMapShowCamera.Location = new System.Drawing.Point(112, 122);
             this.checkBoxMapShowCamera.Name = "checkBoxMapShowCamera";
             this.checkBoxMapShowCamera.Size = new System.Drawing.Size(92, 17);
             this.checkBoxMapShowCamera.TabIndex = 18;
@@ -1344,7 +1470,7 @@
             // checkBoxMapShowHolp
             // 
             this.checkBoxMapShowHolp.AutoSize = true;
-            this.checkBoxMapShowHolp.Location = new System.Drawing.Point(113, 139);
+            this.checkBoxMapShowHolp.Location = new System.Drawing.Point(112, 102);
             this.checkBoxMapShowHolp.Name = "checkBoxMapShowHolp";
             this.checkBoxMapShowHolp.Size = new System.Drawing.Size(85, 17);
             this.checkBoxMapShowHolp.TabIndex = 17;
@@ -1354,7 +1480,7 @@
             // checkBoxMapShowObj
             // 
             this.checkBoxMapShowObj.AutoSize = true;
-            this.checkBoxMapShowObj.Location = new System.Drawing.Point(6, 139);
+            this.checkBoxMapShowObj.Location = new System.Drawing.Point(5, 102);
             this.checkBoxMapShowObj.Name = "checkBoxMapShowObj";
             this.checkBoxMapShowObj.Size = new System.Drawing.Size(92, 17);
             this.checkBoxMapShowObj.TabIndex = 16;
@@ -1366,7 +1492,7 @@
             this.checkBoxMapShowMario.AutoSize = true;
             this.checkBoxMapShowMario.Checked = true;
             this.checkBoxMapShowMario.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMapShowMario.Location = new System.Drawing.Point(113, 118);
+            this.checkBoxMapShowMario.Location = new System.Drawing.Point(112, 81);
             this.checkBoxMapShowMario.Name = "checkBoxMapShowMario";
             this.checkBoxMapShowMario.Size = new System.Drawing.Size(82, 17);
             this.checkBoxMapShowMario.TabIndex = 15;
@@ -1386,7 +1512,7 @@
             // 
             // trackBarMapIconSize
             // 
-            this.trackBarMapIconSize.Location = new System.Drawing.Point(107, 89);
+            this.trackBarMapIconSize.Location = new System.Drawing.Point(106, 52);
             this.trackBarMapIconSize.Margin = new System.Windows.Forms.Padding(2);
             this.trackBarMapIconSize.Maximum = 100;
             this.trackBarMapIconSize.Minimum = 5;
@@ -1400,7 +1526,7 @@
             // labelMapIconSize
             // 
             this.labelMapIconSize.AutoSize = true;
-            this.labelMapIconSize.Location = new System.Drawing.Point(130, 74);
+            this.labelMapIconSize.Location = new System.Drawing.Point(129, 37);
             this.labelMapIconSize.Name = "labelMapIconSize";
             this.labelMapIconSize.Size = new System.Drawing.Size(54, 13);
             this.labelMapIconSize.TabIndex = 13;
@@ -1409,7 +1535,7 @@
             // checkBoxMapShowInactive
             // 
             this.checkBoxMapShowInactive.AutoSize = true;
-            this.checkBoxMapShowInactive.Location = new System.Drawing.Point(6, 118);
+            this.checkBoxMapShowInactive.Location = new System.Drawing.Point(5, 81);
             this.checkBoxMapShowInactive.Name = "checkBoxMapShowInactive";
             this.checkBoxMapShowInactive.Size = new System.Drawing.Size(94, 17);
             this.checkBoxMapShowInactive.TabIndex = 14;
@@ -1419,7 +1545,7 @@
             // labelMapZoom
             // 
             this.labelMapZoom.AutoSize = true;
-            this.labelMapZoom.Location = new System.Drawing.Point(29, 74);
+            this.labelMapZoom.Location = new System.Drawing.Point(28, 37);
             this.labelMapZoom.Name = "labelMapZoom";
             this.labelMapZoom.Size = new System.Drawing.Size(37, 13);
             this.labelMapZoom.TabIndex = 12;
@@ -1454,24 +1580,26 @@
             this.labelMapSubName.Location = new System.Drawing.Point(2, 16);
             this.labelMapSubName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapSubName.Name = "labelMapSubName";
-            this.labelMapSubName.Size = new System.Drawing.Size(28, 13);
+            this.labelMapSubName.Size = new System.Drawing.Size(53, 13);
             this.labelMapSubName.TabIndex = 7;
-            this.labelMapSubName.Text = "Test";
+            this.labelMapSubName.Text = "Unknown";
             // 
             // labelMapPuValue
             // 
+            this.labelMapPuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelMapPuValue.AutoSize = true;
-            this.labelMapPuValue.Location = new System.Drawing.Point(65, 54);
+            this.labelMapPuValue.Location = new System.Drawing.Point(67, 180);
             this.labelMapPuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapPuValue.Name = "labelMapPuValue";
-            this.labelMapPuValue.Size = new System.Drawing.Size(28, 13);
+            this.labelMapPuValue.Size = new System.Drawing.Size(37, 13);
             this.labelMapPuValue.TabIndex = 8;
-            this.labelMapPuValue.Text = "Test";
+            this.labelMapPuValue.Text = "[0:0:0]";
             // 
             // labelMapQpu
             // 
+            this.labelMapQpu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelMapQpu.AutoSize = true;
-            this.labelMapQpu.Location = new System.Drawing.Point(3, 41);
+            this.labelMapQpu.Location = new System.Drawing.Point(123, 180);
             this.labelMapQpu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapQpu.Name = "labelMapQpu";
             this.labelMapQpu.Size = new System.Drawing.Size(69, 13);
@@ -1480,18 +1608,20 @@
             // 
             // labelMapQpuValue
             // 
+            this.labelMapQpuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelMapQpuValue.AutoSize = true;
-            this.labelMapQpuValue.Location = new System.Drawing.Point(73, 41);
+            this.labelMapQpuValue.Location = new System.Drawing.Point(196, 180);
             this.labelMapQpuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapQpuValue.Name = "labelMapQpuValue";
-            this.labelMapQpuValue.Size = new System.Drawing.Size(28, 13);
+            this.labelMapQpuValue.Size = new System.Drawing.Size(37, 13);
             this.labelMapQpuValue.TabIndex = 1;
-            this.labelMapQpuValue.Text = "Test";
+            this.labelMapQpuValue.Text = "[0:0:0]";
             // 
             // labelMapPu
             // 
+            this.labelMapPu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelMapPu.AutoSize = true;
-            this.labelMapPu.Location = new System.Drawing.Point(3, 54);
+            this.labelMapPu.Location = new System.Drawing.Point(2, 180);
             this.labelMapPu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapPu.Name = "labelMapPu";
             this.labelMapPu.Size = new System.Drawing.Size(61, 13);
@@ -1500,7 +1630,7 @@
             // 
             // trackBarMapZoom
             // 
-            this.trackBarMapZoom.Location = new System.Drawing.Point(6, 89);
+            this.trackBarMapZoom.Location = new System.Drawing.Point(5, 52);
             this.trackBarMapZoom.Margin = new System.Windows.Forms.Padding(2);
             this.trackBarMapZoom.Maximum = 100;
             this.trackBarMapZoom.Name = "trackBarMapZoom";
@@ -1518,7 +1648,7 @@
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(640, 188);
+            this.glControlMap.Size = new System.Drawing.Size(641, 172);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -1591,8 +1721,8 @@
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1669,7 +1799,6 @@
             // 
             // tabPageOptions
             // 
-            this.tabPageOptions.Controls.Add(this.trackBarObjSlotSize);
             this.tabPageOptions.Controls.Add(this.checkBoxUseRomHack);
             this.tabPageOptions.Controls.Add(this.checkBox2);
             this.tabPageOptions.Controls.Add(this.checkBoxStartSlotIndexOne);
@@ -1680,18 +1809,6 @@
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
             this.tabPageOptions.Click += new System.EventHandler(this.tabPageOptions_Click);
-            // 
-            // trackBarObjSlotSize
-            // 
-            this.trackBarObjSlotSize.Location = new System.Drawing.Point(3, 64);
-            this.trackBarObjSlotSize.Maximum = 100;
-            this.trackBarObjSlotSize.Minimum = 15;
-            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
-            this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
-            this.trackBarObjSlotSize.TabIndex = 3;
-            this.trackBarObjSlotSize.TickFrequency = 10;
-            this.trackBarObjSlotSize.Value = 15;
-            this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
             // checkBoxUseRomHack
             // 
@@ -1738,108 +1855,6 @@
             this.labelVersionNumber.Text = "version";
             this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // buttonPuConXpPu
-            // 
-            this.buttonPuConXpPu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonPuConXpPu.Location = new System.Drawing.Point(113, 86);
-            this.buttonPuConXpPu.Name = "buttonPuConXpPu";
-            this.buttonPuConXpPu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonPuConXpPu.Size = new System.Drawing.Size(25, 25);
-            this.buttonPuConXpPu.TabIndex = 9;
-            this.buttonPuConXpPu.Text = "\"";
-            this.buttonPuConXpPu.UseVisualStyleBackColor = true;
-            // 
-            // buttonPuConZnQpu
-            // 
-            this.buttonPuConZnQpu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonPuConZnQpu.Location = new System.Drawing.Point(79, 21);
-            this.buttonPuConZnQpu.Name = "buttonPuConZnQpu";
-            this.buttonPuConZnQpu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonPuConZnQpu.Size = new System.Drawing.Size(25, 25);
-            this.buttonPuConZnQpu.TabIndex = 10;
-            this.buttonPuConZnQpu.Text = "J";
-            this.buttonPuConZnQpu.UseVisualStyleBackColor = true;
-            // 
-            // buttonPuConXnPu
-            // 
-            this.buttonPuConXnPu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonPuConXnPu.Location = new System.Drawing.Point(46, 86);
-            this.buttonPuConXnPu.Name = "buttonPuConXnPu";
-            this.buttonPuConXnPu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonPuConXnPu.Size = new System.Drawing.Size(25, 25);
-            this.buttonPuConXnPu.TabIndex = 11;
-            this.buttonPuConXnPu.Text = "!";
-            this.buttonPuConXnPu.UseVisualStyleBackColor = true;
-            // 
-            // buttonPuConXnQpu
-            // 
-            this.buttonPuConXnQpu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonPuConXnQpu.Location = new System.Drawing.Point(15, 86);
-            this.buttonPuConXnQpu.Name = "buttonPuConXnQpu";
-            this.buttonPuConXnQpu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonPuConXnQpu.Size = new System.Drawing.Size(25, 25);
-            this.buttonPuConXnQpu.TabIndex = 12;
-            this.buttonPuConXnQpu.Text = "H";
-            this.buttonPuConXnQpu.UseVisualStyleBackColor = true;
-            // 
-            // buttonPuConXpQpu
-            // 
-            this.buttonPuConXpQpu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonPuConXpQpu.Location = new System.Drawing.Point(144, 86);
-            this.buttonPuConXpQpu.Name = "buttonPuConXpQpu";
-            this.buttonPuConXpQpu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonPuConXpQpu.Size = new System.Drawing.Size(25, 25);
-            this.buttonPuConXpQpu.TabIndex = 13;
-            this.buttonPuConXpQpu.Text = "I";
-            this.buttonPuConXpQpu.UseVisualStyleBackColor = true;
-            // 
-            // buttonPuConZnPu
-            // 
-            this.buttonPuConZnPu.Font = new System.Drawing.Font("Wingdings 3", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonPuConZnPu.Location = new System.Drawing.Point(79, 52);
-            this.buttonPuConZnPu.Name = "buttonPuConZnPu";
-            this.buttonPuConZnPu.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonPuConZnPu.Size = new System.Drawing.Size(25, 25);
-            this.buttonPuConZnPu.TabIndex = 14;
-            this.buttonPuConZnPu.Text = "#";
-            this.buttonPuConZnPu.UseVisualStyleBackColor = true;
-            // 
-            // labelPuContZm
-            // 
-            this.labelPuContZm.AutoSize = true;
-            this.labelPuContZm.Location = new System.Drawing.Point(56, 21);
-            this.labelPuContZm.Name = "labelPuContZm";
-            this.labelPuContZm.Size = new System.Drawing.Size(17, 13);
-            this.labelPuContZm.TabIndex = 15;
-            this.labelPuContZm.Text = "Z-";
-            // 
-            // labelPuContZp
-            // 
-            this.labelPuContZp.AutoSize = true;
-            this.labelPuContZp.Location = new System.Drawing.Point(56, 162);
-            this.labelPuContZp.Name = "labelPuContZp";
-            this.labelPuContZp.Size = new System.Drawing.Size(20, 13);
-            this.labelPuContZp.TabIndex = 16;
-            this.labelPuContZp.Text = "Z+";
-            // 
-            // labelPuContXm
-            // 
-            this.labelPuContXm.AutoSize = true;
-            this.labelPuContXm.Location = new System.Drawing.Point(16, 70);
-            this.labelPuContXm.Name = "labelPuContXm";
-            this.labelPuContXm.Size = new System.Drawing.Size(17, 13);
-            this.labelPuContXm.TabIndex = 17;
-            this.labelPuContXm.Text = "X-";
-            // 
-            // labelPuContXp
-            // 
-            this.labelPuContXp.AutoSize = true;
-            this.labelPuContXp.Location = new System.Drawing.Point(152, 70);
-            this.labelPuContXp.Name = "labelPuContXp";
-            this.labelPuContXp.Size = new System.Drawing.Size(20, 13);
-            this.labelPuContXp.TabIndex = 18;
-            this.labelPuContXp.Text = "X+";
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1857,6 +1872,7 @@
             this.Load += new System.EventHandler(this.StroopMainForm_Load);
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjTrash)).EndInit();
             this.splitContainerMain.Panel1.ResumeLayout(false);
@@ -1914,6 +1930,7 @@
             this.splitContainerMap.Panel1.ResumeLayout(false);
             this.splitContainerMap.Panel1.PerformLayout();
             this.splitContainerMap.Panel2.ResumeLayout(false);
+            this.splitContainerMap.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).EndInit();
             this.splitContainerMap.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).EndInit();
@@ -1925,7 +1942,6 @@
             this.tabPageDisassembly.PerformLayout();
             this.tabPageOptions.ResumeLayout(false);
             this.tabPageOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2070,6 +2086,7 @@
         private System.Windows.Forms.Button buttonPuConXnPu;
         private System.Windows.Forms.Button buttonPuConZnQpu;
         private System.Windows.Forms.Button buttonPuConXpPu;
+        private System.Windows.Forms.Label labelSlotSize;
     }
 }
 
