@@ -483,6 +483,11 @@ namespace SM64_Diagnostic
             _config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
         }
 
+        private void buttonPuConHome_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void radioButtonDbgFxInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on

@@ -38,7 +38,6 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveToRelativePu(ProcessStream stream, Config config, int newPuX, int newPuY, int newPuZ)
         {
-            // Move object to Mario
             var marioAddress = config.Mario.MarioStructAddress;
 
             // Get Mario position
@@ -80,7 +79,6 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveToPu(ProcessStream stream, Config config, int newPuX, int newPuY, int newPuZ)
         {
-            // Move object to Mario
             var marioAddress = config.Mario.MarioStructAddress;
 
             // Get Mario position
@@ -119,6 +117,41 @@ namespace SM64_Diagnostic.Utilities
                 success &= stream.WriteRam(BitConverter.GetBytes(newCamZ), config.CameraZ);
             }
             return success;
+        }
+
+        public static string GetPuPosString(ProcessStream stream, Config config)
+        {
+            var marioAddress = config.Mario.MarioStructAddress;
+
+            // Get Mario position
+            float marioX, marioZ;
+            marioX = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.XOffset, 4), 0);
+            marioZ = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.ZOffset, 4), 0);
+
+            // Update PU
+            int puX = PuUtilities.GetPUFromCoord(marioX);
+            int puZ = PuUtilities.GetPUFromCoord(marioZ);
+
+            return string.Format("[{0}:{1}]", puX, puZ);
+        }
+        public static string GetQpuPosString(ProcessStream stream, Config config)
+        {
+            var marioAddress = config.Mario.MarioStructAddress;
+
+            // Get Mario position
+            float marioX, marioZ;
+            marioX = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.XOffset, 4), 0);
+            marioZ = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.ZOffset, 4), 0);
+
+            // Update PU
+            int puX = PuUtilities.GetPUFromCoord(marioX);
+            int puZ = PuUtilities.GetPUFromCoord(marioZ);
+
+            // Update Qpu
+            double qpuX = puX / 4d;
+            double qpuZ = puZ / 4d;
+
+            return string.Format("[{0}:{1}]", qpuX, qpuZ);
         }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.buttonOk = new System.Windows.Forms.Button();
             this.labelEmuAdd = new System.Windows.Forms.Label();
             this.labelN64Add = new System.Windows.Forms.Label();
@@ -37,37 +37,40 @@
             this.labelVarTypeValue = new System.Windows.Forms.Label();
             this.labelVarName = new System.Windows.Forms.Label();
             this.textBoxEmuAddValue = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanelMain
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.55205F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.44795F));
-            this.tableLayoutPanel1.Controls.Add(this.buttonOk, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.labelEmuAdd, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.labelN64Add, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxN64AddValue, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.labelVarType, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.labelVarTypeValue, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.labelVarName, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxEmuAddValue, 1, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(317, 182);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanelMain.ColumnCount = 2;
+            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.55205F));
+            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.44795F));
+            this.tableLayoutPanelMain.Controls.Add(this.buttonOk, 1, 3);
+            this.tableLayoutPanelMain.Controls.Add(this.labelEmuAdd, 0, 3);
+            this.tableLayoutPanelMain.Controls.Add(this.labelN64Add, 0, 2);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxN64AddValue, 1, 2);
+            this.tableLayoutPanelMain.Controls.Add(this.labelVarType, 0, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.labelVarTypeValue, 1, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.labelVarName, 0, 0);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxEmuAddValue, 1, 3);
+            this.tableLayoutPanelMain.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
+            this.tableLayoutPanelMain.RowCount = 4;
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(317, 182);
+            this.tableLayoutPanelMain.TabIndex = 0;
             // 
             // buttonOk
             // 
             this.buttonOk.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel1.SetColumnSpan(this.buttonOk, 2);
+            this.tableLayoutPanelMain.SetColumnSpan(this.buttonOk, 2);
             this.buttonOk.Location = new System.Drawing.Point(121, 155);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
@@ -128,7 +131,7 @@
             // 
             this.labelVarName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelVarName.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.labelVarName, 2);
+            this.tableLayoutPanelMain.SetColumnSpan(this.labelVarName, 2);
             this.labelVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelVarName.Location = new System.Drawing.Point(114, 24);
             this.labelVarName.Name = "labelVarName";
@@ -150,22 +153,24 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(341, 206);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tableLayoutPanelMain);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(357, 244);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(357, 244);
             this.Name = "VariableViewerForm";
             this.ShowIcon = false;
             this.Text = "Variable Info";
             this.Load += new System.EventHandler(this.VariableViewerForm_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanelMain.ResumeLayout(false);
+            this.tableLayoutPanelMain.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Label labelEmuAdd;
         private System.Windows.Forms.Label labelN64Add;
