@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Controls.Map
 {
-    public abstract class MapBaseObject
+    public abstract class MapBaseObject : IDisposable
     {
-        public double DepthScore;
         public bool Draw;
         public int Depth;
-        public bool Show;
 
         public abstract void DrawOnControl(MapGraphics graphics);
+        public abstract void Load(MapGraphics graphics);
+        public abstract double GetDepthScore();
+        public abstract void Dispose();
     }
 }

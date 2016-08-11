@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using SM64_Diagnostic.Controls.Map;
 using SM64_Diagnostic.ManagerClasses;
+using OpenTK.Graphics.OpenGL;
 
 namespace SM64_Diagnostic.Structs
 {
@@ -19,6 +20,7 @@ namespace SM64_Diagnostic.Structs
         public bool IsActive;
         public float Rotation;
         public bool UsesRotation;
+        public bool Show = true;
 
         public int TextureId;
 
@@ -33,6 +35,21 @@ namespace SM64_Diagnostic.Structs
         public override void DrawOnControl(MapGraphics graphics)
         {
             graphics.DrawTexture(TextureId, LocationOnContol, graphics.ScaleImageSize(Image.Size, graphics.IconSize), Rotation);
+        }
+
+        public override void Load(MapGraphics graphics)
+        {
+           TextureId = graphics.LoadTexture(Image as Bitmap);
+        }
+
+        public override void Dispose()
+        {
+            GL.DeleteTexture(TextureId);
+        }
+
+        public override double GetDepthScore()
+        {
+            return Y + Depth * 65536d;
         }
     }
 }

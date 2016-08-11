@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Imaging;
 using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Controls.Map;
 
 namespace SM64_Diagnostic.ManagerClasses
 {
@@ -18,7 +19,7 @@ namespace SM64_Diagnostic.ManagerClasses
         int _mapTex = -1;
         int _mapBackgroundTex = -1;
         Size _mapImageSize;
-        List<MapObject> _mapObjects = new List<MapObject>();
+        List<MapBaseObject> _mapObjects = new List<MapBaseObject>();
         float _renderIconSize = 30;
         int _iconSize = 30;
 
@@ -85,7 +86,7 @@ namespace SM64_Diagnostic.ManagerClasses
             DrawTexture(_mapTex, new PointF(MapView.X + MapView.Width / 2, MapView.Y + MapView.Height / 2), MapView.Size);
 
             // Loop through and draw all map objects
-            foreach (var mapObj in _mapObjects.OrderBy((mapObj) => mapObj.DepthScore))
+            foreach (var mapObj in _mapObjects.OrderBy((mapObj) => mapObj.GetDepthScore()))
             {
                 // Make sure we want to show the map object
                 if (!mapObj.Draw)
@@ -216,7 +217,7 @@ namespace SM64_Diagnostic.ManagerClasses
             GL.End();
         }
 
-        static int LoadTexture(Bitmap bmp)
+        public int LoadTexture(Bitmap bmp)
         {
             // Create texture and id
             int id = GL.GenTexture();
@@ -240,16 +241,16 @@ namespace SM64_Diagnostic.ManagerClasses
             return id;
         }
 
-        public void AddMapObject(MapObject mapObj)
+        public void AddMapObject(MapBaseObject mapObj)
         {
-            mapObj.TextureId = LoadTexture(mapObj.Image as Bitmap);
+            mapObj.Load(this);
             _mapObjects.Add(mapObj);
         }
 
-        public void RemoveMapObject(MapObject mapObj)
+        public void RemoveMapObject(MapBaseObject mapObj)
         {
             _mapObjects.Remove(mapObj);
-            GL.DeleteTexture(mapObj.TextureId);
+            mapObj?.Dispose();
         }
     }
 }

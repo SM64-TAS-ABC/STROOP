@@ -15,13 +15,16 @@ namespace SM64_Diagnostic.Structs
 
         public float X1, X2, X3;
         public float Z1, Z2, Z3;
+        public float Y;
+        public bool Show;
 
 
         public PointF P1OnControl, P2OnControl, P3OnControl;
 
 
-        public TriangleMapObject()
+        public TriangleMapObject(int depth = 0)
         {
+            Depth = depth;
         }
 
         public override void DrawOnControl(MapGraphics graphics)
@@ -33,6 +36,19 @@ namespace SM64_Diagnostic.Structs
             GL.Vertex3(P2OnControl.X, 0, P2OnControl.Y);
             GL.Vertex3(P3OnControl.X, 0, P3OnControl.Y);
             GL.End();
+        }
+
+        public override void Load(MapGraphics graphics)
+        {
+        }
+
+        public override void Dispose()
+        {
+        }
+
+        public override double GetDepthScore()
+        {
+            return Y + Depth * 65536d;
         }
     }
 }

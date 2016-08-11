@@ -26,6 +26,7 @@ namespace SM64_Diagnostic.ManagerClasses
         MapObject _marioMapObj;
         MapObject _holpMapObj;
         MapObject _cameraMapObj;
+        TriangleMapObject _floorTriangleMapObj;
         List<MapObject> _mapObjects = new List<MapObject>();
         MapGui _mapGui;
         bool _isLoaded = false;
@@ -62,6 +63,14 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
+        public TriangleMapObject FloorTriangleMapObject
+        {
+            get
+            {
+                return _floorTriangleMapObj;
+            }
+        }
+
         public bool Visible
         {
             get
@@ -88,6 +97,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _holpMapObj = new MapObject(objAssoc.HolpImage, 2);
 
             _cameraMapObj = new MapObject(objAssoc.CameraMapImage, 1);
+            _floorTriangleMapObj = new TriangleMapObject(0) ;
         }
 
         public void Load()
@@ -105,6 +115,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapGraphics.AddMapObject(_marioMapObj);
             _mapGraphics.AddMapObject(_holpMapObj);
             _mapGraphics.AddMapObject(_cameraMapObj);
+            _mapGraphics.AddMapObject(_floorTriangleMapObj);
 
             //----- Register events ------
             // Set image
@@ -210,6 +221,17 @@ namespace SM64_Diagnostic.ManagerClasses
             _cameraMapObj.Draw = _mapGui.MapShowCamera.Checked && puX == cameraPuX && puY == cameraPuY && puZ == cameraPuZ;
             _cameraMapObj.LocationOnContol = CalculateLocationOnControl(cameraCoord, mapView);
 
+            float trianglePuX1 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X1);
+            float trianglePuZ1 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z1);
+            float trianglePuX2 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X2);
+            float trianglePuZ2 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z2);
+            float trianglePuX3 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X3);
+            float trianglePuZ3 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z3);
+            _floorTriangleMapObj.P1OnControl = CalculateLocationOnControl(new PointF(trianglePuX1, trianglePuZ1), mapView);
+            _floorTriangleMapObj.P2OnControl = CalculateLocationOnControl(new PointF(trianglePuX2, trianglePuZ2), mapView);
+            _floorTriangleMapObj.P3OnControl = CalculateLocationOnControl(new PointF(trianglePuX3, trianglePuZ3), mapView);
+  
+
             // Calculate object slot's cooridnates
             foreach (var mapObj in _mapObjects)
             {
@@ -237,8 +259,6 @@ namespace SM64_Diagnostic.ManagerClasses
 
                 // Calculate object's location on control
                 mapObj.LocationOnContol = CalculateLocationOnControl(objCoords, mapView);
-
-                mapObj.DepthScore = mapObj.Y + mapObj.Depth * 65536d;
             }
 
             // Update gui by drawing images (invokes _mapGraphics.OnPaint())
