@@ -13,7 +13,11 @@ namespace SM64_Diagnostic.Utilities
 
         public static uint ParseHex(string str)
         {
-            return uint.Parse(str.Substring(str.IndexOf("0x") + 2), NumberStyles.HexNumber);
+            int prefixPos = str.IndexOf("0x");
+            if (prefixPos == -1)
+                return uint.Parse(str, NumberStyles.HexNumber);
+            else
+                return uint.Parse(str.Substring(prefixPos + 2), NumberStyles.HexNumber);
         }
 
         public static UInt64 ParseExtHex(string str)

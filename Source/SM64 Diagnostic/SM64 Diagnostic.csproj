@@ -85,6 +85,7 @@
     <Compile Include="Controls\IntPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\Map\MapBaseObject.cs" />
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
     <Compile Include="Extensions\WatchExpressionExtensions.cs" />
@@ -92,7 +93,7 @@
     <Compile Include="ManagerClasses\DataManager.cs" />
     <Compile Include="Controls\DataContainer.cs" />
     <Compile Include="ManagerClasses\DisassemblyManager.cs" />
-    <Compile Include="Controls\Map\MapGraphicsControl.cs" />
+    <Compile Include="Controls\Map\MapGraphics.cs" />
     <Compile Include="ManagerClasses\MapManager.cs" />
     <Compile Include="ManagerClasses\CameraManager.cs" />
     <Compile Include="ManagerClasses\MarioManager.cs" />
@@ -126,9 +127,10 @@
     <Compile Include="Structs\Configurations\ObjectSlotsConfig.cs" />
     <Compile Include="Structs\Configurations\ObjectGroupsConfig.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
-    <Compile Include="Structs\ScriptParser.cs" />
+    <Compile Include="Utilities\ScriptParser.cs" />
     <Compile Include="Controls\Map\TriangleMapObject.cs" />
     <Compile Include="Structs\WatchExpression.cs" />
+    <Compile Include="Utilities\HackParser.cs" />
     <Compile Include="Utilities\N64Disassembler.cs" />
     <Compile Include="Utilities\MarioActions.cs" />
     <Compile Include="Structs\ProcessSelection.cs" />
@@ -170,6 +172,9 @@
     <EmbeddedResource Include="Schemas\ConfigSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="Hacks\PuVisible.hck">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

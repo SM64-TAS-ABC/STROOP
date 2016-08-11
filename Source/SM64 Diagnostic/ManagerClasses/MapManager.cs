@@ -22,7 +22,7 @@ namespace SM64_Diagnostic.ManagerClasses
         ushort _currentLoadingPoint, _currentMissionLayout;
         Map _currentMap;
         List<Map> _currentMapList = null;
-        MapGraphicsControl _mapGraphics;
+        MapGraphics _mapGraphics;
         MapObject _marioMapObj;
         MapObject _holpMapObj;
         MapObject _cameraMapObj;
@@ -93,7 +93,7 @@ namespace SM64_Diagnostic.ManagerClasses
         public void Load()
         {
             // Create new graphics control
-            _mapGraphics = new MapGraphicsControl(_mapGui.GLControl);
+            _mapGraphics = new MapGraphics(_mapGui.GLControl);
             _mapGraphics.Load();
 
             _isLoaded = true;
@@ -237,6 +237,8 @@ namespace SM64_Diagnostic.ManagerClasses
 
                 // Calculate object's location on control
                 mapObj.LocationOnContol = CalculateLocationOnControl(objCoords, mapView);
+
+                mapObj.DepthScore = mapObj.Y + mapObj.Depth * 65536d;
             }
 
             // Update gui by drawing images (invokes _mapGraphics.OnPaint())
