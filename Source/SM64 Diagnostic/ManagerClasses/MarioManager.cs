@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.ManagerClasses
         List<WatchVariableControl> _marioDataControls;
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
-        DataContainer _heightAboveGround, _heightBelowCeil;
+        DataContainer _heightAboveGround, _heightBelowCeil, _deFactoSpeed;
         MapManager _mapManager;
 
         public MarioManager(ProcessStream stream, Config config, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable, MapManager mapManager)
@@ -43,6 +43,9 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _heightBelowCeil = new DataContainer("Dis Below Ceil");
             variableTable.Controls.Add(_heightBelowCeil.Control);
+
+            _deFactoSpeed = new DataContainer("De Facto Speed");
+            variableTable.Controls.Add(_deFactoSpeed.Control);
         }
 
         public void Update(bool updateView)
@@ -75,7 +78,6 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapManager.HolpMapObject.Z = holpZ;
             _mapManager.HolpMapObject.Show = true;
 
-
             // Update camera position and rotation
             float cameraX, cameraY, cameraZ , cameraRot;
             cameraX = BitConverter.ToSingle(_stream.ReadRam(_config.CameraX, 4), 0);
@@ -99,6 +101,12 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _heightBelowCeil.Text = (BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.CeilingYOffset, 4), 0) - y).ToString();
             _heightAboveGround.Text = (y - BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.GroundYOffset, 4), 0)).ToString();
+
+            float hSpeed = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.HSpeedOffset, 4), 0);
+            UInt32 floorTriangle = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.FloorTriangleOffset, 4), 0);
+            float normY = BitConverter.ToSingle(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.NormY, 4), 0);
+
+            _deFactoSpeed.Text = (hSpeed * normY).ToString();
         }
 
         private void RegisterControlEvents(Control control)

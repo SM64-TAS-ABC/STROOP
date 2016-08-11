@@ -203,6 +203,12 @@ namespace SM64_Diagnostic.Utilities
                                 case "GroundYOffset":
                                     config.Mario.GroundYOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "HSpeedOffset":
+                                    config.Mario.HSpeedOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "FloorTriangleOffset":
+                                    config.Mario.FloorTriangleOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;
