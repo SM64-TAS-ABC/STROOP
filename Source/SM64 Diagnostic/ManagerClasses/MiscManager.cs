@@ -17,6 +17,7 @@ namespace SM64_Diagnostic.ManagerClasses
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
         DataContainer _rngIndex, _rngPerFrame, _activeObjCnt;
+        Control _puController;
 
         public int ActiveObjectCount = 0;
 
@@ -27,7 +28,8 @@ namespace SM64_Diagnostic.ManagerClasses
             _config = config;
             _variableTable = variableTable;
             _stream = stream;
-            
+            _puController = puController;
+
             _watchVarControls = new List<WatchVariableControl>();
             foreach (WatchVariable watchVar in watchVariables)
             {
@@ -47,15 +49,15 @@ namespace SM64_Diagnostic.ManagerClasses
             _activeObjCnt = new DataContainer("Num. Loaded Objs.");
             variableTable.Controls.Add(_activeObjCnt.Control);
 
-            puController.Controls["buttonPuConHome"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.Home);
-            puController.Controls["buttonPuConZnQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuUp);
-            puController.Controls["buttonPuConZpQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuDown);
-            puController.Controls["buttonPuConXnQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuLeft);
-            puController.Controls["buttonPuConXpQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuRight);
-            puController.Controls["buttonPuConZnPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuUp);
-            puController.Controls["buttonPuConZpPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuDown);
-            puController.Controls["buttonPuConXnPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuLeft);
-            puController.Controls["buttonPuConXpPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuRight);
+            _puController.Controls["buttonPuConHome"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.Home);
+            _puController.Controls["buttonPuConZnQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuUp);
+            _puController.Controls["buttonPuConZpQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuDown);
+            _puController.Controls["buttonPuConXnQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuLeft);
+            _puController.Controls["buttonPuConXpQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuRight);
+            _puController.Controls["buttonPuConZnPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuUp);
+            _puController.Controls["buttonPuConZpPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuDown);
+            _puController.Controls["buttonPuConXnPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuLeft);
+            _puController.Controls["buttonPuConXpPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuRight);
         }
 
         private void PuControl_Click(object sender, EventArgs e, PuControl controlType)
@@ -110,6 +112,8 @@ namespace SM64_Diagnostic.ManagerClasses
             _rngPerFrame.Text = GetRngCallsPerFrame().ToString();
 
             _activeObjCnt.Text = ActiveObjectCount.ToString();
+            _puController.Controls["labelPuConPuValue"].Text = PuUtilities.GetPuPosString(_stream, _config);
+            _puController.Controls["labelPuConQpuValue"].Text = PuUtilities.GetQpuPosString(_stream, _config);
         }
 
         private int GetRngCallsPerFrame()
