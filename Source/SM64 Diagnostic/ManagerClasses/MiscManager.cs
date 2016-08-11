@@ -16,7 +16,9 @@ namespace SM64_Diagnostic.ManagerClasses
         List<WatchVariableControl> _watchVarControls;
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
-        DataContainer _rngIndex, _rngPerFrame;
+        DataContainer _rngIndex, _rngPerFrame, _activeObjCnt;
+
+        public int ActiveObjectCount = 0;
 
         enum PuControl { Home, PuUp, PuDown, PuLeft, PuRight, QpuUp, QpuDown, QpuLeft, QpuRight};
 
@@ -40,6 +42,10 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _rngPerFrame = new DataContainer("RNG Calls/Frame");
             variableTable.Controls.Insert(_rngPerFrame.Control, 3);
+
+            // Add active object count watchvar
+            _activeObjCnt = new DataContainer("Active Objects");
+            variableTable.Controls.Add(_activeObjCnt.Control);
 
             puController.Controls["buttonPuConHome"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.Home);
             puController.Controls["buttonPuConZnQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuUp);
@@ -102,6 +108,8 @@ namespace SM64_Diagnostic.ManagerClasses
             _rngIndex.Text = (rngIndex < 0) ? "N/A [" + (-rngIndex).ToString() + "]" : rngIndex.ToString();
 
             _rngPerFrame.Text = GetRngCallsPerFrame().ToString();
+
+            _activeObjCnt.Text = ActiveObjectCount.ToString();
         }
 
         private int GetRngCallsPerFrame()

@@ -13,7 +13,7 @@ namespace SM64_Diagnostic.Controls
     /// </summary>
     public class IntPictureBox : PictureBox
     {
-        public InterpolationMode InterpolationMode { get; set; }
+        public InterpolationMode InterpolationMode { get; set; } = InterpolationMode.High;
 
         protected override void OnPaint(PaintEventArgs paintEventArgs)
         {

@@ -19,6 +19,7 @@ namespace SM64_Diagnostic.ManagerClasses
         public ObjectAssociations ObjectAssoc;
         ObjectManager _objManager;
         MapManager _mapManager;
+        MiscManager _miscManager;
         ProcessStream _stream;
         public ObjectSlotManagerGui ManagerGui;
 
@@ -30,6 +31,8 @@ namespace SM64_Diagnostic.ManagerClasses
         List<byte> _toggleMapGroups = new List<byte>();
         List<uint> _toggleMapBehaviors = new List<uint>();
         List<uint> _toggleMapSlots = new List<uint>();
+
+        bool _selectionChanged = false;
 
         public uint? SelectedAddress = null;
         public const byte VacantGroup = 0xFF;
@@ -59,6 +62,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 SelectedAddress = selectedObjData.HasValue ? selectedObjData.Value.Address : (uint?) null;
                 _objManager.CurrentAddress = SelectedAddress.Value;
                 _selectedSlot = value;
+                _selectionChanged = true;
             }
         }
 
@@ -69,7 +73,7 @@ namespace SM64_Diagnostic.ManagerClasses
         }
 
         public ObjectSlotManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, 
-            ObjectManager objManager, ObjectSlotManagerGui managerGui, MapManager mapManager)
+            ObjectManager objManager, ObjectSlotManagerGui managerGui, MapManager mapManager, MiscManager miscManager)
         {
 
             _config = config;
@@ -79,6 +83,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _objManager = objManager;
             ManagerGui = managerGui;
             _mapManager = mapManager;
+            _miscManager = miscManager;
 
             ManagerGui.TrashPictureBox.AllowDrop = true;
             ManagerGui.TrashPictureBox.DragEnter += OnObjectDragOver;
@@ -376,15 +381,19 @@ namespace SM64_Diagnostic.ManagerClasses
                 // Update object manager image
                 if (SelectedAddress.HasValue && SelectedAddress.Value == currentAddress)
                 {
-                    _objManager.BackColor = newColor;
-                    _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
+                    if (_selectionChanged)
+                    {
+                        _objManager.BackColor = newColor;
+                        _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
+                        _objManager.Name = ObjectAssoc.GetObjectName(behaviorScriptAdd);
+                        _objManager.Image = ObjectSlots[index].Image;
+                        _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorScriptAdd), newColor.Lighten(0.5));
+                        _selectionChanged = false;
+                    }
                     int slotPos = objectData.ObjectProcessGroup == VacantGroup ? objectData.VacantSlotIndex.Value : objectData.ProcessIndex;
-                    _objManager.SlotIndex = _memoryAddressSlotIndex[currentAddress] + (_config.SlotIndexsFromOne ? 1 : 0); 
+                    _objManager.SlotIndex = _memoryAddressSlotIndex[currentAddress] + (_config.SlotIndexsFromOne ? 1 : 0);
                     _objManager.SlotPos = (objectData.ObjectProcessGroup == VacantGroup ? "VS " : "")
                         + (slotPos + (_config.SlotIndexsFromOne ? 1 : 0)).ToString();
-                    _objManager.Name = ObjectAssoc.GetObjectName(behaviorScriptAdd);
-                    _objManager.Image = ObjectSlots[index].Image;
-                    _objManager.BehaviorWatchVariables = ObjectAssoc.GetWatchVariables(behaviorScriptAdd);
                     _objManager.Update();   
                 }
 
@@ -425,7 +434,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     }
                 }
             }
-            _objManager.ActiveObjectCount = activeObjCnt;
+            _miscManager.ActiveObjectCount = activeObjCnt;
             ObjectSlotData = newObjectSlotData;
         }
 

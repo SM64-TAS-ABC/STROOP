@@ -154,6 +154,7 @@ namespace SM64_Diagnostic.ManagerClasses
             this._nameLabel.Width = 210;
             this._nameLabel.Text = _watchVar.Name;
             this._nameLabel.Margin = new Padding(3, 3, 3, 3);
+            this._nameLabel.Click += _nameLabel_Click;
             this._nameLabel.MouseHover += (sender, e) =>
             {
                 if (!_watchVar.OtherOffset)
@@ -212,6 +213,14 @@ namespace SM64_Diagnostic.ManagerClasses
             this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
             this._tablePanel.Controls.Add(_nameLabel, 0, 0);
             this._tablePanel.Controls.Add(_watchVar.IsBool ? this._checkBoxBool as Control: this._textBoxValue, 1, 0);
+        }
+
+        private void _nameLabel_Click(object sender, EventArgs e)
+        {
+            var varInfo = new VariableViewerForm(_watchVar.Name, _watchVar.GetTypeString(),
+                String.Format("0x{0:X8}", _watchVar.GetRamAddress(_stream)),
+                String.Format("0x{0:X8}", _watchVar.GetProcessAddress(_stream, OtherOffset)));
+            varInfo.ShowDialog();
         }
 
         private void _textBoxValue_DoubleClick(object sender, EventArgs e)
