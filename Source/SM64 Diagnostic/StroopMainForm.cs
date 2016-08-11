@@ -120,7 +120,8 @@ namespace SM64_Diagnostic
             objectGui.ObjectBorderPanel = panelObjectBorder;
             objectGui.ObjectFlowLayout = flowLayoutPanelObject;
             objectGui.ObjectImagePictureBox = pictureBoxObject;
-            objectGui.ObjAddressLabel = labelObjAddValue;
+            objectGui.ObjAddressLabelValue = labelObjAddValue;
+            objectGui.ObjAddressLabel = labelObjAdd;
             objectGui.ObjBehaviorLabel = labelObjBhvValue;
             objectGui.ObjectNameTextBox = textBoxObjName;
             objectGui.ObjSlotIndexLabel = labelObjSlotIndValue;
@@ -144,7 +145,7 @@ namespace SM64_Diagnostic
             slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
             slotManagerGui.MapObjectToggleModeComboBox = comboBoxMapToggleMode;
             slotManagerGui.FlowLayoutContainer = flowLayoutPanelObjects;
-            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, slotManagerGui, _mapManager);
+            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, slotManagerGui, _mapManager, _miscManager);
 
             // Add SortMethods
             foreach (var sm in Enum.GetValues(typeof(ObjectSlotManager.SortMethodType)))
@@ -414,8 +415,7 @@ namespace SM64_Diagnostic
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            HackParser.LoadHack(_sm64Stream, @"Hacks/PuVisible.hck");
-            //throw new Exception("User crashed program");
+            throw new Exception("User crashed program");
         }
 
         private void buttonMapExpand_Click(object sender, EventArgs e)
@@ -539,9 +539,9 @@ namespace SM64_Diagnostic
             }
         }
 
-        private void tabPageOptions_Click(object sender, EventArgs e)
+        private void checkBoxPuVisible_CheckedChanged(object sender, EventArgs e)
         {
-
+            HackParser.LoadHack(_sm64Stream, @"Hacks/PuVisible.hck");
         }
 
         private void tabControlMain_DragEnter(object sender, DragEventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace SM64_Diagnostic.Structs
     public struct ObjectDataGui
     {
         public Panel ObjectBorderPanel;
-        public PictureBox ObjectImagePictureBox;
+        public IntPictureBox ObjectImagePictureBox;
         public FlowLayoutPanel ObjectFlowLayout;
         public Button CloneButton;
         public Button UnloadButton;
@@ -21,5 +22,6 @@ namespace SM64_Diagnostic.Structs
         public Label ObjSlotIndexLabel;
         public Label ObjSlotPositionLabel;
         public Label ObjAddressLabel;
+        public Label ObjAddressLabelValue;
     }
 }

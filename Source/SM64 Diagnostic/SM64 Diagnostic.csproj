@@ -153,6 +153,12 @@
     <Compile Include="Utilities\PuUtilities.cs" />
     <Compile Include="Utilities\RngIndexer.cs" />
     <Compile Include="Utilities\XmlConfigParser.cs" />
+    <Compile Include="VariableViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VariableViewerForm.Designer.cs">
+      <DependentUpon>VariableViewerForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ModifyAddWatchVariableForm.resx">
       <DependentUpon>ModifyAddWatchVariableForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +181,9 @@
     <Content Include="Hacks\PuVisible.hck">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="VariableViewerForm.resx">
+      <DependentUpon>VariableViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

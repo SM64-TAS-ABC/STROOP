@@ -1260,6 +1260,9 @@
   <Object behaviorScriptAddress="0x130046DC" name="Fly Guy">
     <Image path="Fly Guy.png"/>
 	<MapImage path="Fly Guy Top.png" rotates="true"/>
+    <Data type="float" address="0xa8" objectOffset="true">Ground Below Y</Data>
+    <Data type="uint16" address="0xc0" objectOffset="true" isAngle="true">Lunging Ang.</Data>
+    <Data type="uint16" address="0xc4" objectOffset="true"  isAngle="true">Lunging V Ang.</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300472C" name="Goomba">
     <Image path="Goomba.png"/>

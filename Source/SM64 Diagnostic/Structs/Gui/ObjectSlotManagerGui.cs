@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,8 @@ namespace SM64_Diagnostic.Structs
 {
     public class ObjectSlotManagerGui
     {
-        public PictureBox ClonePictureBox;
-        public PictureBox TrashPictureBox;
+        public IntPictureBox ClonePictureBox;
+        public IntPictureBox TrashPictureBox;
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
         public ComboBox MapObjectToggleModeComboBox;

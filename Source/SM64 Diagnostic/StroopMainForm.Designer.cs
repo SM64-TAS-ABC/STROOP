@@ -1,4 +1,7 @@
-﻿namespace SM64_Diagnostic
+﻿using SM64_Diagnostic.Controls;
+using System.Windows.Forms;
+
+namespace SM64_Diagnostic
 {
     partial class StroopMainForm
     {
@@ -29,7 +32,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxProcessSelection = new System.Windows.Forms.ComboBox();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -37,9 +40,9 @@
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxMapToggleMode = new System.Windows.Forms.ComboBox();
-            this.pictureBoxObjClone = new System.Windows.Forms.PictureBox();
+            this.pictureBoxObjClone = new SM64_Diagnostic.Controls.IntPictureBox();
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
-            this.pictureBoxObjTrash = new System.Windows.Forms.PictureBox();
+            this.pictureBoxObjTrash = new SM64_Diagnostic.Controls.IntPictureBox();
             this.labelSortMethod = new System.Windows.Forms.Label();
             this.flowLayoutPanelObjects = new System.Windows.Forms.FlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
@@ -61,20 +64,20 @@
             this.labelObjSlotPos = new System.Windows.Forms.Label();
             this.labelObjBhv = new System.Windows.Forms.Label();
             this.panelObjectBorder = new System.Windows.Forms.Panel();
-            this.pictureBoxObject = new System.Windows.Forms.PictureBox();
+            this.pictureBoxObject = new SM64_Diagnostic.Controls.IntPictureBox();
             this.labelObjAddValue = new System.Windows.Forms.Label();
             this.tabPageMario = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelMario = new System.Windows.Forms.FlowLayoutPanel();
             this.panelMarioBorder = new System.Windows.Forms.Panel();
-            this.pictureBoxMario = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMario = new SM64_Diagnostic.Controls.IntPictureBox();
             this.tabPageHud = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelHud = new System.Windows.Forms.FlowLayoutPanel();
             this.panelHudBorder = new System.Windows.Forms.Panel();
-            this.pictureBoxHud = new System.Windows.Forms.PictureBox();
+            this.pictureBoxHud = new SM64_Diagnostic.Controls.IntPictureBox();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelCamera = new System.Windows.Forms.FlowLayoutPanel();
             this.panelCameraBorder = new System.Windows.Forms.Panel();
-            this.pictureBoxCamera = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCamera = new SM64_Diagnostic.Controls.IntPictureBox();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
             this.radioButtonDbgEnemyInfo = new System.Windows.Forms.RadioButton();
             this.radioButtonDbgFxInfo = new System.Windows.Forms.RadioButton();
@@ -84,7 +87,7 @@
             this.radioButtonDbgObjCnt = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.panelDebugBorder = new System.Windows.Forms.Panel();
-            this.pictureBoxDebug = new System.Windows.Forms.PictureBox();
+            this.pictureBoxDebug = new SM64_Diagnostic.Controls.IntPictureBox();
             this.radioButtonDbgOff = new System.Windows.Forms.RadioButton();
             this.tabPageMisc = new System.Windows.Forms.TabPage();
             this.groupBoxPuController = new System.Windows.Forms.GroupBox();
@@ -103,37 +106,38 @@
             this.buttonPuConHome = new System.Windows.Forms.Button();
             this.flowLayoutPanelMisc = new System.Windows.Forms.FlowLayoutPanel();
             this.panelMiscBorder = new System.Windows.Forms.Panel();
-            this.pictureBoxMisc = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMisc = new SM64_Diagnostic.Controls.IntPictureBox();
             this.tabPageStars = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelStrCourse = new System.Windows.Forms.Panel();
             this.flowLayoutPanelCourse = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBoxStrStar1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxStrStar2 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxStrStar3 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxStrStar4 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxStrStar5 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxStrStar6 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxStrStar7 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxStrCannon = new System.Windows.Forms.PictureBox();
+            this.pictureBoxStrStar1 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBoxStrStar2 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBoxStrStar3 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBoxStrStar4 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBoxStrStar5 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBoxStrStar6 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBoxStrStar7 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBoxStrCannon = new SM64_Diagnostic.Controls.IntPictureBox();
             this.labelStrCoinRecord = new System.Windows.Forms.Label();
             this.textBoxStrCoinRecord = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBox2 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBox3 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBox4 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBox5 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBox6 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBox7 = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.pictureBox8 = new SM64_Diagnostic.Controls.IntPictureBox();
             this.radioButtonFileD = new System.Windows.Forms.RadioButton();
             this.radioButtonFileC = new System.Windows.Forms.RadioButton();
             this.radioButtonFileB = new System.Windows.Forms.RadioButton();
             this.radioButtonFileA = new System.Windows.Forms.RadioButton();
             this.tabPageMap = new System.Windows.Forms.TabPage();
             this.splitContainerMap = new System.Windows.Forms.SplitContainer();
+            this.checkBoxMapShowFloor = new System.Windows.Forms.CheckBox();
             this.checkBoxMapShowCamera = new System.Windows.Forms.CheckBox();
             this.checkBoxMapShowHolp = new System.Windows.Forms.CheckBox();
             this.checkBoxMapShowObj = new System.Windows.Forms.CheckBox();
@@ -164,11 +168,11 @@
             this.labelDisStart = new System.Windows.Forms.Label();
             this.richTextBoxDissasembly = new System.Windows.Forms.RichTextBox();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.checkBoxPuVisible = new System.Windows.Forms.CheckBox();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.labelVersionNumber = new System.Windows.Forms.Label();
-            this.checkBoxMapShowFloor = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObjClone)).BeginInit();
@@ -276,7 +280,7 @@
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(968, 324);
+            this.groupBoxObjects.Size = new System.Drawing.Size(968, 326);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -326,6 +330,7 @@
             // 
             this.pictureBoxObjClone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxObjClone.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxObjClone.Image")));
+            this.pictureBoxObjClone.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxObjClone.Location = new System.Drawing.Point(738, 17);
             this.pictureBoxObjClone.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxObjClone.Name = "pictureBoxObjClone";
@@ -349,6 +354,7 @@
             // 
             this.pictureBoxObjTrash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxObjTrash.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxObjTrash.Image")));
+            this.pictureBoxObjTrash.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxObjTrash.Location = new System.Drawing.Point(765, 17);
             this.pictureBoxObjTrash.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxObjTrash.Name = "pictureBoxObjTrash";
@@ -377,7 +383,7 @@
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 65);
             this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 254);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 256);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -626,6 +632,7 @@
             this.pictureBoxObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxObject.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxObject.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxObject.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxObject.MaximumSize = new System.Drawing.Size(133, 130);
@@ -684,6 +691,7 @@
             this.pictureBoxMario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMario.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxMario.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxMario.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxMario.MaximumSize = new System.Drawing.Size(133, 130);
@@ -731,6 +739,7 @@
             this.pictureBoxHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxHud.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxHud.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxHud.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxHud.MaximumSize = new System.Drawing.Size(133, 130);
@@ -778,6 +787,7 @@
             this.pictureBoxCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxCamera.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxCamera.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxCamera.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxCamera.MaximumSize = new System.Drawing.Size(133, 130);
@@ -894,6 +904,7 @@
             this.pictureBoxDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxDebug.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxDebug.Location = new System.Drawing.Point(2, 2);
             this.pictureBoxDebug.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxDebug.MaximumSize = new System.Drawing.Size(133, 130);
@@ -1111,6 +1122,7 @@
             this.pictureBoxMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMisc.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxMisc.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxMisc.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxMisc.MaximumSize = new System.Drawing.Size(133, 130);
@@ -1181,6 +1193,7 @@
             // pictureBoxStrStar1
             // 
             this.pictureBoxStrStar1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxStrStar1.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxStrStar1.Name = "pictureBoxStrStar1";
             this.pictureBoxStrStar1.Size = new System.Drawing.Size(59, 50);
@@ -1190,6 +1203,7 @@
             // pictureBoxStrStar2
             // 
             this.pictureBoxStrStar2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar2.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxStrStar2.Location = new System.Drawing.Point(68, 3);
             this.pictureBoxStrStar2.Name = "pictureBoxStrStar2";
             this.pictureBoxStrStar2.Size = new System.Drawing.Size(59, 50);
@@ -1199,6 +1213,7 @@
             // pictureBoxStrStar3
             // 
             this.pictureBoxStrStar3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar3.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxStrStar3.Location = new System.Drawing.Point(133, 3);
             this.pictureBoxStrStar3.Name = "pictureBoxStrStar3";
             this.pictureBoxStrStar3.Size = new System.Drawing.Size(59, 50);
@@ -1208,6 +1223,7 @@
             // pictureBoxStrStar4
             // 
             this.pictureBoxStrStar4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar4.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxStrStar4.Location = new System.Drawing.Point(198, 3);
             this.pictureBoxStrStar4.Name = "pictureBoxStrStar4";
             this.pictureBoxStrStar4.Size = new System.Drawing.Size(59, 50);
@@ -1217,6 +1233,7 @@
             // pictureBoxStrStar5
             // 
             this.pictureBoxStrStar5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar5.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxStrStar5.Location = new System.Drawing.Point(263, 3);
             this.pictureBoxStrStar5.Name = "pictureBoxStrStar5";
             this.pictureBoxStrStar5.Size = new System.Drawing.Size(59, 50);
@@ -1226,6 +1243,7 @@
             // pictureBoxStrStar6
             // 
             this.pictureBoxStrStar6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar6.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxStrStar6.Location = new System.Drawing.Point(328, 3);
             this.pictureBoxStrStar6.Name = "pictureBoxStrStar6";
             this.pictureBoxStrStar6.Size = new System.Drawing.Size(59, 50);
@@ -1235,6 +1253,7 @@
             // pictureBoxStrStar7
             // 
             this.pictureBoxStrStar7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrStar7.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxStrStar7.Location = new System.Drawing.Point(393, 3);
             this.pictureBoxStrStar7.Name = "pictureBoxStrStar7";
             this.pictureBoxStrStar7.Size = new System.Drawing.Size(59, 50);
@@ -1244,6 +1263,7 @@
             // pictureBoxStrCannon
             // 
             this.pictureBoxStrCannon.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxStrCannon.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBoxStrCannon.Location = new System.Drawing.Point(458, 3);
             this.pictureBoxStrCannon.Name = "pictureBoxStrCannon";
             this.pictureBoxStrCannon.Size = new System.Drawing.Size(59, 50);
@@ -1298,6 +1318,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(59, 50);
@@ -1307,6 +1328,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox2.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBox2.Location = new System.Drawing.Point(68, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(59, 50);
@@ -1316,6 +1338,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox3.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBox3.Location = new System.Drawing.Point(133, 3);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(59, 50);
@@ -1325,6 +1348,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox4.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBox4.Location = new System.Drawing.Point(198, 3);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(59, 50);
@@ -1334,6 +1358,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox5.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBox5.Location = new System.Drawing.Point(263, 3);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(59, 50);
@@ -1343,6 +1368,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox6.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBox6.Location = new System.Drawing.Point(328, 3);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(59, 50);
@@ -1352,6 +1378,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox7.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBox7.Location = new System.Drawing.Point(393, 3);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(59, 50);
@@ -1361,6 +1388,7 @@
             // pictureBox8
             // 
             this.pictureBox8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox8.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.pictureBox8.Location = new System.Drawing.Point(458, 3);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(59, 50);
@@ -1458,6 +1486,16 @@
             this.splitContainerMap.SplitterDistance = 318;
             this.splitContainerMap.SplitterWidth = 3;
             this.splitContainerMap.TabIndex = 16;
+            // 
+            // checkBoxMapShowFloor
+            // 
+            this.checkBoxMapShowFloor.AutoSize = true;
+            this.checkBoxMapShowFloor.Location = new System.Drawing.Point(5, 122);
+            this.checkBoxMapShowFloor.Name = "checkBoxMapShowFloor";
+            this.checkBoxMapShowFloor.Size = new System.Drawing.Size(97, 17);
+            this.checkBoxMapShowFloor.TabIndex = 19;
+            this.checkBoxMapShowFloor.Text = "Show Floor Tri.";
+            this.checkBoxMapShowFloor.UseVisualStyleBackColor = true;
             // 
             // checkBoxMapShowCamera
             // 
@@ -1606,7 +1644,7 @@
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(642, 172);
+            this.glControlMap.Size = new System.Drawing.Size(644, 172);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -1723,8 +1761,8 @@
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1801,6 +1839,7 @@
             // 
             // tabPageOptions
             // 
+            this.tabPageOptions.Controls.Add(this.checkBoxPuVisible);
             this.tabPageOptions.Controls.Add(this.checkBoxUseRomHack);
             this.tabPageOptions.Controls.Add(this.checkBox2);
             this.tabPageOptions.Controls.Add(this.checkBoxStartSlotIndexOne);
@@ -1810,7 +1849,18 @@
             this.tabPageOptions.Size = new System.Drawing.Size(960, 208);
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
-            this.tabPageOptions.Click += new System.EventHandler(this.tabPageOptions_Click);
+            // 
+            // checkBoxPuVisible
+            // 
+            this.checkBoxPuVisible.AutoSize = true;
+            this.checkBoxPuVisible.Location = new System.Drawing.Point(3, 44);
+            this.checkBoxPuVisible.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxPuVisible.Name = "checkBoxPuVisible";
+            this.checkBoxPuVisible.Size = new System.Drawing.Size(177, 17);
+            this.checkBoxPuVisible.TabIndex = 3;
+            this.checkBoxPuVisible.Text = "Enable PU Visibility (ROM hack)";
+            this.checkBoxPuVisible.UseVisualStyleBackColor = true;
+            this.checkBoxPuVisible.CheckedChanged += new System.EventHandler(this.checkBoxPuVisible_CheckedChanged);
             // 
             // checkBoxUseRomHack
             // 
@@ -1826,7 +1876,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(3, 42);
+            this.checkBox2.Location = new System.Drawing.Point(3, 65);
             this.checkBox2.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(101, 17);
@@ -1856,16 +1906,6 @@
             this.labelVersionNumber.TabIndex = 5;
             this.labelVersionNumber.Text = "version";
             this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // checkBoxMapShowFloor
-            // 
-            this.checkBoxMapShowFloor.AutoSize = true;
-            this.checkBoxMapShowFloor.Location = new System.Drawing.Point(5, 122);
-            this.checkBoxMapShowFloor.Name = "checkBoxMapShowFloor";
-            this.checkBoxMapShowFloor.Size = new System.Drawing.Size(97, 17);
-            this.checkBoxMapShowFloor.TabIndex = 19;
-            this.checkBoxMapShowFloor.Text = "Show Floor Tri.";
-            this.checkBoxMapShowFloor.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -1969,7 +2009,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelObjects;
         private System.Windows.Forms.Button buttonPauseResume;
         private System.Windows.Forms.SplitContainer splitContainerMain;
-        private System.Windows.Forms.PictureBox pictureBoxObjTrash;
+        private IntPictureBox pictureBoxObjTrash;
         private System.Windows.Forms.CheckBox checkBoxObjLockLabels;
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage tabPageObjects;
@@ -1982,12 +2022,12 @@
         private System.Windows.Forms.Label labelObjSlotPos;
         private System.Windows.Forms.Label labelObjBhv;
         private System.Windows.Forms.Panel panelObjectBorder;
-        private System.Windows.Forms.PictureBox pictureBoxObject;
+        private IntPictureBox pictureBoxObject;
         private System.Windows.Forms.Label labelObjAddValue;
         private System.Windows.Forms.TabPage tabPageMario;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMario;
         private System.Windows.Forms.Panel panelMarioBorder;
-        private System.Windows.Forms.PictureBox pictureBoxMario;
+        private IntPictureBox pictureBoxMario;
         private System.Windows.Forms.TabPage tabPageExpressions;
         private System.Windows.Forms.CheckBox checkBoxAbsoluteAddress;
         private System.Windows.Forms.Button buttonOtherDelete;
@@ -2008,7 +2048,7 @@
         private System.Windows.Forms.Button buttonObjClone;
         private System.Windows.Forms.Button buttonObjGoTo;
         private System.Windows.Forms.Button buttonObjUnload;
-        private System.Windows.Forms.PictureBox pictureBoxObjClone;
+        private IntPictureBox pictureBoxObjClone;
         private System.Windows.Forms.Label labelMapPuValue;
         private System.Windows.Forms.Label labelMapSubName;
         private System.Windows.Forms.Label labelMapQpu;
@@ -2035,10 +2075,10 @@
         private System.Windows.Forms.TabPage tabPageCamera;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelHud;
         private System.Windows.Forms.Panel panelHudBorder;
-        private System.Windows.Forms.PictureBox pictureBoxHud;
+        private IntPictureBox pictureBoxHud;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCamera;
         private System.Windows.Forms.Panel panelCameraBorder;
-        private System.Windows.Forms.PictureBox pictureBoxCamera;
+        private IntPictureBox pictureBoxCamera;
         private System.Windows.Forms.CheckBox checkBoxMapShowCamera;
         private System.Windows.Forms.TrackBar trackBarObjSlotSize;
         private System.Windows.Forms.TabPage tabPageDebug;
@@ -2052,10 +2092,10 @@
         private System.Windows.Forms.RadioButton radioButtonDbgObjCnt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelDebugBorder;
-        private System.Windows.Forms.PictureBox pictureBoxDebug;
+        private IntPictureBox pictureBoxDebug;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMisc;
         private System.Windows.Forms.Panel panelMiscBorder;
-        private System.Windows.Forms.PictureBox pictureBoxMisc;
+        private IntPictureBox pictureBoxMisc;
         private System.Windows.Forms.TabPage tabPageStars;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.RadioButton radioButtonFileD;
@@ -2064,26 +2104,26 @@
         private System.Windows.Forms.RadioButton radioButtonFileA;
         private System.Windows.Forms.Panel panelStrCourse;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCourse;
-        private System.Windows.Forms.PictureBox pictureBoxStrStar1;
-        private System.Windows.Forms.PictureBox pictureBoxStrStar2;
-        private System.Windows.Forms.PictureBox pictureBoxStrStar3;
-        private System.Windows.Forms.PictureBox pictureBoxStrStar4;
-        private System.Windows.Forms.PictureBox pictureBoxStrStar5;
-        private System.Windows.Forms.PictureBox pictureBoxStrStar6;
-        private System.Windows.Forms.PictureBox pictureBoxStrStar7;
-        private System.Windows.Forms.PictureBox pictureBoxStrCannon;
+        private IntPictureBox pictureBoxStrStar1;
+        private IntPictureBox pictureBoxStrStar2;
+        private IntPictureBox pictureBoxStrStar3;
+        private IntPictureBox pictureBoxStrStar4;
+        private IntPictureBox pictureBoxStrStar5;
+        private IntPictureBox pictureBoxStrStar6;
+        private IntPictureBox pictureBoxStrStar7;
+        private IntPictureBox pictureBoxStrCannon;
         private System.Windows.Forms.Label labelStrCoinRecord;
         private System.Windows.Forms.TextBox textBoxStrCoinRecord;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox8;
+        private IntPictureBox pictureBox1;
+        private IntPictureBox pictureBox2;
+        private IntPictureBox pictureBox3;
+        private IntPictureBox pictureBox4;
+        private IntPictureBox pictureBox5;
+        private IntPictureBox pictureBox6;
+        private IntPictureBox pictureBox7;
+        private IntPictureBox pictureBox8;
         private System.Windows.Forms.GroupBox groupBoxPuController;
         private System.Windows.Forms.Button buttonPuConZpPu;
         private System.Windows.Forms.Button buttonPuConZpQpu;
@@ -2100,6 +2140,7 @@
         private System.Windows.Forms.Button buttonPuConXpPu;
         private System.Windows.Forms.Label labelSlotSize;
         private System.Windows.Forms.CheckBox checkBoxMapShowFloor;
+        private CheckBox checkBoxPuVisible;
     }
 }
 

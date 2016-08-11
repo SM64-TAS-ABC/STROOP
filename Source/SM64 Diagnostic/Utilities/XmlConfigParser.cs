@@ -561,7 +561,13 @@ namespace SM64_Diagnostic.Utilities
                         string name = element.Attribute(XName.Get("name")).Value;
                         var watchVars = new List<WatchVariable>();
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
-                            watchVars.Add(GetWatchVariableFromElement(subElement));
+                        {
+                            var watchVar = GetWatchVariableFromElement(subElement);
+                            watchVar.OtherOffset = (subElement.Attribute(XName.Get("objectOffset")) != null) ?
+                                bool.Parse(subElement.Attribute(XName.Get("objectOffset")).Value) : false;
+
+                            watchVars.Add(watchVar);
+                        }
 
                         if (assoc.BehaviorAssociations.ContainsKey(behaviorAddress))
                             throw new Exception("More than one behavior address was defined.");

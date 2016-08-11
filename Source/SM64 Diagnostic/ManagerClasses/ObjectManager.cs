@@ -22,7 +22,6 @@ namespace SM64_Diagnostic.ManagerClasses
         DataContainer _disToMario;
         DataContainer _latDisToMario;
         DataContainer _rngCalls;
-        DataContainer _activeObjCnt;
 
         object _watchVarLocker = new object();
 
@@ -33,28 +32,22 @@ namespace SM64_Diagnostic.ManagerClasses
         bool _unclone = false;
 
         #region Fields
-        public List<WatchVariable> BehaviorWatchVariables
+        public void SetBehaviorWatchVariables(List<WatchVariable> value, Color color)
         {
-            get
+            lock (_watchVarLocker)
             {
-                return _behaviorDataControls.Select(data => data.WatchVariable).ToList();
-            }
-            set
-            {
-                lock (_watchVarLocker)
-                {
-                    // Remove old watchVars from list
-                    foreach (var watchVar in _behaviorDataControls)
-                        _objectDataControls.Remove(watchVar);
-                    _behaviorDataControls.Clear();
+                // Remove old watchVars from list
+                foreach (var watchVar in _behaviorDataControls)
+                    _objectDataControls.Remove(watchVar);
+                _behaviorDataControls.Clear();
 
-                    // Add new watchVars
-                    foreach (var watchVar in value)
-                    {
-                        var newWatchVarControl = new WatchVariableControl(_stream, watchVar);
-                        _behaviorDataControls.Add(newWatchVarControl);
-                        _objectDataControls.Add(newWatchVarControl);
-                    }
+                // Add new watchVars
+                foreach (var watchVar in value)
+                {
+                    var newWatchVarControl = new WatchVariableControl(_stream, watchVar);
+                    newWatchVarControl.Control.BackColor = color;
+                    _behaviorDataControls.Add(newWatchVarControl);
+                    _objectDataControls.Add(newWatchVarControl);
                 }
             }
         }
@@ -70,7 +63,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (_currentAddress != value)
                 {
                     _currentAddress = value;
-                    _objGui.ObjAddressLabel.Text = "0x" + _currentAddress.ToString("X8");
+                    _objGui.ObjAddressLabelValue.Text = "0x" + _currentAddress.ToString("X8");
                 }
             }
         }
@@ -145,7 +138,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (_objGui.ObjectBorderPanel.BackColor != value)
                 {
                     _objGui.ObjectBorderPanel.BackColor = value;
-                    _objGui.ObjectImagePictureBox.BackColor = ControlPaint.Light(ControlPaint.Light(ControlPaint.Light(value)));
+                    _objGui.ObjectImagePictureBox.BackColor = value.Lighten(0.5);
                 }
             }
             get
@@ -169,8 +162,6 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public int ActiveObjectCount = 0;
-
         #endregion
 
         public ObjectManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, List<WatchVariable> objectData, ObjectDataGui objectGui)
@@ -192,6 +183,8 @@ namespace SM64_Diagnostic.ManagerClasses
                 objectGui.ObjectFlowLayout.Controls.Add(watchControl.Control);
                 _objectDataControls.Add(watchControl);
             }
+            _objGui.ObjAddressLabelValue.Click += ObjAddressLabel_Click;
+            _objGui.ObjAddressLabel.Click += ObjAddressLabel_Click;
 
             // Add distance to mario watchvar
             _disToMario = new DataContainer("Dis. to Mario");
@@ -205,15 +198,18 @@ namespace SM64_Diagnostic.ManagerClasses
             _rngCalls = new DataContainer("Rng Calls");
             objectGui.ObjectFlowLayout.Controls.Add(_rngCalls.Control);
 
-            // Add active object count watchvar
-            _activeObjCnt = new DataContainer("Active Objects");
-            objectGui.ObjectFlowLayout.Controls.Add(_activeObjCnt.Control);
-
             // Register buttons
             objectGui.CloneButton.Click += CloneButton_Click;
             objectGui.UnloadButton.Click += UnloadButton_Click;
             objectGui.MoveMarioToButton.Click += MoveMarioToButton_Click;
             objectGui.MoveToMarioButton.Click += MoveToMarioButton_Click;
+        }
+
+        private void ObjAddressLabel_Click(object sender, EventArgs e)
+        {
+            var variableInfo = new VariableViewerForm("Object Address", "Object",
+                String.Format("0x{0:X8}", _currentAddress), String.Format("0x{0:X8}", _currentAddress + _stream.ProcessMemoryOffset));
+            variableInfo.ShowDialog();
         }
 
         private void MoveToMarioButton_Click(object sender, EventArgs e)
@@ -283,7 +279,6 @@ namespace SM64_Diagnostic.ManagerClasses
             // Update data container text
             _latDisToMario.Text = latDisToMario.ToString();
             _disToMario.Text = disToMario.ToString();
-            _activeObjCnt.Text = ActiveObjectCount.ToString();
             _rngCalls.Text = GetNumRngCalls().ToString();
         }
 

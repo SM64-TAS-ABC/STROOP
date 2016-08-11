@@ -300,6 +300,11 @@ namespace SM64_Diagnostic.Extensions
             return StringToType[str];
         }
 
+        public static string GetTypeString(this WatchVariable watchVar)
+        {
+            return StringToType.First(t => t.Value == watchVar.Type).Key;
+        }
+
         public static Dictionary<Type, int> TypeSize = new Dictionary<Type, int>()
         {
             {typeof(byte), 1},
