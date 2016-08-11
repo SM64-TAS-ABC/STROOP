@@ -44,7 +44,7 @@ namespace SM64_Diagnostic.ManagerClasses
             variableTable.Controls.Insert(_rngPerFrame.Control, 3);
 
             // Add active object count watchvar
-            _activeObjCnt = new DataContainer("Active Objects");
+            _activeObjCnt = new DataContainer("Num. Loaded Objs.");
             variableTable.Controls.Add(_activeObjCnt.Control);
 
             puController.Controls["buttonPuConHome"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.Home);

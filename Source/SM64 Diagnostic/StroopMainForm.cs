@@ -478,6 +478,11 @@ namespace SM64_Diagnostic
             _sm64Stream.WriteRam(new byte[] { 3 }, _config.Debug.Setting);
         }
 
+        private void checkBoxMoveCamWithPu_CheckedChanged(object sender, EventArgs e)
+        {
+            _config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
+        }
+
         private void radioButtonDbgFxInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on

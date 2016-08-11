@@ -47,17 +47,34 @@ namespace SM64_Diagnostic.Utilities
             marioY = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.YOffset, 4), 0);
             marioZ = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.ZOffset, 4), 0);
 
+            // Get Camera Position
+            float cameraX, cameraY, cameraZ;
+            cameraX = BitConverter.ToSingle(stream.ReadRam(config.CameraX, 4), 0);
+            cameraY = BitConverter.ToSingle(stream.ReadRam(config.CameraY, 4), 0);
+            cameraZ = BitConverter.ToSingle(stream.ReadRam(config.CameraZ, 4), 0);
+
             // Calculate new coordinates
             float newMarioX, newMarioY, newMarioZ;
             newMarioX = marioX + newPuX * PuSize;
             newMarioY = marioY + newPuY * PuSize;
             newMarioZ = marioZ + newPuZ * PuSize;
 
-            // Set new mario position
+            float newCamX, newCamY, newCamZ;
+            newCamX = cameraX + newPuX * PuSize;
+            newCamY = cameraY + newPuY * PuSize;
+            newCamZ = cameraZ + newPuZ * PuSize;
+
+            // Set new mario + camera position
             bool success = true;
             success &= stream.WriteRam(BitConverter.GetBytes(newMarioX), marioAddress + config.Mario.XOffset);
             success &= stream.WriteRam(BitConverter.GetBytes(newMarioY), marioAddress + config.Mario.YOffset);
             success &= stream.WriteRam(BitConverter.GetBytes(newMarioZ), marioAddress + config.Mario.ZOffset);
+            if (config.MoveCameraWithPu)
+            {
+                success &= stream.WriteRam(BitConverter.GetBytes(newCamX), config.CameraX);
+                success &= stream.WriteRam(BitConverter.GetBytes(newCamY), config.CameraY);
+                success &= stream.WriteRam(BitConverter.GetBytes(newCamZ), config.CameraZ);
+            }
             return success;
         }
 
@@ -72,17 +89,35 @@ namespace SM64_Diagnostic.Utilities
             marioY = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.YOffset, 4), 0);
             marioZ = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.ZOffset, 4), 0);
 
+
+            // Get Camera Position
+            float cameraX, cameraY, cameraZ;
+            cameraX = BitConverter.ToSingle(stream.ReadRam(config.CameraX, 4), 0);
+            cameraY = BitConverter.ToSingle(stream.ReadRam(config.CameraY, 4), 0);
+            cameraZ = BitConverter.ToSingle(stream.ReadRam(config.CameraZ, 4), 0);
+
             // Calculate new coordinates
             float newMarioX, newMarioY, newMarioZ;
             newMarioX = PuUtilities.GetRelativePuPosition(marioX) + newPuX * PuSize;
             newMarioY = PuUtilities.GetRelativePuPosition(marioY) + newPuY * PuSize;
             newMarioZ = PuUtilities.GetRelativePuPosition(marioZ) + newPuZ * PuSize;
 
-            // Set new mario position
+            float newCamX, newCamY, newCamZ;
+            newCamX = PuUtilities.GetRelativePuPosition(cameraX) + newPuX * PuSize;
+            newCamY = PuUtilities.GetRelativePuPosition(cameraY) + newPuY * PuSize;
+            newCamZ = PuUtilities.GetRelativePuPosition(cameraZ) + newPuZ * PuSize;
+
+            // Set new mario + camera position
             bool success = true;
             success &= stream.WriteRam(BitConverter.GetBytes(newMarioX), marioAddress + config.Mario.XOffset);
             success &= stream.WriteRam(BitConverter.GetBytes(newMarioY), marioAddress + config.Mario.YOffset);
             success &= stream.WriteRam(BitConverter.GetBytes(newMarioZ), marioAddress + config.Mario.ZOffset);
+            if (config.MoveCameraWithPu)
+            {
+                success &= stream.WriteRam(BitConverter.GetBytes(newCamX), config.CameraX);
+                success &= stream.WriteRam(BitConverter.GetBytes(newCamY), config.CameraY);
+                success &= stream.WriteRam(BitConverter.GetBytes(newCamZ), config.CameraZ);
+            }
             return success;
         }
     }
