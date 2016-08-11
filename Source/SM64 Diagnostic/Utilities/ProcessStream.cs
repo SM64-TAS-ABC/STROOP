@@ -281,6 +281,7 @@ namespace SM64_Diagnostic.Utilities
                 address = (uint)LittleEndianessAddressing.AddressFix((int)address, length);
 
             // Attempt to pause the game before writing 
+            bool preSuspended = IsSuspended;
             if (safeWrite)
                 Suspend();
 
@@ -288,7 +289,7 @@ namespace SM64_Diagnostic.Utilities
             bool result =  WriteProcessMemory((int)address, writeBytes, absoluteAddress);
 
             // Resume stream 
-            if (safeWrite)
+            if (safeWrite && !preSuspended)
                 Resume();
 
             return result;

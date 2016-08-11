@@ -13,7 +13,7 @@ using SM64_Diagnostic.Structs;
 
 namespace SM64_Diagnostic.ManagerClasses
 {
-    class MapGraphicsControl
+    public class MapGraphics
     {
         int _mapTex = -1;
         int _mapBackgroundTex = -1;
@@ -37,7 +37,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public MapGraphicsControl(GLControl control)
+        public MapGraphics(GLControl control)
         {
             Control = control;
         }
@@ -85,14 +85,14 @@ namespace SM64_Diagnostic.ManagerClasses
             DrawTexture(_mapTex, new PointF(MapView.X + MapView.Width / 2, MapView.Y + MapView.Height / 2), MapView.Size);
 
             // Loop through and draw all map objects
-            foreach (var mapObj in _mapObjects.OrderBy((mapObj) => mapObj.Y + mapObj.Depth * 65536d))
+            foreach (var mapObj in _mapObjects.OrderBy((mapObj) => mapObj.DepthScore))
             {
                 // Make sure we want to show the map object
                 if (!mapObj.Draw)
                     continue;
 
                 // Draw the map object
-                DrawTexture(mapObj.TextureId, mapObj.LocationOnContol, ScaleImageSize(mapObj.Image.Size, _renderIconSize), mapObj.Rotation);
+                mapObj.DrawOnControl(this);
             }
 
             Control.SwapBuffers();
@@ -109,11 +109,12 @@ namespace SM64_Diagnostic.ManagerClasses
             _renderIconSize = Math.Min(Control.Height, Control.Width) / 500f * IconSize;
         }
         
-        private SizeF ScaleImageSize(Size imageSize, float desiredSize)
+        public SizeF ScaleImageSize(Size imageSize, float desiredSize)
         {
             float scale = Math.Max(imageSize.Height / desiredSize, imageSize.Width / desiredSize);
             return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
         }
+
         private void SetupViewport()
         {
             int w = Control.Width;
@@ -194,7 +195,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        static void DrawTexture(int texId, PointF loc, SizeF size, float angle = 0)
+        public void DrawTexture(int texId, PointF loc, SizeF size, float angle = 0)
         {
             // Place and rotate texture to correct location on control
             GL.LoadIdentity();
