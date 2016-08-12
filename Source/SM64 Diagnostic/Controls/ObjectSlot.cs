@@ -264,7 +264,8 @@ namespace SM64_Diagnostic
         {
             OnClick?.Invoke(sender, e);
 
-            MouseState = MouseStateType.Down; UpdateGui();
+            MouseState = MouseStateType.Down;
+            UpdateGui();
             BorderPanel.Refresh();
 
             // Start the drag and drop but setting the object slot index in Drag and Drop data

@@ -66,7 +66,7 @@ namespace SM64_Diagnostic.ManagerClasses
             Control.MakeCurrent();
 
             // Set default background color (clear drawing area)
-            GL.Clear(ClearBufferMask.ColorBufferBit);
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
             GL.MatrixMode(MatrixMode.Modelview);
 

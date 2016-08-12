@@ -87,18 +87,18 @@ namespace SM64_Diagnostic.ManagerClasses
             cameraRot = (float)(((UInt16)(BitConverter.ToUInt32(_stream.ReadRam(_config.CameraRot, 4), 0))) / 65536f * 360f);
 
             // Update floor triangle
-            UInt32 floorTriangle = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.FloorTriangleOffset, 4), 0);
+            UInt32 floorTriangle = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.FloorTriangleOffset, 4), 0);
             if (floorTriangle != 0x00)
             {
-                UInt16 x1 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.X1, 2), 0);
-                UInt16 y1 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Y1, 2), 0);
-                UInt16 z1 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Z1, 2), 0);
-                UInt16 x2 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.X2, 2), 0);
-                UInt16 y2 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Y2, 2), 0);
-                UInt16 z2 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Z2, 2), 0);
-                UInt16 x3 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.X3, 2), 0);
-                UInt16 y3 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Y3, 2), 0);
-                UInt16 z3 = BitConverter.ToUInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Z3, 2), 0);
+                Int16 x1 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.X1, 2), 0);
+                Int16 y1 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Y1, 2), 0);
+                Int16 z1 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Z1, 2), 0);
+                Int16 x2 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.X2, 2), 0);
+                Int16 y2 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Y2, 2), 0);
+                Int16 z2 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Z2, 2), 0);
+                Int16 x3 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.X3, 2), 0);
+                Int16 y3 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Y3, 2), 0);
+                Int16 z3 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Z3, 2), 0);
                 _mapManager.FloorTriangleMapObject.X1 = x1;
                 _mapManager.FloorTriangleMapObject.Z1 = z1;
                 _mapManager.FloorTriangleMapObject.X2 = x2;
@@ -129,7 +129,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
             if (floorTriangle != 0x00)
             {
-                float hSpeed = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.HSpeedOffset, 4), 0);
+                float hSpeed = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.HSpeedOffset, 4), 0);
                 float normY = BitConverter.ToSingle(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.NormY, 4), 0);
                 _deFactoSpeed.Text = (hSpeed * normY).ToString();
             }

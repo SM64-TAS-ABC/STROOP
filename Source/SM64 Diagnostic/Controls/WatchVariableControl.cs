@@ -123,6 +123,22 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
+        public Color Color
+        {
+            get
+            {
+                return Control.BackColor;
+            }
+            set
+            {
+                Control.BackColor = value;
+                if (!_watchVar.IsBool)
+                    _textBoxValue.BackColor = Color;
+                else
+                    _checkBoxBool.BackColor = Color;
+            }
+        }
+
         public Control Control
         {
             get

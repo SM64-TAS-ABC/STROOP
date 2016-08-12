@@ -29,13 +29,16 @@ namespace SM64_Diagnostic.Structs
 
         public override void DrawOnControl(MapGraphics graphics)
         {
+            GL.BindTexture(TextureTarget.Texture2D, -1);
+            GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
+            GL.Color4(1, 1, 0, 0.8f);
             GL.Begin(PrimitiveType.Triangles);
-            GL.Color4(1, 0, 0, 0.5);
-            GL.Vertex3(P1OnControl.X, 0, P1OnControl.Y);
-            GL.Vertex3(P2OnControl.X, 0, P2OnControl.Y);
-            GL.Vertex3(P3OnControl.X, 0, P3OnControl.Y);
+            GL.Vertex2(P1OnControl.X, P1OnControl.Y);
+            GL.Vertex2(P2OnControl.X, P2OnControl.Y);
+            GL.Vertex2(P3OnControl.X, P3OnControl.Y);
             GL.End();
+            GL.Color4(1, 1, 1, 1.0f);
         }
 
         public override void Load(MapGraphics graphics)

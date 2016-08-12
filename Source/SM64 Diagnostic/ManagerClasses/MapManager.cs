@@ -97,7 +97,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _holpMapObj = new MapObject(objAssoc.HolpImage, 2);
 
             _cameraMapObj = new MapObject(objAssoc.CameraMapImage, 1);
-            _floorTriangleMapObj = new TriangleMapObject(0) ;
+            _floorTriangleMapObj = new TriangleMapObject(3);
         }
 
         public void Load()
@@ -230,6 +230,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _floorTriangleMapObj.P1OnControl = CalculateLocationOnControl(new PointF(trianglePuX1, trianglePuZ1), mapView);
             _floorTriangleMapObj.P2OnControl = CalculateLocationOnControl(new PointF(trianglePuX2, trianglePuZ2), mapView);
             _floorTriangleMapObj.P3OnControl = CalculateLocationOnControl(new PointF(trianglePuX3, trianglePuZ3), mapView);
+            _floorTriangleMapObj.Draw = _floorTriangleMapObj.Show & _mapGui.MapShowFloorTriangle.Checked;
   
 
             // Calculate object slot's cooridnates
