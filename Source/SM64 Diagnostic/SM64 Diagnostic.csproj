@@ -178,7 +178,7 @@
     <EmbeddedResource Include="Schemas\ConfigSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="Hacks\PuVisible.hck">
+    <Content Include="Resources\Hacks\PuVisible.hck">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="VariableViewerForm.resx">

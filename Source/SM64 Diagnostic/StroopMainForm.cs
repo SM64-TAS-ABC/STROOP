@@ -17,7 +17,7 @@ namespace SM64_Diagnostic
 {
     public partial class StroopMainForm : Form
     {
-        const string _version = "v0.2.1";
+        const string _version = "v0.2.2";
         ProcessStream _sm64Stream = null;
         Config _config;
 
@@ -551,7 +551,7 @@ namespace SM64_Diagnostic
 
         private void checkBoxPuVisible_CheckedChanged(object sender, EventArgs e)
         {
-            HackParser.LoadHack(_sm64Stream, @"Hacks/PuVisible.hck");
+            HackParser.LoadHack(_sm64Stream, @"Resources/Hacks/PuVisible.hck");
         }
 
         private void tabControlMain_DragEnter(object sender, DragEventArgs e)

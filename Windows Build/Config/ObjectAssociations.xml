@@ -72,6 +72,7 @@
   <Object behaviorScriptAddress="0x130001F4" name="King Bob-omb">
     <Image path="King Bob-omb.png"/>
 	<MapImage path="King Bob-omb Top.png" rotates="true"/>
+    <Data type="uint32" address="0x020C" objectOffset="true" useHex="true">Behavior Script Address</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000254" name="King Bob-omb Anchor">
     <Image path="King Bob-omb Anchor.png"/>
@@ -112,6 +113,8 @@
   <Object behaviorScriptAddress="0x13000528" name="Chuckya">
     <Image path="Chuckya.png"/>
 	<MapImage path="Chuckya Top.png" rotates="true"/>
+    <Data type="byte" address="0xFC" objectOffset="true">Stopping Timer</Data>
+    <Data type="byte" address="0x0150" objectOffset="true">State</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000584" name="Chuckya Anchor">
     <Image path="Chuckya Anchor.png"/>
@@ -750,6 +753,13 @@
   <Object behaviorScriptAddress="0x13002B5C" name="Scuttlebug">
     <Image path="Scuttlebug.png"/>
 	<MapImage path="Scuttlebug Top.png" rotates="true"/>
+    <Data type="byte" address="0xEC" objectOffset="true">State</Data>
+    <Data type="byte" address="0xF8" objectOffset="true" isBool="true">Lunging</Data>
+    <Data type="byte" address="0xFC" objectOffset="true">Lunging Timer</Data>
+    <Data type="byte" address="0x0154" objectOffset="true">Timer</Data>
+    <Data type="float" address="0x0164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x0168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x016C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002BA0" name="Scuttlebug Spawner">
     <Image path="Scuttlebug Spawner.png"/>
@@ -881,6 +891,12 @@
   <Object behaviorScriptAddress="0x13003174" name="Bob-omb">
     <Image path="Bob-omb.png"/>
 	<MapImage path="Bob-omb Top.png" rotates="true"/>
+    <Data type="byte" address="0xF0" objectOffset="true" isBool="true">Blinking</Data>
+    <Data type="uint32" address="0xF4" objectOffset="true">Blinking Timer</Data>
+    <Data type="byte" address="0xF8" objectOffset="true" isBool="true">Fuse On</Data>
+    <Data type="uint32" address="0xFC" objectOffset="true">Fuse Timer</Data>
+    <Data type="byte" address="0x014C" objectOffset="true">State</Data>
+    <Data type="uint32" address="0x0154" objectOffset="true">~Bloat Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130031AC" name="Bob-omb Fuse Smoke">
     <Image path="Bob-omb Fuse Smoke.png"/>
@@ -1259,6 +1275,15 @@
   <Object behaviorScriptAddress="0x130046DC" name="Fly Guy">
     <Image path="Fly Guy.png"/>
 	<MapImage path="Fly Guy Top.png" rotates="true"/>
+    <Data type="float" address="0xE8" objectOffset="true">Ground Below Y</Data>
+    <Data type="uint32" address="0xF8" objectOffset="true">Timer</Data>
+    <Data type="uint16" address="0x0100" objectOffset="true" isAngle="true">Lunging Ang.</Data>
+    <Data type="uint16" address="0x0104" objectOffset="true" isAngle="true">Lunging V Ang.</Data>
+    <Data type="uint32" address="0x014C" objectOffset="true">State</Data>
+    <Data type="uint32" address="0x0154" objectOffset="true">Timer Af. Lunge</Data>
+    <Data type="float" address="0x0164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x0168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x016C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300472C" name="Goomba">
     <Image path="Goomba.png"/>

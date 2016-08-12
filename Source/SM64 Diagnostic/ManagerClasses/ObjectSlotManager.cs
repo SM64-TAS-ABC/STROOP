@@ -32,7 +32,7 @@ namespace SM64_Diagnostic.ManagerClasses
         List<uint> _toggleMapBehaviors = new List<uint>();
         List<uint> _toggleMapSlots = new List<uint>();
 
-        bool _selectionChanged = false;
+        uint _lastSelectedBehavior = 0;
 
         public uint? SelectedAddress = null;
         public const byte VacantGroup = 0xFF;
@@ -62,7 +62,6 @@ namespace SM64_Diagnostic.ManagerClasses
                 SelectedAddress = selectedObjData.HasValue ? selectedObjData.Value.Address : (uint?) null;
                 _objManager.CurrentAddress = SelectedAddress.Value;
                 _selectedSlot = value;
-                _selectionChanged = true;
             }
         }
 
@@ -154,7 +153,7 @@ namespace SM64_Diagnostic.ManagerClasses
                             var objectData = GetObjectDataFromSlot(slotIndex);
                             if (objectData.HasValue)
                             {
-                                if (!_toggleMapSlots.Contains(objectData.Value.Address))
+                                if (_toggleMapSlots.Contains(objectData.Value.Address))
                                     _toggleMapSlots.Remove(objectData.Value.Address);
                                 else
                                     _toggleMapSlots.Add(objectData.Value.Address);
@@ -381,14 +380,14 @@ namespace SM64_Diagnostic.ManagerClasses
                 // Update object manager image
                 if (SelectedAddress.HasValue && SelectedAddress.Value == currentAddress)
                 {
-                    if (_selectionChanged)
+                    if (_lastSelectedBehavior != behaviorScriptAdd)
                     {
                         _objManager.BackColor = newColor;
                         _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
                         _objManager.Name = ObjectAssoc.GetObjectName(behaviorScriptAdd);
                         _objManager.Image = ObjectSlots[index].Image;
-                        _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorScriptAdd), newColor.Lighten(0.5));
-                        _selectionChanged = false;
+                        _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorScriptAdd), newColor.Lighten(0.8));
+                        _lastSelectedBehavior = behaviorScriptAdd;
                     }
                     int slotPos = objectData.ObjectProcessGroup == VacantGroup ? objectData.VacantSlotIndex.Value : objectData.ProcessIndex;
                     _objManager.SlotIndex = _memoryAddressSlotIndex[currentAddress] + (_config.SlotIndexsFromOne ? 1 : 0);

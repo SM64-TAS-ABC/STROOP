@@ -38,16 +38,20 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 // Remove old watchVars from list
                 foreach (var watchVar in _behaviorDataControls)
+                {
                     _objectDataControls.Remove(watchVar);
+                    _objGui.ObjectFlowLayout.Controls.Remove(watchVar.Control);
+                }
                 _behaviorDataControls.Clear();
 
                 // Add new watchVars
                 foreach (var watchVar in value)
                 {
                     var newWatchVarControl = new WatchVariableControl(_stream, watchVar);
-                    newWatchVarControl.Control.BackColor = color;
+                    newWatchVarControl.Color = color;
                     _behaviorDataControls.Add(newWatchVarControl);
                     _objectDataControls.Add(newWatchVarControl);
+                    _objGui.ObjectFlowLayout.Controls.Add(newWatchVarControl.Control);
                 }
             }
         }
