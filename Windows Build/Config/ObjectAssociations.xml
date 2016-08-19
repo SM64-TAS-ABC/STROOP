@@ -68,6 +68,10 @@
   <Object behaviorScriptAddress="0x130001CC" name="Cap Switch Button">
     <Image path="Cap Switch Button.png"/>
 	<MapImage path="Cap Switch Button Top.png" rotates="true"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Color</Data>
+    <Data type="uint32" address="0x144" objectOffset="true">Identity</Data>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="float" address="0x30" objectOffset="true">Squish</Data>
   </Object>
   <Object behaviorScriptAddress="0x130001F4" name="King Bob-omb">
     <Image path="King Bob-omb.png"/>
@@ -91,6 +95,8 @@
   </Object>
   <Object behaviorScriptAddress="0x130003BC" name="HP Bubble">
     <Image path="HP Bubble.png"/>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
+    <Data type="int32" address="0xF5" objectOffset="true">Squish Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000400" name="Splash Bubble (Under Water)">
     <Image path="Splash Bubble 2.png"/>
@@ -113,8 +119,14 @@
   <Object behaviorScriptAddress="0x13000528" name="Chuckya">
     <Image path="Chuckya.png"/>
 	<MapImage path="Chuckya Top.png" rotates="true"/>
-    <Data type="byte" address="0xFC" objectOffset="true">Stopping Timer</Data>
-    <Data type="byte" address="0x0150" objectOffset="true">State</Data>
+    <Data type="byte" address="0x153" objectOffset="true">State</Data>
+    <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="int32" address="0x9C" mask="0x01" objectOffset="true" isBool="true" invertBool="true">Tangible</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Timer</Data>
+    <Data type="byte" address="0x17B" objectOffset="true">Throwing Phase</Data>
+    <Data type="float" address="0x164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000584" name="Chuckya Anchor">
     <Image path="Chuckya Anchor.png"/>
@@ -160,6 +172,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13000780" name="Warp">
     <Image path="Warp.png"/>
+    <Data type="uint16" address="0x188" objectOffset="true" useHex="true">Destination</Data>
   </Object>
   <Object behaviorScriptAddress="0x130007A0" name="Warp Pipe">
     <Image path="Warp Pipe.png"/>
@@ -170,9 +183,11 @@
   </Object>
   <Object behaviorScriptAddress="0x130007F8" name="Power Star">
     <Image path="Power Star.png"/>
+    <Data type="byte" address="0x188" objectOffset="true">Mission</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300080C" name="Power Star">
     <Image path="Power Star.png"/>
+	<Data type="byte" address="0x188" objectOffset="true">Mission</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000830" name="Blue Coin">
     <Image path="Blue Coin.png"/>
@@ -182,6 +197,16 @@
   </Object>
   <Object behaviorScriptAddress="0x130008EC" name="Coin Spawner">
     <Image path="Coin Ring Spawner.png"/>
+    <Data type="uint32" address="0x144" objectOffset="true">Formation</Data>
+    <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Coins Loaded</Data>
+    <Data type="byte" address="0xF7" mask="0x01" objectOffset="true" isBool="true">Coin 1 Collected</Data>
+    <Data type="byte" address="0xF7" mask="0x02" objectOffset="true" isBool="true">Coin 2 Collected</Data>
+    <Data type="byte" address="0xF7" mask="0x04" objectOffset="true" isBool="true">Coin 3 Collected</Data>
+    <Data type="byte" address="0xF7" mask="0x08" objectOffset="true" isBool="true">Coin 4 Collected</Data>
+    <Data type="byte" address="0xF7" mask="0x10" objectOffset="true" isBool="true">Coin 5 Collected</Data>
+    <Data type="byte" address="0xF7" mask="0x20" objectOffset="true" isBool="true">Coin 6 Collected</Data>
+    <Data type="byte" address="0xF7" mask="0x40" objectOffset="true" isBool="true">Coin 7 Collected</Data>
+    <Data type="byte" address="0xF7" mask="0x80" objectOffset="true" isBool="true">Coin 8 Collected</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300090C" name="One Coin">
     <Image path="Yellow Coin.png"/>
@@ -227,10 +252,16 @@
   <Object behaviorScriptAddress="0x13000B8C" name="Thwomp">
     <Image path="Thwomp.png"/>
 	<MapImage path="Thwomp Top.png" rotates="true"/>
+    <Data type="int32" address="0x14C" objectOffset="true">State</Data>
+    <Data type="int32" address="0xF4" objectOffset="true">Timer Max</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000BC8" name="Thwomp">
     <Image path="Thwomp.png"/>
 	<MapImage path="Thwomp Top.png" rotates="true"/>
+	<Data type="int32" address="0x14C" objectOffset="true">State</Data>
+    <Data type="int32" address="0xF4" objectOffset="true">Timer Max</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000C04" name="Falling Block">
     <Image path="Falling Block.png"/>
@@ -246,6 +277,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13000C84" name="Wall Flame">
     <Image path="Flame.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000CFC" name="RR Elevator Platform">
     <Image path="RR Elevator Platform.png"/>
@@ -339,6 +371,11 @@
   <Object behaviorScriptAddress="0x130012B4" name="Spindrift">
     <Image path="Spindrift.png"/>
 	<MapImage path="Spindrift Top.png" rotates="true"/>
+    <Data type="byte" address="0x11A" objectOffset="true">State</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
+    <Data type="byte" address="0x41" objectOffset="true">Motion Timer</Data>
+    <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Close</Data>
+    <Data type="byte" address="0x18F" objectOffset="true" isBool="true">Knockback</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001318" name="WF Tower Platform">
     <Image path="WF Tower Platform.png"/>
@@ -371,6 +408,9 @@
   <Object behaviorScriptAddress="0x13001468" name="! Switch">
     <Image path="! Switch.png"/>
 	<MapImage path="! Switch Top.png" rotates="true"/>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="float" address="0x30" objectOffset="true">Squish</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001478" name="! Switch">
     <Image path="! Switch.png"/>
@@ -387,6 +427,8 @@
   <Object behaviorScriptAddress="0x130014BC" name="Hidden Box">
     <Image path="Cork Box.png"/>
 	<MapImage path="Cork Box Top.png" rotates="true"/>
+    <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Tangible</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130014E0" name="Cork Box">
     <Image path="Cork Box.png"/>
@@ -399,6 +441,12 @@
   <Object behaviorScriptAddress="0x13001548" name="Heave-Ho">
     <Image path="Heave-Ho.png"/>
 	<MapImage path="Heave-Ho Top.png" rotates="true"/>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
+    <Data type="byte" address="0x45" objectOffset="true">Key Timer</Data>
+    <Data type="float" address="0x164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x130015A4" name="Heave-Ho Anchor">
     <Image path="Heave-Ho Anchor.png"/>
@@ -484,6 +532,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13001C04" name="Poundable Pillar">
     <Image path="Poundable Pillar.png"/>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001C58" name="Moat Grills">
     <Image path="Grills.png"/>
@@ -568,10 +617,24 @@
   <Object behaviorScriptAddress="0x13002088" name="Mother Penguin">
     <Image path="Penguin.png"/>
 	<MapImage path="Penguin Top.png" rotates="true"/>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="byte" address="0x93" objectOffset="true">Talking Phase</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
+    <Data type="float" address="0x164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x130020E8" name="Baby Penguin">
     <Image path="Baby Penguin.png"/>
 	<MapImage path="Penguin Top.png" rotates="true"/>
+    <Data type="byte" address="0x189" objectOffset="true" isBool="true">Fake</Data>
+    <Data type="byte" address="0x18F" objectOffset="true">State</Data>
+    <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="byte" address="0x8B" objectOffset="true" isBool="true">Returning</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
+    <Data type="float" address="0x164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300213C" name="Fish Spawner">
     <Image path="Blue Fish Spawner.png"/>
@@ -596,6 +659,7 @@
   </Object>
   <Object behaviorScriptAddress="0x130021E4" name="Bub Spawner">
     <Image path="Bub Spawner.png"/>
+	<Data type="byte" address="0x14F" objectOffset="true" isBool="true">Bub Loaded</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300220C" name="Bub">
     <Image path="Bub.png"/>
@@ -604,6 +668,11 @@
   <Object behaviorScriptAddress="0x13002250" name="Item Block">
     <Image path="Item Block.png"/>
 	<MapImage path="Item Block Top.png" rotates="true"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
+    <Data type="byte" address="0x147" objectOffset="true">Contents</Data>
+    <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300227C" name="Exclamation Mark">
     <Image path="Exclamation Mark.png"/>
@@ -653,9 +722,14 @@
   <Object behaviorScriptAddress="0x13002568" name="Blue Coin Block">
     <Image path="Blue Coin Block.png"/>
 	<MapImage path="Blue Coin Block Top.png" rotates="true"/>
+	<Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002588" name="Blue Coin">
     <Image path="Blue Coin.png"/>
+	<Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
+    <Data type="int32" address="0xF0" objectOffset="true">Spin Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130025C0" name="Openable Gate">
     <Image path="Openable Gate.png"/>
@@ -740,6 +814,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Tree">
     <Image path="Tree.png"/>
+    <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Close</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AD0" name="Glow">
     <Image path="Glow.png"/>
@@ -753,13 +828,13 @@
   <Object behaviorScriptAddress="0x13002B5C" name="Scuttlebug">
     <Image path="Scuttlebug.png"/>
 	<MapImage path="Scuttlebug Top.png" rotates="true"/>
-    <Data type="byte" address="0xEC" objectOffset="true">State</Data>
-    <Data type="byte" address="0xF8" objectOffset="true" isBool="true">Lunging</Data>
-    <Data type="byte" address="0xFC" objectOffset="true">Lunging Timer</Data>
-    <Data type="byte" address="0x0154" objectOffset="true">Timer</Data>
-    <Data type="float" address="0x0164" objectOffset="true">Home X</Data>
-    <Data type="float" address="0x0168" objectOffset="true">Home Y</Data>
-    <Data type="float" address="0x016C" objectOffset="true">Home Z</Data>
+    <Data type="byte" address="0x153" objectOffset="true">State</Data>
+    <Data type="uint32" address="0x160" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="byte" address="0xFB" objectOffset="true" isBool="true">Lunging</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Lunging Timer</Data>
+    <Data type="float" address="0x164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002BA0" name="Scuttlebug Spawner">
     <Image path="Scuttlebug Spawner.png"/>
@@ -815,6 +890,7 @@
   <Object behaviorScriptAddress="0x13002EC0" name="Mario">
     <Image path="Mario.png"/>
 	<MapImage path="Mario Top.png" rotates="true"/>
+	<Data type="int32" address="0x110" objectOffset="true">Burn Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002EF8" name="Toad">
     <Image path="Toad.png"/>
@@ -891,12 +967,21 @@
   <Object behaviorScriptAddress="0x13003174" name="Bob-omb">
     <Image path="Bob-omb.png"/>
 	<MapImage path="Bob-omb Top.png" rotates="true"/>
-    <Data type="byte" address="0xF0" objectOffset="true" isBool="true">Blinking</Data>
-    <Data type="uint32" address="0xF4" objectOffset="true">Blinking Timer</Data>
-    <Data type="byte" address="0xF8" objectOffset="true" isBool="true">Fuse On</Data>
-    <Data type="uint32" address="0xFC" objectOffset="true">Fuse Timer</Data>
-    <Data type="byte" address="0x014C" objectOffset="true">State</Data>
-    <Data type="uint32" address="0x0154" objectOffset="true">~Bloat Timer</Data>
+    <Data type="byte" address="0x147" objectOffset="true" isBool="true" invertBool="true">Can Move</Data>
+    <Data type="byte" address="0x18A" objectOffset="true" isBool="true" invertBool="true">Has Coin</Data>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="byte" address="0xFB" objectOffset="true" isBool="true">Fuse On</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Fuse Timer</Data>
+    <Data type="uint32" address="0x154" objectOffset="true">Timer</Data>
+    <Data type="float" address="0x2C" objectOffset="true">Bloat (Width)</Data>
+    <Data type="float" address="0x30" objectOffset="true">Bloat (Height)</Data>
+    <Data type="float" address="0x34" objectOffset="true">Bloat (Depth)</Data>
+    <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
+    <Data type="byte" address="0xF7" objectOffset="true">Blinking Timer</Data>
+    <Data type="float" address="0x164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x130031AC" name="Bob-omb Fuse Smoke">
     <Image path="Bob-omb Fuse Smoke.png"/>
@@ -912,6 +997,8 @@
   <Object behaviorScriptAddress="0x13003274" name="Cannon Lid">
     <Image path="Cannon Lid.png"/>
 	<MapImage path="Cannon Lid Top.png" rotates="true"/>
+	<Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="uint32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130032A8" name="Whirlpool">
     <Image path="Whirlpool.png"/>
@@ -922,9 +1009,15 @@
   <Object behaviorScriptAddress="0x130032E0" name="Sign">
     <Image path="Sign.png"/>
 	<MapImage path="Sign Top.png" rotates="true"/>
+    <Data type="int32" address="0x144" objectOffset="true">Text</Data>
+    <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Close</Data>
+    <Data type="byte" address="0x3" mask="0x20" objectOffset="true" isBool="true" invertBool="true">Mario Reading</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003324" name="Bulletin Board">
     <Image path="Bulletin Board.png"/>
+    <Data type="int32" address="0x144" objectOffset="true">Text</Data>
+    <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Close</Data>
+    <Data type="byte" address="0x3" mask="0x20" objectOffset="true" isBool="true" invertBool="true">Mario Reading</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003354" name="Amp">
     <Image path="Amp.png"/>
@@ -933,6 +1026,12 @@
   <Object behaviorScriptAddress="0x13003388" name="Amp">
     <Image path="Amp.png"/>
 	<MapImage path="Amp Top.png" rotates="true"/>
+    <Data type="byte" address="0xCA" objectOffset="true">Angle Timer</Data>
+    <Data type="int32" address="0xF8" objectOffset="true">Height Oscillation Timer</Data>
+    <Data type="byte" address="0x41" objectOffset="true">Electricity Formation</Data>
+    <Data type="float" address="0x164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x130033BC" name="Butterfly">
     <Image path="Butterfly.png"/>
@@ -959,6 +1058,8 @@
   </Object>
   <Object behaviorScriptAddress="0x13003614" name="Grabbable Cork Box / Bob-omb Spawner">
     <Image path="Grabbable Cork Box Bob-omb Spawner.png"/>
+    <Data type="uint32" address="0xF4" objectOffset="true" useHex="true">Spawn Obj Graphic</Data>
+    <Data type="uint32" address="0xFC" objectOffset="true" useHex="true">Spawn Obj Behavior</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300362C" name="Bully">
     <Image path="Bully.png"/>
@@ -1020,9 +1121,18 @@
   <Object behaviorScriptAddress="0x130039A0" name="Moneybag">
     <Image path="Moneybag.png"/>
 	<MapImage path="Moneybag Top.png" rotates="true"/>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="byte" address="0xF7" objectOffset="true">Jumping Phase</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
+    <Data type="float" address="0x164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x130039D4" name="Moneybag Coin">
     <Image path="Moneybag Coin.png"/>
+    <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Transforming</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
+    <Data type="int32" address="0xF0" objectOffset="true">Spin Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003A08" name="Bowling Ball">
     <Image path="Bowling Ball.png"/>
@@ -1106,33 +1216,45 @@
   </Object>
   <Object behaviorScriptAddress="0x13003DB8" name="Wing Cap">
     <Image path="Wing Cap.png"/>
+    <Data type="byte" address="0xF7" objectOffset="true">State</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003DD8" name="Metal Cap">
     <Image path="Metal Cap.png"/>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003DF8" name="Mario's Cap">
     <Image path="Mario's Cap.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003E1C" name="Vanish Cap">
     <Image path="Vanish Cap.png"/>
+    <Data type="byte" address="0xF7" objectOffset="true">State</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003E3C" name="Power Star">
     <Image path="Power Star.png"/>
+    <Data type="byte" address="0x188" objectOffset="true">Mission</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003E64" name="Power Star">
     <Image path="Power Star.png"/>
+    <Data type="byte" address="0x188" objectOffset="true">Mission</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003E8C" name="Red Coin Star Spawner">
     <Image path="Red Coin Star Spawner.png"/>
+	<Data type="byte" address="0xF7" objectOffset="true">Num Red Coins</Data>
+    <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Spawn Star</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003EAC" name="Red Coin">
     <Image path="Red Coin.png"/>
+    <Data type="int32" address="0xF0" objectOffset="true">Spin Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003EE4" name="Red Coin Star Spawner">
     <Image path="Red Coin Star Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003EFC" name="Secret Star Spawner">
     <Image path="Secret Star Spawner 3.png"/>
+    <Data type="byte" address="0xF7" objectOffset="true">Num Secrets</Data>
+    <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Spawn Star</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003F1C" name="Secret">
     <Image path="Secret.png"/>
@@ -1188,6 +1310,12 @@
   <Object behaviorScriptAddress="0x13004218" name="Grabbable Cork Box">
     <Image path="Grabbable Cork Box.png"/>
 	<MapImage path="Cork Box Top.png" rotates="true"/>
+    <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="byte" address="0x8F" mask="0x08" objectOffset="true" isBool="true" invertBool="true">Static Angle</Data>
+    <Data type="byte" address="0x74" mask="0x02" objectOffset="true" isBool="true" invertBool="true">Active Hurtbox</Data>
+    <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Touching</Data>
+    <Data type="byte" address="0xF7" objectOffset="true" isBool="true">Moved</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Box Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004244" name="Sliding Snow Mound">
     <Image path="Sliding Snow Mound.png"/>
@@ -1212,6 +1340,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13004348" name="Number">
     <Image path="Number.png"/>
+    <Data type="byte" address="0x147" objectOffset="true">Value</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004370" name="Manta Ray">
     <Image path="Manta Ray.png"/>
@@ -1228,16 +1357,26 @@
   </Object>
   <Object behaviorScriptAddress="0x1300444C" name="Chest Star Spawner">
     <Image path="Chest Star Spawner.png"/>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="byte" address="0xF7" objectOffset="true">Chest Progress</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004470" name="Chest Star Spawner">
     <Image path="Chest Star Spawner.png"/>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="byte" address="0xF7" objectOffset="true">Chest Progress</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004494" name="Chest Star Spawner">
     <Image path="Chest Star Spawner.png"/>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="byte" address="0xF7" objectOffset="true">Chest Progress</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130044B8" name="Chest Bottom">
     <Image path="Chest Bottom.png"/>
 	<MapImage path="Chest Bottom Top.png" rotates="true"/>
+	<Data type="byte" address="0x14F" objectOffset="true" isBool="true">Open</Data>
   </Object>
   <Object behaviorScriptAddress="0x130044E0" name="Chest Top">
     <Image path="Chest Top.png"/>
@@ -1254,6 +1393,17 @@
   <Object behaviorScriptAddress="0x13004580" name="Koopa">
     <Image path="Koopa.png"/>
 	<MapImage path="Koopa Top.png" rotates="true"/>
+    <Data type="uint16" address="0x16" objectOffset="true">Shell State</Data>
+    <Data type="byte" address="0xFB" objectOffset="true" isBool="true">Act Shelled</Data>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="uint32" address="0xFC" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="byte" address="0x157" objectOffset="true">Timer</Data>
+    <Data type="byte" address="0x153" objectOffset="true">Walking Phase</Data>
+    <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
+    <Data type="byte" address="0x113" objectOffset="true">Blinking Timer</Data>
+    <Data type="float" address="0x150" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x130045D0" name="Koopa the Quick Flag">
     <Image path="Koopa the Quick Flag.png"/>
@@ -1271,26 +1421,44 @@
   <Object behaviorScriptAddress="0x13004698" name="Swooper">
     <Image path="Swooper.png"/>
 	<MapImage path="Swooper Top.png" rotates="true"/>
+    <Data type="uint32" address="0xFC" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="byte" address="0x45" objectOffset="true">Wing Flap</Data>
+    <Data type="float" address="0x164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x130046DC" name="Fly Guy">
     <Image path="Fly Guy.png"/>
 	<MapImage path="Fly Guy Top.png" rotates="true"/>
-    <Data type="float" address="0xE8" objectOffset="true">Ground Below Y</Data>
-    <Data type="uint32" address="0xF8" objectOffset="true">Timer</Data>
-    <Data type="uint16" address="0x0100" objectOffset="true" isAngle="true">Lunging Ang.</Data>
-    <Data type="uint16" address="0x0104" objectOffset="true" isAngle="true">Lunging V Ang.</Data>
-    <Data type="uint32" address="0x014C" objectOffset="true">State</Data>
-    <Data type="uint32" address="0x0154" objectOffset="true">Timer Af. Lunge</Data>
-    <Data type="float" address="0x0164" objectOffset="true">Home X</Data>
-    <Data type="float" address="0x0168" objectOffset="true">Home Y</Data>
-    <Data type="float" address="0x016C" objectOffset="true">Home Z</Data>
+    <Data type="uint32" address="0x144" objectOffset="true" isBool="true">Can Shoot Fire</Data>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
+    <Data type="float" address="0x10C" objectOffset="true">Size Change</Data>
+    <Data type="float" address="0x2C" objectOffset="true">Size</Data>
+    <Data type="float" address="0x164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300472C" name="Goomba">
     <Image path="Goomba.png"/>
 	<MapImage path="Goomba Top.png" rotates="true"/>
+    <Data type="byte" address="0x18F" objectOffset="true">State</Data>
+    <Data type="uint16" address="0x136" objectOffset="true">Attacked State</Data>
+    <Data type="uint16" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="byte" address="0xFF" objectOffset="true">Timer</Data>
+    <Data type="uint32" address="0x154" objectOffset="true">Not Jumping Timer</Data>
+    <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
+    <Data type="byte" address="0x107" objectOffset="true">Blinking Timer</Data>
+    <Data type="float" address="0x164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004770" name="Goomba Triplet Spawner">
     <Image path="Goomba Triplet Spawner.png"/>
+    <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Goombas Loaded</Data>
+    <Data type="byte" address="0x18A" mask="0x01" objectOffset="true" isBool="true">Goomba 1 Dead</Data>
+    <Data type="byte" address="0x18A" mask="0x02" objectOffset="true" isBool="true">Goomba 2 Dead</Data>
+    <Data type="byte" address="0x18A" mask="0x04" objectOffset="true" isBool="true">Goomba 3 Dead</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300478C" name="Chain Chomp">
     <Image path="Chain Chomp.png"/>
@@ -1368,37 +1536,73 @@
   <Object behaviorScriptAddress="0x13004BF0" name="TTC Rotating Block / Triangular Prism">
     <Image path="TTC Rotating Block _ Triangular Prism.png"/>
 	<MapImage path="TTC Rotating Block Top.png" rotates="true"/>
+    <Data type="int32" address="0xFC" objectOffset="true">Timer Max</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004C24" name="TTC Pendulum">
     <Image path="TTC Pendulum.png"/>
+    <Data type="float" address="0xF4" objectOffset="true">Acceleration Direction</Data>
+    <Data type="float" address="0x100" objectOffset="true">Acceleration Magnitude</Data>
+    <Data type="float" address="0xFC" objectOffset="true">Angular Velocity</Data>
+    <Data type="float" address="0xF8" objectOffset="true">Angle</Data>
+    <Data type="int32" address="0x104" objectOffset="true">Waiting Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004C5C" name="TTC Treadmill">
     <Image path="TTC Treadmill.png"/>
+    <Data type="float" address="0x100" objectOffset="true">Target Speed</Data>
+    <Data type="float" address="0xFC" objectOffset="true">Current Speed</Data>
+    <Data type="int32" address="0x104" objectOffset="true">Timer Max</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004C94" name="TTC Moving Bar">
     <Image path="TTC Moving Bar.png"/>
 	<MapImage path="TTC Moving Bar Top.png" rotates="true"/>
+    <Data type="int32" address="0x14C" objectOffset="true">State</Data>
+    <Data type="int32" address="0xF4" objectOffset="true">Timer Max</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
+    <Data type="int32" address="0xF8" objectOffset="true">Countdown</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004CCC" name="TTC Rotating Cog / Triangle">
     <Image path="TTC Rotating Cog _ Triangle.png"/>
 	<MapImage path="TTC Cog Top.png" rotates="true"/>
+    <Data type="float" address="0xFC" objectOffset="true">Target Ang Vel</Data>
+    <Data type="float" address="0xF8" objectOffset="true">Current Ang Vel</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004CF8" name="TTC Pit Block">
     <Image path="TTC Pit Block.png"/>
+    <Data type="int32" address="0xF8" objectOffset="true">State</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Timer Max</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004D28" name="TTC Elevator Platform">
     <Image path="TTC Elevator Platform.png"/>
+	<Data type="float" address="0xF4" objectOffset="true">Direction</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Timer Max</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004D64" name="TTC Rotating Hand / 2D Cog">
     <Image path="TTC Rotating Hand _ 2D Cog.png"/>
 	<MapImage path="TTC Rotating Hand Top.png" rotates="true"/>
+    <Data type="int32" address="0xF4" objectOffset="true">Ticking Timer Max</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Ticking Timer</Data>
+    <Data type="uint16" address="0xFA" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Displacement</Data>
+    <Data type="int32" address="0x104" objectOffset="true">Direction Countdown</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004D90" name="TTC Red Coin Spinner">
     <Image path="TTC Red Coin Spinner.png"/>
+    <Data type="int32" address="0xF4" objectOffset="true">Direction</Data>
+    <Data type="int32" address="0xF8" objectOffset="true">Timer Max</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004DBC" name="Mr. Blizzard">
     <Image path="Mr. Blizzard.png"/>
 	<MapImage path="Mr. Blizzard Top.png" rotates="true"/>
+    <Data type="byte" address="0x14F" objectOffset="true">State</Data>
+    <Data type="float" address="0x108" objectOffset="true">Dizziness Change</Data>
+    <Data type="float" address="0x104" objectOffset="true">Dizziness</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
+    <Data type="int32" address="0x198" objectOffset="true">Num Coins</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004E08" name="Snowball">
     <Image path="Snowball.png"/>
@@ -1418,6 +1622,9 @@
   </Object>
   <Object behaviorScriptAddress="0x13004EF8" name="Spinning Heart">
     <Image path="Spinning Heart.png"/>
+    <Data type="byte" address="0xFB" objectOffset="true" isBool="true">Mario Inside</Data>
+    <Data type="int32" address="0x118" objectOffset="true">Angular Velocity</Data>
+    <Data type="int32" address="0xF4" objectOffset="true">Angular Displacement</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004F10" name="Enemy Cannon Base">
     <Image path="Enemy Cannon Base.png"/>
@@ -1458,15 +1665,26 @@
   </Object>
   <Object behaviorScriptAddress="0x13005158" name="Fire">
     <Image path="Fire.png"/>
+	<Data type="byte" address="0x157" objectOffset="true">Residual Fire Timer</Data>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
+    <Data type="float" address="0x104" objectOffset="true">Lifespan Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300518C" name="Fire Spitter">
     <Image path="Bowling Ball.png"/>
+    <Data type="float" address="0x2C" objectOffset="true">Size</Data>
+    <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Spitting Fire</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130051AC" name="Residual Fire">
     <Image path="Residual Fire.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130051E0" name="Snufit">
     <Image path="Snufit.png"/>
+    <Data type="int32" address="0x108" objectOffset="true">Size</Data>
+    <Data type="int32" address="0x104" objectOffset="true">Size Timer</Data>
+    <Data type="float" address="0x164" objectOffset="true">Home X</Data>
+    <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
+    <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300521C" name="Snufit Bullet">
     <Image path="Bowling Ball.png"/>
@@ -1509,6 +1727,10 @@
   <Object behaviorScriptAddress="0x13005468" name="Skeeter">
     <Image path="Skeeter 2.png"/>
 	<MapImage path="Skeeter Top.png" rotates="true"/>
+    <Data type="byte" address="0x17B" objectOffset="true">State</Data>
+    <Data type="uint32" address="0xF4" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Lunging</Data>
+    <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130054A0" name="Skeeter Water Waves">
     <Image path="Water Waves.png"/>
