@@ -77,7 +77,8 @@
   <Object behaviorScriptAddress="0x130001F4" name="King Bob-omb">
     <Image path="King Bob-omb.png"/>
 	<MapImage path="King Bob-omb Top.png" rotates="true"/>
-    <Data type="uint32" address="0x020C" objectOffset="true" useHex="true">Behavior Script Address</Data>
+    <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="int32" address="0x184" objectOffset="true">HP</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000254" name="King Bob-omb Anchor">
     <Image path="King Bob-omb Anchor.png"/>
@@ -1050,6 +1051,8 @@
   <Object behaviorScriptAddress="0x130033EC" name="Hoot">
     <Image path="Hoot.png"/>
 	<MapImage path="Hoot Top.png" rotates="true"/>
+    <Data type="int32" address="0xF4" objectOffset="true">State 2</Data>
+    <Data type="byte" address="0x137" objectOffset="true" isBool="true">Flying</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003484" name="Object Bubble">
     <Image path="Splash Bubble.png"/>
