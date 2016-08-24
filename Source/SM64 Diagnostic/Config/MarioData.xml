@@ -18,16 +18,17 @@
   <Data type="float" address="0x8033B3C8">HOLP X</Data>
   <Data type="float" address="0x8033B3CC">HOLP Y</Data>
   <Data type="float" address="0x8033B3D0">HOLP Z</Data>
-  <Data type="uint16" address="0x00C26CA4" absoluteAddress="true">Cap Timer</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x10">Hat On Head</Data>
-  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x02">Vanish Cap</Data>
-  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x04">Metal Cap</Data>
-  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x08">Wing Cap</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x20">Hat In Hand</Data>
+  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x08">Wing Cap</Data>
+  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x04">Metal Cap</Data>
+  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x02">Vanish Cap</Data>
+  <Data type="uint16" address="0x00C26CA4" absoluteAddress="true">Cap Timer</Data>
   <Data type="uint16" address="0x00C26C0A" absoluteAddress="true">Action Phase</Data>
   <Data type="uint16" address="0x00C26C08" absoluteAddress="true">Action Timer</Data>
   <Data type="uint16" address="0x00C26C0C" absoluteAddress="true">Squished Timer</Data>
   <Data type="uint16" address="0x00C26C14" absoluteAddress="true">Hitstun Timer</Data>
   <Data type="float" address="0x00c26cac" absoluteAddress="true">Peak Height</Data>
+  <Data type="int32" address="0x009DC4DC" absoluteAddress="true">Blinking State</Data>
 
 </MarioData>

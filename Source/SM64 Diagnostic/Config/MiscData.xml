@@ -4,6 +4,7 @@
   <Data type="uint16" address="0x8038EEE0">RNG Value</Data>
   <Data type="uint16" address="0x00C1D150" absoluteAddress="true">Coin Counter</Data>
   <Data type="sbyte" address="0x00C4CE7D" absoluteAddress="true">Red Coin Count</Data>
+  <Data type="byte" address="0x00a93c27" absoluteAddress="true">Mission Selected</Data>
   <Data type="byte" address="0x00C2754A" absoluteAddress="true">Mission Layout</Data>
   <Data type="byte" address="0x00C1D0A3" absoluteAddress="true">Mission Name</Data>
   <Data type="byte" address="0x80222618" isBool="true" mask="0x20" invertBool="true">Music</Data>
@@ -11,8 +12,11 @@
   <Data type="byte" address="0x8033B249">Level</Data>
   <Data type="byte" address="0x8033B24A">Area</Data>
   <Data type="uint16" address="0x8033BACA">Loading Point</Data>
-  <Data type="uint16" address="0x00C4CCDA" absoluteAddress="true">TTC Speed Setting</Data>
   <Data type="byte" address="0x00C19076" absoluteAddress="true">Demo Counter</Data>
+  <Data type="byte" address="0xc1cf13" absoluteAddress="true">Arrow Selection</Data>
+  <Data type="int16" address="0xa9379e" absoluteAddress="true">Hand X</Data>
+  <Data type="int16" address="0xa937a2" absoluteAddress="true">Hand Y</Data>
+  <Data type="uint16" address="0x00C4CCDA" absoluteAddress="true">TTC Speed Setting</Data>
   <Data type="byte" address="0x00C341B0" absoluteAddress="true">BBH 'Go Round Boo Cnt</Data>
   <Data type="uint16" address="0x009FCD60" absoluteAddress="true">WDW Main Water Level</Data>
   <Data type="uint16" address="0x009FEEAC" absoluteAddress="true">WDW Town Water Level</Data>
