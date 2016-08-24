@@ -20,4 +20,8 @@
   <Data type="byte" address="0xc26ce8" mask="0x02" absoluteAddress="true" isBool="true">HUD On Coins</Data>
   <Data type="byte" address="0xc26ce8" mask="0x04" absoluteAddress="true" isBool="true">HUD On Stars</Data>
   <Data type="byte" address="0xc26ce8" mask="0x40" absoluteAddress="true" isBool="true">HUD On Time</Data>
+  <Data type="byte" address="0xc1e073" absoluteAddress="true">HP HUD State</Data>
+  <Data type="int32" address="0xc1e07c" absoluteAddress="true">HP HUD Timer</Data>
+  <Data type="int16" address="0xc1e070" absoluteAddress="true">HP HUD X</Data>
+  <Data type="int16" address="0xc1e076" absoluteAddress="true">HP HUD Y</Data>
 </HudData>
