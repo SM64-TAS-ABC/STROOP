@@ -5,10 +5,23 @@
   <Data type="byte" address="0x00C2810E" absoluteAddress="true" isBool="true" mask="0x0020" >Fixed Cam</Data>
   <Data type="byte" address="0x00C282CA" absoluteAddress="true" isBool="true" mask="0x0002" >Far Cam</Data>
   <Data type="byte" address="0x00C282CB" absoluteAddress="true" isBool="true" mask="0x0020" >Close Cam</Data>
-  <Data type="float" address="0x8033C6A4">Camera X</Data>
-  <Data type="float" address="0x8033C6A8">Camera Y</Data>
-  <Data type="float" address="0x8033C6AC">Camera Z</Data>
-  <Data type="uint16" address="0x8033C6E6" isAngle="true">Cam Hor Ang</Data>
-  <Data type="uint16" address="0x8033C6E4" isAngle="true">Cam Vert Ang</Data>
-  <Data type="uint16" address="0x8033C714" isAngle="true">Cam Centr Ang</Data>
+  <Data type="float" address="0xc28124" absoluteAddress="true">Camera X</Data>
+  <Data type="float" address="0xc28128" absoluteAddress="true">Camera Y</Data>
+  <Data type="float" address="0xc2812c" absoluteAddress="true">Camera Z</Data>
+  <Data type="float" address="0xc2813c" absoluteAddress="true">Camera Target X</Data>
+  <Data type="float" address="0xc28140" absoluteAddress="true">Camera Target Y</Data>
+  <Data type="float" address="0xc28144" absoluteAddress="true">Camera Target Z</Data>
+  <Data type="uint16" address="0xc28164" absoluteAddress="true" isAngle="true">Camera Yaw</Data>
+  <Data type="uint16" address="0xc28166" absoluteAddress="true" isAngle="true">Camera Pitch</Data>
+  <Data type="uint16" address="0xc281fa" absoluteAddress="true" isAngle="true">Fixed Cent Angle</Data>
+  <Data type="uint16" address="0xc28194" absoluteAddress="true" isAngle="true">Target Cent Angle</Data>
+  <Data type="uint16" address="0xc28196" absoluteAddress="true" isAngle="true">Cent Angle</Data>
+  <Data type="float" address="0xc28118" absoluteAddress="true">Focus X</Data>
+  <Data type="float" address="0xc2811c" absoluteAddress="true">Focus Y</Data>
+  <Data type="float" address="0xc28120" absoluteAddress="true">Focus Z</Data>
+  <Data type="float" address="0xc281fc" absoluteAddress="true">Focus Veer Dist</Data>
+  <Data type="float" address="0xc28160" absoluteAddress="true">Cam Dist from Focus</Data>
+  <Data type="int16" address="0xc2816e" absoluteAddress="true">Yaw Shake</Data>
+  <Data type="int16" address="0xc28168" absoluteAddress="true">Pitch Shake</Data>
+  <Data type="int16" address="0xc2816c" absoluteAddress="true">Roll Shake</Data>
 </CameraData>

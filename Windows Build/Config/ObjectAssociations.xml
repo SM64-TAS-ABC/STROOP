@@ -546,6 +546,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13001B54" name="Aquarium Fish Spawner">
     <Image path="Blue Fish Spawner.png"/>
+    <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Fish Loaded</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001B70" name="Checkered Elevator Spawner">
     <Image path="Checkered Elevator Spawner.png"/>
@@ -1112,7 +1113,6 @@
   <Object behaviorScriptAddress="0x13003324" name="Bulletin Board">
     <Image path="Bulletin Board.png"/>
     <Data type="int32" address="0x144" objectOffset="true">Text</Data>
-    <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Close</Data>
     <Data type="byte" address="0x3" mask="0x20" objectOffset="true" isBool="true" invertBool="true">Mario Reading</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003354" name="Amp (Targets Mario)">
@@ -1562,7 +1562,8 @@
     <Image path="Chain Chomp.png"/>
 	<MapImage path="Chain Chomp Top.png" rotates="true"/>
     <Data type="byte" address="0x153" objectOffset="true" isBool="true">Lunging</Data>
-    <Data type="byte" address="0x41" objectOffset="true">Motion Timer</Data>
+    <Data type="int32" address="0x1AC" objectOffset="true">Phase</Data>
+    <Data type="int32" address="0x110" objectOffset="true">Num Bounces</Data>
   </Object>
   <Object behaviorScriptAddress="0x130047E4" name="Chain Chomp Pivot / Chain">
     <Image path="Chain Chomp Chain.png"/>
@@ -1572,7 +1573,7 @@
 	<MapImage path="Post Top.png" rotates="true"/>
     <Data type="int32" address="0x198" objectOffset="true">Num Coins</Data>
     <Data type="int32" address="0xF4" objectOffset="true">Angular Distance</Data>
-    <Data type="float" address="0x106" objectOffset="true">Lowered Distance</Data>
+    <Data type="float" address="0x104" objectOffset="true">Lowered Distance</Data>
     <Data type="byte" address="0x103" objectOffset="true" isBool="true">Being GPed</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004868" name="Chain Chomp Gate">
