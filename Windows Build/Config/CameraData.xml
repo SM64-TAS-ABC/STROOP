@@ -24,4 +24,5 @@
   <Data type="int16" address="0xc2816e" absoluteAddress="true">Yaw Shake</Data>
   <Data type="int16" address="0xc28168" absoluteAddress="true">Pitch Shake</Data>
   <Data type="int16" address="0xc2816c" absoluteAddress="true">Roll Shake</Data>
+  <Data type="int16" address="0xc28156" absoluteAddress="true">Camera Mode</Data>
 </CameraData>
