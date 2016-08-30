@@ -36,12 +36,13 @@
     <Image path="Star Door.png"/>
 	<MapImage path="Star Door Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000054" name="Mr. I Pupil">
+  <Object behaviorScriptAddress="0x13000054" name="Mr. I Body">
+    <Image path="Mr. I Body.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300008C" name="Mr. I Pupil">
     <Image path="Mr. I Pupil.png"/>
 	<MapImage path="Mr. I Pupil Top.png" rotates="true"/>
-  </Object>
-  <Object behaviorScriptAddress="0x1300008C" name="Mr. I Body">
-    <Image path="Mr. I Body.png"/>
+	<Data type="uint32" address="0xc3e7d0" absoluteAddress="true" useHex="true">Host Object</Data>
 	<Data type="int32" address="0xF0" objectOffset="true">Blinking Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130000AC" name="Mr. I Particle">
@@ -752,11 +753,23 @@
   <Object behaviorScriptAddress="0x130023A4" name="Skull Crate">
     <Image path="Skull Crate.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130023D0" name="JRB Floating Ship Part">
-    <Image path="JRB Ship Part.png"/>
+  <Object behaviorScriptAddress="0x130023D0" name="JRB Floating Ship Visual">
+    <Image path="JRB Ship Visual.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x1300244C" name="JRB Sunken Ship Part">
-    <Image path="JRB Ship Part.png"/>
+  <Object behaviorScriptAddress="0x130023EC" name="JRB Floating Ship Hitbox">
+    <Image path="JRB Ship Hitbox.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300241C" name="JRB Ghost Ship">
+    <Image path="JRB Ghost Ship.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300244C" name="JRB Sunken Ship Visual">
+    <Image path="JRB Ship Visual.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x1300246C" name="JRB Sunken Ship Warp">
+    <Image path="JRB Ship Warp.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002480" name="JRB Sunken Ship Hitbox">
+    <Image path="JRB Ship Hitbox.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130024AC" name="Dust Spawner">
     <Image path="Dust Spawner.png"/>
@@ -864,7 +877,10 @@
     <Data type="int32" address="0x17C" objectOffset="true">Opaqueness</Data>
     <Data type="uint32" address="0xFC" objectOffset="true" isAngle="true">Oscillation</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300286C" name="BBH Lobby Step">
+  <Object behaviorScriptAddress="0x1300286C" name="BBH Lobby Step (Already Risen)">
+    <Image path="BBH Lobby Step.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002898" name="BBH Lobby Step (Rising)">
     <Image path="BBH Lobby Step.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130028CC" name="Loose Floor Panel">
@@ -1942,13 +1958,10 @@
 	<MapImage path="Peach Top.png" rotates="true"/>
     <Data type="int32" address="0x17C" objectOffset="true">Opaqueness</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300565C" name="Bird">
+  <Object behaviorScriptAddress="0x1300565C" name="Bird (for Pan to Castle)">
     <Image path="Bird.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13005680" name="Bird">
+  <Object behaviorScriptAddress="0x13005680" name="Bird (for Pan to Sky)">
     <Image path="Bird.png"/>
   </Object>
-  <!--<Object behaviorScriptAddress="0x130EDED0" name="Bubble Splash Spawner">
-    <Image path="Bird.png"/>
-  </Object>-->
 </ObjectAssociations>
