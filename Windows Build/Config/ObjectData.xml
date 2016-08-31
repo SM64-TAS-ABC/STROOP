@@ -7,14 +7,14 @@
   <Data type="float" address="0xB0" objectOffset="true">Y Speed</Data>
   <Data type="float" address="0xB4" objectOffset="true">Z Speed</Data>
   <Data type="float" address="0xB8" objectOffset="true">H Speed</Data>
-  <Data type="uint32" address="0xD0" objectOffset="true" isAngle="true">Pitch (Facing)</Data>
   <Data type="uint32" address="0xD4" objectOffset="true" isAngle="true">Yaw (Facing)</Data>
+  <Data type="uint32" address="0xD0" objectOffset="true" isAngle="true">Pitch (Facing)</Data>
   <Data type="uint32" address="0xD8" objectOffset="true" isAngle="true">Roll (Facing)</Data>
-  <Data type="uint32" address="0xC4" objectOffset="true" isAngle="true">Pitch (Moving)</Data>
   <Data type="uint32" address="0xC8" objectOffset="true" isAngle="true">Yaw (Moving)</Data>
+  <Data type="uint32" address="0xC4" objectOffset="true" isAngle="true">Pitch (Moving)</Data>
   <Data type="uint32" address="0xCC" objectOffset="true" isAngle="true">Roll (Moving)</Data>
-  <Data type="uint32" address="0x114" objectOffset="true" isAngle="true">Pitch (Rot Speed)</Data>
   <Data type="uint32" address="0x118" objectOffset="true" isAngle="true">Yaw (Rot Speed)</Data>
+  <Data type="uint32" address="0x114" objectOffset="true" isAngle="true">Pitch (Rot Speed)</Data>
   <Data type="uint32" address="0x11c" objectOffset="true" isAngle="true">Roll (Rot Speed)</Data>
   <Data type="float" address="0x015C" objectOffset="true">Dis. To Mario</Data>
   <Data type="uint32" address="0x0160" objectOffset="true" isAngle="true">Ang. To Mario</Data>

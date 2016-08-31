@@ -386,6 +386,7 @@
   </Object>
   <Object behaviorScriptAddress="0x130011D0" name="Shockwave">
     <Image path="Shockwave.png"/>
+    <Data type="int32" address="0x17C" objectOffset="true">Opaqueness</Data>
   </Object>
   <Object behaviorScriptAddress="0x130011EC" name="Mario Burning Flame">
     <Image path="Mario Burning Flame.png"/>
@@ -522,24 +523,30 @@
   </Object>
   <Object behaviorScriptAddress="0x13001984" name="Flame Breath">
     <Image path="Flame Breath.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x130019C8" name="Falling Flame">
     <Image path="Falling Flame.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001A0C" name="Blue Lava Bubble Spawner">
     <Image path="Blue Lava Bubble Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001A30" name="Blue Lava Bubble Flame">
     <Image path="Blue Flame.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001A74" name="Flame Breath">
     <Image path="Flame Breath.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13001AA4" name="Flame">
+  <Object behaviorScriptAddress="0x13001AA4" name="Blown Flame">
     <Image path="Flame.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13001AE8" name="Flame">
+  <Object behaviorScriptAddress="0x13001AE8" name="Landed Flame">
     <Image path="Flame.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001B2C" name="Aquarium Fish">
     <Image path="Blue Fish.png"/>
@@ -661,6 +668,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13002068" name="Bowser Puzzle Coin Spawner">
     <Image path="Bowser Puzzle Coin Spawner.png"/>
+    <Data type="int32" address="0xF4" objectOffset="true">State 2</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002088" name="Mother Penguin">
     <Image path="Penguin.png"/>
@@ -752,6 +760,7 @@
   </Object>
   <Object behaviorScriptAddress="0x130023A4" name="Skull Crate">
     <Image path="Skull Crate.png"/>
+    <Data type="uint32" address="0xF4" objectOffset="true" useHex="true">Host Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x130023D0" name="JRB Floating Ship Visual">
     <Image path="JRB Ship Visual.png"/>
@@ -1183,11 +1192,11 @@
     <Image path="Bully.png"/>
 	<MapImage path="Bully Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13003660" name="Big Bully">
+  <Object behaviorScriptAddress="0x13003660" name="Big Bully (Loner)">
     <Image path="Big Bully.png"/>
 	<MapImage path="Big Bully Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13003694" name="Big Bully">
+  <Object behaviorScriptAddress="0x13003694" name="Big Bully (After Triplets)">
     <Image path="Big Bully.png"/>
 	<MapImage path="Big Bully Top.png" rotates="true"/>
   </Object>

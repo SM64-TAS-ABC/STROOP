@@ -55,14 +55,19 @@
     <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192"/>
     <BackgroundImage path="Blue Background.png"/>
   </Map>
-  <Map name="Jolly Roger Bay" subName="Ship Afloat" level="12" area="1">
+  <Map name="Jolly Roger Bay" subName="Ship Afloat" level="12" area="1" missionLayout="1">
     <Image path="JRB Ship Afloat.png"/>
     <Coordinates x1="-7818" x2="8276" z1="-7563" z2="8058"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
-  <Map name="Jolly Roger Bay" subName="Sunken Ship" level="12" area="2">
+  <Map name="Jolly Roger Bay" subName="Sunken Ship" level="12" area="1">
     <Image path="JRB Sunken Ship.png"/>
     <Coordinates x1="-7818" x2="8276" z1="-7563" z2="8058"/>
+    <BackgroundImage path="Black Background.png"/>
+  </Map>
+  <Map name="Jolly Roger Bay" subName="Inside Ship" level="12" area="2">
+    <Image path="JRB Inside Ship.png"/>
+    <Coordinates x1="-1311" x2="1876" z1="-3358" z2="3699"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Cool, Cool Mountain" level="5" area="1">
