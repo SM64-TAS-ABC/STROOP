@@ -199,7 +199,7 @@ namespace SM64_Diagnostic.ManagerClasses
             objectGui.ObjectFlowLayout.Controls.Add(_latDisToMario.Control);
 
             // Add rng calls watchvar
-            _rngCalls = new DataContainer("Rng Calls");
+            _rngCalls = new DataContainer("RNG Calls/Frame");
             objectGui.ObjectFlowLayout.Controls.Add(_rngCalls.Control);
 
             // Register buttons
