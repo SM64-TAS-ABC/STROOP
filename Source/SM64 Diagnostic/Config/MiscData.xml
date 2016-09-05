@@ -19,9 +19,9 @@
   <Data type="int16" address="0xa937a2" absoluteAddress="true">Hand Y</Data>
   <Data type="uint16" address="0x00C4CCDA" absoluteAddress="true">TTC Speed Setting</Data>
   <Data type="byte" address="0x00C341B0" absoluteAddress="true">BBH 'Go Round Boo Cnt</Data>
-  <Data type="uint16" address="0x009FCD60" absoluteAddress="true">WDW Main Water Level</Data>
-  <Data type="uint16" address="0x009FEEAC" absoluteAddress="true">WDW Town Water Level</Data>
+  <Data type="int16" address="0x009FCD60" absoluteAddress="true">WDW Main Water Level</Data>
+  <Data type="int16" address="0x009FEEAC" absoluteAddress="true">WDW Town Water Level</Data>
   <Data type="byte" address="0x00C1C9BE" absoluteAddress="true">WDW Painting Level</Data>
-  <Data type="uint16" address="0x00C26C64" absoluteAddress="true">Water Level</Data>
-  <Data type="uint16" address="0x00C4CC08" absoluteAddress="true">Water Level Median</Data>
+  <Data type="int16" address="0x00C26C64" absoluteAddress="true">Water Level</Data>
+  <Data type="int16" address="0x00C4CC08" absoluteAddress="true">Water Level Median</Data>
 </MiscData>
