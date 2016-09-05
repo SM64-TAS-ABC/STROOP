@@ -84,14 +84,6 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapManager = mapManager;
             _miscManager = miscManager;
 
-            ManagerGui.TrashPictureBox.AllowDrop = true;
-            ManagerGui.TrashPictureBox.DragEnter += OnObjectDragOver;
-            ManagerGui.TrashPictureBox.DragDrop += OnTrashDrop;
-            
-            ManagerGui.ClonePictureBox.AllowDrop = true;
-            ManagerGui.ClonePictureBox.DragEnter += OnObjectDragOver;
-            ManagerGui.ClonePictureBox.DragDrop += Clone_DragDrop;
-
             foreach (var mode in Enum.GetValues(typeof(MapToggleModeType)))
                 ManagerGui.MapObjectToggleModeComboBox.Items.Add(mode);
             ManagerGui.MapObjectToggleModeComboBox.SelectedIndex = 0;
@@ -116,20 +108,6 @@ namespace SM64_Diagnostic.ManagerClasses
                 return null;
 
             return ObjectSlotData.First((objData) => objData.Index == slot);
-        }
-
-        private void Clone_DragDrop(object sender, DragEventArgs e)
-        {
-            // Make sure we have valid Drag and Drop data (it is an index)
-            if (!e.Data.GetDataPresent(typeof(DropAction)))
-                return;
-
-            var dropAction = ((DropAction)e.Data.GetData(typeof(DropAction)));
-            if (dropAction.Action != DropAction.ActionType.Object)
-                return;
-
-            // Clone object
-            MarioActions.CloneObject(_stream, _config, dropAction.Address);
         }
 
         private void OnClick(object sender, MouseEventArgs e, int slotIndex)
@@ -183,38 +161,6 @@ namespace SM64_Diagnostic.ManagerClasses
                     }
                     break;
             }
-        }
-
-        public void OnObjectDragOver(object sender, DragEventArgs e)
-        {
-            // Make sure we have valid Drag and Drop data (it is an index)
-            if (!e.Data.GetDataPresent(typeof(DropAction)))
-            {
-                e.Effect = DragDropEffects.None;
-                return;
-            }
-
-            var dropAction = ((DropAction)e.Data.GetData(typeof(DropAction))).Action;
-            if (dropAction != DropAction.ActionType.Object)
-            {
-                e.Effect = DragDropEffects.None;
-                return;
-            }
-
-            e.Effect = DragDropEffects.Move;
-        }
-
-        public void OnTrashDrop(object sender, DragEventArgs e)
-        {
-            // Make sure we have valid Drag and Drop data (it is an index)
-            if (!e.Data.GetDataPresent(typeof(DropAction)))
-                return;
-
-            var dropAction = ((DropAction)e.Data.GetData(typeof(DropAction)));
-            if (dropAction.Action != DropAction.ActionType.Object)
-                return;
-
-            MarioActions.UnloadObject(_stream, _config, dropAction.Address);
         }
 
         public void SetAllSelectedObjectSlots()

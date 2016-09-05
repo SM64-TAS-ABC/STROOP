@@ -139,8 +139,6 @@ namespace SM64_Diagnostic
 
             // Create Object Slots
             var slotManagerGui = new ObjectSlotManagerGui();
-            slotManagerGui.ClonePictureBox = pictureBoxObjClone;
-            slotManagerGui.TrashPictureBox = pictureBoxObjTrash;
             slotManagerGui.TabControl = tabControlMain;
             slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
             slotManagerGui.MapObjectToggleModeComboBox = comboBoxMapToggleMode;
