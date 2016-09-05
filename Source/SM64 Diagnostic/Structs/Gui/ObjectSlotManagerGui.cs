@@ -10,8 +10,6 @@ namespace SM64_Diagnostic.Structs
 {
     public class ObjectSlotManagerGui
     {
-        public IntPictureBox ClonePictureBox;
-        public IntPictureBox TrashPictureBox;
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
         public ComboBox MapObjectToggleModeComboBox;
