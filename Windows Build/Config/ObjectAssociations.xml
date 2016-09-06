@@ -57,10 +57,10 @@
   <Object behaviorScriptAddress="0x13000144" name="Pole Behavior">
     <Image path="Pole Behavior.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000174" name="THI Wiggler's Cave Cover">
+  <Object behaviorScriptAddress="0x13000174" name="THI Wiggler's Cave Cover (Large)">
     <Image path="THI Wiggler's Cave Cover.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000194" name="THI Wiggler's Cave Cover">
+  <Object behaviorScriptAddress="0x13000194" name="THI Wiggler's Cave Cover (Tiny)">
     <Image path="THI Wiggler's Cave Cover.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130001AC" name="Cap Switch Base">
@@ -764,9 +764,11 @@
   </Object>
   <Object behaviorScriptAddress="0x130023D0" name="JRB Floating Ship Visual">
     <Image path="JRB Ship Visual.png"/>
+    <Data type="int32" address="0xF4" objectOffset="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130023EC" name="JRB Floating Ship Hitbox">
     <Image path="JRB Ship Hitbox.png"/>
+    <Data type="int32" address="0xF4" objectOffset="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300241C" name="JRB Ghost Ship">
     <Image path="JRB Ghost Ship.png"/>
