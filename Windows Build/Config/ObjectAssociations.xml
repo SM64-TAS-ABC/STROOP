@@ -1522,6 +1522,7 @@
   <Object behaviorScriptAddress="0x130044FC" name="MIPS">
     <Image path="MIPS.png"/>
 	<MapImage path="MIPS Top.png" rotates="true"/>
+    <Data type="uint32" address="0x144" objectOffset="true" isBool="true">Second Occurrence</Data>
     <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004538" name="Yoshi">
