@@ -139,7 +139,7 @@ namespace SM64_Diagnostic.Extensions
             if (watchVar.Mask.HasValue)
                 dataValue = (UInt32)(dataValue & watchVar.Mask.Value);
 
-            // Truncate to 0x16
+            // Truncate by 16
             if (truncated)
                 dataValue &= ~0x000FU;
 

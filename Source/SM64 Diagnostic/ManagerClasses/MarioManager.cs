@@ -116,13 +116,13 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapManager.CameraMapObject.Z = cameraZ;
             _mapManager.CameraMapObject.Rotation = cameraRot;
 
-            // We are done if we don't need to update the Mario Manager view
-            if (!updateView)
-                return;
-
             // Update watch variables
             foreach (var watchVar in _marioDataControls)
                 watchVar.Update();
+
+            // We are done if we don't need to update the Mario Manager view
+            if (!updateView)
+                return;
 
             _heightBelowCeil.Text = (BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.CeilingYOffset, 4), 0) - y).ToString();
             _heightAboveGround.Text = (y - BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.GroundYOffset, 4), 0)).ToString();
