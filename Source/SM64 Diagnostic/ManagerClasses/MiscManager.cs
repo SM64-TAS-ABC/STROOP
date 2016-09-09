@@ -98,14 +98,12 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void Update(bool updateView)
         {
-            if (!updateView)
-                return;
-
             // Update watch variables
             foreach (var watchVar in _watchVarControls)
-            {
                 watchVar.Update();
-            }
+
+            if (!updateView)
+                return;
 
             // Update the rng index
             int rngIndex = RngIndexer.GetRngIndex(BitConverter.ToUInt16(_stream.ReadRam(_config.RngAddress, 2), 0));
