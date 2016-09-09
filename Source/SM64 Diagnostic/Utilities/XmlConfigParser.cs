@@ -549,7 +549,8 @@ namespace SM64_Diagnostic.Utilities
                         break;
 
                     case "Object":
-                        uint behaviorAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value) - ramToBehaviorOffset;
+                        uint behaviorAddress = (ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value)
+                            - ramToBehaviorOffset) & 0x00FFFFFF;
                         string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                         string mapImagePath = null;
                         bool rotates = false;
