@@ -14,6 +14,7 @@
   <Data type="uint16" address="0x8033BACA">Loading Point</Data>
   <Data type="int16" address="0xc19876" absoluteAddress="true">Current File</Data>
   <Data type="byte" address="0x00C19076" absoluteAddress="true">Demo Counter</Data>
+  <Data type="int16" address="0xa936b2" absoluteAddress="true">Demo Timer</Data>
   <Data type="byte" address="0xc1cf13" absoluteAddress="true">Arrow Selection</Data>
   <Data type="int16" address="0xa9379e" absoluteAddress="true">Hand X</Data>
   <Data type="int16" address="0xa937a2" absoluteAddress="true">Hand Y</Data>
