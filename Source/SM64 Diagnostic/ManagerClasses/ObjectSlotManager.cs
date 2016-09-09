@@ -307,9 +307,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 var processGroup = objectData.ObjectProcessGroup;
                 ObjectSlots[index].ProcessGroup = processGroup;
 
-                var behaviorColor = groupConfig.ProcessingGroupsColor[objectData.ObjectProcessGroup];
-                var newColor = objectData.ObjectProcessGroup == VacantGroup ? groupConfig.VacantSlotColor : behaviorColor;
-
+                var newColor = objectData.ObjectProcessGroup == VacantGroup ? groupConfig.VacantSlotColor : groupConfig.ProcessingGroupsColor[objectData.ObjectProcessGroup];
                 ObjectSlots[index].BackColor = newColor;
 
                 var labelText = (SortMethod == SortMethodType.ProcessingOrder && objectData.VacantSlotIndex.HasValue) ?
@@ -332,7 +330,7 @@ namespace SM64_Diagnostic.ManagerClasses
                         _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
                         _objManager.Name = ObjectAssoc.GetObjectName(behaviorScriptAdd);
                         _objManager.Image = ObjectSlots[index].Image;
-                        _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorScriptAdd), behaviorColor.Lighten(0.8));
+                        _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorScriptAdd), newColor.Lighten(0.8));
                         _lastSelectedBehavior = behaviorScriptAdd;
                     }
                     _objManager.BackColor = newColor;
