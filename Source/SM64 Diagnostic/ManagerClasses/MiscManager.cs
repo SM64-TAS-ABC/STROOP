@@ -58,8 +58,6 @@ namespace SM64_Diagnostic.ManagerClasses
             _puController.Controls["buttonPuConZpPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuDown);
             _puController.Controls["buttonPuConXnPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuLeft);
             _puController.Controls["buttonPuConXpPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuRight);
-
-            _puController.Controls["buttonPuConHome"].Text = "\u1F3E0";
         }
 
         private void PuControl_Click(object sender, EventArgs e, PuControl controlType)
