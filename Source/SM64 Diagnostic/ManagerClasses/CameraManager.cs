@@ -38,14 +38,12 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void Update(bool updateView)
         {
-            if (!updateView)
-                return;
-
             // Update watch variables
             foreach (var watchVar in _cameraDataControls)
-            {
                 watchVar.Update();
-            }
+
+            if (!updateView)
+                return;
         }
 
         private void RegisterControlEvents(Control control)
