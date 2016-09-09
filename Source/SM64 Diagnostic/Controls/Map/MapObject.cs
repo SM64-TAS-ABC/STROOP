@@ -34,7 +34,7 @@ namespace SM64_Diagnostic.Structs
 
         public override void DrawOnControl(MapGraphics graphics)
         {
-            graphics.DrawTexture(TextureId, LocationOnContol, graphics.ScaleImageSize(Image.Size, graphics.IconSize), Rotation);
+            graphics.DrawTexture(TextureId, LocationOnContol, graphics.ScaleImageSize(Image.Size, graphics.IconSize), UsesRotation ? Rotation : 0);
         }
 
         public override void Load(MapGraphics graphics)

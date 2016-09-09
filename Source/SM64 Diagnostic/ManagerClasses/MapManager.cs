@@ -97,7 +97,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _holpMapObj = new MapObject(objAssoc.HolpImage, 2);
 
             _cameraMapObj = new MapObject(objAssoc.CameraMapImage, 1);
-            _floorTriangleMapObj = new TriangleMapObject(3);
+            _floorTriangleMapObj = new TriangleMapObject(Color.FromArgb(200, Color.Yellow), 3);
         }
 
         public void Load()
@@ -274,13 +274,11 @@ namespace SM64_Diagnostic.ManagerClasses
 
             // Change and set a new map
             using (var mapImage = MapAssoc.GetMapImage(map))
-            {
                 _mapGraphics.SetMap(mapImage);
-            }
+
             using (var mapBackground = MapAssoc.GetMapBackgroundImage(map))
-            {
                 _mapGraphics.SetBackground(mapBackground);
-            }
+
             _currentMap = map;
         }
 

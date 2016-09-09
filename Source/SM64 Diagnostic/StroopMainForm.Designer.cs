@@ -148,6 +148,7 @@ namespace SM64_Diagnostic
             this.labelDisStart = new System.Windows.Forms.Label();
             this.richTextBoxDissasembly = new System.Windows.Forms.RichTextBox();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
             this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
             this.checkBoxPuVisible = new System.Windows.Forms.CheckBox();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
@@ -176,7 +177,6 @@ namespace SM64_Diagnostic
             this.pictureBox6 = new SM64_Diagnostic.Controls.IntPictureBox();
             this.pictureBox7 = new SM64_Diagnostic.Controls.IntPictureBox();
             this.pictureBox8 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -280,7 +280,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(968, 318);
+            this.groupBoxObjects.Size = new System.Drawing.Size(968, 319);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -357,7 +357,7 @@ namespace SM64_Diagnostic
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 65);
             this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 249);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 250);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -1430,7 +1430,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(648, 170);
+            this.glControlMap.Size = new System.Drawing.Size(649, 170);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -1637,6 +1637,16 @@ namespace SM64_Diagnostic
             this.tabPageOptions.Size = new System.Drawing.Size(960, 206);
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 87);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(129, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "*Requires Pure Interpreter";
             // 
             // checkBoxMoveCamWithPu
             // 
@@ -1957,16 +1967,6 @@ namespace SM64_Diagnostic
             this.pictureBox8.Size = new System.Drawing.Size(59, 50);
             this.pictureBox8.TabIndex = 7;
             this.pictureBox8.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "*Requires Pure Interpreter";
             // 
             // StroopMainForm
             // 

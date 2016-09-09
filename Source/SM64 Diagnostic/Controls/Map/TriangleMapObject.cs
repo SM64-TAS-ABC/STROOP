@@ -17,14 +17,15 @@ namespace SM64_Diagnostic.Structs
         public float Z1, Z2, Z3;
         public float Y;
         public bool Show;
-
+        public Color Color;
 
         public PointF P1OnControl, P2OnControl, P3OnControl;
 
 
-        public TriangleMapObject(int depth = 0)
+        public TriangleMapObject(Color color, int depth = 0)
         {
             Depth = depth;
+            Color = color;
         }
 
         public override void DrawOnControl(MapGraphics graphics)
@@ -32,7 +33,7 @@ namespace SM64_Diagnostic.Structs
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
-            GL.Color4(1, 1, 0, 0.8f);
+            GL.Color4(Color);
             GL.Begin(PrimitiveType.Triangles);
             GL.Vertex2(P1OnControl.X, P1OnControl.Y);
             GL.Vertex2(P2OnControl.X, P2OnControl.Y);
