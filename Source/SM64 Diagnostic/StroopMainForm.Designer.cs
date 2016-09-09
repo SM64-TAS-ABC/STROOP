@@ -170,14 +170,14 @@ namespace SM64_Diagnostic
             this.labelDisStart = new System.Windows.Forms.Label();
             this.richTextBoxDissasembly = new System.Windows.Forms.RichTextBox();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.labelRomHacks = new System.Windows.Forms.Label();
+            this.checkedListBoxRomHacks = new System.Windows.Forms.CheckedListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
             this.checkBoxPuVisible = new System.Windows.Forms.CheckBox();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.labelVersionNumber = new System.Windows.Forms.Label();
-            this.checkedListBoxRomHacks = new System.Windows.Forms.CheckedListBox();
-            this.labelRomHacks = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -281,7 +281,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(968, 320);
+            this.groupBoxObjects.Size = new System.Drawing.Size(968, 321);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -358,7 +358,7 @@ namespace SM64_Diagnostic
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 65);
             this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 251);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 252);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -1681,7 +1681,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(650, 170);
+            this.glControlMap.Size = new System.Drawing.Size(628, 170);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -1890,6 +1890,26 @@ namespace SM64_Diagnostic
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
             // 
+            // labelRomHacks
+            // 
+            this.labelRomHacks.AutoSize = true;
+            this.labelRomHacks.Location = new System.Drawing.Point(655, 4);
+            this.labelRomHacks.Name = "labelRomHacks";
+            this.labelRomHacks.Size = new System.Drawing.Size(71, 13);
+            this.labelRomHacks.TabIndex = 7;
+            this.labelRomHacks.Text = "ROM hacks*:";
+            // 
+            // checkedListBoxRomHacks
+            // 
+            this.checkedListBoxRomHacks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkedListBoxRomHacks.FormattingEnabled = true;
+            this.checkedListBoxRomHacks.Location = new System.Drawing.Point(658, 18);
+            this.checkedListBoxRomHacks.Name = "checkedListBoxRomHacks";
+            this.checkedListBoxRomHacks.Size = new System.Drawing.Size(299, 184);
+            this.checkedListBoxRomHacks.TabIndex = 6;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -1957,26 +1977,6 @@ namespace SM64_Diagnostic
             this.labelVersionNumber.TabIndex = 5;
             this.labelVersionNumber.Text = "version";
             this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // checkedListBoxRomHacks
-            // 
-            this.checkedListBoxRomHacks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkedListBoxRomHacks.FormattingEnabled = true;
-            this.checkedListBoxRomHacks.Location = new System.Drawing.Point(658, 18);
-            this.checkedListBoxRomHacks.Name = "checkedListBoxRomHacks";
-            this.checkedListBoxRomHacks.Size = new System.Drawing.Size(299, 184);
-            this.checkedListBoxRomHacks.TabIndex = 6;
-            // 
-            // labelRomHacks
-            // 
-            this.labelRomHacks.AutoSize = true;
-            this.labelRomHacks.Location = new System.Drawing.Point(655, 4);
-            this.labelRomHacks.Name = "labelRomHacks";
-            this.labelRomHacks.Size = new System.Drawing.Size(71, 13);
-            this.labelRomHacks.TabIndex = 7;
-            this.labelRomHacks.Text = "ROM hacks*:";
             // 
             // StroopMainForm
             // 
