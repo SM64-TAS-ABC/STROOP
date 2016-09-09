@@ -348,16 +348,19 @@ namespace SM64_Diagnostic.ManagerClasses
 
                     // Update image
                     var mapObjImage = ObjectAssoc.GetObjectMapImage(behaviorScriptAdd, !isActive);
+                    var mapObjRotates = ObjectAssoc.GetObjectMapRotates(behaviorScriptAdd);
                     if (!_mapObjects.ContainsKey(currentAddress))
                     {
                         _mapObjects.Add(currentAddress, new MapObject(mapObjImage));
                         _mapManager.AddMapObject(_mapObjects[currentAddress]);
+                        _mapObjects[currentAddress].UsesRotation = mapObjRotates;
                     }
                     else if (_mapObjects[currentAddress].Image != mapObjImage)
                     {
                         _mapManager.RemoveMapObject(_mapObjects[currentAddress]);
                         _mapObjects[currentAddress] = new MapObject(mapObjImage);
                         _mapManager.AddMapObject(_mapObjects[currentAddress]);
+                        _mapObjects[currentAddress].UsesRotation = mapObjRotates;
                     }
 
                     if (behaviorScriptAdd == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF))
