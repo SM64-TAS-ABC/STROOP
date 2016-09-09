@@ -211,6 +211,9 @@
     <EmbeddedResource Include="Schemas\MapAssociationsSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="Resources\Hacks\Camera45Hack.hck">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Scripts\RNGObjectEndProc.src64">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
