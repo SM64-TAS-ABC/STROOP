@@ -30,7 +30,8 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public enum AngleViewModeType {Raw, Signed, Unsigned, Degrees, Radians};
 
-        AngleViewModeType AngleViewMode = AngleViewModeType.Raw;
+        AngleViewModeType _angleViewMode = AngleViewModeType.Raw;
+        Boolean _angleTruncated = false;
 
         private static ContextMenuStrip _menu;
         public static ContextMenuStrip Menu
@@ -67,26 +68,29 @@ namespace SM64_Diagnostic.ManagerClasses
                     newItem = new ToolStripMenuItem("Lock Value");
                     newItem.Name = "LockValue";
                     _angleMenu.Items.Add(newItem);
-
-                    _angleMenu.Items.Add(AngleDropDownMenu);
+         
+                    _angleMenu.Items.Add(AngleDropDownMenu[0]);
+                    _angleMenu.Items.Add(AngleDropDownMenu[1]);
                 }
                 return _angleMenu;
             }
         }
-        private static ToolStripMenuItem _angleMenuDropDown;
 
-        public static ToolStripMenuItem AngleDropDownMenu
+        private static ToolStripMenuItem[] _angleMenuDropDown;
+        public static ToolStripMenuItem[] AngleDropDownMenu
         {
             get
             {
                 if (_angleMenuDropDown == null)
                 {
-                    _angleMenuDropDown = new ToolStripMenuItem("View Angle As");
-                    _angleMenuDropDown.DropDownItems.Add("Raw");
-                    _angleMenuDropDown.DropDownItems.Add("Unsigned (short)");
-                    _angleMenuDropDown.DropDownItems.Add("Signed (short)");
-                    _angleMenuDropDown.DropDownItems.Add("Degrees");
-                    _angleMenuDropDown.DropDownItems.Add("Radians");
+                    _angleMenuDropDown = new ToolStripMenuItem[2];
+                    _angleMenuDropDown[0] = new ToolStripMenuItem("View Angle As");
+                    _angleMenuDropDown[0].DropDownItems.Add("Raw");
+                    _angleMenuDropDown[0].DropDownItems.Add("Unsigned (short)");
+                    _angleMenuDropDown[0].DropDownItems.Add("Signed (short)");
+                    _angleMenuDropDown[0].DropDownItems.Add("Degrees");
+                    _angleMenuDropDown[0].DropDownItems.Add("Radians");
+                    _angleMenuDropDown[1] = new ToolStripMenuItem("Truncate Angle (by 16)");
                 }
                 return _angleMenuDropDown;
             }
@@ -209,7 +213,8 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (_watchVar.IsAngle)
                 {
                     WatchVariableControl.AngleMenu.ItemClicked += OnMenuStripClick;
-                    WatchVariableControl.AngleDropDownMenu.DropDownItemClicked += AngleDropDownMenu_DropDownItemClicked;
+                    WatchVariableControl.AngleDropDownMenu[0].DropDownItemClicked += AngleDropDownMenu_DropDownItemClicked;
+                    WatchVariableControl.AngleDropDownMenu[1].Click += TruncateAngleMenu_ItemClicked;
                 }
                 else
                     WatchVariableControl.Menu.ItemClicked += OnMenuStripClick;
@@ -253,11 +258,12 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 (AngleMenu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
                 (AngleMenu.Items["LockValue"] as ToolStripMenuItem).Checked = _valueLocked;
-                (AngleDropDownMenu.DropDownItems[0] as ToolStripMenuItem).Checked = (AngleViewMode == AngleViewModeType.Raw);
-                (AngleDropDownMenu.DropDownItems[1] as ToolStripMenuItem).Checked = (AngleViewMode == AngleViewModeType.Unsigned);
-                (AngleDropDownMenu.DropDownItems[2] as ToolStripMenuItem).Checked = (AngleViewMode == AngleViewModeType.Signed);
-                (AngleDropDownMenu.DropDownItems[3] as ToolStripMenuItem).Checked = (AngleViewMode == AngleViewModeType.Degrees);
-                (AngleDropDownMenu.DropDownItems[4] as ToolStripMenuItem).Checked = (AngleViewMode == AngleViewModeType.Radians);
+                (AngleDropDownMenu[0].DropDownItems[0] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Raw);
+                (AngleDropDownMenu[0].DropDownItems[1] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Unsigned);
+                (AngleDropDownMenu[0].DropDownItems[2] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Signed);
+                (AngleDropDownMenu[0].DropDownItems[3] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Degrees);
+                (AngleDropDownMenu[0].DropDownItems[4] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Radians);
+                (AngleDropDownMenu[1] as ToolStripMenuItem).Checked = _angleTruncated; 
             }
             else
             {
@@ -274,21 +280,29 @@ namespace SM64_Diagnostic.ManagerClasses
             switch (e.ClickedItem.Text)
             {
                 case "Raw":
-                    AngleViewMode = AngleViewModeType.Raw;
+                    _angleViewMode = AngleViewModeType.Raw;
                     break;
                 case "Unsigned (short)":
-                    AngleViewMode = AngleViewModeType.Unsigned;
+                    _angleViewMode = AngleViewModeType.Unsigned;
                     break;
                 case "Signed (short)":
-                    AngleViewMode = AngleViewModeType.Signed;
+                    _angleViewMode = AngleViewModeType.Signed;
                     break;
                 case "Degrees":
-                    AngleViewMode = AngleViewModeType.Degrees;
+                    _angleViewMode = AngleViewModeType.Degrees;
                     break;
                 case "Radians":
-                    AngleViewMode = AngleViewModeType.Radians;
+                    _angleViewMode = AngleViewModeType.Radians;
                     break;
             }
+        }
+
+        private void TruncateAngleMenu_ItemClicked(object sender, EventArgs e)
+        {
+            if (this != _lastSelected)
+                return;
+
+            _angleTruncated = !_angleTruncated;
         }
 
         public void Update()
@@ -307,7 +321,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
             else if (_watchVar.IsAngle)
             {
-                _textBoxValue.Text = _watchVar.GetAngleStringValue(_stream, OtherOffset, AngleViewMode);
+                _textBoxValue.Text = _watchVar.GetAngleStringValue(_stream, OtherOffset, _angleViewMode, _angleTruncated);
             }
             else
             {
@@ -360,7 +374,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _textBoxValue.ReadOnly = true;
             _editMode = false;
             if (_watchVar.IsAngle)
-                _watchVar.SetAngleStringValue(_stream, OtherOffset, _textBoxValue.Text, AngleViewMode);
+                _watchVar.SetAngleStringValue(_stream, OtherOffset, _textBoxValue.Text, _angleViewMode);
             else
                 _watchVar.SetStringValue(_stream, OtherOffset, _textBoxValue.Text);
         }
