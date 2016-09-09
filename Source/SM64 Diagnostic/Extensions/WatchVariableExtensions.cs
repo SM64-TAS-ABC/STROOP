@@ -120,7 +120,7 @@ namespace SM64_Diagnostic.Extensions
                 : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
         }
 
-        public static string GetAngleStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset, WatchVariableControl.AngleViewModeType viewMode)
+        public static string GetAngleStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset, WatchVariableControl.AngleViewModeType viewMode, bool truncated = false)
         {
             // Get dataBytes
             var byteCount = TypeSize[watchVar.Type];
@@ -131,13 +131,17 @@ namespace SM64_Diagnostic.Extensions
                 && watchVar.Type != typeof(UInt16))
                 return "Error: datatype";
 
-            // Get Uint64 value
+            // Get Uint32 value
             UInt32 dataValue = (watchVar.Type == typeof(UInt32)) ? BitConverter.ToUInt32(dataBytes, 0) 
                 : BitConverter.ToUInt16(dataBytes, 0);
 
             // Apply mask
             if (watchVar.Mask.HasValue)
                 dataValue = (UInt32)(dataValue & watchVar.Mask.Value);
+
+            // Truncate to 0x16
+            if (truncated)
+                dataValue &= ~0x000FU;
 
             // Print hex
             if (watchVar.UseHex)
