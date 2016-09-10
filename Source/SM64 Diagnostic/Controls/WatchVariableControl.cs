@@ -180,7 +180,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (!_watchVar.OtherOffset)
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
-                        _watchVar.GetRamAddress(_stream), _watchVar.GetProcessAddress(_stream, 0), _stream.ProcessName));
+                        _watchVar.GetRamAddress(_stream), _watchVar.GetProcessAddress(_stream), _stream.ProcessName));
                 }
                 else
                 {
@@ -238,9 +238,19 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private void _nameLabel_Click(object sender, EventArgs e)
         {
-            var varInfo = new VariableViewerForm(_watchVar.Name, _watchVar.GetTypeString(),
-                String.Format("0x{0:X8}", _watchVar.GetRamAddress(_stream)),
-                String.Format("0x{0:X8}", _watchVar.GetProcessAddress(_stream, OtherOffset)));
+            VariableViewerForm varInfo;
+            if (!_watchVar.OtherOffset)
+            {
+                varInfo = new VariableViewerForm(_watchVar.Name, _watchVar.GetTypeString(),
+                    String.Format("0x{0:X8}", _watchVar.GetRamAddress(_stream)),
+                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress(_stream)));
+            }
+            else
+            {
+                varInfo = new VariableViewerForm(_watchVar.Name, _watchVar.GetTypeString(),
+                    String.Format("0x{0:X8}", _watchVar.GetRamOffsetAddress(_stream, OtherOffset)),
+                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress(_stream, OtherOffset)));
+            }
             varInfo.ShowDialog();
         }
 

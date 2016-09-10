@@ -105,12 +105,6 @@ namespace SM64_Diagnostic
             this.panelMiscBorder = new System.Windows.Forms.Panel();
             this.tabPageStars = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panelStrCourse = new System.Windows.Forms.Panel();
-            this.flowLayoutPanelCourse = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelStrCoinRecord = new System.Windows.Forms.Label();
-            this.textBoxStrCoinRecord = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.radioButtonFileD = new System.Windows.Forms.RadioButton();
             this.radioButtonFileC = new System.Windows.Forms.RadioButton();
             this.radioButtonFileB = new System.Windows.Forms.RadioButton();
@@ -162,22 +156,6 @@ namespace SM64_Diagnostic
             this.pictureBoxCamera = new SM64_Diagnostic.Controls.IntPictureBox();
             this.pictureBoxDebug = new SM64_Diagnostic.Controls.IntPictureBox();
             this.pictureBoxMisc = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBoxStrStar1 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBoxStrStar2 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBoxStrStar3 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBoxStrStar4 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBoxStrStar5 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBoxStrStar6 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBoxStrStar7 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBoxStrCannon = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBox1 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBox2 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBox3 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBox4 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBox5 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBox6 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBox7 = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBox8 = new SM64_Diagnostic.Controls.IntPictureBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -199,11 +177,6 @@ namespace SM64_Diagnostic
             this.groupBoxPuController.SuspendLayout();
             this.panelMiscBorder.SuspendLayout();
             this.tabPageStars.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.panelStrCourse.SuspendLayout();
-            this.flowLayoutPanelCourse.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.tabPageMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).BeginInit();
             this.splitContainerMap.Panel1.SuspendLayout();
@@ -221,22 +194,6 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrCannon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxProcessSelection
@@ -1099,88 +1056,12 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Controls.Add(this.panelStrCourse);
-            this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(63, 7);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(891, 193);
             this.flowLayoutPanel1.TabIndex = 4;
             this.flowLayoutPanel1.WrapContents = false;
-            // 
-            // panelStrCourse
-            // 
-            this.panelStrCourse.Controls.Add(this.flowLayoutPanelCourse);
-            this.panelStrCourse.Location = new System.Drawing.Point(0, 0);
-            this.panelStrCourse.Margin = new System.Windows.Forms.Padding(0);
-            this.panelStrCourse.Name = "panelStrCourse";
-            this.panelStrCourse.Size = new System.Drawing.Size(665, 62);
-            this.panelStrCourse.TabIndex = 0;
-            // 
-            // flowLayoutPanelCourse
-            // 
-            this.flowLayoutPanelCourse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar1);
-            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar2);
-            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar3);
-            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar4);
-            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar5);
-            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar6);
-            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrStar7);
-            this.flowLayoutPanelCourse.Controls.Add(this.pictureBoxStrCannon);
-            this.flowLayoutPanelCourse.Controls.Add(this.labelStrCoinRecord);
-            this.flowLayoutPanelCourse.Controls.Add(this.textBoxStrCoinRecord);
-            this.flowLayoutPanelCourse.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanelCourse.Name = "flowLayoutPanelCourse";
-            this.flowLayoutPanelCourse.Size = new System.Drawing.Size(659, 56);
-            this.flowLayoutPanelCourse.TabIndex = 0;
-            // 
-            // labelStrCoinRecord
-            // 
-            this.labelStrCoinRecord.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelStrCoinRecord.AutoSize = true;
-            this.labelStrCoinRecord.Location = new System.Drawing.Point(523, 21);
-            this.labelStrCoinRecord.Name = "labelStrCoinRecord";
-            this.labelStrCoinRecord.Size = new System.Drawing.Size(72, 13);
-            this.labelStrCoinRecord.TabIndex = 9;
-            this.labelStrCoinRecord.Text = "Coint Record:";
-            // 
-            // textBoxStrCoinRecord
-            // 
-            this.textBoxStrCoinRecord.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxStrCoinRecord.Location = new System.Drawing.Point(601, 18);
-            this.textBoxStrCoinRecord.Name = "textBoxStrCoinRecord";
-            this.textBoxStrCoinRecord.Size = new System.Drawing.Size(44, 20);
-            this.textBoxStrCoinRecord.TabIndex = 8;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.flowLayoutPanel2);
-            this.panel2.Location = new System.Drawing.Point(0, 62);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(529, 62);
-            this.panel2.TabIndex = 1;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel2.Controls.Add(this.pictureBox1);
-            this.flowLayoutPanel2.Controls.Add(this.pictureBox2);
-            this.flowLayoutPanel2.Controls.Add(this.pictureBox3);
-            this.flowLayoutPanel2.Controls.Add(this.pictureBox4);
-            this.flowLayoutPanel2.Controls.Add(this.pictureBox5);
-            this.flowLayoutPanel2.Controls.Add(this.pictureBox6);
-            this.flowLayoutPanel2.Controls.Add(this.pictureBox7);
-            this.flowLayoutPanel2.Controls.Add(this.pictureBox8);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(523, 56);
-            this.flowLayoutPanel2.TabIndex = 0;
             // 
             // radioButtonFileD
             // 
@@ -1818,166 +1699,6 @@ namespace SM64_Diagnostic
             this.pictureBoxMisc.TabIndex = 0;
             this.pictureBoxMisc.TabStop = false;
             // 
-            // pictureBoxStrStar1
-            // 
-            this.pictureBoxStrStar1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxStrStar1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxStrStar1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxStrStar1.Name = "pictureBoxStrStar1";
-            this.pictureBoxStrStar1.Size = new System.Drawing.Size(59, 50);
-            this.pictureBoxStrStar1.TabIndex = 0;
-            this.pictureBoxStrStar1.TabStop = false;
-            // 
-            // pictureBoxStrStar2
-            // 
-            this.pictureBoxStrStar2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxStrStar2.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxStrStar2.Location = new System.Drawing.Point(68, 3);
-            this.pictureBoxStrStar2.Name = "pictureBoxStrStar2";
-            this.pictureBoxStrStar2.Size = new System.Drawing.Size(59, 50);
-            this.pictureBoxStrStar2.TabIndex = 1;
-            this.pictureBoxStrStar2.TabStop = false;
-            // 
-            // pictureBoxStrStar3
-            // 
-            this.pictureBoxStrStar3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxStrStar3.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxStrStar3.Location = new System.Drawing.Point(133, 3);
-            this.pictureBoxStrStar3.Name = "pictureBoxStrStar3";
-            this.pictureBoxStrStar3.Size = new System.Drawing.Size(59, 50);
-            this.pictureBoxStrStar3.TabIndex = 2;
-            this.pictureBoxStrStar3.TabStop = false;
-            // 
-            // pictureBoxStrStar4
-            // 
-            this.pictureBoxStrStar4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxStrStar4.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxStrStar4.Location = new System.Drawing.Point(198, 3);
-            this.pictureBoxStrStar4.Name = "pictureBoxStrStar4";
-            this.pictureBoxStrStar4.Size = new System.Drawing.Size(59, 50);
-            this.pictureBoxStrStar4.TabIndex = 3;
-            this.pictureBoxStrStar4.TabStop = false;
-            // 
-            // pictureBoxStrStar5
-            // 
-            this.pictureBoxStrStar5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxStrStar5.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxStrStar5.Location = new System.Drawing.Point(263, 3);
-            this.pictureBoxStrStar5.Name = "pictureBoxStrStar5";
-            this.pictureBoxStrStar5.Size = new System.Drawing.Size(59, 50);
-            this.pictureBoxStrStar5.TabIndex = 4;
-            this.pictureBoxStrStar5.TabStop = false;
-            // 
-            // pictureBoxStrStar6
-            // 
-            this.pictureBoxStrStar6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxStrStar6.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxStrStar6.Location = new System.Drawing.Point(328, 3);
-            this.pictureBoxStrStar6.Name = "pictureBoxStrStar6";
-            this.pictureBoxStrStar6.Size = new System.Drawing.Size(59, 50);
-            this.pictureBoxStrStar6.TabIndex = 5;
-            this.pictureBoxStrStar6.TabStop = false;
-            // 
-            // pictureBoxStrStar7
-            // 
-            this.pictureBoxStrStar7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxStrStar7.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxStrStar7.Location = new System.Drawing.Point(393, 3);
-            this.pictureBoxStrStar7.Name = "pictureBoxStrStar7";
-            this.pictureBoxStrStar7.Size = new System.Drawing.Size(59, 50);
-            this.pictureBoxStrStar7.TabIndex = 6;
-            this.pictureBoxStrStar7.TabStop = false;
-            // 
-            // pictureBoxStrCannon
-            // 
-            this.pictureBoxStrCannon.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxStrCannon.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxStrCannon.Location = new System.Drawing.Point(458, 3);
-            this.pictureBoxStrCannon.Name = "pictureBoxStrCannon";
-            this.pictureBoxStrCannon.Size = new System.Drawing.Size(59, 50);
-            this.pictureBoxStrCannon.TabIndex = 7;
-            this.pictureBoxStrCannon.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(59, 50);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox2.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBox2.Location = new System.Drawing.Point(68, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(59, 50);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox3.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBox3.Location = new System.Drawing.Point(133, 3);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(59, 50);
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox4.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBox4.Location = new System.Drawing.Point(198, 3);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(59, 50);
-            this.pictureBox4.TabIndex = 3;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox5.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBox5.Location = new System.Drawing.Point(263, 3);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(59, 50);
-            this.pictureBox5.TabIndex = 4;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox6.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBox6.Location = new System.Drawing.Point(328, 3);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(59, 50);
-            this.pictureBox6.TabIndex = 5;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox7.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBox7.Location = new System.Drawing.Point(393, 3);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(59, 50);
-            this.pictureBox7.TabIndex = 6;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox8.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBox8.Location = new System.Drawing.Point(458, 3);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(59, 50);
-            this.pictureBox8.TabIndex = 7;
-            this.pictureBox8.TabStop = false;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2019,12 +1740,6 @@ namespace SM64_Diagnostic
             this.panelMiscBorder.ResumeLayout(false);
             this.tabPageStars.ResumeLayout(false);
             this.tabPageStars.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.panelStrCourse.ResumeLayout(false);
-            this.flowLayoutPanelCourse.ResumeLayout(false);
-            this.flowLayoutPanelCourse.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
             this.tabPageMap.ResumeLayout(false);
             this.splitContainerMap.Panel1.ResumeLayout(false);
             this.splitContainerMap.Panel1.PerformLayout();
@@ -2047,22 +1762,6 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrStar7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStrCannon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2168,28 +1867,6 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.RadioButton radioButtonFileC;
         private System.Windows.Forms.RadioButton radioButtonFileB;
         private System.Windows.Forms.RadioButton radioButtonFileA;
-        private System.Windows.Forms.Panel panelStrCourse;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCourse;
-        private IntPictureBox pictureBoxStrStar1;
-        private IntPictureBox pictureBoxStrStar2;
-        private IntPictureBox pictureBoxStrStar3;
-        private IntPictureBox pictureBoxStrStar4;
-        private IntPictureBox pictureBoxStrStar5;
-        private IntPictureBox pictureBoxStrStar6;
-        private IntPictureBox pictureBoxStrStar7;
-        private IntPictureBox pictureBoxStrCannon;
-        private System.Windows.Forms.Label labelStrCoinRecord;
-        private System.Windows.Forms.TextBox textBoxStrCoinRecord;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private IntPictureBox pictureBox1;
-        private IntPictureBox pictureBox2;
-        private IntPictureBox pictureBox3;
-        private IntPictureBox pictureBox4;
-        private IntPictureBox pictureBox5;
-        private IntPictureBox pictureBox6;
-        private IntPictureBox pictureBox7;
-        private IntPictureBox pictureBox8;
         private System.Windows.Forms.GroupBox groupBoxPuController;
         private System.Windows.Forms.Button buttonPuConZpPu;
         private System.Windows.Forms.Button buttonPuConZpQpu;

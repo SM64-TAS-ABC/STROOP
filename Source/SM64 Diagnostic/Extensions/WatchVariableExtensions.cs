@@ -31,7 +31,7 @@ namespace SM64_Diagnostic.Extensions
             return address | 0x80000000;
         }
 
-        public static uint GetProcessAddress(this WatchVariable watchVar, ProcessStream stream, uint offset)
+        public static uint GetProcessAddress(this WatchVariable watchVar, ProcessStream stream, uint offset = 0)
         {
             uint address = GetRamOffsetAddress(watchVar, stream, offset) & 0x0FFFFFFF;
             return (uint) LittleEndianessAddressing.AddressFix(
