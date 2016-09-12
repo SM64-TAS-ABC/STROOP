@@ -1875,7 +1875,7 @@
     <Image path="Penguin.png"/>
 	<MapImage path="Penguin Top.png" rotates="true"/>
     <Data type="byte" address="0x1B3" objectOffset="true" isBool="true">Mario Cheated</Data>
-    <Data type="byte" address="0x1AF" objectOffset="true" isBool="true">Mario Won</Data>
+    <Data type="byte" address="0x1AF" objectOffset="true" isBool="true">Mario Finished First</Data>
     <Data type="float" address="0x110" objectOffset="true">Effort</Data>
     <Data type="uint32" address="0x100" objectOffset="true" useHex="true">Current Waypoint</Data>
   </Object>
