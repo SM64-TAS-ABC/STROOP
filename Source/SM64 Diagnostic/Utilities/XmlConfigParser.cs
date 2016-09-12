@@ -209,6 +209,12 @@ namespace SM64_Diagnostic.Utilities
                                 case "FloorTriangleOffset":
                                     config.Mario.FloorTriangleOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "SlidingSpeedXOffset":
+                                    config.Mario.SlidingSpeedXOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "SlidingSpeedZOffset":
+                                    config.Mario.SlidingSpeedZOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;
