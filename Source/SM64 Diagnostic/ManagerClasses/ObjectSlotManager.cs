@@ -68,7 +68,7 @@ namespace SM64_Diagnostic.ManagerClasses
         public void ChangeSlotSize(int newSize)
         {
             foreach (var objSlot in ObjectSlots)
-                objSlot.Size = newSize;
+                objSlot.Size = new Size(newSize, newSize);
         }
 
         public ObjectSlotManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, 
@@ -93,13 +93,14 @@ namespace SM64_Diagnostic.ManagerClasses
             ObjectSlotData = new ObjectSlotData[_config.ObjectSlots.MaxSlots];
             for (int i = 0; i < _config.ObjectSlots.MaxSlots; i++)
             {
-                var objectSlot = new ObjectSlot(i, this);
+                var objectSlot = new ObjectSlot(i, this, new Size(40,40));
                 ObjectSlots[i] = objectSlot;
                 int localI = i;
-                objectSlot.OnClick += (sender, e) => OnClick(sender, e, localI);
-                ManagerGui.FlowLayoutContainer.Controls.Add(objectSlot.Control);
+                objectSlot.Click += (sender, e) => OnClick(sender, e, localI);
+                ManagerGui.FlowLayoutContainer.Controls.Add(objectSlot);
             }
 
+            ChangeSlotSize(40);
         }
 
         private ObjectSlotData? GetObjectDataFromSlot(int slot)
@@ -110,7 +111,7 @@ namespace SM64_Diagnostic.ManagerClasses
             return ObjectSlotData.First((objData) => objData.Index == slot);
         }
 
-        private void OnClick(object sender, MouseEventArgs e, int slotIndex)
+        private void OnClick(object sender, EventArgs e, int slotIndex)
         {
             if (ManagerGui.TabControl.SelectedTab == null)
                 return;
@@ -329,7 +330,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     {
                         _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
                         _objManager.Name = ObjectAssoc.GetObjectName(behaviorScriptAdd);
-                        _objManager.Image = ObjectSlots[index].Image;
+                        _objManager.Image = ObjectSlots[index].ObjectImage;
                         _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorScriptAdd), newColor.Lighten(0.8));
                         _lastSelectedBehavior = behaviorScriptAdd;
                     }

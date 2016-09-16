@@ -3,6 +3,7 @@
   <Config>
     <ImageDirectory>Resources\Object Images\</ImageDirectory>
     <MapImageDirectory>Resources\Maps\Object Images\</MapImageDirectory>
+    <OverlayImageDirectory>Resources\Overlays\</OverlayImageDirectory>
     <DefaultImage>default.png</DefaultImage>
     <EmptyImage>Empty.png</EmptyImage>
     <RamToBehaviorOffset>0x12F14E80</RamToBehaviorOffset>
@@ -32,6 +33,11 @@
     <Color>#aaaaaa</Color>
     <MapImage path="Camera.png"/>
   </Camera>
+  <Overlays>
+    <Selected>
+      <OverlayImage path="Border.png"/>
+    </Selected>
+  </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <Image path="Star Door.png"/>
 	<MapImage path="Star Door Top.png" rotates="true"/>
