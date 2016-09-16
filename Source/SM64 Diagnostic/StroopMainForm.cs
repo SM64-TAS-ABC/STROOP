@@ -25,6 +25,7 @@ namespace SM64_Diagnostic
         ObjectAssociations _objectAssoc;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
+        List<RomHack> _romHacks;
 
         DataTable _tableOtherData = new DataTable();
         Dictionary<int, DataRow> _otherDataRowAssoc = new Dictionary<int, DataRow>();
@@ -39,6 +40,7 @@ namespace SM64_Diagnostic
         DataManager _hudManager;
         MiscManager _miscManager;
         CameraManager _cameraManager;
+        HackManager _hackManager;
 
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
@@ -85,12 +87,14 @@ namespace SM64_Diagnostic
             _hudData = XmlConfigParser.OpenHudData(_config, @"Config/HudData.xml");
             _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
             _scriptParser = XmlConfigParser.OpenScripts(@"Config/Scripts.xml");
+            _romHacks = XmlConfigParser.OpenHacks(@"Config/Hacks.xml");
 
             _sm64Stream = new ProcessStream(_config);
             _sm64Stream.OnUpdate += OnUpdate;
 
             _disManager = new DisassemblyManager(_config, this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
             _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
+            _hackManager = new HackManager(_sm64Stream, _romHacks, checkedListBoxRomHacks);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -206,6 +210,7 @@ namespace SM64_Diagnostic
             _mapManager?.Update();
             UpdateMemoryValues();
             _scriptManager.Update();
+            _hackManager.Update();
         }
 
         private void SetupViews()
@@ -540,11 +545,6 @@ namespace SM64_Diagnostic
                 if (_splitterIsExpanded)
                     splitContainerMain.SplitterDistance = _defaultSplitValue;
             }
-        }
-
-        private void checkBoxPuVisible_CheckedChanged(object sender, EventArgs e)
-        {
-            HackParser.LoadHack(_sm64Stream, @"Resources/Hacks/PuVisible.hck");
         }
 
         private void tabControlMain_DragEnter(object sender, DragEventArgs e)
