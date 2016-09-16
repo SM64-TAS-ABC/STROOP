@@ -85,6 +85,8 @@
               <xs:element name="CeilingYOffset" type="types:address"/>
               <xs:element name="GroundYOffset" type="types:address"/>
               <xs:element name="MarioStructSize" type="types:address"/>
+              <xs:element name="SlidingSpeedXOffset" type="types:address"/>
+              <xs:element name="SlidingSpeedZOffset" type="types:address"/>
             </xs:all>
           </xs:complexType>
         </xs:element>

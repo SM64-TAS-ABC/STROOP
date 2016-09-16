@@ -1574,7 +1574,6 @@ namespace SM64_Diagnostic
             this.checkBoxPuVisible.TabIndex = 3;
             this.checkBoxPuVisible.Text = "Enable PU Visibility*";
             this.checkBoxPuVisible.UseVisualStyleBackColor = true;
-            this.checkBoxPuVisible.CheckedChanged += new System.EventHandler(this.checkBoxPuVisible_CheckedChanged);
             // 
             // checkBoxUseRomHack
             // 
