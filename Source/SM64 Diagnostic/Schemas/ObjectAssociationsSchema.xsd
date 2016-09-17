@@ -15,6 +15,7 @@
             <xs:all>
               <xs:element name="ImageDirectory" type="xs:string"/>
               <xs:element name="MapImageDirectory" type="xs:string"/>
+              <xs:element name="OverlayImageDirectory" type="xs:string"/>
               <xs:element name="DefaultImage" type="xs:string"/>
               <xs:element name="EmptyImage" type="xs:string"/>
               <xs:element name="RamToBehaviorOffset" type="types:address"/>
@@ -60,7 +61,6 @@
                 </xs:complexType>
               </xs:element>
             </xs:all>
-            <xs:attribute name="behaviorScriptAddress" use="required" type="types:address"/>
           </xs:complexType>
         </xs:element>
         <xs:element name="Debug">
@@ -72,7 +72,6 @@
                 </xs:complexType>
               </xs:element>
             </xs:all>
-            <xs:attribute name="behaviorScriptAddress" use="required" type="types:address"/>
           </xs:complexType>
         </xs:element>
         <xs:element name="Misc">
@@ -84,7 +83,6 @@
                 </xs:complexType>
               </xs:element>
             </xs:all>
-            <xs:attribute name="behaviorScriptAddress" use="required" type="types:address"/>
           </xs:complexType>
         </xs:element>
         <xs:element name="Camera">
@@ -103,7 +101,56 @@
               </xs:element>
               <xs:element name="Color" type="types:color"/>
             </xs:all>
-            <xs:attribute name="behaviorScriptAddress" use="required" type="types:address"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Overlays">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="Selected">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="OverlayImage" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:attribute name="path" use="required" type="xs:string"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="StandingOn">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="OverlayImage" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:attribute name="path" use="required" type="xs:string"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Holding">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="OverlayImage" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:attribute name="path" use="required" type="xs:string"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Interacting">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="OverlayImage" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:attribute name="path" use="required" type="xs:string"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
           </xs:complexType>
         </xs:element>
         <xs:element name="Object" minOccurs="0" maxOccurs="unbounded">

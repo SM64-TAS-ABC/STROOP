@@ -9,51 +9,31 @@ using SM64_Diagnostic.ManagerClasses;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Controls;
+using SM64_Diagnostic.Extensions;
+using System.Drawing.Drawing2D;
 
 namespace SM64_Diagnostic
 {
-    public class ObjectSlot
+    public class ObjectSlot : Panel
     {
         const int BorderSize = 2;
 
         ObjectSlotManager _manager;
+        ObjectSlotManagerGui _gui;
 
-        IntPictureBox PictureBox;
-        Panel BorderPanel;
-        Panel ContentPanel;
-        Label Label;
+        Color _mainColor, _borderColor, _backColor;
+        Brush _borderBrush = new SolidBrush(Color.White), _backBrush = new SolidBrush(Color.White);
+        Image _objectImage;
+        string _text;
 
-        Color _mainColor = Color.White;
         bool _selected = true;
         bool _active = false;
         uint _behavior, _gfxId;
-        int _size;
+
+        int prevHeight;
 
         public enum MouseStateType {None, Over, Down};
         public MouseStateType MouseState;
-
-        public int Size
-        {
-            get
-            {
-                return _size;
-            }
-            set
-            {
-                _size = value;
-
-                BorderPanel.Size = new Size(_size, _size);
-
-                this.ContentPanel.Size = new Size(this.BorderPanel.Size.Width - BorderSize * 2, this.BorderPanel.Size.Height - BorderSize * 2);
-                this.ContentPanel.Location = new Point(BorderSize, BorderSize);
-
-                this.Label.Location =
-                    new Point((this.ContentPanel.Width - this.Label.Size.Width) / 2, this.ContentPanel.Height - this.Label.Font.Height);
-
-                this.PictureBox.Size = new Size(this.ContentPanel.Width, this.Label.Location.Y - 1);
-                this.PictureBox.Location = new Point((ContentPanel.Width - PictureBox.Width) / 2, 1);
-            }
-        }
 
         public bool Selected
         {
@@ -64,7 +44,7 @@ namespace SM64_Diagnostic
             set
             {
                 _selected = value;
-                UpdateGui();
+                UpdateColors();
             }
         }
         public int Index;
@@ -82,7 +62,7 @@ namespace SM64_Diagnostic
                 if (_behavior != value)
                 {
                     _behavior = value;
-                    UpdateGui();
+                    UpdateColors();
                 }
             }
         }
@@ -97,7 +77,7 @@ namespace SM64_Diagnostic
                 if (_gfxId != value)
                 {
                     _gfxId = value;
-                    UpdateGui();
+                    Refresh();
                 }
             }
         }
@@ -113,26 +93,31 @@ namespace SM64_Diagnostic
                 if (_active != value)
                 {
                     _active = value;
-                    UpdateGui();
+                    UpdateColors();
                 }
             }
         }
 
-        public Image Image
+        public Image ObjectImage
         {
             get
             {
-                return PictureBox.Image;
+                return _objectImage;
             }
         }
-
-        public event MouseEventHandler OnClick;
-
-        public Control Control
+        public new string Text
         {
             get
             {
-                return BorderPanel;
+                return _text;
+            }
+            set
+            {
+                if (_text == value)
+                    return;
+
+                _text = value;
+                Refresh();
             }
         }
 
@@ -144,35 +129,100 @@ namespace SM64_Diagnostic
             }
         }
 
-        public Color BackColor
-        {
-            set
-            {
-                if (_mainColor != value)
-                {
-                    _mainColor = value;
-                    UpdateGui();
-                }
-            }
-            get
-            {
-                return BorderPanel.BackColor;
-            }
-        }
-
-        public string Text
+        public override Color BackColor
         {
             get
             {
-                return Label.Text;
+                return _mainColor;
             }
             set
             {
-                Label.Text = value;
+                if (_mainColor == value)
+                    return;
+
+                _mainColor = value;
+                UpdateColors();
             }
         }
 
-        void UpdateGui()
+        bool _drawSelectedOverlay, _drawStandingOnOverlay, _drawHoldingOverlay, _drawInteractingObject;
+        public bool DrawSelectedOverlay
+        {
+            get
+            {
+                return _drawSelectedOverlay;
+            }
+            set
+            {
+                if (_drawSelectedOverlay == value)
+                    return;
+                _drawSelectedOverlay = value;
+                Refresh();
+            }
+        }
+        public bool DrawStandingOnOverlay
+        {
+            get
+            {
+                return _drawStandingOnOverlay;
+            }
+            set
+            {
+                if (_drawStandingOnOverlay == value)
+                    return;
+                _drawStandingOnOverlay = value;
+                Refresh();
+            }
+        }
+        public bool DrawHoldingOverlay
+        {
+            get
+            {
+                return _drawHoldingOverlay;
+            }
+            set
+            {
+                if (_drawHoldingOverlay == value)
+                    return;
+                _drawHoldingOverlay = value;
+                Refresh();
+            }
+        }
+        public bool DrawInteractingOverlay
+        {
+            get
+            {
+                return _drawInteractingObject;
+            }
+            set
+            {
+                if (_drawInteractingObject == value)
+                    return;
+                _drawInteractingObject = value;
+                Refresh();
+            }
+        }
+
+        public ObjectSlot(int index, ObjectSlotManager manager, ObjectSlotManagerGui gui, Size size)
+        {
+            Index = index;
+            _manager = manager;
+            _gui = gui;
+            Size = size;
+            Font = new Font(FontFamily.GenericSansSerif, 6);
+
+            this.AllowDrop = true;
+            this.MouseDown += OnDrag;
+            this.MouseUp += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
+            this.MouseEnter += (s, e) => { MouseState = MouseStateType.Over; UpdateColors(); };
+            this.MouseLeave += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
+
+            this.DragEnter += OnDragEnter;
+            this.DragDrop += OnDrop;
+            this.Cursor = Cursors.Hand;
+        }
+
+        void UpdateColors()
         {
             if (!_selected)
             {
@@ -180,21 +230,21 @@ namespace SM64_Diagnostic
                 switch (MouseState)
                 {
                     case MouseStateType.Down:
-                        BorderPanel.BackColor = newColor.Darken(0.5);
-                        ContentPanel.BackColor = newColor.Darken(0.5).Lighten(0.5);
+                        _borderColor = newColor.Darken(0.5);
+                        _backColor = newColor.Darken(0.5).Lighten(0.5);
                         break;
                     case MouseStateType.Over:
-                        BorderPanel.BackColor = newColor.Lighten(0.75);
-                        ContentPanel.BackColor = newColor.Lighten(0.92);
+                        _borderColor = newColor.Lighten(0.75);
+                        _backColor = newColor.Lighten(0.92);
                         break;
                     default:
-                        BorderPanel.BackColor = newColor.Lighten(0.5);
-                        ContentPanel.BackColor = newColor.Lighten(0.85);
+                        _borderColor = newColor.Lighten(0.5);
+                        _backColor = newColor.Lighten(0.85);
                         break;
                 }
                 Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, _gfxId, true);
-                if (PictureBox.Image != newImage)
-                    PictureBox.Image = newImage;
+                if (_objectImage != newImage)
+                    _objectImage = newImage;
             }
             else
             {
@@ -202,95 +252,44 @@ namespace SM64_Diagnostic
                 switch (MouseState)
                 {
                     case MouseStateType.Down:
-                        BorderPanel.BackColor = newColor.Darken(0.5);
-                        ContentPanel.BackColor = newColor.Darken(0.5).Lighten(0.5);
+                        _borderColor = newColor.Darken(0.5);
+                        _backColor = newColor.Darken(0.5).Lighten(0.5);
                         break;
                     case MouseStateType.Over:
-                        BorderPanel.BackColor = newColor.Lighten(0.5);
-                        ContentPanel.BackColor = newColor.Lighten(0.85);
+                        _borderColor = newColor.Lighten(0.5);
+                        _backColor = newColor.Lighten(0.85);
                         break;
                     default:
-                        BorderPanel.BackColor = newColor;
-                        ContentPanel.BackColor = newColor.Lighten(0.7);
+                        _borderColor = newColor;
+                        _backColor = newColor.Lighten(0.7);
                         break;
                 }
                 Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, _gfxId, !_active);
-                if (PictureBox.Image != newImage)
-                    PictureBox.Image = newImage;
+                if (_objectImage != newImage)
+                    _objectImage = newImage;
             }
-        }
-
-        public ObjectSlot(int index, ObjectSlotManager manager)
-        {
-            Index = index;
-            _manager = manager;
-
-            // Create picture box
-            _size = 40;
-
-            this.BorderPanel = new Panel();
-            this.BorderPanel.Size = new Size(_size, _size);
-
-            this.ContentPanel = new Panel();
-            this.ContentPanel.Size = new Size(this.BorderPanel.Size.Width - BorderSize * 2, this.BorderPanel.Size.Height - BorderSize * 2);
-            this.ContentPanel.Location = new Point(BorderSize, BorderSize);
-
-            this.Label = new Label();
-            this.Label.Text = "";
-            this.Label.Font = new Font(FontFamily.GenericSansSerif, 6);
-            this.Label.TextAlign = ContentAlignment.TopCenter;
-            this.Label.Anchor = AnchorStyles.None;
-            this.Label.Location =
-                new Point((this.ContentPanel.Width - this.Label.Size.Width) / 2, this.ContentPanel.Height - this.Label.Font.Height);
-
-            this.PictureBox = new IntPictureBox();
-            this.PictureBox.Size = new Size(this.ContentPanel.Width, this.Label.Location.Y - 1);
-            this.PictureBox.AllowDrop = true;
-            this.PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            this.PictureBox.BackColor = Color.FromKnownColor(KnownColor.Transparent);
-            this.PictureBox.Location = new Point((ContentPanel.Width - PictureBox.Width) / 2, 1);
-            this.PictureBox.Anchor = AnchorStyles.None;
-            this.PictureBox.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-
-            RegisterControl(this.PictureBox);
-            RegisterControl(this.Label);
-            RegisterControl(this.BorderPanel);
-            RegisterControl(this.ContentPanel);
-
-            this.ContentPanel.Controls.Add(PictureBox);
-            this.ContentPanel.Controls.Add(Label);
-            this.BorderPanel.Controls.Add(ContentPanel);
-        }
-
-        private void RegisterControl(Control control)
-        {
-            control.AllowDrop = true;
-            control.MouseDown += OnDrag;
-            control.MouseUp += (s, e) => { MouseState = MouseStateType.None; UpdateGui(); };
-            control.MouseEnter += (s, e) => { MouseState = MouseStateType.Over; UpdateGui(); };
-            control.MouseLeave += (s, e) => { MouseState = MouseStateType.None; UpdateGui(); };
-
-            control.DragEnter += DragEnter;
-            control.DragDrop += OnDrop;
-            control.Cursor = Cursors.Hand;
+            (_borderBrush as SolidBrush).Color = _borderColor;
+            (_backBrush as SolidBrush).Color = _backColor;
+            Refresh();
         }
 
         private void OnDrag(object sender, MouseEventArgs e)
         {
-            OnClick?.Invoke(sender, e);
+            OnClick(new EventArgs());
 
             MouseState = MouseStateType.Down;
-            UpdateGui();
-            BorderPanel.Refresh();
+            UpdateColors();
+            Refresh();
 
             // Start the drag and drop but setting the object slot index in Drag and Drop data
             var objectAddress = _manager.ObjectSlotData.First((objData) => objData.Index == Index).Address;
             var dropAction = new DropAction(DropAction.ActionType.Object, objectAddress); 
-            PictureBox.DoDragDrop(dropAction, DragDropEffects.All);
+            DoDragDrop(dropAction, DragDropEffects.All);
         }
 
-        private void DragEnter(object sender, DragEventArgs e)
+        private void OnDragEnter(object sender, DragEventArgs e)
         {
+
             // Make sure we have valid Drag and Drop data (it is an index)
             if (!e.Data.GetDataPresent(typeof(DropAction)))
             {
@@ -317,5 +316,48 @@ namespace SM64_Diagnostic
             var dropAction = ((DropAction)e.Data.GetData(typeof(DropAction)));
             _manager.OnSlotDropAction(dropAction, this);
         }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            // Border
+            e.Graphics.FillRectangle(_borderBrush, new Rectangle(new Point(), Size));
+
+            // Background
+            e.Graphics.FillRectangle(_backBrush, new Rectangle(BorderSize, BorderSize, Width - BorderSize * 2, Height - BorderSize * 2));
+
+            // Change font size
+            if (Height != prevHeight)
+            {
+                prevHeight = Height;
+                Font = new Font(FontFamily.GenericSansSerif, Math.Max(6, 6 / 40.0f * Height));
+            }
+
+            // Draw Text
+            var textSize = e.Graphics.MeasureString(Text, Font);
+            var textLocation = new PointF((Width - textSize.Width) / 2, Height - textSize.Height);
+            e.Graphics.DrawString(Text, Font, Brushes.Black, textLocation);
+
+            // Draw Object Image
+            if (_objectImage != null)
+            {
+                e.Graphics.InterpolationMode = InterpolationMode.High;
+                var objectImageLocaction = (new RectangleF(BorderSize, BorderSize + 1, 
+                    Width - BorderSize * 2, textLocation.Y - 1 - BorderSize))
+                    .Zoom(_objectImage.Size);
+                e.Graphics.DrawImage(_objectImage, objectImageLocaction);
+            }
+
+            // Draw Overlays
+            if (DrawSelectedOverlay)
+                e.Graphics.DrawImage(_gui.SelectedObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawHoldingOverlay)
+                e.Graphics.DrawImage(_gui.HoldingObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawStandingOnOverlay)
+                e.Graphics.DrawImage(_gui.StandingOnObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawInteractingObject)
+                e.Graphics.DrawImage(_gui.InteractingObjectOverlayImage, new Rectangle(new Point(), Size));
+        }
+
+        
     }
 }
