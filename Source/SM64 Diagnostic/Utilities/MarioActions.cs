@@ -14,6 +14,8 @@ namespace SM64_Diagnostic.Utilities
             // Move mario to object
             var marioAddress = config.Mario.MarioStructAddress;
 
+            stream.Suspend();
+
             // Get object position
             float x, y, z;
             x = BitConverter.ToSingle(stream.ReadRam(objAddress + config.ObjectSlots.ObjectXOffset, 4), 0);
@@ -28,6 +30,9 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.WriteRam(BitConverter.GetBytes(x), marioAddress + config.Mario.XOffset);
             success &= stream.WriteRam(BitConverter.GetBytes(y), marioAddress + config.Mario.YOffset);
             success &= stream.WriteRam(BitConverter.GetBytes(z), marioAddress + config.Mario.ZOffset);
+
+            stream.Resume();
+
             return success;
         }
 
@@ -35,6 +40,8 @@ namespace SM64_Diagnostic.Utilities
         {
             // Move object to Mario
             var marioAddress = config.Mario.MarioStructAddress;
+
+            stream.Suspend();
 
             // Get Mario position
             float x, y, z;
@@ -50,6 +57,9 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.WriteRam(BitConverter.GetBytes(x), objAddress + config.ObjectSlots.ObjectXOffset);
             success &= stream.WriteRam(BitConverter.GetBytes(y), objAddress + config.ObjectSlots.ObjectYOffset);
             success &= stream.WriteRam(BitConverter.GetBytes(z), objAddress + config.ObjectSlots.ObjectZOffset);
+
+            stream.Resume();
+
             return success;
         }
 
@@ -59,11 +69,15 @@ namespace SM64_Diagnostic.Utilities
             bool success = true;
             var marioAddress = config.Mario.MarioStructAddress;
 
+            stream.Suspend();
+
             // Make clone object mario's holding object
             success &= stream.WriteRam(BitConverter.GetBytes(objAddress), marioAddress + config.Mario.HoldingObjectPointerOffset);
 
             // Set clone action flags
             success &= stream.WriteRam(BitConverter.GetBytes(0x8000207U), marioAddress + config.Mario.ActionOffset);
+
+            stream.Resume();
 
             return success;
         }
@@ -80,6 +94,8 @@ namespace SM64_Diagnostic.Utilities
 
             // Set clone action flags
             success &= stream.WriteRam(BitConverter.GetBytes(0x0C400201U), marioAddress + config.Mario.ActionOffset);
+
+            stream.Resume();
 
             return success;
         }
