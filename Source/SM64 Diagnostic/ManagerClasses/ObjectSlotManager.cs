@@ -62,10 +62,6 @@ namespace SM64_Diagnostic.ManagerClasses
                 SelectedAddress = selectedObjData.HasValue ? selectedObjData.Value.Address : (uint?) null;
                 _objManager.CurrentAddress = SelectedAddress.Value;
                 _selectedSlot = value;
-                foreach (var objSlot in ObjectSlots)
-                {
-                    objSlot.DrawSelectedOverlay = objSlot.Index == _selectedSlot;
-                }
             }
         }
 
@@ -292,7 +288,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
             int activeObjCnt = 0;
 
-            var standingOnObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.StandingOngObjectPointer, 4), 0);
+            var standingOnObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.StandingOnObjectPointer, 4), 0);
             var interactingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.InteractingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
             var holdingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.HoldingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
 
@@ -306,6 +302,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 ObjectSlots[index].Address = currentAddress;
 
                 // Update Overlays
+                ObjectSlots[index].DrawSelectedOverlay = SelectedAddress == currentAddress;
                 ObjectSlots[index].DrawStandingOnOverlay = _config.ShowOverlays && currentAddress == standingOnObject;
                 ObjectSlots[index].DrawInteractingOverlay = _config.ShowOverlays && currentAddress == interactingObject;
                 ObjectSlots[index].DrawHoldingOverlay = _config.ShowOverlays && currentAddress == holdingObject;

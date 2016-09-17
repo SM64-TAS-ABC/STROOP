@@ -197,8 +197,8 @@ namespace SM64_Diagnostic.Utilities
                                 case "MoveToObjectYOffset":
                                     config.Mario.MoveToObjectYOffset = float.Parse(subElement.Value);
                                     break;
-                                case "StandingOngObjectPointer":
-                                    config.Mario.StandingOngObjectPointer = ParsingUtilities.ParseHex(subElement.Value);
+                                case "StandingOnPointer":
+                                    config.Mario.StandingOnObjectPointer = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "InteractingObjectPointerOffset":
                                     config.Mario.InteractingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
