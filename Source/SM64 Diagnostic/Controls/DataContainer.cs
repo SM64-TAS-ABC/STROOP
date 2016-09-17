@@ -52,6 +52,18 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
+        public string Name
+        {
+            get
+            {
+                return _nameLabel.Text;
+            }
+            set
+            {
+                _nameLabel.Text = value;
+            }
+        }
+
         public string Text
         {
             get
