@@ -847,13 +847,22 @@ namespace SM64_Diagnostic.Utilities
         public static WatchVariable GetWatchVariableFromElement(XElement element)
         {
             var watchVar = new WatchVariable();
+            watchVar.Special = (element.Attribute(XName.Get("special")) != null) ?
+                bool.Parse(element.Attribute(XName.Get("special")).Value) : false;
+            watchVar.Name = element.Value;
+            watchVar.SpecialType = (element.Attribute(XName.Get("specialType")) != null) ?
+                element.Attribute(XName.Get("specialType")).Value : null;
+
+            // We have fully parsed a special type
+            if (watchVar.Special)
+                return watchVar;
+
             watchVar.UseHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
             watchVar.AbsoluteAddressing = element.Attribute(XName.Get("absoluteAddress")) != null ?
                  bool.Parse(element.Attribute(XName.Get("absoluteAddress")).Value) : false;
             watchVar.Mask = element.Attribute(XName.Get("mask")) != null ?
                 (UInt64?) ParsingUtilities.ParseExtHex(element.Attribute(XName.Get("mask")).Value) : null;
-            watchVar.Name = element.Value;
             watchVar.IsBool = element.Attribute(XName.Get("isBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isBool")).Value) : false;
             watchVar.Type = WatchVariableExtensions.GetStringType(element.Attribute(XName.Get("type")).Value);

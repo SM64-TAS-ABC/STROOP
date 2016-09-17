@@ -33,27 +33,57 @@ namespace SM64_Diagnostic.ManagerClasses
             _mapManager = mapManager;
 
             _marioDataControls = new List<WatchVariableControl>();
-            foreach (WatchVariable watchVar in marioData)
-            {
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, _config.Mario.MarioStructAddress);
-                variableTable.Controls.Add(watchControl.Control);
-                _marioDataControls.Add(watchControl);
-            }
 
             _heightAboveGround = new DataContainer("Dis Abv Floor");
-            variableTable.Controls.Add(_heightAboveGround.Control);
-
             _heightBelowCeil = new DataContainer("Dis Below Ceil");
-            variableTable.Controls.Add(_heightBelowCeil.Control);
-
             _deFactoSpeed = new DataContainer("De Facto Speed");
-            variableTable.Controls.Insert(_deFactoSpeed.Control, 7);
-
             _slidingSpeed = new DataContainer("Sliding Speed");
-            variableTable.Controls.Add(_slidingSpeed.Control);
-
             _slidingAngle = new DataContainer("Sliding Angle");
-            //variableTable.Controls.Add(_slidingAngle.Control);
+
+            foreach (WatchVariable watchVar in marioData)
+            {
+                if (!watchVar.Special)
+                {
+                    WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, _config.Mario.MarioStructAddress);
+                    variableTable.Controls.Add(watchControl.Control);
+                    _marioDataControls.Add(watchControl);
+                    continue;
+                }
+
+                switch (watchVar.SpecialType)
+                {
+                    case "DistanceAboveFloor":
+                        _heightAboveGround.Name = watchVar.Name;
+                        variableTable.Controls.Add(_heightAboveGround.Control);
+                        break;
+
+                    case "DistanceBelowCeiling":
+                        _heightBelowCeil.Name = watchVar.Name;
+                        variableTable.Controls.Add(_heightBelowCeil.Control);
+                        break;
+
+                    case "DeFactoSpeed":
+                        _deFactoSpeed.Name = watchVar.Name;
+                        variableTable.Controls.Add(_deFactoSpeed.Control);
+                        break;
+
+                    case "SlidingSpeed":
+                        _slidingSpeed.Name = watchVar.Name;
+                        variableTable.Controls.Add(_slidingSpeed.Control);
+                        break;
+
+                    case "SlidingAngle":
+                        _slidingAngle.Name = watchVar.Name;
+                        //variableTable.Controls.Add(_slidingAngle.Control);
+                        break;
+
+                    default:
+                        var failedContainer = new DataContainer(watchVar.Name);
+                        failedContainer.Text = "Couldn't Find";
+                        variableTable.Controls.Add(failedContainer.Control);
+                        break;
+                }
+            }
         }
 
         public void Update(bool updateView)

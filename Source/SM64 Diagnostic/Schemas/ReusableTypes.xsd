@@ -31,7 +31,9 @@
   <xs:complexType name="watch-variable">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <xs:attribute name="type" use="required">
+        <xs:attribute name="special" use="optional" type="xs:boolean"/>
+        <xs:attribute name="specialType" use="optional" type="xs:string"/>
+        <xs:attribute name="type" use="optional">
           <xs:simpleType>
             <xs:restriction base="xs:string">
               <xs:enumeration value="byte"/>
@@ -48,7 +50,7 @@
             </xs:restriction>
           </xs:simpleType>
         </xs:attribute>
-        <xs:attribute name="address" use="required">
+        <xs:attribute name="address" use="optional">
           <xs:simpleType>
             <xs:restriction base = "xs:string">
               <xs:pattern value="0x[0-9A-Fa-f]+|[0-9]+"/>
@@ -58,12 +60,12 @@
             </xs:restriction>
           </xs:simpleType>
         </xs:attribute>
-        <xs:attribute name="absoluteAddress" type="xs:boolean"/>
-        <xs:attribute name="mask" type="address"/>
-        <xs:attribute name="useHex" type="xs:boolean"/>
-        <xs:attribute name="isBool" type="xs:boolean"/>
-        <xs:attribute name="isAngle" type="xs:boolean"/>
-        <xs:attribute name="invertBool" type="xs:boolean"/>
+        <xs:attribute name="absoluteAddress" type="xs:boolean" use="optional"/>
+        <xs:attribute name="mask" type="address" use="optional"/>
+        <xs:attribute name="useHex" type="xs:boolean" use="optional"/>
+        <xs:attribute name="isBool" type="xs:boolean" use="optional"/>
+        <xs:attribute name="isAngle" type="xs:boolean" use="optional"/>
+        <xs:attribute name="invertBool" type="xs:boolean" use="optional"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>

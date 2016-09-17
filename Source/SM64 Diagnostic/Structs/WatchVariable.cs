@@ -11,6 +11,8 @@ namespace SM64_Diagnostic.Structs
         public Type Type;
         public uint Address;
         public String Name;
+        public String SpecialType;
+        public bool Special;
         public Boolean AbsoluteAddressing;
         public UInt64? Mask;
         public bool IsBool;

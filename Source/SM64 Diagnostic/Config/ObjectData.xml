@@ -17,6 +17,8 @@
   <Data type="uint32" address="0x114" objectOffset="true" isAngle="true">Pitch (Rot Speed)</Data>
   <Data type="uint32" address="0x11c" objectOffset="true" isAngle="true">Roll (Rot Speed)</Data>
   <Data type="float" address="0x015C" objectOffset="true">Dis. To Mario</Data>
+  <Data special="true" specialType="DistanceToMario">Act. Dis. to Mario</Data>
+  <Data special="true" specialType="LateralDistanceToMario">Lat. Dis. to M</Data>
   <Data type="uint32" address="0x0160" objectOffset="true" isAngle="true">Ang. To Mario</Data>
   <Data type="float" address="0x019C" objectOffset="true">Drawing Dis.</Data>
   <Data type="uint32" address="0x68" objectOffset="true" useHex="true">Parent Object</Data>
@@ -37,4 +39,5 @@
   <Data type="int32" address="0x144" objectOffset="true">Subtype</Data>
   <Data type="int32" address="0x14C" objectOffset="true">State</Data>
   <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
+  <Data special="true" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
 </ObjectData>

@@ -180,27 +180,47 @@ namespace SM64_Diagnostic.ManagerClasses
             foreach (Control control in _objGui.ObjectBorderPanel.Controls)
                 RegisterControlEvents(control);
 
+            _disToMario = new DataContainer("Dis. to Mario");
+            _latDisToMario = new DataContainer("Lat. Dis. to M");
+            _rngCalls = new DataContainer("RNG Calls/Frame");
+
             _objectDataControls = new List<WatchVariableControl>();
             foreach (WatchVariable watchVar in objectData)
             {
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar);
-                objectGui.ObjectFlowLayout.Controls.Add(watchControl.Control);
-                _objectDataControls.Add(watchControl);
+                if (!watchVar.Special)
+                {
+                    WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar);
+                    objectGui.ObjectFlowLayout.Controls.Add(watchControl.Control);
+                    _objectDataControls.Add(watchControl);
+                    continue;
+                }
+
+                switch (watchVar.SpecialType)
+                {
+                    case "DistanceToMario":
+                        _disToMario.Name = watchVar.Name;
+                        objectGui.ObjectFlowLayout.Controls.Add(_disToMario.Control);
+                        break;
+
+                    case "LateralDistanceToMario":
+                        _latDisToMario.Name = watchVar.Name;
+                        objectGui.ObjectFlowLayout.Controls.Add(_latDisToMario.Control);
+                        break;
+
+                    case "RngCallsPerFrame":
+                        _rngCalls.Name = watchVar.Name;
+                        objectGui.ObjectFlowLayout.Controls.Add(_rngCalls.Control);
+                        break;
+
+                    default:
+                        var failedContainer = new DataContainer(watchVar.Name);
+                        failedContainer.Text = "Couldn't Find";
+                        objectGui.ObjectFlowLayout.Controls.Add(failedContainer.Control);
+                        break;
+                }
             }
             _objGui.ObjAddressLabelValue.Click += ObjAddressLabel_Click;
             _objGui.ObjAddressLabel.Click += ObjAddressLabel_Click;
-
-            // Add distance to mario watchvar
-            _disToMario = new DataContainer("Dis. to Mario");
-            objectGui.ObjectFlowLayout.Controls.Add(_disToMario.Control);
-
-            // Add lateral distance to mario watchvar
-            _latDisToMario = new DataContainer("Lat. Dis. to M");
-            objectGui.ObjectFlowLayout.Controls.Add(_latDisToMario.Control);
-
-            // Add rng calls watchvar
-            _rngCalls = new DataContainer("RNG Calls/Frame");
-            objectGui.ObjectFlowLayout.Controls.Add(_rngCalls.Control);
 
             // Register buttons
             objectGui.CloneButton.Click += CloneButton_Click;
