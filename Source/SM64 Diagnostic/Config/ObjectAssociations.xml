@@ -1706,9 +1706,14 @@
   <Object behaviorScriptAddress="0x13004BD4" name="Water Bomb Shadow">
     <Image path="Water Bomb Shadow.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13004BF0" name="TTC Rotating Block / Triangular Prism">
+  <Object behaviorScriptAddress="0x13004BF0" name="TTC Rotating Triangular Prism" gfxId="0x801524B8">
     <Image path="TTC Rotating Block _ Triangular Prism.png"/>
 	<MapImage path="TTC Rotating Block Top.png" rotates="true"/>
+    <Data type="int32" address="0xFC" objectOffset="true">Timer Max</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13004BF0" name="TTC Rotating Block" gfxId="0x80152488">
+    <Image path="TTC Rotating Block _ Triangular Prism.png"/>
+    <MapImage path="TTC Rotating Block Top.png" rotates="true"/>
     <Data type="int32" address="0xFC" objectOffset="true">Timer Max</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004C24" name="TTC Pendulum">

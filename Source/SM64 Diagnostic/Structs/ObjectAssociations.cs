@@ -11,7 +11,7 @@ namespace SM64_Diagnostic.Structs
 {
     public class ObjectAssociations
     {
-        Dictionary<uint, ObjectBehaviorAssociation> _objAssoc = new Dictionary<uint, ObjectBehaviorAssociation>();
+        Dictionary<uint, List<ObjectBehaviorAssociation>> _objAssoc = new Dictionary<uint, List<ObjectBehaviorAssociation>>();
         
         Image _defaultImage;
         Image _transparentDefaultImage;
@@ -33,7 +33,7 @@ namespace SM64_Diagnostic.Structs
         public uint MarioBehavior;
         public uint RamOffset;
 
-        public Dictionary<uint, ObjectBehaviorAssociation> BehaviorAssociations
+        public Dictionary<uint, List<ObjectBehaviorAssociation>> BehaviorAssociations
         {
             get
             {
@@ -56,67 +56,96 @@ namespace SM64_Diagnostic.Structs
 
         public void AddAssociation(ObjectBehaviorAssociation obj)
         {
-            _objAssoc.Add(obj.Behavior, obj);
+            if (!_objAssoc.Keys.Contains(obj.Behavior))
+                _objAssoc.Add(obj.Behavior, new List<ObjectBehaviorAssociation>() { obj });
+            else
+                _objAssoc[obj.Behavior].Add(obj);
         }
 
-        public Image GetObjectImage(uint behaviorAddress, bool transparent)
+        public ObjectBehaviorAssociation FindObjectAssociation(uint behaviorAddress, uint gfxId)
+        {
+            if (!_objAssoc.ContainsKey(behaviorAddress))
+                return null;
+
+            if (_objAssoc[behaviorAddress].Exists(obj => obj.GfxId == gfxId))
+                return _objAssoc[behaviorAddress].Find(obj => obj.GfxId == gfxId);
+
+            if (_objAssoc[behaviorAddress].Exists(obj => obj.GfxId == null))
+                return _objAssoc[behaviorAddress].Find(obj => obj.GfxId == null);
+
+            return null;
+        }
+
+        public Image GetObjectImage(uint behaviorAddress, uint gfxId, bool transparent)
         {
             if (behaviorAddress == 0)
                 return EmptyImage;
 
-            if (!_objAssoc.ContainsKey(behaviorAddress))
+            var assoc = FindObjectAssociation(behaviorAddress, gfxId);
+            if (assoc == null)
                 return transparent ? _transparentDefaultImage : _defaultImage;
 
-            return transparent ? _objAssoc[behaviorAddress].TransparentImage : _objAssoc[behaviorAddress].Image;
+            return transparent ? assoc.TransparentImage : assoc.Image;
         }
 
-        public Image GetObjectMapImage(uint behaviorAddress, bool transparent)
+        public Image GetObjectMapImage(uint behaviorAddress, uint gfxId, bool transparent)
         {
             if (behaviorAddress == 0)
                 return EmptyImage;
 
-            if (!_objAssoc.ContainsKey(behaviorAddress))
+            var assoc = FindObjectAssociation(behaviorAddress, gfxId);
+
+            if (assoc == null)
                 return _defaultImage;
 
-            return transparent ? _objAssoc[behaviorAddress].TransparentMapImage : _objAssoc[behaviorAddress].MapImage;
+            return transparent ? assoc.TransparentMapImage : assoc.MapImage;
         }
 
-        public bool GetObjectMapRotates(uint behaviorAddress)
+        public bool GetObjectMapRotates(uint behaviorAddress, uint gfxId)
         {
-            if (!_objAssoc.ContainsKey(behaviorAddress))
+            var assoc = FindObjectAssociation(behaviorAddress, gfxId);
+
+            if (assoc == null)
                 return false;
 
-            return _objAssoc[behaviorAddress].RotatesOnMap;
+            return assoc.RotatesOnMap;
         }
 
-        public string GetObjectName(uint behaviorAddress)
+        public string GetObjectName(uint behaviorAddress, uint gfxId)
         {
+            var assoc = FindObjectAssociation(behaviorAddress, gfxId);
+
             if (behaviorAddress == 0)
                 return "Uninitialized Object";
 
-            if (!_objAssoc.ContainsKey(behaviorAddress))
+            if (assoc == null)
                 return "Unknown Object";
 
-            return _objAssoc[behaviorAddress].Name;
+            return assoc.Name;
         }
 
-        public List<WatchVariable> GetWatchVariables(uint behaviorAddress)
+        public List<WatchVariable> GetWatchVariables(uint behaviorAddress, uint gfxId)
         {
-            if (!_objAssoc.ContainsKey(behaviorAddress))
+            var assoc = FindObjectAssociation(behaviorAddress, gfxId);
+
+            if (assoc == null)
                 return new List<WatchVariable>();
 
-            else return _objAssoc[behaviorAddress].WatchVariables;
+            else return assoc.WatchVariables;
         }
 
         ~ObjectAssociations()
         {
-            // Unload and dipose of all images
-            foreach (ObjectBehaviorAssociation obj in _objAssoc.Values)
+            // Unload and dispose of all images
+            foreach (var objList in _objAssoc.Values)
             {
-                obj.Image?.Dispose();
-                obj.TransparentImage?.Dispose();
-                obj.MapImage?.Dispose();
-                obj.TransparentMapImage?.Dispose();
+                foreach (var obj in objList)
+                {
+                    obj.Image?.Dispose();
+                    obj.TransparentImage?.Dispose();
+                    obj.MapImage?.Dispose();
+                    obj.TransparentMapImage?.Dispose();
+                }
             }
 
             _transparentDefaultImage?.Dispose();

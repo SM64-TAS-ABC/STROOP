@@ -28,7 +28,7 @@ namespace SM64_Diagnostic
 
         bool _selected = true;
         bool _active = false;
-        uint _behavior;
+        uint _behavior, _gfxId;
 
         int prevHeight;
 
@@ -63,6 +63,21 @@ namespace SM64_Diagnostic
                 {
                     _behavior = value;
                     UpdateColors();
+                }
+            }
+        }
+        public uint GfxId
+        {
+            get
+            {
+                return _gfxId;
+            }
+            set
+            {
+                if (_gfxId != value)
+                {
+                    _gfxId = value;
+                    Refresh();
                 }
             }
         }
@@ -227,7 +242,7 @@ namespace SM64_Diagnostic
                         _backColor = newColor.Lighten(0.85);
                         break;
                 }
-                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, true);
+                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, _gfxId, true);
                 if (_objectImage != newImage)
                     _objectImage = newImage;
             }
@@ -249,7 +264,7 @@ namespace SM64_Diagnostic
                         _backColor = newColor.Lighten(0.7);
                         break;
                 }
-                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, !_active);
+                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, _gfxId, !_active);
                 if (_objectImage != newImage)
                     _objectImage = newImage;
             }
