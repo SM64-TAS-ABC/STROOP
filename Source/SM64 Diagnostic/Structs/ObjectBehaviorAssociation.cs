@@ -10,6 +10,7 @@ namespace SM64_Diagnostic.Structs
     public class ObjectBehaviorAssociation
     {
         public uint Behavior;
+        public uint? GfxId;
         public string Name;
         public bool RotatesOnMap;
         public string ImagePath = "";
