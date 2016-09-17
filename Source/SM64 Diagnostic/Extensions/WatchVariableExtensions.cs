@@ -72,6 +72,11 @@ namespace SM64_Diagnostic.Extensions
             // Print hex
             if (watchVar.UseHex)
                 return "0x" + dataValue.ToString("X" + byteCount * 2);
+
+            // Print signed
+            if (watchVar.Type == typeof(UInt16) || watchVar.Type == typeof(UInt32)
+                || watchVar.Type == typeof(UInt64) || watchVar.Type == typeof(sbyte))
+                return ((UInt64)dataValue).ToString();
             else
                 return dataValue.ToString();
         }

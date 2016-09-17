@@ -16,7 +16,8 @@ namespace SM64_Diagnostic.ManagerClasses
         List<WatchVariableControl> _marioDataControls;
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
-        DataContainer _heightAboveGround, _heightBelowCeil, _deFactoSpeed;
+        DataContainer _heightAboveGround, _heightBelowCeil, _deFactoSpeed,
+            _slidingSpeed, _slidingAngle;
         MapManager _mapManager;
 
         public MarioManager(ProcessStream stream, Config config, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable, MapManager mapManager)
@@ -47,6 +48,12 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _deFactoSpeed = new DataContainer("De Facto Speed");
             variableTable.Controls.Insert(_deFactoSpeed.Control, 7);
+
+            _slidingSpeed = new DataContainer("Sliding Speed");
+            variableTable.Controls.Add(_slidingSpeed.Control);
+
+            _slidingAngle = new DataContainer("Sliding Angle");
+            //variableTable.Controls.Add(_slidingAngle.Control);
         }
 
         public void Update(bool updateView)
@@ -135,6 +142,11 @@ namespace SM64_Diagnostic.ManagerClasses
             }
             else
                 _deFactoSpeed.Text = "(No Floor)";
+
+            float slidingSpeedX = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.SlidingSpeedXOffset, 4), 0);
+            float slidingSpeedZ = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.SlidingSpeedZOffset, 4), 0);
+
+            _slidingSpeed.Text = ((float)Math.Sqrt(slidingSpeedX * slidingSpeedX + slidingSpeedZ * slidingSpeedZ)).ToString();
 
         }
 

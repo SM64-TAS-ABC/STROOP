@@ -20,14 +20,13 @@
   <Data type="uint32" address="0x0160" objectOffset="true" isAngle="true">Ang. To Mario</Data>
   <Data type="float" address="0x019C" objectOffset="true">Drawing Dis.</Data>
   <Data type="uint32" address="0x68" objectOffset="true" useHex="true">Parent Object</Data>
-  <Data type="uint32" address="0x020C" objectOffset="true" useHex="true">Behavior Script Address</Data>
-  <Data type="int32" address="0x144" objectOffset="true">Subtype</Data>
-  <Data type="uint32" address="0x14" objectOffset="true" useHex="true">Graphic</Data>
+  <Data type="uint32" address="0x020C" objectOffset="true" useHex="true">Behavior Script</Data>
+  <Data type="uint32" address="0x14" objectOffset="true" useHex="true">Graphic/Model</Data>
   <Data type="byte" address="0x3" mask="0x10" objectOffset="true" isBool="true" invertBool="true">Visible</Data>
   <Data type="byte" address="0x3" mask="0x04" objectOffset="true" isBool="true">Face Camera</Data>
   <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Close</Data>
   <Data type="uint32" address="0x3C" objectOffset="true" useHex="true">Animation</Data>
-  <Data type="sbyte" address="0x41" objectOffset="true">Animation Timer</Data>
+  <Data type="int16" address="0x40" objectOffset="true">Animation Timer</Data>
   <Data type="float" address="0x2C" objectOffset="true">Scale (Width)</Data>
   <Data type="float" address="0x30" objectOffset="true">Scale (Height)</Data>
   <Data type="float" address="0x34" objectOffset="true">Scale (Depth)</Data>
@@ -35,6 +34,7 @@
   <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
   <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
   <Data type="uint16" address="0x136" objectOffset="true">Interaction Status</Data>
+  <Data type="int32" address="0x144" objectOffset="true">Subtype</Data>
   <Data type="int32" address="0x14C" objectOffset="true">State</Data>
   <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
 </ObjectData>

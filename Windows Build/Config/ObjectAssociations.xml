@@ -122,6 +122,7 @@
 	<MapImage path="Chuckya Top.png" rotates="true"/>
     <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
     <Data type="int32" address="0x9C" objectOffset="true">Tangible</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Stopping Timer</Data>
     <Data type="int32" address="0x178" objectOffset="true">Throwing Phase</Data>
     <Data type="int32" address="0x100" objectOffset="true">Num A Presses</Data>
   </Object>
@@ -1014,7 +1015,11 @@
   <Object behaviorScriptAddress="0x13002EC0" name="Mario">
     <Image path="Mario.png"/>
 	<MapImage path="Mario Top.png" rotates="true"/>
-	<Data type="int32" address="0x110" objectOffset="true">Burn Timer</Data>
+    <Data type="int16" address="0x38" objectOffset="true">Animation</Data>
+    <Data type="int16" address="0x40" objectOffset="true">Animation Timer</Data>
+    <Data type="int16" address="0x44" objectOffset="true">Walking Timer</Data>
+    <Data type="int32" address="0x110" objectOffset="true">Burn Timer</Data>
+    <Data type="int16" address="0x3A" objectOffset="true">Relative Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002EF8" name="Toad">
     <Image path="Toad.png"/>
@@ -1873,8 +1878,10 @@
   <Object behaviorScriptAddress="0x13005380" name="Racing Penguin">
     <Image path="Penguin.png"/>
 	<MapImage path="Penguin Top.png" rotates="true"/>
-    <Data type="byte" address="0x1AF" objectOffset="true" isBool="true">Should Give Star</Data>
-    <Data type="float" address="0x110" objectOffset="true">Pace</Data>
+    <Data type="byte" address="0x1B3" objectOffset="true" isBool="true">Mario Cheated</Data>
+    <Data type="byte" address="0x1AF" objectOffset="true" isBool="true">Mario Finished First</Data>
+    <Data type="float" address="0x110" objectOffset="true">Effort</Data>
+    <Data type="uint32" address="0x100" objectOffset="true" useHex="true">Current Waypoint</Data>
   </Object>
   <Object behaviorScriptAddress="0x130053C4" name="Finishing Line Checkpoint">
     <Image path="Finishing Line Checkpoint.png"/>
