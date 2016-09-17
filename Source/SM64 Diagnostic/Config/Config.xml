@@ -53,6 +53,8 @@
     <HSpeedOffset>0x54</HSpeedOffset>
     <MarioStructSize>0xC4</MarioStructSize>
     <MoveToObjectYOffset>300</MoveToObjectYOffset>
+    <SlidingSpeedXOffset>0x58</SlidingSpeedXOffset>
+    <SlidingSpeedZOffset>0x5C</SlidingSpeedZOffset>
   </Mario>
   <Debug>
     <ToggleAddress>0x8033d263</ToggleAddress>

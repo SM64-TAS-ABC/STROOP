@@ -209,6 +209,12 @@ namespace SM64_Diagnostic.Utilities
                                 case "FloorTriangleOffset":
                                     config.Mario.FloorTriangleOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "SlidingSpeedXOffset":
+                                    config.Mario.SlidingSpeedXOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "SlidingSpeedZOffset":
+                                    config.Mario.SlidingSpeedZOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;
@@ -770,6 +776,49 @@ namespace SM64_Diagnostic.Utilities
             }
 
             return parser;
+        }
+
+        public static List<RomHack> OpenHacks(string path)
+        {
+            var hacks = new List<RomHack>();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ScriptsSchema.xsd", "ScriptsSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            string hackDir = "";
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                switch (element.Name.ToString())
+                {
+                    case "Config":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "HackDirectory":
+                                    hackDir = subElement.Value;
+                                    break;
+                            }
+                        }
+                        break;
+
+                    case "Hack":
+                        string hackPath = hackDir + element.Attribute(XName.Get("path")).Value;
+                        string name = element.Attribute(XName.Get("name")).Value;
+                        hacks.Add(new RomHack(hackPath, name));
+                        break;
+                }
+            }
+
+            return hacks;
         }
 
         public static WatchVariable GetWatchVariableFromElement(XElement element)
