@@ -131,6 +131,7 @@
               </xs:element>
             </xs:sequence>
             <xs:attribute name="behaviorScriptAddress" use="required" type="types:address"/>
+            <xs:attribute name="gfxId" use="optional" type="types:address"/>
             <xs:attribute name="name" use="required" type="xs:string"/>
           </xs:complexType>
         </xs:element>

@@ -26,7 +26,7 @@ namespace SM64_Diagnostic
         Color _mainColor = Color.White;
         bool _selected = true;
         bool _active = false;
-        uint _behavior;
+        uint _behavior, _gfxId;
         int _size;
 
         public enum MouseStateType {None, Over, Down};
@@ -82,6 +82,21 @@ namespace SM64_Diagnostic
                 if (_behavior != value)
                 {
                     _behavior = value;
+                    UpdateGui();
+                }
+            }
+        }
+        public uint GfxId
+        {
+            get
+            {
+                return _gfxId;
+            }
+            set
+            {
+                if (_gfxId != value)
+                {
+                    _gfxId = value;
                     UpdateGui();
                 }
             }
@@ -177,7 +192,7 @@ namespace SM64_Diagnostic
                         ContentPanel.BackColor = newColor.Lighten(0.85);
                         break;
                 }
-                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, true);
+                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, _gfxId, true);
                 if (PictureBox.Image != newImage)
                     PictureBox.Image = newImage;
             }
@@ -199,7 +214,7 @@ namespace SM64_Diagnostic
                         ContentPanel.BackColor = newColor.Lighten(0.7);
                         break;
                 }
-                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, !_active);
+                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, _gfxId, !_active);
                 if (PictureBox.Image != newImage)
                     PictureBox.Image = newImage;
             }
