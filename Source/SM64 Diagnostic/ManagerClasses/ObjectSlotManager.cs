@@ -32,7 +32,7 @@ namespace SM64_Diagnostic.ManagerClasses
         List<uint> _toggleMapBehaviors = new List<uint>();
         List<uint> _toggleMapSlots = new List<uint>();
 
-        uint _lastSelectedBehavior = 0;
+        uint _lastSelectedBehavior = 0, _lastSelectedGfx = 0;
 
         public uint? SelectedAddress = null;
         public const byte VacantGroup = 0xFF;
@@ -302,7 +302,10 @@ namespace SM64_Diagnostic.ManagerClasses
                 var behaviorScriptAdd = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorScriptOffset, 4), 0)
                     & 0x0FFFFFFF;
 
+                var gfxId = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorGfxOffset, 4), 0);
+
                 ObjectSlots[index].Behavior = behaviorScriptAdd;
+                ObjectSlots[index].GfxId = gfxId;
 
                 var processGroup = objectData.ObjectProcessGroup;
                 ObjectSlots[index].ProcessGroup = processGroup;
@@ -325,13 +328,14 @@ namespace SM64_Diagnostic.ManagerClasses
                 // Update object manager image
                 if (SelectedAddress.HasValue && SelectedAddress.Value == currentAddress)
                 {
-                    if (_lastSelectedBehavior != behaviorScriptAdd)
+                    if (_lastSelectedBehavior != behaviorScriptAdd || _lastSelectedGfx != gfxId)
                     {
                         _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
-                        _objManager.Name = ObjectAssoc.GetObjectName(behaviorScriptAdd);
+                        _objManager.Name = ObjectAssoc.GetObjectName(behaviorScriptAdd, gfxId);
                         _objManager.Image = ObjectSlots[index].Image;
-                        _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorScriptAdd), newColor.Lighten(0.8));
+                        _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorScriptAdd, gfxId), newColor.Lighten(0.8));
                         _lastSelectedBehavior = behaviorScriptAdd;
+                        _lastSelectedGfx = gfxId;
                     }
                     _objManager.BackColor = newColor;
                     int slotPos = objectData.ObjectProcessGroup == VacantGroup ? objectData.VacantSlotIndex.Value : objectData.ProcessIndex;
@@ -346,8 +350,8 @@ namespace SM64_Diagnostic.ManagerClasses
                 {
 
                     // Update image
-                    var mapObjImage = ObjectAssoc.GetObjectMapImage(behaviorScriptAdd, !isActive);
-                    var mapObjRotates = ObjectAssoc.GetObjectMapRotates(behaviorScriptAdd);
+                    var mapObjImage = ObjectAssoc.GetObjectMapImage(behaviorScriptAdd, gfxId, !isActive);
+                    var mapObjRotates = ObjectAssoc.GetObjectMapRotates(behaviorScriptAdd, gfxId);
                     if (!_mapObjects.ContainsKey(currentAddress))
                     {
                         _mapObjects.Add(currentAddress, new MapObject(mapObjImage));
@@ -377,7 +381,7 @@ namespace SM64_Diagnostic.ManagerClasses
                         _mapObjects[currentAddress].IsActive = isActive;
                         _mapObjects[currentAddress].Rotation = (float)((UInt16)(BitConverter.ToUInt32(
                             _stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectRotationOffset, 4), 0)) / 65536f * 360f);
-                        _mapObjects[currentAddress].UsesRotation = ObjectAssoc.GetObjectMapRotates(behaviorScriptAdd);
+                        _mapObjects[currentAddress].UsesRotation = ObjectAssoc.GetObjectMapRotates(behaviorScriptAdd, gfxId);
                     }
                 }
             }
