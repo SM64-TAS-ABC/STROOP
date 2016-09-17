@@ -335,12 +335,12 @@ namespace SM64_Diagnostic
             // Draw Overlays
             if (DrawSelectedOverlay)
                 e.Graphics.DrawImage(_gui.SelectedObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawInteractingObject)
+                e.Graphics.DrawImage(_gui.InteractingObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawHoldingOverlay)
                 e.Graphics.DrawImage(_gui.HoldingObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawStandingOnOverlay)
                 e.Graphics.DrawImage(_gui.StandingOnObjectOverlayImage, new Rectangle(new Point(), Size));
-            if (_drawInteractingObject)
-                e.Graphics.DrawImage(_gui.InteractingObjectOverlayImage, new Rectangle(new Point(), Size));
         }
 
         
