@@ -62,6 +62,10 @@ namespace SM64_Diagnostic.ManagerClasses
                 SelectedAddress = selectedObjData.HasValue ? selectedObjData.Value.Address : (uint?) null;
                 _objManager.CurrentAddress = SelectedAddress.Value;
                 _selectedSlot = value;
+                foreach (var objSlot in ObjectSlots)
+                {
+                    objSlot.DrawSelectedOverlay = objSlot.Index == _selectedSlot;
+                }
             }
         }
 
@@ -93,7 +97,7 @@ namespace SM64_Diagnostic.ManagerClasses
             ObjectSlotData = new ObjectSlotData[_config.ObjectSlots.MaxSlots];
             for (int i = 0; i < _config.ObjectSlots.MaxSlots; i++)
             {
-                var objectSlot = new ObjectSlot(i, this, new Size(40,40));
+                var objectSlot = new ObjectSlot(i, this, ManagerGui, new Size(40,40));
                 ObjectSlots[i] = objectSlot;
                 int localI = i;
                 objectSlot.Click += (sender, e) => OnClick(sender, e, localI);
@@ -288,6 +292,10 @@ namespace SM64_Diagnostic.ManagerClasses
             }
             int activeObjCnt = 0;
 
+            var standingOnObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.StandingOngObjectPointer, 4), 0);
+            var interactingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.InteractingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
+            var holdingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.HoldingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
+
             // Update slots
             foreach (var objectData in newObjectSlotData)
             {
@@ -296,6 +304,11 @@ namespace SM64_Diagnostic.ManagerClasses
                 var isActive = BitConverter.ToUInt16(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectActiveOffset, 2), 0) != 0x0000;
                 ObjectSlots[index].IsActive = isActive;
                 ObjectSlots[index].Address = currentAddress;
+
+                // Update Overlays
+                ObjectSlots[index].DrawStandingOnOverlay = _config.ShowOverlays && currentAddress == standingOnObject;
+                ObjectSlots[index].DrawInteractingOverlay = _config.ShowOverlays && currentAddress == interactingObject;
+                ObjectSlots[index].DrawHoldingOverlay = _config.ShowOverlays && currentAddress == holdingObject;
 
                 if (isActive)
                     activeObjCnt++;

@@ -482,6 +482,11 @@ namespace SM64_Diagnostic
             _config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
         }
 
+        private void checkBoxUseOverlays_CheckedChanged(object sender, EventArgs e)
+        {
+            _config.ShowOverlays = checkBoxUseOverlays.Checked;
+        }
+
         private void buttonPuConHome_Click(object sender, EventArgs e)
         {
 
