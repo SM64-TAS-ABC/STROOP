@@ -80,6 +80,8 @@
               <xs:element name="CoordinateOffsetY" type="types:address"/>
               <xs:element name="CoordinateOffsetZ" type="types:address"/>
               <xs:element name="FacingAngleOffset" type="types:address"/>
+              <xs:element name="StandingOnPointer" type="types:address"/>
+              <xs:element name="InteractingObjectPointerOffset" type="types:address"/>
               <xs:element name="HoldingObjectPointerOffset" type="types:address"/>
               <xs:element name ="MoveToObjectYOffset" type="xs:float"/>
               <xs:element name="MarioStructAddress" type="types:address"/>

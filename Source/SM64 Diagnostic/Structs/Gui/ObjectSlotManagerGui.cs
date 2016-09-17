@@ -1,6 +1,7 @@
 ﻿using SM64_Diagnostic.Controls;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,22 @@ namespace SM64_Diagnostic.Structs
 {
     public class ObjectSlotManagerGui
     {
+        public Image SelectedObjectOverlayImage;
+        public Image StandingOnObjectOverlayImage;
+        public Image HoldingObjectOverlayImage;
+        public Image InteractingObjectOverlayImage;
+
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
         public ComboBox MapObjectToggleModeComboBox;
         public FlowLayoutPanel FlowLayoutContainer;
+
+        ~ObjectSlotManagerGui()
+        {
+            SelectedObjectOverlayImage?.Dispose();
+            StandingOnObjectOverlayImage?.Dispose();
+            HoldingObjectOverlayImage?.Dispose();
+            InteractingObjectOverlayImage?.Dispose();
+        }
     }
 }

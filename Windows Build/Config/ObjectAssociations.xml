@@ -1015,7 +1015,11 @@
   <Object behaviorScriptAddress="0x13002EC0" name="Mario">
     <Image path="Mario.png"/>
 	<MapImage path="Mario Top.png" rotates="true"/>
-	<Data type="int32" address="0x110" objectOffset="true">Burn Timer</Data>
+    <Data type="int16" address="0x38" objectOffset="true">Animation</Data>
+    <Data type="int16" address="0x40" objectOffset="true">Animation Timer</Data>
+    <Data type="int16" address="0x44" objectOffset="true">Walking Timer</Data>
+    <Data type="int32" address="0x110" objectOffset="true">Burn Timer</Data>
+    <Data type="int16" address="0x3A" objectOffset="true">Relative Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002EF8" name="Toad">
     <Image path="Toad.png"/>

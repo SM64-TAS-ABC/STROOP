@@ -88,6 +88,7 @@
     <Compile Include="Controls\Map\MapBaseObject.cs" />
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
+    <Compile Include="Extensions\RectangleFExtensions.cs" />
     <Compile Include="Extensions\WatchExpressionExtensions.cs" />
     <Compile Include="ManagerClasses\HackManager.cs" />
     <Compile Include="ManagerClasses\MiscManager.cs" />
@@ -108,7 +109,9 @@
     <Compile Include="ModifyAddWatchVariableForm.Designer.cs">
       <DependentUpon>ModifyAddWatchVariableForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ObjectSlot.cs" />
+    <Compile Include="Controls\ObjectSlot.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ManagerClasses\ObjectSlotManager.cs" />
     <Compile Include="Structs\Configurations\DebugConfig.cs" />
     <Compile Include="Structs\Configurations\TriangleOffsetsConfig.cs" />
@@ -179,6 +182,9 @@
     <EmbeddedResource Include="Schemas\ConfigSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="Resources\Overlays\Border.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Config\Hacks.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -293,10 +299,15 @@
     <Content Include="Licenses.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\clone_icon.png" />
-    <Content Include="Resources\Foot.png" />
-    <Content Include="Resources\Hand.png" />
-    <Content Include="Resources\Head.png" />
+    <Content Include="Resources\Overlays\Foot.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Overlays\Hand.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Overlays\Head.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Maps\Map Images\BBH Basement.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

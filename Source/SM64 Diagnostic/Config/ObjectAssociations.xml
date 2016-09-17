@@ -3,6 +3,7 @@
   <Config>
     <ImageDirectory>Resources\Object Images\</ImageDirectory>
     <MapImageDirectory>Resources\Maps\Object Images\</MapImageDirectory>
+    <OverlayImageDirectory>Resources\Overlays\</OverlayImageDirectory>
     <DefaultImage>default.png</DefaultImage>
     <EmptyImage>Empty.png</EmptyImage>
     <RamToBehaviorOffset>0x12F14E80</RamToBehaviorOffset>
@@ -32,6 +33,20 @@
     <Color>#aaaaaa</Color>
     <MapImage path="Camera.png"/>
   </Camera>
+  <Overlays>
+    <Selected>
+      <OverlayImage path="Border.png"/>
+    </Selected>
+    <StandingOn>
+      <OverlayImage path="Foot.png"/>
+    </StandingOn>
+    <Holding>
+      <OverlayImage path="Hand.png"/>
+    </Holding>
+    <Interacting>
+      <OverlayImage path="Head.png"/>
+    </Interacting>
+  </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <Image path="Star Door.png"/>
 	<MapImage path="Star Door Top.png" rotates="true"/>
@@ -1015,7 +1030,11 @@
   <Object behaviorScriptAddress="0x13002EC0" name="Mario">
     <Image path="Mario.png"/>
 	<MapImage path="Mario Top.png" rotates="true"/>
-	<Data type="int32" address="0x110" objectOffset="true">Burn Timer</Data>
+    <Data type="int16" address="0x38" objectOffset="true">Animation</Data>
+    <Data type="int16" address="0x40" objectOffset="true">Animation Timer</Data>
+    <Data type="int16" address="0x44" objectOffset="true">Walking Timer</Data>
+    <Data type="int32" address="0x110" objectOffset="true">Burn Timer</Data>
+    <Data type="int16" address="0x3A" objectOffset="true">Relative Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002EF8" name="Toad">
     <Image path="Toad.png"/>

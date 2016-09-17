@@ -72,16 +72,18 @@ namespace SM64_Diagnostic
 
         private void StroopMainForm_Load(object sender, EventArgs e)
         {
-           // Temp: Remove "Other" tab
+            // Temp: Remove "Other" tab
 #if RELEASE
             tabControlMain.TabPages.Remove(tabPageExpressions);
 #endif
+
+            var slotManagerGui = new ObjectSlotManagerGui();
 
             // Read configuration
             _config = XmlConfigParser.OpenConfig(@"Config/Config.xml");
             _miscData = XmlConfigParser.OpenMiscData(@"Config/MiscData.xml");
             _objectData = XmlConfigParser.OpenObjectData(@"Config/ObjectData.xml");
-            _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml");
+            _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", slotManagerGui);
             _marioData = XmlConfigParser.OpenMarioData(_config, @"Config/MarioData.xml");
             _cameraData = XmlConfigParser.OpenCameraData(_config, @"Config/CameraData.xml");
             _hudData = XmlConfigParser.OpenHudData(_config, @"Config/HudData.xml");
@@ -142,7 +144,6 @@ namespace SM64_Diagnostic
             _optionsManager = new OptionsManager(optionGui, _config);
 
             // Create Object Slots
-            var slotManagerGui = new ObjectSlotManagerGui();
             slotManagerGui.TabControl = tabControlMain;
             slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
             slotManagerGui.MapObjectToggleModeComboBox = comboBoxMapToggleMode;
@@ -479,6 +480,11 @@ namespace SM64_Diagnostic
         private void checkBoxMoveCamWithPu_CheckedChanged(object sender, EventArgs e)
         {
             _config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
+        }
+
+        private void checkBoxUseOverlays_CheckedChanged(object sender, EventArgs e)
+        {
+            _config.ShowOverlays = checkBoxUseOverlays.Checked;
         }
 
         private void buttonPuConHome_Click(object sender, EventArgs e)
