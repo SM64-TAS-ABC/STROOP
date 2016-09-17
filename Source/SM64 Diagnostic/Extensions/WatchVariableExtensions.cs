@@ -74,9 +74,14 @@ namespace SM64_Diagnostic.Extensions
                 return "0x" + dataValue.ToString("X" + byteCount * 2);
 
             // Print signed
-            if (watchVar.Type == typeof(UInt16) || watchVar.Type == typeof(UInt32)
-                || watchVar.Type == typeof(UInt64) || watchVar.Type == typeof(sbyte))
-                return ((UInt64)dataValue).ToString();
+            if (watchVar.Type == typeof(Int64))
+                return ((Int64)dataValue).ToString();
+            else if (watchVar.Type == typeof(Int32))
+                return ((Int32)dataValue).ToString();
+            else if (watchVar.Type == typeof(Int16))
+                return ((Int16)dataValue).ToString();
+            else if (watchVar.Type == typeof(sbyte))
+                return ((sbyte)dataValue).ToString();
             else
                 return dataValue.ToString();
         }

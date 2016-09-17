@@ -17,7 +17,7 @@ namespace SM64_Diagnostic
 {
     public partial class StroopMainForm : Form
     {
-        const string _version = "v0.2.2";
+        const string _version = "v0.2.3";
         ProcessStream _sm64Stream = null;
         Config _config;
 
@@ -257,6 +257,8 @@ namespace SM64_Diagnostic
             for (int index = 0; index < _miscData.Count; index++)
             {
                 var watchVar = _miscData[index];
+                if (watchVar.Special)
+                    continue;
                 var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.Type.ToString(), "", watchVar.Address);
                 _otherDataRowAssoc.Add(index, row);
             }
@@ -286,6 +288,9 @@ namespace SM64_Diagnostic
             for (int i = 0; i < _miscData.Count; i++)
             {
                 WatchVariable watchVar = _miscData[i];
+                if (watchVar.Special)
+                    continue;
+
                 // Make sure cell is not being edited
                 if (dataGridViewExpressions.IsCurrentCellInEditMode
                     && dataGridViewExpressions.SelectedRows[0].Index

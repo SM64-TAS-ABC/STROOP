@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <MiscData>
+  <Data special="true" specialType="NumberOfLoadedObjects">Num. Loaded Objs.</Data>
   <Data type="uint32" address="0x00C19054" absoluteAddress="true">Global Timer</Data>
   <Data type="uint16" address="0x8038EEE0">RNG Value</Data>
+  <Data special="true" specialType="RngIndex">RNG Index</Data>
+  <Data special="true" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data type="uint16" address="0x00C1D150" absoluteAddress="true">Coin Counter</Data>
   <Data type="sbyte" address="0x00C4CE7D" absoluteAddress="true">Red Coin Count</Data>
   <Data type="byte" address="0x00a93c27" absoluteAddress="true">Mission Selected</Data>
@@ -20,9 +23,9 @@
   <Data type="int16" address="0xa937a2" absoluteAddress="true">Hand Y</Data>
   <Data type="uint16" address="0x00C4CCDA" absoluteAddress="true">TTC Speed Setting</Data>
   <Data type="byte" address="0x00C341B0" absoluteAddress="true">BBH 'Go Round Boo Cnt</Data>
-  <Data type="uint16" address="0x009FCD60" absoluteAddress="true">WDW Main Water Level</Data>
-  <Data type="uint16" address="0x009FEEAC" absoluteAddress="true">WDW Town Water Level</Data>
+  <Data type="int16" address="0x009FCD60" absoluteAddress="true">WDW Main Water Level</Data>
+  <Data type="int16" address="0x009FEEAC" absoluteAddress="true">WDW Town Water Level</Data>
   <Data type="byte" address="0x00C1C9BE" absoluteAddress="true">WDW Painting Level</Data>
-  <Data type="uint16" address="0x00C26C64" absoluteAddress="true">Water Level</Data>
-  <Data type="uint16" address="0x00C4CC08" absoluteAddress="true">Water Level Median</Data>
+  <Data type="int16" address="0x00C26C64" absoluteAddress="true">Water Level</Data>
+  <Data type="int16" address="0x00C4CC08" absoluteAddress="true">Water Level Median</Data>
 </MiscData>
