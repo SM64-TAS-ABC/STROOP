@@ -37,6 +37,15 @@
     <Selected>
       <OverlayImage path="Border.png"/>
     </Selected>
+    <StandingOn>
+      <OverlayImage path="Foot.png"/>
+    </StandingOn>
+    <Holding>
+      <OverlayImage path="Hand.png"/>
+    </Holding>
+    <Interacting>
+      <OverlayImage path="Head.png"/>
+    </Interacting>
   </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <Image path="Star Door.png"/>

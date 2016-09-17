@@ -19,6 +19,7 @@ namespace SM64_Diagnostic
         const int BorderSize = 2;
 
         ObjectSlotManager _manager;
+        ObjectSlotManagerGui _gui;
 
         Color _mainColor, _borderColor, _backColor;
         Brush _borderBrush = new SolidBrush(Color.White), _backBrush = new SolidBrush(Color.White);
@@ -129,6 +130,83 @@ namespace SM64_Diagnostic
             }
         }
 
+        bool _drawSelectedOverlay, _drawStandingOnOverlay, _drawHoldingOverlay, _drawInteractingObject;
+        public bool DrawSelectedOverlay
+        {
+            get
+            {
+                return _drawSelectedOverlay;
+            }
+            set
+            {
+                if (_drawSelectedOverlay == value)
+                    return;
+                _drawSelectedOverlay = value;
+                Refresh();
+            }
+        }
+        public bool DrawStandingOnOverlay
+        {
+            get
+            {
+                return _drawStandingOnOverlay;
+            }
+            set
+            {
+                if (_drawStandingOnOverlay == value)
+                    return;
+                _drawStandingOnOverlay = value;
+                Refresh();
+            }
+        }
+        public bool DrawHoldingOverlay
+        {
+            get
+            {
+                return _drawHoldingOverlay;
+            }
+            set
+            {
+                if (_drawHoldingOverlay == value)
+                    return;
+                _drawHoldingOverlay = value;
+                Refresh();
+            }
+        }
+        public bool DrawInteractingOverlay
+        {
+            get
+            {
+                return _drawInteractingObject;
+            }
+            set
+            {
+                if (_drawInteractingObject == value)
+                    return;
+                _drawInteractingObject = value;
+                Refresh();
+            }
+        }
+
+        public ObjectSlot(int index, ObjectSlotManager manager, ObjectSlotManagerGui gui, Size size)
+        {
+            Index = index;
+            _manager = manager;
+            _gui = gui;
+            Size = size;
+            Font = new Font(FontFamily.GenericSansSerif, 6);
+
+            this.AllowDrop = true;
+            this.MouseDown += OnDrag;
+            this.MouseUp += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
+            this.MouseEnter += (s, e) => { MouseState = MouseStateType.Over; UpdateColors(); };
+            this.MouseLeave += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
+
+            this.DragEnter += OnDragEnter;
+            this.DragDrop += OnDrop;
+            this.Cursor = Cursors.Hand;
+        }
+
         void UpdateColors()
         {
             if (!_selected)
@@ -178,24 +256,6 @@ namespace SM64_Diagnostic
             (_borderBrush as SolidBrush).Color = _borderColor;
             (_backBrush as SolidBrush).Color = _backColor;
             Refresh();
-        }
-
-        public ObjectSlot(int index, ObjectSlotManager manager, Size size)
-        {
-            Index = index;
-            _manager = manager;
-            Size = size;
-            Font = new Font(FontFamily.GenericSansSerif, 6);
-
-            this.AllowDrop = true;
-            this.MouseDown += OnDrag;
-            this.MouseUp += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
-            this.MouseEnter += (s, e) => { MouseState = MouseStateType.Over; UpdateColors(); };
-            this.MouseLeave += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
-
-            this.DragEnter += OnDragEnter;
-            this.DragDrop += OnDrop;
-            this.Cursor = Cursors.Hand;
         }
 
         private void OnDrag(object sender, MouseEventArgs e)
@@ -271,6 +331,16 @@ namespace SM64_Diagnostic
                     .Zoom(_objectImage.Size);
                 e.Graphics.DrawImage(_objectImage, objectImageLocaction);
             }
+
+            // Draw Overlays
+            if (DrawSelectedOverlay)
+                e.Graphics.DrawImage(_gui.SelectedObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawHoldingOverlay)
+                e.Graphics.DrawImage(_gui.HoldingObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawStandingOnOverlay)
+                e.Graphics.DrawImage(_gui.StandingOnObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawInteractingObject)
+                e.Graphics.DrawImage(_gui.InteractingObjectOverlayImage, new Rectangle(new Point(), Size));
         }
 
         

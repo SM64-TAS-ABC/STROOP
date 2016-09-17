@@ -34,5 +34,6 @@ namespace SM64_Diagnostic.Structs
 
         public bool SlotIndexsFromOne;
         public bool MoveCameraWithPu = true;
+        public bool ShowOverlays = true;
     }
 }

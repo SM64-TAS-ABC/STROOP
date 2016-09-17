@@ -11,7 +11,10 @@ namespace SM64_Diagnostic.Structs
 {
     public class ObjectSlotManagerGui
     {
-        public Image SelectedObjectOverlayImage; 
+        public Image SelectedObjectOverlayImage;
+        public Image StandingOnObjectOverlayImage;
+        public Image HoldingObjectOverlayImage;
+        public Image InteractingObjectOverlayImage;
 
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
@@ -21,6 +24,9 @@ namespace SM64_Diagnostic.Structs
         ~ObjectSlotManagerGui()
         {
             SelectedObjectOverlayImage?.Dispose();
+            StandingOnObjectOverlayImage?.Dispose();
+            HoldingObjectOverlayImage?.Dispose();
+            InteractingObjectOverlayImage?.Dispose();
         }
     }
 }

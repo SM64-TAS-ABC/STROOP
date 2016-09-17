@@ -46,6 +46,8 @@
     <CoordinateOffsetY>0x40</CoordinateOffsetY>
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
     <FacingAngleOffset>0x2A</FacingAngleOffset>
+    <StandingOnPointer>0x80330E34</StandingOnPointer>
+    <InteractingObjectPointerOffset>0x78</InteractingObjectPointerOffset>
     <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>
     <CeilingYOffset>0x6C</CeilingYOffset>
     <GroundYOffset>0x70</GroundYOffset>
