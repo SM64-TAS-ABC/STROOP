@@ -3,6 +3,7 @@
   <Config>
     <ImageDirectory>Resources\Object Images\</ImageDirectory>
     <MapImageDirectory>Resources\Maps\Object Images\</MapImageDirectory>
+    <OverlayImageDirectory>Resources\Overlays\</OverlayImageDirectory>
     <DefaultImage>default.png</DefaultImage>
     <EmptyImage>Empty.png</EmptyImage>
     <RamToBehaviorOffset>0x12F14E80</RamToBehaviorOffset>
@@ -32,6 +33,20 @@
     <Color>#aaaaaa</Color>
     <MapImage path="Camera.png"/>
   </Camera>
+  <Overlays>
+    <Selected>
+      <OverlayImage path="Border.png"/>
+    </Selected>
+    <StandingOn>
+      <OverlayImage path="Foot.png"/>
+    </StandingOn>
+    <Holding>
+      <OverlayImage path="Hand.png"/>
+    </Holding>
+    <Interacting>
+      <OverlayImage path="Head.png"/>
+    </Interacting>
+  </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <Image path="Star Door.png"/>
 	<MapImage path="Star Door Top.png" rotates="true"/>
@@ -1691,9 +1706,14 @@
   <Object behaviorScriptAddress="0x13004BD4" name="Water Bomb Shadow">
     <Image path="Water Bomb Shadow.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13004BF0" name="TTC Rotating Block / Triangular Prism">
+  <Object behaviorScriptAddress="0x13004BF0" name="TTC Rotating Triangular Prism" gfxId="0x801524B8">
     <Image path="TTC Rotating Block _ Triangular Prism.png"/>
 	<MapImage path="TTC Rotating Block Top.png" rotates="true"/>
+    <Data type="int32" address="0xFC" objectOffset="true">Timer Max</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13004BF0" name="TTC Rotating Block" gfxId="0x80152488">
+    <Image path="TTC Rotating Block _ Triangular Prism.png"/>
+    <MapImage path="TTC Rotating Block Top.png" rotates="true"/>
     <Data type="int32" address="0xFC" objectOffset="true">Timer Max</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004C24" name="TTC Pendulum">

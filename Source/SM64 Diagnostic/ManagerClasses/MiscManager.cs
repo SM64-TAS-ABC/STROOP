@@ -30,25 +30,48 @@ namespace SM64_Diagnostic.ManagerClasses
             _stream = stream;
             _puController = puController;
 
+            // Initialize special variables
+            _rngIndex = new DataContainer("RNG Index");
+            _rngPerFrame = new DataContainer("RNG Calls/Frame");
+            _activeObjCnt = new DataContainer("Num. Loaded Objs.");
+
             _watchVarControls = new List<WatchVariableControl>();
             foreach (WatchVariable watchVar in watchVariables)
             {
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, 0);
-                variableTable.Controls.Add(watchControl.Control);
-                _watchVarControls.Add(watchControl);
+                if (!watchVar.Special)
+                {
+                    WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, 0);
+                    variableTable.Controls.Add(watchControl.Control);
+                    _watchVarControls.Add(watchControl);
+                    continue;
+                }
+
+                switch (watchVar.SpecialType)
+                {
+                    case "RngIndex":
+                        _rngIndex.Name = watchVar.Name;
+                        variableTable.Controls.Add(_rngIndex.Control);
+                        break;
+
+                    case "RngCallsPerFrame":
+                        _rngPerFrame.Name = watchVar.Name;
+                        variableTable.Controls.Add(_rngPerFrame.Control);
+                        break;
+
+                    case "NumberOfLoadedObjects":
+                        _activeObjCnt.Name = watchVar.Name;
+                        variableTable.Controls.Add(_activeObjCnt.Control);
+                        break;
+
+                    default:
+                        var failedContainer = new DataContainer(watchVar.Name);
+                        failedContainer.Text = "Couldn't Find";
+                        variableTable.Controls.Add(failedContainer.Control);
+                        break;
+                }
             }
 
-            // Add rng index
-            _rngIndex = new DataContainer("RNG Index");
-            variableTable.Controls.Insert(_rngIndex.Control, 2);
-
-            _rngPerFrame = new DataContainer("RNG Calls/Frame");
-            variableTable.Controls.Insert(_rngPerFrame.Control, 3);
-
-            // Add active object count watchvar
-            _activeObjCnt = new DataContainer("Num. Loaded Objs.");
-            variableTable.Controls.Add(_activeObjCnt.Control);
-
+            // Pu Controller initialize and register click events
             _puController.Controls["buttonPuConHome"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.Home);
             _puController.Controls["buttonPuConZnQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuUp);
             _puController.Controls["buttonPuConZpQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuDown);

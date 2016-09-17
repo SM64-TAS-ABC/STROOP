@@ -11,6 +11,7 @@
     <ListNextLinkOffset>0x08</ListNextLinkOffset>
     <ListPreviousLinkOffset>0x04</ListPreviousLinkOffset>
     <BehaviorScriptOffset>0x020C</BehaviorScriptOffset>
+    <BehaviorGfxOffset>0x14</BehaviorGfxOffset>
     <ObjectActiveOffset>0x74</ObjectActiveOffset>
     <CoordinateOffsetX>0xA0</CoordinateOffsetX>
     <CoordinateOffsetY>0xA4</CoordinateOffsetY>
@@ -46,6 +47,8 @@
     <CoordinateOffsetY>0x40</CoordinateOffsetY>
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
     <FacingAngleOffset>0x2A</FacingAngleOffset>
+    <StandingOnPointer>0x80330E34</StandingOnPointer>
+    <InteractingObjectPointerOffset>0x78</InteractingObjectPointerOffset>
     <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>
     <CeilingYOffset>0x6C</CeilingYOffset>
     <GroundYOffset>0x70</GroundYOffset>
@@ -53,6 +56,8 @@
     <HSpeedOffset>0x54</HSpeedOffset>
     <MarioStructSize>0xC4</MarioStructSize>
     <MoveToObjectYOffset>300</MoveToObjectYOffset>
+    <SlidingSpeedXOffset>0x58</SlidingSpeedXOffset>
+    <SlidingSpeedZOffset>0x5C</SlidingSpeedZOffset>
   </Mario>
   <Debug>
     <ToggleAddress>0x8033d263</ToggleAddress>
