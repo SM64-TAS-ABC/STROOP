@@ -1686,6 +1686,7 @@
   <Object behaviorScriptAddress="0x13004B1C" name="See Saw Platform">
     <Image path="See Saw Platform.png"/>
 	<MapImage path="See Saw Platform Top.png" rotates="true"/>
+    <Data type="float" address="0xF4" objectOffset="true">Rotational Speed</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004B44" name="Revolving Elevator Group">
     <Image path="Revolving Elevator Group.png"/>
@@ -2002,5 +2003,11 @@
   </Object>
   <Object behaviorScriptAddress="0x13005680" name="Bird (for Pan to Sky)">
     <Image path="Bird.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13FA4BB4" name="Save File">
+    <Image path="File Started.png"/>
+  </Object>
+    <Object behaviorScriptAddress="0x13FA4BD8" name="Yellow Background">
+    <Image path="File Yellow Background.png"/>
   </Object>
 </ObjectAssociations>
