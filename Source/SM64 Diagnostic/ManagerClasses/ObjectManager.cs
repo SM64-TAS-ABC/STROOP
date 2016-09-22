@@ -129,9 +129,7 @@ namespace SM64_Diagnostic.ManagerClasses
             set
             {
                 if (_objGui.ObjectNameTextBox.Text != value)
-                {
                     _objGui.ObjectNameTextBox.Text = value;
-                }
             }
         }
 
@@ -153,16 +151,14 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public Image Image
         {
-            set
-            {
-                if (_objGui.ObjectImagePictureBox.Image != value)
-                {
-                    _objGui.ObjectImagePictureBox.Image = value;
-                }
-            }
             get
             {
                 return _objGui.ObjectImagePictureBox.Image;
+            }
+            set
+            {
+                if (_objGui.ObjectImagePictureBox.Image != value)
+                    _objGui.ObjectImagePictureBox.Image = value;
             }
         }
 
