@@ -35,16 +35,16 @@
   </Camera>
   <Overlays>
     <Selected>
-      <OverlayImage path="Border.png"/>
+      <OverlayImage path="Selected.png"/>
     </Selected>
     <StandingOn>
-      <OverlayImage path="Foot.png"/>
+      <OverlayImage path="StandingOn.png"/>
     </StandingOn>
     <Holding>
-      <OverlayImage path="Hand.png"/>
+      <OverlayImage path="Holding.png"/>
     </Holding>
     <Interacting>
-      <OverlayImage path="Head.png"/>
+      <OverlayImage path="Interacting.png"/>
     </Interacting>
   </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
