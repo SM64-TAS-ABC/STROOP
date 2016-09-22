@@ -343,11 +343,12 @@ namespace SM64_Diagnostic.ManagerClasses
                     {
                         _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
                         _objManager.Name = ObjectAssoc.GetObjectName(behaviorScriptAdd, gfxId);
-                        _objManager.Image = ObjectSlots[index].ObjectImage;
+                        
                         _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorScriptAdd, gfxId), newColor.Lighten(0.8));
                         _lastSelectedBehavior = behaviorScriptAdd;
                         _lastSelectedGfx = gfxId;
                     }
+                    _objManager.Image = ObjectSlots[index].ObjectImage;
                     _objManager.BackColor = newColor;
                     int slotPos = objectData.ObjectProcessGroup == VacantGroup ? objectData.VacantSlotIndex.Value : objectData.ProcessIndex;
                     _objManager.SlotIndex = _memoryAddressSlotIndex[currentAddress] + (_config.SlotIndexsFromOne ? 1 : 0);
