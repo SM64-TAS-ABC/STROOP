@@ -148,10 +148,14 @@ namespace SM64_Diagnostic.ManagerClasses
                 var mapListLPFiltered = _currentMapList.Where((map) => map.LoadingPoint == loadingPoint).ToList();
                 if (mapListLPFiltered.Count > 0)
                     _currentMapList = mapListLPFiltered;
+                else
+                    _currentMapList = _currentMapList.Where((map) => !map.LoadingPoint.HasValue).ToList();
 
                 var mapListMLFiltered = _currentMapList.Where((map) => map.MissionLayout == missionLayout).ToList();
                 if (mapListMLFiltered.Count > 0)
                     _currentMapList = mapListMLFiltered;
+                else
+                    _currentMapList = _currentMapList.Where((map) => !map.MissionLayout.HasValue).ToList();
             }
 
             // ---- Update PU -----

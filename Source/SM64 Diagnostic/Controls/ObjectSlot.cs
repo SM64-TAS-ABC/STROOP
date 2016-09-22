@@ -31,6 +31,7 @@ namespace SM64_Diagnostic
         uint _behavior, _gfxId;
 
         int prevHeight;
+        object _gfxLock = new object();
 
         public enum MouseStateType {None, Over, Down};
         public MouseStateType MouseState;
@@ -59,11 +60,8 @@ namespace SM64_Diagnostic
             }
             set
             {
-                if (_behavior != value)
-                {
-                    _behavior = value;
-                    UpdateColors();
-                }
+                _behavior = value;
+                UpdateColors();
             }
         }
         public uint GfxId
@@ -77,7 +75,7 @@ namespace SM64_Diagnostic
                 if (_gfxId != value)
                 {
                     _gfxId = value;
-                    Refresh();
+                    Invalidate();
                 }
             }
         }
@@ -115,9 +113,11 @@ namespace SM64_Diagnostic
             {
                 if (_text == value)
                     return;
-
-                _text = value;
-                Refresh();
+                lock(_gfxLock)
+                {
+                    _text = value;
+                }
+                Invalidate();
             }
         }
 
@@ -137,9 +137,6 @@ namespace SM64_Diagnostic
             }
             set
             {
-                if (_mainColor == value)
-                    return;
-
                 _mainColor = value;
                 UpdateColors();
             }
@@ -157,7 +154,7 @@ namespace SM64_Diagnostic
                 if (_drawSelectedOverlay == value)
                     return;
                 _drawSelectedOverlay = value;
-                Refresh();
+                Invalidate();
             }
         }
         public bool DrawStandingOnOverlay
@@ -171,7 +168,7 @@ namespace SM64_Diagnostic
                 if (_drawStandingOnOverlay == value)
                     return;
                 _drawStandingOnOverlay = value;
-                Refresh();
+                Invalidate();
             }
         }
         public bool DrawHoldingOverlay
@@ -185,7 +182,7 @@ namespace SM64_Diagnostic
                 if (_drawHoldingOverlay == value)
                     return;
                 _drawHoldingOverlay = value;
-                Refresh();
+                Invalidate();
             }
         }
         public bool DrawInteractingOverlay
@@ -199,7 +196,7 @@ namespace SM64_Diagnostic
                 if (_drawInteractingObject == value)
                     return;
                 _drawInteractingObject = value;
-                Refresh();
+                Invalidate();
             }
         }
 
@@ -224,6 +221,9 @@ namespace SM64_Diagnostic
 
         void UpdateColors()
         {
+            var oldBorderColor = _borderColor;
+            var oldBackColor = _backColor;
+            bool imageUpdated = false;
             if (!_selected)
             {
                 var newColor = _mainColor;
@@ -244,7 +244,13 @@ namespace SM64_Diagnostic
                 }
                 Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, _gfxId, true);
                 if (_objectImage != newImage)
-                    _objectImage = newImage;
+                {
+                    lock (_gfxLock)
+                    {
+                        _objectImage = newImage;
+                    }
+                    imageUpdated = true;
+                }
             }
             else
             {
@@ -266,11 +272,32 @@ namespace SM64_Diagnostic
                 }
                 Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, _gfxId, !_active);
                 if (_objectImage != newImage)
-                    _objectImage = newImage;
+                {
+                    lock (_gfxLock)
+                    {
+                        _objectImage = newImage;
+                    }
+                    imageUpdated = true;
+                }
             }
-            (_borderBrush as SolidBrush).Color = _borderColor;
-            (_backBrush as SolidBrush).Color = _backColor;
-            Refresh();
+
+            bool colorUpdated = false;
+            colorUpdated |= (_backColor != oldBackColor);
+            colorUpdated |= (_borderColor != oldBorderColor);
+
+            if (colorUpdated)
+            {
+                lock (_gfxLock)
+                {
+                    (_borderBrush as SolidBrush).Color = _borderColor;
+                    (_backBrush as SolidBrush).Color = _backColor;
+                }
+            }
+
+            if (!imageUpdated && !colorUpdated)
+                return;
+
+            Invalidate();
         }
 
         private void OnDrag(object sender, MouseEventArgs e)
@@ -319,32 +346,35 @@ namespace SM64_Diagnostic
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            // Border
-            e.Graphics.FillRectangle(_borderBrush, new Rectangle(new Point(), Size));
-
-            // Background
-            e.Graphics.FillRectangle(_backBrush, new Rectangle(BorderSize, BorderSize, Width - BorderSize * 2, Height - BorderSize * 2));
-
-            // Change font size
-            if (Height != prevHeight)
+            lock (_gfxLock)
             {
-                prevHeight = Height;
-                Font = new Font(FontFamily.GenericSansSerif, Math.Max(6, 6 / 40.0f * Height));
-            }
+                // Border
+                e.Graphics.FillRectangle(_borderBrush, new Rectangle(new Point(), Size));
 
-            // Draw Text
-            var textSize = e.Graphics.MeasureString(Text, Font);
-            var textLocation = new PointF((Width - textSize.Width) / 2, Height - textSize.Height);
-            e.Graphics.DrawString(Text, Font, Brushes.Black, textLocation);
+                // Background
+                e.Graphics.FillRectangle(_backBrush, new Rectangle(BorderSize, BorderSize, Width - BorderSize * 2, Height - BorderSize * 2));
 
-            // Draw Object Image
-            if (_objectImage != null)
-            {
-                e.Graphics.InterpolationMode = InterpolationMode.High;
-                var objectImageLocaction = (new RectangleF(BorderSize, BorderSize + 1, 
-                    Width - BorderSize * 2, textLocation.Y - 1 - BorderSize))
-                    .Zoom(_objectImage.Size);
-                e.Graphics.DrawImage(_objectImage, objectImageLocaction);
+                // Change font size
+                if (Height != prevHeight)
+                {
+                    prevHeight = Height;
+                    Font = new Font(FontFamily.GenericSansSerif, Math.Max(6, 6 / 40.0f * Height));
+                }
+
+                // Draw Text
+                var textSize = e.Graphics.MeasureString(Text, Font);
+                var textLocation = new PointF((Width - textSize.Width) / 2, Height - textSize.Height);
+                e.Graphics.DrawString(Text, Font, Brushes.Black, textLocation);
+
+                // Draw Object Image
+                if (_objectImage != null)
+                {
+                    e.Graphics.InterpolationMode = InterpolationMode.High;
+                    var objectImageLocaction = (new RectangleF(BorderSize, BorderSize + 1,
+                        Width - BorderSize * 2, textLocation.Y - 1 - BorderSize))
+                        .Zoom(_objectImage.Size);
+                    e.Graphics.DrawImage(_objectImage, objectImageLocaction);
+                }
             }
 
             // Draw Overlays
