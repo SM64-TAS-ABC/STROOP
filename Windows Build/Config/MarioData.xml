@@ -30,6 +30,7 @@
   <Data type="float" address="0x8033B3C8">HOLP X</Data>
   <Data type="float" address="0x8033B3CC">HOLP Y</Data>
   <Data type="float" address="0x8033B3D0">HOLP Z</Data>
+  <Data type="byte" address="0xc26e39" absoluteAddress="true">HOLP Type</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x10">Hat On Head</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x20">Hat In Hand</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x08">Wing Cap</Data>
