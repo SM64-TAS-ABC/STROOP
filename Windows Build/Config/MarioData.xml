@@ -11,9 +11,10 @@
   <Data type="float" address="0x58" marioOffset="true">X Sliding Speed</Data>
   <Data type="float" address="0x5C" marioOffset="true">Z Sliding Speed</Data>
   <Data special="true" specialType="SlidingSpeed">H Sliding Speed</Data>
-  <Data type="uint16" address="0x00C26C1C" absoluteAddress="true" isAngle="true">Angle (Facing)</Data>
-  <Data type="uint16" address="0x00C26C2A" absoluteAddress="true" isAngle="true">Angle (Moving)</Data>
-  <Data type="uint16" address="0x00C26C16" absoluteAddress="true" isAngle="true">Angle (Intended)</Data>
+  <Data type="uint16" address="0x00C26C1C" absoluteAddress="true" isAngle="true">Yaw (Facing)</Data>
+  <Data type="uint16" address="0x00C26C2A" absoluteAddress="true" isAngle="true">Yaw (Moving)</Data>
+  <Data type="uint16" address="0x00C26C16" absoluteAddress="true" isAngle="true">Yaw (Intended)</Data>
+  <Data type="uint16" address="0x00C3BDB8" absoluteAddress="true" isAngle="true">Cannon Yaw</Data>
   <Data type="uint16" address="0x00c26c1e" absoluteAddress="true" isAngle="true">Pitch</Data>
   <Data type="uint16" address="0x00c26c22" absoluteAddress="true" isAngle="true">Roll</Data>
   <Data type="uint16" address="0x00c26c26" absoluteAddress="true" isAngle="true">Yaw Velocity</Data>
