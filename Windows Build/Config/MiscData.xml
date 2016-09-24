@@ -10,7 +10,9 @@
   <Data type="byte" address="0x00a93c27" absoluteAddress="true">Mission Selected</Data>
   <Data type="byte" address="0x00C2754A" absoluteAddress="true">Mission Layout</Data>
   <Data type="byte" address="0x00C1D0A3" absoluteAddress="true">Mission Name</Data>
-  <Data type="byte" address="0x80222618" isBool="true" mask="0x20" invertBool="true">Music</Data>
+  <Data type="byte" address="0x00C19817" absoluteAddress="true" isBool="true">Special Triple Jump</Data>
+  <Data type="byte" address="0x00C1E09B" absoluteAddress="true" isBool="true">Talked to Yoshi</Data>
+  <Data type="byte" address="0x80222618" isBool="true" mask="0x20" invertBool="true">Music On</Data>
   <Data type="float" address ="0x80222630">Volume</Data>
   <Data type="byte" address="0x8033B249">Level</Data>
   <Data type="byte" address="0x8033B24A">Area</Data>
@@ -18,6 +20,7 @@
   <Data type="int16" address="0xc19876" absoluteAddress="true">Current File</Data>
   <Data type="byte" address="0x00C19076" absoluteAddress="true">Demo Counter</Data>
   <Data type="int16" address="0xa936b2" absoluteAddress="true">Demo Timer</Data>
+  <Data type="byte" address="0x00B125FC" absoluteAddress="true">Sound Selection</Data>
   <Data type="byte" address="0xc1cf13" absoluteAddress="true">Arrow Selection</Data>
   <Data type="int16" address="0xa9379e" absoluteAddress="true">Hand X</Data>
   <Data type="int16" address="0xa937a2" absoluteAddress="true">Hand Y</Data>
