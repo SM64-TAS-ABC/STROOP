@@ -1506,7 +1506,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13004348" name="Number">
     <Image path="Number.png"/>
-    <Data type="int32" address="0x144" objectOffset="true">Value</Data>
+    <Data type="int32" address="0xF0" objectOffset="true">Value</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004370" name="Manta Ray">
     <Image path="Manta Ray.png"/>
@@ -1568,8 +1568,8 @@
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int32" address="0x110" objectOffset="true">Blinking Timer</Data>
   </Object>
-  <Object behaviorScriptAddress="0x130045D0" name="Koopa the Quick Flag">
-    <Image path="Koopa the Quick Flag.png"/>
+  <Object behaviorScriptAddress="0x130045D0" name="Koopa the Quick Flag Checkpoint">
+    <Image path="Koopa the Quick Flag Checkpoint.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130045F8" name="Koopa the Quick Flag">
     <Image path="Koopa the Quick Flag.png"/>
