@@ -88,7 +88,7 @@ namespace SM64_Diagnostic.Utilities
 
         public ProcessStream(Config config, Process process = null)
         {
-            _offset = (int)(config.RamStartAddress & 0x0FFFFFFF);
+            _offset = (int)(config.RamStartAddress & 0x7FFFFFFF);
             _process = process;
             _config = config;
 
