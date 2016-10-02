@@ -118,11 +118,8 @@ namespace SM64_Diagnostic.ManagerClasses
 
             switch (ManagerGui.TabControl.SelectedTab.Text)
             {
-                case "Mario":
-                    ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages[0];
-                    SelectedSlot = slotIndex;
-                    break;
-                case "Object":
+                default:
+                    ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
                     SelectedSlot = slotIndex;
                     break;
                 case "Map":
