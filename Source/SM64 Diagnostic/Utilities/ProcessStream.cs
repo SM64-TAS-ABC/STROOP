@@ -297,10 +297,10 @@ namespace SM64_Diagnostic.Utilities
         
         public bool WriteRam(byte[] buffer, uint address, int length, bool absoluteAddress = false, bool? fixAddress = null)
         {
-            return WriteRam(buffer, 0, address, buffer.Length, absoluteAddress, fixAddress);
+            return WriteRam(buffer, 0, address, length, absoluteAddress, fixAddress);
         }
 
-        private void OnTick(object sednder, EventArgs e)
+        private void OnTick(object sender, EventArgs e)
         {
             if (!IsRunning & !_lastUpdateBeforePausing)
                 return;

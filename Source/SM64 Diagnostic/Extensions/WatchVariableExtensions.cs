@@ -125,7 +125,6 @@ namespace SM64_Diagnostic.Extensions
                 }
             }
             var byteCount = TypeSize[watchVar.Type];
-            var test = BitConverter.GetBytes(writeValue);
             var dataBytes = stream.WriteRam(BitConverter.GetBytes(writeValue), watchVar.OtherOffset ? offset + watchVar.Address
                 : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
         }
