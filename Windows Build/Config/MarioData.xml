@@ -45,6 +45,7 @@
   <Data type="uint16" address="0x00C26C0C" absoluteAddress="true">Squished Timer</Data>
   <Data type="int16" address="0x00C26C14" absoluteAddress="true">Hitstun Timer</Data>
   <Data type="float" address="0x00c26cac" absoluteAddress="true">Peak Height</Data>
+  <Data special="true" specialType="FallHeight">Fall Height</Data>
   <Data type="int32" address="0x009DC4DC" absoluteAddress="true">Blinking State</Data>
   <Data type="int16" address="0x00C1998A" absoluteAddress="true">Blinking Timer</Data>
 </MarioData>
