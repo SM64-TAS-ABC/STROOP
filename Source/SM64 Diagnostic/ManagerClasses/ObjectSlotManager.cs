@@ -348,13 +348,14 @@ namespace SM64_Diagnostic.ManagerClasses
                 // Update object manager image
                 if (SelectedAddress.HasValue && SelectedAddress.Value == currentAddress)
                 {
-                    if (_lastSelectedBehavior != behaviorCriteria)
+                    var newBehavior = ObjectAssoc.FindObjectAssociation(behaviorCriteria).BehaviorCriteria;
+                    if (_lastSelectedBehavior != newBehavior)
                     {
                         _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
                         _objManager.Name = ObjectAssoc.GetObjectName(behaviorCriteria);
                         
                         _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorCriteria), newColor.Lighten(0.8));
-                        _lastSelectedBehavior = behaviorCriteria;
+                        _lastSelectedBehavior = newBehavior;
                     }
                     _objManager.Image = ObjectSlots[index].ObjectImage;
                     _objManager.BackColor = newColor;
