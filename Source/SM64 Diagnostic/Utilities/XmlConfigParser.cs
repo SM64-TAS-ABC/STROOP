@@ -230,6 +230,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "SlidingSpeedZOffset":
                                     config.Mario.SlidingSpeedZOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "PeakHeightOffset":
+                                    config.Mario.PeakHeightOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;

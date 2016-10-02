@@ -60,6 +60,7 @@
     <MoveToObjectYOffset>300</MoveToObjectYOffset>
     <SlidingSpeedXOffset>0x58</SlidingSpeedXOffset>
     <SlidingSpeedZOffset>0x5C</SlidingSpeedZOffset>
+    <PeakHeightOffset>0xBC</PeakHeightOffset>
   </Mario>
   <Debug>
     <ToggleAddress>0x8033d263</ToggleAddress>
