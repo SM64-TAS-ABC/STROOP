@@ -25,5 +25,6 @@ namespace SM64_Diagnostic.Structs
         public uint StructSize;
         public uint SlidingSpeedXOffset;
         public uint SlidingSpeedZOffset;
+        public uint PeakHeightOffset;
     }
 }

@@ -92,6 +92,7 @@
               <xs:element name="MarioStructSize" type="types:address"/>
               <xs:element name="SlidingSpeedXOffset" type="types:address"/>
               <xs:element name="SlidingSpeedZOffset" type="types:address"/>
+              <xs:element name="PeakHeightOffset" type="types:address"/>
             </xs:all>
           </xs:complexType>
         </xs:element>

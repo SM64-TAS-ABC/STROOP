@@ -17,7 +17,7 @@ namespace SM64_Diagnostic.ManagerClasses
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
         DataContainer _heightAboveGround, _heightBelowCeil, _deFactoSpeed,
-            _slidingSpeed, _slidingAngle;
+            _slidingSpeed, _slidingAngle, _fallHeight;
         MapManager _mapManager;
 
         public MarioManager(ProcessStream stream, Config config, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable, MapManager mapManager)
@@ -39,6 +39,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _deFactoSpeed = new DataContainer("De Facto Speed");
             _slidingSpeed = new DataContainer("Sliding Speed");
             _slidingAngle = new DataContainer("Sliding Angle");
+            _fallHeight = new DataContainer("Fall Height");
 
             foreach (WatchVariable watchVar in marioData)
             {
@@ -75,6 +76,11 @@ namespace SM64_Diagnostic.ManagerClasses
                     case "SlidingAngle":
                         _slidingAngle.Name = watchVar.Name;
                         //variableTable.Controls.Add(_slidingAngle.Control);
+                        break;
+
+                    case "FallHeight":
+                        _fallHeight.Name = watchVar.Name;
+                        variableTable.Controls.Add(_fallHeight.Control);
                         break;
 
                     default:
@@ -161,8 +167,9 @@ namespace SM64_Diagnostic.ManagerClasses
             if (!updateView)
                 return;
 
+            var floorY = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.GroundYOffset, 4), 0);
             _heightBelowCeil.Text = (BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.CeilingYOffset, 4), 0) - y).ToString();
-            _heightAboveGround.Text = (y - BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.GroundYOffset, 4), 0)).ToString();
+            _heightAboveGround.Text = (y - floorY).ToString();
 
             if (floorTriangle != 0x00)
             {
@@ -178,6 +185,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _slidingSpeed.Text = ((float)Math.Sqrt(slidingSpeedX * slidingSpeedX + slidingSpeedZ * slidingSpeedZ)).ToString();
 
+            _fallHeight.Text = (BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.PeakHeightOffset, 4), 0) - floorY).ToString();
         }
 
         private void RegisterControlEvents(Control control)
