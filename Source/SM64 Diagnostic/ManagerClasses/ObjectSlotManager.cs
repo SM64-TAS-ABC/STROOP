@@ -29,10 +29,10 @@ namespace SM64_Diagnostic.ManagerClasses
         int _selectedSlot;
 
         List<byte> _toggleMapGroups = new List<byte>();
-        List<uint> _toggleMapBehaviors = new List<uint>();
+        List<BehaviorCriteria> _toggleMapBehaviors = new List<BehaviorCriteria>();
         List<uint> _toggleMapSlots = new List<uint>();
 
-        uint _lastSelectedBehavior = 0, _lastSelectedGfx = 0;
+        BehaviorCriteria _lastSelectedBehavior;
 
         public uint? SelectedAddress = null;
         public const byte VacantGroup = 0xFF;
@@ -311,12 +311,21 @@ namespace SM64_Diagnostic.ManagerClasses
                     activeObjCnt++;
 
                 var behaviorScriptAdd = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorScriptOffset, 4), 0)
-                    & 0x0FFFFFFF;
+                    & 0x7FFFFFFF;
 
                 var gfxId = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorGfxOffset, 4), 0);
+                var subType = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorSubtypeOffset, 4), 0);
+                var appearance = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorAppearance, 4), 0);
 
-                ObjectSlots[index].Behavior = behaviorScriptAdd;
-                ObjectSlots[index].GfxId = gfxId;
+                var behaviorCriteria = new BehaviorCriteria()
+                {
+                    BehaviorAddress = behaviorScriptAdd,
+                    GfxId = gfxId,
+                    SubType = subType,
+                    Appearance = appearance
+                };
+
+                ObjectSlots[index].Behavior = behaviorCriteria;
 
                 var processGroup = objectData.ObjectProcessGroup;
                 ObjectSlots[index].ProcessGroup = processGroup;
@@ -339,14 +348,13 @@ namespace SM64_Diagnostic.ManagerClasses
                 // Update object manager image
                 if (SelectedAddress.HasValue && SelectedAddress.Value == currentAddress)
                 {
-                    if (_lastSelectedBehavior != behaviorScriptAdd || _lastSelectedGfx != gfxId)
+                    if (_lastSelectedBehavior != behaviorCriteria)
                     {
                         _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
-                        _objManager.Name = ObjectAssoc.GetObjectName(behaviorScriptAdd, gfxId);
+                        _objManager.Name = ObjectAssoc.GetObjectName(behaviorCriteria);
                         
-                        _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorScriptAdd, gfxId), newColor.Lighten(0.8));
-                        _lastSelectedBehavior = behaviorScriptAdd;
-                        _lastSelectedGfx = gfxId;
+                        _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorCriteria), newColor.Lighten(0.8));
+                        _lastSelectedBehavior = behaviorCriteria;
                     }
                     _objManager.Image = ObjectSlots[index].ObjectImage;
                     _objManager.BackColor = newColor;
@@ -362,8 +370,8 @@ namespace SM64_Diagnostic.ManagerClasses
                 {
 
                     // Update image
-                    var mapObjImage = ObjectAssoc.GetObjectMapImage(behaviorScriptAdd, gfxId, !isActive);
-                    var mapObjRotates = ObjectAssoc.GetObjectMapRotates(behaviorScriptAdd, gfxId);
+                    var mapObjImage = ObjectAssoc.GetObjectMapImage(behaviorCriteria, !isActive);
+                    var mapObjRotates = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
                     if (!_mapObjects.ContainsKey(currentAddress))
                     {
                         _mapObjects.Add(currentAddress, new MapObject(mapObjImage));
@@ -385,7 +393,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     else
                     {
                         // Update map object coordinates and rotation
-                        _mapObjects[currentAddress].Show = !_toggleMapBehaviors.Contains(behaviorScriptAdd)
+                        _mapObjects[currentAddress].Show = !_toggleMapBehaviors.Contains(behaviorCriteria)
                             && !_toggleMapGroups.Contains(processGroup) && !_toggleMapSlots.Contains(currentAddress);
                         _mapObjects[currentAddress].X = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
                         _mapObjects[currentAddress].Y = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
@@ -393,7 +401,7 @@ namespace SM64_Diagnostic.ManagerClasses
                         _mapObjects[currentAddress].IsActive = isActive;
                         _mapObjects[currentAddress].Rotation = (float)((UInt16)(BitConverter.ToUInt32(
                             _stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectRotationOffset, 4), 0)) / 65536f * 360f);
-                        _mapObjects[currentAddress].UsesRotation = ObjectAssoc.GetObjectMapRotates(behaviorScriptAdd, gfxId);
+                        _mapObjects[currentAddress].UsesRotation = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
                     }
                 }
             }

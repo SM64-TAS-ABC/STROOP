@@ -12,6 +12,8 @@
     <ListPreviousLinkOffset>0x04</ListPreviousLinkOffset>
     <BehaviorScriptOffset>0x020C</BehaviorScriptOffset>
     <BehaviorGfxOffset>0x14</BehaviorGfxOffset>
+    <BehaviorSubtypeOffset>0x0144</BehaviorSubtypeOffset>
+    <BehaviorAppearance>0xF0</BehaviorAppearance>
     <ObjectActiveOffset>0x74</ObjectActiveOffset>
     <CoordinateOffsetX>0xA0</CoordinateOffsetX>
     <CoordinateOffsetY>0xA4</CoordinateOffsetY>

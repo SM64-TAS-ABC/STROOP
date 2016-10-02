@@ -11,8 +11,9 @@ namespace SM64_Diagnostic.Structs
 {
     public class ObjectAssociations
     {
-        Dictionary<uint, List<ObjectBehaviorAssociation>> _objAssoc = new Dictionary<uint, List<ObjectBehaviorAssociation>>();
-        
+        HashSet<ObjectBehaviorAssociation> _objAssoc = new HashSet<ObjectBehaviorAssociation>();
+
+
         Image _defaultImage;
         Image _transparentDefaultImage;
 
@@ -33,7 +34,7 @@ namespace SM64_Diagnostic.Structs
         public uint MarioBehavior;
         public uint RamOffset;
 
-        public Dictionary<uint, List<ObjectBehaviorAssociation>> BehaviorAssociations
+        public HashSet<ObjectBehaviorAssociation> BehaviorAssociations
         {
             get
             {
@@ -54,56 +55,48 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        public void AddAssociation(ObjectBehaviorAssociation obj)
+        public bool AddAssociation(ObjectBehaviorAssociation objAsooc)
         {
-            if (!_objAssoc.Keys.Contains(obj.Behavior))
-                _objAssoc.Add(obj.Behavior, new List<ObjectBehaviorAssociation>() { obj });
-            else
-                _objAssoc[obj.Behavior].Add(obj);
+            return _objAssoc.Add(objAsooc);
         }
 
-        public ObjectBehaviorAssociation FindObjectAssociation(uint behaviorAddress, uint gfxId)
+        public ObjectBehaviorAssociation FindObjectAssociation(BehaviorCriteria behaviorCriteria)
         {
-            if (!_objAssoc.ContainsKey(behaviorAddress))
-                return null;
+            var possibleAssoc = _objAssoc.Where(objAssoc => objAssoc.MeetsCriteria(behaviorCriteria));
 
-            if (_objAssoc[behaviorAddress].Exists(obj => obj.GfxId == gfxId))
-                return _objAssoc[behaviorAddress].Find(obj => obj.GfxId == gfxId);
+            if (possibleAssoc.Count() > 1 && possibleAssoc.Any(objAssoc => objAssoc.BehaviorCriteria.BehaviorOnly()))
+                possibleAssoc = possibleAssoc.Where(objAssoc => !objAssoc.BehaviorCriteria.BehaviorOnly());
 
-            if (_objAssoc[behaviorAddress].Exists(obj => obj.GfxId == null))
-                return _objAssoc[behaviorAddress].Find(obj => obj.GfxId == null);
-
-            return null;
+            return possibleAssoc.FirstOrDefault();
         }
 
-        public Image GetObjectImage(uint behaviorAddress, uint gfxId, bool transparent)
+        public Image GetObjectImage(BehaviorCriteria behaviorCriteria, bool transparent)
         {
-            if (behaviorAddress == 0)
+            if (behaviorCriteria.BehaviorAddress == 0)
                 return EmptyImage;
 
-            var assoc = FindObjectAssociation(behaviorAddress, gfxId);
+            var assoc = FindObjectAssociation(behaviorCriteria);
             if (assoc == null)
                 return transparent ? _transparentDefaultImage : _defaultImage;
 
             return transparent ? assoc.TransparentImage : assoc.Image;
         }
 
-        public Image GetObjectMapImage(uint behaviorAddress, uint gfxId, bool transparent)
+        public Image GetObjectMapImage(BehaviorCriteria behaviorCriteria, bool transparent)
         {
-            if (behaviorAddress == 0)
+            if (behaviorCriteria.BehaviorAddress == 0)
                 return EmptyImage;
 
-            var assoc = FindObjectAssociation(behaviorAddress, gfxId);
-
+            var assoc = FindObjectAssociation(behaviorCriteria);
             if (assoc == null)
                 return _defaultImage;
 
             return transparent ? assoc.TransparentMapImage : assoc.MapImage;
         }
 
-        public bool GetObjectMapRotates(uint behaviorAddress, uint gfxId)
+        public bool GetObjectMapRotates(BehaviorCriteria behaviorCriteria)
         {
-            var assoc = FindObjectAssociation(behaviorAddress, gfxId);
+            var assoc = FindObjectAssociation(behaviorCriteria);
 
             if (assoc == null)
                 return false;
@@ -111,11 +104,11 @@ namespace SM64_Diagnostic.Structs
             return assoc.RotatesOnMap;
         }
 
-        public string GetObjectName(uint behaviorAddress, uint gfxId)
+        public string GetObjectName(BehaviorCriteria behaviorCriteria)
         {
-            var assoc = FindObjectAssociation(behaviorAddress, gfxId);
+            var assoc = FindObjectAssociation(behaviorCriteria);
 
-            if (behaviorAddress == 0)
+            if (behaviorCriteria.BehaviorAddress == 0)
                 return "Uninitialized Object";
 
             if (assoc == null)
@@ -124,9 +117,9 @@ namespace SM64_Diagnostic.Structs
             return assoc.Name;
         }
 
-        public List<WatchVariable> GetWatchVariables(uint behaviorAddress, uint gfxId)
+        public List<WatchVariable> GetWatchVariables(BehaviorCriteria behaviorCriteria)
         {
-            var assoc = FindObjectAssociation(behaviorAddress, gfxId);
+            var assoc = FindObjectAssociation(behaviorCriteria);
 
             if (assoc == null)
                 return new List<WatchVariable>();
@@ -137,15 +130,12 @@ namespace SM64_Diagnostic.Structs
         ~ObjectAssociations()
         {
             // Unload and dispose of all images
-            foreach (var objList in _objAssoc.Values)
+            foreach (var obj in _objAssoc)
             {
-                foreach (var obj in objList)
-                {
-                    obj.Image?.Dispose();
-                    obj.TransparentImage?.Dispose();
-                    obj.MapImage?.Dispose();
-                    obj.TransparentMapImage?.Dispose();
-                }
+                obj.Image?.Dispose();
+                obj.TransparentImage?.Dispose();
+                obj.MapImage?.Dispose();
+                obj.TransparentMapImage?.Dispose();
             }
 
             _transparentDefaultImage?.Dispose();
