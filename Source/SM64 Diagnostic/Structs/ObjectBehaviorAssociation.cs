@@ -32,8 +32,7 @@ namespace SM64_Diagnostic.Structs
                 return false;
 
             var otherBehavior = (ObjectBehaviorAssociation)obj;
-
-            return otherBehavior.BehaviorCriteria == BehaviorCriteria;
+            return otherBehavior == this;
         }
 
         public override int GetHashCode()
@@ -43,12 +42,19 @@ namespace SM64_Diagnostic.Structs
 
         public static bool operator ==(ObjectBehaviorAssociation a, ObjectBehaviorAssociation b)
         {
-            return a.Equals(b);
+            if (object.ReferenceEquals(a, null))
+            {
+                return object.ReferenceEquals(b, null);
+            }
+            else if (object.ReferenceEquals(b, null))
+                return false;
+
+            return a.BehaviorCriteria == b.BehaviorCriteria;
         }
 
         public static bool operator !=(ObjectBehaviorAssociation a, ObjectBehaviorAssociation b)
         {
-            return !a.Equals(b);
+            return !(a == b);
         }
     }
 }

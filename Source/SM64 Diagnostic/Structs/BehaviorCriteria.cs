@@ -15,13 +15,12 @@ namespace SM64_Diagnostic.Structs
 
         public override bool Equals(object obj)
         {
-            if (!(obj is BehaviorCriteria))
+            if (obj == null || !(obj is BehaviorCriteria))
                 return false;
 
             var otherCriteria = (BehaviorCriteria)obj;
 
-            return (BehaviorAddress == otherCriteria.BehaviorAddress && GfxId == otherCriteria.GfxId
-                && SubType == otherCriteria.SubType && Appearance == otherCriteria.Appearance);
+            return otherCriteria == this;
         }
 
         public bool BehaviorOnly()
@@ -48,12 +47,13 @@ namespace SM64_Diagnostic.Structs
 
         public static bool operator ==(BehaviorCriteria a, BehaviorCriteria b)
         {
-            return a.Equals(b);
+            return (a.BehaviorAddress == b.BehaviorAddress && a.GfxId == b.GfxId
+                && a.SubType == b.SubType && a.Appearance == b.Appearance);
         }
 
         public static bool operator !=(BehaviorCriteria a, BehaviorCriteria b)
         {
-            return !a.Equals(b);
+            return !(a == b);
         }
 
         public override int GetHashCode()
