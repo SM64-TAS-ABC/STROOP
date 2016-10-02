@@ -323,11 +323,11 @@ namespace SM64_Diagnostic.ManagerClasses
             if (_editMode)
                 return;
 
+            _changedByUser = false;
+
             if (_watchVar.IsBool)
             {
-                _changedByUser = false;
                 _checkBoxBool.Checked = _watchVar.GetBoolValue(_stream, OtherOffset);
-                _changedByUser = true;
             }
             else if (_watchVar.IsAngle)
             {
@@ -337,6 +337,8 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 _textBoxValue.Text = _watchVar.GetStringValue(_stream, OtherOffset);
             }
+
+            _changedByUser = true;
         }
 
         private void OnModified(object sender, EventArgs e)
@@ -378,15 +380,22 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private void OnTextValueKeyDown(object sender, KeyEventArgs e)
         {
+            // On "Enter" key press
             if (e.KeyData != Keys.Enter)
                 return;
 
+            // Exit edit mode
             _textBoxValue.ReadOnly = true;
             _editMode = false;
+
+            // Write new value to RAM
             if (_watchVar.IsAngle)
                 _watchVar.SetAngleStringValue(_stream, OtherOffset, _textBoxValue.Text, _angleViewMode);
             else
                 _watchVar.SetStringValue(_stream, OtherOffset, _textBoxValue.Text);
+
+            // Update locked value
+            _lockedStringValue = _textBoxValue.Text;
         }
     }
 }
