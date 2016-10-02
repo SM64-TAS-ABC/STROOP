@@ -311,8 +311,8 @@ namespace SM64_Diagnostic.ManagerClasses
                     & 0x7FFFFFFF;
 
                 var gfxId = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorGfxOffset, 4), 0);
-                var subType = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorSubtypeOffset, 4), 0);
-                var appearance = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorAppearance, 4), 0);
+                var subType = BitConverter.ToInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorSubtypeOffset, 4), 0);
+                var appearance = BitConverter.ToInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorAppearance, 4), 0);
 
                 var behaviorCriteria = new BehaviorCriteria()
                 {

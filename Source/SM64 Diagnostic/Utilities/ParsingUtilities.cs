@@ -61,5 +61,15 @@ namespace SM64_Diagnostic.Utilities
 
             return true;
         }
+
+
+        public static int? TryParseInt(string str)
+        {
+            int value;
+            if (!int.TryParse(str, out value))
+                return null;
+
+            return value;
+        }
     }
 }

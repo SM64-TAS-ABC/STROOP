@@ -604,13 +604,14 @@ namespace SM64_Diagnostic.Utilities
                     case "Object":
                         uint behaviorAddress = (ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value)
                             - ramToBehaviorOffset) & 0x00FFFFFF;
-                        uint? gfxId = null, subType = null, appearance = null;
+                        uint? gfxId = null;
+                        int? subType = null, appearance = null;
                         if (element.Attribute(XName.Get("gfxId")) != null)
                             gfxId = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxId")).Value) | 0x80000000U;
                         if (element.Attribute(XName.Get("subType")) != null)
-                            subType = ParsingUtilities.ParseHex(element.Attribute(XName.Get("subType")).Value);
+                            subType = ParsingUtilities.TryParseInt(element.Attribute(XName.Get("subType")).Value);
                         if (element.Attribute(XName.Get("appearance")) != null)
-                            appearance = ParsingUtilities.ParseHex(element.Attribute(XName.Get("appearance")).Value);
+                            appearance = ParsingUtilities.TryParseInt(element.Attribute(XName.Get("appearance")).Value);
                         string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                         string mapImagePath = null;
                         bool rotates = false;
