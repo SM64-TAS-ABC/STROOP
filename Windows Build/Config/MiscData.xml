@@ -31,4 +31,6 @@
   <Data type="byte" address="0x00C1C9BE" absoluteAddress="true">WDW Painting Level</Data>
   <Data type="int16" address="0x00C26C64" absoluteAddress="true">Water Level</Data>
   <Data type="int16" address="0x00C4CC08" absoluteAddress="true">Water Level Median</Data>
+  <Data type="byte" address="0x00C4CCD4" absoluteAddress="true" isBool="true">THI Water Drained</Data>
+  <Data type="int16" address="0x009F4142" absoluteAddress="true">THI Tiny Water Level</Data>
 </MiscData>
