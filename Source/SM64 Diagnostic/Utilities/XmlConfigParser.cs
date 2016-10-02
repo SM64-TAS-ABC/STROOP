@@ -103,6 +103,12 @@ namespace SM64_Diagnostic.Utilities
                                 case "BehaviorGfxOffset":
                                     config.ObjectSlots.BehaviorGfxOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "BehaviorSubtypeOffset":
+                                    config.ObjectSlots.BehaviorSubtypeOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "BehaviorAppearance":
+                                    config.ObjectSlots.BehaviorAppearance = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "ObjectActiveOffset":
                                     config.ObjectSlots.ObjectActiveOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
@@ -595,9 +601,13 @@ namespace SM64_Diagnostic.Utilities
                     case "Object":
                         uint behaviorAddress = (ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value)
                             - ramToBehaviorOffset) & 0x00FFFFFF;
-                        uint? gfxId = null;
+                        uint? gfxId = null, subType = null, appearance = null;
                         if (element.Attribute(XName.Get("gfxId")) != null)
                             gfxId = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxId")).Value) | 0x80000000U;
+                        if (element.Attribute(XName.Get("subType")) != null)
+                            subType = ParsingUtilities.ParseHex(element.Attribute(XName.Get("subType")).Value);
+                        if (element.Attribute(XName.Get("appearance")) != null)
+                            appearance = ParsingUtilities.ParseHex(element.Attribute(XName.Get("appearance")).Value);
                         string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                         string mapImagePath = null;
                         bool rotates = false;
@@ -617,14 +627,15 @@ namespace SM64_Diagnostic.Utilities
                             watchVars.Add(watchVar);
                         }
 
-                        if (assoc.BehaviorAssociations.ContainsKey(behaviorAddress) && (gfxId == null ||
-                             assoc.BehaviorAssociations[behaviorAddress].Exists(obj => obj.GfxId == gfxId.Value)))
-                            throw new Exception("More than one behavior address was defined.");
-
                         var newBehavior = new ObjectBehaviorAssociation()
                         {
-                            Behavior = behaviorAddress,
-                            GfxId = gfxId,
+                            BehaviorCriteria = new BehaviorCriteria()
+                            {
+                                BehaviorAddress = behaviorAddress,
+                                GfxId = gfxId,
+                                SubType = subType,
+                                Appearance = appearance
+                            },
                             ImagePath = imagePath,
                             MapImagePath = mapImagePath,
                             Name = name,
@@ -632,7 +643,8 @@ namespace SM64_Diagnostic.Utilities
                             WatchVariables  = watchVars
                         };
 
-                        assoc.AddAssociation(newBehavior);
+                        if (!assoc.AddAssociation(newBehavior))
+                            throw new Exception("More than one behavior address was defined.");
 
                         break;
                 }
@@ -656,30 +668,27 @@ namespace SM64_Diagnostic.Utilities
             objectSlotManagerGui.HoldingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + holdingOverlayImagePath);
             objectSlotManagerGui.InteractingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + interactingOverlayImagePath);
 
-            foreach (var objList in assoc.BehaviorAssociations.Values)
+            foreach (var obj in assoc.BehaviorAssociations)
             {
-                foreach (var obj in objList)
+                using (var preLoad = Bitmap.FromFile(imageDir + obj.ImagePath))
                 {
-                    using (var preLoad = Bitmap.FromFile(imageDir + obj.ImagePath))
+                    float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);
+                    obj.Image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
+                }
+                if (obj.MapImagePath == "" || obj.MapImagePath == null)
+                {
+                    obj.MapImage = obj.Image;
+                }
+                else
+                {
+                    using (var preLoad = Bitmap.FromFile(mapImageDir + obj.MapImagePath))
                     {
                         float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);
-                        obj.Image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
+                        obj.MapImage = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
                     }
-                    if (obj.MapImagePath == "" || obj.MapImagePath == null)
-                    {
-                        obj.MapImage = obj.Image;
-                    }
-                    else
-                    {
-                        using (var preLoad = Bitmap.FromFile(mapImageDir + obj.MapImagePath))
-                        {
-                            float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);
-                            obj.MapImage = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
-                        }
-                    }
-                    obj.TransparentImage = obj.Image.GetOpaqueImage(0.5f);
-                    obj.TransparentMapImage = obj.Image.GetOpaqueImage(0.5f);
                 }
+                obj.TransparentImage = obj.Image.GetOpaqueImage(0.5f);
+                obj.TransparentMapImage = obj.Image.GetOpaqueImage(0.5f);
             }
 
             return assoc;

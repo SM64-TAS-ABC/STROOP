@@ -28,7 +28,7 @@ namespace SM64_Diagnostic
 
         bool _selected = true;
         bool _active = false;
-        uint _behavior, _gfxId;
+        BehaviorCriteria _behavior;
 
         int prevHeight;
         object _gfxLock = new object();
@@ -52,7 +52,7 @@ namespace SM64_Diagnostic
         public uint Address;
 
         public byte ProcessGroup;
-        public uint Behavior
+        public BehaviorCriteria Behavior
         {
             get
             {
@@ -62,21 +62,6 @@ namespace SM64_Diagnostic
             {
                 _behavior = value;
                 UpdateColors();
-            }
-        }
-        public uint GfxId
-        {
-            get
-            {
-                return _gfxId;
-            }
-            set
-            {
-                if (_gfxId != value)
-                {
-                    _gfxId = value;
-                    Invalidate();
-                }
             }
         }
 
@@ -242,7 +227,7 @@ namespace SM64_Diagnostic
                         _backColor = newColor.Lighten(0.85);
                         break;
                 }
-                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, _gfxId, true);
+                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, true);
                 if (_objectImage != newImage)
                 {
                     lock (_gfxLock)
@@ -270,7 +255,7 @@ namespace SM64_Diagnostic
                         _backColor = newColor.Lighten(0.7);
                         break;
                 }
-                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, _gfxId, !_active);
+                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, !_active);
                 if (_objectImage != newImage)
                 {
                     lock (_gfxLock)

@@ -9,8 +9,8 @@ namespace SM64_Diagnostic.Structs
 {
     public class ObjectBehaviorAssociation
     {
-        public uint Behavior;
-        public uint? GfxId;
+        public BehaviorCriteria BehaviorCriteria;
+
         public string Name;
         public bool RotatesOnMap;
         public string ImagePath = "";
@@ -20,5 +20,35 @@ namespace SM64_Diagnostic.Structs
         public Image MapImage;
         public Image TransparentMapImage;
         public List<WatchVariable> WatchVariables = new List<WatchVariable>();
+
+        public bool MeetsCriteria(BehaviorCriteria behaviorCriteria)
+        {
+            return BehaviorCriteria.CongruentTo(behaviorCriteria);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is ObjectBehaviorAssociation))
+                return false;
+
+            var otherBehavior = (ObjectBehaviorAssociation)obj;
+
+            return otherBehavior.BehaviorCriteria == BehaviorCriteria;
+        }
+
+        public override int GetHashCode()
+        {
+            return BehaviorCriteria.GetHashCode();
+        }
+
+        public static bool operator ==(ObjectBehaviorAssociation a, ObjectBehaviorAssociation b)
+        {
+            return a.Equals(b);
+        }
+
+        public static bool operator !=(ObjectBehaviorAssociation a, ObjectBehaviorAssociation b)
+        {
+            return !a.Equals(b);
+        }
     }
 }

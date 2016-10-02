@@ -31,6 +31,8 @@
               <xs:element name="ListPreviousLinkOffset" type="types:address"/>
               <xs:element name="BehaviorScriptOffset" type="types:address"/>
               <xs:element name="BehaviorGfxOffset" type="types:address"/>
+              <xs:element name="BehaviorSubtypeOffset" type="types:address"/>
+              <xs:element name="BehaviorAppearance" type="types:address"/>
               <xs:element name="ObjectActiveOffset" type="types:address"/>
               <xs:element name="CoordinateOffsetX" type="types:address"/>
               <xs:element name="CoordinateOffsetY" type="types:address"/>

@@ -15,6 +15,8 @@ namespace SM64_Diagnostic.Structs
         public uint PreviousLinkOffset;
         public uint BehaviorScriptOffset;
         public uint BehaviorGfxOffset;
+        public uint BehaviorSubtypeOffset;
+        public uint BehaviorAppearance;
         public uint ObjectActiveOffset;
         public uint ObjectXOffset;
         public uint ObjectYOffset;
