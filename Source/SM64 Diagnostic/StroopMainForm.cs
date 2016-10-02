@@ -17,7 +17,7 @@ namespace SM64_Diagnostic
 {
     public partial class StroopMainForm : Form
     {
-        const string _version = "v0.2.3";
+        const string _version = "v0.2.4";
         ProcessStream _sm64Stream = null;
         Config _config;
 
