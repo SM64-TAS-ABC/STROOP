@@ -36,6 +36,7 @@
   <Data type="float" address="0x164" objectOffset="true">Home X</Data>
   <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
   <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
+  <Data type="uint32" address="0x1CC" objectOffset="true" useHex="true">Release Status</Data>
   <Data type="uint16" address="0x136" objectOffset="true">Interaction Status</Data>
   <Data type="int32" address="0x144" objectOffset="true">Subtype</Data>
   <Data type="int32" address="0x14C" objectOffset="true">State</Data>
