@@ -10,8 +10,8 @@ namespace SM64_Diagnostic.Structs
     {
         public uint BehaviorAddress;
         public uint? GfxId;
-        public uint? SubType;
-        public uint? Appearance;
+        public int? SubType;
+        public int? Appearance;
 
         public override bool Equals(object obj)
         {
@@ -58,7 +58,7 @@ namespace SM64_Diagnostic.Structs
 
         public override int GetHashCode()
         {
-            return new Tuple<uint, uint?, uint?, uint?>(BehaviorAddress, GfxId, SubType, Appearance).GetHashCode();
+            return new Tuple<uint, uint?, int?, int?>(BehaviorAddress, GfxId, SubType, Appearance).GetHashCode();
         }
     }
 }
