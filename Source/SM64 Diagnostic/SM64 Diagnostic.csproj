@@ -173,6 +173,7 @@
     <None Include="Resources\double-arrow-left.png" />
     <None Include="Resources\double-arrow-right.png" />
     <None Include="Resources\double-arrow-up.png" />
+    <EmbeddedResource Include="Resources\lock.png" />
     <Content Include="Resources\Object Images\Bowser Puzzle Piece 1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

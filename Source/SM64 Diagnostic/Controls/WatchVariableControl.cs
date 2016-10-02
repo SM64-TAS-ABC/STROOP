@@ -8,6 +8,7 @@ using System.Drawing;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Extensions;
+using System.Reflection;
 
 namespace SM64_Diagnostic.ManagerClasses
 {
@@ -25,6 +26,8 @@ namespace SM64_Diagnostic.ManagerClasses
         bool _editMode = false;
         bool _valueLocked = false;
         string _lockedStringValue = "0";
+
+        static Image _lockedImage = new Bitmap(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SM64_Diagnostic.Resources.lock.png")), new Size(16,16));
 
         static WatchVariableControl _lastSelected;
 
@@ -176,6 +179,7 @@ namespace SM64_Diagnostic.ManagerClasses
             this._nameLabel.Text = _watchVar.Name;
             this._nameLabel.Margin = new Padding(3, 3, 3, 3);
             this._nameLabel.Click += _nameLabel_Click;
+            this._nameLabel.ImageAlign = ContentAlignment.MiddleRight;
             this._nameLabel.MouseHover += (sender, e) =>
             {
                 if (!_watchVar.OtherOffset)
@@ -375,6 +379,10 @@ namespace SM64_Diagnostic.ManagerClasses
                     _editMode = false;
                     (e.ClickedItem as ToolStripMenuItem).Checked = !(e.ClickedItem as ToolStripMenuItem).Checked;
                     _lockedStringValue = _textBoxValue.Text;
+                    if (_valueLocked)
+                        _nameLabel.Image = _lockedImage;
+                    else
+                        _nameLabel.Image = null;
                     break;
             }
         }
