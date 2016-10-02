@@ -202,6 +202,7 @@ namespace SM64_Diagnostic
             this.DragEnter += OnDragEnter;
             this.DragDrop += OnDrop;
             this.Cursor = Cursors.Hand;
+            this.DoubleBuffered = true;
         }
 
         void UpdateColors()
