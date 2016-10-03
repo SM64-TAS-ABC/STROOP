@@ -52,6 +52,7 @@
     <StandingOnPointer>0x80330E34</StandingOnPointer>
     <InteractingObjectPointerOffset>0x78</InteractingObjectPointerOffset>
     <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>
+    <UsingObjectPointerOffset>0x80</UsingObjectPointerOffset>
     <CeilingYOffset>0x6C</CeilingYOffset>
     <GroundYOffset>0x70</GroundYOffset>
     <FloorTriangleOffset>0x68</FloorTriangleOffset>

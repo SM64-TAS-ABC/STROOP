@@ -17,6 +17,7 @@ namespace SM64_Diagnostic.Structs
         public uint StandingOnObjectPointer;
         public uint InteractingObjectPointerOffset;
         public uint HoldingObjectPointerOffset;
+        public uint UsingObjectPointerOffset;
         public float MoveToObjectYOffset;
         public uint FloorTriangleOffset;
         public uint WallTriangleOffset;

@@ -208,9 +208,12 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                                 case "InteractingObjectPointerOffset":
                                     config.Mario.InteractingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
+                                    break; 
                                 case "HoldingObjectPointerOffset":
                                     config.Mario.HoldingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "UsingObjectPointerOffset":
+                                    config.Mario.UsingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "CeilingYOffset":
                                     config.Mario.CeilingYOffset = ParsingUtilities.ParseHex(subElement.Value);
@@ -534,7 +537,7 @@ namespace SM64_Diagnostic.Utilities
                 marioImagePath = "", holpMapImagePath = "", hudImagePath = "", debugImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 selectedOverlayImagePath = "", standingOnOverlayImagePath = "", holdingOverlayImagePath = "",
-                interactingOverlayImagePath = "";
+                interactingOverlayImagePath = "", usingOverlayImagePath = "";
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
 
@@ -623,6 +626,10 @@ namespace SM64_Diagnostic.Utilities
                                 case "Interacting":
                                     interactingOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
+
+                                case "Using":
+                                    usingOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -697,6 +704,7 @@ namespace SM64_Diagnostic.Utilities
             objectSlotManagerGui.StandingOnObjectOverlayImage = Bitmap.FromFile(overlayImageDir + standingOnOverlayImagePath);
             objectSlotManagerGui.HoldingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + holdingOverlayImagePath);
             objectSlotManagerGui.InteractingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + interactingOverlayImagePath);
+            objectSlotManagerGui.UsingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + usingOverlayImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
             {
