@@ -21,19 +21,19 @@
   <Data type="uint16" address="0x00c26c20" absoluteAddress="true" isAngle="true">Flying Pull Back</Data>
   <Data type="float" address="0x70" marioOffset="true">Floor Height</Data>
   <Data type="float" address="0x6C" marioOffset="true">Ceiling Height</Data>
-  <Data special="true" specialType="DistanceBelowCeiling">Dis. Below Ceil</Data>
-  <Data special="true" specialType="DistanceAboveFloor">Dis. Abv Floor</Data>
+  <Data special="true" specialType="DistanceBelowCeiling">Dist Below Ceiling</Data>
+  <Data special="true" specialType="DistanceAboveFloor">Dist Above Floor</Data>
   <Data type="uint32" address="0x68" marioOffset="true" useHex="true">Col. Triangle</Data>
   <Data type="uint32" address="0xc26c68" absoluteAddress="true" useHex="true">Interaction Object</Data>
   <Data type="uint32" address="0xc26c70" absoluteAddress="true" useHex="true">Using Object</Data>
-  <Data type="uint32" address="0xc1c8b4" absoluteAddress="true" useHex="true">Standing On Object</Data>
+  <Data type="uint32" address="0xc1c8b4" absoluteAddress="true" useHex="true">Stood On Object</Data>
   <Data type="uint32" address="0xc26c6c" absoluteAddress="true" useHex="true">Held Object</Data>
   <Data type="float" address="0x8033B3C8">HOLP X</Data>
   <Data type="float" address="0x8033B3CC">HOLP Y</Data>
   <Data type="float" address="0x8033B3D0">HOLP Z</Data>
   <Data type="byte" address="0xc26e39" absoluteAddress="true">HOLP Type</Data>
-  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x10">Hat On Head</Data>
-  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x20">Hat In Hand</Data>
+  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x10">Hat on Head</Data>
+  <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x20">Hat in Hand</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x08">Wing Cap</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x04">Metal Cap</Data>
   <Data type="uint32" address="0x04" marioOffset="true" isBool="true" mask="0x02">Vanish Cap</Data>
