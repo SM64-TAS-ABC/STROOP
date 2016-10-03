@@ -55,6 +55,8 @@
     <CeilingYOffset>0x6C</CeilingYOffset>
     <GroundYOffset>0x70</GroundYOffset>
     <FloorTriangleOffset>0x68</FloorTriangleOffset>
+    <WallTriangleOffset>0x60</WallTriangleOffset>
+    <CeilingTriangleOffset>0x64</CeilingTriangleOffset>
     <HSpeedOffset>0x54</HSpeedOffset>
     <MarioStructSize>0xC4</MarioStructSize>
     <MoveToObjectYOffset>300</MoveToObjectYOffset>
@@ -67,6 +69,12 @@
     <SettingAddress>0x80330e94</SettingAddress>
   </Debug>
   <TriangleOffsets>
+    <surfaceType>0x00</surfaceType>
+    <flags>0x02</flags>
+    <windDirection>0x03</windDirection>
+    <wallProtection>0x04</wallProtection>
+    <yMin>0x06</yMin>
+    <yMax>0x08</yMax>
     <x1>0x0A</x1>
     <y1>0x0C</y1>
     <z1>0x0E</z1>
@@ -79,6 +87,8 @@
     <normX>0x1C</normX>
     <normY>0x20</normY>
     <normZ>0x24</normZ>
+    <offset>0x28</offset>
+    <associatedObject>0x2C</associatedObject>
   </TriangleOffsets>
   <HolpX>0x8033B3C8</HolpX>
   <HolpY>0x8033B3CC</HolpY>

@@ -131,6 +131,24 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
+        public string Value
+        {
+            get
+            {
+                if (_textBoxValue == null)
+                    return "";
+
+                return _textBoxValue.Text;
+            }
+            set
+            {
+                if (_textBoxValue == null)
+                    return;
+
+                _textBoxValue.Text = value;
+            }
+        }
+
         public Color Color
         {
             get

@@ -11,10 +11,10 @@ namespace SM64_Diagnostic.ManagerClasses
 {
     public class DataManager
     {
-        Config _config;
-        List<WatchVariableControl> _dataControls;
-        FlowLayoutPanel _variableTable;
-        ProcessStream _stream;
+        protected Config _config;
+        protected List<WatchVariableControl> _dataControls;
+        protected FlowLayoutPanel _variableTable;
+        protected ProcessStream _stream;
 
         public DataManager(ProcessStream stream, Config config, List<WatchVariable> data, FlowLayoutPanel variableTable)
         {
@@ -31,7 +31,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public void Update(bool updateView)
+        public virtual void Update(bool updateView)
         {
             // Update watch variables
             foreach (var watchVar in _dataControls)
