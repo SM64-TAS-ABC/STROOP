@@ -21,6 +21,7 @@
   <Data type="float" address="0xc28120" absoluteAddress="true">Focus Z</Data>
   <Data type="float" address="0xc281fc" absoluteAddress="true">Focus Veer Dist</Data>
   <Data type="float" address="0xc28160" absoluteAddress="true">Cam Dist from Focus</Data>
+  <Data type="float" address="0xc28024" absoluteAddress="true">Zoom Dist</Data>
   <Data type="int16" address="0xc2816e" absoluteAddress="true">Yaw Shake</Data>
   <Data type="int16" address="0xc28168" absoluteAddress="true">Pitch Shake</Data>
   <Data type="int16" address="0xc2816c" absoluteAddress="true">Roll Shake</Data>
