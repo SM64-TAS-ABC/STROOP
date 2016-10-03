@@ -288,6 +288,7 @@ namespace SM64_Diagnostic.ManagerClasses
             var standingOnObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.StandingOnObjectPointer, 4), 0);
             var interactingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.InteractingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
             var holdingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.HoldingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
+            var usingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.UsingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
 
             // Update slots
             foreach (var objectData in newObjectSlotData)
@@ -303,6 +304,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 ObjectSlots[index].DrawStandingOnOverlay = _config.ShowOverlays && currentAddress == standingOnObject;
                 ObjectSlots[index].DrawInteractingOverlay = _config.ShowOverlays && currentAddress == interactingObject;
                 ObjectSlots[index].DrawHoldingOverlay = _config.ShowOverlays && currentAddress == holdingObject;
+                ObjectSlots[index].DrawUsingOverlay = _config.ShowOverlays && currentAddress == usingObject;
 
                 if (isActive)
                     activeObjCnt++;

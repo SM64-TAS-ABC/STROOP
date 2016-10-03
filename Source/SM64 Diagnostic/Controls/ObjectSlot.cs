@@ -127,7 +127,7 @@ namespace SM64_Diagnostic
             }
         }
 
-        bool _drawSelectedOverlay, _drawStandingOnOverlay, _drawHoldingOverlay, _drawInteractingObject;
+        bool _drawSelectedOverlay, _drawStandingOnOverlay, _drawHoldingOverlay, _drawInteractingObject, _drawUsingObject;
         public bool DrawSelectedOverlay
         {
             get
@@ -181,6 +181,21 @@ namespace SM64_Diagnostic
                 if (_drawInteractingObject == value)
                     return;
                 _drawInteractingObject = value;
+                Invalidate();
+            }
+        }
+
+        public bool DrawUsingOverlay
+        {
+            get
+            {
+                return _drawUsingObject;
+            }
+            set
+            {
+                if (_drawUsingObject == value)
+                    return;
+                _drawUsingObject = value;
                 Invalidate();
             }
         }
@@ -372,6 +387,8 @@ namespace SM64_Diagnostic
                 e.Graphics.DrawImage(_gui.HoldingObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawStandingOnOverlay)
                 e.Graphics.DrawImage(_gui.StandingOnObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawUsingObject)
+                e.Graphics.DrawImage(_gui.UsingObjectOverlayImage, new Rectangle(new Point(), Size));
         }
 
         
