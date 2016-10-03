@@ -88,8 +88,8 @@ namespace SM64_Diagnostic.Extensions
   
         public static void SetAngleStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset, string value, WatchVariableControl.AngleViewModeType viewMode)
         {
-            if (watchVar.Type != typeof(UInt32)
-                && watchVar.Type != typeof(UInt16))
+            if (watchVar.Type != typeof(UInt32) && watchVar.Type != typeof(UInt16)
+                && watchVar.Type != typeof(Int32) && watchVar.Type != typeof(Int16))
                 return;
 
             UInt32 writeValue = 0;
@@ -103,23 +103,39 @@ namespace SM64_Diagnostic.Extensions
             {
                 switch (viewMode)
                 {
-                    case WatchVariableControl.AngleViewModeType.Raw:
-                        uint.TryParse(value, out writeValue);
+                    case WatchVariableControl.AngleViewModeType.Recommended:
+                        if (watchVar.Type == typeof(Int32))
+                        {
+                            int tempValue;
+                            if (!int.TryParse(value, out tempValue))
+                                return;
+                            writeValue = (uint)tempValue;
+                        }
+                        else
+                        {
+                            if (!uint.TryParse(value, out writeValue))
+                                return;
+                        }
                         break;
 
                     case WatchVariableControl.AngleViewModeType.Signed:
                     case WatchVariableControl.AngleViewModeType.Unsigned:
-                        uint.TryParse(value, out writeValue);
+                        if (!uint.TryParse(value, out writeValue))
+                            return;
                         break;
                         
 
                     case WatchVariableControl.AngleViewModeType.Degrees:
-                        var degValue = double.Parse(value);
+                        double degValue;
+                        if (!double.TryParse(value, out degValue))
+                            return;
                         writeValue = (UInt16)(degValue / (360d / 65536));
                         break;
 
                     case WatchVariableControl.AngleViewModeType.Radians:
-                        var radValue = double.Parse(value);
+                        double radValue;
+                        if (!double.TryParse(value, out radValue))
+                            return;
                         writeValue = (UInt16)(radValue / (2 * Math.PI / 65536));
                         break;
                 }
@@ -136,8 +152,8 @@ namespace SM64_Diagnostic.Extensions
             var dataBytes = stream.ReadRam(watchVar.OtherOffset ? offset + watchVar.Address
                 : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
 
-            if (watchVar.Type != typeof(UInt32)
-                && watchVar.Type != typeof(UInt16))
+            if (watchVar.Type != typeof(UInt32) && watchVar.Type != typeof(UInt16)
+                && watchVar.Type != typeof(Int32) && watchVar.Type != typeof(Int16))
                 return "Error: datatype";
 
             // Get Uint32 value
@@ -155,8 +171,7 @@ namespace SM64_Diagnostic.Extensions
             // Print hex
             if (watchVar.UseHex)
             {
-                if (viewMode == WatchVariableControl.AngleViewModeType.Raw &&
-                    watchVar.Type == typeof(UInt32))
+                if (viewMode == WatchVariableControl.AngleViewModeType.Recommended && TypeSize[watchVar.Type] == 4)
                     return "0x" + dataValue.ToString("X8"); 
                 else
                     return "0x" + ((UInt16)dataValue).ToString("X4");
@@ -164,8 +179,15 @@ namespace SM64_Diagnostic.Extensions
 
             switch(viewMode)
             {
-                case WatchVariableControl.AngleViewModeType.Raw:
-                    return dataValue.ToString();
+                case WatchVariableControl.AngleViewModeType.Recommended:
+                    if (watchVar.Type == typeof(Int16))
+                        return ((Int16)dataValue).ToString();
+                    else if (watchVar.Type == typeof(UInt16))
+                        return ((UInt16)dataValue).ToString();
+                    else if (watchVar.Type == typeof(Int32))
+                        return ((Int32)dataValue).ToString();
+                    else
+                        return dataValue.ToString();
 
                 case WatchVariableControl.AngleViewModeType.Unsigned:
                     return ((UInt16)dataValue).ToString();

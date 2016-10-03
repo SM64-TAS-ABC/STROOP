@@ -31,9 +31,9 @@ namespace SM64_Diagnostic.ManagerClasses
 
         static WatchVariableControl _lastSelected;
 
-        public enum AngleViewModeType {Raw, Signed, Unsigned, Degrees, Radians};
+        public enum AngleViewModeType {Recommended, Signed, Unsigned, Degrees, Radians};
 
-        AngleViewModeType _angleViewMode = AngleViewModeType.Raw;
+        AngleViewModeType _angleViewMode = AngleViewModeType.Recommended;
         Boolean _angleTruncated = false;
 
 
@@ -89,7 +89,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 {
                     _angleMenuDropDown = new ToolStripMenuItem[2];
                     _angleMenuDropDown[0] = new ToolStripMenuItem("View Angle As");
-                    _angleMenuDropDown[0].DropDownItems.Add("Raw");
+                    _angleMenuDropDown[0].DropDownItems.Add("Recommended");
                     _angleMenuDropDown[0].DropDownItems.Add("Unsigned (short)");
                     _angleMenuDropDown[0].DropDownItems.Add("Signed (short)");
                     _angleMenuDropDown[0].DropDownItems.Add("Degrees");
@@ -291,7 +291,7 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 (AngleMenu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
                 (AngleMenu.Items["LockValue"] as ToolStripMenuItem).Checked = _valueLocked;
-                (AngleDropDownMenu[0].DropDownItems[0] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Raw);
+                (AngleDropDownMenu[0].DropDownItems[0] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Recommended);
                 (AngleDropDownMenu[0].DropDownItems[1] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Unsigned);
                 (AngleDropDownMenu[0].DropDownItems[2] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Signed);
                 (AngleDropDownMenu[0].DropDownItems[3] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Degrees);
@@ -312,8 +312,8 @@ namespace SM64_Diagnostic.ManagerClasses
 
             switch (e.ClickedItem.Text)
             {
-                case "Raw":
-                    _angleViewMode = AngleViewModeType.Raw;
+                case "Recommended":
+                    _angleViewMode = AngleViewModeType.Recommended;
                     break;
                 case "Unsigned (short)":
                     _angleViewMode = AngleViewModeType.Unsigned;
