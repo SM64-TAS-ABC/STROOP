@@ -103,6 +103,7 @@
     <Compile Include="ManagerClasses\OptionsManager.cs" />
     <Compile Include="ManagerClasses\ScriptManager.cs" />
     <Compile Include="Controls\WatchVariableControl.cs" />
+    <Compile Include="ManagerClasses\TriangleManager.cs" />
     <Compile Include="ModifyAddWatchVariableForm.cs">
       <SubType>Form</SubType>
     </Compile>

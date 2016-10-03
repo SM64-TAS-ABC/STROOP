@@ -41,6 +41,7 @@ namespace SM64_Diagnostic
         MiscManager _miscManager;
         CameraManager _cameraManager;
         HackManager _hackManager;
+        TriangleManager _triangleManager;
 
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
@@ -120,6 +121,7 @@ namespace SM64_Diagnostic
             _hudManager = new DataManager(_sm64Stream, _config, _hudData, flowLayoutPanelHud);
             _miscManager = new MiscManager(_sm64Stream, _config, _miscData, flowLayoutPanelMisc, groupBoxPuController);
             _cameraManager = new CameraManager(_sm64Stream, _config, _cameraData, panelCameraBorder, flowLayoutPanelCamera);
+            _triangleManager = new TriangleManager(_sm64Stream, _config, flowLayoutPanelTriangles, maskedTextBoxOtherTriangle);
 
             // Create object manager
             var objectGui = new ObjectDataGui();
@@ -208,6 +210,7 @@ namespace SM64_Diagnostic
             _cameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
             _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
             _miscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
+            _triangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
             _mapManager?.Update();
             UpdateMemoryValues();
             _scriptManager.Update();

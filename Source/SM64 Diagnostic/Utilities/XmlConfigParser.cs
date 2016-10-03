@@ -224,6 +224,12 @@ namespace SM64_Diagnostic.Utilities
                                 case "FloorTriangleOffset":
                                     config.Mario.FloorTriangleOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "WallTriangleOffset":
+                                    config.Mario.WallTriangleOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "CeilingTriangleOffset":
+                                    config.Mario.CeilingTriangleOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "SlidingSpeedXOffset":
                                     config.Mario.SlidingSpeedXOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
@@ -257,8 +263,23 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "x1":
-                                    config.TriangleOffsets.X1 = ParsingUtilities.ParseHex(subElement.Value);
+                                case "surfaceType":
+                                    config.TriangleOffsets.SurfaceType = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "flags":
+                                    config.TriangleOffsets.Flags = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "windDirection":
+                                    config.TriangleOffsets.WindDirection = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "wallProtection":
+                                    config.TriangleOffsets.WallProtection = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "yMin":
+                                    config.TriangleOffsets.YMin = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "yMax":
+                                    config.TriangleOffsets.YMax = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "y1":
                                     config.TriangleOffsets.Y1 = ParsingUtilities.ParseHex(subElement.Value);
@@ -284,7 +305,6 @@ namespace SM64_Diagnostic.Utilities
                                 case "z3":
                                     config.TriangleOffsets.Z3 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-
                                 case "normX":
                                     config.TriangleOffsets.NormX = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
@@ -293,6 +313,12 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                                 case "normZ":
                                     config.TriangleOffsets.NormZ = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "offset":
+                                    config.TriangleOffsets.Offset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "associatedObject":
+                                    config.TriangleOffsets.AssociatedObject = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         } 
