@@ -16,6 +16,8 @@ namespace SM64_Diagnostic.Controls.Map
         public abstract void DrawOnControl(MapGraphics graphics);
         public abstract void Load(MapGraphics graphics);
         public abstract double GetDepthScore();
-        public abstract void Dispose();
+        public virtual void Dispose()
+        {
+        }
     }
 }
