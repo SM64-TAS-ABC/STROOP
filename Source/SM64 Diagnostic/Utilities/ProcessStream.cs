@@ -20,45 +20,6 @@ namespace SM64_Diagnostic.Utilities
         bool _lastUpdateBeforePausing = false;
         Config _config;
 
-        [Flags]
-        private enum ThreadAccess : int
-        {
-            TERMINATE = (0x0001),
-            SUSPEND_RESUME = (0x0002),
-            GET_CONTEXT = (0x0008),
-            SET_CONTEXT = (0x0010),
-            SET_INFORMATION = (0x0020),
-            QUERY_INFORMATION = (0x0040),
-            SET_THREAD_TOKEN = (0x0080),
-            IMPERSONATE = (0x0100),
-            DIRECT_IMPERSONATION = (0x0200)
-        }
-
-        #region DLLImports
-        [DllImport("kernel32.dll")]
-        static extern IntPtr OpenThread(ThreadAccess dwDesiredAccess, bool bInheritHandle, uint dwThreadId);
-
-        [DllImport("kernel32.dll")]
-        static extern uint SuspendThread(IntPtr hThread);
-
-        [DllImport("kernel32.dll")]
-        static extern int ResumeThread(IntPtr hThread);
-
-        [DllImport("kernel32.dll")]
-        static extern bool CloseHandle(IntPtr hObject);
-
-        [DllImport("kernel32.dll")]
-        static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
-
-        [DllImport("kernel32.dll")]
-        static extern bool ReadProcessMemory(int hProcess,
-            int lpBaseAddress, byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesRead);
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        static extern bool WriteProcessMemory(int hProcess, int lpBaseAddress,
-            byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesWritten);
-        #endregion
-
         public event EventHandler OnUpdate;
         public event EventHandler OnStatusChanged;
 
@@ -111,7 +72,7 @@ namespace SM64_Diagnostic.Utilities
         {
             // Close old process
             _timer.Enabled = false;
-            CloseHandle(_processHandle);
+            NativeMethods.CloseProcess(_processHandle);
 
             // Make sure old process is running
             if (IsSuspended)
@@ -130,7 +91,7 @@ namespace SM64_Diagnostic.Utilities
 
             // Open and set new process
             _process = newProcess;
-            _processHandle = OpenProcess(0x0838, false, _process.Id);
+            _processHandle = NativeMethods.ProcessGetHandleFromId(0x0838, false, _process.Id);
 
             if ((int)_processHandle == 0)
             {
@@ -173,8 +134,8 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             int numOfBytes = 0;
-            return ReadProcessMemory((int) _processHandle, absoluteAddressing ? address : address + _offset,
-                buffer, buffer.Length, ref numOfBytes);
+            return NativeMethods.ProcessReadMemory(_processHandle, (IntPtr) (absoluteAddressing ? address : address + _offset),
+                buffer, (IntPtr)buffer.Length, ref numOfBytes);
         }
 
         public bool WriteProcessMemory(int address, byte[] buffer, bool absoluteAddressing = false)
@@ -183,8 +144,8 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             int numOfBytes = 0;
-            return WriteProcessMemory((int)_processHandle, absoluteAddressing ? address : (int)(address + _offset),
-                buffer, buffer.Length, ref numOfBytes);
+            return NativeMethods.ProcessWriteMemory(_processHandle, (IntPtr)(absoluteAddressing ? address : address + _offset),
+                buffer, (IntPtr)buffer.Length, ref numOfBytes);
         }
 
         public void Suspend()
@@ -194,17 +155,7 @@ namespace SM64_Diagnostic.Utilities
 
             _lastUpdateBeforePausing = true;
 
-            // Pause all threads
-            foreach (ProcessThread pT in _process.Threads)
-            {
-                IntPtr pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
-
-                if (pOpenThread == IntPtr.Zero)
-                    continue;
-
-                SuspendThread(pOpenThread);
-                CloseHandle(pOpenThread);
-            }
+            NativeMethods.SuspendProcess(_process);
 
             IsSuspended = true;
             OnStatusChanged?.Invoke(this, new EventArgs());
@@ -216,21 +167,7 @@ namespace SM64_Diagnostic.Utilities
                 return;
 
             // Resume all threads
-            foreach (ProcessThread pT in _process.Threads)
-            {
-                IntPtr pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
-
-                if (pOpenThread == IntPtr.Zero)
-                    continue;
-
-                int suspendCount = 0;
-                do
-                {
-                    suspendCount = ResumeThread(pOpenThread);
-                } while (suspendCount > 0);
-
-                CloseHandle(pOpenThread);
-            }
+            NativeMethods.ResumeProcess(_process);
 
             IsSuspended = false;
             OnStatusChanged?.Invoke(this, new EventArgs());

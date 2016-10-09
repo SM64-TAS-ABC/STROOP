@@ -46,10 +46,6 @@ namespace SM64_Diagnostic.Structs
         {
         }
 
-        public override void Dispose()
-        {
-        }
-
         public override double GetDepthScore()
         {
             return Y + Depth * 65536d;
