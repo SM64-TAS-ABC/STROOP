@@ -134,6 +134,7 @@
     <Compile Include="Structs\Configurations\ObjectGroupsConfig.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Structs\RomHack.cs" />
+    <Compile Include="Utilities\NativeMethods.cs" />
     <Compile Include="Utilities\ScriptParser.cs" />
     <Compile Include="Controls\Map\TriangleMapObject.cs" />
     <Compile Include="Structs\WatchExpression.cs" />
