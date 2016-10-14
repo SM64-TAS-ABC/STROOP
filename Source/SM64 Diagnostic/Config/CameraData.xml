@@ -11,19 +11,19 @@
   <Data type="float" address="0xc2813c" absoluteAddress="true">Camera Target X</Data>
   <Data type="float" address="0xc28140" absoluteAddress="true">Camera Target Y</Data>
   <Data type="float" address="0xc28144" absoluteAddress="true">Camera Target Z</Data>
-  <Data type="uint16" address="0xc28164" absoluteAddress="true" isAngle="true">Camera Yaw</Data>
-  <Data type="uint16" address="0xc28166" absoluteAddress="true" isAngle="true">Camera Pitch</Data>
-  <Data type="uint16" address="0xc281fa" absoluteAddress="true" isAngle="true">Fixed Cent Angle</Data>
-  <Data type="uint16" address="0xc28194" absoluteAddress="true" isAngle="true">Target Cent Angle</Data>
-  <Data type="uint16" address="0xc28196" absoluteAddress="true" isAngle="true">Cent Angle</Data>
+  <Data type="ushort" address="0xc28164" absoluteAddress="true" isAngle="true">Camera Yaw</Data>
+  <Data type="ushort" address="0xc28166" absoluteAddress="true" isAngle="true">Camera Pitch</Data>
+  <Data type="ushort" address="0xc281fa" absoluteAddress="true" isAngle="true">Fixed Cent Angle</Data>
+  <Data type="ushort" address="0xc28194" absoluteAddress="true" isAngle="true">Target Cent Angle</Data>
+  <Data type="ushort" address="0xc28196" absoluteAddress="true" isAngle="true">Cent Angle</Data>
   <Data type="float" address="0xc28118" absoluteAddress="true">Focus X</Data>
   <Data type="float" address="0xc2811c" absoluteAddress="true">Focus Y</Data>
   <Data type="float" address="0xc28120" absoluteAddress="true">Focus Z</Data>
   <Data type="float" address="0xc281fc" absoluteAddress="true">Focus Veer Dist</Data>
   <Data type="float" address="0xc28160" absoluteAddress="true">Cam Dist from Focus</Data>
   <Data type="float" address="0xc28024" absoluteAddress="true">Zoom Dist</Data>
-  <Data type="int16" address="0xc2816e" absoluteAddress="true">Yaw Shake</Data>
-  <Data type="int16" address="0xc28168" absoluteAddress="true">Pitch Shake</Data>
-  <Data type="int16" address="0xc2816c" absoluteAddress="true">Roll Shake</Data>
-  <Data type="int16" address="0xc28156" absoluteAddress="true">Camera Mode</Data>
+  <Data type="short" address="0xc2816e" absoluteAddress="true">Yaw Shake</Data>
+  <Data type="short" address="0xc28168" absoluteAddress="true">Pitch Shake</Data>
+  <Data type="short" address="0xc2816c" absoluteAddress="true">Roll Shake</Data>
+  <Data type="short" address="0xc28156" absoluteAddress="true">Camera Mode</Data>
 </CameraData>

@@ -27,7 +27,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool TryParseHex(string str, out uint hex)
         {
-            // This is what you call lazy programming
+            // This is what you call lazy programming (not in python though)
             try
             {
                 hex = ParseHex(str);
