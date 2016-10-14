@@ -42,7 +42,7 @@ namespace SM64_Diagnostic.Extensions
         public static string GetStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset)
         {
             // Get dataBytes
-            var byteCount = TypeSize[watchVar.Type];
+            var byteCount = WatchVariable.TypeSize[watchVar.Type];
             var dataBytes = stream.ReadRam(watchVar.OtherOffset ? offset + watchVar.Address
                 : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
 
@@ -140,7 +140,7 @@ namespace SM64_Diagnostic.Extensions
                         break;
                 }
             }
-            var byteCount = TypeSize[watchVar.Type];
+            var byteCount = WatchVariable.TypeSize[watchVar.Type];
             var dataBytes = stream.WriteRam(BitConverter.GetBytes(writeValue), watchVar.OtherOffset ? offset + watchVar.Address
                 : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
         }
@@ -148,7 +148,7 @@ namespace SM64_Diagnostic.Extensions
         public static string GetAngleStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset, WatchVariableControl.AngleViewModeType viewMode, bool truncated = false)
         {
             // Get dataBytes
-            var byteCount = TypeSize[watchVar.Type];
+            var byteCount = WatchVariable.TypeSize[watchVar.Type];
             var dataBytes = stream.ReadRam(watchVar.OtherOffset ? offset + watchVar.Address
                 : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
 
@@ -171,7 +171,7 @@ namespace SM64_Diagnostic.Extensions
             // Print hex
             if (watchVar.UseHex)
             {
-                if (viewMode == WatchVariableControl.AngleViewModeType.Recommended && TypeSize[watchVar.Type] == 4)
+                if (viewMode == WatchVariableControl.AngleViewModeType.Recommended && WatchVariable.TypeSize[watchVar.Type] == 4)
                     return "0x" + dataValue.ToString("X8"); 
                 else
                     return "0x" + ((UInt16)dataValue).ToString("X4");
@@ -208,7 +208,7 @@ namespace SM64_Diagnostic.Extensions
         public static bool GetBoolValue(this WatchVariable watchVar, ProcessStream stream, uint offset)
         {
             // Get dataBytes
-            var byteCount = TypeSize[watchVar.Type];
+            var byteCount = WatchVariable.TypeSize[watchVar.Type];
             var dataBytes = stream.ReadRam(watchVar.OtherOffset ? offset + watchVar.Address
                 : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
 
@@ -231,7 +231,7 @@ namespace SM64_Diagnostic.Extensions
         public static void SetBoolValue(this WatchVariable watchVar, ProcessStream stream, uint offset, bool value)
         {
             // Get dataBytes
-            var byteCount = TypeSize[watchVar.Type];
+            var byteCount = WatchVariable.TypeSize[watchVar.Type];
             var address = watchVar.OtherOffset ? offset + watchVar.Address : watchVar.Address;
             var dataBytes = stream.ReadRam(address, byteCount, watchVar.AbsoluteAddressing);
 
@@ -267,7 +267,7 @@ namespace SM64_Diagnostic.Extensions
         public static bool SetStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset, string value)
         {
             // Get dataBytes
-            var byteCount = TypeSize[watchVar.Type];
+            var byteCount = WatchVariable.TypeSize[watchVar.Type];
             var address = watchVar.OtherOffset ? offset + watchVar.Address : watchVar.Address;
             var dataBytes = new byte[8];
             stream.ReadRam(address, byteCount, watchVar.AbsoluteAddressing).CopyTo(dataBytes,0);
@@ -327,45 +327,17 @@ namespace SM64_Diagnostic.Extensions
 
         public static int GetByteCount(this WatchVariable watchVar)
         {
-            return TypeSize[watchVar.Type];
+            return WatchVariable.TypeSize[watchVar.Type];
         }
 
         public static Type GetStringType(string str)
         {
-            return StringToType[str];
+            return WatchVariable.StringToType[str];
         }
 
         public static string GetTypeString(this WatchVariable watchVar)
         {
-            return StringToType.First(t => t.Value == watchVar.Type).Key;
+            return WatchVariable.StringToType.First(t => t.Value == watchVar.Type).Key;
         }
-
-        public static Dictionary<Type, int> TypeSize = new Dictionary<Type, int>()
-        {
-            {typeof(byte), 1},
-            {typeof(sbyte), 1},
-            {typeof(Int16), 2},
-            {typeof(UInt16), 2},
-            {typeof(Int32), 4},
-            {typeof(UInt32), 4},
-            {typeof(Int64), 8},
-            {typeof(UInt64), 8},
-            {typeof(float), 4},
-            {typeof(double), 4}
-        };
-
-        public static Dictionary<String, Type> StringToType = new Dictionary<string, Type>()
-        {
-            { "byte", typeof(byte) },
-            { "sbyte", typeof(sbyte) },
-            { "int16", typeof(Int16) },
-            { "uint16", typeof(UInt16) },
-            { "int32", typeof(Int32) },
-            { "uint32", typeof(UInt32) },
-            { "int64", typeof(Int64) },
-            { "uint64", typeof(UInt64) },
-            { "float", typeof(float) },
-            { "double", typeof(double) },
-        };
     }
 }
