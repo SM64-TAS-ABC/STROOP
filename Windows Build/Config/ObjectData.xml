@@ -26,6 +26,7 @@
   <Data type="uint32" address="0x020C" objectOffset="true" useHex="true">Behavior Script</Data>
   <Data type="uint32" address="0x14" objectOffset="true" useHex="true">Graphic/Model</Data>
   <Data type="byte" address="0x3" mask="0x10" objectOffset="true" isBool="true" invertBool="true">Visible</Data>
+  <Data type="byte" address="0x3" mask="0x01" objectOffset="true" isBool="true">Visible 2</Data>
   <Data type="byte" address="0x3" mask="0x04" objectOffset="true" isBool="true">Face Camera</Data>
   <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Close</Data>
   <Data type="uint32" address="0x3C" objectOffset="true" useHex="true">Animation</Data>
