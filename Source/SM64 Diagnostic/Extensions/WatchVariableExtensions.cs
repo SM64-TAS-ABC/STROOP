@@ -103,25 +103,15 @@ namespace SM64_Diagnostic.Extensions
             {
                 switch (viewMode)
                 {
-                    case WatchVariableControl.AngleViewModeType.Recommended:
-                        if (watchVar.Type == typeof(Int32))
-                        {
-                            int tempValue;
-                            if (!int.TryParse(value, out tempValue))
-                                return;
-                            writeValue = (uint)tempValue;
-                        }
-                        else
-                        {
-                            if (!uint.TryParse(value, out writeValue))
-                                return;
-                        }
-                        break;
-
                     case WatchVariableControl.AngleViewModeType.Signed:
                     case WatchVariableControl.AngleViewModeType.Unsigned:
-                        if (!uint.TryParse(value, out writeValue))
+                    case WatchVariableControl.AngleViewModeType.Recommended:
+                        int tempValue;
+                        if (int.TryParse(value, out tempValue))
+                            writeValue = (uint)tempValue;
+                        else if (!uint.TryParse(value, out writeValue))
                             return;
+
                         break;
                         
 
@@ -302,7 +292,13 @@ namespace SM64_Diagnostic.Extensions
             else if (watchVar.Type == typeof(UInt64))
             {
                 if (!UInt64.TryParse(value, out newValue))
-                    return false;
+                {
+                    Int64 newValueInt;
+                    if (!Int64.TryParse(value, out newValueInt))
+                        return false;
+
+                    newValue = (UInt64)newValueInt;
+                }
             }
             else
             {
