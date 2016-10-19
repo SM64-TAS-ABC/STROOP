@@ -16,7 +16,7 @@ The latest release of Stroop can be downloaded from our [Releases Page](https://
   * Windows 10 / Windows 8 / Windows 7 / Windows Vista 64-bit or 32-bit
   * .NET Framework 4.6 (See [.NET Framework System Requirements](https://msdn.microsoft.com/en-us/library/8z6watww(v=vs.110).aspx) for more information)
   * Mupen 0.5 (Other versions probably work)
-  * 64 Marios (Must be super) *T
+  * 64 Marios (Must be super)
   * Marios must be American (No PAL or JAP just yet)
   
 ## Status 
