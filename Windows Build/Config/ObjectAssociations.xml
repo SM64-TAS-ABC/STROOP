@@ -698,14 +698,30 @@
   <Object behaviorScriptAddress="0x13001828" name="Bowser Tail Anchor">
     <Image path="Bowser Tail Anchor.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13001850" name="Bowser">
+  <Object behaviorScriptAddress="0x13001850" name="Bowser #1" subType="0">
     <Image path="Bowser.png"/>
 	<MapImage path="Bowser Top.png" rotates="true"/>
 	<Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
     <Data type="int32" address="0x184" objectOffset="true">HP</Data>
-    <Data type="byte" address="0x00A6D150" absoluteAddress="true">B1 Blinking State</Data>
-    <Data type="byte" address="0x00A6B880" absoluteAddress="true">B2 Blinking State</Data>
-    <Data type="byte" address="0x00A6FA00" absoluteAddress="true">B3 Blinking State</Data>
+    <Data type="byte" address="0x00A6D150" absoluteAddress="true">Blinking State</Data>
+    <Data type="int16" address="0x1AE" objectOffset="true">Blinking Timer</Data>
+    <Data type="int32" address="0x17C" objectOffset="true">Opaqueness</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13001850" name="Bowser #2" subType="1">
+    <Image path="Bowser.png"/>
+	<MapImage path="Bowser Top.png" rotates="true"/>
+	<Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="int32" address="0x184" objectOffset="true">HP</Data>
+    <Data type="byte" address="0x00A6B880" absoluteAddress="true">Blinking State</Data>
+    <Data type="int16" address="0x1AE" objectOffset="true">Blinking Timer</Data>
+    <Data type="int32" address="0x17C" objectOffset="true">Opaqueness</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13001850" name="Bowser #3" subType="2">
+    <Image path="Bowser.png"/>
+	<MapImage path="Bowser Top.png" rotates="true"/>
+	<Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="int32" address="0x184" objectOffset="true">HP</Data>
+    <Data type="byte" address="0x00A6FA00" absoluteAddress="true">Blinking State</Data>
     <Data type="int16" address="0x1AE" objectOffset="true">Blinking Timer</Data>
     <Data type="int32" address="0x17C" objectOffset="true">Opaqueness</Data>
   </Object>
@@ -2036,7 +2052,7 @@
     <Data type="float" address="0x10C" objectOffset="true">Scale Change</Data>
     <Data type="float" address="0x2C" objectOffset="true">Scale</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300472C" name="Goomba (Singleton)" subType="0">
+  <Object behaviorScriptAddress="0x1300472C" name="Singleton Goomba" subType="0">
     <Image path="Goomba.png"/>
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="uint16" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
@@ -2044,7 +2060,7 @@
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int32" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300472C" name="Goomba (Huge)" subType="1">
+  <Object behaviorScriptAddress="0x1300472C" name="Huge Singleton Goomba" subType="1">
     <Image path="Goomba.png"/>
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="uint16" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
@@ -2052,7 +2068,7 @@
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int32" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300472C" name="Goomba (Tiny)" subType="2">
+  <Object behaviorScriptAddress="0x1300472C" name="Tiny Singleton Goomba" subType="2">
     <Image path="Goomba.png"/>
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="uint16" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
@@ -2060,7 +2076,7 @@
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int32" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300472C" name="Goomba (1/3)" subType="4">
+  <Object behaviorScriptAddress="0x1300472C" name="Goomba #1" subType="4">
     <Image path="Goomba.png"/>
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="uint16" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
@@ -2068,7 +2084,7 @@
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int32" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300472C" name="Goomba (2/3)" subType="8">
+  <Object behaviorScriptAddress="0x1300472C" name="Goomba #2" subType="8">
     <Image path="Goomba.png"/>
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="uint16" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
@@ -2076,7 +2092,7 @@
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int32" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300472C" name="Goomba (3/3)" subType="16">
+  <Object behaviorScriptAddress="0x1300472C" name="Goomba #3" subType="16">
     <Image path="Goomba.png"/>
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="uint16" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
@@ -2084,7 +2100,69 @@
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int32" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13004770" name="Goomba Triplet Spawner">
+  <Object behaviorScriptAddress="0x1300472C" name="Huge Goomba #1" subType="5">
+    <Image path="Goomba.png"/>
+	<MapImage path="Goomba Top.png" rotates="true"/>
+    <Data type="uint16" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
+    <Data type="int32" address="0x104" objectOffset="true">Blinking Countdown</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x1300472C" name="Huge Goomba #2" subType="9">
+    <Image path="Goomba.png"/>
+	<MapImage path="Goomba Top.png" rotates="true"/>
+    <Data type="uint16" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
+    <Data type="int32" address="0x104" objectOffset="true">Blinking Countdown</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x1300472C" name="Huge Goomba #3" subType="17">
+    <Image path="Goomba.png"/>
+	<MapImage path="Goomba Top.png" rotates="true"/>
+    <Data type="uint16" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
+    <Data type="int32" address="0x104" objectOffset="true">Blinking Countdown</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x1300472C" name="Tiny Goomba #1" subType="6">
+    <Image path="Goomba.png"/>
+	<MapImage path="Goomba Top.png" rotates="true"/>
+    <Data type="uint16" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
+    <Data type="int32" address="0x104" objectOffset="true">Blinking Countdown</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x1300472C" name="Tiny Goomba #2" subType="10">
+    <Image path="Goomba.png"/>
+	<MapImage path="Goomba Top.png" rotates="true"/>
+    <Data type="uint16" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
+    <Data type="int32" address="0x104" objectOffset="true">Blinking Countdown</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x1300472C" name="Tiny Goomba #3" subType="18">
+    <Image path="Goomba.png"/>
+	<MapImage path="Goomba Top.png" rotates="true"/>
+    <Data type="uint16" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="int32" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
+    <Data type="int32" address="0x104" objectOffset="true">Blinking Countdown</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13004770" name="Goomba Triplet Spawner" subType="0">
+    <Image path="Goomba Triplet Spawner.png"/>
+    <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Goombas Loaded</Data>
+    <Data type="byte" address="0x18A" mask="0x01" objectOffset="true" isBool="true">Goomba 1 Dead</Data>
+    <Data type="byte" address="0x18A" mask="0x02" objectOffset="true" isBool="true">Goomba 2 Dead</Data>
+    <Data type="byte" address="0x18A" mask="0x04" objectOffset="true" isBool="true">Goomba 3 Dead</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13004770" name="Huge Goomba Triplet Spawner" subType="1">
+    <Image path="Goomba Triplet Spawner.png"/>
+    <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Goombas Loaded</Data>
+    <Data type="byte" address="0x18A" mask="0x01" objectOffset="true" isBool="true">Goomba 1 Dead</Data>
+    <Data type="byte" address="0x18A" mask="0x02" objectOffset="true" isBool="true">Goomba 2 Dead</Data>
+    <Data type="byte" address="0x18A" mask="0x04" objectOffset="true" isBool="true">Goomba 3 Dead</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13004770" name="Tiny Goomba Triplet Spawner" subType="2">
     <Image path="Goomba Triplet Spawner.png"/>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Goombas Loaded</Data>
     <Data type="byte" address="0x18A" mask="0x01" objectOffset="true" isBool="true">Goomba 1 Dead</Data>
