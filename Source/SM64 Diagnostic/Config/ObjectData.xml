@@ -7,39 +7,39 @@
   <Data type="float" address="0xB0" objectOffset="true">Y Speed</Data>
   <Data type="float" address="0xB4" objectOffset="true">Z Speed</Data>
   <Data type="float" address="0xB8" objectOffset="true">H Speed</Data>
-  <Data type="uint32" address="0xD4" objectOffset="true" isAngle="true">Yaw (Facing)</Data>
-  <Data type="uint32" address="0xD0" objectOffset="true" isAngle="true">Pitch (Facing)</Data>
-  <Data type="uint32" address="0xD8" objectOffset="true" isAngle="true">Roll (Facing)</Data>
-  <Data type="uint32" address="0xC8" objectOffset="true" isAngle="true">Yaw (Moving)</Data>
-  <Data type="uint32" address="0xC4" objectOffset="true" isAngle="true">Pitch (Moving)</Data>
-  <Data type="uint32" address="0xCC" objectOffset="true" isAngle="true">Roll (Moving)</Data>
-  <Data type="uint32" address="0x118" objectOffset="true" isAngle="true">Yaw (Rot Speed)</Data>
-  <Data type="uint32" address="0x114" objectOffset="true" isAngle="true">Pitch (Rot Speed)</Data>
-  <Data type="uint32" address="0x11c" objectOffset="true" isAngle="true">Roll (Rot Speed)</Data>
+  <Data type="uint" address="0xD4" objectOffset="true" isAngle="true">Yaw (Facing)</Data>
+  <Data type="uint" address="0xD0" objectOffset="true" isAngle="true">Pitch (Facing)</Data>
+  <Data type="uint" address="0xD8" objectOffset="true" isAngle="true">Roll (Facing)</Data>
+  <Data type="uint" address="0xC8" objectOffset="true" isAngle="true">Yaw (Moving)</Data>
+  <Data type="uint" address="0xC4" objectOffset="true" isAngle="true">Pitch (Moving)</Data>
+  <Data type="uint" address="0xCC" objectOffset="true" isAngle="true">Roll (Moving)</Data>
+  <Data type="uint" address="0x118" objectOffset="true" isAngle="true">Yaw (Rot Speed)</Data>
+  <Data type="uint" address="0x114" objectOffset="true" isAngle="true">Pitch (Rot Speed)</Data>
+  <Data type="uint" address="0x11c" objectOffset="true" isAngle="true">Roll (Rot Speed)</Data>
   <Data type="float" address="0x015C" objectOffset="true">Dist to Mario</Data>
   <Data special="true" specialType="DistanceToMario">Act. Dist to Mario</Data>
   <Data special="true" specialType="LateralDistanceToMario">Lat. Dist to Mario</Data>
-  <Data type="uint32" address="0x0160" objectOffset="true" isAngle="true">Angle to Mario</Data>
+  <Data type="uint" address="0x0160" objectOffset="true" isAngle="true">Angle to Mario</Data>
   <Data type="float" address="0x019C" objectOffset="true">Drawing Dist</Data>
   <Data special="true" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
-  <Data type="uint32" address="0x68" objectOffset="true" useHex="true">Parent Object</Data>
-  <Data type="uint32" address="0x020C" objectOffset="true" useHex="true">Behavior Script</Data>
-  <Data type="uint32" address="0x14" objectOffset="true" useHex="true">Graphic/Model</Data>
+  <Data type="uint" address="0x68" objectOffset="true" useHex="true">Parent Object</Data>
+  <Data type="uint" address="0x020C" objectOffset="true" useHex="true">Behavior Script</Data>
+  <Data type="uint" address="0x14" objectOffset="true" useHex="true">Graphic/Model</Data>
   <Data type="byte" address="0x3" mask="0x10" objectOffset="true" isBool="true" invertBool="true">Visible</Data>
   <Data type="byte" address="0x3" mask="0x01" objectOffset="true" isBool="true">Visible 2</Data>
   <Data type="byte" address="0x3" mask="0x04" objectOffset="true" isBool="true">Face Camera</Data>
   <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Close</Data>
-  <Data type="uint32" address="0x3C" objectOffset="true" useHex="true">Animation</Data>
-  <Data type="int16" address="0x40" objectOffset="true">Animation Timer</Data>
+  <Data type="uint" address="0x3C" objectOffset="true" useHex="true">Animation</Data>
+  <Data type="short" address="0x40" objectOffset="true">Animation Timer</Data>
   <Data type="float" address="0x2C" objectOffset="true">Scale (Width)</Data>
   <Data type="float" address="0x30" objectOffset="true">Scale (Height)</Data>
   <Data type="float" address="0x34" objectOffset="true">Scale (Depth)</Data>
   <Data type="float" address="0x164" objectOffset="true">Home X</Data>
   <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
   <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
-  <Data type="uint32" address="0x1CC" objectOffset="true" useHex="true">Release Status</Data>
-  <Data type="uint16" address="0x136" objectOffset="true" useHex="true">Interaction Status</Data>
-  <Data type="int32" address="0x144" objectOffset="true">Subtype</Data>
-  <Data type="int32" address="0x14C" objectOffset="true">State</Data>
-  <Data type="int32" address="0x154" objectOffset="true">Timer</Data>
+  <Data type="uint" address="0x1CC" objectOffset="true" useHex="true">Release Status</Data>
+  <Data type="ushort" address="0x136" objectOffset="true" useHex="true">Interaction Status</Data>
+  <Data type="int" address="0x144" objectOffset="true">Subtype</Data>
+  <Data type="int" address="0x14C" objectOffset="true">State</Data>
+  <Data type="int" address="0x154" objectOffset="true">Timer</Data>
 </ObjectData>

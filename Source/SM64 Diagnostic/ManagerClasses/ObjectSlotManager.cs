@@ -32,7 +32,7 @@ namespace SM64_Diagnostic.ManagerClasses
         List<BehaviorCriteria> _toggleMapBehaviors = new List<BehaviorCriteria>();
         List<uint> _toggleMapSlots = new List<uint>();
 
-        BehaviorCriteria _lastSelectedBehavior;
+        BehaviorCriteria? _lastSelectedBehavior;
 
         public uint? SelectedAddress = null;
         public const byte VacantGroup = 0xFF;
@@ -347,7 +347,8 @@ namespace SM64_Diagnostic.ManagerClasses
                 // Update object manager image
                 if (SelectedAddress.HasValue && SelectedAddress.Value == currentAddress)
                 {
-                    var newBehavior = ObjectAssoc.FindObjectAssociation(behaviorCriteria).BehaviorCriteria;
+                    var objAssoc = ObjectAssoc.FindObjectAssociation(behaviorCriteria);
+                    var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : (BehaviorCriteria ?)null;
                     if (_lastSelectedBehavior != newBehavior)
                     {
                         _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
