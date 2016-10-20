@@ -16,7 +16,14 @@ namespace SM64_Diagnostic
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StroopMainForm());
+
+            LoadingHandler.ShowLoadingForm();
+
+            var mainForm = new StroopMainForm();
+            mainForm.LoadConfig(LoadingHandler.LoadingForm);
+
+            LoadingHandler.CloseForm();
+            Application.Run(mainForm);
         }
     }
 }
