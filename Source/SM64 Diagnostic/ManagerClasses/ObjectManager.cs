@@ -56,7 +56,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public uint CurrentAddress
+        public uint? CurrentAddress
         {
             get
             {
@@ -66,7 +66,7 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 if (_currentAddress != value)
                 {
-                    _currentAddress = value;
+                    _currentAddress = value.HasValue ? value.Value : 0x0000;
                     _objGui.ObjAddressLabelValue.Text = "0x" + _currentAddress.ToString("X8");
                 }
             }
@@ -234,25 +234,33 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private void MoveToMarioButton_Click(object sender, EventArgs e)
         {
-            MarioActions.MoveObjectToMario(_stream, _config, CurrentAddress);
+            if (!CurrentAddress.HasValue)
+                return;
+            MarioActions.MoveObjectToMario(_stream, _config, CurrentAddress.Value);
         }
 
         private void MoveMarioToButton_Click(object sender, EventArgs e)
         {
-            MarioActions.MoveMarioToObject(_stream, _config, CurrentAddress);
+            if (!CurrentAddress.HasValue)
+                return;
+            MarioActions.MoveMarioToObject(_stream, _config, CurrentAddress.Value);
         }
 
         private void UnloadButton_Click(object sender, EventArgs e)
         {
-            MarioActions.UnloadObject(_stream, _config, CurrentAddress);
+            if (!CurrentAddress.HasValue)
+                return;
+            MarioActions.UnloadObject(_stream, _config, CurrentAddress.Value);
         }
 
         private void CloneButton_Click(object sender, EventArgs e)
         {
+            if (!CurrentAddress.HasValue)
+                return;
             if (_unclone)
-                MarioActions.UnCloneObject(_stream, _config, CurrentAddress);
+                MarioActions.UnCloneObject(_stream, _config, CurrentAddress.Value);
             else
-                MarioActions.CloneObject(_stream, _config, CurrentAddress);
+                MarioActions.CloneObject(_stream, _config, CurrentAddress.Value);
         }
 
         public void Update()
@@ -262,7 +270,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 // Update watch variables
                 foreach (var watchVar in _objectDataControls)
                 {
-                    watchVar.OtherOffset = CurrentAddress;
+                    watchVar.OtherOffset = CurrentAddress.HasValue ? CurrentAddress.Value : 0x0000;
                     watchVar.Update();
                 }
             }
@@ -335,8 +343,11 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private void OnDrag(object sender, EventArgs e)
         {
+            if (!CurrentAddress.HasValue)
+                return;
+
             // Start the drag and drop but setting the object slot index in Drag and Drop data
-            var dropAction = new DropAction(DropAction.ActionType.Object, CurrentAddress);
+            var dropAction = new DropAction(DropAction.ActionType.Object, CurrentAddress.Value);
             (sender as Control).DoDragDrop(dropAction, DragDropEffects.All);
         }
 

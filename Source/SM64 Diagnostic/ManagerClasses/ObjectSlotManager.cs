@@ -60,7 +60,7 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 var selectedObjData = GetObjectDataFromSlot(value);
                 SelectedAddress = selectedObjData.HasValue ? selectedObjData.Value.Address : (uint?) null;
-                _objManager.CurrentAddress = SelectedAddress.Value;
+                _objManager.CurrentAddress = SelectedAddress;
                 _selectedSlot = value;
             }
         }
