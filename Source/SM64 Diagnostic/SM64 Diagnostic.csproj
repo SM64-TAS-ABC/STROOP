@@ -67,8 +67,14 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4" />
-    <Reference Include="OpenTK.GLControl, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL" />
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.1.1.1589.5941\lib\NET40\OpenTK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.GLControl.1.1.1589.5941\lib\NET40\OpenTK.GLControl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -90,6 +96,13 @@
     <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
     <Compile Include="Extensions\RectangleFExtensions.cs" />
     <Compile Include="Extensions\WatchExpressionExtensions.cs" />
+    <Compile Include="LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingHandler.cs" />
     <Compile Include="ManagerClasses\HackManager.cs" />
     <Compile Include="ManagerClasses\MiscManager.cs" />
     <Compile Include="ManagerClasses\DataManager.cs" />
@@ -166,6 +179,7 @@
     <Compile Include="VariableViewerForm.Designer.cs">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Resources\home.png" />
     <None Include="Resources\arrow-down.png" />
     <None Include="Resources\arrow-left.png" />
@@ -175,6 +189,9 @@
     <None Include="Resources\double-arrow-left.png" />
     <None Include="Resources\double-arrow-right.png" />
     <None Include="Resources\double-arrow-up.png" />
+    <EmbeddedResource Include="LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\lock.png" />
     <Content Include="Resources\Maps\Object Images\Bowser Puzzle Piece 1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

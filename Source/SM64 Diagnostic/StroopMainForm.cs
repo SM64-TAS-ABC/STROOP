@@ -21,6 +21,7 @@ namespace SM64_Diagnostic
         ProcessStream _sm64Stream = null;
         Config _config;
 
+        ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData;
         ObjectAssociations _objectAssoc;
         MapAssociations _mapAssoc;
@@ -76,22 +77,8 @@ namespace SM64_Diagnostic
             // Temp: Remove "Other" tab
 #if RELEASE
             tabControlMain.TabPages.Remove(tabPageExpressions);
-#endif
-
-            var slotManagerGui = new ObjectSlotManagerGui();
-
-            // Read configuration
-            _config = XmlConfigParser.OpenConfig(@"Config/Config.xml");
-            _miscData = XmlConfigParser.OpenMiscData(@"Config/MiscData.xml");
-            _objectData = XmlConfigParser.OpenObjectData(@"Config/ObjectData.xml");
-            _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", slotManagerGui);
-            _marioData = XmlConfigParser.OpenMarioData(_config, @"Config/MarioData.xml");
-            _cameraData = XmlConfigParser.OpenCameraData(_config, @"Config/CameraData.xml");
-            _hudData = XmlConfigParser.OpenHudData(_config, @"Config/HudData.xml");
-            _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
-            _scriptParser = XmlConfigParser.OpenScripts(@"Config/Scripts.xml");
-            _romHacks = XmlConfigParser.OpenHacks(@"Config/Hacks.xml");
-
+#endif   
+                   
             _sm64Stream = new ProcessStream(_config);
             _sm64Stream.OnUpdate += OnUpdate;
 
@@ -146,11 +133,11 @@ namespace SM64_Diagnostic
             _optionsManager = new OptionsManager(optionGui, _config);
 
             // Create Object Slots
-            slotManagerGui.TabControl = tabControlMain;
-            slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
-            slotManagerGui.MapObjectToggleModeComboBox = comboBoxMapToggleMode;
-            slotManagerGui.FlowLayoutContainer = flowLayoutPanelObjects;
-            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, slotManagerGui, _mapManager, _miscManager);
+            _slotManagerGui.TabControl = tabControlMain;
+            _slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
+            _slotManagerGui.MapObjectToggleModeComboBox = comboBoxMapToggleMode;
+            _slotManagerGui.FlowLayoutContainer = flowLayoutPanelObjects;
+            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
 
             // Add SortMethods
             foreach (var sm in Enum.GetValues(typeof(ObjectSlotManager.SortMethodType)))
@@ -175,6 +162,35 @@ namespace SM64_Diagnostic
                     comboBoxProcessSelection.Items.Add(processSelect);
                     comboBoxProcessSelection.SelectedIndex = 0;
                 }
+        }
+
+        public void LoadConfig(LoadingForm loadingForm)
+        {
+            int statusNum = 0;
+
+            // Read configuration
+            loadingForm.UpdateStatus("Loading main configuration", statusNum++);
+            _config = XmlConfigParser.OpenConfig(@"Config/Config.xml");
+            loadingForm.UpdateStatus("Loading Miscellaneous Data", statusNum++);
+            _miscData = XmlConfigParser.OpenMiscData(@"Config/MiscData.xml");
+            loadingForm.UpdateStatus("Loading Object Data", statusNum++);
+            _objectData = XmlConfigParser.OpenObjectData(@"Config/ObjectData.xml");
+            loadingForm.UpdateStatus("Loading Object Associations", statusNum++);
+            _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", _slotManagerGui);
+            loadingForm.UpdateStatus("Loading Mario Data", statusNum++);
+            _marioData = XmlConfigParser.OpenMarioData(_config, @"Config/MarioData.xml");
+            loadingForm.UpdateStatus("Loading Camera Data", statusNum++);
+            _cameraData = XmlConfigParser.OpenCameraData(_config, @"Config/CameraData.xml");
+            loadingForm.UpdateStatus("Loading HUD data", statusNum++);
+            _hudData = XmlConfigParser.OpenHudData(_config, @"Config/HudData.xml");
+            loadingForm.UpdateStatus("Loading Map Associations", statusNum++);
+            _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
+            loadingForm.UpdateStatus("Loading Scripts", statusNum++);
+            _scriptParser = XmlConfigParser.OpenScripts(@"Config/Scripts.xml");
+            loadingForm.UpdateStatus("Loading Hacks", statusNum++);
+            _romHacks = XmlConfigParser.OpenHacks(@"Config/Hacks.xml");
+
+            loadingForm.UpdateStatus("Finishing", statusNum);
         }
 
         private void comboBoxProcessSelection_DropDown(object sender, EventArgs e)
