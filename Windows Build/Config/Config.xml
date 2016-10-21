@@ -73,7 +73,7 @@
     <surfaceType>0x00</surfaceType>
     <flags>0x02</flags>
     <windDirection>0x03</windDirection>
-    <wallProtection>0x04</wallProtection>
+    <wallProjection>0x04</wallProjection>
     <yMin>0x06</yMin>
     <yMax>0x08</yMax>
     <x1>0x0A</x1>

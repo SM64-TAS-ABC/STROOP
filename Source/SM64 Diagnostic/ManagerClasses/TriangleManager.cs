@@ -102,8 +102,8 @@ namespace SM64_Diagnostic.ManagerClasses
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.WindDirection,
-                Name = "Wall Protection",
+                Address = config.TriangleOffsets.WallProjection,
+                Name = "Wall Projection",
                 OtherOffset = true,
                 Type = typeof(ushort),
                 UseHex = true

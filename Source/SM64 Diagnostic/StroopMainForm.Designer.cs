@@ -1148,7 +1148,7 @@ namespace SM64_Diagnostic
             this.tabPageTriangles.Controls.Add(this.radioButtonTriWall);
             this.tabPageTriangles.Controls.Add(this.radioButtonTriFloor);
             this.tabPageTriangles.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTriangles.Name = "tabPageTriangles";
+            this.tabPageTriangles.Name = "tabPageTriangle";
             this.tabPageTriangles.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageTriangles.Size = new System.Drawing.Size(960, 206);
             this.tabPageTriangles.TabIndex = 11;

@@ -13,7 +13,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint WindDirection;
         public uint YMin;
         public uint YMax;
-        public uint WallProtection;
+        public uint WallProjection;
         public uint X1, Y1, Z1;
         public uint X2, Y2, Z2;
         public uint X3, Y3, Z3;

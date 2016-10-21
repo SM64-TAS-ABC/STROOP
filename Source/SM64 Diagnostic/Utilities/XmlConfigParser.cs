@@ -275,14 +275,17 @@ namespace SM64_Diagnostic.Utilities
                                 case "windDirection":
                                     config.TriangleOffsets.WindDirection = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "wallProtection":
-                                    config.TriangleOffsets.WallProtection = ParsingUtilities.ParseHex(subElement.Value);
+                                case "wallProjection":
+                                    config.TriangleOffsets.WallProjection = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "yMin":
                                     config.TriangleOffsets.YMin = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "yMax":
                                     config.TriangleOffsets.YMax = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "x1":
+                                    config.TriangleOffsets.X1 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "y1":
                                     config.TriangleOffsets.Y1 = ParsingUtilities.ParseHex(subElement.Value);
