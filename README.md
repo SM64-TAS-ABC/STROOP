@@ -3,7 +3,7 @@
 
   STROOP is a overly complicated diagnostic tool for Super Mario 64 which allows for complicated mario bullsh*t and manipulation. 
   
-  *I'll rewrite this description later - <3 Dane*
+  *...I'll rewrite this description later - Dane*
   
        
 ## Downloading Stroop
@@ -15,20 +15,18 @@ The latest release of Stroop can be downloaded from our [Releases Page](https://
   As if the current build, Stroop has the following system requirements:
   * Windows 10 / Windows 8 / Windows 7 / Windows Vista 64-bit or 32-bit
   * .NET Framework 4.6 (See [.NET Framework System Requirements](https://msdn.microsoft.com/en-us/library/8z6watww(v=vs.110).aspx) for more information)
-  * Mupen 0.5 (Other versions probably work)
+  * Mupen 0.5 (Other versions of mupen might still work)
   * 64 Marios (Must be super)
   * Marios must be American (No PAL or JAP just yet)
   
 ## Status 
   
-  Stroop is currently under a development phase. This means we are focused more on the **quantity** of features rather than the **quality** (organization, structure, optimization and overall prettiness). 
+  Stroop is currently under a development phase, however, pre-releases have been made. Current priorities include various new features and high-priority bug fixes. Prior Release 1.0, minor bug fixes will be addressed, and after code cleanlup will be focused on.
  
 ## Building
 
 Requirements:
   * Visual Studio *(2015 recommended)*
-  * [OpenTK](https://github.com/opentk/opentk) *(Version 1.1 used, others may work)*
+  * OpenTK 1.1 *(Version 1.1.1589.5941 used, others may work)*
   
-Before building Stroop, OpenTK is a prerequisite and must be installed beforehand. Stroop can be easily build from the source code by opening up the solution file in Visual Studio and performing a build. 
-
-#
+Before building Stroop, OpenTK is a prerequisite. This is easiest installed by using the NuGet package manager. Stroop can be easily build from the source code by opening up the solution file in Visual Studio and performing a build. 
