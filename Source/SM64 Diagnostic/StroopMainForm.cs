@@ -38,7 +38,7 @@ namespace SM64_Diagnostic
         MapManager _mapManager;
         OptionsManager _optionsManager;
         ScriptManager _scriptManager;
-        DataManager _hudManager;
+        HudManager _hudManager;
         MiscManager _miscManager;
         CameraManager _cameraManager;
         HackManager _hackManager;
@@ -105,7 +105,7 @@ namespace SM64_Diagnostic
             _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, _objectAssoc, mapGui);
 
             _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
-            _hudManager = new DataManager(_sm64Stream, _config, _hudData, flowLayoutPanelHud);
+            _hudManager = new HudManager(_sm64Stream, _config, _hudData, tabPageHud);
             _miscManager = new MiscManager(_sm64Stream, _config, _miscData, flowLayoutPanelMisc, groupBoxPuController);
             _cameraManager = new CameraManager(_sm64Stream, _config, _cameraData, panelCameraBorder, flowLayoutPanelCamera);
             _triangleManager = new TriangleManager(_sm64Stream, _config, flowLayoutPanelTriangles, maskedTextBoxOtherTriangle);

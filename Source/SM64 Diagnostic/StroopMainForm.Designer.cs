@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxProcessSelection = new System.Windows.Forms.ComboBox();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -69,6 +69,9 @@ namespace SM64_Diagnostic
             this.panelMarioBorder = new System.Windows.Forms.Panel();
             this.pictureBoxMario = new SM64_Diagnostic.Controls.IntPictureBox();
             this.tabPageHud = new System.Windows.Forms.TabPage();
+            this.buttonStandardHud = new System.Windows.Forms.Button();
+            this.buttonDie = new System.Windows.Forms.Button();
+            this.buttonFillHp = new System.Windows.Forms.Button();
             this.flowLayoutPanelHud = new System.Windows.Forms.FlowLayoutPanel();
             this.panelHudBorder = new System.Windows.Forms.Panel();
             this.pictureBoxHud = new SM64_Diagnostic.Controls.IntPictureBox();
@@ -248,7 +251,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(968, 332);
+            this.groupBoxObjects.Size = new System.Drawing.Size(968, 334);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -325,7 +328,7 @@ namespace SM64_Diagnostic
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 65);
             this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 263);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 265);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -646,6 +649,9 @@ namespace SM64_Diagnostic
             // 
             // tabPageHud
             // 
+            this.tabPageHud.Controls.Add(this.buttonStandardHud);
+            this.tabPageHud.Controls.Add(this.buttonDie);
+            this.tabPageHud.Controls.Add(this.buttonFillHp);
             this.tabPageHud.Controls.Add(this.flowLayoutPanelHud);
             this.tabPageHud.Controls.Add(this.panelHudBorder);
             this.tabPageHud.Location = new System.Drawing.Point(4, 22);
@@ -655,6 +661,33 @@ namespace SM64_Diagnostic
             this.tabPageHud.TabIndex = 6;
             this.tabPageHud.Text = "HUD";
             // 
+            // buttonStandardHud
+            // 
+            this.buttonStandardHud.Location = new System.Drawing.Point(3, 133);
+            this.buttonStandardHud.Name = "buttonStandardHud";
+            this.buttonStandardHud.Size = new System.Drawing.Size(93, 24);
+            this.buttonStandardHud.TabIndex = 6;
+            this.buttonStandardHud.Text = "Standard HUD";
+            this.buttonStandardHud.UseVisualStyleBackColor = true;
+            // 
+            // buttonDie
+            // 
+            this.buttonDie.Location = new System.Drawing.Point(3, 104);
+            this.buttonDie.Name = "buttonDie";
+            this.buttonDie.Size = new System.Drawing.Size(93, 23);
+            this.buttonDie.TabIndex = 5;
+            this.buttonDie.Text = "Die";
+            this.buttonDie.UseVisualStyleBackColor = true;
+            // 
+            // buttonFillHp
+            // 
+            this.buttonFillHp.Location = new System.Drawing.Point(3, 75);
+            this.buttonFillHp.Name = "buttonFillHp";
+            this.buttonFillHp.Size = new System.Drawing.Size(93, 23);
+            this.buttonFillHp.TabIndex = 4;
+            this.buttonFillHp.Text = "Fill HP";
+            this.buttonFillHp.UseVisualStyleBackColor = true;
+            // 
             // flowLayoutPanelHud
             // 
             this.flowLayoutPanelHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -662,10 +695,10 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelHud.AutoScroll = true;
             this.flowLayoutPanelHud.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelHud.Location = new System.Drawing.Point(63, 1);
+            this.flowLayoutPanelHud.Location = new System.Drawing.Point(101, 1);
             this.flowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelHud.Name = "flowLayoutPanelHud";
-            this.flowLayoutPanelHud.Size = new System.Drawing.Size(893, 196);
+            this.flowLayoutPanelHud.Size = new System.Drawing.Size(855, 196);
             this.flowLayoutPanelHud.TabIndex = 3;
             // 
             // panelHudBorder
@@ -1148,7 +1181,7 @@ namespace SM64_Diagnostic
             this.tabPageTriangles.Controls.Add(this.radioButtonTriWall);
             this.tabPageTriangles.Controls.Add(this.radioButtonTriFloor);
             this.tabPageTriangles.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTriangles.Name = "tabPageTriangle";
+            this.tabPageTriangles.Name = "tabPageTriangles";
             this.tabPageTriangles.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageTriangles.Size = new System.Drawing.Size(960, 206);
             this.tabPageTriangles.TabIndex = 11;
@@ -1503,7 +1536,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(639, 170);
+            this.glControlMap.Size = new System.Drawing.Size(641, 170);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -1620,8 +1653,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -2017,6 +2050,9 @@ namespace SM64_Diagnostic
         private MaskedTextBox maskedTextBoxOtherTriangle;
         private RadioButton radioButtonTriOther;
         private FlowLayoutPanel flowLayoutPanelTriangles;
+        private Button buttonStandardHud;
+        private Button buttonDie;
+        private Button buttonFillHp;
     }
 }
 

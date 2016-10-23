@@ -104,5 +104,27 @@ namespace SM64_Diagnostic.Utilities
         {
             return stream.WriteRam(new byte[] { 0x00, 0x00 }, address + config.ObjectSlots.ObjectActiveOffset);
         }
+
+        public static bool RefillHp(ProcessStream stream, Config config)
+        {
+            return stream.WriteRam(BitConverter.GetBytes(config.Hud.FullHp), config.Hud.HpAddress);
+        }
+
+        public static bool Die(ProcessStream stream, Config config)
+        {
+            return stream.WriteRam(BitConverter.GetBytes((short)0), config.Hud.HpAddress);
+        }
+
+        public static bool StandardHud(ProcessStream stream, Config config)
+        {
+            bool success = true;
+
+            success &= stream.WriteRam(BitConverter.GetBytes(config.Hud.FullHp), config.Hud.HpAddress);
+            success &= stream.WriteRam(BitConverter.GetBytes(config.Hud.StandardCoins), config.Hud.CoinCountAddress);
+            success &= stream.WriteRam(BitConverter.GetBytes(config.Hud.StandardLives), config.Hud.LiveCountAddress);
+            success &= stream.WriteRam(BitConverter.GetBytes(config.Hud.StandardStars), config.Hud.StarCountAddress);
+
+            return success;
+        }
     }
 }

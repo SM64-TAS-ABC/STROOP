@@ -246,6 +246,39 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
+                    case "Hud":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "HpAddress":
+                                    config.Hud.HpAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "LiveCountAddress":
+                                    config.Hud.LiveCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "CoinCountAddress":
+                                    config.Hud.CoinCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "StarCountAddress":
+                                    config.Hud.StarCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "FullHp":
+                                    config.Hud.FullHp = short.Parse(subElement.Value);
+                                    break;
+                                case "StandardLives":
+                                    config.Hud.StandardLives = short.Parse(subElement.Value);
+                                    break;
+                                case "StandardCoins":
+                                    config.Hud.StandardCoins = short.Parse(subElement.Value);
+                                    break;
+                                case "StandardStars":
+                                    config.Hud.StandardStars = short.Parse(subElement.Value);
+                                    break;
+                            }
+                        }
+                        break;
+
                     case "Debug":
                         foreach (XElement subElement in element.Elements())
                         {

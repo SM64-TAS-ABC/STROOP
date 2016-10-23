@@ -65,6 +65,16 @@
     <SlidingSpeedZOffset>0x5C</SlidingSpeedZOffset>
     <PeakHeightOffset>0xBC</PeakHeightOffset>
   </Mario>
+  <Hud>
+    <HpAddress>0x8033b21e</HpAddress>
+    <LiveCountAddress>0x8033b21c</LiveCountAddress>
+    <CoinCountAddress>0x8033b218</CoinCountAddress>
+    <StarCountAddress>0x8033b21a</StarCountAddress>
+    <FullHp>2176</FullHp>
+    <StandardLives>4</StandardLives>
+    <StandardCoins>0</StandardCoins>
+    <StandardStars>120</StandardStars>
+  </Hud>
   <Debug>
     <ToggleAddress>0x8033d263</ToggleAddress>
     <SettingAddress>0x80330e94</SettingAddress>

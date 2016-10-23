@@ -103,20 +103,21 @@
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
-    <Compile Include="ManagerClasses\HackManager.cs" />
-    <Compile Include="ManagerClasses\MiscManager.cs" />
-    <Compile Include="ManagerClasses\DataManager.cs" />
+    <Compile Include="Managers\HudManager.cs" />
+    <Compile Include="Managers\HackManager.cs" />
+    <Compile Include="Managers\MiscManager.cs" />
+    <Compile Include="Managers\DataManager.cs" />
     <Compile Include="Controls\DataContainer.cs" />
-    <Compile Include="ManagerClasses\DisassemblyManager.cs" />
+    <Compile Include="Managers\DisassemblyManager.cs" />
     <Compile Include="Controls\Map\MapGraphics.cs" />
-    <Compile Include="ManagerClasses\MapManager.cs" />
-    <Compile Include="ManagerClasses\CameraManager.cs" />
-    <Compile Include="ManagerClasses\MarioManager.cs" />
-    <Compile Include="ManagerClasses\ObjectManager.cs" />
-    <Compile Include="ManagerClasses\OptionsManager.cs" />
-    <Compile Include="ManagerClasses\ScriptManager.cs" />
+    <Compile Include="Managers\MapManager.cs" />
+    <Compile Include="Managers\CameraManager.cs" />
+    <Compile Include="Managers\MarioManager.cs" />
+    <Compile Include="Managers\ObjectManager.cs" />
+    <Compile Include="Managers\OptionsManager.cs" />
+    <Compile Include="Managers\ScriptManager.cs" />
     <Compile Include="Controls\WatchVariableControl.cs" />
-    <Compile Include="ManagerClasses\TriangleManager.cs" />
+    <Compile Include="Managers\TriangleManager.cs" />
     <Compile Include="ModifyAddWatchVariableForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,9 +127,10 @@
     <Compile Include="Controls\ObjectSlot.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ManagerClasses\ObjectSlotManager.cs" />
+    <Compile Include="Managers\ObjectSlotManager.cs" />
     <Compile Include="Structs\BehaviorCriteria.cs" />
     <Compile Include="Structs\Configurations\DebugConfig.cs" />
+    <Compile Include="Structs\Configurations\HudConfig.cs" />
     <Compile Include="Structs\Configurations\TriangleOffsetsConfig.cs" />
     <Compile Include="Structs\GameScript.cs" />
     <Compile Include="Structs\Gui\MapGui.cs" />
@@ -427,6 +429,9 @@
     <Content Include="Resources\Object Images\Fish Spawner 5 Red.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Object Images\Glow Spawner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Object Images\Koopa the Quick Flag Checkpoint.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -505,6 +510,9 @@
     <Content Include="Resources\Object Images\Seesaw Platform VCutM.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Object Images\Splash Bubble Spawner %283%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Object Images\Star Particle Blue.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -535,7 +543,13 @@
     <Content Include="Resources\Object Images\Triangle Particle Yellow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Object Images\TTM Slide Ending Platform.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Object Images\Vanish Cap Switch Button.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Object Images\WF Tower Platform Spawner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Object Images\Wing Cap Switch Button.png">
