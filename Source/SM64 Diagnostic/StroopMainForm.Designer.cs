@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comboBoxProcessSelection = new System.Windows.Forms.ComboBox();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -164,7 +164,6 @@ namespace SM64_Diagnostic
             this.checkedListBoxRomHacks = new System.Windows.Forms.CheckedListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
-            this.checkBoxPuVisible = new System.Windows.Forms.CheckBox();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.labelVersionNumber = new System.Windows.Forms.Label();
@@ -251,7 +250,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(968, 334);
+            this.groupBoxObjects.Size = new System.Drawing.Size(968, 335);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -328,7 +327,7 @@ namespace SM64_Diagnostic
             this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 65);
             this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 265);
+            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(960, 266);
             this.flowLayoutPanelObjects.TabIndex = 0;
             this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
             // 
@@ -1536,7 +1535,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(641, 170);
+            this.glControlMap.Size = new System.Drawing.Size(642, 170);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -1653,8 +1652,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1736,7 +1735,6 @@ namespace SM64_Diagnostic
             this.tabPageOptions.Controls.Add(this.checkedListBoxRomHacks);
             this.tabPageOptions.Controls.Add(this.label3);
             this.tabPageOptions.Controls.Add(this.checkBoxMoveCamWithPu);
-            this.tabPageOptions.Controls.Add(this.checkBoxPuVisible);
             this.tabPageOptions.Controls.Add(this.checkBoxUseRomHack);
             this.tabPageOptions.Controls.Add(this.checkBoxStartSlotIndexOne);
             this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
@@ -1751,7 +1749,7 @@ namespace SM64_Diagnostic
             this.checkBoxUseOverlays.AutoSize = true;
             this.checkBoxUseOverlays.Checked = true;
             this.checkBoxUseOverlays.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxUseOverlays.Location = new System.Drawing.Point(3, 88);
+            this.checkBoxUseOverlays.Location = new System.Drawing.Point(3, 69);
             this.checkBoxUseOverlays.Name = "checkBoxUseOverlays";
             this.checkBoxUseOverlays.Size = new System.Drawing.Size(171, 17);
             this.checkBoxUseOverlays.TabIndex = 8;
@@ -1794,24 +1792,13 @@ namespace SM64_Diagnostic
             this.checkBoxMoveCamWithPu.AutoSize = true;
             this.checkBoxMoveCamWithPu.Checked = true;
             this.checkBoxMoveCamWithPu.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMoveCamWithPu.Location = new System.Drawing.Point(3, 67);
+            this.checkBoxMoveCamWithPu.Location = new System.Drawing.Point(3, 46);
             this.checkBoxMoveCamWithPu.Name = "checkBoxMoveCamWithPu";
             this.checkBoxMoveCamWithPu.Size = new System.Drawing.Size(162, 17);
             this.checkBoxMoveCamWithPu.TabIndex = 4;
             this.checkBoxMoveCamWithPu.Text = "PU Controller Moves Camera";
             this.checkBoxMoveCamWithPu.UseVisualStyleBackColor = true;
             this.checkBoxMoveCamWithPu.CheckedChanged += new System.EventHandler(this.checkBoxMoveCamWithPu_CheckedChanged);
-            // 
-            // checkBoxPuVisible
-            // 
-            this.checkBoxPuVisible.AutoSize = true;
-            this.checkBoxPuVisible.Location = new System.Drawing.Point(3, 45);
-            this.checkBoxPuVisible.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxPuVisible.Name = "checkBoxPuVisible";
-            this.checkBoxPuVisible.Size = new System.Drawing.Size(120, 17);
-            this.checkBoxPuVisible.TabIndex = 3;
-            this.checkBoxPuVisible.Text = "Enable PU Visibility*";
-            this.checkBoxPuVisible.UseVisualStyleBackColor = true;
             // 
             // checkBoxUseRomHack
             // 
@@ -2032,7 +2019,6 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.Button buttonPuConXpPu;
         private System.Windows.Forms.Label labelSlotSize;
         private System.Windows.Forms.CheckBox checkBoxMapShowFloor;
-        private CheckBox checkBoxPuVisible;
         private CheckBox checkBoxMoveCamWithPu;
         private Label labelPuConPu;
         private Label labelPuConQpuValue;
