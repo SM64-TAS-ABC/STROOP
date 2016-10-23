@@ -23,7 +23,9 @@
   <Data type="float" address="0x6C" marioOffset="true">Ceiling Height</Data>
   <Data special="true" specialType="DistanceBelowCeiling">Dist Below Ceiling</Data>
   <Data special="true" specialType="DistanceAboveFloor">Dist Above Floor</Data>
-  <Data type="uint" address="0x68" marioOffset="true" useHex="true">Col. Triangle</Data>
+  <Data type="uint" address="0x00C26C58" absoluteAddress="true" useHex="true">Floor Triangle</Data>
+  <Data type="uint" address="0x00C26C50" absoluteAddress="true" useHex="true">Wall Triangle</Data>
+  <Data type="uint" address="0x00C26C54" absoluteAddress="true" useHex="true">Ceiling Triangle</Data>
   <Data type="uint" address="0xc26c68" absoluteAddress="true" useHex="true">Interaction Object</Data>
   <Data type="uint" address="0xc26c70" absoluteAddress="true" useHex="true">Using Object</Data>
   <Data type="uint" address="0xc1c8b4" absoluteAddress="true" useHex="true">Stood On Object</Data>

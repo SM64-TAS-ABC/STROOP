@@ -138,6 +138,12 @@
   <Object behaviorScriptAddress="0x13000400" name="Splash Bubble (Under Water)">
     <Image path="Splash Bubble 2.png"/>
   </Object>
+  <Object behaviorScriptAddress="0x13000428" name="Splash Bubble Spawner (for Mario)">
+    <Image path="Splash Bubble Spawner (3).png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000444" name="Splash Bubble Spawner (for Bubba)">
+    <Image path="Splash Bubble Spawner (3).png"/>
+  </Object>
   <Object behaviorScriptAddress="0x1300046C" name="Aquarium Bubble">
     <Image path="Splash Bubble.png"/>
   </Object>
@@ -207,6 +213,9 @@
     <Image path="Shell.png"/>
 	<MapImage path="Shell Top.png" rotates="true"/>
     <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13000720" name="TTM Slide Ending Platform">
+    <Image path="TTM Slide Ending Platform.png"/>
   </Object>
   <Object behaviorScriptAddress="0x1300075C" name="Teleport">
     <Image path="Teleport.png"/>
@@ -604,6 +613,10 @@
 	<MapImage path="Spindrift Top.png" rotates="true"/>
     <Data type="byte" address="0x18F" objectOffset="true" isBool="true">Knockback</Data>
   </Object>
+  <Object behaviorScriptAddress="0x130012F4" name="WF Tower Platform Spawner">
+    <Image path="WF Tower Platform Spawner.png"/>
+    <Data type="byte" address="0x14F" mask="0x02" objectOffset="true" isBool="true">Platforms Loaded</Data>
+  </Object>
   <Object behaviorScriptAddress="0x13001318" name="WF Tower Platform (In-and-Out)">
     <Image path="WF Tower Platform.png"/>
   </Object>
@@ -661,6 +674,7 @@
   <Object behaviorScriptAddress="0x130014E0" name="Cork Box">
     <Image path="Cork Box.png"/>
 	<MapImage path="Cork Box Top.png" rotates="true"/>
+    <Data type="int" address="0x198" objectOffset="true">Num Coins</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001518" name="Pushable Block">
     <Image path="Pushable Block.png"/>
@@ -872,7 +886,7 @@
 	<MapImage path="Tox Box Top.png" rotates="true"/>
 	<Data type="int" address="0x1B0" objectOffset="true">Phase</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13001FBC" name="Sleeping Piranha Plant">
+  <Object behaviorScriptAddress="0x13001FBC" name="Piranha Plant">
     <Image path="Piranha Plant.png"/>
 	<MapImage path="Piranha Plant Top.png" rotates="true"/>
     <Data type="byte" address="0xF7" objectOffset="true" isBool="true">Lullaby Music</Data>
@@ -1097,35 +1111,118 @@
     <Image path="Bub.png"/>
 	<MapImage path="Bub Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002250" name="Wing Cap Block" appearance="0">
+  <Object behaviorScriptAddress="0x13002250" name="Wing Cap Block" subType="0">
     <Image path="Wing Cap Block.png"/>
 	<MapImage path="Wing Cap Block Top.png" rotates="true"/>
     <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
     <Data type="int" address="0x144" objectOffset="true">Contents</Data>
     <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13002250" name="Metal Cap Block" appearance="1">
+  <Object behaviorScriptAddress="0x13002250" name="Metal Cap Block" subType="1">
     <Image path="Metal Cap Block.png"/>
 	<MapImage path="Metal Cap Block Top.png" rotates="true"/>
     <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
     <Data type="int" address="0x144" objectOffset="true">Contents</Data>
     <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13002250" name="Vanish Cap Block" appearance="2">
+  <Object behaviorScriptAddress="0x13002250" name="Vanish Cap Block" subType="2">
     <Image path="Vanish Cap Block.png"/>
 	<MapImage path="Vanish Cap Block Top.png" rotates="true"/>
     <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
     <Data type="int" address="0x144" objectOffset="true">Contents</Data>
     <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13002250" name="Item Block" appearance="3">
+  <Object behaviorScriptAddress="0x13002250" name="Item Block (Shell)" subType="3">
     <Image path="Item Block.png"/>
 	<MapImage path="Item Block Top.png" rotates="true"/>
     <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
     <Data type="int" address="0x144" objectOffset="true">Contents</Data>
     <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
   </Object>
-
+  <Object behaviorScriptAddress="0x13002250" name="Item Block (1 Coin)" subType="4">
+    <Image path="Item Block.png"/>
+	<MapImage path="Item Block Top.png" rotates="true"/>
+    <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
+    <Data type="int" address="0x144" objectOffset="true">Contents</Data>
+    <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13002250" name="Item Block (3 Coins)" subType="5">
+    <Image path="Item Block.png"/>
+	<MapImage path="Item Block Top.png" rotates="true"/>
+    <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
+    <Data type="int" address="0x144" objectOffset="true">Contents</Data>
+    <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13002250" name="Item Block (10 Coins)" subType="6">
+    <Image path="Item Block.png"/>
+	<MapImage path="Item Block Top.png" rotates="true"/>
+    <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
+    <Data type="int" address="0x144" objectOffset="true">Contents</Data>
+    <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13002250" name="Item Block (Impartial 1-Up)" subType="7">
+    <Image path="Item Block.png"/>
+	<MapImage path="Item Block Top.png" rotates="true"/>
+    <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
+    <Data type="int" address="0x144" objectOffset="true">Contents</Data>
+    <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13002250" name="Item Block (Mission 1 Star)" subType="8">
+    <Image path="Item Block.png"/>
+	<MapImage path="Item Block Top.png" rotates="true"/>
+    <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
+    <Data type="int" address="0x144" objectOffset="true">Contents</Data>
+    <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13002250" name="Item Block (Running Away 1-Up)" subType="9">
+    <Image path="Item Block.png"/>
+	<MapImage path="Item Block Top.png" rotates="true"/>
+    <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
+    <Data type="int" address="0x144" objectOffset="true">Contents</Data>
+    <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13002250" name="Item Block (Mission 2 Star)" subType="10">
+    <Image path="Item Block.png"/>
+	<MapImage path="Item Block Top.png" rotates="true"/>
+    <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
+    <Data type="int" address="0x144" objectOffset="true">Contents</Data>
+    <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13002250" name="Item Block (Mission 3 Star)" subType="11">
+    <Image path="Item Block.png"/>
+	<MapImage path="Item Block Top.png" rotates="true"/>
+    <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
+    <Data type="int" address="0x144" objectOffset="true">Contents</Data>
+    <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13002250" name="Item Block (Mission 4 Star)" subType="12">
+    <Image path="Item Block.png"/>
+	<MapImage path="Item Block Top.png" rotates="true"/>
+    <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
+    <Data type="int" address="0x144" objectOffset="true">Contents</Data>
+    <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13002250" name="Item Block (Mission 5 Star)" subType="13">
+    <Image path="Item Block.png"/>
+	<MapImage path="Item Block Top.png" rotates="true"/>
+    <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
+    <Data type="int" address="0x144" objectOffset="true">Contents</Data>
+    <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13002250" name="Item Block (Mission 6 Star)" subType="14">
+    <Image path="Item Block.png"/>
+	<MapImage path="Item Block Top.png" rotates="true"/>
+    <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
+    <Data type="int" address="0x144" objectOffset="true">Contents</Data>
+    <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13002250" name="Item Block (Nothing)">
+    <Image path="Item Block.png"/>
+	<MapImage path="Item Block Top.png" rotates="true"/>
+    <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
+    <Data type="int" address="0x144" objectOffset="true">Contents</Data>
+    <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
+  </Object>
   <Object behaviorScriptAddress="0x1300227C" name="Exclamation Mark">
     <Image path="Exclamation Mark.png"/>
   </Object>
@@ -1178,7 +1275,7 @@
   <Object behaviorScriptAddress="0x130024AC" name="Dust Spawner">
     <Image path="Dust Spawner.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130024DC" name="Dust Glow">
+  <Object behaviorScriptAddress="0x130024DC" name="Dust Ball">
     <Image path="Dust Glow.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002500" name="Dust">
@@ -1325,8 +1422,8 @@
   <Object behaviorScriptAddress="0x13002AD0" name="Glow">
     <Image path="Glow.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002AF0" name="Glow">
-    <Image path="Glow.png"/>
+  <Object behaviorScriptAddress="0x13002AF0" name="Glow Spawner">
+    <Image path="Glow Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002B08" name="Sparkles">
     <Image path="Sparkles.png"/>
@@ -1817,16 +1914,16 @@
     <Image path="Rolling Log LLL.png"/>
 	<MapImage path="Rolling Log Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13003FDC" name="1-Up (from Butterfly)">
+  <Object behaviorScriptAddress="0x13003FDC" name="1-Up (Impartial to Mario)">
     <Image path="1-Up.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13004010" name="1-Up (from Item Block)">
+  <Object behaviorScriptAddress="0x13004010" name="1-Up (Runs Away)">
     <Image path="1-Up.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13004044" name="1-Up (Moves when Near)">
+  <Object behaviorScriptAddress="0x13004044" name="1-Up (Runs Away)">
     <Image path="1-Up.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x1300407C" name="1-Up (Already Present)">
+  <Object behaviorScriptAddress="0x1300407C" name="1-Up (Stationary)">
     <Image path="1-Up.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130040B4" name="1-Up">
@@ -1840,7 +1937,7 @@
   <Object behaviorScriptAddress="0x13004124" name="1-Up Activator">
     <Image path="1-Up Activator.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13004148" name="1-Up (from Spawner)">
+  <Object behaviorScriptAddress="0x13004148" name="1-Up (Follows Mario)">
     <Image path="1-Up.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004180" name="1-Up Activator">
@@ -2502,7 +2599,15 @@
   <Object behaviorScriptAddress="0x130050F4" name="Book Switch">
     <Image path="Book Switch.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13005120" name="Resizing Piranha Plant">
+  <Object behaviorScriptAddress="0x13005120" name="Tiny Piranha Plant" subType="0">
+    <Image path="Piranha Plant.png"/>
+	<MapImage path="Piranha Plant Top.png" rotates="true"/>
+    <Data type="float" address="0xF4" objectOffset="true">Max Scale</Data>
+    <Data type="int" address="0x198" objectOffset="true">Num Coins</Data>
+    <Data type="byte" address="0x187" objectOffset="true" isBool="true">Spin when Hit</Data>
+    <Data type="byte" address="0x189" objectOffset="true" isBool="true">Die if Shrink w/o Spin</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13005120" name="Huge Piranha Plant" subType="1">
     <Image path="Piranha Plant.png"/>
 	<MapImage path="Piranha Plant Top.png" rotates="true"/>
     <Data type="float" address="0xF4" objectOffset="true">Max Scale</Data>
