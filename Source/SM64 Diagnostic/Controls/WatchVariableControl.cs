@@ -262,15 +262,21 @@ namespace SM64_Diagnostic.ManagerClasses
         private void _nameLabel_Click(object sender, EventArgs e)
         {
             VariableViewerForm varInfo;
+            var typeDescr = _watchVar.GetTypeString();
+            if (_watchVar.Mask.HasValue)
+            {
+                typeDescr += String.Format(" w/ mask: 0x{0:X" + _watchVar.GetByteCount() * 2 + "}", _watchVar.Mask);
+            }
+
             if (!_watchVar.OtherOffset)
             {
-                varInfo = new VariableViewerForm(_watchVar.Name, _watchVar.GetTypeString(),
+                varInfo = new VariableViewerForm(_watchVar.Name, typeDescr,
                     String.Format("0x{0:X8}", _watchVar.GetRamAddress(_stream)),
                     String.Format("0x{0:X8}", _watchVar.GetProcessAddress(_stream)));
             }
             else
             {
-                varInfo = new VariableViewerForm(_watchVar.Name, _watchVar.GetTypeString(),
+                varInfo = new VariableViewerForm(_watchVar.Name, typeDescr,
                     String.Format("0x{0:X8}", _watchVar.GetRamOffsetAddress(_stream, OtherOffset)),
                     String.Format("0x{0:X8}", _watchVar.GetProcessAddress(_stream, OtherOffset)));
             }
