@@ -97,6 +97,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _holpMapObj = new MapObject(objAssoc.HolpImage, 2);
 
             _cameraMapObj = new MapObject(objAssoc.CameraMapImage, 1);
+            _cameraMapObj.UsesRotation = true;
             _floorTriangleMapObj = new TriangleMapObject(Color.FromArgb(200, Color.Yellow), 3);
         }
 
