@@ -310,10 +310,7 @@ namespace SM64_Diagnostic
             Refresh();
 
             // Start the drag and drop but setting the object slot index in Drag and Drop data
-            var obj = _manager.ObjectSlotData.Where((objData) => objData.Index == Index).ToList();
-            if (obj.Count == 0)
-                return;
-            var objectAddress = obj[0].Address;
+            var objectAddress = Address;
             var dropAction = new DropAction(DropAction.ActionType.Object, objectAddress); 
             DoDragDrop(dropAction, DragDropEffects.All);
         }

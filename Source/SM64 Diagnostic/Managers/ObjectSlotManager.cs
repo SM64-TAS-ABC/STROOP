@@ -13,7 +13,6 @@ namespace SM64_Diagnostic.ManagerClasses
     public class ObjectSlotManager
     {
         public ObjectSlot[] ObjectSlots;
-        public ObjectSlotData[] ObjectSlotData;
 
         Config _config;
         public ObjectAssociations ObjectAssoc;
@@ -23,47 +22,25 @@ namespace SM64_Diagnostic.ManagerClasses
         ProcessStream _stream;
         public ObjectSlotManagerGui ManagerGui;
 
+        public const byte VacantGroup = 0xFF;
+
         Dictionary<uint, MapObject> _mapObjects = new Dictionary<uint, MapObject>();
         Dictionary<uint, int> _memoryAddressSlotIndex;
         Dictionary<uint, string> _lastSlotLabel = new Dictionary<uint, string>();
-        int _selectedSlot;
+        List<uint> _selectedSlotsAddresses = new List<uint>();
 
         List<byte> _toggleMapGroups = new List<byte>();
         List<BehaviorCriteria> _toggleMapBehaviors = new List<BehaviorCriteria>();
         List<uint> _toggleMapSlots = new List<uint>();
 
         BehaviorCriteria? _lastSelectedBehavior;
+        uint _standingOnObject, _interactingObject, _holdingObject, _usingObject;
+        int activeObjCnt;
 
-        public uint? SelectedAddress = null;
-        public const byte VacantGroup = 0xFF;
-
-        public enum SortMethodType {ProcessingOrder, MemoryOrder};
+        public enum SortMethodType {ProcessingOrder, MemoryOrder, DistanceToMario};
         public enum MapToggleModeType {Single, ObjectType, ProcessGroup};
 
         public SortMethodType SortMethod = SortMethodType.ProcessingOrder;
-
-        public int MaxSlots
-        {
-            get
-            {
-                return _config.ObjectSlots.MaxSlots;
-            }
-        }
-
-        public int SelectedSlot
-        {
-            get
-            {
-                return _selectedSlot;
-            }
-            set
-            {
-                var selectedObjData = GetObjectDataFromSlot(value);
-                SelectedAddress = selectedObjData.HasValue ? selectedObjData.Value.Address : (uint?) null;
-                _objManager.CurrentAddress = SelectedAddress;
-                _selectedSlot = value;
-            }
-        }
 
         public void ChangeSlotSize(int newSize)
         {
@@ -90,56 +67,49 @@ namespace SM64_Diagnostic.ManagerClasses
 
             // Create and setup object slots
             ObjectSlots = new ObjectSlot[_config.ObjectSlots.MaxSlots];
-            ObjectSlotData = new ObjectSlotData[_config.ObjectSlots.MaxSlots];
             for (int i = 0; i < _config.ObjectSlots.MaxSlots; i++)
             {
                 var objectSlot = new ObjectSlot(i, this, ManagerGui, new Size(40,40));
                 ObjectSlots[i] = objectSlot;
-                int localI = i;
-                objectSlot.Click += (sender, e) => OnClick(sender, e, localI);
+                objectSlot.Click += (sender, e) => OnClick(sender, e);
                 ManagerGui.FlowLayoutContainer.Controls.Add(objectSlot);
             }
 
             ChangeSlotSize(40);
         }
 
-        private ObjectSlotData? GetObjectDataFromSlot(int slot)
+        private void OnClick(object sender, EventArgs e)
         {
-            if (ObjectSlotData.Count((objData) => objData.Index == slot) == 0)
-                return null;
-
-            return ObjectSlotData.First((objData) => objData.Index == slot);
-        }
-
-        private void OnClick(object sender, EventArgs e, int slotIndex)
-        {
+            // Make sure the tab has loaded
             if (ManagerGui.TabControl.SelectedTab == null)
                 return;
 
+            var selectedSlot = sender as ObjectSlot;
+
+            // Parse behavior based on tab opened
             switch (ManagerGui.TabControl.SelectedTab.Text)
             {
                 default:
                     ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
-                    SelectedSlot = slotIndex;
+                    _selectedSlotsAddresses.Clear();
+                    _selectedSlotsAddresses.Add(selectedSlot.Address);
+                    _objManager.CurrentAddress = selectedSlot.Address;
                     break;
+
                 case "Map":
                     switch ((MapToggleModeType)ManagerGui.MapObjectToggleModeComboBox.SelectedItem)
                     {
                         case MapToggleModeType.Single:
-                            var objectData = GetObjectDataFromSlot(slotIndex);
-                            if (objectData.HasValue)
-                            {
-                                if (_toggleMapSlots.Contains(objectData.Value.Address))
-                                    _toggleMapSlots.Remove(objectData.Value.Address);
-                                else
-                                    _toggleMapSlots.Add(objectData.Value.Address);
+                            if (_toggleMapSlots.Contains(selectedSlot.Address))
+                                _toggleMapSlots.Remove(selectedSlot.Address);
+                            else
+                                _toggleMapSlots.Add(selectedSlot.Address);
 
-                                UpdateSelectedObjectSlots();
-                            }
+                            UpdateSelectedObjectSlots();
 
                             break;
                         case MapToggleModeType.ObjectType:
-                            var behavior = ObjectSlots[slotIndex].Behavior;
+                            var behavior = selectedSlot.Behavior;
                             if (_toggleMapBehaviors.Contains(behavior))
                                 _toggleMapBehaviors.Remove(behavior);
                             else
@@ -148,7 +118,7 @@ namespace SM64_Diagnostic.ManagerClasses
                             UpdateSelectedObjectSlots();
                             break;
                         case MapToggleModeType.ProcessGroup:
-                            var group = ObjectSlots[slotIndex].ProcessGroup;
+                            var group = selectedSlot.ProcessGroup;
                             if (_toggleMapGroups.Contains(group))
                                 _toggleMapGroups.Remove(group);
                             else
@@ -181,7 +151,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        private ObjectSlotData[] GetProcessedObjects(ObjectGroupsConfig groupConfig, ObjectSlotsConfig slotConfig)
+        private List<ObjectSlotData> GetProcessedObjects(ObjectGroupsConfig groupConfig, ObjectSlotsConfig slotConfig)
         {
             var newObjectSlotData = new ObjectSlotData[slotConfig.MaxSlots];
 
@@ -210,7 +180,6 @@ namespace SM64_Diagnostic.ManagerClasses
                     // Get data
                     newObjectSlotData[currentSlot].Address = currentGroupObject;
                     newObjectSlotData[currentSlot].ObjectProcessGroup = objectProcessGroup;
-                    newObjectSlotData[currentSlot].Index = currentSlot;
                     newObjectSlotData[currentSlot].ProcessIndex = currentSlot;
                     newObjectSlotData[currentSlot].VacantSlotIndex = null;
 
@@ -235,7 +204,6 @@ namespace SM64_Diagnostic.ManagerClasses
 
                 newObjectSlotData[currentSlot].Address = currentObject;
                 newObjectSlotData[currentSlot].ObjectProcessGroup = VacantGroup;
-                newObjectSlotData[currentSlot].Index = currentSlot;
                 newObjectSlotData[currentSlot].ProcessIndex = currentSlot;
                 newObjectSlotData[currentSlot].VacantSlotIndex = currentSlot - vacantSlotStart;
 
@@ -243,7 +211,9 @@ namespace SM64_Diagnostic.ManagerClasses
                     _stream.ReadRam(currentObject + groupConfig.ProcessNextLinkOffset, 4), 0);
             }
 
-            return newObjectSlotData;
+            // Calculate distance to Mario
+
+            return newObjectSlotData.ToList();
         }
 
         public void OnUpdate(object sender, EventArgs e)
@@ -272,142 +242,165 @@ namespace SM64_Diagnostic.ManagerClasses
             switch (SortMethod)
             {
                 case SortMethodType.ProcessingOrder:
-                    // Data is already sorted
+                    // Data is already sorted by processing order
                     break;
 
                 case SortMethodType.MemoryOrder:
                     // Order by address
-                    for (int i = 0; i < slotConfig.MaxSlots; i++)
-                    {
-                        newObjectSlotData[i].Index = _memoryAddressSlotIndex[newObjectSlotData[i].Address];
-                    }
+                    newObjectSlotData = newObjectSlotData.OrderBy(s => s.Address).ToList();
+                    break;
+
+                case SortMethodType.DistanceToMario:
+                    // Get mario position
+                    float marioX, marioY, marioZ;
+                    marioX = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.XOffset, 4), 0);
+                    marioY = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.YOffset, 4), 0);
+                    marioZ = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.ZOffset, 4), 0);
+
+                    // Order by address
+                    newObjectSlotData = newObjectSlotData.OrderBy(new Func<ObjectSlotData, double>(s => {
+                        // Get object relative-to-maario position
+                        float dX, dY, dZ;
+                        dX = marioX - BitConverter.ToSingle(_stream.ReadRam(s.Address + _config.ObjectSlots.ObjectXOffset, 4), 0);
+                        dY = marioY - BitConverter.ToSingle(_stream.ReadRam(s.Address + _config.ObjectSlots.ObjectYOffset, 4), 0);
+                        dZ = marioZ - BitConverter.ToSingle(_stream.ReadRam(s.Address + _config.ObjectSlots.ObjectZOffset, 4), 0);
+
+                        // Calculate 3d distance
+                        return Math.Sqrt(dX * dX + dY * dY + dZ * dZ);
+                    })).ToList();
                     break;
             }
-            int activeObjCnt = 0;
 
-            var standingOnObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.StandingOnObjectPointer, 4), 0);
-            var interactingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.InteractingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
-            var holdingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.HoldingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
-            var usingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.UsingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
+            activeObjCnt = 0;
+
+            _standingOnObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.StandingOnObjectPointer, 4), 0);
+            _interactingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.InteractingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
+            _holdingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.HoldingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
+            _usingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.UsingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
 
             // Update slots
-            foreach (var objectData in newObjectSlotData)
+            for (int i = 0; i < slotConfig.MaxSlots; i++)
             {
-                uint currentAddress = objectData.Address;
-                int index = objectData.Index;
-                var isActive = BitConverter.ToUInt16(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectActiveOffset, 2), 0) != 0x0000;
-                ObjectSlots[index].IsActive = isActive;
-                ObjectSlots[index].Address = currentAddress;
-
-                // Update Overlays
-                ObjectSlots[index].DrawSelectedOverlay = SelectedAddress == currentAddress;
-                ObjectSlots[index].DrawStandingOnOverlay = _config.ShowOverlays && currentAddress == standingOnObject;
-                ObjectSlots[index].DrawInteractingOverlay = _config.ShowOverlays && currentAddress == interactingObject;
-                ObjectSlots[index].DrawHoldingOverlay = _config.ShowOverlays && currentAddress == holdingObject;
-                ObjectSlots[index].DrawUsingOverlay = _config.ShowOverlays && currentAddress == usingObject;
-
-                if (isActive)
-                    activeObjCnt++;
-
-                var behaviorScriptAdd = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorScriptOffset, 4), 0)
-                    & 0x7FFFFFFF;
-
-                var gfxId = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorGfxOffset, 4), 0);
-                var subType = BitConverter.ToInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorSubtypeOffset, 4), 0);
-                var appearance = BitConverter.ToInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorAppearance, 4), 0);
-
-                var behaviorCriteria = new BehaviorCriteria()
-                {
-                    BehaviorAddress = behaviorScriptAdd,
-                    GfxId = gfxId,
-                    SubType = subType,
-                    Appearance = appearance
-                };
-
-                ObjectSlots[index].Behavior = behaviorCriteria;
-
-                var processGroup = objectData.ObjectProcessGroup;
-                ObjectSlots[index].ProcessGroup = processGroup;
-
-                var newColor = objectData.ObjectProcessGroup == VacantGroup ? groupConfig.VacantSlotColor : groupConfig.ProcessingGroupsColor[objectData.ObjectProcessGroup];
-                ObjectSlots[index].BackColor = newColor;
-
-                var labelText = (SortMethod == SortMethodType.ProcessingOrder && objectData.VacantSlotIndex.HasValue) ?
-                    String.Format("VS{0}", objectData.VacantSlotIndex.Value + (_config.SlotIndexsFromOne ? 1 : 0))
-                    : (objectData.Index + (_config.SlotIndexsFromOne ? 1 : 0)).ToString();
-                if (ManagerGui.LockLabelsCheckbox.Checked)
-                {
-                    if (!_lastSlotLabel.ContainsKey(currentAddress))
-                        _lastSlotLabel.Add(currentAddress, labelText);
-                    else
-                        _lastSlotLabel[currentAddress] = labelText;
-                }
-                ObjectSlots[index].Text = ManagerGui.LockLabelsCheckbox.Checked ? _lastSlotLabel[currentAddress] : labelText;
-
-                // Update object manager image
-                if (SelectedAddress.HasValue && SelectedAddress.Value == currentAddress)
-                {
-                    var objAssoc = ObjectAssoc.FindObjectAssociation(behaviorCriteria);
-                    var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : (BehaviorCriteria ?)null;
-                    if (_lastSelectedBehavior != newBehavior)
-                    {
-                        _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
-                        _objManager.Name = ObjectAssoc.GetObjectName(behaviorCriteria);
-                        
-                        _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorCriteria), newColor.Lighten(0.8));
-                        _lastSelectedBehavior = newBehavior;
-                    }
-                    _objManager.Image = ObjectSlots[index].ObjectImage;
-                    _objManager.BackColor = newColor;
-                    int slotPos = objectData.ObjectProcessGroup == VacantGroup ? objectData.VacantSlotIndex.Value : objectData.ProcessIndex;
-                    _objManager.SlotIndex = _memoryAddressSlotIndex[currentAddress] + (_config.SlotIndexsFromOne ? 1 : 0);
-                    _objManager.SlotPos = (objectData.ObjectProcessGroup == VacantGroup ? "VS " : "")
-                        + (slotPos + (_config.SlotIndexsFromOne ? 1 : 0)).ToString();
-                    _objManager.Update();   
-                }
-
-                // Update the map
-                if (ManagerGui.TabControl.SelectedTab.Text == "Map" && _mapManager.IsLoaded) 
-                {
-
-                    // Update image
-                    var mapObjImage = ObjectAssoc.GetObjectMapImage(behaviorCriteria, !isActive);
-                    var mapObjRotates = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
-                    if (!_mapObjects.ContainsKey(currentAddress))
-                    {
-                        _mapObjects.Add(currentAddress, new MapObject(mapObjImage));
-                        _mapManager.AddMapObject(_mapObjects[currentAddress]);
-                        _mapObjects[currentAddress].UsesRotation = mapObjRotates;
-                    }
-                    else if (_mapObjects[currentAddress].Image != mapObjImage)
-                    {
-                        _mapManager.RemoveMapObject(_mapObjects[currentAddress]);
-                        _mapObjects[currentAddress] = new MapObject(mapObjImage);
-                        _mapManager.AddMapObject(_mapObjects[currentAddress]);
-                        _mapObjects[currentAddress].UsesRotation = mapObjRotates;
-                    }
-
-                    if (behaviorScriptAdd == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF))
-                    {
-                        _mapObjects[currentAddress].Show = false;
-                    }
-                    else
-                    {
-                        // Update map object coordinates and rotation
-                        _mapObjects[currentAddress].Show = !_toggleMapBehaviors.Contains(behaviorCriteria)
-                            && !_toggleMapGroups.Contains(processGroup) && !_toggleMapSlots.Contains(currentAddress);
-                        _mapObjects[currentAddress].X = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
-                        _mapObjects[currentAddress].Y = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
-                        _mapObjects[currentAddress].Z = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectZOffset, 4), 0);
-                        _mapObjects[currentAddress].IsActive = isActive;
-                        _mapObjects[currentAddress].Rotation = (float)((UInt16)(BitConverter.ToUInt32(
-                            _stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectRotationOffset, 4), 0)) / 65536f * 360f);
-                        _mapObjects[currentAddress].UsesRotation = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
-                    }
-                }
+                UpdateSlot(newObjectSlotData[i], i);
             }
             _miscManager.ActiveObjectCount = activeObjCnt;
-            ObjectSlotData = newObjectSlotData;
+        }
+
+        private void UpdateSlot(ObjectSlotData objectData, int index)
+        {
+            var objSlot = ObjectSlots[index];
+            uint currentAddress = objectData.Address;
+
+            var isActive = BitConverter.ToUInt16(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectActiveOffset, 2), 0) != 0x0000;
+            objSlot.IsActive = isActive;
+            objSlot.Address = currentAddress;
+
+            // Update Overlays
+            objSlot.DrawSelectedOverlay = _selectedSlotsAddresses.Contains(currentAddress);
+            objSlot.DrawStandingOnOverlay = _config.ShowOverlays && currentAddress == _standingOnObject;
+            objSlot.DrawInteractingOverlay = _config.ShowOverlays && currentAddress == _interactingObject;
+            objSlot.DrawHoldingOverlay = _config.ShowOverlays && currentAddress == _holdingObject;
+            objSlot.DrawUsingOverlay = _config.ShowOverlays && currentAddress == _usingObject;
+
+            if (isActive)
+                activeObjCnt++;
+
+            var behaviorScriptAdd = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorScriptOffset, 4), 0)
+                & 0x7FFFFFFF;
+
+            var gfxId = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorGfxOffset, 4), 0);
+            var subType = BitConverter.ToInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorSubtypeOffset, 4), 0);
+            var appearance = BitConverter.ToInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorAppearance, 4), 0);
+
+            var behaviorCriteria = new BehaviorCriteria()
+            {
+                BehaviorAddress = behaviorScriptAdd,
+                GfxId = gfxId,
+                SubType = subType,
+                Appearance = appearance
+            };
+
+            ObjectSlots[index].Behavior = behaviorCriteria;
+
+            var processGroup = objectData.ObjectProcessGroup;
+            ObjectSlots[index].ProcessGroup = processGroup;
+
+            var newColor = objectData.ObjectProcessGroup == VacantGroup ? _config.ObjectGroups.VacantSlotColor : _config.ObjectGroups.ProcessingGroupsColor[objectData.ObjectProcessGroup];
+            ObjectSlots[index].BackColor = newColor;
+
+            var labelText = (SortMethod == SortMethodType.ProcessingOrder && objectData.VacantSlotIndex.HasValue) ?
+                String.Format("VS{0}", objectData.VacantSlotIndex.Value + (_config.SlotIndexsFromOne ? 1 : 0))
+                : (index + (_config.SlotIndexsFromOne ? 1 : 0)).ToString();
+            if (ManagerGui.LockLabelsCheckbox.Checked)
+            {
+                if (!_lastSlotLabel.ContainsKey(currentAddress))
+                    _lastSlotLabel.Add(currentAddress, labelText);
+                else
+                    _lastSlotLabel[currentAddress] = labelText;
+            }
+            ObjectSlots[index].Text = ManagerGui.LockLabelsCheckbox.Checked ? _lastSlotLabel[currentAddress] : labelText;
+
+            // Update object manager image
+            if (_selectedSlotsAddresses.Contains(currentAddress))
+            {
+                var objAssoc = ObjectAssoc.FindObjectAssociation(behaviorCriteria);
+                var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : (BehaviorCriteria?)null;
+                if (_lastSelectedBehavior != newBehavior)
+                {
+                    _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
+                    _objManager.Name = ObjectAssoc.GetObjectName(behaviorCriteria);
+
+                    _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorCriteria), newColor.Lighten(0.8));
+                    _lastSelectedBehavior = newBehavior;
+                }
+                _objManager.Image = ObjectSlots[index].ObjectImage;
+                _objManager.BackColor = newColor;
+                int slotPos = objectData.ObjectProcessGroup == VacantGroup ? objectData.VacantSlotIndex.Value : objectData.ProcessIndex;
+                _objManager.SlotIndex = _memoryAddressSlotIndex[currentAddress] + (_config.SlotIndexsFromOne ? 1 : 0);
+                _objManager.SlotPos = (objectData.ObjectProcessGroup == VacantGroup ? "VS " : "")
+                    + (slotPos + (_config.SlotIndexsFromOne ? 1 : 0)).ToString();
+                _objManager.Update();
+            }
+
+            // Update the map
+            if (ManagerGui.TabControl.SelectedTab.Text == "Map" && _mapManager.IsLoaded)
+            {
+
+                // Update image
+                var mapObjImage = ObjectAssoc.GetObjectMapImage(behaviorCriteria, !isActive);
+                var mapObjRotates = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
+                if (!_mapObjects.ContainsKey(currentAddress))
+                {
+                    _mapObjects.Add(currentAddress, new MapObject(mapObjImage));
+                    _mapManager.AddMapObject(_mapObjects[currentAddress]);
+                    _mapObjects[currentAddress].UsesRotation = mapObjRotates;
+                }
+                else if (_mapObjects[currentAddress].Image != mapObjImage)
+                {
+                    _mapManager.RemoveMapObject(_mapObjects[currentAddress]);
+                    _mapObjects[currentAddress] = new MapObject(mapObjImage);
+                    _mapManager.AddMapObject(_mapObjects[currentAddress]);
+                    _mapObjects[currentAddress].UsesRotation = mapObjRotates;
+                }
+
+                if (behaviorScriptAdd == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF))
+                {
+                    _mapObjects[currentAddress].Show = false;
+                }
+                else
+                {
+                    // Update map object coordinates and rotation
+                    _mapObjects[currentAddress].Show = !_toggleMapBehaviors.Contains(behaviorCriteria)
+                        && !_toggleMapGroups.Contains(processGroup) && !_toggleMapSlots.Contains(currentAddress);
+                    _mapObjects[currentAddress].X = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
+                    _mapObjects[currentAddress].Y = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
+                    _mapObjects[currentAddress].Z = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectZOffset, 4), 0);
+                    _mapObjects[currentAddress].IsActive = isActive;
+                    _mapObjects[currentAddress].Rotation = (float)((UInt16)(BitConverter.ToUInt32(
+                        _stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectRotationOffset, 4), 0)) / 65536f * 360f);
+                    _mapObjects[currentAddress].UsesRotation = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
+                }
+            }
         }
 
         public void OnSlotDropAction(DropAction dropAction, ObjectSlot objSlot)
@@ -416,7 +409,7 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 case DropAction.ActionType.Mario:
                     // Move mario to object
-                    var objectAddress = ObjectSlotData.First((objData) => objData.Index == objSlot.Index).Address;
+                    var objectAddress = objSlot.Address;
                     MarioActions.MoveMarioToObject(_stream, _config, objectAddress);
                     break;
 

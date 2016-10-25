@@ -144,10 +144,10 @@
     <Compile Include="Structs\ObjectBehaviorAssociation.cs" />
     <Compile Include="Structs\ObjectAssociations.cs" />
     <Compile Include="Structs\Gui\ObjectDataGui.cs" />
-    <Compile Include="Structs\ObjectSlotData.cs" />
     <Compile Include="Structs\Configurations\ObjectSlotsConfig.cs" />
     <Compile Include="Structs\Configurations\ObjectGroupsConfig.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Structs\ObjectSlotData.cs" />
     <Compile Include="Structs\RomHack.cs" />
     <Compile Include="Utilities\NativeMethods.cs" />
     <Compile Include="Utilities\ScriptParser.cs" />
