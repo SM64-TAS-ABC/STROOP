@@ -287,6 +287,7 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             _textBoxValue.ReadOnly = false;
             _textBoxValue.Focus();
+            _textBoxValue.SelectAll();
             _editMode = true;
         }
 
