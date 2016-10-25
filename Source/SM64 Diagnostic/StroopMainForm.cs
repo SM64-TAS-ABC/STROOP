@@ -84,7 +84,7 @@ namespace SM64_Diagnostic
 
             _disManager = new DisassemblyManager(_config, this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
             _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
-            _hackManager = new HackManager(_sm64Stream, _romHacks, checkedListBoxRomHacks);
+            _hackManager = new HackManager(_sm64Stream, _romHacks, checkedListBoxHacks);
 
             // Create map manager
             MapGui mapGui = new MapGui();
