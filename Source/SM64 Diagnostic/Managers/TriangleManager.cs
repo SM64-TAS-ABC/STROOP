@@ -105,8 +105,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 Address = config.TriangleOffsets.WallProjection,
                 Name = "Wall Projection",
                 OtherOffset = true,
-                Type = typeof(ushort),
-                UseHex = true
+                Type = typeof(ushort)
             });
             data.Add(new WatchVariable()
             {
@@ -209,7 +208,7 @@ namespace SM64_Diagnostic.ManagerClasses
             data.Add(new WatchVariable()
             {
                 Address = config.TriangleOffsets.Offset,
-                Name = "Offset",
+                Name = "Normal Offset",
                 OtherOffset = true,
                 Type = typeof(float)
             });
