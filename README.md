@@ -14,6 +14,7 @@ The latest release of Stroop can be downloaded from our [Releases Page](https://
 
   As if the current build, Stroop has the following system requirements:
   * Windows 10 / Windows 8 / Windows 7 / Windows Vista 64-bit or 32-bit
+  * OpenGL 3.0 or greater (requirement for map tab only)
   * .NET Framework 4.6 (See [.NET Framework System Requirements](https://msdn.microsoft.com/en-us/library/8z6watww(v=vs.110).aspx) for more information)
   * Mupen 0.5 (0.5.1 will not work)
   * 64 Marios (Must be super)
