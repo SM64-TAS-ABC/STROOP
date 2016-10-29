@@ -7,34 +7,34 @@ using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Structs
 {
-    public class Config
+    public static class Config
     {
-        public int RefreshRateFreq;
-        public string ProcessName;
-        public uint RamStartAddress;
-        public uint RamSize;
-        public ObjectGroupsConfig ObjectGroups;
-        public ObjectSlotsConfig ObjectSlots;
-        public MarioConfig Mario;
-        public HudConfig Hud;
-        public DebugConfig Debug;
-        public TriangleOffsetsConfig TriangleOffsets;
-        public uint LevelAddress;
-        public uint AreaAddress;
-        public uint LoadingPointAddress;
-        public uint MissionAddress;
-        public uint HolpX;
-        public uint HolpY;
-        public uint HolpZ;
-        public uint CameraX;
-        public uint CameraY;
-        public uint CameraZ;
-        public uint CameraRot;
-        public uint RngRecordingAreaAddress;
-        public uint RngAddress;
-
-        public bool SlotIndexsFromOne;
-        public bool MoveCameraWithPu = true;
-        public bool ShowOverlays = true;
+        public static int RefreshRateFreq;
+        public static string ProcessName;
+        public static uint RamStartAddress;
+        public static uint RamSize;
+        public static ObjectGroupsConfig ObjectGroups;
+        public static ObjectSlotsConfig ObjectSlots;
+        public static MarioConfig Mario;
+        public static HudConfig Hud;
+        public static DebugConfig Debug;
+        public static TriangleOffsetsConfig TriangleOffsets;
+        public static uint LevelAddress;
+        public static uint AreaAddress;
+        public static uint LoadingPointAddress;
+        public static uint MissionAddress;
+        public static uint HolpX;
+        public static uint HolpY;
+        public static uint HolpZ;
+        public static uint CameraX;
+        public static uint CameraY;
+        public static uint CameraZ;
+        public static uint CameraRot;
+        public static uint RngRecordingAreaAddress;
+        public static uint RngAddress;
+      
+        public static bool SlotIndexsFromOne;
+        public static bool MoveCameraWithPu = true;
+        public static bool ShowOverlays = true;
     }
 }

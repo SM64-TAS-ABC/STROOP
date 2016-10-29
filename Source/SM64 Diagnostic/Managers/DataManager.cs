@@ -11,14 +11,12 @@ namespace SM64_Diagnostic.ManagerClasses
 {
     public class DataManager
     {
-        protected Config _config;
         protected List<WatchVariableControl> _dataControls;
         protected FlowLayoutPanel _variableTable;
         protected ProcessStream _stream;
 
-        public DataManager(ProcessStream stream, Config config, List<WatchVariable> data, FlowLayoutPanel variableTable)
+        public DataManager(ProcessStream stream, List<WatchVariable> data, FlowLayoutPanel variableTable)
         {
-            _config = config;
             _variableTable = variableTable;
             _stream = stream;
             

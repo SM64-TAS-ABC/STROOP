@@ -12,7 +12,6 @@ namespace SM64_Diagnostic.ManagerClasses
 {
     public class ObjectManager
     {
-        Config _config;
         List<WatchVariableControl> _objectDataControls;
         List<WatchVariableControl> _behaviorDataControls = new List<WatchVariableControl>();
         ProcessStream _stream;
@@ -164,9 +163,8 @@ namespace SM64_Diagnostic.ManagerClasses
 
         #endregion
 
-        public ObjectManager(ProcessStream stream, Config config, ObjectAssociations objAssoc, List<WatchVariable> objectData, ObjectDataGui objectGui)
+        public ObjectManager(ProcessStream stream, ObjectAssociations objAssoc, List<WatchVariable> objectData, ObjectDataGui objectGui)
         { 
-            _config = config;
             _stream = stream;
             _objGui = objectGui;
             _objAssoc = objAssoc;
@@ -236,21 +234,21 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             if (!CurrentAddress.HasValue)
                 return;
-            MarioActions.MoveObjectToMario(_stream, _config, CurrentAddress.Value);
+            MarioActions.MoveObjectToMario(_stream, CurrentAddress.Value);
         }
 
         private void MoveMarioToButton_Click(object sender, EventArgs e)
         {
             if (!CurrentAddress.HasValue)
                 return;
-            MarioActions.MoveMarioToObject(_stream, _config, CurrentAddress.Value);
+            MarioActions.MoveMarioToObject(_stream, CurrentAddress.Value);
         }
 
         private void UnloadButton_Click(object sender, EventArgs e)
         {
             if (!CurrentAddress.HasValue)
                 return;
-            MarioActions.UnloadObject(_stream, _config, CurrentAddress.Value);
+            MarioActions.UnloadObject(_stream, CurrentAddress.Value);
         }
 
         private void CloneButton_Click(object sender, EventArgs e)
@@ -258,9 +256,9 @@ namespace SM64_Diagnostic.ManagerClasses
             if (!CurrentAddress.HasValue)
                 return;
             if (_unclone)
-                MarioActions.UnCloneObject(_stream, _config, CurrentAddress.Value);
+                MarioActions.UnCloneObject(_stream, CurrentAddress.Value);
             else
-                MarioActions.CloneObject(_stream, _config, CurrentAddress.Value);
+                MarioActions.CloneObject(_stream, CurrentAddress.Value);
         }
 
         public void Update()
@@ -276,24 +274,24 @@ namespace SM64_Diagnostic.ManagerClasses
             }
 
             // Get Mario position
-            var marioAddress = _config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.MarioStructAddress;
             float mX, mY, mZ;
-            mX = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.XOffset, 4), 0);
-            mY = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.YOffset, 4), 0);
-            mZ = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.ZOffset, 4), 0);
+            mX = BitConverter.ToSingle(_stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
+            mY = BitConverter.ToSingle(_stream.ReadRam(marioAddress + Config.Mario.YOffset, 4), 0);
+            mZ = BitConverter.ToSingle(_stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
 
             // Get object position
             float x, y, z;
-            x = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
-            y = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
-            z = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + _config.ObjectSlots.ObjectZOffset, 4), 0);
+            x = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + Config.ObjectSlots.ObjectXOffset, 4), 0);
+            y = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + Config.ObjectSlots.ObjectYOffset, 4), 0);
+            z = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + Config.ObjectSlots.ObjectZOffset, 4), 0);
 
             // Calculate distances to Mario
             float latDisToMario = (float)Math.Sqrt(Math.Pow(x - mX, 2) + Math.Pow(z - mZ, 2));
             float disToMario = (float)Math.Sqrt(Math.Pow(x - mX, 2) + Math.Pow(y - mY, 2) + Math.Pow(z - mZ, 2));
 
             // Determine which object is being held
-            uint holdingObj = BitConverter.ToUInt32(_stream.ReadRam(marioAddress + _config.Mario.HoldingObjectPointerOffset, 4),0);
+            uint holdingObj = BitConverter.ToUInt32(_stream.ReadRam(marioAddress + Config.Mario.HoldingObjectPointerOffset, 4),0);
             
             // Change to unclone if we are already holding the object
             if ((holdingObj == _currentAddress) != _unclone)
@@ -312,13 +310,13 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private int GetNumRngCalls()
         {
-            var numberOfRngObjs = BitConverter.ToUInt32(_stream.ReadRam(_config.RngRecordingAreaAddress, 4), 0);
+            var numberOfRngObjs = BitConverter.ToUInt32(_stream.ReadRam(Config.RngRecordingAreaAddress, 4), 0);
 
             int numOfCalls = 0;
 
             for (int i = 0; i < numberOfRngObjs; i++)
             {
-                uint rngStructAdd = (uint)(_config.RngRecordingAreaAddress + 0x10 + 0x08 * i);
+                uint rngStructAdd = (uint)(Config.RngRecordingAreaAddress + 0x10 + 0x08 * i);
                 var address = BitConverter.ToUInt32(_stream.ReadRam(rngStructAdd + 0x04, 4), 0);
                 if (address != _currentAddress)
                     continue;

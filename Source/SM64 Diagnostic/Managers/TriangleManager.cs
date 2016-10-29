@@ -55,11 +55,11 @@ namespace SM64_Diagnostic.ManagerClasses
         /// Manages illumanati
         /// </summary>
         /// <param name="stream"></param>
-        /// <param name="config"></param>
+        /// <param name="Config"></param>
         /// <param name="data"></param>
         /// <param name="variableTable"></param>
-        public TriangleManager(ProcessStream stream, Config config, FlowLayoutPanel variableTable, MaskedTextBox addressBox) 
-            : base(stream, config, new List<WatchVariable>(), variableTable)
+        public TriangleManager(ProcessStream stream, FlowLayoutPanel variableTable, MaskedTextBox addressBox) 
+            : base(stream, new List<WatchVariable>(), variableTable)
         {
             _addressBox = addressBox;
             _addressBox.LostFocus += AddressBox_LostFocus;
@@ -80,14 +80,14 @@ namespace SM64_Diagnostic.ManagerClasses
             #region TriangleData
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.SurfaceType,
+                Address = Config.TriangleOffsets.SurfaceType,
                 Name = "Surface Type",
                 OtherOffset = true,
                 Type = typeof(UInt16)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.Flags,
+                Address = Config.TriangleOffsets.Flags,
                 Name = "Flags",
                 OtherOffset = true,
                 Type = typeof(byte),
@@ -95,126 +95,126 @@ namespace SM64_Diagnostic.ManagerClasses
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.WindDirection,
+                Address = Config.TriangleOffsets.WindDirection,
                 Name = "Wind Direction",
                 OtherOffset = true,
                 Type = typeof(byte)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.WallProjection,
+                Address = Config.TriangleOffsets.WallProjection,
                 Name = "Wall Projection",
                 OtherOffset = true,
                 Type = typeof(ushort)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.YMin,
+                Address = Config.TriangleOffsets.YMin,
                 Name = "Y Min",
                 OtherOffset = true,
                 Type = typeof(short)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.YMax,
+                Address = Config.TriangleOffsets.YMax,
                 Name = "Y Max",
                 OtherOffset = true,
                 Type = typeof(short)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.X1,
+                Address = Config.TriangleOffsets.X1,
                 Name = "X1",
                 OtherOffset = true,
                 Type = typeof(short)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.Y1,
+                Address = Config.TriangleOffsets.Y1,
                 Name = "Y1",
                 OtherOffset = true,
                 Type = typeof(short)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.Z1,
+                Address = Config.TriangleOffsets.Z1,
                 Name = "Z1",
                 OtherOffset = true,
                 Type = typeof(short)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.X2,
+                Address = Config.TriangleOffsets.X2,
                 Name = "X2",
                 OtherOffset = true,
                 Type = typeof(short)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.Y2,
+                Address = Config.TriangleOffsets.Y2,
                 Name = "Y2",
                 OtherOffset = true,
                 Type = typeof(short)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.Z2,
+                Address = Config.TriangleOffsets.Z2,
                 Name = "Z2",
                 OtherOffset = true,
                 Type = typeof(short)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.X3,
+                Address = Config.TriangleOffsets.X3,
                 Name = "X3",
                 OtherOffset = true,
                 Type = typeof(short)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.Y3,
+                Address = Config.TriangleOffsets.Y3,
                 Name = "Y3",
                 OtherOffset = true,
                 Type = typeof(short)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.Z3,
+                Address = Config.TriangleOffsets.Z3,
                 Name = "Z3",
                 OtherOffset = true,
                 Type = typeof(short)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.NormX,
+                Address = Config.TriangleOffsets.NormX,
                 Name = "Normal X",
                 OtherOffset = true,
                 Type = typeof(float)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.NormY,
+                Address = Config.TriangleOffsets.NormY,
                 Name = "Normal Y",
                 OtherOffset = true,
                 Type = typeof(float)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.NormZ,
+                Address = Config.TriangleOffsets.NormZ,
                 Name = "Normal Z",
                 OtherOffset = true,
                 Type = typeof(float)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.Offset,
+                Address = Config.TriangleOffsets.Offset,
                 Name = "Normal Offset",
                 OtherOffset = true,
                 Type = typeof(float)
             });
             data.Add(new WatchVariable()
             {
-                Address = config.TriangleOffsets.AssociatedObject,
+                Address = Config.TriangleOffsets.AssociatedObject,
                 Name = "Associated Object",
                 OtherOffset = true,
                 Type = typeof(uint),
@@ -277,15 +277,15 @@ namespace SM64_Diagnostic.ManagerClasses
                 switch (Mode)
                 {
                     case TriangleMode.Ceiling:
-                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.CeilingTriangleOffset, 4), 0);
+                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.CeilingTriangleOffset, 4), 0);
                         break;
 
                     case TriangleMode.Floor:
-                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.FloorTriangleOffset, 4), 0);
+                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.FloorTriangleOffset, 4), 0);
                         break;
 
                     case TriangleMode.Wall:
-                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.WallTriangleOffset, 4), 0);
+                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.WallTriangleOffset, 4), 0);
                         break;
                 }
             }

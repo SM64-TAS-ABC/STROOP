@@ -11,15 +11,13 @@ namespace SM64_Diagnostic.ManagerClasses
 {
     public class HudManager
     {
-        Config _config;
         List<WatchVariableControl> _watchVarControls;
         Control _tabControl;
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
 
-        public HudManager(ProcessStream stream, Config config, List<WatchVariable> data, Control tabControl)
+        public HudManager(ProcessStream stream, List<WatchVariable> data, Control tabControl)
         {
-            _config = config;
             _tabControl = tabControl;
             _stream = stream;
 
@@ -40,17 +38,17 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private void buttonStandardHud_Click(object sender, EventArgs e)
         {
-            MarioActions.StandardHud(_stream, _config);
+            MarioActions.StandardHud(_stream);
         }
 
         private void buttonDie_Click(object sender, EventArgs e)
         {
-            MarioActions.Die(_stream, _config);
+            MarioActions.Die(_stream);
         }
 
         private void buttonFill_Click(object sender, EventArgs e)
         {
-            MarioActions.RefillHp(_stream, _config);
+            MarioActions.RefillHp(_stream);
         }
 
         public virtual void Update(bool updateView)

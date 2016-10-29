@@ -11,26 +11,24 @@ namespace SM64_Diagnostic.ManagerClasses
 {
     public class CameraManager
     {
-        Config _config;
         List<WatchVariableControl> _cameraDataControls;
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
 
-        public CameraManager(ProcessStream stream, Config config, List<WatchVariable> cameraData, Control cameraControl, FlowLayoutPanel variableTable)
+        public CameraManager(ProcessStream stream, List<WatchVariable> cameraData, Control cameraControl, FlowLayoutPanel variableTable)
         {
             // Register controls on the control (for drag-and-drop)
             RegisterControlEvents(cameraControl);
             foreach (Control control in cameraControl.Controls)
                 RegisterControlEvents(control);
 
-            _config = config;
             _variableTable = variableTable;
             _stream = stream;
             
             _cameraDataControls = new List<WatchVariableControl>();
             foreach (WatchVariable watchVar in cameraData)
             {
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, _config.Mario.MarioStructAddress);
+                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, Config.Mario.MarioStructAddress);
                 variableTable.Controls.Add(watchControl.Control);
                 _cameraDataControls.Add(watchControl);
             }

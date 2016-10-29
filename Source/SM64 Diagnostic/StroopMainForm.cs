@@ -11,6 +11,7 @@ using System.Diagnostics;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.ManagerClasses;
+using SM64_Diagnostic.Managers;
 using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic
@@ -19,7 +20,6 @@ namespace SM64_Diagnostic
     {
         const string _version = "v0.2.5";
         ProcessStream _sm64Stream = null;
-        Config _config;
 
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData;
@@ -43,6 +43,7 @@ namespace SM64_Diagnostic
         CameraManager _cameraManager;
         HackManager _hackManager;
         TriangleManager _triangleManager;
+        DebugManager _debugManager;
 
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
@@ -79,10 +80,10 @@ namespace SM64_Diagnostic
             tabControlMain.TabPages.Remove(tabPageExpressions);
 #endif   
                    
-            _sm64Stream = new ProcessStream(_config);
+            _sm64Stream = new ProcessStream();
             _sm64Stream.OnUpdate += OnUpdate;
 
-            _disManager = new DisassemblyManager(_config, this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
+            _disManager = new DisassemblyManager(this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
             _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
             _hackManager = new HackManager(_sm64Stream, _romHacks, checkedListBoxHacks);
 
@@ -102,13 +103,13 @@ namespace SM64_Diagnostic
             mapGui.MapShowHolp = checkBoxMapShowHolp;
             mapGui.MapShowCamera = checkBoxMapShowCamera;
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
-            _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, _objectAssoc, mapGui);
+            _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
 
-            _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
-            _hudManager = new HudManager(_sm64Stream, _config, _hudData, tabPageHud);
-            _miscManager = new MiscManager(_sm64Stream, _config, _miscData, flowLayoutPanelMisc, groupBoxPuController);
-            _cameraManager = new CameraManager(_sm64Stream, _config, _cameraData, panelCameraBorder, flowLayoutPanelCamera);
-            _triangleManager = new TriangleManager(_sm64Stream, _config, flowLayoutPanelTriangles, maskedTextBoxOtherTriangle);
+            _marioManager = new MarioManager(_sm64Stream, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
+            _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
+            _miscManager = new MiscManager(_sm64Stream, _miscData, flowLayoutPanelMisc, groupBoxPuController);
+            _cameraManager = new CameraManager(_sm64Stream, _cameraData, panelCameraBorder, flowLayoutPanelCamera);
+            _triangleManager = new TriangleManager(_sm64Stream, flowLayoutPanelTriangles, maskedTextBoxOtherTriangle);
 
             // Create object manager
             var objectGui = new ObjectDataGui();
@@ -125,19 +126,19 @@ namespace SM64_Diagnostic
             objectGui.MoveMarioToButton = buttonObjGoTo;
             objectGui.MoveToMarioButton = buttonObjRetrieve;
             objectGui.UnloadButton = buttonObjUnload;
-            _objectManager = new ObjectManager(_sm64Stream, _config, _objectAssoc, _objectData, objectGui);
+            _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
 
             // Create options manager
             var optionGui = new OptionsGui();
             optionGui.CheckBoxStartFromOne = checkBoxStartSlotIndexOne;
-            _optionsManager = new OptionsManager(optionGui, _config);
+            _optionsManager = new OptionsManager(optionGui);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
             _slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
             _slotManagerGui.MapObjectToggleModeComboBox = comboBoxMapToggleMode;
             _slotManagerGui.FlowLayoutContainer = flowLayoutPanelObjects;
-            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
+            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
 
             // Add SortMethods
             foreach (var sm in Enum.GetValues(typeof(ObjectSlotManager.SortMethodType)))
@@ -170,7 +171,7 @@ namespace SM64_Diagnostic
 
             // Read configuration
             loadingForm.UpdateStatus("Loading main configuration", statusNum++);
-            _config = XmlConfigParser.OpenConfig(@"Config/Config.xml");
+            XmlConfigParser.OpenConfig(@"Config/Config.xml");
             loadingForm.UpdateStatus("Loading Miscellaneous Data", statusNum++);
             _miscData = XmlConfigParser.OpenMiscData(@"Config/MiscData.xml");
             loadingForm.UpdateStatus("Loading Object Data", statusNum++);
@@ -178,11 +179,11 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Object Associations", statusNum++);
             _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", _slotManagerGui);
             loadingForm.UpdateStatus("Loading Mario Data", statusNum++);
-            _marioData = XmlConfigParser.OpenMarioData(_config, @"Config/MarioData.xml");
+            _marioData = XmlConfigParser.OpenMarioData(@"Config/MarioData.xml");
             loadingForm.UpdateStatus("Loading Camera Data", statusNum++);
-            _cameraData = XmlConfigParser.OpenCameraData(_config, @"Config/CameraData.xml");
+            _cameraData = XmlConfigParser.OpenCameraData(@"Config/CameraData.xml");
             loadingForm.UpdateStatus("Loading HUD data", statusNum++);
-            _hudData = XmlConfigParser.OpenHudData(_config, @"Config/HudData.xml");
+            _hudData = XmlConfigParser.OpenHudData(@"Config/HudData.xml");
             loadingForm.UpdateStatus("Loading Map Associations", statusNum++);
             _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
             loadingForm.UpdateStatus("Loading Scripts", statusNum++);
@@ -212,7 +213,7 @@ namespace SM64_Diagnostic
             List<Process> resortList = new List<Process>();
             foreach (Process p in AvailableProcesses)
             {
-                if (!p.ProcessName.ToLower().Contains(_config.ProcessName.ToLower()))
+                if (!p.ProcessName.ToLower().Contains(Config.ProcessName.ToLower()))
                     continue;
 
                 resortList.Add(p);
@@ -382,7 +383,7 @@ namespace SM64_Diagnostic
                 // Create new row
                 var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.Type.ToString(), "", 
                     watchVar.AbsoluteAddressing ? watchVar.Address 
-                    : watchVar.Address + _config.RamStartAddress);
+                    : watchVar.Address + Config.RamStartAddress);
 
                 // Add variable to lists
                 int newIndex = _miscData.Count;
@@ -462,53 +463,53 @@ namespace SM64_Diagnostic
         private void radioButtonDbgOff_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug off
-            _sm64Stream.WriteRam(new byte[] { 0 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 0 }, Config.Debug.Toggle);
         }
 
         private void radioButtonDbgObjCnt_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
 
             // Set mode
-            _sm64Stream.WriteRam(new byte[] { 0 }, _config.Debug.Setting);
+            _sm64Stream.WriteRam(new byte[] { 0 }, Config.Debug.Setting);
         }
 
         private void radioButtonDbgChkInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
 
             // Set mode
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Setting);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Setting);
         }
 
         private void radioButtonDbgMapInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
 
             // Set mode
-            _sm64Stream.WriteRam(new byte[] { 2 }, _config.Debug.Setting);
+            _sm64Stream.WriteRam(new byte[] { 2 }, Config.Debug.Setting);
         }
 
         private void radioButtonDbgStgInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
 
             // Set mode
-            _sm64Stream.WriteRam(new byte[] { 3 }, _config.Debug.Setting);
+            _sm64Stream.WriteRam(new byte[] { 3 }, Config.Debug.Setting);
         }
 
         private void checkBoxMoveCamWithPu_CheckedChanged(object sender, EventArgs e)
         {
-            _config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
+            Config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
         }
 
         private void checkBoxUseOverlays_CheckedChanged(object sender, EventArgs e)
         {
-            _config.ShowOverlays = checkBoxUseOverlays.Checked;
+            Config.ShowOverlays = checkBoxUseOverlays.Checked;
         }
 
         private void buttonPuConHome_Click(object sender, EventArgs e)
@@ -519,10 +520,10 @@ namespace SM64_Diagnostic
         private void radioButtonDbgFxInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
 
             // Set mode
-            _sm64Stream.WriteRam(new byte[] { 4 }, _config.Debug.Setting);
+            _sm64Stream.WriteRam(new byte[] { 4 }, Config.Debug.Setting);
         }
 
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
@@ -551,10 +552,10 @@ namespace SM64_Diagnostic
         private void radioButtonDbgEnemyInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
 
             // Set mode
-            _sm64Stream.WriteRam(new byte[] { 5 }, _config.Debug.Setting);
+            _sm64Stream.WriteRam(new byte[] { 5 }, Config.Debug.Setting);
         }
 
         #endregion

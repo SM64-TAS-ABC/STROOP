@@ -12,7 +12,6 @@ namespace SM64_Diagnostic.ManagerClasses
 {
     public class MarioManager
     {
-        Config _config;
         List<WatchVariableControl> _marioDataControls;
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
@@ -20,14 +19,13 @@ namespace SM64_Diagnostic.ManagerClasses
             _slidingSpeed, _slidingAngle, _fallHeight;
         MapManager _mapManager;
 
-        public MarioManager(ProcessStream stream, Config config, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable, MapManager mapManager)
+        public MarioManager(ProcessStream stream, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable, MapManager mapManager)
         {
             // Register controls on the control (for drag-and-drop)
             RegisterControlEvents(marioControl);
             foreach (Control control in marioControl.Controls)
                 RegisterControlEvents(control);
 
-            _config = config;
             _variableTable = variableTable;
             _stream = stream;
             _mapManager = mapManager;
@@ -45,7 +43,7 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 if (!watchVar.Special)
                 {
-                    WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, _config.Mario.MarioStructAddress);
+                    WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, Config.Mario.MarioStructAddress);
                     variableTable.Controls.Add(watchControl.Control);
                     _marioDataControls.Add(watchControl);
                     continue;
@@ -96,11 +94,11 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             // Get Mario position and rotation
             float x, y, z, rot;
-            var marioAddress = _config.Mario.MarioStructAddress;
-            x = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.XOffset, 4), 0);
-            y = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.YOffset, 4), 0);
-            z = BitConverter.ToSingle(_stream.ReadRam(marioAddress + _config.Mario.ZOffset, 4), 0);
-            rot = (float) (((BitConverter.ToUInt32(_stream.ReadRam(marioAddress + _config.Mario.RotationOffset, 4), 0)
+            var marioAddress = Config.Mario.MarioStructAddress;
+            x = BitConverter.ToSingle(_stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
+            y = BitConverter.ToSingle(_stream.ReadRam(marioAddress + Config.Mario.YOffset, 4), 0);
+            z = BitConverter.ToSingle(_stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
+            rot = (float) (((BitConverter.ToUInt32(_stream.ReadRam(marioAddress + Config.Mario.RotationOffset, 4), 0)
                 >> 16) % 65536) / 65536f * 360f); 
 
             // Update Mario map object
@@ -112,9 +110,9 @@ namespace SM64_Diagnostic.ManagerClasses
 
             // Get holp position
             float holpX, holpY, holpZ;
-            holpX = BitConverter.ToSingle(_stream.ReadRam(_config.HolpX, 4), 0);
-            holpY = BitConverter.ToSingle(_stream.ReadRam(_config.HolpY, 4), 0);
-            holpZ = BitConverter.ToSingle(_stream.ReadRam(_config.HolpZ, 4), 0);
+            holpX = BitConverter.ToSingle(_stream.ReadRam(Config.HolpX, 4), 0);
+            holpY = BitConverter.ToSingle(_stream.ReadRam(Config.HolpY, 4), 0);
+            holpZ = BitConverter.ToSingle(_stream.ReadRam(Config.HolpZ, 4), 0);
 
             // Update holp map object position
             _mapManager.HolpMapObject.X = holpX;
@@ -124,24 +122,24 @@ namespace SM64_Diagnostic.ManagerClasses
 
             // Update camera position and rotation
             float cameraX, cameraY, cameraZ , cameraRot;
-            cameraX = BitConverter.ToSingle(_stream.ReadRam(_config.CameraX, 4), 0);
-            cameraY = BitConverter.ToSingle(_stream.ReadRam(_config.CameraY, 4), 0);
-            cameraZ = BitConverter.ToSingle(_stream.ReadRam(_config.CameraZ, 4), 0);
-            cameraRot = (float)(((UInt16)(BitConverter.ToUInt32(_stream.ReadRam(_config.CameraRot, 4), 0))) / 65536f * 360f);
+            cameraX = BitConverter.ToSingle(_stream.ReadRam(Config.CameraX, 4), 0);
+            cameraY = BitConverter.ToSingle(_stream.ReadRam(Config.CameraY, 4), 0);
+            cameraZ = BitConverter.ToSingle(_stream.ReadRam(Config.CameraZ, 4), 0);
+            cameraRot = (float)(((UInt16)(BitConverter.ToUInt32(_stream.ReadRam(Config.CameraRot, 4), 0))) / 65536f * 360f);
 
             // Update floor triangle
-            UInt32 floorTriangle = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.FloorTriangleOffset, 4), 0);
+            UInt32 floorTriangle = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.FloorTriangleOffset, 4), 0);
             if (floorTriangle != 0x00)
             {
-                Int16 x1 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.X1, 2), 0);
-                Int16 y1 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Y1, 2), 0);
-                Int16 z1 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Z1, 2), 0);
-                Int16 x2 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.X2, 2), 0);
-                Int16 y2 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Y2, 2), 0);
-                Int16 z2 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Z2, 2), 0);
-                Int16 x3 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.X3, 2), 0);
-                Int16 y3 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Y3, 2), 0);
-                Int16 z3 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.Z3, 2), 0);
+                Int16 x1 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + Config.TriangleOffsets.X1, 2), 0);
+                Int16 y1 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + Config.TriangleOffsets.Y1, 2), 0);
+                Int16 z1 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + Config.TriangleOffsets.Z1, 2), 0);
+                Int16 x2 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + Config.TriangleOffsets.X2, 2), 0);
+                Int16 y2 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + Config.TriangleOffsets.Y2, 2), 0);
+                Int16 z2 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + Config.TriangleOffsets.Z2, 2), 0);
+                Int16 x3 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + Config.TriangleOffsets.X3, 2), 0);
+                Int16 y3 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + Config.TriangleOffsets.Y3, 2), 0);
+                Int16 z3 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + Config.TriangleOffsets.Z3, 2), 0);
                 _mapManager.FloorTriangleMapObject.X1 = x1;
                 _mapManager.FloorTriangleMapObject.Z1 = z1;
                 _mapManager.FloorTriangleMapObject.X2 = x2;
@@ -167,25 +165,25 @@ namespace SM64_Diagnostic.ManagerClasses
             if (!updateView)
                 return;
 
-            var floorY = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.GroundYOffset, 4), 0);
-            _heightBelowCeil.Text = (BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.CeilingYOffset, 4), 0) - y).ToString();
+            var floorY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.GroundYOffset, 4), 0);
+            _heightBelowCeil.Text = (BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.CeilingYOffset, 4), 0) - y).ToString();
             _heightAboveGround.Text = (y - floorY).ToString();
 
             if (floorTriangle != 0x00)
             {
-                float hSpeed = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.HSpeedOffset, 4), 0);
-                float normY = BitConverter.ToSingle(_stream.ReadRam(floorTriangle + _config.TriangleOffsets.NormY, 4), 0);
+                float hSpeed = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.HSpeedOffset, 4), 0);
+                float normY = BitConverter.ToSingle(_stream.ReadRam(floorTriangle + Config.TriangleOffsets.NormY, 4), 0);
                 _deFactoSpeed.Text = (hSpeed * normY).ToString();
             }
             else
                 _deFactoSpeed.Text = "(No Floor)";
 
-            float slidingSpeedX = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.SlidingSpeedXOffset, 4), 0);
-            float slidingSpeedZ = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.SlidingSpeedZOffset, 4), 0);
+            float slidingSpeedX = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.SlidingSpeedXOffset, 4), 0);
+            float slidingSpeedZ = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.SlidingSpeedZOffset, 4), 0);
 
             _slidingSpeed.Text = ((float)Math.Sqrt(slidingSpeedX * slidingSpeedX + slidingSpeedZ * slidingSpeedZ)).ToString();
 
-            _fallHeight.Text = (BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.PeakHeightOffset, 4), 0) - floorY).ToString();
+            _fallHeight.Text = (BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.PeakHeightOffset, 4), 0) - floorY).ToString();
         }
 
         private void RegisterControlEvents(Control control)
@@ -199,7 +197,7 @@ namespace SM64_Diagnostic.ManagerClasses
         private void OnDrag(object sender, EventArgs e)
         {
             // Start the drag and drop but setting the object slot index in Drag and Drop data
-            var dropAction = new DropAction(DropAction.ActionType.Mario, _config.Mario.MarioStructAddress);
+            var dropAction = new DropAction(DropAction.ActionType.Mario, Config.Mario.MarioStructAddress);
             (sender as Control).DoDragDrop(dropAction, DragDropEffects.All);
         }
 
@@ -232,7 +230,7 @@ namespace SM64_Diagnostic.ManagerClasses
             if (dropAction.Action != DropAction.ActionType.Object)
                 return;
 
-            MarioActions.MoveObjectToMario(_stream, _config, dropAction.Address);
+            MarioActions.MoveObjectToMario(_stream, dropAction.Address);
         }
     }
 }
