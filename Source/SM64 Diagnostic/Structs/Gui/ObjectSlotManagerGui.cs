@@ -16,6 +16,7 @@ namespace SM64_Diagnostic.Structs
         public Image HoldingObjectOverlayImage;
         public Image InteractingObjectOverlayImage;
         public Image UsingObjectOverlayImage;
+        public Image ClosestObjectOverlayImage;
 
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
@@ -29,6 +30,7 @@ namespace SM64_Diagnostic.Structs
             HoldingObjectOverlayImage?.Dispose();
             InteractingObjectOverlayImage?.Dispose();
             UsingObjectOverlayImage?.Dispose();
+            ClosestObjectOverlayImage?.Dispose();
         }
     }
 }

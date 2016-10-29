@@ -34,7 +34,7 @@ namespace SM64_Diagnostic.ManagerClasses
         List<uint> _toggleMapSlots = new List<uint>();
 
         BehaviorCriteria? _lastSelectedBehavior;
-        uint _standingOnObject, _interactingObject, _holdingObject, _usingObject;
+        uint _standingOnObject, _interactingObject, _holdingObject, _usingObject, _closestObject;
         int activeObjCnt;
 
         public enum SortMethodType {ProcessingOrder, MemoryOrder, DistanceToMario};
@@ -178,10 +178,13 @@ namespace SM64_Diagnostic.ManagerClasses
                         return null;
 
                     // Get data
-                    newObjectSlotData[currentSlot].Address = currentGroupObject;
-                    newObjectSlotData[currentSlot].ObjectProcessGroup = objectProcessGroup;
-                    newObjectSlotData[currentSlot].ProcessIndex = currentSlot;
-                    newObjectSlotData[currentSlot].VacantSlotIndex = null;
+                    newObjectSlotData[currentSlot] = new ObjectSlotData()
+                    {
+                        Address = currentGroupObject,
+                        ObjectProcessGroup = objectProcessGroup,
+                        ProcessIndex = currentSlot,
+                        VacantSlotIndex = null
+                    };
 
                     // Move to next object
                     currentGroupObject = BitConverter.ToUInt32(
@@ -202,10 +205,13 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (BitConverter.ToUInt16(_stream.ReadRam(currentObject + _config.ObjectSlots.HeaderOffset, 2), 0) != 0x18)
                     return null;
 
-                newObjectSlotData[currentSlot].Address = currentObject;
-                newObjectSlotData[currentSlot].ObjectProcessGroup = VacantGroup;
-                newObjectSlotData[currentSlot].ProcessIndex = currentSlot;
-                newObjectSlotData[currentSlot].VacantSlotIndex = currentSlot - vacantSlotStart;
+                newObjectSlotData[currentSlot] = new ObjectSlotData()
+                {
+                    Address = currentObject,
+                    ObjectProcessGroup = VacantGroup,
+                    ProcessIndex = currentSlot,
+                    VacantSlotIndex = currentSlot - vacantSlotStart
+                };
 
                 currentObject = BitConverter.ToUInt32(
                     _stream.ReadRam(currentObject + groupConfig.ProcessNextLinkOffset, 4), 0);
@@ -238,6 +244,30 @@ namespace SM64_Diagnostic.ManagerClasses
                 }
             }
 
+            // Get mario position
+            float marioX, marioY, marioZ;
+            marioX = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.XOffset, 4), 0);
+            marioY = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.YOffset, 4), 0);
+            marioZ = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.ZOffset, 4), 0);
+
+            // Calculate distance to Mario
+            foreach(var objSlot in newObjectSlotData)
+            { 
+                // Get object relative-to-maario position
+                float dX, dY, dZ;
+                dX = marioX - BitConverter.ToSingle(_stream.ReadRam(objSlot.Address + _config.ObjectSlots.ObjectXOffset, 4), 0);
+                dY = marioY - BitConverter.ToSingle(_stream.ReadRam(objSlot.Address + _config.ObjectSlots.ObjectYOffset, 4), 0);
+                dZ = marioZ - BitConverter.ToSingle(_stream.ReadRam(objSlot.Address + _config.ObjectSlots.ObjectZOffset, 4), 0);
+
+                objSlot.DistanceToMario = (float) Math.Sqrt(dX * dX + dY * dY + dZ * dZ);
+
+                // Check if active/loaded
+                objSlot.IsActive = BitConverter.ToUInt16(_stream.ReadRam(objSlot.Address + _config.ObjectSlots.ObjectActiveOffset, 2), 0) != 0x0000;
+
+                objSlot.Behavior = BitConverter.ToUInt32(_stream.ReadRam(objSlot.Address + _config.ObjectSlots.BehaviorScriptOffset, 4), 0)
+                    & 0x7FFFFFFF;
+            }
+
             // Processing sort order
             switch (SortMethod)
             {
@@ -251,23 +281,12 @@ namespace SM64_Diagnostic.ManagerClasses
                     break;
 
                 case SortMethodType.DistanceToMario:
-                    // Get mario position
-                    float marioX, marioY, marioZ;
-                    marioX = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.XOffset, 4), 0);
-                    marioY = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.YOffset, 4), 0);
-                    marioZ = BitConverter.ToSingle(_stream.ReadRam(_config.Mario.MarioStructAddress + _config.Mario.ZOffset, 4), 0);
 
                     // Order by address
-                    newObjectSlotData = newObjectSlotData.OrderBy(new Func<ObjectSlotData, double>(s => {
-                        // Get object relative-to-maario position
-                        float dX, dY, dZ;
-                        dX = marioX - BitConverter.ToSingle(_stream.ReadRam(s.Address + _config.ObjectSlots.ObjectXOffset, 4), 0);
-                        dY = marioY - BitConverter.ToSingle(_stream.ReadRam(s.Address + _config.ObjectSlots.ObjectYOffset, 4), 0);
-                        dZ = marioZ - BitConverter.ToSingle(_stream.ReadRam(s.Address + _config.ObjectSlots.ObjectZOffset, 4), 0);
+                    var activeObjects = newObjectSlotData.Where(s => s.IsActive).OrderBy(s => s.DistanceToMario);
+                    var inActiveObjects = newObjectSlotData.Where(s => !s.IsActive).OrderBy(s => s.DistanceToMario);
 
-                        // Calculate 3d distance
-                        return Math.Sqrt(dX * dX + dY * dY + dZ * dZ);
-                    })).ToList();
+                    newObjectSlotData = activeObjects.Concat(inActiveObjects).ToList();
                     break;
             }
 
@@ -277,6 +296,8 @@ namespace SM64_Diagnostic.ManagerClasses
             _interactingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.InteractingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
             _holdingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.HoldingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
             _usingObject = BitConverter.ToUInt32(_stream.ReadRam(_config.Mario.UsingObjectPointerOffset + _config.Mario.MarioStructAddress, 4), 0);
+            _closestObject = newObjectSlotData.OrderBy(s => !s.IsActive || s.Behavior == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF) ? float.MaxValue
+                : s.DistanceToMario).First().Address;
 
             // Update slots
             for (int i = 0; i < slotConfig.MaxSlots; i++)
@@ -291,8 +312,8 @@ namespace SM64_Diagnostic.ManagerClasses
             var objSlot = ObjectSlots[index];
             uint currentAddress = objectData.Address;
 
-            var isActive = BitConverter.ToUInt16(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectActiveOffset, 2), 0) != 0x0000;
-            objSlot.IsActive = isActive;
+           
+            objSlot.IsActive = objectData.IsActive;
             objSlot.Address = currentAddress;
 
             // Update Overlays
@@ -301,12 +322,10 @@ namespace SM64_Diagnostic.ManagerClasses
             objSlot.DrawInteractingOverlay = _config.ShowOverlays && currentAddress == _interactingObject;
             objSlot.DrawHoldingOverlay = _config.ShowOverlays && currentAddress == _holdingObject;
             objSlot.DrawUsingOverlay = _config.ShowOverlays && currentAddress == _usingObject;
+            objSlot.DrawClosestOverlay = _config.ShowOverlays && currentAddress == _closestObject;
 
-            if (isActive)
+            if (objectData.IsActive)
                 activeObjCnt++;
-
-            var behaviorScriptAdd = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorScriptOffset, 4), 0)
-                & 0x7FFFFFFF;
 
             var gfxId = BitConverter.ToUInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorGfxOffset, 4), 0);
             var subType = BitConverter.ToInt32(_stream.ReadRam(currentAddress + _config.ObjectSlots.BehaviorSubtypeOffset, 4), 0);
@@ -314,7 +333,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
             var behaviorCriteria = new BehaviorCriteria()
             {
-                BehaviorAddress = behaviorScriptAdd,
+                BehaviorAddress = objectData.Behavior,
                 GfxId = gfxId,
                 SubType = subType,
                 Appearance = appearance
@@ -347,7 +366,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : (BehaviorCriteria?)null;
                 if (_lastSelectedBehavior != newBehavior)
                 {
-                    _objManager.Behavior = (behaviorScriptAdd + ObjectAssoc.RamOffset) & 0x00FFFFFF;
+                    _objManager.Behavior = (objectData.Behavior + ObjectAssoc.RamOffset) & 0x00FFFFFF;
                     _objManager.Name = ObjectAssoc.GetObjectName(behaviorCriteria);
 
                     _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorCriteria), newColor.Lighten(0.8));
@@ -367,7 +386,7 @@ namespace SM64_Diagnostic.ManagerClasses
             {
 
                 // Update image
-                var mapObjImage = ObjectAssoc.GetObjectMapImage(behaviorCriteria, !isActive);
+                var mapObjImage = ObjectAssoc.GetObjectMapImage(behaviorCriteria, !objectData.IsActive);
                 var mapObjRotates = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
                 if (!_mapObjects.ContainsKey(currentAddress))
                 {
@@ -383,7 +402,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     _mapObjects[currentAddress].UsesRotation = mapObjRotates;
                 }
 
-                if (behaviorScriptAdd == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF))
+                if (objectData.Behavior == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF))
                 {
                     _mapObjects[currentAddress].Show = false;
                 }
@@ -395,7 +414,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     _mapObjects[currentAddress].X = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectXOffset, 4), 0);
                     _mapObjects[currentAddress].Y = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectYOffset, 4), 0);
                     _mapObjects[currentAddress].Z = BitConverter.ToSingle(_stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectZOffset, 4), 0);
-                    _mapObjects[currentAddress].IsActive = isActive;
+                    _mapObjects[currentAddress].IsActive = objectData.IsActive;
                     _mapObjects[currentAddress].Rotation = (float)((UInt16)(BitConverter.ToUInt32(
                         _stream.ReadRam(currentAddress + _config.ObjectSlots.ObjectRotationOffset, 4), 0)) / 65536f * 360f);
                     _mapObjects[currentAddress].UsesRotation = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);

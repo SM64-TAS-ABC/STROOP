@@ -573,7 +573,7 @@ namespace SM64_Diagnostic.Utilities
                 marioImagePath = "", holpMapImagePath = "", hudImagePath = "", debugImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 selectedOverlayImagePath = "", standingOnOverlayImagePath = "", holdingOverlayImagePath = "",
-                interactingOverlayImagePath = "", usingOverlayImagePath = "";
+                interactingOverlayImagePath = "", usingOverlayImagePath = "", closestOverlayImagePath = "";
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
 
@@ -666,6 +666,10 @@ namespace SM64_Diagnostic.Utilities
                                 case "Using":
                                     usingOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
+                                    
+                                case "Closest":
+                                    closestOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -741,6 +745,7 @@ namespace SM64_Diagnostic.Utilities
             objectSlotManagerGui.HoldingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + holdingOverlayImagePath);
             objectSlotManagerGui.InteractingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + interactingOverlayImagePath);
             objectSlotManagerGui.UsingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + usingOverlayImagePath);
+            objectSlotManagerGui.ClosestObjectOverlayImage = Bitmap.FromFile(overlayImageDir + closestOverlayImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
             {
