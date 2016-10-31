@@ -22,7 +22,7 @@ namespace SM64_Diagnostic
         ProcessStream _sm64Stream = null;
 
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
-        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData;
+        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData;
         ObjectAssociations _objectAssoc;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
@@ -109,7 +109,8 @@ namespace SM64_Diagnostic
             _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
             _miscManager = new MiscManager(_sm64Stream, _miscData, flowLayoutPanelMisc, groupBoxPuController);
             _cameraManager = new CameraManager(_sm64Stream, _cameraData, panelCameraBorder, flowLayoutPanelCamera);
-            _triangleManager = new TriangleManager(_sm64Stream, flowLayoutPanelTriangles, maskedTextBoxOtherTriangle);
+            _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData);
+            _debugManager = new DebugManager();
 
             // Create object manager
             var objectGui = new ObjectDataGui();
@@ -173,17 +174,19 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading main configuration", statusNum++);
             XmlConfigParser.OpenConfig(@"Config/Config.xml");
             loadingForm.UpdateStatus("Loading Miscellaneous Data", statusNum++);
-            _miscData = XmlConfigParser.OpenMiscData(@"Config/MiscData.xml");
+            _miscData = XmlConfigParser.OpenWatchVarData(@"Config/MiscData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Object Data", statusNum++);
-            _objectData = XmlConfigParser.OpenObjectData(@"Config/ObjectData.xml");
+            _objectData = XmlConfigParser.OpenWatchVarData(@"Config/ObjectData.xml", "ObjectDataSchema.xsd", "objectOffset");
             loadingForm.UpdateStatus("Loading Object Associations", statusNum++);
             _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", _slotManagerGui);
             loadingForm.UpdateStatus("Loading Mario Data", statusNum++);
-            _marioData = XmlConfigParser.OpenMarioData(@"Config/MarioData.xml");
+            _marioData = XmlConfigParser.OpenWatchVarData(@"Config/MarioData.xml", "MarioDataSchema.xsd", "marioOffset");
             loadingForm.UpdateStatus("Loading Camera Data", statusNum++);
-            _cameraData = XmlConfigParser.OpenCameraData(@"Config/CameraData.xml");
-            loadingForm.UpdateStatus("Loading HUD data", statusNum++);
-            _hudData = XmlConfigParser.OpenHudData(@"Config/HudData.xml");
+            _cameraData = XmlConfigParser.OpenWatchVarData(@"Config/CameraData.xml", "CameraDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
+            _triangleData = XmlConfigParser.OpenWatchVarData(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd", "triangleOffset");
+            loadingForm.UpdateStatus("Loading Triangles Data", statusNum++);
+            _hudData = XmlConfigParser.OpenWatchVarData(@"Config/HudData.xml", "HudDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Map Associations", statusNum++);
             _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
             loadingForm.UpdateStatus("Loading Scripts", statusNum++);
@@ -512,11 +515,6 @@ namespace SM64_Diagnostic
             Config.ShowOverlays = checkBoxUseOverlays.Checked;
         }
 
-        private void buttonPuConHome_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void radioButtonDbgFxInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
@@ -566,6 +564,7 @@ namespace SM64_Diagnostic
             {
                 _objectSlotManager.UpdateSelectedObjectSlots();
                 comboBoxMapToggleMode.Visible = true;
+                labelToggleMode.Visible = true;
                 if (_splitterIsExpanded)
                     splitContainerMain.SplitterDistance = splitContainerMain.Height;
             }
@@ -573,6 +572,7 @@ namespace SM64_Diagnostic
             {
                 _objectSlotManager.SetAllSelectedObjectSlots();
                 comboBoxMapToggleMode.Visible = false;
+                labelToggleMode.Visible = false;
                 if (_splitterIsExpanded)
                     splitContainerMain.SplitterDistance = _defaultSplitValue;
             }

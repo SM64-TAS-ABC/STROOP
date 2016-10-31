@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TrianglesData>
+  <Data special="true" specialType="Classification">Classification</Data>
+  <Data type="ushort" address="0x00" triangleOffset="true">SurfaceType</Data>
+  <Data type="byte" address="0x02" triangleOffset="true" useHex="true">Flags</Data>
+  <Data type="byte" address="0x03" triangleOffset="true">Wind Direction</Data>
+  <Data type="short" address="0x04" triangleOffset="true">Wall Projection</Data>
+  <Data type="short" address="0x06" triangleOffset="true">Y Min</Data>
+  <Data type="short" address="0x08" triangleOffset="true">Y Max</Data>
+  <Data type="short" address="0x0A" triangleOffset="true">X1</Data>
+  <Data type="short" address="0x0C" triangleOffset="true">Y1</Data>
+  <Data type="short" address="0x0E" triangleOffset="true">Z1</Data>
+  <Data type="short" address="0x10" triangleOffset="true">X2</Data>
+  <Data type="short" address="0x12" triangleOffset="true">Y2</Data>
+  <Data type="short" address="0x14" triangleOffset="true">Z2</Data>
+  <Data type="short" address="0x16" triangleOffset="true">X3</Data>
+  <Data type="short" address="0x18" triangleOffset="true">Y3</Data>
+  <Data type="short" address="0x1A" triangleOffset="true">Z3</Data>
+  <Data type="float" address="0x1C" triangleOffset="true">Normal X</Data>
+  <Data type="float" address="0x20" triangleOffset="true">Normal Y</Data>
+  <Data type="float" address="0x24" triangleOffset="true">Normal Z</Data>
+  <Data type="float" address="0x28" triangleOffset="true">Offset</Data>
+  <Data type="uint" address="0x2C" triangleOffset="true" useHex="true">Associated Object</Data>
+  <Data special="true" specialType="ClosestVertex">Closest Vertex</Data>
+  <Data special="true" specialType="UpHillAngle">Uphill Angle</Data>
+  <Data special="true" specialType="DownHillAngle">Downhill Angle</Data>
+  <Data special="true" specialType="RightHillAngle">Right Hill Angle</Data>
+  <Data special="true" specialType="LeftHillAngle">Left Hill Angle</Data>
+  <Data type="float" address="0x8033B1AC" color="#ffcccc">Mario X</Data>
+  <Data type="float" address="0x8033B1B0" color="#ffcccc">Mario Y</Data>
+  <Data type="float" address="0x8033B1B4" color="#ffcccc">Mario Z</Data>
+  <Data type="ushort" address="0x00C26C16" absoluteAddress="true" isAngle="true" color="#ffcccc">Yaw (Intended)</Data>
+  <Data type="ushort" address="0x00C26C1C" absoluteAddress="true" isAngle="true" color="#ffcccc">Yaw (Facing)</Data>
+  <Data type="uint" address="0x00C26C58" absoluteAddress="true" useHex="true" color="#ffcccc">Floor Triangle</Data>
+  <Data type="uint" address="0x00C26C50" absoluteAddress="true" useHex="true" color="#ffcccc">Wall Triangle</Data>
+  <Data type="uint" address="0x00C26C54" absoluteAddress="true" useHex="true" color="#ffcccc">Ceiling Triangle</Data>
+  <Data type="float" address="0x8033b1E0" color="#ffcccc">Floor Height</Data>
+  <Data type="float" address="0x8033b1DC" color="#ffcccc">Ceiling Height</Data>
+  <Data special="true" specialType="DistanceBelowCeiling" color="#ffcccc">Dist Below Ceiling</Data>
+  <Data special="true" specialType="DistanceAboveFloor" color="#ffcccc">Dist Above Floor</Data>
+</TrianglesData>

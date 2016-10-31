@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic.ManagerClasses
 {

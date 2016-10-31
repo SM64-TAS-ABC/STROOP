@@ -6,27 +6,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace SM64_Diagnostic.Controls
 {
-    public class DataContainer
+    public class DataContainer : IDataContainer
     {
         Label _nameLabel;
         TableLayoutPanel _tablePanel;
-        TextBox TextBoxValue;
+        TextBox _textBoxValue;
+        string _specialName;
 
         public DataContainer(string name)
         {
+            _specialName = name;
+
             this._nameLabel = new Label();
             this._nameLabel.Width = 210;
             this._nameLabel.Text = name;
             this._nameLabel.Margin = new Padding(3, 3, 3, 3);
 
-            this.TextBoxValue = new TextBox();
-            this.TextBoxValue.ReadOnly = true;
-            this.TextBoxValue.BorderStyle = BorderStyle.None;
-            this.TextBoxValue.TextAlign = HorizontalAlignment.Right;
-            this.TextBoxValue.Width = 200;
-            this.TextBoxValue.Margin = new Padding(6, 3, 6, 3);
+            this._textBoxValue = new TextBox();
+            this._textBoxValue.ReadOnly = true;
+            this._textBoxValue.BorderStyle = BorderStyle.None;
+            this._textBoxValue.TextAlign = HorizontalAlignment.Right;
+            this._textBoxValue.Width = 200;
+            this._textBoxValue.Margin = new Padding(6, 3, 6, 3);
 
             this._tablePanel = new TableLayoutPanel();
             this._tablePanel.Size = new Size(230, _nameLabel.Height + 2);
@@ -41,7 +44,7 @@ namespace SM64_Diagnostic.ManagerClasses
             this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120));
             this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
             this._tablePanel.Controls.Add(_nameLabel, 0, 0);
-            this._tablePanel.Controls.Add(this.TextBoxValue, 1, 0);
+            this._tablePanel.Controls.Add(this._textBoxValue, 1, 0);
         }
 
         public Control Control
@@ -64,16 +67,45 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
+        public string SpecialName
+        {
+            get
+            {
+                return _specialName;
+            }
+            set
+            {
+                _specialName = value;
+            }
+        }
+
         public string Text
         {
             get
             {
-                return TextBoxValue.Text;
+                return _textBoxValue.Text;
             }
             set
             {
-                TextBoxValue.Text = value;
+                _textBoxValue.Text = value;
             }
+        }
+
+        public Color Color
+        {
+            get
+            {
+                return Control.BackColor;
+            }
+            set
+            {
+                Control.BackColor = value;
+                _textBoxValue.BackColor = Color;
+            }
+        }
+
+        public void Update()
+        {
         }
     }
 }

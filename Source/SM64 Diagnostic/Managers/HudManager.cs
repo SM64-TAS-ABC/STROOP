@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SM64_Diagnostic.Structs;
 using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
+using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic.ManagerClasses
 {

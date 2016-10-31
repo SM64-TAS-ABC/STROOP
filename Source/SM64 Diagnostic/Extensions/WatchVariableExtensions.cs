@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SM64_Diagnostic.ManagerClasses;
+using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic.Extensions
 {
@@ -45,6 +46,10 @@ namespace SM64_Diagnostic.Extensions
             var byteCount = WatchVariable.TypeSize[watchVar.Type];
             var dataBytes = stream.ReadRam(watchVar.OtherOffset ? offset + watchVar.Address
                 : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
+
+            // Make sure offset is a valid pointer
+            if (watchVar.OtherOffset && offset == 0)
+                return "(none)";
 
             // Parse floating point
             if (!watchVar.UseHex && (watchVar.Type == typeof(float) || watchVar.Type == typeof(double)))
@@ -142,6 +147,11 @@ namespace SM64_Diagnostic.Extensions
             var dataBytes = stream.ReadRam(watchVar.OtherOffset ? offset + watchVar.Address
                 : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
 
+            // Make sure offset is a valid pointer
+            if (watchVar.OtherOffset && offset == 0)
+                return "(none)";
+
+            // Make sure dataType is a valid angle type
             if (watchVar.Type != typeof(UInt32) && watchVar.Type != typeof(UInt16)
                 && watchVar.Type != typeof(Int32) && watchVar.Type != typeof(Int16))
                 return "Error: datatype";

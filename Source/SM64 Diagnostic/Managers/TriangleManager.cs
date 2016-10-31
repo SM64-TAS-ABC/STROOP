@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Utilities;
+using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic.ManagerClasses
 {
@@ -14,8 +15,9 @@ namespace SM64_Diagnostic.ManagerClasses
         MaskedTextBox _addressBox;
         uint _triangleAddress = 0;
         bool _addressChangedByUser = true;
+        bool _useMisalignmentOffset = false;
 
-        uint TriangleAddress
+    uint TriangleAddress
         {
             get
             {
@@ -28,23 +30,34 @@ namespace SM64_Diagnostic.ManagerClasses
 
                 _triangleAddress = value;
 
-                foreach (var watchVar in _dataControls)
+                foreach (var dataContainer in _dataControls)
                 {
-                    watchVar.OtherOffset = _triangleAddress;
+                    if (dataContainer is WatchVariableControl)
+                    {
+                        var watchVar = dataContainer as WatchVariableControl;
+                        watchVar.OtherOffset = _triangleAddress;
+                    }
                 }
 
                 _addressChangedByUser = false;
                 _addressBox.Text = String.Format("0x{0:X8}", _triangleAddress);
                 _addressChangedByUser = true;
-
-                if (_triangleAddress == 0x00)
-                {
-                    foreach (var watchVar in _dataControls)
-                    {
-                        watchVar.Value = "(none)";
-                    }
-                }
             }
+        }
+
+        protected override void InitializeSpecialVariables()
+        {
+            _specialWatchVars = new List<DataContainer>()
+            {
+                new DataContainer("DistanceAboveFloor"),
+                new DataContainer("DistanceBelowCeiling"),
+                new DataContainer("ClosestVertex"),
+                new DataContainer("UpHillAngle"),
+                new DataContainer("DownHillAngle"),
+                new DataContainer("LeftHillAngle"),
+                new DataContainer("RightHillAngle"),
+                new DataContainer("Classification")
+            };
         }
 
         public enum TriangleMode {Floor, Wall, Ceiling, Other};
@@ -54,181 +67,145 @@ namespace SM64_Diagnostic.ManagerClasses
         /// <summary>
         /// Manages illumanati
         /// </summary>
-        /// <param name="stream"></param>
-        /// <param name="Config"></param>
-        /// <param name="data"></param>
-        /// <param name="variableTable"></param>
-        public TriangleManager(ProcessStream stream, FlowLayoutPanel variableTable, MaskedTextBox addressBox) 
-            : base(stream, new List<WatchVariable>(), variableTable)
+        public TriangleManager(ProcessStream stream, Control tabControl, List<WatchVariable> triangleWatchVars) 
+            : base(stream, triangleWatchVars, tabControl.Controls["flowLayoutPanelTriangles"] as FlowLayoutPanel)
         {
-            _addressBox = addressBox;
+            _addressBox = tabControl.Controls["maskedTextBoxOtherTriangle"] as MaskedTextBox;
             _addressBox.LostFocus += AddressBox_LostFocus;
             _addressBox.KeyDown += AddressBox_KeyDown;
             _addressBox.TextChanged += AddressBox_TextChanged;
-            (_addressBox.Parent.Controls["radioButtonTriFloor"] as RadioButton).CheckedChanged 
+            (tabControl.Controls["radioButtonTriFloor"] as RadioButton).CheckedChanged 
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Floor);
-            (_addressBox.Parent.Controls["radioButtonTriWall"] as RadioButton).CheckedChanged 
+            (tabControl.Controls["radioButtonTriWall"] as RadioButton).CheckedChanged 
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Wall);
-            (_addressBox.Parent.Controls["radioButtonTriCeiling"] as RadioButton).CheckedChanged 
+            (tabControl.Controls["radioButtonTriCeiling"] as RadioButton).CheckedChanged 
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Ceiling);
-            (_addressBox.Parent.Controls["radioButtonTriOther"] as RadioButton).CheckedChanged 
+            (tabControl.Controls["radioButtonTriOther"] as RadioButton).CheckedChanged 
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Other);
+            (tabControl.Controls["buttonGoToV1"] as Button).Click += GoToV1Button_Click;
+            (tabControl.Controls["buttonGoToV2"] as Button).Click += GoToV2Button_Click;
+            (tabControl.Controls["buttonGoToV3"] as Button).Click += GoToV3Button_Click;
+            (tabControl.Controls["buttonRetrieveTriangle"] as Button).Click += RetrieveTriangleButton_Click;
+            (tabControl.Controls["checkBoxVertexMisalignment"] as CheckBox).CheckedChanged += checkBoxVertexMisalignment_CheckedChanged;
+        }
 
+        private void checkBoxVertexMisalignment_CheckedChanged(object sender, EventArgs e)
+        {
+            _useMisalignmentOffset = (sender as CheckBox).Checked;
+        }
 
-            var data = new List<WatchVariable>();
+        private void ProcessSpecialVars()
+        {
+            var floorY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.GroundYOffset, 4), 0);
+            var marioY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.YOffset, 4), 0);
 
-            #region TriangleData
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.SurfaceType,
-                Name = "Surface Type",
-                OtherOffset = true,
-                Type = typeof(UInt16)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.Flags,
-                Name = "Flags",
-                OtherOffset = true,
-                Type = typeof(byte),
-                UseHex = true
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.WindDirection,
-                Name = "Wind Direction",
-                OtherOffset = true,
-                Type = typeof(byte)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.WallProjection,
-                Name = "Wall Projection",
-                OtherOffset = true,
-                Type = typeof(ushort)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.YMin,
-                Name = "Y Min",
-                OtherOffset = true,
-                Type = typeof(short)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.YMax,
-                Name = "Y Max",
-                OtherOffset = true,
-                Type = typeof(short)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.X1,
-                Name = "X1",
-                OtherOffset = true,
-                Type = typeof(short)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.Y1,
-                Name = "Y1",
-                OtherOffset = true,
-                Type = typeof(short)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.Z1,
-                Name = "Z1",
-                OtherOffset = true,
-                Type = typeof(short)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.X2,
-                Name = "X2",
-                OtherOffset = true,
-                Type = typeof(short)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.Y2,
-                Name = "Y2",
-                OtherOffset = true,
-                Type = typeof(short)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.Z2,
-                Name = "Z2",
-                OtherOffset = true,
-                Type = typeof(short)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.X3,
-                Name = "X3",
-                OtherOffset = true,
-                Type = typeof(short)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.Y3,
-                Name = "Y3",
-                OtherOffset = true,
-                Type = typeof(short)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.Z3,
-                Name = "Z3",
-                OtherOffset = true,
-                Type = typeof(short)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.NormX,
-                Name = "Normal X",
-                OtherOffset = true,
-                Type = typeof(float)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.NormY,
-                Name = "Normal Y",
-                OtherOffset = true,
-                Type = typeof(float)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.NormZ,
-                Name = "Normal Z",
-                OtherOffset = true,
-                Type = typeof(float)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.Offset,
-                Name = "Normal Offset",
-                OtherOffset = true,
-                Type = typeof(float)
-            });
-            data.Add(new WatchVariable()
-            {
-                Address = Config.TriangleOffsets.AssociatedObject,
-                Name = "Associated Object",
-                OtherOffset = true,
-                Type = typeof(uint),
-                UseHex = true
-            });
-            #endregion
+            float normX, normY, normZ;
+            normX = BitConverter.ToSingle(_stream.ReadRam(TriangleAddress + Config.TriangleOffsets.NormX, 4), 0);
+            normY = BitConverter.ToSingle(_stream.ReadRam(TriangleAddress + Config.TriangleOffsets.NormY, 4), 0);
+            normZ = BitConverter.ToSingle(_stream.ReadRam(TriangleAddress + Config.TriangleOffsets.NormZ, 4), 0);
 
-            foreach (WatchVariable watchVar in data)
+            var uphillAngle = (Math.Atan2(normZ, normX) / Math.PI + 1) / 2 * 65536;
+            if (normX == 0 && normZ == 0)
+                uphillAngle = double.NaN;
+            if (normY < 0)
+                uphillAngle += 32768;
+            
+            foreach (DataContainer specialVar in _specialWatchVars)
             {
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, 0);
-                watchControl.Value = "(none)";
-                variableTable.Controls.Add(watchControl.Control);
-                _dataControls.Add(watchControl);
+                switch (specialVar.SpecialName)
+                {
+                    case "DistanceAboveFloor":
+                        specialVar.Text = (marioY - floorY).ToString();
+                        break;
+
+                    case "DistanceBelowCeiling":
+                        specialVar.Text = (BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.CeilingYOffset, 4), 0)
+                            - marioY).ToString();
+                        break;
+                    case "ClosestVertex":
+                        if (TriangleAddress == 0x0000)
+                        {
+                            specialVar.Text = "(none)";
+                            break;
+                        }
+                        specialVar.Text = String.Format("V{0}", MarioActions.GetClosestVertex(_stream, TriangleAddress));
+                        break;
+                    case "UpHillAngle":
+                        if (TriangleAddress == 0x0000)
+                        {
+                            specialVar.Text = "(none)";
+                            break;
+                        }
+                        specialVar.Text = FixAngle(uphillAngle).ToString();
+                        break;
+                    case "DownHillAngle":
+                        if (TriangleAddress == 0x0000)
+                        {
+                            specialVar.Text = "(none)";
+                            break;
+                        }
+                        specialVar.Text = FixAngle(uphillAngle + 32768).ToString();
+                        break;
+                    case "RightHillAngle":
+                        if (TriangleAddress == 0x0000)
+                        {
+                            specialVar.Text = "(none)";
+                            break;
+                        }
+                        specialVar.Text = FixAngle(uphillAngle - 16384).ToString();
+                        break;
+                    case "LeftHillAngle":
+                        if (TriangleAddress == 0x0000)
+                        {
+                            specialVar.Text = "(none)";
+                            break;
+                        }
+                        specialVar.Text = FixAngle(uphillAngle + 16384).ToString();
+                        break;
+                    case "Classification":
+                        if (TriangleAddress == 0x0000)
+                        {
+                            specialVar.Text = "(none)";
+                            break;
+                        }
+                        if (normY > 0.01)
+                            specialVar.Text = "Floor";
+                        else if (normY < -0.01)
+                            specialVar.Text = "Ceiling";
+                        else
+                            specialVar.Text = "Wall";
+                        break;
+                }
             }
+        }
+
+        private double FixAngle(double angle)
+        {
+            angle %= 65536;
+            if (angle > 32768)
+                angle -= 65536;
+
+            return angle;
+        }
+
+        private void RetrieveTriangleButton_Click(object sender, EventArgs e)
+        {
+            MarioActions.RetrieveTriangle(_stream, _triangleAddress);
+        }
+
+        private void GoToV3Button_Click(object sender, EventArgs e)
+        {
+            MarioActions.GoToTriangle(_stream, _triangleAddress, 3, _useMisalignmentOffset);
+        }
+
+        private void GoToV2Button_Click(object sender, EventArgs e)
+        {
+            MarioActions.GoToTriangle(_stream, _triangleAddress, 2, _useMisalignmentOffset);
+        }
+
+        private void GoToV1Button_Click(object sender, EventArgs e)
+        {
+            MarioActions.GoToTriangle(_stream, _triangleAddress, 1, _useMisalignmentOffset);
         }
 
         private void Mode_CheckedChanged(object sender, EventArgs e, TriangleMode mode)
@@ -288,10 +265,10 @@ namespace SM64_Diagnostic.ManagerClasses
                         TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.WallTriangleOffset, 4), 0);
                         break;
                 }
-            }
 
-            if (_triangleAddress != 0x00)
                 base.Update(updateView);
+                ProcessSpecialVars();
+            }
         }
     }
 }

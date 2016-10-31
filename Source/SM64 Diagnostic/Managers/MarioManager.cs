@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SM64_Diagnostic.Structs;
 using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
+using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic.ManagerClasses
@@ -15,8 +16,7 @@ namespace SM64_Diagnostic.ManagerClasses
         List<WatchVariableControl> _marioDataControls;
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
-        DataContainer _heightAboveGround, _heightBelowCeil, _deFactoSpeed,
-            _slidingSpeed, _slidingAngle, _fallHeight;
+        DataContainer _deFactoSpeed, _slidingSpeed, _slidingAngle, _fallHeight;
         MapManager _mapManager;
 
         public MarioManager(ProcessStream stream, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable, MapManager mapManager)
@@ -32,8 +32,6 @@ namespace SM64_Diagnostic.ManagerClasses
 
             _marioDataControls = new List<WatchVariableControl>();
 
-            _heightAboveGround = new DataContainer("Dis Abv Floor");
-            _heightBelowCeil = new DataContainer("Dis Below Ceil");
             _deFactoSpeed = new DataContainer("De Facto Speed");
             _slidingSpeed = new DataContainer("Sliding Speed");
             _slidingAngle = new DataContainer("Sliding Angle");
@@ -51,16 +49,6 @@ namespace SM64_Diagnostic.ManagerClasses
 
                 switch (watchVar.SpecialType)
                 {
-                    case "DistanceAboveFloor":
-                        _heightAboveGround.Name = watchVar.Name;
-                        variableTable.Controls.Add(_heightAboveGround.Control);
-                        break;
-
-                    case "DistanceBelowCeiling":
-                        _heightBelowCeil.Name = watchVar.Name;
-                        variableTable.Controls.Add(_heightBelowCeil.Control);
-                        break;
-
                     case "DeFactoSpeed":
                         _deFactoSpeed.Name = watchVar.Name;
                         variableTable.Controls.Add(_deFactoSpeed.Control);
@@ -150,7 +138,6 @@ namespace SM64_Diagnostic.ManagerClasses
             }
             _mapManager.FloorTriangleMapObject.Show = (floorTriangle != 0x00);
 
-
             // Update camera map object position
             _mapManager.CameraMapObject.X = cameraX;
             _mapManager.CameraMapObject.Y = cameraY;
@@ -166,8 +153,6 @@ namespace SM64_Diagnostic.ManagerClasses
                 return;
 
             var floorY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.GroundYOffset, 4), 0);
-            _heightBelowCeil.Text = (BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.CeilingYOffset, 4), 0) - y).ToString();
-            _heightAboveGround.Text = (y - floorY).ToString();
 
             if (floorTriangle != 0x00)
             {

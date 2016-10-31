@@ -10,9 +10,9 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Extensions;
 using System.Reflection;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace SM64_Diagnostic.Controls
 {
-    public class WatchVariableControl
+    public class WatchVariableControl : IDataContainer
     {
         TableLayoutPanel _tablePanel;
         Label _nameLabel;
@@ -20,6 +20,7 @@ namespace SM64_Diagnostic.ManagerClasses
         CheckBox _checkBoxBool;
         TextBox _textBoxValue;
         ProcessStream _stream;
+        string _specialName;
 
         public uint OtherOffset;
         bool _changedByUser = true;
@@ -131,6 +132,18 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
+        public string SpecialName
+        {
+            get
+            {
+                return _specialName;
+            }
+            set
+            {
+                _specialName = value;
+            }
+        }
+
         public string Value
         {
             get
@@ -183,11 +196,15 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public WatchVariableControl(ProcessStream stream, WatchVariable watchVar, uint otherOffset = 0)
         {
+            _specialName = watchVar.Name;
             _watchVar = watchVar;
             _stream = stream;
             OtherOffset = otherOffset;
 
             CreateControls();
+
+            if (watchVar.BackroundColor.HasValue)
+                Color = watchVar.BackroundColor.Value;
         }
 
         private void CreateControls()
@@ -347,6 +364,9 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void Update()
         {
+            if (_watchVar.Special)
+                return;
+
             if (_valueLocked)
                 _watchVar.SetStringValue(_stream, OtherOffset, _lockedStringValue);
 

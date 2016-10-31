@@ -409,33 +409,7 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static List<WatchVariable> OpenMiscData(string path)
-        {
-            var miscData = new List<WatchVariable>();
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/MiscDataSchema.xsd", "MiscDataSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
-            var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
-
-            var mainElements = doc.Root.Elements().ToArray();
-            for(int i = 0; i < mainElements.Count(); i++)
-            {
-                var element = mainElements[i];
-                var watchVar = GetWatchVariableFromElement(element);
-                miscData.Add(watchVar);
-            }
-
-            return miscData;
-        }
-
-        public static List<WatchVariable> OpenObjectData(string path)
+        public static List<WatchVariable> OpenWatchVarData(string path, string schemaFile, string specialOffsetName = null)
         {
             var objectData = new List<WatchVariable>();
             var assembly = Assembly.GetExecutingAssembly();
@@ -443,7 +417,7 @@ namespace SM64_Diagnostic.Utilities
             // Create schema set
             var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/ObjectDataSchema.xsd", "ObjectDataSchema.xsd");
+            schemaSet.Add("http://tempuri.org/CameraDataSchema.xsd", schemaFile);
             schemaSet.Compile();
 
             // Load and validate document
@@ -456,93 +430,9 @@ namespace SM64_Diagnostic.Utilities
                     continue;
 
                 var watchVar = GetWatchVariableFromElement(element);
-                watchVar.OtherOffset = (element.Attribute(XName.Get("objectOffset")) != null) ?
-                    bool.Parse(element.Attribute(XName.Get("objectOffset")).Value) : false;
-
-                objectData.Add(watchVar);
-            }
-
-            return objectData;
-        }
-
-        public static List<WatchVariable> OpenMarioData(string path)
-        {
-            var objectData = new List<WatchVariable>();
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/MarioDataSchema.xsd", "MarioDataSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
-            var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
-
-            foreach (XElement element in doc.Root.Elements())
-            {
-                if (element.Name.ToString() != "Data")
-                    continue;
-
-                var watchVar = GetWatchVariableFromElement(element);
-                watchVar.OtherOffset = (element.Attribute(XName.Get("marioOffset")) != null) ?
-                    bool.Parse(element.Attribute(XName.Get("marioOffset")).Value) : false;
-
-                objectData.Add(watchVar);
-            }
-
-            return objectData;
-        }
-
-        public static List<WatchVariable> OpenHudData( string path)
-        {
-            var objectData = new List<WatchVariable>();
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/HudDataSchema.xsd", "HudDataSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
-            var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
-
-            foreach (XElement element in doc.Root.Elements())
-            {
-                if (element.Name.ToString() != "Data")
-                    continue;
-
-                var watchVar = GetWatchVariableFromElement(element);
-                objectData.Add(watchVar);
-            }
-
-            return objectData;
-        }
-
-        public static List<WatchVariable> OpenCameraData(string path)
-        {
-            var objectData = new List<WatchVariable>();
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/CameraDataSchema.xsd", "CameraDataSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
-            var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
-
-            foreach (XElement element in doc.Root.Elements())
-            {
-                if (element.Name.ToString() != "Data")
-                    continue;
-
-                var watchVar = GetWatchVariableFromElement(element);
+                if (specialOffsetName != null)
+                    watchVar.OtherOffset = (element.Attribute(XName.Get(specialOffsetName)) != null) ?
+                        bool.Parse(element.Attribute(XName.Get(specialOffsetName)).Value) : false;
 
                 objectData.Add(watchVar);
             }
@@ -948,6 +838,8 @@ namespace SM64_Diagnostic.Utilities
             watchVar.Name = element.Value;
             watchVar.SpecialType = (element.Attribute(XName.Get("specialType")) != null) ?
                 element.Attribute(XName.Get("specialType")).Value : null;
+            watchVar.BackroundColor = (element.Attribute(XName.Get("color")) != null) ?
+                ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
 
             // We have fully parsed a special type
             if (watchVar.Special)
