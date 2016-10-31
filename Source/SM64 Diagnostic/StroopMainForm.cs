@@ -31,7 +31,7 @@ namespace SM64_Diagnostic
         DataTable _tableOtherData = new DataTable();
         Dictionary<int, DataRow> _otherDataRowAssoc = new Dictionary<int, DataRow>();
 
-        ObjectSlotManager _objectSlotManager;
+        ObjectSlotsManager _objectSlotManager;
         DisassemblyManager _disManager;
         MarioManager _marioManager;
         ObjectManager _objectManager;
@@ -139,10 +139,10 @@ namespace SM64_Diagnostic
             _slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
             _slotManagerGui.MapObjectToggleModeComboBox = comboBoxMapToggleMode;
             _slotManagerGui.FlowLayoutContainer = flowLayoutPanelObjects;
-            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
+            _objectSlotManager = new ObjectSlotsManager(_sm64Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
 
             // Add SortMethods
-            foreach (var sm in Enum.GetValues(typeof(ObjectSlotManager.SortMethodType)))
+            foreach (var sm in Enum.GetValues(typeof(ObjectSlotsManager.SortMethodType)))
                 comboBoxSortMethod.Items.Add(sm);
 
             // Use default slot sort method
@@ -402,7 +402,7 @@ namespace SM64_Diagnostic
             if (_objectSlotManager == null)
                 return;
 
-            _objectSlotManager.SortMethod = (ObjectSlotManager.SortMethodType) comboBoxSortMethod.SelectedItem;
+            _objectSlotManager.SortMethod = (ObjectSlotsManager.SortMethodType) comboBoxSortMethod.SelectedItem;
         }
 
         private async void flowLayoutPanelObjects_Resize(object sender, EventArgs e)

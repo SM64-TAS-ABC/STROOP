@@ -18,7 +18,7 @@ namespace SM64_Diagnostic
     {
         const int BorderSize = 2;
 
-        ObjectSlotManager _manager;
+        ObjectSlotsManager _manager;
         ObjectSlotManagerGui _gui;
 
         Color _mainColor, _borderColor, _backColor;
@@ -106,7 +106,7 @@ namespace SM64_Diagnostic
             }
         }
 
-        public ObjectSlotManager Manager
+        public ObjectSlotsManager Manager
         {
             get
             {
@@ -216,7 +216,7 @@ namespace SM64_Diagnostic
             }
         }
 
-        public ObjectSlot(int index, ObjectSlotManager manager, ObjectSlotManagerGui gui, Size size)
+        public ObjectSlot(int index, ObjectSlotsManager manager, ObjectSlotManagerGui gui, Size size)
         {
             Index = index;
             _manager = manager;

@@ -636,6 +636,9 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (var obj in assoc.BehaviorAssociations)
             {
+                if (obj.ImagePath == null || obj.ImagePath == "")
+                    continue;
+
                 using (var preLoad = Bitmap.FromFile(imageDir + obj.ImagePath))
                 {
                     float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);

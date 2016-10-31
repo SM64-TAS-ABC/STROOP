@@ -11,7 +11,18 @@ namespace SM64_Diagnostic.Structs
 {
     public class ObjectAssociations
     {
-        HashSet<ObjectBehaviorAssociation> _objAssoc = new HashSet<ObjectBehaviorAssociation>();
+        HashSet<ObjectBehaviorAssociation> _objAssoc = new HashSet<ObjectBehaviorAssociation>()
+        {
+            new ObjectBehaviorAssociation()
+            {
+                Name = "Uninitialized Object",
+                BehaviorCriteria = new BehaviorCriteria()
+                {
+                    BehaviorAddress = 0x0000,
+                },
+                RotatesOnMap = false
+            }
+        };
 
 
         Image _defaultImage;
@@ -107,9 +118,6 @@ namespace SM64_Diagnostic.Structs
         public string GetObjectName(BehaviorCriteria behaviorCriteria)
         {
             var assoc = FindObjectAssociation(behaviorCriteria);
-
-            if (behaviorCriteria.BehaviorAddress == 0)
-                return "Uninitialized Object";
 
             if (assoc == null)
                 return "Unknown Object";

@@ -129,7 +129,7 @@
     <Compile Include="Controls\ObjectSlot.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Managers\ObjectSlotManager.cs" />
+    <Compile Include="Managers\ObjectSlotsManager.cs" />
     <Compile Include="Structs\BehaviorCriteria.cs" />
     <Compile Include="Structs\Configurations\DebugConfig.cs" />
     <Compile Include="Structs\Configurations\HudConfig.cs" />

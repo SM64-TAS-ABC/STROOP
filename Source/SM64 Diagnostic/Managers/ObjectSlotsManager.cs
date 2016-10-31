@@ -10,7 +10,7 @@ using System.Drawing;
 
 namespace SM64_Diagnostic.ManagerClasses
 {
-    public class ObjectSlotManager
+    public class ObjectSlotsManager
     {
         public ObjectSlot[] ObjectSlots;
 
@@ -47,7 +47,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 objSlot.Size = new Size(newSize, newSize);
         }
 
-        public ObjectSlotManager(ProcessStream stream, ObjectAssociations objAssoc, 
+        public ObjectSlotsManager(ProcessStream stream, ObjectAssociations objAssoc, 
             ObjectManager objManager, ObjectSlotManagerGui managerGui, MapManager mapManager, MiscManager miscManager)
         {
             ObjectAssoc = objAssoc;
@@ -130,21 +130,21 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void SetAllSelectedObjectSlots()
         {
-            for (int index = 0; index < ObjectSlots.Length; index++)
+            foreach (var objSlot in ObjectSlots)
             {
-                ObjectSlots[index].Selected = true;
+                objSlot.Selected = true;
             }
         }
 
         public void UpdateSelectedObjectSlots()
         {
-            for (int index = 0; index < ObjectSlots.Length; index++)
+            foreach (var objSlot in ObjectSlots)
             {
-                bool selected = !_toggleMapGroups.Contains(ObjectSlots[index].ProcessGroup)
-                    && !_toggleMapBehaviors.Contains(ObjectSlots[index].Behavior)
-                    && !_toggleMapSlots.Contains(ObjectSlots[index].Address);
+                bool selected = !_toggleMapGroups.Contains(objSlot.ProcessGroup)
+                    && !_toggleMapBehaviors.Contains(objSlot.Behavior)
+                    && !_toggleMapSlots.Contains(objSlot.Address);
 
-                ObjectSlots[index].Selected = selected;
+                objSlot.Selected = selected;
             }
         }
 
