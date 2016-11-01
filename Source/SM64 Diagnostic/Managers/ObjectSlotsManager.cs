@@ -12,6 +12,7 @@ namespace SM64_Diagnostic.ManagerClasses
 {
     public class ObjectSlotsManager
     {
+        const int DefaultSlotSize = 40;
         public ObjectSlot[] ObjectSlots;
 
         public ObjectAssociations ObjectAssoc;
@@ -38,8 +39,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public enum SortMethodType {ProcessingOrder, MemoryOrder, DistanceToMario};
         public enum MapToggleModeType {Single, ObjectType, ProcessGroup};
-
-        public SortMethodType SortMethod = SortMethodType.ProcessingOrder;
+        public enum SlotLabelType {Recommended, SlotPosVs, SlotPos, SlotIndex}
 
         public void ChangeSlotSize(int newSize)
         {
@@ -52,27 +52,35 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             ObjectAssoc = objAssoc;
             _stream = stream;
-            _stream.OnUpdate += OnUpdate;
             _objManager = objManager;
             ManagerGui = managerGui;
             _mapManager = mapManager;
             _miscManager = miscManager;
 
-            foreach (var mode in Enum.GetValues(typeof(MapToggleModeType)))
-                ManagerGui.MapObjectToggleModeComboBox.Items.Add(mode);
-            ManagerGui.MapObjectToggleModeComboBox.SelectedIndex = 0;
+            // Add MapToggleModes
+            ManagerGui.MapObjectToggleModeComboBox.DataSource = Enum.GetValues(typeof(MapToggleModeType));
+            ManagerGui.MapObjectToggleModeComboBox.SelectedItem = MapToggleModeType.Single;
+
+            // Add SortMethods
+            ManagerGui.SortMethodComboBox.DataSource = Enum.GetValues(typeof(ObjectSlotsManager.SortMethodType));
+            ManagerGui.SortMethodComboBox.SelectedItem = SortMethodType.ProcessingOrder;
+
+            // Add LabelMethods
+            ManagerGui.LabelMethodComboBox.DataSource = Enum.GetValues(typeof(ObjectSlotsManager.SlotLabelType));
+            ManagerGui.LabelMethodComboBox.SelectedItem = SlotLabelType.Recommended;
 
             // Create and setup object slots
             ObjectSlots = new ObjectSlot[Config.ObjectSlots.MaxSlots];
             for (int i = 0; i < Config.ObjectSlots.MaxSlots; i++)
             {
-                var objectSlot = new ObjectSlot(i, this, ManagerGui, new Size(40,40));
+                var objectSlot = new ObjectSlot(i, this, ManagerGui, new Size(DefaultSlotSize, DefaultSlotSize));
                 ObjectSlots[i] = objectSlot;
                 objectSlot.Click += (sender, e) => OnClick(sender, e);
                 ManagerGui.FlowLayoutContainer.Controls.Add(objectSlot);
             }
 
-            ChangeSlotSize(40);
+            // Change default
+            ChangeSlotSize(DefaultSlotSize);
         }
 
         private void OnClick(object sender, EventArgs e)
@@ -219,7 +227,7 @@ namespace SM64_Diagnostic.ManagerClasses
             return newObjectSlotData.ToList();
         }
 
-        public void OnUpdate(object sender, EventArgs e)
+        public void Update()
         {
             var groupConfig = Config.ObjectGroups;
             var slotConfig = Config.ObjectSlots;
@@ -266,7 +274,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
 
             // Processing sort order
-            switch (SortMethod)
+            switch ((SortMethodType)ManagerGui.SortMethodComboBox.SelectedItem)
             {
                 case SortMethodType.ProcessingOrder:
                     // Data is already sorted by processing order
@@ -341,12 +349,38 @@ namespace SM64_Diagnostic.ManagerClasses
             var processGroup = objectData.ObjectProcessGroup;
             ObjectSlots[index].ProcessGroup = processGroup;
 
-            var newColor = objectData.ObjectProcessGroup == VacantGroup ? Config.ObjectGroups.VacantSlotColor : Config.ObjectGroups.ProcessingGroupsColor[objectData.ObjectProcessGroup];
+            var newColor = objectData.ObjectProcessGroup == VacantGroup ? Config.ObjectGroups.VacantSlotColor :
+                Config.ObjectGroups.ProcessingGroupsColor[objectData.ObjectProcessGroup];
             ObjectSlots[index].BackColor = newColor;
 
-            var labelText = (SortMethod == SortMethodType.ProcessingOrder && objectData.VacantSlotIndex.HasValue) ?
-                String.Format("VS{0}", objectData.VacantSlotIndex.Value + (Config.SlotIndexsFromOne ? 1 : 0))
-                : (index + (Config.SlotIndexsFromOne ? 1 : 0)).ToString();
+            string labelText = "";
+            switch ((SlotLabelType)ManagerGui.LabelMethodComboBox.SelectedItem)
+            {
+                case SlotLabelType.Recommended:
+                    var sortMethod = (SortMethodType)ManagerGui.SortMethodComboBox.SelectedItem;
+                    if (sortMethod == SortMethodType.MemoryOrder)
+                        goto case SlotLabelType.SlotIndex;
+                    goto case SlotLabelType.SlotPosVs;
+
+                case SlotLabelType.SlotIndex:
+                    labelText = String.Format("{0}", (objectData.Address - Config.ObjectSlots.LinkStartAddress) 
+                        / Config.ObjectSlots.StructSize);
+                    break;
+
+                case SlotLabelType.SlotPos:
+                    labelText = String.Format("{0}", objectData.ProcessIndex
+                        + (Config.SlotIndexsFromOne ? 1 : 0));
+                    break;
+
+                case SlotLabelType.SlotPosVs:
+                    if (!objectData.VacantSlotIndex.HasValue)
+                        goto case SlotLabelType.SlotPos;
+
+                    labelText = String.Format("VS{0}", objectData.VacantSlotIndex.Value 
+                        + (Config.SlotIndexsFromOne ? 1 : 0));
+                    break;
+            }
+
             if (ManagerGui.LockLabelsCheckbox.Checked)
             {
                 if (!_lastSlotLabel.ContainsKey(currentAddress))

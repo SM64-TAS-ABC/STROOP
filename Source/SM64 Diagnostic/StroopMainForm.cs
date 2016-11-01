@@ -65,7 +65,7 @@ namespace SM64_Diagnostic
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxProcessSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxProcessSelection.SelectedItem == null)
                 return;
@@ -78,8 +78,8 @@ namespace SM64_Diagnostic
             // Temp: Remove "Other" tab
 #if RELEASE
             tabControlMain.TabPages.Remove(tabPageExpressions);
-#endif   
-                   
+#endif
+
             _sm64Stream = new ProcessStream();
             _sm64Stream.OnUpdate += OnUpdate;
 
@@ -113,20 +113,22 @@ namespace SM64_Diagnostic
             _debugManager = new DebugManager();
 
             // Create object manager
-            var objectGui = new ObjectDataGui();
-            objectGui.ObjectBorderPanel = panelObjectBorder;
-            objectGui.ObjectFlowLayout = flowLayoutPanelObject;
-            objectGui.ObjectImagePictureBox = pictureBoxObject;
-            objectGui.ObjAddressLabelValue = labelObjAddValue;
-            objectGui.ObjAddressLabel = labelObjAdd;
-            objectGui.ObjBehaviorLabel = labelObjBhvValue;
-            objectGui.ObjectNameTextBox = textBoxObjName;
-            objectGui.ObjSlotIndexLabel = labelObjSlotIndValue;
-            objectGui.ObjSlotPositionLabel = labelObjSlotPosValue;
-            objectGui.CloneButton = buttonObjClone;
-            objectGui.MoveMarioToButton = buttonObjGoTo;
-            objectGui.MoveToMarioButton = buttonObjRetrieve;
-            objectGui.UnloadButton = buttonObjUnload;
+            var objectGui = new ObjectDataGui()
+            {
+                ObjectBorderPanel = panelObjectBorder,
+                ObjectFlowLayout = flowLayoutPanelObject,
+                ObjectImagePictureBox = pictureBoxObject,
+                ObjAddressLabelValue = labelObjAddValue,
+                ObjAddressLabel = labelObjAdd,
+                ObjBehaviorLabel = labelObjBhvValue,
+                ObjectNameTextBox = textBoxObjName,
+                ObjSlotIndexLabel = labelObjSlotIndValue,
+                ObjSlotPositionLabel = labelObjSlotPosValue,
+                CloneButton = buttonObjClone,
+                MoveMarioToButton = buttonObjGoTo,
+                MoveToMarioButton = buttonObjRetrieve,
+                UnloadButton = buttonObjUnload
+            };
             _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
 
             // Create options manager
@@ -139,14 +141,9 @@ namespace SM64_Diagnostic
             _slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
             _slotManagerGui.MapObjectToggleModeComboBox = comboBoxMapToggleMode;
             _slotManagerGui.FlowLayoutContainer = flowLayoutPanelObjects;
+            _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
+            _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
             _objectSlotManager = new ObjectSlotsManager(_sm64Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
-
-            // Add SortMethods
-            foreach (var sm in Enum.GetValues(typeof(ObjectSlotsManager.SortMethodType)))
-                comboBoxSortMethod.Items.Add(sm);
-
-            // Use default slot sort method
-            comboBoxSortMethod.SelectedIndex = 0;
 
             SetupViews();
 
@@ -226,6 +223,7 @@ namespace SM64_Diagnostic
 
         private void OnUpdate(object sender, EventArgs e)
         {
+            _objectSlotManager.Update();
             _marioManager.Update(tabControlMain.SelectedTab == tabPageMario);
             _cameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
             _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
@@ -395,14 +393,6 @@ namespace SM64_Diagnostic
 
                 XmlConfigParser.AddWatchVariableOtherData(watchVar);
             }
-        }
-
-        private void comboBoxSortMethod_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_objectSlotManager == null)
-                return;
-
-            _objectSlotManager.SortMethod = (ObjectSlotsManager.SortMethodType) comboBoxSortMethod.SelectedItem;
         }
 
         private async void flowLayoutPanelObjects_Resize(object sender, EventArgs e)

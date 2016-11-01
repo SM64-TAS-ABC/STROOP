@@ -21,6 +21,8 @@ namespace SM64_Diagnostic.Structs
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
         public ComboBox MapObjectToggleModeComboBox;
+        public ComboBox SortMethodComboBox;
+        public ComboBox LabelMethodComboBox;
         public FlowLayoutPanel FlowLayoutContainer;
 
         ~ObjectSlotManagerGui()
