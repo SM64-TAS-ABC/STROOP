@@ -22,6 +22,9 @@ namespace SM64_Diagnostic.Utilities
         public event EventHandler OnUpdate;
         public event EventHandler OnStatusChanged;
 
+        public Dictionary<WatchVariableLock, WatchVariableLock> LockedVariables = 
+            new Dictionary<WatchVariableLock, WatchVariableLock>();
+
         public uint ProcessMemoryOffset
         {
             get
@@ -247,6 +250,10 @@ namespace SM64_Diagnostic.Utilities
                 return;
             _timer.Enabled = false;
             OnUpdate?.Invoke(this, e);
+            foreach (var lockVar in LockedVariables)
+            {
+                lockVar.Value.Update();
+            }
             _timer.Enabled = true;
         }
     }

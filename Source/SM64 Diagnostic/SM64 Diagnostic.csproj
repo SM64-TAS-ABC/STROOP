@@ -176,6 +176,7 @@
     <Compile Include="Extensions\WatchVariableExtensions.cs" />
     <Compile Include="Utilities\PuUtilities.cs" />
     <Compile Include="Utilities\RngIndexer.cs" />
+    <Compile Include="Utilities\WatchVariableLock.cs" />
     <Compile Include="Utilities\XmlConfigParser.cs" />
     <Compile Include="VariableViewerForm.cs">
       <SubType>Form</SubType>
