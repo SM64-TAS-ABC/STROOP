@@ -104,7 +104,7 @@ namespace SM64_Diagnostic.ManagerClasses
             normY = BitConverter.ToSingle(_stream.ReadRam(TriangleAddress + Config.TriangleOffsets.NormY, 4), 0);
             normZ = BitConverter.ToSingle(_stream.ReadRam(TriangleAddress + Config.TriangleOffsets.NormZ, 4), 0);
 
-            var uphillAngle = (Math.Atan2(normZ, normX) / Math.PI + 1) / 2 * 65536;
+            var uphillAngle = (Math.Atan2(normZ, normX) / Math.PI + 0.5) / 2 * 65536;
             if (normX == 0 && normZ == 0)
                 uphillAngle = double.NaN;
             if (normY < 0)
