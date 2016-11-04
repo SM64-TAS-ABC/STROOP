@@ -12,7 +12,7 @@ namespace SM64_Diagnostic.ManagerClasses
 {
     public class ObjectSlotsManager
     {
-        const int DefaultSlotSize = 40;
+        const int DefaultSlotSize = 36;
         public ObjectSlot[] ObjectSlots;
 
         public ObjectAssociations ObjectAssoc;

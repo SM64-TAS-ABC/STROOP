@@ -26,6 +26,7 @@
   <Data special="true" specialType="DownHillAngle">Downhill Angle</Data>
   <Data special="true" specialType="RightHillAngle">Right Hill Angle</Data>
   <Data special="true" specialType="LeftHillAngle">Left Hill Angle</Data>
+  <Data special="true" specialType="Steepness" color="#ffcccc">Steepness</Data>
   <Data type="float" address="0x8033B1AC" color="#ffcccc">Mario X</Data>
   <Data type="float" address="0x8033B1B0" color="#ffcccc">Mario Y</Data>
   <Data type="float" address="0x8033B1B4" color="#ffcccc">Mario Z</Data>
@@ -35,7 +36,10 @@
   <Data type="uint" address="0x00C26C50" absoluteAddress="true" useHex="true" color="#ffcccc">Wall Triangle</Data>
   <Data type="uint" address="0x00C26C54" absoluteAddress="true" useHex="true" color="#ffcccc">Ceiling Triangle</Data>
   <Data type="float" address="0x8033b1E0" color="#ffcccc">Floor Height</Data>
+  <Data special="true" specialType="HeightOnSlope" color="#ffcccc">Height On Slope</Data>
   <Data type="float" address="0x8033b1DC" color="#ffcccc">Ceiling Height</Data>
   <Data special="true" specialType="DistanceBelowCeiling" color="#ffcccc">Dist Below Ceiling</Data>
   <Data special="true" specialType="DistanceAboveFloor" color="#ffcccc">Dist Above Floor</Data>
+  <Data special="true" specialType="NormalDistAway" color="#ffcccc">Normal Dist Away</Data>
+  <Data special="true" specialType="VerticalDistAway" color="#ffcccc">Vertical Dist Away</Data>
 </TrianglesData>
