@@ -18,10 +18,12 @@ namespace SM64_Diagnostic.Utilities
         int _offset;
         byte[] _ram;
         bool _lastUpdateBeforePausing = false;
-        Config _config;
 
         public event EventHandler OnUpdate;
         public event EventHandler OnStatusChanged;
+
+        public Dictionary<WatchVariableLock, WatchVariableLock> LockedVariables = 
+            new Dictionary<WatchVariableLock, WatchVariableLock>();
 
         public uint ProcessMemoryOffset
         {
@@ -43,21 +45,20 @@ namespace SM64_Diagnostic.Utilities
         {
             get
             {
-                return _config.ProcessName;
+                return Config.ProcessName;
             }
         }
 
-        public ProcessStream(Config config, Process process = null)
+        public ProcessStream(Process process = null)
         {
-            _offset = (int)(config.RamStartAddress & 0x7FFFFFFF);
+            _offset = (int)(Config.RamStartAddress & 0x7FFFFFFF);
             _process = process;
-            _config = config;
 
             _timer = new Timer();
-            _timer.Interval = (int) (1000.0f / config.RefreshRateFreq);
+            _timer.Interval = (int) (1000.0f / Config.RefreshRateFreq);
             _timer.Tick += OnTick;
 
-            _ram = new byte[config.RamSize];
+            _ram = new byte[Config.RamSize];
 
             SwitchProcess(_process);
         }
@@ -249,6 +250,10 @@ namespace SM64_Diagnostic.Utilities
                 return;
             _timer.Enabled = false;
             OnUpdate?.Invoke(this, e);
+            foreach (var lockVar in LockedVariables)
+            {
+                lockVar.Value.Update();
+            }
             _timer.Enabled = true;
         }
     }

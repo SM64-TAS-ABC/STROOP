@@ -18,7 +18,7 @@ namespace SM64_Diagnostic
     {
         const int BorderSize = 2;
 
-        ObjectSlotManager _manager;
+        ObjectSlotsManager _manager;
         ObjectSlotManagerGui _gui;
 
         Color _mainColor, _borderColor, _backColor;
@@ -106,7 +106,7 @@ namespace SM64_Diagnostic
             }
         }
 
-        public ObjectSlotManager Manager
+        public ObjectSlotsManager Manager
         {
             get
             {
@@ -127,7 +127,8 @@ namespace SM64_Diagnostic
             }
         }
 
-        bool _drawSelectedOverlay, _drawStandingOnOverlay, _drawHoldingOverlay, _drawInteractingObject, _drawUsingObject;
+        bool _drawSelectedOverlay, _drawStandingOnOverlay, _drawHoldingOverlay, _drawInteractingObject, _drawUsingObject,
+            _drawClosestOverlay;
         public bool DrawSelectedOverlay
         {
             get
@@ -200,7 +201,22 @@ namespace SM64_Diagnostic
             }
         }
 
-        public ObjectSlot(int index, ObjectSlotManager manager, ObjectSlotManagerGui gui, Size size)
+        public bool DrawClosestOverlay
+        {
+            get
+            {
+                return _drawClosestOverlay;
+            }
+            set
+            {
+                if (_drawClosestOverlay == value)
+                    return;
+                _drawClosestOverlay = value;
+                Invalidate();
+            }
+        }
+
+        public ObjectSlot(int index, ObjectSlotsManager manager, ObjectSlotManagerGui gui, Size size)
         {
             Index = index;
             _manager = manager;
@@ -310,10 +326,7 @@ namespace SM64_Diagnostic
             Refresh();
 
             // Start the drag and drop but setting the object slot index in Drag and Drop data
-            var obj = _manager.ObjectSlotData.Where((objData) => objData.Index == Index).ToList();
-            if (obj.Count == 0)
-                return;
-            var objectAddress = obj[0].Address;
+            var objectAddress = Address;
             var dropAction = new DropAction(DropAction.ActionType.Object, objectAddress); 
             DoDragDrop(dropAction, DragDropEffects.All);
         }
@@ -392,6 +405,8 @@ namespace SM64_Diagnostic
                 e.Graphics.DrawImage(_gui.StandingOnObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawUsingObject)
                 e.Graphics.DrawImage(_gui.UsingObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawClosestOverlay)
+                e.Graphics.DrawImage(_gui.ClosestObjectOverlayImage, new Rectangle(new Point(), Size));
         }
 
         

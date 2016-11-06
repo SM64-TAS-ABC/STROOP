@@ -16,10 +16,13 @@ namespace SM64_Diagnostic.Structs
         public Image HoldingObjectOverlayImage;
         public Image InteractingObjectOverlayImage;
         public Image UsingObjectOverlayImage;
+        public Image ClosestObjectOverlayImage;
 
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
         public ComboBox MapObjectToggleModeComboBox;
+        public ComboBox SortMethodComboBox;
+        public ComboBox LabelMethodComboBox;
         public FlowLayoutPanel FlowLayoutContainer;
 
         ~ObjectSlotManagerGui()
@@ -29,6 +32,7 @@ namespace SM64_Diagnostic.Structs
             HoldingObjectOverlayImage?.Dispose();
             InteractingObjectOverlayImage?.Dispose();
             UsingObjectOverlayImage?.Dispose();
+            ClosestObjectOverlayImage?.Dispose();
         }
     }
 }

@@ -39,13 +39,12 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static Config OpenConfig(string path)
+        public static void OpenConfig(string path)
         {
-            Config config = new Config();
-            config.ObjectSlots = new ObjectSlotsConfig();
-            config.ObjectGroups = new ObjectGroupsConfig();
-            config.ObjectGroups.ProcessingGroups = new List<byte>();
-            config.ObjectGroups.ProcessingGroupsColor = new Dictionary<byte, Color>();
+            Config.ObjectSlots = new ObjectSlotsConfig();
+            Config.ObjectGroups = new ObjectGroupsConfig();
+            Config.ObjectGroups.ProcessingGroups = new List<byte>();
+            Config.ObjectGroups.ProcessingGroupsColor = new Dictionary<byte, Color>();
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
@@ -63,19 +62,19 @@ namespace SM64_Diagnostic.Utilities
                 switch(element.Name.ToString())
                 {
                     case "RefreshRateFreq":
-                        config.RefreshRateFreq = int.Parse(element.Value);
+                        Config.RefreshRateFreq = int.Parse(element.Value);
                         break;
 
                     case "ProcessDefaultName":
-                        config.ProcessName = element.Value;
+                        Config.ProcessName = element.Value;
                         break;
 
                     case "RAMStartAddress":
-                        config.RamStartAddress = ParsingUtilities.ParseHex(element.Value);
+                        Config.RamStartAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
 
                     case "RAMSize":
-                        config.RamSize = ParsingUtilities.ParseHex(element.Value);
+                        Config.RamSize = ParsingUtilities.ParseHex(element.Value);
                         break;
                     case "ObjectSlots":
                         foreach (XElement subElement in element.Elements())
@@ -83,52 +82,61 @@ namespace SM64_Diagnostic.Utilities
                             switch (subElement.Name.ToString())
                             {
                                 case "FirstObjectAddress":
-                                    config.ObjectSlots.LinkStartAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.LinkStartAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "ObjectStructSize":
-                                    config.ObjectSlots.StructSize = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.StructSize = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "HeaderOffset":
-                                    config.ObjectSlots.HeaderOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.HeaderOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "ListNextLinkOffset":
-                                    config.ObjectSlots.NextLinkOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.NextLinkOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "ListPreviousLinkOffset":
-                                    config.ObjectSlots.PreviousLinkOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.PreviousLinkOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "BehaviorScriptOffset":
-                                    config.ObjectSlots.BehaviorScriptOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.BehaviorScriptOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "BehaviorGfxOffset":
-                                    config.ObjectSlots.BehaviorGfxOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.BehaviorGfxOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "BehaviorSubtypeOffset":
-                                    config.ObjectSlots.BehaviorSubtypeOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.BehaviorSubtypeOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "BehaviorAppearance":
-                                    config.ObjectSlots.BehaviorAppearance = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.BehaviorAppearance = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "ObjectActiveOffset":
-                                    config.ObjectSlots.ObjectActiveOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.ObjectActiveOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "CoordinateOffsetX":
-                                    config.ObjectSlots.ObjectXOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.ObjectXOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "CoordinateOffsetY":
-                                    config.ObjectSlots.ObjectYOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.ObjectYOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "CoordinateOffsetZ":
-                                    config.ObjectSlots.ObjectZOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.ObjectZOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "HomeOffsetX":
+                                    Config.ObjectSlots.HomeXOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "HomeOffsetY":
+                                    Config.ObjectSlots.HomeYOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "HomeOffsetZ":
+                                    Config.ObjectSlots.HomeZOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "RotationOffset":
-                                    config.ObjectSlots.ObjectRotationOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectSlots.ObjectRotationOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "MoveToMarioYOffset":
-                                    config.ObjectSlots.MoveToMarioYOffset = float.Parse(subElement.Value);
+                                    Config.ObjectSlots.MoveToMarioYOffset = float.Parse(subElement.Value);
                                     break;
                                 case "MaxObjectSlots":
-                                    config.ObjectSlots.MaxSlots = int.Parse(subElement.Value);
+                                    Config.ObjectSlots.MaxSlots = int.Parse(subElement.Value);
                                     break;
                             }
                         }
@@ -140,23 +148,23 @@ namespace SM64_Diagnostic.Utilities
                             switch (subElement.Name.ToString())
                             {
                                 case "ProcessNextLinkOffset":
-                                    config.ObjectGroups.ProcessNextLinkOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectGroups.ProcessNextLinkOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "ProcessPreviousLinkOffset":
-                                    config.ObjectGroups.ProcessPreviousLinkOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectGroups.ProcessPreviousLinkOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "ParentObjectOffset":
-                                    config.ObjectGroups.ParentObjectOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectGroups.ParentObjectOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "FirstObjectGroupingAddress":
-                                    config.ObjectGroups.FirstGroupingAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectGroups.FirstGroupingAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "VacantPointerAddress":
-                                    config.ObjectGroups.VactantPointerAddress = ParsingUtilities.ParseHex(subElement.Value);
-                                    config.ObjectGroups.VacantSlotColor = ColorTranslator.FromHtml(subElement.Attribute(XName.Get("color")).Value);
+                                    Config.ObjectGroups.VactantPointerAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectGroups.VacantSlotColor = ColorTranslator.FromHtml(subElement.Attribute(XName.Get("color")).Value);
                                     break;
                                 case "ProcessGroupStructSize":
-                                    config.ObjectGroups.ProcessGroupStructSize = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectGroups.ProcessGroupStructSize = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "ProcessGroupsOrdering":
                                     foreach(var subSubElement in subElement.Elements())
@@ -166,8 +174,8 @@ namespace SM64_Diagnostic.Utilities
                                         var color = ColorTranslator.FromHtml(
                                             subSubElement.Attribute(XName.Get("color")).Value);
 
-                                        config.ObjectGroups.ProcessingGroups.Add(group);
-                                        config.ObjectGroups.ProcessingGroupsColor.Add(group,color);
+                                        Config.ObjectGroups.ProcessingGroups.Add(group);
+                                        Config.ObjectGroups.ProcessingGroupsColor.Add(group,color);
                                     }
                                     break;
                             }
@@ -180,67 +188,67 @@ namespace SM64_Diagnostic.Utilities
                             switch (subElement.Name.ToString())
                             {
                                 case "MarioStructAddress":
-                                    config.Mario.MarioStructAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.StructAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "CoordinateOffsetX":
-                                    config.Mario.XOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.XOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "CoordinateOffsetY":
-                                    config.Mario.YOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.YOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "CoordinateOffsetZ":
-                                    config.Mario.ZOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.ZOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "FacingAngleOffset":
-                                    config.Mario.RotationOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.RotationOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "MarioStructSize":
-                                    config.Mario.StructSize = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.StructSize = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "ActionOffset":
-                                    config.Mario.ActionOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.ActionOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "MoveToObjectYOffset":
-                                    config.Mario.MoveToObjectYOffset = float.Parse(subElement.Value);
+                                    Config.Mario.MoveToObjectYOffset = float.Parse(subElement.Value);
                                     break;
                                 case "StandingOnPointer":
-                                    config.Mario.StandingOnObjectPointer = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.StandingOnObjectPointer = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "InteractingObjectPointerOffset":
-                                    config.Mario.InteractingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.InteractingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break; 
                                 case "HoldingObjectPointerOffset":
-                                    config.Mario.HoldingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.HoldingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "UsingObjectPointerOffset":
-                                    config.Mario.UsingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.UsingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "CeilingYOffset":
-                                    config.Mario.CeilingYOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.CeilingYOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "GroundYOffset":
-                                    config.Mario.GroundYOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.GroundYOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "HSpeedOffset":
-                                    config.Mario.HSpeedOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.HSpeedOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "FloorTriangleOffset":
-                                    config.Mario.FloorTriangleOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.FloorTriangleOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "WallTriangleOffset":
-                                    config.Mario.WallTriangleOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.WallTriangleOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "CeilingTriangleOffset":
-                                    config.Mario.CeilingTriangleOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.CeilingTriangleOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "SlidingSpeedXOffset":
-                                    config.Mario.SlidingSpeedXOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.SlidingSpeedXOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "SlidingSpeedZOffset":
-                                    config.Mario.SlidingSpeedZOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.SlidingSpeedZOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "PeakHeightOffset":
-                                    config.Mario.PeakHeightOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.PeakHeightOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         }
@@ -252,28 +260,28 @@ namespace SM64_Diagnostic.Utilities
                             switch (subElement.Name.ToString())
                             {
                                 case "HpAddress":
-                                    config.Hud.HpAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Hud.HpAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "LiveCountAddress":
-                                    config.Hud.LiveCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Hud.LiveCountAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "CoinCountAddress":
-                                    config.Hud.CoinCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Hud.CoinCountAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "StarCountAddress":
-                                    config.Hud.StarCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Hud.StarCountAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "FullHp":
-                                    config.Hud.FullHp = short.Parse(subElement.Value);
+                                    Config.Hud.FullHp = short.Parse(subElement.Value);
                                     break;
                                 case "StandardLives":
-                                    config.Hud.StandardLives = short.Parse(subElement.Value);
+                                    Config.Hud.StandardLives = short.Parse(subElement.Value);
                                     break;
                                 case "StandardCoins":
-                                    config.Hud.StandardCoins = short.Parse(subElement.Value);
+                                    Config.Hud.StandardCoins = short.Parse(subElement.Value);
                                     break;
                                 case "StandardStars":
-                                    config.Hud.StandardStars = short.Parse(subElement.Value);
+                                    Config.Hud.StandardStars = short.Parse(subElement.Value);
                                     break;
                             }
                         }
@@ -285,10 +293,10 @@ namespace SM64_Diagnostic.Utilities
                             switch (subElement.Name.ToString())
                             {
                                 case "ToggleAddress":
-                                    config.Debug.Toggle = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Debug.Toggle = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "SettingAddress":
-                                    config.Debug.Setting = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Debug.Setting = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         }
@@ -300,145 +308,117 @@ namespace SM64_Diagnostic.Utilities
                             switch (subElement.Name.ToString())
                             {
                                 case "surfaceType":
-                                    config.TriangleOffsets.SurfaceType = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.SurfaceType = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "flags":
-                                    config.TriangleOffsets.Flags = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.Flags = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "windDirection":
-                                    config.TriangleOffsets.WindDirection = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.WindDirection = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "wallProjection":
-                                    config.TriangleOffsets.WallProjection = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.WallProjection = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "yMin":
-                                    config.TriangleOffsets.YMin = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.YMin = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "yMax":
-                                    config.TriangleOffsets.YMax = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.YMax = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "x1":
-                                    config.TriangleOffsets.X1 = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.X1 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "y1":
-                                    config.TriangleOffsets.Y1 = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.Y1 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "z1":
-                                    config.TriangleOffsets.Z1 = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.Z1 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "x2":
-                                    config.TriangleOffsets.X2 = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.X2 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "y2":
-                                    config.TriangleOffsets.Y2 = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.Y2 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "z2":
-                                    config.TriangleOffsets.Z2 = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.Z2 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "x3":
-                                    config.TriangleOffsets.X3 = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.X3 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "y3":
-                                    config.TriangleOffsets.Y3 = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.Y3 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "z3":
-                                    config.TriangleOffsets.Z3 = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.Z3 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "normX":
-                                    config.TriangleOffsets.NormX = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.NormX = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "normY":
-                                    config.TriangleOffsets.NormY = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.NormY = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "normZ":
-                                    config.TriangleOffsets.NormZ = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.NormZ = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "offset":
-                                    config.TriangleOffsets.Offset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.Offset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "associatedObject":
-                                    config.TriangleOffsets.AssociatedObject = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.TriangleOffsets.AssociatedObject = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         } 
                         break;
 
                     case "LevelAddress":
-                        config.LevelAddress = ParsingUtilities.ParseHex(element.Value);
+                        Config.LevelAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
 
                     case "AreaAddress":
-                        config.AreaAddress = ParsingUtilities.ParseHex(element.Value);
+                        Config.AreaAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
 
                     case "LoadingPointAddress":
-                        config.LoadingPointAddress = ParsingUtilities.ParseHex(element.Value);
+                        Config.LoadingPointAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
 
                     case "MissionLayoutAddress":
-                        config.MissionAddress = ParsingUtilities.ParseHex(element.Value);
+                        Config.MissionAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
 
                     case "HolpX":
-                        config.HolpX = ParsingUtilities.ParseHex(element.Value);
+                        Config.HolpX = ParsingUtilities.ParseHex(element.Value);
                         break;
                     case "HolpY":
-                        config.HolpY = ParsingUtilities.ParseHex(element.Value);
+                        Config.HolpY = ParsingUtilities.ParseHex(element.Value);
                         break;
                     case "HolpZ":
-                        config.HolpZ = ParsingUtilities.ParseHex(element.Value);
+                        Config.HolpZ = ParsingUtilities.ParseHex(element.Value);
                         break;
                     case "CameraX":
-                        config.CameraX = ParsingUtilities.ParseHex(element.Value);
+                        Config.CameraX = ParsingUtilities.ParseHex(element.Value);
                         break;
                     case "CameraY":
-                        config.CameraY = ParsingUtilities.ParseHex(element.Value);
+                        Config.CameraY = ParsingUtilities.ParseHex(element.Value);
                         break;
                     case "CameraZ":
-                        config.CameraZ = ParsingUtilities.ParseHex(element.Value);
+                        Config.CameraZ = ParsingUtilities.ParseHex(element.Value);
                         break;
                     case "CameraRot":
-                        config.CameraRot = ParsingUtilities.ParseHex(element.Value);
+                        Config.CameraRot = ParsingUtilities.ParseHex(element.Value);
                         break;
                     case "RngRecordingAreaAddress":
-                        config.RngRecordingAreaAddress = ParsingUtilities.ParseHex(element.Value);
+                        Config.RngRecordingAreaAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
                     case "RngAddress":
-                        config.RngAddress = ParsingUtilities.ParseHex(element.Value);
+                        Config.RngAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
                 }
             }
-
-            return config;
         }
 
-        public static List<WatchVariable> OpenMiscData(string path)
-        {
-            var miscData = new List<WatchVariable>();
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/MiscDataSchema.xsd", "MiscDataSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
-            var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
-
-            var mainElements = doc.Root.Elements().ToArray();
-            for(int i = 0; i < mainElements.Count(); i++)
-            {
-                var element = mainElements[i];
-                var watchVar = GetWatchVariableFromElement(element);
-                miscData.Add(watchVar);
-            }
-
-            return miscData;
-        }
-
-        public static List<WatchVariable> OpenObjectData(string path)
+        public static List<WatchVariable> OpenWatchVarData(string path, string schemaFile, string specialOffsetName = null)
         {
             var objectData = new List<WatchVariable>();
             var assembly = Assembly.GetExecutingAssembly();
@@ -446,7 +426,7 @@ namespace SM64_Diagnostic.Utilities
             // Create schema set
             var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/ObjectDataSchema.xsd", "ObjectDataSchema.xsd");
+            schemaSet.Add("http://tempuri.org/CameraDataSchema.xsd", schemaFile);
             schemaSet.Compile();
 
             // Load and validate document
@@ -459,93 +439,9 @@ namespace SM64_Diagnostic.Utilities
                     continue;
 
                 var watchVar = GetWatchVariableFromElement(element);
-                watchVar.OtherOffset = (element.Attribute(XName.Get("objectOffset")) != null) ?
-                    bool.Parse(element.Attribute(XName.Get("objectOffset")).Value) : false;
-
-                objectData.Add(watchVar);
-            }
-
-            return objectData;
-        }
-
-        public static List<WatchVariable> OpenMarioData(Config config, string path)
-        {
-            var objectData = new List<WatchVariable>();
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/MarioDataSchema.xsd", "MarioDataSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
-            var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
-
-            foreach (XElement element in doc.Root.Elements())
-            {
-                if (element.Name.ToString() != "Data")
-                    continue;
-
-                var watchVar = GetWatchVariableFromElement(element);
-                watchVar.OtherOffset = (element.Attribute(XName.Get("marioOffset")) != null) ?
-                    bool.Parse(element.Attribute(XName.Get("marioOffset")).Value) : false;
-
-                objectData.Add(watchVar);
-            }
-
-            return objectData;
-        }
-
-        public static List<WatchVariable> OpenHudData(Config config, string path)
-        {
-            var objectData = new List<WatchVariable>();
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/HudDataSchema.xsd", "HudDataSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
-            var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
-
-            foreach (XElement element in doc.Root.Elements())
-            {
-                if (element.Name.ToString() != "Data")
-                    continue;
-
-                var watchVar = GetWatchVariableFromElement(element);
-                objectData.Add(watchVar);
-            }
-
-            return objectData;
-        }
-
-        public static List<WatchVariable> OpenCameraData(Config config, string path)
-        {
-            var objectData = new List<WatchVariable>();
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/CameraDataSchema.xsd", "CameraDataSchema.xsd");
-            schemaSet.Compile();
-
-            // Load and validate document
-            var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
-
-            foreach (XElement element in doc.Root.Elements())
-            {
-                if (element.Name.ToString() != "Data")
-                    continue;
-
-                var watchVar = GetWatchVariableFromElement(element);
+                if (specialOffsetName != null)
+                    watchVar.OtherOffset = (element.Attribute(XName.Get(specialOffsetName)) != null) ?
+                        bool.Parse(element.Attribute(XName.Get(specialOffsetName)).Value) : false;
 
                 objectData.Add(watchVar);
             }
@@ -573,7 +469,7 @@ namespace SM64_Diagnostic.Utilities
                 marioImagePath = "", holpMapImagePath = "", hudImagePath = "", debugImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 selectedOverlayImagePath = "", standingOnOverlayImagePath = "", holdingOverlayImagePath = "",
-                interactingOverlayImagePath = "", usingOverlayImagePath = "";
+                interactingOverlayImagePath = "", usingOverlayImagePath = "", closestOverlayImagePath = "";
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
 
@@ -666,6 +562,10 @@ namespace SM64_Diagnostic.Utilities
                                 case "Using":
                                     usingOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
+                                    
+                                case "Closest":
+                                    closestOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -741,9 +641,13 @@ namespace SM64_Diagnostic.Utilities
             objectSlotManagerGui.HoldingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + holdingOverlayImagePath);
             objectSlotManagerGui.InteractingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + interactingOverlayImagePath);
             objectSlotManagerGui.UsingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + usingOverlayImagePath);
+            objectSlotManagerGui.ClosestObjectOverlayImage = Bitmap.FromFile(overlayImageDir + closestOverlayImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
             {
+                if (obj.ImagePath == null || obj.ImagePath == "")
+                    continue;
+
                 using (var preLoad = Bitmap.FromFile(imageDir + obj.ImagePath))
                 {
                     float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);
@@ -946,6 +850,8 @@ namespace SM64_Diagnostic.Utilities
             watchVar.Name = element.Value;
             watchVar.SpecialType = (element.Attribute(XName.Get("specialType")) != null) ?
                 element.Attribute(XName.Get("specialType")).Value : null;
+            watchVar.BackroundColor = (element.Attribute(XName.Get("color")) != null) ?
+                ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
 
             // We have fully parsed a special type
             if (watchVar.Special)

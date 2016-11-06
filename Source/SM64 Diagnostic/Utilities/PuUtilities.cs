@@ -36,21 +36,21 @@ namespace SM64_Diagnostic.Utilities
             return pu;
         }
 
-        public static bool MoveToRelativePu(ProcessStream stream, Config config, int newPuX, int newPuY, int newPuZ)
+        public static bool MoveToRelativePu(ProcessStream stream, int newPuX, int newPuY, int newPuZ)
         {
-            var marioAddress = config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
 
             // Get Mario position
             float marioX, marioY, marioZ;
-            marioX = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.XOffset, 4), 0);
-            marioY = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.YOffset, 4), 0);
-            marioZ = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.ZOffset, 4), 0);
+            marioX = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
+            marioY = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.YOffset, 4), 0);
+            marioZ = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
 
             // Get Camera Position
             float cameraX, cameraY, cameraZ;
-            cameraX = BitConverter.ToSingle(stream.ReadRam(config.CameraX, 4), 0);
-            cameraY = BitConverter.ToSingle(stream.ReadRam(config.CameraY, 4), 0);
-            cameraZ = BitConverter.ToSingle(stream.ReadRam(config.CameraZ, 4), 0);
+            cameraX = BitConverter.ToSingle(stream.ReadRam(Config.CameraX, 4), 0);
+            cameraY = BitConverter.ToSingle(stream.ReadRam(Config.CameraY, 4), 0);
+            cameraZ = BitConverter.ToSingle(stream.ReadRam(Config.CameraZ, 4), 0);
 
             // Calculate new coordinates
             float newMarioX, newMarioY, newMarioZ;
@@ -65,34 +65,34 @@ namespace SM64_Diagnostic.Utilities
 
             // Set new mario + camera position
             bool success = true;
-            success &= stream.WriteRam(BitConverter.GetBytes(newMarioX), marioAddress + config.Mario.XOffset);
-            success &= stream.WriteRam(BitConverter.GetBytes(newMarioY), marioAddress + config.Mario.YOffset);
-            success &= stream.WriteRam(BitConverter.GetBytes(newMarioZ), marioAddress + config.Mario.ZOffset);
-            if (config.MoveCameraWithPu)
+            success &= stream.WriteRam(BitConverter.GetBytes(newMarioX), marioAddress + Config.Mario.XOffset);
+            success &= stream.WriteRam(BitConverter.GetBytes(newMarioY), marioAddress + Config.Mario.YOffset);
+            success &= stream.WriteRam(BitConverter.GetBytes(newMarioZ), marioAddress + Config.Mario.ZOffset);
+            if (Config.MoveCameraWithPu)
             {
-                success &= stream.WriteRam(BitConverter.GetBytes(newCamX), config.CameraX);
-                success &= stream.WriteRam(BitConverter.GetBytes(newCamY), config.CameraY);
-                success &= stream.WriteRam(BitConverter.GetBytes(newCamZ), config.CameraZ);
+                success &= stream.WriteRam(BitConverter.GetBytes(newCamX), Config.CameraX);
+                success &= stream.WriteRam(BitConverter.GetBytes(newCamY), Config.CameraY);
+                success &= stream.WriteRam(BitConverter.GetBytes(newCamZ), Config.CameraZ);
             }
             return success;
         }
 
-        public static bool MoveToPu(ProcessStream stream, Config config, int newPuX, int newPuY, int newPuZ)
+        public static bool MoveToPu(ProcessStream stream, int newPuX, int newPuY, int newPuZ)
         {
-            var marioAddress = config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
 
             // Get Mario position
             float marioX, marioY, marioZ;
-            marioX = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.XOffset, 4), 0);
-            marioY = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.YOffset, 4), 0);
-            marioZ = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.ZOffset, 4), 0);
+            marioX = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
+            marioY = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.YOffset, 4), 0);
+            marioZ = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
 
 
             // Get Camera Position
             float cameraX, cameraY, cameraZ;
-            cameraX = BitConverter.ToSingle(stream.ReadRam(config.CameraX, 4), 0);
-            cameraY = BitConverter.ToSingle(stream.ReadRam(config.CameraY, 4), 0);
-            cameraZ = BitConverter.ToSingle(stream.ReadRam(config.CameraZ, 4), 0);
+            cameraX = BitConverter.ToSingle(stream.ReadRam(Config.CameraX, 4), 0);
+            cameraY = BitConverter.ToSingle(stream.ReadRam(Config.CameraY, 4), 0);
+            cameraZ = BitConverter.ToSingle(stream.ReadRam(Config.CameraZ, 4), 0);
 
             // Calculate new coordinates
             float newMarioX, newMarioY, newMarioZ;
@@ -107,26 +107,26 @@ namespace SM64_Diagnostic.Utilities
 
             // Set new mario + camera position
             bool success = true;
-            success &= stream.WriteRam(BitConverter.GetBytes(newMarioX), marioAddress + config.Mario.XOffset);
-            success &= stream.WriteRam(BitConverter.GetBytes(newMarioY), marioAddress + config.Mario.YOffset);
-            success &= stream.WriteRam(BitConverter.GetBytes(newMarioZ), marioAddress + config.Mario.ZOffset);
-            if (config.MoveCameraWithPu)
+            success &= stream.WriteRam(BitConverter.GetBytes(newMarioX), marioAddress + Config.Mario.XOffset);
+            success &= stream.WriteRam(BitConverter.GetBytes(newMarioY), marioAddress + Config.Mario.YOffset);
+            success &= stream.WriteRam(BitConverter.GetBytes(newMarioZ), marioAddress + Config.Mario.ZOffset);
+            if (Config.MoveCameraWithPu)
             {
-                success &= stream.WriteRam(BitConverter.GetBytes(newCamX), config.CameraX);
-                success &= stream.WriteRam(BitConverter.GetBytes(newCamY), config.CameraY);
-                success &= stream.WriteRam(BitConverter.GetBytes(newCamZ), config.CameraZ);
+                success &= stream.WriteRam(BitConverter.GetBytes(newCamX), Config.CameraX);
+                success &= stream.WriteRam(BitConverter.GetBytes(newCamY), Config.CameraY);
+                success &= stream.WriteRam(BitConverter.GetBytes(newCamZ), Config.CameraZ);
             }
             return success;
         }
 
-        public static string GetPuPosString(ProcessStream stream, Config config)
+        public static string GetPuPosString(ProcessStream stream)
         {
-            var marioAddress = config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
 
             // Get Mario position
             float marioX, marioZ;
-            marioX = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.XOffset, 4), 0);
-            marioZ = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.ZOffset, 4), 0);
+            marioX = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
+            marioZ = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
 
             // Update PU
             int puX = PuUtilities.GetPUFromCoord(marioX);
@@ -134,14 +134,14 @@ namespace SM64_Diagnostic.Utilities
 
             return string.Format("[{0}:{1}]", puX, puZ);
         }
-        public static string GetQpuPosString(ProcessStream stream, Config config)
+        public static string GetQpuPosString(ProcessStream stream)
         {
-            var marioAddress = config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
 
             // Get Mario position
             float marioX, marioZ;
-            marioX = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.XOffset, 4), 0);
-            marioZ = BitConverter.ToSingle(stream.ReadRam(marioAddress + config.Mario.ZOffset, 4), 0);
+            marioX = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
+            marioZ = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
 
             // Update PU
             int puX = PuUtilities.GetPUFromCoord(marioX);

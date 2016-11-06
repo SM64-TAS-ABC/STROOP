@@ -16,7 +16,6 @@ namespace SM64_Diagnostic.ManagerClasses
     public class MapManager
     {
         ProcessStream _stream;
-        Config _config;
         public MapAssociations MapAssoc;
         byte _currentLevel, _currentArea;
         ushort _currentLoadingPoint, _currentMissionLayout;
@@ -83,11 +82,10 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public MapManager(ProcessStream stream, Config config, MapAssociations mapAssoc, ObjectAssociations objAssoc,
+        public MapManager(ProcessStream stream, MapAssociations mapAssoc, ObjectAssociations objAssoc,
             MapGui mapGui)
         {
             _stream = stream;
-            _config = config;
             MapAssoc = mapAssoc;
             _mapGui = mapGui;
 
@@ -97,6 +95,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _holpMapObj = new MapObject(objAssoc.HolpImage, 2);
 
             _cameraMapObj = new MapObject(objAssoc.CameraMapImage, 1);
+            _cameraMapObj.UsesRotation = true;
             _floorTriangleMapObj = new TriangleMapObject(Color.FromArgb(200, Color.Yellow), 3);
         }
 
@@ -129,10 +128,10 @@ namespace SM64_Diagnostic.ManagerClasses
                 return;
 
             // Get level and area
-            byte level = _stream.ReadRam(_config.LevelAddress, 1)[0];
-            byte area = _stream.ReadRam(_config.AreaAddress, 1)[0];
-            ushort loadingPoint = BitConverter.ToUInt16(_stream.ReadRam(_config.LoadingPointAddress, 2), 0);
-            ushort missionLayout = BitConverter.ToUInt16(_stream.ReadRam(_config.MissionAddress, 2), 0);
+            byte level = _stream.ReadRam(Config.LevelAddress, 1)[0];
+            byte area = _stream.ReadRam(Config.AreaAddress, 1)[0];
+            ushort loadingPoint = BitConverter.ToUInt16(_stream.ReadRam(Config.LoadingPointAddress, 2), 0);
+            ushort missionLayout = BitConverter.ToUInt16(_stream.ReadRam(Config.MissionAddress, 2), 0);
 
             // Find new map list
             if (_currentMapList == null || _currentLevel != level || _currentArea != area 

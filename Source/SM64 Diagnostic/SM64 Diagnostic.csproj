@@ -88,12 +88,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\IDataContainer.cs" />
     <Compile Include="Controls\IntPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\Map\MapBaseObject.cs" />
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
+    <Compile Include="Extensions\ProcessStreamExtensions.cs" />
     <Compile Include="Extensions\RectangleFExtensions.cs" />
     <Compile Include="Extensions\WatchExpressionExtensions.cs" />
     <Compile Include="LoadingForm.cs">
@@ -103,6 +105,7 @@
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
+    <Compile Include="Managers\DebugManager.cs" />
     <Compile Include="Managers\HudManager.cs" />
     <Compile Include="Managers\HackManager.cs" />
     <Compile Include="Managers\MiscManager.cs" />
@@ -127,7 +130,7 @@
     <Compile Include="Controls\ObjectSlot.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Managers\ObjectSlotManager.cs" />
+    <Compile Include="Managers\ObjectSlotsManager.cs" />
     <Compile Include="Structs\BehaviorCriteria.cs" />
     <Compile Include="Structs\Configurations\DebugConfig.cs" />
     <Compile Include="Structs\Configurations\HudConfig.cs" />
@@ -144,11 +147,12 @@
     <Compile Include="Structs\ObjectBehaviorAssociation.cs" />
     <Compile Include="Structs\ObjectAssociations.cs" />
     <Compile Include="Structs\Gui\ObjectDataGui.cs" />
-    <Compile Include="Structs\ObjectSlotData.cs" />
     <Compile Include="Structs\Configurations\ObjectSlotsConfig.cs" />
     <Compile Include="Structs\Configurations\ObjectGroupsConfig.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Structs\ObjectSlotData.cs" />
     <Compile Include="Structs\RomHack.cs" />
+    <Compile Include="Utilities\MoreMath.cs" />
     <Compile Include="Utilities\NativeMethods.cs" />
     <Compile Include="Utilities\ScriptParser.cs" />
     <Compile Include="Controls\Map\TriangleMapObject.cs" />
@@ -174,6 +178,7 @@
     <Compile Include="Extensions\WatchVariableExtensions.cs" />
     <Compile Include="Utilities\PuUtilities.cs" />
     <Compile Include="Utilities\RngIndexer.cs" />
+    <Compile Include="Utilities\WatchVariableLock.cs" />
     <Compile Include="Utilities\XmlConfigParser.cs" />
     <Compile Include="VariableViewerForm.cs">
       <SubType>Form</SubType>
@@ -195,6 +200,10 @@
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\lock.png" />
+    <Content Include="Config\TrianglesData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Resources\Maps\Map Images\JRB Inside Ship.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -662,6 +671,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Schemas\HacksSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\TrianglesDataSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

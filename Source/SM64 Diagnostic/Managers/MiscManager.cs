@@ -7,12 +7,12 @@ using SM64_Diagnostic.Structs;
 using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Extensions;
+using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic.ManagerClasses
 {
     public class MiscManager
     {
-        Config _config;
         List<WatchVariableControl> _watchVarControls;
         FlowLayoutPanel _variableTable;
         ProcessStream _stream;
@@ -23,9 +23,8 @@ namespace SM64_Diagnostic.ManagerClasses
 
         enum PuControl { Home, PuUp, PuDown, PuLeft, PuRight, QpuUp, QpuDown, QpuLeft, QpuRight};
 
-        public MiscManager(ProcessStream stream, Config config, List<WatchVariable> watchVariables, FlowLayoutPanel variableTable, Control puController)
+        public MiscManager(ProcessStream stream, List<WatchVariable> watchVariables, FlowLayoutPanel variableTable, Control puController)
         {
-            _config = config;
             _variableTable = variableTable;
             _stream = stream;
             _puController = puController;
@@ -88,31 +87,31 @@ namespace SM64_Diagnostic.ManagerClasses
             switch(controlType)
             {
                 case PuControl.Home:
-                    PuUtilities.MoveToPu(_stream, _config, 0, 0, 0);
+                    PuUtilities.MoveToPu(_stream, 0, 0, 0);
                     break;
                 case PuControl.PuUp:
-                    PuUtilities.MoveToRelativePu(_stream, _config, 0, 0, -1);
+                    PuUtilities.MoveToRelativePu(_stream, 0, 0, -1);
                     break;
                 case PuControl.PuDown:
-                    PuUtilities.MoveToRelativePu(_stream, _config, 0, 0, 1);
+                    PuUtilities.MoveToRelativePu(_stream, 0, 0, 1);
                     break;
                 case PuControl.PuLeft:
-                    PuUtilities.MoveToRelativePu(_stream, _config, -1, 0, 0);
+                    PuUtilities.MoveToRelativePu(_stream, -1, 0, 0);
                     break;
                 case PuControl.PuRight:
-                    PuUtilities.MoveToRelativePu(_stream, _config, 1, 0, 0);
+                    PuUtilities.MoveToRelativePu(_stream, 1, 0, 0);
                     break;
                 case PuControl.QpuUp:
-                    PuUtilities.MoveToRelativePu(_stream, _config, 0, 0, -4);
+                    PuUtilities.MoveToRelativePu(_stream, 0, 0, -4);
                     break;
                 case PuControl.QpuDown:
-                    PuUtilities.MoveToRelativePu(_stream, _config, 0, 0, 4);
+                    PuUtilities.MoveToRelativePu(_stream, 0, 0, 4);
                     break;
                 case PuControl.QpuLeft:
-                    PuUtilities.MoveToRelativePu(_stream, _config, -4, 0, 0);
+                    PuUtilities.MoveToRelativePu(_stream, -4, 0, 0);
                     break;
                 case PuControl.QpuRight:
-                    PuUtilities.MoveToRelativePu(_stream, _config, 4, 0, 0);
+                    PuUtilities.MoveToRelativePu(_stream, 4, 0, 0);
                     break;
             }
         }
@@ -127,20 +126,20 @@ namespace SM64_Diagnostic.ManagerClasses
                 return;
 
             // Update the rng index
-            int rngIndex = RngIndexer.GetRngIndex(BitConverter.ToUInt16(_stream.ReadRam(_config.RngAddress, 2), 0));
+            int rngIndex = RngIndexer.GetRngIndex(BitConverter.ToUInt16(_stream.ReadRam(Config.RngAddress, 2), 0));
             _rngIndex.Text = (rngIndex < 0) ? "N/A [" + (-rngIndex).ToString() + "]" : rngIndex.ToString();
 
             _rngPerFrame.Text = GetRngCallsPerFrame().ToString();
 
             _activeObjCnt.Text = ActiveObjectCount.ToString();
-            _puController.Controls["labelPuConPuValue"].Text = PuUtilities.GetPuPosString(_stream, _config);
-            _puController.Controls["labelPuConQpuValue"].Text = PuUtilities.GetQpuPosString(_stream, _config);
+            _puController.Controls["labelPuConPuValue"].Text = PuUtilities.GetPuPosString(_stream);
+            _puController.Controls["labelPuConQpuValue"].Text = PuUtilities.GetQpuPosString(_stream);
         }
 
         private int GetRngCallsPerFrame()
         {
-            var currentRng = BitConverter.ToUInt16(_stream.ReadRam(_config.RngRecordingAreaAddress + 0x0E, 2), 0);
-            var preRng = BitConverter.ToUInt16(_stream.ReadRam(_config.RngRecordingAreaAddress + 0x0C, 2), 0);
+            var currentRng = BitConverter.ToUInt16(_stream.ReadRam(Config.RngRecordingAreaAddress + 0x0E, 2), 0);
+            var preRng = BitConverter.ToUInt16(_stream.ReadRam(Config.RngRecordingAreaAddress + 0x0C, 2), 0);
 
             return RngIndexer.GetRngIndexDiff(preRng, currentRng);
         }

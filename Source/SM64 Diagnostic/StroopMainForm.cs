@@ -11,18 +11,18 @@ using System.Diagnostics;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.ManagerClasses;
+using SM64_Diagnostic.Managers;
 using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic
 {
     public partial class StroopMainForm : Form
     {
-        const string _version = "v0.2.5";
+        const string _version = "v0.2.6";
         ProcessStream _sm64Stream = null;
-        Config _config;
 
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
-        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData;
+        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData;
         ObjectAssociations _objectAssoc;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
@@ -31,7 +31,7 @@ namespace SM64_Diagnostic
         DataTable _tableOtherData = new DataTable();
         Dictionary<int, DataRow> _otherDataRowAssoc = new Dictionary<int, DataRow>();
 
-        ObjectSlotManager _objectSlotManager;
+        ObjectSlotsManager _objectSlotManager;
         DisassemblyManager _disManager;
         MarioManager _marioManager;
         ObjectManager _objectManager;
@@ -43,6 +43,7 @@ namespace SM64_Diagnostic
         CameraManager _cameraManager;
         HackManager _hackManager;
         TriangleManager _triangleManager;
+        DebugManager _debugManager;
 
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
@@ -64,7 +65,7 @@ namespace SM64_Diagnostic
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxProcessSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxProcessSelection.SelectedItem == null)
                 return;
@@ -77,14 +78,14 @@ namespace SM64_Diagnostic
             // Temp: Remove "Other" tab
 #if RELEASE
             tabControlMain.TabPages.Remove(tabPageExpressions);
-#endif   
-                   
-            _sm64Stream = new ProcessStream(_config);
+#endif
+
+            _sm64Stream = new ProcessStream();
             _sm64Stream.OnUpdate += OnUpdate;
 
-            _disManager = new DisassemblyManager(_config, this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
+            _disManager = new DisassemblyManager(this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
             _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
-            _hackManager = new HackManager(_sm64Stream, _romHacks, checkedListBoxRomHacks);
+            _hackManager = new HackManager(_sm64Stream, _romHacks, checkedListBoxHacks);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -102,49 +103,47 @@ namespace SM64_Diagnostic
             mapGui.MapShowHolp = checkBoxMapShowHolp;
             mapGui.MapShowCamera = checkBoxMapShowCamera;
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
-            _mapManager = new MapManager(_sm64Stream, _config, _mapAssoc, _objectAssoc, mapGui);
+            _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
 
-            _marioManager = new MarioManager(_sm64Stream, _config, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
-            _hudManager = new HudManager(_sm64Stream, _config, _hudData, tabPageHud);
-            _miscManager = new MiscManager(_sm64Stream, _config, _miscData, flowLayoutPanelMisc, groupBoxPuController);
-            _cameraManager = new CameraManager(_sm64Stream, _config, _cameraData, panelCameraBorder, flowLayoutPanelCamera);
-            _triangleManager = new TriangleManager(_sm64Stream, _config, flowLayoutPanelTriangles, maskedTextBoxOtherTriangle);
+            _marioManager = new MarioManager(_sm64Stream, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
+            _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
+            _miscManager = new MiscManager(_sm64Stream, _miscData, flowLayoutPanelMisc, groupBoxPuController);
+            _cameraManager = new CameraManager(_sm64Stream, _cameraData, panelCameraBorder, flowLayoutPanelCamera);
+            _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData);
+            _debugManager = new DebugManager();
 
             // Create object manager
-            var objectGui = new ObjectDataGui();
-            objectGui.ObjectBorderPanel = panelObjectBorder;
-            objectGui.ObjectFlowLayout = flowLayoutPanelObject;
-            objectGui.ObjectImagePictureBox = pictureBoxObject;
-            objectGui.ObjAddressLabelValue = labelObjAddValue;
-            objectGui.ObjAddressLabel = labelObjAdd;
-            objectGui.ObjBehaviorLabel = labelObjBhvValue;
-            objectGui.ObjectNameTextBox = textBoxObjName;
-            objectGui.ObjSlotIndexLabel = labelObjSlotIndValue;
-            objectGui.ObjSlotPositionLabel = labelObjSlotPosValue;
-            objectGui.CloneButton = buttonObjClone;
-            objectGui.MoveMarioToButton = buttonObjGoTo;
-            objectGui.MoveToMarioButton = buttonObjRetrieve;
-            objectGui.UnloadButton = buttonObjUnload;
-            _objectManager = new ObjectManager(_sm64Stream, _config, _objectAssoc, _objectData, objectGui);
+            var objectGui = new ObjectDataGui()
+            {
+                ObjectBorderPanel = panelObjectBorder,
+                ObjectFlowLayout = flowLayoutPanelObject,
+                ObjectImagePictureBox = pictureBoxObject,
+                ObjAddressLabelValue = labelObjAddValue,
+                ObjAddressLabel = labelObjAdd,
+                ObjBehaviorLabel = labelObjBhvValue,
+                ObjectNameTextBox = textBoxObjName,
+                ObjSlotIndexLabel = labelObjSlotIndValue,
+                ObjSlotPositionLabel = labelObjSlotPosValue,
+                CloneButton = buttonObjClone,
+                MoveMarioToButton = buttonObjGoTo,
+                MoveToMarioButton = buttonObjRetrieve,
+                UnloadButton = buttonObjUnload
+            };
+            _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
 
             // Create options manager
             var optionGui = new OptionsGui();
             optionGui.CheckBoxStartFromOne = checkBoxStartSlotIndexOne;
-            _optionsManager = new OptionsManager(optionGui, _config);
+            _optionsManager = new OptionsManager(optionGui);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
             _slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
             _slotManagerGui.MapObjectToggleModeComboBox = comboBoxMapToggleMode;
             _slotManagerGui.FlowLayoutContainer = flowLayoutPanelObjects;
-            _objectSlotManager = new ObjectSlotManager(_sm64Stream, _config, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
-
-            // Add SortMethods
-            foreach (var sm in Enum.GetValues(typeof(ObjectSlotManager.SortMethodType)))
-                comboBoxSortMethod.Items.Add(sm);
-
-            // Use default slot sort method
-            comboBoxSortMethod.SelectedIndex = 0;
+            _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
+            _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
+            _objectSlotManager = new ObjectSlotsManager(_sm64Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
 
             SetupViews();
 
@@ -170,19 +169,21 @@ namespace SM64_Diagnostic
 
             // Read configuration
             loadingForm.UpdateStatus("Loading main configuration", statusNum++);
-            _config = XmlConfigParser.OpenConfig(@"Config/Config.xml");
+            XmlConfigParser.OpenConfig(@"Config/Config.xml");
             loadingForm.UpdateStatus("Loading Miscellaneous Data", statusNum++);
-            _miscData = XmlConfigParser.OpenMiscData(@"Config/MiscData.xml");
+            _miscData = XmlConfigParser.OpenWatchVarData(@"Config/MiscData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Object Data", statusNum++);
-            _objectData = XmlConfigParser.OpenObjectData(@"Config/ObjectData.xml");
+            _objectData = XmlConfigParser.OpenWatchVarData(@"Config/ObjectData.xml", "ObjectDataSchema.xsd", "objectOffset");
             loadingForm.UpdateStatus("Loading Object Associations", statusNum++);
             _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", _slotManagerGui);
             loadingForm.UpdateStatus("Loading Mario Data", statusNum++);
-            _marioData = XmlConfigParser.OpenMarioData(_config, @"Config/MarioData.xml");
+            _marioData = XmlConfigParser.OpenWatchVarData(@"Config/MarioData.xml", "MarioDataSchema.xsd", "marioOffset");
             loadingForm.UpdateStatus("Loading Camera Data", statusNum++);
-            _cameraData = XmlConfigParser.OpenCameraData(_config, @"Config/CameraData.xml");
-            loadingForm.UpdateStatus("Loading HUD data", statusNum++);
-            _hudData = XmlConfigParser.OpenHudData(_config, @"Config/HudData.xml");
+            _cameraData = XmlConfigParser.OpenWatchVarData(@"Config/CameraData.xml", "CameraDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
+            _triangleData = XmlConfigParser.OpenWatchVarData(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd", "triangleOffset");
+            loadingForm.UpdateStatus("Loading Triangles Data", statusNum++);
+            _hudData = XmlConfigParser.OpenWatchVarData(@"Config/HudData.xml", "HudDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Map Associations", statusNum++);
             _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
             loadingForm.UpdateStatus("Loading Scripts", statusNum++);
@@ -207,12 +208,10 @@ namespace SM64_Diagnostic
         private List<Process> GetAvailableProcesses()
         {
             var AvailableProcesses = Process.GetProcesses();
-            // Why the f--- I named this a resort list? I will never know
-            // Note to self: Re-Sort not resort
             List<Process> resortList = new List<Process>();
             foreach (Process p in AvailableProcesses)
             {
-                if (!p.ProcessName.ToLower().Contains(_config.ProcessName.ToLower()))
+                if (!p.ProcessName.ToLower().Contains(Config.ProcessName.ToLower()))
                     continue;
 
                 resortList.Add(p);
@@ -222,13 +221,14 @@ namespace SM64_Diagnostic
 
         private void OnUpdate(object sender, EventArgs e)
         {
+            _objectSlotManager.Update();
+            _objectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
             _marioManager.Update(tabControlMain.SelectedTab == tabPageMario);
             _cameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
             _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
             _miscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
             _triangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
             _mapManager?.Update();
-            UpdateMemoryValues();
             _scriptManager.Update();
             _hackManager.Update();
         }
@@ -302,27 +302,6 @@ namespace SM64_Diagnostic
             }
         }
 
-        private void UpdateMemoryValues()
-        {
-            for (int i = 0; i < _miscData.Count; i++)
-            {
-                WatchVariable watchVar = _miscData[i];
-                if (watchVar.Special)
-                    continue;
-
-                // Make sure cell is not being edited
-                if (dataGridViewExpressions.IsCurrentCellInEditMode
-                    && dataGridViewExpressions.SelectedRows[0].Index
-                    == _tableOtherData.Rows.IndexOf(_otherDataRowAssoc[i]))
-                    continue;
-
-                // Get data
-                byte[] data = new byte[watchVar.GetByteCount()];
-                _sm64Stream.ReadProcessMemory((int)(watchVar.Address & 0x0FFFFFFF), data, watchVar.AbsoluteAddressing);
-                _otherDataRowAssoc[i]["Value"] = String.Join("", data);
-            }
-        }
-
         private void buttonOtherModify_Click(object sender, EventArgs e)
         {
             var row = _tableOtherData.Rows[dataGridViewExpressions.SelectedRows[0].Index];
@@ -382,7 +361,7 @@ namespace SM64_Diagnostic
                 // Create new row
                 var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.Type.ToString(), "", 
                     watchVar.AbsoluteAddressing ? watchVar.Address 
-                    : watchVar.Address + _config.RamStartAddress);
+                    : watchVar.Address + Config.RamStartAddress);
 
                 // Add variable to lists
                 int newIndex = _miscData.Count;
@@ -391,14 +370,6 @@ namespace SM64_Diagnostic
 
                 XmlConfigParser.AddWatchVariableOtherData(watchVar);
             }
-        }
-
-        private void comboBoxSortMethod_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_objectSlotManager == null)
-                return;
-
-            _objectSlotManager.SortMethod = (ObjectSlotManager.SortMethodType) comboBoxSortMethod.SelectedItem;
         }
 
         private async void flowLayoutPanelObjects_Resize(object sender, EventArgs e)
@@ -462,67 +433,62 @@ namespace SM64_Diagnostic
         private void radioButtonDbgOff_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug off
-            _sm64Stream.WriteRam(new byte[] { 0 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 0 }, Config.Debug.Toggle);
         }
 
         private void radioButtonDbgObjCnt_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
 
             // Set mode
-            _sm64Stream.WriteRam(new byte[] { 0 }, _config.Debug.Setting);
+            _sm64Stream.WriteRam(new byte[] { 0 }, Config.Debug.Setting);
         }
 
         private void radioButtonDbgChkInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
 
             // Set mode
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Setting);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Setting);
         }
 
         private void radioButtonDbgMapInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
 
             // Set mode
-            _sm64Stream.WriteRam(new byte[] { 2 }, _config.Debug.Setting);
+            _sm64Stream.WriteRam(new byte[] { 2 }, Config.Debug.Setting);
         }
 
         private void radioButtonDbgStgInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
 
             // Set mode
-            _sm64Stream.WriteRam(new byte[] { 3 }, _config.Debug.Setting);
+            _sm64Stream.WriteRam(new byte[] { 3 }, Config.Debug.Setting);
         }
 
         private void checkBoxMoveCamWithPu_CheckedChanged(object sender, EventArgs e)
         {
-            _config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
+            Config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
         }
 
         private void checkBoxUseOverlays_CheckedChanged(object sender, EventArgs e)
         {
-            _config.ShowOverlays = checkBoxUseOverlays.Checked;
-        }
-
-        private void buttonPuConHome_Click(object sender, EventArgs e)
-        {
-
+            Config.ShowOverlays = checkBoxUseOverlays.Checked;
         }
 
         private void radioButtonDbgFxInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
 
             // Set mode
-            _sm64Stream.WriteRam(new byte[] { 4 }, _config.Debug.Setting);
+            _sm64Stream.WriteRam(new byte[] { 4 }, Config.Debug.Setting);
         }
 
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
@@ -551,10 +517,10 @@ namespace SM64_Diagnostic
         private void radioButtonDbgEnemyInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, _config.Debug.Toggle);
+            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
 
             // Set mode
-            _sm64Stream.WriteRam(new byte[] { 5 }, _config.Debug.Setting);
+            _sm64Stream.WriteRam(new byte[] { 5 }, Config.Debug.Setting);
         }
 
         #endregion
@@ -565,6 +531,7 @@ namespace SM64_Diagnostic
             {
                 _objectSlotManager.UpdateSelectedObjectSlots();
                 comboBoxMapToggleMode.Visible = true;
+                labelToggleMode.Visible = true;
                 if (_splitterIsExpanded)
                     splitContainerMain.SplitterDistance = splitContainerMain.Height;
             }
@@ -572,6 +539,7 @@ namespace SM64_Diagnostic
             {
                 _objectSlotManager.SetAllSelectedObjectSlots();
                 comboBoxMapToggleMode.Visible = false;
+                labelToggleMode.Visible = false;
                 if (_splitterIsExpanded)
                     splitContainerMain.SplitterDistance = _defaultSplitValue;
             }

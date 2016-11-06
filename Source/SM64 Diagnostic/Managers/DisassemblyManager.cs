@@ -15,7 +15,6 @@ namespace SM64_Diagnostic.ManagerClasses
         const int NumberOfLinesAdd = 40;
 
         ProcessStream _stream;
-        Config _config;
         RichTextBox _output;
         MaskedTextBox _textBoxStartAdd;
         Button _goButton;
@@ -23,9 +22,8 @@ namespace SM64_Diagnostic.ManagerClasses
         bool _addressChanged = false;
         uint _lastProcessAddress;
 
-        public DisassemblyManager(Config config, Form formContext, RichTextBox disTextBox, MaskedTextBox textBoxStartAdd, ProcessStream stream, Button goButton)
+        public DisassemblyManager(Form formContext, RichTextBox disTextBox, MaskedTextBox textBoxStartAdd, ProcessStream stream, Button goButton)
         {
-            _config = config;
             _stream = stream;
             _output = disTextBox;
             _textBoxStartAdd = textBoxStartAdd;
@@ -187,11 +185,11 @@ namespace SM64_Diagnostic.ManagerClasses
             // Display data address
             if (dropAction.Action == DropAction.ActionType.Object)
             {
-                StartShowDisassmbly(dropAction.Address, (int) _config.Mario.StructSize / 4);
+                StartShowDisassmbly(dropAction.Address, (int) Config.Mario.StructSize / 4);
             }
             else if (dropAction.Action == DropAction.ActionType.Mario)
             {
-                StartShowDisassmbly(dropAction.Address, (int) _config.ObjectSlots.StructSize / 4);
+                StartShowDisassmbly(dropAction.Address, (int) Config.ObjectSlots.StructSize / 4);
             }
         }
     }

@@ -3,6 +3,6 @@
   <Config>
     <HackDirectory>Resources\Hacks\</HackDirectory>
   </Config>
-  <Hack name="Pu Visibility" path="PuVisible.hck" />
+  <Hack name="Pu Visibility (by Peter Fedak)" path="PuVisible.hck" />
   <Hack name="Camera 45 Degrees" path="Camera45Hack.hck" />
 </Hacks>

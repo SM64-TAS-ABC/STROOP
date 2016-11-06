@@ -9,12 +9,10 @@ namespace SM64_Diagnostic.ManagerClasses
 {
     public class OptionsManager
     {
-        Config _config;
         OptionsGui _gui;
 
-        public OptionsManager(OptionsGui gui, Config config)
+        public OptionsManager(OptionsGui gui)
         {
-            _config = config;
             _gui = gui;
 
             _gui.CheckBoxStartFromOne.CheckedChanged += CheckBoxStartFromOne_CheckedChanged;
@@ -23,7 +21,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private void CheckBoxStartFromOne_CheckedChanged(object sender, EventArgs e)
         {
-            _config.SlotIndexsFromOne = _gui.CheckBoxStartFromOne.Checked;
+            Config.SlotIndexsFromOne = _gui.CheckBoxStartFromOne.Checked;
         }
     }
 }

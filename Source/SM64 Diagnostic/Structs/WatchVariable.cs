@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace SM64_Diagnostic.Structs
         public bool OtherOffset;
         public bool InvertBool;
         public bool IsAngle;
+        public Color? BackroundColor;
 
 
         public static Dictionary<Type, int> TypeSize = new Dictionary<Type, int>()
