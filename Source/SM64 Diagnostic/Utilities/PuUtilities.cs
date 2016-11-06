@@ -38,7 +38,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveToRelativePu(ProcessStream stream, int newPuX, int newPuY, int newPuZ)
         {
-            var marioAddress = Config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
 
             // Get Mario position
             float marioX, marioY, marioZ;
@@ -79,7 +79,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveToPu(ProcessStream stream, int newPuX, int newPuY, int newPuZ)
         {
-            var marioAddress = Config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
 
             // Get Mario position
             float marioX, marioY, marioZ;
@@ -121,7 +121,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static string GetPuPosString(ProcessStream stream)
         {
-            var marioAddress = Config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
 
             // Get Mario position
             float marioX, marioZ;
@@ -136,7 +136,7 @@ namespace SM64_Diagnostic.Utilities
         }
         public static string GetQpuPosString(ProcessStream stream)
         {
-            var marioAddress = Config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
 
             // Get Mario position
             float marioX, marioZ;

@@ -100,11 +100,11 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private void ProcessSpecialVars()
         {
-            var floorY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.GroundYOffset, 4), 0);
+            var floorY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.GroundYOffset, 4), 0);
             float marioX, marioY, marioZ;
-            marioX = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.XOffset, 4), 0);
-            marioY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.YOffset, 4), 0);
-            marioZ = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.ZOffset, 4), 0);
+            marioX = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.XOffset, 4), 0);
+            marioY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.YOffset, 4), 0);
+            marioZ = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.ZOffset, 4), 0);
 
             float normX, normY, normZ, normOffset;
             normX = BitConverter.ToSingle(_stream.ReadRam(TriangleAddress + Config.TriangleOffsets.NormX, 4), 0);
@@ -126,7 +126,7 @@ namespace SM64_Diagnostic.ManagerClasses
                         specialVar.Text = (marioY - floorY).ToString();
                         break;
                     case "DistanceBelowCeiling":
-                        specialVar.Text = (BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.CeilingYOffset, 4), 0)
+                        specialVar.Text = (BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.CeilingYOffset, 4), 0)
                             - marioY).ToString();
                         break;
                     case "ClosestVertex":
@@ -252,15 +252,15 @@ namespace SM64_Diagnostic.ManagerClasses
                 switch (Mode)
                 {
                     case TriangleMode.Ceiling:
-                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.CeilingTriangleOffset, 4), 0);
+                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset, 4), 0);
                         break;
 
                     case TriangleMode.Floor:
-                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.FloorTriangleOffset, 4), 0);
+                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset, 4), 0);
                         break;
 
                     case TriangleMode.Wall:
-                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.WallTriangleOffset, 4), 0);
+                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset, 4), 0);
                         break;
                 }
 

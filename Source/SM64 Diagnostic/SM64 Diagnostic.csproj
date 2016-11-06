@@ -95,6 +95,7 @@
     <Compile Include="Controls\Map\MapBaseObject.cs" />
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
+    <Compile Include="Extensions\ProcessStreamExtensions.cs" />
     <Compile Include="Extensions\RectangleFExtensions.cs" />
     <Compile Include="Extensions\WatchExpressionExtensions.cs" />
     <Compile Include="LoadingForm.cs">
@@ -151,6 +152,7 @@
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Structs\ObjectSlotData.cs" />
     <Compile Include="Structs\RomHack.cs" />
+    <Compile Include="Utilities\MoreMath.cs" />
     <Compile Include="Utilities\NativeMethods.cs" />
     <Compile Include="Utilities\ScriptParser.cs" />
     <Compile Include="Controls\Map\TriangleMapObject.cs" />

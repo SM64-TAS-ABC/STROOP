@@ -41,7 +41,7 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 if (!watchVar.Special)
                 {
-                    WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, Config.Mario.MarioStructAddress);
+                    WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, Config.Mario.StructAddress);
                     variableTable.Controls.Add(watchControl.Control);
                     _marioDataControls.Add(watchControl);
                     continue;
@@ -82,7 +82,7 @@ namespace SM64_Diagnostic.ManagerClasses
         {
             // Get Mario position and rotation
             float x, y, z, rot;
-            var marioAddress = Config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
             x = BitConverter.ToSingle(_stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
             y = BitConverter.ToSingle(_stream.ReadRam(marioAddress + Config.Mario.YOffset, 4), 0);
             z = BitConverter.ToSingle(_stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
@@ -116,7 +116,7 @@ namespace SM64_Diagnostic.ManagerClasses
             cameraRot = (float)(((UInt16)(BitConverter.ToUInt32(_stream.ReadRam(Config.CameraRot, 4), 0))) / 65536f * 360f);
 
             // Update floor triangle
-            UInt32 floorTriangle = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.FloorTriangleOffset, 4), 0);
+            UInt32 floorTriangle = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset, 4), 0);
             if (floorTriangle != 0x00)
             {
                 Int16 x1 = BitConverter.ToInt16(_stream.ReadRam(floorTriangle + Config.TriangleOffsets.X1, 2), 0);
@@ -152,23 +152,23 @@ namespace SM64_Diagnostic.ManagerClasses
             if (!updateView)
                 return;
 
-            var floorY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.GroundYOffset, 4), 0);
+            var floorY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.GroundYOffset, 4), 0);
 
             if (floorTriangle != 0x00)
             {
-                float hSpeed = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.HSpeedOffset, 4), 0);
+                float hSpeed = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.HSpeedOffset, 4), 0);
                 float normY = BitConverter.ToSingle(_stream.ReadRam(floorTriangle + Config.TriangleOffsets.NormY, 4), 0);
                 _deFactoSpeed.Text = (hSpeed * normY).ToString();
             }
             else
                 _deFactoSpeed.Text = "(No Floor)";
 
-            float slidingSpeedX = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.SlidingSpeedXOffset, 4), 0);
-            float slidingSpeedZ = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.SlidingSpeedZOffset, 4), 0);
+            float slidingSpeedX = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset, 4), 0);
+            float slidingSpeedZ = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset, 4), 0);
 
             _slidingSpeed.Text = ((float)Math.Sqrt(slidingSpeedX * slidingSpeedX + slidingSpeedZ * slidingSpeedZ)).ToString();
 
-            _fallHeight.Text = (BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.PeakHeightOffset, 4), 0) - floorY).ToString();
+            _fallHeight.Text = (BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.PeakHeightOffset, 4), 0) - floorY).ToString();
         }
 
         private void RegisterControlEvents(Control control)
@@ -182,7 +182,7 @@ namespace SM64_Diagnostic.ManagerClasses
         private void OnDrag(object sender, EventArgs e)
         {
             // Start the drag and drop but setting the object slot index in Drag and Drop data
-            var dropAction = new DropAction(DropAction.ActionType.Mario, Config.Mario.MarioStructAddress);
+            var dropAction = new DropAction(DropAction.ActionType.Mario, Config.Mario.StructAddress);
             (sender as Control).DoDragDrop(dropAction, DragDropEffects.All);
         }
 

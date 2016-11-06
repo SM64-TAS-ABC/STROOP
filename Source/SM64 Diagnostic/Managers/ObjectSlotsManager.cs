@@ -251,9 +251,9 @@ namespace SM64_Diagnostic.ManagerClasses
 
             // Get mario position
             float marioX, marioY, marioZ;
-            marioX = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.XOffset, 4), 0);
-            marioY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.YOffset, 4), 0);
-            marioZ = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.MarioStructAddress + Config.Mario.ZOffset, 4), 0);
+            marioX = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.XOffset, 4), 0);
+            marioY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.YOffset, 4), 0);
+            marioZ = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.ZOffset, 4), 0);
 
             // Calculate distance to Mario
             foreach(var objSlot in newObjectSlotData)
@@ -298,9 +298,9 @@ namespace SM64_Diagnostic.ManagerClasses
             activeObjCnt = 0;
 
             _standingOnObject = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.StandingOnObjectPointer, 4), 0);
-            _interactingObject = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.InteractingObjectPointerOffset + Config.Mario.MarioStructAddress, 4), 0);
-            _holdingObject = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.HoldingObjectPointerOffset + Config.Mario.MarioStructAddress, 4), 0);
-            _usingObject = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.UsingObjectPointerOffset + Config.Mario.MarioStructAddress, 4), 0);
+            _interactingObject = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.InteractingObjectPointerOffset + Config.Mario.StructAddress, 4), 0);
+            _holdingObject = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.HoldingObjectPointerOffset + Config.Mario.StructAddress, 4), 0);
+            _usingObject = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.UsingObjectPointerOffset + Config.Mario.StructAddress, 4), 0);
             _closestObject = newObjectSlotData.OrderBy(s => !s.IsActive || s.Behavior == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF) ? float.MaxValue
                 : s.DistanceToMario).First().Address;
 
@@ -409,7 +409,6 @@ namespace SM64_Diagnostic.ManagerClasses
                 _objManager.SlotIndex = _memoryAddressSlotIndex[currentAddress] + (Config.SlotIndexsFromOne ? 1 : 0);
                 _objManager.SlotPos = (objectData.ObjectProcessGroup == VacantGroup ? "VS " : "")
                     + (slotPos + (Config.SlotIndexsFromOne ? 1 : 0)).ToString();
-                _objManager.Update();
             }
 
             // Update the map

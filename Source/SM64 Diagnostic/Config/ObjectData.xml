@@ -17,8 +17,8 @@
   <Data type="uint" address="0x114" objectOffset="true" isAngle="true">Pitch (Rot Speed)</Data>
   <Data type="uint" address="0x11c" objectOffset="true" isAngle="true">Roll (Rot Speed)</Data>
   <Data type="float" address="0x015C" objectOffset="true">Dist to Mario</Data>
-  <Data special="true" specialType="DistanceToMario">Act. Dist to Mario</Data>
-  <Data special="true" specialType="LateralDistanceToMario">Lat. Dist to Mario</Data>
+  <Data special="true" specialType="MarioDistanceToObject">Act. Dist to Mario</Data>
+  <Data special="true" specialType="MarioLateralDistanceToObject">Lat. Dist to Mario</Data>
   <Data type="uint" address="0x0160" objectOffset="true" isAngle="true">Angle to Mario</Data>
   <Data type="float" address="0x019C" objectOffset="true">Drawing Dist</Data>
   <Data special="true" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
@@ -37,6 +37,10 @@
   <Data type="float" address="0x164" objectOffset="true">Home X</Data>
   <Data type="float" address="0x168" objectOffset="true">Home Y</Data>
   <Data type="float" address="0x16C" objectOffset="true">Home Z</Data>
+  <Data special="true" specialType="MarioDistanceToObjectHome">Mario Dist to Home</Data>
+  <Data special="true" specialType="MarioLateralDistanceToObjectHome">Mario Lat. Dist to Home</Data>
+  <Data special="true" specialType="ObjectDistanceToHome">Dist to Home</Data>
+  <Data special="true" specialType="LateralObjectDistanceToHome">Lat. Dist to Home</Data>
   <Data type="uint" address="0x1CC" objectOffset="true" useHex="true">Release Status</Data>
   <Data type="ushort" address="0x136" objectOffset="true" useHex="true">Interaction Status</Data>
   <Data type="int" address="0x144" objectOffset="true">Subtype</Data>

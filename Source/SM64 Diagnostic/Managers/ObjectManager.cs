@@ -8,20 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SM64_Diagnostic.Controls;
+using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic.ManagerClasses
 {
-    public class ObjectManager
+    public class ObjectManager : DataManager
     {
-        List<WatchVariableControl> _objectDataControls;
         List<WatchVariableControl> _behaviorDataControls = new List<WatchVariableControl>();
-        ProcessStream _stream;
         ObjectAssociations _objAssoc;
         ObjectDataGui _objGui;
-
-        DataContainer _disToMario;
-        DataContainer _latDisToMario;
-        DataContainer _rngCalls;
 
         object _watchVarLocker = new object();
 
@@ -39,7 +34,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 // Remove old watchVars from list
                 foreach (var watchVar in _behaviorDataControls)
                 {
-                    _objectDataControls.Remove(watchVar);
+                    _dataControls.Remove(watchVar);
                     _objGui.ObjectFlowLayout.Controls.Remove(watchVar.Control);
                 }
                 _behaviorDataControls.Clear();
@@ -50,7 +45,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     var newWatchVarControl = new WatchVariableControl(_stream, watchVar);
                     newWatchVarControl.Color = color;
                     _behaviorDataControls.Add(newWatchVarControl);
-                    _objectDataControls.Add(newWatchVarControl);
+                    _dataControls.Add(newWatchVarControl);
                     _objGui.ObjectFlowLayout.Controls.Add(newWatchVarControl.Control);
                 }
             }
@@ -68,6 +63,10 @@ namespace SM64_Diagnostic.ManagerClasses
                 {
                     _currentAddress = value.HasValue ? value.Value : 0x0000;
                     _objGui.ObjAddressLabelValue.Text = "0x" + _currentAddress.ToString("X8");
+                    foreach (WatchVariableControl watchVar in _dataControls)
+                    {
+                        watchVar.OtherOffset = _currentAddress;
+                    }
                 }
             }
         }
@@ -164,9 +163,23 @@ namespace SM64_Diagnostic.ManagerClasses
 
         #endregion
 
+        protected override void InitializeSpecialVariables()
+        {
+            _specialWatchVars = new List<DataContainer>()
+            {
+                new DataContainer("MarioDistanceToObject"),
+                new DataContainer("MarioLateralDistanceToObject"),
+                new DataContainer("MarioDistanceToObjectHome"),
+                new DataContainer("MarioLateralDistanceToObjectHome"),
+                new DataContainer("ObjectDistanceToHome"),
+                new DataContainer("LateralObjectDistanceToHome"),
+                new DataContainer("RngCallsPerFrame"),
+            };
+        }
+
         public ObjectManager(ProcessStream stream, ObjectAssociations objAssoc, List<WatchVariable> objectData, ObjectDataGui objectGui)
+            : base(stream, objectData, objectGui.ObjectFlowLayout)
         { 
-            _stream = stream;
             _objGui = objectGui;
             _objAssoc = objAssoc;
 
@@ -174,46 +187,7 @@ namespace SM64_Diagnostic.ManagerClasses
             RegisterControlEvents(_objGui.ObjectBorderPanel);
             foreach (Control control in _objGui.ObjectBorderPanel.Controls)
                 RegisterControlEvents(control);
-
-            _disToMario = new DataContainer("Dis. to Mario");
-            _latDisToMario = new DataContainer("Lat. Dis. to M");
-            _rngCalls = new DataContainer("RNG Calls/Frame");
-
-            _objectDataControls = new List<WatchVariableControl>();
-            foreach (WatchVariable watchVar in objectData)
-            {
-                if (!watchVar.Special)
-                {
-                    WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar);
-                    objectGui.ObjectFlowLayout.Controls.Add(watchControl.Control);
-                    _objectDataControls.Add(watchControl);
-                    continue;
-                }
-
-                switch (watchVar.SpecialType)
-                {
-                    case "DistanceToMario":
-                        _disToMario.Name = watchVar.Name;
-                        objectGui.ObjectFlowLayout.Controls.Add(_disToMario.Control);
-                        break;
-
-                    case "LateralDistanceToMario":
-                        _latDisToMario.Name = watchVar.Name;
-                        objectGui.ObjectFlowLayout.Controls.Add(_latDisToMario.Control);
-                        break;
-
-                    case "RngCallsPerFrame":
-                        _rngCalls.Name = watchVar.Name;
-                        objectGui.ObjectFlowLayout.Controls.Add(_rngCalls.Control);
-                        break;
-
-                    default:
-                        var failedContainer = new DataContainer(watchVar.Name);
-                        failedContainer.Text = "Couldn't Find";
-                        objectGui.ObjectFlowLayout.Controls.Add(failedContainer.Control);
-                        break;
-                }
-            }
+            
             _objGui.ObjAddressLabelValue.Click += ObjAddressLabel_Click;
             _objGui.ObjAddressLabel.Click += ObjAddressLabel_Click;
 
@@ -262,38 +236,69 @@ namespace SM64_Diagnostic.ManagerClasses
                 MarioActions.CloneObject(_stream, CurrentAddress.Value);
         }
 
-        public void Update()
+        private void ProcessSpecialVars()
         {
-            lock (_watchVarLocker)
-            {
-                // Update watch variables
-                foreach (var watchVar in _objectDataControls)
-                {
-                    watchVar.OtherOffset = CurrentAddress.HasValue ? CurrentAddress.Value : 0x0000;
-                    watchVar.Update();
-                }
-            }
-
             // Get Mario position
-            var marioAddress = Config.Mario.MarioStructAddress;
             float mX, mY, mZ;
-            mX = BitConverter.ToSingle(_stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
-            mY = BitConverter.ToSingle(_stream.ReadRam(marioAddress + Config.Mario.YOffset, 4), 0);
-            mZ = BitConverter.ToSingle(_stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
+            mX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            mY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            mZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
             // Get object position
-            float x, y, z;
-            x = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + Config.ObjectSlots.ObjectXOffset, 4), 0);
-            y = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + Config.ObjectSlots.ObjectYOffset, 4), 0);
-            z = BitConverter.ToSingle(_stream.ReadRam(_currentAddress + Config.ObjectSlots.ObjectZOffset, 4), 0);
+            float objX, objY, objZ;
+            objX = _stream.GetSingle(_currentAddress + Config.ObjectSlots.ObjectXOffset);
+            objY = _stream.GetSingle(_currentAddress + Config.ObjectSlots.ObjectYOffset);
+            objZ = _stream.GetSingle(_currentAddress + Config.ObjectSlots.ObjectZOffset);
 
-            // Calculate distances to Mario
-            float latDisToMario = (float)Math.Sqrt(Math.Pow(x - mX, 2) + Math.Pow(z - mZ, 2));
-            float disToMario = (float)Math.Sqrt(Math.Pow(x - mX, 2) + Math.Pow(y - mY, 2) + Math.Pow(z - mZ, 2));
+            // Get object position
+            float objHomeX, objHomeY, objHomeZ;
+            objHomeX = _stream.GetSingle(_currentAddress + Config.ObjectSlots.HomeXOffset);
+            objHomeY = _stream.GetSingle(_currentAddress + Config.ObjectSlots.HomeYOffset);
+            objHomeZ = _stream.GetSingle(_currentAddress + Config.ObjectSlots.HomeZOffset);
+
+            foreach (DataContainer specialVar in _specialWatchVars)
+            {
+                switch (specialVar.SpecialName)
+                {
+                    case "MarioDistanceToObject":
+                        specialVar.Text = MoreMath.DistanceTo(mX, mY, mZ, objX, objY, objZ).ToString();
+                        break;
+
+                    case "MarioLateralDistanceToObject":
+                        specialVar.Text = MoreMath.DistanceTo(mX, mZ, objX, objZ).ToString();
+                        break;
+
+                    case "MarioDistanceToObjectHome":
+                        specialVar.Text = MoreMath.DistanceTo(mX, mY, mZ, objHomeX, objHomeY, objHomeZ).ToString();
+                        break;
+
+                    case "MarioLateralDistanceToObjectHome":
+                        specialVar.Text = MoreMath.DistanceTo(mX, mZ, objHomeX, objHomeZ).ToString();
+                        break;
+
+                    case "ObjectDistanceToHome":
+                        specialVar.Text = MoreMath.DistanceTo(objX, objY, objZ, objHomeX, objHomeY, objHomeZ).ToString();
+                        break;
+
+                    case "LateralObjectDistanceToHome":
+                        specialVar.Text = MoreMath.DistanceTo(objX, objZ, objHomeX, objHomeZ).ToString();
+                        break;
+
+                    case "RngCallsPerFrame":
+                        specialVar.Text = GetNumRngCalls().ToString();
+                        break;
+                }
+            }
+        }
+
+        public override void Update(bool updateView)
+        {
+            if (!updateView)
+                return;
 
             // Determine which object is being held
-            uint holdingObj = BitConverter.ToUInt32(_stream.ReadRam(marioAddress + Config.Mario.HoldingObjectPointerOffset, 4),0);
-            
+            uint holdingObj = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.HoldingObjectPointerOffset);
+
             // Change to unclone if we are already holding the object
             if ((holdingObj == _currentAddress) != _unclone)
             {
@@ -303,10 +308,8 @@ namespace SM64_Diagnostic.ManagerClasses
                 _objGui.CloneButton.Text = _unclone ? "UnClone" : "Clone";
             }
 
-            // Update data container text
-            _latDisToMario.Text = latDisToMario.ToString();
-            _disToMario.Text = disToMario.ToString();
-            _rngCalls.Text = GetNumRngCalls().ToString();
+            base.Update(updateView);
+            ProcessSpecialVars();
         }
 
         private int GetNumRngCalls()

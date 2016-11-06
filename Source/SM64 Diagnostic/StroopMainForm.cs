@@ -208,8 +208,6 @@ namespace SM64_Diagnostic
         private List<Process> GetAvailableProcesses()
         {
             var AvailableProcesses = Process.GetProcesses();
-            // Why the f--- I named this a resort list? I will never know
-            // Note to self: Re-Sort not resort
             List<Process> resortList = new List<Process>();
             foreach (Process p in AvailableProcesses)
             {
@@ -224,13 +222,13 @@ namespace SM64_Diagnostic
         private void OnUpdate(object sender, EventArgs e)
         {
             _objectSlotManager.Update();
+            _objectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
             _marioManager.Update(tabControlMain.SelectedTab == tabPageMario);
             _cameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
             _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
             _miscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
             _triangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
             _mapManager?.Update();
-            UpdateMemoryValues();
             _scriptManager.Update();
             _hackManager.Update();
         }
@@ -301,27 +299,6 @@ namespace SM64_Diagnostic
             {
                 _sm64Stream.Suspend();
                 buttonPauseResume.Text = "Resume";
-            }
-        }
-
-        private void UpdateMemoryValues()
-        {
-            for (int i = 0; i < _miscData.Count; i++)
-            {
-                WatchVariable watchVar = _miscData[i];
-                if (watchVar.Special)
-                    continue;
-
-                // Make sure cell is not being edited
-                if (dataGridViewExpressions.IsCurrentCellInEditMode
-                    && dataGridViewExpressions.SelectedRows[0].Index
-                    == _tableOtherData.Rows.IndexOf(_otherDataRowAssoc[i]))
-                    continue;
-
-                // Get data
-                byte[] data = new byte[watchVar.GetByteCount()];
-                _sm64Stream.ReadProcessMemory((int)(watchVar.Address & 0x0FFFFFFF), data, watchVar.AbsoluteAddressing);
-                _otherDataRowAssoc[i]["Value"] = String.Join("", data);
             }
         }
 

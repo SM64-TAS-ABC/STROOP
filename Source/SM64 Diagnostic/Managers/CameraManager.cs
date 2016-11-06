@@ -29,7 +29,7 @@ namespace SM64_Diagnostic.ManagerClasses
             _cameraDataControls = new List<WatchVariableControl>();
             foreach (WatchVariable watchVar in cameraData)
             {
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, Config.Mario.MarioStructAddress);
+                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, Config.Mario.StructAddress);
                 variableTable.Controls.Add(watchControl.Control);
                 _cameraDataControls.Add(watchControl);
             }

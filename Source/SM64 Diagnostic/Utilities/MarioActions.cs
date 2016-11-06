@@ -9,10 +9,12 @@ namespace SM64_Diagnostic.Utilities
 {
     public static class MarioActions
     {
+        public enum DistanceToObjType { Mario, Object, ObjectHome };
+
         public static bool MoveMarioToObject(ProcessStream stream, uint objAddress)
         {
             // Move mario to object
-            var marioAddress = Config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
 
             stream.Suspend();
 
@@ -39,7 +41,7 @@ namespace SM64_Diagnostic.Utilities
         public static bool MoveObjectToMario(ProcessStream stream, uint objAddress)
         {
             // Move object to Mario
-            var marioAddress = Config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
 
             stream.Suspend();
 
@@ -67,7 +69,7 @@ namespace SM64_Diagnostic.Utilities
         public static bool CloneObject(ProcessStream stream, uint objAddress)
         {
             bool success = true;
-            var marioAddress = Config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
 
             stream.Suspend();
 
@@ -85,7 +87,7 @@ namespace SM64_Diagnostic.Utilities
         public static bool UnCloneObject(ProcessStream stream, uint objAddress)
         {
             bool success = true;
-            var marioAddress = Config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
 
             stream.Suspend();
 
@@ -167,7 +169,7 @@ namespace SM64_Diagnostic.Utilities
 
             // Move mario to triangle
             bool success = true;
-            var marioAddress = Config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
             success &= stream.WriteRam(BitConverter.GetBytes(newX), marioAddress + Config.Mario.XOffset);
             success &= stream.WriteRam(BitConverter.GetBytes(newY), marioAddress + Config.Mario.YOffset);
             success &= stream.WriteRam(BitConverter.GetBytes(newZ), marioAddress + Config.Mario.ZOffset);
@@ -190,7 +192,7 @@ namespace SM64_Diagnostic.Utilities
 
             // Get Mario position
             short marioX, marioY, marioZ;
-            var marioAddress = Config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
             marioX = (short) BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
             marioY = (short) BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.YOffset, 4), 0);
             marioZ = (short) BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
@@ -249,7 +251,7 @@ namespace SM64_Diagnostic.Utilities
 
             // Get Mario position
             short marioX, marioY, marioZ;
-            var marioAddress = Config.Mario.MarioStructAddress;
+            var marioAddress = Config.Mario.StructAddress;
             marioX = (short)BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
             marioY = (short)BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.YOffset, 4), 0);
             marioZ = (short)BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
