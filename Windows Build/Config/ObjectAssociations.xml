@@ -49,6 +49,9 @@
     <Using>
       <OverlayImage path="Using.png"/>
     </Using>
+    <Closest>
+      <OverlayImage path="Closest.png"/>
+    </Closest>
   </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <Image path="Star Door.png"/>

@@ -18,7 +18,7 @@ namespace SM64_Diagnostic
 {
     public partial class StroopMainForm : Form
     {
-        const string _version = "v0.2.5";
+        const string _version = "v0.2.6";
         ProcessStream _sm64Stream = null;
 
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();

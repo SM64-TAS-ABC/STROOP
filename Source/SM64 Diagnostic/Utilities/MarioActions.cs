@@ -9,8 +9,6 @@ namespace SM64_Diagnostic.Utilities
 {
     public static class MarioActions
     {
-        public enum DistanceToObjType { Mario, Object, ObjectHome };
-
         public static bool MoveMarioToObject(ProcessStream stream, uint objAddress)
         {
             // Move mario to object
@@ -200,23 +198,12 @@ namespace SM64_Diagnostic.Utilities
             float normOffset = -(normX * marioX + normY * marioY + normZ * marioZ);
             float normDiff = normOffset - oldNormOffset;
 
-            short xOffset, yOffset, zOffset;
-            xOffset = (short)(-normDiff * normX);
-            yOffset = (short)(-normDiff * normY);
-            zOffset = (short)(-normDiff * normZ);
+            short yOffset = (short)(-normDiff * normY);
 
-            short v1X, v1Y, v1Z;
-            short v2X, v2Y, v2Z;
-            short v3X, v3Y, v3Z;
-            v1X = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.X1, 2), 0) + xOffset);
+            short v1Y, v2Y, v3Y;
             v1Y = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y1, 2), 0) + yOffset);
-            v1Z = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Z1, 2), 0) + zOffset);
-            v2X = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.X2, 2), 0) + xOffset);
             v2Y = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y2, 2), 0) + yOffset);
-            v2Z = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Z2, 2), 0) + zOffset);
-            v3X = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.X3, 2), 0) + xOffset);
             v3Y = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y3, 2), 0) + yOffset);
-            v3Z = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Z3, 2), 0) + zOffset);
 
             short yMin = Math.Min(Math.Min(v1Y, v2Y), v3Y);
             short yMax = Math.Max(Math.Max(v1Y, v2Y), v3Y);
@@ -225,16 +212,10 @@ namespace SM64_Diagnostic.Utilities
 
             // Update triangle
             bool success = true;
-
-            success &= stream.WriteRam(BitConverter.GetBytes(v1X), triangleAddress + Config.TriangleOffsets.X1);
+            
             success &= stream.WriteRam(BitConverter.GetBytes(v1Y), triangleAddress + Config.TriangleOffsets.Y1);
-            success &= stream.WriteRam(BitConverter.GetBytes(v1Z), triangleAddress + Config.TriangleOffsets.Z1);
-            success &= stream.WriteRam(BitConverter.GetBytes(v2X), triangleAddress + Config.TriangleOffsets.X2);
             success &= stream.WriteRam(BitConverter.GetBytes(v2Y), triangleAddress + Config.TriangleOffsets.Y2);
-            success &= stream.WriteRam(BitConverter.GetBytes(v2Z), triangleAddress + Config.TriangleOffsets.Z2);
-            success &= stream.WriteRam(BitConverter.GetBytes(v3X), triangleAddress + Config.TriangleOffsets.X3);
             success &= stream.WriteRam(BitConverter.GetBytes(v3Y), triangleAddress + Config.TriangleOffsets.Y3);
-            success &= stream.WriteRam(BitConverter.GetBytes(v3Z), triangleAddress + Config.TriangleOffsets.Z3);
             success &= stream.WriteRam(BitConverter.GetBytes(yMin), triangleAddress + Config.TriangleOffsets.YMin);
             success &= stream.WriteRam(BitConverter.GetBytes(yMax), triangleAddress + Config.TriangleOffsets.YMax);
             success &= stream.WriteRam(BitConverter.GetBytes(normOffset), triangleAddress + Config.TriangleOffsets.Offset);
