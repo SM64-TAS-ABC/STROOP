@@ -48,6 +48,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     _dataControls.Add(newWatchVarControl);
                     _objGui.ObjectFlowLayout.Controls.Add(newWatchVarControl.Control);
                 }
+                _behaviorDataControls.ForEach(w => w.OtherOffset = _currentAddress);
             }
         }
 
