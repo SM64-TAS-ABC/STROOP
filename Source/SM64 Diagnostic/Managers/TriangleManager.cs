@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
+using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic.ManagerClasses
 {
@@ -126,7 +127,7 @@ namespace SM64_Diagnostic.ManagerClasses
                         specialVar.Text = (marioY - floorY).ToString();
                         break;
                     case "DistanceBelowCeiling":
-                        specialVar.Text = (BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.CeilingYOffset, 4), 0)
+                        specialVar.Text = (_stream.GetSingle(Config.Mario.StructAddress + Config.Mario.CeilingYOffset)
                             - marioY).ToString();
                         break;
                     case "ClosestVertex":
@@ -153,7 +154,7 @@ namespace SM64_Diagnostic.ManagerClasses
                             specialVar.Text = "Wall";
                         goto case "CheckTriangleExists";
                     case "Steepness":
-                        specialVar.Text = (65536 / (Math.PI * 2) * Math.Acos(normY)).ToString();
+                        specialVar.Text = FixAngle((65536 / (Math.PI * 2) * Math.Acos(normY))).ToString();
                         goto case "CheckTriangleExists";
                     case "NormalDistAway":
                         specialVar.Text = (marioX * normX + marioY * normY + marioZ * normZ + normOffset).ToString();
@@ -179,6 +180,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private double FixAngle(double angle)
         {
+            angle = Math.Round(angle);
             angle %= 65536;
             if (angle > 32768)
                 angle -= 65536;
