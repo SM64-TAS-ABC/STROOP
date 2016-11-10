@@ -119,7 +119,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool Die(ProcessStream stream)
         {
-            return stream.WriteRam(BitConverter.GetBytes((short)0), Config.Hud.HpAddress);
+            return stream.WriteRam(BitConverter.GetBytes((short)255), Config.Hud.HpAddress);
         }
 
         public static bool StandardHud(ProcessStream stream)
