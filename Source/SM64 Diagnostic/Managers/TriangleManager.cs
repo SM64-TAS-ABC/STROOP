@@ -35,7 +35,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     if (dataContainer is WatchVariableControl)
                     {
                         var watchVar = dataContainer as WatchVariableControl;
-                        watchVar.OtherOffset = _triangleAddress;
+                        watchVar.OtherOffsets = new List<uint>() { _triangleAddress };
                     }
                 }
 

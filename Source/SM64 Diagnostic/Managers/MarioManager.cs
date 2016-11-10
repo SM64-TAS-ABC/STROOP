@@ -215,7 +215,7 @@ namespace SM64_Diagnostic.ManagerClasses
             if (dropAction.Action != DropAction.ActionType.Object)
                 return;
 
-            MarioActions.MoveObjectToMario(_stream, dropAction.Address);
+            MarioActions.RetreiveObjects(_stream, new List<uint>() { dropAction.Address });
         }
     }
 }

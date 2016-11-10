@@ -51,12 +51,10 @@ namespace SM64_Diagnostic.Extensions
         public static string GetStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset)
         {
             // Get dataBytes
-            var byteCount = WatchVariable.TypeSize[watchVar.Type];
-            var dataBytes = stream.ReadRam(watchVar.OtherOffset ? offset + watchVar.Address
-                : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
+            var dataBytes = watchVar.GetByteData(stream, offset);
 
             // Make sure offset is a valid pointer
-            if (watchVar.OtherOffset && offset == 0)
+            if (dataBytes == null)
                 return "(none)";
 
             // Parse floating point
@@ -84,7 +82,7 @@ namespace SM64_Diagnostic.Extensions
 
             // Print hex
             if (watchVar.UseHex)
-                return "0x" + dataValue.ToString("X" + byteCount * 2);
+                return "0x" + dataValue.ToString("X" + WatchVariable.TypeSize[watchVar.Type] * 2);
 
             // Print signed
             if (watchVar.Type == typeof(Int64))
@@ -99,7 +97,7 @@ namespace SM64_Diagnostic.Extensions
                 return dataValue.ToString();
         }
   
-        public static byte[] GetBytesFromAngleString(this WatchVariable watchVar, ProcessStream stream, uint offset, string value, WatchVariableControl.AngleViewModeType viewMode)
+        public static byte[] GetBytesFromAngleString(this WatchVariable watchVar, ProcessStream stream, string value, WatchVariableControl.AngleViewModeType viewMode)
         {
             if (watchVar.Type != typeof(UInt32) && watchVar.Type != typeof(UInt16)
                 && watchVar.Type != typeof(Int32) && watchVar.Type != typeof(Int16))
@@ -149,7 +147,7 @@ namespace SM64_Diagnostic.Extensions
 
         public static bool SetAngleStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset, string value, WatchVariableControl.AngleViewModeType viewMode)
         {
-            var dataBytes = watchVar.GetBytesFromAngleString(stream, offset, value, viewMode);
+            var dataBytes = watchVar.GetBytesFromAngleString(stream, value, viewMode);
             return watchVar.SetBytes(stream, offset, dataBytes);
         }
 

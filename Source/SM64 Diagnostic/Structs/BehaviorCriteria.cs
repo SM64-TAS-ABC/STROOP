@@ -45,6 +45,23 @@ namespace SM64_Diagnostic.Structs
             return true;
         }
 
+        public BehaviorCriteria? Generalize(BehaviorCriteria otherCriteria)
+        {
+            if (otherCriteria.BehaviorAddress != BehaviorAddress)
+                return null;
+
+            if (GfxId.HasValue && otherCriteria.GfxId.HasValue && GfxId.Value != otherCriteria.GfxId.Value)
+                return new BehaviorCriteria() { BehaviorAddress = BehaviorAddress};
+
+            if (SubType.HasValue && otherCriteria.SubType.HasValue && SubType.Value != otherCriteria.SubType.Value)
+                return new BehaviorCriteria() { BehaviorAddress = BehaviorAddress, GfxId = GfxId};
+
+            if (Appearance.HasValue && otherCriteria.Appearance.HasValue && Appearance.Value != otherCriteria.Appearance.Value)
+                return new BehaviorCriteria() { BehaviorAddress = BehaviorAddress, GfxId = GfxId, SubType = SubType };
+
+            return this;
+        }
+
         public static bool operator ==(BehaviorCriteria a, BehaviorCriteria b)
         {
             return (a.BehaviorAddress == b.BehaviorAddress && a.GfxId == b.GfxId

@@ -9,7 +9,7 @@ namespace SM64_Diagnostic.Utilities
 {
     public static class MarioActions
     {
-        public static bool MoveMarioToObject(ProcessStream stream, uint objAddress)
+        public static bool MoveMarioToObjects(ProcessStream stream, List<uint> objAddresses)
         {
             // Move mario to object
             var marioAddress = Config.Mario.StructAddress;
@@ -18,9 +18,9 @@ namespace SM64_Diagnostic.Utilities
 
             // Get object position
             float x, y, z;
-            x = BitConverter.ToSingle(stream.ReadRam(objAddress + Config.ObjectSlots.ObjectXOffset, 4), 0);
-            y = BitConverter.ToSingle(stream.ReadRam(objAddress + Config.ObjectSlots.ObjectYOffset, 4), 0);
-            z = BitConverter.ToSingle(stream.ReadRam(objAddress + Config.ObjectSlots.ObjectZOffset, 4), 0);
+            x = objAddresses.Average(obj => BitConverter.ToSingle(stream.ReadRam(obj + Config.ObjectSlots.ObjectXOffset, 4), 0));
+            y = objAddresses.Average(obj => BitConverter.ToSingle(stream.ReadRam(obj + Config.ObjectSlots.ObjectYOffset, 4), 0));
+            z = objAddresses.Average(obj => BitConverter.ToSingle(stream.ReadRam(obj + Config.ObjectSlots.ObjectZOffset, 4), 0));
 
             // Add offset
             y += Config.Mario.MoveToObjectYOffset;
@@ -36,7 +36,7 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool MoveObjectToMario(ProcessStream stream, uint objAddress)
+        public static bool RetreiveObjects(ProcessStream stream, List<uint> objAddresses)
         {
             // Move object to Mario
             var marioAddress = Config.Mario.StructAddress;
@@ -54,10 +54,12 @@ namespace SM64_Diagnostic.Utilities
 
             // Move object to Mario
             bool success = true;
-            success &= stream.WriteRam(BitConverter.GetBytes(x), objAddress + Config.ObjectSlots.ObjectXOffset);
-            success &= stream.WriteRam(BitConverter.GetBytes(y), objAddress + Config.ObjectSlots.ObjectYOffset);
-            success &= stream.WriteRam(BitConverter.GetBytes(z), objAddress + Config.ObjectSlots.ObjectZOffset);
-
+            foreach (var objAddress in objAddresses)
+            {
+                success &= stream.WriteRam(BitConverter.GetBytes(x), objAddress + Config.ObjectSlots.ObjectXOffset);
+                success &= stream.WriteRam(BitConverter.GetBytes(y), objAddress + Config.ObjectSlots.ObjectYOffset);
+                success &= stream.WriteRam(BitConverter.GetBytes(z), objAddress + Config.ObjectSlots.ObjectZOffset);
+            }
             stream.Resume();
 
             return success;
@@ -100,9 +102,14 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool UnloadObject(ProcessStream stream, uint address)
+        public static bool UnloadObject(ProcessStream stream, List<uint> addresses)
         {
-            return stream.WriteRam(new byte[] { 0x00, 0x00 }, address + Config.ObjectSlots.ObjectActiveOffset);
+            bool success = true;
+            foreach (var address in addresses)
+            {
+                success &= stream.WriteRam(new byte[] { 0x00, 0x00 }, address + Config.ObjectSlots.ObjectActiveOffset);
+            }
+            return success;
         }
 
         public static bool RefillHp(ProcessStream stream)

@@ -46,7 +46,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     continue;
                 }
 
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, 0);
+                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar);
                 variableTable.Controls.Add(watchControl.Control);
                 _dataControls.Add(watchControl);
             }

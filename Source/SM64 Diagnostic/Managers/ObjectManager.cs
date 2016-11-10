@@ -20,10 +20,9 @@ namespace SM64_Diagnostic.ManagerClasses
 
         object _watchVarLocker = new object();
 
-        uint _currentAddress;
-        int _slotIndex;
+        string _slotIndex;
         string _slotPos;
-        uint _behavior;
+        string _behavior;
         bool _unclone = false;
 
         #region Fields
@@ -48,31 +47,41 @@ namespace SM64_Diagnostic.ManagerClasses
                     _dataControls.Add(newWatchVarControl);
                     _objGui.ObjectFlowLayout.Controls.Add(newWatchVarControl.Control);
                 }
-                _behaviorDataControls.ForEach(w => w.OtherOffset = _currentAddress);
+                _behaviorDataControls.ForEach(w => w.OtherOffsets = _currentAddresses);
             }
         }
 
-        public uint? CurrentAddress
+        List<uint> _currentAddresses = new List<uint>();
+        public List<uint> CurrentAddresses
         {
             get
             {
-                return _currentAddress;
+                return _currentAddresses;
             }
             set
             {
-                if (_currentAddress != value)
+                if (_currentAddresses.SequenceEqual(value))
+                    return;
+
+                _currentAddresses = value.ToList();
+
+                if (_currentAddresses.Count > 1)
+                    _objGui.ObjAddressLabelValue.Text = "";
+                else if (_currentAddresses.Count > 0)
+                    _objGui.ObjAddressLabelValue.Text = "0x" + _currentAddresses[0].ToString("X8");
+                else
+                    _objGui.ObjAddressLabelValue.Text = "";
+
+                AddressChanged();
+
+                foreach (WatchVariableControl watchVar in _dataControls)
                 {
-                    _currentAddress = value.HasValue ? value.Value : 0x0000;
-                    _objGui.ObjAddressLabelValue.Text = "0x" + _currentAddress.ToString("X8");
-                    foreach (WatchVariableControl watchVar in _dataControls)
-                    {
-                        watchVar.OtherOffset = _currentAddress;
-                    }
+                    watchVar.OtherOffsets = _currentAddresses;
                 }
             }
         }
 
-        public int SlotIndex
+        public string SlotIndex
         {
             get
             {
@@ -83,7 +92,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (_slotIndex != value)
                 {
                     _slotIndex = value;
-                    _objGui.ObjSlotIndexLabel.Text = _slotIndex.ToString();
+                    _objGui.ObjSlotIndexLabel.Text = _slotIndex;
                 }
             }
         }
@@ -104,7 +113,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public uint Behavior
+        public string Behavior
         {
             get
             {
@@ -115,7 +124,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (_behavior != value)
                 {
                     _behavior = value;
-                    _objGui.ObjBehaviorLabel.Text = "0x" + _behavior.ToString("X4");
+                    _objGui.ObjBehaviorLabel.Text = value;
                 }
             }
         }
@@ -199,42 +208,58 @@ namespace SM64_Diagnostic.ManagerClasses
             objectGui.MoveToMarioButton.Click += MoveToMarioButton_Click;
         }
 
+        private void AddressChanged()
+        {
+            if (CurrentAddresses.Count == 1)
+            {
+                _objGui.CloneButton.Enabled = true;
+            }
+            else
+            {
+                _objGui.CloneButton.Enabled = false;
+            }
+        }
+
         private void ObjAddressLabel_Click(object sender, EventArgs e)
         {
             var variableInfo = new VariableViewerForm("Object Address", "Object",
-                String.Format("0x{0:X8}", _currentAddress), String.Format("0x{0:X8}", (_currentAddress & 0x0FFFFFFF) + _stream.ProcessMemoryOffset));
+                String.Format("0x{0:X8}", _currentAddresses), String.Format("0x{0:X8}", (_currentAddresses[0] & 0x0FFFFFFF) + _stream.ProcessMemoryOffset));
             variableInfo.ShowDialog();
         }
 
         private void MoveToMarioButton_Click(object sender, EventArgs e)
         {
-            if (!CurrentAddress.HasValue)
+            if (CurrentAddresses.Count == 0)
                 return;
-            MarioActions.MoveObjectToMario(_stream, CurrentAddress.Value);
+
+            MarioActions.RetreiveObjects(_stream, CurrentAddresses);
         }
 
         private void MoveMarioToButton_Click(object sender, EventArgs e)
         {
-            if (!CurrentAddress.HasValue)
+            if (CurrentAddresses.Count == 0)
                 return;
-            MarioActions.MoveMarioToObject(_stream, CurrentAddress.Value);
+
+            MarioActions.MoveMarioToObjects(_stream, CurrentAddresses);
         }
 
         private void UnloadButton_Click(object sender, EventArgs e)
         {
-            if (!CurrentAddress.HasValue)
+            if (CurrentAddresses.Count == 0)
                 return;
-            MarioActions.UnloadObject(_stream, CurrentAddress.Value);
+
+            MarioActions.UnloadObject(_stream, CurrentAddresses);
         }
 
         private void CloneButton_Click(object sender, EventArgs e)
         {
-            if (!CurrentAddress.HasValue)
+            if (CurrentAddresses.Count == 0)
                 return;
+
             if (_unclone)
-                MarioActions.UnCloneObject(_stream, CurrentAddress.Value);
+                MarioActions.UnCloneObject(_stream, CurrentAddresses[0]);
             else
-                MarioActions.CloneObject(_stream, CurrentAddress.Value);
+                MarioActions.CloneObject(_stream, CurrentAddresses[0]);
         }
 
         private void ProcessSpecialVars()
@@ -245,50 +270,64 @@ namespace SM64_Diagnostic.ManagerClasses
             mY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             mZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            // Get object position
-            float objX, objY, objZ;
-            objX = _stream.GetSingle(_currentAddress + Config.ObjectSlots.ObjectXOffset);
-            objY = _stream.GetSingle(_currentAddress + Config.ObjectSlots.ObjectYOffset);
-            objZ = _stream.GetSingle(_currentAddress + Config.ObjectSlots.ObjectZOffset);
+            bool firstObject = true;
 
-            // Get object position
-            float objHomeX, objHomeY, objHomeZ;
-            objHomeX = _stream.GetSingle(_currentAddress + Config.ObjectSlots.HomeXOffset);
-            objHomeY = _stream.GetSingle(_currentAddress + Config.ObjectSlots.HomeYOffset);
-            objHomeZ = _stream.GetSingle(_currentAddress + Config.ObjectSlots.HomeZOffset);
+            foreach (var objAddress in _currentAddresses)
+            { 
+                // Get object position
+                float objX, objY, objZ;
+                objX = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+                objY = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                objZ = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
 
-            foreach (DataContainer specialVar in _specialWatchVars)
-            {
-                switch (specialVar.SpecialName)
+                // Get object position
+                float objHomeX, objHomeY, objHomeZ;
+                objHomeX = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
+                objHomeY = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                objHomeZ = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
+
+                foreach (DataContainer specialVar in _specialWatchVars)
                 {
-                    case "MarioDistanceToObject":
-                        specialVar.Text = MoreMath.DistanceTo(mX, mY, mZ, objX, objY, objZ).ToString();
-                        break;
+                    var newText = "";
+                    switch (specialVar.SpecialName)
+                    {
+                        case "MarioDistanceToObject":
+                            newText = MoreMath.DistanceTo(mX, mY, mZ, objX, objY, objZ).ToString();
+                            break;
 
-                    case "MarioLateralDistanceToObject":
-                        specialVar.Text = MoreMath.DistanceTo(mX, mZ, objX, objZ).ToString();
-                        break;
+                        case "MarioLateralDistanceToObject":
+                            newText = MoreMath.DistanceTo(mX, mZ, objX, objZ).ToString();
+                            break;
 
-                    case "MarioDistanceToObjectHome":
-                        specialVar.Text = MoreMath.DistanceTo(mX, mY, mZ, objHomeX, objHomeY, objHomeZ).ToString();
-                        break;
+                        case "MarioDistanceToObjectHome":
+                            newText = MoreMath.DistanceTo(mX, mY, mZ, objHomeX, objHomeY, objHomeZ).ToString();
+                            break;
 
-                    case "MarioLateralDistanceToObjectHome":
-                        specialVar.Text = MoreMath.DistanceTo(mX, mZ, objHomeX, objHomeZ).ToString();
-                        break;
+                        case "MarioLateralDistanceToObjectHome":
+                            newText = MoreMath.DistanceTo(mX, mZ, objHomeX, objHomeZ).ToString();
+                            break;
 
-                    case "ObjectDistanceToHome":
-                        specialVar.Text = MoreMath.DistanceTo(objX, objY, objZ, objHomeX, objHomeY, objHomeZ).ToString();
-                        break;
+                        case "ObjectDistanceToHome":
+                            newText = MoreMath.DistanceTo(objX, objY, objZ, objHomeX, objHomeY, objHomeZ).ToString();
+                            break;
 
-                    case "LateralObjectDistanceToHome":
-                        specialVar.Text = MoreMath.DistanceTo(objX, objZ, objHomeX, objHomeZ).ToString();
-                        break;
+                        case "LateralObjectDistanceToHome":
+                            newText = MoreMath.DistanceTo(objX, objZ, objHomeX, objHomeZ).ToString();
+                            break;
 
-                    case "RngCallsPerFrame":
-                        specialVar.Text = GetNumRngCalls().ToString();
-                        break;
+                        case "RngCallsPerFrame":
+                            newText = GetNumRngCalls(objAddress).ToString();
+                            break;
+                    }
+
+                    if (firstObject)
+                        specialVar.Text = newText;
+                    // Check when multiple objects have different values
+                    else if (specialVar.Text != newText)
+                        specialVar.Text = "";
                 }
+
+                firstObject = false;
             }
         }
 
@@ -301,7 +340,7 @@ namespace SM64_Diagnostic.ManagerClasses
             uint holdingObj = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.HoldingObjectPointerOffset);
 
             // Change to unclone if we are already holding the object
-            if ((holdingObj == _currentAddress) != _unclone)
+            if ((_currentAddresses.Contains(holdingObj)) != _unclone)
             {
                 _unclone = !_unclone;
 
@@ -313,7 +352,7 @@ namespace SM64_Diagnostic.ManagerClasses
             ProcessSpecialVars();
         }
 
-        private int GetNumRngCalls()
+        private int GetNumRngCalls(uint objAddress)
         {
             var numberOfRngObjs = BitConverter.ToUInt32(_stream.ReadRam(Config.RngRecordingAreaAddress, 4), 0);
 
@@ -323,7 +362,7 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 uint rngStructAdd = (uint)(Config.RngRecordingAreaAddress + 0x10 + 0x08 * i);
                 var address = BitConverter.ToUInt32(_stream.ReadRam(rngStructAdd + 0x04, 4), 0);
-                if (address != _currentAddress)
+                if (address != objAddress)
                     continue;
 
                 var preRng = BitConverter.ToUInt16(_stream.ReadRam(rngStructAdd + 0x00, 2), 0);
@@ -346,11 +385,11 @@ namespace SM64_Diagnostic.ManagerClasses
 
         private void OnDrag(object sender, EventArgs e)
         {
-            if (!CurrentAddress.HasValue)
+            if (CurrentAddresses.Count == 1)
                 return;
 
             // Start the drag and drop but setting the object slot index in Drag and Drop data
-            var dropAction = new DropAction(DropAction.ActionType.Object, CurrentAddress.Value);
+            var dropAction = new DropAction(DropAction.ActionType.Object, CurrentAddresses[0]);
             (sender as Control).DoDragDrop(dropAction, DragDropEffects.All);
         }
 
