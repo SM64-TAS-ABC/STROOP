@@ -48,15 +48,15 @@ namespace SM64_Diagnostic.ManagerClasses
 
         protected override void InitializeSpecialVariables()
         {
-            _specialWatchVars = new List<DataContainer>()
+            _specialWatchVars = new List<IDataContainer>()
             {
                 new DataContainer("DistanceAboveFloor"),
                 new DataContainer("DistanceBelowCeiling"),
                 new DataContainer("ClosestVertex"),
-                new DataContainer("UpHillAngle"),
-                new DataContainer("DownHillAngle"),
-                new DataContainer("LeftHillAngle"),
-                new DataContainer("RightHillAngle"),
+                new AngleDataContainer("UpHillAngle"),
+                new AngleDataContainer("DownHillAngle"),
+                new AngleDataContainer("LeftHillAngle"),
+                new AngleDataContainer("RightHillAngle"),
                 new DataContainer("Classification"),
                 new DataContainer("Steepness"),
                 new DataContainer("NormalDistAway"),
@@ -113,66 +113,69 @@ namespace SM64_Diagnostic.ManagerClasses
             normZ = BitConverter.ToSingle(_stream.ReadRam(TriangleAddress + Config.TriangleOffsets.NormZ, 4), 0);
             normOffset = BitConverter.ToSingle(_stream.ReadRam(TriangleAddress + Config.TriangleOffsets.Offset, 4), 0);
 
-            var uphillAngle = (Math.Atan2(normZ, normX) / Math.PI + 0.5) / 2 * 65536;
+            var uphillAngle = (Math.Atan2(normZ, normX) + Math.PI / 2);
             if (normX == 0 && normZ == 0)
                 uphillAngle = double.NaN;
             if (normY < -0.01)
-                uphillAngle += 32768;
+                uphillAngle += Math.PI;
             
-            foreach (DataContainer specialVar in _specialWatchVars)
+            foreach (IDataContainer specialVar in _specialWatchVars)
             {
                 switch (specialVar.SpecialName)
                 {
                     case "DistanceAboveFloor":
-                        specialVar.Text = (marioY - floorY).ToString();
+                        (specialVar as DataContainer).Text = (marioY - floorY).ToString();
                         break;
                     case "DistanceBelowCeiling":
-                        specialVar.Text = (_stream.GetSingle(Config.Mario.StructAddress + Config.Mario.CeilingYOffset)
+                        (specialVar as DataContainer).Text = (_stream.GetSingle(Config.Mario.StructAddress + Config.Mario.CeilingYOffset)
                             - marioY).ToString();
                         break;
                     case "ClosestVertex":
-                        specialVar.Text = String.Format("V{0}", MarioActions.GetClosestVertex(_stream, TriangleAddress));
+                        (specialVar as DataContainer).Text = String.Format("V{0}", MarioActions.GetClosestVertex(_stream, TriangleAddress));
                         goto case "CheckTriangleExists";
                     case "UpHillAngle":
-                        specialVar.Text = FixAngle(uphillAngle).ToString();
-                        goto case "CheckTriangleExists";
+                        (specialVar as AngleDataContainer).AngleValue = uphillAngle;
+                        goto case "CheckTriangleExistsAngle";
                     case "DownHillAngle":
-                        specialVar.Text = FixAngle(uphillAngle + 32768).ToString();
-                        goto case "CheckTriangleExists";
+                        (specialVar as AngleDataContainer).AngleValue = uphillAngle + Math.PI;
+                        goto case "CheckTriangleExistsAngle";
                     case "RightHillAngle":
-                        specialVar.Text = FixAngle(uphillAngle - 16384).ToString();
-                        goto case "CheckTriangleExists";
+                        (specialVar as AngleDataContainer).AngleValue = uphillAngle - Math.PI / 2;
+                        goto case "CheckTriangleExistsAngle";
                     case "LeftHillAngle":
-                        specialVar.Text = FixAngle(uphillAngle + 16384).ToString();
-                        goto case "CheckTriangleExists";
+                        (specialVar as AngleDataContainer).AngleValue = uphillAngle + Math.PI / 2;
+                        goto case "CheckTriangleExistsAngle";
                     case "Classification":
                         if (normY > 0.01)
-                            specialVar.Text = "Floor";
+                            (specialVar as DataContainer).Text = "Floor";
                         else if (normY < -0.01)
-                            specialVar.Text = "Ceiling";
+                            (specialVar as DataContainer).Text = "Ceiling";
                         else
-                            specialVar.Text = "Wall";
+                            (specialVar as DataContainer).Text = "Wall";
                         goto case "CheckTriangleExists";
                     case "Steepness":
-                        specialVar.Text = FixAngle((65536 / (Math.PI * 2) * Math.Acos(normY))).ToString();
+                        (specialVar as DataContainer).Text = FixAngle((65536 / (Math.PI * 2) * Math.Acos(normY))).ToString();
                         goto case "CheckTriangleExists";
                     case "NormalDistAway":
-                        specialVar.Text = (marioX * normX + marioY * normY + marioZ * normZ + normOffset).ToString();
+                        (specialVar as DataContainer).Text = (marioX * normX + marioY * normY + marioZ * normZ + normOffset).ToString();
                         goto case "CheckTriangleExists";
                     case "VerticalDistAway":
-                        specialVar.Text = (marioY + (marioX * normX + marioZ * normZ + normOffset) / normY).ToString();
+                        (specialVar as DataContainer).Text = (marioY + (marioX * normX + marioZ * normZ + normOffset) / normY).ToString();
                         goto case "CheckTriangleExists";
                     case "HeightOnSlope":
-                        specialVar.Text = ((-marioX * normX - marioZ * normZ - normOffset) / normY).ToString();
+                        (specialVar as DataContainer).Text = ((-marioX * normX - marioZ * normZ - normOffset) / normY).ToString();
                         goto case "CheckTriangleExists";
 
                     // Special
                     case "CheckTriangleExists":
                         if (TriangleAddress == 0x0000)
                         {
-                            specialVar.Text = "(none)";
+                            (specialVar as DataContainer).Text = "(none)";
                             break;
                         }
+                        break;
+                    case "CheckTriangleExistsAngle":
+                        (specialVar as AngleDataContainer).ValueExists = (TriangleAddress != 0x0000);
                         break;
                 }
             }

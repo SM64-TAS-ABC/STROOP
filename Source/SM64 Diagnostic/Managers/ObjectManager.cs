@@ -175,7 +175,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         protected override void InitializeSpecialVariables()
         {
-            _specialWatchVars = new List<DataContainer>()
+            _specialWatchVars = new List<IDataContainer>()
             {
                 new DataContainer("MarioDistanceToObject"),
                 new DataContainer("MarioLateralDistanceToObject"),

@@ -90,6 +90,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\AngleDataContainer.cs" />
     <Compile Include="Controls\IDataContainer.cs" />
     <Compile Include="Controls\IntPictureBox.cs">
       <SubType>Component</SubType>

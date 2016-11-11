@@ -36,7 +36,6 @@ namespace SM64_Diagnostic.Controls
         AngleViewModeType _angleViewMode = AngleViewModeType.Recommended;
         Boolean _angleTruncated = false;
 
-
         private static ContextMenuStrip _menu;
         public static ContextMenuStrip Menu
         {
