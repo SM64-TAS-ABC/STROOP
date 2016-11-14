@@ -17,7 +17,7 @@ namespace SM64_Diagnostic.ManagerClasses
         protected ProcessStream _stream;
         protected List<IDataContainer> _specialWatchVars;
 
-        public DataManager(ProcessStream stream, List<WatchVariable> data, FlowLayoutPanel variableTable)
+        public DataManager(ProcessStream stream, List<WatchVariable> data, FlowLayoutPanel variableTable, uint otherOffset = 0)
         {
             _variableTable = variableTable;
             _stream = stream;
@@ -46,7 +46,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     continue;
                 }
 
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar);
+                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, otherOffset);
                 variableTable.Controls.Add(watchControl.Control);
                 _dataControls.Add(watchControl);
             }
@@ -56,14 +56,11 @@ namespace SM64_Diagnostic.ManagerClasses
         {
         }
 
-        public virtual void Update(bool updateView)
+        public virtual void Update(bool updateView = false)
         {
             // Update watch variables
             foreach (var watchVar in _dataControls)
                 watchVar.Update();
-
-            if (!updateView)
-                return;
         }
     }
 }

@@ -118,7 +118,7 @@ namespace SM64_Diagnostic
             _marioManager = new MarioManager(_sm64Stream, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
             _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
             _miscManager = new MiscManager(_sm64Stream, _miscData, flowLayoutPanelMisc, groupBoxPuController);
-            _cameraManager = new CameraManager(_sm64Stream, _cameraData, panelCameraBorder, flowLayoutPanelCamera);
+            _cameraManager = new CameraManager(_sm64Stream, _cameraData, flowLayoutPanelCamera);
             _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData);
             _debugManager = new DebugManager();
 
