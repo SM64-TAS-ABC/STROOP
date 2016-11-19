@@ -14,7 +14,6 @@
   <Data type="ushort" address="0x00C26C1C" absoluteAddress="true" isAngle="true">Yaw (Facing)</Data>
   <Data type="ushort" address="0x00C26C2A" absoluteAddress="true" isAngle="true">Yaw (Moving)</Data>
   <Data type="ushort" address="0x00C26C16" absoluteAddress="true" isAngle="true">Yaw (Intended)</Data>
-  <Data type="ushort" address="0x00C3BDB8" absoluteAddress="true" isAngle="true">Cannon Yaw</Data>
   <Data type="ushort" address="0x00c26c1e" absoluteAddress="true" isAngle="true">Pitch</Data>
   <Data type="ushort" address="0x00c26c22" absoluteAddress="true" isAngle="true">Roll</Data>
   <Data type="ushort" address="0x00c26c26" absoluteAddress="true" isAngle="true">Yaw Velocity</Data>

@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrianglesData>
   <Data special="true" specialType="Classification">Classification</Data>
-  <Data type="ushort" address="0x00" triangleOffset="true">SurfaceType</Data>
+  <Data type="ushort" address="0x00" triangleOffset="true">Surface Type</Data>
   <Data type="byte" address="0x02" triangleOffset="true" useHex="true">Flags</Data>
   <Data type="byte" address="0x03" triangleOffset="true">Wind Direction</Data>
-  <Data type="short" address="0x04" triangleOffset="true">Wall Projection</Data>
+  <Data type="short" address="0x04" triangleOffset="true" useHex="true">Wall Projection</Data>
+  <Data type="byte" address="0x04" triangleOffset="true" isBool="true" mask="0x08">X Projection</Data>
+  <Data type="byte" address="0x04" triangleOffset="true" isBool="true" invertBool="true" mask="0x08">Z Projection</Data>
   <Data type="short" address="0x06" triangleOffset="true">Y Min</Data>
   <Data type="short" address="0x08" triangleOffset="true">Y Max</Data>
   <Data type="short" address="0x0A" triangleOffset="true">X1</Data>

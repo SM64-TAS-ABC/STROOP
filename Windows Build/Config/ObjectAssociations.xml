@@ -177,12 +177,10 @@
   <Object behaviorScriptAddress="0x130005B4" name="Floating Island" subType="0">
     <Image path="WF Floating Island.png"/>
 	<MapImage path="WF Floating Island Top.png" rotates="true"/>
-    <Data type="int" address="0x118" objectOffset="true">Angular Velocity</Data>
   </Object>
-  <Object behaviorScriptAddress="0x130005B4" name="Rotating Platform" subType="1">
+  <Object behaviorScriptAddress="0x130005B4" name="WDW Rotating Platform" subType="1">
     <Image path="WDW Rotating Platform.png"/>
 	<MapImage path="WDW Rotating Platform Top.png" rotates="true"/>
-    <Data type="int" address="0x118" objectOffset="true">Angular Velocity</Data>
   </Object>
   <Object behaviorScriptAddress="0x130005D8" name="WF Tower">
     <Image path="WF Tower.png"/>
@@ -441,12 +439,16 @@
     <Image path="Thwomp.png"/>
 	<MapImage path="Thwomp Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">Timer Max</Data>
+    <Data type="float" address="0xB0" objectOffset="true">V Speed</Data>
+    <Data type="float" address="0xA4" objectOffset="true">Height</Data>
     <Data type="float" address="0x168" objectOffset="true">Min Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000BC8" name="Thwomp">
     <Image path="Thwomp.png"/>
 	<MapImage path="Thwomp Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">Timer Max</Data>
+	<Data type="float" address="0xB0" objectOffset="true">V Speed</Data>
+    <Data type="float" address="0xA4" objectOffset="true">Height</Data>
     <Data type="float" address="0x168" objectOffset="true">Min Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000C04" name="WF Falling Block" gfxId="0x80194BD4">
@@ -827,7 +829,6 @@
   <Object behaviorScriptAddress="0x13001D14" name="LLL Rotating Hexagonal Platform">
     <Image path="LLL Rotating Hexagonal Platform.png"/>
 	<MapImage path="LLL Rotating Hexagonal Platform Top.png" rotates="true"/>
-    <Data type="int" address="0x118" objectOffset="true">Angular Velocity</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001D40" name="LLL Sinking Stone Platform">
     <Image path="LLL Sinking Stone Platform.png"/>
@@ -860,7 +861,6 @@
   <Object behaviorScriptAddress="0x13001E6C" name="Rotating Volcano Platform">
     <Image path="Rotating Volcano Platform.png"/>
 	<MapImage path="Rotating Volcano Platform Top.png" rotates="true"/>
-    <Data type="int" address="0x118" objectOffset="true">Angular Velocity</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001E94" name="Rising and Lowering Long Platform">
     <Image path="Rising and Lowering Long Platform.png"/>
@@ -1246,7 +1246,7 @@
   <Object behaviorScriptAddress="0x13002338" name="Sushi">
     <Image path="Sushi.png"/>
 	<MapImage path="Sushi Top.png" rotates="true"/>
-    <Data type="uint" address="0xF4" objectOffset="true" isAngle="true">Rev Angle</Data>
+    <Data type="ushort" address="0xF6" objectOffset="true" isAngle="true">Rev Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002388" name="Sushi Hitbox">
     <Image path="Sushi Hitbox.png"/>
@@ -1435,7 +1435,7 @@
     <Image path="Scuttlebug.png"/>
 	<MapImage path="Scuttlebug Top.png" rotates="true"/>
     <Data type="int" address="0x198" objectOffset="true">Num Coins</Data>
-    <Data type="uint" address="0x160" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="ushort" address="0x162" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="byte" address="0xFB" objectOffset="true" isBool="true">Lunging</Data>
     <Data type="int" address="0xFC" objectOffset="true">Lunging Timer</Data>
   </Object>
@@ -1474,10 +1474,10 @@
   <Object behaviorScriptAddress="0x13002D28" name="Water Ripples">
     <Image path="Water Ripples.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002D50" name="Splash Bubble Spawner (5)">
+  <Object behaviorScriptAddress="0x13002D50" name="5 Splash Bubble Spawner">
     <Image path="Splash Bubble Spawner (5).png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002D7C" name="Splash Bubble Spawner (18)">
+  <Object behaviorScriptAddress="0x13002D7C" name="18 Splash Bubble Spawner">
     <Image path="Splash Bubble Spawner (18).png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002DB0" name="Sushi Water Waves">
@@ -1511,6 +1511,7 @@
     <Data type="short" address="0x40" objectOffset="true">Animation Timer</Data>
     <Data type="short" address="0x44" objectOffset="true">Walking Timer</Data>
     <Data type="int" address="0x110" objectOffset="true">Burn Timer</Data>
+    <Data type="ushort" address="0x112" objectOffset="true" isAngle="true">Cannon Yaw</Data>
     <Data type="short" address="0x3A" objectOffset="true">Relative Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002EF8" name="Toad">
@@ -1654,7 +1655,7 @@
   <Object behaviorScriptAddress="0x13003388" name="Amp (Goes in Circles)">
     <Image path="Amp.png"/>
 	<MapImage path="Amp Top.png" rotates="true"/>
-    <Data type="uint" address="0xC8" objectOffset="true" isAngle="true">Rev Angle</Data>
+    <Data type="ushort" address="0xCA" objectOffset="true" isAngle="true">Rev Angle</Data>
     <Data type="int" address="0xF8" objectOffset="true">Height Timer</Data>
     <Data type="float" address="0xF4" objectOffset="true">Radius</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Electricity</Data>
@@ -1793,7 +1794,6 @@
     <Image path="Spindel.png"/>
 	<MapImage path="Spindel Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">Rolling Timer</Data>
-    <Data type="int" address="0x114" objectOffset="true">Angular Velocity</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003B30" name="Pyramid Up-and-Down Step">
     <Image path="Pyramid Up-and-Down Step.png"/>
@@ -1809,7 +1809,7 @@
 	<MapImage path="Pyramid Top Top.png" rotates="true"/>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Breaking</Data>
     <Data type="int" address="0xF4" objectOffset="true">Num Activators</Data>
-    <Data type="int" address="0xD5" objectOffset="true">Angular Velocity</Data>
+    <Data type="int" address="0xD5" objectOffset="true">Angular Acceleration?</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003BEC" name="Pyramid Shard Particle">
     <Image path="Box Shard.png"/>
@@ -2047,7 +2047,6 @@
   </Object>
   <Object behaviorScriptAddress="0x1300442C" name="TTC Painting Pendulum">
     <Image path="TTC Painting Pendulum.png"/>
-    <Data type="int" address="0x11C" objectOffset="true">Angular Velocity</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300444C" name="Chest Star Spawner (JRB Ship)">
     <Image path="Chest Star Spawner.png"/>
@@ -2087,37 +2086,35 @@
     <Image path="Koopa.png"/>
 	<MapImage path="Koopa Top.png" rotates="true"/>
     <Data type="byte" address="0xFB" objectOffset="true" isBool="true">Act Shelled</Data>
-    <Data type="uint" address="0xFC" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="ushort" address="0xFE" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="short" address="0x1AC" objectOffset="true">Countdown</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
-    <Data type="int" address="0x110" objectOffset="true">Blinking Timer</Data>
+    <Data type="int" address="0x110" objectOffset="true">Blinking Countdown</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa the Quick #1" subType="2">
     <Image path="Koopa the Quick with Flag.png"/>
 	<MapImage path="Koopa Top.png" rotates="true"/>
-    <Data type="byte" address="0xFB" objectOffset="true" isBool="true">Act Shelled</Data>
-    <Data type="uint" address="0x10C" objectOffset="true" isAngle="true">Target Angle</Data>
-    <Data type="short" address="0x1AC" objectOffset="true">Countdown</Data>
+    <Data type="ushort" address="0x102" objectOffset="true" useHex="true">Waypoint</Data>
+    <Data type="ushort" address="0x10E" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
-    <Data type="int" address="0x110" objectOffset="true">Blinking Timer</Data>
+    <Data type="int" address="0x110" objectOffset="true">Blinking Countdown</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa the Quick #2" subType="3">
     <Image path="Koopa the Quick with Flag.png"/>
 	<MapImage path="Koopa Top.png" rotates="true"/>
-    <Data type="byte" address="0xFB" objectOffset="true" isBool="true">Act Shelled</Data>
-    <Data type="uint" address="0x10C" objectOffset="true" isAngle="true">Target Angle</Data>
-    <Data type="short" address="0x1AC" objectOffset="true">Countdown</Data>
+    <Data type="ushort" address="0x102" objectOffset="true" useHex="true">Waypoint</Data>
+    <Data type="ushort" address="0x10E" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
-    <Data type="int" address="0x110" objectOffset="true">Blinking Timer</Data>
+    <Data type="int" address="0x110" objectOffset="true">Blinking Countdown</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa (Tiny)" subType="4">
     <Image path="Koopa.png"/>
 	<MapImage path="Koopa Top.png" rotates="true"/>
     <Data type="byte" address="0xFB" objectOffset="true" isBool="true">Act Shelled</Data>
-    <Data type="uint" address="0xFC" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="ushort" address="0xFE" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="short" address="0x1AC" objectOffset="true">Countdown</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
-    <Data type="int" address="0x110" objectOffset="true">Blinking Timer</Data>
+    <Data type="int" address="0x110" objectOffset="true">Blinking Countdown</Data>
   </Object>
   <Object behaviorScriptAddress="0x130045D0" name="Koopa the Quick Flag Checkpoint">
     <Image path="Koopa the Quick Flag Checkpoint.png"/>
@@ -2145,7 +2142,7 @@
   <Object behaviorScriptAddress="0x13004698" name="Swooper">
     <Image path="Swooper.png"/>
 	<MapImage path="Swooper Top.png" rotates="true"/>
-    <Data type="uint" address="0xFC" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="ushort" address="0xFE" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="byte" address="0x45" objectOffset="true">Wing Flap</Data>
   </Object>
   <Object behaviorScriptAddress="0x130046DC" name="Fly Guy">
@@ -2333,7 +2330,7 @@
     <Image path="Spiny.png"/>
     <Data type="int" address="0xEC" objectOffset="true">Ground/Air State</Data>
     <Data type="int" address="0xF4" objectOffset="true">Countdown</Data>
-    <Data type="uint" address="0xF8" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="ushort" address="0xFA" objectOffset="true" isAngle="true">Target Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004A00" name="Monty Mole">
     <Image path="Monty Mole.png"/>
@@ -2456,21 +2453,27 @@
 	<MapImage path="TTC Rotating Cog Top.png" rotates="true"/>
     <Data type="float" address="0xFC" objectOffset="true">Target Ang Vel</Data>
     <Data type="float" address="0xF8" objectOffset="true">Current Ang Vel</Data>
+    <Data type="ushort" address="0xD6" objectOffset="true" isAngle="true">Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004CCC" name="TTC Rotating Triangle" subType="2">
     <Image path="TTC Rotating Triangle.png"/>
 	<MapImage path="TTC Rotating Triangle Top.png" rotates="true"/>
     <Data type="float" address="0xFC" objectOffset="true">Target Ang Vel</Data>
     <Data type="float" address="0xF8" objectOffset="true">Current Ang Vel</Data>
+    <Data type="ushort" address="0xD6" objectOffset="true" isAngle="true">Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004CF8" name="TTC Pit Block">
     <Image path="TTC Pit Block.png"/>
     <Data type="int" address="0xFC" objectOffset="true">Timer Max</Data>
+	<Data type="float" address="0xB0" objectOffset="true">V Speed</Data>
+    <Data type="float" address="0xA4" objectOffset="true">Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004D28" name="TTC Elevator Platform">
     <Image path="TTC Elevator Platform.png"/>
     <Data type="int" address="0xFC" objectOffset="true">Timer Max</Data>
     <Data type="float" address="0xF4" objectOffset="true">Direction</Data>
+    <Data type="float" address="0xB0" objectOffset="true">V Speed</Data>
+    <Data type="float" address="0xA4" objectOffset="true">Height</Data>
     <Data type="float" address="0x168" objectOffset="true">Min Height</Data>
     <Data type="float" address="0xF8" objectOffset="true">Max Height</Data>
   </Object>
@@ -2479,6 +2482,7 @@
 	<MapImage path="TTC Rotating Hand Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">Timer Max</Data>
     <Data type="ushort" address="0xFA" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="ushort" address="0xD6" objectOffset="true" isAngle="true">Angle</Data>
     <Data type="int" address="0xFC" objectOffset="true">Displacement</Data>
     <Data type="int" address="0x104" objectOffset="true">Direction Countdown</Data>
   </Object>
@@ -2487,6 +2491,7 @@
 	<MapImage path="TTC 2D Cog Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">Timer Max</Data>
     <Data type="ushort" address="0xFA" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="ushort" address="0xD6" objectOffset="true" isAngle="true">Angle</Data>
     <Data type="int" address="0xFC" objectOffset="true">Displacement</Data>
     <Data type="int" address="0x104" objectOffset="true">Direction Countdown</Data>
   </Object>
@@ -2494,6 +2499,7 @@
     <Image path="TTC Red Coin Spinner.png"/>
 	<Data type="int" address="0xF8" objectOffset="true">Timer Max</Data>
     <Data type="int" address="0xF4" objectOffset="true">Direction</Data>
+	<Data type="ushort" address="0xD2" objectOffset="true" isAngle="true">Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004DBC" name="Mr. Blizzard">
     <Image path="Mr. Blizzard.png"/>
@@ -2521,18 +2527,17 @@
   <Object behaviorScriptAddress="0x13004E4C" name="BitFS Back-and-Forth Platform" subType="12">
     <Image path="Back-and-Forth Platform BitFS 2.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13004E4C" name="Back-and-Forth Platform" subType="16">
+  <Object behaviorScriptAddress="0x13004E4C" name="BitS Back-and-Forth Platform" subType="16">
     <Image path="Back-and-Forth Platform BitS 2.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13004E4C" name="Back-and-Forth Platform" subType="143">
+  <Object behaviorScriptAddress="0x13004E4C" name="BitS Back-and-Forth Platform" subType="143">
     <Image path="Back-and-Forth Platform BitS.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13004E4C" name="Back-and-Forth Platform" subType="207">
+  <Object behaviorScriptAddress="0x13004E4C" name="BitS Back-and-Forth Platform" subType="207">
     <Image path="Back-and-Forth Platform BitS.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004E78" name="Rotating Octagonal Platform">
     <Image path="Rotating Octagonal Platform.png"/>
-    <Data type="int" address="0x118" objectOffset="true">Angular Velocity</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004EA0" name="BitS Staircase" subType="0">
     <Image path="BitS Staircase.png"/>
@@ -2635,7 +2640,7 @@
   </Object>
   <Object behaviorScriptAddress="0x130051E0" name="Snufit">
     <Image path="Snufit.png"/>
-    <Data type="uint" address="0x100" objectOffset="true" isAngle="true">Rev Angle</Data>
+    <Data type="ushort" address="0x102" objectOffset="true" isAngle="true">Rev Angle</Data>
     <Data type="int" address="0x108" objectOffset="true">Size</Data>
     <Data type="int" address="0x104" objectOffset="true">Size Countdown</Data>
   </Object>
@@ -2696,7 +2701,7 @@
   <Object behaviorScriptAddress="0x13005468" name="Skeeter">
     <Image path="Skeeter 2.png"/>
 	<MapImage path="Skeeter Top.png" rotates="true"/>
-    <Data type="uint" address="0xF4" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="ushort" address="0xF6" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Lunging</Data>
   </Object>
   <Object behaviorScriptAddress="0x130054A0" name="Skeeter Water Waves">
