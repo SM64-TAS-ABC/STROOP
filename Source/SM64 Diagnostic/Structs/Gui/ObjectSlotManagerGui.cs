@@ -23,7 +23,7 @@ namespace SM64_Diagnostic.Structs
         public ComboBox MapObjectToggleModeComboBox;
         public ComboBox SortMethodComboBox;
         public ComboBox LabelMethodComboBox;
-        public FlowLayoutPanel FlowLayoutContainer;
+        public NoTearFlowLayoutPanel FlowLayoutContainer;
 
         ~ObjectSlotManagerGui()
         {

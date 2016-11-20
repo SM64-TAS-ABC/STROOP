@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.ManagerClasses
     {
         MapManager _mapManager;
 
-        public MarioManager(ProcessStream stream, List<WatchVariable> marioData, Control marioControl, FlowLayoutPanel variableTable, MapManager mapManager)
+        public MarioManager(ProcessStream stream, List<WatchVariable> marioData, Control marioControl, NoTearFlowLayoutPanel variableTable, MapManager mapManager)
             : base(stream, marioData, variableTable, Config.Mario.StructAddress)
         {
             // Register controls on the control (for drag-and-drop)

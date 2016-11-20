@@ -12,7 +12,7 @@ namespace SM64_Diagnostic.ManagerClasses
 {
     public class CameraManager : DataManager
     {
-        public CameraManager(ProcessStream stream, List<WatchVariable> cameraData, FlowLayoutPanel variableTable)
+        public CameraManager(ProcessStream stream, List<WatchVariable> cameraData, NoTearFlowLayoutPanel variableTable)
             : base(stream, cameraData, variableTable)
         {
         }

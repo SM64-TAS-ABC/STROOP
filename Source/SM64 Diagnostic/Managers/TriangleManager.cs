@@ -73,7 +73,7 @@ namespace SM64_Diagnostic.ManagerClasses
         /// Manages illumanati
         /// </summary>
         public TriangleManager(ProcessStream stream, Control tabControl, List<WatchVariable> triangleWatchVars) 
-            : base(stream, triangleWatchVars, tabControl.Controls["flowLayoutPanelTriangles"] as FlowLayoutPanel)
+            : base(stream, triangleWatchVars, tabControl.Controls["NoTearFlowLayoutPanelTriangles"] as NoTearFlowLayoutPanel)
         {
             _addressBox = tabControl.Controls["maskedTextBoxOtherTriangle"] as MaskedTextBox;
             _addressBox.LostFocus += AddressBox_LostFocus;

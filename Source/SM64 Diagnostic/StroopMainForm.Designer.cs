@@ -44,7 +44,7 @@ namespace SM64_Diagnostic
             this.comboBoxMapToggleMode = new System.Windows.Forms.ComboBox();
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.labelSortMethod = new System.Windows.Forms.Label();
-            this.flowLayoutPanelObjects = new System.Windows.Forms.FlowLayoutPanel();
+            this.NoTearFlowLayoutPanelObjects = new NoTearFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.buttonPauseResume = new System.Windows.Forms.Button();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
@@ -59,26 +59,26 @@ namespace SM64_Diagnostic
             this.labelObjSlotPosValue = new System.Windows.Forms.Label();
             this.labelObjBhvValue = new System.Windows.Forms.Label();
             this.labelObjAdd = new System.Windows.Forms.Label();
-            this.flowLayoutPanelObject = new System.Windows.Forms.FlowLayoutPanel();
+            this.NoTearFlowLayoutPanelObject = new NoTearFlowLayoutPanel();
             this.labelObjSlotInd = new System.Windows.Forms.Label();
             this.labelObjSlotPos = new System.Windows.Forms.Label();
             this.labelObjBhv = new System.Windows.Forms.Label();
             this.panelObjectBorder = new System.Windows.Forms.Panel();
             this.labelObjAddValue = new System.Windows.Forms.Label();
             this.tabPageMario = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanelMario = new System.Windows.Forms.FlowLayoutPanel();
+            this.NoTearFlowLayoutPanelMario = new NoTearFlowLayoutPanel();
             this.panelMarioBorder = new System.Windows.Forms.Panel();
             this.tabPageHud = new System.Windows.Forms.TabPage();
             this.buttonStandardHud = new System.Windows.Forms.Button();
             this.buttonDie = new System.Windows.Forms.Button();
             this.buttonFillHp = new System.Windows.Forms.Button();
-            this.flowLayoutPanelHud = new System.Windows.Forms.FlowLayoutPanel();
+            this.NoTearFlowLayoutPanelHud = new NoTearFlowLayoutPanel();
             this.panelHudBorder = new System.Windows.Forms.Panel();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanelCamera = new System.Windows.Forms.FlowLayoutPanel();
+            this.NoTearFlowLayoutPanelCamera = new NoTearFlowLayoutPanel();
             this.panelCameraBorder = new System.Windows.Forms.Panel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanelDebugDisplayType = new System.Windows.Forms.FlowLayoutPanel();
+            this.NoTearFlowLayoutPanelDebugDisplayType = new NoTearFlowLayoutPanel();
             this.radioButtonDbgOff = new System.Windows.Forms.RadioButton();
             this.radioButtonDbgObjCnt = new System.Windows.Forms.RadioButton();
             this.radioButtonDbgChkInfo = new System.Windows.Forms.RadioButton();
@@ -107,7 +107,7 @@ namespace SM64_Diagnostic
             this.buttonPuConZpPu = new System.Windows.Forms.Button();
             this.buttonPuConZpQpu = new System.Windows.Forms.Button();
             this.buttonPuConHome = new System.Windows.Forms.Button();
-            this.flowLayoutPanelMisc = new System.Windows.Forms.FlowLayoutPanel();
+            this.NoTearFlowLayoutPanelMisc = new NoTearFlowLayoutPanel();
             this.panelMiscBorder = new System.Windows.Forms.Panel();
             this.tabPageTriangles = new System.Windows.Forms.TabPage();
             this.checkBoxVertexMisalignment = new System.Windows.Forms.CheckBox();
@@ -115,7 +115,7 @@ namespace SM64_Diagnostic
             this.buttonGoToV3 = new System.Windows.Forms.Button();
             this.buttonGoToV2 = new System.Windows.Forms.Button();
             this.buttonGoToV1 = new System.Windows.Forms.Button();
-            this.flowLayoutPanelTriangles = new System.Windows.Forms.FlowLayoutPanel();
+            this.NoTearFlowLayoutPanelTriangles = new NoTearFlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.maskedTextBoxOtherTriangle = new System.Windows.Forms.MaskedTextBox();
             this.radioButtonTriOther = new System.Windows.Forms.RadioButton();
@@ -123,7 +123,7 @@ namespace SM64_Diagnostic
             this.radioButtonTriWall = new System.Windows.Forms.RadioButton();
             this.radioButtonTriFloor = new System.Windows.Forms.RadioButton();
             this.tabPageStars = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.NoTearFlowLayoutPanel1 = new NoTearFlowLayoutPanel();
             this.radioButtonFileD = new System.Windows.Forms.RadioButton();
             this.radioButtonFileC = new System.Windows.Forms.RadioButton();
             this.radioButtonFileB = new System.Windows.Forms.RadioButton();
@@ -193,7 +193,7 @@ namespace SM64_Diagnostic
             this.tabPageCamera.SuspendLayout();
             this.panelCameraBorder.SuspendLayout();
             this.tabPageDebug.SuspendLayout();
-            this.flowLayoutPanelDebugDisplayType.SuspendLayout();
+            this.NoTearFlowLayoutPanelDebugDisplayType.SuspendLayout();
             this.panelDebugBorder.SuspendLayout();
             this.tabPageMisc.SuspendLayout();
             this.groupBoxPuController.SuspendLayout();
@@ -258,7 +258,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Controls.Add(this.comboBoxMapToggleMode);
             this.groupBoxObjects.Controls.Add(this.checkBoxObjLockLabels);
             this.groupBoxObjects.Controls.Add(this.labelSortMethod);
-            this.groupBoxObjects.Controls.Add(this.flowLayoutPanelObjects);
+            this.groupBoxObjects.Controls.Add(this.NoTearFlowLayoutPanelObjects);
             this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
             this.groupBoxObjects.Location = new System.Drawing.Point(2, 2);
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
@@ -355,18 +355,18 @@ namespace SM64_Diagnostic
             this.labelSortMethod.TabIndex = 5;
             this.labelSortMethod.Text = "Sort Method:";
             // 
-            // flowLayoutPanelObjects
+            // NoTearFlowLayoutPanelObjects
             // 
-            this.flowLayoutPanelObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoTearFlowLayoutPanelObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelObjects.AutoScroll = true;
-            this.flowLayoutPanelObjects.Location = new System.Drawing.Point(4, 65);
-            this.flowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
-            this.flowLayoutPanelObjects.Name = "flowLayoutPanelObjects";
-            this.flowLayoutPanelObjects.Size = new System.Drawing.Size(996, 397);
-            this.flowLayoutPanelObjects.TabIndex = 0;
-            this.flowLayoutPanelObjects.Resize += new System.EventHandler(this.flowLayoutPanelObjects_Resize);
+            this.NoTearFlowLayoutPanelObjects.AutoScroll = true;
+            this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 65);
+            this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(996, 397);
+            this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
+            this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
             // comboBoxSortMethod
             // 
@@ -453,7 +453,7 @@ namespace SM64_Diagnostic
             this.tabPageObjects.Controls.Add(this.labelObjSlotPosValue);
             this.tabPageObjects.Controls.Add(this.labelObjBhvValue);
             this.tabPageObjects.Controls.Add(this.labelObjAdd);
-            this.tabPageObjects.Controls.Add(this.flowLayoutPanelObject);
+            this.tabPageObjects.Controls.Add(this.NoTearFlowLayoutPanelObject);
             this.tabPageObjects.Controls.Add(this.labelObjSlotInd);
             this.tabPageObjects.Controls.Add(this.labelObjSlotPos);
             this.tabPageObjects.Controls.Add(this.labelObjBhv);
@@ -558,18 +558,18 @@ namespace SM64_Diagnostic
             this.labelObjAdd.TabIndex = 8;
             this.labelObjAdd.Text = "Add:";
             // 
-            // flowLayoutPanelObject
+            // NoTearFlowLayoutPanelObject
             // 
-            this.flowLayoutPanelObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoTearFlowLayoutPanelObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelObject.AutoScroll = true;
-            this.flowLayoutPanelObject.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelObject.Location = new System.Drawing.Point(208, 3);
-            this.flowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
-            this.flowLayoutPanelObject.Name = "flowLayoutPanelObject";
-            this.flowLayoutPanelObject.Size = new System.Drawing.Size(786, 183);
-            this.flowLayoutPanelObject.TabIndex = 3;
+            this.NoTearFlowLayoutPanelObject.AutoScroll = true;
+            this.NoTearFlowLayoutPanelObject.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(208, 3);
+            this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(786, 183);
+            this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // labelObjSlotInd
             // 
@@ -622,7 +622,7 @@ namespace SM64_Diagnostic
             // tabPageMario
             // 
             this.tabPageMario.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageMario.Controls.Add(this.flowLayoutPanelMario);
+            this.tabPageMario.Controls.Add(this.NoTearFlowLayoutPanelMario);
             this.tabPageMario.Controls.Add(this.panelMarioBorder);
             this.tabPageMario.Location = new System.Drawing.Point(4, 22);
             this.tabPageMario.Margin = new System.Windows.Forms.Padding(2);
@@ -632,18 +632,18 @@ namespace SM64_Diagnostic
             this.tabPageMario.TabIndex = 1;
             this.tabPageMario.Text = "Mario";
             // 
-            // flowLayoutPanelMario
+            // NoTearFlowLayoutPanelMario
             // 
-            this.flowLayoutPanelMario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoTearFlowLayoutPanelMario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelMario.AutoScroll = true;
-            this.flowLayoutPanelMario.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelMario.Location = new System.Drawing.Point(65, 6);
-            this.flowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
-            this.flowLayoutPanelMario.Name = "flowLayoutPanelMario";
-            this.flowLayoutPanelMario.Size = new System.Drawing.Size(929, 180);
-            this.flowLayoutPanelMario.TabIndex = 1;
+            this.NoTearFlowLayoutPanelMario.AutoScroll = true;
+            this.NoTearFlowLayoutPanelMario.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(65, 6);
+            this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(929, 180);
+            this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // panelMarioBorder
             // 
@@ -659,7 +659,7 @@ namespace SM64_Diagnostic
             this.tabPageHud.Controls.Add(this.buttonStandardHud);
             this.tabPageHud.Controls.Add(this.buttonDie);
             this.tabPageHud.Controls.Add(this.buttonFillHp);
-            this.tabPageHud.Controls.Add(this.flowLayoutPanelHud);
+            this.tabPageHud.Controls.Add(this.NoTearFlowLayoutPanelHud);
             this.tabPageHud.Controls.Add(this.panelHudBorder);
             this.tabPageHud.Location = new System.Drawing.Point(4, 22);
             this.tabPageHud.Margin = new System.Windows.Forms.Padding(2);
@@ -695,18 +695,18 @@ namespace SM64_Diagnostic
             this.buttonFillHp.Text = "Fill HP";
             this.buttonFillHp.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanelHud
+            // NoTearFlowLayoutPanelHud
             // 
-            this.flowLayoutPanelHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoTearFlowLayoutPanelHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelHud.AutoScroll = true;
-            this.flowLayoutPanelHud.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelHud.Location = new System.Drawing.Point(101, 5);
-            this.flowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
-            this.flowLayoutPanelHud.Name = "flowLayoutPanelHud";
-            this.flowLayoutPanelHud.Size = new System.Drawing.Size(891, 176);
-            this.flowLayoutPanelHud.TabIndex = 3;
+            this.NoTearFlowLayoutPanelHud.AutoScroll = true;
+            this.NoTearFlowLayoutPanelHud.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(101, 5);
+            this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(891, 176);
+            this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // panelHudBorder
             // 
@@ -719,7 +719,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageCamera
             // 
-            this.tabPageCamera.Controls.Add(this.flowLayoutPanelCamera);
+            this.tabPageCamera.Controls.Add(this.NoTearFlowLayoutPanelCamera);
             this.tabPageCamera.Controls.Add(this.panelCameraBorder);
             this.tabPageCamera.Location = new System.Drawing.Point(4, 22);
             this.tabPageCamera.Margin = new System.Windows.Forms.Padding(2);
@@ -728,18 +728,18 @@ namespace SM64_Diagnostic
             this.tabPageCamera.TabIndex = 7;
             this.tabPageCamera.Text = "Camera";
             // 
-            // flowLayoutPanelCamera
+            // NoTearFlowLayoutPanelCamera
             // 
-            this.flowLayoutPanelCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoTearFlowLayoutPanelCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelCamera.AutoScroll = true;
-            this.flowLayoutPanelCamera.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelCamera.Location = new System.Drawing.Point(65, 2);
-            this.flowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
-            this.flowLayoutPanelCamera.Name = "flowLayoutPanelCamera";
-            this.flowLayoutPanelCamera.Size = new System.Drawing.Size(929, 180);
-            this.flowLayoutPanelCamera.TabIndex = 3;
+            this.NoTearFlowLayoutPanelCamera.AutoScroll = true;
+            this.NoTearFlowLayoutPanelCamera.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(65, 2);
+            this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(929, 180);
+            this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // panelCameraBorder
             // 
@@ -752,7 +752,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageDebug
             // 
-            this.tabPageDebug.Controls.Add(this.flowLayoutPanelDebugDisplayType);
+            this.tabPageDebug.Controls.Add(this.NoTearFlowLayoutPanelDebugDisplayType);
             this.tabPageDebug.Controls.Add(this.label2);
             this.tabPageDebug.Controls.Add(this.panelDebugBorder);
             this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
@@ -762,22 +762,22 @@ namespace SM64_Diagnostic
             this.tabPageDebug.TabIndex = 8;
             this.tabPageDebug.Text = "Debug";
             // 
-            // flowLayoutPanelDebugDisplayType
+            // NoTearFlowLayoutPanelDebugDisplayType
             // 
-            this.flowLayoutPanelDebugDisplayType.AutoScroll = true;
-            this.flowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgOff);
-            this.flowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgObjCnt);
-            this.flowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgChkInfo);
-            this.flowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgMapInfo);
-            this.flowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgStgInfo);
-            this.flowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgFxInfo);
-            this.flowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgEnemyInfo);
-            this.flowLayoutPanelDebugDisplayType.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelDebugDisplayType.Location = new System.Drawing.Point(71, 23);
-            this.flowLayoutPanelDebugDisplayType.Name = "flowLayoutPanelDebugDisplayType";
-            this.flowLayoutPanelDebugDisplayType.Size = new System.Drawing.Size(167, 177);
-            this.flowLayoutPanelDebugDisplayType.TabIndex = 11;
-            this.flowLayoutPanelDebugDisplayType.WrapContents = false;
+            this.NoTearFlowLayoutPanelDebugDisplayType.AutoScroll = true;
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgOff);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgObjCnt);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgChkInfo);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgMapInfo);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgStgInfo);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgFxInfo);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgEnemyInfo);
+            this.NoTearFlowLayoutPanelDebugDisplayType.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelDebugDisplayType.Location = new System.Drawing.Point(71, 23);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Name = "NoTearFlowLayoutPanelDebugDisplayType";
+            this.NoTearFlowLayoutPanelDebugDisplayType.Size = new System.Drawing.Size(167, 177);
+            this.NoTearFlowLayoutPanelDebugDisplayType.TabIndex = 11;
+            this.NoTearFlowLayoutPanelDebugDisplayType.WrapContents = false;
             // 
             // radioButtonDbgOff
             // 
@@ -879,7 +879,7 @@ namespace SM64_Diagnostic
             // tabPageMisc
             // 
             this.tabPageMisc.Controls.Add(this.groupBoxPuController);
-            this.tabPageMisc.Controls.Add(this.flowLayoutPanelMisc);
+            this.tabPageMisc.Controls.Add(this.NoTearFlowLayoutPanelMisc);
             this.tabPageMisc.Controls.Add(this.panelMiscBorder);
             this.tabPageMisc.Location = new System.Drawing.Point(4, 22);
             this.tabPageMisc.Name = "tabPageMisc";
@@ -1106,18 +1106,18 @@ namespace SM64_Diagnostic
             this.buttonPuConHome.TabIndex = 1;
             this.buttonPuConHome.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanelMisc
+            // NoTearFlowLayoutPanelMisc
             // 
-            this.flowLayoutPanelMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoTearFlowLayoutPanelMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelMisc.AutoScroll = true;
-            this.flowLayoutPanelMisc.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelMisc.Location = new System.Drawing.Point(64, 5);
-            this.flowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
-            this.flowLayoutPanelMisc.Name = "flowLayoutPanelMisc";
-            this.flowLayoutPanelMisc.Size = new System.Drawing.Size(702, 180);
-            this.flowLayoutPanelMisc.TabIndex = 5;
+            this.NoTearFlowLayoutPanelMisc.AutoScroll = true;
+            this.NoTearFlowLayoutPanelMisc.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelMisc.Location = new System.Drawing.Point(64, 5);
+            this.NoTearFlowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelMisc.Name = "NoTearFlowLayoutPanelMisc";
+            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(702, 180);
+            this.NoTearFlowLayoutPanelMisc.TabIndex = 5;
             // 
             // panelMiscBorder
             // 
@@ -1135,7 +1135,7 @@ namespace SM64_Diagnostic
             this.tabPageTriangles.Controls.Add(this.buttonGoToV3);
             this.tabPageTriangles.Controls.Add(this.buttonGoToV2);
             this.tabPageTriangles.Controls.Add(this.buttonGoToV1);
-            this.tabPageTriangles.Controls.Add(this.flowLayoutPanelTriangles);
+            this.tabPageTriangles.Controls.Add(this.NoTearFlowLayoutPanelTriangles);
             this.tabPageTriangles.Controls.Add(this.label4);
             this.tabPageTriangles.Controls.Add(this.maskedTextBoxOtherTriangle);
             this.tabPageTriangles.Controls.Add(this.radioButtonTriOther);
@@ -1195,18 +1195,18 @@ namespace SM64_Diagnostic
             this.buttonGoToV1.Text = "Goto V1";
             this.buttonGoToV1.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanelTriangles
+            // NoTearFlowLayoutPanelTriangles
             // 
-            this.flowLayoutPanelTriangles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoTearFlowLayoutPanelTriangles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelTriangles.AutoScroll = true;
-            this.flowLayoutPanelTriangles.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelTriangles.Location = new System.Drawing.Point(167, 5);
-            this.flowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
-            this.flowLayoutPanelTriangles.Name = "flowLayoutPanelTriangles";
-            this.flowLayoutPanelTriangles.Size = new System.Drawing.Size(824, 180);
-            this.flowLayoutPanelTriangles.TabIndex = 7;
+            this.NoTearFlowLayoutPanelTriangles.AutoScroll = true;
+            this.NoTearFlowLayoutPanelTriangles.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(167, 5);
+            this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(824, 180);
+            this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // label4
             // 
@@ -1270,7 +1270,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageStars
             // 
-            this.tabPageStars.Controls.Add(this.flowLayoutPanel1);
+            this.tabPageStars.Controls.Add(this.NoTearFlowLayoutPanel1);
             this.tabPageStars.Controls.Add(this.radioButtonFileD);
             this.tabPageStars.Controls.Add(this.radioButtonFileC);
             this.tabPageStars.Controls.Add(this.radioButtonFileB);
@@ -1282,18 +1282,18 @@ namespace SM64_Diagnostic
             this.tabPageStars.TabIndex = 10;
             this.tabPageStars.Text = "Stars";
             // 
-            // flowLayoutPanel1
+            // NoTearFlowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoTearFlowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(63, 7);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(927, 177);
-            this.flowLayoutPanel1.TabIndex = 4;
-            this.flowLayoutPanel1.WrapContents = false;
+            this.NoTearFlowLayoutPanel1.AutoScroll = true;
+            this.NoTearFlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanel1.Location = new System.Drawing.Point(63, 7);
+            this.NoTearFlowLayoutPanel1.Name = "NoTearFlowLayoutPanel1";
+            this.NoTearFlowLayoutPanel1.Size = new System.Drawing.Size(927, 177);
+            this.NoTearFlowLayoutPanel1.TabIndex = 4;
+            this.NoTearFlowLayoutPanel1.WrapContents = false;
             // 
             // radioButtonFileD
             // 
@@ -1988,8 +1988,8 @@ namespace SM64_Diagnostic
             this.panelCameraBorder.ResumeLayout(false);
             this.tabPageDebug.ResumeLayout(false);
             this.tabPageDebug.PerformLayout();
-            this.flowLayoutPanelDebugDisplayType.ResumeLayout(false);
-            this.flowLayoutPanelDebugDisplayType.PerformLayout();
+            this.NoTearFlowLayoutPanelDebugDisplayType.ResumeLayout(false);
+            this.NoTearFlowLayoutPanelDebugDisplayType.PerformLayout();
             this.panelDebugBorder.ResumeLayout(false);
             this.tabPageMisc.ResumeLayout(false);
             this.groupBoxPuController.ResumeLayout(false);
@@ -2035,7 +2035,7 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.GroupBox groupBoxObjects;
         private System.Windows.Forms.ComboBox comboBoxSortMethod;
         private System.Windows.Forms.Label labelSortMethod;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelObjects;
+        private NoTearFlowLayoutPanel NoTearFlowLayoutPanelObjects;
         private System.Windows.Forms.Button buttonPauseResume;
         private System.Windows.Forms.SplitContainer splitContainerMain;
         private System.Windows.Forms.CheckBox checkBoxObjLockLabels;
@@ -2045,7 +2045,7 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.Label labelObjSlotPosValue;
         private System.Windows.Forms.Label labelObjBhvValue;
         private System.Windows.Forms.Label labelObjAdd;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelObject;
+        private NoTearFlowLayoutPanel NoTearFlowLayoutPanelObject;
         private System.Windows.Forms.Label labelObjSlotInd;
         private System.Windows.Forms.Label labelObjSlotPos;
         private System.Windows.Forms.Label labelObjBhv;
@@ -2053,7 +2053,7 @@ namespace SM64_Diagnostic
         private IntPictureBox pictureBoxObject;
         private System.Windows.Forms.Label labelObjAddValue;
         private System.Windows.Forms.TabPage tabPageMario;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMario;
+        private NoTearFlowLayoutPanel NoTearFlowLayoutPanelMario;
         private System.Windows.Forms.Panel panelMarioBorder;
         private IntPictureBox pictureBoxMario;
         private System.Windows.Forms.TabPage tabPageExpressions;
@@ -2099,10 +2099,10 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.CheckBox checkBoxUseRomHack;
         private System.Windows.Forms.TabPage tabPageHud;
         private System.Windows.Forms.TabPage tabPageCamera;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelHud;
+        private NoTearFlowLayoutPanel NoTearFlowLayoutPanelHud;
         private System.Windows.Forms.Panel panelHudBorder;
         private IntPictureBox pictureBoxHud;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCamera;
+        private NoTearFlowLayoutPanel NoTearFlowLayoutPanelCamera;
         private System.Windows.Forms.Panel panelCameraBorder;
         private IntPictureBox pictureBoxCamera;
         private System.Windows.Forms.CheckBox checkBoxMapShowCamera;
@@ -2119,11 +2119,11 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelDebugBorder;
         private IntPictureBox pictureBoxDebug;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMisc;
+        private NoTearFlowLayoutPanel NoTearFlowLayoutPanelMisc;
         private System.Windows.Forms.Panel panelMiscBorder;
         private IntPictureBox pictureBoxMisc;
         private System.Windows.Forms.TabPage tabPageStars;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private NoTearFlowLayoutPanel NoTearFlowLayoutPanel1;
         private System.Windows.Forms.RadioButton radioButtonFileD;
         private System.Windows.Forms.RadioButton radioButtonFileC;
         private System.Windows.Forms.RadioButton radioButtonFileB;
@@ -2158,7 +2158,7 @@ namespace SM64_Diagnostic
         private Label label4;
         private MaskedTextBox maskedTextBoxOtherTriangle;
         private RadioButton radioButtonTriOther;
-        private FlowLayoutPanel flowLayoutPanelTriangles;
+        private NoTearFlowLayoutPanel NoTearFlowLayoutPanelTriangles;
         private Button buttonStandardHud;
         private Button buttonDie;
         private Button buttonFillHp;
@@ -2166,7 +2166,7 @@ namespace SM64_Diagnostic
         private Label label5;
         private CheckedListBox checkedListBoxHacks;
         private Label labelPureInterpretterRequire;
-        private FlowLayoutPanel flowLayoutPanelDebugDisplayType;
+        private NoTearFlowLayoutPanel NoTearFlowLayoutPanelDebugDisplayType;
         private Button buttonGoToV3;
         private Button buttonGoToV2;
         private Button buttonGoToV1;

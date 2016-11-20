@@ -19,7 +19,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
         enum PuControl { Home, PuUp, PuDown, PuLeft, PuRight, QpuUp, QpuDown, QpuLeft, QpuRight};
 
-        public MiscManager(ProcessStream stream, List<WatchVariable> watchVariables, FlowLayoutPanel variableTable, Control puController)
+        public MiscManager(ProcessStream stream, List<WatchVariable> watchVariables, NoTearFlowLayoutPanel variableTable, Control puController)
             : base(stream, watchVariables, variableTable)
         {
             _puController = puController;

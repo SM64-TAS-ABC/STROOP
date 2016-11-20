@@ -96,6 +96,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\Map\MapBaseObject.cs" />
+    <Compile Include="Controls\NoTearFlowLayoutContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
     <Compile Include="Extensions\ProcessStreamExtensions.cs" />

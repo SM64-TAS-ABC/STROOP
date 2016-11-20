@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.ManagerClasses
         Control _tabControl;
 
         public HudManager(ProcessStream stream, List<WatchVariable> hudData, Control tabControl)
-            : base(stream, hudData, tabControl.Controls["flowLayoutPanelHud"] as FlowLayoutPanel)
+            : base(stream, hudData, tabControl.Controls["NoTearFlowLayoutPanelHud"] as NoTearFlowLayoutPanel)
         {
             _tabControl = tabControl;
 
