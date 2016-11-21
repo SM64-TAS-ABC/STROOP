@@ -39,6 +39,9 @@ namespace SM64_Diagnostic.ManagerClasses
         uint _standingOnObject, _interactingObject, _holdingObject, _usingObject, _closestObject;
         int _activeObjCnt;
         bool _selectedUpdated = false;
+        Image _multiImage = null;
+
+        List<BehaviorCriteria> _prevSelectedBehaviorCriteria = new List<BehaviorCriteria>();
 
         public enum SortMethodType {ProcessingOrder, MemoryOrder, DistanceToMario};
         public enum MapToggleModeType {Single, ObjectType, ProcessGroup};
@@ -337,12 +340,15 @@ namespace SM64_Diagnostic.ManagerClasses
 
             // Update slots
             BehaviorCriteria? multiBehavior = null;
+            List<BehaviorCriteria> selectedBehaviorCriterias = new List<BehaviorCriteria>();
             bool firstObject = true;
             for (int i = 0; i < slotConfig.MaxSlots; i++)
             {
                 var behaviorCritera = UpdateSlot(newObjectSlotData[i], i);
                 if (!_selectedSlotsAddresses.Contains(newObjectSlotData[i].Address))
                     continue;
+
+                selectedBehaviorCriterias.Add(behaviorCritera);
 
                 if (multiBehavior.HasValue)
                 {
@@ -358,25 +364,48 @@ namespace SM64_Diagnostic.ManagerClasses
             
             if (_selectedSlotsAddresses.Count > 1)
             {
-                if (_selectedUpdated || _lastSelectedBehavior != multiBehavior)
+                if (_selectedUpdated || !selectedBehaviorCriterias.SequenceEqual(_prevSelectedBehaviorCriteria))
                 {
-                    if (multiBehavior.HasValue)
+                    if (_lastSelectedBehavior != multiBehavior)
                     {
-                        _objManager.Behavior = String.Format("0x{0}", ((multiBehavior.Value.BehaviorAddress + ObjectAssoc.RamOffset) & 0x00FFFFFF).ToString("X4"));
-                        _objManager.Image = null;
-                        _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(multiBehavior.Value), Config.ObjectGroups.VacantSlotColor.Lighten(0.8));
+                        if (multiBehavior.HasValue)
+                        {
+                            _objManager.Behavior = String.Format("0x{0}", ((multiBehavior.Value.BehaviorAddress + ObjectAssoc.RamOffset) & 0x00FFFFFF).ToString("X4"));
+                            _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(multiBehavior.Value), Config.ObjectGroups.VacantSlotColor.Lighten(0.8));
+                        }
+                        else
+                        {
+                            _objManager.Behavior = "";
+                            _objManager.SetBehaviorWatchVariables(new List<WatchVariable>(), Color.White);
+                        }
+                        _lastSelectedBehavior = multiBehavior;
                     }
-                    else
+
+                    _multiImage?.Dispose();
+                    var multiBitmap = new Bitmap(256, 256);
+                    int subImageCount = Math.Min(4, selectedBehaviorCriterias.Count);
+                    using (Graphics gfx = Graphics.FromImage(multiBitmap))
                     {
-                        _objManager.Behavior = "";
-                        _objManager.Image = null;
-                        _objManager.SetBehaviorWatchVariables(new List<WatchVariable>(), Color.White);
+                        Rectangle[] subImagePlaces = 
+                        {
+                            new Rectangle(0, 0, 128, 128),
+                            new Rectangle(128, 0, 128, 128),
+                            new Rectangle(0, 128, 128, 128),
+                            new Rectangle(128, 128, 128, 128)
+                        };
+                        for (int i = 0; i < subImageCount; i++)
+                        {
+                            gfx.DrawImage(ObjectAssoc.GetObjectImage(selectedBehaviorCriterias[i], false), subImagePlaces[i]);
+                        }
                     }
+                    _multiImage = multiBitmap;
+                    _objManager.Image = _multiImage;
+
                     _objManager.Name = "Multiple Objects Selected";
                     _objManager.BackColor = Config.ObjectGroups.VacantSlotColor;
                     _objManager.SlotIndex = "";
                     _objManager.SlotPos = "";
-                    _lastSelectedBehavior = multiBehavior;
+                    _prevSelectedBehaviorCriteria = selectedBehaviorCriterias;
                 }
             }
         }
