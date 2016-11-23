@@ -41,6 +41,8 @@ namespace SM64_Diagnostic.ManagerClasses
         bool _selectedUpdated = false;
         Image _multiImage = null;
 
+        bool _firstSelect = true;
+
         List<BehaviorCriteria> _prevSelectedBehaviorCriteria = new List<BehaviorCriteria>();
 
         public enum SortMethodType {ProcessingOrder, MemoryOrder, DistanceToMario};
@@ -290,15 +292,15 @@ namespace SM64_Diagnostic.ManagerClasses
             marioZ = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.ZOffset, 4), 0);
 
             // Calculate distance to Mario
-            foreach(var objSlot in newObjectSlotData)
-            { 
+            foreach (var objSlot in newObjectSlotData)
+            {
                 // Get object relative-to-maario position
                 float dX, dY, dZ;
                 dX = marioX - BitConverter.ToSingle(_stream.ReadRam(objSlot.Address + Config.ObjectSlots.ObjectXOffset, 4), 0);
                 dY = marioY - BitConverter.ToSingle(_stream.ReadRam(objSlot.Address + Config.ObjectSlots.ObjectYOffset, 4), 0);
                 dZ = marioZ - BitConverter.ToSingle(_stream.ReadRam(objSlot.Address + Config.ObjectSlots.ObjectZOffset, 4), 0);
 
-                objSlot.DistanceToMario = (float) Math.Sqrt(dX * dX + dY * dY + dZ * dZ);
+                objSlot.DistanceToMario = (float)Math.Sqrt(dX * dX + dY * dY + dZ * dZ);
 
                 // Check if active/loaded
                 objSlot.IsActive = BitConverter.ToUInt16(_stream.ReadRam(objSlot.Address + Config.ObjectSlots.ObjectActiveOffset, 2), 0) != 0x0000;
@@ -361,7 +363,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 }
             }
             _miscManager.ActiveObjectCount = _activeObjCnt;
-            
+
             if (_selectedSlotsAddresses.Count > 1)
             {
                 if (_selectedUpdated || !selectedBehaviorCriterias.SequenceEqual(_prevSelectedBehaviorCriteria))
@@ -386,7 +388,7 @@ namespace SM64_Diagnostic.ManagerClasses
                     int subImageCount = Math.Min(4, selectedBehaviorCriterias.Count);
                     using (Graphics gfx = Graphics.FromImage(multiBitmap))
                     {
-                        Rectangle[] subImagePlaces = 
+                        Rectangle[] subImagePlaces =
                         {
                             new Rectangle(0, 0, 128, 128),
                             new Rectangle(128, 0, 128, 128),
@@ -407,6 +409,11 @@ namespace SM64_Diagnostic.ManagerClasses
                     _objManager.SlotPos = "";
                     _prevSelectedBehaviorCriteria = selectedBehaviorCriterias;
                 }
+            }
+            else if (_selectedSlotsAddresses.Count == 0)
+            {
+                _objManager.Name = "No Object Selected";
+                _firstSelect = true;
             }
         }
 
@@ -493,13 +500,14 @@ namespace SM64_Diagnostic.ManagerClasses
             {
                 var objAssoc = ObjectAssoc.FindObjectAssociation(behaviorCriteria);
                 var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : (BehaviorCriteria?)null;
-                if (_lastSelectedBehavior != newBehavior)
+                if (_lastSelectedBehavior != newBehavior || _firstSelect)
                 {
                     _objManager.Behavior = String.Format("0x{0}", ((objectData.Behavior + ObjectAssoc.RamOffset) & 0x00FFFFFF).ToString("X4"));
                     _objManager.Name = ObjectAssoc.GetObjectName(behaviorCriteria);
 
                     _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorCriteria), newColor.Lighten(0.8));
                     _lastSelectedBehavior = newBehavior;
+                    _firstSelect = false;
                 }
                 _objManager.Image = ObjectSlots[index].ObjectImage;
                 _objManager.BackColor = newColor;
