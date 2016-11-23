@@ -149,7 +149,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 if (_objGui.ObjectBorderPanel.BackColor != value)
                 {
                     _objGui.ObjectBorderPanel.BackColor = value;
-                    _objGui.ObjectImagePictureBox.BackColor = value.Lighten(0.5);
+                    _objGui.ObjectImagePictureBox.BackColor = value.Lighten(0.7);
                 }
             }
             get
