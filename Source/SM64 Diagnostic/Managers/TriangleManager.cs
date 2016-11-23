@@ -58,7 +58,7 @@ namespace SM64_Diagnostic.ManagerClasses
                 new AngleDataContainer("LeftHillAngle"),
                 new AngleDataContainer("RightHillAngle"),
                 new DataContainer("Classification"),
-                new DataContainer("Steepness"),
+                new AngleDataContainer("Steepness"),
                 new DataContainer("NormalDistAway"),
                 new DataContainer("VerticalDistAway"),
                 new DataContainer("HeightOnSlope")
@@ -154,8 +154,8 @@ namespace SM64_Diagnostic.ManagerClasses
                             (specialVar as DataContainer).Text = "Wall";
                         goto case "CheckTriangleExists";
                     case "Steepness":
-                        (specialVar as DataContainer).Text = FixAngle((65536 / (Math.PI * 2) * Math.Acos(normY))).ToString();
-                        goto case "CheckTriangleExists";
+                        (specialVar as AngleDataContainer).AngleValue = Math.Acos(normY);
+                        goto case "CheckTriangleExistsAngle";
                     case "NormalDistAway":
                         (specialVar as DataContainer).Text = (marioX * normX + marioY * normY + marioZ * normZ + normOffset).ToString();
                         goto case "CheckTriangleExists";
