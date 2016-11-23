@@ -292,27 +292,27 @@ namespace SM64_Diagnostic.ManagerClasses
                     switch (specialVar.SpecialName)
                     {
                         case "MarioDistanceToObject":
-                            newText = MoreMath.DistanceTo(mX, mY, mZ, objX, objY, objZ).ToString();
+                            newText = Math.Round(MoreMath.DistanceTo(mX, mY, mZ, objX, objY, objZ),3).ToString();
                             break;
 
                         case "MarioLateralDistanceToObject":
-                            newText = MoreMath.DistanceTo(mX, mZ, objX, objZ).ToString();
+                            newText = Math.Round(MoreMath.DistanceTo(mX, mZ, objX, objZ), 3).ToString();
                             break;
 
                         case "MarioDistanceToObjectHome":
-                            newText = MoreMath.DistanceTo(mX, mY, mZ, objHomeX, objHomeY, objHomeZ).ToString();
+                            newText = Math.Round(MoreMath.DistanceTo(mX, mY, mZ, objHomeX, objHomeY, objHomeZ), 3).ToString();
                             break;
 
                         case "MarioLateralDistanceToObjectHome":
-                            newText = MoreMath.DistanceTo(mX, mZ, objHomeX, objHomeZ).ToString();
+                            newText = Math.Round(MoreMath.DistanceTo(mX, mZ, objHomeX, objHomeZ), 3).ToString();
                             break;
 
                         case "ObjectDistanceToHome":
-                            newText = MoreMath.DistanceTo(objX, objY, objZ, objHomeX, objHomeY, objHomeZ).ToString();
+                            newText = Math.Round(MoreMath.DistanceTo(objX, objY, objZ, objHomeX, objHomeY, objHomeZ), 3).ToString();
                             break;
 
                         case "LateralObjectDistanceToHome":
-                            newText = MoreMath.DistanceTo(objX, objZ, objHomeX, objHomeZ).ToString();
+                            newText = Math.Round(MoreMath.DistanceTo(objX, objZ, objHomeX, objHomeZ), 3).ToString();
                             break;
 
                         case "RngCallsPerFrame":
