@@ -271,11 +271,20 @@ namespace SM64_Diagnostic.Utilities
                                 case "StarCountAddress":
                                     Config.Hud.StarCountAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "DisplayLiveCountAddress":
+                                    Config.Hud.DisplayLiveCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "DisplayCoinCountAddress":
+                                    Config.Hud.DisplayCoinCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "DisplayStarCountAddress":
+                                    Config.Hud.DisplayStarCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "FullHp":
                                     Config.Hud.FullHp = short.Parse(subElement.Value);
                                     break;
                                 case "StandardLives":
-                                    Config.Hud.StandardLives = short.Parse(subElement.Value);
+                                    Config.Hud.StandardLives = sbyte.Parse(subElement.Value);
                                     break;
                                 case "StandardCoins":
                                     Config.Hud.StandardCoins = short.Parse(subElement.Value);

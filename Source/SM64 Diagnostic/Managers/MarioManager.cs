@@ -77,7 +77,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public void Update(bool updateView)
+        public override void Update(bool updateView)
         {
             // Get Mario position and rotation
             float x, y, z, rot;

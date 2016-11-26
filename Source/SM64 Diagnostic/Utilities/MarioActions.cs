@@ -130,6 +130,9 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardCoins), Config.Hud.CoinCountAddress);
             success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardLives), Config.Hud.LiveCountAddress);
             success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardStars), Config.Hud.StarCountAddress);
+            success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardCoins), Config.Hud.DisplayCoinCountAddress);
+            success &= stream.WriteRam(BitConverter.GetBytes((short)Config.Hud.StandardLives), Config.Hud.DisplayLiveCountAddress);
+            success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardStars), Config.Hud.DisplayStarCountAddress);
 
             return success;
         }
