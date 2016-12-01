@@ -582,23 +582,5 @@ namespace SM64_Diagnostic.Managers
             }
             return behaviorCriteria;
         }
-
-        public void OnSlotDropAction(DropAction dropAction, ObjectSlot objSlot)
-        {
-            switch (dropAction.Action)
-            {
-                case DropAction.ActionType.Mario:
-                    // Move mario to object
-                    var objectAddress = objSlot.Address;
-                    MarioActions.RetreiveObjects(_stream, new List<uint>() { objectAddress });
-                    break;
-
-                case DropAction.ActionType.Object:
-                    break;
-
-                default:
-                    return;
-            }
-        }
     }
 }

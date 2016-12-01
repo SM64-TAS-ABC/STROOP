@@ -30,9 +30,6 @@ namespace SM64_Diagnostic.Managers
             _goButton = goButton;
             _formContext = formContext;
 
-            RegisterControlEvents(_output);
-            RegisterControlEvents(_textBoxStartAdd);
-
             goButton.Click += GoButton_Pressed;
             textBoxStartAdd.TextChanged += (sender, e) =>
             {
@@ -40,13 +37,6 @@ namespace SM64_Diagnostic.Managers
                 _goButton.Text = "Go";
             };
             _stream.OnStatusChanged += Stream_StatusChanged;
-        }
-
-        private void RegisterControlEvents(Control control)
-        {
-            control.AllowDrop = true;
-            control.DragDrop += OnDrop;
-            control.DragEnter += DragEnter;
         }
 
         private void GoButton_Pressed(object sender, EventArgs e)
@@ -153,44 +143,6 @@ namespace SM64_Diagnostic.Managers
                 _output.AppendText(Environment.NewLine);
             }
             _output.Visible = true;
-        }
-
-        private void DragEnter(object sender, DragEventArgs e)
-        {
-            // Make sure we have valid Drag and Drop data (it is an index)
-            if (!e.Data.GetDataPresent(typeof(DropAction)))
-            {
-                e.Effect = DragDropEffects.None;
-                return;
-            }
-
-            var dropAction = ((DropAction)e.Data.GetData(typeof(DropAction))).Action;
-            if (dropAction != DropAction.ActionType.Object && dropAction != DropAction.ActionType.Mario)
-            {
-                e.Effect = DragDropEffects.None;
-                return;
-            }
-
-            e.Effect = DragDropEffects.Move;
-        }
-
-        private void OnDrop(object sender, DragEventArgs e)
-        {
-            // Make sure we have valid Drag and Drop data (it is an index)
-            if (!e.Data.GetDataPresent(typeof(DropAction)))
-                return;
-
-            var dropAction = ((DropAction)e.Data.GetData(typeof(DropAction)));
-
-            // Display data address
-            if (dropAction.Action == DropAction.ActionType.Object)
-            {
-                StartShowDisassmbly(dropAction.Address, (int) Config.Mario.StructSize / 4);
-            }
-            else if (dropAction.Action == DropAction.ActionType.Mario)
-            {
-                StartShowDisassmbly(dropAction.Address, (int) Config.ObjectSlots.StructSize / 4);
-            }
         }
     }
 }

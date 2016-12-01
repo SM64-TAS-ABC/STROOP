@@ -192,11 +192,6 @@ namespace SM64_Diagnostic.Managers
         { 
             _objGui = objectGui;
             _objAssoc = objAssoc;
-
-            // Register controls on the control (for drag-and-drop)
-            RegisterControlEvents(_objGui.ObjectBorderPanel);
-            foreach (Control control in _objGui.ObjectBorderPanel.Controls)
-                RegisterControlEvents(control);
             
             _objGui.ObjAddressLabelValue.Click += ObjAddressLabel_Click;
             _objGui.ObjAddressLabel.Click += ObjAddressLabel_Click;
@@ -373,52 +368,6 @@ namespace SM64_Diagnostic.Managers
             }
 
             return numOfCalls;
-        }
-
-        private void RegisterControlEvents(Control control)
-        {
-            control.AllowDrop = true;
-            control.DragEnter += DragEnter;
-            control.DragDrop += OnDrop;
-            control.MouseDown += OnDrag;
-        }
-
-        private void OnDrag(object sender, EventArgs e)
-        {
-            if (CurrentAddresses.Count == 1)
-                return;
-
-            // Start the drag and drop but setting the object slot index in Drag and Drop data
-            var dropAction = new DropAction(DropAction.ActionType.Object, CurrentAddresses[0]);
-            (sender as Control).DoDragDrop(dropAction, DragDropEffects.All);
-        }
-
-        private void DragEnter(object sender, DragEventArgs e)
-        {
-            // Make sure we have valid Drag and Drop data (it is an index)
-            if (!e.Data.GetDataPresent(typeof(DropAction)))
-            {
-                e.Effect = DragDropEffects.None;
-                return;
-            }
-
-            var dropAction = ((DropAction)e.Data.GetData(typeof(DropAction))).Action;
-            if (dropAction != DropAction.ActionType.Object && dropAction != DropAction.ActionType.Mario)
-            {
-                e.Effect = DragDropEffects.None;
-                return;
-            }
-
-            e.Effect = DragDropEffects.Move;
-        }
-
-        private void OnDrop(object sender, DragEventArgs e)
-        {
-            // Make sure we have valid Drag and Drop data (it is an index)
-            if (!e.Data.GetDataPresent(typeof(DropAction)))
-                return;
-
-            var dropAction = ((DropAction)e.Data.GetData(typeof(DropAction)));
         }
     }
 }
