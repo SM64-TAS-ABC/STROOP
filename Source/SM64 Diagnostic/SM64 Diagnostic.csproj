@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\ProcessStreamExtensions.cs" />
     <Compile Include="Extensions\RectangleFExtensions.cs" />
     <Compile Include="Extensions\WatchExpressionExtensions.cs" />

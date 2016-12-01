@@ -53,6 +53,9 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("DistanceAboveFloor"),
                 new DataContainer("DistanceBelowCeiling"),
                 new DataContainer("ClosestVertex"),
+                new DataContainer("ClosestVertexX"),
+                new DataContainer("ClosestVertexY"),
+                new DataContainer("ClosestVertexZ"),
                 new AngleDataContainer("UpHillAngle"),
                 new AngleDataContainer("DownHillAngle"),
                 new AngleDataContainer("LeftHillAngle"),
@@ -102,23 +105,47 @@ namespace SM64_Diagnostic.Managers
         private void ProcessSpecialVars()
         {
             var floorY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.GroundYOffset, 4), 0);
+
+            // Get Mario position
             float marioX, marioY, marioZ;
-            marioX = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.XOffset, 4), 0);
-            marioY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.YOffset, 4), 0);
-            marioZ = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.ZOffset, 4), 0);
+            marioX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            marioY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            marioZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
             float normX, normY, normZ, normOffset;
-            normX = BitConverter.ToSingle(_stream.ReadRam(TriangleAddress + Config.TriangleOffsets.NormX, 4), 0);
-            normY = BitConverter.ToSingle(_stream.ReadRam(TriangleAddress + Config.TriangleOffsets.NormY, 4), 0);
-            normZ = BitConverter.ToSingle(_stream.ReadRam(TriangleAddress + Config.TriangleOffsets.NormZ, 4), 0);
-            normOffset = BitConverter.ToSingle(_stream.ReadRam(TriangleAddress + Config.TriangleOffsets.Offset, 4), 0);
+            normX = _stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormX);
+            normY = _stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormY);
+            normZ = _stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormZ);
+            normOffset = _stream.GetSingle(TriangleAddress + Config.TriangleOffsets.Offset);
 
             var uphillAngle = Math.PI + Math.Atan2(normX, normZ);
             if (normX == 0 && normZ == 0)
                 uphillAngle = double.NaN;
             if (normY < -0.01)
                 uphillAngle += Math.PI;
-            
+
+            short v1X, v1Y, v1Z;
+            short v2X, v2Y, v2Z;
+            short v3X, v3Y, v3Z;
+            v1X = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
+            v1Y = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
+            v1Z = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
+            v2X = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
+            v2Y = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
+            v2Z = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
+            v3X = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
+            v3Y = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
+            v3Z = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
+
+            var disToV = new double[]
+            {
+                Math.Pow(marioX - v1X, 2) + Math.Pow(marioY - v1Y, 2) + Math.Pow(marioZ - v1Z, 2),
+                Math.Pow(marioX - v2X, 2) + Math.Pow(marioY - v2Y, 2) + Math.Pow(marioZ - v2Z, 2),
+                Math.Pow(marioX - v3X, 2) + Math.Pow(marioY - v3Y, 2) + Math.Pow(marioZ - v3Z, 2)
+            };
+
+            var closestVertex = disToV.IndexOfMin() + 1;
+
             foreach (IDataContainer specialVar in _specialWatchVars)
             {
                 switch (specialVar.SpecialName)
@@ -131,7 +158,55 @@ namespace SM64_Diagnostic.Managers
                             - marioY).ToString();
                         break;
                     case "ClosestVertex":
-                        (specialVar as DataContainer).Text = String.Format("V{0}", MarioActions.GetClosestVertex(_stream, TriangleAddress));
+                        (specialVar as DataContainer).Text = String.Format("V{0}", closestVertex);
+                        goto case "CheckTriangleExists";
+                    case "ClosestVertexX":
+                        short coordX = 0;
+                        switch (closestVertex)
+                        {
+                            case 1:
+                                coordX = v1X;
+                                break;
+                            case 2:
+                                coordX = v2X;
+                                break;
+                            case 3:
+                                coordX = v3X;
+                                break;
+                        }
+                        (specialVar as DataContainer).Text = coordX.ToString();
+                        goto case "CheckTriangleExists";
+                    case "ClosestVertexY":
+                        short coordY = 0;
+                        switch (closestVertex)
+                        {
+                            case 1:
+                                coordY = v1Y;
+                                break;
+                            case 2:
+                                coordY = v2Y;
+                                break;
+                            case 3:
+                                coordY = v3Y;
+                                break;
+                        }
+                        (specialVar as DataContainer).Text = coordY.ToString();
+                        goto case "CheckTriangleExists";
+                    case "ClosestVertexZ":
+                        short coordZ = 0;
+                        switch (closestVertex)
+                        {
+                            case 1:
+                                coordZ = v1Z;
+                                break;
+                            case 2:
+                                coordZ = v2Z;
+                                break;
+                            case 3:
+                                coordZ = v3Z;
+                                break;
+                        }
+                        (specialVar as DataContainer).Text = coordZ.ToString();
                         goto case "CheckTriangleExists";
                     case "UpHillAngle":
                         (specialVar as AngleDataContainer).AngleValue = uphillAngle;
