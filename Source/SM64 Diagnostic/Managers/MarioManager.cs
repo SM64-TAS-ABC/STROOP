@@ -53,7 +53,7 @@ namespace SM64_Diagnostic.Managers
                         {
                             float hSpeed = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
                             float normY = _stream.GetSingle(floorTriangle + Config.TriangleOffsets.NormY);
-                            (specialVar as DataContainer).Text = (hSpeed * normY).ToString();
+                            (specialVar as DataContainer).Text = Math.Round(hSpeed * normY, 3).ToString();
                         }
                         else
                         {
@@ -62,7 +62,7 @@ namespace SM64_Diagnostic.Managers
                         break;
 
                     case "SlidingSpeed":
-                        (specialVar as DataContainer).Text = (Math.Sqrt(slidingSpeedX * slidingSpeedX + slidingSpeedZ * slidingSpeedZ)).ToString();
+                        (specialVar as DataContainer).Text = Math.Round(Math.Sqrt(slidingSpeedX * slidingSpeedX + slidingSpeedZ * slidingSpeedZ), 3).ToString();
                         break;
 
                     case "SlidingAngle":
