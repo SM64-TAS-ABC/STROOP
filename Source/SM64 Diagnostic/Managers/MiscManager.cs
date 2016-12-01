@@ -9,7 +9,7 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Controls;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace SM64_Diagnostic.Managers
 {
     public class MiscManager : DataManager
     {

@@ -9,9 +9,9 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace SM64_Diagnostic.Managers
 {
-    class TriangleManager : DataManager
+    public class TriangleManager : DataManager
     {
         MaskedTextBox _addressBox;
         uint _triangleAddress = 0;

@@ -10,7 +10,7 @@ using System.Drawing;
 using SM64_Diagnostic.Extensions;
 using OpenTK.Input;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace SM64_Diagnostic.Managers
 {
     public class ObjectSlotsManager
     {
@@ -29,7 +29,7 @@ namespace SM64_Diagnostic.ManagerClasses
         Dictionary<uint, MapObject> _mapObjects = new Dictionary<uint, MapObject>();
         Dictionary<uint, int> _memoryAddressSlotIndex;
         Dictionary<uint, string> _lastSlotLabel = new Dictionary<uint, string>();
-        List<uint> _selectedSlotsAddresses = new List<uint>();
+        public List<uint> SelectedSlotsAddresses = new List<uint>();
 
         List<byte> _toggleMapGroups = new List<byte>();
         List<BehaviorCriteria> _toggleMapBehaviors = new List<BehaviorCriteria>();
@@ -41,8 +41,7 @@ namespace SM64_Diagnostic.ManagerClasses
         bool _selectedUpdated = false;
         Image _multiImage = null;
 
-        bool _firstSelect = true;
-
+        bool _firstSlotSelect = true;
         List<BehaviorCriteria> _prevSelectedBehaviorCriteria = new List<BehaviorCriteria>();
 
         public enum SortMethodType {ProcessingOrder, MemoryOrder, DistanceToMario};
@@ -106,37 +105,36 @@ namespace SM64_Diagnostic.ManagerClasses
                     var keyboardState = Keyboard.GetState(0);
                     ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
                     if (keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight)
-                        && _selectedSlotsAddresses.Count > 0)
+                        && SelectedSlotsAddresses.Count > 0)
                     {
-                        int minSelect = _selectedSlotsAddresses.Min(s => ObjectSlots.First(o => o.Address == s).Index);
-                        int maxSelect = _selectedSlotsAddresses.Max(s => ObjectSlots.First(o => o.Address == s).Index);
+                        int minSelect = SelectedSlotsAddresses.Min(s => ObjectSlots.First(o => o.Address == s).Index);
+                        int maxSelect = SelectedSlotsAddresses.Max(s => ObjectSlots.First(o => o.Address == s).Index);
                         int startRange = Math.Min(minSelect, selectedSlot.Index);
                         int endRange = Math.Max(maxSelect, selectedSlot.Index);
                         var selectedObjects = ObjectSlots.Where(o => o.Index >= startRange && o.Index <= endRange
-                            && !_selectedSlotsAddresses.Contains(o.Address));
-                        _selectedSlotsAddresses.AddRange(selectedObjects.Select(o => o.Address));
+                            && !SelectedSlotsAddresses.Contains(o.Address));
+                        SelectedSlotsAddresses.AddRange(selectedObjects.Select(o => o.Address));
                     }
                     else
                     {
                         if (!keyboardState.IsKeyDown(Key.ControlLeft) && !keyboardState.IsKeyDown(Key.ControlRight))
                         {
-                            _selectedSlotsAddresses.Clear();
+                            SelectedSlotsAddresses.Clear();
                         }
-                        if (_selectedSlotsAddresses.Contains(selectedSlot.Address))
+                        if (SelectedSlotsAddresses.Contains(selectedSlot.Address))
                         {
-                            if (_selectedSlotsAddresses.Count > 1)
+                            if (SelectedSlotsAddresses.Count > 1)
                             {
-                                _selectedSlotsAddresses.Remove(selectedSlot.Address);
+                                SelectedSlotsAddresses.Remove(selectedSlot.Address);
                             }
                         }
                         else
                         {
-                            _selectedSlotsAddresses.Add(selectedSlot.Address);
+                            SelectedSlotsAddresses.Add(selectedSlot.Address);
                         }
-
                     }
 
-                    _objManager.CurrentAddresses = _selectedSlotsAddresses;
+                    _objManager.CurrentAddresses = SelectedSlotsAddresses;
                     break;
 
                 case "Map":
@@ -160,6 +158,7 @@ namespace SM64_Diagnostic.ManagerClasses
 
                             UpdateSelectedObjectSlots();
                             break;
+
                         case MapToggleModeType.ProcessGroup:
                             var group = selectedSlot.ProcessGroup;
                             if (_toggleMapGroups.Contains(group))
@@ -192,6 +191,31 @@ namespace SM64_Diagnostic.ManagerClasses
 
                 objSlot.Selected = selected;
             }
+        }
+
+        public string GetSlotNameFromAddress(uint address)
+        {
+            var slot = ObjectSlots.FirstOrDefault(s => s.Address == address);
+            if (slot == null)
+                return null;
+
+            return slot.Text;
+        }
+
+        public uint? GetSlotAddressFromName(string name)
+        {
+            name = name.ToLower();
+
+            if (!name.StartsWith("slot: "))
+                return null;
+
+            name = name.Remove(0, "slot: ".Length);
+
+            var slot = ObjectSlots.FirstOrDefault(s => s.Text.ToLower() == name);
+            if (slot == null)
+                return null;
+
+            return slot.Address;
         }
 
         private List<ObjectSlotData> GetProcessedObjects(ObjectGroupsConfig groupConfig, ObjectSlotsConfig slotConfig)
@@ -347,7 +371,7 @@ namespace SM64_Diagnostic.ManagerClasses
             for (int i = 0; i < slotConfig.MaxSlots; i++)
             {
                 var behaviorCritera = UpdateSlot(newObjectSlotData[i], i);
-                if (!_selectedSlotsAddresses.Contains(newObjectSlotData[i].Address))
+                if (!SelectedSlotsAddresses.Contains(newObjectSlotData[i].Address))
                     continue;
 
                 selectedBehaviorCriterias.Add(behaviorCritera);
@@ -364,7 +388,7 @@ namespace SM64_Diagnostic.ManagerClasses
             }
             _miscManager.ActiveObjectCount = _activeObjCnt;
 
-            if (_selectedSlotsAddresses.Count > 1)
+            if (SelectedSlotsAddresses.Count > 1)
             {
                 if (_selectedUpdated || !selectedBehaviorCriterias.SequenceEqual(_prevSelectedBehaviorCriteria))
                 {
@@ -410,10 +434,10 @@ namespace SM64_Diagnostic.ManagerClasses
                     _prevSelectedBehaviorCriteria = selectedBehaviorCriterias;
                 }
             }
-            else if (_selectedSlotsAddresses.Count == 0)
+            else if (SelectedSlotsAddresses.Count == 0)
             {
                 _objManager.Name = "No Object Selected";
-                _firstSelect = true;
+                _firstSlotSelect = true;
             }
         }
 
@@ -427,7 +451,7 @@ namespace SM64_Diagnostic.ManagerClasses
             objSlot.Address = currentAddress;
 
             // Update Overlays
-            objSlot.DrawSelectedOverlay = _selectedSlotsAddresses.Contains(currentAddress);
+            objSlot.DrawSelectedOverlay = SelectedSlotsAddresses.Contains(currentAddress);
             objSlot.DrawStandingOnOverlay = Config.ShowOverlays && currentAddress == _standingOnObject;
             objSlot.DrawInteractingOverlay = Config.ShowOverlays && currentAddress == _interactingObject;
             objSlot.DrawHoldingOverlay = Config.ShowOverlays && currentAddress == _holdingObject;
@@ -496,18 +520,18 @@ namespace SM64_Diagnostic.ManagerClasses
             ObjectSlots[index].Text = ManagerGui.LockLabelsCheckbox.Checked ? _lastSlotLabel[currentAddress] : labelText;
 
             // Update object manager image
-            if (_selectedSlotsAddresses.Count <= 1 && _selectedSlotsAddresses.Contains(currentAddress))
+            if (SelectedSlotsAddresses.Count <= 1 && SelectedSlotsAddresses.Contains(currentAddress))
             {
                 var objAssoc = ObjectAssoc.FindObjectAssociation(behaviorCriteria);
                 var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : (BehaviorCriteria?)null;
-                if (_lastSelectedBehavior != newBehavior || _firstSelect)
+                if (_lastSelectedBehavior != newBehavior || _firstSlotSelect)
                 {
                     _objManager.Behavior = String.Format("0x{0}", ((objectData.Behavior + ObjectAssoc.RamOffset) & 0x00FFFFFF).ToString("X4"));
                     _objManager.Name = ObjectAssoc.GetObjectName(behaviorCriteria);
 
                     _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorCriteria), newColor.Lighten(0.8));
                     _lastSelectedBehavior = newBehavior;
-                    _firstSelect = false;
+                    _firstSlotSelect = false;
                 }
                 _objManager.Image = ObjectSlots[index].ObjectImage;
                 _objManager.BackColor = newColor;

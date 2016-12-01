@@ -8,7 +8,7 @@ using SM64_Diagnostic.Utilities;
 using System.Drawing;
 using SM64_Diagnostic.Structs;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace SM64_Diagnostic.Managers
 {
     public class DisassemblyManager
     {

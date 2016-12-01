@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SM64_Diagnostic.ManagerClasses;
 using SM64_Diagnostic.Controls;
+using SM64_Diagnostic.Managers;
 
 namespace SM64_Diagnostic.Extensions
 {
@@ -56,6 +57,18 @@ namespace SM64_Diagnostic.Extensions
             // Make sure offset is a valid pointer
             if (dataBytes == null)
                 return "(none)";
+
+            // Parse object type
+            if (watchVar.IsObject)
+            {
+                var objAddress = BitConverter.ToUInt32(dataBytes, 0);
+                if (objAddress == 0)
+                    return "(none)";
+
+                var slotName = ManagerContext.Current.ObjectSlotManager.GetSlotNameFromAddress(objAddress);
+                if (slotName != null)
+                    return "Slot: " + slotName;
+            }
 
             // Parse floating point
             if (!watchVar.UseHex && (watchVar.Type == typeof(float) || watchVar.Type == typeof(double)))
@@ -284,6 +297,14 @@ namespace SM64_Diagnostic.Extensions
             UInt64 oldValue = BitConverter.ToUInt64(dataBytes, 0);
             UInt64 newValue;
 
+
+            // Handle object values
+            uint? objectAddress;
+            if (watchVar.IsObject && (objectAddress = ManagerContext.Current.ObjectSlotManager.GetSlotAddressFromName(value)).HasValue)
+            {
+                newValue = objectAddress.Value;
+            }
+            else
             // Handle hex variable
             if (ParsingUtilities.IsHex(value))
             {

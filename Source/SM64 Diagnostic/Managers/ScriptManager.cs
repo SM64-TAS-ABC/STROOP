@@ -7,7 +7,7 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace SM64_Diagnostic.Managers
 {
 
     public class ScriptManager

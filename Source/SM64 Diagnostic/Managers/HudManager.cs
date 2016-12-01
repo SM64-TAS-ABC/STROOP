@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace SM64_Diagnostic.Managers
 {
     public class HudManager : DataManager
     {

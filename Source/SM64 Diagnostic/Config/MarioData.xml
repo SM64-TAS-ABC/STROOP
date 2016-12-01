@@ -18,10 +18,10 @@
   <Data type="ushort" address="0x00c26c22" absoluteAddress="true" isAngle="true">Roll</Data>
   <Data type="ushort" address="0x00c26c26" absoluteAddress="true" isAngle="true">Yaw Velocity</Data>
   <Data type="ushort" address="0x00c26c20" absoluteAddress="true" isAngle="true">Flying Pull Back</Data>
-  <Data type="uint" address="0xc26c68" absoluteAddress="true" useHex="true">Interaction Object</Data>
-  <Data type="uint" address="0xc26c70" absoluteAddress="true" useHex="true">Using Object</Data>
-  <Data type="uint" address="0xc1c8b4" absoluteAddress="true" useHex="true">Stood On Object</Data>
-  <Data type="uint" address="0xc26c6c" absoluteAddress="true" useHex="true">Held Object</Data>
+  <Data type="uint" address="0xc26c68" absoluteAddress="true" useHex="true" isObject="true">Interaction Object</Data>
+  <Data type="uint" address="0xc26c70" absoluteAddress="true" useHex="true" isObject="true">Using Object</Data>
+  <Data type="uint" address="0xc1c8b4" absoluteAddress="true" useHex="true" isObject="true">Stood On Object</Data>
+  <Data type="uint" address="0xc26c6c" absoluteAddress="true" useHex="true" isObject="true">Held Object</Data>
   <Data type="float" address="0x8033B3C8">HOLP X</Data>
   <Data type="float" address="0x8033B3CC">HOLP Y</Data>
   <Data type="float" address="0x8033B3D0">HOLP Z</Data>

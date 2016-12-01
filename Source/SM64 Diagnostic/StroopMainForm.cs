@@ -80,12 +80,16 @@ namespace SM64_Diagnostic
             tabControlMain.TabPages.Remove(tabPageExpressions);
 #endif
 
+            // Create new manager context
+            var currentContext = new ManagerContext();
+            ManagerContext.Current = currentContext;
+
             _sm64Stream = new ProcessStream();
             _sm64Stream.OnUpdate += OnUpdate;
 
-            _disManager = new DisassemblyManager(this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
-            _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
-            _hackManager = new HackManager(_sm64Stream, _romHacks, checkedListBoxHacks);
+            currentContext.DisassemblyManager = _disManager = new DisassemblyManager(this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
+            currentContext.ScriptManager = _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
+            currentContext.HackManager = _hackManager = new HackManager(_sm64Stream, _romHacks, checkedListBoxHacks);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -103,14 +107,14 @@ namespace SM64_Diagnostic
             mapGui.MapShowHolp = checkBoxMapShowHolp;
             mapGui.MapShowCamera = checkBoxMapShowCamera;
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
-            _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
+            currentContext.MapManager = _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
 
-            _marioManager = new MarioManager(_sm64Stream, _marioData, panelMarioBorder, NoTearFlowLayoutPanelMario, _mapManager);
-            _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
-            _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc, groupBoxPuController);
-            _cameraManager = new CameraManager(_sm64Stream, _cameraData, NoTearFlowLayoutPanelCamera);
-            _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData);
-            _debugManager = new DebugManager();
+            currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, panelMarioBorder, NoTearFlowLayoutPanelMario, _mapManager);
+            currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
+            currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc, groupBoxPuController);
+            currentContext.CameraManager = _cameraManager = new CameraManager(_sm64Stream, _cameraData, NoTearFlowLayoutPanelCamera);
+            currentContext.TriangleManager = _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData);
+            currentContext.DebugManager = _debugManager = new DebugManager();
 
             // Create object manager
             var objectGui = new ObjectDataGui()
@@ -129,12 +133,12 @@ namespace SM64_Diagnostic
                 MoveToMarioButton = buttonObjRetrieve,
                 UnloadButton = buttonObjUnload
             };
-            _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
+            currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
 
             // Create options manager
             var optionGui = new OptionsGui();
             optionGui.CheckBoxStartFromOne = checkBoxStartSlotIndexOne;
-            _optionsManager = new OptionsManager(optionGui);
+            currentContext.OptionsManager = _optionsManager = new OptionsManager(optionGui);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
@@ -143,7 +147,7 @@ namespace SM64_Diagnostic
             _slotManagerGui.FlowLayoutContainer = NoTearFlowLayoutPanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
-            _objectSlotManager = new ObjectSlotsManager(_sm64Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
+            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(_sm64Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
 
             SetupViews();
 

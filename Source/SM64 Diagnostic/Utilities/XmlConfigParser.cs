@@ -874,6 +874,8 @@ namespace SM64_Diagnostic.Utilities
                 (UInt64?) ParsingUtilities.ParseExtHex(element.Attribute(XName.Get("mask")).Value) : null;
             watchVar.IsBool = element.Attribute(XName.Get("isBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isBool")).Value) : false;
+            watchVar.IsObject = element.Attribute(XName.Get("isObject")) != null ?
+                bool.Parse(element.Attribute(XName.Get("isObject")).Value) : false;
             watchVar.Type = WatchVariableExtensions.GetStringType(element.Attribute(XName.Get("type")).Value);
             watchVar.Address = ParsingUtilities.ParseHex(element.Attribute(XName.Get("address")).Value);
             watchVar.InvertBool = element.Attribute(XName.Get("invertBool")) != null ?

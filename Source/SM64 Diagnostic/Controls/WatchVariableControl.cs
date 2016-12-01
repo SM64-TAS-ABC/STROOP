@@ -9,6 +9,7 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Extensions;
 using System.Reflection;
+using SM64_Diagnostic.Managers;
 
 namespace SM64_Diagnostic.Controls
 {
@@ -96,6 +97,20 @@ namespace SM64_Diagnostic.Controls
                     _angleMenuDropDown[1] = new ToolStripMenuItem("Truncate Angle (by 16)");
                 }
                 return _angleMenuDropDown;
+            }
+        }
+
+        private static List<ToolStripMenuItem> _objectDropDownMenu;
+        public static List<ToolStripMenuItem> ObjectDropDownMenu
+        {
+            get
+            {
+                if (_objectDropDownMenu == null)
+                {
+                    _objectDropDownMenu = new List<ToolStripMenuItem>();
+                    _objectDropDownMenu.Add(new ToolStripMenuItem("Select Object"));
+                }
+                return _objectDropDownMenu;
             }
         }
 
@@ -366,6 +381,9 @@ namespace SM64_Diagnostic.Controls
             {
                 (Menu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
                 (Menu.Items["HexView"] as ToolStripMenuItem).CheckState = lockedStatus;
+                ObjectDropDownMenu.ForEach(d => Menu.Items.Remove(d));
+                if (_watchVar.IsObject)
+                    ObjectDropDownMenu.ForEach(d => Menu.Items.Add(d));
             }
         }
 
@@ -505,6 +523,18 @@ namespace SM64_Diagnostic.Controls
                     else
                     {
                         OtherOffsets.ForEach(o => LockUpdate(o));
+                    }
+                    break;
+                case "Select Object":
+                    if (_watchVar.GetByteCount() != 4)
+                        return;
+
+                    var slotManager = ManagerContext.Current.ObjectSlotManager;
+                    slotManager.SelectedSlotsAddresses.Clear();
+                    foreach (var otherOffset in OtherOffsets)
+                    {
+                        var objAddress = BitConverter.ToUInt32(_watchVar.GetByteData(_stream, otherOffset), 0);
+                        slotManager.SelectedSlotsAddresses.Add(objAddress);
                     }
                     break;
             }

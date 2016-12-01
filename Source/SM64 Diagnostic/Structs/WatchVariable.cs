@@ -17,6 +17,7 @@ namespace SM64_Diagnostic.Structs
         public Boolean AbsoluteAddressing;
         public UInt64? Mask;
         public bool IsBool;
+        public bool IsObject;
         public bool UseHex;
         public bool OtherOffset;
         public bool InvertBool;

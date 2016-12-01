@@ -22,7 +22,7 @@
   <Data type="uint" address="0x0160" objectOffset="true" isAngle="true">Angle to Mario</Data>
   <Data type="float" address="0x019C" objectOffset="true">Drawing Dist</Data>
   <Data special="true" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
-  <Data type="uint" address="0x68" objectOffset="true" useHex="true">Parent Object</Data>
+  <Data type="uint" address="0x68" objectOffset="true" useHex="true" isObject="true">Parent Object</Data>
   <Data type="uint" address="0x020C" objectOffset="true" useHex="true">Behavior Script</Data>
   <Data type="uint" address="0x14" objectOffset="true" useHex="true">Graphic/Model</Data>
   <Data type="byte" address="0x3" mask="0x10" objectOffset="true" isBool="true" invertBool="true">Visible</Data>
