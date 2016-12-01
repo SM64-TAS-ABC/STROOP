@@ -575,8 +575,8 @@ namespace SM64_Diagnostic.Managers
                     _mapObjects[currentAddress].Y = BitConverter.ToSingle(_stream.ReadRam(currentAddress + Config.ObjectSlots.ObjectYOffset, 4), 0);
                     _mapObjects[currentAddress].Z = BitConverter.ToSingle(_stream.ReadRam(currentAddress + Config.ObjectSlots.ObjectZOffset, 4), 0);
                     _mapObjects[currentAddress].IsActive = objectData.IsActive;
-                    _mapObjects[currentAddress].Rotation = (float)((UInt16)(BitConverter.ToUInt32(
-                        _stream.ReadRam(currentAddress + Config.ObjectSlots.ObjectRotationOffset, 4), 0)) / 65536f * 360f);
+                    _mapObjects[currentAddress].Rotation = (float)((UInt16)(
+                        _stream.GetUInt32(currentAddress + Config.ObjectSlots.ObjectRotationOffset)) / 65536f * 360f);
                     _mapObjects[currentAddress].UsesRotation = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
                 }
             }

@@ -24,5 +24,13 @@ namespace SM64_Diagnostic.Utilities
             dy = y1 - y2;
             return Math.Sqrt(dx * dx + dy * dy);
         }
+
+        public static double AngleTo(float xFrom, float yFrom, float xTo, float yTo)
+        {
+            float dx, dy;
+            dx = xTo - xFrom;
+            dy = yTo - yFrom;
+            return Math.Atan2(dy, dx);
+        }
     }
 }

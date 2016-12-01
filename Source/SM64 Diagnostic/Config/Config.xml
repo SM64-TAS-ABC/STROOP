@@ -21,7 +21,7 @@
     <HomeOffsetX>0x164</HomeOffsetX>
     <HomeOffsetY>0x168</HomeOffsetY>
     <HomeOffsetZ>0x16C</HomeOffsetZ>
-    <RotationOffset>0xC8</RotationOffset>
+    <RotationOffset>0xD4</RotationOffset>
     <MaxObjectSlots>240</MaxObjectSlots>
     <MoveToMarioYOffset>300</MoveToMarioYOffset>
   </ObjectSlots>

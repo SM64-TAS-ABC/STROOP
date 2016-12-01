@@ -181,6 +181,10 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("MarioLateralDistanceToObject"),
                 new DataContainer("MarioDistanceToObjectHome"),
                 new DataContainer("MarioLateralDistanceToObjectHome"),
+                new AngleDataContainer("MarioAngleToObject"),
+                new AngleDataContainer("MarioDeltaAngleToObject"),
+                new AngleDataContainer("AngleToMario"),
+                new AngleDataContainer("DeltaAngleToMario"),
                 new DataContainer("ObjectDistanceToHome"),
                 new DataContainer("LateralObjectDistanceToHome"),
                 new DataContainer("RngCallsPerFrame"),
@@ -260,20 +264,24 @@ namespace SM64_Diagnostic.Managers
         private void ProcessSpecialVars()
         {
             // Get Mario position
-            float mX, mY, mZ;
+            float mX, mY, mZ, mFacing;
             mX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
             mY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             mZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            mFacing = (float)(((_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.RotationOffset) >> 16) % 65536) / 65536f * 2 * Math.PI);
 
             bool firstObject = true;
 
             foreach (var objAddress in _currentAddresses)
             { 
                 // Get object position
-                float objX, objY, objZ;
+                float objX, objY, objZ, objFacing;
                 objX = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
                 objY = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
                 objZ = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+                objFacing = (float)((UInt16)(_stream.GetUInt32(objAddress + Config.ObjectSlots.ObjectRotationOffset)) / 65536f * 2 * Math.PI);
+
+                double angleToMario = Math.PI / 2 - MoreMath.AngleTo(objX, objZ, mX, mZ);
 
                 // Get object position
                 float objHomeX, objHomeY, objHomeZ;
@@ -281,9 +289,10 @@ namespace SM64_Diagnostic.Managers
                 objHomeY = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
                 objHomeZ = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
 
-                foreach (DataContainer specialVar in _specialWatchVars)
+                foreach (IDataContainer specialVar in _specialWatchVars)
                 {
                     var newText = "";
+                    double? newAngle = null;
                     switch (specialVar.SpecialName)
                     {
                         case "MarioDistanceToObject":
@@ -310,16 +319,53 @@ namespace SM64_Diagnostic.Managers
                             newText = Math.Round(MoreMath.DistanceTo(objX, objZ, objHomeX, objHomeZ), 3).ToString();
                             break;
 
+                        case "MarioAngleToObject":
+                            newAngle = angleToMario + Math.PI;
+                            break;
+
+                        case "MarioDeltaAngleToObject":
+                            newAngle = mFacing - (angleToMario + Math.PI);
+                            break;
+
+                        case "AngleToMario":
+                            newAngle = angleToMario;
+                            break;
+
+                        case "DeltaAngleToMario":
+                            newAngle = objFacing - angleToMario;
+                            break;
+
                         case "RngCallsPerFrame":
                             newText = GetNumRngCalls(objAddress).ToString();
                             break;
                     }
 
-                    if (firstObject)
-                        specialVar.Text = newText;
-                    // Check when multiple objects have different values
-                    else if (specialVar.Text != newText)
-                        specialVar.Text = "";
+                    if (specialVar is AngleDataContainer)
+                    {
+                        var angleContainer = specialVar as AngleDataContainer;
+                        if (firstObject)
+                        {
+                            angleContainer.ValueExists = newAngle.HasValue;
+                            if (newAngle.HasValue)
+                                angleContainer.AngleValue = newAngle.Value;
+                        }
+
+                        newAngle %= Math.PI * 2;
+                        if (newAngle < 0)
+                            newAngle += Math.PI * 2;
+
+                        // Check when multiple objects have different values
+                        angleContainer.ValueExists &= newAngle == angleContainer.AngleValue;
+                    }
+                    else if (specialVar is DataContainer)
+                    {
+                        var dataContainer = specialVar as DataContainer;
+                        if (firstObject)
+                            dataContainer.Text = newText;
+                        // Check when multiple objects have different values
+                        else if (dataContainer.Text != newText)
+                            dataContainer.Text = "";
+                    }
                 }
 
                 firstObject = false;

@@ -165,7 +165,9 @@ namespace SM64_Diagnostic.Controls
             }
             set
             {
-                _angleValue = value;
+                _angleValue = value % (Math.PI * 2);
+                if (_angleValue < 0)
+                    _angleValue += Math.PI * 2;
                 UpdateAngleValue();
             }
         }
@@ -233,9 +235,8 @@ namespace SM64_Diagnostic.Controls
                 return;
             }
 
-            double angleValue = _angleValue % (Math.PI * 2);
-            if (angleValue < 0)
-                angleValue += Math.PI * 2;
+            var angleValue = _angleValue;
+
             if (_angleTruncated)
             {
                 double roundFactor = 65536 / (Math.PI * 2) / 16;
@@ -253,7 +254,7 @@ namespace SM64_Diagnostic.Controls
                     break;
 
                 case AngleViewModeType.Signed:
-                    _textBoxValue.Text = (-32768 + (ushort)(angleValue / (Math.PI * 2) * 65536)).ToString();
+                    _textBoxValue.Text = ((short)(angleValue / (Math.PI * 2) * 65536)).ToString();
                     break;
 
                 case AngleViewModeType.Unsigned:
