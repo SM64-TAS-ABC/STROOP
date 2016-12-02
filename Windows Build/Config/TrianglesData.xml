@@ -32,6 +32,9 @@
   <Data type="float" address="0x8033B1B0" color="#ffcccc">Mario Y</Data>
   <Data type="float" address="0x8033B1B4" color="#ffcccc">Mario Z</Data>
   <Data special="true" specialType="ClosestVertex" color="#ffcccc">Closest Vertex</Data>
+  <Data special="true" specialType="ClosestVertexX" color="#ffcccc">Closest Vertex X</Data>
+  <Data special="true" specialType="ClosestVertexY" color="#ffcccc">Closest Vertex Y</Data>
+  <Data special="true" specialType="ClosestVertexZ" color="#ffcccc">Closest Vertex Z</Data>
   <Data type="ushort" address="0x00C26C16" absoluteAddress="true" isAngle="true" color="#ffcccc">M. Yaw (Intended)</Data>
   <Data type="ushort" address="0x00C26C1C" absoluteAddress="true" isAngle="true" color="#ffcccc">M. Yaw (Facing)</Data>
   <Data type="uint" address="0x00C26C58" absoluteAddress="true" useHex="true" color="#ffcccc">Floor Triangle</Data>

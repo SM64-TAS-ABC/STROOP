@@ -129,12 +129,6 @@
     <Compile Include="Managers\ScriptManager.cs" />
     <Compile Include="Controls\WatchVariableControl.cs" />
     <Compile Include="Managers\TriangleManager.cs" />
-    <Compile Include="ModifyAddWatchVariableForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModifyAddWatchVariableForm.Designer.cs">
-      <DependentUpon>ModifyAddWatchVariableForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\ObjectSlot.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -598,9 +592,6 @@
     <Content Include="Resources\Overlays\Using.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="ModifyAddWatchVariableForm.resx">
-      <DependentUpon>ModifyAddWatchVariableForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="StroopMainForm.resx">
       <DependentUpon>StroopMainForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -18,7 +18,7 @@ namespace SM64_Diagnostic
 {
     public partial class StroopMainForm : Form
     {
-        const string _version = "v0.2.6";
+        const string _version = "v0.2.7";
         ProcessStream _sm64Stream = null;
 
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
@@ -282,7 +282,7 @@ namespace SM64_Diagnostic
                 var watchVar = _miscData[index];
                 if (watchVar.Special)
                     continue;
-                var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.Type.ToString(), "", watchVar.Address);
+                var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.TypeName, "", watchVar.Address);
                 _otherDataRowAssoc.Add(index, row);
             }
 
@@ -311,8 +311,8 @@ namespace SM64_Diagnostic
             var row = _tableOtherData.Rows[dataGridViewExpressions.SelectedRows[0].Index];
             int assoc = _otherDataRowAssoc.FirstOrDefault(v => v.Value == row).Key;
 
-            var modifyVar = new ModifyAddWatchVariableForm(_miscData[assoc]);
-            modifyVar.ShowDialog();
+            //var modifyVar = new ModifyAddWatchVariableForm(_miscData[assoc]);
+            //modifyVar.ShowDialog();
         }
 
         private void buttonOtherDelete_Click(object sender, EventArgs e)
@@ -351,13 +351,13 @@ namespace SM64_Diagnostic
             var row = _tableOtherData.Rows[dataGridViewExpressions.SelectedRows[0].Index];
             int assoc = _otherDataRowAssoc.FirstOrDefault(v => v.Value == row).Key;
 
-            var modifyVar = new ModifyAddWatchVariableForm(_miscData[assoc]);
-            modifyVar.ShowDialog();
+            //var modifyVar = new ModifyAddWatchVariableForm(_miscData[assoc]);
+            //modifyVar.ShowDialog();
         }
 
         private void buttonOtherAdd_Click(object sender, EventArgs e)
         {
-            var modifyVar = new ModifyAddWatchVariableForm();
+            /*var modifyVar = new ModifyAddWatchVariableForm();
             if(modifyVar.ShowDialog() == DialogResult.OK)
             {
                 var watchVar = modifyVar.Value;
@@ -373,7 +373,7 @@ namespace SM64_Diagnostic
                 _otherDataRowAssoc.Add(newIndex, row);
 
                 XmlConfigParser.AddWatchVariableOtherData(watchVar);
-            }
+            }*/
         }
 
         private async void NoTearFlowLayoutPanelObjects_Resize(object sender, EventArgs e)

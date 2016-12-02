@@ -117,7 +117,7 @@ namespace SM64_Diagnostic.Managers
                     }
                     else
                     {
-                        if (!keyboardState.IsKeyDown(Key.ControlLeft) && !keyboardState.IsKeyDown(Key.ControlRight))
+                        if (!(keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight)))
                         {
                             SelectedSlotsAddresses.Clear();
                         }
@@ -493,7 +493,7 @@ namespace SM64_Diagnostic.Managers
 
                 case SlotLabelType.SlotIndex:
                     labelText = String.Format("{0}", (objectData.Address - Config.ObjectSlots.LinkStartAddress) 
-                        / Config.ObjectSlots.StructSize);
+                        / Config.ObjectSlots.StructSize + (Config.SlotIndexsFromOne ? 1 : 0));
                     break;
 
                 case SlotLabelType.SlotPos:

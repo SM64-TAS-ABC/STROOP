@@ -241,7 +241,7 @@ namespace SM64_Diagnostic.Controls
 
         public WatchVariableLock GetVariableLock(uint offset)
         {
-            var lockCriteria = new WatchVariableLock(_stream, _watchVar.GetRamAddress(_stream, offset, false), new byte[_watchVar.GetByteCount()]);
+            var lockCriteria = new WatchVariableLock(_stream, _watchVar.GetRamAddress(_stream, offset, false), new byte[_watchVar.ByteCount]);
 
             if (!_stream.LockedVariables.ContainsKey(lockCriteria))
                 return null;
@@ -267,7 +267,7 @@ namespace SM64_Diagnostic.Controls
                 else
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{1:X8} + 0x{0:X8} = 0x{2:X8} [{4} + 0x{3:X8}]",
-                        _watchVar.GetRamAddress(_stream, 0, false), OtherOffsets, _watchVar.GetRamAddress(_stream, OtherOffsets[0]),
+                        _watchVar.GetRamAddress(_stream, 0, false), OtherOffsets[0], _watchVar.GetRamAddress(_stream, OtherOffsets[0]),
                         _watchVar.GetProcessAddress(_stream, OtherOffsets[0]), _stream.ProcessName));
                 }
             };
@@ -321,10 +321,10 @@ namespace SM64_Diagnostic.Controls
         private void _nameLabel_Click(object sender, EventArgs e)
         {
             VariableViewerForm varInfo;
-            var typeDescr = _watchVar.GetTypeString();
+            var typeDescr = _watchVar.TypeName;
             if (_watchVar.Mask.HasValue)
             {
-                typeDescr += String.Format(" w/ mask: 0x{0:X" + _watchVar.GetByteCount() * 2 + "}", _watchVar.Mask);
+                typeDescr += String.Format(" w/ mask: 0x{0:X" + _watchVar.ByteCount * 2 + "}", _watchVar.Mask);
             }
 
             if (!_watchVar.OtherOffset)
@@ -383,7 +383,9 @@ namespace SM64_Diagnostic.Controls
                 (Menu.Items["HexView"] as ToolStripMenuItem).CheckState = lockedStatus;
                 ObjectDropDownMenu.ForEach(d => Menu.Items.Remove(d));
                 if (_watchVar.IsObject)
+                {
                     ObjectDropDownMenu.ForEach(d => Menu.Items.Add(d));
+                }
             }
         }
 
@@ -526,7 +528,7 @@ namespace SM64_Diagnostic.Controls
                     }
                     break;
                 case "Select Object":
-                    if (_watchVar.GetByteCount() != 4)
+                    if (_watchVar.ByteCount != 4)
                         return;
 
                     var slotManager = ManagerContext.Current.ObjectSlotManager;
@@ -534,7 +536,8 @@ namespace SM64_Diagnostic.Controls
                     foreach (var otherOffset in OtherOffsets)
                     {
                         var objAddress = BitConverter.ToUInt32(_watchVar.GetByteData(_stream, otherOffset), 0);
-                        slotManager.SelectedSlotsAddresses.Add(objAddress);
+                        if (ManagerContext.Current.ObjectSlotManager.ObjectSlots.Count(s => s.Address == objAddress) > 0)
+                            slotManager.SelectedSlotsAddresses.Add(objAddress);
                     }
                     break;
             }

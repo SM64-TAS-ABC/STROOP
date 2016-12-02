@@ -315,8 +315,6 @@ namespace SM64_Diagnostic
 
         private void OnDrag(object sender, MouseEventArgs e)
         {
-            OnClick(new EventArgs());
-
             MouseState = MouseStateType.Down;
             UpdateColors();
             Refresh();

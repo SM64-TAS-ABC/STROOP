@@ -21,7 +21,7 @@ namespace SM64_Diagnostic.Extensions
 
             if (watchVar.AbsoluteAddressing)
                 address = LittleEndianessAddressing.AddressFix((uint)(offsetedAddress - stream.ProcessMemoryOffset),
-                    watchVar.GetByteCount());
+                    watchVar.ByteCount);
             else
                 address = offsetedAddress;
 
@@ -32,15 +32,14 @@ namespace SM64_Diagnostic.Extensions
         {
             uint address = GetRamAddress(watchVar, stream, offset, false);
             return (uint)LittleEndianessAddressing.AddressFix(
-                (int)(address + stream.ProcessMemoryOffset), watchVar.GetByteCount());
+                (int)(address + stream.ProcessMemoryOffset), watchVar.ByteCount);
         }
 
         public static byte[] GetByteData(this WatchVariable watchVar, ProcessStream stream, uint offset)
         {
             // Get dataBytes
-            var byteCount = WatchVariable.TypeSize[watchVar.Type];
             var dataBytes = stream.ReadRam(watchVar.OtherOffset ? offset + watchVar.Address
-                : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
+                : watchVar.Address, watchVar.ByteCount, watchVar.AbsoluteAddressing);
 
             // Make sure offset is a valid pointer
             if (watchVar.OtherOffset && offset == 0)
@@ -95,7 +94,7 @@ namespace SM64_Diagnostic.Extensions
 
             // Print hex
             if (watchVar.UseHex)
-                return "0x" + dataValue.ToString("X" + WatchVariable.TypeSize[watchVar.Type] * 2);
+                return "0x" + dataValue.ToString("X" + watchVar.ByteCount * 2);
 
             // Print signed
             if (watchVar.Type == typeof(Int64))
@@ -154,8 +153,7 @@ namespace SM64_Diagnostic.Extensions
                 }
             }
 
-            var byteCount = WatchVariable.TypeSize[watchVar.Type];
-            return BitConverter.GetBytes(writeValue).Take(byteCount).ToArray();
+            return BitConverter.GetBytes(writeValue).Take(watchVar.ByteCount).ToArray();
         }
 
         public static bool SetAngleStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset, string value, WatchVariableControl.AngleViewModeType viewMode)
@@ -167,9 +165,8 @@ namespace SM64_Diagnostic.Extensions
         public static string GetAngleStringValue(this WatchVariable watchVar, ProcessStream stream, uint offset, WatchVariableControl.AngleViewModeType viewMode, bool truncated = false)
         {
             // Get dataBytes
-            var byteCount = WatchVariable.TypeSize[watchVar.Type];
             var dataBytes = stream.ReadRam(watchVar.OtherOffset ? offset + watchVar.Address
-                : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
+                : watchVar.Address, watchVar.ByteCount, watchVar.AbsoluteAddressing);
 
             // Make sure offset is a valid pointer
             if (watchVar.OtherOffset && offset == 0)
@@ -195,7 +192,7 @@ namespace SM64_Diagnostic.Extensions
             // Print hex
             if (watchVar.UseHex)
             {
-                if (viewMode == WatchVariableControl.AngleViewModeType.Recommended && WatchVariable.TypeSize[watchVar.Type] == 4)
+                if (viewMode == WatchVariableControl.AngleViewModeType.Recommended && watchVar.ByteCount == 4)
                     return "0x" + dataValue.ToString("X8"); 
                 else
                     return "0x" + ((UInt16)dataValue).ToString("X4");
@@ -232,9 +229,8 @@ namespace SM64_Diagnostic.Extensions
         public static bool GetBoolValue(this WatchVariable watchVar, ProcessStream stream, uint offset)
         {
             // Get dataBytes
-            var byteCount = WatchVariable.TypeSize[watchVar.Type];
             var dataBytes = stream.ReadRam(watchVar.OtherOffset ? offset + watchVar.Address
-                : watchVar.Address, byteCount, watchVar.AbsoluteAddressing);
+                : watchVar.Address, watchVar.ByteCount, watchVar.AbsoluteAddressing);
 
             // Get Uint64 value
             var intBytes = new byte[8];
@@ -255,9 +251,8 @@ namespace SM64_Diagnostic.Extensions
         public static void SetBoolValue(this WatchVariable watchVar, ProcessStream stream, uint offset, bool value)
         {
             // Get dataBytes
-            var byteCount = WatchVariable.TypeSize[watchVar.Type];
             var address = watchVar.OtherOffset ? offset + watchVar.Address : watchVar.Address;
-            var dataBytes = stream.ReadRam(address, byteCount, watchVar.AbsoluteAddressing);
+            var dataBytes = stream.ReadRam(address, watchVar.ByteCount, watchVar.AbsoluteAddressing);
 
             if (watchVar.InvertBool)
                 value = !value;
@@ -280,9 +275,9 @@ namespace SM64_Diagnostic.Extensions
                 dataValue = value ? 1U : 0U;
             }
 
-            var writeBytes = new byte[byteCount];
+            var writeBytes = new byte[watchVar.ByteCount];
             var valueBytes = BitConverter.GetBytes(dataValue);
-            Array.Copy(valueBytes, 0, writeBytes, 0, byteCount);
+            Array.Copy(valueBytes, 0, writeBytes, 0, watchVar.ByteCount);
 
             stream.WriteRam(writeBytes, address, watchVar.AbsoluteAddressing);
         }
@@ -290,10 +285,9 @@ namespace SM64_Diagnostic.Extensions
         public static byte[] GetBytesFromString(this WatchVariable watchVar, ProcessStream stream, uint offset, string value)
         {
             // Get dataBytes
-            var byteCount = WatchVariable.TypeSize[watchVar.Type];
             var address = watchVar.OtherOffset ? offset + watchVar.Address : watchVar.Address;
             var dataBytes = new byte[8];
-            stream.ReadRam(address, byteCount, watchVar.AbsoluteAddressing).CopyTo(dataBytes, 0);
+            stream.ReadRam(address, watchVar.ByteCount, watchVar.AbsoluteAddressing).CopyTo(dataBytes, 0);
             UInt64 oldValue = BitConverter.ToUInt64(dataBytes, 0);
             UInt64 newValue;
 
@@ -353,9 +347,9 @@ namespace SM64_Diagnostic.Extensions
             if (watchVar.Mask.HasValue)
                 newValue = (newValue & watchVar.Mask.Value) | ((~watchVar.Mask.Value) & oldValue);
 
-            var writeBytes = new byte[byteCount];
+            var writeBytes = new byte[watchVar.ByteCount];
             var valueBytes = BitConverter.GetBytes(newValue);
-            Array.Copy(valueBytes, 0, writeBytes, 0, byteCount);
+            Array.Copy(valueBytes, 0, writeBytes, 0, watchVar.ByteCount);
 
             return writeBytes;
         }
@@ -373,21 +367,6 @@ namespace SM64_Diagnostic.Extensions
 
             return stream.WriteRam(dataBytes, watchVar.OtherOffset ? offset + watchVar.Address
                 : watchVar.Address, watchVar.AbsoluteAddressing);
-        }
-
-        public static int GetByteCount(this WatchVariable watchVar)
-        {
-            return WatchVariable.TypeSize[watchVar.Type];
-        }
-
-        public static Type GetStringType(string str)
-        {
-            return WatchVariable.StringToType[str];
-        }
-
-        public static string GetTypeString(this WatchVariable watchVar)
-        {
-            return WatchVariable.StringToType.First(t => t.Value == watchVar.Type).Key;
         }
     }
 }
