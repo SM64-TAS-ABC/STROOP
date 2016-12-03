@@ -42,4 +42,5 @@
   <Data special="true" specialType="FallHeight">Fall Height</Data>
   <Data type="int" address="0x009DC4DC" absoluteAddress="true">Blinking State</Data>
   <Data type="short" address="0x00C1998A" absoluteAddress="true">Blinking Timer</Data>
+  <Data type="uint" address="0x00C4CBD8" absoluteAddress="true" useHex="true" isObject="true">Mario Object</Data>
 </MarioData>
