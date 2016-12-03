@@ -8,49 +8,13 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace SM64_Diagnostic.Managers
 {
-    public class CameraManager
+    public class CameraManager : DataManager
     {
-        List<WatchVariableControl> _cameraDataControls;
-        FlowLayoutPanel _variableTable;
-        ProcessStream _stream;
-
-        public CameraManager(ProcessStream stream, List<WatchVariable> cameraData, Control cameraControl, FlowLayoutPanel variableTable)
+        public CameraManager(ProcessStream stream, List<WatchVariable> cameraData, NoTearFlowLayoutPanel variableTable)
+            : base(stream, cameraData, variableTable)
         {
-            // Register controls on the control (for drag-and-drop)
-            RegisterControlEvents(cameraControl);
-            foreach (Control control in cameraControl.Controls)
-                RegisterControlEvents(control);
-
-            _variableTable = variableTable;
-            _stream = stream;
-            
-            _cameraDataControls = new List<WatchVariableControl>();
-            foreach (WatchVariable watchVar in cameraData)
-            {
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, Config.Mario.StructAddress);
-                variableTable.Controls.Add(watchControl.Control);
-                _cameraDataControls.Add(watchControl);
-            }
-        }
-
-        public void Update(bool updateView)
-        {
-            // Update watch variables
-            foreach (var watchVar in _cameraDataControls)
-                watchVar.Update();
-
-            if (!updateView)
-                return;
-        }
-
-        private void RegisterControlEvents(Control control)
-        {
-            //control.AllowDrop = true;
-            //control.DragEnter += DragEnter;
-            //control.DragDrop += OnDrop;
-            //control.MouseDown += OnDrag;
         }
     }
 }

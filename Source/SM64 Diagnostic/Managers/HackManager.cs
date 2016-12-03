@@ -7,7 +7,7 @@ using SM64_Diagnostic.Structs;
 using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace SM64_Diagnostic.Managers
 {
     public class HackManager
     {

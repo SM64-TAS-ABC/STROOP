@@ -18,7 +18,7 @@ namespace SM64_Diagnostic
 {
     public partial class StroopMainForm : Form
     {
-        const string _version = "v0.2.6";
+        const string _version = "v0.2.7";
         ProcessStream _sm64Stream = null;
 
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
@@ -80,12 +80,16 @@ namespace SM64_Diagnostic
             tabControlMain.TabPages.Remove(tabPageExpressions);
 #endif
 
+            // Create new manager context
+            var currentContext = new ManagerContext();
+            ManagerContext.Current = currentContext;
+
             _sm64Stream = new ProcessStream();
             _sm64Stream.OnUpdate += OnUpdate;
 
-            _disManager = new DisassemblyManager(this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
-            _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
-            _hackManager = new HackManager(_sm64Stream, _romHacks, checkedListBoxHacks);
+            currentContext.DisassemblyManager = _disManager = new DisassemblyManager(this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
+            currentContext.ScriptManager = _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
+            currentContext.HackManager = _hackManager = new HackManager(_sm64Stream, _romHacks, checkedListBoxHacks);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -103,20 +107,20 @@ namespace SM64_Diagnostic
             mapGui.MapShowHolp = checkBoxMapShowHolp;
             mapGui.MapShowCamera = checkBoxMapShowCamera;
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
-            _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
+            currentContext.MapManager = _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
 
-            _marioManager = new MarioManager(_sm64Stream, _marioData, panelMarioBorder, flowLayoutPanelMario, _mapManager);
-            _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
-            _miscManager = new MiscManager(_sm64Stream, _miscData, flowLayoutPanelMisc, groupBoxPuController);
-            _cameraManager = new CameraManager(_sm64Stream, _cameraData, panelCameraBorder, flowLayoutPanelCamera);
-            _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData);
-            _debugManager = new DebugManager();
+            currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, panelMarioBorder, NoTearFlowLayoutPanelMario, _mapManager);
+            currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
+            currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc, groupBoxPuController);
+            currentContext.CameraManager = _cameraManager = new CameraManager(_sm64Stream, _cameraData, NoTearFlowLayoutPanelCamera);
+            currentContext.TriangleManager = _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData);
+            currentContext.DebugManager = _debugManager = new DebugManager();
 
             // Create object manager
             var objectGui = new ObjectDataGui()
             {
                 ObjectBorderPanel = panelObjectBorder,
-                ObjectFlowLayout = flowLayoutPanelObject,
+                ObjectFlowLayout = NoTearFlowLayoutPanelObject,
                 ObjectImagePictureBox = pictureBoxObject,
                 ObjAddressLabelValue = labelObjAddValue,
                 ObjAddressLabel = labelObjAdd,
@@ -129,21 +133,21 @@ namespace SM64_Diagnostic
                 MoveToMarioButton = buttonObjRetrieve,
                 UnloadButton = buttonObjUnload
             };
-            _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
+            currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
 
             // Create options manager
             var optionGui = new OptionsGui();
             optionGui.CheckBoxStartFromOne = checkBoxStartSlotIndexOne;
-            _optionsManager = new OptionsManager(optionGui);
+            currentContext.OptionsManager = _optionsManager = new OptionsManager(optionGui);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
             _slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
             _slotManagerGui.MapObjectToggleModeComboBox = comboBoxMapToggleMode;
-            _slotManagerGui.FlowLayoutContainer = flowLayoutPanelObjects;
+            _slotManagerGui.FlowLayoutContainer = NoTearFlowLayoutPanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
-            _objectSlotManager = new ObjectSlotsManager(_sm64Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
+            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(_sm64Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
 
             SetupViews();
 
@@ -278,7 +282,7 @@ namespace SM64_Diagnostic
                 var watchVar = _miscData[index];
                 if (watchVar.Special)
                     continue;
-                var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.Type.ToString(), "", watchVar.Address);
+                var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.TypeName, "", watchVar.Address);
                 _otherDataRowAssoc.Add(index, row);
             }
 
@@ -307,8 +311,8 @@ namespace SM64_Diagnostic
             var row = _tableOtherData.Rows[dataGridViewExpressions.SelectedRows[0].Index];
             int assoc = _otherDataRowAssoc.FirstOrDefault(v => v.Value == row).Key;
 
-            var modifyVar = new ModifyAddWatchVariableForm(_miscData[assoc]);
-            modifyVar.ShowDialog();
+            //var modifyVar = new ModifyAddWatchVariableForm(_miscData[assoc]);
+            //modifyVar.ShowDialog();
         }
 
         private void buttonOtherDelete_Click(object sender, EventArgs e)
@@ -347,13 +351,13 @@ namespace SM64_Diagnostic
             var row = _tableOtherData.Rows[dataGridViewExpressions.SelectedRows[0].Index];
             int assoc = _otherDataRowAssoc.FirstOrDefault(v => v.Value == row).Key;
 
-            var modifyVar = new ModifyAddWatchVariableForm(_miscData[assoc]);
-            modifyVar.ShowDialog();
+            //var modifyVar = new ModifyAddWatchVariableForm(_miscData[assoc]);
+            //modifyVar.ShowDialog();
         }
 
         private void buttonOtherAdd_Click(object sender, EventArgs e)
         {
-            var modifyVar = new ModifyAddWatchVariableForm();
+            /*var modifyVar = new ModifyAddWatchVariableForm();
             if(modifyVar.ShowDialog() == DialogResult.OK)
             {
                 var watchVar = modifyVar.Value;
@@ -369,19 +373,19 @@ namespace SM64_Diagnostic
                 _otherDataRowAssoc.Add(newIndex, row);
 
                 XmlConfigParser.AddWatchVariableOtherData(watchVar);
-            }
+            }*/
         }
 
-        private async void flowLayoutPanelObjects_Resize(object sender, EventArgs e)
+        private async void NoTearFlowLayoutPanelObjects_Resize(object sender, EventArgs e)
         {
             _resizeTimeLeft = 500;
             if (_resizing)
                 return;
 
             _resizing = true;
-            flowLayoutPanelObjects.Visible = false;
-            flowLayoutPanelObject.Visible = false;
-            flowLayoutPanelMario.Visible = false;
+            NoTearFlowLayoutPanelObjects.Visible = false;
+            NoTearFlowLayoutPanelObject.Visible = false;
+            NoTearFlowLayoutPanelMario.Visible = false;
             if (_mapManager != null && _mapManager.IsLoaded)
                 _mapManager.Visible = false;
             await Task.Run(() =>
@@ -392,9 +396,9 @@ namespace SM64_Diagnostic
                     _resizeTimeLeft -= 100;
                 }
             });
-            flowLayoutPanelObjects.Visible = true;
-            flowLayoutPanelObject.Visible = true;
-            flowLayoutPanelMario.Visible = true;
+            NoTearFlowLayoutPanelObjects.Visible = true;
+            NoTearFlowLayoutPanelObject.Visible = true;
+            NoTearFlowLayoutPanelMario.Visible = true;
             if (_mapManager != null && _mapManager.IsLoaded)
                 _mapManager.Visible = true;
 
@@ -508,9 +512,9 @@ namespace SM64_Diagnostic
                 }
             });
 
-            flowLayoutPanelObjects.Visible = false;
+            NoTearFlowLayoutPanelObjects.Visible = false;
             _objectSlotManager.ChangeSlotSize(trackBarObjSlotSize.Value);
-            flowLayoutPanelObjects.Visible = true;
+            NoTearFlowLayoutPanelObjects.Visible = true;
             _objSlotResizing = false;
         }
 

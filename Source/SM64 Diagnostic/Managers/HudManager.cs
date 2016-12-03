@@ -8,29 +8,16 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace SM64_Diagnostic.Managers
 {
-    public class HudManager
+    public class HudManager : DataManager
     {
-        List<WatchVariableControl> _watchVarControls;
         Control _tabControl;
-        FlowLayoutPanel _variableTable;
-        ProcessStream _stream;
 
-        public HudManager(ProcessStream stream, List<WatchVariable> data, Control tabControl)
+        public HudManager(ProcessStream stream, List<WatchVariable> hudData, Control tabControl)
+            : base(stream, hudData, tabControl.Controls["NoTearFlowLayoutPanelHud"] as NoTearFlowLayoutPanel)
         {
             _tabControl = tabControl;
-            _stream = stream;
-
-            _variableTable = _tabControl.Controls["flowLayoutPanelHud"] as FlowLayoutPanel;
-            
-            _watchVarControls = new List<WatchVariableControl>();
-            foreach (WatchVariable watchVar in data)
-            {
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, 0);
-                _variableTable.Controls.Add(watchControl.Control);
-                _watchVarControls.Add(watchControl);
-            }
 
             (_tabControl.Controls["buttonFillHp"] as Button).Click += buttonFill_Click;
             (_tabControl.Controls["buttonDie"] as Button).Click += buttonDie_Click;
@@ -50,16 +37,6 @@ namespace SM64_Diagnostic.ManagerClasses
         private void buttonFill_Click(object sender, EventArgs e)
         {
             MarioActions.RefillHp(_stream);
-        }
-
-        public virtual void Update(bool updateView)
-        {
-            // Update watch variables
-            foreach (var watchVar in _watchVarControls)
-                watchVar.Update();
-
-            if (!updateView)
-                return;
         }
     }
 }

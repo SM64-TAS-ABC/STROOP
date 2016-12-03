@@ -9,7 +9,7 @@ namespace SM64_Diagnostic.Utilities
 {
     public static class MarioActions
     {
-        public static bool MoveMarioToObject(ProcessStream stream, uint objAddress)
+        public static bool MoveMarioToObjects(ProcessStream stream, List<uint> objAddresses)
         {
             // Move mario to object
             var marioAddress = Config.Mario.StructAddress;
@@ -18,9 +18,9 @@ namespace SM64_Diagnostic.Utilities
 
             // Get object position
             float x, y, z;
-            x = BitConverter.ToSingle(stream.ReadRam(objAddress + Config.ObjectSlots.ObjectXOffset, 4), 0);
-            y = BitConverter.ToSingle(stream.ReadRam(objAddress + Config.ObjectSlots.ObjectYOffset, 4), 0);
-            z = BitConverter.ToSingle(stream.ReadRam(objAddress + Config.ObjectSlots.ObjectZOffset, 4), 0);
+            x = objAddresses.Average(obj => BitConverter.ToSingle(stream.ReadRam(obj + Config.ObjectSlots.ObjectXOffset, 4), 0));
+            y = objAddresses.Average(obj => BitConverter.ToSingle(stream.ReadRam(obj + Config.ObjectSlots.ObjectYOffset, 4), 0));
+            z = objAddresses.Average(obj => BitConverter.ToSingle(stream.ReadRam(obj + Config.ObjectSlots.ObjectZOffset, 4), 0));
 
             // Add offset
             y += Config.Mario.MoveToObjectYOffset;
@@ -36,7 +36,7 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool MoveObjectToMario(ProcessStream stream, uint objAddress)
+        public static bool RetreiveObjects(ProcessStream stream, List<uint> objAddresses)
         {
             // Move object to Mario
             var marioAddress = Config.Mario.StructAddress;
@@ -54,10 +54,12 @@ namespace SM64_Diagnostic.Utilities
 
             // Move object to Mario
             bool success = true;
-            success &= stream.WriteRam(BitConverter.GetBytes(x), objAddress + Config.ObjectSlots.ObjectXOffset);
-            success &= stream.WriteRam(BitConverter.GetBytes(y), objAddress + Config.ObjectSlots.ObjectYOffset);
-            success &= stream.WriteRam(BitConverter.GetBytes(z), objAddress + Config.ObjectSlots.ObjectZOffset);
-
+            foreach (var objAddress in objAddresses)
+            {
+                success &= stream.WriteRam(BitConverter.GetBytes(x), objAddress + Config.ObjectSlots.ObjectXOffset);
+                success &= stream.WriteRam(BitConverter.GetBytes(y), objAddress + Config.ObjectSlots.ObjectYOffset);
+                success &= stream.WriteRam(BitConverter.GetBytes(z), objAddress + Config.ObjectSlots.ObjectZOffset);
+            }
             stream.Resume();
 
             return success;
@@ -100,9 +102,14 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool UnloadObject(ProcessStream stream, uint address)
+        public static bool UnloadObject(ProcessStream stream, List<uint> addresses)
         {
-            return stream.WriteRam(new byte[] { 0x00, 0x00 }, address + Config.ObjectSlots.ObjectActiveOffset);
+            bool success = true;
+            foreach (var address in addresses)
+            {
+                success &= stream.WriteRam(new byte[] { 0x00, 0x00 }, address + Config.ObjectSlots.ObjectActiveOffset);
+            }
+            return success;
         }
 
         public static bool RefillHp(ProcessStream stream)
@@ -112,7 +119,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool Die(ProcessStream stream)
         {
-            return stream.WriteRam(BitConverter.GetBytes((short)0), Config.Hud.HpAddress);
+            return stream.WriteRam(BitConverter.GetBytes((short)255), Config.Hud.HpAddress);
         }
 
         public static bool StandardHud(ProcessStream stream)
@@ -123,6 +130,9 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardCoins), Config.Hud.CoinCountAddress);
             success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardLives), Config.Hud.LiveCountAddress);
             success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardStars), Config.Hud.StarCountAddress);
+            success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardCoins), Config.Hud.DisplayCoinCountAddress);
+            success &= stream.WriteRam(BitConverter.GetBytes((short)Config.Hud.StandardLives), Config.Hud.DisplayLiveCountAddress);
+            success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardStars), Config.Hud.DisplayStarCountAddress);
 
             return success;
         }
@@ -223,47 +233,6 @@ namespace SM64_Diagnostic.Utilities
             stream.Resume();
 
             return success;
-        }
-
-        public static int GetClosestVertex(ProcessStream stream, uint triangleAddress)
-        {
-            if (triangleAddress == 0x0000)
-                return 0;
-
-            // Get Mario position
-            short marioX, marioY, marioZ;
-            var marioAddress = Config.Mario.StructAddress;
-            marioX = (short)BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
-            marioY = (short)BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.YOffset, 4), 0);
-            marioZ = (short)BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
-
-            short v1X, v1Y, v1Z;
-            short v2X, v2Y, v2Z;
-            short v3X, v3Y, v3Z;
-            v1X = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.X1, 2), 0);
-            v1Y = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y1, 2), 0);
-            v1Z = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Z1, 2), 0);
-            v2X = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.X2, 2), 0);
-            v2Y = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y2, 2), 0);
-            v2Z = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Z2, 2), 0);
-            v3X = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.X3, 2), 0);
-            v3Y = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y3, 2), 0);
-            v3Z = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Z3, 2), 0);
-
-            double disToV1, disToV2, disToV3;
-            disToV1 = Math.Pow(marioX - v1X, 2) + Math.Pow(marioY - v1Y, 2) + Math.Pow(marioZ - v1Z, 2);
-            disToV2 = Math.Pow(marioX - v2X, 2) + Math.Pow(marioY - v2Y, 2) + Math.Pow(marioZ - v2Z, 2);
-            disToV3 = Math.Pow(marioX - v3X, 2) + Math.Pow(marioY - v3Y, 2) + Math.Pow(marioZ - v3Z, 2);
-
-            double minDis = Math.Min(Math.Min(disToV1, disToV2), disToV3);
-            if (minDis == disToV1)
-                return 1;
-            if (minDis == disToV2)
-                return 2;
-            if (minDis == disToV3)
-                return 3;
-
-            return 0;
         }
     }
 }

@@ -34,7 +34,7 @@ namespace SM64_Diagnostic.Structs
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
             GL.Color4(Color);
-            GL.Begin(BeginMode.Triangles);
+            GL.Begin(PrimitiveType.Triangles);
             GL.Vertex2(P1OnControl.X, P1OnControl.Y);
             GL.Vertex2(P2OnControl.X, P2OnControl.Y);
             GL.Vertex2(P3OnControl.X, P3OnControl.Y);

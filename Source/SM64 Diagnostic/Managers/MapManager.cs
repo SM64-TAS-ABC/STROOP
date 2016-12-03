@@ -10,8 +10,9 @@ using System.Drawing;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
+using SM64_Diagnostic.ManagerClasses;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace SM64_Diagnostic.Managers
 {
     public class MapManager
     {

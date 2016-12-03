@@ -65,6 +65,7 @@
         <xs:attribute name="useHex" type="xs:boolean" use="optional"/>
         <xs:attribute name="isBool" type="xs:boolean" use="optional"/>
         <xs:attribute name="isAngle" type="xs:boolean" use="optional"/>
+        <xs:attribute name="isObject" type="xs:boolean" use="optional"/>
         <xs:attribute name="invertBool" type="xs:boolean" use="optional"/>
       </xs:extension>
     </xs:simpleContent>

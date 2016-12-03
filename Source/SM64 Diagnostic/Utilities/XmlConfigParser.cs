@@ -271,11 +271,20 @@ namespace SM64_Diagnostic.Utilities
                                 case "StarCountAddress":
                                     Config.Hud.StarCountAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "DisplayLiveCountAddress":
+                                    Config.Hud.DisplayLiveCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "DisplayCoinCountAddress":
+                                    Config.Hud.DisplayCoinCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "DisplayStarCountAddress":
+                                    Config.Hud.DisplayStarCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "FullHp":
                                     Config.Hud.FullHp = short.Parse(subElement.Value);
                                     break;
                                 case "StandardLives":
-                                    Config.Hud.StandardLives = short.Parse(subElement.Value);
+                                    Config.Hud.StandardLives = sbyte.Parse(subElement.Value);
                                     break;
                                 case "StandardCoins":
                                     Config.Hud.StandardCoins = short.Parse(subElement.Value);
@@ -865,7 +874,9 @@ namespace SM64_Diagnostic.Utilities
                 (UInt64?) ParsingUtilities.ParseExtHex(element.Attribute(XName.Get("mask")).Value) : null;
             watchVar.IsBool = element.Attribute(XName.Get("isBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isBool")).Value) : false;
-            watchVar.Type = WatchVariableExtensions.GetStringType(element.Attribute(XName.Get("type")).Value);
+            watchVar.IsObject = element.Attribute(XName.Get("isObject")) != null ?
+                bool.Parse(element.Attribute(XName.Get("isObject")).Value) : false;
+            watchVar.TypeName = (element.Attribute(XName.Get("type")).Value);
             watchVar.Address = ParsingUtilities.ParseHex(element.Attribute(XName.Get("address")).Value);
             watchVar.InvertBool = element.Attribute(XName.Get("invertBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : false;

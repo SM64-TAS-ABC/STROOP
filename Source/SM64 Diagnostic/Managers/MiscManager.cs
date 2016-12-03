@@ -9,66 +9,20 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Controls;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace SM64_Diagnostic.Managers
 {
-    public class MiscManager
+    public class MiscManager : DataManager
     {
-        List<WatchVariableControl> _watchVarControls;
-        FlowLayoutPanel _variableTable;
-        ProcessStream _stream;
-        DataContainer _rngIndex, _rngPerFrame, _activeObjCnt;
         Control _puController;
 
         public int ActiveObjectCount = 0;
 
         enum PuControl { Home, PuUp, PuDown, PuLeft, PuRight, QpuUp, QpuDown, QpuLeft, QpuRight};
 
-        public MiscManager(ProcessStream stream, List<WatchVariable> watchVariables, FlowLayoutPanel variableTable, Control puController)
+        public MiscManager(ProcessStream stream, List<WatchVariable> watchVariables, NoTearFlowLayoutPanel variableTable, Control puController)
+            : base(stream, watchVariables, variableTable)
         {
-            _variableTable = variableTable;
-            _stream = stream;
             _puController = puController;
-
-            // Initialize special variables
-            _rngIndex = new DataContainer("RNG Index");
-            _rngPerFrame = new DataContainer("RNG Calls/Frame");
-            _activeObjCnt = new DataContainer("Num. Loaded Objs.");
-
-            _watchVarControls = new List<WatchVariableControl>();
-            foreach (WatchVariable watchVar in watchVariables)
-            {
-                if (!watchVar.Special)
-                {
-                    WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, 0);
-                    variableTable.Controls.Add(watchControl.Control);
-                    _watchVarControls.Add(watchControl);
-                    continue;
-                }
-
-                switch (watchVar.SpecialType)
-                {
-                    case "RngIndex":
-                        _rngIndex.Name = watchVar.Name;
-                        variableTable.Controls.Add(_rngIndex.Control);
-                        break;
-
-                    case "RngCallsPerFrame":
-                        _rngPerFrame.Name = watchVar.Name;
-                        variableTable.Controls.Add(_rngPerFrame.Control);
-                        break;
-
-                    case "NumberOfLoadedObjects":
-                        _activeObjCnt.Name = watchVar.Name;
-                        variableTable.Controls.Add(_activeObjCnt.Control);
-                        break;
-
-                    default:
-                        var failedContainer = new DataContainer(watchVar.Name);
-                        failedContainer.Text = "Couldn't Find";
-                        variableTable.Controls.Add(failedContainer.Control);
-                        break;
-                }
-            }
 
             // Pu Controller initialize and register click events
             _puController.Controls["buttonPuConHome"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.Home);
@@ -80,6 +34,16 @@ namespace SM64_Diagnostic.ManagerClasses
             _puController.Controls["buttonPuConZpPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuDown);
             _puController.Controls["buttonPuConXnPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuLeft);
             _puController.Controls["buttonPuConXpPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuRight);
+        }
+
+        protected override void InitializeSpecialVariables()
+        {
+            _specialWatchVars = new List<IDataContainer>()
+            {
+                new DataContainer("RngIndex"),
+                new DataContainer("RngCallsPerFrame"),
+                new DataContainer("NumberOfLoadedObjects")
+            };
         }
 
         private void PuControl_Click(object sender, EventArgs e, PuControl controlType)
@@ -116,22 +80,36 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public void Update(bool updateView)
+        private void ProcessSpecialVars()
         {
-            // Update watch variables
-            foreach (var watchVar in _watchVarControls)
-                watchVar.Update();
+            foreach (var specialVar in _specialWatchVars)
+            {
+                switch(specialVar.SpecialName)
+                {
+                    case "RngIndex":
+                        int rngIndex = RngIndexer.GetRngIndex(_stream.GetUInt16(Config.RngAddress));
+                        (specialVar as DataContainer).Text = (rngIndex < 0) ? "N/A [" + (-rngIndex).ToString() + "]" : rngIndex.ToString();
+                        break;
 
+                    case "RngCallsPerFrame":
+                        (specialVar as DataContainer).Text = GetRngCallsPerFrame().ToString();
+                        break;
+
+                    case "NumberOfLoadedObjects":
+                        (specialVar as DataContainer).Text = ActiveObjectCount.ToString();
+                        break;
+                }
+            }
+        }
+
+        public override void Update(bool updateView)
+        {
             if (!updateView)
                 return;
 
-            // Update the rng index
-            int rngIndex = RngIndexer.GetRngIndex(BitConverter.ToUInt16(_stream.ReadRam(Config.RngAddress, 2), 0));
-            _rngIndex.Text = (rngIndex < 0) ? "N/A [" + (-rngIndex).ToString() + "]" : rngIndex.ToString();
+            base.Update();
+            ProcessSpecialVars();
 
-            _rngPerFrame.Text = GetRngCallsPerFrame().ToString();
-
-            _activeObjCnt.Text = ActiveObjectCount.ToString();
             _puController.Controls["labelPuConPuValue"].Text = PuUtilities.GetPuPosString(_stream);
             _puController.Controls["labelPuConQpuValue"].Text = PuUtilities.GetQpuPosString(_stream);
         }

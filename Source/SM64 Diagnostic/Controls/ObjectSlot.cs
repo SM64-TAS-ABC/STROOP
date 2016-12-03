@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
-using SM64_Diagnostic.ManagerClasses;
+using SM64_Diagnostic.Managers;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Controls;
@@ -224,14 +224,10 @@ namespace SM64_Diagnostic
             Size = size;
             Font = new Font(FontFamily.GenericSansSerif, 6);
 
-            this.AllowDrop = true;
             this.MouseDown += OnDrag;
             this.MouseUp += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
             this.MouseEnter += (s, e) => { MouseState = MouseStateType.Over; UpdateColors(); };
             this.MouseLeave += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
-
-            this.DragEnter += OnDragEnter;
-            this.DragDrop += OnDrop;
             this.Cursor = Cursors.Hand;
             this.DoubleBuffered = true;
         }
@@ -319,48 +315,10 @@ namespace SM64_Diagnostic
 
         private void OnDrag(object sender, MouseEventArgs e)
         {
-            OnClick(new EventArgs());
-
             MouseState = MouseStateType.Down;
             UpdateColors();
             Refresh();
-
-            // Start the drag and drop but setting the object slot index in Drag and Drop data
-            var objectAddress = Address;
-            var dropAction = new DropAction(DropAction.ActionType.Object, objectAddress); 
-            DoDragDrop(dropAction, DragDropEffects.All);
         }
-
-        private void OnDragEnter(object sender, DragEventArgs e)
-        {
-
-            // Make sure we have valid Drag and Drop data (it is an index)
-            if (!e.Data.GetDataPresent(typeof(DropAction)))
-            {
-                e.Effect = DragDropEffects.None;
-                return;
-            }
-
-            var dropAction = ((DropAction) e.Data.GetData(typeof(DropAction))).Action;
-            if (dropAction != DropAction.ActionType.Object && dropAction != DropAction.ActionType.Mario)
-            {
-                e.Effect = DragDropEffects.None;
-                return;
-            }
-
-            e.Effect = DragDropEffects.Move;
-        }
-
-        private void OnDrop(object sender, DragEventArgs e)
-        {
-            // Make sure we have valid Drag and Drop data (it is an index)
-            if (!e.Data.GetDataPresent(typeof(DropAction)))
-                return;
-
-            var dropAction = ((DropAction)e.Data.GetData(typeof(DropAction)));
-            _manager.OnSlotDropAction(dropAction, this);
-        }
-
         protected override void OnPaint(PaintEventArgs e)
         {
             lock (_gfxLock)
