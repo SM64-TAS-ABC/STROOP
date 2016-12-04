@@ -8,6 +8,7 @@
   <Data type="float" address="0xc28124" absoluteAddress="true">Camera X</Data>
   <Data type="float" address="0xc28128" absoluteAddress="true">Camera Y</Data>
   <Data type="float" address="0xc2812c" absoluteAddress="true">Camera Z</Data>
+  <Data special="true" specialType="DistanceToMario">Dis. To Mario</Data>
   <Data type="float" address="0xc2813c" absoluteAddress="true">Camera Target X</Data>
   <Data type="float" address="0xc28140" absoluteAddress="true">Camera Target Y</Data>
   <Data type="float" address="0xc28144" absoluteAddress="true">Camera Target Z</Data>
