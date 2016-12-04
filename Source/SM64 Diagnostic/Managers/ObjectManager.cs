@@ -209,6 +209,10 @@ namespace SM64_Diagnostic.Managers
 
         private void AddressChanged()
         {
+            var test = _dataControls.Where(d => d is WatchVariableControl);
+            foreach (WatchVariableControl dataControl in test)
+                dataControl.EditMode = false;
+
             if (CurrentAddresses.Count == 1)
             {
                 _objGui.CloneButton.Enabled = true;
@@ -224,7 +228,7 @@ namespace SM64_Diagnostic.Managers
             if (_currentAddresses.Count == 0)
                 return;
 
-            var variableTitle = "Object Address" + (_currentAddresses.Count > 1 ? " (First of Multiple" : ""); 
+            var variableTitle = "Object Address" + (_currentAddresses.Count > 1 ? " (First of Multiple)" : ""); 
             var variableInfo = new VariableViewerForm(variableTitle, "Object",
                 String.Format("0x{0:X8}", _currentAddresses[0]), String.Format("0x{0:X8}", (_currentAddresses[0] & 0x0FFFFFFF) + _stream.ProcessMemoryOffset));
             variableInfo.ShowDialog();

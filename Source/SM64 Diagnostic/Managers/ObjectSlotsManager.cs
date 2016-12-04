@@ -82,7 +82,7 @@ namespace SM64_Diagnostic.Managers
             {
                 var objectSlot = new ObjectSlot(i, this, ManagerGui, new Size(DefaultSlotSize, DefaultSlotSize));
                 ObjectSlots[i] = objectSlot;
-                objectSlot.Click += (sender, e) => OnClick(sender, e);
+                objectSlot.Click += (sender, e) => OnSlotClick(sender, e);
                 ManagerGui.FlowLayoutContainer.Controls.Add(objectSlot);
             }
 
@@ -90,7 +90,7 @@ namespace SM64_Diagnostic.Managers
             ChangeSlotSize(DefaultSlotSize);
         }
 
-        private void OnClick(object sender, EventArgs e)
+        private void OnSlotClick(object sender, EventArgs e)
         {
             // Make sure the tab has loaded
             if (ManagerGui.TabControl.SelectedTab == null)

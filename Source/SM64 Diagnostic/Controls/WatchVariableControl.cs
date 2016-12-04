@@ -221,6 +221,27 @@ namespace SM64_Diagnostic.Controls
             _nameLabel.Image = nextImage;
         }
 
+        public bool EditMode
+        {
+            get
+            {
+                return _editMode;
+            }
+            set
+            {
+                _editMode = value;
+                if (_textBoxValue != null)
+                {
+                    _textBoxValue.ReadOnly = !_editMode;
+                    if (_editMode)
+                    {
+                        _textBoxValue.Focus();
+                        _textBoxValue.SelectAll();
+                    }
+                }
+            }
+        }
+
         public WatchVariableControl(ProcessStream stream, WatchVariable watchVar, uint otherOffset = 0)
             : this(stream, watchVar, new List<uint>() { otherOffset })
         {
@@ -344,10 +365,7 @@ namespace SM64_Diagnostic.Controls
 
         private void _textBoxValue_DoubleClick(object sender, EventArgs e)
         {
-            _textBoxValue.ReadOnly = false;
-            _textBoxValue.Focus();
-            _textBoxValue.SelectAll();
-            _editMode = true;
+            EditMode = true;
         }
 
         private void _textBoxValue_MouseEnter(object sender, EventArgs e)
@@ -506,26 +524,19 @@ namespace SM64_Diagnostic.Controls
             switch (e.ClickedItem.Text)
             {
                 case "Edit":
-                    _textBoxValue.ReadOnly = false;
-                    _textBoxValue.Focus();
-                    _editMode = true;
+                    EditMode = true;
                     break;
                 case "View As Hexadecimal":
                     _watchVar.UseHex = !(e.ClickedItem as ToolStripMenuItem).Checked;
                     (e.ClickedItem as ToolStripMenuItem).Checked = !(e.ClickedItem as ToolStripMenuItem).Checked;
                     break;
                 case "Lock Value":
-                    _textBoxValue.ReadOnly = true;
-                    _editMode = false;
+                    EditMode = false;
                     (e.ClickedItem as ToolStripMenuItem).Checked = !(e.ClickedItem as ToolStripMenuItem).Checked;
                     if (OtherOffsets.Any(o => GetIsLocked(o)))
-                    {
                         OtherOffsets.ForEach(o => RemoveLock(o));
-                    }
                     else
-                    {
                         OtherOffsets.ForEach(o => LockUpdate(o));
-                    }
                     break;
                 case "Select Object":
                     if (_watchVar.ByteCount != 4)
@@ -550,8 +561,7 @@ namespace SM64_Diagnostic.Controls
                 return;
 
             // Exit edit mode
-            _textBoxValue.ReadOnly = true;
-            _editMode = false;
+            EditMode = false;
 
             _stream.Suspend();
 
