@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <MiscData>
-  <Data type="uint" address="0x00C19054" absoluteAddress="true">Global Timer</Data>
+  <Data type="int" address="0x00C19054" absoluteAddress="true">Global Timer</Data>
   <Data type="ushort" address="0x8038EEE0">RNG Value</Data>
   <Data special="true" specialType="RngIndex">RNG Index</Data>
   <Data special="true" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>

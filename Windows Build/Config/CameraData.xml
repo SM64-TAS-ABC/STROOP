@@ -26,4 +26,5 @@
   <Data type="short" address="0xc28168" absoluteAddress="true">Pitch Shake</Data>
   <Data type="short" address="0xc2816c" absoluteAddress="true">Roll Shake</Data>
   <Data type="short" address="0xc28156" absoluteAddress="true">Camera Mode</Data>
+  <Data type="uint" address="0x00C199B0" absoluteAddress="true" useHex="true" isObject="true">Secondary Object</Data>
 </CameraData>
