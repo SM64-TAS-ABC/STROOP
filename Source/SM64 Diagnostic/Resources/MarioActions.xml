@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MarioActions>
+  <Action name="Jump" value="0x00000000"/>
+  <Action name="Swim" value="0x000000FF"/>
+</MarioActions>
