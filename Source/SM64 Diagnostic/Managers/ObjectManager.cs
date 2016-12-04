@@ -221,8 +221,12 @@ namespace SM64_Diagnostic.Managers
 
         private void ObjAddressLabel_Click(object sender, EventArgs e)
         {
-            var variableInfo = new VariableViewerForm("Object Address", "Object",
-                String.Format("0x{0:X8}", _currentAddresses), String.Format("0x{0:X8}", (_currentAddresses[0] & 0x0FFFFFFF) + _stream.ProcessMemoryOffset));
+            if (_currentAddresses.Count == 0)
+                return;
+
+            var variableTitle = "Object Address" + (_currentAddresses.Count > 1 ? " (First of Multiple" : ""); 
+            var variableInfo = new VariableViewerForm(variableTitle, "Object",
+                String.Format("0x{0:X8}", _currentAddresses[0]), String.Format("0x{0:X8}", (_currentAddresses[0] & 0x0FFFFFFF) + _stream.ProcessMemoryOffset));
             variableInfo.ShowDialog();
         }
 
