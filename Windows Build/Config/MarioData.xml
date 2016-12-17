@@ -33,14 +33,19 @@
   <Data type="uint" address="0x04" marioOffset="true" isBool="true" mask="0x04">Metal Cap</Data>
   <Data type="uint" address="0x04" marioOffset="true" isBool="true" mask="0x02">Vanish Cap</Data>
   <Data type="ushort" address="0x00C26CA4" absoluteAddress="true">Cap Timer</Data>
-  <Data type="uint" address="0x0C" marioOffset="true" useHex="true">Action</Data>
+  <Data type="uint" address="0x00C26BFC" absoluteAddress="true" useHex="true">Action</Data>
+  <Data type="uint" address="0x00C26C00" absoluteAddress="true" useHex="true">Previous Action</Data>
   <Data type="ushort" address="0x00C26C0A" absoluteAddress="true">Action Phase</Data>
   <Data type="ushort" address="0x00C26C08" absoluteAddress="true">Action Timer</Data>
   <Data type="short" address="0xc27df8" absoluteAddress="true">Animation Timer</Data>
-  <Data type="ushort" address="0x00C26C0C" absoluteAddress="true">Squished Timer</Data>
   <Data type="short" address="0x00C26C14" absoluteAddress="true">Hitstun Timer</Data>
   <Data type="float" address="0x00c26cac" absoluteAddress="true">Peak Height</Data>
   <Data special="true" specialType="FallHeight">Fall Height</Data>
+  <Data type="sbyte" address="0x00C26CA7" absoluteAddress="true">Unsquishing Timer</Data>
+  <Data type="ushort" address="0x00C26C0C" absoluteAddress="true">Squished Timer</Data>
+  <Data type="byte" address="0xc3b668" mask="0x40" absoluteAddress="true" isBool="true">Splash</Data>
+  <Data type="byte" address="0xc3b668" mask="0x20" absoluteAddress="true" isBool="true">Bubble Spawner</Data>
+  <Data type="byte" address="0xc3b668" mask="0x80" absoluteAddress="true" isBool="true">Stationary Water Wave</Data>
   <Data type="int" address="0x009DC4DC" absoluteAddress="true">Blinking State</Data>
   <Data type="short" address="0x00C1998A" absoluteAddress="true">Blinking Timer</Data>
   <Data type="uint" address="0x00C4CBD8" absoluteAddress="true" useHex="true" isObject="true">Mario Object</Data>

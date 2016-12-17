@@ -245,11 +245,11 @@
   </Object>
   <Object behaviorScriptAddress="0x130007F8" name="Power Star">
     <Image path="Power Star Yellow.png"/>
-    <Data type="int" address="0x18B" objectOffset="true">Mission</Data>
+    <Data type="byte" address="0x188" objectOffset="true">Mission</Data>
   </Object>
   <Object behaviorScriptAddress="0x130007F8" name="Power Star" gfxId="0x800F8C00">
     <Image path="Power Star Blue.png"/>
-    <Data type="int" address="0x18B" objectOffset="true">Mission</Data>
+    <Data type="byte" address="0x188" objectOffset="true">Mission</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300080C" name="Power Star">
     <Image path="Power Star Yellow.png"/>
@@ -1475,7 +1475,7 @@
   <Object behaviorScriptAddress="0x13002CB0" name="Object Bubble Ripples">
     <Image path="Water Ripples.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002CE0" name="Mario Water Waves">
+  <Object behaviorScriptAddress="0x13002CE0" name="Stationary Water Wave">
     <Image path="Water Waves.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002D28" name="Water Ripples">
@@ -1490,7 +1490,7 @@
   <Object behaviorScriptAddress="0x13002DB0" name="Sushi Water Waves">
     <Image path="Water Waves.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002DC0" name="Water Waves">
+  <Object behaviorScriptAddress="0x13002DC0" name="Moving Water Wave">
     <Image path="Water Waves.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002E04" name="Wind Particle">
@@ -1519,6 +1519,7 @@
     <Data type="short" address="0x44" objectOffset="true">Walking Timer</Data>
     <Data type="int" address="0x110" objectOffset="true">Burn Timer</Data>
     <Data type="ushort" address="0x112" objectOffset="true" isAngle="true">Cannon Yaw</Data>
+    <Data type="float" address="0x110" objectOffset="true">Pole Height</Data>
     <Data type="short" address="0x3A" objectOffset="true">Relative Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002EF8" name="Toad">
@@ -2048,6 +2049,9 @@
   <Object behaviorScriptAddress="0x130043A0" name="Falling Pillar">
     <Image path="Falling Pillar.png"/>
   </Object>
+  <Object behaviorScriptAddress="0x130043C4" name="Falling Pillar Hitbox">
+    <Image path="Falling Pillar Hitbox.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x130043E0" name="Falling Pillar Base">
     <Image path="Falling Pillar Base.png"/>
   </Object>
@@ -2069,7 +2073,7 @@
   <Object behaviorScriptAddress="0x130044B8" name="Chest Bottom">
     <Image path="Chest Bottom.png"/>
 	<MapImage path="Chest Bottom Top.png" rotates="true"/>
-	<Data type="byte" address="0x14F" objectOffset="true" isBool="true">Open</Data>
+	<Data type="byte" address="0x14F" objectOffset="true" isBool="true">Used</Data>
   </Object>
   <Object behaviorScriptAddress="0x130044E0" name="Chest Top">
     <Image path="Chest Top.png"/>
