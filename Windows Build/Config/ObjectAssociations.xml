@@ -495,6 +495,9 @@
   <Object behaviorScriptAddress="0x13000D6C" name="Mario Breath Particle">
     <Image path="Mario Breath Particle.png"/>
   </Object>
+  <Object behaviorScriptAddress="0x13000D98" name="Mario Breath Particle Spawner">
+    <Image path="Mario Breath Particle Spawner.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x13000DB4" name="Red Star Particle" gfxId="0x800FA108" appearance="0">
     <Image path="Star Particle Red.png"/>
   </Object>
@@ -698,6 +701,9 @@
   </Object>
   <Object behaviorScriptAddress="0x130015A4" name="Heave-Ho Anchor">
     <Image path="Heave-Ho Anchor.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130015C0" name="Slip Slidin' Away Star Spawner">
+    <Image path="Slip Slidin Away Star Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001650" name="Crazy Box">
     <Image path="Crazy Box.png"/>
@@ -1366,13 +1372,15 @@
     <Data type="int" address="0x17C" objectOffset="true">Opaqueness</Data>
     <Data type="ushort" address="0xFE" objectOffset="true" isAngle="true">Oscillation Timer</Data>
   </Object>
+  <Object behaviorScriptAddress="0x130027D0" name="Boo Triplet Spawner">
+    <Image path="Boo Triplet Spawner.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x130027E4" name="Boo">
     <Image path="Boo.png"/>
 	<MapImage path="Boo Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">Target Opaqueness</Data>
     <Data type="int" address="0x17C" objectOffset="true">Opaqueness</Data>
     <Data type="ushort" address="0xFE" objectOffset="true" isAngle="true">Oscillation Timer</Data>
-
   </Object>
   <Object behaviorScriptAddress="0x130027F4" name="Boo (Merry-Go-Round)">
     <Image path="Boo.png"/>
@@ -1717,16 +1725,27 @@
   </Object>
   <Object behaviorScriptAddress="0x13003738" name="Water Ring Spawner">
     <Image path="Manta Ring Spawner.png"/>
+    <Data type="int" address="0xF4" objectOffset="true">Num Rings Created</Data>
+    <Data type="int" address="0xF8" objectOffset="true">Last Ring Collected</Data>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true" invertBool="true">Make Rings</Data>
     <Data type="int" address="0x1AC" objectOffset="true">Rings Collected</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003750" name="Water Ring (from Jet Stream)">
     <Image path="Manta Ring.png"/>
+    <Data type="int" address="0x110" objectOffset="true">Ring Number</Data>
     <Data type="int" address="0x17C" objectOffset="true">Opaqueness</Data>
+    <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Collected</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003798" name="Water Ring (from Manta Ray)">
     <Image path="Manta Ring.png"/>
+    <Data type="int" address="0x110" objectOffset="true">Ring Number</Data>
     <Data type="int" address="0x17C" objectOffset="true">Opaqueness</Data>
+    <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Collected</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x130037E0" name="Manta Ring Manager">
+    <Image path="Manta Ring Manager.png"/>
+    <Data type="int" address="0xF4" objectOffset="true">Num Rings Created</Data>
+    <Data type="int" address="0xF8" objectOffset="true">Last Ring Collected</Data>
   </Object>
   <Object behaviorScriptAddress="0x130037EC" name="Floating Mine">
     <Image path="Floating Mine.png"/>
@@ -1753,8 +1772,11 @@
   <Object behaviorScriptAddress="0x130038B0" name="White Puff Spawner">
     <Image path="White Puff Spawner 2.png"/>
   </Object>
+  <Object behaviorScriptAddress="0x130038D0" name="LLL Drawbridge Spawner">
+    <Image path="LLL Drawbridge Spawner.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x130038E8" name="LLL Drawbridge">
-    <Image path="LLL Drawbridge.png"/>
+    <Image path="LLL Drawbridge 2.png"/>
 	<MapImage path="LLL Drawbridge Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003910" name="Small Bomp">
@@ -2790,6 +2812,9 @@
   </Object>
   <Object behaviorScriptAddress="0x13005680" name="Bird (for Pan to Sky)">
     <Image path="Bird.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130056A4" name="Bird Spawner (for Ending Cutscene)">
+    <Image path="Bird Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13FA4BB4" name="Save File (Started)" gfxId="0x800925B0">
     <Image path="File Started.png"/>
