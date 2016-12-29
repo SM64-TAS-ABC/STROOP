@@ -429,12 +429,84 @@
     <Image path="Triangle Particle Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000AFC" name="Warp Door">
-    <Image path="Warp Door.png"/>
+    <Image path="Door Standard Warp.png"/>
+	<MapImage path="Warp Door Top.png" rotates="true"/>
+    <Data type="short" address="0x188" objectOffset="true">Destination</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13000AFC" name="Wooden Door Warp" gfxId="0x8018E9B4">
+    <Image path="Door Wooden Warp.png"/>
+	<MapImage path="Warp Door Top.png" rotates="true"/>
+    <Data type="short" address="0x188" objectOffset="true">Destination</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13000AFC" name="Wooden Door Warp" gfxId="0x8015D25C">
+    <Image path="Door Wooden Warp.png"/>
+	<MapImage path="Warp Door Top.png" rotates="true"/>
+    <Data type="short" address="0x188" objectOffset="true">Destination</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13000AFC" name="Standard Door Warp" gfxId="0x8018E8A8">
+    <Image path="Door Standard Warp.png"/>
+	<MapImage path="Warp Door Top.png" rotates="true"/>
+    <Data type="short" address="0x188" objectOffset="true">Destination</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13000AFC" name="Standard Door Warp" gfxId="0x80195CFC">
+    <Image path="Door Standard Warp.png"/>
+	<MapImage path="Warp Door Top.png" rotates="true"/>
+    <Data type="short" address="0x188" objectOffset="true">Destination</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13000AFC" name="Metal Door Warp" gfxId="0x80195E08">
+    <Image path="Door Metal Warp.png"/>
+	<MapImage path="Warp Door Top.png" rotates="true"/>
+    <Data type="short" address="0x188" objectOffset="true">Destination</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13000AFC" name="Metal Door Warp" gfxId="0x8018EAC0">
+    <Image path="Door Metal Warp.png"/>
+	<MapImage path="Warp Door Top.png" rotates="true"/>
+    <Data type="short" address="0x188" objectOffset="true">Destination</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13000AFC" name="Key Door Warp" gfxId="0x8018F198">
+    <Image path="Door Key Warp.png"/>
+	<MapImage path="Warp Door Top.png" rotates="true"/>
+    <Data type="short" address="0x188" objectOffset="true">Destination</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13000AFC" name="One-Sided Door Warp" gfxId="0x801849AC">
+    <Image path="Door Standard Warp.png"/>
 	<MapImage path="Warp Door Top.png" rotates="true"/>
     <Data type="short" address="0x188" objectOffset="true">Destination</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000B0C" name="Door">
-    <Image path="Door.png"/>
+    <Image path="Door Standard.png"/>
+	<MapImage path="Door Top.png" rotates="true"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000B0C" name="Wooden Door" gfxId="0x8018ECD8">
+    <Image path="Door Wooden.png"/>
+	<MapImage path="Door Top.png" rotates="true"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000B0C" name="Wooden Door" gfxId="0x8017EC64">
+    <Image path="Door Wooden.png"/>
+	<MapImage path="Door Top.png" rotates="true"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000B0C" name="0 Star Door" gfxId="0x8018EDE4">
+    <Image path="Door 0 Star.png"/>
+	<MapImage path="Door Top.png" rotates="true"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000B0C" name="1 Star Door" gfxId="0x8018EF20">
+    <Image path="Door 1 Star.png"/>
+	<MapImage path="Door Top.png" rotates="true"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000B0C" name="3 Star Door" gfxId="0x8018F05C">
+    <Image path="Door 3 Star.png"/>
+	<MapImage path="Door Top.png" rotates="true"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000B0C" name="Metal Door" gfxId="0x8017ED70">
+    <Image path="Door Metal.png"/>
+	<MapImage path="Door Top.png" rotates="true"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000B0C" name="Spooky Door" gfxId="0x80188CC4">
+    <Image path="Door Spooky.png"/>
+	<MapImage path="Door Top.png" rotates="true"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000B0C" name="Starry Door" gfxId="0x8017EE7C">
+    <Image path="Door Starry.png"/>
 	<MapImage path="Door Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000B58" name="Grindel (Vertical)">
@@ -483,7 +555,15 @@
     <Image path="Falling Block Spawner LLL.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000C84" name="Wall Flame">
-    <Image path="Flame.png"/>
+    <Image path="Orange Flame.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13000C84" name="Orange Wall Flame" gfxId="0x800F8CC8">
+    <Image path="Orange Flame.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13000C84" name="Blue Wall Flame" gfxId="0x800F8DBC">
+    <Image path="Blue Flame.png"/>
     <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000CFC" name="RR Elevator Platform">
@@ -596,7 +676,7 @@
     <Image path="Flame Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001124" name="Flame">
-    <Image path="Flame.png"/>
+    <Image path="Orange Flame.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001168" name="Lava Bubble Spawner">
     <Image path="Lava Bubble Spawner.png"/>
@@ -737,6 +817,7 @@
     <Image path="Bowser.png"/>
 	<MapImage path="Bowser Top.png" rotates="true"/>
 	<Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="int" address="0x150" objectOffset="true">Phase</Data>
     <Data type="int" address="0x184" objectOffset="true">HP</Data>
     <Data type="byte" address="0x00A6D150" absoluteAddress="true">Blinking State</Data>
     <Data type="short" address="0x1AE" objectOffset="true">Blinking Timer</Data>
@@ -746,6 +827,7 @@
     <Image path="Bowser.png"/>
 	<MapImage path="Bowser Top.png" rotates="true"/>
 	<Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="int" address="0x150" objectOffset="true">Phase</Data>
     <Data type="int" address="0x184" objectOffset="true">HP</Data>
     <Data type="byte" address="0x00A6B880" absoluteAddress="true">Blinking State</Data>
     <Data type="short" address="0x1AE" objectOffset="true">Blinking Timer</Data>
@@ -755,6 +837,7 @@
     <Image path="Bowser.png"/>
 	<MapImage path="Bowser Top.png" rotates="true"/>
 	<Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="int" address="0x150" objectOffset="true">Phase</Data>
     <Data type="int" address="0x184" objectOffset="true">HP</Data>
     <Data type="byte" address="0x00A6FA00" absoluteAddress="true">Blinking State</Data>
     <Data type="short" address="0x1AE" objectOffset="true">Blinking Timer</Data>
@@ -778,7 +861,15 @@
     <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x130019C8" name="Falling Flame">
-    <Image path="Falling Flame.png"/>
+    <Image path="Orange Falling Flame.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x130019C8" name="Orange Falling Flame" gfxId="0x800F8CC8">
+    <Image path="Orange Falling Flame.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x130019C8" name="Blue Falling Flame" gfxId="0x800F8DBC">
+    <Image path="Blue Falling Flame.png"/>
     <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001A0C" name="Blue Lava Bubble Spawner">
@@ -793,11 +884,11 @@
     <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001AA4" name="Blown Flame">
-    <Image path="Flame.png"/>
+    <Image path="Orange Flame.png"/>
     <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001AE8" name="Landed Flame">
-    <Image path="Flame.png"/>
+    <Image path="Orange Flame.png"/>
     <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001B2C" name="Aquarium Fish">
@@ -857,7 +948,7 @@
 	<MapImage path="Fire Bar Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13001DCC" name="Flame">
-    <Image path="Flame.png"/>
+    <Image path="Orange Flame.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001E04" name="Rising and Lowering Wood">
     <Image path="Rising and Lowering Wood.png"/>
@@ -1309,10 +1400,20 @@
     <Data type="int" address="0xF0" objectOffset="true">Spin Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130025C0" name="Openable Gate">
-    <Image path="Openable Gate.png"/>
+    <Image path="Openable Gate BoB.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130025E0" name="Openable Gate Behavior">
-    <Image path="Openable Gate Behavior 2.png"/>
+  <Object behaviorScriptAddress="0x130025C0" name="BoB Openable Gate" gfxId="0x8018F330">
+    <Image path="Openable Gate BoB.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130025C0" name="HMC Openable Gate" gfxId="0x8017F0C0">
+    <Image path="Openable Gate HMC.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130025E0" name="BoB Openable Gate Manager" subType="0">
+    <Image path="Openable Gate Manager BoB.png"/>
+    <Data type="byte" address="0x8B" mask="0x02" objectOffset="true" isBool="true">Opening</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x130025E0" name="HMC Openable Gate Manager" subType="1">
+    <Image path="Openable Gate Manager HMC.png"/>
     <Data type="byte" address="0x8B" mask="0x02" objectOffset="true" isBool="true">Opening</Data>
   </Object>
   <Object behaviorScriptAddress="0x130025F8" name="Crystal Tap">
@@ -1435,7 +1536,31 @@
     <Image path="BitDW Trap Door.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Tree">
-    <Image path="Tree.png"/>
+    <Image path="Tree Standard.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x80195C84">
+    <Image path="Tree Standard.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x80194604">
+    <Image path="Tree Standard.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x8018CCE4">
+    <Image path="Tree Standard.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x8019257C">
+    <Image path="Tree Standard.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002AA4" name="Pine Tree" gfxId="0x8015D22C">
+    <Image path="Tree Pine.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002AA4" name="Snowy Pine Tree" gfxId="0x80184AB8">
+    <Image path="Tree Pine Snowy.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002AA4" name="Snowy Pine Tree" gfxId="0x801709B4">
+    <Image path="Tree Pine Snowy.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002AA4" name="Palm Tree" gfxId="0x80184864">
+    <Image path="Tree Palm.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002AD0" name="Glow">
     <Image path="Glow.png"/>
@@ -1725,26 +1850,26 @@
   </Object>
   <Object behaviorScriptAddress="0x13003738" name="Water Ring Spawner">
     <Image path="Manta Ring Spawner.png"/>
-    <Data type="int" address="0xF4" objectOffset="true">Num Rings Created</Data>
+    <Data type="int" address="0xF4" objectOffset="true">Next Ring Index</Data>
     <Data type="int" address="0xF8" objectOffset="true">Last Ring Collected</Data>
+    <Data type="int" address="0x1AC" objectOffset="true">Num Rings Collected</Data>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true" invertBool="true">Make Rings</Data>
-    <Data type="int" address="0x1AC" objectOffset="true">Rings Collected</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003750" name="Water Ring (from Jet Stream)">
     <Image path="Manta Ring.png"/>
-    <Data type="int" address="0x110" objectOffset="true">Ring Number</Data>
+    <Data type="int" address="0x110" objectOffset="true">Ring Index</Data>
     <Data type="int" address="0x17C" objectOffset="true">Opaqueness</Data>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Collected</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003798" name="Water Ring (from Manta Ray)">
     <Image path="Manta Ring.png"/>
-    <Data type="int" address="0x110" objectOffset="true">Ring Number</Data>
+    <Data type="int" address="0x110" objectOffset="true">Ring Index</Data>
     <Data type="int" address="0x17C" objectOffset="true">Opaqueness</Data>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Collected</Data>
   </Object>
   <Object behaviorScriptAddress="0x130037E0" name="Manta Ring Manager">
     <Image path="Manta Ring Manager.png"/>
-    <Data type="int" address="0xF4" objectOffset="true">Num Rings Created</Data>
+    <Data type="int" address="0xF4" objectOffset="true">Next Ring Index</Data>
     <Data type="int" address="0xF8" objectOffset="true">Last Ring Collected</Data>
   </Object>
   <Object behaviorScriptAddress="0x130037EC" name="Floating Mine">
@@ -2065,8 +2190,8 @@
   <Object behaviorScriptAddress="0x13004370" name="Manta Ray">
     <Image path="Manta Ray.png"/>
 	<MapImage path="Manta Ray Top.png" rotates="true"/>
+    <Data type="int" address="0x1AC" objectOffset="true">Num Rings Collected</Data>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true" invertBool="true">Make Rings</Data>
-    <Data type="int" address="0x1AC" objectOffset="true">Rings Collected</Data>
   </Object>
   <Object behaviorScriptAddress="0x130043A0" name="Falling Pillar">
     <Image path="Falling Pillar.png"/>
@@ -2431,11 +2556,20 @@
 	<MapImage path="Seesaw Platform BitS Top.png" rotates="true"/>
     <Data type="float" address="0xF4" objectOffset="true">Rotational Speed</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13004B44" name="Revolving Elevator Group">
-    <Image path="Revolving Elevator Group.png"/>
+  <Object behaviorScriptAddress="0x13004B44" name="BitS Revolving Elevator Axle" subType="0">
+    <Image path="Revolving Elevator Axle.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004B44" name="BitDW Revolving Elevator Axle" subType="1">
+    <Image path="Revolving Elevator Axle.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004B6C" name="Revolving Elevator">
-    <Image path="Revolving Elevator.png"/>
+    <Image path="Revolving Elevator BitS.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004B6C" name="BitDW Revolving Elevator" gfxId="0x80184340">
+    <Image path="Revolving Elevator BitDW.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13004B6C" name="BitS Revolving Elevator" gfxId="0x80187F18">
+    <Image path="Revolving Elevator BitS.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004B8C" name="Water Bomb Spawner">
     <Image path="Water Bomb Spawner.png"/>
@@ -2701,7 +2835,11 @@
     <Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
     <Data type="short" address="0x1AC" objectOffset="true">Target Location</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13005354" name="Bird">
+  <Object behaviorScriptAddress="0x13005354" name="Bird (Spawned)" subType="0">
+    <Image path="Bird.png"/>
+	<MapImage path="Bird Top.png" rotates="true"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005354" name="Bird (Spawns Others)" subType="1">
     <Image path="Bird.png"/>
 	<MapImage path="Bird Top.png" rotates="true"/>
   </Object>
@@ -2788,8 +2926,21 @@
   <Object behaviorScriptAddress="0x1300556C" name="Star Marker">
     <Image path="Star Marker.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawned)">
+  <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawns Others w/ Bombs)" subType="0">
     <Image path="Butterfly.png"/>
+    <Data type="int" address="0x108" objectOffset="true">Activation Type</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawned)" subType="1">
+    <Image path="Butterfly.png"/>
+    <Data type="int" address="0x108" objectOffset="true">Activation Type</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawned)" subType="2">
+    <Image path="Butterfly.png"/>
+    <Data type="int" address="0x108" objectOffset="true">Activation Type</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawns Others w/o Bombs)" subType="4">
+    <Image path="Butterfly.png"/>
+    <Data type="int" address="0x108" objectOffset="true">Activation Type</Data>
   </Object>
   <Object behaviorScriptAddress="0x130055DC" name="Bubba">
     <Image path="Bubba.png"/>

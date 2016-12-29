@@ -15,10 +15,12 @@
   <Data type="ushort" address="0x00C26C1C" absoluteAddress="true" isAngle="true">Yaw (Facing)</Data>
   <Data type="ushort" address="0x00C26C2A" absoluteAddress="true" isAngle="true">Yaw (Moving)</Data>
   <Data type="ushort" address="0x00C26C16" absoluteAddress="true" isAngle="true">Yaw (Intended)</Data>
-  <Data type="ushort" address="0x00c26c1e" absoluteAddress="true" isAngle="true">Pitch</Data>
-  <Data type="ushort" address="0x00c26c22" absoluteAddress="true" isAngle="true">Roll</Data>
-  <Data type="ushort" address="0x00c26c26" absoluteAddress="true" isAngle="true">Yaw Velocity</Data>
-  <Data type="ushort" address="0x00c26c20" absoluteAddress="true" isAngle="true">Flying Pull Back</Data>
+  <Data type="short" address="0x00c26c1e" absoluteAddress="true" isAngle="true">Pitch</Data>
+  <Data type="short" address="0x00c26c22" absoluteAddress="true" isAngle="true">Roll</Data>
+  <Data type="short" address="0x00c26c26" absoluteAddress="true" isAngle="true">Yaw Velocity</Data>
+  <Data type="short" address="0x00c26c20" absoluteAddress="true" isAngle="true">Flying Pull Back</Data>
+  <Data type="short" address="0x00c281f0" absoluteAddress="true" isAngle="true">First Person Yaw</Data>
+  <Data type="short" address="0x00c281f2" absoluteAddress="true" isAngle="true">First Person Pitch</Data>
   <Data type="uint" address="0xc26c68" absoluteAddress="true" useHex="true" isObject="true">Interaction Object</Data>
   <Data type="uint" address="0xc26c70" absoluteAddress="true" useHex="true" isObject="true">Using Object</Data>
   <Data type="uint" address="0xc1c8b4" absoluteAddress="true" useHex="true" isObject="true">Stood On Object</Data>

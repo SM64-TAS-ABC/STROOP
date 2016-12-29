@@ -4,7 +4,7 @@
   <Data type="ushort" address="0x8038EEE0">RNG Value</Data>
   <Data special="true" specialType="RngIndex">RNG Index</Data>
   <Data special="true" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
-  <Data special="true" specialType="NumberOfLoadedObjects">Num. Loaded Objs.</Data>
+  <Data special="true" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
   <Data type="ushort" address="0x00C1D150" absoluteAddress="true">Coin Counter</Data>
   <Data type="sbyte" address="0x00C4CE7D" absoluteAddress="true">Red Coin Count</Data>
   <Data type="byte" address="0x00a93c27" absoluteAddress="true">Mission Selected</Data>
