@@ -116,6 +116,7 @@
     <Image path="King Bob-omb.png"/>
 	<MapImage path="King Bob-omb Top.png" rotates="true"/>
     <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="int" address="0x150" objectOffset="true">Phase</Data>
     <Data type="int" address="0x184" objectOffset="true">HP</Data>
     <Data type="int" address="0xFC" objectOffset="true">Num A Presses</Data>
   </Object>
@@ -1070,6 +1071,7 @@
   <Object behaviorScriptAddress="0x13002088" name="Mother Penguin">
     <Image path="Penguin.png"/>
 	<MapImage path="Penguin Top.png" rotates="true"/>
+    <Data type="int" address="0x150" objectOffset="true">Phase</Data>
     <Data type="byte" address="0x93" objectOffset="true">Talking Phase</Data>
   </Object>
   <Object behaviorScriptAddress="0x130020E8" name="Baby Penguin (Real)" subType="0">
@@ -1587,6 +1589,7 @@
   <Object behaviorScriptAddress="0x13002BB8" name="King Whomp">
     <Image path="King Whomp.png"/>
 	<MapImage path="King Whomp Top.png" rotates="true"/>
+    <Data type="int" address="0x150" objectOffset="true">Phase</Data>
     <Data type="int" address="0x184" objectOffset="true">HP</Data>
     <Data type="byte" address="0x17B" objectOffset="true" isBool="true">Falling</Data>
   </Object>
@@ -1634,7 +1637,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13002E3C" name="Wind Particle Spawner">
     <Image path="Wind Particle Spawner.png"/>
-    <Data type="int" address="0x150" objectOffset="true">State 2</Data>
+    <Data type="int" address="0x150" objectOffset="true">Phase</Data>
     <Data type="uint" address="0xC8" objectOffset="true" isAngle="true">Blowing Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002E58" name="Walking Penguin">
