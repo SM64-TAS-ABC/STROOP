@@ -168,7 +168,8 @@
 	<MapImage path="Chuckya Top.png" rotates="true"/>
     <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
     <Data type="int" address="0x9C" objectOffset="true">Tangible</Data>
-    <Data type="int" address="0xFC" objectOffset="true">Stopping Timer</Data>
+    <Data type="int" address="0x150" objectOffset="true">Phase</Data>
+    <Data type="int" address="0xFC" objectOffset="true">Stopping </Data>
     <Data type="int" address="0x178" objectOffset="true">Throwing Phase</Data>
     <Data type="int" address="0x100" objectOffset="true">Num A Presses</Data>
   </Object>
@@ -2325,6 +2326,7 @@
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="ushort" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="int" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0x10B" objectOffset="true" isBool="true">Chase Extension</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
@@ -2333,6 +2335,7 @@
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="ushort" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="int" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0x10B" objectOffset="true" isBool="true">Chase Extension</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
@@ -2341,6 +2344,7 @@
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="ushort" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="int" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0x10B" objectOffset="true" isBool="true">Chase Extension</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
@@ -2349,6 +2353,7 @@
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="ushort" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="int" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0x10B" objectOffset="true" isBool="true">Chase Extension</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
@@ -2357,6 +2362,7 @@
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="ushort" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="int" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0x10B" objectOffset="true" isBool="true">Chase Extension</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
@@ -2365,6 +2371,7 @@
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="ushort" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="int" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0x10B" objectOffset="true" isBool="true">Chase Extension</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
@@ -2373,6 +2380,7 @@
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="ushort" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="int" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0x10B" objectOffset="true" isBool="true">Chase Extension</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
@@ -2381,6 +2389,7 @@
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="ushort" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="int" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0x10B" objectOffset="true" isBool="true">Chase Extension</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
@@ -2389,6 +2398,7 @@
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="ushort" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="int" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0x10B" objectOffset="true" isBool="true">Chase Extension</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
@@ -2397,6 +2407,7 @@
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="ushort" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="int" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0x10B" objectOffset="true" isBool="true">Chase Extension</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
@@ -2405,6 +2416,7 @@
 	<MapImage path="Goomba Top.png" rotates="true"/>
     <Data type="ushort" address="0x102" objectOffset="true" isAngle="true">Target Angle</Data>
     <Data type="int" address="0xFC" objectOffset="true">Countdown</Data>
+    <Data type="byte" address="0x10B" objectOffset="true" isBool="true">Chase Extension</Data>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int" address="0x104" objectOffset="true">Blinking Countdown</Data>
   </Object>
