@@ -14,7 +14,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static float GetRelativePuPosition(float coord, int puCoord)
         {
-            // We find the relative object positon by subtracting the PU starting coordinates from the object
+            // We find the relative object position by subtracting the PU starting coordinates from the object
             return coord - puCoord * PuSize;
         }
 

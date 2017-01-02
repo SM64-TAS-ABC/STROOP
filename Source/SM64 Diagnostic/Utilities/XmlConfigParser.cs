@@ -885,6 +885,49 @@ namespace SM64_Diagnostic.Utilities
             return watchVar;
         }
 
+        public static ActionTable OpenActionTable(string path)
+        {
+            ActionTable actionTable = null;
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ActionTableSchema.xsd", "ActionTableSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                switch(element.Name.ToString())
+                {
+                    case "Default":
+                        uint defaultAfterCloneValue = ParsingUtilities.ParseHex(
+                            element.Attribute(XName.Get("afterCloneValue")).Value);
+                        uint defaultAfterUncloneValue = ParsingUtilities.ParseHex(
+                            element.Attribute(XName.Get("afterUncloneValue")).Value);
+                        actionTable = new ActionTable(defaultAfterCloneValue, defaultAfterUncloneValue);
+                        break;
+
+                    case "Action":
+                        uint actionValue = ParsingUtilities.ParseHex(
+                            element.Attribute(XName.Get("value")).Value);
+                        string actionName = element.Attribute(XName.Get("name")).Value;
+                        uint? afterCloneValue = element.Attribute(XName.Get("afterCloneValue")) != null ?
+                            ParsingUtilities.ParseHex(element.Attribute(XName.Get("afterCloneValue")).Value) : (uint?) null;
+                        uint? afterUncloneValue = element.Attribute(XName.Get("afterUncloneValue")) != null ?
+                            ParsingUtilities.ParseHex(element.Attribute(XName.Get("afterUncloneValue")).Value) : (uint?) null;
+                        actionTable?.Add(new Tuple<uint, string, uint?, uint?>(
+                            actionValue, actionName, afterCloneValue, afterUncloneValue));
+                        break;
+                }
+            }
+
+            return actionTable;
+        }
+
         public static void AddWatchVariableOtherData(WatchVariable watchVar)
         {
             

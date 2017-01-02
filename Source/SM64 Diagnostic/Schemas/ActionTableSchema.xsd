@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ActionTableSchema"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/ActionTableSchema.xsd"
+    xmlns:mstns="http://tempuri.org/ActionTableSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:types="http://tempuri.org/ReusableTypes.xsd"
+>
+  <xs:import namespace="http://tempuri.org/ReusableTypes.xsd" schemaLocation="ReusableTypes.xsd"/>
+  <xs:element name ="MarioActions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Default">
+          <xs:complexType>
+            <xs:attribute name="afterCloneValue" use="optional" type="types:address"/>
+            <xs:attribute name="afterUncloneValue" use="optional" type="types:address"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Action" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="name" use="required" type="xs:string"/>
+            <xs:attribute name="value" use="required" type="types:address"/>
+            <xs:attribute name="afterCloneValue" use="optional" type="types:address"/>
+            <xs:attribute name="afterUncloneValue" use="optional" type="types:address"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

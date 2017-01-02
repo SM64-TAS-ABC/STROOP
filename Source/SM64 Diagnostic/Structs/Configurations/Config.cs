@@ -19,6 +19,7 @@ namespace SM64_Diagnostic.Structs
         public static HudConfig Hud;
         public static DebugConfig Debug;
         public static TriangleOffsetsConfig TriangleOffsets;
+        public static ActionTable MarioActions;
         public static uint LevelAddress;
         public static uint AreaAddress;
         public static uint LoadingPointAddress;

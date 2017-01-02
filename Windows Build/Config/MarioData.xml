@@ -36,6 +36,7 @@
   <Data type="uint" address="0x04" marioOffset="true" isBool="true" mask="0x02">Vanish Cap</Data>
   <Data type="ushort" address="0x00C26CA4" absoluteAddress="true">Cap Timer</Data>
   <Data type="uint" address="0x00C26BFC" absoluteAddress="true" useHex="true">Action</Data>
+  <Data special="true" specialType="ActionDescription"/>
   <Data type="uint" address="0x00C26C00" absoluteAddress="true" useHex="true">Previous Action</Data>
   <Data type="short" address="0x00C26C0A" absoluteAddress="true">Action Phase</Data>
   <Data type="short" address="0x00C26C08" absoluteAddress="true">Action Timer</Data>

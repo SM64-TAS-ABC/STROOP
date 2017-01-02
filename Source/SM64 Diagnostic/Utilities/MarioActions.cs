@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -77,7 +78,9 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.WriteRam(BitConverter.GetBytes(objAddress), marioAddress + Config.Mario.HoldingObjectPointerOffset);
 
             // Set clone action flags
-            success &= stream.WriteRam(BitConverter.GetBytes(0x8000207U), marioAddress + Config.Mario.ActionOffset);
+            uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
+            uint nextAction = Config.MarioActions.GetAfterCloneValue(currentAction);
+            success &= stream.WriteRam(BitConverter.GetBytes(nextAction), marioAddress + Config.Mario.ActionOffset);
 
             stream.Resume();
 
@@ -95,7 +98,9 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.WriteRam(new byte[] { 0x00, 0x00, 0x00, 0x00 }, marioAddress + Config.Mario.HoldingObjectPointerOffset);
 
             // Set clone action flags
-            success &= stream.WriteRam(BitConverter.GetBytes(0x0C400201U), marioAddress + Config.Mario.ActionOffset);
+            uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
+            uint nextAction = Config.MarioActions.GetAfterUncloneValue(currentAction);
+            success &= stream.WriteRam(BitConverter.GetBytes(nextAction), marioAddress + Config.Mario.ActionOffset);
 
             stream.Resume();
 
