@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MarioActions>
-  <Default afterCloneValue="0x00000000" afterUncloneValue="0x00000000"/>
+  <Default afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
   <!--<Action name="Jump" value="0x00000001" afterCloneValue="0x00000000" afterUncloneValue="0x00000000"/>
   <Action name="Run" value="0x00000002" afterCloneValue="0x00000000" />
   <Action name="Walk" value="0x00000003" afterUncloneValue="0x00000000"/>
