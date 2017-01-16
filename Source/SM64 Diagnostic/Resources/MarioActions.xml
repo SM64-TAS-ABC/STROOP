@@ -1,226 +1,228 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MarioActions>
   <Default afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
-  <!--<Action name="Jump" value="0x00000001" afterCloneValue="0x00000000" afterUncloneValue="0x00000000"/>
-  <Action name="Run" value="0x00000002" afterCloneValue="0x00000000" />
-  <Action name="Walk" value="0x00000003" afterUncloneValue="0x00000000"/>
-  <Action name="Swim" value="0x000000FF" />-->
-  <Action name="standing" value="0x0C400201"/>
-  <Action name="start sleeping" value="0x0C400202"/>
-  <Action name="sleeping" value="0x0C000203"/>
-  <Action name="waking up" value="0x0C000204"/>
-  <Action name="panting" value="0x0C400205"/>
-  <Action name="pressing against wall" value="0x0C400209"/>
-  <Action name="coughing" value="0x0C40020A"/>
-  <Action name="shivering" value="0x0C40020B"/>
-  <Action name="first person view" value="0x0C000227"/>
-  <Action name="stop skidding" value="0x0C00023D"/>
-  <Action name="walking/running" value="0x04000440"/>
-  <Action name="turning around (1/2)" value="0x00000443"/>
-  <Action name="turning around (2/2)" value="0x00000444"/>
-  <Action name="skidding" value="0x04000445"/>
-  <Action name="decelerating" value="0x0400044A"/>
-  <Action name="crawling" value="0x04008448"/>
-  <Action name="start crawling" value="0x0C008223"/>
-  <Action name="stop crawling" value="0x0C008224"/>
-  <Action name="punch / breakdance" value="0x00800380"/>
-  <Action name="moving punch" value="0x00800457"/>
-  <Action name="single jump" value="0x03000880"/>
-  <Action name="single jump landing (1/2)" value="0x04000470"/>
-  <Action name="single jump landing (2/2)" value="0x0C000230"/>
-  <Action name="double jump" value="0x03000881"/>
-  <Action name="double jump landing (1/2)" value="0x04000472"/>
-  <Action name="double jump landing (2/2)" value="0x0C000231"/>
-  <Action name="triple jump" value="0x01000882"/>
-  <Action name="triple jump landing (1/2)" value="0x04000478"/>
-  <Action name="triple jump landing (2/2)" value="0x0800023A"/>
-  <Action name="backflip" value="0x01000883"/>
-  <Action name="steep jump" value="0x03000885"/>
-  <Action name="backflip landing (1/2)" value="0x0400047A"/>
-  <Action name="backflip landing (2/2)" value="0x0800022F"/>
-  <Action name="pole jump / wall kick" value="0x03000886"/>
-  <Action name="sideflip" value="0x01000887"/>
-  <Action name="sideflip landing (1/2)" value="0x04000473"/>
-  <Action name="sideflip landing (2/2)" value="0x0C000233"/>
-  <Action name="long jump" value="0x03000888"/>
-  <Action name="long jump landing (1/2)" value="0x00000479"/>
-  <Action name="long jump landing (2/2)" value="0x0800023B"/>
-  <Action name="water jump" value="0x01000889"/>
-  <Action name="freefall" value="0x0100088C"/>
-  <Action name="freefall landing (1/2)" value="0x04000471"/>
-  <Action name="freefall landing (2/2)" value="0x0C000232"/>
-  <Action name="twirling" value="0x108008A4"/>
-  <Action name="twirl landing" value="0x18800238"/>
-  <Action name="ground pound" value="0x008008A9"/>
-  <Action name="ground pound landing" value="0x0080023C"/>
-  <Action name="air hitting wall" value="0x000008A7"/>
-  <Action name="kicking" value="0x018008AC"/>
-  <Action name="special triple jump" value="0x030008AF"/>
-  <Action name="lava boost landing" value="0x08000239"/>
-  <Action name="quicksand jump land" value="0x00000476"/>
-  <Action name="riding owl" value="0x000004A8"/>
-  <Action name="air sitting" value="0x0300088E"/>
-  <Action name="land sitting" value="0x00840452"/>
-  <Action name="stop sitting" value="0x0C00023E"/>
-  <Action name="air dive" value="0x0188088A"/>
-  <Action name="sliding" value="0x008C0453"/>
-  <Action name="ground dive" value="0x00880456"/>
-  <Action name="stop sliding/diving" value="0x00000386"/>
-  <Action name="crouching" value="0x0C008220"/>
-  <Action name="start crouching" value="0x0C008221"/>
-  <Action name="stop crouching" value="0x0C008222"/>
-  <Action name="crouch sliding" value="0x04808459"/>
-  <Action name="forward rollout" value="0x010008A6"/>
-  <Action name="backward rollout" value="0x010008AD"/>
-  <Action name="slide kick" value="0x018008AA"/>
-  <Action name="slide kick sliding" value="0x0080045A"/>
-  <Action name="stop slide kicking" value="0x08000225"/>
-  <Action name="ledge grab" value="0x0800034B"/>
-  <Action name="slow ledge get up (1/2)" value="0x0000054C"/>
-  <Action name="slow ledge get up (2/2)" value="0x0000054D"/>
-  <Action name="drop down onto ledge" value="0x0000054E"/>
-  <Action name="quick ledge get up" value="0x0000054F"/>
-  <Action name="holding pole" value="0x08100340"/>
-  <Action name="short pole grab" value="0x00100341"/>
-  <Action name="long pole grab" value="0x00100342"/>
-  <Action name="pole climb" value="0x00100343"/>
-  <Action name="handstand transition" value="0x00100344"/>
-  <Action name="handstand" value="0x00100345"/>
-  <Action name="handstand jump" value="0x0300088D"/>
-  <Action name="start hanging" value="0x08200348"/>
-  <Action name="hanging" value="0x00200349"/>
-  <Action name="swinging" value="0x0020054A"/>
-  <Action name="riding shell on ground" value="0x20810446"/>
-  <Action name="riding shell in air" value="0x0281089A"/>
-  <Action name="in cannon" value="0x00001371"/>
-  <Action name="cannon shot" value="0x00880898"/>
-  <Action name="start teleporting" value="0x00001336"/>
-  <Action name="stop teleporting" value="0x00001337"/>
-  <Action name="flying triple jump" value="0x03000894"/>
-  <Action name="flying" value="0x10880899"/>
-  <Action name="vertical wind" value="0x1008089C"/>
-  <Action name="deep in quicksand" value="0x0002020D"/>
-  <Action name="shockwave bouncing" value="0x00020226"/>
-  <Action name="shocked" value="0x00020338"/>
-  <Action name="squished" value="0x00020339"/>
-  <Action name="head  stuck in ground" value="0x0002033A"/>
-  <Action name="butt stuck in ground" value="0x0002033B"/>
-  <Action name="feet stuck in ground" value="0x0002033C"/>
-  <Action name="grabbed / heaved" value="0x00020370"/>
-  <Action name="twirling in tornado" value="0x10020372"/>
-  <Action name="burning on ground" value="0x00020449"/>
-  <Action name="hard backward KB" value="0x00020460"/>
-  <Action name="hard forward KB" value="0x00020461"/>
-  <Action name="medium backward KB" value="0x00020462"/>
-  <Action name="medium forward KB" value="0x00020463"/>
-  <Action name="soft backward KB" value="0x00020464"/>
-  <Action name="soft forward KB" value="0x00020465"/>
-  <Action name="land bonk" value="0x00020466"/>
-  <Action name="death exit landing" value="0x00020467"/>
-  <Action name="backward air KB" value="0x010208B0"/>
-  <Action name="forward air KB" value="0x010208B1"/>
-  <Action name="forward death air" value="0x010208B2"/>
-  <Action name="backward death air" value="0x010208B3"/>
-  <Action name="fire bounce" value="0x010208B4"/>
-  <Action name="fire freefall" value="0x010208B5"/>
-  <Action name="soft bonk / let go" value="0x010208B6"/>
-  <Action name="lava boost" value="0x010208B7"/>
-  <Action name="blown away" value="0x010208B8"/>
-  <Action name="thrown" value="0x010208BD"/>
-  <Action name="heaved" value="0x010208BE"/>
-  <Action name="standing death" value="0x00021311"/>
-  <Action name="quicksand death" value="0x00021312"/>
-  <Action name="electrocution" value="0x00021313"/>
-  <Action name="suffocation" value="0x00021314"/>
-  <Action name="death on stomach" value="0x00021315"/>
-  <Action name="death on back" value="0x00021316"/>
-  <Action name="eaten by bubba" value="0x00021317"/>
-  <Action name="sucked into whirlpool" value="0x300222E3"/>
-  <Action name="in water" value="0x380022C0"/>
-  <Action name="water action end" value="0x300022C2"/>
-  <Action name="drowning" value="0x300032C4"/>
-  <Action name="water backward KB" value="0x300222C5"/>
-  <Action name="water forward KB" value="0x300222C6"/>
-  <Action name="water death" value="0x300032C7"/>
-  <Action name="swim (1/2)" value="0x300024D0"/>
-  <Action name="swim (2/2)" value="0x300024D1"/>
-  <Action name="flutterkick" value="0x300024D2"/>
-  <Action name="water grab" value="0x300024E1"/>
-  <Action name="water plunge" value="0x300022E2"/>
-  <Action name="metal water standing" value="0x080042F0"/>
-  <Action name="metal water walking" value="0x000044F2"/>
-  <Action name="metal water falling" value="0x000042F4"/>
-  <Action name="metal water fall landing" value="0x000042F6"/>
-  <Action name="metal water jump" value="0x000044F8"/>
-  <Action name="metal water jump landing" value="0x000044FA"/>
-  <Action name="&quot;standing" value="0x08000207"/>
-  <Action name="heavy standing" value="0x08000208"/>
-  <Action name="grab" value="0x00000383"/>
-  <Action name="&quot;stop sliding" value="0x00000385"/>
-  <Action name="placing down" value="0x00000387"/>
-  <Action name="grabbing Bowser" value="0x00000390"/>
-  <Action name="holding Bowser" value="0x00000391"/>
-  <Action name="releasing Bowser" value="0x00000392"/>
-  <Action name="&quot;walking/running" value="0x00000442"/>
-  <Action name="&quot;decelerating" value="0x0000044B"/>
-  <Action name="&quot;jump" value="0x030008A0"/>
-  <Action name="&quot;jump landing (1/2)" value="0x00000474"/>
-  <Action name="&quot;jump landing (2/2)" value="0x08000234"/>
-  <Action name="&quot;freefall" value="0x010008A1"/>
-  <Action name="&quot;freefall landing (1/2)" value="0x00000475"/>
-  <Action name="&quot;freefall landing (2/2)" value="0x08000235"/>
-  <Action name="&quot;air sitting" value="0x010008A2"/>
-  <Action name="&quot;land sitting" value="0x00840454"/>
-  <Action name="&quot;stop sitting" value="0x0800043F"/>
-  <Action name="&quot;sliding" value="0x008C0455"/>
-  <Action name="ground throw" value="0x80000588"/>
-  <Action name="air throw" value="0x830008AB"/>
-  <Action name="air throw landing" value="0x80000A36"/>
-  <Action name="heavy walking" value="0x00000447"/>
-  <Action name="heavy throw" value="0x80000589"/>
-  <Action name="crazy box hopping" value="0x000008AE"/>
-  <Action name="water shell swimming" value="0x300024D6"/>
-  <Action name="water throw" value="0x300024E0"/>
-  <Action name="&quot;in water" value="0x380022C1"/>
-  <Action name="&quot;water action end" value="0x300022C3"/>
-  <Action name="&quot;swim (1/2)" value="0x300024D3"/>
-  <Action name="&quot;swim (2/2)" value="0x300024D4"/>
-  <Action name="&quot;flutterkick" value="0x300024D5"/>
-  <Action name="&quot;water jump" value="0x010008A3"/>
-  <Action name="&quot;quicksand jump land" value="0x00000477"/>
-  <Action name="disappeared" value="0x00001300"/>
-  <Action name="intro cutscene" value="0x04001301"/>
-  <Action name="exiting star ground" value="0x00001302"/>
-  <Action name="star water" value="0x00001303"/>
-  <Action name="reading text (door)" value="0x20001305"/>
-  <Action name="text / cutscene" value="0x20001306"/>
-  <Action name="non-exiting star ground" value="0x00001307"/>
-  <Action name="reading text (sign)" value="0x00001308"/>
-  <Action name="waiting for text" value="0x0000130A"/>
-  <Action name="credits" value="0x00001319"/>
-  <Action name="waving" value="0x0000131A"/>
-  <Action name="pulling door" value="0x00001320"/>
-  <Action name="pushing door" value="0x00001321"/>
-  <Action name="appearing from door" value="0x00001322"/>
-  <Action name="spinning enter landing" value="0x00001325"/>
-  <Action name="star exit landing" value="0x00001327"/>
-  <Action name="unlocking key door" value="0x0000132E"/>
-  <Action name="unlocking door" value="0x0000132F"/>
-  <Action name="entering star door" value="0x00001331"/>
-  <Action name="neutral enter landing" value="0x00001333"/>
-  <Action name="putting on cap" value="0x0000133D"/>
-  <Action name="star air" value="0x00001904"/>
-  <Action name="grand star cutscene" value="0x00001909"/>
-  <Action name="Peach cutscene" value="0x00001918"/>
-  <Action name="exit warp pipe" value="0x00001923"/>
-  <Action name="spinning enter" value="0x00001924"/>
-  <Action name="star exit sideways" value="0x00001926"/>
-  <Action name="death exit sideways" value="0x00001928"/>
-  <Action name="death exit downwards" value="0x0000192A"/>
-  <Action name="star exit upwards" value="0x0000192B"/>
-  <Action name="death exit upwards" value="0x0000192C"/>
-  <Action name="star exit downwards" value="0x0000192D"/>
-  <Action name="neutral enter" value="0x00001932"/>
-  <Action name="BBH enter jump" value="0x00001934"/>
-  <Action name="BBH enter spinning" value="0x00001535"/>
+  <Action name="standing" value="0x0C400201" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="start sleeping" value="0x0C400202" afterCloneValue="0x08000207" afterUncloneValue="0x0C400202"/>
+  <Action name="sleeping" value="0x0C000203" afterCloneValue="0x08000207" afterUncloneValue="0x0C000203"/>
+  <Action name="waking up" value="0x0C000204" afterCloneValue="0x08000207" afterUncloneValue="0x0C000204"/>
+  <Action name="panting" value="0x0C400205" afterCloneValue="0x08000207" afterUncloneValue="0x0C400205"/>
+  <Action name="pressing against wall" value="0x0C400209" afterCloneValue="0x08000207" afterUncloneValue="0x0C400209"/>
+  <Action name="coughing" value="0x0C40020A" afterCloneValue="0x08000207" afterUncloneValue="0x0C40020A"/>
+  <Action name="shivering" value="0x0C40020B" afterCloneValue="0x08000207" afterUncloneValue="0x0C40020B"/>
+  <Action name="first person view" value="0x0C000227" afterCloneValue="0x08000207" afterUncloneValue="0x0C000227"/>
+  <Action name="stop skidding" value="0x0C00023D" afterCloneValue="0x08000207" afterUncloneValue="0x0C00023D"/>
+  <Action name="walking/running" value="0x04000440" afterCloneValue="0x08000207" afterUncloneValue="0x04000440"/>
+  <Action name="turning around (1/2)" value="0x00000443" afterCloneValue="0x08000207" afterUncloneValue="0x00000443"/>
+  <Action name="turning around (2/2)" value="0x00000444" afterCloneValue="0x08000207" afterUncloneValue="0x00000444"/>
+  <Action name="skidding" value="0x04000445" afterCloneValue="0x08000207" afterUncloneValue="0x04000445"/>
+  <Action name="decelerating" value="0x0400044A" afterCloneValue="0x08000207" afterUncloneValue="0x0400044A"/>
+  <Action name="crawling" value="0x04008448" afterCloneValue="0x08000207" afterUncloneValue="0x04008448"/>
+  <Action name="start crawling" value="0x0C008223" afterCloneValue="0x08000207" afterUncloneValue="0x0C008223"/>
+  <Action name="stop crawling" value="0x0C008224" afterCloneValue="0x08000207" afterUncloneValue="0x0C008224"/>
+  <Action name="punch / breakdance" value="0x00800380" afterCloneValue="0x08000207" afterUncloneValue="0x00800380"/>
+  <Action name="moving punch" value="0x00800457" afterCloneValue="0x08000207" afterUncloneValue="0x00800457"/>
+  <Action name="single jump" value="0x03000880" afterCloneValue="0x010008A1" afterUncloneValue="0x03000880"/>
+  <Action name="single jump landing (1/2)" value="0x04000470" afterCloneValue="0x08000207" afterUncloneValue="0x04000470"/>
+  <Action name="single jump landing (2/2)" value="0x0C000230" afterCloneValue="0x08000207" afterUncloneValue="0x0C000230"/>
+  <Action name="double jump" value="0x03000881" afterCloneValue="0x010008A1" afterUncloneValue="0x03000881"/>
+  <Action name="double jump landing (1/2)" value="0x04000472" afterCloneValue="0x08000207" afterUncloneValue="0x04000472"/>
+  <Action name="double jump landing (2/2)" value="0x0C000231" afterCloneValue="0x08000207" afterUncloneValue="0x0C000231"/>
+  <Action name="triple jump" value="0x01000882" afterCloneValue="0x010008A1" afterUncloneValue="0x01000882"/>
+  <Action name="triple jump landing (1/2)" value="0x04000478" afterCloneValue="0x08000207" afterUncloneValue="0x04000478"/>
+  <Action name="triple jump landing (2/2)" value="0x0800023A" afterCloneValue="0x08000207" afterUncloneValue="0x0800023A"/>
+  <Action name="backflip" value="0x01000883" afterCloneValue="0x010008A1" afterUncloneValue="0x01000883"/>
+  <Action name="steep jump" value="0x03000885" afterCloneValue="0x010008A1" afterUncloneValue="0x03000885"/>
+  <Action name="backflip landing (1/2)" value="0x0400047A" afterCloneValue="0x08000207" afterUncloneValue="0x0400047A"/>
+  <Action name="backflip landing (2/2)" value="0x0800022F" afterCloneValue="0x08000207" afterUncloneValue="0x0800022F"/>
+  <Action name="pole jump / wall kick" value="0x03000886" afterCloneValue="0x010008A1" afterUncloneValue="0x03000886"/>
+  <Action name="sideflip" value="0x01000887" afterCloneValue="0x010008A1" afterUncloneValue="0x01000887"/>
+  <Action name="sideflip landing (1/2)" value="0x04000473" afterCloneValue="0x08000207" afterUncloneValue="0x04000473"/>
+  <Action name="sideflip landing (2/2)" value="0x0C000233" afterCloneValue="0x08000207" afterUncloneValue="0x0C000233"/>
+  <Action name="long jump" value="0x03000888" afterCloneValue="0x010008A1" afterUncloneValue="0x03000888"/>
+  <Action name="long jump landing (1/2)" value="0x00000479" afterCloneValue="0x08000207" afterUncloneValue="0x00000479"/>
+  <Action name="long jump landing (2/2)" value="0x0800023B" afterCloneValue="0x08000207" afterUncloneValue="0x0800023B"/>
+  <Action name="water jump" value="0x01000889" afterCloneValue="0x010008A1" afterUncloneValue="0x01000889"/>
+  <Action name="freefall" value="0x0100088C" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C"/>
+  <Action name="freefall landing (1/2)" value="0x04000471" afterCloneValue="0x08000207" afterUncloneValue="0x04000471"/>
+  <Action name="freefall landing (2/2)" value="0x0C000232" afterCloneValue="0x08000207" afterUncloneValue="0x0C000232"/>
+  <Action name="twirling" value="0x108008A4" afterCloneValue="0x010008A1" afterUncloneValue="0x108008A4"/>
+  <Action name="twirl landing" value="0x18800238" afterCloneValue="0x08000207" afterUncloneValue="0x18800238"/>
+  <Action name="ground pound" value="0x008008A9" afterCloneValue="0x010008A1" afterUncloneValue="0x008008A9"/>
+  <Action name="ground pound landing" value="0x0080023C" afterCloneValue="0x08000207" afterUncloneValue="0x0080023C"/>
+  <Action name="air hitting wall" value="0x000008A7" afterCloneValue="0x010008A1" afterUncloneValue="0x000008A7"/>
+  <Action name="kicking" value="0x018008AC" afterCloneValue="0x010008A1" afterUncloneValue="0x018008AC"/>
+  <Action name="special triple jump" value="0x030008AF" afterCloneValue="0x010008A1" afterUncloneValue="0x030008AF"/>
+  <Action name="lava boost landing" value="0x08000239" afterCloneValue="0x08000207" afterUncloneValue="0x08000239"/>
+  <Action name="quicksand jump land" value="0x00000476" afterCloneValue="0x08000207" afterUncloneValue="0x00000476"/>
+  <Action name="riding owl" value="0x000004A8" afterCloneValue="0x010008A1" afterUncloneValue="0x000004A8"/>
+  <Action name="air sitting" value="0x0300088E" afterCloneValue="0x010008A1" afterUncloneValue="0x0300088E"/>
+  <Action name="land sitting" value="0x00840452" afterCloneValue="0x08000207" afterUncloneValue="0x00840452"/>
+  <Action name="stop sitting" value="0x0C00023E" afterCloneValue="0x08000207" afterUncloneValue="0x0C00023E"/>
+  <Action name="air dive" value="0x0188088A" afterCloneValue="0x010008A1" afterUncloneValue="0x0188088A"/>
+  <Action name="sliding" value="0x008C0453" afterCloneValue="0x08000207" afterUncloneValue="0x008C0453"/>
+  <Action name="ground dive" value="0x00880456" afterCloneValue="0x08000207" afterUncloneValue="0x00880456"/>
+  <Action name="stop sliding/diving" value="0x00000386" afterCloneValue="0x08000207" afterUncloneValue="0x00000386"/>
+  <Action name="crouching" value="0x0C008220" afterCloneValue="0x08000207" afterUncloneValue="0x0C008220"/>
+  <Action name="start crouching" value="0x0C008221" afterCloneValue="0x08000207" afterUncloneValue="0x0C008221"/>
+  <Action name="stop crouching" value="0x0C008222" afterCloneValue="0x08000207" afterUncloneValue="0x0C008222"/>
+  <Action name="crouch sliding" value="0x04808459" afterCloneValue="0x08000207" afterUncloneValue="0x04808459"/>
+  <Action name="forward rollout" value="0x010008A6" afterCloneValue="0x010008A1" afterUncloneValue="0x010008A6"/>
+  <Action name="backward rollout" value="0x010008AD" afterCloneValue="0x010008A1" afterUncloneValue="0x010008AD"/>
+  <Action name="slide kick" value="0x018008AA" afterCloneValue="0x010008A1" afterUncloneValue="0x018008AA"/>
+  <Action name="slide kick sliding" value="0x0080045A" afterCloneValue="0x08000207" afterUncloneValue="0x0080045A"/>
+  <Action name="stop slide kicking" value="0x08000225" afterCloneValue="0x08000207" afterUncloneValue="0x08000225"/>
+  <Action name="ledge grab" value="0x0800034B" afterCloneValue="0x08000207" afterUncloneValue="0x0800034B"/>
+  <Action name="slow ledge get up (1/2)" value="0x0000054C" afterCloneValue="0x08000207" afterUncloneValue="0x0000054C"/>
+  <Action name="slow ledge get up (2/2)" value="0x0000054D" afterCloneValue="0x08000207" afterUncloneValue="0x0000054D"/>
+  <Action name="drop down onto ledge" value="0x0000054E" afterCloneValue="0x08000207" afterUncloneValue="0x0000054E"/>
+  <Action name="quick ledge get up" value="0x0000054F" afterCloneValue="0x08000207" afterUncloneValue="0x0000054F"/>
+  <Action name="holding pole" value="0x08100340" afterCloneValue="0x010008A1" afterUncloneValue="0x08100340"/>
+  <Action name="short pole grab" value="0x00100341" afterCloneValue="0x010008A1" afterUncloneValue="0x00100341"/>
+  <Action name="long pole grab" value="0x00100342" afterCloneValue="0x010008A1" afterUncloneValue="0x00100342"/>
+  <Action name="pole climb" value="0x00100343" afterCloneValue="0x010008A1" afterUncloneValue="0x00100343"/>
+  <Action name="handstand transition" value="0x00100344" afterCloneValue="0x010008A1" afterUncloneValue="0x00100344"/>
+  <Action name="handstand" value="0x00100345" afterCloneValue="0x010008A1" afterUncloneValue="0x00100345"/>
+  <Action name="handstand jump" value="0x0300088D" afterCloneValue="0x010008A1" afterUncloneValue="0x0300088D"/>
+  <Action name="start hanging" value="0x08200348" afterCloneValue="0x010008A1" afterUncloneValue="0x08200348"/>
+  <Action name="hanging" value="0x00200349" afterCloneValue="0x010008A1" afterUncloneValue="0x00200349"/>
+  <Action name="swinging" value="0x0020054A" afterCloneValue="0x010008A1" afterUncloneValue="0x0020054A"/>
+  <Action name="riding shell on ground" value="0x20810446" afterCloneValue="0x08000207" afterUncloneValue="0x20810446"/>
+  <Action name="riding shell in air" value="0x0281089A" afterCloneValue="0x010008A1" afterUncloneValue="0x0281089A"/>
+  <Action name="in cannon" value="0x00001371" afterCloneValue="0x08000207" afterUncloneValue="0x00001371"/>
+  <Action name="cannon shot" value="0x00880898" afterCloneValue="0x010008A1" afterUncloneValue="0x00880898"/>
+  <Action name="start teleporting" value="0x00001336" afterCloneValue="0x08000207" afterUncloneValue="0x00001336"/>
+  <Action name="stop teleporting" value="0x00001337" afterCloneValue="0x08000207" afterUncloneValue="0x00001337"/>
+  <Action name="flying triple jump" value="0x03000894" afterCloneValue="0x010008A1" afterUncloneValue="0x03000894"/>
+  <Action name="flying" value="0x10880899" afterCloneValue="0x010008A1" afterUncloneValue="0x10880899"/>
+  <Action name="vertical wind" value="0x1008089C" afterCloneValue="0x010008A1" afterUncloneValue="0x1008089C"/>
+  <Action name="deep in quicksand" value="0x0002020D" afterCloneValue="0x08000207" afterUncloneValue="0x0002020D"/>
+  <Action name="shockwave bouncing" value="0x00020226" afterCloneValue="0x010008A1" afterUncloneValue="0x00020226"/>
+  <Action name="shocked" value="0x00020338" afterCloneValue="0x08000207" afterUncloneValue="0x00020338"/>
+  <Action name="squished" value="0x00020339" afterCloneValue="0x08000207" afterUncloneValue="0x00020339"/>
+  <Action name="head  stuck in ground" value="0x0002033A" afterCloneValue="0x08000207" afterUncloneValue="0x0002033A"/>
+  <Action name="butt stuck in ground" value="0x0002033B" afterCloneValue="0x08000207" afterUncloneValue="0x0002033B"/>
+  <Action name="feet stuck in ground" value="0x0002033C" afterCloneValue="0x08000207" afterUncloneValue="0x0002033C"/>
+  <Action name="grabbed / heaved" value="0x00020370" afterCloneValue="0x010008A1" afterUncloneValue="0x00020370"/>
+  <Action name="twirling in tornado" value="0x10020372" afterCloneValue="0x010008A1" afterUncloneValue="0x10020372"/>
+  <Action name="burning on ground" value="0x00020449" afterCloneValue="0x08000207" afterUncloneValue="0x00020449"/>
+  <Action name="hard backward KB" value="0x00020460" afterCloneValue="0x08000207" afterUncloneValue="0x00020460"/>
+  <Action name="hard forward KB" value="0x00020461" afterCloneValue="0x08000207" afterUncloneValue="0x00020461"/>
+  <Action name="medium backward KB" value="0x00020462" afterCloneValue="0x08000207" afterUncloneValue="0x00020462"/>
+  <Action name="medium forward KB" value="0x00020463" afterCloneValue="0x08000207" afterUncloneValue="0x00020463"/>
+  <Action name="soft backward KB" value="0x00020464" afterCloneValue="0x08000207" afterUncloneValue="0x00020464"/>
+  <Action name="soft forward KB" value="0x00020465" afterCloneValue="0x08000207" afterUncloneValue="0x00020465"/>
+  <Action name="land bonk" value="0x00020466" afterCloneValue="0x08000207" afterUncloneValue="0x00020466"/>
+  <Action name="death exit landing" value="0x00020467" afterCloneValue="0x08000207" afterUncloneValue="0x00020467"/>
+  <Action name="backward air KB" value="0x010208B0" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B0"/>
+  <Action name="forward air KB" value="0x010208B1" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B1"/>
+  <Action name="forward death air" value="0x010208B2" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B2"/>
+  <Action name="backward death air" value="0x010208B3" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B3"/>
+  <Action name="fire bounce" value="0x010208B4" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B4"/>
+  <Action name="fire freefall" value="0x010208B5" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B5"/>
+  <Action name="soft bonk / let go" value="0x010208B6" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B6"/>
+  <Action name="lava boost" value="0x010208B7" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B7"/>
+  <Action name="blown away" value="0x010208B8" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B8"/>
+  <Action name="thrown" value="0x010208BD" afterCloneValue="0x010008A1" afterUncloneValue="0x010208BD"/>
+  <Action name="heaved" value="0x010208BE" afterCloneValue="0x010008A1" afterUncloneValue="0x010208BE"/>
+  <Action name="standing death" value="0x00021311" afterCloneValue="0x08000207" afterUncloneValue="0x00021311"/>
+  <Action name="quicksand death" value="0x00021312" afterCloneValue="0x08000207" afterUncloneValue="0x00021312"/>
+  <Action name="electrocution" value="0x00021313" afterCloneValue="0x08000207" afterUncloneValue="0x00021313"/>
+  <Action name="suffocation" value="0x00021314" afterCloneValue="0x08000207" afterUncloneValue="0x00021314"/>
+  <Action name="death on stomach" value="0x00021315" afterCloneValue="0x08000207" afterUncloneValue="0x00021315"/>
+  <Action name="death on back" value="0x00021316" afterCloneValue="0x08000207" afterUncloneValue="0x00021316"/>
+  <Action name="eaten by bubba" value="0x00021317" afterCloneValue="0x380022C1" afterUncloneValue="0x00021317"/>
+  <Action name="sucked into whirlpool" value="0x300222E3" afterCloneValue="0x380022C1" afterUncloneValue="0x300222E3"/>
+  <Action name="in water" value="0x380022C0" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0"/>
+  <Action name="water action end" value="0x300022C2" afterCloneValue="0x380022C1" afterUncloneValue="0x300022C2"/>
+  <Action name="drowning" value="0x300032C4" afterCloneValue="0x380022C1" afterUncloneValue="0x300032C4"/>
+  <Action name="water backward KB" value="0x300222C5" afterCloneValue="0x380022C1" afterUncloneValue="0x300222C5"/>
+  <Action name="water forward KB" value="0x300222C6" afterCloneValue="0x380022C1" afterUncloneValue="0x300222C6"/>
+  <Action name="water death" value="0x300032C7" afterCloneValue="0x380022C1" afterUncloneValue="0x300032C7"/>
+  <Action name="swim (1/2)" value="0x300024D0" afterCloneValue="0x380022C1" afterUncloneValue="0x300024D0"/>
+  <Action name="swim (2/2)" value="0x300024D1" afterCloneValue="0x380022C1" afterUncloneValue="0x300024D1"/>
+  <Action name="flutterkick" value="0x300024D2" afterCloneValue="0x380022C1" afterUncloneValue="0x300024D2"/>
+  <Action name="water grab" value="0x300024E1" afterCloneValue="0x380022C1" afterUncloneValue="0x300024E1"/>
+  <Action name="water plunge" value="0x300022E2" afterCloneValue="0x380022C1" afterUncloneValue="0x300022E2"/>
+  <Action name="metal water standing" value="0x080042F0" afterCloneValue="0x080042F1" afterUncloneValue="0x080042F0"/>
+  <Action name="metal water walking" value="0x000044F2" afterCloneValue="0x080042F1" afterUncloneValue="0x000044F2"/>
+  <Action name="metal water falling" value="0x000042F4" afterCloneValue="0x000042F5" afterUncloneValue="0x000042F4"/>
+  <Action name="metal water fall landing" value="0x000042F6" afterCloneValue="0x080042F1" afterUncloneValue="0x000042F6"/>
+  <Action name="metal water jump" value="0x000044F8" afterCloneValue="0x000042F5" afterUncloneValue="0x000044F8"/>
+  <Action name="metal water jump landing" value="0x000044FA" afterCloneValue="0x080042F1" afterUncloneValue="0x000044FA"/>
+  <Action name="&quot;standing" value="0x08000207" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="heavy standing" value="0x08000208" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="grab" value="0x00000383" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="&quot;stop sliding" value="0x00000385" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="placing down" value="0x00000387" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="grabbing Bowser" value="0x00000390" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="holding Bowser" value="0x00000391" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="releasing Bowser" value="0x00000392" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="&quot;walking/running" value="0x00000442" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="&quot;decelerating" value="0x0000044B" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="&quot;jump" value="0x030008A0" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C"/>
+  <Action name="&quot;jump landing (1/2)" value="0x00000474" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="&quot;jump landing (2/2)" value="0x08000234" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="&quot;freefall" value="0x010008A1" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C"/>
+  <Action name="&quot;freefall landing (1/2)" value="0x00000475" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="&quot;freefall landing (2/2)" value="0x08000235" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="&quot;air sitting" value="0x010008A2" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C"/>
+  <Action name="&quot;land sitting" value="0x00840454" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="&quot;stop sitting" value="0x0800043F" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="&quot;sliding" value="0x008C0455" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="ground throw" value="0x80000588" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="air throw" value="0x830008AB" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C"/>
+  <Action name="air throw landing" value="0x80000A36" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="&quot;quicksand jump land" value="0x00000477" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="heavy walking" value="0x00000447" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="heavy throw" value="0x80000589" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Action name="crazy box hopping" value="0x000008AE" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C"/>
+  <Action name="water shell swimming" value="0x300024D6" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0"/>
+  <Action name="water throw" value="0x300024E0" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0"/>
+  <Action name="&quot;in water" value="0x380022C1" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0"/>
+  <Action name="&quot;water action end" value="0x300022C3" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0"/>
+  <Action name="&quot;swim (1/2)" value="0x300024D3" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0"/>
+  <Action name="&quot;swim (2/2)" value="0x300024D4" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0"/>
+  <Action name="&quot;flutterkick" value="0x300024D5" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0"/>
+  <Action name="&quot;water jump" value="0x010008A3" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0"/>
+  <Action name="&quot;metal water standing" value="0x080042F1" afterCloneValue="0x080042F1" afterUncloneValue="0x080042F0"/>
+  <Action name="&quot;metal water walking" value="0x000044F3" afterCloneValue="0x080042F1" afterUncloneValue="0x000044F2"/>
+  <Action name="&quot;metal water falling" value="0x000042F5" afterCloneValue="0x000042F5" afterUncloneValue="0x000042F4"/>
+  <Action name="&quot;metal water fall landing" value="0x000042F7" afterCloneValue="0x080042F1" afterUncloneValue="0x000042F6"/>
+  <Action name="&quot;metal water jump" value="0x000044F9" afterCloneValue="0x000042F5" afterUncloneValue="0x000044F8"/>
+  <Action name="&quot;metal water jump landing" value="0x000044FB" afterCloneValue="0x080042F1" afterUncloneValue="0x000044FA"/>
+  <Action name="disappeared" value="0x00001300" afterCloneValue="0x08000207" afterUncloneValue="0x00001300"/>
+  <Action name="intro cutscene" value="0x04001301" afterCloneValue="0x08000207" afterUncloneValue="0x04001301"/>
+  <Action name="exiting star ground" value="0x00001302" afterCloneValue="0x08000207" afterUncloneValue="0x00001302"/>
+  <Action name="star water" value="0x00001303" afterCloneValue="0x380022C1" afterUncloneValue="0x00001303"/>
+  <Action name="reading text (door)" value="0x20001305" afterCloneValue="0x08000207" afterUncloneValue="0x20001305"/>
+  <Action name="text / cutscene" value="0x20001306" afterCloneValue="0x08000207" afterUncloneValue="0x20001306"/>
+  <Action name="non-exiting star ground" value="0x00001307" afterCloneValue="0x08000207" afterUncloneValue="0x00001307"/>
+  <Action name="reading text (sign)" value="0x00001308" afterCloneValue="0x08000207" afterUncloneValue="0x00001308"/>
+  <Action name="waiting for text" value="0x0000130A" afterCloneValue="0x08000207" afterUncloneValue="0x0000130A"/>
+  <Action name="credits" value="0x00001319" afterCloneValue="0x08000207" afterUncloneValue="0x00001319"/>
+  <Action name="waving" value="0x0000131A" afterCloneValue="0x08000207" afterUncloneValue="0x0000131A"/>
+  <Action name="pulling door" value="0x00001320" afterCloneValue="0x08000207" afterUncloneValue="0x00001320"/>
+  <Action name="pushing door" value="0x00001321" afterCloneValue="0x08000207" afterUncloneValue="0x00001321"/>
+  <Action name="appearing from door" value="0x00001322" afterCloneValue="0x08000207" afterUncloneValue="0x00001322"/>
+  <Action name="spinning enter landing" value="0x00001325" afterCloneValue="0x08000207" afterUncloneValue="0x00001325"/>
+  <Action name="star exit landing" value="0x00001327" afterCloneValue="0x08000207" afterUncloneValue="0x00001327"/>
+  <Action name="unlocking key door" value="0x0000132E" afterCloneValue="0x08000207" afterUncloneValue="0x0000132E"/>
+  <Action name="unlocking door" value="0x0000132F" afterCloneValue="0x08000207" afterUncloneValue="0x0000132F"/>
+  <Action name="entering star door" value="0x00001331" afterCloneValue="0x08000207" afterUncloneValue="0x00001331"/>
+  <Action name="neutral enter landing" value="0x00001333" afterCloneValue="0x08000207" afterUncloneValue="0x00001333"/>
+  <Action name="putting on cap" value="0x0000133D" afterCloneValue="0x08000207" afterUncloneValue="0x0000133D"/>
+  <Action name="star air" value="0x00001904" afterCloneValue="0x010008A1" afterUncloneValue="0x00001904"/>
+  <Action name="grand star cutscene" value="0x00001909" afterCloneValue="0x08000207" afterUncloneValue="0x00001909"/>
+  <Action name="Peach cutscene" value="0x00001918" afterCloneValue="0x08000207" afterUncloneValue="0x00001918"/>
+  <Action name="exit warp pipe" value="0x00001923" afterCloneValue="0x010008A1" afterUncloneValue="0x00001923"/>
+  <Action name="spinning enter" value="0x00001924" afterCloneValue="0x010008A1" afterUncloneValue="0x00001924"/>
+  <Action name="star exit sideways" value="0x00001926" afterCloneValue="0x010008A1" afterUncloneValue="0x00001926"/>
+  <Action name="death exit sideways" value="0x00001928" afterCloneValue="0x010008A1" afterUncloneValue="0x00001928"/>
+  <Action name="death exit downwards" value="0x0000192A" afterCloneValue="0x010008A1" afterUncloneValue="0x0000192A"/>
+  <Action name="star exit upwards" value="0x0000192B" afterCloneValue="0x010008A1" afterUncloneValue="0x0000192B"/>
+  <Action name="death exit upwards" value="0x0000192C" afterCloneValue="0x010008A1" afterUncloneValue="0x0000192C"/>
+  <Action name="star exit downwards" value="0x0000192D" afterCloneValue="0x010008A1" afterUncloneValue="0x0000192D"/>
+  <Action name="neutral enter" value="0x00001932" afterCloneValue="0x010008A1" afterUncloneValue="0x00001932"/>
+  <Action name="BBH enter jump" value="0x00001934" afterCloneValue="0x010008A1" afterUncloneValue="0x00001934"/>
+  <Action name="BBH enter spinning" value="0x00001535" afterCloneValue="0x010008A1" afterUncloneValue="0x00001535"/>
 </MarioActions>
