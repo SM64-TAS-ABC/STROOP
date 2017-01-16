@@ -532,6 +532,9 @@
     <Data type="float" address="0xA4" objectOffset="true">Height</Data>
     <Data type="float" address="0x168" objectOffset="true">Min Height</Data>
   </Object>
+  <Object behaviorScriptAddress="0x13000C04" name="Falling Block">
+    <Image path="Falling Block WF.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x13000C04" name="WF Falling Block" gfxId="0x80194BD4">
     <Image path="Falling Block WF.png"/>
   </Object>
@@ -679,12 +682,14 @@
   </Object>
   <Object behaviorScriptAddress="0x13001124" name="Flame">
     <Image path="Orange Flame.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13001168" name="Lava Bubble Spawner">
-    <Image path="Lava Bubble Spawner.png"/>
+  <Object behaviorScriptAddress="0x13001168" name="Orange Podoboo Spawner">
+    <Image path="Podoboo Orange Spawner.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13001184" name="Lava Bubble">
-    <Image path="Lava Bubble.png"/>
+  <Object behaviorScriptAddress="0x13001184" name="Orange Podoboo Flame">
+    <Image path="Orange Flame.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x130011D0" name="Shockwave">
     <Image path="Shockwave.png"/>
@@ -874,10 +879,10 @@
     <Image path="Blue Falling Flame.png"/>
     <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13001A0C" name="Blue Lava Bubble Spawner">
-    <Image path="Blue Lava Bubble Spawner.png"/>
+  <Object behaviorScriptAddress="0x13001A0C" name="Blue Podoboo Spawner">
+    <Image path="Podoboo Blue Spawner.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13001A30" name="Blue Lava Bubble Flame">
+  <Object behaviorScriptAddress="0x13001A30" name="Blue Podoboo Flame">
     <Image path="Blue Flame.png"/>
     <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>

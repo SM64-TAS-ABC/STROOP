@@ -147,7 +147,7 @@
   <Action name="metal water walking" value="0x000044F2" afterCloneValue="0x080042F1" afterUncloneValue="0x000044F2"/>
   <Action name="metal water falling" value="0x000042F4" afterCloneValue="0x000042F5" afterUncloneValue="0x000042F4"/>
   <Action name="metal water fall landing" value="0x000042F6" afterCloneValue="0x080042F1" afterUncloneValue="0x000042F6"/>
-  <Action name="metal water jump" value="0x000044F8" afterCloneValue="0x000042F5" afterUncloneValue="0x000044F8"/>
+  <Action name="metal water jump" value="0x000044F8" afterCloneValue="0x000044F9" afterUncloneValue="0x000044F8"/>
   <Action name="metal water jump landing" value="0x000044FA" afterCloneValue="0x080042F1" afterUncloneValue="0x000044FA"/>
   <Action name="&quot;standing" value="0x08000207" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
   <Action name="heavy standing" value="0x08000208" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
@@ -188,7 +188,7 @@
   <Action name="&quot;metal water walking" value="0x000044F3" afterCloneValue="0x080042F1" afterUncloneValue="0x000044F2"/>
   <Action name="&quot;metal water falling" value="0x000042F5" afterCloneValue="0x000042F5" afterUncloneValue="0x000042F4"/>
   <Action name="&quot;metal water fall landing" value="0x000042F7" afterCloneValue="0x080042F1" afterUncloneValue="0x000042F6"/>
-  <Action name="&quot;metal water jump" value="0x000044F9" afterCloneValue="0x000042F5" afterUncloneValue="0x000044F8"/>
+  <Action name="&quot;metal water jump" value="0x000044F9" afterCloneValue="0x000044F9" afterUncloneValue="0x000044F8"/>
   <Action name="&quot;metal water jump landing" value="0x000044FB" afterCloneValue="0x080042F1" afterUncloneValue="0x000044FA"/>
   <Action name="disappeared" value="0x00001300" afterCloneValue="0x08000207" afterUncloneValue="0x00001300"/>
   <Action name="intro cutscene" value="0x04001301" afterCloneValue="0x08000207" afterUncloneValue="0x04001301"/>
