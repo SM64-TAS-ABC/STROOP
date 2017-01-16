@@ -1544,6 +1544,9 @@
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x80195C84">
     <Image path="Tree Standard.png"/>
   </Object>
+  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x8018F2A0">
+    <Image path="Tree Standard.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x80194604">
     <Image path="Tree Standard.png"/>
   </Object>
