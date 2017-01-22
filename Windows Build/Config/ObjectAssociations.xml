@@ -532,6 +532,9 @@
     <Data type="float" address="0xA4" objectOffset="true">Height</Data>
     <Data type="float" address="0x168" objectOffset="true">Min Height</Data>
   </Object>
+  <Object behaviorScriptAddress="0x13000C04" name="Falling Block">
+    <Image path="Falling Block WF.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x13000C04" name="WF Falling Block" gfxId="0x80194BD4">
     <Image path="Falling Block WF.png"/>
   </Object>
@@ -679,12 +682,14 @@
   </Object>
   <Object behaviorScriptAddress="0x13001124" name="Flame">
     <Image path="Orange Flame.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13001168" name="Lava Bubble Spawner">
-    <Image path="Lava Bubble Spawner.png"/>
+  <Object behaviorScriptAddress="0x13001168" name="Orange Podoboo Spawner">
+    <Image path="Podoboo Orange Spawner.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13001184" name="Lava Bubble">
-    <Image path="Lava Bubble.png"/>
+  <Object behaviorScriptAddress="0x13001184" name="Orange Podoboo Flame">
+    <Image path="Orange Flame.png"/>
+    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x130011D0" name="Shockwave">
     <Image path="Shockwave.png"/>
@@ -874,10 +879,10 @@
     <Image path="Blue Falling Flame.png"/>
     <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13001A0C" name="Blue Lava Bubble Spawner">
-    <Image path="Blue Lava Bubble Spawner.png"/>
+  <Object behaviorScriptAddress="0x13001A0C" name="Blue Podoboo Spawner">
+    <Image path="Podoboo Blue Spawner.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13001A30" name="Blue Lava Bubble Flame">
+  <Object behaviorScriptAddress="0x13001A30" name="Blue Podoboo Flame">
     <Image path="Blue Flame.png"/>
     <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
@@ -1075,6 +1080,13 @@
     <Data type="int" address="0x150" objectOffset="true">Phase</Data>
     <Data type="byte" address="0x93" objectOffset="true">Talking Phase</Data>
   </Object>
+  <Object behaviorScriptAddress="0x130020D8" name="Baby Penguin (Fake, Returned)">
+    <Image path="Baby Penguin.png"/>
+	<MapImage path="Penguin Top.png" rotates="true"/>
+    <Data type="byte" address="0x189" objectOffset="true" isBool="true">Fake</Data>
+    <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="byte" address="0x8B" objectOffset="true" isBool="true">Returning</Data>
+  </Object>
   <Object behaviorScriptAddress="0x130020E8" name="Baby Penguin (Real)" subType="0">
     <Image path="Baby Penguin.png"/>
 	<MapImage path="Penguin Top.png" rotates="true"/>
@@ -1083,6 +1095,13 @@
     <Data type="byte" address="0x8B" objectOffset="true" isBool="true">Returning</Data>
   </Object>
   <Object behaviorScriptAddress="0x130020E8" name="Baby Penguin (Fake)" subType="1">
+    <Image path="Baby Penguin.png"/>
+	<MapImage path="Penguin Top.png" rotates="true"/>
+    <Data type="byte" address="0x189" objectOffset="true" isBool="true">Fake</Data>
+    <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="byte" address="0x8B" objectOffset="true" isBool="true">Returning</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x130020E0" name="Baby Penguin (Real, Returned)">
     <Image path="Baby Penguin.png"/>
 	<MapImage path="Penguin Top.png" rotates="true"/>
     <Data type="byte" address="0x189" objectOffset="true" isBool="true">Fake</Data>
@@ -1542,6 +1561,9 @@
     <Image path="Tree Standard.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x80195C84">
+    <Image path="Tree Standard.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x8018F2A0">
     <Image path="Tree Standard.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x80194604">
@@ -2279,6 +2301,12 @@
   </Object>
   <Object behaviorScriptAddress="0x130045D0" name="Koopa the Quick Flag Checkpoint">
     <Image path="Koopa the Quick Flag Checkpoint.png"/>
+    <Data type="int" address="0xFC" objectOffset="true">Result</Data>
+    <Data type="int" address="0x100" objectOffset="true">State 2</Data>
+    <Data type="int" address="0xF4" objectOffset="true" isBool="true">Race Started</Data>
+    <Data type="int" address="0x104" objectOffset="true" isBool="true">Race Finished</Data>
+    <Data type="int" address="0xF8" objectOffset="true" isBool="true">KtQ Finished</Data>
+    <Data type="short" address="0x00C4CCD8" absoluteAddress="true" isBool="true">Used Cannon</Data>
   </Object>
   <Object behaviorScriptAddress="0x130045F8" name="Koopa the Quick Flag">
     <Image path="Koopa the Quick Flag.png"/>
