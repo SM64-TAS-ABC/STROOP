@@ -1080,6 +1080,13 @@
     <Data type="int" address="0x150" objectOffset="true">Phase</Data>
     <Data type="byte" address="0x93" objectOffset="true">Talking Phase</Data>
   </Object>
+  <Object behaviorScriptAddress="0x130020D8" name="Baby Penguin (Fake, Returned)">
+    <Image path="Baby Penguin.png"/>
+	<MapImage path="Penguin Top.png" rotates="true"/>
+    <Data type="byte" address="0x189" objectOffset="true" isBool="true">Fake</Data>
+    <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="byte" address="0x8B" objectOffset="true" isBool="true">Returning</Data>
+  </Object>
   <Object behaviorScriptAddress="0x130020E8" name="Baby Penguin (Real)" subType="0">
     <Image path="Baby Penguin.png"/>
 	<MapImage path="Penguin Top.png" rotates="true"/>
@@ -1088,6 +1095,13 @@
     <Data type="byte" address="0x8B" objectOffset="true" isBool="true">Returning</Data>
   </Object>
   <Object behaviorScriptAddress="0x130020E8" name="Baby Penguin (Fake)" subType="1">
+    <Image path="Baby Penguin.png"/>
+	<MapImage path="Penguin Top.png" rotates="true"/>
+    <Data type="byte" address="0x189" objectOffset="true" isBool="true">Fake</Data>
+    <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="byte" address="0x8B" objectOffset="true" isBool="true">Returning</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x130020E0" name="Baby Penguin (Real, Returned)">
     <Image path="Baby Penguin.png"/>
 	<MapImage path="Penguin Top.png" rotates="true"/>
     <Data type="byte" address="0x189" objectOffset="true" isBool="true">Fake</Data>
@@ -2287,6 +2301,12 @@
   </Object>
   <Object behaviorScriptAddress="0x130045D0" name="Koopa the Quick Flag Checkpoint">
     <Image path="Koopa the Quick Flag Checkpoint.png"/>
+    <Data type="int" address="0xFC" objectOffset="true">Result</Data>
+    <Data type="int" address="0x100" objectOffset="true">State 2</Data>
+    <Data type="int" address="0xF4" objectOffset="true" isBool="true">Race Started</Data>
+    <Data type="int" address="0x104" objectOffset="true" isBool="true">Race Finished</Data>
+    <Data type="int" address="0xF8" objectOffset="true" isBool="true">KtQ Finished</Data>
+    <Data type="short" address="0x00C4CCD8" absoluteAddress="true" isBool="true">Used Cannon</Data>
   </Object>
   <Object behaviorScriptAddress="0x130045F8" name="Koopa the Quick Flag">
     <Image path="Koopa the Quick Flag.png"/>
