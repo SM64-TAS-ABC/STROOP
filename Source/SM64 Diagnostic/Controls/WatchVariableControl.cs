@@ -233,6 +233,7 @@ namespace SM64_Diagnostic.Controls
                 if (_textBoxValue != null)
                 {
                     _textBoxValue.ReadOnly = !_editMode;
+                    _textBoxValue.BackColor = _editMode ? Color.White : Color == Color.Transparent ? SystemColors.Control : Color;
                     if (_editMode)
                     {
                         _textBoxValue.Focus();
