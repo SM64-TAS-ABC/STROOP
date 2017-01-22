@@ -57,23 +57,25 @@ namespace SM64_Diagnostic.Utilities
             var doc = XDocument.Load(path);
             doc.Validate(schemaSet, Validation);
 
-            foreach(XElement element in doc.Root.Elements())
+            foreach(var element in doc.Root.Elements())
             {
                 switch(element.Name.ToString())
                 {
+                    case "Emulators":
+                        foreach (var subElement in element.Elements())
+                        {
+                            Config.Emulators.Add(new Emulator()
+                            {
+                                Name = subElement.Attribute(XName.Get("name")).Value,
+                                ProcessName = subElement.Attribute(XName.Get("processName")).Value,
+                                RamStart = ParsingUtilities.ParseHex(subElement.Attribute(XName.Get("ramStart")).Value)
+                            });
+                        }
+                        break;
                     case "RefreshRateFreq":
                         Config.RefreshRateFreq = int.Parse(element.Value);
                         break;
-
-                    case "ProcessDefaultName":
-                        Config.ProcessName = element.Value;
-                        break;
-
-                    case "RAMStartAddress":
-                        Config.RamStartAddress = ParsingUtilities.ParseHex(element.Value);
-                        break;
-
-                    case "RAMSize":
+                    case "RamSize":
                         Config.RamSize = ParsingUtilities.ParseHex(element.Value);
                         break;
                     case "ObjectSlots":

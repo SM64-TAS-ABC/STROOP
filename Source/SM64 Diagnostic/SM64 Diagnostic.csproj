@@ -138,6 +138,7 @@
     <Compile Include="Structs\Configurations\DebugConfig.cs" />
     <Compile Include="Structs\Configurations\HudConfig.cs" />
     <Compile Include="Structs\Configurations\TriangleOffsetsConfig.cs" />
+    <Compile Include="Structs\Emulator.cs" />
     <Compile Include="Structs\GameScript.cs" />
     <Compile Include="Structs\Gui\MapGui.cs" />
     <Compile Include="Structs\Gui\ObjectSlotManagerGui.cs" />

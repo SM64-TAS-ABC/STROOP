@@ -61,6 +61,9 @@ namespace SM64_Diagnostic.Managers
         private void Stream_StatusChanged(object sender, EventArgs e)
         {
             // Yay... thread safety
+            if (_formContext.Disposing || _formContext.IsDisposed || _formContext == null)
+                return;
+
             _formContext.Invoke(new Action(() =>
             {
                 if (_stream.IsRunning)

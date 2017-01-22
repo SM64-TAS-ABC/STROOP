@@ -10,8 +10,7 @@ namespace SM64_Diagnostic.Structs
     public static class Config
     {
         public static int RefreshRateFreq;
-        public static string ProcessName;
-        public static uint RamStartAddress;
+        public static List<Emulator> Emulators = new List<Emulator>();
         public static uint RamSize;
         public static ObjectGroupsConfig ObjectGroups;
         public static ObjectSlotsConfig ObjectSlots;

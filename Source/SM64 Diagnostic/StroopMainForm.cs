@@ -18,7 +18,7 @@ namespace SM64_Diagnostic
 {
     public partial class StroopMainForm : Form
     {
-        const string _version = "v0.2.7";
+        const string _version = "v0.2.8";
         ProcessStream _sm64Stream = null;
 
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
@@ -56,21 +56,17 @@ namespace SM64_Diagnostic
             InitializeComponent();
         }
 
-        private void AttachToProcess(Process process)
+        private bool AttachToProcess(Process process)
         {
-            if (!_sm64Stream.SwitchProcess(process))
+            // Find emulator
+            var emulators = Config.Emulators.Where(e => e.ProcessName.ToLower() == process.ProcessName.ToLower()).ToList();
+
+            if (emulators.Count > 1)
             {
-                MessageBox.Show("Could not attach to process!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Ambigous emulator type", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
 
-        private void comboBoxProcessSelection_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxProcessSelection.SelectedItem == null)
-                return;
-
-            AttachToProcess(((ProcessSelection)(comboBoxProcessSelection.SelectedItem)).Process);
+            return _sm64Stream.SwitchProcess(process, emulators[0]);
         }
 
         private void StroopMainForm_Load(object sender, EventArgs e)
@@ -156,15 +152,9 @@ namespace SM64_Diagnostic
             labelVersionNumber.Text = _version;
 
             // Load process
-            var processes = GetAvailableProcesses();
-            if (processes.Count == 1)
-                if (MessageBox.Show(String.Format("Found process \"{0}\". Connect?", processes[0].ProcessName),
-                    "Process Found", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    var processSelect = new ProcessSelection(processes[0]);
-                    comboBoxProcessSelection.Items.Add(processSelect);
-                    comboBoxProcessSelection.SelectedIndex = 0;
-                }
+            buttonRefresh_Click(this, new EventArgs());
+            panelConnect.Location = new Point();
+            panelConnect.Size = this.Size;
         }
 
         public void LoadConfig(LoadingForm loadingForm)
@@ -200,24 +190,13 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Finishing", statusNum);
         }
 
-        private void comboBoxProcessSelection_DropDown(object sender, EventArgs e)
-        {
-            comboBoxProcessSelection.Items.Clear();
-            buttonPauseResume.Text = "Pause";
-
-            foreach (Process p in GetAvailableProcesses())
-            {
-                comboBoxProcessSelection.Items.Add(new ProcessSelection(p));
-            }
-        }
-
         private List<Process> GetAvailableProcesses()
         {
             var AvailableProcesses = Process.GetProcesses();
             List<Process> resortList = new List<Process>();
             foreach (Process p in AvailableProcesses)
             {
-                if (!p.ProcessName.ToLower().Contains(Config.ProcessName.ToLower()))
+                if (!Config.Emulators.Select(e => e.ProcessName.ToLower()).Any(s => s.Contains(p.ProcessName.ToLower())))
                     continue;
 
                 resortList.Add(p);
@@ -292,20 +271,6 @@ namespace SM64_Diagnostic
             tabControlMain.TabPages.Remove(tabPageExpressions);
             tabControlMain.TabPages.Remove(tabPageStars);
 #endif
-        }
-
-        private void buttonPauseResume_Click(object sender, EventArgs e)
-        {
-            if (_sm64Stream.IsSuspended)
-            {
-                _sm64Stream.Resume();
-                buttonPauseResume.Text = "Pause";
-            }
-            else
-            {
-                _sm64Stream.Suspend();
-                buttonPauseResume.Text = "Resume";
-            }
         }
 
         private void buttonOtherModify_Click(object sender, EventArgs e)
@@ -423,7 +388,7 @@ namespace SM64_Diagnostic
             if (!_splitterIsExpanded)
             {
                 buttonMapExpand.Text = "Minimize Map";
-                splitContainerMain.SplitterDistance = splitContainerMain.Height;
+                splitContainerMain.SplitterDistance = splitContainerMain.Height; 
             }
             else
             {
@@ -476,6 +441,41 @@ namespace SM64_Diagnostic
 
             // Set mode
             _sm64Stream.WriteRam(new byte[] { 3 }, Config.Debug.Setting);
+        }
+
+        private void buttonConnect_Click(object sender, EventArgs e)
+        {
+            var selectedProcess = (ProcessSelection?)listBoxProcessesList.SelectedItem;
+
+            // Select the only process if there is one
+            if (!selectedProcess.HasValue && listBoxProcessesList.Items.Count == 1)
+                selectedProcess = (ProcessSelection)listBoxProcessesList.Items[0];
+
+            if (!selectedProcess.HasValue || !AttachToProcess(selectedProcess.Value.Process))
+            {
+                MessageBox.Show("Could not attach to process!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            panelConnect.Visible = false;
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            // Update the process list
+            listBoxProcessesList.Items.Clear();
+            foreach (var process in GetAvailableProcesses())
+                listBoxProcessesList.Items.Add(new ProcessSelection(process));
+            
+            // Pre-select the first process
+            if (listBoxProcessesList.Items.Count != 0)
+                listBoxProcessesList.SelectedIndex = 0;
+        }
+
+        private void buttonDisconnect_Click(object sender, EventArgs e)
+        {
+            _sm64Stream.SwitchProcess(null, null);
+            panelConnect.Visible = true;
         }
 
         private void checkBoxMoveCamWithPu_CheckedChanged(object sender, EventArgs e)

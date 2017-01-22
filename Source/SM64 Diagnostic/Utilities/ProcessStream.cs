@@ -12,10 +12,10 @@ namespace SM64_Diagnostic.Utilities
 {
     public class ProcessStream
     {
+        Emulator _emulator;
         IntPtr _processHandle;
         Process _process;
         Timer _timer;
-        int _offset;
         byte[] _ram;
         bool _lastUpdateBeforePausing = false;
 
@@ -29,7 +29,7 @@ namespace SM64_Diagnostic.Utilities
         {
             get
             {
-                return (uint) _offset;
+                return _emulator == null ? 0 : _emulator.RamStart;
             }
         }
 
@@ -45,13 +45,12 @@ namespace SM64_Diagnostic.Utilities
         {
             get
             {
-                return Config.ProcessName;
+                return _emulator == null ? "(No Emulator)" : _emulator.ProcessName;
             }
         }
 
-        public ProcessStream(Process process = null)
+        public ProcessStream(Process process = null, Emulator emulator = null)
         {
-            _offset = (int)(Config.RamStartAddress & 0x7FFFFFFF);
             _process = process;
 
             _timer = new Timer();
@@ -60,7 +59,7 @@ namespace SM64_Diagnostic.Utilities
 
             _ram = new byte[Config.RamSize];
 
-            SwitchProcess(_process);
+            SwitchProcess(_process, _emulator);
         }
 
         ~ProcessStream()
@@ -69,7 +68,7 @@ namespace SM64_Diagnostic.Utilities
                 _process.Exited -= ProcessClosed;
         }
 
-        public bool SwitchProcess(Process newProcess)
+        public bool SwitchProcess(Process newProcess, Emulator emulator)
         {
             // Close old process
             _timer.Enabled = false;
@@ -86,12 +85,16 @@ namespace SM64_Diagnostic.Utilities
             // Make sure the new process has a value
             if (newProcess == null)
             {
+                _processHandle = new IntPtr();
+                _process = null;
+                _emulator = null;
                 OnStatusChanged?.Invoke(this, new EventArgs());
                 return false;
             }
 
             // Open and set new process
             _process = newProcess;
+            _emulator = emulator;
             _processHandle = NativeMethods.ProcessGetHandleFromId(0x0838, false, _process.Id);
 
             if ((int)_processHandle == 0)
@@ -135,7 +138,7 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             int numOfBytes = 0;
-            return NativeMethods.ProcessReadMemory(_processHandle, (IntPtr) (absoluteAddressing ? address : address + _offset),
+            return NativeMethods.ProcessReadMemory(_processHandle, (IntPtr) (absoluteAddressing ? address : address + _emulator.RamStart),
                 buffer, (IntPtr)buffer.Length, ref numOfBytes);
         }
 
@@ -145,7 +148,7 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             int numOfBytes = 0;
-            return NativeMethods.ProcessWriteMemory(_processHandle, (IntPtr)(absoluteAddressing ? address : address + _offset),
+            return NativeMethods.ProcessWriteMemory(_processHandle, (IntPtr)(absoluteAddressing ? address : address + _emulator.RamStart),
                 buffer, (IntPtr)buffer.Length, ref numOfBytes);
         }
 
@@ -192,7 +195,7 @@ namespace SM64_Diagnostic.Utilities
 
             // Handling absolute addressing (remove process offset from address)
             if (absoluteAddress)
-                address = (uint)(address - _offset);
+                address = address - _emulator.RamStart;
 
             if (address + length > _ram.Length)
                 return new byte[length];
