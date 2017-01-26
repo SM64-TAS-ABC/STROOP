@@ -458,6 +458,7 @@ namespace SM64_Diagnostic
             }
 
             panelConnect.Visible = false;
+            labelProcessSelect.Text = "Connected To: " + selectedProcess.Value.Process.ProcessName;
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
