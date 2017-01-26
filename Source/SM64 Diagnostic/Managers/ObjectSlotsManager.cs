@@ -44,9 +44,9 @@ namespace SM64_Diagnostic.Managers
         bool _firstSlotSelect = true;
         List<BehaviorCriteria> _prevSelectedBehaviorCriteria = new List<BehaviorCriteria>();
 
-        public enum SortMethodType {ProcessingOrder, MemoryOrder, DistanceToMario};
-        public enum MapToggleModeType {Single, ObjectType, ProcessGroup};
-        public enum SlotLabelType {Recommended, SlotPosVs, SlotPos, SlotIndex}
+        public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
+        public enum MapToggleModeType { Single, ObjectType, ProcessGroup };
+        public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
 
         public void ChangeSlotSize(int newSize)
         {
@@ -54,7 +54,7 @@ namespace SM64_Diagnostic.Managers
                 objSlot.Size = new Size(newSize, newSize);
         }
 
-        public ObjectSlotsManager(ProcessStream stream, ObjectAssociations objAssoc, 
+        public ObjectSlotsManager(ProcessStream stream, ObjectAssociations objAssoc,
             ObjectManager objManager, ObjectSlotManagerGui managerGui, MapManager mapManager, MiscManager miscManager)
         {
             ObjectAssoc = objAssoc;
@@ -370,7 +370,7 @@ namespace SM64_Diagnostic.Managers
             bool firstObject = true;
             for (int i = 0; i < slotConfig.MaxSlots; i++)
             {
-                var behaviorCritera = UpdateSlot(newObjectSlotData[i], i);
+                var behaviorCritera = UpdateSlot(newObjectSlotData[i], ObjectSlots[i]);
                 if (!SelectedSlotsAddresses.Contains(newObjectSlotData[i].Address))
                     continue;
 
@@ -441,46 +441,45 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private BehaviorCriteria UpdateSlot(ObjectSlotData objectData, int index)
+        private BehaviorCriteria UpdateSlot(ObjectSlotData objData, ObjectSlot objSlot)
         {
-            var objSlot = ObjectSlots[index];
-            uint currentAddress = objectData.Address;
+            uint objAddress = objData.Address;
             BehaviorCriteria behaviorCriteria;
-           
-            objSlot.IsActive = objectData.IsActive;
-            objSlot.Address = currentAddress;
+
+            objSlot.IsActive = objData.IsActive;
+            objSlot.Address = objAddress;
 
             // Update Overlays
-            objSlot.DrawSelectedOverlay = SelectedSlotsAddresses.Contains(currentAddress);
-            objSlot.DrawStandingOnOverlay = Config.ShowOverlays && currentAddress == _standingOnObject;
-            objSlot.DrawInteractingOverlay = Config.ShowOverlays && currentAddress == _interactingObject;
-            objSlot.DrawHoldingOverlay = Config.ShowOverlays && currentAddress == _holdingObject;
-            objSlot.DrawUsingOverlay = Config.ShowOverlays && currentAddress == _usingObject;
-            objSlot.DrawClosestOverlay = Config.ShowOverlays && currentAddress == _closestObject;
+            objSlot.DrawSelectedOverlay = SelectedSlotsAddresses.Contains(objAddress);
+            objSlot.DrawStandingOnOverlay = Config.ShowOverlays && objAddress == _standingOnObject;
+            objSlot.DrawInteractingOverlay = Config.ShowOverlays && objAddress == _interactingObject;
+            objSlot.DrawHoldingOverlay = Config.ShowOverlays && objAddress == _holdingObject;
+            objSlot.DrawUsingOverlay = Config.ShowOverlays && objAddress == _usingObject;
+            objSlot.DrawClosestOverlay = Config.ShowOverlays && objAddress == _closestObject;
 
-            if (objectData.IsActive)
+            if (objData.IsActive)
                 _activeObjCnt++;
 
-            var gfxId = _stream.GetUInt32(currentAddress + Config.ObjectSlots.BehaviorGfxOffset);
-            var subType = _stream.GetInt32(currentAddress + Config.ObjectSlots.BehaviorSubtypeOffset);
-            var appearance = _stream.GetInt32(currentAddress + Config.ObjectSlots.BehaviorAppearance);
+            var gfxId = _stream.GetUInt32(objAddress + Config.ObjectSlots.BehaviorGfxOffset);
+            var subType = _stream.GetInt32(objAddress + Config.ObjectSlots.BehaviorSubtypeOffset);
+            var appearance = _stream.GetInt32(objAddress + Config.ObjectSlots.BehaviorAppearance);
 
             behaviorCriteria = new BehaviorCriteria()
             {
-                BehaviorAddress = objectData.Behavior,
+                BehaviorAddress = objData.Behavior,
                 GfxId = gfxId,
                 SubType = subType,
                 Appearance = appearance
             };
 
-            ObjectSlots[index].Behavior = behaviorCriteria;
+            objSlot.Behavior = behaviorCriteria;
 
-            var processGroup = objectData.ObjectProcessGroup;
-            ObjectSlots[index].ProcessGroup = processGroup;
+            var processGroup = objData.ObjectProcessGroup;
+            objSlot.ProcessGroup = processGroup;
 
-            var newColor = objectData.ObjectProcessGroup == VacantGroup ? Config.ObjectGroups.VacantSlotColor :
-                Config.ObjectGroups.ProcessingGroupsColor[objectData.ObjectProcessGroup];
-            ObjectSlots[index].BackColor = newColor;
+            var newColor = objData.ObjectProcessGroup == VacantGroup ? Config.ObjectGroups.VacantSlotColor :
+                Config.ObjectGroups.ProcessingGroupsColor[objData.ObjectProcessGroup];
+            objSlot.BackColor = newColor;
 
             string labelText = "";
             switch ((SlotLabelType)ManagerGui.LabelMethodComboBox.SelectedItem)
@@ -492,95 +491,105 @@ namespace SM64_Diagnostic.Managers
                     goto case SlotLabelType.SlotPosVs;
 
                 case SlotLabelType.SlotIndex:
-                    labelText = String.Format("{0}", (objectData.Address - Config.ObjectSlots.LinkStartAddress) 
+                    labelText = String.Format("{0}", (objData.Address - Config.ObjectSlots.LinkStartAddress)
                         / Config.ObjectSlots.StructSize + (Config.SlotIndexsFromOne ? 1 : 0));
                     break;
 
                 case SlotLabelType.SlotPos:
-                    labelText = String.Format("{0}", objectData.ProcessIndex
+                    labelText = String.Format("{0}", objData.ProcessIndex
                         + (Config.SlotIndexsFromOne ? 1 : 0));
                     break;
 
                 case SlotLabelType.SlotPosVs:
-                    if (!objectData.VacantSlotIndex.HasValue)
+                    if (!objData.VacantSlotIndex.HasValue)
                         goto case SlotLabelType.SlotPos;
 
-                    labelText = String.Format("VS{0}", objectData.VacantSlotIndex.Value 
+                    labelText = String.Format("VS{0}", objData.VacantSlotIndex.Value
                         + (Config.SlotIndexsFromOne ? 1 : 0));
                     break;
             }
 
             if (ManagerGui.LockLabelsCheckbox.Checked)
             {
-                if (!_lastSlotLabel.ContainsKey(currentAddress))
-                    _lastSlotLabel.Add(currentAddress, labelText);
+                if (!_lastSlotLabel.ContainsKey(objAddress))
+                    _lastSlotLabel.Add(objAddress, labelText);
                 else
-                    _lastSlotLabel[currentAddress] = labelText;
+                    _lastSlotLabel[objAddress] = labelText;
             }
-            ObjectSlots[index].Text = ManagerGui.LockLabelsCheckbox.Checked ? _lastSlotLabel[currentAddress] : labelText;
+            objSlot.Text = ManagerGui.LockLabelsCheckbox.Checked ? _lastSlotLabel[objAddress] : labelText;
 
             // Update object manager image
-            if (SelectedSlotsAddresses.Count <= 1 && SelectedSlotsAddresses.Contains(currentAddress))
-            {
-                var objAssoc = ObjectAssoc.FindObjectAssociation(behaviorCriteria);
-                var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : (BehaviorCriteria?)null;
-                if (_lastSelectedBehavior != newBehavior || _firstSlotSelect)
-                {
-                    _objManager.Behavior = String.Format("0x{0}", ((objectData.Behavior + ObjectAssoc.RamOffset) & 0x00FFFFFF).ToString("X4"));
-                    _objManager.Name = ObjectAssoc.GetObjectName(behaviorCriteria);
-
-                    _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorCriteria), newColor.Lighten(0.8));
-                    _lastSelectedBehavior = newBehavior;
-                    _firstSlotSelect = false;
-                }
-                _objManager.Image = ObjectSlots[index].ObjectImage;
-                _objManager.BackColor = newColor;
-                int slotPos = objectData.ObjectProcessGroup == VacantGroup ? objectData.VacantSlotIndex.Value : objectData.ProcessIndex;
-                _objManager.SlotIndex = (_memoryAddressSlotIndex[currentAddress] + (Config.SlotIndexsFromOne ? 1 : 0)).ToString();
-                _objManager.SlotPos = (objectData.ObjectProcessGroup == VacantGroup ? "VS " : "")
-                    + (slotPos + (Config.SlotIndexsFromOne ? 1 : 0)).ToString();
-            }
+            if (SelectedSlotsAddresses.Count <= 1 && SelectedSlotsAddresses.Contains(objAddress))
+                UpdateObjectManager(objSlot, behaviorCriteria, objData);
 
             // Update the map
-            if (ManagerGui.TabControl.SelectedTab.Text == "Map" && _mapManager.IsLoaded)
-            {
+            UpdateMapObject(objData, behaviorCriteria);
 
-                // Update image
-                var mapObjImage = ObjectAssoc.GetObjectMapImage(behaviorCriteria, !objectData.IsActive);
-                var mapObjRotates = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
-                if (!_mapObjects.ContainsKey(currentAddress))
-                {
-                    _mapObjects.Add(currentAddress, new MapObject(mapObjImage));
-                    _mapManager.AddMapObject(_mapObjects[currentAddress]);
-                    _mapObjects[currentAddress].UsesRotation = mapObjRotates;
-                }
-                else if (_mapObjects[currentAddress].Image != mapObjImage)
-                {
-                    _mapManager.RemoveMapObject(_mapObjects[currentAddress]);
-                    _mapObjects[currentAddress] = new MapObject(mapObjImage);
-                    _mapManager.AddMapObject(_mapObjects[currentAddress]);
-                    _mapObjects[currentAddress].UsesRotation = mapObjRotates;
-                }
-
-                if (objectData.Behavior == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF))
-                {
-                    _mapObjects[currentAddress].Show = false;
-                }
-                else
-                {
-                    // Update map object coordinates and rotation
-                    _mapObjects[currentAddress].Show = !_toggleMapBehaviors.Contains(behaviorCriteria)
-                        && !_toggleMapGroups.Contains(processGroup) && !_toggleMapSlots.Contains(currentAddress);
-                    _mapObjects[currentAddress].X = BitConverter.ToSingle(_stream.ReadRam(currentAddress + Config.ObjectSlots.ObjectXOffset, 4), 0);
-                    _mapObjects[currentAddress].Y = BitConverter.ToSingle(_stream.ReadRam(currentAddress + Config.ObjectSlots.ObjectYOffset, 4), 0);
-                    _mapObjects[currentAddress].Z = BitConverter.ToSingle(_stream.ReadRam(currentAddress + Config.ObjectSlots.ObjectZOffset, 4), 0);
-                    _mapObjects[currentAddress].IsActive = objectData.IsActive;
-                    _mapObjects[currentAddress].Rotation = (float)((UInt16)(
-                        _stream.GetUInt32(currentAddress + Config.ObjectSlots.ObjectRotationOffset)) / 65536f * 360f);
-                    _mapObjects[currentAddress].UsesRotation = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
-                }
-            }
             return behaviorCriteria;
+        }
+
+        void UpdateObjectManager(ObjectSlot objSlot, BehaviorCriteria behaviorCriteria, ObjectSlotData objData)
+        {
+            var objAssoc = ObjectAssoc.FindObjectAssociation(behaviorCriteria);
+            var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : (BehaviorCriteria?)null;
+            if (_lastSelectedBehavior != newBehavior || _firstSlotSelect)
+            {
+                _objManager.Behavior = String.Format("0x{0}", ((objData.Behavior + ObjectAssoc.RamOffset) & 0x00FFFFFF).ToString("X4"));
+                _objManager.Name = ObjectAssoc.GetObjectName(behaviorCriteria);
+
+                _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorCriteria), objSlot.BackColor.Lighten(0.8));
+                _lastSelectedBehavior = newBehavior;
+                _firstSlotSelect = false;
+            }
+            _objManager.Image = objSlot.ObjectImage;
+            _objManager.BackColor = objSlot.BackColor;
+            int slotPos = objData.ObjectProcessGroup == VacantGroup ? objData.VacantSlotIndex.Value : objData.ProcessIndex;
+            _objManager.SlotIndex = (_memoryAddressSlotIndex[objData.Address] + (Config.SlotIndexsFromOne ? 1 : 0)).ToString();
+            _objManager.SlotPos = (objData.ObjectProcessGroup == VacantGroup ? "VS " : "")
+                + (slotPos + (Config.SlotIndexsFromOne ? 1 : 0)).ToString();
+        }
+
+        void UpdateMapObject(ObjectSlotData objData, BehaviorCriteria behaviorCriteria)
+        {
+            if (ManagerGui.TabControl.SelectedTab.Text != "Map" || !_mapManager.IsLoaded)
+                return;
+
+            var objAddress = objData.Address;
+
+            // Update image
+            var mapObjImage = ObjectAssoc.GetObjectMapImage(behaviorCriteria, !objData.IsActive);
+            var mapObjRotates = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
+            if (!_mapObjects.ContainsKey(objAddress))
+            {
+                _mapObjects.Add(objAddress, new MapObject(mapObjImage));
+                _mapManager.AddMapObject(_mapObjects[objAddress]);
+                _mapObjects[objAddress].UsesRotation = mapObjRotates;
+            }
+            else if (_mapObjects[objAddress].Image != mapObjImage)
+            {
+                _mapManager.RemoveMapObject(_mapObjects[objAddress]);
+                _mapObjects[objAddress] = new MapObject(mapObjImage);
+                _mapManager.AddMapObject(_mapObjects[objAddress]);
+                _mapObjects[objAddress].UsesRotation = mapObjRotates;
+            }
+
+            if (objData.Behavior == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF))
+            {
+                _mapObjects[objAddress].Show = false;
+            }
+            else
+            {
+                // Update map object coordinates and rotation
+                _mapObjects[objAddress].Show = !_toggleMapBehaviors.Contains(behaviorCriteria)
+                    && !_toggleMapGroups.Contains(objData.ObjectProcessGroup) && !_toggleMapSlots.Contains(objAddress);
+                _mapObjects[objAddress].X = BitConverter.ToSingle(_stream.ReadRam(objAddress + Config.ObjectSlots.ObjectXOffset, 4), 0);
+                _mapObjects[objAddress].Y = BitConverter.ToSingle(_stream.ReadRam(objAddress + Config.ObjectSlots.ObjectYOffset, 4), 0);
+                _mapObjects[objAddress].Z = BitConverter.ToSingle(_stream.ReadRam(objAddress + Config.ObjectSlots.ObjectZOffset, 4), 0);
+                _mapObjects[objAddress].IsActive = objData.IsActive;
+                _mapObjects[objAddress].Rotation = (float)((UInt16)(
+                    _stream.GetUInt32(objAddress + Config.ObjectSlots.ObjectRotationOffset)) / 65536f * 360f);
+                _mapObjects[objAddress].UsesRotation = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
+            }
         }
     }
 }
