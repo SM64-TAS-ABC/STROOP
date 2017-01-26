@@ -72,7 +72,7 @@ namespace SM64_Diagnostic.Utilities
         {
             // Close old process
             _timer.Enabled = false;
-            NativeMethods.CloseProcess(_processHandle);
+            Kernal32NativeMethods.CloseProcess(_processHandle);
 
             // Make sure old process is running
             if (IsSuspended)
@@ -95,7 +95,7 @@ namespace SM64_Diagnostic.Utilities
             // Open and set new process
             _process = newProcess;
             _emulator = emulator;
-            _processHandle = NativeMethods.ProcessGetHandleFromId(0x0838, false, _process.Id);
+            _processHandle = Kernal32NativeMethods.ProcessGetHandleFromId(0x0838, false, _process.Id);
 
             if ((int)_processHandle == 0)
             {
@@ -138,7 +138,7 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             int numOfBytes = 0;
-            return NativeMethods.ProcessReadMemory(_processHandle, (IntPtr) (absoluteAddressing ? address : address + _emulator.RamStart),
+            return Kernal32NativeMethods.ProcessReadMemory(_processHandle, (IntPtr) (absoluteAddressing ? address : address + _emulator.RamStart),
                 buffer, (IntPtr)buffer.Length, ref numOfBytes);
         }
 
@@ -148,7 +148,7 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             int numOfBytes = 0;
-            return NativeMethods.ProcessWriteMemory(_processHandle, (IntPtr)(absoluteAddressing ? address : address + _emulator.RamStart),
+            return Kernal32NativeMethods.ProcessWriteMemory(_processHandle, (IntPtr)(absoluteAddressing ? address : address + _emulator.RamStart),
                 buffer, (IntPtr)buffer.Length, ref numOfBytes);
         }
 
@@ -159,7 +159,7 @@ namespace SM64_Diagnostic.Utilities
 
             _lastUpdateBeforePausing = true;
 
-            NativeMethods.SuspendProcess(_process);
+            Kernal32NativeMethods.SuspendProcess(_process);
 
             IsSuspended = true;
             OnStatusChanged?.Invoke(this, new EventArgs());
@@ -171,7 +171,7 @@ namespace SM64_Diagnostic.Utilities
                 return;
 
             // Resume all threads
-            NativeMethods.ResumeProcess(_process);
+            Kernal32NativeMethods.ResumeProcess(_process);
 
             IsSuspended = false;
             OnStatusChanged?.Invoke(this, new EventArgs());

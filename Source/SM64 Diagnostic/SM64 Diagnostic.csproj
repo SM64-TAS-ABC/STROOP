@@ -155,8 +155,8 @@
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Structs\ObjectSlotData.cs" />
     <Compile Include="Structs\RomHack.cs" />
+    <Compile Include="Utilities\Kernal32NativeMethods.cs" />
     <Compile Include="Utilities\MoreMath.cs" />
-    <Compile Include="Utilities\NativeMethods.cs" />
     <Compile Include="Utilities\ScriptParser.cs" />
     <Compile Include="Controls\Map\TriangleMapObject.cs" />
     <Compile Include="Structs\WatchExpression.cs" />
@@ -831,6 +831,7 @@
   <ItemGroup>
     <Content Include="Config\CameraData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Config\Config.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -838,6 +839,7 @@
     </Content>
     <Content Include="Config\HudData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Config\ObjectData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Utilities
 {
-    public static class NativeMethods
+    public static class Kernal32NativeMethods
     {
         [Flags]
         private enum ThreadAccess : int
@@ -62,7 +62,7 @@ namespace SM64_Diagnostic.Utilities
         public static bool ProcessReadMemory(IntPtr hProcess,
             IntPtr lpBaseAddress, byte[] lpBuffer, IntPtr dwSize, ref int lpNumberOfBytesRead)
         {
-            return NativeMethods.ReadProcessMemory(hProcess, lpBaseAddress, lpBuffer, dwSize, ref lpNumberOfBytesRead);
+            return Kernal32NativeMethods.ReadProcessMemory(hProcess, lpBaseAddress, lpBuffer, dwSize, ref lpNumberOfBytesRead);
         }
 
         public static bool ProcessWriteMemory(IntPtr hProcess, IntPtr lpBaseAddress,
@@ -76,7 +76,7 @@ namespace SM64_Diagnostic.Utilities
             // Resume all threads
             foreach (ProcessThread pT in process.Threads)
             {
-                IntPtr pOpenThread = NativeMethods.OpenThread(NativeMethods.ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
+                IntPtr pOpenThread = Kernal32NativeMethods.OpenThread(Kernal32NativeMethods.ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
 
                 if (pOpenThread == IntPtr.Zero)
                     continue;
@@ -84,10 +84,10 @@ namespace SM64_Diagnostic.Utilities
                 int suspendCount = 0;
                 do
                 {
-                    suspendCount = NativeMethods.ResumeThread(pOpenThread);
+                    suspendCount = Kernal32NativeMethods.ResumeThread(pOpenThread);
                 } while (suspendCount > 0);
 
-                NativeMethods.CloseHandle(pOpenThread);
+                Kernal32NativeMethods.CloseHandle(pOpenThread);
             }
         }
 
@@ -96,13 +96,13 @@ namespace SM64_Diagnostic.Utilities
             // Pause all threads
             foreach (ProcessThread pT in process.Threads)
             {
-                IntPtr pOpenThread = NativeMethods.OpenThread(NativeMethods.ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
+                IntPtr pOpenThread = Kernal32NativeMethods.OpenThread(Kernal32NativeMethods.ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
 
                 if (pOpenThread == IntPtr.Zero)
                     continue;
 
-                NativeMethods.SuspendThread(pOpenThread);
-                NativeMethods.CloseHandle(pOpenThread);
+                Kernal32NativeMethods.SuspendThread(pOpenThread);
+                Kernal32NativeMethods.CloseHandle(pOpenThread);
             }
         }
     }
