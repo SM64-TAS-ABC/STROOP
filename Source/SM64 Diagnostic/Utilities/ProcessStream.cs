@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using SM64_Diagnostic.Structs;
+using System.Threading;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -15,12 +16,19 @@ namespace SM64_Diagnostic.Utilities
         Emulator _emulator;
         IntPtr _processHandle;
         Process _process;
-        Timer _timer;
+        Queue<double> _fpsTimes = new Queue<double>();
+        Task _streamUpdater;
         byte[] _ram;
         bool _lastUpdateBeforePausing = false;
+        int _interval;
+        object _enableLocker = new object();
+        object _fpsQueueLocker = new object();
+
+        CancellationTokenSource _cancelToken = new CancellationTokenSource();
 
         public event EventHandler OnUpdate;
         public event EventHandler OnStatusChanged;
+        public event EventHandler FpsUpdated;
 
         public Dictionary<WatchVariableLock, WatchVariableLock> LockedVariables = 
             new Dictionary<WatchVariableLock, WatchVariableLock>();
@@ -49,15 +57,43 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
+        public double Fps
+        {
+            get
+            {
+                double fps;
+                lock (_fpsQueueLocker)
+                {
+                    fps = _fpsTimes.Count == 0 ? 0 : 1000 / _fpsTimes.Average();
+                }
+                return fps;
+            }
+        }
+
+        public Boolean IsSuspended = false;
+        public Boolean IsClosed = true;
+        public Boolean IsEnabled = false;
+        public Boolean IsRunning
+        {
+            get
+            {
+                bool running;
+                lock(_enableLocker)
+                {
+                    running = !(IsSuspended || IsClosed || !IsEnabled);
+                }
+                return running;
+            }
+        }
+
         public ProcessStream(Process process = null, Emulator emulator = null)
         {
             _process = process;
 
-            _timer = new Timer();
-            _timer.Interval = (int) (1000.0f / Config.RefreshRateFreq);
-            _timer.Tick += OnTick;
-
+            _interval = (int) (1000.0f / Config.RefreshRateFreq);
             _ram = new byte[Config.RamSize];
+
+            _streamUpdater = Task.Factory.StartNew(async() => await ProcessUpdateTask(_cancelToken.Token), _cancelToken.Token);
 
             SwitchProcess(_process, _emulator);
         }
@@ -66,17 +102,25 @@ namespace SM64_Diagnostic.Utilities
         {
             if (_process != null)
                 _process.Exited -= ProcessClosed;
+
+            _cancelToken?.Cancel();
+            _streamUpdater?.Wait();
+            _cancelToken?.Dispose();
         }
 
         public bool SwitchProcess(Process newProcess, Emulator emulator)
         {
-            // Close old process
-            _timer.Enabled = false;
-            Kernal32NativeMethods.CloseProcess(_processHandle);
+            lock (_enableLocker)
+            {
+                IsEnabled = false;
+            }
 
             // Make sure old process is running
             if (IsSuspended)
                 Resume();
+
+            // Close old process
+            Kernal32NativeMethods.CloseProcess(_processHandle);
 
             // Disconnect events
             if (_process != null)
@@ -115,21 +159,13 @@ namespace SM64_Diagnostic.Utilities
 
             IsSuspended = false;
             IsClosed = false;
+            lock (_enableLocker)
+            {
+                IsEnabled = true;
+            }
             OnStatusChanged?.Invoke(this, new EventArgs());
 
-            _timer.Enabled = true;
-
             return true;
-        }
-
-        public Boolean IsSuspended = false;
-        public Boolean IsClosed = true;
-        public Boolean IsRunning
-        {
-            get
-            {
-                return !(IsSuspended || IsClosed);
-            }
         }
 
         public bool ReadProcessMemory(int address, byte[] buffer, bool absoluteAddressing = false)
@@ -180,7 +216,10 @@ namespace SM64_Diagnostic.Utilities
         private void ProcessClosed(object sender, EventArgs e)
         {
             IsClosed = true;
-            _timer.Enabled = false;
+            lock (_enableLocker)
+            {
+                IsEnabled = false;
+            }
             OnStatusChanged?.Invoke(this, new EventArgs());
         }
 
@@ -241,23 +280,51 @@ namespace SM64_Diagnostic.Utilities
             return WriteRam(buffer, 0, address, length, absoluteAddress, fixAddress);
         }
 
-        private void OnTick(object sender, EventArgs e)
+        public async void Stop()
         {
-            if (!IsRunning & !_lastUpdateBeforePausing)
-                return;
+            _cancelToken?.Cancel();
+            _streamUpdater?.Wait();
+        }
 
-            _lastUpdateBeforePausing = false;
-
-            // Read whole ram value to buffer
-            if (!ReadProcessMemory(0, _ram))
-                return;
-            _timer.Enabled = false;
-            OnUpdate?.Invoke(this, e);
-            foreach (var lockVar in LockedVariables)
+        private async Task ProcessUpdateTask(CancellationToken ct)
+        {
+            var prevTime = Stopwatch.StartNew();
+            while (!ct.IsCancellationRequested)
             {
-                lockVar.Value.Update();
+                prevTime.Restart();
+                if (!IsRunning & !_lastUpdateBeforePausing)
+                    goto FrameLimitStreamUpdate;
+
+                _lastUpdateBeforePausing = false;
+
+                // Read whole ram value to buffer
+                if (!ReadProcessMemory(0, _ram))
+                    return;
+                OnUpdate?.Invoke(this, new EventArgs());
+
+                foreach (var lockVar in LockedVariables)
+                    lockVar.Value.Update();
+
+                FrameLimitStreamUpdate:
+
+                // Calculate delay to match correct FPS
+                prevTime.Stop();
+                int timeToWait = _interval - (int)prevTime.ElapsedMilliseconds;
+                timeToWait = timeToWait > 0 ? timeToWait : 0;
+
+                // Calculate Fps
+                lock (_fpsQueueLocker)
+                {
+                    if (_fpsTimes.Count() >= 10)
+                        _fpsTimes.Dequeue();
+                    _fpsTimes.Enqueue(prevTime.ElapsedMilliseconds + timeToWait);
+                }
+                FpsUpdated?.Invoke(this, new EventArgs());
+
+                await Task.Delay(timeToWait);
             }
-            _timer.Enabled = true;
+
+            ct.ThrowIfCancellationRequested();
         }
     }
 }

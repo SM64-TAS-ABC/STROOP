@@ -47,6 +47,8 @@ namespace SM64_Diagnostic
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageObjects = new System.Windows.Forms.TabPage();
+            this.buttonObjRetrieveHome = new System.Windows.Forms.Button();
+            this.buttonObjGoToHome = new System.Windows.Forms.Button();
             this.textBoxObjName = new System.Windows.Forms.TextBox();
             this.buttonObjRetrieve = new System.Windows.Forms.Button();
             this.buttonObjClone = new System.Windows.Forms.Button();
@@ -160,6 +162,7 @@ namespace SM64_Diagnostic
             this.labelNotConnected = new System.Windows.Forms.Label();
             this.buttonConnect = new System.Windows.Forms.Button();
             this.listBoxProcessesList = new System.Windows.Forms.ListBox();
+            this.labelFpsCounter = new System.Windows.Forms.Label();
             this.NoTearFlowLayoutPanelObject = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.pictureBoxObject = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelMario = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
@@ -182,8 +185,6 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.NoTearFlowLayoutPanel1 = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.NoTearFlowLayoutPanelObjects = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.buttonObjRetrieveHome = new System.Windows.Forms.Button();
-            this.buttonObjGoToHome = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -231,7 +232,7 @@ namespace SM64_Diagnostic
             // labelProcessSelect
             // 
             this.labelProcessSelect.AutoSize = true;
-            this.labelProcessSelect.Location = new System.Drawing.Point(87, 15);
+            this.labelProcessSelect.Location = new System.Drawing.Point(138, 15);
             this.labelProcessSelect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelProcessSelect.Name = "labelProcessSelect";
             this.labelProcessSelect.Size = new System.Drawing.Size(78, 13);
@@ -257,7 +258,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(1004, 435);
+            this.groupBoxObjects.Size = new System.Drawing.Size(1004, 436);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -407,7 +408,6 @@ namespace SM64_Diagnostic
             this.tabControlMain.Size = new System.Drawing.Size(1004, 245);
             this.tabControlMain.TabIndex = 3;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
-            this.tabControlMain.DragEnter += new System.Windows.Forms.DragEventHandler(this.tabControlMain_DragEnter);
             // 
             // tabPageObjects
             // 
@@ -436,6 +436,26 @@ namespace SM64_Diagnostic
             this.tabPageObjects.Size = new System.Drawing.Size(996, 219);
             this.tabPageObjects.TabIndex = 0;
             this.tabPageObjects.Text = "Object";
+            // 
+            // buttonObjRetrieveHome
+            // 
+            this.buttonObjRetrieveHome.Location = new System.Drawing.Point(99, 117);
+            this.buttonObjRetrieveHome.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonObjRetrieveHome.Name = "buttonObjRetrieveHome";
+            this.buttonObjRetrieveHome.Size = new System.Drawing.Size(91, 21);
+            this.buttonObjRetrieveHome.TabIndex = 18;
+            this.buttonObjRetrieveHome.Text = "Retrieve Home";
+            this.buttonObjRetrieveHome.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjGoToHome
+            // 
+            this.buttonObjGoToHome.Location = new System.Drawing.Point(99, 92);
+            this.buttonObjGoToHome.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonObjGoToHome.Name = "buttonObjGoToHome";
+            this.buttonObjGoToHome.Size = new System.Drawing.Size(91, 21);
+            this.buttonObjGoToHome.TabIndex = 17;
+            this.buttonObjGoToHome.Text = "Go To Home";
+            this.buttonObjGoToHome.UseVisualStyleBackColor = true;
             // 
             // textBoxObjName
             // 
@@ -1337,7 +1357,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(680, 184);
+            this.glControlMap.Size = new System.Drawing.Size(653, 184);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -1673,7 +1693,7 @@ namespace SM64_Diagnostic
             this.panelConnect.Controls.Add(this.labelNotConnected);
             this.panelConnect.Controls.Add(this.buttonConnect);
             this.panelConnect.Controls.Add(this.listBoxProcessesList);
-            this.panelConnect.Location = new System.Drawing.Point(206, 12);
+            this.panelConnect.Location = new System.Drawing.Point(246, 12);
             this.panelConnect.Name = "panelConnect";
             this.panelConnect.Size = new System.Drawing.Size(467, 19);
             this.panelConnect.TabIndex = 17;
@@ -1719,6 +1739,15 @@ namespace SM64_Diagnostic
             this.listBoxProcessesList.Name = "listBoxProcessesList";
             this.listBoxProcessesList.Size = new System.Drawing.Size(172, 147);
             this.listBoxProcessesList.TabIndex = 0;
+            // 
+            // labelFpsCounter
+            // 
+            this.labelFpsCounter.AutoSize = true;
+            this.labelFpsCounter.Location = new System.Drawing.Point(88, 15);
+            this.labelFpsCounter.Name = "labelFpsCounter";
+            this.labelFpsCounter.Size = new System.Drawing.Size(39, 13);
+            this.labelFpsCounter.TabIndex = 18;
+            this.labelFpsCounter.Text = "FPS: 0";
             // 
             // NoTearFlowLayoutPanelObject
             // 
@@ -1999,29 +2028,9 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 65);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(996, 366);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(996, 367);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
-            // 
-            // buttonObjRetrieveHome
-            // 
-            this.buttonObjRetrieveHome.Location = new System.Drawing.Point(99, 117);
-            this.buttonObjRetrieveHome.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonObjRetrieveHome.Name = "buttonObjRetrieveHome";
-            this.buttonObjRetrieveHome.Size = new System.Drawing.Size(91, 21);
-            this.buttonObjRetrieveHome.TabIndex = 18;
-            this.buttonObjRetrieveHome.Text = "Retrieve Home";
-            this.buttonObjRetrieveHome.UseVisualStyleBackColor = true;
-            // 
-            // buttonObjGoToHome
-            // 
-            this.buttonObjGoToHome.Location = new System.Drawing.Point(99, 92);
-            this.buttonObjGoToHome.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonObjGoToHome.Name = "buttonObjGoToHome";
-            this.buttonObjGoToHome.Size = new System.Drawing.Size(91, 21);
-            this.buttonObjGoToHome.TabIndex = 17;
-            this.buttonObjGoToHome.Text = "Go To Home";
-            this.buttonObjGoToHome.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -2033,11 +2042,13 @@ namespace SM64_Diagnostic
             this.Controls.Add(this.labelVersionNumber);
             this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.labelProcessSelect);
+            this.Controls.Add(this.labelFpsCounter);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StroopMainForm";
             this.Text = "Stroop";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StroopMainForm_FormClosing);
             this.Load += new System.EventHandler(this.StroopMainForm_Load);
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
@@ -2252,6 +2263,7 @@ namespace SM64_Diagnostic
         private Button buttonGoToVClosest;
         private Button buttonObjRetrieveHome;
         private Button buttonObjGoToHome;
+        private Label labelFpsCounter;
     }
 }
 

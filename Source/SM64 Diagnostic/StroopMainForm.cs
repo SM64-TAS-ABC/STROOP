@@ -82,6 +82,7 @@ namespace SM64_Diagnostic
 
             _sm64Stream = new ProcessStream();
             _sm64Stream.OnUpdate += OnUpdate;
+            _sm64Stream.FpsUpdated += _sm64Stream_FpsUpdated;
 
             currentContext.DisassemblyManager = _disManager = new DisassemblyManager(this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
             currentContext.ScriptManager = _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
@@ -208,16 +209,27 @@ namespace SM64_Diagnostic
 
         private void OnUpdate(object sender, EventArgs e)
         {
-            _objectSlotManager.Update();
-            _objectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
-            _marioManager.Update(tabControlMain.SelectedTab == tabPageMario);
-            _cameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
-            _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
-            _miscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
-            _triangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
-            _mapManager?.Update();
-            _scriptManager.Update();
-            _hackManager.Update();
+            this.Invoke(new Action(() =>
+            {
+                _objectSlotManager.Update();
+                _objectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
+                _marioManager.Update(tabControlMain.SelectedTab == tabPageMario);
+                _cameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
+                _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
+                _miscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
+                _triangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
+                _mapManager?.Update();
+                _scriptManager.Update();
+                _hackManager.Update();
+            }));
+        }
+
+        private void _sm64Stream_FpsUpdated(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(() =>
+            {
+                labelFpsCounter.Text = "FPS: " + (int)_sm64Stream.Fps;
+            }));
         }
 
         private void SetupViews()
@@ -401,6 +413,11 @@ namespace SM64_Diagnostic
             _splitterIsExpanded = !_splitterIsExpanded;
         }
 
+        private void StroopMainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _sm64Stream.Stop();
+        }
+
         private void buttonConnect_Click(object sender, EventArgs e)
         {
             var selectedProcess = (ProcessSelection?)listBoxProcessesList.SelectedItem;
@@ -489,21 +506,5 @@ namespace SM64_Diagnostic
                     splitContainerMain.SplitterDistance = _defaultSplitValue;
             }
         }
-
-        private void tabControlMain_DragEnter(object sender, DragEventArgs e)
-        {
-            return;
-            e.Effect = DragDropEffects.All;
-            Point clientPoint = tabControlMain.PointToClient(new Point(e.X, e.Y));
-
-            for (int i = 0; i < tabControlMain.TabCount; i++)
-            {
-                if (tabControlMain.GetTabRect(i).Contains(clientPoint) && tabControlMain.SelectedIndex != i)
-                {
-                    tabControlMain.SelectedIndex = i;
-                }
-            }
-        }
-
     }
 }
