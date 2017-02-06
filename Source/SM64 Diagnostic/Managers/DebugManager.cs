@@ -31,6 +31,9 @@ namespace SM64_Diagnostic.Managers
         {
             // Turn debug off
             _stream.WriteRam(new byte[] { 0 }, Config.Debug.Toggle);
+
+            // Set mode
+            _stream.WriteRam(new byte[] { 0 }, Config.Debug.Setting);
         }
 
         private void radioButtonDbgObjCnt_CheckedChanged(object sender, EventArgs e)
