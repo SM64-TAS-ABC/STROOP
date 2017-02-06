@@ -220,8 +220,8 @@ namespace SM64_Diagnostic.Utilities
             v2Y = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y2, 2), 0) + yOffset);
             v3Y = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y3, 2), 0) + yOffset);
 
-            short yMin = Math.Min(Math.Min(v1Y, v2Y), v3Y);
-            short yMax = Math.Max(Math.Max(v1Y, v2Y), v3Y);
+            short yMin = (short)(Math.Min(Math.Min(v1Y, v2Y), v3Y) + 5);
+            short yMax = (short)(Math.Max(Math.Max(v1Y, v2Y), v3Y) - 5);
 
             stream.Suspend();
 
