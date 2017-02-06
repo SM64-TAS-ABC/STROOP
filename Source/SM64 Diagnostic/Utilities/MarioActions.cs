@@ -10,7 +10,7 @@ namespace SM64_Diagnostic.Utilities
 {
     public static class MarioActions
     {
-        public static bool MoveMarioToObjects(ProcessStream stream, List<uint> objAddresses)
+        public static bool GoToObjects(ProcessStream stream, List<uint> objAddresses)
         {
             // Move mario to object
             var marioAddress = Config.Mario.StructAddress;
@@ -66,6 +66,61 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool GoToObjectsHome(ProcessStream stream, List<uint> objAddresses)
+        {
+            // Move mario to object
+            var marioAddress = Config.Mario.StructAddress;
+
+            stream.Suspend();
+
+            // Get object position
+            float x, y, z;
+            x = objAddresses.Average(obj => BitConverter.ToSingle(stream.ReadRam(obj + Config.ObjectSlots.HomeXOffset, 4), 0));
+            y = objAddresses.Average(obj => BitConverter.ToSingle(stream.ReadRam(obj + Config.ObjectSlots.HomeYOffset, 4), 0));
+            z = objAddresses.Average(obj => BitConverter.ToSingle(stream.ReadRam(obj + Config.ObjectSlots.HomeZOffset, 4), 0));
+
+            // Add offset
+            y += Config.Mario.MoveToObjectYOffset;
+
+            // Move mario to object
+            bool success = true;
+            success &= stream.WriteRam(BitConverter.GetBytes(x), marioAddress + Config.Mario.XOffset);
+            success &= stream.WriteRam(BitConverter.GetBytes(y), marioAddress + Config.Mario.YOffset);
+            success &= stream.WriteRam(BitConverter.GetBytes(z), marioAddress + Config.Mario.ZOffset);
+
+            stream.Resume();
+
+            return success;
+        }
+
+        public static bool RetreiveObjectsHome(ProcessStream stream, List<uint> objAddresses)
+        {
+            // Move object to Mario
+            var marioAddress = Config.Mario.StructAddress;
+
+            stream.Suspend();
+
+            // Get Mario position
+            float x, y, z;
+            x = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
+            y = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.YOffset, 4), 0);
+            z = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
+
+            // Add offset
+            y += Config.ObjectSlots.MoveToMarioYOffset;
+
+            // Move object to Mario
+            bool success = true;
+            foreach (var objAddress in objAddresses)
+            {
+                success &= stream.WriteRam(BitConverter.GetBytes(x), objAddress + Config.ObjectSlots.HomeXOffset);
+                success &= stream.WriteRam(BitConverter.GetBytes(y), objAddress + Config.ObjectSlots.HomeYOffset);
+                success &= stream.WriteRam(BitConverter.GetBytes(z), objAddress + Config.ObjectSlots.HomeZOffset);
+            }
+            stream.Resume();
+
+            return success;
+        }
 
         public static bool CloneObject(ProcessStream stream, uint objAddress)
         {

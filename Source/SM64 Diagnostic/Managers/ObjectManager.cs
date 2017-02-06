@@ -203,8 +203,10 @@ namespace SM64_Diagnostic.Managers
             // Register buttons
             objectGui.CloneButton.Click += CloneButton_Click;
             objectGui.UnloadButton.Click += UnloadButton_Click;
-            objectGui.MoveMarioToButton.Click += MoveMarioToButton_Click;
-            objectGui.MoveToMarioButton.Click += MoveToMarioButton_Click;
+            objectGui.GoToButton.Click += GoToButton_Click;
+            objectGui.RetrieveButton.Click += RetreiveButton_Click;
+            objectGui.GoToHomeButton.Click += GoToHomeButton_Click;
+            objectGui.RetrieveHomeButton.Click += RetrieveHomeButton_Click;
         }
 
         private void AddressChanged()
@@ -234,7 +236,7 @@ namespace SM64_Diagnostic.Managers
             variableInfo.ShowDialog();
         }
 
-        private void MoveToMarioButton_Click(object sender, EventArgs e)
+        private void RetreiveButton_Click(object sender, EventArgs e)
         {
             if (CurrentAddresses.Count == 0)
                 return;
@@ -242,12 +244,29 @@ namespace SM64_Diagnostic.Managers
             MarioActions.RetreiveObjects(_stream, CurrentAddresses);
         }
 
-        private void MoveMarioToButton_Click(object sender, EventArgs e)
+        private void GoToButton_Click(object sender, EventArgs e)
         {
             if (CurrentAddresses.Count == 0)
                 return;
 
-            MarioActions.MoveMarioToObjects(_stream, CurrentAddresses);
+            MarioActions.GoToObjects(_stream, CurrentAddresses);
+        }
+
+
+        private void GoToHomeButton_Click(object sender, EventArgs e)
+        {
+            if (CurrentAddresses.Count == 0)
+                return;
+
+            MarioActions.GoToObjectsHome(_stream, CurrentAddresses);
+        }
+
+        private void RetrieveHomeButton_Click(object sender, EventArgs e)
+        {
+            if (CurrentAddresses.Count == 0)
+                return;
+
+            MarioActions.RetreiveObjectsHome(_stream, CurrentAddresses);
         }
 
         private void UnloadButton_Click(object sender, EventArgs e)

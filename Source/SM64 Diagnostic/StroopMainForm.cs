@@ -110,7 +110,7 @@ namespace SM64_Diagnostic
             currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc, groupBoxPuController);
             currentContext.CameraManager = _cameraManager = new CameraManager(_sm64Stream, _cameraData, NoTearFlowLayoutPanelCamera);
             currentContext.TriangleManager = _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData);
-            currentContext.DebugManager = _debugManager = new DebugManager();
+            currentContext.DebugManager = _debugManager = new DebugManager(_sm64Stream, tabPageDebug);
 
             // Create object manager
             var objectGui = new ObjectDataGui()
@@ -125,8 +125,10 @@ namespace SM64_Diagnostic
                 ObjSlotIndexLabel = labelObjSlotIndValue,
                 ObjSlotPositionLabel = labelObjSlotPosValue,
                 CloneButton = buttonObjClone,
-                MoveMarioToButton = buttonObjGoTo,
-                MoveToMarioButton = buttonObjRetrieve,
+                GoToButton = buttonObjGoTo,
+                RetrieveButton = buttonObjRetrieve,
+                GoToHomeButton = buttonObjGoToHome,
+                RetrieveHomeButton = buttonObjRetrieveHome,
                 UnloadButton = buttonObjUnload
             };
             currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
@@ -399,50 +401,6 @@ namespace SM64_Diagnostic
             _splitterIsExpanded = !_splitterIsExpanded;
         }
 
-        #region Debug Tab
-
-        private void radioButtonDbgOff_CheckedChanged(object sender, EventArgs e)
-        {
-            // Turn debug off
-            _sm64Stream.WriteRam(new byte[] { 0 }, Config.Debug.Toggle);
-        }
-
-        private void radioButtonDbgObjCnt_CheckedChanged(object sender, EventArgs e)
-        {
-            // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
-
-            // Set mode
-            _sm64Stream.WriteRam(new byte[] { 0 }, Config.Debug.Setting);
-        }
-
-        private void radioButtonDbgChkInfo_CheckedChanged(object sender, EventArgs e)
-        {
-            // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
-
-            // Set mode
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Setting);
-        }
-
-        private void radioButtonDbgMapInfo_CheckedChanged(object sender, EventArgs e)
-        {
-            // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
-
-            // Set mode
-            _sm64Stream.WriteRam(new byte[] { 2 }, Config.Debug.Setting);
-        }
-
-        private void radioButtonDbgStgInfo_CheckedChanged(object sender, EventArgs e)
-        {
-            // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
-
-            // Set mode
-            _sm64Stream.WriteRam(new byte[] { 3 }, Config.Debug.Setting);
-        }
-
         private void buttonConnect_Click(object sender, EventArgs e)
         {
             var selectedProcess = (ProcessSelection?)listBoxProcessesList.SelectedItem;
@@ -489,15 +447,6 @@ namespace SM64_Diagnostic
             Config.ShowOverlays = checkBoxUseOverlays.Checked;
         }
 
-        private void radioButtonDbgFxInfo_CheckedChanged(object sender, EventArgs e)
-        {
-            // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
-
-            // Set mode
-            _sm64Stream.WriteRam(new byte[] { 4 }, Config.Debug.Setting);
-        }
-
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
         {
             _resizeObjSlotTime = 500;
@@ -521,17 +470,6 @@ namespace SM64_Diagnostic
             _objSlotResizing = false;
         }
 
-        private void radioButtonDbgEnemyInfo_CheckedChanged(object sender, EventArgs e)
-        {
-            // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
-
-            // Set mode
-            _sm64Stream.WriteRam(new byte[] { 5 }, Config.Debug.Setting);
-        }
-
-        #endregion
-
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControlMain.SelectedTab == tabPageMap)
@@ -554,6 +492,7 @@ namespace SM64_Diagnostic
 
         private void tabControlMain_DragEnter(object sender, DragEventArgs e)
         {
+            return;
             e.Effect = DragDropEffects.All;
             Point clientPoint = tabControlMain.PointToClient(new Point(e.X, e.Y));
 

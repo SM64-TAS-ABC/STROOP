@@ -15,8 +15,10 @@ namespace SM64_Diagnostic.Structs
         public NoTearFlowLayoutPanel ObjectFlowLayout;
         public Button CloneButton;
         public Button UnloadButton;
-        public Button MoveToMarioButton;
-        public Button MoveMarioToButton;
+        public Button RetrieveButton;
+        public Button GoToButton;
+        public Button RetrieveHomeButton;
+        public Button GoToHomeButton;
         public TextBox ObjectNameTextBox;
         public Label ObjBehaviorLabel;
         public Label ObjSlotIndexLabel;
