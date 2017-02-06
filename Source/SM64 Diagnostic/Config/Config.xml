@@ -77,7 +77,7 @@
     <StarCountAddress>0x8033B21A</StarCountAddress>
     <DisplayLiveCountAddress>0x8033B260</DisplayLiveCountAddress>
     <DisplayCoinCountAddress>0x8033B262</DisplayCoinCountAddress>
-    <DisplayStarCountAddress>0x8033B268</DisplayStarCountAddress>
+    <DisplayStarCountAddress>0x8033B264</DisplayStarCountAddress>
     <FullHp>2176</FullHp>
     <StandardLives>4</StandardLives>
     <StandardCoins>0</StandardCoins>

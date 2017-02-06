@@ -186,6 +186,8 @@ namespace SM64_Diagnostic.Utilities
         {
             bool success = true;
 
+            stream.Suspend();
+
             success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.FullHp), Config.Hud.HpAddress);
             success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardCoins), Config.Hud.CoinCountAddress);
             success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardLives), Config.Hud.LiveCountAddress);
@@ -193,6 +195,8 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardCoins), Config.Hud.DisplayCoinCountAddress);
             success &= stream.WriteRam(BitConverter.GetBytes((short)Config.Hud.StandardLives), Config.Hud.DisplayLiveCountAddress);
             success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardStars), Config.Hud.DisplayStarCountAddress);
+
+            stream.Resume();
 
             return success;
         }
