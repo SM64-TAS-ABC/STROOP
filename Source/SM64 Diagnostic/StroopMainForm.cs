@@ -209,7 +209,7 @@ namespace SM64_Diagnostic
 
         private void OnUpdate(object sender, EventArgs e)
         {
-            this.Invoke(new Action(() =>
+            Invoke(new Action(() =>
             {
                 _objectSlotManager.Update();
                 _objectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
@@ -226,7 +226,7 @@ namespace SM64_Diagnostic
 
         private void _sm64Stream_FpsUpdated(object sender, EventArgs e)
         {
-            this.Invoke(new Action(() =>
+            Invoke(new Action(() =>
             {
                 labelFpsCounter.Text = "FPS: " + (int)_sm64Stream.Fps;
             }));
