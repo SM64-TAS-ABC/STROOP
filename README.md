@@ -1,9 +1,9 @@
 # STROOP
 *SuperMario64 Technical Run-time Observer and Object Processor*
 
-  STROOP is a overly complicated diagnostic tool for Super Mario 64 which allows for complicated mario bullsh*t and manipulation. 
+  STROOP is a overly complicated diagnostic tool for Super Mario 64 which allows for complicated mario stuff and manipulation. 
   
-  *...I'll rewrite this description later - Dane*
+  *(...I'll rewrite this description later - Dane)*
   
        
 ## Downloading Stroop
