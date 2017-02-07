@@ -48,9 +48,6 @@ namespace SM64_Diagnostic
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
 
-        bool _splitterIsExpanded = false;
-        static int _defaultSplitValue;
-
         public StroopMainForm()
         {
             InitializeComponent();
@@ -151,7 +148,6 @@ namespace SM64_Diagnostic
             SetupViews();
 
             _resizing = false;
-            _defaultSplitValue = splitContainerMain.SplitterDistance;
             labelVersionNumber.Text = _version;
 
             // Load process
@@ -397,25 +393,19 @@ namespace SM64_Diagnostic
             _mapManager.Load();
         }
 
-        private void buttonMapExpand_Click(object sender, EventArgs e)
-        {
-            if (!_splitterIsExpanded)
-            {
-                buttonMapExpand.Text = "Minimize Map";
-                splitContainerMain.SplitterDistance = splitContainerMain.Height; 
-            }
-            else
-            {
-                buttonMapExpand.Text = "Expand Map";
-                splitContainerMain.SplitterDistance = _defaultSplitValue;
-            }
-
-            _splitterIsExpanded = !_splitterIsExpanded;
-        }
-
         private void StroopMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             _sm64Stream.Stop();
+        }
+
+        private void buttonCollapseBottom_Click(object sender, EventArgs e)
+        {
+            splitContainerMain.Panel2Collapsed = !splitContainerMain.Panel2Collapsed;
+        }
+
+        private void buttonCollapseTop_Click(object sender, EventArgs e)
+        {
+            splitContainerMain.Panel1Collapsed = !splitContainerMain.Panel1Collapsed;
         }
 
         private void buttonConnect_Click(object sender, EventArgs e)
@@ -494,16 +484,12 @@ namespace SM64_Diagnostic
                 _objectSlotManager.UpdateSelectedObjectSlots();
                 comboBoxMapToggleMode.Visible = true;
                 labelToggleMode.Visible = true;
-                if (_splitterIsExpanded)
-                    splitContainerMain.SplitterDistance = splitContainerMain.Height;
             }
             else
             {
                 _objectSlotManager.SetAllSelectedObjectSlots();
                 comboBoxMapToggleMode.Visible = false;
                 labelToggleMode.Visible = false;
-                if (_splitterIsExpanded)
-                    splitContainerMain.SplitterDistance = _defaultSplitValue;
             }
         }
     }

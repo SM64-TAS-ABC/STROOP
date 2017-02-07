@@ -125,7 +125,6 @@ namespace SM64_Diagnostic
             this.labelMapIconSize = new System.Windows.Forms.Label();
             this.checkBoxMapShowInactive = new System.Windows.Forms.CheckBox();
             this.labelMapZoom = new System.Windows.Forms.Label();
-            this.buttonMapExpand = new System.Windows.Forms.Button();
             this.labelMapId = new System.Windows.Forms.Label();
             this.labelMapSubName = new System.Windows.Forms.Label();
             this.trackBarMapZoom = new System.Windows.Forms.TrackBar();
@@ -163,6 +162,8 @@ namespace SM64_Diagnostic
             this.buttonConnect = new System.Windows.Forms.Button();
             this.listBoxProcessesList = new System.Windows.Forms.ListBox();
             this.labelFpsCounter = new System.Windows.Forms.Label();
+            this.buttonCollapseTop = new System.Windows.Forms.Button();
+            this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.NoTearFlowLayoutPanelObject = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.pictureBoxObject = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelMario = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
@@ -258,7 +259,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(1004, 436);
+            this.groupBoxObjects.Size = new System.Drawing.Size(1004, 439);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1183,7 +1184,6 @@ namespace SM64_Diagnostic
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapIconSize);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowInactive);
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapZoom);
-            this.splitContainerMap.Panel1.Controls.Add(this.buttonMapExpand);
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapId);
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapSubName);
             this.splitContainerMap.Panel1.Controls.Add(this.trackBarMapZoom);
@@ -1303,17 +1303,6 @@ namespace SM64_Diagnostic
             this.labelMapZoom.Size = new System.Drawing.Size(37, 13);
             this.labelMapZoom.TabIndex = 12;
             this.labelMapZoom.Text = "Zoom:";
-            // 
-            // buttonMapExpand
-            // 
-            this.buttonMapExpand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonMapExpand.Location = new System.Drawing.Point(3, 182);
-            this.buttonMapExpand.Name = "buttonMapExpand";
-            this.buttonMapExpand.Size = new System.Drawing.Size(90, 23);
-            this.buttonMapExpand.TabIndex = 11;
-            this.buttonMapExpand.Text = "Expand Map";
-            this.buttonMapExpand.UseVisualStyleBackColor = true;
-            this.buttonMapExpand.Click += new System.EventHandler(this.buttonMapExpand_Click);
             // 
             // labelMapId
             // 
@@ -1749,6 +1738,30 @@ namespace SM64_Diagnostic
             this.labelFpsCounter.TabIndex = 18;
             this.labelFpsCounter.Text = "FPS: 0";
             // 
+            // buttonCollapseTop
+            // 
+            this.buttonCollapseTop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonCollapseTop.BackgroundImage")));
+            this.buttonCollapseTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonCollapseTop.Location = new System.Drawing.Point(946, 11);
+            this.buttonCollapseTop.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCollapseTop.Name = "buttonCollapseTop";
+            this.buttonCollapseTop.Size = new System.Drawing.Size(24, 21);
+            this.buttonCollapseTop.TabIndex = 19;
+            this.buttonCollapseTop.UseVisualStyleBackColor = true;
+            this.buttonCollapseTop.Click += new System.EventHandler(this.buttonCollapseTop_Click);
+            // 
+            // buttonCollapseBottom
+            // 
+            this.buttonCollapseBottom.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonCollapseBottom.BackgroundImage")));
+            this.buttonCollapseBottom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonCollapseBottom.Location = new System.Drawing.Point(918, 11);
+            this.buttonCollapseBottom.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCollapseBottom.Name = "buttonCollapseBottom";
+            this.buttonCollapseBottom.Size = new System.Drawing.Size(24, 21);
+            this.buttonCollapseBottom.TabIndex = 20;
+            this.buttonCollapseBottom.UseVisualStyleBackColor = true;
+            this.buttonCollapseBottom.Click += new System.EventHandler(this.buttonCollapseBottom_Click);
+            // 
             // NoTearFlowLayoutPanelObject
             // 
             this.NoTearFlowLayoutPanelObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -2028,7 +2041,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 65);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(996, 367);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(996, 370);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2037,6 +2050,8 @@ namespace SM64_Diagnostic
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 728);
+            this.Controls.Add(this.buttonCollapseBottom);
+            this.Controls.Add(this.buttonCollapseTop);
             this.Controls.Add(this.panelConnect);
             this.Controls.Add(this.buttonDisconnect);
             this.Controls.Add(this.labelVersionNumber);
@@ -2165,7 +2180,6 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.Label labelVersionNumber;
         private System.Windows.Forms.TrackBar trackBarMapIconSize;
         private System.Windows.Forms.TrackBar trackBarMapZoom;
-        private System.Windows.Forms.Button buttonMapExpand;
         private System.Windows.Forms.Label labelMapIconSize;
         private System.Windows.Forms.Label labelMapZoom;
         private System.Windows.Forms.CheckBox checkBoxMapShowInactive;
@@ -2264,6 +2278,8 @@ namespace SM64_Diagnostic
         private Button buttonObjRetrieveHome;
         private Button buttonObjGoToHome;
         private Label labelFpsCounter;
+        private Button buttonCollapseTop;
+        private Button buttonCollapseBottom;
     }
 }
 

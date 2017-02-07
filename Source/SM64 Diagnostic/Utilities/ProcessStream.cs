@@ -280,7 +280,7 @@ namespace SM64_Diagnostic.Utilities
             return WriteRam(buffer, 0, address, length, absoluteAddress, fixAddress);
         }
 
-        public async void Stop()
+        public void Stop()
         {
             _cancelToken?.Cancel();
             _streamUpdater?.Wait();

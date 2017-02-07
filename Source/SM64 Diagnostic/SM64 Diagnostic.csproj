@@ -189,6 +189,8 @@
     <Compile Include="VariableViewerForm.Designer.cs">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\select_bottom.png" />
+    <None Include="Resources\select_top.png" />
     <None Include="packages.config" />
     <None Include="Resources\home.png" />
     <None Include="Resources\arrow-down.png" />
