@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Stroop")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("STROOP")]
+[assembly: AssemblyDescription("SuperMario64 Technical Run-time Observer and Object Processor")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Stroop")]
+[assembly: AssemblyProduct("STROOP")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

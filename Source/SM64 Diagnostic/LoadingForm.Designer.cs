@@ -57,7 +57,7 @@
             this.labelLoading.Name = "labelLoading";
             this.labelLoading.Size = new System.Drawing.Size(641, 77);
             this.labelLoading.TabIndex = 1;
-            this.labelLoading.Text = "Loading Stroop";
+            this.labelLoading.Text = "Loading STROOP";
             this.labelLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelLoadingStatus
