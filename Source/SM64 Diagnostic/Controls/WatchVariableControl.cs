@@ -557,6 +557,13 @@ namespace SM64_Diagnostic.Controls
 
         private void OnTextValueKeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyData == Keys.Escape)
+            {
+                // Exit edit mode
+                EditMode = false;
+                return;
+            }
+
             // On "Enter" key press
             if (e.KeyData != Keys.Enter)
                 return;
