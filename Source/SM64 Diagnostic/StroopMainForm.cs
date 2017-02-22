@@ -169,7 +169,7 @@ namespace SM64_Diagnostic
                     case DialogResult.Yes:
                         _sm64Stream.Readonly = false;
                         _sm64Stream.ShowWarning = false;
-                        buttonReadOnly.Text = "Disable Read-only";
+                        buttonReadOnly.Text = "Enable Read-only";
                         break;
 
                     case DialogResult.No:

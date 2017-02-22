@@ -17,7 +17,6 @@ namespace SM64_Diagnostic.Managers
         ProcessStream _stream;
         RichTextBox _output;
         MaskedTextBox _textBoxStartAdd;
-        bool _addressChanged = false;
         uint _lastProcessAddress;
         Button _goButton, _moreButton;
         int _currentLines = NumberOfLinesAdd;
@@ -34,7 +33,6 @@ namespace SM64_Diagnostic.Managers
             _moreButton.Click += MoreButton_Click;
             _textBoxStartAdd.TextChanged += (sender, e) =>
             {
-                _addressChanged = true;
                 _currentLines = NumberOfLinesAdd;
                 _goButton.Text = "Go";
             };
@@ -65,7 +63,6 @@ namespace SM64_Diagnostic.Managers
 
             _goButton.Text = "Refresh";
             _moreButton.Visible = true;
-            _addressChanged = false;
 
             _output.Text = "";
             _lastProcessAddress = newAddress & 0x0FFFFFFF;

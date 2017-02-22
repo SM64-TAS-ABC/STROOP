@@ -102,9 +102,9 @@ namespace SM64_Diagnostic.Managers
             switch (ManagerGui.TabControl.SelectedTab.Text)
             {
                 default:
-                    var keyboardState = Keyboard.GetState(0);
+                    var keyboardState = Keyboard.GetState();
                     ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
-                    if (keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight)
+                    if ((keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight))
                         && SelectedSlotsAddresses.Count > 0)
                     {
                         int minSelect = SelectedSlotsAddresses.Min(s => ObjectSlots.First(o => o.Address == s).Index);
