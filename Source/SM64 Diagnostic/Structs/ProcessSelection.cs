@@ -10,15 +10,17 @@ namespace SM64_Diagnostic.Utilities
     public struct ProcessSelection
     {
         public Process Process;
+        public int Index;
 
-        public ProcessSelection(Process process)
+        public ProcessSelection(Process process, int index)
         {
             Process = process;
+            Index = index;
         }
 
         public override string ToString()
         {
-            return this.Process.ProcessName;
+            return Index + ". " + this.Process.ProcessName;
         }
     }
 }

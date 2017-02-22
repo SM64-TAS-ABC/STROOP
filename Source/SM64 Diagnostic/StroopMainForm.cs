@@ -473,8 +473,9 @@ namespace SM64_Diagnostic
         {
             // Update the process list
             listBoxProcessesList.Items.Clear();
-            foreach (var process in GetAvailableProcesses())
-                listBoxProcessesList.Items.Add(new ProcessSelection(process));
+            var processes = GetAvailableProcesses().OrderBy(p => p.StartTime).ToList();
+            for (int i = 0; i < processes.Count; i++)
+                listBoxProcessesList.Items.Add(new ProcessSelection(processes[i], i + 1));
             
             // Pre-select the first process
             if (listBoxProcessesList.Items.Count != 0)
