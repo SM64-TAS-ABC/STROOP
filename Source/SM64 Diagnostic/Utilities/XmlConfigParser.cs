@@ -277,6 +277,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "StarCountAddress":
                                     Config.Hud.StarCountAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "DisplayHpAddress":
+                                    Config.Hud.DisplayHpAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "DisplayLiveCountAddress":
                                     Config.Hud.DisplayLiveCountAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
@@ -285,6 +288,9 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                                 case "DisplayStarCountAddress":
                                     Config.Hud.DisplayStarCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "FullHpInt":
+                                    Config.Hud.FullHpInt = short.Parse(subElement.Value);
                                     break;
                                 case "FullHp":
                                     Config.Hud.FullHp = short.Parse(subElement.Value);

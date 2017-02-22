@@ -192,6 +192,7 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.SetValue(Config.Hud.StandardCoins, Config.Hud.CoinCountAddress);
             success &= stream.SetValue(Config.Hud.StandardLives, Config.Hud.LiveCountAddress);
             success &= stream.SetValue(Config.Hud.StandardStars, Config.Hud.StarCountAddress);
+            success &= stream.SetValue(Config.Hud.FullHpInt, Config.Hud.DisplayHpAddress);
             success &= stream.SetValue(Config.Hud.StandardCoins, Config.Hud.DisplayCoinCountAddress);
             success &= stream.SetValue((short)Config.Hud.StandardLives, Config.Hud.DisplayLiveCountAddress);
             success &= stream.SetValue(Config.Hud.StandardStars, Config.Hud.DisplayStarCountAddress);
