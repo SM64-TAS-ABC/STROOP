@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using SM64_Diagnostic.Structs;
 using System.Threading;
+using System.IO;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -105,8 +106,15 @@ namespace SM64_Diagnostic.Utilities
             SwitchProcess(_process, _emulator);
         }
 
+        private void LogException(Exception e)
+        {
+            File.AppendAllText("error.txt", String.Format("{0}\n{1}\n{2}\n{3}\n", e.Message,
+                e.InnerException.ToString(), e.TargetSite.ToString(), e.StackTrace));
+        }
+
         private void ExceptionHandler(Task obj)
         {
+            LogException(obj.Exception);
             throw obj.Exception;
         }
 
@@ -455,20 +463,24 @@ namespace SM64_Diagnostic.Utilities
                 if (!IsRunning & !_lastUpdateBeforePausing)
                     goto FrameLimitStreamUpdate;
 
+                _lastUpdateBeforePausing = false;
+
                 int timeToWait;
                 try
                 {
-                    _lastUpdateBeforePausing = false;
-
                     // Read whole ram value to buffer
                     if (!ReadProcessMemory(0, _ram))
                         continue;
-                    OnUpdate?.Invoke(this, new EventArgs());
-
-                    foreach (var lockVar in LockedVariables)
-                        lockVar.Value.Update();
                 }
-                catch (Exception) { }
+                catch (Exception)
+                {
+                    continue;
+                }
+
+                OnUpdate?.Invoke(this, new EventArgs());
+
+                foreach (var lockVar in LockedVariables)
+                    lockVar.Value.Update();
 
                 FrameLimitStreamUpdate:
 
