@@ -944,7 +944,9 @@ namespace SM64_Diagnostic.Utilities
                             element.Attribute(XName.Get("afterCloneValue")).Value);
                         uint defaultAfterUncloneValue = ParsingUtilities.ParseHex(
                             element.Attribute(XName.Get("afterUncloneValue")).Value);
-                        actionTable = new ActionTable(defaultAfterCloneValue, defaultAfterUncloneValue);
+                        uint defaultHandsfreeValue = ParsingUtilities.ParseHex(
+                            element.Attribute(XName.Get("handsfreeValue")).Value);
+                        actionTable = new ActionTable(defaultAfterCloneValue, defaultAfterUncloneValue, defaultHandsfreeValue);
                         break;
 
                     case "Action":
@@ -955,8 +957,16 @@ namespace SM64_Diagnostic.Utilities
                             ParsingUtilities.ParseHex(element.Attribute(XName.Get("afterCloneValue")).Value) : (uint?) null;
                         uint? afterUncloneValue = element.Attribute(XName.Get("afterUncloneValue")) != null ?
                             ParsingUtilities.ParseHex(element.Attribute(XName.Get("afterUncloneValue")).Value) : (uint?) null;
-                        actionTable?.Add(new Tuple<uint, string, uint?, uint?>(
-                            actionValue, actionName, afterCloneValue, afterUncloneValue));
+                        uint? handsfreeValue = element.Attribute(XName.Get("handsfreeValue")) != null ?
+                            ParsingUtilities.ParseHex(element.Attribute(XName.Get("handsfreeValue")).Value) : (uint?)null;
+                        actionTable?.Add(new ActionTable.ActionReference()
+                        {
+                            Action = actionValue,
+                            ActionName = actionName,
+                            AfterClone = afterCloneValue,
+                            AfterUnclone = afterUncloneValue,
+                            Handsfree = handsfreeValue
+                        });
                         break;
                 }
             }

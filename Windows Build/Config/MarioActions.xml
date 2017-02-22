@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MarioActions>
-  <Default afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
-  <Action name="standing" value="0x0C400201" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201"/>
+  <Default afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x0C400201"/>
+  <Action name="standing" value="0x0C400201" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x0C400201"/>
   <Action name="start sleeping" value="0x0C400202" afterCloneValue="0x08000207" afterUncloneValue="0x0C400202"/>
   <Action name="sleeping" value="0x0C000203" afterCloneValue="0x08000207" afterUncloneValue="0x0C000203"/>
   <Action name="waking up" value="0x0C000204" afterCloneValue="0x08000207" afterUncloneValue="0x0C000204"/>

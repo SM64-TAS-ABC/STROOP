@@ -172,6 +172,27 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool ToggleHandsfree(ProcessStream stream)
+        {
+            bool success = true;
+            var marioAddress = Config.Mario.StructAddress;
+
+            stream.Suspend();
+
+            var holdingObj = stream.GetUInt32(marioAddress + Config.Mario.HoldingObjectPointerOffset);
+
+            if (holdingObj != 0x00000000U)
+            {
+                uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
+                uint nextAction = Config.MarioActions.GetHandsfreeValue(currentAction);
+                success = stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
+            }
+
+            stream.Resume();
+
+            return success;
+        }
+
         public static bool RefillHp(ProcessStream stream)
         {
             return stream.SetValue(Config.Hud.FullHp, Config.Hud.HpAddress);

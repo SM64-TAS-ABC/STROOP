@@ -105,7 +105,7 @@ namespace SM64_Diagnostic
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
             currentContext.MapManager = _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
 
-            currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, panelMarioBorder, NoTearFlowLayoutPanelMario, _mapManager);
+            currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
             currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
             currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc, groupBoxPuController);
             currentContext.CameraManager = _cameraManager = new CameraManager(_sm64Stream, _cameraData, NoTearFlowLayoutPanelCamera);
