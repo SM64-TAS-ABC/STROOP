@@ -10,6 +10,7 @@ namespace SM64_Diagnostic.Structs
     {
         public uint StructAddress;
         public uint ActionOffset;
+        public uint PrevActionOffset;
         public uint XOffset;
         public uint YOffset;
         public uint ZOffset;

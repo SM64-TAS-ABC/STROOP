@@ -29,7 +29,8 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("SlidingSpeed"),
                 new AngleDataContainer("SlidingAngle"),
                 new DataContainer("FallHeight"),
-                new DataContainer("ActionDescription")
+                new DataContainer("ActionDescription"),
+                new DataContainer("PrevActionDescription")
             };
         }
 
@@ -72,6 +73,10 @@ namespace SM64_Diagnostic.Managers
 
                     case "ActionDescription":
                         (specialVar as DataContainer).Text = Config.MarioActions.GetActionName(_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset));
+                        break;
+
+                    case "PrevActionDescription":
+                        (specialVar as DataContainer).Text = Config.MarioActions.GetActionName(_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset));
                         break;
                 }
             }

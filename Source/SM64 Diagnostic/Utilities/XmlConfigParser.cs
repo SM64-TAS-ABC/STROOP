@@ -211,6 +211,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "ActionOffset":
                                     Config.Mario.ActionOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "PrevActionOffset":
+                                    Config.Mario.PrevActionOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "MoveToObjectYOffset":
                                     Config.Mario.MoveToObjectYOffset = float.Parse(subElement.Value);
                                     break;
