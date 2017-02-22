@@ -144,24 +144,26 @@ namespace SM64_Diagnostic
             this.maskedTextBoxDisStart = new System.Windows.Forms.MaskedTextBox();
             this.labelDisStart = new System.Windows.Forms.Label();
             this.richTextBoxDissasembly = new System.Windows.Forms.RichTextBox();
-            this.tabPageOptions = new System.Windows.Forms.TabPage();
-            this.checkBoxUseOverlays = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
-            this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
-            this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.tabPageHacks = new System.Windows.Forms.TabPage();
             this.splitContainerHacks = new System.Windows.Forms.SplitContainer();
             this.groupBoxHackRam = new System.Windows.Forms.GroupBox();
             this.labelPureInterpretterRequire = new System.Windows.Forms.Label();
             this.checkedListBoxHacks = new System.Windows.Forms.CheckedListBox();
             this.groupBoxHackSpawn = new System.Windows.Forms.GroupBox();
+            this.labelSpawnHint = new System.Windows.Forms.Label();
+            this.buttonSpawnReset = new System.Windows.Forms.Button();
             this.labelSpawnExtra = new System.Windows.Forms.Label();
             this.labelSpawnGfxId = new System.Windows.Forms.Label();
             this.textBoxSpawnExtra = new System.Windows.Forms.TextBox();
             this.textBoxSpawnGfxId = new System.Windows.Forms.TextBox();
             this.buttonHackSpawn = new System.Windows.Forms.Button();
             this.listBoxSpawn = new System.Windows.Forms.ListBox();
+            this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.checkBoxUseOverlays = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
+            this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
+            this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
             this.panelConnect = new System.Windows.Forms.Panel();
@@ -172,9 +174,8 @@ namespace SM64_Diagnostic
             this.labelFpsCounter = new System.Windows.Forms.Label();
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
-            this.buttonSpawnReset = new System.Windows.Forms.Button();
-            this.labelSpawnHint = new System.Windows.Forms.Label();
             this.buttonReadOnly = new System.Windows.Forms.Button();
+            this.buttonDisMore = new System.Windows.Forms.Button();
             this.NoTearFlowLayoutPanelObject = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.pictureBoxObject = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelMario = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
@@ -229,7 +230,6 @@ namespace SM64_Diagnostic
             this.tabPageExpressions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressions)).BeginInit();
             this.tabPageDisassembly.SuspendLayout();
-            this.tabPageOptions.SuspendLayout();
             this.tabPageHacks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHacks)).BeginInit();
             this.splitContainerHacks.Panel1.SuspendLayout();
@@ -237,6 +237,7 @@ namespace SM64_Diagnostic
             this.splitContainerHacks.SuspendLayout();
             this.groupBoxHackRam.SuspendLayout();
             this.groupBoxHackSpawn.SuspendLayout();
+            this.tabPageOptions.SuspendLayout();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).BeginInit();
@@ -276,7 +277,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(1004, 459);
+            this.groupBoxObjects.Size = new System.Drawing.Size(1004, 460);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1363,7 +1364,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(656, 167);
+            this.glControlMap.Size = new System.Drawing.Size(657, 167);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -1500,6 +1501,7 @@ namespace SM64_Diagnostic
             // tabPageDisassembly
             // 
             this.tabPageDisassembly.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageDisassembly.Controls.Add(this.buttonDisMore);
             this.tabPageDisassembly.Controls.Add(this.buttonDisGo);
             this.tabPageDisassembly.Controls.Add(this.maskedTextBoxDisStart);
             this.tabPageDisassembly.Controls.Add(this.labelDisStart);
@@ -1513,18 +1515,16 @@ namespace SM64_Diagnostic
             // 
             // buttonDisGo
             // 
-            this.buttonDisGo.Enabled = false;
             this.buttonDisGo.Location = new System.Drawing.Point(171, 2);
             this.buttonDisGo.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDisGo.Name = "buttonDisGo";
-            this.buttonDisGo.Size = new System.Drawing.Size(50, 20);
+            this.buttonDisGo.Size = new System.Drawing.Size(62, 20);
             this.buttonDisGo.TabIndex = 5;
             this.buttonDisGo.Text = "Go";
             this.buttonDisGo.UseVisualStyleBackColor = true;
             // 
             // maskedTextBoxDisStart
             // 
-            this.maskedTextBoxDisStart.Enabled = false;
             this.maskedTextBoxDisStart.Location = new System.Drawing.Point(79, 2);
             this.maskedTextBoxDisStart.Margin = new System.Windows.Forms.Padding(2);
             this.maskedTextBoxDisStart.Mask = "\\0xaaAAAAAA";
@@ -1555,78 +1555,6 @@ namespace SM64_Diagnostic
             this.richTextBoxDissasembly.Size = new System.Drawing.Size(991, 175);
             this.richTextBoxDissasembly.TabIndex = 0;
             this.richTextBoxDissasembly.Text = "";
-            // 
-            // tabPageOptions
-            // 
-            this.tabPageOptions.Controls.Add(this.checkBoxUseOverlays);
-            this.tabPageOptions.Controls.Add(this.label3);
-            this.tabPageOptions.Controls.Add(this.checkBoxMoveCamWithPu);
-            this.tabPageOptions.Controls.Add(this.checkBoxUseRomHack);
-            this.tabPageOptions.Controls.Add(this.checkBoxStartSlotIndexOne);
-            this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
-            this.tabPageOptions.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageOptions.Name = "tabPageOptions";
-            this.tabPageOptions.Size = new System.Drawing.Size(996, 202);
-            this.tabPageOptions.TabIndex = 5;
-            this.tabPageOptions.Text = "Options";
-            // 
-            // checkBoxUseOverlays
-            // 
-            this.checkBoxUseOverlays.AutoSize = true;
-            this.checkBoxUseOverlays.Checked = true;
-            this.checkBoxUseOverlays.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxUseOverlays.Location = new System.Drawing.Point(3, 69);
-            this.checkBoxUseOverlays.Name = "checkBoxUseOverlays";
-            this.checkBoxUseOverlays.Size = new System.Drawing.Size(171, 17);
-            this.checkBoxUseOverlays.TabIndex = 8;
-            this.checkBoxUseOverlays.Text = "Use Mario Interaction Overlays";
-            this.checkBoxUseOverlays.UseVisualStyleBackColor = true;
-            this.checkBoxUseOverlays.CheckedChanged += new System.EventHandler(this.checkBoxUseOverlays_CheckedChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 189);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "*Requires Pure Interpreter";
-            // 
-            // checkBoxMoveCamWithPu
-            // 
-            this.checkBoxMoveCamWithPu.AutoSize = true;
-            this.checkBoxMoveCamWithPu.Checked = true;
-            this.checkBoxMoveCamWithPu.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMoveCamWithPu.Location = new System.Drawing.Point(3, 46);
-            this.checkBoxMoveCamWithPu.Name = "checkBoxMoveCamWithPu";
-            this.checkBoxMoveCamWithPu.Size = new System.Drawing.Size(162, 17);
-            this.checkBoxMoveCamWithPu.TabIndex = 4;
-            this.checkBoxMoveCamWithPu.Text = "PU Controller Moves Camera";
-            this.checkBoxMoveCamWithPu.UseVisualStyleBackColor = true;
-            this.checkBoxMoveCamWithPu.CheckedChanged += new System.EventHandler(this.checkBoxMoveCamWithPu_CheckedChanged);
-            // 
-            // checkBoxUseRomHack
-            // 
-            this.checkBoxUseRomHack.AutoSize = true;
-            this.checkBoxUseRomHack.Location = new System.Drawing.Point(3, 24);
-            this.checkBoxUseRomHack.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxUseRomHack.Name = "checkBoxUseRomHack";
-            this.checkBoxUseRomHack.Size = new System.Drawing.Size(166, 17);
-            this.checkBoxUseRomHack.TabIndex = 2;
-            this.checkBoxUseRomHack.Text = "Enable STROOP ROM hack*";
-            this.checkBoxUseRomHack.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxStartSlotIndexOne
-            // 
-            this.checkBoxStartSlotIndexOne.AutoSize = true;
-            this.checkBoxStartSlotIndexOne.Location = new System.Drawing.Point(3, 3);
-            this.checkBoxStartSlotIndexOne.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxStartSlotIndexOne.Name = "checkBoxStartSlotIndexOne";
-            this.checkBoxStartSlotIndexOne.Size = new System.Drawing.Size(133, 17);
-            this.checkBoxStartSlotIndexOne.TabIndex = 0;
-            this.checkBoxStartSlotIndexOne.Text = "Start Slot Index From 1";
-            this.checkBoxStartSlotIndexOne.UseVisualStyleBackColor = true;
             // 
             // tabPageHacks
             // 
@@ -1713,6 +1641,27 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
             // 
+            // labelSpawnHint
+            // 
+            this.labelSpawnHint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelSpawnHint.AutoSize = true;
+            this.labelSpawnHint.Location = new System.Drawing.Point(315, 168);
+            this.labelSpawnHint.Name = "labelSpawnHint";
+            this.labelSpawnHint.Size = new System.Drawing.Size(127, 13);
+            this.labelSpawnHint.TabIndex = 25;
+            this.labelSpawnHint.Text = "(Press L button to spawn)";
+            // 
+            // buttonSpawnReset
+            // 
+            this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSpawnReset.Location = new System.Drawing.Point(531, 164);
+            this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSpawnReset.Name = "buttonSpawnReset";
+            this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
+            this.buttonSpawnReset.TabIndex = 24;
+            this.buttonSpawnReset.Text = "Reset (Turn Off)";
+            this.buttonSpawnReset.UseVisualStyleBackColor = true;
+            // 
             // labelSpawnExtra
             // 
             this.labelSpawnExtra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1771,6 +1720,78 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.Size = new System.Drawing.Size(635, 121);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
+            // 
+            // tabPageOptions
+            // 
+            this.tabPageOptions.Controls.Add(this.checkBoxUseOverlays);
+            this.tabPageOptions.Controls.Add(this.label3);
+            this.tabPageOptions.Controls.Add(this.checkBoxMoveCamWithPu);
+            this.tabPageOptions.Controls.Add(this.checkBoxUseRomHack);
+            this.tabPageOptions.Controls.Add(this.checkBoxStartSlotIndexOne);
+            this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
+            this.tabPageOptions.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageOptions.Name = "tabPageOptions";
+            this.tabPageOptions.Size = new System.Drawing.Size(996, 202);
+            this.tabPageOptions.TabIndex = 5;
+            this.tabPageOptions.Text = "Options";
+            // 
+            // checkBoxUseOverlays
+            // 
+            this.checkBoxUseOverlays.AutoSize = true;
+            this.checkBoxUseOverlays.Checked = true;
+            this.checkBoxUseOverlays.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxUseOverlays.Location = new System.Drawing.Point(3, 69);
+            this.checkBoxUseOverlays.Name = "checkBoxUseOverlays";
+            this.checkBoxUseOverlays.Size = new System.Drawing.Size(171, 17);
+            this.checkBoxUseOverlays.TabIndex = 8;
+            this.checkBoxUseOverlays.Text = "Use Mario Interaction Overlays";
+            this.checkBoxUseOverlays.UseVisualStyleBackColor = true;
+            this.checkBoxUseOverlays.CheckedChanged += new System.EventHandler(this.checkBoxUseOverlays_CheckedChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 189);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(129, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "*Requires Pure Interpreter";
+            // 
+            // checkBoxMoveCamWithPu
+            // 
+            this.checkBoxMoveCamWithPu.AutoSize = true;
+            this.checkBoxMoveCamWithPu.Checked = true;
+            this.checkBoxMoveCamWithPu.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMoveCamWithPu.Location = new System.Drawing.Point(3, 46);
+            this.checkBoxMoveCamWithPu.Name = "checkBoxMoveCamWithPu";
+            this.checkBoxMoveCamWithPu.Size = new System.Drawing.Size(162, 17);
+            this.checkBoxMoveCamWithPu.TabIndex = 4;
+            this.checkBoxMoveCamWithPu.Text = "PU Controller Moves Camera";
+            this.checkBoxMoveCamWithPu.UseVisualStyleBackColor = true;
+            this.checkBoxMoveCamWithPu.CheckedChanged += new System.EventHandler(this.checkBoxMoveCamWithPu_CheckedChanged);
+            // 
+            // checkBoxUseRomHack
+            // 
+            this.checkBoxUseRomHack.AutoSize = true;
+            this.checkBoxUseRomHack.Location = new System.Drawing.Point(3, 24);
+            this.checkBoxUseRomHack.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxUseRomHack.Name = "checkBoxUseRomHack";
+            this.checkBoxUseRomHack.Size = new System.Drawing.Size(166, 17);
+            this.checkBoxUseRomHack.TabIndex = 2;
+            this.checkBoxUseRomHack.Text = "Enable STROOP ROM hack*";
+            this.checkBoxUseRomHack.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxStartSlotIndexOne
+            // 
+            this.checkBoxStartSlotIndexOne.AutoSize = true;
+            this.checkBoxStartSlotIndexOne.Location = new System.Drawing.Point(3, 3);
+            this.checkBoxStartSlotIndexOne.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxStartSlotIndexOne.Name = "checkBoxStartSlotIndexOne";
+            this.checkBoxStartSlotIndexOne.Size = new System.Drawing.Size(133, 17);
+            this.checkBoxStartSlotIndexOne.TabIndex = 0;
+            this.checkBoxStartSlotIndexOne.Text = "Start Slot Index From 1";
+            this.checkBoxStartSlotIndexOne.UseVisualStyleBackColor = true;
             // 
             // labelVersionNumber
             // 
@@ -1882,27 +1903,6 @@ namespace SM64_Diagnostic
             this.buttonCollapseBottom.UseVisualStyleBackColor = true;
             this.buttonCollapseBottom.Click += new System.EventHandler(this.buttonCollapseBottom_Click);
             // 
-            // buttonSpawnReset
-            // 
-            this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(531, 164);
-            this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonSpawnReset.Name = "buttonSpawnReset";
-            this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
-            this.buttonSpawnReset.TabIndex = 24;
-            this.buttonSpawnReset.Text = "Reset (Turn Off)";
-            this.buttonSpawnReset.UseVisualStyleBackColor = true;
-            // 
-            // labelSpawnHint
-            // 
-            this.labelSpawnHint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelSpawnHint.AutoSize = true;
-            this.labelSpawnHint.Location = new System.Drawing.Point(315, 168);
-            this.labelSpawnHint.Name = "labelSpawnHint";
-            this.labelSpawnHint.Size = new System.Drawing.Size(127, 13);
-            this.labelSpawnHint.TabIndex = 25;
-            this.labelSpawnHint.Text = "(Press L button to spawn)";
-            // 
             // buttonReadOnly
             // 
             this.buttonReadOnly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1915,6 +1915,17 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.Text = "Disable Read-only";
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
+            // 
+            // buttonDisMore
+            // 
+            this.buttonDisMore.Location = new System.Drawing.Point(237, 2);
+            this.buttonDisMore.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDisMore.Name = "buttonDisMore";
+            this.buttonDisMore.Size = new System.Drawing.Size(50, 20);
+            this.buttonDisMore.TabIndex = 6;
+            this.buttonDisMore.Text = "More";
+            this.buttonDisMore.UseVisualStyleBackColor = true;
+            this.buttonDisMore.Visible = false;
             // 
             // NoTearFlowLayoutPanelObject
             // 
@@ -2195,7 +2206,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 65);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(996, 390);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(996, 391);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2262,8 +2273,6 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressions)).EndInit();
             this.tabPageDisassembly.ResumeLayout(false);
             this.tabPageDisassembly.PerformLayout();
-            this.tabPageOptions.ResumeLayout(false);
-            this.tabPageOptions.PerformLayout();
             this.tabPageHacks.ResumeLayout(false);
             this.splitContainerHacks.Panel1.ResumeLayout(false);
             this.splitContainerHacks.Panel2.ResumeLayout(false);
@@ -2273,6 +2282,8 @@ namespace SM64_Diagnostic
             this.groupBoxHackRam.PerformLayout();
             this.groupBoxHackSpawn.ResumeLayout(false);
             this.groupBoxHackSpawn.PerformLayout();
+            this.tabPageOptions.ResumeLayout(false);
+            this.tabPageOptions.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
@@ -2453,6 +2464,7 @@ namespace SM64_Diagnostic
         private Label labelSpawnHint;
         private Button buttonSpawnReset;
         private Button buttonReadOnly;
+        private Button buttonDisMore;
     }
 }
 

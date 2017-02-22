@@ -42,15 +42,15 @@ namespace SM64_Diagnostic.Utilities
 
             // Get Mario position
             float marioX, marioY, marioZ;
-            marioX =  stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            marioY =  stream.GetSingle(marioAddress + Config.Mario.YOffset);
-            marioZ =  stream.GetSingle(marioAddress + Config.Mario.ZOffset);
+            marioX = stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            marioY = stream.GetSingle(marioAddress + Config.Mario.YOffset);
+            marioZ = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
 
             // Get Camera Position
             float cameraX, cameraY, cameraZ;
-            cameraX =  stream.GetSingle(Config.CameraX);
-            cameraY =  stream.GetSingle(Config.CameraY);
-            cameraZ =  stream.GetSingle(Config.CameraZ);
+            cameraX = stream.GetSingle(Config.CameraX);
+            cameraY = stream.GetSingle(Config.CameraY);
+            cameraZ = stream.GetSingle(Config.CameraZ);
 
             // Calculate new coordinates
             float newMarioX, newMarioY, newMarioZ;

@@ -475,7 +475,7 @@ namespace SM64_Diagnostic.Utilities
                 // Calculate delay to match correct FPS
                 prevTime.Stop();
                 timeToWait = _interval - (int)prevTime.ElapsedMilliseconds;
-                timeToWait = timeToWait > 0 ? timeToWait : 0;
+                timeToWait = Math.Max(timeToWait, 0);
 
                 // Calculate Fps
                 lock (_fpsQueueLocker)

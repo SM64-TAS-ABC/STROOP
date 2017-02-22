@@ -83,7 +83,7 @@ namespace SM64_Diagnostic
             _sm64Stream.OnDisconnect += _sm64Stream_OnDisconnect;
             _sm64Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
 
-            currentContext.DisassemblyManager = _disManager = new DisassemblyManager(this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
+            currentContext.DisassemblyManager = _disManager = new DisassemblyManager(_sm64Stream, tabPageDisassembly);
             currentContext.ScriptManager = _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
             currentContext.HackManager = _hackManager = new HackManager(_sm64Stream, _romHacks, _objectAssoc.SpawnHacks, tabPageHacks);
 
