@@ -28,7 +28,12 @@ namespace SM64_Diagnostic.Utilities
 
         public event EventHandler OnUpdate;
         public event EventHandler OnStatusChanged;
+        public event EventHandler OnDisconnect;
         public event EventHandler FpsUpdated;
+        public event EventHandler WarnReadonlyOff;
+
+        public bool Readonly = true;
+        public bool ShowWarning = true;
 
         public Dictionary<WatchVariableLock, WatchVariableLock> LockedVariables = 
             new Dictionary<WatchVariableLock, WatchVariableLock>();
@@ -93,9 +98,16 @@ namespace SM64_Diagnostic.Utilities
             _interval = (int) (1000.0f / Config.RefreshRateFreq);
             _ram = new byte[Config.RamSize];
 
-            _streamUpdater = Task.Factory.StartNew(async() => await ProcessUpdateTask(_cancelToken.Token), _cancelToken.Token);
+            _streamUpdater = new Task(() => ProcessUpdateTask(_cancelToken.Token), _cancelToken.Token);
+            _streamUpdater.ContinueWith(ExceptionHandler, TaskContinuationOptions.OnlyOnFaulted);
+            _streamUpdater.Start();
 
             SwitchProcess(_process, _emulator);
+        }
+
+        private void ExceptionHandler(Task obj)
+        {
+            throw obj.Exception;
         }
 
         ~ProcessStream()
@@ -104,8 +116,15 @@ namespace SM64_Diagnostic.Utilities
                 _process.Exited -= ProcessClosed;
 
             _cancelToken?.Cancel();
-            _streamUpdater?.Wait();
-            _cancelToken?.Dispose();
+            try
+            {
+                _streamUpdater?.Wait();
+            }
+            catch (AggregateException) { }
+            finally
+            {
+                _cancelToken?.Dispose();
+            }
         }
 
         public bool SwitchProcess(Process newProcess, Emulator emulator)
@@ -180,11 +199,9 @@ namespace SM64_Diagnostic.Utilities
 
         public bool WriteProcessMemory(int address, byte[] buffer, bool absoluteAddressing = false)
         {
-            if (_process == null)
-                return false;
-
             int numOfBytes = 0;
-            return Kernal32NativeMethods.ProcessWriteMemory(_processHandle, (IntPtr)(absoluteAddressing ? address : address + _emulator.RamStart),
+            return Kernal32NativeMethods.ProcessWriteMemory(_processHandle, (IntPtr)(absoluteAddressing ? address : 
+                ConvertAddressEndianess((int)((address + _emulator.RamStart) & ~0x80000000U), buffer.Length)),
                 buffer, (IntPtr)buffer.Length, ref numOfBytes);
         }
 
@@ -221,44 +238,127 @@ namespace SM64_Diagnostic.Utilities
                 IsEnabled = false;
             }
             OnStatusChanged?.Invoke(this, new EventArgs());
+            OnDisconnect?.Invoke(this, new EventArgs());
         }
 
-        public byte[] ReadRam(uint address, int length, bool absoluteAddress = false, bool? fixAddress = null)
+        public byte GetByte(uint address, bool absoluteAddress = false)
+        {
+            return ReadRamLittleEndian(address, 1, absoluteAddress)[0];
+        }
+
+        public sbyte GetSByte(uint address, bool absoluteAddress = false)
+        {
+            return (sbyte)ReadRamLittleEndian(address, 1, absoluteAddress)[0];
+        }
+
+        public short GetInt16(uint address, bool absoluteAddress = false)
+        { 
+            return BitConverter.ToInt16(ReadRamLittleEndian(address, 2, absoluteAddress), 0);
+        }
+
+        public ushort GetUInt16(uint address, bool absoluteAddress = false)
+        {
+            return BitConverter.ToUInt16(ReadRamLittleEndian(address, 2, absoluteAddress), 0);
+        }
+
+        public int GetInt32(uint address, bool absoluteAddress = false)
+        {
+            return BitConverter.ToInt32(ReadRamLittleEndian(address, 4, absoluteAddress), 0);
+        }
+
+        public uint GetUInt32(uint address, bool absoluteAddress = false)
+        {
+            return BitConverter.ToUInt32(ReadRamLittleEndian(address, 4, absoluteAddress), 0);
+        }
+
+        public float GetSingle(uint address, bool absoluteAddress = false)
+        {
+            return BitConverter.ToSingle(ReadRamLittleEndian(address, 4, absoluteAddress), 0);
+        }
+
+        public byte[] ReadRamLittleEndian(uint address, int length, bool absoluteAddress = false)
+        {
+            byte[] readBytes = new byte[length];
+
+            if (absoluteAddress)
+                address = address - _emulator.RamStart;
+            else
+                address = ConvertAddressEndianess(address & ~0x80000000U, length);
+
+            Array.Copy(_ram, address, readBytes, 0, length);
+            return readBytes;
+        }
+
+        readonly byte[] _fixAddress = { 0x03, 0x02, 0x01, 0x00 };
+        public byte[] ReadRam(uint address, int length)
         {
             byte[] readBytes = new byte[length];
             address &= ~0x80000000U;
 
-            // Fix little endianess addressing
-            if ((fixAddress.HasValue && fixAddress.Value) || (fixAddress == null && !absoluteAddress))
-                address = (uint)LittleEndianessAddressing.AddressFix((int)address, length);
-
-            // Handling absolute addressing (remove process offset from address)
-            if (absoluteAddress)
-                address = address - _emulator.RamStart;
-
             if (address + length > _ram.Length)
                 return new byte[length];
 
-            // Retrieve ram bytes from final address
-            Array.Copy(_ram, address, readBytes, 0, length);
+            for (uint i = 0; i < length; i++, address++)
+            {
+                readBytes[i] = _ram[address & ~0x00000003 | _fixAddress[address & 0x3]];
+            }
 
             return readBytes;
         }
 
-        public bool WriteRam(byte[] buffer, uint address, bool absoluteAddress = false, bool? fixAddress = null)
+        public bool CheckReadonlyOff()
         {
-            return WriteRam(buffer, address, buffer.Length, absoluteAddress, fixAddress);
+            if (ShowWarning)
+                WarnReadonlyOff?.Invoke(this, new EventArgs());
+
+            return Readonly;
         }
 
-        public bool WriteRam(byte[] buffer, int bufferStart, uint address, int length, bool absoluteAddress = false, bool? fixAddress = null, bool safeWrite = true)
+        public bool SetValue(byte value, uint address, bool absoluteAddress = false)
         {
-            byte[] writeBytes = new byte[length];
-            address &= ~0x80000000U;
-            Array.Copy(buffer, bufferStart, writeBytes, 0, length);
-            
-            // Fix little endianess addresssing
-            if ((fixAddress.HasValue && fixAddress.Value) || (fixAddress == null && !absoluteAddress))
-                address = (uint)LittleEndianessAddressing.AddressFix((int)address, length);
+            return WriteRamLittleEndian(new byte[] { value }, address, absoluteAddress);
+        }
+
+        public bool SetValue(sbyte value, uint address, bool absoluteAddress = false)
+        {
+            return WriteRamLittleEndian(new byte[] { (byte)value }, address, absoluteAddress);
+        }
+
+        public bool SetValue(Int16 value, uint address, bool absoluteAddress = false)
+        {
+            return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+        }
+
+        public bool SetValue(UInt16 value, uint address, bool absoluteAddress = false)
+        {
+            return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+        }
+
+        public bool SetValue(Int32 value, uint address, bool absoluteAddress = false)
+        {
+            return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+        }
+
+        public bool SetValue(UInt32 value, uint address, bool absoluteAddress = false)
+        {
+            return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+        }
+
+        public bool SetValue(float value, uint address, bool absoluteAddress = false)
+        {
+            return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+        }
+
+        public bool WriteRamLittleEndian(byte[] buffer, uint address, bool absoluteAddress = false, int bufferStart = 0, int? length = null, bool safeWrite = true)
+        {
+            if (length == null)
+                length = buffer.Length - bufferStart;
+
+            if (CheckReadonlyOff())
+                return false;
+
+            byte[] writeBytes = new byte[length.Value];
+            Array.Copy(buffer, bufferStart, writeBytes, 0, length.Value);
 
             // Attempt to pause the game before writing 
             bool preSuspended = IsSuspended;
@@ -266,7 +366,7 @@ namespace SM64_Diagnostic.Utilities
                 Suspend();
 
             // Write memory to game/process
-            bool result =  WriteProcessMemory((int)address, writeBytes, absoluteAddress);
+            bool result = WriteProcessMemory((int)address, writeBytes, absoluteAddress);
 
             // Resume stream 
             if (safeWrite && !preSuspended)
@@ -274,19 +374,79 @@ namespace SM64_Diagnostic.Utilities
 
             return result;
         }
-        
-        public bool WriteRam(byte[] buffer, uint address, int length, bool absoluteAddress = false, bool? fixAddress = null)
+
+        public bool WriteRam(byte[] buffer, uint address, int bufferStart = 0, int? length = null, bool safeWrite = true)
         {
-            return WriteRam(buffer, 0, address, length, absoluteAddress, fixAddress);
+            address &= ~0x80000000U;
+
+            if (length == null)
+                length = buffer.Length - bufferStart;
+
+            if (CheckReadonlyOff())
+                return false;
+
+            bool success = true;
+
+            // Attempt to pause the game before writing 
+            bool preSuspended = IsSuspended;
+            if (safeWrite)
+                Suspend();
+
+            // Take care of first alignment
+            int bufPos = bufferStart;
+            uint alignment = _fixAddress[address & 0x03] + 1U;
+            if (alignment < 4)
+            {
+                byte[] writeBytes = new byte[Math.Min(alignment, length.Value)];
+                Array.Copy(buffer, bufPos, writeBytes, 0, writeBytes.Length);
+                success &= WriteProcessMemory((int)address, writeBytes.Reverse().ToArray());
+                length -= writeBytes.Length;
+                bufPos += writeBytes.Length;
+                address += alignment;
+            }
+
+            // Take care of middle
+            if (length >= 4)
+            {
+                byte[] writeBytes = new byte[length.Value & ~0x03];
+                for (int i = 0; i < writeBytes.Length; bufPos += 4, i += 4)
+                {
+                    writeBytes[i] = buffer[bufPos + 3];
+                    writeBytes[i + 1] = buffer[bufPos + 2];
+                    writeBytes[i + 2] = buffer[bufPos + 1];
+                    writeBytes[i + 3] = buffer[bufPos];
+                }
+                success &= WriteProcessMemory((int)(address + _emulator.RamStart), writeBytes, true);
+                address += (uint)writeBytes.Length;
+                length -= writeBytes.Length;
+            }
+
+            // Take care of last
+            if (length > 0)
+            {
+                byte[] writeBytes = new byte[length.Value];
+                Array.Copy(buffer, bufPos, writeBytes, 0, writeBytes.Length);
+                success &= WriteProcessMemory((int)address, writeBytes.Reverse().ToArray());
+            }
+
+            // Resume stream 
+            if (safeWrite && !preSuspended)
+                Resume();
+
+            return success;
         }
 
         public void Stop()
         {
             _cancelToken?.Cancel();
-            _streamUpdater?.Wait();
+            try
+            {
+                //_streamUpdater?.Wait();
+            }
+            catch (AggregateException) { }
         }
 
-        private async Task ProcessUpdateTask(CancellationToken ct)
+        private void ProcessUpdateTask(CancellationToken ct)
         {
             var prevTime = Stopwatch.StartNew();
             while (!ct.IsCancellationRequested)
@@ -295,21 +455,26 @@ namespace SM64_Diagnostic.Utilities
                 if (!IsRunning & !_lastUpdateBeforePausing)
                     goto FrameLimitStreamUpdate;
 
-                _lastUpdateBeforePausing = false;
+                int timeToWait;
+                try
+                {
+                    _lastUpdateBeforePausing = false;
 
-                // Read whole ram value to buffer
-                if (!ReadProcessMemory(0, _ram))
-                    return;
-                OnUpdate?.Invoke(this, new EventArgs());
+                    // Read whole ram value to buffer
+                    if (!ReadProcessMemory(0, _ram))
+                        continue;
+                    OnUpdate?.Invoke(this, new EventArgs());
 
-                foreach (var lockVar in LockedVariables)
-                    lockVar.Value.Update();
+                    foreach (var lockVar in LockedVariables)
+                        lockVar.Value.Update();
+                }
+                catch (Exception) { }
 
                 FrameLimitStreamUpdate:
 
                 // Calculate delay to match correct FPS
                 prevTime.Stop();
-                int timeToWait = _interval - (int)prevTime.ElapsedMilliseconds;
+                timeToWait = _interval - (int)prevTime.ElapsedMilliseconds;
                 timeToWait = timeToWait > 0 ? timeToWait : 0;
 
                 // Calculate Fps
@@ -320,11 +485,37 @@ namespace SM64_Diagnostic.Utilities
                     _fpsTimes.Enqueue(prevTime.ElapsedMilliseconds + timeToWait);
                 }
                 FpsUpdated?.Invoke(this, new EventArgs());
-
-                await Task.Delay(timeToWait);
+            
+                Task.Delay(timeToWait).Wait();
             }
 
             ct.ThrowIfCancellationRequested();
+        }
+
+        public int ConvertAddressEndianess(int address, int dataSize)
+        {
+            switch (dataSize)
+            {
+                case 1:
+                case 2:
+                case 3:
+                    return (int)(address & ~0x03) | (_fixAddress[dataSize - 1] - address & 0x03);
+                default:
+                    return address;
+            }
+        }
+
+        public uint ConvertAddressEndianess(uint address, int dataSize)
+        {
+            switch (dataSize)
+            {
+                case 1:
+                case 2:
+                case 3:
+                    return (uint)(address & ~0x03) | (_fixAddress[dataSize - 1] - address & 0x03);
+                default:
+                    return address;
+            }
         }
     }
 }

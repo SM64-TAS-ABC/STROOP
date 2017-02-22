@@ -422,19 +422,19 @@ namespace SM64_Diagnostic.Managers
 
         private int GetNumRngCalls(uint objAddress)
         {
-            var numberOfRngObjs = BitConverter.ToUInt32(_stream.ReadRam(Config.RngRecordingAreaAddress, 4), 0);
+            var numberOfRngObjs = _stream.GetUInt32(Config.RngRecordingAreaAddress);
 
             int numOfCalls = 0;
 
             for (int i = 0; i < numberOfRngObjs; i++)
             {
                 uint rngStructAdd = (uint)(Config.RngRecordingAreaAddress + 0x10 + 0x08 * i);
-                var address = BitConverter.ToUInt32(_stream.ReadRam(rngStructAdd + 0x04, 4), 0);
+                var address = _stream.GetUInt32(rngStructAdd + 0x04);
                 if (address != objAddress)
                     continue;
 
-                var preRng = BitConverter.ToUInt16(_stream.ReadRam(rngStructAdd + 0x00, 2), 0);
-                var postRng = BitConverter.ToUInt16(_stream.ReadRam(rngStructAdd + 0x02, 2), 0);
+                var preRng = _stream.GetUInt16(rngStructAdd + 0x00);
+                var postRng = _stream.GetUInt16(rngStructAdd + 0x02);
 
                 numOfCalls = RngIndexer.GetRngIndexDiff(preRng, postRng);
                 break;

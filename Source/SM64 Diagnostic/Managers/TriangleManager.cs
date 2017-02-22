@@ -107,7 +107,7 @@ namespace SM64_Diagnostic.Managers
 
         private void ProcessSpecialVars()
         {
-            var floorY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.GroundYOffset, 4), 0);
+            var floorY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.GroundYOffset);
 
             // Get Mario position
             float marioX, marioY, marioZ;
@@ -342,15 +342,15 @@ namespace SM64_Diagnostic.Managers
                 switch (Mode)
                 {
                     case TriangleMode.Ceiling:
-                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset, 4), 0);
+                        TriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
                         break;
 
                     case TriangleMode.Floor:
-                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset, 4), 0);
+                        TriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
                         break;
 
                     case TriangleMode.Wall:
-                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset, 4), 0);
+                        TriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset);
                         break;
                 }
 

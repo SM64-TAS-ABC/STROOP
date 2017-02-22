@@ -30,64 +30,64 @@ namespace SM64_Diagnostic.Managers
         private void radioButtonDbgOff_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug off
-            _stream.WriteRam(new byte[] { 0 }, Config.Debug.Toggle);
+            _stream.SetValue((byte)0, Config.Debug.Toggle);
 
             // Set mode
-            _stream.WriteRam(new byte[] { 0 }, Config.Debug.Setting);
+            _stream.SetValue((byte)0, Config.Debug.Setting);
         }
 
         private void radioButtonDbgObjCnt_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
+            _stream.SetValue((byte)1, Config.Debug.Toggle);
 
             // Set mode
-            _stream.WriteRam(new byte[] { 0 }, Config.Debug.Setting);
+            _stream.SetValue((byte)0, Config.Debug.Setting);
         }
 
         private void radioButtonDbgChkInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
+            _stream.SetValue((byte)1, Config.Debug.Toggle);
 
             // Set mode
-            _stream.WriteRam(new byte[] { 1 }, Config.Debug.Setting);
+            _stream.SetValue((byte)1, Config.Debug.Setting);
         }
 
         private void radioButtonDbgMapInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
+            _stream.SetValue((byte)1, Config.Debug.Toggle);
 
             // Set mode
-            _stream.WriteRam(new byte[] { 2 }, Config.Debug.Setting);
+            _stream.SetValue((byte)2, Config.Debug.Setting);
         }
 
         private void radioButtonDbgStgInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
+            _stream.SetValue((byte)1, Config.Debug.Toggle);
 
             // Set mode
-            _stream.WriteRam(new byte[] { 3 }, Config.Debug.Setting);
+            _stream.SetValue((byte)3, Config.Debug.Setting);
         }
 
         private void radioButtonDbgFxInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
+            _stream.SetValue((byte)1, Config.Debug.Toggle);
 
             // Set mode
-            _stream.WriteRam(new byte[] { 4 }, Config.Debug.Setting);
+            _stream.SetValue((byte)4, Config.Debug.Setting);
         }
 
         private void radioButtonDbgEnemyInfo_CheckedChanged(object sender, EventArgs e)
         {
             // Turn debug on
-            _stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
+            _stream.SetValue((byte)1, Config.Debug.Toggle);
 
             // Set mode
-            _stream.WriteRam(new byte[] { 5 }, Config.Debug.Setting);
+            _stream.SetValue((byte)5, Config.Debug.Setting);
         }
     }
 }

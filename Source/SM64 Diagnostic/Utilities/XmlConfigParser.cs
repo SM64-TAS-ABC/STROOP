@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Extensions;
 using System.Xml;
 using System.Net;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -582,8 +583,9 @@ namespace SM64_Diagnostic.Utilities
                         break;
 
                     case "Object":
-                        uint behaviorAddress = (ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value)
-                            - ramToBehaviorOffset) & 0x00FFFFFF;
+                        string name = element.Attribute(XName.Get("name")).Value;
+                        uint behaviorSegmented = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
+                        uint behaviorAddress = (behaviorSegmented - ramToBehaviorOffset) & 0x00FFFFFF;
                         uint? gfxId = null;
                         int? subType = null, appearance = null;
                         if (element.Attribute(XName.Get("gfxId")) != null)
@@ -592,6 +594,21 @@ namespace SM64_Diagnostic.Utilities
                             subType = ParsingUtilities.TryParseInt(element.Attribute(XName.Get("subType")).Value);
                         if (element.Attribute(XName.Get("appearance")) != null)
                             appearance = ParsingUtilities.TryParseInt(element.Attribute(XName.Get("appearance")).Value);
+                        var spawnElement = element.Element(XName.Get("SpawnCode"));
+                        if (spawnElement != null)
+                        {
+                            byte spawnGfxId = (byte)(spawnElement.Attribute(XName.Get("gfxId")) != null ? 
+                                ParsingUtilities.ParseHex(spawnElement.Attribute(XName.Get("gfxId")).Value) : 0);
+                            byte spawnExtra = (byte)(spawnElement.Attribute(XName.Get("extra")) != null ? 
+                                ParsingUtilities.ParseHex(spawnElement.Attribute(XName.Get("extra")).Value) : (byte)(subType.HasValue ? subType : 0));
+                            assoc.AddSpawnHack(new SpawnHack()
+                            {
+                                Name = name,
+                                Behavior = behaviorSegmented,
+                                GfxId = spawnGfxId,
+                                Extra = spawnExtra
+                            });
+                        }
                         string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                         string mapImagePath = null;
                         bool rotates = false;
@@ -600,7 +617,6 @@ namespace SM64_Diagnostic.Utilities
                             mapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                             rotates = bool.Parse(element.Element(XName.Get("MapImage")).Attribute(XName.Get("rotates")).Value);
                         }
-                        string name = element.Attribute(XName.Get("name")).Value;
                         var watchVars = new List<WatchVariable>();
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
                         {
@@ -810,9 +826,10 @@ namespace SM64_Diagnostic.Utilities
             return parser;
         }
 
-        public static List<RomHack> OpenHacks(string path)
+        public static Tuple<HackConfig, List<RomHack>> OpenHacks(string path)
         {
             var hacks = new List<RomHack>();
+            var hackConfig = new HackConfig();
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
@@ -842,6 +859,14 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
+                    case "SpawnHack":
+                        string spawnHackPath = hackDir + element.Attribute(XName.Get("path")).Value;
+                        hackConfig.SpawnHack = new RomHack(spawnHackPath, "Spawn Hack");
+                        hackConfig.BehaviorAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behavior")).Value);
+                        hackConfig.GfxIdAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxId")).Value);
+                        hackConfig.ExtraAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("extra")).Value);
+                        break;
+
                     case "Hack":
                         string hackPath = hackDir + element.Attribute(XName.Get("path")).Value;
                         string name = element.Attribute(XName.Get("name")).Value;
@@ -850,7 +875,7 @@ namespace SM64_Diagnostic.Utilities
                 }
             }
 
-            return hacks;
+            return new Tuple<HackConfig, List<RomHack>>(hackConfig, hacks);
         }
 
         public static WatchVariable GetWatchVariableFromElement(XElement element)

@@ -102,7 +102,6 @@
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
-    <Compile Include="Extensions\ProcessStreamExtensions.cs" />
     <Compile Include="Extensions\RectangleFExtensions.cs" />
     <Compile Include="Extensions\WatchExpressionExtensions.cs" />
     <Compile Include="LoadingForm.cs">
@@ -136,6 +135,7 @@
     <Compile Include="Structs\ActionTable.cs" />
     <Compile Include="Structs\BehaviorCriteria.cs" />
     <Compile Include="Structs\Configurations\DebugConfig.cs" />
+    <Compile Include="Structs\Configurations\HackConfig.cs" />
     <Compile Include="Structs\Configurations\HudConfig.cs" />
     <Compile Include="Structs\Configurations\TriangleOffsetsConfig.cs" />
     <Compile Include="Structs\Emulator.cs" />
@@ -155,6 +155,7 @@
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Structs\ObjectSlotData.cs" />
     <Compile Include="Structs\RomHack.cs" />
+    <Compile Include="Structs\SpawnHack.cs" />
     <Compile Include="Utilities\Kernal32NativeMethods.cs" />
     <Compile Include="Utilities\MoreMath.cs" />
     <Compile Include="Utilities\ScriptParser.cs" />
@@ -175,7 +176,6 @@
     <Compile Include="Utilities\ParsingUtilities.cs" />
     <Compile Include="Structs\Configurations\Config.cs" />
     <Compile Include="Structs\WatchVariable.cs" />
-    <Compile Include="Utilities\LittleEndianessAddressing.cs" />
     <Compile Include="Extensions\RichTextBoxExtensions.cs" />
     <Compile Include="Extensions\SizeExtensions.cs" />
     <Compile Include="Extensions\WatchVariableExtensions.cs" />
@@ -189,6 +189,9 @@
     <Compile Include="VariableViewerForm.Designer.cs">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\Hacks\SpawnHack.hck">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\select_bottom.png" />
     <None Include="Resources\select_top.png" />
     <None Include="packages.config" />

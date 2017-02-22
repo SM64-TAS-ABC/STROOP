@@ -36,10 +36,10 @@ namespace SM64_Diagnostic.Managers
         public void ProcessSpecialVars()
         {
             UInt32 floorTriangle = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
-            var floorY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.GroundYOffset, 4), 0);
+            var floorY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.GroundYOffset);
 
-            float slidingSpeedX = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset, 4), 0);
-            float slidingSpeedZ = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset, 4), 0);
+            float slidingSpeedX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+            float slidingSpeedZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
             foreach (var specialVar in _specialWatchVars)
             {
                 switch(specialVar.SpecialName)

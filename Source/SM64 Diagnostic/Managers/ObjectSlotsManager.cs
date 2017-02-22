@@ -229,8 +229,7 @@ namespace SM64_Diagnostic.Managers
                 uint processGroupStructAddress = groupConfig.FirstGroupingAddress + objectProcessGroup * groupConfig.ProcessGroupStructSize;
 
                 // Calculate start and ending objects
-                uint currentGroupObject = BitConverter.ToUInt32(_stream.ReadRam(processGroupStructAddress
-                    + groupConfig.ProcessNextLinkOffset, 4), 0);
+                uint currentGroupObject = _stream.GetUInt32(processGroupStructAddress + groupConfig.ProcessNextLinkOffset);
 
                 // Make sure there are objects within the group
                 if (currentGroupObject == processGroupStructAddress)
@@ -241,7 +240,7 @@ namespace SM64_Diagnostic.Managers
                 {
 
                     // Validate current object
-                    if (BitConverter.ToUInt16(_stream.ReadRam(currentGroupObject + Config.ObjectSlots.HeaderOffset, 2), 0) != 0x18)
+                    if (_stream.GetUInt16(currentGroupObject + Config.ObjectSlots.HeaderOffset) != 0x18)
                         return null;
 
                     // Get data
@@ -254,8 +253,7 @@ namespace SM64_Diagnostic.Managers
                     };
 
                     // Move to next object
-                    currentGroupObject = BitConverter.ToUInt32(
-                    _stream.ReadRam(currentGroupObject + groupConfig.ProcessNextLinkOffset, 4), 0);
+                    currentGroupObject = _stream.GetUInt32(currentGroupObject + groupConfig.ProcessNextLinkOffset);
 
                     // Mark next slot
                     currentSlot++;
@@ -265,11 +263,11 @@ namespace SM64_Diagnostic.Managers
             var vacantSlotStart = currentSlot;
 
             // Now calculate vacant addresses
-            uint currentObject = BitConverter.ToUInt32(_stream.ReadRam(groupConfig.VactantPointerAddress, 4), 0);
+            uint currentObject = _stream.GetUInt32(groupConfig.VactantPointerAddress);
             for (; currentSlot < slotConfig.MaxSlots; currentSlot++)
             {
                 // Validate current object
-                if (BitConverter.ToUInt16(_stream.ReadRam(currentObject + Config.ObjectSlots.HeaderOffset, 2), 0) != 0x18)
+                if (_stream.GetUInt16(currentObject + Config.ObjectSlots.HeaderOffset) != 0x18)
                     return null;
 
                 newObjectSlotData[currentSlot] = new ObjectSlotData()
@@ -280,8 +278,7 @@ namespace SM64_Diagnostic.Managers
                     VacantSlotIndex = currentSlot - vacantSlotStart
                 };
 
-                currentObject = BitConverter.ToUInt32(
-                    _stream.ReadRam(currentObject + groupConfig.ProcessNextLinkOffset, 4), 0);
+                currentObject = _stream.GetUInt32(currentObject + groupConfig.ProcessNextLinkOffset);
             }
 
             return newObjectSlotData.ToList();
@@ -311,26 +308,25 @@ namespace SM64_Diagnostic.Managers
 
             // Get mario position
             float marioX, marioY, marioZ;
-            marioX = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.XOffset, 4), 0);
-            marioY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.YOffset, 4), 0);
-            marioZ = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.ZOffset, 4), 0);
+            marioX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            marioY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            marioZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
             // Calculate distance to Mario
             foreach (var objSlot in newObjectSlotData)
             {
                 // Get object relative-to-maario position
                 float dX, dY, dZ;
-                dX = marioX - BitConverter.ToSingle(_stream.ReadRam(objSlot.Address + Config.ObjectSlots.ObjectXOffset, 4), 0);
-                dY = marioY - BitConverter.ToSingle(_stream.ReadRam(objSlot.Address + Config.ObjectSlots.ObjectYOffset, 4), 0);
-                dZ = marioZ - BitConverter.ToSingle(_stream.ReadRam(objSlot.Address + Config.ObjectSlots.ObjectZOffset, 4), 0);
+                dX = marioX - _stream.GetSingle(objSlot.Address + Config.ObjectSlots.ObjectXOffset);
+                dY = marioY - _stream.GetSingle(objSlot.Address + Config.ObjectSlots.ObjectYOffset);
+                dZ = marioZ - _stream.GetSingle(objSlot.Address + Config.ObjectSlots.ObjectZOffset);
 
                 objSlot.DistanceToMario = (float)Math.Sqrt(dX * dX + dY * dY + dZ * dZ);
 
                 // Check if active/loaded
-                objSlot.IsActive = BitConverter.ToUInt16(_stream.ReadRam(objSlot.Address + Config.ObjectSlots.ObjectActiveOffset, 2), 0) != 0x0000;
+                objSlot.IsActive = _stream.GetUInt16(objSlot.Address + Config.ObjectSlots.ObjectActiveOffset) != 0x0000;
 
-                objSlot.Behavior = BitConverter.ToUInt32(_stream.ReadRam(objSlot.Address + Config.ObjectSlots.BehaviorScriptOffset, 4), 0)
-                    & 0x7FFFFFFF;
+                objSlot.Behavior = _stream.GetUInt32(objSlot.Address + Config.ObjectSlots.BehaviorScriptOffset) & 0x7FFFFFFF;
             }
 
             // Processing sort order
@@ -357,10 +353,10 @@ namespace SM64_Diagnostic.Managers
 
             _activeObjCnt = 0;
 
-            _standingOnObject = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.StandingOnObjectPointer, 4), 0);
-            _interactingObject = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.InteractingObjectPointerOffset + Config.Mario.StructAddress, 4), 0);
-            _holdingObject = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.HoldingObjectPointerOffset + Config.Mario.StructAddress, 4), 0);
-            _usingObject = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.UsingObjectPointerOffset + Config.Mario.StructAddress, 4), 0);
+            _standingOnObject = _stream.GetUInt32(Config.Mario.StandingOnObjectPointer);
+            _interactingObject = _stream.GetUInt32(Config.Mario.InteractingObjectPointerOffset + Config.Mario.StructAddress);
+            _holdingObject = _stream.GetUInt32(Config.Mario.HoldingObjectPointerOffset + Config.Mario.StructAddress);
+            _usingObject = _stream.GetUInt32(Config.Mario.UsingObjectPointerOffset + Config.Mario.StructAddress);
             _closestObject = newObjectSlotData.OrderBy(s => !s.IsActive || s.Behavior == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF) ? float.MaxValue
                 : s.DistanceToMario).First().Address;
 
@@ -516,6 +512,7 @@ namespace SM64_Diagnostic.Managers
                 else
                     _lastSlotLabel[objAddress] = labelText;
             }
+            objSlot.TextColor = ManagerGui.LockLabelsCheckbox.Checked ? Color.Red : Color.Blue;
             objSlot.Text = ManagerGui.LockLabelsCheckbox.Checked ? _lastSlotLabel[objAddress] : labelText;
 
             // Update object manager image
@@ -582,9 +579,9 @@ namespace SM64_Diagnostic.Managers
                 // Update map object coordinates and rotation
                 _mapObjects[objAddress].Show = !_toggleMapBehaviors.Contains(behaviorCriteria)
                     && !_toggleMapGroups.Contains(objData.ObjectProcessGroup) && !_toggleMapSlots.Contains(objAddress);
-                _mapObjects[objAddress].X = BitConverter.ToSingle(_stream.ReadRam(objAddress + Config.ObjectSlots.ObjectXOffset, 4), 0);
-                _mapObjects[objAddress].Y = BitConverter.ToSingle(_stream.ReadRam(objAddress + Config.ObjectSlots.ObjectYOffset, 4), 0);
-                _mapObjects[objAddress].Z = BitConverter.ToSingle(_stream.ReadRam(objAddress + Config.ObjectSlots.ObjectZOffset, 4), 0);
+                _mapObjects[objAddress].X = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+                _mapObjects[objAddress].Y = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                _mapObjects[objAddress].Z = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
                 _mapObjects[objAddress].IsActive = objData.IsActive;
                 _mapObjects[objAddress].Rotation = (float)((UInt16)(
                     _stream.GetUInt32(objAddress + Config.ObjectSlots.ObjectRotationOffset)) / 65536f * 360f);

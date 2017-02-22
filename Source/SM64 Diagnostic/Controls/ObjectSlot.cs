@@ -22,7 +22,8 @@ namespace SM64_Diagnostic
         ObjectSlotManagerGui _gui;
 
         Color _mainColor, _borderColor, _backColor;
-        Brush _borderBrush = new SolidBrush(Color.White), _backBrush = new SolidBrush(Color.White);
+        SolidBrush _borderBrush = new SolidBrush(Color.White), _backBrush = new SolidBrush(Color.White);
+        SolidBrush _textBrush = new SolidBrush(Color.Black);
         Image _objectImage;
         string _text;
 
@@ -88,6 +89,25 @@ namespace SM64_Diagnostic
                 return _objectImage;
             }
         }
+
+        public Color TextColor
+        {
+            get
+            {
+                return _textBrush.Color;
+            }
+            set
+            {
+                if (_textBrush.Color == value)
+                    return;
+
+                lock (_gfxLock)
+                {
+                    _textBrush.Color = value;
+                }
+            }
+        }
+
         public new string Text
         {
             get
@@ -302,8 +322,8 @@ namespace SM64_Diagnostic
             {
                 lock (_gfxLock)
                 {
-                    (_borderBrush as SolidBrush).Color = _borderColor;
-                    (_backBrush as SolidBrush).Color = _backColor;
+                    _borderBrush.Color = _borderColor;
+                    _backBrush.Color = _backColor;
                 }
             }
 
@@ -339,7 +359,7 @@ namespace SM64_Diagnostic
                 // Draw Text
                 var textSize = e.Graphics.MeasureString(Text, Font);
                 var textLocation = new PointF((Width - textSize.Width) / 2, Height - textSize.Height);
-                e.Graphics.DrawString(Text, Font, Brushes.Black, textLocation);
+                e.Graphics.DrawString(Text, Font, _textBrush, textLocation);
 
                 // Draw Object Image
                 if (_objectImage != null)

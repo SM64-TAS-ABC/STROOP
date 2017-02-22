@@ -80,10 +80,12 @@ namespace SM64_Diagnostic
             _sm64Stream = new ProcessStream();
             _sm64Stream.OnUpdate += OnUpdate;
             _sm64Stream.FpsUpdated += _sm64Stream_FpsUpdated;
+            _sm64Stream.OnDisconnect += _sm64Stream_OnDisconnect;
+            _sm64Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
 
             currentContext.DisassemblyManager = _disManager = new DisassemblyManager(this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
             currentContext.ScriptManager = _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
-            currentContext.HackManager = _hackManager = new HackManager(_sm64Stream, _romHacks, checkedListBoxHacks);
+            currentContext.HackManager = _hackManager = new HackManager(_sm64Stream, _romHacks, _objectAssoc.SpawnHacks, tabPageHacks);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -156,6 +158,38 @@ namespace SM64_Diagnostic
             panelConnect.Size = this.Size;
         }
 
+        private void _sm64Stream_WarnReadonlyOff(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(() =>
+                {
+                var dr = MessageBox.Show("Warning! Editing variables and enabling hacks may cause the emulator to freeze. Turn off read-only mode?", 
+                    "Turn Off Read-only Mode?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                switch (dr)
+                {
+                    case DialogResult.Yes:
+                        _sm64Stream.Readonly = false;
+                        _sm64Stream.ShowWarning = false;
+                        buttonReadOnly.Text = "Disable Read-only";
+                        break;
+
+                    case DialogResult.No:
+                        _sm64Stream.ShowWarning = false;
+                        break;
+
+                    case DialogResult.Cancel:
+                        break;
+                }
+            }));
+        }
+
+        private void _sm64Stream_OnDisconnect(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(() => {
+                buttonRefresh_Click(this, new EventArgs());
+                panelConnect.Visible = true;
+            }));
+        }
+
         public void LoadConfig(LoadingForm loadingForm)
         {
             int statusNum = 0;
@@ -182,7 +216,9 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Scripts", statusNum++);
             _scriptParser = XmlConfigParser.OpenScripts(@"Config/Scripts.xml");
             loadingForm.UpdateStatus("Loading Hacks", statusNum++);
-            _romHacks = XmlConfigParser.OpenHacks(@"Config/Hacks.xml");
+            var hacksConfig = XmlConfigParser.OpenHacks(@"Config/Hacks.xml");
+            Config.Hacks = hacksConfig.Item1;
+            _romHacks = hacksConfig.Item2;
             loadingForm.UpdateStatus("Loading Mario Actions", statusNum++);
             Config.MarioActions = XmlConfigParser.OpenActionTable(@"Config/MarioActions.xml");
 
@@ -408,6 +444,13 @@ namespace SM64_Diagnostic
             splitContainerMain.Panel1Collapsed = !splitContainerMain.Panel1Collapsed;
         }
 
+        private void buttonReadOnly_Click(object sender, EventArgs e)
+        {
+            _sm64Stream.Readonly = !_sm64Stream.Readonly;
+            buttonReadOnly.Text = _sm64Stream.Readonly ? "Disable Read-only" : "Enable Read-only";
+            _sm64Stream.ShowWarning = false;
+        }
+
         private void buttonConnect_Click(object sender, EventArgs e)
         {
             var selectedProcess = (ProcessSelection?)listBoxProcessesList.SelectedItem;
@@ -441,6 +484,7 @@ namespace SM64_Diagnostic
         private void buttonDisconnect_Click(object sender, EventArgs e)
         {
             _sm64Stream.SwitchProcess(null, null);
+            panelConnect.Size = this.Size;
             panelConnect.Visible = true;
         }
 

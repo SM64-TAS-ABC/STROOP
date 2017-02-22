@@ -16,6 +16,7 @@ namespace SM64_Diagnostic.Structs
         public static ObjectSlotsConfig ObjectSlots;
         public static MarioConfig Mario;
         public static HudConfig Hud;
+        public static HackConfig Hacks;
         public static DebugConfig Debug;
         public static TriangleOffsetsConfig TriangleOffsets;
         public static ActionTable MarioActions;

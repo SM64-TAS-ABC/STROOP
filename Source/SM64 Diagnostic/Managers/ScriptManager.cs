@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
 using System.Windows.Forms;
+using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -49,8 +50,8 @@ namespace SM64_Diagnostic.Managers
         public void ExecuteScript(GameScript script)
         {
             // Copy jump bytes
-            uint prevInst1 = BitConverter.ToUInt32(_stream.ReadRam(script.InsertAddress, 4), 0);
-            uint prevInst2 = BitConverter.ToUInt32(_stream.ReadRam(script.InsertAddress + 4, 4), 0);
+            uint prevInst1 = _stream.GetUInt32(script.InsertAddress);
+            uint prevInst2 = _stream.GetUInt32(script.InsertAddress + 4);
             byte[] prevInstBytes = new byte[8];
             BitConverter.GetBytes(prevInst1).CopyTo(prevInstBytes, 0);
             BitConverter.GetBytes(prevInst2).CopyTo(prevInstBytes, 4);
@@ -65,8 +66,8 @@ namespace SM64_Diagnostic.Managers
             Task.Delay(100).Wait();
 
             // Copy jump bytes (They may have changed)
-            prevInst1 = BitConverter.ToUInt32(_stream.ReadRam(script.InsertAddress, 4), 0);
-            prevInst2 = BitConverter.ToUInt32(_stream.ReadRam(script.InsertAddress + 4, 4), 0);
+            prevInst1 = _stream.GetUInt32(script.InsertAddress);
+            prevInst2 = _stream.GetUInt32(script.InsertAddress + 4);
             prevInstBytes = new byte[8];
             BitConverter.GetBytes(prevInst1).CopyTo(prevInstBytes, 0);
             BitConverter.GetBytes(prevInst2).CopyTo(prevInstBytes, 4);
@@ -96,7 +97,7 @@ namespace SM64_Diagnostic.Managers
 
             // Write script
             Buffer.BlockCopy(script.Script, 0, scriptBytes, 0, scriptLength);
-            success &= _stream.WriteRam(scriptBytes, scriptAddress);
+            success &= _stream.WriteRamLittleEndian(scriptBytes, scriptAddress);
 
             scriptAddress += (uint)(scriptLength);
             script.PostInstrSpace = scriptAddress;
@@ -104,15 +105,15 @@ namespace SM64_Diagnostic.Managers
             scriptAddress += (uint)(2*sizeof(uint));
 
             uint jumpBackToInsertPointInst = JumpToAddressInst(script.InsertAddress + 8);
-            success &= _stream.WriteRam(BitConverter.GetBytes(jumpBackToInsertPointInst), scriptAddress);
+            success &= _stream.WriteRamLittleEndian(BitConverter.GetBytes(jumpBackToInsertPointInst), scriptAddress);
 
             script.Allocated = success;
             if (!script.Allocated)
                 return false;
 
             // Write jump
-            script.Allocated &= _stream.WriteRam(prevInstBytes, script.PostInstrSpace);
-            script.Allocated &= _stream.WriteRam(script.JumpInstBytes, script.InsertAddress);
+            script.Allocated &= _stream.WriteRamLittleEndian(prevInstBytes, script.PostInstrSpace);
+            script.Allocated &= _stream.WriteRamLittleEndian(script.JumpInstBytes, script.InsertAddress);
 
             return success;
         }

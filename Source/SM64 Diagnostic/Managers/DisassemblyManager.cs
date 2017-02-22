@@ -92,7 +92,7 @@ namespace SM64_Diagnostic.Managers
         private void DisassemblyLines(int numberOfLines)
         {
             _output.Visible = false;
-            var instructionBytes = _stream.ReadRam(_lastProcessAddress, 4 * numberOfLines);
+            var instructionBytes = _stream.ReadRamLittleEndian(_lastProcessAddress, 4 * numberOfLines);
             for (int i = 0; i < numberOfLines; i++, _lastProcessAddress += 4)
             {
                 // Get next bytes
