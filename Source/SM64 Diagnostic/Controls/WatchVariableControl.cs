@@ -313,7 +313,7 @@ namespace SM64_Diagnostic.Controls
                 this._textBoxValue.KeyDown += OnTextValueKeyDown;
                 this._textBoxValue.MouseEnter += _textBoxValue_MouseEnter;
                 this._textBoxValue.DoubleClick += _textBoxValue_DoubleClick;
-                this._textBoxValue.Leave += (sender, e) => { _editMode = false; this._textBoxValue.ReadOnly = true; };
+                this._textBoxValue.Leave += (sender, e) => { EditMode = false; };
                 if (_watchVar.IsAngle)
                 {
                     WatchVariableControl.AngleMenu.ItemClicked += OnMenuStripClick;
