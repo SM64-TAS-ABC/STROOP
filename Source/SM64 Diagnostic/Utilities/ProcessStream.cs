@@ -293,6 +293,9 @@ namespace SM64_Diagnostic.Utilities
             else
                 address = ConvertAddressEndianess(address & ~0x80000000U, length);
 
+            if (address + length > _ram.Length)
+                return new byte[length];
+
             Array.Copy(_ram, address, readBytes, 0, length);
             return readBytes;
         }
@@ -471,16 +474,16 @@ namespace SM64_Diagnostic.Utilities
                     // Read whole ram value to buffer
                     if (!ReadProcessMemory(0, _ram))
                         continue;
+
+                    OnUpdate?.Invoke(this, new EventArgs());
+
+                    foreach (var lockVar in LockedVariables)
+                        lockVar.Value.Update();
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    continue;
+                    LogException(e);
                 }
-
-                OnUpdate?.Invoke(this, new EventArgs());
-
-                foreach (var lockVar in LockedVariables)
-                    lockVar.Value.Update();
 
                 FrameLimitStreamUpdate:
 
