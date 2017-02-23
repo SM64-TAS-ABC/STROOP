@@ -14,7 +14,19 @@ namespace SM64_Diagnostic.Managers
 {
     public class ObjectSlotsManager
     {
+        public class ObjectSlotData
+        {
+            public uint Address;
+            public byte ObjectProcessGroup;
+            public int ProcessIndex;
+            public int? VacantSlotIndex;
+            public float DistanceToMario;
+            public bool IsActive;
+            public uint Behavior;
+        }
+
         const int DefaultSlotSize = 36;
+
         public ObjectSlot[] ObjectSlots;
 
         public ObjectAssociations ObjectAssoc;
@@ -28,7 +40,8 @@ namespace SM64_Diagnostic.Managers
 
         Dictionary<uint, MapObject> _mapObjects = new Dictionary<uint, MapObject>();
         Dictionary<uint, int> _memoryAddressSlotIndex;
-        Dictionary<uint, string> _lastSlotLabel = new Dictionary<uint, string>();
+        Dictionary<uint, Tuple<int?, int?>> _lastSlotLabel = new Dictionary<uint, Tuple<int?, int?>>();
+        bool _labelsLocked = false;
         public List<uint> SelectedSlotsAddresses = new List<uint>();
 
         List<byte> _toggleMapGroups = new List<byte>();
@@ -146,7 +159,7 @@ namespace SM64_Diagnostic.Managers
                             else
                                 _toggleMapSlots.Add(selectedSlot.Address);
 
-                            UpdateSelectedObjectSlots();
+                            UpdateSelectedMapObjectSlots();
 
                             break;
                         case MapToggleModeType.ObjectType:
@@ -156,7 +169,7 @@ namespace SM64_Diagnostic.Managers
                             else
                                 _toggleMapBehaviors.Add(behavior);
 
-                            UpdateSelectedObjectSlots();
+                            UpdateSelectedMapObjectSlots();
                             break;
 
                         case MapToggleModeType.ProcessGroup:
@@ -166,22 +179,22 @@ namespace SM64_Diagnostic.Managers
                             else
                                 _toggleMapGroups.Add(group);
 
-                            UpdateSelectedObjectSlots();
+                            UpdateSelectedMapObjectSlots();
                             break;
                     }
                     break;
             }
         }
 
-        public void SetAllSelectedObjectSlots()
+        public void SetAllSelectedMapObjectSlots()
         {
             foreach (var objSlot in ObjectSlots)
             {
-                objSlot.Selected = true;
+                objSlot.SelectedOnMap = true;
             }
         }
 
-        public void UpdateSelectedObjectSlots()
+        public void UpdateSelectedMapObjectSlots()
         {
             foreach (var objSlot in ObjectSlots)
             {
@@ -189,7 +202,7 @@ namespace SM64_Diagnostic.Managers
                     && !_toggleMapBehaviors.Contains(objSlot.Behavior)
                     && !_toggleMapSlots.Contains(objSlot.Address);
 
-                objSlot.Selected = selected;
+                objSlot.SelectedOnMap = selected;
             }
         }
 
@@ -238,7 +251,6 @@ namespace SM64_Diagnostic.Managers
                 // Loop through every object within the group
                 while ((currentGroupObject != processGroupStructAddress && currentSlot < slotConfig.MaxSlots))
                 {
-
                     // Validate current object
                     if (_stream.GetUInt16(currentGroupObject + Config.ObjectSlots.HeaderOffset) != 0x18)
                         return null;
@@ -290,7 +302,6 @@ namespace SM64_Diagnostic.Managers
             var slotConfig = Config.ObjectSlots;
 
             var newObjectSlotData = GetProcessedObjects(groupConfig, slotConfig);
-
             if (newObjectSlotData == null)
                 return;
 
@@ -361,10 +372,18 @@ namespace SM64_Diagnostic.Managers
                 : s.DistanceToMario).First().Address;
 
             // Update slots
+            UpdateSlots(newObjectSlotData);
+        }
+
+        private void UpdateSlots(List<ObjectSlotData> newObjectSlotData)
+        {
+            // Lock label update
+            _labelsLocked = ManagerGui.LockLabelsCheckbox.Checked;
+
             BehaviorCriteria? multiBehavior = null;
             List<BehaviorCriteria> selectedBehaviorCriterias = new List<BehaviorCriteria>();
             bool firstObject = true;
-            for (int i = 0; i < slotConfig.MaxSlots; i++)
+            for (int i = 0; i < Config.ObjectSlots.MaxSlots; i++)
             {
                 var behaviorCritera = UpdateSlot(newObjectSlotData[i], ObjectSlots[i]);
                 if (!SelectedSlotsAddresses.Contains(newObjectSlotData[i].Address))
@@ -477,6 +496,9 @@ namespace SM64_Diagnostic.Managers
                 Config.ObjectGroups.ProcessingGroupsColor[objData.ObjectProcessGroup];
             objSlot.BackColor = newColor;
 
+            if (!_labelsLocked)
+                _lastSlotLabel[objAddress] = new Tuple<int?, int?>(objData.ProcessIndex, objData.VacantSlotIndex);
+
             string labelText = "";
             switch ((SlotLabelType)ManagerGui.LabelMethodComboBox.SelectedItem)
             {
@@ -492,28 +514,22 @@ namespace SM64_Diagnostic.Managers
                     break;
 
                 case SlotLabelType.SlotPos:
-                    labelText = String.Format("{0}", objData.ProcessIndex
+                    labelText = String.Format("{0}", _lastSlotLabel[objAddress].Item1
                         + (Config.SlotIndexsFromOne ? 1 : 0));
                     break;
 
                 case SlotLabelType.SlotPosVs:
-                    if (!objData.VacantSlotIndex.HasValue)
+                    var vacantSlotIndex = _lastSlotLabel[objAddress].Item2;
+                    if (!vacantSlotIndex.HasValue)
                         goto case SlotLabelType.SlotPos;
 
-                    labelText = String.Format("VS{0}", objData.VacantSlotIndex.Value
+                    labelText = String.Format("VS{0}", vacantSlotIndex.Value
                         + (Config.SlotIndexsFromOne ? 1 : 0));
                     break;
             }
 
-            if (ManagerGui.LockLabelsCheckbox.Checked)
-            {
-                if (!_lastSlotLabel.ContainsKey(objAddress))
-                    _lastSlotLabel.Add(objAddress, labelText);
-                else
-                    _lastSlotLabel[objAddress] = labelText;
-            }
-            objSlot.TextColor = ManagerGui.LockLabelsCheckbox.Checked ? Color.Red : Color.Blue;
-            objSlot.Text = ManagerGui.LockLabelsCheckbox.Checked ? _lastSlotLabel[objAddress] : labelText;
+            objSlot.TextColor = _labelsLocked ? Color.Red : Color.Blue;
+            objSlot.Text = labelText;
 
             // Update object manager image
             if (SelectedSlotsAddresses.Count <= 1 && SelectedSlotsAddresses.Contains(objAddress))

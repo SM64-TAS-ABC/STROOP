@@ -82,6 +82,7 @@ namespace SM64_Diagnostic
             _sm64Stream.FpsUpdated += _sm64Stream_FpsUpdated;
             _sm64Stream.OnDisconnect += _sm64Stream_OnDisconnect;
             _sm64Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
+            _sm64Stream.OnClose += _sm64Stream_OnClose;
 
             currentContext.DisassemblyManager = _disManager = new DisassemblyManager(_sm64Stream, tabPageDisassembly);
             currentContext.ScriptManager = _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
@@ -160,7 +161,7 @@ namespace SM64_Diagnostic
 
         private void _sm64Stream_WarnReadonlyOff(object sender, EventArgs e)
         {
-            this.Invoke(new Action(() =>
+            Invoke(new Action(() =>
                 {
                 var dr = MessageBox.Show("Warning! Editing variables and enabling hacks may cause the emulator to freeze. Turn off read-only mode?", 
                     "Turn Off Read-only Mode?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
@@ -184,7 +185,7 @@ namespace SM64_Diagnostic
 
         private void _sm64Stream_OnDisconnect(object sender, EventArgs e)
         {
-            this.Invoke(new Action(() => {
+            this.BeginInvoke(new Action(() => {
                 buttonRefresh_Click(this, new EventArgs());
                 panelConnect.Visible = true;
             }));
@@ -258,7 +259,7 @@ namespace SM64_Diagnostic
 
         private void _sm64Stream_FpsUpdated(object sender, EventArgs e)
         {
-            Invoke(new Action(() =>
+            BeginInvoke(new Action(() =>
             {
                 labelFpsCounter.Text = "FPS: " + (int)_sm64Stream.Fps;
             }));
@@ -429,9 +430,22 @@ namespace SM64_Diagnostic
             _mapManager.Load();
         }
 
-        private void StroopMainForm_FormClosing(object sender, FormClosingEventArgs e)
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            _sm64Stream.Stop();
+            if (_sm64Stream.IsRunning)
+            {
+                _sm64Stream.Stop();
+                e.Cancel = true;
+                Hide();
+                return;
+            }
+            
+            base.OnFormClosing(e);
+        }
+
+        private void _sm64Stream_OnClose(object sender, EventArgs e)
+        {
+            Invoke(new Action(() => Close()));
         }
 
         private void buttonCollapseBottom_Click(object sender, EventArgs e)
@@ -526,13 +540,13 @@ namespace SM64_Diagnostic
         {
             if (tabControlMain.SelectedTab == tabPageMap)
             {
-                _objectSlotManager.UpdateSelectedObjectSlots();
+                _objectSlotManager.UpdateSelectedMapObjectSlots();
                 comboBoxMapToggleMode.Visible = true;
                 labelToggleMode.Visible = true;
             }
             else
             {
-                _objectSlotManager.SetAllSelectedObjectSlots();
+                _objectSlotManager.SetAllSelectedMapObjectSlots();
                 comboBoxMapToggleMode.Visible = false;
                 labelToggleMode.Visible = false;
             }

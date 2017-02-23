@@ -37,7 +37,7 @@ namespace SM64_Diagnostic
         public enum MouseStateType {None, Over, Down};
         public MouseStateType MouseState;
 
-        public bool Selected
+        public bool SelectedOnMap
         {
             get
             {
@@ -105,6 +105,7 @@ namespace SM64_Diagnostic
                 {
                     _textBrush.Color = value;
                 }
+                Invalidate();
             }
         }
 

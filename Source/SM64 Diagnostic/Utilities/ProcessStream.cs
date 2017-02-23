@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Structs;
 using System.Threading;
 using System.IO;
+using System.ComponentModel;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -18,20 +19,19 @@ namespace SM64_Diagnostic.Utilities
         IntPtr _processHandle;
         Process _process;
         Queue<double> _fpsTimes = new Queue<double>();
-        Task _streamUpdater;
+        BackgroundWorker _streamUpdater;
         byte[] _ram;
         bool _lastUpdateBeforePausing = false;
         int _interval;
         object _enableLocker = new object();
         object _fpsQueueLocker = new object();
 
-        CancellationTokenSource _cancelToken = new CancellationTokenSource();
-
         public event EventHandler OnUpdate;
         public event EventHandler OnStatusChanged;
         public event EventHandler OnDisconnect;
         public event EventHandler FpsUpdated;
         public event EventHandler WarnReadonlyOff;
+        public event EventHandler OnClose;
 
         public bool Readonly = true;
         public bool ShowWarning = true;
@@ -86,7 +86,7 @@ namespace SM64_Diagnostic.Utilities
                 bool running;
                 lock(_enableLocker)
                 {
-                    running = !(IsSuspended || IsClosed || !IsEnabled);
+                    running = !(IsSuspended || IsClosed || !IsEnabled || !_streamUpdater.IsBusy);
                 }
                 return running;
             }
@@ -99,17 +99,22 @@ namespace SM64_Diagnostic.Utilities
             _interval = (int) (1000.0f / Config.RefreshRateFreq);
             _ram = new byte[Config.RamSize];
 
-            _streamUpdater = new Task(() => ProcessUpdateTask(_cancelToken.Token), _cancelToken.Token);
-            _streamUpdater.ContinueWith(ExceptionHandler, TaskContinuationOptions.OnlyOnFaulted);
-            _streamUpdater.Start();
+            _streamUpdater = new BackgroundWorker();
+            _streamUpdater.DoWork += ProcessUpdateTask;
+            _streamUpdater.WorkerSupportsCancellation = true;
+            _streamUpdater.RunWorkerAsync();
 
             SwitchProcess(_process, _emulator);
         }
 
         private void LogException(Exception e)
         {
-            File.AppendAllText("error.txt", String.Format("{0}\n{1}\n{2}\n{3}\n", e.Message,
-                e.InnerException.ToString(), e.TargetSite.ToString(), e.StackTrace));
+            try
+            {
+                var log = String.Format("{0}\n{1}\n{2}\n", e.Message, e.TargetSite.ToString(), e.StackTrace);
+                File.AppendAllText("error.txt", log);
+            }
+            catch (Exception) { }
         }
 
         private void ExceptionHandler(Task obj)
@@ -123,16 +128,7 @@ namespace SM64_Diagnostic.Utilities
             if (_process != null)
                 _process.Exited -= ProcessClosed;
 
-            _cancelToken?.Cancel();
-            try
-            {
-                _streamUpdater?.Wait();
-            }
-            catch (AggregateException) { }
-            finally
-            {
-                _cancelToken?.Dispose();
-            }
+            _streamUpdater.CancelAsync();
         }
 
         public bool SwitchProcess(Process newProcess, Emulator emulator)
@@ -449,19 +445,21 @@ namespace SM64_Diagnostic.Utilities
 
         public void Stop()
         {
-            _cancelToken?.Cancel();
-            try
-            {
-                //_streamUpdater?.Wait();
-            }
-            catch (AggregateException) { }
+            _streamUpdater.CancelAsync();
         }
 
-        private void ProcessUpdateTask(CancellationToken ct)
+        private void ProcessUpdateTask(object sender, DoWorkEventArgs e)
         {
+            var worker = sender as BackgroundWorker;
             var prevTime = Stopwatch.StartNew();
-            while (!ct.IsCancellationRequested)
+            while (!e.Cancel)
             {
+                if (worker.CancellationPending)
+                {
+                    e.Cancel = true;
+                    break;
+                }
+
                 prevTime.Restart();
                 if (!IsRunning & !_lastUpdateBeforePausing)
                     goto FrameLimitStreamUpdate;
@@ -480,9 +478,12 @@ namespace SM64_Diagnostic.Utilities
                     foreach (var lockVar in LockedVariables)
                         lockVar.Value.Update();
                 }
-                catch (Exception e)
+                catch (Exception ee)
                 {
-                    LogException(e);
+                    LogException(ee);
+                    MessageBox.Show("A Fatal Error has occured. See output.txt for details. The program will now exit.", 
+                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
+                    break;
                 }
 
                 FrameLimitStreamUpdate:
@@ -504,7 +505,7 @@ namespace SM64_Diagnostic.Utilities
                 Task.Delay(timeToWait).Wait();
             }
 
-            ct.ThrowIfCancellationRequested();
+            OnClose?.BeginInvoke(this, new EventArgs(), null, null);
         }
 
         public int ConvertAddressEndianess(int address, int dataSize)

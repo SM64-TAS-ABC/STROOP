@@ -2251,7 +2251,6 @@ namespace SM64_Diagnostic
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StroopMainForm";
             this.Text = "STROOP";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StroopMainForm_FormClosing);
             this.Load += new System.EventHandler(this.StroopMainForm_Load);
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();

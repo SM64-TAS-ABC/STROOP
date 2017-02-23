@@ -159,7 +159,6 @@
     <Compile Include="Structs\Configurations\ObjectSlotsConfig.cs" />
     <Compile Include="Structs\Configurations\ObjectGroupsConfig.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
-    <Compile Include="Structs\ObjectSlotData.cs" />
     <Compile Include="Structs\RomHack.cs" />
     <Compile Include="Structs\SpawnHack.cs" />
     <Compile Include="Utilities\Kernal32NativeMethods.cs" />
