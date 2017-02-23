@@ -528,7 +528,7 @@ namespace SM64_Diagnostic.Managers
         void UpdateObjectManager(ObjectSlot objSlot, BehaviorCriteria behaviorCriteria, ObjectSlotData objData)
         {
             var objAssoc = ObjectAssoc.FindObjectAssociation(behaviorCriteria);
-            var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : (BehaviorCriteria?)null;
+            var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : behaviorCriteria;
             if (_lastSelectedBehavior != newBehavior || _firstSlotSelect)
             {
                 _objManager.Behavior = String.Format("0x{0}", ((objData.Behavior + ObjectAssoc.RamOffset) & 0x00FFFFFF).ToString("X4"));
