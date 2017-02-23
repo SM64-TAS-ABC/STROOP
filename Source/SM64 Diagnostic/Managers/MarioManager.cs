@@ -21,7 +21,10 @@ namespace SM64_Diagnostic.Managers
             _mapManager = mapManager;
 
             var toggleHandsfree = marioControl.Controls["buttonMarioToggleHandsfree"] as Button;
+            var toggleVisibility = marioControl.Controls["buttonMarioVisibility"] as Button;
+
             toggleHandsfree.Click += ToggleHandsfree_Click;
+            toggleVisibility.Click += ToggleVisibility_Click;
         }
 
         protected override void InitializeSpecialVariables()
@@ -88,6 +91,11 @@ namespace SM64_Diagnostic.Managers
         private void ToggleHandsfree_Click(object sender, EventArgs e)
         {
             MarioActions.ToggleHandsfree(_stream);
+        }
+
+        private void ToggleVisibility_Click(object sender, EventArgs e)
+        {
+            MarioActions.ToggleVisibility(_stream);
         }
 
         public override void Update(bool updateView)

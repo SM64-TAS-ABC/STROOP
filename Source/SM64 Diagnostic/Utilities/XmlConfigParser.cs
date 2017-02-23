@@ -256,6 +256,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "PeakHeightOffset":
                                     Config.Mario.PeakHeightOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "ObjectReferenceAddress":
+                                    Config.Mario.ObjectReferenceAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;

@@ -10,6 +10,8 @@ namespace SM64_Diagnostic.Utilities
 {
     public static class MarioActions
     {
+        static uint _prevMarioGraphic = 0x00;
+
         public static bool GoToObjects(ProcessStream stream, List<uint> objAddresses)
         {
             // Move mario to object
@@ -186,6 +188,31 @@ namespace SM64_Diagnostic.Utilities
                 uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
                 uint nextAction = Config.MarioActions.GetHandsfreeValue(currentAction);
                 success = stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
+            }
+
+            stream.Resume();
+
+            return success;
+        }
+
+        public static bool ToggleVisibility(ProcessStream stream)
+        {
+            bool success = true;
+            stream.Suspend();
+
+            var marioObjRef = stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+            if (marioObjRef != 0x00000000U)
+            {
+                var marioGraphics = stream.GetUInt32(marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
+                if (marioGraphics == 0)
+                { 
+                    success &= stream.SetValue(_prevMarioGraphic, marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
+                }
+                else
+                {
+                    _prevMarioGraphic = marioGraphics;
+                    success &= stream.SetValue(0x00000000U, marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
+                }
             }
 
             stream.Resume();
