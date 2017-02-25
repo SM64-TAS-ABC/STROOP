@@ -206,7 +206,7 @@ namespace SM64_Diagnostic.ManagerClasses
             
             // Start drawing texture
             GL.BindTexture(TextureTarget.Texture2D, texId);
-            GL.Begin(BeginMode.Quads);
+            GL.Begin(PrimitiveType.Quads);
 
             // Set drawing coordinates
             GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(-size.Width / 2, size.Height / 2);

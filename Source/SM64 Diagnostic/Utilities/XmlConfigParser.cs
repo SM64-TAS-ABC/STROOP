@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Extensions;
 using System.Xml;
 using System.Net;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -57,23 +58,25 @@ namespace SM64_Diagnostic.Utilities
             var doc = XDocument.Load(path);
             doc.Validate(schemaSet, Validation);
 
-            foreach(XElement element in doc.Root.Elements())
+            foreach(var element in doc.Root.Elements())
             {
                 switch(element.Name.ToString())
                 {
+                    case "Emulators":
+                        foreach (var subElement in element.Elements())
+                        {
+                            Config.Emulators.Add(new Emulator()
+                            {
+                                Name = subElement.Attribute(XName.Get("name")).Value,
+                                ProcessName = subElement.Attribute(XName.Get("processName")).Value,
+                                RamStart = ParsingUtilities.ParseHex(subElement.Attribute(XName.Get("ramStart")).Value)
+                            });
+                        }
+                        break;
                     case "RefreshRateFreq":
                         Config.RefreshRateFreq = int.Parse(element.Value);
                         break;
-
-                    case "ProcessDefaultName":
-                        Config.ProcessName = element.Value;
-                        break;
-
-                    case "RAMStartAddress":
-                        Config.RamStartAddress = ParsingUtilities.ParseHex(element.Value);
-                        break;
-
-                    case "RAMSize":
+                    case "RamSize":
                         Config.RamSize = ParsingUtilities.ParseHex(element.Value);
                         break;
                     case "ObjectSlots":
@@ -208,6 +211,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "ActionOffset":
                                     Config.Mario.ActionOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "PrevActionOffset":
+                                    Config.Mario.PrevActionOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "MoveToObjectYOffset":
                                     Config.Mario.MoveToObjectYOffset = float.Parse(subElement.Value);
                                     break;
@@ -250,6 +256,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "PeakHeightOffset":
                                     Config.Mario.PeakHeightOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "ObjectReferenceAddress":
+                                    Config.Mario.ObjectReferenceAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;
@@ -271,6 +280,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "StarCountAddress":
                                     Config.Hud.StarCountAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "DisplayHpAddress":
+                                    Config.Hud.DisplayHpAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "DisplayLiveCountAddress":
                                     Config.Hud.DisplayLiveCountAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
@@ -279,6 +291,9 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                                 case "DisplayStarCountAddress":
                                     Config.Hud.DisplayStarCountAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "FullHpInt":
+                                    Config.Hud.FullHpInt = short.Parse(subElement.Value);
                                     break;
                                 case "FullHp":
                                     Config.Hud.FullHp = short.Parse(subElement.Value);
@@ -580,8 +595,9 @@ namespace SM64_Diagnostic.Utilities
                         break;
 
                     case "Object":
-                        uint behaviorAddress = (ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value)
-                            - ramToBehaviorOffset) & 0x00FFFFFF;
+                        string name = element.Attribute(XName.Get("name")).Value;
+                        uint behaviorSegmented = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
+                        uint behaviorAddress = (behaviorSegmented - ramToBehaviorOffset) & 0x00FFFFFF;
                         uint? gfxId = null;
                         int? subType = null, appearance = null;
                         if (element.Attribute(XName.Get("gfxId")) != null)
@@ -590,6 +606,21 @@ namespace SM64_Diagnostic.Utilities
                             subType = ParsingUtilities.TryParseInt(element.Attribute(XName.Get("subType")).Value);
                         if (element.Attribute(XName.Get("appearance")) != null)
                             appearance = ParsingUtilities.TryParseInt(element.Attribute(XName.Get("appearance")).Value);
+                        var spawnElement = element.Element(XName.Get("SpawnCode"));
+                        if (spawnElement != null)
+                        {
+                            byte spawnGfxId = (byte)(spawnElement.Attribute(XName.Get("gfxId")) != null ? 
+                                ParsingUtilities.ParseHex(spawnElement.Attribute(XName.Get("gfxId")).Value) : 0);
+                            byte spawnExtra = (byte)(spawnElement.Attribute(XName.Get("extra")) != null ? 
+                                ParsingUtilities.ParseHex(spawnElement.Attribute(XName.Get("extra")).Value) : (byte)(subType.HasValue ? subType : 0));
+                            assoc.AddSpawnHack(new SpawnHack()
+                            {
+                                Name = name,
+                                Behavior = behaviorSegmented,
+                                GfxId = spawnGfxId,
+                                Extra = spawnExtra
+                            });
+                        }
                         string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                         string mapImagePath = null;
                         bool rotates = false;
@@ -598,7 +629,6 @@ namespace SM64_Diagnostic.Utilities
                             mapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                             rotates = bool.Parse(element.Element(XName.Get("MapImage")).Attribute(XName.Get("rotates")).Value);
                         }
-                        string name = element.Attribute(XName.Get("name")).Value;
                         var watchVars = new List<WatchVariable>();
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
                         {
@@ -808,9 +838,10 @@ namespace SM64_Diagnostic.Utilities
             return parser;
         }
 
-        public static List<RomHack> OpenHacks(string path)
+        public static Tuple<HackConfig, List<RomHack>> OpenHacks(string path)
         {
             var hacks = new List<RomHack>();
+            var hackConfig = new HackConfig();
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
@@ -840,6 +871,14 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
+                    case "SpawnHack":
+                        string spawnHackPath = hackDir + element.Attribute(XName.Get("path")).Value;
+                        hackConfig.SpawnHack = new RomHack(spawnHackPath, "Spawn Hack");
+                        hackConfig.BehaviorAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behavior")).Value);
+                        hackConfig.GfxIdAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxId")).Value);
+                        hackConfig.ExtraAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("extra")).Value);
+                        break;
+
                     case "Hack":
                         string hackPath = hackDir + element.Attribute(XName.Get("path")).Value;
                         string name = element.Attribute(XName.Get("name")).Value;
@@ -848,7 +887,7 @@ namespace SM64_Diagnostic.Utilities
                 }
             }
 
-            return hacks;
+            return new Tuple<HackConfig, List<RomHack>>(hackConfig, hacks);
         }
 
         public static WatchVariable GetWatchVariableFromElement(XElement element)
@@ -883,6 +922,59 @@ namespace SM64_Diagnostic.Utilities
             watchVar.IsAngle = element.Attribute(XName.Get("isAngle")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isAngle")).Value) : false;
             return watchVar;
+        }
+
+        public static ActionTable OpenActionTable(string path)
+        {
+            ActionTable actionTable = null;
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ActionTableSchema.xsd", "ActionTableSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                switch(element.Name.ToString())
+                {
+                    case "Default":
+                        uint defaultAfterCloneValue = ParsingUtilities.ParseHex(
+                            element.Attribute(XName.Get("afterCloneValue")).Value);
+                        uint defaultAfterUncloneValue = ParsingUtilities.ParseHex(
+                            element.Attribute(XName.Get("afterUncloneValue")).Value);
+                        uint defaultHandsfreeValue = ParsingUtilities.ParseHex(
+                            element.Attribute(XName.Get("handsfreeValue")).Value);
+                        actionTable = new ActionTable(defaultAfterCloneValue, defaultAfterUncloneValue, defaultHandsfreeValue);
+                        break;
+
+                    case "Action":
+                        uint actionValue = ParsingUtilities.ParseHex(
+                            element.Attribute(XName.Get("value")).Value);
+                        string actionName = element.Attribute(XName.Get("name")).Value;
+                        uint? afterCloneValue = element.Attribute(XName.Get("afterCloneValue")) != null ?
+                            ParsingUtilities.ParseHex(element.Attribute(XName.Get("afterCloneValue")).Value) : (uint?) null;
+                        uint? afterUncloneValue = element.Attribute(XName.Get("afterUncloneValue")) != null ?
+                            ParsingUtilities.ParseHex(element.Attribute(XName.Get("afterUncloneValue")).Value) : (uint?) null;
+                        uint? handsfreeValue = element.Attribute(XName.Get("handsfreeValue")) != null ?
+                            ParsingUtilities.ParseHex(element.Attribute(XName.Get("handsfreeValue")).Value) : (uint?)null;
+                        actionTable?.Add(new ActionTable.ActionReference()
+                        {
+                            Action = actionValue,
+                            ActionName = actionName,
+                            AfterClone = afterCloneValue,
+                            AfterUnclone = afterUncloneValue,
+                            Handsfree = handsfreeValue
+                        });
+                        break;
+                }
+            }
+
+            return actionTable;
         }
 
         public static void AddWatchVariableOtherData(WatchVariable watchVar)

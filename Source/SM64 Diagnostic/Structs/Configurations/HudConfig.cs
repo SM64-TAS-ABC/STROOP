@@ -12,10 +12,12 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint LiveCountAddress;
         public uint CoinCountAddress;
         public uint StarCountAddress;
+        public uint DisplayHpAddress;
         public uint DisplayLiveCountAddress;
         public uint DisplayCoinCountAddress;
         public uint DisplayStarCountAddress;
         public short FullHp;
+        public short FullHpInt;
         public sbyte StandardLives;
         public short StandardCoins;
         public short StandardStars;

@@ -23,7 +23,8 @@ namespace SM64_Diagnostic.Structs
         }
 
         void LoadHackFromFile(string hackFileName)
-        { 
+        {
+            // Load file and remove whitespace
             var dataUntrimmed = File.ReadAllText(hackFileName);
             var data = Regex.Replace(dataUntrimmed, @"\s+", "");
 
@@ -57,21 +58,23 @@ namespace SM64_Diagnostic.Structs
             while (nextEnd != -1);
         }
 
-        public void LoadPayload(ProcessStream stream)
+        public void LoadPayload(ProcessStream stream, bool suspendStream = true)
         {
             var originalMemory = new List<Tuple<uint, byte[]>>();
             bool success = true;
 
-            stream.Suspend();
+            if (suspendStream)
+                stream.Suspend();
 
             foreach (var address in _payload)
             {
                 // Read original memory before replacing
-                originalMemory.Add(new Tuple<uint, byte[]>(address.Item1, stream.ReadRam(address.Item1, address.Item2.Length, false, false)));
-                success &= stream.WriteRam(address.Item2, address.Item1, false, false);
+                originalMemory.Add(new Tuple<uint, byte[]>(address.Item1, stream.ReadRam(address.Item1, address.Item2.Length)));
+                success &= stream.WriteRam(address.Item2, address.Item1);
             }
 
-            stream.Resume();
+            if (suspendStream)
+                stream.Resume();
 
             // Update original memory upon success
             if (success)
@@ -83,26 +86,31 @@ namespace SM64_Diagnostic.Structs
             Enabled = success;
         }
 
-        public void ClearPayload(ProcessStream stream)
+        public bool ClearPayload(ProcessStream stream)
         {
             bool success = true;
+
+            if (_originalMemory.Count != _payload.Count)
+                return false;
 
             stream.Suspend();
 
             foreach (var address in _originalMemory)
                 // Read original memory before replacing
-                success &= stream.WriteRam(address.Item2, address.Item1, false, false);
+                success &= stream.WriteRam(address.Item2, address.Item1);
 
             stream.Resume();
 
             Enabled = !success;
+
+            return success;
         }
 
         public void UpdateEnabledStatus(ProcessStream stream)
         {
             Enabled = true;
             foreach (var address in _payload)
-                Enabled &= address.Item2.SequenceEqual(stream.ReadRam(address.Item1, address.Item2.Length, false, false));
+                Enabled &= address.Item2.SequenceEqual(stream.ReadRam(address.Item1, address.Item2.Length));
         }
 
         public override string ToString()

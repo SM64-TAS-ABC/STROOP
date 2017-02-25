@@ -19,6 +19,12 @@ namespace SM64_Diagnostic.Managers
             : base(stream, marioData, variableTable, Config.Mario.StructAddress)
         {
             _mapManager = mapManager;
+
+            var toggleHandsfree = marioControl.Controls["buttonMarioToggleHandsfree"] as Button;
+            var toggleVisibility = marioControl.Controls["buttonMarioVisibility"] as Button;
+
+            toggleHandsfree.Click += ToggleHandsfree_Click;
+            toggleVisibility.Click += ToggleVisibility_Click;
         }
 
         protected override void InitializeSpecialVariables()
@@ -29,16 +35,18 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("SlidingSpeed"),
                 new AngleDataContainer("SlidingAngle"),
                 new DataContainer("FallHeight"),
+                new DataContainer("ActionDescription"),
+                new DataContainer("PrevActionDescription")
             };
         }
 
         public void ProcessSpecialVars()
         {
             UInt32 floorTriangle = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
-            var floorY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.GroundYOffset, 4), 0);
+            var floorY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.GroundYOffset);
 
-            float slidingSpeedX = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset, 4), 0);
-            float slidingSpeedZ = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset, 4), 0);
+            float slidingSpeedX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+            float slidingSpeedZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
             foreach (var specialVar in _specialWatchVars)
             {
                 switch(specialVar.SpecialName)
@@ -68,8 +76,26 @@ namespace SM64_Diagnostic.Managers
                     case "FallHeight":
                         (specialVar as DataContainer).Text = (_stream.GetSingle(Config.Mario.StructAddress + Config.Mario.PeakHeightOffset) - floorY).ToString();
                         break;
+
+                    case "ActionDescription":
+                        (specialVar as DataContainer).Text = Config.MarioActions.GetActionName(_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset));
+                        break;
+
+                    case "PrevActionDescription":
+                        (specialVar as DataContainer).Text = Config.MarioActions.GetActionName(_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset));
+                        break;
                 }
             }
+        }
+
+        private void ToggleHandsfree_Click(object sender, EventArgs e)
+        {
+            MarioActions.ToggleHandsfree(_stream);
+        }
+
+        private void ToggleVisibility_Click(object sender, EventArgs e)
+        {
+            MarioActions.ToggleVisibility(_stream);
         }
 
         public override void Update(bool updateView)

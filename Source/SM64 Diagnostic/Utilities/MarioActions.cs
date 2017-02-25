@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Extensions;
 
 namespace SM64_Diagnostic.Utilities
 {
     public static class MarioActions
     {
-        public static bool MoveMarioToObjects(ProcessStream stream, List<uint> objAddresses)
+        static uint _prevMarioGraphic = 0x00;
+
+        public static bool GoToObjects(ProcessStream stream, List<uint> objAddresses)
         {
             // Move mario to object
             var marioAddress = Config.Mario.StructAddress;
@@ -18,18 +21,18 @@ namespace SM64_Diagnostic.Utilities
 
             // Get object position
             float x, y, z;
-            x = objAddresses.Average(obj => BitConverter.ToSingle(stream.ReadRam(obj + Config.ObjectSlots.ObjectXOffset, 4), 0));
-            y = objAddresses.Average(obj => BitConverter.ToSingle(stream.ReadRam(obj + Config.ObjectSlots.ObjectYOffset, 4), 0));
-            z = objAddresses.Average(obj => BitConverter.ToSingle(stream.ReadRam(obj + Config.ObjectSlots.ObjectZOffset, 4), 0));
+            x = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectXOffset));
+            y = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectYOffset));
+            z = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectZOffset));
 
             // Add offset
             y += Config.Mario.MoveToObjectYOffset;
 
             // Move mario to object
             bool success = true;
-            success &= stream.WriteRam(BitConverter.GetBytes(x), marioAddress + Config.Mario.XOffset);
-            success &= stream.WriteRam(BitConverter.GetBytes(y), marioAddress + Config.Mario.YOffset);
-            success &= stream.WriteRam(BitConverter.GetBytes(z), marioAddress + Config.Mario.ZOffset);
+            success &= stream.SetValue(x, marioAddress + Config.Mario.XOffset);
+            success &= stream.SetValue(y, marioAddress + Config.Mario.YOffset);
+            success &= stream.SetValue(z, marioAddress + Config.Mario.ZOffset);
 
             stream.Resume();
 
@@ -45,9 +48,9 @@ namespace SM64_Diagnostic.Utilities
 
             // Get Mario position
             float x, y, z;
-            x = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
-            y = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.YOffset, 4), 0);
-            z = BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
+            x = stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            y = stream.GetSingle(marioAddress + Config.Mario.YOffset);
+            z = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
 
             // Add offset
             y += Config.ObjectSlots.MoveToMarioYOffset;
@@ -56,15 +59,70 @@ namespace SM64_Diagnostic.Utilities
             bool success = true;
             foreach (var objAddress in objAddresses)
             {
-                success &= stream.WriteRam(BitConverter.GetBytes(x), objAddress + Config.ObjectSlots.ObjectXOffset);
-                success &= stream.WriteRam(BitConverter.GetBytes(y), objAddress + Config.ObjectSlots.ObjectYOffset);
-                success &= stream.WriteRam(BitConverter.GetBytes(z), objAddress + Config.ObjectSlots.ObjectZOffset);
+                success &= stream.SetValue(x, objAddress + Config.ObjectSlots.ObjectXOffset);
+                success &= stream.SetValue(y, objAddress + Config.ObjectSlots.ObjectYOffset);
+                success &= stream.SetValue(z, objAddress + Config.ObjectSlots.ObjectZOffset);
             }
             stream.Resume();
 
             return success;
         }
 
+        public static bool GoToObjectsHome(ProcessStream stream, List<uint> objAddresses)
+        {
+            // Move mario to object
+            var marioAddress = Config.Mario.StructAddress;
+
+            stream.Suspend();
+
+            // Get object position
+            float x, y, z;
+            x = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeXOffset));
+            y = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeYOffset));
+            z = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeZOffset));
+
+            // Add offset
+            y += Config.Mario.MoveToObjectYOffset;
+
+            // Move mario to object
+            bool success = true;
+            success &= stream.SetValue(x, marioAddress + Config.Mario.XOffset);
+            success &= stream.SetValue(y, marioAddress + Config.Mario.YOffset);
+            success &= stream.SetValue(z, marioAddress + Config.Mario.ZOffset);
+
+            stream.Resume();
+
+            return success;
+        }
+
+        public static bool RetreiveObjectsHome(ProcessStream stream, List<uint> objAddresses)
+        {
+            // Move object to Mario
+            var marioAddress = Config.Mario.StructAddress;
+
+            stream.Suspend();
+
+            // Get Mario position
+            float x, y, z;
+            x = stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            y = stream.GetSingle(marioAddress + Config.Mario.YOffset);
+            z = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
+
+            // Add offset
+            y += Config.ObjectSlots.MoveToMarioYOffset;
+
+            // Move object to Mario
+            bool success = true;
+            foreach (var objAddress in objAddresses)
+            {
+                success &= stream.SetValue(x, objAddress + Config.ObjectSlots.HomeXOffset);
+                success &= stream.SetValue(y, objAddress + Config.ObjectSlots.HomeYOffset);
+                success &= stream.SetValue(z, objAddress + Config.ObjectSlots.HomeZOffset);
+            }
+            stream.Resume();
+
+            return success;
+        }
 
         public static bool CloneObject(ProcessStream stream, uint objAddress)
         {
@@ -74,10 +132,12 @@ namespace SM64_Diagnostic.Utilities
             stream.Suspend();
 
             // Make clone object mario's holding object
-            success &= stream.WriteRam(BitConverter.GetBytes(objAddress), marioAddress + Config.Mario.HoldingObjectPointerOffset);
+            success &= stream.SetValue(objAddress, marioAddress + Config.Mario.HoldingObjectPointerOffset);
 
             // Set clone action flags
-            success &= stream.WriteRam(BitConverter.GetBytes(0x8000207U), marioAddress + Config.Mario.ActionOffset);
+            uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
+            uint nextAction = Config.MarioActions.GetAfterCloneValue(currentAction);
+            success &= stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
 
             stream.Resume();
 
@@ -92,10 +152,12 @@ namespace SM64_Diagnostic.Utilities
             stream.Suspend();
 
             // Make clone object mario's holding object
-            success &= stream.WriteRam(new byte[] { 0x00, 0x00, 0x00, 0x00 }, marioAddress + Config.Mario.HoldingObjectPointerOffset);
+            success &= stream.SetValue((UInt32) 0x00000000U, marioAddress + Config.Mario.HoldingObjectPointerOffset);
 
             // Set clone action flags
-            success &= stream.WriteRam(BitConverter.GetBytes(0x0C400201U), marioAddress + Config.Mario.ActionOffset);
+            uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
+            uint nextAction = Config.MarioActions.GetAfterUncloneValue(currentAction);
+            success &= stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
 
             stream.Resume();
 
@@ -107,32 +169,83 @@ namespace SM64_Diagnostic.Utilities
             bool success = true;
             foreach (var address in addresses)
             {
-                success &= stream.WriteRam(new byte[] { 0x00, 0x00 }, address + Config.ObjectSlots.ObjectActiveOffset);
+                success &= stream.SetValue((short) 0x0000, address + Config.ObjectSlots.ObjectActiveOffset);
             }
+            return success;
+        }
+
+        public static bool ToggleHandsfree(ProcessStream stream)
+        {
+            bool success = true;
+            var marioAddress = Config.Mario.StructAddress;
+
+            stream.Suspend();
+
+            var holdingObj = stream.GetUInt32(marioAddress + Config.Mario.HoldingObjectPointerOffset);
+
+            if (holdingObj != 0x00000000U)
+            {
+                uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
+                uint nextAction = Config.MarioActions.GetHandsfreeValue(currentAction);
+                success = stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
+            }
+
+            stream.Resume();
+
+            return success;
+        }
+
+        public static bool ToggleVisibility(ProcessStream stream)
+        {
+            bool success = true;
+            stream.Suspend();
+
+            var marioObjRef = stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+            if (marioObjRef != 0x00000000U)
+            {
+                var marioGraphics = stream.GetUInt32(marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
+                if (marioGraphics == 0)
+                { 
+                    success &= stream.SetValue(_prevMarioGraphic, marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
+                }
+                else
+                {
+                    _prevMarioGraphic = marioGraphics;
+                    success &= stream.SetValue(0x00000000U, marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
+                }
+            }
+
+            stream.Resume();
+
             return success;
         }
 
         public static bool RefillHp(ProcessStream stream)
         {
-            return stream.WriteRam(BitConverter.GetBytes(Config.Hud.FullHp), Config.Hud.HpAddress);
+            return stream.SetValue(Config.Hud.FullHp, Config.Hud.HpAddress);
         }
 
         public static bool Die(ProcessStream stream)
         {
-            return stream.WriteRam(BitConverter.GetBytes((short)255), Config.Hud.HpAddress);
+            return stream.SetValue((short)255, Config.Hud.HpAddress);
         }
 
         public static bool StandardHud(ProcessStream stream)
         {
             bool success = true;
 
-            success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.FullHp), Config.Hud.HpAddress);
-            success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardCoins), Config.Hud.CoinCountAddress);
-            success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardLives), Config.Hud.LiveCountAddress);
-            success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardStars), Config.Hud.StarCountAddress);
-            success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardCoins), Config.Hud.DisplayCoinCountAddress);
-            success &= stream.WriteRam(BitConverter.GetBytes((short)Config.Hud.StandardLives), Config.Hud.DisplayLiveCountAddress);
-            success &= stream.WriteRam(BitConverter.GetBytes(Config.Hud.StandardStars), Config.Hud.DisplayStarCountAddress);
+            stream.Suspend();
+
+            success &= stream.SetValue(Config.Hud.FullHp, Config.Hud.HpAddress);
+            success &= stream.SetValue(Config.Hud.StandardCoins, Config.Hud.CoinCountAddress);
+            success &= stream.SetValue(Config.Hud.StandardLives, Config.Hud.LiveCountAddress);
+            success &= stream.SetValue(Config.Hud.StandardStars, Config.Hud.StarCountAddress);
+            success &= stream.SetValue(Config.Hud.FullHpInt, Config.Hud.DisplayHpAddress);
+            success &= stream.SetValue(Config.Hud.StandardCoins, Config.Hud.DisplayCoinCountAddress);
+            success &= stream.SetValue((short)Config.Hud.StandardLives, Config.Hud.DisplayLiveCountAddress);
+            success &= stream.SetValue(Config.Hud.StandardStars, Config.Hud.DisplayStarCountAddress);
+
+            stream.Resume();
 
             return success;
         }
@@ -146,21 +259,21 @@ namespace SM64_Diagnostic.Utilities
             switch(vertex)
             {
                 case 1:
-                    newX = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.X1, 2), 0);
-                    newY = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y1, 2), 0);
-                    newZ = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Z1, 2), 0);
+                    newX = stream.GetInt16(triangleAddress + Config.TriangleOffsets.X1);
+                    newY = stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y1);
+                    newZ = stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z1);
                     break;
 
                 case 2:
-                    newX = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.X2, 2), 0);
-                    newY = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y2, 2), 0);
-                    newZ = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Z2, 2), 0);
+                    newX = stream.GetInt16(triangleAddress + Config.TriangleOffsets.X2);
+                    newY = stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y2);
+                    newZ = stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z2);
                     break;
 
                 case 3:
-                    newX = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.X3, 2), 0);
-                    newY = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y3, 2), 0);
-                    newZ = BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Z3, 2), 0);
+                    newX = stream.GetInt16(triangleAddress + Config.TriangleOffsets.X3);
+                    newY = stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y3);
+                    newZ = stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z3);
                     break;
 
                 default:
@@ -178,9 +291,9 @@ namespace SM64_Diagnostic.Utilities
             // Move mario to triangle
             bool success = true;
             var marioAddress = Config.Mario.StructAddress;
-            success &= stream.WriteRam(BitConverter.GetBytes(newX), marioAddress + Config.Mario.XOffset);
-            success &= stream.WriteRam(BitConverter.GetBytes(newY), marioAddress + Config.Mario.YOffset);
-            success &= stream.WriteRam(BitConverter.GetBytes(newZ), marioAddress + Config.Mario.ZOffset);
+            success &= stream.SetValue(newX, marioAddress + Config.Mario.XOffset);
+            success &= stream.SetValue(newY, marioAddress + Config.Mario.YOffset);
+            success &= stream.SetValue(newZ, marioAddress + Config.Mario.ZOffset);
 
             stream.Resume();
 
@@ -193,17 +306,17 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             float normX, normY, normZ, oldNormOffset;
-            normX = BitConverter.ToSingle(stream.ReadRam(triangleAddress + Config.TriangleOffsets.NormX, 4), 0);
-            normY = BitConverter.ToSingle(stream.ReadRam(triangleAddress + Config.TriangleOffsets.NormY, 4), 0);
-            normZ = BitConverter.ToSingle(stream.ReadRam(triangleAddress + Config.TriangleOffsets.NormZ, 4), 0);
-            oldNormOffset = BitConverter.ToSingle(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Offset, 4), 0);
+            normX = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
+            normY = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
+            normZ = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
+            oldNormOffset = stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
 
             // Get Mario position
             short marioX, marioY, marioZ;
             var marioAddress = Config.Mario.StructAddress;
-            marioX = (short) BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.XOffset, 4), 0);
-            marioY = (short) BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.YOffset, 4), 0);
-            marioZ = (short) BitConverter.ToSingle(stream.ReadRam(marioAddress + Config.Mario.ZOffset, 4), 0);
+            marioX = (short) stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            marioY = (short) stream.GetSingle(marioAddress + Config.Mario.YOffset);
+            marioZ = (short) stream.GetSingle(marioAddress + Config.Mario.ZOffset);
 
             float normOffset = -(normX * marioX + normY * marioY + normZ * marioZ);
             float normDiff = normOffset - oldNormOffset;
@@ -211,24 +324,24 @@ namespace SM64_Diagnostic.Utilities
             short yOffset = (short)(-normDiff * normY);
 
             short v1Y, v2Y, v3Y;
-            v1Y = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y1, 2), 0) + yOffset);
-            v2Y = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y2, 2), 0) + yOffset);
-            v3Y = (short)(BitConverter.ToInt16(stream.ReadRam(triangleAddress + Config.TriangleOffsets.Y3, 2), 0) + yOffset);
+            v1Y = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y1) + yOffset);
+            v2Y = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y2) + yOffset);
+            v3Y = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y3) + yOffset);
 
-            short yMin = Math.Min(Math.Min(v1Y, v2Y), v3Y);
-            short yMax = Math.Max(Math.Max(v1Y, v2Y), v3Y);
+            short yMin = (short)(Math.Min(Math.Min(v1Y, v2Y), v3Y) + 5);
+            short yMax = (short)(Math.Max(Math.Max(v1Y, v2Y), v3Y) - 5);
 
             stream.Suspend();
 
             // Update triangle
             bool success = true;
             
-            success &= stream.WriteRam(BitConverter.GetBytes(v1Y), triangleAddress + Config.TriangleOffsets.Y1);
-            success &= stream.WriteRam(BitConverter.GetBytes(v2Y), triangleAddress + Config.TriangleOffsets.Y2);
-            success &= stream.WriteRam(BitConverter.GetBytes(v3Y), triangleAddress + Config.TriangleOffsets.Y3);
-            success &= stream.WriteRam(BitConverter.GetBytes(yMin), triangleAddress + Config.TriangleOffsets.YMin);
-            success &= stream.WriteRam(BitConverter.GetBytes(yMax), triangleAddress + Config.TriangleOffsets.YMax);
-            success &= stream.WriteRam(BitConverter.GetBytes(normOffset), triangleAddress + Config.TriangleOffsets.Offset);
+            success &= stream.SetValue(v1Y, triangleAddress + Config.TriangleOffsets.Y1);
+            success &= stream.SetValue(v2Y, triangleAddress + Config.TriangleOffsets.Y2);
+            success &= stream.SetValue(v3Y, triangleAddress + Config.TriangleOffsets.Y3);
+            success &= stream.SetValue(yMin, triangleAddress + Config.TriangleOffsets.YMin);
+            success &= stream.SetValue(yMax, triangleAddress + Config.TriangleOffsets.YMax);
+            success &= stream.SetValue(normOffset, triangleAddress + Config.TriangleOffsets.Offset);
 
             stream.Resume();
 

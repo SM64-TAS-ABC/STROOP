@@ -18,7 +18,7 @@ namespace SM64_Diagnostic
 {
     public partial class StroopMainForm : Form
     {
-        const string _version = "v0.2.7";
+        const string _version = "v0.2.8";
         ProcessStream _sm64Stream = null;
 
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
@@ -48,29 +48,22 @@ namespace SM64_Diagnostic
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
 
-        bool _splitterIsExpanded = false;
-        static int _defaultSplitValue;
-
         public StroopMainForm()
         {
             InitializeComponent();
         }
 
-        private void AttachToProcess(Process process)
+        private bool AttachToProcess(Process process)
         {
-            if (!_sm64Stream.SwitchProcess(process))
+            // Find emulator
+            var emulators = Config.Emulators.Where(e => e.ProcessName.ToLower() == process.ProcessName.ToLower()).ToList();
+
+            if (emulators.Count > 1)
             {
-                MessageBox.Show("Could not attach to process!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Ambigous emulator type", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
 
-        private void comboBoxProcessSelection_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxProcessSelection.SelectedItem == null)
-                return;
-
-            AttachToProcess(((ProcessSelection)(comboBoxProcessSelection.SelectedItem)).Process);
+            return _sm64Stream.SwitchProcess(process, emulators[0]);
         }
 
         private void StroopMainForm_Load(object sender, EventArgs e)
@@ -86,10 +79,14 @@ namespace SM64_Diagnostic
 
             _sm64Stream = new ProcessStream();
             _sm64Stream.OnUpdate += OnUpdate;
+            _sm64Stream.FpsUpdated += _sm64Stream_FpsUpdated;
+            _sm64Stream.OnDisconnect += _sm64Stream_OnDisconnect;
+            _sm64Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
+            _sm64Stream.OnClose += _sm64Stream_OnClose;
 
-            currentContext.DisassemblyManager = _disManager = new DisassemblyManager(this, richTextBoxDissasembly, maskedTextBoxDisStart, _sm64Stream, buttonDisGo);
+            currentContext.DisassemblyManager = _disManager = new DisassemblyManager(_sm64Stream, tabPageDisassembly);
             currentContext.ScriptManager = _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
-            currentContext.HackManager = _hackManager = new HackManager(_sm64Stream, _romHacks, checkedListBoxHacks);
+            currentContext.HackManager = _hackManager = new HackManager(_sm64Stream, _romHacks, _objectAssoc.SpawnHacks, tabPageHacks);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -109,12 +106,12 @@ namespace SM64_Diagnostic
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
             currentContext.MapManager = _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
 
-            currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, panelMarioBorder, NoTearFlowLayoutPanelMario, _mapManager);
+            currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
             currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
             currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc, groupBoxPuController);
             currentContext.CameraManager = _cameraManager = new CameraManager(_sm64Stream, _cameraData, NoTearFlowLayoutPanelCamera);
             currentContext.TriangleManager = _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData);
-            currentContext.DebugManager = _debugManager = new DebugManager();
+            currentContext.DebugManager = _debugManager = new DebugManager(_sm64Stream, tabPageDebug);
 
             // Create object manager
             var objectGui = new ObjectDataGui()
@@ -129,8 +126,10 @@ namespace SM64_Diagnostic
                 ObjSlotIndexLabel = labelObjSlotIndValue,
                 ObjSlotPositionLabel = labelObjSlotPosValue,
                 CloneButton = buttonObjClone,
-                MoveMarioToButton = buttonObjGoTo,
-                MoveToMarioButton = buttonObjRetrieve,
+                GoToButton = buttonObjGoTo,
+                RetrieveButton = buttonObjRetrieve,
+                GoToHomeButton = buttonObjGoToHome,
+                RetrieveHomeButton = buttonObjRetrieveHome,
                 UnloadButton = buttonObjUnload
             };
             currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
@@ -152,19 +151,44 @@ namespace SM64_Diagnostic
             SetupViews();
 
             _resizing = false;
-            _defaultSplitValue = splitContainerMain.SplitterDistance;
             labelVersionNumber.Text = _version;
 
             // Load process
-            var processes = GetAvailableProcesses();
-            if (processes.Count == 1)
-                if (MessageBox.Show(String.Format("Found process \"{0}\". Connect?", processes[0].ProcessName),
-                    "Process Found", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            buttonRefresh_Click(this, new EventArgs());
+            panelConnect.Location = new Point();
+            panelConnect.Size = this.Size;
+        }
+
+        private void _sm64Stream_WarnReadonlyOff(object sender, EventArgs e)
+        {
+            Invoke(new Action(() =>
                 {
-                    var processSelect = new ProcessSelection(processes[0]);
-                    comboBoxProcessSelection.Items.Add(processSelect);
-                    comboBoxProcessSelection.SelectedIndex = 0;
+                var dr = MessageBox.Show("Warning! Editing variables and enabling hacks may cause the emulator to freeze. Turn off read-only mode?", 
+                    "Turn Off Read-only Mode?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                switch (dr)
+                {
+                    case DialogResult.Yes:
+                        _sm64Stream.Readonly = false;
+                        _sm64Stream.ShowWarning = false;
+                        buttonReadOnly.Text = "Enable Read-only";
+                        break;
+
+                    case DialogResult.No:
+                        _sm64Stream.ShowWarning = false;
+                        break;
+
+                    case DialogResult.Cancel:
+                        break;
                 }
+            }));
+        }
+
+        private void _sm64Stream_OnDisconnect(object sender, EventArgs e)
+        {
+            this.BeginInvoke(new Action(() => {
+                buttonRefresh_Click(this, new EventArgs());
+                panelConnect.Visible = true;
+            }));
         }
 
         public void LoadConfig(LoadingForm loadingForm)
@@ -193,20 +217,13 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Scripts", statusNum++);
             _scriptParser = XmlConfigParser.OpenScripts(@"Config/Scripts.xml");
             loadingForm.UpdateStatus("Loading Hacks", statusNum++);
-            _romHacks = XmlConfigParser.OpenHacks(@"Config/Hacks.xml");
+            var hacksConfig = XmlConfigParser.OpenHacks(@"Config/Hacks.xml");
+            Config.Hacks = hacksConfig.Item1;
+            _romHacks = hacksConfig.Item2;
+            loadingForm.UpdateStatus("Loading Mario Actions", statusNum++);
+            Config.MarioActions = XmlConfigParser.OpenActionTable(@"Config/MarioActions.xml");
 
             loadingForm.UpdateStatus("Finishing", statusNum);
-        }
-
-        private void comboBoxProcessSelection_DropDown(object sender, EventArgs e)
-        {
-            comboBoxProcessSelection.Items.Clear();
-            buttonPauseResume.Text = "Pause";
-
-            foreach (Process p in GetAvailableProcesses())
-            {
-                comboBoxProcessSelection.Items.Add(new ProcessSelection(p));
-            }
         }
 
         private List<Process> GetAvailableProcesses()
@@ -215,7 +232,7 @@ namespace SM64_Diagnostic
             List<Process> resortList = new List<Process>();
             foreach (Process p in AvailableProcesses)
             {
-                if (!p.ProcessName.ToLower().Contains(Config.ProcessName.ToLower()))
+                if (!Config.Emulators.Select(e => e.ProcessName.ToLower()).Any(s => s.Contains(p.ProcessName.ToLower())))
                     continue;
 
                 resortList.Add(p);
@@ -225,16 +242,27 @@ namespace SM64_Diagnostic
 
         private void OnUpdate(object sender, EventArgs e)
         {
-            _objectSlotManager.Update();
-            _objectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
-            _marioManager.Update(tabControlMain.SelectedTab == tabPageMario);
-            _cameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
-            _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
-            _miscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
-            _triangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
-            _mapManager?.Update();
-            _scriptManager.Update();
-            _hackManager.Update();
+            Invoke(new Action(() =>
+            {
+                _objectSlotManager.Update();
+                _objectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
+                _marioManager.Update(tabControlMain.SelectedTab == tabPageMario);
+                _cameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
+                _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
+                _miscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
+                _triangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
+                _mapManager?.Update();
+                _scriptManager.Update();
+                _hackManager.Update();
+            }));
+        }
+
+        private void _sm64Stream_FpsUpdated(object sender, EventArgs e)
+        {
+            BeginInvoke(new Action(() =>
+            {
+                labelFpsCounter.Text = "FPS: " + (int)_sm64Stream.Fps;
+            }));
         }
 
         private void SetupViews()
@@ -290,20 +318,6 @@ namespace SM64_Diagnostic
             tabControlMain.TabPages.Remove(tabPageExpressions);
             tabControlMain.TabPages.Remove(tabPageStars);
 #endif
-        }
-
-        private void buttonPauseResume_Click(object sender, EventArgs e)
-        {
-            if (_sm64Stream.IsSuspended)
-            {
-                _sm64Stream.Resume();
-                buttonPauseResume.Text = "Pause";
-            }
-            else
-            {
-                _sm64Stream.Suspend();
-                buttonPauseResume.Text = "Resume";
-            }
         }
 
         private void buttonOtherModify_Click(object sender, EventArgs e)
@@ -416,64 +430,77 @@ namespace SM64_Diagnostic
             _mapManager.Load();
         }
 
-        private void buttonMapExpand_Click(object sender, EventArgs e)
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if (!_splitterIsExpanded)
+            if (_sm64Stream.IsRunning)
             {
-                buttonMapExpand.Text = "Minimize Map";
-                splitContainerMain.SplitterDistance = splitContainerMain.Height;
+                _sm64Stream.Stop();
+                e.Cancel = true;
+                Hide();
+                return;
             }
-            else
+            
+            base.OnFormClosing(e);
+        }
+
+        private void _sm64Stream_OnClose(object sender, EventArgs e)
+        {
+            Invoke(new Action(() => Close()));
+        }
+
+        private void buttonCollapseBottom_Click(object sender, EventArgs e)
+        {
+            splitContainerMain.Panel2Collapsed = !splitContainerMain.Panel2Collapsed;
+        }
+
+        private void buttonCollapseTop_Click(object sender, EventArgs e)
+        {
+            splitContainerMain.Panel1Collapsed = !splitContainerMain.Panel1Collapsed;
+        }
+
+        private void buttonReadOnly_Click(object sender, EventArgs e)
+        {
+            _sm64Stream.Readonly = !_sm64Stream.Readonly;
+            buttonReadOnly.Text = _sm64Stream.Readonly ? "Disable Read-only" : "Enable Read-only";
+            _sm64Stream.ShowWarning = false;
+        }
+
+        private void buttonConnect_Click(object sender, EventArgs e)
+        {
+            var selectedProcess = (ProcessSelection?)listBoxProcessesList.SelectedItem;
+
+            // Select the only process if there is one
+            if (!selectedProcess.HasValue && listBoxProcessesList.Items.Count == 1)
+                selectedProcess = (ProcessSelection)listBoxProcessesList.Items[0];
+
+            if (!selectedProcess.HasValue || !AttachToProcess(selectedProcess.Value.Process))
             {
-                buttonMapExpand.Text = "Expand Map";
-                splitContainerMain.SplitterDistance = _defaultSplitValue;
+                MessageBox.Show("Could not attach to process!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            _splitterIsExpanded = !_splitterIsExpanded;
+            panelConnect.Visible = false;
+            labelProcessSelect.Text = "Connected To: " + selectedProcess.Value.Process.ProcessName;
         }
 
-        #region Debug Tab
-
-        private void radioButtonDbgOff_CheckedChanged(object sender, EventArgs e)
+        private void buttonRefresh_Click(object sender, EventArgs e)
         {
-            // Turn debug off
-            _sm64Stream.WriteRam(new byte[] { 0 }, Config.Debug.Toggle);
+            // Update the process list
+            listBoxProcessesList.Items.Clear();
+            var processes = GetAvailableProcesses().OrderBy(p => p.StartTime).ToList();
+            for (int i = 0; i < processes.Count; i++)
+                listBoxProcessesList.Items.Add(new ProcessSelection(processes[i], i + 1));
+            
+            // Pre-select the first process
+            if (listBoxProcessesList.Items.Count != 0)
+                listBoxProcessesList.SelectedIndex = 0;
         }
 
-        private void radioButtonDbgObjCnt_CheckedChanged(object sender, EventArgs e)
+        private void buttonDisconnect_Click(object sender, EventArgs e)
         {
-            // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
-
-            // Set mode
-            _sm64Stream.WriteRam(new byte[] { 0 }, Config.Debug.Setting);
-        }
-
-        private void radioButtonDbgChkInfo_CheckedChanged(object sender, EventArgs e)
-        {
-            // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
-
-            // Set mode
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Setting);
-        }
-
-        private void radioButtonDbgMapInfo_CheckedChanged(object sender, EventArgs e)
-        {
-            // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
-
-            // Set mode
-            _sm64Stream.WriteRam(new byte[] { 2 }, Config.Debug.Setting);
-        }
-
-        private void radioButtonDbgStgInfo_CheckedChanged(object sender, EventArgs e)
-        {
-            // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
-
-            // Set mode
-            _sm64Stream.WriteRam(new byte[] { 3 }, Config.Debug.Setting);
+            _sm64Stream.SwitchProcess(null, null);
+            panelConnect.Size = this.Size;
+            panelConnect.Visible = true;
         }
 
         private void checkBoxMoveCamWithPu_CheckedChanged(object sender, EventArgs e)
@@ -484,15 +511,6 @@ namespace SM64_Diagnostic
         private void checkBoxUseOverlays_CheckedChanged(object sender, EventArgs e)
         {
             Config.ShowOverlays = checkBoxUseOverlays.Checked;
-        }
-
-        private void radioButtonDbgFxInfo_CheckedChanged(object sender, EventArgs e)
-        {
-            // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
-
-            // Set mode
-            _sm64Stream.WriteRam(new byte[] { 4 }, Config.Debug.Setting);
         }
 
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
@@ -518,50 +536,20 @@ namespace SM64_Diagnostic
             _objSlotResizing = false;
         }
 
-        private void radioButtonDbgEnemyInfo_CheckedChanged(object sender, EventArgs e)
-        {
-            // Turn debug on
-            _sm64Stream.WriteRam(new byte[] { 1 }, Config.Debug.Toggle);
-
-            // Set mode
-            _sm64Stream.WriteRam(new byte[] { 5 }, Config.Debug.Setting);
-        }
-
-        #endregion
-
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControlMain.SelectedTab == tabPageMap)
             {
-                _objectSlotManager.UpdateSelectedObjectSlots();
+                _objectSlotManager.UpdateSelectedMapObjectSlots();
                 comboBoxMapToggleMode.Visible = true;
                 labelToggleMode.Visible = true;
-                if (_splitterIsExpanded)
-                    splitContainerMain.SplitterDistance = splitContainerMain.Height;
             }
             else
             {
-                _objectSlotManager.SetAllSelectedObjectSlots();
+                _objectSlotManager.SetAllSelectedMapObjectSlots();
                 comboBoxMapToggleMode.Visible = false;
                 labelToggleMode.Visible = false;
-                if (_splitterIsExpanded)
-                    splitContainerMain.SplitterDistance = _defaultSplitValue;
             }
         }
-
-        private void tabControlMain_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.All;
-            Point clientPoint = tabControlMain.PointToClient(new Point(e.X, e.Y));
-
-            for (int i = 0; i < tabControlMain.TabCount; i++)
-            {
-                if (tabControlMain.GetTabRect(i).Contains(clientPoint) && tabControlMain.SelectedIndex != i)
-                {
-                    tabControlMain.SelectedIndex = i;
-                }
-            }
-        }
-
     }
 }

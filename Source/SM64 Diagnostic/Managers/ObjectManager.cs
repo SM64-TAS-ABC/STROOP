@@ -203,12 +203,18 @@ namespace SM64_Diagnostic.Managers
             // Register buttons
             objectGui.CloneButton.Click += CloneButton_Click;
             objectGui.UnloadButton.Click += UnloadButton_Click;
-            objectGui.MoveMarioToButton.Click += MoveMarioToButton_Click;
-            objectGui.MoveToMarioButton.Click += MoveToMarioButton_Click;
+            objectGui.GoToButton.Click += GoToButton_Click;
+            objectGui.RetrieveButton.Click += RetreiveButton_Click;
+            objectGui.GoToHomeButton.Click += GoToHomeButton_Click;
+            objectGui.RetrieveHomeButton.Click += RetrieveHomeButton_Click;
         }
 
         private void AddressChanged()
         {
+            var test = _dataControls.Where(d => d is WatchVariableControl);
+            foreach (WatchVariableControl dataControl in test)
+                dataControl.EditMode = false;
+
             if (CurrentAddresses.Count == 1)
             {
                 _objGui.CloneButton.Enabled = true;
@@ -221,12 +227,16 @@ namespace SM64_Diagnostic.Managers
 
         private void ObjAddressLabel_Click(object sender, EventArgs e)
         {
-            var variableInfo = new VariableViewerForm("Object Address", "Object",
-                String.Format("0x{0:X8}", _currentAddresses), String.Format("0x{0:X8}", (_currentAddresses[0] & 0x0FFFFFFF) + _stream.ProcessMemoryOffset));
+            if (_currentAddresses.Count == 0)
+                return;
+
+            var variableTitle = "Object Address" + (_currentAddresses.Count > 1 ? " (First of Multiple)" : ""); 
+            var variableInfo = new VariableViewerForm(variableTitle, "Object",
+                String.Format("0x{0:X8}", _currentAddresses[0]), String.Format("0x{0:X8}", (_currentAddresses[0] & 0x0FFFFFFF) + _stream.ProcessMemoryOffset));
             variableInfo.ShowDialog();
         }
 
-        private void MoveToMarioButton_Click(object sender, EventArgs e)
+        private void RetreiveButton_Click(object sender, EventArgs e)
         {
             if (CurrentAddresses.Count == 0)
                 return;
@@ -234,12 +244,29 @@ namespace SM64_Diagnostic.Managers
             MarioActions.RetreiveObjects(_stream, CurrentAddresses);
         }
 
-        private void MoveMarioToButton_Click(object sender, EventArgs e)
+        private void GoToButton_Click(object sender, EventArgs e)
         {
             if (CurrentAddresses.Count == 0)
                 return;
 
-            MarioActions.MoveMarioToObjects(_stream, CurrentAddresses);
+            MarioActions.GoToObjects(_stream, CurrentAddresses);
+        }
+
+
+        private void GoToHomeButton_Click(object sender, EventArgs e)
+        {
+            if (CurrentAddresses.Count == 0)
+                return;
+
+            MarioActions.GoToObjectsHome(_stream, CurrentAddresses);
+        }
+
+        private void RetrieveHomeButton_Click(object sender, EventArgs e)
+        {
+            if (CurrentAddresses.Count == 0)
+                return;
+
+            MarioActions.RetreiveObjectsHome(_stream, CurrentAddresses);
         }
 
         private void UnloadButton_Click(object sender, EventArgs e)
@@ -395,19 +422,19 @@ namespace SM64_Diagnostic.Managers
 
         private int GetNumRngCalls(uint objAddress)
         {
-            var numberOfRngObjs = BitConverter.ToUInt32(_stream.ReadRam(Config.RngRecordingAreaAddress, 4), 0);
+            var numberOfRngObjs = _stream.GetUInt32(Config.RngRecordingAreaAddress);
 
             int numOfCalls = 0;
 
             for (int i = 0; i < numberOfRngObjs; i++)
             {
                 uint rngStructAdd = (uint)(Config.RngRecordingAreaAddress + 0x10 + 0x08 * i);
-                var address = BitConverter.ToUInt32(_stream.ReadRam(rngStructAdd + 0x04, 4), 0);
+                var address = _stream.GetUInt32(rngStructAdd + 0x04);
                 if (address != objAddress)
                     continue;
 
-                var preRng = BitConverter.ToUInt16(_stream.ReadRam(rngStructAdd + 0x00, 2), 0);
-                var postRng = BitConverter.ToUInt16(_stream.ReadRam(rngStructAdd + 0x02, 2), 0);
+                var preRng = _stream.GetUInt16(rngStructAdd + 0x00);
+                var postRng = _stream.GetUInt16(rngStructAdd + 0x02);
 
                 numOfCalls = RngIndexer.GetRngIndexDiff(preRng, postRng);
                 break;

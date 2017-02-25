@@ -18,6 +18,8 @@ namespace SM64_Diagnostic.Managers
         bool _addressChangedByUser = true;
         bool _useMisalignmentOffset = false;
 
+        int _closestVertex = 0;
+
     uint TriangleAddress
         {
             get
@@ -93,6 +95,7 @@ namespace SM64_Diagnostic.Managers
             (tabControl.Controls["buttonGoToV1"] as Button).Click += GoToV1Button_Click;
             (tabControl.Controls["buttonGoToV2"] as Button).Click += GoToV2Button_Click;
             (tabControl.Controls["buttonGoToV3"] as Button).Click += GoToV3Button_Click;
+            (tabControl.Controls["buttonGoToVClosest"] as Button).Click += GoToVClosestButton_Click;
             (tabControl.Controls["buttonRetrieveTriangle"] as Button).Click += RetrieveTriangleButton_Click;
             (tabControl.Controls["checkBoxVertexMisalignment"] as CheckBox).CheckedChanged += checkBoxVertexMisalignment_CheckedChanged;
         }
@@ -104,7 +107,7 @@ namespace SM64_Diagnostic.Managers
 
         private void ProcessSpecialVars()
         {
-            var floorY = BitConverter.ToSingle(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.GroundYOffset, 4), 0);
+            var floorY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.GroundYOffset);
 
             // Get Mario position
             float marioX, marioY, marioZ;
@@ -144,7 +147,7 @@ namespace SM64_Diagnostic.Managers
                 Math.Pow(marioX - v3X, 2) + Math.Pow(marioY - v3Y, 2) + Math.Pow(marioZ - v3Z, 2)
             };
 
-            var closestVertex = disToV.IndexOfMin() + 1;
+            var _closestVertex = disToV.IndexOfMin() + 1;
 
             foreach (IDataContainer specialVar in _specialWatchVars)
             {
@@ -158,11 +161,11 @@ namespace SM64_Diagnostic.Managers
                             - marioY).ToString();
                         break;
                     case "ClosestVertex":
-                        (specialVar as DataContainer).Text = String.Format("V{0}", closestVertex);
+                        (specialVar as DataContainer).Text = String.Format("V{0}", _closestVertex);
                         goto case "CheckTriangleExists";
                     case "ClosestVertexX":
                         short coordX = 0;
-                        switch (closestVertex)
+                        switch (_closestVertex)
                         {
                             case 1:
                                 coordX = v1X;
@@ -178,7 +181,7 @@ namespace SM64_Diagnostic.Managers
                         goto case "CheckTriangleExists";
                     case "ClosestVertexY":
                         short coordY = 0;
-                        switch (closestVertex)
+                        switch (_closestVertex)
                         {
                             case 1:
                                 coordY = v1Y;
@@ -194,7 +197,7 @@ namespace SM64_Diagnostic.Managers
                         goto case "CheckTriangleExists";
                     case "ClosestVertexZ":
                         short coordZ = 0;
-                        switch (closestVertex)
+                        switch (_closestVertex)
                         {
                             case 1:
                                 coordZ = v1Z;
@@ -271,9 +274,9 @@ namespace SM64_Diagnostic.Managers
             MarioActions.RetrieveTriangle(_stream, _triangleAddress);
         }
 
-        private void GoToV3Button_Click(object sender, EventArgs e)
+        private void GoToV1Button_Click(object sender, EventArgs e)
         {
-            MarioActions.GoToTriangle(_stream, _triangleAddress, 3, _useMisalignmentOffset);
+            MarioActions.GoToTriangle(_stream, _triangleAddress, 1, _useMisalignmentOffset);
         }
 
         private void GoToV2Button_Click(object sender, EventArgs e)
@@ -281,9 +284,16 @@ namespace SM64_Diagnostic.Managers
             MarioActions.GoToTriangle(_stream, _triangleAddress, 2, _useMisalignmentOffset);
         }
 
-        private void GoToV1Button_Click(object sender, EventArgs e)
+        private void GoToV3Button_Click(object sender, EventArgs e)
         {
-            MarioActions.GoToTriangle(_stream, _triangleAddress, 1, _useMisalignmentOffset);
+            MarioActions.GoToTriangle(_stream, _triangleAddress, 3, _useMisalignmentOffset);
+        }
+
+        private void GoToVClosestButton_Click(object sender, EventArgs e)
+        {
+            if (_closestVertex == 0)
+                return;
+            MarioActions.GoToTriangle(_stream, _triangleAddress, _closestVertex, _useMisalignmentOffset);
         }
 
         private void Mode_CheckedChanged(object sender, EventArgs e, TriangleMode mode)
@@ -332,15 +342,15 @@ namespace SM64_Diagnostic.Managers
                 switch (Mode)
                 {
                     case TriangleMode.Ceiling:
-                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset, 4), 0);
+                        TriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
                         break;
 
                     case TriangleMode.Floor:
-                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset, 4), 0);
+                        TriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
                         break;
 
                     case TriangleMode.Wall:
-                        TriangleAddress = BitConverter.ToUInt32(_stream.ReadRam(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset, 4), 0);
+                        TriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset);
                         break;
                 }
 

@@ -23,7 +23,7 @@ namespace SM64_Diagnostic.Structs
                 RotatesOnMap = false
             }
         };
-
+        List<SpawnHack> _spawnHacks = new List<SpawnHack>();
 
         Image _defaultImage;
         Image _transparentDefaultImage;
@@ -53,6 +53,14 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
+        public List<SpawnHack> SpawnHacks
+        {
+            get
+            {
+                return _spawnHacks;
+            }
+        }
+
         public Image DefaultImage
         {
             get
@@ -69,6 +77,11 @@ namespace SM64_Diagnostic.Structs
         public bool AddAssociation(ObjectBehaviorAssociation objAsooc)
         {
             return _objAssoc.Add(objAsooc);
+        }
+
+        public void AddSpawnHack(SpawnHack hack)
+        {
+            _spawnHacks.Add(hack);
         }
 
         public ObjectBehaviorAssociation FindObjectAssociation(BehaviorCriteria behaviorCriteria)

@@ -18,33 +18,32 @@
   <Data type="short" address="0x16" triangleOffset="true">X3</Data>
   <Data type="short" address="0x18" triangleOffset="true">Y3</Data>
   <Data type="short" address="0x1A" triangleOffset="true">Z3</Data>
+  <Data type="float" address="0x8033B1AC" color="#ffcccc">Mario X</Data>
+  <Data type="float" address="0x8033B1B0" color="#ffcccc">Mario Y</Data>
+  <Data type="float" address="0x8033B1B4" color="#ffcccc">Mario Z</Data>
+  <Data special="true" specialType="ClosestVertex" color="#e5ccff">Closest Vertex</Data>
+  <Data special="true" specialType="ClosestVertexX" color="#e5ccff">Closest Vertex X</Data>
+  <Data special="true" specialType="ClosestVertexY" color="#e5ccff">Closest Vertex Y</Data>
+  <Data special="true" specialType="ClosestVertexZ" color="#e5ccff">Closest Vertex Z</Data>
+  <Data special="true" specialType="Steepness" color="#ccd0ff">Steepness</Data>
+  <Data special="true" specialType="UpHillAngle" color="#ccd0ff">Uphill Angle</Data>
+  <Data special="true" specialType="DownHillAngle" color="#ccd0ff">Downhill Angle</Data>
+  <Data special="true" specialType="LeftHillAngle" color="#ccd0ff">Left Hill Angle</Data>
+  <Data special="true" specialType="RightHillAngle" color="#ccd0ff">Right Hill Angle</Data>
+  <Data type="ushort" address="0x00C26C16" absoluteAddress="true" isAngle="true" color="#ffcccc">M. Yaw (Intended)</Data>
+  <Data type="ushort" address="0x00C26C1C" absoluteAddress="true" isAngle="true" color="#ffcccc">M. Yaw (Facing)</Data>
   <Data type="float" address="0x1C" triangleOffset="true">Normal X</Data>
   <Data type="float" address="0x20" triangleOffset="true">Normal Y</Data>
   <Data type="float" address="0x24" triangleOffset="true">Normal Z</Data>
   <Data type="float" address="0x28" triangleOffset="true">Normal Offset</Data>
-  <Data type="uint" address="0x2C" triangleOffset="true" useHex="true">Associated Object</Data>
-  <Data special="true" specialType="UpHillAngle">Uphill Angle</Data>
-  <Data special="true" specialType="DownHillAngle">Downhill Angle</Data>
-  <Data special="true" specialType="RightHillAngle">Right Hill Angle</Data>
-  <Data special="true" specialType="LeftHillAngle">Left Hill Angle</Data>
-  <Data special="true" specialType="Steepness">Steepness</Data>
-  <Data type="float" address="0x8033B1AC" color="#ffcccc">Mario X</Data>
-  <Data type="float" address="0x8033B1B0" color="#ffcccc">Mario Y</Data>
-  <Data type="float" address="0x8033B1B4" color="#ffcccc">Mario Z</Data>
-  <Data special="true" specialType="ClosestVertex" color="#ffcccc">Closest Vertex</Data>
-  <Data special="true" specialType="ClosestVertexX" color="#ffcccc">Closest Vertex X</Data>
-  <Data special="true" specialType="ClosestVertexY" color="#ffcccc">Closest Vertex Y</Data>
-  <Data special="true" specialType="ClosestVertexZ" color="#ffcccc">Closest Vertex Z</Data>
-  <Data type="ushort" address="0x00C26C16" absoluteAddress="true" isAngle="true" color="#ffcccc">M. Yaw (Intended)</Data>
-  <Data type="ushort" address="0x00C26C1C" absoluteAddress="true" isAngle="true" color="#ffcccc">M. Yaw (Facing)</Data>
-  <Data type="uint" address="0x00C26C58" absoluteAddress="true" useHex="true" color="#ffcccc">Floor Triangle</Data>
-  <Data type="uint" address="0x00C26C50" absoluteAddress="true" useHex="true" color="#ffcccc">Wall Triangle</Data>
-  <Data type="uint" address="0x00C26C54" absoluteAddress="true" useHex="true" color="#ffcccc">Ceiling Triangle</Data>
-  <Data type="float" address="0x8033b1E0" color="#ffcccc">Floor Height</Data>
-  <Data special="true" specialType="HeightOnSlope" color="#ffcccc">Height On Slope</Data>
-  <Data type="float" address="0x8033b1DC" color="#ffcccc">Ceiling Height</Data>
-  <Data special="true" specialType="DistanceBelowCeiling" color="#ffcccc">Dist Below Ceiling</Data>
-  <Data special="true" specialType="DistanceAboveFloor" color="#ffcccc">Dist Above Floor</Data>
-  <Data special="true" specialType="NormalDistAway" color="#ffcccc">Normal Dist Away</Data>
-  <Data special="true" specialType="VerticalDistAway" color="#ffcccc">Vertical Dist Away</Data>
+  <Data type="uint" address="0x2C" triangleOffset="true" useHex="true" isObject="true">Associated Object</Data>  <Data type="uint" address="0x00C26C58" absoluteAddress="true" useHex="true" color="#ffeccc">Floor Triangle</Data>
+  <Data type="uint" address="0x00C26C50" absoluteAddress="true" useHex="true" color="#ffeccc">Wall Triangle</Data>
+  <Data type="uint" address="0x00C26C54" absoluteAddress="true" useHex="true" color="#ffeccc">Ceiling Triangle</Data>
+  <Data type="float" address="0x8033b1E0" color="#ffeccc">Floor Height</Data>
+  <Data type="float" address="0x8033b1DC" color="#ffeccc">Ceiling Height</Data>
+  <Data special="true" specialType="DistanceAboveFloor" color="#cfffcc">Dist Above Floor</Data>
+  <Data special="true" specialType="DistanceBelowCeiling" color="#cfffcc">Dist Below Ceiling</Data>
+  <Data special="true" specialType="NormalDistAway" color="#e5ccff">Normal Dist Away</Data>
+  <Data special="true" specialType="VerticalDistAway" color="#e5ccff">Vertical Dist Away</Data>
+  <Data special="true" specialType="HeightOnSlope" color="#e5ccff">Height On Slope</Data>
 </TrianglesData>

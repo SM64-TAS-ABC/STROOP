@@ -21,7 +21,7 @@ namespace SM64_Diagnostic.Utilities
 
         public bool Update()
         {
-            return _stream.WriteRam(_data, _address);
+            return _stream.WriteRamLittleEndian(_data, _address);
         }
 
         public override int GetHashCode()

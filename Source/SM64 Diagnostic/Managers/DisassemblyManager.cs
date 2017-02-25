@@ -17,36 +17,35 @@ namespace SM64_Diagnostic.Managers
         ProcessStream _stream;
         RichTextBox _output;
         MaskedTextBox _textBoxStartAdd;
-        Button _goButton;
-        Form _formContext;
-        bool _addressChanged = false;
         uint _lastProcessAddress;
+        Button _goButton, _moreButton;
+        int _currentLines = NumberOfLinesAdd;
 
-        public DisassemblyManager(Form formContext, RichTextBox disTextBox, MaskedTextBox textBoxStartAdd, ProcessStream stream, Button goButton)
+        public DisassemblyManager(ProcessStream stream, Control tabControl)
         {
             _stream = stream;
-            _output = disTextBox;
-            _textBoxStartAdd = textBoxStartAdd;
-            _goButton = goButton;
-            _formContext = formContext;
+            _output = tabControl.Controls["richTextBoxDissasembly"] as RichTextBox;
+            _textBoxStartAdd = tabControl.Controls["maskedTextBoxDisStart"] as MaskedTextBox;
+            _goButton = tabControl.Controls["buttonDisGo"] as Button;
+            _moreButton = tabControl.Controls["buttonDisMore"] as Button;
 
-            goButton.Click += GoButton_Pressed;
-            textBoxStartAdd.TextChanged += (sender, e) =>
+            _goButton.Click += GoButton_Pressed;
+            _moreButton.Click += MoreButton_Click;
+            _textBoxStartAdd.TextChanged += (sender, e) =>
             {
-                _addressChanged = true;
+                _currentLines = NumberOfLinesAdd;
                 _goButton.Text = "Go";
             };
-            _stream.OnStatusChanged += Stream_StatusChanged;
+        }
+
+        private void MoreButton_Click(object sender, EventArgs e)
+        {
+            DisassemblyLines(NumberOfLinesAdd);
+            _currentLines += NumberOfLinesAdd;
         }
 
         private void GoButton_Pressed(object sender, EventArgs e)
         {
-            if (!_addressChanged)
-            {
-                DisassemblyLines(NumberOfLinesAdd);
-                return;
-            }
-
             uint newAddress;
             if (!ParsingUtilities.TryParseHex(_textBoxStartAdd.Text, out newAddress))
             {
@@ -55,31 +54,15 @@ namespace SM64_Diagnostic.Managers
                 return;
             }
 
-            StartShowDisassmbly(newAddress, NumberOfLinesAdd);
-        }
-
-        private void Stream_StatusChanged(object sender, EventArgs e)
-        {
-            // Yay... thread safety
-            _formContext.Invoke(new Action(() =>
-            {
-                if (_stream.IsRunning)
-                {
-                    _goButton.Enabled = true;
-                    _textBoxStartAdd.Enabled = true;
-                }
-                else
-                {
-                    _goButton.Enabled = false;
-                    _textBoxStartAdd.Enabled = false;
-                }
-            }));
+            StartShowDisassmbly(newAddress, _currentLines);
         }
 
         private void StartShowDisassmbly(uint newAddress, int numberOfLines)
         {
-            _goButton.Text = "More";
-            _addressChanged = false;
+            newAddress &= ~0x03U;
+
+            _goButton.Text = "Refresh";
+            _moreButton.Visible = true;
 
             _output.Text = "";
             _lastProcessAddress = newAddress & 0x0FFFFFFF;
@@ -89,7 +72,7 @@ namespace SM64_Diagnostic.Managers
         private void DisassemblyLines(int numberOfLines)
         {
             _output.Visible = false;
-            var instructionBytes = _stream.ReadRam(_lastProcessAddress, 4 * numberOfLines);
+            var instructionBytes = _stream.ReadRamLittleEndian(_lastProcessAddress, 4 * numberOfLines);
             for (int i = 0; i < numberOfLines; i++, _lastProcessAddress += 4)
             {
                 // Get next bytes

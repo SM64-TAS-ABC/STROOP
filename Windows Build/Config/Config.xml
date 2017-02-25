@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Config>
-  <RefreshRateFreq>60</RefreshRateFreq>
-  <RAMStartAddress>0x008eba80</RAMStartAddress>
-  <ProcessDefaultName>Mupen</ProcessDefaultName>
-  <RAMSize>0x400000</RAMSize>
+  <Emulators>
+    <Emulator name="Mupen 5.0 RR" processName="mupen64-rerecording" ramStart="0x008EBA80"/>
+    <Emulator name="Nemu64 0.8" processName="Nemu64" ramStart="0x10020000"/>
+  </Emulators>
+  <RefreshRateFreq>30</RefreshRateFreq>
+  <RamSize>0x400000</RamSize>
   <ObjectSlots>
     <FirstObjectAddress>0x8033D488</FirstObjectAddress>
     <ObjectStructSize>0x0260</ObjectStructSize>
@@ -32,22 +34,23 @@
     <FirstObjectGroupingAddress>0x8033CBE0</FirstObjectGroupingAddress>
     <ProcessGroupStructSize>0x68</ProcessGroupStructSize>
     <ProcessGroupsOrdering>
-      <Group index ="0x0B" color="#ff00a5"/>
-      <Group index ="0x09" color="#ff0000"/>
-      <Group index ="0x0A" color="#ff5400"/>
-      <Group index ="0x00" color="#ffa100"/>
-      <Group index ="0x05" color="#fff600"/>
-      <Group index ="0x04" color="#10ff00"/>
-      <Group index ="0x02" color="#00ffe9"/>
-      <Group index ="0x06" color="#0015ff"/>
-      <Group index ="0x08" color="#8000ff"/>
-      <Group index ="0x0C" color="#ff00ff"/>
+      <Group index ="0x0B" color="#FF00A5"/>
+      <Group index ="0x09" color="#FF0000"/>
+      <Group index ="0x0A" color="#FF5400"/>
+      <Group index ="0x00" color="#FFA100"/>
+      <Group index ="0x05" color="#FFF600"/>
+      <Group index ="0x04" color="#10FF00"/>
+      <Group index ="0x02" color="#00FFE9"/>
+      <Group index ="0x06" color="#0015FF"/>
+      <Group index ="0x08" color="#8000FF"/>
+      <Group index ="0x0C" color="#FF00FF"/>
     </ProcessGroupsOrdering>
-    <VacantPointerAddress color="#aaaaaa">0x80361150</VacantPointerAddress>
+    <VacantPointerAddress color="#AAAAAA">0x80361150</VacantPointerAddress>
   </ObjectGroups>
   <Mario>
-    <MarioStructAddress>0x8033b170</MarioStructAddress>
+    <MarioStructAddress>0x8033B170</MarioStructAddress>
     <ActionOffset>0x0C</ActionOffset>
+    <PrevActionOffset>0x10</PrevActionOffset>
     <CoordinateOffsetX>0x3C</CoordinateOffsetX>
     <CoordinateOffsetY>0x40</CoordinateOffsetY>
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
@@ -67,23 +70,26 @@
     <SlidingSpeedXOffset>0x58</SlidingSpeedXOffset>
     <SlidingSpeedZOffset>0x5C</SlidingSpeedZOffset>
     <PeakHeightOffset>0xBC</PeakHeightOffset>
+    <ObjectReferenceAddress>0x80361158</ObjectReferenceAddress>
   </Mario>
   <Hud>
-    <HpAddress>0x8033b21e</HpAddress>
-    <LiveCountAddress>0x8033b21c</LiveCountAddress>
-    <CoinCountAddress>0x8033b218</CoinCountAddress>
-    <StarCountAddress>0x8033b21a</StarCountAddress>
-    <DisplayLiveCountAddress>0x8033b260</DisplayLiveCountAddress>
-    <DisplayCoinCountAddress>0x8033b262</DisplayCoinCountAddress>
-    <DisplayStarCountAddress>0x8033b268</DisplayStarCountAddress>
+    <HpAddress>0x8033B21e</HpAddress>
+    <LiveCountAddress>0x8033B21D</LiveCountAddress>
+    <CoinCountAddress>0x8033B218</CoinCountAddress>
+    <StarCountAddress>0x8033B21A</StarCountAddress>
+    <DisplayHpAddress>0x8033B266</DisplayHpAddress>
+    <DisplayLiveCountAddress>0x8033B260</DisplayLiveCountAddress>
+    <DisplayCoinCountAddress>0x8033B262</DisplayCoinCountAddress>
+    <DisplayStarCountAddress>0x8033B264</DisplayStarCountAddress>
     <FullHp>2176</FullHp>
+    <FullHpInt>8</FullHpInt>
     <StandardLives>4</StandardLives>
     <StandardCoins>0</StandardCoins>
     <StandardStars>120</StandardStars>
   </Hud>
   <Debug>
-    <ToggleAddress>0x8033d263</ToggleAddress>
-    <SettingAddress>0x80330e94</SettingAddress>
+    <ToggleAddress>0x8033D263</ToggleAddress>
+    <SettingAddress>0x80330E94</SettingAddress>
   </Debug>
   <TriangleOffsets>
     <surfaceType>0x00</surfaceType>
@@ -110,16 +116,16 @@
   <HolpX>0x8033B3C8</HolpX>
   <HolpY>0x8033B3CC</HolpY>
   <HolpZ>0x8033B3D0</HolpZ>
-  <CameraX>0x8033c6a4</CameraX>
-  <CameraY>0x8033c6a8</CameraY>
-  <CameraZ>0x8033c6aC</CameraZ>
-  <CameraRot>0x8033c6e4</CameraRot>
+  <CameraX>0x8033C6A4</CameraX>
+  <CameraY>0x8033C6A8</CameraY>
+  <CameraZ>0x8033C6AC</CameraZ>
+  <CameraRot>0x8033C6E4</CameraRot>
   <LevelAddress>0x8033B249</LevelAddress>
   <AreaAddress>0x8033B24A</AreaAddress>
   <LoadingPointAddress>0x8033BACA</LoadingPointAddress>
   <MissionLayoutAddress>0x8033BAC8</MissionLayoutAddress>
   <RngAddress>0x8038EEE0</RngAddress>
-  <RngRecordingAreaAddress>0x803e0000</RngRecordingAreaAddress>
+  <RngRecordingAreaAddress>0x803E0000</RngRecordingAreaAddress>
   <DebugAddress></DebugAddress>
   <DebugModeAddress></DebugModeAddress>
 </Config>

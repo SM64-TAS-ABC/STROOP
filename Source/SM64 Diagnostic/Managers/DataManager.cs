@@ -10,7 +10,7 @@ using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic.Managers
 {
-    public class DataManager
+    public abstract class DataManager
     {
         protected List<IDataContainer> _dataControls;
         protected NoTearFlowLayoutPanel _variableTable;

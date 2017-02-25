@@ -230,6 +230,20 @@
         g1+luqb/ODnpcv9jZ5h9gGCfothHSXSjSWJntLNmPPmZmXedTDRJ5CCXVAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="buttonCollapseTop.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAANCAYAAACgu+4kAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAAAd0SU1FB+ECBhcVMTFlPeAAAAAjSURBVDhPYwCC/xRiygE2U0nBEIJMMGrAqAEg
+        ADeATMzwHwDKDkG/vo9iOwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="buttonCollapseBottom.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAANCAYAAACgu+4kAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAAAd0SU1FB+ECBhcVIFvVHRIAAAAjSURBVDhPYwCC/xRiCEEmGDVg1AAQgBtACaYc
+        YDOVSMzwHwCEEUG/sWU63wAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAUAEBAAAAAAIABoBAAAVgAAACAgAAAAACAAqBAAAL4EAAAwMAAAAAAgAKglAABmFQAAQEAAAAAA
