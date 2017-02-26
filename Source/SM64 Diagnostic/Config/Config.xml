@@ -88,8 +88,13 @@
     <StandardStars>120</StandardStars>
   </Hud>
   <Debug>
-    <ToggleAddress>0x8033D263</ToggleAddress>
+    <AdvancedModeAddress>0x8033D263</AdvancedModeAddress>
     <SettingAddress>0x80330E94</SettingAddress>
+    <SpawnModeAddress>0x8033D2DF</SpawnModeAddress>
+    <ClassicModeAddress>0x8032D598</ClassicModeAddress>
+    <StageSelectAddress>0x8032D58C</StageSelectAddress>
+    <FreeMovementAddress>0x80269BD8</FreeMovementAddress>
+    <FreeMovementValue>0x0C095FAB</FreeMovementValue>
   </Debug>
   <TriangleOffsets>
     <surfaceType>0x00</surfaceType>

@@ -8,7 +8,12 @@ namespace SM64_Diagnostic.Structs.Configurations
 {
     public struct DebugConfig
     {
-        public uint Toggle;
+        public uint AdvancedMode;
         public uint Setting;
+        public uint SpawnMode;
+        public uint ClassicMode;
+        public uint StageSelect;
+        public uint FreeMovementAddress;
+        public uint FreeMovementValue;
     }
 }

@@ -252,6 +252,7 @@ namespace SM64_Diagnostic
                 _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
                 _miscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
                 _triangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
+                _debugManager.Update(tabControlMain.SelectedTab == tabPageDebug);
                 _mapManager?.Update();
                 _scriptManager.Update();
                 _hackManager.Update();

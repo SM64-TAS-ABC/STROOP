@@ -316,11 +316,26 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "ToggleAddress":
-                                    Config.Debug.Toggle = ParsingUtilities.ParseHex(subElement.Value);
+                                case "AdvancedModeAddress":
+                                    Config.Debug.AdvancedMode = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "SettingAddress":
                                     Config.Debug.Setting = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "SpawnModeAddress":
+                                    Config.Debug.SpawnMode = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "ClassicModeAddress":
+                                    Config.Debug.ClassicMode = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "StageSelectAddress":
+                                    Config.Debug.StageSelect = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "FreeMovementAddress":
+                                    Config.Debug.FreeMovementAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "FreeMovementValue":
+                                    Config.Debug.FreeMovementValue = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         }
