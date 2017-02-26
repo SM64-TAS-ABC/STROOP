@@ -147,7 +147,7 @@ namespace SM64_Diagnostic.Managers
                 Math.Pow(marioX - v3X, 2) + Math.Pow(marioY - v3Y, 2) + Math.Pow(marioZ - v3Z, 2)
             };
 
-            var _closestVertex = disToV.IndexOfMin() + 1;
+            _closestVertex = disToV.IndexOfMin() + 1;
 
             foreach (IDataContainer specialVar in _specialWatchVars)
             {
