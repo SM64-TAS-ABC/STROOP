@@ -25,6 +25,9 @@ namespace SM64_Diagnostic
         SolidBrush _borderBrush = new SolidBrush(Color.White), _backBrush = new SolidBrush(Color.White);
         SolidBrush _textBrush = new SolidBrush(Color.Black);
         Image _objectImage;
+        Image _bufferedObjectImage;
+        Point _textLocation = new Point();
+        Point _objectImageLocation = new Point();
         string _text;
 
         bool _selected = true;
@@ -253,6 +256,45 @@ namespace SM64_Diagnostic
             this.DoubleBuffered = true;
         }
 
+        private void RebufferObjectImage()
+        {
+            // Remove last image reference
+            _bufferedObjectImage = null;
+
+            // Make sure object needs a new image
+            if (_objectImage == null)
+                return;
+
+            // Calculate new rectangle to draw image
+            var objectImageRec = (new Rectangle(BorderSize, BorderSize + 1,
+            Width - BorderSize * 2, _textLocation.Y - 1 - BorderSize))
+            .Zoom(_objectImage.Size);
+            _objectImageLocation = objectImageRec.Location;
+
+            // If the image is too small, we don't need to draw it
+            if (objectImageRec.Height <= 0 || objectImageRec.Width <= 0)
+            {
+                _bufferedObjectImage = new Bitmap(1, 1);
+                return;
+            }
+
+            // Look for cached image and use it if it exists
+            _bufferedObjectImage = _manager.ObjectAssoc.GetCachedBufferedObjectImage(_objectImage, objectImageRec.Size);
+            if (_bufferedObjectImage != null)
+                return;
+
+            // Otherwise create new image and add it to cache
+            _bufferedObjectImage = new Bitmap(objectImageRec.Width, objectImageRec.Height);
+            objectImageRec.Location = new Point();
+            using (var graphics = Graphics.FromImage(_bufferedObjectImage))
+            {
+                graphics.InterpolationMode = InterpolationMode.High;
+                graphics.DrawImage(_objectImage, objectImageRec);
+            }
+
+            _manager.ObjectAssoc.CreateCachedBufferedObjectImage(_objectImage, _bufferedObjectImage);
+        }
+
         void UpdateColors()
         {
             var oldBorderColor = _borderColor;
@@ -282,6 +324,7 @@ namespace SM64_Diagnostic
                     lock (_gfxLock)
                     {
                         _objectImage = newImage;
+                        RebufferObjectImage();
                     }
                     imageUpdated = true;
                 }
@@ -310,6 +353,7 @@ namespace SM64_Diagnostic
                     lock (_gfxLock)
                     {
                         _objectImage = newImage;
+                        RebufferObjectImage();
                     }
                     imageUpdated = true;
                 }
@@ -358,18 +402,29 @@ namespace SM64_Diagnostic
                 }
 
                 // Draw Text
-                var textSize = e.Graphics.MeasureString(Text, Font);
-                var textLocation = new PointF((Width - textSize.Width) / 2, Height - textSize.Height);
-                e.Graphics.DrawString(Text, Font, _textBrush, textLocation);
+                var textSize = TextRenderer.MeasureText(e.Graphics, Text, Font);
+                var textLocation = new Point((int) (Width - textSize.Width) / 2, (int)(Height - textSize.Height - BorderSize));
+                TextRenderer.DrawText(e.Graphics, Text, Font, textLocation, TextColor);
+                if (textLocation != _textLocation)
+                {
+                    _textLocation = textLocation;
+                    RebufferObjectImage();
+                }
 
                 // Draw Object Image
                 if (_objectImage != null)
                 {
-                    e.Graphics.InterpolationMode = InterpolationMode.High;
-                    var objectImageLocaction = (new RectangleF(BorderSize, BorderSize + 1,
-                        Width - BorderSize * 2, textLocation.Y - 1 - BorderSize))
-                        .Zoom(_objectImage.Size);
-                    e.Graphics.DrawImage(_objectImage, objectImageLocaction);
+                    try
+                    {
+                        e.Graphics.DrawImageUnscaled(_bufferedObjectImage, _objectImageLocation);
+                    }
+                    catch (ObjectDisposedException)
+                    {
+                        // The buffered image may have gotten disposed
+                        RebufferObjectImage();
+                        Invalidate();
+                        return;
+                    }
                 }
             }
 

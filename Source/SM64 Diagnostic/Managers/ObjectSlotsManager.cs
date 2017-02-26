@@ -528,7 +528,7 @@ namespace SM64_Diagnostic.Managers
                     break;
             }
 
-            objSlot.TextColor = _labelsLocked ? Color.Red : Color.Blue;
+            objSlot.TextColor = _labelsLocked ? Color.Red : Color.Black;
             objSlot.Text = labelText;
 
             // Update object manager image

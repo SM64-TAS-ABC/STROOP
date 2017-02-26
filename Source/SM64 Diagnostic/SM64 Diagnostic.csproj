@@ -108,7 +108,7 @@
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
-    <Compile Include="Extensions\RectangleFExtensions.cs" />
+    <Compile Include="Extensions\RectangleExtensions.cs" />
     <Compile Include="Extensions\WatchExpressionExtensions.cs" />
     <Compile Include="LoadingForm.cs">
       <SubType>Form</SubType>
@@ -144,6 +144,7 @@
     <Compile Include="Structs\Configurations\HackConfig.cs" />
     <Compile Include="Structs\Configurations\HudConfig.cs" />
     <Compile Include="Structs\Configurations\TriangleOffsetsConfig.cs" />
+    <Compile Include="Structs\DisposableImage.cs" />
     <Compile Include="Structs\Emulator.cs" />
     <Compile Include="Structs\GameScript.cs" />
     <Compile Include="Structs\Gui\MapGui.cs" />
