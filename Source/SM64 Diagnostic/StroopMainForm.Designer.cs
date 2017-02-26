@@ -67,6 +67,7 @@ namespace SM64_Diagnostic
             this.pictureBoxObject = new SM64_Diagnostic.Controls.IntPictureBox();
             this.labelObjAddValue = new System.Windows.Forms.Label();
             this.tabPageMario = new System.Windows.Forms.TabPage();
+            this.buttonMarioVisibility = new System.Windows.Forms.Button();
             this.buttonMarioToggleHandsfree = new System.Windows.Forms.Button();
             this.NoTearFlowLayoutPanelMario = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.panelMarioBorder = new System.Windows.Forms.Panel();
@@ -199,7 +200,6 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
-            this.buttonMarioVisibility = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -279,7 +279,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(1020, 476);
+            this.groupBoxObjects.Size = new System.Drawing.Size(1020, 477);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -367,7 +367,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(1012, 427);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(1012, 428);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -672,6 +672,15 @@ namespace SM64_Diagnostic
             this.tabPageMario.Size = new System.Drawing.Size(1012, 202);
             this.tabPageMario.TabIndex = 1;
             this.tabPageMario.Text = "Mario";
+            // 
+            // buttonMarioVisibility
+            // 
+            this.buttonMarioVisibility.Location = new System.Drawing.Point(3, 112);
+            this.buttonMarioVisibility.Name = "buttonMarioVisibility";
+            this.buttonMarioVisibility.Size = new System.Drawing.Size(75, 42);
+            this.buttonMarioVisibility.TabIndex = 3;
+            this.buttonMarioVisibility.Text = "Toggle Visibility";
+            this.buttonMarioVisibility.UseVisualStyleBackColor = true;
             // 
             // buttonMarioToggleHandsfree
             // 
@@ -1660,7 +1669,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(671, 167);
+            this.glControlMap.Size = new System.Drawing.Size(672, 167);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -2223,15 +2232,6 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
-            // buttonMarioVisibility
-            // 
-            this.buttonMarioVisibility.Location = new System.Drawing.Point(3, 112);
-            this.buttonMarioVisibility.Name = "buttonMarioVisibility";
-            this.buttonMarioVisibility.Size = new System.Drawing.Size(75, 42);
-            this.buttonMarioVisibility.TabIndex = 3;
-            this.buttonMarioVisibility.Text = "Toggle Visibility";
-            this.buttonMarioVisibility.UseVisualStyleBackColor = true;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2252,6 +2252,7 @@ namespace SM64_Diagnostic
             this.Name = "StroopMainForm";
             this.Text = "STROOP";
             this.Load += new System.EventHandler(this.StroopMainForm_Load);
+            this.Resize += new System.EventHandler(this.StroopMainForm_Resize);
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();

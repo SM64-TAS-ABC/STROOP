@@ -386,6 +386,7 @@ namespace SM64_Diagnostic
         }
         protected override void OnPaint(PaintEventArgs e)
         {
+            e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
             lock (_gfxLock)
             {
                 // Border
@@ -398,6 +399,7 @@ namespace SM64_Diagnostic
                 if (Height != prevHeight)
                 {
                     prevHeight = Height;
+                    Font?.Dispose();
                     Font = new Font(FontFamily.GenericSansSerif, Math.Max(6, 6 / 40.0f * Height));
                 }
 

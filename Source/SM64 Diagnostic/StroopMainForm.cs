@@ -187,6 +187,7 @@ namespace SM64_Diagnostic
         {
             this.BeginInvoke(new Action(() => {
                 buttonRefresh_Click(this, new EventArgs());
+                panelConnect.Size = this.Size;
                 panelConnect.Visible = true;
             }));
         }
@@ -463,6 +464,11 @@ namespace SM64_Diagnostic
             _sm64Stream.Readonly = !_sm64Stream.Readonly;
             buttonReadOnly.Text = _sm64Stream.Readonly ? "Disable Read-only" : "Enable Read-only";
             _sm64Stream.ShowWarning = false;
+        }
+
+        private void StroopMainForm_Resize(object sender, EventArgs e)
+        {
+            panelConnect.Size = this.Size;
         }
 
         private void buttonConnect_Click(object sender, EventArgs e)
