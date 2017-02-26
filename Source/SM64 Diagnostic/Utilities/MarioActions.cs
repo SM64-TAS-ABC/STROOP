@@ -132,12 +132,16 @@ namespace SM64_Diagnostic.Utilities
             stream.Suspend();
 
             // Make clone object mario's holding object
+            uint lastObject = stream.GetUInt32(marioAddress + Config.Mario.HoldingObjectPointerOffset);
             success &= stream.SetValue(objAddress, marioAddress + Config.Mario.HoldingObjectPointerOffset);
 
             // Set clone action flags
-            uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
-            uint nextAction = Config.MarioActions.GetAfterCloneValue(currentAction);
-            success &= stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
+            if (lastObject != 0x00000000U)
+            {
+                uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
+                uint nextAction = Config.MarioActions.GetAfterCloneValue(currentAction);
+                success &= stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
+            }
 
             stream.Resume();
 
