@@ -448,6 +448,19 @@ namespace SM64_Diagnostic.Utilities
             _streamUpdater.CancelAsync();
         }
 
+        public bool RefreshRam()
+        {
+            try
+            {
+                // Read whole ram value to buffer
+                return ReadProcessMemory(0, _ram);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         private void ProcessUpdateTask(object sender, DoWorkEventArgs e)
         {
             var worker = sender as BackgroundWorker;
@@ -469,8 +482,7 @@ namespace SM64_Diagnostic.Utilities
                 int timeToWait;
                 try
                 {
-                    // Read whole ram value to buffer
-                    if (!ReadProcessMemory(0, _ram))
+                    if (!RefreshRam())
                         continue;
 
                     OnUpdate?.Invoke(this, new EventArgs());

@@ -24,6 +24,7 @@ namespace SM64_Diagnostic.Managers
         string _slotPos;
         string _behavior;
         bool _unclone = false;
+        bool _revive = false;
 
         #region Fields
         public void SetBehaviorWatchVariables(List<WatchVariable> value, Color color)
@@ -274,7 +275,10 @@ namespace SM64_Diagnostic.Managers
             if (CurrentAddresses.Count == 0)
                 return;
 
-            MarioActions.UnloadObject(_stream, CurrentAddresses);
+            if (_revive)
+                MarioActions.ReviveObject(_stream, CurrentAddresses);
+            else
+                MarioActions.UnloadObject(_stream, CurrentAddresses);
         }
 
         private void CloneButton_Click(object sender, EventArgs e)
@@ -414,6 +418,16 @@ namespace SM64_Diagnostic.Managers
 
                 // Update button text
                 _objGui.CloneButton.Text = _unclone ? "UnClone" : "Clone";
+            }
+
+            // Determine load or unload
+            bool anyActive = _currentAddresses.Any(address => _stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset) != 0x0000);
+            if (anyActive == _revive)
+            {
+                _revive = !anyActive;
+
+                // Update button text
+                _objGui.UnloadButton.Text = _revive ? "Revive" : "Unload";
             }
 
             base.Update(updateView);

@@ -164,7 +164,6 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
 
             stream.Resume();
-
             return success;
         }
 
@@ -173,8 +172,73 @@ namespace SM64_Diagnostic.Utilities
             bool success = true;
             foreach (var address in addresses)
             {
+                var test = stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset);
                 success &= stream.SetValue((short) 0x0000, address + Config.ObjectSlots.ObjectActiveOffset);
             }
+            return success;
+        }
+
+        public static bool ReviveObject(ProcessStream stream, List<uint> addresses)
+        {
+            bool success = true;
+            stream.Suspend();
+
+            foreach (var address in addresses)
+            {
+                // Find process group
+                uint scriptAddress = stream.GetUInt32(address + Config.ObjectSlots.BehaviorScriptOffset);
+                if (scriptAddress == 0x00000000)
+                    continue;
+                uint firstScriptAction = stream.GetUInt32(scriptAddress);
+                if ((firstScriptAction & 0xFF000000U) != 0x00000000U)
+                    continue;
+                byte processGroup = (byte)((firstScriptAction & 0x00FF0000U) >> 16);
+
+                // Read first object in group
+                var groupConfig = Config.ObjectGroups;
+                uint groupAddress = groupConfig.FirstGroupingAddress + processGroup * groupConfig.ProcessGroupStructSize;
+
+                // Loop through and find last object in group
+                uint lastGroupObj = groupAddress;
+                while (stream.GetUInt32(lastGroupObj + groupConfig.ProcessNextLinkOffset) != groupAddress)
+                    lastGroupObj = stream.GetUInt32(lastGroupObj + groupConfig.ProcessNextLinkOffset);
+
+                // Remove object from current group
+                uint nextObj = stream.GetUInt32(address + groupConfig.ProcessNextLinkOffset);
+                uint prevObj = stream.GetUInt32(groupConfig.VactantPointerAddress);
+                if (prevObj == address)
+                {
+                    // Set new vacant pointer
+                    success &= stream.SetValue(nextObj, groupConfig.VactantPointerAddress);
+                }
+                else
+                {
+                    for (int i = 0; i < Config.ObjectSlots.MaxSlots; i++)
+                    {
+                        uint obj = stream.GetUInt32(prevObj + groupConfig.ProcessNextLinkOffset);
+                        if (obj == address)
+                            break;
+                        prevObj = obj;
+                    }
+                    success &= stream.SetValue(nextObj, prevObj + groupConfig.ProcessNextLinkOffset);
+                }
+
+
+                // Insert object in new group
+                nextObj = stream.GetUInt32(lastGroupObj + groupConfig.ProcessNextLinkOffset);
+                success &= stream.SetValue(address, nextObj + groupConfig.ProcessPreviousLinkOffset);
+                success &= stream.SetValue(address, lastGroupObj + groupConfig.ProcessNextLinkOffset);
+                success &= stream.SetValue(lastGroupObj, address + groupConfig.ProcessPreviousLinkOffset);
+                success &= stream.SetValue(nextObj, address + groupConfig.ProcessNextLinkOffset);
+
+                success &= stream.SetValue((short)0x0101, address + Config.ObjectSlots.ObjectActiveOffset);
+
+                if (addresses.Count > 1)
+                    if (!stream.RefreshRam() || !success)
+                        break;
+            }
+
+            stream.Resume();
             return success;
         }
 

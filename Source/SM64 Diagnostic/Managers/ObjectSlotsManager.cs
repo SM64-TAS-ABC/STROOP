@@ -244,12 +244,8 @@ namespace SM64_Diagnostic.Managers
                 // Calculate start and ending objects
                 uint currentGroupObject = _stream.GetUInt32(processGroupStructAddress + groupConfig.ProcessNextLinkOffset);
 
-                // Make sure there are objects within the group
-                if (currentGroupObject == processGroupStructAddress)
-                    continue;
-
                 // Loop through every object within the group
-                while ((currentGroupObject != processGroupStructAddress && currentSlot < slotConfig.MaxSlots))
+                 while ((currentGroupObject != processGroupStructAddress && currentSlot < slotConfig.MaxSlots))
                 {
                     // Validate current object
                     if (_stream.GetUInt16(currentGroupObject + Config.ObjectSlots.HeaderOffset) != 0x18)
