@@ -12,6 +12,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint Setting;
         public uint SpawnMode;
         public uint ClassicMode;
+        public uint ResourceMode;
         public uint StageSelect;
         public uint FreeMovementAddress;
         public uint FreeMovementValue;

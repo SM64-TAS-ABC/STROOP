@@ -13,7 +13,7 @@ namespace SM64_Diagnostic.Managers
     {
         ProcessStream _stream;
         bool _changedByUser = true;
-        CheckBox _spawnDebugCheckbox, _classicCheckbox, _stageSelectCheckbox;
+        CheckBox _spawnDebugCheckbox, _classicCheckbox, _resourceCheckbox, _stageSelectCheckbox;
         RadioButton[] _dbgSettingRadioButton;
         RadioButton _dbgSettingRadioButtonOff;
 
@@ -26,10 +26,12 @@ namespace SM64_Diagnostic.Managers
             var freeMovementButton = tabControl.Controls["buttonDbgFreeMovement"] as Button;
             _spawnDebugCheckbox = tabControl.Controls["checkBoxDbgSpawnDbg"] as CheckBox;
             _classicCheckbox = tabControl.Controls["checkBoxDbgClassicDbg"] as CheckBox;
+            _resourceCheckbox = tabControl.Controls["checkBoxDbgResource"] as CheckBox;
             _stageSelectCheckbox = tabControl.Controls["checkBoxDbgStageSelect"] as CheckBox;
 
             _spawnDebugCheckbox.CheckedChanged += SpawnDebugCheckbox_CheckedChanged;
             _classicCheckbox.CheckedChanged += _classicCheckbox_CheckedChanged;
+            _resourceCheckbox.CheckedChanged += _resourceCheckbox_CheckedChanged;
             _stageSelectCheckbox.CheckedChanged += _stageSelectCheckbox_CheckedChanged;
             freeMovementButton.Click += FreeMovementButton_Click;
 
@@ -78,6 +80,14 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             _stream.SetValue(_classicCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ClassicMode);
+        }
+
+        private void _resourceCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_changedByUser)
+                return;
+
+            _stream.SetValue(_resourceCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ResourceMode);
         }
 
         private void _stageSelectCheckbox_CheckedChanged(object sender, EventArgs e)
@@ -148,6 +158,7 @@ namespace SM64_Diagnostic.Managers
             SetChecked(_spawnDebugCheckbox, _stream.GetByte(Config.Debug.Setting) == 0x03
                  && _stream.GetByte(Config.Debug.SpawnMode) == 0x01);
             SetChecked(_classicCheckbox, _stream.GetByte(Config.Debug.ClassicMode) == 0x01);
+            SetChecked(_resourceCheckbox, _stream.GetByte(Config.Debug.ResourceMode) == 0x01);
             SetChecked(_stageSelectCheckbox, _stream.GetByte(Config.Debug.StageSelect) == 0x01);
 
             var setting = _stream.GetByte(Config.Debug.Setting);

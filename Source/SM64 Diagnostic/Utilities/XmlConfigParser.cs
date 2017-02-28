@@ -328,6 +328,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "ClassicModeAddress":
                                     Config.Debug.ClassicMode = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "ResourceModeAddress":
+                                    Config.Debug.ResourceMode = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "StageSelectAddress":
                                     Config.Debug.StageSelect = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

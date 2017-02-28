@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -75,6 +75,10 @@ namespace SM64_Diagnostic
             this.tabPageCamera = new System.Windows.Forms.TabPage();
             this.panelCameraBorder = new System.Windows.Forms.Panel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
+            this.checkBoxDbgStageSelect = new System.Windows.Forms.CheckBox();
+            this.checkBoxDbgClassicDbg = new System.Windows.Forms.CheckBox();
+            this.buttonDbgFreeMovement = new System.Windows.Forms.Button();
+            this.checkBoxDbgSpawnDbg = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panelDebugBorder = new System.Windows.Forms.Panel();
             this.tabPageMisc = new System.Windows.Forms.TabPage();
@@ -178,10 +182,6 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
-            this.checkBoxDbgSpawnDbg = new System.Windows.Forms.CheckBox();
-            this.buttonDbgFreeMovement = new System.Windows.Forms.Button();
-            this.checkBoxDbgClassicDbg = new System.Windows.Forms.CheckBox();
-            this.checkBoxDbgStageSelect = new System.Windows.Forms.CheckBox();
             this.NoTearFlowLayoutPanelObject = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.pictureBoxObject = new SM64_Diagnostic.Controls.IntPictureBox();
             this.pictureBoxMario = new SM64_Diagnostic.Controls.IntPictureBox();
@@ -204,6 +204,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.NoTearFlowLayoutPanel1 = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.NoTearFlowLayoutPanelObjects = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.checkBoxDbgResource = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -283,7 +284,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(1020, 478);
+            this.groupBoxObjects.Size = new System.Drawing.Size(1020, 479);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -474,7 +475,7 @@ namespace SM64_Diagnostic
             // 
             // buttonObjGoToHome
             // 
-            this.buttonObjGoToHome.Location = new System.Drawing.Point(99, 92);
+            this.buttonObjGoToHome.Location = new System.Drawing.Point(4, 117);
             this.buttonObjGoToHome.Margin = new System.Windows.Forms.Padding(2);
             this.buttonObjGoToHome.Name = "buttonObjGoToHome";
             this.buttonObjGoToHome.Size = new System.Drawing.Size(91, 21);
@@ -498,7 +499,7 @@ namespace SM64_Diagnostic
             // 
             // buttonObjRetrieve
             // 
-            this.buttonObjRetrieve.Location = new System.Drawing.Point(4, 117);
+            this.buttonObjRetrieve.Location = new System.Drawing.Point(99, 92);
             this.buttonObjRetrieve.Margin = new System.Windows.Forms.Padding(2);
             this.buttonObjRetrieve.Name = "buttonObjRetrieve";
             this.buttonObjRetrieve.Size = new System.Drawing.Size(91, 21);
@@ -735,19 +736,60 @@ namespace SM64_Diagnostic
             // 
             // tabPageDebug
             // 
+            this.tabPageDebug.Controls.Add(this.checkBoxDbgResource);
             this.tabPageDebug.Controls.Add(this.checkBoxDbgStageSelect);
             this.tabPageDebug.Controls.Add(this.checkBoxDbgClassicDbg);
             this.tabPageDebug.Controls.Add(this.buttonDbgFreeMovement);
             this.tabPageDebug.Controls.Add(this.checkBoxDbgSpawnDbg);
-            this.tabPageDebug.Controls.Add(this.NoTearFlowLayoutPanelDebugDisplayType);
             this.tabPageDebug.Controls.Add(this.label2);
             this.tabPageDebug.Controls.Add(this.panelDebugBorder);
+            this.tabPageDebug.Controls.Add(this.NoTearFlowLayoutPanelDebugDisplayType);
             this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
             this.tabPageDebug.Name = "tabPageDebug";
             this.tabPageDebug.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageDebug.Size = new System.Drawing.Size(1012, 202);
             this.tabPageDebug.TabIndex = 8;
             this.tabPageDebug.Text = "Debug";
+            // 
+            // checkBoxDbgStageSelect
+            // 
+            this.checkBoxDbgStageSelect.AutoSize = true;
+            this.checkBoxDbgStageSelect.Location = new System.Drawing.Point(244, 92);
+            this.checkBoxDbgStageSelect.Name = "checkBoxDbgStageSelect";
+            this.checkBoxDbgStageSelect.Size = new System.Drawing.Size(87, 17);
+            this.checkBoxDbgStageSelect.TabIndex = 24;
+            this.checkBoxDbgStageSelect.Text = "Stage Select";
+            this.checkBoxDbgStageSelect.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDbgClassicDbg
+            // 
+            this.checkBoxDbgClassicDbg.AutoSize = true;
+            this.checkBoxDbgClassicDbg.Location = new System.Drawing.Point(244, 46);
+            this.checkBoxDbgClassicDbg.Name = "checkBoxDbgClassicDbg";
+            this.checkBoxDbgClassicDbg.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxDbgClassicDbg.TabIndex = 23;
+            this.checkBoxDbgClassicDbg.Text = "Classic Debug";
+            this.checkBoxDbgClassicDbg.UseVisualStyleBackColor = true;
+            // 
+            // buttonDbgFreeMovement
+            // 
+            this.buttonDbgFreeMovement.Location = new System.Drawing.Point(243, 114);
+            this.buttonDbgFreeMovement.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDbgFreeMovement.Name = "buttonDbgFreeMovement";
+            this.buttonDbgFreeMovement.Size = new System.Drawing.Size(124, 21);
+            this.buttonDbgFreeMovement.TabIndex = 22;
+            this.buttonDbgFreeMovement.Text = "Free Movement";
+            this.buttonDbgFreeMovement.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDbgSpawnDbg
+            // 
+            this.checkBoxDbgSpawnDbg.AutoSize = true;
+            this.checkBoxDbgSpawnDbg.Location = new System.Drawing.Point(244, 23);
+            this.checkBoxDbgSpawnDbg.Name = "checkBoxDbgSpawnDbg";
+            this.checkBoxDbgSpawnDbg.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxDbgSpawnDbg.TabIndex = 12;
+            this.checkBoxDbgSpawnDbg.Text = "Spawn Debug";
+            this.checkBoxDbgSpawnDbg.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -1394,7 +1436,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(673, 167);
+            this.glControlMap.Size = new System.Drawing.Size(674, 167);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -1511,8 +1553,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1957,46 +1999,6 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
-            // checkBoxDbgSpawnDbg
-            // 
-            this.checkBoxDbgSpawnDbg.AutoSize = true;
-            this.checkBoxDbgSpawnDbg.Location = new System.Drawing.Point(244, 23);
-            this.checkBoxDbgSpawnDbg.Name = "checkBoxDbgSpawnDbg";
-            this.checkBoxDbgSpawnDbg.Size = new System.Drawing.Size(124, 17);
-            this.checkBoxDbgSpawnDbg.TabIndex = 12;
-            this.checkBoxDbgSpawnDbg.Text = "Spawn Debug Mode";
-            this.checkBoxDbgSpawnDbg.UseVisualStyleBackColor = true;
-            // 
-            // buttonDbgFreeMovement
-            // 
-            this.buttonDbgFreeMovement.Location = new System.Drawing.Point(244, 91);
-            this.buttonDbgFreeMovement.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDbgFreeMovement.Name = "buttonDbgFreeMovement";
-            this.buttonDbgFreeMovement.Size = new System.Drawing.Size(124, 21);
-            this.buttonDbgFreeMovement.TabIndex = 22;
-            this.buttonDbgFreeMovement.Text = "Free Movement";
-            this.buttonDbgFreeMovement.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxDbgClassicDbg
-            // 
-            this.checkBoxDbgClassicDbg.AutoSize = true;
-            this.checkBoxDbgClassicDbg.Location = new System.Drawing.Point(244, 46);
-            this.checkBoxDbgClassicDbg.Name = "checkBoxDbgClassicDbg";
-            this.checkBoxDbgClassicDbg.Size = new System.Drawing.Size(124, 17);
-            this.checkBoxDbgClassicDbg.TabIndex = 23;
-            this.checkBoxDbgClassicDbg.Text = "Classic Debug Mode";
-            this.checkBoxDbgClassicDbg.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxDbgStageSelect
-            // 
-            this.checkBoxDbgStageSelect.AutoSize = true;
-            this.checkBoxDbgStageSelect.Location = new System.Drawing.Point(244, 69);
-            this.checkBoxDbgStageSelect.Name = "checkBoxDbgStageSelect";
-            this.checkBoxDbgStageSelect.Size = new System.Drawing.Size(87, 17);
-            this.checkBoxDbgStageSelect.TabIndex = 24;
-            this.checkBoxDbgStageSelect.Text = "Stage Select";
-            this.checkBoxDbgStageSelect.UseVisualStyleBackColor = true;
-            // 
             // NoTearFlowLayoutPanelObject
             // 
             this.NoTearFlowLayoutPanelObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -2276,9 +2278,19 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(1012, 429);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(1012, 430);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
+            // 
+            // checkBoxDbgResource
+            // 
+            this.checkBoxDbgResource.AutoSize = true;
+            this.checkBoxDbgResource.Location = new System.Drawing.Point(244, 69);
+            this.checkBoxDbgResource.Name = "checkBoxDbgResource";
+            this.checkBoxDbgResource.Size = new System.Drawing.Size(107, 17);
+            this.checkBoxDbgResource.TabIndex = 25;
+            this.checkBoxDbgResource.Text = "Resource Debug";
+            this.checkBoxDbgResource.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -2541,6 +2553,7 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxDbgClassicDbg;
         private Button buttonDbgFreeMovement;
         private CheckBox checkBoxDbgSpawnDbg;
+        private CheckBox checkBoxDbgResource;
     }
 }
 
