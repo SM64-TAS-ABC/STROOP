@@ -92,6 +92,7 @@
     <SettingAddress>0x80330E94</SettingAddress>
     <SpawnModeAddress>0x8033D2DF</SpawnModeAddress>
     <ClassicModeAddress>0x8032D598</ClassicModeAddress>
+    <ResourceModeAddress>0x8032D594</ResourceModeAddress>
     <StageSelectAddress>0x8032D58C</StageSelectAddress>
     <FreeMovementAddress>0x80269BD8</FreeMovementAddress>
     <FreeMovementValue>0x0C095FAB</FreeMovementValue>
