@@ -128,25 +128,17 @@ namespace SM64_Diagnostic.Utilities
         {
             bool success = true;
             var marioAddress = Config.Mario.StructAddress;
-
             stream.Suspend();
-
-            // Make clone object mario's holding object
-            uint lastObject = stream.GetUInt32(marioAddress + Config.Mario.HoldingObjectPointerOffset);
-
-            // Set clone action flags
-            if (lastObject != 0x00000000U)
-            {
-                uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
-                uint nextAction = Config.MarioActions.GetAfterCloneValue(currentAction);
-                success &= stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
-            }
 
             // Set new holding value
             success &= stream.SetValue(objAddress, marioAddress + Config.Mario.HoldingObjectPointerOffset);
 
-            stream.Resume();
+            // Set Next action
+            uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
+            uint nextAction = Config.MarioActions.GetAfterCloneValue(currentAction);
+            success &= stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
 
+            stream.Resume();
             return success;
         }
 
@@ -157,13 +149,17 @@ namespace SM64_Diagnostic.Utilities
 
             stream.Suspend();
 
-            // Make clone object mario's holding object
-            success &= stream.SetValue((UInt32) 0x00000000U, marioAddress + Config.Mario.HoldingObjectPointerOffset);
-
+            uint lastObject = stream.GetUInt32(marioAddress + Config.Mario.HoldingObjectPointerOffset);
             // Set clone action flags
-            uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
-            uint nextAction = Config.MarioActions.GetAfterUncloneValue(currentAction);
-            success &= stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
+            if (lastObject != 0x00000000U)
+            {
+                uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
+                uint nextAction = Config.MarioActions.GetAfterUncloneValue(currentAction);
+                success &= stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
+            }
+
+            // Clear mario's holding object
+            success &= stream.SetValue((UInt32)0x00000000U, marioAddress + Config.Mario.HoldingObjectPointerOffset);
 
             stream.Resume();
             return success;

@@ -754,7 +754,7 @@ namespace SM64_Diagnostic
             // checkBoxDbgStageSelect
             // 
             this.checkBoxDbgStageSelect.AutoSize = true;
-            this.checkBoxDbgStageSelect.Location = new System.Drawing.Point(244, 92);
+            this.checkBoxDbgStageSelect.Location = new System.Drawing.Point(243, 95);
             this.checkBoxDbgStageSelect.Name = "checkBoxDbgStageSelect";
             this.checkBoxDbgStageSelect.Size = new System.Drawing.Size(87, 17);
             this.checkBoxDbgStageSelect.TabIndex = 24;
@@ -764,7 +764,7 @@ namespace SM64_Diagnostic
             // checkBoxDbgClassicDbg
             // 
             this.checkBoxDbgClassicDbg.AutoSize = true;
-            this.checkBoxDbgClassicDbg.Location = new System.Drawing.Point(244, 46);
+            this.checkBoxDbgClassicDbg.Location = new System.Drawing.Point(244, 26);
             this.checkBoxDbgClassicDbg.Name = "checkBoxDbgClassicDbg";
             this.checkBoxDbgClassicDbg.Size = new System.Drawing.Size(94, 17);
             this.checkBoxDbgClassicDbg.TabIndex = 23;
@@ -773,7 +773,7 @@ namespace SM64_Diagnostic
             // 
             // buttonDbgFreeMovement
             // 
-            this.buttonDbgFreeMovement.Location = new System.Drawing.Point(243, 114);
+            this.buttonDbgFreeMovement.Location = new System.Drawing.Point(243, 117);
             this.buttonDbgFreeMovement.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDbgFreeMovement.Name = "buttonDbgFreeMovement";
             this.buttonDbgFreeMovement.Size = new System.Drawing.Size(124, 21);
@@ -784,7 +784,7 @@ namespace SM64_Diagnostic
             // checkBoxDbgSpawnDbg
             // 
             this.checkBoxDbgSpawnDbg.AutoSize = true;
-            this.checkBoxDbgSpawnDbg.Location = new System.Drawing.Point(244, 23);
+            this.checkBoxDbgSpawnDbg.Location = new System.Drawing.Point(243, 72);
             this.checkBoxDbgSpawnDbg.Name = "checkBoxDbgSpawnDbg";
             this.checkBoxDbgSpawnDbg.Size = new System.Drawing.Size(94, 17);
             this.checkBoxDbgSpawnDbg.TabIndex = 12;
@@ -2002,7 +2002,7 @@ namespace SM64_Diagnostic
             // checkBoxDbgResource
             // 
             this.checkBoxDbgResource.AutoSize = true;
-            this.checkBoxDbgResource.Location = new System.Drawing.Point(244, 69);
+            this.checkBoxDbgResource.Location = new System.Drawing.Point(243, 49);
             this.checkBoxDbgResource.Name = "checkBoxDbgResource";
             this.checkBoxDbgResource.Size = new System.Drawing.Size(107, 17);
             this.checkBoxDbgResource.TabIndex = 25;
