@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.Controls
 {
     public class WatchVariableControl : IDataContainer
     {
-        TableLayoutPanel _tablePanel;
+        BorderedTableLayoutPanel _tablePanel;
         Label _nameLabel;
         WatchVariable _watchVar;
         CheckBox _checkBoxBool;
@@ -52,6 +52,9 @@ namespace SM64_Diagnostic.Controls
                     newItem = new ToolStripMenuItem("Lock Value");
                     newItem.Name = "LockValue";
                     _menu.Items.Add(newItem);
+                    newItem = new ToolStripMenuItem("Highlight");
+                    newItem.Name = "Highlight";
+                    _menu.Items.Add(newItem);
                 }
                 return _menu;
             }
@@ -72,11 +75,30 @@ namespace SM64_Diagnostic.Controls
                     newItem = new ToolStripMenuItem("Lock Value");
                     newItem.Name = "LockValue";
                     _angleMenu.Items.Add(newItem);
+                    newItem = new ToolStripMenuItem("Highlight");
+                    newItem.Name = "Highlight";
+                    _angleMenu.Items.Add(newItem);
 
                     _angleMenu.Items.Add(AngleDropDownMenu[0]);
                     _angleMenu.Items.Add(AngleDropDownMenu[1]);
                 }
                 return _angleMenu;
+            }
+        }
+
+        private static ContextMenuStrip _checkMenu;
+        public static ContextMenuStrip CheckMenu
+        {
+            get
+            {
+                if (_checkMenu == null)
+                {
+                    _checkMenu = new ContextMenuStrip();
+                    var newItem = new ToolStripMenuItem("Highlight");
+                    newItem.Name = "Highlight";
+                    _checkMenu.Items.Add(newItem);
+                }
+                return _checkMenu;
             }
         }
 
@@ -274,7 +296,7 @@ namespace SM64_Diagnostic.Controls
         private void CreateControls()
         {
             this._nameLabel = new Label();
-            this._nameLabel.Width = 210;
+            this._nameLabel.Size = new Size(210, 20);
             this._nameLabel.Text = _watchVar.Name;
             this._nameLabel.Margin = new Padding(3, 3, 3, 3);
             this._nameLabel.Click += _nameLabel_Click;
@@ -299,6 +321,12 @@ namespace SM64_Diagnostic.Controls
                 this._checkBoxBool = new CheckBox();
                 this._checkBoxBool.CheckAlign = ContentAlignment.MiddleRight;
                 this._checkBoxBool.CheckedChanged += OnEdited;
+                this._checkBoxBool.MouseEnter += (sender, e) =>
+                {
+                    _lastSelected = this;
+                    (CheckMenu.Items["Highlight"] as ToolStripMenuItem).Checked = _tablePanel.ShowBorder;
+                };
+                this._checkBoxBool.ContextMenuStrip = WatchVariableControl.CheckMenu;
             }
             else
             {
@@ -324,7 +352,7 @@ namespace SM64_Diagnostic.Controls
                     WatchVariableControl.Menu.ItemClicked += OnMenuStripClick;
             }
 
-            this._tablePanel = new TableLayoutPanel();
+            this._tablePanel = new BorderedTableLayoutPanel();
             this._tablePanel.Size = new Size(230, _nameLabel.Height + 2);
             this._tablePanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             this._tablePanel.RowCount = 1;
@@ -336,6 +364,7 @@ namespace SM64_Diagnostic.Controls
             this._tablePanel.Padding = new Padding(0);
             this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120));
             this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
+            this._tablePanel.ShowBorder = false;
             this._tablePanel.Controls.Add(_nameLabel, 0, 0);
             this._tablePanel.Controls.Add(_watchVar.IsBool ? this._checkBoxBool as Control : this._textBoxValue, 1, 0);
         }
@@ -389,6 +418,7 @@ namespace SM64_Diagnostic.Controls
             {
                 (AngleMenu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
                 (AngleMenu.Items["LockValue"] as ToolStripMenuItem).CheckState = lockedStatus;
+                (AngleMenu.Items["Highlight"] as ToolStripMenuItem).Checked = _tablePanel.ShowBorder;
                 (AngleDropDownMenu[0].DropDownItems[0] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Recommended);
                 (AngleDropDownMenu[0].DropDownItems[1] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Unsigned);
                 (AngleDropDownMenu[0].DropDownItems[2] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Signed);
@@ -399,7 +429,8 @@ namespace SM64_Diagnostic.Controls
             else
             {
                 (Menu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
-                (Menu.Items["HexView"] as ToolStripMenuItem).CheckState = lockedStatus;
+                (Menu.Items["LockValue"] as ToolStripMenuItem).CheckState = lockedStatus;
+                (Menu.Items["Highlight"] as ToolStripMenuItem).Checked = _tablePanel.ShowBorder;
                 ObjectDropDownMenu.ForEach(d => Menu.Items.Remove(d));
                 if (_watchVar.IsObject)
                 {
@@ -551,6 +582,11 @@ namespace SM64_Diagnostic.Controls
                         if (ManagerContext.Current.ObjectSlotManager.ObjectSlots.Count(s => s.Address == objAddress) > 0)
                             slotManager.SelectedSlotsAddresses.Add(objAddress);
                     }
+                    break;
+                case "Highlight":
+                    var toolItem = (e.ClickedItem as ToolStripMenuItem);
+                    toolItem.Checked = !toolItem.Checked;
+                    _tablePanel.ShowBorder = toolItem.Checked;
                     break;
             }
         }
