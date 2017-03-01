@@ -52,6 +52,9 @@
     <Closest>
       <OverlayImage path="Closest.png"/>
     </Closest>
+    <Camera>
+      <OverlayImage path="Camera.png"/>
+    </Camera>
   </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <SpawnCode gfxId="0xD5"/>

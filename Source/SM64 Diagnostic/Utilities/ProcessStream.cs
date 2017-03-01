@@ -10,6 +10,7 @@ using SM64_Diagnostic.Structs;
 using System.Threading;
 using System.IO;
 using System.ComponentModel;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Utilities
 {

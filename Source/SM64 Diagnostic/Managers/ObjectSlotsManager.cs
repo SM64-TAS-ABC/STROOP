@@ -9,6 +9,7 @@ using SM64_Diagnostic.Utilities;
 using System.Drawing;
 using SM64_Diagnostic.Extensions;
 using OpenTK.Input;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -49,7 +50,7 @@ namespace SM64_Diagnostic.Managers
         List<uint> _toggleMapSlots = new List<uint>();
 
         BehaviorCriteria? _lastSelectedBehavior;
-        uint _standingOnObject, _interactingObject, _holdingObject, _usingObject, _closestObject;
+        uint _standingOnObject, _interactingObject, _holdingObject, _usingObject, _closestObject, _cameraObject;
         int _activeObjCnt;
         bool _selectedUpdated = false;
         Image _multiImage = null;
@@ -366,6 +367,7 @@ namespace SM64_Diagnostic.Managers
             _usingObject = _stream.GetUInt32(Config.Mario.UsingObjectPointerOffset + Config.Mario.StructAddress);
             _closestObject = newObjectSlotData.OrderBy(s => !s.IsActive || s.Behavior == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF) ? float.MaxValue
                 : s.DistanceToMario).First().Address;
+            _cameraObject = _stream.GetUInt32(Config.Camera.SecondObject);
 
             // Update slots
             UpdateSlots(newObjectSlotData);
@@ -467,6 +469,7 @@ namespace SM64_Diagnostic.Managers
             objSlot.DrawHoldingOverlay = Config.ShowOverlays && objAddress == _holdingObject;
             objSlot.DrawUsingOverlay = Config.ShowOverlays && objAddress == _usingObject;
             objSlot.DrawClosestOverlay = Config.ShowOverlays && objAddress == _closestObject;
+            objSlot.DrawCameraOverlay = Config.ShowOverlays && objAddress == _cameraObject;
 
             if (objData.IsActive)
                 _activeObjCnt++;

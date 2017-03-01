@@ -1,4 +1,5 @@
 ﻿using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,9 +49,9 @@ namespace SM64_Diagnostic.Utilities
 
             // Get Camera Position
             float cameraX, cameraY, cameraZ;
-            cameraX = stream.GetSingle(Config.CameraX);
-            cameraY = stream.GetSingle(Config.CameraY);
-            cameraZ = stream.GetSingle(Config.CameraZ);
+            cameraX = stream.GetSingle(Config.Camera.CameraX);
+            cameraY = stream.GetSingle(Config.Camera.CameraY);
+            cameraZ = stream.GetSingle(Config.Camera.CameraZ);
 
             // Calculate new coordinates
             float newMarioX, newMarioY, newMarioZ;
@@ -70,9 +71,9 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.SetValue(newMarioZ, marioAddress + Config.Mario.ZOffset);
             if (Config.MoveCameraWithPu)
             {
-                success &= stream.SetValue(newCamX, Config.CameraX);
-                success &= stream.SetValue(newCamY, Config.CameraY);
-                success &= stream.SetValue(newCamZ, Config.CameraZ);
+                success &= stream.SetValue(newCamX, Config.Camera.CameraX);
+                success &= stream.SetValue(newCamY, Config.Camera.CameraY);
+                success &= stream.SetValue(newCamZ, Config.Camera.CameraZ);
             }
             return success;
         }
@@ -90,9 +91,9 @@ namespace SM64_Diagnostic.Utilities
 
             // Get Camera Position
             float cameraX, cameraY, cameraZ;
-            cameraX = stream.GetSingle(Config.CameraX);
-            cameraY = stream.GetSingle(Config.CameraY);
-            cameraZ = stream.GetSingle(Config.CameraZ);
+            cameraX = stream.GetSingle(Config.Camera.CameraX);
+            cameraY = stream.GetSingle(Config.Camera.CameraY);
+            cameraZ = stream.GetSingle(Config.Camera.CameraZ);
 
             // Calculate new coordinates
             float newMarioX, newMarioY, newMarioZ;
@@ -112,9 +113,9 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.SetValue(newMarioZ, marioAddress + Config.Mario.ZOffset);
             if (Config.MoveCameraWithPu)
             {
-                success &= stream.SetValue(newCamX, Config.CameraX);
-                success &= stream.SetValue(newCamY, Config.CameraY);
-                success &= stream.SetValue(newCamZ, Config.CameraZ);
+                success &= stream.SetValue(newCamX, Config.Camera.CameraX);
+                success &= stream.SetValue(newCamY, Config.Camera.CameraY);
+                success &= stream.SetValue(newCamZ, Config.Camera.CameraZ);
             }
             return success;
         }

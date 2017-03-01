@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SM64_Diagnostic.Structs.Configurations;
 
-namespace SM64_Diagnostic.Structs
+namespace SM64_Diagnostic.Structs.Configurations
 {
     public static class Config
     {
@@ -18,6 +17,7 @@ namespace SM64_Diagnostic.Structs
         public static HudConfig Hud;
         public static HackConfig Hacks;
         public static DebugConfig Debug;
+        public static CameraConfig Camera;
         public static TriangleOffsetsConfig TriangleOffsets;
         public static ActionTable MarioActions;
         public static uint LevelAddress;
@@ -27,10 +27,6 @@ namespace SM64_Diagnostic.Structs
         public static uint HolpX;
         public static uint HolpY;
         public static uint HolpZ;
-        public static uint CameraX;
-        public static uint CameraY;
-        public static uint CameraZ;
-        public static uint CameraRot;
         public static uint RngRecordingAreaAddress;
         public static uint RngAddress;
       

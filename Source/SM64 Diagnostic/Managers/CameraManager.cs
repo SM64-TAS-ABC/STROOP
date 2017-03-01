@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -34,9 +35,9 @@ namespace SM64_Diagnostic.Managers
             mZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
             float cameraX, cameraY, cameraZ;
-            cameraX = _stream.GetSingle(Config.CameraX);
-            cameraY = _stream.GetSingle(Config.CameraY);
-            cameraZ = _stream.GetSingle(Config.CameraZ);
+            cameraX = _stream.GetSingle(Config.Camera.CameraX);
+            cameraY = _stream.GetSingle(Config.Camera.CameraY);
+            cameraZ = _stream.GetSingle(Config.Camera.CameraZ);
 
             foreach (var specialVar in _specialWatchVars)
             {

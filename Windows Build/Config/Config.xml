@@ -119,13 +119,16 @@
     <offset>0x28</offset>
     <associatedObject>0x2C</associatedObject>
   </TriangleOffsets>
+  <Camera>
+    <CameraXAddress>0x8033C6A4</CameraXAddress>
+    <CameraYAddress>0x8033C6A8</CameraYAddress>
+    <CameraZAddress>0x8033C6AC</CameraZAddress>
+    <CameraRotAddress>0x8033C6E4</CameraRotAddress>
+    <SecondObjectAddress>0x8032DF30</SecondObjectAddress>
+  </Camera>
   <HolpX>0x8033B3C8</HolpX>
   <HolpY>0x8033B3CC</HolpY>
   <HolpZ>0x8033B3D0</HolpZ>
-  <CameraX>0x8033C6A4</CameraX>
-  <CameraY>0x8033C6A8</CameraY>
-  <CameraZ>0x8033C6AC</CameraZ>
-  <CameraRot>0x8033C6E4</CameraRot>
   <LevelAddress>0x8033B249</LevelAddress>
   <AreaAddress>0x8033B24A</AreaAddress>
   <LoadingPointAddress>0x8033BACA</LoadingPointAddress>

@@ -143,6 +143,7 @@
     <Compile Include="Managers\ObjectSlotsManager.cs" />
     <Compile Include="Structs\ActionTable.cs" />
     <Compile Include="Structs\BehaviorCriteria.cs" />
+    <Compile Include="Structs\Configurations\CameraConfig.cs" />
     <Compile Include="Structs\Configurations\DebugConfig.cs" />
     <Compile Include="Structs\Configurations\HackConfig.cs" />
     <Compile Include="Structs\Configurations\HudConfig.cs" />
@@ -715,6 +716,9 @@
     <Content Include="Resources\Object Images\Yellow Switch Button.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Overlays\Camera.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Resources\Overlays\Closest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

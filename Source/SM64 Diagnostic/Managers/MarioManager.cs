@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -129,10 +130,10 @@ namespace SM64_Diagnostic.Managers
 
             // Update camera position and rotation
             float cameraX, cameraY, cameraZ , cameraRot;
-            cameraX = _stream.GetSingle(Config.CameraX);
-            cameraY = _stream.GetSingle(Config.CameraY);
-            cameraZ = _stream.GetSingle(Config.CameraZ);
-            cameraRot = (float)(((UInt16)(_stream.GetUInt32(Config.CameraRot)) / 65536f * 360f));
+            cameraX = _stream.GetSingle(Config.Camera.CameraX);
+            cameraY = _stream.GetSingle(Config.Camera.CameraY);
+            cameraZ = _stream.GetSingle(Config.Camera.CameraZ);
+            cameraRot = (float)(((UInt16)(_stream.GetUInt32(Config.Camera.CameraRot)) / 65536f * 360f));
 
             // Update floor triangle
             UInt32 floorTriangle = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);

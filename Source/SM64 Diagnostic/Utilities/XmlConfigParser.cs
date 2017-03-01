@@ -413,6 +413,30 @@ namespace SM64_Diagnostic.Utilities
                         } 
                         break;
 
+                    case "Camera":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "CameraXAddress":
+                                    Config.Camera.CameraX = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "CameraYAddress":
+                                    Config.Camera.CameraY = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "CameraZAddress":
+                                    Config.Camera.CameraZ = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "CameraRotAddress":
+                                    Config.Camera.CameraRot = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "SecondObjectAddress":
+                                    Config.Camera.SecondObject = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                            }
+                        }
+                        break;
+
                     case "LevelAddress":
                         Config.LevelAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
@@ -437,18 +461,6 @@ namespace SM64_Diagnostic.Utilities
                         break;
                     case "HolpZ":
                         Config.HolpZ = ParsingUtilities.ParseHex(element.Value);
-                        break;
-                    case "CameraX":
-                        Config.CameraX = ParsingUtilities.ParseHex(element.Value);
-                        break;
-                    case "CameraY":
-                        Config.CameraY = ParsingUtilities.ParseHex(element.Value);
-                        break;
-                    case "CameraZ":
-                        Config.CameraZ = ParsingUtilities.ParseHex(element.Value);
-                        break;
-                    case "CameraRot":
-                        Config.CameraRot = ParsingUtilities.ParseHex(element.Value);
                         break;
                     case "RngRecordingAreaAddress":
                         Config.RngRecordingAreaAddress = ParsingUtilities.ParseHex(element.Value);
@@ -511,7 +523,8 @@ namespace SM64_Diagnostic.Utilities
                 marioImagePath = "", holpMapImagePath = "", hudImagePath = "", debugImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 selectedOverlayImagePath = "", standingOnOverlayImagePath = "", holdingOverlayImagePath = "",
-                interactingOverlayImagePath = "", usingOverlayImagePath = "", closestOverlayImagePath = "";
+                interactingOverlayImagePath = "", usingOverlayImagePath = "", closestOverlayImagePath = "",
+                cameraOverlayImagePath = "";
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
 
@@ -608,6 +621,10 @@ namespace SM64_Diagnostic.Utilities
                                 case "Closest":
                                     closestOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
+
+                                case "Camera":
+                                    cameraOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -682,30 +699,31 @@ namespace SM64_Diagnostic.Utilities
 
             // Load Images
             // TODO: Exceptions
-            assoc.DefaultImage = Bitmap.FromFile(imageDir + defaultImagePath);
-            assoc.EmptyImage = Bitmap.FromFile(imageDir + emptyImagePath);
-            assoc.MarioImage = Bitmap.FromFile(imageDir + marioImagePath);
-            assoc.CameraImage = Bitmap.FromFile(imageDir + cameraImagePath);
-            assoc.MarioMapImage = marioMapImagePath == "" ? assoc.MarioImage : Bitmap.FromFile(mapImageDir + marioMapImagePath);
-            assoc.HudImage = Bitmap.FromFile(imageDir + hudImagePath);
-            assoc.DebugImage = Bitmap.FromFile(imageDir + debugImagePath);
-            assoc.MiscImage = Bitmap.FromFile(imageDir + miscImagePath);
-            assoc.HolpImage = Bitmap.FromFile(mapImageDir + holpMapImagePath);
-            assoc.CameraMapImage = Bitmap.FromFile(mapImageDir + cameraMapImagePath);
+            assoc.DefaultImage = Image.FromFile(imageDir + defaultImagePath);
+            assoc.EmptyImage = Image.FromFile(imageDir + emptyImagePath);
+            assoc.MarioImage = Image.FromFile(imageDir + marioImagePath);
+            assoc.CameraImage = Image.FromFile(imageDir + cameraImagePath);
+            assoc.MarioMapImage = marioMapImagePath == "" ? assoc.MarioImage : Image.FromFile(mapImageDir + marioMapImagePath);
+            assoc.HudImage = Image.FromFile(imageDir + hudImagePath);
+            assoc.DebugImage = Image.FromFile(imageDir + debugImagePath);
+            assoc.MiscImage = Image.FromFile(imageDir + miscImagePath);
+            assoc.HolpImage = Image.FromFile(mapImageDir + holpMapImagePath);
+            assoc.CameraMapImage = Image.FromFile(mapImageDir + cameraMapImagePath);
             assoc.MarioBehavior = marioBehavior - ramToBehaviorOffset;
-            objectSlotManagerGui.SelectedObjectOverlayImage = Bitmap.FromFile(overlayImageDir + selectedOverlayImagePath);
-            objectSlotManagerGui.StandingOnObjectOverlayImage = Bitmap.FromFile(overlayImageDir + standingOnOverlayImagePath);
-            objectSlotManagerGui.HoldingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + holdingOverlayImagePath);
-            objectSlotManagerGui.InteractingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + interactingOverlayImagePath);
-            objectSlotManagerGui.UsingObjectOverlayImage = Bitmap.FromFile(overlayImageDir + usingOverlayImagePath);
-            objectSlotManagerGui.ClosestObjectOverlayImage = Bitmap.FromFile(overlayImageDir + closestOverlayImagePath);
+            objectSlotManagerGui.SelectedObjectOverlayImage = Image.FromFile(overlayImageDir + selectedOverlayImagePath);
+            objectSlotManagerGui.StandingOnObjectOverlayImage = Image.FromFile(overlayImageDir + standingOnOverlayImagePath);
+            objectSlotManagerGui.HoldingObjectOverlayImage = Image.FromFile(overlayImageDir + holdingOverlayImagePath);
+            objectSlotManagerGui.InteractingObjectOverlayImage = Image.FromFile(overlayImageDir + interactingOverlayImagePath);
+            objectSlotManagerGui.UsingObjectOverlayImage = Image.FromFile(overlayImageDir + usingOverlayImagePath);
+            objectSlotManagerGui.ClosestObjectOverlayImage = Image.FromFile(overlayImageDir + closestOverlayImagePath);
+            objectSlotManagerGui.CameraObjectOverlayImage = Image.FromFile(overlayImageDir + cameraOverlayImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
             {
                 if (obj.ImagePath == null || obj.ImagePath == "")
                     continue;
 
-                using (var preLoad = Bitmap.FromFile(imageDir + obj.ImagePath))
+                using (var preLoad = Image.FromFile(imageDir + obj.ImagePath))
                 {
                     float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);
                     obj.Image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
@@ -716,7 +734,7 @@ namespace SM64_Diagnostic.Utilities
                 }
                 else
                 {
-                    using (var preLoad = Bitmap.FromFile(mapImageDir + obj.MapImagePath))
+                    using (var preLoad = Image.FromFile(mapImageDir + obj.MapImagePath))
                     {
                         float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);
                         obj.MapImage = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
