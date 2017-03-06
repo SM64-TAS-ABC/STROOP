@@ -69,6 +69,33 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool MoveObjects(ProcessStream stream, List<uint> objAddresses,
+            float xOffset, float yOffset, float zOffset)
+        {     
+            stream.Suspend();
+
+            // Move object to Mario
+            bool success = true;
+            foreach (var objAddress in objAddresses)
+            {
+                float x, y, z;
+                x = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+                y = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                z = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+
+                x += xOffset;
+                y += yOffset;
+                z += zOffset;
+
+                success &= stream.SetValue(x, objAddress + Config.ObjectSlots.ObjectXOffset);
+                success &= stream.SetValue(y, objAddress + Config.ObjectSlots.ObjectYOffset);
+                success &= stream.SetValue(z, objAddress + Config.ObjectSlots.ObjectZOffset);
+            }
+            stream.Resume();
+
+            return success;
+        }
+
         public static bool GoToObjectsHome(ProcessStream stream, List<uint> objAddresses)
         {
             // Move mario to object

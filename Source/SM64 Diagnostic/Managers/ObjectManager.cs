@@ -209,6 +209,41 @@ namespace SM64_Diagnostic.Managers
             objectGui.RetrieveButton.Click += RetreiveButton_Click;
             objectGui.GoToHomeButton.Click += GoToHomeButton_Click;
             objectGui.RetrieveHomeButton.Click += RetrieveHomeButton_Click;
+
+            objectGui.PosXnZnButton.Click += (sender, e) => PosXZButton_Click(sender, e, -1, -1);
+            objectGui.PosXnButton.Click += (sender, e) => PosXZButton_Click(sender, e, -1, 0);
+            objectGui.PosXnZpButton.Click += (sender, e) => PosXZButton_Click(sender, e, -1, 1);
+            objectGui.PosZnButton.Click += (sender, e) => PosXZButton_Click(sender, e, 0, -1);
+            objectGui.PosZpButton.Click += (sender, e) => PosXZButton_Click(sender, e, 0, 1);
+            objectGui.PosXpZnButton.Click += (sender, e) => PosXZButton_Click(sender, e, 1, -1);
+            objectGui.PosXpButton.Click += (sender, e) => PosXZButton_Click(sender, e, 1, 0);
+            objectGui.PosXpZpButton.Click += (sender, e) => PosXZButton_Click(sender, e, 1, 1);
+            objectGui.PosYnButton.Click += (sender, e) =>  PosYButton_Click(sender, e, -1);
+            objectGui.PosYpButton.Click += (sender, e) => PosYButton_Click(sender, e, 1);
+        }
+
+        private void PosYButton_Click(object sender, EventArgs e, int y)
+        {
+            if (_currentAddresses.Count == 0)
+                return;
+
+            float value;
+            if (!float.TryParse(_objGui.PosYTextbox.Text, out value))
+                return;
+
+            MarioActions.MoveObjects(_stream, CurrentAddresses, 0, y * value, 0);
+        }
+
+        private void PosXZButton_Click(object sender, EventArgs e, int x, int z)
+        {
+            if (_currentAddresses.Count == 0)
+                return;
+
+            float value;
+            if (!float.TryParse(_objGui.PosXZTextbox.Text, out value))
+                return;
+
+            MarioActions.MoveObjects(_stream, CurrentAddresses, x * value, 0, z * value);
         }
 
         private void AddressChanged()

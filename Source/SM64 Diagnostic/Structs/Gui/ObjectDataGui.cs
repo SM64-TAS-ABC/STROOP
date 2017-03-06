@@ -25,5 +25,18 @@ namespace SM64_Diagnostic.Structs
         public Label ObjSlotPositionLabel;
         public Label ObjAddressLabel;
         public Label ObjAddressLabelValue;
+
+        public Button PosXnZnButton;
+        public Button PosXnButton;
+        public Button PosXnZpButton;
+        public Button PosZnButton;
+        public Button PosZpButton;
+        public Button PosXpZnButton;
+        public Button PosXpButton;
+        public Button PosXpZpButton;
+        public Button PosYnButton;
+        public Button PosYpButton;
+        public TextBox PosXZTextbox;
+        public TextBox PosYTextbox;
     }
 }

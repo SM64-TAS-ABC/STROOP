@@ -131,7 +131,19 @@ namespace SM64_Diagnostic
                 RetrieveButton = buttonObjRetrieve,
                 GoToHomeButton = buttonObjGoToHome,
                 RetrieveHomeButton = buttonObjRetrieveHome,
-                UnloadButton = buttonObjUnload
+                UnloadButton = buttonObjUnload,
+                PosXnZnButton = buttonObjPosXnZn,
+                PosXnButton = buttonObjPosXn,
+                PosXnZpButton = buttonObjPosXnZp,
+                PosZnButton = buttonObjPosZn,
+                PosZpButton = buttonObjPosZp,
+                PosXpZnButton = buttonObjPosXpZn,
+                PosXpButton = buttonObjPosXp,
+                PosXpZpButton = buttonObjPosXpZp,
+                PosYnButton = buttonObjPosYn,
+                PosYpButton = buttonObjPosYp,
+                PosXZTextbox = textBoxObjPosXZ,
+                PosYTextbox = textBoxObjPosY
             };
             currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
 
