@@ -382,18 +382,8 @@ namespace SM64_Diagnostic.Utilities
                 newZ += (newZ >= 0) ? 0.5f : -0.5f;
             }
 
-            stream.Suspend();
-
-            // Move mario to triangle
-            bool success = true;
-            var marioAddress = Config.Mario.StructAddress;
-            success &= stream.SetValue(newX, marioAddress + Config.Mario.XOffset);
-            success &= stream.SetValue(newY, marioAddress + Config.Mario.YOffset);
-            success &= stream.SetValue(newZ, marioAddress + Config.Mario.ZOffset);
-
-            stream.Resume();
-
-            return success;
+            // Move mario to triangle (while in same Pu)
+            return PuUtilities.MoveToInCurrentPu(stream, newX, newY, newZ);
         }
 
         public static bool RetrieveTriangle(ProcessStream stream, uint triangleAddress)

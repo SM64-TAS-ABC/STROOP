@@ -37,6 +37,36 @@ namespace SM64_Diagnostic.Utilities
             return pu;
         }
 
+        public static bool MoveToInCurrentPu(ProcessStream stream, float x, float y, float z)
+        {
+            var marioAddress = Config.Mario.StructAddress;
+
+            x = GetRelativePuPosition(x);
+            y = GetRelativePuPosition(y);
+            z = GetRelativePuPosition(z);
+
+            float marioX, marioY, marioZ;
+            marioX = stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            marioY = stream.GetSingle(marioAddress + Config.Mario.YOffset);
+            marioZ = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
+
+            int curPuX, curPuY, curPuZ;
+            curPuX = GetPUFromCoord(marioX);
+            curPuY = GetPUFromCoord(marioY);
+            curPuZ = GetPUFromCoord(marioZ);
+
+            float newMarioX, newMarioY, newMarioZ;
+            newMarioX = x + curPuX * PuSize;
+            newMarioY = y + curPuY * PuSize;
+            newMarioZ = z + curPuZ * PuSize;
+
+            bool success = true;
+            success &= stream.SetValue(newMarioX, marioAddress + Config.Mario.XOffset);
+            success &= stream.SetValue(newMarioY, marioAddress + Config.Mario.YOffset);
+            success &= stream.SetValue(newMarioZ, marioAddress + Config.Mario.ZOffset);
+            return success;
+        }
+
         public static bool MoveToRelativePu(ProcessStream stream, int newPuX, int newPuY, int newPuZ)
         {
             var marioAddress = Config.Mario.StructAddress;
