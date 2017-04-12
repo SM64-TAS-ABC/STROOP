@@ -414,8 +414,8 @@ namespace SM64_Diagnostic.Utilities
             v2Y = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y2) + yOffset);
             v3Y = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y3) + yOffset);
 
-            short yMin = (short)(Math.Min(Math.Min(v1Y, v2Y), v3Y) + 5);
-            short yMax = (short)(Math.Max(Math.Max(v1Y, v2Y), v3Y) - 5);
+            short yMin = (short)(Math.Min(Math.Min(v1Y, v2Y), v3Y) - 5);
+            short yMax = (short)(Math.Max(Math.Max(v1Y, v2Y), v3Y) + 5);
 
             stream.Suspend();
 
