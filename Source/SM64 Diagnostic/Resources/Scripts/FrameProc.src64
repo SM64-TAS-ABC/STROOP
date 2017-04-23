@@ -16,6 +16,7 @@ Memory Table (0x803e0000)
 [1C - 1F] marioPrevX
 [20 - 23] marioPrevY
 [24 - 27] marioPrevZ
+[28 - 2B] marioHSpeed
 [30 + 8i] ushort objRngStartValue
 [32 + 8i] ushort objRngEndValue
 [34 + 8i] uint objAddress
@@ -62,6 +63,13 @@ AF 19 00 10
 AF 19 00 14
 8D F9 00 44
 AF 19 00 18
+
+// Save mario hspeed
+// LW t9, t7(0x54)
+// SW t9, t8(28)
+8D F9 00 54
+AF 19 00 28
+
 
 // [framePreviousValue = frameCurrentValue]
 // LHU t7, t8(0x0E)

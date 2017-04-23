@@ -43,6 +43,7 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("MovementZ"),
                 new DataContainer("MovementLateral"),
                 new DataContainer("Movment"),
+                new DataContainer("QFrameCountEstimate")
             };
         }
 
@@ -118,6 +119,14 @@ namespace SM64_Diagnostic.Managers
 
                     case "Movement":
                         (specialVar as DataContainer).Text = Math.Round(Math.Sqrt(movementX * movementX + movementY * movementY + movementZ * movementZ), 3).ToString();
+                        break;
+
+                    case "QFrameCountEstimate":
+                        var oldHSpeed = _stream.GetSingle(Config.RngRecordingAreaAddress + 0x28);
+                        var qframes = Math.Abs(Math.Round(Math.Sqrt(movementX * movementX + movementZ * movementZ) / (oldHSpeed / 4)));
+                        if (qframes > 4)
+                            qframes = double.NaN;
+                        (specialVar as DataContainer).Text = qframes.ToString();
                         break;
                 }
             }
