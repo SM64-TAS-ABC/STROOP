@@ -478,7 +478,7 @@ namespace SM64_Diagnostic.Managers
 
             for (int i = 0; i < numberOfRngObjs; i++)
             {
-                uint rngStructAdd = (uint)(Config.RngRecordingAreaAddress + 0x10 + 0x08 * i);
+                uint rngStructAdd = (uint)(Config.RngRecordingAreaAddress + 0x30 + 0x08 * i);
                 var address = _stream.GetUInt32(rngStructAdd + 0x04);
                 if (address != objAddress)
                     continue;
