@@ -53,6 +53,7 @@
   <Data special="true" specialType="FallHeight">Fall Height</Data>
   <Data type="sbyte" address="0x00C26CA7" absoluteAddress="true">Unsquishing Timer</Data>
   <Data type="ushort" address="0x00C26C0C" absoluteAddress="true">Squished Timer</Data>
+  <Data type="byte" address="0x00C19517" mask="0x01" absoluteAddress="true" isBool="true">Just Teleported</Data>
   <Data type="byte" address="0xc3b668" mask="0x40" absoluteAddress="true" isBool="true">Splash</Data>
   <Data type="byte" address="0xc3b668" mask="0x20" absoluteAddress="true" isBool="true">Bubble Spawner</Data>
   <Data type="byte" address="0xc3b668" mask="0x80" absoluteAddress="true" isBool="true">Stationary Water Wave</Data>
