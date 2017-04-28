@@ -383,6 +383,7 @@
     <Data type="int" address="0x180" objectOffset="true">Value</Data>
     <Data type="uint" address="0x1D4" objectOffset="true" useHex="true">Disappear Bhvr</Data>
     <Data type="int" address="0xF0" objectOffset="true">Spin Timer</Data>
+	<Data type="ushort" address="0x16" objectOffset="true">Shadow</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300091C" name="Blue Coin" gfxId="0x800F9464">
     <Image path="Blue Coin.png"/>
@@ -390,6 +391,7 @@
     <Data type="int" address="0x180" objectOffset="true">Value</Data>
     <Data type="uint" address="0x1D4" objectOffset="true" useHex="true">Disappear Bhvr</Data>
     <Data type="int" address="0xF0" objectOffset="true">Spin Timer</Data>
+	<Data type="ushort" address="0x16" objectOffset="true">Shadow</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300091C" name="Yellow Coin" gfxId="0x800F8AA4">
     <Image path="Yellow Coin.png"/>
@@ -397,6 +399,7 @@
     <Data type="int" address="0x180" objectOffset="true">Value</Data>
     <Data type="uint" address="0x1D4" objectOffset="true" useHex="true">Disappear Bhvr</Data>
     <Data type="int" address="0xF0" objectOffset="true">Spin Timer</Data>
+	<Data type="ushort" address="0x16" objectOffset="true">Shadow</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300091C" name="Yellow / Blue Coin">
     <Image path="Yellow Coin.png"/>
@@ -404,6 +407,7 @@
     <Data type="int" address="0x180" objectOffset="true">Value</Data>
     <Data type="uint" address="0x1D4" objectOffset="true" useHex="true">Disappear Bhvr</Data>
     <Data type="int" address="0xF0" objectOffset="true">Spin Timer</Data>
+	<Data type="ushort" address="0x16" objectOffset="true">Shadow</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000940" name="Temporary Coin">
     <Image path="Yellow Coin.png"/>
