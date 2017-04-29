@@ -254,7 +254,10 @@
   <Object behaviorScriptAddress="0x130007DC" name="Snow" gfxId="0x800F9328">
     <Image path="Snow.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130007DC" name="White Puff / Sand / Dirt / Snow">
+  <Object behaviorScriptAddress="0x130007DC" name="Bubble" gfxId="0x800F874C">
+    <Image path="Bubble.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130007DC" name="White Puff / Sand / Dirt / Snow / Bubble">
     <Image path="White Puff.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130007F8" name="Power Star">

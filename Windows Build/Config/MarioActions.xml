@@ -20,7 +20,7 @@
   <Action name="start crawling" value="0x0C008223" afterCloneValue="0x08000207" afterUncloneValue="0x0C008223" handsfreeValue="0x08000207"/>
   <Action name="stop crawling" value="0x0C008224" afterCloneValue="0x08000207" afterUncloneValue="0x0C008224" handsfreeValue="0x08000207"/>
   <Action name="punch / breakdance" value="0x00800380" afterCloneValue="0x08000207" afterUncloneValue="0x00800380" handsfreeValue="0x08000207"/>
-  <Action name="moving punch" value="0x00800457" afterCloneValue="0x08000207" afterUncloneValue="0x00800457" handsfreeValue="0x08000207"/>
+  <Action name="moving punch / breakdance" value="0x00800457" afterCloneValue="0x08000207" afterUncloneValue="0x00800457" handsfreeValue="0x08000207"/>
   <Action name="single jump" value="0x03000880" afterCloneValue="0x010008A1" afterUncloneValue="0x03000880" handsfreeValue="0x010008A1"/>
   <Action name="single jump landing (1/2)" value="0x04000470" afterCloneValue="0x08000207" afterUncloneValue="0x04000470" handsfreeValue="0x08000207"/>
   <Action name="single jump landing (2/2)" value="0x0C000230" afterCloneValue="0x08000207" afterUncloneValue="0x0C000230" handsfreeValue="0x08000207"/>
