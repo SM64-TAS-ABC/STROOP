@@ -10,8 +10,9 @@ Memory Table (0x803e0000)
 [8-B]: ushort nextObjRngValuesPtr
 [C-D]: ushort framePreviousValue 
 [E-F]: ushort frameCurrentValue
-[10 + 4i] ushort objRngStartValue
-[12 + 4i] ushort objRngEndValue
+[10 + 8i] ushort objRngStartValue
+[12 + 8i] ushort objRngEndValue
+[14 + 8i] uint objAddress
 
 currentRng = (ushort) *0x8038EEE0
 */

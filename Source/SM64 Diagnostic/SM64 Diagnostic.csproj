@@ -801,13 +801,13 @@
     <Content Include="Resources\Hacks\Camera45Hack.hck">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Scripts\RNGObjectEndProc.src64">
+    <None Include="Resources\Scripts\ObjectEndProc.src64">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Scripts\RNGObjectStartProc.src64">
+    <None Include="Resources\Scripts\ObjectStartProc.src64">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Scripts\RNGFrameProc.src64">
+    <None Include="Resources\Scripts\FrameProc.src64">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <EmbeddedResource Include="Schemas\ScriptsSchema.xsd">

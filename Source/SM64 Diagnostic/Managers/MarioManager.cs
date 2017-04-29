@@ -37,7 +37,13 @@ namespace SM64_Diagnostic.Managers
                 new AngleDataContainer("SlidingAngle"),
                 new DataContainer("FallHeight"),
                 new DataContainer("ActionDescription"),
-                new DataContainer("PrevActionDescription")
+                new DataContainer("PrevActionDescription"),
+                new DataContainer("MovementX"),
+                new DataContainer("MovementY"),
+                new DataContainer("MovementZ"),
+                new DataContainer("MovementLateral"),
+                new DataContainer("Movment"),
+                new DataContainer("QFrameCountEstimate")
             };
         }
 
@@ -46,8 +52,18 @@ namespace SM64_Diagnostic.Managers
             UInt32 floorTriangle = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
             var floorY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.GroundYOffset);
 
+            float hSpeed = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
+
             float slidingSpeedX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
             float slidingSpeedZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+
+            float movementX = (_stream.GetSingle(Config.RngRecordingAreaAddress + 0x10)
+                - _stream.GetSingle(Config.RngRecordingAreaAddress + 0x1C));
+            float movementY = (_stream.GetSingle(Config.RngRecordingAreaAddress + 0x14)
+                - _stream.GetSingle(Config.RngRecordingAreaAddress + 0x20));
+            float movementZ = (_stream.GetSingle(Config.RngRecordingAreaAddress + 0x18)
+                - _stream.GetSingle(Config.RngRecordingAreaAddress + 0x24));
+
             foreach (var specialVar in _specialWatchVars)
             {
                 switch(specialVar.SpecialName)
@@ -55,7 +71,6 @@ namespace SM64_Diagnostic.Managers
                     case "DeFactoSpeed":
                         if (floorTriangle != 0x00)
                         {
-                            float hSpeed = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
                             float normY = _stream.GetSingle(floorTriangle + Config.TriangleOffsets.NormY);
                             (specialVar as DataContainer).Text = Math.Round(hSpeed * normY, 3).ToString();
                         }
@@ -84,6 +99,34 @@ namespace SM64_Diagnostic.Managers
 
                     case "PrevActionDescription":
                         (specialVar as DataContainer).Text = Config.MarioActions.GetActionName(_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset));
+                        break;
+
+                    case "MovementX":
+                        (specialVar as DataContainer).Text = movementX.ToString();
+                        break;
+
+                    case "MovementY":
+                        (specialVar as DataContainer).Text = movementY.ToString();
+                        break;
+
+                    case "MovementZ":
+                        (specialVar as DataContainer).Text = movementZ.ToString();
+                        break;
+
+                    case "MovementLateral":
+                        (specialVar as DataContainer).Text = Math.Round(Math.Sqrt(movementX * movementX + movementZ * movementZ),3).ToString();
+                        break;
+
+                    case "Movement":
+                        (specialVar as DataContainer).Text = Math.Round(Math.Sqrt(movementX * movementX + movementY * movementY + movementZ * movementZ), 3).ToString();
+                        break;
+
+                    case "QFrameCountEstimate":
+                        var oldHSpeed = _stream.GetSingle(Config.RngRecordingAreaAddress + 0x28);
+                        var qframes = Math.Abs(Math.Round(Math.Sqrt(movementX * movementX + movementZ * movementZ) / (oldHSpeed / 4)));
+                        if (qframes > 4)
+                            qframes = double.NaN;
+                        (specialVar as DataContainer).Text = qframes.ToString();
                         break;
                 }
             }
