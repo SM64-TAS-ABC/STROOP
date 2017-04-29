@@ -11,11 +11,17 @@
   <Data type="byte" address="0x00C2754A" absoluteAddress="true">Mission Layout</Data>
   <Data type="byte" address="0x00C1D0A3" absoluteAddress="true">Mission Name</Data>
   <Data type="byte" address="0x00C19807" absoluteAddress="true">Star Collected</Data>
-  <Data type="byte" address="0x80222618" isBool="true" mask="0x20" invertBool="true">Music On</Data>
-  <Data type="float" address ="0x80222630">Volume</Data>
   <Data type="byte" address="0x8033B249">Level</Data>
   <Data type="byte" address="0x8033B24A">Area</Data>
   <Data type="ushort" address="0x8033BACA">Loading Point</Data>
+  <Data type="short" address="0x00C26CBA" absoluteAddress="true">Transition State</Data>
+  <Data type="short" address="0x00C27532" absoluteAddress="true">Transition Type</Data>
+  <Data type="byte" address="0x00C1C943" absoluteAddress="true">Transition Progress</Data>
+  <Data type="short" address="0x00C26CBE" absoluteAddress="true">Transition Black Fade</Data>
+  <Data type="short" address="0x00C77326" absoluteAddress="true">Transition White Fade</Data>
+  <Data type="short" address="0x00C26CD6" absoluteAddress="true">Transition Shrinking</Data>
+  <Data type="byte" address="0x80222618" isBool="true" mask="0x20" invertBool="true">Music On</Data>
+  <Data type="float" address ="0x80222630">Volume</Data>
   <Data type="byte" address="0x00C19817" absoluteAddress="true" isBool="true">Special Triple Jump</Data>
   <Data type="byte" address="0x00C1E09B" absoluteAddress="true" isBool="true">Talked to Yoshi</Data>
   <Data type="byte" address="0x00C26CED" absoluteAddress="true" isBool="true">Never Entered Castle</Data>
