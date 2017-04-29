@@ -11,6 +11,7 @@ using System.Threading;
 using System.IO;
 using System.ComponentModel;
 using SM64_Diagnostic.Structs.Configurations;
+using System.Collections.Concurrent;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -37,8 +38,8 @@ namespace SM64_Diagnostic.Utilities
         public bool Readonly = true;
         public bool ShowWarning = true;
 
-        public Dictionary<WatchVariableLock, WatchVariableLock> LockedVariables = 
-            new Dictionary<WatchVariableLock, WatchVariableLock>();
+        public ConcurrentDictionary<WatchVariableLock, WatchVariableLock> LockedVariables = 
+            new ConcurrentDictionary<WatchVariableLock, WatchVariableLock>();
 
         public uint ProcessMemoryOffset
         {

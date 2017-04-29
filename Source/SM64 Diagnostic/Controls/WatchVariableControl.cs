@@ -636,11 +636,14 @@ namespace SM64_Diagnostic.Controls
             return GetVariableLock(offset) != null;
         }
 
-        private void RemoveLock(uint offset)
+        private bool RemoveLock(uint offset)
         {
+            WatchVariableLock removed;
             var lockedVar = GetVariableLock(offset);
             if (lockedVar != null)
-                _stream.LockedVariables.Remove(lockedVar);
+                return _stream.LockedVariables.TryRemove(lockedVar, out removed);
+
+            return true;
         }
 
         private void LockUpdate(uint offset, byte[] lockedBytes = null)
