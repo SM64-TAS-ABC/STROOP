@@ -176,7 +176,6 @@
     <Image path="Chuckya.png"/>
 	  <MapImage path="Chuckya Top.png" rotates="true"/>
     <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
-    <Data type="int" address="0x9C" objectOffset="true">Tangible</Data>
     <Data type="int" address="0x150" objectOffset="true">Phase</Data>
     <Data type="int" address="0xFC" objectOffset="true">Stopping </Data>
     <Data type="int" address="0x178" objectOffset="true">Throwing Phase</Data>
@@ -385,7 +384,6 @@
     <Data type="int" address="0x9C" objectOffset="true">Collectable</Data>
     <Data type="int" address="0x180" objectOffset="true">Value</Data>
     <Data type="uint" address="0x1D4" objectOffset="true" useHex="true">Disappear Bhvr</Data>
-    <Data type="int" address="0xF0" objectOffset="true">Spin Timer</Data>
 	<Data type="ushort" address="0x16" objectOffset="true">Shadow</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300091C" name="Blue Coin" gfxId="0x800F9464">
@@ -393,7 +391,6 @@
     <Data type="int" address="0x9C" objectOffset="true">Collectable</Data>
     <Data type="int" address="0x180" objectOffset="true">Value</Data>
     <Data type="uint" address="0x1D4" objectOffset="true" useHex="true">Disappear Bhvr</Data>
-    <Data type="int" address="0xF0" objectOffset="true">Spin Timer</Data>
 	<Data type="ushort" address="0x16" objectOffset="true">Shadow</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300091C" name="Yellow Coin" gfxId="0x800F8AA4">
@@ -401,7 +398,6 @@
     <Data type="int" address="0x9C" objectOffset="true">Collectable</Data>
     <Data type="int" address="0x180" objectOffset="true">Value</Data>
     <Data type="uint" address="0x1D4" objectOffset="true" useHex="true">Disappear Bhvr</Data>
-    <Data type="int" address="0xF0" objectOffset="true">Spin Timer</Data>
 	<Data type="ushort" address="0x16" objectOffset="true">Shadow</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300091C" name="Yellow / Blue Coin">
@@ -409,7 +405,6 @@
     <Data type="int" address="0x9C" objectOffset="true">Collectable</Data>
     <Data type="int" address="0x180" objectOffset="true">Value</Data>
     <Data type="uint" address="0x1D4" objectOffset="true" useHex="true">Disappear Bhvr</Data>
-    <Data type="int" address="0xF0" objectOffset="true">Spin Timer</Data>
 	<Data type="ushort" address="0x16" objectOffset="true">Shadow</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000940" name="Temporary Coin">
@@ -429,7 +424,6 @@
     <Data type="int" address="0x9C" objectOffset="true">Collectable</Data>
     <Data type="int" address="0x180" objectOffset="true">Value</Data>
     <Data type="uint" address="0x1D4" objectOffset="true" useHex="true">Disappear Bhvr</Data>
-    <Data type="int" address="0xF0" objectOffset="true">Spin Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130009E0" name="Sparkles (Big)">
     <Image path="Sparkles (Big).png"/>
@@ -592,15 +586,12 @@
   <Object behaviorScriptAddress="0x13000C84" name="Wall Flame">
     <SpawnCode gfxId="0x90"/>
     <Image path="Orange Flame.png"/>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000C84" name="Orange Wall Flame" gfxId="0x800F8CC8">
     <Image path="Orange Flame.png"/>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000C84" name="Blue Wall Flame" gfxId="0x800F8DBC">
     <Image path="Blue Flame.png"/>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000CFC" name="RR Elevator Platform">
     <Image path="RR Elevator Platform.png"/>
@@ -716,7 +707,6 @@
   </Object>
   <Object behaviorScriptAddress="0x13001124" name="Flame">
     <Image path="Orange Flame.png"/>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001168" name="Orange Podoboo Spawner">
     <SpawnCode gfxId="0x00"/>
@@ -725,7 +715,6 @@
   <Object behaviorScriptAddress="0x13001184" name="Orange Podoboo Flame">
     <SpawnCode gfxId="0x90"/>
     <Image path="Orange Flame.png"/>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x130011D0" name="Shockwave">
     <SpawnCode gfxId="0x68"/>
@@ -806,17 +795,21 @@
     <Image path="Hidden Wooden Block.png"/>
 	  <MapImage path="Hidden Wooden Block Top.png" rotates="true"/>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Tangible</Data>
+	<Data type="uint" address="0xF4" objectOffset="true" useHex="true" isObject="true">Switch Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x130014BC" name="Hidden Cork Box">
     <Image path="Cork Box.png"/>
 	  <MapImage path="Cork Box Top.png" rotates="true"/>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Tangible</Data>
+	<Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
+	<Data type="uint" address="0xF4" objectOffset="true" useHex="true" isObject="true">Switch Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x130014E0" name="Cork Box">
     <SpawnCode gfxId="0x81"/>
     <Image path="Cork Box.png"/>
 	  <MapImage path="Cork Box Top.png" rotates="true"/>
     <Data type="int" address="0x198" objectOffset="true">Num Coins</Data>
+	<Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001518" name="Pushable Block">
     <SpawnCode gfxId="0xD9"/>
@@ -838,6 +831,7 @@
     <Image path="Crazy Box.png"/>
 	  <MapImage path="Crazy Box Top.png" rotates="true"/>
     <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+	<Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300167C" name="Boo Cage">
     <Image path="Boo Cage.png"/>
@@ -910,20 +904,16 @@
   </Object>
   <Object behaviorScriptAddress="0x13001984" name="Flame Breath">
     <Image path="Flame Breath.png"/>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x130019C8" name="Falling Flame">
     <Image path="Orange Falling Flame.png"/>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x130019C8" name="Orange Falling Flame" gfxId="0x800F8CC8">
     <Image path="Orange Falling Flame.png"/>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x130019C8" name="Blue Falling Flame" gfxId="0x800F8DBC">
     <SpawnCode gfxId="0x91"/>
     <Image path="Blue Falling Flame.png"/>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001A0C" name="Blue Podoboo Spawner">
     <Image path="Podoboo Blue Spawner.png"/>
@@ -931,21 +921,17 @@
   <Object behaviorScriptAddress="0x13001A30" name="Blue Podoboo Flame">
     <SpawnCode gfxId="0x91"/>
     <Image path="Blue Flame.png"/>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001A74" name="Flame Breath">
     <SpawnCode gfxId="0x90"/>
     <Image path="Flame Breath.png"/>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001AA4" name="Blown Flame">
     <SpawnCode gfxId="0x90"/>
     <Image path="Orange Flame.png"/>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001AE8" name="Landed Flame">
     <Image path="Orange Flame.png"/>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001B2C" name="Aquarium Fish">
     <Image path="Blue Fish.png"/>
@@ -1489,7 +1475,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13002588" name="Blue Coin">
     <Image path="Blue Coin.png"/>
-    <Data type="int" address="0xF0" objectOffset="true">Spin Timer</Data>
+    <Data type="uint" address="0xF8" objectOffset="true" useHex="true" isObject="true">Block Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x130025C0" name="Openable Gate">
     <Image path="Openable Gate BoB.png"/>
@@ -1503,10 +1489,12 @@
   <Object behaviorScriptAddress="0x130025E0" name="BoB Openable Gate Manager" subType="0">
     <Image path="Openable Gate Manager BoB.png"/>
     <Data type="byte" address="0x8B" mask="0x02" objectOffset="true" isBool="true">Opening</Data>
+    <Data type="uint" address="0xF4" objectOffset="true" useHex="true" isObject="true">Switch Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x130025E0" name="HMC Openable Gate Manager" subType="1">
     <Image path="Openable Gate Manager HMC.png"/>
     <Data type="byte" address="0x8B" mask="0x02" objectOffset="true" isBool="true">Opening</Data>
+    <Data type="uint" address="0xF4" objectOffset="true" useHex="true" isObject="true">Switch Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x130025F8" name="Crystal Tap">
     <SpawnCode gfxId="0x38"/>
@@ -1628,6 +1616,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13002A7C" name="BitDW Trap Door">
     <Image path="BitDW Trap Door.png"/>
+    <Data type="uint" address="0x68" objectOffset="true" useHex="true" isObject="true">Manager Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Tree">
     <SpawnCode gfxId="0x17"/>
@@ -1946,7 +1935,7 @@
     <Data type="uint" address="0xFC" objectOffset="true" useHex="true">Spawn Obj Behavior</Data>
     <Data type="byte" address="0x18A" objectOffset="true" isBool="true" invertBool="true">Bob-omb Has Coin</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300362C" name="Bully">
+  <Object behaviorScriptAddress="0x1300362C" name="Small Bully">
     <Image path="Bully.png"/>
 	  <MapImage path="Bully Top.png" rotates="true"/>
   </Object>
@@ -1957,6 +1946,11 @@
   <Object behaviorScriptAddress="0x13003694" name="Big Bully (After Triplets)">
     <Image path="Big Bully.png"/>
 	  <MapImage path="Big Bully Top.png" rotates="true"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130036C8" name="Small Chill Bully">
+    <SpawnCode gfxId="0x64"/>
+    <Image path="Chill Bully.png"/>
+	  <MapImage path="Chill Bully Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003700" name="Chill Bully">
     <SpawnCode gfxId="0x65"/>
@@ -2037,7 +2031,6 @@
   <Object behaviorScriptAddress="0x130039D4" name="Moneybag Coin">
     <Image path="Moneybag Coin.png"/>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Transforming</Data>
-    <Data type="int" address="0xF0" objectOffset="true">Spin Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003A08" name="Bowling Ball">
     <Image path="Bowling Ball.png"/>
@@ -2169,7 +2162,6 @@
   <Object behaviorScriptAddress="0x13003EAC" name="Red Coin">
     <SpawnCode gfxId="0xD7"/>
     <Image path="Red Coin.png"/>
-    <Data type="int" address="0xF0" objectOffset="true">Spin Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003EE4" name="Red Coin Star Spawner">
     <Image path="Red Coin Star Spawner.png"/>
@@ -2247,6 +2239,7 @@
     <Data type="byte" address="0x74" mask="0x02" objectOffset="true" isBool="true" invertBool="true">Active Hurtbox</Data>
     <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Touching</Data>
     <Data type="byte" address="0xF7" objectOffset="true" isBool="true">Has Moved</Data>
+	<Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
     <Data type="int" address="0xFC" objectOffset="true">Box Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004244" name="Sliding Snow Mound">
@@ -2964,7 +2957,6 @@
   <Object behaviorScriptAddress="0x13005158" name="Fire">
     <Image path="Fire.png"/>
 	<Data type="byte" address="0x157" objectOffset="true">Residual Fire Timer</Data>
-    <Data type="byte" address="0xF3" objectOffset="true">Appearance</Data>
     <Data type="float" address="0x104" objectOffset="true">Lifespan Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300518C" name="Fire Spitter">

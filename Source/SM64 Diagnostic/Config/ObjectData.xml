@@ -37,8 +37,10 @@
   <Data type="byte" address="0x3" mask="0x01" objectOffset="true" isBool="true">Rendered</Data>
   <Data type="byte" address="0x3" mask="0x04" objectOffset="true" isBool="true">Face Camera</Data>
   <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Close</Data>
+  <Data type="int" address="0x9C" objectOffset="true">Tangible</Data>
   <Data type="uint" address="0x3C" objectOffset="true" useHex="true">Animation</Data>
   <Data type="short" address="0x40" objectOffset="true">Animation Timer</Data>
+  <Data type="int" address="0xF0" objectOffset="true">Graphics Timer</Data>
   <Data type="float" address="0x2C" objectOffset="true">Scale (Width)</Data>
   <Data type="float" address="0x30" objectOffset="true">Scale (Height)</Data>
   <Data type="float" address="0x34" objectOffset="true">Scale (Depth)</Data>

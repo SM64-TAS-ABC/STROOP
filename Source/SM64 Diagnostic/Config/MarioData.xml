@@ -42,7 +42,6 @@
   <Data type="uint" address="0x04" marioOffset="true" isBool="true" mask="0x04">Metal Cap</Data>
   <Data type="uint" address="0x04" marioOffset="true" isBool="true" mask="0x02">Vanish Cap</Data>
   <Data type="uint" address="0x04" marioOffset="true" isBool="true" mask="0x01">Should Have Hat</Data>
-  <Data type="uint" address="0x04" marioOffset="true" isBool="true" mask="0x80">Distorted Culling</Data>
   <Data type="ushort" address="0x00C26CA4" absoluteAddress="true">Cap Timer</Data>
   <Data type="uint" address="0x00C26BFC" absoluteAddress="true" useHex="true">Action</Data>
   <Data special="true" specialType="ActionDescription">Action Description</Data>
