@@ -136,7 +136,6 @@
   <Data type="byte" address="0x00AF318F" absoluteAddress="true" isBool="true" mask="0x10">BoB: Mario Wings to the Sky</Data>
   <Data type="byte" address="0x00AF318F" absoluteAddress="true" isBool="true" mask="0x20">BoB: Behind Chain Chomp's Gate</Data>
   <Data type="byte" address="0x00AF318F" absoluteAddress="true" isBool="true" mask="0x40">BoB: 100 Coins</Data>
-  <Data type="byte" address="0x00AF318F" absoluteAddress="true" isBool="true" mask="0x80">BoB: ????</Data>
   
   <Data type="byte" address="0x00AF318E" absoluteAddress="true" isBool="true" mask="0x01">WF: Chip Off Whomp's Block</Data>
   <Data type="byte" address="0x00AF318E" absoluteAddress="true" isBool="true" mask="0x02">WF: To the Top of the Fortress</Data>
