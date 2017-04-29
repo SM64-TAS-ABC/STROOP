@@ -10,10 +10,16 @@
   <Data type="byte" address="0x00a93c27" absoluteAddress="true">Mission Selected</Data>
   <Data type="byte" address="0x00C2754A" absoluteAddress="true">Mission Layout</Data>
   <Data type="byte" address="0x00C1D0A3" absoluteAddress="true">Mission Name</Data>
-  <Data type="byte" address="0x00C19807" absoluteAddress="true">Star Collected</Data>
+  <Data type="byte" address="0x00C19807" absoluteAddress="true">Last Star</Data>
+  <Data type="byte" address="0x00C19803" absoluteAddress="true">Last Star Course</Data>
+  <Data type="byte" address="0xc1cf13" absoluteAddress="true">Selection Index</Data>
   <Data type="byte" address="0x8033B249">Level</Data>
   <Data type="byte" address="0x8033B24A">Area</Data>
   <Data type="ushort" address="0x8033BACA">Loading Point</Data>
+  <Data type="uint" address="0x00C26F20" absoluteAddress="true" useHex="true">Last Area</Data>
+  <Data type="byte" address="0x00C26F27" absoluteAddress="true">Last Area Entrance</Data>
+  <Data type="short" address="0x00C2754E" absoluteAddress="true">Last Course</Data>
+  <Data type="short" address="0x00C1987A" absoluteAddress="true">Stage Select Index</Data>
   <Data type="short" address="0x00C26CBA" absoluteAddress="true">Transition State</Data>
   <Data type="short" address="0x00C27532" absoluteAddress="true">Transition Type</Data>
   <Data type="byte" address="0x00C1C943" absoluteAddress="true">Transition Progress</Data>
@@ -29,27 +35,26 @@
   <Data type="byte" address="0x00C19076" absoluteAddress="true">Demo Counter</Data>
   <Data type="short" address="0xa936b2" absoluteAddress="true">Demo Timer</Data>
   <Data type="byte" address="0x00B125FC" absoluteAddress="true">Sound Selection</Data>
-  <Data type="byte" address="0xc1cf13" absoluteAddress="true">Arrow Selection</Data>
   <Data type="short" address="0xa9379e" absoluteAddress="true">Hand X</Data>
   <Data type="short" address="0xa937a2" absoluteAddress="true">Hand Y</Data>
   <Data type="ushort" address="0x00C4CCDA" absoluteAddress="true">TTC Speed Setting</Data>
   <Data type="byte" address="0x00C341B0" absoluteAddress="true">BBH 'Go Round Boo Cnt</Data>
 
-  <Data type="byte" address="0x00AF318F" absoluteAddress="true" color="#ccfffa">BoB Stars</Data>
-  <Data type="byte" address="0x00AF318E" absoluteAddress="true" color="#ccfffa">WF Stars</Data>
-  <Data type="byte" address="0x00AF318D" absoluteAddress="true" color="#ccfffa">JRB Stars</Data>
-  <Data type="byte" address="0x00AF318C" absoluteAddress="true" color="#ccfffa">CCM Stars</Data>
-  <Data type="byte" address="0x00AF3193" absoluteAddress="true" color="#ccfffa">BBH Stars</Data>
-  <Data type="byte" address="0x00AF3192" absoluteAddress="true" color="#ccfffa">HMC Stars</Data>
-  <Data type="byte" address="0x00AF3191" absoluteAddress="true" color="#ccfffa">LLL Stars</Data>
-  <Data type="byte" address="0x00AF3190" absoluteAddress="true" color="#ccfffa">SSL Stars</Data>
-  <Data type="byte" address="0x00AF3197" absoluteAddress="true" color="#ccfffa">DDD Stars</Data>
-  <Data type="byte" address="0x00AF3196" absoluteAddress="true" color="#ccfffa">SL Stars</Data>
-  <Data type="byte" address="0x00AF3195" absoluteAddress="true" color="#ccfffa">WDW Stars</Data>
-  <Data type="byte" address="0x00AF3194" absoluteAddress="true" color="#ccfffa">TTM Stars</Data>
-  <Data type="byte" address="0x00AF319B" absoluteAddress="true" color="#ccfffa">THI Stars</Data>
-  <Data type="byte" address="0x00AF319A" absoluteAddress="true" color="#ccfffa">TTC Stars</Data>
-  <Data type="byte" address="0x00AF3199" absoluteAddress="true" color="#ccfffa">RR Stars</Data>
+  <Data type="byte" address="0x00AF318F" absoluteAddress="true" mask="0x7F" color="#ccfffa">BoB Stars</Data>
+  <Data type="byte" address="0x00AF318E" absoluteAddress="true" mask="0x7F" color="#ccfffa">WF Stars</Data>
+  <Data type="byte" address="0x00AF318D" absoluteAddress="true" mask="0x7F" color="#ccfffa">JRB Stars</Data>
+  <Data type="byte" address="0x00AF318C" absoluteAddress="true" mask="0x7F" color="#ccfffa">CCM Stars</Data>
+  <Data type="byte" address="0x00AF3193" absoluteAddress="true" mask="0x7F" color="#ccfffa">BBH Stars</Data>
+  <Data type="byte" address="0x00AF3192" absoluteAddress="true" mask="0x7F" color="#ccfffa">HMC Stars</Data>
+  <Data type="byte" address="0x00AF3191" absoluteAddress="true" mask="0x7F" color="#ccfffa">LLL Stars</Data>
+  <Data type="byte" address="0x00AF3190" absoluteAddress="true" mask="0x7F" color="#ccfffa">SSL Stars</Data>
+  <Data type="byte" address="0x00AF3197" absoluteAddress="true" mask="0x7F" color="#ccfffa">DDD Stars</Data>
+  <Data type="byte" address="0x00AF3196" absoluteAddress="true" mask="0x7F" color="#ccfffa">SL Stars</Data>
+  <Data type="byte" address="0x00AF3195" absoluteAddress="true" mask="0x7F" color="#ccfffa">WDW Stars</Data>
+  <Data type="byte" address="0x00AF3194" absoluteAddress="true" mask="0x7F" color="#ccfffa">TTM Stars</Data>
+  <Data type="byte" address="0x00AF319B" absoluteAddress="true" mask="0x7F" color="#ccfffa">THI Stars</Data>
+  <Data type="byte" address="0x00AF319A" absoluteAddress="true" mask="0x7F" color="#ccfffa">TTC Stars</Data>
+  <Data type="byte" address="0x00AF3199" absoluteAddress="true" mask="0x7F" color="#ccfffa">RR Stars</Data>
 
   <Data type="byte" address="0x00AF31A3" absoluteAddress="true" isBool="true" mask="0x01" color="#ccd0ff">TotWC Star</Data>
   <Data type="byte" address="0x00AF31A2" absoluteAddress="true" isBool="true" mask="0x01" color="#ccd0ff">VCutM Star</Data>
@@ -131,6 +136,7 @@
   <Data type="byte" address="0x00AF318F" absoluteAddress="true" isBool="true" mask="0x10">BoB: Mario Wings to the Sky</Data>
   <Data type="byte" address="0x00AF318F" absoluteAddress="true" isBool="true" mask="0x20">BoB: Behind Chain Chomp's Gate</Data>
   <Data type="byte" address="0x00AF318F" absoluteAddress="true" isBool="true" mask="0x40">BoB: 100 Coins</Data>
+  <Data type="byte" address="0x00AF318F" absoluteAddress="true" isBool="true" mask="0x80">BoB: ????</Data>
   
   <Data type="byte" address="0x00AF318E" absoluteAddress="true" isBool="true" mask="0x01">WF: Chip Off Whomp's Block</Data>
   <Data type="byte" address="0x00AF318E" absoluteAddress="true" isBool="true" mask="0x02">WF: To the Top of the Fortress</Data>
