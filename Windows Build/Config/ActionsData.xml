@@ -1,4 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ActionsData>
-  
+  <Data type="uint" address="0x00C26BFC" absoluteAddress="true" useHex="true">Action</Data>
+  <Data special="true" specialType="ActionDescription">Action Description</Data>
+  <Data type="uint" address="0x00C26C00" absoluteAddress="true" useHex="true">Previous Action</Data>
+  <Data special="true" specialType="PrevActionDescription">Prev. Action Desc.</Data>
+  <Data type="short" address="0x00C26C0A" absoluteAddress="true">Action Phase</Data>
+  <Data type="short" address="0x00C26C08" absoluteAddress="true">Action Timer</Data>
+  <Data type="short" address="0xc27df8" absoluteAddress="true">Animation Timer</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x80">b00 throwing?</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x40">b01 (never)</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x20">b02 water stuff?</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x10">b03 water/twirl?</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x08">b04 pause exit</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x04">b05 ground stuff?</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x02">b06 jumps?</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x01">b07 air?</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x80">b08 attacking</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x40">b09 standing still</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x20">b10 hanging on ceiling</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x10">b11 holding pole</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x08">b12 horizontal</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x04">b13 sitting/sliding</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x02">b14 hurt</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x01">b15 riding shell</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x80">b16 small hitbox?</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x40">b17 metal</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x20">b18 water</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x10">b19 no control</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x08">b20 invincible2?</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x04">b21 transitioning?</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x02">b22 invincible?</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x01">b23 using hands?</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x80">b24</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x40">b25</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x20">b26</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x10">b27</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x08">b28</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x04">b29</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x02">b30</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x01">b31</Data>
 </ActionsData>
