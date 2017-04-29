@@ -26,17 +26,14 @@
   <Data type="short" address="0xc281ba" absoluteAddress="true">Yaw Shake Speed</Data>
   <Data type="short" address="0xc281b8" absoluteAddress="true">Yaw Shake Decrease</Data>
   <Data type="short" address="0xc281b4" absoluteAddress="true">Yaw Shake Osc.</Data>
-  <Data type="short" address="0xc28198" absoluteAddress="true">Yaw Shake Angle</Data>
   <Data type="short" address="0xc28168" absoluteAddress="true">Pitch Shake</Data>
   <Data type="short" address="0xc28170" absoluteAddress="true">Pitch Shake Speed</Data>
   <Data type="short" address="0xc28176" absoluteAddress="true">Pitch Shake Decrease</Data>
   <Data type="short" address="0xc28172" absoluteAddress="true">Pitch Shake Osc.</Data>
-  <Data type="short" address="0xc28198" absoluteAddress="true">Pitch Shake Angle</Data>
   <Data type="short" address="0xc2816c" absoluteAddress="true">Roll Shake</Data>
   <Data type="short" address="0xc281b0" absoluteAddress="true">Roll Shake Speed</Data>
   <Data type="short" address="0xc281b6" absoluteAddress="true">Roll Shake Decrease</Data>
   <Data type="short" address="0xc281b2" absoluteAddress="true">Roll Shake Osc.</Data>
-  <Data type="short" address="0xc28190" absoluteAddress="true">Roll Shake Angle</Data>
   <Data type="short" address="0xc28156" absoluteAddress="true">Camera Mode</Data>
   <Data type="uint" address="0x00C199B0" absoluteAddress="true" useHex="true" isObject="true">Secondary Object</Data>
 </CameraData>

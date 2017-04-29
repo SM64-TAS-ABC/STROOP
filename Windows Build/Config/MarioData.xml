@@ -61,4 +61,37 @@
   <Data type="int" address="0x009DC4DC" absoluteAddress="true">Blinking State</Data>
   <Data type="short" address="0x00C1998A" absoluteAddress="true">Blinking Timer</Data>
   <Data type="uint" address="0x00C4CBD8" absoluteAddress="true" useHex="true" isObject="true">Mario Object</Data>
+  
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x01">b00 air?</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x02">b01 jumps?</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x04">b02 ground stuff?</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x08">b03 pause exit</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x10">b04 water/twirl?</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x20">b05 water stuff?</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x40">b06 (never)</Data>
+  <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x80">b07 throwing?</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x01">b08 riding shell</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x02">b09 hurt</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x04">b10 sitting/sliding</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x08">b11 horizontal</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x10">b12 holding pole</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x20">b13 hanging on ceiling</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x40">b14 standing still</Data>
+  <Data type="byte" address="0x00C26BFE" absoluteAddress="true" isBool="true" mask="0x80">b15 attacking</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x01">b16 using hands?</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x02">b17 invincible?</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x04">b18 transitioning?</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x08">b19 invincible2?</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x10">b20 no control</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x20">b21 water</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x40">b22 metal</Data>
+  <Data type="byte" address="0x00C26BFD" absoluteAddress="true" isBool="true" mask="0x80">b23 small hitbox?</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x01">b24</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x02">b25</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x04">b26</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x08">b27</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x10">b28</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x20">b29</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x40">b30</Data>
+  <Data type="byte" address="0x00C26BFC" absoluteAddress="true" isBool="true" mask="0x80">b31</Data>
 </MarioData>
