@@ -23,7 +23,7 @@ namespace SM64_Diagnostic
         ProcessStream _sm64Stream = null;
 
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
-        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData;
+        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, _actionsData, _waterData;
         ObjectAssociations _objectAssoc;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
@@ -45,6 +45,7 @@ namespace SM64_Diagnostic
         HackManager _hackManager;
         TriangleManager _triangleManager;
         DebugManager _debugManager;
+        DataManager _actionsManager, _waterManager;
 
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
@@ -107,6 +108,8 @@ namespace SM64_Diagnostic
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
             currentContext.MapManager = _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
 
+            currentContext.ActionsManager = _actionsManager = new DataManager(_sm64Stream, _actionsData, noTearFlowLayoutPanelActions);
+            currentContext.WaterManager = _waterManager = new DataManager(_sm64Stream, _waterData, noTearFlowLayoutPanelWater);
             currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
             currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
             currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc, groupBoxPuController);
@@ -222,6 +225,10 @@ namespace SM64_Diagnostic
             _marioData = XmlConfigParser.OpenWatchVarData(@"Config/MarioData.xml", "MarioDataSchema.xsd", "marioOffset");
             loadingForm.UpdateStatus("Loading Camera Data", statusNum++);
             _cameraData = XmlConfigParser.OpenWatchVarData(@"Config/CameraData.xml", "CameraDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading Actions Data", statusNum++);
+            _actionsData = XmlConfigParser.OpenWatchVarData(@"Config/ActionsData.xml", "MiscDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading Water Data", statusNum++);
+            _waterData = XmlConfigParser.OpenWatchVarData(@"Config/WaterData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
             _triangleData = XmlConfigParser.OpenWatchVarData(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd", "triangleOffset");
             loadingForm.UpdateStatus("Loading Triangles Data", statusNum++);
@@ -263,6 +270,8 @@ namespace SM64_Diagnostic
                 _marioManager.Update(tabControlMain.SelectedTab == tabPageMario);
                 _cameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
                 _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
+                _actionsManager.Update(tabControlMain.SelectedTab == tabPageActions);
+                _waterManager.Update(tabControlMain.SelectedTab == tabPageWater);
                 _miscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
                 _triangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
                 _debugManager.Update(tabControlMain.SelectedTab == tabPageDebug);

@@ -23,5 +23,7 @@ namespace SM64_Diagnostic.Managers
         public OptionsManager OptionsManager;
         public ScriptManager ScriptManager;
         public TriangleManager TriangleManager;
+        public DataManager WaterManager;
+        public DataManager ActionsManager;
     }
 }
