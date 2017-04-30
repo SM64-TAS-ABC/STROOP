@@ -61,5 +61,6 @@
   <Data type="byte" address="0xc3b668" mask="0x80" absoluteAddress="true" isBool="true">Stationary Water Wave</Data>
   <Data type="int" address="0x009DC4DC" absoluteAddress="true">Blinking State</Data>
   <Data type="short" address="0x00C1998A" absoluteAddress="true">Blinking Timer</Data>
-  <Data type="uint" address="0x00C4CBD8" absoluteAddress="true" useHex="true" isObject="true">Mario Object</Data>
+  <Data type="uint" address="0x00C4CBD8" absoluteAddress="true" useHex="true" isObject="true">Effective Mario Object</Data>
+  <Data type="uint" address="0xc26c78" absoluteAddress="true" useHex="true" isObject="true">Visual Mario Object</Data>
 </MarioData>
