@@ -19,7 +19,8 @@
   <Data type="uint" address="0x00C26F20" absoluteAddress="true" useHex="true">Last Area</Data>
   <Data type="byte" address="0x00C26F27" absoluteAddress="true">Last Area Entrance</Data>
   <Data type="short" address="0x00C2754E" absoluteAddress="true">Last Course</Data>
-  <Data type="short" address="0x00C1987A" absoluteAddress="true">Stage Select Index</Data>
+  <Data type="short" address="0x00C26CD4" absoluteAddress="true">Destination</Data>
+  <Data type="short" address="0x00C26CD8" absoluteAddress="true">Door Direction</Data>
   <Data type="short" address="0x00C26CBA" absoluteAddress="true">Transition State</Data>
   <Data type="short" address="0x00C27532" absoluteAddress="true">Transition Type</Data>
   <Data type="byte" address="0x00C1C943" absoluteAddress="true">Transition Progress</Data>
@@ -35,6 +36,7 @@
   <Data type="byte" address="0x00C19076" absoluteAddress="true">Demo Counter</Data>
   <Data type="short" address="0xa936b2" absoluteAddress="true">Demo Timer</Data>
   <Data type="byte" address="0x00B125FC" absoluteAddress="true">Sound Selection</Data>
+  <Data type="short" address="0x00C1987A" absoluteAddress="true">Stage Select Index</Data>
   <Data type="short" address="0xa9379e" absoluteAddress="true">Hand X</Data>
   <Data type="short" address="0xa937a2" absoluteAddress="true">Hand Y</Data>
   <Data type="ushort" address="0x00C4CCDA" absoluteAddress="true">TTC Speed Setting</Data>
