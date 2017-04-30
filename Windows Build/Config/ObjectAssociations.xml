@@ -286,6 +286,9 @@
     <Image path="Boo Coin.png"/>
     <Data type="uint" address="0x68" objectOffset="true" useHex="true" isObject="true">Host Object</Data>
   </Object>
+  <Object behaviorScriptAddress="0x130008D0" name="Premature Yellow Coin">
+    <Image path="Yellow Coin.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x130008EC" name="Grounded Horizontal Coin Line Spawner" subType="0">
     <Image path="Coin Spawner 5 Horizontal.png"/>
     <Data type="uint" address="0x144" objectOffset="true">Formation</Data>
