@@ -28,14 +28,23 @@
   <Data special="true" specialType="DeltaAngleToMario">DAngle Obj to Mario</Data>
   <Data special="true" specialType="MarioAngleToObject">Angle Mario to Obj</Data>
   <Data special="true" specialType="MarioDeltaAngleToObject">DAngle Mario to Obj</Data>
+  <Data type="float" address="0x1f8" objectOffset="true">Hitbox Radius</Data>
+  <Data type="float" address="0x1fc" objectOffset="true">Hitbox Height</Data>
+  <Data type="float" address="0x208" objectOffset="true">Hitbox Center Y Offset</Data>
+  <Data type="float" address="0x128" objectOffset="true">Min Wall Dist</Data>
   <Data type="float" address="0x019C" objectOffset="true">Drawing Dist</Data>
   <Data special="true" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data type="uint" address="0x68" objectOffset="true" useHex="true" isObject="true">Parent Object</Data>
   <Data type="uint" address="0x020C" objectOffset="true" useHex="true">Behavior Script</Data>
   <Data type="uint" address="0x14" objectOffset="true" useHex="true">Graphic/Model</Data>
   <Data type="byte" address="0x3" mask="0x10" objectOffset="true" isBool="true" invertBool="true">Visible</Data>
+  <Data type="int" address="0x8c" objectOffset="true" isBool="true" mask="0x00000800" invertBool="true">Visible 2</Data>
   <Data type="byte" address="0x3" mask="0x01" objectOffset="true" isBool="true">Rendered</Data>
+  <Data type="int" address="0x8c" objectOffset="true" isBool="true" mask="0x00000200">Locked to Origin</Data>
+  <Data type="int" address="0x8c" objectOffset="true" isBool="true" mask="0x00000001">Graphics Updates</Data>
+  <Data type="int" address="0x8c" objectOffset="true" isBool="true" mask="0x00000008">Angle Updates</Data>  
   <Data type="byte" address="0x3" mask="0x04" objectOffset="true" isBool="true">Face Camera</Data>
+  <Data type="int" address="0x8c" objectOffset="true" isBool="true" mask="0x00000002">Forward Movement</Data>
   <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Close</Data>
   <Data type="int" address="0x9C" objectOffset="true">Tangible</Data>
   <Data type="uint" address="0x3C" objectOffset="true" useHex="true">Animation</Data>
