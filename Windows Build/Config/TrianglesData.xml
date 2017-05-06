@@ -3,7 +3,7 @@
   <Data special="true" specialType="Classification">Classification</Data>
   <Data type="ushort" address="0x00" triangleOffset="true">Surface Type</Data>
   <Data type="byte" address="0x02" triangleOffset="true" useHex="true">Flags</Data>
-  <Data type="byte" address="0x03" triangleOffset="true">Wind Direction</Data>
+  <Data type="byte" address="0x03" triangleOffset="true">Exerted Direction</Data>
   <Data type="short" address="0x04" triangleOffset="true" useHex="true">Wall Projection</Data>
   <Data type="byte" address="0x04" triangleOffset="true" isBool="true" mask="0x08">X Projection</Data>
   <Data type="byte" address="0x04" triangleOffset="true" isBool="true" invertBool="true" mask="0x08">Z Projection</Data>

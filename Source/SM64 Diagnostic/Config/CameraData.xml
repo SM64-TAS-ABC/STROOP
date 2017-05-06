@@ -36,4 +36,22 @@
   <Data type="short" address="0xc281b2" absoluteAddress="true">Roll Shake Osc.</Data>
   <Data type="short" address="0xc28156" absoluteAddress="true">Camera Mode</Data>
   <Data type="uint" address="0x00C199B0" absoluteAddress="true" useHex="true" isObject="true">Secondary Object</Data>
+  
+  <Data type="float" address="0x00CCBAA0" absoluteAddress="true">Camera X</Data>
+  <Data type="float" address="0x00CCBAA4" absoluteAddress="true">Camera Y</Data>
+  <Data type="float" address="0x00CCBAA8" absoluteAddress="true">Camera Z</Data>
+  <Data type="float" address="0x00CCBAAC" absoluteAddress="true">Focus X</Data>
+  <Data type="float" address="0x00CCBAB0" absoluteAddress="true">Focus Y</Data>
+  <Data type="float" address="0x00CCBAB4" absoluteAddress="true">Focus Z</Data>
+  <Data type="int" address="0x00CCBAB8" absoluteAddress="true">Mode</Data>
+  <Data type="short" address="0x00CCBABC" absoluteAddress="true" isAngle="true">Phi [1]</Data>
+  <Data type="short" address="0x00CCBABE" absoluteAddress="true" isAngle="true">Theta [1]</Data>
+  <Data type="float" address="0x00CCBAC0" absoluteAddress="true">Dist [1]</Data>
+  <Data type="short" address="0x00CCBAC4" absoluteAddress="true" isAngle="true">Phi [2,3]</Data>
+  <Data type="short" address="0x00CCBAC6" absoluteAddress="true" isAngle="true">Theta [2,3]</Data>
+  <Data type="float" address="0x00CCBAC8" absoluteAddress="true">Dist [2,3]</Data>
+  <Data type="uint" address="0x00CCBACC" absoluteAddress="true" useHex="true" isObject="true">Object to Follow</Data>
+  <Data type="float" address="0x00CCBAD0" absoluteAddress="true">Obj Offset X</Data>
+  <Data type="float" address="0x00CCBAD4" absoluteAddress="true">Obj Offset Y</Data>
+  <Data type="float" address="0x00CCBAD8" absoluteAddress="true">Obj Offset Z</Data>
 </CameraData>

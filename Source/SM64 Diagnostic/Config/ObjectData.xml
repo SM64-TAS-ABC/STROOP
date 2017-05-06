@@ -30,7 +30,7 @@
   <Data special="true" specialType="MarioDeltaAngleToObject">DAngle Mario to Obj</Data>
   <Data type="float" address="0x1f8" objectOffset="true">Hitbox Radius</Data>
   <Data type="float" address="0x1fc" objectOffset="true">Hitbox Height</Data>
-  <Data type="float" address="0x208" objectOffset="true">Hitbox Center Y Offset</Data>
+  <Data type="float" address="0x208" objectOffset="true">Hitbox Down Offset</Data>
   <Data type="float" address="0x128" objectOffset="true">Min Wall Dist</Data>
   <Data type="float" address="0x019C" objectOffset="true">Drawing Dist</Data>
   <Data special="true" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
