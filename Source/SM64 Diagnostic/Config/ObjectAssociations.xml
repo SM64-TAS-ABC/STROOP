@@ -1519,6 +1519,8 @@
   </Object>
   <Object behaviorScriptAddress="0x13002684" name="Boo Spawner">
     <Image path="Boo Spawner.png"/>
+    <Data type="int" address="0xFC" objectOffset="true">Boos Spawned</Data>
+    <Data type="int" address="0x88" objectOffset="true">Boos Killed</Data>
   </Object>
   <Object behaviorScriptAddress="0x130026D4" name="Castle Boo">
     <Image path="Boo.png"/>
