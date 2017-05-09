@@ -7,6 +7,7 @@
   <Data special="true" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
   <Data type="ushort" address="0x00C1D150" absoluteAddress="true">Coin Counter</Data>
   <Data type="sbyte" address="0x00C4CE7D" absoluteAddress="true">Red Coin Count</Data>
+  <Data type="short" address="0x00C26CAA" absoluteAddress="true">Checked Star Count</Data>
   <Data type="byte" address="0x00a93c27" absoluteAddress="true">Mission Selected</Data>
   <Data type="byte" address="0x00C2754A" absoluteAddress="true">Mission Layout</Data>
   <Data type="byte" address="0x00C1D0A3" absoluteAddress="true">Mission Name</Data>
