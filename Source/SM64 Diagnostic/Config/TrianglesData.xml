@@ -36,6 +36,7 @@
   <Data type="float" address="0x20" triangleOffset="true">Normal Y</Data>
   <Data type="float" address="0x24" triangleOffset="true">Normal Z</Data>
   <Data type="float" address="0x28" triangleOffset="true">Normal Offset</Data>
+  <Data type="byte" address="0x04" triangleOffset="true" useHex="true" isBool="true" mask="0x01">Belongs to Object</Data>
   <Data type="uint" address="0x2C" triangleOffset="true" useHex="true" isObject="true">Associated Object</Data>  <Data type="uint" address="0x00C26C58" absoluteAddress="true" useHex="true" color="#ffeccc">Floor Triangle</Data>
   <Data type="uint" address="0x00C26C50" absoluteAddress="true" useHex="true" color="#ffeccc">Wall Triangle</Data>
   <Data type="uint" address="0x00C26C54" absoluteAddress="true" useHex="true" color="#ffeccc">Ceiling Triangle</Data>
