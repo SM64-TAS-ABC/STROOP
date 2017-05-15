@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -93,10 +93,13 @@ namespace SM64_Diagnostic
             this.panelHudBorder = new System.Windows.Forms.Panel();
             this.pictureBoxHud = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelHud = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.tabPageActions = new System.Windows.Forms.TabPage();
+            this.noTearFlowLayoutPanelActions = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
             this.NoTearFlowLayoutPanelCamera = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.panelCameraBorder = new System.Windows.Forms.Panel();
             this.pictureBoxCamera = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.tabPageWater = new System.Windows.Forms.TabPage();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
             this.checkBoxDbgResource = new System.Windows.Forms.CheckBox();
             this.checkBoxDbgStageSelect = new System.Windows.Forms.CheckBox();
@@ -219,9 +222,6 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
-            this.tabPageActions = new System.Windows.Forms.TabPage();
-            this.tabPageWater = new System.Windows.Forms.TabPage();
-            this.noTearFlowLayoutPanelActions = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.noTearFlowLayoutPanelWater = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
@@ -241,9 +241,11 @@ namespace SM64_Diagnostic
             this.tabPageHud.SuspendLayout();
             this.panelHudBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).BeginInit();
+            this.tabPageActions.SuspendLayout();
             this.tabPageCamera.SuspendLayout();
             this.panelCameraBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
+            this.tabPageWater.SuspendLayout();
             this.tabPageDebug.SuspendLayout();
             this.panelDebugBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
@@ -273,8 +275,6 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.tabPageActions.SuspendLayout();
-            this.tabPageWater.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -306,7 +306,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(1020, 484);
+            this.groupBoxObjects.Size = new System.Drawing.Size(1020, 486);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -394,7 +394,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(1012, 435);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(1012, 437);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -987,6 +987,28 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(907, 189);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
+            // tabPageActions
+            // 
+            this.tabPageActions.Controls.Add(this.noTearFlowLayoutPanelActions);
+            this.tabPageActions.Location = new System.Drawing.Point(4, 22);
+            this.tabPageActions.Name = "tabPageActions";
+            this.tabPageActions.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageActions.Size = new System.Drawing.Size(1012, 202);
+            this.tabPageActions.TabIndex = 13;
+            this.tabPageActions.Text = "Actions";
+            // 
+            // noTearFlowLayoutPanelActions
+            // 
+            this.noTearFlowLayoutPanelActions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelActions.AutoScroll = true;
+            this.noTearFlowLayoutPanelActions.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelActions.Location = new System.Drawing.Point(6, 6);
+            this.noTearFlowLayoutPanelActions.Name = "noTearFlowLayoutPanelActions";
+            this.noTearFlowLayoutPanelActions.Size = new System.Drawing.Size(1000, 190);
+            this.noTearFlowLayoutPanelActions.TabIndex = 0;
+            // 
             // tabPageCamera
             // 
             this.tabPageCamera.Controls.Add(this.NoTearFlowLayoutPanelCamera);
@@ -1034,6 +1056,17 @@ namespace SM64_Diagnostic
             this.pictureBoxCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxCamera.TabIndex = 0;
             this.pictureBoxCamera.TabStop = false;
+            // 
+            // tabPageWater
+            // 
+            this.tabPageWater.Controls.Add(this.noTearFlowLayoutPanelWater);
+            this.tabPageWater.Location = new System.Drawing.Point(4, 22);
+            this.tabPageWater.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageWater.Name = "tabPageWater";
+            this.tabPageWater.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPageWater.Size = new System.Drawing.Size(1012, 202);
+            this.tabPageWater.TabIndex = 14;
+            this.tabPageWater.Text = "Water";
             // 
             // tabPageDebug
             // 
@@ -1905,7 +1938,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(666, 167);
+            this.glControlMap.Size = new System.Drawing.Size(668, 167);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -2022,8 +2055,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -2468,45 +2501,18 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
-            // tabPageActions
-            // 
-            this.tabPageActions.Controls.Add(this.noTearFlowLayoutPanelActions);
-            this.tabPageActions.Location = new System.Drawing.Point(4, 22);
-            this.tabPageActions.Name = "tabPageActions";
-            this.tabPageActions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageActions.Size = new System.Drawing.Size(1012, 202);
-            this.tabPageActions.TabIndex = 13;
-            this.tabPageActions.Text = "Actions";
-            // 
-            // tabPageWater
-            // 
-            this.tabPageWater.Controls.Add(this.noTearFlowLayoutPanelWater);
-            this.tabPageWater.Location = new System.Drawing.Point(4, 22);
-            this.tabPageWater.Name = "tabPageWater";
-            this.tabPageWater.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageWater.Size = new System.Drawing.Size(1012, 202);
-            this.tabPageWater.TabIndex = 14;
-            this.tabPageWater.Text = "Water";
-            // 
-            // noTearFlowLayoutPanelActions
-            // 
-            this.noTearFlowLayoutPanelActions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanelActions.Location = new System.Drawing.Point(6, 6);
-            this.noTearFlowLayoutPanelActions.Name = "noTearFlowLayoutPanelActions";
-            this.noTearFlowLayoutPanelActions.Size = new System.Drawing.Size(1000, 190);
-            this.noTearFlowLayoutPanelActions.TabIndex = 0;
-            // 
             // noTearFlowLayoutPanelWater
             // 
             this.noTearFlowLayoutPanelWater.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanelWater.Location = new System.Drawing.Point(6, 6);
+            this.noTearFlowLayoutPanelWater.AutoScroll = true;
+            this.noTearFlowLayoutPanelWater.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelWater.Location = new System.Drawing.Point(2, 2);
+            this.noTearFlowLayoutPanelWater.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelWater.Name = "noTearFlowLayoutPanelWater";
-            this.noTearFlowLayoutPanelWater.Size = new System.Drawing.Size(1003, 190);
-            this.noTearFlowLayoutPanelWater.TabIndex = 0;
+            this.noTearFlowLayoutPanelWater.Size = new System.Drawing.Size(1008, 198);
+            this.noTearFlowLayoutPanelWater.TabIndex = 2;
             // 
             // StroopMainForm
             // 
@@ -2550,9 +2556,11 @@ namespace SM64_Diagnostic
             this.tabPageHud.ResumeLayout(false);
             this.panelHudBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).EndInit();
+            this.tabPageActions.ResumeLayout(false);
             this.tabPageCamera.ResumeLayout(false);
             this.panelCameraBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).EndInit();
+            this.tabPageWater.ResumeLayout(false);
             this.tabPageDebug.ResumeLayout(false);
             this.tabPageDebug.PerformLayout();
             this.panelDebugBorder.ResumeLayout(false);
@@ -2595,8 +2603,6 @@ namespace SM64_Diagnostic
             this.tabPageOptions.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.tabPageActions.ResumeLayout(false);
-            this.tabPageWater.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
