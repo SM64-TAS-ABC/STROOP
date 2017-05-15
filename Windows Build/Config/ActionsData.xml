@@ -6,7 +6,6 @@
   <Data special="true" specialType="PrevActionDescription">Prev. Action Desc.</Data>
   <Data type="short" address="0x00C26C0A" absoluteAddress="true">Action Phase</Data>
   <Data type="short" address="0x00C26C08" absoluteAddress="true">Action Timer</Data>
-  <Data type="short" address="0xc27df8" absoluteAddress="true">Animation Timer</Data>
   <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x80">b00 throwing?</Data>
   <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x40">b01 (never)</Data>
   <Data type="byte" address="0x00C26BFF" absoluteAddress="true" isBool="true" mask="0x20">b02 water stuff?</Data>

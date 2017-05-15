@@ -11,8 +11,11 @@
   <Data type="byte" address="0xc26ca1" absoluteAddress="true">HP Decrease Counter</Data>
   <Data type="short" address="0xc26c9a" absoluteAddress="true">Coin Count</Data>
   <Data type="short" address="0xc26ce0" absoluteAddress="true">Coin Display</Data>
+  <Data type="ushort" address="0x00C1D150" absoluteAddress="true">Coin Counter</Data>
+  <Data type="sbyte" address="0x00C4CE7D" absoluteAddress="true">Red Coin Count</Data>
   <Data type="short" address="0xc26c98" absoluteAddress="true">Star Count</Data>
   <Data type="short" address="0xc26ce6" absoluteAddress="true">Star Display</Data>
+  <Data type="short" address="0x00C26CAA" absoluteAddress="true">Checked Star Count</Data>
   <Data type="byte" address="0xc26cdd" mask="0x01" absoluteAddress="true" isBool="true">Time Counting</Data>
   <Data type="ushort" address="0xc26cee" absoluteAddress="true">Time</Data>
   <Data type="byte" address="0xc26ce8" mask="0x01" absoluteAddress="true" isBool="true">HUD On Lives</Data>
