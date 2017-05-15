@@ -25,5 +25,6 @@ namespace SM64_Diagnostic.Managers
         public TriangleManager TriangleManager;
         public DataManager WaterManager;
         public DataManager ActionsManager;
+        public PuManager PuManager;
     }
 }

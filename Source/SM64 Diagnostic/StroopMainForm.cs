@@ -46,6 +46,7 @@ namespace SM64_Diagnostic
         TriangleManager _triangleManager;
         DebugManager _debugManager;
         DataManager _actionsManager, _waterManager;
+        PuManager _puManager;
 
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
@@ -112,10 +113,11 @@ namespace SM64_Diagnostic
             currentContext.WaterManager = _waterManager = new DataManager(_sm64Stream, _waterData, noTearFlowLayoutPanelWater);
             currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
             currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
-            currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc, groupBoxPuController);
+            currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc);
             currentContext.CameraManager = _cameraManager = new CameraManager(_sm64Stream, _cameraData, NoTearFlowLayoutPanelCamera);
             currentContext.TriangleManager = _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData);
             currentContext.DebugManager = _debugManager = new DebugManager(_sm64Stream, tabPageDebug);
+            currentContext.PuManager = _puManager = new PuManager(_sm64Stream, groupBoxPuController);
 
             // Create object manager
             var objectGui = new ObjectDataGui()
@@ -275,6 +277,7 @@ namespace SM64_Diagnostic
                 _miscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
                 _triangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
                 _debugManager.Update(tabControlMain.SelectedTab == tabPageDebug);
+                _puManager.Update(tabControlMain.SelectedTab == tabPagePu);
                 _mapManager?.Update();
                 _scriptManager.Update();
                 _hackManager.Update();
@@ -340,7 +343,7 @@ namespace SM64_Diagnostic
 
 #if !DEBUG
             tabControlMain.TabPages.Remove(tabPageExpressions);
-            tabControlMain.TabPages.Remove(tabPageStars);
+            tabControlMain.TabPages.Remove(tabPageFile);
 #endif
         }
 

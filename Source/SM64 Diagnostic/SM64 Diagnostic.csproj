@@ -134,6 +134,7 @@
     <Compile Include="Managers\MarioManager.cs" />
     <Compile Include="Managers\ObjectManager.cs" />
     <Compile Include="Managers\OptionsManager.cs" />
+    <Compile Include="Managers\PuManager.cs" />
     <Compile Include="Managers\ScriptManager.cs" />
     <Compile Include="Controls\WatchVariableControl.cs" />
     <Compile Include="Managers\TriangleManager.cs" />
