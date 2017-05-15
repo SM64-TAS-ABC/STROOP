@@ -36,6 +36,7 @@ namespace SM64_Diagnostic
         ObjectSlotsManager _objectSlotManager;
         DisassemblyManager _disManager;
         MarioManager _marioManager;
+        ActionsManager _actionsManager;
         ObjectManager _objectManager;
         MapManager _mapManager;
         OptionsManager _optionsManager;
@@ -46,7 +47,7 @@ namespace SM64_Diagnostic
         HackManager _hackManager;
         TriangleManager _triangleManager;
         DebugManager _debugManager;
-        DataManager _actionsManager, _waterManager, _fileManager, _levelManager, _cameraHackManager;
+        DataManager _waterManager, _fileManager, _levelManager, _cameraHackManager;
         PuManager _puManager;
 
         bool _resizing = true, _objSlotResizing = false;
@@ -110,7 +111,7 @@ namespace SM64_Diagnostic
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
             currentContext.MapManager = _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
 
-            currentContext.ActionsManager = _actionsManager = new DataManager(_sm64Stream, _actionsData, noTearFlowLayoutPanelActions);
+            currentContext.ActionsManager = _actionsManager = new ActionsManager(_sm64Stream, _actionsData, noTearFlowLayoutPanelActions);
             currentContext.WaterManager = _waterManager = new DataManager(_sm64Stream, _waterData, noTearFlowLayoutPanelWater);
             currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
             currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
