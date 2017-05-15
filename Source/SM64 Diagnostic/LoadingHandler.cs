@@ -30,7 +30,7 @@ namespace SM64_Diagnostic
 
             static private void ShowForm()
             {
-                LoadingForm = new LoadingForm(14);
+                LoadingForm = new LoadingForm(17);
                 Application.Run(LoadingForm);
             }
 

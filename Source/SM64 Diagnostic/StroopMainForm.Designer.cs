@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -219,6 +219,11 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
+            this.tabPageLevel = new System.Windows.Forms.TabPage();
+            this.tabPageCamHack = new System.Windows.Forms.TabPage();
+            this.noTearFlowLayoutPanelFile = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.noTearFlowLayoutPanelLevel = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -250,6 +255,7 @@ namespace SM64_Diagnostic
             this.panelMiscBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
             this.tabPageTriangles.SuspendLayout();
+            this.tabPageFile.SuspendLayout();
             this.tabPagePu.SuspendLayout();
             this.groupBoxPuController.SuspendLayout();
             this.tabPageMap.SuspendLayout();
@@ -271,6 +277,8 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.tabPageLevel.SuspendLayout();
+            this.tabPageCamHack.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -302,7 +310,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(1020, 487);
+            this.groupBoxObjects.Size = new System.Drawing.Size(1020, 459);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -390,7 +398,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(1012, 438);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(1012, 410);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -446,19 +454,21 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlMain.Controls.Add(this.tabPageObjects);
             this.tabControlMain.Controls.Add(this.tabPageMario);
-            this.tabControlMain.Controls.Add(this.tabPageHud);
             this.tabControlMain.Controls.Add(this.tabPageActions);
+            this.tabControlMain.Controls.Add(this.tabPageHud);
             this.tabControlMain.Controls.Add(this.tabPageCamera);
-            this.tabControlMain.Controls.Add(this.tabPageWater);
-            this.tabControlMain.Controls.Add(this.tabPageDebug);
-            this.tabControlMain.Controls.Add(this.tabPageMisc);
             this.tabControlMain.Controls.Add(this.tabPageTriangles);
+            this.tabControlMain.Controls.Add(this.tabPageWater);
             this.tabControlMain.Controls.Add(this.tabPageFile);
-            this.tabControlMain.Controls.Add(this.tabPagePu);
+            this.tabControlMain.Controls.Add(this.tabPageLevel);
+            this.tabControlMain.Controls.Add(this.tabPageMisc);
+            this.tabControlMain.Controls.Add(this.tabPageDebug);
             this.tabControlMain.Controls.Add(this.tabPageMap);
+            this.tabControlMain.Controls.Add(this.tabPagePu);
             this.tabControlMain.Controls.Add(this.tabPageExpressions);
             this.tabControlMain.Controls.Add(this.tabPageDisassembly);
             this.tabControlMain.Controls.Add(this.tabPageHacks);
+            this.tabControlMain.Controls.Add(this.tabPageCamHack);
             this.tabControlMain.Controls.Add(this.tabPageOptions);
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(2, 2);
@@ -903,7 +913,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(83, 6);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(927, 193);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(927, 192);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageHud
@@ -981,7 +991,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(101, 5);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(907, 189);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(909, 195);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageActions
@@ -1000,7 +1010,6 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.noTearFlowLayoutPanelActions.AutoScroll = true;
-            this.noTearFlowLayoutPanelActions.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.noTearFlowLayoutPanelActions.Location = new System.Drawing.Point(6, 6);
             this.noTearFlowLayoutPanelActions.Name = "noTearFlowLayoutPanelActions";
             this.noTearFlowLayoutPanelActions.Size = new System.Drawing.Size(1000, 190);
@@ -1027,7 +1036,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(65, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(945, 193);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(945, 198);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // panelCameraBorder
@@ -1071,11 +1080,10 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.noTearFlowLayoutPanelWater.AutoScroll = true;
-            this.noTearFlowLayoutPanelWater.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.noTearFlowLayoutPanelWater.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelWater.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelWater.Name = "noTearFlowLayoutPanelWater";
-            this.noTearFlowLayoutPanelWater.Size = new System.Drawing.Size(1008, 198);
+            this.noTearFlowLayoutPanelWater.Size = new System.Drawing.Size(1008, 196);
             this.noTearFlowLayoutPanelWater.TabIndex = 2;
             // 
             // tabPageDebug
@@ -1311,7 +1319,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMisc.Location = new System.Drawing.Point(64, 5);
             this.NoTearFlowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMisc.Name = "NoTearFlowLayoutPanelMisc";
-            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(718, 193);
+            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(946, 195);
             this.NoTearFlowLayoutPanelMisc.TabIndex = 5;
             // 
             // tabPageTriangles
@@ -1461,17 +1469,18 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(191, 5);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(816, 193);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(816, 192);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageFile
             // 
+            this.tabPageFile.Controls.Add(this.noTearFlowLayoutPanelFile);
             this.tabPageFile.Location = new System.Drawing.Point(4, 22);
             this.tabPageFile.Name = "tabPageFile";
             this.tabPageFile.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageFile.Size = new System.Drawing.Size(1012, 202);
             this.tabPageFile.TabIndex = 10;
-            this.tabPageFile.Text = "Stars";
+            this.tabPageFile.Text = "File";
             // 
             // tabPagePu
             // 
@@ -1505,7 +1514,7 @@ namespace SM64_Diagnostic
             this.groupBoxPuController.Controls.Add(this.buttonPuConHome);
             this.groupBoxPuController.Location = new System.Drawing.Point(395, 3);
             this.groupBoxPuController.Name = "groupBoxPuController";
-            this.groupBoxPuController.Size = new System.Drawing.Size(222, 197);
+            this.groupBoxPuController.Size = new System.Drawing.Size(222, 193);
             this.groupBoxPuController.TabIndex = 7;
             this.groupBoxPuController.TabStop = false;
             this.groupBoxPuController.Text = "PU Controller";
@@ -1514,7 +1523,7 @@ namespace SM64_Diagnostic
             // 
             this.labelPuConPu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelPuConPu.AutoSize = true;
-            this.labelPuConPu.Location = new System.Drawing.Point(5, 181);
+            this.labelPuConPu.Location = new System.Drawing.Point(5, 177);
             this.labelPuConPu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPuConPu.Name = "labelPuConPu";
             this.labelPuConPu.Size = new System.Drawing.Size(51, 13);
@@ -1525,7 +1534,7 @@ namespace SM64_Diagnostic
             // 
             this.labelPuConQpuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelPuConQpuValue.AutoSize = true;
-            this.labelPuConQpuValue.Location = new System.Drawing.Point(174, 181);
+            this.labelPuConQpuValue.Location = new System.Drawing.Point(174, 177);
             this.labelPuConQpuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPuConQpuValue.Name = "labelPuConQpuValue";
             this.labelPuConQpuValue.Size = new System.Drawing.Size(28, 13);
@@ -1536,7 +1545,7 @@ namespace SM64_Diagnostic
             // 
             this.labelPuConQpu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelPuConQpu.AutoSize = true;
-            this.labelPuConQpu.Location = new System.Drawing.Point(111, 181);
+            this.labelPuConQpu.Location = new System.Drawing.Point(111, 177);
             this.labelPuConQpu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPuConQpu.Name = "labelPuConQpu";
             this.labelPuConQpu.Size = new System.Drawing.Size(59, 13);
@@ -1547,7 +1556,7 @@ namespace SM64_Diagnostic
             // 
             this.labelPuConPuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelPuConPuValue.AutoSize = true;
-            this.labelPuConPuValue.Location = new System.Drawing.Point(60, 181);
+            this.labelPuConPuValue.Location = new System.Drawing.Point(60, 177);
             this.labelPuConPuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPuConPuValue.Name = "labelPuConPuValue";
             this.labelPuConPuValue.Size = new System.Drawing.Size(28, 13);
@@ -1746,8 +1755,8 @@ namespace SM64_Diagnostic
             this.splitContainerMap.Panel2.Controls.Add(this.labelMapPuValue);
             this.splitContainerMap.Panel2.Controls.Add(this.labelMapQpu);
             this.splitContainerMap.Panel2.Controls.Add(this.labelMapQpuValue);
-            this.splitContainerMap.Size = new System.Drawing.Size(1011, 193);
-            this.splitContainerMap.SplitterDistance = 334;
+            this.splitContainerMap.Size = new System.Drawing.Size(1005, 195);
+            this.splitContainerMap.SplitterDistance = 332;
             this.splitContainerMap.SplitterWidth = 3;
             this.splitContainerMap.TabIndex = 16;
             // 
@@ -1858,7 +1867,7 @@ namespace SM64_Diagnostic
             // labelMapId
             // 
             this.labelMapId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelMapId.Location = new System.Drawing.Point(220, 174);
+            this.labelMapId.Location = new System.Drawing.Point(218, 176);
             this.labelMapId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapId.Name = "labelMapId";
             this.labelMapId.Size = new System.Drawing.Size(110, 13);
@@ -1897,7 +1906,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(669, 167);
+            this.glControlMap.Size = new System.Drawing.Size(663, 169);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -1906,7 +1915,7 @@ namespace SM64_Diagnostic
             // 
             this.labelMapPu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelMapPu.AutoSize = true;
-            this.labelMapPu.Location = new System.Drawing.Point(2, 175);
+            this.labelMapPu.Location = new System.Drawing.Point(2, 177);
             this.labelMapPu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapPu.Name = "labelMapPu";
             this.labelMapPu.Size = new System.Drawing.Size(61, 13);
@@ -1917,7 +1926,7 @@ namespace SM64_Diagnostic
             // 
             this.labelMapPuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelMapPuValue.AutoSize = true;
-            this.labelMapPuValue.Location = new System.Drawing.Point(67, 175);
+            this.labelMapPuValue.Location = new System.Drawing.Point(67, 177);
             this.labelMapPuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapPuValue.Name = "labelMapPuValue";
             this.labelMapPuValue.Size = new System.Drawing.Size(37, 13);
@@ -1928,7 +1937,7 @@ namespace SM64_Diagnostic
             // 
             this.labelMapQpu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelMapQpu.AutoSize = true;
-            this.labelMapQpu.Location = new System.Drawing.Point(123, 175);
+            this.labelMapQpu.Location = new System.Drawing.Point(123, 177);
             this.labelMapQpu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapQpu.Name = "labelMapQpu";
             this.labelMapQpu.Size = new System.Drawing.Size(69, 13);
@@ -1939,7 +1948,7 @@ namespace SM64_Diagnostic
             // 
             this.labelMapQpuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelMapQpuValue.AutoSize = true;
-            this.labelMapQpuValue.Location = new System.Drawing.Point(196, 175);
+            this.labelMapQpuValue.Location = new System.Drawing.Point(196, 177);
             this.labelMapQpuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapQpuValue.Name = "labelMapQpuValue";
             this.labelMapQpuValue.Size = new System.Drawing.Size(37, 13);
@@ -1965,7 +1974,7 @@ namespace SM64_Diagnostic
             // 
             this.checkBoxAbsoluteAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxAbsoluteAddress.AutoSize = true;
-            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(877, 182);
+            this.checkBoxAbsoluteAddress.Location = new System.Drawing.Point(877, 69);
             this.checkBoxAbsoluteAddress.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxAbsoluteAddress.Name = "checkBoxAbsoluteAddress";
             this.checkBoxAbsoluteAddress.Size = new System.Drawing.Size(134, 17);
@@ -1976,7 +1985,7 @@ namespace SM64_Diagnostic
             // buttonOtherDelete
             // 
             this.buttonOtherDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherDelete.Location = new System.Drawing.Point(106, 180);
+            this.buttonOtherDelete.Location = new System.Drawing.Point(106, 67);
             this.buttonOtherDelete.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOtherDelete.Name = "buttonOtherDelete";
             this.buttonOtherDelete.Size = new System.Drawing.Size(48, 21);
@@ -1988,7 +1997,7 @@ namespace SM64_Diagnostic
             // buttonOtherModify
             // 
             this.buttonOtherModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherModify.Location = new System.Drawing.Point(54, 180);
+            this.buttonOtherModify.Location = new System.Drawing.Point(54, 67);
             this.buttonOtherModify.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOtherModify.Name = "buttonOtherModify";
             this.buttonOtherModify.Size = new System.Drawing.Size(48, 21);
@@ -2000,7 +2009,7 @@ namespace SM64_Diagnostic
             // buttonOtherAdd
             // 
             this.buttonOtherAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOtherAdd.Location = new System.Drawing.Point(2, 180);
+            this.buttonOtherAdd.Location = new System.Drawing.Point(2, 67);
             this.buttonOtherAdd.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOtherAdd.Name = "buttonOtherAdd";
             this.buttonOtherAdd.Size = new System.Drawing.Size(48, 21);
@@ -2014,8 +2023,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -2027,7 +2036,7 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.RowTemplate.Height = 20;
             this.dataGridViewExpressions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewExpressions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewExpressions.Size = new System.Drawing.Size(1010, 173);
+            this.dataGridViewExpressions.Size = new System.Drawing.Size(1010, 60);
             this.dataGridViewExpressions.TabIndex = 0;
             this.dataGridViewExpressions.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOther_CellMouseDoubleClick);
             // 
@@ -2096,7 +2105,7 @@ namespace SM64_Diagnostic
             this.richTextBoxDissasembly.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
             this.richTextBoxDissasembly.ReadOnly = true;
-            this.richTextBoxDissasembly.Size = new System.Drawing.Size(1007, 175);
+            this.richTextBoxDissasembly.Size = new System.Drawing.Size(1007, 177);
             this.richTextBoxDissasembly.TabIndex = 0;
             this.richTextBoxDissasembly.Text = "";
             // 
@@ -2125,7 +2134,7 @@ namespace SM64_Diagnostic
             // splitContainerHacks.Panel2
             // 
             this.splitContainerHacks.Panel2.Controls.Add(this.groupBoxHackSpawn);
-            this.splitContainerHacks.Size = new System.Drawing.Size(1003, 196);
+            this.splitContainerHacks.Size = new System.Drawing.Size(1003, 193);
             this.splitContainerHacks.SplitterDistance = 334;
             this.splitContainerHacks.TabIndex = 14;
             // 
@@ -2138,7 +2147,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackRam.Controls.Add(this.checkedListBoxHacks);
             this.groupBoxHackRam.Location = new System.Drawing.Point(3, 3);
             this.groupBoxHackRam.Name = "groupBoxHackRam";
-            this.groupBoxHackRam.Size = new System.Drawing.Size(328, 190);
+            this.groupBoxHackRam.Size = new System.Drawing.Size(328, 187);
             this.groupBoxHackRam.TabIndex = 13;
             this.groupBoxHackRam.TabStop = false;
             this.groupBoxHackRam.Text = "RAM Hacks*";
@@ -2180,7 +2189,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(658, 189);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(658, 186);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -2189,7 +2198,7 @@ namespace SM64_Diagnostic
             // 
             this.labelSpawnHint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelSpawnHint.AutoSize = true;
-            this.labelSpawnHint.Location = new System.Drawing.Point(315, 168);
+            this.labelSpawnHint.Location = new System.Drawing.Point(315, 165);
             this.labelSpawnHint.Name = "labelSpawnHint";
             this.labelSpawnHint.Size = new System.Drawing.Size(127, 13);
             this.labelSpawnHint.TabIndex = 25;
@@ -2198,7 +2207,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(542, 164);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(542, 161);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -2210,7 +2219,7 @@ namespace SM64_Diagnostic
             // 
             this.labelSpawnExtra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelSpawnExtra.AutoSize = true;
-            this.labelSpawnExtra.Location = new System.Drawing.Point(109, 167);
+            this.labelSpawnExtra.Location = new System.Drawing.Point(109, 164);
             this.labelSpawnExtra.Name = "labelSpawnExtra";
             this.labelSpawnExtra.Size = new System.Drawing.Size(34, 13);
             this.labelSpawnExtra.TabIndex = 23;
@@ -2220,7 +2229,7 @@ namespace SM64_Diagnostic
             // 
             this.labelSpawnGfxId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelSpawnGfxId.AutoSize = true;
-            this.labelSpawnGfxId.Location = new System.Drawing.Point(6, 168);
+            this.labelSpawnGfxId.Location = new System.Drawing.Point(6, 165);
             this.labelSpawnGfxId.Name = "labelSpawnGfxId";
             this.labelSpawnGfxId.Size = new System.Drawing.Size(45, 13);
             this.labelSpawnGfxId.TabIndex = 22;
@@ -2229,7 +2238,7 @@ namespace SM64_Diagnostic
             // textBoxSpawnExtra
             // 
             this.textBoxSpawnExtra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxSpawnExtra.Location = new System.Drawing.Point(149, 164);
+            this.textBoxSpawnExtra.Location = new System.Drawing.Point(149, 161);
             this.textBoxSpawnExtra.Name = "textBoxSpawnExtra";
             this.textBoxSpawnExtra.Size = new System.Drawing.Size(46, 20);
             this.textBoxSpawnExtra.TabIndex = 21;
@@ -2237,7 +2246,7 @@ namespace SM64_Diagnostic
             // textBoxSpawnGfxId
             // 
             this.textBoxSpawnGfxId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxSpawnGfxId.Location = new System.Drawing.Point(57, 164);
+            this.textBoxSpawnGfxId.Location = new System.Drawing.Point(57, 161);
             this.textBoxSpawnGfxId.Name = "textBoxSpawnGfxId";
             this.textBoxSpawnGfxId.Size = new System.Drawing.Size(46, 20);
             this.textBoxSpawnGfxId.TabIndex = 20;
@@ -2245,7 +2254,7 @@ namespace SM64_Diagnostic
             // buttonHackSpawn
             // 
             this.buttonHackSpawn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonHackSpawn.Location = new System.Drawing.Point(200, 164);
+            this.buttonHackSpawn.Location = new System.Drawing.Point(200, 161);
             this.buttonHackSpawn.Margin = new System.Windows.Forms.Padding(2);
             this.buttonHackSpawn.Name = "buttonHackSpawn";
             this.buttonHackSpawn.Size = new System.Drawing.Size(110, 21);
@@ -2261,7 +2270,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(646, 82);
+            this.listBoxSpawn.Size = new System.Drawing.Size(646, 108);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -2460,6 +2469,61 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
+            // tabPageLevel
+            // 
+            this.tabPageLevel.Controls.Add(this.noTearFlowLayoutPanelLevel);
+            this.tabPageLevel.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLevel.Name = "tabPageLevel";
+            this.tabPageLevel.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLevel.Size = new System.Drawing.Size(1012, 202);
+            this.tabPageLevel.TabIndex = 16;
+            this.tabPageLevel.Text = "Level";
+            // 
+            // tabPageCamHack
+            // 
+            this.tabPageCamHack.Controls.Add(this.noTearFlowLayoutPanelCamHack);
+            this.tabPageCamHack.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCamHack.Name = "tabPageCamHack";
+            this.tabPageCamHack.Size = new System.Drawing.Size(1012, 202);
+            this.tabPageCamHack.TabIndex = 17;
+            this.tabPageCamHack.Text = "Cam Hack";
+            // 
+            // noTearFlowLayoutPanelFile
+            // 
+            this.noTearFlowLayoutPanelFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelFile.AutoScroll = true;
+            this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(5, 5);
+            this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
+            this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(1002, 192);
+            this.noTearFlowLayoutPanelFile.TabIndex = 2;
+            // 
+            // noTearFlowLayoutPanelLevel
+            // 
+            this.noTearFlowLayoutPanelLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelLevel.AutoScroll = true;
+            this.noTearFlowLayoutPanelLevel.Location = new System.Drawing.Point(5, 5);
+            this.noTearFlowLayoutPanelLevel.Margin = new System.Windows.Forms.Padding(2);
+            this.noTearFlowLayoutPanelLevel.Name = "noTearFlowLayoutPanelLevel";
+            this.noTearFlowLayoutPanelLevel.Size = new System.Drawing.Size(1002, 192);
+            this.noTearFlowLayoutPanelLevel.TabIndex = 2;
+            // 
+            // noTearFlowLayoutPanelCamHack
+            // 
+            this.noTearFlowLayoutPanelCamHack.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelCamHack.AutoScroll = true;
+            this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
+            this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
+            this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(1008, 198);
+            this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2518,6 +2582,7 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
             this.tabPageTriangles.ResumeLayout(false);
             this.tabPageTriangles.PerformLayout();
+            this.tabPageFile.ResumeLayout(false);
             this.tabPagePu.ResumeLayout(false);
             this.groupBoxPuController.ResumeLayout(false);
             this.groupBoxPuController.PerformLayout();
@@ -2548,6 +2613,8 @@ namespace SM64_Diagnostic
             this.tabPageOptions.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.tabPageLevel.ResumeLayout(false);
+            this.tabPageCamHack.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2740,6 +2807,11 @@ namespace SM64_Diagnostic
         private Button buttonPuConZpPu;
         private Button buttonPuConZpQpu;
         private Button buttonPuConHome;
+        private TabPage tabPageLevel;
+        private TabPage tabPageCamHack;
+        private NoTearFlowLayoutPanel noTearFlowLayoutPanelFile;
+        private NoTearFlowLayoutPanel noTearFlowLayoutPanelLevel;
+        private NoTearFlowLayoutPanel noTearFlowLayoutPanelCamHack;
     }
 }
 

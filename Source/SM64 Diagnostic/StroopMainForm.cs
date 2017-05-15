@@ -23,7 +23,8 @@ namespace SM64_Diagnostic
         ProcessStream _sm64Stream = null;
 
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
-        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, _actionsData, _waterData;
+        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, 
+            _actionsData, _waterData, _fileData, _levelData, _camHackData;
         ObjectAssociations _objectAssoc;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
@@ -45,7 +46,7 @@ namespace SM64_Diagnostic
         HackManager _hackManager;
         TriangleManager _triangleManager;
         DebugManager _debugManager;
-        DataManager _actionsManager, _waterManager;
+        DataManager _actionsManager, _waterManager, _fileManager, _levelManager, _cameraHackManager;
         PuManager _puManager;
 
         bool _resizing = true, _objSlotResizing = false;
@@ -118,6 +119,9 @@ namespace SM64_Diagnostic
             currentContext.TriangleManager = _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData);
             currentContext.DebugManager = _debugManager = new DebugManager(_sm64Stream, tabPageDebug);
             currentContext.PuManager = _puManager = new PuManager(_sm64Stream, groupBoxPuController);
+            currentContext.FileManager = _fileManager = new DataManager(_sm64Stream, _fileData, noTearFlowLayoutPanelFile);
+            currentContext.LevelManager = _levelManager = new DataManager(_sm64Stream, _levelData, noTearFlowLayoutPanelLevel);
+            currentContext.CameraHackManager = _cameraHackManager = new DataManager(_sm64Stream, _camHackData, noTearFlowLayoutPanelCamHack);
 
             // Create object manager
             var objectGui = new ObjectDataGui()
@@ -231,6 +235,12 @@ namespace SM64_Diagnostic
             _actionsData = XmlConfigParser.OpenWatchVarData(@"Config/ActionsData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Water Data", statusNum++);
             _waterData = XmlConfigParser.OpenWatchVarData(@"Config/WaterData.xml", "MiscDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading File Data", statusNum++);
+            _fileData = XmlConfigParser.OpenWatchVarData(@"Config/FileData.xml", "MiscDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading Level Data", statusNum++);
+            _levelData = XmlConfigParser.OpenWatchVarData(@"Config/LevelData.xml", "MiscDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading Camera Hack Data", statusNum++);
+            _camHackData = XmlConfigParser.OpenWatchVarData(@"Config/CamHackData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
             _triangleData = XmlConfigParser.OpenWatchVarData(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd", "triangleOffset");
             loadingForm.UpdateStatus("Loading Triangles Data", statusNum++);
@@ -274,6 +284,9 @@ namespace SM64_Diagnostic
                 _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
                 _actionsManager.Update(tabControlMain.SelectedTab == tabPageActions);
                 _waterManager.Update(tabControlMain.SelectedTab == tabPageWater);
+                _fileManager.Update(tabControlMain.SelectedTab == tabPageFile);
+                _levelManager.Update(tabControlMain.SelectedTab == tabPageLevel);
+                _cameraHackManager.Update(tabControlMain.SelectedTab == tabPageCamHack);
                 _miscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
                 _triangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
                 _debugManager.Update(tabControlMain.SelectedTab == tabPageDebug);

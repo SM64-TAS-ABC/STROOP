@@ -26,5 +26,8 @@ namespace SM64_Diagnostic.Managers
         public DataManager WaterManager;
         public DataManager ActionsManager;
         public PuManager PuManager;
+        public DataManager FileManager;
+        public DataManager LevelManager;
+        public DataManager CameraHackManager;
     }
 }
