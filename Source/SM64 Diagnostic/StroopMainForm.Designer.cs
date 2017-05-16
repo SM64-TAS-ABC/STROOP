@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -86,6 +86,8 @@ namespace SM64_Diagnostic
             this.panelMarioBorder = new System.Windows.Forms.Panel();
             this.pictureBoxMario = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelMario = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.tabPageActions = new System.Windows.Forms.TabPage();
+            this.noTearFlowLayoutPanelActions = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageHud = new System.Windows.Forms.TabPage();
             this.buttonStandardHud = new System.Windows.Forms.Button();
             this.buttonDie = new System.Windows.Forms.Button();
@@ -93,14 +95,34 @@ namespace SM64_Diagnostic
             this.panelHudBorder = new System.Windows.Forms.Panel();
             this.pictureBoxHud = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelHud = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.tabPageActions = new System.Windows.Forms.TabPage();
-            this.noTearFlowLayoutPanelActions = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
             this.NoTearFlowLayoutPanelCamera = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.panelCameraBorder = new System.Windows.Forms.Panel();
             this.pictureBoxCamera = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.tabPageTriangles = new System.Windows.Forms.TabPage();
+            this.buttonGoToVClosest = new System.Windows.Forms.Button();
+            this.checkBoxVertexMisalignment = new System.Windows.Forms.CheckBox();
+            this.buttonRetrieveTriangle = new System.Windows.Forms.Button();
+            this.buttonGoToV3 = new System.Windows.Forms.Button();
+            this.buttonGoToV2 = new System.Windows.Forms.Button();
+            this.buttonGoToV1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.maskedTextBoxOtherTriangle = new System.Windows.Forms.MaskedTextBox();
+            this.radioButtonTriOther = new System.Windows.Forms.RadioButton();
+            this.radioButtonTriCeiling = new System.Windows.Forms.RadioButton();
+            this.radioButtonTriWall = new System.Windows.Forms.RadioButton();
+            this.radioButtonTriFloor = new System.Windows.Forms.RadioButton();
+            this.NoTearFlowLayoutPanelTriangles = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageWater = new System.Windows.Forms.TabPage();
             this.noTearFlowLayoutPanelWater = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.tabPageFile = new System.Windows.Forms.TabPage();
+            this.noTearFlowLayoutPanelFile = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.tabPageLevel = new System.Windows.Forms.TabPage();
+            this.noTearFlowLayoutPanelLevel = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.tabPageMisc = new System.Windows.Forms.TabPage();
+            this.panelMiscBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxMisc = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.NoTearFlowLayoutPanelMisc = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
             this.checkBoxDbgResource = new System.Windows.Forms.CheckBox();
             this.checkBoxDbgStageSelect = new System.Windows.Forms.CheckBox();
@@ -118,44 +140,6 @@ namespace SM64_Diagnostic
             this.radioButtonDbgStgInfo = new System.Windows.Forms.RadioButton();
             this.radioButtonDbgFxInfo = new System.Windows.Forms.RadioButton();
             this.radioButtonDbgEnemyInfo = new System.Windows.Forms.RadioButton();
-            this.tabPageMisc = new System.Windows.Forms.TabPage();
-            this.panelMiscBorder = new System.Windows.Forms.Panel();
-            this.pictureBoxMisc = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.NoTearFlowLayoutPanelMisc = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.tabPageTriangles = new System.Windows.Forms.TabPage();
-            this.buttonGoToVClosest = new System.Windows.Forms.Button();
-            this.checkBoxVertexMisalignment = new System.Windows.Forms.CheckBox();
-            this.buttonRetrieveTriangle = new System.Windows.Forms.Button();
-            this.buttonGoToV3 = new System.Windows.Forms.Button();
-            this.buttonGoToV2 = new System.Windows.Forms.Button();
-            this.buttonGoToV1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.maskedTextBoxOtherTriangle = new System.Windows.Forms.MaskedTextBox();
-            this.radioButtonTriOther = new System.Windows.Forms.RadioButton();
-            this.radioButtonTriCeiling = new System.Windows.Forms.RadioButton();
-            this.radioButtonTriWall = new System.Windows.Forms.RadioButton();
-            this.radioButtonTriFloor = new System.Windows.Forms.RadioButton();
-            this.NoTearFlowLayoutPanelTriangles = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.tabPageFile = new System.Windows.Forms.TabPage();
-            this.tabPagePu = new System.Windows.Forms.TabPage();
-            this.groupBoxPuController = new System.Windows.Forms.GroupBox();
-            this.labelPuConPu = new System.Windows.Forms.Label();
-            this.labelPuConQpuValue = new System.Windows.Forms.Label();
-            this.labelPuConQpu = new System.Windows.Forms.Label();
-            this.labelPuConPuValue = new System.Windows.Forms.Label();
-            this.labelPuContXp = new System.Windows.Forms.Label();
-            this.labelPuContXm = new System.Windows.Forms.Label();
-            this.labelPuContZp = new System.Windows.Forms.Label();
-            this.labelPuContZm = new System.Windows.Forms.Label();
-            this.buttonPuConZnPu = new System.Windows.Forms.Button();
-            this.buttonPuConXpQpu = new System.Windows.Forms.Button();
-            this.buttonPuConXnQpu = new System.Windows.Forms.Button();
-            this.buttonPuConXnPu = new System.Windows.Forms.Button();
-            this.buttonPuConZnQpu = new System.Windows.Forms.Button();
-            this.buttonPuConXpPu = new System.Windows.Forms.Button();
-            this.buttonPuConZpPu = new System.Windows.Forms.Button();
-            this.buttonPuConZpQpu = new System.Windows.Forms.Button();
-            this.buttonPuConHome = new System.Windows.Forms.Button();
             this.tabPageMap = new System.Windows.Forms.TabPage();
             this.splitContainerMap = new System.Windows.Forms.SplitContainer();
             this.checkBoxMapShowFloor = new System.Windows.Forms.CheckBox();
@@ -176,6 +160,25 @@ namespace SM64_Diagnostic
             this.labelMapPuValue = new System.Windows.Forms.Label();
             this.labelMapQpu = new System.Windows.Forms.Label();
             this.labelMapQpuValue = new System.Windows.Forms.Label();
+            this.tabPagePu = new System.Windows.Forms.TabPage();
+            this.groupBoxPuController = new System.Windows.Forms.GroupBox();
+            this.labelPuConPu = new System.Windows.Forms.Label();
+            this.labelPuConQpuValue = new System.Windows.Forms.Label();
+            this.labelPuConQpu = new System.Windows.Forms.Label();
+            this.labelPuConPuValue = new System.Windows.Forms.Label();
+            this.labelPuContXp = new System.Windows.Forms.Label();
+            this.labelPuContXm = new System.Windows.Forms.Label();
+            this.labelPuContZp = new System.Windows.Forms.Label();
+            this.labelPuContZm = new System.Windows.Forms.Label();
+            this.buttonPuConZnPu = new System.Windows.Forms.Button();
+            this.buttonPuConXpQpu = new System.Windows.Forms.Button();
+            this.buttonPuConXnQpu = new System.Windows.Forms.Button();
+            this.buttonPuConXnPu = new System.Windows.Forms.Button();
+            this.buttonPuConZnQpu = new System.Windows.Forms.Button();
+            this.buttonPuConXpPu = new System.Windows.Forms.Button();
+            this.buttonPuConZpPu = new System.Windows.Forms.Button();
+            this.buttonPuConZpQpu = new System.Windows.Forms.Button();
+            this.buttonPuConHome = new System.Windows.Forms.Button();
             this.tabPageExpressions = new System.Windows.Forms.TabPage();
             this.checkBoxAbsoluteAddress = new System.Windows.Forms.CheckBox();
             this.buttonOtherDelete = new System.Windows.Forms.Button();
@@ -202,6 +205,8 @@ namespace SM64_Diagnostic
             this.textBoxSpawnGfxId = new System.Windows.Forms.TextBox();
             this.buttonHackSpawn = new System.Windows.Forms.Button();
             this.listBoxSpawn = new System.Windows.Forms.ListBox();
+            this.tabPageCamHack = new System.Windows.Forms.TabPage();
+            this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
             this.checkBoxUseOverlays = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -219,11 +224,6 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
-            this.tabPageLevel = new System.Windows.Forms.TabPage();
-            this.tabPageCamHack = new System.Windows.Forms.TabPage();
-            this.noTearFlowLayoutPanelFile = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.noTearFlowLayoutPanelLevel = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -239,25 +239,24 @@ namespace SM64_Diagnostic
             this.tabPageMario.SuspendLayout();
             this.panelMarioBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).BeginInit();
+            this.tabPageActions.SuspendLayout();
             this.tabPageHud.SuspendLayout();
             this.panelHudBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).BeginInit();
-            this.tabPageActions.SuspendLayout();
             this.tabPageCamera.SuspendLayout();
             this.panelCameraBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
+            this.tabPageTriangles.SuspendLayout();
             this.tabPageWater.SuspendLayout();
+            this.tabPageFile.SuspendLayout();
+            this.tabPageLevel.SuspendLayout();
+            this.tabPageMisc.SuspendLayout();
+            this.panelMiscBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
             this.tabPageDebug.SuspendLayout();
             this.panelDebugBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
             this.NoTearFlowLayoutPanelDebugDisplayType.SuspendLayout();
-            this.tabPageMisc.SuspendLayout();
-            this.panelMiscBorder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
-            this.tabPageTriangles.SuspendLayout();
-            this.tabPageFile.SuspendLayout();
-            this.tabPagePu.SuspendLayout();
-            this.groupBoxPuController.SuspendLayout();
             this.tabPageMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).BeginInit();
             this.splitContainerMap.Panel1.SuspendLayout();
@@ -265,6 +264,8 @@ namespace SM64_Diagnostic
             this.splitContainerMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).BeginInit();
+            this.tabPagePu.SuspendLayout();
+            this.groupBoxPuController.SuspendLayout();
             this.tabPageExpressions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressions)).BeginInit();
             this.tabPageDisassembly.SuspendLayout();
@@ -275,10 +276,9 @@ namespace SM64_Diagnostic
             this.splitContainerHacks.SuspendLayout();
             this.groupBoxHackRam.SuspendLayout();
             this.groupBoxHackSpawn.SuspendLayout();
+            this.tabPageCamHack.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.tabPageLevel.SuspendLayout();
-            this.tabPageCamHack.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -310,7 +310,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(1020, 459);
+            this.groupBoxObjects.Size = new System.Drawing.Size(1020, 460);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -398,7 +398,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(1012, 410);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(1012, 411);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -916,6 +916,28 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(927, 192);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
+            // tabPageActions
+            // 
+            this.tabPageActions.Controls.Add(this.noTearFlowLayoutPanelActions);
+            this.tabPageActions.Location = new System.Drawing.Point(4, 22);
+            this.tabPageActions.Name = "tabPageActions";
+            this.tabPageActions.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageActions.Size = new System.Drawing.Size(1012, 202);
+            this.tabPageActions.TabIndex = 13;
+            this.tabPageActions.Text = "Actions";
+            // 
+            // noTearFlowLayoutPanelActions
+            // 
+            this.noTearFlowLayoutPanelActions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelActions.AutoScroll = true;
+            this.noTearFlowLayoutPanelActions.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelActions.Location = new System.Drawing.Point(6, 6);
+            this.noTearFlowLayoutPanelActions.Name = "noTearFlowLayoutPanelActions";
+            this.noTearFlowLayoutPanelActions.Size = new System.Drawing.Size(1000, 190);
+            this.noTearFlowLayoutPanelActions.TabIndex = 0;
+            // 
             // tabPageHud
             // 
             this.tabPageHud.Controls.Add(this.buttonStandardHud);
@@ -994,27 +1016,6 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(909, 195);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
-            // tabPageActions
-            // 
-            this.tabPageActions.Controls.Add(this.noTearFlowLayoutPanelActions);
-            this.tabPageActions.Location = new System.Drawing.Point(4, 22);
-            this.tabPageActions.Name = "tabPageActions";
-            this.tabPageActions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageActions.Size = new System.Drawing.Size(1012, 202);
-            this.tabPageActions.TabIndex = 13;
-            this.tabPageActions.Text = "Actions";
-            // 
-            // noTearFlowLayoutPanelActions
-            // 
-            this.noTearFlowLayoutPanelActions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanelActions.AutoScroll = true;
-            this.noTearFlowLayoutPanelActions.Location = new System.Drawing.Point(6, 6);
-            this.noTearFlowLayoutPanelActions.Name = "noTearFlowLayoutPanelActions";
-            this.noTearFlowLayoutPanelActions.Size = new System.Drawing.Size(1000, 190);
-            this.noTearFlowLayoutPanelActions.TabIndex = 0;
-            // 
             // tabPageCamera
             // 
             this.tabPageCamera.Controls.Add(this.NoTearFlowLayoutPanelCamera);
@@ -1063,6 +1064,156 @@ namespace SM64_Diagnostic
             this.pictureBoxCamera.TabIndex = 0;
             this.pictureBoxCamera.TabStop = false;
             // 
+            // tabPageTriangles
+            // 
+            this.tabPageTriangles.Controls.Add(this.buttonGoToVClosest);
+            this.tabPageTriangles.Controls.Add(this.checkBoxVertexMisalignment);
+            this.tabPageTriangles.Controls.Add(this.buttonRetrieveTriangle);
+            this.tabPageTriangles.Controls.Add(this.buttonGoToV3);
+            this.tabPageTriangles.Controls.Add(this.buttonGoToV2);
+            this.tabPageTriangles.Controls.Add(this.buttonGoToV1);
+            this.tabPageTriangles.Controls.Add(this.label4);
+            this.tabPageTriangles.Controls.Add(this.maskedTextBoxOtherTriangle);
+            this.tabPageTriangles.Controls.Add(this.radioButtonTriOther);
+            this.tabPageTriangles.Controls.Add(this.radioButtonTriCeiling);
+            this.tabPageTriangles.Controls.Add(this.radioButtonTriWall);
+            this.tabPageTriangles.Controls.Add(this.radioButtonTriFloor);
+            this.tabPageTriangles.Controls.Add(this.NoTearFlowLayoutPanelTriangles);
+            this.tabPageTriangles.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTriangles.Name = "tabPageTriangles";
+            this.tabPageTriangles.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTriangles.Size = new System.Drawing.Size(1012, 202);
+            this.tabPageTriangles.TabIndex = 11;
+            this.tabPageTriangles.Text = "Triangles";
+            // 
+            // buttonGoToVClosest
+            // 
+            this.buttonGoToVClosest.Location = new System.Drawing.Point(6, 141);
+            this.buttonGoToVClosest.Name = "buttonGoToVClosest";
+            this.buttonGoToVClosest.Size = new System.Drawing.Size(90, 23);
+            this.buttonGoToVClosest.TabIndex = 13;
+            this.buttonGoToVClosest.Text = "Goto Closest";
+            this.buttonGoToVClosest.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxVertexMisalignment
+            // 
+            this.checkBoxVertexMisalignment.AutoSize = true;
+            this.checkBoxVertexMisalignment.Location = new System.Drawing.Point(6, 170);
+            this.checkBoxVertexMisalignment.Name = "checkBoxVertexMisalignment";
+            this.checkBoxVertexMisalignment.Size = new System.Drawing.Size(151, 17);
+            this.checkBoxVertexMisalignment.TabIndex = 12;
+            this.checkBoxVertexMisalignment.Text = "Vertex Misalignment Offset";
+            this.checkBoxVertexMisalignment.UseVisualStyleBackColor = true;
+            // 
+            // buttonRetrieveTriangle
+            // 
+            this.buttonRetrieveTriangle.Location = new System.Drawing.Point(102, 141);
+            this.buttonRetrieveTriangle.Name = "buttonRetrieveTriangle";
+            this.buttonRetrieveTriangle.Size = new System.Drawing.Size(84, 23);
+            this.buttonRetrieveTriangle.TabIndex = 11;
+            this.buttonRetrieveTriangle.Text = "Retrieve";
+            this.buttonRetrieveTriangle.UseVisualStyleBackColor = true;
+            // 
+            // buttonGoToV3
+            // 
+            this.buttonGoToV3.Location = new System.Drawing.Point(130, 112);
+            this.buttonGoToV3.Name = "buttonGoToV3";
+            this.buttonGoToV3.Size = new System.Drawing.Size(56, 23);
+            this.buttonGoToV3.TabIndex = 10;
+            this.buttonGoToV3.Text = "Goto V3";
+            this.buttonGoToV3.UseVisualStyleBackColor = true;
+            // 
+            // buttonGoToV2
+            // 
+            this.buttonGoToV2.Location = new System.Drawing.Point(69, 112);
+            this.buttonGoToV2.Name = "buttonGoToV2";
+            this.buttonGoToV2.Size = new System.Drawing.Size(55, 23);
+            this.buttonGoToV2.TabIndex = 9;
+            this.buttonGoToV2.Text = "Goto V2";
+            this.buttonGoToV2.UseVisualStyleBackColor = true;
+            // 
+            // buttonGoToV1
+            // 
+            this.buttonGoToV1.Location = new System.Drawing.Point(6, 112);
+            this.buttonGoToV1.Name = "buttonGoToV1";
+            this.buttonGoToV1.Size = new System.Drawing.Size(57, 23);
+            this.buttonGoToV1.TabIndex = 8;
+            this.buttonGoToV1.Text = "Goto V1";
+            this.buttonGoToV1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Triangle:";
+            // 
+            // maskedTextBoxOtherTriangle
+            // 
+            this.maskedTextBoxOtherTriangle.Location = new System.Drawing.Point(76, 87);
+            this.maskedTextBoxOtherTriangle.Margin = new System.Windows.Forms.Padding(2);
+            this.maskedTextBoxOtherTriangle.Mask = "\\0xaaAAAAAA";
+            this.maskedTextBoxOtherTriangle.Name = "maskedTextBoxOtherTriangle";
+            this.maskedTextBoxOtherTriangle.Size = new System.Drawing.Size(87, 20);
+            this.maskedTextBoxOtherTriangle.TabIndex = 5;
+            // 
+            // radioButtonTriOther
+            // 
+            this.radioButtonTriOther.AutoSize = true;
+            this.radioButtonTriOther.Location = new System.Drawing.Point(17, 88);
+            this.radioButtonTriOther.Name = "radioButtonTriOther";
+            this.radioButtonTriOther.Size = new System.Drawing.Size(54, 17);
+            this.radioButtonTriOther.TabIndex = 3;
+            this.radioButtonTriOther.Text = "Other:";
+            this.radioButtonTriOther.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTriCeiling
+            // 
+            this.radioButtonTriCeiling.AutoSize = true;
+            this.radioButtonTriCeiling.Location = new System.Drawing.Point(17, 65);
+            this.radioButtonTriCeiling.Name = "radioButtonTriCeiling";
+            this.radioButtonTriCeiling.Size = new System.Drawing.Size(56, 17);
+            this.radioButtonTriCeiling.TabIndex = 2;
+            this.radioButtonTriCeiling.Text = "Ceiling";
+            this.radioButtonTriCeiling.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTriWall
+            // 
+            this.radioButtonTriWall.AutoSize = true;
+            this.radioButtonTriWall.Location = new System.Drawing.Point(17, 42);
+            this.radioButtonTriWall.Name = "radioButtonTriWall";
+            this.radioButtonTriWall.Size = new System.Drawing.Size(46, 17);
+            this.radioButtonTriWall.TabIndex = 1;
+            this.radioButtonTriWall.Text = "Wall";
+            this.radioButtonTriWall.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTriFloor
+            // 
+            this.radioButtonTriFloor.AutoSize = true;
+            this.radioButtonTriFloor.Checked = true;
+            this.radioButtonTriFloor.Location = new System.Drawing.Point(17, 19);
+            this.radioButtonTriFloor.Name = "radioButtonTriFloor";
+            this.radioButtonTriFloor.Size = new System.Drawing.Size(48, 17);
+            this.radioButtonTriFloor.TabIndex = 0;
+            this.radioButtonTriFloor.TabStop = true;
+            this.radioButtonTriFloor.Text = "Floor";
+            this.radioButtonTriFloor.UseVisualStyleBackColor = true;
+            // 
+            // NoTearFlowLayoutPanelTriangles
+            // 
+            this.NoTearFlowLayoutPanelTriangles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoTearFlowLayoutPanelTriangles.AutoScroll = true;
+            this.NoTearFlowLayoutPanelTriangles.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(191, 5);
+            this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(816, 192);
+            this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
+            // 
             // tabPageWater
             // 
             this.tabPageWater.Controls.Add(this.noTearFlowLayoutPanelWater);
@@ -1080,11 +1231,105 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.noTearFlowLayoutPanelWater.AutoScroll = true;
+            this.noTearFlowLayoutPanelWater.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.noTearFlowLayoutPanelWater.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelWater.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelWater.Name = "noTearFlowLayoutPanelWater";
             this.noTearFlowLayoutPanelWater.Size = new System.Drawing.Size(1008, 196);
             this.noTearFlowLayoutPanelWater.TabIndex = 2;
+            // 
+            // tabPageFile
+            // 
+            this.tabPageFile.Controls.Add(this.noTearFlowLayoutPanelFile);
+            this.tabPageFile.Location = new System.Drawing.Point(4, 22);
+            this.tabPageFile.Name = "tabPageFile";
+            this.tabPageFile.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageFile.Size = new System.Drawing.Size(1012, 202);
+            this.tabPageFile.TabIndex = 10;
+            this.tabPageFile.Text = "File";
+            // 
+            // noTearFlowLayoutPanelFile
+            // 
+            this.noTearFlowLayoutPanelFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelFile.AutoScroll = true;
+            this.noTearFlowLayoutPanelFile.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(5, 5);
+            this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
+            this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(1002, 192);
+            this.noTearFlowLayoutPanelFile.TabIndex = 2;
+            // 
+            // tabPageLevel
+            // 
+            this.tabPageLevel.Controls.Add(this.noTearFlowLayoutPanelLevel);
+            this.tabPageLevel.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLevel.Name = "tabPageLevel";
+            this.tabPageLevel.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLevel.Size = new System.Drawing.Size(1012, 202);
+            this.tabPageLevel.TabIndex = 16;
+            this.tabPageLevel.Text = "Level";
+            // 
+            // noTearFlowLayoutPanelLevel
+            // 
+            this.noTearFlowLayoutPanelLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelLevel.AutoScroll = true;
+            this.noTearFlowLayoutPanelLevel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelLevel.Location = new System.Drawing.Point(5, 5);
+            this.noTearFlowLayoutPanelLevel.Margin = new System.Windows.Forms.Padding(2);
+            this.noTearFlowLayoutPanelLevel.Name = "noTearFlowLayoutPanelLevel";
+            this.noTearFlowLayoutPanelLevel.Size = new System.Drawing.Size(1002, 192);
+            this.noTearFlowLayoutPanelLevel.TabIndex = 2;
+            // 
+            // tabPageMisc
+            // 
+            this.tabPageMisc.Controls.Add(this.panelMiscBorder);
+            this.tabPageMisc.Controls.Add(this.NoTearFlowLayoutPanelMisc);
+            this.tabPageMisc.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMisc.Name = "tabPageMisc";
+            this.tabPageMisc.Size = new System.Drawing.Size(1012, 202);
+            this.tabPageMisc.TabIndex = 9;
+            this.tabPageMisc.Text = "Misc.";
+            // 
+            // panelMiscBorder
+            // 
+            this.panelMiscBorder.Controls.Add(this.pictureBoxMisc);
+            this.panelMiscBorder.Location = new System.Drawing.Point(3, 6);
+            this.panelMiscBorder.Margin = new System.Windows.Forms.Padding(2);
+            this.panelMiscBorder.Name = "panelMiscBorder";
+            this.panelMiscBorder.Size = new System.Drawing.Size(57, 55);
+            this.panelMiscBorder.TabIndex = 4;
+            // 
+            // pictureBoxMisc
+            // 
+            this.pictureBoxMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMisc.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxMisc.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxMisc.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxMisc.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxMisc.Name = "pictureBoxMisc";
+            this.pictureBoxMisc.Size = new System.Drawing.Size(51, 50);
+            this.pictureBoxMisc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxMisc.TabIndex = 0;
+            this.pictureBoxMisc.TabStop = false;
+            // 
+            // NoTearFlowLayoutPanelMisc
+            // 
+            this.NoTearFlowLayoutPanelMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoTearFlowLayoutPanelMisc.AutoScroll = true;
+            this.NoTearFlowLayoutPanelMisc.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelMisc.Location = new System.Drawing.Point(64, 5);
+            this.NoTearFlowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelMisc.Name = "NoTearFlowLayoutPanelMisc";
+            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(946, 195);
+            this.NoTearFlowLayoutPanelMisc.TabIndex = 5;
             // 
             // tabPageDebug
             // 
@@ -1275,212 +1520,249 @@ namespace SM64_Diagnostic
             this.radioButtonDbgEnemyInfo.Text = "Enemy Info";
             this.radioButtonDbgEnemyInfo.UseVisualStyleBackColor = true;
             // 
-            // tabPageMisc
+            // tabPageMap
             // 
-            this.tabPageMisc.Controls.Add(this.panelMiscBorder);
-            this.tabPageMisc.Controls.Add(this.NoTearFlowLayoutPanelMisc);
-            this.tabPageMisc.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMisc.Name = "tabPageMisc";
-            this.tabPageMisc.Size = new System.Drawing.Size(1012, 202);
-            this.tabPageMisc.TabIndex = 9;
-            this.tabPageMisc.Text = "Misc.";
+            this.tabPageMap.Controls.Add(this.splitContainerMap);
+            this.tabPageMap.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMap.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageMap.Name = "tabPageMap";
+            this.tabPageMap.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPageMap.Size = new System.Drawing.Size(1012, 202);
+            this.tabPageMap.TabIndex = 4;
+            this.tabPageMap.Text = "Map";
             // 
-            // panelMiscBorder
+            // splitContainerMap
             // 
-            this.panelMiscBorder.Controls.Add(this.pictureBoxMisc);
-            this.panelMiscBorder.Location = new System.Drawing.Point(3, 6);
-            this.panelMiscBorder.Margin = new System.Windows.Forms.Padding(2);
-            this.panelMiscBorder.Name = "panelMiscBorder";
-            this.panelMiscBorder.Size = new System.Drawing.Size(57, 55);
-            this.panelMiscBorder.TabIndex = 4;
-            // 
-            // pictureBoxMisc
-            // 
-            this.pictureBoxMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.splitContainerMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxMisc.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxMisc.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxMisc.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxMisc.MaximumSize = new System.Drawing.Size(133, 130);
-            this.pictureBoxMisc.Name = "pictureBoxMisc";
-            this.pictureBoxMisc.Size = new System.Drawing.Size(51, 50);
-            this.pictureBoxMisc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxMisc.TabIndex = 0;
-            this.pictureBoxMisc.TabStop = false;
+            this.splitContainerMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMap.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerMap.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainerMap.Name = "splitContainerMap";
             // 
-            // NoTearFlowLayoutPanelMisc
+            // splitContainerMap.Panel1
             // 
-            this.NoTearFlowLayoutPanelMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowFloor);
+            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowCamera);
+            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowHolp);
+            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowObj);
+            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowMario);
+            this.splitContainerMap.Panel1.Controls.Add(this.labelMapName);
+            this.splitContainerMap.Panel1.Controls.Add(this.trackBarMapIconSize);
+            this.splitContainerMap.Panel1.Controls.Add(this.labelMapIconSize);
+            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowInactive);
+            this.splitContainerMap.Panel1.Controls.Add(this.labelMapZoom);
+            this.splitContainerMap.Panel1.Controls.Add(this.labelMapId);
+            this.splitContainerMap.Panel1.Controls.Add(this.labelMapSubName);
+            this.splitContainerMap.Panel1.Controls.Add(this.trackBarMapZoom);
+            // 
+            // splitContainerMap.Panel2
+            // 
+            this.splitContainerMap.Panel2.Controls.Add(this.glControlMap);
+            this.splitContainerMap.Panel2.Controls.Add(this.labelMapPu);
+            this.splitContainerMap.Panel2.Controls.Add(this.labelMapPuValue);
+            this.splitContainerMap.Panel2.Controls.Add(this.labelMapQpu);
+            this.splitContainerMap.Panel2.Controls.Add(this.labelMapQpuValue);
+            this.splitContainerMap.Size = new System.Drawing.Size(1005, 195);
+            this.splitContainerMap.SplitterDistance = 332;
+            this.splitContainerMap.SplitterWidth = 3;
+            this.splitContainerMap.TabIndex = 16;
+            // 
+            // checkBoxMapShowFloor
+            // 
+            this.checkBoxMapShowFloor.AutoSize = true;
+            this.checkBoxMapShowFloor.Location = new System.Drawing.Point(5, 122);
+            this.checkBoxMapShowFloor.Name = "checkBoxMapShowFloor";
+            this.checkBoxMapShowFloor.Size = new System.Drawing.Size(97, 17);
+            this.checkBoxMapShowFloor.TabIndex = 19;
+            this.checkBoxMapShowFloor.Text = "Show Floor Tri.";
+            this.checkBoxMapShowFloor.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapShowCamera
+            // 
+            this.checkBoxMapShowCamera.AutoSize = true;
+            this.checkBoxMapShowCamera.Location = new System.Drawing.Point(112, 122);
+            this.checkBoxMapShowCamera.Name = "checkBoxMapShowCamera";
+            this.checkBoxMapShowCamera.Size = new System.Drawing.Size(92, 17);
+            this.checkBoxMapShowCamera.TabIndex = 18;
+            this.checkBoxMapShowCamera.Text = "Show Camera";
+            this.checkBoxMapShowCamera.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapShowHolp
+            // 
+            this.checkBoxMapShowHolp.AutoSize = true;
+            this.checkBoxMapShowHolp.Location = new System.Drawing.Point(112, 102);
+            this.checkBoxMapShowHolp.Name = "checkBoxMapShowHolp";
+            this.checkBoxMapShowHolp.Size = new System.Drawing.Size(85, 17);
+            this.checkBoxMapShowHolp.TabIndex = 17;
+            this.checkBoxMapShowHolp.Text = "Show HOLP";
+            this.checkBoxMapShowHolp.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapShowObj
+            // 
+            this.checkBoxMapShowObj.AutoSize = true;
+            this.checkBoxMapShowObj.Location = new System.Drawing.Point(5, 102);
+            this.checkBoxMapShowObj.Name = "checkBoxMapShowObj";
+            this.checkBoxMapShowObj.Size = new System.Drawing.Size(92, 17);
+            this.checkBoxMapShowObj.TabIndex = 16;
+            this.checkBoxMapShowObj.Text = "Show Objects";
+            this.checkBoxMapShowObj.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapShowMario
+            // 
+            this.checkBoxMapShowMario.AutoSize = true;
+            this.checkBoxMapShowMario.Checked = true;
+            this.checkBoxMapShowMario.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMapShowMario.Location = new System.Drawing.Point(112, 81);
+            this.checkBoxMapShowMario.Name = "checkBoxMapShowMario";
+            this.checkBoxMapShowMario.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxMapShowMario.TabIndex = 15;
+            this.checkBoxMapShowMario.Text = "Show Mario";
+            this.checkBoxMapShowMario.UseVisualStyleBackColor = true;
+            // 
+            // labelMapName
+            // 
+            this.labelMapName.AutoSize = true;
+            this.labelMapName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMapName.Location = new System.Drawing.Point(2, 3);
+            this.labelMapName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapName.Name = "labelMapName";
+            this.labelMapName.Size = new System.Drawing.Size(60, 13);
+            this.labelMapName.TabIndex = 3;
+            this.labelMapName.Text = "Unknown";
+            // 
+            // trackBarMapIconSize
+            // 
+            this.trackBarMapIconSize.Location = new System.Drawing.Point(106, 52);
+            this.trackBarMapIconSize.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarMapIconSize.Maximum = 100;
+            this.trackBarMapIconSize.Minimum = 5;
+            this.trackBarMapIconSize.Name = "trackBarMapIconSize";
+            this.trackBarMapIconSize.Size = new System.Drawing.Size(94, 45);
+            this.trackBarMapIconSize.SmallChange = 5;
+            this.trackBarMapIconSize.TabIndex = 10;
+            this.trackBarMapIconSize.TickFrequency = 10;
+            this.trackBarMapIconSize.Value = 5;
+            // 
+            // labelMapIconSize
+            // 
+            this.labelMapIconSize.AutoSize = true;
+            this.labelMapIconSize.Location = new System.Drawing.Point(129, 37);
+            this.labelMapIconSize.Name = "labelMapIconSize";
+            this.labelMapIconSize.Size = new System.Drawing.Size(54, 13);
+            this.labelMapIconSize.TabIndex = 13;
+            this.labelMapIconSize.Text = "Icon Size:";
+            // 
+            // checkBoxMapShowInactive
+            // 
+            this.checkBoxMapShowInactive.AutoSize = true;
+            this.checkBoxMapShowInactive.Location = new System.Drawing.Point(5, 81);
+            this.checkBoxMapShowInactive.Name = "checkBoxMapShowInactive";
+            this.checkBoxMapShowInactive.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxMapShowInactive.TabIndex = 14;
+            this.checkBoxMapShowInactive.Text = "Show Inactive";
+            this.checkBoxMapShowInactive.UseVisualStyleBackColor = true;
+            // 
+            // labelMapZoom
+            // 
+            this.labelMapZoom.AutoSize = true;
+            this.labelMapZoom.Location = new System.Drawing.Point(28, 37);
+            this.labelMapZoom.Name = "labelMapZoom";
+            this.labelMapZoom.Size = new System.Drawing.Size(37, 13);
+            this.labelMapZoom.TabIndex = 12;
+            this.labelMapZoom.Text = "Zoom:";
+            // 
+            // labelMapId
+            // 
+            this.labelMapId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelMapId.Location = new System.Drawing.Point(218, 176);
+            this.labelMapId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapId.Name = "labelMapId";
+            this.labelMapId.Size = new System.Drawing.Size(110, 13);
+            this.labelMapId.TabIndex = 4;
+            this.labelMapId.Text = "[0:0:0:0]";
+            this.labelMapId.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelMapSubName
+            // 
+            this.labelMapSubName.AutoSize = true;
+            this.labelMapSubName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMapSubName.Location = new System.Drawing.Point(2, 16);
+            this.labelMapSubName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapSubName.Name = "labelMapSubName";
+            this.labelMapSubName.Size = new System.Drawing.Size(53, 13);
+            this.labelMapSubName.TabIndex = 7;
+            this.labelMapSubName.Text = "Unknown";
+            // 
+            // trackBarMapZoom
+            // 
+            this.trackBarMapZoom.Location = new System.Drawing.Point(5, 52);
+            this.trackBarMapZoom.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarMapZoom.Maximum = 100;
+            this.trackBarMapZoom.Name = "trackBarMapZoom";
+            this.trackBarMapZoom.Size = new System.Drawing.Size(91, 45);
+            this.trackBarMapZoom.SmallChange = 5;
+            this.trackBarMapZoom.TabIndex = 9;
+            this.trackBarMapZoom.TickFrequency = 10;
+            // 
+            // glControlMap
+            // 
+            this.glControlMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoTearFlowLayoutPanelMisc.AutoScroll = true;
-            this.NoTearFlowLayoutPanelMisc.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelMisc.Location = new System.Drawing.Point(64, 5);
-            this.NoTearFlowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
-            this.NoTearFlowLayoutPanelMisc.Name = "NoTearFlowLayoutPanelMisc";
-            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(946, 195);
-            this.NoTearFlowLayoutPanelMisc.TabIndex = 5;
+            this.glControlMap.BackColor = System.Drawing.Color.Black;
+            this.glControlMap.Location = new System.Drawing.Point(4, 3);
+            this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.glControlMap.Name = "glControlMap";
+            this.glControlMap.Size = new System.Drawing.Size(664, 169);
+            this.glControlMap.TabIndex = 0;
+            this.glControlMap.VSync = false;
+            this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
             // 
-            // tabPageTriangles
+            // labelMapPu
             // 
-            this.tabPageTriangles.Controls.Add(this.buttonGoToVClosest);
-            this.tabPageTriangles.Controls.Add(this.checkBoxVertexMisalignment);
-            this.tabPageTriangles.Controls.Add(this.buttonRetrieveTriangle);
-            this.tabPageTriangles.Controls.Add(this.buttonGoToV3);
-            this.tabPageTriangles.Controls.Add(this.buttonGoToV2);
-            this.tabPageTriangles.Controls.Add(this.buttonGoToV1);
-            this.tabPageTriangles.Controls.Add(this.label4);
-            this.tabPageTriangles.Controls.Add(this.maskedTextBoxOtherTriangle);
-            this.tabPageTriangles.Controls.Add(this.radioButtonTriOther);
-            this.tabPageTriangles.Controls.Add(this.radioButtonTriCeiling);
-            this.tabPageTriangles.Controls.Add(this.radioButtonTriWall);
-            this.tabPageTriangles.Controls.Add(this.radioButtonTriFloor);
-            this.tabPageTriangles.Controls.Add(this.NoTearFlowLayoutPanelTriangles);
-            this.tabPageTriangles.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTriangles.Name = "tabPageTriangles";
-            this.tabPageTriangles.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTriangles.Size = new System.Drawing.Size(1012, 202);
-            this.tabPageTriangles.TabIndex = 11;
-            this.tabPageTriangles.Text = "Triangles";
+            this.labelMapPu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelMapPu.AutoSize = true;
+            this.labelMapPu.Location = new System.Drawing.Point(2, 177);
+            this.labelMapPu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapPu.Name = "labelMapPu";
+            this.labelMapPu.Size = new System.Drawing.Size(61, 13);
+            this.labelMapPu.TabIndex = 5;
+            this.labelMapPu.Text = "PU [X:Y:Z]:";
             // 
-            // buttonGoToVClosest
+            // labelMapPuValue
             // 
-            this.buttonGoToVClosest.Location = new System.Drawing.Point(6, 141);
-            this.buttonGoToVClosest.Name = "buttonGoToVClosest";
-            this.buttonGoToVClosest.Size = new System.Drawing.Size(90, 23);
-            this.buttonGoToVClosest.TabIndex = 13;
-            this.buttonGoToVClosest.Text = "Goto Closest";
-            this.buttonGoToVClosest.UseVisualStyleBackColor = true;
+            this.labelMapPuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelMapPuValue.AutoSize = true;
+            this.labelMapPuValue.Location = new System.Drawing.Point(67, 177);
+            this.labelMapPuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapPuValue.Name = "labelMapPuValue";
+            this.labelMapPuValue.Size = new System.Drawing.Size(37, 13);
+            this.labelMapPuValue.TabIndex = 8;
+            this.labelMapPuValue.Text = "[0:0:0]";
             // 
-            // checkBoxVertexMisalignment
+            // labelMapQpu
             // 
-            this.checkBoxVertexMisalignment.AutoSize = true;
-            this.checkBoxVertexMisalignment.Location = new System.Drawing.Point(6, 170);
-            this.checkBoxVertexMisalignment.Name = "checkBoxVertexMisalignment";
-            this.checkBoxVertexMisalignment.Size = new System.Drawing.Size(151, 17);
-            this.checkBoxVertexMisalignment.TabIndex = 12;
-            this.checkBoxVertexMisalignment.Text = "Vertex Misalignment Offset";
-            this.checkBoxVertexMisalignment.UseVisualStyleBackColor = true;
+            this.labelMapQpu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelMapQpu.AutoSize = true;
+            this.labelMapQpu.Location = new System.Drawing.Point(123, 177);
+            this.labelMapQpu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapQpu.Name = "labelMapQpu";
+            this.labelMapQpu.Size = new System.Drawing.Size(69, 13);
+            this.labelMapQpu.TabIndex = 6;
+            this.labelMapQpu.Text = "QPU [X:Y:Z]:";
             // 
-            // buttonRetrieveTriangle
+            // labelMapQpuValue
             // 
-            this.buttonRetrieveTriangle.Location = new System.Drawing.Point(102, 141);
-            this.buttonRetrieveTriangle.Name = "buttonRetrieveTriangle";
-            this.buttonRetrieveTriangle.Size = new System.Drawing.Size(84, 23);
-            this.buttonRetrieveTriangle.TabIndex = 11;
-            this.buttonRetrieveTriangle.Text = "Retrieve";
-            this.buttonRetrieveTriangle.UseVisualStyleBackColor = true;
-            // 
-            // buttonGoToV3
-            // 
-            this.buttonGoToV3.Location = new System.Drawing.Point(130, 112);
-            this.buttonGoToV3.Name = "buttonGoToV3";
-            this.buttonGoToV3.Size = new System.Drawing.Size(56, 23);
-            this.buttonGoToV3.TabIndex = 10;
-            this.buttonGoToV3.Text = "Goto V3";
-            this.buttonGoToV3.UseVisualStyleBackColor = true;
-            // 
-            // buttonGoToV2
-            // 
-            this.buttonGoToV2.Location = new System.Drawing.Point(69, 112);
-            this.buttonGoToV2.Name = "buttonGoToV2";
-            this.buttonGoToV2.Size = new System.Drawing.Size(55, 23);
-            this.buttonGoToV2.TabIndex = 9;
-            this.buttonGoToV2.Text = "Goto V2";
-            this.buttonGoToV2.UseVisualStyleBackColor = true;
-            // 
-            // buttonGoToV1
-            // 
-            this.buttonGoToV1.Location = new System.Drawing.Point(6, 112);
-            this.buttonGoToV1.Name = "buttonGoToV1";
-            this.buttonGoToV1.Size = new System.Drawing.Size(57, 23);
-            this.buttonGoToV1.TabIndex = 8;
-            this.buttonGoToV1.Text = "Goto V1";
-            this.buttonGoToV1.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Triangle:";
-            // 
-            // maskedTextBoxOtherTriangle
-            // 
-            this.maskedTextBoxOtherTriangle.Location = new System.Drawing.Point(76, 87);
-            this.maskedTextBoxOtherTriangle.Margin = new System.Windows.Forms.Padding(2);
-            this.maskedTextBoxOtherTriangle.Mask = "\\0xaaAAAAAA";
-            this.maskedTextBoxOtherTriangle.Name = "maskedTextBoxOtherTriangle";
-            this.maskedTextBoxOtherTriangle.Size = new System.Drawing.Size(87, 20);
-            this.maskedTextBoxOtherTriangle.TabIndex = 5;
-            // 
-            // radioButtonTriOther
-            // 
-            this.radioButtonTriOther.AutoSize = true;
-            this.radioButtonTriOther.Location = new System.Drawing.Point(17, 88);
-            this.radioButtonTriOther.Name = "radioButtonTriOther";
-            this.radioButtonTriOther.Size = new System.Drawing.Size(54, 17);
-            this.radioButtonTriOther.TabIndex = 3;
-            this.radioButtonTriOther.Text = "Other:";
-            this.radioButtonTriOther.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonTriCeiling
-            // 
-            this.radioButtonTriCeiling.AutoSize = true;
-            this.radioButtonTriCeiling.Location = new System.Drawing.Point(17, 65);
-            this.radioButtonTriCeiling.Name = "radioButtonTriCeiling";
-            this.radioButtonTriCeiling.Size = new System.Drawing.Size(56, 17);
-            this.radioButtonTriCeiling.TabIndex = 2;
-            this.radioButtonTriCeiling.Text = "Ceiling";
-            this.radioButtonTriCeiling.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonTriWall
-            // 
-            this.radioButtonTriWall.AutoSize = true;
-            this.radioButtonTriWall.Location = new System.Drawing.Point(17, 42);
-            this.radioButtonTriWall.Name = "radioButtonTriWall";
-            this.radioButtonTriWall.Size = new System.Drawing.Size(46, 17);
-            this.radioButtonTriWall.TabIndex = 1;
-            this.radioButtonTriWall.Text = "Wall";
-            this.radioButtonTriWall.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonTriFloor
-            // 
-            this.radioButtonTriFloor.AutoSize = true;
-            this.radioButtonTriFloor.Checked = true;
-            this.radioButtonTriFloor.Location = new System.Drawing.Point(17, 19);
-            this.radioButtonTriFloor.Name = "radioButtonTriFloor";
-            this.radioButtonTriFloor.Size = new System.Drawing.Size(48, 17);
-            this.radioButtonTriFloor.TabIndex = 0;
-            this.radioButtonTriFloor.TabStop = true;
-            this.radioButtonTriFloor.Text = "Floor";
-            this.radioButtonTriFloor.UseVisualStyleBackColor = true;
-            // 
-            // NoTearFlowLayoutPanelTriangles
-            // 
-            this.NoTearFlowLayoutPanelTriangles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoTearFlowLayoutPanelTriangles.AutoScroll = true;
-            this.NoTearFlowLayoutPanelTriangles.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(191, 5);
-            this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
-            this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(816, 192);
-            this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
-            // 
-            // tabPageFile
-            // 
-            this.tabPageFile.Controls.Add(this.noTearFlowLayoutPanelFile);
-            this.tabPageFile.Location = new System.Drawing.Point(4, 22);
-            this.tabPageFile.Name = "tabPageFile";
-            this.tabPageFile.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFile.Size = new System.Drawing.Size(1012, 202);
-            this.tabPageFile.TabIndex = 10;
-            this.tabPageFile.Text = "File";
+            this.labelMapQpuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelMapQpuValue.AutoSize = true;
+            this.labelMapQpuValue.Location = new System.Drawing.Point(196, 177);
+            this.labelMapQpuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapQpuValue.Name = "labelMapQpuValue";
+            this.labelMapQpuValue.Size = new System.Drawing.Size(37, 13);
+            this.labelMapQpuValue.TabIndex = 1;
+            this.labelMapQpuValue.Text = "[0:0:0]";
             // 
             // tabPagePu
             // 
@@ -1711,250 +1993,6 @@ namespace SM64_Diagnostic
             this.buttonPuConHome.TabIndex = 1;
             this.buttonPuConHome.UseVisualStyleBackColor = true;
             // 
-            // tabPageMap
-            // 
-            this.tabPageMap.Controls.Add(this.splitContainerMap);
-            this.tabPageMap.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMap.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageMap.Name = "tabPageMap";
-            this.tabPageMap.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageMap.Size = new System.Drawing.Size(1012, 202);
-            this.tabPageMap.TabIndex = 4;
-            this.tabPageMap.Text = "Map";
-            // 
-            // splitContainerMap
-            // 
-            this.splitContainerMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainerMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerMap.Location = new System.Drawing.Point(3, 3);
-            this.splitContainerMap.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainerMap.Name = "splitContainerMap";
-            // 
-            // splitContainerMap.Panel1
-            // 
-            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowFloor);
-            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowCamera);
-            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowHolp);
-            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowObj);
-            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowMario);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapName);
-            this.splitContainerMap.Panel1.Controls.Add(this.trackBarMapIconSize);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapIconSize);
-            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowInactive);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapZoom);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapId);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapSubName);
-            this.splitContainerMap.Panel1.Controls.Add(this.trackBarMapZoom);
-            // 
-            // splitContainerMap.Panel2
-            // 
-            this.splitContainerMap.Panel2.Controls.Add(this.glControlMap);
-            this.splitContainerMap.Panel2.Controls.Add(this.labelMapPu);
-            this.splitContainerMap.Panel2.Controls.Add(this.labelMapPuValue);
-            this.splitContainerMap.Panel2.Controls.Add(this.labelMapQpu);
-            this.splitContainerMap.Panel2.Controls.Add(this.labelMapQpuValue);
-            this.splitContainerMap.Size = new System.Drawing.Size(1005, 195);
-            this.splitContainerMap.SplitterDistance = 332;
-            this.splitContainerMap.SplitterWidth = 3;
-            this.splitContainerMap.TabIndex = 16;
-            // 
-            // checkBoxMapShowFloor
-            // 
-            this.checkBoxMapShowFloor.AutoSize = true;
-            this.checkBoxMapShowFloor.Location = new System.Drawing.Point(5, 122);
-            this.checkBoxMapShowFloor.Name = "checkBoxMapShowFloor";
-            this.checkBoxMapShowFloor.Size = new System.Drawing.Size(97, 17);
-            this.checkBoxMapShowFloor.TabIndex = 19;
-            this.checkBoxMapShowFloor.Text = "Show Floor Tri.";
-            this.checkBoxMapShowFloor.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMapShowCamera
-            // 
-            this.checkBoxMapShowCamera.AutoSize = true;
-            this.checkBoxMapShowCamera.Location = new System.Drawing.Point(112, 122);
-            this.checkBoxMapShowCamera.Name = "checkBoxMapShowCamera";
-            this.checkBoxMapShowCamera.Size = new System.Drawing.Size(92, 17);
-            this.checkBoxMapShowCamera.TabIndex = 18;
-            this.checkBoxMapShowCamera.Text = "Show Camera";
-            this.checkBoxMapShowCamera.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMapShowHolp
-            // 
-            this.checkBoxMapShowHolp.AutoSize = true;
-            this.checkBoxMapShowHolp.Location = new System.Drawing.Point(112, 102);
-            this.checkBoxMapShowHolp.Name = "checkBoxMapShowHolp";
-            this.checkBoxMapShowHolp.Size = new System.Drawing.Size(85, 17);
-            this.checkBoxMapShowHolp.TabIndex = 17;
-            this.checkBoxMapShowHolp.Text = "Show HOLP";
-            this.checkBoxMapShowHolp.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMapShowObj
-            // 
-            this.checkBoxMapShowObj.AutoSize = true;
-            this.checkBoxMapShowObj.Location = new System.Drawing.Point(5, 102);
-            this.checkBoxMapShowObj.Name = "checkBoxMapShowObj";
-            this.checkBoxMapShowObj.Size = new System.Drawing.Size(92, 17);
-            this.checkBoxMapShowObj.TabIndex = 16;
-            this.checkBoxMapShowObj.Text = "Show Objects";
-            this.checkBoxMapShowObj.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMapShowMario
-            // 
-            this.checkBoxMapShowMario.AutoSize = true;
-            this.checkBoxMapShowMario.Checked = true;
-            this.checkBoxMapShowMario.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMapShowMario.Location = new System.Drawing.Point(112, 81);
-            this.checkBoxMapShowMario.Name = "checkBoxMapShowMario";
-            this.checkBoxMapShowMario.Size = new System.Drawing.Size(82, 17);
-            this.checkBoxMapShowMario.TabIndex = 15;
-            this.checkBoxMapShowMario.Text = "Show Mario";
-            this.checkBoxMapShowMario.UseVisualStyleBackColor = true;
-            // 
-            // labelMapName
-            // 
-            this.labelMapName.AutoSize = true;
-            this.labelMapName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMapName.Location = new System.Drawing.Point(2, 3);
-            this.labelMapName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapName.Name = "labelMapName";
-            this.labelMapName.Size = new System.Drawing.Size(60, 13);
-            this.labelMapName.TabIndex = 3;
-            this.labelMapName.Text = "Unknown";
-            // 
-            // trackBarMapIconSize
-            // 
-            this.trackBarMapIconSize.Location = new System.Drawing.Point(106, 52);
-            this.trackBarMapIconSize.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarMapIconSize.Maximum = 100;
-            this.trackBarMapIconSize.Minimum = 5;
-            this.trackBarMapIconSize.Name = "trackBarMapIconSize";
-            this.trackBarMapIconSize.Size = new System.Drawing.Size(94, 45);
-            this.trackBarMapIconSize.SmallChange = 5;
-            this.trackBarMapIconSize.TabIndex = 10;
-            this.trackBarMapIconSize.TickFrequency = 10;
-            this.trackBarMapIconSize.Value = 5;
-            // 
-            // labelMapIconSize
-            // 
-            this.labelMapIconSize.AutoSize = true;
-            this.labelMapIconSize.Location = new System.Drawing.Point(129, 37);
-            this.labelMapIconSize.Name = "labelMapIconSize";
-            this.labelMapIconSize.Size = new System.Drawing.Size(54, 13);
-            this.labelMapIconSize.TabIndex = 13;
-            this.labelMapIconSize.Text = "Icon Size:";
-            // 
-            // checkBoxMapShowInactive
-            // 
-            this.checkBoxMapShowInactive.AutoSize = true;
-            this.checkBoxMapShowInactive.Location = new System.Drawing.Point(5, 81);
-            this.checkBoxMapShowInactive.Name = "checkBoxMapShowInactive";
-            this.checkBoxMapShowInactive.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxMapShowInactive.TabIndex = 14;
-            this.checkBoxMapShowInactive.Text = "Show Inactive";
-            this.checkBoxMapShowInactive.UseVisualStyleBackColor = true;
-            // 
-            // labelMapZoom
-            // 
-            this.labelMapZoom.AutoSize = true;
-            this.labelMapZoom.Location = new System.Drawing.Point(28, 37);
-            this.labelMapZoom.Name = "labelMapZoom";
-            this.labelMapZoom.Size = new System.Drawing.Size(37, 13);
-            this.labelMapZoom.TabIndex = 12;
-            this.labelMapZoom.Text = "Zoom:";
-            // 
-            // labelMapId
-            // 
-            this.labelMapId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelMapId.Location = new System.Drawing.Point(218, 176);
-            this.labelMapId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapId.Name = "labelMapId";
-            this.labelMapId.Size = new System.Drawing.Size(110, 13);
-            this.labelMapId.TabIndex = 4;
-            this.labelMapId.Text = "[0:0:0:0]";
-            this.labelMapId.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelMapSubName
-            // 
-            this.labelMapSubName.AutoSize = true;
-            this.labelMapSubName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMapSubName.Location = new System.Drawing.Point(2, 16);
-            this.labelMapSubName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapSubName.Name = "labelMapSubName";
-            this.labelMapSubName.Size = new System.Drawing.Size(53, 13);
-            this.labelMapSubName.TabIndex = 7;
-            this.labelMapSubName.Text = "Unknown";
-            // 
-            // trackBarMapZoom
-            // 
-            this.trackBarMapZoom.Location = new System.Drawing.Point(5, 52);
-            this.trackBarMapZoom.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarMapZoom.Maximum = 100;
-            this.trackBarMapZoom.Name = "trackBarMapZoom";
-            this.trackBarMapZoom.Size = new System.Drawing.Size(91, 45);
-            this.trackBarMapZoom.SmallChange = 5;
-            this.trackBarMapZoom.TabIndex = 9;
-            this.trackBarMapZoom.TickFrequency = 10;
-            // 
-            // glControlMap
-            // 
-            this.glControlMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.glControlMap.BackColor = System.Drawing.Color.Black;
-            this.glControlMap.Location = new System.Drawing.Point(4, 3);
-            this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(663, 169);
-            this.glControlMap.TabIndex = 0;
-            this.glControlMap.VSync = false;
-            this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
-            // 
-            // labelMapPu
-            // 
-            this.labelMapPu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMapPu.AutoSize = true;
-            this.labelMapPu.Location = new System.Drawing.Point(2, 177);
-            this.labelMapPu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapPu.Name = "labelMapPu";
-            this.labelMapPu.Size = new System.Drawing.Size(61, 13);
-            this.labelMapPu.TabIndex = 5;
-            this.labelMapPu.Text = "PU [X:Y:Z]:";
-            // 
-            // labelMapPuValue
-            // 
-            this.labelMapPuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMapPuValue.AutoSize = true;
-            this.labelMapPuValue.Location = new System.Drawing.Point(67, 177);
-            this.labelMapPuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapPuValue.Name = "labelMapPuValue";
-            this.labelMapPuValue.Size = new System.Drawing.Size(37, 13);
-            this.labelMapPuValue.TabIndex = 8;
-            this.labelMapPuValue.Text = "[0:0:0]";
-            // 
-            // labelMapQpu
-            // 
-            this.labelMapQpu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMapQpu.AutoSize = true;
-            this.labelMapQpu.Location = new System.Drawing.Point(123, 177);
-            this.labelMapQpu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapQpu.Name = "labelMapQpu";
-            this.labelMapQpu.Size = new System.Drawing.Size(69, 13);
-            this.labelMapQpu.TabIndex = 6;
-            this.labelMapQpu.Text = "QPU [X:Y:Z]:";
-            // 
-            // labelMapQpuValue
-            // 
-            this.labelMapQpuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMapQpuValue.AutoSize = true;
-            this.labelMapQpuValue.Location = new System.Drawing.Point(196, 177);
-            this.labelMapQpuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapQpuValue.Name = "labelMapQpuValue";
-            this.labelMapQpuValue.Size = new System.Drawing.Size(37, 13);
-            this.labelMapQpuValue.TabIndex = 1;
-            this.labelMapQpuValue.Text = "[0:0:0]";
-            // 
             // tabPageExpressions
             // 
             this.tabPageExpressions.BackColor = System.Drawing.Color.Transparent;
@@ -2023,8 +2061,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -2274,6 +2312,28 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
+            // tabPageCamHack
+            // 
+            this.tabPageCamHack.Controls.Add(this.noTearFlowLayoutPanelCamHack);
+            this.tabPageCamHack.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCamHack.Name = "tabPageCamHack";
+            this.tabPageCamHack.Size = new System.Drawing.Size(1012, 202);
+            this.tabPageCamHack.TabIndex = 17;
+            this.tabPageCamHack.Text = "Cam Hack";
+            // 
+            // noTearFlowLayoutPanelCamHack
+            // 
+            this.noTearFlowLayoutPanelCamHack.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelCamHack.AutoScroll = true;
+            this.noTearFlowLayoutPanelCamHack.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
+            this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
+            this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(1008, 198);
+            this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
+            // 
             // tabPageOptions
             // 
             this.tabPageOptions.Controls.Add(this.checkBoxUseOverlays);
@@ -2469,61 +2529,6 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
-            // tabPageLevel
-            // 
-            this.tabPageLevel.Controls.Add(this.noTearFlowLayoutPanelLevel);
-            this.tabPageLevel.Location = new System.Drawing.Point(4, 22);
-            this.tabPageLevel.Name = "tabPageLevel";
-            this.tabPageLevel.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLevel.Size = new System.Drawing.Size(1012, 202);
-            this.tabPageLevel.TabIndex = 16;
-            this.tabPageLevel.Text = "Level";
-            // 
-            // tabPageCamHack
-            // 
-            this.tabPageCamHack.Controls.Add(this.noTearFlowLayoutPanelCamHack);
-            this.tabPageCamHack.Location = new System.Drawing.Point(4, 22);
-            this.tabPageCamHack.Name = "tabPageCamHack";
-            this.tabPageCamHack.Size = new System.Drawing.Size(1012, 202);
-            this.tabPageCamHack.TabIndex = 17;
-            this.tabPageCamHack.Text = "Cam Hack";
-            // 
-            // noTearFlowLayoutPanelFile
-            // 
-            this.noTearFlowLayoutPanelFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanelFile.AutoScroll = true;
-            this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(5, 5);
-            this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
-            this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(1002, 192);
-            this.noTearFlowLayoutPanelFile.TabIndex = 2;
-            // 
-            // noTearFlowLayoutPanelLevel
-            // 
-            this.noTearFlowLayoutPanelLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanelLevel.AutoScroll = true;
-            this.noTearFlowLayoutPanelLevel.Location = new System.Drawing.Point(5, 5);
-            this.noTearFlowLayoutPanelLevel.Margin = new System.Windows.Forms.Padding(2);
-            this.noTearFlowLayoutPanelLevel.Name = "noTearFlowLayoutPanelLevel";
-            this.noTearFlowLayoutPanelLevel.Size = new System.Drawing.Size(1002, 192);
-            this.noTearFlowLayoutPanelLevel.TabIndex = 2;
-            // 
-            // noTearFlowLayoutPanelCamHack
-            // 
-            this.noTearFlowLayoutPanelCamHack.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanelCamHack.AutoScroll = true;
-            this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
-            this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
-            this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(1008, 198);
-            this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2563,29 +2568,27 @@ namespace SM64_Diagnostic
             this.tabPageMario.ResumeLayout(false);
             this.panelMarioBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).EndInit();
+            this.tabPageActions.ResumeLayout(false);
             this.tabPageHud.ResumeLayout(false);
             this.panelHudBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).EndInit();
-            this.tabPageActions.ResumeLayout(false);
             this.tabPageCamera.ResumeLayout(false);
             this.panelCameraBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).EndInit();
+            this.tabPageTriangles.ResumeLayout(false);
+            this.tabPageTriangles.PerformLayout();
             this.tabPageWater.ResumeLayout(false);
+            this.tabPageFile.ResumeLayout(false);
+            this.tabPageLevel.ResumeLayout(false);
+            this.tabPageMisc.ResumeLayout(false);
+            this.panelMiscBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
             this.tabPageDebug.ResumeLayout(false);
             this.tabPageDebug.PerformLayout();
             this.panelDebugBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
             this.NoTearFlowLayoutPanelDebugDisplayType.ResumeLayout(false);
             this.NoTearFlowLayoutPanelDebugDisplayType.PerformLayout();
-            this.tabPageMisc.ResumeLayout(false);
-            this.panelMiscBorder.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
-            this.tabPageTriangles.ResumeLayout(false);
-            this.tabPageTriangles.PerformLayout();
-            this.tabPageFile.ResumeLayout(false);
-            this.tabPagePu.ResumeLayout(false);
-            this.groupBoxPuController.ResumeLayout(false);
-            this.groupBoxPuController.PerformLayout();
             this.tabPageMap.ResumeLayout(false);
             this.splitContainerMap.Panel1.ResumeLayout(false);
             this.splitContainerMap.Panel1.PerformLayout();
@@ -2595,6 +2598,9 @@ namespace SM64_Diagnostic
             this.splitContainerMap.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).EndInit();
+            this.tabPagePu.ResumeLayout(false);
+            this.groupBoxPuController.ResumeLayout(false);
+            this.groupBoxPuController.PerformLayout();
             this.tabPageExpressions.ResumeLayout(false);
             this.tabPageExpressions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressions)).EndInit();
@@ -2609,12 +2615,11 @@ namespace SM64_Diagnostic
             this.groupBoxHackRam.PerformLayout();
             this.groupBoxHackSpawn.ResumeLayout(false);
             this.groupBoxHackSpawn.PerformLayout();
+            this.tabPageCamHack.ResumeLayout(false);
             this.tabPageOptions.ResumeLayout(false);
             this.tabPageOptions.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.tabPageLevel.ResumeLayout(false);
-            this.tabPageCamHack.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

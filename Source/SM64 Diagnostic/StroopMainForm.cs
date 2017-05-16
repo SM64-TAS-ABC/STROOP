@@ -357,7 +357,6 @@ namespace SM64_Diagnostic
 
 #if !DEBUG
             tabControlMain.TabPages.Remove(tabPageExpressions);
-            tabControlMain.TabPages.Remove(tabPageFile);
 #endif
         }
 
