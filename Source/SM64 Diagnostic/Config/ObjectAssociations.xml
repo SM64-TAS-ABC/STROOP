@@ -72,9 +72,11 @@
 	<Data type="int" address="0xF0" objectOffset="true">Blinking Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130000AC" name="Mr. I Particle">
+    <SpawnCode gfxId="0xAA"/>
     <Image path="Mr. I Particle.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130000F8" name="Pink Particle">
+    <SpawnCode gfxId="0xAA"/>
     <Image path="Mr. I Particle.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000118" name="WF Big Pole">
@@ -169,9 +171,10 @@
     <Image path="Cannon Base.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130004E4" name="Cannon Shaft">
+    <SpawnCode gfxId="0x7F"/>
     <Image path="Cannon Shaft.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000500" name="Cannon Base">
+  <Object behaviorScriptAddress="0x13000500" name="Cannon Base?">
     <Image path="Cannon Base.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000528" name="Chuckya">
@@ -205,15 +208,19 @@
 	  <MapImage path="Bullet Bill Blaster Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000624" name="Blastable Corner">
+    <SpawnCode gfxId="0x36"/>
     <Image path="Blastable Corner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000638" name="Blastable Corner">
+    <SpawnCode gfxId="0x36"/>
     <Image path="Blastable Corner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x1300066C" name="Falling Plank">
+    <SpawnCode gfxId="0x38"/>
     <Image path="Falling Plank.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130006A4" name="WF Tower Breakable Block">
+    <SpawnCode gfxId="0x39"/>
     <Image path="WF Tower Breakable Block.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130006D8" name="Rotating Bridge?">
@@ -221,6 +228,7 @@
 	  <MapImage path="WF Rotating Bridge Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130006E0" name="WF Rotating Bridge">
+    <SpawnCode gfxId="0xAF"/>
     <Image path="WF Rotating Bridge.png"/>
 	  <MapImage path="WF Rotating Bridge Top.png" rotates="true"/>
   </Object>
@@ -755,6 +763,7 @@
     <Image path="Flame Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001124" name="Flame">
+    <SpawnCode gfxId="0x90"/>
     <Image path="Orange Flame.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001168" name="Orange Podoboo Spawner">
@@ -799,12 +808,15 @@
     <Data type="byte" address="0x14F" mask="0x02" objectOffset="true" isBool="true">Platforms Loaded</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001318" name="WF Tower Platform (In-and-Out)">
+    <SpawnCode gfxId="0x2E"/>
     <Image path="WF Tower Platform.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001340" name="WF Tower Platform (Elevator)">
+    <SpawnCode gfxId="0x2E"/>
     <Image path="WF Tower Platform.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001368" name="WF Tower Platform (Stationary)">
+    <SpawnCode gfxId="0x2E"/>
     <Image path="WF Tower Platform.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001390" name="Tree Particle Spawner">
@@ -918,6 +930,7 @@
     <Image path="Igloo Barrier.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130016E4" name="Bowser Key (Collectible)">
+    <SpawnCode gfxId="0xCC"/>
     <Image path="Bowser Key.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001714" name="Grand Star">
@@ -972,6 +985,7 @@
     <Image path="Bowser Body Anchor.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001904" name="Flame Breath Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Flame Breath Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001920" name="BitFS Fight Platform">
@@ -985,6 +999,7 @@
     <Image path="Flame Breath.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130019C8" name="Falling Flame">
+    <SpawnCode gfxId="0x90"/>
     <Image path="Orange Falling Flame.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130019C8" name="Orange Falling Flame" gfxId="0x800F8CC8">
@@ -1010,6 +1025,7 @@
     <Image path="Orange Flame.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001AE8" name="Landed Flame">
+    <SpawnCode gfxId="0x90"/>
     <Image path="Orange Flame.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001B2C" name="Aquarium Fish">
@@ -1021,9 +1037,11 @@
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Fish Loaded</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001B70" name="Checkered Elevator Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Checkered Elevator Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001B88" name="Checkered Elevator">
+    <SpawnCode gfxId="0xCA"/>
     <Image path="Checkered Elevator.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001BB4" name="Bowser Key (Opening Door)">
@@ -1081,6 +1099,7 @@
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Wood Loaded</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001E4C" name="Volcano Flame">
+    <SpawnCode gfxId="0x90"/>
     <Image path="Volcano Flame.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001E6C" name="Rotating Volcano Platform">
@@ -1331,6 +1350,7 @@
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Fish Loaded</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002178" name="Blue Fish" subType="0">
+    <SpawnCode gfxId="0xA9"/>
     <Image path="Blue Fish.png"/>
 	  <MapImage path="Blue Fish Top.png" rotates="true"/>
   </Object>
@@ -1496,6 +1516,7 @@
     <Data type="byte" address="0x14F" mask="0x01" objectOffset="true" isBool="true">Opening</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300227C" name="Exclamation Mark">
+    <SpawnCode gfxId="0x84"/>
     <Image path="Exclamation Mark.png"/>
   </Object>
   <Object behaviorScriptAddress="0x1300229C" name="Sound Effect">
@@ -1760,7 +1781,7 @@
     <SpawnCode gfxId="0x00"/>
     <Image path="Glow Spawner.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002B08" name="Sparkles">
+  <Object behaviorScriptAddress="0x13002B08" name="Sparkles?">
     <Image path="Sparkles.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002B5C" name="Scuttlebug">
@@ -1794,7 +1815,6 @@
     <Data type="byte" address="0x17B" objectOffset="true" isBool="true">Falling</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002C14" name="Splash">
-    <SpawnCode gfxId="0xA7"/>
     <Image path="Splash.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002C60" name="Splash Bubble (In Air)">
@@ -1810,6 +1830,7 @@
     <Image path="Water Waves.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002D28" name="Water Ripples">
+    <SpawnCode gfxId="0xA5"/>
     <Image path="Water Ripples.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002D50" name="5 Splash Bubble Spawner">
@@ -1841,6 +1862,7 @@
 	  <MapImage path="Penguin Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002EA8" name="WF Pole Ball">
+    <SpawnCode gfxId="0x55"/>
     <Image path="WF Pole Ball.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002EC0" name="Mario">
@@ -1941,7 +1963,19 @@
     <SpawnCode gfxId="0x00"/>
     <Image path="Seaweed Spawner.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13003174" name="Bob-omb">
+  <Object behaviorScriptAddress="0x13003174" name="Bob-omb" subType="0">
+    <SpawnCode gfxId="0xbc"/>
+    <Image path="Bob-omb.png"/>
+	  <MapImage path="Bob-omb Top.png" rotates="true"/>
+    <Data type="byte" address="0x147" objectOffset="true" isBool="true" invertBool="true">Can Move</Data>
+    <Data type="byte" address="0x18A" objectOffset="true" isBool="true" invertBool="true">Has Coin</Data>
+    <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
+    <Data type="byte" address="0xFB" objectOffset="true" isBool="true">Fuse On</Data>
+    <Data type="int" address="0xFC" objectOffset="true">Fuse Timer</Data>
+    <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
+    <Data type="int" address="0xF4" objectOffset="true">Blinking Timer</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13003174" name="Bob-omb (Stationary)" subType="1">
     <SpawnCode gfxId="0xbc"/>
     <Image path="Bob-omb.png"/>
 	  <MapImage path="Bob-omb Top.png" rotates="true"/>
@@ -1954,16 +1988,17 @@
     <Data type="int" address="0xF4" objectOffset="true">Blinking Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130031AC" name="Bob-omb Fuse Smoke">
+    <SpawnCode gfxId="0x96"/>
     <Image path="Bob-omb Fuse Smoke.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130031DC" name="Bob-omb Buddy">
-    <SpawnCode gfxId="0xBC"/>
+  <Object behaviorScriptAddress="0x130031DC" name="Bob-omb Buddy (Gives Intro)">
+    <SpawnCode gfxId="0xc3"/>
     <Image path="Bob-omb Buddy.png"/>
 	  <MapImage path="Bob-omb Buddy Top.png" rotates="true"/>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="byte" address="0xF7" objectOffset="true">Blinking Timer</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13003228" name="Bob-omb Buddy">
+  <Object behaviorScriptAddress="0x13003228" name="Bob-omb Buddy (Opens Cannon)">
     <SpawnCode gfxId="0xc3"/>
     <Image path="Bob-omb Buddy.png"/>
 	  <MapImage path="Bob-omb Buddy Top.png" rotates="true"/>
@@ -1990,6 +2025,1042 @@
     <Data type="int" address="0x144" objectOffset="true">Text</Data>
     <Data type="byte" address="0x3" mask="0x20" objectOffset="true" isBool="true" invertBool="true">Mario Reading</Data>
   </Object>
+  
+  
+ 
+
+ 
+ <Object behaviorScriptAddress="0x130032E0" name="Sign 00" subType="0">
+  <SpawnCode gfxId="0x00"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 01" subType="1">
+  <SpawnCode gfxId="0x01"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 02" subType="2">
+  <SpawnCode gfxId="0x02"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 03" subType="3">
+  <SpawnCode gfxId="0x03"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 04" subType="4">
+  <SpawnCode gfxId="0x04"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 05" subType="5">
+  <SpawnCode gfxId="0x05"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 06" subType="6">
+  <SpawnCode gfxId="0x06"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 07" subType="7">
+  <SpawnCode gfxId="0x07"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 08" subType="8">
+  <SpawnCode gfxId="0x08"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 09" subType="9">
+  <SpawnCode gfxId="0x09"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 0A" subType="10">
+  <SpawnCode gfxId="0x0A"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 0B" subType="11">
+  <SpawnCode gfxId="0x0B"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 0C" subType="12">
+  <SpawnCode gfxId="0x0C"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 0D" subType="13">
+  <SpawnCode gfxId="0x0D"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 0E" subType="14">
+  <SpawnCode gfxId="0x0E"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 0F" subType="15">
+  <SpawnCode gfxId="0x0F"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 10" subType="16">
+  <SpawnCode gfxId="0x10"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 11" subType="17">
+  <SpawnCode gfxId="0x11"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 12" subType="18">
+  <SpawnCode gfxId="0x12"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 13" subType="19">
+  <SpawnCode gfxId="0x13"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 14" subType="20">
+  <SpawnCode gfxId="0x14"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 15" subType="21">
+  <SpawnCode gfxId="0x15"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 16" subType="22">
+  <SpawnCode gfxId="0x16"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 17" subType="23">
+  <SpawnCode gfxId="0x17"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 18" subType="24">
+  <SpawnCode gfxId="0x18"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 19" subType="25">
+  <SpawnCode gfxId="0x19"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 1A" subType="26">
+  <SpawnCode gfxId="0x1A"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 1B" subType="27">
+  <SpawnCode gfxId="0x1B"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 1C" subType="28">
+  <SpawnCode gfxId="0x1C"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 1D" subType="29">
+  <SpawnCode gfxId="0x1D"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 1E" subType="30">
+  <SpawnCode gfxId="0x1E"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 1F" subType="31">
+  <SpawnCode gfxId="0x1F"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 20" subType="32">
+  <SpawnCode gfxId="0x20"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 21" subType="33">
+  <SpawnCode gfxId="0x21"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 22" subType="34">
+  <SpawnCode gfxId="0x22"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 23" subType="35">
+  <SpawnCode gfxId="0x23"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 24" subType="36">
+  <SpawnCode gfxId="0x24"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 25" subType="37">
+  <SpawnCode gfxId="0x25"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 26" subType="38">
+  <SpawnCode gfxId="0x26"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 27" subType="39">
+  <SpawnCode gfxId="0x27"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 28" subType="40">
+  <SpawnCode gfxId="0x28"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 29" subType="41">
+  <SpawnCode gfxId="0x29"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 2A" subType="42">
+  <SpawnCode gfxId="0x2A"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 2B" subType="43">
+  <SpawnCode gfxId="0x2B"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 2C" subType="44">
+  <SpawnCode gfxId="0x2C"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 2D" subType="45">
+  <SpawnCode gfxId="0x2D"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 2E" subType="46">
+  <SpawnCode gfxId="0x2E"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 2F" subType="47">
+  <SpawnCode gfxId="0x2F"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 30" subType="48">
+  <SpawnCode gfxId="0x30"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 31" subType="49">
+  <SpawnCode gfxId="0x31"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 32" subType="50">
+  <SpawnCode gfxId="0x32"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 33" subType="51">
+  <SpawnCode gfxId="0x33"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 34" subType="52">
+  <SpawnCode gfxId="0x34"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 35" subType="53">
+  <SpawnCode gfxId="0x35"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 36" subType="54">
+  <SpawnCode gfxId="0x36"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 37" subType="55">
+  <SpawnCode gfxId="0x37"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 38" subType="56">
+  <SpawnCode gfxId="0x38"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 39" subType="57">
+  <SpawnCode gfxId="0x39"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 3A" subType="58">
+  <SpawnCode gfxId="0x3A"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 3B" subType="59">
+  <SpawnCode gfxId="0x3B"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 3C" subType="60">
+  <SpawnCode gfxId="0x3C"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 3D" subType="61">
+  <SpawnCode gfxId="0x3D"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 3E" subType="62">
+  <SpawnCode gfxId="0x3E"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 3F" subType="63">
+  <SpawnCode gfxId="0x3F"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 40" subType="64">
+  <SpawnCode gfxId="0x40"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 41" subType="65">
+  <SpawnCode gfxId="0x41"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 42" subType="66">
+  <SpawnCode gfxId="0x42"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 43" subType="67">
+  <SpawnCode gfxId="0x43"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 44" subType="68">
+  <SpawnCode gfxId="0x44"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 45" subType="69">
+  <SpawnCode gfxId="0x45"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 46" subType="70">
+  <SpawnCode gfxId="0x46"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 47" subType="71">
+  <SpawnCode gfxId="0x47"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 48" subType="72">
+  <SpawnCode gfxId="0x48"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 49" subType="73">
+  <SpawnCode gfxId="0x49"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 4A" subType="74">
+  <SpawnCode gfxId="0x4A"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 4B" subType="75">
+  <SpawnCode gfxId="0x4B"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 4C" subType="76">
+  <SpawnCode gfxId="0x4C"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 4D" subType="77">
+  <SpawnCode gfxId="0x4D"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 4E" subType="78">
+  <SpawnCode gfxId="0x4E"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 4F" subType="79">
+  <SpawnCode gfxId="0x4F"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 50" subType="80">
+  <SpawnCode gfxId="0x50"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 51" subType="81">
+  <SpawnCode gfxId="0x51"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 52" subType="82">
+  <SpawnCode gfxId="0x52"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 53" subType="83">
+  <SpawnCode gfxId="0x53"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 54" subType="84">
+  <SpawnCode gfxId="0x54"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 55" subType="85">
+  <SpawnCode gfxId="0x55"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 56" subType="86">
+  <SpawnCode gfxId="0x56"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 57" subType="87">
+  <SpawnCode gfxId="0x57"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 58" subType="88">
+  <SpawnCode gfxId="0x58"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 59" subType="89">
+  <SpawnCode gfxId="0x59"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 5A" subType="90">
+  <SpawnCode gfxId="0x5A"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 5B" subType="91">
+  <SpawnCode gfxId="0x5B"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 5C" subType="92">
+  <SpawnCode gfxId="0x5C"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 5D" subType="93">
+  <SpawnCode gfxId="0x5D"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 5E" subType="94">
+  <SpawnCode gfxId="0x5E"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 5F" subType="95">
+  <SpawnCode gfxId="0x5F"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 60" subType="96">
+  <SpawnCode gfxId="0x60"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 61" subType="97">
+  <SpawnCode gfxId="0x61"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 62" subType="98">
+  <SpawnCode gfxId="0x62"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 63" subType="99">
+  <SpawnCode gfxId="0x63"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 64" subType="100">
+  <SpawnCode gfxId="0x64"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 65" subType="101">
+  <SpawnCode gfxId="0x65"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 66" subType="102">
+  <SpawnCode gfxId="0x66"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 67" subType="103">
+  <SpawnCode gfxId="0x67"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 68" subType="104">
+  <SpawnCode gfxId="0x68"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 69" subType="105">
+  <SpawnCode gfxId="0x69"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 6A" subType="106">
+  <SpawnCode gfxId="0x6A"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 6B" subType="107">
+  <SpawnCode gfxId="0x6B"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 6C" subType="108">
+  <SpawnCode gfxId="0x6C"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 6D" subType="109">
+  <SpawnCode gfxId="0x6D"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 6E" subType="110">
+  <SpawnCode gfxId="0x6E"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 6F" subType="111">
+  <SpawnCode gfxId="0x6F"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 70" subType="112">
+  <SpawnCode gfxId="0x70"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 71" subType="113">
+  <SpawnCode gfxId="0x71"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 72" subType="114">
+  <SpawnCode gfxId="0x72"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 73" subType="115">
+  <SpawnCode gfxId="0x73"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 74" subType="116">
+  <SpawnCode gfxId="0x74"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 75" subType="117">
+  <SpawnCode gfxId="0x75"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 76" subType="118">
+  <SpawnCode gfxId="0x76"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 77" subType="119">
+  <SpawnCode gfxId="0x77"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 78" subType="120">
+  <SpawnCode gfxId="0x78"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 79" subType="121">
+  <SpawnCode gfxId="0x79"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 7A" subType="122">
+  <SpawnCode gfxId="0x7A"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 7B" subType="123">
+  <SpawnCode gfxId="0x7B"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 7C" subType="124">
+  <SpawnCode gfxId="0x7C"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 7D" subType="125">
+  <SpawnCode gfxId="0x7D"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 7E" subType="126">
+  <SpawnCode gfxId="0x7E"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 7F" subType="127">
+  <SpawnCode gfxId="0x7F"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 80" subType="128">
+  <SpawnCode gfxId="0x80"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 81" subType="129">
+  <SpawnCode gfxId="0x81"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 82" subType="130">
+  <SpawnCode gfxId="0x82"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 83" subType="131">
+  <SpawnCode gfxId="0x83"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 84" subType="132">
+  <SpawnCode gfxId="0x84"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 85" subType="133">
+  <SpawnCode gfxId="0x85"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 86" subType="134">
+  <SpawnCode gfxId="0x86"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 87" subType="135">
+  <SpawnCode gfxId="0x87"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 88" subType="136">
+  <SpawnCode gfxId="0x88"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 89" subType="137">
+  <SpawnCode gfxId="0x89"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 8A" subType="138">
+  <SpawnCode gfxId="0x8A"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 8B" subType="139">
+  <SpawnCode gfxId="0x8B"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 8C" subType="140">
+  <SpawnCode gfxId="0x8C"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 8D" subType="141">
+  <SpawnCode gfxId="0x8D"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 8E" subType="142">
+  <SpawnCode gfxId="0x8E"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 8F" subType="143">
+  <SpawnCode gfxId="0x8F"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 90" subType="144">
+  <SpawnCode gfxId="0x90"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 91" subType="145">
+  <SpawnCode gfxId="0x91"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 92" subType="146">
+  <SpawnCode gfxId="0x92"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 93" subType="147">
+  <SpawnCode gfxId="0x93"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 94" subType="148">
+  <SpawnCode gfxId="0x94"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 95" subType="149">
+  <SpawnCode gfxId="0x95"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 96" subType="150">
+  <SpawnCode gfxId="0x96"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 97" subType="151">
+  <SpawnCode gfxId="0x97"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 98" subType="152">
+  <SpawnCode gfxId="0x98"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 99" subType="153">
+  <SpawnCode gfxId="0x99"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 9A" subType="154">
+  <SpawnCode gfxId="0x9A"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 9B" subType="155">
+  <SpawnCode gfxId="0x9B"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 9C" subType="156">
+  <SpawnCode gfxId="0x9C"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 9D" subType="157">
+  <SpawnCode gfxId="0x9D"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 9E" subType="158">
+  <SpawnCode gfxId="0x9E"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign 9F" subType="159">
+  <SpawnCode gfxId="0x9F"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign A0" subType="160">
+  <SpawnCode gfxId="0xA0"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign A1" subType="161">
+  <SpawnCode gfxId="0xA1"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign A2" subType="162">
+  <SpawnCode gfxId="0xA2"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign A3" subType="163">
+  <SpawnCode gfxId="0xA3"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign A4" subType="164">
+  <SpawnCode gfxId="0xA4"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign A5" subType="165">
+  <SpawnCode gfxId="0xA5"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign A6" subType="166">
+  <SpawnCode gfxId="0xA6"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign A7" subType="167">
+  <SpawnCode gfxId="0xA7"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign A8" subType="168">
+  <SpawnCode gfxId="0xA8"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign A9" subType="169">
+  <SpawnCode gfxId="0xA9"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign AA" subType="170">
+  <SpawnCode gfxId="0xAA"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign AB" subType="171">
+  <SpawnCode gfxId="0xAB"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign AC" subType="172">
+  <SpawnCode gfxId="0xAC"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign AD" subType="173">
+  <SpawnCode gfxId="0xAD"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign AE" subType="174">
+  <SpawnCode gfxId="0xAE"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign AF" subType="175">
+  <SpawnCode gfxId="0xAF"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign B0" subType="176">
+  <SpawnCode gfxId="0xB0"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign B1" subType="177">
+  <SpawnCode gfxId="0xB1"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign B2" subType="178">
+  <SpawnCode gfxId="0xB2"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign B3" subType="179">
+  <SpawnCode gfxId="0xB3"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign B4" subType="180">
+  <SpawnCode gfxId="0xB4"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign B5" subType="181">
+  <SpawnCode gfxId="0xB5"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign B6" subType="182">
+  <SpawnCode gfxId="0xB6"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign B7" subType="183">
+  <SpawnCode gfxId="0xB7"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign B8" subType="184">
+  <SpawnCode gfxId="0xB8"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign B9" subType="185">
+  <SpawnCode gfxId="0xB9"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign BA" subType="186">
+  <SpawnCode gfxId="0xBA"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign BB" subType="187">
+  <SpawnCode gfxId="0xBB"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign BC" subType="188">
+  <SpawnCode gfxId="0xBC"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign BD" subType="189">
+  <SpawnCode gfxId="0xBD"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign BE" subType="190">
+  <SpawnCode gfxId="0xBE"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign BF" subType="191">
+  <SpawnCode gfxId="0xBF"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign C0" subType="192">
+  <SpawnCode gfxId="0xC0"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign C1" subType="193">
+  <SpawnCode gfxId="0xC1"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign C2" subType="194">
+  <SpawnCode gfxId="0xC2"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign C3" subType="195">
+  <SpawnCode gfxId="0xC3"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign C4" subType="196">
+  <SpawnCode gfxId="0xC4"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign C5" subType="197">
+  <SpawnCode gfxId="0xC5"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign C6" subType="198">
+  <SpawnCode gfxId="0xC6"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign C7" subType="199">
+  <SpawnCode gfxId="0xC7"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign C8" subType="200">
+  <SpawnCode gfxId="0xC8"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign C9" subType="201">
+  <SpawnCode gfxId="0xC9"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign CA" subType="202">
+  <SpawnCode gfxId="0xCA"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign CB" subType="203">
+  <SpawnCode gfxId="0xCB"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign CC" subType="204">
+  <SpawnCode gfxId="0xCC"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign CD" subType="205">
+  <SpawnCode gfxId="0xCD"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign CE" subType="206">
+  <SpawnCode gfxId="0xCE"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign CF" subType="207">
+  <SpawnCode gfxId="0xCF"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign D0" subType="208">
+  <SpawnCode gfxId="0xD0"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign D1" subType="209">
+  <SpawnCode gfxId="0xD1"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign D2" subType="210">
+  <SpawnCode gfxId="0xD2"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign D3" subType="211">
+  <SpawnCode gfxId="0xD3"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign D4" subType="212">
+  <SpawnCode gfxId="0xD4"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign D5" subType="213">
+  <SpawnCode gfxId="0xD5"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign D6" subType="214">
+  <SpawnCode gfxId="0xD6"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign D7" subType="215">
+  <SpawnCode gfxId="0xD7"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign D8" subType="216">
+  <SpawnCode gfxId="0xD8"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign D9" subType="217">
+  <SpawnCode gfxId="0xD9"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign DA" subType="218">
+  <SpawnCode gfxId="0xDA"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign DB" subType="219">
+  <SpawnCode gfxId="0xDB"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign DC" subType="220">
+  <SpawnCode gfxId="0xDC"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign DD" subType="221">
+  <SpawnCode gfxId="0xDD"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign DE" subType="222">
+  <SpawnCode gfxId="0xDE"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign DF" subType="223">
+  <SpawnCode gfxId="0xDF"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign E0" subType="224">
+  <SpawnCode gfxId="0xE0"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign E1" subType="225">
+  <SpawnCode gfxId="0xE1"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign E2" subType="226">
+  <SpawnCode gfxId="0xE2"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign E3" subType="227">
+  <SpawnCode gfxId="0xE3"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign E4" subType="228">
+  <SpawnCode gfxId="0xE4"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign E5" subType="229">
+  <SpawnCode gfxId="0xE5"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign E6" subType="230">
+  <SpawnCode gfxId="0xE6"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign E7" subType="231">
+  <SpawnCode gfxId="0xE7"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign E8" subType="232">
+  <SpawnCode gfxId="0xE8"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign E9" subType="233">
+  <SpawnCode gfxId="0xE9"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign EA" subType="234">
+  <SpawnCode gfxId="0xEA"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign EB" subType="235">
+  <SpawnCode gfxId="0xEB"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign EC" subType="236">
+  <SpawnCode gfxId="0xEC"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign ED" subType="237">
+  <SpawnCode gfxId="0xED"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign EE" subType="238">
+  <SpawnCode gfxId="0xEE"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign EF" subType="239">
+  <SpawnCode gfxId="0xEF"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign F0" subType="240">
+  <SpawnCode gfxId="0xF0"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign F1" subType="241">
+  <SpawnCode gfxId="0xF1"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign F2" subType="242">
+  <SpawnCode gfxId="0xF2"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign F3" subType="243">
+  <SpawnCode gfxId="0xF3"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign F4" subType="244">
+  <SpawnCode gfxId="0xF4"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign F5" subType="245">
+  <SpawnCode gfxId="0xF5"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign F6" subType="246">
+  <SpawnCode gfxId="0xF6"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign F7" subType="247">
+  <SpawnCode gfxId="0xF7"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign F8" subType="248">
+  <SpawnCode gfxId="0xF8"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign F9" subType="249">
+  <SpawnCode gfxId="0xF9"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign FA" subType="250">
+  <SpawnCode gfxId="0xFA"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign FB" subType="251">
+  <SpawnCode gfxId="0xFB"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign FC" subType="252">
+  <SpawnCode gfxId="0xFC"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign FD" subType="253">
+  <SpawnCode gfxId="0xFD"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign FE" subType="254">
+  <SpawnCode gfxId="0xFE"/>
+  <Image path="Sign.png"/>
+</Object>
+<Object behaviorScriptAddress="0x130032E0" name="Sign FF" subType="255">
+  <SpawnCode gfxId="0xFF"/>
+  <Image path="Sign.png"/>
+</Object>
+
+
+
+ 
+  
+  
+  
   <Object behaviorScriptAddress="0x13003324" name="Bulletin Board">
     <SpawnCode gfxId="0x00"/>
     <Image path="Bulletin Board.png"/>
@@ -2020,12 +3091,14 @@
 	  <MapImage path="Butterfly Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130033EC" name="Hoot">
+    <SpawnCode gfxId="0x56"/>
     <Image path="Hoot.png"/>
 	  <MapImage path="Hoot Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">State 2</Data>
     <Data type="byte" address="0x137" objectOffset="true" isBool="true">Flying</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003484" name="Object Bubble">
+    <SpawnCode gfxId="0x90"/>
     <Image path="Splash Bubble.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130034C4" name="Object Water Waves">
@@ -2133,12 +3206,15 @@
 	  <MapImage path="LLL Drawbridge Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003910" name="Small Bomp">
+    <SpawnCode gfxId="0xAE"/>
     <Image path="Small Bomp.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003940" name="Large Bomp">
+    <SpawnCode gfxId="0xB1"/>
     <Image path="Large Bomp.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003970" name="WF In-and-Out Platform">
+    <SpawnCode gfxId="0xAD"/>
     <Image path="WF In-and-Out Platform.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130039A0" name="Moneybag">
@@ -2276,6 +3352,7 @@
     <Data type="byte" address="0x188" objectOffset="true">Mission</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003E8C" name="Red Coin Star Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Red Coin Star Spawner.png"/>
     <Data type="int" address="0xF4" objectOffset="true">Num Red Coins</Data>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Spawn Star</Data>
@@ -2735,9 +3812,19 @@
     <Data type="int" address="0x110" objectOffset="true">Num Bounces</Data>
   </Object>
   <Object behaviorScriptAddress="0x130047E4" name="Chain Chomp Pivot" subType="0">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Chain Chomp Pivot.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130047E4" name="Chain Chomp Chain">
+  <Object behaviorScriptAddress="0x130047E4" name="Chain Chomp Chain" subType="1">
+    <Image path="Chain Chomp Chain.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130047E4" name="Chain Chomp Chain" subType="2">
+    <Image path="Chain Chomp Chain.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130047E4" name="Chain Chomp Chain" subType="3">
+    <Image path="Chain Chomp Chain.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130047E4" name="Chain Chomp Chain" subType="4">
     <Image path="Chain Chomp Chain.png"/>
   </Object>
   <Object behaviorScriptAddress="0x1300481C" name="Wooden Post">
@@ -2817,6 +3904,7 @@
     <Image path="BitFS Fixed Track Elevator.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004AB0" name="Fixed Track Elevator" gfxId="0x80188FFC">
+    <SpawnCode gfxId="0xCA"/>
     <Image path="Checkered Elevator.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004AB0" name="Fixed Track Elevator" gfxId="0x8017C6EC">
@@ -3055,6 +4143,7 @@
     <Data type="float" address="0x104" objectOffset="true">Dizziness</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004E08" name="Snowball">
+    <SpawnCode gfxId="0x9E"/>
     <Image path="Snowball.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004E4C" name="RR Back-and-Forth Platform" subType="86">
@@ -3116,6 +4205,7 @@
     <Image path="Enemy Cannon Base.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004F28" name="Enemy Cannon Shaft">
+    <SpawnCode gfxId="0x7F"/>
     <Image path="Enemy Cannon Shaft.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004F40" name="Unagi">
@@ -3314,6 +4404,7 @@
 	  <MapImage path="DDD Pole Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300556C" name="Star Marker">
+    <SpawnCode gfxId="0x79"/>
     <Image path="Star Marker.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawns Others w/ Bombs)" subType="0">
@@ -3327,7 +4418,6 @@
     <Data type="int" address="0x108" objectOffset="true">Activation Type</Data>
   </Object>
   <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawned)" subType="2">
-    <SpawnCode gfxId="0xBB"/>
     <Image path="Butterfly.png"/>
     <Data type="int" address="0x108" objectOffset="true">Activation Type</Data>
   </Object>
