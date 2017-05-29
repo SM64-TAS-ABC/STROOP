@@ -216,7 +216,7 @@
   <Object behaviorScriptAddress="0x130006A4" name="WF Tower Breakable Block">
     <Image path="WF Tower Breakable Block.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130006D8" name="Rotating Bridge">
+  <Object behaviorScriptAddress="0x130006D8" name="Rotating Bridge?">
     <Image path="WF Rotating Bridge.png"/>
 	  <MapImage path="WF Rotating Bridge Top.png" rotates="true"/>
   </Object>
@@ -481,6 +481,7 @@
     <Image path="Triangle Particle Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000AFC" name="Warp Door">
+    <SpawnCode gfxId="0x8302"/>
     <Image path="Door Standard Warp.png"/>
 	  <MapImage path="Warp Door Top.png" rotates="true"/>
     <Data type="short" address="0x188" objectOffset="true">Destination</Data>
@@ -600,15 +601,19 @@
     <Image path="Falling Block BitFS.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000C28" name="WF Falling Block Spawner" subType="0">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Falling Block Spawner WF.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000C28" name="BitFS Falling Block Spawner" subType="3">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Falling Block Spawner BitFS.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000C44" name="BBH Falling Block Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Falling Block Spawner BBH.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000C64" name="LLL Falling Block Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Falling Block Spawner LLL.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000C84" name="Wall Flame">
@@ -789,6 +794,7 @@
     <Data type="byte" address="0x18F" objectOffset="true" isBool="true">Knockback</Data>
   </Object>
   <Object behaviorScriptAddress="0x130012F4" name="WF Tower Platform Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="WF Tower Platform Spawner.png"/>
     <Data type="byte" address="0x14F" mask="0x02" objectOffset="true" isBool="true">Platforms Loaded</Data>
   </Object>
@@ -941,6 +947,7 @@
     <Data type="int" address="0x17C" objectOffset="true">Opaqueness</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001850" name="Bowser #2" subType="1">
+    <SpawnCode gfxId="0x64"/>
     <Image path="Bowser.png"/>
 	  <MapImage path="Bowser Top.png" rotates="true"/>
 	<Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
@@ -951,6 +958,7 @@
     <Data type="int" address="0x17C" objectOffset="true">Opaqueness</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001850" name="Bowser #3" subType="2">
+    <SpawnCode gfxId="0x64"/>
     <Image path="Bowser.png"/>
 	  <MapImage path="Bowser Top.png" rotates="true"/>
 	<Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
@@ -1040,7 +1048,7 @@
   <Object behaviorScriptAddress="0x13001C8C" name="TTC Painting Hour Hand">
     <Image path="TTC Painting Hour Hand.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13001CB0" name="Ukiki">
+  <Object behaviorScriptAddress="0x13001CB0" name="Ukiki?">
     <Image path="Ukiki.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001D14" name="LLL Rotating Hexagonal Platform">
@@ -1103,6 +1111,7 @@
     <Image path="Shell Riding Flame.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001F90" name="Tox Box">
+    <SpawnCode gfxId="0xc7"/>
     <Image path="Tox Box.png"/>
 	  <MapImage path="Tox Box Top.png" rotates="true"/>
 	<Data type="int" address="0x1B0" objectOffset="true">Phase</Data>
@@ -1179,6 +1188,7 @@
 	  <MapImage path="Bowser Puzzle Piece 5.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13002068" name="Bowser Puzzle Coin Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Bowser Puzzle Coin Spawner.png"/>
     <Data type="int" address="0xF4" objectOffset="true">State 2</Data>
   </Object>
@@ -1205,6 +1215,7 @@
     <Data type="byte" address="0x8B" objectOffset="true" isBool="true">Returning</Data>
   </Object>
   <Object behaviorScriptAddress="0x130020E8" name="Baby Penguin (Fake)" subType="1">
+    <SpawnCode gfxId="0x57"/>
     <Image path="Baby Penguin.png"/>
 	  <MapImage path="Penguin Top.png" rotates="true"/>
     <Data type="byte" address="0x189" objectOffset="true" isBool="true">Fake</Data>
@@ -1212,6 +1223,7 @@
     <Data type="byte" address="0x8B" objectOffset="true" isBool="true">Returning</Data>
   </Object>
   <Object behaviorScriptAddress="0x130020E0" name="Baby Penguin (Real, Returned)">
+    <SpawnCode gfxId="0x57"/>
     <Image path="Baby Penguin.png"/>
 	  <MapImage path="Penguin Top.png" rotates="true"/>
     <Data type="byte" address="0x189" objectOffset="true" isBool="true">Fake</Data>
@@ -1347,6 +1359,7 @@
 	  <MapImage path="Express Elevator Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x130021E4" name="Bub Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Bub Spawner.png"/>
 	<Data type="byte" address="0x14F" objectOffset="true" isBool="true">Bub Loaded</Data>
   </Object>
@@ -1587,22 +1600,26 @@
     <Image path="Dirt.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002650" name="Tweester">
+    <SpawnCode gfxId="0x56"/>
     <Image path="Tweester.png"/>
     <Data type="byte" address="0x153" objectOffset="true" isBool="true">Coming Out</Data>
     <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Inside</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002684" name="Boo Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Boo Spawner.png"/>
     <Data type="int" address="0xFC" objectOffset="true">Boos Spawned</Data>
     <Data type="int" address="0x88" objectOffset="true">Boos Killed</Data>
   </Object>
   <Object behaviorScriptAddress="0x130026D4" name="Castle Boo">
+    <SpawnCode gfxId="0x54"/>
     <Image path="Boo.png"/>
 	  <MapImage path="Boo Top.png" rotates="true"/>
     <Data type="int" address="0x17C" objectOffset="true">Opaqueness</Data>
     <Data type="ushort" address="0xFE" objectOffset="true" isAngle="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002710" name="Cage Boo">
+    <SpawnCode gfxId="0x54"/>
     <Image path="Big Boo.png"/>
 	  <MapImage path="Big Boo Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">Target Opaqueness</Data>
@@ -1610,6 +1627,7 @@
     <Data type="ushort" address="0xFE" objectOffset="true" isAngle="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002768" name="Big Boo (Balcony)">
+    <SpawnCode gfxId="0x54"/>
     <Image path="Big Boo.png"/>
 	  <MapImage path="Big Boo Top.png" rotates="true"/>
     <Data type="int" address="0x184" objectOffset="true">HP</Data>
@@ -1618,6 +1636,7 @@
     <Data type="ushort" address="0xFE" objectOffset="true" isAngle="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300277C" name="Big Boo (Merry-Go-Round)">
+    <SpawnCode gfxId="0x54"/>
     <Image path="Big Boo.png"/>
 	  <MapImage path="Big Boo Top.png" rotates="true"/>
     <Data type="int" address="0x184" objectOffset="true">HP</Data>
@@ -1626,6 +1645,7 @@
     <Data type="ushort" address="0xFE" objectOffset="true" isAngle="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002790" name="Big Boo (Lobby)">
+    <SpawnCode gfxId="0x54"/>
     <Image path="Big Boo.png"/>
 	  <MapImage path="Big Boo Top.png" rotates="true"/>
     <Data type="int" address="0x184" objectOffset="true">HP</Data>
@@ -1634,9 +1654,11 @@
     <Data type="ushort" address="0xFE" objectOffset="true" isAngle="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130027D0" name="Boo Triplet Spawner">
+    <SpawnCode gfxId="0x54"/>
     <Image path="Boo Triplet Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130027E4" name="Boo">
+    <SpawnCode gfxId="0x54"/>
     <Image path="Boo.png"/>
 	  <MapImage path="Boo Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">Target Opaqueness</Data>
@@ -1644,6 +1666,7 @@
     <Data type="ushort" address="0xFE" objectOffset="true" isAngle="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130027F4" name="Boo (Merry-Go-Round)">
+    <SpawnCode gfxId="0x54"/>
     <Image path="Boo.png"/>
 	  <MapImage path="Boo Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">Target Opaqueness</Data>
@@ -1651,7 +1674,7 @@
     <Data type="ushort" address="0xFE" objectOffset="true" isAngle="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002804" name="Boo (Activates Text)">
-    <SpawnCode gfxId="0x65"/>
+    <SpawnCode gfxId="0x54"/>
     <Image path="Boo.png"/>
 	  <MapImage path="Boo Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">Target Opaqueness</Data>
@@ -1691,6 +1714,7 @@
     <Image path="Landscape Visual.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002A5C" name="BitDW Trap Door Manager">
+    <SpawnCode gfxId="0x00"/>
     <Image path="BitDW Trap Door Manager.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002A7C" name="BitDW Trap Door">
@@ -1740,6 +1764,7 @@
     <Image path="Sparkles.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002B5C" name="Scuttlebug">
+    <SpawnCode gfxId="0x65"/>
     <Image path="Scuttlebug.png"/>
 	  <MapImage path="Scuttlebug Top.png" rotates="true"/>
     <Data type="int" address="0x198" objectOffset="true">Num Coins</Data>
@@ -1748,6 +1773,7 @@
     <Data type="int" address="0xFC" objectOffset="true">Lunging Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002BA0" name="Scuttlebug Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Scuttlebug Spawner.png"/>
     <Data type="byte" address="0xF7" objectOffset="true" isBool="true">Has Spawned</Data>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Scuttlebug Loaded</Data>
@@ -1912,10 +1938,11 @@
     <Image path="Seaweed.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003158" name="Seaweed Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Seaweed Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003174" name="Bob-omb">
-    <SpawnCode gfxId="0x91"/>
+    <SpawnCode gfxId="0xbc"/>
     <Image path="Bob-omb.png"/>
 	  <MapImage path="Bob-omb Top.png" rotates="true"/>
     <Data type="byte" address="0x147" objectOffset="true" isBool="true" invertBool="true">Can Move</Data>
@@ -2044,6 +2071,7 @@
 	  <MapImage path="Chill Bully Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003738" name="Water Ring Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Manta Ring Spawner.png"/>
     <Data type="int" address="0xF4" objectOffset="true">Next Ring Index</Data>
     <Data type="int" address="0xF8" objectOffset="true">Last Ring Collected</Data>
@@ -2051,18 +2079,21 @@
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true" invertBool="true">Make Rings</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003750" name="Water Ring (from Jet Stream)">
+    <SpawnCode gfxId="0x68"/>
     <Image path="Manta Ring.png"/>
     <Data type="int" address="0x110" objectOffset="true">Ring Index</Data>
     <Data type="int" address="0x17C" objectOffset="true">Opaqueness</Data>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Collected</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003798" name="Water Ring (from Manta Ray)">
+    <SpawnCode gfxId="0x68"/>
     <Image path="Manta Ring.png"/>
     <Data type="int" address="0x110" objectOffset="true">Ring Index</Data>
     <Data type="int" address="0x17C" objectOffset="true">Opaqueness</Data>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Collected</Data>
   </Object>
   <Object behaviorScriptAddress="0x130037E0" name="Manta Ring Manager">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Manta Ring Manager.png"/>
     <Data type="int" address="0xF4" objectOffset="true">Next Ring Index</Data>
     <Data type="int" address="0xF8" objectOffset="true">Last Ring Collected</Data>
@@ -2094,6 +2125,7 @@
     <Image path="White Puff Spawner 2.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130038D0" name="LLL Drawbridge Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="LLL Drawbridge Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130038E8" name="LLL Drawbridge">
@@ -2115,6 +2147,7 @@
     <Data type="int" address="0xF4" objectOffset="true">Jumping Phase</Data>
   </Object>
   <Object behaviorScriptAddress="0x130039D4" name="Moneybag Coin">
+    <SpawnCode gfxId="0x74"/>
     <Image path="Moneybag Coin.png"/>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Transforming</Data>
   </Object>
@@ -2506,7 +2539,7 @@
     <Data type="int" address="0x110" objectOffset="true">Blinking Countdown</Data>
   </Object>
   <Object behaviorScriptAddress="0x130045D0" name="Koopa the Quick Flag Checkpoint">
-    <SpawnCode gfxId="0xA3"/>
+    <SpawnCode gfxId="0x00"/>
     <Image path="Koopa the Quick Flag Checkpoint.png"/>
     <Data type="int" address="0xFC" objectOffset="true">Result</Data>
     <Data type="int" address="0x100" objectOffset="true">State 2</Data>
@@ -2519,6 +2552,7 @@
     <Image path="Koopa the Quick Flag.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004634" name="Pokey Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Pokey Spawner.png"/>
     <Data type="byte" address="0x14F" objectOffset="true" isBool="true">Pokey Loaded</Data>
     <Data type="byte" address="0x103" objectOffset="true" isBool="true">Pokey Dead</Data>
@@ -2536,6 +2570,7 @@
     <Data type="int" address="0x110" objectOffset="true">Blinking Countdown</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004698" name="Swooper">
+    <SpawnCode gfxId="0x64"/>
     <Image path="Swooper.png"/>
 	  <MapImage path="Swooper Top.png" rotates="true"/>
     <Data type="ushort" address="0xFE" objectOffset="true" isAngle="true">Target Angle</Data>
@@ -2705,7 +2740,7 @@
   <Object behaviorScriptAddress="0x130047E4" name="Chain Chomp Chain">
     <Image path="Chain Chomp Chain.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x1300481C" name="Post">
+  <Object behaviorScriptAddress="0x1300481C" name="Wooden Post">
     <SpawnCode gfxId="0x6B"/>
     <Image path="Post.png"/>
 	  <MapImage path="Post Top.png" rotates="true"/>
@@ -2718,6 +2753,7 @@
     <Image path="Chain Chomp Gate.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004898" name="Wiggler Head">
+    <SpawnCode gfxId="0x57"/>
     <Image path="Wiggler Head.png"/>
 	  <MapImage path="Wiggler Head Top.png" rotates="true"/>
     <Data type="int" address="0x184" objectOffset="true">HP</Data>
@@ -2727,6 +2763,7 @@
 	  <MapImage path="Wiggler Body Part Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004918" name="Lakitu">
+    <SpawnCode gfxId="0x54"/>
     <Image path="Lakitu.png"/>
 	  <MapImage path="Lakitu Top.png" rotates="true"/>
     <Data type="int" address="0xFC" objectOffset="true">Countdown</Data>
@@ -2757,10 +2794,12 @@
     <Data type="ushort" address="0xFA" objectOffset="true" isAngle="true">Target Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004A00" name="Monty Mole">
+    <SpawnCode gfxId="0x55"/>
     <Image path="Monty Mole.png"/>
 	  <MapImage path="Monty Mole Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004A58" name="Monty Mole Hole">
+    <SpawnCode gfxId="0x54"/>
     <Image path="Monty Mole Hole.png"/>
 	<Data type="int" address="0xF4" objectOffset="true">Countdown</Data>
   </Object>
@@ -2790,6 +2829,7 @@
     <Image path="Bowling Ball.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004B1C" name="BoB Seesaw Platform" subType="3">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Seesaw Platform BoB.png"/>
 	  <MapImage path="Seesaw Platform BoB Top.png" rotates="true"/>
     <Data type="float" address="0xF4" objectOffset="true">Rotational Speed</Data>
@@ -2825,9 +2865,11 @@
     <Data type="float" address="0xF4" objectOffset="true">Rotational Speed</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004B44" name="BitS Revolving Elevator Axle" subType="0">
+    <SpawnCode gfxId="0x3d"/>
     <Image path="Revolving Elevator Axle.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004B44" name="BitDW Revolving Elevator Axle" subType="1">
+    <SpawnCode gfxId="0x3d"/>
     <Image path="Revolving Elevator Axle.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004B6C" name="Revolving Elevator">
@@ -2840,6 +2882,7 @@
     <Image path="Revolving Elevator BitS.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004B8C" name="Water Bomb Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Water Bomb Spawner.png"/>
 	<Data type="byte" address="0xF7" objectOffset="true" isBool="true">Water Bomb Present</Data>
     <Data type="int" address="0xF8" objectOffset="true">Countdown</Data>
@@ -2854,16 +2897,19 @@
     <Image path="Water Bomb Shadow.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004BF0" name="TTC Rotating Block" subType="0">
+    <SpawnCode gfxId="0x36"/>
     <Image path="TTC Rotating Block.png"/>
     <MapImage path="TTC Rotating Block Top.png" rotates="true"/>
     <Data type="int" address="0xFC" objectOffset="true">Timer Max</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004BF0" name="TTC Rotating Triangular Prism" subType="1">
+    <SpawnCode gfxId="0x37"/>
     <Image path="TTC Rotating Triangular Prism.png"/>
 	  <MapImage path="TTC Rotating Triangular Prism Top.png" rotates="true"/>
     <Data type="int" address="0xFC" objectOffset="true">Timer Max</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004C24" name="TTC Pendulum">
+    <SpawnCode gfxId="0x38"/>
     <Image path="TTC Pendulum.png"/>
     <Data type="float" address="0xF4" objectOffset="true">Acceleration Direction</Data>
     <Data type="float" address="0x100" objectOffset="true">Acceleration Magnitude</Data>
@@ -2871,19 +2917,41 @@
     <Data type="float" address="0xF8" objectOffset="true">Angle</Data>
     <Data type="int" address="0x104" objectOffset="true">Waiting Timer</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13004C5C" name="TTC Treadmill">
+  <Object behaviorScriptAddress="0x13004C5C" name="TTC Treadmill (Long)" subType="0">
+    <SpawnCode gfxId="0x39"/>
+    <Image path="TTC Treadmill.png"/>
+	<Data type="int" address="0x104" objectOffset="true">Timer Max</Data>
+    <Data type="float" address="0x100" objectOffset="true">Target Speed</Data>
+    <Data type="float" address="0xFC" objectOffset="true">Current Speed</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13004C5C" name="TTC Treadmill (Short)" subType="1">
+    <SpawnCode gfxId="0x3a"/>
+    <Image path="TTC Treadmill.png"/>
+	<Data type="int" address="0x104" objectOffset="true">Timer Max</Data>
+    <Data type="float" address="0x100" objectOffset="true">Target Speed</Data>
+    <Data type="float" address="0xFC" objectOffset="true">Current Speed</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13004C5C" name="TTC Treadmill (Long)" subType="2">
+    <Image path="TTC Treadmill.png"/>
+	<Data type="int" address="0x104" objectOffset="true">Timer Max</Data>
+    <Data type="float" address="0x100" objectOffset="true">Target Speed</Data>
+    <Data type="float" address="0xFC" objectOffset="true">Current Speed</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13004C5C" name="TTC Treadmill (Short)" subType="3">
     <Image path="TTC Treadmill.png"/>
 	<Data type="int" address="0x104" objectOffset="true">Timer Max</Data>
     <Data type="float" address="0x100" objectOffset="true">Target Speed</Data>
     <Data type="float" address="0xFC" objectOffset="true">Current Speed</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004C94" name="TTC Moving Bar">
+    <SpawnCode gfxId="0x3b"/>
     <Image path="TTC Moving Bar.png"/>
 	  <MapImage path="TTC Moving Bar Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">Timer Max</Data>
     <Data type="int" address="0xF8" objectOffset="true">Countdown</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004CCC" name="TTC Rotating Cog" subType="0">
+    <SpawnCode gfxId="0x3c"/>
     <Image path="TTC Rotating Cog.png"/>
 	  <MapImage path="TTC Rotating Cog Top.png" rotates="true"/>
     <Data type="float" address="0xFC" objectOffset="true">Target Ang Vel</Data>
@@ -2891,19 +2959,29 @@
     <Data type="ushort" address="0xD6" objectOffset="true" isAngle="true">Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004CCC" name="TTC Rotating Triangle" subType="2">
+    <SpawnCode gfxId="0x3d"/>
     <Image path="TTC Rotating Triangle.png"/>
 	  <MapImage path="TTC Rotating Triangle Top.png" rotates="true"/>
     <Data type="float" address="0xFC" objectOffset="true">Target Ang Vel</Data>
     <Data type="float" address="0xF8" objectOffset="true">Current Ang Vel</Data>
     <Data type="ushort" address="0xD6" objectOffset="true" isAngle="true">Angle</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13004CF8" name="TTC Pit Block">
+  <Object behaviorScriptAddress="0x13004CF8" name="TTC Pit Block" subType="0">
+    <SpawnCode gfxId="0x3e"/>
+    <Image path="TTC Pit Block.png"/>
+    <Data type="int" address="0xFC" objectOffset="true">Timer Max</Data>
+	<Data type="float" address="0xB0" objectOffset="true">V Speed</Data>
+    <Data type="float" address="0xA4" objectOffset="true">Height</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13004CF8" name="TTC Pit Block (Unused Graphic)" subType="1">
+    <SpawnCode gfxId="0x3f"/>
     <Image path="TTC Pit Block.png"/>
     <Data type="int" address="0xFC" objectOffset="true">Timer Max</Data>
 	<Data type="float" address="0xB0" objectOffset="true">V Speed</Data>
     <Data type="float" address="0xA4" objectOffset="true">Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004D28" name="TTC Elevator Platform">
+    <SpawnCode gfxId="0x40"/>
     <Image path="TTC Elevator Platform.png"/>
     <Data type="int" address="0xFC" objectOffset="true">Timer Max</Data>
     <Data type="float" address="0xF4" objectOffset="true">Direction</Data>
@@ -2913,6 +2991,7 @@
     <Data type="float" address="0xF8" objectOffset="true">Max Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004D64" name="TTC Rotating Hand" subType="0">
+    <SpawnCode gfxId="0x41"/>
     <Image path="TTC Rotating Hand.png"/>
 	  <MapImage path="TTC Rotating Hand Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">Timer Max</Data>
@@ -2930,13 +3009,44 @@
     <Data type="int" address="0xFC" objectOffset="true">Displacement</Data>
     <Data type="int" address="0x104" objectOffset="true">Direction Countdown</Data>
   </Object>
+  <Object behaviorScriptAddress="0x13004D64" name="TTC 2D Cog (Small)" subType="1" gfxId="0x80152730">
+    <SpawnCode gfxId="0x43"/>
+    <Image path="TTC 2D Cog.png"/>
+	  <MapImage path="TTC 2D Cog Top.png" rotates="true"/>
+    <Data type="int" address="0xF4" objectOffset="true">Timer Max</Data>
+    <Data type="ushort" address="0xFA" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="ushort" address="0xD6" objectOffset="true" isAngle="true">Angle</Data>
+    <Data type="int" address="0xFC" objectOffset="true">Displacement</Data>
+    <Data type="int" address="0x104" objectOffset="true">Direction Countdown</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13004D64" name="TTC 2D Cog (Big)" subType="1" gfxId="0x80152760">
+    <SpawnCode gfxId="0x44"/>
+    <Image path="TTC 2D Cog.png"/>
+	  <MapImage path="TTC 2D Cog Top.png" rotates="true"/>
+    <Data type="int" address="0xF4" objectOffset="true">Timer Max</Data>
+    <Data type="ushort" address="0xFA" objectOffset="true" isAngle="true">Target Angle</Data>
+    <Data type="ushort" address="0xD6" objectOffset="true" isAngle="true">Angle</Data>
+    <Data type="int" address="0xFC" objectOffset="true">Displacement</Data>
+    <Data type="int" address="0x104" objectOffset="true">Direction Countdown</Data>
+  </Object>
   <Object behaviorScriptAddress="0x13004D90" name="TTC Red Coin Spinner">
+    <SpawnCode gfxId="0x42"/>
     <Image path="TTC Red Coin Spinner.png"/>
 	<Data type="int" address="0xF8" objectOffset="true">Timer Max</Data>
     <Data type="int" address="0xF4" objectOffset="true">Direction</Data>
 	<Data type="ushort" address="0xD2" objectOffset="true" isAngle="true">Angle</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13004DBC" name="Mr. Blizzard">
+  <Object behaviorScriptAddress="0x13004DBC" name="Mr. Blizzard (in Ground)" subType="0">
+    <SpawnCode gfxId="0x55"/>
+    <Image path="Mr. Blizzard.png"/>
+	  <MapImage path="Mr. Blizzard Top.png" rotates="true"/>
+    <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Wearing Hat</Data>
+    <Data type="int" address="0x198" objectOffset="true">Num Coins</Data>
+    <Data type="float" address="0x108" objectOffset="true">Dizziness Change</Data>
+    <Data type="float" address="0x104" objectOffset="true">Dizziness</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13004DBC" name="Mr. Blizzard (Jumps)" subType="1">
+    <SpawnCode gfxId="0x55"/>
     <Image path="Mr. Blizzard.png"/>
 	  <MapImage path="Mr. Blizzard Top.png" rotates="true"/>
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Wearing Hat</Data>
@@ -3002,6 +3112,7 @@
     <Data type="int" address="0xF4" objectOffset="true">Angular Displacement</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004F10" name="Enemy Cannon Base">
+    <SpawnCode gfxId="0x80"/>
     <Image path="Enemy Cannon Base.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004F28" name="Enemy Cannon Shaft">
@@ -3024,6 +3135,7 @@
 	  <MapImage path="Dorrie Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13004FD4" name="Haunted Chair">
+    <SpawnCode gfxId="0x56"/>
     <Image path="Haunted Chair.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13005024" name="Mad Piano">
@@ -3046,6 +3158,7 @@
     <Image path="Book Switch.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13005120" name="Tiny Piranha Plant" subType="0">
+    <SpawnCode gfxId="0x64"/>
     <Image path="Piranha Plant.png"/>
 	  <MapImage path="Piranha Plant Top.png" rotates="true"/>
     <Data type="float" address="0xF4" objectOffset="true">Max Scale</Data>
@@ -3054,6 +3167,7 @@
     <Data type="byte" address="0x189" objectOffset="true" isBool="true">Die if Shrink w/o Spin</Data>
   </Object>
   <Object behaviorScriptAddress="0x13005120" name="Huge Piranha Plant" subType="1">
+    <SpawnCode gfxId="0x64"/>
     <Image path="Piranha Plant.png"/>
 	  <MapImage path="Piranha Plant Top.png" rotates="true"/>
     <Data type="float" address="0xF4" objectOffset="true">Max Scale</Data>
