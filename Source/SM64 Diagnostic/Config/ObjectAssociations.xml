@@ -2975,7 +2975,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13004CF8" name="TTC Pit Block (Unused Graphic)" subType="1">
     <SpawnCode gfxId="0x3f"/>
-    <Image path="TTC Pit Block.png"/>
+    <Image path="TTC Pit Block Unused Graphic.png"/>
     <Data type="int" address="0xFC" objectOffset="true">Timer Max</Data>
 	<Data type="float" address="0xB0" objectOffset="true">V Speed</Data>
     <Data type="float" address="0xA4" objectOffset="true">Height</Data>
