@@ -519,6 +519,7 @@
     <Data type="short" address="0x188" objectOffset="true">Destination</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000AFC" name="Standard Door Warp" gfxId="0x80195CFC">
+    <SpawnCode gfxId="0x26"/>
     <Image path="Door Standard Warp.png"/>
 	<MapImage path="Warp Door Top.png" rotates="true"/>
     <Data type="short" address="0x188" objectOffset="true">Destination</Data>
@@ -534,21 +535,28 @@
     <Data type="short" address="0x188" objectOffset="true">Destination</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000AFC" name="Key Door Warp" gfxId="0x8018F198">
+    <SpawnCode gfxId="0x25"/>
     <Image path="Door Key Warp.png"/>
 	<MapImage path="Warp Door Top.png" rotates="true"/>
     <Data type="short" address="0x188" objectOffset="true">Destination</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000AFC" name="One-Sided Door Warp" gfxId="0x801849AC">
+    <SpawnCode gfxId="0x27"/>
     <Image path="Door Standard Warp.png"/>
 	<MapImage path="Warp Door Top.png" rotates="true"/>
     <Data type="short" address="0x188" objectOffset="true">Destination</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000B0C" name="Door">
-    <SpawnCode gfxId="0x22"/>
+    <Image path="Door Standard.png"/>
+	<MapImage path="Door Top.png" rotates="true"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13000B0C" name="Standard Door" gfxId="0x8018E8A8">
+    <SpawnCode gfxId="0x26"/>
     <Image path="Door Standard.png"/>
 	<MapImage path="Door Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000B0C" name="Wooden Door" gfxId="0x8018ECD8">
+    <SpawnCode gfxId="0x27"/>
     <Image path="Door Wooden.png"/>
 	<MapImage path="Door Top.png" rotates="true"/>
   </Object>
@@ -557,26 +565,32 @@
 	<MapImage path="Door Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000B0C" name="0 Star Door" gfxId="0x8018EDE4">
+    <SpawnCode gfxId="0x22"/>
     <Image path="Door 0 Star.png"/>
 	<MapImage path="Door Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000B0C" name="1 Star Door" gfxId="0x8018EF20">
+    <SpawnCode gfxId="0x23"/>
     <Image path="Door 1 Star.png"/>
 	<MapImage path="Door Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000B0C" name="3 Star Door" gfxId="0x8018F05C">
+    <SpawnCode gfxId="0x24"/>
     <Image path="Door 3 Star.png"/>
 	<MapImage path="Door Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000B0C" name="Metal Door" gfxId="0x8017ED70">
+    <SpawnCode gfxId="0x29"/>
     <Image path="Door Metal.png"/>
 	<MapImage path="Door Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000B0C" name="Spooky Door" gfxId="0x80188CC4">
+    <SpawnCode gfxId="0x1D"/>
     <Image path="Door Spooky.png"/>
 	<MapImage path="Door Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000B0C" name="Starry Door" gfxId="0x8017EE7C">
+    <SpawnCode gfxId="0x20"/>
     <Image path="Door Starry.png"/>
 	<MapImage path="Door Top.png" rotates="true"/>
   </Object>
@@ -855,6 +869,10 @@
   </Object>
   <Object behaviorScriptAddress="0x13001298" name="Checkerboard~ (VCutM)" subType="10">
     <SpawnCode gfxId="0x38"/>
+    <Image path="WF Water Level Checker.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001298" name="Blue Thing~ (TotWC)" subType="11">
+    <SpawnCode gfxId="0xD0"/>
     <Image path="WF Water Level Checker.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130012B4" name="Spindrift">
@@ -1838,13 +1856,13 @@
     <Data type="uint" address="0x68" objectOffset="true" useHex="true" isObject="true">Manager Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Tree">
-    <SpawnCode gfxId="0x17"/>
     <Image path="Tree Standard.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x80195C84">
     <Image path="Tree Standard.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x8018F2A0">
+    <SpawnCode gfxId="0x17"/>
     <Image path="Tree Standard.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x80194604">
@@ -1857,15 +1875,18 @@
     <Image path="Tree Standard.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Pine Tree" gfxId="0x8015D22C">
+    <SpawnCode gfxId="0x18"/>
     <Image path="Tree Pine.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Snowy Pine Tree" gfxId="0x80184AB8">
+    <SpawnCode gfxId="0x19"/>
     <Image path="Tree Pine Snowy.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Snowy Pine Tree" gfxId="0x801709B4">
     <Image path="Tree Pine Snowy.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Palm Tree" gfxId="0x80184864">
+    <SpawnCode gfxId="0x1B"/>
     <Image path="Tree Palm.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002AD0" name="Glow">
@@ -2240,6 +2261,7 @@
 	<MapImage path="Floating Mine Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x1300381C" name="Floating Mine Explosion">
+    <SpawnCode gfxId="0x67"/>
     <Image path="Floating Mine Explosion.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003840" name="Floating Mine Smoke">
@@ -3026,12 +3048,15 @@
     <Image path="Pebble.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004AB0" name="Carpet" gfxId="0x8018D2A8">
+    <SpawnCode gfxId="0x37"/>
     <Image path="Carpet.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004AB0" name="Ski Lift" gfxId="0x80184AE8">
+    <SpawnCode gfxId="0x36"/>
     <Image path="Ski Lift.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004AB0" name="BitFS Fixed Track Elevator" gfxId="0x80178368">
+    <SpawnCode gfxId="0x36"/>
     <Image path="BitFS Fixed Track Elevator.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13004AB0" name="Fixed Track Elevator" gfxId="0x80188FFC">
