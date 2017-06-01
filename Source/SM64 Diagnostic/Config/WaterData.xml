@@ -14,7 +14,7 @@
   <Data type="short" address="0x009F8DB0" absoluteAddress="true">WF WL</Data>
   <Data type="short" address="0x009F353E" absoluteAddress="true">JRB Main WL</Data>
   <Data type="short" address="0x009F354A" absoluteAddress="true">JRB Cave WL</Data>
-  <Data type="short" address="0x009F3556" absoluteAddress="true">JRB Mist</Data>
+  <Data type="short" address="0x009F3556" absoluteAddress="true">JRB Fog</Data>
   <Data type="short" address="0x009F83DE" absoluteAddress="true">JRB Ship WL</Data>
   <Data type="short" address="0x00BE3B8C" absoluteAddress="true">JRB Ship Goal WL</Data>
   <Data type="short" address="0x00BE3BA0" absoluteAddress="true">JRB Ship End WL</Data>
@@ -37,7 +37,7 @@
   <Data type="short" address="0x009F412A" absoluteAddress="true">THI Tiny 1 WL</Data>
   <Data type="short" address="0x009F4136" absoluteAddress="true">THI Tiny 2 WL</Data>
   <Data type="byte" address="0x00C4CCD4" absoluteAddress="true" isBool="true">THI Water Drained</Data>
-  <Data type="short" address="0x009F4142" absoluteAddress="true">THI Tiny Mt Level</Data>
+  <Data type="short" address="0x009F4142" absoluteAddress="true">THI Tiny Mt WL</Data>
   <Data type="short" address="0x009F2A40" absoluteAddress="true">THI Huge 1 WL</Data>
   <Data type="short" address="0x009F2A4C" absoluteAddress="true">THI Huge 2 WL</Data>
   <Data type="short" address="0x009F2A58" absoluteAddress="true">THI Huge Mt WL</Data>

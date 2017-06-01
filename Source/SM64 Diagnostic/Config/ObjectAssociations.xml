@@ -145,19 +145,24 @@
     <Image path="Chest Top.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130002B8" name="Bubble Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Bubble Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130002E4" name="Splash Bubble">
+    <SpawnCode gfxId="0xA4"/>
     <Image path="Splash Bubble.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000338" name="Bubble">
+  <Object behaviorScriptAddress="0x13000338" name="Underwater Bubble">
+    <SpawnCode gfxId="0xA8"/>
     <Image path="Bubble.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130003BC" name="HP Bubble">
+    <SpawnCode gfxId="0xA8"/>
     <Image path="HP Bubble.png"/>
     <Data type="int" address="0xF5" objectOffset="true">Squish Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000400" name="Splash Bubble (Under Water)">
+    <SpawnCode gfxId="0xA4"/>
     <Image path="Splash Bubble 2.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000428" name="Splash Bubble Spawner (for Mario)">
@@ -268,12 +273,15 @@
     <Data type="short" address="0x188" objectOffset="true">Destination</Data>
   </Object>
   <Object behaviorScriptAddress="0x130007DC" name="White Puff" gfxId="0x800F9298">
+    <SpawnCode gfxId="0x8E"/>
     <Image path="White Puff.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130007DC" name="Sand / Dirt" gfxId="0x800F9148">
+    <SpawnCode gfxId="0x9F"/>
     <Image path="Dirt.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130007DC" name="Snow" gfxId="0x800F9328">
+    <SpawnCode gfxId="0x9E"/>
     <Image path="Snow.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130007DC" name="Bubble" gfxId="0x800F874C">
@@ -475,6 +483,7 @@
     <Data type="uint" address="0x1D4" objectOffset="true" useHex="true">Disappear Bhvr</Data>
   </Object>
   <Object behaviorScriptAddress="0x130009E0" name="Sparkles (Big)">
+    <SpawnCode gfxId="0x95"/>
     <Image path="Sparkles (Big).png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000A14" name="Sparkles (Small)">
@@ -509,6 +518,7 @@
     <Data type="short" address="0x188" objectOffset="true">Destination</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000AFC" name="Wooden Door Warp" gfxId="0x8018E9B4">
+    <SpawnCode gfxId="0x27"/>
     <Image path="Door Wooden Warp.png"/>
 	<MapImage path="Warp Door Top.png" rotates="true"/>
     <Data type="short" address="0x188" objectOffset="true">Destination</Data>
@@ -530,6 +540,7 @@
     <Data type="short" address="0x188" objectOffset="true">Destination</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000AFC" name="Metal Door Warp" gfxId="0x80195E08">
+    <SpawnCode gfxId="0x29"/>
     <Image path="Door Metal Warp.png"/>
 	<MapImage path="Warp Door Top.png" rotates="true"/>
     <Data type="short" address="0x188" objectOffset="true">Destination</Data>
@@ -846,51 +857,39 @@
   </Object>
   <Object behaviorScriptAddress="0x13001298" name="Boo Key~ (BBH)" subType="1">
     <SpawnCode gfxId="0x55"/>
-    <Image path="WF Water Level Checker.png"/>
+    <Image path="Boo Key.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001298" name="Blargg~ (LLL)" subType="2">
     <SpawnCode gfxId="0x54"/>
-    <Image path="WF Water Level Checker.png"/>
+    <Image path="Blargg.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001298" name="Underwater Mine~ (DDD)" subType="3">
     <SpawnCode gfxId="0xB3"/>
-    <Image path="WF Water Level Checker.png"/>
+    <Image path="Floating Mine.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001298" name="Ice Cover~ (SL)" subType="4">
     <SpawnCode gfxId="0x37"/>
-    <Image path="WF Water Level Checker.png"/>
+    <Image path="Ice Cover.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Ice Shard~ (SL)" subType="5">
+  <Object behaviorScriptAddress="0x13001298" name="Ice Triangle~ (SL)" subType="5">
     <SpawnCode gfxId="0x38"/>
-    <Image path="WF Water Level Checker.png"/>
+    <Image path="Ice Triangle.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001298" name="Yoshi Egg~ (WF)" subType="6">
     <SpawnCode gfxId="0x57"/>
-    <Image path="WF Water Level Checker.png"/>
+    <Image path="Yoshi Egg.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Beret~ (RR)" subType="7">
-    <SpawnCode gfxId="0x4B"/>
-    <Image path="WF Water Level Checker.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Red Thing~ (BitDW)" subType="8">
-    <SpawnCode gfxId="0x35"/>
-    <Image path="WF Water Level Checker.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x13001298" name="White Thing~ (VCutM)" subType="9">
+  <Object behaviorScriptAddress="0x13001298" name="White Thing~ (VCutM)" subType="7">
     <SpawnCode gfxId="0x37"/>
-    <Image path="WF Water Level Checker.png"/>
+    <Image path="White Thing.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Checkerboard~ (VCutM)" subType="10">
+  <Object behaviorScriptAddress="0x13001298" name="Checkerboard~ (VCutM)" subType="8">
     <SpawnCode gfxId="0x38"/>
-    <Image path="WF Water Level Checker.png"/>
+    <Image path="Checkerboard.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Blue Thing~ (TotWC)" subType="11">
+  <Object behaviorScriptAddress="0x13001298" name="Blue Thing~ (TotWC)" subType="9">
     <SpawnCode gfxId="0xD0"/>
-    <Image path="WF Water Level Checker.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Ball and Arrow~ (WDW)" subType="12">
-    <SpawnCode gfxId="0x46"/>
-    <Image path="WF Water Level Checker.png"/>
+    <Image path="Blue Thing.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130012B4" name="Spindrift">
     <SpawnCode gfxId="0x54"/>
@@ -1727,15 +1726,19 @@
     <Image path="JRB Ship Hitbox.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130024AC" name="Dust Spawner">
+    <SpawnCode gfxId="0x8E"/>
     <Image path="Dust Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130024DC" name="Dust Ball">
+    <SpawnCode gfxId="0x8E"/>
     <Image path="Dust Glow.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002500" name="Dust">
+    <SpawnCode gfxId="0x96"/>
     <Image path="Dust.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002528" name="White Puff">
+    <SpawnCode gfxId="0x8E"/>
     <Image path="White Puff.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002568" name="Blue Coin Block">
@@ -1783,6 +1786,7 @@
     <Data type="byte" address="0xF6" objectOffset="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002634" name="Tweester Sand">
+    <SpawnCode gfxId="0x9F"/>
     <Image path="Dirt.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002650" name="Tweester">
@@ -1991,18 +1995,22 @@
     <Data type="byte" address="0x17B" objectOffset="true" isBool="true">Falling</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002C14" name="Splash">
+    <SpawnCode gfxId="0xA7"/>
     <Image path="Splash.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002C60" name="Splash Bubble (In Air)">
+    <SpawnCode gfxId="0xA4"/>
     <Image path="Splash Bubble.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002C7C" name="Water Ripples">
+    <SpawnCode gfxId="0xA5"/>
     <Image path="Water Ripples.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002CB0" name="Object Bubble Ripples">
     <Image path="Water Ripples.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002CE0" name="Stationary Water Wave">
+    <SpawnCode gfxId="0xA6"/>
     <Image path="Water Waves.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002D28" name="Water Ripples">
@@ -2010,24 +2018,34 @@
     <Image path="Water Ripples.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002D50" name="5 Splash Bubble Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Splash Bubble Spawner (5).png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002D7C" name="18 Splash Bubble Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Splash Bubble Spawner (18).png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002DB0" name="Sushi Water Waves">
     <Image path="Water Waves.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002DC0" name="Moving Water Wave">
+    <SpawnCode gfxId="0xA3"/>
     <Image path="Water Waves.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002E04" name="Wind Particle">
+    <SpawnCode gfxId="0x9E"/>
     <Image path="Wind Particle.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002E20" name="Wind Behavior">
+  <Object behaviorScriptAddress="0x13002E20" name="Wind Behavior (Invisible)">
+    <SpawnCode gfxId="0x00"/>
+    <Image path="Wind Behavior Invisible.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002E20" name="Wind Behavior (Visible)" gfxId="0x800F9298">
+    <SpawnCode gfxId="0x8E"/>
     <Image path="Wind Behavior.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002E3C" name="Wind Particle Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Wind Particle Spawner.png"/>
     <Data type="int" address="0x150" objectOffset="true">Phase</Data>
     <Data type="uint" address="0xC8" objectOffset="true" isAngle="true">Blowing Angle</Data>
@@ -2486,11 +2504,11 @@
   </Object>
   <Object behaviorScriptAddress="0x13003D74" name="Rolling Rock (Unused Graphic #1)" subType="1">
     <SpawnCode gfxId="0x3A"/>
-    <Image path="Rolling Rock.png"/>
+    <Image path="Rolling Rock Unused Graphic 1.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003D74" name="Rolling Rock (Unused Graphic #2)" subType="2">
     <SpawnCode gfxId="0x3B"/>
-    <Image path="Rolling Rock.png"/>
+    <Image path="Rolling Rock Unused Graphic 2.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003DA0" name="Rolling Rock Spawner">
     <SpawnCode gfxId="0x00"/>
@@ -3096,7 +3114,15 @@
     <Data type="byte" address="0xF3" objectOffset="true" isBool="true">Blinking</Data>
     <Data type="int" address="0xF4" objectOffset="true">Blinking Countdown</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13004988" name="Cloud Spawner">
+  <Object behaviorScriptAddress="0x13004988" name="Fwoosh Spawner" subType="0">
+    <SpawnCode gfxId="0x00"/>
+    <Image path="Fwoosh Spawner.png"/>
+    <Data type="ushort" address="0x1AC" objectOffset="true" isAngle="true">Rev Angle</Data>
+    <Data type="byte" address="0xFF" objectOffset="true" isBool="true">Blowing</Data>
+    <Data type="float" address="0x100" objectOffset="true">Scale Change</Data>
+    <Data type="float" address="0x2C" objectOffset="true">Scale</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13004988" name="Lakitu Cloud Spawner" subType="1">
     <SpawnCode gfxId="0x00"/>
     <Image path="Cloud Spawner.png"/>
     <Data type="ushort" address="0x1AC" objectOffset="true" isAngle="true">Rev Angle</Data>
@@ -3105,7 +3131,12 @@
     <Data type="float" address="0x2C" objectOffset="true">Scale</Data>
   </Object>
   <Object behaviorScriptAddress="0x130049AC" name="Cloud Puff">
+    <SpawnCode gfxId="0x8E"/>
     <Image path="Cloud Puff.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x130049AC" name="Fwoosh Face" gfxId="0x8018D4FC">
+    <SpawnCode gfxId="0x57"/>
+    <Image path="Fwoosh Face.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130049C8" name="Spiny">
     <SpawnCode gfxId="0x55"/>
@@ -3542,6 +3573,7 @@
     <Data type="byte" address="0x189" objectOffset="true" isBool="true">Die if Shrink w/o Spin</Data>
   </Object>
   <Object behaviorScriptAddress="0x13005158" name="Fire">
+    <SpawnCode gfxId="0xCB"/>
     <Image path="Fire.png"/>
 	<Data type="byte" address="0x157" objectOffset="true">Residual Fire Timer</Data>
     <Data type="float" address="0x104" objectOffset="true">Lifespan Timer</Data>
@@ -3554,6 +3586,7 @@
     <Data type="int" address="0xEC" objectOffset="true">Underwater Status</Data>
   </Object>
   <Object behaviorScriptAddress="0x130051AC" name="Residual Fire">
+    <SpawnCode gfxId="0xCB"/>
     <Image path="Residual Fire.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130051E0" name="Snufit">
@@ -3785,7 +3818,7 @@
     <Image path="File Yellow Background.png"/>
   </Object>
   
-<!--
+
 <Object behaviorScriptAddress="0x130032E0" name="Zign 00" subType="0">
   <SpawnCode gfxId="0x00"/>
   <Image path="Sign.png"/>
@@ -4810,6 +4843,6 @@
   <SpawnCode gfxId="0xFF"/>
   <Image path="Sign.png"/>
 </Object>
--->
+
   
 </ObjectAssociations>

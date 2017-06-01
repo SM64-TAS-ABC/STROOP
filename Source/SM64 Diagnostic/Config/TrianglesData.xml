@@ -46,5 +46,5 @@
   <Data special="true" specialType="DistanceBelowCeiling" color="#cfffcc">Dist Below Ceiling</Data>
   <Data special="true" specialType="NormalDistAway" color="#e5ccff">Normal Dist Away</Data>
   <Data special="true" specialType="VerticalDistAway" color="#e5ccff">Vertical Dist Away</Data>
-  <Data special="true" specialType="HeightOnSlope" color="#e5ccff">Height On Slope</Data>
+  <Data special="true" specialType="HeightOnSlope" color="#e5ccff">Height On Triangle</Data>
 </TrianglesData>
