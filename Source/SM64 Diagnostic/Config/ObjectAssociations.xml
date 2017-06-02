@@ -175,6 +175,7 @@
     <Image path="Splash Bubble.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000494" name="Aquarium Bubble Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Aquarium Bubble Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130004A8" name="Cannon Base">
@@ -502,13 +503,15 @@
     <Image path="Star Particle Yellow.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000A98" name="8 Yellow Star Particle Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Star Particle Spawner 8.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000ABC" name="Triangle Particle">
+  <Object behaviorScriptAddress="0x13000ABC" name="Yellow Triangle Particle">
     <SpawnCode gfxId="0x8A"/>
     <Image path="Triangle Particle.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000AD8" name="Triangle Particle Spawner">
+  <Object behaviorScriptAddress="0x13000AD8" name="Yellow Triangle Particle Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Triangle Particle Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000AFC" name="Warp Door">
@@ -688,12 +691,15 @@
     <Image path="HMC Elevator.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000D6C" name="Mario Breath Particle">
+    <SpawnCode gfxId="0x8E"/>
     <Image path="Mario Breath Particle.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000D98" name="Mario Breath Particle Spawner">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Mario Breath Particle Spawner.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000DB4" name="Red Star Particle" gfxId="0x800FA108" appearance="0">
+    <SpawnCode gfxId="0x8B"/>
     <Image path="Star Particle Red.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000DB4" name="Green Star Particle" gfxId="0x800FA108" appearance="1">
@@ -709,9 +715,11 @@
     <Image path="Triangle Particle Gold.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000DB4" name="Shard Particle" gfxId="0x800FA040" appearance="3">
+    <SpawnCode gfxId="0x8A"/>
     <Image path="Box Shard.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000DB4" name="Particle">
+    
     <Image path="Box Shard.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000DD8" name="Waterfall Mist">
@@ -733,10 +741,12 @@
     <Image path="Wind Particle.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000E88" name="Toad (for Ending Cutscene)">
+    <SpawnCode gfxId="0xDD"/>
     <Image path="Toad.png"/>
 	<MapImage path="Toad Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13000EAC" name="Peach (for Ending Cutscene)">
+    <SpawnCode gfxId="0xDE"/>
     <Image path="Peach.png"/>
 	<MapImage path="Peach Top.png" rotates="true"/>
   </Object>
@@ -1026,10 +1036,12 @@
 	<Data type="int" address="0xF0" objectOffset="true">Appearance</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300167C" name="Boo Cage">
+    <SpawnCode gfxId="0x5A"/>
     <Image path="Boo Cage.png"/>
     <Data type="uint" address="0x68" objectOffset="true" useHex="true" isObject="true">Host Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x130016B8" name="Igloo Barrier">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Igloo Barrier.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130016E4" name="Bowser Key (Collectible)">
@@ -1185,6 +1197,7 @@
     <Image path="Ukiki.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001D14" name="LLL Rotating Hexagonal Platform">
+    <SpawnCode gfxId="0x09"/>
     <Image path="LLL Rotating Hexagonal Platform.png"/>
 	<MapImage path="LLL Rotating Hexagonal Platform Top.png" rotates="true"/>
   </Object>
@@ -1264,8 +1277,9 @@
     <SpawnCode gfxId="0x64"/>
     <Image path="Piranha Plant.png"/>
 	<MapImage path="Piranha Plant Top.png" rotates="true"/>
-    <Data type="byte" address="0xF7" objectOffset="true" isBool="true">Lullaby Music</Data>
+    <Data type="int" address="0x178" objectOffset="true">Phase</Data>
     <Data type="int" address="0x198" objectOffset="true">Num Coins</Data>
+    <Data type="byte" address="0xF7" objectOffset="true" isBool="true" invertBool="true">Lullaby Music</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002018" name="LLL Metal Mesh Platform">
     <SpawnCode gfxId="0x0E"/>
@@ -2216,6 +2230,7 @@
     <Data type="byte" address="0x136" mask="0x80" objectOffset="true" isBool="true">Occupied</Data>
   </Object>
   <Object behaviorScriptAddress="0x130032C8" name="Jet Stream Bubbles">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Jet Stream Bubbles.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130032E0" name="Sign">
@@ -2272,7 +2287,8 @@
     <SpawnCode gfxId="0xCD"/>
     <Image path="Bob-omb Explosion.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13003558" name="Bob-omb Explosion Smoke">
+  <Object behaviorScriptAddress="0x13003558" name="Bob-omb/Bully Smoke">
+    <SpawnCode gfxId="0x96"/>
     <Image path="Grey Smoke.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003588" name="Cork Box Dust">
@@ -2348,6 +2364,7 @@
     <Image path="Floating Mine Explosion.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003840" name="Floating Mine Smoke">
+    <SpawnCode gfxId="0x66"/>
     <Image path="Floating Mine Smoke.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003868" name="Celebration Star" gfxId="0x800F8B9C">
@@ -2390,9 +2407,11 @@
     <Image path="WF In-and-Out Platform.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130039A0" name="Moneybag">
+    <SpawnCode gfxId="0x66"/>
     <Image path="Moneybag.png"/>
 	<MapImage path="Moneybag Top.png" rotates="true"/>
     <Data type="int" address="0xF4" objectOffset="true">Jumping Phase</Data>
+    <Data type="int" address="0x17C" objectOffset="true">Opaqueness</Data>
   </Object>
   <Object behaviorScriptAddress="0x130039D4" name="Moneybag Coin">
     <SpawnCode gfxId="0x74"/>
@@ -2480,7 +2499,7 @@
     <SpawnCode gfxId="0x38"/>
     <Image path="Grills.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13003CE4" name="Snowman's Body">
+  <Object behaviorScriptAddress="0x13003CE4" name="Snowman's Body (Talks)">
     <SpawnCode gfxId="0xD2"/>
     <Image path="Snowman's Body.png"/>
     <Data type="byte" address="0x1AF" objectOffset="true" isBool="true">Checkpoint Gotten</Data>
@@ -2494,7 +2513,7 @@
     <SpawnCode gfxId="0x00"/>
     <Image path="Snowman Path Checkpoint.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13003D4C" name="Snowman's Body">
+  <Object behaviorScriptAddress="0x13003D4C" name="Snowman's Body (Doesn't Talk)">
     <SpawnCode gfxId="0xD2"/>
     <Image path="Snowman's Body.png"/>
   </Object>
@@ -3605,9 +3624,12 @@
     <Image path="Grindel.png"/>
 	<MapImage path="Grindel Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x130052B4" name="Eyerok Behavior">
+  <Object behaviorScriptAddress="0x130052B4" name="Eyerok Manager">
     <SpawnCode gfxId="0x00"/>
-    <Image path="Eyerok Behavior.png"/>
+    <Image path="Eyerok Manager.png"/>
+    <Data type="int" address="0x100" objectOffset="true">Active Hand</Data>
+    <Data type="int" address="0xFC" objectOffset="true">Move Counter</Data>
+    <Data type="int" address="0x104" objectOffset="true">Pound Countdown</Data>
     <Data type="int" address="0xF8" objectOffset="true">Hands Remaining</Data>
   </Object>
   <Object behaviorScriptAddress="0x130052D0" name="Eyerok Left Hand" subType="-1">
@@ -3765,6 +3787,7 @@
     <Data type="int" address="0xF4" objectOffset="true">Blinking Countdown</Data>
   </Object>
   <Object behaviorScriptAddress="0x13005638" name="Peach (for Beginning Cutscene)">
+    <SpawnCode gfxId="0xDE"/>
     <Image path="Peach.png"/>
 	<MapImage path="Peach Top.png" rotates="true"/>
     <Data type="int" address="0x17C" objectOffset="true">Opaqueness</Data>
@@ -3818,7 +3841,7 @@
     <Image path="File Yellow Background.png"/>
   </Object>
   
-
+<!--
 <Object behaviorScriptAddress="0x130032E0" name="Zign 00" subType="0">
   <SpawnCode gfxId="0x00"/>
   <Image path="Sign.png"/>
@@ -4843,6 +4866,6 @@
   <SpawnCode gfxId="0xFF"/>
   <Image path="Sign.png"/>
 </Object>
-
+-->
   
 </ObjectAssociations>
