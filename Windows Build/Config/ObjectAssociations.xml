@@ -61,16 +61,31 @@
     <Image path="Star Door.png"/>
 	<MapImage path="Star Door Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000054" name="Mr. I Body">
+  <Object behaviorScriptAddress="0x13000054" name="Mr. I Body" subType="0">
     <SpawnCode gfxId="0x67"/>
     <Image path="Mr. I Body.png"/>
+    <Data type="int" address="0xf4" objectOffset="true">Turn Countdown</Data>
+    <Data type="int" address="0xfc" objectOffset="true">Turn Distance</Data>
+    <Data type="int" address="0x100" objectOffset="true">Turn Direction</Data>
+    <Data type="int" address="0x118" objectOffset="true">Turn Delta</Data>
+    <Data type="int" address="0x104" objectOffset="true">Shot Timer</Data>
+    <Data type="int" address="0x108" objectOffset="true">Shot Max</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13000054" name="Big Mr. I Body" subType="1">
+    <SpawnCode gfxId="0x67"/>
+    <Image path="Big Mr. I Body.png"/>
+    <Data type="int" address="0xf4" objectOffset="true">Turn Countdown</Data>
+    <Data type="int" address="0xfc" objectOffset="true">Turn Distance</Data>
+    <Data type="int" address="0x100" objectOffset="true">Turn Direction</Data>
+    <Data type="int" address="0x118" objectOffset="true">Turn Delta</Data>
+    <Data type="int" address="0x104" objectOffset="true">Shot Timer</Data>
+    <Data type="int" address="0x108" objectOffset="true">Shot Max</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300008C" name="Mr. I Pupil">
     <SpawnCode gfxId="0x66"/>
     <Image path="Mr. I Pupil.png"/>
 	<MapImage path="Mr. I Pupil Top.png" rotates="true"/>
-	<Data type="uint" address="0xc3e7d0" absoluteAddress="true" useHex="true" isObject="true">Host Object</Data>
-	<Data type="int" address="0xF0" objectOffset="true">Blinking Timer</Data>
+    <Data type="uint" address="0x68" objectOffset="true" useHex="true" isObject="true">Host Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x130000AC" name="Mr. I Particle">
     <SpawnCode gfxId="0xAA"/>
