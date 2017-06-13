@@ -3606,10 +3606,13 @@
     <Data type="byte" address="0x187" objectOffset="true" isBool="true">Spin when Hit</Data>
     <Data type="byte" address="0x189" objectOffset="true" isBool="true">Die if Shrink w/o Spin</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13005158" name="Fire">
+  <Object behaviorScriptAddress="0x13005158" name="Fire (Inner)" subType="0">
+    <SpawnCode gfxId="0xCB"/>
+    <Image path="Fire Inner.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13005158" name="Fire (Outer)" subType="1">
     <SpawnCode gfxId="0xCB"/>
     <Image path="Fire.png"/>
-	<Data type="byte" address="0x157" objectOffset="true">Residual Fire Timer</Data>
     <Data type="float" address="0x104" objectOffset="true">Lifespan Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300518C" name="Fire Spitter">
