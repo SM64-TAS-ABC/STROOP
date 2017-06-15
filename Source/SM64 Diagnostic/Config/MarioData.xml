@@ -11,14 +11,13 @@
   <Data type="float" address="0x58" marioOffset="true">X Sliding Speed</Data>
   <Data type="float" address="0x5C" marioOffset="true">Z Sliding Speed</Data>
   <Data special="true" specialType="SlidingSpeed">H Sliding Speed</Data>
-  <Data special="true" specialType="SlidingAngle">Sliding Angle</Data>
+  <Data type="ushort" address="0x00C26C2A" absoluteAddress="true" isAngle="true">Sliding Angle</Data>
   <Data special="true" specialType="MovementX">Delta X</Data>
   <Data special="true" specialType="MovementY">Delta Y</Data>
   <Data special="true" specialType="MovementZ">Delta Z</Data>
   <Data special="true" specialType="MovementLateral">Delta Lateral</Data>
   <Data special="true" specialType="QFrameCountEstimate">QFrames Est.</Data>
   <Data type="ushort" address="0x00C26C1C" absoluteAddress="true" isAngle="true">Yaw (Facing)</Data>
-  <Data type="ushort" address="0x00C26C2A" absoluteAddress="true" isAngle="true">Yaw (Moving)</Data>
   <Data type="ushort" address="0x00C26C16" absoluteAddress="true" isAngle="true">Yaw (Intended)</Data>
   <Data type="ushort" address="0x00c26c28" absoluteAddress="true" isAngle="true">Twirl Yaw</Data>
   <Data type="short" address="0x00c26c26" absoluteAddress="true" isAngle="true">Yaw Velocity</Data>
