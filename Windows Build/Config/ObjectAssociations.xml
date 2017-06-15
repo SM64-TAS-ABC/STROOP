@@ -653,22 +653,27 @@
   </Object>
   <Object behaviorScriptAddress="0x13000C04" name="Falling Block">
     <Image path="Falling Block WF.png"/>
+	<Data type="float" address="0xE8" objectOffset="true">Floor Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000C04" name="WF Falling Block" gfxId="0x80194BD4">
     <SpawnCode gfxId="0xB0"/>
     <Image path="Falling Block WF.png"/>
+	<Data type="float" address="0xE8" objectOffset="true">Floor Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000C04" name="BBH Falling Block" gfxId="0x80188E60">
     <SpawnCode gfxId="0x38"/>
     <Image path="Falling Block BBH.png"/>
+	<Data type="float" address="0xE8" objectOffset="true">Floor Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000C04" name="LLL Falling Block" gfxId="0x8018BC20">
     <SpawnCode gfxId="0x3C"/>
     <Image path="Falling Block LLL.png"/>
+	<Data type="float" address="0xE8" objectOffset="true">Floor Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000C04" name="BitFS Falling Block" gfxId="0x80178560">
     <SpawnCode gfxId="0x40"/>
     <Image path="Falling Block BitFS.png"/>
+	<Data type="float" address="0xE8" objectOffset="true">Floor Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000C28" name="WF Falling Block Spawner" subType="0">
     <SpawnCode gfxId="0x00"/>
