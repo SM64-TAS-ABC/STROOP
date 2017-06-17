@@ -47,6 +47,7 @@
   <Data type="int" address="0x8c" objectOffset="true" isBool="true" mask="0x00000002">Forward Movement</Data>
   <Data type="byte" address="0x77" objectOffset="true" isBool="true">Mario Close</Data>
   <Data type="int" address="0x9C" objectOffset="true">Tangible</Data>
+  <Data type="float" address="0x130" objectOffset="true" useHex="true">Collision Type</Data>
   <Data type="uint" address="0x3C" objectOffset="true" useHex="true">Animation</Data>
   <Data type="short" address="0x40" objectOffset="true">Animation Timer</Data>
   <Data type="int" address="0xF0" objectOffset="true">Graphics Timer</Data>
