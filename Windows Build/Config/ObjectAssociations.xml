@@ -1408,6 +1408,10 @@
     <Data type="byte" address="0x189" objectOffset="true" isBool="true">Fake</Data>
     <Data type="byte" address="0x127" objectOffset="true" isBool="true">Grabbed</Data>
     <Data type="byte" address="0x8B" objectOffset="true" isBool="true">Returning</Data>
+    <Data type="float" address="0x108" objectOffset="true">Distance Modifier</Data>
+    <Data type="float" address="0x104" objectOffset="true">H Speed Modifier</Data>
+    <Data type="ushort" address="0x112" objectOffset="true" isAngle="true">Turn Speed Modifier</Data>
+    <Data type="int" address="0x100" objectOffset="true">Pre-Dive State</Data>
   </Object>
   <Object behaviorScriptAddress="0x130020E8" name="Baby Penguin (Fake)" subType="1">
     <SpawnCode gfxId="0x57"/>
