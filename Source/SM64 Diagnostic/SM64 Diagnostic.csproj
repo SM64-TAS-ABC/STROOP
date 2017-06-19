@@ -203,6 +203,10 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Resources\Hacks\QFrameInfoHack.hck">
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Hacks\SpawnHack.hck">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
