@@ -32,6 +32,7 @@
   <Data type="float" address="0x1fc" objectOffset="true">Hitbox Height</Data>
   <Data type="float" address="0x208" objectOffset="true">Hitbox Down Offset</Data>
   <Data type="float" address="0x128" objectOffset="true">Min Wall Dist</Data>
+  <Data type="float" address="0x0194" objectOffset="true">Collision Dist</Data>
   <Data type="float" address="0x019C" objectOffset="true">Drawing Dist</Data>
   <Data special="true" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data type="uint" address="0x68" objectOffset="true" useHex="true" isObject="true">Parent Object</Data>
