@@ -17,15 +17,15 @@
   <Data type="float" address="0x00CCBAD0" absoluteAddress="true">Obj Offset X</Data>
   <Data type="float" address="0x00CCBAD4" absoluteAddress="true">Obj Offset Y</Data>
   <Data type="float" address="0x00CCBAD8" absoluteAddress="true">Obj Offset Z</Data>
-  <Data type="int" address="0x00ccbb84" absoluteAddress="true" useHex="true">Air Action</Data>
+  <Data type="int" address="0x00ccbb84" absoluteAddress="true" useHex="true" color ="#ffe070">Movement Action</Data>
   <Data type="int" address="0x00ccbb88" absoluteAddress="true" color ="#8888ff">#0 result</Data>
   <Data type="float" address="0x00ccbb8c" absoluteAddress="true" >#0 water Y</Data>
   <Data type="float" address="0x00ccbb90" absoluteAddress="true" >#0 floor Y</Data>
   <Data type="float" address="0x00ccbb94" absoluteAddress="true" >#0 ceiling Y</Data>
   <Data type="int" address="0x00ccbb98" absoluteAddress="true" useHex="true">#0 floor tri</Data>
   <Data type="int" address="0x00ccbb9c" absoluteAddress="true" useHex="true">#0 ceiling tri</Data>
-  <Data type="int" address="0x00ccbba0" absoluteAddress="true" useHex="true">#0 30 wall tri</Data>
-  <Data type="int" address="0x00ccbba4" absoluteAddress="true" useHex="true">#0 150 wall tri</Data>
+  <Data type="int" address="0x00ccbba0" absoluteAddress="true" useHex="true">#0 low wall tri</Data>
+  <Data type="int" address="0x00ccbba4" absoluteAddress="true" useHex="true">#0 high wall tri</Data>
   <Data type="float" address="0x00ccbba8" absoluteAddress="true">#0 pos X</Data>
   <Data type="float" address="0x00ccbbac" absoluteAddress="true">#0 pos Y</Data>
   <Data type="float" address="0x00ccbbb0" absoluteAddress="true">#0 pos Z</Data>
@@ -35,8 +35,8 @@
   <Data type="float" address="0x00ccbbc4" absoluteAddress="true" >#1 ceiling Y</Data>
   <Data type="int" address="0x00ccbbc8" absoluteAddress="true" useHex="true">#1 floor tri</Data>
   <Data type="int" address="0x00ccbbcc" absoluteAddress="true" useHex="true">#1 ceiling tri</Data>
-  <Data type="int" address="0x00ccbbd0" absoluteAddress="true" useHex="true">#1 30 wall tri</Data>
-  <Data type="int" address="0x00ccbbd4" absoluteAddress="true" useHex="true">#1 150 wall tri</Data>
+  <Data type="int" address="0x00ccbbd0" absoluteAddress="true" useHex="true">#1 low wall tri</Data>
+  <Data type="int" address="0x00ccbbd4" absoluteAddress="true" useHex="true">#1 high wall tri</Data>
   <Data type="float" address="0x00ccbbd8" absoluteAddress="true">#1 pos X</Data>
   <Data type="float" address="0x00ccbbdc" absoluteAddress="true">#1 pos Y</Data>
   <Data type="float" address="0x00ccbbe0" absoluteAddress="true">#1 pos Z</Data>
@@ -46,8 +46,8 @@
   <Data type="float" address="0x00ccbbf4" absoluteAddress="true" >#2 ceiling Y</Data>
   <Data type="int" address="0x00ccbbf8" absoluteAddress="true" useHex="true">#2 floor tri</Data>
   <Data type="int" address="0x00ccbbfc" absoluteAddress="true" useHex="true">#2 ceiling tri</Data>
-  <Data type="int" address="0x00ccbc00" absoluteAddress="true" useHex="true">#2 30 wall tri</Data>
-  <Data type="int" address="0x00ccbc04" absoluteAddress="true" useHex="true">#2 150 wall tri</Data>
+  <Data type="int" address="0x00ccbc00" absoluteAddress="true" useHex="true">#2 low wall tri</Data>
+  <Data type="int" address="0x00ccbc04" absoluteAddress="true" useHex="true">#2 high wall tri</Data>
   <Data type="float" address="0x00ccbc08" absoluteAddress="true">#2 pos X</Data>
   <Data type="float" address="0x00ccbc0c" absoluteAddress="true">#2 pos Y</Data>
   <Data type="float" address="0x00ccbc10" absoluteAddress="true">#2 pos Z</Data>
@@ -57,8 +57,8 @@
   <Data type="float" address="0x00ccbc24" absoluteAddress="true" >#3 ceiling Y</Data>
   <Data type="int" address="0x00ccbc28" absoluteAddress="true" useHex="true">#3 floor tri</Data>
   <Data type="int" address="0x00ccbc2c" absoluteAddress="true" useHex="true">#3 ceiling tri</Data>
-  <Data type="int" address="0x00ccbc30" absoluteAddress="true" useHex="true">#3 30 wall tri</Data>
-  <Data type="int" address="0x00ccbc34" absoluteAddress="true" useHex="true">#3 150 wall tri</Data>
+  <Data type="int" address="0x00ccbc30" absoluteAddress="true" useHex="true">#3 low wall tri</Data>
+  <Data type="int" address="0x00ccbc34" absoluteAddress="true" useHex="true">#3 high wall tri</Data>
   <Data type="float" address="0x00ccbc38" absoluteAddress="true">#3 pos X</Data>
   <Data type="float" address="0x00ccbc3c" absoluteAddress="true">#3 pos Y</Data>
   <Data type="float" address="0x00ccbc40" absoluteAddress="true">#3 pos Z</Data>
