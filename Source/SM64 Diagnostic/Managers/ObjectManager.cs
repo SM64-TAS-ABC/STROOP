@@ -181,14 +181,17 @@ namespace SM64_Diagnostic.Managers
             {
                 new DataContainer("MarioDistanceToObject"),
                 new DataContainer("MarioLateralDistanceToObject"),
+                new DataContainer("MarioVerticalDistanceToObject"),
                 new DataContainer("MarioDistanceToObjectHome"),
                 new DataContainer("MarioLateralDistanceToObjectHome"),
+                new DataContainer("MarioVerticalDistanceToObjectHome"),
                 new AngleDataContainer("MarioAngleToObject"),
                 new AngleDataContainer("MarioDeltaAngleToObject"),
                 new AngleDataContainer("AngleToMario"),
                 new AngleDataContainer("DeltaAngleToMario"),
                 new DataContainer("ObjectDistanceToHome"),
                 new DataContainer("LateralObjectDistanceToHome"),
+                new DataContainer("VerticalObjectDistanceToHome"),
                 new DataContainer("RngCallsPerFrame"),
             };
         }
@@ -370,6 +373,10 @@ namespace SM64_Diagnostic.Managers
                             newText = Math.Round(MoreMath.DistanceTo(mX, mZ, objX, objZ), 3).ToString();
                             break;
 
+                        case "MarioVerticalDistanceToObject":
+                            newText = Math.Round(mY - objY, 3).ToString();
+                            break;
+
                         case "MarioDistanceToObjectHome":
                             newText = Math.Round(MoreMath.DistanceTo(mX, mY, mZ, objHomeX, objHomeY, objHomeZ), 3).ToString();
                             break;
@@ -378,12 +385,20 @@ namespace SM64_Diagnostic.Managers
                             newText = Math.Round(MoreMath.DistanceTo(mX, mZ, objHomeX, objHomeZ), 3).ToString();
                             break;
 
+                        case "MarioVerticalDistanceToObjectHome":
+                            newText = Math.Round(mY - objHomeY, 3).ToString();
+                            break;
+
                         case "ObjectDistanceToHome":
                             newText = Math.Round(MoreMath.DistanceTo(objX, objY, objZ, objHomeX, objHomeY, objHomeZ), 3).ToString();
                             break;
 
                         case "LateralObjectDistanceToHome":
                             newText = Math.Round(MoreMath.DistanceTo(objX, objZ, objHomeX, objHomeZ), 3).ToString();
+                            break;
+
+                        case "VerticalObjectDistanceToHome":
+                            newText = Math.Round(objY - objHomeY, 3).ToString();
                             break;
 
                         case "MarioAngleToObject":
