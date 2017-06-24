@@ -330,6 +330,30 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool DebilitateObject(ProcessStream stream, List<uint> addresses)
+        {
+            bool success = true;
+            stream.Suspend();
+            foreach (var address in addresses)
+            {
+                success &= stream.SetValue(0x800EE5F8, address + Config.ObjectSlots.ReleaseStatusOffset);
+            }
+            stream.Resume();
+            return success;
+        }
+
+        public static bool InteractObject(ProcessStream stream, List<uint> addresses)
+        {
+            bool success = true;
+            stream.Suspend();
+            foreach (var address in addresses)
+            {
+                success &= stream.SetValue(0xFFFFFFFF, address + Config.ObjectSlots.InteractionStatusOffset);
+            }
+            stream.Resume();
+            return success;
+        }
+
         public static bool ToggleHandsfree(ProcessStream stream)
         {
             bool success = true;

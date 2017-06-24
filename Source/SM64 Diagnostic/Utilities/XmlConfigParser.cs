@@ -168,6 +168,12 @@ namespace SM64_Diagnostic.Utilities
                                 case "RollMovingOffset":
                                     Config.ObjectSlots.RollMovingOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "ReleaseStatusOffset":
+                                    Config.ObjectSlots.ReleaseStatusOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "InteractionStatusOffset":
+                                    Config.ObjectSlots.InteractionStatusOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "PendulumAccelerationDirection":
                                     Config.ObjectSlots.PendulumAccelerationDirection = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

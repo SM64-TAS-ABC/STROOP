@@ -139,11 +139,13 @@ namespace SM64_Diagnostic
                 ObjSlotPositionLabel = labelObjSlotPosValue,
 
                 // Main buttons
-                CloneButton = buttonObjClone,
                 GoToButton = buttonObjGoTo,
                 RetrieveButton = buttonObjRetrieve,
                 GoToHomeButton = buttonObjGoToHome,
                 RetrieveHomeButton = buttonObjRetrieveHome,
+                DebilitateButton = buttonObjDebilitate,
+                InteractButton = buttonObjInteract,
+                CloneButton = buttonObjClone,
                 UnloadButton = buttonObjUnload,
 
                 // Position controller

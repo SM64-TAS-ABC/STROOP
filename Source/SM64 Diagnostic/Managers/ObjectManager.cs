@@ -214,6 +214,8 @@ namespace SM64_Diagnostic.Managers
             // Register buttons
             objectGui.CloneButton.Click += CloneButton_Click;
             objectGui.UnloadButton.Click += UnloadButton_Click;
+            objectGui.DebilitateButton.Click += DebilitateButton_Click;
+            objectGui.InteractButton.Click += InteractButton_Click;
             objectGui.GoToButton.Click += GoToButton_Click;
             objectGui.RetrieveButton.Click += RetreiveButton_Click;
             objectGui.GoToHomeButton.Click += GoToHomeButton_Click;
@@ -416,6 +418,22 @@ namespace SM64_Diagnostic.Managers
                 MarioActions.UnCloneObject(_stream, CurrentAddresses[0]);
             else
                 MarioActions.CloneObject(_stream, CurrentAddresses[0]);
+        }
+
+        private void DebilitateButton_Click(object sender, EventArgs e)
+        {
+            if (CurrentAddresses.Count == 0)
+                return;
+
+            MarioActions.DebilitateObject(_stream, CurrentAddresses);
+        }
+
+        private void InteractButton_Click(object sender, EventArgs e)
+        {
+            if (CurrentAddresses.Count == 0)
+                return;
+
+            MarioActions.InteractObject(_stream, CurrentAddresses);
         }
 
         private void ProcessSpecialVars()

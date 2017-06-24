@@ -15,6 +15,8 @@ namespace SM64_Diagnostic.Structs
         public NoTearFlowLayoutPanel ObjectFlowLayout;
         public Button CloneButton;
         public Button UnloadButton;
+        public Button DebilitateButton;
+        public Button InteractButton;
         public Button RetrieveButton;
         public Button GoToButton;
         public Button RetrieveHomeButton;
