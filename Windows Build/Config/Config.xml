@@ -29,6 +29,10 @@
     <HitboxRadius>0x1f8</HitboxRadius>
     <HitboxHeight>0x1fc</HitboxHeight>
     <HitboxDownOffset>0x208</HitboxDownOffset>
+    <PendulumAccelerationDirection>0xF4</PendulumAccelerationDirection>
+    <PendulumAccelerationMagnitude>0x100</PendulumAccelerationMagnitude>
+    <PendulumAngularVelocity>0xFC</PendulumAngularVelocity>
+    <PendulumAngle>0xF8</PendulumAngle>
   </ObjectSlots>
   <ObjectGroups>
     <ProcessNextLinkOffset>0x60</ProcessNextLinkOffset>

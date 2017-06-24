@@ -150,6 +150,18 @@ namespace SM64_Diagnostic.Utilities
                                 case "HitboxDownOffset":
                                     Config.ObjectSlots.HitboxDownOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "PendulumAccelerationDirection":
+                                    Config.ObjectSlots.PendulumAccelerationDirection = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "PendulumAccelerationMagnitude":
+                                    Config.ObjectSlots.PendulumAccelerationMagnitude = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "PendulumAngularVelocity":
+                                    Config.ObjectSlots.PendulumAngularVelocity = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "PendulumAngle":
+                                    Config.ObjectSlots.PendulumAngle = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;

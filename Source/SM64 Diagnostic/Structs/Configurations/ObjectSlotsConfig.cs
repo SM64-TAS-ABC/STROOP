@@ -30,5 +30,9 @@ namespace SM64_Diagnostic.Structs
         public uint HitboxRadius;
         public uint HitboxHeight;
         public uint HitboxDownOffset;
+        public uint PendulumAccelerationDirection;
+        public uint PendulumAccelerationMagnitude;
+        public uint PendulumAngularVelocity;
+        public uint PendulumAngle;
     }
 }
