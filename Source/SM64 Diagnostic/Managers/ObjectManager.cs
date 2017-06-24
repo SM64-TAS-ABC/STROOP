@@ -238,30 +238,42 @@ namespace SM64_Diagnostic.Managers
             objectGui.AnglePitchNButton.Click += (sender, e) => AnglePitchButton_Click(sender, e, -1);
             objectGui.AngleRollPButton.Click += (sender, e) => AngleRollButton_Click(sender, e, +1);
             objectGui.AngleRollNButton.Click += (sender, e) => AngleRollButton_Click(sender, e, -1);
+
+            // Register position controller buttons
+            objectGui.HomeXnZnButton.Click += (sender, e) => HomeXZButton_Click(sender, e, -1, -1);
+            objectGui.HomeXnButton.Click += (sender, e) => HomeXZButton_Click(sender, e, -1, 0);
+            objectGui.HomeXnZpButton.Click += (sender, e) => HomeXZButton_Click(sender, e, -1, 1);
+            objectGui.HomeZnButton.Click += (sender, e) => HomeXZButton_Click(sender, e, 0, -1);
+            objectGui.HomeZpButton.Click += (sender, e) => HomeXZButton_Click(sender, e, 0, 1);
+            objectGui.HomeXpZnButton.Click += (sender, e) => HomeXZButton_Click(sender, e, 1, -1);
+            objectGui.HomeXpButton.Click += (sender, e) => HomeXZButton_Click(sender, e, 1, 0);
+            objectGui.HomeXpZpButton.Click += (sender, e) => HomeXZButton_Click(sender, e, 1, 1);
+            objectGui.HomeYnButton.Click += (sender, e) => HomeYButton_Click(sender, e, -1);
+            objectGui.HomeYpButton.Click += (sender, e) => HomeYButton_Click(sender, e, 1);
         }
 
-        private void PosYButton_Click(object sender, EventArgs e, int y)
+        private void PosYButton_Click(object sender, EventArgs e, int ySign)
         {
             if (_currentAddresses.Count == 0)
                 return;
 
-            float value;
-            if (!float.TryParse(_objGui.PosYTextbox.Text, out value))
+            float yValue;
+            if (!float.TryParse(_objGui.PosYTextbox.Text, out yValue))
                 return;
 
-            MarioActions.MoveObjects(_stream, CurrentAddresses, 0, y * value, 0);
+            MarioActions.MoveObjects(_stream, CurrentAddresses, 0, ySign * yValue, 0);
         }
 
-        private void PosXZButton_Click(object sender, EventArgs e, int x, int z)
+        private void PosXZButton_Click(object sender, EventArgs e, int xSign, int zSign)
         {
             if (_currentAddresses.Count == 0)
                 return;
 
-            float value;
-            if (!float.TryParse(_objGui.PosXZTextbox.Text, out value))
+            float xzValue;
+            if (!float.TryParse(_objGui.PosXZTextbox.Text, out xzValue))
                 return;
 
-            MarioActions.MoveObjects(_stream, CurrentAddresses, x * value, 0, z * value);
+            MarioActions.MoveObjects(_stream, CurrentAddresses, xSign * xzValue, 0, zSign * xzValue);
         }
 
         private void AngleYawButton_Click(object sender, EventArgs e, int sign)
@@ -298,6 +310,30 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             MarioActions.RotateObjects(_stream, CurrentAddresses, 0, 0, sign * roll);
+        }
+
+        private void HomeYButton_Click(object sender, EventArgs e, int ySign)
+        {
+            if (_currentAddresses.Count == 0)
+                return;
+
+            float yValue;
+            if (!float.TryParse(_objGui.HomeYTextbox.Text, out yValue))
+                return;
+
+            MarioActions.MoveObjectHomes(_stream, CurrentAddresses, 0, ySign * yValue, 0);
+        }
+
+        private void HomeXZButton_Click(object sender, EventArgs e, int xSign, int zSign)
+        {
+            if (_currentAddresses.Count == 0)
+                return;
+
+            float xzValue;
+            if (!float.TryParse(_objGui.HomeXZTextbox.Text, out xzValue))
+                return;
+
+            MarioActions.MoveObjectHomes(_stream, CurrentAddresses, xSign * xzValue, 0, zSign * xzValue);
         }
 
         private void AddressChanged()

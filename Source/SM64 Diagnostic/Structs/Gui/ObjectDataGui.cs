@@ -48,5 +48,18 @@ namespace SM64_Diagnostic.Structs
         public TextBox AngleYawTextbox;
         public TextBox AnglePitchTextbox;
         public TextBox AngleRollTextbox;
+
+        public Button HomeXnZnButton;
+        public Button HomeXnButton;
+        public Button HomeXnZpButton;
+        public Button HomeZnButton;
+        public Button HomeZpButton;
+        public Button HomeXpZnButton;
+        public Button HomeXpButton;
+        public Button HomeXpZpButton;
+        public Button HomeYnButton;
+        public Button HomeYpButton;
+        public TextBox HomeXZTextbox;
+        public TextBox HomeYTextbox;
     }
 }

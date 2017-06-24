@@ -236,6 +236,19 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
+            this.groupBoxObjHome = new System.Windows.Forms.GroupBox();
+            this.textBoxObjHomeY = new System.Windows.Forms.TextBox();
+            this.buttonObjHomeYp = new System.Windows.Forms.Button();
+            this.buttonObjHomeYn = new System.Windows.Forms.Button();
+            this.buttonObjHomeXpZp = new System.Windows.Forms.Button();
+            this.textBoxObjHomeXZ = new System.Windows.Forms.TextBox();
+            this.buttonObjHomeXp = new System.Windows.Forms.Button();
+            this.buttonObjHomeXpZn = new System.Windows.Forms.Button();
+            this.buttonObjHomeZn = new System.Windows.Forms.Button();
+            this.buttonObjHomeZp = new System.Windows.Forms.Button();
+            this.buttonObjHomeXnZp = new System.Windows.Forms.Button();
+            this.buttonObjHomeXn = new System.Windows.Forms.Button();
+            this.buttonObjHomeXnZn = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -292,6 +305,7 @@ namespace SM64_Diagnostic
             this.tabPageCamHack.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.groupBoxObjHome.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -323,7 +337,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 92);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 93);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -411,7 +425,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 43);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 44);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -520,6 +534,7 @@ namespace SM64_Diagnostic
             this.panelObj.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panelObj.AutoScroll = true;
+            this.panelObj.Controls.Add(this.groupBoxObjHome);
             this.panelObj.Controls.Add(this.groupBoxObjAngle);
             this.panelObj.Controls.Add(this.groupBoxObjPos);
             this.panelObj.Controls.Add(this.buttonObjGoToHome);
@@ -1865,7 +1880,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(606, 543);
+            this.glControlMap.Size = new System.Drawing.Size(607, 543);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -2679,6 +2694,148 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
+            // groupBoxObjHome
+            // 
+            this.groupBoxObjHome.Controls.Add(this.textBoxObjHomeY);
+            this.groupBoxObjHome.Controls.Add(this.buttonObjHomeYp);
+            this.groupBoxObjHome.Controls.Add(this.buttonObjHomeYn);
+            this.groupBoxObjHome.Controls.Add(this.buttonObjHomeXpZp);
+            this.groupBoxObjHome.Controls.Add(this.textBoxObjHomeXZ);
+            this.groupBoxObjHome.Controls.Add(this.buttonObjHomeXp);
+            this.groupBoxObjHome.Controls.Add(this.buttonObjHomeXpZn);
+            this.groupBoxObjHome.Controls.Add(this.buttonObjHomeZn);
+            this.groupBoxObjHome.Controls.Add(this.buttonObjHomeZp);
+            this.groupBoxObjHome.Controls.Add(this.buttonObjHomeXnZp);
+            this.groupBoxObjHome.Controls.Add(this.buttonObjHomeXn);
+            this.groupBoxObjHome.Controls.Add(this.buttonObjHomeXnZn);
+            this.groupBoxObjHome.Location = new System.Drawing.Point(6, 351);
+            this.groupBoxObjHome.Name = "groupBoxObjHome";
+            this.groupBoxObjHome.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxObjHome.TabIndex = 36;
+            this.groupBoxObjHome.TabStop = false;
+            this.groupBoxObjHome.Text = "Home";
+            // 
+            // textBoxObjHomeY
+            // 
+            this.textBoxObjHomeY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxObjHomeY.Location = new System.Drawing.Point(140, 70);
+            this.textBoxObjHomeY.Name = "textBoxObjHomeY";
+            this.textBoxObjHomeY.Size = new System.Drawing.Size(42, 20);
+            this.textBoxObjHomeY.TabIndex = 33;
+            this.textBoxObjHomeY.Text = "100";
+            this.textBoxObjHomeY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonObjHomeYp
+            // 
+            this.buttonObjHomeYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonObjHomeYp.Location = new System.Drawing.Point(140, 16);
+            this.buttonObjHomeYp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjHomeYp.Name = "buttonObjHomeYp";
+            this.buttonObjHomeYp.Size = new System.Drawing.Size(42, 42);
+            this.buttonObjHomeYp.TabIndex = 35;
+            this.buttonObjHomeYp.Text = "Y+";
+            this.buttonObjHomeYp.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjHomeYn
+            // 
+            this.buttonObjHomeYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonObjHomeYn.Location = new System.Drawing.Point(140, 100);
+            this.buttonObjHomeYn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjHomeYn.Name = "buttonObjHomeYn";
+            this.buttonObjHomeYn.Size = new System.Drawing.Size(42, 42);
+            this.buttonObjHomeYn.TabIndex = 34;
+            this.buttonObjHomeYn.Text = "Y-";
+            this.buttonObjHomeYn.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjHomeXpZp
+            // 
+            this.buttonObjHomeXpZp.Location = new System.Drawing.Point(87, 100);
+            this.buttonObjHomeXpZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjHomeXpZp.Name = "buttonObjHomeXpZp";
+            this.buttonObjHomeXpZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonObjHomeXpZp.TabIndex = 32;
+            this.buttonObjHomeXpZp.Text = "X+Z+";
+            this.buttonObjHomeXpZp.UseVisualStyleBackColor = true;
+            // 
+            // textBoxObjHomeXZ
+            // 
+            this.textBoxObjHomeXZ.Location = new System.Drawing.Point(45, 70);
+            this.textBoxObjHomeXZ.Name = "textBoxObjHomeXZ";
+            this.textBoxObjHomeXZ.Size = new System.Drawing.Size(42, 20);
+            this.textBoxObjHomeXZ.TabIndex = 27;
+            this.textBoxObjHomeXZ.Text = "100";
+            this.textBoxObjHomeXZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonObjHomeXp
+            // 
+            this.buttonObjHomeXp.Location = new System.Drawing.Point(87, 58);
+            this.buttonObjHomeXp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjHomeXp.Name = "buttonObjHomeXp";
+            this.buttonObjHomeXp.Size = new System.Drawing.Size(42, 42);
+            this.buttonObjHomeXp.TabIndex = 31;
+            this.buttonObjHomeXp.Text = "X+";
+            this.buttonObjHomeXp.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjHomeXpZn
+            // 
+            this.buttonObjHomeXpZn.Location = new System.Drawing.Point(87, 16);
+            this.buttonObjHomeXpZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjHomeXpZn.Name = "buttonObjHomeXpZn";
+            this.buttonObjHomeXpZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonObjHomeXpZn.TabIndex = 30;
+            this.buttonObjHomeXpZn.Text = "X+Z-";
+            this.buttonObjHomeXpZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjHomeZn
+            // 
+            this.buttonObjHomeZn.Location = new System.Drawing.Point(45, 16);
+            this.buttonObjHomeZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjHomeZn.Name = "buttonObjHomeZn";
+            this.buttonObjHomeZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonObjHomeZn.TabIndex = 29;
+            this.buttonObjHomeZn.Text = "Z-";
+            this.buttonObjHomeZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjHomeZp
+            // 
+            this.buttonObjHomeZp.Location = new System.Drawing.Point(45, 100);
+            this.buttonObjHomeZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjHomeZp.Name = "buttonObjHomeZp";
+            this.buttonObjHomeZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonObjHomeZp.TabIndex = 28;
+            this.buttonObjHomeZp.Text = "Z+";
+            this.buttonObjHomeZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjHomeXnZp
+            // 
+            this.buttonObjHomeXnZp.Location = new System.Drawing.Point(3, 100);
+            this.buttonObjHomeXnZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjHomeXnZp.Name = "buttonObjHomeXnZp";
+            this.buttonObjHomeXnZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonObjHomeXnZp.TabIndex = 27;
+            this.buttonObjHomeXnZp.Text = "X-Z+";
+            this.buttonObjHomeXnZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjHomeXn
+            // 
+            this.buttonObjHomeXn.Location = new System.Drawing.Point(3, 58);
+            this.buttonObjHomeXn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjHomeXn.Name = "buttonObjHomeXn";
+            this.buttonObjHomeXn.Size = new System.Drawing.Size(42, 42);
+            this.buttonObjHomeXn.TabIndex = 26;
+            this.buttonObjHomeXn.Text = "X-";
+            this.buttonObjHomeXn.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjHomeXnZn
+            // 
+            this.buttonObjHomeXnZn.Location = new System.Drawing.Point(3, 16);
+            this.buttonObjHomeXnZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjHomeXnZn.Name = "buttonObjHomeXnZn";
+            this.buttonObjHomeXnZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonObjHomeXnZn.TabIndex = 25;
+            this.buttonObjHomeXnZn.Text = "X-Z-";
+            this.buttonObjHomeXnZn.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2772,6 +2929,8 @@ namespace SM64_Diagnostic
             this.tabPageOptions.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.groupBoxObjHome.ResumeLayout(false);
+            this.groupBoxObjHome.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2981,6 +3140,19 @@ namespace SM64_Diagnostic
         private Button buttonObjAnglePitchN;
         private Button buttonObjAngleRollP;
         private Button buttonObjAnglePitchP;
+        private GroupBox groupBoxObjHome;
+        private TextBox textBoxObjHomeY;
+        private Button buttonObjHomeYp;
+        private Button buttonObjHomeYn;
+        private Button buttonObjHomeXpZp;
+        private TextBox textBoxObjHomeXZ;
+        private Button buttonObjHomeXp;
+        private Button buttonObjHomeXpZn;
+        private Button buttonObjHomeZn;
+        private Button buttonObjHomeZp;
+        private Button buttonObjHomeXnZp;
+        private Button buttonObjHomeXn;
+        private Button buttonObjHomeXnZn;
     }
 }
 

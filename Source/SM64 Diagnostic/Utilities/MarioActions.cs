@@ -74,7 +74,6 @@ namespace SM64_Diagnostic.Utilities
         {     
             stream.Suspend();
 
-            // Move object to Mario
             bool success = true;
             foreach (var objAddress in objAddresses)
             {
@@ -96,12 +95,37 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool MoveObjectHomes(ProcessStream stream, List<uint> objAddresses,
+            float xOffset, float yOffset, float zOffset)
+        {
+            stream.Suspend();
+
+            bool success = true;
+            foreach (var objAddress in objAddresses)
+            {
+                float homeX, homeY, homeZ;
+                homeX = stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
+                homeY = stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                homeZ = stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
+
+                homeX += xOffset;
+                homeY += yOffset;
+                homeZ += zOffset;
+
+                success &= stream.SetValue(homeX, objAddress + Config.ObjectSlots.HomeXOffset);
+                success &= stream.SetValue(homeY, objAddress + Config.ObjectSlots.HomeYOffset);
+                success &= stream.SetValue(homeZ, objAddress + Config.ObjectSlots.HomeZOffset);
+            }
+            stream.Resume();
+
+            return success;
+        }
+
         public static bool RotateObjects(ProcessStream stream, List<uint> objAddresses,
             int yawOffset, int pitchOffset, int rollOffset)
         {
             stream.Suspend();
 
-            // Move object to Mario
             bool success = true;
             foreach (var objAddress in objAddresses)
             {

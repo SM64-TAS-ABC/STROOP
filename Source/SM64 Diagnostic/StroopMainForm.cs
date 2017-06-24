@@ -170,6 +170,20 @@ namespace SM64_Diagnostic
                 AngleYawTextbox = textBoxObjAngleYaw,
                 AnglePitchTextbox = textBoxObjAnglePitch,
                 AngleRollTextbox = textBoxObjAngleRoll,
+
+                // Home controller
+                HomeXnZnButton = buttonObjHomeXnZn,
+                HomeXnButton = buttonObjHomeXn,
+                HomeXnZpButton = buttonObjHomeXnZp,
+                HomeZnButton = buttonObjHomeZn,
+                HomeZpButton = buttonObjHomeZp,
+                HomeXpZnButton = buttonObjHomeXpZn,
+                HomeXpButton = buttonObjHomeXp,
+                HomeXpZpButton = buttonObjHomeXpZp,
+                HomeYnButton = buttonObjHomeYn,
+                HomeYpButton = buttonObjHomeYp,
+                HomeXZTextbox = textBoxObjHomeXZ,
+                HomeYTextbox = textBoxObjHomeY,
             };
             currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
 
