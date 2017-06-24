@@ -548,7 +548,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjAngle.Controls.Add(this.buttonObjAngleYawP);
             this.groupBoxObjAngle.Location = new System.Drawing.Point(3, 230);
             this.groupBoxObjAngle.Name = "groupBoxObjAngle";
-            this.groupBoxObjAngle.Size = new System.Drawing.Size(185, 115);
+            this.groupBoxObjAngle.Size = new System.Drawing.Size(185, 95);
             this.groupBoxObjAngle.TabIndex = 29;
             this.groupBoxObjAngle.TabStop = false;
             this.groupBoxObjAngle.Text = "Angle";
@@ -556,7 +556,7 @@ namespace SM64_Diagnostic
             // textBoxObjAngleRoll
             // 
             this.textBoxObjAngleRoll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxObjAngleRoll.Location = new System.Drawing.Point(67, 87);
+            this.textBoxObjAngleRoll.Location = new System.Drawing.Point(67, 69);
             this.textBoxObjAngleRoll.Name = "textBoxObjAngleRoll";
             this.textBoxObjAngleRoll.Size = new System.Drawing.Size(51, 20);
             this.textBoxObjAngleRoll.TabIndex = 33;
@@ -566,7 +566,7 @@ namespace SM64_Diagnostic
             // textBoxObjAnglePitch
             // 
             this.textBoxObjAnglePitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxObjAnglePitch.Location = new System.Drawing.Point(67, 55);
+            this.textBoxObjAnglePitch.Location = new System.Drawing.Point(67, 44);
             this.textBoxObjAnglePitch.Name = "textBoxObjAnglePitch";
             this.textBoxObjAnglePitch.Size = new System.Drawing.Size(51, 20);
             this.textBoxObjAnglePitch.TabIndex = 33;
@@ -576,7 +576,7 @@ namespace SM64_Diagnostic
             // textBoxObjAngleYaw
             // 
             this.textBoxObjAngleYaw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxObjAngleYaw.Location = new System.Drawing.Point(67, 23);
+            this.textBoxObjAngleYaw.Location = new System.Drawing.Point(67, 19);
             this.textBoxObjAngleYaw.Name = "textBoxObjAngleYaw";
             this.textBoxObjAngleYaw.Size = new System.Drawing.Size(51, 20);
             this.textBoxObjAngleYaw.TabIndex = 33;
@@ -586,10 +586,10 @@ namespace SM64_Diagnostic
             // buttonObjAngleRollN
             // 
             this.buttonObjAngleRollN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonObjAngleRollN.Location = new System.Drawing.Point(3, 80);
+            this.buttonObjAngleRollN.Location = new System.Drawing.Point(3, 66);
             this.buttonObjAngleRollN.Margin = new System.Windows.Forms.Padding(0);
             this.buttonObjAngleRollN.Name = "buttonObjAngleRollN";
-            this.buttonObjAngleRollN.Size = new System.Drawing.Size(61, 32);
+            this.buttonObjAngleRollN.Size = new System.Drawing.Size(61, 25);
             this.buttonObjAngleRollN.TabIndex = 35;
             this.buttonObjAngleRollN.Text = "Roll-";
             this.buttonObjAngleRollN.UseVisualStyleBackColor = true;
@@ -597,10 +597,10 @@ namespace SM64_Diagnostic
             // buttonObjAnglePitchN
             // 
             this.buttonObjAnglePitchN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonObjAnglePitchN.Location = new System.Drawing.Point(3, 48);
+            this.buttonObjAnglePitchN.Location = new System.Drawing.Point(3, 41);
             this.buttonObjAnglePitchN.Margin = new System.Windows.Forms.Padding(0);
             this.buttonObjAnglePitchN.Name = "buttonObjAnglePitchN";
-            this.buttonObjAnglePitchN.Size = new System.Drawing.Size(61, 32);
+            this.buttonObjAnglePitchN.Size = new System.Drawing.Size(61, 25);
             this.buttonObjAnglePitchN.TabIndex = 35;
             this.buttonObjAnglePitchN.Text = "Pitch-";
             this.buttonObjAnglePitchN.UseVisualStyleBackColor = true;
@@ -611,7 +611,7 @@ namespace SM64_Diagnostic
             this.buttonObjAngleYawN.Location = new System.Drawing.Point(3, 16);
             this.buttonObjAngleYawN.Margin = new System.Windows.Forms.Padding(0);
             this.buttonObjAngleYawN.Name = "buttonObjAngleYawN";
-            this.buttonObjAngleYawN.Size = new System.Drawing.Size(61, 32);
+            this.buttonObjAngleYawN.Size = new System.Drawing.Size(61, 25);
             this.buttonObjAngleYawN.TabIndex = 35;
             this.buttonObjAngleYawN.Text = "Yaw-";
             this.buttonObjAngleYawN.UseVisualStyleBackColor = true;
@@ -619,10 +619,10 @@ namespace SM64_Diagnostic
             // buttonObjAngleRollP
             // 
             this.buttonObjAngleRollP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonObjAngleRollP.Location = new System.Drawing.Point(121, 80);
+            this.buttonObjAngleRollP.Location = new System.Drawing.Point(121, 66);
             this.buttonObjAngleRollP.Margin = new System.Windows.Forms.Padding(0);
             this.buttonObjAngleRollP.Name = "buttonObjAngleRollP";
-            this.buttonObjAngleRollP.Size = new System.Drawing.Size(61, 32);
+            this.buttonObjAngleRollP.Size = new System.Drawing.Size(61, 25);
             this.buttonObjAngleRollP.TabIndex = 35;
             this.buttonObjAngleRollP.Text = "Roll+";
             this.buttonObjAngleRollP.UseVisualStyleBackColor = true;
@@ -630,10 +630,10 @@ namespace SM64_Diagnostic
             // buttonObjAnglePitchP
             // 
             this.buttonObjAnglePitchP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonObjAnglePitchP.Location = new System.Drawing.Point(121, 48);
+            this.buttonObjAnglePitchP.Location = new System.Drawing.Point(121, 41);
             this.buttonObjAnglePitchP.Margin = new System.Windows.Forms.Padding(0);
             this.buttonObjAnglePitchP.Name = "buttonObjAnglePitchP";
-            this.buttonObjAnglePitchP.Size = new System.Drawing.Size(61, 32);
+            this.buttonObjAnglePitchP.Size = new System.Drawing.Size(61, 25);
             this.buttonObjAnglePitchP.TabIndex = 35;
             this.buttonObjAnglePitchP.Text = "Pitch+";
             this.buttonObjAnglePitchP.UseVisualStyleBackColor = true;
@@ -644,7 +644,7 @@ namespace SM64_Diagnostic
             this.buttonObjAngleYawP.Location = new System.Drawing.Point(121, 16);
             this.buttonObjAngleYawP.Margin = new System.Windows.Forms.Padding(0);
             this.buttonObjAngleYawP.Name = "buttonObjAngleYawP";
-            this.buttonObjAngleYawP.Size = new System.Drawing.Size(61, 32);
+            this.buttonObjAngleYawP.Size = new System.Drawing.Size(61, 25);
             this.buttonObjAngleYawP.TabIndex = 35;
             this.buttonObjAngleYawP.Text = "Yaw+";
             this.buttonObjAngleYawP.UseVisualStyleBackColor = true;
@@ -2374,7 +2374,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjHome.Controls.Add(this.buttonObjHomeXnZp);
             this.groupBoxObjHome.Controls.Add(this.buttonObjHomeXn);
             this.groupBoxObjHome.Controls.Add(this.buttonObjHomeXnZn);
-            this.groupBoxObjHome.Location = new System.Drawing.Point(3, 351);
+            this.groupBoxObjHome.Location = new System.Drawing.Point(3, 331);
             this.groupBoxObjHome.Name = "groupBoxObjHome";
             this.groupBoxObjHome.Size = new System.Drawing.Size(185, 146);
             this.groupBoxObjHome.TabIndex = 36;
