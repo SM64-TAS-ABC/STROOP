@@ -127,6 +127,7 @@ namespace SM64_Diagnostic
             // Create object manager
             var objectGui = new ObjectDataGui()
             {
+                // Main object details
                 ObjectBorderPanel = panelObjectBorder,
                 ObjectFlowLayout = NoTearFlowLayoutPanelObject,
                 ObjectImagePictureBox = pictureBoxObject,
@@ -136,12 +137,18 @@ namespace SM64_Diagnostic
                 ObjectNameTextBox = textBoxObjName,
                 ObjSlotIndexLabel = labelObjSlotIndValue,
                 ObjSlotPositionLabel = labelObjSlotPosValue,
-                CloneButton = buttonObjClone,
+
+                // Main buttons
                 GoToButton = buttonObjGoTo,
                 RetrieveButton = buttonObjRetrieve,
                 GoToHomeButton = buttonObjGoToHome,
                 RetrieveHomeButton = buttonObjRetrieveHome,
+                DebilitateButton = buttonObjDebilitate,
+                InteractButton = buttonObjInteract,
+                CloneButton = buttonObjClone,
                 UnloadButton = buttonObjUnload,
+
+                // Position controller
                 PosXnZnButton = buttonObjPosXnZn,
                 PosXnButton = buttonObjPosXn,
                 PosXnZpButton = buttonObjPosXnZp,
@@ -153,7 +160,32 @@ namespace SM64_Diagnostic
                 PosYnButton = buttonObjPosYn,
                 PosYpButton = buttonObjPosYp,
                 PosXZTextbox = textBoxObjPosXZ,
-                PosYTextbox = textBoxObjPosY
+                PosYTextbox = textBoxObjPosY,
+
+                // Angle controller
+                AngleYawPButton = buttonObjAngleYawP,
+                AngleYawNButton = buttonObjAngleYawN,
+                AnglePitchPButton = buttonObjAnglePitchP,
+                AnglePitchNButton = buttonObjAnglePitchN,
+                AngleRollPButton = buttonObjAngleRollP,
+                AngleRollNButton = buttonObjAngleRollN,
+                AngleYawTextbox = textBoxObjAngleYaw,
+                AnglePitchTextbox = textBoxObjAnglePitch,
+                AngleRollTextbox = textBoxObjAngleRoll,
+
+                // Home controller
+                HomeXnZnButton = buttonObjHomeXnZn,
+                HomeXnButton = buttonObjHomeXn,
+                HomeXnZpButton = buttonObjHomeXnZp,
+                HomeZnButton = buttonObjHomeZn,
+                HomeZpButton = buttonObjHomeZp,
+                HomeXpZnButton = buttonObjHomeXpZn,
+                HomeXpButton = buttonObjHomeXp,
+                HomeXpZpButton = buttonObjHomeXpZp,
+                HomeYnButton = buttonObjHomeYn,
+                HomeYpButton = buttonObjHomeYp,
+                HomeXZTextbox = textBoxObjHomeXZ,
+                HomeYTextbox = textBoxObjHomeY,
             };
             currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
 
@@ -428,11 +460,6 @@ namespace SM64_Diagnostic
 
                 XmlConfigParser.AddWatchVariableOtherData(watchVar);
             }*/
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private async void NoTearFlowLayoutPanelObjects_Resize(object sender, EventArgs e)

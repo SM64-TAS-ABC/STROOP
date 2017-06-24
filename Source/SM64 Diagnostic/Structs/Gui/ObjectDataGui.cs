@@ -15,6 +15,8 @@ namespace SM64_Diagnostic.Structs
         public NoTearFlowLayoutPanel ObjectFlowLayout;
         public Button CloneButton;
         public Button UnloadButton;
+        public Button DebilitateButton;
+        public Button InteractButton;
         public Button RetrieveButton;
         public Button GoToButton;
         public Button RetrieveHomeButton;
@@ -38,5 +40,28 @@ namespace SM64_Diagnostic.Structs
         public Button PosYpButton;
         public TextBox PosXZTextbox;
         public TextBox PosYTextbox;
+
+        public Button AngleYawPButton;
+        public Button AngleYawNButton;
+        public Button AnglePitchPButton;
+        public Button AnglePitchNButton;
+        public Button AngleRollPButton;
+        public Button AngleRollNButton;
+        public TextBox AngleYawTextbox;
+        public TextBox AnglePitchTextbox;
+        public TextBox AngleRollTextbox;
+
+        public Button HomeXnZnButton;
+        public Button HomeXnButton;
+        public Button HomeXnZpButton;
+        public Button HomeZnButton;
+        public Button HomeZpButton;
+        public Button HomeXpZnButton;
+        public Button HomeXpButton;
+        public Button HomeXpZpButton;
+        public Button HomeYnButton;
+        public Button HomeYpButton;
+        public TextBox HomeXZTextbox;
+        public TextBox HomeYTextbox;
     }
 }

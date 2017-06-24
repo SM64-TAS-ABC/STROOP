@@ -74,7 +74,6 @@ namespace SM64_Diagnostic.Utilities
         {     
             stream.Suspend();
 
-            // Move object to Mario
             bool success = true;
             foreach (var objAddress in objAddresses)
             {
@@ -93,6 +92,67 @@ namespace SM64_Diagnostic.Utilities
             }
             stream.Resume();
 
+            return success;
+        }
+
+        public static bool MoveObjectHomes(ProcessStream stream, List<uint> objAddresses,
+            float xOffset, float yOffset, float zOffset)
+        {
+            stream.Suspend();
+
+            bool success = true;
+            foreach (var objAddress in objAddresses)
+            {
+                float homeX, homeY, homeZ;
+                homeX = stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
+                homeY = stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                homeZ = stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
+
+                homeX += xOffset;
+                homeY += yOffset;
+                homeZ += zOffset;
+
+                success &= stream.SetValue(homeX, objAddress + Config.ObjectSlots.HomeXOffset);
+                success &= stream.SetValue(homeY, objAddress + Config.ObjectSlots.HomeYOffset);
+                success &= stream.SetValue(homeZ, objAddress + Config.ObjectSlots.HomeZOffset);
+            }
+            stream.Resume();
+
+            return success;
+        }
+
+        public static bool RotateObjects(ProcessStream stream, List<uint> objAddresses,
+            int yawOffset, int pitchOffset, int rollOffset)
+        {
+            stream.Suspend();
+
+            bool success = true;
+            foreach (var objAddress in objAddresses)
+            {
+                ushort yawFacing, pitchFacing, rollFacing, yawMoving, pitchMoving, rollMoving;
+                yawFacing = stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
+                pitchFacing = stream.GetUInt16(objAddress + Config.ObjectSlots.PitchFacingOffset);
+                rollFacing = stream.GetUInt16(objAddress + Config.ObjectSlots.RollFacingOffset);
+                yawMoving = stream.GetUInt16(objAddress + Config.ObjectSlots.YawMovingOffset);
+                pitchMoving = stream.GetUInt16(objAddress + Config.ObjectSlots.PitchMovingOffset);
+                rollMoving = stream.GetUInt16(objAddress + Config.ObjectSlots.RollMovingOffset);
+
+                yawFacing += (ushort)yawOffset;
+                pitchFacing += (ushort)pitchOffset;
+                rollFacing += (ushort)rollOffset;
+                yawMoving += (ushort)yawOffset;
+                pitchMoving += (ushort)pitchOffset;
+                rollMoving += (ushort)rollOffset;
+
+                success &= stream.SetValue(yawFacing, objAddress + Config.ObjectSlots.YawFacingOffset);
+                success &= stream.SetValue(pitchFacing, objAddress + Config.ObjectSlots.PitchFacingOffset);
+                success &= stream.SetValue(rollFacing, objAddress + Config.ObjectSlots.RollFacingOffset);
+                success &= stream.SetValue(yawMoving, objAddress + Config.ObjectSlots.YawMovingOffset);
+                success &= stream.SetValue(pitchMoving, objAddress + Config.ObjectSlots.PitchMovingOffset);
+                success &= stream.SetValue(rollMoving, objAddress + Config.ObjectSlots.RollMovingOffset);
+            }
+            stream.Resume();
+            
             return success;
         }
 
@@ -266,6 +326,30 @@ namespace SM64_Diagnostic.Utilities
                         break;
             }
 
+            stream.Resume();
+            return success;
+        }
+
+        public static bool DebilitateObject(ProcessStream stream, List<uint> addresses)
+        {
+            bool success = true;
+            stream.Suspend();
+            foreach (var address in addresses)
+            {
+                success &= stream.SetValue(0x800EE5F8, address + Config.ObjectSlots.ReleaseStatusOffset);
+            }
+            stream.Resume();
+            return success;
+        }
+
+        public static bool InteractObject(ProcessStream stream, List<uint> addresses)
+        {
+            bool success = true;
+            stream.Suspend();
+            foreach (var address in addresses)
+            {
+                success &= stream.SetValue(0xFFFFFFFF, address + Config.ObjectSlots.InteractionStatusOffset);
+            }
             stream.Resume();
             return success;
         }
