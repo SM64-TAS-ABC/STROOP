@@ -27,7 +27,7 @@ namespace SM64_Diagnostic.Controls
         bool _changedByUser = true;
         bool _editMode = false;
 
-        static Image _lockedImage = new Bitmap(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SM64_Diagnostic.Resources.lock.png")), new Size(16, 16));
+        static Image _lockedImage = new Bitmap(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SM64_Diagnostic.EmbeddedResources.lock.png")), new Size(16, 16));
         static Image _someLockedImage = _lockedImage.GetOpaqueImage(0.5f);
 
         static WatchVariableControl _lastSelected;
