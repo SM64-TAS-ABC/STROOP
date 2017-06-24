@@ -150,6 +150,24 @@ namespace SM64_Diagnostic.Utilities
                                 case "HitboxDownOffset":
                                     Config.ObjectSlots.HitboxDownOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "YawFacingOffset":
+                                    Config.ObjectSlots.YawFacingOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "PitchFacingOffset":
+                                    Config.ObjectSlots.PitchFacingOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "RollFacingOffset":
+                                    Config.ObjectSlots.RollFacingOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "YawMovingOffset":
+                                    Config.ObjectSlots.YawMovingOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "PitchMovingOffset":
+                                    Config.ObjectSlots.PitchMovingOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "RollMovingOffset":
+                                    Config.ObjectSlots.RollMovingOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "PendulumAccelerationDirection":
                                     Config.ObjectSlots.PendulumAccelerationDirection = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

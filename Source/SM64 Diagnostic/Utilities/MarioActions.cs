@@ -96,6 +96,42 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool RotateObjects(ProcessStream stream, List<uint> objAddresses,
+            int yawOffset, int pitchOffset, int rollOffset)
+        {
+            stream.Suspend();
+
+            // Move object to Mario
+            bool success = true;
+            foreach (var objAddress in objAddresses)
+            {
+                ushort yawFacing, pitchFacing, rollFacing, yawMoving, pitchMoving, rollMoving;
+                yawFacing = stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
+                pitchFacing = stream.GetUInt16(objAddress + Config.ObjectSlots.PitchFacingOffset);
+                rollFacing = stream.GetUInt16(objAddress + Config.ObjectSlots.RollFacingOffset);
+                yawMoving = stream.GetUInt16(objAddress + Config.ObjectSlots.YawMovingOffset);
+                pitchMoving = stream.GetUInt16(objAddress + Config.ObjectSlots.PitchMovingOffset);
+                rollMoving = stream.GetUInt16(objAddress + Config.ObjectSlots.RollMovingOffset);
+
+                yawFacing += (ushort)yawOffset;
+                pitchFacing += (ushort)pitchOffset;
+                rollFacing += (ushort)rollOffset;
+                yawMoving += (ushort)yawOffset;
+                pitchMoving += (ushort)pitchOffset;
+                rollMoving += (ushort)rollOffset;
+
+                success &= stream.SetValue(yawFacing, objAddress + Config.ObjectSlots.YawFacingOffset);
+                success &= stream.SetValue(pitchFacing, objAddress + Config.ObjectSlots.PitchFacingOffset);
+                success &= stream.SetValue(rollFacing, objAddress + Config.ObjectSlots.RollFacingOffset);
+                success &= stream.SetValue(yawMoving, objAddress + Config.ObjectSlots.YawMovingOffset);
+                success &= stream.SetValue(pitchMoving, objAddress + Config.ObjectSlots.PitchMovingOffset);
+                success &= stream.SetValue(rollMoving, objAddress + Config.ObjectSlots.RollMovingOffset);
+            }
+            stream.Resume();
+            
+            return success;
+        }
+
         public static bool GoToObjectsHome(ProcessStream stream, List<uint> objAddresses)
         {
             // Move mario to object

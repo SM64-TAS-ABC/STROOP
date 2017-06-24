@@ -219,6 +219,7 @@ namespace SM64_Diagnostic.Managers
             objectGui.GoToHomeButton.Click += GoToHomeButton_Click;
             objectGui.RetrieveHomeButton.Click += RetrieveHomeButton_Click;
 
+            // Register position controller buttons
             objectGui.PosXnZnButton.Click += (sender, e) => PosXZButton_Click(sender, e, -1, -1);
             objectGui.PosXnButton.Click += (sender, e) => PosXZButton_Click(sender, e, -1, 0);
             objectGui.PosXnZpButton.Click += (sender, e) => PosXZButton_Click(sender, e, -1, 1);
@@ -229,6 +230,14 @@ namespace SM64_Diagnostic.Managers
             objectGui.PosXpZpButton.Click += (sender, e) => PosXZButton_Click(sender, e, 1, 1);
             objectGui.PosYnButton.Click += (sender, e) =>  PosYButton_Click(sender, e, -1);
             objectGui.PosYpButton.Click += (sender, e) => PosYButton_Click(sender, e, 1);
+
+            // Register angle controller buttons
+            objectGui.AngleYawPButton.Click += (sender, e) => AngleYawButton_Click(sender, e, +1);
+            objectGui.AngleYawNButton.Click += (sender, e) => AngleYawButton_Click(sender, e, -1);
+            objectGui.AnglePitchPButton.Click += (sender, e) => AnglePitchButton_Click(sender, e, +1);
+            objectGui.AnglePitchNButton.Click += (sender, e) => AnglePitchButton_Click(sender, e, -1);
+            objectGui.AngleRollPButton.Click += (sender, e) => AngleRollButton_Click(sender, e, +1);
+            objectGui.AngleRollNButton.Click += (sender, e) => AngleRollButton_Click(sender, e, -1);
         }
 
         private void PosYButton_Click(object sender, EventArgs e, int y)
@@ -253,6 +262,42 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             MarioActions.MoveObjects(_stream, CurrentAddresses, x * value, 0, z * value);
+        }
+
+        private void AngleYawButton_Click(object sender, EventArgs e, int sign)
+        {
+            if (_currentAddresses.Count == 0)
+                return;
+
+            int yaw;
+            if (!int.TryParse(_objGui.AngleYawTextbox.Text, out yaw))
+                return;
+
+            MarioActions.RotateObjects(_stream, CurrentAddresses, sign * yaw, 0, 0);
+        }
+
+        private void AnglePitchButton_Click(object sender, EventArgs e, int sign)
+        {
+            if (_currentAddresses.Count == 0)
+                return;
+
+            int pitch;
+            if (!int.TryParse(_objGui.AnglePitchTextbox.Text, out pitch))
+                return;
+
+            MarioActions.RotateObjects(_stream, CurrentAddresses, 0, sign * pitch, 0);
+        }
+
+        private void AngleRollButton_Click(object sender, EventArgs e, int sign)
+        {
+            if (_currentAddresses.Count == 0)
+                return;
+
+            int roll;
+            if (!int.TryParse(_objGui.AngleRollTextbox.Text, out roll))
+                return;
+
+            MarioActions.RotateObjects(_stream, CurrentAddresses, 0, 0, sign * roll);
         }
 
         private void AddressChanged()
