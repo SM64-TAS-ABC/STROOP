@@ -7,6 +7,7 @@ using SM64_Diagnostic.Structs;
 using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
+using System.Drawing;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -16,16 +17,33 @@ namespace SM64_Diagnostic.Managers
         protected NoTearFlowLayoutPanel _variableTable;
         protected ProcessStream _stream;
         protected List<IDataContainer> _specialWatchVars;
+        uint _otherOffset;
 
         public DataManager(ProcessStream stream, List<WatchVariable> data, NoTearFlowLayoutPanel variableTable, uint otherOffset = 0)
         {
             _variableTable = variableTable;
             _stream = stream;
-            
+            _otherOffset = otherOffset;
+
             _dataControls = new List<IDataContainer>();
             InitializeSpecialVariables();
 
-            foreach (WatchVariable watchVar in data)
+            AddWatchVariables(data);
+        }
+
+        protected void RemoveWatchVaraibles(IEnumerable<WatchVariableControl> watchVars)
+        {
+            foreach (var watchVar in watchVars)
+            {
+                _dataControls.Remove(watchVar);
+                _variableTable.Controls.Remove(watchVar.Control);
+            }
+        }
+
+        protected List<WatchVariableControl> AddWatchVariables(IEnumerable<WatchVariable> watchVars, Color? color = null)
+        {
+            var newControls = new List<WatchVariableControl>();
+            foreach (WatchVariable watchVar in watchVars)
             {
                 if (watchVar.Special && _specialWatchVars != null)
                 {
@@ -33,23 +51,30 @@ namespace SM64_Diagnostic.Managers
                     {
                         var specialVar = _specialWatchVars.Find(w => w.SpecialName == watchVar.SpecialType);
                         specialVar.Name = watchVar.Name;
-                        variableTable.Controls.Add(specialVar.Control);
+                        _variableTable.Controls.Add(specialVar.Control);
                         if (watchVar.BackroundColor.HasValue)
                             specialVar.Color = watchVar.BackroundColor.Value;
+                        else if (color.HasValue)
+                            specialVar.Color = color.Value;
                     }
                     else
                     {
                         var failedContainer = new DataContainer(watchVar.Name);
                         failedContainer.Text = "Couldn't Find";
-                        variableTable.Controls.Add(failedContainer.Control);
+                        _variableTable.Controls.Add(failedContainer.Control);
                     }
                     continue;
                 }
 
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, otherOffset);
-                variableTable.Controls.Add(watchControl.Control);
+                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, _otherOffset);
+                if (color.HasValue)
+                    watchControl.Color = color.Value;
+                _variableTable.Controls.Add(watchControl.Control);
                 _dataControls.Add(watchControl);
+                newControls.Add(watchControl);
             }
+
+            return newControls;
         }
 
         protected virtual void InitializeSpecialVariables()

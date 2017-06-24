@@ -70,8 +70,4 @@
   <Data type="int" address="0x144" objectOffset="true">Subtype</Data>
   <Data type="int" address="0x14C" objectOffset="true">State</Data>
   <Data type="int" address="0x154" objectOffset="true">Timer</Data>
-  <!--
-  <Data special="true" specialType="PendulumAmplitude">Amplitude</Data>
-  <Data special="true" specialType="PendulumSwingIndex">Swing Index</Data>
-  -->
 </ObjectData>

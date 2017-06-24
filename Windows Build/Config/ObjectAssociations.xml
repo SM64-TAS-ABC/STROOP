@@ -3336,6 +3336,8 @@
     <Data type="float" address="0xFC" objectOffset="true">Angular Velocity</Data>
     <Data type="float" address="0xF8" objectOffset="true">Angle</Data>
     <Data type="int" address="0x104" objectOffset="true">Waiting Timer</Data>
+    <Data special="true" specialType="PendulumAmplitude">Amplitude</Data>
+    <Data special="true" specialType="PendulumSwingIndex">Swing Index</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004C5C" name="TTC Treadmill (Long)" subType="0">
     <SpawnCode gfxId="0x39"/>

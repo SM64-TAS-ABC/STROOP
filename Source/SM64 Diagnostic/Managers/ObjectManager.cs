@@ -33,22 +33,11 @@ namespace SM64_Diagnostic.Managers
             lock (_watchVarLocker)
             {
                 // Remove old watchVars from list
-                foreach (var watchVar in _behaviorDataControls)
-                {
-                    _dataControls.Remove(watchVar);
-                    _objGui.ObjectFlowLayout.Controls.Remove(watchVar.Control);
-                }
+                RemoveWatchVaraibles(_behaviorDataControls);
                 _behaviorDataControls.Clear();
 
                 // Add new watchVars
-                foreach (var watchVar in value)
-                {
-                    var newWatchVarControl = new WatchVariableControl(_stream, watchVar);
-                    newWatchVarControl.Color = color;
-                    _behaviorDataControls.Add(newWatchVarControl);
-                    _dataControls.Add(newWatchVarControl);
-                    _objGui.ObjectFlowLayout.Controls.Add(newWatchVarControl.Control);
-                }
+                _behaviorDataControls.AddRange(AddWatchVariables(value, color));
                 _behaviorDataControls.ForEach(w => w.OtherOffsets = _currentAddresses);
             }
         }
