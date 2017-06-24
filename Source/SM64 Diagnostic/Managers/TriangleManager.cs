@@ -98,6 +98,8 @@ namespace SM64_Diagnostic.Managers
             (tabControl.Controls["buttonGoToV3"] as Button).Click += GoToV3Button_Click;
             (tabControl.Controls["buttonGoToVClosest"] as Button).Click += GoToVClosestButton_Click;
             (tabControl.Controls["buttonRetrieveTriangle"] as Button).Click += RetrieveTriangleButton_Click;
+            (tabControl.Controls["buttonNeutralizeTriangle"] as Button).Click += NeutralizeTriangleButton_Click;
+            (tabControl.Controls["buttonAnnihilateTriangle"] as Button).Click += AnnihilateTriangleButton_Click;
             (tabControl.Controls["checkBoxVertexMisalignment"] as CheckBox).CheckedChanged += checkBoxVertexMisalignment_CheckedChanged;
         }
 
@@ -295,6 +297,44 @@ namespace SM64_Diagnostic.Managers
             if (_closestVertex == 0)
                 return;
             MarioActions.GoToTriangle(_stream, _triangleAddress, _closestVertex, _useMisalignmentOffset);
+        }
+
+        private void NeutralizeTriangleButton_Click(object sender, EventArgs e)
+        {
+            short surfaceType = 21;
+            _stream.SetValue(surfaceType, _triangleAddress + Config.TriangleOffsets.SurfaceType);
+        }
+
+        private void AnnihilateTriangleButton_Click(object sender, EventArgs e)
+        {
+            short xzCoordinate = 16000;
+            short yCoordinate = 30000;
+            short v1X = xzCoordinate;
+            short v1Y = yCoordinate;
+            short v1Z = xzCoordinate;
+            short v2X = xzCoordinate;
+            short v2Y = yCoordinate;
+            short v2Z = xzCoordinate;
+            short v3X = xzCoordinate;
+            short v3Y = yCoordinate;
+            short v3Z = xzCoordinate;
+            float normX = 0;
+            float normY = 0;
+            float normZ = 0;
+            float normOffset = 16000;
+            _stream.SetValue(v1X, TriangleAddress + Config.TriangleOffsets.X1);
+            _stream.SetValue(v1Y, TriangleAddress + Config.TriangleOffsets.Y1);
+            _stream.SetValue(v1Z, TriangleAddress + Config.TriangleOffsets.Z1);
+            _stream.SetValue(v2X, TriangleAddress + Config.TriangleOffsets.X2);
+            _stream.SetValue(v2Y, TriangleAddress + Config.TriangleOffsets.Y2);
+            _stream.SetValue(v2Z, TriangleAddress + Config.TriangleOffsets.Z2);
+            _stream.SetValue(v3X, TriangleAddress + Config.TriangleOffsets.X3);
+            _stream.SetValue(v3Y, TriangleAddress + Config.TriangleOffsets.Y3);
+            _stream.SetValue(v3Z, TriangleAddress + Config.TriangleOffsets.Z3);
+            _stream.SetValue(normX, TriangleAddress + Config.TriangleOffsets.NormX);
+            _stream.SetValue(normY, TriangleAddress + Config.TriangleOffsets.NormY);
+            _stream.SetValue(normZ, TriangleAddress + Config.TriangleOffsets.NormZ);
+            _stream.SetValue(normOffset, TriangleAddress + Config.TriangleOffsets.Offset);
         }
 
         private void Mode_CheckedChanged(object sender, EventArgs e, TriangleMode mode)

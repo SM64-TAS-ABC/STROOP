@@ -224,6 +224,8 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
+            this.buttonNeutralizeTriangle = new System.Windows.Forms.Button();
+            this.buttonAnnihilateTriangle = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -310,7 +312,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(1020, 460);
+            this.groupBoxObjects.Size = new System.Drawing.Size(1020, 441);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -398,7 +400,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(1012, 411);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(1012, 392);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -442,7 +444,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.groupBoxObjects);
             this.splitContainerMain.Size = new System.Drawing.Size(1024, 698);
-            this.splitContainerMain.SplitterDistance = 230;
+            this.splitContainerMain.SplitterDistance = 250;
             this.splitContainerMain.SplitterWidth = 3;
             this.splitContainerMain.TabIndex = 4;
             // 
@@ -475,7 +477,7 @@ namespace SM64_Diagnostic
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(2);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1020, 228);
+            this.tabControlMain.Size = new System.Drawing.Size(1020, 248);
             this.tabControlMain.TabIndex = 3;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             // 
@@ -1066,6 +1068,8 @@ namespace SM64_Diagnostic
             // 
             // tabPageTriangles
             // 
+            this.tabPageTriangles.Controls.Add(this.buttonAnnihilateTriangle);
+            this.tabPageTriangles.Controls.Add(this.buttonNeutralizeTriangle);
             this.tabPageTriangles.Controls.Add(this.buttonGoToVClosest);
             this.tabPageTriangles.Controls.Add(this.checkBoxVertexMisalignment);
             this.tabPageTriangles.Controls.Add(this.buttonRetrieveTriangle);
@@ -1082,7 +1086,7 @@ namespace SM64_Diagnostic
             this.tabPageTriangles.Location = new System.Drawing.Point(4, 22);
             this.tabPageTriangles.Name = "tabPageTriangles";
             this.tabPageTriangles.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTriangles.Size = new System.Drawing.Size(1012, 202);
+            this.tabPageTriangles.Size = new System.Drawing.Size(1012, 222);
             this.tabPageTriangles.TabIndex = 11;
             this.tabPageTriangles.Text = "Triangles";
             // 
@@ -1090,7 +1094,7 @@ namespace SM64_Diagnostic
             // 
             this.buttonGoToVClosest.Location = new System.Drawing.Point(6, 141);
             this.buttonGoToVClosest.Name = "buttonGoToVClosest";
-            this.buttonGoToVClosest.Size = new System.Drawing.Size(90, 23);
+            this.buttonGoToVClosest.Size = new System.Drawing.Size(87, 23);
             this.buttonGoToVClosest.TabIndex = 13;
             this.buttonGoToVClosest.Text = "Goto Closest";
             this.buttonGoToVClosest.UseVisualStyleBackColor = true;
@@ -1098,7 +1102,7 @@ namespace SM64_Diagnostic
             // checkBoxVertexMisalignment
             // 
             this.checkBoxVertexMisalignment.AutoSize = true;
-            this.checkBoxVertexMisalignment.Location = new System.Drawing.Point(6, 170);
+            this.checkBoxVertexMisalignment.Location = new System.Drawing.Point(6, 199);
             this.checkBoxVertexMisalignment.Name = "checkBoxVertexMisalignment";
             this.checkBoxVertexMisalignment.Size = new System.Drawing.Size(151, 17);
             this.checkBoxVertexMisalignment.TabIndex = 12;
@@ -1107,9 +1111,9 @@ namespace SM64_Diagnostic
             // 
             // buttonRetrieveTriangle
             // 
-            this.buttonRetrieveTriangle.Location = new System.Drawing.Point(102, 141);
+            this.buttonRetrieveTriangle.Location = new System.Drawing.Point(99, 141);
             this.buttonRetrieveTriangle.Name = "buttonRetrieveTriangle";
-            this.buttonRetrieveTriangle.Size = new System.Drawing.Size(84, 23);
+            this.buttonRetrieveTriangle.Size = new System.Drawing.Size(87, 23);
             this.buttonRetrieveTriangle.TabIndex = 11;
             this.buttonRetrieveTriangle.Text = "Retrieve";
             this.buttonRetrieveTriangle.UseVisualStyleBackColor = true;
@@ -1211,7 +1215,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(191, 5);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(816, 192);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(816, 212);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -1715,7 +1719,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(664, 169);
+            this.glControlMap.Size = new System.Drawing.Size(665, 169);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -2529,6 +2533,25 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
+            // buttonNeutralizeTriangle
+            // 
+            this.buttonNeutralizeTriangle.Location = new System.Drawing.Point(6, 170);
+            this.buttonNeutralizeTriangle.Name = "buttonNeutralizeTriangle";
+            this.buttonNeutralizeTriangle.Size = new System.Drawing.Size(87, 23);
+            this.buttonNeutralizeTriangle.TabIndex = 14;
+            this.buttonNeutralizeTriangle.Text = "Neutralize";
+            this.buttonNeutralizeTriangle.UseVisualStyleBackColor = true;
+            // 
+            // buttonAnnihilateTriangle
+            // 
+            this.buttonAnnihilateTriangle.Location = new System.Drawing.Point(99, 170);
+            this.buttonAnnihilateTriangle.Name = "buttonAnnihilateTriangle";
+            this.buttonAnnihilateTriangle.Size = new System.Drawing.Size(87, 23);
+            this.buttonAnnihilateTriangle.TabIndex = 15;
+            this.buttonAnnihilateTriangle.Text = "Annihilate";
+            this.buttonAnnihilateTriangle.UseVisualStyleBackColor = true;
+            this.buttonAnnihilateTriangle.Click += new System.EventHandler(this.button2_Click);
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2817,6 +2840,8 @@ namespace SM64_Diagnostic
         private NoTearFlowLayoutPanel noTearFlowLayoutPanelFile;
         private NoTearFlowLayoutPanel noTearFlowLayoutPanelLevel;
         private NoTearFlowLayoutPanel noTearFlowLayoutPanelCamHack;
+        private Button buttonAnnihilateTriangle;
+        private Button buttonNeutralizeTriangle;
     }
 }
 

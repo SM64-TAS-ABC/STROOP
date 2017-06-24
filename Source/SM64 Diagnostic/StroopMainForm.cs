@@ -430,6 +430,11 @@ namespace SM64_Diagnostic
             }*/
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private async void NoTearFlowLayoutPanelObjects_Resize(object sender, EventArgs e)
         {
             _resizeTimeLeft = 500;
