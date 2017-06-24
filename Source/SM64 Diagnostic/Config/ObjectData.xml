@@ -19,10 +19,13 @@
   <Data type="float" address="0x015C" objectOffset="true">"Dist to Mario"</Data>
   <Data special="true" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
   <Data special="true" specialType="MarioLateralDistanceToObject">LDist Mario to Obj</Data>
+  <Data special="true" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
   <Data special="true" specialType="MarioDistanceToObjectHome">Dist Mario to Home</Data>
   <Data special="true" specialType="MarioLateralDistanceToObjectHome">LDist Mario to Home</Data>
+  <Data special="true" specialType="MarioVerticalDistanceToObjectHome">VDist Mario to Home</Data>
   <Data special="true" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
   <Data special="true" specialType="LateralObjectDistanceToHome">LDist Obj to Home</Data>
+  <Data special="true" specialType="VerticalObjectDistanceToHome">VDist Obj to Home</Data>
   <Data type="ushort" address="0x0162" objectOffset="true" isAngle="true">"Angle to Mario"</Data>
   <Data special="true" specialType="AngleToMario">Angle Obj to Mario</Data>
   <Data special="true" specialType="DeltaAngleToMario">DAngle Obj to Mario</Data>
