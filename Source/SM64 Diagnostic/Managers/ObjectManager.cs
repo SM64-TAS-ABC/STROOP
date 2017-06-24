@@ -192,6 +192,10 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("ObjectDistanceToHome"),
                 new DataContainer("LateralObjectDistanceToHome"),
                 new DataContainer("VerticalObjectDistanceToHome"),
+                new DataContainer("MarioHitboxAwayFromObject"),
+                new DataContainer("MarioHitboxAboveObject"),
+                new DataContainer("MarioHitboxBelowObject"),
+                new DataContainer("MarioHitboxOverlapsObject"),
                 new DataContainer("RngCallsPerFrame"),
             };
         }
@@ -340,6 +344,21 @@ namespace SM64_Diagnostic.Managers
             mZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
             mFacing = (float)(((_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.RotationOffset) >> 16) % 65536) / 65536f * 2 * Math.PI);
 
+            // Get Mario object position
+            var marioObjRef = _stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+            float mObjX, mObjY, mObjZ;
+            mObjX = _stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectXOffset);
+            mObjY = _stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
+            mObjZ = _stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectZOffset);
+
+            // Get Mario object hitbox variables
+            float mObjHitboxRadius, mObjHitboxHeight, mObjHitboxDownOffset, mObjHitboxBottom, mObjHitboxTop;
+            mObjHitboxRadius = _stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxRadius);
+            mObjHitboxHeight = _stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxHeight);
+            mObjHitboxDownOffset = _stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
+            mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
+            mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
+
             bool firstObject = true;
 
             foreach (var objAddress in _currentAddresses)
@@ -358,6 +377,19 @@ namespace SM64_Diagnostic.Managers
                 objHomeX = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
                 objHomeY = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
                 objHomeZ = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
+
+                // Get object hitbox variables
+                float objHitboxRadius, objHitboxHeight, objHitboxDownOffset, objHitboxBottom, objHitboxTop;
+                objHitboxRadius = _stream.GetSingle(objAddress + Config.ObjectSlots.HitboxRadius);
+                objHitboxHeight = _stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
+                objHitboxDownOffset = _stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
+                objHitboxBottom = objY - objHitboxDownOffset;
+                objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
+
+                // Compute hitbox distances between Mario obj and obj
+                double marioHitboxAwayFromObject = MoreMath.DistanceTo(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
+                double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
+                double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
 
                 foreach (IDataContainer specialVar in _specialWatchVars)
                 {
@@ -415,6 +447,31 @@ namespace SM64_Diagnostic.Managers
 
                         case "DeltaAngleToMario":
                             newAngle = objFacing - angleToMario;
+                            break;
+
+                        case "MarioHitboxAwayFromObject":
+                            newText = Math.Round(marioHitboxAwayFromObject, 3).ToString();
+                            break;
+
+                       case "MarioHitboxAboveObject":
+                            newText = Math.Round(marioHitboxAboveObject, 3).ToString();
+                            break;
+
+                        case "MarioHitboxBelowObject":
+                            newText = Math.Round(marioHitboxBelowObject, 3).ToString();
+                            break;
+
+                        case "MarioHitboxOverlapsObject":
+                            if (marioHitboxAwayFromObject < 0 &&
+                                marioHitboxAboveObject <= 0 &&
+                                marioHitboxBelowObject <= 0)
+                            {
+                                newText = "True";
+                            }
+                            else
+                            {
+                                newText = "False";
+                            }
                             break;
 
                         case "RngCallsPerFrame":

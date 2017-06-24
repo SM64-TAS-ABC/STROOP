@@ -141,6 +141,15 @@ namespace SM64_Diagnostic.Utilities
                                 case "MaxObjectSlots":
                                     Config.ObjectSlots.MaxSlots = int.Parse(subElement.Value);
                                     break;
+                                case "HitboxRadius":
+                                    Config.ObjectSlots.HitboxRadius = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "HitboxHeight":
+                                    Config.ObjectSlots.HitboxHeight = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "HitboxDownOffset":
+                                    Config.ObjectSlots.HitboxDownOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;

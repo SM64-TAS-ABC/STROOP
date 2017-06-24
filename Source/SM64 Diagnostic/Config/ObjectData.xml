@@ -34,6 +34,10 @@
   <Data type="float" address="0x1f8" objectOffset="true">Hitbox Radius</Data>
   <Data type="float" address="0x1fc" objectOffset="true">Hitbox Height</Data>
   <Data type="float" address="0x208" objectOffset="true">Hitbox Down Offset</Data>
+  <Data special="true" specialType="MarioHitboxAwayFromObject">Mario Hitbox Away</Data>
+  <Data special="true" specialType="MarioHitboxAboveObject">Mario Hitbox Above</Data>
+  <Data special="true" specialType="MarioHitboxBelowObject">Mario Hitbox Below</Data>
+  <Data special="true" specialType="MarioHitboxOverlapsObject">Mario Hitbox Overlap</Data>
   <Data type="float" address="0x128" objectOffset="true">Min Wall Dist</Data>
   <Data type="float" address="0x0194" objectOffset="true">Tangible Dist</Data>
   <Data type="float" address="0x019C" objectOffset="true">Drawing Dist</Data>

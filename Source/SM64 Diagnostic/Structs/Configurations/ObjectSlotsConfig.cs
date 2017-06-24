@@ -27,5 +27,8 @@ namespace SM64_Diagnostic.Structs
         public uint ObjectRotationOffset;
         public float MoveToMarioYOffset;
         public int MaxSlots;
+        public uint HitboxRadius;
+        public uint HitboxHeight;
+        public uint HitboxDownOffset;
     }
 }

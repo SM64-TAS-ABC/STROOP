@@ -26,6 +26,9 @@
     <RotationOffset>0xD4</RotationOffset>
     <MaxObjectSlots>240</MaxObjectSlots>
     <MoveToMarioYOffset>300</MoveToMarioYOffset>
+    <HitboxRadius>0x1f8</HitboxRadius>
+    <HitboxHeight>0x1fc</HitboxHeight>
+    <HitboxDownOffset>0x208</HitboxDownOffset>
   </ObjectSlots>
   <ObjectGroups>
     <ProcessNextLinkOffset>0x60</ProcessNextLinkOffset>
