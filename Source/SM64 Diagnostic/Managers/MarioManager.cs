@@ -271,7 +271,6 @@ namespace SM64_Diagnostic.Managers
             MarioActions.MarioChangeHspd(_stream, sign * hspd);
         }
 
-        /*
         private void marioStatsVspdButton_Click(object sender, EventArgs e, int sign)
         {
             float vspd;
@@ -279,43 +278,6 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             MarioActions.MarioChangeVspd(_stream, sign * vspd);
-        }
-        */
-
-        private void marioStatsVspdButton_Click(object sender, EventArgs e, int sign)
-        {
-            float param1;
-            if (!float.TryParse(_marioStatsYawTextbox.Text, out param1))
-                return;
-
-            float param2;
-            if (!float.TryParse(_marioStatsHspdTextbox.Text, out param2))
-                return;
-
-            float param3;
-            if (!float.TryParse(_marioStatsVspdTextbox.Text, out param3))
-                return;
-
-            float param4;
-            if (!float.TryParse(_marioPosXZTextbox.Text, out param4))
-                return;
-
-            float param5;
-            if (!float.TryParse(_marioPosYTextbox.Text, out param5))
-                return;
-
-            float param6;
-            if (!float.TryParse(_marioHOLPXZTextbox.Text, out param6))
-                return;
-
-            System.Console.WriteLine("(x,y,z)=" + (param1, param2, param3) + " | (r,t,p)=" + MoreMath.EulerToSphericalRadians(param1, param2, param3));
-            System.Console.WriteLine("(r,t,p)=" + (param1, param2, param3) + " | (x,y,z)=" + MoreMath.SphericalToEulerRadians(param1, param2, param3));
-            System.Console.WriteLine("(x,y,z)=" + (param1, param2, param3) + " | (r,t,p)=" + MoreMath.EulerToSphericalAngleUnits(param1, param2, param3));
-            System.Console.WriteLine("(r,t,p)=" + (param1, param2, param3) + " | (x,y,z)=" + MoreMath.SphericalToEulerAngleUnits(param1, param2, param3));
-            System.Console.WriteLine("radians=" + param3 + " | angleUnits=" + MoreMath.RadiansToAngleUnits(param3));
-            System.Console.WriteLine("angleUnits=" + param3 + " | radians=" + MoreMath.AngleUnitsToRadians(param3));
-            System.Console.WriteLine("(x,y,z)=" + (param1, param2, param3) + " | (dr,dt,dp)=" + (param6, param4, param5) + " | (x,y,z)=" + MoreMath.OffsetSpherically(param1, param2, param3, param6, param4, param5));
-            System.Console.WriteLine();
         }
 
         public override void Update(bool updateView)
@@ -390,5 +352,44 @@ namespace SM64_Diagnostic.Managers
             base.Update();
             ProcessSpecialVars();
         }
+
+        // FOR DEBUGGING
+        /*
+        private void marioStatsVspdButton_Click(object sender, EventArgs e, int sign)
+        {
+            float param1;
+            if (!float.TryParse(_marioStatsYawTextbox.Text, out param1))
+                return;
+
+            float param2;
+            if (!float.TryParse(_marioStatsHspdTextbox.Text, out param2))
+                return;
+
+            float param3;
+            if (!float.TryParse(_marioStatsVspdTextbox.Text, out param3))
+                return;
+
+            float param4;
+            if (!float.TryParse(_marioPosXZTextbox.Text, out param4))
+                return;
+
+            float param5;
+            if (!float.TryParse(_marioPosYTextbox.Text, out param5))
+                return;
+
+            float param6;
+            if (!float.TryParse(_marioHOLPXZTextbox.Text, out param6))
+                return;
+
+            System.Console.WriteLine("(x,y,z)=" + (param1, param2, param3) + " | (r,t,p)=" + MoreMath.EulerToSphericalRadians(param1, param2, param3));
+            System.Console.WriteLine("(r,t,p)=" + (param1, param2, param3) + " | (x,y,z)=" + MoreMath.SphericalToEulerRadians(param1, param2, param3));
+            System.Console.WriteLine("(x,y,z)=" + (param1, param2, param3) + " | (r,t,p)=" + MoreMath.EulerToSphericalAngleUnits(param1, param2, param3));
+            System.Console.WriteLine("(r,t,p)=" + (param1, param2, param3) + " | (x,y,z)=" + MoreMath.SphericalToEulerAngleUnits(param1, param2, param3));
+            System.Console.WriteLine("radians=" + param3 + " | angleUnits=" + MoreMath.RadiansToAngleUnits(param3));
+            System.Console.WriteLine("angleUnits=" + param3 + " | radians=" + MoreMath.AngleUnitsToRadians(param3));
+            System.Console.WriteLine("(x,y,z)=" + (param1, param2, param3) + " | (dr,dt,dp)=" + (param6, param4, param5) + " | (x,y,z)=" + MoreMath.OffsetSpherically(param1, param2, param3, param6, param4, param5));
+            System.Console.WriteLine();
+        }
+        */
     }
 }
