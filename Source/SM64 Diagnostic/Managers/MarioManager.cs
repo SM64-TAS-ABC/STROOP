@@ -17,6 +17,9 @@ namespace SM64_Diagnostic.Managers
         MapManager _mapManager;
         TextBox _marioPosYTextbox;
         TextBox _marioPosXZTextbox;
+        TextBox _marioStatsYawTextbox;
+        TextBox _marioStatsHspdTextbox;
+        TextBox _marioStatsVspdTextbox;
 
         public MarioManager(ProcessStream stream, List<WatchVariable> marioData, Control marioControl, NoTearFlowLayoutPanel variableTable, MapManager mapManager)
             : base(stream, marioData, variableTable, Config.Mario.StructAddress)
@@ -27,8 +30,8 @@ namespace SM64_Diagnostic.Managers
             var toggleVisibility = marioControl.Controls["buttonMarioVisibility"] as Button;
 
             var marioPosGroupBox = marioControl.Controls["groupBoxMarioPos"] as GroupBox;
-            _marioPosYTextbox = marioPosGroupBox.Controls["textBoxMarioPosY"] as TextBox;
             _marioPosXZTextbox = marioPosGroupBox.Controls["textBoxMarioPosXZ"] as TextBox;
+            _marioPosYTextbox = marioPosGroupBox.Controls["textBoxMarioPosY"] as TextBox;
             var marioPosXpButton = marioPosGroupBox.Controls["buttonMarioPosXp"] as Button;
             var marioPosXnButton = marioPosGroupBox.Controls["buttonMarioPosXn"] as Button;
             var marioPosZpButton = marioPosGroupBox.Controls["buttonMarioPosZp"] as Button;
@@ -39,6 +42,18 @@ namespace SM64_Diagnostic.Managers
             var marioPosXnZnButton = marioPosGroupBox.Controls["buttonMarioPosXnZn"] as Button;
             var marioPosYpButton = marioPosGroupBox.Controls["buttonMarioPosYp"] as Button;
             var marioPosYnButton = marioPosGroupBox.Controls["buttonMarioPosYn"] as Button;
+
+            var marioStatsGroupBox = marioControl.Controls["groupBoxMarioStats"] as GroupBox;
+            _marioStatsYawTextbox = marioStatsGroupBox.Controls["textBoxMarioStatsYaw"] as TextBox;
+            _marioStatsHspdTextbox = marioStatsGroupBox.Controls["textBoxMarioStatsHspd"] as TextBox;
+            _marioStatsVspdTextbox = marioStatsGroupBox.Controls["textBoxMarioStatsVspd"] as TextBox;
+            
+            var marioYawPButton = marioStatsGroupBox.Controls["buttonMarioStatsYawP"] as Button;
+            var marioYawNButton = marioStatsGroupBox.Controls["buttonMarioStatsYawN"] as Button;
+            var marioHspdPButton = marioStatsGroupBox.Controls["buttonMarioStatsHspdP"] as Button;
+            var marioHspdNButton = marioStatsGroupBox.Controls["buttonMarioStatsHspdN"] as Button;
+            var marioVspdPButton = marioStatsGroupBox.Controls["buttonMarioStatsVspdP"] as Button;
+            var marioVspdNButton = marioStatsGroupBox.Controls["buttonMarioStatsVspdN"] as Button;
 
             toggleHandsfree.Click += ToggleHandsfree_Click;
             toggleVisibility.Click += ToggleVisibility_Click;
@@ -53,6 +68,13 @@ namespace SM64_Diagnostic.Managers
             marioPosXnZnButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, -1, -1);
             marioPosYpButton.Click += (sender, e) => marioPosYButton_Click(sender, e, 1);
             marioPosYnButton.Click += (sender, e) => marioPosYButton_Click(sender, e, -1);
+            
+            marioYawPButton.Click += (sender, e) => marioStatsYawButton_Click(sender, e, 1);
+            marioYawNButton.Click += (sender, e) => marioStatsYawButton_Click(sender, e, -1);
+            marioHspdPButton.Click += (sender, e) => marioStatsHspdButton_Click(sender, e, 1);
+            marioHspdNButton.Click += (sender, e) => marioStatsHspdButton_Click(sender, e, -1);
+            marioVspdPButton.Click += (sender, e) => marioStatsVspdButton_Click(sender, e, 1);
+            marioVspdNButton.Click += (sender, e) => marioStatsVspdButton_Click(sender, e, -1);
         }
 
         protected override void InitializeSpecialVariables()
@@ -185,6 +207,33 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             MarioActions.MoveMario(_stream, xSign * xzValue, 0, zSign * xzValue);
+        }
+
+        private void marioStatsYawButton_Click(object sender, EventArgs e, int sign)
+        {
+            int yaw;
+            if (!int.TryParse(_marioStatsYawTextbox.Text, out yaw))
+                return;
+
+            MarioActions.MarioChangeYaw(_stream, sign * yaw);
+        }
+
+        private void marioStatsHspdButton_Click(object sender, EventArgs e, int sign)
+        {
+            float hspd;
+            if (!float.TryParse(_marioStatsHspdTextbox.Text, out hspd))
+                return;
+
+            MarioActions.MarioChangeHspd(_stream, sign * hspd);
+        }
+
+        private void marioStatsVspdButton_Click(object sender, EventArgs e, int sign)
+        {
+            float vspd;
+            if (!float.TryParse(_marioStatsVspdTextbox.Text, out vspd))
+                return;
+
+            MarioActions.MarioChangeVspd(_stream, sign * vspd);
         }
 
         public override void Update(bool updateView)

@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -264,6 +264,16 @@ namespace SM64_Diagnostic
             this.radioButtonDbgEnemyInfo = new System.Windows.Forms.RadioButton();
             this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.NoTearFlowLayoutPanelObjects = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.groupBoxMarioStats = new System.Windows.Forms.GroupBox();
+            this.textBoxMarioStatsVspd = new System.Windows.Forms.TextBox();
+            this.textBoxMarioStatsHspd = new System.Windows.Forms.TextBox();
+            this.textBoxMarioStatsYaw = new System.Windows.Forms.TextBox();
+            this.buttonMarioStatsVspdN = new System.Windows.Forms.Button();
+            this.buttonMarioStatsHspdN = new System.Windows.Forms.Button();
+            this.buttonMarioStatsYawN = new System.Windows.Forms.Button();
+            this.buttonMarioStatsVspdP = new System.Windows.Forms.Button();
+            this.buttonMarioStatsHspdP = new System.Windows.Forms.Button();
+            this.buttonMarioStatsYawP = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -322,6 +332,7 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
             this.NoTearFlowLayoutPanelDebugDisplayType.SuspendLayout();
+            this.groupBoxMarioStats.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -740,7 +751,7 @@ namespace SM64_Diagnostic
             this.textBoxObjAngleRoll.Name = "textBoxObjAngleRoll";
             this.textBoxObjAngleRoll.Size = new System.Drawing.Size(51, 20);
             this.textBoxObjAngleRoll.TabIndex = 33;
-            this.textBoxObjAngleRoll.Text = "1000";
+            this.textBoxObjAngleRoll.Text = "1024";
             this.textBoxObjAngleRoll.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxObjAnglePitch
@@ -750,7 +761,7 @@ namespace SM64_Diagnostic
             this.textBoxObjAnglePitch.Name = "textBoxObjAnglePitch";
             this.textBoxObjAnglePitch.Size = new System.Drawing.Size(51, 20);
             this.textBoxObjAnglePitch.TabIndex = 33;
-            this.textBoxObjAnglePitch.Text = "1000";
+            this.textBoxObjAnglePitch.Text = "1024";
             this.textBoxObjAnglePitch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxObjAngleYaw
@@ -760,7 +771,7 @@ namespace SM64_Diagnostic
             this.textBoxObjAngleYaw.Name = "textBoxObjAngleYaw";
             this.textBoxObjAngleYaw.Size = new System.Drawing.Size(51, 20);
             this.textBoxObjAngleYaw.TabIndex = 33;
-            this.textBoxObjAngleYaw.Text = "1000";
+            this.textBoxObjAngleYaw.Text = "1024";
             this.textBoxObjAngleYaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonObjAngleRollN
@@ -1133,6 +1144,7 @@ namespace SM64_Diagnostic
             // tabPageMario
             // 
             this.tabPageMario.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageMario.Controls.Add(this.groupBoxMarioStats);
             this.tabPageMario.Controls.Add(this.groupBoxMarioPos);
             this.tabPageMario.Controls.Add(this.buttonMarioVisibility);
             this.tabPageMario.Controls.Add(this.buttonMarioToggleHandsfree);
@@ -2228,8 +2240,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -3017,6 +3029,120 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
+            // groupBoxMarioStats
+            // 
+            this.groupBoxMarioStats.Controls.Add(this.textBoxMarioStatsVspd);
+            this.groupBoxMarioStats.Controls.Add(this.textBoxMarioStatsHspd);
+            this.groupBoxMarioStats.Controls.Add(this.textBoxMarioStatsYaw);
+            this.groupBoxMarioStats.Controls.Add(this.buttonMarioStatsVspdN);
+            this.groupBoxMarioStats.Controls.Add(this.buttonMarioStatsHspdN);
+            this.groupBoxMarioStats.Controls.Add(this.buttonMarioStatsYawN);
+            this.groupBoxMarioStats.Controls.Add(this.buttonMarioStatsVspdP);
+            this.groupBoxMarioStats.Controls.Add(this.buttonMarioStatsHspdP);
+            this.groupBoxMarioStats.Controls.Add(this.buttonMarioStatsYawP);
+            this.groupBoxMarioStats.Location = new System.Drawing.Point(3, 264);
+            this.groupBoxMarioStats.Name = "groupBoxMarioStats";
+            this.groupBoxMarioStats.Size = new System.Drawing.Size(185, 95);
+            this.groupBoxMarioStats.TabIndex = 30;
+            this.groupBoxMarioStats.TabStop = false;
+            this.groupBoxMarioStats.Text = "Stats";
+            // 
+            // textBoxMarioStatsVspd
+            // 
+            this.textBoxMarioStatsVspd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMarioStatsVspd.Location = new System.Drawing.Point(67, 69);
+            this.textBoxMarioStatsVspd.Name = "textBoxMarioStatsVspd";
+            this.textBoxMarioStatsVspd.Size = new System.Drawing.Size(51, 20);
+            this.textBoxMarioStatsVspd.TabIndex = 33;
+            this.textBoxMarioStatsVspd.Text = "100";
+            this.textBoxMarioStatsVspd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxMarioStatsHspd
+            // 
+            this.textBoxMarioStatsHspd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMarioStatsHspd.Location = new System.Drawing.Point(67, 44);
+            this.textBoxMarioStatsHspd.Name = "textBoxMarioStatsHspd";
+            this.textBoxMarioStatsHspd.Size = new System.Drawing.Size(51, 20);
+            this.textBoxMarioStatsHspd.TabIndex = 33;
+            this.textBoxMarioStatsHspd.Text = "100";
+            this.textBoxMarioStatsHspd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxMarioStatsYaw
+            // 
+            this.textBoxMarioStatsYaw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMarioStatsYaw.Location = new System.Drawing.Point(67, 19);
+            this.textBoxMarioStatsYaw.Name = "textBoxMarioStatsYaw";
+            this.textBoxMarioStatsYaw.Size = new System.Drawing.Size(51, 20);
+            this.textBoxMarioStatsYaw.TabIndex = 33;
+            this.textBoxMarioStatsYaw.Text = "1024";
+            this.textBoxMarioStatsYaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonMarioStatsVspdN
+            // 
+            this.buttonMarioStatsVspdN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioStatsVspdN.Location = new System.Drawing.Point(3, 66);
+            this.buttonMarioStatsVspdN.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioStatsVspdN.Name = "buttonMarioStatsVspdN";
+            this.buttonMarioStatsVspdN.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioStatsVspdN.TabIndex = 35;
+            this.buttonMarioStatsVspdN.Text = "Vspd-";
+            this.buttonMarioStatsVspdN.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioStatsHspdN
+            // 
+            this.buttonMarioStatsHspdN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioStatsHspdN.Location = new System.Drawing.Point(3, 41);
+            this.buttonMarioStatsHspdN.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioStatsHspdN.Name = "buttonMarioStatsHspdN";
+            this.buttonMarioStatsHspdN.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioStatsHspdN.TabIndex = 35;
+            this.buttonMarioStatsHspdN.Text = "Hspd-";
+            this.buttonMarioStatsHspdN.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioStatsYawN
+            // 
+            this.buttonMarioStatsYawN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioStatsYawN.Location = new System.Drawing.Point(3, 16);
+            this.buttonMarioStatsYawN.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioStatsYawN.Name = "buttonMarioStatsYawN";
+            this.buttonMarioStatsYawN.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioStatsYawN.TabIndex = 35;
+            this.buttonMarioStatsYawN.Text = "Yaw-";
+            this.buttonMarioStatsYawN.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioStatsVspdP
+            // 
+            this.buttonMarioStatsVspdP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioStatsVspdP.Location = new System.Drawing.Point(121, 66);
+            this.buttonMarioStatsVspdP.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioStatsVspdP.Name = "buttonMarioStatsVspdP";
+            this.buttonMarioStatsVspdP.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioStatsVspdP.TabIndex = 35;
+            this.buttonMarioStatsVspdP.Text = "Vspd+";
+            this.buttonMarioStatsVspdP.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioStatsHspdP
+            // 
+            this.buttonMarioStatsHspdP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioStatsHspdP.Location = new System.Drawing.Point(121, 41);
+            this.buttonMarioStatsHspdP.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioStatsHspdP.Name = "buttonMarioStatsHspdP";
+            this.buttonMarioStatsHspdP.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioStatsHspdP.TabIndex = 35;
+            this.buttonMarioStatsHspdP.Text = "Hspd+";
+            this.buttonMarioStatsHspdP.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioStatsYawP
+            // 
+            this.buttonMarioStatsYawP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioStatsYawP.Location = new System.Drawing.Point(121, 16);
+            this.buttonMarioStatsYawP.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioStatsYawP.Name = "buttonMarioStatsYawP";
+            this.buttonMarioStatsYawP.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioStatsYawP.TabIndex = 35;
+            this.buttonMarioStatsYawP.Text = "Yaw+";
+            this.buttonMarioStatsYawP.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3114,6 +3240,8 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
             this.NoTearFlowLayoutPanelDebugDisplayType.ResumeLayout(false);
             this.NoTearFlowLayoutPanelDebugDisplayType.PerformLayout();
+            this.groupBoxMarioStats.ResumeLayout(false);
+            this.groupBoxMarioStats.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3351,6 +3479,16 @@ namespace SM64_Diagnostic
         private Button buttonMarioPosXnZp;
         private Button buttonMarioPosXn;
         private Button buttonMarioPosXnZn;
+        private GroupBox groupBoxMarioStats;
+        private TextBox textBoxMarioStatsVspd;
+        private TextBox textBoxMarioStatsHspd;
+        private TextBox textBoxMarioStatsYaw;
+        private Button buttonMarioStatsVspdN;
+        private Button buttonMarioStatsHspdN;
+        private Button buttonMarioStatsYawN;
+        private Button buttonMarioStatsVspdP;
+        private Button buttonMarioStatsHspdP;
+        private Button buttonMarioStatsYawP;
     }
 }
 

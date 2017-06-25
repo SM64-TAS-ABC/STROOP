@@ -70,6 +70,7 @@
     <CoordinateOffsetY>0x40</CoordinateOffsetY>
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
     <FacingAngleOffset>0x2A</FacingAngleOffset>
+    <YawFacingOffset>0x2E</YawFacingOffset>
     <StandingOnPointer>0x80330E34</StandingOnPointer>
     <InteractingObjectPointerOffset>0x78</InteractingObjectPointerOffset>
     <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>
@@ -80,6 +81,7 @@
     <WallTriangleOffset>0x60</WallTriangleOffset>
     <CeilingTriangleOffset>0x64</CeilingTriangleOffset>
     <HSpeedOffset>0x54</HSpeedOffset>
+    <VSpeedOffset>0x4C</VSpeedOffset>
     <MarioStructSize>0xC4</MarioStructSize>
     <MoveToObjectYOffset>300</MoveToObjectYOffset>
     <SlidingSpeedXOffset>0x58</SlidingSpeedXOffset>

@@ -424,6 +424,51 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool MarioChangeYaw(ProcessStream stream, int yawOffset)
+        {
+            stream.Suspend();
+            bool success = true;
+
+            var marioAddress = Config.Mario.StructAddress;
+
+            ushort yaw = stream.GetUInt16(marioAddress + Config.Mario.YawFacingOffset);
+            yaw += (ushort)yawOffset;
+            success &= stream.SetValue(yaw, marioAddress + Config.Mario.YawFacingOffset);
+
+            stream.Resume();
+            return success;
+        }
+
+        public static bool MarioChangeHspd(ProcessStream stream, float hspdOffset)
+        {
+            stream.Suspend();
+            bool success = true;
+
+            var marioAddress = Config.Mario.StructAddress;
+
+            float hspd = stream.GetSingle(marioAddress + Config.Mario.HSpeedOffset);
+            hspd += hspdOffset;
+            success &= stream.SetValue(hspd, marioAddress + Config.Mario.HSpeedOffset);
+
+            stream.Resume();
+            return success;
+        }
+
+        public static bool MarioChangeVspd(ProcessStream stream, float vspdOffset)
+        {
+            stream.Suspend();
+            bool success = true;
+
+            var marioAddress = Config.Mario.StructAddress;
+
+            float vspd = stream.GetSingle(marioAddress + Config.Mario.VSpeedOffset);
+            vspd += vspdOffset;
+            success &= stream.SetValue(vspd, marioAddress + Config.Mario.VSpeedOffset);
+
+            stream.Resume();
+            return success;
+        }
+
         public static bool RefillHp(ProcessStream stream)
         {
             return stream.SetValue(Config.Hud.FullHp, Config.Hud.HpAddress);

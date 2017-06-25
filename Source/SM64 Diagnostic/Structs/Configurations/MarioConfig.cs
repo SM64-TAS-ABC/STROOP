@@ -15,6 +15,7 @@ namespace SM64_Diagnostic.Structs
         public uint YOffset;
         public uint ZOffset;
         public uint RotationOffset;
+        public uint YawFacingOffset;
         public uint StandingOnObjectPointer;
         public uint InteractingObjectPointerOffset;
         public uint HoldingObjectPointerOffset;
@@ -24,6 +25,7 @@ namespace SM64_Diagnostic.Structs
         public uint WallTriangleOffset;
         public uint CeilingTriangleOffset;
         public uint HSpeedOffset;
+        public uint VSpeedOffset;
         public uint GroundYOffset;
         public uint CeilingYOffset;
         public uint StructSize;

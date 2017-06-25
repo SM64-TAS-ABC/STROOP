@@ -250,6 +250,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "FacingAngleOffset":
                                     Config.Mario.RotationOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "YawFacingOffset":
+                                    Config.Mario.YawFacingOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "MarioStructSize":
                                     Config.Mario.StructSize = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
@@ -282,6 +285,9 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                                 case "HSpeedOffset":
                                     Config.Mario.HSpeedOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "VSpeedOffset":
+                                    Config.Mario.VSpeedOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "FloorTriangleOffset":
                                     Config.Mario.FloorTriangleOffset = ParsingUtilities.ParseHex(subElement.Value);
