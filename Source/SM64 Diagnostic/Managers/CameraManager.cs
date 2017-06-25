@@ -111,22 +111,37 @@ namespace SM64_Diagnostic.Managers
             MarioActions.MoveCamera(_stream, 0, ySign * yValue, 0);
         }
 
-        private void cameraSphericalPosThetaPhiButton_Click(object sender, EventArgs e, int xSign, int zSign)
+        private void cameraSphericalPosThetaPhiButton_Click(object sender, EventArgs e, int thetaSign, int phiSign)
         {
-            float xzValue;
-            if (!float.TryParse(_cameraSphericalPosThetaPhiTextbox.Text, out xzValue))
+            float thetaPhiValue;
+            if (!float.TryParse(_cameraSphericalPosThetaPhiTextbox.Text, out thetaPhiValue))
                 return;
 
-            MarioActions.MoveCamera(_stream, xSign * xzValue, 0, zSign * xzValue);
+            float pivotX, pivotY, pivotZ;
+            (pivotX, pivotY, pivotZ) = getSphericalPivotPoint();
+
+            MarioActions.MoveCameraSpherically(_stream, 0, thetaSign * thetaPhiValue, phiSign * thetaPhiValue, pivotX, pivotY, pivotZ);
         }
 
-        private void cameraSphericalPosRadiusButton_Click(object sender, EventArgs e, int ySign)
+        private void cameraSphericalPosRadiusButton_Click(object sender, EventArgs e, int radiusSign)
         {
-            float yValue;
-            if (!float.TryParse(_cameraSphericalPosRadiusTextbox.Text, out yValue))
+            float radiusValue;
+            if (!float.TryParse(_cameraSphericalPosRadiusTextbox.Text, out radiusValue))
                 return;
 
-            MarioActions.MoveCamera(_stream, 0, ySign * yValue, 0);
+            float pivotX, pivotY, pivotZ;
+            (pivotX, pivotY, pivotZ) = getSphericalPivotPoint();
+
+            MarioActions.MoveCameraSpherically(_stream, radiusSign * radiusValue, 0, 0, pivotX, pivotY, pivotZ);
+        }
+
+        private (float pivotX, float pivotY, float pivotZ) getSphericalPivotPoint()
+        {
+            float pivotX, pivotY, pivotZ;
+            pivotX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            pivotY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            pivotZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            return (pivotX, pivotY, pivotZ);
         }
     }
 }

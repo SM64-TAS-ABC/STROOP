@@ -790,5 +790,26 @@ namespace SM64_Diagnostic.Utilities
             stream.Resume();
             return success;
         }
+
+        public static bool MoveCameraSpherically(ProcessStream stream, float radiusOffset, float thetaOffset, float phiOffset, float pivotX, float pivotY, float pivotZ)
+        {
+            float oldX, oldY, oldZ;
+            oldX = stream.GetSingle(Config.Camera.CameraX);
+            oldY = stream.GetSingle(Config.Camera.CameraY);
+            oldZ = stream.GetSingle(Config.Camera.CameraZ);
+
+            double newX, newY, newZ;
+            (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ);
+
+            stream.Suspend();
+            bool success = true;
+
+            success &= stream.SetValue((float)newX, Config.Camera.CameraX);
+            success &= stream.SetValue((float)newY, Config.Camera.CameraY);
+            success &= stream.SetValue((float)newZ, Config.Camera.CameraZ);
+
+            stream.Resume();
+            return success;
+        }
     }
 }
