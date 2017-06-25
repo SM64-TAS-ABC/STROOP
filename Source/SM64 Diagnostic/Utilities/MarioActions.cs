@@ -424,6 +424,30 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool MoveHOLP(ProcessStream stream, float xOffset, float yOffset, float zOffset)
+        {
+            stream.Suspend();
+            bool success = true;
+
+            var marioAddress = Config.Mario.StructAddress;
+
+            float x, y, z;
+            x = stream.GetSingle(Config.HolpX);
+            y = stream.GetSingle(Config.HolpY);
+            z = stream.GetSingle(Config.HolpZ);
+
+            x += xOffset;
+            y += yOffset;
+            z += zOffset;
+
+            success &= stream.SetValue(x, Config.HolpX);
+            success &= stream.SetValue(y, Config.HolpY);
+            success &= stream.SetValue(z, Config.HolpZ);
+
+            stream.Resume();
+            return success;
+        }
+
         public static bool MarioChangeYaw(ProcessStream stream, int yawOffset)
         {
             stream.Suspend();

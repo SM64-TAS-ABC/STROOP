@@ -20,6 +20,8 @@ namespace SM64_Diagnostic.Managers
         TextBox _marioStatsYawTextbox;
         TextBox _marioStatsHspdTextbox;
         TextBox _marioStatsVspdTextbox;
+        TextBox _marioHOLPYTextbox;
+        TextBox _marioHOLPXZTextbox;
 
         public MarioManager(ProcessStream stream, List<WatchVariable> marioData, Control marioControl, NoTearFlowLayoutPanel variableTable, MapManager mapManager)
             : base(stream, marioData, variableTable, Config.Mario.StructAddress)
@@ -47,13 +49,26 @@ namespace SM64_Diagnostic.Managers
             _marioStatsYawTextbox = marioStatsGroupBox.Controls["textBoxMarioStatsYaw"] as TextBox;
             _marioStatsHspdTextbox = marioStatsGroupBox.Controls["textBoxMarioStatsHspd"] as TextBox;
             _marioStatsVspdTextbox = marioStatsGroupBox.Controls["textBoxMarioStatsVspd"] as TextBox;
-            
             var marioYawPButton = marioStatsGroupBox.Controls["buttonMarioStatsYawP"] as Button;
             var marioYawNButton = marioStatsGroupBox.Controls["buttonMarioStatsYawN"] as Button;
             var marioHspdPButton = marioStatsGroupBox.Controls["buttonMarioStatsHspdP"] as Button;
             var marioHspdNButton = marioStatsGroupBox.Controls["buttonMarioStatsHspdN"] as Button;
             var marioVspdPButton = marioStatsGroupBox.Controls["buttonMarioStatsVspdP"] as Button;
             var marioVspdNButton = marioStatsGroupBox.Controls["buttonMarioStatsVspdN"] as Button;
+
+            var marioHOLPGroupBox = marioControl.Controls["groupBoxMarioHOLP"] as GroupBox;
+            _marioHOLPXZTextbox = marioHOLPGroupBox.Controls["textBoxMarioHOLPXZ"] as TextBox;
+            _marioHOLPYTextbox = marioHOLPGroupBox.Controls["textBoxMarioHOLPY"] as TextBox;
+            var marioHOLPXpButton = marioHOLPGroupBox.Controls["buttonMarioHOLPXp"] as Button;
+            var marioHOLPXnButton = marioHOLPGroupBox.Controls["buttonMarioHOLPXn"] as Button;
+            var marioHOLPZpButton = marioHOLPGroupBox.Controls["buttonMarioHOLPZp"] as Button;
+            var marioHOLPZnButton = marioHOLPGroupBox.Controls["buttonMarioHOLPZn"] as Button;
+            var marioHOLPXpZpButton = marioHOLPGroupBox.Controls["buttonMarioHOLPXpZp"] as Button;
+            var marioHOLPXpZnButton = marioHOLPGroupBox.Controls["buttonMarioHOLPXpZn"] as Button;
+            var marioHOLPXnZpButton = marioHOLPGroupBox.Controls["buttonMarioHOLPXnZp"] as Button;
+            var marioHOLPXnZnButton = marioHOLPGroupBox.Controls["buttonMarioHOLPXnZn"] as Button;
+            var marioHOLPYpButton = marioHOLPGroupBox.Controls["buttonMarioHOLPYp"] as Button;
+            var marioHOLPYnButton = marioHOLPGroupBox.Controls["buttonMarioHOLPYn"] as Button;
 
             toggleHandsfree.Click += ToggleHandsfree_Click;
             toggleVisibility.Click += ToggleVisibility_Click;
@@ -75,6 +90,17 @@ namespace SM64_Diagnostic.Managers
             marioHspdNButton.Click += (sender, e) => marioStatsHspdButton_Click(sender, e, -1);
             marioVspdPButton.Click += (sender, e) => marioStatsVspdButton_Click(sender, e, 1);
             marioVspdNButton.Click += (sender, e) => marioStatsVspdButton_Click(sender, e, -1);
+
+            marioHOLPXpButton.Click += (sender, e) => marioHOLPXZButton_Click(sender, e, 1, 0);
+            marioHOLPXnButton.Click += (sender, e) => marioHOLPXZButton_Click(sender, e, -1, 0);
+            marioHOLPZpButton.Click += (sender, e) => marioHOLPXZButton_Click(sender, e, 0, 1);
+            marioHOLPZnButton.Click += (sender, e) => marioHOLPXZButton_Click(sender, e, 0, -1);
+            marioHOLPXpZpButton.Click += (sender, e) => marioHOLPXZButton_Click(sender, e, 1, 1);
+            marioHOLPXpZnButton.Click += (sender, e) => marioHOLPXZButton_Click(sender, e, 1, -1);
+            marioHOLPXnZpButton.Click += (sender, e) => marioHOLPXZButton_Click(sender, e, -1, 1);
+            marioHOLPXnZnButton.Click += (sender, e) => marioHOLPXZButton_Click(sender, e, -1, -1);
+            marioHOLPYpButton.Click += (sender, e) => marioHOLPYButton_Click(sender, e, 1);
+            marioHOLPYnButton.Click += (sender, e) => marioHOLPYButton_Click(sender, e, -1);
         }
 
         protected override void InitializeSpecialVariables()
@@ -191,6 +217,15 @@ namespace SM64_Diagnostic.Managers
             MarioActions.ToggleVisibility(_stream);
         }
 
+        private void marioPosXZButton_Click(object sender, EventArgs e, int xSign, int zSign)
+        {
+            float xzValue;
+            if (!float.TryParse(_marioPosXZTextbox.Text, out xzValue))
+                return;
+
+            MarioActions.MoveMario(_stream, xSign * xzValue, 0, zSign * xzValue);
+        }
+
         private void marioPosYButton_Click(object sender, EventArgs e, int ySign)
         {
             float yValue;
@@ -200,13 +235,22 @@ namespace SM64_Diagnostic.Managers
             MarioActions.MoveMario(_stream, 0, ySign * yValue, 0);
         }
 
-        private void marioPosXZButton_Click(object sender, EventArgs e, int xSign, int zSign)
+        private void marioHOLPXZButton_Click(object sender, EventArgs e, int xSign, int zSign)
         {
             float xzValue;
-            if (!float.TryParse(_marioPosXZTextbox.Text, out xzValue))
+            if (!float.TryParse(_marioHOLPXZTextbox.Text, out xzValue))
                 return;
 
-            MarioActions.MoveMario(_stream, xSign * xzValue, 0, zSign * xzValue);
+            MarioActions.MoveHOLP(_stream, xSign * xzValue, 0, zSign * xzValue);
+        }
+
+        private void marioHOLPYButton_Click(object sender, EventArgs e, int ySign)
+        {
+            float yValue;
+            if (!float.TryParse(_marioHOLPYTextbox.Text, out yValue))
+                return;
+
+            MarioActions.MoveHOLP(_stream, 0, ySign * yValue, 0);
         }
 
         private void marioStatsYawButton_Click(object sender, EventArgs e, int sign)
