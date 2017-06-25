@@ -15,6 +15,8 @@ namespace SM64_Diagnostic.Managers
     public class TriangleManager : DataManager
     {
         MaskedTextBox _addressBox;
+        TextBox _trianglePosXZTextbox;
+        TextBox _trianglePosYTextbox;
         uint _triangleAddress = 0;
         bool _addressChangedByUser = true;
         bool _useMisalignmentOffset = false;
@@ -101,6 +103,20 @@ namespace SM64_Diagnostic.Managers
             (tabControl.Controls["buttonNeutralizeTriangle"] as Button).Click += NeutralizeTriangleButton_Click;
             (tabControl.Controls["buttonAnnihilateTriangle"] as Button).Click += AnnihilateTriangleButton_Click;
             (tabControl.Controls["checkBoxVertexMisalignment"] as CheckBox).CheckedChanged += checkBoxVertexMisalignment_CheckedChanged;
+            
+            var trianglePosGroupBox = tabControl.Controls["groupBoxTrianglePos"] as GroupBox;
+            _trianglePosXZTextbox = trianglePosGroupBox.Controls["textBoxTrianglePosXZ"] as TextBox;
+            _trianglePosYTextbox = trianglePosGroupBox.Controls["textBoxTrianglePosY"] as TextBox;
+            (trianglePosGroupBox.Controls["buttontrianglePosXp"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, 1, 0);
+            (trianglePosGroupBox.Controls["buttontrianglePosXn"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, -1, 0);
+            (trianglePosGroupBox.Controls["buttontrianglePosZp"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, 0, 1);
+            (trianglePosGroupBox.Controls["buttontrianglePosZn"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, 0, -1);
+            (trianglePosGroupBox.Controls["buttontrianglePosXpZp"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, 1, 1);
+            (trianglePosGroupBox.Controls["buttontrianglePosXpZn"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, 1, -1);
+            (trianglePosGroupBox.Controls["buttontrianglePosXnZp"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, -1, 1);
+            (trianglePosGroupBox.Controls["buttontrianglePosXnZn"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, -1, -1);
+            (trianglePosGroupBox.Controls["buttontrianglePosYp"] as Button).Click += (sender, e) => trianglePosYButton_Click(sender, e, 1);
+            (trianglePosGroupBox.Controls["buttontrianglePosYn"] as Button).Click += (sender, e) => trianglePosYButton_Click(sender, e, -1);
         }
 
         private void checkBoxVertexMisalignment_CheckedChanged(object sender, EventArgs e)
@@ -301,40 +317,30 @@ namespace SM64_Diagnostic.Managers
 
         private void NeutralizeTriangleButton_Click(object sender, EventArgs e)
         {
-            short surfaceType = 21;
-            _stream.SetValue(surfaceType, _triangleAddress + Config.TriangleOffsets.SurfaceType);
+            MarioActions.NeutralizeTriangle(_stream, _triangleAddress);
         }
 
         private void AnnihilateTriangleButton_Click(object sender, EventArgs e)
         {
-            short xzCoordinate = 16000;
-            short yCoordinate = 30000;
-            short v1X = xzCoordinate;
-            short v1Y = yCoordinate;
-            short v1Z = xzCoordinate;
-            short v2X = xzCoordinate;
-            short v2Y = yCoordinate;
-            short v2Z = xzCoordinate;
-            short v3X = xzCoordinate;
-            short v3Y = yCoordinate;
-            short v3Z = xzCoordinate;
-            float normX = 0;
-            float normY = 0;
-            float normZ = 0;
-            float normOffset = 16000;
-            _stream.SetValue(v1X, TriangleAddress + Config.TriangleOffsets.X1);
-            _stream.SetValue(v1Y, TriangleAddress + Config.TriangleOffsets.Y1);
-            _stream.SetValue(v1Z, TriangleAddress + Config.TriangleOffsets.Z1);
-            _stream.SetValue(v2X, TriangleAddress + Config.TriangleOffsets.X2);
-            _stream.SetValue(v2Y, TriangleAddress + Config.TriangleOffsets.Y2);
-            _stream.SetValue(v2Z, TriangleAddress + Config.TriangleOffsets.Z2);
-            _stream.SetValue(v3X, TriangleAddress + Config.TriangleOffsets.X3);
-            _stream.SetValue(v3Y, TriangleAddress + Config.TriangleOffsets.Y3);
-            _stream.SetValue(v3Z, TriangleAddress + Config.TriangleOffsets.Z3);
-            _stream.SetValue(normX, TriangleAddress + Config.TriangleOffsets.NormX);
-            _stream.SetValue(normY, TriangleAddress + Config.TriangleOffsets.NormY);
-            _stream.SetValue(normZ, TriangleAddress + Config.TriangleOffsets.NormZ);
-            _stream.SetValue(normOffset, TriangleAddress + Config.TriangleOffsets.Offset);
+            MarioActions.AnnihilateTriangle(_stream, _triangleAddress);
+        }
+
+        private void trianglePosXZButton_Click(object sender, EventArgs e, int xSign, int zSign)
+        {
+            float xzValue;
+            if (!float.TryParse(_trianglePosXZTextbox.Text, out xzValue))
+                return;
+
+            MarioActions.MoveTriangle(_stream, _triangleAddress, xSign * xzValue, 0, zSign * xzValue);
+        }
+
+        private void trianglePosYButton_Click(object sender, EventArgs e, int ySign)
+        {
+            float yValue;
+            if (!float.TryParse(_trianglePosYTextbox.Text, out yValue))
+                return;
+
+            MarioActions.MoveTriangle(_stream, _triangleAddress, 0, ySign * yValue, 0);
         }
 
         private void Mode_CheckedChanged(object sender, EventArgs e, TriangleMode mode)

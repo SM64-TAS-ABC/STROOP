@@ -15,13 +15,13 @@ namespace SM64_Diagnostic.Managers
     public class MarioManager : DataManager
     {
         MapManager _mapManager;
-        TextBox _marioPosYTextbox;
         TextBox _marioPosXZTextbox;
+        TextBox _marioPosYTextbox;
         TextBox _marioStatsYawTextbox;
         TextBox _marioStatsHspdTextbox;
         TextBox _marioStatsVspdTextbox;
-        TextBox _marioHOLPYTextbox;
         TextBox _marioHOLPXZTextbox;
+        TextBox _marioHOLPYTextbox;
 
         public MarioManager(ProcessStream stream, List<WatchVariable> marioData, Control marioControl, NoTearFlowLayoutPanel variableTable, MapManager mapManager)
             : base(stream, marioData, variableTable, Config.Mario.StructAddress)
