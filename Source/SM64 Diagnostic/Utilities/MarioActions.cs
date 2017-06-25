@@ -676,6 +676,14 @@ namespace SM64_Diagnostic.Utilities
             if (triangleAddress == 0x0000)
                 return false;
 
+            float normX, normY, normZ, oldNormOffset;
+            normX = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
+            normY = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
+            normZ = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
+            oldNormOffset = stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
+
+            float newNormOffset = oldNormOffset - normX * xOffset - normY * yOffset - normZ * zOffset;
+
             short newX1, newY1, newZ1, newX2, newY2, newZ2, newX3, newY3, newZ3;
             newX1 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.X1) + xOffset);
             newY1 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y1) + yOffset);
@@ -690,17 +698,10 @@ namespace SM64_Diagnostic.Utilities
             short newYMin = (short)(Math.Min(Math.Min(newY1, newY2), newY3) - 5);
             short newYMax = (short)(Math.Max(Math.Max(newY1, newY2), newY3) + 5);
 
-            float normX, normY, normZ, oldNormOffset;
-            normX = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
-            normY = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
-            normZ = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
-            oldNormOffset = stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
-
-            float newNormOffset = oldNormOffset - normX * xOffset - normY * yOffset - normZ * zOffset;
-
             bool success = true;
             stream.Suspend();
 
+            success &= stream.SetValue(newNormOffset, triangleAddress + Config.TriangleOffsets.Offset);
             success &= stream.SetValue(newX1, triangleAddress + Config.TriangleOffsets.X1);
             success &= stream.SetValue(newY1, triangleAddress + Config.TriangleOffsets.Y1);
             success &= stream.SetValue(newZ1, triangleAddress + Config.TriangleOffsets.Z1);
@@ -712,7 +713,57 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.SetValue(newZ3, triangleAddress + Config.TriangleOffsets.Z3);
             success &= stream.SetValue(newYMin, triangleAddress + Config.TriangleOffsets.YMin);
             success &= stream.SetValue(newYMax, triangleAddress + Config.TriangleOffsets.YMax);
+
+            stream.Resume();
+            return success;
+        }
+
+        public static bool MoveTriangleNormal(ProcessStream stream, uint triangleAddress, float normalChange)
+        {
+            if (triangleAddress == 0x0000)
+                return false;
+
+            float normX, normY, normZ, oldNormOffset;
+            normX = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
+            normY = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
+            normZ = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
+            oldNormOffset = stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
+
+            float newNormOffset = oldNormOffset - normalChange;
+
+            double xChange = normalChange * normX;
+            double yChange = normalChange * normY;
+            double zChange = normalChange * normZ;
+
+            short newX1, newY1, newZ1, newX2, newY2, newZ2, newX3, newY3, newZ3;
+            newX1 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.X1) + xChange);
+            newY1 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y1) + yChange);
+            newZ1 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z1) + zChange);
+            newX2 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.X2) + xChange);
+            newY2 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y2) + yChange);
+            newZ2 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z2) + zChange);
+            newX3 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.X3) + xChange);
+            newY3 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y3) + yChange);
+            newZ3 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z3) + zChange);
+
+            short newYMin = (short)(Math.Min(Math.Min(newY1, newY2), newY3) - 5);
+            short newYMax = (short)(Math.Max(Math.Max(newY1, newY2), newY3) + 5);
+
+            bool success = true;
+            stream.Suspend();
+
             success &= stream.SetValue(newNormOffset, triangleAddress + Config.TriangleOffsets.Offset);
+            success &= stream.SetValue(newX1, triangleAddress + Config.TriangleOffsets.X1);
+            success &= stream.SetValue(newY1, triangleAddress + Config.TriangleOffsets.Y1);
+            success &= stream.SetValue(newZ1, triangleAddress + Config.TriangleOffsets.Z1);
+            success &= stream.SetValue(newX2, triangleAddress + Config.TriangleOffsets.X2);
+            success &= stream.SetValue(newY2, triangleAddress + Config.TriangleOffsets.Y2);
+            success &= stream.SetValue(newZ2, triangleAddress + Config.TriangleOffsets.Z2);
+            success &= stream.SetValue(newX3, triangleAddress + Config.TriangleOffsets.X3);
+            success &= stream.SetValue(newY3, triangleAddress + Config.TriangleOffsets.Y3);
+            success &= stream.SetValue(newZ3, triangleAddress + Config.TriangleOffsets.Z3);
+            success &= stream.SetValue(newYMin, triangleAddress + Config.TriangleOffsets.YMin);
+            success &= stream.SetValue(newYMax, triangleAddress + Config.TriangleOffsets.YMax);
 
             stream.Resume();
             return success;

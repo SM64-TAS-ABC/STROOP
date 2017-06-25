@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -274,6 +274,23 @@ namespace SM64_Diagnostic
             this.buttonTrianglePosXnZp = new System.Windows.Forms.Button();
             this.buttonTrianglePosXn = new System.Windows.Forms.Button();
             this.buttonTrianglePosXnZn = new System.Windows.Forms.Button();
+            this.groupBoxCameraPos = new System.Windows.Forms.GroupBox();
+            this.textBoxCameraPosY = new System.Windows.Forms.TextBox();
+            this.buttonCameraPosYp = new System.Windows.Forms.Button();
+            this.buttonCameraPosYn = new System.Windows.Forms.Button();
+            this.buttonCameraPosXpZp = new System.Windows.Forms.Button();
+            this.textBoxCameraPosXZ = new System.Windows.Forms.TextBox();
+            this.buttonCameraPosXp = new System.Windows.Forms.Button();
+            this.buttonCameraPosXpZn = new System.Windows.Forms.Button();
+            this.buttonCameraPosZn = new System.Windows.Forms.Button();
+            this.buttonCameraPosZp = new System.Windows.Forms.Button();
+            this.buttonCameraPosXnZp = new System.Windows.Forms.Button();
+            this.buttonCameraPosXn = new System.Windows.Forms.Button();
+            this.buttonCameraPosXnZn = new System.Windows.Forms.Button();
+            this.groupBoxTriangleNormal = new System.Windows.Forms.GroupBox();
+            this.buttonTriangleNormalN = new System.Windows.Forms.Button();
+            this.buttonTriangleNormalP = new System.Windows.Forms.Button();
+            this.textBoxTriangleNormal = new System.Windows.Forms.TextBox();
             this.NoTearFlowLayoutPanelObject = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.pictureBoxObject = new SM64_Diagnostic.Controls.IntPictureBox();
             this.pictureBoxMario = new SM64_Diagnostic.Controls.IntPictureBox();
@@ -281,8 +298,8 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelActions = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.pictureBoxHud = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelHud = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.NoTearFlowLayoutPanelCamera = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.pictureBoxCamera = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.NoTearFlowLayoutPanelCamera = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.NoTearFlowLayoutPanelTriangles = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.noTearFlowLayoutPanelWater = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.noTearFlowLayoutPanelFile = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
@@ -300,19 +317,6 @@ namespace SM64_Diagnostic
             this.radioButtonDbgEnemyInfo = new System.Windows.Forms.RadioButton();
             this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.NoTearFlowLayoutPanelObjects = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.groupBoxCameraPos = new System.Windows.Forms.GroupBox();
-            this.textBoxCameraPosY = new System.Windows.Forms.TextBox();
-            this.buttonCameraPosYp = new System.Windows.Forms.Button();
-            this.buttonCameraPosYn = new System.Windows.Forms.Button();
-            this.buttonCameraPosXpZp = new System.Windows.Forms.Button();
-            this.textBoxCameraPosXZ = new System.Windows.Forms.TextBox();
-            this.buttonCameraPosXp = new System.Windows.Forms.Button();
-            this.buttonCameraPosXpZn = new System.Windows.Forms.Button();
-            this.buttonCameraPosZn = new System.Windows.Forms.Button();
-            this.buttonCameraPosZp = new System.Windows.Forms.Button();
-            this.buttonCameraPosXnZp = new System.Windows.Forms.Button();
-            this.buttonCameraPosXn = new System.Windows.Forms.Button();
-            this.buttonCameraPosXnZn = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -367,6 +371,8 @@ namespace SM64_Diagnostic
             this.tabPageOptions.SuspendLayout();
             this.panelConnect.SuspendLayout();
             this.groupBoxTrianglePos.SuspendLayout();
+            this.groupBoxCameraPos.SuspendLayout();
+            this.groupBoxTriangleNormal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).BeginInit();
@@ -374,7 +380,6 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
             this.NoTearFlowLayoutPanelDebugDisplayType.SuspendLayout();
-            this.groupBoxCameraPos.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1689,8 +1694,8 @@ namespace SM64_Diagnostic
             // tabPageCamera
             // 
             this.tabPageCamera.Controls.Add(this.groupBoxCameraPos);
-            this.tabPageCamera.Controls.Add(this.NoTearFlowLayoutPanelCamera);
             this.tabPageCamera.Controls.Add(this.panelCameraBorder);
+            this.tabPageCamera.Controls.Add(this.NoTearFlowLayoutPanelCamera);
             this.tabPageCamera.Location = new System.Drawing.Point(4, 22);
             this.tabPageCamera.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageCamera.Name = "tabPageCamera";
@@ -1709,6 +1714,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageTriangles
             // 
+            this.tabPageTriangles.Controls.Add(this.groupBoxTriangleNormal);
             this.tabPageTriangles.Controls.Add(this.groupBoxTrianglePos);
             this.tabPageTriangles.Controls.Add(this.buttonAnnihilateTriangle);
             this.tabPageTriangles.Controls.Add(this.buttonNeutralizeTriangle);
@@ -2541,8 +2547,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -3138,6 +3144,192 @@ namespace SM64_Diagnostic
             this.buttonTrianglePosXnZn.Text = "X-Z-";
             this.buttonTrianglePosXnZn.UseVisualStyleBackColor = true;
             // 
+            // groupBoxCameraPos
+            // 
+            this.groupBoxCameraPos.Controls.Add(this.textBoxCameraPosY);
+            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosYp);
+            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosYn);
+            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXpZp);
+            this.groupBoxCameraPos.Controls.Add(this.textBoxCameraPosXZ);
+            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXp);
+            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXpZn);
+            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosZn);
+            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosZp);
+            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXnZp);
+            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXn);
+            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXnZn);
+            this.groupBoxCameraPos.Location = new System.Drawing.Point(3, 63);
+            this.groupBoxCameraPos.Name = "groupBoxCameraPos";
+            this.groupBoxCameraPos.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxCameraPos.TabIndex = 30;
+            this.groupBoxCameraPos.TabStop = false;
+            this.groupBoxCameraPos.Text = "Position";
+            // 
+            // textBoxCameraPosY
+            // 
+            this.textBoxCameraPosY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxCameraPosY.Location = new System.Drawing.Point(140, 70);
+            this.textBoxCameraPosY.Name = "textBoxCameraPosY";
+            this.textBoxCameraPosY.Size = new System.Drawing.Size(42, 20);
+            this.textBoxCameraPosY.TabIndex = 33;
+            this.textBoxCameraPosY.Text = "100";
+            this.textBoxCameraPosY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonCameraPosYp
+            // 
+            this.buttonCameraPosYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCameraPosYp.Location = new System.Drawing.Point(140, 16);
+            this.buttonCameraPosYp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraPosYp.Name = "buttonCameraPosYp";
+            this.buttonCameraPosYp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraPosYp.TabIndex = 35;
+            this.buttonCameraPosYp.Text = "Y+";
+            this.buttonCameraPosYp.UseVisualStyleBackColor = true;
+            // 
+            // buttonCameraPosYn
+            // 
+            this.buttonCameraPosYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCameraPosYn.Location = new System.Drawing.Point(140, 100);
+            this.buttonCameraPosYn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraPosYn.Name = "buttonCameraPosYn";
+            this.buttonCameraPosYn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraPosYn.TabIndex = 34;
+            this.buttonCameraPosYn.Text = "Y-";
+            this.buttonCameraPosYn.UseVisualStyleBackColor = true;
+            // 
+            // buttonCameraPosXpZp
+            // 
+            this.buttonCameraPosXpZp.Location = new System.Drawing.Point(87, 100);
+            this.buttonCameraPosXpZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraPosXpZp.Name = "buttonCameraPosXpZp";
+            this.buttonCameraPosXpZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraPosXpZp.TabIndex = 32;
+            this.buttonCameraPosXpZp.Text = "X+Z+";
+            this.buttonCameraPosXpZp.UseVisualStyleBackColor = true;
+            // 
+            // textBoxCameraPosXZ
+            // 
+            this.textBoxCameraPosXZ.Location = new System.Drawing.Point(45, 70);
+            this.textBoxCameraPosXZ.Name = "textBoxCameraPosXZ";
+            this.textBoxCameraPosXZ.Size = new System.Drawing.Size(42, 20);
+            this.textBoxCameraPosXZ.TabIndex = 27;
+            this.textBoxCameraPosXZ.Text = "100";
+            this.textBoxCameraPosXZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonCameraPosXp
+            // 
+            this.buttonCameraPosXp.Location = new System.Drawing.Point(87, 58);
+            this.buttonCameraPosXp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraPosXp.Name = "buttonCameraPosXp";
+            this.buttonCameraPosXp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraPosXp.TabIndex = 31;
+            this.buttonCameraPosXp.Text = "X+";
+            this.buttonCameraPosXp.UseVisualStyleBackColor = true;
+            // 
+            // buttonCameraPosXpZn
+            // 
+            this.buttonCameraPosXpZn.Location = new System.Drawing.Point(87, 16);
+            this.buttonCameraPosXpZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraPosXpZn.Name = "buttonCameraPosXpZn";
+            this.buttonCameraPosXpZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraPosXpZn.TabIndex = 30;
+            this.buttonCameraPosXpZn.Text = "X+Z-";
+            this.buttonCameraPosXpZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonCameraPosZn
+            // 
+            this.buttonCameraPosZn.Location = new System.Drawing.Point(45, 16);
+            this.buttonCameraPosZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraPosZn.Name = "buttonCameraPosZn";
+            this.buttonCameraPosZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraPosZn.TabIndex = 29;
+            this.buttonCameraPosZn.Text = "Z-";
+            this.buttonCameraPosZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonCameraPosZp
+            // 
+            this.buttonCameraPosZp.Location = new System.Drawing.Point(45, 100);
+            this.buttonCameraPosZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraPosZp.Name = "buttonCameraPosZp";
+            this.buttonCameraPosZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraPosZp.TabIndex = 28;
+            this.buttonCameraPosZp.Text = "Z+";
+            this.buttonCameraPosZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonCameraPosXnZp
+            // 
+            this.buttonCameraPosXnZp.Location = new System.Drawing.Point(3, 100);
+            this.buttonCameraPosXnZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraPosXnZp.Name = "buttonCameraPosXnZp";
+            this.buttonCameraPosXnZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraPosXnZp.TabIndex = 27;
+            this.buttonCameraPosXnZp.Text = "X-Z+";
+            this.buttonCameraPosXnZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonCameraPosXn
+            // 
+            this.buttonCameraPosXn.Location = new System.Drawing.Point(3, 58);
+            this.buttonCameraPosXn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraPosXn.Name = "buttonCameraPosXn";
+            this.buttonCameraPosXn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraPosXn.TabIndex = 26;
+            this.buttonCameraPosXn.Text = "X-";
+            this.buttonCameraPosXn.UseVisualStyleBackColor = true;
+            // 
+            // buttonCameraPosXnZn
+            // 
+            this.buttonCameraPosXnZn.Location = new System.Drawing.Point(3, 16);
+            this.buttonCameraPosXnZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraPosXnZn.Name = "buttonCameraPosXnZn";
+            this.buttonCameraPosXnZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraPosXnZn.TabIndex = 25;
+            this.buttonCameraPosXnZn.Text = "X-Z-";
+            this.buttonCameraPosXnZn.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxTriangleNormal
+            // 
+            this.groupBoxTriangleNormal.Controls.Add(this.textBoxTriangleNormal);
+            this.groupBoxTriangleNormal.Controls.Add(this.buttonTriangleNormalN);
+            this.groupBoxTriangleNormal.Controls.Add(this.buttonTriangleNormalP);
+            this.groupBoxTriangleNormal.Location = new System.Drawing.Point(3, 374);
+            this.groupBoxTriangleNormal.Name = "groupBoxTriangleNormal";
+            this.groupBoxTriangleNormal.Size = new System.Drawing.Size(185, 45);
+            this.groupBoxTriangleNormal.TabIndex = 31;
+            this.groupBoxTriangleNormal.TabStop = false;
+            this.groupBoxTriangleNormal.Text = "Normal";
+            // 
+            // buttonTriangleNormalN
+            // 
+            this.buttonTriangleNormalN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTriangleNormalN.Location = new System.Drawing.Point(3, 16);
+            this.buttonTriangleNormalN.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTriangleNormalN.Name = "buttonTriangleNormalN";
+            this.buttonTriangleNormalN.Size = new System.Drawing.Size(61, 25);
+            this.buttonTriangleNormalN.TabIndex = 35;
+            this.buttonTriangleNormalN.Text = "Normal-";
+            this.buttonTriangleNormalN.UseVisualStyleBackColor = true;
+            // 
+            // buttonTriangleNormalP
+            // 
+            this.buttonTriangleNormalP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTriangleNormalP.Location = new System.Drawing.Point(121, 16);
+            this.buttonTriangleNormalP.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTriangleNormalP.Name = "buttonTriangleNormalP";
+            this.buttonTriangleNormalP.Size = new System.Drawing.Size(61, 25);
+            this.buttonTriangleNormalP.TabIndex = 35;
+            this.buttonTriangleNormalP.Text = "Normal+";
+            this.buttonTriangleNormalP.UseVisualStyleBackColor = true;
+            // 
+            // textBoxTriangleNormal
+            // 
+            this.textBoxTriangleNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTriangleNormal.Location = new System.Drawing.Point(67, 19);
+            this.textBoxTriangleNormal.Name = "textBoxTriangleNormal";
+            this.textBoxTriangleNormal.Size = new System.Drawing.Size(51, 20);
+            this.textBoxTriangleNormal.TabIndex = 33;
+            this.textBoxTriangleNormal.Text = "50";
+            this.textBoxTriangleNormal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // NoTearFlowLayoutPanelObject
             // 
             this.NoTearFlowLayoutPanelObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -3234,19 +3426,6 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(812, 569);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
-            // NoTearFlowLayoutPanelCamera
-            // 
-            this.NoTearFlowLayoutPanelCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoTearFlowLayoutPanelCamera.AutoScroll = true;
-            this.NoTearFlowLayoutPanelCamera.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(190, 2);
-            this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
-            this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(723, 572);
-            this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
-            // 
             // pictureBoxCamera
             // 
             this.pictureBoxCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -3261,6 +3440,19 @@ namespace SM64_Diagnostic
             this.pictureBoxCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxCamera.TabIndex = 0;
             this.pictureBoxCamera.TabStop = false;
+            // 
+            // NoTearFlowLayoutPanelCamera
+            // 
+            this.NoTearFlowLayoutPanelCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoTearFlowLayoutPanelCamera.AutoScroll = true;
+            this.NoTearFlowLayoutPanelCamera.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(190, 2);
+            this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(723, 572);
+            this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // NoTearFlowLayoutPanelTriangles
             // 
@@ -3472,148 +3664,6 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
-            // groupBoxCameraPos
-            // 
-            this.groupBoxCameraPos.Controls.Add(this.textBoxCameraPosY);
-            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosYp);
-            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosYn);
-            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXpZp);
-            this.groupBoxCameraPos.Controls.Add(this.textBoxCameraPosXZ);
-            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXp);
-            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXpZn);
-            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosZn);
-            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosZp);
-            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXnZp);
-            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXn);
-            this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXnZn);
-            this.groupBoxCameraPos.Location = new System.Drawing.Point(3, 63);
-            this.groupBoxCameraPos.Name = "groupBoxCameraPos";
-            this.groupBoxCameraPos.Size = new System.Drawing.Size(185, 146);
-            this.groupBoxCameraPos.TabIndex = 30;
-            this.groupBoxCameraPos.TabStop = false;
-            this.groupBoxCameraPos.Text = "Position";
-            // 
-            // textBoxCameraPosY
-            // 
-            this.textBoxCameraPosY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxCameraPosY.Location = new System.Drawing.Point(140, 70);
-            this.textBoxCameraPosY.Name = "textBoxCameraPosY";
-            this.textBoxCameraPosY.Size = new System.Drawing.Size(42, 20);
-            this.textBoxCameraPosY.TabIndex = 33;
-            this.textBoxCameraPosY.Text = "100";
-            this.textBoxCameraPosY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonCameraPosYp
-            // 
-            this.buttonCameraPosYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCameraPosYp.Location = new System.Drawing.Point(140, 16);
-            this.buttonCameraPosYp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraPosYp.Name = "buttonCameraPosYp";
-            this.buttonCameraPosYp.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraPosYp.TabIndex = 35;
-            this.buttonCameraPosYp.Text = "Y+";
-            this.buttonCameraPosYp.UseVisualStyleBackColor = true;
-            // 
-            // buttonCameraPosYn
-            // 
-            this.buttonCameraPosYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCameraPosYn.Location = new System.Drawing.Point(140, 100);
-            this.buttonCameraPosYn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraPosYn.Name = "buttonCameraPosYn";
-            this.buttonCameraPosYn.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraPosYn.TabIndex = 34;
-            this.buttonCameraPosYn.Text = "Y-";
-            this.buttonCameraPosYn.UseVisualStyleBackColor = true;
-            // 
-            // buttonCameraPosXpZp
-            // 
-            this.buttonCameraPosXpZp.Location = new System.Drawing.Point(87, 100);
-            this.buttonCameraPosXpZp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraPosXpZp.Name = "buttonCameraPosXpZp";
-            this.buttonCameraPosXpZp.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraPosXpZp.TabIndex = 32;
-            this.buttonCameraPosXpZp.Text = "X+Z+";
-            this.buttonCameraPosXpZp.UseVisualStyleBackColor = true;
-            // 
-            // textBoxCameraPosXZ
-            // 
-            this.textBoxCameraPosXZ.Location = new System.Drawing.Point(45, 70);
-            this.textBoxCameraPosXZ.Name = "textBoxCameraPosXZ";
-            this.textBoxCameraPosXZ.Size = new System.Drawing.Size(42, 20);
-            this.textBoxCameraPosXZ.TabIndex = 27;
-            this.textBoxCameraPosXZ.Text = "100";
-            this.textBoxCameraPosXZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonCameraPosXp
-            // 
-            this.buttonCameraPosXp.Location = new System.Drawing.Point(87, 58);
-            this.buttonCameraPosXp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraPosXp.Name = "buttonCameraPosXp";
-            this.buttonCameraPosXp.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraPosXp.TabIndex = 31;
-            this.buttonCameraPosXp.Text = "X+";
-            this.buttonCameraPosXp.UseVisualStyleBackColor = true;
-            // 
-            // buttonCameraPosXpZn
-            // 
-            this.buttonCameraPosXpZn.Location = new System.Drawing.Point(87, 16);
-            this.buttonCameraPosXpZn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraPosXpZn.Name = "buttonCameraPosXpZn";
-            this.buttonCameraPosXpZn.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraPosXpZn.TabIndex = 30;
-            this.buttonCameraPosXpZn.Text = "X+Z-";
-            this.buttonCameraPosXpZn.UseVisualStyleBackColor = true;
-            // 
-            // buttonCameraPosZn
-            // 
-            this.buttonCameraPosZn.Location = new System.Drawing.Point(45, 16);
-            this.buttonCameraPosZn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraPosZn.Name = "buttonCameraPosZn";
-            this.buttonCameraPosZn.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraPosZn.TabIndex = 29;
-            this.buttonCameraPosZn.Text = "Z-";
-            this.buttonCameraPosZn.UseVisualStyleBackColor = true;
-            // 
-            // buttonCameraPosZp
-            // 
-            this.buttonCameraPosZp.Location = new System.Drawing.Point(45, 100);
-            this.buttonCameraPosZp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraPosZp.Name = "buttonCameraPosZp";
-            this.buttonCameraPosZp.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraPosZp.TabIndex = 28;
-            this.buttonCameraPosZp.Text = "Z+";
-            this.buttonCameraPosZp.UseVisualStyleBackColor = true;
-            // 
-            // buttonCameraPosXnZp
-            // 
-            this.buttonCameraPosXnZp.Location = new System.Drawing.Point(3, 100);
-            this.buttonCameraPosXnZp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraPosXnZp.Name = "buttonCameraPosXnZp";
-            this.buttonCameraPosXnZp.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraPosXnZp.TabIndex = 27;
-            this.buttonCameraPosXnZp.Text = "X-Z+";
-            this.buttonCameraPosXnZp.UseVisualStyleBackColor = true;
-            // 
-            // buttonCameraPosXn
-            // 
-            this.buttonCameraPosXn.Location = new System.Drawing.Point(3, 58);
-            this.buttonCameraPosXn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraPosXn.Name = "buttonCameraPosXn";
-            this.buttonCameraPosXn.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraPosXn.TabIndex = 26;
-            this.buttonCameraPosXn.Text = "X-";
-            this.buttonCameraPosXn.UseVisualStyleBackColor = true;
-            // 
-            // buttonCameraPosXnZn
-            // 
-            this.buttonCameraPosXnZn.Location = new System.Drawing.Point(3, 16);
-            this.buttonCameraPosXnZn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraPosXnZn.Name = "buttonCameraPosXnZn";
-            this.buttonCameraPosXnZn.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraPosXnZn.TabIndex = 25;
-            this.buttonCameraPosXnZn.Text = "X-Z-";
-            this.buttonCameraPosXnZn.UseVisualStyleBackColor = true;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3709,6 +3759,10 @@ namespace SM64_Diagnostic
             this.panelConnect.PerformLayout();
             this.groupBoxTrianglePos.ResumeLayout(false);
             this.groupBoxTrianglePos.PerformLayout();
+            this.groupBoxCameraPos.ResumeLayout(false);
+            this.groupBoxCameraPos.PerformLayout();
+            this.groupBoxTriangleNormal.ResumeLayout(false);
+            this.groupBoxTriangleNormal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).EndInit();
@@ -3717,8 +3771,6 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
             this.NoTearFlowLayoutPanelDebugDisplayType.ResumeLayout(false);
             this.NoTearFlowLayoutPanelDebugDisplayType.PerformLayout();
-            this.groupBoxCameraPos.ResumeLayout(false);
-            this.groupBoxCameraPos.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4005,6 +4057,10 @@ namespace SM64_Diagnostic
         private Button buttonCameraPosXnZp;
         private Button buttonCameraPosXn;
         private Button buttonCameraPosXnZn;
+        private GroupBox groupBoxTriangleNormal;
+        private TextBox textBoxTriangleNormal;
+        private Button buttonTriangleNormalN;
+        private Button buttonTriangleNormalP;
     }
 }
 

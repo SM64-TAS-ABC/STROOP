@@ -17,6 +17,7 @@ namespace SM64_Diagnostic.Managers
         MaskedTextBox _addressBox;
         TextBox _trianglePosXZTextbox;
         TextBox _trianglePosYTextbox;
+        TextBox _triangleNormalTextbox;
         uint _triangleAddress = 0;
         bool _addressChangedByUser = true;
         bool _useMisalignmentOffset = false;
@@ -117,6 +118,11 @@ namespace SM64_Diagnostic.Managers
             (trianglePosGroupBox.Controls["buttontrianglePosXnZn"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, -1, -1);
             (trianglePosGroupBox.Controls["buttontrianglePosYp"] as Button).Click += (sender, e) => trianglePosYButton_Click(sender, e, 1);
             (trianglePosGroupBox.Controls["buttontrianglePosYn"] as Button).Click += (sender, e) => trianglePosYButton_Click(sender, e, -1);
+
+            var triangleNormalGroupBox = tabControl.Controls["groupBoxTriangleNormal"] as GroupBox;
+            _triangleNormalTextbox = triangleNormalGroupBox.Controls["textBoxTriangleNormal"] as TextBox;
+            (triangleNormalGroupBox.Controls["buttontriangleNormalP"] as Button).Click += (sender, e) => triangleNormalButton_Click(sender, e, 1);
+            (triangleNormalGroupBox.Controls["buttontriangleNormalN"] as Button).Click += (sender, e) => triangleNormalButton_Click(sender, e, -1);
         }
 
         private void checkBoxVertexMisalignment_CheckedChanged(object sender, EventArgs e)
@@ -341,6 +347,15 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             MarioActions.MoveTriangle(_stream, _triangleAddress, 0, ySign * yValue, 0);
+        }
+
+        private void triangleNormalButton_Click(object sender, EventArgs e, int sign)
+        {
+            float normal;
+            if (!float.TryParse(_triangleNormalTextbox.Text, out normal))
+                return;
+
+            MarioActions.MoveTriangleNormal(_stream, _triangleAddress, sign * normal);
         }
 
         private void Mode_CheckedChanged(object sender, EventArgs e, TriangleMode mode)
