@@ -400,6 +400,30 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool MoveMario(ProcessStream stream, float xOffset, float yOffset, float zOffset)
+        {
+            stream.Suspend();
+            bool success = true;
+
+            var marioAddress = Config.Mario.StructAddress;
+
+            float x, y, z;
+            x = stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            y = stream.GetSingle(marioAddress + Config.Mario.YOffset);
+            z = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
+
+            x += xOffset;
+            y += yOffset;
+            z += zOffset;
+
+            success &= stream.SetValue(x, marioAddress + Config.Mario.XOffset);
+            success &= stream.SetValue(y, marioAddress + Config.Mario.YOffset);
+            success &= stream.SetValue(z, marioAddress + Config.Mario.ZOffset);
+
+            stream.Resume();
+            return success;
+        }
+
         public static bool RefillHp(ProcessStream stream)
         {
             return stream.SetValue(Config.Hud.FullHp, Config.Hud.HpAddress);

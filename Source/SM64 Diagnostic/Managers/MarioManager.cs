@@ -15,6 +15,8 @@ namespace SM64_Diagnostic.Managers
     public class MarioManager : DataManager
     {
         MapManager _mapManager;
+        TextBox _marioPosYTextbox;
+        TextBox _marioPosXZTextbox;
 
         public MarioManager(ProcessStream stream, List<WatchVariable> marioData, Control marioControl, NoTearFlowLayoutPanel variableTable, MapManager mapManager)
             : base(stream, marioData, variableTable, Config.Mario.StructAddress)
@@ -24,8 +26,33 @@ namespace SM64_Diagnostic.Managers
             var toggleHandsfree = marioControl.Controls["buttonMarioToggleHandsfree"] as Button;
             var toggleVisibility = marioControl.Controls["buttonMarioVisibility"] as Button;
 
+            var marioPosGroupBox = marioControl.Controls["groupBoxMarioPos"] as GroupBox;
+            _marioPosYTextbox = marioPosGroupBox.Controls["textBoxMarioPosY"] as TextBox;
+            _marioPosXZTextbox = marioPosGroupBox.Controls["textBoxMarioPosXZ"] as TextBox;
+            var marioPosXpButton = marioPosGroupBox.Controls["buttonMarioPosXp"] as Button;
+            var marioPosXnButton = marioPosGroupBox.Controls["buttonMarioPosXn"] as Button;
+            var marioPosZpButton = marioPosGroupBox.Controls["buttonMarioPosZp"] as Button;
+            var marioPosZnButton = marioPosGroupBox.Controls["buttonMarioPosZn"] as Button;
+            var marioPosXpZpButton = marioPosGroupBox.Controls["buttonMarioPosXpZp"] as Button;
+            var marioPosXpZnButton = marioPosGroupBox.Controls["buttonMarioPosXpZn"] as Button;
+            var marioPosXnZpButton = marioPosGroupBox.Controls["buttonMarioPosXnZp"] as Button;
+            var marioPosXnZnButton = marioPosGroupBox.Controls["buttonMarioPosXnZn"] as Button;
+            var marioPosYpButton = marioPosGroupBox.Controls["buttonMarioPosYp"] as Button;
+            var marioPosYnButton = marioPosGroupBox.Controls["buttonMarioPosYn"] as Button;
+
             toggleHandsfree.Click += ToggleHandsfree_Click;
             toggleVisibility.Click += ToggleVisibility_Click;
+
+            marioPosXpButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 1, 0);
+            marioPosXnButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, -1, 0);
+            marioPosZpButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 0, 1);
+            marioPosZnButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 0, -1);
+            marioPosXpZpButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 1, 1);
+            marioPosXpZnButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 1, -1);
+            marioPosXnZpButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, -1, 1);
+            marioPosXnZnButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, -1, -1);
+            marioPosYpButton.Click += (sender, e) => marioPosYButton_Click(sender, e, 1);
+            marioPosYnButton.Click += (sender, e) => marioPosYButton_Click(sender, e, -1);
         }
 
         protected override void InitializeSpecialVariables()
@@ -140,6 +167,24 @@ namespace SM64_Diagnostic.Managers
         private void ToggleVisibility_Click(object sender, EventArgs e)
         {
             MarioActions.ToggleVisibility(_stream);
+        }
+
+        private void marioPosYButton_Click(object sender, EventArgs e, int ySign)
+        {
+            float yValue;
+            if (!float.TryParse(_marioPosYTextbox.Text, out yValue))
+                return;
+
+            MarioActions.MoveMario(_stream, 0, ySign * yValue, 0);
+        }
+
+        private void marioPosXZButton_Click(object sender, EventArgs e, int xSign, int zSign)
+        {
+            float xzValue;
+            if (!float.TryParse(_marioPosXZTextbox.Text, out xzValue))
+                return;
+
+            MarioActions.MoveMario(_stream, xSign * xzValue, 0, zSign * xzValue);
         }
 
         public override void Update(bool updateView)

@@ -462,6 +462,11 @@ namespace SM64_Diagnostic
             }*/
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private async void NoTearFlowLayoutPanelObjects_Resize(object sender, EventArgs e)
         {
             _resizeTimeLeft = 500;
