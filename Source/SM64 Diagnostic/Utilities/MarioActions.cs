@@ -402,9 +402,6 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveMario(ProcessStream stream, float xOffset, float yOffset, float zOffset)
         {
-            stream.Suspend();
-            bool success = true;
-
             var marioAddress = Config.Mario.StructAddress;
 
             float x, y, z;
@@ -416,6 +413,9 @@ namespace SM64_Diagnostic.Utilities
             y += yOffset;
             z += zOffset;
 
+            bool success = true;
+            stream.Suspend();
+
             success &= stream.SetValue(x, marioAddress + Config.Mario.XOffset);
             success &= stream.SetValue(y, marioAddress + Config.Mario.YOffset);
             success &= stream.SetValue(z, marioAddress + Config.Mario.ZOffset);
@@ -426,9 +426,6 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveHOLP(ProcessStream stream, float xOffset, float yOffset, float zOffset)
         {
-            stream.Suspend();
-            bool success = true;
-
             var marioAddress = Config.Mario.StructAddress;
 
             float x, y, z;
@@ -440,6 +437,9 @@ namespace SM64_Diagnostic.Utilities
             y += yOffset;
             z += zOffset;
 
+            bool success = true;
+            stream.Suspend();
+
             success &= stream.SetValue(x, Config.HolpX);
             success &= stream.SetValue(y, Config.HolpY);
             success &= stream.SetValue(z, Config.HolpZ);
@@ -450,13 +450,14 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MarioChangeYaw(ProcessStream stream, int yawOffset)
         {
-            stream.Suspend();
-            bool success = true;
-
             var marioAddress = Config.Mario.StructAddress;
 
             ushort yaw = stream.GetUInt16(marioAddress + Config.Mario.YawFacingOffset);
             yaw += (ushort)yawOffset;
+
+            bool success = true;
+            stream.Suspend();
+
             success &= stream.SetValue(yaw, marioAddress + Config.Mario.YawFacingOffset);
 
             stream.Resume();
@@ -465,13 +466,14 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MarioChangeHspd(ProcessStream stream, float hspdOffset)
         {
-            stream.Suspend();
-            bool success = true;
-
             var marioAddress = Config.Mario.StructAddress;
 
             float hspd = stream.GetSingle(marioAddress + Config.Mario.HSpeedOffset);
             hspd += hspdOffset;
+
+            bool success = true;
+            stream.Suspend();
+
             success &= stream.SetValue(hspd, marioAddress + Config.Mario.HSpeedOffset);
 
             stream.Resume();
@@ -480,13 +482,14 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MarioChangeVspd(ProcessStream stream, float vspdOffset)
         {
-            stream.Suspend();
-            bool success = true;
-
             var marioAddress = Config.Mario.StructAddress;
 
             float vspd = stream.GetSingle(marioAddress + Config.Mario.VSpeedOffset);
             vspd += vspdOffset;
+
+            bool success = true;
+            stream.Suspend();
+
             success &= stream.SetValue(vspd, marioAddress + Config.Mario.VSpeedOffset);
 
             stream.Resume();
@@ -506,7 +509,6 @@ namespace SM64_Diagnostic.Utilities
         public static bool StandardHud(ProcessStream stream)
         {
             bool success = true;
-
             stream.Suspend();
 
             success &= stream.SetValue(Config.Hud.FullHp, Config.Hud.HpAddress);
@@ -519,7 +521,6 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.SetValue(Config.Hud.StandardStars, Config.Hud.DisplayStarCountAddress);
 
             stream.Resume();
-
             return success;
         }
 
@@ -712,6 +713,28 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.SetValue(newYMin, triangleAddress + Config.TriangleOffsets.YMin);
             success &= stream.SetValue(newYMax, triangleAddress + Config.TriangleOffsets.YMax);
             success &= stream.SetValue(newNormOffset, triangleAddress + Config.TriangleOffsets.Offset);
+
+            stream.Resume();
+            return success;
+        }
+
+        public static bool MoveCamera(ProcessStream stream, float xOffset, float yOffset, float zOffset)
+        {
+            float x, y, z;
+            x = stream.GetSingle(Config.Camera.CameraX);
+            y = stream.GetSingle(Config.Camera.CameraY);
+            z = stream.GetSingle(Config.Camera.CameraZ);
+
+            x += xOffset;
+            y += yOffset;
+            z += zOffset;
+
+            stream.Suspend();
+            bool success = true;
+
+            success &= stream.SetValue(x, Config.Camera.CameraX);
+            success &= stream.SetValue(y, Config.Camera.CameraY);
+            success &= stream.SetValue(z, Config.Camera.CameraZ);
 
             stream.Resume();
             return success;
