@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -295,15 +295,15 @@ namespace SM64_Diagnostic
             this.textBoxCameraSphericalPosRadius = new System.Windows.Forms.TextBox();
             this.buttonCameraSphericalPosRadiusN = new System.Windows.Forms.Button();
             this.buttonCameraSphericalPosRadiusP = new System.Windows.Forms.Button();
-            this.buttonCameraSphericalPosThetaPPhiN = new System.Windows.Forms.Button();
+            this.buttonCameraSphericalPosThetaPPhiP = new System.Windows.Forms.Button();
             this.textBoxCameraSphericalPosThetaPhi = new System.Windows.Forms.TextBox();
             this.buttonCameraSphericalPosThetaP = new System.Windows.Forms.Button();
-            this.buttonCameraSphericalPosThetaPPhiP = new System.Windows.Forms.Button();
-            this.buttonCameraSphericalPosPhiP = new System.Windows.Forms.Button();
+            this.buttonCameraSphericalPosThetaPPhiN = new System.Windows.Forms.Button();
             this.buttonCameraSphericalPosPhiN = new System.Windows.Forms.Button();
-            this.buttonCameraSphericalPosThetaNPhiN = new System.Windows.Forms.Button();
-            this.buttonCameraSphericalPosThetaN = new System.Windows.Forms.Button();
+            this.buttonCameraSphericalPosPhiP = new System.Windows.Forms.Button();
             this.buttonCameraSphericalPosThetaNPhiP = new System.Windows.Forms.Button();
+            this.buttonCameraSphericalPosThetaN = new System.Windows.Forms.Button();
+            this.buttonCameraSphericalPosThetaNPhiN = new System.Windows.Forms.Button();
             this.NoTearFlowLayoutPanelObject = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.pictureBoxObject = new SM64_Diagnostic.Controls.IntPictureBox();
             this.pictureBoxMario = new SM64_Diagnostic.Controls.IntPictureBox();
@@ -2890,8 +2890,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -3350,15 +3350,15 @@ namespace SM64_Diagnostic
             this.groupBoxCameraSphericalPos.Controls.Add(this.textBoxCameraSphericalPosRadius);
             this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosRadiusN);
             this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosRadiusP);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaPPhiN);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaPPhiP);
             this.groupBoxCameraSphericalPos.Controls.Add(this.textBoxCameraSphericalPosThetaPhi);
             this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaP);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaPPhiP);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosPhiP);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaPPhiN);
             this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosPhiN);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaNPhiN);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaN);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosPhiP);
             this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaNPhiP);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaN);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaNPhiN);
             this.groupBoxCameraSphericalPos.Location = new System.Drawing.Point(3, 215);
             this.groupBoxCameraSphericalPos.Name = "groupBoxCameraSphericalPos";
             this.groupBoxCameraSphericalPos.Size = new System.Drawing.Size(185, 146);
@@ -3398,15 +3398,15 @@ namespace SM64_Diagnostic
             this.buttonCameraSphericalPosRadiusP.Text = "R+";
             this.buttonCameraSphericalPosRadiusP.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraSphericalPosThetaPPhiN
+            // buttonCameraSphericalPosThetaPPhiP
             // 
-            this.buttonCameraSphericalPosThetaPPhiN.Location = new System.Drawing.Point(87, 100);
-            this.buttonCameraSphericalPosThetaPPhiN.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosThetaPPhiN.Name = "buttonCameraSphericalPosThetaPPhiN";
-            this.buttonCameraSphericalPosThetaPPhiN.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosThetaPPhiN.TabIndex = 32;
-            this.buttonCameraSphericalPosThetaPPhiN.Text = "θ+ϕ+";
-            this.buttonCameraSphericalPosThetaPPhiN.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosThetaPPhiP.Location = new System.Drawing.Point(87, 100);
+            this.buttonCameraSphericalPosThetaPPhiP.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosThetaPPhiP.Name = "buttonCameraSphericalPosThetaPPhiP";
+            this.buttonCameraSphericalPosThetaPPhiP.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosThetaPPhiP.TabIndex = 32;
+            this.buttonCameraSphericalPosThetaPPhiP.Text = "θ+ϕ+";
+            this.buttonCameraSphericalPosThetaPPhiP.UseVisualStyleBackColor = true;
             // 
             // textBoxCameraSphericalPosThetaPhi
             // 
@@ -3414,7 +3414,7 @@ namespace SM64_Diagnostic
             this.textBoxCameraSphericalPosThetaPhi.Name = "textBoxCameraSphericalPosThetaPhi";
             this.textBoxCameraSphericalPosThetaPhi.Size = new System.Drawing.Size(42, 20);
             this.textBoxCameraSphericalPosThetaPhi.TabIndex = 27;
-            this.textBoxCameraSphericalPosThetaPhi.Text = "100";
+            this.textBoxCameraSphericalPosThetaPhi.Text = "1024";
             this.textBoxCameraSphericalPosThetaPhi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonCameraSphericalPosThetaP
@@ -3427,45 +3427,45 @@ namespace SM64_Diagnostic
             this.buttonCameraSphericalPosThetaP.Text = "θ+";
             this.buttonCameraSphericalPosThetaP.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraSphericalPosThetaPPhiP
+            // buttonCameraSphericalPosThetaPPhiN
             // 
-            this.buttonCameraSphericalPosThetaPPhiP.Location = new System.Drawing.Point(87, 16);
-            this.buttonCameraSphericalPosThetaPPhiP.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosThetaPPhiP.Name = "buttonCameraSphericalPosThetaPPhiP";
-            this.buttonCameraSphericalPosThetaPPhiP.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosThetaPPhiP.TabIndex = 30;
-            this.buttonCameraSphericalPosThetaPPhiP.Text = "θ+ϕ-";
-            this.buttonCameraSphericalPosThetaPPhiP.UseVisualStyleBackColor = true;
-            // 
-            // buttonCameraSphericalPosPhiP
-            // 
-            this.buttonCameraSphericalPosPhiP.Location = new System.Drawing.Point(45, 16);
-            this.buttonCameraSphericalPosPhiP.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosPhiP.Name = "buttonCameraSphericalPosPhiP";
-            this.buttonCameraSphericalPosPhiP.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosPhiP.TabIndex = 29;
-            this.buttonCameraSphericalPosPhiP.Text = "ϕ-";
-            this.buttonCameraSphericalPosPhiP.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosThetaPPhiN.Location = new System.Drawing.Point(87, 16);
+            this.buttonCameraSphericalPosThetaPPhiN.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosThetaPPhiN.Name = "buttonCameraSphericalPosThetaPPhiN";
+            this.buttonCameraSphericalPosThetaPPhiN.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosThetaPPhiN.TabIndex = 30;
+            this.buttonCameraSphericalPosThetaPPhiN.Text = "θ+ϕ-";
+            this.buttonCameraSphericalPosThetaPPhiN.UseVisualStyleBackColor = true;
             // 
             // buttonCameraSphericalPosPhiN
             // 
-            this.buttonCameraSphericalPosPhiN.Location = new System.Drawing.Point(45, 100);
+            this.buttonCameraSphericalPosPhiN.Location = new System.Drawing.Point(45, 16);
             this.buttonCameraSphericalPosPhiN.Margin = new System.Windows.Forms.Padding(0);
             this.buttonCameraSphericalPosPhiN.Name = "buttonCameraSphericalPosPhiN";
             this.buttonCameraSphericalPosPhiN.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosPhiN.TabIndex = 28;
-            this.buttonCameraSphericalPosPhiN.Text = "ϕ+";
+            this.buttonCameraSphericalPosPhiN.TabIndex = 29;
+            this.buttonCameraSphericalPosPhiN.Text = "ϕ-";
             this.buttonCameraSphericalPosPhiN.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraSphericalPosThetaNPhiN
+            // buttonCameraSphericalPosPhiP
             // 
-            this.buttonCameraSphericalPosThetaNPhiN.Location = new System.Drawing.Point(3, 100);
-            this.buttonCameraSphericalPosThetaNPhiN.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosThetaNPhiN.Name = "buttonCameraSphericalPosThetaNPhiN";
-            this.buttonCameraSphericalPosThetaNPhiN.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosThetaNPhiN.TabIndex = 27;
-            this.buttonCameraSphericalPosThetaNPhiN.Text = "θ-ϕ+";
-            this.buttonCameraSphericalPosThetaNPhiN.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosPhiP.Location = new System.Drawing.Point(45, 100);
+            this.buttonCameraSphericalPosPhiP.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosPhiP.Name = "buttonCameraSphericalPosPhiP";
+            this.buttonCameraSphericalPosPhiP.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosPhiP.TabIndex = 28;
+            this.buttonCameraSphericalPosPhiP.Text = "ϕ+";
+            this.buttonCameraSphericalPosPhiP.UseVisualStyleBackColor = true;
+            // 
+            // buttonCameraSphericalPosThetaNPhiP
+            // 
+            this.buttonCameraSphericalPosThetaNPhiP.Location = new System.Drawing.Point(3, 100);
+            this.buttonCameraSphericalPosThetaNPhiP.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosThetaNPhiP.Name = "buttonCameraSphericalPosThetaNPhiP";
+            this.buttonCameraSphericalPosThetaNPhiP.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosThetaNPhiP.TabIndex = 27;
+            this.buttonCameraSphericalPosThetaNPhiP.Text = "θ-ϕ+";
+            this.buttonCameraSphericalPosThetaNPhiP.UseVisualStyleBackColor = true;
             // 
             // buttonCameraSphericalPosThetaN
             // 
@@ -3477,15 +3477,15 @@ namespace SM64_Diagnostic
             this.buttonCameraSphericalPosThetaN.Text = "θ-";
             this.buttonCameraSphericalPosThetaN.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraSphericalPosThetaNPhiP
+            // buttonCameraSphericalPosThetaNPhiN
             // 
-            this.buttonCameraSphericalPosThetaNPhiP.Location = new System.Drawing.Point(3, 16);
-            this.buttonCameraSphericalPosThetaNPhiP.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosThetaNPhiP.Name = "buttonCameraSphericalPosThetaNPhiP";
-            this.buttonCameraSphericalPosThetaNPhiP.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosThetaNPhiP.TabIndex = 25;
-            this.buttonCameraSphericalPosThetaNPhiP.Text = "θ-ϕ-";
-            this.buttonCameraSphericalPosThetaNPhiP.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosThetaNPhiN.Location = new System.Drawing.Point(3, 16);
+            this.buttonCameraSphericalPosThetaNPhiN.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosThetaNPhiN.Name = "buttonCameraSphericalPosThetaNPhiN";
+            this.buttonCameraSphericalPosThetaNPhiN.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosThetaNPhiN.TabIndex = 25;
+            this.buttonCameraSphericalPosThetaNPhiN.Text = "θ-ϕ-";
+            this.buttonCameraSphericalPosThetaNPhiN.UseVisualStyleBackColor = true;
             // 
             // NoTearFlowLayoutPanelObject
             // 
@@ -4224,15 +4224,15 @@ namespace SM64_Diagnostic
         private TextBox textBoxCameraSphericalPosRadius;
         private Button buttonCameraSphericalPosRadiusN;
         private Button buttonCameraSphericalPosRadiusP;
-        private Button buttonCameraSphericalPosThetaPPhiN;
+        private Button buttonCameraSphericalPosThetaPPhiP;
         private TextBox textBoxCameraSphericalPosThetaPhi;
         private Button buttonCameraSphericalPosThetaP;
-        private Button buttonCameraSphericalPosThetaPPhiP;
-        private Button buttonCameraSphericalPosPhiP;
+        private Button buttonCameraSphericalPosThetaPPhiN;
         private Button buttonCameraSphericalPosPhiN;
-        private Button buttonCameraSphericalPosThetaNPhiN;
-        private Button buttonCameraSphericalPosThetaN;
+        private Button buttonCameraSphericalPosPhiP;
         private Button buttonCameraSphericalPosThetaNPhiP;
+        private Button buttonCameraSphericalPosThetaN;
+        private Button buttonCameraSphericalPosThetaNPhiN;
     }
 }
 

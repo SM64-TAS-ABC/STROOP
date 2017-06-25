@@ -114,7 +114,7 @@ namespace SM64_Diagnostic.Managers
         private void cameraSphericalPosThetaPhiButton_Click(object sender, EventArgs e, int xSign, int zSign)
         {
             float xzValue;
-            if (!float.TryParse(_cameraPosXZTextbox.Text, out xzValue))
+            if (!float.TryParse(_cameraSphericalPosThetaPhiTextbox.Text, out xzValue))
                 return;
 
             MarioActions.MoveCamera(_stream, xSign * xzValue, 0, zSign * xzValue);
@@ -123,7 +123,7 @@ namespace SM64_Diagnostic.Managers
         private void cameraSphericalPosRadiusButton_Click(object sender, EventArgs e, int ySign)
         {
             float yValue;
-            if (!float.TryParse(_cameraPosYTextbox.Text, out yValue))
+            if (!float.TryParse(_cameraSphericalPosRadiusTextbox.Text, out yValue))
                 return;
 
             MarioActions.MoveCamera(_stream, 0, ySign * yValue, 0);
