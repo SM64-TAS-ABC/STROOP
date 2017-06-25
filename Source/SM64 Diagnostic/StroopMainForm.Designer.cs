@@ -3832,7 +3832,7 @@ namespace SM64_Diagnostic
             this.checkBoxScaleDiagonalPositionControllerButtons.TabIndex = 8;
             this.checkBoxScaleDiagonalPositionControllerButtons.Text = "Scale Diagonal Position Controller Buttons";
             this.checkBoxScaleDiagonalPositionControllerButtons.UseVisualStyleBackColor = true;
-            this.checkBoxScaleDiagonalPositionControllerButtons.CheckedChanged += new System.EventHandler(this.checkBoxUseOverlays_CheckedChanged);
+            this.checkBoxScaleDiagonalPositionControllerButtons.CheckedChanged += new System.EventHandler(this.checkBoxScaleDiagonalPositionControllerButtons_CheckedChanged);
             // 
             // StroopMainForm
             // 

@@ -71,7 +71,9 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveObjects(ProcessStream stream, List<uint> objAddresses,
             float xOffset, float yOffset, float zOffset)
-        {     
+        {
+            handleScaling(ref xOffset, ref zOffset);
+            
             stream.Suspend();
 
             bool success = true;
@@ -98,6 +100,8 @@ namespace SM64_Diagnostic.Utilities
         public static bool MoveObjectHomes(ProcessStream stream, List<uint> objAddresses,
             float xOffset, float yOffset, float zOffset)
         {
+            handleScaling(ref xOffset, ref zOffset);
+
             stream.Suspend();
 
             bool success = true;
@@ -402,6 +406,8 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveMario(ProcessStream stream, float xOffset, float yOffset, float zOffset)
         {
+            handleScaling(ref xOffset, ref zOffset);
+
             var marioAddress = Config.Mario.StructAddress;
 
             float x, y, z;
@@ -426,6 +432,8 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveHOLP(ProcessStream stream, float xOffset, float yOffset, float zOffset)
         {
+            handleScaling(ref xOffset, ref zOffset);
+
             var marioAddress = Config.Mario.StructAddress;
 
             float x, y, z;
@@ -595,10 +603,8 @@ namespace SM64_Diagnostic.Utilities
             short yMin = (short)(Math.Min(Math.Min(v1Y, v2Y), v3Y) - 5);
             short yMax = (short)(Math.Max(Math.Max(v1Y, v2Y), v3Y) + 5);
 
-            stream.Suspend();
-
-            // Update triangle
             bool success = true;
+            stream.Suspend();
             
             success &= stream.SetValue(v1Y, triangleAddress + Config.TriangleOffsets.Y1);
             success &= stream.SetValue(v2Y, triangleAddress + Config.TriangleOffsets.Y2);
@@ -608,7 +614,6 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.SetValue(normOffset, triangleAddress + Config.TriangleOffsets.Offset);
 
             stream.Resume();
-
             return success;
         }
 
@@ -675,6 +680,8 @@ namespace SM64_Diagnostic.Utilities
         {
             if (triangleAddress == 0x0000)
                 return false;
+
+            handleScaling(ref xOffset, ref zOffset);
 
             float normX, normY, normZ, oldNormOffset;
             normX = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
@@ -771,6 +778,8 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveCamera(ProcessStream stream, float xOffset, float yOffset, float zOffset)
         {
+            handleScaling(ref xOffset, ref zOffset);
+
             float x, y, z;
             x = stream.GetSingle(Config.Camera.CameraX);
             y = stream.GetSingle(Config.Camera.CameraY);
@@ -780,8 +789,8 @@ namespace SM64_Diagnostic.Utilities
             y += yOffset;
             z += zOffset;
 
-            stream.Suspend();
             bool success = true;
+            stream.Suspend();
 
             success &= stream.SetValue(x, Config.Camera.CameraX);
             success &= stream.SetValue(y, Config.Camera.CameraY);
@@ -793,6 +802,8 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveCameraSpherically(ProcessStream stream, float radiusOffset, float thetaOffset, float phiOffset, float pivotX, float pivotY, float pivotZ)
         {
+            handleScaling(ref thetaOffset, ref phiOffset);
+
             float oldX, oldY, oldZ;
             oldX = stream.GetSingle(Config.Camera.CameraX);
             oldY = stream.GetSingle(Config.Camera.CameraY);
@@ -801,8 +812,8 @@ namespace SM64_Diagnostic.Utilities
             double newX, newY, newZ;
             (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ);
 
-            stream.Suspend();
             bool success = true;
+            stream.Suspend();
 
             success &= stream.SetValue((float)newX, Config.Camera.CameraX);
             success &= stream.SetValue((float)newY, Config.Camera.CameraY);
@@ -810,6 +821,14 @@ namespace SM64_Diagnostic.Utilities
 
             stream.Resume();
             return success;
+        }
+
+        public static void handleScaling(ref float xOffset, ref float zOffset)
+        {
+            if (Config.ScaleDiagonalPositionControllerButtons)
+            {
+                (xOffset, zOffset) = ((float, float))MoreMath.ScaleValues(xOffset, zOffset);
+            }
         }
     }
 }

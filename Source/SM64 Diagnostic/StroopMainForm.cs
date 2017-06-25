@@ -590,6 +590,11 @@ namespace SM64_Diagnostic
             Config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
         }
 
+        private void checkBoxScaleDiagonalPositionControllerButtons_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.ScaleDiagonalPositionControllerButtons = checkBoxScaleDiagonalPositionControllerButtons.Checked;
+        }
+
         private void checkBoxUseOverlays_CheckedChanged(object sender, EventArgs e)
         {
             Config.ShowOverlays = checkBoxUseOverlays.Checked;

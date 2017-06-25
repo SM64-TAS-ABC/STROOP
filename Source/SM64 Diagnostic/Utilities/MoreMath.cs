@@ -131,5 +131,13 @@ namespace SM64_Diagnostic.Utilities
         {
             return Math.Min(Math.Max(value, min), max);
         }
+
+        public static (double scaledX, double scaledZ) ScaleValues(double xValue, double zValue)
+        {
+            double magnitude = Math.Max(Math.Abs(xValue), Math.Abs(zValue));
+            double totalMagnitude = Math.Sqrt(xValue * xValue + zValue * zValue);
+            double multiplier = totalMagnitude == 0 ? 1 : magnitude / totalMagnitude;
+            return (xValue * multiplier, zValue * multiplier);
+        }
     }
 }
