@@ -16,6 +16,8 @@ namespace SM64_Diagnostic.Managers
     {
         TextBox _cameraPosXZTextbox;
         TextBox _cameraPosYTextbox;
+        TextBox _cameraSphericalPosThetaPhiTextbox;
+        TextBox _cameraSphericalPosRadiusTextbox;
 
         public CameraManager(ProcessStream stream, List<WatchVariable> cameraData, Control tabControl, NoTearFlowLayoutPanel variableTable)
             : base(stream, cameraData, variableTable)
@@ -33,6 +35,20 @@ namespace SM64_Diagnostic.Managers
             (cameraPosGroupBox.Controls["buttoncameraPosXnZn"] as Button).Click += (sender, e) => cameraPosXZButton_Click(sender, e, -1, -1);
             (cameraPosGroupBox.Controls["buttoncameraPosYp"] as Button).Click += (sender, e) => cameraPosYButton_Click(sender, e, 1);
             (cameraPosGroupBox.Controls["buttoncameraPosYn"] as Button).Click += (sender, e) => cameraPosYButton_Click(sender, e, -1);
+            
+            var cameraSphericalPosGroupBox = tabControl.Controls["groupBoxCameraSphericalPos"] as GroupBox;
+            _cameraSphericalPosThetaPhiTextbox = cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosThetaPhi"] as TextBox;
+            _cameraSphericalPosRadiusTextbox = cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosRadius"] as TextBox;
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosThetaP"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 1, 0);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosThetaN"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, -1, 0);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosPhiP"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 0, 1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosPhiN"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 0, -1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosThetaPPhiP"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 1, 1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosThetaPPhiN"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 1, -1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosThetaNPhiP"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, -1, 1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosThetaNPhiN"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, -1, -1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosRadiusP"] as Button).Click += (sender, e) => cameraSphericalPosRadiusButton_Click(sender, e, 1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosRadiusN"] as Button).Click += (sender, e) => cameraSphericalPosRadiusButton_Click(sender, e, -1);
         }
 
         protected override void InitializeSpecialVariables()
@@ -87,6 +103,24 @@ namespace SM64_Diagnostic.Managers
         }
 
         private void cameraPosYButton_Click(object sender, EventArgs e, int ySign)
+        {
+            float yValue;
+            if (!float.TryParse(_cameraPosYTextbox.Text, out yValue))
+                return;
+
+            MarioActions.MoveCamera(_stream, 0, ySign * yValue, 0);
+        }
+
+        private void cameraSphericalPosThetaPhiButton_Click(object sender, EventArgs e, int xSign, int zSign)
+        {
+            float xzValue;
+            if (!float.TryParse(_cameraPosXZTextbox.Text, out xzValue))
+                return;
+
+            MarioActions.MoveCamera(_stream, xSign * xzValue, 0, zSign * xzValue);
+        }
+
+        private void cameraSphericalPosRadiusButton_Click(object sender, EventArgs e, int ySign)
         {
             float yValue;
             if (!float.TryParse(_cameraPosYTextbox.Text, out yValue))
