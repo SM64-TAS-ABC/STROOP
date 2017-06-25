@@ -575,11 +575,11 @@ namespace SM64_Diagnostic.Utilities
             oldNormOffset = stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
 
             // Get Mario position
-            short marioX, marioY, marioZ;
+            float marioX, marioY, marioZ;
             var marioAddress = Config.Mario.StructAddress;
-            marioX = (short) stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            marioY = (short) stream.GetSingle(marioAddress + Config.Mario.YOffset);
-            marioZ = (short) stream.GetSingle(marioAddress + Config.Mario.ZOffset);
+            marioX = stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            marioY = stream.GetSingle(marioAddress + Config.Mario.YOffset);
+            marioZ = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
 
             float normOffset = -(normX * marioX + normY * marioY + normZ * marioZ);
             float normDiff = normOffset - oldNormOffset;
