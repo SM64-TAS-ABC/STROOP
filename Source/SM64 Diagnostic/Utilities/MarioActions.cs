@@ -431,9 +431,10 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool MoveHOLP(ProcessStream stream, float xOffset, float yOffset, float zOffset)
+        public static bool MoveHOLP(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative, ushort relativeAngle)
         {
             handleScaling(ref xOffset, ref zOffset);
+            handleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
 
             var marioAddress = Config.Mario.StructAddress;
 
