@@ -15,8 +15,21 @@ namespace SM64_Diagnostic.Managers
     public class MarioManager : DataManager
     {
         MapManager _mapManager;
+
         TextBox _marioPosXZTextbox;
         TextBox _marioPosYTextbox;
+        Button _marioPosXpButton;
+        Button _marioPosXnButton;
+        Button _marioPosZpButton;
+        Button _marioPosZnButton;
+        Button _marioPosXpZpButton;
+        Button _marioPosXpZnButton;
+        Button _marioPosXnZpButton;
+        Button _marioPosXnZnButton;
+        Button _marioPosYpButton;
+        Button _marioPosYnButton;
+        bool _marioPosRelative = false;
+
         TextBox _marioStatsYawTextbox;
         TextBox _marioStatsHspdTextbox;
         TextBox _marioStatsVspdTextbox;
@@ -34,16 +47,17 @@ namespace SM64_Diagnostic.Managers
             var marioPosGroupBox = marioControl.Controls["groupBoxMarioPos"] as GroupBox;
             _marioPosXZTextbox = marioPosGroupBox.Controls["textBoxMarioPosXZ"] as TextBox;
             _marioPosYTextbox = marioPosGroupBox.Controls["textBoxMarioPosY"] as TextBox;
-            var marioPosXpButton = marioPosGroupBox.Controls["buttonMarioPosXp"] as Button;
-            var marioPosXnButton = marioPosGroupBox.Controls["buttonMarioPosXn"] as Button;
-            var marioPosZpButton = marioPosGroupBox.Controls["buttonMarioPosZp"] as Button;
-            var marioPosZnButton = marioPosGroupBox.Controls["buttonMarioPosZn"] as Button;
-            var marioPosXpZpButton = marioPosGroupBox.Controls["buttonMarioPosXpZp"] as Button;
-            var marioPosXpZnButton = marioPosGroupBox.Controls["buttonMarioPosXpZn"] as Button;
-            var marioPosXnZpButton = marioPosGroupBox.Controls["buttonMarioPosXnZp"] as Button;
-            var marioPosXnZnButton = marioPosGroupBox.Controls["buttonMarioPosXnZn"] as Button;
-            var marioPosYpButton = marioPosGroupBox.Controls["buttonMarioPosYp"] as Button;
-            var marioPosYnButton = marioPosGroupBox.Controls["buttonMarioPosYn"] as Button;
+            _marioPosXpButton = marioPosGroupBox.Controls["buttonMarioPosXp"] as Button;
+            _marioPosXnButton = marioPosGroupBox.Controls["buttonMarioPosXn"] as Button;
+            _marioPosZpButton = marioPosGroupBox.Controls["buttonMarioPosZp"] as Button;
+            _marioPosZnButton = marioPosGroupBox.Controls["buttonMarioPosZn"] as Button;
+            _marioPosXpZpButton = marioPosGroupBox.Controls["buttonMarioPosXpZp"] as Button;
+            _marioPosXpZnButton = marioPosGroupBox.Controls["buttonMarioPosXpZn"] as Button;
+            _marioPosXnZpButton = marioPosGroupBox.Controls["buttonMarioPosXnZp"] as Button;
+            _marioPosXnZnButton = marioPosGroupBox.Controls["buttonMarioPosXnZn"] as Button;
+            _marioPosYpButton = marioPosGroupBox.Controls["buttonMarioPosYp"] as Button;
+            _marioPosYnButton = marioPosGroupBox.Controls["buttonMarioPosYn"] as Button;
+            var marioPosRelativeCheckbox = marioPosGroupBox.Controls["checkBoxMarioPosRelative"] as CheckBox;
 
             var marioStatsGroupBox = marioControl.Controls["groupBoxMarioStats"] as GroupBox;
             _marioStatsYawTextbox = marioStatsGroupBox.Controls["textBoxMarioStatsYaw"] as TextBox;
@@ -73,17 +87,18 @@ namespace SM64_Diagnostic.Managers
             toggleHandsfree.Click += ToggleHandsfree_Click;
             toggleVisibility.Click += ToggleVisibility_Click;
 
-            marioPosXpButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 1, 0);
-            marioPosXnButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, -1, 0);
-            marioPosZpButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 0, 1);
-            marioPosZnButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 0, -1);
-            marioPosXpZpButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 1, 1);
-            marioPosXpZnButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 1, -1);
-            marioPosXnZpButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, -1, 1);
-            marioPosXnZnButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, -1, -1);
-            marioPosYpButton.Click += (sender, e) => marioPosYButton_Click(sender, e, 1);
-            marioPosYnButton.Click += (sender, e) => marioPosYButton_Click(sender, e, -1);
-            
+            _marioPosXpButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 1, 0);
+            _marioPosXnButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, -1, 0);
+            _marioPosZpButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 0, 1);
+            _marioPosZnButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 0, -1);
+            _marioPosXpZpButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 1, 1);
+            _marioPosXpZnButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, 1, -1);
+            _marioPosXnZpButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, -1, 1);
+            _marioPosXnZnButton.Click += (sender, e) => marioPosXZButton_Click(sender, e, -1, -1);
+            _marioPosYpButton.Click += (sender, e) => marioPosYButton_Click(sender, e, 1);
+            _marioPosYnButton.Click += (sender, e) => marioPosYButton_Click(sender, e, -1);
+            marioPosRelativeCheckbox.CheckedChanged += marioPosRelativeCheckbox_CheckedChanged;
+
             marioYawPButton.Click += (sender, e) => marioStatsYawButton_Click(sender, e, 1);
             marioYawNButton.Click += (sender, e) => marioStatsYawButton_Click(sender, e, -1);
             marioHspdPButton.Click += (sender, e) => marioStatsHspdButton_Click(sender, e, 1);
@@ -223,7 +238,8 @@ namespace SM64_Diagnostic.Managers
             if (!float.TryParse(_marioPosXZTextbox.Text, out xzValue))
                 return;
 
-            MarioActions.MoveMario(_stream, xSign * xzValue, 0, zSign * xzValue);
+            ushort marioYaw = _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+            MarioActions.MoveMario(_stream, xSign * xzValue, 0, zSign * xzValue, _marioPosRelative, marioYaw);
         }
 
         private void marioPosYButton_Click(object sender, EventArgs e, int ySign)
@@ -232,7 +248,39 @@ namespace SM64_Diagnostic.Managers
             if (!float.TryParse(_marioPosYTextbox.Text, out yValue))
                 return;
 
-            MarioActions.MoveMario(_stream, 0, ySign * yValue, 0);
+            ushort marioYaw = _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+            MarioActions.MoveMario(_stream, 0, ySign * yValue, 0, _marioPosRelative, marioYaw);
+        }
+
+        private void marioPosRelativeCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            _marioPosRelative = (sender as CheckBox).Checked;
+            if (_marioPosRelative)
+            {
+                _marioPosXpButton.Text = "R";
+                _marioPosXnButton.Text = "L";
+                _marioPosZpButton.Text = "B";
+                _marioPosZnButton.Text = "F";
+                _marioPosXpZpButton.Text = "BR";
+                _marioPosXpZnButton.Text = "FR";
+                _marioPosXnZpButton.Text = "BL";
+                _marioPosXnZnButton.Text = "FR";
+                _marioPosYpButton.Text = "U";
+                _marioPosYnButton.Text = "D";
+            }
+            else
+            {
+                _marioPosXpButton.Text = "X+";
+                _marioPosXnButton.Text = "X-";
+                _marioPosZpButton.Text = "Z+";
+                _marioPosZnButton.Text = "Z-";
+                _marioPosXpZpButton.Text = "X+Z+";
+                _marioPosXpZnButton.Text = "X+Z-";
+                _marioPosXnZpButton.Text = "X-Z+";
+                _marioPosXnZnButton.Text = "X-Z-";
+                _marioPosYpButton.Text = "Y+";
+                _marioPosYnButton.Text = "Y-";
+            }
         }
 
         private void marioHOLPXZButton_Click(object sender, EventArgs e, int xSign, int zSign)

@@ -404,9 +404,10 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool MoveMario(ProcessStream stream, float xOffset, float yOffset, float zOffset)
+        public static bool MoveMario(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative, ushort relativeAngle)
         {
             handleScaling(ref xOffset, ref zOffset);
+            handleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
 
             var marioAddress = Config.Mario.StructAddress;
 
@@ -828,6 +829,15 @@ namespace SM64_Diagnostic.Utilities
             if (Config.ScaleDiagonalPositionControllerButtons)
             {
                 (xOffset, zOffset) = ((float, float))MoreMath.ScaleValues(xOffset, zOffset);
+            }
+        }
+
+        public static void handleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, ushort relativeAngle)
+        {
+            if (useRelative)
+            {
+                double thetaChange = relativeAngle - 32768;
+                (xOffset, _, zOffset) = ((float, float, float))MoreMath.OffsetSpherically(xOffset, 0, zOffset, 0, thetaChange, 0);
             }
         }
     }

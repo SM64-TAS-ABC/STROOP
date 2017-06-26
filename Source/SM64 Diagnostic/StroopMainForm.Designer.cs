@@ -314,6 +314,7 @@ namespace SM64_Diagnostic
             this.tabPageCamHack = new System.Windows.Forms.TabPage();
             this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.checkBoxScaleDiagonalPositionControllerButtons = new System.Windows.Forms.CheckBox();
             this.checkBoxUseOverlays = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
@@ -330,7 +331,7 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
-            this.checkBoxScaleDiagonalPositionControllerButtons = new System.Windows.Forms.CheckBox();
+            this.checkBoxMarioPosRelative = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -426,7 +427,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 99);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 100);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -514,7 +515,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 50);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 51);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -1520,6 +1521,7 @@ namespace SM64_Diagnostic
             // 
             // groupBoxMarioPos
             // 
+            this.groupBoxMarioPos.Controls.Add(this.checkBoxMarioPosRelative);
             this.groupBoxMarioPos.Controls.Add(this.textBoxMarioPosY);
             this.groupBoxMarioPos.Controls.Add(this.buttonMarioPosYp);
             this.groupBoxMarioPos.Controls.Add(this.buttonMarioPosYn);
@@ -3008,7 +3010,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(613, 543);
+            this.glControlMap.Size = new System.Drawing.Size(614, 543);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -3642,6 +3644,17 @@ namespace SM64_Diagnostic
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
             // 
+            // checkBoxScaleDiagonalPositionControllerButtons
+            // 
+            this.checkBoxScaleDiagonalPositionControllerButtons.AutoSize = true;
+            this.checkBoxScaleDiagonalPositionControllerButtons.Location = new System.Drawing.Point(3, 84);
+            this.checkBoxScaleDiagonalPositionControllerButtons.Name = "checkBoxScaleDiagonalPositionControllerButtons";
+            this.checkBoxScaleDiagonalPositionControllerButtons.Size = new System.Drawing.Size(224, 17);
+            this.checkBoxScaleDiagonalPositionControllerButtons.TabIndex = 8;
+            this.checkBoxScaleDiagonalPositionControllerButtons.Text = "Scale Diagonal Position Controller Buttons";
+            this.checkBoxScaleDiagonalPositionControllerButtons.UseVisualStyleBackColor = true;
+            this.checkBoxScaleDiagonalPositionControllerButtons.CheckedChanged += new System.EventHandler(this.checkBoxScaleDiagonalPositionControllerButtons_CheckedChanged);
+            // 
             // checkBoxUseOverlays
             // 
             this.checkBoxUseOverlays.AutoSize = true;
@@ -3823,16 +3836,15 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
-            // checkBoxScaleDiagonalPositionControllerButtons
+            // checkBoxMarioPosRelative
             // 
-            this.checkBoxScaleDiagonalPositionControllerButtons.AutoSize = true;
-            this.checkBoxScaleDiagonalPositionControllerButtons.Location = new System.Drawing.Point(3, 84);
-            this.checkBoxScaleDiagonalPositionControllerButtons.Name = "checkBoxScaleDiagonalPositionControllerButtons";
-            this.checkBoxScaleDiagonalPositionControllerButtons.Size = new System.Drawing.Size(224, 17);
-            this.checkBoxScaleDiagonalPositionControllerButtons.TabIndex = 8;
-            this.checkBoxScaleDiagonalPositionControllerButtons.Text = "Scale Diagonal Position Controller Buttons";
-            this.checkBoxScaleDiagonalPositionControllerButtons.UseVisualStyleBackColor = true;
-            this.checkBoxScaleDiagonalPositionControllerButtons.CheckedChanged += new System.EventHandler(this.checkBoxScaleDiagonalPositionControllerButtons_CheckedChanged);
+            this.checkBoxMarioPosRelative.AutoSize = true;
+            this.checkBoxMarioPosRelative.Location = new System.Drawing.Point(120, 0);
+            this.checkBoxMarioPosRelative.Name = "checkBoxMarioPosRelative";
+            this.checkBoxMarioPosRelative.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxMarioPosRelative.TabIndex = 36;
+            this.checkBoxMarioPosRelative.Text = "Relative";
+            this.checkBoxMarioPosRelative.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -4247,6 +4259,7 @@ namespace SM64_Diagnostic
         private Button buttonCameraSphericalPosThetaN;
         private Button buttonCameraSphericalPosThetaNPhiN;
         private CheckBox checkBoxScaleDiagonalPositionControllerButtons;
+        private CheckBox checkBoxMarioPosRelative;
     }
 }
 
