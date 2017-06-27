@@ -19,7 +19,6 @@ namespace SM64_Diagnostic.Managers
         TextBox _trianglePosYTextbox;
         TextBox _triangleNormalTextbox;
         uint _triangleAddress = 0;
-        bool _addressChangedByUser = true;
         bool _useMisalignmentOffset = false;
 
         int _closestVertex = 0;
@@ -46,9 +45,7 @@ namespace SM64_Diagnostic.Managers
                     }
                 }
 
-                _addressChangedByUser = false;
                 _addressBox.Text = String.Format("0x{0:X8}", _triangleAddress);
-                _addressChangedByUser = true;
             }
         }
 
@@ -85,9 +82,7 @@ namespace SM64_Diagnostic.Managers
             : base(stream, triangleWatchVars, tabControl.Controls["NoTearFlowLayoutPanelTriangles"] as NoTearFlowLayoutPanel)
         {
             _addressBox = tabControl.Controls["maskedTextBoxOtherTriangle"] as MaskedTextBox;
-            _addressBox.LostFocus += AddressBox_LostFocus;
             _addressBox.KeyDown += AddressBox_KeyDown;
-            _addressBox.TextChanged += AddressBox_TextChanged;
             (tabControl.Controls["radioButtonTriFloor"] as RadioButton).CheckedChanged 
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Floor);
             (tabControl.Controls["radioButtonTriWall"] as RadioButton).CheckedChanged 
@@ -366,25 +361,12 @@ namespace SM64_Diagnostic.Managers
             Mode = mode;
         }
 
-        private void AddressBox_TextChanged(object sender, EventArgs e)
-        {
-            if (!_addressChangedByUser)
-                return;
-
-            (_addressBox.Parent.Controls["radioButtonTriOther"] as RadioButton).Checked = true;
-        }
-
         private void AddressBox_KeyDown(object sender, KeyEventArgs e)
         {
             // On "Enter" key press
             if (e.KeyData != Keys.Enter)
                 return;
 
-            _addressBox.Parent.Focus();
-        }
-
-        private void AddressBox_LostFocus(object sender, EventArgs e)
-        {
             uint newAddress;
             if (!ParsingUtilities.TryParseHex(_addressBox.Text, out newAddress))
             {
