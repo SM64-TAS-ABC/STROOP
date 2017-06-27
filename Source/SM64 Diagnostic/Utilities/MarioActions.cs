@@ -422,9 +422,11 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool MoveMario(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative, ushort relativeAngle)
+        public static bool MoveMario(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             handleScaling(ref xOffset, ref zOffset);
+
+            ushort relativeAngle = stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
             handleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
 
             var marioAddress = Config.Mario.StructAddress;
@@ -449,9 +451,11 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool MoveHOLP(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative, ushort relativeAngle)
+        public static bool MoveHOLP(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             handleScaling(ref xOffset, ref zOffset);
+
+            ushort relativeAngle = stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
             handleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
 
             var marioAddress = Config.Mario.StructAddress;

@@ -50,8 +50,7 @@ namespace SM64_Diagnostic.Managers
                         xOffset,
                         yOffset,
                         zOffset,
-                        useRelative,
-                        _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset));
+                        useRelative);
                 });
 
             var marioStatsGroupBox = marioControl.Controls["groupBoxMarioStats"] as GroupBox;
@@ -103,8 +102,7 @@ namespace SM64_Diagnostic.Managers
                         xOffset,
                         yOffset,
                         zOffset,
-                        useRelative,
-                        _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset));
+                        useRelative);
                 });
         }
 
