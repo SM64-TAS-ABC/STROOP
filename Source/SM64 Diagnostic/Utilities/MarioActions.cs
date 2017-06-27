@@ -128,9 +128,12 @@ namespace SM64_Diagnostic.Utilities
         public static bool RotateObjects(ProcessStream stream, List<uint> objAddresses,
             int yawOffset, int pitchOffset, int rollOffset)
         {
-            stream.Suspend();
+            if (objAddresses.Count == 0)
+                return false;
 
             bool success = true;
+            stream.Suspend();
+
             foreach (var objAddress in objAddresses)
             {
                 ushort yawFacing, pitchFacing, rollFacing, yawMoving, pitchMoving, rollMoving;
@@ -155,8 +158,8 @@ namespace SM64_Diagnostic.Utilities
                 success &= stream.SetValue(pitchMoving, objAddress + Config.ObjectSlots.PitchMovingOffset);
                 success &= stream.SetValue(rollMoving, objAddress + Config.ObjectSlots.RollMovingOffset);
             }
+
             stream.Resume();
-            
             return success;
         }
 

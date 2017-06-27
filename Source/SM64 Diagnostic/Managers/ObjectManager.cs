@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
+using SM64Diagnostic.Controls;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -223,12 +224,30 @@ namespace SM64_Diagnostic.Managers
             objectGui.PosYpButton.Click += (sender, e) => PosYButton_Click(sender, e, 1);
 
             // Register angle controller buttons
-            objectGui.AngleYawPButton.Click += (sender, e) => AngleYawButton_Click(sender, e, +1);
-            objectGui.AngleYawNButton.Click += (sender, e) => AngleYawButton_Click(sender, e, -1);
-            objectGui.AnglePitchPButton.Click += (sender, e) => AnglePitchButton_Click(sender, e, +1);
-            objectGui.AnglePitchNButton.Click += (sender, e) => AnglePitchButton_Click(sender, e, -1);
-            objectGui.AngleRollPButton.Click += (sender, e) => AngleRollButton_Click(sender, e, +1);
-            objectGui.AngleRollNButton.Click += (sender, e) => AngleRollButton_Click(sender, e, -1);
+            ScalarController.initialize(
+                objectGui.AngleYawNButton,
+                objectGui.AngleYawPButton,
+                objectGui.AngleYawTextbox,
+                (float yawValue) =>
+                {
+                    MarioActions.RotateObjects(stream, _currentAddresses, (int)yawValue, 0, 0);
+                });
+            ScalarController.initialize(
+                objectGui.AnglePitchNButton,
+                objectGui.AnglePitchPButton,
+                objectGui.AnglePitchTextbox,
+                (float pitchValue) =>
+                {
+                    MarioActions.RotateObjects(stream, _currentAddresses, 0, (int)pitchValue, 0);
+                });
+            ScalarController.initialize(
+                objectGui.AngleRollNButton,
+                objectGui.AngleRollPButton,
+                objectGui.AngleRollTextbox,
+                (float rollValue) =>
+                {
+                    MarioActions.RotateObjects(stream, _currentAddresses, 0, 0, (int)rollValue);
+                });
 
             // Register position controller buttons
             objectGui.HomeXnZnButton.Click += (sender, e) => HomeXZButton_Click(sender, e, -1, -1);
@@ -265,42 +284,6 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             MarioActions.MoveObjects(_stream, CurrentAddresses, xSign * xzValue, 0, zSign * xzValue);
-        }
-
-        private void AngleYawButton_Click(object sender, EventArgs e, int sign)
-        {
-            if (_currentAddresses.Count == 0)
-                return;
-
-            int yaw;
-            if (!int.TryParse(_objGui.AngleYawTextbox.Text, out yaw))
-                return;
-
-            MarioActions.RotateObjects(_stream, CurrentAddresses, sign * yaw, 0, 0);
-        }
-
-        private void AnglePitchButton_Click(object sender, EventArgs e, int sign)
-        {
-            if (_currentAddresses.Count == 0)
-                return;
-
-            int pitch;
-            if (!int.TryParse(_objGui.AnglePitchTextbox.Text, out pitch))
-                return;
-
-            MarioActions.RotateObjects(_stream, CurrentAddresses, 0, sign * pitch, 0);
-        }
-
-        private void AngleRollButton_Click(object sender, EventArgs e, int sign)
-        {
-            if (_currentAddresses.Count == 0)
-                return;
-
-            int roll;
-            if (!int.TryParse(_objGui.AngleRollTextbox.Text, out roll))
-                return;
-
-            MarioActions.RotateObjects(_stream, CurrentAddresses, 0, 0, sign * roll);
         }
 
         private void HomeYButton_Click(object sender, EventArgs e, int ySign)
@@ -369,7 +352,6 @@ namespace SM64_Diagnostic.Managers
 
             MarioActions.GoToObjects(_stream, CurrentAddresses);
         }
-
 
         private void GoToHomeButton_Click(object sender, EventArgs e)
         {
