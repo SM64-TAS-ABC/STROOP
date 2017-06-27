@@ -17,17 +17,16 @@ namespace SM64_Diagnostic.Managers
     {
         MapManager _mapManager;
 
-        TextBox _marioStatsYawTextbox;
-        TextBox _marioStatsHspdTextbox;
-        TextBox _marioStatsVspdTextbox;
-
         public MarioManager(ProcessStream stream, List<WatchVariable> marioData, Control marioControl, NoTearFlowLayoutPanel variableTable, MapManager mapManager)
             : base(stream, marioData, variableTable, Config.Mario.StructAddress)
         {
             _mapManager = mapManager;
 
             var toggleHandsfree = marioControl.Controls["buttonMarioToggleHandsfree"] as Button;
+            toggleHandsfree.Click += (sender, e) => MarioActions.ToggleHandsfree(_stream);
+
             var toggleVisibility = marioControl.Controls["buttonMarioVisibility"] as Button;
+            toggleVisibility.Click += (sender, e) => MarioActions.ToggleVisibility(_stream);
 
             var marioPosGroupBox = marioControl.Controls["groupBoxMarioPos"] as GroupBox;
             PositionController.initialize(
@@ -44,7 +43,7 @@ namespace SM64_Diagnostic.Managers
                 marioPosGroupBox.Controls["textBoxMarioPosXZ"] as TextBox,
                 marioPosGroupBox.Controls["textBoxMarioPosY"] as TextBox,
                 marioPosGroupBox.Controls["checkBoxMarioPosRelative"] as CheckBox,
-                (xOffset, yOffset, zOffset, useRelative) =>
+                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
                 {
                     MarioActions.MoveMario(
                         _stream,
@@ -56,15 +55,31 @@ namespace SM64_Diagnostic.Managers
                 });
 
             var marioStatsGroupBox = marioControl.Controls["groupBoxMarioStats"] as GroupBox;
-            _marioStatsYawTextbox = marioStatsGroupBox.Controls["textBoxMarioStatsYaw"] as TextBox;
-            _marioStatsHspdTextbox = marioStatsGroupBox.Controls["textBoxMarioStatsHspd"] as TextBox;
-            _marioStatsVspdTextbox = marioStatsGroupBox.Controls["textBoxMarioStatsVspd"] as TextBox;
-            var marioYawPButton = marioStatsGroupBox.Controls["buttonMarioStatsYawP"] as Button;
-            var marioYawNButton = marioStatsGroupBox.Controls["buttonMarioStatsYawN"] as Button;
-            var marioHspdPButton = marioStatsGroupBox.Controls["buttonMarioStatsHspdP"] as Button;
-            var marioHspdNButton = marioStatsGroupBox.Controls["buttonMarioStatsHspdN"] as Button;
-            var marioVspdPButton = marioStatsGroupBox.Controls["buttonMarioStatsVspdP"] as Button;
-            var marioVspdNButton = marioStatsGroupBox.Controls["buttonMarioStatsVspdN"] as Button;
+            ScalarController.initialize(
+                marioStatsGroupBox.Controls["buttonMarioStatsYawN"] as Button,
+                marioStatsGroupBox.Controls["buttonMarioStatsYawP"] as Button,
+                marioStatsGroupBox.Controls["textBoxMarioStatsYaw"] as TextBox,
+                (float yawValue) =>
+                {
+                    MarioActions.MarioChangeYaw(_stream, (int)yawValue);
+                });
+            ScalarController.initialize(
+                marioStatsGroupBox.Controls["buttonMarioStatsHspdN"] as Button,
+                marioStatsGroupBox.Controls["buttonMarioStatsHspdP"] as Button,
+                marioStatsGroupBox.Controls["textBoxMarioStatsHspd"] as TextBox,
+                (float hspdValue) =>
+                {
+                    MarioActions.MarioChangeHspd(_stream, hspdValue);
+                });
+
+            ScalarController.initialize(
+                marioStatsGroupBox.Controls["buttonMarioStatsVspdN"] as Button,
+                marioStatsGroupBox.Controls["buttonMarioStatsVspdP"] as Button,
+                marioStatsGroupBox.Controls["textBoxMarioStatsVspd"] as TextBox,
+                (float vspdValue) =>
+                {
+                    MarioActions.MarioChangeVspd(_stream, vspdValue);
+                });
 
             var marioHOLPGroupBox = marioControl.Controls["groupBoxMarioHOLP"] as GroupBox;
             PositionController.initialize(
@@ -81,7 +96,7 @@ namespace SM64_Diagnostic.Managers
                 marioHOLPGroupBox.Controls["textBoxMarioHOLPXZ"] as TextBox,
                 marioHOLPGroupBox.Controls["textBoxMarioHOLPY"] as TextBox,
                 marioHOLPGroupBox.Controls["checkBoxMarioHOLPRelative"] as CheckBox,
-                (xOffset, yOffset, zOffset, useRelative) =>
+                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
                 {
                     MarioActions.MoveHOLP(
                         _stream,
@@ -91,16 +106,6 @@ namespace SM64_Diagnostic.Managers
                         useRelative,
                         _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset));
                 });
-
-            toggleHandsfree.Click += ToggleHandsfree_Click;
-            toggleVisibility.Click += ToggleVisibility_Click;
-
-            marioYawPButton.Click += (sender, e) => marioStatsYawButton_Click(sender, e, 1);
-            marioYawNButton.Click += (sender, e) => marioStatsYawButton_Click(sender, e, -1);
-            marioHspdPButton.Click += (sender, e) => marioStatsHspdButton_Click(sender, e, 1);
-            marioHspdNButton.Click += (sender, e) => marioStatsHspdButton_Click(sender, e, -1);
-            marioVspdPButton.Click += (sender, e) => marioStatsVspdButton_Click(sender, e, 1);
-            marioVspdNButton.Click += (sender, e) => marioStatsVspdButton_Click(sender, e, -1);
         }
 
         protected override void InitializeSpecialVariables()
@@ -207,43 +212,6 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private void ToggleHandsfree_Click(object sender, EventArgs e)
-        {
-            MarioActions.ToggleHandsfree(_stream);
-        }
-
-        private void ToggleVisibility_Click(object sender, EventArgs e)
-        {
-            MarioActions.ToggleVisibility(_stream);
-        }
-
-        private void marioStatsYawButton_Click(object sender, EventArgs e, int sign)
-        {
-            int yaw;
-            if (!int.TryParse(_marioStatsYawTextbox.Text, out yaw))
-                return;
-
-            MarioActions.MarioChangeYaw(_stream, sign * yaw);
-        }
-
-        private void marioStatsHspdButton_Click(object sender, EventArgs e, int sign)
-        {
-            float hspd;
-            if (!float.TryParse(_marioStatsHspdTextbox.Text, out hspd))
-                return;
-
-            MarioActions.MarioChangeHspd(_stream, sign * hspd);
-        }
-
-        private void marioStatsVspdButton_Click(object sender, EventArgs e, int sign)
-        {
-            float vspd;
-            if (!float.TryParse(_marioStatsVspdTextbox.Text, out vspd))
-                return;
-
-            MarioActions.MarioChangeVspd(_stream, sign * vspd);
-        }
-
         public override void Update(bool updateView)
         {
             // Get Mario position and rotation
@@ -316,44 +284,5 @@ namespace SM64_Diagnostic.Managers
             base.Update();
             ProcessSpecialVars();
         }
-
-        // FOR DEBUGGING
-        /*
-        private void marioStatsVspdButton_Click(object sender, EventArgs e, int sign)
-        {
-            float param1;
-            if (!float.TryParse(_marioStatsYawTextbox.Text, out param1))
-                return;
-
-            float param2;
-            if (!float.TryParse(_marioStatsHspdTextbox.Text, out param2))
-                return;
-
-            float param3;
-            if (!float.TryParse(_marioStatsVspdTextbox.Text, out param3))
-                return;
-
-            float param4;
-            if (!float.TryParse(_marioPosXZTextbox.Text, out param4))
-                return;
-
-            float param5;
-            if (!float.TryParse(_marioPosYTextbox.Text, out param5))
-                return;
-
-            float param6;
-            if (!float.TryParse(_marioHOLPXZTextbox.Text, out param6))
-                return;
-
-            System.Console.WriteLine("(x,y,z)=" + (param1, param2, param3) + " | (r,t,p)=" + MoreMath.EulerToSphericalRadians(param1, param2, param3));
-            System.Console.WriteLine("(r,t,p)=" + (param1, param2, param3) + " | (x,y,z)=" + MoreMath.SphericalToEulerRadians(param1, param2, param3));
-            System.Console.WriteLine("(x,y,z)=" + (param1, param2, param3) + " | (r,t,p)=" + MoreMath.EulerToSphericalAngleUnits(param1, param2, param3));
-            System.Console.WriteLine("(r,t,p)=" + (param1, param2, param3) + " | (x,y,z)=" + MoreMath.SphericalToEulerAngleUnits(param1, param2, param3));
-            System.Console.WriteLine("radians=" + param3 + " | angleUnits=" + MoreMath.RadiansToAngleUnits(param3));
-            System.Console.WriteLine("angleUnits=" + param3 + " | radians=" + MoreMath.AngleUnitsToRadians(param3));
-            System.Console.WriteLine("(x,y,z)=" + (param1, param2, param3) + " | (dr,dt,dp)=" + (param6, param4, param5) + " | (x,y,z)=" + MoreMath.OffsetSpherically(param1, param2, param3, param6, param4, param5));
-            System.Console.WriteLine();
-        }
-        */
     }
 }
