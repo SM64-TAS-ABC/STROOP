@@ -161,6 +161,7 @@ namespace SM64_Diagnostic
                 PosYpButton = buttonObjPosYp,
                 PosXZTextbox = textBoxObjPosXZ,
                 PosYTextbox = textBoxObjPosY,
+                PosRelativeCheckbox = checkBoxObjPosRelative,
 
                 // Angle controller
                 AngleYawPButton = buttonObjAngleYawP,
@@ -186,6 +187,7 @@ namespace SM64_Diagnostic
                 HomeYpButton = buttonObjHomeYp,
                 HomeXZTextbox = textBoxObjHomeXZ,
                 HomeYTextbox = textBoxObjHomeY,
+                HomeRelativeCheckbox = checkBoxObjHomeRelative
             };
             currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
 

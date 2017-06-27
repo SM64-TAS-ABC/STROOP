@@ -70,58 +70,74 @@ namespace SM64_Diagnostic.Utilities
         }
 
         public static bool MoveObjects(ProcessStream stream, List<uint> objAddresses,
-            float xOffset, float yOffset, float zOffset)
+            float xOffset, float yOffset, float zOffset, bool useRelative)
         {
+            if (objAddresses.Count == 0)
+                return false;
+
             handleScaling(ref xOffset, ref zOffset);
-            
-            stream.Suspend();
 
             bool success = true;
+            stream.Suspend();
+
             foreach (var objAddress in objAddresses)
             {
+                float currentXOffset = xOffset;
+                float currentZOffset = zOffset;
+                ushort relativeAngle = stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
+                handleRelativeAngle(ref currentXOffset, ref currentZOffset, useRelative, relativeAngle);
+
                 float x, y, z;
                 x = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
                 y = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
                 z = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
 
-                x += xOffset;
+                x += currentXOffset;
                 y += yOffset;
-                z += zOffset;
+                z += currentZOffset;
 
                 success &= stream.SetValue(x, objAddress + Config.ObjectSlots.ObjectXOffset);
                 success &= stream.SetValue(y, objAddress + Config.ObjectSlots.ObjectYOffset);
                 success &= stream.SetValue(z, objAddress + Config.ObjectSlots.ObjectZOffset);
             }
-            stream.Resume();
 
+            stream.Resume();
             return success;
         }
 
         public static bool MoveObjectHomes(ProcessStream stream, List<uint> objAddresses,
-            float xOffset, float yOffset, float zOffset)
+            float xOffset, float yOffset, float zOffset, bool useRelative)
         {
+            if (objAddresses.Count == 0)
+                return false;
+
             handleScaling(ref xOffset, ref zOffset);
 
+            bool success = true;
             stream.Suspend();
 
-            bool success = true;
             foreach (var objAddress in objAddresses)
             {
-                float homeX, homeY, homeZ;
-                homeX = stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
-                homeY = stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
-                homeZ = stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
+                float currentXOffset = xOffset;
+                float currentZOffset = zOffset;
+                ushort relativeAngle = stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
+                handleRelativeAngle(ref currentXOffset, ref currentZOffset, useRelative, relativeAngle);
 
-                homeX += xOffset;
-                homeY += yOffset;
-                homeZ += zOffset;
+                float x, y, z;
+                x = stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
+                y = stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                z = stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
 
-                success &= stream.SetValue(homeX, objAddress + Config.ObjectSlots.HomeXOffset);
-                success &= stream.SetValue(homeY, objAddress + Config.ObjectSlots.HomeYOffset);
-                success &= stream.SetValue(homeZ, objAddress + Config.ObjectSlots.HomeZOffset);
+                x += currentXOffset;
+                y += yOffset;
+                z += currentZOffset;
+
+                success &= stream.SetValue(x, objAddress + Config.ObjectSlots.HomeXOffset);
+                success &= stream.SetValue(y, objAddress + Config.ObjectSlots.HomeYOffset);
+                success &= stream.SetValue(z, objAddress + Config.ObjectSlots.HomeZOffset);
             }
-            stream.Resume();
 
+            stream.Resume();
             return success;
         }
 
@@ -168,8 +184,6 @@ namespace SM64_Diagnostic.Utilities
             // Move mario to object
             var marioAddress = Config.Mario.StructAddress;
 
-            stream.Suspend();
-
             // Get object position
             float x, y, z;
             x = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeXOffset));
@@ -181,12 +195,13 @@ namespace SM64_Diagnostic.Utilities
 
             // Move mario to object
             bool success = true;
+            stream.Suspend();
+
             success &= stream.SetValue(x, marioAddress + Config.Mario.XOffset);
             success &= stream.SetValue(y, marioAddress + Config.Mario.YOffset);
             success &= stream.SetValue(z, marioAddress + Config.Mario.ZOffset);
 
             stream.Resume();
-
             return success;
         }
 

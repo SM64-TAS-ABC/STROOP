@@ -211,19 +211,31 @@ namespace SM64_Diagnostic.Managers
             objectGui.GoToHomeButton.Click += GoToHomeButton_Click;
             objectGui.RetrieveHomeButton.Click += RetrieveHomeButton_Click;
 
-            // Register position controller buttons
-            objectGui.PosXnZnButton.Click += (sender, e) => PosXZButton_Click(sender, e, -1, -1);
-            objectGui.PosXnButton.Click += (sender, e) => PosXZButton_Click(sender, e, -1, 0);
-            objectGui.PosXnZpButton.Click += (sender, e) => PosXZButton_Click(sender, e, -1, 1);
-            objectGui.PosZnButton.Click += (sender, e) => PosXZButton_Click(sender, e, 0, -1);
-            objectGui.PosZpButton.Click += (sender, e) => PosXZButton_Click(sender, e, 0, 1);
-            objectGui.PosXpZnButton.Click += (sender, e) => PosXZButton_Click(sender, e, 1, -1);
-            objectGui.PosXpButton.Click += (sender, e) => PosXZButton_Click(sender, e, 1, 0);
-            objectGui.PosXpZpButton.Click += (sender, e) => PosXZButton_Click(sender, e, 1, 1);
-            objectGui.PosYnButton.Click += (sender, e) =>  PosYButton_Click(sender, e, -1);
-            objectGui.PosYpButton.Click += (sender, e) => PosYButton_Click(sender, e, 1);
+            PositionController.initialize(
+                objectGui.PosXnButton,
+                objectGui.PosXpButton,
+                objectGui.PosZnButton,
+                objectGui.PosZpButton,
+                objectGui.PosXnZnButton,
+                objectGui.PosXnZpButton,
+                objectGui.PosXpZnButton,
+                objectGui.PosXpZpButton,
+                objectGui.PosYpButton,
+                objectGui.PosYnButton,
+                objectGui.PosXZTextbox,
+                objectGui.PosYTextbox,
+                objectGui.PosRelativeCheckbox,
+                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
+                {
+                    MarioActions.MoveObjects(
+                        _stream,
+                        _currentAddresses,
+                        xOffset,
+                        yOffset,
+                        zOffset,
+                        useRelative);
+                });
 
-            // Register angle controller buttons
             ScalarController.initialize(
                 objectGui.AngleYawNButton,
                 objectGui.AngleYawPButton,
@@ -249,65 +261,30 @@ namespace SM64_Diagnostic.Managers
                     MarioActions.RotateObjects(stream, _currentAddresses, 0, 0, (int)rollValue);
                 });
 
-            // Register position controller buttons
-            objectGui.HomeXnZnButton.Click += (sender, e) => HomeXZButton_Click(sender, e, -1, -1);
-            objectGui.HomeXnButton.Click += (sender, e) => HomeXZButton_Click(sender, e, -1, 0);
-            objectGui.HomeXnZpButton.Click += (sender, e) => HomeXZButton_Click(sender, e, -1, 1);
-            objectGui.HomeZnButton.Click += (sender, e) => HomeXZButton_Click(sender, e, 0, -1);
-            objectGui.HomeZpButton.Click += (sender, e) => HomeXZButton_Click(sender, e, 0, 1);
-            objectGui.HomeXpZnButton.Click += (sender, e) => HomeXZButton_Click(sender, e, 1, -1);
-            objectGui.HomeXpButton.Click += (sender, e) => HomeXZButton_Click(sender, e, 1, 0);
-            objectGui.HomeXpZpButton.Click += (sender, e) => HomeXZButton_Click(sender, e, 1, 1);
-            objectGui.HomeYnButton.Click += (sender, e) => HomeYButton_Click(sender, e, -1);
-            objectGui.HomeYpButton.Click += (sender, e) => HomeYButton_Click(sender, e, 1);
-        }
-
-        private void PosYButton_Click(object sender, EventArgs e, int ySign)
-        {
-            if (_currentAddresses.Count == 0)
-                return;
-
-            float yValue;
-            if (!float.TryParse(_objGui.PosYTextbox.Text, out yValue))
-                return;
-
-            MarioActions.MoveObjects(_stream, CurrentAddresses, 0, ySign * yValue, 0);
-        }
-
-        private void PosXZButton_Click(object sender, EventArgs e, int xSign, int zSign)
-        {
-            if (_currentAddresses.Count == 0)
-                return;
-
-            float xzValue;
-            if (!float.TryParse(_objGui.PosXZTextbox.Text, out xzValue))
-                return;
-
-            MarioActions.MoveObjects(_stream, CurrentAddresses, xSign * xzValue, 0, zSign * xzValue);
-        }
-
-        private void HomeYButton_Click(object sender, EventArgs e, int ySign)
-        {
-            if (_currentAddresses.Count == 0)
-                return;
-
-            float yValue;
-            if (!float.TryParse(_objGui.HomeYTextbox.Text, out yValue))
-                return;
-
-            MarioActions.MoveObjectHomes(_stream, CurrentAddresses, 0, ySign * yValue, 0);
-        }
-
-        private void HomeXZButton_Click(object sender, EventArgs e, int xSign, int zSign)
-        {
-            if (_currentAddresses.Count == 0)
-                return;
-
-            float xzValue;
-            if (!float.TryParse(_objGui.HomeXZTextbox.Text, out xzValue))
-                return;
-
-            MarioActions.MoveObjectHomes(_stream, CurrentAddresses, xSign * xzValue, 0, zSign * xzValue);
+            PositionController.initialize(
+                objectGui.HomeXnButton,
+                objectGui.HomeXpButton,
+                objectGui.HomeZnButton,
+                objectGui.HomeZpButton,
+                objectGui.HomeXnZnButton,
+                objectGui.HomeXnZpButton,
+                objectGui.HomeXpZnButton,
+                objectGui.HomeXpZpButton,
+                objectGui.HomeYpButton,
+                objectGui.HomeYnButton,
+                objectGui.HomeXZTextbox,
+                objectGui.HomeYTextbox,
+                objectGui.HomeRelativeCheckbox,
+                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
+                {
+                    MarioActions.MoveObjectHomes(
+                        _stream,
+                        _currentAddresses,
+                        xOffset,
+                        yOffset,
+                        zOffset,
+                        useRelative);
+                });
         }
 
         private void AddressChanged()

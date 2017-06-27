@@ -40,6 +40,7 @@ namespace SM64_Diagnostic.Structs
         public Button PosYpButton;
         public TextBox PosXZTextbox;
         public TextBox PosYTextbox;
+        public CheckBox PosRelativeCheckbox;
 
         public Button AngleYawPButton;
         public Button AngleYawNButton;
@@ -63,5 +64,6 @@ namespace SM64_Diagnostic.Structs
         public Button HomeYpButton;
         public TextBox HomeXZTextbox;
         public TextBox HomeYTextbox;
+        public CheckBox HomeRelativeCheckbox;
     }
 }
