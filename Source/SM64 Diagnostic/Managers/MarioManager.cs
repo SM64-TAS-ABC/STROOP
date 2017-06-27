@@ -9,6 +9,7 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
+using SM64Diagnostic.Controls;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -29,31 +30,30 @@ namespace SM64_Diagnostic.Managers
             var toggleVisibility = marioControl.Controls["buttonMarioVisibility"] as Button;
 
             var marioPosGroupBox = marioControl.Controls["groupBoxMarioPos"] as GroupBox;
-            PositionController positionControllerMario =
-                new PositionController(
-                    marioPosGroupBox.Controls["buttonMarioPosXn"] as Button,
-                    marioPosGroupBox.Controls["buttonMarioPosXp"] as Button,
-                    marioPosGroupBox.Controls["buttonMarioPosZn"] as Button,
-                    marioPosGroupBox.Controls["buttonMarioPosZp"] as Button,
-                    marioPosGroupBox.Controls["buttonMarioPosXnZn"] as Button,
-                    marioPosGroupBox.Controls["buttonMarioPosXnZp"] as Button,
-                    marioPosGroupBox.Controls["buttonMarioPosXpZn"] as Button,
-                    marioPosGroupBox.Controls["buttonMarioPosXpZp"] as Button,
-                    marioPosGroupBox.Controls["buttonMarioPosYp"] as Button,
-                    marioPosGroupBox.Controls["buttonMarioPosYn"] as Button,
-                    marioPosGroupBox.Controls["textBoxMarioPosXZ"] as TextBox,
-                    marioPosGroupBox.Controls["textBoxMarioPosY"] as TextBox,
-                    marioPosGroupBox.Controls["checkBoxMarioPosRelative"] as CheckBox,
-                    (xOffset, yOffset, zOffset, useRelative) =>
-                    {
-                      MarioActions.MoveMario(
-                          _stream,
-                          xOffset,
-                          yOffset,
-                          zOffset,
-                          useRelative,
-                          _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset));
-                    });
+            PositionController.initialize(
+                marioPosGroupBox.Controls["buttonMarioPosXn"] as Button,
+                marioPosGroupBox.Controls["buttonMarioPosXp"] as Button,
+                marioPosGroupBox.Controls["buttonMarioPosZn"] as Button,
+                marioPosGroupBox.Controls["buttonMarioPosZp"] as Button,
+                marioPosGroupBox.Controls["buttonMarioPosXnZn"] as Button,
+                marioPosGroupBox.Controls["buttonMarioPosXnZp"] as Button,
+                marioPosGroupBox.Controls["buttonMarioPosXpZn"] as Button,
+                marioPosGroupBox.Controls["buttonMarioPosXpZp"] as Button,
+                marioPosGroupBox.Controls["buttonMarioPosYp"] as Button,
+                marioPosGroupBox.Controls["buttonMarioPosYn"] as Button,
+                marioPosGroupBox.Controls["textBoxMarioPosXZ"] as TextBox,
+                marioPosGroupBox.Controls["textBoxMarioPosY"] as TextBox,
+                marioPosGroupBox.Controls["checkBoxMarioPosRelative"] as CheckBox,
+                (xOffset, yOffset, zOffset, useRelative) =>
+                {
+                    MarioActions.MoveMario(
+                        _stream,
+                        xOffset,
+                        yOffset,
+                        zOffset,
+                        useRelative,
+                        _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset));
+                });
 
             var marioStatsGroupBox = marioControl.Controls["groupBoxMarioStats"] as GroupBox;
             _marioStatsYawTextbox = marioStatsGroupBox.Controls["textBoxMarioStatsYaw"] as TextBox;
@@ -67,31 +67,30 @@ namespace SM64_Diagnostic.Managers
             var marioVspdNButton = marioStatsGroupBox.Controls["buttonMarioStatsVspdN"] as Button;
 
             var marioHOLPGroupBox = marioControl.Controls["groupBoxMarioHOLP"] as GroupBox;
-            PositionController positionControllerHOLP =
-                new PositionController(
-                    marioHOLPGroupBox.Controls["buttonMarioHOLPXn"] as Button,
-                    marioHOLPGroupBox.Controls["buttonMarioHOLPXp"] as Button,
-                    marioHOLPGroupBox.Controls["buttonMarioHOLPZn"] as Button,
-                    marioHOLPGroupBox.Controls["buttonMarioHOLPZp"] as Button,
-                    marioHOLPGroupBox.Controls["buttonMarioHOLPXnZn"] as Button,
-                    marioHOLPGroupBox.Controls["buttonMarioHOLPXnZp"] as Button,
-                    marioHOLPGroupBox.Controls["buttonMarioHOLPXpZn"] as Button,
-                    marioHOLPGroupBox.Controls["buttonMarioHOLPXpZp"] as Button,
-                    marioHOLPGroupBox.Controls["buttonMarioHOLPYp"] as Button,
-                    marioHOLPGroupBox.Controls["buttonMarioHOLPYn"] as Button,
-                    marioHOLPGroupBox.Controls["textBoxMarioHOLPXZ"] as TextBox,
-                    marioHOLPGroupBox.Controls["textBoxMarioHOLPY"] as TextBox,
-                    marioHOLPGroupBox.Controls["checkBoxMarioHOLPRelative"] as CheckBox,
-                    (xOffset, yOffset, zOffset, useRelative) =>
-                    {
-                        MarioActions.MoveHOLP(
-                            _stream,
-                            xOffset,
-                            yOffset,
-                            zOffset,
-                            useRelative,
-                            _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset));
-                    });
+            PositionController.initialize(
+                marioHOLPGroupBox.Controls["buttonMarioHOLPXn"] as Button,
+                marioHOLPGroupBox.Controls["buttonMarioHOLPXp"] as Button,
+                marioHOLPGroupBox.Controls["buttonMarioHOLPZn"] as Button,
+                marioHOLPGroupBox.Controls["buttonMarioHOLPZp"] as Button,
+                marioHOLPGroupBox.Controls["buttonMarioHOLPXnZn"] as Button,
+                marioHOLPGroupBox.Controls["buttonMarioHOLPXnZp"] as Button,
+                marioHOLPGroupBox.Controls["buttonMarioHOLPXpZn"] as Button,
+                marioHOLPGroupBox.Controls["buttonMarioHOLPXpZp"] as Button,
+                marioHOLPGroupBox.Controls["buttonMarioHOLPYp"] as Button,
+                marioHOLPGroupBox.Controls["buttonMarioHOLPYn"] as Button,
+                marioHOLPGroupBox.Controls["textBoxMarioHOLPXZ"] as TextBox,
+                marioHOLPGroupBox.Controls["textBoxMarioHOLPY"] as TextBox,
+                marioHOLPGroupBox.Controls["checkBoxMarioHOLPRelative"] as CheckBox,
+                (xOffset, yOffset, zOffset, useRelative) =>
+                {
+                    MarioActions.MoveHOLP(
+                        _stream,
+                        xOffset,
+                        yOffset,
+                        zOffset,
+                        useRelative,
+                        _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset));
+                });
 
             toggleHandsfree.Click += ToggleHandsfree_Click;
             toggleVisibility.Click += ToggleVisibility_Click;

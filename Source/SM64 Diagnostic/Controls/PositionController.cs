@@ -1,5 +1,4 @@
-﻿using SM64_Diagnostic.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,26 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.Controls
+namespace SM64Diagnostic.Controls
 {
-    public class PositionController
+    public static class PositionController
     {
-        protected Button _buttonSquareLeft;
-        protected Button _buttonSquareRight;
-        protected Button _buttonSquareTop;
-        protected Button _buttonSquareBottom;
-        protected Button _buttonSquareTopLeft;
-        protected Button _buttonSquareBottomLeft;
-        protected Button _buttonSquareTopRight;
-        protected Button _buttonSquareBottomRight;
-        protected Button _buttonLineTop;
-        protected Button _buttonLineBottom;
-        protected TextBox _textboxSquare;
-        protected TextBox _textboxLine;
-        protected CheckBox _checkbox;
-        protected Action<float, float, float, bool> _actionMove;
-
-        public PositionController(
+        public static void initialize(
             Button buttonSquareLeft,
             Button buttonSquareRight,
             Button buttonSquareTop,
@@ -42,85 +26,65 @@ namespace SM64_Diagnostic.Controls
             CheckBox checkbox,
             Action<float, float, float, bool> actionMove)
         {
-            this._buttonSquareLeft = buttonSquareLeft;
-            this._buttonSquareRight = buttonSquareRight;
-            this._buttonSquareTop = buttonSquareTop;
-            this._buttonSquareBottom = buttonSquareBottom;
-            this._buttonSquareTopLeft = buttonSquareTopLeft;
-            this._buttonSquareBottomLeft = buttonSquareBottomLeft;
-            this._buttonSquareTopRight = buttonSquareTopRight;
-            this._buttonSquareBottomRight = buttonSquareBottomRight;
-            this._buttonLineTop = buttonLineTop;
-            this._buttonLineBottom = buttonLineBottom;
-            this._textboxSquare = textboxSquare;
-            this._textboxLine = textboxLine;
-            this._checkbox = checkbox;
-            this._actionMove = actionMove;
-
-            initialize();
-        }
-
-        private void initialize()
-        {
-            _buttonSquareLeft.Click += (sender, e) => actionSquare(-1, 0);
-            _buttonSquareRight.Click += (sender, e) => actionSquare(1, 0);
-            _buttonSquareTop.Click += (sender, e) => actionSquare(0, -1);
-            _buttonSquareBottom.Click += (sender, e) => actionSquare(0, 1);
-            _buttonSquareTopLeft.Click += (sender, e) => actionSquare(-1, -1);
-            _buttonSquareBottomLeft.Click += (sender, e) => actionSquare(-1, 1);
-            _buttonSquareTopRight.Click += (sender, e) => actionSquare(1, -1);
-            _buttonSquareBottomRight.Click += (sender, e) => actionSquare(1, 1);
-            _buttonLineTop.Click += (sender, e) => actionLine(1);
-            _buttonLineBottom.Click += (sender, e) => actionLine(-1);
-            _checkbox.CheckedChanged += (sender, e) => actionCheckedChanged(sender);
-        }
-
-        private void actionSquare(int hSign, int vSign)
-        {
-            float value;
-            if (!float.TryParse(_textboxSquare.Text, out value))
-                return;
-
-            _actionMove(hSign * value, 0, vSign * value, _checkbox.Checked);
-        }
-
-        private void actionLine(int sign)
-        {
-            float value;
-            if (!float.TryParse(_textboxLine.Text, out value))
-                return;
-
-            _actionMove(0, sign * value, 0, _checkbox.Checked);
-        }
-
-        private void actionCheckedChanged(object sender)
-        {
-            if ((sender as CheckBox).Checked)
+            Action<int, int> actionSquare = (int hSign, int vSign) =>
             {
-                _buttonSquareLeft.Text = "L";
-                _buttonSquareRight.Text = "R";
-                _buttonSquareTop.Text = "F";
-                _buttonSquareBottom.Text = "B";
-                _buttonSquareTopLeft.Text = "FL";
-                _buttonSquareBottomLeft.Text = "BL";
-                _buttonSquareTopRight.Text = "FR";
-                _buttonSquareBottomRight.Text = "BR";
-                _buttonLineTop.Text = "U";
-                _buttonLineBottom.Text = "D";
-            }
-            else
+                float value;
+                if (!float.TryParse(textboxSquare.Text, out value)) return;
+                actionMove(hSign * value, 0, vSign * value, checkbox.Checked);
+            };
+
+            Action<int> actionLine = (int sign) =>
             {
-                _buttonSquareLeft.Text = "X-";
-                _buttonSquareRight.Text = "X+";
-                _buttonSquareTop.Text = "Z-";
-                _buttonSquareBottom.Text = "Z+";
-                _buttonSquareTopLeft.Text = "X-Z-";
-                _buttonSquareBottomLeft.Text = "X-Z+";
-                _buttonSquareTopRight.Text = "X+Z-";
-                _buttonSquareBottomRight.Text = "X+Z+";
-                _buttonLineTop.Text = "U";
-                _buttonLineBottom.Text = "D";
-            }
+                float value;
+                if (!float.TryParse(textboxLine.Text, out value)) return;
+                actionMove(0, sign * value, 0, checkbox.Checked);
+            };
+
+            Action setEulerNames = () =>
+            {
+                buttonSquareLeft.Text = "X-";
+                buttonSquareRight.Text = "X+";
+                buttonSquareTop.Text = "Z-";
+                buttonSquareBottom.Text = "Z+";
+                buttonSquareTopLeft.Text = "X-Z-";
+                buttonSquareBottomLeft.Text = "X-Z+";
+                buttonSquareTopRight.Text = "X+Z-";
+                buttonSquareBottomRight.Text = "X+Z+";
+                buttonLineTop.Text = "Y+";
+                buttonLineBottom.Text = "Y-";
+            };
+
+            Action setRelativeNames = () =>
+            {
+                buttonSquareLeft.Text = "L";
+                buttonSquareRight.Text = "R";
+                buttonSquareTop.Text = "F";
+                buttonSquareBottom.Text = "B";
+                buttonSquareTopLeft.Text = "FL";
+                buttonSquareBottomLeft.Text = "BL";
+                buttonSquareTopRight.Text = "FR";
+                buttonSquareBottomRight.Text = "BR";
+                buttonLineTop.Text = "U";
+                buttonLineBottom.Text = "D";
+            };
+
+            Action actionCheckedChanged = () =>
+            {
+                if (checkbox.Checked) setRelativeNames();
+                else setEulerNames();
+            };
+
+            buttonSquareLeft.Click += (sender, e) => actionSquare(-1, 0);
+            buttonSquareRight.Click += (sender, e) => actionSquare(1, 0);
+            buttonSquareTop.Click += (sender, e) => actionSquare(0, -1);
+            buttonSquareBottom.Click += (sender, e) => actionSquare(0, 1);
+            buttonSquareTopLeft.Click += (sender, e) => actionSquare(-1, -1);
+            buttonSquareBottomLeft.Click += (sender, e) => actionSquare(-1, 1);
+            buttonSquareTopRight.Click += (sender, e) => actionSquare(1, -1);
+            buttonSquareBottomRight.Click += (sender, e) => actionSquare(1, 1);
+            buttonLineTop.Click += (sender, e) => actionLine(1);
+            buttonLineBottom.Click += (sender, e) => actionLine(-1);
+            checkbox.CheckedChanged += (sender, e) => actionCheckedChanged();
         }
     }
 }
