@@ -103,6 +103,7 @@
     <Compile Include="Controls\BorderedTableLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\PositionController.cs" />
     <Compile Include="Controls\IDataContainer.cs" />
     <Compile Include="Controls\IntPictureBox.cs">
       <SubType>Component</SubType>
