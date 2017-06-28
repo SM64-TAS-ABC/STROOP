@@ -15,6 +15,9 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool GoToObjects(ProcessStream stream, List<uint> objAddresses)
         {
+            if (objAddresses.Count == 0)
+                return false;
+
             // Move mario to object
             var marioAddress = Config.Mario.StructAddress;
 
@@ -40,8 +43,11 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool RetreiveObjects(ProcessStream stream, List<uint> objAddresses)
+        public static bool RetrieveObjects(ProcessStream stream, List<uint> objAddresses)
         {
+            if (objAddresses.Count == 0)
+                return false;
+
             // Move object to Mario
             var marioAddress = Config.Mario.StructAddress;
 
@@ -181,6 +187,9 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool GoToObjectsHome(ProcessStream stream, List<uint> objAddresses)
         {
+            if (objAddresses.Count == 0)
+                return false;
+
             // Move mario to object
             var marioAddress = Config.Mario.StructAddress;
 
@@ -205,8 +214,11 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool RetreiveObjectsHome(ProcessStream stream, List<uint> objAddresses)
+        public static bool RetrieveObjectsHome(ProcessStream stream, List<uint> objAddresses)
         {
+            if (objAddresses.Count == 0)
+                return false;
+
             // Move object to Mario
             var marioAddress = Config.Mario.StructAddress;
 
@@ -279,6 +291,9 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool UnloadObject(ProcessStream stream, List<uint> addresses)
         {
+            if (addresses.Count == 0)
+                return false;
+
             bool success = true;
             foreach (var address in addresses)
             {
@@ -290,6 +305,9 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool ReviveObject(ProcessStream stream, List<uint> addresses)
         {
+            if (addresses.Count == 0)
+                return false;
+
             bool success = true;
             stream.Suspend();
 
@@ -354,6 +372,9 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool DebilitateObject(ProcessStream stream, List<uint> addresses)
         {
+            if (addresses.Count == 0)
+                return false;
+
             bool success = true;
             stream.Suspend();
             foreach (var address in addresses)
@@ -366,6 +387,9 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool InteractObject(ProcessStream stream, List<uint> addresses)
         {
+            if (addresses.Count == 0)
+                return false;
+
             bool success = true;
             stream.Suspend();
             foreach (var address in addresses)

@@ -192,8 +192,8 @@ namespace SM64_Diagnostic.Managers
             };
         }
 
-        public ObjectManager(ProcessStream stream, ObjectAssociations objAssoc, List<WatchVariable> objectData, ObjectDataGui objectGui)
-            : base(stream, objectData, objectGui.ObjectFlowLayout)
+        public ObjectManager(ProcessStream stream, ObjectAssociations objAssoc, List<WatchVariable> objectData, Control objectControl, NoTearFlowLayoutPanel variableTable, ObjectDataGui objectGui)
+            : base(stream, objectData, variableTable)
         { 
             _objGui = objectGui;
             _objAssoc = objAssoc;
@@ -201,15 +201,49 @@ namespace SM64_Diagnostic.Managers
             _objGui.ObjAddressLabelValue.Click += ObjAddressLabel_Click;
             _objGui.ObjAddressLabel.Click += ObjAddressLabel_Click;
 
-            // Register buttons
-            objectGui.CloneButton.Click += CloneButton_Click;
-            objectGui.UnloadButton.Click += UnloadButton_Click;
-            objectGui.DebilitateButton.Click += DebilitateButton_Click;
-            objectGui.InteractButton.Click += InteractButton_Click;
-            objectGui.GoToButton.Click += GoToButton_Click;
-            objectGui.RetrieveButton.Click += RetreiveButton_Click;
-            objectGui.GoToHomeButton.Click += GoToHomeButton_Click;
-            objectGui.RetrieveHomeButton.Click += RetrieveHomeButton_Click;
+            Panel objPanel = objectControl.Controls["panelObj"] as Panel;
+
+            var goToButton = objPanel.Controls["buttonObjGoTo"] as Button;
+            goToButton.Click += (sender, e) => MarioActions.GoToObjects(_stream, _currentAddresses);
+
+            var retrieveButton = objPanel.Controls["buttonObjRetrieve"] as Button;
+            retrieveButton.Click += (sender, e) => MarioActions.RetrieveObjects(_stream, _currentAddresses);
+
+            var goToHomeButton = objPanel.Controls["buttonObjGoToHome"] as Button;
+            goToHomeButton.Click += (sender, e) => MarioActions.GoToObjectsHome(_stream, _currentAddresses);
+
+            var retrieveHomeButton = objPanel.Controls["buttonObjRetrieveHome"] as Button;
+            retrieveHomeButton.Click += (sender, e) => MarioActions.RetrieveObjectsHome(_stream, _currentAddresses);
+
+            var debilitateButton = objPanel.Controls["buttonObjDebilitate"] as Button;
+            debilitateButton.Click += (sender, e) => MarioActions.DebilitateObject(_stream, _currentAddresses);
+
+            var interactButton = objPanel.Controls["buttonObjInteract"] as Button;
+            interactButton.Click += (sender, e) => MarioActions.InteractObject(_stream, _currentAddresses);
+
+            var cloneButton = objPanel.Controls["buttonObjClone"] as Button;
+            cloneButton.Click += (sender, e) =>
+            {
+                if (CurrentAddresses.Count == 0)
+                    return;
+
+                if (_unclone)
+                    MarioActions.UnCloneObject(_stream, CurrentAddresses[0]);
+                else
+                    MarioActions.CloneObject(_stream, CurrentAddresses[0]);
+            };
+
+            var unloadButton = objPanel.Controls["buttonObjUnload"] as Button;
+            unloadButton.Click += (sender, e) =>
+            {
+                if (CurrentAddresses.Count == 0)
+                    return;
+
+                if (_revive)
+                    MarioActions.ReviveObject(_stream, CurrentAddresses);
+                else
+                    MarioActions.UnloadObject(_stream, CurrentAddresses);
+            };
 
             PositionController.initialize(
                 objectGui.PosXnButton,
@@ -312,76 +346,6 @@ namespace SM64_Diagnostic.Managers
             var variableInfo = new VariableViewerForm(variableTitle, "Object",
                 String.Format("0x{0:X8}", _currentAddresses[0]), String.Format("0x{0:X8}", (_currentAddresses[0] & 0x0FFFFFFF) + _stream.ProcessMemoryOffset));
             variableInfo.ShowDialog();
-        }
-
-        private void RetreiveButton_Click(object sender, EventArgs e)
-        {
-            if (CurrentAddresses.Count == 0)
-                return;
-
-            MarioActions.RetreiveObjects(_stream, CurrentAddresses);
-        }
-
-        private void GoToButton_Click(object sender, EventArgs e)
-        {
-            if (CurrentAddresses.Count == 0)
-                return;
-
-            MarioActions.GoToObjects(_stream, CurrentAddresses);
-        }
-
-        private void GoToHomeButton_Click(object sender, EventArgs e)
-        {
-            if (CurrentAddresses.Count == 0)
-                return;
-
-            MarioActions.GoToObjectsHome(_stream, CurrentAddresses);
-        }
-
-        private void RetrieveHomeButton_Click(object sender, EventArgs e)
-        {
-            if (CurrentAddresses.Count == 0)
-                return;
-
-            MarioActions.RetreiveObjectsHome(_stream, CurrentAddresses);
-        }
-
-        private void UnloadButton_Click(object sender, EventArgs e)
-        {
-            if (CurrentAddresses.Count == 0)
-                return;
-
-            if (_revive)
-                MarioActions.ReviveObject(_stream, CurrentAddresses);
-            else
-                MarioActions.UnloadObject(_stream, CurrentAddresses);
-        }
-
-        private void CloneButton_Click(object sender, EventArgs e)
-        {
-            if (CurrentAddresses.Count == 0)
-                return;
-
-            if (_unclone)
-                MarioActions.UnCloneObject(_stream, CurrentAddresses[0]);
-            else
-                MarioActions.CloneObject(_stream, CurrentAddresses[0]);
-        }
-
-        private void DebilitateButton_Click(object sender, EventArgs e)
-        {
-            if (CurrentAddresses.Count == 0)
-                return;
-
-            MarioActions.DebilitateObject(_stream, CurrentAddresses);
-        }
-
-        private void InteractButton_Click(object sender, EventArgs e)
-        {
-            if (CurrentAddresses.Count == 0)
-                return;
-
-            MarioActions.InteractObject(_stream, CurrentAddresses);
         }
 
         private void ProcessSpecialVars()

@@ -189,7 +189,7 @@ namespace SM64_Diagnostic
                 HomeYTextbox = textBoxObjHomeY,
                 HomeRelativeCheckbox = checkBoxObjHomeRelative
             };
-            currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
+            currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, tabPageObjects, NoTearFlowLayoutPanelObject, objectGui);
 
             // Create options manager
             var optionGui = new OptionsGui();
