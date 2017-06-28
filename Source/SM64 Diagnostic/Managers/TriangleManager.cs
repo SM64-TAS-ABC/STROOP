@@ -9,6 +9,7 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
+using SM64Diagnostic.Controls;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -101,18 +102,30 @@ namespace SM64_Diagnostic.Managers
             (tabControl.Controls["checkBoxVertexMisalignment"] as CheckBox).CheckedChanged += checkBoxVertexMisalignment_CheckedChanged;
             
             var trianglePosGroupBox = tabControl.Controls["groupBoxTrianglePos"] as GroupBox;
-            _trianglePosXZTextbox = trianglePosGroupBox.Controls["textBoxTrianglePosXZ"] as TextBox;
-            _trianglePosYTextbox = trianglePosGroupBox.Controls["textBoxTrianglePosY"] as TextBox;
-            (trianglePosGroupBox.Controls["buttontrianglePosXp"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, 1, 0);
-            (trianglePosGroupBox.Controls["buttontrianglePosXn"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, -1, 0);
-            (trianglePosGroupBox.Controls["buttontrianglePosZp"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, 0, 1);
-            (trianglePosGroupBox.Controls["buttontrianglePosZn"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, 0, -1);
-            (trianglePosGroupBox.Controls["buttontrianglePosXpZp"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, 1, 1);
-            (trianglePosGroupBox.Controls["buttontrianglePosXpZn"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, 1, -1);
-            (trianglePosGroupBox.Controls["buttontrianglePosXnZp"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, -1, 1);
-            (trianglePosGroupBox.Controls["buttontrianglePosXnZn"] as Button).Click += (sender, e) => trianglePosXZButton_Click(sender, e, -1, -1);
-            (trianglePosGroupBox.Controls["buttontrianglePosYp"] as Button).Click += (sender, e) => trianglePosYButton_Click(sender, e, 1);
-            (trianglePosGroupBox.Controls["buttontrianglePosYn"] as Button).Click += (sender, e) => trianglePosYButton_Click(sender, e, -1);
+            PositionController.initialize(
+                trianglePosGroupBox.Controls["buttonTrianglePosXn"] as Button,
+                trianglePosGroupBox.Controls["buttonTrianglePosXp"] as Button,
+                trianglePosGroupBox.Controls["buttonTrianglePosZn"] as Button,
+                trianglePosGroupBox.Controls["buttonTrianglePosZp"] as Button,
+                trianglePosGroupBox.Controls["buttonTrianglePosXnZn"] as Button,
+                trianglePosGroupBox.Controls["buttonTrianglePosXnZp"] as Button,
+                trianglePosGroupBox.Controls["buttonTrianglePosXpZn"] as Button,
+                trianglePosGroupBox.Controls["buttonTrianglePosXpZp"] as Button,
+                trianglePosGroupBox.Controls["buttonTrianglePosYp"] as Button,
+                trianglePosGroupBox.Controls["buttonTrianglePosYn"] as Button,
+                trianglePosGroupBox.Controls["textBoxTrianglePosXZ"] as TextBox,
+                trianglePosGroupBox.Controls["textBoxTrianglePosY"] as TextBox,
+                trianglePosGroupBox.Controls["checkBoxTrianglePosRelative"] as CheckBox,
+                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
+                {
+                    MarioActions.MoveTriangle(
+                        _stream,
+                        _triangleAddress,
+                        xOffset,
+                        yOffset,
+                        zOffset,
+                        useRelative);
+                });
 
             var triangleNormalGroupBox = tabControl.Controls["groupBoxTriangleNormal"] as GroupBox;
             _triangleNormalTextbox = triangleNormalGroupBox.Controls["textBoxTriangleNormal"] as TextBox;
@@ -324,24 +337,6 @@ namespace SM64_Diagnostic.Managers
         private void AnnihilateTriangleButton_Click(object sender, EventArgs e)
         {
             MarioActions.AnnihilateTriangle(_stream, _triangleAddress);
-        }
-
-        private void trianglePosXZButton_Click(object sender, EventArgs e, int xSign, int zSign)
-        {
-            float xzValue;
-            if (!float.TryParse(_trianglePosXZTextbox.Text, out xzValue))
-                return;
-
-            MarioActions.MoveTriangle(_stream, _triangleAddress, xSign * xzValue, 0, zSign * xzValue);
-        }
-
-        private void trianglePosYButton_Click(object sender, EventArgs e, int ySign)
-        {
-            float yValue;
-            if (!float.TryParse(_trianglePosYTextbox.Text, out yValue))
-                return;
-
-            MarioActions.MoveTriangle(_stream, _triangleAddress, 0, ySign * yValue, 0);
         }
 
         private void triangleNormalButton_Click(object sender, EventArgs e, int sign)

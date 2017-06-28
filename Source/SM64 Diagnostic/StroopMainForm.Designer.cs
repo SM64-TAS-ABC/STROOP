@@ -52,6 +52,7 @@ namespace SM64_Diagnostic
             this.buttonObjDebilitate = new System.Windows.Forms.Button();
             this.buttonObjInteract = new System.Windows.Forms.Button();
             this.groupBoxObjHome = new System.Windows.Forms.GroupBox();
+            this.checkBoxObjHomeRelative = new System.Windows.Forms.CheckBox();
             this.textBoxObjHomeY = new System.Windows.Forms.TextBox();
             this.buttonObjHomeYp = new System.Windows.Forms.Button();
             this.buttonObjHomeYn = new System.Windows.Forms.Button();
@@ -75,6 +76,7 @@ namespace SM64_Diagnostic
             this.buttonObjAnglePitchP = new System.Windows.Forms.Button();
             this.buttonObjAngleYawP = new System.Windows.Forms.Button();
             this.groupBoxObjPos = new System.Windows.Forms.GroupBox();
+            this.checkBoxObjPosRelative = new System.Windows.Forms.CheckBox();
             this.textBoxObjPosY = new System.Windows.Forms.TextBox();
             this.buttonObjPosYp = new System.Windows.Forms.Button();
             this.buttonObjPosYn = new System.Windows.Forms.Button();
@@ -333,8 +335,7 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
-            this.checkBoxObjPosRelative = new System.Windows.Forms.CheckBox();
-            this.checkBoxObjHomeRelative = new System.Windows.Forms.CheckBox();
+            this.checkBoxTrianglePosRelative = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -430,7 +431,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 101);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 102);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -518,7 +519,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 52);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 53);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -684,6 +685,16 @@ namespace SM64_Diagnostic
             this.groupBoxObjHome.TabIndex = 36;
             this.groupBoxObjHome.TabStop = false;
             this.groupBoxObjHome.Text = "Home";
+            // 
+            // checkBoxObjHomeRelative
+            // 
+            this.checkBoxObjHomeRelative.AutoSize = true;
+            this.checkBoxObjHomeRelative.Location = new System.Drawing.Point(120, 0);
+            this.checkBoxObjHomeRelative.Name = "checkBoxObjHomeRelative";
+            this.checkBoxObjHomeRelative.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxObjHomeRelative.TabIndex = 38;
+            this.checkBoxObjHomeRelative.Text = "Relative";
+            this.checkBoxObjHomeRelative.UseVisualStyleBackColor = true;
             // 
             // textBoxObjHomeY
             // 
@@ -941,6 +952,16 @@ namespace SM64_Diagnostic
             this.groupBoxObjPos.TabIndex = 28;
             this.groupBoxObjPos.TabStop = false;
             this.groupBoxObjPos.Text = "Position";
+            // 
+            // checkBoxObjPosRelative
+            // 
+            this.checkBoxObjPosRelative.AutoSize = true;
+            this.checkBoxObjPosRelative.Location = new System.Drawing.Point(120, 0);
+            this.checkBoxObjPosRelative.Name = "checkBoxObjPosRelative";
+            this.checkBoxObjPosRelative.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxObjPosRelative.TabIndex = 37;
+            this.checkBoxObjPosRelative.Text = "Relative";
+            this.checkBoxObjPosRelative.UseVisualStyleBackColor = true;
             // 
             // textBoxObjPosY
             // 
@@ -2179,8 +2200,8 @@ namespace SM64_Diagnostic
             // 
             // tabPageTriangles
             // 
-            this.tabPageTriangles.Controls.Add(this.groupBoxTriangleNormal);
             this.tabPageTriangles.Controls.Add(this.groupBoxTrianglePos);
+            this.tabPageTriangles.Controls.Add(this.groupBoxTriangleNormal);
             this.tabPageTriangles.Controls.Add(this.buttonAnnihilateTriangle);
             this.tabPageTriangles.Controls.Add(this.buttonNeutralizeTriangle);
             this.tabPageTriangles.Controls.Add(this.buttonGoToVClosest);
@@ -2249,6 +2270,7 @@ namespace SM64_Diagnostic
             // 
             // groupBoxTrianglePos
             // 
+            this.groupBoxTrianglePos.Controls.Add(this.checkBoxTrianglePosRelative);
             this.groupBoxTrianglePos.Controls.Add(this.textBoxTrianglePosY);
             this.groupBoxTrianglePos.Controls.Add(this.buttonTrianglePosYp);
             this.groupBoxTrianglePos.Controls.Add(this.buttonTrianglePosYn);
@@ -3036,7 +3058,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(615, 543);
+            this.glControlMap.Size = new System.Drawing.Size(616, 543);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -3862,25 +3884,15 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
-            // checkBoxObjPosRelative
+            // checkBoxTrianglePosRelative
             // 
-            this.checkBoxObjPosRelative.AutoSize = true;
-            this.checkBoxObjPosRelative.Location = new System.Drawing.Point(120, 0);
-            this.checkBoxObjPosRelative.Name = "checkBoxObjPosRelative";
-            this.checkBoxObjPosRelative.Size = new System.Drawing.Size(65, 17);
-            this.checkBoxObjPosRelative.TabIndex = 37;
-            this.checkBoxObjPosRelative.Text = "Relative";
-            this.checkBoxObjPosRelative.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxObjHomeRelative
-            // 
-            this.checkBoxObjHomeRelative.AutoSize = true;
-            this.checkBoxObjHomeRelative.Location = new System.Drawing.Point(120, 0);
-            this.checkBoxObjHomeRelative.Name = "checkBoxObjHomeRelative";
-            this.checkBoxObjHomeRelative.Size = new System.Drawing.Size(65, 17);
-            this.checkBoxObjHomeRelative.TabIndex = 38;
-            this.checkBoxObjHomeRelative.Text = "Relative";
-            this.checkBoxObjHomeRelative.UseVisualStyleBackColor = true;
+            this.checkBoxTrianglePosRelative.AutoSize = true;
+            this.checkBoxTrianglePosRelative.Location = new System.Drawing.Point(118, 0);
+            this.checkBoxTrianglePosRelative.Name = "checkBoxTrianglePosRelative";
+            this.checkBoxTrianglePosRelative.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxTrianglePosRelative.TabIndex = 38;
+            this.checkBoxTrianglePosRelative.Text = "Relative";
+            this.checkBoxTrianglePosRelative.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -4299,6 +4311,7 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxMarioHOLPRelative;
         private CheckBox checkBoxObjHomeRelative;
         private CheckBox checkBoxObjPosRelative;
+        private CheckBox checkBoxTrianglePosRelative;
     }
 }
 

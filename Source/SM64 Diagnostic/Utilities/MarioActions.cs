@@ -724,7 +724,7 @@ namespace SM64_Diagnostic.Utilities
         }
 
         public static bool MoveTriangle(ProcessStream stream, uint triangleAddress,
-            float xOffset, float yOffset, float zOffset)
+            float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             if (triangleAddress == 0x0000)
                 return false;
