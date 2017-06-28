@@ -422,7 +422,6 @@ namespace SM64_Diagnostic.Managers
 
                     _multiImage?.Dispose();
                     var multiBitmap = new Bitmap(256, 256);
-                    //int subImageCount = Math.Min(4, selectedBehaviorCriterias.Count);
                     using (Graphics gfx = Graphics.FromImage(multiBitmap))
                     {
                         int numCols = (int)Math.Ceiling(Math.Sqrt(selectedBehaviorCriterias.Count));
