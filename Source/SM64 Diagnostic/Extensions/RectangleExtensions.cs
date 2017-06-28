@@ -44,12 +44,7 @@ namespace SM64_Diagnostic.Extensions
                 marginV = (int)(inRec.Height - scale * objZoom.Height);
 
             // Calculate where the map image should be drawn
-            var newRec = new Rectangle(marginH / 2 + inRec.X, marginV / 2 + inRec.Y, inRec.Width - marginH - inRec.X, inRec.Height - marginV - inRec.Y);
-            if (newRec.Width < 0)
-                newRec.Width = 0;
-            if (newRec.Height < 0)
-                newRec.Height = 0;
-            return newRec;
+            return new Rectangle(marginH / 2 + inRec.X, marginV / 2 + inRec.Y, inRec.Width - marginH, inRec.Height - marginV);
         }
     }
 }

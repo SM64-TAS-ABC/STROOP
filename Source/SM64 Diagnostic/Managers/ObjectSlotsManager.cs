@@ -433,8 +433,10 @@ namespace SM64_Diagnostic.Managers
                             {
                                 int index = row * numCols + col;
                                 if (index >= selectedBehaviorCriterias.Count) break;
+                                Image image = ObjectAssoc.GetObjectImage(selectedBehaviorCriterias[index], false);
                                 Rectangle rect = new Rectangle(col * imageSize, row * imageSize, imageSize, imageSize);
-                                gfx.DrawImage(ObjectAssoc.GetObjectImage(selectedBehaviorCriterias[index], false), rect);
+                                Rectangle zoomedRect = rect.Zoom(image.Size);
+                                gfx.DrawImage(image, zoomedRect);
                             }
                         }
                     }
