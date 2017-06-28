@@ -139,5 +139,15 @@ namespace SM64_Diagnostic.Utilities
             double multiplier = totalMagnitude == 0 ? 1 : magnitude / totalMagnitude;
             return (xValue * multiplier, zValue * multiplier);
         }
+
+        public static ushort getUphillAngle(double normX, double normY, double normZ)
+        {
+            var uphillRadians = Math.PI + Math.Atan2(normX, normZ);
+            if (normY < -0.01)
+                uphillRadians += Math.PI;
+            if (normX == 0 && normZ == 0)
+                uphillRadians = 0;
+            return (ushort)RadiansToAngleUnits(uphillRadians);
+        }
     }
 }

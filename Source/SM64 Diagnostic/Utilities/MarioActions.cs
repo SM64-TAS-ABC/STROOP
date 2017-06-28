@@ -737,6 +737,9 @@ namespace SM64_Diagnostic.Utilities
             normZ = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
             oldNormOffset = stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
 
+            ushort relativeAngle = MoreMath.getUphillAngle(normX, normY, normZ);
+            handleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
+
             float newNormOffset = oldNormOffset - normX * xOffset - normY * yOffset - normZ * zOffset;
 
             short newX1, newY1, newZ1, newX2, newY2, newZ2, newX3, newY3, newZ3;
