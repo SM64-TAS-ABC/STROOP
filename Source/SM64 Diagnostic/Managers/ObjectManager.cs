@@ -245,20 +245,21 @@ namespace SM64_Diagnostic.Managers
                     MarioActions.UnloadObject(_stream, CurrentAddresses);
             };
 
+            var objPosGroupBox = objPanel.Controls["groupBoxObjPos"] as GroupBox;
             PositionController.initialize(
-                objectGui.PosXnButton,
-                objectGui.PosXpButton,
-                objectGui.PosZnButton,
-                objectGui.PosZpButton,
-                objectGui.PosXnZnButton,
-                objectGui.PosXnZpButton,
-                objectGui.PosXpZnButton,
-                objectGui.PosXpZpButton,
-                objectGui.PosYpButton,
-                objectGui.PosYnButton,
-                objectGui.PosXZTextbox,
-                objectGui.PosYTextbox,
-                objectGui.PosRelativeCheckbox,
+                objPosGroupBox.Controls["buttonObjPosXn"] as Button,
+                objPosGroupBox.Controls["buttonObjPosXp"] as Button,
+                objPosGroupBox.Controls["buttonObjPosZn"] as Button,
+                objPosGroupBox.Controls["buttonObjPosZp"] as Button,
+                objPosGroupBox.Controls["buttonObjPosXnZn"] as Button,
+                objPosGroupBox.Controls["buttonObjPosXnZp"] as Button,
+                objPosGroupBox.Controls["buttonObjPosXpZn"] as Button,
+                objPosGroupBox.Controls["buttonObjPosXpZp"] as Button,
+                objPosGroupBox.Controls["buttonObjPosYp"] as Button,
+                objPosGroupBox.Controls["buttonObjPosYn"] as Button,
+                objPosGroupBox.Controls["textBoxObjPosXZ"] as TextBox,
+                objPosGroupBox.Controls["textBoxObjPosY"] as TextBox,
+                objPosGroupBox.Controls["checkBoxObjPosRelative"] as CheckBox,
                 (float xOffset, float yOffset, float zOffset, bool useRelative) =>
                 {
                     MarioActions.MoveObjects(
@@ -270,45 +271,47 @@ namespace SM64_Diagnostic.Managers
                         useRelative);
                 });
 
+            var objAngleGroupBox = objPanel.Controls["groupBoxObjAngle"] as GroupBox;
             ScalarController.initialize(
-                objectGui.AngleYawNButton,
-                objectGui.AngleYawPButton,
-                objectGui.AngleYawTextbox,
+                objAngleGroupBox.Controls["buttonObjAngleYawN"] as Button,
+                objAngleGroupBox.Controls["buttonObjAngleYawP"] as Button,
+                objAngleGroupBox.Controls["textBoxObjAngleYaw"] as TextBox,
                 (float yawValue) =>
                 {
                     MarioActions.RotateObjects(stream, _currentAddresses, (int)yawValue, 0, 0);
                 });
             ScalarController.initialize(
-                objectGui.AnglePitchNButton,
-                objectGui.AnglePitchPButton,
-                objectGui.AnglePitchTextbox,
+                objAngleGroupBox.Controls["buttonObjAnglePitchN"] as Button,
+                objAngleGroupBox.Controls["buttonObjAnglePitchP"] as Button,
+                objAngleGroupBox.Controls["textBoxObjAnglePitch"] as TextBox,
                 (float pitchValue) =>
                 {
                     MarioActions.RotateObjects(stream, _currentAddresses, 0, (int)pitchValue, 0);
                 });
             ScalarController.initialize(
-                objectGui.AngleRollNButton,
-                objectGui.AngleRollPButton,
-                objectGui.AngleRollTextbox,
+                objAngleGroupBox.Controls["buttonObjAngleRollN"] as Button,
+                objAngleGroupBox.Controls["buttonObjAngleRollP"] as Button,
+                objAngleGroupBox.Controls["textBoxObjAngleRoll"] as TextBox,
                 (float rollValue) =>
                 {
                     MarioActions.RotateObjects(stream, _currentAddresses, 0, 0, (int)rollValue);
                 });
 
+            var objHomeGroupBox = objPanel.Controls["groupBoxObjHome"] as GroupBox;
             PositionController.initialize(
-                objectGui.HomeXnButton,
-                objectGui.HomeXpButton,
-                objectGui.HomeZnButton,
-                objectGui.HomeZpButton,
-                objectGui.HomeXnZnButton,
-                objectGui.HomeXnZpButton,
-                objectGui.HomeXpZnButton,
-                objectGui.HomeXpZpButton,
-                objectGui.HomeYpButton,
-                objectGui.HomeYnButton,
-                objectGui.HomeXZTextbox,
-                objectGui.HomeYTextbox,
-                objectGui.HomeRelativeCheckbox,
+                objHomeGroupBox.Controls["buttonObjHomeXn"] as Button,
+                objHomeGroupBox.Controls["buttonObjHomeXp"] as Button,
+                objHomeGroupBox.Controls["buttonObjHomeZn"] as Button,
+                objHomeGroupBox.Controls["buttonObjHomeZp"] as Button,
+                objHomeGroupBox.Controls["buttonObjHomeXnZn"] as Button,
+                objHomeGroupBox.Controls["buttonObjHomeXnZp"] as Button,
+                objHomeGroupBox.Controls["buttonObjHomeXpZn"] as Button,
+                objHomeGroupBox.Controls["buttonObjHomeXpZp"] as Button,
+                objHomeGroupBox.Controls["buttonObjHomeYp"] as Button,
+                objHomeGroupBox.Controls["buttonObjHomeYn"] as Button,
+                objHomeGroupBox.Controls["textBoxObjHomeXZ"] as TextBox,
+                objHomeGroupBox.Controls["textBoxObjHomeY"] as TextBox,
+                objHomeGroupBox.Controls["checkBoxObjHomeRelative"] as CheckBox,
                 (float xOffset, float yOffset, float zOffset, bool useRelative) =>
                 {
                     MarioActions.MoveObjectHomes(
