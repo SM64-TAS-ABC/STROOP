@@ -17,8 +17,7 @@ namespace SM64_Diagnostic.Managers
     {
         MaskedTextBox _addressBox;
         uint _triangleAddress = 0;
-        bool _useMisalignmentOffset = false;
-
+        CheckBox _useMisalignmentOffsetCheckbox;
         int _closestVertex = 0;
 
     uint TriangleAddress
@@ -80,6 +79,8 @@ namespace SM64_Diagnostic.Managers
             : base(stream, triangleWatchVars, tabControl.Controls["NoTearFlowLayoutPanelTriangles"] as NoTearFlowLayoutPanel)
         {
             _addressBox = tabControl.Controls["maskedTextBoxOtherTriangle"] as MaskedTextBox;
+            _useMisalignmentOffsetCheckbox = tabControl.Controls["checkBoxVertexMisalignment"] as CheckBox;
+
             _addressBox.KeyDown += AddressBox_KeyDown;
             (tabControl.Controls["radioButtonTriFloor"] as RadioButton).CheckedChanged 
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Floor);
@@ -89,14 +90,26 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Ceiling);
             (tabControl.Controls["radioButtonTriOther"] as RadioButton).CheckedChanged 
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Other);
-            (tabControl.Controls["buttonGoToV1"] as Button).Click += GoToV1Button_Click;
-            (tabControl.Controls["buttonGoToV2"] as Button).Click += GoToV2Button_Click;
-            (tabControl.Controls["buttonGoToV3"] as Button).Click += GoToV3Button_Click;
-            (tabControl.Controls["buttonGoToVClosest"] as Button).Click += GoToVClosestButton_Click;
-            (tabControl.Controls["buttonRetrieveTriangle"] as Button).Click += RetrieveTriangleButton_Click;
-            (tabControl.Controls["buttonNeutralizeTriangle"] as Button).Click += NeutralizeTriangleButton_Click;
-            (tabControl.Controls["buttonAnnihilateTriangle"] as Button).Click += AnnihilateTriangleButton_Click;
-            (tabControl.Controls["checkBoxVertexMisalignment"] as CheckBox).CheckedChanged += checkBoxVertexMisalignment_CheckedChanged;
+
+            (tabControl.Controls["buttonGoToV1"] as Button).Click
+                += (sender, e) => MarioActions.GoToTriangle(_stream, _triangleAddress, 1, _useMisalignmentOffsetCheckbox.Checked);
+            (tabControl.Controls["buttonGoToV2"] as Button).Click
+                += (sender, e) => MarioActions.GoToTriangle(_stream, _triangleAddress, 2, _useMisalignmentOffsetCheckbox.Checked);
+            (tabControl.Controls["buttonGoToV3"] as Button).Click
+                += (sender, e) => MarioActions.GoToTriangle(_stream, _triangleAddress, 3, _useMisalignmentOffsetCheckbox.Checked);
+            (tabControl.Controls["buttonGoToVClosest"] as Button).Click += (sender, e) =>
+            {
+                if (_closestVertex == 0)
+                    return;
+                MarioActions.GoToTriangle(_stream, _triangleAddress, _closestVertex, _useMisalignmentOffsetCheckbox.Checked);
+            };
+
+            (tabControl.Controls["buttonRetrieveTriangle"] as Button).Click
+                += (sender, e) => MarioActions.RetrieveTriangle(_stream, _triangleAddress);
+            (tabControl.Controls["buttonNeutralizeTriangle"] as Button).Click
+                += (sender, e) => MarioActions.NeutralizeTriangle(_stream, _triangleAddress);
+            (tabControl.Controls["buttonAnnihilateTriangle"] as Button).Click
+                += (sender, e) => MarioActions.AnnihilateTriangle(_stream, _triangleAddress);
             
             var trianglePosGroupBox = tabControl.Controls["groupBoxTrianglePos"] as GroupBox;
             PositionController.initialize(
@@ -133,11 +146,6 @@ namespace SM64_Diagnostic.Managers
                 {
                     MarioActions.MoveTriangleNormal(_stream, _triangleAddress, normalValue);
                 });
-        }
-
-        private void checkBoxVertexMisalignment_CheckedChanged(object sender, EventArgs e)
-        {
-            _useMisalignmentOffset = (sender as CheckBox).Checked;
         }
 
         private void ProcessSpecialVars()
@@ -302,43 +310,6 @@ namespace SM64_Diagnostic.Managers
                 angle -= 65536;
 
             return angle;
-        }
-
-        private void RetrieveTriangleButton_Click(object sender, EventArgs e)
-        {
-            MarioActions.RetrieveTriangle(_stream, _triangleAddress);
-        }
-
-        private void GoToV1Button_Click(object sender, EventArgs e)
-        {
-            MarioActions.GoToTriangle(_stream, _triangleAddress, 1, _useMisalignmentOffset);
-        }
-
-        private void GoToV2Button_Click(object sender, EventArgs e)
-        {
-            MarioActions.GoToTriangle(_stream, _triangleAddress, 2, _useMisalignmentOffset);
-        }
-
-        private void GoToV3Button_Click(object sender, EventArgs e)
-        {
-            MarioActions.GoToTriangle(_stream, _triangleAddress, 3, _useMisalignmentOffset);
-        }
-
-        private void GoToVClosestButton_Click(object sender, EventArgs e)
-        {
-            if (_closestVertex == 0)
-                return;
-            MarioActions.GoToTriangle(_stream, _triangleAddress, _closestVertex, _useMisalignmentOffset);
-        }
-
-        private void NeutralizeTriangleButton_Click(object sender, EventArgs e)
-        {
-            MarioActions.NeutralizeTriangle(_stream, _triangleAddress);
-        }
-
-        private void AnnihilateTriangleButton_Click(object sender, EventArgs e)
-        {
-            MarioActions.AnnihilateTriangle(_stream, _triangleAddress);
         }
 
         private void Mode_CheckedChanged(object sender, EventArgs e, TriangleMode mode)
