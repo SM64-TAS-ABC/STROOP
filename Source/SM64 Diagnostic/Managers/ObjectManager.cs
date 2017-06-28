@@ -18,7 +18,6 @@ namespace SM64_Diagnostic.Managers
     {
         List<WatchVariableControl> _behaviorDataControls = new List<WatchVariableControl>();
         ObjectAssociations _objAssoc;
-        ObjectDataGui _objGui;
 
         object _watchVarLocker = new object();
 
@@ -27,6 +26,17 @@ namespace SM64_Diagnostic.Managers
         string _behavior;
         bool _unclone = false;
         bool _revive = false;
+
+        Button _cloneButton;
+        Button _unloadButton;
+        Label _objAddressLabelValue;
+        Label _objAddressLabel;
+        Label _objSlotIndexLabel;
+        Label _objSlotPositionLabel;
+        Label _objBehaviorLabel;
+        TextBox _objectNameTextBox;
+        Panel _objectBorderPanel;
+        IntPictureBox _objectImagePictureBox;
 
         #region Fields
         public void SetBehaviorWatchVariables(List<WatchVariable> value, Color color)
@@ -58,11 +68,11 @@ namespace SM64_Diagnostic.Managers
                 _currentAddresses = value.ToList();
 
                 if (_currentAddresses.Count > 1)
-                    _objGui.ObjAddressLabelValue.Text = "";
+                    _objAddressLabelValue.Text = "";
                 else if (_currentAddresses.Count > 0)
-                    _objGui.ObjAddressLabelValue.Text = "0x" + _currentAddresses[0].ToString("X8");
+                    _objAddressLabelValue.Text = "0x" + _currentAddresses[0].ToString("X8");
                 else
-                    _objGui.ObjAddressLabelValue.Text = "";
+                    _objAddressLabelValue.Text = "";
 
                 AddressChanged();
 
@@ -84,7 +94,7 @@ namespace SM64_Diagnostic.Managers
                 if (_slotIndex != value)
                 {
                     _slotIndex = value;
-                    _objGui.ObjSlotIndexLabel.Text = _slotIndex;
+                    _objSlotIndexLabel.Text = _slotIndex;
                 }
             }
         }
@@ -100,7 +110,7 @@ namespace SM64_Diagnostic.Managers
                 if (_slotPos != value)
                 {
                     _slotPos = value;
-                    _objGui.ObjSlotPositionLabel.Text = _slotPos;
+                    _objSlotPositionLabel.Text = _slotPos;
                 }
             }
         }
@@ -116,7 +126,7 @@ namespace SM64_Diagnostic.Managers
                 if (_behavior != value)
                 {
                     _behavior = value;
-                    _objGui.ObjBehaviorLabel.Text = value;
+                    _objBehaviorLabel.Text = value;
                 }
             }
         }
@@ -125,12 +135,12 @@ namespace SM64_Diagnostic.Managers
         {
             get
             {
-                return _objGui.ObjectNameTextBox.Text;
+                return _objectNameTextBox.Text;
             }
             set
             {
-                if (_objGui.ObjectNameTextBox.Text != value)
-                    _objGui.ObjectNameTextBox.Text = value;
+                if (_objectNameTextBox.Text != value)
+                    _objectNameTextBox.Text = value;
             }
         }
 
@@ -138,15 +148,15 @@ namespace SM64_Diagnostic.Managers
         {
             set
             {
-                if (_objGui.ObjectBorderPanel.BackColor != value)
+                if (_objectBorderPanel.BackColor != value)
                 {
-                    _objGui.ObjectBorderPanel.BackColor = value;
-                    _objGui.ObjectImagePictureBox.BackColor = value.Lighten(0.7);
+                    _objectBorderPanel.BackColor = value;
+                    _objectImagePictureBox.BackColor = value.Lighten(0.7);
                 }
             }
             get
             {
-                return _objGui.ObjectBorderPanel.BackColor;
+                return _objectBorderPanel.BackColor;
             }
         }
 
@@ -154,12 +164,12 @@ namespace SM64_Diagnostic.Managers
         {
             get
             {
-                return _objGui.ObjectImagePictureBox.Image;
+                return _objectImagePictureBox.Image;
             }
             set
             {
-                if (_objGui.ObjectImagePictureBox.Image != value)
-                    _objGui.ObjectImagePictureBox.Image = value;
+                if (_objectImagePictureBox.Image != value)
+                    _objectImagePictureBox.Image = value;
             }
         }
 
@@ -195,11 +205,18 @@ namespace SM64_Diagnostic.Managers
         public ObjectManager(ProcessStream stream, ObjectAssociations objAssoc, List<WatchVariable> objectData, Control objectControl, NoTearFlowLayoutPanel variableTable, ObjectDataGui objectGui)
             : base(stream, objectData, variableTable)
         { 
-            _objGui = objectGui;
             _objAssoc = objAssoc;
-            
-            _objGui.ObjAddressLabelValue.Click += ObjAddressLabel_Click;
-            _objGui.ObjAddressLabel.Click += ObjAddressLabel_Click;
+            _objAddressLabelValue = objectGui.ObjAddressLabelValue;
+            _objAddressLabel = objectGui.ObjAddressLabel;
+            _objSlotIndexLabel = objectGui.ObjSlotIndexLabel;
+            _objSlotPositionLabel = objectGui.ObjSlotPositionLabel;
+            _objBehaviorLabel = objectGui.ObjBehaviorLabel;
+            _objectNameTextBox = objectGui.ObjectNameTextBox;
+            _objectBorderPanel = objectGui.ObjectBorderPanel;
+            _objectImagePictureBox = objectGui.ObjectImagePictureBox;
+
+            _objAddressLabelValue.Click += ObjAddressLabel_Click;
+            _objAddressLabel.Click += ObjAddressLabel_Click;
 
             Panel objPanel = objectControl.Controls["panelObj"] as Panel;
 
@@ -221,8 +238,8 @@ namespace SM64_Diagnostic.Managers
             var interactButton = objPanel.Controls["buttonObjInteract"] as Button;
             interactButton.Click += (sender, e) => MarioActions.InteractObject(_stream, _currentAddresses);
 
-            var cloneButton = objPanel.Controls["buttonObjClone"] as Button;
-            cloneButton.Click += (sender, e) =>
+            _cloneButton = objPanel.Controls["buttonObjClone"] as Button;
+            _cloneButton.Click += (sender, e) =>
             {
                 if (CurrentAddresses.Count == 0)
                     return;
@@ -233,8 +250,8 @@ namespace SM64_Diagnostic.Managers
                     MarioActions.CloneObject(_stream, CurrentAddresses[0]);
             };
 
-            var unloadButton = objPanel.Controls["buttonObjUnload"] as Button;
-            unloadButton.Click += (sender, e) =>
+            _unloadButton = objPanel.Controls["buttonObjUnload"] as Button;
+            _unloadButton.Click += (sender, e) =>
             {
                 if (CurrentAddresses.Count == 0)
                     return;
@@ -332,11 +349,11 @@ namespace SM64_Diagnostic.Managers
 
             if (CurrentAddresses.Count == 1)
             {
-                _objGui.CloneButton.Enabled = true;
+                _cloneButton.Enabled = true;
             }
             else
             {
-                _objGui.CloneButton.Enabled = false;
+                _cloneButton.Enabled = false;
             }
         }
 
@@ -608,7 +625,7 @@ namespace SM64_Diagnostic.Managers
                 _unclone = !_unclone;
 
                 // Update button text
-                _objGui.CloneButton.Text = _unclone ? "UnClone" : "Clone";
+                _cloneButton.Text = _unclone ? "UnClone" : "Clone";
             }
 
             // Determine load or unload
@@ -618,7 +635,7 @@ namespace SM64_Diagnostic.Managers
                 _revive = !anyActive;
 
                 // Update button text
-                _objGui.UnloadButton.Text = _revive ? "Revive" : "Unload";
+                _unloadButton.Text = _revive ? "Revive" : "Unload";
             }
 
             base.Update(updateView);
