@@ -440,7 +440,7 @@ namespace SM64_Diagnostic.Managers
                     _multiImage = multiBitmap;
                     _objManager.Image = _multiImage;
 
-                    _objManager.Name = "Multiple Objects Selected";
+                    _objManager.Name = SelectedSlotsAddresses.Count + " Objects Selected";
                     _objManager.BackColor = Config.ObjectGroups.VacantSlotColor;
                     _objManager.SlotIndex = "";
                     _objManager.SlotPos = "";
