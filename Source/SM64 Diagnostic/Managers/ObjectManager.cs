@@ -202,18 +202,18 @@ namespace SM64_Diagnostic.Managers
             };
         }
 
-        public ObjectManager(ProcessStream stream, ObjectAssociations objAssoc, List<WatchVariable> objectData, Control objectControl, NoTearFlowLayoutPanel variableTable, ObjectDataGui objectGui)
+        public ObjectManager(ProcessStream stream, ObjectAssociations objAssoc, List<WatchVariable> objectData, Control objectControl, NoTearFlowLayoutPanel variableTable)
             : base(stream, objectData, variableTable)
         { 
             _objAssoc = objAssoc;
-            _objAddressLabelValue = objectGui.ObjAddressLabelValue;
-            _objAddressLabel = objectGui.ObjAddressLabel;
-            _objSlotIndexLabel = objectGui.ObjSlotIndexLabel;
-            _objSlotPositionLabel = objectGui.ObjSlotPositionLabel;
-            _objBehaviorLabel = objectGui.ObjBehaviorLabel;
-            _objectNameTextBox = objectGui.ObjectNameTextBox;
-            _objectBorderPanel = objectGui.ObjectBorderPanel;
-            _objectImagePictureBox = objectGui.ObjectImagePictureBox;
+            _objAddressLabelValue = objectControl.Controls["labelObjAddValue"] as Label;
+            _objAddressLabel = objectControl.Controls["labelObjAdd"] as Label;
+            _objSlotIndexLabel = objectControl.Controls["labelObjSlotIndValue"] as Label;
+            _objSlotPositionLabel = objectControl.Controls["labelObjSlotPosValue"] as Label;
+            _objBehaviorLabel = objectControl.Controls["labelObjBhvValue"] as Label;
+            _objectNameTextBox = objectControl.Controls["textBoxObjName"] as TextBox;
+            _objectBorderPanel = objectControl.Controls["panelObjectBorder"] as Panel;
+            _objectImagePictureBox = _objectBorderPanel.Controls["pictureBoxObject"] as IntPictureBox;
 
             _objAddressLabelValue.Click += ObjAddressLabel_Click;
             _objAddressLabel.Click += ObjAddressLabel_Click;
