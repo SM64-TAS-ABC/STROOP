@@ -422,19 +422,21 @@ namespace SM64_Diagnostic.Managers
 
                     _multiImage?.Dispose();
                     var multiBitmap = new Bitmap(256, 256);
-                    int subImageCount = Math.Min(4, selectedBehaviorCriterias.Count);
+                    //int subImageCount = Math.Min(4, selectedBehaviorCriterias.Count);
                     using (Graphics gfx = Graphics.FromImage(multiBitmap))
                     {
-                        Rectangle[] subImagePlaces =
+                        int numCols = (int)Math.Ceiling(Math.Sqrt(selectedBehaviorCriterias.Count));
+                        int numRows = (int)Math.Ceiling(selectedBehaviorCriterias.Count / (double)numCols);
+                        int imageSize = 256 / numCols;
+                        for (int row = 0; row < numRows; row++)
                         {
-                            new Rectangle(0, 0, 128, 128),
-                            new Rectangle(128, 0, 128, 128),
-                            new Rectangle(0, 128, 128, 128),
-                            new Rectangle(128, 128, 128, 128)
-                        };
-                        for (int i = 0; i < subImageCount; i++)
-                        {
-                            gfx.DrawImage(ObjectAssoc.GetObjectImage(selectedBehaviorCriterias[i], false), subImagePlaces[i]);
+                            for (int col = 0; col < numCols; col++)
+                            {
+                                int index = row * numCols + col;
+                                if (index >= selectedBehaviorCriterias.Count) break;
+                                Rectangle rect = new Rectangle(col * imageSize, row * imageSize, imageSize, imageSize);
+                                gfx.DrawImage(ObjectAssoc.GetObjectImage(selectedBehaviorCriterias[index], false), rect);
+                            }
                         }
                     }
                     _multiImage = multiBitmap;
@@ -605,3 +607,4 @@ namespace SM64_Diagnostic.Managers
         }
     }
 }
+ 
