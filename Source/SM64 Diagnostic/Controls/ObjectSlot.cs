@@ -30,7 +30,7 @@ namespace SM64_Diagnostic
         Point _objectImageLocation = new Point();
         string _text;
 
-        bool _selected = true;
+        bool _selected = false;
         bool _active = false;
         BehaviorCriteria _behavior;
 
@@ -315,63 +315,31 @@ namespace SM64_Diagnostic
             var oldBorderColor = _borderColor;
             var oldBackColor = _backColor;
             bool imageUpdated = false;
-            if (!_selected)
+            var newColor = _mainColor;
+            switch (MouseState)
             {
-                var newColor = _mainColor;
-                switch (MouseState)
-                {
-                    case MouseStateType.Down:
-                        _borderColor = newColor.Darken(0.5);
-                        _backColor = newColor.Darken(0.5).Lighten(0.5);
-                        break;
-                    case MouseStateType.Over:
-                        _borderColor = newColor.Lighten(0.75);
-                        _backColor = newColor.Lighten(0.92);
-                        break;
-                    default:
-                        _borderColor = newColor.Lighten(0.5);
-                        _backColor = newColor.Lighten(0.85);
-                        break;
-                }
-                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, true);
-                if (_objectImage != newImage)
-                {
-                    lock (_gfxLock)
-                    {
-                        _objectImage = newImage;
-                        RebufferObjectImage();
-                    }
-                    imageUpdated = true;
-                }
+                case MouseStateType.Down:
+                    _borderColor = newColor.Darken(0.5);
+                    _backColor = newColor.Darken(0.5).Lighten(0.5);
+                    break;
+                case MouseStateType.Over:
+                    _borderColor = newColor.Lighten(0.5);
+                    _backColor = newColor.Lighten(0.85);
+                    break;
+                default:
+                    _borderColor = newColor;
+                    _backColor = newColor.Lighten(0.7);
+                    break;
             }
-            else
+            Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, !_active);
+            if (_objectImage != newImage)
             {
-                var newColor = _mainColor;
-                switch (MouseState)
+                lock (_gfxLock)
                 {
-                    case MouseStateType.Down:
-                        _borderColor = newColor.Darken(0.5);
-                        _backColor = newColor.Darken(0.5).Lighten(0.5);
-                        break;
-                    case MouseStateType.Over:
-                        _borderColor = newColor.Lighten(0.5);
-                        _backColor = newColor.Lighten(0.85);
-                        break;
-                    default:
-                        _borderColor = newColor;
-                        _backColor = newColor.Lighten(0.7);
-                        break;
+                    _objectImage = newImage;
+                    RebufferObjectImage();
                 }
-                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, !_active);
-                if (_objectImage != newImage)
-                {
-                    lock (_gfxLock)
-                    {
-                        _objectImage = newImage;
-                        RebufferObjectImage();
-                    }
-                    imageUpdated = true;
-                }
+                imageUpdated = true;
             }
 
             bool colorUpdated = false;

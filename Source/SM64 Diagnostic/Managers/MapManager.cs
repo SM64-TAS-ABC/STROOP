@@ -241,24 +241,13 @@ namespace SM64_Diagnostic.Managers
             // Calculate object slot's cooridnates
             foreach (var mapObj in _mapObjects)
             {
-                if (!_mapGui.MapShowObjects.Checked)
-                {
-                    mapObj.Draw = false;
-                    continue;
-                }
-
-                // Make sure the object is in the same PU as Mario
-                var objPuX = PuUtilities.GetPUFromCoord(mapObj.X);
-                var objPuY = PuUtilities.GetPUFromCoord(mapObj.Y);
-                var objPuZ = PuUtilities.GetPUFromCoord(mapObj.Z);
-
-                // Don't draw the object if it is in a separate PU as mario
-                mapObj.Draw = (mapObj.Show && objPuX == puX && objPuY == puY && objPuZ == puZ 
-                    && (_mapGui.MapShowInactiveObjects.Checked || mapObj.IsActive));
+                mapObj.Draw = (mapObj.Show && (_mapGui.MapShowInactiveObjects.Checked || mapObj.IsActive));
                 if (!mapObj.Draw)
                     continue;
 
                 // Adjust object coordinates relative from current PU
+                var objPuX = PuUtilities.GetPUFromCoord(mapObj.X);
+                var objPuZ = PuUtilities.GetPUFromCoord(mapObj.Z);
                 float objPosX = PuUtilities.GetRelativePuPosition(mapObj.X, objPuX);
                 float objPosZ = PuUtilities.GetRelativePuPosition(mapObj.Z, objPuZ);
                 var objCoords = new PointF(objPosX, objPosZ);

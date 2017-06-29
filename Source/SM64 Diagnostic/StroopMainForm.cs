@@ -105,7 +105,6 @@ namespace SM64_Diagnostic
             mapGui.MapZoomTrackbar = trackBarMapZoom;
             mapGui.MapShowInactiveObjects = checkBoxMapShowInactive;
             mapGui.MapShowMario = checkBoxMapShowMario;
-            mapGui.MapShowObjects = checkBoxMapShowObj;
             mapGui.MapShowHolp = checkBoxMapShowHolp;
             mapGui.MapShowCamera = checkBoxMapShowCamera;
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
@@ -563,13 +562,11 @@ namespace SM64_Diagnostic
         {
             if (tabControlMain.SelectedTab == tabPageMap)
             {
-                _objectSlotManager.UpdateSelectedMapObjectSlots();
                 comboBoxMapToggleMode.Visible = true;
                 labelToggleMode.Visible = true;
             }
             else
             {
-                _objectSlotManager.SetAllSelectedMapObjectSlots();
                 comboBoxMapToggleMode.Visible = false;
                 labelToggleMode.Visible = false;
             }

@@ -21,7 +21,6 @@ namespace SM64_Diagnostic.Structs
         public TrackBar MapZoomTrackbar;
         public CheckBox MapShowMario;
         public CheckBox MapShowInactiveObjects;
-        public CheckBox MapShowObjects;
         public CheckBox MapShowHolp;
         public CheckBox MapShowCamera;
         public CheckBox MapShowFloorTriangle;

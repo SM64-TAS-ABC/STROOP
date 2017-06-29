@@ -195,6 +195,7 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
+        /*
         public void SetAllSelectedMapObjectSlots()
         {
             foreach (var objSlot in ObjectSlots)
@@ -202,6 +203,7 @@ namespace SM64_Diagnostic.Managers
                 objSlot.SelectedOnMap = true;
             }
         }
+        */
 
         public void UpdateSelectedMapObjectSlots()
         {
@@ -606,8 +608,8 @@ namespace SM64_Diagnostic.Managers
             else
             {
                 // Update map object coordinates and rotation
-                _mapObjects[objAddress].Show = !_toggleMapBehaviors.Contains(behaviorCriteria)
-                    && !_toggleMapGroups.Contains(objData.ObjectProcessGroup) && !_toggleMapSlots.Contains(objAddress);
+                _mapObjects[objAddress].Show = _toggleMapBehaviors.Contains(behaviorCriteria)
+                    || _toggleMapGroups.Contains(objData.ObjectProcessGroup) || _toggleMapSlots.Contains(objAddress);
                 _mapObjects[objAddress].X = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
                 _mapObjects[objAddress].Y = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
                 _mapObjects[objAddress].Z = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);

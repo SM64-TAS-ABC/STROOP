@@ -20,7 +20,7 @@ namespace SM64_Diagnostic.Structs
         public bool IsActive;
         public float Rotation;
         public bool UsesRotation;
-        public bool Show = true;
+        public bool Show = false;
 
         public int TextureId;
 
