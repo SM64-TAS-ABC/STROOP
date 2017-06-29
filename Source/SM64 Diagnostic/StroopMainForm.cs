@@ -259,6 +259,7 @@ namespace SM64_Diagnostic
                 _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
                 _actionsManager.Update(tabControlMain.SelectedTab == tabPageActions);
                 _waterManager.Update(tabControlMain.SelectedTab == tabPageWater);
+                _controllerManager.Update(tabControlMain.SelectedTab == tabPageController);
                 _fileManager.Update(tabControlMain.SelectedTab == tabPageFile);
                 _levelManager.Update(tabControlMain.SelectedTab == tabPageLevel);
                 _cameraHackManager.Update(tabControlMain.SelectedTab == tabPageCamHack);
