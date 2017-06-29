@@ -115,7 +115,7 @@ namespace SM64_Diagnostic
 
             currentContext.ActionsManager = _actionsManager = new ActionsManager(_sm64Stream, _actionsData, noTearFlowLayoutPanelActions);
             currentContext.WaterManager = _waterManager = new DataManager(_sm64Stream, _waterData, noTearFlowLayoutPanelWater);
-            currentContext.ControllerManager = _controllerManager = new ControllerManager(_sm64Stream, _controllerData, noTearFlowLayoutPanelController, NoTearFlowLayoutPanelMario, _mapManager);
+            currentContext.ControllerManager = _controllerManager = new ControllerManager(_sm64Stream, _controllerData, tabPageController, NoTearFlowLayoutPanelController);
             currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
             currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
             currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc);

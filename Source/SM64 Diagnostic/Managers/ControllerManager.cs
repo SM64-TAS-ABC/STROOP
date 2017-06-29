@@ -15,10 +15,8 @@ namespace SM64_Diagnostic.Managers
 {
     public class ControllerManager : DataManager
     {
-        MapManager _mapManager;
-
-        public ControllerManager(ProcessStream stream, List<WatchVariable> marioData, Control marioControl, NoTearFlowLayoutPanel variableTable, MapManager mapManager)
-            : base(stream, marioData, variableTable, Config.Mario.StructAddress)
+        public ControllerManager(ProcessStream stream, List<WatchVariable> controllerData, Control controllerControl, NoTearFlowLayoutPanel variableTable)
+            : base(stream, controllerData, variableTable, Config.Mario.StructAddress)
         {
             /*
             _mapManager = mapManager;
@@ -214,73 +212,6 @@ namespace SM64_Diagnostic.Managers
 
         public override void Update(bool updateView)
         {
-            // Get Mario position and rotation
-            float x, y, z, rot;
-            var marioAddress = Config.Mario.StructAddress;
-            x = _stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            y = _stream.GetSingle(marioAddress + Config.Mario.YOffset);
-            z = _stream.GetSingle(marioAddress + Config.Mario.ZOffset);
-            rot = (float) (((_stream.GetUInt32(marioAddress + Config.Mario.RotationOffset) >> 16) % 65536) / 65536f * 360f); 
-
-            // Update Mario map object
-            _mapManager.MarioMapObject.X = x;
-            _mapManager.MarioMapObject.Y = y;
-            _mapManager.MarioMapObject.Z = z;
-            _mapManager.MarioMapObject.Rotation = rot;
-            _mapManager.MarioMapObject.Show = true;
-
-            // Get holp position
-            float holpX, holpY, holpZ;
-            holpX = _stream.GetSingle(Config.HolpX);
-            holpY = _stream.GetSingle(Config.HolpY);
-            holpZ = _stream.GetSingle(Config.HolpZ);
-
-            // Update holp map object position
-            _mapManager.HolpMapObject.X = holpX;
-            _mapManager.HolpMapObject.Y = holpY;
-            _mapManager.HolpMapObject.Z = holpZ;
-            _mapManager.HolpMapObject.Show = true;
-
-            // Update camera position and rotation
-            float cameraX, cameraY, cameraZ , cameraRot;
-            cameraX = _stream.GetSingle(Config.Camera.CameraX);
-            cameraY = _stream.GetSingle(Config.Camera.CameraY);
-            cameraZ = _stream.GetSingle(Config.Camera.CameraZ);
-            cameraRot = (float)(((UInt16)(_stream.GetUInt32(Config.Camera.CameraRot)) / 65536f * 360f));
-
-            // Update floor triangle
-            UInt32 floorTriangle = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
-            if (floorTriangle != 0x00)
-            {
-                Int16 x1 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.X1);
-                Int16 y1 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.Y1);
-                Int16 z1 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.Z1);
-                Int16 x2 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.X2);
-                Int16 y2 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.Y2);
-                Int16 z2 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.Z2);
-                Int16 x3 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.X3);
-                Int16 y3 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.Y3);
-                Int16 z3 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.Z3);
-                _mapManager.FloorTriangleMapObject.X1 = x1;
-                _mapManager.FloorTriangleMapObject.Z1 = z1;
-                _mapManager.FloorTriangleMapObject.X2 = x2;
-                _mapManager.FloorTriangleMapObject.Z2 = z2;
-                _mapManager.FloorTriangleMapObject.X3 = x3;
-                _mapManager.FloorTriangleMapObject.Z3 = z3;
-                _mapManager.FloorTriangleMapObject.Y = (y1 + y2 + y3) / 3;
-            }
-            _mapManager.FloorTriangleMapObject.Show = (floorTriangle != 0x00);
-
-            // Update camera map object position
-            _mapManager.CameraMapObject.X = cameraX;
-            _mapManager.CameraMapObject.Y = cameraY;
-            _mapManager.CameraMapObject.Z = cameraZ;
-            _mapManager.CameraMapObject.Rotation = cameraRot;
-
-            // We are done if we don't need to update the Mario Manager view
-            if (!updateView)
-                return;
-
             base.Update();
             ProcessSpecialVars();
         }
