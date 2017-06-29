@@ -52,11 +52,10 @@ namespace SM64_Diagnostic.Managers
         BehaviorCriteria? _lastSelectedBehavior;
         uint _standingOnObject, _interactingObject, _holdingObject, _usingObject, _closestObject, _cameraObject;
         int _activeObjCnt;
-        bool _selectedUpdated = false;
+        bool _selectedUpdatePending = false;
         Image _multiImage = null;
 
         bool _firstSlotSelect = true;
-        List<BehaviorCriteria> _prevSelectedBehaviorCriteria = new List<BehaviorCriteria>();
 
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum MapToggleModeType { Single, ObjectType, ProcessGroup };
@@ -110,6 +109,7 @@ namespace SM64_Diagnostic.Managers
             if (ManagerGui.TabControl.SelectedTab == null)
                 return;
 
+            _selectedUpdatePending = true;
             var selectedSlot = sender as ObjectSlot;
 
             // Parse behavior based on tab opened
@@ -403,7 +403,7 @@ namespace SM64_Diagnostic.Managers
 
             if (SelectedSlotsAddresses.Count > 1)
             {
-                if (_selectedUpdated || !selectedBehaviorCriterias.SequenceEqual(_prevSelectedBehaviorCriteria))
+                if (_selectedUpdatePending)
                 {
                     if (_lastSelectedBehavior != multiBehavior)
                     {
@@ -447,7 +447,7 @@ namespace SM64_Diagnostic.Managers
                     _objManager.BackColor = Config.ObjectGroups.VacantSlotColor;
                     _objManager.SlotIndex = "";
                     _objManager.SlotPos = "";
-                    _prevSelectedBehaviorCriteria = selectedBehaviorCriterias;
+                    _selectedUpdatePending = false;
                 }
             }
             else if (SelectedSlotsAddresses.Count == 0)
