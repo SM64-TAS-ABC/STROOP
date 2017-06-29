@@ -24,7 +24,7 @@ namespace SM64_Diagnostic
 
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, 
-            _actionsData, _waterData, _fileData, _levelData, _camHackData;
+            _actionsData, _waterData, _controllerData, _fileData, _levelData, _camHackData;
         ObjectAssociations _objectAssoc;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
@@ -36,6 +36,7 @@ namespace SM64_Diagnostic
         ObjectSlotsManager _objectSlotManager;
         DisassemblyManager _disManager;
         MarioManager _marioManager;
+        ControllerManager _controllerManager;
         ActionsManager _actionsManager;
         ObjectManager _objectManager;
         MapManager _mapManager;
@@ -49,6 +50,8 @@ namespace SM64_Diagnostic
         DebugManager _debugManager;
         DataManager _waterManager, _fileManager, _levelManager, _cameraHackManager;
         PuManager _puManager;
+
+        TabPage _previousTabPage;
 
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
@@ -112,6 +115,7 @@ namespace SM64_Diagnostic
 
             currentContext.ActionsManager = _actionsManager = new ActionsManager(_sm64Stream, _actionsData, noTearFlowLayoutPanelActions);
             currentContext.WaterManager = _waterManager = new DataManager(_sm64Stream, _waterData, noTearFlowLayoutPanelWater);
+            currentContext.ControllerManager = _controllerManager = new ControllerManager(_sm64Stream, _controllerData, noTearFlowLayoutPanelController, NoTearFlowLayoutPanelMario, _mapManager);
             currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
             currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
             currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc);
@@ -123,6 +127,7 @@ namespace SM64_Diagnostic
             currentContext.LevelManager = _levelManager = new DataManager(_sm64Stream, _levelData, noTearFlowLayoutPanelLevel);
             currentContext.CameraHackManager = _cameraHackManager = new DataManager(_sm64Stream, _camHackData, noTearFlowLayoutPanelCamHack);
             currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
+            _previousTabPage = tabPageObjects;
 
             // Create options manager
             var optionGui = new OptionsGui();
@@ -204,6 +209,8 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Water Data", statusNum++);
             _waterData = XmlConfigParser.OpenWatchVarData(@"Config/WaterData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading File Data", statusNum++);
+            _controllerData = XmlConfigParser.OpenWatchVarData(@"Config/ControllerData.xml", "MiscDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading Controller Data", statusNum++);
             _fileData = XmlConfigParser.OpenWatchVarData(@"Config/FileData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Level Data", statusNum++);
             _levelData = XmlConfigParser.OpenWatchVarData(@"Config/LevelData.xml", "MiscDataSchema.xsd");
@@ -570,7 +577,12 @@ namespace SM64_Diagnostic
                 comboBoxMapToggleMode.Visible = false;
                 labelToggleMode.Visible = false;
             }
-            _objectSlotManager.updateSlotColors();
+            
+            if (_previousTabPage == tabPageMap || tabControlMain.SelectedTab == tabPageMap)
+            {
+                _objectSlotManager.updateSlotColors();
+            }
+            _previousTabPage = tabControlMain.SelectedTab;
         }
     }
 }

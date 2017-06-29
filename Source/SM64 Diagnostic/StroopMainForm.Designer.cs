@@ -214,6 +214,7 @@ namespace SM64_Diagnostic
             this.radioButtonTriWall = new System.Windows.Forms.RadioButton();
             this.radioButtonTriFloor = new System.Windows.Forms.RadioButton();
             this.tabPageWater = new System.Windows.Forms.TabPage();
+            this.tabPageController = new System.Windows.Forms.TabPage();
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.tabPageLevel = new System.Windows.Forms.TabPage();
             this.tabPageMisc = new System.Windows.Forms.TabPage();
@@ -320,6 +321,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.NoTearFlowLayoutPanelTriangles = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.noTearFlowLayoutPanelWater = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.noTearFlowLayoutPanelController = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.noTearFlowLayoutPanelFile = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.noTearFlowLayoutPanelLevel = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.pictureBoxMisc = new SM64_Diagnostic.Controls.IntPictureBox();
@@ -364,6 +366,7 @@ namespace SM64_Diagnostic
             this.groupBoxTrianglePos.SuspendLayout();
             this.groupBoxTriangleNormal.SuspendLayout();
             this.tabPageWater.SuspendLayout();
+            this.tabPageController.SuspendLayout();
             this.tabPageFile.SuspendLayout();
             this.tabPageLevel.SuspendLayout();
             this.tabPageMisc.SuspendLayout();
@@ -566,6 +569,7 @@ namespace SM64_Diagnostic
             this.tabControlMain.Controls.Add(this.tabPageCamera);
             this.tabControlMain.Controls.Add(this.tabPageTriangles);
             this.tabControlMain.Controls.Add(this.tabPageWater);
+            this.tabControlMain.Controls.Add(this.tabPageController);
             this.tabControlMain.Controls.Add(this.tabPageFile);
             this.tabControlMain.Controls.Add(this.tabPageLevel);
             this.tabControlMain.Controls.Add(this.tabPageMisc);
@@ -2427,6 +2431,17 @@ namespace SM64_Diagnostic
             this.tabPageWater.TabIndex = 14;
             this.tabPageWater.Text = "Water";
             // 
+            // tabPageController
+            // 
+            this.tabPageController.Controls.Add(this.noTearFlowLayoutPanelController);
+            this.tabPageController.Location = new System.Drawing.Point(4, 22);
+            this.tabPageController.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageController.Name = "tabPageController";
+            this.tabPageController.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPageController.Size = new System.Drawing.Size(915, 576);
+            this.tabPageController.TabIndex = 14;
+            this.tabPageController.Text = "Controller";
+            // 
             // tabPageFile
             // 
             this.tabPageFile.Controls.Add(this.noTearFlowLayoutPanelFile);
@@ -3698,6 +3713,19 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelWater.Size = new System.Drawing.Size(911, 570);
             this.noTearFlowLayoutPanelWater.TabIndex = 2;
             // 
+            // noTearFlowLayoutPanelController
+            // 
+            this.noTearFlowLayoutPanelController.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelController.AutoScroll = true;
+            this.noTearFlowLayoutPanelController.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
+            this.noTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
+            this.noTearFlowLayoutPanelController.Name = "noTearFlowLayoutPanelController";
+            this.noTearFlowLayoutPanelController.Size = new System.Drawing.Size(911, 570);
+            this.noTearFlowLayoutPanelController.TabIndex = 2;
+            // 
             // noTearFlowLayoutPanelFile
             // 
             this.noTearFlowLayoutPanelFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -3945,6 +3973,7 @@ namespace SM64_Diagnostic
             this.groupBoxTriangleNormal.ResumeLayout(false);
             this.groupBoxTriangleNormal.PerformLayout();
             this.tabPageWater.ResumeLayout(false);
+            this.tabPageController.ResumeLayout(false);
             this.tabPageFile.ResumeLayout(false);
             this.tabPageLevel.ResumeLayout(false);
             this.tabPageMisc.ResumeLayout(false);
@@ -4163,6 +4192,8 @@ namespace SM64_Diagnostic
         private NoTearFlowLayoutPanel noTearFlowLayoutPanelActions;
         private TabPage tabPageWater;
         private NoTearFlowLayoutPanel noTearFlowLayoutPanelWater;
+        private TabPage tabPageController;
+        private NoTearFlowLayoutPanel noTearFlowLayoutPanelController;
         private TabPage tabPagePu;
         private GroupBox groupBoxPuController;
         private Label labelPuConPu;

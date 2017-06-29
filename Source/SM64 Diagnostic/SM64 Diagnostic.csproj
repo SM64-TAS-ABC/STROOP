@@ -130,6 +130,7 @@
     <Compile Include="Managers\HackManager.cs" />
     <Compile Include="Managers\ManagerContext.cs" />
     <Compile Include="Managers\ActionsManager.cs" />
+    <Compile Include="Managers\ControllerManager.cs" />
     <Compile Include="Managers\MiscManager.cs" />
     <Compile Include="Managers\DataManager.cs" />
     <Compile Include="Controls\DataContainer.cs" />
@@ -222,6 +223,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\MarioActions.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\ControllerData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\PendulumSwings.xml">
