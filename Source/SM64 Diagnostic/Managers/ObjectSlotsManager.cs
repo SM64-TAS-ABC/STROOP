@@ -41,6 +41,7 @@ namespace SM64_Diagnostic.Managers
 
         Dictionary<uint, MapObject> _mapObjects = new Dictionary<uint, MapObject>();
         Dictionary<uint, int> _memoryAddressSlotIndex;
+        Dictionary<uint, ObjectSlot> _memoryAddressSortedIndex = new Dictionary<uint, ObjectSlot>();
         Dictionary<uint, Tuple<int?, int?>> _lastSlotLabel = new Dictionary<uint, Tuple<int?, int?>>();
         bool _labelsLocked = false;
         public List<uint> SelectedSlotsAddresses = new List<uint>();
@@ -378,14 +379,18 @@ namespace SM64_Diagnostic.Managers
             // Lock label update
             _labelsLocked = ManagerGui.LockLabelsCheckbox.Checked;
 
+            for (int i = 0; i < Config.ObjectSlots.MaxSlots; i++)
+            {
+                UpdateSlot(newObjectSlotData[i], ObjectSlots[i]);
+                _memoryAddressSortedIndex[newObjectSlotData[i].Address] = ObjectSlots[i];
+            }
+
             BehaviorCriteria? multiBehavior = null;
             List<BehaviorCriteria> selectedBehaviorCriterias = new List<BehaviorCriteria>();
             bool firstObject = true;
-            for (int i = 0; i < Config.ObjectSlots.MaxSlots; i++)
+            foreach (uint slotAddress in SelectedSlotsAddresses)
             {
-                var behaviorCritera = UpdateSlot(newObjectSlotData[i], ObjectSlots[i]);
-                if (!SelectedSlotsAddresses.Contains(newObjectSlotData[i].Address))
-                    continue;
+                var behaviorCritera = _memoryAddressSortedIndex[slotAddress].Behavior;
 
                 selectedBehaviorCriterias.Add(behaviorCritera);
 
@@ -399,6 +404,7 @@ namespace SM64_Diagnostic.Managers
                     firstObject = false;
                 }
             }
+
             _miscManager.ActiveObjectCount = _activeObjCnt;
 
             if (SelectedSlotsAddresses.Count > 1)
@@ -457,7 +463,7 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private BehaviorCriteria UpdateSlot(ObjectSlotData objData, ObjectSlot objSlot)
+        private void UpdateSlot(ObjectSlotData objData, ObjectSlot objSlot)
         {
             uint objAddress = objData.Address;
             BehaviorCriteria behaviorCriteria;
@@ -539,8 +545,6 @@ namespace SM64_Diagnostic.Managers
 
             // Update the map
             UpdateMapObject(objData, behaviorCriteria);
-
-            return behaviorCriteria;
         }
 
         void UpdateObjectManager(ObjectSlot objSlot, BehaviorCriteria behaviorCriteria, ObjectSlotData objData)
