@@ -573,9 +573,9 @@ namespace SM64_Diagnostic.Utilities
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", overlayImageDir = "",
                 marioImagePath = "", holpMapImagePath = "", hudImagePath = "", debugImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
-                selectedOverlayImagePath = "", standingOnOverlayImagePath = "", holdingOverlayImagePath = "",
-                interactingOverlayImagePath = "", usingOverlayImagePath = "", closestOverlayImagePath = "",
-                cameraOverlayImagePath = "";
+                selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
+                standingOnOverlayImagePath = "", holdingOverlayImagePath = "", interactingOverlayImagePath = "",
+                usingOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "";
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
 
@@ -651,6 +651,14 @@ namespace SM64_Diagnostic.Utilities
                             {
                                 case "Selected":
                                     selectedOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "TrackedAndShown":
+                                    trackedAndShownOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "TrackedNotShown":
+                                    trackedNotShownOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "StandingOn":
@@ -762,6 +770,8 @@ namespace SM64_Diagnostic.Utilities
             assoc.CameraMapImage = Image.FromFile(mapImageDir + cameraMapImagePath);
             assoc.MarioBehavior = marioBehavior - ramToBehaviorOffset;
             objectSlotManagerGui.SelectedObjectOverlayImage = Image.FromFile(overlayImageDir + selectedOverlayImagePath);
+            objectSlotManagerGui.TrackedAndShownObjectOverlayImage = Image.FromFile(overlayImageDir + trackedAndShownOverlayImagePath);
+            objectSlotManagerGui.TrackedNotShownObjectOverlayImage = Image.FromFile(overlayImageDir + trackedNotShownOverlayImagePath);
             objectSlotManagerGui.StandingOnObjectOverlayImage = Image.FromFile(overlayImageDir + standingOnOverlayImagePath);
             objectSlotManagerGui.HoldingObjectOverlayImage = Image.FromFile(overlayImageDir + holdingOverlayImagePath);
             objectSlotManagerGui.InteractingObjectOverlayImage = Image.FromFile(overlayImageDir + interactingOverlayImagePath);

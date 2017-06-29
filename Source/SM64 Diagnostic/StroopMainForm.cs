@@ -136,7 +136,7 @@ namespace SM64_Diagnostic
             _slotManagerGui.FlowLayoutContainer = NoTearFlowLayoutPanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
-            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(_sm64Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
+            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(_sm64Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager, tabControlMain);
 
             SetupViews();
 
@@ -570,6 +570,7 @@ namespace SM64_Diagnostic
                 comboBoxMapToggleMode.Visible = false;
                 labelToggleMode.Visible = false;
             }
+            _objectSlotManager.updateSlotColors();
         }
     }
 }

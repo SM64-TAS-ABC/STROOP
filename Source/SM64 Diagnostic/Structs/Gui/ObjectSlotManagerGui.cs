@@ -12,6 +12,8 @@ namespace SM64_Diagnostic.Structs
     public class ObjectSlotManagerGui
     {
         public Image SelectedObjectOverlayImage;
+        public Image TrackedAndShownObjectOverlayImage;
+        public Image TrackedNotShownObjectOverlayImage;
         public Image StandingOnObjectOverlayImage;
         public Image HoldingObjectOverlayImage;
         public Image InteractingObjectOverlayImage;
@@ -29,6 +31,8 @@ namespace SM64_Diagnostic.Structs
         ~ObjectSlotManagerGui()
         {
             SelectedObjectOverlayImage?.Dispose();
+            TrackedAndShownObjectOverlayImage?.Dispose();
+            TrackedNotShownObjectOverlayImage?.Dispose();
             StandingOnObjectOverlayImage?.Dispose();
             HoldingObjectOverlayImage?.Dispose();
             InteractingObjectOverlayImage?.Dispose();

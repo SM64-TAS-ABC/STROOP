@@ -16,6 +16,7 @@ namespace SM64_Diagnostic
 {
     public class ObjectSlot : Panel
     {
+        public static TabControl tabControlMain;
         const int BorderSize = 2;
 
         ObjectSlotsManager _manager;
@@ -31,6 +32,7 @@ namespace SM64_Diagnostic
         string _text;
 
         bool _selected = false;
+        public bool Show = false;
         bool _active = false;
         BehaviorCriteria _behavior;
 
@@ -310,7 +312,7 @@ namespace SM64_Diagnostic
             _manager.ObjectAssoc.CreateCachedBufferedObjectImage(_objectImage, _bufferedObjectImage);
         }
 
-        void UpdateColors()
+        public void UpdateColors(bool force = false)
         {
             var oldBorderColor = _borderColor;
             var oldBackColor = _backColor;
@@ -355,7 +357,7 @@ namespace SM64_Diagnostic
                 }
             }
 
-            if (!imageUpdated && !colorUpdated)
+            if (!imageUpdated && !colorUpdated && !force)
                 return;
 
             Invalidate();
@@ -414,8 +416,16 @@ namespace SM64_Diagnostic
             }
 
             // Draw Overlays
-            if (DrawSelectedOverlay)
-                e.Graphics.DrawImage(_gui.SelectedObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (tabControlMain.SelectedTab.Text.Equals("Map"))
+            {
+                if (Show)
+                    e.Graphics.DrawImage(_gui.TrackedAndShownObjectOverlayImage, new Rectangle(new Point(), Size));
+            }
+            else
+            {
+                if (DrawSelectedOverlay)
+                    e.Graphics.DrawImage(_gui.SelectedObjectOverlayImage, new Rectangle(new Point(), Size));
+            }
             if (_drawInteractingObject)
                 e.Graphics.DrawImage(_gui.InteractingObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawHoldingOverlay)

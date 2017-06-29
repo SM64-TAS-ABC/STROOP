@@ -69,7 +69,7 @@ namespace SM64_Diagnostic.Managers
         }
 
         public ObjectSlotsManager(ProcessStream stream, ObjectAssociations objAssoc,
-            ObjectManager objManager, ObjectSlotManagerGui managerGui, MapManager mapManager, MiscManager miscManager)
+            ObjectManager objManager, ObjectSlotManagerGui managerGui, MapManager mapManager, MiscManager miscManager, TabControl tabControlMain)
         {
             ObjectAssoc = objAssoc;
             _stream = stream;
@@ -91,6 +91,7 @@ namespace SM64_Diagnostic.Managers
             ManagerGui.LabelMethodComboBox.SelectedItem = SlotLabelType.Recommended;
 
             // Create and setup object slots
+            ObjectSlot.tabControlMain = tabControlMain;
             ObjectSlots = new ObjectSlot[Config.ObjectSlots.MaxSlots];
             for (int i = 0; i < Config.ObjectSlots.MaxSlots; i++)
             {
@@ -214,6 +215,14 @@ namespace SM64_Diagnostic.Managers
                     && !_toggleMapSlots.Contains(objSlot.Address);
 
                 objSlot.SelectedOnMap = selected;
+            }
+        }
+
+        public void updateSlotColors()
+        {
+            foreach (ObjectSlot objSlot in ObjectSlots)
+            {
+                objSlot.UpdateColors(true);
             }
         }
 
@@ -553,7 +562,7 @@ namespace SM64_Diagnostic.Managers
                 UpdateObjectManager(objSlot, behaviorCriteria, objData);
 
             // Update the map
-            UpdateMapObject(objData, behaviorCriteria);
+            UpdateMapObject(objData, objSlot, behaviorCriteria);
         }
 
         void UpdateObjectManager(ObjectSlot objSlot, BehaviorCriteria behaviorCriteria, ObjectSlotData objData)
@@ -577,7 +586,7 @@ namespace SM64_Diagnostic.Managers
                 + (slotPos + (Config.SlotIndexsFromOne ? 1 : 0)).ToString();
         }
 
-        void UpdateMapObject(ObjectSlotData objData, BehaviorCriteria behaviorCriteria)
+        void UpdateMapObject(ObjectSlotData objData, ObjectSlot objSlot, BehaviorCriteria behaviorCriteria)
         {
             if (ManagerGui.TabControl.SelectedTab.Text != "Map" || !_mapManager.IsLoaded)
                 return;
@@ -610,6 +619,7 @@ namespace SM64_Diagnostic.Managers
                 // Update map object coordinates and rotation
                 _mapObjects[objAddress].Show = _toggleMapBehaviors.Contains(behaviorCriteria)
                     || _toggleMapGroups.Contains(objData.ObjectProcessGroup) || _toggleMapSlots.Contains(objAddress);
+                objSlot.Show = _mapObjects[objAddress].Show;
                 _mapObjects[objAddress].X = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
                 _mapObjects[objAddress].Y = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
                 _mapObjects[objAddress].Z = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);

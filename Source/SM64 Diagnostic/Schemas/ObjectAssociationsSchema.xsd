@@ -117,6 +117,28 @@
                   </xs:all>
                 </xs:complexType>
               </xs:element>
+              <xs:element name="TrackedAndShown">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="OverlayImage" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:attribute name="path" use="required" type="xs:string"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TrackedNotShown">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="OverlayImage" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:attribute name="path" use="required" type="xs:string"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
               <xs:element name="StandingOn">
                 <xs:complexType>
                   <xs:all>

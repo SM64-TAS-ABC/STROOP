@@ -37,6 +37,12 @@
     <Selected>
       <OverlayImage path="Selected.png"/>
     </Selected>
+    <TrackedAndShown>
+      <OverlayImage path="TrackedAndShown.png"/>
+    </TrackedAndShown>
+    <TrackedNotShown>
+      <OverlayImage path="TrackedNotShown.png"/>
+    </TrackedNotShown>
     <StandingOn>
       <OverlayImage path="StandingOn.png"/>
     </StandingOn>
