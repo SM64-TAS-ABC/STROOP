@@ -41,7 +41,7 @@ namespace SM64_Diagnostic.Managers
 
         Dictionary<uint, MapObject> _mapObjects = new Dictionary<uint, MapObject>();
         Dictionary<uint, int> _memoryAddressSlotIndex;
-        Dictionary<uint, ObjectSlot> _memoryAddressSortedIndex = new Dictionary<uint, ObjectSlot>();
+        Dictionary<uint, ObjectSlot> _memoryAddressSortedSlot = new Dictionary<uint, ObjectSlot>();
         Dictionary<uint, Tuple<int?, int?>> _lastSlotLabel = new Dictionary<uint, Tuple<int?, int?>>();
         bool _labelsLocked = false;
         public List<uint> SelectedSlotsAddresses = new List<uint>();
@@ -122,13 +122,20 @@ namespace SM64_Diagnostic.Managers
                     if ((keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight))
                         && SelectedSlotsAddresses.Count > 0)
                     {
-                        int minSelect = SelectedSlotsAddresses.Min(s => ObjectSlots.First(o => o.Address == s).Index);
-                        int maxSelect = SelectedSlotsAddresses.Max(s => ObjectSlots.First(o => o.Address == s).Index);
-                        int startRange = Math.Min(minSelect, selectedSlot.Index);
-                        int endRange = Math.Max(maxSelect, selectedSlot.Index);
-                        var selectedObjects = ObjectSlots.Where(o => o.Index >= startRange && o.Index <= endRange
-                            && !SelectedSlotsAddresses.Contains(o.Address));
-                        SelectedSlotsAddresses.AddRange(selectedObjects.Select(o => o.Address));
+                        uint startRangeAddress = SelectedSlotsAddresses[SelectedSlotsAddresses.Count - 1];
+                        int startRange = ObjectSlots.First(o => o.Address == startRangeAddress).Index;
+                        int endRange = selectedSlot.Index;
+
+                        int rangeSize = Math.Abs(endRange - startRange);
+                        int iteratorDirection = endRange > startRange ? 1 : -1;
+
+                        for (int i = 0; i <= rangeSize; i++)
+                        {
+                            int index = startRange + i * iteratorDirection;
+                            uint address = ObjectSlots[index].Address;
+                            if (!SelectedSlotsAddresses.Contains(address))
+                                SelectedSlotsAddresses.Add(address);
+                        }
                     }
                     else
                     {
@@ -382,7 +389,7 @@ namespace SM64_Diagnostic.Managers
             for (int i = 0; i < Config.ObjectSlots.MaxSlots; i++)
             {
                 UpdateSlot(newObjectSlotData[i], ObjectSlots[i]);
-                _memoryAddressSortedIndex[newObjectSlotData[i].Address] = ObjectSlots[i];
+                _memoryAddressSortedSlot[newObjectSlotData[i].Address] = ObjectSlots[i];
             }
 
             BehaviorCriteria? multiBehavior = null;
@@ -390,7 +397,7 @@ namespace SM64_Diagnostic.Managers
             bool firstObject = true;
             foreach (uint slotAddress in SelectedSlotsAddresses)
             {
-                var behaviorCritera = _memoryAddressSortedIndex[slotAddress].Behavior;
+                var behaviorCritera = _memoryAddressSortedSlot[slotAddress].Behavior;
 
                 selectedBehaviorCriterias.Add(behaviorCritera);
 
