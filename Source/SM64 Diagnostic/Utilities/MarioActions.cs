@@ -67,29 +67,19 @@ namespace SM64_Diagnostic.Utilities
             if (objAddresses.Count == 0)
                 return false;
 
-            // Move mario to object
-            var marioAddress = Config.Mario.StructAddress;
+            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
+            posAddressAngles.Add(new PositionAddressAngle(
+                Config.Mario.StructAddress + Config.Mario.XOffset,
+                Config.Mario.StructAddress + Config.Mario.YOffset,
+                Config.Mario.StructAddress + Config.Mario.ZOffset));
 
-            stream.Suspend();
+            float xOffset = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectXOffset));
+            float yOffset = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectYOffset));
+            float zOffset = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectZOffset));
 
-            // Get object position
-            float x, y, z;
-            x = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectXOffset));
-            y = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectYOffset));
-            z = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectZOffset));
+            yOffset += Config.Mario.MoveToObjectYOffset;
 
-            // Add offset
-            y += Config.Mario.MoveToObjectYOffset;
-
-            // Move mario to object
-            bool success = true;
-            success &= stream.SetValue(x, marioAddress + Config.Mario.XOffset);
-            success &= stream.SetValue(y, marioAddress + Config.Mario.YOffset);
-            success &= stream.SetValue(z, marioAddress + Config.Mario.ZOffset);
-
-            stream.Resume();
-
-            return success;
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, false);
         }
 
         public static bool RetrieveObjects(ProcessStream stream, List<uint> objAddresses)
@@ -195,28 +185,19 @@ namespace SM64_Diagnostic.Utilities
             if (objAddresses.Count == 0)
                 return false;
 
-            // Move mario to object
-            var marioAddress = Config.Mario.StructAddress;
+            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
+            posAddressAngles.Add(new PositionAddressAngle(
+                Config.Mario.StructAddress + Config.Mario.XOffset,
+                Config.Mario.StructAddress + Config.Mario.YOffset,
+                Config.Mario.StructAddress + Config.Mario.ZOffset));
 
-            // Get object position
-            float x, y, z;
-            x = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeXOffset));
-            y = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeYOffset));
-            z = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeZOffset));
+            float xOffset = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeXOffset));
+            float yOffset = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeYOffset));
+            float zOffset = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeZOffset));
 
-            // Add offset
-            y += Config.Mario.MoveToObjectYOffset;
+            yOffset += Config.Mario.MoveToObjectYOffset;
 
-            // Move mario to object
-            bool success = true;
-            stream.Suspend();
-
-            success &= stream.SetValue(x, marioAddress + Config.Mario.XOffset);
-            success &= stream.SetValue(y, marioAddress + Config.Mario.YOffset);
-            success &= stream.SetValue(z, marioAddress + Config.Mario.ZOffset);
-
-            stream.Resume();
-            return success;
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, false);
         }
 
         public static bool RetrieveObjectsHome(ProcessStream stream, List<uint> objAddresses)
