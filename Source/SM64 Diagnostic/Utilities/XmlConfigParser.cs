@@ -571,7 +571,7 @@ namespace SM64_Diagnostic.Utilities
 
             // Create Behavior-ImagePath list
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", overlayImageDir = "",
-                marioImagePath = "", holpMapImagePath = "", hudImagePath = "", debugImagePath = "",
+                marioImagePath = "", holpMapImagePath = "", hudImagePath = "", debugImagePath = "", controllerImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
                 standingOnOverlayImagePath = "", holdingOverlayImagePath = "", interactingOverlayImagePath = "",
@@ -627,6 +627,11 @@ namespace SM64_Diagnostic.Utilities
                     case "Debug":
                         debugImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                         assoc.DebugColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
+                        break;
+
+                    case "Controller":
+                        controllerImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
+                        assoc.ControllerColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
                         break;
 
                     case "Misc":
@@ -765,6 +770,7 @@ namespace SM64_Diagnostic.Utilities
             assoc.MarioMapImage = marioMapImagePath == "" ? assoc.MarioImage : Image.FromFile(mapImageDir + marioMapImagePath);
             assoc.HudImage = Image.FromFile(imageDir + hudImagePath);
             assoc.DebugImage = Image.FromFile(imageDir + debugImagePath);
+            assoc.ControllerImage = Image.FromFile(imageDir + controllerImagePath);
             assoc.MiscImage = Image.FromFile(imageDir + miscImagePath);
             assoc.HolpImage = Image.FromFile(mapImageDir + holpMapImagePath);
             assoc.CameraMapImage = Image.FromFile(mapImageDir + cameraMapImagePath);
