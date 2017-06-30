@@ -227,6 +227,7 @@ namespace SM64_Diagnostic
             this.tabPageWater = new System.Windows.Forms.TabPage();
             this.noTearFlowLayoutPanelWater = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageController = new System.Windows.Forms.TabPage();
+            this.pictureBoxController = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelController = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.noTearFlowLayoutPanelFile = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
@@ -337,7 +338,8 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
-            this.pictureBoxController = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.checkBoxCameraPosRelative = new System.Windows.Forms.CheckBox();
+            this.checkBoxCameraSphericalPosRelative = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -372,6 +374,7 @@ namespace SM64_Diagnostic
             this.groupBoxTriangleNormal.SuspendLayout();
             this.tabPageWater.SuspendLayout();
             this.tabPageController.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxController)).BeginInit();
             this.tabPageFile.SuspendLayout();
             this.tabPageLevel.SuspendLayout();
             this.tabPageMisc.SuspendLayout();
@@ -403,7 +406,6 @@ namespace SM64_Diagnostic
             this.tabPageCamHack.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxController)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -435,7 +437,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 104);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 105);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -523,7 +525,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 55);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 56);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -1884,6 +1886,7 @@ namespace SM64_Diagnostic
             // 
             // groupBoxCameraSphericalPos
             // 
+            this.groupBoxCameraSphericalPos.Controls.Add(this.checkBoxCameraSphericalPosRelative);
             this.groupBoxCameraSphericalPos.Controls.Add(this.textBoxCameraSphericalPosRadius);
             this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosRadiusN);
             this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosRadiusP);
@@ -2026,6 +2029,7 @@ namespace SM64_Diagnostic
             // 
             // groupBoxCameraPos
             // 
+            this.groupBoxCameraPos.Controls.Add(this.checkBoxCameraPosRelative);
             this.groupBoxCameraPos.Controls.Add(this.textBoxCameraPosY);
             this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosYp);
             this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosYn);
@@ -2608,6 +2612,21 @@ namespace SM64_Diagnostic
             this.tabPageController.TabIndex = 14;
             this.tabPageController.Text = "Controller";
             // 
+            // pictureBoxController
+            // 
+            this.pictureBoxController.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxController.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxController.Location = new System.Drawing.Point(19, 4);
+            this.pictureBoxController.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxController.MaximumSize = new System.Drawing.Size(300, 300);
+            this.pictureBoxController.Name = "pictureBoxController";
+            this.pictureBoxController.Size = new System.Drawing.Size(300, 300);
+            this.pictureBoxController.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxController.TabIndex = 3;
+            this.pictureBoxController.TabStop = false;
+            // 
             // NoTearFlowLayoutPanelController
             // 
             this.NoTearFlowLayoutPanelController.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -3087,7 +3106,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(618, 543);
+            this.glControlMap.Size = new System.Drawing.Size(619, 543);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -3913,20 +3932,25 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
-            // pictureBoxController
+            // checkBoxCameraPosRelative
             // 
-            this.pictureBoxController.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxController.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxController.Location = new System.Drawing.Point(19, 4);
-            this.pictureBoxController.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxController.MaximumSize = new System.Drawing.Size(300, 300);
-            this.pictureBoxController.Name = "pictureBoxController";
-            this.pictureBoxController.Size = new System.Drawing.Size(300, 300);
-            this.pictureBoxController.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxController.TabIndex = 3;
-            this.pictureBoxController.TabStop = false;
+            this.checkBoxCameraPosRelative.AutoSize = true;
+            this.checkBoxCameraPosRelative.Location = new System.Drawing.Point(120, 0);
+            this.checkBoxCameraPosRelative.Name = "checkBoxCameraPosRelative";
+            this.checkBoxCameraPosRelative.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxCameraPosRelative.TabIndex = 37;
+            this.checkBoxCameraPosRelative.Text = "Relative";
+            this.checkBoxCameraPosRelative.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxCameraSphericalPosRelative
+            // 
+            this.checkBoxCameraSphericalPosRelative.AutoSize = true;
+            this.checkBoxCameraSphericalPosRelative.Location = new System.Drawing.Point(91, 0);
+            this.checkBoxCameraSphericalPosRelative.Name = "checkBoxCameraSphericalPosRelative";
+            this.checkBoxCameraSphericalPosRelative.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxCameraSphericalPosRelative.TabIndex = 38;
+            this.checkBoxCameraSphericalPosRelative.Text = "Pivot on Mario";
+            this.checkBoxCameraSphericalPosRelative.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -3996,6 +4020,7 @@ namespace SM64_Diagnostic
             this.groupBoxTriangleNormal.PerformLayout();
             this.tabPageWater.ResumeLayout(false);
             this.tabPageController.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxController)).EndInit();
             this.tabPageFile.ResumeLayout(false);
             this.tabPageLevel.ResumeLayout(false);
             this.tabPageMisc.ResumeLayout(false);
@@ -4038,7 +4063,6 @@ namespace SM64_Diagnostic
             this.tabPageOptions.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxController)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4350,6 +4374,8 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxObjPosRelative;
         private CheckBox checkBoxTrianglePosRelative;
         private IntPictureBox pictureBoxController;
+        private CheckBox checkBoxCameraPosRelative;
+        private CheckBox checkBoxCameraSphericalPosRelative;
     }
 }
 

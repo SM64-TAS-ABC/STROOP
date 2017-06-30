@@ -9,6 +9,7 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
+using SM64Diagnostic.Controls;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -23,19 +24,30 @@ namespace SM64_Diagnostic.Managers
             : base(stream, cameraData, variableTable)
         {
             var cameraPosGroupBox = tabControl.Controls["groupBoxCameraPos"] as GroupBox;
-            _cameraPosXZTextbox = cameraPosGroupBox.Controls["textBoxCameraPosXZ"] as TextBox;
-            _cameraPosYTextbox = cameraPosGroupBox.Controls["textBoxCameraPosY"] as TextBox;
-            (cameraPosGroupBox.Controls["buttoncameraPosXp"] as Button).Click += (sender, e) => cameraPosXZButton_Click(sender, e, 1, 0);
-            (cameraPosGroupBox.Controls["buttoncameraPosXn"] as Button).Click += (sender, e) => cameraPosXZButton_Click(sender, e, -1, 0);
-            (cameraPosGroupBox.Controls["buttoncameraPosZp"] as Button).Click += (sender, e) => cameraPosXZButton_Click(sender, e, 0, 1);
-            (cameraPosGroupBox.Controls["buttoncameraPosZn"] as Button).Click += (sender, e) => cameraPosXZButton_Click(sender, e, 0, -1);
-            (cameraPosGroupBox.Controls["buttoncameraPosXpZp"] as Button).Click += (sender, e) => cameraPosXZButton_Click(sender, e, 1, 1);
-            (cameraPosGroupBox.Controls["buttoncameraPosXpZn"] as Button).Click += (sender, e) => cameraPosXZButton_Click(sender, e, 1, -1);
-            (cameraPosGroupBox.Controls["buttoncameraPosXnZp"] as Button).Click += (sender, e) => cameraPosXZButton_Click(sender, e, -1, 1);
-            (cameraPosGroupBox.Controls["buttoncameraPosXnZn"] as Button).Click += (sender, e) => cameraPosXZButton_Click(sender, e, -1, -1);
-            (cameraPosGroupBox.Controls["buttoncameraPosYp"] as Button).Click += (sender, e) => cameraPosYButton_Click(sender, e, 1);
-            (cameraPosGroupBox.Controls["buttoncameraPosYn"] as Button).Click += (sender, e) => cameraPosYButton_Click(sender, e, -1);
-            
+            PositionController.initialize(
+                cameraPosGroupBox.Controls["buttonCameraPosXn"] as Button,
+                cameraPosGroupBox.Controls["buttonCameraPosXp"] as Button,
+                cameraPosGroupBox.Controls["buttonCameraPosZn"] as Button,
+                cameraPosGroupBox.Controls["buttonCameraPosZp"] as Button,
+                cameraPosGroupBox.Controls["buttonCameraPosXnZn"] as Button,
+                cameraPosGroupBox.Controls["buttonCameraPosXnZp"] as Button,
+                cameraPosGroupBox.Controls["buttonCameraPosXpZn"] as Button,
+                cameraPosGroupBox.Controls["buttonCameraPosXpZp"] as Button,
+                cameraPosGroupBox.Controls["buttonCameraPosYp"] as Button,
+                cameraPosGroupBox.Controls["buttonCameraPosYn"] as Button,
+                cameraPosGroupBox.Controls["textBoxCameraPosXZ"] as TextBox,
+                cameraPosGroupBox.Controls["textBoxCameraPosY"] as TextBox,
+                cameraPosGroupBox.Controls["checkBoxCameraPosRelative"] as CheckBox,
+                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
+                {
+                    MarioActions.MoveCamera(
+                        _stream,
+                        xOffset,
+                        yOffset,
+                        zOffset,
+                        useRelative);
+                });
+
             var cameraSphericalPosGroupBox = tabControl.Controls["groupBoxCameraSphericalPos"] as GroupBox;
             _cameraSphericalPosThetaPhiTextbox = cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosThetaPhi"] as TextBox;
             _cameraSphericalPosRadiusTextbox = cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosRadius"] as TextBox;
@@ -91,24 +103,6 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             base.Update();
-        }
-
-        private void cameraPosXZButton_Click(object sender, EventArgs e, int xSign, int zSign)
-        {
-            float xzValue;
-            if (!float.TryParse(_cameraPosXZTextbox.Text, out xzValue))
-                return;
-
-            MarioActions.MoveCamera(_stream, xSign * xzValue, 0, zSign * xzValue);
-        }
-
-        private void cameraPosYButton_Click(object sender, EventArgs e, int ySign)
-        {
-            float yValue;
-            if (!float.TryParse(_cameraPosYTextbox.Text, out yValue))
-                return;
-
-            MarioActions.MoveCamera(_stream, 0, ySign * yValue, 0);
         }
 
         private void cameraSphericalPosThetaPhiButton_Click(object sender, EventArgs e, int thetaSign, int phiSign)

@@ -827,9 +827,12 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool MoveCamera(ProcessStream stream, float xOffset, float yOffset, float zOffset)
+        public static bool MoveCamera(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             handleScaling(ref xOffset, ref zOffset);
+
+            ushort relativeAngle = (UInt16)(stream.GetUInt32(Config.Camera.CameraRot));
+            handleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
 
             float x, y, z;
             x = stream.GetSingle(Config.Camera.CameraX);
