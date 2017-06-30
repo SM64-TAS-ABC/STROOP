@@ -13,6 +13,55 @@ namespace SM64_Diagnostic.Utilities
     {
         static uint _prevMarioGraphic = 0x00;
 
+        private struct PositionAddressAngle
+        {
+            public readonly uint XAddress;
+            public readonly uint YAddress;
+            public readonly uint ZAddress;
+            public readonly ushort Angle;
+
+            public PositionAddressAngle(uint xAddress, uint yAddress, uint zAddress, ushort angle = 0)
+            {
+                XAddress = xAddress;
+                YAddress = yAddress;
+                ZAddress = zAddress;
+                Angle = angle;
+            }
+        }
+
+        private static bool MoveThings(ProcessStream stream, List<PositionAddressAngle> posAddressAngles,
+            float xOffset, float yOffset, float zOffset, bool translate, bool useRelative = false)
+        {
+            if (posAddressAngles.Count == 0)
+                return false;
+
+            bool success = true;
+            stream.Suspend();
+
+            foreach (var posAddressAngle in posAddressAngles)
+            {
+                float currentXOffset = xOffset;
+                float currentYOffset = yOffset;
+                float currentZOffset = zOffset;
+
+                if (translate)
+                {
+                    handleScaling(ref currentXOffset, ref currentZOffset);
+                    handleRelativeAngle(ref currentXOffset, ref currentZOffset, useRelative, posAddressAngle.Angle);
+                    currentXOffset += stream.GetSingle(posAddressAngle.XAddress);
+                    currentYOffset += stream.GetSingle(posAddressAngle.YAddress);
+                    currentZOffset += stream.GetSingle(posAddressAngle.ZAddress);
+                }
+
+                success &= stream.SetValue(currentXOffset, posAddressAngle.XAddress);
+                success &= stream.SetValue(currentYOffset, posAddressAngle.YAddress);
+                success &= stream.SetValue(currentZOffset, posAddressAngle.ZAddress);
+            }
+
+            stream.Resume();
+            return success;
+        }
+
         public static bool GoToObjects(ProcessStream stream, List<uint> objAddresses)
         {
             if (objAddresses.Count == 0)
@@ -78,73 +127,29 @@ namespace SM64_Diagnostic.Utilities
         public static bool MoveObjects(ProcessStream stream, List<uint> objAddresses,
             float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            if (objAddresses.Count == 0)
-                return false;
+            List<PositionAddressAngle> posAddressAngles =
+                objAddresses.ConvertAll<PositionAddressAngle>(
+                    objAddress => new PositionAddressAngle(
+                        objAddress + Config.ObjectSlots.ObjectXOffset,
+                        objAddress + Config.ObjectSlots.ObjectYOffset,
+                        objAddress + Config.ObjectSlots.ObjectZOffset,
+                        stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset)));
 
-            handleScaling(ref xOffset, ref zOffset);
-
-            bool success = true;
-            stream.Suspend();
-
-            foreach (var objAddress in objAddresses)
-            {
-                float currentXOffset = xOffset;
-                float currentZOffset = zOffset;
-                ushort relativeAngle = stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
-                handleRelativeAngle(ref currentXOffset, ref currentZOffset, useRelative, relativeAngle);
-
-                float x, y, z;
-                x = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
-                y = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                z = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
-
-                x += currentXOffset;
-                y += yOffset;
-                z += currentZOffset;
-
-                success &= stream.SetValue(x, objAddress + Config.ObjectSlots.ObjectXOffset);
-                success &= stream.SetValue(y, objAddress + Config.ObjectSlots.ObjectYOffset);
-                success &= stream.SetValue(z, objAddress + Config.ObjectSlots.ObjectZOffset);
-            }
-
-            stream.Resume();
-            return success;
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, true, useRelative);
         }
 
         public static bool MoveObjectHomes(ProcessStream stream, List<uint> objAddresses,
             float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            if (objAddresses.Count == 0)
-                return false;
+            List<PositionAddressAngle> posAddressAngles =
+                objAddresses.ConvertAll<PositionAddressAngle>(
+                    objAddress => new PositionAddressAngle(
+                        objAddress + Config.ObjectSlots.HomeXOffset,
+                        objAddress + Config.ObjectSlots.HomeYOffset,
+                        objAddress + Config.ObjectSlots.HomeZOffset,
+                        stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset)));
 
-            handleScaling(ref xOffset, ref zOffset);
-
-            bool success = true;
-            stream.Suspend();
-
-            foreach (var objAddress in objAddresses)
-            {
-                float currentXOffset = xOffset;
-                float currentZOffset = zOffset;
-                ushort relativeAngle = stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
-                handleRelativeAngle(ref currentXOffset, ref currentZOffset, useRelative, relativeAngle);
-
-                float x, y, z;
-                x = stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
-                y = stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
-                z = stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
-
-                x += currentXOffset;
-                y += yOffset;
-                z += currentZOffset;
-
-                success &= stream.SetValue(x, objAddress + Config.ObjectSlots.HomeXOffset);
-                success &= stream.SetValue(y, objAddress + Config.ObjectSlots.HomeYOffset);
-                success &= stream.SetValue(z, objAddress + Config.ObjectSlots.HomeZOffset);
-            }
-
-            stream.Resume();
-            return success;
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, true, useRelative);
         }
 
         public static bool RotateObjects(ProcessStream stream, List<uint> objAddresses,
@@ -448,60 +453,26 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveMario(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            handleScaling(ref xOffset, ref zOffset);
+            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
+            posAddressAngles.Add(new PositionAddressAngle(
+                Config.Mario.StructAddress + Config.Mario.XOffset,
+                Config.Mario.StructAddress + Config.Mario.YOffset,
+                Config.Mario.StructAddress + Config.Mario.ZOffset,
+                stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset)));
 
-            ushort relativeAngle = stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
-            handleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
-
-            var marioAddress = Config.Mario.StructAddress;
-
-            float x, y, z;
-            x = stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            y = stream.GetSingle(marioAddress + Config.Mario.YOffset);
-            z = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
-
-            x += xOffset;
-            y += yOffset;
-            z += zOffset;
-
-            bool success = true;
-            stream.Suspend();
-
-            success &= stream.SetValue(x, marioAddress + Config.Mario.XOffset);
-            success &= stream.SetValue(y, marioAddress + Config.Mario.YOffset);
-            success &= stream.SetValue(z, marioAddress + Config.Mario.ZOffset);
-
-            stream.Resume();
-            return success;
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, true, useRelative);
         }
 
         public static bool MoveHOLP(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            handleScaling(ref xOffset, ref zOffset);
+            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
+            posAddressAngles.Add(new PositionAddressAngle(
+                Config.Mario.StructAddress + Config.HolpX,
+                Config.Mario.StructAddress + Config.HolpY,
+                Config.Mario.StructAddress + Config.HolpZ,
+                stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset)));
 
-            ushort relativeAngle = stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
-            handleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
-
-            var marioAddress = Config.Mario.StructAddress;
-
-            float x, y, z;
-            x = stream.GetSingle(Config.HolpX);
-            y = stream.GetSingle(Config.HolpY);
-            z = stream.GetSingle(Config.HolpZ);
-
-            x += xOffset;
-            y += yOffset;
-            z += zOffset;
-
-            bool success = true;
-            stream.Suspend();
-
-            success &= stream.SetValue(x, Config.HolpX);
-            success &= stream.SetValue(y, Config.HolpY);
-            success &= stream.SetValue(z, Config.HolpZ);
-
-            stream.Resume();
-            return success;
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, true, useRelative);
         }
 
         public static bool MarioChangeYaw(ProcessStream stream, int yawOffset)
@@ -829,29 +800,14 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveCamera(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            handleScaling(ref xOffset, ref zOffset);
+            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
+            posAddressAngles.Add(new PositionAddressAngle(
+                Config.Camera.CameraX,
+                Config.Camera.CameraY,
+                Config.Camera.CameraZ,
+                (UInt16)(stream.GetUInt32(Config.Camera.CameraRot))));
 
-            ushort relativeAngle = (UInt16)(stream.GetUInt32(Config.Camera.CameraRot));
-            handleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
-
-            float x, y, z;
-            x = stream.GetSingle(Config.Camera.CameraX);
-            y = stream.GetSingle(Config.Camera.CameraY);
-            z = stream.GetSingle(Config.Camera.CameraZ);
-
-            x += xOffset;
-            y += yOffset;
-            z += zOffset;
-
-            bool success = true;
-            stream.Suspend();
-
-            success &= stream.SetValue(x, Config.Camera.CameraX);
-            success &= stream.SetValue(y, Config.Camera.CameraY);
-            success &= stream.SetValue(z, Config.Camera.CameraZ);
-
-            stream.Resume();
-            return success;
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, true, useRelative);
         }
 
         public static bool MoveCameraSpherically(ProcessStream stream, float radiusOffset, float thetaOffset, float phiOffset, float pivotX, float pivotY, float pivotZ)

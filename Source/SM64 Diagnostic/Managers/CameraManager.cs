@@ -15,8 +15,6 @@ namespace SM64_Diagnostic.Managers
 {
     public class CameraManager : DataManager
     {
-        TextBox _cameraPosXZTextbox;
-        TextBox _cameraPosYTextbox;
         TextBox _cameraSphericalPosThetaPhiTextbox;
         TextBox _cameraSphericalPosRadiusTextbox;
 
