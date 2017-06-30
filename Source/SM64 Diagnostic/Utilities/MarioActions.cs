@@ -73,45 +73,31 @@ namespace SM64_Diagnostic.Utilities
                 Config.Mario.StructAddress + Config.Mario.YOffset,
                 Config.Mario.StructAddress + Config.Mario.ZOffset));
 
-            float xOffset = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectXOffset));
-            float yOffset = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectYOffset));
-            float zOffset = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectZOffset));
+            float xDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectXOffset));
+            float yDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectYOffset));
+            float zDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectZOffset));
 
-            yOffset += Config.Mario.MoveToObjectYOffset;
+            yDestination += Config.Mario.MoveToObjectYOffset;
 
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, false);
+            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, false);
         }
 
         public static bool RetrieveObjects(ProcessStream stream, List<uint> objAddresses)
         {
-            if (objAddresses.Count == 0)
-                return false;
+            List<PositionAddressAngle> posAddressAngles =
+                objAddresses.ConvertAll<PositionAddressAngle>(
+                    objAddress => new PositionAddressAngle(
+                        objAddress + Config.ObjectSlots.ObjectXOffset,
+                        objAddress + Config.ObjectSlots.ObjectYOffset,
+                        objAddress + Config.ObjectSlots.ObjectZOffset));
 
-            // Move object to Mario
-            var marioAddress = Config.Mario.StructAddress;
+            float xDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            float yDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            float zDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            stream.Suspend();
+            yDestination += Config.ObjectSlots.MoveToMarioYOffset;
 
-            // Get Mario position
-            float x, y, z;
-            x = stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            y = stream.GetSingle(marioAddress + Config.Mario.YOffset);
-            z = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
-
-            // Add offset
-            y += Config.ObjectSlots.MoveToMarioYOffset;
-
-            // Move object to Mario
-            bool success = true;
-            foreach (var objAddress in objAddresses)
-            {
-                success &= stream.SetValue(x, objAddress + Config.ObjectSlots.ObjectXOffset);
-                success &= stream.SetValue(y, objAddress + Config.ObjectSlots.ObjectYOffset);
-                success &= stream.SetValue(z, objAddress + Config.ObjectSlots.ObjectZOffset);
-            }
-            stream.Resume();
-
-            return success;
+            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, false);
         }
 
         public static bool MoveObjects(ProcessStream stream, List<uint> objAddresses,
@@ -191,45 +177,31 @@ namespace SM64_Diagnostic.Utilities
                 Config.Mario.StructAddress + Config.Mario.YOffset,
                 Config.Mario.StructAddress + Config.Mario.ZOffset));
 
-            float xOffset = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeXOffset));
-            float yOffset = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeYOffset));
-            float zOffset = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeZOffset));
+            float xDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeXOffset));
+            float yDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeYOffset));
+            float zDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeZOffset));
 
-            yOffset += Config.Mario.MoveToObjectYOffset;
+            yDestination += Config.Mario.MoveToObjectYOffset;
 
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, false);
+            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, false);
         }
 
         public static bool RetrieveObjectsHome(ProcessStream stream, List<uint> objAddresses)
         {
-            if (objAddresses.Count == 0)
-                return false;
+            List<PositionAddressAngle> posAddressAngles =
+                objAddresses.ConvertAll<PositionAddressAngle>(
+                    objAddress => new PositionAddressAngle(
+                        objAddress + Config.ObjectSlots.HomeXOffset,
+                        objAddress + Config.ObjectSlots.HomeYOffset,
+                        objAddress + Config.ObjectSlots.HomeZOffset));
 
-            // Move object to Mario
-            var marioAddress = Config.Mario.StructAddress;
+            float xDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            float yDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            float zDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            stream.Suspend();
+            yDestination += Config.ObjectSlots.MoveToMarioYOffset;
 
-            // Get Mario position
-            float x, y, z;
-            x = stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            y = stream.GetSingle(marioAddress + Config.Mario.YOffset);
-            z = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
-
-            // Add offset
-            y += Config.ObjectSlots.MoveToMarioYOffset;
-
-            // Move object to Mario
-            bool success = true;
-            foreach (var objAddress in objAddresses)
-            {
-                success &= stream.SetValue(x, objAddress + Config.ObjectSlots.HomeXOffset);
-                success &= stream.SetValue(y, objAddress + Config.ObjectSlots.HomeYOffset);
-                success &= stream.SetValue(z, objAddress + Config.ObjectSlots.HomeZOffset);
-            }
-            stream.Resume();
-
-            return success;
+            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, false);
         }
 
         public static bool CloneObject(ProcessStream stream, uint objAddress)
