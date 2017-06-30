@@ -45,7 +45,7 @@ namespace SM64_Diagnostic.Managers
                 marioPosGroupBox.Controls["checkBoxMarioPosRelative"] as CheckBox,
                 (float xOffset, float yOffset, float zOffset, bool useRelative) =>
                 {
-                    MarioActions.MoveMario(
+                    MarioActions.TranslateMario(
                         _stream,
                         xOffset,
                         yOffset,
@@ -97,7 +97,7 @@ namespace SM64_Diagnostic.Managers
                 marioHOLPGroupBox.Controls["checkBoxMarioHOLPRelative"] as CheckBox,
                 (float xOffset, float yOffset, float zOffset, bool useRelative) =>
                 {
-                    MarioActions.MoveHOLP(
+                    MarioActions.TranslateHOLP(
                         _stream,
                         xOffset,
                         yOffset,

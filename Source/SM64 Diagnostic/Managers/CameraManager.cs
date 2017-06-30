@@ -38,7 +38,7 @@ namespace SM64_Diagnostic.Managers
                 cameraPosGroupBox.Controls["checkBoxCameraPosRelative"] as CheckBox,
                 (float xOffset, float yOffset, float zOffset, bool useRelative) =>
                 {
-                    MarioActions.MoveCamera(
+                    MarioActions.TranslateCamera(
                         _stream,
                         xOffset,
                         yOffset,
@@ -112,7 +112,7 @@ namespace SM64_Diagnostic.Managers
             float pivotX, pivotY, pivotZ;
             (pivotX, pivotY, pivotZ) = getSphericalPivotPoint();
 
-            MarioActions.MoveCameraSpherically(_stream, 0, thetaSign * thetaPhiValue, phiSign * thetaPhiValue, pivotX, pivotY, pivotZ);
+            MarioActions.TranslateCameraSpherically(_stream, 0, thetaSign * thetaPhiValue, phiSign * thetaPhiValue, pivotX, pivotY, pivotZ);
         }
 
         private void cameraSphericalPosRadiusButton_Click(object sender, EventArgs e, int radiusSign)
@@ -124,7 +124,7 @@ namespace SM64_Diagnostic.Managers
             float pivotX, pivotY, pivotZ;
             (pivotX, pivotY, pivotZ) = getSphericalPivotPoint();
 
-            MarioActions.MoveCameraSpherically(_stream, radiusSign * radiusValue, 0, 0, pivotX, pivotY, pivotZ);
+            MarioActions.TranslateCameraSpherically(_stream, radiusSign * radiusValue, 0, 0, pivotX, pivotY, pivotZ);
         }
 
         private (float pivotX, float pivotY, float pivotZ) getSphericalPivotPoint()

@@ -279,7 +279,7 @@ namespace SM64_Diagnostic.Managers
                 objPosGroupBox.Controls["checkBoxObjPosRelative"] as CheckBox,
                 (float xOffset, float yOffset, float zOffset, bool useRelative) =>
                 {
-                    MarioActions.MoveObjects(
+                    MarioActions.TranslateObjects(
                         _stream,
                         _currentAddresses,
                         xOffset,
@@ -331,7 +331,7 @@ namespace SM64_Diagnostic.Managers
                 objHomeGroupBox.Controls["checkBoxObjHomeRelative"] as CheckBox,
                 (float xOffset, float yOffset, float zOffset, bool useRelative) =>
                 {
-                    MarioActions.MoveObjectHomes(
+                    MarioActions.TranslateObjectHomes(
                         _stream,
                         _currentAddresses,
                         xOffset,
