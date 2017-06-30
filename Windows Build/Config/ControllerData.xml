@@ -1,57 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ControllerData>
-  <Data type="float" address="0x3C" marioOffset="true">X</Data>
-  <Data type="float" address="0x40" marioOffset="true">Y</Data>
-  <Data type="float" address="0x44" marioOffset="true">Z</Data>
-  <Data type="float" address="0x48" marioOffset="true">X Speed</Data>
-  <Data type="float" address="0x4C" marioOffset="true">Y Speed</Data>
-  <Data type="float" address="0x50" marioOffset="true">Z Speed</Data>
-  <Data type="float" address="0x54" marioOffset="true">H Speed</Data>
-  <Data special="true" specialType="DeFactoSpeed">De Facto Speed</Data>
-  <Data type="float" address="0x58" marioOffset="true">X Sliding Speed</Data>
-  <Data type="float" address="0x5C" marioOffset="true">Z Sliding Speed</Data>
-  <Data special="true" specialType="SlidingSpeed">H Sliding Speed</Data>
-  <Data type="ushort" address="0x00C26C2A" absoluteAddress="true" isAngle="true">Sliding Angle</Data>
-  <Data special="true" specialType="MovementX">Delta X</Data>
-  <Data special="true" specialType="MovementY">Delta Y</Data>
-  <Data special="true" specialType="MovementZ">Delta Z</Data>
-  <Data special="true" specialType="MovementLateral">Delta Lateral</Data>
-  <Data special="true" specialType="QFrameCountEstimate">QFrames Est.</Data>
-  <Data type="ushort" address="0x00C26C1C" absoluteAddress="true" isAngle="true">Yaw (Facing)</Data>
-  <Data type="ushort" address="0x00C26C16" absoluteAddress="true" isAngle="true">Yaw (Intended)</Data>
-  <Data type="ushort" address="0x00c26c28" absoluteAddress="true" isAngle="true">Twirl Yaw</Data>
-  <Data type="short" address="0x00c26c26" absoluteAddress="true" isAngle="true">Yaw Velocity</Data>
-  <Data type="ushort" address="0x00C26C66" absoluteAddress="true" isAngle="true">Floor Yaw</Data>
-  <Data type="short" address="0x00c26c1e" absoluteAddress="true" isAngle="true">Pitch</Data>
-  <Data type="short" address="0x00c26c22" absoluteAddress="true" isAngle="true">Roll</Data>
-  <Data type="short" address="0x00c26c20" absoluteAddress="true" isAngle="true">Flying Pull Back</Data>
-  <Data type="short" address="0x00c281f0" absoluteAddress="true" isAngle="true">First Person Yaw</Data>
-  <Data type="short" address="0x00c281f2" absoluteAddress="true" isAngle="true">First Person Pitch</Data>
-  <Data type="uint" address="0xc26c68" absoluteAddress="true" useHex="true" isObject="true">Interaction Object</Data>
-  <Data type="uint" address="0xc26c70" absoluteAddress="true" useHex="true" isObject="true">Using Object</Data>
-  <Data type="uint" address="0xc1c8b4" absoluteAddress="true" useHex="true" isObject="true">Stood On Object</Data>
-  <Data type="uint" address="0xc26c6c" absoluteAddress="true" useHex="true" isObject="true">Held Object</Data>
-  <Data type="float" address="0x8033B3C8">HOLP X</Data>
-  <Data type="float" address="0x8033B3CC">HOLP Y</Data>
-  <Data type="float" address="0x8033B3D0">HOLP Z</Data>
-  <Data type="byte" address="0xc26e39" absoluteAddress="true">HOLP Type</Data>
-  <Data type="uint" address="0x04" marioOffset="true" isBool="true" mask="0x10">Hat on Head</Data>
-  <Data type="uint" address="0x04" marioOffset="true" isBool="true" mask="0x20">Hat in Hand</Data>
-  <Data type="uint" address="0x04" marioOffset="true" isBool="true" mask="0x08">Wing Cap</Data>
-  <Data type="uint" address="0x04" marioOffset="true" isBool="true" mask="0x04">Metal Cap</Data>
-  <Data type="uint" address="0x04" marioOffset="true" isBool="true" mask="0x02">Vanish Cap</Data>
-  <Data type="uint" address="0x04" marioOffset="true" isBool="true" mask="0x01">Should Have Hat</Data>
-  <Data type="ushort" address="0x00C26CA4" absoluteAddress="true">Cap Timer</Data>
-  <Data type="short" address="0x00C26C14" absoluteAddress="true">Hitstun Timer</Data>
-  <Data type="float" address="0x00c26cac" absoluteAddress="true">Peak Height</Data>
-  <Data type="float" address="0x8033b1E0">Floor Height</Data>
-  <Data special="true" specialType="FallHeight">Fall Height</Data>
-  <Data type="float" address="0x00c26cb0" absoluteAddress="true">Quicksand Height</Data>
-  <Data type="sbyte" address="0x00C26CA7" absoluteAddress="true">Unsquishing Timer</Data>
-  <Data type="ushort" address="0x00C26C0C" absoluteAddress="true">Squished Timer</Data>
-  <Data type="byte" address="0x00C19517" mask="0x01" absoluteAddress="true" isBool="true">Just Teleported</Data>
-  <Data type="int" address="0x009DC4DC" absoluteAddress="true">Blinking State</Data>
-  <Data type="short" address="0x00C1998A" absoluteAddress="true">Blinking Timer</Data>
-  <Data type="uint" address="0x00C4CBD8" absoluteAddress="true" useHex="true" isObject="true">Effective Mario Object</Data>
-  <Data type="uint" address="0xc26c78" absoluteAddress="true" useHex="true" isObject="true">Visual Mario Object</Data>
+  <Data type="sbyte" address="0xC52AD5" absoluteAddress="true">Buffered H</Data>
+  <Data type="sbyte" address="0xC52AD4" absoluteAddress="true">Buffered V</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x80">Buffered A</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x40">Buffered B</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x20">Buffered Z</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x10">Buffered S</Data>
+  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x10">Buffered R</Data>
+  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x20">Buffered L</Data>
+  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x08">Buffered C^</Data>
+  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x04">Buffered Cv</Data>
+  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x02">Buffered C&lt;</Data>
+  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x01">Buffered C></Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x08">Buffered D^</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x04">Buffered Dv</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x02">Buffered D&lt;</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x01">Buffered D></Data>
+
+  <Data type="sbyte" address="0xC26A79" absoluteAddress="true">Current H</Data>
+  <Data type="sbyte" address="0xC26A78" absoluteAddress="true">Current V</Data>
+  <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x80">Current A</Data>
+  <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x40">Current B</Data>
+  <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x20">Current Z</Data>
+  <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x10">Current S</Data>
+  <Data type="byte" address="0xC26A7A" absoluteAddress="true" isBool="true" mask="0x10">Current R</Data>
+  <Data type="byte" address="0xC26A7A" absoluteAddress="true" isBool="true" mask="0x20">Current L</Data>
+  <Data type="byte" address="0xC26A7A" absoluteAddress="true" isBool="true" mask="0x08">Current C^</Data>
+  <Data type="byte" address="0xC26A7A" absoluteAddress="true" isBool="true" mask="0x04">Current Cv</Data>
+  <Data type="byte" address="0xC26A7A" absoluteAddress="true" isBool="true" mask="0x02">Current &lt;</Data>
+  <Data type="byte" address="0xC26A7A" absoluteAddress="true" isBool="true" mask="0x01">Current C></Data>
+  <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x08">Current D^</Data>
+  <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x04">Current Dv</Data>
+  <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x02">Current D&lt;</Data>
+  <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x01">Current D></Data>
 </ControllerData>

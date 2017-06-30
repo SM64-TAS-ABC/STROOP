@@ -209,7 +209,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Water Data", statusNum++);
             _waterData = XmlConfigParser.OpenWatchVarData(@"Config/WaterData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading File Data", statusNum++);
-            _controllerData = XmlConfigParser.OpenWatchVarData(@"Config/ControllerData.xml", "MiscDataSchema.xsd");
+            _controllerData = XmlConfigParser.OpenWatchVarData(@"Config/ControllerData.xml", "MiscDataSchema.xsd", "marioOffset");
             loadingForm.UpdateStatus("Loading Controller Data", statusNum++);
             _fileData = XmlConfigParser.OpenWatchVarData(@"Config/FileData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Level Data", statusNum++);
