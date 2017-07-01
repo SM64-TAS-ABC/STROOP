@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -324,6 +324,7 @@ namespace SM64_Diagnostic
             this.tabPageCamHack = new System.Windows.Forms.TabPage();
             this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.checkBoxNeutralizeTriangleWith21 = new System.Windows.Forms.CheckBox();
             this.checkBoxDisableActionUpdateWhenCloning = new System.Windows.Forms.CheckBox();
             this.groupBoxShowOverlay = new System.Windows.Forms.GroupBox();
             this.checkBoxShowOverlayUsedObject = new System.Windows.Forms.CheckBox();
@@ -349,7 +350,16 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
-            this.checkBoxNeutralizeTriangleWith21 = new System.Windows.Forms.CheckBox();
+            this.groupBoxObjScale = new System.Windows.Forms.GroupBox();
+            this.textBoxObjScaleDepth = new System.Windows.Forms.TextBox();
+            this.textBoxObjScaleHeight = new System.Windows.Forms.TextBox();
+            this.textBoxObjScaleWidth = new System.Windows.Forms.TextBox();
+            this.buttonObjScaleDepthN = new System.Windows.Forms.Button();
+            this.buttonObjScaleHeightN = new System.Windows.Forms.Button();
+            this.buttonObjScaleWidthN = new System.Windows.Forms.Button();
+            this.buttonObjScaleDepthP = new System.Windows.Forms.Button();
+            this.buttonObjScaleHeightP = new System.Windows.Forms.Button();
+            this.buttonObjScaleWidthP = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -417,6 +427,7 @@ namespace SM64_Diagnostic
             this.tabPageOptions.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.groupBoxObjScale.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -448,7 +459,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 111);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 112);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -536,7 +547,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 62);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 63);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -649,6 +660,7 @@ namespace SM64_Diagnostic
             this.panelObj.Controls.Add(this.buttonObjDebilitate);
             this.panelObj.Controls.Add(this.buttonObjInteract);
             this.panelObj.Controls.Add(this.groupBoxObjHome);
+            this.panelObj.Controls.Add(this.groupBoxObjScale);
             this.panelObj.Controls.Add(this.groupBoxObjAngle);
             this.panelObj.Controls.Add(this.groupBoxObjPos);
             this.panelObj.Controls.Add(this.buttonObjGoToHome);
@@ -697,7 +709,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjHome.Controls.Add(this.buttonObjHomeXnZp);
             this.groupBoxObjHome.Controls.Add(this.buttonObjHomeXn);
             this.groupBoxObjHome.Controls.Add(this.buttonObjHomeXnZn);
-            this.groupBoxObjHome.Location = new System.Drawing.Point(3, 357);
+            this.groupBoxObjHome.Location = new System.Drawing.Point(3, 458);
             this.groupBoxObjHome.Name = "groupBoxObjHome";
             this.groupBoxObjHome.Size = new System.Drawing.Size(185, 146);
             this.groupBoxObjHome.TabIndex = 36;
@@ -3148,7 +3160,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(625, 543);
+            this.glControlMap.Size = new System.Drawing.Size(626, 543);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -3494,8 +3506,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -3783,6 +3795,19 @@ namespace SM64_Diagnostic
             this.tabPageOptions.Size = new System.Drawing.Size(915, 576);
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
+            // 
+            // checkBoxNeutralizeTriangleWith21
+            // 
+            this.checkBoxNeutralizeTriangleWith21.AutoSize = true;
+            this.checkBoxNeutralizeTriangleWith21.Checked = true;
+            this.checkBoxNeutralizeTriangleWith21.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxNeutralizeTriangleWith21.Location = new System.Drawing.Point(3, 105);
+            this.checkBoxNeutralizeTriangleWith21.Name = "checkBoxNeutralizeTriangleWith21";
+            this.checkBoxNeutralizeTriangleWith21.Size = new System.Drawing.Size(189, 17);
+            this.checkBoxNeutralizeTriangleWith21.TabIndex = 31;
+            this.checkBoxNeutralizeTriangleWith21.Text = "Neutralize Triangle With 21 (Not 0)";
+            this.checkBoxNeutralizeTriangleWith21.UseVisualStyleBackColor = true;
+            this.checkBoxNeutralizeTriangleWith21.CheckedChanged += new System.EventHandler(this.checkBoxNeutralizeTriangleWith21_CheckedChanged);
             // 
             // checkBoxDisableActionUpdateWhenCloning
             // 
@@ -4085,18 +4110,119 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
-            // checkBoxNeutralizeTriangleWith21
+            // groupBoxObjScale
             // 
-            this.checkBoxNeutralizeTriangleWith21.AutoSize = true;
-            this.checkBoxNeutralizeTriangleWith21.Checked = true;
-            this.checkBoxNeutralizeTriangleWith21.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNeutralizeTriangleWith21.Location = new System.Drawing.Point(3, 105);
-            this.checkBoxNeutralizeTriangleWith21.Name = "checkBoxNeutralizeTriangleWith21";
-            this.checkBoxNeutralizeTriangleWith21.Size = new System.Drawing.Size(189, 17);
-            this.checkBoxNeutralizeTriangleWith21.TabIndex = 31;
-            this.checkBoxNeutralizeTriangleWith21.Text = "Neutralize Triangle With 21 (Not 0)";
-            this.checkBoxNeutralizeTriangleWith21.UseVisualStyleBackColor = true;
-            this.checkBoxNeutralizeTriangleWith21.CheckedChanged += new System.EventHandler(this.checkBoxNeutralizeTriangleWith21_CheckedChanged);
+            this.groupBoxObjScale.Controls.Add(this.textBoxObjScaleDepth);
+            this.groupBoxObjScale.Controls.Add(this.textBoxObjScaleHeight);
+            this.groupBoxObjScale.Controls.Add(this.textBoxObjScaleWidth);
+            this.groupBoxObjScale.Controls.Add(this.buttonObjScaleDepthN);
+            this.groupBoxObjScale.Controls.Add(this.buttonObjScaleHeightN);
+            this.groupBoxObjScale.Controls.Add(this.buttonObjScaleWidthN);
+            this.groupBoxObjScale.Controls.Add(this.buttonObjScaleDepthP);
+            this.groupBoxObjScale.Controls.Add(this.buttonObjScaleHeightP);
+            this.groupBoxObjScale.Controls.Add(this.buttonObjScaleWidthP);
+            this.groupBoxObjScale.Location = new System.Drawing.Point(3, 357);
+            this.groupBoxObjScale.Name = "groupBoxObjScale";
+            this.groupBoxObjScale.Size = new System.Drawing.Size(185, 95);
+            this.groupBoxObjScale.TabIndex = 29;
+            this.groupBoxObjScale.TabStop = false;
+            this.groupBoxObjScale.Text = "Scale";
+            // 
+            // textBoxObjScaleDepth
+            // 
+            this.textBoxObjScaleDepth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxObjScaleDepth.Location = new System.Drawing.Point(67, 69);
+            this.textBoxObjScaleDepth.Name = "textBoxObjScaleDepth";
+            this.textBoxObjScaleDepth.Size = new System.Drawing.Size(51, 20);
+            this.textBoxObjScaleDepth.TabIndex = 33;
+            this.textBoxObjScaleDepth.Text = "100";
+            this.textBoxObjScaleDepth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxObjScaleHeight
+            // 
+            this.textBoxObjScaleHeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxObjScaleHeight.Location = new System.Drawing.Point(67, 44);
+            this.textBoxObjScaleHeight.Name = "textBoxObjScaleHeight";
+            this.textBoxObjScaleHeight.Size = new System.Drawing.Size(51, 20);
+            this.textBoxObjScaleHeight.TabIndex = 33;
+            this.textBoxObjScaleHeight.Text = "100";
+            this.textBoxObjScaleHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxObjScaleWidth
+            // 
+            this.textBoxObjScaleWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxObjScaleWidth.Location = new System.Drawing.Point(67, 19);
+            this.textBoxObjScaleWidth.Name = "textBoxObjScaleWidth";
+            this.textBoxObjScaleWidth.Size = new System.Drawing.Size(51, 20);
+            this.textBoxObjScaleWidth.TabIndex = 33;
+            this.textBoxObjScaleWidth.Text = "100";
+            this.textBoxObjScaleWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonObjScaleDepthN
+            // 
+            this.buttonObjScaleDepthN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonObjScaleDepthN.Location = new System.Drawing.Point(3, 66);
+            this.buttonObjScaleDepthN.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjScaleDepthN.Name = "buttonObjScaleDepthN";
+            this.buttonObjScaleDepthN.Size = new System.Drawing.Size(61, 25);
+            this.buttonObjScaleDepthN.TabIndex = 35;
+            this.buttonObjScaleDepthN.Text = "Depth-";
+            this.buttonObjScaleDepthN.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjScaleHeightN
+            // 
+            this.buttonObjScaleHeightN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonObjScaleHeightN.Location = new System.Drawing.Point(3, 41);
+            this.buttonObjScaleHeightN.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjScaleHeightN.Name = "buttonObjScaleHeightN";
+            this.buttonObjScaleHeightN.Size = new System.Drawing.Size(61, 25);
+            this.buttonObjScaleHeightN.TabIndex = 35;
+            this.buttonObjScaleHeightN.Text = "Height-";
+            this.buttonObjScaleHeightN.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjScaleWidthN
+            // 
+            this.buttonObjScaleWidthN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonObjScaleWidthN.Location = new System.Drawing.Point(3, 16);
+            this.buttonObjScaleWidthN.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjScaleWidthN.Name = "buttonObjScaleWidthN";
+            this.buttonObjScaleWidthN.Size = new System.Drawing.Size(61, 25);
+            this.buttonObjScaleWidthN.TabIndex = 35;
+            this.buttonObjScaleWidthN.Text = "Width-";
+            this.buttonObjScaleWidthN.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjScaleDepthP
+            // 
+            this.buttonObjScaleDepthP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonObjScaleDepthP.Location = new System.Drawing.Point(121, 66);
+            this.buttonObjScaleDepthP.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjScaleDepthP.Name = "buttonObjScaleDepthP";
+            this.buttonObjScaleDepthP.Size = new System.Drawing.Size(61, 25);
+            this.buttonObjScaleDepthP.TabIndex = 35;
+            this.buttonObjScaleDepthP.Text = "Depth+";
+            this.buttonObjScaleDepthP.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjScaleHeightP
+            // 
+            this.buttonObjScaleHeightP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonObjScaleHeightP.Location = new System.Drawing.Point(121, 41);
+            this.buttonObjScaleHeightP.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjScaleHeightP.Name = "buttonObjScaleHeightP";
+            this.buttonObjScaleHeightP.Size = new System.Drawing.Size(61, 25);
+            this.buttonObjScaleHeightP.TabIndex = 35;
+            this.buttonObjScaleHeightP.Text = "Height+";
+            this.buttonObjScaleHeightP.UseVisualStyleBackColor = true;
+            // 
+            // buttonObjScaleWidthP
+            // 
+            this.buttonObjScaleWidthP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonObjScaleWidthP.Location = new System.Drawing.Point(121, 16);
+            this.buttonObjScaleWidthP.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjScaleWidthP.Name = "buttonObjScaleWidthP";
+            this.buttonObjScaleWidthP.Size = new System.Drawing.Size(61, 25);
+            this.buttonObjScaleWidthP.TabIndex = 35;
+            this.buttonObjScaleWidthP.Text = "Width+";
+            this.buttonObjScaleWidthP.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -4211,6 +4337,8 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.groupBoxObjScale.ResumeLayout(false);
+            this.groupBoxObjScale.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4534,6 +4662,16 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxMapShowCeiling;
         private CheckBox checkBoxDisableActionUpdateWhenCloning;
         private CheckBox checkBoxNeutralizeTriangleWith21;
+        private GroupBox groupBoxObjScale;
+        private TextBox textBoxObjScaleDepth;
+        private TextBox textBoxObjScaleHeight;
+        private TextBox textBoxObjScaleWidth;
+        private Button buttonObjScaleDepthN;
+        private Button buttonObjScaleHeightN;
+        private Button buttonObjScaleWidthN;
+        private Button buttonObjScaleDepthP;
+        private Button buttonObjScaleHeightP;
+        private Button buttonObjScaleWidthP;
     }
 }
 
