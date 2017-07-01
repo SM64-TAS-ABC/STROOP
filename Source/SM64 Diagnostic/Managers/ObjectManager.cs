@@ -11,6 +11,7 @@ using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
 using SM64Diagnostic.Controls;
+using static SM64_Diagnostic.Controls.AngleDataContainer;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -186,9 +187,9 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("MarioLateralDistanceToObjectHome"),
                 new DataContainer("MarioVerticalDistanceToObjectHome"),
                 new AngleDataContainer("MarioAngleToObject"),
-                new AngleDataContainer("MarioDeltaAngleToObject"),
+                new AngleDataContainer("MarioDeltaAngleToObject", AngleViewModeType.Signed),
                 new AngleDataContainer("AngleToMario"),
-                new AngleDataContainer("DeltaAngleToMario"),
+                new AngleDataContainer("DeltaAngleToMario", AngleViewModeType.Signed),
                 new DataContainer("ObjectDistanceToHome"),
                 new DataContainer("LateralObjectDistanceToHome"),
                 new DataContainer("VerticalObjectDistanceToHome"),

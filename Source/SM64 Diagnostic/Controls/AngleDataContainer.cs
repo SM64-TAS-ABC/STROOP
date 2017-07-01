@@ -19,12 +19,13 @@ namespace SM64_Diagnostic.Controls
 
         public enum AngleViewModeType { Signed, Unsigned, Degrees, Radians };
 
-        AngleViewModeType _angleViewMode = AngleViewModeType.Unsigned;
+        AngleViewModeType _angleViewMode;
         bool _angleTruncated = false;
 
-        public AngleDataContainer(string name)
+        public AngleDataContainer(string name, AngleViewModeType angleViewMode = AngleViewModeType.Unsigned)
         {
             _specialName = name;
+            _angleViewMode = angleViewMode;
 
             this._nameLabel = new Label();
             this._nameLabel.Size = new Size(210, 20);
