@@ -1099,29 +1099,15 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (XElement element in doc.Root.Elements())
             {
-                switch (element.Name.ToString())
+                uint animationValue = ParsingUtilities.ParseHex(
+                    element.Attribute(XName.Get("value")).Value);
+                string animationName = element.Attribute(XName.Get("name")).Value;
+                animationTable?.Add(new AnimationTable.AnimationReference()
                 {
-                    case "Default":
-                        uint defaultAfterCloneValue = ParsingUtilities.ParseHex(
-                            element.Attribute(XName.Get("afterCloneValue")).Value);
-                        uint defaultAfterUncloneValue = ParsingUtilities.ParseHex(
-                            element.Attribute(XName.Get("afterUncloneValue")).Value);
-                        uint defaultHandsfreeValue = ParsingUtilities.ParseHex(
-                            element.Attribute(XName.Get("handsfreeValue")).Value);
-                        animationTable = new AnimationTable();
-                        break;
-
-                    case "Animation":
-                        uint animationValue = ParsingUtilities.ParseHex(
-                            element.Attribute(XName.Get("value")).Value);
-                        string animationName = element.Attribute(XName.Get("name")).Value;
-                        animationTable?.Add(new AnimationTable.AnimationReference()
-                        {
-                            AnimationValue = animationValue,
-                            AnimationName = animationName
-                        });
-                        break;
-                }
+                    AnimationValue = animationValue,
+                    AnimationName = animationName
+                });
+                break;
             }
 
             return animationTable;
