@@ -22,9 +22,13 @@ namespace SM64Diagnostic.Controls
             Button scaleHeightRightButton,
             Button scaleDepthLeftButton,
             Button scaleDepthRightButton,
+            Button scaleAggregateLeftButton,
+            Button scaleAggregateRightButton,
             TextBox scaleWidthTextbox,
             TextBox scaleHeightTextbox,
             TextBox scaleDepthTextbox,
+            TextBox scaleAggregateTextbox,
+            CheckBox aggregateCheckbox,
             CheckBox multiplyCheckbox,
             Action<float, float, float, bool> actionScaleChange)
         {
@@ -79,30 +83,59 @@ namespace SM64Diagnostic.Controls
                 actionScaleChange(defaultValue, defaultValue, depthValue, multiplyCheckbox.Checked);
             };
 
-            Action setAdditionNames = () =>
+            Action<bool> actionScaleAggregateChange = (bool rightSide) =>
             {
-                scaleWidthLeftButton.Text = "Width" + SUBTRACT_SYMBOL;
-                scaleWidthRightButton.Text = "Width" + ADD_SYMBOL;
-                scaleHeightLeftButton.Text = "Height" + SUBTRACT_SYMBOL;
-                scaleHeightRightButton.Text = "Height" + ADD_SYMBOL;
-                scaleDepthLeftButton.Text = "Depth" + SUBTRACT_SYMBOL;
-                scaleDepthRightButton.Text = "Depth" + ADD_SYMBOL;
+                float rawValue;
+                if (!float.TryParse(scaleAggregateTextbox.Text, out rawValue)) return;
+
+                // Don't divide by 0.
+                if (rawValue == 0 && !rightSide && multiplyCheckbox.Checked) return;
+
+                float aggregateValue = multiplyCheckbox.Checked
+                    ? (rightSide ? rawValue : 1 / rawValue)
+                    : (rightSide ? rawValue : -1 * rawValue);
+
+                actionScaleChange(aggregateValue, aggregateValue, aggregateValue, multiplyCheckbox.Checked);
             };
 
-            Action setMultiplicationNames = () =>
+            Action<bool> setShowAggregate = (bool showAggregate) =>
             {
-                scaleWidthLeftButton.Text = "Width" + DIVIDE_SYMBOL;
-                scaleWidthRightButton.Text = "Width" + MULTIPLY_SYMBOL;
-                scaleHeightLeftButton.Text = "Height" + DIVIDE_SYMBOL;
-                scaleHeightRightButton.Text = "Height" + MULTIPLY_SYMBOL;
-                scaleDepthLeftButton.Text = "Depth" + DIVIDE_SYMBOL;
-                scaleDepthRightButton.Text = "Depth" + MULTIPLY_SYMBOL;
+                scaleWidthLeftButton.Visible = !showAggregate;
+                scaleWidthRightButton.Visible = !showAggregate;
+                scaleHeightLeftButton.Visible = !showAggregate;
+                scaleHeightRightButton.Visible = !showAggregate;
+                scaleDepthLeftButton.Visible = !showAggregate;
+                scaleDepthRightButton.Visible = !showAggregate;
+                scaleWidthTextbox.Visible = !showAggregate;
+                scaleHeightTextbox.Visible = !showAggregate;
+                scaleDepthTextbox.Visible = !showAggregate;
+
+                scaleAggregateLeftButton.Visible = showAggregate;
+                scaleAggregateRightButton.Visible = showAggregate;
+                scaleAggregateTextbox.Visible = showAggregate;
+            };
+
+            Action actionAggregateCheckedChanged = () =>
+            {
+                setShowAggregate(aggregateCheckbox.Checked);
+            };
+
+            Action<string, string> setOperationSymbols = (string leftSymbol, string rightSymbol) =>
+            {
+                scaleWidthLeftButton.Text = "Width" + leftSymbol;
+                scaleWidthRightButton.Text = "Width" + rightSymbol;
+                scaleHeightLeftButton.Text = "Height" + leftSymbol;
+                scaleHeightRightButton.Text = "Height" + rightSymbol;
+                scaleDepthLeftButton.Text = "Depth" + leftSymbol;
+                scaleDepthRightButton.Text = "Depth" + rightSymbol;
+                scaleAggregateLeftButton.Text = "Scale" + leftSymbol;
+                scaleAggregateRightButton.Text = "Scale" + rightSymbol;
             };
 
             Action actionMultiplyCheckedChanged = () =>
             {
-                if (multiplyCheckbox.Checked) setMultiplicationNames();
-                else setAdditionNames();
+                if (multiplyCheckbox.Checked) setOperationSymbols(DIVIDE_SYMBOL, MULTIPLY_SYMBOL);
+                else setOperationSymbols(SUBTRACT_SYMBOL, ADD_SYMBOL);
             };
 
             scaleWidthLeftButton.Click += (sender, e) => actionScaleWidthChange(false);
@@ -111,6 +144,10 @@ namespace SM64Diagnostic.Controls
             scaleHeightRightButton.Click += (sender, e) => actionScaleHeightChange(true);
             scaleDepthLeftButton.Click += (sender, e) => actionScaleDepthChange(false);
             scaleDepthRightButton.Click += (sender, e) => actionScaleDepthChange(true);
+            scaleAggregateLeftButton.Click += (sender, e) => actionScaleAggregateChange(false);
+            scaleAggregateRightButton.Click += (sender, e) => actionScaleAggregateChange(true);
+
+            aggregateCheckbox.CheckedChanged += (sender, e) => actionAggregateCheckedChanged();
             multiplyCheckbox.CheckedChanged += (sender, e) => actionMultiplyCheckedChanged();
         }
     }

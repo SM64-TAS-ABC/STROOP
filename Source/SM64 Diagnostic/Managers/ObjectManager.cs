@@ -326,9 +326,13 @@ namespace SM64_Diagnostic.Managers
                 objScaleGroupBox.Controls["buttonObjScaleHeightP"] as Button,
                 objScaleGroupBox.Controls["buttonObjScaleDepthN"] as Button,
                 objScaleGroupBox.Controls["buttonObjScaleDepthP"] as Button,
+                objScaleGroupBox.Controls["buttonObjScaleAggregateN"] as Button,
+                objScaleGroupBox.Controls["buttonObjScaleAggregateP"] as Button,
                 objScaleGroupBox.Controls["textBoxObjScaleWidth"] as TextBox,
                 objScaleGroupBox.Controls["textBoxObjScaleHeight"] as TextBox,
                 objScaleGroupBox.Controls["textBoxObjScaleDepth"] as TextBox,
+                objScaleGroupBox.Controls["textBoxObjScaleAggregate"] as TextBox,
+                objScaleGroupBox.Controls["checkBoxObjScaleAggregate"] as CheckBox,
                 objScaleGroupBox.Controls["checkBoxObjScaleMultiply"] as CheckBox,
                 (float widthChange, float heightChange, float depthChange, bool multiply) =>
                 {
