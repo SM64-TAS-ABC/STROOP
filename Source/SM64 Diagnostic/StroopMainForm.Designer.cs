@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -324,6 +324,7 @@ namespace SM64_Diagnostic
             this.tabPageCamHack = new System.Windows.Forms.TabPage();
             this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.checkBoxDisableActionUpdateWhenCloning = new System.Windows.Forms.CheckBox();
             this.groupBoxShowOverlay = new System.Windows.Forms.GroupBox();
             this.checkBoxShowOverlayUsedObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayInteractionObject = new System.Windows.Forms.CheckBox();
@@ -348,7 +349,7 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
-            this.checkBoxDisableActionUpdateWhenCloning = new System.Windows.Forms.CheckBox();
+            this.checkBoxNeutralizeTriangleWith21 = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -447,7 +448,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 110);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 111);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -535,7 +536,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 61);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 62);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -3147,7 +3148,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(624, 543);
+            this.glControlMap.Size = new System.Drawing.Size(625, 543);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -3493,8 +3494,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -3768,6 +3769,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageOptions
             // 
+            this.tabPageOptions.Controls.Add(this.checkBoxNeutralizeTriangleWith21);
             this.tabPageOptions.Controls.Add(this.checkBoxDisableActionUpdateWhenCloning);
             this.tabPageOptions.Controls.Add(this.groupBoxShowOverlay);
             this.tabPageOptions.Controls.Add(this.checkBoxScaleDiagonalPositionControllerButtons);
@@ -3781,6 +3783,17 @@ namespace SM64_Diagnostic
             this.tabPageOptions.Size = new System.Drawing.Size(915, 576);
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
+            // 
+            // checkBoxDisableActionUpdateWhenCloning
+            // 
+            this.checkBoxDisableActionUpdateWhenCloning.AutoSize = true;
+            this.checkBoxDisableActionUpdateWhenCloning.Location = new System.Drawing.Point(3, 84);
+            this.checkBoxDisableActionUpdateWhenCloning.Name = "checkBoxDisableActionUpdateWhenCloning";
+            this.checkBoxDisableActionUpdateWhenCloning.Size = new System.Drawing.Size(202, 17);
+            this.checkBoxDisableActionUpdateWhenCloning.TabIndex = 30;
+            this.checkBoxDisableActionUpdateWhenCloning.Text = "Disable Action Update When Cloning";
+            this.checkBoxDisableActionUpdateWhenCloning.UseVisualStyleBackColor = true;
+            this.checkBoxDisableActionUpdateWhenCloning.CheckedChanged += new System.EventHandler(this.checkBoxDisableActionUpdateWhenCloning_CheckedChanged);
             // 
             // groupBoxShowOverlay
             // 
@@ -4072,16 +4085,18 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
-            // checkBoxDisableActionUpdateWhenCloning
+            // checkBoxNeutralizeTriangleWith21
             // 
-            this.checkBoxDisableActionUpdateWhenCloning.AutoSize = true;
-            this.checkBoxDisableActionUpdateWhenCloning.Location = new System.Drawing.Point(3, 84);
-            this.checkBoxDisableActionUpdateWhenCloning.Name = "checkBoxDisableActionUpdateWhenCloning";
-            this.checkBoxDisableActionUpdateWhenCloning.Size = new System.Drawing.Size(202, 17);
-            this.checkBoxDisableActionUpdateWhenCloning.TabIndex = 30;
-            this.checkBoxDisableActionUpdateWhenCloning.Text = "Disable Action Update When Cloning";
-            this.checkBoxDisableActionUpdateWhenCloning.UseVisualStyleBackColor = true;
-            this.checkBoxDisableActionUpdateWhenCloning.CheckedChanged += new System.EventHandler(this.checkBoxDisableActionUpdateWhenCloning_CheckedChanged);
+            this.checkBoxNeutralizeTriangleWith21.AutoSize = true;
+            this.checkBoxNeutralizeTriangleWith21.Checked = true;
+            this.checkBoxNeutralizeTriangleWith21.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxNeutralizeTriangleWith21.Location = new System.Drawing.Point(3, 105);
+            this.checkBoxNeutralizeTriangleWith21.Name = "checkBoxNeutralizeTriangleWith21";
+            this.checkBoxNeutralizeTriangleWith21.Size = new System.Drawing.Size(189, 17);
+            this.checkBoxNeutralizeTriangleWith21.TabIndex = 31;
+            this.checkBoxNeutralizeTriangleWith21.Text = "Neutralize Triangle With 21 (Not 0)";
+            this.checkBoxNeutralizeTriangleWith21.UseVisualStyleBackColor = true;
+            this.checkBoxNeutralizeTriangleWith21.CheckedChanged += new System.EventHandler(this.checkBoxNeutralizeTriangleWith21_CheckedChanged);
             // 
             // StroopMainForm
             // 
@@ -4518,6 +4533,7 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxShowOverlayCameraSecondaryObject;
         private CheckBox checkBoxMapShowCeiling;
         private CheckBox checkBoxDisableActionUpdateWhenCloning;
+        private CheckBox checkBoxNeutralizeTriangleWith21;
     }
 }
 

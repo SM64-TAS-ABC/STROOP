@@ -40,5 +40,6 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static bool ShowOverlayClosestObject = true;
         public static bool ScaleDiagonalPositionControllerButtons = false;
         public static bool DisableActionUpdateWhenCloning = false;
+        public static bool NeutralizeTriangleWith21 = true;
     }
 }

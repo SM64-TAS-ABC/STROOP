@@ -594,12 +594,12 @@ namespace SM64_Diagnostic.Utilities
             if (triangleAddress == 0x0000)
                 return false;
 
-            short surfaceType = 21;
+            short neutralizedSurfaceType = (short)(Config.NeutralizeTriangleWith21 ? 21 : 0);
 
             bool success = true;
             stream.Suspend();
 
-            success &= stream.SetValue(surfaceType, triangleAddress + Config.TriangleOffsets.SurfaceType);
+            success &= stream.SetValue(neutralizedSurfaceType, triangleAddress + Config.TriangleOffsets.SurfaceType);
 
             stream.Resume();
             return success;

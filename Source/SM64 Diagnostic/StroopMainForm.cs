@@ -553,6 +553,11 @@ namespace SM64_Diagnostic
             Config.DisableActionUpdateWhenCloning = checkBoxDisableActionUpdateWhenCloning.Checked;
         }
 
+        private void checkBoxNeutralizeTriangleWith21_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.NeutralizeTriangleWith21 = checkBoxNeutralizeTriangleWith21.Checked;
+        }
+
         private void checkBoxShowOverlayHeldObject_CheckedChanged(object sender, EventArgs e)
         {
             Config.ShowOverlayHeldObject = checkBoxShowOverlayHeldObject.Checked;
