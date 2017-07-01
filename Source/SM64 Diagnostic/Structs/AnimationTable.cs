@@ -10,7 +10,7 @@ namespace SM64_Diagnostic.Structs
     {
         public struct AnimationReference
         {
-            public uint AnimationValue;
+            public int AnimationValue;
             public string AnimationName;
 
             public override int GetHashCode()
@@ -19,7 +19,7 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        Dictionary<uint, AnimationReference> _table = new Dictionary<uint, AnimationReference>();
+        Dictionary<int, AnimationReference> _table = new Dictionary<int, AnimationReference>();
 
         public AnimationTable()
         {
@@ -30,7 +30,7 @@ namespace SM64_Diagnostic.Structs
             _table.Add(animationRef.AnimationValue, animationRef);
         }
 
-        public string GetAnimationName(uint animation)
+        public string GetAnimationName(int animation)
         {
             if (!_table.ContainsKey(animation))
                 return "Unknown Animation";

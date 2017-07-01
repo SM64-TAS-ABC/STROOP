@@ -34,5 +34,7 @@ namespace SM64_Diagnostic.Structs
         public uint SlidingSpeedZOffset;
         public uint PeakHeightOffset;
         public uint ObjectReferenceAddress;
+        public uint ObjectAnimationOffset;
+        public uint ObjectAnimationTimerOffset;
     }
 }

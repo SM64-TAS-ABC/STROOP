@@ -313,6 +313,12 @@ namespace SM64_Diagnostic.Utilities
                                 case "ObjectReferenceAddress":
                                     Config.Mario.ObjectReferenceAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "ObjectAnimationOffset":
+                                    Config.Mario.ObjectAnimationOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "ObjectAnimationTimerOffset":
+                                    Config.Mario.ObjectAnimationTimerOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;
@@ -1085,7 +1091,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static AnimationTable OpenAnimationTable(string path)
         {
-            AnimationTable animationTable = null;
+            AnimationTable animationTable = new AnimationTable();
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
@@ -1099,15 +1105,13 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (XElement element in doc.Root.Elements())
             {
-                uint animationValue = ParsingUtilities.ParseHex(
-                    element.Attribute(XName.Get("value")).Value);
+                int animationValue = (int)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("value")).Value);
                 string animationName = element.Attribute(XName.Get("name")).Value;
-                animationTable?.Add(new AnimationTable.AnimationReference()
+                animationTable.Add(new AnimationTable.AnimationReference()
                 {
                     AnimationValue = animationValue,
                     AnimationName = animationName
                 });
-                break;
             }
 
             return animationTable;

@@ -20,6 +20,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static CameraConfig Camera;
         public static TriangleOffsetsConfig TriangleOffsets;
         public static ActionTable MarioActions;
+        public static AnimationTable MarioAnimations;
         public static uint LevelAddress;
         public static uint AreaAddress;
         public static uint LoadingPointAddress;

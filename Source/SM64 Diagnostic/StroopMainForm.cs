@@ -231,6 +231,7 @@ namespace SM64_Diagnostic
             _romHacks = hacksConfig.Item2;
             loadingForm.UpdateStatus("Loading Mario Actions", statusNum++);
             Config.MarioActions = XmlConfigParser.OpenActionTable(@"Config/MarioActions.xml");
+            Config.MarioAnimations = XmlConfigParser.OpenAnimationTable(@"Config/MarioAnimations.xml");
 
             loadingForm.UpdateStatus("Finishing", statusNum);
         }

@@ -89,6 +89,8 @@
     <SlidingSpeedZOffset>0x5C</SlidingSpeedZOffset>
     <PeakHeightOffset>0xBC</PeakHeightOffset>
     <ObjectReferenceAddress>0x80361158</ObjectReferenceAddress>
+    <ObjectAnimationOffset>0x38</ObjectAnimationOffset>
+    <ObjectAnimationTimerOffset>0x40</ObjectAnimationTimerOffset>
   </Mario>
   <Hud>
     <HpAddress>0x8033B21e</HpAddress>
