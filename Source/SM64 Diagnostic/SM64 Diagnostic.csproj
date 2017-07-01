@@ -314,7 +314,7 @@
     <EmbeddedResource Include="Schemas\AnimationTableSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Schemas\PendulumSwingSchema.xsd">
+    <EmbeddedResource Include="Schemas\PendulumSwingTableSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

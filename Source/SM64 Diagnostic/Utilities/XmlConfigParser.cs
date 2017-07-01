@@ -1117,6 +1117,34 @@ namespace SM64_Diagnostic.Utilities
             return animationTable;
         }
 
+        public static PendulumSwingTable OpenPendulumSwingTable(string path)
+        {
+            PendulumSwingTable pendulumSwingTable = new PendulumSwingTable();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/PendulumSwingTableSchema.xsd", "PendulumSwingTableSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                int index = (int)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("index")).Value);
+                int amplitude = (int)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("amplitude")).Value);
+                pendulumSwingTable.Add(new PendulumSwingTable.PendulumSwingReference()
+                {
+                    Index = index,
+                    Amplitude = amplitude
+                });
+            }
+
+            return pendulumSwingTable;
+        }
+
         public static void AddWatchVariableOtherData(WatchVariable watchVar)
         {
             

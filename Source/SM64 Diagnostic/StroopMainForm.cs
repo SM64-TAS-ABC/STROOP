@@ -232,6 +232,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Mario Actions", statusNum++);
             Config.MarioActions = XmlConfigParser.OpenActionTable(@"Config/MarioActions.xml");
             Config.MarioAnimations = XmlConfigParser.OpenAnimationTable(@"Config/MarioAnimations.xml");
+            Config.PendulumSwings = XmlConfigParser.OpenPendulumSwingTable(@"Config/PendulumSwings.xml");
 
             loadingForm.UpdateStatus("Finishing", statusNum);
         }
