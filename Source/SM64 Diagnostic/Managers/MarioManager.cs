@@ -61,7 +61,7 @@ namespace SM64_Diagnostic.Managers
                 marioStatsGroupBox.Controls["textBoxMarioStatsYaw"] as TextBox,
                 (float yawValue) =>
                 {
-                    MarioActions.MarioChangeYaw(_stream, (int)yawValue);
+                    MarioActions.MarioChangeYaw(_stream, (int)Math.Round(yawValue));
                 });
             ScalarController.initialize(
                 marioStatsGroupBox.Controls["buttonMarioStatsHspdN"] as Button,
