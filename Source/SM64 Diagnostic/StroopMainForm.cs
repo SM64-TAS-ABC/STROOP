@@ -531,6 +531,12 @@ namespace SM64_Diagnostic
             panelConnect.Visible = true;
         }
 
+        private void buttonRefreshAndConnect_Click(object sender, EventArgs e)
+        {
+            buttonRefresh_Click(sender, e);
+            buttonConnect_Click(sender, e);
+        }
+
         private void checkBoxMoveCamWithPu_CheckedChanged(object sender, EventArgs e)
         {
             Config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
