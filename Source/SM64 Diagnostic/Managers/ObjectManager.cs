@@ -186,10 +186,13 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("MarioDistanceToObjectHome"),
                 new DataContainer("MarioLateralDistanceToObjectHome"),
                 new DataContainer("MarioVerticalDistanceToObjectHome"),
-                new AngleDataContainer("MarioAngleToObject"),
-                new AngleDataContainer("MarioDeltaAngleToObject", AngleViewModeType.Signed),
-                new AngleDataContainer("AngleToMario"),
-                new AngleDataContainer("DeltaAngleToMario", AngleViewModeType.Signed),
+                new AngleDataContainer("AngleObjectToMario"),
+                new AngleDataContainer("DeltaAngleObjectToMario", AngleViewModeType.Signed),
+                new AngleDataContainer("AngleMarioToObject"),
+                new AngleDataContainer("DeltaAngleMarioToObject", AngleViewModeType.Signed),
+                new AngleDataContainer("AngleObjectToHome"),
+                new AngleDataContainer("DeltaAngleObjectToHome", AngleViewModeType.Signed),
+                new AngleDataContainer("AngleHomeToObject"),
                 new DataContainer("ObjectDistanceToHome"),
                 new DataContainer("LateralObjectDistanceToHome"),
                 new DataContainer("VerticalObjectDistanceToHome"),
@@ -404,13 +407,14 @@ namespace SM64_Diagnostic.Managers
                 objZ = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
                 objFacing = (float)((UInt16)(_stream.GetUInt32(objAddress + Config.ObjectSlots.ObjectRotationOffset)) / 65536f * 2 * Math.PI);
 
-                double angleToMario = MoreMath.AngleTo_Radians(objX, objZ, mX, mZ);
-
                 // Get object position
                 float objHomeX, objHomeY, objHomeZ;
                 objHomeX = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
                 objHomeY = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
                 objHomeZ = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
+
+                double angleObjectToMario = MoreMath.AngleTo_Radians(objX, objZ, mX, mZ);
+                double angleObjectToHome = MoreMath.AngleTo_Radians(objX, objZ, objHomeX, objHomeZ);
 
                 // Get object hitbox variables
                 float objHitboxRadius, objHitboxHeight, objHitboxDownOffset, objHitboxBottom, objHitboxTop;
@@ -467,20 +471,32 @@ namespace SM64_Diagnostic.Managers
                             newText = Math.Round(objY - objHomeY, 3).ToString();
                             break;
 
-                        case "MarioAngleToObject":
-                            newAngle = angleToMario + Math.PI;
+                        case "AngleMarioToObject":
+                            newAngle = angleObjectToMario + Math.PI;
                             break;
 
-                        case "MarioDeltaAngleToObject":
-                            newAngle = mFacing - (angleToMario + Math.PI);
+                        case "DeltaAngleMarioToObject":
+                            newAngle = mFacing - (angleObjectToMario + Math.PI);
                             break;
 
-                        case "AngleToMario":
-                            newAngle = angleToMario;
+                        case "AngleObjectToMario":
+                            newAngle = angleObjectToMario;
                             break;
 
-                        case "DeltaAngleToMario":
-                            newAngle = objFacing - angleToMario;
+                        case "DeltaAngleObjectToMario":
+                            newAngle = objFacing - angleObjectToMario;
+                            break;
+
+                        case "AngleObjectToHome":
+                            newAngle = angleObjectToHome;
+                            break;
+
+                        case "DeltaAngleObjectToHome":
+                            newAngle = objFacing - angleObjectToHome;
+                            break;
+
+                        case "AngleHomeToObject":
+                            newAngle = angleObjectToHome + Math.PI;
                             break;
 
                         case "MarioHitboxAwayFromObject":
