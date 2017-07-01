@@ -149,6 +149,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
+    <Compile Include="Structs\PendulumSwingTable.cs" />
     <Compile Include="Structs\AnimationTable.cs" />
     <Compile Include="Structs\ActionTable.cs" />
     <Compile Include="Structs\BehaviorCriteria.cs" />
@@ -311,6 +312,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Schemas\AnimationTableSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\PendulumSwingSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

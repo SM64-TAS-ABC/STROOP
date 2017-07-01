@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.Structs
 
             public override int GetHashCode()
             {
-                return (int)AnimationValue;
+                return AnimationValue;
             }
         }
 
