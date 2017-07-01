@@ -1083,6 +1083,50 @@ namespace SM64_Diagnostic.Utilities
             return actionTable;
         }
 
+        public static AnimationTable OpenAnimationTable(string path)
+        {
+            AnimationTable animationTable = null;
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/AnimationTableSchema.xsd", "AnimationTableSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                switch (element.Name.ToString())
+                {
+                    case "Default":
+                        uint defaultAfterCloneValue = ParsingUtilities.ParseHex(
+                            element.Attribute(XName.Get("afterCloneValue")).Value);
+                        uint defaultAfterUncloneValue = ParsingUtilities.ParseHex(
+                            element.Attribute(XName.Get("afterUncloneValue")).Value);
+                        uint defaultHandsfreeValue = ParsingUtilities.ParseHex(
+                            element.Attribute(XName.Get("handsfreeValue")).Value);
+                        animationTable = new AnimationTable();
+                        break;
+
+                    case "Animation":
+                        uint animationValue = ParsingUtilities.ParseHex(
+                            element.Attribute(XName.Get("value")).Value);
+                        string animationName = element.Attribute(XName.Get("name")).Value;
+                        animationTable?.Add(new AnimationTable.AnimationReference()
+                        {
+                            AnimationValue = animationValue,
+                            AnimationName = animationName
+                        });
+                        break;
+                }
+            }
+
+            return animationTable;
+        }
+
         public static void AddWatchVariableOtherData(WatchVariable watchVar)
         {
             
