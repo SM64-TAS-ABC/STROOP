@@ -532,6 +532,8 @@ namespace SM64_Diagnostic.Managers
                             break;
 
                         case "PendulumAmplitude":
+                            // TODO find fata error caused by allowing these
+                            /*
                             pendulumAmplitude =
                                 MoreMath.getPendulumAmplitude(
                                     pendulumAccelerationDirection,
@@ -539,9 +541,12 @@ namespace SM64_Diagnostic.Managers
                                     pendulumAngularVelocity,
                                     pendulumAngle);
                             newText = pendulumAmplitude.ToString();
+                            */
+                            newText = "test1";
                             break;
 
                         case "PendulumSwingIndex":
+                            /*
                             pendulumAmplitude =
                                 MoreMath.getPendulumAmplitude(
                                     pendulumAccelerationDirection,
@@ -550,6 +555,8 @@ namespace SM64_Diagnostic.Managers
                                     pendulumAngle);
                             int? pendulumSwingIndex = Config.PendulumSwings.GetPendulumSwingIndex((int)pendulumAmplitude);
                             newText = pendulumSwingIndex == null ? "Unknown Index" : pendulumSwingIndex.ToString();
+                            */
+                            newText = "test2";
                             break;
 
                         case "RngCallsPerFrame":
