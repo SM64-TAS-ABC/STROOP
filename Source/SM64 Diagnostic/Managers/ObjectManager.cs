@@ -299,7 +299,7 @@ namespace SM64_Diagnostic.Managers
                 objAngleGroupBox.Controls["textBoxObjAngleYaw"] as TextBox,
                 (float yawValue) =>
                 {
-                    MarioActions.RotateObjects(stream, _currentAddresses, (int)yawValue, 0, 0);
+                    MarioActions.RotateObjects(stream, _currentAddresses, (int)Math.Round(yawValue), 0, 0);
                 });
             ScalarController.initialize(
                 objAngleGroupBox.Controls["buttonObjAnglePitchN"] as Button,
@@ -307,7 +307,7 @@ namespace SM64_Diagnostic.Managers
                 objAngleGroupBox.Controls["textBoxObjAnglePitch"] as TextBox,
                 (float pitchValue) =>
                 {
-                    MarioActions.RotateObjects(stream, _currentAddresses, 0, (int)pitchValue, 0);
+                    MarioActions.RotateObjects(stream, _currentAddresses, 0, (int)Math.Round(pitchValue), 0);
                 });
             ScalarController.initialize(
                 objAngleGroupBox.Controls["buttonObjAngleRollN"] as Button,
@@ -315,7 +315,7 @@ namespace SM64_Diagnostic.Managers
                 objAngleGroupBox.Controls["textBoxObjAngleRoll"] as TextBox,
                 (float rollValue) =>
                 {
-                    MarioActions.RotateObjects(stream, _currentAddresses, 0, 0, (int)rollValue);
+                    MarioActions.RotateObjects(stream, _currentAddresses, 0, 0, (int)Math.Round(rollValue));
                 });
 
             var objHomeGroupBox = objPanel.Controls["groupBoxObjHome"] as GroupBox;
