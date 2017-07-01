@@ -36,6 +36,9 @@ namespace SM64_Diagnostic.Structs
         public uint YawMovingOffset;
         public uint PitchMovingOffset;
         public uint RollMovingOffset;
+        public uint ScaleWidthOffset;
+        public uint ScaleHeightOffset;
+        public uint ScaleDepthOffset;
         public uint ReleaseStatusOffset;
         public uint InteractionStatusOffset;
         public uint PendulumAccelerationDirection;

@@ -168,6 +168,15 @@ namespace SM64_Diagnostic.Utilities
                                 case "RollMovingOffset":
                                     Config.ObjectSlots.RollMovingOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "ScaleWidthOffset":
+                                    Config.ObjectSlots.ScaleWidthOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "ScaleHeightOffset":
+                                    Config.ObjectSlots.ScaleHeightOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "ScaleDepthOffset":
+                                    Config.ObjectSlots.ScaleDepthOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "ReleaseStatusOffset":
                                     Config.ObjectSlots.ReleaseStatusOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

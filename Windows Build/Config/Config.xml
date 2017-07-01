@@ -35,6 +35,9 @@
     <YawMovingOffset>0xCA</YawMovingOffset>
     <PitchMovingOffset>0xC6</PitchMovingOffset>
     <RollMovingOffset>0xCE</RollMovingOffset>
+    <ScaleWidthOffset>0x2C</ScaleWidthOffset>
+    <ScaleHeightOffset>0x30</ScaleHeightOffset>
+    <ScaleDepthOffset>0x34</ScaleDepthOffset>
     <ReleaseStatusOffset>0x1CC</ReleaseStatusOffset>
     <InteractionStatusOffset>0x134</InteractionStatusOffset>
     <PendulumAccelerationDirection>0xF4</PendulumAccelerationDirection>

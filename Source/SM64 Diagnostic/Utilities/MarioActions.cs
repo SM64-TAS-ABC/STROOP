@@ -172,9 +172,9 @@ namespace SM64_Diagnostic.Utilities
             List<PositionAddressAngle> posAddressAngles =
                 objAddresses.ConvertAll<PositionAddressAngle>(
                     objAddress => new PositionAddressAngle(
-                        objAddress + Config.ObjectSlots.ObjectXOffset,
-                        objAddress + Config.ObjectSlots.ObjectYOffset,
-                        objAddress + Config.ObjectSlots.ObjectZOffset));
+                        objAddress + Config.ObjectSlots.ScaleWidthOffset,
+                        objAddress + Config.ObjectSlots.ScaleHeightOffset,
+                        objAddress + Config.ObjectSlots.ScaleDepthOffset));
 
             return MoveThings(stream, posAddressAngles, widthChange, heightChange, depthChange, true, false);
         }
