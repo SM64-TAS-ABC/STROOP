@@ -71,6 +71,13 @@ namespace SM64_Diagnostic.Utilities
             return NonnegativeModulus(angleUnits, 65536);
         }
 
+        public static ushort RadiansToAngleUnitsRounded(double radians)
+        {
+            double angleUnits = radians / (2 * Math.PI) * 65536;
+            double nonNegative = NonnegativeModulus(angleUnits, 65536);
+            return (ushort)(Math.Round(nonNegative) % 65536);
+        }
+
         public static double AngleUnitsToRadians(double angleUnits)
         {
             double radians = angleUnits / 65536 * (2 * Math.PI);
@@ -147,7 +154,7 @@ namespace SM64_Diagnostic.Utilities
                 uphillRadians += Math.PI;
             if (normX == 0 && normZ == 0)
                 uphillRadians = 0;
-            return (ushort)RadiansToAngleUnits(uphillRadians);
+            return RadiansToAngleUnitsRounded(uphillRadians);
         }
     }
 }
