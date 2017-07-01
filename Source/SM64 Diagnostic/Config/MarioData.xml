@@ -19,6 +19,9 @@
   <Data special="true" specialType="QFrameCountEstimate">QFrames Est.</Data>
   <Data type="ushort" address="0x00C26C1C" absoluteAddress="true" isAngle="true">Yaw (Facing)</Data>
   <Data type="ushort" address="0x00C26C16" absoluteAddress="true" isAngle="true">Yaw (Intended)</Data>
+  <Data special="true" specialType="YawFacingTrunc">Yaw (Facing) Trunc</Data>
+  <Data special="true" specialType="YawIntendedTrunc">Yaw (Intended) Trunc</Data>
+  <Data special="true" specialType="DeltaYawIntendedFacing">DYaw Intend-Face</Data>
   <Data type="ushort" address="0x00c26c28" absoluteAddress="true" isAngle="true">Twirl Yaw</Data>
   <Data type="short" address="0x00c26c26" absoluteAddress="true" isAngle="true">Yaw Velocity</Data>
   <Data type="ushort" address="0x00C26C66" absoluteAddress="true" isAngle="true">Floor Yaw</Data>
@@ -28,7 +31,7 @@
   <Data type="short" address="0x00c281f0" absoluteAddress="true" isAngle="true">First Person Yaw</Data>
   <Data type="short" address="0x00c281f2" absoluteAddress="true" isAngle="true">First Person Pitch</Data>
   <Data type="uint" address="0xc26c68" absoluteAddress="true" useHex="true" isObject="true">Interaction Object</Data>
-  <Data type="uint" address="0xc26c70" absoluteAddress="true" useHex="true" isObject="true">Using Object</Data>
+  <Data type="uint" address="0xc26c70" absoluteAddress="true" useHex="true" isObject="true">Used Object</Data>
   <Data type="uint" address="0xc1c8b4" absoluteAddress="true" useHex="true" isObject="true">Stood On Object</Data>
   <Data type="uint" address="0xc26c6c" absoluteAddress="true" useHex="true" isObject="true">Held Object</Data>
   <Data type="float" address="0x8033B3C8">HOLP X</Data>

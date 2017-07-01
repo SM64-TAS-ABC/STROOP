@@ -10,6 +10,7 @@ using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
 using SM64Diagnostic.Controls;
+using static SM64_Diagnostic.Controls.AngleDataContainer;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -113,6 +114,9 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("DeFactoSpeed"),
                 new DataContainer("SlidingSpeed"),
                 new AngleDataContainer("SlidingAngle"),
+                new AngleDataContainer("YawFacingTrunc"),
+                new AngleDataContainer("YawIntendedTrunc"),
+                new AngleDataContainer("DeltaYawIntendedFacing", AngleViewModeType.Signed),
                 new DataContainer("FallHeight"),
                 new DataContainer("ActionDescription"),
                 new DataContainer("PrevActionDescription"),
@@ -134,6 +138,11 @@ namespace SM64_Diagnostic.Managers
 
             float slidingSpeedX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
             float slidingSpeedZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+
+            ushort marioYawFacing = _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+            ushort marioYawFacingTruncated = (ushort)(marioYawFacing / 16 * 16);
+            ushort marioYawIntended = _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawIntendedOffset);
+            ushort marioYawIntendedTruncated = (ushort)(marioYawIntended / 16 * 16);
 
             float movementX = (_stream.GetSingle(Config.RngRecordingAreaAddress + 0x10)
                 - _stream.GetSingle(Config.RngRecordingAreaAddress + 0x1C));
@@ -165,6 +174,21 @@ namespace SM64_Diagnostic.Managers
                     case "SlidingAngle":
                         (specialVar as AngleDataContainer).AngleValue = Math.PI / 2 - Math.Atan2(slidingSpeedZ, slidingSpeedX);
                         (specialVar as AngleDataContainer).ValueExists = (slidingSpeedX != 0) || (slidingSpeedZ != 0);
+                        break;
+
+                    case "YawFacingTrunc":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.AngleUnitsToRadians(marioYawFacingTruncated);
+                        (specialVar as AngleDataContainer).ValueExists = true;
+                        break;
+
+                    case "YawIntendedTrunc":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.AngleUnitsToRadians(marioYawIntendedTruncated);
+                        (specialVar as AngleDataContainer).ValueExists = true;
+                        break;
+
+                    case "DeltaYawIntendedFacing":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.AngleUnitsToRadians(marioYawIntendedTruncated - marioYawFacingTruncated);
+                        (specialVar as AngleDataContainer).ValueExists = true;
                         break;
 
                     case "FallHeight":

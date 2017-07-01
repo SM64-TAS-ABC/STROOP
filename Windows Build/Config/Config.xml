@@ -71,6 +71,7 @@
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
     <FacingAngleOffset>0x2A</FacingAngleOffset>
     <YawFacingOffset>0x2E</YawFacingOffset>
+    <YawIntendedOffset>0x24</YawIntendedOffset>
     <StandingOnPointer>0x80330E34</StandingOnPointer>
     <InteractingObjectPointerOffset>0x78</InteractingObjectPointerOffset>
     <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>

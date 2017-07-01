@@ -25,6 +25,12 @@ namespace SM64_Diagnostic.Utilities
             return Math.Sqrt(dx * dx + dz * dz);
         }
 
+        public static ushort formatAngle(float angle)
+        {
+            double nonNegative = NonnegativeModulus(angle, 65536);
+            return (ushort)(Math.Round(nonNegative) % 65536);
+        }
+
         public static double AngleTo_Radians(float xFrom, float zFrom, float xTo, float zTo)
         {
             return Math.Atan2(xTo - xFrom, zTo - zFrom);

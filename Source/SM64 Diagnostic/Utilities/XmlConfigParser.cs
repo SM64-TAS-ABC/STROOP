@@ -253,6 +253,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "YawFacingOffset":
                                     Config.Mario.YawFacingOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "YawIntendedOffset":
+                                    Config.Mario.YawIntendedOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "MarioStructSize":
                                     Config.Mario.StructSize = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
