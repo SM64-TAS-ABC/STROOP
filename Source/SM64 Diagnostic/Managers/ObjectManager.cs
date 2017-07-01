@@ -319,29 +319,20 @@ namespace SM64_Diagnostic.Managers
                 });
 
             var objScaleGroupBox = objPanel.Controls["groupBoxObjScale"] as GroupBox;
-            ScalarController.initialize(
+            ScaleController.initialize(
                 objScaleGroupBox.Controls["buttonObjScaleWidthN"] as Button,
                 objScaleGroupBox.Controls["buttonObjScaleWidthP"] as Button,
-                objScaleGroupBox.Controls["textBoxObjScaleWidth"] as TextBox,
-                (float widthValue) =>
-                {
-                    MarioActions.ScaleObjects(stream, _currentAddresses, widthValue, 0, 0);
-                });
-            ScalarController.initialize(
                 objScaleGroupBox.Controls["buttonObjScaleHeightN"] as Button,
                 objScaleGroupBox.Controls["buttonObjScaleHeightP"] as Button,
-                objScaleGroupBox.Controls["textBoxObjScaleHeight"] as TextBox,
-                (float heightValue) =>
-                {
-                    MarioActions.ScaleObjects(stream, _currentAddresses, 0, heightValue, 0);
-                });
-            ScalarController.initialize(
                 objScaleGroupBox.Controls["buttonObjScaleDepthN"] as Button,
                 objScaleGroupBox.Controls["buttonObjScaleDepthP"] as Button,
+                objScaleGroupBox.Controls["textBoxObjScaleWidth"] as TextBox,
+                objScaleGroupBox.Controls["textBoxObjScaleHeight"] as TextBox,
                 objScaleGroupBox.Controls["textBoxObjScaleDepth"] as TextBox,
-                (float depthValue) =>
+                objScaleGroupBox.Controls["checkBoxObjScaleMultiply"] as CheckBox,
+                (float widthChange, float heightChange, float depthChange, bool multiply) =>
                 {
-                    MarioActions.ScaleObjects(stream, _currentAddresses, 0, 0, depthValue);
+
                 });
 
             var objHomeGroupBox = objPanel.Controls["groupBoxObjHome"] as GroupBox;

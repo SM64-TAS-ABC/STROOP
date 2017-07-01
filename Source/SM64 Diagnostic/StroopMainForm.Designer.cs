@@ -360,6 +360,7 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
+            this.checkBoxObjScaleMultiply = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -849,6 +850,7 @@ namespace SM64_Diagnostic
             // 
             // groupBoxObjScale
             // 
+            this.groupBoxObjScale.Controls.Add(this.checkBoxObjScaleMultiply);
             this.groupBoxObjScale.Controls.Add(this.textBoxObjScaleDepth);
             this.groupBoxObjScale.Controls.Add(this.textBoxObjScaleHeight);
             this.groupBoxObjScale.Controls.Add(this.textBoxObjScaleWidth);
@@ -4224,6 +4226,16 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
+            // checkBoxObjScaleMultiply
+            // 
+            this.checkBoxObjScaleMultiply.AutoSize = true;
+            this.checkBoxObjScaleMultiply.Location = new System.Drawing.Point(124, 0);
+            this.checkBoxObjScaleMultiply.Name = "checkBoxObjScaleMultiply";
+            this.checkBoxObjScaleMultiply.Size = new System.Drawing.Size(61, 17);
+            this.checkBoxObjScaleMultiply.TabIndex = 38;
+            this.checkBoxObjScaleMultiply.Text = "Multiply";
+            this.checkBoxObjScaleMultiply.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4672,6 +4684,7 @@ namespace SM64_Diagnostic
         private Button buttonObjScaleDepthP;
         private Button buttonObjScaleHeightP;
         private Button buttonObjScaleWidthP;
+        private CheckBox checkBoxObjScaleMultiply;
     }
 }
 
