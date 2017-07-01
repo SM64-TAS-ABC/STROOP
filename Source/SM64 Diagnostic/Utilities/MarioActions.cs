@@ -55,6 +55,13 @@ namespace SM64_Diagnostic.Utilities
                     currentZValue += stream.GetSingle(posAddressAngle.ZAddress);
                 }
 
+                if (change == Change.MULTIPLY)
+                {
+                    currentXValue *= stream.GetSingle(posAddressAngle.XAddress);
+                    currentYValue *= stream.GetSingle(posAddressAngle.YAddress);
+                    currentZValue *= stream.GetSingle(posAddressAngle.ZAddress);
+                }
+
                 success &= stream.SetValue(currentXValue, posAddressAngle.XAddress);
                 success &= stream.SetValue(currentYValue, posAddressAngle.YAddress);
                 success &= stream.SetValue(currentZValue, posAddressAngle.ZAddress);
@@ -178,7 +185,7 @@ namespace SM64_Diagnostic.Utilities
                         objAddress + Config.ObjectSlots.ScaleHeightOffset,
                         objAddress + Config.ObjectSlots.ScaleDepthOffset));
 
-            return MoveThings(stream, posAddressAngles, widthChange, heightChange, depthChange, Change.ADD, false);
+            return MoveThings(stream, posAddressAngles, widthChange, heightChange, depthChange, multiply ? Change.MULTIPLY : Change.ADD);
         }
 
         public static bool GoToObjectsHome(ProcessStream stream, List<uint> objAddresses)
