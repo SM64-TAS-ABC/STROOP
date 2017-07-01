@@ -332,7 +332,7 @@ namespace SM64_Diagnostic.Managers
                 objScaleGroupBox.Controls["checkBoxObjScaleMultiply"] as CheckBox,
                 (float widthChange, float heightChange, float depthChange, bool multiply) =>
                 {
-
+                    MarioActions.ScaleObjects(stream, _currentAddresses, widthChange, heightChange, depthChange, multiply);
                 });
 
             var objHomeGroupBox = objPanel.Controls["groupBoxObjHome"] as GroupBox;

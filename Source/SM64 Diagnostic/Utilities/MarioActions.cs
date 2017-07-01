@@ -167,7 +167,7 @@ namespace SM64_Diagnostic.Utilities
         }
 
         public static bool ScaleObjects(ProcessStream stream, List<uint> objAddresses,
-            float widthChange, float heightChange, float depthChange)
+            float widthChange, float heightChange, float depthChange, bool multiply)
         {
             List<PositionAddressAngle> posAddressAngles =
                 objAddresses.ConvertAll<PositionAddressAngle>(
