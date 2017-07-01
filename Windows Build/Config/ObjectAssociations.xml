@@ -2062,6 +2062,11 @@
     <SpawnCode gfxId="0xA4"/>
     <Image path="Splash Bubble.png"/>
   </Object>
+  <Object behaviorScriptAddress="0x13002C60" name="Splash Fish" gfxId="0x800F8F40">
+    <SpawnCode gfxId="0xA9"/>
+    <Image path="Blue Fish.png"/>
+    <MapImage path="Blue Fish Top.png" rotates="true"/>
+  </Object>
   <Object behaviorScriptAddress="0x13002C7C" name="Water Ripples">
     <SpawnCode gfxId="0xA5"/>
     <Image path="Water Ripples.png"/>
