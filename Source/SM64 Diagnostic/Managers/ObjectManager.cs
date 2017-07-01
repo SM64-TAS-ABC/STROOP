@@ -403,7 +403,7 @@ namespace SM64_Diagnostic.Managers
                 objZ = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
                 objFacing = (float)((UInt16)(_stream.GetUInt32(objAddress + Config.ObjectSlots.ObjectRotationOffset)) / 65536f * 2 * Math.PI);
 
-                double angleToMario = Math.PI / 2 - MoreMath.AngleTo(objX, objZ, mX, mZ);
+                double angleToMario = MoreMath.AngleTo_Radians(objX, objZ, mX, mZ);
 
                 // Get object position
                 float objHomeX, objHomeY, objHomeZ;

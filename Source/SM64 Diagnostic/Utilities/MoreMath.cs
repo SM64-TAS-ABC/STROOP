@@ -17,20 +17,17 @@ namespace SM64_Diagnostic.Utilities
             return Math.Sqrt(dx * dx + dy * dy + dz * dz);
         }
 
-        public static double DistanceTo(float x1, float y1, float x2, float y2)
+        public static double DistanceTo(float x1, float z1, float x2, float z2)
         {
-            float dx, dy;
+            float dx, dz;
             dx = x1 - x2;
-            dy = y1 - y2;
-            return Math.Sqrt(dx * dx + dy * dy);
+            dz = z1 - z2;
+            return Math.Sqrt(dx * dx + dz * dz);
         }
 
-        public static double AngleTo(float xFrom, float yFrom, float xTo, float yTo)
+        public static double AngleTo_Radians(float xFrom, float zFrom, float xTo, float zTo)
         {
-            float dx, dy;
-            dx = xTo - xFrom;
-            dy = yTo - yFrom;
-            return Math.Atan2(dy, dx);
+            return Math.Atan2(xTo - xFrom, zTo - zFrom);
         }
 
         public static (double radius, double theta, double phi) EulerToSphericalRadians(double x, double y, double z)
