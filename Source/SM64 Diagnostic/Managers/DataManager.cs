@@ -31,7 +31,7 @@ namespace SM64_Diagnostic.Managers
             AddWatchVariables(data);
         }
 
-        protected void RemoveWatchVaraibles(IEnumerable<WatchVariableControl> watchVars)
+        protected void RemoveWatchVariables(IEnumerable<WatchVariableControl> watchVars)
         {
             foreach (var watchVar in watchVars)
             {

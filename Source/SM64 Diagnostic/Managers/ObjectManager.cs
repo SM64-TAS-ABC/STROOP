@@ -45,7 +45,7 @@ namespace SM64_Diagnostic.Managers
             lock (_watchVarLocker)
             {
                 // Remove old watchVars from list
-                RemoveWatchVaraibles(_behaviorDataControls);
+                RemoveWatchVariables(_behaviorDataControls);
                 _behaviorDataControls.Clear();
 
                 // Add new watchVars
