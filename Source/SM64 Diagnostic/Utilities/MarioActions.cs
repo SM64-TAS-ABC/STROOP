@@ -29,8 +29,10 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
+        private enum Change { SET, ADD, MULTIPLY };
+
         private static bool MoveThings(ProcessStream stream, List<PositionAddressAngle> posAddressAngles,
-            float xValue, float yValue, float zValue, bool translate, bool useRelative = false)
+            float xValue, float yValue, float zValue, Change change, bool useRelative = false)
         {
             if (posAddressAngles.Count == 0)
                 return false;
@@ -44,7 +46,7 @@ namespace SM64_Diagnostic.Utilities
                 float currentYValue = yValue;
                 float currentZValue = zValue;
 
-                if (translate)
+                if (change == Change.ADD)
                 {
                     handleScaling(ref currentXValue, ref currentZValue);
                     handleRelativeAngle(ref currentXValue, ref currentZValue, useRelative, posAddressAngle.Angle);
@@ -79,7 +81,7 @@ namespace SM64_Diagnostic.Utilities
 
             yDestination += Config.Mario.MoveToObjectYOffset;
 
-            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, false);
+            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
 
         public static bool RetrieveObjects(ProcessStream stream, List<uint> objAddresses)
@@ -97,7 +99,7 @@ namespace SM64_Diagnostic.Utilities
 
             yDestination += Config.ObjectSlots.MoveToMarioYOffset;
 
-            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, false);
+            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
 
         public static bool TranslateObjects(ProcessStream stream, List<uint> objAddresses,
@@ -111,7 +113,7 @@ namespace SM64_Diagnostic.Utilities
                         objAddress + Config.ObjectSlots.ObjectZOffset,
                         stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset)));
 
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, true, useRelative);
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool TranslateObjectHomes(ProcessStream stream, List<uint> objAddresses,
@@ -125,7 +127,7 @@ namespace SM64_Diagnostic.Utilities
                         objAddress + Config.ObjectSlots.HomeZOffset,
                         stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset)));
 
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, true, useRelative);
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool RotateObjects(ProcessStream stream, List<uint> objAddresses,
@@ -176,7 +178,7 @@ namespace SM64_Diagnostic.Utilities
                         objAddress + Config.ObjectSlots.ScaleHeightOffset,
                         objAddress + Config.ObjectSlots.ScaleDepthOffset));
 
-            return MoveThings(stream, posAddressAngles, widthChange, heightChange, depthChange, true, false);
+            return MoveThings(stream, posAddressAngles, widthChange, heightChange, depthChange, Change.ADD, false);
         }
 
         public static bool GoToObjectsHome(ProcessStream stream, List<uint> objAddresses)
@@ -196,7 +198,7 @@ namespace SM64_Diagnostic.Utilities
 
             yDestination += Config.Mario.MoveToObjectYOffset;
 
-            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, false);
+            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
 
         public static bool RetrieveObjectsHome(ProcessStream stream, List<uint> objAddresses)
@@ -214,7 +216,7 @@ namespace SM64_Diagnostic.Utilities
 
             yDestination += Config.ObjectSlots.MoveToMarioYOffset;
 
-            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, false);
+            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
 
         public static bool CloneObject(ProcessStream stream, uint objAddress)
@@ -426,7 +428,7 @@ namespace SM64_Diagnostic.Utilities
                 Config.Mario.StructAddress + Config.Mario.ZOffset,
                 stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset)));
 
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, true, useRelative);
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool TranslateHOLP(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
@@ -438,7 +440,7 @@ namespace SM64_Diagnostic.Utilities
                 Config.Mario.StructAddress + Config.HolpZ,
                 stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset)));
 
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, true, useRelative);
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool MarioChangeYaw(ProcessStream stream, int yawOffset)
@@ -773,7 +775,7 @@ namespace SM64_Diagnostic.Utilities
                 Config.Camera.CameraZ,
                 (UInt16)(stream.GetUInt32(Config.Camera.CameraRot))));
 
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, true, useRelative);
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool TranslateCameraSpherically(ProcessStream stream, float radiusOffset, float thetaOffset, float phiOffset, float pivotX, float pivotY, float pivotZ)
