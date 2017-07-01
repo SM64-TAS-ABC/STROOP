@@ -318,6 +318,32 @@ namespace SM64_Diagnostic.Managers
                     MarioActions.RotateObjects(stream, _currentAddresses, 0, 0, (int)Math.Round(rollValue));
                 });
 
+            var objScaleGroupBox = objPanel.Controls["groupBoxObjScale"] as GroupBox;
+            ScalarController.initialize(
+                objScaleGroupBox.Controls["buttonObjScaleWidthN"] as Button,
+                objScaleGroupBox.Controls["buttonObjScaleWidthP"] as Button,
+                objScaleGroupBox.Controls["textBoxObjScaleWidth"] as TextBox,
+                (float widthValue) =>
+                {
+                    MarioActions.ScaleObjects(stream, _currentAddresses, widthValue, 0, 0);
+                });
+            ScalarController.initialize(
+                objScaleGroupBox.Controls["buttonObjScaleHeightN"] as Button,
+                objScaleGroupBox.Controls["buttonObjScaleHeightP"] as Button,
+                objScaleGroupBox.Controls["textBoxObjScaleHeight"] as TextBox,
+                (float heightValue) =>
+                {
+                    MarioActions.ScaleObjects(stream, _currentAddresses, 0, heightValue, 0);
+                });
+            ScalarController.initialize(
+                objScaleGroupBox.Controls["buttonObjScaleDepthN"] as Button,
+                objScaleGroupBox.Controls["buttonObjScaleDepthP"] as Button,
+                objScaleGroupBox.Controls["textBoxObjScaleDepth"] as TextBox,
+                (float depthValue) =>
+                {
+                    MarioActions.ScaleObjects(stream, _currentAddresses, 0, 0, depthValue);
+                });
+
             var objHomeGroupBox = objPanel.Controls["groupBoxObjHome"] as GroupBox;
             PositionController.initialize(
                 objHomeGroupBox.Controls["buttonObjHomeXn"] as Button,

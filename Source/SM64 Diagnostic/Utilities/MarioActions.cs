@@ -166,6 +166,19 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool ScaleObjects(ProcessStream stream, List<uint> objAddresses,
+            float widthChange, float heightChange, float depthChange)
+        {
+            List<PositionAddressAngle> posAddressAngles =
+                objAddresses.ConvertAll<PositionAddressAngle>(
+                    objAddress => new PositionAddressAngle(
+                        objAddress + Config.ObjectSlots.ObjectXOffset,
+                        objAddress + Config.ObjectSlots.ObjectYOffset,
+                        objAddress + Config.ObjectSlots.ObjectZOffset));
+
+            return MoveThings(stream, posAddressAngles, widthChange, heightChange, depthChange, true, false);
+        }
+
         public static bool GoToObjectsHome(ProcessStream stream, List<uint> objAddresses)
         {
             if (objAddresses.Count == 0)
