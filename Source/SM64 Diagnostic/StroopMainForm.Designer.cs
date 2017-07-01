@@ -258,6 +258,7 @@ namespace SM64_Diagnostic
             this.radioButtonDbgEnemyInfo = new System.Windows.Forms.RadioButton();
             this.tabPageMap = new System.Windows.Forms.TabPage();
             this.splitContainerMap = new System.Windows.Forms.SplitContainer();
+            this.checkBoxMapShowCeiling = new System.Windows.Forms.CheckBox();
             this.checkBoxMapShowFloor = new System.Windows.Forms.CheckBox();
             this.checkBoxMapShowCamera = new System.Windows.Forms.CheckBox();
             this.checkBoxMapShowHolp = new System.Windows.Forms.CheckBox();
@@ -347,7 +348,7 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
-            this.checkBoxMapShowCeiling = new System.Windows.Forms.CheckBox();
+            this.checkBoxDisableActionUpdateWhenCloning = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -446,7 +447,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 109);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 110);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -534,7 +535,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 60);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 61);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -3000,6 +3001,16 @@ namespace SM64_Diagnostic
             this.splitContainerMap.SplitterWidth = 3;
             this.splitContainerMap.TabIndex = 16;
             // 
+            // checkBoxMapShowCeiling
+            // 
+            this.checkBoxMapShowCeiling.AutoSize = true;
+            this.checkBoxMapShowCeiling.Location = new System.Drawing.Point(5, 122);
+            this.checkBoxMapShowCeiling.Name = "checkBoxMapShowCeiling";
+            this.checkBoxMapShowCeiling.Size = new System.Drawing.Size(105, 17);
+            this.checkBoxMapShowCeiling.TabIndex = 19;
+            this.checkBoxMapShowCeiling.Text = "Show Ceiling Tri.";
+            this.checkBoxMapShowCeiling.UseVisualStyleBackColor = true;
+            // 
             // checkBoxMapShowFloor
             // 
             this.checkBoxMapShowFloor.AutoSize = true;
@@ -3136,7 +3147,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(623, 543);
+            this.glControlMap.Size = new System.Drawing.Size(624, 543);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -3757,6 +3768,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageOptions
             // 
+            this.tabPageOptions.Controls.Add(this.checkBoxDisableActionUpdateWhenCloning);
             this.tabPageOptions.Controls.Add(this.groupBoxShowOverlay);
             this.tabPageOptions.Controls.Add(this.checkBoxScaleDiagonalPositionControllerButtons);
             this.tabPageOptions.Controls.Add(this.label3);
@@ -4060,15 +4072,16 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
-            // checkBoxMapShowCeiling
+            // checkBoxDisableActionUpdateWhenCloning
             // 
-            this.checkBoxMapShowCeiling.AutoSize = true;
-            this.checkBoxMapShowCeiling.Location = new System.Drawing.Point(5, 122);
-            this.checkBoxMapShowCeiling.Name = "checkBoxMapShowCeiling";
-            this.checkBoxMapShowCeiling.Size = new System.Drawing.Size(105, 17);
-            this.checkBoxMapShowCeiling.TabIndex = 19;
-            this.checkBoxMapShowCeiling.Text = "Show Ceiling Tri.";
-            this.checkBoxMapShowCeiling.UseVisualStyleBackColor = true;
+            this.checkBoxDisableActionUpdateWhenCloning.AutoSize = true;
+            this.checkBoxDisableActionUpdateWhenCloning.Location = new System.Drawing.Point(3, 84);
+            this.checkBoxDisableActionUpdateWhenCloning.Name = "checkBoxDisableActionUpdateWhenCloning";
+            this.checkBoxDisableActionUpdateWhenCloning.Size = new System.Drawing.Size(202, 17);
+            this.checkBoxDisableActionUpdateWhenCloning.TabIndex = 30;
+            this.checkBoxDisableActionUpdateWhenCloning.Text = "Disable Action Update When Cloning";
+            this.checkBoxDisableActionUpdateWhenCloning.UseVisualStyleBackColor = true;
+            this.checkBoxDisableActionUpdateWhenCloning.CheckedChanged += new System.EventHandler(this.checkBoxDisableActionUpdateWhenCloning_CheckedChanged);
             // 
             // StroopMainForm
             // 
@@ -4504,6 +4517,7 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxShowOverlayInteractionObject;
         private CheckBox checkBoxShowOverlayCameraSecondaryObject;
         private CheckBox checkBoxMapShowCeiling;
+        private CheckBox checkBoxDisableActionUpdateWhenCloning;
     }
 }
 

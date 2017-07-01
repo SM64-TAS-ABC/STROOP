@@ -548,6 +548,11 @@ namespace SM64_Diagnostic
             Config.ScaleDiagonalPositionControllerButtons = checkBoxScaleDiagonalPositionControllerButtons.Checked;
         }
 
+        private void checkBoxDisableActionUpdateWhenCloning_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.DisableActionUpdateWhenCloning = checkBoxDisableActionUpdateWhenCloning.Checked;
+        }
+
         private void checkBoxShowOverlayHeldObject_CheckedChanged(object sender, EventArgs e)
         {
             Config.ShowOverlayHeldObject = checkBoxShowOverlayHeldObject.Checked;

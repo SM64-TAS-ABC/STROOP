@@ -213,7 +213,7 @@ namespace SM64_Diagnostic.Utilities
             uint lastObject = stream.GetUInt32(marioAddress + Config.Mario.HoldingObjectPointerOffset);
             
             // Set clone action flags
-            if (lastObject == 0x00000000U)
+            if (lastObject == 0x00000000U && !Config.DisableActionUpdateWhenCloning)
             {
                 // Set Next action
                 uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
