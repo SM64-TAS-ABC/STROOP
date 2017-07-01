@@ -547,9 +547,34 @@ namespace SM64_Diagnostic
             Config.ScaleDiagonalPositionControllerButtons = checkBoxScaleDiagonalPositionControllerButtons.Checked;
         }
 
-        private void checkBoxUseOverlays_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxShowOverlayHeldObject_CheckedChanged(object sender, EventArgs e)
         {
-            Config.ShowOverlays = checkBoxUseOverlays.Checked;
+            Config.ShowOverlayHeldObject = checkBoxShowOverlayHeldObject.Checked;
+        }
+
+        private void checkBoxShowOverlayStoodOnObject_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.ShowOverlayStoodOnObject = checkBoxShowOverlayStoodOnObject.Checked;
+        }
+
+        private void checkBoxShowOverlayInteractionObject_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.ShowOverlayInteractionObject = checkBoxShowOverlayInteractionObject.Checked;
+        }
+
+        private void checkBoxShowOverlayUsedObject_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.ShowOverlayUsedObject = checkBoxShowOverlayUsedObject.Checked;
+        }
+
+        private void checkBoxShowOverlayCameraSecondaryObject_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.ShowOverlayCameraSecondaryObject = checkBoxShowOverlayCameraSecondaryObject.Checked;
+        }
+
+        private void checkBoxShowOverlayClosestObject_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.ShowOverlayClosestObject = checkBoxShowOverlayClosestObject.Checked;
         }
 
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)

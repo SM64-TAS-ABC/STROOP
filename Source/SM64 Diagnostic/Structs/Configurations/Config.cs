@@ -32,7 +32,12 @@ namespace SM64_Diagnostic.Structs.Configurations
       
         public static bool SlotIndexsFromOne;
         public static bool MoveCameraWithPu = true;
-        public static bool ShowOverlays = true;
+        public static bool ShowOverlayHeldObject = true;
+        public static bool ShowOverlayStoodOnObject = true;
+        public static bool ShowOverlayInteractionObject = true;
+        public static bool ShowOverlayUsedObject = true;
+        public static bool ShowOverlayCameraSecondaryObject = true;
+        public static bool ShowOverlayClosestObject = true;
         public static bool ScaleDiagonalPositionControllerButtons = false;
     }
 }

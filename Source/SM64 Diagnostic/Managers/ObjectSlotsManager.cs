@@ -491,12 +491,12 @@ namespace SM64_Diagnostic.Managers
 
             // Update Overlays
             objSlot.DrawSelectedOverlay = SelectedSlotsAddresses.Contains(objAddress);
-            objSlot.DrawStandingOnOverlay = Config.ShowOverlays && objAddress == _standingOnObject;
-            objSlot.DrawInteractingOverlay = Config.ShowOverlays && objAddress == _interactingObject;
-            objSlot.DrawHoldingOverlay = Config.ShowOverlays && objAddress == _holdingObject;
-            objSlot.DrawUsingOverlay = Config.ShowOverlays && objAddress == _usingObject;
-            objSlot.DrawClosestOverlay = Config.ShowOverlays && objAddress == _closestObject;
-            objSlot.DrawCameraOverlay = Config.ShowOverlays && objAddress == _cameraObject;
+            objSlot.DrawStandingOnOverlay = Config.ShowOverlayStoodOnObject && objAddress == _standingOnObject;
+            objSlot.DrawInteractingOverlay = Config.ShowOverlayInteractionObject && objAddress == _interactingObject;
+            objSlot.DrawHoldingOverlay = Config.ShowOverlayHeldObject && objAddress == _holdingObject;
+            objSlot.DrawUsingOverlay = Config.ShowOverlayUsedObject && objAddress == _usingObject;
+            objSlot.DrawClosestOverlay = Config.ShowOverlayClosestObject && objAddress == _closestObject;
+            objSlot.DrawCameraOverlay = Config.ShowOverlayCameraSecondaryObject && objAddress == _cameraObject;
 
             if (objData.IsActive)
                 _activeObjCnt++;

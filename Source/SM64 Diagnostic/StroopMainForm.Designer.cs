@@ -323,8 +323,14 @@ namespace SM64_Diagnostic
             this.tabPageCamHack = new System.Windows.Forms.TabPage();
             this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.groupBoxShowOverlay = new System.Windows.Forms.GroupBox();
+            this.checkBoxShowOverlayUsedObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayInteractionObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayCameraSecondaryObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayClosestObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayStoodOnObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayHeldObject = new System.Windows.Forms.CheckBox();
             this.checkBoxScaleDiagonalPositionControllerButtons = new System.Windows.Forms.CheckBox();
-            this.checkBoxUseOverlays = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
@@ -332,6 +338,7 @@ namespace SM64_Diagnostic
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
             this.panelConnect = new System.Windows.Forms.Panel();
+            this.buttonRefreshAndConnect = new System.Windows.Forms.Button();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.labelNotConnected = new System.Windows.Forms.Label();
             this.buttonConnect = new System.Windows.Forms.Button();
@@ -340,7 +347,6 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
-            this.buttonRefreshAndConnect = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -406,6 +412,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.SuspendLayout();
             this.tabPageCamHack.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
+            this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -438,7 +445,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 106);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 109);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -526,7 +533,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 57);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 60);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -3127,7 +3134,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(620, 543);
+            this.glControlMap.Size = new System.Drawing.Size(623, 543);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -3748,8 +3755,8 @@ namespace SM64_Diagnostic
             // 
             // tabPageOptions
             // 
+            this.tabPageOptions.Controls.Add(this.groupBoxShowOverlay);
             this.tabPageOptions.Controls.Add(this.checkBoxScaleDiagonalPositionControllerButtons);
-            this.tabPageOptions.Controls.Add(this.checkBoxUseOverlays);
             this.tabPageOptions.Controls.Add(this.label3);
             this.tabPageOptions.Controls.Add(this.checkBoxMoveCamWithPu);
             this.tabPageOptions.Controls.Add(this.checkBoxUseRomHack);
@@ -3761,10 +3768,109 @@ namespace SM64_Diagnostic
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
             // 
+            // groupBoxShowOverlay
+            // 
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayUsedObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayInteractionObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraSecondaryObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayClosestObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayStoodOnObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayHeldObject);
+            this.groupBoxShowOverlay.Location = new System.Drawing.Point(256, 4);
+            this.groupBoxShowOverlay.Name = "groupBoxShowOverlay";
+            this.groupBoxShowOverlay.Size = new System.Drawing.Size(170, 154);
+            this.groupBoxShowOverlay.TabIndex = 29;
+            this.groupBoxShowOverlay.TabStop = false;
+            this.groupBoxShowOverlay.Text = "Object Overlays to Show";
+            // 
+            // checkBoxShowOverlayUsedObject
+            // 
+            this.checkBoxShowOverlayUsedObject.AutoSize = true;
+            this.checkBoxShowOverlayUsedObject.Checked = true;
+            this.checkBoxShowOverlayUsedObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayUsedObject.Location = new System.Drawing.Point(5, 83);
+            this.checkBoxShowOverlayUsedObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayUsedObject.Name = "checkBoxShowOverlayUsedObject";
+            this.checkBoxShowOverlayUsedObject.Size = new System.Drawing.Size(85, 17);
+            this.checkBoxShowOverlayUsedObject.TabIndex = 4;
+            this.checkBoxShowOverlayUsedObject.Text = "Used Object";
+            this.checkBoxShowOverlayUsedObject.UseVisualStyleBackColor = true;
+            this.checkBoxShowOverlayUsedObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayUsedObject_CheckedChanged);
+            // 
+            // checkBoxShowOverlayInteractionObject
+            // 
+            this.checkBoxShowOverlayInteractionObject.AutoSize = true;
+            this.checkBoxShowOverlayInteractionObject.Checked = true;
+            this.checkBoxShowOverlayInteractionObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayInteractionObject.Location = new System.Drawing.Point(5, 62);
+            this.checkBoxShowOverlayInteractionObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayInteractionObject.Name = "checkBoxShowOverlayInteractionObject";
+            this.checkBoxShowOverlayInteractionObject.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxShowOverlayInteractionObject.TabIndex = 3;
+            this.checkBoxShowOverlayInteractionObject.Text = "Interaction Object";
+            this.checkBoxShowOverlayInteractionObject.UseVisualStyleBackColor = true;
+            this.checkBoxShowOverlayInteractionObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayInteractionObject_CheckedChanged);
+            // 
+            // checkBoxShowOverlayCameraSecondaryObject
+            // 
+            this.checkBoxShowOverlayCameraSecondaryObject.AutoSize = true;
+            this.checkBoxShowOverlayCameraSecondaryObject.Checked = true;
+            this.checkBoxShowOverlayCameraSecondaryObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayCameraSecondaryObject.Location = new System.Drawing.Point(5, 104);
+            this.checkBoxShowOverlayCameraSecondaryObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayCameraSecondaryObject.Name = "checkBoxShowOverlayCameraSecondaryObject";
+            this.checkBoxShowOverlayCameraSecondaryObject.Size = new System.Drawing.Size(150, 17);
+            this.checkBoxShowOverlayCameraSecondaryObject.TabIndex = 5;
+            this.checkBoxShowOverlayCameraSecondaryObject.Text = "Camera Secondary Object";
+            this.checkBoxShowOverlayCameraSecondaryObject.UseVisualStyleBackColor = true;
+            this.checkBoxShowOverlayCameraSecondaryObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayCameraSecondaryObject_CheckedChanged);
+            // 
+            // checkBoxShowOverlayClosestObject
+            // 
+            this.checkBoxShowOverlayClosestObject.AutoSize = true;
+            this.checkBoxShowOverlayClosestObject.Checked = true;
+            this.checkBoxShowOverlayClosestObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayClosestObject.Location = new System.Drawing.Point(5, 125);
+            this.checkBoxShowOverlayClosestObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayClosestObject.Name = "checkBoxShowOverlayClosestObject";
+            this.checkBoxShowOverlayClosestObject.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxShowOverlayClosestObject.TabIndex = 6;
+            this.checkBoxShowOverlayClosestObject.Text = "Closest Object";
+            this.checkBoxShowOverlayClosestObject.UseVisualStyleBackColor = true;
+            this.checkBoxShowOverlayClosestObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayClosestObject_CheckedChanged);
+            // 
+            // checkBoxShowOverlayStoodOnObject
+            // 
+            this.checkBoxShowOverlayStoodOnObject.AutoSize = true;
+            this.checkBoxShowOverlayStoodOnObject.Checked = true;
+            this.checkBoxShowOverlayStoodOnObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayStoodOnObject.Location = new System.Drawing.Point(5, 41);
+            this.checkBoxShowOverlayStoodOnObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayStoodOnObject.Name = "checkBoxShowOverlayStoodOnObject";
+            this.checkBoxShowOverlayStoodOnObject.Size = new System.Drawing.Size(105, 17);
+            this.checkBoxShowOverlayStoodOnObject.TabIndex = 2;
+            this.checkBoxShowOverlayStoodOnObject.Text = "Stood On Object";
+            this.checkBoxShowOverlayStoodOnObject.UseVisualStyleBackColor = true;
+            this.checkBoxShowOverlayStoodOnObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayStoodOnObject_CheckedChanged);
+            // 
+            // checkBoxShowOverlayHeldObject
+            // 
+            this.checkBoxShowOverlayHeldObject.AutoSize = true;
+            this.checkBoxShowOverlayHeldObject.Checked = true;
+            this.checkBoxShowOverlayHeldObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayHeldObject.Location = new System.Drawing.Point(5, 20);
+            this.checkBoxShowOverlayHeldObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayHeldObject.Name = "checkBoxShowOverlayHeldObject";
+            this.checkBoxShowOverlayHeldObject.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxShowOverlayHeldObject.TabIndex = 1;
+            this.checkBoxShowOverlayHeldObject.Text = "Held Object";
+            this.checkBoxShowOverlayHeldObject.UseVisualStyleBackColor = true;
+            this.checkBoxShowOverlayHeldObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayHeldObject_CheckedChanged);
+            // 
             // checkBoxScaleDiagonalPositionControllerButtons
             // 
             this.checkBoxScaleDiagonalPositionControllerButtons.AutoSize = true;
-            this.checkBoxScaleDiagonalPositionControllerButtons.Location = new System.Drawing.Point(3, 84);
+            this.checkBoxScaleDiagonalPositionControllerButtons.Location = new System.Drawing.Point(3, 64);
             this.checkBoxScaleDiagonalPositionControllerButtons.Name = "checkBoxScaleDiagonalPositionControllerButtons";
             this.checkBoxScaleDiagonalPositionControllerButtons.Size = new System.Drawing.Size(224, 17);
             this.checkBoxScaleDiagonalPositionControllerButtons.TabIndex = 8;
@@ -3772,24 +3878,11 @@ namespace SM64_Diagnostic
             this.checkBoxScaleDiagonalPositionControllerButtons.UseVisualStyleBackColor = true;
             this.checkBoxScaleDiagonalPositionControllerButtons.CheckedChanged += new System.EventHandler(this.checkBoxScaleDiagonalPositionControllerButtons_CheckedChanged);
             // 
-            // checkBoxUseOverlays
-            // 
-            this.checkBoxUseOverlays.AutoSize = true;
-            this.checkBoxUseOverlays.Checked = true;
-            this.checkBoxUseOverlays.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxUseOverlays.Location = new System.Drawing.Point(3, 64);
-            this.checkBoxUseOverlays.Name = "checkBoxUseOverlays";
-            this.checkBoxUseOverlays.Size = new System.Drawing.Size(171, 17);
-            this.checkBoxUseOverlays.TabIndex = 8;
-            this.checkBoxUseOverlays.Text = "Use Mario Interaction Overlays";
-            this.checkBoxUseOverlays.UseVisualStyleBackColor = true;
-            this.checkBoxUseOverlays.CheckedChanged += new System.EventHandler(this.checkBoxUseOverlays_CheckedChanged);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 189);
+            this.label3.Location = new System.Drawing.Point(3, 131);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(129, 13);
             this.label3.TabIndex = 5;
@@ -3863,6 +3956,17 @@ namespace SM64_Diagnostic
             this.panelConnect.Name = "panelConnect";
             this.panelConnect.Size = new System.Drawing.Size(441, 20);
             this.panelConnect.TabIndex = 17;
+            // 
+            // buttonRefreshAndConnect
+            // 
+            this.buttonRefreshAndConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonRefreshAndConnect.Location = new System.Drawing.Point(134, 133);
+            this.buttonRefreshAndConnect.Name = "buttonRefreshAndConnect";
+            this.buttonRefreshAndConnect.Size = new System.Drawing.Size(172, 37);
+            this.buttonRefreshAndConnect.TabIndex = 3;
+            this.buttonRefreshAndConnect.Text = "Refresh && Connect";
+            this.buttonRefreshAndConnect.UseVisualStyleBackColor = true;
+            this.buttonRefreshAndConnect.Click += new System.EventHandler(this.buttonRefreshAndConnect_Click);
             // 
             // buttonRefresh
             // 
@@ -3953,17 +4057,6 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.Text = "Disable Read-only";
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
-            // 
-            // buttonRefreshAndConnect
-            // 
-            this.buttonRefreshAndConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefreshAndConnect.Location = new System.Drawing.Point(134, 133);
-            this.buttonRefreshAndConnect.Name = "buttonRefreshAndConnect";
-            this.buttonRefreshAndConnect.Size = new System.Drawing.Size(172, 37);
-            this.buttonRefreshAndConnect.TabIndex = 3;
-            this.buttonRefreshAndConnect.Text = "Refresh && Connect";
-            this.buttonRefreshAndConnect.UseVisualStyleBackColor = true;
-            this.buttonRefreshAndConnect.Click += new System.EventHandler(this.buttonRefreshAndConnect_Click);
             // 
             // StroopMainForm
             // 
@@ -4074,6 +4167,8 @@ namespace SM64_Diagnostic
             this.tabPageCamHack.ResumeLayout(false);
             this.tabPageOptions.ResumeLayout(false);
             this.tabPageOptions.PerformLayout();
+            this.groupBoxShowOverlay.ResumeLayout(false);
+            this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
             this.ResumeLayout(false);
@@ -4175,7 +4270,6 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.CheckBox checkBoxMapShowFloor;
         private CheckBox checkBoxMoveCamWithPu;
         private Label label3;
-        private CheckBox checkBoxUseOverlays;
         private TabPage tabPageTriangles;
         private RadioButton radioButtonTriCeiling;
         private RadioButton radioButtonTriWall;
@@ -4390,6 +4484,13 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxCameraPosRelative;
         private CheckBox checkBoxCameraSphericalPosRelative;
         private Button buttonRefreshAndConnect;
+        private GroupBox groupBoxShowOverlay;
+        private CheckBox checkBoxShowOverlayClosestObject;
+        private CheckBox checkBoxShowOverlayStoodOnObject;
+        private CheckBox checkBoxShowOverlayHeldObject;
+        private CheckBox checkBoxShowOverlayUsedObject;
+        private CheckBox checkBoxShowOverlayInteractionObject;
+        private CheckBox checkBoxShowOverlayCameraSecondaryObject;
     }
 }
 
