@@ -28,6 +28,7 @@ namespace SM64_Diagnostic.Managers
         MapObject _holpMapObj;
         MapObject _cameraMapObj;
         TriangleMapObject _floorTriangleMapObj;
+        TriangleMapObject _ceilingTriangleMapObj;
         List<MapObject> _mapObjects = new List<MapObject>();
         MapGui _mapGui;
         bool _isLoaded = false;
@@ -72,6 +73,14 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
+        public TriangleMapObject CeilingTriangleMapObject
+        {
+            get
+            {
+                return _ceilingTriangleMapObj;
+            }
+        }
+
         public bool Visible
         {
             get
@@ -98,7 +107,8 @@ namespace SM64_Diagnostic.Managers
 
             _cameraMapObj = new MapObject(objAssoc.CameraMapImage, 1);
             _cameraMapObj.UsesRotation = true;
-            _floorTriangleMapObj = new TriangleMapObject(Color.FromArgb(200, Color.Yellow), 3);
+            _floorTriangleMapObj = new TriangleMapObject(Color.FromArgb(200, Color.Cyan), 3);
+            _ceilingTriangleMapObj = new TriangleMapObject(Color.FromArgb(200, Color.Red), 2);
         }
 
         public void Load()
@@ -117,6 +127,7 @@ namespace SM64_Diagnostic.Managers
             _mapGraphics.AddMapObject(_holpMapObj);
             _mapGraphics.AddMapObject(_cameraMapObj);
             _mapGraphics.AddMapObject(_floorTriangleMapObj);
+            _mapGraphics.AddMapObject(_ceilingTriangleMapObj);
 
             //----- Register events ------
             // Set image
@@ -226,17 +237,27 @@ namespace SM64_Diagnostic.Managers
             _cameraMapObj.Draw = _mapGui.MapShowCamera.Checked && puX == cameraPuX && puY == cameraPuY && puZ == cameraPuZ;
             _cameraMapObj.LocationOnContol = CalculateLocationOnControl(cameraCoord, mapView);
 
-            float trianglePuX1 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X1);
-            float trianglePuZ1 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z1);
-            float trianglePuX2 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X2);
-            float trianglePuZ2 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z2);
-            float trianglePuX3 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X3);
-            float trianglePuZ3 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z3);
-            _floorTriangleMapObj.P1OnControl = CalculateLocationOnControl(new PointF(trianglePuX1, trianglePuZ1), mapView);
-            _floorTriangleMapObj.P2OnControl = CalculateLocationOnControl(new PointF(trianglePuX2, trianglePuZ2), mapView);
-            _floorTriangleMapObj.P3OnControl = CalculateLocationOnControl(new PointF(trianglePuX3, trianglePuZ3), mapView);
+            float floorTrianglePuX1 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X1);
+            float floorTrianglePuZ1 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z1);
+            float floorTrianglePuX2 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X2);
+            float floorTrianglePuZ2 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z2);
+            float floorTrianglePuX3 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X3);
+            float floorTrianglePuZ3 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z3);
+            _floorTriangleMapObj.P1OnControl = CalculateLocationOnControl(new PointF(floorTrianglePuX1, floorTrianglePuZ1), mapView);
+            _floorTriangleMapObj.P2OnControl = CalculateLocationOnControl(new PointF(floorTrianglePuX2, floorTrianglePuZ2), mapView);
+            _floorTriangleMapObj.P3OnControl = CalculateLocationOnControl(new PointF(floorTrianglePuX3, floorTrianglePuZ3), mapView);
             _floorTriangleMapObj.Draw = _floorTriangleMapObj.Show & _mapGui.MapShowFloorTriangle.Checked;
-  
+
+            float ceilingTrianglePuX1 = PuUtilities.GetRelativePuPosition(_ceilingTriangleMapObj.X1);
+            float ceilingTrianglePuZ1 = PuUtilities.GetRelativePuPosition(_ceilingTriangleMapObj.Z1);
+            float ceilingTrianglePuX2 = PuUtilities.GetRelativePuPosition(_ceilingTriangleMapObj.X2);
+            float ceilingTrianglePuZ2 = PuUtilities.GetRelativePuPosition(_ceilingTriangleMapObj.Z2);
+            float ceilingTrianglePuX3 = PuUtilities.GetRelativePuPosition(_ceilingTriangleMapObj.X3);
+            float ceilingTrianglePuZ3 = PuUtilities.GetRelativePuPosition(_ceilingTriangleMapObj.Z3);
+            _ceilingTriangleMapObj.P1OnControl = CalculateLocationOnControl(new PointF(ceilingTrianglePuX1, ceilingTrianglePuZ1), mapView);
+            _ceilingTriangleMapObj.P2OnControl = CalculateLocationOnControl(new PointF(ceilingTrianglePuX2, ceilingTrianglePuZ2), mapView);
+            _ceilingTriangleMapObj.P3OnControl = CalculateLocationOnControl(new PointF(ceilingTrianglePuX3, ceilingTrianglePuZ3), mapView);
+            _ceilingTriangleMapObj.Draw = _ceilingTriangleMapObj.Show & _mapGui.MapShowCeilingTriangle.Checked;
 
             // Calculate object slot's cooridnates
             foreach (var mapObj in _mapObjects)

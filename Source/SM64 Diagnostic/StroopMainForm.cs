@@ -111,6 +111,7 @@ namespace SM64_Diagnostic
             mapGui.MapShowHolp = checkBoxMapShowHolp;
             mapGui.MapShowCamera = checkBoxMapShowCamera;
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
+            mapGui.MapShowCeilingTriangle = checkBoxMapShowCeiling;
             currentContext.MapManager = _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
 
             currentContext.ActionsManager = _actionsManager = new ActionsManager(_sm64Stream, _actionsData, noTearFlowLayoutPanelActions);

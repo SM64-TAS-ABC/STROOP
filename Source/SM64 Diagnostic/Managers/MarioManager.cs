@@ -269,6 +269,29 @@ namespace SM64_Diagnostic.Managers
             }
             _mapManager.FloorTriangleMapObject.Show = (floorTriangle != 0x00);
 
+            // Update ceiling triangle
+            UInt32 ceilingTriangle = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
+            if (ceilingTriangle != 0x00)
+            {
+                Int16 x1 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.X1);
+                Int16 y1 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Y1);
+                Int16 z1 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Z1);
+                Int16 x2 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.X2);
+                Int16 y2 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Y2);
+                Int16 z2 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Z2);
+                Int16 x3 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.X3);
+                Int16 y3 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Y3);
+                Int16 z3 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Z3);
+                _mapManager.CeilingTriangleMapObject.X1 = x1;
+                _mapManager.CeilingTriangleMapObject.Z1 = z1;
+                _mapManager.CeilingTriangleMapObject.X2 = x2;
+                _mapManager.CeilingTriangleMapObject.Z2 = z2;
+                _mapManager.CeilingTriangleMapObject.X3 = x3;
+                _mapManager.CeilingTriangleMapObject.Z3 = z3;
+                _mapManager.CeilingTriangleMapObject.Y = (y1 + y2 + y3) / 3;
+            }
+            _mapManager.CeilingTriangleMapObject.Show = (ceilingTriangle != 0x00);
+
             // Update camera map object position
             _mapManager.CameraMapObject.X = cameraX;
             _mapManager.CameraMapObject.Y = cameraY;

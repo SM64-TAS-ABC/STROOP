@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -347,6 +347,7 @@ namespace SM64_Diagnostic
             this.buttonCollapseTop = new System.Windows.Forms.Button();
             this.buttonCollapseBottom = new System.Windows.Forms.Button();
             this.buttonReadOnly = new System.Windows.Forms.Button();
+            this.checkBoxMapShowCeiling = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -2973,6 +2974,7 @@ namespace SM64_Diagnostic
             // 
             // splitContainerMap.Panel1
             // 
+            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowCeiling);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowFloor);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowCamera);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowHolp);
@@ -3001,7 +3003,7 @@ namespace SM64_Diagnostic
             // checkBoxMapShowFloor
             // 
             this.checkBoxMapShowFloor.AutoSize = true;
-            this.checkBoxMapShowFloor.Location = new System.Drawing.Point(5, 122);
+            this.checkBoxMapShowFloor.Location = new System.Drawing.Point(5, 101);
             this.checkBoxMapShowFloor.Name = "checkBoxMapShowFloor";
             this.checkBoxMapShowFloor.Size = new System.Drawing.Size(97, 17);
             this.checkBoxMapShowFloor.TabIndex = 19;
@@ -3480,8 +3482,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -4058,6 +4060,16 @@ namespace SM64_Diagnostic
             this.buttonReadOnly.UseVisualStyleBackColor = true;
             this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
+            // checkBoxMapShowCeiling
+            // 
+            this.checkBoxMapShowCeiling.AutoSize = true;
+            this.checkBoxMapShowCeiling.Location = new System.Drawing.Point(5, 122);
+            this.checkBoxMapShowCeiling.Name = "checkBoxMapShowCeiling";
+            this.checkBoxMapShowCeiling.Size = new System.Drawing.Size(105, 17);
+            this.checkBoxMapShowCeiling.TabIndex = 19;
+            this.checkBoxMapShowCeiling.Text = "Show Ceiling Tri.";
+            this.checkBoxMapShowCeiling.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4491,6 +4503,7 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxShowOverlayUsedObject;
         private CheckBox checkBoxShowOverlayInteractionObject;
         private CheckBox checkBoxShowOverlayCameraSecondaryObject;
+        private CheckBox checkBoxMapShowCeiling;
     }
 }
 
