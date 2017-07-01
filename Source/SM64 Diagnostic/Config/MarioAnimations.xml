@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MarioAnimations>
+  <Action value="195" name="standing 1"/>
+  <Action value="196" name="standing 2"/>
+  <Action value="197" name="standing 3"/>
+</MarioAnimations>
