@@ -19,8 +19,6 @@
   <Data special="true" specialType="QFrameCountEstimate">QFrames Est.</Data>
   <Data type="ushort" address="0x00C26C1C" absoluteAddress="true" isAngle="true">Yaw (Facing)</Data>
   <Data type="ushort" address="0x00C26C16" absoluteAddress="true" isAngle="true">Yaw (Intended)</Data>
-  <Data special="true" specialType="YawFacingTrunc">Yaw (Facing) Trunc</Data>
-  <Data special="true" specialType="YawIntendedTrunc">Yaw (Intended) Trunc</Data>
   <Data special="true" specialType="DeltaYawIntendedFacing">DYaw Intend-Face</Data>
   <Data type="ushort" address="0x00c26c28" absoluteAddress="true" isAngle="true">Twirl Yaw</Data>
   <Data type="short" address="0x00c26c26" absoluteAddress="true" isAngle="true">Yaw Velocity</Data>
