@@ -974,8 +974,26 @@ namespace SM64_Diagnostic.Utilities
 
             // Load Images
             // TODO: Exceptions
-            //controllerImageGui.ButtonAImage = Image.FromFile(overlayImageDir + buttonAPath);
+            controllerImageGui.ButtonAImage = Image.FromFile(controllerImageDir + buttonAPath);
+            controllerImageGui.ButtonBImage = Image.FromFile(controllerImageDir + buttonBPath);
+            controllerImageGui.ButtonZImage = Image.FromFile(controllerImageDir + buttonZPath);
+            controllerImageGui.ButtonStartImage = Image.FromFile(controllerImageDir + buttonStartPath);
 
+            controllerImageGui.ButtonRImage = Image.FromFile(controllerImageDir + buttonRPath);
+            controllerImageGui.ButtonLImage = Image.FromFile(controllerImageDir + buttonLPath);
+
+            controllerImageGui.ButtonCUpImage = Image.FromFile(controllerImageDir + buttonCUpPath);
+            controllerImageGui.ButtonCDownImage = Image.FromFile(controllerImageDir + buttonCDownPath);
+            controllerImageGui.ButtonCLeftImage = Image.FromFile(controllerImageDir + buttonCLeftPath);
+            controllerImageGui.ButtonCRightImage = Image.FromFile(controllerImageDir + buttonCRightPath);
+
+            controllerImageGui.ButtonDUpImage = Image.FromFile(controllerImageDir + buttonDUpPath);
+            controllerImageGui.ButtonDDownImage = Image.FromFile(controllerImageDir + buttonDDownPath);
+            controllerImageGui.ButtonDLeftImage = Image.FromFile(controllerImageDir + buttonDLeftPath);
+            controllerImageGui.ButtonDRightImage = Image.FromFile(controllerImageDir + buttonDRightPath);
+
+            controllerImageGui.ControlStickImage = Image.FromFile(controllerImageDir + controlStickPath);
+            controllerImageGui.ControllerBaseImage = Image.FromFile(controllerImageDir + controllerBasePath);
             /*
             foreach (var obj in assoc.BehaviorAssociations)
             {
