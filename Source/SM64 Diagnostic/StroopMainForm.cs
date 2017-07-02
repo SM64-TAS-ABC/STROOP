@@ -469,14 +469,34 @@ namespace SM64_Diagnostic
             Invoke(new Action(() => Close()));
         }
 
-        private void buttonCollapseBottom_Click(object sender, EventArgs e)
+        private void buttonShowTopPanel_Click(object sender, EventArgs e)
         {
-            splitContainerMain.Panel2Collapsed = !splitContainerMain.Panel2Collapsed;
+            splitContainerMain.Panel1Collapsed = false;
+            splitContainerMain.Panel2Collapsed = true;
         }
 
-        private void buttonCollapseTop_Click(object sender, EventArgs e)
+        private void buttonShowBottomPanel_Click(object sender, EventArgs e)
         {
-            splitContainerMain.Panel1Collapsed = !splitContainerMain.Panel1Collapsed;
+            splitContainerMain.Panel1Collapsed = true;
+            splitContainerMain.Panel2Collapsed = false;
+        }
+
+        private void buttonShowTopBottomPanel_Click(object sender, EventArgs e)
+        {
+            splitContainerMain.Panel1Collapsed = false;
+            splitContainerMain.Panel2Collapsed = false;
+        }
+
+        private void buttonShowLeftPanel_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void buttonShowRightPanel_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void buttonShowLeftRightPanel_Click(object sender, EventArgs e)
+        {
         }
 
         private void buttonReadOnly_Click(object sender, EventArgs e)
