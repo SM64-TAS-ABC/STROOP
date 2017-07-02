@@ -83,9 +83,9 @@
               <xs:element name="CoordinateOffsetZ" type="types:address"/>
               <xs:element name="FacingAngleOffset" type="types:address"/>
               <xs:element name="StandingOnPointer" type="types:address"/>
-              <xs:element name="InteractingObjectPointerOffset" type="types:address"/>
-              <xs:element name="HoldingObjectPointerOffset" type="types:address"/>
-              <xs:element name="UsingObjectPointerOffset" type="types:address"/>
+              <xs:element name="InteractionObjectPointerOffset" type="types:address"/>
+              <xs:element name="HeldObjectPointerOffset" type="types:address"/>
+              <xs:element name="UsedObjectPointerOffset" type="types:address"/>
               <xs:element name ="MoveToObjectYOffset" type="xs:float"/>
               <xs:element name="MarioStructAddress" type="types:address"/>
               <xs:element name="CeilingYOffset" type="types:address"/>

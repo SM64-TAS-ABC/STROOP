@@ -278,16 +278,16 @@ namespace SM64_Diagnostic.Utilities
                                     Config.Mario.MoveToObjectYOffset = float.Parse(subElement.Value);
                                     break;
                                 case "StandingOnPointer":
-                                    Config.Mario.StandingOnObjectPointer = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Mario.StoodOnObjectPointer = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "InteractingObjectPointerOffset":
-                                    Config.Mario.InteractingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                case "InteractionObjectPointerOffset":
+                                    Config.Mario.InteractionObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break; 
-                                case "HoldingObjectPointerOffset":
-                                    Config.Mario.HoldingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                case "HeldObjectPointerOffset":
+                                    Config.Mario.HeldObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "UsingObjectPointerOffset":
-                                    Config.Mario.UsingObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                case "UsedObjectPointerOffset":
+                                    Config.Mario.UsedObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "CeilingYOffset":
                                     Config.Mario.CeilingYOffset = ParsingUtilities.ParseHex(subElement.Value);

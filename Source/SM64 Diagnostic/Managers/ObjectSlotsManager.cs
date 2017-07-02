@@ -380,10 +380,10 @@ namespace SM64_Diagnostic.Managers
 
             _activeObjCnt = 0;
 
-            _standingOnObject = _stream.GetUInt32(Config.Mario.StandingOnObjectPointer);
-            _interactingObject = _stream.GetUInt32(Config.Mario.InteractingObjectPointerOffset + Config.Mario.StructAddress);
-            _holdingObject = _stream.GetUInt32(Config.Mario.HoldingObjectPointerOffset + Config.Mario.StructAddress);
-            _usingObject = _stream.GetUInt32(Config.Mario.UsingObjectPointerOffset + Config.Mario.StructAddress);
+            _standingOnObject = _stream.GetUInt32(Config.Mario.StoodOnObjectPointer);
+            _interactingObject = _stream.GetUInt32(Config.Mario.InteractionObjectPointerOffset + Config.Mario.StructAddress);
+            _holdingObject = _stream.GetUInt32(Config.Mario.HeldObjectPointerOffset + Config.Mario.StructAddress);
+            _usingObject = _stream.GetUInt32(Config.Mario.UsedObjectPointerOffset + Config.Mario.StructAddress);
             _closestObject = newObjectSlotData.OrderBy(s => !s.IsActive || s.Behavior == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF) ? float.MaxValue
                 : s.DistanceToMario).First().Address;
             _cameraObject = _stream.GetUInt32(Config.Camera.SecondObject);

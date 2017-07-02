@@ -76,9 +76,9 @@
     <YawFacingOffset>0x2E</YawFacingOffset>
     <YawIntendedOffset>0x24</YawIntendedOffset>
     <StandingOnPointer>0x80330E34</StandingOnPointer>
-    <InteractingObjectPointerOffset>0x78</InteractingObjectPointerOffset>
-    <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>
-    <UsingObjectPointerOffset>0x80</UsingObjectPointerOffset>
+    <InteractionObjectPointerOffset>0x78</InteractionObjectPointerOffset>
+    <HeldObjectPointerOffset>0x7C</HeldObjectPointerOffset>
+    <UsedObjectPointerOffset>0x80</UsedObjectPointerOffset>
     <CeilingYOffset>0x6C</CeilingYOffset>
     <GroundYOffset>0x70</GroundYOffset>
     <FloorTriangleOffset>0x68</FloorTriangleOffset>

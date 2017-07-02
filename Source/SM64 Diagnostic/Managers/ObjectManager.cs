@@ -616,7 +616,7 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             // Determine which object is being held
-            uint holdingObj = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.HoldingObjectPointerOffset);
+            uint holdingObj = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.HeldObjectPointerOffset);
 
             // Change to unclone if we are already holding the object
             if ((_currentAddresses.Contains(holdingObj)) != _unclone)
