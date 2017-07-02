@@ -881,201 +881,77 @@ namespace SM64_Diagnostic.Utilities
                    controlStickPath = "",
                    controllerBasePath = "";
 
-            /*
             foreach (XElement element in doc.Root.Elements())
             {
                 switch (element.Name.ToString())
                 {
-                    case "Config":
-                        foreach (XElement subElement in element.Elements())
-                        {
-                            switch (subElement.Name.ToString())
-                            {
-                                case "ImageDirectory":
-                                    imageDir = subElement.Value;
-                                    break;
-                                case "DefaultImage":
-                                    defaultImagePath = subElement.Value;
-                                    break;
-                                case "MapImageDirectory":
-                                    mapImageDir = subElement.Value;
-                                    break;
-                                case "OverlayImageDirectory":
-                                    overlayImageDir = subElement.Value;
-                                    break;
-                                case "EmptyImage":
-                                    emptyImagePath = subElement.Value;
-                                    break;
-                                case "RamToBehaviorOffset":
-                                    ramToBehaviorOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    assoc.RamOffset = ramToBehaviorOffset;
-                                    break;
-                            }
-                        }
+                    case "ButtonA":
+                        buttonAPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
                         break;
 
-                    case "Mario":
-                        marioImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
-                        marioMapImagePath = element.Element(XName.Get("MapImage")) != null ?
-                            element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value : null;
-                        assoc.MarioColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
-                        marioBehavior = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
+                    case "ButtonB":
+                        buttonBPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
                         break;
 
-                    case "Hud":
-                        hudImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
-                        assoc.HudColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
+                    case "ButtonZ":
+                        buttonZPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
                         break;
 
-                    case "Debug":
-                        debugImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
-                        assoc.DebugColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
+                    case "ButtonStart":
+                        buttonStartPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
                         break;
 
-                    case "Controller":
-                        controllerImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
-                        assoc.ControllerColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
+                    case "ButtonR":
+                        buttonRPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
                         break;
 
-                    case "Misc":
-                        miscImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
-                        assoc.MiscColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
+                    case "ButtonL":
+                        buttonLPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
                         break;
 
-                    case "Camera":
-                        cameraImagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
-                        assoc.CameraColor = ColorTranslator.FromHtml(element.Element(XName.Get("Color")).Value);
-                        cameraMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                    case "ButtonCUp":
+                        buttonCUpPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
                         break;
 
-                    case "Holp":
-                        holpMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                    case "ButtonCDown":
+                        buttonCDownPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
                         break;
 
-                    case "Overlays":
-                        foreach (XElement subElement in element.Elements())
-                        {
-                            switch (subElement.Name.ToString())
-                            {
-                                case "Selected":
-                                    selectedOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
-                                case "TrackedAndShown":
-                                    trackedAndShownOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
-                                case "TrackedNotShown":
-                                    trackedNotShownOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
-                                case "StoodOn":
-                                    stoodOnOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
-                                case "Held":
-                                    heldOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
-                                case "Interaction":
-                                    interactionOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
-                                case "Used":
-                                    usedOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
-                                case "Closest":
-                                    closestOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
-                                case "Camera":
-                                    cameraOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
-                                case "Floor":
-                                    floorOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
-                                case "Wall":
-                                    wallOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
-                                case "Ceiling":
-                                    ceilingOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-                            }
-                        }
+                    case "ButtonCLeft":
+                        buttonCLeftPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
                         break;
 
-                    case "Object":
-                        string name = element.Attribute(XName.Get("name")).Value;
-                        uint behaviorSegmented = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
-                        uint behaviorAddress = (behaviorSegmented - ramToBehaviorOffset) & 0x00FFFFFF;
-                        uint? gfxId = null;
-                        int? subType = null, appearance = null;
-                        if (element.Attribute(XName.Get("gfxId")) != null)
-                            gfxId = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxId")).Value) | 0x80000000U;
-                        if (element.Attribute(XName.Get("subType")) != null)
-                            subType = ParsingUtilities.TryParseInt(element.Attribute(XName.Get("subType")).Value);
-                        if (element.Attribute(XName.Get("appearance")) != null)
-                            appearance = ParsingUtilities.TryParseInt(element.Attribute(XName.Get("appearance")).Value);
-                        var spawnElement = element.Element(XName.Get("SpawnCode"));
-                        if (spawnElement != null)
-                        {
-                            byte spawnGfxId = (byte)(spawnElement.Attribute(XName.Get("gfxId")) != null ?
-                                ParsingUtilities.ParseHex(spawnElement.Attribute(XName.Get("gfxId")).Value) : 0);
-                            byte spawnExtra = (byte)(spawnElement.Attribute(XName.Get("extra")) != null ?
-                                ParsingUtilities.ParseHex(spawnElement.Attribute(XName.Get("extra")).Value) : (byte)(subType.HasValue ? subType : 0));
-                            assoc.AddSpawnHack(new SpawnHack()
-                            {
-                                Name = name,
-                                Behavior = behaviorSegmented,
-                                GfxId = spawnGfxId,
-                                Extra = spawnExtra
-                            });
-                        }
-                        string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
-                        string mapImagePath = null;
-                        bool rotates = false;
-                        if (element.Element(XName.Get("MapImage")) != null)
-                        {
-                            mapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
-                            rotates = bool.Parse(element.Element(XName.Get("MapImage")).Attribute(XName.Get("rotates")).Value);
-                        }
-                        var watchVars = new List<WatchVariable>();
-                        foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
-                        {
-                            var watchVar = GetWatchVariableFromElement(subElement);
-                            watchVar.OtherOffset = (subElement.Attribute(XName.Get("objectOffset")) != null) ?
-                                bool.Parse(subElement.Attribute(XName.Get("objectOffset")).Value) : false;
+                    case "ButtonCRight":
+                        buttonCRightPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                        break;
 
-                            watchVars.Add(watchVar);
-                        }
+                    case "ButtonDUp":
+                        buttonDUpPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                        break;
 
-                        var newBehavior = new ObjectBehaviorAssociation()
-                        {
-                            BehaviorCriteria = new BehaviorCriteria()
-                            {
-                                BehaviorAddress = behaviorAddress,
-                                GfxId = gfxId,
-                                SubType = subType,
-                                Appearance = appearance
-                            },
-                            ImagePath = imagePath,
-                            MapImagePath = mapImagePath,
-                            Name = name,
-                            RotatesOnMap = rotates,
-                            WatchVariables = watchVars
-                        };
+                    case "ButtonDDown":
+                        buttonDDownPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                        break;
 
-                        if (!assoc.AddAssociation(newBehavior))
-                            throw new Exception("More than one behavior address was defined.");
+                    case "ButtonDLeft":
+                        buttonDLeftPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                        break;
 
+                    case "ButtonDRight":
+                        buttonDRightPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "ControlStick":
+                        controlStickPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "ControllerBase":
+                        controllerBasePath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
                         break;
                 }
             }
 
+            /*
             // Load Images
             // TODO: Exceptions
             assoc.DefaultImage = Image.FromFile(imageDir + defaultImagePath);
