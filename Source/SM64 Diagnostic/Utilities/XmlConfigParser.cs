@@ -864,7 +864,8 @@ namespace SM64_Diagnostic.Utilities
             doc.Validate(schemaSet, Validation);
 
             // Create path list
-            string buttonAPath = "",
+            string controllerImageDir = "",
+                   buttonAPath = "",
                    buttonBPath = "",
                    buttonZPath = "",
                    buttonStartPath = "",
@@ -885,75 +886,95 @@ namespace SM64_Diagnostic.Utilities
             {
                 switch (element.Name.ToString())
                 {
-                    case "ButtonA":
-                        buttonAPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                    case "Config":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "ControllerImageDirectory":
+                                    controllerImageDir = subElement.Value;
+                                    break;
+                            }
+                        }
                         break;
 
-                    case "ButtonB":
-                        buttonBPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                    case "ControllerImages":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "ButtonA":
+                                    buttonAPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ButtonZ":
-                        buttonZPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                                case "ButtonB":
+                                    buttonBPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ButtonStart":
-                        buttonStartPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                                case "ButtonZ":
+                                    buttonZPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ButtonR":
-                        buttonRPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                                case "ButtonStart":
+                                    buttonStartPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ButtonL":
-                        buttonLPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                                case "ButtonR":
+                                    buttonRPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ButtonCUp":
-                        buttonCUpPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                                case "ButtonL":
+                                    buttonLPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ButtonCDown":
-                        buttonCDownPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                                case "ButtonCUp":
+                                    buttonCUpPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ButtonCLeft":
-                        buttonCLeftPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                                case "ButtonCDown":
+                                    buttonCDownPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ButtonCRight":
-                        buttonCRightPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                                case "ButtonCLeft":
+                                    buttonCLeftPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ButtonDUp":
-                        buttonDUpPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                                case "ButtonCRight":
+                                    buttonCRightPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ButtonDDown":
-                        buttonDDownPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                                case "ButtonDUp":
+                                    buttonDUpPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ButtonDLeft":
-                        buttonDLeftPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                                case "ButtonDDown":
+                                    buttonDDownPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ButtonDRight":
-                        buttonDRightPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                                case "ButtonDLeft":
+                                    buttonDLeftPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ControlStick":
-                        controlStickPath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
-                        break;
+                                case "ButtonDRight":
+                                    buttonDRightPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
 
-                    case "ControllerBase":
-                        controllerBasePath = element.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                case "ControlStick":
+                                    controlStickPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "ControllerBase":
+                                    controllerBasePath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+                            }
+                        }
                         break;
                 }
             }
 
             // Load Images
             // TODO: Exceptions
-            //controllerImageGui.SelectedObjectOverlayImage = Image.FromFile(overlayImageDir + selectedOverlayImagePath);
+            //controllerImageGui.ButtonAImage = Image.FromFile(overlayImageDir + buttonAPath);
 
             /*
             foreach (var obj in assoc.BehaviorAssociations)

@@ -1,55 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ControllerImages>
-  <ButtonA>
-    <ControllerImage path="ButtonA.png"/>
-  </ButtonA>
-  <ButtonB>
-    <ControllerImage path="ButtonB.png"/>
-  </ButtonB>
-  <ButtonZ>
-    <ControllerImage path="ButtonZ.png"/>
-  </ButtonZ>
-  <ButtonStart>
-    <ControllerImage path="ButtonStart.png"/>
-  </ButtonStart>
+<ControllerImageAssociations>
+  <Config>
+    <ControllerImageDirectory>Resources\Controller Images\</ControllerImageDirectory>
+  </Config>
+  <ControllerImages>
+    <ButtonA>
+      <ControllerImage path="ButtonA.png"/>
+    </ButtonA>
+    <ButtonB>
+      <ControllerImage path="ButtonB.png"/>
+    </ButtonB>
+    <ButtonZ>
+      <ControllerImage path="ButtonZ.png"/>
+    </ButtonZ>
+    <ButtonStart>
+      <ControllerImage path="ButtonStart.png"/>
+    </ButtonStart>
 
-  <ButtonR>
-    <ControllerImage path="ButtonR.png"/>
-  </ButtonR>
-  <ButtonL>
-    <ControllerImage path="ButtonL.png"/>
-  </ButtonL>
+    <ButtonR>
+      <ControllerImage path="ButtonR.png"/>
+    </ButtonR>
+    <ButtonL>
+      <ControllerImage path="ButtonL.png"/>
+    </ButtonL>
 
-  <ButtonCUp>
-    <ControllerImage path="ButtonCUp.png"/>
-  </ButtonCUp>
-  <ButtonCDown>
-    <ControllerImage path="ButtonCDown.png"/>
-  </ButtonCDown>
-  <ButtonCLeft>
-    <ControllerImage path="ButtonCLeft.png"/>
-  </ButtonCLeft>
-  <ButtonCRight>
-    <ControllerImage path="ButtonCRight.png"/>
-  </ButtonCRight>
+    <ButtonCUp>
+      <ControllerImage path="ButtonCUp.png"/>
+    </ButtonCUp>
+    <ButtonCDown>
+      <ControllerImage path="ButtonCDown.png"/>
+    </ButtonCDown>
+    <ButtonCLeft>
+      <ControllerImage path="ButtonCLeft.png"/>
+    </ButtonCLeft>
+    <ButtonCRight>
+      <ControllerImage path="ButtonCRight.png"/>
+    </ButtonCRight>
 
-  <ButtonDUp>
-    <ControllerImage path="ButtonDUp.png"/>
-  </ButtonDUp>
-  <ButtonDDown>
-    <ControllerImage path="ButtonDDown.png"/>
-  </ButtonDDown>
-  <ButtonDLeft>
-    <ControllerImage path="ButtonDLeft.png"/>
-  </ButtonDLeft>
-  <ButtonDRight>
-    <ControllerImage path="ButtonDRight.png"/>
-  </ButtonDRight>
+    <ButtonDUp>
+      <ControllerImage path="ButtonDUp.png"/>
+    </ButtonDUp>
+    <ButtonDDown>
+      <ControllerImage path="ButtonDDown.png"/>
+    </ButtonDDown>
+    <ButtonDLeft>
+      <ControllerImage path="ButtonDLeft.png"/>
+    </ButtonDLeft>
+    <ButtonDRight>
+      <ControllerImage path="ButtonDRight.png"/>
+    </ButtonDRight>
 
-  <ControlStick>
-    <ControllerImage path="ControlStick.png"/>
-  </ControlStick>
-  <ControllerBase>
-    <ControllerImage path="ControllerBase.png"/>
-  </ControllerBase>
-</ControllerImages>
+    <ControlStick>
+      <ControllerImage path="ControlStick.png"/>
+    </ControlStick>
+    <ControllerBase>
+      <ControllerImage path="ControllerBase.png"/>
+    </ControllerBase>
+  </ControllerImages>
+</ControllerImageAssociations>
