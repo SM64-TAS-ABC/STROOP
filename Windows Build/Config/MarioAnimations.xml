@@ -1,6 +1,111 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MarioAnimations>
-  <Animation value="195" name="standing 1"/>
-  <Animation value="196" name="standing 2"/>
-  <Animation value="197" name="standing 3"/>
+  <Animation value="-1" name="nonexistant"/>
+  <Animation value="0" name="slow ledge get up"/>
+  <Animation value="4" name="backflip"/>
+  <Animation value="5" name="climbing pole"/>
+  <Animation value="6" name="short pole grab"/>
+  <Animation value="7" name="long pole grab (1/2)"/>
+  <Animation value="8" name="long pole grab (2/2)"/>
+  <Animation value="9" name="handstand"/>
+  <Animation value="10" name="handstand jump"/>
+  <Animation value="11" name="start handstand"/>
+  <Animation value="12" name="stop handstand"/>
+  <Animation value="13" name="holding pole"/>
+  <Animation value="15" name="skidding"/>
+  <Animation value="16" name="stop skidding"/>
+  <Animation value="17" name="fast long jump landing"/>
+  <Animation value="18" name=" slow long jump landing"/>
+  <Animation value="19" name="fast long jump"/>
+  <Animation value="20" name="slow long jump"/>
+  <Animation value="21" name="cannon shot / vertical wind"/>
+  <Animation value="25" name="start shivering"/>
+  <Animation value="26" name="stop shivering"/>
+  <Animation value="27" name="shivering"/>
+  <Animation value="28" name="climb down onto ledge"/>
+  <Animation value="40" name="lava boost landing"/>
+  <Animation value="41" name="lava boost"/>
+  <Animation value="42" name="flying"/>
+  <Animation value="43" name="riding owl"/>
+  <Animation value="48" name="coughing"/>
+  <Animation value="51" name="ledge grab"/>
+  <Animation value="52" name="quick ledge get up"/>
+  <Animation value="53" name="start hanging"/>
+  <Animation value="58" name="ground pound landing"/>
+  <Animation value="60" name="start ground pound"/>
+  <Animation value="61" name="ground pound"/>
+  <Animation value="72" name="walking"/>
+  <Animation value="74" name="shell riding in air"/>
+  <Animation value="75" name="double jump landing"/>
+  <Animation value="76" name="double jump (2/2)"/>
+  <Animation value="77" name="standard jump"/>
+  <Animation value="78" name="standard jump landing"/>
+  <Animation value="79" name="air kick"/>
+  <Animation value="80" name="double jump (1/2)"/>
+  <Animation value="83" name="slide kick freefall"/>
+  <Animation value="86" name="freefall"/>
+  <Animation value="87" name="freefall landing"/>
+  <Animation value="90" name="stop sliding/diving"/>
+  <Animation value="91" name="start flying from cannon shot"/>
+  <Animation value="92" name="swinging - right arm"/>
+  <Animation value="93" name="swinging - left arm"/>
+  <Animation value="102" name="ground kick"/>
+  <Animation value="103" name="first punch (1/2)"/>
+  <Animation value="104" name="second punch (1/2)"/>
+  <Animation value="105" name="first punch (2/2)"/>
+  <Animation value="106" name="second punch (2/2)"/>
+  <Animation value="108" name="pushing"/>
+  <Animation value="109" name="shell riding on ground"/>
+  <Animation value="111" name="forward spinning (scrunched)"/>
+  <Animation value="112" name="backward spinning"/>
+  <Animation value="113" name="breakdance"/>
+  <Animation value="114" name="running"/>
+  <Animation value="118" name="quicksand dying breath"/>
+  <Animation value="119" name="sinking in quicksand"/>
+  <Animation value="120" name="wading through quicksand"/>
+  <Animation value="126" name="standing against wall"/>
+  <Animation value="127" name="sidestepping left"/>
+  <Animation value="128" name="sidestepping right"/>
+  <Animation value="129" name="start sleeping - standing"/>
+  <Animation value="130" name="start sleeping - scratching"/>
+  <Animation value="131" name="start sleeping - yawning"/>
+  <Animation value="132" name="start sleeping - sitting"/>
+  <Animation value="133" name="sleeping - sitting"/>
+  <Animation value="134" name="sleeping - start lying down"/>
+  <Animation value="135" name="sleeping - lying down"/>
+  <Animation value="136" name="air/ground dive"/>
+  <Animation value="137" name="sliding"/>
+  <Animation value="140" name="slide kick"/>
+  <Animation value="141" name="stop slide kicking"/>
+  <Animation value="143" name="stop sitting"/>
+  <Animation value="145" name="land/air sitting"/>
+  <Animation value="146" name="tiptoeing"/>
+  <Animation value="147" name="twirl landing"/>
+  <Animation value="148" name="twirling"/>
+  <Animation value="149" name="start twirling"/>
+  <Animation value="150" name="stop crouching"/>
+  <Animation value="151" name="start crouching"/>
+  <Animation value="152" name="crouching"/>
+  <Animation value="153" name="crawling"/>
+  <Animation value="154" name="stop crawling"/>
+  <Animation value="155" name="start crawling"/>
+  <Animation value="186" name="panting"/>
+  <Animation value="188" name="turning around (1/2)"/>
+  <Animation value="189" name="turning around (2/2)"/>
+  <Animation value="190" name="sideflip landing"/>
+  <Animation value="191" name="sideflip"/>
+  <Animation value="192" name="landing celebration"/>
+  <Animation value="193" name="triple jump"/>
+  <Animation value="194" name="first person view"/>
+  <Animation value="195" name="standing - turning head left"/>
+  <Animation value="196" name="standing - turning head right"/>
+  <Animation value="197" name="standing - turning head to center"/>
+  <Animation value="198" name="hanging - left arm"/>
+  <Animation value="199" name="hanging - right arm"/>
+  <Animation value="201" name="waking up"/>
+  <Animation value="202" name="pre-tiptoeing"/>
+  <Animation value="203" name="pole jump / wall kick"/>
+  <Animation value="207" name="forward spinning (non-scrunched)"/>
+  <Animation value="208" name="flying triple jump"/>
+  <Animation value="266" name="between levels"/>
 </MarioAnimations>
