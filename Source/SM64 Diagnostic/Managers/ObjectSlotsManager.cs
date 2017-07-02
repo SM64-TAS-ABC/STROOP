@@ -51,7 +51,7 @@ namespace SM64_Diagnostic.Managers
         List<uint> _toggleMapSlots = new List<uint>();
 
         BehaviorCriteria? _lastSelectedBehavior;
-        uint _stoodOnObject, _interactionObject, _heldObject, _usedObject, _closestObject, _cameraObject;
+        uint _stoodOnObject, _interactionObject, _heldObject, _usedObject, _closestObject, _cameraObject, _floorObject, _wallObject, _ceilingObject;
         int _activeObjCnt;
         bool _selectedUpdatePending = false;
         Image _multiImage = null;
@@ -388,6 +388,15 @@ namespace SM64_Diagnostic.Managers
                 : s.DistanceToMario).First().Address;
             _cameraObject = _stream.GetUInt32(Config.Camera.SecondObject);
 
+            uint floorTriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
+            _floorObject = floorTriangleAddress == 0 ? 0 : _stream.GetUInt32(floorTriangleAddress + Config.TriangleOffsets.AssociatedObject);
+
+            uint wallTriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset);
+            _wallObject = wallTriangleAddress == 0 ? 0 : _stream.GetUInt32(wallTriangleAddress + Config.TriangleOffsets.AssociatedObject);
+
+            uint ceilingTriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
+            _ceilingObject = ceilingTriangleAddress == 0 ? 0 : _stream.GetUInt32(ceilingTriangleAddress + Config.TriangleOffsets.AssociatedObject);
+
             // Update slots
             UpdateSlots(newObjectSlotData);
         }
@@ -497,6 +506,10 @@ namespace SM64_Diagnostic.Managers
             objSlot.DrawUsedOverlay = Config.ShowOverlayUsedObject && objAddress == _usedObject;
             objSlot.DrawClosestOverlay = Config.ShowOverlayClosestObject && objAddress == _closestObject;
             objSlot.DrawCameraOverlay = Config.ShowOverlayCameraObject && objAddress == _cameraObject;
+            objSlot.DrawFloorOverlay = Config.ShowOverlayFloorObject && objAddress == _floorObject;
+            objSlot.DrawWallOverlay = Config.ShowOverlayWallObject && objAddress == _wallObject;
+            objSlot.DrawCeilingOverlay = Config.ShowOverlayCeilingObject && objAddress == _ceilingObject;
+
 
             if (objData.IsActive)
                 _activeObjCnt++;

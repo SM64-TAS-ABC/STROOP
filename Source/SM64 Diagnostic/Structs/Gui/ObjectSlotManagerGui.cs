@@ -20,6 +20,9 @@ namespace SM64_Diagnostic.Structs
         public Image UsedObjectOverlayImage;
         public Image ClosestObjectOverlayImage;
         public Image CameraObjectOverlayImage;
+        public Image FloorObjectOverlayImage;
+        public Image WallObjectOverlayImage;
+        public Image CeilingObjectOverlayImage;
 
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
@@ -39,6 +42,9 @@ namespace SM64_Diagnostic.Structs
             UsedObjectOverlayImage?.Dispose();
             ClosestObjectOverlayImage?.Dispose();
             CameraObjectOverlayImage?.Dispose();
+            FloorObjectOverlayImage?.Dispose();
+            WallObjectOverlayImage?.Dispose();
+            CeilingObjectOverlayImage?.Dispose();
         }
     }
 }

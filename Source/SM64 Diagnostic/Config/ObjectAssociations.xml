@@ -65,6 +65,15 @@
     <Camera>
       <OverlayImage path="Camera.png"/>
     </Camera>
+    <Floor>
+      <OverlayImage path="Floor.png"/>
+    </Floor>
+    <Wall>
+      <OverlayImage path="Wall.png"/>
+    </Wall>
+    <Ceiling>
+      <OverlayImage path="Ceiling.png"/>
+    </Ceiling>
   </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <SpawnCode gfxId="0xD5"/>
