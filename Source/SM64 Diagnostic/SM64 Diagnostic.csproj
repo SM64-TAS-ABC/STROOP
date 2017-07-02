@@ -103,6 +103,9 @@
     <Compile Include="Controls\BorderedTableLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\ControllerDisplay.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\ScaleController.cs" />
     <Compile Include="Controls\ScalarController.cs" />
     <Compile Include="Controls\PositionController.cs" />
