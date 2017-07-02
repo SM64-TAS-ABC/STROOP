@@ -471,7 +471,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 249);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 250);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -559,7 +559,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 176);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 177);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -3346,7 +3346,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(634, 414);
+            this.glControlMap.Size = new System.Drawing.Size(635, 414);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -4313,7 +4313,7 @@ namespace SM64_Diagnostic
             this.buttonShowTopPane.Location = new System.Drawing.Point(866, 11);
             this.buttonShowTopPane.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShowTopPane.Name = "buttonShowTopPane";
-            this.buttonShowTopPane.Size = new System.Drawing.Size(23, 21);
+            this.buttonShowTopPane.Size = new System.Drawing.Size(21, 21);
             this.buttonShowTopPane.TabIndex = 19;
             this.buttonShowTopPane.UseVisualStyleBackColor = true;
             this.buttonShowTopPane.Click += new System.EventHandler(this.buttonShowTopPanel_Click);
@@ -4323,10 +4323,10 @@ namespace SM64_Diagnostic
             this.buttonShowTopBottomPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowTopBottomPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowTopBottomPane.BackgroundImage")));
             this.buttonShowTopBottomPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowTopBottomPane.Location = new System.Drawing.Point(839, 11);
+            this.buttonShowTopBottomPane.Location = new System.Drawing.Point(841, 11);
             this.buttonShowTopBottomPane.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShowTopBottomPane.Name = "buttonShowTopBottomPane";
-            this.buttonShowTopBottomPane.Size = new System.Drawing.Size(23, 21);
+            this.buttonShowTopBottomPane.Size = new System.Drawing.Size(21, 21);
             this.buttonShowTopBottomPane.TabIndex = 20;
             this.buttonShowTopBottomPane.UseVisualStyleBackColor = true;
             this.buttonShowTopBottomPane.Click += new System.EventHandler(this.buttonShowTopBottomPanel_Click);
@@ -4334,7 +4334,7 @@ namespace SM64_Diagnostic
             // buttonReadOnly
             // 
             this.buttonReadOnly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReadOnly.Location = new System.Drawing.Point(595, 11);
+            this.buttonReadOnly.Location = new System.Drawing.Point(611, 11);
             this.buttonReadOnly.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReadOnly.Name = "buttonReadOnly";
             this.buttonReadOnly.Size = new System.Drawing.Size(126, 21);
@@ -4349,10 +4349,10 @@ namespace SM64_Diagnostic
             this.buttonShowBottomPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowBottomPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowBottomPane.BackgroundImage")));
             this.buttonShowBottomPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowBottomPane.Location = new System.Drawing.Point(812, 11);
+            this.buttonShowBottomPane.Location = new System.Drawing.Point(816, 11);
             this.buttonShowBottomPane.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShowBottomPane.Name = "buttonShowBottomPane";
-            this.buttonShowBottomPane.Size = new System.Drawing.Size(23, 21);
+            this.buttonShowBottomPane.Size = new System.Drawing.Size(21, 21);
             this.buttonShowBottomPane.TabIndex = 20;
             this.buttonShowBottomPane.UseVisualStyleBackColor = true;
             this.buttonShowBottomPane.Click += new System.EventHandler(this.buttonShowBottomPanel_Click);
@@ -4362,10 +4362,10 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowRightPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowRightPane.BackgroundImage")));
             this.buttonShowRightPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowRightPane.Location = new System.Drawing.Point(785, 11);
+            this.buttonShowRightPane.Location = new System.Drawing.Point(791, 11);
             this.buttonShowRightPane.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShowRightPane.Name = "buttonShowRightPane";
-            this.buttonShowRightPane.Size = new System.Drawing.Size(23, 21);
+            this.buttonShowRightPane.Size = new System.Drawing.Size(21, 21);
             this.buttonShowRightPane.TabIndex = 19;
             this.buttonShowRightPane.UseVisualStyleBackColor = true;
             this.buttonShowRightPane.Click += new System.EventHandler(this.buttonShowRightPanel_Click);
@@ -4375,10 +4375,10 @@ namespace SM64_Diagnostic
             this.buttonShowLeftRightPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowLeftRightPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowLeftRightPane.BackgroundImage")));
             this.buttonShowLeftRightPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowLeftRightPane.Location = new System.Drawing.Point(758, 11);
+            this.buttonShowLeftRightPane.Location = new System.Drawing.Point(766, 11);
             this.buttonShowLeftRightPane.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShowLeftRightPane.Name = "buttonShowLeftRightPane";
-            this.buttonShowLeftRightPane.Size = new System.Drawing.Size(23, 21);
+            this.buttonShowLeftRightPane.Size = new System.Drawing.Size(21, 21);
             this.buttonShowLeftRightPane.TabIndex = 20;
             this.buttonShowLeftRightPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftRightPane.Click += new System.EventHandler(this.buttonShowLeftRightPanel_Click);
@@ -4388,10 +4388,10 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowLeftPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowLeftPane.BackgroundImage")));
             this.buttonShowLeftPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowLeftPane.Location = new System.Drawing.Point(731, 11);
+            this.buttonShowLeftPane.Location = new System.Drawing.Point(741, 11);
             this.buttonShowLeftPane.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShowLeftPane.Name = "buttonShowLeftPane";
-            this.buttonShowLeftPane.Size = new System.Drawing.Size(23, 21);
+            this.buttonShowLeftPane.Size = new System.Drawing.Size(21, 21);
             this.buttonShowLeftPane.TabIndex = 20;
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
