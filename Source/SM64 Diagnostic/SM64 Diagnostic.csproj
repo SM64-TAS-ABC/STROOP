@@ -163,7 +163,6 @@
     <Compile Include="Structs\GameScript.cs" />
     <Compile Include="Structs\Gui\MapGui.cs" />
     <Compile Include="Structs\Gui\ObjectSlotManagerGui.cs" />
-    <Compile Include="Structs\Gui\OptionsGui.cs" />
     <Compile Include="Structs\Map\Map.cs" />
     <Compile Include="Structs\Map\MapAssociations.cs" />
     <Compile Include="Controls\Map\MapObject.cs" />

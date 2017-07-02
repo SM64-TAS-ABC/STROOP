@@ -66,9 +66,6 @@ namespace SM64_Diagnostic
             this.buttonObjHomeXn = new System.Windows.Forms.Button();
             this.buttonObjHomeXnZn = new System.Windows.Forms.Button();
             this.groupBoxObjScale = new System.Windows.Forms.GroupBox();
-            this.textBoxObjScaleAggregate = new System.Windows.Forms.TextBox();
-            this.buttonObjScaleAggregateN = new System.Windows.Forms.Button();
-            this.buttonObjScaleAggregateP = new System.Windows.Forms.Button();
             this.checkBoxObjScaleMultiply = new System.Windows.Forms.CheckBox();
             this.checkBoxObjScaleAggregate = new System.Windows.Forms.CheckBox();
             this.textBoxObjScaleDepth = new System.Windows.Forms.TextBox();
@@ -80,6 +77,9 @@ namespace SM64_Diagnostic
             this.buttonObjScaleDepthP = new System.Windows.Forms.Button();
             this.buttonObjScaleHeightP = new System.Windows.Forms.Button();
             this.buttonObjScaleWidthP = new System.Windows.Forms.Button();
+            this.textBoxObjScaleAggregate = new System.Windows.Forms.TextBox();
+            this.buttonObjScaleAggregateN = new System.Windows.Forms.Button();
+            this.buttonObjScaleAggregateP = new System.Windows.Forms.Button();
             this.groupBoxObjAngle = new System.Windows.Forms.GroupBox();
             this.textBoxObjAngleRoll = new System.Windows.Forms.TextBox();
             this.textBoxObjAnglePitch = new System.Windows.Forms.TextBox();
@@ -464,7 +464,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 115);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 116);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -552,7 +552,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 66);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 67);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -875,41 +875,6 @@ namespace SM64_Diagnostic
             this.groupBoxObjScale.TabStop = false;
             this.groupBoxObjScale.Text = "Scale";
             // 
-            // textBoxObjScaleAggregate
-            // 
-            this.textBoxObjScaleAggregate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxObjScaleAggregate.Location = new System.Drawing.Point(67, 44);
-            this.textBoxObjScaleAggregate.Name = "textBoxObjScaleAggregate";
-            this.textBoxObjScaleAggregate.Size = new System.Drawing.Size(51, 20);
-            this.textBoxObjScaleAggregate.TabIndex = 40;
-            this.textBoxObjScaleAggregate.Text = "1";
-            this.textBoxObjScaleAggregate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxObjScaleAggregate.Visible = false;
-            // 
-            // buttonObjScaleAggregateN
-            // 
-            this.buttonObjScaleAggregateN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonObjScaleAggregateN.Location = new System.Drawing.Point(3, 16);
-            this.buttonObjScaleAggregateN.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonObjScaleAggregateN.Name = "buttonObjScaleAggregateN";
-            this.buttonObjScaleAggregateN.Size = new System.Drawing.Size(61, 75);
-            this.buttonObjScaleAggregateN.TabIndex = 41;
-            this.buttonObjScaleAggregateN.Text = "Scale-";
-            this.buttonObjScaleAggregateN.UseVisualStyleBackColor = true;
-            this.buttonObjScaleAggregateN.Visible = false;
-            // 
-            // buttonObjScaleAggregateP
-            // 
-            this.buttonObjScaleAggregateP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonObjScaleAggregateP.Location = new System.Drawing.Point(121, 16);
-            this.buttonObjScaleAggregateP.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonObjScaleAggregateP.Name = "buttonObjScaleAggregateP";
-            this.buttonObjScaleAggregateP.Size = new System.Drawing.Size(61, 75);
-            this.buttonObjScaleAggregateP.TabIndex = 42;
-            this.buttonObjScaleAggregateP.Text = "Scale+";
-            this.buttonObjScaleAggregateP.UseVisualStyleBackColor = true;
-            this.buttonObjScaleAggregateP.Visible = false;
-            // 
             // checkBoxObjScaleMultiply
             // 
             this.checkBoxObjScaleMultiply.AutoSize = true;
@@ -1025,6 +990,41 @@ namespace SM64_Diagnostic
             this.buttonObjScaleWidthP.TabIndex = 35;
             this.buttonObjScaleWidthP.Text = "Width+";
             this.buttonObjScaleWidthP.UseVisualStyleBackColor = true;
+            // 
+            // textBoxObjScaleAggregate
+            // 
+            this.textBoxObjScaleAggregate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxObjScaleAggregate.Location = new System.Drawing.Point(67, 44);
+            this.textBoxObjScaleAggregate.Name = "textBoxObjScaleAggregate";
+            this.textBoxObjScaleAggregate.Size = new System.Drawing.Size(51, 20);
+            this.textBoxObjScaleAggregate.TabIndex = 40;
+            this.textBoxObjScaleAggregate.Text = "1";
+            this.textBoxObjScaleAggregate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxObjScaleAggregate.Visible = false;
+            // 
+            // buttonObjScaleAggregateN
+            // 
+            this.buttonObjScaleAggregateN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonObjScaleAggregateN.Location = new System.Drawing.Point(3, 16);
+            this.buttonObjScaleAggregateN.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjScaleAggregateN.Name = "buttonObjScaleAggregateN";
+            this.buttonObjScaleAggregateN.Size = new System.Drawing.Size(61, 75);
+            this.buttonObjScaleAggregateN.TabIndex = 41;
+            this.buttonObjScaleAggregateN.Text = "Scale-";
+            this.buttonObjScaleAggregateN.UseVisualStyleBackColor = true;
+            this.buttonObjScaleAggregateN.Visible = false;
+            // 
+            // buttonObjScaleAggregateP
+            // 
+            this.buttonObjScaleAggregateP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonObjScaleAggregateP.Location = new System.Drawing.Point(121, 16);
+            this.buttonObjScaleAggregateP.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonObjScaleAggregateP.Name = "buttonObjScaleAggregateP";
+            this.buttonObjScaleAggregateP.Size = new System.Drawing.Size(61, 75);
+            this.buttonObjScaleAggregateP.TabIndex = 42;
+            this.buttonObjScaleAggregateP.Text = "Scale+";
+            this.buttonObjScaleAggregateP.UseVisualStyleBackColor = true;
+            this.buttonObjScaleAggregateP.Visible = false;
             // 
             // groupBoxObjAngle
             // 
@@ -3339,7 +3339,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(629, 543);
+            this.glControlMap.Size = new System.Drawing.Size(630, 543);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -4146,6 +4146,8 @@ namespace SM64_Diagnostic
             // checkBoxStartSlotIndexOne
             // 
             this.checkBoxStartSlotIndexOne.AutoSize = true;
+            this.checkBoxStartSlotIndexOne.Checked = true;
+            this.checkBoxStartSlotIndexOne.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxStartSlotIndexOne.Location = new System.Drawing.Point(3, 4);
             this.checkBoxStartSlotIndexOne.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxStartSlotIndexOne.Name = "checkBoxStartSlotIndexOne";
@@ -4153,6 +4155,7 @@ namespace SM64_Diagnostic
             this.checkBoxStartSlotIndexOne.TabIndex = 0;
             this.checkBoxStartSlotIndexOne.Text = "Start Slot Index From 1";
             this.checkBoxStartSlotIndexOne.UseVisualStyleBackColor = true;
+            this.checkBoxStartSlotIndexOne.CheckedChanged += new System.EventHandler(this.checkBoxStartSlotIndexOne_CheckedChanged);
             // 
             // labelVersionNumber
             // 

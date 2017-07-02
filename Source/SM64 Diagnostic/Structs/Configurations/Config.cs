@@ -31,8 +31,8 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint HolpZ;
         public static uint RngRecordingAreaAddress;
         public static uint RngAddress;
-      
-        public static bool SlotIndexsFromOne;
+
+        public static bool SlotIndexsFromOne = true;
         public static bool MoveCameraWithPu = true;
         public static bool ShowOverlayHeldObject = true;
         public static bool ShowOverlayStoodOnObject = true;

@@ -130,11 +130,6 @@ namespace SM64_Diagnostic
             currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
             _previousTabPage = tabPageObjects;
 
-            // Create options manager
-            var optionGui = new OptionsGui();
-            optionGui.CheckBoxStartFromOne = checkBoxStartSlotIndexOne;
-            currentContext.OptionsManager = _optionsManager = new OptionsManager(optionGui);
-
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
             _slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
@@ -538,6 +533,11 @@ namespace SM64_Diagnostic
         {
             buttonRefresh_Click(sender, e);
             buttonConnect_Click(sender, e);
+        }
+
+        private void checkBoxStartSlotIndexOne_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.SlotIndexsFromOne = checkBoxStartSlotIndexOne.Checked;
         }
 
         private void checkBoxMoveCamWithPu_CheckedChanged(object sender, EventArgs e)
