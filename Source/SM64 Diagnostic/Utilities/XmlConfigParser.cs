@@ -951,35 +951,11 @@ namespace SM64_Diagnostic.Utilities
                 }
             }
 
-            /*
             // Load Images
             // TODO: Exceptions
-            assoc.DefaultImage = Image.FromFile(imageDir + defaultImagePath);
-            assoc.EmptyImage = Image.FromFile(imageDir + emptyImagePath);
-            assoc.MarioImage = Image.FromFile(imageDir + marioImagePath);
-            assoc.CameraImage = Image.FromFile(imageDir + cameraImagePath);
-            assoc.MarioMapImage = marioMapImagePath == "" ? assoc.MarioImage : Image.FromFile(mapImageDir + marioMapImagePath);
-            assoc.HudImage = Image.FromFile(imageDir + hudImagePath);
-            assoc.DebugImage = Image.FromFile(imageDir + debugImagePath);
-            assoc.ControllerImage = Image.FromFile(imageDir + controllerImagePath);
-            assoc.MiscImage = Image.FromFile(imageDir + miscImagePath);
-            assoc.HolpImage = Image.FromFile(mapImageDir + holpMapImagePath);
-            assoc.CameraMapImage = Image.FromFile(mapImageDir + cameraMapImagePath);
-            assoc.MarioBehavior = marioBehavior - ramToBehaviorOffset;
-            objectSlotManagerGui.SelectedObjectOverlayImage = Image.FromFile(overlayImageDir + selectedOverlayImagePath);
-            objectSlotManagerGui.TrackedAndShownObjectOverlayImage = Image.FromFile(overlayImageDir + trackedAndShownOverlayImagePath);
-            objectSlotManagerGui.TrackedNotShownObjectOverlayImage = Image.FromFile(overlayImageDir + trackedNotShownOverlayImagePath);
-            objectSlotManagerGui.StoodOnObjectOverlayImage = Image.FromFile(overlayImageDir + stoodOnOverlayImagePath);
-            objectSlotManagerGui.HeldObjectOverlayImage = Image.FromFile(overlayImageDir + heldOverlayImagePath);
-            objectSlotManagerGui.InteractionObjectOverlayImage = Image.FromFile(overlayImageDir + interactionOverlayImagePath);
-            objectSlotManagerGui.UsedObjectOverlayImage = Image.FromFile(overlayImageDir + usedOverlayImagePath);
-            objectSlotManagerGui.ClosestObjectOverlayImage = Image.FromFile(overlayImageDir + closestOverlayImagePath);
-            objectSlotManagerGui.CameraObjectOverlayImage = Image.FromFile(overlayImageDir + cameraOverlayImagePath);
-            objectSlotManagerGui.FloorObjectOverlayImage = Image.FromFile(overlayImageDir + floorOverlayImagePath);
-            objectSlotManagerGui.WallObjectOverlayImage = Image.FromFile(overlayImageDir + wallOverlayImagePath);
-            objectSlotManagerGui.CeilingObjectOverlayImage = Image.FromFile(overlayImageDir + ceilingOverlayImagePath);
+            //controllerImageGui.SelectedObjectOverlayImage = Image.FromFile(overlayImageDir + selectedOverlayImagePath);
 
-
+            /*
             foreach (var obj in assoc.BehaviorAssociations)
             {
                 if (obj.ImagePath == null || obj.ImagePath == "")
