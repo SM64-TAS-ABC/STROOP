@@ -35,6 +35,10 @@ namespace SM64_Diagnostic.Structs
             if (_table.ContainsKey(amplitude))
                 return _table[amplitude].Index;
 
+            // Short circuit this case, otherwise Math.Abs throws an exception
+            if (amplitude == Int32.MinValue)
+                return null;
+
             // Check for pendulum swings beyond the standard indexes
             int absAmplitude = Math.Abs(amplitude);
             int tenativeFrames = (int)((-21 + Math.Sqrt(441 + 84 * absAmplitude)) / 42);
