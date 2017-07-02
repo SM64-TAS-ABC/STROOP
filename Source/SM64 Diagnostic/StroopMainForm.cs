@@ -23,6 +23,7 @@ namespace SM64_Diagnostic
         ProcessStream _sm64Stream = null;
 
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
+        ControllerImageGui _controllerImageGui = new ControllerImageGui();
         List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, 
             _actionsData, _waterData, _controllerData, _fileData, _levelData, _camHackData;
         ObjectAssociations _objectAssoc;
