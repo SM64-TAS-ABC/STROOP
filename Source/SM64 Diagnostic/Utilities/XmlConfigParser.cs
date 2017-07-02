@@ -994,35 +994,6 @@ namespace SM64_Diagnostic.Utilities
 
             controllerImageGui.ControlStickImage = Image.FromFile(controllerImageDir + controlStickPath);
             controllerImageGui.ControllerBaseImage = Image.FromFile(controllerImageDir + controllerBasePath);
-            /*
-            foreach (var obj in assoc.BehaviorAssociations)
-            {
-                if (obj.ImagePath == null || obj.ImagePath == "")
-                    continue;
-
-                using (var preLoad = Image.FromFile(imageDir + obj.ImagePath))
-                {
-                    float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);
-                    obj.Image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
-                }
-                if (obj.MapImagePath == "" || obj.MapImagePath == null)
-                {
-                    obj.MapImage = obj.Image;
-                }
-                else
-                {
-                    using (var preLoad = Image.FromFile(mapImageDir + obj.MapImagePath))
-                    {
-                        float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);
-                        obj.MapImage = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
-                    }
-                }
-                obj.TransparentImage = obj.Image.GetOpaqueImage(0.5f);
-                obj.TransparentMapImage = obj.Image.GetOpaqueImage(0.5f);
-            }
-
-            return assoc;
-        */
         }
 
         public static MapAssociations OpenMapAssoc(string path)
