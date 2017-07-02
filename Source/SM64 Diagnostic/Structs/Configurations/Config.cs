@@ -18,6 +18,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static HackConfig Hacks;
         public static DebugConfig Debug;
         public static CameraConfig Camera;
+        public static ControllerConfig Controller;
         public static TriangleOffsetsConfig TriangleOffsets;
         public static ActionTable MarioActions;
         public static AnimationTable MarioAnimations;

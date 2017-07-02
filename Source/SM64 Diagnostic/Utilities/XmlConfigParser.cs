@@ -506,6 +506,142 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
+                    case "Controller":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "BufferedInput":
+                                    Config.Controller.BufferedInput = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "CurrentInput":
+                                    Config.Controller.CurrentInput = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonAOffset":
+                                    Config.Controller.ButtonAOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonBOffset":
+                                    Config.Controller.ButtonBOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonZOffset":
+                                    Config.Controller.ButtonZOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonStartOffset":
+                                    Config.Controller.ButtonStartOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonROffset":
+                                    Config.Controller.ButtonROffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonLOffset":
+                                    Config.Controller.ButtonLOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonCUpOffset":
+                                    Config.Controller.ButtonCUpOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonCDownOffset":
+                                    Config.Controller.ButtonCDownOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonCLeftOffset":
+                                    Config.Controller.ButtonCLeftOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonCRightOffset":
+                                    Config.Controller.ButtonCRightOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonDUpOffset":
+                                    Config.Controller.ButtonDUpOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonDDownOffset":
+                                    Config.Controller.ButtonDDownOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonDLeftOffset":
+                                    Config.Controller.ButtonDLeftOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonDRightOffset":
+                                    Config.Controller.ButtonDRightOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ControlStickHOffset":
+                                    Config.Controller.ControlStickHOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ControlStickVOffset":
+                                    Config.Controller.ControlStickVOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonAMask":
+                                    Config.Controller.ButtonAMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonBMask":
+                                    Config.Controller.ButtonBMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonZMask":
+                                    Config.Controller.ButtonZMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonStartMask":
+                                    Config.Controller.ButtonStartMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonRMask":
+                                    Config.Controller.ButtonRMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonLMask":
+                                    Config.Controller.ButtonLMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonCUpMask":
+                                    Config.Controller.ButtonCUpMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonCDownMask":
+                                    Config.Controller.ButtonCDownMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonCLeftMask":
+                                    Config.Controller.ButtonCLeftMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonCRightMask":
+                                    Config.Controller.ButtonCRightMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonDUpMask":
+                                    Config.Controller.ButtonDUpMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonDDownMask":
+                                    Config.Controller.ButtonDDownMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonDLeftMask":
+                                    Config.Controller.ButtonDLeftMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ButtonDRightMask":
+                                    Config.Controller.ButtonDRightMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                            }
+                        }
+                        break;
+
                     case "LevelAddress":
                         Config.LevelAddress = ParsingUtilities.ParseHex(element.Value);
                         break;

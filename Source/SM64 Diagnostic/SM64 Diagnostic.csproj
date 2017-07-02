@@ -153,6 +153,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
+    <Compile Include="Structs\Configurations\ControllerConfig.cs" />
     <Compile Include="Structs\Gui\ControllerImageGui.cs" />
     <Compile Include="Structs\PendulumSwingTable.cs" />
     <Compile Include="Structs\AnimationTable.cs" />

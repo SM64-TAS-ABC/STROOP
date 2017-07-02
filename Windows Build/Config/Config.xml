@@ -149,6 +149,42 @@
     <CameraRotAddress>0x8033C6E4</CameraRotAddress>
     <SecondObjectAddress>0x8032DF30</SecondObjectAddress>
   </Camera>
+  <Controller>
+    <BufferedInput>0x80367054</BufferedInput>
+    <CurrentInput>0x8033AFF8</CurrentInput>
+    
+    <ButtonAOffset>0x00</ButtonAOffset>
+    <ButtonBOffset>0x00</ButtonBOffset>
+    <ButtonZOffset>0x00</ButtonZOffset>
+    <ButtonStartOffset>0x00</ButtonStartOffset>
+    <ButtonROffset>0x00</ButtonROffset>
+    <ButtonLOffset>0x00</ButtonLOffset>
+    <ButtonCUpOffset>0x00</ButtonCUpOffset>
+    <ButtonCDownOffset>0x00</ButtonCDownOffset>
+    <ButtonCLeftOffset>0x00</ButtonCLeftOffset>
+    <ButtonCRightOffset>0x00</ButtonCRightOffset>
+    <ButtonDUpOffset>0x00</ButtonDUpOffset>
+    <ButtonDDownOffset>0x00</ButtonDDownOffset>
+    <ButtonDLeftOffset>0x00</ButtonDLeftOffset>
+    <ButtonDRightOffset>0x00</ButtonDRightOffset>
+    <ControlStickHOffset>0x00</ControlStickHOffset>
+    <ControlStickVOffset>0x00</ControlStickVOffset>
+
+    <ButtonAMask>0x00</ButtonAMask>
+    <ButtonBMask>0x00</ButtonBMask>
+    <ButtonZMask>0x00</ButtonZMask>
+    <ButtonStartMask>0x00</ButtonStartMask>
+    <ButtonRMask>0x00</ButtonRMask>
+    <ButtonLMask>0x00</ButtonLMask>
+    <ButtonCUpMask>0x00</ButtonCUpMask>
+    <ButtonCDownMask>0x00</ButtonCDownMask>
+    <ButtonCLeftMask>0x00</ButtonCLeftMask>
+    <ButtonCRightMask>0x00</ButtonCRightMask>
+    <ButtonDUpMask>0x00</ButtonDUpMask>
+    <ButtonDDownMask>0x00</ButtonDDownMask>
+    <ButtonDLeftMask>0x00</ButtonDLeftMask>
+    <ButtonDRightMask>0x00</ButtonDRightMask>
+  </Controller>
   <HolpX>0x8033B3C8</HolpX>
   <HolpY>0x8033B3CC</HolpY>
   <HolpZ>0x8033B3D0</HolpZ>
