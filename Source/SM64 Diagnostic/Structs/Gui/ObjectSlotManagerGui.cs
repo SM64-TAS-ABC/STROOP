@@ -14,10 +14,10 @@ namespace SM64_Diagnostic.Structs
         public Image SelectedObjectOverlayImage;
         public Image TrackedAndShownObjectOverlayImage;
         public Image TrackedNotShownObjectOverlayImage;
-        public Image StandingOnObjectOverlayImage;
-        public Image HoldingObjectOverlayImage;
-        public Image InteractingObjectOverlayImage;
-        public Image UsingObjectOverlayImage;
+        public Image StoodOnObjectOverlayImage;
+        public Image HeldObjectOverlayImage;
+        public Image InteractionObjectOverlayImage;
+        public Image UsedObjectOverlayImage;
         public Image ClosestObjectOverlayImage;
         public Image CameraObjectOverlayImage;
 
@@ -33,10 +33,10 @@ namespace SM64_Diagnostic.Structs
             SelectedObjectOverlayImage?.Dispose();
             TrackedAndShownObjectOverlayImage?.Dispose();
             TrackedNotShownObjectOverlayImage?.Dispose();
-            StandingOnObjectOverlayImage?.Dispose();
-            HoldingObjectOverlayImage?.Dispose();
-            InteractingObjectOverlayImage?.Dispose();
-            UsingObjectOverlayImage?.Dispose();
+            StoodOnObjectOverlayImage?.Dispose();
+            HeldObjectOverlayImage?.Dispose();
+            InteractionObjectOverlayImage?.Dispose();
+            UsedObjectOverlayImage?.Dispose();
             ClosestObjectOverlayImage?.Dispose();
             CameraObjectOverlayImage?.Dispose();
         }

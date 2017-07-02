@@ -47,18 +47,18 @@
     <TrackedNotShown>
       <OverlayImage path="TrackedNotShown.png"/>
     </TrackedNotShown>
-    <StandingOn>
-      <OverlayImage path="StandingOn.png"/>
-    </StandingOn>
-    <Holding>
-      <OverlayImage path="Holding.png"/>
-    </Holding>
-    <Interacting>
-      <OverlayImage path="Interacting.png"/>
-    </Interacting>
-    <Using>
-      <OverlayImage path="Using.png"/>
-    </Using>
+    <StoodOn>
+      <OverlayImage path="StoodOn.png"/>
+    </StoodOn>
+    <Held>
+      <OverlayImage path="Held.png"/>
+    </Held>
+    <Interaction>
+      <OverlayImage path="Interaction.png"/>
+    </Interaction>
+    <Used>
+      <OverlayImage path="Used.png"/>
+    </Used>
     <Closest>
       <OverlayImage path="Closest.png"/>
     </Closest>

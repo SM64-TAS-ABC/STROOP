@@ -153,7 +153,7 @@ namespace SM64_Diagnostic
             }
         }
 
-        bool _drawSelectedOverlay, _drawStandingOnOverlay, _drawHoldingOverlay, _drawInteractingObject, _drawUsingObject,
+        bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawHeldOverlay, _drawInteractionObject, _drawUsedObject,
             _drawClosestOverlay, _drawCameraOverlay;
         public bool DrawSelectedOverlay
         {
@@ -169,60 +169,60 @@ namespace SM64_Diagnostic
                 Invalidate();
             }
         }
-        public bool DrawStandingOnOverlay
+        public bool DrawStoodOnOverlay
         {
             get
             {
-                return _drawStandingOnOverlay;
+                return _drawStoodOnOverlay;
             }
             set
             {
-                if (_drawStandingOnOverlay == value)
+                if (_drawStoodOnOverlay == value)
                     return;
-                _drawStandingOnOverlay = value;
+                _drawStoodOnOverlay = value;
                 Invalidate();
             }
         }
-        public bool DrawHoldingOverlay
+        public bool DrawHeldOverlay
         {
             get
             {
-                return _drawHoldingOverlay;
+                return _drawHeldOverlay;
             }
             set
             {
-                if (_drawHoldingOverlay == value)
+                if (_drawHeldOverlay == value)
                     return;
-                _drawHoldingOverlay = value;
+                _drawHeldOverlay = value;
                 Invalidate();
             }
         }
-        public bool DrawInteractingOverlay
+        public bool DrawInteractionOverlay
         {
             get
             {
-                return _drawInteractingObject;
+                return _drawInteractionObject;
             }
             set
             {
-                if (_drawInteractingObject == value)
+                if (_drawInteractionObject == value)
                     return;
-                _drawInteractingObject = value;
+                _drawInteractionObject = value;
                 Invalidate();
             }
         }
 
-        public bool DrawUsingOverlay
+        public bool DrawUsedOverlay
         {
             get
             {
-                return _drawUsingObject;
+                return _drawUsedObject;
             }
             set
             {
-                if (_drawUsingObject == value)
+                if (_drawUsedObject == value)
                     return;
-                _drawUsingObject = value;
+                _drawUsedObject = value;
                 Invalidate();
             }
         }
@@ -426,14 +426,14 @@ namespace SM64_Diagnostic
                 if (DrawSelectedOverlay)
                     e.Graphics.DrawImage(_gui.SelectedObjectOverlayImage, new Rectangle(new Point(), Size));
             }
-            if (_drawInteractingObject)
-                e.Graphics.DrawImage(_gui.InteractingObjectOverlayImage, new Rectangle(new Point(), Size));
-            if (_drawHoldingOverlay)
-                e.Graphics.DrawImage(_gui.HoldingObjectOverlayImage, new Rectangle(new Point(), Size));
-            if (_drawStandingOnOverlay)
-                e.Graphics.DrawImage(_gui.StandingOnObjectOverlayImage, new Rectangle(new Point(), Size));
-            if (_drawUsingObject)
-                e.Graphics.DrawImage(_gui.UsingObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawInteractionObject)
+                e.Graphics.DrawImage(_gui.InteractionObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawHeldOverlay)
+                e.Graphics.DrawImage(_gui.HeldObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawStoodOnOverlay)
+                e.Graphics.DrawImage(_gui.StoodOnObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawUsedObject)
+                e.Graphics.DrawImage(_gui.UsedObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawClosestOverlay)
                 e.Graphics.DrawImage(_gui.ClosestObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawCameraOverlay)

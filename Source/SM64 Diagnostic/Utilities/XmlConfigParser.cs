@@ -592,8 +592,8 @@ namespace SM64_Diagnostic.Utilities
                 marioImagePath = "", holpMapImagePath = "", hudImagePath = "", debugImagePath = "", controllerImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
-                standingOnOverlayImagePath = "", holdingOverlayImagePath = "", interactingOverlayImagePath = "",
-                usingOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "";
+                stoodOnOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
+                usedOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "";
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
 
@@ -684,20 +684,20 @@ namespace SM64_Diagnostic.Utilities
                                     trackedNotShownOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
-                                case "StandingOn":
-                                    standingOnOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                case "StoodOn":
+                                    stoodOnOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
-                                case "Holding":
-                                    holdingOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                case "Held":
+                                    heldOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
-                                case "Interacting":
-                                    interactingOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                case "Interaction":
+                                    interactionOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
-                                case "Using":
-                                    usingOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                case "Used":
+                                    usedOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
                                     
                                 case "Closest":
@@ -796,10 +796,10 @@ namespace SM64_Diagnostic.Utilities
             objectSlotManagerGui.SelectedObjectOverlayImage = Image.FromFile(overlayImageDir + selectedOverlayImagePath);
             objectSlotManagerGui.TrackedAndShownObjectOverlayImage = Image.FromFile(overlayImageDir + trackedAndShownOverlayImagePath);
             objectSlotManagerGui.TrackedNotShownObjectOverlayImage = Image.FromFile(overlayImageDir + trackedNotShownOverlayImagePath);
-            objectSlotManagerGui.StandingOnObjectOverlayImage = Image.FromFile(overlayImageDir + standingOnOverlayImagePath);
-            objectSlotManagerGui.HoldingObjectOverlayImage = Image.FromFile(overlayImageDir + holdingOverlayImagePath);
-            objectSlotManagerGui.InteractingObjectOverlayImage = Image.FromFile(overlayImageDir + interactingOverlayImagePath);
-            objectSlotManagerGui.UsingObjectOverlayImage = Image.FromFile(overlayImageDir + usingOverlayImagePath);
+            objectSlotManagerGui.StoodOnObjectOverlayImage = Image.FromFile(overlayImageDir + stoodOnOverlayImagePath);
+            objectSlotManagerGui.HeldObjectOverlayImage = Image.FromFile(overlayImageDir + heldOverlayImagePath);
+            objectSlotManagerGui.InteractionObjectOverlayImage = Image.FromFile(overlayImageDir + interactionOverlayImagePath);
+            objectSlotManagerGui.UsedObjectOverlayImage = Image.FromFile(overlayImageDir + usedOverlayImagePath);
             objectSlotManagerGui.ClosestObjectOverlayImage = Image.FromFile(overlayImageDir + closestOverlayImagePath);
             objectSlotManagerGui.CameraObjectOverlayImage = Image.FromFile(overlayImageDir + cameraOverlayImagePath);
 

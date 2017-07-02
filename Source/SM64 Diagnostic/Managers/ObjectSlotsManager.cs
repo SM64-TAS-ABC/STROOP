@@ -51,7 +51,7 @@ namespace SM64_Diagnostic.Managers
         List<uint> _toggleMapSlots = new List<uint>();
 
         BehaviorCriteria? _lastSelectedBehavior;
-        uint _standingOnObject, _interactingObject, _holdingObject, _usingObject, _closestObject, _cameraObject;
+        uint _stoodOnObject, _interactionObject, _heldObject, _usedObject, _closestObject, _cameraObject;
         int _activeObjCnt;
         bool _selectedUpdatePending = false;
         Image _multiImage = null;
@@ -380,10 +380,10 @@ namespace SM64_Diagnostic.Managers
 
             _activeObjCnt = 0;
 
-            _standingOnObject = _stream.GetUInt32(Config.Mario.StoodOnObjectPointer);
-            _interactingObject = _stream.GetUInt32(Config.Mario.InteractionObjectPointerOffset + Config.Mario.StructAddress);
-            _holdingObject = _stream.GetUInt32(Config.Mario.HeldObjectPointerOffset + Config.Mario.StructAddress);
-            _usingObject = _stream.GetUInt32(Config.Mario.UsedObjectPointerOffset + Config.Mario.StructAddress);
+            _stoodOnObject = _stream.GetUInt32(Config.Mario.StoodOnObjectPointer);
+            _interactionObject = _stream.GetUInt32(Config.Mario.InteractionObjectPointerOffset + Config.Mario.StructAddress);
+            _heldObject = _stream.GetUInt32(Config.Mario.HeldObjectPointerOffset + Config.Mario.StructAddress);
+            _usedObject = _stream.GetUInt32(Config.Mario.UsedObjectPointerOffset + Config.Mario.StructAddress);
             _closestObject = newObjectSlotData.OrderBy(s => !s.IsActive || s.Behavior == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF) ? float.MaxValue
                 : s.DistanceToMario).First().Address;
             _cameraObject = _stream.GetUInt32(Config.Camera.SecondObject);
@@ -491,12 +491,12 @@ namespace SM64_Diagnostic.Managers
 
             // Update Overlays
             objSlot.DrawSelectedOverlay = SelectedSlotsAddresses.Contains(objAddress);
-            objSlot.DrawStandingOnOverlay = Config.ShowOverlayStoodOnObject && objAddress == _standingOnObject;
-            objSlot.DrawInteractingOverlay = Config.ShowOverlayInteractionObject && objAddress == _interactingObject;
-            objSlot.DrawHoldingOverlay = Config.ShowOverlayHeldObject && objAddress == _holdingObject;
-            objSlot.DrawUsingOverlay = Config.ShowOverlayUsedObject && objAddress == _usingObject;
+            objSlot.DrawStoodOnOverlay = Config.ShowOverlayStoodOnObject && objAddress == _stoodOnObject;
+            objSlot.DrawInteractionOverlay = Config.ShowOverlayInteractionObject && objAddress == _interactionObject;
+            objSlot.DrawHeldOverlay = Config.ShowOverlayHeldObject && objAddress == _heldObject;
+            objSlot.DrawUsedOverlay = Config.ShowOverlayUsedObject && objAddress == _usedObject;
             objSlot.DrawClosestOverlay = Config.ShowOverlayClosestObject && objAddress == _closestObject;
-            objSlot.DrawCameraOverlay = Config.ShowOverlayCameraSecondaryObject && objAddress == _cameraObject;
+            objSlot.DrawCameraOverlay = Config.ShowOverlayCameraObject && objAddress == _cameraObject;
 
             if (objData.IsActive)
                 _activeObjCnt++;

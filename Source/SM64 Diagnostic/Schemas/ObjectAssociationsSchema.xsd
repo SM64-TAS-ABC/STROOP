@@ -139,7 +139,7 @@
                   </xs:all>
                 </xs:complexType>
               </xs:element>
-              <xs:element name="StandingOn">
+              <xs:element name="StoodOn">
                 <xs:complexType>
                   <xs:all>
                     <xs:element name="OverlayImage" minOccurs="0" maxOccurs="1">
@@ -150,7 +150,7 @@
                   </xs:all>
                 </xs:complexType>
               </xs:element>
-              <xs:element name="Holding">
+              <xs:element name="Held">
                 <xs:complexType>
                   <xs:all>
                     <xs:element name="OverlayImage" minOccurs="0" maxOccurs="1">
@@ -161,7 +161,7 @@
                   </xs:all>
                 </xs:complexType>
               </xs:element>
-              <xs:element name="Interacting">
+              <xs:element name="Interaction">
                 <xs:complexType>
                   <xs:all>
                     <xs:element name="OverlayImage" minOccurs="0" maxOccurs="1">
@@ -172,7 +172,7 @@
                   </xs:all>
                 </xs:complexType>
               </xs:element>
-              <xs:element name="Using">
+              <xs:element name="Used">
                 <xs:complexType>
                   <xs:all>
                     <xs:element name="OverlayImage" minOccurs="0" maxOccurs="1">

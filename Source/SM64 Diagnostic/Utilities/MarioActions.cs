@@ -243,7 +243,7 @@ namespace SM64_Diagnostic.Utilities
                 success &= stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
             }
 
-            // Set new holding value
+            // Set new held value
             success &= stream.SetValue(objAddress, marioAddress + Config.Mario.HeldObjectPointerOffset);
 
             stream.Resume();
@@ -262,7 +262,7 @@ namespace SM64_Diagnostic.Utilities
             uint nextAction = Config.MarioActions.GetAfterUncloneValue(currentAction);
             success &= stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
 
-            // Clear mario's holding object
+            // Clear mario's held object
             success &= stream.SetValue(0x00000000U, marioAddress + Config.Mario.HeldObjectPointerOffset);
 
             stream.Resume();
@@ -387,9 +387,9 @@ namespace SM64_Diagnostic.Utilities
 
             stream.Suspend();
 
-            var holdingObj = stream.GetUInt32(marioAddress + Config.Mario.HeldObjectPointerOffset);
+            var heldObj = stream.GetUInt32(marioAddress + Config.Mario.HeldObjectPointerOffset);
 
-            if (holdingObj != 0x00000000U)
+            if (heldObj != 0x00000000U)
             {
                 uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
                 uint nextAction = Config.MarioActions.GetHandsfreeValue(currentAction);

@@ -344,7 +344,7 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay = new System.Windows.Forms.GroupBox();
             this.checkBoxShowOverlayUsedObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayInteractionObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayCameraSecondaryObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayCameraObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayClosestObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayStoodOnObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayHeldObject = new System.Windows.Forms.CheckBox();
@@ -4007,7 +4007,7 @@ namespace SM64_Diagnostic
             // 
             this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayUsedObject);
             this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayInteractionObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraSecondaryObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraObject);
             this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayClosestObject);
             this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayStoodOnObject);
             this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayHeldObject);
@@ -4046,19 +4046,19 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayInteractionObject.UseVisualStyleBackColor = true;
             this.checkBoxShowOverlayInteractionObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayInteractionObject_CheckedChanged);
             // 
-            // checkBoxShowOverlayCameraSecondaryObject
+            // checkBoxShowOverlayCameraObject
             // 
-            this.checkBoxShowOverlayCameraSecondaryObject.AutoSize = true;
-            this.checkBoxShowOverlayCameraSecondaryObject.Checked = true;
-            this.checkBoxShowOverlayCameraSecondaryObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayCameraSecondaryObject.Location = new System.Drawing.Point(5, 104);
-            this.checkBoxShowOverlayCameraSecondaryObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayCameraSecondaryObject.Name = "checkBoxShowOverlayCameraSecondaryObject";
-            this.checkBoxShowOverlayCameraSecondaryObject.Size = new System.Drawing.Size(150, 17);
-            this.checkBoxShowOverlayCameraSecondaryObject.TabIndex = 5;
-            this.checkBoxShowOverlayCameraSecondaryObject.Text = "Camera Secondary Object";
-            this.checkBoxShowOverlayCameraSecondaryObject.UseVisualStyleBackColor = true;
-            this.checkBoxShowOverlayCameraSecondaryObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayCameraSecondaryObject_CheckedChanged);
+            this.checkBoxShowOverlayCameraObject.AutoSize = true;
+            this.checkBoxShowOverlayCameraObject.Checked = true;
+            this.checkBoxShowOverlayCameraObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayCameraObject.Location = new System.Drawing.Point(5, 104);
+            this.checkBoxShowOverlayCameraObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayCameraObject.Name = "checkBoxShowOverlayCameraObject";
+            this.checkBoxShowOverlayCameraObject.Size = new System.Drawing.Size(150, 17);
+            this.checkBoxShowOverlayCameraObject.TabIndex = 5;
+            this.checkBoxShowOverlayCameraObject.Text = "Camera Secondary Object";
+            this.checkBoxShowOverlayCameraObject.UseVisualStyleBackColor = true;
+            this.checkBoxShowOverlayCameraObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayCameraObject_CheckedChanged);
             // 
             // checkBoxShowOverlayClosestObject
             // 
@@ -4786,7 +4786,7 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxShowOverlayHeldObject;
         private CheckBox checkBoxShowOverlayUsedObject;
         private CheckBox checkBoxShowOverlayInteractionObject;
-        private CheckBox checkBoxShowOverlayCameraSecondaryObject;
+        private CheckBox checkBoxShowOverlayCameraObject;
         private CheckBox checkBoxMapShowCeiling;
         private CheckBox checkBoxDisableActionUpdateWhenCloning;
         private CheckBox checkBoxNeutralizeTriangleWith21;

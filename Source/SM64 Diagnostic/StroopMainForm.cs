@@ -600,9 +600,9 @@ namespace SM64_Diagnostic
             Config.ShowOverlayUsedObject = checkBoxShowOverlayUsedObject.Checked;
         }
 
-        private void checkBoxShowOverlayCameraSecondaryObject_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxShowOverlayCameraObject_CheckedChanged(object sender, EventArgs e)
         {
-            Config.ShowOverlayCameraSecondaryObject = checkBoxShowOverlayCameraSecondaryObject.Checked;
+            Config.ShowOverlayCameraObject = checkBoxShowOverlayCameraObject.Checked;
         }
 
         private void checkBoxShowOverlayClosestObject_CheckedChanged(object sender, EventArgs e)
