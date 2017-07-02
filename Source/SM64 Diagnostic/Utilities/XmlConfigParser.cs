@@ -851,20 +851,19 @@ namespace SM64_Diagnostic.Utilities
 
         public static void OpenControllerImageAssoc(string path, ControllerImageGui controllerImageGui)
         {
-            /*
-            var assoc = new ObjectAssociations();
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
             var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/ObjectAssociationsSchema.xsd", "ObjectAssociationsSchema.xsd");
+            schemaSet.Add("http://tempuri.org/ControllerImageAssociationsSchema.xsd", "ControllerImageAssociationsSchema.xsd");
             schemaSet.Compile();
-
+            
             // Load and validate document
             var doc = XDocument.Load(path);
             doc.Validate(schemaSet, Validation);
 
+            /*
             // Create Behavior-ImagePath list
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", overlayImageDir = "",
                 marioImagePath = "", holpMapImagePath = "", hudImagePath = "", debugImagePath = "", controllerImagePath = "",
