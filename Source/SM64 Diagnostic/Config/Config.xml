@@ -157,33 +157,33 @@
     <ButtonBOffset>0x00</ButtonBOffset>
     <ButtonZOffset>0x00</ButtonZOffset>
     <ButtonStartOffset>0x00</ButtonStartOffset>
-    <ButtonROffset>0x00</ButtonROffset>
-    <ButtonLOffset>0x00</ButtonLOffset>
-    <ButtonCUpOffset>0x00</ButtonCUpOffset>
-    <ButtonCDownOffset>0x00</ButtonCDownOffset>
-    <ButtonCLeftOffset>0x00</ButtonCLeftOffset>
-    <ButtonCRightOffset>0x00</ButtonCRightOffset>
+    <ButtonROffset>0x01</ButtonROffset>
+    <ButtonLOffset>0x01</ButtonLOffset>
+    <ButtonCUpOffset>0x01</ButtonCUpOffset>
+    <ButtonCDownOffset>0x01</ButtonCDownOffset>
+    <ButtonCLeftOffset>0x01</ButtonCLeftOffset>
+    <ButtonCRightOffset>0x01</ButtonCRightOffset>
     <ButtonDUpOffset>0x00</ButtonDUpOffset>
     <ButtonDDownOffset>0x00</ButtonDDownOffset>
     <ButtonDLeftOffset>0x00</ButtonDLeftOffset>
     <ButtonDRightOffset>0x00</ButtonDRightOffset>
-    <ControlStickHOffset>0x00</ControlStickHOffset>
-    <ControlStickVOffset>0x00</ControlStickVOffset>
+    <ControlStickHOffset>0x02</ControlStickHOffset>
+    <ControlStickVOffset>0x03</ControlStickVOffset>
 
-    <ButtonAMask>0x00</ButtonAMask>
-    <ButtonBMask>0x00</ButtonBMask>
-    <ButtonZMask>0x00</ButtonZMask>
-    <ButtonStartMask>0x00</ButtonStartMask>
-    <ButtonRMask>0x00</ButtonRMask>
-    <ButtonLMask>0x00</ButtonLMask>
-    <ButtonCUpMask>0x00</ButtonCUpMask>
-    <ButtonCDownMask>0x00</ButtonCDownMask>
-    <ButtonCLeftMask>0x00</ButtonCLeftMask>
-    <ButtonCRightMask>0x00</ButtonCRightMask>
-    <ButtonDUpMask>0x00</ButtonDUpMask>
-    <ButtonDDownMask>0x00</ButtonDDownMask>
-    <ButtonDLeftMask>0x00</ButtonDLeftMask>
-    <ButtonDRightMask>0x00</ButtonDRightMask>
+    <ButtonAMask>0x80</ButtonAMask>
+    <ButtonBMask>0x40</ButtonBMask>
+    <ButtonZMask>0x20</ButtonZMask>
+    <ButtonStartMask>0x10</ButtonStartMask>
+    <ButtonRMask>0x10</ButtonRMask>
+    <ButtonLMask>0x20</ButtonLMask>
+    <ButtonCUpMask>0x08</ButtonCUpMask>
+    <ButtonCDownMask>0x04</ButtonCDownMask>
+    <ButtonCLeftMask>0x02</ButtonCLeftMask>
+    <ButtonCRightMask>0x01</ButtonCRightMask>
+    <ButtonDUpMask>0x08</ButtonDUpMask>
+    <ButtonDDownMask>0x04</ButtonDDownMask>
+    <ButtonDLeftMask>0x02</ButtonDLeftMask>
+    <ButtonDRightMask>0x01</ButtonDRightMask>
   </Controller>
   <HolpX>0x8033B3C8</HolpX>
   <HolpY>0x8033B3CC</HolpY>
