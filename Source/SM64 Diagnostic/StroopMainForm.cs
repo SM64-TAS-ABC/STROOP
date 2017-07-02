@@ -610,6 +610,21 @@ namespace SM64_Diagnostic
             Config.ShowOverlayClosestObject = checkBoxShowOverlayClosestObject.Checked;
         }
 
+        private void checkBoxShowOverlayFloorObject_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.ShowOverlayFloorObject = checkBoxShowOverlayFloorObject.Checked;
+        }
+
+        private void checkBoxShowOverlayWallObject_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.ShowOverlayWallObject = checkBoxShowOverlayWallObject.Checked;
+        }
+
+        private void checkBoxShowOverlayCeilingObject_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.ShowOverlayCeilingObject = checkBoxShowOverlayCeilingObject.Checked;
+        }
+
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
         {
             _resizeObjSlotTime = 500;
