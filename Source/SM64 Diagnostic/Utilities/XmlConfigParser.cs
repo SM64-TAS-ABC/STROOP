@@ -863,18 +863,25 @@ namespace SM64_Diagnostic.Utilities
             var doc = XDocument.Load(path);
             doc.Validate(schemaSet, Validation);
 
-            /*
-            // Create Behavior-ImagePath list
-            string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", overlayImageDir = "",
-                marioImagePath = "", holpMapImagePath = "", hudImagePath = "", debugImagePath = "", controllerImagePath = "",
-                miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
-                selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
-                stoodOnOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
-                usedOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "",
-                floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "";
-            uint ramToBehaviorOffset = 0;
-            uint marioBehavior = 0;
+            // Create path list
+            string buttonAPath = "",
+                   buttonBPath = "",
+                   buttonZPath = "",
+                   buttonStartPath = "",
+                   buttonRPath = "",
+                   buttonLPath = "",
+                   buttonCUpPath = "",
+                   buttonCDownPath = "",
+                   buttonCLeftPath = "",
+                   buttonCRightPath = "",
+                   buttonDUpPath = "",
+                   buttonDDownPath = "",
+                   buttonDLeftPath = "",
+                   buttonDRightPath = "",
+                   controlStickPath = "",
+                   controllerBasePath = "";
 
+            /*
             foreach (XElement element in doc.Root.Elements())
             {
                 switch (element.Name.ToString())
