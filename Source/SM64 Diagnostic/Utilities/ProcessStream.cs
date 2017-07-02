@@ -35,8 +35,8 @@ namespace SM64_Diagnostic.Utilities
         public event EventHandler WarnReadonlyOff;
         public event EventHandler OnClose;
 
-        public bool Readonly = true;
-        public bool ShowWarning = true;
+        public bool Readonly = false;
+        public bool ShowWarning = false;
 
         public ConcurrentDictionary<WatchVariableLock, WatchVariableLock> LockedVariables = 
             new ConcurrentDictionary<WatchVariableLock, WatchVariableLock>();

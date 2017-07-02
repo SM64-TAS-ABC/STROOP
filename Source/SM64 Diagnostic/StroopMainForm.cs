@@ -161,7 +161,7 @@ namespace SM64_Diagnostic
                     case DialogResult.Yes:
                         _sm64Stream.Readonly = false;
                         _sm64Stream.ShowWarning = false;
-                        buttonReadOnly.Text = "Enable Read-only";
+                        buttonReadOnly.Text = "Switch to Read-Only";
                         break;
 
                     case DialogResult.No:
@@ -482,7 +482,7 @@ namespace SM64_Diagnostic
         private void buttonReadOnly_Click(object sender, EventArgs e)
         {
             _sm64Stream.Readonly = !_sm64Stream.Readonly;
-            buttonReadOnly.Text = _sm64Stream.Readonly ? "Disable Read-only" : "Enable Read-only";
+            buttonReadOnly.Text = _sm64Stream.Readonly ? "Switch to Read-Write" : "Switch to Read-Only";
             _sm64Stream.ShowWarning = false;
         }
 
