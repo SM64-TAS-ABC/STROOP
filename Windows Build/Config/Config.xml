@@ -185,6 +185,21 @@
     <ButtonDLeftMask>0x02</ButtonDLeftMask>
     <ButtonDRightMask>0x01</ButtonDRightMask>
   </Controller>
+  <CameraHack>
+    <CameraHackStruct>0x803E0000</CameraHackStruct>
+    <CameraModeOffset>0x00</CameraModeOffset>
+    <CameraXOffset>0x04</CameraXOffset>
+    <CameraYOffset>0x08</CameraYOffset>
+    <CameraZOffset>0x0C</CameraZOffset>
+    <FocusXOffset>0x10</FocusXOffset>
+    <FocusYOffset>0x14</FocusYOffset>
+    <FocusZOffset>0x18</FocusZOffset>
+    <RotateOffset>0x1C</RotateOffset>
+    <ThetaOffset>0x1E</ThetaOffset>
+    <RadiusOffset>0x20</RadiusOffset>
+    <RelativeHeightOffset>0x24</RelativeHeightOffset>
+    <ObjectOffset>0x28</ObjectOffset>
+  </CameraHack>
   <HolpX>0x8033B3C8</HolpX>
   <HolpY>0x8033B3CC</HolpY>
   <HolpZ>0x8033B3D0</HolpZ>
