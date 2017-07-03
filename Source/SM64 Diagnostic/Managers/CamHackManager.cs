@@ -148,10 +148,9 @@ namespace SM64_Diagnostic.Managers
                     ButtonUtilities.TranslateCameraHackFocusSpherically(
                         _stream,
                         _currentCamHackMode,
-                        -1 * nOffset,
+                        nOffset,
                         hOffset,
-                        -1 * vOffset,
-                        (0, 0, 0));
+                        -1 * vOffset);
                 });
         }
 
