@@ -23,10 +23,11 @@ namespace SM64_Diagnostic.Managers
         public CamHackManager(ProcessStream stream, List<WatchVariable> controllerData, TabPage camHackControl, NoTearFlowLayoutPanel variableTable)
             : base(stream, controllerData, variableTable)
         {
-            _mode0RadioButton = camHackControl.Controls["radioButtonCamHackMode0"] as RadioButton;
-            _mode1RadioButton = camHackControl.Controls["radioButtonCamHackMode1"] as RadioButton;
-            _mode2RadioButton = camHackControl.Controls["radioButtonCamHackMode2"] as RadioButton;
-            _mode3RadioButton = camHackControl.Controls["radioButtonCamHackMode3"] as RadioButton;
+            var splitContainer = camHackControl.Controls["splitContainerCamHack"] as SplitContainer;
+            _mode0RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode0"] as RadioButton;
+            _mode1RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode1"] as RadioButton;
+            _mode2RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode2"] as RadioButton;
+            _mode3RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode3"] as RadioButton;
 
             _mode0RadioButton.Click += (sender, e) => _stream.SetValue(0, Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
             _mode1RadioButton.Click += (sender, e) => _stream.SetValue(1, Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
