@@ -15,9 +15,6 @@ namespace SM64_Diagnostic.Managers
 {
     public class CameraManager : DataManager
     {
-        TextBox _cameraSphericalPosThetaPhiTextbox;
-        TextBox _cameraSphericalPosRadiusTextbox;
-
         public CameraManager(ProcessStream stream, List<WatchVariable> cameraData, Control tabControl, NoTearFlowLayoutPanel variableTable)
             : base(stream, cameraData, variableTable)
         {
