@@ -980,7 +980,7 @@ namespace SM64_Diagnostic.Utilities
             return false;
         }
 
-        public static bool TranslateCameraHackSpherically(ProcessStream stream, CamHackMode camHackMode, float radiusOffset, float thetaOffset, float phiOffset, (float, float, float) pivotPoint)
+        public static bool TranslateCameraHackSpherically(ProcessStream stream, CamHackMode camHackMode, float radiusOffset, float thetaOffset, float phiOffset)
         {
             if (camHackMode == CamHackMode.REGULAR)
             {
@@ -990,23 +990,37 @@ namespace SM64_Diagnostic.Utilities
                 return TranslateCameraSpherically(stream, radiusOffset, thetaOffset, phiOffset, (xFocus, yFocus, zFocus));
             }
 
-            /*
             if (camHackMode == CamHackMode.FIXED_ORIENTATION || camHackMode == CamHackMode.FIXED_POS)
             {
+                TripleAddressAngle focusTripleAddressAngle = getCamHackFocusTripleAddressController(stream, camHackMode);
+                uint focusXAddress, focusYAddress, focusZAddress;
+                (focusXAddress, focusYAddress, focusZAddress) = focusTripleAddressAngle.getTripleAddress();
+
+                float xFocus = stream.GetSingle(focusTripleAddressAngle.XAddress);
+                float yFocus = stream.GetSingle(focusTripleAddressAngle.YAddress);
+                float zFocus = stream.GetSingle(focusTripleAddressAngle.ZAddress);
+
+                float xCamPos = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
+                float yCamPos = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
+                float zCamPos = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
+
+                double xDestination, yDestination, zDestination;
+                (xDestination, yDestination, zDestination) =
+                    MoreMath.OffsetSphericallyAboutPivot(xCamPos, yCamPos, zCamPos, radiusOffset, thetaOffset, phiOffset, xFocus, yFocus, zFocus);
+
                 return MoveThings(
                     stream,
                     createListTripleAddressAngle(
                         Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset,
                         Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset,
-                        Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset,
-                        getCamHackYawFacing(stream, camHackMode)),
-                    xOffset,
-                    yOffset,
-                    zOffset,
-                    Change.ADD,
-                    useRelative);
+                        Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset),
+                    (float)xDestination,
+                    (float)yDestination,
+                    (float)zDestination,
+                    Change.SET);
             }
 
+            /*
             if (camHackMode == CamHackMode.ABSOLUTE_ANGLE || camHackMode == CamHackMode.RELATIVE_ANGLE)
             {
                 handleScaling(ref xOffset, ref zOffset);

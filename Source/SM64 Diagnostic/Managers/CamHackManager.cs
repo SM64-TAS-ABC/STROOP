@@ -84,8 +84,8 @@ namespace SM64_Diagnostic.Managers
                 cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTnPp"] as Button,
                 cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTpPn"] as Button,
                 cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTpPp"] as Button,
-                cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosRp"] as Button,
                 cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosRn"] as Button,
+                cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosRp"] as Button,
                 cameraHackSphericalPosGroupBox.Controls["textBoxCameraHackSphericalPosTP"] as TextBox,
                 cameraHackSphericalPosGroupBox.Controls["textBoxCameraHackSphericalPosR"] as TextBox,
                 null /* checkbox */,
@@ -96,8 +96,7 @@ namespace SM64_Diagnostic.Managers
                         _currentCamHackMode,
                         -1 * nOffset,
                         hOffset,
-                        -1 * vOffset,
-                        (0,0,0));
+                        -1 * vOffset);
                 });
 
             var cameraHackFocusPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackFocusPos"] as GroupBox;
