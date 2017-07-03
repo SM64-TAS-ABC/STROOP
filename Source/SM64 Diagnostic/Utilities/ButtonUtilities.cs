@@ -31,14 +31,21 @@ namespace SM64_Diagnostic.Utilities
         }
 
         /**
-         * Creates a singleton list of a PositionAddressAngle, whose only element
-         * is a newly constructed PositionAddressAngle using the given parameters.
+         * Creates a singleton list of a TripleAddressAngle, whose only element
+         * is a newly constructed TripleAddressAngle using the given parameters.
          */
-        private static List<TripleAddressAngle> createListPositionAddressAngle(
+        private static List<TripleAddressAngle> createListTripleAddressAngle(
             uint xAddress, uint yAddress, uint zAddress, ushort angle = 0)
         {
             List<TripleAddressAngle> list = new List<TripleAddressAngle>();
             list.Add(new TripleAddressAngle(xAddress, yAddress, zAddress, angle));
+            return list;
+        }
+
+        private static List<TripleAddressAngle> createListTripleAddressAngle(TripleAddressAngle tripleAddressAngle)
+        {
+            List<TripleAddressAngle> list = new List<TripleAddressAngle>();
+            list.Add(tripleAddressAngle);
             return list;
         }
 
@@ -863,7 +870,7 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        private static TripleAddressAngle getCamHackFocusPositionAddressController(ProcessStream stream, CamHackMode camHackMode)
+        private static TripleAddressAngle getCamHackFocusTripleAddressController(ProcessStream stream, CamHackMode camHackMode)
         {
             uint camHackObject = stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
             switch (camHackMode)
@@ -918,7 +925,7 @@ namespace SM64_Diagnostic.Utilities
             {
                 return MoveThings(
                     stream,
-                    createListPositionAddressAngle(
+                    createListTripleAddressAngle(
                         Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset,
                         Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset,
                         Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset,
@@ -985,17 +992,17 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool TranslateCameraHackFocus(ProcessStream stream, CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            /*
-            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
-            posAddressAngles.Add(new PositionAddressAngle(
-                Config.Camera.CameraStructAddress + Config.Camera.XOffset,
-                Config.Camera.CameraStructAddress + Config.Camera.YOffset,
-                Config.Camera.CameraStructAddress + Config.Camera.ZOffset,
-                stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset)));
-
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
-            */
-            return false;
+            return MoveThings(
+                stream,
+                createListTripleAddressAngle(
+                    getCamHackFocusTripleAddressController(
+                        stream,
+                        camHackMode)),
+                xOffset,
+                yOffset,
+                zOffset,
+                Change.ADD,
+                useRelative);
         }
 
         public static bool TranslateCameraHackFocusSpherically(ProcessStream stream, CamHackMode camHackMode, float radiusOffset, float thetaOffset, float phiOffset, (float, float, float) pivotPoint)
