@@ -94,6 +94,9 @@
     <ObjectReferenceAddress>0x80361158</ObjectReferenceAddress>
     <ObjectAnimationOffset>0x38</ObjectAnimationOffset>
     <ObjectAnimationTimerOffset>0x40</ObjectAnimationTimerOffset>
+    <HOLPXOffset>0x258</HOLPXOffset>
+    <HOLPXOffset>0x25C</HOLPXOffset>
+    <HOLPXOffset>0x260</HOLPXOffset>
   </Mario>
   <Hud>
     <HpAddress>0x8033B21e</HpAddress>

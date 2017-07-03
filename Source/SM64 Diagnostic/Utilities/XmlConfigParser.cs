@@ -328,6 +328,15 @@ namespace SM64_Diagnostic.Utilities
                                 case "ObjectAnimationTimerOffset":
                                     Config.Mario.ObjectAnimationTimerOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "HOLPXOffset":
+                                    Config.Mario.HOLPXOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "HOLPYOffset":
+                                    Config.Mario.HOLPYOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "HOLPZOffset":
+                                    Config.Mario.HOLPZOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;

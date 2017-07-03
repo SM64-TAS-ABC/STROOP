@@ -36,5 +36,8 @@ namespace SM64_Diagnostic.Structs
         public uint ObjectReferenceAddress;
         public uint ObjectAnimationOffset;
         public uint ObjectAnimationTimerOffset;
+        public uint HOLPXOffset;
+        public uint HOLPYOffset;
+        public uint HOLPZOffset;
     }
 }
