@@ -101,9 +101,6 @@
         <xs:element name="AreaAddress" type="types:address"/>
         <xs:element name="LoadingPointAddress" type="types:address"/>
         <xs:element name="MissionAddress" type="types:address"/>
-        <xs:element name="HolpX" type="types:address"/>
-        <xs:element name="HolpY" type="types:address"/>
-        <xs:element name="HolpZ" type="types:address"/>
         <xs:element name="RngAddress" type="types:address"/>
         <xs:element name="RngRecordingAreaAddress" type="types:address"/>
       </xs:all>

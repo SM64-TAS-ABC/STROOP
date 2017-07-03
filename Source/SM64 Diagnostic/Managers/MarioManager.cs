@@ -241,9 +241,9 @@ namespace SM64_Diagnostic.Managers
 
             // Get holp position
             float holpX, holpY, holpZ;
-            holpX = _stream.GetSingle(Config.HolpX);
-            holpY = _stream.GetSingle(Config.HolpY);
-            holpZ = _stream.GetSingle(Config.HolpZ);
+            holpX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPXOffset);
+            holpY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPYOffset);
+            holpZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPZOffset);
 
             // Update holp map object position
             _mapManager.HolpMapObject.X = holpX;

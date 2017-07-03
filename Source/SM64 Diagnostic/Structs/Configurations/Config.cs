@@ -28,9 +28,6 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint AreaAddress;
         public static uint LoadingPointAddress;
         public static uint MissionAddress;
-        public static uint HolpX;
-        public static uint HolpY;
-        public static uint HolpZ;
         public static uint RngRecordingAreaAddress;
         public static uint RngAddress;
 

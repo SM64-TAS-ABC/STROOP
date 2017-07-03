@@ -207,9 +207,6 @@
     <RelativeHeightOffset>0x24</RelativeHeightOffset>
     <ObjectOffset>0x28</ObjectOffset>
   </CameraHack>
-  <HolpX>0x8033B3C8</HolpX>
-  <HolpY>0x8033B3CC</HolpY>
-  <HolpZ>0x8033B3D0</HolpZ>
   <LevelAddress>0x8033B249</LevelAddress>
   <AreaAddress>0x8033B24A</AreaAddress>
   <LoadingPointAddress>0x8033BACA</LoadingPointAddress>

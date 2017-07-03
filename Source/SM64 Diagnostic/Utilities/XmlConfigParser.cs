@@ -739,15 +739,6 @@ namespace SM64_Diagnostic.Utilities
                         Config.MissionAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
 
-                    case "HolpX":
-                        Config.HolpX = ParsingUtilities.ParseHex(element.Value);
-                        break;
-                    case "HolpY":
-                        Config.HolpY = ParsingUtilities.ParseHex(element.Value);
-                        break;
-                    case "HolpZ":
-                        Config.HolpZ = ParsingUtilities.ParseHex(element.Value);
-                        break;
                     case "RngRecordingAreaAddress":
                         Config.RngRecordingAreaAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
