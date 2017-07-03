@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -3439,8 +3439,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -3892,7 +3892,7 @@ namespace SM64_Diagnostic
             this.groupBoxCameraHackFocusPos.Size = new System.Drawing.Size(185, 146);
             this.groupBoxCameraHackFocusPos.TabIndex = 34;
             this.groupBoxCameraHackFocusPos.TabStop = false;
-            this.groupBoxCameraHackFocusPos.Text = "Focus Pos";
+            this.groupBoxCameraHackFocusPos.Text = "Focus Position";
             // 
             // checkBoxCameraHackFocusPosRelative
             // 
@@ -4044,7 +4044,7 @@ namespace SM64_Diagnostic
             this.groupBoxCameraHackSphericalPos.Size = new System.Drawing.Size(185, 146);
             this.groupBoxCameraHackSphericalPos.TabIndex = 31;
             this.groupBoxCameraHackSphericalPos.TabStop = false;
-            this.groupBoxCameraHackSphericalPos.Text = "Cam Spherical";
+            this.groupBoxCameraHackSphericalPos.Text = "Camera Spherical";
             // 
             // textBoxCameraHackSphericalPosR
             // 
@@ -4187,7 +4187,7 @@ namespace SM64_Diagnostic
             this.groupBoxCameraHackPos.Size = new System.Drawing.Size(185, 146);
             this.groupBoxCameraHackPos.TabIndex = 32;
             this.groupBoxCameraHackPos.TabStop = false;
-            this.groupBoxCameraHackPos.Text = "Cam Pos";
+            this.groupBoxCameraHackPos.Text = "Camera Position";
             // 
             // checkBoxCameraHackPosRelative
             // 
@@ -4366,9 +4366,9 @@ namespace SM64_Diagnostic
             this.radioButtonCamHackMode1AbsoluteAngle.AutoSize = true;
             this.radioButtonCamHackMode1AbsoluteAngle.Location = new System.Drawing.Point(11, 55);
             this.radioButtonCamHackMode1AbsoluteAngle.Name = "radioButtonCamHackMode1AbsoluteAngle";
-            this.radioButtonCamHackMode1AbsoluteAngle.Size = new System.Drawing.Size(166, 17);
+            this.radioButtonCamHackMode1AbsoluteAngle.Size = new System.Drawing.Size(150, 17);
             this.radioButtonCamHackMode1AbsoluteAngle.TabIndex = 8;
-            this.radioButtonCamHackMode1AbsoluteAngle.Text = "Follow Object, Absolute Angle";
+            this.radioButtonCamHackMode1AbsoluteAngle.Text = "Follow Object, Fixed Angle";
             this.radioButtonCamHackMode1AbsoluteAngle.UseVisualStyleBackColor = true;
             // 
             // radioButtonCamHackMode1RelativeAngle
