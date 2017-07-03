@@ -442,9 +442,9 @@ namespace SM64_Diagnostic.Utilities
         {
             List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
             posAddressAngles.Add(new PositionAddressAngle(
-                Config.HolpX,
-                Config.HolpY,
-                Config.HolpZ,
+                Config.Mario.StructAddress + Config.Mario.HOLPXOffset,
+                Config.Mario.StructAddress + Config.Mario.HOLPYOffset,
+                Config.Mario.StructAddress + Config.Mario.HOLPZOffset,
                 stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset)));
 
             return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
