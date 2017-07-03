@@ -25,7 +25,7 @@ namespace SM64_Diagnostic.Utilities
             return Math.Sqrt(dx * dx + dz * dz);
         }
 
-        public static ushort formatAngle(float angle)
+        public static ushort FormatAngle(double angle)
         {
             double nonNegative = NonnegativeModulus(angle, 65536);
             return (ushort)(Math.Round(nonNegative) % 65536);
@@ -46,7 +46,7 @@ namespace SM64_Diagnostic.Utilities
             return RadiansToAngleUnitsRounded(AngleTo_Radians(xFrom, zFrom, xTo, zTo));
         }
 
-        public static (double radius, double theta, double phi) EulerToSphericalRadians(double x, double y, double z)
+        public static (double radius, double theta, double phi) EulerToSpherical_Radians(double x, double y, double z)
         {
             double radius = Math.Sqrt(x * x + y * y + z * z);
             double theta = Math.Atan2(x, z);
@@ -54,16 +54,16 @@ namespace SM64_Diagnostic.Utilities
             return (radius, theta, phi);
         }
 
-        public static (double radius, double theta, double phi) EulerToSphericalAngleUnits(double x, double y, double z)
+        public static (double radius, double theta, double phi) EulerToSpherical_AngleUnits(double x, double y, double z)
         {
             double radius, thetaRadians, phiRadians;
-            (radius, thetaRadians, phiRadians) = EulerToSphericalRadians(x, y, z);
+            (radius, thetaRadians, phiRadians) = EulerToSpherical_Radians(x, y, z);
             double thetaAngleUnits = RadiansToAngleUnits(thetaRadians);
             double phiAngleUnits = RadiansToAngleUnits(phiRadians);
             return (radius, thetaAngleUnits, phiAngleUnits);
         }
 
-        public static (double x, double y, double z) SphericalToEulerRadians(double radius, double theta, double phi)
+        public static (double x, double y, double z) SphericalToEuler_Radians(double radius, double theta, double phi)
         {
             double x = radius * Math.Sin(theta) * Math.Sin(phi);
             double y = radius * Math.Cos(phi);
@@ -71,11 +71,47 @@ namespace SM64_Diagnostic.Utilities
             return (x, y, z);
         }
 
-        public static (double x, double y, double z) SphericalToEulerAngleUnits(double radius, double thetaAngleUnits, double phiAngleUnits)
+        public static (double x, double y, double z) SphericalToEuler_AngleUnits(double radius, double thetaAngleUnits, double phiAngleUnits)
         {
             double thetaRadians = AngleUnitsToRadians(thetaAngleUnits);
             double phiRadians = AngleUnitsToRadians(phiAngleUnits);
-            return SphericalToEulerRadians(radius, thetaRadians, phiRadians);
+            return SphericalToEuler_Radians(radius, thetaRadians, phiRadians);
+        }
+
+        public static (double radius, double theta, double height) EulerToCylindrical_Radians(double x, double y, double z)
+        {
+            double radius = Math.Sqrt(x * x + z * z);
+            double theta = Math.Atan2(x, z);
+            double height = y;
+            return (radius, theta, height);
+        }
+
+        public static (double x, double y, double z) CylindricalToEuler_Radians(double radius, double theta, double height)
+        {
+            double x = radius * Math.Sin(theta);
+            double y = height;
+            double z = radius * Math.Cos(theta);
+            return (x, y, z);
+        }
+
+        public static (double radius, double thetaAngleUnits, double height) EulerToCylindrical_AngleUnits(double x, double y, double z)
+        {
+            double radius, thetaRadians, height;
+            (radius, thetaRadians, height) = EulerToCylindrical_Radians(x, y, z);
+            double thetaAngleUnits = RadiansToAngleUnits(thetaRadians);
+            return (radius, thetaAngleUnits, height);
+        }
+
+        public static (double x, double y, double z) CylindricalToEuler_AngleUnits(double radius, double thetaAngleUnits, double height)
+        {
+            double thetaRadians = AngleUnitsToRadians(thetaAngleUnits);
+            return CylindricalToEuler_Radians(radius, thetaRadians, height);
+        }
+
+        public static (double radius, double thetaAngleUnits, double height) EulerToCylindricalAboutPivot(
+            double x, double y, double z, double pivotX, double pivotY, double pivotZ)
+        {
+            return EulerToCylindrical_AngleUnits(x - pivotX, y - pivotY, z - pivotZ);
         }
 
         public static double RadiansToAngleUnits(double radians)
@@ -101,13 +137,13 @@ namespace SM64_Diagnostic.Utilities
             double x, double y, double z, double radiusChange, double thetaChangeAngleUnits, double phiChangeAngleUnits)
         {
             double oldRadius, oldTheta, oldPhi;
-            (oldRadius, oldTheta, oldPhi) = EulerToSphericalAngleUnits(x, y, z);
+            (oldRadius, oldTheta, oldPhi) = EulerToSpherical_AngleUnits(x, y, z);
 
             double newRadius = Math.Max(oldRadius + radiusChange, 0);
             double newTheta = NonnegativeModulus(oldTheta + thetaChangeAngleUnits, 65536);
             double newPhi = OffsetAngleUnitsCappedAt32768(oldPhi, phiChangeAngleUnits);
 
-            return SphericalToEulerAngleUnits(newRadius, newTheta, newPhi);
+            return SphericalToEuler_AngleUnits(newRadius, newTheta, newPhi);
         }
 
         public static (double x, double y, double z) OffsetSphericallyAboutPivot(

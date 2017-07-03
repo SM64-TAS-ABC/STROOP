@@ -14,14 +14,14 @@ namespace SM64_Diagnostic.Utilities
     {
         static uint _prevMarioGraphic = 0x00;
 
-        private struct PositionAddressAngle
+        private struct TripleAddressAngle
         {
             public readonly uint XAddress;
             public readonly uint YAddress;
             public readonly uint ZAddress;
             public readonly ushort Angle;
 
-            public PositionAddressAngle(uint xAddress, uint yAddress, uint zAddress, ushort angle = 0)
+            public TripleAddressAngle(uint xAddress, uint yAddress, uint zAddress, ushort angle = 0)
             {
                 XAddress = xAddress;
                 YAddress = yAddress;
@@ -34,17 +34,17 @@ namespace SM64_Diagnostic.Utilities
          * Creates a singleton list of a PositionAddressAngle, whose only element
          * is a newly constructed PositionAddressAngle using the given parameters.
          */
-        private static List<PositionAddressAngle> createListPositionAddressAngle(
-            uint xAddress, uint yAddress, uint zAddress, ushort angle)
+        private static List<TripleAddressAngle> createListPositionAddressAngle(
+            uint xAddress, uint yAddress, uint zAddress, ushort angle = 0)
         {
-            List<PositionAddressAngle> list = new List<PositionAddressAngle>();
-            list.Add(new PositionAddressAngle(xAddress, yAddress, zAddress, angle));
+            List<TripleAddressAngle> list = new List<TripleAddressAngle>();
+            list.Add(new TripleAddressAngle(xAddress, yAddress, zAddress, angle));
             return list;
         }
 
         private enum Change { SET, ADD, MULTIPLY };
 
-        private static bool MoveThings(ProcessStream stream, List<PositionAddressAngle> posAddressAngles,
+        private static bool MoveThings(ProcessStream stream, List<TripleAddressAngle> posAddressAngles,
             float xValue, float yValue, float zValue, Change change, bool useRelative = false)
         {
             if (posAddressAngles.Count == 0)
@@ -106,8 +106,8 @@ namespace SM64_Diagnostic.Utilities
             if (objAddresses.Count == 0)
                 return false;
 
-            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
-            posAddressAngles.Add(new PositionAddressAngle(
+            List<TripleAddressAngle> posAddressAngles = new List<TripleAddressAngle>();
+            posAddressAngles.Add(new TripleAddressAngle(
                 Config.Mario.StructAddress + Config.Mario.XOffset,
                 Config.Mario.StructAddress + Config.Mario.YOffset,
                 Config.Mario.StructAddress + Config.Mario.ZOffset));
@@ -123,9 +123,9 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool RetrieveObjects(ProcessStream stream, List<uint> objAddresses)
         {
-            List<PositionAddressAngle> posAddressAngles =
-                objAddresses.ConvertAll<PositionAddressAngle>(
-                    objAddress => new PositionAddressAngle(
+            List<TripleAddressAngle> posAddressAngles =
+                objAddresses.ConvertAll<TripleAddressAngle>(
+                    objAddress => new TripleAddressAngle(
                         objAddress + Config.ObjectSlots.ObjectXOffset,
                         objAddress + Config.ObjectSlots.ObjectYOffset,
                         objAddress + Config.ObjectSlots.ObjectZOffset));
@@ -142,9 +142,9 @@ namespace SM64_Diagnostic.Utilities
         public static bool TranslateObjects(ProcessStream stream, List<uint> objAddresses,
             float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<PositionAddressAngle> posAddressAngles =
-                objAddresses.ConvertAll<PositionAddressAngle>(
-                    objAddress => new PositionAddressAngle(
+            List<TripleAddressAngle> posAddressAngles =
+                objAddresses.ConvertAll<TripleAddressAngle>(
+                    objAddress => new TripleAddressAngle(
                         objAddress + Config.ObjectSlots.ObjectXOffset,
                         objAddress + Config.ObjectSlots.ObjectYOffset,
                         objAddress + Config.ObjectSlots.ObjectZOffset,
@@ -156,9 +156,9 @@ namespace SM64_Diagnostic.Utilities
         public static bool TranslateObjectHomes(ProcessStream stream, List<uint> objAddresses,
             float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<PositionAddressAngle> posAddressAngles =
-                objAddresses.ConvertAll<PositionAddressAngle>(
-                    objAddress => new PositionAddressAngle(
+            List<TripleAddressAngle> posAddressAngles =
+                objAddresses.ConvertAll<TripleAddressAngle>(
+                    objAddress => new TripleAddressAngle(
                         objAddress + Config.ObjectSlots.HomeXOffset,
                         objAddress + Config.ObjectSlots.HomeYOffset,
                         objAddress + Config.ObjectSlots.HomeZOffset,
@@ -208,9 +208,9 @@ namespace SM64_Diagnostic.Utilities
         public static bool ScaleObjects(ProcessStream stream, List<uint> objAddresses,
             float widthChange, float heightChange, float depthChange, bool multiply)
         {
-            List<PositionAddressAngle> posAddressAngles =
-                objAddresses.ConvertAll<PositionAddressAngle>(
-                    objAddress => new PositionAddressAngle(
+            List<TripleAddressAngle> posAddressAngles =
+                objAddresses.ConvertAll<TripleAddressAngle>(
+                    objAddress => new TripleAddressAngle(
                         objAddress + Config.ObjectSlots.ScaleWidthOffset,
                         objAddress + Config.ObjectSlots.ScaleHeightOffset,
                         objAddress + Config.ObjectSlots.ScaleDepthOffset));
@@ -223,8 +223,8 @@ namespace SM64_Diagnostic.Utilities
             if (objAddresses.Count == 0)
                 return false;
 
-            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
-            posAddressAngles.Add(new PositionAddressAngle(
+            List<TripleAddressAngle> posAddressAngles = new List<TripleAddressAngle>();
+            posAddressAngles.Add(new TripleAddressAngle(
                 Config.Mario.StructAddress + Config.Mario.XOffset,
                 Config.Mario.StructAddress + Config.Mario.YOffset,
                 Config.Mario.StructAddress + Config.Mario.ZOffset));
@@ -240,9 +240,9 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool RetrieveObjectsHome(ProcessStream stream, List<uint> objAddresses)
         {
-            List<PositionAddressAngle> posAddressAngles =
-                objAddresses.ConvertAll<PositionAddressAngle>(
-                    objAddress => new PositionAddressAngle(
+            List<TripleAddressAngle> posAddressAngles =
+                objAddresses.ConvertAll<TripleAddressAngle>(
+                    objAddress => new TripleAddressAngle(
                         objAddress + Config.ObjectSlots.HomeXOffset,
                         objAddress + Config.ObjectSlots.HomeYOffset,
                         objAddress + Config.ObjectSlots.HomeZOffset));
@@ -458,8 +458,8 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool TranslateMario(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
-            posAddressAngles.Add(new PositionAddressAngle(
+            List<TripleAddressAngle> posAddressAngles = new List<TripleAddressAngle>();
+            posAddressAngles.Add(new TripleAddressAngle(
                 Config.Mario.StructAddress + Config.Mario.XOffset,
                 Config.Mario.StructAddress + Config.Mario.YOffset,
                 Config.Mario.StructAddress + Config.Mario.ZOffset,
@@ -470,8 +470,8 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool TranslateHOLP(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
-            posAddressAngles.Add(new PositionAddressAngle(
+            List<TripleAddressAngle> posAddressAngles = new List<TripleAddressAngle>();
+            posAddressAngles.Add(new TripleAddressAngle(
                 Config.Mario.StructAddress + Config.Mario.HOLPXOffset,
                 Config.Mario.StructAddress + Config.Mario.HOLPYOffset,
                 Config.Mario.StructAddress + Config.Mario.HOLPZOffset,
@@ -805,8 +805,8 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool TranslateCamera(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
-            posAddressAngles.Add(new PositionAddressAngle(
+            List<TripleAddressAngle> posAddressAngles = new List<TripleAddressAngle>();
+            posAddressAngles.Add(new TripleAddressAngle(
                 Config.Camera.CameraStructAddress + Config.Camera.XOffset,
                 Config.Camera.CameraStructAddress + Config.Camera.YOffset,
                 Config.Camera.CameraStructAddress + Config.Camera.ZOffset,
@@ -863,13 +863,13 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        private static PositionAddressAngle getCamHackFocusPositionAddressController(ProcessStream stream, CamHackMode camHackMode)
+        private static TripleAddressAngle getCamHackFocusPositionAddressController(ProcessStream stream, CamHackMode camHackMode)
         {
             uint camHackObject = stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
             switch (camHackMode)
             {
                 case CamHackMode.REGULAR:
-                    return new PositionAddressAngle(
+                    return new TripleAddressAngle(
                         Config.Camera.CameraStructAddress + Config.Camera.FocusXOffset,
                         Config.Camera.CameraStructAddress + Config.Camera.FocusYOffset,
                         Config.Camera.CameraStructAddress + Config.Camera.FocusZOffset,
@@ -880,7 +880,7 @@ namespace SM64_Diagnostic.Utilities
                 case CamHackMode.FIXED_POS:
                     if (camHackObject == 0) // focused on Mario
                     {
-                        return new PositionAddressAngle(
+                        return new TripleAddressAngle(
                             Config.Mario.StructAddress + Config.Mario.XOffset,
                             Config.Mario.StructAddress + Config.Mario.YOffset,
                             Config.Mario.StructAddress + Config.Mario.ZOffset,
@@ -888,7 +888,7 @@ namespace SM64_Diagnostic.Utilities
                     }
                     else // focused on object
                     {
-                        return new PositionAddressAngle(
+                        return new TripleAddressAngle(
                             camHackObject + Config.ObjectSlots.ObjectXOffset,
                             camHackObject + Config.ObjectSlots.ObjectYOffset,
                             camHackObject + Config.ObjectSlots.ObjectZOffset,
@@ -896,7 +896,7 @@ namespace SM64_Diagnostic.Utilities
                     }
                 
                 case CamHackMode.FIXED_ORIENTATION:
-                    return new PositionAddressAngle(
+                    return new TripleAddressAngle(
                         Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusXOffset,
                         Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusYOffset,
                         Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusZOffset,
@@ -928,6 +928,41 @@ namespace SM64_Diagnostic.Utilities
                     zOffset,
                     Change.ADD,
                     useRelative);
+            }
+
+            if (camHackMode == CamHackMode.ABSOLUTE_ANGLE || camHackMode == CamHackMode.RELATIVE_ANGLE)
+            {
+                handleScaling(ref xOffset, ref zOffset);
+                handleRelativeAngle(ref xOffset, ref zOffset, useRelative, getCamHackYawFacing(stream, camHackMode));
+                float xDestination = xOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
+                float yDestination = yOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
+                float zDestination = zOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
+
+                float xFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusXOffset);
+                float yFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusYOffset);
+                float zFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusZOffset);
+
+                double radius, theta, height;
+                (radius, theta, height) = MoreMath.EulerToCylindricalAboutPivot(xDestination, yDestination, zDestination, xFocus, yFocus, zFocus);
+
+                ushort relativeYawOffset = 0;
+                if (camHackMode == CamHackMode.RELATIVE_ANGLE)
+                {
+                    uint camHackObject = stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
+                    relativeYawOffset = camHackObject == 0
+                        ? stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset)
+                        : stream.GetUInt16(camHackObject + Config.ObjectSlots.YawFacingOffset);
+                }
+
+                bool success = true;
+                stream.Suspend();
+
+                success &= stream.SetValue((float)radius, Config.CameraHack.CameraHackStruct + Config.CameraHack.RadiusOffset);
+                success &= stream.SetValue(MoreMath.FormatAngle(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
+                success &= stream.SetValue((float)height, Config.CameraHack.CameraHackStruct + Config.CameraHack.RelativeHeightOffset);
+
+                stream.Resume();
+                return success;
             }
 
             return false;
