@@ -87,7 +87,10 @@ namespace SM64Diagnostic.Controls
             buttonSquareBottomRight.Click += (sender, e) => actionSquare(1, -1);
             buttonLineTop.Click += (sender, e) => actionLine(1);
             buttonLineBottom.Click += (sender, e) => actionLine(-1);
-            if (checkbox != null) checkbox.CheckedChanged += (sender, e) => actionCheckedChanged();
+            if (coordinateSystem == CoordinateSystem.Euler)
+            {
+                checkbox.CheckedChanged += (sender, e) => actionCheckedChanged();
+            }
         }
     }
 }

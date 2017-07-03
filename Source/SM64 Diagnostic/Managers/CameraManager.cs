@@ -122,9 +122,9 @@ namespace SM64_Diagnostic.Managers
 
             if (pivotOnFocus)
             {
-                pivotX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-                pivotY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-                pivotZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+                pivotX = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusXOffset);
+                pivotY = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusYOffset);
+                pivotZ = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusZOffset);
             }
             else // pivot on Mario
             {
