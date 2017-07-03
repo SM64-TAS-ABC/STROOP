@@ -30,14 +30,14 @@ namespace SM64Diagnostic.Controls
             {
                 float value;
                 if (!float.TryParse(textboxSquare.Text, out value)) return;
-                actionMove(hSign * value, vSign * value, 0, checkbox.Checked);
+                actionMove(hSign * value, vSign * value, 0, checkbox?.Checked ?? false);
             };
 
             Action<int> actionLine = (int nSign) =>
             {
                 float value;
                 if (!float.TryParse(textboxLine.Text, out value)) return;
-                actionMove(0, 0, nSign * value, checkbox.Checked);
+                actionMove(0, 0, nSign * value, checkbox?.Checked ?? false);
             };
 
             Action setEulerNames = () =>
@@ -84,7 +84,7 @@ namespace SM64Diagnostic.Controls
             buttonSquareBottomRight.Click += (sender, e) => actionSquare(1, -1);
             buttonLineTop.Click += (sender, e) => actionLine(1);
             buttonLineBottom.Click += (sender, e) => actionLine(-1);
-            checkbox.CheckedChanged += (sender, e) => actionCheckedChanged();
+            if (checkbox != null) checkbox.CheckedChanged += (sender, e) => actionCheckedChanged();
         }
     }
 }
