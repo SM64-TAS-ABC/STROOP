@@ -609,6 +609,11 @@ namespace SM64_Diagnostic
             Config.ShowOverlayCameraObject = checkBoxShowOverlayCameraObject.Checked;
         }
 
+        private void checkBoxShowOverlayCameraHackObject_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.ShowOverlayCameraHackObject = checkBoxShowOverlayCameraHackObject.Checked;
+        }
+
         private void checkBoxShowOverlayClosestObject_CheckedChanged(object sender, EventArgs e)
         {
             Config.ShowOverlayClosestObject = checkBoxShowOverlayClosestObject.Checked;
