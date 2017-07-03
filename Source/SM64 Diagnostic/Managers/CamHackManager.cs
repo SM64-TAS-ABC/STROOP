@@ -15,6 +15,10 @@ namespace SM64_Diagnostic.Managers
 {
     public class CamHackManager : DataManager
     {
+        public enum CamHackMode { REGULAR, RELATIVE_ANGLE, ABSOLUTE_ANGLE, FIXED_POS, FIXED_ORIENTATION };
+
+        public CamHackMode CurrentCamHackMode { get; private set; }
+
         RadioButton _mode0RadioButton;
         RadioButton _mode1RadioButtonRelativeAngle;
         RadioButton _mode1RadioButtonAbsoluteAngle;
@@ -44,6 +48,8 @@ namespace SM64_Diagnostic.Managers
             };
             _mode2RadioButton.Click += (sender, e) => _stream.SetValue(2, Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
             _mode3RadioButton.Click += (sender, e) => _stream.SetValue(3, Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
+
+            CurrentCamHackMode = CamHackMode.REGULAR;
         }
 
         public override void Update(bool updateView)
@@ -52,14 +58,37 @@ namespace SM64_Diagnostic.Managers
 
             int cameraMode = _stream.GetInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
             ushort absoluteAngle = _stream.GetUInt16(Config.CameraHack.CameraHackStruct + Config.CameraHack.AbsoluteAngleOffset);
-            RadioButton correspondingRadioButton =
-                cameraMode == 1 && absoluteAngle == 0 ? _mode1RadioButtonRelativeAngle :
-                cameraMode == 1 ? _mode1RadioButtonAbsoluteAngle :
-                cameraMode == 2 ? _mode2RadioButton :
-                cameraMode == 3 ? _mode3RadioButton : _mode0RadioButton;
-            if (!correspondingRadioButton.Checked) correspondingRadioButton.Checked = true;
-            
+            CamHackMode correctCamHackMode =
+                cameraMode == 1 && absoluteAngle == 0 ? CamHackMode.RELATIVE_ANGLE :
+                cameraMode == 1 ? CamHackMode.ABSOLUTE_ANGLE :
+                cameraMode == 2 ? CamHackMode.FIXED_POS :
+                cameraMode == 3 ? CamHackMode.FIXED_ORIENTATION : CamHackMode.REGULAR;
+            RadioButton correctRadioButton = getRadioButton(correctCamHackMode);
+            if (!correctRadioButton.Checked) correctRadioButton.Checked = true;
+        }
 
+        private RadioButton getRadioButton(CamHackMode camHackMode)
+        {
+            switch (camHackMode)
+            {
+                case CamHackMode.REGULAR:
+                    return _mode0RadioButton;
+
+                case CamHackMode.RELATIVE_ANGLE:
+                    return _mode1RadioButtonRelativeAngle;
+
+                case CamHackMode.ABSOLUTE_ANGLE:
+                    return _mode1RadioButtonAbsoluteAngle;
+
+                case CamHackMode.FIXED_POS:
+                    return _mode2RadioButton;
+
+                case CamHackMode.FIXED_ORIENTATION:
+                    return _mode3RadioButton;
+
+                default:
+                    return null;
+            }
         }
     }
 }
