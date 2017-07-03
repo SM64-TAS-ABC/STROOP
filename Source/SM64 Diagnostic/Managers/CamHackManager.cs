@@ -2,6 +2,7 @@
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Structs.Configurations;
 using SM64_Diagnostic.Utilities;
+using SM64Diagnostic.Controls;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -22,6 +23,8 @@ namespace SM64_Diagnostic.Managers
         public CamHackManager(ProcessStream stream, List<WatchVariable> controllerData, TabPage camHackControl, NoTearFlowLayoutPanel variableTable)
             : base(stream, controllerData, variableTable)
         {
+            _currentCamHackMode = CamHackMode.REGULAR;
+
             var splitContainer = camHackControl.Controls["splitContainerCamHack"] as SplitContainer;
             _mode0RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode0"] as RadioButton;
             _mode1RadioButtonRelativeAngle = splitContainer.Panel1.Controls["radioButtonCamHackMode1RelativeAngle"] as RadioButton;
@@ -43,7 +46,31 @@ namespace SM64_Diagnostic.Managers
             _mode2RadioButton.Click += (sender, e) => _stream.SetValue(2, Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
             _mode3RadioButton.Click += (sender, e) => _stream.SetValue(3, Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
 
-            _currentCamHackMode = CamHackMode.REGULAR;
+            var cameraHackPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackPos"] as GroupBox;
+            ThreeDimensionController.initialize(
+                CoordinateSystem.Euler,
+                cameraHackPosGroupBox.Controls["buttonCameraHackPosXn"] as Button,
+                cameraHackPosGroupBox.Controls["buttonCameraHackPosXp"] as Button,
+                cameraHackPosGroupBox.Controls["buttonCameraHackPosZn"] as Button,
+                cameraHackPosGroupBox.Controls["buttonCameraHackPosZp"] as Button,
+                cameraHackPosGroupBox.Controls["buttonCameraHackPosXnZn"] as Button,
+                cameraHackPosGroupBox.Controls["buttonCameraHackPosXnZp"] as Button,
+                cameraHackPosGroupBox.Controls["buttonCameraHackPosXpZn"] as Button,
+                cameraHackPosGroupBox.Controls["buttonCameraHackPosXpZp"] as Button,
+                cameraHackPosGroupBox.Controls["buttonCameraHackPosYp"] as Button,
+                cameraHackPosGroupBox.Controls["buttonCameraHackPosYn"] as Button,
+                cameraHackPosGroupBox.Controls["textBoxCameraHackPosXZ"] as TextBox,
+                cameraHackPosGroupBox.Controls["textBoxCameraHackPosY"] as TextBox,
+                cameraHackPosGroupBox.Controls["checkBoxCameraHackPosRelative"] as CheckBox,
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
+                {
+                    ButtonUtilities.TranslateCameraHack(
+                        _stream,
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
+                        useRelative);
+                });
         }
 
         public override void Update(bool updateView)

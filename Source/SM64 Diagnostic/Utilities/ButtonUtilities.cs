@@ -71,6 +71,23 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static void handleScaling(ref float xOffset, ref float zOffset)
+        {
+            if (Config.ScaleDiagonalPositionControllerButtons)
+            {
+                (xOffset, zOffset) = ((float, float))MoreMath.ScaleValues(xOffset, zOffset);
+            }
+        }
+
+        public static void handleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, ushort relativeAngle)
+        {
+            if (useRelative)
+            {
+                double thetaChange = relativeAngle - 32768;
+                (xOffset, _, zOffset) = ((float, float, float))MoreMath.OffsetSpherically(xOffset, 0, zOffset, 0, thetaChange, 0);
+            }
+        }
+
         public static bool GoToObjects(ProcessStream stream, List<uint> objAddresses)
         {
             if (objAddresses.Count == 0)
@@ -811,21 +828,19 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static void handleScaling(ref float xOffset, ref float zOffset)
+        public static bool TranslateCameraHack(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            if (Config.ScaleDiagonalPositionControllerButtons)
-            {
-                (xOffset, zOffset) = ((float, float))MoreMath.ScaleValues(xOffset, zOffset);
-            }
-        }
+            /*
+            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
+            posAddressAngles.Add(new PositionAddressAngle(
+                Config.Camera.CameraStructAddress + Config.Camera.XOffset,
+                Config.Camera.CameraStructAddress + Config.Camera.YOffset,
+                Config.Camera.CameraStructAddress + Config.Camera.ZOffset,
+                stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset)));
 
-        public static void handleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, ushort relativeAngle)
-        {
-            if (useRelative)
-            {
-                double thetaChange = relativeAngle - 32768;
-                (xOffset, _, zOffset) = ((float, float, float))MoreMath.OffsetSpherically(xOffset, 0, zOffset, 0, thetaChange, 0);
-            }
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            */
+            return false;
         }
     }
 }
