@@ -128,7 +128,7 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectYOffset));
             float zDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectZOffset));
 
-            yDestination += Config.Mario.MoveToObjectYOffset;
+            yDestination += 0;// Config.Mario.MoveToObjectYOffset;
 
             return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
@@ -146,7 +146,7 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             float zDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            yDestination += Config.ObjectSlots.MoveToMarioYOffset;
+            yDestination += 0;// Config.ObjectSlots.MoveToMarioYOffset;
 
             return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
@@ -245,7 +245,7 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeYOffset));
             float zDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeZOffset));
 
-            yDestination += Config.Mario.MoveToObjectYOffset;
+            yDestination += 0;// Config.Mario.MoveToObjectYOffset;
 
             return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
@@ -263,7 +263,7 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             float zDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            yDestination += Config.ObjectSlots.MoveToMarioYOffset;
+            yDestination += 0;// Config.ObjectSlots.MoveToMarioYOffset;
 
             return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }

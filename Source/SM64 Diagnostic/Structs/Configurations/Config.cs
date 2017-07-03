@@ -24,6 +24,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static ActionTable MarioActions;
         public static AnimationTable MarioAnimations;
         public static PendulumSwingTable PendulumSwings;
+        public static GotoRetrieveConfig GotoRetrieve;
         public static uint LevelAddress;
         public static uint AreaAddress;
         public static uint LoadingPointAddress;

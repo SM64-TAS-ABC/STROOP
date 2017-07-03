@@ -135,9 +135,6 @@ namespace SM64_Diagnostic.Utilities
                                 case "RotationOffset":
                                     Config.ObjectSlots.ObjectRotationOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "MoveToMarioYOffset":
-                                    Config.ObjectSlots.MoveToMarioYOffset = float.Parse(subElement.Value);
-                                    break;
                                 case "MaxObjectSlots":
                                     Config.ObjectSlots.MaxSlots = int.Parse(subElement.Value);
                                     break;
@@ -273,9 +270,6 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                                 case "PrevActionOffset":
                                     Config.Mario.PrevActionOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "MoveToObjectYOffset":
-                                    Config.Mario.MoveToObjectYOffset = float.Parse(subElement.Value);
                                     break;
                                 case "StandingOnPointer":
                                     Config.Mario.StoodOnObjectPointer = ParsingUtilities.ParseHex(subElement.Value);
@@ -718,6 +712,39 @@ namespace SM64_Diagnostic.Utilities
 
                                 case "ObjectOffset":
                                     Config.CameraHack.ObjectOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                            }
+                        }
+                        break;
+
+                    case "GotoRetrieve":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "GotoAboveOffset":
+                                    Config.GotoRetrieve.GotoAboveOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "GotoAboveDefault":
+                                    Config.GotoRetrieve.GotoAboveDefault = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "GotoInfrontOffset":
+                                    Config.GotoRetrieve.GotoInfrontOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "GotoInfrontDefault":
+                                    Config.GotoRetrieve.GotoInfrontDefault = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "RetrieveAboveOffset":
+                                    Config.GotoRetrieve.RetrieveAboveOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "RetrieveAboveDefault":
+                                    Config.GotoRetrieve.RetrieveAboveDefault = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "RetrieveInfrontOffset":
+                                    Config.GotoRetrieve.RetrieveInfrontOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "RetrieveInfrontDefault":
+                                    Config.GotoRetrieve.RetrieveInfrontDefault = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         }

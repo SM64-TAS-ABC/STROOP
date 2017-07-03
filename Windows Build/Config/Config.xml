@@ -25,7 +25,6 @@
     <HomeOffsetZ>0x16C</HomeOffsetZ>
     <RotationOffset>0xD4</RotationOffset>
     <MaxObjectSlots>240</MaxObjectSlots>
-    <MoveToMarioYOffset>300</MoveToMarioYOffset>
     <HitboxRadius>0x1f8</HitboxRadius>
     <HitboxHeight>0x1fc</HitboxHeight>
     <HitboxDownOffset>0x208</HitboxDownOffset>
@@ -87,7 +86,6 @@
     <HSpeedOffset>0x54</HSpeedOffset>
     <VSpeedOffset>0x4C</VSpeedOffset>
     <MarioStructSize>0xC4</MarioStructSize>
-    <MoveToObjectYOffset>300</MoveToObjectYOffset>
     <SlidingSpeedXOffset>0x58</SlidingSpeedXOffset>
     <SlidingSpeedZOffset>0x5C</SlidingSpeedZOffset>
     <PeakHeightOffset>0xBC</PeakHeightOffset>
@@ -207,6 +205,16 @@
     <RelativeHeightOffset>0x24</RelativeHeightOffset>
     <ObjectOffset>0x28</ObjectOffset>
   </CameraHack>
+  <GotoRetrieve>
+    <GotoAboveOffset>300</GotoAboveOffset>
+    <GotoAboveOffset>300</GotoAboveOffset>
+    <GotoInfrontOffset>0</GotoInfrontOffset>
+    <GotoInfrontDefault>0</GotoInfrontDefault>
+    <RetrieveAboveOffset>300</RetrieveAboveOffset>
+    <RetrieveAboveDefault>300</RetrieveAboveDefault>
+    <RetrieveInfrontOffset>0</RetrieveInfrontOffset>
+    <RetrieveInfrontDefault>0</RetrieveInfrontDefault>
+  </GotoRetrieve>
   <LevelAddress>0x8033B249</LevelAddress>
   <AreaAddress>0x8033B24A</AreaAddress>
   <LoadingPointAddress>0x8033BACA</LoadingPointAddress>

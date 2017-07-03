@@ -634,6 +634,46 @@ namespace SM64_Diagnostic
             Config.ShowOverlayCeilingObject = checkBoxShowOverlayCeilingObject.Checked;
         }
 
+        private void textBoxGotoAbove_TextChanged(object sender, EventArgs e)
+        {
+            /*
+            float value;
+            if (!float.TryParse(textboxLine.Text, out value)) return;
+            actionMove(0, 0, nSign * value, checkbox?.Checked ?? false);
+            efefefefefe
+            */
+        }
+
+        private void textBoxGotoInfront_TextChanged(object sender, EventArgs e)
+        {
+            /*
+            float value;
+            if (!float.TryParse(textboxLine.Text, out value)) return;
+            actionMove(0, 0, nSign * value, checkbox?.Checked ?? false);
+            efefefefefe
+            */
+        }
+
+        private void textBoxRetrieveAbove_TextChanged(object sender, EventArgs e)
+        {
+            /*
+            float value;
+            if (!float.TryParse(textboxLine.Text, out value)) return;
+            actionMove(0, 0, nSign * value, checkbox?.Checked ?? false);
+            efefefefefe
+            */
+        }
+
+        private void textBoxRetrieveInfront_TextChanged(object sender, EventArgs e)
+        {
+            /*
+            float value;
+            if (!float.TryParse(textboxLine.Text, out value)) return;
+            actionMove(0, 0, nSign * value, checkbox?.Checked ?? false);
+            efefefefefe
+            */
+        }
+
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
         {
             _resizeObjSlotTime = 500;
