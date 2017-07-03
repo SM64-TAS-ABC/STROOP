@@ -64,7 +64,11 @@ namespace SM64_Diagnostic.Managers
                 cameraMode == 2 ? CamHackMode.FIXED_POS :
                 cameraMode == 3 ? CamHackMode.FIXED_ORIENTATION : CamHackMode.REGULAR;
             RadioButton correctRadioButton = getRadioButton(correctCamHackMode);
-            if (!correctRadioButton.Checked) correctRadioButton.Checked = true;
+            if (CurrentCamHackMode != correctCamHackMode)
+            {
+                CurrentCamHackMode = correctCamHackMode;
+                getRadioButton(correctCamHackMode).Checked = true;
+            }
         }
 
         private RadioButton getRadioButton(CamHackMode camHackMode)
