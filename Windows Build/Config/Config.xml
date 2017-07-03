@@ -143,6 +143,16 @@
     <associatedObject>0x2C</associatedObject>
   </TriangleOffsets>
   <Camera>
+    <CameraStructAddress>0x8033C6A4</CameraStructAddress>
+    <XOffset>0x8033C6A4</XOffset>
+    <YOffset>0x8033C6A4</YOffset>
+    <ZOffset>0x8033C6A4</ZOffset>
+    <FocusXOffset>0x8033C6A4</FocusXOffset>
+    <FocusYOffset>0x8033C6A4</FocusYOffset>
+    <FocusZOffset>0x8033C6A4</FocusZOffset>
+    <YawFacingOffset>0x8033C6A4</YawFacingOffset>
+    <SecondaryObjectOffset>0x8033C6A4</SecondaryObjectOffset>
+
     <CameraXAddress>0x8033C6A4</CameraXAddress>
     <CameraYAddress>0x8033C6A8</CameraYAddress>
     <CameraZAddress>0x8033C6AC</CameraZAddress>

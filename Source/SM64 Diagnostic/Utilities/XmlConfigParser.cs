@@ -487,6 +487,31 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
+                                case "CameraStructAddress":
+                                    Config.Camera.CameraStructAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "XOffset":
+                                    Config.Camera.XOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "YOffset":
+                                    Config.Camera.YOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "ZOffset":
+                                    Config.Camera.ZOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "FocusXOffset":
+                                    Config.Camera.FocusXOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "FocusYOffset":
+                                    Config.Camera.FocusYOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "FocusZOffset":
+                                    Config.Camera.FocusZOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "SecondaryObjectOffset":
+                                    Config.Camera.SecondaryObjectOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
                                 case "CameraXAddress":
                                     Config.Camera.CameraX = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
