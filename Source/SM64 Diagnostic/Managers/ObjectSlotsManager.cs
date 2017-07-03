@@ -51,7 +51,7 @@ namespace SM64_Diagnostic.Managers
         List<uint> _toggleMapSlots = new List<uint>();
 
         BehaviorCriteria? _lastSelectedBehavior;
-        uint _stoodOnObject, _interactionObject, _heldObject, _usedObject, _closestObject, _cameraObject, _floorObject, _wallObject, _ceilingObject;
+        uint _stoodOnObject, _interactionObject, _heldObject, _usedObject, _closestObject, _cameraObject, _cameraHackObject, _floorObject, _wallObject, _ceilingObject;
         int _activeObjCnt;
         bool _selectedUpdatePending = false;
         Image _multiImage = null;
@@ -387,6 +387,7 @@ namespace SM64_Diagnostic.Managers
             _closestObject = newObjectSlotData.OrderBy(s => !s.IsActive || s.Behavior == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF) ? float.MaxValue
                 : s.DistanceToMario).First().Address;
             _cameraObject = _stream.GetUInt32(Config.Camera.SecondObject);
+            _cameraHackObject = _stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
 
             uint floorTriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
             _floorObject = floorTriangleAddress == 0 ? 0 : _stream.GetUInt32(floorTriangleAddress + Config.TriangleOffsets.AssociatedObject);
@@ -506,6 +507,7 @@ namespace SM64_Diagnostic.Managers
             objSlot.DrawUsedOverlay = Config.ShowOverlayUsedObject && objAddress == _usedObject;
             objSlot.DrawClosestOverlay = Config.ShowOverlayClosestObject && objAddress == _closestObject;
             objSlot.DrawCameraOverlay = Config.ShowOverlayCameraObject && objAddress == _cameraObject;
+            objSlot.DrawCameraHackOverlay = Config.ShowOverlayCameraHackObject && objAddress == _cameraHackObject;
             objSlot.DrawFloorOverlay = Config.ShowOverlayFloorObject && objAddress == _floorObject;
             objSlot.DrawWallOverlay = Config.ShowOverlayWallObject && objAddress == _wallObject;
             objSlot.DrawCeilingOverlay = Config.ShowOverlayCeilingObject && objAddress == _ceilingObject;

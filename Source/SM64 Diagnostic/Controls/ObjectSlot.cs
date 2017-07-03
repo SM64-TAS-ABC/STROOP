@@ -154,7 +154,7 @@ namespace SM64_Diagnostic
         }
 
         bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawHeldOverlay, _drawInteractionObject, _drawUsedObject,
-            _drawClosestOverlay, _drawCameraOverlay, _drawFloorObject, _drawWallObject, _drawCeilingObject;
+            _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawFloorObject, _drawWallObject, _drawCeilingObject;
         public bool DrawSelectedOverlay
         {
             get
@@ -250,6 +250,20 @@ namespace SM64_Diagnostic
                 if (_drawCameraOverlay == value)
                     return;
                 _drawCameraOverlay = value;
+                Invalidate();
+            }
+        }
+        public bool DrawCameraHackOverlay
+        {
+            get
+            {
+                return _drawCameraHackOverlay;
+            }
+            set
+            {
+                if (_drawCameraHackOverlay == value)
+                    return;
+                _drawCameraHackOverlay = value;
                 Invalidate();
             }
         }
@@ -483,6 +497,8 @@ namespace SM64_Diagnostic
                 e.Graphics.DrawImage(_gui.ClosestObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawCameraOverlay)
                 e.Graphics.DrawImage(_gui.CameraObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawCameraHackOverlay)
+                e.Graphics.DrawImage(_gui.CameraHackObjectOverlayImage, new Rectangle(new Point(), Size));
         }
 
         

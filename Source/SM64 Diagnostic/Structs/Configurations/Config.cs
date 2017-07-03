@@ -41,6 +41,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static bool ShowOverlayInteractionObject = true;
         public static bool ShowOverlayUsedObject = true;
         public static bool ShowOverlayCameraObject = true;
+        public static bool ShowOverlayCameraHackObject = true;
         public static bool ShowOverlayClosestObject = true;
         public static bool ShowOverlayFloorObject = true;
         public static bool ShowOverlayWallObject = true;
