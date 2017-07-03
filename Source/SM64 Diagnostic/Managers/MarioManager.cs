@@ -30,7 +30,7 @@ namespace SM64_Diagnostic.Managers
             toggleVisibility.Click += (sender, e) => MarioActions.ToggleVisibility(_stream);
 
             var marioPosGroupBox = marioControl.Controls["groupBoxMarioPos"] as GroupBox;
-            PositionController.initialize(
+            ThreeDimensionController.initialize(
                 marioPosGroupBox.Controls["buttonMarioPosXn"] as Button,
                 marioPosGroupBox.Controls["buttonMarioPosXp"] as Button,
                 marioPosGroupBox.Controls["buttonMarioPosZn"] as Button,
@@ -44,13 +44,13 @@ namespace SM64_Diagnostic.Managers
                 marioPosGroupBox.Controls["textBoxMarioPosXZ"] as TextBox,
                 marioPosGroupBox.Controls["textBoxMarioPosY"] as TextBox,
                 marioPosGroupBox.Controls["checkBoxMarioPosRelative"] as CheckBox,
-                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     MarioActions.TranslateMario(
                         _stream,
-                        xOffset,
-                        yOffset,
-                        zOffset,
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
                         useRelative);
                 });
 
@@ -82,7 +82,7 @@ namespace SM64_Diagnostic.Managers
                 });
 
             var marioHOLPGroupBox = marioControl.Controls["groupBoxMarioHOLP"] as GroupBox;
-            PositionController.initialize(
+            ThreeDimensionController.initialize(
                 marioHOLPGroupBox.Controls["buttonMarioHOLPXn"] as Button,
                 marioHOLPGroupBox.Controls["buttonMarioHOLPXp"] as Button,
                 marioHOLPGroupBox.Controls["buttonMarioHOLPZn"] as Button,
@@ -96,13 +96,13 @@ namespace SM64_Diagnostic.Managers
                 marioHOLPGroupBox.Controls["textBoxMarioHOLPXZ"] as TextBox,
                 marioHOLPGroupBox.Controls["textBoxMarioHOLPY"] as TextBox,
                 marioHOLPGroupBox.Controls["checkBoxMarioHOLPRelative"] as CheckBox,
-                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     MarioActions.TranslateHOLP(
                         _stream,
-                        xOffset,
-                        yOffset,
-                        zOffset,
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
                         useRelative);
                 });
         }

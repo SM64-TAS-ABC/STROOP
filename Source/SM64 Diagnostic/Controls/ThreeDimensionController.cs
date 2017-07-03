@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SM64Diagnostic.Controls
 {
-    public static class PositionController
+    public static class ThreeDimensionController
     {
         public static void initialize(
             Button buttonSquareLeft,
@@ -30,14 +30,14 @@ namespace SM64Diagnostic.Controls
             {
                 float value;
                 if (!float.TryParse(textboxSquare.Text, out value)) return;
-                actionMove(hSign * value, 0, vSign * value, checkbox.Checked);
+                actionMove(hSign * value, vSign * value, 0, checkbox.Checked);
             };
 
-            Action<int> actionLine = (int sign) =>
+            Action<int> actionLine = (int nSign) =>
             {
                 float value;
                 if (!float.TryParse(textboxLine.Text, out value)) return;
-                actionMove(0, sign * value, 0, checkbox.Checked);
+                actionMove(0, 0, nSign * value, checkbox.Checked);
             };
 
             Action setEulerNames = () =>
@@ -76,12 +76,12 @@ namespace SM64Diagnostic.Controls
 
             buttonSquareLeft.Click += (sender, e) => actionSquare(-1, 0);
             buttonSquareRight.Click += (sender, e) => actionSquare(1, 0);
-            buttonSquareTop.Click += (sender, e) => actionSquare(0, -1);
-            buttonSquareBottom.Click += (sender, e) => actionSquare(0, 1);
-            buttonSquareTopLeft.Click += (sender, e) => actionSquare(-1, -1);
-            buttonSquareBottomLeft.Click += (sender, e) => actionSquare(-1, 1);
-            buttonSquareTopRight.Click += (sender, e) => actionSquare(1, -1);
-            buttonSquareBottomRight.Click += (sender, e) => actionSquare(1, 1);
+            buttonSquareTop.Click += (sender, e) => actionSquare(0, 1);
+            buttonSquareBottom.Click += (sender, e) => actionSquare(0, -1);
+            buttonSquareTopLeft.Click += (sender, e) => actionSquare(-1, 1);
+            buttonSquareBottomLeft.Click += (sender, e) => actionSquare(-1, -1);
+            buttonSquareTopRight.Click += (sender, e) => actionSquare(1, 1);
+            buttonSquareBottomRight.Click += (sender, e) => actionSquare(1, -1);
             buttonLineTop.Click += (sender, e) => actionLine(1);
             buttonLineBottom.Click += (sender, e) => actionLine(-1);
             checkbox.CheckedChanged += (sender, e) => actionCheckedChanged();

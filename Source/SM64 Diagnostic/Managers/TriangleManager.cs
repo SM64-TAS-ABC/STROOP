@@ -112,7 +112,7 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => MarioActions.AnnihilateTriangle(_stream, _triangleAddress);
             
             var trianglePosGroupBox = tabControl.Controls["groupBoxTrianglePos"] as GroupBox;
-            PositionController.initialize(
+            ThreeDimensionController.initialize(
                 trianglePosGroupBox.Controls["buttonTrianglePosXn"] as Button,
                 trianglePosGroupBox.Controls["buttonTrianglePosXp"] as Button,
                 trianglePosGroupBox.Controls["buttonTrianglePosZn"] as Button,
@@ -126,14 +126,14 @@ namespace SM64_Diagnostic.Managers
                 trianglePosGroupBox.Controls["textBoxTrianglePosXZ"] as TextBox,
                 trianglePosGroupBox.Controls["textBoxTrianglePosY"] as TextBox,
                 trianglePosGroupBox.Controls["checkBoxTrianglePosRelative"] as CheckBox,
-                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     MarioActions.MoveTriangle(
                         _stream,
                         _triangleAddress,
-                        xOffset,
-                        yOffset,
-                        zOffset,
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
                         useRelative);
                 });
 

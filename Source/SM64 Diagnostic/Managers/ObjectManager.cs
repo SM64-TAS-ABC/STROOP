@@ -267,7 +267,7 @@ namespace SM64_Diagnostic.Managers
             };
 
             var objPosGroupBox = objPanel.Controls["groupBoxObjPos"] as GroupBox;
-            PositionController.initialize(
+            ThreeDimensionController.initialize(
                 objPosGroupBox.Controls["buttonObjPosXn"] as Button,
                 objPosGroupBox.Controls["buttonObjPosXp"] as Button,
                 objPosGroupBox.Controls["buttonObjPosZn"] as Button,
@@ -281,14 +281,14 @@ namespace SM64_Diagnostic.Managers
                 objPosGroupBox.Controls["textBoxObjPosXZ"] as TextBox,
                 objPosGroupBox.Controls["textBoxObjPosY"] as TextBox,
                 objPosGroupBox.Controls["checkBoxObjPosRelative"] as CheckBox,
-                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     MarioActions.TranslateObjects(
                         _stream,
                         _currentAddresses,
-                        xOffset,
-                        yOffset,
-                        zOffset,
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
                         useRelative);
                 });
 
@@ -340,7 +340,7 @@ namespace SM64_Diagnostic.Managers
                 });
 
             var objHomeGroupBox = objPanel.Controls["groupBoxObjHome"] as GroupBox;
-            PositionController.initialize(
+            ThreeDimensionController.initialize(
                 objHomeGroupBox.Controls["buttonObjHomeXn"] as Button,
                 objHomeGroupBox.Controls["buttonObjHomeXp"] as Button,
                 objHomeGroupBox.Controls["buttonObjHomeZn"] as Button,
@@ -354,14 +354,14 @@ namespace SM64_Diagnostic.Managers
                 objHomeGroupBox.Controls["textBoxObjHomeXZ"] as TextBox,
                 objHomeGroupBox.Controls["textBoxObjHomeY"] as TextBox,
                 objHomeGroupBox.Controls["checkBoxObjHomeRelative"] as CheckBox,
-                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     MarioActions.TranslateObjectHomes(
                         _stream,
                         _currentAddresses,
-                        xOffset,
-                        yOffset,
-                        zOffset,
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
                         useRelative);
                 });
         }

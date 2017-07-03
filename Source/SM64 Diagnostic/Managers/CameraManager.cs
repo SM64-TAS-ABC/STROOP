@@ -22,7 +22,7 @@ namespace SM64_Diagnostic.Managers
             : base(stream, cameraData, variableTable)
         {
             var cameraPosGroupBox = tabControl.Controls["groupBoxCameraPos"] as GroupBox;
-            PositionController.initialize(
+            ThreeDimensionController.initialize(
                 cameraPosGroupBox.Controls["buttonCameraPosXn"] as Button,
                 cameraPosGroupBox.Controls["buttonCameraPosXp"] as Button,
                 cameraPosGroupBox.Controls["buttonCameraPosZn"] as Button,
@@ -36,13 +36,13 @@ namespace SM64_Diagnostic.Managers
                 cameraPosGroupBox.Controls["textBoxCameraPosXZ"] as TextBox,
                 cameraPosGroupBox.Controls["textBoxCameraPosY"] as TextBox,
                 cameraPosGroupBox.Controls["checkBoxCameraPosRelative"] as CheckBox,
-                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     MarioActions.TranslateCamera(
                         _stream,
-                        xOffset,
-                        yOffset,
-                        zOffset,
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
                         useRelative);
                 });
 
