@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -177,7 +177,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
             this.groupBoxCameraSphericalPos = new System.Windows.Forms.GroupBox();
-            this.checkBoxCameraSphericalPosPivotOnMario = new System.Windows.Forms.CheckBox();
+            this.checkBoxCameraSphericalPosPivotOnFocus = new System.Windows.Forms.CheckBox();
             this.textBoxCameraSphericalPosR = new System.Windows.Forms.TextBox();
             this.buttonCameraSphericalPosRn = new System.Windows.Forms.Button();
             this.buttonCameraSphericalPosRp = new System.Windows.Forms.Button();
@@ -546,7 +546,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 258);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 259);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -634,7 +634,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 185);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 186);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2170,7 +2170,7 @@ namespace SM64_Diagnostic
             // 
             // groupBoxCameraSphericalPos
             // 
-            this.groupBoxCameraSphericalPos.Controls.Add(this.checkBoxCameraSphericalPosPivotOnMario);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.checkBoxCameraSphericalPosPivotOnFocus);
             this.groupBoxCameraSphericalPos.Controls.Add(this.textBoxCameraSphericalPosR);
             this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosRn);
             this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosRp);
@@ -2190,15 +2190,15 @@ namespace SM64_Diagnostic
             this.groupBoxCameraSphericalPos.TabStop = false;
             this.groupBoxCameraSphericalPos.Text = "Spherical";
             // 
-            // checkBoxCameraSphericalPosPivotOnMario
+            // checkBoxCameraSphericalPosPivotOnFocus
             // 
-            this.checkBoxCameraSphericalPosPivotOnMario.AutoSize = true;
-            this.checkBoxCameraSphericalPosPivotOnMario.Location = new System.Drawing.Point(91, 0);
-            this.checkBoxCameraSphericalPosPivotOnMario.Name = "checkBoxCameraSphericalPosPivotOnMario";
-            this.checkBoxCameraSphericalPosPivotOnMario.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxCameraSphericalPosPivotOnMario.TabIndex = 38;
-            this.checkBoxCameraSphericalPosPivotOnMario.Text = "Pivot on Mario";
-            this.checkBoxCameraSphericalPosPivotOnMario.UseVisualStyleBackColor = true;
+            this.checkBoxCameraSphericalPosPivotOnFocus.AutoSize = true;
+            this.checkBoxCameraSphericalPosPivotOnFocus.Location = new System.Drawing.Point(91, 0);
+            this.checkBoxCameraSphericalPosPivotOnFocus.Name = "checkBoxCameraSphericalPosPivotOnFocus";
+            this.checkBoxCameraSphericalPosPivotOnFocus.Size = new System.Drawing.Size(97, 17);
+            this.checkBoxCameraSphericalPosPivotOnFocus.TabIndex = 38;
+            this.checkBoxCameraSphericalPosPivotOnFocus.Text = "Pivot on Focus";
+            this.checkBoxCameraSphericalPosPivotOnFocus.UseVisualStyleBackColor = true;
             // 
             // textBoxCameraSphericalPosR
             // 
@@ -2962,7 +2962,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(703, 444);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(706, 444);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3442,7 +3442,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(643, 414);
+            this.glControlMap.Size = new System.Drawing.Size(644, 414);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -3788,8 +3788,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -4740,7 +4740,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(491, 442);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(494, 442);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageOptions
@@ -5635,7 +5635,7 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxObjPosRelative;
         private CheckBox checkBoxTrianglePosRelative;
         private CheckBox checkBoxCameraPosRelative;
-        private CheckBox checkBoxCameraSphericalPosPivotOnMario;
+        private CheckBox checkBoxCameraSphericalPosPivotOnFocus;
         private Button buttonRefreshAndConnect;
         private GroupBox groupBoxShowOverlay;
         private CheckBox checkBoxShowOverlayClosestObject;

@@ -46,47 +46,30 @@ namespace SM64_Diagnostic.Managers
                         useRelative);
                 });
 
-            /*
             var cameraSphericalPosGroupBox = tabControl.Controls["groupBoxCameraSphericalPos"] as GroupBox;
-            PositionController.initialize(
-                cameraSphericalPosGroupBox.Controls["buttonCameraPosTn"] as Button,
-                cameraSphericalPosGroupBox.Controls["buttonCameraPosTp"] as Button,
-                cameraSphericalPosGroupBox.Controls["buttonCameraPosPn"] as Button,
-                cameraSphericalPosGroupBox.Controls["buttonCameraPosPp"] as Button,
-                cameraSphericalPosGroupBox.Controls["buttonCameraPosTnPn"] as Button,
-                cameraSphericalPosGroupBox.Controls["buttonCameraPosTnPp"] as Button,
-                cameraSphericalPosGroupBox.Controls["buttonCameraPosTpPn"] as Button,
-                cameraSphericalPosGroupBox.Controls["buttonCameraPosTpPp"] as Button,
-                cameraSphericalPosGroupBox.Controls["buttonCameraPosRn"] as Button,
-                cameraSphericalPosGroupBox.Controls["buttonCameraPosRp"] as Button,
-                cameraSphericalPosGroupBox.Controls["textBoxCameraPosXZ"] as TextBox,
-                cameraSphericalPosGroupBox.Controls["textBoxCameraPosY"] as TextBox,
-                cameraSphericalPosGroupBox.Controls["checkBoxCameraPosRelative"] as CheckBox,
-                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
+            ThreeDimensionController.initialize(
+                cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTn"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTp"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosPn"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosPp"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTnPn"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTnPp"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTpPn"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTpPp"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosRn"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosRp"] as Button,
+                cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosTP"] as TextBox,
+                cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosR"] as TextBox,
+                cameraSphericalPosGroupBox.Controls["checkBoxCameraSphericalPosPivotOnFocus"] as CheckBox,
+                (float hOffset, float vOffset, float nOffset, bool pivotOnFocus) =>
                 {
-                    MarioActions.TranslateCamera(
+                    MarioActions.TranslateCameraSpherically(
                         _stream,
-                        xOffset,
-                        yOffset,
-                        zOffset,
-                        useRelative);
+                        -1 * nOffset,
+                        hOffset,
+                        -1 * vOffset,
+                        getSphericalPivotPoint(pivotOnFocus));
                 });
-                */
-
-
-            var cameraSphericalPosGroupBox = tabControl.Controls["groupBoxCameraSphericalPos"] as GroupBox;
-            _cameraSphericalPosThetaPhiTextbox = cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosTP"] as TextBox;
-            _cameraSphericalPosRadiusTextbox = cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosR"] as TextBox;
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosTp"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 1, 0);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosTn"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, -1, 0);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosPp"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 0, 1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosPn"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 0, -1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosTpPp"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 1, 1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosTpPn"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 1, -1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosTnPp"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, -1, 1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosTnPn"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, -1, -1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosRp"] as Button).Click += (sender, e) => cameraSphericalPosRadiusButton_Click(sender, e, 1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosRn"] as Button).Click += (sender, e) => cameraSphericalPosRadiusButton_Click(sender, e, -1);
         }
 
         protected override void InitializeSpecialVariables()
@@ -131,36 +114,22 @@ namespace SM64_Diagnostic.Managers
             base.Update();
         }
 
-        private void cameraSphericalPosThetaPhiButton_Click(object sender, EventArgs e, int thetaSign, int phiSign)
-        {
-            float thetaPhiValue;
-            if (!float.TryParse(_cameraSphericalPosThetaPhiTextbox.Text, out thetaPhiValue))
-                return;
-
-            float pivotX, pivotY, pivotZ;
-            (pivotX, pivotY, pivotZ) = getSphericalPivotPoint();
-
-            MarioActions.TranslateCameraSpherically(_stream, 0, thetaSign * thetaPhiValue, phiSign * thetaPhiValue, pivotX, pivotY, pivotZ);
-        }
-
-        private void cameraSphericalPosRadiusButton_Click(object sender, EventArgs e, int radiusSign)
-        {
-            float radiusValue;
-            if (!float.TryParse(_cameraSphericalPosRadiusTextbox.Text, out radiusValue))
-                return;
-
-            float pivotX, pivotY, pivotZ;
-            (pivotX, pivotY, pivotZ) = getSphericalPivotPoint();
-
-            MarioActions.TranslateCameraSpherically(_stream, radiusSign * radiusValue, 0, 0, pivotX, pivotY, pivotZ);
-        }
-
-        private (float pivotX, float pivotY, float pivotZ) getSphericalPivotPoint()
+        private (float pivotX, float pivotY, float pivotZ) getSphericalPivotPoint(bool pivotOnFocus)
         {
             float pivotX, pivotY, pivotZ;
-            pivotX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-            pivotY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-            pivotZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+
+            if (pivotOnFocus)
+            {
+                pivotX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+                pivotY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                pivotZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            }
+            else // pivot on Mario
+            {
+                pivotX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+                pivotY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                pivotZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            }
             return (pivotX, pivotY, pivotZ);
         }
     }

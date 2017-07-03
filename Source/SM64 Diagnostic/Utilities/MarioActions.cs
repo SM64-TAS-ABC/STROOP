@@ -785,8 +785,11 @@ namespace SM64_Diagnostic.Utilities
             return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
-        public static bool TranslateCameraSpherically(ProcessStream stream, float radiusOffset, float thetaOffset, float phiOffset, float pivotX, float pivotY, float pivotZ)
+        public static bool TranslateCameraSpherically(ProcessStream stream, float radiusOffset, float thetaOffset, float phiOffset, (float, float, float) pivotPoint)
         {
+            float pivotX, pivotY, pivotZ;
+            (pivotX, pivotY, pivotZ) = pivotPoint;
+
             handleScaling(ref thetaOffset, ref phiOffset);
 
             float oldX, oldY, oldZ;
