@@ -193,6 +193,10 @@ namespace SM64_Diagnostic.Managers
                             break;
                     }
                     break;
+
+                case "Cam Hack":
+                    _stream.SetValue(selectedSlot.Address, Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
+                    break;
             }
         }
 

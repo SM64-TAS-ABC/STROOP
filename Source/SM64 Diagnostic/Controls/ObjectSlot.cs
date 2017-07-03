@@ -474,6 +474,10 @@ namespace SM64_Diagnostic
                 if (Show)
                     e.Graphics.DrawImage(_gui.TrackedAndShownObjectOverlayImage, new Rectangle(new Point(), Size));
             }
+            else if (tabControlMain.SelectedTab.Text.Equals("Cam Hack"))
+            {
+                // intentionally left blank
+            }
             else
             {
                 if (DrawSelectedOverlay)

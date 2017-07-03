@@ -670,7 +670,8 @@ namespace SM64_Diagnostic
                 labelToggleMode.Visible = false;
             }
             
-            if (_previousTabPage == tabPageMap || tabControlMain.SelectedTab == tabPageMap)
+            // TODO remove this once slots automatically update when their selection changes
+            if (_previousTabPage == tabPageMap || tabControlMain.SelectedTab == tabPageMap || _previousTabPage == tabPageCamHack || tabControlMain.SelectedTab == tabPageCamHack)
             {
                 _objectSlotManager.updateSlotColors();
             }

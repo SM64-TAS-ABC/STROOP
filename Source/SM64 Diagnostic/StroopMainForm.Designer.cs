@@ -349,6 +349,7 @@ namespace SM64_Diagnostic
             this.checkBoxNeutralizeTriangleWith21 = new System.Windows.Forms.CheckBox();
             this.checkBoxDisableActionUpdateWhenCloning = new System.Windows.Forms.CheckBox();
             this.groupBoxShowOverlay = new System.Windows.Forms.GroupBox();
+            this.checkBoxShowOverlayCameraHackObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayCeilingObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayWallObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayFloorObject = new System.Windows.Forms.CheckBox();
@@ -379,7 +380,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.checkBoxShowOverlayCameraHackObject = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -487,7 +487,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 255);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 256);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -575,7 +575,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 182);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 183);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2903,7 +2903,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(694, 444);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(697, 444);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3383,7 +3383,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(640, 414);
+            this.glControlMap.Size = new System.Drawing.Size(641, 414);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -4029,9 +4029,9 @@ namespace SM64_Diagnostic
             this.radioButtonCamHackMode3.AutoSize = true;
             this.radioButtonCamHackMode3.Location = new System.Drawing.Point(19, 96);
             this.radioButtonCamHackMode3.Name = "radioButtonCamHackMode3";
-            this.radioButtonCamHackMode3.Size = new System.Drawing.Size(104, 17);
+            this.radioButtonCamHackMode3.Size = new System.Drawing.Size(122, 17);
             this.radioButtonCamHackMode3.TabIndex = 10;
-            this.radioButtonCamHackMode3.Text = "Fixed Orientation";
+            this.radioButtonCamHackMode3.Text = "Fixed Position/Angle";
             this.radioButtonCamHackMode3.UseVisualStyleBackColor = true;
             // 
             // radioButtonCamHackMode0
@@ -4040,10 +4040,10 @@ namespace SM64_Diagnostic
             this.radioButtonCamHackMode0.Checked = true;
             this.radioButtonCamHackMode0.Location = new System.Drawing.Point(19, 27);
             this.radioButtonCamHackMode0.Name = "radioButtonCamHackMode0";
-            this.radioButtonCamHackMode0.Size = new System.Drawing.Size(68, 17);
+            this.radioButtonCamHackMode0.Size = new System.Drawing.Size(62, 17);
             this.radioButtonCamHackMode0.TabIndex = 7;
             this.radioButtonCamHackMode0.TabStop = true;
-            this.radioButtonCamHackMode0.Text = "Standard";
+            this.radioButtonCamHackMode0.Text = "Regular";
             this.radioButtonCamHackMode0.UseVisualStyleBackColor = true;
             // 
             // radioButtonCamHackMode2
@@ -4051,9 +4051,9 @@ namespace SM64_Diagnostic
             this.radioButtonCamHackMode2.AutoSize = true;
             this.radioButtonCamHackMode2.Location = new System.Drawing.Point(19, 73);
             this.radioButtonCamHackMode2.Name = "radioButtonCamHackMode2";
-            this.radioButtonCamHackMode2.Size = new System.Drawing.Size(90, 17);
+            this.radioButtonCamHackMode2.Size = new System.Drawing.Size(162, 17);
             this.radioButtonCamHackMode2.TabIndex = 9;
-            this.radioButtonCamHackMode2.Text = "Fixed Position";
+            this.radioButtonCamHackMode2.Text = "Fixed Position, Watch Object";
             this.radioButtonCamHackMode2.UseVisualStyleBackColor = true;
             // 
             // radioButtonCamHackMode1
@@ -4076,7 +4076,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(683, 442);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(686, 442);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageOptions
@@ -4138,6 +4138,20 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.TabIndex = 29;
             this.groupBoxShowOverlay.TabStop = false;
             this.groupBoxShowOverlay.Text = "Object Slot Overlays to Show";
+            // 
+            // checkBoxShowOverlayCameraHackObject
+            // 
+            this.checkBoxShowOverlayCameraHackObject.AutoSize = true;
+            this.checkBoxShowOverlayCameraHackObject.Checked = true;
+            this.checkBoxShowOverlayCameraHackObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayCameraHackObject.Location = new System.Drawing.Point(5, 146);
+            this.checkBoxShowOverlayCameraHackObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayCameraHackObject.Name = "checkBoxShowOverlayCameraHackObject";
+            this.checkBoxShowOverlayCameraHackObject.Size = new System.Drawing.Size(125, 17);
+            this.checkBoxShowOverlayCameraHackObject.TabIndex = 10;
+            this.checkBoxShowOverlayCameraHackObject.Text = "Camera Hack Object";
+            this.checkBoxShowOverlayCameraHackObject.UseVisualStyleBackColor = true;
+            this.checkBoxShowOverlayCameraHackObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayCameraHackObject_CheckedChanged);
             // 
             // checkBoxShowOverlayCeilingObject
             // 
@@ -4510,20 +4524,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.TabIndex = 20;
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
-            // 
-            // checkBoxShowOverlayCameraHackObject
-            // 
-            this.checkBoxShowOverlayCameraHackObject.AutoSize = true;
-            this.checkBoxShowOverlayCameraHackObject.Checked = true;
-            this.checkBoxShowOverlayCameraHackObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayCameraHackObject.Location = new System.Drawing.Point(5, 146);
-            this.checkBoxShowOverlayCameraHackObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayCameraHackObject.Name = "checkBoxShowOverlayCameraHackObject";
-            this.checkBoxShowOverlayCameraHackObject.Size = new System.Drawing.Size(125, 17);
-            this.checkBoxShowOverlayCameraHackObject.TabIndex = 10;
-            this.checkBoxShowOverlayCameraHackObject.Text = "Camera Hack Object";
-            this.checkBoxShowOverlayCameraHackObject.UseVisualStyleBackColor = true;
-            this.checkBoxShowOverlayCameraHackObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayCameraHackObject_CheckedChanged);
             // 
             // StroopMainForm
             // 
