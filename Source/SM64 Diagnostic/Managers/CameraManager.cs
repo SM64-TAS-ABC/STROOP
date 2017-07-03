@@ -88,9 +88,9 @@ namespace SM64_Diagnostic.Managers
             mZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
             float cameraX, cameraY, cameraZ;
-            cameraX = _stream.GetSingle(Config.Camera.CameraX);
-            cameraY = _stream.GetSingle(Config.Camera.CameraY);
-            cameraZ = _stream.GetSingle(Config.Camera.CameraZ);
+            cameraX = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
+            cameraY = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
+            cameraZ = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
 
             foreach (var specialVar in _specialWatchVars)
             {

@@ -777,9 +777,9 @@ namespace SM64_Diagnostic.Utilities
         {
             List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
             posAddressAngles.Add(new PositionAddressAngle(
-                Config.Camera.CameraX,
-                Config.Camera.CameraY,
-                Config.Camera.CameraZ,
+                Config.Camera.CameraStructAddress + Config.Camera.XOffset,
+                Config.Camera.CameraStructAddress + Config.Camera.YOffset,
+                Config.Camera.CameraStructAddress + Config.Camera.ZOffset,
                 (UInt16)(stream.GetUInt32(Config.Camera.CameraRot))));
 
             return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
@@ -793,9 +793,9 @@ namespace SM64_Diagnostic.Utilities
             handleScaling(ref thetaOffset, ref phiOffset);
 
             float oldX, oldY, oldZ;
-            oldX = stream.GetSingle(Config.Camera.CameraX);
-            oldY = stream.GetSingle(Config.Camera.CameraY);
-            oldZ = stream.GetSingle(Config.Camera.CameraZ);
+            oldX = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
+            oldY = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
+            oldZ = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
 
             double newX, newY, newZ;
             (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ);
@@ -803,9 +803,9 @@ namespace SM64_Diagnostic.Utilities
             bool success = true;
             stream.Suspend();
 
-            success &= stream.SetValue((float)newX, Config.Camera.CameraX);
-            success &= stream.SetValue((float)newY, Config.Camera.CameraY);
-            success &= stream.SetValue((float)newZ, Config.Camera.CameraZ);
+            success &= stream.SetValue((float)newX, Config.Camera.CameraStructAddress + Config.Camera.XOffset);
+            success &= stream.SetValue((float)newY, Config.Camera.CameraStructAddress + Config.Camera.YOffset);
+            success &= stream.SetValue((float)newZ, Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
 
             stream.Resume();
             return success;
