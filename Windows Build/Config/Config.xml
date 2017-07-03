@@ -151,12 +151,6 @@
     <FocusYOffset>0x84</FocusYOffset>
     <FocusZOffset>0x88</FocusZOffset>
     <YawFacingOffset>0xCE</YawFacingOffset>
-    <SecondaryObjectOffset>0x8033C6A4</SecondaryObjectOffset>
-
-    <CameraXAddress>0x8033C6A4</CameraXAddress>
-    <CameraYAddress>0x8033C6A8</CameraYAddress>
-    <CameraZAddress>0x8033C6AC</CameraZAddress>
-    <CameraRotAddress>0x8033C6E4</CameraRotAddress>
     <SecondObjectAddress>0x8032DF30</SecondObjectAddress>
   </Camera>
   <Controller>

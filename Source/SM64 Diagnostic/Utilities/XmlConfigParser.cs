@@ -511,22 +511,6 @@ namespace SM64_Diagnostic.Utilities
                                 case "YawFacingOffset":
                                     Config.Camera.YawFacingOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "SecondaryObjectOffset":
-                                    Config.Camera.SecondaryObjectOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "CameraXAddress":
-                                    Config.Camera.CameraX = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "CameraYAddress":
-                                    Config.Camera.CameraY = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "CameraZAddress":
-                                    Config.Camera.CameraZ = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "CameraRotAddress":
-                                    Config.Camera.CameraRot = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
                                 case "SecondObjectAddress":
                                     Config.Camera.SecondObject = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
