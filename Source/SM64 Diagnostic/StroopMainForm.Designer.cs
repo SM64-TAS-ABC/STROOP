@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -435,6 +435,19 @@ namespace SM64_Diagnostic
             this.radioButtonDbgEnemyInfo = new System.Windows.Forms.RadioButton();
             this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.NoTearFlowLayoutPanelObjects = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.groupBoxGotoRetrieveOffsets = new System.Windows.Forms.GroupBox();
+            this.textBoxGotoAbove = new System.Windows.Forms.TextBox();
+            this.labelGotoAbovePrefix = new System.Windows.Forms.Label();
+            this.labelGotoAboveSuffix = new System.Windows.Forms.Label();
+            this.labelGotoInfrontSuffix = new System.Windows.Forms.Label();
+            this.labelGotoInfrontPrefix = new System.Windows.Forms.Label();
+            this.textBoxGotoInfront = new System.Windows.Forms.TextBox();
+            this.labelRetrieveInfrontSuffix = new System.Windows.Forms.Label();
+            this.labelRetrieveInfrontPrefix = new System.Windows.Forms.Label();
+            this.textBoxRetrieveInfront = new System.Windows.Forms.TextBox();
+            this.labelRetrieveAboveSuffix = new System.Windows.Forms.Label();
+            this.labelRetrieveAbovePrefix = new System.Windows.Forms.Label();
+            this.textBoxRetrieveAbove = new System.Windows.Forms.TextBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -515,6 +528,7 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
             this.NoTearFlowLayoutPanelDebugDisplayType.SuspendLayout();
+            this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -3439,8 +3453,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -4383,6 +4397,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageOptions
             // 
+            this.tabPageOptions.Controls.Add(this.groupBoxGotoRetrieveOffsets);
             this.tabPageOptions.Controls.Add(this.checkBoxNeutralizeTriangleWith21);
             this.tabPageOptions.Controls.Add(this.checkBoxDisableActionUpdateWhenCloning);
             this.tabPageOptions.Controls.Add(this.groupBoxShowOverlay);
@@ -5189,6 +5204,143 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
+            // groupBoxGotoRetrieveOffsets
+            // 
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveInfrontSuffix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveInfrontPrefix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxRetrieveInfront);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveAboveSuffix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveAbovePrefix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxRetrieveAbove);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoInfrontSuffix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoInfrontPrefix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxGotoInfront);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAboveSuffix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAbovePrefix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxGotoAbove);
+            this.groupBoxGotoRetrieveOffsets.Location = new System.Drawing.Point(450, 4);
+            this.groupBoxGotoRetrieveOffsets.Name = "groupBoxGotoRetrieveOffsets";
+            this.groupBoxGotoRetrieveOffsets.Size = new System.Drawing.Size(154, 121);
+            this.groupBoxGotoRetrieveOffsets.TabIndex = 32;
+            this.groupBoxGotoRetrieveOffsets.TabStop = false;
+            this.groupBoxGotoRetrieveOffsets.Text = "Go to / Retrieve Offsets";
+            // 
+            // textBoxGotoAbove
+            // 
+            this.textBoxGotoAbove.Location = new System.Drawing.Point(58, 20);
+            this.textBoxGotoAbove.Name = "textBoxGotoAbove";
+            this.textBoxGotoAbove.Size = new System.Drawing.Size(42, 20);
+            this.textBoxGotoAbove.TabIndex = 28;
+            this.textBoxGotoAbove.Text = "300";
+            this.textBoxGotoAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelGotoAbovePrefix
+            // 
+            this.labelGotoAbovePrefix.AutoSize = true;
+            this.labelGotoAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGotoAbovePrefix.Location = new System.Drawing.Point(11, 22);
+            this.labelGotoAbovePrefix.Name = "labelGotoAbovePrefix";
+            this.labelGotoAbovePrefix.Size = new System.Drawing.Size(33, 13);
+            this.labelGotoAbovePrefix.TabIndex = 29;
+            this.labelGotoAbovePrefix.Text = "Go to";
+            // 
+            // labelGotoAboveSuffix
+            // 
+            this.labelGotoAboveSuffix.AutoSize = true;
+            this.labelGotoAboveSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGotoAboveSuffix.Location = new System.Drawing.Point(106, 23);
+            this.labelGotoAboveSuffix.Name = "labelGotoAboveSuffix";
+            this.labelGotoAboveSuffix.Size = new System.Drawing.Size(37, 13);
+            this.labelGotoAboveSuffix.TabIndex = 30;
+            this.labelGotoAboveSuffix.Text = "above";
+            // 
+            // labelGotoInfrontSuffix
+            // 
+            this.labelGotoInfrontSuffix.AutoSize = true;
+            this.labelGotoInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGotoInfrontSuffix.Location = new System.Drawing.Point(106, 49);
+            this.labelGotoInfrontSuffix.Name = "labelGotoInfrontSuffix";
+            this.labelGotoInfrontSuffix.Size = new System.Drawing.Size(39, 13);
+            this.labelGotoInfrontSuffix.TabIndex = 33;
+            this.labelGotoInfrontSuffix.Text = "in front";
+            // 
+            // labelGotoInfrontPrefix
+            // 
+            this.labelGotoInfrontPrefix.AutoSize = true;
+            this.labelGotoInfrontPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGotoInfrontPrefix.Location = new System.Drawing.Point(11, 48);
+            this.labelGotoInfrontPrefix.Name = "labelGotoInfrontPrefix";
+            this.labelGotoInfrontPrefix.Size = new System.Drawing.Size(33, 13);
+            this.labelGotoInfrontPrefix.TabIndex = 32;
+            this.labelGotoInfrontPrefix.Text = "Go to";
+            // 
+            // textBoxGotoInfront
+            // 
+            this.textBoxGotoInfront.Location = new System.Drawing.Point(58, 46);
+            this.textBoxGotoInfront.Name = "textBoxGotoInfront";
+            this.textBoxGotoInfront.Size = new System.Drawing.Size(42, 20);
+            this.textBoxGotoInfront.TabIndex = 31;
+            this.textBoxGotoInfront.Text = "0";
+            this.textBoxGotoInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelRetrieveInfrontSuffix
+            // 
+            this.labelRetrieveInfrontSuffix.AutoSize = true;
+            this.labelRetrieveInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRetrieveInfrontSuffix.Location = new System.Drawing.Point(106, 99);
+            this.labelRetrieveInfrontSuffix.Name = "labelRetrieveInfrontSuffix";
+            this.labelRetrieveInfrontSuffix.Size = new System.Drawing.Size(39, 13);
+            this.labelRetrieveInfrontSuffix.TabIndex = 39;
+            this.labelRetrieveInfrontSuffix.Text = "in front";
+            // 
+            // labelRetrieveInfrontPrefix
+            // 
+            this.labelRetrieveInfrontPrefix.AutoSize = true;
+            this.labelRetrieveInfrontPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRetrieveInfrontPrefix.Location = new System.Drawing.Point(11, 98);
+            this.labelRetrieveInfrontPrefix.Name = "labelRetrieveInfrontPrefix";
+            this.labelRetrieveInfrontPrefix.Size = new System.Drawing.Size(47, 13);
+            this.labelRetrieveInfrontPrefix.TabIndex = 38;
+            this.labelRetrieveInfrontPrefix.Text = "Retrieve";
+            // 
+            // textBoxRetrieveInfront
+            // 
+            this.textBoxRetrieveInfront.Location = new System.Drawing.Point(58, 96);
+            this.textBoxRetrieveInfront.Name = "textBoxRetrieveInfront";
+            this.textBoxRetrieveInfront.Size = new System.Drawing.Size(42, 20);
+            this.textBoxRetrieveInfront.TabIndex = 37;
+            this.textBoxRetrieveInfront.Text = "0";
+            this.textBoxRetrieveInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelRetrieveAboveSuffix
+            // 
+            this.labelRetrieveAboveSuffix.AutoSize = true;
+            this.labelRetrieveAboveSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRetrieveAboveSuffix.Location = new System.Drawing.Point(106, 73);
+            this.labelRetrieveAboveSuffix.Name = "labelRetrieveAboveSuffix";
+            this.labelRetrieveAboveSuffix.Size = new System.Drawing.Size(37, 13);
+            this.labelRetrieveAboveSuffix.TabIndex = 36;
+            this.labelRetrieveAboveSuffix.Text = "above";
+            // 
+            // labelRetrieveAbovePrefix
+            // 
+            this.labelRetrieveAbovePrefix.AutoSize = true;
+            this.labelRetrieveAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRetrieveAbovePrefix.Location = new System.Drawing.Point(11, 72);
+            this.labelRetrieveAbovePrefix.Name = "labelRetrieveAbovePrefix";
+            this.labelRetrieveAbovePrefix.Size = new System.Drawing.Size(47, 13);
+            this.labelRetrieveAbovePrefix.TabIndex = 35;
+            this.labelRetrieveAbovePrefix.Text = "Retrieve";
+            // 
+            // textBoxRetrieveAbove
+            // 
+            this.textBoxRetrieveAbove.Location = new System.Drawing.Point(58, 70);
+            this.textBoxRetrieveAbove.Name = "textBoxRetrieveAbove";
+            this.textBoxRetrieveAbove.Size = new System.Drawing.Size(42, 20);
+            this.textBoxRetrieveAbove.TabIndex = 34;
+            this.textBoxRetrieveAbove.Text = "300";
+            this.textBoxRetrieveAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5325,6 +5477,8 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
             this.NoTearFlowLayoutPanelDebugDisplayType.ResumeLayout(false);
             this.NoTearFlowLayoutPanelDebugDisplayType.PerformLayout();
+            this.groupBoxGotoRetrieveOffsets.ResumeLayout(false);
+            this.groupBoxGotoRetrieveOffsets.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5733,6 +5887,19 @@ namespace SM64_Diagnostic
         private Button buttonCameraHackPosXnZp;
         private Button buttonCameraHackPosXn;
         private Button buttonCameraHackPosXnZn;
+        private GroupBox groupBoxGotoRetrieveOffsets;
+        private Label labelRetrieveInfrontSuffix;
+        private Label labelRetrieveInfrontPrefix;
+        private TextBox textBoxRetrieveInfront;
+        private Label labelRetrieveAboveSuffix;
+        private Label labelRetrieveAbovePrefix;
+        private TextBox textBoxRetrieveAbove;
+        private Label labelGotoInfrontSuffix;
+        private Label labelGotoInfrontPrefix;
+        private TextBox textBoxGotoInfront;
+        private Label labelGotoAboveSuffix;
+        private Label labelGotoAbovePrefix;
+        private TextBox textBoxGotoAbove;
     }
 }
 
