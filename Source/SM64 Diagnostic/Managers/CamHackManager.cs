@@ -63,7 +63,6 @@ namespace SM64_Diagnostic.Managers
                 cameraMode == 1 ? CamHackMode.ABSOLUTE_ANGLE :
                 cameraMode == 2 ? CamHackMode.FIXED_POS :
                 cameraMode == 3 ? CamHackMode.FIXED_ORIENTATION : CamHackMode.REGULAR;
-            RadioButton correctRadioButton = getRadioButton(correctCamHackMode);
             if (CurrentCamHackMode != correctCamHackMode)
             {
                 CurrentCamHackMode = correctCamHackMode;
