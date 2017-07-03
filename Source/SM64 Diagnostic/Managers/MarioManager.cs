@@ -24,10 +24,10 @@ namespace SM64_Diagnostic.Managers
             _mapManager = mapManager;
 
             var toggleHandsfree = marioControl.Controls["buttonMarioToggleHandsfree"] as Button;
-            toggleHandsfree.Click += (sender, e) => MarioActions.ToggleHandsfree(_stream);
+            toggleHandsfree.Click += (sender, e) => ButtonUtilities.ToggleHandsfree(_stream);
 
             var toggleVisibility = marioControl.Controls["buttonMarioVisibility"] as Button;
-            toggleVisibility.Click += (sender, e) => MarioActions.ToggleVisibility(_stream);
+            toggleVisibility.Click += (sender, e) => ButtonUtilities.ToggleVisibility(_stream);
 
             var marioPosGroupBox = marioControl.Controls["groupBoxMarioPos"] as GroupBox;
             ThreeDimensionController.initialize(
@@ -46,7 +46,7 @@ namespace SM64_Diagnostic.Managers
                 marioPosGroupBox.Controls["checkBoxMarioPosRelative"] as CheckBox,
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
-                    MarioActions.TranslateMario(
+                    ButtonUtilities.TranslateMario(
                         _stream,
                         hOffset,
                         nOffset,
@@ -61,7 +61,7 @@ namespace SM64_Diagnostic.Managers
                 marioStatsGroupBox.Controls["textBoxMarioStatsYaw"] as TextBox,
                 (float yawValue) =>
                 {
-                    MarioActions.MarioChangeYaw(_stream, (int)Math.Round(yawValue));
+                    ButtonUtilities.MarioChangeYaw(_stream, (int)Math.Round(yawValue));
                 });
             ScalarController.initialize(
                 marioStatsGroupBox.Controls["buttonMarioStatsHspdN"] as Button,
@@ -69,7 +69,7 @@ namespace SM64_Diagnostic.Managers
                 marioStatsGroupBox.Controls["textBoxMarioStatsHspd"] as TextBox,
                 (float hspdValue) =>
                 {
-                    MarioActions.MarioChangeHspd(_stream, hspdValue);
+                    ButtonUtilities.MarioChangeHspd(_stream, hspdValue);
                 });
 
             ScalarController.initialize(
@@ -78,7 +78,7 @@ namespace SM64_Diagnostic.Managers
                 marioStatsGroupBox.Controls["textBoxMarioStatsVspd"] as TextBox,
                 (float vspdValue) =>
                 {
-                    MarioActions.MarioChangeVspd(_stream, vspdValue);
+                    ButtonUtilities.MarioChangeVspd(_stream, vspdValue);
                 });
 
             var marioHOLPGroupBox = marioControl.Controls["groupBoxMarioHOLP"] as GroupBox;
@@ -98,7 +98,7 @@ namespace SM64_Diagnostic.Managers
                 marioHOLPGroupBox.Controls["checkBoxMarioHOLPRelative"] as CheckBox,
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
-                    MarioActions.TranslateHOLP(
+                    ButtonUtilities.TranslateHOLP(
                         _stream,
                         hOffset,
                         nOffset,

@@ -38,7 +38,7 @@ namespace SM64_Diagnostic.Managers
                 cameraPosGroupBox.Controls["checkBoxCameraPosRelative"] as CheckBox,
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
-                    MarioActions.TranslateCamera(
+                    ButtonUtilities.TranslateCamera(
                         _stream,
                         hOffset,
                         nOffset,
@@ -63,7 +63,7 @@ namespace SM64_Diagnostic.Managers
                 cameraSphericalPosGroupBox.Controls["checkBoxCameraSphericalPosPivotOnFocus"] as CheckBox,
                 (float hOffset, float vOffset, float nOffset, bool pivotOnFocus) =>
                 {
-                    MarioActions.TranslateCameraSpherically(
+                    ButtonUtilities.TranslateCameraSpherically(
                         _stream,
                         -1 * nOffset,
                         hOffset,

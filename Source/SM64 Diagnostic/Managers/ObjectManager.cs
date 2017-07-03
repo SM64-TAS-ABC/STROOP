@@ -225,22 +225,22 @@ namespace SM64_Diagnostic.Managers
             Panel objPanel = objectControl.Controls["panelObj"] as Panel;
 
             var goToButton = objPanel.Controls["buttonObjGoTo"] as Button;
-            goToButton.Click += (sender, e) => MarioActions.GoToObjects(_stream, _currentAddresses);
+            goToButton.Click += (sender, e) => ButtonUtilities.GoToObjects(_stream, _currentAddresses);
 
             var retrieveButton = objPanel.Controls["buttonObjRetrieve"] as Button;
-            retrieveButton.Click += (sender, e) => MarioActions.RetrieveObjects(_stream, _currentAddresses);
+            retrieveButton.Click += (sender, e) => ButtonUtilities.RetrieveObjects(_stream, _currentAddresses);
 
             var goToHomeButton = objPanel.Controls["buttonObjGoToHome"] as Button;
-            goToHomeButton.Click += (sender, e) => MarioActions.GoToObjectsHome(_stream, _currentAddresses);
+            goToHomeButton.Click += (sender, e) => ButtonUtilities.GoToObjectsHome(_stream, _currentAddresses);
 
             var retrieveHomeButton = objPanel.Controls["buttonObjRetrieveHome"] as Button;
-            retrieveHomeButton.Click += (sender, e) => MarioActions.RetrieveObjectsHome(_stream, _currentAddresses);
+            retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_stream, _currentAddresses);
 
             var debilitateButton = objPanel.Controls["buttonObjDebilitate"] as Button;
-            debilitateButton.Click += (sender, e) => MarioActions.DebilitateObject(_stream, _currentAddresses);
+            debilitateButton.Click += (sender, e) => ButtonUtilities.DebilitateObject(_stream, _currentAddresses);
 
             var interactButton = objPanel.Controls["buttonObjInteract"] as Button;
-            interactButton.Click += (sender, e) => MarioActions.InteractObject(_stream, _currentAddresses);
+            interactButton.Click += (sender, e) => ButtonUtilities.InteractObject(_stream, _currentAddresses);
 
             _cloneButton = objPanel.Controls["buttonObjClone"] as Button;
             _cloneButton.Click += (sender, e) =>
@@ -249,9 +249,9 @@ namespace SM64_Diagnostic.Managers
                     return;
 
                 if (_unclone)
-                    MarioActions.UnCloneObject(_stream, CurrentAddresses[0]);
+                    ButtonUtilities.UnCloneObject(_stream, CurrentAddresses[0]);
                 else
-                    MarioActions.CloneObject(_stream, CurrentAddresses[0]);
+                    ButtonUtilities.CloneObject(_stream, CurrentAddresses[0]);
             };
 
             _unloadButton = objPanel.Controls["buttonObjUnload"] as Button;
@@ -261,9 +261,9 @@ namespace SM64_Diagnostic.Managers
                     return;
 
                 if (_revive)
-                    MarioActions.ReviveObject(_stream, CurrentAddresses);
+                    ButtonUtilities.ReviveObject(_stream, CurrentAddresses);
                 else
-                    MarioActions.UnloadObject(_stream, CurrentAddresses);
+                    ButtonUtilities.UnloadObject(_stream, CurrentAddresses);
             };
 
             var objPosGroupBox = objPanel.Controls["groupBoxObjPos"] as GroupBox;
@@ -283,7 +283,7 @@ namespace SM64_Diagnostic.Managers
                 objPosGroupBox.Controls["checkBoxObjPosRelative"] as CheckBox,
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
-                    MarioActions.TranslateObjects(
+                    ButtonUtilities.TranslateObjects(
                         _stream,
                         _currentAddresses,
                         hOffset,
@@ -299,7 +299,7 @@ namespace SM64_Diagnostic.Managers
                 objAngleGroupBox.Controls["textBoxObjAngleYaw"] as TextBox,
                 (float yawValue) =>
                 {
-                    MarioActions.RotateObjects(stream, _currentAddresses, (int)Math.Round(yawValue), 0, 0);
+                    ButtonUtilities.RotateObjects(stream, _currentAddresses, (int)Math.Round(yawValue), 0, 0);
                 });
             ScalarController.initialize(
                 objAngleGroupBox.Controls["buttonObjAnglePitchN"] as Button,
@@ -307,7 +307,7 @@ namespace SM64_Diagnostic.Managers
                 objAngleGroupBox.Controls["textBoxObjAnglePitch"] as TextBox,
                 (float pitchValue) =>
                 {
-                    MarioActions.RotateObjects(stream, _currentAddresses, 0, (int)Math.Round(pitchValue), 0);
+                    ButtonUtilities.RotateObjects(stream, _currentAddresses, 0, (int)Math.Round(pitchValue), 0);
                 });
             ScalarController.initialize(
                 objAngleGroupBox.Controls["buttonObjAngleRollN"] as Button,
@@ -315,7 +315,7 @@ namespace SM64_Diagnostic.Managers
                 objAngleGroupBox.Controls["textBoxObjAngleRoll"] as TextBox,
                 (float rollValue) =>
                 {
-                    MarioActions.RotateObjects(stream, _currentAddresses, 0, 0, (int)Math.Round(rollValue));
+                    ButtonUtilities.RotateObjects(stream, _currentAddresses, 0, 0, (int)Math.Round(rollValue));
                 });
 
             var objScaleGroupBox = objPanel.Controls["groupBoxObjScale"] as GroupBox;
@@ -336,7 +336,7 @@ namespace SM64_Diagnostic.Managers
                 objScaleGroupBox.Controls["checkBoxObjScaleMultiply"] as CheckBox,
                 (float widthChange, float heightChange, float depthChange, bool multiply) =>
                 {
-                    MarioActions.ScaleObjects(stream, _currentAddresses, widthChange, heightChange, depthChange, multiply);
+                    ButtonUtilities.ScaleObjects(stream, _currentAddresses, widthChange, heightChange, depthChange, multiply);
                 });
 
             var objHomeGroupBox = objPanel.Controls["groupBoxObjHome"] as GroupBox;
@@ -356,7 +356,7 @@ namespace SM64_Diagnostic.Managers
                 objHomeGroupBox.Controls["checkBoxObjHomeRelative"] as CheckBox,
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
-                    MarioActions.TranslateObjectHomes(
+                    ButtonUtilities.TranslateObjectHomes(
                         _stream,
                         _currentAddresses,
                         hOffset,

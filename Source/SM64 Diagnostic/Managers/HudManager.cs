@@ -26,17 +26,17 @@ namespace SM64_Diagnostic.Managers
 
         private void buttonStandardHud_Click(object sender, EventArgs e)
         {
-            MarioActions.StandardHud(_stream);
+            ButtonUtilities.StandardHud(_stream);
         }
 
         private void buttonDie_Click(object sender, EventArgs e)
         {
-            MarioActions.Die(_stream);
+            ButtonUtilities.Die(_stream);
         }
 
         private void buttonFill_Click(object sender, EventArgs e)
         {
-            MarioActions.RefillHp(_stream);
+            ButtonUtilities.RefillHp(_stream);
         }
     }
 }

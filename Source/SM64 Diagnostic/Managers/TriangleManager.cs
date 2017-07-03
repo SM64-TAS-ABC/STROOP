@@ -92,24 +92,24 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Other);
 
             (tabControl.Controls["buttonGoToV1"] as Button).Click
-                += (sender, e) => MarioActions.GoToTriangle(_stream, _triangleAddress, 1, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GoToTriangle(_stream, _triangleAddress, 1, _useMisalignmentOffsetCheckbox.Checked);
             (tabControl.Controls["buttonGoToV2"] as Button).Click
-                += (sender, e) => MarioActions.GoToTriangle(_stream, _triangleAddress, 2, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GoToTriangle(_stream, _triangleAddress, 2, _useMisalignmentOffsetCheckbox.Checked);
             (tabControl.Controls["buttonGoToV3"] as Button).Click
-                += (sender, e) => MarioActions.GoToTriangle(_stream, _triangleAddress, 3, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GoToTriangle(_stream, _triangleAddress, 3, _useMisalignmentOffsetCheckbox.Checked);
             (tabControl.Controls["buttonGoToVClosest"] as Button).Click += (sender, e) =>
             {
                 if (_closestVertex == 0)
                     return;
-                MarioActions.GoToTriangle(_stream, _triangleAddress, _closestVertex, _useMisalignmentOffsetCheckbox.Checked);
+                ButtonUtilities.GoToTriangle(_stream, _triangleAddress, _closestVertex, _useMisalignmentOffsetCheckbox.Checked);
             };
 
             (tabControl.Controls["buttonRetrieveTriangle"] as Button).Click
-                += (sender, e) => MarioActions.RetrieveTriangle(_stream, _triangleAddress);
+                += (sender, e) => ButtonUtilities.RetrieveTriangle(_stream, _triangleAddress);
             (tabControl.Controls["buttonNeutralizeTriangle"] as Button).Click
-                += (sender, e) => MarioActions.NeutralizeTriangle(_stream, _triangleAddress);
+                += (sender, e) => ButtonUtilities.NeutralizeTriangle(_stream, _triangleAddress);
             (tabControl.Controls["buttonAnnihilateTriangle"] as Button).Click
-                += (sender, e) => MarioActions.AnnihilateTriangle(_stream, _triangleAddress);
+                += (sender, e) => ButtonUtilities.AnnihilateTriangle(_stream, _triangleAddress);
             
             var trianglePosGroupBox = tabControl.Controls["groupBoxTrianglePos"] as GroupBox;
             ThreeDimensionController.initialize(
@@ -128,7 +128,7 @@ namespace SM64_Diagnostic.Managers
                 trianglePosGroupBox.Controls["checkBoxTrianglePosRelative"] as CheckBox,
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
-                    MarioActions.MoveTriangle(
+                    ButtonUtilities.MoveTriangle(
                         _stream,
                         _triangleAddress,
                         hOffset,
@@ -144,7 +144,7 @@ namespace SM64_Diagnostic.Managers
                 triangleNormalGroupBox.Controls["textBoxTriangleNormal"] as TextBox,
                 (float normalValue) =>
                 {
-                    MarioActions.MoveTriangleNormal(_stream, _triangleAddress, normalValue);
+                    ButtonUtilities.MoveTriangleNormal(_stream, _triangleAddress, normalValue);
                 });
         }
 

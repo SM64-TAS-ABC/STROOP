@@ -9,7 +9,7 @@ using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Utilities
 {
-    public static class MarioActions
+    public static class ButtonUtilities
     {
         static uint _prevMarioGraphic = 0x00;
 

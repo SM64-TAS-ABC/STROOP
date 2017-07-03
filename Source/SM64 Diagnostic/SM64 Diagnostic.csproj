@@ -187,7 +187,7 @@
     <Compile Include="Controls\Map\TriangleMapObject.cs" />
     <Compile Include="Structs\WatchExpression.cs" />
     <Compile Include="Utilities\N64Disassembler.cs" />
-    <Compile Include="Utilities\MarioActions.cs" />
+    <Compile Include="Utilities\ButtonUtilities.cs" />
     <Compile Include="Structs\ProcessSelection.cs" />
     <Compile Include="StroopMainForm.cs">
       <SubType>Form</SubType>
