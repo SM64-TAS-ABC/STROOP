@@ -71,6 +71,84 @@ namespace SM64_Diagnostic.Managers
                         -1 * vOffset,
                         useRelative);
                 });
+
+            var cameraHackSphericalPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackSphericalPos"] as GroupBox;
+            ThreeDimensionController.initialize(
+                CoordinateSystem.Spherical,
+                cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTn"] as Button,
+                cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTp"] as Button,
+                cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosPn"] as Button,
+                cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosPp"] as Button,
+                cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTnPn"] as Button,
+                cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTnPp"] as Button,
+                cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTpPn"] as Button,
+                cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTpPp"] as Button,
+                cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosRp"] as Button,
+                cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosRn"] as Button,
+                cameraHackSphericalPosGroupBox.Controls["textBoxCameraHackSphericalPosTP"] as TextBox,
+                cameraHackSphericalPosGroupBox.Controls["textBoxCameraHackSphericalPosR"] as TextBox,
+                null /* checkbox */,
+                (float hOffset, float vOffset, float nOffset, bool _) =>
+                {
+                    ButtonUtilities.TranslateCameraHackSpherically(
+                        _stream,
+                        -1 * nOffset,
+                        hOffset,
+                        -1 * vOffset,
+                        (0,0,0));
+                });
+
+            var cameraHackFocusPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackFocusPos"] as GroupBox;
+            ThreeDimensionController.initialize(
+                CoordinateSystem.Euler,
+                cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosXn"] as Button,
+                cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosXp"] as Button,
+                cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosZn"] as Button,
+                cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosZp"] as Button,
+                cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosXnZn"] as Button,
+                cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosXnZp"] as Button,
+                cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosXpZn"] as Button,
+                cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosXpZp"] as Button,
+                cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosYp"] as Button,
+                cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosYn"] as Button,
+                cameraHackFocusPosGroupBox.Controls["textBoxCameraHackFocusPosXZ"] as TextBox,
+                cameraHackFocusPosGroupBox.Controls["textBoxCameraHackFocusPosY"] as TextBox,
+                cameraHackFocusPosGroupBox.Controls["checkBoxCameraHackFocusPosRelative"] as CheckBox,
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
+                {
+                    ButtonUtilities.TranslateCameraHackFocus(
+                        _stream,
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
+                        useRelative);
+                });
+
+            var cameraHackSphericalFocusPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackSphericalFocusPos"] as GroupBox;
+            ThreeDimensionController.initialize(
+                CoordinateSystem.Spherical,
+                cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosTn"] as Button,
+                cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosTp"] as Button,
+                cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosPn"] as Button,
+                cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosPp"] as Button,
+                cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosTnPn"] as Button,
+                cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosTnPp"] as Button,
+                cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosTpPn"] as Button,
+                cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosTpPp"] as Button,
+                cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosRp"] as Button,
+                cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosRn"] as Button,
+                cameraHackSphericalFocusPosGroupBox.Controls["textBoxCameraHackSphericalFocusPosTP"] as TextBox,
+                cameraHackSphericalFocusPosGroupBox.Controls["textBoxCameraHackSphericalFocusPosR"] as TextBox,
+                null /* checkbox */,
+                (float hOffset, float vOffset, float nOffset, bool _) =>
+                {
+                    ButtonUtilities.TranslateCameraHackFocusSpherically(
+                        _stream,
+                        -1 * nOffset,
+                        hOffset,
+                        -1 * vOffset,
+                        (0, 0, 0));
+                });
         }
 
         public override void Update(bool updateView)

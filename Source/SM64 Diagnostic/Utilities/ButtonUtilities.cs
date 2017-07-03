@@ -842,5 +842,50 @@ namespace SM64_Diagnostic.Utilities
             */
             return false;
         }
+
+        public static bool TranslateCameraHackSpherically(ProcessStream stream, float radiusOffset, float thetaOffset, float phiOffset, (float, float, float) pivotPoint)
+        {
+            /*
+            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
+            posAddressAngles.Add(new PositionAddressAngle(
+                Config.Camera.CameraStructAddress + Config.Camera.XOffset,
+                Config.Camera.CameraStructAddress + Config.Camera.YOffset,
+                Config.Camera.CameraStructAddress + Config.Camera.ZOffset,
+                stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset)));
+
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            */
+            return false;
+        }
+
+        public static bool TranslateCameraHackFocus(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
+        {
+            /*
+            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
+            posAddressAngles.Add(new PositionAddressAngle(
+                Config.Camera.CameraStructAddress + Config.Camera.XOffset,
+                Config.Camera.CameraStructAddress + Config.Camera.YOffset,
+                Config.Camera.CameraStructAddress + Config.Camera.ZOffset,
+                stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset)));
+
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            */
+            return false;
+        }
+
+        public static bool TranslateCameraHackFocusSpherically(ProcessStream stream, float radiusOffset, float thetaOffset, float phiOffset, (float, float, float) pivotPoint)
+        {
+            /*
+            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
+            posAddressAngles.Add(new PositionAddressAngle(
+                Config.Camera.CameraStructAddress + Config.Camera.XOffset,
+                Config.Camera.CameraStructAddress + Config.Camera.YOffset,
+                Config.Camera.CameraStructAddress + Config.Camera.ZOffset,
+                stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset)));
+
+            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            */
+            return false;
+        }
     }
 }
