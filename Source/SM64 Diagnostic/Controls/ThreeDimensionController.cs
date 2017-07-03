@@ -8,9 +8,12 @@ using System.Windows.Forms;
 
 namespace SM64Diagnostic.Controls
 {
+    public enum CoordinateSystem { Euler, Spherical };
+
     public static class ThreeDimensionController
     {
         public static void initialize(
+            CoordinateSystem coordinateSystem,
             Button buttonSquareLeft,
             Button buttonSquareRight,
             Button buttonSquareTop,
