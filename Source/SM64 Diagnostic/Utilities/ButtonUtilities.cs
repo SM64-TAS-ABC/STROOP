@@ -30,6 +30,18 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
+        /**
+         * Creates a singleton list of a PositionAddressAngle, whose only element
+         * is a newly constructed PositionAddressAngle using the given parameters.
+         */
+        private static List<PositionAddressAngle> createListPositionAddressAngle(
+            uint xAddress, uint yAddress, uint zAddress, ushort angle)
+        {
+            List<PositionAddressAngle> list = new List<PositionAddressAngle>();
+            list.Add(new PositionAddressAngle(xAddress, yAddress, zAddress, angle));
+            return list;
+        }
+
         private enum Change { SET, ADD, MULTIPLY };
 
         private static bool MoveThings(ProcessStream stream, List<PositionAddressAngle> posAddressAngles,
@@ -829,18 +841,95 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        private static ushort getCamHackYawFacing(ProcessStream stream, CamHackMode camHackMode)
+        {
+            switch (camHackMode)
+            {
+                case CamHackMode.REGULAR:
+                    return stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset);
+
+                case CamHackMode.RELATIVE_ANGLE:
+                case CamHackMode.ABSOLUTE_ANGLE:
+                case CamHackMode.FIXED_POS:
+                case CamHackMode.FIXED_ORIENTATION:
+                    float camHackPosX = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
+                    float camHackPosZ = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
+                    float camHackFocusX = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusXOffset);
+                    float camHackFocusZ = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusZOffset);
+                    return MoreMath.AngleTo_AngleUnitsRounded(camHackPosX, camHackPosZ, camHackFocusX, camHackFocusZ);
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private static PositionAddressAngle getCamHackFocusPositionAddressController(ProcessStream stream, CamHackMode camHackMode)
+        {
+            uint camHackObject = stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
+            switch (camHackMode)
+            {
+                case CamHackMode.REGULAR:
+                    return new PositionAddressAngle(
+                        Config.Camera.CameraStructAddress + Config.Camera.FocusXOffset,
+                        Config.Camera.CameraStructAddress + Config.Camera.FocusYOffset,
+                        Config.Camera.CameraStructAddress + Config.Camera.FocusZOffset,
+                        getCamHackYawFacing(stream, camHackMode));
+                
+                case CamHackMode.RELATIVE_ANGLE:
+                case CamHackMode.ABSOLUTE_ANGLE:
+                case CamHackMode.FIXED_POS:
+                    if (camHackObject == 0) // focused on Mario
+                    {
+                        return new PositionAddressAngle(
+                            Config.Mario.StructAddress + Config.Mario.XOffset,
+                            Config.Mario.StructAddress + Config.Mario.YOffset,
+                            Config.Mario.StructAddress + Config.Mario.ZOffset,
+                            getCamHackYawFacing(stream, camHackMode));
+                    }
+                    else // focused on object
+                    {
+                        return new PositionAddressAngle(
+                            camHackObject + Config.ObjectSlots.ObjectXOffset,
+                            camHackObject + Config.ObjectSlots.ObjectYOffset,
+                            camHackObject + Config.ObjectSlots.ObjectZOffset,
+                            getCamHackYawFacing(stream, camHackMode));
+                    }
+                
+                case CamHackMode.FIXED_ORIENTATION:
+                    return new PositionAddressAngle(
+                        Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusXOffset,
+                        Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusYOffset,
+                        Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusZOffset,
+                        getCamHackYawFacing(stream, camHackMode));
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         public static bool TranslateCameraHack(ProcessStream stream, CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            /*
-            List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
-            posAddressAngles.Add(new PositionAddressAngle(
-                Config.Camera.CameraStructAddress + Config.Camera.XOffset,
-                Config.Camera.CameraStructAddress + Config.Camera.YOffset,
-                Config.Camera.CameraStructAddress + Config.Camera.ZOffset,
-                stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset)));
+            if (camHackMode == CamHackMode.REGULAR)
+            {
+                return TranslateCamera(stream, xOffset, yOffset, zOffset, useRelative);
+            }
 
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
-            */
+            if (camHackMode == CamHackMode.FIXED_ORIENTATION || camHackMode == CamHackMode.FIXED_POS)
+            {
+                return MoveThings(
+                    stream,
+                    createListPositionAddressAngle(
+                        Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset,
+                        Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset,
+                        Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset,
+                        getCamHackYawFacing(stream, camHackMode)),
+                    xOffset,
+                    yOffset,
+                    zOffset,
+                    Change.ADD,
+                    useRelative);
+            }
+
             return false;
         }
 

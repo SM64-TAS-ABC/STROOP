@@ -36,6 +36,16 @@ namespace SM64_Diagnostic.Utilities
             return Math.Atan2(xTo - xFrom, zTo - zFrom);
         }
 
+        public static double AngleTo_AngleUnits(float xFrom, float zFrom, float xTo, float zTo)
+        {
+            return RadiansToAngleUnits(AngleTo_Radians(xFrom, zFrom, xTo, zTo));
+        }
+
+        public static ushort AngleTo_AngleUnitsRounded(float xFrom, float zFrom, float xTo, float zTo)
+        {
+            return RadiansToAngleUnitsRounded(AngleTo_Radians(xFrom, zFrom, xTo, zTo));
+        }
+
         public static (double radius, double theta, double phi) EulerToSphericalRadians(double x, double y, double z)
         {
             double radius = Math.Sqrt(x * x + y * y + z * z);
