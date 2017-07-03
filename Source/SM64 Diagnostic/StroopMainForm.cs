@@ -686,6 +686,42 @@ namespace SM64_Diagnostic
             }
         }
 
+        private void textBoxGotoAbove_LostFocus(object sender, EventArgs e)
+        {
+            float value;
+            if (!float.TryParse((sender as TextBox).Text, out value))
+            {
+                (sender as TextBox).Text = Config.GotoRetrieve.GotoAboveDefault.ToString();
+            }
+        }
+
+        private void textBoxGotoInfront_LostFocus(object sender, EventArgs e)
+        {
+            float value;
+            if (!float.TryParse((sender as TextBox).Text, out value))
+            {
+                (sender as TextBox).Text = Config.GotoRetrieve.GotoInfrontDefault.ToString();
+            }
+        }
+
+        private void textBoxRetrieveAbove_LostFocus(object sender, EventArgs e)
+        {
+            float value;
+            if (!float.TryParse((sender as TextBox).Text, out value))
+            {
+                (sender as TextBox).Text = Config.GotoRetrieve.RetrieveAboveDefault.ToString();
+            }
+        }
+
+        private void textBoxRetrieveInfront_LostFocus(object sender, EventArgs e)
+        {
+            float value;
+            if (!float.TryParse((sender as TextBox).Text, out value))
+            {
+                (sender as TextBox).Text = Config.GotoRetrieve.RetrieveInfrontDefault.ToString();
+            }
+        }
+
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
         {
             _resizeObjSlotTime = 500;
