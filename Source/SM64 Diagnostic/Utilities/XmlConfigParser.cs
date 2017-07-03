@@ -508,6 +508,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "FocusZOffset":
                                     Config.Camera.FocusZOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "YawFacingOffset":
+                                    Config.Camera.YawFacingOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "SecondaryObjectOffset":
                                     Config.Camera.SecondaryObjectOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

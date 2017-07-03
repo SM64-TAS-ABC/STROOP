@@ -256,7 +256,7 @@ namespace SM64_Diagnostic.Managers
             cameraX = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
             cameraY = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
             cameraZ = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
-            cameraRot = (float)(((UInt16)(_stream.GetUInt32(Config.Camera.CameraRot)) / 65536f * 360f));
+            cameraRot = (float)((_stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset) / 65536f * 360f));
 
             // Update floor triangle
             UInt32 floorTriangle = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);

@@ -780,7 +780,7 @@ namespace SM64_Diagnostic.Utilities
                 Config.Camera.CameraStructAddress + Config.Camera.XOffset,
                 Config.Camera.CameraStructAddress + Config.Camera.YOffset,
                 Config.Camera.CameraStructAddress + Config.Camera.ZOffset,
-                (UInt16)(stream.GetUInt32(Config.Camera.CameraRot))));
+                stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset)));
 
             return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }

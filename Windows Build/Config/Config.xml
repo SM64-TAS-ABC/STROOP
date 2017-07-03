@@ -150,7 +150,7 @@
     <FocusXOffset>0x80</FocusXOffset>
     <FocusYOffset>0x84</FocusYOffset>
     <FocusZOffset>0x88</FocusZOffset>
-    <YawFacingOffset>0x8033C6A4</YawFacingOffset>
+    <YawFacingOffset>0xCE</YawFacingOffset>
     <SecondaryObjectOffset>0x8033C6A4</SecondaryObjectOffset>
 
     <CameraXAddress>0x8033C6A4</CameraXAddress>

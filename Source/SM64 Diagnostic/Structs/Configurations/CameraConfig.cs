@@ -15,6 +15,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint FocusXOffset;
         public uint FocusYOffset;
         public uint FocusZOffset;
+        public uint YawFacingOffset;
         public uint SecondaryObjectOffset;
 
         public uint CameraX;
