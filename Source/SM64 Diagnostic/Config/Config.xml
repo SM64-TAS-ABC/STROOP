@@ -194,7 +194,7 @@
     <FocusXOffset>0x10</FocusXOffset>
     <FocusYOffset>0x14</FocusYOffset>
     <FocusZOffset>0x18</FocusZOffset>
-    <RotateOffset>0x1C</RotateOffset>
+    <AbsoluteAngleOffset>0x1C</AbsoluteAngleOffset>
     <ThetaOffset>0x1E</ThetaOffset>
     <RadiusOffset>0x20</RadiusOffset>
     <RelativeHeightOffset>0x24</RelativeHeightOffset>

@@ -16,7 +16,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint FocusXOffset;
         public uint FocusYOffset;
         public uint FocusZOffset;
-        public uint RotateOffset;
+        public uint AbsoluteAngleOffset;
         public uint ThetaOffset;
         public uint RadiusOffset;
         public uint RelativeHeightOffset;

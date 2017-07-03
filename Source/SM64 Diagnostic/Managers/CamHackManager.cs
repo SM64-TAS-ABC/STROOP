@@ -16,7 +16,8 @@ namespace SM64_Diagnostic.Managers
     public class CamHackManager : DataManager
     {
         RadioButton _mode0RadioButton;
-        RadioButton _mode1RadioButton;
+        RadioButton _mode1RadioButtonRelativeAngle;
+        RadioButton _mode1RadioButtonAbsoluteAngle;
         RadioButton _mode2RadioButton;
         RadioButton _mode3RadioButton;
 
@@ -25,12 +26,22 @@ namespace SM64_Diagnostic.Managers
         {
             var splitContainer = camHackControl.Controls["splitContainerCamHack"] as SplitContainer;
             _mode0RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode0"] as RadioButton;
-            _mode1RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode1"] as RadioButton;
+            _mode1RadioButtonRelativeAngle = splitContainer.Panel1.Controls["radioButtonCamHackMode1RelativeAngle"] as RadioButton;
+            _mode1RadioButtonAbsoluteAngle = splitContainer.Panel1.Controls["radioButtonCamHackMode1AbsoluteAngle"] as RadioButton;
             _mode2RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode2"] as RadioButton;
             _mode3RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode3"] as RadioButton;
 
             _mode0RadioButton.Click += (sender, e) => _stream.SetValue(0, Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
-            _mode1RadioButton.Click += (sender, e) => _stream.SetValue(1, Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
+            _mode1RadioButtonRelativeAngle.Click += (sender, e) =>
+            {
+                _stream.SetValue(1, Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
+                _stream.SetValue((ushort)0, Config.CameraHack.CameraHackStruct + Config.CameraHack.AbsoluteAngleOffset);
+            };
+            _mode1RadioButtonAbsoluteAngle.Click += (sender, e) =>
+            {
+                _stream.SetValue(1, Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
+                _stream.SetValue((ushort)1, Config.CameraHack.CameraHackStruct + Config.CameraHack.AbsoluteAngleOffset);
+            };
             _mode2RadioButton.Click += (sender, e) => _stream.SetValue(2, Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
             _mode3RadioButton.Click += (sender, e) => _stream.SetValue(3, Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
         }
@@ -40,8 +51,10 @@ namespace SM64_Diagnostic.Managers
             base.Update();
 
             int cameraMode = _stream.GetInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraModeOffset);
+            ushort absoluteAngle = _stream.GetUInt16(Config.CameraHack.CameraHackStruct + Config.CameraHack.AbsoluteAngleOffset);
             RadioButton correspondingRadioButton =
-                cameraMode == 1 ? _mode1RadioButton :
+                cameraMode == 1 && absoluteAngle == 0 ? _mode1RadioButtonRelativeAngle :
+                cameraMode == 1 ? _mode1RadioButtonAbsoluteAngle :
                 cameraMode == 2 ? _mode2RadioButton :
                 cameraMode == 3 ? _mode3RadioButton : _mode0RadioButton;
             if (!correspondingRadioButton.Checked) correspondingRadioButton.Checked = true;

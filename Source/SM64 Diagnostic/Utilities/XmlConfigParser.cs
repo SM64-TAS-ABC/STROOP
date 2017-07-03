@@ -679,8 +679,8 @@ namespace SM64_Diagnostic.Utilities
                                     Config.CameraHack.FocusZOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "RotateOffset":
-                                    Config.CameraHack.RotateOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                case "AbsoluteAngleOffset":
+                                    Config.CameraHack.AbsoluteAngleOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ThetaOffset":

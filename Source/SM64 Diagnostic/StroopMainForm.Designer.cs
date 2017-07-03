@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -343,7 +343,7 @@ namespace SM64_Diagnostic
             this.radioButtonCamHackMode3 = new System.Windows.Forms.RadioButton();
             this.radioButtonCamHackMode0 = new System.Windows.Forms.RadioButton();
             this.radioButtonCamHackMode2 = new System.Windows.Forms.RadioButton();
-            this.radioButtonCamHackMode1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonCamHackMode1RelativeAngle = new System.Windows.Forms.RadioButton();
             this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
             this.checkBoxNeutralizeTriangleWith21 = new System.Windows.Forms.CheckBox();
@@ -380,6 +380,7 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.radioButtonCamHackMode1AbsoluteAngle = new System.Windows.Forms.RadioButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -3729,8 +3730,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -4005,7 +4006,8 @@ namespace SM64_Diagnostic
             this.splitContainerCamHack.Panel1.Controls.Add(this.radioButtonCamHackMode3);
             this.splitContainerCamHack.Panel1.Controls.Add(this.radioButtonCamHackMode0);
             this.splitContainerCamHack.Panel1.Controls.Add(this.radioButtonCamHackMode2);
-            this.splitContainerCamHack.Panel1.Controls.Add(this.radioButtonCamHackMode1);
+            this.splitContainerCamHack.Panel1.Controls.Add(this.radioButtonCamHackMode1AbsoluteAngle);
+            this.splitContainerCamHack.Panel1.Controls.Add(this.radioButtonCamHackMode1RelativeAngle);
             // 
             // splitContainerCamHack.Panel2
             // 
@@ -4027,11 +4029,11 @@ namespace SM64_Diagnostic
             // radioButtonCamHackMode3
             // 
             this.radioButtonCamHackMode3.AutoSize = true;
-            this.radioButtonCamHackMode3.Location = new System.Drawing.Point(19, 96);
+            this.radioButtonCamHackMode3.Location = new System.Drawing.Point(19, 119);
             this.radioButtonCamHackMode3.Name = "radioButtonCamHackMode3";
-            this.radioButtonCamHackMode3.Size = new System.Drawing.Size(122, 17);
+            this.radioButtonCamHackMode3.Size = new System.Drawing.Size(151, 17);
             this.radioButtonCamHackMode3.TabIndex = 10;
-            this.radioButtonCamHackMode3.Text = "Fixed Position/Angle";
+            this.radioButtonCamHackMode3.Text = "Fixed Position, Fixed Angle";
             this.radioButtonCamHackMode3.UseVisualStyleBackColor = true;
             // 
             // radioButtonCamHackMode0
@@ -4049,22 +4051,22 @@ namespace SM64_Diagnostic
             // radioButtonCamHackMode2
             // 
             this.radioButtonCamHackMode2.AutoSize = true;
-            this.radioButtonCamHackMode2.Location = new System.Drawing.Point(19, 73);
+            this.radioButtonCamHackMode2.Location = new System.Drawing.Point(19, 96);
             this.radioButtonCamHackMode2.Name = "radioButtonCamHackMode2";
             this.radioButtonCamHackMode2.Size = new System.Drawing.Size(162, 17);
             this.radioButtonCamHackMode2.TabIndex = 9;
             this.radioButtonCamHackMode2.Text = "Fixed Position, Watch Object";
             this.radioButtonCamHackMode2.UseVisualStyleBackColor = true;
             // 
-            // radioButtonCamHackMode1
+            // radioButtonCamHackMode1RelativeAngle
             // 
-            this.radioButtonCamHackMode1.AutoSize = true;
-            this.radioButtonCamHackMode1.Location = new System.Drawing.Point(19, 50);
-            this.radioButtonCamHackMode1.Name = "radioButtonCamHackMode1";
-            this.radioButtonCamHackMode1.Size = new System.Drawing.Size(89, 17);
-            this.radioButtonCamHackMode1.TabIndex = 8;
-            this.radioButtonCamHackMode1.Text = "Follow Object";
-            this.radioButtonCamHackMode1.UseVisualStyleBackColor = true;
+            this.radioButtonCamHackMode1RelativeAngle.AutoSize = true;
+            this.radioButtonCamHackMode1RelativeAngle.Location = new System.Drawing.Point(19, 50);
+            this.radioButtonCamHackMode1RelativeAngle.Name = "radioButtonCamHackMode1RelativeAngle";
+            this.radioButtonCamHackMode1RelativeAngle.Size = new System.Drawing.Size(164, 17);
+            this.radioButtonCamHackMode1RelativeAngle.TabIndex = 8;
+            this.radioButtonCamHackMode1RelativeAngle.Text = "Follow Object, Relative Angle";
+            this.radioButtonCamHackMode1RelativeAngle.UseVisualStyleBackColor = true;
             // 
             // noTearFlowLayoutPanelCamHack
             // 
@@ -4524,6 +4526,16 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.TabIndex = 20;
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
+            // 
+            // radioButtonCamHackMode1AbsoluteAngle
+            // 
+            this.radioButtonCamHackMode1AbsoluteAngle.AutoSize = true;
+            this.radioButtonCamHackMode1AbsoluteAngle.Location = new System.Drawing.Point(19, 73);
+            this.radioButtonCamHackMode1AbsoluteAngle.Name = "radioButtonCamHackMode1AbsoluteAngle";
+            this.radioButtonCamHackMode1AbsoluteAngle.Size = new System.Drawing.Size(166, 17);
+            this.radioButtonCamHackMode1AbsoluteAngle.TabIndex = 8;
+            this.radioButtonCamHackMode1AbsoluteAngle.Text = "Follow Object, Absolute Angle";
+            this.radioButtonCamHackMode1AbsoluteAngle.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -5002,10 +5014,11 @@ namespace SM64_Diagnostic
         private Label labelCamHackMode;
         private RadioButton radioButtonCamHackMode3;
         private RadioButton radioButtonCamHackMode2;
-        private RadioButton radioButtonCamHackMode1;
+        private RadioButton radioButtonCamHackMode1RelativeAngle;
         private RadioButton radioButtonCamHackMode0;
         private SplitContainer splitContainerCamHack;
         private CheckBox checkBoxShowOverlayCameraHackObject;
+        private RadioButton radioButtonCamHackMode1AbsoluteAngle;
     }
 }
 
