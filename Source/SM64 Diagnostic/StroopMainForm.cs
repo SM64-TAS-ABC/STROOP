@@ -49,7 +49,8 @@ namespace SM64_Diagnostic
         HackManager _hackManager;
         TriangleManager _triangleManager;
         DebugManager _debugManager;
-        DataManager _waterManager, _fileManager, _levelManager, _cameraHackManager;
+        CamHackManager _cameraHackManager;
+        DataManager _waterManager, _fileManager, _levelManager;
         PuManager _puManager;
 
         TabPage _previousTabPage;
@@ -127,7 +128,7 @@ namespace SM64_Diagnostic
             currentContext.PuManager = _puManager = new PuManager(_sm64Stream, groupBoxPuController);
             currentContext.FileManager = _fileManager = new DataManager(_sm64Stream, _fileData, noTearFlowLayoutPanelFile);
             currentContext.LevelManager = _levelManager = new DataManager(_sm64Stream, _levelData, noTearFlowLayoutPanelLevel);
-            currentContext.CameraHackManager = _cameraHackManager = new DataManager(_sm64Stream, _camHackData, noTearFlowLayoutPanelCamHack);
+            currentContext.CameraHackManager = _cameraHackManager = new CamHackManager(_sm64Stream, _camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
             currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
             _previousTabPage = tabPageObjects;
 
