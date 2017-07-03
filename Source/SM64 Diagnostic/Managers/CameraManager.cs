@@ -47,18 +47,18 @@ namespace SM64_Diagnostic.Managers
                 });
 
             var cameraSphericalPosGroupBox = tabControl.Controls["groupBoxCameraSphericalPos"] as GroupBox;
-            _cameraSphericalPosThetaPhiTextbox = cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosThetaPhi"] as TextBox;
-            _cameraSphericalPosRadiusTextbox = cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosRadius"] as TextBox;
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosThetaP"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 1, 0);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosThetaN"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, -1, 0);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosPhiP"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 0, 1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosPhiN"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 0, -1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosThetaPPhiP"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 1, 1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosThetaPPhiN"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 1, -1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosThetaNPhiP"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, -1, 1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosThetaNPhiN"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, -1, -1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosRadiusP"] as Button).Click += (sender, e) => cameraSphericalPosRadiusButton_Click(sender, e, 1);
-            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosRadiusN"] as Button).Click += (sender, e) => cameraSphericalPosRadiusButton_Click(sender, e, -1);
+            _cameraSphericalPosThetaPhiTextbox = cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosTP"] as TextBox;
+            _cameraSphericalPosRadiusTextbox = cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosR"] as TextBox;
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosTp"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 1, 0);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosTn"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, -1, 0);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosPp"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 0, 1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosPn"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 0, -1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosTpPp"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 1, 1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosTpPn"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, 1, -1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosTnPp"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, -1, 1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosTnPn"] as Button).Click += (sender, e) => cameraSphericalPosThetaPhiButton_Click(sender, e, -1, -1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosRp"] as Button).Click += (sender, e) => cameraSphericalPosRadiusButton_Click(sender, e, 1);
+            (cameraSphericalPosGroupBox.Controls["buttoncameraSphericalPosRn"] as Button).Click += (sender, e) => cameraSphericalPosRadiusButton_Click(sender, e, -1);
         }
 
         protected override void InitializeSpecialVariables()

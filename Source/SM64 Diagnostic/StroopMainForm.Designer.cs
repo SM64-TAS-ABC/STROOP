@@ -177,19 +177,19 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
             this.groupBoxCameraSphericalPos = new System.Windows.Forms.GroupBox();
-            this.checkBoxCameraSphericalPosRelative = new System.Windows.Forms.CheckBox();
-            this.textBoxCameraSphericalPosRadius = new System.Windows.Forms.TextBox();
-            this.buttonCameraSphericalPosRadiusN = new System.Windows.Forms.Button();
-            this.buttonCameraSphericalPosRadiusP = new System.Windows.Forms.Button();
-            this.buttonCameraSphericalPosThetaPPhiP = new System.Windows.Forms.Button();
-            this.textBoxCameraSphericalPosThetaPhi = new System.Windows.Forms.TextBox();
-            this.buttonCameraSphericalPosThetaP = new System.Windows.Forms.Button();
-            this.buttonCameraSphericalPosThetaPPhiN = new System.Windows.Forms.Button();
-            this.buttonCameraSphericalPosPhiN = new System.Windows.Forms.Button();
-            this.buttonCameraSphericalPosPhiP = new System.Windows.Forms.Button();
-            this.buttonCameraSphericalPosThetaNPhiP = new System.Windows.Forms.Button();
-            this.buttonCameraSphericalPosThetaN = new System.Windows.Forms.Button();
-            this.buttonCameraSphericalPosThetaNPhiN = new System.Windows.Forms.Button();
+            this.checkBoxCameraSphericalPosPivotOnMario = new System.Windows.Forms.CheckBox();
+            this.textBoxCameraSphericalPosR = new System.Windows.Forms.TextBox();
+            this.buttonCameraSphericalPosRn = new System.Windows.Forms.Button();
+            this.buttonCameraSphericalPosRp = new System.Windows.Forms.Button();
+            this.buttonCameraSphericalPosTpPp = new System.Windows.Forms.Button();
+            this.textBoxCameraSphericalPosTP = new System.Windows.Forms.TextBox();
+            this.buttonCameraSphericalPosTp = new System.Windows.Forms.Button();
+            this.buttonCameraSphericalPosTpPn = new System.Windows.Forms.Button();
+            this.buttonCameraSphericalPosPn = new System.Windows.Forms.Button();
+            this.buttonCameraSphericalPosPp = new System.Windows.Forms.Button();
+            this.buttonCameraSphericalPosTnPp = new System.Windows.Forms.Button();
+            this.buttonCameraSphericalPosTn = new System.Windows.Forms.Button();
+            this.buttonCameraSphericalPosTnPn = new System.Windows.Forms.Button();
             this.groupBoxCameraPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraPosRelative = new System.Windows.Forms.CheckBox();
             this.textBoxCameraPosY = new System.Windows.Forms.TextBox();
@@ -2170,19 +2170,19 @@ namespace SM64_Diagnostic
             // 
             // groupBoxCameraSphericalPos
             // 
-            this.groupBoxCameraSphericalPos.Controls.Add(this.checkBoxCameraSphericalPosRelative);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.textBoxCameraSphericalPosRadius);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosRadiusN);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosRadiusP);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaPPhiP);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.textBoxCameraSphericalPosThetaPhi);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaP);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaPPhiN);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosPhiN);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosPhiP);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaNPhiP);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaN);
-            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosThetaNPhiN);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.checkBoxCameraSphericalPosPivotOnMario);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.textBoxCameraSphericalPosR);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosRn);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosRp);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosTpPp);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.textBoxCameraSphericalPosTP);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosTp);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosTpPn);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosPn);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosPp);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosTnPp);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosTn);
+            this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosTnPn);
             this.groupBoxCameraSphericalPos.Location = new System.Drawing.Point(3, 215);
             this.groupBoxCameraSphericalPos.Name = "groupBoxCameraSphericalPos";
             this.groupBoxCameraSphericalPos.Size = new System.Drawing.Size(185, 146);
@@ -2190,136 +2190,136 @@ namespace SM64_Diagnostic
             this.groupBoxCameraSphericalPos.TabStop = false;
             this.groupBoxCameraSphericalPos.Text = "Spherical";
             // 
-            // checkBoxCameraSphericalPosRelative
+            // checkBoxCameraSphericalPosPivotOnMario
             // 
-            this.checkBoxCameraSphericalPosRelative.AutoSize = true;
-            this.checkBoxCameraSphericalPosRelative.Location = new System.Drawing.Point(91, 0);
-            this.checkBoxCameraSphericalPosRelative.Name = "checkBoxCameraSphericalPosRelative";
-            this.checkBoxCameraSphericalPosRelative.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxCameraSphericalPosRelative.TabIndex = 38;
-            this.checkBoxCameraSphericalPosRelative.Text = "Pivot on Mario";
-            this.checkBoxCameraSphericalPosRelative.UseVisualStyleBackColor = true;
+            this.checkBoxCameraSphericalPosPivotOnMario.AutoSize = true;
+            this.checkBoxCameraSphericalPosPivotOnMario.Location = new System.Drawing.Point(91, 0);
+            this.checkBoxCameraSphericalPosPivotOnMario.Name = "checkBoxCameraSphericalPosPivotOnMario";
+            this.checkBoxCameraSphericalPosPivotOnMario.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxCameraSphericalPosPivotOnMario.TabIndex = 38;
+            this.checkBoxCameraSphericalPosPivotOnMario.Text = "Pivot on Mario";
+            this.checkBoxCameraSphericalPosPivotOnMario.UseVisualStyleBackColor = true;
             // 
-            // textBoxCameraSphericalPosRadius
+            // textBoxCameraSphericalPosR
             // 
-            this.textBoxCameraSphericalPosRadius.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxCameraSphericalPosRadius.Location = new System.Drawing.Point(140, 70);
-            this.textBoxCameraSphericalPosRadius.Name = "textBoxCameraSphericalPosRadius";
-            this.textBoxCameraSphericalPosRadius.Size = new System.Drawing.Size(42, 20);
-            this.textBoxCameraSphericalPosRadius.TabIndex = 33;
-            this.textBoxCameraSphericalPosRadius.Text = "100";
-            this.textBoxCameraSphericalPosRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCameraSphericalPosR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxCameraSphericalPosR.Location = new System.Drawing.Point(140, 70);
+            this.textBoxCameraSphericalPosR.Name = "textBoxCameraSphericalPosR";
+            this.textBoxCameraSphericalPosR.Size = new System.Drawing.Size(42, 20);
+            this.textBoxCameraSphericalPosR.TabIndex = 33;
+            this.textBoxCameraSphericalPosR.Text = "100";
+            this.textBoxCameraSphericalPosR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // buttonCameraSphericalPosRadiusN
+            // buttonCameraSphericalPosRn
             // 
-            this.buttonCameraSphericalPosRadiusN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCameraSphericalPosRadiusN.Location = new System.Drawing.Point(140, 16);
-            this.buttonCameraSphericalPosRadiusN.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosRadiusN.Name = "buttonCameraSphericalPosRadiusN";
-            this.buttonCameraSphericalPosRadiusN.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosRadiusN.TabIndex = 35;
-            this.buttonCameraSphericalPosRadiusN.Text = "R-";
-            this.buttonCameraSphericalPosRadiusN.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosRn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCameraSphericalPosRn.Location = new System.Drawing.Point(140, 16);
+            this.buttonCameraSphericalPosRn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosRn.Name = "buttonCameraSphericalPosRn";
+            this.buttonCameraSphericalPosRn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosRn.TabIndex = 35;
+            this.buttonCameraSphericalPosRn.Text = "R-";
+            this.buttonCameraSphericalPosRn.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraSphericalPosRadiusP
+            // buttonCameraSphericalPosRp
             // 
-            this.buttonCameraSphericalPosRadiusP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCameraSphericalPosRadiusP.Location = new System.Drawing.Point(140, 100);
-            this.buttonCameraSphericalPosRadiusP.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosRadiusP.Name = "buttonCameraSphericalPosRadiusP";
-            this.buttonCameraSphericalPosRadiusP.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosRadiusP.TabIndex = 34;
-            this.buttonCameraSphericalPosRadiusP.Text = "R+";
-            this.buttonCameraSphericalPosRadiusP.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosRp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCameraSphericalPosRp.Location = new System.Drawing.Point(140, 100);
+            this.buttonCameraSphericalPosRp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosRp.Name = "buttonCameraSphericalPosRp";
+            this.buttonCameraSphericalPosRp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosRp.TabIndex = 34;
+            this.buttonCameraSphericalPosRp.Text = "R+";
+            this.buttonCameraSphericalPosRp.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraSphericalPosThetaPPhiP
+            // buttonCameraSphericalPosTpPp
             // 
-            this.buttonCameraSphericalPosThetaPPhiP.Location = new System.Drawing.Point(87, 100);
-            this.buttonCameraSphericalPosThetaPPhiP.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosThetaPPhiP.Name = "buttonCameraSphericalPosThetaPPhiP";
-            this.buttonCameraSphericalPosThetaPPhiP.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosThetaPPhiP.TabIndex = 32;
-            this.buttonCameraSphericalPosThetaPPhiP.Text = "θ+ϕ+";
-            this.buttonCameraSphericalPosThetaPPhiP.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosTpPp.Location = new System.Drawing.Point(87, 100);
+            this.buttonCameraSphericalPosTpPp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosTpPp.Name = "buttonCameraSphericalPosTpPp";
+            this.buttonCameraSphericalPosTpPp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosTpPp.TabIndex = 32;
+            this.buttonCameraSphericalPosTpPp.Text = "θ+ϕ+";
+            this.buttonCameraSphericalPosTpPp.UseVisualStyleBackColor = true;
             // 
-            // textBoxCameraSphericalPosThetaPhi
+            // textBoxCameraSphericalPosTP
             // 
-            this.textBoxCameraSphericalPosThetaPhi.Location = new System.Drawing.Point(45, 70);
-            this.textBoxCameraSphericalPosThetaPhi.Name = "textBoxCameraSphericalPosThetaPhi";
-            this.textBoxCameraSphericalPosThetaPhi.Size = new System.Drawing.Size(42, 20);
-            this.textBoxCameraSphericalPosThetaPhi.TabIndex = 27;
-            this.textBoxCameraSphericalPosThetaPhi.Text = "1024";
-            this.textBoxCameraSphericalPosThetaPhi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCameraSphericalPosTP.Location = new System.Drawing.Point(45, 70);
+            this.textBoxCameraSphericalPosTP.Name = "textBoxCameraSphericalPosTP";
+            this.textBoxCameraSphericalPosTP.Size = new System.Drawing.Size(42, 20);
+            this.textBoxCameraSphericalPosTP.TabIndex = 27;
+            this.textBoxCameraSphericalPosTP.Text = "1024";
+            this.textBoxCameraSphericalPosTP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // buttonCameraSphericalPosThetaP
+            // buttonCameraSphericalPosTp
             // 
-            this.buttonCameraSphericalPosThetaP.Location = new System.Drawing.Point(87, 58);
-            this.buttonCameraSphericalPosThetaP.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosThetaP.Name = "buttonCameraSphericalPosThetaP";
-            this.buttonCameraSphericalPosThetaP.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosThetaP.TabIndex = 31;
-            this.buttonCameraSphericalPosThetaP.Text = "θ+";
-            this.buttonCameraSphericalPosThetaP.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosTp.Location = new System.Drawing.Point(87, 58);
+            this.buttonCameraSphericalPosTp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosTp.Name = "buttonCameraSphericalPosTp";
+            this.buttonCameraSphericalPosTp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosTp.TabIndex = 31;
+            this.buttonCameraSphericalPosTp.Text = "θ+";
+            this.buttonCameraSphericalPosTp.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraSphericalPosThetaPPhiN
+            // buttonCameraSphericalPosTpPn
             // 
-            this.buttonCameraSphericalPosThetaPPhiN.Location = new System.Drawing.Point(87, 16);
-            this.buttonCameraSphericalPosThetaPPhiN.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosThetaPPhiN.Name = "buttonCameraSphericalPosThetaPPhiN";
-            this.buttonCameraSphericalPosThetaPPhiN.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosThetaPPhiN.TabIndex = 30;
-            this.buttonCameraSphericalPosThetaPPhiN.Text = "θ+ϕ-";
-            this.buttonCameraSphericalPosThetaPPhiN.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosTpPn.Location = new System.Drawing.Point(87, 16);
+            this.buttonCameraSphericalPosTpPn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosTpPn.Name = "buttonCameraSphericalPosTpPn";
+            this.buttonCameraSphericalPosTpPn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosTpPn.TabIndex = 30;
+            this.buttonCameraSphericalPosTpPn.Text = "θ+ϕ-";
+            this.buttonCameraSphericalPosTpPn.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraSphericalPosPhiN
+            // buttonCameraSphericalPosPn
             // 
-            this.buttonCameraSphericalPosPhiN.Location = new System.Drawing.Point(45, 16);
-            this.buttonCameraSphericalPosPhiN.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosPhiN.Name = "buttonCameraSphericalPosPhiN";
-            this.buttonCameraSphericalPosPhiN.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosPhiN.TabIndex = 29;
-            this.buttonCameraSphericalPosPhiN.Text = "ϕ-";
-            this.buttonCameraSphericalPosPhiN.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosPn.Location = new System.Drawing.Point(45, 16);
+            this.buttonCameraSphericalPosPn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosPn.Name = "buttonCameraSphericalPosPn";
+            this.buttonCameraSphericalPosPn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosPn.TabIndex = 29;
+            this.buttonCameraSphericalPosPn.Text = "ϕ-";
+            this.buttonCameraSphericalPosPn.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraSphericalPosPhiP
+            // buttonCameraSphericalPosPp
             // 
-            this.buttonCameraSphericalPosPhiP.Location = new System.Drawing.Point(45, 100);
-            this.buttonCameraSphericalPosPhiP.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosPhiP.Name = "buttonCameraSphericalPosPhiP";
-            this.buttonCameraSphericalPosPhiP.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosPhiP.TabIndex = 28;
-            this.buttonCameraSphericalPosPhiP.Text = "ϕ+";
-            this.buttonCameraSphericalPosPhiP.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosPp.Location = new System.Drawing.Point(45, 100);
+            this.buttonCameraSphericalPosPp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosPp.Name = "buttonCameraSphericalPosPp";
+            this.buttonCameraSphericalPosPp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosPp.TabIndex = 28;
+            this.buttonCameraSphericalPosPp.Text = "ϕ+";
+            this.buttonCameraSphericalPosPp.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraSphericalPosThetaNPhiP
+            // buttonCameraSphericalPosTnPp
             // 
-            this.buttonCameraSphericalPosThetaNPhiP.Location = new System.Drawing.Point(3, 100);
-            this.buttonCameraSphericalPosThetaNPhiP.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosThetaNPhiP.Name = "buttonCameraSphericalPosThetaNPhiP";
-            this.buttonCameraSphericalPosThetaNPhiP.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosThetaNPhiP.TabIndex = 27;
-            this.buttonCameraSphericalPosThetaNPhiP.Text = "θ-ϕ+";
-            this.buttonCameraSphericalPosThetaNPhiP.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosTnPp.Location = new System.Drawing.Point(3, 100);
+            this.buttonCameraSphericalPosTnPp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosTnPp.Name = "buttonCameraSphericalPosTnPp";
+            this.buttonCameraSphericalPosTnPp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosTnPp.TabIndex = 27;
+            this.buttonCameraSphericalPosTnPp.Text = "θ-ϕ+";
+            this.buttonCameraSphericalPosTnPp.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraSphericalPosThetaN
+            // buttonCameraSphericalPosTn
             // 
-            this.buttonCameraSphericalPosThetaN.Location = new System.Drawing.Point(3, 58);
-            this.buttonCameraSphericalPosThetaN.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosThetaN.Name = "buttonCameraSphericalPosThetaN";
-            this.buttonCameraSphericalPosThetaN.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosThetaN.TabIndex = 26;
-            this.buttonCameraSphericalPosThetaN.Text = "θ-";
-            this.buttonCameraSphericalPosThetaN.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosTn.Location = new System.Drawing.Point(3, 58);
+            this.buttonCameraSphericalPosTn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosTn.Name = "buttonCameraSphericalPosTn";
+            this.buttonCameraSphericalPosTn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosTn.TabIndex = 26;
+            this.buttonCameraSphericalPosTn.Text = "θ-";
+            this.buttonCameraSphericalPosTn.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraSphericalPosThetaNPhiN
+            // buttonCameraSphericalPosTnPn
             // 
-            this.buttonCameraSphericalPosThetaNPhiN.Location = new System.Drawing.Point(3, 16);
-            this.buttonCameraSphericalPosThetaNPhiN.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraSphericalPosThetaNPhiN.Name = "buttonCameraSphericalPosThetaNPhiN";
-            this.buttonCameraSphericalPosThetaNPhiN.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraSphericalPosThetaNPhiN.TabIndex = 25;
-            this.buttonCameraSphericalPosThetaNPhiN.Text = "θ-ϕ-";
-            this.buttonCameraSphericalPosThetaNPhiN.UseVisualStyleBackColor = true;
+            this.buttonCameraSphericalPosTnPn.Location = new System.Drawing.Point(3, 16);
+            this.buttonCameraSphericalPosTnPn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraSphericalPosTnPn.Name = "buttonCameraSphericalPosTnPn";
+            this.buttonCameraSphericalPosTnPn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraSphericalPosTnPn.TabIndex = 25;
+            this.buttonCameraSphericalPosTnPn.Text = "θ-ϕ-";
+            this.buttonCameraSphericalPosTnPn.UseVisualStyleBackColor = true;
             // 
             // groupBoxCameraPos
             // 
@@ -5616,18 +5616,18 @@ namespace SM64_Diagnostic
         private Button buttonTriangleNormalN;
         private Button buttonTriangleNormalP;
         private GroupBox groupBoxCameraSphericalPos;
-        private TextBox textBoxCameraSphericalPosRadius;
-        private Button buttonCameraSphericalPosRadiusN;
-        private Button buttonCameraSphericalPosRadiusP;
-        private Button buttonCameraSphericalPosThetaPPhiP;
-        private TextBox textBoxCameraSphericalPosThetaPhi;
-        private Button buttonCameraSphericalPosThetaP;
-        private Button buttonCameraSphericalPosThetaPPhiN;
-        private Button buttonCameraSphericalPosPhiN;
-        private Button buttonCameraSphericalPosPhiP;
-        private Button buttonCameraSphericalPosThetaNPhiP;
-        private Button buttonCameraSphericalPosThetaN;
-        private Button buttonCameraSphericalPosThetaNPhiN;
+        private TextBox textBoxCameraSphericalPosR;
+        private Button buttonCameraSphericalPosRn;
+        private Button buttonCameraSphericalPosRp;
+        private Button buttonCameraSphericalPosTpPp;
+        private TextBox textBoxCameraSphericalPosTP;
+        private Button buttonCameraSphericalPosTp;
+        private Button buttonCameraSphericalPosTpPn;
+        private Button buttonCameraSphericalPosPn;
+        private Button buttonCameraSphericalPosPp;
+        private Button buttonCameraSphericalPosTnPp;
+        private Button buttonCameraSphericalPosTn;
+        private Button buttonCameraSphericalPosTnPn;
         private CheckBox checkBoxScaleDiagonalPositionControllerButtons;
         private CheckBox checkBoxMarioPosRelative;
         private CheckBox checkBoxMarioHOLPRelative;
@@ -5635,7 +5635,7 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxObjPosRelative;
         private CheckBox checkBoxTrianglePosRelative;
         private CheckBox checkBoxCameraPosRelative;
-        private CheckBox checkBoxCameraSphericalPosRelative;
+        private CheckBox checkBoxCameraSphericalPosPivotOnMario;
         private Button buttonRefreshAndConnect;
         private GroupBox groupBoxShowOverlay;
         private CheckBox checkBoxShowOverlayClosestObject;
