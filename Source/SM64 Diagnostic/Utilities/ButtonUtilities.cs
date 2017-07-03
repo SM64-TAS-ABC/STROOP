@@ -128,7 +128,7 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectYOffset));
             float zDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectZOffset));
 
-            yDestination += 0;// Config.Mario.MoveToObjectYOffset;
+            handleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
             return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
@@ -146,9 +146,25 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             float zDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            yDestination += 0;// Config.ObjectSlots.MoveToMarioYOffset;
+            handleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
 
             return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
+        }
+
+        private static void handleGotoOffset(ref float xPos, ref float yPos, ref float zPos)
+        {
+            float gotoAbove = Config.GotoRetrieve.GotoAboveOffset;
+            float gotoInfront = Config.GotoRetrieve.GotoInfrontOffset;
+
+            yPos += gotoAbove;
+        }
+
+        private static void handleRetrieveOffset(ref float xPos, ref float yPos, ref float zPos)
+        {
+            float retrieveAbove = Config.GotoRetrieve.RetrieveAboveOffset;
+            float retrieveInfront = Config.GotoRetrieve.RetrieveInfrontOffset;
+
+            yPos += retrieveAbove;
         }
 
         public static bool TranslateObjects(ProcessStream stream, List<uint> objAddresses,
@@ -245,7 +261,7 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeYOffset));
             float zDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeZOffset));
 
-            yDestination += 0;// Config.Mario.MoveToObjectYOffset;
+            handleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
             return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
@@ -263,7 +279,7 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             float zDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            yDestination += 0;// Config.ObjectSlots.MoveToMarioYOffset;
+            handleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
 
             return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }

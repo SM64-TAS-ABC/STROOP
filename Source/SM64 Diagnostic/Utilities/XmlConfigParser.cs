@@ -722,29 +722,21 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "GotoAboveOffset":
-                                    Config.GotoRetrieve.GotoAboveOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
                                 case "GotoAboveDefault":
-                                    Config.GotoRetrieve.GotoAboveDefault = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "GotoInfrontOffset":
-                                    Config.GotoRetrieve.GotoInfrontOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.GotoRetrieve.GotoAboveDefault = int.Parse(subElement.Value);
+                                    Config.GotoRetrieve.GotoAboveOffset = int.Parse(subElement.Value);
                                     break;
                                 case "GotoInfrontDefault":
-                                    Config.GotoRetrieve.GotoInfrontDefault = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "RetrieveAboveOffset":
-                                    Config.GotoRetrieve.RetrieveAboveOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.GotoRetrieve.GotoInfrontDefault = int.Parse(subElement.Value);
+                                    Config.GotoRetrieve.GotoInfrontOffset = int.Parse(subElement.Value);
                                     break;
                                 case "RetrieveAboveDefault":
-                                    Config.GotoRetrieve.RetrieveAboveDefault = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "RetrieveInfrontOffset":
-                                    Config.GotoRetrieve.RetrieveInfrontOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.GotoRetrieve.RetrieveAboveDefault = int.Parse(subElement.Value);
+                                    Config.GotoRetrieve.RetrieveAboveOffset = int.Parse(subElement.Value);
                                     break;
                                 case "RetrieveInfrontDefault":
-                                    Config.GotoRetrieve.RetrieveInfrontDefault = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.GotoRetrieve.RetrieveInfrontDefault = int.Parse(subElement.Value);
+                                    Config.GotoRetrieve.RetrieveInfrontOffset = int.Parse(subElement.Value);
                                     break;
                             }
                         }
