@@ -46,6 +46,34 @@ namespace SM64_Diagnostic.Managers
                         useRelative);
                 });
 
+            /*
+            var cameraSphericalPosGroupBox = tabControl.Controls["groupBoxCameraSphericalPos"] as GroupBox;
+            PositionController.initialize(
+                cameraSphericalPosGroupBox.Controls["buttonCameraPosTn"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraPosTp"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraPosPn"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraPosPp"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraPosTnPn"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraPosTnPp"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraPosTpPn"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraPosTpPp"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraPosRn"] as Button,
+                cameraSphericalPosGroupBox.Controls["buttonCameraPosRp"] as Button,
+                cameraSphericalPosGroupBox.Controls["textBoxCameraPosXZ"] as TextBox,
+                cameraSphericalPosGroupBox.Controls["textBoxCameraPosY"] as TextBox,
+                cameraSphericalPosGroupBox.Controls["checkBoxCameraPosRelative"] as CheckBox,
+                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
+                {
+                    MarioActions.TranslateCamera(
+                        _stream,
+                        xOffset,
+                        yOffset,
+                        zOffset,
+                        useRelative);
+                });
+                */
+
+
             var cameraSphericalPosGroupBox = tabControl.Controls["groupBoxCameraSphericalPos"] as GroupBox;
             _cameraSphericalPosThetaPhiTextbox = cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosTP"] as TextBox;
             _cameraSphericalPosRadiusTextbox = cameraSphericalPosGroupBox.Controls["textBoxCameraSphericalPosR"] as TextBox;
