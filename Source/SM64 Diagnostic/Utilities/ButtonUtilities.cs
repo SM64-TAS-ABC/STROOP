@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
+using static SM64_Diagnostic.Managers.CamHackManager;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -828,7 +829,7 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool TranslateCameraHack(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
+        public static bool TranslateCameraHack(ProcessStream stream, CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             /*
             List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
@@ -843,7 +844,7 @@ namespace SM64_Diagnostic.Utilities
             return false;
         }
 
-        public static bool TranslateCameraHackSpherically(ProcessStream stream, float radiusOffset, float thetaOffset, float phiOffset, (float, float, float) pivotPoint)
+        public static bool TranslateCameraHackSpherically(ProcessStream stream, CamHackMode camHackMode, float radiusOffset, float thetaOffset, float phiOffset, (float, float, float) pivotPoint)
         {
             /*
             List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
@@ -858,7 +859,7 @@ namespace SM64_Diagnostic.Utilities
             return false;
         }
 
-        public static bool TranslateCameraHackFocus(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
+        public static bool TranslateCameraHackFocus(ProcessStream stream, CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             /*
             List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
@@ -873,7 +874,7 @@ namespace SM64_Diagnostic.Utilities
             return false;
         }
 
-        public static bool TranslateCameraHackFocusSpherically(ProcessStream stream, float radiusOffset, float thetaOffset, float phiOffset, (float, float, float) pivotPoint)
+        public static bool TranslateCameraHackFocusSpherically(ProcessStream stream, CamHackMode camHackMode, float radiusOffset, float thetaOffset, float phiOffset, (float, float, float) pivotPoint)
         {
             /*
             List<PositionAddressAngle> posAddressAngles = new List<PositionAddressAngle>();
