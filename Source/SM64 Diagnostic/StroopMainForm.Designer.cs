@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -551,6 +551,7 @@ namespace SM64_Diagnostic
             this.splitContainerHud.Panel2.SuspendLayout();
             this.splitContainerHud.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMario)).BeginInit();
+            this.splitContainerMario.Panel2.SuspendLayout();
             this.splitContainerMario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).BeginInit();
             this.splitContainerObject.SuspendLayout();
@@ -1573,7 +1574,6 @@ namespace SM64_Diagnostic
             this.tabPageMario.Controls.Add(this.buttonMarioVisibility);
             this.tabPageMario.Controls.Add(this.buttonMarioToggleHandsfree);
             this.tabPageMario.Controls.Add(this.panelMarioBorder);
-            this.tabPageMario.Controls.Add(this.NoTearFlowLayoutPanelMario);
             this.tabPageMario.Controls.Add(this.splitContainerMario);
             this.tabPageMario.Location = new System.Drawing.Point(4, 22);
             this.tabPageMario.Margin = new System.Windows.Forms.Padding(2);
@@ -3550,8 +3550,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -5148,10 +5148,10 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NoTearFlowLayoutPanelMario.AutoScroll = true;
             this.NoTearFlowLayoutPanelMario.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(193, 6);
+            this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(720, 437);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(627, 440);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // noTearFlowLayoutPanelActions
@@ -5504,9 +5504,13 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerMario.Panel1.AutoScroll = true;
             this.splitContainerMario.Panel1MinSize = 0;
+            // 
+            // splitContainerMario.Panel2
+            // 
+            this.splitContainerMario.Panel2.Controls.Add(this.NoTearFlowLayoutPanelMario);
             this.splitContainerMario.Panel2MinSize = 0;
             this.splitContainerMario.Size = new System.Drawing.Size(915, 447);
-            this.splitContainerMario.SplitterDistance = 161;
+            this.splitContainerMario.SplitterDistance = 280;
             this.splitContainerMario.SplitterWidth = 1;
             this.splitContainerMario.TabIndex = 31;
             // 
@@ -5684,6 +5688,7 @@ namespace SM64_Diagnostic
             this.splitContainerHud.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).EndInit();
             this.splitContainerHud.ResumeLayout(false);
+            this.splitContainerMario.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMario)).EndInit();
             this.splitContainerMario.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).EndInit();
