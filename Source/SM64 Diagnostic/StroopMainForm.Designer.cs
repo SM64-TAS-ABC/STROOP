@@ -250,8 +250,8 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelWater = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageController = new System.Windows.Forms.TabPage();
             this.splitContainerController = new System.Windows.Forms.SplitContainer();
-            this.panelControllerDisplay = new SM64_Diagnostic.ControllerDisplayPanel();
             this.pictureBoxController = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.controllerDisplayPanel = new SM64_Diagnostic.ControllerDisplayPanel();
             this.NoTearFlowLayoutPanelController = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.splitContainerFile = new System.Windows.Forms.SplitContainer();
@@ -590,7 +590,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 202);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 203);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -678,7 +678,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 155);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 156);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -1631,7 +1631,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(696, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(699, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2149,7 +2149,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(708, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(711, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2274,7 +2274,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(800, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(803, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -2655,7 +2655,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(722, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(725, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3049,7 +3049,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(710, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(713, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3101,7 +3101,7 @@ namespace SM64_Diagnostic
             // splitContainerController.Panel1
             // 
             this.splitContainerController.Panel1.Controls.Add(this.pictureBoxController);
-            this.splitContainerController.Panel1.Controls.Add(this.panelControllerDisplay);
+            this.splitContainerController.Panel1.Controls.Add(this.controllerDisplayPanel);
             this.splitContainerController.Panel1MinSize = 0;
             // 
             // splitContainerController.Panel2
@@ -3112,14 +3112,6 @@ namespace SM64_Diagnostic
             this.splitContainerController.SplitterDistance = 229;
             this.splitContainerController.SplitterWidth = 1;
             this.splitContainerController.TabIndex = 17;
-            // 
-            // panelControllerDisplay
-            // 
-            this.panelControllerDisplay.Location = new System.Drawing.Point(3, 3);
-            this.panelControllerDisplay.Margin = new System.Windows.Forms.Padding(2);
-            this.panelControllerDisplay.Name = "panelControllerDisplay";
-            this.panelControllerDisplay.Size = new System.Drawing.Size(222, 457);
-            this.panelControllerDisplay.TabIndex = 4;
             // 
             // pictureBoxController
             // 
@@ -3136,6 +3128,14 @@ namespace SM64_Diagnostic
             this.pictureBoxController.TabIndex = 3;
             this.pictureBoxController.TabStop = false;
             // 
+            // controllerDisplayPanel
+            // 
+            this.controllerDisplayPanel.Location = new System.Drawing.Point(3, 3);
+            this.controllerDisplayPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.controllerDisplayPanel.Name = "controllerDisplayPanel";
+            this.controllerDisplayPanel.Size = new System.Drawing.Size(222, 457);
+            this.controllerDisplayPanel.TabIndex = 4;
+            // 
             // NoTearFlowLayoutPanelController
             // 
             this.NoTearFlowLayoutPanelController.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -3146,7 +3146,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(742, 460);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(745, 460);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3194,7 +3194,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(776, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(779, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -3631,7 +3631,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(767, 430);
+            this.glControlMap.Size = new System.Drawing.Size(770, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -4147,7 +4147,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(627, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(630, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -4165,7 +4165,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(511, 422);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(514, 422);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -4228,7 +4228,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(615, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(618, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -4937,7 +4937,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(521, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(524, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -6139,7 +6139,7 @@ namespace SM64_Diagnostic
         private SplitContainer splitContainerHud;
         private SplitContainer splitContainerMario;
         private SplitContainer splitContainerObject;
-        private ControllerDisplayPanel panelControllerDisplay;
+        private ControllerDisplayPanel controllerDisplayPanel;
     }
 }
 

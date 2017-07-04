@@ -16,12 +16,17 @@ namespace SM64_Diagnostic
 {
     public class ControllerDisplayPanel : Panel
     {
-        public static TabControl tabControlMain;
+        ControllerImageGui _gui;
 
         object _gfxLock = new object();
 
         public ControllerDisplayPanel()
         {
+        }
+
+        public void setControllerDisplayGui(ControllerImageGui gui)
+        {
+            _gui = gui;
         }
 
         /*
@@ -122,6 +127,10 @@ namespace SM64_Diagnostic
         {
             e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
 
+
+
+
+
             /*
             lock (_gfxLock)
             {
@@ -169,7 +178,10 @@ namespace SM64_Diagnostic
 
             // Draw Overlays
 
-            //e.Graphics.DrawImage(_gui.WallObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_gui != null)
+            {
+                e.Graphics.DrawImage(_gui.ControllerBaseImage, new Rectangle(new Point(), Size));
+            }
 
             /*
             if (_drawWallObject)

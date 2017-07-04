@@ -16,11 +16,17 @@ namespace SM64_Diagnostic.Managers
     public class ControllerManager : DataManager
     {
         ControllerImageGui _gui;
+        ControllerDisplayPanel _controllerDisplayPanel;
 
         public ControllerManager(ProcessStream stream, List<WatchVariable> controllerData, Control controllerControl, NoTearFlowLayoutPanel variableTable, ControllerImageGui gui)
             : base(stream, controllerData, variableTable, Config.Mario.StructAddress)
         {
             _gui = gui;
+
+            SplitContainer splitContainerController = controllerControl.Controls["splitContainerController"] as SplitContainer;
+            ControllerDisplayPanel _controllerDisplayPanel = splitContainerController.Panel1.Controls["controllerDisplayPanel"] as ControllerDisplayPanel;
+
+            _controllerDisplayPanel.setControllerDisplayGui(_gui);
 
             /*
             _mapManager = mapManager;
