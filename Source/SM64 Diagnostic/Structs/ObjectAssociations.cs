@@ -32,7 +32,6 @@ namespace SM64_Diagnostic.Structs
         public Image MarioImage;
         public Image HudImage;
         public Image DebugImage;
-        public Image ControllerImage;
         public Image MiscImage;
         public Image CameraImage;
         public Image CameraMapImage;
@@ -41,7 +40,6 @@ namespace SM64_Diagnostic.Structs
         public Color MarioColor;
         public Color HudColor;
         public Color DebugColor;
-        public Color ControllerColor;
         public Color MiscColor;
         public Color CameraColor;
         public uint MarioBehavior;
@@ -208,7 +206,6 @@ namespace SM64_Diagnostic.Structs
             HolpImage?.Dispose();
             HudImage?.Dispose();
             DebugImage?.Dispose();
-            ControllerImage?.Dispose();
             MiscImage?.Dispose();
             CameraImage?.Dispose();
             CameraMapImage?.Dispose();

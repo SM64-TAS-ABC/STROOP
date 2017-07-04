@@ -24,9 +24,10 @@ namespace SM64_Diagnostic.Managers
             _gui = gui;
 
             SplitContainer splitContainerController = controllerControl.Controls["splitContainerController"] as SplitContainer;
-            ControllerDisplayPanel _controllerDisplayPanel = splitContainerController.Panel1.Controls["controllerDisplayPanel"] as ControllerDisplayPanel;
+            _controllerDisplayPanel = splitContainerController.Panel1.Controls["controllerDisplayPanel"] as ControllerDisplayPanel;
 
             _controllerDisplayPanel.setControllerDisplayGui(_gui);
+            _controllerDisplayPanel.setProcessStream(_stream);
 
             /*
             _mapManager = mapManager;
@@ -138,6 +139,8 @@ namespace SM64_Diagnostic.Managers
             bool buttonDRightPressed = (_stream.GetByte(inputStruct + Config.Controller.ButtonDRightOffset) & Config.Controller.ButtonDRightMask) != 0;
             sbyte controlStickH = (sbyte)_stream.GetByte(inputStruct + Config.Controller.ControlStickHOffset);
             sbyte controlStickV = (sbyte)_stream.GetByte(inputStruct + Config.Controller.ControlStickVOffset);
+
+            _controllerDisplayPanel.Invalidate();
 
             /*
             counter++;

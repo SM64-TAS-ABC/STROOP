@@ -305,9 +305,6 @@ namespace SM64_Diagnostic
             panelDebugBorder.BackColor = _objectAssoc.DebugColor;
             pictureBoxDebug.BackColor = _objectAssoc.DebugColor.Lighten(0.5);
 
-            // Controller Image
-            pictureBoxController.Image = _objectAssoc.ControllerImage;
-
             // Misc Image
             pictureBoxMisc.Image = _objectAssoc.MiscImage;
             panelMiscBorder.BackColor = _objectAssoc.MiscColor;
