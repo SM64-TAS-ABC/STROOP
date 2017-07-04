@@ -15,48 +15,45 @@ namespace SM64_Diagnostic.Managers
     public class FileManager : DataManager
     {
         TabPage _tabControl;
-        uint _triangleAddress = 0;
-        CheckBox _useMisalignmentOffsetCheckbox;
-        int _closestVertex = 0;
 
-        uint TriangleAddress
+        uint _fileAddress = 0;
+        public uint FileAddress
         {
             get
             {
-                return _triangleAddress;
+                return _fileAddress;
             }
             set
             {
-                if (_triangleAddress == value)
+                if (_fileAddress == value)
                     return;
 
-                _triangleAddress = value;
+                _fileAddress = value;
 
                 foreach (var dataContainer in _dataControls)
                 {
                     if (dataContainer is WatchVariableControl)
                     {
                         var watchVar = dataContainer as WatchVariableControl;
-                        watchVar.OtherOffsets = new List<uint>() { _triangleAddress };
+                        watchVar.OtherOffsets = new List<uint>() { _fileAddress };
                     }
                 }
             }
         }
 
-        public enum TriangleMode { Floor, Wall, Ceiling, Other };
+        private enum FileMode { FileA, FileB, FileC, FileD, FileASaved, FileBSaved, FileCSaved, FileDSaved };
 
-        public TriangleMode Mode = TriangleMode.Floor;
+        private FileMode _currentMode;
 
         public FileManager(ProcessStream stream, List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile)
             : base(stream, fileData, noTearFlowLayoutPanelFile)
         {
             _tabControl = tabControl;
+            _currentMode = FileMode.FileA;
 
-            SplitContainer splitContainerTriangles = tabControl.Controls["splitContainerFile"] as SplitContainer;
+            SplitContainer splitContainerFile = tabControl.Controls["splitContainerFile"] as SplitContainer;
 
             /*
-            _useMisalignmentOffsetCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxVertexMisalignment"] as CheckBox;
-
             (splitContainerTriangles.Panel1.Controls["radioButtonTriFloor"] as RadioButton).CheckedChanged
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Floor);
             (splitContainerTriangles.Panel1.Controls["radioButtonTriWall"] as RadioButton).CheckedChanged
@@ -65,39 +62,12 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Ceiling);
             (splitContainerTriangles.Panel1.Controls["radioButtonTriOther"] as RadioButton).CheckedChanged
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Other);
-                */
-
+            */
         }
 
-        private void Mode_CheckedChanged(object sender, EventArgs e, TriangleMode mode)
+        private void Mode_CheckedChanged(object sender, EventArgs e, FileMode mode)
         {
-            if (!(sender as RadioButton).Checked)
-                return;
-
-            Mode = mode;
-        }
-
-        public override void Update(bool updateView)
-        {
-            if (updateView)
-            {
-                switch (Mode)
-                {
-                    case TriangleMode.Ceiling:
-                        TriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
-                        break;
-
-                    case TriangleMode.Floor:
-                        TriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
-                        break;
-
-                    case TriangleMode.Wall:
-                        TriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset);
-                        break;
-                }
-
-                base.Update(updateView);
-            }
+            
         }
     }
 }
