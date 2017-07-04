@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -2933,6 +2933,7 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainerMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMap.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerMap.Location = new System.Drawing.Point(3, 3);
             this.splitContainerMap.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainerMap.Name = "splitContainerMap";
@@ -2952,6 +2953,7 @@ namespace SM64_Diagnostic
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapId);
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapSubName);
             this.splitContainerMap.Panel1.Controls.Add(this.trackBarMapZoom);
+            this.splitContainerMap.Panel1MinSize = 0;
             // 
             // splitContainerMap.Panel2
             // 
@@ -2960,9 +2962,10 @@ namespace SM64_Diagnostic
             this.splitContainerMap.Panel2.Controls.Add(this.labelMapPuValue);
             this.splitContainerMap.Panel2.Controls.Add(this.labelMapQpu);
             this.splitContainerMap.Panel2.Controls.Add(this.labelMapQpuValue);
+            this.splitContainerMap.Panel2MinSize = 0;
             this.splitContainerMap.Size = new System.Drawing.Size(908, 440);
-            this.splitContainerMap.SplitterDistance = 299;
-            this.splitContainerMap.SplitterWidth = 3;
+            this.splitContainerMap.SplitterDistance = 208;
+            this.splitContainerMap.SplitterWidth = 1;
             this.splitContainerMap.TabIndex = 16;
             // 
             // checkBoxMapShowCeiling
@@ -3072,7 +3075,7 @@ namespace SM64_Diagnostic
             // labelMapId
             // 
             this.labelMapId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelMapId.Location = new System.Drawing.Point(185, 421);
+            this.labelMapId.Location = new System.Drawing.Point(94, 421);
             this.labelMapId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapId.Name = "labelMapId";
             this.labelMapId.Size = new System.Drawing.Size(110, 13);
@@ -3111,7 +3114,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(647, 414);
+            this.glControlMap.Size = new System.Drawing.Size(740, 414);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -3457,8 +3460,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
