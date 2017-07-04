@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -452,6 +452,8 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelQuarterFrame = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.NoTearFlowLayoutPanelObjects = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.splitContainerHud = new System.Windows.Forms.SplitContainer();
+            this.splitContainerMario = new System.Windows.Forms.SplitContainer();
+            this.splitContainerObject = new System.Windows.Forms.SplitContainer();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -548,6 +550,10 @@ namespace SM64_Diagnostic
             this.splitContainerHud.Panel1.SuspendLayout();
             this.splitContainerHud.Panel2.SuspendLayout();
             this.splitContainerHud.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMario)).BeginInit();
+            this.splitContainerMario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).BeginInit();
+            this.splitContainerObject.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -754,6 +760,7 @@ namespace SM64_Diagnostic
             this.tabPageObjects.Controls.Add(this.labelObjBhv);
             this.tabPageObjects.Controls.Add(this.panelObjectBorder);
             this.tabPageObjects.Controls.Add(this.labelObjAddValue);
+            this.tabPageObjects.Controls.Add(this.splitContainerObject);
             this.tabPageObjects.Location = new System.Drawing.Point(4, 22);
             this.tabPageObjects.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageObjects.Name = "tabPageObjects";
@@ -1567,6 +1574,7 @@ namespace SM64_Diagnostic
             this.tabPageMario.Controls.Add(this.buttonMarioToggleHandsfree);
             this.tabPageMario.Controls.Add(this.panelMarioBorder);
             this.tabPageMario.Controls.Add(this.NoTearFlowLayoutPanelMario);
+            this.tabPageMario.Controls.Add(this.splitContainerMario);
             this.tabPageMario.Location = new System.Drawing.Point(4, 22);
             this.tabPageMario.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageMario.Name = "tabPageMario";
@@ -3542,8 +3550,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -5481,6 +5489,48 @@ namespace SM64_Diagnostic
             this.splitContainerHud.SplitterWidth = 1;
             this.splitContainerHud.TabIndex = 20;
             // 
+            // splitContainerMario
+            // 
+            this.splitContainerMario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainerMario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMario.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerMario.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerMario.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainerMario.Name = "splitContainerMario";
+            // 
+            // splitContainerMario.Panel1
+            // 
+            this.splitContainerMario.Panel1.AutoScroll = true;
+            this.splitContainerMario.Panel1MinSize = 0;
+            this.splitContainerMario.Panel2MinSize = 0;
+            this.splitContainerMario.Size = new System.Drawing.Size(915, 447);
+            this.splitContainerMario.SplitterDistance = 161;
+            this.splitContainerMario.SplitterWidth = 1;
+            this.splitContainerMario.TabIndex = 31;
+            // 
+            // splitContainerObject
+            // 
+            this.splitContainerObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainerObject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerObject.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerObject.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerObject.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainerObject.Name = "splitContainerObject";
+            // 
+            // splitContainerObject.Panel1
+            // 
+            this.splitContainerObject.Panel1.AutoScroll = true;
+            this.splitContainerObject.Panel1MinSize = 0;
+            this.splitContainerObject.Panel2MinSize = 0;
+            this.splitContainerObject.Size = new System.Drawing.Size(915, 447);
+            this.splitContainerObject.SplitterDistance = 161;
+            this.splitContainerObject.SplitterWidth = 1;
+            this.splitContainerObject.TabIndex = 20;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5634,6 +5684,10 @@ namespace SM64_Diagnostic
             this.splitContainerHud.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).EndInit();
             this.splitContainerHud.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMario)).EndInit();
+            this.splitContainerMario.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).EndInit();
+            this.splitContainerObject.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6059,6 +6113,8 @@ namespace SM64_Diagnostic
         private SplitContainer SplitContainerCamera;
         private SplitContainer splitContainerTriangles;
         private SplitContainer splitContainerHud;
+        private SplitContainer splitContainerMario;
+        private SplitContainer splitContainerObject;
     }
 }
 
