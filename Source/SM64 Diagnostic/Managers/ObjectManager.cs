@@ -224,7 +224,7 @@ namespace SM64_Diagnostic.Managers
             _objAddressLabelValue.Click += ObjAddressLabel_Click;
             _objAddressLabel.Click += ObjAddressLabel_Click;
 
-            Panel objPanel = objectControl.Controls["panelObj"] as Panel;
+            Panel objPanel = splitContainerObject.Panel1.Controls["panelObj"] as Panel;
 
             var goToButton = objPanel.Controls["buttonObjGoTo"] as Button;
             goToButton.Click += (sender, e) => ButtonUtilities.GoToObjects(_stream, _currentAddresses);
