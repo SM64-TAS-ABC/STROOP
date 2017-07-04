@@ -634,7 +634,7 @@ namespace SM64_Diagnostic
             Config.ShowOverlayCeilingObject = checkBoxShowOverlayCeilingObject.Checked;
         }
 
-        private void textBoxGotoAbove_TextChanged(object sender, EventArgs e)
+        private void textBoxGotoAbove_LostFocus(object sender, EventArgs e)
         {
             float value;
             if (float.TryParse((sender as TextBox).Text, out value))
@@ -644,10 +644,11 @@ namespace SM64_Diagnostic
             else
             {
                 Config.GotoRetrieve.GotoAboveOffset = Config.GotoRetrieve.GotoAboveDefault;
+                (sender as TextBox).Text = Config.GotoRetrieve.GotoAboveDefault.ToString();
             }
         }
 
-        private void textBoxGotoInfront_TextChanged(object sender, EventArgs e)
+        private void textBoxGotoInfront_LostFocus(object sender, EventArgs e)
         {
             float value;
             if (float.TryParse((sender as TextBox).Text, out value))
@@ -657,10 +658,11 @@ namespace SM64_Diagnostic
             else
             {
                 Config.GotoRetrieve.GotoInfrontOffset = Config.GotoRetrieve.GotoInfrontDefault;
+                (sender as TextBox).Text = Config.GotoRetrieve.GotoInfrontDefault.ToString();
             }
         }
 
-        private void textBoxRetrieveAbove_TextChanged(object sender, EventArgs e)
+        private void textBoxRetrieveAbove_LostFocus(object sender, EventArgs e)
         {
             float value;
             if (float.TryParse((sender as TextBox).Text, out value))
@@ -670,10 +672,11 @@ namespace SM64_Diagnostic
             else
             {
                 Config.GotoRetrieve.RetrieveAboveOffset = Config.GotoRetrieve.RetrieveAboveDefault;
+                (sender as TextBox).Text = Config.GotoRetrieve.RetrieveAboveDefault.ToString();
             }
         }
 
-        private void textBoxRetrieveInfront_TextChanged(object sender, EventArgs e)
+        private void textBoxRetrieveInfront_LostFocus(object sender, EventArgs e)
         {
             float value;
             if (float.TryParse((sender as TextBox).Text, out value))
@@ -683,41 +686,6 @@ namespace SM64_Diagnostic
             else
             {
                 Config.GotoRetrieve.RetrieveInfrontOffset = Config.GotoRetrieve.RetrieveInfrontDefault;
-            }
-        }
-
-        private void textBoxGotoAbove_LostFocus(object sender, EventArgs e)
-        {
-            float value;
-            if (!float.TryParse((sender as TextBox).Text, out value))
-            {
-                (sender as TextBox).Text = Config.GotoRetrieve.GotoAboveDefault.ToString();
-            }
-        }
-
-        private void textBoxGotoInfront_LostFocus(object sender, EventArgs e)
-        {
-            float value;
-            if (!float.TryParse((sender as TextBox).Text, out value))
-            {
-                (sender as TextBox).Text = Config.GotoRetrieve.GotoInfrontDefault.ToString();
-            }
-        }
-
-        private void textBoxRetrieveAbove_LostFocus(object sender, EventArgs e)
-        {
-            float value;
-            if (!float.TryParse((sender as TextBox).Text, out value))
-            {
-                (sender as TextBox).Text = Config.GotoRetrieve.RetrieveAboveDefault.ToString();
-            }
-        }
-
-        private void textBoxRetrieveInfront_LostFocus(object sender, EventArgs e)
-        {
-            float value;
-            if (!float.TryParse((sender as TextBox).Text, out value))
-            {
                 (sender as TextBox).Text = Config.GotoRetrieve.RetrieveInfrontDefault.ToString();
             }
         }

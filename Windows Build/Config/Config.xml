@@ -206,13 +206,9 @@
     <ObjectOffset>0x28</ObjectOffset>
   </CameraHack>
   <GotoRetrieve>
-    <GotoAboveOffset>300</GotoAboveOffset>
-    <GotoAboveOffset>300</GotoAboveOffset>
-    <GotoInfrontOffset>0</GotoInfrontOffset>
+    <GotoAboveDefault>300</GotoAboveDefault>
     <GotoInfrontDefault>0</GotoInfrontDefault>
-    <RetrieveAboveOffset>300</RetrieveAboveOffset>
     <RetrieveAboveDefault>300</RetrieveAboveDefault>
-    <RetrieveInfrontOffset>0</RetrieveInfrontOffset>
     <RetrieveInfrontDefault>0</RetrieveInfrontDefault>
   </GotoRetrieve>
   <LevelAddress>0x8033B249</LevelAddress>

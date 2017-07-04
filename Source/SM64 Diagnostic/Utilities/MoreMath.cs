@@ -25,6 +25,14 @@ namespace SM64_Diagnostic.Utilities
             return Math.Sqrt(dx * dx + dz * dz);
         }
 
+        public static (double xDist, double zDist) GetVector(double magnitude, double angle)
+        {
+            double radians = AngleUnitsToRadians(angle);
+            double xComponent = Math.Sin(radians);
+            double zComponent = Math.Cos(radians);
+            return (magnitude * xComponent, magnitude * zComponent);
+        }
+
         public static ushort FormatAngle(double angle)
         {
             double nonNegative = NonnegativeModulus(angle, 65536);

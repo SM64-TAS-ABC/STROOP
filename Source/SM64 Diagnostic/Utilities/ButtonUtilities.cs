@@ -128,7 +128,7 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectYOffset));
             float zDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectZOffset));
 
-            handleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
+            handleGotoOffset(stream, ref xDestination, ref yDestination, ref zDestination);
 
             return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
@@ -146,25 +146,37 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             float zDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            handleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
+            handleRetrieveOffset(stream, ref xDestination, ref yDestination, ref zDestination);
 
             return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
 
-        private static void handleGotoOffset(ref float xPos, ref float yPos, ref float zPos)
+        private static void handleGotoOffset(ProcessStream stream, ref float xPos, ref float yPos, ref float zPos)
         {
             float gotoAbove = Config.GotoRetrieve.GotoAboveOffset;
             float gotoInfront = Config.GotoRetrieve.GotoInfrontOffset;
+            ushort marioYaw = stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
 
+            double xOffset, zOffset;
+            (xOffset, zOffset) = MoreMath.GetVector(-1 * gotoInfront, marioYaw);
+
+            xPos += (float)xOffset;
             yPos += gotoAbove;
+            zPos += (float)zOffset;
         }
 
-        private static void handleRetrieveOffset(ref float xPos, ref float yPos, ref float zPos)
+        private static void handleRetrieveOffset(ProcessStream stream, ref float xPos, ref float yPos, ref float zPos)
         {
             float retrieveAbove = Config.GotoRetrieve.RetrieveAboveOffset;
             float retrieveInfront = Config.GotoRetrieve.RetrieveInfrontOffset;
+            ushort marioYaw = stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
 
+            double xOffset, zOffset;
+            (xOffset, zOffset) = MoreMath.GetVector(retrieveInfront, marioYaw);
+
+            xPos += (float)xOffset;
             yPos += retrieveAbove;
+            zPos += (float)zOffset;
         }
 
         public static bool TranslateObjects(ProcessStream stream, List<uint> objAddresses,
@@ -261,7 +273,7 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeYOffset));
             float zDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeZOffset));
 
-            handleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
+            handleGotoOffset(stream, ref xDestination, ref yDestination, ref zDestination);
 
             return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
@@ -279,7 +291,7 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             float zDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            handleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
+            handleRetrieveOffset(stream, ref xDestination, ref yDestination, ref zDestination);
 
             return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }

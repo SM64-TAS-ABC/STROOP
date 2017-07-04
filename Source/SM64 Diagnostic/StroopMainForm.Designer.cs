@@ -5233,7 +5233,6 @@ namespace SM64_Diagnostic
             this.textBoxGotoAbove.TabIndex = 28;
             this.textBoxGotoAbove.Text = "300";
             this.textBoxGotoAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxGotoAbove.TextChanged += new System.EventHandler(this.textBoxGotoAbove_TextChanged);
             this.textBoxGotoAbove.LostFocus += new System.EventHandler(this.textBoxGotoAbove_LostFocus);
             // 
             // labelGotoAbovePrefix
@@ -5284,7 +5283,6 @@ namespace SM64_Diagnostic
             this.textBoxGotoInfront.TabIndex = 31;
             this.textBoxGotoInfront.Text = "0";
             this.textBoxGotoInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxGotoInfront.TextChanged += new System.EventHandler(this.textBoxGotoInfront_TextChanged);
             this.textBoxGotoInfront.LostFocus += new System.EventHandler(this.textBoxGotoInfront_LostFocus);
             // 
             // labelRetrieveInfrontSuffix
@@ -5315,7 +5313,6 @@ namespace SM64_Diagnostic
             this.textBoxRetrieveInfront.TabIndex = 37;
             this.textBoxRetrieveInfront.Text = "0";
             this.textBoxRetrieveInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxRetrieveInfront.TextChanged += new System.EventHandler(this.textBoxRetrieveInfront_TextChanged);
             this.textBoxRetrieveInfront.LostFocus += new System.EventHandler(this.textBoxRetrieveInfront_LostFocus);
             // 
             // labelRetrieveAboveSuffix
@@ -5346,7 +5343,6 @@ namespace SM64_Diagnostic
             this.textBoxRetrieveAbove.TabIndex = 34;
             this.textBoxRetrieveAbove.Text = "300";
             this.textBoxRetrieveAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxRetrieveAbove.TextChanged += new System.EventHandler(this.textBoxRetrieveAbove_TextChanged);
             this.textBoxRetrieveAbove.LostFocus += new System.EventHandler(this.textBoxRetrieveAbove_LostFocus);
             // 
             // StroopMainForm
