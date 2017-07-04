@@ -19,9 +19,11 @@ namespace SM64_Diagnostic.Managers
         {
             _tabControl = tabControl;
 
-            (_tabControl.Controls["buttonFillHp"] as Button).Click += buttonFill_Click;
-            (_tabControl.Controls["buttonDie"] as Button).Click += buttonDie_Click;
-            (_tabControl.Controls["buttonStandardHud"] as Button).Click += buttonStandardHud_Click;
+            SplitContainer splitContainerHud = tabControl.Controls["splitContainerHud"] as SplitContainer;
+
+            (splitContainerHud.Panel1.Controls["buttonFillHp"] as Button).Click += buttonFill_Click;
+            (splitContainerHud.Panel1.Controls["buttonDie"] as Button).Click += buttonDie_Click;
+            (splitContainerHud.Panel1.Controls["buttonStandardHud"] as Button).Click += buttonStandardHud_Click;
         }
 
         private void buttonStandardHud_Click(object sender, EventArgs e)

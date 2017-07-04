@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -545,6 +545,7 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
             this.NoTearFlowLayoutPanelDebugDisplayType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).BeginInit();
+            this.splitContainerHud.Panel1.SuspendLayout();
             this.splitContainerHud.Panel2.SuspendLayout();
             this.splitContainerHud.SuspendLayout();
             this.SuspendLayout();
@@ -2033,10 +2034,6 @@ namespace SM64_Diagnostic
             // 
             // tabPageHud
             // 
-            this.tabPageHud.Controls.Add(this.buttonStandardHud);
-            this.tabPageHud.Controls.Add(this.buttonDie);
-            this.tabPageHud.Controls.Add(this.buttonFillHp);
-            this.tabPageHud.Controls.Add(this.panelHudBorder);
             this.tabPageHud.Controls.Add(this.splitContainerHud);
             this.tabPageHud.Location = new System.Drawing.Point(4, 22);
             this.tabPageHud.Margin = new System.Windows.Forms.Padding(2);
@@ -3545,8 +3542,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -5186,7 +5183,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(747, 441);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(791, 441);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // pictureBoxCamera
@@ -5469,6 +5466,10 @@ namespace SM64_Diagnostic
             // splitContainerHud.Panel1
             // 
             this.splitContainerHud.Panel1.AutoScroll = true;
+            this.splitContainerHud.Panel1.Controls.Add(this.buttonStandardHud);
+            this.splitContainerHud.Panel1.Controls.Add(this.panelHudBorder);
+            this.splitContainerHud.Panel1.Controls.Add(this.buttonDie);
+            this.splitContainerHud.Panel1.Controls.Add(this.buttonFillHp);
             this.splitContainerHud.Panel1MinSize = 0;
             // 
             // splitContainerHud.Panel2
@@ -5476,7 +5477,7 @@ namespace SM64_Diagnostic
             this.splitContainerHud.Panel2.Controls.Add(this.NoTearFlowLayoutPanelHud);
             this.splitContainerHud.Panel2MinSize = 0;
             this.splitContainerHud.Size = new System.Drawing.Size(915, 447);
-            this.splitContainerHud.SplitterDistance = 161;
+            this.splitContainerHud.SplitterDistance = 117;
             this.splitContainerHud.SplitterWidth = 1;
             this.splitContainerHud.TabIndex = 20;
             // 
@@ -5629,6 +5630,7 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
             this.NoTearFlowLayoutPanelDebugDisplayType.ResumeLayout(false);
             this.NoTearFlowLayoutPanelDebugDisplayType.PerformLayout();
+            this.splitContainerHud.Panel1.ResumeLayout(false);
             this.splitContainerHud.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).EndInit();
             this.splitContainerHud.ResumeLayout(false);
