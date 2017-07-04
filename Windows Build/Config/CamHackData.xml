@@ -2,6 +2,8 @@
 <CamHackData>
   <!-- ULTIMATE CAM HACK -->
   <Data type="int" address="0x00CCBA80" absoluteAddress="true">Mode</Data>
+  <Data type="ushort" address="0x00CCBA9E" absoluteAddress="true" isBool="true">Absolute Angle</Data>
+  <Data type="uint" address="0x00CCBAA8" absoluteAddress="true" useHex="true" isObject="true">Object to Follow</Data>
   <Data type="float" address="0x00CCBA84" absoluteAddress="true">Camera X</Data>
   <Data type="float" address="0x00CCBA88" absoluteAddress="true">Camera Y</Data>
   <Data type="float" address="0x00CCBA8C" absoluteAddress="true">Camera Z</Data>
@@ -11,8 +13,6 @@
   <Data type="float" address="0x00CCBAA0" absoluteAddress="true">Radius</Data>
   <Data type="short" address="0x00CCBA9C" absoluteAddress="true" isAngle="true">Theta</Data>
   <Data type="float" address="0x00CCBAA4" absoluteAddress="true">Relative Height</Data>
-  <Data type="ushort" address="0x00CCBA9E" absoluteAddress="true" isBool="true">Absolute Angle</Data>
-  <Data type="uint" address="0x00CCBAA8" absoluteAddress="true" useHex="true" isObject="true">Object to Follow</Data>
 
   <!-- OLD CAM HACK -->
   <!--
