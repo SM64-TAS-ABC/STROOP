@@ -18,7 +18,9 @@ namespace SM64_Diagnostic.Managers
         public CameraManager(ProcessStream stream, List<WatchVariable> cameraData, Control tabControl, NoTearFlowLayoutPanel variableTable)
             : base(stream, cameraData, variableTable)
         {
-            var cameraPosGroupBox = tabControl.Controls["groupBoxCameraPos"] as GroupBox;
+            var splitContainer = tabControl.Controls["splitContainerCamera"] as SplitContainer;
+            
+            var cameraPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraPos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Euler,
                 cameraPosGroupBox.Controls["buttonCameraPosXn"] as Button,
@@ -44,7 +46,7 @@ namespace SM64_Diagnostic.Managers
                         useRelative);
                 });
 
-            var cameraSphericalPosGroupBox = tabControl.Controls["groupBoxCameraSphericalPos"] as GroupBox;
+            var cameraSphericalPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraSphericalPos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Spherical,
                 cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTn"] as Button,

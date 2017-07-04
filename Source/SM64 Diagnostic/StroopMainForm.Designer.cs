@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -176,6 +176,7 @@ namespace SM64_Diagnostic
             this.pictureBoxHud = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelHud = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
+            this.SplitContainerCamera = new System.Windows.Forms.SplitContainer();
             this.groupBoxCameraSphericalPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraSphericalPosPivotOnFocus = new System.Windows.Forms.CheckBox();
             this.textBoxCameraSphericalPosR = new System.Windows.Forms.TextBox();
@@ -190,6 +191,8 @@ namespace SM64_Diagnostic
             this.buttonCameraSphericalPosTnPp = new System.Windows.Forms.Button();
             this.buttonCameraSphericalPosTn = new System.Windows.Forms.Button();
             this.buttonCameraSphericalPosTnPn = new System.Windows.Forms.Button();
+            this.panelCameraBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxCamera = new SM64_Diagnostic.Controls.IntPictureBox();
             this.groupBoxCameraPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraPosRelative = new System.Windows.Forms.CheckBox();
             this.textBoxCameraPosY = new System.Windows.Forms.TextBox();
@@ -204,8 +207,6 @@ namespace SM64_Diagnostic
             this.buttonCameraPosXnZp = new System.Windows.Forms.Button();
             this.buttonCameraPosXn = new System.Windows.Forms.Button();
             this.buttonCameraPosXnZn = new System.Windows.Forms.Button();
-            this.panelCameraBorder = new System.Windows.Forms.Panel();
-            this.pictureBoxCamera = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelCamera = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageTriangles = new System.Windows.Forms.TabPage();
             this.groupBoxTrianglePos = new System.Windows.Forms.GroupBox();
@@ -449,7 +450,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -476,10 +476,14 @@ namespace SM64_Diagnostic
             this.panelHudBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).BeginInit();
             this.tabPageCamera.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SplitContainerCamera)).BeginInit();
+            this.SplitContainerCamera.Panel1.SuspendLayout();
+            this.SplitContainerCamera.Panel2.SuspendLayout();
+            this.SplitContainerCamera.SuspendLayout();
             this.groupBoxCameraSphericalPos.SuspendLayout();
-            this.groupBoxCameraPos.SuspendLayout();
             this.panelCameraBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
+            this.groupBoxCameraPos.SuspendLayout();
             this.tabPageTriangles.SuspendLayout();
             this.groupBoxTrianglePos.SuspendLayout();
             this.groupBoxTriangleNormal.SuspendLayout();
@@ -534,9 +538,6 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -568,7 +569,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 266);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 268);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -656,7 +657,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 193);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 195);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2181,16 +2182,41 @@ namespace SM64_Diagnostic
             // 
             // tabPageCamera
             // 
-            this.tabPageCamera.Controls.Add(this.groupBoxCameraSphericalPos);
-            this.tabPageCamera.Controls.Add(this.groupBoxCameraPos);
-            this.tabPageCamera.Controls.Add(this.panelCameraBorder);
-            this.tabPageCamera.Controls.Add(this.splitContainer2);
+            this.tabPageCamera.Controls.Add(this.SplitContainerCamera);
             this.tabPageCamera.Location = new System.Drawing.Point(4, 22);
             this.tabPageCamera.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageCamera.Name = "tabPageCamera";
             this.tabPageCamera.Size = new System.Drawing.Size(915, 447);
             this.tabPageCamera.TabIndex = 7;
             this.tabPageCamera.Text = "Camera";
+            // 
+            // SplitContainerCamera
+            // 
+            this.SplitContainerCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SplitContainerCamera.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SplitContainerCamera.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.SplitContainerCamera.Location = new System.Drawing.Point(0, 0);
+            this.SplitContainerCamera.Margin = new System.Windows.Forms.Padding(2);
+            this.SplitContainerCamera.Name = "SplitContainerCamera";
+            // 
+            // SplitContainerCamera.Panel1
+            // 
+            this.SplitContainerCamera.Panel1.AutoScroll = true;
+            this.SplitContainerCamera.Panel1.Controls.Add(this.groupBoxCameraSphericalPos);
+            this.SplitContainerCamera.Panel1.Controls.Add(this.panelCameraBorder);
+            this.SplitContainerCamera.Panel1.Controls.Add(this.groupBoxCameraPos);
+            this.SplitContainerCamera.Panel1MinSize = 0;
+            // 
+            // SplitContainerCamera.Panel2
+            // 
+            this.SplitContainerCamera.Panel2.Controls.Add(this.NoTearFlowLayoutPanelCamera);
+            this.SplitContainerCamera.Panel2MinSize = 0;
+            this.SplitContainerCamera.Size = new System.Drawing.Size(915, 447);
+            this.SplitContainerCamera.SplitterDistance = 207;
+            this.SplitContainerCamera.SplitterWidth = 1;
+            this.SplitContainerCamera.TabIndex = 31;
             // 
             // groupBoxCameraSphericalPos
             // 
@@ -2207,7 +2233,7 @@ namespace SM64_Diagnostic
             this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosTnPp);
             this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosTn);
             this.groupBoxCameraSphericalPos.Controls.Add(this.buttonCameraSphericalPosTnPn);
-            this.groupBoxCameraSphericalPos.Location = new System.Drawing.Point(3, 215);
+            this.groupBoxCameraSphericalPos.Location = new System.Drawing.Point(2, 214);
             this.groupBoxCameraSphericalPos.Name = "groupBoxCameraSphericalPos";
             this.groupBoxCameraSphericalPos.Size = new System.Drawing.Size(185, 146);
             this.groupBoxCameraSphericalPos.TabIndex = 30;
@@ -2345,6 +2371,30 @@ namespace SM64_Diagnostic
             this.buttonCameraSphericalPosTnPn.Text = "θ-ϕ-";
             this.buttonCameraSphericalPosTnPn.UseVisualStyleBackColor = true;
             // 
+            // panelCameraBorder
+            // 
+            this.panelCameraBorder.Controls.Add(this.pictureBoxCamera);
+            this.panelCameraBorder.Location = new System.Drawing.Point(2, 2);
+            this.panelCameraBorder.Margin = new System.Windows.Forms.Padding(2);
+            this.panelCameraBorder.Name = "panelCameraBorder";
+            this.panelCameraBorder.Size = new System.Drawing.Size(57, 55);
+            this.panelCameraBorder.TabIndex = 2;
+            // 
+            // pictureBoxCamera
+            // 
+            this.pictureBoxCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxCamera.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxCamera.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxCamera.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxCamera.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxCamera.Name = "pictureBoxCamera";
+            this.pictureBoxCamera.Size = new System.Drawing.Size(51, 50);
+            this.pictureBoxCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCamera.TabIndex = 0;
+            this.pictureBoxCamera.TabStop = false;
+            // 
             // groupBoxCameraPos
             // 
             this.groupBoxCameraPos.Controls.Add(this.checkBoxCameraPosRelative);
@@ -2360,7 +2410,7 @@ namespace SM64_Diagnostic
             this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXnZp);
             this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXn);
             this.groupBoxCameraPos.Controls.Add(this.buttonCameraPosXnZn);
-            this.groupBoxCameraPos.Location = new System.Drawing.Point(3, 63);
+            this.groupBoxCameraPos.Location = new System.Drawing.Point(2, 62);
             this.groupBoxCameraPos.Name = "groupBoxCameraPos";
             this.groupBoxCameraPos.Size = new System.Drawing.Size(185, 146);
             this.groupBoxCameraPos.TabIndex = 30;
@@ -2498,30 +2548,6 @@ namespace SM64_Diagnostic
             this.buttonCameraPosXnZn.Text = "X-Z-";
             this.buttonCameraPosXnZn.UseVisualStyleBackColor = true;
             // 
-            // panelCameraBorder
-            // 
-            this.panelCameraBorder.Controls.Add(this.pictureBoxCamera);
-            this.panelCameraBorder.Location = new System.Drawing.Point(4, 3);
-            this.panelCameraBorder.Margin = new System.Windows.Forms.Padding(2);
-            this.panelCameraBorder.Name = "panelCameraBorder";
-            this.panelCameraBorder.Size = new System.Drawing.Size(57, 55);
-            this.panelCameraBorder.TabIndex = 2;
-            // 
-            // pictureBoxCamera
-            // 
-            this.pictureBoxCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxCamera.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxCamera.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxCamera.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxCamera.MaximumSize = new System.Drawing.Size(133, 130);
-            this.pictureBoxCamera.Name = "pictureBoxCamera";
-            this.pictureBoxCamera.Size = new System.Drawing.Size(51, 50);
-            this.pictureBoxCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCamera.TabIndex = 0;
-            this.pictureBoxCamera.TabStop = false;
-            // 
             // NoTearFlowLayoutPanelCamera
             // 
             this.NoTearFlowLayoutPanelCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -2532,7 +2558,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(672, 441);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(707, 441);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -2989,7 +3015,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(721, 444);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(727, 444);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3037,7 +3063,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(755, 447);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(761, 447);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -3474,7 +3500,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(746, 414);
+            this.glControlMap.Size = new System.Drawing.Size(752, 414);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -3820,8 +3846,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -3990,7 +4016,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(606, 431);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(612, 431);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -4008,7 +4034,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(490, 406);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(496, 406);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -4071,7 +4097,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(594, 329);
+            this.listBoxSpawn.Size = new System.Drawing.Size(600, 329);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -4780,7 +4806,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(500, 442);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(506, 442);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -5394,31 +5420,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.AutoScroll = true;
-            this.splitContainer2.Panel1MinSize = 0;
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.NoTearFlowLayoutPanelCamera);
-            this.splitContainer2.Panel2MinSize = 0;
-            this.splitContainer2.Size = new System.Drawing.Size(915, 447);
-            this.splitContainer2.SplitterDistance = 236;
-            this.splitContainer2.SplitterWidth = 1;
-            this.splitContainer2.TabIndex = 31;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5479,12 +5480,16 @@ namespace SM64_Diagnostic
             this.panelHudBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).EndInit();
             this.tabPageCamera.ResumeLayout(false);
+            this.SplitContainerCamera.Panel1.ResumeLayout(false);
+            this.SplitContainerCamera.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SplitContainerCamera)).EndInit();
+            this.SplitContainerCamera.ResumeLayout(false);
             this.groupBoxCameraSphericalPos.ResumeLayout(false);
             this.groupBoxCameraSphericalPos.PerformLayout();
-            this.groupBoxCameraPos.ResumeLayout(false);
-            this.groupBoxCameraPos.PerformLayout();
             this.panelCameraBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).EndInit();
+            this.groupBoxCameraPos.ResumeLayout(false);
+            this.groupBoxCameraPos.PerformLayout();
             this.tabPageTriangles.ResumeLayout(false);
             this.tabPageTriangles.PerformLayout();
             this.groupBoxTrianglePos.ResumeLayout(false);
@@ -5560,9 +5565,6 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5985,7 +5987,7 @@ namespace SM64_Diagnostic
         private Label labelGotoAbovePrefix;
         private TextBox textBoxGotoAbove;
         private SplitContainer splitContainer1;
-        private SplitContainer splitContainer2;
+        private SplitContainer SplitContainerCamera;
     }
 }
 
