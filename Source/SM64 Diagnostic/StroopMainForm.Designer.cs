@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -589,7 +589,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 216);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 200);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -677,7 +677,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 169);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 153);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -724,7 +724,7 @@ namespace SM64_Diagnostic
             this.splitContainerMain.Panel2.Controls.Add(this.groupBoxObjects);
             this.splitContainerMain.Panel2MinSize = 0;
             this.splitContainerMain.Size = new System.Drawing.Size(927, 698);
-            this.splitContainerMain.SplitterDistance = 475;
+            this.splitContainerMain.SplitterDistance = 491;
             this.splitContainerMain.SplitterWidth = 3;
             this.splitContainerMain.TabIndex = 4;
             // 
@@ -758,7 +758,7 @@ namespace SM64_Diagnostic
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(2);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(923, 473);
+            this.tabControlMain.Size = new System.Drawing.Size(923, 489);
             this.tabControlMain.TabIndex = 3;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             // 
@@ -770,7 +770,7 @@ namespace SM64_Diagnostic
             this.tabPageObjects.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageObjects.Name = "tabPageObjects";
             this.tabPageObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageObjects.Size = new System.Drawing.Size(915, 447);
+            this.tabPageObjects.Size = new System.Drawing.Size(915, 463);
             this.tabPageObjects.TabIndex = 0;
             this.tabPageObjects.Text = "Object";
             // 
@@ -793,7 +793,7 @@ namespace SM64_Diagnostic
             this.panelObj.Controls.Add(this.buttonObjUnload);
             this.panelObj.Location = new System.Drawing.Point(2, 87);
             this.panelObj.Name = "panelObj";
-            this.panelObj.Size = new System.Drawing.Size(211, 354);
+            this.panelObj.Size = new System.Drawing.Size(211, 370);
             this.panelObj.TabIndex = 19;
             // 
             // buttonObjDebilitate
@@ -1531,7 +1531,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(690, 442);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(690, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // labelObjSlotInd
@@ -1628,7 +1628,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerObject.Panel2.Controls.Add(this.NoTearFlowLayoutPanelObject);
             this.splitContainerObject.Panel2MinSize = 0;
-            this.splitContainerObject.Size = new System.Drawing.Size(915, 447);
+            this.splitContainerObject.Size = new System.Drawing.Size(915, 463);
             this.splitContainerObject.SplitterDistance = 217;
             this.splitContainerObject.SplitterWidth = 1;
             this.splitContainerObject.TabIndex = 20;
@@ -3967,8 +3967,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
