@@ -48,4 +48,14 @@
   <Data special="true" specialType="NormalDistAway" color="#e5ccff">Normal Dist Away</Data>
   <Data special="true" specialType="VerticalDistAway" color="#e5ccff">Vertical Dist Away</Data>
   <Data special="true" specialType="HeightOnSlope" color="#e5ccff">Height On Triangle</Data>
+  
+  <Data special="true" specialType="DistanceToV1" color="#e5ccff">Dist to V1</Data>
+  <Data special="true" specialType="LateralDistanceToV1" color="#e5ccff">LDist to V1</Data>
+  <Data special="true" specialType="VerticalDistanceToV1" color="#e5ccff">VDist to V1</Data>
+  <Data special="true" specialType="DistanceToV2" color="#e5ccff">Dist to V2</Data>
+  <Data special="true" specialType="LateralDistanceToV2" color="#e5ccff">LDist to V2</Data>
+  <Data special="true" specialType="VerticalDistanceToV2" color="#e5ccff">VDist to V2</Data>
+  <Data special="true" specialType="DistanceToV3" color="#e5ccff">Dist to V3</Data>
+  <Data special="true" specialType="LateralDistanceToV3" color="#e5ccff">LDist to V3</Data>
+  <Data special="true" specialType="VerticalDistanceToV3" color="#e5ccff">VDist to V3</Data>
 </TrianglesData>

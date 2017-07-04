@@ -64,7 +64,16 @@ namespace SM64_Diagnostic.Managers
                 new AngleDataContainer("Steepness"),
                 new DataContainer("NormalDistAway"),
                 new DataContainer("VerticalDistAway"),
-                new DataContainer("HeightOnSlope")
+                new DataContainer("HeightOnSlope"),
+                new DataContainer("DistanceToV1"),
+                new DataContainer("LateralDistanceToV1"),
+                new DataContainer("VerticalDistanceToV1"),
+                new DataContainer("DistanceToV2"),
+                new DataContainer("LateralDistanceToV2"),
+                new DataContainer("VerticalDistanceToV2"),
+                new DataContainer("DistanceToV3"),
+                new DataContainer("LateralDistanceToV3"),
+                new DataContainer("VerticalDistanceToV3"),
             };
         }
 
@@ -286,6 +295,33 @@ namespace SM64_Diagnostic.Managers
                         goto case "CheckTriangleExists";
                     case "HeightOnSlope":
                         (specialVar as DataContainer).Text = ((-marioX * normX - marioZ * normZ - normOffset) / normY).ToString();
+                        goto case "CheckTriangleExists";
+                    case "DistanceToV1":
+                        (specialVar as DataContainer).Text = MoreMath.DistanceTo(marioX, marioY, marioZ, v1X, v1Y, v1Z).ToString();
+                        goto case "CheckTriangleExists";
+                    case "LateralDistanceToV1":
+                        (specialVar as DataContainer).Text = MoreMath.DistanceTo(marioX, marioZ, v1X, v1Z).ToString();
+                        goto case "CheckTriangleExists";
+                    case "VerticalDistanceToV1":
+                        (specialVar as DataContainer).Text = (marioY - v1Y).ToString();
+                        goto case "CheckTriangleExists";
+                    case "DistanceToV2":
+                        (specialVar as DataContainer).Text = MoreMath.DistanceTo(marioX, marioY, marioZ, v2X, v2Y, v2Z).ToString();
+                        goto case "CheckTriangleExists";
+                    case "LateralDistanceToV2":
+                        (specialVar as DataContainer).Text = MoreMath.DistanceTo(marioX, marioZ, v2X, v2Z).ToString();
+                        goto case "CheckTriangleExists";
+                    case "VerticalDistanceToV2":
+                        (specialVar as DataContainer).Text = (marioY - v2Y).ToString();
+                        goto case "CheckTriangleExists";
+                    case "DistanceToV3":
+                        (specialVar as DataContainer).Text = MoreMath.DistanceTo(marioX, marioY, marioZ, v3X, v3Y, v3Z).ToString();
+                        goto case "CheckTriangleExists";
+                    case "LateralDistanceToV3":
+                        (specialVar as DataContainer).Text = MoreMath.DistanceTo(marioX, marioZ, v3X, v3Z).ToString();
+                        goto case "CheckTriangleExists";
+                    case "VerticalDistanceToV3":
+                        (specialVar as DataContainer).Text = (marioY - v3Y).ToString();
                         goto case "CheckTriangleExists";
 
                     // Special
