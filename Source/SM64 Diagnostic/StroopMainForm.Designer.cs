@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -560,7 +560,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 266);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 264);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -682,7 +682,7 @@ namespace SM64_Diagnostic
             this.splitContainerMain.Panel2MinSize = 0;
             this.splitContainerMain.Size = new System.Drawing.Size(927, 698);
             this.splitContainerMain.SplitterDistance = 475;
-            this.splitContainerMain.SplitterWidth = 1;
+            this.splitContainerMain.SplitterWidth = 3;
             this.splitContainerMain.TabIndex = 4;
             // 
             // tabControlMain
@@ -3460,8 +3460,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -3736,6 +3736,7 @@ namespace SM64_Diagnostic
             // 
             // splitContainerCamHack.Panel1
             // 
+            this.splitContainerCamHack.Panel1.AutoScroll = true;
             this.splitContainerCamHack.Panel1.Controls.Add(this.groupBoxCameraHackSphericalFocusPos);
             this.splitContainerCamHack.Panel1.Controls.Add(this.groupBoxCameraHackFocusPos);
             this.splitContainerCamHack.Panel1.Controls.Add(this.groupBoxCameraHackSphericalPos);
@@ -3753,7 +3754,7 @@ namespace SM64_Diagnostic
             this.splitContainerCamHack.Panel2.Controls.Add(this.noTearFlowLayoutPanelCamHack);
             this.splitContainerCamHack.Panel2MinSize = 0;
             this.splitContainerCamHack.Size = new System.Drawing.Size(915, 447);
-            this.splitContainerCamHack.SplitterDistance = 430;
+            this.splitContainerCamHack.SplitterDistance = 439;
             this.splitContainerCamHack.SplitterWidth = 1;
             this.splitContainerCamHack.TabIndex = 18;
             // 
@@ -5342,7 +5343,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(503, 442);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(494, 442);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // NoTearFlowLayoutPanelObjects
@@ -5354,7 +5355,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 193);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 191);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
