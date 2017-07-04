@@ -155,6 +155,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
+    <Compile Include="Structs\Configurations\FileConfig.cs" />
     <Compile Include="Structs\Configurations\GotoRetrieveConfig.cs" />
     <Compile Include="Structs\Configurations\CameraHackConfig.cs" />
     <Compile Include="Structs\Configurations\ControllerConfig.cs" />

@@ -190,6 +190,10 @@
     <ButtonDLeftMask>0x02</ButtonDLeftMask>
     <ButtonDRightMask>0x01</ButtonDRightMask>
   </Controller>
+  <File>
+    <FileStructAddress>0x80207700</FileStructAddress>
+    <FileStructSize>0x38</FileStructSize>
+  </File>
   <CameraHack>
     <CameraHackStruct>0x803E0000</CameraHackStruct>
     <CameraModeOffset>0x00</CameraModeOffset>

@@ -657,6 +657,31 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
+                    case "File":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "FileStructAddress":
+                                    Config.File.FileStructAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "FileStructSize":
+                                    Config.File.FileStructSize = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                            }
+                        }
+
+                        Config.File.FileAAddress = Config.File.FileStructAddress + 0 * Config.File.FileStructSize;
+                        Config.File.FileBAddress = Config.File.FileStructAddress + 2 * Config.File.FileStructSize;
+                        Config.File.FileCAddress = Config.File.FileStructAddress + 4 * Config.File.FileStructSize;
+                        Config.File.FileDAddress = Config.File.FileStructAddress + 6 * Config.File.FileStructSize;
+                        Config.File.FileASavedAddress = Config.File.FileStructAddress + 1 * Config.File.FileStructSize;
+                        Config.File.FileBSavedAddress = Config.File.FileStructAddress + 3 * Config.File.FileStructSize;
+                        Config.File.FileCSavedAddress = Config.File.FileStructAddress + 5 * Config.File.FileStructSize;
+                        Config.File.FileDSavedAddress = Config.File.FileStructAddress + 7 * Config.File.FileStructSize;
+                        break;
+
                     case "CameraHack":
                         foreach (XElement subElement in element.Elements())
                         {
