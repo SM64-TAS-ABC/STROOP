@@ -46,7 +46,7 @@ namespace SM64_Diagnostic
             Rectangle scaledRect = new Rectangle(new Point(), Size).Zoom(_gui.ControllerBaseImage.Size);
             e.Graphics.DrawImage(_gui.ControllerBaseImage, scaledRect);
 
-            uint inputStruct = Config.Controller.BufferedInput;
+            uint inputStruct = Config.Controller.CurrentInput;
 
             bool buttonAPressed = (_stream.GetByte(inputStruct + Config.Controller.ButtonAOffset) & Config.Controller.ButtonAMask) != 0;
             if (buttonAPressed) e.Graphics.DrawImage(_gui.ButtonAImage, scaledRect);
@@ -90,11 +90,14 @@ namespace SM64_Diagnostic
             bool buttonDRightPressed = (_stream.GetByte(inputStruct + Config.Controller.ButtonDRightOffset) & Config.Controller.ButtonDRightMask) != 0;
             if (buttonDRightPressed) e.Graphics.DrawImage(_gui.ButtonDRightImage, scaledRect);
 
+            float controlStickOffsetScale = 0.0003f;
             sbyte controlStickH = (sbyte)_stream.GetByte(inputStruct + Config.Controller.ControlStickHOffset);
-
             sbyte controlStickV = (sbyte)_stream.GetByte(inputStruct + Config.Controller.ControlStickVOffset);
+            float hOffset = controlStickH * controlStickOffsetScale * scaledRect.Width;
+            float vOffset = controlStickV * controlStickOffsetScale * scaledRect.Width;
+
+            RectangleF controlStickRectange = new RectangleF(scaledRect.X + hOffset, scaledRect.Y - vOffset, scaledRect.Width, scaledRect.Height);
+            e.Graphics.DrawImage(_gui.ControlStickImage, controlStickRectange);
         }
-
-
     }
 }

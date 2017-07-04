@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -3106,7 +3106,7 @@ namespace SM64_Diagnostic
             this.splitContainerController.Panel2.Controls.Add(this.NoTearFlowLayoutPanelController);
             this.splitContainerController.Panel2MinSize = 0;
             this.splitContainerController.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerController.SplitterDistance = 229;
+            this.splitContainerController.SplitterDistance = 577;
             this.splitContainerController.SplitterWidth = 1;
             this.splitContainerController.TabIndex = 17;
             // 
@@ -3119,7 +3119,7 @@ namespace SM64_Diagnostic
             this.controllerDisplayPanel.Location = new System.Drawing.Point(3, 3);
             this.controllerDisplayPanel.Margin = new System.Windows.Forms.Padding(2);
             this.controllerDisplayPanel.Name = "controllerDisplayPanel";
-            this.controllerDisplayPanel.Size = new System.Drawing.Size(222, 457);
+            this.controllerDisplayPanel.Size = new System.Drawing.Size(570, 457);
             this.controllerDisplayPanel.TabIndex = 4;
             // 
             // NoTearFlowLayoutPanelController
@@ -3132,7 +3132,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(748, 460);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(400, 460);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3963,8 +3963,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
