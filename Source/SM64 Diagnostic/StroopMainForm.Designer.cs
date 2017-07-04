@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -454,6 +454,14 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.radioButtonFileC = new System.Windows.Forms.RadioButton();
+            this.radioButtonFileD = new System.Windows.Forms.RadioButton();
+            this.radioButtonFileA = new System.Windows.Forms.RadioButton();
+            this.radioButtonFileB = new System.Windows.Forms.RadioButton();
+            this.radioButtonFileCSaved = new System.Windows.Forms.RadioButton();
+            this.radioButtonFileDSaved = new System.Windows.Forms.RadioButton();
+            this.radioButtonFileASaved = new System.Windows.Forms.RadioButton();
+            this.radioButtonFileBSaved = new System.Windows.Forms.RadioButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -515,6 +523,7 @@ namespace SM64_Diagnostic
             this.splitContainerController.SuspendLayout();
             this.tabPageFile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).BeginInit();
+            this.splitContainerFile.Panel1.SuspendLayout();
             this.splitContainerFile.Panel2.SuspendLayout();
             this.splitContainerFile.SuspendLayout();
             this.tabPageMisc.SuspendLayout();
@@ -588,7 +597,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 205);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 206);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -676,7 +685,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 158);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 159);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -1629,7 +1638,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(690, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(693, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2147,7 +2156,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(699, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(702, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2272,7 +2281,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(791, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(794, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -2653,7 +2662,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(701, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(704, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3047,7 +3056,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(698, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(701, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3132,7 +3141,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(479, 460);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(482, 460);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3159,6 +3168,14 @@ namespace SM64_Diagnostic
             // splitContainerFile.Panel1
             // 
             this.splitContainerFile.Panel1.AutoScroll = true;
+            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileCSaved);
+            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileDSaved);
+            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileASaved);
+            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileBSaved);
+            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileC);
+            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileD);
+            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileA);
+            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileB);
             this.splitContainerFile.Panel1MinSize = 0;
             // 
             // splitContainerFile.Panel2
@@ -3166,7 +3183,7 @@ namespace SM64_Diagnostic
             this.splitContainerFile.Panel2.Controls.Add(this.noTearFlowLayoutPanelFile);
             this.splitContainerFile.Panel2MinSize = 0;
             this.splitContainerFile.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerFile.SplitterDistance = 161;
+            this.splitContainerFile.SplitterDistance = 245;
             this.splitContainerFile.SplitterWidth = 1;
             this.splitContainerFile.TabIndex = 19;
             // 
@@ -3180,7 +3197,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(747, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(666, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -3617,7 +3634,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(776, 430);
+            this.glControlMap.Size = new System.Drawing.Size(779, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -3963,8 +3980,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -4133,7 +4150,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(636, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(639, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -4151,7 +4168,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(520, 422);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(523, 422);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -4214,7 +4231,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(624, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(627, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -4923,7 +4940,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(469, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(472, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -5537,6 +5554,87 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
+            // radioButtonFileC
+            // 
+            this.radioButtonFileC.AutoSize = true;
+            this.radioButtonFileC.Location = new System.Drawing.Point(32, 89);
+            this.radioButtonFileC.Name = "radioButtonFileC";
+            this.radioButtonFileC.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonFileC.TabIndex = 13;
+            this.radioButtonFileC.Text = "File C";
+            this.radioButtonFileC.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFileD
+            // 
+            this.radioButtonFileD.AutoSize = true;
+            this.radioButtonFileD.Location = new System.Drawing.Point(32, 112);
+            this.radioButtonFileD.Name = "radioButtonFileD";
+            this.radioButtonFileD.Size = new System.Drawing.Size(52, 17);
+            this.radioButtonFileD.TabIndex = 14;
+            this.radioButtonFileD.Text = "File D";
+            this.radioButtonFileD.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFileA
+            // 
+            this.radioButtonFileA.AutoSize = true;
+            this.radioButtonFileA.Checked = true;
+            this.radioButtonFileA.Location = new System.Drawing.Point(32, 43);
+            this.radioButtonFileA.Name = "radioButtonFileA";
+            this.radioButtonFileA.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonFileA.TabIndex = 11;
+            this.radioButtonFileA.Text = "File A";
+            this.radioButtonFileA.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFileB
+            // 
+            this.radioButtonFileB.AutoSize = true;
+            this.radioButtonFileB.Location = new System.Drawing.Point(32, 66);
+            this.radioButtonFileB.Name = "radioButtonFileB";
+            this.radioButtonFileB.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonFileB.TabIndex = 12;
+            this.radioButtonFileB.Text = "File B";
+            this.radioButtonFileB.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFileCSaved
+            // 
+            this.radioButtonFileCSaved.AutoSize = true;
+            this.radioButtonFileCSaved.Location = new System.Drawing.Point(108, 89);
+            this.radioButtonFileCSaved.Name = "radioButtonFileCSaved";
+            this.radioButtonFileCSaved.Size = new System.Drawing.Size(85, 17);
+            this.radioButtonFileCSaved.TabIndex = 17;
+            this.radioButtonFileCSaved.Text = "File C Saved";
+            this.radioButtonFileCSaved.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFileDSaved
+            // 
+            this.radioButtonFileDSaved.AutoSize = true;
+            this.radioButtonFileDSaved.Location = new System.Drawing.Point(108, 112);
+            this.radioButtonFileDSaved.Name = "radioButtonFileDSaved";
+            this.radioButtonFileDSaved.Size = new System.Drawing.Size(86, 17);
+            this.radioButtonFileDSaved.TabIndex = 18;
+            this.radioButtonFileDSaved.Text = "File D Saved";
+            this.radioButtonFileDSaved.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFileASaved
+            // 
+            this.radioButtonFileASaved.AutoSize = true;
+            this.radioButtonFileASaved.Location = new System.Drawing.Point(108, 43);
+            this.radioButtonFileASaved.Name = "radioButtonFileASaved";
+            this.radioButtonFileASaved.Size = new System.Drawing.Size(85, 17);
+            this.radioButtonFileASaved.TabIndex = 15;
+            this.radioButtonFileASaved.Text = "File A Saved";
+            this.radioButtonFileASaved.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFileBSaved
+            // 
+            this.radioButtonFileBSaved.AutoSize = true;
+            this.radioButtonFileBSaved.Location = new System.Drawing.Point(108, 66);
+            this.radioButtonFileBSaved.Name = "radioButtonFileBSaved";
+            this.radioButtonFileBSaved.Size = new System.Drawing.Size(85, 17);
+            this.radioButtonFileBSaved.TabIndex = 16;
+            this.radioButtonFileBSaved.Text = "File B Saved";
+            this.radioButtonFileBSaved.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5637,6 +5735,8 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerController)).EndInit();
             this.splitContainerController.ResumeLayout(false);
             this.tabPageFile.ResumeLayout(false);
+            this.splitContainerFile.Panel1.ResumeLayout(false);
+            this.splitContainerFile.Panel1.PerformLayout();
             this.splitContainerFile.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).EndInit();
             this.splitContainerFile.ResumeLayout(false);
@@ -6125,6 +6225,14 @@ namespace SM64_Diagnostic
         private SplitContainer splitContainerMario;
         private SplitContainer splitContainerObject;
         private ControllerDisplayPanel controllerDisplayPanel;
+        private RadioButton radioButtonFileCSaved;
+        private RadioButton radioButtonFileDSaved;
+        private RadioButton radioButtonFileASaved;
+        private RadioButton radioButtonFileBSaved;
+        private RadioButton radioButtonFileC;
+        private RadioButton radioButtonFileD;
+        private RadioButton radioButtonFileA;
+        private RadioButton radioButtonFileB;
     }
 }
 
