@@ -496,15 +496,27 @@ namespace SM64_Diagnostic
             SplitContainer selectedTabSplitContainer = null;
             TabPage selectedTabPage = tabControlMain.SelectedTab;
 
-            if (selectedTabPage == tabPageCamHack)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerCamHack"] as SplitContainer;
+            if (selectedTabPage == tabPageObjects)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerObject"] as SplitContainer;
+            else if (selectedTabPage == tabPageMario)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMario"] as SplitContainer;
+            else if (selectedTabPage == tabPageHud)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerHud"] as SplitContainer;
+            else if (selectedTabPage == tabPageCamera)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerCamera"] as SplitContainer;
+            else if (selectedTabPage == tabPageTriangles)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerTriangles"] as SplitContainer;
             else if (selectedTabPage == tabPageController)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerController"] as SplitContainer;
-            else if (selectedTabPage == tabPageHacks)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerHacks"] as SplitContainer;
+            else if (selectedTabPage == tabPageFile)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerFile"] as SplitContainer;
             else if (selectedTabPage == tabPageMap)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMap"] as SplitContainer;
-
+            else if (selectedTabPage == tabPageHacks)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerHacks"] as SplitContainer;
+            else if (selectedTabPage == tabPageCamHack)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerCamHack"] as SplitContainer;
+        
             return selectedTabSplitContainer;
         }
 
