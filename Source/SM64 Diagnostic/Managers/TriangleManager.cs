@@ -80,12 +80,12 @@ namespace SM64_Diagnostic.Managers
         public enum TriangleMode {Floor, Wall, Ceiling, Other};
 
         public TriangleMode Mode = TriangleMode.Floor;
-
+        
         /// <summary>
         /// Manages illumanati
         /// </summary>
-        public TriangleManager(ProcessStream stream, Control tabControl, List<WatchVariable> triangleWatchVars) 
-            : base(stream, triangleWatchVars, tabControl.Controls["NoTearFlowLayoutPanelTriangles"] as NoTearFlowLayoutPanel)
+        public TriangleManager(ProcessStream stream, Control tabControl, List<WatchVariable> triangleWatchVars, NoTearFlowLayoutPanel noTearFlowLayoutPanel) 
+            : base(stream, triangleWatchVars, noTearFlowLayoutPanel)
         {
             _addressBox = tabControl.Controls["maskedTextBoxOtherTriangle"] as MaskedTextBox;
             _useMisalignmentOffsetCheckbox = tabControl.Controls["checkBoxVertexMisalignment"] as CheckBox;

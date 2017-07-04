@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -540,6 +540,7 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTriangles)).BeginInit();
+            this.splitContainerTriangles.Panel2.SuspendLayout();
             this.splitContainerTriangles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -2582,7 +2583,6 @@ namespace SM64_Diagnostic
             this.tabPageTriangles.Controls.Add(this.radioButtonTriCeiling);
             this.tabPageTriangles.Controls.Add(this.radioButtonTriWall);
             this.tabPageTriangles.Controls.Add(this.radioButtonTriFloor);
-            this.tabPageTriangles.Controls.Add(this.NoTearFlowLayoutPanelTriangles);
             this.tabPageTriangles.Controls.Add(this.splitContainerTriangles);
             this.tabPageTriangles.Location = new System.Drawing.Point(4, 22);
             this.tabPageTriangles.Name = "tabPageTriangles";
@@ -2928,10 +2928,10 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NoTearFlowLayoutPanelTriangles.AutoScroll = true;
             this.NoTearFlowLayoutPanelTriangles.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(191, 5);
+            this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(719, 437);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(645, 437);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3850,8 +3850,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -5439,9 +5439,13 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerTriangles.Panel1.AutoScroll = true;
             this.splitContainerTriangles.Panel1MinSize = 0;
+            // 
+            // splitContainerTriangles.Panel2
+            // 
+            this.splitContainerTriangles.Panel2.Controls.Add(this.NoTearFlowLayoutPanelTriangles);
             this.splitContainerTriangles.Panel2MinSize = 0;
             this.splitContainerTriangles.Size = new System.Drawing.Size(915, 447);
-            this.splitContainerTriangles.SplitterDistance = 161;
+            this.splitContainerTriangles.SplitterDistance = 261;
             this.splitContainerTriangles.SplitterWidth = 1;
             this.splitContainerTriangles.TabIndex = 32;
             // 
@@ -5590,6 +5594,7 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.splitContainerTriangles.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTriangles)).EndInit();
             this.splitContainerTriangles.ResumeLayout(false);
             this.ResumeLayout(false);

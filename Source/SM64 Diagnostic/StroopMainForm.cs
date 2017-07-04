@@ -21,7 +21,7 @@ namespace SM64_Diagnostic
     {
         const string _version = "v0.2.9";
         ProcessStream _sm64Stream = null;
-
+        
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         ControllerImageGui _controllerImageGui = new ControllerImageGui();
         List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, 
@@ -123,7 +123,7 @@ namespace SM64_Diagnostic
             currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
             currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc);
             currentContext.CameraManager = _cameraManager = new CameraManager(_sm64Stream, _cameraData, tabPageCamera, NoTearFlowLayoutPanelCamera);
-            currentContext.TriangleManager = _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData);
+            currentContext.TriangleManager = _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData, NoTearFlowLayoutPanelTriangles);
             currentContext.DebugManager = _debugManager = new DebugManager(_sm64Stream, tabPageDebug);
             currentContext.PuManager = _puManager = new PuManager(_sm64Stream, groupBoxPuController);
             currentContext.FileManager = _fileManager = new DataManager(_sm64Stream, _fileData, noTearFlowLayoutPanelFile);
