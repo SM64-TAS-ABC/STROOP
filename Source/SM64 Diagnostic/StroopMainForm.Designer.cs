@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -470,6 +470,7 @@ namespace SM64_Diagnostic
             this.panelObjectBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).BeginInit();
+            this.splitContainerObject.Panel2.SuspendLayout();
             this.splitContainerObject.SuspendLayout();
             this.tabPageMario.SuspendLayout();
             this.groupBoxMarioStats.SuspendLayout();
@@ -769,7 +770,6 @@ namespace SM64_Diagnostic
             this.tabPageObjects.Controls.Add(this.labelObjSlotPosValue);
             this.tabPageObjects.Controls.Add(this.labelObjBhvValue);
             this.tabPageObjects.Controls.Add(this.labelObjAdd);
-            this.tabPageObjects.Controls.Add(this.NoTearFlowLayoutPanelObject);
             this.tabPageObjects.Controls.Add(this.labelObjSlotInd);
             this.tabPageObjects.Controls.Add(this.labelObjSlotPos);
             this.tabPageObjects.Controls.Add(this.labelObjBhv);
@@ -1538,10 +1538,10 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NoTearFlowLayoutPanelObject.AutoScroll = true;
             this.NoTearFlowLayoutPanelObject.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(219, 3);
+            this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(694, 440);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(614, 442);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // labelObjSlotInd
@@ -1622,9 +1622,13 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerObject.Panel1.AutoScroll = true;
             this.splitContainerObject.Panel1MinSize = 0;
+            // 
+            // splitContainerObject.Panel2
+            // 
+            this.splitContainerObject.Panel2.Controls.Add(this.NoTearFlowLayoutPanelObject);
             this.splitContainerObject.Panel2MinSize = 0;
             this.splitContainerObject.Size = new System.Drawing.Size(915, 447);
-            this.splitContainerObject.SplitterDistance = 161;
+            this.splitContainerObject.SplitterDistance = 293;
             this.splitContainerObject.SplitterWidth = 1;
             this.splitContainerObject.TabIndex = 20;
             // 
@@ -3962,8 +3966,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -5582,6 +5586,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjPos.PerformLayout();
             this.panelObjectBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
+            this.splitContainerObject.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).EndInit();
             this.splitContainerObject.ResumeLayout(false);
             this.tabPageMario.ResumeLayout(false);
