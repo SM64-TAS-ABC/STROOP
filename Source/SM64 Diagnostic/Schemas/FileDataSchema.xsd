@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="FileData"
     elementFormDefault="qualified"
-    xmlns="http://tempuri.org/FileDataSchema.xsd"
-    xmlns:mstns="http://tempuri.org/FileDataSchema.xsd"
+    xmlns="http://tempuri.org/CameraDataSchema.xsd"
+    xmlns:mstns="http://tempuri.org/CameraDataSchema.xsd"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:types="http://tempuri.org/ReusableTypes.xsd"
 >
   <xs:import namespace="http://tempuri.org/ReusableTypes.xsd" schemaLocation="ReusableTypes.xsd"/>
-  <xs:element name="FileData">
+  <xs:element name="TrianglesData">
     <xs:complexType>
       <xs:sequence>
         <xs:element name="Data" minOccurs="0" maxOccurs="unbounded" type="types:watch-variable"/>

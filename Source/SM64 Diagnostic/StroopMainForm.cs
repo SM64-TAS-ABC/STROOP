@@ -212,7 +212,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Controller Image Associations", statusNum++);
             XmlConfigParser.OpenControllerImageAssoc(@"Config/ControllerImageAssociations.xml", _controllerImageGui);
             loadingForm.UpdateStatus("Loading File Data", statusNum++);
-            _fileData = XmlConfigParser.OpenWatchVarData(@"Config/FileData.xml", "MiscDataSchema.xsd");
+            _fileData = XmlConfigParser.OpenWatchVarData(@"Config/FileData.xml", "FileDataSchema.xsd", "fileOffset"); //TODO implement this
             loadingForm.UpdateStatus("Loading Quarter Frame Data", statusNum++);
             _quarterFrameData = XmlConfigParser.OpenWatchVarData(@"Config/QuarterFrameData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Camera Hack Data", statusNum++);
