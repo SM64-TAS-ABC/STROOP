@@ -9,7 +9,7 @@
   <Data type="float" address="0x00CCBA94" absoluteAddress="true">Focus Y</Data>
   <Data type="float" address="0x00CCBA98" absoluteAddress="true">Focus Z</Data>
   <Data type="float" address="0x00CCBAA0" absoluteAddress="true">Radius</Data>
-  <Data type="ushort" address="0x00CCBA9C" absoluteAddress="true">Theta</Data>
+  <Data type="short" address="0x00CCBA9C" absoluteAddress="true" isAngle="true">Theta</Data>
   <Data type="float" address="0x00CCBAA4" absoluteAddress="true">Relative Height</Data>
   <Data type="ushort" address="0x00CCBA9E" absoluteAddress="true" isBool="true">Absolute Angle</Data>
   <Data type="uint" address="0x00CCBAA8" absoluteAddress="true" useHex="true" isObject="true">Object to Follow</Data>
