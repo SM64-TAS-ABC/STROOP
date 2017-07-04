@@ -131,6 +131,7 @@
     <Compile Include="LoadingHandler.cs" />
     <Compile Include="Managers\CamHackManager.cs" />
     <Compile Include="Managers\DebugManager.cs" />
+    <Compile Include="Managers\FileManager.cs" />
     <Compile Include="Managers\HudManager.cs" />
     <Compile Include="Managers\HackManager.cs" />
     <Compile Include="Managers\ManagerContext.cs" />

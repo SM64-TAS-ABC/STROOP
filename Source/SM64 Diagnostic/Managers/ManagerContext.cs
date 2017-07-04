@@ -27,7 +27,7 @@ namespace SM64_Diagnostic.Managers
         public ControllerManager ControllerManager;
         public ActionsManager ActionsManager;
         public PuManager PuManager;
-        public DataManager FileManager;
+        public FileManager FileManager;
         public DataManager QuarterFrameManager;
         public DataManager CameraHackManager;
     }
