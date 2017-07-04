@@ -14,13 +14,13 @@ using System.Drawing.Drawing2D;
 
 namespace SM64_Diagnostic
 {
-    public class ControllerDisplay : Panel
+    public class ControllerDisplayPanel : Panel
     {
         public static TabControl tabControlMain;
 
         object _gfxLock = new object();
 
-        public ControllerDisplay()
+        public ControllerDisplayPanel()
         {
         }
 
@@ -168,6 +168,8 @@ namespace SM64_Diagnostic
             */
 
             // Draw Overlays
+
+            //e.Graphics.DrawImage(_gui.WallObjectOverlayImage, new Rectangle(new Point(), Size));
 
             /*
             if (_drawWallObject)
