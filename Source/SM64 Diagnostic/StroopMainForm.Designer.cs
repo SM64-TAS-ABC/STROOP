@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -42,6 +42,7 @@ namespace SM64_Diagnostic
             this.comboBoxMapToggleMode = new System.Windows.Forms.ComboBox();
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.labelSortMethod = new System.Windows.Forms.Label();
+            this.NoTearFlowLayoutPanelObjects = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
@@ -114,11 +115,14 @@ namespace SM64_Diagnostic
             this.labelObjSlotPosValue = new System.Windows.Forms.Label();
             this.labelObjBhvValue = new System.Windows.Forms.Label();
             this.labelObjAdd = new System.Windows.Forms.Label();
+            this.NoTearFlowLayoutPanelObject = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.labelObjSlotInd = new System.Windows.Forms.Label();
             this.labelObjSlotPos = new System.Windows.Forms.Label();
             this.labelObjBhv = new System.Windows.Forms.Label();
             this.panelObjectBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxObject = new SM64_Diagnostic.Controls.IntPictureBox();
             this.labelObjAddValue = new System.Windows.Forms.Label();
+            this.splitContainerObject = new System.Windows.Forms.SplitContainer();
             this.tabPageMario = new System.Windows.Forms.TabPage();
             this.groupBoxMarioStats = new System.Windows.Forms.GroupBox();
             this.textBoxMarioStatsVspd = new System.Windows.Forms.TextBox();
@@ -161,12 +165,19 @@ namespace SM64_Diagnostic
             this.buttonMarioVisibility = new System.Windows.Forms.Button();
             this.buttonMarioToggleHandsfree = new System.Windows.Forms.Button();
             this.panelMarioBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxMario = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.splitContainerMario = new System.Windows.Forms.SplitContainer();
+            this.NoTearFlowLayoutPanelMario = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageActions = new System.Windows.Forms.TabPage();
+            this.noTearFlowLayoutPanelActions = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageHud = new System.Windows.Forms.TabPage();
+            this.splitContainerHud = new System.Windows.Forms.SplitContainer();
             this.buttonStandardHud = new System.Windows.Forms.Button();
+            this.panelHudBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxHud = new SM64_Diagnostic.Controls.IntPictureBox();
             this.buttonDie = new System.Windows.Forms.Button();
             this.buttonFillHp = new System.Windows.Forms.Button();
-            this.panelHudBorder = new System.Windows.Forms.Panel();
+            this.NoTearFlowLayoutPanelHud = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
             this.SplitContainerCamera = new System.Windows.Forms.SplitContainer();
             this.groupBoxCameraSphericalPos = new System.Windows.Forms.GroupBox();
@@ -184,6 +195,7 @@ namespace SM64_Diagnostic
             this.buttonCameraSphericalPosTn = new System.Windows.Forms.Button();
             this.buttonCameraSphericalPosTnPn = new System.Windows.Forms.Button();
             this.panelCameraBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxCamera = new SM64_Diagnostic.Controls.IntPictureBox();
             this.groupBoxCameraPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraPosRelative = new System.Windows.Forms.CheckBox();
             this.textBoxCameraPosY = new System.Windows.Forms.TextBox();
@@ -198,7 +210,9 @@ namespace SM64_Diagnostic
             this.buttonCameraPosXnZp = new System.Windows.Forms.Button();
             this.buttonCameraPosXn = new System.Windows.Forms.Button();
             this.buttonCameraPosXnZn = new System.Windows.Forms.Button();
+            this.NoTearFlowLayoutPanelCamera = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageTriangles = new System.Windows.Forms.TabPage();
+            this.splitContainerTriangles = new System.Windows.Forms.SplitContainer();
             this.groupBoxTrianglePos = new System.Windows.Forms.GroupBox();
             this.checkBoxTrianglePosRelative = new System.Windows.Forms.CheckBox();
             this.textBoxTrianglePosY = new System.Windows.Forms.TextBox();
@@ -217,28 +231,34 @@ namespace SM64_Diagnostic
             this.textBoxTriangleNormal = new System.Windows.Forms.TextBox();
             this.buttonTriangleNormalN = new System.Windows.Forms.Button();
             this.buttonTriangleNormalP = new System.Windows.Forms.Button();
-            this.buttonAnnihilateTriangle = new System.Windows.Forms.Button();
-            this.buttonNeutralizeTriangle = new System.Windows.Forms.Button();
-            this.buttonGoToVClosest = new System.Windows.Forms.Button();
-            this.checkBoxVertexMisalignment = new System.Windows.Forms.CheckBox();
-            this.buttonRetrieveTriangle = new System.Windows.Forms.Button();
-            this.buttonGoToV3 = new System.Windows.Forms.Button();
-            this.buttonGoToV2 = new System.Windows.Forms.Button();
-            this.buttonGoToV1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.maskedTextBoxOtherTriangle = new System.Windows.Forms.MaskedTextBox();
             this.radioButtonTriOther = new System.Windows.Forms.RadioButton();
-            this.radioButtonTriCeiling = new System.Windows.Forms.RadioButton();
-            this.radioButtonTriWall = new System.Windows.Forms.RadioButton();
+            this.buttonAnnihilateTriangle = new System.Windows.Forms.Button();
             this.radioButtonTriFloor = new System.Windows.Forms.RadioButton();
-            this.splitContainerTriangles = new System.Windows.Forms.SplitContainer();
+            this.buttonNeutralizeTriangle = new System.Windows.Forms.Button();
+            this.radioButtonTriWall = new System.Windows.Forms.RadioButton();
+            this.buttonGoToVClosest = new System.Windows.Forms.Button();
+            this.radioButtonTriCeiling = new System.Windows.Forms.RadioButton();
+            this.checkBoxVertexMisalignment = new System.Windows.Forms.CheckBox();
+            this.maskedTextBoxOtherTriangle = new System.Windows.Forms.MaskedTextBox();
+            this.buttonRetrieveTriangle = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.buttonGoToV3 = new System.Windows.Forms.Button();
+            this.buttonGoToV1 = new System.Windows.Forms.Button();
+            this.buttonGoToV2 = new System.Windows.Forms.Button();
+            this.NoTearFlowLayoutPanelTriangles = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageWater = new System.Windows.Forms.TabPage();
+            this.noTearFlowLayoutPanelWater = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageController = new System.Windows.Forms.TabPage();
             this.splitContainerController = new System.Windows.Forms.SplitContainer();
+            this.pictureBoxController = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.NoTearFlowLayoutPanelController = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.splitContainerFile = new System.Windows.Forms.SplitContainer();
+            this.noTearFlowLayoutPanelFile = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageMisc = new System.Windows.Forms.TabPage();
             this.panelMiscBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxMisc = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.NoTearFlowLayoutPanelMisc = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
             this.checkBoxDbgResource = new System.Windows.Forms.CheckBox();
             this.checkBoxDbgStageSelect = new System.Windows.Forms.CheckBox();
@@ -247,6 +267,15 @@ namespace SM64_Diagnostic
             this.checkBoxDbgSpawnDbg = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panelDebugBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxDebug = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.NoTearFlowLayoutPanelDebugDisplayType = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.radioButtonDbgOff = new System.Windows.Forms.RadioButton();
+            this.radioButtonDbgObjCnt = new System.Windows.Forms.RadioButton();
+            this.radioButtonDbgChkInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonDbgMapInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonDbgStgInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonDbgFxInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonDbgEnemyInfo = new System.Windows.Forms.RadioButton();
             this.tabPageMap = new System.Windows.Forms.TabPage();
             this.splitContainerMap = new System.Windows.Forms.SplitContainer();
             this.checkBoxMapShowCeiling = new System.Windows.Forms.CheckBox();
@@ -374,7 +403,9 @@ namespace SM64_Diagnostic
             this.radioButtonCamHackMode2 = new System.Windows.Forms.RadioButton();
             this.radioButtonCamHackMode1AbsoluteAngle = new System.Windows.Forms.RadioButton();
             this.radioButtonCamHackMode1RelativeAngle = new System.Windows.Forms.RadioButton();
+            this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageQuarterFrame = new System.Windows.Forms.TabPage();
+            this.noTearFlowLayoutPanelQuarterFrame = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
             this.groupBoxGotoRetrieveOffsets = new System.Windows.Forms.GroupBox();
             this.labelRetrieveInfrontSuffix = new System.Windows.Forms.Label();
@@ -423,37 +454,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.NoTearFlowLayoutPanelObject = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.pictureBoxObject = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.pictureBoxMario = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.NoTearFlowLayoutPanelMario = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.noTearFlowLayoutPanelActions = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.pictureBoxHud = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.NoTearFlowLayoutPanelHud = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.pictureBoxCamera = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.NoTearFlowLayoutPanelCamera = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.NoTearFlowLayoutPanelTriangles = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.noTearFlowLayoutPanelWater = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.pictureBoxController = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.NoTearFlowLayoutPanelController = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.noTearFlowLayoutPanelFile = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.pictureBoxMisc = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.NoTearFlowLayoutPanelMisc = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.pictureBoxDebug = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.NoTearFlowLayoutPanelDebugDisplayType = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.radioButtonDbgOff = new System.Windows.Forms.RadioButton();
-            this.radioButtonDbgObjCnt = new System.Windows.Forms.RadioButton();
-            this.radioButtonDbgChkInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonDbgMapInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonDbgStgInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonDbgFxInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonDbgEnemyInfo = new System.Windows.Forms.RadioButton();
-            this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.noTearFlowLayoutPanelQuarterFrame = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.NoTearFlowLayoutPanelObjects = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.splitContainerHud = new System.Windows.Forms.SplitContainer();
-            this.splitContainerMario = new System.Windows.Forms.SplitContainer();
-            this.splitContainerObject = new System.Windows.Forms.SplitContainer();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -468,14 +468,27 @@ namespace SM64_Diagnostic
             this.groupBoxObjAngle.SuspendLayout();
             this.groupBoxObjPos.SuspendLayout();
             this.panelObjectBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).BeginInit();
+            this.splitContainerObject.SuspendLayout();
             this.tabPageMario.SuspendLayout();
             this.groupBoxMarioStats.SuspendLayout();
             this.groupBoxMarioHOLP.SuspendLayout();
             this.groupBoxMarioPos.SuspendLayout();
             this.panelMarioBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMario)).BeginInit();
+            this.splitContainerMario.Panel1.SuspendLayout();
+            this.splitContainerMario.Panel2.SuspendLayout();
+            this.splitContainerMario.SuspendLayout();
             this.tabPageActions.SuspendLayout();
             this.tabPageHud.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).BeginInit();
+            this.splitContainerHud.Panel1.SuspendLayout();
+            this.splitContainerHud.Panel2.SuspendLayout();
+            this.splitContainerHud.SuspendLayout();
             this.panelHudBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).BeginInit();
             this.tabPageCamera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainerCamera)).BeginInit();
             this.SplitContainerCamera.Panel1.SuspendLayout();
@@ -483,28 +496,33 @@ namespace SM64_Diagnostic
             this.SplitContainerCamera.SuspendLayout();
             this.groupBoxCameraSphericalPos.SuspendLayout();
             this.panelCameraBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
             this.groupBoxCameraPos.SuspendLayout();
             this.tabPageTriangles.SuspendLayout();
-            this.groupBoxTrianglePos.SuspendLayout();
-            this.groupBoxTriangleNormal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTriangles)).BeginInit();
             this.splitContainerTriangles.Panel1.SuspendLayout();
             this.splitContainerTriangles.Panel2.SuspendLayout();
             this.splitContainerTriangles.SuspendLayout();
+            this.groupBoxTrianglePos.SuspendLayout();
+            this.groupBoxTriangleNormal.SuspendLayout();
             this.tabPageWater.SuspendLayout();
             this.tabPageController.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerController)).BeginInit();
             this.splitContainerController.Panel1.SuspendLayout();
             this.splitContainerController.Panel2.SuspendLayout();
             this.splitContainerController.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxController)).BeginInit();
             this.tabPageFile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).BeginInit();
             this.splitContainerFile.Panel2.SuspendLayout();
             this.splitContainerFile.SuspendLayout();
             this.tabPageMisc.SuspendLayout();
             this.panelMiscBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
             this.tabPageDebug.SuspendLayout();
             this.panelDebugBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
+            this.NoTearFlowLayoutPanelDebugDisplayType.SuspendLayout();
             this.tabPageMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).BeginInit();
             this.splitContainerMap.Panel1.SuspendLayout();
@@ -538,23 +556,6 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxController)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
-            this.NoTearFlowLayoutPanelDebugDisplayType.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).BeginInit();
-            this.splitContainerHud.Panel1.SuspendLayout();
-            this.splitContainerHud.Panel2.SuspendLayout();
-            this.splitContainerHud.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMario)).BeginInit();
-            this.splitContainerMario.Panel2.SuspendLayout();
-            this.splitContainerMario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).BeginInit();
-            this.splitContainerObject.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -586,7 +587,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 270);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 271);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -664,6 +665,19 @@ namespace SM64_Diagnostic
             this.labelSortMethod.Size = new System.Drawing.Size(68, 13);
             this.labelSortMethod.TabIndex = 5;
             this.labelSortMethod.Text = "Sort Method:";
+            // 
+            // NoTearFlowLayoutPanelObjects
+            // 
+            this.NoTearFlowLayoutPanelObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoTearFlowLayoutPanelObjects.AutoScroll = true;
+            this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
+            this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 198);
+            this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
+            this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
             // comboBoxSortMethod
             // 
@@ -1517,6 +1531,19 @@ namespace SM64_Diagnostic
             this.labelObjAdd.TabIndex = 8;
             this.labelObjAdd.Text = "Add:";
             // 
+            // NoTearFlowLayoutPanelObject
+            // 
+            this.NoTearFlowLayoutPanelObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoTearFlowLayoutPanelObject.AutoScroll = true;
+            this.NoTearFlowLayoutPanelObject.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(219, 3);
+            this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(694, 440);
+            this.NoTearFlowLayoutPanelObject.TabIndex = 3;
+            // 
             // labelObjSlotInd
             // 
             this.labelObjSlotInd.AutoSize = true;
@@ -1556,6 +1583,21 @@ namespace SM64_Diagnostic
             this.panelObjectBorder.Size = new System.Drawing.Size(57, 55);
             this.panelObjectBorder.TabIndex = 2;
             // 
+            // pictureBoxObject
+            // 
+            this.pictureBoxObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxObject.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxObject.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxObject.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxObject.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxObject.Name = "pictureBoxObject";
+            this.pictureBoxObject.Size = new System.Drawing.Size(51, 50);
+            this.pictureBoxObject.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxObject.TabIndex = 0;
+            this.pictureBoxObject.TabStop = false;
+            // 
             // labelObjAddValue
             // 
             this.labelObjAddValue.Location = new System.Drawing.Point(85, 72);
@@ -1565,15 +1607,30 @@ namespace SM64_Diagnostic
             this.labelObjAddValue.TabIndex = 12;
             this.labelObjAddValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // splitContainerObject
+            // 
+            this.splitContainerObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainerObject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerObject.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerObject.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerObject.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainerObject.Name = "splitContainerObject";
+            // 
+            // splitContainerObject.Panel1
+            // 
+            this.splitContainerObject.Panel1.AutoScroll = true;
+            this.splitContainerObject.Panel1MinSize = 0;
+            this.splitContainerObject.Panel2MinSize = 0;
+            this.splitContainerObject.Size = new System.Drawing.Size(915, 447);
+            this.splitContainerObject.SplitterDistance = 161;
+            this.splitContainerObject.SplitterWidth = 1;
+            this.splitContainerObject.TabIndex = 20;
+            // 
             // tabPageMario
             // 
             this.tabPageMario.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageMario.Controls.Add(this.groupBoxMarioStats);
-            this.tabPageMario.Controls.Add(this.groupBoxMarioHOLP);
-            this.tabPageMario.Controls.Add(this.groupBoxMarioPos);
-            this.tabPageMario.Controls.Add(this.buttonMarioVisibility);
-            this.tabPageMario.Controls.Add(this.buttonMarioToggleHandsfree);
-            this.tabPageMario.Controls.Add(this.panelMarioBorder);
             this.tabPageMario.Controls.Add(this.splitContainerMario);
             this.tabPageMario.Location = new System.Drawing.Point(4, 22);
             this.tabPageMario.Margin = new System.Windows.Forms.Padding(2);
@@ -1594,7 +1651,7 @@ namespace SM64_Diagnostic
             this.groupBoxMarioStats.Controls.Add(this.buttonMarioStatsVspdP);
             this.groupBoxMarioStats.Controls.Add(this.buttonMarioStatsHspdP);
             this.groupBoxMarioStats.Controls.Add(this.buttonMarioStatsYawP);
-            this.groupBoxMarioStats.Location = new System.Drawing.Point(3, 264);
+            this.groupBoxMarioStats.Location = new System.Drawing.Point(2, 263);
             this.groupBoxMarioStats.Name = "groupBoxMarioStats";
             this.groupBoxMarioStats.Size = new System.Drawing.Size(185, 95);
             this.groupBoxMarioStats.TabIndex = 30;
@@ -1712,7 +1769,7 @@ namespace SM64_Diagnostic
             this.groupBoxMarioHOLP.Controls.Add(this.buttonMarioHOLPXnZp);
             this.groupBoxMarioHOLP.Controls.Add(this.buttonMarioHOLPXn);
             this.groupBoxMarioHOLP.Controls.Add(this.buttonMarioHOLPXnZn);
-            this.groupBoxMarioHOLP.Location = new System.Drawing.Point(3, 365);
+            this.groupBoxMarioHOLP.Location = new System.Drawing.Point(2, 364);
             this.groupBoxMarioHOLP.Name = "groupBoxMarioHOLP";
             this.groupBoxMarioHOLP.Size = new System.Drawing.Size(185, 146);
             this.groupBoxMarioHOLP.TabIndex = 29;
@@ -1865,7 +1922,7 @@ namespace SM64_Diagnostic
             this.groupBoxMarioPos.Controls.Add(this.buttonMarioPosXnZp);
             this.groupBoxMarioPos.Controls.Add(this.buttonMarioPosXn);
             this.groupBoxMarioPos.Controls.Add(this.buttonMarioPosXnZn);
-            this.groupBoxMarioPos.Location = new System.Drawing.Point(3, 112);
+            this.groupBoxMarioPos.Location = new System.Drawing.Point(2, 111);
             this.groupBoxMarioPos.Name = "groupBoxMarioPos";
             this.groupBoxMarioPos.Size = new System.Drawing.Size(185, 146);
             this.groupBoxMarioPos.TabIndex = 29;
@@ -2005,7 +2062,7 @@ namespace SM64_Diagnostic
             // 
             // buttonMarioVisibility
             // 
-            this.buttonMarioVisibility.Location = new System.Drawing.Point(3, 64);
+            this.buttonMarioVisibility.Location = new System.Drawing.Point(2, 63);
             this.buttonMarioVisibility.Name = "buttonMarioVisibility";
             this.buttonMarioVisibility.Size = new System.Drawing.Size(92, 42);
             this.buttonMarioVisibility.TabIndex = 3;
@@ -2014,7 +2071,7 @@ namespace SM64_Diagnostic
             // 
             // buttonMarioToggleHandsfree
             // 
-            this.buttonMarioToggleHandsfree.Location = new System.Drawing.Point(96, 64);
+            this.buttonMarioToggleHandsfree.Location = new System.Drawing.Point(95, 63);
             this.buttonMarioToggleHandsfree.Name = "buttonMarioToggleHandsfree";
             this.buttonMarioToggleHandsfree.Size = new System.Drawing.Size(92, 42);
             this.buttonMarioToggleHandsfree.TabIndex = 2;
@@ -2024,11 +2081,70 @@ namespace SM64_Diagnostic
             // panelMarioBorder
             // 
             this.panelMarioBorder.Controls.Add(this.pictureBoxMario);
-            this.panelMarioBorder.Location = new System.Drawing.Point(4, 4);
+            this.panelMarioBorder.Location = new System.Drawing.Point(3, 3);
             this.panelMarioBorder.Margin = new System.Windows.Forms.Padding(2);
             this.panelMarioBorder.Name = "panelMarioBorder";
             this.panelMarioBorder.Size = new System.Drawing.Size(57, 55);
             this.panelMarioBorder.TabIndex = 0;
+            // 
+            // pictureBoxMario
+            // 
+            this.pictureBoxMario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMario.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxMario.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxMario.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxMario.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxMario.Name = "pictureBoxMario";
+            this.pictureBoxMario.Size = new System.Drawing.Size(51, 50);
+            this.pictureBoxMario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxMario.TabIndex = 0;
+            this.pictureBoxMario.TabStop = false;
+            // 
+            // splitContainerMario
+            // 
+            this.splitContainerMario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainerMario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMario.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerMario.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerMario.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainerMario.Name = "splitContainerMario";
+            // 
+            // splitContainerMario.Panel1
+            // 
+            this.splitContainerMario.Panel1.AutoScroll = true;
+            this.splitContainerMario.Panel1.Controls.Add(this.groupBoxMarioStats);
+            this.splitContainerMario.Panel1.Controls.Add(this.groupBoxMarioHOLP);
+            this.splitContainerMario.Panel1.Controls.Add(this.panelMarioBorder);
+            this.splitContainerMario.Panel1.Controls.Add(this.groupBoxMarioPos);
+            this.splitContainerMario.Panel1.Controls.Add(this.buttonMarioToggleHandsfree);
+            this.splitContainerMario.Panel1.Controls.Add(this.buttonMarioVisibility);
+            this.splitContainerMario.Panel1MinSize = 0;
+            // 
+            // splitContainerMario.Panel2
+            // 
+            this.splitContainerMario.Panel2.Controls.Add(this.NoTearFlowLayoutPanelMario);
+            this.splitContainerMario.Panel2MinSize = 0;
+            this.splitContainerMario.Size = new System.Drawing.Size(915, 447);
+            this.splitContainerMario.SplitterDistance = 208;
+            this.splitContainerMario.SplitterWidth = 1;
+            this.splitContainerMario.TabIndex = 31;
+            // 
+            // NoTearFlowLayoutPanelMario
+            // 
+            this.NoTearFlowLayoutPanelMario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoTearFlowLayoutPanelMario.AutoScroll = true;
+            this.NoTearFlowLayoutPanelMario.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
+            this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(702, 440);
+            this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
             // 
@@ -2040,6 +2156,18 @@ namespace SM64_Diagnostic
             this.tabPageActions.TabIndex = 13;
             this.tabPageActions.Text = "Actions";
             // 
+            // noTearFlowLayoutPanelActions
+            // 
+            this.noTearFlowLayoutPanelActions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelActions.AutoScroll = true;
+            this.noTearFlowLayoutPanelActions.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelActions.Location = new System.Drawing.Point(6, 6);
+            this.noTearFlowLayoutPanelActions.Name = "noTearFlowLayoutPanelActions";
+            this.noTearFlowLayoutPanelActions.Size = new System.Drawing.Size(903, 435);
+            this.noTearFlowLayoutPanelActions.TabIndex = 0;
+            // 
             // tabPageHud
             // 
             this.tabPageHud.Controls.Add(this.splitContainerHud);
@@ -2050,6 +2178,35 @@ namespace SM64_Diagnostic
             this.tabPageHud.TabIndex = 6;
             this.tabPageHud.Text = "HUD";
             // 
+            // splitContainerHud
+            // 
+            this.splitContainerHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainerHud.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerHud.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerHud.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerHud.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainerHud.Name = "splitContainerHud";
+            // 
+            // splitContainerHud.Panel1
+            // 
+            this.splitContainerHud.Panel1.AutoScroll = true;
+            this.splitContainerHud.Panel1.Controls.Add(this.buttonStandardHud);
+            this.splitContainerHud.Panel1.Controls.Add(this.panelHudBorder);
+            this.splitContainerHud.Panel1.Controls.Add(this.buttonDie);
+            this.splitContainerHud.Panel1.Controls.Add(this.buttonFillHp);
+            this.splitContainerHud.Panel1MinSize = 0;
+            // 
+            // splitContainerHud.Panel2
+            // 
+            this.splitContainerHud.Panel2.Controls.Add(this.NoTearFlowLayoutPanelHud);
+            this.splitContainerHud.Panel2MinSize = 0;
+            this.splitContainerHud.Size = new System.Drawing.Size(915, 447);
+            this.splitContainerHud.SplitterDistance = 117;
+            this.splitContainerHud.SplitterWidth = 1;
+            this.splitContainerHud.TabIndex = 20;
+            // 
             // buttonStandardHud
             // 
             this.buttonStandardHud.Location = new System.Drawing.Point(3, 133);
@@ -2058,6 +2215,30 @@ namespace SM64_Diagnostic
             this.buttonStandardHud.TabIndex = 6;
             this.buttonStandardHud.Text = "Standard HUD";
             this.buttonStandardHud.UseVisualStyleBackColor = true;
+            // 
+            // panelHudBorder
+            // 
+            this.panelHudBorder.Controls.Add(this.pictureBoxHud);
+            this.panelHudBorder.Location = new System.Drawing.Point(2, 2);
+            this.panelHudBorder.Margin = new System.Windows.Forms.Padding(2);
+            this.panelHudBorder.Name = "panelHudBorder";
+            this.panelHudBorder.Size = new System.Drawing.Size(57, 55);
+            this.panelHudBorder.TabIndex = 2;
+            // 
+            // pictureBoxHud
+            // 
+            this.pictureBoxHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxHud.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxHud.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxHud.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxHud.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxHud.Name = "pictureBoxHud";
+            this.pictureBoxHud.Size = new System.Drawing.Size(51, 50);
+            this.pictureBoxHud.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxHud.TabIndex = 0;
+            this.pictureBoxHud.TabStop = false;
             // 
             // buttonDie
             // 
@@ -2077,14 +2258,18 @@ namespace SM64_Diagnostic
             this.buttonFillHp.Text = "Fill HP";
             this.buttonFillHp.UseVisualStyleBackColor = true;
             // 
-            // panelHudBorder
+            // NoTearFlowLayoutPanelHud
             // 
-            this.panelHudBorder.Controls.Add(this.pictureBoxHud);
-            this.panelHudBorder.Location = new System.Drawing.Point(2, 2);
-            this.panelHudBorder.Margin = new System.Windows.Forms.Padding(2);
-            this.panelHudBorder.Name = "panelHudBorder";
-            this.panelHudBorder.Size = new System.Drawing.Size(57, 55);
-            this.panelHudBorder.TabIndex = 2;
+            this.NoTearFlowLayoutPanelHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoTearFlowLayoutPanelHud.AutoScroll = true;
+            this.NoTearFlowLayoutPanelHud.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
+            this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(794, 441);
+            this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
             // 
@@ -2286,6 +2471,21 @@ namespace SM64_Diagnostic
             this.panelCameraBorder.Size = new System.Drawing.Size(57, 55);
             this.panelCameraBorder.TabIndex = 2;
             // 
+            // pictureBoxCamera
+            // 
+            this.pictureBoxCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxCamera.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxCamera.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxCamera.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxCamera.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxCamera.Name = "pictureBoxCamera";
+            this.pictureBoxCamera.Size = new System.Drawing.Size(51, 50);
+            this.pictureBoxCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCamera.TabIndex = 0;
+            this.pictureBoxCamera.TabStop = false;
+            // 
             // groupBoxCameraPos
             // 
             this.groupBoxCameraPos.Controls.Add(this.checkBoxCameraPosRelative);
@@ -2439,6 +2639,19 @@ namespace SM64_Diagnostic
             this.buttonCameraPosXnZn.Text = "X-Z-";
             this.buttonCameraPosXnZn.UseVisualStyleBackColor = true;
             // 
+            // NoTearFlowLayoutPanelCamera
+            // 
+            this.NoTearFlowLayoutPanelCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoTearFlowLayoutPanelCamera.AutoScroll = true;
+            this.NoTearFlowLayoutPanelCamera.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
+            this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(716, 441);
+            this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
+            // 
             // tabPageTriangles
             // 
             this.tabPageTriangles.Controls.Add(this.splitContainerTriangles);
@@ -2448,6 +2661,47 @@ namespace SM64_Diagnostic
             this.tabPageTriangles.Size = new System.Drawing.Size(915, 447);
             this.tabPageTriangles.TabIndex = 11;
             this.tabPageTriangles.Text = "Triangles";
+            // 
+            // splitContainerTriangles
+            // 
+            this.splitContainerTriangles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainerTriangles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerTriangles.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerTriangles.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerTriangles.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainerTriangles.Name = "splitContainerTriangles";
+            // 
+            // splitContainerTriangles.Panel1
+            // 
+            this.splitContainerTriangles.Panel1.AutoScroll = true;
+            this.splitContainerTriangles.Panel1.Controls.Add(this.groupBoxTrianglePos);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.groupBoxTriangleNormal);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriOther);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonAnnihilateTriangle);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriFloor);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonNeutralizeTriangle);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriWall);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToVClosest);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriCeiling);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxVertexMisalignment);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.maskedTextBoxOtherTriangle);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonRetrieveTriangle);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.label4);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToV3);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToV1);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToV2);
+            this.splitContainerTriangles.Panel1MinSize = 0;
+            // 
+            // splitContainerTriangles.Panel2
+            // 
+            this.splitContainerTriangles.Panel2.Controls.Add(this.NoTearFlowLayoutPanelTriangles);
+            this.splitContainerTriangles.Panel2MinSize = 0;
+            this.splitContainerTriangles.Size = new System.Drawing.Size(915, 447);
+            this.splitContainerTriangles.SplitterDistance = 208;
+            this.splitContainerTriangles.SplitterWidth = 1;
+            this.splitContainerTriangles.TabIndex = 32;
             // 
             // groupBoxTrianglePos
             // 
@@ -2646,97 +2900,6 @@ namespace SM64_Diagnostic
             this.buttonTriangleNormalP.Text = "Normal+";
             this.buttonTriangleNormalP.UseVisualStyleBackColor = true;
             // 
-            // buttonAnnihilateTriangle
-            // 
-            this.buttonAnnihilateTriangle.Location = new System.Drawing.Point(100, 170);
-            this.buttonAnnihilateTriangle.Name = "buttonAnnihilateTriangle";
-            this.buttonAnnihilateTriangle.Size = new System.Drawing.Size(87, 23);
-            this.buttonAnnihilateTriangle.TabIndex = 15;
-            this.buttonAnnihilateTriangle.Text = "Annihilate";
-            this.buttonAnnihilateTriangle.UseVisualStyleBackColor = true;
-            // 
-            // buttonNeutralizeTriangle
-            // 
-            this.buttonNeutralizeTriangle.Location = new System.Drawing.Point(7, 170);
-            this.buttonNeutralizeTriangle.Name = "buttonNeutralizeTriangle";
-            this.buttonNeutralizeTriangle.Size = new System.Drawing.Size(87, 23);
-            this.buttonNeutralizeTriangle.TabIndex = 14;
-            this.buttonNeutralizeTriangle.Text = "Neutralize";
-            this.buttonNeutralizeTriangle.UseVisualStyleBackColor = true;
-            // 
-            // buttonGoToVClosest
-            // 
-            this.buttonGoToVClosest.Location = new System.Drawing.Point(7, 141);
-            this.buttonGoToVClosest.Name = "buttonGoToVClosest";
-            this.buttonGoToVClosest.Size = new System.Drawing.Size(87, 23);
-            this.buttonGoToVClosest.TabIndex = 13;
-            this.buttonGoToVClosest.Text = "Goto Closest";
-            this.buttonGoToVClosest.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxVertexMisalignment
-            // 
-            this.checkBoxVertexMisalignment.AutoSize = true;
-            this.checkBoxVertexMisalignment.Location = new System.Drawing.Point(7, 199);
-            this.checkBoxVertexMisalignment.Name = "checkBoxVertexMisalignment";
-            this.checkBoxVertexMisalignment.Size = new System.Drawing.Size(151, 17);
-            this.checkBoxVertexMisalignment.TabIndex = 12;
-            this.checkBoxVertexMisalignment.Text = "Vertex Misalignment Offset";
-            this.checkBoxVertexMisalignment.UseVisualStyleBackColor = true;
-            // 
-            // buttonRetrieveTriangle
-            // 
-            this.buttonRetrieveTriangle.Location = new System.Drawing.Point(100, 141);
-            this.buttonRetrieveTriangle.Name = "buttonRetrieveTriangle";
-            this.buttonRetrieveTriangle.Size = new System.Drawing.Size(87, 23);
-            this.buttonRetrieveTriangle.TabIndex = 11;
-            this.buttonRetrieveTriangle.Text = "Retrieve";
-            this.buttonRetrieveTriangle.UseVisualStyleBackColor = true;
-            // 
-            // buttonGoToV3
-            // 
-            this.buttonGoToV3.Location = new System.Drawing.Point(131, 112);
-            this.buttonGoToV3.Name = "buttonGoToV3";
-            this.buttonGoToV3.Size = new System.Drawing.Size(56, 23);
-            this.buttonGoToV3.TabIndex = 10;
-            this.buttonGoToV3.Text = "Goto V3";
-            this.buttonGoToV3.UseVisualStyleBackColor = true;
-            // 
-            // buttonGoToV2
-            // 
-            this.buttonGoToV2.Location = new System.Drawing.Point(70, 112);
-            this.buttonGoToV2.Name = "buttonGoToV2";
-            this.buttonGoToV2.Size = new System.Drawing.Size(55, 23);
-            this.buttonGoToV2.TabIndex = 9;
-            this.buttonGoToV2.Text = "Goto V2";
-            this.buttonGoToV2.UseVisualStyleBackColor = true;
-            // 
-            // buttonGoToV1
-            // 
-            this.buttonGoToV1.Location = new System.Drawing.Point(7, 112);
-            this.buttonGoToV1.Name = "buttonGoToV1";
-            this.buttonGoToV1.Size = new System.Drawing.Size(57, 23);
-            this.buttonGoToV1.TabIndex = 8;
-            this.buttonGoToV1.Text = "Goto V1";
-            this.buttonGoToV1.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Triangle:";
-            // 
-            // maskedTextBoxOtherTriangle
-            // 
-            this.maskedTextBoxOtherTriangle.Location = new System.Drawing.Point(71, 87);
-            this.maskedTextBoxOtherTriangle.Margin = new System.Windows.Forms.Padding(2);
-            this.maskedTextBoxOtherTriangle.Mask = "\\0xaaAAAAAA";
-            this.maskedTextBoxOtherTriangle.Name = "maskedTextBoxOtherTriangle";
-            this.maskedTextBoxOtherTriangle.Size = new System.Drawing.Size(87, 20);
-            this.maskedTextBoxOtherTriangle.TabIndex = 5;
-            // 
             // radioButtonTriOther
             // 
             this.radioButtonTriOther.AutoSize = true;
@@ -2747,25 +2910,14 @@ namespace SM64_Diagnostic
             this.radioButtonTriOther.Text = "Other:";
             this.radioButtonTriOther.UseVisualStyleBackColor = true;
             // 
-            // radioButtonTriCeiling
+            // buttonAnnihilateTriangle
             // 
-            this.radioButtonTriCeiling.AutoSize = true;
-            this.radioButtonTriCeiling.Location = new System.Drawing.Point(12, 65);
-            this.radioButtonTriCeiling.Name = "radioButtonTriCeiling";
-            this.radioButtonTriCeiling.Size = new System.Drawing.Size(56, 17);
-            this.radioButtonTriCeiling.TabIndex = 2;
-            this.radioButtonTriCeiling.Text = "Ceiling";
-            this.radioButtonTriCeiling.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonTriWall
-            // 
-            this.radioButtonTriWall.AutoSize = true;
-            this.radioButtonTriWall.Location = new System.Drawing.Point(12, 42);
-            this.radioButtonTriWall.Name = "radioButtonTriWall";
-            this.radioButtonTriWall.Size = new System.Drawing.Size(46, 17);
-            this.radioButtonTriWall.TabIndex = 1;
-            this.radioButtonTriWall.Text = "Wall";
-            this.radioButtonTriWall.UseVisualStyleBackColor = true;
+            this.buttonAnnihilateTriangle.Location = new System.Drawing.Point(100, 170);
+            this.buttonAnnihilateTriangle.Name = "buttonAnnihilateTriangle";
+            this.buttonAnnihilateTriangle.Size = new System.Drawing.Size(87, 23);
+            this.buttonAnnihilateTriangle.TabIndex = 15;
+            this.buttonAnnihilateTriangle.Text = "Annihilate";
+            this.buttonAnnihilateTriangle.UseVisualStyleBackColor = true;
             // 
             // radioButtonTriFloor
             // 
@@ -2779,46 +2931,120 @@ namespace SM64_Diagnostic
             this.radioButtonTriFloor.Text = "Floor";
             this.radioButtonTriFloor.UseVisualStyleBackColor = true;
             // 
-            // splitContainerTriangles
+            // buttonNeutralizeTriangle
             // 
-            this.splitContainerTriangles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.buttonNeutralizeTriangle.Location = new System.Drawing.Point(7, 170);
+            this.buttonNeutralizeTriangle.Name = "buttonNeutralizeTriangle";
+            this.buttonNeutralizeTriangle.Size = new System.Drawing.Size(87, 23);
+            this.buttonNeutralizeTriangle.TabIndex = 14;
+            this.buttonNeutralizeTriangle.Text = "Neutralize";
+            this.buttonNeutralizeTriangle.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTriWall
+            // 
+            this.radioButtonTriWall.AutoSize = true;
+            this.radioButtonTriWall.Location = new System.Drawing.Point(12, 42);
+            this.radioButtonTriWall.Name = "radioButtonTriWall";
+            this.radioButtonTriWall.Size = new System.Drawing.Size(46, 17);
+            this.radioButtonTriWall.TabIndex = 1;
+            this.radioButtonTriWall.Text = "Wall";
+            this.radioButtonTriWall.UseVisualStyleBackColor = true;
+            // 
+            // buttonGoToVClosest
+            // 
+            this.buttonGoToVClosest.Location = new System.Drawing.Point(7, 141);
+            this.buttonGoToVClosest.Name = "buttonGoToVClosest";
+            this.buttonGoToVClosest.Size = new System.Drawing.Size(87, 23);
+            this.buttonGoToVClosest.TabIndex = 13;
+            this.buttonGoToVClosest.Text = "Goto Closest";
+            this.buttonGoToVClosest.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTriCeiling
+            // 
+            this.radioButtonTriCeiling.AutoSize = true;
+            this.radioButtonTriCeiling.Location = new System.Drawing.Point(12, 65);
+            this.radioButtonTriCeiling.Name = "radioButtonTriCeiling";
+            this.radioButtonTriCeiling.Size = new System.Drawing.Size(56, 17);
+            this.radioButtonTriCeiling.TabIndex = 2;
+            this.radioButtonTriCeiling.Text = "Ceiling";
+            this.radioButtonTriCeiling.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxVertexMisalignment
+            // 
+            this.checkBoxVertexMisalignment.AutoSize = true;
+            this.checkBoxVertexMisalignment.Location = new System.Drawing.Point(7, 199);
+            this.checkBoxVertexMisalignment.Name = "checkBoxVertexMisalignment";
+            this.checkBoxVertexMisalignment.Size = new System.Drawing.Size(151, 17);
+            this.checkBoxVertexMisalignment.TabIndex = 12;
+            this.checkBoxVertexMisalignment.Text = "Vertex Misalignment Offset";
+            this.checkBoxVertexMisalignment.UseVisualStyleBackColor = true;
+            // 
+            // maskedTextBoxOtherTriangle
+            // 
+            this.maskedTextBoxOtherTriangle.Location = new System.Drawing.Point(71, 87);
+            this.maskedTextBoxOtherTriangle.Margin = new System.Windows.Forms.Padding(2);
+            this.maskedTextBoxOtherTriangle.Mask = "\\0xaaAAAAAA";
+            this.maskedTextBoxOtherTriangle.Name = "maskedTextBoxOtherTriangle";
+            this.maskedTextBoxOtherTriangle.Size = new System.Drawing.Size(87, 20);
+            this.maskedTextBoxOtherTriangle.TabIndex = 5;
+            // 
+            // buttonRetrieveTriangle
+            // 
+            this.buttonRetrieveTriangle.Location = new System.Drawing.Point(100, 141);
+            this.buttonRetrieveTriangle.Name = "buttonRetrieveTriangle";
+            this.buttonRetrieveTriangle.Size = new System.Drawing.Size(87, 23);
+            this.buttonRetrieveTriangle.TabIndex = 11;
+            this.buttonRetrieveTriangle.Text = "Retrieve";
+            this.buttonRetrieveTriangle.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Triangle:";
+            // 
+            // buttonGoToV3
+            // 
+            this.buttonGoToV3.Location = new System.Drawing.Point(131, 112);
+            this.buttonGoToV3.Name = "buttonGoToV3";
+            this.buttonGoToV3.Size = new System.Drawing.Size(56, 23);
+            this.buttonGoToV3.TabIndex = 10;
+            this.buttonGoToV3.Text = "Goto V3";
+            this.buttonGoToV3.UseVisualStyleBackColor = true;
+            // 
+            // buttonGoToV1
+            // 
+            this.buttonGoToV1.Location = new System.Drawing.Point(7, 112);
+            this.buttonGoToV1.Name = "buttonGoToV1";
+            this.buttonGoToV1.Size = new System.Drawing.Size(57, 23);
+            this.buttonGoToV1.TabIndex = 8;
+            this.buttonGoToV1.Text = "Goto V1";
+            this.buttonGoToV1.UseVisualStyleBackColor = true;
+            // 
+            // buttonGoToV2
+            // 
+            this.buttonGoToV2.Location = new System.Drawing.Point(70, 112);
+            this.buttonGoToV2.Name = "buttonGoToV2";
+            this.buttonGoToV2.Size = new System.Drawing.Size(55, 23);
+            this.buttonGoToV2.TabIndex = 9;
+            this.buttonGoToV2.Text = "Goto V2";
+            this.buttonGoToV2.UseVisualStyleBackColor = true;
+            // 
+            // NoTearFlowLayoutPanelTriangles
+            // 
+            this.NoTearFlowLayoutPanelTriangles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainerTriangles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerTriangles.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerTriangles.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerTriangles.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainerTriangles.Name = "splitContainerTriangles";
-            // 
-            // splitContainerTriangles.Panel1
-            // 
-            this.splitContainerTriangles.Panel1.AutoScroll = true;
-            this.splitContainerTriangles.Panel1.Controls.Add(this.groupBoxTrianglePos);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.groupBoxTriangleNormal);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriOther);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonAnnihilateTriangle);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriFloor);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonNeutralizeTriangle);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriWall);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToVClosest);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriCeiling);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxVertexMisalignment);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.maskedTextBoxOtherTriangle);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonRetrieveTriangle);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.label4);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToV3);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToV1);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToV2);
-            this.splitContainerTriangles.Panel1MinSize = 0;
-            // 
-            // splitContainerTriangles.Panel2
-            // 
-            this.splitContainerTriangles.Panel2.Controls.Add(this.NoTearFlowLayoutPanelTriangles);
-            this.splitContainerTriangles.Panel2MinSize = 0;
-            this.splitContainerTriangles.Size = new System.Drawing.Size(915, 447);
-            this.splitContainerTriangles.SplitterDistance = 208;
-            this.splitContainerTriangles.SplitterWidth = 1;
-            this.splitContainerTriangles.TabIndex = 32;
+            this.NoTearFlowLayoutPanelTriangles.AutoScroll = true;
+            this.NoTearFlowLayoutPanelTriangles.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
+            this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(704, 437);
+            this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
             // 
@@ -2830,6 +3056,19 @@ namespace SM64_Diagnostic
             this.tabPageWater.Size = new System.Drawing.Size(915, 447);
             this.tabPageWater.TabIndex = 14;
             this.tabPageWater.Text = "Water";
+            // 
+            // noTearFlowLayoutPanelWater
+            // 
+            this.noTearFlowLayoutPanelWater.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelWater.AutoScroll = true;
+            this.noTearFlowLayoutPanelWater.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelWater.Location = new System.Drawing.Point(2, 2);
+            this.noTearFlowLayoutPanelWater.Margin = new System.Windows.Forms.Padding(2);
+            this.noTearFlowLayoutPanelWater.Name = "noTearFlowLayoutPanelWater";
+            this.noTearFlowLayoutPanelWater.Size = new System.Drawing.Size(911, 441);
+            this.noTearFlowLayoutPanelWater.TabIndex = 2;
             // 
             // tabPageController
             // 
@@ -2867,6 +3106,34 @@ namespace SM64_Diagnostic
             this.splitContainerController.SplitterWidth = 1;
             this.splitContainerController.TabIndex = 17;
             // 
+            // pictureBoxController
+            // 
+            this.pictureBoxController.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxController.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxController.Location = new System.Drawing.Point(2, 2);
+            this.pictureBoxController.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxController.MaximumSize = new System.Drawing.Size(300, 300);
+            this.pictureBoxController.Name = "pictureBoxController";
+            this.pictureBoxController.Size = new System.Drawing.Size(223, 300);
+            this.pictureBoxController.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxController.TabIndex = 3;
+            this.pictureBoxController.TabStop = false;
+            // 
+            // NoTearFlowLayoutPanelController
+            // 
+            this.NoTearFlowLayoutPanelController.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoTearFlowLayoutPanelController.AutoScroll = true;
+            this.NoTearFlowLayoutPanelController.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
+            this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(736, 444);
+            this.NoTearFlowLayoutPanelController.TabIndex = 2;
+            // 
             // tabPageFile
             // 
             this.tabPageFile.Controls.Add(this.splitContainerFile);
@@ -2902,6 +3169,19 @@ namespace SM64_Diagnostic
             this.splitContainerFile.SplitterWidth = 1;
             this.splitContainerFile.TabIndex = 19;
             // 
+            // noTearFlowLayoutPanelFile
+            // 
+            this.noTearFlowLayoutPanelFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelFile.AutoScroll = true;
+            this.noTearFlowLayoutPanelFile.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
+            this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
+            this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(770, 447);
+            this.noTearFlowLayoutPanelFile.TabIndex = 2;
+            // 
             // tabPageMisc
             // 
             this.tabPageMisc.Controls.Add(this.panelMiscBorder);
@@ -2920,6 +3200,34 @@ namespace SM64_Diagnostic
             this.panelMiscBorder.Name = "panelMiscBorder";
             this.panelMiscBorder.Size = new System.Drawing.Size(57, 55);
             this.panelMiscBorder.TabIndex = 4;
+            // 
+            // pictureBoxMisc
+            // 
+            this.pictureBoxMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMisc.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxMisc.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxMisc.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxMisc.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxMisc.Name = "pictureBoxMisc";
+            this.pictureBoxMisc.Size = new System.Drawing.Size(51, 50);
+            this.pictureBoxMisc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxMisc.TabIndex = 0;
+            this.pictureBoxMisc.TabStop = false;
+            // 
+            // NoTearFlowLayoutPanelMisc
+            // 
+            this.NoTearFlowLayoutPanelMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoTearFlowLayoutPanelMisc.AutoScroll = true;
+            this.NoTearFlowLayoutPanelMisc.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelMisc.Location = new System.Drawing.Point(64, 5);
+            this.NoTearFlowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelMisc.Name = "NoTearFlowLayoutPanelMisc";
+            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(849, 440);
+            this.NoTearFlowLayoutPanelMisc.TabIndex = 5;
             // 
             // tabPageDebug
             // 
@@ -3005,6 +3313,110 @@ namespace SM64_Diagnostic
             this.panelDebugBorder.Name = "panelDebugBorder";
             this.panelDebugBorder.Size = new System.Drawing.Size(57, 55);
             this.panelDebugBorder.TabIndex = 3;
+            // 
+            // pictureBoxDebug
+            // 
+            this.pictureBoxDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxDebug.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxDebug.Location = new System.Drawing.Point(2, 2);
+            this.pictureBoxDebug.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxDebug.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxDebug.Name = "pictureBoxDebug";
+            this.pictureBoxDebug.Size = new System.Drawing.Size(51, 50);
+            this.pictureBoxDebug.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDebug.TabIndex = 0;
+            this.pictureBoxDebug.TabStop = false;
+            // 
+            // NoTearFlowLayoutPanelDebugDisplayType
+            // 
+            this.NoTearFlowLayoutPanelDebugDisplayType.AutoScroll = true;
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgOff);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgObjCnt);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgChkInfo);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgMapInfo);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgStgInfo);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgFxInfo);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgEnemyInfo);
+            this.NoTearFlowLayoutPanelDebugDisplayType.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelDebugDisplayType.Location = new System.Drawing.Point(71, 23);
+            this.NoTearFlowLayoutPanelDebugDisplayType.Name = "NoTearFlowLayoutPanelDebugDisplayType";
+            this.NoTearFlowLayoutPanelDebugDisplayType.Size = new System.Drawing.Size(167, 177);
+            this.NoTearFlowLayoutPanelDebugDisplayType.TabIndex = 11;
+            this.NoTearFlowLayoutPanelDebugDisplayType.WrapContents = false;
+            // 
+            // radioButtonDbgOff
+            // 
+            this.radioButtonDbgOff.AutoSize = true;
+            this.radioButtonDbgOff.Checked = true;
+            this.radioButtonDbgOff.Location = new System.Drawing.Point(3, 3);
+            this.radioButtonDbgOff.Name = "radioButtonDbgOff";
+            this.radioButtonDbgOff.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonDbgOff.TabIndex = 1;
+            this.radioButtonDbgOff.TabStop = true;
+            this.radioButtonDbgOff.Text = "Off";
+            this.radioButtonDbgOff.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDbgObjCnt
+            // 
+            this.radioButtonDbgObjCnt.AutoSize = true;
+            this.radioButtonDbgObjCnt.Location = new System.Drawing.Point(3, 26);
+            this.radioButtonDbgObjCnt.Name = "radioButtonDbgObjCnt";
+            this.radioButtonDbgObjCnt.Size = new System.Drawing.Size(96, 17);
+            this.radioButtonDbgObjCnt.TabIndex = 5;
+            this.radioButtonDbgObjCnt.Text = "Object Counter";
+            this.radioButtonDbgObjCnt.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDbgChkInfo
+            // 
+            this.radioButtonDbgChkInfo.AutoSize = true;
+            this.radioButtonDbgChkInfo.Location = new System.Drawing.Point(3, 49);
+            this.radioButtonDbgChkInfo.Name = "radioButtonDbgChkInfo";
+            this.radioButtonDbgChkInfo.Size = new System.Drawing.Size(77, 17);
+            this.radioButtonDbgChkInfo.TabIndex = 6;
+            this.radioButtonDbgChkInfo.Text = "Check Info";
+            this.radioButtonDbgChkInfo.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDbgMapInfo
+            // 
+            this.radioButtonDbgMapInfo.AutoSize = true;
+            this.radioButtonDbgMapInfo.Location = new System.Drawing.Point(3, 72);
+            this.radioButtonDbgMapInfo.Name = "radioButtonDbgMapInfo";
+            this.radioButtonDbgMapInfo.Size = new System.Drawing.Size(67, 17);
+            this.radioButtonDbgMapInfo.TabIndex = 7;
+            this.radioButtonDbgMapInfo.Text = "Map Info";
+            this.radioButtonDbgMapInfo.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDbgStgInfo
+            // 
+            this.radioButtonDbgStgInfo.AutoSize = true;
+            this.radioButtonDbgStgInfo.Location = new System.Drawing.Point(3, 95);
+            this.radioButtonDbgStgInfo.Name = "radioButtonDbgStgInfo";
+            this.radioButtonDbgStgInfo.Size = new System.Drawing.Size(74, 17);
+            this.radioButtonDbgStgInfo.TabIndex = 8;
+            this.radioButtonDbgStgInfo.Text = "Stage Info";
+            this.radioButtonDbgStgInfo.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDbgFxInfo
+            // 
+            this.radioButtonDbgFxInfo.AutoSize = true;
+            this.radioButtonDbgFxInfo.Location = new System.Drawing.Point(3, 118);
+            this.radioButtonDbgFxInfo.Name = "radioButtonDbgFxInfo";
+            this.radioButtonDbgFxInfo.Size = new System.Drawing.Size(74, 17);
+            this.radioButtonDbgFxInfo.TabIndex = 9;
+            this.radioButtonDbgFxInfo.Text = "Effect Info";
+            this.radioButtonDbgFxInfo.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDbgEnemyInfo
+            // 
+            this.radioButtonDbgEnemyInfo.AutoSize = true;
+            this.radioButtonDbgEnemyInfo.Location = new System.Drawing.Point(3, 141);
+            this.radioButtonDbgEnemyInfo.Name = "radioButtonDbgEnemyInfo";
+            this.radioButtonDbgEnemyInfo.Size = new System.Drawing.Size(78, 17);
+            this.radioButtonDbgEnemyInfo.TabIndex = 10;
+            this.radioButtonDbgEnemyInfo.Text = "Enemy Info";
+            this.radioButtonDbgEnemyInfo.UseVisualStyleBackColor = true;
             // 
             // tabPageMap
             // 
@@ -3204,7 +3616,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(758, 414);
+            this.glControlMap.Size = new System.Drawing.Size(761, 414);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -3550,8 +3962,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -3720,7 +4132,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(618, 431);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(621, 431);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -3738,7 +4150,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(502, 406);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(505, 406);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -3801,7 +4213,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(606, 329);
+            this.listBoxSpawn.Size = new System.Drawing.Size(609, 329);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -4500,6 +4912,19 @@ namespace SM64_Diagnostic
             this.radioButtonCamHackMode1RelativeAngle.Text = "Follow Object, Relative Angle";
             this.radioButtonCamHackMode1RelativeAngle.UseVisualStyleBackColor = true;
             // 
+            // noTearFlowLayoutPanelCamHack
+            // 
+            this.noTearFlowLayoutPanelCamHack.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelCamHack.AutoScroll = true;
+            this.noTearFlowLayoutPanelCamHack.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
+            this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
+            this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(515, 442);
+            this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
+            // 
             // tabPageQuarterFrame
             // 
             this.tabPageQuarterFrame.Controls.Add(this.noTearFlowLayoutPanelQuarterFrame);
@@ -4509,6 +4934,19 @@ namespace SM64_Diagnostic
             this.tabPageQuarterFrame.Size = new System.Drawing.Size(915, 447);
             this.tabPageQuarterFrame.TabIndex = 16;
             this.tabPageQuarterFrame.Text = "Q Frames";
+            // 
+            // noTearFlowLayoutPanelQuarterFrame
+            // 
+            this.noTearFlowLayoutPanelQuarterFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelQuarterFrame.AutoScroll = true;
+            this.noTearFlowLayoutPanelQuarterFrame.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelQuarterFrame.Location = new System.Drawing.Point(5, 5);
+            this.noTearFlowLayoutPanelQuarterFrame.Margin = new System.Windows.Forms.Padding(2);
+            this.noTearFlowLayoutPanelQuarterFrame.Name = "noTearFlowLayoutPanelQuarterFrame";
+            this.noTearFlowLayoutPanelQuarterFrame.Size = new System.Drawing.Size(905, 437);
+            this.noTearFlowLayoutPanelQuarterFrame.TabIndex = 2;
             // 
             // tabPageOptions
             // 
@@ -5098,443 +5536,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // NoTearFlowLayoutPanelObject
-            // 
-            this.NoTearFlowLayoutPanelObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoTearFlowLayoutPanelObject.AutoScroll = true;
-            this.NoTearFlowLayoutPanelObject.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(219, 3);
-            this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
-            this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(694, 440);
-            this.NoTearFlowLayoutPanelObject.TabIndex = 3;
-            // 
-            // pictureBoxObject
-            // 
-            this.pictureBoxObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxObject.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxObject.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxObject.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxObject.MaximumSize = new System.Drawing.Size(133, 130);
-            this.pictureBoxObject.Name = "pictureBoxObject";
-            this.pictureBoxObject.Size = new System.Drawing.Size(51, 50);
-            this.pictureBoxObject.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxObject.TabIndex = 0;
-            this.pictureBoxObject.TabStop = false;
-            // 
-            // pictureBoxMario
-            // 
-            this.pictureBoxMario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxMario.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxMario.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxMario.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxMario.MaximumSize = new System.Drawing.Size(133, 130);
-            this.pictureBoxMario.Name = "pictureBoxMario";
-            this.pictureBoxMario.Size = new System.Drawing.Size(51, 50);
-            this.pictureBoxMario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxMario.TabIndex = 0;
-            this.pictureBoxMario.TabStop = false;
-            // 
-            // NoTearFlowLayoutPanelMario
-            // 
-            this.NoTearFlowLayoutPanelMario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoTearFlowLayoutPanelMario.AutoScroll = true;
-            this.NoTearFlowLayoutPanelMario.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
-            this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
-            this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(627, 440);
-            this.NoTearFlowLayoutPanelMario.TabIndex = 1;
-            // 
-            // noTearFlowLayoutPanelActions
-            // 
-            this.noTearFlowLayoutPanelActions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanelActions.AutoScroll = true;
-            this.noTearFlowLayoutPanelActions.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.noTearFlowLayoutPanelActions.Location = new System.Drawing.Point(6, 6);
-            this.noTearFlowLayoutPanelActions.Name = "noTearFlowLayoutPanelActions";
-            this.noTearFlowLayoutPanelActions.Size = new System.Drawing.Size(903, 435);
-            this.noTearFlowLayoutPanelActions.TabIndex = 0;
-            // 
-            // pictureBoxHud
-            // 
-            this.pictureBoxHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxHud.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxHud.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxHud.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxHud.MaximumSize = new System.Drawing.Size(133, 130);
-            this.pictureBoxHud.Name = "pictureBoxHud";
-            this.pictureBoxHud.Size = new System.Drawing.Size(51, 50);
-            this.pictureBoxHud.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxHud.TabIndex = 0;
-            this.pictureBoxHud.TabStop = false;
-            // 
-            // NoTearFlowLayoutPanelHud
-            // 
-            this.NoTearFlowLayoutPanelHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoTearFlowLayoutPanelHud.AutoScroll = true;
-            this.NoTearFlowLayoutPanelHud.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
-            this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
-            this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(791, 441);
-            this.NoTearFlowLayoutPanelHud.TabIndex = 3;
-            // 
-            // pictureBoxCamera
-            // 
-            this.pictureBoxCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxCamera.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxCamera.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxCamera.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxCamera.MaximumSize = new System.Drawing.Size(133, 130);
-            this.pictureBoxCamera.Name = "pictureBoxCamera";
-            this.pictureBoxCamera.Size = new System.Drawing.Size(51, 50);
-            this.pictureBoxCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCamera.TabIndex = 0;
-            this.pictureBoxCamera.TabStop = false;
-            // 
-            // NoTearFlowLayoutPanelCamera
-            // 
-            this.NoTearFlowLayoutPanelCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoTearFlowLayoutPanelCamera.AutoScroll = true;
-            this.NoTearFlowLayoutPanelCamera.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
-            this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
-            this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(713, 441);
-            this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
-            // 
-            // NoTearFlowLayoutPanelTriangles
-            // 
-            this.NoTearFlowLayoutPanelTriangles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoTearFlowLayoutPanelTriangles.AutoScroll = true;
-            this.NoTearFlowLayoutPanelTriangles.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
-            this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
-            this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(701, 437);
-            this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
-            // 
-            // noTearFlowLayoutPanelWater
-            // 
-            this.noTearFlowLayoutPanelWater.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanelWater.AutoScroll = true;
-            this.noTearFlowLayoutPanelWater.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.noTearFlowLayoutPanelWater.Location = new System.Drawing.Point(2, 2);
-            this.noTearFlowLayoutPanelWater.Margin = new System.Windows.Forms.Padding(2);
-            this.noTearFlowLayoutPanelWater.Name = "noTearFlowLayoutPanelWater";
-            this.noTearFlowLayoutPanelWater.Size = new System.Drawing.Size(911, 441);
-            this.noTearFlowLayoutPanelWater.TabIndex = 2;
-            // 
-            // pictureBoxController
-            // 
-            this.pictureBoxController.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxController.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxController.Location = new System.Drawing.Point(2, 2);
-            this.pictureBoxController.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxController.MaximumSize = new System.Drawing.Size(300, 300);
-            this.pictureBoxController.Name = "pictureBoxController";
-            this.pictureBoxController.Size = new System.Drawing.Size(223, 300);
-            this.pictureBoxController.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxController.TabIndex = 3;
-            this.pictureBoxController.TabStop = false;
-            // 
-            // NoTearFlowLayoutPanelController
-            // 
-            this.NoTearFlowLayoutPanelController.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoTearFlowLayoutPanelController.AutoScroll = true;
-            this.NoTearFlowLayoutPanelController.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
-            this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
-            this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(733, 444);
-            this.NoTearFlowLayoutPanelController.TabIndex = 2;
-            // 
-            // noTearFlowLayoutPanelFile
-            // 
-            this.noTearFlowLayoutPanelFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanelFile.AutoScroll = true;
-            this.noTearFlowLayoutPanelFile.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
-            this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
-            this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(767, 447);
-            this.noTearFlowLayoutPanelFile.TabIndex = 2;
-            // 
-            // pictureBoxMisc
-            // 
-            this.pictureBoxMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxMisc.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxMisc.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxMisc.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxMisc.MaximumSize = new System.Drawing.Size(133, 130);
-            this.pictureBoxMisc.Name = "pictureBoxMisc";
-            this.pictureBoxMisc.Size = new System.Drawing.Size(51, 50);
-            this.pictureBoxMisc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxMisc.TabIndex = 0;
-            this.pictureBoxMisc.TabStop = false;
-            // 
-            // NoTearFlowLayoutPanelMisc
-            // 
-            this.NoTearFlowLayoutPanelMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoTearFlowLayoutPanelMisc.AutoScroll = true;
-            this.NoTearFlowLayoutPanelMisc.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelMisc.Location = new System.Drawing.Point(64, 5);
-            this.NoTearFlowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
-            this.NoTearFlowLayoutPanelMisc.Name = "NoTearFlowLayoutPanelMisc";
-            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(849, 440);
-            this.NoTearFlowLayoutPanelMisc.TabIndex = 5;
-            // 
-            // pictureBoxDebug
-            // 
-            this.pictureBoxDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxDebug.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxDebug.Location = new System.Drawing.Point(2, 2);
-            this.pictureBoxDebug.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxDebug.MaximumSize = new System.Drawing.Size(133, 130);
-            this.pictureBoxDebug.Name = "pictureBoxDebug";
-            this.pictureBoxDebug.Size = new System.Drawing.Size(51, 50);
-            this.pictureBoxDebug.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxDebug.TabIndex = 0;
-            this.pictureBoxDebug.TabStop = false;
-            // 
-            // NoTearFlowLayoutPanelDebugDisplayType
-            // 
-            this.NoTearFlowLayoutPanelDebugDisplayType.AutoScroll = true;
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgOff);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgObjCnt);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgChkInfo);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgMapInfo);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgStgInfo);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgFxInfo);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgEnemyInfo);
-            this.NoTearFlowLayoutPanelDebugDisplayType.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelDebugDisplayType.Location = new System.Drawing.Point(71, 23);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Name = "NoTearFlowLayoutPanelDebugDisplayType";
-            this.NoTearFlowLayoutPanelDebugDisplayType.Size = new System.Drawing.Size(167, 177);
-            this.NoTearFlowLayoutPanelDebugDisplayType.TabIndex = 11;
-            this.NoTearFlowLayoutPanelDebugDisplayType.WrapContents = false;
-            // 
-            // radioButtonDbgOff
-            // 
-            this.radioButtonDbgOff.AutoSize = true;
-            this.radioButtonDbgOff.Checked = true;
-            this.radioButtonDbgOff.Location = new System.Drawing.Point(3, 3);
-            this.radioButtonDbgOff.Name = "radioButtonDbgOff";
-            this.radioButtonDbgOff.Size = new System.Drawing.Size(39, 17);
-            this.radioButtonDbgOff.TabIndex = 1;
-            this.radioButtonDbgOff.TabStop = true;
-            this.radioButtonDbgOff.Text = "Off";
-            this.radioButtonDbgOff.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonDbgObjCnt
-            // 
-            this.radioButtonDbgObjCnt.AutoSize = true;
-            this.radioButtonDbgObjCnt.Location = new System.Drawing.Point(3, 26);
-            this.radioButtonDbgObjCnt.Name = "radioButtonDbgObjCnt";
-            this.radioButtonDbgObjCnt.Size = new System.Drawing.Size(96, 17);
-            this.radioButtonDbgObjCnt.TabIndex = 5;
-            this.radioButtonDbgObjCnt.Text = "Object Counter";
-            this.radioButtonDbgObjCnt.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonDbgChkInfo
-            // 
-            this.radioButtonDbgChkInfo.AutoSize = true;
-            this.radioButtonDbgChkInfo.Location = new System.Drawing.Point(3, 49);
-            this.radioButtonDbgChkInfo.Name = "radioButtonDbgChkInfo";
-            this.radioButtonDbgChkInfo.Size = new System.Drawing.Size(77, 17);
-            this.radioButtonDbgChkInfo.TabIndex = 6;
-            this.radioButtonDbgChkInfo.Text = "Check Info";
-            this.radioButtonDbgChkInfo.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonDbgMapInfo
-            // 
-            this.radioButtonDbgMapInfo.AutoSize = true;
-            this.radioButtonDbgMapInfo.Location = new System.Drawing.Point(3, 72);
-            this.radioButtonDbgMapInfo.Name = "radioButtonDbgMapInfo";
-            this.radioButtonDbgMapInfo.Size = new System.Drawing.Size(67, 17);
-            this.radioButtonDbgMapInfo.TabIndex = 7;
-            this.radioButtonDbgMapInfo.Text = "Map Info";
-            this.radioButtonDbgMapInfo.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonDbgStgInfo
-            // 
-            this.radioButtonDbgStgInfo.AutoSize = true;
-            this.radioButtonDbgStgInfo.Location = new System.Drawing.Point(3, 95);
-            this.radioButtonDbgStgInfo.Name = "radioButtonDbgStgInfo";
-            this.radioButtonDbgStgInfo.Size = new System.Drawing.Size(74, 17);
-            this.radioButtonDbgStgInfo.TabIndex = 8;
-            this.radioButtonDbgStgInfo.Text = "Stage Info";
-            this.radioButtonDbgStgInfo.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonDbgFxInfo
-            // 
-            this.radioButtonDbgFxInfo.AutoSize = true;
-            this.radioButtonDbgFxInfo.Location = new System.Drawing.Point(3, 118);
-            this.radioButtonDbgFxInfo.Name = "radioButtonDbgFxInfo";
-            this.radioButtonDbgFxInfo.Size = new System.Drawing.Size(74, 17);
-            this.radioButtonDbgFxInfo.TabIndex = 9;
-            this.radioButtonDbgFxInfo.Text = "Effect Info";
-            this.radioButtonDbgFxInfo.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonDbgEnemyInfo
-            // 
-            this.radioButtonDbgEnemyInfo.AutoSize = true;
-            this.radioButtonDbgEnemyInfo.Location = new System.Drawing.Point(3, 141);
-            this.radioButtonDbgEnemyInfo.Name = "radioButtonDbgEnemyInfo";
-            this.radioButtonDbgEnemyInfo.Size = new System.Drawing.Size(78, 17);
-            this.radioButtonDbgEnemyInfo.TabIndex = 10;
-            this.radioButtonDbgEnemyInfo.Text = "Enemy Info";
-            this.radioButtonDbgEnemyInfo.UseVisualStyleBackColor = true;
-            // 
-            // noTearFlowLayoutPanelCamHack
-            // 
-            this.noTearFlowLayoutPanelCamHack.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanelCamHack.AutoScroll = true;
-            this.noTearFlowLayoutPanelCamHack.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
-            this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
-            this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(512, 442);
-            this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
-            // 
-            // noTearFlowLayoutPanelQuarterFrame
-            // 
-            this.noTearFlowLayoutPanelQuarterFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanelQuarterFrame.AutoScroll = true;
-            this.noTearFlowLayoutPanelQuarterFrame.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.noTearFlowLayoutPanelQuarterFrame.Location = new System.Drawing.Point(5, 5);
-            this.noTearFlowLayoutPanelQuarterFrame.Margin = new System.Windows.Forms.Padding(2);
-            this.noTearFlowLayoutPanelQuarterFrame.Name = "noTearFlowLayoutPanelQuarterFrame";
-            this.noTearFlowLayoutPanelQuarterFrame.Size = new System.Drawing.Size(905, 437);
-            this.noTearFlowLayoutPanelQuarterFrame.TabIndex = 2;
-            // 
-            // NoTearFlowLayoutPanelObjects
-            // 
-            this.NoTearFlowLayoutPanelObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoTearFlowLayoutPanelObjects.AutoScroll = true;
-            this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
-            this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
-            this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 197);
-            this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
-            this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
-            // 
-            // splitContainerHud
-            // 
-            this.splitContainerHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainerHud.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerHud.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerHud.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerHud.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainerHud.Name = "splitContainerHud";
-            // 
-            // splitContainerHud.Panel1
-            // 
-            this.splitContainerHud.Panel1.AutoScroll = true;
-            this.splitContainerHud.Panel1.Controls.Add(this.buttonStandardHud);
-            this.splitContainerHud.Panel1.Controls.Add(this.panelHudBorder);
-            this.splitContainerHud.Panel1.Controls.Add(this.buttonDie);
-            this.splitContainerHud.Panel1.Controls.Add(this.buttonFillHp);
-            this.splitContainerHud.Panel1MinSize = 0;
-            // 
-            // splitContainerHud.Panel2
-            // 
-            this.splitContainerHud.Panel2.Controls.Add(this.NoTearFlowLayoutPanelHud);
-            this.splitContainerHud.Panel2MinSize = 0;
-            this.splitContainerHud.Size = new System.Drawing.Size(915, 447);
-            this.splitContainerHud.SplitterDistance = 117;
-            this.splitContainerHud.SplitterWidth = 1;
-            this.splitContainerHud.TabIndex = 20;
-            // 
-            // splitContainerMario
-            // 
-            this.splitContainerMario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainerMario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerMario.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerMario.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerMario.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainerMario.Name = "splitContainerMario";
-            // 
-            // splitContainerMario.Panel1
-            // 
-            this.splitContainerMario.Panel1.AutoScroll = true;
-            this.splitContainerMario.Panel1MinSize = 0;
-            // 
-            // splitContainerMario.Panel2
-            // 
-            this.splitContainerMario.Panel2.Controls.Add(this.NoTearFlowLayoutPanelMario);
-            this.splitContainerMario.Panel2MinSize = 0;
-            this.splitContainerMario.Size = new System.Drawing.Size(915, 447);
-            this.splitContainerMario.SplitterDistance = 280;
-            this.splitContainerMario.SplitterWidth = 1;
-            this.splitContainerMario.TabIndex = 31;
-            // 
-            // splitContainerObject
-            // 
-            this.splitContainerObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainerObject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerObject.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerObject.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerObject.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainerObject.Name = "splitContainerObject";
-            // 
-            // splitContainerObject.Panel1
-            // 
-            this.splitContainerObject.Panel1.AutoScroll = true;
-            this.splitContainerObject.Panel1MinSize = 0;
-            this.splitContainerObject.Panel2MinSize = 0;
-            this.splitContainerObject.Size = new System.Drawing.Size(915, 447);
-            this.splitContainerObject.SplitterDistance = 161;
-            this.splitContainerObject.SplitterWidth = 1;
-            this.splitContainerObject.TabIndex = 20;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5580,6 +5581,9 @@ namespace SM64_Diagnostic
             this.groupBoxObjPos.ResumeLayout(false);
             this.groupBoxObjPos.PerformLayout();
             this.panelObjectBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).EndInit();
+            this.splitContainerObject.ResumeLayout(false);
             this.tabPageMario.ResumeLayout(false);
             this.groupBoxMarioStats.ResumeLayout(false);
             this.groupBoxMarioStats.PerformLayout();
@@ -5588,9 +5592,19 @@ namespace SM64_Diagnostic
             this.groupBoxMarioPos.ResumeLayout(false);
             this.groupBoxMarioPos.PerformLayout();
             this.panelMarioBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).EndInit();
+            this.splitContainerMario.Panel1.ResumeLayout(false);
+            this.splitContainerMario.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMario)).EndInit();
+            this.splitContainerMario.ResumeLayout(false);
             this.tabPageActions.ResumeLayout(false);
             this.tabPageHud.ResumeLayout(false);
+            this.splitContainerHud.Panel1.ResumeLayout(false);
+            this.splitContainerHud.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).EndInit();
+            this.splitContainerHud.ResumeLayout(false);
             this.panelHudBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).EndInit();
             this.tabPageCamera.ResumeLayout(false);
             this.SplitContainerCamera.Panel1.ResumeLayout(false);
             this.SplitContainerCamera.Panel2.ResumeLayout(false);
@@ -5599,33 +5613,39 @@ namespace SM64_Diagnostic
             this.groupBoxCameraSphericalPos.ResumeLayout(false);
             this.groupBoxCameraSphericalPos.PerformLayout();
             this.panelCameraBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).EndInit();
             this.groupBoxCameraPos.ResumeLayout(false);
             this.groupBoxCameraPos.PerformLayout();
             this.tabPageTriangles.ResumeLayout(false);
-            this.groupBoxTrianglePos.ResumeLayout(false);
-            this.groupBoxTrianglePos.PerformLayout();
-            this.groupBoxTriangleNormal.ResumeLayout(false);
-            this.groupBoxTriangleNormal.PerformLayout();
             this.splitContainerTriangles.Panel1.ResumeLayout(false);
             this.splitContainerTriangles.Panel1.PerformLayout();
             this.splitContainerTriangles.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTriangles)).EndInit();
             this.splitContainerTriangles.ResumeLayout(false);
+            this.groupBoxTrianglePos.ResumeLayout(false);
+            this.groupBoxTrianglePos.PerformLayout();
+            this.groupBoxTriangleNormal.ResumeLayout(false);
+            this.groupBoxTriangleNormal.PerformLayout();
             this.tabPageWater.ResumeLayout(false);
             this.tabPageController.ResumeLayout(false);
             this.splitContainerController.Panel1.ResumeLayout(false);
             this.splitContainerController.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerController)).EndInit();
             this.splitContainerController.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxController)).EndInit();
             this.tabPageFile.ResumeLayout(false);
             this.splitContainerFile.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).EndInit();
             this.splitContainerFile.ResumeLayout(false);
             this.tabPageMisc.ResumeLayout(false);
             this.panelMiscBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
             this.tabPageDebug.ResumeLayout(false);
             this.tabPageDebug.PerformLayout();
             this.panelDebugBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
+            this.NoTearFlowLayoutPanelDebugDisplayType.ResumeLayout(false);
+            this.NoTearFlowLayoutPanelDebugDisplayType.PerformLayout();
             this.tabPageMap.ResumeLayout(false);
             this.splitContainerMap.Panel1.ResumeLayout(false);
             this.splitContainerMap.Panel1.PerformLayout();
@@ -5675,24 +5695,6 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxController)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
-            this.NoTearFlowLayoutPanelDebugDisplayType.ResumeLayout(false);
-            this.NoTearFlowLayoutPanelDebugDisplayType.PerformLayout();
-            this.splitContainerHud.Panel1.ResumeLayout(false);
-            this.splitContainerHud.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).EndInit();
-            this.splitContainerHud.ResumeLayout(false);
-            this.splitContainerMario.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMario)).EndInit();
-            this.splitContainerMario.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).EndInit();
-            this.splitContainerObject.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

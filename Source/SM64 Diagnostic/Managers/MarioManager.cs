@@ -23,13 +23,15 @@ namespace SM64_Diagnostic.Managers
         {
             _mapManager = mapManager;
 
-            var toggleHandsfree = marioControl.Controls["buttonMarioToggleHandsfree"] as Button;
+            SplitContainer splitContainerMario = marioControl.Controls["splitContainerMario"] as SplitContainer;
+
+            var toggleHandsfree = splitContainerMario.Panel1.Controls["buttonMarioToggleHandsfree"] as Button;
             toggleHandsfree.Click += (sender, e) => ButtonUtilities.ToggleHandsfree(_stream);
 
-            var toggleVisibility = marioControl.Controls["buttonMarioVisibility"] as Button;
+            var toggleVisibility = splitContainerMario.Panel1.Controls["buttonMarioVisibility"] as Button;
             toggleVisibility.Click += (sender, e) => ButtonUtilities.ToggleVisibility(_stream);
 
-            var marioPosGroupBox = marioControl.Controls["groupBoxMarioPos"] as GroupBox;
+            var marioPosGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioPos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Euler,
                 marioPosGroupBox.Controls["buttonMarioPosXn"] as Button,
@@ -55,7 +57,7 @@ namespace SM64_Diagnostic.Managers
                         useRelative);
                 });
 
-            var marioStatsGroupBox = marioControl.Controls["groupBoxMarioStats"] as GroupBox;
+            var marioStatsGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioStats"] as GroupBox;
             ScalarController.initialize(
                 marioStatsGroupBox.Controls["buttonMarioStatsYawN"] as Button,
                 marioStatsGroupBox.Controls["buttonMarioStatsYawP"] as Button,
@@ -82,7 +84,7 @@ namespace SM64_Diagnostic.Managers
                     ButtonUtilities.MarioChangeVspd(_stream, vspdValue);
                 });
 
-            var marioHOLPGroupBox = marioControl.Controls["groupBoxMarioHOLP"] as GroupBox;
+            var marioHOLPGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioHOLP"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Euler,
                 marioHOLPGroupBox.Controls["buttonMarioHOLPXn"] as Button,
