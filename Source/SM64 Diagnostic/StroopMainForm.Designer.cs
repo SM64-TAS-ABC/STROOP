@@ -249,7 +249,7 @@ namespace SM64_Diagnostic
             this.pictureBoxController = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelController = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageFile = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainerFile = new System.Windows.Forms.SplitContainer();
             this.noTearFlowLayoutPanelFile = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageMisc = new System.Windows.Forms.TabPage();
             this.panelMiscBorder = new System.Windows.Forms.Panel();
@@ -495,9 +495,9 @@ namespace SM64_Diagnostic
             this.splitContainerController.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxController)).BeginInit();
             this.tabPageFile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).BeginInit();
+            this.splitContainerFile.Panel2.SuspendLayout();
+            this.splitContainerFile.SuspendLayout();
             this.tabPageMisc.SuspendLayout();
             this.panelMiscBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
@@ -3020,7 +3020,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageFile
             // 
-            this.tabPageFile.Controls.Add(this.splitContainer1);
+            this.tabPageFile.Controls.Add(this.splitContainerFile);
             this.tabPageFile.Location = new System.Drawing.Point(4, 22);
             this.tabPageFile.Name = "tabPageFile";
             this.tabPageFile.Padding = new System.Windows.Forms.Padding(3);
@@ -3028,30 +3028,30 @@ namespace SM64_Diagnostic
             this.tabPageFile.TabIndex = 10;
             this.tabPageFile.Text = "File";
             // 
-            // splitContainer1
+            // splitContainerFile
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.splitContainerFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainerFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerFile.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerFile.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerFile.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainerFile.Name = "splitContainerFile";
             // 
-            // splitContainer1.Panel1
+            // splitContainerFile.Panel1
             // 
-            this.splitContainer1.Panel1.AutoScroll = true;
-            this.splitContainer1.Panel1MinSize = 0;
+            this.splitContainerFile.Panel1.AutoScroll = true;
+            this.splitContainerFile.Panel1MinSize = 0;
             // 
-            // splitContainer1.Panel2
+            // splitContainerFile.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.noTearFlowLayoutPanelFile);
-            this.splitContainer1.Panel2MinSize = 0;
-            this.splitContainer1.Size = new System.Drawing.Size(915, 447);
-            this.splitContainer1.SplitterDistance = 161;
-            this.splitContainer1.SplitterWidth = 1;
-            this.splitContainer1.TabIndex = 19;
+            this.splitContainerFile.Panel2.Controls.Add(this.noTearFlowLayoutPanelFile);
+            this.splitContainerFile.Panel2MinSize = 0;
+            this.splitContainerFile.Size = new System.Drawing.Size(915, 447);
+            this.splitContainerFile.SplitterDistance = 161;
+            this.splitContainerFile.SplitterWidth = 1;
+            this.splitContainerFile.TabIndex = 19;
             // 
             // noTearFlowLayoutPanelFile
             // 
@@ -5504,9 +5504,9 @@ namespace SM64_Diagnostic
             this.splitContainerController.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxController)).EndInit();
             this.tabPageFile.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.splitContainerFile.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).EndInit();
+            this.splitContainerFile.ResumeLayout(false);
             this.tabPageMisc.ResumeLayout(false);
             this.panelMiscBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
@@ -5986,7 +5986,7 @@ namespace SM64_Diagnostic
         private Label labelGotoAboveSuffix;
         private Label labelGotoAbovePrefix;
         private TextBox textBoxGotoAbove;
-        private SplitContainer splitContainer1;
+        private SplitContainer splitContainerFile;
         private SplitContainer SplitContainerCamera;
     }
 }
