@@ -19,9 +19,9 @@ namespace SM64_Diagnostic.Utilities
             public readonly uint XAddress;
             public readonly uint YAddress;
             public readonly uint ZAddress;
-            public readonly ushort Angle;
+            public readonly ushort? Angle;
 
-            public TripleAddressAngle(uint xAddress, uint yAddress, uint zAddress, ushort angle = 0)
+            public TripleAddressAngle(uint xAddress, uint yAddress, uint zAddress, ushort? angle = null)
             {
                 XAddress = xAddress;
                 YAddress = yAddress;
@@ -104,11 +104,11 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static void handleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, ushort relativeAngle)
+        public static void handleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, ushort? relativeAngle)
         {
             if (useRelative)
             {
-                double thetaChange = relativeAngle - 32768;
+                double thetaChange = (ushort)relativeAngle - 32768;
                 (xOffset, _, zOffset) = ((float, float, float))MoreMath.OffsetSpherically(xOffset, 0, zOffset, 0, thetaChange, 0);
             }
         }
