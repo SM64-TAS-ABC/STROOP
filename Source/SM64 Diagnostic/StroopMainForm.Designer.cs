@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -451,6 +451,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.noTearFlowLayoutPanelQuarterFrame = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.NoTearFlowLayoutPanelObjects = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.splitContainerHud = new System.Windows.Forms.SplitContainer();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -543,6 +544,8 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
             this.NoTearFlowLayoutPanelDebugDisplayType.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).BeginInit();
+            this.splitContainerHud.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -2034,6 +2037,7 @@ namespace SM64_Diagnostic
             this.tabPageHud.Controls.Add(this.buttonFillHp);
             this.tabPageHud.Controls.Add(this.panelHudBorder);
             this.tabPageHud.Controls.Add(this.NoTearFlowLayoutPanelHud);
+            this.tabPageHud.Controls.Add(this.splitContainerHud);
             this.tabPageHud.Location = new System.Drawing.Point(4, 22);
             this.tabPageHud.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageHud.Name = "tabPageHud";
@@ -3541,8 +3545,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -5451,6 +5455,27 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
+            // splitContainerHud
+            // 
+            this.splitContainerHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainerHud.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerHud.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerHud.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerHud.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainerHud.Name = "splitContainerHud";
+            // 
+            // splitContainerHud.Panel1
+            // 
+            this.splitContainerHud.Panel1.AutoScroll = true;
+            this.splitContainerHud.Panel1MinSize = 0;
+            this.splitContainerHud.Panel2MinSize = 0;
+            this.splitContainerHud.Size = new System.Drawing.Size(915, 447);
+            this.splitContainerHud.SplitterDistance = 161;
+            this.splitContainerHud.SplitterWidth = 1;
+            this.splitContainerHud.TabIndex = 20;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5600,6 +5625,8 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
             this.NoTearFlowLayoutPanelDebugDisplayType.ResumeLayout(false);
             this.NoTearFlowLayoutPanelDebugDisplayType.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).EndInit();
+            this.splitContainerHud.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6024,6 +6051,7 @@ namespace SM64_Diagnostic
         private SplitContainer splitContainerFile;
         private SplitContainer SplitContainerCamera;
         private SplitContainer splitContainerTriangles;
+        private SplitContainer splitContainerHud;
     }
 }
 
