@@ -491,16 +491,47 @@ namespace SM64_Diagnostic
             splitContainerMain.Panel2Collapsed = false;
         }
 
+        private SplitContainer getSelectedTabSplitContainer()
+        {
+            SplitContainer selectedTabSplitContainer = null;
+            TabPage selectedTabPage = tabControlMain.SelectedTab;
+
+            if (selectedTabPage == tabPageCamHack)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerCamHack"] as SplitContainer;
+            else if (selectedTabPage == tabPageController)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerController"] as SplitContainer;
+
+            return selectedTabSplitContainer;
+        }
+
         private void buttonShowLeftPanel_Click(object sender, EventArgs e)
         {
+            SplitContainer selectedTabSplitContainer = getSelectedTabSplitContainer();
+            if (selectedTabSplitContainer != null)
+            {
+                selectedTabSplitContainer.Panel1Collapsed = false;
+                selectedTabSplitContainer.Panel2Collapsed = true;
+            }
         }
 
         private void buttonShowRightPanel_Click(object sender, EventArgs e)
         {
+            SplitContainer selectedTabSplitContainer = getSelectedTabSplitContainer();
+            if (selectedTabSplitContainer != null)
+            {
+                selectedTabSplitContainer.Panel1Collapsed = true;
+                selectedTabSplitContainer.Panel2Collapsed = false;
+            }
         }
 
         private void buttonShowLeftRightPanel_Click(object sender, EventArgs e)
         {
+            SplitContainer selectedTabSplitContainer = getSelectedTabSplitContainer();
+            if (selectedTabSplitContainer != null)
+            {
+                selectedTabSplitContainer.Panel1Collapsed = false;
+                selectedTabSplitContainer.Panel2Collapsed = false;
+            }
         }
 
         private void buttonReadOnly_Click(object sender, EventArgs e)
