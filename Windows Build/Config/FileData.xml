@@ -1,64 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <FileData>
-  <Data type="byte" address="0x0C" mask="0x7F" fileOffset="true" color="#ccfffa">BoB Stars</Data>
-  <Data type="byte" address="0x0D" mask="0x7F" fileOffset="true" color="#ccfffa">WF Stars</Data>
-  <Data type="byte" address="0x0E" mask="0x7F" fileOffset="true" color="#ccfffa">JRB Stars</Data>
-  <Data type="byte" address="0x0F" mask="0x7F" fileOffset="true" color="#ccfffa">CCM Stars</Data>
-  <Data type="byte" address="0x10" mask="0x7F" fileOffset="true" color="#ccfffa">BBH Stars</Data>
-  <Data type="byte" address="0x11" mask="0x7F" fileOffset="true" color="#ccfffa">HMC Stars</Data>
-  <Data type="byte" address="0x12" mask="0x7F" fileOffset="true" color="#ccfffa">LLL Stars</Data>
-  <Data type="byte" address="0x13" mask="0x7F" fileOffset="true" color="#ccfffa">SSL Stars</Data>
-  <Data type="byte" address="0x14" mask="0x7F" fileOffset="true" color="#ccfffa">DDD Stars</Data>
-  <Data type="byte" address="0x15" mask="0x7F" fileOffset="true" color="#ccfffa">SL Stars</Data>
-  <Data type="byte" address="0x16" mask="0x7F" fileOffset="true" color="#ccfffa">WDW Stars</Data>
-  <Data type="byte" address="0x17" mask="0x7F" fileOffset="true" color="#ccfffa">TTM Stars</Data>
-  <Data type="byte" address="0x18" mask="0x7F" fileOffset="true" color="#ccfffa">THI Stars</Data>
-  <Data type="byte" address="0x19" mask="0x7F" fileOffset="true" color="#ccfffa">TTC Stars</Data>
-  <Data type="byte" address="0x1A" mask="0x7F" fileOffset="true" color="#ccfffa">RR Stars</Data>
+  <Data type="byte" address="0x0C" fileOffset="true" mask="0x7F" color="#ccfffa">BoB Stars</Data>
+  <Data type="byte" address="0x0D" fileOffset="true" mask="0x7F" color="#ccfffa">WF Stars</Data>
+  <Data type="byte" address="0x0E" fileOffset="true" mask="0x7F" color="#ccfffa">JRB Stars</Data>
+  <Data type="byte" address="0x0F" fileOffset="true" mask="0x7F" color="#ccfffa">CCM Stars</Data>
+  <Data type="byte" address="0x10" fileOffset="true" mask="0x7F" color="#ccfffa">BBH Stars</Data>
+  <Data type="byte" address="0x11" fileOffset="true" mask="0x7F" color="#ccfffa">HMC Stars</Data>
+  <Data type="byte" address="0x12" fileOffset="true" mask="0x7F" color="#ccfffa">LLL Stars</Data>
+  <Data type="byte" address="0x13" fileOffset="true" mask="0x7F" color="#ccfffa">SSL Stars</Data>
+  <Data type="byte" address="0x14" fileOffset="true" mask="0x7F" color="#ccfffa">DDD Stars</Data>
+  <Data type="byte" address="0x15" fileOffset="true" mask="0x7F" color="#ccfffa">SL Stars</Data>
+  <Data type="byte" address="0x16" fileOffset="true" mask="0x7F" color="#ccfffa">WDW Stars</Data>
+  <Data type="byte" address="0x17" fileOffset="true" mask="0x7F" color="#ccfffa">TTM Stars</Data>
+  <Data type="byte" address="0x18" fileOffset="true" mask="0x7F" color="#ccfffa">THI Stars</Data>
+  <Data type="byte" address="0x19" fileOffset="true" mask="0x7F" color="#ccfffa">TTC Stars</Data>
+  <Data type="byte" address="0x1A" fileOffset="true" mask="0x7F" color="#ccfffa">RR Stars</Data>
 
-  <Data type="byte" address="0x20" isBool="true" mask="0x01" fileOffset="true" color="#ccd0ff">TotWC Star</Data>
-  <Data type="byte" address="0x21" isBool="true" mask="0x01" fileOffset="true" color="#ccd0ff">VCutM Star</Data>
-  <Data type="byte" address="0x1F" isBool="true" mask="0x01" fileOffset="true" color="#ccd0ff">CotMC Star</Data>
-  <Data type="byte" address="0x1E" isBool="true" mask="0x01" fileOffset="true" color="#ccd0ff">PSS Star</Data>
-  <Data type="byte" address="0x1E" isBool="true" mask="0x02" fileOffset="true" color="#ccd0ff">PSS Under 21" Star</Data>
-  <Data type="byte" address="0x23" isBool="true" mask="0x01" fileOffset="true" color="#ccd0ff">SA Star</Data>
-  <Data type="byte" address="0x22" isBool="true" mask="0x01" fileOffset="true" color="#ccd0ff">WMotR Star</Data>
-  <Data type="byte" address="0x1B" isBool="true" mask="0x01" fileOffset="true" color="#ccd0ff">BitDW Star</Data>
-  <Data type="byte" address="0x1C" isBool="true" mask="0x01" fileOffset="true" color="#ccd0ff">BitFS Star</Data>
-  <Data type="byte" address="0x1D" isBool="true" mask="0x01" fileOffset="true" color="#ccd0ff">BitS Star</Data>
-  <Data type="byte" address="0x08" isBool="true" mask="0x01" fileOffset="true" color="#ccd0ff">Toad 1 Star</Data>
-  <Data type="byte" address="0x08" isBool="true" mask="0x02" fileOffset="true" color="#ccd0ff">Toad 2 Star</Data>
-  <Data type="byte" address="0x08" isBool="true" mask="0x04" fileOffset="true" color="#ccd0ff">Toad 3 Star</Data>
-  <Data type="byte" address="0x08" isBool="true" mask="0x08" fileOffset="true" color="#ccd0ff">MIPS 1 Star</Data>
-  <Data type="byte" address="0x08" isBool="true" mask="0x10" fileOffset="true" color="#ccd0ff">MIPS 2 Star</Data>
+  <Data type="byte" address="0x20" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">TotWC Star</Data>
+  <Data type="byte" address="0x21" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">VCutM Star</Data>
+  <Data type="byte" address="0x1F" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">CotMC Star</Data>
+  <Data type="byte" address="0x1E" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">PSS Star</Data>
+  <Data type="byte" address="0x1E" fileOffset="true" isBool="true" mask="0x02" color="#ccd0ff">PSS Under 21" Star</Data>
+  <Data type="byte" address="0x23" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">SA Star</Data>
+  <Data type="byte" address="0x22" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">WMotR Star</Data>
+  <Data type="byte" address="0x1B" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">BitDW Star</Data>
+  <Data type="byte" address="0x1C" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">BitFS Star</Data>
+  <Data type="byte" address="0x1D" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">BitS Star</Data>
+  <Data type="byte" address="0x08" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">Toad 1 Star</Data>
+  <Data type="byte" address="0x08" fileOffset="true" isBool="true" mask="0x02" color="#ccd0ff">Toad 2 Star</Data>
+  <Data type="byte" address="0x08" fileOffset="true" isBool="true" mask="0x04" color="#ccd0ff">Toad 3 Star</Data>
+  <Data type="byte" address="0x08" fileOffset="true" isBool="true" mask="0x08" color="#ccd0ff">MIPS 1 Star</Data>
+  <Data type="byte" address="0x08" fileOffset="true" isBool="true" mask="0x10" color="#ccd0ff">MIPS 2 Star</Data>
   
-  <Data type="byte" address="0x00AF318E" absoluteAddress="true" isBool="true" mask="0x80" color="#cfffcc">BoB Cannon</Data>
-  <Data type="byte" address="0x00AF318D" absoluteAddress="true" isBool="true" mask="0x80" color="#cfffcc">WF Cannon</Data>
-  <Data type="byte" address="0x00AF318C" absoluteAddress="true" isBool="true" mask="0x80" color="#cfffcc">JRB Cannon</Data>
-  <Data type="byte" address="0x00AF3193" absoluteAddress="true" isBool="true" mask="0x80" color="#cfffcc">CCM Cannon</Data>
-  <Data type="byte" address="0x00AF3197" absoluteAddress="true" isBool="true" mask="0x80" color="#cfffcc">SSL Cannon</Data>
-  <Data type="byte" address="0x00AF3195" absoluteAddress="true" isBool="true" mask="0x80" color="#cfffcc">SL Cannon</Data>
-  <Data type="byte" address="0x00AF3194" absoluteAddress="true" isBool="true" mask="0x80" color="#cfffcc">WDW Cannon</Data>
-  <Data type="byte" address="0x00AF319B" absoluteAddress="true" isBool="true" mask="0x80" color="#cfffcc">TTM Cannon</Data>
-  <Data type="byte" address="0x00AF319A" absoluteAddress="true" isBool="true" mask="0x80" color="#cfffcc">THI Cannon</Data>
-  <Data type="byte" address="0x00AF3198" absoluteAddress="true" isBool="true" mask="0x80" color="#cfffcc">RR Cannon</Data>
-  <Data type="byte" address="0x00AF31A0" absoluteAddress="true" isBool="true" mask="0x80" color="#cfffcc">WMotR Cannon</Data>
+  <Data type="byte" address="0x0D" fileOffset="true" isBool="true" mask="0x80" color="#cfffcc">BoB Cannon</Data>
+  <Data type="byte" address="0x0E" fileOffset="true" isBool="true" mask="0x80" color="#cfffcc">WF Cannon</Data>
+  <Data type="byte" address="0x0F" fileOffset="true" isBool="true" mask="0x80" color="#cfffcc">JRB Cannon</Data>
+  <Data type="byte" address="0x10" fileOffset="true" isBool="true" mask="0x80" color="#cfffcc">CCM Cannon</Data>
+  <Data type="byte" address="0x14" fileOffset="true" isBool="true" mask="0x80" color="#cfffcc">SSL Cannon</Data>
+  <Data type="byte" address="0x16" fileOffset="true" isBool="true" mask="0x80" color="#cfffcc">SL Cannon</Data>
+  <Data type="byte" address="0x17" fileOffset="true" isBool="true" mask="0x80" color="#cfffcc">WDW Cannon</Data>
+  <Data type="byte" address="0x18" fileOffset="true" isBool="true" mask="0x80" color="#cfffcc">TTM Cannon</Data>
+  <Data type="byte" address="0x19" fileOffset="true" isBool="true" mask="0x80" color="#cfffcc">THI Cannon</Data>
+  <Data type="byte" address="0x1B" fileOffset="true" isBool="true" mask="0x80" color="#cfffcc">RR Cannon</Data>
+  <Data type="byte" address="0x23" fileOffset="true" isBool="true" mask="0x80" color="#cfffcc">WMotR Cannon</Data>
 
-  <Data type="byte" address="0x00AF31A6" absoluteAddress="true" color="#ffeccc">BoB Coin Score</Data>
-  <Data type="byte" address="0x00AF31A5" absoluteAddress="true" color="#ffeccc">WF Coin Score</Data>
-  <Data type="byte" address="0x00AF31A4" absoluteAddress="true" color="#ffeccc">JRB Coin Score</Data>
-  <Data type="byte" address="0x00AF31AB" absoluteAddress="true" color="#ffeccc">CCM Coin Score</Data>
-  <Data type="byte" address="0x00AF31AA" absoluteAddress="true" color="#ffeccc">BBH Coin Score</Data>
-  <Data type="byte" address="0x00AF31A9" absoluteAddress="true" color="#ffeccc">HMC Coin Score</Data>
-  <Data type="byte" address="0x00AF31A8" absoluteAddress="true" color="#ffeccc">LLL Coin Score</Data>
-  <Data type="byte" address="0x00AF31AF" absoluteAddress="true" color="#ffeccc">SSL Coin Score</Data>
-  <Data type="byte" address="0x00AF31AE" absoluteAddress="true" color="#ffeccc">DDD Coin Score</Data>
-  <Data type="byte" address="0x00AF31AD" absoluteAddress="true" color="#ffeccc">SL Coin Score</Data>
-  <Data type="byte" address="0x00AF31AC" absoluteAddress="true" color="#ffeccc">WDW Coin Score</Data>
-  <Data type="byte" address="0x00AF31B3" absoluteAddress="true" color="#ffeccc">TTM Coin Score</Data>
-  <Data type="byte" address="0x00AF31B2" absoluteAddress="true" color="#ffeccc">THI Coin Score</Data>
-  <Data type="byte" address="0x00AF31B1" absoluteAddress="true" color="#ffeccc">TTC Coin Score</Data>
-  <Data type="byte" address="0x00AF31B0" absoluteAddress="true" color="#ffeccc">RR Coin Score</Data>
+  <Data type="byte" address="0x25" fileOffset="true" color="#ffeccc">BoB Coin Score</Data>
+  <Data type="byte" address="0x26" fileOffset="true" color="#ffeccc">WF Coin Score</Data>
+  <Data type="byte" address="0x27" fileOffset="true" color="#ffeccc">JRB Coin Score</Data>
+  <Data type="byte" address="0x28" fileOffset="true" color="#ffeccc">CCM Coin Score</Data>
+  <Data type="byte" address="0x29" fileOffset="true" color="#ffeccc">BBH Coin Score</Data>
+  <Data type="byte" address="0x2A" fileOffset="true" color="#ffeccc">HMC Coin Score</Data>
+  <Data type="byte" address="0x2B" fileOffset="true" color="#ffeccc">LLL Coin Score</Data>
+  <Data type="byte" address="0x2C" fileOffset="true" color="#ffeccc">SSL Coin Score</Data>
+  <Data type="byte" address="0x2D" fileOffset="true" color="#ffeccc">DDD Coin Score</Data>
+  <Data type="byte" address="0x2E" fileOffset="true" color="#ffeccc">SL Coin Score</Data>
+  <Data type="byte" address="0x2F" fileOffset="true" color="#ffeccc">WDW Coin Score</Data>
+  <Data type="byte" address="0x30" fileOffset="true" color="#ffeccc">TTM Coin Score</Data>
+  <Data type="byte" address="0x31" fileOffset="true" color="#ffeccc">THI Coin Score</Data>
+  <Data type="byte" address="0x32" fileOffset="true" color="#ffeccc">TTC Coin Score</Data>
+  <Data type="byte" address="0x33" fileOffset="true" color="#ffeccc">RR Coin Score</Data>
   
   <Data type="byte" address="0x00AF3188" absoluteAddress="true" isBool="true" mask="0x02" color="#ffcccc">Wing Cap</Data>
   <Data type="byte" address="0x00AF3188" absoluteAddress="true" isBool="true" mask="0x04" color="#ffcccc">Metal Cap</Data>
