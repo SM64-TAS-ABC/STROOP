@@ -21,7 +21,7 @@ namespace SM64_Diagnostic.Managers
         uint _currentFileAddress;
 
         public FileManager(ProcessStream stream, List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile)
-            : base(stream, fileData, noTearFlowLayoutPanelFile)
+            : base(stream, fileData, noTearFlowLayoutPanelFile, Config.File.FileAAddress)
         {
             _tabControl = tabControl;
             _currentFileMode = FileMode.FileA;
