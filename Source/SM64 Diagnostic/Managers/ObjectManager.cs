@@ -208,15 +208,17 @@ namespace SM64_Diagnostic.Managers
 
         public ObjectManager(ProcessStream stream, ObjectAssociations objAssoc, List<WatchVariable> objectData, Control objectControl, NoTearFlowLayoutPanel variableTable)
             : base(stream, objectData, variableTable)
-        { 
+        {
+            SplitContainer splitContainerObject = objectControl.Controls["splitContainerObject"] as SplitContainer;
+
             _objAssoc = objAssoc;
-            _objAddressLabelValue = objectControl.Controls["labelObjAddValue"] as Label;
-            _objAddressLabel = objectControl.Controls["labelObjAdd"] as Label;
-            _objSlotIndexLabel = objectControl.Controls["labelObjSlotIndValue"] as Label;
-            _objSlotPositionLabel = objectControl.Controls["labelObjSlotPosValue"] as Label;
-            _objBehaviorLabel = objectControl.Controls["labelObjBhvValue"] as Label;
-            _objectNameTextBox = objectControl.Controls["textBoxObjName"] as TextBox;
-            _objectBorderPanel = objectControl.Controls["panelObjectBorder"] as Panel;
+            _objAddressLabelValue = splitContainerObject.Panel1.Controls["labelObjAddValue"] as Label;
+            _objAddressLabel = splitContainerObject.Panel1.Controls["labelObjAdd"] as Label;
+            _objSlotIndexLabel = splitContainerObject.Panel1.Controls["labelObjSlotIndValue"] as Label;
+            _objSlotPositionLabel = splitContainerObject.Panel1.Controls["labelObjSlotPosValue"] as Label;
+            _objBehaviorLabel = splitContainerObject.Panel1.Controls["labelObjBhvValue"] as Label;
+            _objectNameTextBox = splitContainerObject.Panel1.Controls["textBoxObjName"] as TextBox;
+            _objectBorderPanel = splitContainerObject.Panel1.Controls["panelObjectBorder"] as Panel;
             _objectImagePictureBox = _objectBorderPanel.Controls["pictureBoxObject"] as IntPictureBox;
 
             _objAddressLabelValue.Click += ObjAddressLabel_Click;

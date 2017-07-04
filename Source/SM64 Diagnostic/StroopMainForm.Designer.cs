@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -470,6 +470,7 @@ namespace SM64_Diagnostic
             this.panelObjectBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).BeginInit();
+            this.splitContainerObject.Panel1.SuspendLayout();
             this.splitContainerObject.Panel2.SuspendLayout();
             this.splitContainerObject.SuspendLayout();
             this.tabPageMario.SuspendLayout();
@@ -765,16 +766,6 @@ namespace SM64_Diagnostic
             // 
             this.tabPageObjects.BackColor = System.Drawing.Color.Transparent;
             this.tabPageObjects.Controls.Add(this.panelObj);
-            this.tabPageObjects.Controls.Add(this.textBoxObjName);
-            this.tabPageObjects.Controls.Add(this.labelObjSlotIndValue);
-            this.tabPageObjects.Controls.Add(this.labelObjSlotPosValue);
-            this.tabPageObjects.Controls.Add(this.labelObjBhvValue);
-            this.tabPageObjects.Controls.Add(this.labelObjAdd);
-            this.tabPageObjects.Controls.Add(this.labelObjSlotInd);
-            this.tabPageObjects.Controls.Add(this.labelObjSlotPos);
-            this.tabPageObjects.Controls.Add(this.labelObjBhv);
-            this.tabPageObjects.Controls.Add(this.panelObjectBorder);
-            this.tabPageObjects.Controls.Add(this.labelObjAddValue);
             this.tabPageObjects.Controls.Add(this.splitContainerObject);
             this.tabPageObjects.Location = new System.Drawing.Point(4, 22);
             this.tabPageObjects.Margin = new System.Windows.Forms.Padding(2);
@@ -1484,7 +1475,7 @@ namespace SM64_Diagnostic
             // 
             this.textBoxObjName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxObjName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxObjName.Location = new System.Drawing.Point(65, 5);
+            this.textBoxObjName.Location = new System.Drawing.Point(64, 4);
             this.textBoxObjName.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxObjName.Multiline = true;
             this.textBoxObjName.Name = "textBoxObjName";
@@ -1496,7 +1487,7 @@ namespace SM64_Diagnostic
             // 
             // labelObjSlotIndValue
             // 
-            this.labelObjSlotIndValue.Location = new System.Drawing.Point(120, 59);
+            this.labelObjSlotIndValue.Location = new System.Drawing.Point(119, 58);
             this.labelObjSlotIndValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelObjSlotIndValue.Name = "labelObjSlotIndValue";
             this.labelObjSlotIndValue.Size = new System.Drawing.Size(39, 13);
@@ -1505,7 +1496,7 @@ namespace SM64_Diagnostic
             // 
             // labelObjSlotPosValue
             // 
-            this.labelObjSlotPosValue.Location = new System.Drawing.Point(112, 45);
+            this.labelObjSlotPosValue.Location = new System.Drawing.Point(111, 44);
             this.labelObjSlotPosValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelObjSlotPosValue.Name = "labelObjSlotPosValue";
             this.labelObjSlotPosValue.Size = new System.Drawing.Size(47, 14);
@@ -1514,7 +1505,7 @@ namespace SM64_Diagnostic
             // 
             // labelObjBhvValue
             // 
-            this.labelObjBhvValue.Location = new System.Drawing.Point(91, 32);
+            this.labelObjBhvValue.Location = new System.Drawing.Point(90, 31);
             this.labelObjBhvValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelObjBhvValue.Name = "labelObjBhvValue";
             this.labelObjBhvValue.Size = new System.Drawing.Size(68, 13);
@@ -1524,7 +1515,7 @@ namespace SM64_Diagnostic
             // labelObjAdd
             // 
             this.labelObjAdd.AutoSize = true;
-            this.labelObjAdd.Location = new System.Drawing.Point(63, 72);
+            this.labelObjAdd.Location = new System.Drawing.Point(62, 71);
             this.labelObjAdd.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.labelObjAdd.Name = "labelObjAdd";
             this.labelObjAdd.Size = new System.Drawing.Size(29, 13);
@@ -1547,7 +1538,7 @@ namespace SM64_Diagnostic
             // labelObjSlotInd
             // 
             this.labelObjSlotInd.AutoSize = true;
-            this.labelObjSlotInd.Location = new System.Drawing.Point(63, 59);
+            this.labelObjSlotInd.Location = new System.Drawing.Point(62, 58);
             this.labelObjSlotInd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelObjSlotInd.Name = "labelObjSlotInd";
             this.labelObjSlotInd.Size = new System.Drawing.Size(57, 13);
@@ -1557,7 +1548,7 @@ namespace SM64_Diagnostic
             // labelObjSlotPos
             // 
             this.labelObjSlotPos.AutoSize = true;
-            this.labelObjSlotPos.Location = new System.Drawing.Point(63, 45);
+            this.labelObjSlotPos.Location = new System.Drawing.Point(62, 44);
             this.labelObjSlotPos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelObjSlotPos.Name = "labelObjSlotPos";
             this.labelObjSlotPos.Size = new System.Drawing.Size(49, 13);
@@ -1567,7 +1558,7 @@ namespace SM64_Diagnostic
             // labelObjBhv
             // 
             this.labelObjBhv.AutoSize = true;
-            this.labelObjBhv.Location = new System.Drawing.Point(63, 32);
+            this.labelObjBhv.Location = new System.Drawing.Point(62, 31);
             this.labelObjBhv.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelObjBhv.Name = "labelObjBhv";
             this.labelObjBhv.Size = new System.Drawing.Size(29, 13);
@@ -1577,7 +1568,7 @@ namespace SM64_Diagnostic
             // panelObjectBorder
             // 
             this.panelObjectBorder.Controls.Add(this.pictureBoxObject);
-            this.panelObjectBorder.Location = new System.Drawing.Point(4, 5);
+            this.panelObjectBorder.Location = new System.Drawing.Point(3, 4);
             this.panelObjectBorder.Margin = new System.Windows.Forms.Padding(2);
             this.panelObjectBorder.Name = "panelObjectBorder";
             this.panelObjectBorder.Size = new System.Drawing.Size(57, 55);
@@ -1600,7 +1591,7 @@ namespace SM64_Diagnostic
             // 
             // labelObjAddValue
             // 
-            this.labelObjAddValue.Location = new System.Drawing.Point(85, 72);
+            this.labelObjAddValue.Location = new System.Drawing.Point(84, 71);
             this.labelObjAddValue.Margin = new System.Windows.Forms.Padding(0);
             this.labelObjAddValue.Name = "labelObjAddValue";
             this.labelObjAddValue.Size = new System.Drawing.Size(75, 17);
@@ -1621,6 +1612,16 @@ namespace SM64_Diagnostic
             // splitContainerObject.Panel1
             // 
             this.splitContainerObject.Panel1.AutoScroll = true;
+            this.splitContainerObject.Panel1.Controls.Add(this.textBoxObjName);
+            this.splitContainerObject.Panel1.Controls.Add(this.labelObjAddValue);
+            this.splitContainerObject.Panel1.Controls.Add(this.labelObjSlotIndValue);
+            this.splitContainerObject.Panel1.Controls.Add(this.panelObjectBorder);
+            this.splitContainerObject.Panel1.Controls.Add(this.labelObjSlotPosValue);
+            this.splitContainerObject.Panel1.Controls.Add(this.labelObjBhv);
+            this.splitContainerObject.Panel1.Controls.Add(this.labelObjBhvValue);
+            this.splitContainerObject.Panel1.Controls.Add(this.labelObjSlotPos);
+            this.splitContainerObject.Panel1.Controls.Add(this.labelObjAdd);
+            this.splitContainerObject.Panel1.Controls.Add(this.labelObjSlotInd);
             this.splitContainerObject.Panel1MinSize = 0;
             // 
             // splitContainerObject.Panel2
@@ -3966,8 +3967,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -5574,7 +5575,6 @@ namespace SM64_Diagnostic
             this.splitContainerMain.ResumeLayout(false);
             this.tabControlMain.ResumeLayout(false);
             this.tabPageObjects.ResumeLayout(false);
-            this.tabPageObjects.PerformLayout();
             this.panelObj.ResumeLayout(false);
             this.groupBoxObjHome.ResumeLayout(false);
             this.groupBoxObjHome.PerformLayout();
@@ -5586,6 +5586,8 @@ namespace SM64_Diagnostic
             this.groupBoxObjPos.PerformLayout();
             this.panelObjectBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
+            this.splitContainerObject.Panel1.ResumeLayout(false);
+            this.splitContainerObject.Panel1.PerformLayout();
             this.splitContainerObject.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).EndInit();
             this.splitContainerObject.ResumeLayout(false);
