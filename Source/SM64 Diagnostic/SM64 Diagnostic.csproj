@@ -106,9 +106,6 @@
     <Compile Include="Controls\ControllerDisplayPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\ObjectSlotTest.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Controls\ScaleController.cs" />
     <Compile Include="Controls\ScalarController.cs" />
     <Compile Include="Controls\ThreeDimensionController.cs" />

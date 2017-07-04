@@ -28,93 +28,6 @@ namespace SM64_Diagnostic.Managers
 
             _controllerDisplayPanel.setControllerDisplayGui(_gui);
             _controllerDisplayPanel.setProcessStream(_stream);
-
-            /*
-            _mapManager = mapManager;
-
-            var toggleHandsfree = marioControl.Controls["buttonMarioToggleHandsfree"] as Button;
-            toggleHandsfree.Click += (sender, e) => MarioActions.ToggleHandsfree(_stream);
-
-            var toggleVisibility = marioControl.Controls["buttonMarioVisibility"] as Button;
-            toggleVisibility.Click += (sender, e) => MarioActions.ToggleVisibility(_stream);
-
-            var marioPosGroupBox = marioControl.Controls["groupBoxMarioPos"] as GroupBox;
-            PositionController.initialize(
-                marioPosGroupBox.Controls["buttonMarioPosXn"] as Button,
-                marioPosGroupBox.Controls["buttonMarioPosXp"] as Button,
-                marioPosGroupBox.Controls["buttonMarioPosZn"] as Button,
-                marioPosGroupBox.Controls["buttonMarioPosZp"] as Button,
-                marioPosGroupBox.Controls["buttonMarioPosXnZn"] as Button,
-                marioPosGroupBox.Controls["buttonMarioPosXnZp"] as Button,
-                marioPosGroupBox.Controls["buttonMarioPosXpZn"] as Button,
-                marioPosGroupBox.Controls["buttonMarioPosXpZp"] as Button,
-                marioPosGroupBox.Controls["buttonMarioPosYp"] as Button,
-                marioPosGroupBox.Controls["buttonMarioPosYn"] as Button,
-                marioPosGroupBox.Controls["textBoxMarioPosXZ"] as TextBox,
-                marioPosGroupBox.Controls["textBoxMarioPosY"] as TextBox,
-                marioPosGroupBox.Controls["checkBoxMarioPosRelative"] as CheckBox,
-                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
-                {
-                    MarioActions.MoveMario(
-                        _stream,
-                        xOffset,
-                        yOffset,
-                        zOffset,
-                        useRelative);
-                });
-
-            var marioStatsGroupBox = marioControl.Controls["groupBoxMarioStats"] as GroupBox;
-            ScalarController.initialize(
-                marioStatsGroupBox.Controls["buttonMarioStatsYawN"] as Button,
-                marioStatsGroupBox.Controls["buttonMarioStatsYawP"] as Button,
-                marioStatsGroupBox.Controls["textBoxMarioStatsYaw"] as TextBox,
-                (float yawValue) =>
-                {
-                    MarioActions.MarioChangeYaw(_stream, (int)yawValue);
-                });
-            ScalarController.initialize(
-                marioStatsGroupBox.Controls["buttonMarioStatsHspdN"] as Button,
-                marioStatsGroupBox.Controls["buttonMarioStatsHspdP"] as Button,
-                marioStatsGroupBox.Controls["textBoxMarioStatsHspd"] as TextBox,
-                (float hspdValue) =>
-                {
-                    MarioActions.MarioChangeHspd(_stream, hspdValue);
-                });
-
-            ScalarController.initialize(
-                marioStatsGroupBox.Controls["buttonMarioStatsVspdN"] as Button,
-                marioStatsGroupBox.Controls["buttonMarioStatsVspdP"] as Button,
-                marioStatsGroupBox.Controls["textBoxMarioStatsVspd"] as TextBox,
-                (float vspdValue) =>
-                {
-                    MarioActions.MarioChangeVspd(_stream, vspdValue);
-                });
-
-            var marioHOLPGroupBox = marioControl.Controls["groupBoxMarioHOLP"] as GroupBox;
-            PositionController.initialize(
-                marioHOLPGroupBox.Controls["buttonMarioHOLPXn"] as Button,
-                marioHOLPGroupBox.Controls["buttonMarioHOLPXp"] as Button,
-                marioHOLPGroupBox.Controls["buttonMarioHOLPZn"] as Button,
-                marioHOLPGroupBox.Controls["buttonMarioHOLPZp"] as Button,
-                marioHOLPGroupBox.Controls["buttonMarioHOLPXnZn"] as Button,
-                marioHOLPGroupBox.Controls["buttonMarioHOLPXnZp"] as Button,
-                marioHOLPGroupBox.Controls["buttonMarioHOLPXpZn"] as Button,
-                marioHOLPGroupBox.Controls["buttonMarioHOLPXpZp"] as Button,
-                marioHOLPGroupBox.Controls["buttonMarioHOLPYp"] as Button,
-                marioHOLPGroupBox.Controls["buttonMarioHOLPYn"] as Button,
-                marioHOLPGroupBox.Controls["textBoxMarioHOLPXZ"] as TextBox,
-                marioHOLPGroupBox.Controls["textBoxMarioHOLPY"] as TextBox,
-                marioHOLPGroupBox.Controls["checkBoxMarioHOLPRelative"] as CheckBox,
-                (float xOffset, float yOffset, float zOffset, bool useRelative) =>
-                {
-                    MarioActions.MoveHOLP(
-                        _stream,
-                        xOffset,
-                        yOffset,
-                        zOffset,
-                        useRelative);
-                });
-                */
         }
 
         public override void Update(bool updateView)
@@ -141,36 +54,6 @@ namespace SM64_Diagnostic.Managers
             sbyte controlStickV = (sbyte)_stream.GetByte(inputStruct + Config.Controller.ControlStickVOffset);
 
             _controllerDisplayPanel.Invalidate();
-
-            /*
-            counter++;
-            if (counter % 25 == 0)
-            {
-                Console.WriteLine("");
-                Console.WriteLine("[" + counter + "]");
-
-                Console.WriteLine("buttonAPressed = " + buttonAPressed);
-                Console.WriteLine("buttonBPressed = " + buttonBPressed);
-                Console.WriteLine("buttonZPressed = " + buttonZPressed);
-                Console.WriteLine("buttonStartPressed = " + buttonStartPressed);
-
-                Console.WriteLine("buttonRPressed = " + buttonRPressed);
-                Console.WriteLine("buttonLPressed = " + buttonLPressed);
-
-                Console.WriteLine("buttonCUpPressed = " + buttonCUpPressed);
-                Console.WriteLine("buttonCDownPressed = " + buttonCDownPressed);
-                Console.WriteLine("buttonCLeftPressed = " + buttonCLeftPressed);
-                Console.WriteLine("buttonCRightPressed = " + buttonCRightPressed);
-
-                Console.WriteLine("buttonDUpPressed = " + buttonDUpPressed);
-                Console.WriteLine("buttonDDownPressed = " + buttonDDownPressed);
-                Console.WriteLine("buttonDLeftPressed = " + buttonDLeftPressed);
-                Console.WriteLine("buttonDRightPressed = " + buttonDRightPressed);
-
-                Console.WriteLine("controlStickH = " + controlStickH);
-                Console.WriteLine("controlStickV = " + controlStickV);
-            }
-            */
         }
     }
 }
