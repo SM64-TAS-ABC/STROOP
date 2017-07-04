@@ -14,60 +14,80 @@ namespace SM64_Diagnostic.Managers
 {
     public class FileManager : DataManager
     {
-        TabPage _tabControl;
-
-        uint _fileAddress = 0;
-        public uint FileAddress
-        {
-            get
-            {
-                return _fileAddress;
-            }
-            set
-            {
-                if (_fileAddress == value)
-                    return;
-
-                _fileAddress = value;
-
-                foreach (var dataContainer in _dataControls)
-                {
-                    if (dataContainer is WatchVariableControl)
-                    {
-                        var watchVar = dataContainer as WatchVariableControl;
-                        watchVar.OtherOffsets = new List<uint>() { _fileAddress };
-                    }
-                }
-            }
-        }
-
         private enum FileMode { FileA, FileB, FileC, FileD, FileASaved, FileBSaved, FileCSaved, FileDSaved };
 
-        private FileMode _currentMode;
+        TabPage _tabControl;
+        FileMode _currentFileMode;
+        uint _currentFileAddress;
 
         public FileManager(ProcessStream stream, List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile)
             : base(stream, fileData, noTearFlowLayoutPanelFile)
         {
             _tabControl = tabControl;
-            _currentMode = FileMode.FileA;
+            _currentFileMode = FileMode.FileA;
+            _currentFileAddress = Config.File.FileAAddress;
 
             SplitContainer splitContainerFile = tabControl.Controls["splitContainerFile"] as SplitContainer;
 
-            /*
-            (splitContainerTriangles.Panel1.Controls["radioButtonTriFloor"] as RadioButton).CheckedChanged
-                += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Floor);
-            (splitContainerTriangles.Panel1.Controls["radioButtonTriWall"] as RadioButton).CheckedChanged
-                += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Wall);
-            (splitContainerTriangles.Panel1.Controls["radioButtonTriCeiling"] as RadioButton).CheckedChanged
-                += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Ceiling);
-            (splitContainerTriangles.Panel1.Controls["radioButtonTriOther"] as RadioButton).CheckedChanged
-                += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Other);
-            */
+            (splitContainerFile.Panel1.Controls["radioButtonFileA"] as RadioButton).CheckedChanged
+                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileA);
+            (splitContainerFile.Panel1.Controls["radioButtonFileB"] as RadioButton).CheckedChanged
+                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileB);
+            (splitContainerFile.Panel1.Controls["radioButtonFileC"] as RadioButton).CheckedChanged
+                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileC);
+            (splitContainerFile.Panel1.Controls["radioButtonFileD"] as RadioButton).CheckedChanged
+                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileD);
+
+            (splitContainerFile.Panel1.Controls["radioButtonFileASaved"] as RadioButton).CheckedChanged
+                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileASaved);
+            (splitContainerFile.Panel1.Controls["radioButtonFileBSaved"] as RadioButton).CheckedChanged
+                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileBSaved);
+            (splitContainerFile.Panel1.Controls["radioButtonFileCSaved"] as RadioButton).CheckedChanged
+                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileCSaved);
+            (splitContainerFile.Panel1.Controls["radioButtonFileDSaved"] as RadioButton).CheckedChanged
+                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileDSaved    );
         }
 
-        private void Mode_CheckedChanged(object sender, EventArgs e, FileMode mode)
+        private uint getFileAddressFromFileMode(FileMode mode)
         {
-            
+            switch (mode)
+            {
+                case FileMode.FileA:
+                    return Config.File.FileAAddress;
+                case FileMode.FileB:
+                    return Config.File.FileBAddress;
+                case FileMode.FileC:
+                    return Config.File.FileCAddress;
+                case FileMode.FileD:
+                    return Config.File.FileDAddress;
+                case FileMode.FileASaved:
+                    return Config.File.FileASavedAddress;
+                case FileMode.FileBSaved:
+                    return Config.File.FileBSavedAddress;
+                case FileMode.FileCSaved:
+                    return Config.File.FileCSavedAddress;
+                case FileMode.FileDSaved:
+                    return Config.File.FileDSavedAddress;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private void FileMode_CheckedChanged(object sender, EventArgs e, FileMode mode)
+        {
+            if (_currentFileMode == mode) return;
+
+            _currentFileMode = mode;
+            _currentFileAddress = getFileAddressFromFileMode(mode);
+
+            foreach (var dataContainer in _dataControls)
+            {
+                if (dataContainer is WatchVariableControl)
+                {
+                    var watchVar = dataContainer as WatchVariableControl;
+                    watchVar.OtherOffsets = new List<uint>() { _currentFileAddress };
+                }
+            }
         }
     }
 }
