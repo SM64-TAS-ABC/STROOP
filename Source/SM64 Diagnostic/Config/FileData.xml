@@ -89,6 +89,9 @@
   <Data type="byte" address="0x00AF3189" absoluteAddress="true" isBool="true" mask="0x01" color="#ffccff">DDD Moved Back</Data>
   <Data type="byte" address="0x00AF3189" absoluteAddress="true" isBool="true" mask="0x02" color="#ffccff">Moat Drained</Data>
 
+  <Data type="ushort" address="0x00AF31B4" absoluteAddress="true" color="#d0d0d0">Checksum</Data>
+  <Data type="ushort" address="0x00AF31B6" absoluteAddress="true" color="#d0d0d0">Struct Terminator</Data>
+
   <Data type="byte" address="0x00AF318F" absoluteAddress="true" isBool="true" mask="0x01">BoB: Big Bob-omb on the Summit</Data>
   <Data type="byte" address="0x00AF318F" absoluteAddress="true" isBool="true" mask="0x02">BoB: Footrace with Koopa the Quick</Data>
   <Data type="byte" address="0x00AF318F" absoluteAddress="true" isBool="true" mask="0x04">BoB: Shoot to the Island in the Sky</Data>
