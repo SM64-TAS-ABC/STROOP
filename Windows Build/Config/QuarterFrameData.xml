@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<LevelData>
+<QuarterFrameData>
   <Data type="int" address="0x00ccbb84" absoluteAddress="true" useHex="true" color ="#ffe070">Movement Action</Data>
   <Data type="int" address="0x00ccbb88" absoluteAddress="true" color ="#8888ff">#0 result</Data>
   <Data type="float" address="0x00ccbb8c" absoluteAddress="true" >#0 water Y</Data>
@@ -45,4 +45,4 @@
   <Data type="float" address="0x00ccbc38" absoluteAddress="true">#3 pos X</Data>
   <Data type="float" address="0x00ccbc3c" absoluteAddress="true">#3 pos Y</Data>
   <Data type="float" address="0x00ccbc40" absoluteAddress="true">#3 pos Z</Data>
-</LevelData>
+</QuarterFrameData>

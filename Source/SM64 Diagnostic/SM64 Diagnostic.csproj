@@ -235,7 +235,7 @@
     <Content Include="Config\FileData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Config\LevelData.xml">
+    <Content Include="Config\QuarterFrameData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\MarioActions.xml">

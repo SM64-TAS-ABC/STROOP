@@ -234,7 +234,7 @@ namespace SM64_Diagnostic
             this.tabPageController = new System.Windows.Forms.TabPage();
             this.splitContainerController = new System.Windows.Forms.SplitContainer();
             this.tabPageFile = new System.Windows.Forms.TabPage();
-            this.tabPageLevel = new System.Windows.Forms.TabPage();
+            this.tabPageQuarterFrame = new System.Windows.Forms.TabPage();
             this.tabPageMisc = new System.Windows.Forms.TabPage();
             this.panelMiscBorder = new System.Windows.Forms.Panel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
@@ -434,7 +434,7 @@ namespace SM64_Diagnostic
             this.pictureBoxController = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelController = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.noTearFlowLayoutPanelFile = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.noTearFlowLayoutPanelLevel = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.noTearFlowLayoutPanelQuarterFrame = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.pictureBoxMisc = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelMisc = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.pictureBoxDebug = new SM64_Diagnostic.Controls.IntPictureBox();
@@ -484,7 +484,7 @@ namespace SM64_Diagnostic
             this.splitContainerController.Panel2.SuspendLayout();
             this.splitContainerController.SuspendLayout();
             this.tabPageFile.SuspendLayout();
-            this.tabPageLevel.SuspendLayout();
+            this.tabPageQuarterFrame.SuspendLayout();
             this.tabPageMisc.SuspendLayout();
             this.panelMiscBorder.SuspendLayout();
             this.tabPageDebug.SuspendLayout();
@@ -700,7 +700,6 @@ namespace SM64_Diagnostic
             this.tabControlMain.Controls.Add(this.tabPageWater);
             this.tabControlMain.Controls.Add(this.tabPageController);
             this.tabControlMain.Controls.Add(this.tabPageFile);
-            this.tabControlMain.Controls.Add(this.tabPageLevel);
             this.tabControlMain.Controls.Add(this.tabPageMisc);
             this.tabControlMain.Controls.Add(this.tabPageDebug);
             this.tabControlMain.Controls.Add(this.tabPageMap);
@@ -709,6 +708,7 @@ namespace SM64_Diagnostic
             this.tabControlMain.Controls.Add(this.tabPageDisassembly);
             this.tabControlMain.Controls.Add(this.tabPageHacks);
             this.tabControlMain.Controls.Add(this.tabPageCamHack);
+            this.tabControlMain.Controls.Add(this.tabPageQuarterFrame);
             this.tabControlMain.Controls.Add(this.tabPageOptions);
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(2, 2);
@@ -2802,15 +2802,15 @@ namespace SM64_Diagnostic
             this.tabPageFile.TabIndex = 10;
             this.tabPageFile.Text = "File";
             // 
-            // tabPageLevel
+            // tabPageQuarterFrame
             // 
-            this.tabPageLevel.Controls.Add(this.noTearFlowLayoutPanelLevel);
-            this.tabPageLevel.Location = new System.Drawing.Point(4, 22);
-            this.tabPageLevel.Name = "tabPageLevel";
-            this.tabPageLevel.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLevel.Size = new System.Drawing.Size(915, 447);
-            this.tabPageLevel.TabIndex = 16;
-            this.tabPageLevel.Text = "Level";
+            this.tabPageQuarterFrame.Controls.Add(this.noTearFlowLayoutPanelQuarterFrame);
+            this.tabPageQuarterFrame.Location = new System.Drawing.Point(4, 22);
+            this.tabPageQuarterFrame.Name = "tabPageQuarterFrame";
+            this.tabPageQuarterFrame.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageQuarterFrame.Size = new System.Drawing.Size(915, 447);
+            this.tabPageQuarterFrame.TabIndex = 16;
+            this.tabPageQuarterFrame.Text = "Q Frames";
             // 
             // tabPageMisc
             // 
@@ -2820,7 +2820,7 @@ namespace SM64_Diagnostic
             this.tabPageMisc.Name = "tabPageMisc";
             this.tabPageMisc.Size = new System.Drawing.Size(915, 447);
             this.tabPageMisc.TabIndex = 9;
-            this.tabPageMisc.Text = "Misc.";
+            this.tabPageMisc.Text = "Misc";
             // 
             // panelMiscBorder
             // 
@@ -5188,18 +5188,18 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(905, 437);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
-            // noTearFlowLayoutPanelLevel
+            // noTearFlowLayoutPanelQuarterFrame
             // 
-            this.noTearFlowLayoutPanelLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.noTearFlowLayoutPanelQuarterFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanelLevel.AutoScroll = true;
-            this.noTearFlowLayoutPanelLevel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.noTearFlowLayoutPanelLevel.Location = new System.Drawing.Point(5, 5);
-            this.noTearFlowLayoutPanelLevel.Margin = new System.Windows.Forms.Padding(2);
-            this.noTearFlowLayoutPanelLevel.Name = "noTearFlowLayoutPanelLevel";
-            this.noTearFlowLayoutPanelLevel.Size = new System.Drawing.Size(905, 437);
-            this.noTearFlowLayoutPanelLevel.TabIndex = 2;
+            this.noTearFlowLayoutPanelQuarterFrame.AutoScroll = true;
+            this.noTearFlowLayoutPanelQuarterFrame.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelQuarterFrame.Location = new System.Drawing.Point(5, 5);
+            this.noTearFlowLayoutPanelQuarterFrame.Margin = new System.Windows.Forms.Padding(2);
+            this.noTearFlowLayoutPanelQuarterFrame.Name = "noTearFlowLayoutPanelQuarterFrame";
+            this.noTearFlowLayoutPanelQuarterFrame.Size = new System.Drawing.Size(905, 437);
+            this.noTearFlowLayoutPanelQuarterFrame.TabIndex = 2;
             // 
             // pictureBoxMisc
             // 
@@ -5434,7 +5434,7 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerController)).EndInit();
             this.splitContainerController.ResumeLayout(false);
             this.tabPageFile.ResumeLayout(false);
-            this.tabPageLevel.ResumeLayout(false);
+            this.tabPageQuarterFrame.ResumeLayout(false);
             this.tabPageMisc.ResumeLayout(false);
             this.panelMiscBorder.ResumeLayout(false);
             this.tabPageDebug.ResumeLayout(false);
@@ -5689,10 +5689,10 @@ namespace SM64_Diagnostic
         private Button buttonPuConZpPu;
         private Button buttonPuConZpQpu;
         private Button buttonPuConHome;
-        private TabPage tabPageLevel;
+        private TabPage tabPageQuarterFrame;
         private TabPage tabPageCamHack;
         private NoTearFlowLayoutPanel noTearFlowLayoutPanelFile;
-        private NoTearFlowLayoutPanel noTearFlowLayoutPanelLevel;
+        private NoTearFlowLayoutPanel noTearFlowLayoutPanelQuarterFrame;
         private NoTearFlowLayoutPanel noTearFlowLayoutPanelCamHack;
         private Button buttonAnnihilateTriangle;
         private Button buttonNeutralizeTriangle;
