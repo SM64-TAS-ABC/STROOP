@@ -87,40 +87,42 @@ namespace SM64_Diagnostic.Managers
         public TriangleManager(ProcessStream stream, Control tabControl, List<WatchVariable> triangleWatchVars, NoTearFlowLayoutPanel noTearFlowLayoutPanel) 
             : base(stream, triangleWatchVars, noTearFlowLayoutPanel)
         {
-            _addressBox = tabControl.Controls["maskedTextBoxOtherTriangle"] as MaskedTextBox;
-            _useMisalignmentOffsetCheckbox = tabControl.Controls["checkBoxVertexMisalignment"] as CheckBox;
+            SplitContainer splitContainerTriangles = tabControl.Controls["splitContainerTriangles"] as SplitContainer;
+
+            _addressBox = splitContainerTriangles.Panel1.Controls["maskedTextBoxOtherTriangle"] as MaskedTextBox;
+            _useMisalignmentOffsetCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxVertexMisalignment"] as CheckBox;
 
             _addressBox.KeyDown += AddressBox_KeyDown;
-            (tabControl.Controls["radioButtonTriFloor"] as RadioButton).CheckedChanged 
+            (splitContainerTriangles.Panel1.Controls["radioButtonTriFloor"] as RadioButton).CheckedChanged 
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Floor);
-            (tabControl.Controls["radioButtonTriWall"] as RadioButton).CheckedChanged 
+            (splitContainerTriangles.Panel1.Controls["radioButtonTriWall"] as RadioButton).CheckedChanged 
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Wall);
-            (tabControl.Controls["radioButtonTriCeiling"] as RadioButton).CheckedChanged 
+            (splitContainerTriangles.Panel1.Controls["radioButtonTriCeiling"] as RadioButton).CheckedChanged 
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Ceiling);
-            (tabControl.Controls["radioButtonTriOther"] as RadioButton).CheckedChanged 
+            (splitContainerTriangles.Panel1.Controls["radioButtonTriOther"] as RadioButton).CheckedChanged 
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Other);
 
-            (tabControl.Controls["buttonGoToV1"] as Button).Click
+            (splitContainerTriangles.Panel1.Controls["buttonGoToV1"] as Button).Click
                 += (sender, e) => ButtonUtilities.GoToTriangle(_stream, _triangleAddress, 1, _useMisalignmentOffsetCheckbox.Checked);
-            (tabControl.Controls["buttonGoToV2"] as Button).Click
+            (splitContainerTriangles.Panel1.Controls["buttonGoToV2"] as Button).Click
                 += (sender, e) => ButtonUtilities.GoToTriangle(_stream, _triangleAddress, 2, _useMisalignmentOffsetCheckbox.Checked);
-            (tabControl.Controls["buttonGoToV3"] as Button).Click
+            (splitContainerTriangles.Panel1.Controls["buttonGoToV3"] as Button).Click
                 += (sender, e) => ButtonUtilities.GoToTriangle(_stream, _triangleAddress, 3, _useMisalignmentOffsetCheckbox.Checked);
-            (tabControl.Controls["buttonGoToVClosest"] as Button).Click += (sender, e) =>
+            (splitContainerTriangles.Panel1.Controls["buttonGoToVClosest"] as Button).Click += (sender, e) =>
             {
                 if (_closestVertex == 0)
                     return;
                 ButtonUtilities.GoToTriangle(_stream, _triangleAddress, _closestVertex, _useMisalignmentOffsetCheckbox.Checked);
             };
 
-            (tabControl.Controls["buttonRetrieveTriangle"] as Button).Click
+            (splitContainerTriangles.Panel1.Controls["buttonRetrieveTriangle"] as Button).Click
                 += (sender, e) => ButtonUtilities.RetrieveTriangle(_stream, _triangleAddress);
-            (tabControl.Controls["buttonNeutralizeTriangle"] as Button).Click
+            (splitContainerTriangles.Panel1.Controls["buttonNeutralizeTriangle"] as Button).Click
                 += (sender, e) => ButtonUtilities.NeutralizeTriangle(_stream, _triangleAddress);
-            (tabControl.Controls["buttonAnnihilateTriangle"] as Button).Click
+            (splitContainerTriangles.Panel1.Controls["buttonAnnihilateTriangle"] as Button).Click
                 += (sender, e) => ButtonUtilities.AnnihilateTriangle(_stream, _triangleAddress);
             
-            var trianglePosGroupBox = tabControl.Controls["groupBoxTrianglePos"] as GroupBox;
+            var trianglePosGroupBox = splitContainerTriangles.Panel1.Controls["groupBoxTrianglePos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Euler,
                 trianglePosGroupBox.Controls["buttonTrianglePosXn"] as Button,
@@ -147,7 +149,7 @@ namespace SM64_Diagnostic.Managers
                         useRelative);
                 });
 
-            var triangleNormalGroupBox = tabControl.Controls["groupBoxTriangleNormal"] as GroupBox;
+            var triangleNormalGroupBox = splitContainerTriangles.Panel1.Controls["groupBoxTriangleNormal"] as GroupBox;
             ScalarController.initialize(
                 triangleNormalGroupBox.Controls["buttontriangleNormalN"] as Button,
                 triangleNormalGroupBox.Controls["buttontriangleNormalP"] as Button,
