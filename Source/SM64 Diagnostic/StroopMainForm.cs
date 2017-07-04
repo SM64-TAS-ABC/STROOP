@@ -120,7 +120,7 @@ namespace SM64_Diagnostic
             currentContext.WaterManager = _waterManager = new DataManager(_sm64Stream, _waterData, noTearFlowLayoutPanelWater);
             currentContext.ControllerManager = _controllerManager = new ControllerManager(_sm64Stream, _controllerData, tabPageController, NoTearFlowLayoutPanelController);
             currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
-            currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
+            currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud, NoTearFlowLayoutPanelHud);
             currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc);
             currentContext.CameraManager = _cameraManager = new CameraManager(_sm64Stream, _cameraData, tabPageCamera, NoTearFlowLayoutPanelCamera);
             currentContext.TriangleManager = _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData, NoTearFlowLayoutPanelTriangles);
