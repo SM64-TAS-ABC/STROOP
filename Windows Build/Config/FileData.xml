@@ -89,8 +89,8 @@
   <Data type="byte" address="0x0A" fileOffset="true" isBool="true" mask="0x01" color="#ffccff">DDD Moved Back</Data>
   <Data type="byte" address="0x0A" fileOffset="true" isBool="true" mask="0x02" color="#ffccff">Moat Drained</Data>
 
+  <Data type="ushort" address="0x34" fileOffset="true" color="#d0d0d0">Checksum Constant</Data>
   <Data type="ushort" address="0x36" fileOffset="true" color="#d0d0d0">Checksum</Data>
-  <Data type="ushort" address="0x34" fileOffset="true" color="#d0d0d0">Struct Terminator</Data>
 
   <Data type="byte" address="0x0C" fileOffset="true" isBool="true" mask="0x01">BoB: Big Bob-omb on the Summit</Data>
   <Data type="byte" address="0x0C" fileOffset="true" isBool="true" mask="0x02">BoB: Footrace with Koopa the Quick</Data>
