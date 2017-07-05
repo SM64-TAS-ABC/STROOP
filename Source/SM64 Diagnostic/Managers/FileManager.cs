@@ -45,7 +45,15 @@ namespace SM64_Diagnostic.Managers
             (splitContainerFile.Panel1.Controls["radioButtonFileCSaved"] as RadioButton).CheckedChanged
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileCSaved);
             (splitContainerFile.Panel1.Controls["radioButtonFileDSaved"] as RadioButton).CheckedChanged
-                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileDSaved    );
+                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileDSaved);
+
+            (splitContainerFile.Panel1.Controls["buttonFileSave"] as Button).Click += FileSaveButton_Click;
+
+        }
+
+        private void FileSaveButton_Click(object sender, EventArgs e)
+        {
+
         }
 
         private uint getFileAddressFromFileMode(FileMode mode)
