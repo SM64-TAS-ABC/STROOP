@@ -102,6 +102,8 @@ namespace SM64_Diagnostic.Managers
             (splitContainerTriangles.Panel1.Controls["radioButtonTriOther"] as RadioButton).CheckedChanged 
                 += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Other);
 
+            (splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label).Click += TriangleSelectionLabel_Click;
+
             (splitContainerTriangles.Panel1.Controls["buttonGoToV1"] as Button).Click
                 += (sender, e) => ButtonUtilities.GoToTriangle(_stream, _triangleAddress, 1, _useMisalignmentOffsetCheckbox.Checked);
             (splitContainerTriangles.Panel1.Controls["buttonGoToV2"] as Button).Click
@@ -158,6 +160,28 @@ namespace SM64_Diagnostic.Managers
                 {
                     ButtonUtilities.MoveTriangleNormal(_stream, _triangleAddress, normalValue);
                 });
+        }
+
+        private void TriangleSelectionLabel_Click(object sender, EventArgs e)
+        {
+            if (TriangleAddress == 0x0000) return;
+
+            short v1X, v1Y, v1Z;
+            short v2X, v2Y, v2Z;
+            short v3X, v3Y, v3Z;
+            v1X = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
+            v1Y = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
+            v1Z = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
+            v2X = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
+            v2Y = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
+            v2Z = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
+            v3X = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
+            v3Y = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
+            v3Z = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
+
+            var variableTitle = "Triangle Coordinates";
+            var variableInfo = new TriangleCoordinatesForm(variableTitle, "Object", "string3", "string4");
+            variableInfo.ShowDialog();
         }
 
         private void ProcessSpecialVars()

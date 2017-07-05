@@ -211,6 +211,12 @@
     <Compile Include="Utilities\RngIndexer.cs" />
     <Compile Include="Utilities\WatchVariableLock.cs" />
     <Compile Include="Utilities\XmlConfigParser.cs" />
+    <Compile Include="TriangleCoordinatesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriangleCoordinatesForm.Designer.cs">
+      <DependentUpon>TriangleCoordinatesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="VariableViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +281,9 @@
     <Content Include="Config\Hacks.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="TriangleCoordinatesForm.resx">
+      <DependentUpon>TriangleCoordinatesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VariableViewerForm.resx">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </EmbeddedResource>

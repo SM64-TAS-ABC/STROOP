@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -231,7 +231,7 @@ namespace SM64_Diagnostic
             this.checkBoxVertexMisalignment = new System.Windows.Forms.CheckBox();
             this.maskedTextBoxOtherTriangle = new System.Windows.Forms.MaskedTextBox();
             this.buttonRetrieveTriangle = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelTriangleSelection = new System.Windows.Forms.Label();
             this.buttonGoToV3 = new System.Windows.Forms.Button();
             this.buttonGoToV1 = new System.Windows.Forms.Button();
             this.buttonGoToV2 = new System.Windows.Forms.Button();
@@ -2564,7 +2564,7 @@ namespace SM64_Diagnostic
             this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxVertexMisalignment);
             this.splitContainerTriangles.Panel1.Controls.Add(this.maskedTextBoxOtherTriangle);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonRetrieveTriangle);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.label4);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.labelTriangleSelection);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToV3);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToV1);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToV2);
@@ -2873,14 +2873,14 @@ namespace SM64_Diagnostic
             this.buttonRetrieveTriangle.Text = "Retrieve";
             this.buttonRetrieveTriangle.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // labelTriangleSelection
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Triangle:";
+            this.labelTriangleSelection.AutoSize = true;
+            this.labelTriangleSelection.Location = new System.Drawing.Point(1, 3);
+            this.labelTriangleSelection.Name = "labelTriangleSelection";
+            this.labelTriangleSelection.Size = new System.Drawing.Size(48, 13);
+            this.labelTriangleSelection.TabIndex = 6;
+            this.labelTriangleSelection.Text = "Triangle:";
             // 
             // buttonGoToV3
             // 
@@ -3729,8 +3729,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -5902,7 +5902,7 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonTriCeiling;
         private RadioButton radioButtonTriWall;
         private RadioButton radioButtonTriFloor;
-        private Label label4;
+        private Label labelTriangleSelection;
         private MaskedTextBox maskedTextBoxOtherTriangle;
         private RadioButton radioButtonTriOther;
         private NoTearFlowLayoutPanel NoTearFlowLayoutPanelTriangles;
