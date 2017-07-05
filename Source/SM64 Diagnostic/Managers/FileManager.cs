@@ -67,12 +67,10 @@ namespace SM64_Diagnostic.Managers
             uint nonSavedAddress = GetNonSavedFileAddress(_currentFileMode);
 
             // Set the checksum constant
-            ushort checksumConstantOffset = 52;
-            ushort checksumConstantValue = 17473;
-            _stream.SetValue(checksumConstantValue, nonSavedAddress + checksumConstantOffset);
+            _stream.SetValue(Config.File.ChecksumConstantValue, nonSavedAddress + Config.File.ChecksumConstantOffset);
 
             // Sum up all bytes to calculate the checksum
-            ushort checksum = (ushort)(checksumConstantValue % 256 + checksumConstantValue / 256);
+            ushort checksum = (ushort)(Config.File.ChecksumConstantValue % 256 + Config.File.ChecksumConstantValue / 256);
             for (uint i = 0; i < Config.File.FileStructSize-4; i++)
             {
                 byte b = _stream.GetByte(nonSavedAddress + i);
@@ -80,8 +78,7 @@ namespace SM64_Diagnostic.Managers
             }
 
             // Set the checksum
-            ushort checksumOffset = 54;
-            _stream.SetValue(checksum, nonSavedAddress + checksumOffset);
+            _stream.SetValue(checksum, nonSavedAddress + Config.File.ChecksumOffset);
 
             // Copy all values from the unsaved struct to the saved struct
             uint savedAddress = nonSavedAddress + Config.File.FileStructSize;
@@ -90,8 +87,8 @@ namespace SM64_Diagnostic.Managers
                 byte b = _stream.GetByte(nonSavedAddress + i);
                 _stream.SetValue(b, savedAddress + i);
             }
-            _stream.SetValue(checksumConstantValue, savedAddress + checksumConstantOffset);
-            _stream.SetValue(checksum, savedAddress + checksumOffset);
+            _stream.SetValue(Config.File.ChecksumConstantValue, savedAddress + Config.File.ChecksumConstantOffset);
+            _stream.SetValue(checksum, savedAddress + Config.File.ChecksumOffset);
         }
 
         private uint GetNonSavedFileAddress(FileMode mode)
