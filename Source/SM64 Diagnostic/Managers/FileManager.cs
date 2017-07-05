@@ -63,27 +63,35 @@ namespace SM64_Diagnostic.Managers
 
         private void FileSaveButton_Click(object sender, EventArgs e)
         {
+            // Get the corresponding unsaved file struct address
             uint nonSavedAddress = GetNonSavedFileAddress(_currentFileMode);
 
+            // Set the checksum constant
             ushort checksumConstantOffset = 52;
             ushort checksumConstantValue = 17473;
             _stream.SetValue(checksumConstantValue, nonSavedAddress + checksumConstantOffset);
 
-            ushort sum = (ushort)(checksumConstantValue % 256 + checksumConstantValue / 256);
+            // Sum up all bytes to calculate the checksum
+            ushort checksum = (ushort)(checksumConstantValue % 256 + checksumConstantValue / 256);
             for (uint i = 0; i < Config.File.FileStructSize-4; i++)
             {
-                // skip over the current checksum
-                //if (i == Config.File.FileStructSize - 2 || i == Config.File.FileStructSize - 1) continue;
-
                 byte b = _stream.GetByte(nonSavedAddress + i);
-                sum += b;
-                Console.WriteLine(i + " = " + b + " [" + sum + "]");
-                //_stream.SetValue((byte)i, nonSavedAddress + i);
+                checksum += b;
             }
-            Console.WriteLine("");
 
+            // Set the checksum
             ushort checksumOffset = 54;
-            _stream.SetValue(sum, nonSavedAddress + checksumOffset);
+            _stream.SetValue(checksum, nonSavedAddress + checksumOffset);
+
+            // Copy all values from the unsaved struct to the saved struct
+            uint savedAddress = nonSavedAddress + Config.File.FileStructSize;
+            for (uint i = 0; i < Config.File.FileStructSize - 4; i++)
+            {
+                byte b = _stream.GetByte(nonSavedAddress + i);
+                _stream.SetValue(b, savedAddress + i);
+            }
+            _stream.SetValue(checksumConstantValue, savedAddress + checksumConstantOffset);
+            _stream.SetValue(checksum, savedAddress + checksumOffset);
         }
 
         private uint GetNonSavedFileAddress(FileMode mode)
