@@ -15,15 +15,12 @@ namespace SM64_Diagnostic
 {
     public partial class TriangleCoordinatesForm : Form
     {
-        string _name, _type, _n64Address, _processAddress;
+        short[] _coordinates;
 
-        public TriangleCoordinatesForm(string name, string type, string n64Address, string processAddress)
+        public TriangleCoordinatesForm(short[] coordinates)
         {
             InitializeComponent();
-            _name = name;
-            _type = type;
-            _n64Address = n64Address;
-            _processAddress = processAddress;
+            _coordinates = coordinates;
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
@@ -33,10 +30,10 @@ namespace SM64_Diagnostic
 
         private void VariableViewerForm_Load(object sender, EventArgs e)
         {
-            labelVarName.Text = _name;
-            labelVarTypeValue.Text = _type;
-            textBoxN64AddValue.Text = _n64Address;
-            textBoxEmuAddValue.Text = _processAddress;
+            textBoxN64AddValue.Text =
+                _coordinates[0] + "\t" + _coordinates[1] + "\t" + _coordinates[2] + "\r\n" +
+                _coordinates[3] + "\t" + _coordinates[4] + "\t" + _coordinates[5] + "\r\n" +
+                _coordinates[6] + "\t" + _coordinates[7] + "\t" + _coordinates[8];
         }
     }
 }

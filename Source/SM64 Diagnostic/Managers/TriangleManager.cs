@@ -166,21 +166,18 @@ namespace SM64_Diagnostic.Managers
         {
             if (TriangleAddress == 0x0000) return;
 
-            short v1X, v1Y, v1Z;
-            short v2X, v2Y, v2Z;
-            short v3X, v3Y, v3Z;
-            v1X = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
-            v1Y = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
-            v1Z = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
-            v2X = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
-            v2Y = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
-            v2Z = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
-            v3X = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
-            v3Y = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
-            v3Z = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
+            short[] coordinates = new short[9];
+            coordinates[0] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
+            coordinates[1] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
+            coordinates[2] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
+            coordinates[3] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
+            coordinates[4] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
+            coordinates[5] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
+            coordinates[6] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
+            coordinates[7] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
+            coordinates[8] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
 
-            var variableTitle = "Triangle Coordinates";
-            var variableInfo = new TriangleCoordinatesForm(variableTitle, "Object", "string3", "string4");
+            var variableInfo = new TriangleCoordinatesForm(coordinates);
             variableInfo.ShowDialog();
         }
 
