@@ -177,8 +177,8 @@ namespace SM64_Diagnostic.Managers
             coordinates[7] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
             coordinates[8] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
 
-            var variableInfo = new TriangleCoordinatesForm(coordinates);
-            variableInfo.ShowDialog();
+            var triangleCoordinatesInfo = new TriangleCoordinatesForm(coordinates);
+            triangleCoordinatesInfo.ShowDialog();
         }
 
         private void ProcessSpecialVars()

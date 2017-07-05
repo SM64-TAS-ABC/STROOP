@@ -30,8 +30,8 @@
         {
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.buttonOk = new System.Windows.Forms.Button();
-            this.labelVarName = new System.Windows.Forms.Label();
-            this.textBoxN64AddValue = new System.Windows.Forms.TextBox();
+            this.labelTitle = new System.Windows.Forms.Label();
+            this.textBoxTriangleCoordinates = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,8 +44,8 @@
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.56467F));
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.43533F));
             this.tableLayoutPanelMain.Controls.Add(this.buttonOk, 1, 3);
-            this.tableLayoutPanelMain.Controls.Add(this.labelVarName, 0, 0);
-            this.tableLayoutPanelMain.Controls.Add(this.textBoxN64AddValue, 1, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.labelTitle, 0, 0);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxTriangleCoordinates, 1, 1);
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
             this.tableLayoutPanelMain.RowCount = 4;
@@ -70,29 +70,29 @@
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
-            // labelVarName
+            // labelTitle
             // 
-            this.labelVarName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelVarName.AutoSize = true;
-            this.tableLayoutPanelMain.SetColumnSpan(this.labelVarName, 2);
-            this.labelVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVarName.Location = new System.Drawing.Point(96, 24);
-            this.labelVarName.Name = "labelVarName";
-            this.labelVarName.Size = new System.Drawing.Size(124, 13);
-            this.labelVarName.TabIndex = 8;
-            this.labelVarName.Text = "Triangle Coordinates";
+            this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelTitle.AutoSize = true;
+            this.tableLayoutPanelMain.SetColumnSpan(this.labelTitle, 2);
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Location = new System.Drawing.Point(96, 24);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(124, 13);
+            this.labelTitle.TabIndex = 8;
+            this.labelTitle.Text = "Triangle Coordinates";
             // 
-            // textBoxN64AddValue
+            // textBoxTriangleCoordinates
             // 
-            this.textBoxN64AddValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxN64AddValue.Location = new System.Drawing.Point(45, 65);
-            this.textBoxN64AddValue.Multiline = true;
-            this.textBoxN64AddValue.Name = "textBoxN64AddValue";
-            this.textBoxN64AddValue.ReadOnly = true;
-            this.tableLayoutPanelMain.SetRowSpan(this.textBoxN64AddValue, 3);
-            this.textBoxN64AddValue.Size = new System.Drawing.Size(226, 84);
-            this.textBoxN64AddValue.TabIndex = 3;
-            this.textBoxN64AddValue.Text = "\r\n";
+            this.textBoxTriangleCoordinates.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTriangleCoordinates.Location = new System.Drawing.Point(45, 65);
+            this.textBoxTriangleCoordinates.Multiline = true;
+            this.textBoxTriangleCoordinates.Name = "textBoxTriangleCoordinates";
+            this.textBoxTriangleCoordinates.ReadOnly = true;
+            this.tableLayoutPanelMain.SetRowSpan(this.textBoxTriangleCoordinates, 3);
+            this.textBoxTriangleCoordinates.Size = new System.Drawing.Size(226, 84);
+            this.textBoxTriangleCoordinates.TabIndex = 3;
+            this.textBoxTriangleCoordinates.Text = "\r\n";
             // 
             // TriangleCoordinatesForm
             // 
@@ -118,7 +118,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
         private System.Windows.Forms.Button buttonOk;
-        private System.Windows.Forms.Label labelVarName;
-        private System.Windows.Forms.TextBox textBoxN64AddValue;
+        private System.Windows.Forms.Label labelTitle;
+        private System.Windows.Forms.TextBox textBoxTriangleCoordinates;
     }
 }

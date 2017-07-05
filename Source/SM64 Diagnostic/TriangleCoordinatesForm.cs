@@ -21,6 +21,7 @@ namespace SM64_Diagnostic
         {
             InitializeComponent();
             _coordinates = coordinates;
+            textBoxTriangleCoordinates.Click += (sender, e) => textBoxTriangleCoordinates.SelectAll();
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
@@ -30,7 +31,7 @@ namespace SM64_Diagnostic
 
         private void VariableViewerForm_Load(object sender, EventArgs e)
         {
-            textBoxN64AddValue.Text =
+            textBoxTriangleCoordinates.Text =
                 _coordinates[0] + "\t" + _coordinates[1] + "\t" + _coordinates[2] + "\r\n" +
                 _coordinates[3] + "\t" + _coordinates[4] + "\t" + _coordinates[5] + "\r\n" +
                 _coordinates[6] + "\t" + _coordinates[7] + "\t" + _coordinates[8];
