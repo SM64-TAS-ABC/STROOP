@@ -193,6 +193,9 @@
   <File>
     <FileStructAddress>0x80207700</FileStructAddress>
     <FileStructSize>0x38</FileStructSize>
+    <ChecksumConstantOffset>0x34</ChecksumConstantOffset>
+    <ChecksumConstantValue>0x4441</ChecksumConstantValue>
+    <ChecksumOffset>0x36</ChecksumOffset>
   </File>
   <CameraHack>
     <CameraHackStruct>0x803E0000</CameraHackStruct>

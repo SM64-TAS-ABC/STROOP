@@ -669,6 +669,18 @@ namespace SM64_Diagnostic.Utilities
                                 case "FileStructSize":
                                     Config.File.FileStructSize = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+
+                                case "ChecksumConstantOffset":
+                                    Config.File.ChecksumConstantOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ChecksumConstantValue":
+                                    Config.File.ChecksumConstantValue = (ushort)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ChecksumOffset":
+                                    Config.File.ChecksumOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
 

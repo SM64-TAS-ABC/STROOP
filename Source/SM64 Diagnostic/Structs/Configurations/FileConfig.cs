@@ -18,5 +18,9 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint FileBSavedAddress;
         public uint FileCSavedAddress;
         public uint FileDSavedAddress;
+
+        public uint ChecksumConstantOffset;
+        public ushort ChecksumConstantValue;
+        public uint ChecksumOffset;
     }
 }
