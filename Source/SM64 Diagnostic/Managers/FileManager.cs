@@ -63,11 +63,51 @@ namespace SM64_Diagnostic.Managers
 
         private void FileSaveButton_Click(object sender, EventArgs e)
         {
-            if (IsSavedFileMode(_currentFileMode))
-                throw new InvalidOperationException("Can't save file when in a save file mode.");
+            uint nonSavedAddress = GetNonSavedFileAddress(_currentFileMode);
+
+            ushort checksumConstantOffset = 52;
+            ushort checksumConstantValue = 17473;
+            _stream.SetValue(checksumConstantValue, nonSavedAddress + checksumConstantOffset);
+
+            ushort sum = (ushort)(checksumConstantValue % 256 + checksumConstantValue / 256);
+            for (uint i = 0; i < Config.File.FileStructSize-4; i++)
+            {
+                // skip over the current checksum
+                //if (i == Config.File.FileStructSize - 2 || i == Config.File.FileStructSize - 1) continue;
+
+                byte b = _stream.GetByte(nonSavedAddress + i);
+                sum += b;
+                Console.WriteLine(i + " = " + b + " [" + sum + "]");
+                //_stream.SetValue((byte)i, nonSavedAddress + i);
+            }
+            Console.WriteLine("");
+
+            ushort checksumOffset = 54;
+            _stream.SetValue(sum, nonSavedAddress + checksumOffset);
         }
 
-        private uint getFileAddressFromFileMode(FileMode mode)
+        private uint GetNonSavedFileAddress(FileMode mode)
+        {
+            switch (mode)
+            {
+                case FileMode.FileA:
+                case FileMode.FileASaved:
+                    return Config.File.FileAAddress;
+                case FileMode.FileB:
+                case FileMode.FileBSaved:
+                    return Config.File.FileBAddress;
+                case FileMode.FileC:
+                case FileMode.FileCSaved:
+                    return Config.File.FileCAddress;
+                case FileMode.FileD:
+                case FileMode.FileDSaved:
+                    return Config.File.FileDAddress;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private uint getFileAddress(FileMode mode)
         {
             switch (mode)
             {
@@ -97,9 +137,7 @@ namespace SM64_Diagnostic.Managers
             if (_currentFileMode == mode) return;
 
             _currentFileMode = mode;
-            _currentFileAddress = getFileAddressFromFileMode(mode);
-
-            _saveFileButton.Enabled = !IsSavedFileMode(_currentFileMode);
+            _currentFileAddress = getFileAddress(mode);
 
             foreach (var dataContainer in _dataControls)
             {
