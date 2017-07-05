@@ -41,8 +41,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanelMain.ColumnCount = 2;
-            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.55205F));
-            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.44795F));
+            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.56467F));
+            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.43533F));
             this.tableLayoutPanelMain.Controls.Add(this.buttonOk, 1, 3);
             this.tableLayoutPanelMain.Controls.Add(this.labelVarName, 0, 0);
             this.tableLayoutPanelMain.Controls.Add(this.textBoxN64AddValue, 1, 1);
@@ -76,22 +76,23 @@
             this.labelVarName.AutoSize = true;
             this.tableLayoutPanelMain.SetColumnSpan(this.labelVarName, 2);
             this.labelVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVarName.Location = new System.Drawing.Point(114, 24);
+            this.labelVarName.Location = new System.Drawing.Point(96, 24);
             this.labelVarName.Name = "labelVarName";
-            this.labelVarName.Size = new System.Drawing.Size(89, 13);
+            this.labelVarName.Size = new System.Drawing.Size(124, 13);
             this.labelVarName.TabIndex = 8;
-            this.labelVarName.Text = "Variable Name";
+            this.labelVarName.Text = "Triangle Coordinates";
             // 
             // textBoxN64AddValue
             // 
-            this.textBoxN64AddValue.Location = new System.Drawing.Point(83, 65);
+            this.textBoxN64AddValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxN64AddValue.Location = new System.Drawing.Point(45, 65);
             this.textBoxN64AddValue.Multiline = true;
             this.textBoxN64AddValue.Name = "textBoxN64AddValue";
             this.textBoxN64AddValue.ReadOnly = true;
             this.tableLayoutPanelMain.SetRowSpan(this.textBoxN64AddValue, 3);
-            this.textBoxN64AddValue.Size = new System.Drawing.Size(159, 84);
+            this.textBoxN64AddValue.Size = new System.Drawing.Size(226, 84);
             this.textBoxN64AddValue.TabIndex = 3;
-            this.textBoxN64AddValue.Text = "N64 Address\r\nTest\r\nThere";
+            this.textBoxN64AddValue.Text = "\r\n";
             // 
             // TriangleCoordinatesForm
             // 
@@ -105,7 +106,7 @@
             this.MinimumSize = new System.Drawing.Size(357, 244);
             this.Name = "TriangleCoordinatesForm";
             this.ShowIcon = false;
-            this.Text = "Variable Info";
+            this.Text = "Triangle Coordinates";
             this.Load += new System.EventHandler(this.VariableViewerForm_Load);
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.tableLayoutPanelMain.PerformLayout();
