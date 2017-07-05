@@ -20,6 +20,8 @@ namespace SM64_Diagnostic.Managers
         FileMode _currentFileMode;
         uint _currentFileAddress;
 
+        Button _saveFileButton;
+
         public FileManager(ProcessStream stream, List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile)
             : base(stream, fileData, noTearFlowLayoutPanelFile, Config.File.FileAAddress)
         {
@@ -47,13 +49,22 @@ namespace SM64_Diagnostic.Managers
             (splitContainerFile.Panel1.Controls["radioButtonFileDSaved"] as RadioButton).CheckedChanged
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileDSaved);
 
-            (splitContainerFile.Panel1.Controls["buttonFileSave"] as Button).Click += FileSaveButton_Click;
+            _saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
+            _saveFileButton.Click += FileSaveButton_Click;
+        }
 
+        private bool IsSavedFileMode(FileMode fileMode)
+        {
+            return fileMode == FileMode.FileASaved ||
+                   fileMode == FileMode.FileBSaved ||
+                   fileMode == FileMode.FileCSaved ||
+                   fileMode == FileMode.FileDSaved;
         }
 
         private void FileSaveButton_Click(object sender, EventArgs e)
         {
-
+            if (IsSavedFileMode(_currentFileMode))
+                throw new InvalidOperationException("Can't save file when in a save file mode.");
         }
 
         private uint getFileAddressFromFileMode(FileMode mode)
@@ -87,6 +98,8 @@ namespace SM64_Diagnostic.Managers
 
             _currentFileMode = mode;
             _currentFileAddress = getFileAddressFromFileMode(mode);
+
+            _saveFileButton.Enabled = !IsSavedFileMode(_currentFileMode);
 
             foreach (var dataContainer in _dataControls)
             {
