@@ -16,7 +16,7 @@ namespace SM64_Diagnostic.Managers
         ProcessStream _stream;
         CheckedListBox _checkList;
         ListBox _spawnList;
-        TextBox _gfxIdTextbox, _extraTextbox;
+        TextBox _behaviorTextbox, _gfxIdTextbox, _extraTextbox;
 
         object _listLocker = new object();
 
@@ -31,6 +31,7 @@ namespace SM64_Diagnostic.Managers
             var spawnGroup = splitContainter.Panel2.Controls["groupBoxHackSpawn"];
             _spawnList = spawnGroup.Controls["listBoxSpawn"] as ListBox;
             var spawnButton = spawnGroup.Controls["buttonHackSpawn"] as Button;
+            _behaviorTextbox = spawnGroup.Controls["textBoxSpawnBehavior"] as TextBox;
             _gfxIdTextbox = spawnGroup.Controls["textBoxSpawnGfxId"] as TextBox;
             _extraTextbox = spawnGroup.Controls["textBoxSpawnExtra"] as TextBox;
             var resetButton = spawnGroup.Controls["buttonSpawnReset"] as Button;
@@ -61,6 +62,7 @@ namespace SM64_Diagnostic.Managers
 
             var selectedHack = _spawnList.SelectedItem as SpawnHack;
 
+            _behaviorTextbox.Text = String.Format("0x{0:X8}", selectedHack.Behavior);
             _gfxIdTextbox.Text = String.Format("0x{0:X2}", selectedHack.GfxId);
             _extraTextbox.Text = String.Format("0x{0:X2}", selectedHack.Extra);
         }
@@ -70,15 +72,20 @@ namespace SM64_Diagnostic.Managers
             if (_spawnList.SelectedItems.Count == 0)
                 return;
 
-            uint gfxId, extra;
+            uint behavior, gfxId, extra;
+            if (!ParsingUtilities.TryParseHex(_behaviorTextbox.Text, out behavior))
+            {
+                MessageBox.Show("Could not parse behavior!");
+                return;
+            }
             if (!ParsingUtilities.TryParseHex(_gfxIdTextbox.Text, out gfxId))
             {
-                MessageBox.Show("Fail");
+                MessageBox.Show("Could not parse gfxId!");
                 return;
             }
             if (!ParsingUtilities.TryParseHex(_extraTextbox.Text, out extra))
             {
-                MessageBox.Show("Fail");
+                MessageBox.Show("Could not parse extra!");
                 return;
             }
 
@@ -86,9 +93,7 @@ namespace SM64_Diagnostic.Managers
 
             Config.Hacks.SpawnHack.LoadPayload(_stream, false);
 
-            var selectedHack = _spawnList.SelectedItem as SpawnHack;
-
-            _stream.SetValue(selectedHack.Behavior, Config.Hacks.BehaviorAddress);
+            _stream.SetValue(behavior, Config.Hacks.BehaviorAddress);
             _stream.SetValue((UInt16)gfxId, Config.Hacks.GfxIdAddress);
             _stream.SetValue((UInt16)extra, Config.Hacks.ExtraAddress);
 
