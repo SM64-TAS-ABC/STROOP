@@ -125,8 +125,10 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("MovementX"),
                 new DataContainer("MovementY"),
                 new DataContainer("MovementZ"),
+                new DataContainer("MovementForward"),
+                new DataContainer("MovementSideways"),
                 new DataContainer("MovementLateral"),
-                new DataContainer("Movment"),
+                new DataContainer("MovementTotal"),
                 new DataContainer("QFrameCountEstimate")
             };
         }
@@ -211,7 +213,7 @@ namespace SM64_Diagnostic.Managers
                         (specialVar as DataContainer).Text = Math.Round(Math.Sqrt(movementX * movementX + movementZ * movementZ),3).ToString();
                         break;
 
-                    case "Movement":
+                    case "MovementTotal":
                         (specialVar as DataContainer).Text = Math.Round(Math.Sqrt(movementX * movementX + movementY * movementY + movementZ * movementZ), 3).ToString();
                         break;
 
