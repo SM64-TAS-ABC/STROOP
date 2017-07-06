@@ -31,8 +31,8 @@ namespace SM64_Diagnostic.Managers
             _currentFileAddress = Config.File.FileAAddress;
 
             SplitContainer splitContainerFile = tabControl.Controls["splitContainerFile"] as SplitContainer;
-            GroupBox fileGroupbox = splitContainerFile.Panel1.Controls["groupBoxFile"] as GroupBox;
 
+            GroupBox fileGroupbox = splitContainerFile.Panel1.Controls["groupBoxFile"] as GroupBox;
             (fileGroupbox.Controls["radioButtonFileA"] as RadioButton).CheckedChanged
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileA);
             (fileGroupbox.Controls["radioButtonFileB"] as RadioButton).CheckedChanged
@@ -41,7 +41,6 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileC);
             (fileGroupbox.Controls["radioButtonFileD"] as RadioButton).CheckedChanged
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileD);
-
             (fileGroupbox.Controls["radioButtonFileASaved"] as RadioButton).CheckedChanged
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileASaved);
             (fileGroupbox.Controls["radioButtonFileBSaved"] as RadioButton).CheckedChanged
@@ -53,17 +52,30 @@ namespace SM64_Diagnostic.Managers
 
             _saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
             _saveFileButton.Click += FileSaveButton_Click;
+
+            GroupBox hatLocationGroupbox = splitContainerFile.Panel1.Controls["groupBoxHatLocation"] as GroupBox;
+            (hatLocationGroupbox.Controls["radioButtonHatLocationMario"] as RadioButton).CheckedChanged
+                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.Mario);
+            (hatLocationGroupbox.Controls["radioButtonHatLocationSSLKlepto"] as RadioButton).CheckedChanged
+                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.SSLKlepto);
+            (hatLocationGroupbox.Controls["radioButtonHatLocationSSLGround"] as RadioButton).CheckedChanged
+                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.SSLGround);
+            (hatLocationGroupbox.Controls["radioButtonHatLocationSLSnowman"] as RadioButton).CheckedChanged
+                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.SLSnowman);
+            (hatLocationGroupbox.Controls["radioButtonHatLocationSLGround"] as RadioButton).CheckedChanged
+                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.SLGround);
+            (hatLocationGroupbox.Controls["radioButtonHatLocationTTMUkiki"] as RadioButton).CheckedChanged
+                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.TTMUkiki);
+            (hatLocationGroupbox.Controls["radioButtonHatLocationTTMGround"] as RadioButton).CheckedChanged
+                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.TTMGround);
         }
 
-        private bool IsSavedFileMode(FileMode fileMode)
+        private void HatLocation_CheckedChanged(object sender, EventArgs e, HatLocation hatLocation)
         {
-            return fileMode == FileMode.FileASaved ||
-                   fileMode == FileMode.FileBSaved ||
-                   fileMode == FileMode.FileCSaved ||
-                   fileMode == FileMode.FileDSaved;
+            Console.WriteLine(hatLocation);
         }
 
-        private void FileSaveButton_Click(object sender, EventArgs e)
+            private void FileSaveButton_Click(object sender, EventArgs e)
         {
             // Get the corresponding unsaved file struct address
             uint nonSavedAddress = GetNonSavedFileAddress(_currentFileMode);
