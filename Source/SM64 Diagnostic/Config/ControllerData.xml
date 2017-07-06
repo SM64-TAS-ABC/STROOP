@@ -1,22 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ControllerData>
-  <Data type="sbyte" address="0xC52AD5" absoluteAddress="true">Buffered H</Data>
-  <Data type="sbyte" address="0xC52AD4" absoluteAddress="true">Buffered V</Data>
-  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x80">Buffered A</Data>
-  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x40">Buffered B</Data>
-  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x20">Buffered Z</Data>
-  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x10">Buffered S</Data>
-  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x10">Buffered R</Data>
-  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x20">Buffered L</Data>
-  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x08">Buffered C^</Data>
-  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x04">Buffered Cv</Data>
-  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x02">Buffered C&lt;</Data>
-  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x01">Buffered C></Data>
-  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x08">Buffered D^</Data>
-  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x04">Buffered Dv</Data>
-  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x02">Buffered D&lt;</Data>
-  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x01">Buffered D></Data>
-
   <Data type="sbyte" address="0xC26A79" absoluteAddress="true">Current H</Data>
   <Data type="sbyte" address="0xC26A78" absoluteAddress="true">Current V</Data>
   <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x80">Current A</Data>
@@ -33,4 +16,21 @@
   <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x04">Current Dv</Data>
   <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x02">Current D&lt;</Data>
   <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x01">Current D></Data>
+
+  <Data type="sbyte" address="0xC52AD5" absoluteAddress="true">Buffered H</Data>
+  <Data type="sbyte" address="0xC52AD4" absoluteAddress="true">Buffered V</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x80">Buffered A</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x40">Buffered B</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x20">Buffered Z</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x10">Buffered S</Data>
+  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x10">Buffered R</Data>
+  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x20">Buffered L</Data>
+  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x08">Buffered C^</Data>
+  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x04">Buffered Cv</Data>
+  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x02">Buffered C&lt;</Data>
+  <Data type="byte" address="0xC52AD6" absoluteAddress="true" isBool="true" mask="0x01">Buffered C></Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x08">Buffered D^</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x04">Buffered Dv</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x02">Buffered D&lt;</Data>
+  <Data type="byte" address="0xC52AD7" absoluteAddress="true" isBool="true" mask="0x01">Buffered D></Data>
 </ControllerData>
