@@ -36,6 +36,9 @@ namespace SM64_Diagnostic
         bool _active = false;
         BehaviorCriteria _behavior;
 
+        enum SelectionType { NOT_SELECTED, NORMAL_SELECTION, MAP_SELECTION };
+        SelectionType _selectionType = SelectionType.NOT_SELECTED;
+
         int prevHeight;
         object _gfxLock = new object();
 
@@ -365,7 +368,7 @@ namespace SM64_Diagnostic
             _manager.ObjectAssoc.CreateCachedBufferedObjectImage(_objectImage, _bufferedObjectImage);
         }
 
-        public void UpdateColors(bool force = false)
+        public void UpdateColors()
         {
             var oldBorderColor = _borderColor;
             var oldBackColor = _backColor;
@@ -410,7 +413,15 @@ namespace SM64_Diagnostic
                 }
             }
 
-            if (!imageUpdated && !colorUpdated && !force)
+            SelectionType newSelectionType =
+                tabControlMain.SelectedTab.Text.Equals("Map") && Show ? SelectionType.MAP_SELECTION :
+                tabControlMain.SelectedTab.Text.Equals("Map") && !Show ? SelectionType.NOT_SELECTED :
+                tabControlMain.SelectedTab.Text.Equals("Cam Hack") ? SelectionType.NOT_SELECTED :
+                DrawSelectedOverlay ? SelectionType.NORMAL_SELECTION : SelectionType.NOT_SELECTED;
+            bool selectionTypeUpdated = newSelectionType != _selectionType;
+            _selectionType = newSelectionType;
+
+            if (!imageUpdated && !colorUpdated && !selectionTypeUpdated)
                 return;
 
             Invalidate();
@@ -469,19 +480,15 @@ namespace SM64_Diagnostic
             }
 
             // Draw Overlays
-            if (tabControlMain.SelectedTab.Text.Equals("Map"))
+            switch (_selectionType)
             {
-                if (Show)
+                case SelectionType.MAP_SELECTION:
                     e.Graphics.DrawImage(_gui.TrackedAndShownObjectOverlayImage, new Rectangle(new Point(), Size));
-            }
-            else if (tabControlMain.SelectedTab.Text.Equals("Cam Hack"))
-            {
-                // intentionally left blank
-            }
-            else
-            {
-                if (DrawSelectedOverlay)
+                    break;
+
+                case SelectionType.NORMAL_SELECTION:
                     e.Graphics.DrawImage(_gui.SelectedObjectOverlayImage, new Rectangle(new Point(), Size));
+                    break;
             }
             if (_drawWallObject)
                 e.Graphics.DrawImage(_gui.WallObjectOverlayImage, new Rectangle(new Point(), Size));

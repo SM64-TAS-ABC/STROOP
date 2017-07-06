@@ -224,14 +224,6 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        public void updateSlotColors()
-        {
-            foreach (ObjectSlot objSlot in ObjectSlots)
-            {
-                objSlot.UpdateColors(true);
-            }
-        }
-
         public string GetSlotNameFromAddress(uint address)
         {
             var slot = ObjectSlots.FirstOrDefault(s => s.Address == address);

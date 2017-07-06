@@ -54,8 +54,6 @@ namespace SM64_Diagnostic
         FileManager _fileManager;
         PuManager _puManager;
 
-        TabPage _previousTabPage;
-
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
 
@@ -131,7 +129,6 @@ namespace SM64_Diagnostic
             currentContext.QuarterFrameManager = _quarterFrameManager = new DataManager(_sm64Stream, _quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
             currentContext.CameraHackManager = _cameraHackManager = new CamHackManager(_sm64Stream, _camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
             currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
-            _previousTabPage = tabPageObjects;
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
@@ -770,13 +767,6 @@ namespace SM64_Diagnostic
                 comboBoxMapToggleMode.Visible = false;
                 labelToggleMode.Visible = false;
             }
-            
-            // TODO remove this once slots automatically update when their selection changes
-            if (_previousTabPage == tabPageMap || tabControlMain.SelectedTab == tabPageMap || _previousTabPage == tabPageCamHack || tabControlMain.SelectedTab == tabPageCamHack)
-            {
-                _objectSlotManager.updateSlotColors();
-            }
-            _previousTabPage = tabControlMain.SelectedTab;
         }
     }
 }
