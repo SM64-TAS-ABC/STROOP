@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -437,6 +437,7 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.textBoxSpawnBehavior = new System.Windows.Forms.TextBox();
             this.labelSpawnBehavior = new System.Windows.Forms.Label();
+            this.groupBoxFile = new System.Windows.Forms.GroupBox();
             this.pictureBoxObject = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelObject = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.pictureBoxMario = new SM64_Diagnostic.Controls.IntPictureBox();
@@ -562,6 +563,7 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.groupBoxFile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).BeginInit();
@@ -2983,15 +2985,8 @@ namespace SM64_Diagnostic
             // splitContainerFile.Panel1
             // 
             this.splitContainerFile.Panel1.AutoScroll = true;
+            this.splitContainerFile.Panel1.Controls.Add(this.groupBoxFile);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonFileSave);
-            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileCSaved);
-            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileDSaved);
-            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileASaved);
-            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileBSaved);
-            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileC);
-            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileD);
-            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileA);
-            this.splitContainerFile.Panel1.Controls.Add(this.radioButtonFileB);
             this.splitContainerFile.Panel1MinSize = 0;
             // 
             // splitContainerFile.Panel2
@@ -3017,7 +3012,7 @@ namespace SM64_Diagnostic
             // radioButtonFileCSaved
             // 
             this.radioButtonFileCSaved.AutoSize = true;
-            this.radioButtonFileCSaved.Location = new System.Drawing.Point(108, 89);
+            this.radioButtonFileCSaved.Location = new System.Drawing.Point(82, 65);
             this.radioButtonFileCSaved.Name = "radioButtonFileCSaved";
             this.radioButtonFileCSaved.Size = new System.Drawing.Size(85, 17);
             this.radioButtonFileCSaved.TabIndex = 17;
@@ -3027,7 +3022,7 @@ namespace SM64_Diagnostic
             // radioButtonFileDSaved
             // 
             this.radioButtonFileDSaved.AutoSize = true;
-            this.radioButtonFileDSaved.Location = new System.Drawing.Point(108, 112);
+            this.radioButtonFileDSaved.Location = new System.Drawing.Point(82, 88);
             this.radioButtonFileDSaved.Name = "radioButtonFileDSaved";
             this.radioButtonFileDSaved.Size = new System.Drawing.Size(86, 17);
             this.radioButtonFileDSaved.TabIndex = 18;
@@ -3037,7 +3032,7 @@ namespace SM64_Diagnostic
             // radioButtonFileASaved
             // 
             this.radioButtonFileASaved.AutoSize = true;
-            this.radioButtonFileASaved.Location = new System.Drawing.Point(108, 43);
+            this.radioButtonFileASaved.Location = new System.Drawing.Point(82, 19);
             this.radioButtonFileASaved.Name = "radioButtonFileASaved";
             this.radioButtonFileASaved.Size = new System.Drawing.Size(85, 17);
             this.radioButtonFileASaved.TabIndex = 15;
@@ -3047,7 +3042,7 @@ namespace SM64_Diagnostic
             // radioButtonFileBSaved
             // 
             this.radioButtonFileBSaved.AutoSize = true;
-            this.radioButtonFileBSaved.Location = new System.Drawing.Point(108, 66);
+            this.radioButtonFileBSaved.Location = new System.Drawing.Point(82, 42);
             this.radioButtonFileBSaved.Name = "radioButtonFileBSaved";
             this.radioButtonFileBSaved.Size = new System.Drawing.Size(85, 17);
             this.radioButtonFileBSaved.TabIndex = 16;
@@ -3057,7 +3052,7 @@ namespace SM64_Diagnostic
             // radioButtonFileC
             // 
             this.radioButtonFileC.AutoSize = true;
-            this.radioButtonFileC.Location = new System.Drawing.Point(32, 89);
+            this.radioButtonFileC.Location = new System.Drawing.Point(11, 65);
             this.radioButtonFileC.Name = "radioButtonFileC";
             this.radioButtonFileC.Size = new System.Drawing.Size(51, 17);
             this.radioButtonFileC.TabIndex = 13;
@@ -3067,7 +3062,7 @@ namespace SM64_Diagnostic
             // radioButtonFileD
             // 
             this.radioButtonFileD.AutoSize = true;
-            this.radioButtonFileD.Location = new System.Drawing.Point(32, 112);
+            this.radioButtonFileD.Location = new System.Drawing.Point(11, 88);
             this.radioButtonFileD.Name = "radioButtonFileD";
             this.radioButtonFileD.Size = new System.Drawing.Size(52, 17);
             this.radioButtonFileD.TabIndex = 14;
@@ -3078,7 +3073,7 @@ namespace SM64_Diagnostic
             // 
             this.radioButtonFileA.AutoSize = true;
             this.radioButtonFileA.Checked = true;
-            this.radioButtonFileA.Location = new System.Drawing.Point(32, 43);
+            this.radioButtonFileA.Location = new System.Drawing.Point(11, 19);
             this.radioButtonFileA.Name = "radioButtonFileA";
             this.radioButtonFileA.Size = new System.Drawing.Size(51, 17);
             this.radioButtonFileA.TabIndex = 11;
@@ -3089,7 +3084,7 @@ namespace SM64_Diagnostic
             // radioButtonFileB
             // 
             this.radioButtonFileB.AutoSize = true;
-            this.radioButtonFileB.Location = new System.Drawing.Point(32, 66);
+            this.radioButtonFileB.Location = new System.Drawing.Point(11, 42);
             this.radioButtonFileB.Name = "radioButtonFileB";
             this.radioButtonFileB.Size = new System.Drawing.Size(51, 17);
             this.radioButtonFileB.TabIndex = 12;
@@ -3744,8 +3739,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -5312,6 +5307,23 @@ namespace SM64_Diagnostic
             this.labelSpawnBehavior.TabIndex = 27;
             this.labelSpawnBehavior.Text = "Behavior:";
             // 
+            // groupBoxFile
+            // 
+            this.groupBoxFile.Controls.Add(this.radioButtonFileASaved);
+            this.groupBoxFile.Controls.Add(this.radioButtonFileB);
+            this.groupBoxFile.Controls.Add(this.radioButtonFileCSaved);
+            this.groupBoxFile.Controls.Add(this.radioButtonFileA);
+            this.groupBoxFile.Controls.Add(this.radioButtonFileDSaved);
+            this.groupBoxFile.Controls.Add(this.radioButtonFileD);
+            this.groupBoxFile.Controls.Add(this.radioButtonFileC);
+            this.groupBoxFile.Controls.Add(this.radioButtonFileBSaved);
+            this.groupBoxFile.Location = new System.Drawing.Point(32, 18);
+            this.groupBoxFile.Name = "groupBoxFile";
+            this.groupBoxFile.Size = new System.Drawing.Size(175, 114);
+            this.groupBoxFile.TabIndex = 37;
+            this.groupBoxFile.TabStop = false;
+            this.groupBoxFile.Text = "File";
+            // 
             // pictureBoxObject
             // 
             this.pictureBoxObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -5768,7 +5780,6 @@ namespace SM64_Diagnostic
             this.splitContainerController.ResumeLayout(false);
             this.tabPageFile.ResumeLayout(false);
             this.splitContainerFile.Panel1.ResumeLayout(false);
-            this.splitContainerFile.Panel1.PerformLayout();
             this.splitContainerFile.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).EndInit();
             this.splitContainerFile.ResumeLayout(false);
@@ -5826,6 +5837,8 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.groupBoxFile.ResumeLayout(false);
+            this.groupBoxFile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).EndInit();
@@ -6272,6 +6285,7 @@ namespace SM64_Diagnostic
         private Button buttonFileSave;
         private Label labelSpawnBehavior;
         private TextBox textBoxSpawnBehavior;
+        private GroupBox groupBoxFile;
     }
 }
 

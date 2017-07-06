@@ -30,23 +30,24 @@ namespace SM64_Diagnostic.Managers
             _currentFileAddress = Config.File.FileAAddress;
 
             SplitContainer splitContainerFile = tabControl.Controls["splitContainerFile"] as SplitContainer;
+            GroupBox fileGroupbox = splitContainerFile.Panel1.Controls["groupBoxFile"] as GroupBox;
 
-            (splitContainerFile.Panel1.Controls["radioButtonFileA"] as RadioButton).CheckedChanged
+            (fileGroupbox.Controls["radioButtonFileA"] as RadioButton).CheckedChanged
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileA);
-            (splitContainerFile.Panel1.Controls["radioButtonFileB"] as RadioButton).CheckedChanged
+            (fileGroupbox.Controls["radioButtonFileB"] as RadioButton).CheckedChanged
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileB);
-            (splitContainerFile.Panel1.Controls["radioButtonFileC"] as RadioButton).CheckedChanged
+            (fileGroupbox.Controls["radioButtonFileC"] as RadioButton).CheckedChanged
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileC);
-            (splitContainerFile.Panel1.Controls["radioButtonFileD"] as RadioButton).CheckedChanged
+            (fileGroupbox.Controls["radioButtonFileD"] as RadioButton).CheckedChanged
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileD);
 
-            (splitContainerFile.Panel1.Controls["radioButtonFileASaved"] as RadioButton).CheckedChanged
+            (fileGroupbox.Controls["radioButtonFileASaved"] as RadioButton).CheckedChanged
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileASaved);
-            (splitContainerFile.Panel1.Controls["radioButtonFileBSaved"] as RadioButton).CheckedChanged
+            (fileGroupbox.Controls["radioButtonFileBSaved"] as RadioButton).CheckedChanged
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileBSaved);
-            (splitContainerFile.Panel1.Controls["radioButtonFileCSaved"] as RadioButton).CheckedChanged
+            (fileGroupbox.Controls["radioButtonFileCSaved"] as RadioButton).CheckedChanged
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileCSaved);
-            (splitContainerFile.Panel1.Controls["radioButtonFileDSaved"] as RadioButton).CheckedChanged
+            (fileGroupbox.Controls["radioButtonFileDSaved"] as RadioButton).CheckedChanged
                 += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileDSaved);
 
             _saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
