@@ -311,40 +311,40 @@ namespace SM64_Diagnostic.Managers
                         (specialVar as AngleDataContainer).AngleValue = Math.Acos(normY);
                         goto case "CheckTriangleExistsAngle";
                     case "NormalDistAway":
-                        (specialVar as DataContainer).Text = (marioX * normX + marioY * normY + marioZ * normZ + normOffset).ToString();
+                        (specialVar as DataContainer).Text = Math.Round(marioX * normX + marioY * normY + marioZ * normZ + normOffset, 3).ToString();
                         goto case "CheckTriangleExists";
                     case "VerticalDistAway":
-                        (specialVar as DataContainer).Text = (marioY + (marioX * normX + marioZ * normZ + normOffset) / normY).ToString();
+                        (specialVar as DataContainer).Text = Math.Round(marioY + (marioX * normX + marioZ * normZ + normOffset) / normY, 3).ToString();
                         goto case "CheckTriangleExists";
                     case "HeightOnSlope":
-                        (specialVar as DataContainer).Text = ((-marioX * normX - marioZ * normZ - normOffset) / normY).ToString();
+                        (specialVar as DataContainer).Text = Math.Round((-marioX * normX - marioZ * normZ - normOffset) / normY, 3).ToString();
                         goto case "CheckTriangleExists";
                     case "DistanceToV1":
-                        (specialVar as DataContainer).Text = MoreMath.DistanceTo(marioX, marioY, marioZ, v1X, v1Y, v1Z).ToString();
+                        (specialVar as DataContainer).Text = Math.Round(MoreMath.DistanceTo(marioX, marioY, marioZ, v1X, v1Y, v1Z), 3).ToString();
                         goto case "CheckTriangleExists";
                     case "LateralDistanceToV1":
-                        (specialVar as DataContainer).Text = MoreMath.DistanceTo(marioX, marioZ, v1X, v1Z).ToString();
+                        (specialVar as DataContainer).Text = Math.Round(MoreMath.DistanceTo(marioX, marioZ, v1X, v1Z), 3).ToString();
                         goto case "CheckTriangleExists";
                     case "VerticalDistanceToV1":
-                        (specialVar as DataContainer).Text = (marioY - v1Y).ToString();
+                        (specialVar as DataContainer).Text = Math.Round(marioY - v1Y, 3).ToString();
                         goto case "CheckTriangleExists";
                     case "DistanceToV2":
-                        (specialVar as DataContainer).Text = MoreMath.DistanceTo(marioX, marioY, marioZ, v2X, v2Y, v2Z).ToString();
+                        (specialVar as DataContainer).Text = Math.Round(MoreMath.DistanceTo(marioX, marioY, marioZ, v2X, v2Y, v2Z), 3).ToString();
                         goto case "CheckTriangleExists";
                     case "LateralDistanceToV2":
-                        (specialVar as DataContainer).Text = MoreMath.DistanceTo(marioX, marioZ, v2X, v2Z).ToString();
+                        (specialVar as DataContainer).Text = Math.Round(MoreMath.DistanceTo(marioX, marioZ, v2X, v2Z), 3).ToString();
                         goto case "CheckTriangleExists";
                     case "VerticalDistanceToV2":
-                        (specialVar as DataContainer).Text = (marioY - v2Y).ToString();
+                        (specialVar as DataContainer).Text = Math.Round(marioY - v2Y, 3).ToString();
                         goto case "CheckTriangleExists";
                     case "DistanceToV3":
-                        (specialVar as DataContainer).Text = MoreMath.DistanceTo(marioX, marioY, marioZ, v3X, v3Y, v3Z).ToString();
+                        (specialVar as DataContainer).Text = Math.Round(MoreMath.DistanceTo(marioX, marioY, marioZ, v3X, v3Y, v3Z), 3).ToString();
                         goto case "CheckTriangleExists";
                     case "LateralDistanceToV3":
-                        (specialVar as DataContainer).Text = MoreMath.DistanceTo(marioX, marioZ, v3X, v3Z).ToString();
+                        (specialVar as DataContainer).Text = Math.Round(MoreMath.DistanceTo(marioX, marioZ, v3X, v3Z), 3).ToString();
                         goto case "CheckTriangleExists";
                     case "VerticalDistanceToV3":
-                        (specialVar as DataContainer).Text = (marioY - v3Y).ToString();
+                        (specialVar as DataContainer).Text = Math.Round(marioY - v3Y, 3).ToString();
                         goto case "CheckTriangleExists";
 
                     // Special
