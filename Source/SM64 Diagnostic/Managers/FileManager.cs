@@ -33,44 +33,44 @@ namespace SM64_Diagnostic.Managers
             SplitContainer splitContainerFile = tabControl.Controls["splitContainerFile"] as SplitContainer;
 
             GroupBox fileGroupbox = splitContainerFile.Panel1.Controls["groupBoxFile"] as GroupBox;
-            (fileGroupbox.Controls["radioButtonFileA"] as RadioButton).CheckedChanged
-                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileA);
-            (fileGroupbox.Controls["radioButtonFileB"] as RadioButton).CheckedChanged
-                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileB);
-            (fileGroupbox.Controls["radioButtonFileC"] as RadioButton).CheckedChanged
-                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileC);
-            (fileGroupbox.Controls["radioButtonFileD"] as RadioButton).CheckedChanged
-                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileD);
-            (fileGroupbox.Controls["radioButtonFileASaved"] as RadioButton).CheckedChanged
-                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileASaved);
-            (fileGroupbox.Controls["radioButtonFileBSaved"] as RadioButton).CheckedChanged
-                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileBSaved);
-            (fileGroupbox.Controls["radioButtonFileCSaved"] as RadioButton).CheckedChanged
-                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileCSaved);
-            (fileGroupbox.Controls["radioButtonFileDSaved"] as RadioButton).CheckedChanged
-                += (sender, e) => FileMode_CheckedChanged(sender, e, FileMode.FileDSaved);
+            (fileGroupbox.Controls["radioButtonFileA"] as RadioButton).Click
+                += (sender, e) => FileMode_Click(sender, e, FileMode.FileA);
+            (fileGroupbox.Controls["radioButtonFileB"] as RadioButton).Click
+                += (sender, e) => FileMode_Click(sender, e, FileMode.FileB);
+            (fileGroupbox.Controls["radioButtonFileC"] as RadioButton).Click
+                += (sender, e) => FileMode_Click(sender, e, FileMode.FileC);
+            (fileGroupbox.Controls["radioButtonFileD"] as RadioButton).Click
+                += (sender, e) => FileMode_Click(sender, e, FileMode.FileD);
+            (fileGroupbox.Controls["radioButtonFileASaved"] as RadioButton).Click
+                += (sender, e) => FileMode_Click(sender, e, FileMode.FileASaved);
+            (fileGroupbox.Controls["radioButtonFileBSaved"] as RadioButton).Click
+                += (sender, e) => FileMode_Click(sender, e, FileMode.FileBSaved);
+            (fileGroupbox.Controls["radioButtonFileCSaved"] as RadioButton).Click
+                += (sender, e) => FileMode_Click(sender, e, FileMode.FileCSaved);
+            (fileGroupbox.Controls["radioButtonFileDSaved"] as RadioButton).Click
+                += (sender, e) => FileMode_Click(sender, e, FileMode.FileDSaved);
 
             _saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
             _saveFileButton.Click += FileSaveButton_Click;
 
             GroupBox hatLocationGroupbox = splitContainerFile.Panel1.Controls["groupBoxHatLocation"] as GroupBox;
-            (hatLocationGroupbox.Controls["radioButtonHatLocationMario"] as RadioButton).CheckedChanged
-                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.Mario);
-            (hatLocationGroupbox.Controls["radioButtonHatLocationSSLKlepto"] as RadioButton).CheckedChanged
-                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.SSLKlepto);
-            (hatLocationGroupbox.Controls["radioButtonHatLocationSSLGround"] as RadioButton).CheckedChanged
-                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.SSLGround);
-            (hatLocationGroupbox.Controls["radioButtonHatLocationSLSnowman"] as RadioButton).CheckedChanged
-                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.SLSnowman);
-            (hatLocationGroupbox.Controls["radioButtonHatLocationSLGround"] as RadioButton).CheckedChanged
-                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.SLGround);
-            (hatLocationGroupbox.Controls["radioButtonHatLocationTTMUkiki"] as RadioButton).CheckedChanged
-                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.TTMUkiki);
-            (hatLocationGroupbox.Controls["radioButtonHatLocationTTMGround"] as RadioButton).CheckedChanged
-                += (sender, e) => HatLocation_CheckedChanged(sender, e, HatLocation.TTMGround);
+            (hatLocationGroupbox.Controls["radioButtonHatLocationMario"] as RadioButton).Click
+                += (sender, e) => HatLocation_Click(sender, e, HatLocation.Mario);
+            (hatLocationGroupbox.Controls["radioButtonHatLocationSSLKlepto"] as RadioButton).Click
+                += (sender, e) => HatLocation_Click(sender, e, HatLocation.SSLKlepto);
+            (hatLocationGroupbox.Controls["radioButtonHatLocationSSLGround"] as RadioButton).Click
+                += (sender, e) => HatLocation_Click(sender, e, HatLocation.SSLGround);
+            (hatLocationGroupbox.Controls["radioButtonHatLocationSLSnowman"] as RadioButton).Click
+                += (sender, e) => HatLocation_Click(sender, e, HatLocation.SLSnowman);
+            (hatLocationGroupbox.Controls["radioButtonHatLocationSLGround"] as RadioButton).Click
+                += (sender, e) => HatLocation_Click(sender, e, HatLocation.SLGround);
+            (hatLocationGroupbox.Controls["radioButtonHatLocationTTMUkiki"] as RadioButton).Click
+                += (sender, e) => HatLocation_Click(sender, e, HatLocation.TTMUkiki);
+            (hatLocationGroupbox.Controls["radioButtonHatLocationTTMGround"] as RadioButton).Click
+                += (sender, e) => HatLocation_Click(sender, e, HatLocation.TTMGround);
         }
 
-        private void HatLocation_CheckedChanged(object sender, EventArgs e, HatLocation hatLocation)
+        private void HatLocation_Click(object sender, EventArgs e, HatLocation hatLocation)
         {
             Console.WriteLine(hatLocation);
         }
@@ -151,7 +151,7 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private void FileMode_CheckedChanged(object sender, EventArgs e, FileMode mode)
+        private void FileMode_Click(object sender, EventArgs e, FileMode mode)
         {
             if (_currentFileMode == mode) return;
 
