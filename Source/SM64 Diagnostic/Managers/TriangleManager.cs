@@ -93,14 +93,14 @@ namespace SM64_Diagnostic.Managers
             _useMisalignmentOffsetCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxVertexMisalignment"] as CheckBox;
 
             _addressBox.KeyDown += AddressBox_KeyDown;
-            (splitContainerTriangles.Panel1.Controls["radioButtonTriFloor"] as RadioButton).CheckedChanged 
-                += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Floor);
-            (splitContainerTriangles.Panel1.Controls["radioButtonTriWall"] as RadioButton).CheckedChanged 
-                += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Wall);
-            (splitContainerTriangles.Panel1.Controls["radioButtonTriCeiling"] as RadioButton).CheckedChanged 
-                += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Ceiling);
-            (splitContainerTriangles.Panel1.Controls["radioButtonTriOther"] as RadioButton).CheckedChanged 
-                += (sender, e) => Mode_CheckedChanged(sender, e, TriangleMode.Other);
+            (splitContainerTriangles.Panel1.Controls["radioButtonTriFloor"] as RadioButton).Click 
+                += (sender, e) => Mode_Click(sender, e, TriangleMode.Floor);
+            (splitContainerTriangles.Panel1.Controls["radioButtonTriWall"] as RadioButton).Click
+                += (sender, e) => Mode_Click(sender, e, TriangleMode.Wall);
+            (splitContainerTriangles.Panel1.Controls["radioButtonTriCeiling"] as RadioButton).Click
+                += (sender, e) => Mode_Click(sender, e, TriangleMode.Ceiling);
+            (splitContainerTriangles.Panel1.Controls["radioButtonTriOther"] as RadioButton).Click
+                += (sender, e) => Mode_Click(sender, e, TriangleMode.Other);
 
             (splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label).Click += TriangleSelectionLabel_Click;
 
@@ -372,7 +372,7 @@ namespace SM64_Diagnostic.Managers
             return angle;
         }
 
-        private void Mode_CheckedChanged(object sender, EventArgs e, TriangleMode mode)
+        private void Mode_Click(object sender, EventArgs e, TriangleMode mode)
         {
             if (!(sender as RadioButton).Checked)
                 return;
