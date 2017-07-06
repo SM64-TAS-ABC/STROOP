@@ -70,13 +70,74 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => HatLocation_Click(sender, e, HatLocation.TTMGround);
         }
 
+        private void SetByteMask(bool value, uint address, byte mask)
+        {
+            byte oldByte = _stream.GetByte(address);
+            int newByte = value ? oldByte | mask : oldByte & ~mask;
+            _stream.SetValue((byte)newByte, address);
+        }
+
         private void HatLocation_Click(object sender, EventArgs e, HatLocation hatLocation)
         {
+            switch (hatLocation)
+            {
+                case HatLocation.Mario:
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationGroundOffset, Config.File.HatLocationGroundMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationKleptoOffset, Config.File.HatLocationKleptoMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationSnowmanOffset, Config.File.HatLocationSnowmanMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationUkikiOffset, Config.File.HatLocationUkikiMask);
+                    break;
+
+                case HatLocation.SSLKlepto:
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationGroundOffset, Config.File.HatLocationGroundMask);
+                    SetByteMask(true, _currentFileAddress + Config.File.HatLocationKleptoOffset, Config.File.HatLocationKleptoMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationSnowmanOffset, Config.File.HatLocationSnowmanMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationUkikiOffset, Config.File.HatLocationUkikiMask);
+                    break;
+
+                case HatLocation.SSLGround:
+                    SetByteMask(true, _currentFileAddress + Config.File.HatLocationGroundOffset, Config.File.HatLocationGroundMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationKleptoOffset, Config.File.HatLocationKleptoMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationSnowmanOffset, Config.File.HatLocationSnowmanMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationUkikiOffset, Config.File.HatLocationUkikiMask);
+                    _stream.SetValue(Config.File.HatLocationCourseSSLValue, _currentFileAddress + Config.File.HatLocationCourseOffset);
+                    break;
+
+                case HatLocation.SLSnowman:
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationGroundOffset, Config.File.HatLocationGroundMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationKleptoOffset, Config.File.HatLocationKleptoMask);
+                    SetByteMask(true, _currentFileAddress + Config.File.HatLocationSnowmanOffset, Config.File.HatLocationSnowmanMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationUkikiOffset, Config.File.HatLocationUkikiMask);
+                    break;
+
+                case HatLocation.SLGround:
+                    SetByteMask(true, _currentFileAddress + Config.File.HatLocationGroundOffset, Config.File.HatLocationGroundMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationKleptoOffset, Config.File.HatLocationKleptoMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationSnowmanOffset, Config.File.HatLocationSnowmanMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationUkikiOffset, Config.File.HatLocationUkikiMask);
+                    _stream.SetValue(Config.File.HatLocationCourseSLValue, _currentFileAddress + Config.File.HatLocationCourseOffset);
+                    break;
+
+                case HatLocation.TTMUkiki:
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationGroundOffset, Config.File.HatLocationGroundMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationKleptoOffset, Config.File.HatLocationKleptoMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationSnowmanOffset, Config.File.HatLocationSnowmanMask);
+                    SetByteMask(true, _currentFileAddress + Config.File.HatLocationUkikiOffset, Config.File.HatLocationUkikiMask);
+                    break;
+
+                case HatLocation.TTMGround:
+                    SetByteMask(true, _currentFileAddress + Config.File.HatLocationGroundOffset, Config.File.HatLocationGroundMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationKleptoOffset, Config.File.HatLocationKleptoMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationSnowmanOffset, Config.File.HatLocationSnowmanMask);
+                    SetByteMask(false, _currentFileAddress + Config.File.HatLocationUkikiOffset, Config.File.HatLocationUkikiMask);
+                    _stream.SetValue(Config.File.HatLocationCourseTTMValue, _currentFileAddress + Config.File.HatLocationCourseOffset);
+                    break;
+            }
 
             Console.WriteLine(hatLocation);
         }
 
-            private void FileSaveButton_Click(object sender, EventArgs e)
+        private void FileSaveButton_Click(object sender, EventArgs e)
         {
             // Get the corresponding unsaved file struct address
             uint nonSavedAddress = GetNonSavedFileAddress(_currentFileMode);
