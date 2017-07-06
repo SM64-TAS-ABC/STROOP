@@ -72,6 +72,7 @@ namespace SM64_Diagnostic.Managers
 
         private void HatLocation_Click(object sender, EventArgs e, HatLocation hatLocation)
         {
+
             Console.WriteLine(hatLocation);
         }
 
