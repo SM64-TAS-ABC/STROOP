@@ -15,6 +15,7 @@ namespace SM64_Diagnostic.Managers
     public class FileManager : DataManager
     {
         private enum FileMode { FileA, FileB, FileC, FileD, FileASaved, FileBSaved, FileCSaved, FileDSaved };
+        private enum HatLocation { Mario, SSLKlepto, SSLGround, SLSnowman, SLGround, TTMUkiki, TTMGround };
 
         TabPage _tabControl;
         FileMode _currentFileMode;

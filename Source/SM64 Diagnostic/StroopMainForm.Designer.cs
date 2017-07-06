@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -254,6 +254,14 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.splitContainerFile = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonHatLocationSLGround = new System.Windows.Forms.RadioButton();
+            this.radioButtonHatLocationTTMGround = new System.Windows.Forms.RadioButton();
+            this.radioButtonHatLocationTTMUkiki = new System.Windows.Forms.RadioButton();
+            this.radioButtonHatLocationSSLKlepto = new System.Windows.Forms.RadioButton();
+            this.radioButtonHatLocationMario = new System.Windows.Forms.RadioButton();
+            this.radioButtonHatLocationSLSnowman = new System.Windows.Forms.RadioButton();
+            this.radioButtonHatLocationSSLGround = new System.Windows.Forms.RadioButton();
             this.groupBoxFile = new System.Windows.Forms.GroupBox();
             this.radioButtonFileASaved = new System.Windows.Forms.RadioButton();
             this.radioButtonFileB = new System.Windows.Forms.RadioButton();
@@ -466,14 +474,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -538,6 +538,7 @@ namespace SM64_Diagnostic
             this.splitContainerFile.Panel1.SuspendLayout();
             this.splitContainerFile.Panel2.SuspendLayout();
             this.splitContainerFile.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBoxFile.SuspendLayout();
             this.tabPageMisc.SuspendLayout();
             this.panelMiscBorder.SuspendLayout();
@@ -579,7 +580,6 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -611,7 +611,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 209);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 210);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -699,7 +699,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 162);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 163);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -1652,7 +1652,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(693, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(696, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2170,7 +2170,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(702, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(705, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2295,7 +2295,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(794, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(797, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -2676,7 +2676,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(704, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(707, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3070,7 +3070,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(701, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(704, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3155,7 +3155,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(482, 460);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(485, 460);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3195,6 +3195,94 @@ namespace SM64_Diagnostic
             this.splitContainerFile.SplitterDistance = 245;
             this.splitContainerFile.SplitterWidth = 1;
             this.splitContainerFile.TabIndex = 19;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButtonHatLocationSLGround);
+            this.groupBox1.Controls.Add(this.radioButtonHatLocationTTMGround);
+            this.groupBox1.Controls.Add(this.radioButtonHatLocationTTMUkiki);
+            this.groupBox1.Controls.Add(this.radioButtonHatLocationSSLKlepto);
+            this.groupBox1.Controls.Add(this.radioButtonHatLocationMario);
+            this.groupBox1.Controls.Add(this.radioButtonHatLocationSLSnowman);
+            this.groupBox1.Controls.Add(this.radioButtonHatLocationSSLGround);
+            this.groupBox1.Location = new System.Drawing.Point(32, 201);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(175, 182);
+            this.groupBox1.TabIndex = 38;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Hat Location";
+            // 
+            // radioButtonHatLocationSLGround
+            // 
+            this.radioButtonHatLocationSLGround.AutoSize = true;
+            this.radioButtonHatLocationSLGround.Location = new System.Drawing.Point(11, 111);
+            this.radioButtonHatLocationSLGround.Name = "radioButtonHatLocationSLGround";
+            this.radioButtonHatLocationSLGround.Size = new System.Drawing.Size(122, 17);
+            this.radioButtonHatLocationSLGround.TabIndex = 15;
+            this.radioButtonHatLocationSLGround.Text = "Hat in SL on Ground";
+            this.radioButtonHatLocationSLGround.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonHatLocationTTMGround
+            // 
+            this.radioButtonHatLocationTTMGround.AutoSize = true;
+            this.radioButtonHatLocationTTMGround.Location = new System.Drawing.Point(11, 157);
+            this.radioButtonHatLocationTTMGround.Name = "radioButtonHatLocationTTMGround";
+            this.radioButtonHatLocationTTMGround.Size = new System.Drawing.Size(132, 17);
+            this.radioButtonHatLocationTTMGround.TabIndex = 17;
+            this.radioButtonHatLocationTTMGround.Text = "Hat in TTM on Ground";
+            this.radioButtonHatLocationTTMGround.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonHatLocationTTMUkiki
+            // 
+            this.radioButtonHatLocationTTMUkiki.AutoSize = true;
+            this.radioButtonHatLocationTTMUkiki.Location = new System.Drawing.Point(11, 134);
+            this.radioButtonHatLocationTTMUkiki.Name = "radioButtonHatLocationTTMUkiki";
+            this.radioButtonHatLocationTTMUkiki.Size = new System.Drawing.Size(121, 17);
+            this.radioButtonHatLocationTTMUkiki.TabIndex = 16;
+            this.radioButtonHatLocationTTMUkiki.Text = "Hat in TTM on Ukiki";
+            this.radioButtonHatLocationTTMUkiki.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonHatLocationSSLKlepto
+            // 
+            this.radioButtonHatLocationSSLKlepto.AutoSize = true;
+            this.radioButtonHatLocationSSLKlepto.Location = new System.Drawing.Point(11, 42);
+            this.radioButtonHatLocationSSLKlepto.Name = "radioButtonHatLocationSSLKlepto";
+            this.radioButtonHatLocationSSLKlepto.Size = new System.Drawing.Size(124, 17);
+            this.radioButtonHatLocationSSLKlepto.TabIndex = 12;
+            this.radioButtonHatLocationSSLKlepto.Text = "Hat in SSL on Klepto";
+            this.radioButtonHatLocationSSLKlepto.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonHatLocationMario
+            // 
+            this.radioButtonHatLocationMario.AutoSize = true;
+            this.radioButtonHatLocationMario.Checked = true;
+            this.radioButtonHatLocationMario.Location = new System.Drawing.Point(11, 19);
+            this.radioButtonHatLocationMario.Name = "radioButtonHatLocationMario";
+            this.radioButtonHatLocationMario.Size = new System.Drawing.Size(86, 17);
+            this.radioButtonHatLocationMario.TabIndex = 11;
+            this.radioButtonHatLocationMario.TabStop = true;
+            this.radioButtonHatLocationMario.Text = "Hat on Mario";
+            this.radioButtonHatLocationMario.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonHatLocationSLSnowman
+            // 
+            this.radioButtonHatLocationSLSnowman.AutoSize = true;
+            this.radioButtonHatLocationSLSnowman.Location = new System.Drawing.Point(11, 88);
+            this.radioButtonHatLocationSLSnowman.Name = "radioButtonHatLocationSLSnowman";
+            this.radioButtonHatLocationSLSnowman.Size = new System.Drawing.Size(134, 17);
+            this.radioButtonHatLocationSLSnowman.TabIndex = 14;
+            this.radioButtonHatLocationSLSnowman.Text = "Hat in SL on Snowman";
+            this.radioButtonHatLocationSLSnowman.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonHatLocationSSLGround
+            // 
+            this.radioButtonHatLocationSSLGround.AutoSize = true;
+            this.radioButtonHatLocationSSLGround.Location = new System.Drawing.Point(11, 65);
+            this.radioButtonHatLocationSSLGround.Name = "radioButtonHatLocationSSLGround";
+            this.radioButtonHatLocationSSLGround.Size = new System.Drawing.Size(129, 17);
+            this.radioButtonHatLocationSSLGround.TabIndex = 13;
+            this.radioButtonHatLocationSSLGround.Text = "Hat in SSL on Ground";
+            this.radioButtonHatLocationSSLGround.UseVisualStyleBackColor = true;
             // 
             // groupBoxFile
             // 
@@ -3297,7 +3385,6 @@ namespace SM64_Diagnostic
             // 
             // buttonFileSave
             // 
-            this.buttonFileSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonFileSave.Location = new System.Drawing.Point(32, 152);
             this.buttonFileSave.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileSave.Name = "buttonFileSave";
@@ -3316,7 +3403,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(666, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(669, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -3753,7 +3840,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(695, 430);
+            this.glControlMap.Size = new System.Drawing.Size(698, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -4099,8 +4186,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -4271,7 +4358,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(648, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(651, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -4307,7 +4394,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(494, 422);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(497, 422);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -4370,7 +4457,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(597, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(600, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -5079,7 +5166,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(472, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(475, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -5693,94 +5780,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton5);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Controls.Add(this.radioButton6);
-            this.groupBox1.Controls.Add(this.radioButton7);
-            this.groupBox1.Location = new System.Drawing.Point(32, 201);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(175, 182);
-            this.groupBox1.TabIndex = 38;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Hat Location";
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(11, 42);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(124, 17);
-            this.radioButton2.TabIndex = 12;
-            this.radioButton2.Text = "Hat in SSL on Klepto";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Checked = true;
-            this.radioButton4.Location = new System.Drawing.Point(11, 19);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(86, 17);
-            this.radioButton4.TabIndex = 11;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Hat on Mario";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(11, 88);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(134, 17);
-            this.radioButton6.TabIndex = 14;
-            this.radioButton6.Text = "Hat in SL on Snowman";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(11, 65);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(129, 17);
-            this.radioButton7.TabIndex = 13;
-            this.radioButton7.Text = "Hat in SSL on Ground";
-            this.radioButton7.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(11, 111);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(122, 17);
-            this.radioButton1.TabIndex = 15;
-            this.radioButton1.Text = "Hat in SL on Ground";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(11, 157);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(132, 17);
-            this.radioButton3.TabIndex = 17;
-            this.radioButton3.Text = "Hat in TTM on Ground";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(11, 134);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(121, 17);
-            this.radioButton5.TabIndex = 16;
-            this.radioButton5.Text = "Hat in TTM on Ukiki";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5885,6 +5884,8 @@ namespace SM64_Diagnostic
             this.splitContainerFile.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).EndInit();
             this.splitContainerFile.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBoxFile.ResumeLayout(false);
             this.groupBoxFile.PerformLayout();
             this.tabPageMisc.ResumeLayout(false);
@@ -5945,8 +5946,6 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6387,13 +6386,13 @@ namespace SM64_Diagnostic
         private TextBox textBoxSpawnBehavior;
         private GroupBox groupBoxFile;
         private GroupBox groupBox1;
-        private RadioButton radioButton1;
-        private RadioButton radioButton3;
-        private RadioButton radioButton5;
-        private RadioButton radioButton2;
-        private RadioButton radioButton4;
-        private RadioButton radioButton6;
-        private RadioButton radioButton7;
+        private RadioButton radioButtonHatLocationSLGround;
+        private RadioButton radioButtonHatLocationTTMGround;
+        private RadioButton radioButtonHatLocationTTMUkiki;
+        private RadioButton radioButtonHatLocationSSLKlepto;
+        private RadioButton radioButtonHatLocationMario;
+        private RadioButton radioButtonHatLocationSLSnowman;
+        private RadioButton radioButtonHatLocationSSLGround;
     }
 }
 
