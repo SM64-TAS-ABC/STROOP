@@ -125,7 +125,7 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("MovementX"),
                 new DataContainer("MovementY"),
                 new DataContainer("MovementZ"),
-                new DataContainer("MovementForward"),
+                new DataContainer("MovementForwards"),
                 new DataContainer("MovementSideways"),
                 new DataContainer("MovementLateral"),
                 new DataContainer("MovementTotal"),
