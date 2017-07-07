@@ -25,6 +25,7 @@ namespace SM64_Diagnostic.Structs.Configurations
 
         public uint HatLocationModeOffset;
         public byte HatLocationModeMask;
+        public byte HatLocationMarioMask;
         public byte HatLocationGroundMask;
         public byte HatLocationKleptoMask;
         public byte HatLocationUkikiMask;

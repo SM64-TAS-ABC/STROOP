@@ -96,7 +96,7 @@ namespace SM64_Diagnostic.Managers
             switch (hatLocation)
             {
                 case HatLocation.Mario:
-                    SetHatMode(0);
+                    SetHatMode(Config.File.HatLocationMarioMask);
                     break;
 
                 case HatLocation.SSLKlepto:
@@ -226,7 +226,7 @@ namespace SM64_Diagnostic.Managers
             ushort hatLocationCourse = _stream.GetUInt16(_currentFileAddress + Config.File.HatLocationCourseOffset);
             byte hatLocationMode = (byte)(_stream.GetByte(_currentFileAddress + Config.File.HatLocationModeOffset) & Config.File.HatLocationModeMask);
 
-            return hatLocationMode == 0 ? HatLocation.Mario :
+            return hatLocationMode == Config.File.HatLocationMarioMask ? HatLocation.Mario :
                    hatLocationMode == Config.File.HatLocationKleptoMask ? HatLocation.SSLKlepto :
                    hatLocationMode == Config.File.HatLocationSnowmanMask ? HatLocation.SLSnowman :
                    hatLocationMode == Config.File.HatLocationUkikiMask ? HatLocation.TTMUkiki :

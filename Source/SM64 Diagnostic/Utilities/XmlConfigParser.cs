@@ -690,6 +690,10 @@ namespace SM64_Diagnostic.Utilities
                                     Config.File.HatLocationModeMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
+                                case "HatLocationMarioMask":
+                                    Config.File.HatLocationMarioMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
                                 case "HatLocationGroundMask":
                                     Config.File.HatLocationGroundMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;

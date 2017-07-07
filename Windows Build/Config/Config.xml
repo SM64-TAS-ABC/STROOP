@@ -199,6 +199,7 @@
 
     <HatLocationModeOffset>0x09</HatLocationModeOffset>
     <HatLocationModeMask>0x0F</HatLocationModeMask>
+    <HatLocationMarioMask>0x00</HatLocationMarioMask>
     <HatLocationGroundMask>0x01</HatLocationGroundMask>
     <HatLocationKleptoMask>0x02</HatLocationKleptoMask>
     <HatLocationUkikiMask>0x04</HatLocationUkikiMask>
