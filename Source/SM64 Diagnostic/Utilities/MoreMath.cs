@@ -25,7 +25,7 @@ namespace SM64_Diagnostic.Utilities
             return Math.Sqrt(dx * dx + dz * dz);
         }
 
-        public static (double xDist, double zDist) GetVector(double magnitude, double angle)
+        public static (double xDist, double zDist) GetComponentsFromVector(double magnitude, double angle)
         {
             double radians = AngleUnitsToRadians(angle);
             double xComponent = Math.Sin(radians);
@@ -33,23 +33,42 @@ namespace SM64_Diagnostic.Utilities
             return (magnitude * xComponent, magnitude * zComponent);
         }
 
-        public static ushort FormatAngle(double angle)
+        public static (double sidewaysDist, double forwardsDist) GetComponentsFromVectorRelatively(double magnitude, double vectorAngle, double baseAngle)
         {
-            double nonNegative = NonnegativeModulus(angle, 65536);
+            double rotatedAngle = FormatAngleDouble(vectorAngle - baseAngle);
+            (double xComponent, double zComponent) = GetComponentsFromVector(magnitude, rotatedAngle);
+            return (-1 * xComponent, zComponent);
+        }
+
+        public static (double magnitude, double angle) GetVectorFromComponents(double xDist, double zDist)
+        {
+            double magnitude = Math.Sqrt(xDist * xDist + zDist * zDist);
+            double angle = AngleTo_AngleUnits(0, 0, xDist, zDist);
+            return (magnitude, angle);
+        }
+
+        public static ushort FormatAngleUshort(double angle)
+        {
+            double nonNegative = NonNegativeModulus(angle, 65536);
             return (ushort)(Math.Round(nonNegative) % 65536);
         }
 
-        public static double AngleTo_Radians(float xFrom, float zFrom, float xTo, float zTo)
+        public static double FormatAngleDouble(double angle)
+        {
+            return NonNegativeModulus(angle, 65536);
+        }
+
+        public static double AngleTo_Radians(double xFrom, double zFrom, double xTo, double zTo)
         {
             return Math.Atan2(xTo - xFrom, zTo - zFrom);
         }
 
-        public static double AngleTo_AngleUnits(float xFrom, float zFrom, float xTo, float zTo)
+        public static double AngleTo_AngleUnits(double xFrom, double zFrom, double xTo, double zTo)
         {
             return RadiansToAngleUnits(AngleTo_Radians(xFrom, zFrom, xTo, zTo));
         }
 
-        public static ushort AngleTo_AngleUnitsRounded(float xFrom, float zFrom, float xTo, float zTo)
+        public static ushort AngleTo_AngleUnitsRounded(double xFrom, double zFrom, double xTo, double zTo)
         {
             return RadiansToAngleUnitsRounded(AngleTo_Radians(xFrom, zFrom, xTo, zTo));
         }
@@ -125,20 +144,20 @@ namespace SM64_Diagnostic.Utilities
         public static double RadiansToAngleUnits(double radians)
         {
             double angleUnits = radians / (2 * Math.PI) * 65536;
-            return NonnegativeModulus(angleUnits, 65536);
+            return NonNegativeModulus(angleUnits, 65536);
         }
 
         public static ushort RadiansToAngleUnitsRounded(double radians)
         {
             double angleUnits = radians / (2 * Math.PI) * 65536;
-            double nonNegative = NonnegativeModulus(angleUnits, 65536);
+            double nonNegative = NonNegativeModulus(angleUnits, 65536);
             return (ushort)(Math.Round(nonNegative) % 65536);
         }
 
         public static double AngleUnitsToRadians(double angleUnits)
         {
             double radians = angleUnits / 65536 * (2 * Math.PI);
-            return NonnegativeModulus(radians, 2 * Math.PI);
+            return NonNegativeModulus(radians, 2 * Math.PI);
         }
 
         public static (double x, double y, double z) OffsetSpherically(
@@ -148,7 +167,7 @@ namespace SM64_Diagnostic.Utilities
             (oldRadius, oldTheta, oldPhi) = EulerToSpherical_AngleUnits(x, y, z);
 
             double newRadius = Math.Max(oldRadius + radiusChange, 0);
-            double newTheta = NonnegativeModulus(oldTheta + thetaChangeAngleUnits, 65536);
+            double newTheta = NonNegativeModulus(oldTheta + thetaChangeAngleUnits, 65536);
             double newPhi = OffsetAngleUnitsCappedAt32768(oldPhi, phiChangeAngleUnits);
 
             return SphericalToEuler_AngleUnits(newRadius, newTheta, newPhi);
@@ -171,24 +190,39 @@ namespace SM64_Diagnostic.Utilities
 
         public static double OffsetAngleUnitsCapped(double angleUnits, double change)
         {
-            angleUnits = NonnegativeModulus(angleUnits, 65536);
+            angleUnits = NonNegativeModulus(angleUnits, 65536);
             angleUnits = Clamp(angleUnits + change, 0, 65536);
-            angleUnits = NonnegativeModulus(angleUnits, 65536);
+            angleUnits = NonNegativeModulus(angleUnits, 65536);
             return angleUnits;
         }
 
         public static double OffsetAngleUnitsCappedAt32768(double angleUnits, double change)
         {
-            angleUnits = NonnegativeModulus(angleUnits, 65536);
+            angleUnits = NonNegativeModulus(angleUnits, 65536);
             angleUnits = Clamp(angleUnits + change, 0, 32768);
             return angleUnits;
         }
 
-        public static double NonnegativeModulus(double value, double modulus)
+        /** Gets the value in [0, modulus). */
+        public static double NonNegativeModulus(double value, double modulus)
         {
             value %= modulus;
             if (value < 0) value += modulus;
             return value;
+        }
+
+        /** Gets the value in [-modulus/2, modulus/2). */
+        public static double MaybeNegativeModulus(double value, double modulus)
+        {
+            value %= modulus;
+            if (value < 0) value += modulus;
+            if (value >= modulus / 2) value -= modulus;
+            return value;
+        }
+
+        public static double GetAngleDifference(double angle1, double angle2)
+        {
+            return MaybeNegativeModulus(angle2 - angle1, 32768);
         }
 
         public static double Clamp(double value, double min, double max)

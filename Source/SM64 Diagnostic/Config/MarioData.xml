@@ -19,6 +19,7 @@
   <Data special="true" specialType="MovementSideways">Delta Sideways</Data>
   <Data special="true" specialType="MovementLateral">Delta Lateral</Data>
   <Data special="true" specialType="MovementTotal">Delta Total</Data>
+  <Data special="true" specialType="MovementAngle">Delta Angle</Data>
   <Data special="true" specialType="QFrameCountEstimate">QFrames Est.</Data>
   <Data type="ushort" address="0x00C26C1C" absoluteAddress="true" isAngle="true">Yaw (Facing)</Data>
   <Data type="ushort" address="0x00C26C16" absoluteAddress="true" isAngle="true">Yaw (Intended)</Data>

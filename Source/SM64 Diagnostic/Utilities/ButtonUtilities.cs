@@ -141,7 +141,7 @@ namespace SM64_Diagnostic.Utilities
             ushort marioYaw = stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
 
             double xOffset, zOffset;
-            (xOffset, zOffset) = MoreMath.GetVector(-1 * gotoInfront, marioYaw);
+            (xOffset, zOffset) = MoreMath.GetComponentsFromVector(-1 * gotoInfront, marioYaw);
 
             xPos += (float)xOffset;
             yPos += gotoAbove;
@@ -155,7 +155,7 @@ namespace SM64_Diagnostic.Utilities
             ushort marioYaw = stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
 
             double xOffset, zOffset;
-            (xOffset, zOffset) = MoreMath.GetVector(retrieveInfront, marioYaw);
+            (xOffset, zOffset) = MoreMath.GetComponentsFromVector(retrieveInfront, marioYaw);
 
             xPos += (float)xOffset;
             yPos += retrieveAbove;
@@ -993,7 +993,7 @@ namespace SM64_Diagnostic.Utilities
                     stream.Suspend();
 
                     success &= stream.SetValue((float)radius, Config.CameraHack.CameraHackStruct + Config.CameraHack.RadiusOffset);
-                    success &= stream.SetValue(MoreMath.FormatAngle(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
+                    success &= stream.SetValue(MoreMath.FormatAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
                     success &= stream.SetValue((float)height, Config.CameraHack.CameraHackStruct + Config.CameraHack.RelativeHeightOffset);
 
                     stream.Resume();
@@ -1085,7 +1085,7 @@ namespace SM64_Diagnostic.Utilities
                     stream.Suspend();
 
                     success &= stream.SetValue((float)radius, Config.CameraHack.CameraHackStruct + Config.CameraHack.RadiusOffset);
-                    success &= stream.SetValue(MoreMath.FormatAngle(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
+                    success &= stream.SetValue(MoreMath.FormatAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
                     success &= stream.SetValue((float)height, Config.CameraHack.CameraHackStruct + Config.CameraHack.RelativeHeightOffset);
 
                     stream.Resume();
