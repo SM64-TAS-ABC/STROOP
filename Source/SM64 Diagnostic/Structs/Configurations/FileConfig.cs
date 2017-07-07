@@ -23,13 +23,11 @@ namespace SM64_Diagnostic.Structs.Configurations
         public ushort ChecksumConstantValue;
         public uint ChecksumOffset;
 
-        public uint HatLocationGroundOffset;
+        public uint HatLocationModeOffset;
+        public byte HatLocationModeMask;
         public byte HatLocationGroundMask;
-        public uint HatLocationKleptoOffset;
         public byte HatLocationKleptoMask;
-        public uint HatLocationUkikiOffset;
         public byte HatLocationUkikiMask;
-        public uint HatLocationSnowmanOffset;
         public byte HatLocationSnowmanMask;
         public uint HatLocationCourseOffset;
         public ushort HatLocationCourseSSLValue;

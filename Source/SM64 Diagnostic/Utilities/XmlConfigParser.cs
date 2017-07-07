@@ -682,36 +682,28 @@ namespace SM64_Diagnostic.Utilities
                                     Config.File.ChecksumOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "HatLocationGroundOffset":
-                                    Config.File.HatLocationGroundOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                case "HatLocationModeOffset":
+                                    Config.File.HatLocationModeOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "HatLocationModeMask":
+                                    Config.File.HatLocationModeMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "HatLocationGroundMask":
                                     Config.File.HatLocationGroundMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "HatLocationKleptoOffset":
-                                    Config.File.HatLocationKleptoOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
                                 case "HatLocationKleptoMask":
                                     Config.File.HatLocationKleptoMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "HatLocationUkikiOffset":
-                                    Config.File.HatLocationUkikiOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                case "HatLocationSnowmanMask":
+                                    Config.File.HatLocationSnowmanMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "HatLocationUkikiMask":
                                     Config.File.HatLocationUkikiMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "HatLocationSnowmanOffset":
-                                    Config.File.HatLocationSnowmanOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "HatLocationSnowmanMask":
-                                    Config.File.HatLocationSnowmanMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "HatLocationCourseOffset":

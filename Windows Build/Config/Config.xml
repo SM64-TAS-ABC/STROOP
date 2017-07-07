@@ -197,17 +197,15 @@
     <ChecksumConstantValue>0x4441</ChecksumConstantValue>
     <ChecksumOffset>0x36</ChecksumOffset>
 
-    <HatLocationGroundOffset>0x09</HatLocationGroundOffset>
+    <HatLocationModeOffset>0x09</HatLocationModeOffset>
+    <HatLocationModeMask>0x0F</HatLocationModeMask>
     <HatLocationGroundMask>0x01</HatLocationGroundMask>
-    <HatLocationKleptoOffset>0x09</HatLocationKleptoOffset>
     <HatLocationKleptoMask>0x02</HatLocationKleptoMask>
-    <HatLocationUkikiOffset>0x09</HatLocationUkikiOffset>
     <HatLocationUkikiMask>0x04</HatLocationUkikiMask>
-    <HatLocationSnowmanOffset>0x09</HatLocationSnowmanOffset>
     <HatLocationSnowmanMask>0x08</HatLocationSnowmanMask>
 
-    <HatLocationCourseOffset>0x02</HatLocationCourseOffset>
-    <HatLocationCourseSSLValue>0x0969</HatLocationCourseSSLValue>
+    <HatLocationCourseOffset>0x00</HatLocationCourseOffset>
+    <HatLocationCourseSSLValue>0x0801</HatLocationCourseSSLValue>
     <HatLocationCourseSLValue>0x0A01</HatLocationCourseSLValue>
     <HatLocationCourseTTMValue>0x2401</HatLocationCourseTTMValue>
 
