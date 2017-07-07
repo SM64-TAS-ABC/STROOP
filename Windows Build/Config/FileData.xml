@@ -82,7 +82,7 @@
   <Data type="byte" address="0x09" fileOffset="true" isBool="true" mask="0x02" color="#ffcccc">Hat on Klepto</Data>
   <Data type="byte" address="0x09" fileOffset="true" isBool="true" mask="0x08" color="#ffcccc">Hat on Snowman</Data>
   <Data type="byte" address="0x09" fileOffset="true" isBool="true" mask="0x04" color="#ffcccc">Hat on Ukiki</Data>
-  <Data type="ushort" address="0x00" fileOffset="true" color="#ffcccc">Hat Course (SL=2561,TTM=9217,SSL=2049)</Data>
+  <Data type="ushort" address="0x00" fileOffset="true" color="#ffcccc">Hat Course (SSL=2049,SL=2561,TTM=9217)</Data>
   <Data type="short" address="0x02" fileOffset="true" color="#ffcccc">Hat X</Data>
   <Data type="short" address="0x04" fileOffset="true" color="#ffcccc">Hat Y</Data>
   <Data type="short" address="0x06" fileOffset="true" color="#ffcccc">Hat Z</Data>
