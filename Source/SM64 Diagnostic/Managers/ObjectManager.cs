@@ -238,8 +238,8 @@ namespace SM64_Diagnostic.Managers
             var retrieveHomeButton = objPanel.Controls["buttonObjRetrieveHome"] as Button;
             retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_stream, _currentAddresses);
 
-            var debilitateButton = objPanel.Controls["buttonObjDebilitate"] as Button;
-            debilitateButton.Click += (sender, e) => ButtonUtilities.DebilitateObject(_stream, _currentAddresses);
+            var releaseButton = objPanel.Controls["buttonObjRelease"] as Button;
+            releaseButton.Click += (sender, e) => ButtonUtilities.ReleaseObject(_stream, _currentAddresses);
 
             var interactButton = objPanel.Controls["buttonObjInteract"] as Button;
             interactButton.Click += (sender, e) => ButtonUtilities.InteractObject(_stream, _currentAddresses);
@@ -622,7 +622,7 @@ namespace SM64_Diagnostic.Managers
             // Determine which object is being held
             uint heldObj = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.HeldObjectPointerOffset);
 
-            // Change to unclone if we are already held the object
+            // Change to unclone if we are already holding the object
             if ((_currentAddresses.Contains(heldObj)) != _unclone)
             {
                 _unclone = !_unclone;

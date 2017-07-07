@@ -404,7 +404,7 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool DebilitateObject(ProcessStream stream, List<uint> addresses)
+        public static bool ReleaseObject(ProcessStream stream, List<uint> addresses)
         {
             if (addresses.Count == 0)
                 return false;

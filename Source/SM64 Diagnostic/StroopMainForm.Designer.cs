@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -50,7 +50,7 @@ namespace SM64_Diagnostic
             this.tabPageObjects = new System.Windows.Forms.TabPage();
             this.splitContainerObject = new System.Windows.Forms.SplitContainer();
             this.panelObj = new System.Windows.Forms.Panel();
-            this.buttonObjDebilitate = new System.Windows.Forms.Button();
+            this.buttonObjRelease = new System.Windows.Forms.Button();
             this.buttonObjInteract = new System.Windows.Forms.Button();
             this.groupBoxObjHome = new System.Windows.Forms.GroupBox();
             this.checkBoxObjHomeRelative = new System.Windows.Forms.CheckBox();
@@ -837,7 +837,7 @@ namespace SM64_Diagnostic
             this.panelObj.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panelObj.AutoScroll = true;
-            this.panelObj.Controls.Add(this.buttonObjDebilitate);
+            this.panelObj.Controls.Add(this.buttonObjRelease);
             this.panelObj.Controls.Add(this.buttonObjInteract);
             this.panelObj.Controls.Add(this.groupBoxObjHome);
             this.panelObj.Controls.Add(this.groupBoxObjScale);
@@ -854,15 +854,15 @@ namespace SM64_Diagnostic
             this.panelObj.Size = new System.Drawing.Size(211, 370);
             this.panelObj.TabIndex = 19;
             // 
-            // buttonObjDebilitate
+            // buttonObjRelease
             // 
-            this.buttonObjDebilitate.Location = new System.Drawing.Point(2, 53);
-            this.buttonObjDebilitate.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonObjDebilitate.Name = "buttonObjDebilitate";
-            this.buttonObjDebilitate.Size = new System.Drawing.Size(91, 21);
-            this.buttonObjDebilitate.TabIndex = 38;
-            this.buttonObjDebilitate.Text = "Debilitate";
-            this.buttonObjDebilitate.UseVisualStyleBackColor = true;
+            this.buttonObjRelease.Location = new System.Drawing.Point(2, 53);
+            this.buttonObjRelease.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonObjRelease.Name = "buttonObjRelease";
+            this.buttonObjRelease.Size = new System.Drawing.Size(91, 21);
+            this.buttonObjRelease.TabIndex = 38;
+            this.buttonObjRelease.Text = "Release";
+            this.buttonObjRelease.UseVisualStyleBackColor = true;
             // 
             // buttonObjInteract
             // 
@@ -4186,8 +4186,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -6168,7 +6168,7 @@ namespace SM64_Diagnostic
         private Button buttonObjHomeXnZp;
         private Button buttonObjHomeXn;
         private Button buttonObjHomeXnZn;
-        private Button buttonObjDebilitate;
+        private Button buttonObjRelease;
         private Button buttonObjInteract;
         private GroupBox groupBoxMarioPos;
         private TextBox textBoxMarioPosY;
