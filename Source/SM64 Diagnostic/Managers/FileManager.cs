@@ -23,6 +23,16 @@ namespace SM64_Diagnostic.Managers
 
         Button _saveFileButton;
 
+        RadioButton _hatLocationMarioRadioButton;
+        RadioButton _hatLocationSSLKleptoRadioButton;
+        RadioButton _hatLocationSSLGroundRadioButton;
+        RadioButton _hatLocationSLSnowmanRadioButton;
+        RadioButton _hatLocationSLGroundRadioButton;
+        RadioButton _hatLocationTTMUkikiRadioButton;
+        RadioButton _hatLocationTTMGroundRadioButton;
+
+        HatLocation? _currentHatLocation;
+
         public FileManager(ProcessStream stream, List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile)
             : base(stream, fileData, noTearFlowLayoutPanelFile, Config.File.FileAAddress)
         {
@@ -54,20 +64,24 @@ namespace SM64_Diagnostic.Managers
             _saveFileButton.Click += FileSaveButton_Click;
 
             GroupBox hatLocationGroupbox = splitContainerFile.Panel1.Controls["groupBoxHatLocation"] as GroupBox;
-            (hatLocationGroupbox.Controls["radioButtonHatLocationMario"] as RadioButton).Click
-                += (sender, e) => HatLocation_Click(sender, e, HatLocation.Mario);
-            (hatLocationGroupbox.Controls["radioButtonHatLocationSSLKlepto"] as RadioButton).Click
-                += (sender, e) => HatLocation_Click(sender, e, HatLocation.SSLKlepto);
-            (hatLocationGroupbox.Controls["radioButtonHatLocationSSLGround"] as RadioButton).Click
-                += (sender, e) => HatLocation_Click(sender, e, HatLocation.SSLGround);
-            (hatLocationGroupbox.Controls["radioButtonHatLocationSLSnowman"] as RadioButton).Click
-                += (sender, e) => HatLocation_Click(sender, e, HatLocation.SLSnowman);
-            (hatLocationGroupbox.Controls["radioButtonHatLocationSLGround"] as RadioButton).Click
-                += (sender, e) => HatLocation_Click(sender, e, HatLocation.SLGround);
-            (hatLocationGroupbox.Controls["radioButtonHatLocationTTMUkiki"] as RadioButton).Click
-                += (sender, e) => HatLocation_Click(sender, e, HatLocation.TTMUkiki);
-            (hatLocationGroupbox.Controls["radioButtonHatLocationTTMGround"] as RadioButton).Click
-                += (sender, e) => HatLocation_Click(sender, e, HatLocation.TTMGround);
+
+            _hatLocationMarioRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationMario"] as RadioButton;
+            _hatLocationSSLKleptoRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationSSLKlepto"] as RadioButton;
+            _hatLocationSSLGroundRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationSSLGround"] as RadioButton;
+            _hatLocationSLSnowmanRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationSLSnowman"] as RadioButton;
+            _hatLocationSLGroundRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationSLGround"] as RadioButton;
+            _hatLocationTTMUkikiRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationTTMUkiki"] as RadioButton;
+            _hatLocationTTMGroundRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationTTMGround"] as RadioButton;
+
+            _hatLocationMarioRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.Mario);
+            _hatLocationSSLKleptoRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.SSLKlepto);
+            _hatLocationSSLGroundRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.SSLGround);
+            _hatLocationSLSnowmanRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.SLSnowman);
+            _hatLocationSLGroundRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.SLGround);
+            _hatLocationTTMUkikiRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.TTMUkiki);
+            _hatLocationTTMGroundRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.TTMGround);
+
+            _currentHatLocation = getCurrentHatLocation();
         }
 
         private void SetHatMode(byte hatModeByte)
@@ -112,8 +126,6 @@ namespace SM64_Diagnostic.Managers
                     _stream.SetValue(Config.File.HatLocationCourseTTMValue, _currentFileAddress + Config.File.HatLocationCourseOffset);
                     break;
             }
-
-            Console.WriteLine(hatLocation);
         }
 
         private void FileSaveButton_Click(object sender, EventArgs e)
@@ -207,6 +219,38 @@ namespace SM64_Diagnostic.Managers
                     watchVar.OtherOffsets = new List<uint>() { _currentFileAddress };
                 }
             }
+        }
+
+        private HatLocation? getCurrentHatLocation()
+        {
+            ushort hatLocationCourse = _stream.GetUInt16(_currentFileAddress + Config.File.HatLocationCourseOffset);
+            byte hatLocationMode = (byte)(_stream.GetByte(_currentFileAddress + Config.File.HatLocationModeOffset) & Config.File.HatLocationModeMask);
+
+            return hatLocationMode == 0 ? HatLocation.Mario :
+                   hatLocationMode == Config.File.HatLocationKleptoMask ? HatLocation.SSLKlepto :
+                   hatLocationMode == Config.File.HatLocationSnowmanMask ? HatLocation.SLSnowman :
+                   hatLocationMode == Config.File.HatLocationUkikiMask ? HatLocation.TTMUkiki :
+                   hatLocationMode == Config.File.HatLocationGroundMask ?
+                       (hatLocationCourse == Config.File.HatLocationCourseSSLValue ? HatLocation.SSLGround :
+                        hatLocationCourse == Config.File.HatLocationCourseSLValue ? HatLocation.SLGround :
+                        hatLocationCourse == Config.File.HatLocationCourseTTMValue ? HatLocation.TTMGround :
+                        (HatLocation?)null) :
+                   null;
+        }
+
+        public override void Update(bool updateView)
+        {
+            _currentHatLocation = getCurrentHatLocation();
+             
+            _hatLocationMarioRadioButton.Checked = _currentHatLocation == HatLocation.Mario;
+            _hatLocationSSLKleptoRadioButton.Checked = _currentHatLocation == HatLocation.SSLKlepto;
+            _hatLocationSSLGroundRadioButton.Checked = _currentHatLocation == HatLocation.SSLGround;
+            _hatLocationSLSnowmanRadioButton.Checked = _currentHatLocation == HatLocation.SLSnowman;
+            _hatLocationSLGroundRadioButton.Checked = _currentHatLocation == HatLocation.SLGround;
+            _hatLocationTTMUkikiRadioButton.Checked = _currentHatLocation == HatLocation.TTMUkiki;
+            _hatLocationTTMGroundRadioButton.Checked = _currentHatLocation == HatLocation.TTMGround;
+
+            base.Update(updateView);
         }
     }
 }
