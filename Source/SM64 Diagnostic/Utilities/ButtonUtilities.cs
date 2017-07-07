@@ -413,7 +413,7 @@ namespace SM64_Diagnostic.Utilities
             stream.Suspend();
             foreach (var address in addresses)
             {
-                success &= stream.SetValue(0x800EE5F8, address + Config.ObjectSlots.ReleaseStatusOffset);
+                success &= stream.SetValue(Config.ObjectSlots.ReleaseStatusReleasedValue, address + Config.ObjectSlots.ReleaseStatusOffset);
             }
             stream.Resume();
             return success;

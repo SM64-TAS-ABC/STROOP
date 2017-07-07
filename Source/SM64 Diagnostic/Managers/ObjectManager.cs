@@ -25,11 +25,16 @@ namespace SM64_Diagnostic.Managers
         string _slotIndex;
         string _slotPos;
         string _behavior;
+        bool _unrelease = false;
+        bool _uninteract = false;
         bool _unclone = false;
         bool _revive = false;
 
+        Button _releaseButton;
+        Button _interactButton;
         Button _cloneButton;
         Button _unloadButton;
+
         Label _objAddressLabelValue;
         Label _objAddressLabel;
         Label _objSlotIndexLabel;
@@ -238,11 +243,11 @@ namespace SM64_Diagnostic.Managers
             var retrieveHomeButton = objPanel.Controls["buttonObjRetrieveHome"] as Button;
             retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_stream, _currentAddresses);
 
-            var releaseButton = objPanel.Controls["buttonObjRelease"] as Button;
-            releaseButton.Click += (sender, e) => ButtonUtilities.ReleaseObject(_stream, _currentAddresses);
+            _releaseButton = objPanel.Controls["buttonObjRelease"] as Button;
+            _releaseButton.Click += (sender, e) => ButtonUtilities.ReleaseObject(_stream, _currentAddresses);
 
-            var interactButton = objPanel.Controls["buttonObjInteract"] as Button;
-            interactButton.Click += (sender, e) => ButtonUtilities.InteractObject(_stream, _currentAddresses);
+            _interactButton = objPanel.Controls["buttonObjInteract"] as Button;
+            _interactButton.Click += (sender, e) => ButtonUtilities.InteractObject(_stream, _currentAddresses);
 
             _cloneButton = objPanel.Controls["buttonObjClone"] as Button;
             _cloneButton.Click += (sender, e) =>
@@ -632,13 +637,33 @@ namespace SM64_Diagnostic.Managers
             }
 
             // Determine load or unload
-            bool anyActive = _currentAddresses.Any(address => _stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset) != 0x0000);
-            if (anyActive == _revive)
+            bool revive = _currentAddresses.All(address => _stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset) == 0x0000);
+            if (_revive != revive)
             {
-                _revive = !anyActive;
+                _revive = revive;
 
                 // Update button text
                 _unloadButton.Text = _revive ? "Revive" : "Unload";
+            }
+
+            // Determine release or unrelease
+            bool unrelease = _currentAddresses.All(address => _stream.GetUInt32(address + Config.ObjectSlots.ReleaseStatusOffset) == Config.ObjectSlots.ReleaseStatusReleasedValue);
+            if (_unrelease != unrelease)
+            {
+                _unrelease = unrelease;
+
+                // Update button text
+                _releaseButton.Text = _unrelease ? "UnRelease" : "Release";
+            }
+
+            // Determine interact or uninteract
+            bool uninteract = _currentAddresses.All(address => _stream.GetUInt32(address + Config.ObjectSlots.InteractionStatusOffset) != 0);
+            if (_uninteract != uninteract)
+            {
+                _uninteract = uninteract;
+
+                // Update button text
+                _interactButton.Text = _uninteract ? "UnInteract" : "Interact";
             }
 
             base.Update(updateView);

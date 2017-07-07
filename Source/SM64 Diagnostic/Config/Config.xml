@@ -38,6 +38,7 @@
     <ScaleHeightOffset>0x30</ScaleHeightOffset>
     <ScaleDepthOffset>0x34</ScaleDepthOffset>
     <ReleaseStatusOffset>0x1CC</ReleaseStatusOffset>
+    <ReleaseStatusReleasedValue>0x800EE5F8</ReleaseStatusReleasedValue>
     <InteractionStatusOffset>0x134</InteractionStatusOffset>
     <PendulumAccelerationDirection>0xF4</PendulumAccelerationDirection>
     <PendulumAccelerationMagnitude>0x100</PendulumAccelerationMagnitude>
