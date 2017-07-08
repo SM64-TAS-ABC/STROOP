@@ -1069,6 +1069,11 @@ namespace SM64_Diagnostic.Utilities
                             mapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                             rotates = bool.Parse(element.Element(XName.Get("MapImage")).Attribute(XName.Get("rotates")).Value);
                         }
+                        uint? releaseStatus = null;
+                        if (element.Element(XName.Get("Cloning")) != null)
+                        {
+                            releaseStatus = ParsingUtilities.ParseHex(element.Element(XName.Get("Cloning")).Attribute(XName.Get("releaseStatus")).Value);
+                        }
                         var watchVars = new List<WatchVariable>();
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
                         {
@@ -1092,7 +1097,8 @@ namespace SM64_Diagnostic.Utilities
                             MapImagePath = mapImagePath,
                             Name = name,
                             RotatesOnMap = rotates,
-                            WatchVariables  = watchVars
+                            WatchVariables = watchVars,
+                            ReleaseStatus = releaseStatus
                         };
 
                         if (!assoc.AddAssociation(newBehavior))
