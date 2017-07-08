@@ -36,6 +36,7 @@ namespace SM64_Diagnostic
             this.Click += ClickAction;
             this.MouseEnter += (s, e) => this.Cursor = Cursors.Hand;
             this.MouseLeave += (s, e) => this.Cursor = Cursors.Arrow;
+            UpdateImage(true);
         }
 
         private void SetValue(bool boolValue)
@@ -73,12 +74,12 @@ namespace SM64_Diagnostic
             SetValue(newValue);
         }
 
-        public void UpdateImage()
+        public void UpdateImage(bool force = false)
         {
             if (_gui == null) return;
 
             byte value = GetValue();
-            if (_currentValue != value)
+            if (_currentValue != value || force)
             {
                 this.Image = GetImageForValue(value);
                 _currentValue = value;
