@@ -18,35 +18,44 @@ namespace SM64_Diagnostic
     {
         ProcessStream _stream;
         FileImageGui _gui;
-        uint _address;
+        uint _addressOffset;
         byte _mask;
         byte _currentValue;
 
         public FilePictureBox()
         {
         }
-                    
-        public void Initialize(ProcessStream stream, FileImageGui gui, uint address, byte mask)
+
+        public void Initialize(ProcessStream stream, FileImageGui gui, uint addressOffset, byte mask)
         {
             _stream = stream;
             _gui = gui;
-            _address = address;
+            _addressOffset = addressOffset;
             _mask = mask;
             _currentValue = GetValue();
+            this.Click += ClickAction;
+        }
+
+        private void SetValue(bool boolValue)
+        {
+            if (boolValue)
+                SetValue((byte)0xFF);
+            else
+                SetValue((byte)0x00);
         }
 
         private void SetValue(byte value)
         {
             byte maskedValue = (byte)(value & _mask);
-            byte oldByte = _stream.GetByte(_address);
+            byte oldByte = _stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
             byte unmaskedOldByte = (byte)(oldByte & ~_mask);
             byte newByte = (byte)(unmaskedOldByte | maskedValue);
-            _stream.SetValue(newByte, _address);
+            _stream.SetValue(newByte, FileManager.Instance.CurrentFileAddress + _addressOffset);
         }
 
         private byte GetValue()
         {
-            byte currentByte = _stream.GetByte(_address);
+            byte currentByte = _stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
             byte maskedCurrentByte = (byte)(currentByte & _mask);
             return maskedCurrentByte;
         }
@@ -59,8 +68,22 @@ namespace SM64_Diagnostic
                 return _gui.PowerStarImage;
         }
 
+        protected byte GetNewValueForValue(byte oldValue)
+        {
+            return oldValue == 0 ? _mask : (byte)0;
+        }
+
+        private void ClickAction(object sender, EventArgs e)
+        {
+            byte oldValue = GetValue();
+            byte newValue = GetNewValueForValue(oldValue);
+            SetValue(newValue);
+        }
+
         public void UpdateImage()
         {
+            if (_gui == null) return;
+
             byte value = GetValue();
             if (_currentValue != value)
             {

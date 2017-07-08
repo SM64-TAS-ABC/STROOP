@@ -14,13 +14,16 @@ namespace SM64_Diagnostic.Managers
 {
     public class FileManager : DataManager
     {
-        private enum FileMode { FileA, FileB, FileC, FileD, FileASaved, FileBSaved, FileCSaved, FileDSaved };
+        public static FileManager Instance = null;
+
+        public enum FileMode { FileA, FileB, FileC, FileD, FileASaved, FileBSaved, FileCSaved, FileDSaved };
         private enum HatLocation { Mario, SSLKlepto, SSLGround, SLSnowman, SLGround, TTMUkiki, TTMGround };
 
         TabPage _tabControl;
         FileImageGui _gui;
-        FileMode _currentFileMode;
-        uint _currentFileAddress;
+
+        public FileMode CurrentFileMode { get; private set; }
+        public uint CurrentFileAddress { get; private set; }
 
         Button _saveFileButton;
 
@@ -40,10 +43,11 @@ namespace SM64_Diagnostic.Managers
         public FileManager(ProcessStream stream, List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile, FileImageGui gui)
             : base(stream, fileData, noTearFlowLayoutPanelFile, Config.File.FileAAddress)
         {
+            Instance = this;
             _tabControl = tabControl;
             _gui = gui;
-            _currentFileMode = FileMode.FileA;
-            _currentFileAddress = Config.File.FileAAddress;
+            CurrentFileMode = FileMode.FileA;
+            CurrentFileAddress = Config.File.FileAAddress;
 
             SplitContainer splitContainerFile = tabControl.Controls["splitContainerFile"] as SplitContainer;
 
@@ -89,24 +93,19 @@ namespace SM64_Diagnostic.Managers
             _currentHatLocation = getCurrentHatLocation();
 
             TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
-            //_row1col1PictureBox = fileTable.Controls["pictureBoxFileTableRow1Col1"] as FilePictureBox;
-            //_row1col1PictureBox.Click += (sender, e) => Console.WriteLine("test");
-            //_row1col1PictureBox.Initialize(_stream, _gui, _currentFileAddress + 0x11, 0x01);
-            //row1col1PictureBox.UpdateImage();
-            //_row1col1PictureBox.Image = _gui.PowerStarImage;
-
             _testPictureBox = splitContainerFile.Panel1.Controls["filePictureBoxTest"] as FilePictureBox;
             _testPictureBox.Image = _gui.PowerStarImage;
 
             _testPictureBox2 = fileTable.Controls["filePictureBoxTest2"] as FilePictureBox;
             _testPictureBox2.Image = _gui.PowerStarImage;
+            _testPictureBox2.Initialize(_stream, _gui, 0x11, 0x01);
         }
 
         private void SetHatMode(byte hatModeByte)
         {
-            byte oldByte = _stream.GetByte(_currentFileAddress + Config.File.HatLocationModeOffset);
+            byte oldByte = _stream.GetByte(CurrentFileAddress + Config.File.HatLocationModeOffset);
             byte newByte = (byte)((oldByte & ~Config.File.HatLocationModeMask) | hatModeByte);
-            _stream.SetValue(newByte, _currentFileAddress + Config.File.HatLocationModeOffset);
+            _stream.SetValue(newByte, CurrentFileAddress + Config.File.HatLocationModeOffset);
         }
 
         private void HatLocation_Click(object sender, EventArgs e, HatLocation hatLocation)
@@ -123,7 +122,7 @@ namespace SM64_Diagnostic.Managers
 
                 case HatLocation.SSLGround:
                     SetHatMode(Config.File.HatLocationGroundMask);
-                    _stream.SetValue(Config.File.HatLocationCourseSSLValue, _currentFileAddress + Config.File.HatLocationCourseOffset);
+                    _stream.SetValue(Config.File.HatLocationCourseSSLValue, CurrentFileAddress + Config.File.HatLocationCourseOffset);
                     break;
 
                 case HatLocation.SLSnowman:
@@ -132,7 +131,7 @@ namespace SM64_Diagnostic.Managers
 
                 case HatLocation.SLGround:
                     SetHatMode(Config.File.HatLocationGroundMask);
-                    _stream.SetValue(Config.File.HatLocationCourseSLValue, _currentFileAddress + Config.File.HatLocationCourseOffset);
+                    _stream.SetValue(Config.File.HatLocationCourseSLValue, CurrentFileAddress + Config.File.HatLocationCourseOffset);
                     break;
 
                 case HatLocation.TTMUkiki:
@@ -141,7 +140,7 @@ namespace SM64_Diagnostic.Managers
 
                 case HatLocation.TTMGround:
                     SetHatMode(Config.File.HatLocationGroundMask);
-                    _stream.SetValue(Config.File.HatLocationCourseTTMValue, _currentFileAddress + Config.File.HatLocationCourseOffset);
+                    _stream.SetValue(Config.File.HatLocationCourseTTMValue, CurrentFileAddress + Config.File.HatLocationCourseOffset);
                     break;
             }
         }
@@ -149,7 +148,7 @@ namespace SM64_Diagnostic.Managers
         private void FileSaveButton_Click(object sender, EventArgs e)
         {
             // Get the corresponding unsaved file struct address
-            uint nonSavedAddress = GetNonSavedFileAddress(_currentFileMode);
+            uint nonSavedAddress = GetNonSavedFileAddress(CurrentFileMode);
 
             // Set the checksum constant
             _stream.SetValue(Config.File.ChecksumConstantValue, nonSavedAddress + Config.File.ChecksumConstantOffset);
@@ -224,25 +223,25 @@ namespace SM64_Diagnostic.Managers
 
         private void FileMode_Click(object sender, EventArgs e, FileMode mode)
         {
-            if (_currentFileMode == mode) return;
+            if (CurrentFileMode == mode) return;
 
-            _currentFileMode = mode;
-            _currentFileAddress = getFileAddress(mode);
+            CurrentFileMode = mode;
+            CurrentFileAddress = getFileAddress(mode);
 
             foreach (var dataContainer in _dataControls)
             {
                 if (dataContainer is WatchVariableControl)
                 {
                     var watchVar = dataContainer as WatchVariableControl;
-                    watchVar.OtherOffsets = new List<uint>() { _currentFileAddress };
+                    watchVar.OtherOffsets = new List<uint>() { CurrentFileAddress };
                 }
             }
         }
 
         private HatLocation? getCurrentHatLocation()
         {
-            ushort hatLocationCourse = _stream.GetUInt16(_currentFileAddress + Config.File.HatLocationCourseOffset);
-            byte hatLocationMode = (byte)(_stream.GetByte(_currentFileAddress + Config.File.HatLocationModeOffset) & Config.File.HatLocationModeMask);
+            ushort hatLocationCourse = _stream.GetUInt16(CurrentFileAddress + Config.File.HatLocationCourseOffset);
+            byte hatLocationMode = (byte)(_stream.GetByte(CurrentFileAddress + Config.File.HatLocationModeOffset) & Config.File.HatLocationModeMask);
 
             return hatLocationMode == Config.File.HatLocationMarioMask ? HatLocation.Mario :
                    hatLocationMode == Config.File.HatLocationKleptoMask ? HatLocation.SSLKlepto :
@@ -267,6 +266,8 @@ namespace SM64_Diagnostic.Managers
             _hatLocationSLGroundRadioButton.Checked = _currentHatLocation == HatLocation.SLGround;
             _hatLocationTTMUkikiRadioButton.Checked = _currentHatLocation == HatLocation.TTMUkiki;
             _hatLocationTTMGroundRadioButton.Checked = _currentHatLocation == HatLocation.TTMGround;
+
+            _testPictureBox2.UpdateImage();
 
             base.Update(updateView);
         }

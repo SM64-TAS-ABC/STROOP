@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -282,7 +282,6 @@ namespace SM64_Diagnostic
             this.labelFileTableRow24 = new System.Windows.Forms.Label();
             this.labelFileTableRow25 = new System.Windows.Forms.Label();
             this.labelFileTableRow26 = new System.Windows.Forms.Label();
-            this.pictureBoxFileTableRow1Col1 = new SM64_Diagnostic.FilePictureBox();
             this.groupBoxHatLocation = new System.Windows.Forms.GroupBox();
             this.radioButtonHatLocationSLGround = new System.Windows.Forms.RadioButton();
             this.radioButtonHatLocationTTMGround = new System.Windows.Forms.RadioButton();
@@ -570,7 +569,6 @@ namespace SM64_Diagnostic
             this.splitContainerFile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTest)).BeginInit();
             this.tableLayoutPanelFile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFileTableRow1Col1)).BeginInit();
             this.groupBoxHatLocation.SuspendLayout();
             this.groupBoxFile.SuspendLayout();
             this.tabPageMisc.SuspendLayout();
@@ -3261,7 +3259,6 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanelFile.Controls.Add(this.pictureBoxFileTableRow1Col1, 1, 0);
             this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow1, 0, 0);
             this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow2, 0, 1);
             this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow3, 0, 2);
@@ -3288,7 +3285,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow24, 0, 23);
             this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow25, 0, 24);
             this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow26, 0, 25);
-            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTest2, 2, 0);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTest2, 1, 0);
             this.tableLayoutPanelFile.Location = new System.Drawing.Point(257, 18);
             this.tableLayoutPanelFile.Name = "tableLayoutPanelFile";
             this.tableLayoutPanelFile.RowCount = 26;
@@ -3658,18 +3655,6 @@ namespace SM64_Diagnostic
             this.labelFileTableRow26.TabIndex = 9;
             this.labelFileTableRow26.Text = "MIPS";
             this.labelFileTableRow26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pictureBoxFileTableRow1Col1
-            // 
-            this.pictureBoxFileTableRow1Col1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxFileTableRow1Col1.Location = new System.Drawing.Point(74, 1);
-            this.pictureBoxFileTableRow1Col1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxFileTableRow1Col1.Name = "pictureBoxFileTableRow1Col1";
-            this.pictureBoxFileTableRow1Col1.Size = new System.Drawing.Size(28, 15);
-            this.pictureBoxFileTableRow1Col1.TabIndex = 10;
-            this.pictureBoxFileTableRow1Col1.TabStop = false;
             // 
             // groupBoxHatLocation
             // 
@@ -4661,8 +4646,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -6261,7 +6246,7 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxTest2.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTest2.Image")));
-            this.filePictureBoxTest2.Location = new System.Drawing.Point(103, 1);
+            this.filePictureBoxTest2.Location = new System.Drawing.Point(74, 1);
             this.filePictureBoxTest2.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxTest2.Name = "filePictureBoxTest2";
             this.filePictureBoxTest2.Size = new System.Drawing.Size(28, 15);
@@ -6376,7 +6361,6 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTest)).EndInit();
             this.tableLayoutPanelFile.ResumeLayout(false);
             this.tableLayoutPanelFile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFileTableRow1Col1)).EndInit();
             this.groupBoxHatLocation.ResumeLayout(false);
             this.groupBoxHatLocation.PerformLayout();
             this.groupBoxFile.ResumeLayout(false);
@@ -6914,7 +6898,6 @@ namespace SM64_Diagnostic
         private Label labelFileTableRow24;
         private Label labelFileTableRow25;
         private Label labelFileTableRow26;
-        private FilePictureBox pictureBoxFileTableRow1Col1;
         private FilePictureBox filePictureBoxTest;
         private FilePictureBox filePictureBoxTest2;
     }
