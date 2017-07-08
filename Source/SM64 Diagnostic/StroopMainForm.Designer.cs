@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -255,6 +255,32 @@ namespace SM64_Diagnostic
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.splitContainerFile = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelFileTableRow1 = new System.Windows.Forms.Label();
+            this.labelFileTableRow2 = new System.Windows.Forms.Label();
+            this.labelFileTableRow3 = new System.Windows.Forms.Label();
+            this.labelFileTableRow4 = new System.Windows.Forms.Label();
+            this.labelFileTableRow5 = new System.Windows.Forms.Label();
+            this.labelFileTableRow6 = new System.Windows.Forms.Label();
+            this.labelFileTableRow7 = new System.Windows.Forms.Label();
+            this.labelFileTableRow8 = new System.Windows.Forms.Label();
+            this.labelFileTableRow9 = new System.Windows.Forms.Label();
+            this.labelFileTableRow10 = new System.Windows.Forms.Label();
+            this.labelFileTableRow11 = new System.Windows.Forms.Label();
+            this.labelFileTableRow12 = new System.Windows.Forms.Label();
+            this.labelFileTableRow13 = new System.Windows.Forms.Label();
+            this.labelFileTableRow14 = new System.Windows.Forms.Label();
+            this.labelFileTableRow15 = new System.Windows.Forms.Label();
+            this.labelFileTableRow16 = new System.Windows.Forms.Label();
+            this.labelFileTableRow17 = new System.Windows.Forms.Label();
+            this.labelFileTableRow18 = new System.Windows.Forms.Label();
+            this.labelFileTableRow19 = new System.Windows.Forms.Label();
+            this.labelFileTableRow20 = new System.Windows.Forms.Label();
+            this.labelFileTableRow21 = new System.Windows.Forms.Label();
+            this.labelFileTableRow22 = new System.Windows.Forms.Label();
+            this.labelFileTableRow23 = new System.Windows.Forms.Label();
+            this.labelFileTableRow24 = new System.Windows.Forms.Label();
+            this.labelFileTableRow25 = new System.Windows.Forms.Label();
+            this.labelFileTableRow26 = new System.Windows.Forms.Label();
             this.groupBoxHatLocation = new System.Windows.Forms.GroupBox();
             this.radioButtonHatLocationSLGround = new System.Windows.Forms.RadioButton();
             this.radioButtonHatLocationTTMGround = new System.Windows.Forms.RadioButton();
@@ -475,32 +501,7 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -608,6 +609,7 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -639,7 +641,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 212);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 213);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -727,7 +729,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 165);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 166);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -1680,7 +1682,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(693, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(696, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2198,7 +2200,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(702, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(705, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2323,7 +2325,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(803, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(806, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -2704,7 +2706,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(713, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(716, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3098,7 +3100,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(710, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(713, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3183,7 +3185,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(491, 460);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(494, 460);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3240,32 +3242,33 @@ namespace SM64_Diagnostic
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label11, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.label14, 0, 11);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 12);
-            this.tableLayoutPanel1.Controls.Add(this.label16, 0, 13);
-            this.tableLayoutPanel1.Controls.Add(this.label17, 0, 14);
-            this.tableLayoutPanel1.Controls.Add(this.label18, 0, 15);
-            this.tableLayoutPanel1.Controls.Add(this.label19, 0, 16);
-            this.tableLayoutPanel1.Controls.Add(this.label20, 0, 17);
-            this.tableLayoutPanel1.Controls.Add(this.label21, 0, 18);
-            this.tableLayoutPanel1.Controls.Add(this.label22, 0, 19);
-            this.tableLayoutPanel1.Controls.Add(this.label23, 0, 20);
-            this.tableLayoutPanel1.Controls.Add(this.label24, 0, 21);
-            this.tableLayoutPanel1.Controls.Add(this.label25, 0, 22);
-            this.tableLayoutPanel1.Controls.Add(this.label26, 0, 23);
-            this.tableLayoutPanel1.Controls.Add(this.label27, 0, 24);
-            this.tableLayoutPanel1.Controls.Add(this.label28, 0, 25);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow5, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow6, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow7, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow8, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow9, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow10, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow11, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow12, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow13, 0, 12);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow14, 0, 13);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow15, 0, 14);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow16, 0, 15);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow17, 0, 16);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow18, 0, 17);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow19, 0, 18);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow20, 0, 19);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow21, 0, 20);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow22, 0, 21);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow23, 0, 22);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow24, 0, 23);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow25, 0, 24);
+            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow26, 0, 25);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(257, 18);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 26;
@@ -3297,6 +3300,344 @@ namespace SM64_Diagnostic
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(374, 419);
             this.tableLayoutPanel1.TabIndex = 39;
+            // 
+            // labelFileTableRow1
+            // 
+            this.labelFileTableRow1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow1.AutoSize = true;
+            this.labelFileTableRow1.Location = new System.Drawing.Point(4, 1);
+            this.labelFileTableRow1.Name = "labelFileTableRow1";
+            this.labelFileTableRow1.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow1.TabIndex = 7;
+            this.labelFileTableRow1.Text = "BoB";
+            this.labelFileTableRow1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow2
+            // 
+            this.labelFileTableRow2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow2.AutoSize = true;
+            this.labelFileTableRow2.Location = new System.Drawing.Point(4, 17);
+            this.labelFileTableRow2.Name = "labelFileTableRow2";
+            this.labelFileTableRow2.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow2.TabIndex = 8;
+            this.labelFileTableRow2.Text = "WF";
+            this.labelFileTableRow2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow3
+            // 
+            this.labelFileTableRow3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow3.AutoSize = true;
+            this.labelFileTableRow3.Location = new System.Drawing.Point(4, 33);
+            this.labelFileTableRow3.Name = "labelFileTableRow3";
+            this.labelFileTableRow3.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow3.TabIndex = 9;
+            this.labelFileTableRow3.Text = "JRB";
+            this.labelFileTableRow3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow4
+            // 
+            this.labelFileTableRow4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow4.AutoSize = true;
+            this.labelFileTableRow4.Location = new System.Drawing.Point(4, 49);
+            this.labelFileTableRow4.Name = "labelFileTableRow4";
+            this.labelFileTableRow4.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow4.TabIndex = 9;
+            this.labelFileTableRow4.Text = "CCM";
+            this.labelFileTableRow4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow5
+            // 
+            this.labelFileTableRow5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow5.AutoSize = true;
+            this.labelFileTableRow5.Location = new System.Drawing.Point(4, 65);
+            this.labelFileTableRow5.Name = "labelFileTableRow5";
+            this.labelFileTableRow5.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow5.TabIndex = 9;
+            this.labelFileTableRow5.Text = "BBH";
+            this.labelFileTableRow5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow6
+            // 
+            this.labelFileTableRow6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow6.AutoSize = true;
+            this.labelFileTableRow6.Location = new System.Drawing.Point(4, 81);
+            this.labelFileTableRow6.Name = "labelFileTableRow6";
+            this.labelFileTableRow6.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow6.TabIndex = 9;
+            this.labelFileTableRow6.Text = "HMC";
+            this.labelFileTableRow6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow7
+            // 
+            this.labelFileTableRow7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow7.AutoSize = true;
+            this.labelFileTableRow7.Location = new System.Drawing.Point(4, 97);
+            this.labelFileTableRow7.Name = "labelFileTableRow7";
+            this.labelFileTableRow7.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow7.TabIndex = 9;
+            this.labelFileTableRow7.Text = "LLL";
+            this.labelFileTableRow7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow8
+            // 
+            this.labelFileTableRow8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow8.AutoSize = true;
+            this.labelFileTableRow8.Location = new System.Drawing.Point(4, 113);
+            this.labelFileTableRow8.Name = "labelFileTableRow8";
+            this.labelFileTableRow8.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow8.TabIndex = 9;
+            this.labelFileTableRow8.Text = "SSL";
+            this.labelFileTableRow8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow9
+            // 
+            this.labelFileTableRow9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow9.AutoSize = true;
+            this.labelFileTableRow9.Location = new System.Drawing.Point(4, 129);
+            this.labelFileTableRow9.Name = "labelFileTableRow9";
+            this.labelFileTableRow9.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow9.TabIndex = 9;
+            this.labelFileTableRow9.Text = "DDD";
+            this.labelFileTableRow9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow10
+            // 
+            this.labelFileTableRow10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow10.AutoSize = true;
+            this.labelFileTableRow10.Location = new System.Drawing.Point(4, 145);
+            this.labelFileTableRow10.Name = "labelFileTableRow10";
+            this.labelFileTableRow10.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow10.TabIndex = 9;
+            this.labelFileTableRow10.Text = "SL";
+            this.labelFileTableRow10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow11
+            // 
+            this.labelFileTableRow11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow11.AutoSize = true;
+            this.labelFileTableRow11.Location = new System.Drawing.Point(4, 161);
+            this.labelFileTableRow11.Name = "labelFileTableRow11";
+            this.labelFileTableRow11.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow11.TabIndex = 9;
+            this.labelFileTableRow11.Text = "WDW";
+            this.labelFileTableRow11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow12
+            // 
+            this.labelFileTableRow12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow12.AutoSize = true;
+            this.labelFileTableRow12.Location = new System.Drawing.Point(4, 177);
+            this.labelFileTableRow12.Name = "labelFileTableRow12";
+            this.labelFileTableRow12.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow12.TabIndex = 9;
+            this.labelFileTableRow12.Text = "TTM";
+            this.labelFileTableRow12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow13
+            // 
+            this.labelFileTableRow13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow13.AutoSize = true;
+            this.labelFileTableRow13.Location = new System.Drawing.Point(4, 193);
+            this.labelFileTableRow13.Name = "labelFileTableRow13";
+            this.labelFileTableRow13.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow13.TabIndex = 9;
+            this.labelFileTableRow13.Text = "THI";
+            this.labelFileTableRow13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow14
+            // 
+            this.labelFileTableRow14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow14.AutoSize = true;
+            this.labelFileTableRow14.Location = new System.Drawing.Point(4, 209);
+            this.labelFileTableRow14.Name = "labelFileTableRow14";
+            this.labelFileTableRow14.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow14.TabIndex = 9;
+            this.labelFileTableRow14.Text = "TTC";
+            this.labelFileTableRow14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow15
+            // 
+            this.labelFileTableRow15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow15.AutoSize = true;
+            this.labelFileTableRow15.Location = new System.Drawing.Point(4, 225);
+            this.labelFileTableRow15.Name = "labelFileTableRow15";
+            this.labelFileTableRow15.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow15.TabIndex = 9;
+            this.labelFileTableRow15.Text = "RR";
+            this.labelFileTableRow15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow16
+            // 
+            this.labelFileTableRow16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow16.AutoSize = true;
+            this.labelFileTableRow16.Location = new System.Drawing.Point(4, 241);
+            this.labelFileTableRow16.Name = "labelFileTableRow16";
+            this.labelFileTableRow16.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow16.TabIndex = 9;
+            this.labelFileTableRow16.Text = "TotWC";
+            this.labelFileTableRow16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow17
+            // 
+            this.labelFileTableRow17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow17.AutoSize = true;
+            this.labelFileTableRow17.Location = new System.Drawing.Point(4, 257);
+            this.labelFileTableRow17.Name = "labelFileTableRow17";
+            this.labelFileTableRow17.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow17.TabIndex = 9;
+            this.labelFileTableRow17.Text = "VCutM";
+            this.labelFileTableRow17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow18
+            // 
+            this.labelFileTableRow18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow18.AutoSize = true;
+            this.labelFileTableRow18.Location = new System.Drawing.Point(4, 273);
+            this.labelFileTableRow18.Name = "labelFileTableRow18";
+            this.labelFileTableRow18.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow18.TabIndex = 9;
+            this.labelFileTableRow18.Text = "CotMC";
+            this.labelFileTableRow18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow19
+            // 
+            this.labelFileTableRow19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow19.AutoSize = true;
+            this.labelFileTableRow19.Location = new System.Drawing.Point(4, 289);
+            this.labelFileTableRow19.Name = "labelFileTableRow19";
+            this.labelFileTableRow19.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow19.TabIndex = 9;
+            this.labelFileTableRow19.Text = "PSS";
+            this.labelFileTableRow19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow20
+            // 
+            this.labelFileTableRow20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow20.AutoSize = true;
+            this.labelFileTableRow20.Location = new System.Drawing.Point(4, 305);
+            this.labelFileTableRow20.Name = "labelFileTableRow20";
+            this.labelFileTableRow20.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow20.TabIndex = 9;
+            this.labelFileTableRow20.Text = "SA";
+            this.labelFileTableRow20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow21
+            // 
+            this.labelFileTableRow21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow21.AutoSize = true;
+            this.labelFileTableRow21.Location = new System.Drawing.Point(4, 321);
+            this.labelFileTableRow21.Name = "labelFileTableRow21";
+            this.labelFileTableRow21.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow21.TabIndex = 9;
+            this.labelFileTableRow21.Text = "WMotR";
+            this.labelFileTableRow21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow22
+            // 
+            this.labelFileTableRow22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow22.AutoSize = true;
+            this.labelFileTableRow22.Location = new System.Drawing.Point(4, 337);
+            this.labelFileTableRow22.Name = "labelFileTableRow22";
+            this.labelFileTableRow22.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow22.TabIndex = 9;
+            this.labelFileTableRow22.Text = "BitDW";
+            this.labelFileTableRow22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow23
+            // 
+            this.labelFileTableRow23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow23.AutoSize = true;
+            this.labelFileTableRow23.Location = new System.Drawing.Point(4, 353);
+            this.labelFileTableRow23.Name = "labelFileTableRow23";
+            this.labelFileTableRow23.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow23.TabIndex = 9;
+            this.labelFileTableRow23.Text = "BitFS";
+            this.labelFileTableRow23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow24
+            // 
+            this.labelFileTableRow24.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow24.AutoSize = true;
+            this.labelFileTableRow24.Location = new System.Drawing.Point(4, 369);
+            this.labelFileTableRow24.Name = "labelFileTableRow24";
+            this.labelFileTableRow24.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow24.TabIndex = 9;
+            this.labelFileTableRow24.Text = "BitS";
+            this.labelFileTableRow24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow25
+            // 
+            this.labelFileTableRow25.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow25.AutoSize = true;
+            this.labelFileTableRow25.Location = new System.Drawing.Point(4, 385);
+            this.labelFileTableRow25.Name = "labelFileTableRow25";
+            this.labelFileTableRow25.Size = new System.Drawing.Size(66, 15);
+            this.labelFileTableRow25.TabIndex = 9;
+            this.labelFileTableRow25.Text = "Toad";
+            this.labelFileTableRow25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFileTableRow26
+            // 
+            this.labelFileTableRow26.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFileTableRow26.AutoSize = true;
+            this.labelFileTableRow26.Location = new System.Drawing.Point(4, 401);
+            this.labelFileTableRow26.Name = "labelFileTableRow26";
+            this.labelFileTableRow26.Size = new System.Drawing.Size(66, 17);
+            this.labelFileTableRow26.TabIndex = 9;
+            this.labelFileTableRow26.Text = "MIPS";
+            this.labelFileTableRow26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBoxHatLocation
             // 
@@ -3505,7 +3846,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(228, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(231, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -3942,7 +4283,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(692, 430);
+            this.glControlMap.Size = new System.Drawing.Size(695, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -4288,8 +4629,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -4460,7 +4801,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(657, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(660, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -4496,7 +4837,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(503, 422);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(506, 422);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -4559,7 +4900,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(606, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(609, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -5268,7 +5609,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(481, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(484, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -5882,343 +6223,17 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // label1
+            // pictureBox1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 1);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 15);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "BoB";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 15);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "WF";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 33);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 15);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "JRB";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 49);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 15);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "CCM";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 65);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 15);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "BBH";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 81);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 15);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "HMC";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(4, 97);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(66, 15);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "LLL";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 113);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(66, 15);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "SSL";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(4, 129);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(66, 15);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "DDD";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 145);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(66, 15);
-            this.label12.TabIndex = 9;
-            this.label12.Text = "SL";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 161);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(66, 15);
-            this.label13.TabIndex = 9;
-            this.label13.Text = "WDW";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(4, 177);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(66, 15);
-            this.label14.TabIndex = 9;
-            this.label14.Text = "TTM";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(4, 193);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(66, 15);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "THI";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label16
-            // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(4, 209);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(66, 15);
-            this.label16.TabIndex = 9;
-            this.label16.Text = "TTC";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label17
-            // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(4, 225);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(66, 15);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "RR";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label18
-            // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(4, 241);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(66, 15);
-            this.label18.TabIndex = 9;
-            this.label18.Text = "TotWC";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label19
-            // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(4, 257);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(66, 15);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "VCutM";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label20
-            // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(4, 273);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(66, 15);
-            this.label20.TabIndex = 9;
-            this.label20.Text = "CotMC";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label21
-            // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(4, 289);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(66, 15);
-            this.label21.TabIndex = 9;
-            this.label21.Text = "PSS";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label22
-            // 
-            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(4, 305);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(66, 15);
-            this.label22.TabIndex = 9;
-            this.label22.Text = "SA";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label23
-            // 
-            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(4, 321);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(66, 15);
-            this.label23.TabIndex = 9;
-            this.label23.Text = "WMotR";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label24
-            // 
-            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(4, 337);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(66, 15);
-            this.label24.TabIndex = 9;
-            this.label24.Text = "BitDW";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label25
-            // 
-            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(4, 353);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(66, 15);
-            this.label25.TabIndex = 9;
-            this.label25.Text = "BitFS";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label26
-            // 
-            this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(4, 369);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(66, 15);
-            this.label26.TabIndex = 9;
-            this.label26.Text = "BitS";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label27
-            // 
-            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(4, 385);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(66, 15);
-            this.label27.TabIndex = 9;
-            this.label27.Text = "Toad";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label28
-            // 
-            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(4, 401);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(66, 17);
-            this.label28.TabIndex = 9;
-            this.label28.Text = "MIPS";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.pictureBox1.Location = new System.Drawing.Point(74, 1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 15);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // StroopMainForm
             // 
@@ -6388,6 +6403,7 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6836,32 +6852,33 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonHatLocationSLSnowman;
         private RadioButton radioButtonHatLocationSSLGround;
         private TableLayoutPanel tableLayoutPanel1;
-        private Label label1;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
-        private Label label9;
-        private Label label10;
-        private Label label11;
-        private Label label12;
-        private Label label13;
-        private Label label14;
-        private Label label15;
-        private Label label16;
-        private Label label17;
-        private Label label18;
-        private Label label19;
-        private Label label20;
-        private Label label21;
-        private Label label22;
-        private Label label23;
-        private Label label24;
-        private Label label25;
-        private Label label26;
-        private Label label27;
-        private Label label28;
+        private Label labelFileTableRow1;
+        private Label labelFileTableRow2;
+        private Label labelFileTableRow3;
+        private Label labelFileTableRow4;
+        private Label labelFileTableRow5;
+        private Label labelFileTableRow6;
+        private Label labelFileTableRow7;
+        private Label labelFileTableRow8;
+        private Label labelFileTableRow9;
+        private Label labelFileTableRow10;
+        private Label labelFileTableRow11;
+        private Label labelFileTableRow12;
+        private Label labelFileTableRow13;
+        private Label labelFileTableRow14;
+        private Label labelFileTableRow15;
+        private Label labelFileTableRow16;
+        private Label labelFileTableRow17;
+        private Label labelFileTableRow18;
+        private Label labelFileTableRow19;
+        private Label labelFileTableRow20;
+        private Label labelFileTableRow21;
+        private Label labelFileTableRow22;
+        private Label labelFileTableRow23;
+        private Label labelFileTableRow24;
+        private Label labelFileTableRow25;
+        private Label labelFileTableRow26;
+        private PictureBox pictureBox1;
     }
 }
 
