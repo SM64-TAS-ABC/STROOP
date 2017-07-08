@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Missions>
+  <Mission courseIndex="1" missionIndex="1" missionName="BoB: Big Bob-omb on the Summit"/>
+  <Mission courseIndex="1" missionIndex="2" missionName="BoB: Footrace with Koopa the Quick"/>
+  <Mission courseIndex="1" missionIndex="3" missionName="BoB: Shoot to the Island in the Sky"/>
+  <Mission courseIndex="1" missionIndex="4" missionName="BoB: Find the 8 Red Coins"/>
+  <Mission courseIndex="1" missionIndex="5" missionName="BoB: Mario Wings to the Sky"/>
+  <Mission courseIndex="1" missionIndex="6" missionName="BoB: Behind Chain Chomp's Gate"/>
+  <Mission courseIndex="1" missionIndex="7" missionName="BoB: 100 Coins"/>
+  <Mission courseIndex="2" missionIndex="1" missionName="WF: Chip Off Whomp's Block"/>
+  <Mission courseIndex="2" missionIndex="2" missionName="WF: To the Top of the Fortress"/>
+  <Mission courseIndex="2" missionIndex="3" missionName="WF: Shoot into the Wild Blue"/>
+  <Mission courseIndex="2" missionIndex="4" missionName="WF: Red Coins on the Floating Isle"/>
+  <Mission courseIndex="2" missionIndex="5" missionName="WF: Fall onto the Caged Island"/>
+  <Mission courseIndex="2" missionIndex="6" missionName="WF: Blast Away the Wall"/>
+  <Mission courseIndex="2" missionIndex="7" missionName="WF: 100 Coins"/>
+</Missions>
