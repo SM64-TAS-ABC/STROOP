@@ -419,6 +419,24 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool UnReleaseObject(ProcessStream stream, List<uint> addresses)
+        {
+            /*
+            if (addresses.Count == 0)
+                return false;
+
+            bool success = true;
+            stream.Suspend();
+            foreach (var address in addresses)
+            {
+                success &= stream.SetValue(Config.ObjectSlots.ReleaseStatusReleasedValue, address + Config.ObjectSlots.ReleaseStatusOffset);
+            }
+            stream.Resume();
+            return success;
+            */
+            return false;
+        }
+
         public static bool InteractObject(ProcessStream stream, List<uint> addresses)
         {
             if (addresses.Count == 0)
@@ -432,6 +450,24 @@ namespace SM64_Diagnostic.Utilities
             }
             stream.Resume();
             return success;
+        }
+
+        public static bool UnInteractObject(ProcessStream stream, List<uint> addresses)
+        {
+            /*
+            if (addresses.Count == 0)
+                return false;
+
+            bool success = true;
+            stream.Suspend();
+            foreach (var address in addresses)
+            {
+                success &= stream.SetValue(0xFFFFFFFF, address + Config.ObjectSlots.InteractionStatusOffset);
+            }
+            stream.Resume();
+            return success;
+            */
+            return false;
         }
 
         public static bool ToggleHandsfree(ProcessStream stream)

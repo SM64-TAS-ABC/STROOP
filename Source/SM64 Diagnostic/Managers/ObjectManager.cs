@@ -244,10 +244,22 @@ namespace SM64_Diagnostic.Managers
             retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_stream, _currentAddresses);
 
             _releaseButton = objPanel.Controls["buttonObjRelease"] as Button;
-            _releaseButton.Click += (sender, e) => ButtonUtilities.ReleaseObject(_stream, _currentAddresses);
+            _releaseButton.Click += (sender, e) =>
+            {
+                if (_unrelease)
+                    ButtonUtilities.UnReleaseObject(_stream, _currentAddresses);
+                else
+                    ButtonUtilities.ReleaseObject(_stream, _currentAddresses);
+            };
 
             _interactButton = objPanel.Controls["buttonObjInteract"] as Button;
-            _interactButton.Click += (sender, e) => ButtonUtilities.InteractObject(_stream, _currentAddresses);
+            _interactButton.Click += (sender, e) =>
+            {
+                if (_uninteract)
+                    ButtonUtilities.UnInteractObject(_stream, _currentAddresses);
+                else
+                    ButtonUtilities.InteractObject(_stream, _currentAddresses);
+            };
 
             _cloneButton = objPanel.Controls["buttonObjClone"] as Button;
             _cloneButton.Click += (sender, e) =>
@@ -264,9 +276,6 @@ namespace SM64_Diagnostic.Managers
             _unloadButton = objPanel.Controls["buttonObjUnload"] as Button;
             _unloadButton.Click += (sender, e) =>
             {
-                if (CurrentAddresses.Count == 0)
-                    return;
-
                 if (_revive)
                     ButtonUtilities.ReviveObject(_stream, CurrentAddresses);
                 else
