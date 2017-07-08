@@ -632,13 +632,13 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.filePictureBoxTableRow2Col9 = new SM64_Diagnostic.FileCannonPictureBox();
-            this.filePictureBoxTableRow3Col9 = new SM64_Diagnostic.FileCannonPictureBox();
-            this.filePictureBoxTableRow4Col9 = new SM64_Diagnostic.FileCannonPictureBox();
-            this.filePictureBoxTableRow19Col9 = new SM64_Diagnostic.FileCannonPictureBox();
-            this.filePictureBoxTableRow22Col9 = new SM64_Diagnostic.FileCannonPictureBox();
-            this.filePictureBoxTableRow23Col9 = new SM64_Diagnostic.FileCannonPictureBox();
-            this.filePictureBoxTableRow24Col9 = new SM64_Diagnostic.FileCannonPictureBox();
+            this.filePictureBoxTableRow2Col9 = new SM64_Diagnostic.File1StarDoorPictureBox();
+            this.filePictureBoxTableRow3Col9 = new SM64_Diagnostic.File3StarDoorPictureBox();
+            this.filePictureBoxTableRow4Col9 = new SM64_Diagnostic.File3StarDoorPictureBox();
+            this.filePictureBoxTableRow19Col9 = new SM64_Diagnostic.File1StarDoorPictureBox();
+            this.filePictureBoxTableRow22Col9 = new SM64_Diagnostic.FileStarDoorPictureBox();
+            this.filePictureBoxTableRow23Col9 = new SM64_Diagnostic.FileStarDoorPictureBox();
+            this.filePictureBoxTableRow24Col9 = new SM64_Diagnostic.FileStarDoorPictureBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -9477,13 +9477,13 @@ namespace SM64_Diagnostic
         private FileCannonPictureBox filePictureBoxTableRow2Col8;
         private FileCannonPictureBox filePictureBoxTableRow1Col8;
         private FileCannonPictureBox filePictureBoxTableRow8Col8;
-        private FileCannonPictureBox filePictureBoxTableRow24Col9;
-        private FileCannonPictureBox filePictureBoxTableRow23Col9;
-        private FileCannonPictureBox filePictureBoxTableRow22Col9;
-        private FileCannonPictureBox filePictureBoxTableRow4Col9;
-        private FileCannonPictureBox filePictureBoxTableRow3Col9;
-        private FileCannonPictureBox filePictureBoxTableRow2Col9;
-        private FileCannonPictureBox filePictureBoxTableRow19Col9;
+        private FileStarDoorPictureBox filePictureBoxTableRow24Col9;
+        private FileStarDoorPictureBox filePictureBoxTableRow23Col9;
+        private FileStarDoorPictureBox filePictureBoxTableRow22Col9;
+        private File3StarDoorPictureBox filePictureBoxTableRow4Col9;
+        private File3StarDoorPictureBox filePictureBoxTableRow3Col9;
+        private File1StarDoorPictureBox filePictureBoxTableRow2Col9;
+        private File1StarDoorPictureBox filePictureBoxTableRow19Col9;
     }
 }
 

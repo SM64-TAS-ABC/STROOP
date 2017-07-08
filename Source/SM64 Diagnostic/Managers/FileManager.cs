@@ -123,6 +123,19 @@ namespace SM64_Diagnostic.Managers
                 fileCannonPictureBox.Initialize(_stream, _gui, addressOffset, mask);
                 _filePictureBoxList.Add(fileCannonPictureBox);
             }
+
+            for (int row = 0; row < numRows; row++)
+            {
+                int col = 8;
+                string controlName = String.Format("filePictureBoxTableRow{0}Col{1}", row + 1, col + 1);
+                FileCannonPictureBox fileCannonPictureBox = fileTable.Controls[controlName] as FileCannonPictureBox;
+                if (fileCannonPictureBox == null) continue;
+
+                uint addressOffset = GetCannonAddressOffset(row, col);
+                byte mask = 0x80;
+                fileCannonPictureBox.Initialize(_stream, _gui, addressOffset, mask);
+                _filePictureBoxList.Add(fileCannonPictureBox);
+            }
         }
 
         private uint GetCannonAddressOffset(int row, int col)
