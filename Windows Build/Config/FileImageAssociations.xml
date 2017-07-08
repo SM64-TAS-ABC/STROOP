@@ -10,5 +10,20 @@
     <PowerStarBlack>
       <FileImage path="Power Star Black.png"/>
     </PowerStarBlack>
+    <Cannon>
+      <FileImage path="Cannon.png"/>
+    </Cannon>
+    <CannonLid>
+      <FileImage path="Cannon Lid.png"/>
+    </CannonLid>
+    <Door1Star>
+      <FileImage path="Door 1 Star.png"/>
+    </Door1Star>
+    <Door3Star>
+      <FileImage path="Door 3 Star.png"/>
+    </Door3Star>
+    <DoorBlack>
+      <FileImage path="Door Black.png"/>
+    </DoorBlack>
   </FileImages>
 </FileImageAssociations>

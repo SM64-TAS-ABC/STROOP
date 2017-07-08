@@ -13,11 +13,21 @@ namespace SM64_Diagnostic.Structs
     {
         public Image PowerStarImage;
         public Image PowerStarBlackImage;
+        public Image CannonImage;
+        public Image CannonLidImage;
+        public Image Door1StarImage;
+        public Image Door3StarImage;
+        public Image DoorBlackImage;
 
         ~FileImageGui()
         {
             PowerStarImage?.Dispose();
             PowerStarBlackImage?.Dispose();
+            CannonImage?.Dispose();
+            CannonLidImage?.Dispose();
+            Door1StarImage?.Dispose();
+            Door3StarImage?.Dispose();
+            DoorBlackImage?.Dispose();
         }
     }
 }

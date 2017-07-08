@@ -1329,7 +1329,13 @@ namespace SM64_Diagnostic.Utilities
             // Create path list
             string fileImageDir = "",
                    powerStarPath = "",
-                   powerStarBlackPath = "";
+                   powerStarBlackPath = "",
+                   cannonPath = "",
+                   cannonLidPath = "",
+                   door1StarPath = "",
+                   door3StarPath = "",
+                   doorBlackPath = "";
+
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -1359,6 +1365,26 @@ namespace SM64_Diagnostic.Utilities
                                 case "PowerStarBlack":
                                     powerStarBlackPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
                                     break;
+
+                                case "Cannon":
+                                    cannonPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "CannonLid":
+                                    cannonLidPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "Door1Star":
+                                    door1StarPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "Door3Star":
+                                    door3StarPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "DoorBlack":
+                                    doorBlackPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -1369,6 +1395,11 @@ namespace SM64_Diagnostic.Utilities
             // TODO: Exceptions
             fileImageGui.PowerStarImage = Image.FromFile(fileImageDir + powerStarPath);
             fileImageGui.PowerStarBlackImage = Image.FromFile(fileImageDir + powerStarBlackPath);
+            fileImageGui.CannonImage = Image.FromFile(fileImageDir + cannonPath);
+            fileImageGui.CannonLidImage = Image.FromFile(fileImageDir + cannonLidPath);
+            fileImageGui.Door1StarImage = Image.FromFile(fileImageDir + door1StarPath);
+            fileImageGui.Door3StarImage = Image.FromFile(fileImageDir + door3StarPath);
+            fileImageGui.DoorBlackImage = Image.FromFile(fileImageDir + doorBlackPath);
         }
 
         public static MapAssociations OpenMapAssoc(string path)

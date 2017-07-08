@@ -23,9 +23,9 @@ namespace SM64_Diagnostic
         protected override Image GetImageForValue(byte value)
         {
             if (value == 0)
-                return _gui.PowerStarBlackImage;
+                return _gui.CannonLidImage;
             else
-                return _gui.PowerStarImage;
+                return _gui.CannonImage;
         }
 
         protected override byte GetNewValueForValue(byte oldValue)
