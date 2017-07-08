@@ -454,7 +454,6 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool UnInteractObject(ProcessStream stream, List<uint> addresses)
         {
-            /*
             if (addresses.Count == 0)
                 return false;
 
@@ -462,12 +461,10 @@ namespace SM64_Diagnostic.Utilities
             stream.Suspend();
             foreach (var address in addresses)
             {
-                success &= stream.SetValue(0xFFFFFFFF, address + Config.ObjectSlots.InteractionStatusOffset);
+                success &= stream.SetValue(0x00000000, address + Config.ObjectSlots.InteractionStatusOffset);
             }
             stream.Resume();
             return success;
-            */
-            return false;
         }
 
         public static bool ToggleHandsfree(ProcessStream stream)
