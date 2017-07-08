@@ -128,13 +128,66 @@ namespace SM64_Diagnostic.Managers
             {
                 int col = 8;
                 string controlName = String.Format("filePictureBoxTableRow{0}Col{1}", row + 1, col + 1);
-                FileCannonPictureBox fileCannonPictureBox = fileTable.Controls[controlName] as FileCannonPictureBox;
-                if (fileCannonPictureBox == null) continue;
+                var fileDoorPictureBox = fileTable.Controls[controlName];
+                if (fileDoorPictureBox == null) continue;
 
-                uint addressOffset = GetCannonAddressOffset(row, col);
-                byte mask = 0x80;
-                fileCannonPictureBox.Initialize(_stream, _gui, addressOffset, mask);
-                _filePictureBoxList.Add(fileCannonPictureBox);
+                if (fileDoorPictureBox is File1StarDoorPictureBox)
+                {
+                    File1StarDoorPictureBox file1StarDoorPictureBox = fileDoorPictureBox as File1StarDoorPictureBox;
+                    uint addressOffset = GetDoorAddressOffset(row, col);
+                    byte mask = GetDoorMask(row, col);
+                    file1StarDoorPictureBox.Initialize(_stream, _gui, addressOffset, mask);
+                    _filePictureBoxList.Add(file1StarDoorPictureBox);
+                }
+
+                if (fileDoorPictureBox is File3StarDoorPictureBox)
+                {
+                    File3StarDoorPictureBox file3StarDoorPictureBox = fileDoorPictureBox as File3StarDoorPictureBox;
+                    uint addressOffset = GetDoorAddressOffset(row, col);
+                    byte mask = GetDoorMask(row, col);
+                    file3StarDoorPictureBox.Initialize(_stream, _gui, addressOffset, mask);
+                    _filePictureBoxList.Add(file3StarDoorPictureBox);
+                }
+
+                if (fileDoorPictureBox is FileStarDoorPictureBox)
+                {
+                    FileStarDoorPictureBox fileStarDoorPictureBox = fileDoorPictureBox as FileStarDoorPictureBox;
+                    uint addressOffset = GetDoorAddressOffset(row, col);
+                    byte mask = GetDoorMask(row, col);
+                    fileStarDoorPictureBox.Initialize(_stream, _gui, addressOffset, mask);
+                    _filePictureBoxList.Add(fileStarDoorPictureBox);
+                }
+            }
+        }
+
+        private uint GetDoorAddressOffset(int row, int col)
+        {
+            if (row == 23)
+                return 0x09;
+            else
+                return 0x0A;
+        }
+
+        private byte GetDoorMask(int row, int col)
+        {
+            switch (row)
+            {
+                case 1:
+                    return 0x08; // WF 1 star door
+                case 2:
+                    return 0x20; // JRB 3 star door
+                case 3:
+                    return 0x10; // CCM 3 star door
+                case 18:
+                    return 0x04; // PSS 1 star door
+                case 21:
+                    return 0x40; // BitDW star door
+                case 22:
+                    return 0x80; // BitFS star door
+                case 23:
+                    return 0x10; // BitS star door
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
