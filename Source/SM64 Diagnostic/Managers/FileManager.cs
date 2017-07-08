@@ -94,7 +94,7 @@ namespace SM64_Diagnostic.Managers
             TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
 
             int numRows = 15;
-            int numCols = 6;
+            int numCols = 7;
 
             _filePictureBoxList = new List<FilePictureBox>();
             for (int row = 0; row < numRows; row++)
