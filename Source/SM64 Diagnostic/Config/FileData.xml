@@ -19,8 +19,8 @@
   <Data type="byte" address="0x1A" fileOffset="true" mask="0x7F" color="#ccfffa">RR Stars</Data>
 
   <Data type="byte" address="0x20" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">TotWC Star</Data>
-  <Data type="byte" address="0x21" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">VCutM Star</Data>
   <Data type="byte" address="0x1F" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">CotMC Star</Data>
+  <Data type="byte" address="0x21" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">VCutM Star</Data>
   <Data type="byte" address="0x1E" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">PSS Star</Data>
   <Data type="byte" address="0x1E" fileOffset="true" isBool="true" mask="0x02" color="#ccd0ff">PSS Under 21" Star</Data>
   <Data type="byte" address="0x23" fileOffset="true" isBool="true" mask="0x01" color="#ccd0ff">SA Star</Data>

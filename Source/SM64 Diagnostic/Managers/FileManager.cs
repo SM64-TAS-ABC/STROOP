@@ -113,12 +113,38 @@ namespace SM64_Diagnostic.Managers
 
         private uint GetAddressOffset(int row, int col)
         {
-            return 0x0C + (uint)row;
+            switch (row)
+            {
+                default:
+                    return 0x0C + (uint)row; // main courses
+                case 15:
+                    return 0x20; // TotWC
+                case 16:
+                    return 0x1F; // CotMC
+                case 17:
+                    return 0x21; // VCutM
+                case 18:
+                    return 0x1E; // PSS
+                case 19:
+                    return 0x23; // SA
+                case 20:
+                    return 0x22; // WMotR
+                case 21:
+                    return 0x1B; // BitDW
+                case 22:
+                    return 0x1C; // BitFS
+                case 23:
+                    return 0x1D; // BitS
+                case 24:
+                case 25:
+                    return 0x08; // Toad, MIPS
+            }
         }
 
         private byte GetMask(int row, int col)
         {
-            return (byte)Math.Pow(2, col);
+            int bitOffset = row == 25 ? 3 : 0;
+            return (byte)Math.Pow(2, col + bitOffset);
         }
 
         private void SetHatMode(byte hatModeByte)
