@@ -7,6 +7,7 @@
   <Mission courseIndex="1" missionIndex="5" missionName="BoB: Mario Wings to the Sky"/>
   <Mission courseIndex="1" missionIndex="6" missionName="BoB: Behind Chain Chomp's Gate"/>
   <Mission courseIndex="1" missionIndex="7" missionName="BoB: 100 Coins"/>
+  
   <Mission courseIndex="2" missionIndex="1" missionName="WF: Chip Off Whomp's Block"/>
   <Mission courseIndex="2" missionIndex="2" missionName="WF: To the Top of the Fortress"/>
   <Mission courseIndex="2" missionIndex="3" missionName="WF: Shoot into the Wild Blue"/>
@@ -14,4 +15,108 @@
   <Mission courseIndex="2" missionIndex="5" missionName="WF: Fall onto the Caged Island"/>
   <Mission courseIndex="2" missionIndex="6" missionName="WF: Blast Away the Wall"/>
   <Mission courseIndex="2" missionIndex="7" missionName="WF: 100 Coins"/>
+  
+  <Mission courseIndex="3" missionIndex="1" missionName="JRB: Plunder in the Sunken Ship"/>
+  <Mission courseIndex="3" missionIndex="2" missionName="JRB: Can the Eel Come Out to Play?"/>
+  <Mission courseIndex="3" missionIndex="3" missionName="JRB: Treasure of the Ocean Cave"/>
+  <Mission courseIndex="3" missionIndex="4" missionName="JRB: Red Coins on the Ship Afloat"/>
+  <Mission courseIndex="3" missionIndex="5" missionName="JRB: Blast to the Stone Pillar"/>
+  <Mission courseIndex="3" missionIndex="6" missionName="JRB: Through the Jet Stream"/>
+  <Mission courseIndex="3" missionIndex="7" missionName="JRB: 100 Coins"/>
+  
+  <Mission courseIndex="4" missionIndex="1" missionName="CCM: Slip Slidin' Away"/>
+  <Mission courseIndex="4" missionIndex="2" missionName="CCM: Li'l Penguin Lost"/>
+  <Mission courseIndex="4" missionIndex="3" missionName="CCM: Big Penguin Race"/>
+  <Mission courseIndex="4" missionIndex="4" missionName="CCM: Frosty Slide for 8 Red Coins"/>
+  <Mission courseIndex="4" missionIndex="5" missionName="CCM: Snowman's Lost His Head"/>
+  <Mission courseIndex="4" missionIndex="6" missionName="CCM: Wall Kicks Will Work"/>
+  <Mission courseIndex="4" missionIndex="7" missionName="CCM: 100 Coins"/>
+  
+  <Mission courseIndex="5" missionIndex="1" missionName="BBH: Go On a Ghost Hunt"/>
+  <Mission courseIndex="5" missionIndex="2" missionName="BBH: Ride Big Boo's Merry-Go-Round"/>
+  <Mission courseIndex="5" missionIndex="3" missionName="BBH: Secret of the Haunted Books"/>
+  <Mission courseIndex="5" missionIndex="4" missionName="BBH: Seek the 8 Red Coins"/>
+  <Mission courseIndex="5" missionIndex="5" missionName="BBH: Big Boo's Balcony"/>
+  <Mission courseIndex="5" missionIndex="6" missionName="BBH: Eye to Eye in the Secret Room"/>
+  <Mission courseIndex="5" missionIndex="7" missionName="BBH: 100 Coins"/>
+  
+  <Mission courseIndex="6" missionIndex="1" missionName="HMC: Swimming Beast in the Cavern"/>
+  <Mission courseIndex="6" missionIndex="2" missionName="HMC: Elevate for 8 Red Coins"/>
+  <Mission courseIndex="6" missionIndex="3" missionName="HMC: Metal-Head Mario Can Move!"/>
+  <Mission courseIndex="6" missionIndex="4" missionName="HMC: Navigating the Toxic Maze"/>
+  <Mission courseIndex="6" missionIndex="5" missionName="HMC: A-Maze-ing Emergency Exit"/>
+  <Mission courseIndex="6" missionIndex="6" missionName="HMC: Watch for Rolling Rocks"/>
+  <Mission courseIndex="6" missionIndex="7" missionName="HMC: 100 Coins"/>
+  
+  <Mission courseIndex="7" missionIndex="1" missionName="LLL: Boil the Big Bully"/>
+  <Mission courseIndex="7" missionIndex="2" missionName="LLL: Bully the Bullies"/>
+  <Mission courseIndex="7" missionIndex="3" missionName="LLL: 8-Coin Puzzle with 15 Pieces"/>
+  <Mission courseIndex="7" missionIndex="4" missionName="LLL: Red-Hot Log Rolling"/>
+  <Mission courseIndex="7" missionIndex="5" missionName="LLL: Hot-Foot-It into the Volcano"/>
+  <Mission courseIndex="7" missionIndex="6" missionName="LLL: Elevator Tour in the Volcano"/>
+  <Mission courseIndex="7" missionIndex="7" missionName="LLL: 100 Coins"/>
+  
+  <Mission courseIndex="8" missionIndex="1" missionName="SSL: In the Talons of the Big Bird"/>
+  <Mission courseIndex="8" missionIndex="2" missionName="SSL: Shining Atop the Pyramid"/>
+  <Mission courseIndex="8" missionIndex="3" missionName="SSL: Inside the Ancient Pyramid"/>
+  <Mission courseIndex="8" missionIndex="4" missionName="SSL: Stand Tall on the Four Pillars"/>
+  <Mission courseIndex="8" missionIndex="5" missionName="SSL: Free Flying for 8 Red Coins"/>
+  <Mission courseIndex="8" missionIndex="6" missionName="SSL: Pyramid Puzzle"/>
+  <Mission courseIndex="8" missionIndex="7" missionName="SSL: 100 Coins"/>
+  
+  <Mission courseIndex="9" missionIndex="1" missionName="DDD: Board Bowser's Sub"/>
+  <Mission courseIndex="9" missionIndex="2" missionName="DDD: Chests in the Current"/>
+  <Mission courseIndex="9" missionIndex="3" missionName="DDD: Pole-Jumping for Red Coins"/>
+  <Mission courseIndex="9" missionIndex="4" missionName="DDD: Through the Jet Stream"/>
+  <Mission courseIndex="9" missionIndex="5" missionName="DDD: The Manta Ray's Reward"/>
+  <Mission courseIndex="9" missionIndex="6" missionName="DDD: Collect the Caps…"/>
+  <Mission courseIndex="9" missionIndex="7" missionName="DDD: 100 Coins"/>
+  
+  <Mission courseIndex="10" missionIndex="1" missionName="SL: Snowman's Big Head"/>
+  <Mission courseIndex="10" missionIndex="2" missionName="SL: Chill with the Bully"/>
+  <Mission courseIndex="10" missionIndex="3" missionName="SL: In the Deep Freeze"/>
+  <Mission courseIndex="10" missionIndex="4" missionName="SL: Whirl from the Freezing Pond"/>
+  <Mission courseIndex="10" missionIndex="5" missionName="SL: Shell Shreddin' for Red Coins"/>
+  <Mission courseIndex="10" missionIndex="6" missionName="SL: Into the Igloo"/>
+  <Mission courseIndex="10" missionIndex="7" missionName="SL: 100 Coins"/>
+  
+  <Mission courseIndex="11" missionIndex="1" missionName="WDW: Shocking Arrow Lifts!"/>
+  <Mission courseIndex="11" missionIndex="2" missionName="WDW: Top O' the Town"/>
+  <Mission courseIndex="11" missionIndex="3" missionName="WDW: Secrets in the Shallows &amp; Sky"/>
+  <Mission courseIndex="11" missionIndex="4" missionName="WDW: Express Elevator--Hurry Up!"/>
+  <Mission courseIndex="11" missionIndex="5" missionName="WDW: Go to Town for Red Coins"/>
+  <Mission courseIndex="11" missionIndex="6" missionName="WDW: Quick Race Through Downtown!"/>
+  <Mission courseIndex="11" missionIndex="7" missionName="WDW: 100 Coins"/>
+  
+  <Mission courseIndex="12" missionIndex="1" missionName="TTM: Scale the Mountain"/>
+  <Mission courseIndex="12" missionIndex="2" missionName="TTM: Mystery of the Monkey Cage"/>
+  <Mission courseIndex="12" missionIndex="3" missionName="TTM: Scary 'Shrooms, Red Coins"/>
+  <Mission courseIndex="12" missionIndex="4" missionName="TTM: Mysterious Mountainside"/>
+  <Mission courseIndex="12" missionIndex="5" missionName="TTM: Breathtaking View from Bridge"/>
+  <Mission courseIndex="12" missionIndex="6" missionName="TTM: Blast to the Lonely Mushroom"/>
+  <Mission courseIndex="12" missionIndex="7" missionName="TTM: 100 Coins"/>
+  
+  <Mission courseIndex="13" missionIndex="1" missionName="THI: Pluck the Piranha Flower"/>
+  <Mission courseIndex="13" missionIndex="2" missionName="THI: The Tip Top of the Huge Island"/>
+  <Mission courseIndex="13" missionIndex="3" missionName="THI: Rematch with Koopa the Quick"/>
+  <Mission courseIndex="13" missionIndex="4" missionName="THI: Five Itty Bitty Secrets"/>
+  <Mission courseIndex="13" missionIndex="5" missionName="THI: Wiggler's Red Coins"/>
+  <Mission courseIndex="13" missionIndex="6" missionName="THI: Make Wiggler Squirm"/>
+  <Mission courseIndex="13" missionIndex="7" missionName="THI: 100 Coins"/>
+  
+  <Mission courseIndex="14" missionIndex="1" missionName="TTC: Roll into the Cage"/>
+  <Mission courseIndex="14" missionIndex="2" missionName="TTC: The Pit and the Pendulums"/>
+  <Mission courseIndex="14" missionIndex="3" missionName="TTC: Get a Hand"/>
+  <Mission courseIndex="14" missionIndex="4" missionName="TTC: Stomp on the Thwomp"/>
+  <Mission courseIndex="14" missionIndex="5" missionName="TTC: Timed Jumps on Moving Bars"/>
+  <Mission courseIndex="14" missionIndex="6" missionName="TTC: Stop Time for Red Coins"/>
+  <Mission courseIndex="14" missionIndex="7" missionName="TTC: 100 Coins"/>
+  
+  <Mission courseIndex="15" missionIndex="1" missionName="RR: Cruiser Crossing the Rainbow"/>
+  <Mission courseIndex="15" missionIndex="2" missionName="RR: The Big House in the Sky"/>
+  <Mission courseIndex="15" missionIndex="3" missionName="RR: Coins Amassed in a Maze"/>
+  <Mission courseIndex="15" missionIndex="4" missionName="RR: Swingin' in the Breeze"/>
+  <Mission courseIndex="15" missionIndex="5" missionName="RR: Tricky Triangles!"/>
+  <Mission courseIndex="15" missionIndex="6" missionName="RR: Somewhere Over the Rainbow"/>
+  <Mission courseIndex="15" missionIndex="7" missionName="RR: 100 Coins"/>
 </Missions>
