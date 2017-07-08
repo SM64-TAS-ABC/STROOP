@@ -9,6 +9,7 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Structs.Configurations;
 using SM64Diagnostic.Controls;
+using System.Drawing;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -115,12 +116,12 @@ namespace SM64_Diagnostic.Managers
             {
                 int col = 7;
                 string controlName = String.Format("filePictureBoxTableRow{0}Col{1}", row + 1, col + 1);
-                FileCannonPictureBox fileCannonPictureBox = fileTable.Controls[controlName] as FileCannonPictureBox;
+                FileBinaryPictureBox fileCannonPictureBox = fileTable.Controls[controlName] as FileBinaryPictureBox;
                 if (fileCannonPictureBox == null) continue;
 
                 uint addressOffset = GetCannonAddressOffset(row, col);
                 byte mask = 0x80;
-                fileCannonPictureBox.Initialize(_stream, _gui, addressOffset, mask);
+                fileCannonPictureBox.Initialize(_stream, _gui, addressOffset, mask, _gui.CannonImage, _gui.CannonLidImage);
                 _filePictureBoxList.Add(fileCannonPictureBox);
             }
 
@@ -128,35 +129,33 @@ namespace SM64_Diagnostic.Managers
             {
                 int col = 8;
                 string controlName = String.Format("filePictureBoxTableRow{0}Col{1}", row + 1, col + 1);
-                var fileDoorPictureBox = fileTable.Controls[controlName];
-                if (fileDoorPictureBox == null) continue;
+                FileBinaryPictureBox fileBinaryPictureBox = fileTable.Controls[controlName] as FileBinaryPictureBox;
+                if (fileBinaryPictureBox == null) continue;
 
-                if (fileDoorPictureBox is File1StarDoorPictureBox)
-                {
-                    File1StarDoorPictureBox file1StarDoorPictureBox = fileDoorPictureBox as File1StarDoorPictureBox;
-                    uint addressOffset = GetDoorAddressOffset(row, col);
-                    byte mask = GetDoorMask(row, col);
-                    file1StarDoorPictureBox.Initialize(_stream, _gui, addressOffset, mask);
-                    _filePictureBoxList.Add(file1StarDoorPictureBox);
-                }
+                uint addressOffset = GetDoorAddressOffset(row, col);
+                byte mask = GetDoorMask(row, col);
+                (Image onImage, Image offImage) = GetDoorImages(row, col);
+                fileBinaryPictureBox.Initialize(_stream, _gui, addressOffset, mask, onImage, offImage);
+                _filePictureBoxList.Add(fileBinaryPictureBox);
+            }
+        }
 
-                if (fileDoorPictureBox is File3StarDoorPictureBox)
-                {
-                    File3StarDoorPictureBox file3StarDoorPictureBox = fileDoorPictureBox as File3StarDoorPictureBox;
-                    uint addressOffset = GetDoorAddressOffset(row, col);
-                    byte mask = GetDoorMask(row, col);
-                    file3StarDoorPictureBox.Initialize(_stream, _gui, addressOffset, mask);
-                    _filePictureBoxList.Add(file3StarDoorPictureBox);
-                }
-
-                if (fileDoorPictureBox is FileStarDoorPictureBox)
-                {
-                    FileStarDoorPictureBox fileStarDoorPictureBox = fileDoorPictureBox as FileStarDoorPictureBox;
-                    uint addressOffset = GetDoorAddressOffset(row, col);
-                    byte mask = GetDoorMask(row, col);
-                    fileStarDoorPictureBox.Initialize(_stream, _gui, addressOffset, mask);
-                    _filePictureBoxList.Add(fileStarDoorPictureBox);
-                }
+        private (Image onImage, Image offImage) GetDoorImages(int row, int col)
+        {
+            switch (row)
+            {
+                case 1:
+                case 18:
+                    return (_gui.DoorBlackImage, _gui.Door1StarImage);
+                case 2:
+                case 3:
+                    return (_gui.DoorBlackImage, _gui.Door3StarImage);
+                case 21:
+                case 22:
+                case 23:
+                    return (_gui.StarDoorOpenImage, _gui.StarDoorClosedImage);
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 

@@ -26,7 +26,7 @@ namespace SM64_Diagnostic
         {
         }
 
-        public void Initialize(ProcessStream stream, FileImageGui gui, uint addressOffset, byte mask)
+        protected void Initialize(ProcessStream stream, FileImageGui gui, uint addressOffset, byte mask)
         {
             _stream = stream;
             _gui = gui;

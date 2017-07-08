@@ -14,18 +14,28 @@ using System.Drawing.Drawing2D;
 
 namespace SM64_Diagnostic
 {
-    public class File3StarDoorPictureBox : FilePictureBox
+    public class FileBinaryPictureBox : FilePictureBox
     {
-        public File3StarDoorPictureBox()
+        private Image _onImage;
+        private Image _offImage;
+
+        public FileBinaryPictureBox()
         {
+        }
+
+        public void Initialize(ProcessStream stream, FileImageGui gui, uint addressOffset, byte mask, Image onImage, Image offImage)
+        {
+            _onImage = onImage;
+            _offImage = offImage;
+            base.Initialize(stream, gui, addressOffset, mask);
         }
 
         protected override Image GetImageForValue(byte value)
         {
             if (value == 0)
-                return _gui.DoorBlackImage;
+                return _offImage;
             else
-                return _gui.Door3StarImage;
+                return _onImage;
         }
     }
 }

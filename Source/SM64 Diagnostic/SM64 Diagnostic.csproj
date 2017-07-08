@@ -106,19 +106,10 @@
     <Compile Include="Controls\ControllerDisplayPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\File1StarDoorPictureBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\FileStarDoorPictureBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\File3StarDoorPictureBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Controls\FilePictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\FileCannonPictureBox.cs">
+    <Compile Include="Controls\FileBinaryPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\FileStarPictureBox.cs">
