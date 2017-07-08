@@ -501,7 +501,7 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxFileTableRow1Col1 = new FileTabPictureBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -609,7 +609,7 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFileTableRow1Col1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -3268,7 +3268,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow24, 0, 23);
             this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow25, 0, 24);
             this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow26, 0, 25);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBoxFileTableRow1Col1, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(257, 18);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 26;
@@ -6223,17 +6223,17 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // pictureBox1
+            // pictureBoxFileTableRow1Col1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pictureBoxFileTableRow1Col1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(74, 1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(28, 15);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxFileTableRow1Col1.Location = new System.Drawing.Point(74, 1);
+            this.pictureBoxFileTableRow1Col1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxFileTableRow1Col1.Name = "pictureBoxFileTableRow1Col1";
+            this.pictureBoxFileTableRow1Col1.Size = new System.Drawing.Size(28, 15);
+            this.pictureBoxFileTableRow1Col1.TabIndex = 10;
+            this.pictureBoxFileTableRow1Col1.TabStop = false;
             // 
             // StroopMainForm
             // 
@@ -6403,7 +6403,7 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFileTableRow1Col1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6878,7 +6878,7 @@ namespace SM64_Diagnostic
         private Label labelFileTableRow24;
         private Label labelFileTableRow25;
         private Label labelFileTableRow26;
-        private PictureBox pictureBox1;
+        private FileTabPictureBox pictureBoxFileTableRow1Col1;
     }
 }
 
