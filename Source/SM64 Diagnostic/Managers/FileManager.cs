@@ -84,6 +84,10 @@ namespace SM64_Diagnostic.Managers
             _hatLocationTTMGroundRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.TTMGround);
 
             _currentHatLocation = getCurrentHatLocation();
+
+            TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
+            FilePictureBox row1col1PictureBox = fileTable.Controls["pictureBoxFileTableRow1Col1"] as FilePictureBox;
+            row1col1PictureBox.Click += (sender, e) => Console.WriteLine("test");
         }
 
         private void SetHatMode(byte hatModeByte)

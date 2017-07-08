@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -254,7 +254,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.splitContainerFile = new System.Windows.Forms.SplitContainer();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelFile = new System.Windows.Forms.TableLayoutPanel();
             this.labelFileTableRow1 = new System.Windows.Forms.Label();
             this.labelFileTableRow2 = new System.Windows.Forms.Label();
             this.labelFileTableRow3 = new System.Windows.Forms.Label();
@@ -566,7 +566,7 @@ namespace SM64_Diagnostic
             this.splitContainerFile.Panel1.SuspendLayout();
             this.splitContainerFile.Panel2.SuspendLayout();
             this.splitContainerFile.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanelFile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFileTableRow1Col1)).BeginInit();
             this.groupBoxHatLocation.SuspendLayout();
             this.groupBoxFile.SuspendLayout();
@@ -641,7 +641,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 214);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 215);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -729,7 +729,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 167);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 168);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -1682,7 +1682,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(699, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(702, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2200,7 +2200,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(708, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(711, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2325,7 +2325,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(809, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(812, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -2706,7 +2706,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(719, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(722, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3100,7 +3100,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(716, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(719, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3185,7 +3185,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(497, 460);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(500, 460);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3212,7 +3212,7 @@ namespace SM64_Diagnostic
             // splitContainerFile.Panel1
             // 
             this.splitContainerFile.Panel1.AutoScroll = true;
-            this.splitContainerFile.Panel1.Controls.Add(this.tableLayoutPanel1);
+            this.splitContainerFile.Panel1.Controls.Add(this.tableLayoutPanelFile);
             this.splitContainerFile.Panel1.Controls.Add(this.groupBoxHatLocation);
             this.splitContainerFile.Panel1.Controls.Add(this.groupBoxFile);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonFileSave);
@@ -3227,79 +3227,79 @@ namespace SM64_Diagnostic
             this.splitContainerFile.SplitterWidth = 1;
             this.splitContainerFile.TabIndex = 19;
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanelFile
             // 
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 11;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow5, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow6, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow7, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow8, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow9, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow10, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow11, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow12, 0, 11);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow13, 0, 12);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow14, 0, 13);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow15, 0, 14);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow16, 0, 15);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow17, 0, 16);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow18, 0, 17);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow19, 0, 18);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow20, 0, 19);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow21, 0, 20);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow22, 0, 21);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow23, 0, 22);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow24, 0, 23);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow25, 0, 24);
-            this.tableLayoutPanel1.Controls.Add(this.labelFileTableRow26, 0, 25);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBoxFileTableRow1Col1, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(257, 18);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 26;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(374, 419);
-            this.tableLayoutPanel1.TabIndex = 39;
+            this.tableLayoutPanelFile.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanelFile.ColumnCount = 11;
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow1, 0, 0);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow2, 0, 1);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow3, 0, 2);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow4, 0, 3);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow5, 0, 4);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow6, 0, 5);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow7, 0, 6);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow8, 0, 7);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow9, 0, 8);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow10, 0, 9);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow11, 0, 10);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow12, 0, 11);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow13, 0, 12);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow14, 0, 13);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow15, 0, 14);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow16, 0, 15);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow17, 0, 16);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow18, 0, 17);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow19, 0, 18);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow20, 0, 19);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow21, 0, 20);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow22, 0, 21);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow23, 0, 22);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow24, 0, 23);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow25, 0, 24);
+            this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow26, 0, 25);
+            this.tableLayoutPanelFile.Controls.Add(this.pictureBoxFileTableRow1Col1, 1, 0);
+            this.tableLayoutPanelFile.Location = new System.Drawing.Point(257, 18);
+            this.tableLayoutPanelFile.Name = "tableLayoutPanelFile";
+            this.tableLayoutPanelFile.RowCount = 26;
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
+            this.tableLayoutPanelFile.Size = new System.Drawing.Size(374, 419);
+            this.tableLayoutPanelFile.TabIndex = 39;
             // 
             // labelFileTableRow1
             // 
@@ -3858,7 +3858,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(231, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(234, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -4295,7 +4295,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(698, 430);
+            this.glControlMap.Size = new System.Drawing.Size(701, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -4641,8 +4641,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -4813,7 +4813,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(663, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(666, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -4849,7 +4849,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(509, 422);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(512, 422);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -4912,7 +4912,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(612, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(615, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -5621,7 +5621,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(487, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(490, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -6339,8 +6339,8 @@ namespace SM64_Diagnostic
             this.splitContainerFile.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).EndInit();
             this.splitContainerFile.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanelFile.ResumeLayout(false);
+            this.tableLayoutPanelFile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFileTableRow1Col1)).EndInit();
             this.groupBoxHatLocation.ResumeLayout(false);
             this.groupBoxHatLocation.PerformLayout();
@@ -6851,7 +6851,7 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonHatLocationMario;
         private RadioButton radioButtonHatLocationSLSnowman;
         private RadioButton radioButtonHatLocationSSLGround;
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanelFile;
         private Label labelFileTableRow1;
         private Label labelFileTableRow2;
         private Label labelFileTableRow3;
