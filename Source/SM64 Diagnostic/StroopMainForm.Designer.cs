@@ -621,17 +621,17 @@ namespace SM64_Diagnostic
             this.filePictureBoxTableRow25Col3 = new SM64_Diagnostic.FileStarPictureBox();
             this.filePictureBoxTableRow26Col2 = new SM64_Diagnostic.FileStarPictureBox();
             this.filePictureBoxTableRow19Col2 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow1Col8 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow2Col8 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow3Col8 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow4Col8 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow8Col8 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow10Col8 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow11Col8 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow12Col8 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow13Col8 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow15Col8 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow21Col8 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow1Col8 = new SM64_Diagnostic.FileCannonPictureBox();
+            this.filePictureBoxTableRow2Col8 = new SM64_Diagnostic.FileCannonPictureBox();
+            this.filePictureBoxTableRow3Col8 = new SM64_Diagnostic.FileCannonPictureBox();
+            this.filePictureBoxTableRow4Col8 = new SM64_Diagnostic.FileCannonPictureBox();
+            this.filePictureBoxTableRow8Col8 = new SM64_Diagnostic.FileCannonPictureBox();
+            this.filePictureBoxTableRow10Col8 = new SM64_Diagnostic.FileCannonPictureBox();
+            this.filePictureBoxTableRow11Col8 = new SM64_Diagnostic.FileCannonPictureBox();
+            this.filePictureBoxTableRow12Col8 = new SM64_Diagnostic.FileCannonPictureBox();
+            this.filePictureBoxTableRow13Col8 = new SM64_Diagnostic.FileCannonPictureBox();
+            this.filePictureBoxTableRow15Col8 = new SM64_Diagnostic.FileCannonPictureBox();
+            this.filePictureBoxTableRow21Col8 = new SM64_Diagnostic.FileCannonPictureBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -9340,17 +9340,17 @@ namespace SM64_Diagnostic
         private FileStarPictureBox filePictureBoxTableRow18Col1;
         private FileStarPictureBox filePictureBoxTableRow17Col1;
         private FileStarPictureBox filePictureBoxTableRow16Col1;
-        private FileStarPictureBox filePictureBoxTableRow21Col8;
-        private FileStarPictureBox filePictureBoxTableRow15Col8;
-        private FileStarPictureBox filePictureBoxTableRow13Col8;
-        private FileStarPictureBox filePictureBoxTableRow12Col8;
-        private FileStarPictureBox filePictureBoxTableRow11Col8;
-        private FileStarPictureBox filePictureBoxTableRow10Col8;
-        private FileStarPictureBox filePictureBoxTableRow4Col8;
-        private FileStarPictureBox filePictureBoxTableRow3Col8;
-        private FileStarPictureBox filePictureBoxTableRow2Col8;
-        private FileStarPictureBox filePictureBoxTableRow1Col8;
-        private FileStarPictureBox filePictureBoxTableRow8Col8;
+        private FileCannonPictureBox filePictureBoxTableRow21Col8;
+        private FileCannonPictureBox filePictureBoxTableRow15Col8;
+        private FileCannonPictureBox filePictureBoxTableRow13Col8;
+        private FileCannonPictureBox filePictureBoxTableRow12Col8;
+        private FileCannonPictureBox filePictureBoxTableRow11Col8;
+        private FileCannonPictureBox filePictureBoxTableRow10Col8;
+        private FileCannonPictureBox filePictureBoxTableRow4Col8;
+        private FileCannonPictureBox filePictureBoxTableRow3Col8;
+        private FileCannonPictureBox filePictureBoxTableRow2Col8;
+        private FileCannonPictureBox filePictureBoxTableRow1Col8;
+        private FileCannonPictureBox filePictureBoxTableRow8Col8;
     }
 }
 

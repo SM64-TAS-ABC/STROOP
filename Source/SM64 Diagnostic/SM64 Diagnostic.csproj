@@ -109,6 +109,9 @@
     <Compile Include="Controls\FilePictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\FileCannonPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\FileStarPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
