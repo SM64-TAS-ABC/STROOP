@@ -93,17 +93,18 @@ namespace SM64_Diagnostic.Managers
 
             TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
 
-            uint numRows = 15;
-            uint numCols = 1;
+            int numRows = 15;
+            int numCols = 1;
 
             _filePictureBoxList = new List<FilePictureBox>();
-            for (uint row = 0; row < numRows; row++)
+            for (int row = 0; row < numRows; row++)
             {
-                for (uint col = 0; col < numCols; col++)
+                for (int col = 0; col < numCols; col++)
                 {
                     string controlName = String.Format("filePictureBoxTableRow{0}Col{1}", row+1, col+1);
                     FileStarPictureBox fileStarPictureBox = fileTable.Controls[controlName] as FileStarPictureBox;
-                    fileStarPictureBox.Initialize(_stream, _gui, 0x0C + row, 0x01);
+                    string missionName = Config.Missions.GetMissionName(row + 1, col + 1);
+                    fileStarPictureBox.Initialize(_stream, _gui, 0x0C + (uint)row, 0x01, missionName);
                     _filePictureBoxList.Add(fileStarPictureBox);
                 }
             }

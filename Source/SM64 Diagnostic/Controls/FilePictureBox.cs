@@ -21,18 +21,21 @@ namespace SM64_Diagnostic
         protected uint _addressOffset;
         protected byte _mask;
         protected byte _currentValue;
+        protected string _missionName;
 
         public FilePictureBox()
         {
         }
 
-        public void Initialize(ProcessStream stream, FileImageGui gui, uint addressOffset, byte mask)
+        public void Initialize(ProcessStream stream, FileImageGui gui, uint addressOffset, byte mask, string missionName)
         {
             _stream = stream;
             _gui = gui;
             _addressOffset = addressOffset;
             _mask = mask;
             _currentValue = GetValue();
+            _missionName = missionName;
+
             this.Click += ClickAction;
             this.MouseEnter += (s, e) => this.Cursor = Cursors.Hand;
             this.MouseLeave += (s, e) => this.Cursor = Cursors.Arrow;
