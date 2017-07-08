@@ -162,6 +162,7 @@
     <Compile Include="Structs\Configurations\GotoRetrieveConfig.cs" />
     <Compile Include="Structs\Configurations\CameraHackConfig.cs" />
     <Compile Include="Structs\Configurations\ControllerConfig.cs" />
+    <Compile Include="Structs\Gui\FileImageGui.cs" />
     <Compile Include="Structs\Gui\ControllerImageGui.cs" />
     <Compile Include="Structs\PendulumSwingTable.cs" />
     <Compile Include="Structs\AnimationTable.cs" />
@@ -231,6 +232,9 @@
       <DependentUpon>LoadingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="Config\FileImageAssociations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Config\ControllerImageAssociations.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -346,6 +350,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Schemas\FileDataSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\FileImageAssociationsSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

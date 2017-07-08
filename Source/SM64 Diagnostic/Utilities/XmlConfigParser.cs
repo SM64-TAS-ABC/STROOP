@@ -1312,6 +1312,65 @@ namespace SM64_Diagnostic.Utilities
             controllerImageGui.ControllerBaseImage = Image.FromFile(controllerImageDir + controllerBasePath);
         }
 
+        public static void OpenFileImageAssoc(string path, FileImageGui fileImageGui)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/FileImageAssociationsSchema.xsd", "FileImageAssociationsSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            // Create path list
+            string fileImageDir = "",
+                   powerStarPath = "",
+                   powerStarBlackPath = "";
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                switch (element.Name.ToString())
+                {
+                    case "Config":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "FileImageDirectory":
+                                    fileImageDir = subElement.Value;
+                                    break;
+                            }
+                        }
+                        break;
+
+                    case "FileImages":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "PowerStar":
+                                    powerStarPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "PowerStarBlack":
+                                    powerStarBlackPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+                            }
+                        }
+                        break;
+                }
+            }
+
+            // Load Images
+            // TODO: Exceptions
+            fileImageGui.PowerStarImage = Image.FromFile(fileImageDir + powerStarPath);
+            fileImageGui.PowerStarBlackImage = Image.FromFile(fileImageDir + powerStarBlackPath);
+        }
+
         public static MapAssociations OpenMapAssoc(string path)
         {
             var assoc = new MapAssociations();

@@ -28,15 +28,6 @@ namespace SM64_Diagnostic.Structs
         public Image ControlStickImage;
         public Image ControllerBaseImage;
 
-        /*
-        public CheckBox LockLabelsCheckbox;
-        public TabControl TabControl;
-        public ComboBox MapObjectToggleModeComboBox;
-        public ComboBox SortMethodComboBox;
-        public ComboBox LabelMethodComboBox;
-        public NoTearFlowLayoutPanel FlowLayoutContainer;
-        */
-
         ~ControllerImageGui()
         {
             ButtonAImage?.Dispose();

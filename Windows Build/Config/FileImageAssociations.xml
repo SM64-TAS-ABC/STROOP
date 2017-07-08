@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FileImageAssociations>
+  <Config>
+    <FileImageDirectory>Resources\File Images\</FileImageDirectory>
+  </Config>
+  <FileImages>
+    <PowerStar>
+      <FileImage path="Power Star.png"/>
+    </PowerStar>
+    <PowerStarBlack>
+      <FileImage path="Power Star Black.png"/>
+    </PowerStarBlack>
+  </FileImages>
+</FileImageAssociations>

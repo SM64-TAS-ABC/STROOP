@@ -501,7 +501,7 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.pictureBoxFileTableRow1Col1 = new FileTabPictureBox();
+            this.pictureBoxFileTableRow1Col1 = new FilePictureBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -6878,7 +6878,7 @@ namespace SM64_Diagnostic
         private Label labelFileTableRow24;
         private Label labelFileTableRow25;
         private Label labelFileTableRow26;
-        private FileTabPictureBox pictureBoxFileTableRow1Col1;
+        private FilePictureBox pictureBoxFileTableRow1Col1;
     }
 }
 

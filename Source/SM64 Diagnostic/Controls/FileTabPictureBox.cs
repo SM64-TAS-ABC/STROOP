@@ -14,10 +14,10 @@ using System.Drawing.Drawing2D;
 
 namespace SM64_Diagnostic
 {
-    public class FileTabPictureBox : PictureBox
+    public class FilePictureBox : PictureBox
     {
 
-        public FileTabPictureBox()
+        public FilePictureBox()
         {
         }
 
