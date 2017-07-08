@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="filePictureBoxTest2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="filePictureBoxTest.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQfgCgIFAy7LGf3v
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQfgCgIFAy7LGf3v
         AAADwklEQVR4XuXbPatUVxSH8ZuoxEoiamI0aRQDvhDQLxAwVQIW+hGUiIVgY6G1nYIgKFiEYD6AgiZq
         fCki1ooiIogxpRoJQcVEg2//NdyB5eaZs/aefWbOzM0Dv+bOWevsQb1zmbnOdNRy+UX+nfWzfCL/i9bJ
         2wHWypxupdAT91bInGyhPBN60t5TsWsnKvs3e176hzw3+7WS/hD/RJvcl4nJnigd0nwqOV0Vmm9iMxOR
@@ -141,10 +141,10 @@
         Zjz5mZl3nUw0SeQgl1QAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="filePictureBoxTest.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="filePictureBoxTest2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQfgCgIFAy7LGf3v
+        YQUAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQfgCgIFAy7LGf3v
         AAADwklEQVR4XuXbPatUVxSH8ZuoxEoiamI0aRQDvhDQLxAwVQIW+hGUiIVgY6G1nYIgKFiEYD6AgiZq
         fCki1ooiIogxpRoJQcVEg2//NdyB5eaZs/aefWbOzM0Dv+bOWevsQb1zmbnOdNRy+UX+nfWzfCL/i9bJ
         2wHWypxupdAT91bInGyhPBN60t5TsWsnKvs3e176hzw3+7WS/hD/RJvcl4nJnigd0nwqOV0Vmm9iMxOR

@@ -32,7 +32,6 @@ namespace SM64_Diagnostic.Managers
         RadioButton _hatLocationTTMUkikiRadioButton;
         RadioButton _hatLocationTTMGroundRadioButton;
 
-        FilePictureBox _row1col1PictureBox;
         FilePictureBox _testPictureBox;
         FilePictureBox _testPictureBox2;
 
@@ -90,16 +89,16 @@ namespace SM64_Diagnostic.Managers
             _currentHatLocation = getCurrentHatLocation();
 
             TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
-            _row1col1PictureBox = fileTable.Controls["pictureBoxFileTableRow1Col1"] as FilePictureBox;
-            _row1col1PictureBox.Click += (sender, e) => Console.WriteLine("test");
-            _row1col1PictureBox.Initialize(_stream, _gui, _currentFileAddress + 0x11, 0x01);
+            //_row1col1PictureBox = fileTable.Controls["pictureBoxFileTableRow1Col1"] as FilePictureBox;
+            //_row1col1PictureBox.Click += (sender, e) => Console.WriteLine("test");
+            //_row1col1PictureBox.Initialize(_stream, _gui, _currentFileAddress + 0x11, 0x01);
             //row1col1PictureBox.UpdateImage();
-            _row1col1PictureBox.Image = _gui.PowerStarImage;
+            //_row1col1PictureBox.Image = _gui.PowerStarImage;
 
             _testPictureBox = splitContainerFile.Panel1.Controls["filePictureBoxTest"] as FilePictureBox;
             _testPictureBox.Image = _gui.PowerStarImage;
 
-            _testPictureBox2 = splitContainerFile.Panel1.Controls["filePictureBoxTest2"] as FilePictureBox;
+            _testPictureBox2 = fileTable.Controls["filePictureBoxTest2"] as FilePictureBox;
             _testPictureBox2.Image = _gui.PowerStarImage;
         }
 
@@ -268,8 +267,6 @@ namespace SM64_Diagnostic.Managers
             _hatLocationSLGroundRadioButton.Checked = _currentHatLocation == HatLocation.SLGround;
             _hatLocationTTMUkikiRadioButton.Checked = _currentHatLocation == HatLocation.TTMUkiki;
             _hatLocationTTMGroundRadioButton.Checked = _currentHatLocation == HatLocation.TTMGround;
-
-            _row1col1PictureBox.Invalidate();
 
             base.Update(updateView);
         }

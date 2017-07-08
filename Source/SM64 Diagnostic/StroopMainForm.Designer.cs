@@ -31,8 +31,8 @@ namespace SM64_Diagnostic
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -3216,7 +3216,6 @@ namespace SM64_Diagnostic
             // splitContainerFile.Panel1
             // 
             this.splitContainerFile.Panel1.AutoScroll = true;
-            this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxTest2);
             this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxTest);
             this.splitContainerFile.Panel1.Controls.Add(this.tableLayoutPanelFile);
             this.splitContainerFile.Panel1.Controls.Add(this.groupBoxHatLocation);
@@ -3289,6 +3288,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow24, 0, 23);
             this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow25, 0, 24);
             this.tableLayoutPanelFile.Controls.Add(this.labelFileTableRow26, 0, 25);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTest2, 2, 0);
             this.tableLayoutPanelFile.Location = new System.Drawing.Point(257, 18);
             this.tableLayoutPanelFile.Name = "tableLayoutPanelFile";
             this.tableLayoutPanelFile.RowCount = 26;
@@ -6261,10 +6261,10 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxTest2.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTest2.Image")));
-            this.filePictureBoxTest2.Location = new System.Drawing.Point(210, 211);
+            this.filePictureBoxTest2.Location = new System.Drawing.Point(103, 1);
             this.filePictureBoxTest2.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxTest2.Name = "filePictureBoxTest2";
-            this.filePictureBoxTest2.Size = new System.Drawing.Size(21, 59);
+            this.filePictureBoxTest2.Size = new System.Drawing.Size(28, 15);
             this.filePictureBoxTest2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.filePictureBoxTest2.TabIndex = 41;
             this.filePictureBoxTest2.TabStop = false;
