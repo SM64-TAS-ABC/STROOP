@@ -16,6 +16,35 @@ namespace SM64_Diagnostic
 {
     public class FileStarPictureBox : FilePictureBox
     {
+        static ToolTip _toolTip;
+        public static ToolTip AddressToolTip
+        {
+            get
+            {
+                if (_toolTip == null)
+                {
+                    _toolTip = new ToolTip();
+                    _toolTip.IsBalloon = true;
+                    _toolTip.ShowAlways = true;
+                }
+                return _toolTip;
+            }
+            set
+            {
+                _toolTip = value;
+            }
+        }
+
+        public FileStarPictureBox()
+        {
+        }
+
+        public void Initialize(ProcessStream stream, FileImageGui gui, uint addressOffset, byte mask, string missionName)
+        {
+            base.Initialize(stream, gui, addressOffset, mask);
+            AddressToolTip.SetToolTip(this, missionName);
+        }
+
         protected override Image GetImageForValue(byte value)
         {
             if (value == 0)
