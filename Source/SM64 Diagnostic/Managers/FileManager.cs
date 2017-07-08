@@ -98,13 +98,14 @@ namespace SM64_Diagnostic.Managers
             {
                 for (int col = 0; col < 7; col++)
                 {
-                    string missionName = Config.Missions.GetMissionName(row + 1, col + 1);
-                    if (missionName == null) continue;
 
                     string controlName = String.Format("filePictureBoxTableRow{0}Col{1}", row + 1, col + 1);
                     FileStarPictureBox fileStarPictureBox = fileTable.Controls[controlName] as FileStarPictureBox;
+                    if (fileStarPictureBox == null) continue;
+
                     uint addressOffset = GetAddressOffset(row, col);
                     byte mask = GetMask(row, col);
+                    string missionName = Config.Missions.GetMissionName(row + 1, col + 1);
                     fileStarPictureBox.Initialize(_stream, _gui, addressOffset, mask, missionName);
                     _filePictureBoxList.Add(fileStarPictureBox);
                 }
