@@ -639,21 +639,21 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow1Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow2Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow3Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow4Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow5Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow6Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow7Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow8Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow9Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow10Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow11Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow12Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow13Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow14Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow15Col10 = new System.Windows.Forms.TextBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -3531,21 +3531,21 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanelFile.Controls.Add(this.textBox15, 10, 14);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox14, 10, 13);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox13, 10, 12);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox12, 10, 11);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox11, 10, 10);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox10, 10, 9);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox9, 10, 8);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox8, 10, 7);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox7, 10, 6);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox6, 10, 5);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox5, 10, 4);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox4, 10, 3);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox3, 10, 2);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox2, 10, 1);
-            this.tableLayoutPanelFile.Controls.Add(this.textBox1, 10, 0);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow12Col10, 10, 11);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow11Col10, 10, 10);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow10Col10, 10, 9);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow9Col10, 10, 8);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow8Col10, 10, 7);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow7Col10, 10, 6);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow6Col10, 10, 5);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow5Col10, 10, 4);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow4Col10, 10, 3);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow3Col10, 10, 2);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow2Col10, 10, 1);
+            this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow1Col10, 10, 0);
             this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow24Col9, 9, 23);
             this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow23Col9, 9, 22);
             this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow22Col9, 9, 21);
@@ -6219,7 +6219,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(238, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(232, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -8596,215 +8596,215 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // textBox1
+            // textBoxTableRow1Col10
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow1Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(335, 1);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox1.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(38, 15);
-            this.textBox1.TabIndex = 40;
-            this.textBox1.Text = "100";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow1Col10.Location = new System.Drawing.Point(335, 1);
+            this.textBoxTableRow1Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow1Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow1Col10.Name = "textBoxTableRow1Col10";
+            this.textBoxTableRow1Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow1Col10.TabIndex = 40;
+            this.textBoxTableRow1Col10.Text = "100";
+            this.textBoxTableRow1Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // textBoxTableRow2Col10
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow2Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(335, 17);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox2.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(38, 15);
-            this.textBox2.TabIndex = 41;
-            this.textBox2.Text = "100";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow2Col10.Location = new System.Drawing.Point(335, 17);
+            this.textBoxTableRow2Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow2Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow2Col10.Name = "textBoxTableRow2Col10";
+            this.textBoxTableRow2Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow2Col10.TabIndex = 41;
+            this.textBoxTableRow2Col10.Text = "100";
+            this.textBoxTableRow2Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox3
+            // textBoxTableRow3Col10
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow3Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(335, 33);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox3.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(38, 15);
-            this.textBox3.TabIndex = 41;
-            this.textBox3.Text = "100";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow3Col10.Location = new System.Drawing.Point(335, 33);
+            this.textBoxTableRow3Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow3Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow3Col10.Name = "textBoxTableRow3Col10";
+            this.textBoxTableRow3Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow3Col10.TabIndex = 41;
+            this.textBoxTableRow3Col10.Text = "100";
+            this.textBoxTableRow3Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox4
+            // textBoxTableRow4Col10
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow4Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(335, 49);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox4.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(38, 15);
-            this.textBox4.TabIndex = 41;
-            this.textBox4.Text = "100";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow4Col10.Location = new System.Drawing.Point(335, 49);
+            this.textBoxTableRow4Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow4Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow4Col10.Name = "textBoxTableRow4Col10";
+            this.textBoxTableRow4Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow4Col10.TabIndex = 41;
+            this.textBoxTableRow4Col10.Text = "100";
+            this.textBoxTableRow4Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox5
+            // textBoxTableRow5Col10
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow5Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(335, 65);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox5.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(38, 15);
-            this.textBox5.TabIndex = 41;
-            this.textBox5.Text = "100";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow5Col10.Location = new System.Drawing.Point(335, 65);
+            this.textBoxTableRow5Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow5Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow5Col10.Name = "textBoxTableRow5Col10";
+            this.textBoxTableRow5Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow5Col10.TabIndex = 41;
+            this.textBoxTableRow5Col10.Text = "100";
+            this.textBoxTableRow5Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox6
+            // textBoxTableRow6Col10
             // 
-            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow6Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.Location = new System.Drawing.Point(335, 81);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox6.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(38, 15);
-            this.textBox6.TabIndex = 41;
-            this.textBox6.Text = "100";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow6Col10.Location = new System.Drawing.Point(335, 81);
+            this.textBoxTableRow6Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow6Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow6Col10.Name = "textBoxTableRow6Col10";
+            this.textBoxTableRow6Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow6Col10.TabIndex = 41;
+            this.textBoxTableRow6Col10.Text = "100";
+            this.textBoxTableRow6Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox7
+            // textBoxTableRow7Col10
             // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow7Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Location = new System.Drawing.Point(335, 97);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox7.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(38, 15);
-            this.textBox7.TabIndex = 41;
-            this.textBox7.Text = "100";
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow7Col10.Location = new System.Drawing.Point(335, 97);
+            this.textBoxTableRow7Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow7Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow7Col10.Name = "textBoxTableRow7Col10";
+            this.textBoxTableRow7Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow7Col10.TabIndex = 41;
+            this.textBoxTableRow7Col10.Text = "100";
+            this.textBoxTableRow7Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox8
+            // textBoxTableRow8Col10
             // 
-            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow8Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Location = new System.Drawing.Point(335, 113);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox8.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(38, 15);
-            this.textBox8.TabIndex = 41;
-            this.textBox8.Text = "100";
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow8Col10.Location = new System.Drawing.Point(335, 113);
+            this.textBoxTableRow8Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow8Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow8Col10.Name = "textBoxTableRow8Col10";
+            this.textBoxTableRow8Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow8Col10.TabIndex = 41;
+            this.textBoxTableRow8Col10.Text = "100";
+            this.textBoxTableRow8Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox9
+            // textBoxTableRow9Col10
             // 
-            this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow9Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox9.Location = new System.Drawing.Point(335, 129);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox9.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(38, 15);
-            this.textBox9.TabIndex = 41;
-            this.textBox9.Text = "100";
-            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow9Col10.Location = new System.Drawing.Point(335, 129);
+            this.textBoxTableRow9Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow9Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow9Col10.Name = "textBoxTableRow9Col10";
+            this.textBoxTableRow9Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow9Col10.TabIndex = 41;
+            this.textBoxTableRow9Col10.Text = "100";
+            this.textBoxTableRow9Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox10
+            // textBoxTableRow10Col10
             // 
-            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow10Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.Location = new System.Drawing.Point(335, 145);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox10.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(38, 15);
-            this.textBox10.TabIndex = 41;
-            this.textBox10.Text = "100";
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow10Col10.Location = new System.Drawing.Point(335, 145);
+            this.textBoxTableRow10Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow10Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow10Col10.Name = "textBoxTableRow10Col10";
+            this.textBoxTableRow10Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow10Col10.TabIndex = 41;
+            this.textBoxTableRow10Col10.Text = "100";
+            this.textBoxTableRow10Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox11
+            // textBoxTableRow11Col10
             // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow11Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Location = new System.Drawing.Point(335, 161);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox11.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(38, 15);
-            this.textBox11.TabIndex = 41;
-            this.textBox11.Text = "100";
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow11Col10.Location = new System.Drawing.Point(335, 161);
+            this.textBoxTableRow11Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow11Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow11Col10.Name = "textBoxTableRow11Col10";
+            this.textBoxTableRow11Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow11Col10.TabIndex = 41;
+            this.textBoxTableRow11Col10.Text = "100";
+            this.textBoxTableRow11Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox12
+            // textBoxTableRow12Col10
             // 
-            this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow12Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox12.Location = new System.Drawing.Point(335, 177);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox12.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(38, 15);
-            this.textBox12.TabIndex = 41;
-            this.textBox12.Text = "100";
-            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow12Col10.Location = new System.Drawing.Point(335, 177);
+            this.textBoxTableRow12Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow12Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow12Col10.Name = "textBoxTableRow12Col10";
+            this.textBoxTableRow12Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow12Col10.TabIndex = 41;
+            this.textBoxTableRow12Col10.Text = "100";
+            this.textBoxTableRow12Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox13
+            // textBoxTableRow13Col10
             // 
-            this.textBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow13Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox13.Location = new System.Drawing.Point(335, 193);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox13.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(38, 15);
-            this.textBox13.TabIndex = 41;
-            this.textBox13.Text = "100";
-            this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow13Col10.Location = new System.Drawing.Point(335, 193);
+            this.textBoxTableRow13Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow13Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow13Col10.Name = "textBoxTableRow13Col10";
+            this.textBoxTableRow13Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow13Col10.TabIndex = 41;
+            this.textBoxTableRow13Col10.Text = "100";
+            this.textBoxTableRow13Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox14
+            // textBoxTableRow14Col10
             // 
-            this.textBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow14Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox14.Location = new System.Drawing.Point(335, 209);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox14.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(38, 15);
-            this.textBox14.TabIndex = 41;
-            this.textBox14.Text = "100";
-            this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow14Col10.Location = new System.Drawing.Point(335, 209);
+            this.textBoxTableRow14Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow14Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow14Col10.Name = "textBoxTableRow14Col10";
+            this.textBoxTableRow14Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow14Col10.TabIndex = 41;
+            this.textBoxTableRow14Col10.Text = "100";
+            this.textBoxTableRow14Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox15
+            // textBoxTableRow15Col10
             // 
-            this.textBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxTableRow15Col10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox15.Location = new System.Drawing.Point(335, 225);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox15.MaximumSize = new System.Drawing.Size(0, 15);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(38, 15);
-            this.textBox15.TabIndex = 41;
-            this.textBox15.Text = "100";
-            this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTableRow15Col10.Location = new System.Drawing.Point(335, 225);
+            this.textBoxTableRow15Col10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxTableRow15Col10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBoxTableRow15Col10.Name = "textBoxTableRow15Col10";
+            this.textBoxTableRow15Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow15Col10.TabIndex = 41;
+            this.textBoxTableRow15Col10.Text = "100";
+            this.textBoxTableRow15Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // StroopMainForm
             // 
@@ -9724,21 +9724,21 @@ namespace SM64_Diagnostic
         private File3StarDoorPictureBox filePictureBoxTableRow3Col9;
         private File1StarDoorPictureBox filePictureBoxTableRow2Col9;
         private File1StarDoorPictureBox filePictureBoxTableRow19Col9;
-        private TextBox textBox1;
-        private TextBox textBox15;
-        private TextBox textBox14;
-        private TextBox textBox13;
-        private TextBox textBox12;
-        private TextBox textBox11;
-        private TextBox textBox10;
-        private TextBox textBox9;
-        private TextBox textBox8;
-        private TextBox textBox7;
-        private TextBox textBox6;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private TextBox textBoxTableRow1Col10;
+        private TextBox textBoxTableRow15Col10;
+        private TextBox textBoxTableRow14Col10;
+        private TextBox textBoxTableRow13Col10;
+        private TextBox textBoxTableRow12Col10;
+        private TextBox textBoxTableRow11Col10;
+        private TextBox textBoxTableRow10Col10;
+        private TextBox textBoxTableRow9Col10;
+        private TextBox textBoxTableRow8Col10;
+        private TextBox textBoxTableRow7Col10;
+        private TextBox textBoxTableRow6Col10;
+        private TextBox textBoxTableRow5Col10;
+        private TextBox textBoxTableRow4Col10;
+        private TextBox textBoxTableRow3Col10;
+        private TextBox textBoxTableRow2Col10;
     }
 }
 
