@@ -33,6 +33,8 @@ namespace SM64_Diagnostic.Managers
         RadioButton _hatLocationTTMGroundRadioButton;
 
         FilePictureBox _row1col1PictureBox;
+        FilePictureBox _testPictureBox;
+        FilePictureBox _testPictureBox2;
 
         HatLocation? _currentHatLocation;
 
@@ -93,6 +95,12 @@ namespace SM64_Diagnostic.Managers
             _row1col1PictureBox.Initialize(_stream, _gui, _currentFileAddress + 0x11, 0x01);
             //row1col1PictureBox.UpdateImage();
             _row1col1PictureBox.Image = _gui.PowerStarImage;
+
+            _testPictureBox = splitContainerFile.Panel1.Controls["filePictureBoxTest"] as FilePictureBox;
+            _testPictureBox.Image = _gui.PowerStarImage;
+
+            _testPictureBox2 = splitContainerFile.Panel1.Controls["filePictureBoxTest2"] as FilePictureBox;
+            _testPictureBox2.Image = _gui.PowerStarImage;
         }
 
         private void SetHatMode(byte hatModeByte)
