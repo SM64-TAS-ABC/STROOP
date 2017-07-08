@@ -14,7 +14,7 @@ using System.Drawing.Drawing2D;
 
 namespace SM64_Diagnostic
 {
-    public class FileStarPictureBox : FilePictureBox
+    public class FileStarPictureBox : FileBinaryPictureBox
     {
         static ToolTip _toolTip;
         public static ToolTip AddressToolTip
@@ -39,18 +39,10 @@ namespace SM64_Diagnostic
         {
         }
 
-        public void Initialize(ProcessStream stream, FileImageGui gui, uint addressOffset, byte mask, string missionName)
+        public void Initialize(ProcessStream stream, FileImageGui gui, uint addressOffset, byte mask, Image onImage, Image offImage, string missionName)
         {
-            base.Initialize(stream, gui, addressOffset, mask);
+            base.Initialize(stream, gui, addressOffset, mask, onImage, offImage);
             AddressToolTip.SetToolTip(this, missionName);
-        }
-
-        protected override Image GetImageForValue(byte value)
-        {
-            if (value == 0)
-                return _gui.PowerStarBlackImage;
-            else
-                return _gui.PowerStarImage;
         }
     }
 }

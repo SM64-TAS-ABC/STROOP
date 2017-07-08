@@ -107,7 +107,7 @@ namespace SM64_Diagnostic.Managers
                     uint addressOffset = GetStarAddressOffset(row, col);
                     byte mask = GetStarMask(row, col);
                     string missionName = Config.Missions.GetMissionName(row + 1, col + 1);
-                    fileStarPictureBox.Initialize(_stream, _gui, addressOffset, mask, missionName);
+                    fileStarPictureBox.Initialize(_stream, _gui, addressOffset, mask, _gui.PowerStarImage, _gui.PowerStarBlackImage, missionName);
                     _filePictureBoxList.Add(fileStarPictureBox);
                 }
             }
