@@ -34,6 +34,8 @@ namespace SM64_Diagnostic
             _mask = mask;
             _currentValue = GetValue();
             this.Click += ClickAction;
+            this.MouseEnter += (s, e) => this.Cursor = Cursors.Hand;
+            this.MouseLeave += (s, e) => this.Cursor = Cursors.Arrow;
         }
 
         private void SetValue(bool boolValue)
