@@ -103,10 +103,22 @@ namespace SM64_Diagnostic.Managers
 
                     string controlName = String.Format("filePictureBoxTableRow{0}Col{1}", row + 1, col + 1);
                     FileStarPictureBox fileStarPictureBox = fileTable.Controls[controlName] as FileStarPictureBox;
-                    fileStarPictureBox.Initialize(_stream, _gui, 0x0C + (uint)row, (byte)Math.Pow(2,col), missionName);
+                    uint addressOffset = GetAddressOffset(row, col);
+                    byte mask = GetMask(row, col);
+                    fileStarPictureBox.Initialize(_stream, _gui, addressOffset, mask, missionName);
                     _filePictureBoxList.Add(fileStarPictureBox);
                 }
             }
+        }
+
+        private uint GetAddressOffset(int row, int col)
+        {
+            return 0x0C + (uint)row;
+        }
+
+        private byte GetMask(int row, int col)
+        {
+            return (byte)Math.Pow(2, col);
         }
 
         private void SetHatMode(byte hatModeByte)
