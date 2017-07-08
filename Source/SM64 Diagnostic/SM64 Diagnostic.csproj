@@ -167,6 +167,7 @@
     <Compile Include="Structs\Configurations\ControllerConfig.cs" />
     <Compile Include="Structs\Gui\FileImageGui.cs" />
     <Compile Include="Structs\Gui\ControllerImageGui.cs" />
+    <Compile Include="Structs\MissionTable.cs" />
     <Compile Include="Structs\PendulumSwingTable.cs" />
     <Compile Include="Structs\AnimationTable.cs" />
     <Compile Include="Structs\ActionTable.cs" />
@@ -359,6 +360,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Schemas\FileImageAssociationsSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\MissionTableSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

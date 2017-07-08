@@ -1693,6 +1693,36 @@ namespace SM64_Diagnostic.Utilities
             return pendulumSwingTable;
         }
 
+        public static MissionTable OpenMissionTable(string path)
+        {
+            MissionTable missionTable = new MissionTable();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/MissionTableSchema.xsd", "MissionTableSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                int courseIndex = (int)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("courseIndex")).Value);
+                int missionIndex = (int)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("missionIndex")).Value);
+                string missionName = element.Attribute(XName.Get("missionName")).Value;
+                missionTable.Add(new MissionTable.MissionReference()
+                {
+                    CourseIndex = courseIndex,
+                    MissionIndex = missionIndex,
+                    MissionName = missionName,
+                });
+            }
+
+            return missionTable;
+        }
+
         public static void AddWatchVariableOtherData(WatchVariable watchVar)
         {
             
