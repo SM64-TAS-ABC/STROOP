@@ -52,10 +52,5 @@ namespace SM64_Diagnostic
             else
                 return _gui.PowerStarImage;
         }
-
-        protected override byte GetNewValueForValue(byte oldValue)
-        {
-            return oldValue == 0 ? _mask : (byte)0;
-        }
     }
 }

@@ -25,5 +25,11 @@
     <DoorBlack>
       <FileImage path="Door Black.png"/>
     </DoorBlack>
+    <StarDoorOpen>
+      <FileImage path="Star Door Open.png"/>
+    </StarDoorOpen>
+    <StarDoorClosed>
+      <FileImage path="Star Door Closed.png"/>
+    </StarDoorClosed>
   </FileImages>
 </FileImageAssociations>

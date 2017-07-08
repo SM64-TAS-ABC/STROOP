@@ -109,6 +109,9 @@
     <Compile Include="Controls\File1StarDoorPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\FileStarDoorPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\File3StarDoorPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>

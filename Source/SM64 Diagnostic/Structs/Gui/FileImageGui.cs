@@ -18,6 +18,8 @@ namespace SM64_Diagnostic.Structs
         public Image Door1StarImage;
         public Image Door3StarImage;
         public Image DoorBlackImage;
+        public Image StarDoorOpenImage;
+        public Image StarDoorClosedImage;
 
         ~FileImageGui()
         {
@@ -28,6 +30,8 @@ namespace SM64_Diagnostic.Structs
             Door1StarImage?.Dispose();
             Door3StarImage?.Dispose();
             DoorBlackImage?.Dispose();
+            StarDoorOpenImage?.Dispose();
+            StarDoorClosedImage?.Dispose();
         }
     }
 }

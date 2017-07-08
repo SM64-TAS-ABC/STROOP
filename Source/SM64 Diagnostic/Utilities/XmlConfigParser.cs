@@ -1334,8 +1334,9 @@ namespace SM64_Diagnostic.Utilities
                    cannonLidPath = "",
                    door1StarPath = "",
                    door3StarPath = "",
-                   doorBlackPath = "";
-
+                   doorBlackPath = "",
+                   starDoorOpenPath = "",
+                   starDoorClosedPath = "";
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -1385,6 +1386,14 @@ namespace SM64_Diagnostic.Utilities
                                 case "DoorBlack":
                                     doorBlackPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
                                     break;
+
+                                case "StarDoorOpen":
+                                    starDoorOpenPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "StarDoorClosed":
+                                    starDoorClosedPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -1400,6 +1409,8 @@ namespace SM64_Diagnostic.Utilities
             fileImageGui.Door1StarImage = Image.FromFile(fileImageDir + door1StarPath);
             fileImageGui.Door3StarImage = Image.FromFile(fileImageDir + door3StarPath);
             fileImageGui.DoorBlackImage = Image.FromFile(fileImageDir + doorBlackPath);
+            fileImageGui.StarDoorOpenImage = Image.FromFile(fileImageDir + starDoorOpenPath);
+            fileImageGui.StarDoorClosedImage = Image.FromFile(fileImageDir + starDoorClosedPath);
         }
 
         public static MapAssociations OpenMapAssoc(string path)
