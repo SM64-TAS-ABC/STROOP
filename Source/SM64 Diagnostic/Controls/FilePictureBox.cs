@@ -14,13 +14,13 @@ using System.Drawing.Drawing2D;
 
 namespace SM64_Diagnostic
 {
-    public class FilePictureBox : PictureBox
+    public abstract class FilePictureBox : PictureBox
     {
-        ProcessStream _stream;
-        FileImageGui _gui;
-        uint _addressOffset;
-        byte _mask;
-        byte _currentValue;
+        protected ProcessStream _stream;
+        protected FileImageGui _gui;
+        protected uint _addressOffset;
+        protected byte _mask;
+        protected byte _currentValue;
 
         public FilePictureBox()
         {
@@ -62,18 +62,9 @@ namespace SM64_Diagnostic
             return maskedCurrentByte;
         }
 
-        protected Image GetImageForValue(byte value)
-        {
-            if (value == 0)
-                return _gui.PowerStarBlackImage;
-            else
-                return _gui.PowerStarImage;
-        }
+        protected abstract Image GetImageForValue(byte value);
 
-        protected byte GetNewValueForValue(byte oldValue)
-        {
-            return oldValue == 0 ? _mask : (byte)0;
-        }
+        protected abstract byte GetNewValueForValue(byte oldValue);
 
         private void ClickAction(object sender, EventArgs e)
         {

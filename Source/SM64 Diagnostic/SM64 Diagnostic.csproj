@@ -106,7 +106,10 @@
     <Compile Include="Controls\ControllerDisplayPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\FileTabPictureBox.cs">
+    <Compile Include="Controls\FilePictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FileStarPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\ScaleController.cs" />

@@ -35,7 +35,6 @@ namespace SM64_Diagnostic.Managers
         RadioButton _hatLocationTTMUkikiRadioButton;
         RadioButton _hatLocationTTMGroundRadioButton;
 
-        FilePictureBox _testPictureBox;
         FilePictureBox _testPictureBox2;
 
         HatLocation? _currentHatLocation;
@@ -93,8 +92,6 @@ namespace SM64_Diagnostic.Managers
             _currentHatLocation = getCurrentHatLocation();
 
             TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
-            _testPictureBox = splitContainerFile.Panel1.Controls["filePictureBoxTest"] as FilePictureBox;
-            _testPictureBox.Image = _gui.PowerStarImage;
 
             _testPictureBox2 = fileTable.Controls["filePictureBoxTest2"] as FilePictureBox;
             _testPictureBox2.Image = _gui.PowerStarImage;
