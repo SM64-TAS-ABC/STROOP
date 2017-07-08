@@ -119,4 +119,20 @@
   <Mission courseIndex="15" missionIndex="5" missionName="RR: Tricky Triangles!"/>
   <Mission courseIndex="15" missionIndex="6" missionName="RR: Somewhere Over the Rainbow"/>
   <Mission courseIndex="15" missionIndex="7" missionName="RR: 100 Coins"/>
+
+  <Mission courseIndex="16" missionIndex="1" missionName="TotWC: Red Coins"/>
+  <Mission courseIndex="17" missionIndex="1" missionName="CotMC: Red Coins"/>
+  <Mission courseIndex="18" missionIndex="1" missionName="VCutM: Red Coins"/>
+  <Mission courseIndex="19" missionIndex="1" missionName="PSS: Completion"/>
+  <Mission courseIndex="19" missionIndex="2" missionName="PSS: Under 21&quot;0"/>
+  <Mission courseIndex="20" missionIndex="1" missionName="SA: Red Coins"/>
+  <Mission courseIndex="21" missionIndex="1" missionName="WMotR: Red Coins"/>
+  <Mission courseIndex="22" missionIndex="1" missionName="BitDW: Red Coins"/>
+  <Mission courseIndex="23" missionIndex="1" missionName="BitFS: Red Coins"/>
+  <Mission courseIndex="24" missionIndex="1" missionName="BitS: Red Coins"/>
+  <Mission courseIndex="25" missionIndex="1" missionName="Toad #1 (HMC room)"/>
+  <Mission courseIndex="25" missionIndex="2" missionName="Toad #2 (2nd floor)"/>
+  <Mission courseIndex="25" missionIndex="3" missionName="Toad #3 (3rd floor)"/>
+  <Mission courseIndex="26" missionIndex="1" missionName="MIPS #1 (15 stars)"/>
+  <Mission courseIndex="26" missionIndex="2" missionName="MIPS #2 (50 stars)"/>
 </Missions>

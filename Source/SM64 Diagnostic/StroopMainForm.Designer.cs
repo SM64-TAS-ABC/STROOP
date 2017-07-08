@@ -31,7 +31,7 @@ namespace SM64_Diagnostic
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -5332,7 +5332,7 @@ namespace SM64_Diagnostic
             this.labelFileTableRow17.Name = "labelFileTableRow17";
             this.labelFileTableRow17.Size = new System.Drawing.Size(66, 15);
             this.labelFileTableRow17.TabIndex = 9;
-            this.labelFileTableRow17.Text = "VCutM";
+            this.labelFileTableRow17.Text = "CotMC";
             this.labelFileTableRow17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelFileTableRow18
@@ -5345,7 +5345,7 @@ namespace SM64_Diagnostic
             this.labelFileTableRow18.Name = "labelFileTableRow18";
             this.labelFileTableRow18.Size = new System.Drawing.Size(66, 15);
             this.labelFileTableRow18.TabIndex = 9;
-            this.labelFileTableRow18.Text = "CotMC";
+            this.labelFileTableRow18.Text = "VCutM";
             this.labelFileTableRow18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelFileTableRow19
@@ -6456,8 +6456,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));

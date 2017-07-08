@@ -36,7 +36,7 @@ namespace SM64_Diagnostic.Structs
             if (_table.ContainsKey((courseIndex, missionIndex)))
                 return _table[(courseIndex, missionIndex)].MissionName;
 
-            return "Unknown Mission";
+            return null;
         }
     }
 }
