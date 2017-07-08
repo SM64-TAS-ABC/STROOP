@@ -35,7 +35,7 @@ namespace SM64_Diagnostic.Managers
         RadioButton _hatLocationTTMUkikiRadioButton;
         RadioButton _hatLocationTTMGroundRadioButton;
 
-        FilePictureBox _testPictureBox2;
+        List<FilePictureBox> _filePictureBoxList;
 
         HatLocation? _currentHatLocation;
 
@@ -93,9 +93,20 @@ namespace SM64_Diagnostic.Managers
 
             TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
 
-            _testPictureBox2 = fileTable.Controls["filePictureBoxTest2"] as FilePictureBox;
-            _testPictureBox2.Image = _gui.PowerStarImage;
-            _testPictureBox2.Initialize(_stream, _gui, 0x11, 0x01);
+            int rowMax = 5;
+            int colMax = 1;
+
+            _filePictureBoxList = new List<FilePictureBox>();
+            for (int row = 1; row <= rowMax; row++)
+            {
+                for (int col = 1; col <= colMax; col++)
+                {
+                    string controlName = String.Format("filePictureBoxTableRow{0}Col{1}", row, col);
+                    FileStarPictureBox fileStarPictureBox = fileTable.Controls[controlName] as FileStarPictureBox;
+                    fileStarPictureBox.Initialize(_stream, _gui, 0x11, 0x01);
+                    _filePictureBoxList.Add(fileStarPictureBox);
+                }
+            }
         }
 
         private void SetHatMode(byte hatModeByte)
@@ -264,7 +275,10 @@ namespace SM64_Diagnostic.Managers
             _hatLocationTTMUkikiRadioButton.Checked = _currentHatLocation == HatLocation.TTMUkiki;
             _hatLocationTTMGroundRadioButton.Checked = _currentHatLocation == HatLocation.TTMGround;
 
-            _testPictureBox2.UpdateImage();
+            foreach (FilePictureBox filePictureBox in _filePictureBoxList)
+            {
+                filePictureBox.UpdateImage();
+            }
 
             base.Update(updateView);
         }
