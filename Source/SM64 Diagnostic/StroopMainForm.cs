@@ -126,7 +126,7 @@ namespace SM64_Diagnostic
             currentContext.TriangleManager = _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData, NoTearFlowLayoutPanelTriangles);
             currentContext.DebugManager = _debugManager = new DebugManager(_sm64Stream, tabPageDebug);
             currentContext.PuManager = _puManager = new PuManager(_sm64Stream, groupBoxPuController);
-            currentContext.FileManager = _fileManager = new FileManager(_sm64Stream, _fileData, tabPageFile, noTearFlowLayoutPanelFile);
+            currentContext.FileManager = _fileManager = new FileManager(_sm64Stream, _fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
             currentContext.QuarterFrameManager = _quarterFrameManager = new DataManager(_sm64Stream, _quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
             currentContext.CameraHackManager = _cameraHackManager = new CamHackManager(_sm64Stream, _camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
             currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, tabPageObjects, NoTearFlowLayoutPanelObject);

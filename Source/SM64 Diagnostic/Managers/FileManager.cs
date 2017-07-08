@@ -18,6 +18,7 @@ namespace SM64_Diagnostic.Managers
         private enum HatLocation { Mario, SSLKlepto, SSLGround, SLSnowman, SLGround, TTMUkiki, TTMGround };
 
         TabPage _tabControl;
+        FileImageGui _gui;
         FileMode _currentFileMode;
         uint _currentFileAddress;
 
@@ -33,10 +34,11 @@ namespace SM64_Diagnostic.Managers
 
         HatLocation? _currentHatLocation;
 
-        public FileManager(ProcessStream stream, List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile)
+        public FileManager(ProcessStream stream, List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile, FileImageGui gui)
             : base(stream, fileData, noTearFlowLayoutPanelFile, Config.File.FileAAddress)
         {
             _tabControl = tabControl;
+            _gui = gui;
             _currentFileMode = FileMode.FileA;
             _currentFileAddress = Config.File.FileAAddress;
 
