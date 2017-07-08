@@ -255,6 +255,36 @@ namespace SM64_Diagnostic
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.splitContainerFile = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanelFile = new System.Windows.Forms.TableLayoutPanel();
+            this.filePictureBoxTableRow15Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow14Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow13Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow12Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow11Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow10Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow9Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow8Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow7Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow6Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow5Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow4Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow3Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow2Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow1Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow15Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow14Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow13Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow12Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow11Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow10Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow9Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow8Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow7Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow6Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow5Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow4Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow3Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow2Col6 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow1Col6 = new SM64_Diagnostic.FileStarPictureBox();
             this.filePictureBoxTableRow15Col5 = new SM64_Diagnostic.FileStarPictureBox();
             this.filePictureBoxTableRow14Col5 = new SM64_Diagnostic.FileStarPictureBox();
             this.filePictureBoxTableRow13Col5 = new SM64_Diagnostic.FileStarPictureBox();
@@ -576,36 +606,21 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.filePictureBoxTableRow1Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow2Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow3Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow4Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow5Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow6Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow7Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow8Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow9Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow10Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow11Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow12Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow13Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow14Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow15Col6 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow1Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow2Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow3Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow4Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow5Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow6Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow7Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow8Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow9Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow10Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow11Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow12Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow13Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow14Col7 = new SM64_Diagnostic.FileStarPictureBox();
-            this.filePictureBoxTableRow15Col7 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow16Col1 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow17Col1 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow18Col1 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow19Col1 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow20Col1 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow21Col1 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow22Col1 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow23Col1 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow24Col1 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow25Col1 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow26Col1 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow25Col2 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow25Col3 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow26Col2 = new SM64_Diagnostic.FileStarPictureBox();
+            this.filePictureBoxTableRow19Col2 = new SM64_Diagnostic.FileStarPictureBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -671,6 +686,36 @@ namespace SM64_Diagnostic
             this.splitContainerFile.Panel2.SuspendLayout();
             this.splitContainerFile.SuspendLayout();
             this.tableLayoutPanelFile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow15Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow14Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow13Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow12Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow11Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow10Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow9Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow8Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow7Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow6Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow5Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow4Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow3Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow1Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow15Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow14Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow13Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow12Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow11Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow10Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow9Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow8Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow7Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow6Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow5Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow4Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow3Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow1Col6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow15Col5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow14Col5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow13Col5)).BeginInit();
@@ -788,36 +833,21 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow1Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow3Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow4Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow5Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow6Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow7Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow8Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow9Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow10Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow11Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow12Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow13Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow14Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow15Col6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow1Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow3Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow4Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow5Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow6Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow7Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow8Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow9Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow10Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow11Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow12Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow13Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow14Col7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow15Col7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow16Col1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow17Col1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow18Col1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow19Col1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow20Col1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow21Col1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow22Col1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow23Col1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow24Col1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow25Col1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow26Col1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow25Col2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow25Col3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow26Col2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow19Col2)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -849,7 +879,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 222);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 223);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -937,7 +967,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 175);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 176);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -1890,7 +1920,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(723, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(726, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2408,7 +2438,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(732, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(735, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2533,7 +2563,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(833, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(836, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -2914,7 +2944,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(743, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(746, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3308,7 +3338,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(740, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(743, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3393,7 +3423,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(521, 460);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(524, 460);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3450,6 +3480,21 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow19Col2, 2, 18);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow26Col2, 2, 25);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow25Col3, 3, 24);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow25Col2, 2, 24);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow26Col1, 1, 25);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow25Col1, 1, 24);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow24Col1, 1, 23);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow23Col1, 1, 22);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow22Col1, 1, 21);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow21Col1, 1, 20);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow20Col1, 1, 19);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow19Col1, 1, 18);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow18Col1, 1, 17);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow17Col1, 1, 16);
+            this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow16Col1, 1, 15);
             this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow15Col7, 7, 14);
             this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow14Col7, 7, 13);
             this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow13Col7, 7, 12);
@@ -3612,6 +3657,426 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
             this.tableLayoutPanelFile.Size = new System.Drawing.Size(374, 419);
             this.tableLayoutPanelFile.TabIndex = 39;
+            // 
+            // filePictureBoxTableRow15Col7
+            // 
+            this.filePictureBoxTableRow15Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow15Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow15Col7.Image")));
+            this.filePictureBoxTableRow15Col7.Location = new System.Drawing.Point(248, 225);
+            this.filePictureBoxTableRow15Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow15Col7.Name = "filePictureBoxTableRow15Col7";
+            this.filePictureBoxTableRow15Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow15Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow15Col7.TabIndex = 47;
+            this.filePictureBoxTableRow15Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow14Col7
+            // 
+            this.filePictureBoxTableRow14Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow14Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow14Col7.Image")));
+            this.filePictureBoxTableRow14Col7.Location = new System.Drawing.Point(248, 209);
+            this.filePictureBoxTableRow14Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow14Col7.Name = "filePictureBoxTableRow14Col7";
+            this.filePictureBoxTableRow14Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow14Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow14Col7.TabIndex = 47;
+            this.filePictureBoxTableRow14Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow13Col7
+            // 
+            this.filePictureBoxTableRow13Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow13Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow13Col7.Image")));
+            this.filePictureBoxTableRow13Col7.Location = new System.Drawing.Point(248, 193);
+            this.filePictureBoxTableRow13Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow13Col7.Name = "filePictureBoxTableRow13Col7";
+            this.filePictureBoxTableRow13Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow13Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow13Col7.TabIndex = 47;
+            this.filePictureBoxTableRow13Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow12Col7
+            // 
+            this.filePictureBoxTableRow12Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow12Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow12Col7.Image")));
+            this.filePictureBoxTableRow12Col7.Location = new System.Drawing.Point(248, 177);
+            this.filePictureBoxTableRow12Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow12Col7.Name = "filePictureBoxTableRow12Col7";
+            this.filePictureBoxTableRow12Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow12Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow12Col7.TabIndex = 47;
+            this.filePictureBoxTableRow12Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow11Col7
+            // 
+            this.filePictureBoxTableRow11Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow11Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow11Col7.Image")));
+            this.filePictureBoxTableRow11Col7.Location = new System.Drawing.Point(248, 161);
+            this.filePictureBoxTableRow11Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow11Col7.Name = "filePictureBoxTableRow11Col7";
+            this.filePictureBoxTableRow11Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow11Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow11Col7.TabIndex = 47;
+            this.filePictureBoxTableRow11Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow10Col7
+            // 
+            this.filePictureBoxTableRow10Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow10Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow10Col7.Image")));
+            this.filePictureBoxTableRow10Col7.Location = new System.Drawing.Point(248, 145);
+            this.filePictureBoxTableRow10Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow10Col7.Name = "filePictureBoxTableRow10Col7";
+            this.filePictureBoxTableRow10Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow10Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow10Col7.TabIndex = 47;
+            this.filePictureBoxTableRow10Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow9Col7
+            // 
+            this.filePictureBoxTableRow9Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow9Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow9Col7.Image")));
+            this.filePictureBoxTableRow9Col7.Location = new System.Drawing.Point(248, 129);
+            this.filePictureBoxTableRow9Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow9Col7.Name = "filePictureBoxTableRow9Col7";
+            this.filePictureBoxTableRow9Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow9Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow9Col7.TabIndex = 47;
+            this.filePictureBoxTableRow9Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow8Col7
+            // 
+            this.filePictureBoxTableRow8Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow8Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow8Col7.Image")));
+            this.filePictureBoxTableRow8Col7.Location = new System.Drawing.Point(248, 113);
+            this.filePictureBoxTableRow8Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow8Col7.Name = "filePictureBoxTableRow8Col7";
+            this.filePictureBoxTableRow8Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow8Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow8Col7.TabIndex = 47;
+            this.filePictureBoxTableRow8Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow7Col7
+            // 
+            this.filePictureBoxTableRow7Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow7Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow7Col7.Image")));
+            this.filePictureBoxTableRow7Col7.Location = new System.Drawing.Point(248, 97);
+            this.filePictureBoxTableRow7Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow7Col7.Name = "filePictureBoxTableRow7Col7";
+            this.filePictureBoxTableRow7Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow7Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow7Col7.TabIndex = 47;
+            this.filePictureBoxTableRow7Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow6Col7
+            // 
+            this.filePictureBoxTableRow6Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow6Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow6Col7.Image")));
+            this.filePictureBoxTableRow6Col7.Location = new System.Drawing.Point(248, 81);
+            this.filePictureBoxTableRow6Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow6Col7.Name = "filePictureBoxTableRow6Col7";
+            this.filePictureBoxTableRow6Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow6Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow6Col7.TabIndex = 47;
+            this.filePictureBoxTableRow6Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow5Col7
+            // 
+            this.filePictureBoxTableRow5Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow5Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow5Col7.Image")));
+            this.filePictureBoxTableRow5Col7.Location = new System.Drawing.Point(248, 65);
+            this.filePictureBoxTableRow5Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow5Col7.Name = "filePictureBoxTableRow5Col7";
+            this.filePictureBoxTableRow5Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow5Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow5Col7.TabIndex = 47;
+            this.filePictureBoxTableRow5Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow4Col7
+            // 
+            this.filePictureBoxTableRow4Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow4Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow4Col7.Image")));
+            this.filePictureBoxTableRow4Col7.Location = new System.Drawing.Point(248, 49);
+            this.filePictureBoxTableRow4Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow4Col7.Name = "filePictureBoxTableRow4Col7";
+            this.filePictureBoxTableRow4Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow4Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow4Col7.TabIndex = 47;
+            this.filePictureBoxTableRow4Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow3Col7
+            // 
+            this.filePictureBoxTableRow3Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow3Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow3Col7.Image")));
+            this.filePictureBoxTableRow3Col7.Location = new System.Drawing.Point(248, 33);
+            this.filePictureBoxTableRow3Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow3Col7.Name = "filePictureBoxTableRow3Col7";
+            this.filePictureBoxTableRow3Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow3Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow3Col7.TabIndex = 47;
+            this.filePictureBoxTableRow3Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow2Col7
+            // 
+            this.filePictureBoxTableRow2Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow2Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow2Col7.Image")));
+            this.filePictureBoxTableRow2Col7.Location = new System.Drawing.Point(248, 17);
+            this.filePictureBoxTableRow2Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow2Col7.Name = "filePictureBoxTableRow2Col7";
+            this.filePictureBoxTableRow2Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow2Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow2Col7.TabIndex = 47;
+            this.filePictureBoxTableRow2Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow1Col7
+            // 
+            this.filePictureBoxTableRow1Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow1Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow1Col7.Image")));
+            this.filePictureBoxTableRow1Col7.Location = new System.Drawing.Point(248, 1);
+            this.filePictureBoxTableRow1Col7.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow1Col7.Name = "filePictureBoxTableRow1Col7";
+            this.filePictureBoxTableRow1Col7.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow1Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow1Col7.TabIndex = 47;
+            this.filePictureBoxTableRow1Col7.TabStop = false;
+            // 
+            // filePictureBoxTableRow15Col6
+            // 
+            this.filePictureBoxTableRow15Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow15Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow15Col6.Image")));
+            this.filePictureBoxTableRow15Col6.Location = new System.Drawing.Point(219, 225);
+            this.filePictureBoxTableRow15Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow15Col6.Name = "filePictureBoxTableRow15Col6";
+            this.filePictureBoxTableRow15Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow15Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow15Col6.TabIndex = 46;
+            this.filePictureBoxTableRow15Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow14Col6
+            // 
+            this.filePictureBoxTableRow14Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow14Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow14Col6.Image")));
+            this.filePictureBoxTableRow14Col6.Location = new System.Drawing.Point(219, 209);
+            this.filePictureBoxTableRow14Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow14Col6.Name = "filePictureBoxTableRow14Col6";
+            this.filePictureBoxTableRow14Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow14Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow14Col6.TabIndex = 46;
+            this.filePictureBoxTableRow14Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow13Col6
+            // 
+            this.filePictureBoxTableRow13Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow13Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow13Col6.Image")));
+            this.filePictureBoxTableRow13Col6.Location = new System.Drawing.Point(219, 193);
+            this.filePictureBoxTableRow13Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow13Col6.Name = "filePictureBoxTableRow13Col6";
+            this.filePictureBoxTableRow13Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow13Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow13Col6.TabIndex = 46;
+            this.filePictureBoxTableRow13Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow12Col6
+            // 
+            this.filePictureBoxTableRow12Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow12Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow12Col6.Image")));
+            this.filePictureBoxTableRow12Col6.Location = new System.Drawing.Point(219, 177);
+            this.filePictureBoxTableRow12Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow12Col6.Name = "filePictureBoxTableRow12Col6";
+            this.filePictureBoxTableRow12Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow12Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow12Col6.TabIndex = 46;
+            this.filePictureBoxTableRow12Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow11Col6
+            // 
+            this.filePictureBoxTableRow11Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow11Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow11Col6.Image")));
+            this.filePictureBoxTableRow11Col6.Location = new System.Drawing.Point(219, 161);
+            this.filePictureBoxTableRow11Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow11Col6.Name = "filePictureBoxTableRow11Col6";
+            this.filePictureBoxTableRow11Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow11Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow11Col6.TabIndex = 46;
+            this.filePictureBoxTableRow11Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow10Col6
+            // 
+            this.filePictureBoxTableRow10Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow10Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow10Col6.Image")));
+            this.filePictureBoxTableRow10Col6.Location = new System.Drawing.Point(219, 145);
+            this.filePictureBoxTableRow10Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow10Col6.Name = "filePictureBoxTableRow10Col6";
+            this.filePictureBoxTableRow10Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow10Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow10Col6.TabIndex = 46;
+            this.filePictureBoxTableRow10Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow9Col6
+            // 
+            this.filePictureBoxTableRow9Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow9Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow9Col6.Image")));
+            this.filePictureBoxTableRow9Col6.Location = new System.Drawing.Point(219, 129);
+            this.filePictureBoxTableRow9Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow9Col6.Name = "filePictureBoxTableRow9Col6";
+            this.filePictureBoxTableRow9Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow9Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow9Col6.TabIndex = 46;
+            this.filePictureBoxTableRow9Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow8Col6
+            // 
+            this.filePictureBoxTableRow8Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow8Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow8Col6.Image")));
+            this.filePictureBoxTableRow8Col6.Location = new System.Drawing.Point(219, 113);
+            this.filePictureBoxTableRow8Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow8Col6.Name = "filePictureBoxTableRow8Col6";
+            this.filePictureBoxTableRow8Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow8Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow8Col6.TabIndex = 46;
+            this.filePictureBoxTableRow8Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow7Col6
+            // 
+            this.filePictureBoxTableRow7Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow7Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow7Col6.Image")));
+            this.filePictureBoxTableRow7Col6.Location = new System.Drawing.Point(219, 97);
+            this.filePictureBoxTableRow7Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow7Col6.Name = "filePictureBoxTableRow7Col6";
+            this.filePictureBoxTableRow7Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow7Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow7Col6.TabIndex = 46;
+            this.filePictureBoxTableRow7Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow6Col6
+            // 
+            this.filePictureBoxTableRow6Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow6Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow6Col6.Image")));
+            this.filePictureBoxTableRow6Col6.Location = new System.Drawing.Point(219, 81);
+            this.filePictureBoxTableRow6Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow6Col6.Name = "filePictureBoxTableRow6Col6";
+            this.filePictureBoxTableRow6Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow6Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow6Col6.TabIndex = 46;
+            this.filePictureBoxTableRow6Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow5Col6
+            // 
+            this.filePictureBoxTableRow5Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow5Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow5Col6.Image")));
+            this.filePictureBoxTableRow5Col6.Location = new System.Drawing.Point(219, 65);
+            this.filePictureBoxTableRow5Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow5Col6.Name = "filePictureBoxTableRow5Col6";
+            this.filePictureBoxTableRow5Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow5Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow5Col6.TabIndex = 46;
+            this.filePictureBoxTableRow5Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow4Col6
+            // 
+            this.filePictureBoxTableRow4Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow4Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow4Col6.Image")));
+            this.filePictureBoxTableRow4Col6.Location = new System.Drawing.Point(219, 49);
+            this.filePictureBoxTableRow4Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow4Col6.Name = "filePictureBoxTableRow4Col6";
+            this.filePictureBoxTableRow4Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow4Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow4Col6.TabIndex = 46;
+            this.filePictureBoxTableRow4Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow3Col6
+            // 
+            this.filePictureBoxTableRow3Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow3Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow3Col6.Image")));
+            this.filePictureBoxTableRow3Col6.Location = new System.Drawing.Point(219, 33);
+            this.filePictureBoxTableRow3Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow3Col6.Name = "filePictureBoxTableRow3Col6";
+            this.filePictureBoxTableRow3Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow3Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow3Col6.TabIndex = 46;
+            this.filePictureBoxTableRow3Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow2Col6
+            // 
+            this.filePictureBoxTableRow2Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow2Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow2Col6.Image")));
+            this.filePictureBoxTableRow2Col6.Location = new System.Drawing.Point(219, 17);
+            this.filePictureBoxTableRow2Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow2Col6.Name = "filePictureBoxTableRow2Col6";
+            this.filePictureBoxTableRow2Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow2Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow2Col6.TabIndex = 46;
+            this.filePictureBoxTableRow2Col6.TabStop = false;
+            // 
+            // filePictureBoxTableRow1Col6
+            // 
+            this.filePictureBoxTableRow1Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow1Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow1Col6.Image")));
+            this.filePictureBoxTableRow1Col6.Location = new System.Drawing.Point(219, 1);
+            this.filePictureBoxTableRow1Col6.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow1Col6.Name = "filePictureBoxTableRow1Col6";
+            this.filePictureBoxTableRow1Col6.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow1Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow1Col6.TabIndex = 46;
+            this.filePictureBoxTableRow1Col6.TabStop = false;
             // 
             // filePictureBoxTableRow15Col5
             // 
@@ -5208,7 +5673,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(237, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(232, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -5645,7 +6110,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(722, 430);
+            this.glControlMap.Size = new System.Drawing.Size(725, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -6163,7 +6628,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(687, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(690, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -6199,7 +6664,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(533, 422);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(536, 422);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -6262,7 +6727,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(636, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(639, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -6971,7 +7436,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(511, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(514, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -7585,425 +8050,215 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // filePictureBoxTableRow1Col6
+            // filePictureBoxTableRow16Col1
             // 
-            this.filePictureBoxTableRow1Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow16Col1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow1Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow1Col6.Image")));
-            this.filePictureBoxTableRow1Col6.Location = new System.Drawing.Point(219, 1);
-            this.filePictureBoxTableRow1Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow1Col6.Name = "filePictureBoxTableRow1Col6";
-            this.filePictureBoxTableRow1Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow1Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow1Col6.TabIndex = 46;
-            this.filePictureBoxTableRow1Col6.TabStop = false;
+            this.filePictureBoxTableRow16Col1.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow16Col1.Image")));
+            this.filePictureBoxTableRow16Col1.Location = new System.Drawing.Point(74, 241);
+            this.filePictureBoxTableRow16Col1.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow16Col1.Name = "filePictureBoxTableRow16Col1";
+            this.filePictureBoxTableRow16Col1.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow16Col1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow16Col1.TabIndex = 42;
+            this.filePictureBoxTableRow16Col1.TabStop = false;
             // 
-            // filePictureBoxTableRow2Col6
+            // filePictureBoxTableRow17Col1
             // 
-            this.filePictureBoxTableRow2Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow17Col1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow2Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow2Col6.Image")));
-            this.filePictureBoxTableRow2Col6.Location = new System.Drawing.Point(219, 17);
-            this.filePictureBoxTableRow2Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow2Col6.Name = "filePictureBoxTableRow2Col6";
-            this.filePictureBoxTableRow2Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow2Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow2Col6.TabIndex = 46;
-            this.filePictureBoxTableRow2Col6.TabStop = false;
+            this.filePictureBoxTableRow17Col1.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow17Col1.Image")));
+            this.filePictureBoxTableRow17Col1.Location = new System.Drawing.Point(74, 257);
+            this.filePictureBoxTableRow17Col1.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow17Col1.Name = "filePictureBoxTableRow17Col1";
+            this.filePictureBoxTableRow17Col1.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow17Col1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow17Col1.TabIndex = 42;
+            this.filePictureBoxTableRow17Col1.TabStop = false;
             // 
-            // filePictureBoxTableRow3Col6
+            // filePictureBoxTableRow18Col1
             // 
-            this.filePictureBoxTableRow3Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow18Col1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow3Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow3Col6.Image")));
-            this.filePictureBoxTableRow3Col6.Location = new System.Drawing.Point(219, 33);
-            this.filePictureBoxTableRow3Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow3Col6.Name = "filePictureBoxTableRow3Col6";
-            this.filePictureBoxTableRow3Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow3Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow3Col6.TabIndex = 46;
-            this.filePictureBoxTableRow3Col6.TabStop = false;
+            this.filePictureBoxTableRow18Col1.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow18Col1.Image")));
+            this.filePictureBoxTableRow18Col1.Location = new System.Drawing.Point(74, 273);
+            this.filePictureBoxTableRow18Col1.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow18Col1.Name = "filePictureBoxTableRow18Col1";
+            this.filePictureBoxTableRow18Col1.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow18Col1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow18Col1.TabIndex = 42;
+            this.filePictureBoxTableRow18Col1.TabStop = false;
             // 
-            // filePictureBoxTableRow4Col6
+            // filePictureBoxTableRow19Col1
             // 
-            this.filePictureBoxTableRow4Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow19Col1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow4Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow4Col6.Image")));
-            this.filePictureBoxTableRow4Col6.Location = new System.Drawing.Point(219, 49);
-            this.filePictureBoxTableRow4Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow4Col6.Name = "filePictureBoxTableRow4Col6";
-            this.filePictureBoxTableRow4Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow4Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow4Col6.TabIndex = 46;
-            this.filePictureBoxTableRow4Col6.TabStop = false;
+            this.filePictureBoxTableRow19Col1.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow19Col1.Image")));
+            this.filePictureBoxTableRow19Col1.Location = new System.Drawing.Point(74, 289);
+            this.filePictureBoxTableRow19Col1.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow19Col1.Name = "filePictureBoxTableRow19Col1";
+            this.filePictureBoxTableRow19Col1.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow19Col1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow19Col1.TabIndex = 42;
+            this.filePictureBoxTableRow19Col1.TabStop = false;
             // 
-            // filePictureBoxTableRow5Col6
+            // filePictureBoxTableRow20Col1
             // 
-            this.filePictureBoxTableRow5Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow20Col1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow5Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow5Col6.Image")));
-            this.filePictureBoxTableRow5Col6.Location = new System.Drawing.Point(219, 65);
-            this.filePictureBoxTableRow5Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow5Col6.Name = "filePictureBoxTableRow5Col6";
-            this.filePictureBoxTableRow5Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow5Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow5Col6.TabIndex = 46;
-            this.filePictureBoxTableRow5Col6.TabStop = false;
+            this.filePictureBoxTableRow20Col1.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow20Col1.Image")));
+            this.filePictureBoxTableRow20Col1.Location = new System.Drawing.Point(74, 305);
+            this.filePictureBoxTableRow20Col1.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow20Col1.Name = "filePictureBoxTableRow20Col1";
+            this.filePictureBoxTableRow20Col1.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow20Col1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow20Col1.TabIndex = 42;
+            this.filePictureBoxTableRow20Col1.TabStop = false;
             // 
-            // filePictureBoxTableRow6Col6
+            // filePictureBoxTableRow21Col1
             // 
-            this.filePictureBoxTableRow6Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow21Col1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow6Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow6Col6.Image")));
-            this.filePictureBoxTableRow6Col6.Location = new System.Drawing.Point(219, 81);
-            this.filePictureBoxTableRow6Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow6Col6.Name = "filePictureBoxTableRow6Col6";
-            this.filePictureBoxTableRow6Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow6Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow6Col6.TabIndex = 46;
-            this.filePictureBoxTableRow6Col6.TabStop = false;
+            this.filePictureBoxTableRow21Col1.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow21Col1.Image")));
+            this.filePictureBoxTableRow21Col1.Location = new System.Drawing.Point(74, 321);
+            this.filePictureBoxTableRow21Col1.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow21Col1.Name = "filePictureBoxTableRow21Col1";
+            this.filePictureBoxTableRow21Col1.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow21Col1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow21Col1.TabIndex = 42;
+            this.filePictureBoxTableRow21Col1.TabStop = false;
             // 
-            // filePictureBoxTableRow7Col6
+            // filePictureBoxTableRow22Col1
             // 
-            this.filePictureBoxTableRow7Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow22Col1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow7Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow7Col6.Image")));
-            this.filePictureBoxTableRow7Col6.Location = new System.Drawing.Point(219, 97);
-            this.filePictureBoxTableRow7Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow7Col6.Name = "filePictureBoxTableRow7Col6";
-            this.filePictureBoxTableRow7Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow7Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow7Col6.TabIndex = 46;
-            this.filePictureBoxTableRow7Col6.TabStop = false;
+            this.filePictureBoxTableRow22Col1.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow22Col1.Image")));
+            this.filePictureBoxTableRow22Col1.Location = new System.Drawing.Point(74, 337);
+            this.filePictureBoxTableRow22Col1.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow22Col1.Name = "filePictureBoxTableRow22Col1";
+            this.filePictureBoxTableRow22Col1.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow22Col1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow22Col1.TabIndex = 42;
+            this.filePictureBoxTableRow22Col1.TabStop = false;
             // 
-            // filePictureBoxTableRow8Col6
+            // filePictureBoxTableRow23Col1
             // 
-            this.filePictureBoxTableRow8Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow23Col1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow8Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow8Col6.Image")));
-            this.filePictureBoxTableRow8Col6.Location = new System.Drawing.Point(219, 113);
-            this.filePictureBoxTableRow8Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow8Col6.Name = "filePictureBoxTableRow8Col6";
-            this.filePictureBoxTableRow8Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow8Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow8Col6.TabIndex = 46;
-            this.filePictureBoxTableRow8Col6.TabStop = false;
+            this.filePictureBoxTableRow23Col1.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow23Col1.Image")));
+            this.filePictureBoxTableRow23Col1.Location = new System.Drawing.Point(74, 353);
+            this.filePictureBoxTableRow23Col1.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow23Col1.Name = "filePictureBoxTableRow23Col1";
+            this.filePictureBoxTableRow23Col1.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow23Col1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow23Col1.TabIndex = 42;
+            this.filePictureBoxTableRow23Col1.TabStop = false;
             // 
-            // filePictureBoxTableRow9Col6
+            // filePictureBoxTableRow24Col1
             // 
-            this.filePictureBoxTableRow9Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow24Col1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow9Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow9Col6.Image")));
-            this.filePictureBoxTableRow9Col6.Location = new System.Drawing.Point(219, 129);
-            this.filePictureBoxTableRow9Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow9Col6.Name = "filePictureBoxTableRow9Col6";
-            this.filePictureBoxTableRow9Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow9Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow9Col6.TabIndex = 46;
-            this.filePictureBoxTableRow9Col6.TabStop = false;
+            this.filePictureBoxTableRow24Col1.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow24Col1.Image")));
+            this.filePictureBoxTableRow24Col1.Location = new System.Drawing.Point(74, 369);
+            this.filePictureBoxTableRow24Col1.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow24Col1.Name = "filePictureBoxTableRow24Col1";
+            this.filePictureBoxTableRow24Col1.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow24Col1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow24Col1.TabIndex = 42;
+            this.filePictureBoxTableRow24Col1.TabStop = false;
             // 
-            // filePictureBoxTableRow10Col6
+            // filePictureBoxTableRow25Col1
             // 
-            this.filePictureBoxTableRow10Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow25Col1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow10Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow10Col6.Image")));
-            this.filePictureBoxTableRow10Col6.Location = new System.Drawing.Point(219, 145);
-            this.filePictureBoxTableRow10Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow10Col6.Name = "filePictureBoxTableRow10Col6";
-            this.filePictureBoxTableRow10Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow10Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow10Col6.TabIndex = 46;
-            this.filePictureBoxTableRow10Col6.TabStop = false;
+            this.filePictureBoxTableRow25Col1.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow25Col1.Image")));
+            this.filePictureBoxTableRow25Col1.Location = new System.Drawing.Point(74, 385);
+            this.filePictureBoxTableRow25Col1.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow25Col1.Name = "filePictureBoxTableRow25Col1";
+            this.filePictureBoxTableRow25Col1.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow25Col1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow25Col1.TabIndex = 42;
+            this.filePictureBoxTableRow25Col1.TabStop = false;
             // 
-            // filePictureBoxTableRow11Col6
+            // filePictureBoxTableRow26Col1
             // 
-            this.filePictureBoxTableRow11Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow26Col1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow11Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow11Col6.Image")));
-            this.filePictureBoxTableRow11Col6.Location = new System.Drawing.Point(219, 161);
-            this.filePictureBoxTableRow11Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow11Col6.Name = "filePictureBoxTableRow11Col6";
-            this.filePictureBoxTableRow11Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow11Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow11Col6.TabIndex = 46;
-            this.filePictureBoxTableRow11Col6.TabStop = false;
+            this.filePictureBoxTableRow26Col1.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow26Col1.Image")));
+            this.filePictureBoxTableRow26Col1.Location = new System.Drawing.Point(74, 401);
+            this.filePictureBoxTableRow26Col1.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow26Col1.Name = "filePictureBoxTableRow26Col1";
+            this.filePictureBoxTableRow26Col1.Size = new System.Drawing.Size(28, 17);
+            this.filePictureBoxTableRow26Col1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow26Col1.TabIndex = 42;
+            this.filePictureBoxTableRow26Col1.TabStop = false;
             // 
-            // filePictureBoxTableRow12Col6
+            // filePictureBoxTableRow25Col2
             // 
-            this.filePictureBoxTableRow12Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow25Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow12Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow12Col6.Image")));
-            this.filePictureBoxTableRow12Col6.Location = new System.Drawing.Point(219, 177);
-            this.filePictureBoxTableRow12Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow12Col6.Name = "filePictureBoxTableRow12Col6";
-            this.filePictureBoxTableRow12Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow12Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow12Col6.TabIndex = 46;
-            this.filePictureBoxTableRow12Col6.TabStop = false;
+            this.filePictureBoxTableRow25Col2.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow25Col2.Image")));
+            this.filePictureBoxTableRow25Col2.Location = new System.Drawing.Point(103, 385);
+            this.filePictureBoxTableRow25Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow25Col2.Name = "filePictureBoxTableRow25Col2";
+            this.filePictureBoxTableRow25Col2.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow25Col2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow25Col2.TabIndex = 42;
+            this.filePictureBoxTableRow25Col2.TabStop = false;
             // 
-            // filePictureBoxTableRow13Col6
+            // filePictureBoxTableRow25Col3
             // 
-            this.filePictureBoxTableRow13Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow25Col3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow13Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow13Col6.Image")));
-            this.filePictureBoxTableRow13Col6.Location = new System.Drawing.Point(219, 193);
-            this.filePictureBoxTableRow13Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow13Col6.Name = "filePictureBoxTableRow13Col6";
-            this.filePictureBoxTableRow13Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow13Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow13Col6.TabIndex = 46;
-            this.filePictureBoxTableRow13Col6.TabStop = false;
+            this.filePictureBoxTableRow25Col3.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow25Col3.Image")));
+            this.filePictureBoxTableRow25Col3.Location = new System.Drawing.Point(132, 385);
+            this.filePictureBoxTableRow25Col3.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow25Col3.Name = "filePictureBoxTableRow25Col3";
+            this.filePictureBoxTableRow25Col3.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow25Col3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow25Col3.TabIndex = 42;
+            this.filePictureBoxTableRow25Col3.TabStop = false;
             // 
-            // filePictureBoxTableRow14Col6
+            // filePictureBoxTableRow26Col2
             // 
-            this.filePictureBoxTableRow14Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow26Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow14Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow14Col6.Image")));
-            this.filePictureBoxTableRow14Col6.Location = new System.Drawing.Point(219, 209);
-            this.filePictureBoxTableRow14Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow14Col6.Name = "filePictureBoxTableRow14Col6";
-            this.filePictureBoxTableRow14Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow14Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow14Col6.TabIndex = 46;
-            this.filePictureBoxTableRow14Col6.TabStop = false;
+            this.filePictureBoxTableRow26Col2.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow26Col2.Image")));
+            this.filePictureBoxTableRow26Col2.Location = new System.Drawing.Point(103, 401);
+            this.filePictureBoxTableRow26Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow26Col2.Name = "filePictureBoxTableRow26Col2";
+            this.filePictureBoxTableRow26Col2.Size = new System.Drawing.Size(28, 17);
+            this.filePictureBoxTableRow26Col2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow26Col2.TabIndex = 42;
+            this.filePictureBoxTableRow26Col2.TabStop = false;
             // 
-            // filePictureBoxTableRow15Col6
+            // filePictureBoxTableRow19Col2
             // 
-            this.filePictureBoxTableRow15Col6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filePictureBoxTableRow19Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow15Col6.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow15Col6.Image")));
-            this.filePictureBoxTableRow15Col6.Location = new System.Drawing.Point(219, 225);
-            this.filePictureBoxTableRow15Col6.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow15Col6.Name = "filePictureBoxTableRow15Col6";
-            this.filePictureBoxTableRow15Col6.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow15Col6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow15Col6.TabIndex = 46;
-            this.filePictureBoxTableRow15Col6.TabStop = false;
-            // 
-            // filePictureBoxTableRow1Col7
-            // 
-            this.filePictureBoxTableRow1Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow1Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow1Col7.Image")));
-            this.filePictureBoxTableRow1Col7.Location = new System.Drawing.Point(248, 1);
-            this.filePictureBoxTableRow1Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow1Col7.Name = "filePictureBoxTableRow1Col7";
-            this.filePictureBoxTableRow1Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow1Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow1Col7.TabIndex = 47;
-            this.filePictureBoxTableRow1Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow2Col7
-            // 
-            this.filePictureBoxTableRow2Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow2Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow2Col7.Image")));
-            this.filePictureBoxTableRow2Col7.Location = new System.Drawing.Point(248, 17);
-            this.filePictureBoxTableRow2Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow2Col7.Name = "filePictureBoxTableRow2Col7";
-            this.filePictureBoxTableRow2Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow2Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow2Col7.TabIndex = 47;
-            this.filePictureBoxTableRow2Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow3Col7
-            // 
-            this.filePictureBoxTableRow3Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow3Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow3Col7.Image")));
-            this.filePictureBoxTableRow3Col7.Location = new System.Drawing.Point(248, 33);
-            this.filePictureBoxTableRow3Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow3Col7.Name = "filePictureBoxTableRow3Col7";
-            this.filePictureBoxTableRow3Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow3Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow3Col7.TabIndex = 47;
-            this.filePictureBoxTableRow3Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow4Col7
-            // 
-            this.filePictureBoxTableRow4Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow4Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow4Col7.Image")));
-            this.filePictureBoxTableRow4Col7.Location = new System.Drawing.Point(248, 49);
-            this.filePictureBoxTableRow4Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow4Col7.Name = "filePictureBoxTableRow4Col7";
-            this.filePictureBoxTableRow4Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow4Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow4Col7.TabIndex = 47;
-            this.filePictureBoxTableRow4Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow5Col7
-            // 
-            this.filePictureBoxTableRow5Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow5Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow5Col7.Image")));
-            this.filePictureBoxTableRow5Col7.Location = new System.Drawing.Point(248, 65);
-            this.filePictureBoxTableRow5Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow5Col7.Name = "filePictureBoxTableRow5Col7";
-            this.filePictureBoxTableRow5Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow5Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow5Col7.TabIndex = 47;
-            this.filePictureBoxTableRow5Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow6Col7
-            // 
-            this.filePictureBoxTableRow6Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow6Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow6Col7.Image")));
-            this.filePictureBoxTableRow6Col7.Location = new System.Drawing.Point(248, 81);
-            this.filePictureBoxTableRow6Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow6Col7.Name = "filePictureBoxTableRow6Col7";
-            this.filePictureBoxTableRow6Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow6Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow6Col7.TabIndex = 47;
-            this.filePictureBoxTableRow6Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow7Col7
-            // 
-            this.filePictureBoxTableRow7Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow7Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow7Col7.Image")));
-            this.filePictureBoxTableRow7Col7.Location = new System.Drawing.Point(248, 97);
-            this.filePictureBoxTableRow7Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow7Col7.Name = "filePictureBoxTableRow7Col7";
-            this.filePictureBoxTableRow7Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow7Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow7Col7.TabIndex = 47;
-            this.filePictureBoxTableRow7Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow8Col7
-            // 
-            this.filePictureBoxTableRow8Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow8Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow8Col7.Image")));
-            this.filePictureBoxTableRow8Col7.Location = new System.Drawing.Point(248, 113);
-            this.filePictureBoxTableRow8Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow8Col7.Name = "filePictureBoxTableRow8Col7";
-            this.filePictureBoxTableRow8Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow8Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow8Col7.TabIndex = 47;
-            this.filePictureBoxTableRow8Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow9Col7
-            // 
-            this.filePictureBoxTableRow9Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow9Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow9Col7.Image")));
-            this.filePictureBoxTableRow9Col7.Location = new System.Drawing.Point(248, 129);
-            this.filePictureBoxTableRow9Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow9Col7.Name = "filePictureBoxTableRow9Col7";
-            this.filePictureBoxTableRow9Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow9Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow9Col7.TabIndex = 47;
-            this.filePictureBoxTableRow9Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow10Col7
-            // 
-            this.filePictureBoxTableRow10Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow10Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow10Col7.Image")));
-            this.filePictureBoxTableRow10Col7.Location = new System.Drawing.Point(248, 145);
-            this.filePictureBoxTableRow10Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow10Col7.Name = "filePictureBoxTableRow10Col7";
-            this.filePictureBoxTableRow10Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow10Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow10Col7.TabIndex = 47;
-            this.filePictureBoxTableRow10Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow11Col7
-            // 
-            this.filePictureBoxTableRow11Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow11Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow11Col7.Image")));
-            this.filePictureBoxTableRow11Col7.Location = new System.Drawing.Point(248, 161);
-            this.filePictureBoxTableRow11Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow11Col7.Name = "filePictureBoxTableRow11Col7";
-            this.filePictureBoxTableRow11Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow11Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow11Col7.TabIndex = 47;
-            this.filePictureBoxTableRow11Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow12Col7
-            // 
-            this.filePictureBoxTableRow12Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow12Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow12Col7.Image")));
-            this.filePictureBoxTableRow12Col7.Location = new System.Drawing.Point(248, 177);
-            this.filePictureBoxTableRow12Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow12Col7.Name = "filePictureBoxTableRow12Col7";
-            this.filePictureBoxTableRow12Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow12Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow12Col7.TabIndex = 47;
-            this.filePictureBoxTableRow12Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow13Col7
-            // 
-            this.filePictureBoxTableRow13Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow13Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow13Col7.Image")));
-            this.filePictureBoxTableRow13Col7.Location = new System.Drawing.Point(248, 193);
-            this.filePictureBoxTableRow13Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow13Col7.Name = "filePictureBoxTableRow13Col7";
-            this.filePictureBoxTableRow13Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow13Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow13Col7.TabIndex = 47;
-            this.filePictureBoxTableRow13Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow14Col7
-            // 
-            this.filePictureBoxTableRow14Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow14Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow14Col7.Image")));
-            this.filePictureBoxTableRow14Col7.Location = new System.Drawing.Point(248, 209);
-            this.filePictureBoxTableRow14Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow14Col7.Name = "filePictureBoxTableRow14Col7";
-            this.filePictureBoxTableRow14Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow14Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow14Col7.TabIndex = 47;
-            this.filePictureBoxTableRow14Col7.TabStop = false;
-            // 
-            // filePictureBoxTableRow15Col7
-            // 
-            this.filePictureBoxTableRow15Col7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow15Col7.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow15Col7.Image")));
-            this.filePictureBoxTableRow15Col7.Location = new System.Drawing.Point(248, 225);
-            this.filePictureBoxTableRow15Col7.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow15Col7.Name = "filePictureBoxTableRow15Col7";
-            this.filePictureBoxTableRow15Col7.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow15Col7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow15Col7.TabIndex = 47;
-            this.filePictureBoxTableRow15Col7.TabStop = false;
+            this.filePictureBoxTableRow19Col2.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow19Col2.Image")));
+            this.filePictureBoxTableRow19Col2.Location = new System.Drawing.Point(103, 289);
+            this.filePictureBoxTableRow19Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow19Col2.Name = "filePictureBoxTableRow19Col2";
+            this.filePictureBoxTableRow19Col2.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow19Col2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow19Col2.TabIndex = 42;
+            this.filePictureBoxTableRow19Col2.TabStop = false;
             // 
             // StroopMainForm
             // 
@@ -8111,6 +8366,36 @@ namespace SM64_Diagnostic
             this.splitContainerFile.ResumeLayout(false);
             this.tableLayoutPanelFile.ResumeLayout(false);
             this.tableLayoutPanelFile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow15Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow14Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow13Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow12Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow11Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow10Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow9Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow8Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow7Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow6Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow5Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow4Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow3Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow1Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow15Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow14Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow13Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow12Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow11Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow10Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow9Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow8Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow7Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow6Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow5Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow4Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow3Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow1Col6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow15Col5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow14Col5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow13Col5)).EndInit();
@@ -8248,36 +8533,21 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow1Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow3Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow4Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow5Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow6Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow7Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow8Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow9Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow10Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow11Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow12Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow13Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow14Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow15Col6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow1Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow3Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow4Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow5Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow6Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow7Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow8Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow9Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow10Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow11Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow12Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow13Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow14Col7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow15Col7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow16Col1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow17Col1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow18Col1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow19Col1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow20Col1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow21Col1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow22Col1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow23Col1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow24Col1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow25Col1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow26Col1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow25Col2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow25Col3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow26Col2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow19Col2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -8857,6 +9127,21 @@ namespace SM64_Diagnostic
         private FileStarPictureBox filePictureBoxTableRow3Col7;
         private FileStarPictureBox filePictureBoxTableRow2Col7;
         private FileStarPictureBox filePictureBoxTableRow1Col7;
+        private FileStarPictureBox filePictureBoxTableRow19Col2;
+        private FileStarPictureBox filePictureBoxTableRow26Col2;
+        private FileStarPictureBox filePictureBoxTableRow25Col3;
+        private FileStarPictureBox filePictureBoxTableRow25Col2;
+        private FileStarPictureBox filePictureBoxTableRow26Col1;
+        private FileStarPictureBox filePictureBoxTableRow25Col1;
+        private FileStarPictureBox filePictureBoxTableRow24Col1;
+        private FileStarPictureBox filePictureBoxTableRow23Col1;
+        private FileStarPictureBox filePictureBoxTableRow22Col1;
+        private FileStarPictureBox filePictureBoxTableRow21Col1;
+        private FileStarPictureBox filePictureBoxTableRow20Col1;
+        private FileStarPictureBox filePictureBoxTableRow19Col1;
+        private FileStarPictureBox filePictureBoxTableRow18Col1;
+        private FileStarPictureBox filePictureBoxTableRow17Col1;
+        private FileStarPictureBox filePictureBoxTableRow16Col1;
     }
 }
 
