@@ -31,8 +31,8 @@ namespace SM64_Diagnostic
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -255,6 +255,12 @@ namespace SM64_Diagnostic
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.splitContainerFile = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanelFile = new System.Windows.Forms.TableLayoutPanel();
+            this.filePictureBoxTableRow24Col9 = new SM64_Diagnostic.FileStarDoorPictureBox();
+            this.filePictureBoxTableRow23Col9 = new SM64_Diagnostic.FileStarDoorPictureBox();
+            this.filePictureBoxTableRow22Col9 = new SM64_Diagnostic.FileStarDoorPictureBox();
+            this.filePictureBoxTableRow4Col9 = new SM64_Diagnostic.File3StarDoorPictureBox();
+            this.filePictureBoxTableRow3Col9 = new SM64_Diagnostic.File3StarDoorPictureBox();
+            this.filePictureBoxTableRow2Col9 = new SM64_Diagnostic.File1StarDoorPictureBox();
             this.filePictureBoxTableRow21Col8 = new SM64_Diagnostic.FileCannonPictureBox();
             this.filePictureBoxTableRow15Col8 = new SM64_Diagnostic.FileCannonPictureBox();
             this.filePictureBoxTableRow13Col8 = new SM64_Diagnostic.FileCannonPictureBox();
@@ -412,6 +418,7 @@ namespace SM64_Diagnostic
             this.labelFileTableRow26 = new System.Windows.Forms.Label();
             this.filePictureBoxTableRow1Col1 = new SM64_Diagnostic.FileStarPictureBox();
             this.filePictureBoxTableRow8Col8 = new SM64_Diagnostic.FileCannonPictureBox();
+            this.filePictureBoxTableRow19Col9 = new SM64_Diagnostic.File1StarDoorPictureBox();
             this.groupBoxHatLocation = new System.Windows.Forms.GroupBox();
             this.radioButtonHatLocationSLGround = new System.Windows.Forms.RadioButton();
             this.radioButtonHatLocationTTMGround = new System.Windows.Forms.RadioButton();
@@ -632,13 +639,21 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.filePictureBoxTableRow2Col9 = new SM64_Diagnostic.File1StarDoorPictureBox();
-            this.filePictureBoxTableRow3Col9 = new SM64_Diagnostic.File3StarDoorPictureBox();
-            this.filePictureBoxTableRow4Col9 = new SM64_Diagnostic.File3StarDoorPictureBox();
-            this.filePictureBoxTableRow19Col9 = new SM64_Diagnostic.File1StarDoorPictureBox();
-            this.filePictureBoxTableRow22Col9 = new SM64_Diagnostic.FileStarDoorPictureBox();
-            this.filePictureBoxTableRow23Col9 = new SM64_Diagnostic.FileStarDoorPictureBox();
-            this.filePictureBoxTableRow24Col9 = new SM64_Diagnostic.FileStarDoorPictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -704,6 +719,12 @@ namespace SM64_Diagnostic
             this.splitContainerFile.Panel2.SuspendLayout();
             this.splitContainerFile.SuspendLayout();
             this.tableLayoutPanelFile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow24Col9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow23Col9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow22Col9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow4Col9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow3Col9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow21Col8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow15Col8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow13Col8)).BeginInit();
@@ -835,6 +856,7 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow1Col1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow8Col8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow19Col9)).BeginInit();
             this.groupBoxHatLocation.SuspendLayout();
             this.groupBoxFile.SuspendLayout();
             this.tabPageMisc.SuspendLayout();
@@ -877,13 +899,6 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow3Col9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow4Col9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow19Col9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow22Col9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow23Col9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow24Col9)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -915,7 +930,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 224);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 225);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1003,7 +1018,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 177);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 178);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -1956,7 +1971,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(729, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(732, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2474,7 +2489,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(738, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(741, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2599,7 +2614,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(839, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(842, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -2980,7 +2995,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(749, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(752, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3374,7 +3389,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(746, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(749, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3459,7 +3474,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(527, 460);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(530, 460);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3516,6 +3531,21 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanelFile.Controls.Add(this.textBox15, 10, 14);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox14, 10, 13);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox13, 10, 12);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox12, 10, 11);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox11, 10, 10);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox10, 10, 9);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox9, 10, 8);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox8, 10, 7);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox7, 10, 6);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox6, 10, 5);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox5, 10, 4);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox4, 10, 3);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox3, 10, 2);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox2, 10, 1);
+            this.tableLayoutPanelFile.Controls.Add(this.textBox1, 10, 0);
             this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow24Col9, 9, 23);
             this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow23Col9, 9, 22);
             this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow22Col9, 9, 21);
@@ -3711,6 +3741,90 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
             this.tableLayoutPanelFile.Size = new System.Drawing.Size(374, 419);
             this.tableLayoutPanelFile.TabIndex = 39;
+            // 
+            // filePictureBoxTableRow24Col9
+            // 
+            this.filePictureBoxTableRow24Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow24Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow24Col9.Image")));
+            this.filePictureBoxTableRow24Col9.Location = new System.Drawing.Point(306, 369);
+            this.filePictureBoxTableRow24Col9.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow24Col9.Name = "filePictureBoxTableRow24Col9";
+            this.filePictureBoxTableRow24Col9.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow24Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow24Col9.TabIndex = 49;
+            this.filePictureBoxTableRow24Col9.TabStop = false;
+            // 
+            // filePictureBoxTableRow23Col9
+            // 
+            this.filePictureBoxTableRow23Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow23Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow23Col9.Image")));
+            this.filePictureBoxTableRow23Col9.Location = new System.Drawing.Point(306, 353);
+            this.filePictureBoxTableRow23Col9.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow23Col9.Name = "filePictureBoxTableRow23Col9";
+            this.filePictureBoxTableRow23Col9.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow23Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow23Col9.TabIndex = 49;
+            this.filePictureBoxTableRow23Col9.TabStop = false;
+            // 
+            // filePictureBoxTableRow22Col9
+            // 
+            this.filePictureBoxTableRow22Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow22Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow22Col9.Image")));
+            this.filePictureBoxTableRow22Col9.Location = new System.Drawing.Point(306, 337);
+            this.filePictureBoxTableRow22Col9.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow22Col9.Name = "filePictureBoxTableRow22Col9";
+            this.filePictureBoxTableRow22Col9.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow22Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow22Col9.TabIndex = 49;
+            this.filePictureBoxTableRow22Col9.TabStop = false;
+            // 
+            // filePictureBoxTableRow4Col9
+            // 
+            this.filePictureBoxTableRow4Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow4Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow4Col9.Image")));
+            this.filePictureBoxTableRow4Col9.Location = new System.Drawing.Point(306, 49);
+            this.filePictureBoxTableRow4Col9.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow4Col9.Name = "filePictureBoxTableRow4Col9";
+            this.filePictureBoxTableRow4Col9.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow4Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow4Col9.TabIndex = 49;
+            this.filePictureBoxTableRow4Col9.TabStop = false;
+            // 
+            // filePictureBoxTableRow3Col9
+            // 
+            this.filePictureBoxTableRow3Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow3Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow3Col9.Image")));
+            this.filePictureBoxTableRow3Col9.Location = new System.Drawing.Point(306, 33);
+            this.filePictureBoxTableRow3Col9.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow3Col9.Name = "filePictureBoxTableRow3Col9";
+            this.filePictureBoxTableRow3Col9.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow3Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow3Col9.TabIndex = 49;
+            this.filePictureBoxTableRow3Col9.TabStop = false;
+            // 
+            // filePictureBoxTableRow2Col9
+            // 
+            this.filePictureBoxTableRow2Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow2Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow2Col9.Image")));
+            this.filePictureBoxTableRow2Col9.Location = new System.Drawing.Point(306, 17);
+            this.filePictureBoxTableRow2Col9.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow2Col9.Name = "filePictureBoxTableRow2Col9";
+            this.filePictureBoxTableRow2Col9.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow2Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow2Col9.TabIndex = 49;
+            this.filePictureBoxTableRow2Col9.TabStop = false;
             // 
             // filePictureBoxTableRow21Col8
             // 
@@ -5884,6 +5998,20 @@ namespace SM64_Diagnostic
             this.filePictureBoxTableRow8Col8.TabIndex = 49;
             this.filePictureBoxTableRow8Col8.TabStop = false;
             // 
+            // filePictureBoxTableRow19Col9
+            // 
+            this.filePictureBoxTableRow19Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxTableRow19Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow19Col9.Image")));
+            this.filePictureBoxTableRow19Col9.Location = new System.Drawing.Point(306, 289);
+            this.filePictureBoxTableRow19Col9.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxTableRow19Col9.Name = "filePictureBoxTableRow19Col9";
+            this.filePictureBoxTableRow19Col9.Size = new System.Drawing.Size(28, 15);
+            this.filePictureBoxTableRow19Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxTableRow19Col9.TabIndex = 49;
+            this.filePictureBoxTableRow19Col9.TabStop = false;
+            // 
             // groupBoxHatLocation
             // 
             this.groupBoxHatLocation.Controls.Add(this.radioButtonHatLocationSLGround);
@@ -6091,7 +6219,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(235, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(238, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -6528,7 +6656,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(728, 430);
+            this.glControlMap.Size = new System.Drawing.Size(731, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -6874,8 +7002,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -7046,7 +7174,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(693, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(696, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -7082,7 +7210,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(539, 422);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(542, 422);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -7145,7 +7273,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(642, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(645, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -7854,7 +7982,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(517, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(520, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -8468,103 +8596,215 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // filePictureBoxTableRow2Col9
+            // textBox1
             // 
-            this.filePictureBoxTableRow2Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow2Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow2Col9.Image")));
-            this.filePictureBoxTableRow2Col9.Location = new System.Drawing.Point(306, 17);
-            this.filePictureBoxTableRow2Col9.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow2Col9.Name = "filePictureBoxTableRow2Col9";
-            this.filePictureBoxTableRow2Col9.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow2Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow2Col9.TabIndex = 49;
-            this.filePictureBoxTableRow2Col9.TabStop = false;
+            this.textBox1.Location = new System.Drawing.Point(335, 1);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox1.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(38, 15);
+            this.textBox1.TabIndex = 40;
+            this.textBox1.Text = "100";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // filePictureBoxTableRow3Col9
+            // textBox2
             // 
-            this.filePictureBoxTableRow3Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow3Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow3Col9.Image")));
-            this.filePictureBoxTableRow3Col9.Location = new System.Drawing.Point(306, 33);
-            this.filePictureBoxTableRow3Col9.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow3Col9.Name = "filePictureBoxTableRow3Col9";
-            this.filePictureBoxTableRow3Col9.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow3Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow3Col9.TabIndex = 49;
-            this.filePictureBoxTableRow3Col9.TabStop = false;
+            this.textBox2.Location = new System.Drawing.Point(335, 17);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox2.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(38, 15);
+            this.textBox2.TabIndex = 41;
+            this.textBox2.Text = "100";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // filePictureBoxTableRow4Col9
+            // textBox3
             // 
-            this.filePictureBoxTableRow4Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow4Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow4Col9.Image")));
-            this.filePictureBoxTableRow4Col9.Location = new System.Drawing.Point(306, 49);
-            this.filePictureBoxTableRow4Col9.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow4Col9.Name = "filePictureBoxTableRow4Col9";
-            this.filePictureBoxTableRow4Col9.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow4Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow4Col9.TabIndex = 49;
-            this.filePictureBoxTableRow4Col9.TabStop = false;
+            this.textBox3.Location = new System.Drawing.Point(335, 33);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox3.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(38, 15);
+            this.textBox3.TabIndex = 41;
+            this.textBox3.Text = "100";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // filePictureBoxTableRow19Col9
+            // textBox4
             // 
-            this.filePictureBoxTableRow19Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow19Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow19Col9.Image")));
-            this.filePictureBoxTableRow19Col9.Location = new System.Drawing.Point(306, 289);
-            this.filePictureBoxTableRow19Col9.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow19Col9.Name = "filePictureBoxTableRow19Col9";
-            this.filePictureBoxTableRow19Col9.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow19Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow19Col9.TabIndex = 49;
-            this.filePictureBoxTableRow19Col9.TabStop = false;
+            this.textBox4.Location = new System.Drawing.Point(335, 49);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox4.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(38, 15);
+            this.textBox4.TabIndex = 41;
+            this.textBox4.Text = "100";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // filePictureBoxTableRow22Col9
+            // textBox5
             // 
-            this.filePictureBoxTableRow22Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow22Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow22Col9.Image")));
-            this.filePictureBoxTableRow22Col9.Location = new System.Drawing.Point(306, 337);
-            this.filePictureBoxTableRow22Col9.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow22Col9.Name = "filePictureBoxTableRow22Col9";
-            this.filePictureBoxTableRow22Col9.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow22Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow22Col9.TabIndex = 49;
-            this.filePictureBoxTableRow22Col9.TabStop = false;
+            this.textBox5.Location = new System.Drawing.Point(335, 65);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox5.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(38, 15);
+            this.textBox5.TabIndex = 41;
+            this.textBox5.Text = "100";
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // filePictureBoxTableRow23Col9
+            // textBox6
             // 
-            this.filePictureBoxTableRow23Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow23Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow23Col9.Image")));
-            this.filePictureBoxTableRow23Col9.Location = new System.Drawing.Point(306, 353);
-            this.filePictureBoxTableRow23Col9.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow23Col9.Name = "filePictureBoxTableRow23Col9";
-            this.filePictureBoxTableRow23Col9.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow23Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow23Col9.TabIndex = 49;
-            this.filePictureBoxTableRow23Col9.TabStop = false;
+            this.textBox6.Location = new System.Drawing.Point(335, 81);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox6.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(38, 15);
+            this.textBox6.TabIndex = 41;
+            this.textBox6.Text = "100";
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // filePictureBoxTableRow24Col9
+            // textBox7
             // 
-            this.filePictureBoxTableRow24Col9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxTableRow24Col9.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxTableRow24Col9.Image")));
-            this.filePictureBoxTableRow24Col9.Location = new System.Drawing.Point(306, 369);
-            this.filePictureBoxTableRow24Col9.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxTableRow24Col9.Name = "filePictureBoxTableRow24Col9";
-            this.filePictureBoxTableRow24Col9.Size = new System.Drawing.Size(28, 15);
-            this.filePictureBoxTableRow24Col9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxTableRow24Col9.TabIndex = 49;
-            this.filePictureBoxTableRow24Col9.TabStop = false;
+            this.textBox7.Location = new System.Drawing.Point(335, 97);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox7.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(38, 15);
+            this.textBox7.TabIndex = 41;
+            this.textBox7.Text = "100";
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox8.Location = new System.Drawing.Point(335, 113);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox8.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(38, 15);
+            this.textBox8.TabIndex = 41;
+            this.textBox8.Text = "100";
+            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox9.Location = new System.Drawing.Point(335, 129);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox9.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(38, 15);
+            this.textBox9.TabIndex = 41;
+            this.textBox9.Text = "100";
+            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox10.Location = new System.Drawing.Point(335, 145);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox10.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(38, 15);
+            this.textBox10.TabIndex = 41;
+            this.textBox10.Text = "100";
+            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox11.Location = new System.Drawing.Point(335, 161);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox11.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(38, 15);
+            this.textBox11.TabIndex = 41;
+            this.textBox11.Text = "100";
+            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox12
+            // 
+            this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox12.Location = new System.Drawing.Point(335, 177);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox12.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(38, 15);
+            this.textBox12.TabIndex = 41;
+            this.textBox12.Text = "100";
+            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox13
+            // 
+            this.textBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox13.Location = new System.Drawing.Point(335, 193);
+            this.textBox13.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox13.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(38, 15);
+            this.textBox13.TabIndex = 41;
+            this.textBox13.Text = "100";
+            this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox14
+            // 
+            this.textBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox14.Location = new System.Drawing.Point(335, 209);
+            this.textBox14.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox14.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(38, 15);
+            this.textBox14.TabIndex = 41;
+            this.textBox14.Text = "100";
+            this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox15
+            // 
+            this.textBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox15.Location = new System.Drawing.Point(335, 225);
+            this.textBox15.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox15.MaximumSize = new System.Drawing.Size(0, 15);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(38, 15);
+            this.textBox15.TabIndex = 41;
+            this.textBox15.Text = "100";
+            this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // StroopMainForm
             // 
@@ -8672,6 +8912,12 @@ namespace SM64_Diagnostic
             this.splitContainerFile.ResumeLayout(false);
             this.tableLayoutPanelFile.ResumeLayout(false);
             this.tableLayoutPanelFile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow24Col9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow23Col9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow22Col9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow4Col9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow3Col9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow21Col8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow15Col8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow13Col8)).EndInit();
@@ -8803,6 +9049,7 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow1Col1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow8Col8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow19Col9)).EndInit();
             this.groupBoxHatLocation.ResumeLayout(false);
             this.groupBoxHatLocation.PerformLayout();
             this.groupBoxFile.ResumeLayout(false);
@@ -8865,13 +9112,6 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow2Col9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow3Col9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow4Col9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow19Col9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow22Col9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow23Col9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxTableRow24Col9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -9484,6 +9724,21 @@ namespace SM64_Diagnostic
         private File3StarDoorPictureBox filePictureBoxTableRow3Col9;
         private File1StarDoorPictureBox filePictureBoxTableRow2Col9;
         private File1StarDoorPictureBox filePictureBoxTableRow19Col9;
+        private TextBox textBox1;
+        private TextBox textBox15;
+        private TextBox textBox14;
+        private TextBox textBox13;
+        private TextBox textBox12;
+        private TextBox textBox11;
+        private TextBox textBox10;
+        private TextBox textBox9;
+        private TextBox textBox8;
+        private TextBox textBox7;
+        private TextBox textBox6;
+        private TextBox textBox5;
+        private TextBox textBox4;
+        private TextBox textBox3;
+        private TextBox textBox2;
     }
 }
 
