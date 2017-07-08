@@ -24,6 +24,7 @@ namespace SM64_Diagnostic
         
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         ControllerImageGui _controllerImageGui = new ControllerImageGui();
+        FileImageGui _fileImageGui = new FileImageGui();
         List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, 
             _actionsData, _waterData, _controllerData, _fileData, _quarterFrameData, _camHackData;
         ObjectAssociations _objectAssoc;
@@ -210,6 +211,8 @@ namespace SM64_Diagnostic
             XmlConfigParser.OpenControllerImageAssoc(@"Config/ControllerImageAssociations.xml", _controllerImageGui);
             loadingForm.UpdateStatus("Loading File Data", statusNum++);
             _fileData = XmlConfigParser.OpenWatchVarData(@"Config/FileData.xml", "FileDataSchema.xsd", "fileOffset"); //TODO implement this
+            loadingForm.UpdateStatus("Loading File Image Associations", statusNum++);
+            XmlConfigParser.OpenFileImageAssoc(@"Config/FileImageAssociations.xml", _fileImageGui);
             loadingForm.UpdateStatus("Loading Quarter Frame Data", statusNum++);
             _quarterFrameData = XmlConfigParser.OpenWatchVarData(@"Config/QuarterFrameData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Camera Hack Data", statusNum++);
