@@ -131,7 +131,6 @@ namespace SM64_Diagnostic.Managers
                 return 0x23; // WMotR
             else
                 return 0x0D + (uint)row; // main courses
-
         }
 
         private uint GetStarAddressOffset(int row, int col)

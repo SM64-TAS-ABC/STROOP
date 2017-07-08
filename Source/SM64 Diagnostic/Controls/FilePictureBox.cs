@@ -66,7 +66,10 @@ namespace SM64_Diagnostic
 
         protected abstract Image GetImageForValue(byte value);
 
-        protected abstract byte GetNewValueForValue(byte oldValue);
+        protected virtual byte GetNewValueForValue(byte oldValue)
+        {
+            return oldValue == 0 ? _mask : (byte)0;
+        }
 
         private void ClickAction(object sender, EventArgs e)
         {

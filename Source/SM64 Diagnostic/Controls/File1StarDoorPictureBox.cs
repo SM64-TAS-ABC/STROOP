@@ -14,18 +14,18 @@ using System.Drawing.Drawing2D;
 
 namespace SM64_Diagnostic
 {
-    public class FileCannonPictureBox : FilePictureBox
+    public class File1StarDoorPictureBox : FilePictureBox
     {
-        public FileCannonPictureBox()
+        public File1StarDoorPictureBox()
         {
         }
 
         protected override Image GetImageForValue(byte value)
         {
             if (value == 0)
-                return _gui.CannonLidImage;
+                return _gui.DoorBlackImage;
             else
-                return _gui.CannonImage;
+                return _gui.Door1StarImage;
         }
     }
 }
