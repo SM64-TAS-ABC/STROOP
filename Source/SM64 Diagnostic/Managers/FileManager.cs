@@ -39,9 +39,13 @@ namespace SM64_Diagnostic.Managers
 
         int numRows = 26;
 
-        // Keep track of each row's address and masks, so the label can toggle them all.
-        uint[] _courseAddressOffsets;
-        byte[] _courseMasks;
+        // Keep track of each row's address and masks
+        uint[] _courseStarsAddressOffsets;
+        byte[] _courseStarsMasks;
+        uint?[] _courseCannonAddressOffsets;
+        byte?[] _courseCannonMasks;
+        uint?[] _courseDoorAddressOffsets;
+        byte?[] _courseDoorMasks;
 
         public FileManager(ProcessStream stream, List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile, FileImageGui gui)
             : base(stream, fileData, noTearFlowLayoutPanelFile, Config.File.FileAAddress)
@@ -52,8 +56,12 @@ namespace SM64_Diagnostic.Managers
 
             _filePictureBoxList = new List<FilePictureBox>();
             _fileTextboxList = new List<FileTextbox>();
-            _courseAddressOffsets = new uint[numRows];
-            _courseMasks = new byte[numRows];
+            _courseStarsAddressOffsets = new uint[numRows];
+            _courseStarsMasks = new byte[numRows];
+            _courseCannonAddressOffsets = new uint?[numRows];
+            _courseCannonMasks = new byte?[numRows];
+            _courseDoorAddressOffsets = new uint?[numRows];
+            _courseDoorMasks = new byte?[numRows];
 
             CurrentFileMode = FileMode.FileA;
             CurrentFileAddress = Config.File.FileAAddress;
@@ -80,6 +88,7 @@ namespace SM64_Diagnostic.Managers
 
             TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
 
+            // stars
             for (int row = 0; row < numRows; row++)
             {
                 for (int col = 0; col < 7; col++)
@@ -94,18 +103,20 @@ namespace SM64_Diagnostic.Managers
                     fileStarPictureBox.Initialize(_stream, _gui, addressOffset, mask, _gui.PowerStarImage, _gui.PowerStarBlackImage, missionName);
                     _filePictureBoxList.Add(fileStarPictureBox);
 
-                    _courseAddressOffsets[row] = addressOffset;
-                    _courseMasks[row] = (byte)(_courseMasks[row] | mask);
+                    _courseStarsAddressOffsets[row] = addressOffset;
+                    _courseStarsMasks[row] = (byte)(_courseStarsMasks[row] | mask);
                 }
             }
 
+            // course labels
             for (int row = 0; row < numRows; row++)
             {
                 string controlName = String.Format("labelFileTableRow{0}", row + 1);
                 FileCourseLabel fileCourseLabel = fileTable.Controls[controlName] as FileCourseLabel;
-                fileCourseLabel.Initialize(_stream, _courseAddressOffsets[row], _courseMasks[row]);
+                fileCourseLabel.Initialize(_stream, _courseStarsAddressOffsets[row], _courseStarsMasks[row]);
             }
 
+            // cannons
             for (int row = 0; row < numRows; row++)
             {
                 int col = 7;
@@ -117,8 +128,12 @@ namespace SM64_Diagnostic.Managers
                 byte mask = Config.File.CannonMask;
                 fileCannonPictureBox.Initialize(_stream, addressOffset, mask, _gui.CannonImage, _gui.CannonLidImage);
                 _filePictureBoxList.Add(fileCannonPictureBox);
+
+                _courseCannonAddressOffsets[row] = addressOffset;
+                _courseCannonMasks[row] = mask;
             }
 
+            // doors
             for (int row = 0; row < numRows; row++)
             {
                 int col = 8;
@@ -131,8 +146,12 @@ namespace SM64_Diagnostic.Managers
                 (Image onImage, Image offImage) = GetDoorImages(row);
                 fileBinaryPictureBox.Initialize(_stream, addressOffset, mask, onImage, offImage);
                 _filePictureBoxList.Add(fileBinaryPictureBox);
+
+                _courseDoorAddressOffsets[row] = addressOffset;
+                _courseDoorMasks[row] = mask;
             }
 
+            // coin scores
             for (int row = 0; row < 15; row++)
             {
                 int col = 9;
@@ -144,6 +163,7 @@ namespace SM64_Diagnostic.Managers
 
             GroupBox hatLocationGroupbox = splitContainerFile.Panel1.Controls["groupBoxHatLocation"] as GroupBox;
 
+            // hat location radio button pictures
             FileHatLocationPictureBox filePictureBoxHatLocationMario = hatLocationGroupbox.Controls["filePictureBoxHatLocationMario"] as FileHatLocationPictureBox;
             filePictureBoxHatLocationMario.Initialize(_stream, HatLocation.Mario, _gui.HatOnMarioImage, _gui.HatOnMarioGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationMario);
@@ -172,7 +192,7 @@ namespace SM64_Diagnostic.Managers
             filePictureBoxHatLocationTTMGround.Initialize(_stream, HatLocation.TTMGround, _gui.HatOnGroundInTTMImage, _gui.HatOnGroundInTTMGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationTTMGround);
 
-
+            // hat position textboxes
             FileHatPositionTextbox textboxHatLocationPositionX = hatLocationGroupbox.Controls["textboxHatLocationPositionX"] as FileHatPositionTextbox;
             textboxHatLocationPositionX.Initialize(_stream, Config.File.HatPositionXAddress);
             _fileTextboxList.Add(textboxHatLocationPositionX);
@@ -185,7 +205,7 @@ namespace SM64_Diagnostic.Managers
             textboxHatLocationPositionZ.Initialize(_stream, Config.File.HatPositionZAddress);
             _fileTextboxList.Add(textboxHatLocationPositionZ);
 
-
+            // miscellaneous checkbox pictures
             FileBinaryPictureBox filePictureBoxFileStarted = splitContainerFile.Panel1.Controls["filePictureBoxFileStarted"] as FileBinaryPictureBox;
             filePictureBoxFileStarted.Initialize(_stream, Config.File.FileStartedAddress, Config.File.FileStartedMask, _gui.FileStartedImage, _gui.FileNotStartedImage);
             _filePictureBoxList.Add(filePictureBoxFileStarted);
@@ -218,6 +238,7 @@ namespace SM64_Diagnostic.Managers
             filePictureBoxDDDMovedBack.Initialize(_stream, Config.File.DDDMovedBackAddress, Config.File.DDDMovedBackMask, _gui.DDDPaintingMovedBackImage, _gui.DDDPaintingNotMovedBackImage);
             _filePictureBoxList.Add(filePictureBoxDDDMovedBack);
 
+            // buttons
             _saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
             _saveFileButton.Click += FileSaveButton_Click;
 
@@ -231,10 +252,10 @@ namespace SM64_Diagnostic.Managers
             _noStarsButton.Click += (sender, e) => FileSetStars(false);
 
             _everythingButton = splitContainerFile.Panel1.Controls["buttonEverything"] as Button;
-            _everythingButton.Click += (sender, e) => FileSetStars(true);
+            _everythingButton.Click += (sender, e) => FileSetEverything(true);
 
             _nothingButton = splitContainerFile.Panel1.Controls["buttonNothing"] as Button;
-            _nothingButton.Click += (sender, e) => FileSetStars(false);
+            _nothingButton.Click += (sender, e) => FileSetEverything(false);
 
             _numStarsButton = splitContainerFile.Panel1.Controls["buttonFileNumStars"] as Button;
             _numStarsButton.Click += NumStarsButton_Click;
@@ -457,13 +478,37 @@ namespace SM64_Diagnostic.Managers
             byte[] bufferedBytes = GetBufferedBytes();
             for (int i = 0; i < numRows; i++)
             {
-                uint courseAddressOffset = _courseAddressOffsets[i];
-                byte courseMask = _courseMasks[i];
+                uint courseAddressOffset = _courseStarsAddressOffsets[i];
+                byte courseMask = _courseStarsMasks[i];
 
                 byte oldByte = bufferedBytes[courseAddressOffset];
                 byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, courseMask, starsOn);
                 bufferedBytes[courseAddressOffset] = newByte;
             }
+            SetBufferedBytes(bufferedBytes);
+        }
+
+        private void FileSetEverything(bool everythingOn)
+        {
+            byte[] bufferedBytes = GetBufferedBytes();
+
+            Action<uint, byte, byte> setValues = (uint addressOffset, byte mask, byte newVal) =>
+            {
+                byte oldByte = bufferedBytes[addressOffset];
+                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, mask, newVal);
+                bufferedBytes[addressOffset] = newByte;
+            };
+
+            Action<uint, byte, bool> setValuesBool = (uint addressOffset, byte mask, bool newVal) =>
+            {
+                setValues(addressOffset, mask, newVal ? mask : (byte)0);
+            };
+
+            for (int i = 0; i < numRows; i++)
+            {
+                setValuesBool(_courseStarsAddressOffsets[i], _courseStarsMasks[i], everythingOn);
+            }
+
             SetBufferedBytes(bufferedBytes);
         }
 
