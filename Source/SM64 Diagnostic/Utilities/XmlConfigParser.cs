@@ -685,55 +685,55 @@ namespace SM64_Diagnostic.Utilities
                                     Config.File.ChecksumOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "CourseStarsAddressStart":
+                                case "CourseStarsOffsetStart":
                                     Config.File.CourseStarsOffsetStart = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "TotWCStarAddress":
+                                case "TotWCStarOffset":
                                     Config.File.TotWCStarOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "CotMCStarAddress":
+                                case "CotMCStarOffset":
                                     Config.File.CotMCStarOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "VCutMStarAddress":
+                                case "VCutMStarOffset":
                                     Config.File.VCutMStarOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "PSSStarsAddress":
+                                case "PSSStarsOffset":
                                     Config.File.PSSStarsOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "SAStarAddress":
+                                case "SAStarOffset":
                                     Config.File.SAStarOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "WMotRStarAddress":
+                                case "WMotRStarOffset":
                                     Config.File.WMotRStarOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "BitDWStarAddress":
+                                case "BitDWStarOffset":
                                     Config.File.BitDWStarOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "BitFSStarAddress":
+                                case "BitFSStarOffset":
                                     Config.File.BitFSStarOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "BitSStarAddress":
+                                case "BitSStarOffset":
                                     Config.File.BitSStarOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "ToadMIPSStarsAddress":
+                                case "ToadMIPSStarsOffset":
                                     Config.File.ToadMIPSStarsOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "MainCourseCannonsAddressStart":
+                                case "MainCourseCannonsOffsetStart":
                                     Config.File.MainCourseCannonsOffsetStart = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "WMotRCannonAddress":
+                                case "WMotRCannonOffset":
                                     Config.File.WMotRCannonOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
@@ -741,31 +741,31 @@ namespace SM64_Diagnostic.Utilities
                                     Config.File.CannonMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "WFDoorAddress":
+                                case "WFDoorOffset":
                                     Config.File.WFDoorOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "JRBDoorAddress":
+                                case "JRBDoorOffset":
                                     Config.File.JRBDoorOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "CCMDoorAddress":
+                                case "CCMDoorOffset":
                                     Config.File.CCMDoorOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "PSSDoorAddress":
+                                case "PSSDoorOffset":
                                     Config.File.PSSDoorOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "BitDWDoorAddress":
+                                case "BitDWDoorOffset":
                                     Config.File.BitDWDoorOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "BitFSDoorAddress":
+                                case "BitFSDoorOffset":
                                     Config.File.BitFSDoorOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "BitSDoorAddress":
+                                case "BitSDoorOffset":
                                     Config.File.BitSDoorOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
@@ -797,11 +797,11 @@ namespace SM64_Diagnostic.Utilities
                                     Config.File.BitSDoorMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "CoinScoreAddressStart":
+                                case "CoinScoreOffsetStart":
                                     Config.File.CoinScoreOffsetStart = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "FileStartedAddress":
+                                case "FileStartedOffset":
                                     Config.File.FileStartedOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
@@ -809,7 +809,7 @@ namespace SM64_Diagnostic.Utilities
                                     Config.File.FileStartedMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "CapSwitchPressedAddress":
+                                case "CapSwitchPressedOffset":
                                     Config.File.CapSwitchPressedOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
@@ -825,7 +825,7 @@ namespace SM64_Diagnostic.Utilities
                                     Config.File.BlueCapSwitchMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "KeyDoorAddress":
+                                case "KeyDoorOffset":
                                     Config.File.KeyDoorOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
@@ -845,7 +845,7 @@ namespace SM64_Diagnostic.Utilities
                                     Config.File.KeyDoor2OpenedMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "MoatDrainedAddress":
+                                case "MoatDrainedOffset":
                                     Config.File.MoatDrainedOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
@@ -853,7 +853,7 @@ namespace SM64_Diagnostic.Utilities
                                     Config.File.MoatDrainedMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "DDDMovedBackAddress":
+                                case "DDDMovedBackOffset":
                                     Config.File.DDDMovedBackOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
@@ -905,15 +905,15 @@ namespace SM64_Diagnostic.Utilities
                                     Config.File.HatLocationCourseTTMValue = (ushort)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "HatPositionXAddress":
+                                case "HatPositionXOffset":
                                     Config.File.HatPositionXOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "HatPositionYAddress":
+                                case "HatPositionYOffset":
                                     Config.File.HatPositionYOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "HatPositionZAddress":
+                                case "HatPositionZOffset":
                                     Config.File.HatPositionZOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }

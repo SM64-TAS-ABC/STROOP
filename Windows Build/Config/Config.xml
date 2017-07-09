@@ -194,33 +194,34 @@
   <File>
     <FileStructAddress>0x80207700</FileStructAddress>
     <FileStructSize>0x38</FileStructSize>
+    
     <ChecksumConstantOffset>0x34</ChecksumConstantOffset>
     <ChecksumConstantValue>0x4441</ChecksumConstantValue>
     <ChecksumOffset>0x36</ChecksumOffset>
 
-    <CourseStarsAddressStart>0x0C</CourseStarsAddressStart>
-    <TotWCStarAddress>0x20</TotWCStarAddress>
-    <CotMCStarAddress>0x1F</CotMCStarAddress>
-    <VCutMStarAddress>0x21</VCutMStarAddress>
-    <PSSStarsAddress>0x1E</PSSStarsAddress>
-    <SAStarAddress>0x23</SAStarAddress>
-    <WMotRStarAddress>0x22</WMotRStarAddress>
-    <BitDWStarAddress>0x1B</BitDWStarAddress>
-    <BitFSStarAddress>0x1C</BitFSStarAddress>
-    <BitSStarAddress>0x1D</BitSStarAddress>
-    <ToadMIPSStarsAddress>0x08</ToadMIPSStarsAddress>
+    <CourseStarsOffsetStart>0x0C</CourseStarsOffsetStart>
+    <TotWCStarOffset>0x20</TotWCStarOffset>
+    <CotMCStarOffset>0x1F</CotMCStarOffset>
+    <VCutMStarOffset>0x21</VCutMStarOffset>
+    <PSSStarsOffset>0x1E</PSSStarsOffset>
+    <SAStarOffset>0x23</SAStarOffset>
+    <WMotRStarOffset>0x22</WMotRStarOffset>
+    <BitDWStarOffset>0x1B</BitDWStarOffset>
+    <BitFSStarOffset>0x1C</BitFSStarOffset>
+    <BitSStarOffset>0x1D</BitSStarOffset>
+    <ToadMIPSStarsOffset>0x08</ToadMIPSStarsOffset>
 
-    <MainCourseCannonsAddressStart>0x0D</MainCourseCannonsAddressStart>
-    <WMotRCannonAddress>0x23</WMotRCannonAddress>
+    <MainCourseCannonsOffsetStart>0x0D</MainCourseCannonsOffsetStart>
+    <WMotRCannonOffset>0x23</WMotRCannonOffset>
     <CannonMask>0x80</CannonMask>
 
-    <WFDoorAddress>0x0A</WFDoorAddress>
-    <JRBDoorAddress>0x0A</JRBDoorAddress>
-    <CCMDoorAddress>0x0A</CCMDoorAddress>
-    <PSSDoorAddress>0x0A</PSSDoorAddress>
-    <BitDWDoorAddress>0x0A</BitDWDoorAddress>
-    <BitFSDoorAddress>0x0A</BitFSDoorAddress>
-    <BitSDoorAddress>0x09</BitSDoorAddress>
+    <WFDoorOffset>0x0A</WFDoorOffset>
+    <JRBDoorOffset>0x0A</JRBDoorOffset>
+    <CCMDoorOffset>0x0A</CCMDoorOffset>
+    <PSSDoorOffset>0x0A</PSSDoorOffset>
+    <BitDWDoorOffset>0x0A</BitDWDoorOffset>
+    <BitFSDoorOffset>0x0A</BitFSDoorOffset>
+    <BitSDoorOffset>0x09</BitSDoorOffset>
 
     <WFDoorMask>0x08</WFDoorMask>
     <JRBDoorMask>0x20</JRBDoorMask>
@@ -230,22 +231,22 @@
     <BitFSDoorMask>0x80</BitFSDoorMask>
     <BitSDoorMask>0x10</BitSDoorMask>
 
-    <CoinScoreAddressStart>0x25</CoinScoreAddressStart>
+    <CoinScoreOffsetStart>0x25</CoinScoreOffsetStart>
 
-    <FileStartedAddress>0x0B</FileStartedAddress>
+    <FileStartedOffset>0x0B</FileStartedOffset>
     <FileStartedMask>0x01</FileStartedMask>
-    <CapSwitchPressedAddress>0x0B</CapSwitchPressedAddress>
+    <CapSwitchPressedOffset>0x0B</CapSwitchPressedOffset>
     <RedCapSwitchMask>0x02</RedCapSwitchMask>
     <GreenCapSwitchMask>0x04</GreenCapSwitchMask>
     <BlueCapSwitchMask>0x08</BlueCapSwitchMask>
-    <KeyDoorAddress>0x0B</KeyDoorAddress>
+    <KeyDoorOffset>0x0B</KeyDoorOffset>
     <KeyDoor1KeyMask>0x10</KeyDoor1KeyMask>
     <KeyDoor1OpenedMask>0x40</KeyDoor1OpenedMask>
     <KeyDoor2KeyMask>0x20</KeyDoor2KeyMask>
     <KeyDoor2OpenedMask>0x80</KeyDoor2OpenedMask>
-    <MoatDrainedAddress>0x0A</MoatDrainedAddress>
+    <MoatDrainedOffset>0x0A</MoatDrainedOffset>
     <MoatDrainedMask>0x02</MoatDrainedMask>
-    <DDDMovedBackAddress>0x0A</DDDMovedBackAddress>
+    <DDDMovedBackOffset>0x0A</DDDMovedBackOffset>
     <DDDMovedBackMask>0x01</DDDMovedBackMask>
 
     <HatLocationModeOffset>0x09</HatLocationModeOffset>
@@ -261,9 +262,9 @@
     <HatLocationCourseSLValue>0x0A01</HatLocationCourseSLValue>
     <HatLocationCourseTTMValue>0x2401</HatLocationCourseTTMValue>
 
-    <HatPositionXAddress>0x02</HatPositionXAddress>
-    <HatPositionYAddress>0x04</HatPositionYAddress>
-    <HatPositionZAddress>0x06</HatPositionZAddress>
+    <HatPositionXOffset>0x02</HatPositionXOffset>
+    <HatPositionYOffset>0x04</HatPositionYOffset>
+    <HatPositionZOffset>0x06</HatPositionZOffset>
   </File>
   <CameraHack>
     <CameraHackStruct>0x803E0000</CameraHackStruct>
