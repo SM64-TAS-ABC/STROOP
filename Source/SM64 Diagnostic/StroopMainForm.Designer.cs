@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -6445,12 +6445,12 @@ namespace SM64_Diagnostic
             // 
             // groupBoxHatLocation
             // 
-            this.groupBoxHatLocation.Controls.Add(this.labelHatLocationPositionZ);
-            this.groupBoxHatLocation.Controls.Add(this.labelHatLocationPositionY);
-            this.groupBoxHatLocation.Controls.Add(this.labelHatLocationPositionX);
             this.groupBoxHatLocation.Controls.Add(this.textBoxHatLocationPositionZ);
             this.groupBoxHatLocation.Controls.Add(this.textBoxHatLocationPositionY);
             this.groupBoxHatLocation.Controls.Add(this.textBoxHatLocationPositionX);
+            this.groupBoxHatLocation.Controls.Add(this.labelHatLocationPositionZ);
+            this.groupBoxHatLocation.Controls.Add(this.labelHatLocationPositionY);
+            this.groupBoxHatLocation.Controls.Add(this.labelHatLocationPositionX);
             this.groupBoxHatLocation.Controls.Add(this.filePictureBoxHatLocationTTMGround);
             this.groupBoxHatLocation.Controls.Add(this.filePictureBoxHatLocationMario);
             this.groupBoxHatLocation.Controls.Add(this.filePictureBoxHatLocationUkiki);
@@ -6468,7 +6468,7 @@ namespace SM64_Diagnostic
             // labelHatLocationPositionZ
             // 
             this.labelHatLocationPositionZ.AutoSize = true;
-            this.labelHatLocationPositionZ.Location = new System.Drawing.Point(192, 61);
+            this.labelHatLocationPositionZ.Location = new System.Drawing.Point(195, 61);
             this.labelHatLocationPositionZ.Name = "labelHatLocationPositionZ";
             this.labelHatLocationPositionZ.Size = new System.Drawing.Size(37, 13);
             this.labelHatLocationPositionZ.TabIndex = 60;
@@ -6477,7 +6477,7 @@ namespace SM64_Diagnostic
             // labelHatLocationPositionY
             // 
             this.labelHatLocationPositionY.AutoSize = true;
-            this.labelHatLocationPositionY.Location = new System.Drawing.Point(100, 61);
+            this.labelHatLocationPositionY.Location = new System.Drawing.Point(103, 61);
             this.labelHatLocationPositionY.Name = "labelHatLocationPositionY";
             this.labelHatLocationPositionY.Size = new System.Drawing.Size(37, 13);
             this.labelHatLocationPositionY.TabIndex = 61;
@@ -6486,7 +6486,7 @@ namespace SM64_Diagnostic
             // labelHatLocationPositionX
             // 
             this.labelHatLocationPositionX.AutoSize = true;
-            this.labelHatLocationPositionX.Location = new System.Drawing.Point(11, 61);
+            this.labelHatLocationPositionX.Location = new System.Drawing.Point(13, 61);
             this.labelHatLocationPositionX.Name = "labelHatLocationPositionX";
             this.labelHatLocationPositionX.Size = new System.Drawing.Size(37, 13);
             this.labelHatLocationPositionX.TabIndex = 62;
@@ -6494,7 +6494,7 @@ namespace SM64_Diagnostic
             // 
             // textBoxHatLocationPositionZ
             // 
-            this.textBoxHatLocationPositionZ.Location = new System.Drawing.Point(229, 58);
+            this.textBoxHatLocationPositionZ.Location = new System.Drawing.Point(230, 58);
             this.textBoxHatLocationPositionZ.Name = "textBoxHatLocationPositionZ";
             this.textBoxHatLocationPositionZ.Size = new System.Drawing.Size(42, 20);
             this.textBoxHatLocationPositionZ.TabIndex = 57;
@@ -6512,7 +6512,7 @@ namespace SM64_Diagnostic
             // 
             // textBoxHatLocationPositionX
             // 
-            this.textBoxHatLocationPositionX.Location = new System.Drawing.Point(45, 58);
+            this.textBoxHatLocationPositionX.Location = new System.Drawing.Point(48, 58);
             this.textBoxHatLocationPositionX.Name = "textBoxHatLocationPositionX";
             this.textBoxHatLocationPositionX.Size = new System.Drawing.Size(42, 20);
             this.textBoxHatLocationPositionX.TabIndex = 59;
@@ -7498,8 +7498,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
