@@ -34,14 +34,6 @@ namespace SM64_Diagnostic.Managers
         Button _nothingButton;
         Button _numStarsButton;
 
-        RadioButton _hatLocationMarioRadioButton;
-        RadioButton _hatLocationSSLKleptoRadioButton;
-        RadioButton _hatLocationSSLGroundRadioButton;
-        RadioButton _hatLocationSLSnowmanRadioButton;
-        RadioButton _hatLocationSLGroundRadioButton;
-        RadioButton _hatLocationTTMUkikiRadioButton;
-        RadioButton _hatLocationTTMGroundRadioButton;
-
         List<FilePictureBox> _filePictureBoxList;
         List<FileCoinScoreTextbox> _fileCoinScoreTextboxList;
 
@@ -82,24 +74,6 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => FileMode_Click(sender, e, FileMode.FileDSaved);
 
             GroupBox hatLocationGroupbox = splitContainerFile.Panel1.Controls["groupBoxHatLocation"] as GroupBox;
-
-            _hatLocationMarioRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationMario"] as RadioButton;
-            _hatLocationSSLKleptoRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationSSLKlepto"] as RadioButton;
-            _hatLocationSSLGroundRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationSSLGround"] as RadioButton;
-            _hatLocationSLSnowmanRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationSLSnowman"] as RadioButton;
-            _hatLocationSLGroundRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationSLGround"] as RadioButton;
-            _hatLocationTTMUkikiRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationTTMUkiki"] as RadioButton;
-            _hatLocationTTMGroundRadioButton = hatLocationGroupbox.Controls["radioButtonHatLocationTTMGround"] as RadioButton;
-
-            _hatLocationMarioRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.Mario);
-            _hatLocationSSLKleptoRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.SSLKlepto);
-            _hatLocationSSLGroundRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.SSLGround);
-            _hatLocationSLSnowmanRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.SLSnowman);
-            _hatLocationSLGroundRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.SLGround);
-            _hatLocationTTMUkikiRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.TTMUkiki);
-            _hatLocationTTMGroundRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.TTMGround);
-
-            _currentHatLocation = GetCurrentHatLocation();
 
             TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
 
@@ -251,16 +225,6 @@ namespace SM64_Diagnostic.Managers
             _numStarsButton.Click += NumStarsButton_Click;
         }
 
-        private uint GetCourseLabelAddressOffset(int row)
-        {
-            return 0;
-        }
-
-        private byte GetCourseLabelMask(int row)
-        {
-            return 0x7F;
-        }
-
         private short CalculateNumStars()
         {
             short starCount = 0;
@@ -378,50 +342,6 @@ namespace SM64_Diagnostic.Managers
         {
             int bitOffset = row == 25 ? 3 : 0;
             return (byte)Math.Pow(2, col + bitOffset);
-        }
-
-        private void SetHatMode(byte hatModeByte)
-        {
-            byte oldByte = _stream.GetByte(CurrentFileAddress + Config.File.HatLocationModeOffset);
-            byte newByte = (byte)((oldByte & ~Config.File.HatLocationModeMask) | hatModeByte);
-            _stream.SetValue(newByte, CurrentFileAddress + Config.File.HatLocationModeOffset);
-        }
-
-        private void HatLocation_Click(object sender, EventArgs e, HatLocation hatLocation)
-        {
-            switch (hatLocation)
-            {
-                case HatLocation.Mario:
-                    SetHatMode(Config.File.HatLocationMarioMask);
-                    break;
-
-                case HatLocation.SSLKlepto:
-                    SetHatMode(Config.File.HatLocationKleptoMask);
-                    break;
-
-                case HatLocation.SSLGround:
-                    SetHatMode(Config.File.HatLocationGroundMask);
-                    _stream.SetValue(Config.File.HatLocationCourseSSLValue, CurrentFileAddress + Config.File.HatLocationCourseOffset);
-                    break;
-
-                case HatLocation.SLSnowman:
-                    SetHatMode(Config.File.HatLocationSnowmanMask);
-                    break;
-
-                case HatLocation.SLGround:
-                    SetHatMode(Config.File.HatLocationGroundMask);
-                    _stream.SetValue(Config.File.HatLocationCourseSLValue, CurrentFileAddress + Config.File.HatLocationCourseOffset);
-                    break;
-
-                case HatLocation.TTMUkiki:
-                    SetHatMode(Config.File.HatLocationUkikiMask);
-                    break;
-
-                case HatLocation.TTMGround:
-                    SetHatMode(Config.File.HatLocationGroundMask);
-                    _stream.SetValue(Config.File.HatLocationCourseTTMValue, CurrentFileAddress + Config.File.HatLocationCourseOffset);
-                    break;
-            }
         }
 
         private void NumStarsButton_Click(object sender, EventArgs e)
@@ -580,37 +500,10 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private HatLocation? GetCurrentHatLocation()
-        {
-            ushort hatLocationCourse = _stream.GetUInt16(CurrentFileAddress + Config.File.HatLocationCourseOffset);
-            byte hatLocationMode = (byte)(_stream.GetByte(CurrentFileAddress + Config.File.HatLocationModeOffset) & Config.File.HatLocationModeMask);
-
-            return hatLocationMode == Config.File.HatLocationMarioMask ? HatLocation.Mario :
-                   hatLocationMode == Config.File.HatLocationKleptoMask ? HatLocation.SSLKlepto :
-                   hatLocationMode == Config.File.HatLocationSnowmanMask ? HatLocation.SLSnowman :
-                   hatLocationMode == Config.File.HatLocationUkikiMask ? HatLocation.TTMUkiki :
-                   hatLocationMode == Config.File.HatLocationGroundMask ?
-                       (hatLocationCourse == Config.File.HatLocationCourseSSLValue ? HatLocation.SSLGround :
-                        hatLocationCourse == Config.File.HatLocationCourseSLValue ? HatLocation.SLGround :
-                        hatLocationCourse == Config.File.HatLocationCourseTTMValue ? HatLocation.TTMGround :
-                        (HatLocation?)null) :
-                   null;
-        }
-
         public override void Update(bool updateView)
         {
             short currentNumStars = CalculateNumStars();
             _numStarsButton.Text = string.Format("Update HUD\r\nto " + (currentNumStars == 1 ? currentNumStars + " Star" : currentNumStars + " Stars"));
-
-            _currentHatLocation = GetCurrentHatLocation();
-             
-            _hatLocationMarioRadioButton.Checked = _currentHatLocation == HatLocation.Mario;
-            _hatLocationSSLKleptoRadioButton.Checked = _currentHatLocation == HatLocation.SSLKlepto;
-            _hatLocationSSLGroundRadioButton.Checked = _currentHatLocation == HatLocation.SSLGround;
-            _hatLocationSLSnowmanRadioButton.Checked = _currentHatLocation == HatLocation.SLSnowman;
-            _hatLocationSLGroundRadioButton.Checked = _currentHatLocation == HatLocation.SLGround;
-            _hatLocationTTMUkikiRadioButton.Checked = _currentHatLocation == HatLocation.TTMUkiki;
-            _hatLocationTTMGroundRadioButton.Checked = _currentHatLocation == HatLocation.TTMGround;
 
             foreach (FilePictureBox filePictureBox in _filePictureBoxList)
             {
