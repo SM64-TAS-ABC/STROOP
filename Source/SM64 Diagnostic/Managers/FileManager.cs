@@ -492,25 +492,19 @@ namespace SM64_Diagnostic.Managers
         {
             byte[] bufferedBytes = GetBufferedBytes();
 
-            Action<uint?, byte?, byte?> setValues = (uint? addressOffset, byte? mask, byte? newVal) =>
+            Action<uint?, byte?, bool?> setValues = (uint? addressOffset, byte? mask, bool? newVal) =>
             {
                 if (addressOffset == null || mask == null || newVal == null) return;
                 byte oldByte = bufferedBytes[(uint)addressOffset];
-                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, (byte)mask, (byte)newVal);
+                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, (byte)mask, (bool)newVal);
                 bufferedBytes[(uint)addressOffset] = newByte;
-            };
-
-            Action<uint?, byte?, bool?> setValuesBool = (uint? addressOffset, byte? mask, bool? newVal) =>
-            {
-                if (newVal == null) return;
-                setValues(addressOffset, mask, (bool)newVal ? mask : (byte)0);
             };
 
             for (int i = 0; i < numRows; i++)
             {
-                setValuesBool(_courseStarsAddressOffsets[i], _courseStarsMasks[i], everythingOn);
-                setValuesBool(_courseCannonAddressOffsets[i], _courseCannonMasks[i], everythingOn);
-                setValuesBool(_courseDoorAddressOffsets[i], _courseDoorMasks[i], everythingOn);
+                setValues(_courseStarsAddressOffsets[i], _courseStarsMasks[i], everythingOn);
+                setValues(_courseCannonAddressOffsets[i], _courseCannonMasks[i], everythingOn);
+                setValues(_courseDoorAddressOffsets[i], _courseDoorMasks[i], everythingOn);
             }
 
             for (int i = 0; i < 15; i++)
@@ -518,17 +512,17 @@ namespace SM64_Diagnostic.Managers
                 bufferedBytes[Config.File.CoinScoreAddressStart + (uint)i] = everythingOn ? (byte)100 : (byte)0;
             }
 
-            setValuesBool(Config.File.FileStartedAddress, Config.File.FileStartedMask, everythingOn ? true : (bool?)null);
-            setValuesBool(Config.File.CapSwitchPressedAddress, Config.File.RedCapSwitchMask, everythingOn);
-            setValuesBool(Config.File.CapSwitchPressedAddress, Config.File.GreenCapSwitchMask, everythingOn);
-            setValuesBool(Config.File.CapSwitchPressedAddress, Config.File.BlueCapSwitchMask, everythingOn);
-            setValuesBool(Config.File.KeyDoorAddress, Config.File.KeyDoor1KeyMask, false);
-            setValuesBool(Config.File.KeyDoorAddress, Config.File.KeyDoor1OpenedMask, everythingOn);
-            setValuesBool(Config.File.KeyDoorAddress, Config.File.KeyDoor2KeyMask, false);
-            setValuesBool(Config.File.KeyDoorAddress, Config.File.KeyDoor2OpenedMask, everythingOn);
-            setValuesBool(Config.File.MoatDrainedAddress, Config.File.MoatDrainedMask, everythingOn);
-            setValuesBool(Config.File.DDDMovedBackAddress, Config.File.DDDMovedBackMask, everythingOn);
-            setValuesBool(Config.File.HatLocationModeOffset, Config.File.HatLocationModeMask, everythingOn ? false : (bool?)null);
+            setValues(Config.File.FileStartedAddress, Config.File.FileStartedMask, everythingOn ? true : (bool?)null);
+            setValues(Config.File.CapSwitchPressedAddress, Config.File.RedCapSwitchMask, everythingOn);
+            setValues(Config.File.CapSwitchPressedAddress, Config.File.GreenCapSwitchMask, everythingOn);
+            setValues(Config.File.CapSwitchPressedAddress, Config.File.BlueCapSwitchMask, everythingOn);
+            setValues(Config.File.KeyDoorAddress, Config.File.KeyDoor1KeyMask, false);
+            setValues(Config.File.KeyDoorAddress, Config.File.KeyDoor1OpenedMask, everythingOn);
+            setValues(Config.File.KeyDoorAddress, Config.File.KeyDoor2KeyMask, false);
+            setValues(Config.File.KeyDoorAddress, Config.File.KeyDoor2OpenedMask, everythingOn);
+            setValues(Config.File.MoatDrainedAddress, Config.File.MoatDrainedMask, everythingOn);
+            setValues(Config.File.DDDMovedBackAddress, Config.File.DDDMovedBackMask, everythingOn);
+            setValues(Config.File.HatLocationModeOffset, Config.File.HatLocationModeMask, everythingOn ? false : (bool?)null);
 
             SetBufferedBytes(bufferedBytes);
         }
