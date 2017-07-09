@@ -35,13 +35,11 @@ namespace SM64_Diagnostic.Managers
         Button _numStarsButton;
 
         List<FilePictureBox> _filePictureBoxList;
-        List<FileCoinScoreTextbox> _fileCoinScoreTextboxList;
+        List<FileTextbox> _fileTextboxList;
 
         int numRows = 26;
         uint[] _courseAddressOffsets;
         byte[] _courseMasks;
-
-        HatLocation? _currentHatLocation;
 
         public FileManager(ProcessStream stream, List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile, FileImageGui gui)
             : base(stream, fileData, noTearFlowLayoutPanelFile, Config.File.FileAAddress)
@@ -49,6 +47,11 @@ namespace SM64_Diagnostic.Managers
             Instance = this;
             _tabControl = tabControl;
             _gui = gui;
+
+            _filePictureBoxList = new List<FilePictureBox>();
+            _fileTextboxList = new List<FileTextbox>();
+            _courseAddressOffsets = new uint[numRows];
+            _courseMasks = new byte[numRows];
 
             CurrentFileMode = FileMode.FileA;
             CurrentFileAddress = Config.File.FileAAddress;
@@ -75,9 +78,6 @@ namespace SM64_Diagnostic.Managers
 
             TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
 
-            _filePictureBoxList = new List<FilePictureBox>();
-            _courseAddressOffsets = new uint[numRows];
-            _courseMasks = new byte[numRows];
             for (int row = 0; row < numRows; row++)
             {
                 for (int col = 0; col < 7; col++)
@@ -131,14 +131,13 @@ namespace SM64_Diagnostic.Managers
                 _filePictureBoxList.Add(fileBinaryPictureBox);
             }
 
-            _fileCoinScoreTextboxList = new List<FileCoinScoreTextbox>();
             for (int row = 0; row < 15; row++)
             {
                 int col = 9;
                 string controlName = String.Format("textBoxTableRow{0}Col{1}", row + 1, col + 1);
                 FileCoinScoreTextbox fileCoinScoreTextBox = fileTable.Controls[controlName] as FileCoinScoreTextbox;
                 fileCoinScoreTextBox.Initialize(_stream, 0x25 + (uint)row);
-                _fileCoinScoreTextboxList.Add(fileCoinScoreTextBox);
+                _fileTextboxList.Add(fileCoinScoreTextBox);
             }
 
             GroupBox hatLocationGroupbox = splitContainerFile.Panel1.Controls["groupBoxHatLocation"] as GroupBox;
@@ -170,6 +169,20 @@ namespace SM64_Diagnostic.Managers
             FileHatLocationPictureBox filePictureBoxHatLocationTTMGround = hatLocationGroupbox.Controls["filePictureBoxHatLocationTTMGround"] as FileHatLocationPictureBox;
             filePictureBoxHatLocationTTMGround.Initialize(_stream, HatLocation.TTMGround, _gui.HatOnGroundInTTMImage, _gui.HatOnGroundInTTMGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationTTMGround);
+
+
+            FileHatPositionTextbox textboxHatLocationPositionX = hatLocationGroupbox.Controls["textboxHatLocationPositionX"] as FileHatPositionTextbox;
+            textboxHatLocationPositionX.Initialize(_stream, 0x02);
+            _fileTextboxList.Add(textboxHatLocationPositionX);
+
+            FileHatPositionTextbox textboxHatLocationPositionY = hatLocationGroupbox.Controls["textboxHatLocationPositionY"] as FileHatPositionTextbox;
+            textboxHatLocationPositionY.Initialize(_stream, 0x04);
+            _fileTextboxList.Add(textboxHatLocationPositionY);
+
+            FileHatPositionTextbox textboxHatLocationPositionZ = hatLocationGroupbox.Controls["textboxHatLocationPositionZ"] as FileHatPositionTextbox;
+            textboxHatLocationPositionZ.Initialize(_stream, 0x06);
+            _fileTextboxList.Add(textboxHatLocationPositionZ);
+
 
             FileBinaryPictureBox filePictureBoxFileStarted = splitContainerFile.Panel1.Controls["filePictureBoxFileStarted"] as FileBinaryPictureBox;
             filePictureBoxFileStarted.Initialize(_stream, 0x0B, 0x01, _gui.FileStartedImage, _gui.FileNotStartedImage);
@@ -510,9 +523,9 @@ namespace SM64_Diagnostic.Managers
                 filePictureBox.UpdateImage();
             }
 
-            foreach (FileCoinScoreTextbox fileCoinScoreTextbox in _fileCoinScoreTextboxList)
+            foreach (FileTextbox fileTextbox in _fileTextboxList)
             {
-                fileCoinScoreTextbox.UpdateText();
+                fileTextbox.UpdateText();
             }
 
             base.Update(updateView);
