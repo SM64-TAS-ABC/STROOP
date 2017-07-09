@@ -23,29 +23,29 @@ namespace SM64_Diagnostic.Structs.Configurations
         public ushort ChecksumConstantValue;
         public uint ChecksumOffset;
 
-        public uint CourseStarsAddressStart;
-        public uint TotWCStarAddress;
-        public uint CotMCStarAddress;
-        public uint VCutMStarAddress;
-        public uint PSSStarsAddress;
-        public uint SAStarAddress;
-        public uint WMotRStarAddress;
-        public uint BitDWStarAddress;
-        public uint BitFSStarAddress;
-        public uint BitSStarAddress;
-        public uint ToadMIPSStarsAddress;
+        public uint CourseStarsOffsetStart;
+        public uint TotWCStarOffset;
+        public uint CotMCStarOffset;
+        public uint VCutMStarOffset;
+        public uint PSSStarsOffset;
+        public uint SAStarOffset;
+        public uint WMotRStarOffset;
+        public uint BitDWStarOffset;
+        public uint BitFSStarOffset;
+        public uint BitSStarOffset;
+        public uint ToadMIPSStarsOffset;
 
-        public uint MainCourseCannonsAddressStart;
-        public uint WMotRCannonAddress;
+        public uint MainCourseCannonsOffsetStart;
+        public uint WMotRCannonOffset;
         public byte CannonMask;
 
-        public uint WFDoorAddress;
-        public uint JRBDoorAddress;
-        public uint CCMDoorAddress;
-        public uint PSSDoorAddress;
-        public uint BitDWDoorAddress;
-        public uint BitFSDoorAddress;
-        public uint BitSDoorAddress;
+        public uint WFDoorOffset;
+        public uint JRBDoorOffset;
+        public uint CCMDoorOffset;
+        public uint PSSDoorOffset;
+        public uint BitDWDoorOffset;
+        public uint BitFSDoorOffset;
+        public uint BitSDoorOffset;
 
         public byte WFDoorMask;
         public byte JRBDoorMask;
@@ -55,22 +55,22 @@ namespace SM64_Diagnostic.Structs.Configurations
         public byte BitFSDoorMask;
         public byte BitSDoorMask;
 
-        public uint CoinScoreAddressStart;
+        public uint CoinScoreOffsetStart;
 
-        public uint FileStartedAddress;
+        public uint FileStartedOffset;
         public byte FileStartedMask;
-        public uint CapSwitchPressedAddress;
+        public uint CapSwitchPressedOffset;
         public byte RedCapSwitchMask;
         public byte GreenCapSwitchMask;
         public byte BlueCapSwitchMask;
-        public uint KeyDoorAddress;
+        public uint KeyDoorOffset;
         public byte KeyDoor1KeyMask;
         public byte KeyDoor1OpenedMask;
         public byte KeyDoor2KeyMask;
         public byte KeyDoor2OpenedMask;
-        public uint MoatDrainedAddress;
+        public uint MoatDrainedOffset;
         public byte MoatDrainedMask;
-        public uint DDDMovedBackAddress;
+        public uint DDDMovedBackOffset;
         public byte DDDMovedBackMask;
 
         public uint HatLocationModeOffset;
@@ -85,8 +85,8 @@ namespace SM64_Diagnostic.Structs.Configurations
         public ushort HatLocationCourseSLValue;
         public ushort HatLocationCourseTTMValue;
 
-        public uint HatPositionXAddress;
-        public uint HatPositionYAddress;
-        public uint HatPositionZAddress;
+        public uint HatPositionXOffset;
+        public uint HatPositionYOffset;
+        public uint HatPositionZOffset;
     }
 }
