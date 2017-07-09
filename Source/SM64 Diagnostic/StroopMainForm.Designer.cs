@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -3567,9 +3567,6 @@ namespace SM64_Diagnostic
             // 
             // filePictureBoxDDDMovedBack
             // 
-            this.filePictureBoxDDDMovedBack.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxDDDMovedBack.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxDDDMovedBack.Image")));
             this.filePictureBoxDDDMovedBack.Location = new System.Drawing.Point(301, 243);
             this.filePictureBoxDDDMovedBack.Margin = new System.Windows.Forms.Padding(0);
@@ -3581,9 +3578,6 @@ namespace SM64_Diagnostic
             // 
             // filePictureBoxMoatDrained
             // 
-            this.filePictureBoxMoatDrained.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxMoatDrained.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxMoatDrained.Image")));
             this.filePictureBoxMoatDrained.Location = new System.Drawing.Point(253, 243);
             this.filePictureBoxMoatDrained.Margin = new System.Windows.Forms.Padding(0);
@@ -3595,9 +3589,6 @@ namespace SM64_Diagnostic
             // 
             // filePictureBoxKeyDoor2Opened
             // 
-            this.filePictureBoxKeyDoor2Opened.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxKeyDoor2Opened.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxKeyDoor2Opened.Image")));
             this.filePictureBoxKeyDoor2Opened.Location = new System.Drawing.Point(213, 243);
             this.filePictureBoxKeyDoor2Opened.Margin = new System.Windows.Forms.Padding(0);
@@ -3609,9 +3600,6 @@ namespace SM64_Diagnostic
             // 
             // filePictureBoxKeyDoor1Opened
             // 
-            this.filePictureBoxKeyDoor1Opened.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxKeyDoor1Opened.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxKeyDoor1Opened.Image")));
             this.filePictureBoxKeyDoor1Opened.Location = new System.Drawing.Point(172, 243);
             this.filePictureBoxKeyDoor1Opened.Margin = new System.Windows.Forms.Padding(0);
@@ -3623,9 +3611,6 @@ namespace SM64_Diagnostic
             // 
             // filePictureBoxBlueCapSwitchPressed
             // 
-            this.filePictureBoxBlueCapSwitchPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxBlueCapSwitchPressed.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxBlueCapSwitchPressed.Image")));
             this.filePictureBoxBlueCapSwitchPressed.Location = new System.Drawing.Point(138, 243);
             this.filePictureBoxBlueCapSwitchPressed.Margin = new System.Windows.Forms.Padding(0);
@@ -3637,9 +3622,6 @@ namespace SM64_Diagnostic
             // 
             // filePictureBoxGreenCapSwitchPressed
             // 
-            this.filePictureBoxGreenCapSwitchPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxGreenCapSwitchPressed.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxGreenCapSwitchPressed.Image")));
             this.filePictureBoxGreenCapSwitchPressed.Location = new System.Drawing.Point(103, 243);
             this.filePictureBoxGreenCapSwitchPressed.Margin = new System.Windows.Forms.Padding(0);
@@ -3651,9 +3633,6 @@ namespace SM64_Diagnostic
             // 
             // filePictureBoxRedCapSwitchPressed
             // 
-            this.filePictureBoxRedCapSwitchPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxRedCapSwitchPressed.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxRedCapSwitchPressed.Image")));
             this.filePictureBoxRedCapSwitchPressed.Location = new System.Drawing.Point(69, 243);
             this.filePictureBoxRedCapSwitchPressed.Margin = new System.Windows.Forms.Padding(0);
@@ -3665,9 +3644,6 @@ namespace SM64_Diagnostic
             // 
             // filePictureBoxFileStarted
             // 
-            this.filePictureBoxFileStarted.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxFileStarted.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxFileStarted.Image")));
             this.filePictureBoxFileStarted.Location = new System.Drawing.Point(23, 243);
             this.filePictureBoxFileStarted.Margin = new System.Windows.Forms.Padding(0);
@@ -7498,8 +7474,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
