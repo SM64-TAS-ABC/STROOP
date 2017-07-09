@@ -169,6 +169,20 @@ namespace SM64_Diagnostic.Managers
                 _fileCoinScoreTextboxList.Add(fileCoinScoreTextBox);
             }
 
+
+/*
+            filePictureBoxFileStarted
+filePictureBoxRedCapSwitchPressed
+filePictureBoxGreenCapSwitchPressed
+filePictureBoxBlueCapSwitchPressed
+filePictureBoxKeyDoor1Opened
+filePictureBoxKeyDoor2Opened
+filePictureBoxMoatDrained
+filePictureBoxDDDMovedBack
+*/
+
+
+
             _saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
             _saveFileButton.Click += FileSaveButton_Click;
 

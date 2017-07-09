@@ -31,8 +31,8 @@ namespace SM64_Diagnostic
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -660,6 +660,14 @@ namespace SM64_Diagnostic
             this.buttonNoStars = new System.Windows.Forms.Button();
             this.buttonEverything = new System.Windows.Forms.Button();
             this.buttonNothing = new System.Windows.Forms.Button();
+            this.filePictureBoxFileStarted = new SM64_Diagnostic.FileBinaryPictureBox();
+            this.filePictureBoxRedCapSwitchPressed = new SM64_Diagnostic.FileBinaryPictureBox();
+            this.filePictureBoxGreenCapSwitchPressed = new SM64_Diagnostic.FileBinaryPictureBox();
+            this.filePictureBoxBlueCapSwitchPressed = new SM64_Diagnostic.FileBinaryPictureBox();
+            this.filePictureBoxKeyDoor1Opened = new SM64_Diagnostic.FileBinaryPictureBox();
+            this.filePictureBoxKeyDoor2Opened = new SM64_Diagnostic.FileBinaryPictureBox();
+            this.filePictureBoxMoatDrained = new SM64_Diagnostic.FileBinaryPictureBox();
+            this.filePictureBoxDDDMovedBack = new SM64_Diagnostic.FileBinaryPictureBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -905,6 +913,14 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxFileStarted)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxRedCapSwitchPressed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxGreenCapSwitchPressed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxBlueCapSwitchPressed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxKeyDoor1Opened)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxKeyDoor2Opened)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxMoatDrained)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxDDDMovedBack)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -3507,6 +3523,14 @@ namespace SM64_Diagnostic
             // splitContainerFile.Panel1
             // 
             this.splitContainerFile.Panel1.AutoScroll = true;
+            this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxDDDMovedBack);
+            this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxMoatDrained);
+            this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxKeyDoor2Opened);
+            this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxKeyDoor1Opened);
+            this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxBlueCapSwitchPressed);
+            this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxGreenCapSwitchPressed);
+            this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxRedCapSwitchPressed);
+            this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxFileStarted);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonNothing);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonEverything);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonNoStars);
@@ -3540,7 +3564,7 @@ namespace SM64_Diagnostic
             // 
             // buttonFileNumStars
             // 
-            this.buttonFileNumStars.Location = new System.Drawing.Point(91, 394);
+            this.buttonFileNumStars.Location = new System.Drawing.Point(227, 259);
             this.buttonFileNumStars.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileNumStars.Name = "buttonFileNumStars";
             this.buttonFileNumStars.Size = new System.Drawing.Size(81, 42);
@@ -8878,6 +8902,118 @@ namespace SM64_Diagnostic
             this.buttonNothing.Text = "Nothing";
             this.buttonNothing.UseVisualStyleBackColor = true;
             // 
+            // filePictureBoxFileStarted
+            // 
+            this.filePictureBoxFileStarted.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxFileStarted.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxFileStarted.Image")));
+            this.filePictureBoxFileStarted.Location = new System.Drawing.Point(32, 403);
+            this.filePictureBoxFileStarted.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxFileStarted.Name = "filePictureBoxFileStarted";
+            this.filePictureBoxFileStarted.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxFileStarted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxFileStarted.TabIndex = 46;
+            this.filePictureBoxFileStarted.TabStop = false;
+            // 
+            // filePictureBoxRedCapSwitchPressed
+            // 
+            this.filePictureBoxRedCapSwitchPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxRedCapSwitchPressed.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxRedCapSwitchPressed.Image")));
+            this.filePictureBoxRedCapSwitchPressed.Location = new System.Drawing.Point(65, 403);
+            this.filePictureBoxRedCapSwitchPressed.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxRedCapSwitchPressed.Name = "filePictureBoxRedCapSwitchPressed";
+            this.filePictureBoxRedCapSwitchPressed.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxRedCapSwitchPressed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxRedCapSwitchPressed.TabIndex = 47;
+            this.filePictureBoxRedCapSwitchPressed.TabStop = false;
+            // 
+            // filePictureBoxGreenCapSwitchPressed
+            // 
+            this.filePictureBoxGreenCapSwitchPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxGreenCapSwitchPressed.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxGreenCapSwitchPressed.Image")));
+            this.filePictureBoxGreenCapSwitchPressed.Location = new System.Drawing.Point(99, 403);
+            this.filePictureBoxGreenCapSwitchPressed.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxGreenCapSwitchPressed.Name = "filePictureBoxGreenCapSwitchPressed";
+            this.filePictureBoxGreenCapSwitchPressed.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxGreenCapSwitchPressed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxGreenCapSwitchPressed.TabIndex = 48;
+            this.filePictureBoxGreenCapSwitchPressed.TabStop = false;
+            // 
+            // filePictureBoxBlueCapSwitchPressed
+            // 
+            this.filePictureBoxBlueCapSwitchPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxBlueCapSwitchPressed.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxBlueCapSwitchPressed.Image")));
+            this.filePictureBoxBlueCapSwitchPressed.Location = new System.Drawing.Point(134, 403);
+            this.filePictureBoxBlueCapSwitchPressed.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxBlueCapSwitchPressed.Name = "filePictureBoxBlueCapSwitchPressed";
+            this.filePictureBoxBlueCapSwitchPressed.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxBlueCapSwitchPressed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxBlueCapSwitchPressed.TabIndex = 49;
+            this.filePictureBoxBlueCapSwitchPressed.TabStop = false;
+            // 
+            // filePictureBoxKeyDoor1Opened
+            // 
+            this.filePictureBoxKeyDoor1Opened.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxKeyDoor1Opened.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxKeyDoor1Opened.Image")));
+            this.filePictureBoxKeyDoor1Opened.Location = new System.Drawing.Point(167, 403);
+            this.filePictureBoxKeyDoor1Opened.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxKeyDoor1Opened.Name = "filePictureBoxKeyDoor1Opened";
+            this.filePictureBoxKeyDoor1Opened.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxKeyDoor1Opened.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxKeyDoor1Opened.TabIndex = 50;
+            this.filePictureBoxKeyDoor1Opened.TabStop = false;
+            // 
+            // filePictureBoxKeyDoor2Opened
+            // 
+            this.filePictureBoxKeyDoor2Opened.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxKeyDoor2Opened.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxKeyDoor2Opened.Image")));
+            this.filePictureBoxKeyDoor2Opened.Location = new System.Drawing.Point(207, 403);
+            this.filePictureBoxKeyDoor2Opened.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxKeyDoor2Opened.Name = "filePictureBoxKeyDoor2Opened";
+            this.filePictureBoxKeyDoor2Opened.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxKeyDoor2Opened.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxKeyDoor2Opened.TabIndex = 51;
+            this.filePictureBoxKeyDoor2Opened.TabStop = false;
+            // 
+            // filePictureBoxMoatDrained
+            // 
+            this.filePictureBoxMoatDrained.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxMoatDrained.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxMoatDrained.Image")));
+            this.filePictureBoxMoatDrained.Location = new System.Drawing.Point(246, 403);
+            this.filePictureBoxMoatDrained.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxMoatDrained.Name = "filePictureBoxMoatDrained";
+            this.filePictureBoxMoatDrained.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxMoatDrained.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxMoatDrained.TabIndex = 52;
+            this.filePictureBoxMoatDrained.TabStop = false;
+            // 
+            // filePictureBoxDDDMovedBack
+            // 
+            this.filePictureBoxDDDMovedBack.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxDDDMovedBack.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxDDDMovedBack.Image")));
+            this.filePictureBoxDDDMovedBack.Location = new System.Drawing.Point(278, 403);
+            this.filePictureBoxDDDMovedBack.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxDDDMovedBack.Name = "filePictureBoxDDDMovedBack";
+            this.filePictureBoxDDDMovedBack.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxDDDMovedBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxDDDMovedBack.TabIndex = 53;
+            this.filePictureBoxDDDMovedBack.TabStop = false;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -9184,6 +9320,14 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxFileStarted)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxRedCapSwitchPressed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxGreenCapSwitchPressed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxBlueCapSwitchPressed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxKeyDoor1Opened)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxKeyDoor2Opened)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxMoatDrained)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxDDDMovedBack)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -9817,6 +9961,14 @@ namespace SM64_Diagnostic
         private Button buttonAllStars;
         private Button buttonNothing;
         private Button buttonEverything;
+        private FileBinaryPictureBox filePictureBoxFileStarted;
+        private FileBinaryPictureBox filePictureBoxMoatDrained;
+        private FileBinaryPictureBox filePictureBoxKeyDoor2Opened;
+        private FileBinaryPictureBox filePictureBoxKeyDoor1Opened;
+        private FileBinaryPictureBox filePictureBoxBlueCapSwitchPressed;
+        private FileBinaryPictureBox filePictureBoxGreenCapSwitchPressed;
+        private FileBinaryPictureBox filePictureBoxRedCapSwitchPressed;
+        private FileBinaryPictureBox filePictureBoxDDDMovedBack;
     }
 }
 
