@@ -316,9 +316,9 @@ namespace SM64_Diagnostic.Utilities
             return newValue;
         }
 
-        public static byte ApplyValueToMaskedByte(byte currentValue, byte mask, bool wholeMask)
+        public static byte ApplyValueToMaskedByte(byte currentValue, byte mask, bool useWholeMask)
         {
-            return ApplyValueToMaskedByte(currentValue, mask, wholeMask ? mask : (byte)0);
+            return ApplyValueToMaskedByte(currentValue, mask, useWholeMask ? mask : (byte)0);
         }
     }
 }

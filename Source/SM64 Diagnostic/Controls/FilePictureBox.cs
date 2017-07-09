@@ -60,21 +60,24 @@ namespace SM64_Diagnostic
             return maskedCurrentByte;
         }
 
-        protected abstract Image GetImageForValue(byte value);
+        protected virtual Image GetImageForValue(byte value)
+        {
+            return null;
+        }
 
         protected virtual byte GetNewValueForValue(byte oldValue)
         {
             return oldValue == 0 ? _mask : (byte)0;
         }
 
-        private void ClickAction(object sender, EventArgs e)
+        protected virtual void ClickAction(object sender, EventArgs e)
         {
             byte oldValue = GetValue();
             byte newValue = GetNewValueForValue(oldValue);
             SetValue(newValue);
         }
 
-        public void UpdateImage(bool force = false)
+        public virtual void UpdateImage(bool force = false)
         {
             if (_stream == null) return;
 

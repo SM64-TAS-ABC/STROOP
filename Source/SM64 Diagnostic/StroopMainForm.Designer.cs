@@ -31,8 +31,8 @@ namespace SM64_Diagnostic
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -254,6 +254,13 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.splitContainerFile = new System.Windows.Forms.SplitContainer();
+            this.filePictureBoxHatLocationTTMGround = new SM64_Diagnostic.FileHatLocationPictureBox();
+            this.filePictureBoxHatLocationUkiki = new SM64_Diagnostic.FileHatLocationPictureBox();
+            this.filePictureBoxHatLocationSLGround = new SM64_Diagnostic.FileHatLocationPictureBox();
+            this.filePictureBoxHatLocationSnowman = new SM64_Diagnostic.FileHatLocationPictureBox();
+            this.filePictureBoxHatLocationSSLGround = new SM64_Diagnostic.FileHatLocationPictureBox();
+            this.filePictureBoxHatLocationKlepto = new SM64_Diagnostic.FileHatLocationPictureBox();
+            this.filePictureBoxHatLocationMario = new SM64_Diagnostic.FileHatLocationPictureBox();
             this.filePictureBoxDDDMovedBack = new SM64_Diagnostic.FileBinaryPictureBox();
             this.filePictureBoxMoatDrained = new SM64_Diagnostic.FileBinaryPictureBox();
             this.filePictureBoxKeyDoor2Opened = new SM64_Diagnostic.FileKeyDoorPictureBox();
@@ -668,13 +675,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.filePictureBoxHatLocationMario = new SM64_Diagnostic.FileHatLocationPictureBox();
-            this.filePictureBoxHatLocationKlepto = new SM64_Diagnostic.FileHatLocationPictureBox();
-            this.filePictureBoxHatLocationSSLGround = new SM64_Diagnostic.FileHatLocationPictureBox();
-            this.filePictureBoxHatLocationSnowman = new SM64_Diagnostic.FileHatLocationPictureBox();
-            this.filePictureBoxHatLocationSLGround = new SM64_Diagnostic.FileHatLocationPictureBox();
-            this.filePictureBoxHatLocationTTMUkiki = new SM64_Diagnostic.FileHatLocationPictureBox();
-            this.filePictureBoxHatLocationTTMGround = new SM64_Diagnostic.FileHatLocationPictureBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -739,6 +739,13 @@ namespace SM64_Diagnostic
             this.splitContainerFile.Panel1.SuspendLayout();
             this.splitContainerFile.Panel2.SuspendLayout();
             this.splitContainerFile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationTTMGround)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationUkiki)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSLGround)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSnowman)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSSLGround)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationKlepto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationMario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxDDDMovedBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxMoatDrained)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxKeyDoor2Opened)).BeginInit();
@@ -928,13 +935,6 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationMario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationKlepto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSSLGround)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSnowman)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSLGround)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationTTMUkiki)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationTTMGround)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -966,7 +966,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 233);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 234);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1054,7 +1054,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 186);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 187);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2007,7 +2007,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(756, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(759, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2525,7 +2525,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(765, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(768, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2650,7 +2650,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(866, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(869, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3031,7 +3031,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(776, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(779, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3425,7 +3425,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(773, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(776, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3510,7 +3510,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(554, 460);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(557, 460);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3538,7 +3538,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerFile.Panel1.AutoScroll = true;
             this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxHatLocationTTMGround);
-            this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxHatLocationTTMUkiki);
+            this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxHatLocationUkiki);
             this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxHatLocationSLGround);
             this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxHatLocationSnowman);
             this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxHatLocationSSLGround);
@@ -3572,6 +3572,104 @@ namespace SM64_Diagnostic
             this.splitContainerFile.SplitterDistance = 756;
             this.splitContainerFile.SplitterWidth = 1;
             this.splitContainerFile.TabIndex = 19;
+            // 
+            // filePictureBoxHatLocationTTMGround
+            // 
+            this.filePictureBoxHatLocationTTMGround.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxHatLocationTTMGround.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationTTMGround.Image")));
+            this.filePictureBoxHatLocationTTMGround.Location = new System.Drawing.Point(278, 276);
+            this.filePictureBoxHatLocationTTMGround.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxHatLocationTTMGround.Name = "filePictureBoxHatLocationTTMGround";
+            this.filePictureBoxHatLocationTTMGround.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxHatLocationTTMGround.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxHatLocationTTMGround.TabIndex = 54;
+            this.filePictureBoxHatLocationTTMGround.TabStop = false;
+            // 
+            // filePictureBoxHatLocationUkiki
+            // 
+            this.filePictureBoxHatLocationUkiki.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxHatLocationUkiki.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationUkiki.Image")));
+            this.filePictureBoxHatLocationUkiki.Location = new System.Drawing.Point(278, 243);
+            this.filePictureBoxHatLocationUkiki.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxHatLocationUkiki.Name = "filePictureBoxHatLocationUkiki";
+            this.filePictureBoxHatLocationUkiki.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxHatLocationUkiki.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxHatLocationUkiki.TabIndex = 54;
+            this.filePictureBoxHatLocationUkiki.TabStop = false;
+            // 
+            // filePictureBoxHatLocationSLGround
+            // 
+            this.filePictureBoxHatLocationSLGround.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxHatLocationSLGround.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationSLGround.Image")));
+            this.filePictureBoxHatLocationSLGround.Location = new System.Drawing.Point(227, 326);
+            this.filePictureBoxHatLocationSLGround.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxHatLocationSLGround.Name = "filePictureBoxHatLocationSLGround";
+            this.filePictureBoxHatLocationSLGround.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxHatLocationSLGround.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxHatLocationSLGround.TabIndex = 54;
+            this.filePictureBoxHatLocationSLGround.TabStop = false;
+            // 
+            // filePictureBoxHatLocationSnowman
+            // 
+            this.filePictureBoxHatLocationSnowman.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxHatLocationSnowman.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationSnowman.Image")));
+            this.filePictureBoxHatLocationSnowman.Location = new System.Drawing.Point(227, 296);
+            this.filePictureBoxHatLocationSnowman.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxHatLocationSnowman.Name = "filePictureBoxHatLocationSnowman";
+            this.filePictureBoxHatLocationSnowman.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxHatLocationSnowman.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxHatLocationSnowman.TabIndex = 54;
+            this.filePictureBoxHatLocationSnowman.TabStop = false;
+            // 
+            // filePictureBoxHatLocationSSLGround
+            // 
+            this.filePictureBoxHatLocationSSLGround.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxHatLocationSSLGround.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationSSLGround.Image")));
+            this.filePictureBoxHatLocationSSLGround.Location = new System.Drawing.Point(227, 266);
+            this.filePictureBoxHatLocationSSLGround.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxHatLocationSSLGround.Name = "filePictureBoxHatLocationSSLGround";
+            this.filePictureBoxHatLocationSSLGround.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxHatLocationSSLGround.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxHatLocationSSLGround.TabIndex = 54;
+            this.filePictureBoxHatLocationSSLGround.TabStop = false;
+            // 
+            // filePictureBoxHatLocationKlepto
+            // 
+            this.filePictureBoxHatLocationKlepto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxHatLocationKlepto.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationKlepto.Image")));
+            this.filePictureBoxHatLocationKlepto.Location = new System.Drawing.Point(227, 233);
+            this.filePictureBoxHatLocationKlepto.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxHatLocationKlepto.Name = "filePictureBoxHatLocationKlepto";
+            this.filePictureBoxHatLocationKlepto.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxHatLocationKlepto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxHatLocationKlepto.TabIndex = 54;
+            this.filePictureBoxHatLocationKlepto.TabStop = false;
+            // 
+            // filePictureBoxHatLocationMario
+            // 
+            this.filePictureBoxHatLocationMario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filePictureBoxHatLocationMario.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationMario.Image")));
+            this.filePictureBoxHatLocationMario.Location = new System.Drawing.Point(227, 201);
+            this.filePictureBoxHatLocationMario.Margin = new System.Windows.Forms.Padding(0);
+            this.filePictureBoxHatLocationMario.Name = "filePictureBoxHatLocationMario";
+            this.filePictureBoxHatLocationMario.Size = new System.Drawing.Size(30, 30);
+            this.filePictureBoxHatLocationMario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.filePictureBoxHatLocationMario.TabIndex = 54;
+            this.filePictureBoxHatLocationMario.TabStop = false;
             // 
             // filePictureBoxDDDMovedBack
             // 
@@ -6658,7 +6756,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(159, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(162, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7095,7 +7193,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(755, 430);
+            this.glControlMap.Size = new System.Drawing.Size(758, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -7613,7 +7711,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(720, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(723, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -7649,7 +7747,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(566, 422);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(569, 422);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -7712,7 +7810,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(669, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(672, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -8421,7 +8519,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(544, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(547, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9035,104 +9133,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // filePictureBoxHatLocationMario
-            // 
-            this.filePictureBoxHatLocationMario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxHatLocationMario.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationMario.Image")));
-            this.filePictureBoxHatLocationMario.Location = new System.Drawing.Point(227, 201);
-            this.filePictureBoxHatLocationMario.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxHatLocationMario.Name = "filePictureBoxHatLocationMario";
-            this.filePictureBoxHatLocationMario.Size = new System.Drawing.Size(30, 30);
-            this.filePictureBoxHatLocationMario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxHatLocationMario.TabIndex = 54;
-            this.filePictureBoxHatLocationMario.TabStop = false;
-            // 
-            // filePictureBoxHatLocationKlepto
-            // 
-            this.filePictureBoxHatLocationKlepto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxHatLocationKlepto.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationKlepto.Image")));
-            this.filePictureBoxHatLocationKlepto.Location = new System.Drawing.Point(227, 233);
-            this.filePictureBoxHatLocationKlepto.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxHatLocationKlepto.Name = "filePictureBoxHatLocationKlepto";
-            this.filePictureBoxHatLocationKlepto.Size = new System.Drawing.Size(30, 30);
-            this.filePictureBoxHatLocationKlepto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxHatLocationKlepto.TabIndex = 54;
-            this.filePictureBoxHatLocationKlepto.TabStop = false;
-            // 
-            // filePictureBoxHatLocationSSLGround
-            // 
-            this.filePictureBoxHatLocationSSLGround.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxHatLocationSSLGround.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationSSLGround.Image")));
-            this.filePictureBoxHatLocationSSLGround.Location = new System.Drawing.Point(227, 266);
-            this.filePictureBoxHatLocationSSLGround.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxHatLocationSSLGround.Name = "filePictureBoxHatLocationSSLGround";
-            this.filePictureBoxHatLocationSSLGround.Size = new System.Drawing.Size(30, 30);
-            this.filePictureBoxHatLocationSSLGround.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxHatLocationSSLGround.TabIndex = 54;
-            this.filePictureBoxHatLocationSSLGround.TabStop = false;
-            // 
-            // filePictureBoxHatLocationSnowman
-            // 
-            this.filePictureBoxHatLocationSnowman.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxHatLocationSnowman.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationSnowman.Image")));
-            this.filePictureBoxHatLocationSnowman.Location = new System.Drawing.Point(227, 296);
-            this.filePictureBoxHatLocationSnowman.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxHatLocationSnowman.Name = "filePictureBoxHatLocationSnowman";
-            this.filePictureBoxHatLocationSnowman.Size = new System.Drawing.Size(30, 30);
-            this.filePictureBoxHatLocationSnowman.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxHatLocationSnowman.TabIndex = 54;
-            this.filePictureBoxHatLocationSnowman.TabStop = false;
-            // 
-            // filePictureBoxHatLocationSLGround
-            // 
-            this.filePictureBoxHatLocationSLGround.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxHatLocationSLGround.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationSLGround.Image")));
-            this.filePictureBoxHatLocationSLGround.Location = new System.Drawing.Point(227, 326);
-            this.filePictureBoxHatLocationSLGround.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxHatLocationSLGround.Name = "filePictureBoxHatLocationSLGround";
-            this.filePictureBoxHatLocationSLGround.Size = new System.Drawing.Size(30, 30);
-            this.filePictureBoxHatLocationSLGround.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxHatLocationSLGround.TabIndex = 54;
-            this.filePictureBoxHatLocationSLGround.TabStop = false;
-            // 
-            // filePictureBoxHatLocationTTMUkiki
-            // 
-            this.filePictureBoxHatLocationTTMUkiki.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxHatLocationTTMUkiki.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationTTMUkiki.Image")));
-            this.filePictureBoxHatLocationTTMUkiki.Location = new System.Drawing.Point(278, 243);
-            this.filePictureBoxHatLocationTTMUkiki.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxHatLocationTTMUkiki.Name = "filePictureBoxHatLocationTTMUkiki";
-            this.filePictureBoxHatLocationTTMUkiki.Size = new System.Drawing.Size(30, 30);
-            this.filePictureBoxHatLocationTTMUkiki.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxHatLocationTTMUkiki.TabIndex = 54;
-            this.filePictureBoxHatLocationTTMUkiki.TabStop = false;
-            // 
-            // filePictureBoxHatLocationTTMGround
-            // 
-            this.filePictureBoxHatLocationTTMGround.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.filePictureBoxHatLocationTTMGround.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxHatLocationTTMGround.Image")));
-            this.filePictureBoxHatLocationTTMGround.Location = new System.Drawing.Point(278, 276);
-            this.filePictureBoxHatLocationTTMGround.Margin = new System.Windows.Forms.Padding(0);
-            this.filePictureBoxHatLocationTTMGround.Name = "filePictureBoxHatLocationTTMGround";
-            this.filePictureBoxHatLocationTTMGround.Size = new System.Drawing.Size(30, 30);
-            this.filePictureBoxHatLocationTTMGround.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.filePictureBoxHatLocationTTMGround.TabIndex = 54;
-            this.filePictureBoxHatLocationTTMGround.TabStop = false;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -9237,6 +9237,13 @@ namespace SM64_Diagnostic
             this.splitContainerFile.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).EndInit();
             this.splitContainerFile.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationTTMGround)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationUkiki)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSLGround)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSnowman)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSSLGround)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationKlepto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationMario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxDDDMovedBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxMoatDrained)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxKeyDoor2Opened)).EndInit();
@@ -9447,13 +9454,6 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationMario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationKlepto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSSLGround)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSnowman)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSLGround)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationTTMUkiki)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationTTMGround)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -10096,7 +10096,7 @@ namespace SM64_Diagnostic
         private FileBinaryPictureBox filePictureBoxRedCapSwitchPressed;
         private FileBinaryPictureBox filePictureBoxDDDMovedBack;
         private FileHatLocationPictureBox filePictureBoxHatLocationTTMGround;
-        private FileHatLocationPictureBox filePictureBoxHatLocationTTMUkiki;
+        private FileHatLocationPictureBox filePictureBoxHatLocationUkiki;
         private FileHatLocationPictureBox filePictureBoxHatLocationSLGround;
         private FileHatLocationPictureBox filePictureBoxHatLocationSnowman;
         private FileHatLocationPictureBox filePictureBoxHatLocationSSLGround;

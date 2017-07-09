@@ -18,7 +18,7 @@ namespace SM64_Diagnostic.Managers
         public static FileManager Instance = null;
 
         public enum FileMode { FileA, FileB, FileC, FileD, FileASaved, FileBSaved, FileCSaved, FileDSaved };
-        private enum HatLocation { Mario, SSLKlepto, SSLGround, SLSnowman, SLGround, TTMUkiki, TTMGround };
+        public enum HatLocation { Mario, SSLKlepto, SSLGround, SLSnowman, SLGround, TTMUkiki, TTMGround };
 
         TabPage _tabControl;
         FileImageGui _gui;
@@ -99,7 +99,7 @@ namespace SM64_Diagnostic.Managers
             _hatLocationTTMUkikiRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.TTMUkiki);
             _hatLocationTTMGroundRadioButton.Click += (sender, e) => HatLocation_Click(sender, e, HatLocation.TTMGround);
 
-            _currentHatLocation = getCurrentHatLocation();
+            _currentHatLocation = GetCurrentHatLocation();
 
             TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
 
@@ -168,6 +168,34 @@ namespace SM64_Diagnostic.Managers
                 fileCoinScoreTextBox.Initialize(_stream, 0x25 + (uint)row);
                 _fileCoinScoreTextboxList.Add(fileCoinScoreTextBox);
             }
+
+            FileHatLocationPictureBox filePictureBoxHatLocationMario = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationMario"] as FileHatLocationPictureBox;
+            filePictureBoxHatLocationMario.Initialize(_stream, HatLocation.Mario, _gui.HatOnMarioImage, _gui.HatOnMarioGreyImage);
+            _filePictureBoxList.Add(filePictureBoxHatLocationMario);
+
+            FileHatLocationPictureBox filePictureBoxHatLocationKlepto = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationKlepto"] as FileHatLocationPictureBox;
+            filePictureBoxHatLocationKlepto.Initialize(_stream, HatLocation.SSLKlepto, _gui.HatOnKleptoImage, _gui.HatOnKleptoGreyImage);
+            _filePictureBoxList.Add(filePictureBoxHatLocationKlepto);
+
+            FileHatLocationPictureBox filePictureBoxHatLocationSnowman = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationSnowman"] as FileHatLocationPictureBox;
+            filePictureBoxHatLocationSnowman.Initialize(_stream, HatLocation.SLSnowman, _gui.HatOnSnowmanImage, _gui.HatOnSnowmanGreyImage);
+            _filePictureBoxList.Add(filePictureBoxHatLocationSnowman);
+
+            FileHatLocationPictureBox filePictureBoxHatLocationUkiki = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationUkiki"] as FileHatLocationPictureBox;
+            filePictureBoxHatLocationUkiki.Initialize(_stream, HatLocation.TTMUkiki, _gui.HatOnUkikiImage, _gui.HatOnUkikiGreyImage);
+            _filePictureBoxList.Add(filePictureBoxHatLocationUkiki);
+
+            FileHatLocationPictureBox filePictureBoxHatLocationSSLGround = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationSSLGround"] as FileHatLocationPictureBox;
+            filePictureBoxHatLocationSSLGround.Initialize(_stream, HatLocation.SSLGround, _gui.HatOnGroundInSSLImage, _gui.HatOnGroundInSSLGreyImage);
+            _filePictureBoxList.Add(filePictureBoxHatLocationSSLGround);
+
+            FileHatLocationPictureBox filePictureBoxHatLocationSLGround = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationSLGround"] as FileHatLocationPictureBox;
+            filePictureBoxHatLocationSLGround.Initialize(_stream, HatLocation.SLGround, _gui.HatOnGroundInSLImage, _gui.HatOnGroundInSLGreyImage);
+            _filePictureBoxList.Add(filePictureBoxHatLocationSLGround);
+
+            FileHatLocationPictureBox filePictureBoxHatLocationTTMGround = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationTTMGround"] as FileHatLocationPictureBox;
+            filePictureBoxHatLocationTTMGround.Initialize(_stream, HatLocation.TTMGround, _gui.HatOnGroundInTTMImage, _gui.HatOnGroundInTTMGreyImage);
+            _filePictureBoxList.Add(filePictureBoxHatLocationTTMGround);
 
             FileBinaryPictureBox filePictureBoxFileStarted = splitContainerFile.Panel1.Controls["filePictureBoxFileStarted"] as FileBinaryPictureBox;
             filePictureBoxFileStarted.Initialize(_stream, 0x0B, 0x01, _gui.FileStartedImage, _gui.FileNotStartedImage);
@@ -552,7 +580,7 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private HatLocation? getCurrentHatLocation()
+        private HatLocation? GetCurrentHatLocation()
         {
             ushort hatLocationCourse = _stream.GetUInt16(CurrentFileAddress + Config.File.HatLocationCourseOffset);
             byte hatLocationMode = (byte)(_stream.GetByte(CurrentFileAddress + Config.File.HatLocationModeOffset) & Config.File.HatLocationModeMask);
@@ -574,7 +602,7 @@ namespace SM64_Diagnostic.Managers
             short currentNumStars = CalculateNumStars();
             _numStarsButton.Text = string.Format("Update HUD\r\nto " + (currentNumStars == 1 ? currentNumStars + " Star" : currentNumStars + " Stars"));
 
-            _currentHatLocation = getCurrentHatLocation();
+            _currentHatLocation = GetCurrentHatLocation();
              
             _hatLocationMarioRadioButton.Checked = _currentHatLocation == HatLocation.Mario;
             _hatLocationSSLKleptoRadioButton.Checked = _currentHatLocation == HatLocation.SSLKlepto;
