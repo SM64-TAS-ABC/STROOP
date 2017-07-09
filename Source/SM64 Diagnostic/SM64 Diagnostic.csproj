@@ -106,6 +106,9 @@
     <Compile Include="Controls\ControllerDisplayPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\FileTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\FileHatLocationPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>

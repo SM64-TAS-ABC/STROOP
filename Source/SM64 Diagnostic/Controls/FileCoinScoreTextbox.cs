@@ -14,33 +14,20 @@ using System.Drawing.Drawing2D;
 
 namespace SM64_Diagnostic
 {
-    public class FileCoinScoreTextbox : TextBox
+    public class FileCoinScoreTextbox : FileTextbox
     {
-        protected ProcessStream _stream;
-        protected uint _addressOffset;
-        protected byte _currentValue;
+        private byte _currentValue;
 
         public FileCoinScoreTextbox()
         {
         }
 
-        public void Initialize(ProcessStream stream, uint addressOffset)
+        public override void Initialize(ProcessStream stream, uint addressOffset)
         {
-            _stream = stream;
-            _addressOffset = addressOffset;
+            base.Initialize(stream, addressOffset);
+
             _currentValue = GetCoinScoreFromMemory();
             this.Text = _currentValue.ToString();
-
-            this.Click += (sender, e) => this.SelectAll();
-            this.KeyDown += (sender, e) =>
-            {
-                if (e.KeyData == Keys.Enter)
-                {
-                    SubmitValue();
-                    this.Parent.Focus();
-                }
-            };
-            this.LostFocus += (sender, e) => SubmitValue();
         }
 
         private byte GetCoinScoreFromMemory()
@@ -48,24 +35,19 @@ namespace SM64_Diagnostic
             return _stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
         }
 
-        private string GetRepresentedValue()
-        {
-            return GetCoinScoreFromMemory().ToString();
-        }
-
-        private void SubmitValue()
+        protected override void SubmitValue()
         {
             byte value;
             if (!byte.TryParse(this.Text, out value))
             {
-                this.Text = GetRepresentedValue();
+                this.Text = GetCoinScoreFromMemory().ToString();
                 return;
             }
 
             _stream.SetValue(value, FileManager.Instance.CurrentFileAddress + _addressOffset);
         }
 
-        public void UpdateText()
+        public override void UpdateText()
         {
             byte value = GetCoinScoreFromMemory();
             if (_currentValue != value)
