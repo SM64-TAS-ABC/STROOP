@@ -37,6 +37,7 @@ namespace SM64_Diagnostic.Managers
         RadioButton _hatLocationTTMGroundRadioButton;
 
         List<FilePictureBox> _filePictureBoxList;
+        List<FileCoinScoreTextbox> _fileCoinScoreTextboxList;
 
         HatLocation? _currentHatLocation;
 
@@ -137,6 +138,16 @@ namespace SM64_Diagnostic.Managers
                 (Image onImage, Image offImage) = GetDoorImages(row, col);
                 fileBinaryPictureBox.Initialize(_stream, _gui, addressOffset, mask, onImage, offImage);
                 _filePictureBoxList.Add(fileBinaryPictureBox);
+            }
+
+            _fileCoinScoreTextboxList = new List<FileCoinScoreTextbox>();
+            for (int row = 0; row < 15; row++)
+            {
+                int col = 9;
+                string controlName = String.Format("textBoxTableRow{0}Col{1}", row + 1, col + 1);
+                FileCoinScoreTextbox fileCoinScoreTextBox = fileTable.Controls[controlName] as FileCoinScoreTextbox;
+                fileCoinScoreTextBox.Initialize(_stream, 0x25 + (uint)row);
+                _fileCoinScoreTextboxList.Add(fileCoinScoreTextBox);
             }
         }
 
@@ -403,6 +414,11 @@ namespace SM64_Diagnostic.Managers
             foreach (FilePictureBox filePictureBox in _filePictureBoxList)
             {
                 filePictureBox.UpdateImage();
+            }
+
+            foreach (FileCoinScoreTextbox fileCoinScoreTextbox in _fileCoinScoreTextboxList)
+            {
+                fileCoinScoreTextbox.UpdateText();
             }
 
             base.Update(updateView);

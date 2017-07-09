@@ -24,7 +24,7 @@ namespace SM64_Diagnostic
         {
         }
 
-        protected void Initialize(ProcessStream stream, uint addressOffset)
+        public void Initialize(ProcessStream stream, uint addressOffset)
         {
             _stream = stream;
             _addressOffset = addressOffset;
