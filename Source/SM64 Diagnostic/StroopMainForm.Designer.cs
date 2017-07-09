@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -3571,7 +3571,7 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxDDDMovedBack.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxDDDMovedBack.Image")));
-            this.filePictureBoxDDDMovedBack.Location = new System.Drawing.Point(301, 307);
+            this.filePictureBoxDDDMovedBack.Location = new System.Drawing.Point(301, 243);
             this.filePictureBoxDDDMovedBack.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxDDDMovedBack.Name = "filePictureBoxDDDMovedBack";
             this.filePictureBoxDDDMovedBack.Size = new System.Drawing.Size(30, 30);
@@ -3585,7 +3585,7 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxMoatDrained.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxMoatDrained.Image")));
-            this.filePictureBoxMoatDrained.Location = new System.Drawing.Point(253, 307);
+            this.filePictureBoxMoatDrained.Location = new System.Drawing.Point(253, 243);
             this.filePictureBoxMoatDrained.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxMoatDrained.Name = "filePictureBoxMoatDrained";
             this.filePictureBoxMoatDrained.Size = new System.Drawing.Size(43, 30);
@@ -3599,7 +3599,7 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxKeyDoor2Opened.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxKeyDoor2Opened.Image")));
-            this.filePictureBoxKeyDoor2Opened.Location = new System.Drawing.Point(213, 307);
+            this.filePictureBoxKeyDoor2Opened.Location = new System.Drawing.Point(213, 243);
             this.filePictureBoxKeyDoor2Opened.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxKeyDoor2Opened.Name = "filePictureBoxKeyDoor2Opened";
             this.filePictureBoxKeyDoor2Opened.Size = new System.Drawing.Size(36, 30);
@@ -3613,7 +3613,7 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxKeyDoor1Opened.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxKeyDoor1Opened.Image")));
-            this.filePictureBoxKeyDoor1Opened.Location = new System.Drawing.Point(172, 307);
+            this.filePictureBoxKeyDoor1Opened.Location = new System.Drawing.Point(172, 243);
             this.filePictureBoxKeyDoor1Opened.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxKeyDoor1Opened.Name = "filePictureBoxKeyDoor1Opened";
             this.filePictureBoxKeyDoor1Opened.Size = new System.Drawing.Size(36, 30);
@@ -3627,7 +3627,7 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxBlueCapSwitchPressed.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxBlueCapSwitchPressed.Image")));
-            this.filePictureBoxBlueCapSwitchPressed.Location = new System.Drawing.Point(138, 307);
+            this.filePictureBoxBlueCapSwitchPressed.Location = new System.Drawing.Point(138, 243);
             this.filePictureBoxBlueCapSwitchPressed.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxBlueCapSwitchPressed.Name = "filePictureBoxBlueCapSwitchPressed";
             this.filePictureBoxBlueCapSwitchPressed.Size = new System.Drawing.Size(30, 30);
@@ -3641,7 +3641,7 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxGreenCapSwitchPressed.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxGreenCapSwitchPressed.Image")));
-            this.filePictureBoxGreenCapSwitchPressed.Location = new System.Drawing.Point(103, 307);
+            this.filePictureBoxGreenCapSwitchPressed.Location = new System.Drawing.Point(103, 243);
             this.filePictureBoxGreenCapSwitchPressed.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxGreenCapSwitchPressed.Name = "filePictureBoxGreenCapSwitchPressed";
             this.filePictureBoxGreenCapSwitchPressed.Size = new System.Drawing.Size(30, 30);
@@ -3655,7 +3655,7 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxRedCapSwitchPressed.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxRedCapSwitchPressed.Image")));
-            this.filePictureBoxRedCapSwitchPressed.Location = new System.Drawing.Point(69, 307);
+            this.filePictureBoxRedCapSwitchPressed.Location = new System.Drawing.Point(69, 243);
             this.filePictureBoxRedCapSwitchPressed.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxRedCapSwitchPressed.Name = "filePictureBoxRedCapSwitchPressed";
             this.filePictureBoxRedCapSwitchPressed.Size = new System.Drawing.Size(30, 30);
@@ -3669,7 +3669,7 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.filePictureBoxFileStarted.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxFileStarted.Image")));
-            this.filePictureBoxFileStarted.Location = new System.Drawing.Point(23, 307);
+            this.filePictureBoxFileStarted.Location = new System.Drawing.Point(23, 243);
             this.filePictureBoxFileStarted.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxFileStarted.Name = "filePictureBoxFileStarted";
             this.filePictureBoxFileStarted.Size = new System.Drawing.Size(41, 30);
@@ -3679,50 +3679,50 @@ namespace SM64_Diagnostic
             // 
             // buttonNothing
             // 
-            this.buttonNothing.Location = new System.Drawing.Point(123, 387);
+            this.buttonNothing.Location = new System.Drawing.Point(131, 346);
             this.buttonNothing.Margin = new System.Windows.Forms.Padding(0);
             this.buttonNothing.Name = "buttonNothing";
-            this.buttonNothing.Size = new System.Drawing.Size(71, 25);
+            this.buttonNothing.Size = new System.Drawing.Size(80, 40);
             this.buttonNothing.TabIndex = 45;
             this.buttonNothing.Text = "Nothing";
             this.buttonNothing.UseVisualStyleBackColor = true;
             // 
             // buttonEverything
             // 
-            this.buttonEverything.Location = new System.Drawing.Point(122, 355);
+            this.buttonEverything.Location = new System.Drawing.Point(131, 291);
             this.buttonEverything.Margin = new System.Windows.Forms.Padding(0);
             this.buttonEverything.Name = "buttonEverything";
-            this.buttonEverything.Size = new System.Drawing.Size(71, 25);
+            this.buttonEverything.Size = new System.Drawing.Size(80, 40);
             this.buttonEverything.TabIndex = 44;
             this.buttonEverything.Text = "Everything";
             this.buttonEverything.UseVisualStyleBackColor = true;
             // 
             // buttonNoStars
             // 
-            this.buttonNoStars.Location = new System.Drawing.Point(34, 387);
+            this.buttonNoStars.Location = new System.Drawing.Point(37, 346);
             this.buttonNoStars.Margin = new System.Windows.Forms.Padding(0);
             this.buttonNoStars.Name = "buttonNoStars";
-            this.buttonNoStars.Size = new System.Drawing.Size(61, 25);
+            this.buttonNoStars.Size = new System.Drawing.Size(80, 40);
             this.buttonNoStars.TabIndex = 43;
             this.buttonNoStars.Text = "No Stars";
             this.buttonNoStars.UseVisualStyleBackColor = true;
             // 
             // buttonAllStars
             // 
-            this.buttonAllStars.Location = new System.Drawing.Point(34, 355);
+            this.buttonAllStars.Location = new System.Drawing.Point(38, 291);
             this.buttonAllStars.Margin = new System.Windows.Forms.Padding(0);
             this.buttonAllStars.Name = "buttonAllStars";
-            this.buttonAllStars.Size = new System.Drawing.Size(61, 25);
+            this.buttonAllStars.Size = new System.Drawing.Size(80, 40);
             this.buttonAllStars.TabIndex = 42;
             this.buttonAllStars.Text = "All Stars";
             this.buttonAllStars.UseVisualStyleBackColor = true;
             // 
             // buttonFileErase
             // 
-            this.buttonFileErase.Location = new System.Drawing.Point(217, 393);
+            this.buttonFileErase.Location = new System.Drawing.Point(224, 346);
             this.buttonFileErase.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileErase.Name = "buttonFileErase";
-            this.buttonFileErase.Size = new System.Drawing.Size(61, 25);
+            this.buttonFileErase.Size = new System.Drawing.Size(80, 40);
             this.buttonFileErase.TabIndex = 41;
             this.buttonFileErase.Text = "Erase";
             this.buttonFileErase.UseVisualStyleBackColor = true;
@@ -3732,7 +3732,7 @@ namespace SM64_Diagnostic
             this.buttonFileNumStars.Location = new System.Drawing.Point(228, 60);
             this.buttonFileNumStars.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileNumStars.Name = "buttonFileNumStars";
-            this.buttonFileNumStars.Size = new System.Drawing.Size(81, 42);
+            this.buttonFileNumStars.Size = new System.Drawing.Size(80, 40);
             this.buttonFileNumStars.TabIndex = 40;
             this.buttonFileNumStars.Text = "Update HUD\r\nto # Stars";
             this.buttonFileNumStars.UseVisualStyleBackColor = true;
@@ -3931,7 +3931,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow1Col1, 1, 0);
             this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow8Col8, 8, 7);
             this.tableLayoutPanelFile.Controls.Add(this.filePictureBoxTableRow19Col9, 9, 18);
-            this.tableLayoutPanelFile.Location = new System.Drawing.Point(355, 18);
+            this.tableLayoutPanelFile.Location = new System.Drawing.Point(351, 18);
             this.tableLayoutPanelFile.Name = "tableLayoutPanelFile";
             this.tableLayoutPanelFile.RowCount = 26;
             this.tableLayoutPanelFile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.846154F));
@@ -6458,7 +6458,7 @@ namespace SM64_Diagnostic
             this.groupBoxHatLocation.Controls.Add(this.filePictureBoxHatLocationSLGround);
             this.groupBoxHatLocation.Controls.Add(this.filePictureBoxHatLocationSSLGround);
             this.groupBoxHatLocation.Controls.Add(this.filePictureBoxHatLocationSnowman);
-            this.groupBoxHatLocation.Location = new System.Drawing.Point(32, 204);
+            this.groupBoxHatLocation.Location = new System.Drawing.Point(32, 141);
             this.groupBoxHatLocation.Name = "groupBoxHatLocation";
             this.groupBoxHatLocation.Size = new System.Drawing.Size(285, 86);
             this.groupBoxHatLocation.TabIndex = 38;
@@ -6697,10 +6697,10 @@ namespace SM64_Diagnostic
             // 
             // buttonFileSave
             // 
-            this.buttonFileSave.Location = new System.Drawing.Point(217, 355);
+            this.buttonFileSave.Location = new System.Drawing.Point(224, 291);
             this.buttonFileSave.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileSave.Name = "buttonFileSave";
-            this.buttonFileSave.Size = new System.Drawing.Size(61, 25);
+            this.buttonFileSave.Size = new System.Drawing.Size(80, 40);
             this.buttonFileSave.TabIndex = 36;
             this.buttonFileSave.Text = "Save";
             this.buttonFileSave.UseVisualStyleBackColor = true;
@@ -7498,8 +7498,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
