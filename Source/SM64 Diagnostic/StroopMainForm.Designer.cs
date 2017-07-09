@@ -255,21 +255,21 @@ namespace SM64_Diagnostic
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.splitContainerFile = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanelFile = new System.Windows.Forms.TableLayoutPanel();
-            this.textBoxTableRow15Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow14Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow13Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow12Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow11Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow10Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow9Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow8Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow7Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow6Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow5Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow4Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow3Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow2Col10 = new System.Windows.Forms.TextBox();
-            this.textBoxTableRow1Col10 = new System.Windows.Forms.TextBox();
+            this.textBoxTableRow15Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow14Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow13Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow12Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow11Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow10Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow9Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow8Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow7Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow6Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow5Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow4Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow3Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow2Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
+            this.textBoxTableRow1Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
             this.filePictureBoxTableRow24Col9 = new SM64_Diagnostic.FileBinaryPictureBox();
             this.filePictureBoxTableRow23Col9 = new SM64_Diagnostic.FileBinaryPictureBox();
             this.filePictureBoxTableRow22Col9 = new SM64_Diagnostic.FileBinaryPictureBox();
@@ -930,7 +930,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 226);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 227);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1018,7 +1018,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 179);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 180);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -1971,7 +1971,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(735, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(738, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2489,7 +2489,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(744, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(747, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2614,7 +2614,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(845, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(848, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -2995,7 +2995,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(755, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(758, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3389,7 +3389,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(752, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(755, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3474,7 +3474,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(533, 460);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(536, 460);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3751,7 +3751,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow15Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow15Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow15Col10.Name = "textBoxTableRow15Col10";
-            this.textBoxTableRow15Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow15Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow15Col10.TabIndex = 41;
             this.textBoxTableRow15Col10.Text = "100";
             this.textBoxTableRow15Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3765,7 +3765,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow14Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow14Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow14Col10.Name = "textBoxTableRow14Col10";
-            this.textBoxTableRow14Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow14Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow14Col10.TabIndex = 41;
             this.textBoxTableRow14Col10.Text = "100";
             this.textBoxTableRow14Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3779,7 +3779,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow13Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow13Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow13Col10.Name = "textBoxTableRow13Col10";
-            this.textBoxTableRow13Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow13Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow13Col10.TabIndex = 41;
             this.textBoxTableRow13Col10.Text = "100";
             this.textBoxTableRow13Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3793,7 +3793,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow12Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow12Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow12Col10.Name = "textBoxTableRow12Col10";
-            this.textBoxTableRow12Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow12Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow12Col10.TabIndex = 41;
             this.textBoxTableRow12Col10.Text = "100";
             this.textBoxTableRow12Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3807,7 +3807,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow11Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow11Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow11Col10.Name = "textBoxTableRow11Col10";
-            this.textBoxTableRow11Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow11Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow11Col10.TabIndex = 41;
             this.textBoxTableRow11Col10.Text = "100";
             this.textBoxTableRow11Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3821,7 +3821,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow10Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow10Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow10Col10.Name = "textBoxTableRow10Col10";
-            this.textBoxTableRow10Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow10Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow10Col10.TabIndex = 41;
             this.textBoxTableRow10Col10.Text = "100";
             this.textBoxTableRow10Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3835,7 +3835,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow9Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow9Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow9Col10.Name = "textBoxTableRow9Col10";
-            this.textBoxTableRow9Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow9Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow9Col10.TabIndex = 41;
             this.textBoxTableRow9Col10.Text = "100";
             this.textBoxTableRow9Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3849,7 +3849,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow8Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow8Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow8Col10.Name = "textBoxTableRow8Col10";
-            this.textBoxTableRow8Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow8Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow8Col10.TabIndex = 41;
             this.textBoxTableRow8Col10.Text = "100";
             this.textBoxTableRow8Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3863,7 +3863,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow7Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow7Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow7Col10.Name = "textBoxTableRow7Col10";
-            this.textBoxTableRow7Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow7Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow7Col10.TabIndex = 41;
             this.textBoxTableRow7Col10.Text = "100";
             this.textBoxTableRow7Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3877,7 +3877,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow6Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow6Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow6Col10.Name = "textBoxTableRow6Col10";
-            this.textBoxTableRow6Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow6Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow6Col10.TabIndex = 41;
             this.textBoxTableRow6Col10.Text = "100";
             this.textBoxTableRow6Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3891,7 +3891,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow5Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow5Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow5Col10.Name = "textBoxTableRow5Col10";
-            this.textBoxTableRow5Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow5Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow5Col10.TabIndex = 41;
             this.textBoxTableRow5Col10.Text = "100";
             this.textBoxTableRow5Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3905,7 +3905,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow4Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow4Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow4Col10.Name = "textBoxTableRow4Col10";
-            this.textBoxTableRow4Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow4Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow4Col10.TabIndex = 41;
             this.textBoxTableRow4Col10.Text = "100";
             this.textBoxTableRow4Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3919,7 +3919,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow3Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow3Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow3Col10.Name = "textBoxTableRow3Col10";
-            this.textBoxTableRow3Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow3Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow3Col10.TabIndex = 41;
             this.textBoxTableRow3Col10.Text = "100";
             this.textBoxTableRow3Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3933,7 +3933,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow2Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow2Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow2Col10.Name = "textBoxTableRow2Col10";
-            this.textBoxTableRow2Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow2Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow2Col10.TabIndex = 41;
             this.textBoxTableRow2Col10.Text = "100";
             this.textBoxTableRow2Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -3947,7 +3947,7 @@ namespace SM64_Diagnostic
             this.textBoxTableRow1Col10.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxTableRow1Col10.MaximumSize = new System.Drawing.Size(38, 15);
             this.textBoxTableRow1Col10.Name = "textBoxTableRow1Col10";
-            this.textBoxTableRow1Col10.Size = new System.Drawing.Size(38, 15);
+            this.textBoxTableRow1Col10.Size = new System.Drawing.Size(38, 20);
             this.textBoxTableRow1Col10.TabIndex = 40;
             this.textBoxTableRow1Col10.Text = "100";
             this.textBoxTableRow1Col10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -6429,7 +6429,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(235, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(238, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -6866,7 +6866,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(734, 430);
+            this.glControlMap.Size = new System.Drawing.Size(737, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -7384,7 +7384,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(699, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(702, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -7420,7 +7420,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(545, 422);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(548, 422);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -7483,7 +7483,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(648, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(651, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -8192,7 +8192,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(523, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(526, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9724,21 +9724,21 @@ namespace SM64_Diagnostic
         private FileBinaryPictureBox filePictureBoxTableRow3Col9;
         private FileBinaryPictureBox filePictureBoxTableRow2Col9;
         private FileBinaryPictureBox filePictureBoxTableRow19Col9;
-        private TextBox textBoxTableRow1Col10;
-        private TextBox textBoxTableRow15Col10;
-        private TextBox textBoxTableRow14Col10;
-        private TextBox textBoxTableRow13Col10;
-        private TextBox textBoxTableRow12Col10;
-        private TextBox textBoxTableRow11Col10;
-        private TextBox textBoxTableRow10Col10;
-        private TextBox textBoxTableRow9Col10;
-        private TextBox textBoxTableRow8Col10;
-        private TextBox textBoxTableRow7Col10;
-        private TextBox textBoxTableRow6Col10;
-        private TextBox textBoxTableRow5Col10;
-        private TextBox textBoxTableRow4Col10;
-        private TextBox textBoxTableRow3Col10;
-        private TextBox textBoxTableRow2Col10;
+        private FileCoinScoreTextbox textBoxTableRow1Col10;
+        private FileCoinScoreTextbox textBoxTableRow15Col10;
+        private FileCoinScoreTextbox textBoxTableRow14Col10;
+        private FileCoinScoreTextbox textBoxTableRow13Col10;
+        private FileCoinScoreTextbox textBoxTableRow12Col10;
+        private FileCoinScoreTextbox textBoxTableRow11Col10;
+        private FileCoinScoreTextbox textBoxTableRow10Col10;
+        private FileCoinScoreTextbox textBoxTableRow9Col10;
+        private FileCoinScoreTextbox textBoxTableRow8Col10;
+        private FileCoinScoreTextbox textBoxTableRow7Col10;
+        private FileCoinScoreTextbox textBoxTableRow6Col10;
+        private FileCoinScoreTextbox textBoxTableRow5Col10;
+        private FileCoinScoreTextbox textBoxTableRow4Col10;
+        private FileCoinScoreTextbox textBoxTableRow3Col10;
+        private FileCoinScoreTextbox textBoxTableRow2Col10;
     }
 }
 

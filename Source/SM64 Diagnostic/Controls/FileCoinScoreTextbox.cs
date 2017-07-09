@@ -14,7 +14,7 @@ using System.Drawing.Drawing2D;
 
 namespace SM64_Diagnostic
 {
-    public abstract class FileCoinScoreTextbox : TextBox
+    public class FileCoinScoreTextbox : TextBox
     {
         protected ProcessStream _stream;
         protected uint _addressOffset;
