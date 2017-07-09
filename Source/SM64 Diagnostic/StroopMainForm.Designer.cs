@@ -664,8 +664,8 @@ namespace SM64_Diagnostic
             this.filePictureBoxRedCapSwitchPressed = new SM64_Diagnostic.FileBinaryPictureBox();
             this.filePictureBoxGreenCapSwitchPressed = new SM64_Diagnostic.FileBinaryPictureBox();
             this.filePictureBoxBlueCapSwitchPressed = new SM64_Diagnostic.FileBinaryPictureBox();
-            this.filePictureBoxKeyDoor1Opened = new SM64_Diagnostic.FileBinaryPictureBox();
-            this.filePictureBoxKeyDoor2Opened = new SM64_Diagnostic.FileBinaryPictureBox();
+            this.filePictureBoxKeyDoor1Opened = new SM64_Diagnostic.FileKeyDoorPictureBox();
+            this.filePictureBoxKeyDoor2Opened = new SM64_Diagnostic.FileKeyDoorPictureBox();
             this.filePictureBoxMoatDrained = new SM64_Diagnostic.FileBinaryPictureBox();
             this.filePictureBoxDDDMovedBack = new SM64_Diagnostic.FileBinaryPictureBox();
             this.groupBoxObjects.SuspendLayout();
@@ -9963,8 +9963,8 @@ namespace SM64_Diagnostic
         private Button buttonEverything;
         private FileBinaryPictureBox filePictureBoxFileStarted;
         private FileBinaryPictureBox filePictureBoxMoatDrained;
-        private FileBinaryPictureBox filePictureBoxKeyDoor2Opened;
-        private FileBinaryPictureBox filePictureBoxKeyDoor1Opened;
+        private FileKeyDoorPictureBox filePictureBoxKeyDoor2Opened;
+        private FileKeyDoorPictureBox filePictureBoxKeyDoor1Opened;
         private FileBinaryPictureBox filePictureBoxBlueCapSwitchPressed;
         private FileBinaryPictureBox filePictureBoxGreenCapSwitchPressed;
         private FileBinaryPictureBox filePictureBoxRedCapSwitchPressed;

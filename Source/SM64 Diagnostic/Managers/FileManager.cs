@@ -185,8 +185,13 @@ namespace SM64_Diagnostic.Managers
             filePictureBoxBlueCapSwitchPressed.Initialize(_stream, 0x0B, 0x08, _gui.CapSwitchBluePressedImage, _gui.CapSwitchBlueUnpressedImage);
             _filePictureBoxList.Add(filePictureBoxBlueCapSwitchPressed);
 
-            FileBinaryPictureBox filePictureBoxKeyDoor1Opened = splitContainerFile.Panel1.Controls["filePictureBoxKeyDoor1Opened"] as FileBinaryPictureBox;
-            FileBinaryPictureBox filePictureBoxKeyDoor2Opened = splitContainerFile.Panel1.Controls["filePictureBoxKeyDoor2Opened"] as FileBinaryPictureBox;
+            FileKeyDoorPictureBox filePictureBoxKeyDoor1Opened = splitContainerFile.Panel1.Controls["filePictureBoxKeyDoor1Opened"] as FileKeyDoorPictureBox;
+            filePictureBoxKeyDoor1Opened.Initialize(_stream, 0x0B, 0x10, 0x40, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
+            _filePictureBoxList.Add(filePictureBoxKeyDoor1Opened);
+
+            FileKeyDoorPictureBox filePictureBoxKeyDoor2Opened = splitContainerFile.Panel1.Controls["filePictureBoxKeyDoor2Opened"] as FileKeyDoorPictureBox;
+            filePictureBoxKeyDoor2Opened.Initialize(_stream, 0x0B, 0x20, 0x80, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
+            _filePictureBoxList.Add(filePictureBoxKeyDoor2Opened);
 
             FileBinaryPictureBox filePictureBoxMoatDrained = splitContainerFile.Panel1.Controls["filePictureBoxMoatDrained"] as FileBinaryPictureBox;
             filePictureBoxMoatDrained.Initialize(_stream, 0x0A, 0x02, _gui.MoatDrainedImage, _gui.MoatNotDrainedImage);
