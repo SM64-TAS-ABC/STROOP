@@ -101,6 +101,8 @@ namespace SM64_Diagnostic.Managers
 
             _filePictureBoxList = new List<FilePictureBox>();
             int numRows = 26;
+            uint[] courseAddressOffsets = new uint[numRows];
+            byte[] courseMasks = new byte[numRows];
             for (int row = 0; row < numRows; row++)
             {
                 for (int col = 0; col < 7; col++)
@@ -114,7 +116,17 @@ namespace SM64_Diagnostic.Managers
                     string missionName = Config.Missions.GetMissionName(row + 1, col + 1);
                     fileStarPictureBox.Initialize(_stream, _gui, addressOffset, mask, _gui.PowerStarImage, _gui.PowerStarBlackImage, missionName);
                     _filePictureBoxList.Add(fileStarPictureBox);
+
+                    courseAddressOffsets[row] = addressOffset;
+                    courseMasks[row] = (byte)(courseMasks[row] | mask);
                 }
+            }
+
+            for (int row = 0; row < numRows; row++)
+            {
+                string controlName = String.Format("labelFileTableRow{0}", row + 1);
+                FileCourseLabel fileCourseLabel = fileTable.Controls[controlName] as FileCourseLabel;
+                fileCourseLabel.Initialize(_stream, courseAddressOffsets[row], courseMasks[row]);
             }
 
             for (int row = 0; row < numRows; row++)
@@ -153,31 +165,40 @@ namespace SM64_Diagnostic.Managers
                 fileCoinScoreTextBox.Initialize(_stream, 0x25 + (uint)row);
                 _fileCoinScoreTextboxList.Add(fileCoinScoreTextBox);
             }
+        }
 
-            /*
-            for (int row = 0; row < numRows; row++)
-            {
-                int col = 9;
-                string controlName = String.Format("labelFileTableRow{0}", row + 1);
-                FileCoinScoreTextbox fileCoinScoreTextBox = fileTable.Controls[controlName] as FileCoinScoreTextbox;
-                fileCoinScoreTextBox.Initialize(_stream, 0x25 + (uint)row);
-                _fileCoinScoreTextboxList.Add(fileCoinScoreTextBox);
-            }
-            */
-            
+        private uint GetCourseLabelAddressOffset(int row)
+        {
+            return 0;
+        }
+
+        private byte GetCourseLabelMask(int row)
+        {
+            return 0x7F;
         }
 
         private short CalculateNumStars()
         {
             short starCount = 0;
-            for (int i = 0; i < 26; i++)
+            byte starByte;
+            
+            // go through the 25 contiguous star bytes
+            for (int i = 0; i < 25; i++)
             {
-                byte starByte = _stream.GetByte(CurrentFileAddress + 0x0C + (uint)i);
+                starByte = _stream.GetByte(CurrentFileAddress + 0x0C + (uint)i);
                 for (int b = 0; b < 7; b++)
                 {
                     starCount += (byte)((starByte >> b) & 1);
                 }
             }
+
+            // go through the 1 non-contiguous star byte (for toads and MIPS)
+            starByte = _stream.GetByte(CurrentFileAddress + 0x08);
+            for (int b = 0; b < 7; b++)
+            {
+                starCount += (byte)((starByte >> b) & 1);
+            }
+
             return starCount;
         }
 
