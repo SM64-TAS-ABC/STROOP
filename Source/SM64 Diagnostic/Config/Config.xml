@@ -198,6 +198,56 @@
     <ChecksumConstantValue>0x4441</ChecksumConstantValue>
     <ChecksumOffset>0x36</ChecksumOffset>
 
+    <CourseStarsAddressStart>0x0C</CourseStarsAddressStart>
+    <TotWCStarAddress>0x20</TotWCStarAddress>
+    <CotMCStarAddress>0x1F</CotMCStarAddress>
+    <VCutMStarAddress>0x21</VCutMStarAddress>
+    <PSSStarsAddress>0x1E</PSSStarsAddress>
+    <SAStarAddress>0x23</SAStarAddress>
+    <WMotRStarAddress>0x22</WMotRStarAddress>
+    <BitDWStarAddress>0x1B</BitDWStarAddress>
+    <BitFSStarAddress>0x1C</BitFSStarAddress>
+    <BitSStarAddress>0x1D</BitSStarAddress>
+    <ToadMIPSStarsAddress>0x08</ToadMIPSStarsAddress>
+
+    <MainCourseCannonsAddressStart>0x0D</MainCourseCannonsAddressStart>
+    <WMotRCannonAddress>0x23</WMotRCannonAddress>
+    <CannonMask>0x80</CannonMask>
+
+    <WFDoorAddress>0x09</WFDoorAddress>
+    <JRBDoorAddress>0x09</JRBDoorAddress>
+    <CCMDoorAddress>0x09</CCMDoorAddress>
+    <PSSDoorAddress>0x09</PSSDoorAddress>
+    <BitDWDoorAddress>0x09</BitDWDoorAddress>
+    <BitFSDoorAddress>0x09</BitFSDoorAddress>
+    <BitSDoorAddress>0x0A</BitSDoorAddress>
+
+    <WFDoorMask>0x08</WFDoorMask>
+    <JRBDoorMask>0x20</JRBDoorMask>
+    <CCMDoorMask>0x10</CCMDoorMask>
+    <PSSDoorMask>0x04</PSSDoorMask>
+    <BitDWDoorMask>0x40</BitDWDoorMask>
+    <BitFSDoorMask>0x80</BitFSDoorMask>
+    <BitSDoorMask>0x10</BitSDoorMask>
+
+    <CoinScoreAddressStart>0x25</CoinScoreAddressStart>
+
+    <FileStartedAddress>0x0B</FileStartedAddress>
+    <FileStartedMask>0x01</FileStartedMask>
+    <CapSwitchPressed>0x0B</CapSwitchPressed>
+    <RedCapSwitchMask>0x02</RedCapSwitchMask>
+    <GreenCapSwitchMask>0x04</GreenCapSwitchMask>
+    <BlueCapSwitchMask>0x08</BlueCapSwitchMask>
+    <KeyDoorAddress>0x0B</KeyDoorAddress>
+    <KeyDoor1KeyMask>0x10</KeyDoor1KeyMask>
+    <KeyDoor1OpenedMask>0x40</KeyDoor1OpenedMask>
+    <KeyDoor2KeyMask>0x20</KeyDoor2KeyMask>
+    <KeyDoor2OpenedMask>0x80</KeyDoor2OpenedMask>
+    <MoatDrainedAddress>0x0A</MoatDrainedAddress>
+    <MoatDrainedMask>0x02</MoatDrainedMask>
+    <DDDMovedBackAddress>0x0A</DDDMovedBackAddress>
+    <DDDMovedBackMask>0x01</DDDMovedBackMask>
+
     <HatLocationModeOffset>0x09</HatLocationModeOffset>
     <HatLocationModeMask>0x0F</HatLocationModeMask>
     <HatLocationMarioMask>0x00</HatLocationMarioMask>
@@ -211,6 +261,9 @@
     <HatLocationCourseSLValue>0x0A01</HatLocationCourseSLValue>
     <HatLocationCourseTTMValue>0x2401</HatLocationCourseTTMValue>
 
+    <HatPositionXMask>0x02</HatPositionXMask>
+    <HatPositionYMask>0x04</HatPositionYMask>
+    <HatPositionZMask>0x06</HatPositionZMask>
   </File>
   <CameraHack>
     <CameraHackStruct>0x803E0000</CameraHackStruct>
