@@ -153,6 +153,18 @@ namespace SM64_Diagnostic.Managers
                 fileCoinScoreTextBox.Initialize(_stream, 0x25 + (uint)row);
                 _fileCoinScoreTextboxList.Add(fileCoinScoreTextBox);
             }
+
+            /*
+            for (int row = 0; row < numRows; row++)
+            {
+                int col = 9;
+                string controlName = String.Format("labelFileTableRow{0}", row + 1);
+                FileCoinScoreTextbox fileCoinScoreTextBox = fileTable.Controls[controlName] as FileCoinScoreTextbox;
+                fileCoinScoreTextBox.Initialize(_stream, 0x25 + (uint)row);
+                _fileCoinScoreTextboxList.Add(fileCoinScoreTextBox);
+            }
+            */
+            
         }
 
         private short CalculateNumStars()

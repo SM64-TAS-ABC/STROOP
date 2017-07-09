@@ -254,6 +254,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.splitContainerFile = new System.Windows.Forms.SplitContainer();
+            this.buttonFileNumStars = new System.Windows.Forms.Button();
             this.tableLayoutPanelFile = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxTableRow15Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
             this.textBoxTableRow14Col10 = new SM64_Diagnostic.FileCoinScoreTextbox();
@@ -405,32 +406,32 @@ namespace SM64_Diagnostic
             this.filePictureBoxTableRow4Col1 = new SM64_Diagnostic.FileStarPictureBox();
             this.filePictureBoxTableRow3Col1 = new SM64_Diagnostic.FileStarPictureBox();
             this.filePictureBoxTableRow2Col1 = new SM64_Diagnostic.FileStarPictureBox();
-            this.labelFileTableRow1 = new System.Windows.Forms.Label();
-            this.labelFileTableRow2 = new System.Windows.Forms.Label();
-            this.labelFileTableRow3 = new System.Windows.Forms.Label();
-            this.labelFileTableRow4 = new System.Windows.Forms.Label();
-            this.labelFileTableRow5 = new System.Windows.Forms.Label();
-            this.labelFileTableRow6 = new System.Windows.Forms.Label();
-            this.labelFileTableRow7 = new System.Windows.Forms.Label();
-            this.labelFileTableRow8 = new System.Windows.Forms.Label();
-            this.labelFileTableRow9 = new System.Windows.Forms.Label();
-            this.labelFileTableRow10 = new System.Windows.Forms.Label();
-            this.labelFileTableRow11 = new System.Windows.Forms.Label();
-            this.labelFileTableRow12 = new System.Windows.Forms.Label();
-            this.labelFileTableRow13 = new System.Windows.Forms.Label();
-            this.labelFileTableRow14 = new System.Windows.Forms.Label();
-            this.labelFileTableRow15 = new System.Windows.Forms.Label();
-            this.labelFileTableRow16 = new System.Windows.Forms.Label();
-            this.labelFileTableRow17 = new System.Windows.Forms.Label();
-            this.labelFileTableRow18 = new System.Windows.Forms.Label();
-            this.labelFileTableRow19 = new System.Windows.Forms.Label();
-            this.labelFileTableRow20 = new System.Windows.Forms.Label();
-            this.labelFileTableRow21 = new System.Windows.Forms.Label();
-            this.labelFileTableRow22 = new System.Windows.Forms.Label();
-            this.labelFileTableRow23 = new System.Windows.Forms.Label();
-            this.labelFileTableRow24 = new System.Windows.Forms.Label();
-            this.labelFileTableRow25 = new System.Windows.Forms.Label();
-            this.labelFileTableRow26 = new System.Windows.Forms.Label();
+            this.labelFileTableRow1 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow2 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow3 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow4 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow5 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow6 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow7 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow8 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow9 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow10 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow11 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow12 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow13 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow14 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow15 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow16 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow17 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow18 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow19 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow20 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow21 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow22 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow23 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow24 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow25 = new SM64_Diagnostic.FileCourseLabel();
+            this.labelFileTableRow26 = new SM64_Diagnostic.FileCourseLabel();
             this.filePictureBoxTableRow1Col1 = new SM64_Diagnostic.FileStarPictureBox();
             this.filePictureBoxTableRow8Col8 = new SM64_Diagnostic.FileBinaryPictureBox();
             this.filePictureBoxTableRow19Col9 = new SM64_Diagnostic.FileBinaryPictureBox();
@@ -654,7 +655,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.buttonFileNumStars = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -931,7 +931,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 229);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 230);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1019,7 +1019,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 182);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 183);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -1972,7 +1972,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(744, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(747, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2490,7 +2490,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(753, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(756, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2615,7 +2615,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(854, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(857, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -2996,7 +2996,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(764, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(767, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3390,7 +3390,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(761, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(764, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3475,7 +3475,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(542, 460);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(545, 460);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3517,6 +3517,16 @@ namespace SM64_Diagnostic
             this.splitContainerFile.SplitterDistance = 680;
             this.splitContainerFile.SplitterWidth = 1;
             this.splitContainerFile.TabIndex = 19;
+            // 
+            // buttonFileNumStars
+            // 
+            this.buttonFileNumStars.Location = new System.Drawing.Point(116, 152);
+            this.buttonFileNumStars.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonFileNumStars.Name = "buttonFileNumStars";
+            this.buttonFileNumStars.Size = new System.Drawing.Size(61, 25);
+            this.buttonFileNumStars.TabIndex = 40;
+            this.buttonFileNumStars.Text = "# Stars";
+            this.buttonFileNumStars.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelFile
             // 
@@ -6431,7 +6441,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(231, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(234, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -6868,7 +6878,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(743, 430);
+            this.glControlMap.Size = new System.Drawing.Size(746, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -7386,7 +7396,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(708, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(711, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -7422,7 +7432,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(554, 422);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(557, 422);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -7485,7 +7495,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(657, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(660, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -8194,7 +8204,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(532, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(535, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -8807,16 +8817,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.TabIndex = 20;
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
-            // 
-            // buttonFileNumStars
-            // 
-            this.buttonFileNumStars.Location = new System.Drawing.Point(116, 152);
-            this.buttonFileNumStars.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonFileNumStars.Name = "buttonFileNumStars";
-            this.buttonFileNumStars.Size = new System.Drawing.Size(61, 25);
-            this.buttonFileNumStars.TabIndex = 40;
-            this.buttonFileNumStars.Text = "# Stars";
-            this.buttonFileNumStars.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -9572,32 +9572,32 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonHatLocationSLSnowman;
         private RadioButton radioButtonHatLocationSSLGround;
         private TableLayoutPanel tableLayoutPanelFile;
-        private Label labelFileTableRow1;
-        private Label labelFileTableRow2;
-        private Label labelFileTableRow3;
-        private Label labelFileTableRow4;
-        private Label labelFileTableRow5;
-        private Label labelFileTableRow6;
-        private Label labelFileTableRow7;
-        private Label labelFileTableRow8;
-        private Label labelFileTableRow9;
-        private Label labelFileTableRow10;
-        private Label labelFileTableRow11;
-        private Label labelFileTableRow12;
-        private Label labelFileTableRow13;
-        private Label labelFileTableRow14;
-        private Label labelFileTableRow15;
-        private Label labelFileTableRow16;
-        private Label labelFileTableRow17;
-        private Label labelFileTableRow18;
-        private Label labelFileTableRow19;
-        private Label labelFileTableRow20;
-        private Label labelFileTableRow21;
-        private Label labelFileTableRow22;
-        private Label labelFileTableRow23;
-        private Label labelFileTableRow24;
-        private Label labelFileTableRow25;
-        private Label labelFileTableRow26;
+        private FileCourseLabel labelFileTableRow1;
+        private FileCourseLabel labelFileTableRow2;
+        private FileCourseLabel labelFileTableRow3;
+        private FileCourseLabel labelFileTableRow4;
+        private FileCourseLabel labelFileTableRow5;
+        private FileCourseLabel labelFileTableRow6;
+        private FileCourseLabel labelFileTableRow7;
+        private FileCourseLabel labelFileTableRow8;
+        private FileCourseLabel labelFileTableRow9;
+        private FileCourseLabel labelFileTableRow10;
+        private FileCourseLabel labelFileTableRow11;
+        private FileCourseLabel labelFileTableRow12;
+        private FileCourseLabel labelFileTableRow13;
+        private FileCourseLabel labelFileTableRow14;
+        private FileCourseLabel labelFileTableRow15;
+        private FileCourseLabel labelFileTableRow16;
+        private FileCourseLabel labelFileTableRow17;
+        private FileCourseLabel labelFileTableRow18;
+        private FileCourseLabel labelFileTableRow19;
+        private FileCourseLabel labelFileTableRow20;
+        private FileCourseLabel labelFileTableRow21;
+        private FileCourseLabel labelFileTableRow22;
+        private FileCourseLabel labelFileTableRow23;
+        private FileCourseLabel labelFileTableRow24;
+        private FileCourseLabel labelFileTableRow25;
+        private FileCourseLabel labelFileTableRow26;
         private FileStarPictureBox filePictureBoxTableRow1Col1;
         private FileStarPictureBox filePictureBoxTableRow5Col1;
         private FileStarPictureBox filePictureBoxTableRow4Col1;
