@@ -27,6 +27,7 @@ namespace SM64_Diagnostic.Managers
         public uint CurrentFileAddress { get; private set; }
 
         Button _saveFileButton;
+        Button _eraseFileButton;
         Button _numStarsButton;
 
         RadioButton _hatLocationMarioRadioButton;
@@ -73,6 +74,9 @@ namespace SM64_Diagnostic.Managers
 
             _saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
             _saveFileButton.Click += FileSaveButton_Click;
+
+            _eraseFileButton = splitContainerFile.Panel1.Controls["buttonFileErase"] as Button;
+            _eraseFileButton.Click += FileEraseButton_Click;
 
             _numStarsButton = splitContainerFile.Panel1.Controls["buttonFileNumStars"] as Button;
             _numStarsButton.Click += NumStarsButton_Click;
@@ -377,6 +381,29 @@ namespace SM64_Diagnostic.Managers
             _stream.SetValue(checksum, savedAddress + Config.File.ChecksumOffset);
         }
 
+        private void FileEraseButton_Click(object sender, EventArgs e)
+        {
+            // Get the corresponding unsaved and saved file struct address
+            uint nonSavedAddress = GetNonSavedFileAddress(CurrentFileMode);
+            uint savedAddress = nonSavedAddress + Config.File.FileStructSize;
+
+            // Get checksum value
+            ushort checksum = (ushort)(Config.File.ChecksumConstantValue % 256 + Config.File.ChecksumConstantValue / 256);
+
+            // Set the checksum constant and checksum (in both unsaved and saved)
+            _stream.SetValue(Config.File.ChecksumConstantValue, nonSavedAddress + Config.File.ChecksumConstantOffset);
+            _stream.SetValue(Config.File.ChecksumConstantValue, savedAddress + Config.File.ChecksumConstantOffset);
+            _stream.SetValue(checksum, nonSavedAddress + Config.File.ChecksumOffset);
+            _stream.SetValue(checksum, savedAddress + Config.File.ChecksumOffset);
+
+            // Set all bytes to 0 (in both unsaved and saved)
+            for (uint i = 0; i < Config.File.FileStructSize - 4; i++)
+            {
+                _stream.SetValue((byte)0, nonSavedAddress + i);
+                _stream.SetValue((byte)0, savedAddress + i);
+            }
+        }
+
         private uint GetNonSavedFileAddress(FileMode mode)
         {
             switch (mode)
@@ -460,7 +487,7 @@ namespace SM64_Diagnostic.Managers
         public override void Update(bool updateView)
         {
             short currentNumStars = CalculateNumStars();
-            _numStarsButton.Text = currentNumStars == 1 ? currentNumStars + " Star" : currentNumStars + " Stars";
+            _numStarsButton.Text = string.Format("Update HUD\r\nto " + (currentNumStars == 1 ? currentNumStars + " Star" : currentNumStars + " Stars"));
 
             _currentHatLocation = getCurrentHatLocation();
              
