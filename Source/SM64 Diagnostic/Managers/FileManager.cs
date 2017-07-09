@@ -112,7 +112,7 @@ namespace SM64_Diagnostic.Managers
                 if (fileCannonPictureBox == null) continue;
 
                 uint addressOffset = GetCannonAddressOffset(row, col);
-                byte mask = 0x80;
+                byte mask = 0x80; //TODO
                 fileCannonPictureBox.Initialize(_stream, addressOffset, mask, _gui.CannonImage, _gui.CannonLidImage);
                 _filePictureBoxList.Add(fileCannonPictureBox);
             }
@@ -136,7 +136,7 @@ namespace SM64_Diagnostic.Managers
                 int col = 9;
                 string controlName = String.Format("textBoxTableRow{0}Col{1}", row + 1, col + 1);
                 FileCoinScoreTextbox fileCoinScoreTextBox = fileTable.Controls[controlName] as FileCoinScoreTextbox;
-                fileCoinScoreTextBox.Initialize(_stream, 0x25 + (uint)row);
+                fileCoinScoreTextBox.Initialize(_stream, 0x25 + (uint)row); //TODO
                 _fileTextboxList.Add(fileCoinScoreTextBox);
             }
 
@@ -172,15 +172,15 @@ namespace SM64_Diagnostic.Managers
 
 
             FileHatPositionTextbox textboxHatLocationPositionX = hatLocationGroupbox.Controls["textboxHatLocationPositionX"] as FileHatPositionTextbox;
-            textboxHatLocationPositionX.Initialize(_stream, 0x02);
+            textboxHatLocationPositionX.Initialize(_stream, 0x02); //TODO
             _fileTextboxList.Add(textboxHatLocationPositionX);
 
             FileHatPositionTextbox textboxHatLocationPositionY = hatLocationGroupbox.Controls["textboxHatLocationPositionY"] as FileHatPositionTextbox;
-            textboxHatLocationPositionY.Initialize(_stream, 0x04);
+            textboxHatLocationPositionY.Initialize(_stream, 0x04); //TODO
             _fileTextboxList.Add(textboxHatLocationPositionY);
 
             FileHatPositionTextbox textboxHatLocationPositionZ = hatLocationGroupbox.Controls["textboxHatLocationPositionZ"] as FileHatPositionTextbox;
-            textboxHatLocationPositionZ.Initialize(_stream, 0x06);
+            textboxHatLocationPositionZ.Initialize(_stream, 0x06); //TODO
             _fileTextboxList.Add(textboxHatLocationPositionZ);
 
 
