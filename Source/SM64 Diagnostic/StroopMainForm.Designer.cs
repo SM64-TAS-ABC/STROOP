@@ -452,9 +452,9 @@ namespace SM64_Diagnostic
             this.labelHatLocationPositionZ = new System.Windows.Forms.Label();
             this.labelHatLocationPositionY = new System.Windows.Forms.Label();
             this.labelHatLocationPositionX = new System.Windows.Forms.Label();
-            this.textBoxHatLocationPositionZ = new System.Windows.Forms.TextBox();
-            this.textBoxHatLocationPositionY = new System.Windows.Forms.TextBox();
-            this.textBoxHatLocationPositionX = new System.Windows.Forms.TextBox();
+            this.textBoxHatLocationPositionZ = new SM64_Diagnostic.FileHatPositionTextbox();
+            this.textBoxHatLocationPositionY = new SM64_Diagnostic.FileHatPositionTextbox();
+            this.textBoxHatLocationPositionX = new SM64_Diagnostic.FileHatPositionTextbox();
             this.filePictureBoxHatLocationTTMGround = new SM64_Diagnostic.FileHatLocationPictureBox();
             this.filePictureBoxHatLocationMario = new SM64_Diagnostic.FileHatLocationPictureBox();
             this.filePictureBoxHatLocationUkiki = new SM64_Diagnostic.FileHatLocationPictureBox();
@@ -10057,9 +10057,9 @@ namespace SM64_Diagnostic
         private Label labelHatLocationPositionZ;
         private Label labelHatLocationPositionY;
         private Label labelHatLocationPositionX;
-        private TextBox textBoxHatLocationPositionZ;
-        private TextBox textBoxHatLocationPositionY;
-        private TextBox textBoxHatLocationPositionX;
+        private FileHatPositionTextbox textBoxHatLocationPositionZ;
+        private FileHatPositionTextbox textBoxHatLocationPositionY;
+        private FileHatPositionTextbox textBoxHatLocationPositionX;
     }
 }
 
