@@ -138,7 +138,7 @@ namespace SM64_Diagnostic.Managers
 
                 uint addressOffset = GetCannonAddressOffset(row, col);
                 byte mask = 0x80;
-                fileCannonPictureBox.Initialize(_stream, _gui, addressOffset, mask, _gui.CannonImage, _gui.CannonLidImage);
+                fileCannonPictureBox.Initialize(_stream, addressOffset, mask, _gui.CannonImage, _gui.CannonLidImage);
                 _filePictureBoxList.Add(fileCannonPictureBox);
             }
 
@@ -152,7 +152,7 @@ namespace SM64_Diagnostic.Managers
                 uint addressOffset = GetDoorAddressOffset(row, col);
                 byte mask = GetDoorMask(row, col);
                 (Image onImage, Image offImage) = GetDoorImages(row, col);
-                fileBinaryPictureBox.Initialize(_stream, _gui, addressOffset, mask, onImage, offImage);
+                fileBinaryPictureBox.Initialize(_stream, addressOffset, mask, onImage, offImage);
                 _filePictureBoxList.Add(fileBinaryPictureBox);
             }
 

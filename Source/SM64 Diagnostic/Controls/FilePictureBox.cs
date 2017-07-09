@@ -17,7 +17,6 @@ namespace SM64_Diagnostic
     public abstract class FilePictureBox : PictureBox
     {
         protected ProcessStream _stream;
-        protected FileImageGui _gui;
         protected uint _addressOffset;
         protected byte _mask;
         protected byte _currentValue;
@@ -26,10 +25,9 @@ namespace SM64_Diagnostic
         {
         }
 
-        protected void Initialize(ProcessStream stream, FileImageGui gui, uint addressOffset, byte mask)
+        protected void Initialize(ProcessStream stream, uint addressOffset, byte mask)
         {
             _stream = stream;
-            _gui = gui;
             _addressOffset = addressOffset;
             _mask = mask;
             _currentValue = GetValue();
@@ -80,7 +78,7 @@ namespace SM64_Diagnostic
 
         public void UpdateImage(bool force = false)
         {
-            if (_gui == null) return;
+            if (_stream == null) return;
 
             byte value = GetValue();
             if (_currentValue != value || force)
