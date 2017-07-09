@@ -492,14 +492,15 @@ namespace SM64_Diagnostic.Managers
         {
             byte[] bufferedBytes = GetBufferedBytes();
 
-            Action<uint, byte, byte> setValues = (uint addressOffset, byte mask, byte newVal) =>
+            Action<uint?, byte?, byte?> setValues = (uint? addressOffset, byte? mask, byte? newVal) =>
             {
-                byte oldByte = bufferedBytes[addressOffset];
-                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, mask, newVal);
-                bufferedBytes[addressOffset] = newByte;
+                if (addressOffset == null || mask == null || newVal == null) return;
+                byte oldByte = bufferedBytes[(uint)addressOffset];
+                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, (byte)mask, (byte)newVal);
+                bufferedBytes[(uint)addressOffset] = newByte;
             };
 
-            Action<uint, byte, bool> setValuesBool = (uint addressOffset, byte mask, bool newVal) =>
+            Action<uint?, byte?, bool> setValuesBool = (uint? addressOffset, byte? mask, bool newVal) =>
             {
                 setValues(addressOffset, mask, newVal ? mask : (byte)0);
             };
@@ -507,6 +508,13 @@ namespace SM64_Diagnostic.Managers
             for (int i = 0; i < numRows; i++)
             {
                 setValuesBool(_courseStarsAddressOffsets[i], _courseStarsMasks[i], everythingOn);
+                setValuesBool(_courseCannonAddressOffsets[i], _courseCannonMasks[i], everythingOn);
+                setValuesBool(_courseDoorAddressOffsets[i], _courseDoorMasks[i], everythingOn);
+            }
+
+            for (int i = 0; i < 15; i++)
+            {
+                bufferedBytes[Config.File.CoinScoreAddressStart + (uint)i] = everythingOn ? (byte)100 : (byte)0;
             }
 
             SetBufferedBytes(bufferedBytes);
