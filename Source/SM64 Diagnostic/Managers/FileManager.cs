@@ -88,7 +88,7 @@ namespace SM64_Diagnostic.Managers
                     FileStarPictureBox fileStarPictureBox = fileTable.Controls[controlName] as FileStarPictureBox;
                     if (fileStarPictureBox == null) continue;
 
-                    uint addressOffset = GetStarAddressOffset(row, col);
+                    uint addressOffset = GetStarAddressOffset(row);
                     byte mask = GetStarMask(row, col);
                     string missionName = Config.Missions.GetMissionName(row + 1, col + 1);
                     fileStarPictureBox.Initialize(_stream, _gui, addressOffset, mask, _gui.PowerStarImage, _gui.PowerStarBlackImage, missionName);
@@ -113,7 +113,7 @@ namespace SM64_Diagnostic.Managers
                 FileBinaryPictureBox fileCannonPictureBox = fileTable.Controls[controlName] as FileBinaryPictureBox;
                 if (fileCannonPictureBox == null) continue;
 
-                uint addressOffset = GetCannonAddressOffset(row, col);
+                uint addressOffset = GetCannonAddressOffset(row);
                 byte mask = Config.File.CannonMask;
                 fileCannonPictureBox.Initialize(_stream, addressOffset, mask, _gui.CannonImage, _gui.CannonLidImage);
                 _filePictureBoxList.Add(fileCannonPictureBox);
@@ -126,9 +126,9 @@ namespace SM64_Diagnostic.Managers
                 FileBinaryPictureBox fileBinaryPictureBox = fileTable.Controls[controlName] as FileBinaryPictureBox;
                 if (fileBinaryPictureBox == null) continue;
 
-                uint addressOffset = GetDoorAddressOffset(row, col);
-                byte mask = GetDoorMask(row, col);
-                (Image onImage, Image offImage) = GetDoorImages(row, col);
+                uint addressOffset = GetDoorAddressOffset(row);
+                byte mask = GetDoorMask(row);
+                (Image onImage, Image offImage) = GetDoorImages(row);
                 fileBinaryPictureBox.Initialize(_stream, addressOffset, mask, onImage, offImage);
                 _filePictureBoxList.Add(fileBinaryPictureBox);
             }
@@ -265,7 +265,7 @@ namespace SM64_Diagnostic.Managers
             return starCount;
         }
 
-        private (Image onImage, Image offImage) GetDoorImages(int row, int col)
+        private (Image onImage, Image offImage) GetDoorImages(int row)
         {
             switch (row)
             {
@@ -284,7 +284,7 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private uint GetDoorAddressOffset(int row, int col)
+        private uint GetDoorAddressOffset(int row)
         {
             switch (row)
             {
@@ -307,7 +307,7 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private byte GetDoorMask(int row, int col)
+        private byte GetDoorMask(int row)
         {
             switch (row)
             {
@@ -330,7 +330,7 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private uint GetCannonAddressOffset(int row, int col)
+        private uint GetCannonAddressOffset(int row)
         {
             if (row == 20)
                 return Config.File.WMotRCannonAddress;
@@ -338,7 +338,7 @@ namespace SM64_Diagnostic.Managers
                 return Config.File.MainCourseCannonsAddressStart + (uint)row;
         }
 
-        private uint GetStarAddressOffset(int row, int col)
+        private uint GetStarAddressOffset(int row)
         {
             switch (row)
             {
