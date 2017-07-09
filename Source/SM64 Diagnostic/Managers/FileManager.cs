@@ -73,8 +73,6 @@ namespace SM64_Diagnostic.Managers
             (fileGroupbox.Controls["radioButtonFileDSaved"] as RadioButton).Click
                 += (sender, e) => FileMode_Click(sender, e, FileMode.FileDSaved);
 
-            GroupBox hatLocationGroupbox = splitContainerFile.Panel1.Controls["groupBoxHatLocation"] as GroupBox;
-
             TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
 
             _filePictureBoxList = new List<FilePictureBox>();
@@ -143,31 +141,33 @@ namespace SM64_Diagnostic.Managers
                 _fileCoinScoreTextboxList.Add(fileCoinScoreTextBox);
             }
 
-            FileHatLocationPictureBox filePictureBoxHatLocationMario = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationMario"] as FileHatLocationPictureBox;
+            GroupBox hatLocationGroupbox = splitContainerFile.Panel1.Controls["groupBoxHatLocation"] as GroupBox;
+
+            FileHatLocationPictureBox filePictureBoxHatLocationMario = hatLocationGroupbox.Controls["filePictureBoxHatLocationMario"] as FileHatLocationPictureBox;
             filePictureBoxHatLocationMario.Initialize(_stream, HatLocation.Mario, _gui.HatOnMarioImage, _gui.HatOnMarioGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationMario);
 
-            FileHatLocationPictureBox filePictureBoxHatLocationKlepto = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationKlepto"] as FileHatLocationPictureBox;
+            FileHatLocationPictureBox filePictureBoxHatLocationKlepto = hatLocationGroupbox.Controls["filePictureBoxHatLocationKlepto"] as FileHatLocationPictureBox;
             filePictureBoxHatLocationKlepto.Initialize(_stream, HatLocation.SSLKlepto, _gui.HatOnKleptoImage, _gui.HatOnKleptoGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationKlepto);
 
-            FileHatLocationPictureBox filePictureBoxHatLocationSnowman = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationSnowman"] as FileHatLocationPictureBox;
+            FileHatLocationPictureBox filePictureBoxHatLocationSnowman = hatLocationGroupbox.Controls["filePictureBoxHatLocationSnowman"] as FileHatLocationPictureBox;
             filePictureBoxHatLocationSnowman.Initialize(_stream, HatLocation.SLSnowman, _gui.HatOnSnowmanImage, _gui.HatOnSnowmanGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationSnowman);
 
-            FileHatLocationPictureBox filePictureBoxHatLocationUkiki = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationUkiki"] as FileHatLocationPictureBox;
+            FileHatLocationPictureBox filePictureBoxHatLocationUkiki = hatLocationGroupbox.Controls["filePictureBoxHatLocationUkiki"] as FileHatLocationPictureBox;
             filePictureBoxHatLocationUkiki.Initialize(_stream, HatLocation.TTMUkiki, _gui.HatOnUkikiImage, _gui.HatOnUkikiGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationUkiki);
 
-            FileHatLocationPictureBox filePictureBoxHatLocationSSLGround = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationSSLGround"] as FileHatLocationPictureBox;
+            FileHatLocationPictureBox filePictureBoxHatLocationSSLGround = hatLocationGroupbox.Controls["filePictureBoxHatLocationSSLGround"] as FileHatLocationPictureBox;
             filePictureBoxHatLocationSSLGround.Initialize(_stream, HatLocation.SSLGround, _gui.HatOnGroundInSSLImage, _gui.HatOnGroundInSSLGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationSSLGround);
 
-            FileHatLocationPictureBox filePictureBoxHatLocationSLGround = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationSLGround"] as FileHatLocationPictureBox;
+            FileHatLocationPictureBox filePictureBoxHatLocationSLGround = hatLocationGroupbox.Controls["filePictureBoxHatLocationSLGround"] as FileHatLocationPictureBox;
             filePictureBoxHatLocationSLGround.Initialize(_stream, HatLocation.SLGround, _gui.HatOnGroundInSLImage, _gui.HatOnGroundInSLGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationSLGround);
 
-            FileHatLocationPictureBox filePictureBoxHatLocationTTMGround = splitContainerFile.Panel1.Controls["filePictureBoxHatLocationTTMGround"] as FileHatLocationPictureBox;
+            FileHatLocationPictureBox filePictureBoxHatLocationTTMGround = hatLocationGroupbox.Controls["filePictureBoxHatLocationTTMGround"] as FileHatLocationPictureBox;
             filePictureBoxHatLocationTTMGround.Initialize(_stream, HatLocation.TTMGround, _gui.HatOnGroundInTTMImage, _gui.HatOnGroundInTTMGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationTTMGround);
 
