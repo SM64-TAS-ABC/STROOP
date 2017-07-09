@@ -261,9 +261,9 @@
     <HatLocationCourseSLValue>0x0A01</HatLocationCourseSLValue>
     <HatLocationCourseTTMValue>0x2401</HatLocationCourseTTMValue>
 
-    <HatPositionXMask>0x02</HatPositionXMask>
-    <HatPositionYMask>0x04</HatPositionYMask>
-    <HatPositionZMask>0x06</HatPositionZMask>
+    <HatPositionXAddress>0x02</HatPositionXAddress>
+    <HatPositionYAddress>0x04</HatPositionYAddress>
+    <HatPositionZAddress>0x06</HatPositionZAddress>
   </File>
   <CameraHack>
     <CameraHackStruct>0x803E0000</CameraHackStruct>

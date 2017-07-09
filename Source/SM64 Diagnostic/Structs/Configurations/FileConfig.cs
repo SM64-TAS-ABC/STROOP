@@ -85,8 +85,8 @@ namespace SM64_Diagnostic.Structs.Configurations
         public ushort HatLocationCourseSLValue;
         public ushort HatLocationCourseTTMValue;
 
-        public byte HatPositionXMask;
-        public byte HatPositionYMask;
-        public byte HatPositionZMask;
+        public uint HatPositionXAddress;
+        public uint HatPositionYAddress;
+        public uint HatPositionZAddress;
     }
 }
