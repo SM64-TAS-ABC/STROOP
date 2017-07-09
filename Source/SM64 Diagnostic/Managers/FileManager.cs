@@ -28,6 +28,8 @@ namespace SM64_Diagnostic.Managers
 
         Button _saveFileButton;
         Button _eraseFileButton;
+        Button _allStarsButton;
+        Button _noStarsButton;
         Button _numStarsButton;
 
         RadioButton _hatLocationMarioRadioButton;
@@ -41,6 +43,10 @@ namespace SM64_Diagnostic.Managers
         List<FilePictureBox> _filePictureBoxList;
         List<FileCoinScoreTextbox> _fileCoinScoreTextboxList;
 
+        int numRows = 26;
+        uint[] _courseAddressOffsets;
+        byte[] _courseMasks;
+
         HatLocation? _currentHatLocation;
 
         public FileManager(ProcessStream stream, List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile, FileImageGui gui)
@@ -49,6 +55,7 @@ namespace SM64_Diagnostic.Managers
             Instance = this;
             _tabControl = tabControl;
             _gui = gui;
+
             CurrentFileMode = FileMode.FileA;
             CurrentFileAddress = Config.File.FileAAddress;
 
@@ -71,15 +78,6 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => FileMode_Click(sender, e, FileMode.FileCSaved);
             (fileGroupbox.Controls["radioButtonFileDSaved"] as RadioButton).Click
                 += (sender, e) => FileMode_Click(sender, e, FileMode.FileDSaved);
-
-            _saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
-            _saveFileButton.Click += FileSaveButton_Click;
-
-            _eraseFileButton = splitContainerFile.Panel1.Controls["buttonFileErase"] as Button;
-            _eraseFileButton.Click += FileEraseButton_Click;
-
-            _numStarsButton = splitContainerFile.Panel1.Controls["buttonFileNumStars"] as Button;
-            _numStarsButton.Click += NumStarsButton_Click;
 
             GroupBox hatLocationGroupbox = splitContainerFile.Panel1.Controls["groupBoxHatLocation"] as GroupBox;
 
@@ -104,9 +102,8 @@ namespace SM64_Diagnostic.Managers
             TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
 
             _filePictureBoxList = new List<FilePictureBox>();
-            int numRows = 26;
-            uint[] courseAddressOffsets = new uint[numRows];
-            byte[] courseMasks = new byte[numRows];
+            _courseAddressOffsets = new uint[numRows];
+            _courseMasks = new byte[numRows];
             for (int row = 0; row < numRows; row++)
             {
                 for (int col = 0; col < 7; col++)
@@ -121,8 +118,8 @@ namespace SM64_Diagnostic.Managers
                     fileStarPictureBox.Initialize(_stream, _gui, addressOffset, mask, _gui.PowerStarImage, _gui.PowerStarBlackImage, missionName);
                     _filePictureBoxList.Add(fileStarPictureBox);
 
-                    courseAddressOffsets[row] = addressOffset;
-                    courseMasks[row] = (byte)(courseMasks[row] | mask);
+                    _courseAddressOffsets[row] = addressOffset;
+                    _courseMasks[row] = (byte)(_courseMasks[row] | mask);
                 }
             }
 
@@ -130,7 +127,7 @@ namespace SM64_Diagnostic.Managers
             {
                 string controlName = String.Format("labelFileTableRow{0}", row + 1);
                 FileCourseLabel fileCourseLabel = fileTable.Controls[controlName] as FileCourseLabel;
-                fileCourseLabel.Initialize(_stream, courseAddressOffsets[row], courseMasks[row]);
+                fileCourseLabel.Initialize(_stream, _courseAddressOffsets[row], _courseMasks[row]);
             }
 
             for (int row = 0; row < numRows; row++)
@@ -169,6 +166,21 @@ namespace SM64_Diagnostic.Managers
                 fileCoinScoreTextBox.Initialize(_stream, 0x25 + (uint)row);
                 _fileCoinScoreTextboxList.Add(fileCoinScoreTextBox);
             }
+
+            _saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
+            _saveFileButton.Click += FileSaveButton_Click;
+
+            _eraseFileButton = splitContainerFile.Panel1.Controls["buttonFileErase"] as Button;
+            _eraseFileButton.Click += FileEraseButton_Click;
+
+            _allStarsButton = splitContainerFile.Panel1.Controls["buttonAllStars"] as Button;
+            _allStarsButton.Click += FileAllStarsButton_Click;
+
+            _noStarsButton = splitContainerFile.Panel1.Controls["buttonNoStars"] as Button;
+            _noStarsButton.Click += FileNoStarsButton_Click;
+
+            _numStarsButton = splitContainerFile.Panel1.Controls["buttonFileNumStars"] as Button;
+            _numStarsButton.Click += NumStarsButton_Click;
         }
 
         private uint GetCourseLabelAddressOffset(int row)
@@ -402,6 +414,21 @@ namespace SM64_Diagnostic.Managers
                 _stream.SetValue((byte)0, nonSavedAddress + i);
                 _stream.SetValue((byte)0, savedAddress + i);
             }
+        }
+
+        private void FileAllStarsButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < numRows; i++)
+            {
+                uint courseAddressOffset = _courseAddressOffsets[i];
+                uint courseMask = _courseMasks[i];
+                //byte oldByte = _stream.SetValue((byte)0, savedAddress + i);
+
+            }
+        }
+
+        private void FileNoStarsButton_Click(object sender, EventArgs e)
+        {
         }
 
         private uint GetNonSavedFileAddress(FileMode mode)

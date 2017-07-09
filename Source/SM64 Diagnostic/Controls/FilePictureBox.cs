@@ -48,10 +48,8 @@ namespace SM64_Diagnostic
 
         private void SetValue(byte value)
         {
-            byte maskedValue = (byte)(value & _mask);
             byte oldByte = _stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
-            byte unmaskedOldByte = (byte)(oldByte & ~_mask);
-            byte newByte = (byte)(unmaskedOldByte | maskedValue);
+            byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, _mask, value);
             _stream.SetValue(newByte, FileManager.Instance.CurrentFileAddress + _addressOffset);
         }
 

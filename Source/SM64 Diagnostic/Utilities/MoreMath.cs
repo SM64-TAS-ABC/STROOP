@@ -307,5 +307,13 @@ namespace SM64_Diagnostic.Utilities
             float amplitude = angle + totalDistance;
             return amplitude;
         }
+
+        public static byte ApplyValueToMaskedByte(byte currentValue, byte mask, byte valueToSet)
+        {
+            byte maskedValueToSet = (byte)(valueToSet & mask);
+            byte unmaskedCurrentValue = (byte)(currentValue & ~mask);
+            byte newValue = (byte)(unmaskedCurrentValue | maskedValueToSet);
+            return newValue;
+        }
     }
 }
