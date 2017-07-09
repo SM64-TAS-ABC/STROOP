@@ -500,9 +500,10 @@ namespace SM64_Diagnostic.Managers
                 bufferedBytes[(uint)addressOffset] = newByte;
             };
 
-            Action<uint?, byte?, bool> setValuesBool = (uint? addressOffset, byte? mask, bool newVal) =>
+            Action<uint?, byte?, bool?> setValuesBool = (uint? addressOffset, byte? mask, bool? newVal) =>
             {
-                setValues(addressOffset, mask, newVal ? mask : (byte)0);
+                if (newVal == null) return;
+                setValues(addressOffset, mask, (bool)newVal ? mask : (byte)0);
             };
 
             for (int i = 0; i < numRows; i++)
@@ -516,6 +517,18 @@ namespace SM64_Diagnostic.Managers
             {
                 bufferedBytes[Config.File.CoinScoreAddressStart + (uint)i] = everythingOn ? (byte)100 : (byte)0;
             }
+
+            setValuesBool(Config.File.FileStartedAddress, Config.File.FileStartedMask, everythingOn ? true : (bool?)null);
+            setValuesBool(Config.File.CapSwitchPressedAddress, Config.File.RedCapSwitchMask, everythingOn);
+            setValuesBool(Config.File.CapSwitchPressedAddress, Config.File.GreenCapSwitchMask, everythingOn);
+            setValuesBool(Config.File.CapSwitchPressedAddress, Config.File.BlueCapSwitchMask, everythingOn);
+            setValuesBool(Config.File.KeyDoorAddress, Config.File.KeyDoor1KeyMask, false);
+            setValuesBool(Config.File.KeyDoorAddress, Config.File.KeyDoor1OpenedMask, everythingOn);
+            setValuesBool(Config.File.KeyDoorAddress, Config.File.KeyDoor2KeyMask, false);
+            setValuesBool(Config.File.KeyDoorAddress, Config.File.KeyDoor2OpenedMask, everythingOn);
+            setValuesBool(Config.File.MoatDrainedAddress, Config.File.MoatDrainedMask, everythingOn);
+            setValuesBool(Config.File.DDDMovedBackAddress, Config.File.DDDMovedBackMask, everythingOn);
+            setValuesBool(Config.File.HatLocationModeOffset, Config.File.HatLocationModeMask, everythingOn ? false : (bool?)null);
 
             SetBufferedBytes(bufferedBytes);
         }
