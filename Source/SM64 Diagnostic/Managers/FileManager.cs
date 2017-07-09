@@ -169,19 +169,32 @@ namespace SM64_Diagnostic.Managers
                 _fileCoinScoreTextboxList.Add(fileCoinScoreTextBox);
             }
 
+            FileBinaryPictureBox filePictureBoxFileStarted = splitContainerFile.Panel1.Controls["filePictureBoxFileStarted"] as FileBinaryPictureBox;
+            filePictureBoxFileStarted.Initialize(_stream, 0x0B, 0x01, _gui.FileStartedImage, _gui.FileNotStartedImage);
+            _filePictureBoxList.Add(filePictureBoxFileStarted);
 
-/*
-            filePictureBoxFileStarted
-filePictureBoxRedCapSwitchPressed
-filePictureBoxGreenCapSwitchPressed
-filePictureBoxBlueCapSwitchPressed
-filePictureBoxKeyDoor1Opened
-filePictureBoxKeyDoor2Opened
-filePictureBoxMoatDrained
-filePictureBoxDDDMovedBack
-*/
+            FileBinaryPictureBox filePictureBoxRedCapSwitchPressed = splitContainerFile.Panel1.Controls["filePictureBoxRedCapSwitchPressed"] as FileBinaryPictureBox;
+            filePictureBoxRedCapSwitchPressed.Initialize(_stream, 0x0B, 0x02, _gui.CapSwitchRedPressedImage, _gui.CapSwitchRedUnpressedImage);
+            _filePictureBoxList.Add(filePictureBoxRedCapSwitchPressed);
 
+            FileBinaryPictureBox filePictureBoxGreenCapSwitchPressed = splitContainerFile.Panel1.Controls["filePictureBoxGreenCapSwitchPressed"] as FileBinaryPictureBox;
+            filePictureBoxGreenCapSwitchPressed.Initialize(_stream, 0x0B, 0x04, _gui.CapSwitchGreenPressedImage, _gui.CapSwitchGreenUnpressedImage);
+            _filePictureBoxList.Add(filePictureBoxGreenCapSwitchPressed);
 
+            FileBinaryPictureBox filePictureBoxBlueCapSwitchPressed = splitContainerFile.Panel1.Controls["filePictureBoxBlueCapSwitchPressed"] as FileBinaryPictureBox;
+            filePictureBoxBlueCapSwitchPressed.Initialize(_stream, 0x0B, 0x08, _gui.CapSwitchBluePressedImage, _gui.CapSwitchBlueUnpressedImage);
+            _filePictureBoxList.Add(filePictureBoxBlueCapSwitchPressed);
+
+            FileBinaryPictureBox filePictureBoxKeyDoor1Opened = splitContainerFile.Panel1.Controls["filePictureBoxKeyDoor1Opened"] as FileBinaryPictureBox;
+            FileBinaryPictureBox filePictureBoxKeyDoor2Opened = splitContainerFile.Panel1.Controls["filePictureBoxKeyDoor2Opened"] as FileBinaryPictureBox;
+
+            FileBinaryPictureBox filePictureBoxMoatDrained = splitContainerFile.Panel1.Controls["filePictureBoxMoatDrained"] as FileBinaryPictureBox;
+            filePictureBoxMoatDrained.Initialize(_stream, 0x0A, 0x02, _gui.MoatDrainedImage, _gui.MoatNotDrainedImage);
+            _filePictureBoxList.Add(filePictureBoxMoatDrained);
+
+            FileBinaryPictureBox filePictureBoxDDDMovedBack = splitContainerFile.Panel1.Controls["filePictureBoxDDDMovedBack"] as FileBinaryPictureBox;
+            filePictureBoxDDDMovedBack.Initialize(_stream, 0x0A, 0x01, _gui.DDDPaintingMovedBackImage, _gui.DDDPaintingNotMovedBackImage);
+            _filePictureBoxList.Add(filePictureBoxDDDMovedBack);
 
             _saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
             _saveFileButton.Click += FileSaveButton_Click;
