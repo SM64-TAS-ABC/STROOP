@@ -27,6 +27,7 @@ namespace SM64_Diagnostic.Managers
         public uint CurrentFileAddress { get; private set; }
 
         Button _saveFileButton;
+        Button _numStarsButton;
 
         RadioButton _hatLocationMarioRadioButton;
         RadioButton _hatLocationSSLKleptoRadioButton;
@@ -72,6 +73,9 @@ namespace SM64_Diagnostic.Managers
 
             _saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
             _saveFileButton.Click += FileSaveButton_Click;
+
+            _numStarsButton = splitContainerFile.Panel1.Controls["buttonFileNumStars"] as Button;
+            _numStarsButton.Click += NumStarsButton_Click;
 
             GroupBox hatLocationGroupbox = splitContainerFile.Panel1.Controls["groupBoxHatLocation"] as GroupBox;
 
@@ -149,6 +153,20 @@ namespace SM64_Diagnostic.Managers
                 fileCoinScoreTextBox.Initialize(_stream, 0x25 + (uint)row);
                 _fileCoinScoreTextboxList.Add(fileCoinScoreTextBox);
             }
+        }
+
+        private short CalculateNumStars()
+        {
+            short starCount = 0;
+            for (int i = 0; i < 26; i++)
+            {
+                byte starByte = _stream.GetByte(CurrentFileAddress + 0x0C + (uint)i);
+                for (int b = 0; b < 7; b++)
+                {
+                    starCount += (byte)((starByte >> b) & 1);
+                }
+            }
+            return starCount;
         }
 
         private (Image onImage, Image offImage) GetDoorImages(int row, int col)
@@ -289,6 +307,13 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
+        private void NumStarsButton_Click(object sender, EventArgs e)
+        {
+            short numStars = CalculateNumStars();
+            _stream.SetValue(numStars, Config.Hud.StarCountAddress);
+            _stream.SetValue(numStars, Config.Hud.DisplayStarCountAddress);
+        }
+
         private void FileSaveButton_Click(object sender, EventArgs e)
         {
             // Get the corresponding unsaved file struct address
@@ -401,6 +426,9 @@ namespace SM64_Diagnostic.Managers
 
         public override void Update(bool updateView)
         {
+            short currentNumStars = CalculateNumStars();
+            _numStarsButton.Text = currentNumStars == 1 ? currentNumStars + " Star" : currentNumStars + " Stars";
+
             _currentHatLocation = getCurrentHatLocation();
              
             _hatLocationMarioRadioButton.Checked = _currentHatLocation == HatLocation.Mario;
