@@ -28,32 +28,33 @@ namespace SM64_Diagnostic
         {
             _stream = stream;
             _addressOffset = addressOffset;
-            _currentValue = _stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
+            _currentValue = GetCoinScoreFromMemory();
             this.Text = _currentValue.ToString();
 
+            this.KeyDown += (sender, e) => { if (e.KeyData == Keys.Enter) SubmitCoinScore(); };
             this.LostFocus += (sender, e) => SubmitCoinScore();
         }
 
-        private void KeyDownAction(object sender, KeyEventArgs e)
+        private byte GetCoinScoreFromMemory()
         {
-            // On "Enter" key press
-            if (e.KeyData != Keys.Enter)
-                return;
-
-            SubmitCoinScore();
+            return _stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
         }
 
         private void SubmitCoinScore()
         {
             byte value;
-            if (!byte.TryParse(this.Text, out value)) return;
+            if (!byte.TryParse(this.Text, out value))
+            {
+                this.Text = GetCoinScoreFromMemory().ToString();
+                return;
+            }
 
             _stream.SetValue(value, FileManager.Instance.CurrentFileAddress + _addressOffset);
         }
 
         public void UpdateText()
         {
-            byte value = _stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
+            byte value = GetCoinScoreFromMemory();
             if (_currentValue != value)
             {
                 this.Text = value.ToString();
