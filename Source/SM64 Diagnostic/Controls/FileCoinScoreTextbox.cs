@@ -31,8 +31,16 @@ namespace SM64_Diagnostic
             _currentValue = GetCoinScoreFromMemory();
             this.Text = _currentValue.ToString();
 
-            this.KeyDown += (sender, e) => { if (e.KeyData == Keys.Enter) SubmitCoinScore(); };
-            this.LostFocus += (sender, e) => SubmitCoinScore();
+            this.Click += (sender, e) => this.SelectAll();
+            this.KeyDown += (sender, e) =>
+            {
+                if (e.KeyData == Keys.Enter)
+                {
+                    SubmitValue();
+                    this.Parent.Focus();
+                }
+            };
+            this.LostFocus += (sender, e) => SubmitValue();
         }
 
         private byte GetCoinScoreFromMemory()
@@ -40,12 +48,17 @@ namespace SM64_Diagnostic
             return _stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
         }
 
-        private void SubmitCoinScore()
+        private string GetRepresentedValue()
+        {
+            return GetCoinScoreFromMemory().ToString();
+        }
+
+        private void SubmitValue()
         {
             byte value;
             if (!byte.TryParse(this.Text, out value))
             {
-                this.Text = GetCoinScoreFromMemory().ToString();
+                this.Text = GetRepresentedValue();
                 return;
             }
 
