@@ -658,6 +658,8 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.buttonAllStars = new System.Windows.Forms.Button();
             this.buttonNoStars = new System.Windows.Forms.Button();
+            this.buttonEverything = new System.Windows.Forms.Button();
+            this.buttonNothing = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -3505,6 +3507,8 @@ namespace SM64_Diagnostic
             // splitContainerFile.Panel1
             // 
             this.splitContainerFile.Panel1.AutoScroll = true;
+            this.splitContainerFile.Panel1.Controls.Add(this.buttonNothing);
+            this.splitContainerFile.Panel1.Controls.Add(this.buttonEverything);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonNoStars);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonAllStars);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonFileErase);
@@ -8854,6 +8858,26 @@ namespace SM64_Diagnostic
             this.buttonNoStars.Text = "No Stars";
             this.buttonNoStars.UseVisualStyleBackColor = true;
             // 
+            // buttonEverything
+            // 
+            this.buttonEverything.Location = new System.Drawing.Point(227, 137);
+            this.buttonEverything.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonEverything.Name = "buttonEverything";
+            this.buttonEverything.Size = new System.Drawing.Size(71, 25);
+            this.buttonEverything.TabIndex = 44;
+            this.buttonEverything.Text = "Everything";
+            this.buttonEverything.UseVisualStyleBackColor = true;
+            // 
+            // buttonNothing
+            // 
+            this.buttonNothing.Location = new System.Drawing.Point(227, 163);
+            this.buttonNothing.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonNothing.Name = "buttonNothing";
+            this.buttonNothing.Size = new System.Drawing.Size(71, 25);
+            this.buttonNothing.TabIndex = 45;
+            this.buttonNothing.Text = "Nothing";
+            this.buttonNothing.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -9791,6 +9815,8 @@ namespace SM64_Diagnostic
         private Button buttonFileErase;
         private Button buttonNoStars;
         private Button buttonAllStars;
+        private Button buttonNothing;
+        private Button buttonEverything;
     }
 }
 

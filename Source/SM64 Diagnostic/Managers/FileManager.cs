@@ -30,6 +30,8 @@ namespace SM64_Diagnostic.Managers
         Button _eraseFileButton;
         Button _allStarsButton;
         Button _noStarsButton;
+        Button _everythingButton;
+        Button _nothingButton;
         Button _numStarsButton;
 
         RadioButton _hatLocationMarioRadioButton;
@@ -178,6 +180,12 @@ namespace SM64_Diagnostic.Managers
 
             _noStarsButton = splitContainerFile.Panel1.Controls["buttonNoStars"] as Button;
             _noStarsButton.Click += (sender, e) => FileSetStars(false);
+
+            _everythingButton = splitContainerFile.Panel1.Controls["buttonEverything"] as Button;
+            _everythingButton.Click += (sender, e) => FileSetStars(true);
+
+            _nothingButton = splitContainerFile.Panel1.Controls["buttonNothing"] as Button;
+            _nothingButton.Click += (sender, e) => FileSetStars(false);
 
             _numStarsButton = splitContainerFile.Panel1.Controls["buttonFileNumStars"] as Button;
             _numStarsButton.Click += NumStarsButton_Click;
