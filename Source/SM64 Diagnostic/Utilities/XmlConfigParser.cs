@@ -685,6 +685,182 @@ namespace SM64_Diagnostic.Utilities
                                     Config.File.ChecksumOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
+                                case "CourseStarsAddressStart":
+                                    Config.File.CourseStarsAddressStart = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "TotWCStarAddress":
+                                    Config.File.TotWCStarAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "CotMCStarAddress":
+                                    Config.File.CotMCStarAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "VCutMStarAddress":
+                                    Config.File.VCutMStarAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "PSSStarsAddress":
+                                    Config.File.PSSStarsAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "SAStarAddress":
+                                    Config.File.SAStarAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "WMotRStarAddress":
+                                    Config.File.WMotRStarAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "BitDWStarAddress":
+                                    Config.File.BitDWStarAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "BitFSStarAddress":
+                                    Config.File.BitFSStarAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "BitSStarAddress":
+                                    Config.File.BitSStarAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ToadMIPSStarsAddress":
+                                    Config.File.ToadMIPSStarsAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "MainCourseCannonsAddressStart":
+                                    Config.File.MainCourseCannonsAddressStart = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "WMotRCannonAddress":
+                                    Config.File.WMotRCannonAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "CannonMask":
+                                    Config.File.CannonMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "WFDoorAddress":
+                                    Config.File.WFDoorAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "JRBDoorAddress":
+                                    Config.File.JRBDoorAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "CCMDoorAddress":
+                                    Config.File.CCMDoorAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "PSSDoorAddress":
+                                    Config.File.PSSDoorAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "BitDWDoorAddress":
+                                    Config.File.BitDWDoorAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "BitFSDoorAddress":
+                                    Config.File.BitFSDoorAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "BitSDoorAddress":
+                                    Config.File.BitSDoorAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "WFDoorMask":
+                                    Config.File.WFDoorMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "JRBDoorMask":
+                                    Config.File.JRBDoorMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "CCMDoorMask":
+                                    Config.File.CCMDoorMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "PSSDoorMask":
+                                    Config.File.PSSDoorMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "BitDWDoorMask":
+                                    Config.File.BitDWDoorMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "BitFSDoorMask":
+                                    Config.File.BitFSDoorMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "BitSDoorMask":
+                                    Config.File.BitSDoorMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "CoinScoreAddressStart":
+                                    Config.File.CoinScoreAddressStart = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "FileStartedAddress":
+                                    Config.File.FileStartedAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "FileStartedMask":
+                                    Config.File.FileStartedMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "CapSwitchPressed":
+                                    Config.File.CapSwitchPressed = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "RedCapSwitchMask":
+                                    Config.File.RedCapSwitchMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "GreenCapSwitchMask":
+                                    Config.File.GreenCapSwitchMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "BlueCapSwitchMask":
+                                    Config.File.BlueCapSwitchMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "KeyDoorAddress":
+                                    Config.File.KeyDoorAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "KeyDoor1KeyMask":
+                                    Config.File.KeyDoor1KeyMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "KeyDoor1OpenedMask":
+                                    Config.File.KeyDoor1OpenedMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "KeyDoor2KeyMask":
+                                    Config.File.KeyDoor2KeyMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "KeyDoor2OpenedMask":
+                                    Config.File.KeyDoor2OpenedMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "MoatDrainedAddress":
+                                    Config.File.MoatDrainedAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "MoatDrainedMask":
+                                    Config.File.MoatDrainedMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "DDDMovedBackAddress":
+                                    Config.File.DDDMovedBackAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "DDDMovedBackMask":
+                                    Config.File.DDDMovedBackMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
                                 case "HatLocationModeOffset":
                                     Config.File.HatLocationModeOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
@@ -727,6 +903,18 @@ namespace SM64_Diagnostic.Utilities
 
                                 case "HatLocationCourseTTMValue":
                                     Config.File.HatLocationCourseTTMValue = (ushort)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "HatPositionXAddress":
+                                    Config.File.HatPositionXAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "HatPositionYAddress":
+                                    Config.File.HatPositionYAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "HatPositionZAddress":
+                                    Config.File.HatPositionZAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         }
