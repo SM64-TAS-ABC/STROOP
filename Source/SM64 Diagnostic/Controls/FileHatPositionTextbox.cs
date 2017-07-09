@@ -14,11 +14,11 @@ using System.Drawing.Drawing2D;
 
 namespace SM64_Diagnostic
 {
-    public class FileHatLocationTextbox : FileTextbox
+    public class FileHatPositionTextbox : FileTextbox
     {
         private short _currentValue;
 
-        public FileHatLocationTextbox()
+        public FileHatPositionTextbox()
         {
         }
 
