@@ -174,10 +174,10 @@ namespace SM64_Diagnostic.Managers
             _eraseFileButton.Click += FileEraseButton_Click;
 
             _allStarsButton = splitContainerFile.Panel1.Controls["buttonAllStars"] as Button;
-            _allStarsButton.Click += FileAllStarsButton_Click;
+            _allStarsButton.Click += (sender, e) => FileSetStars(true);
 
             _noStarsButton = splitContainerFile.Panel1.Controls["buttonNoStars"] as Button;
-            _noStarsButton.Click += FileNoStarsButton_Click;
+            _noStarsButton.Click += (sender, e) => FileSetStars(false);
 
             _numStarsButton = splitContainerFile.Panel1.Controls["buttonFileNumStars"] as Button;
             _numStarsButton.Click += NumStarsButton_Click;
@@ -416,19 +416,37 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private void FileAllStarsButton_Click(object sender, EventArgs e)
+        private byte[] GetBufferedBytes()
         {
-            for (int i = 0; i < numRows; i++)
+            byte[] bufferedBytes = new byte[Config.File.FileStructSize];
+            for (int i = 0; i < Config.File.FileStructSize; i++)
             {
-                uint courseAddressOffset = _courseAddressOffsets[i];
-                uint courseMask = _courseMasks[i];
-                //byte oldByte = _stream.SetValue((byte)0, savedAddress + i);
+                bufferedBytes[i] = _stream.GetByte(CurrentFileAddress + (uint)i);
+            }
+            return bufferedBytes;
+        }
 
+        private void SetBufferedBytes(byte[] bufferedBytes)
+        {
+            for (int i = 0; i < Config.File.FileStructSize; i++)
+            {
+                _stream.SetValue(bufferedBytes[i], CurrentFileAddress + (uint)i);
             }
         }
 
-        private void FileNoStarsButton_Click(object sender, EventArgs e)
+        private void FileSetStars(bool starsOn)
         {
+            byte[] bufferedBytes = GetBufferedBytes();
+            for (int i = 0; i < numRows; i++)
+            {
+                uint courseAddressOffset = _courseAddressOffsets[i];
+                byte courseMask = _courseMasks[i];
+
+                byte oldByte = bufferedBytes[courseAddressOffset];
+                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, courseMask, starsOn);
+                bufferedBytes[courseAddressOffset] = newByte;
+            }
+            SetBufferedBytes(bufferedBytes);
         }
 
         private uint GetNonSavedFileAddress(FileMode mode)

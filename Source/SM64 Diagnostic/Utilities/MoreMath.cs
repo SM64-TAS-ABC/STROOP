@@ -315,5 +315,10 @@ namespace SM64_Diagnostic.Utilities
             byte newValue = (byte)(unmaskedCurrentValue | maskedValueToSet);
             return newValue;
         }
+
+        public static byte ApplyValueToMaskedByte(byte currentValue, byte mask, bool wholeMask)
+        {
+            return ApplyValueToMaskedByte(currentValue, mask, wholeMask ? mask : (byte)0);
+        }
     }
 }
