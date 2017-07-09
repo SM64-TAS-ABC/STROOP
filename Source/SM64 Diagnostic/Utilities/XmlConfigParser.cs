@@ -1336,7 +1336,37 @@ namespace SM64_Diagnostic.Utilities
                    door3StarPath = "",
                    doorBlackPath = "",
                    starDoorOpenPath = "",
-                   starDoorClosedPath = "";
+                   starDoorClosedPath = "",
+                   capSwitchRedPressedPath = "",
+                   capSwitchRedUnpressedPath = "",
+                   capSwitchGreenPressedPath = "",
+                   capSwitchGreenUnpressedPath = "",
+                   capSwitchBluePressedPath = "",
+                   capSwitchBlueUnpressedPath = "",
+                   fileStartedPath = "",
+                   fileNotStartedPath = "",
+                   dddPaintingMovedBackPath = "",
+                   dddPaintingNotMovedBackPath = "",
+                   moatDrainedPath = "",
+                   moatNotDrainedPath = "",
+                   keyDoorClosedPath = "",
+                   keyDoorClosedKeyPath = "",
+                   keyDoorOpenPath = "",
+                   keyDoorOpenKeyPath = "",
+                   hatOnMarioPath = "",
+                   hatOnMarioGreyPath = "",
+                   hatOnKleptoPath = "",
+                   hatOnKleptoGreyPath = "",
+                   hatOnSnowmanPath = "",
+                   hatOnSnowmanGreyPath = "",
+                   hatOnUkikiPath = "",
+                   hatOnUkikiGreyPath = "",
+                   hatOnGroundInSSLPath = "",
+                   hatOnGroundInSSLGreyPath = "",
+                   hatOnGroundInSLPath = "",
+                   hatOnGroundInSLGreyPath = "",
+                   hatOnGroundInTTMPath = "",
+                   hatOnGroundInTTMGrey = "";
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -1394,6 +1424,126 @@ namespace SM64_Diagnostic.Utilities
                                 case "StarDoorClosed":
                                     starDoorClosedPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
                                     break;
+
+                                case "CapSwitchRedPressed":
+                                    capSwitchRedPressedPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "CapSwitchRedUnpressed":
+                                    capSwitchRedUnpressedPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "CapSwitchGreenPressed":
+                                    capSwitchGreenPressedPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "CapSwitchGreenUnpressed":
+                                    capSwitchGreenUnpressedPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "CapSwitchBluePressed":
+                                    capSwitchBluePressedPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "CapSwitchBlueUnpressed":
+                                    capSwitchBlueUnpressedPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "FileStarted":
+                                    fileStartedPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "FileNotStarted":
+                                    fileNotStartedPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "DDDPaintingMovedBack":
+                                    dddPaintingMovedBackPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "DDDPaintingNotMovedBack":
+                                    dddPaintingNotMovedBackPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "MoatDrained":
+                                    moatDrainedPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "MoatNotDrained":
+                                    moatNotDrainedPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "KeyDoorClosed":
+                                    keyDoorClosedPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "KeyDoorClosedKey":
+                                    keyDoorClosedKeyPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "KeyDoorOpen":
+                                    keyDoorOpenPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "KeyDoorOpenKey":
+                                    keyDoorOpenKeyPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnMario":
+                                    hatOnMarioPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnMarioGrey":
+                                    hatOnMarioGreyPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnKlepto":
+                                    hatOnKleptoPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnKleptoGrey":
+                                    hatOnKleptoGreyPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnSnowman":
+                                    hatOnSnowmanPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnSnowmanGrey":
+                                    hatOnSnowmanGreyPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnUkiki":
+                                    hatOnUkikiPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnUkikiGrey":
+                                    hatOnUkikiGreyPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnGroundInSSL":
+                                    hatOnGroundInSSLPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnGroundInSSLGrey":
+                                    hatOnGroundInSSLGreyPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnGroundInSL":
+                                    hatOnGroundInSLPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnGroundInSLGrey":
+                                    hatOnGroundInSLGreyPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnGroundInTTM":
+                                    hatOnGroundInTTMPath = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "HatOnGroundInTTMGrey":
+                                    hatOnGroundInTTMGrey = subElement.Element(XName.Get("FileImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -1411,6 +1561,36 @@ namespace SM64_Diagnostic.Utilities
             fileImageGui.DoorBlackImage = Image.FromFile(fileImageDir + doorBlackPath);
             fileImageGui.StarDoorOpenImage = Image.FromFile(fileImageDir + starDoorOpenPath);
             fileImageGui.StarDoorClosedImage = Image.FromFile(fileImageDir + starDoorClosedPath);
+            fileImageGui.CapSwitchRedPressedImage = Image.FromFile(fileImageDir + capSwitchRedPressedPath);
+            fileImageGui.CapSwitchRedUnpressedImage = Image.FromFile(fileImageDir + capSwitchRedUnpressedPath);
+            fileImageGui.CapSwitchGreenPressedImage = Image.FromFile(fileImageDir + capSwitchGreenPressedPath);
+            fileImageGui.CapSwitchGreenUnpressedImage = Image.FromFile(fileImageDir + capSwitchGreenUnpressedPath);
+            fileImageGui.CapSwitchBluePressedImage = Image.FromFile(fileImageDir + capSwitchBluePressedPath);
+            fileImageGui.CapSwitchBlueUnpressedImage = Image.FromFile(fileImageDir + capSwitchBlueUnpressedPath);
+            fileImageGui.FileStartedImage = Image.FromFile(fileImageDir + fileStartedPath);
+            fileImageGui.FileNotStartedImage = Image.FromFile(fileImageDir + fileNotStartedPath);
+            fileImageGui.DDDPaintingMovedBackImage = Image.FromFile(fileImageDir + dddPaintingMovedBackPath);
+            fileImageGui.DDDPaintingNotMovedBackImage = Image.FromFile(fileImageDir + dddPaintingNotMovedBackPath);
+            fileImageGui.MoatDrainedImage = Image.FromFile(fileImageDir + moatDrainedPath);
+            fileImageGui.MoatNotDrainedImage = Image.FromFile(fileImageDir + moatNotDrainedPath);
+            fileImageGui.KeyDoorClosedImage = Image.FromFile(fileImageDir + keyDoorClosedPath);
+            fileImageGui.KeyDoorClosedKeyImage = Image.FromFile(fileImageDir + keyDoorClosedKeyPath);
+            fileImageGui.KeyDoorOpenImage = Image.FromFile(fileImageDir + keyDoorOpenPath);
+            fileImageGui.KeyDoorOpenKeyImage = Image.FromFile(fileImageDir + keyDoorOpenKeyPath);
+            fileImageGui.HatOnMarioImage = Image.FromFile(fileImageDir + hatOnMarioPath);
+            fileImageGui.HatOnMarioGreyImage = Image.FromFile(fileImageDir + hatOnMarioGreyPath);
+            fileImageGui.HatOnKleptoImage = Image.FromFile(fileImageDir + hatOnKleptoPath);
+            fileImageGui.HatOnKleptoGreyImage = Image.FromFile(fileImageDir + hatOnKleptoGreyPath);
+            fileImageGui.HatOnSnowmanImage = Image.FromFile(fileImageDir + hatOnSnowmanPath);
+            fileImageGui.HatOnSnowmanGreyImage = Image.FromFile(fileImageDir + hatOnSnowmanGreyPath);
+            fileImageGui.HatOnUkikiImage = Image.FromFile(fileImageDir + hatOnUkikiPath);
+            fileImageGui.HatOnUkikiGreyImage = Image.FromFile(fileImageDir + hatOnUkikiGreyPath);
+            fileImageGui.HatOnGroundInSSLImage = Image.FromFile(fileImageDir + hatOnGroundInSSLPath);
+            fileImageGui.HatOnGroundInSSLGreyImage = Image.FromFile(fileImageDir + hatOnGroundInSSLGreyPath);
+            fileImageGui.HatOnGroundInSLImage = Image.FromFile(fileImageDir + hatOnGroundInSLPath);
+            fileImageGui.HatOnGroundInSLGreyImage = Image.FromFile(fileImageDir + hatOnGroundInSLGreyPath);
+            fileImageGui.HatOnGroundInTTMImage = Image.FromFile(fileImageDir + hatOnGroundInTTMPath);
+            fileImageGui.HatOnGroundInTTMGreyImage = Image.FromFile(fileImageDir + hatOnGroundInTTMGrey);
         }
 
         public static MapAssociations OpenMapAssoc(string path)

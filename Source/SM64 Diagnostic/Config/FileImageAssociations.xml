@@ -52,31 +52,24 @@
       <FileImage path="Cap Switch Blue Unpressed.png"/>
     </CapSwitchBlueUnpressed>
 
-    <DDDPaintingMovedBack>
-      <FileImage path="DDD Painting Moved Back.png"/>
-    </DDDPaintingMovedBack>
-    <DDDPaintingNotMovedBack>
-      <FileImage path="DDD Painting Not Moved Back.png"/>
-    </DDDPaintingNotMovedBack>
     <FileStarted>
       <FileImage path="File Started.png"/>
     </FileStarted>
     <FileNotStarted>
       <FileImage path="File Not Started.png"/>
     </FileNotStarted>
+    <DDDPaintingMovedBack>
+      <FileImage path="DDD Painting Moved Back.png"/>
+    </DDDPaintingMovedBack>
+    <DDDPaintingNotMovedBack>
+      <FileImage path="DDD Painting Not Moved Back.png"/>
+    </DDDPaintingNotMovedBack>
     <MoatDrained>
       <FileImage path="Moat Drained.png"/>
     </MoatDrained>
     <MoatNotDrained>
       <FileImage path="Moat Not Drained.png"/>
     </MoatNotDrained>
-
-    <StarDoorClosed>
-      <FileImage path="Star Door Closed.png"/>
-    </StarDoorClosed>
-    <StarDoorOpen>
-      <FileImage path="Star Door Open.png"/>
-    </StarDoorOpen>
 
     <KeyDoorClosed>
       <FileImage path="Key Door Closed.png"/>
