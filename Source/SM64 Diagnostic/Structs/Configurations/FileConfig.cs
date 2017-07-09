@@ -59,7 +59,7 @@ namespace SM64_Diagnostic.Structs.Configurations
 
         public uint FileStartedAddress;
         public byte FileStartedMask;
-        public uint CapSwitchPressed;
+        public uint CapSwitchPressedAddress;
         public byte RedCapSwitchMask;
         public byte GreenCapSwitchMask;
         public byte BlueCapSwitchMask;

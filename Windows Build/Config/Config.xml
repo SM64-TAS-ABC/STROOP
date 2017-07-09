@@ -214,13 +214,13 @@
     <WMotRCannonAddress>0x23</WMotRCannonAddress>
     <CannonMask>0x80</CannonMask>
 
-    <WFDoorAddress>0x09</WFDoorAddress>
-    <JRBDoorAddress>0x09</JRBDoorAddress>
-    <CCMDoorAddress>0x09</CCMDoorAddress>
-    <PSSDoorAddress>0x09</PSSDoorAddress>
-    <BitDWDoorAddress>0x09</BitDWDoorAddress>
-    <BitFSDoorAddress>0x09</BitFSDoorAddress>
-    <BitSDoorAddress>0x0A</BitSDoorAddress>
+    <WFDoorAddress>0x0A</WFDoorAddress>
+    <JRBDoorAddress>0x0A</JRBDoorAddress>
+    <CCMDoorAddress>0x0A</CCMDoorAddress>
+    <PSSDoorAddress>0x0A</PSSDoorAddress>
+    <BitDWDoorAddress>0x0A</BitDWDoorAddress>
+    <BitFSDoorAddress>0x0A</BitFSDoorAddress>
+    <BitSDoorAddress>0x09</BitSDoorAddress>
 
     <WFDoorMask>0x08</WFDoorMask>
     <JRBDoorMask>0x20</JRBDoorMask>
@@ -234,7 +234,7 @@
 
     <FileStartedAddress>0x0B</FileStartedAddress>
     <FileStartedMask>0x01</FileStartedMask>
-    <CapSwitchPressed>0x0B</CapSwitchPressed>
+    <CapSwitchPressedAddress>0x0B</CapSwitchPressedAddress>
     <RedCapSwitchMask>0x02</RedCapSwitchMask>
     <GreenCapSwitchMask>0x04</GreenCapSwitchMask>
     <BlueCapSwitchMask>0x08</BlueCapSwitchMask>

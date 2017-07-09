@@ -38,6 +38,8 @@ namespace SM64_Diagnostic.Managers
         List<FileTextbox> _fileTextboxList;
 
         int numRows = 26;
+
+        // Keep track of each row's address and masks, so the label can toggle them all.
         uint[] _courseAddressOffsets;
         byte[] _courseMasks;
 
@@ -112,7 +114,7 @@ namespace SM64_Diagnostic.Managers
                 if (fileCannonPictureBox == null) continue;
 
                 uint addressOffset = GetCannonAddressOffset(row, col);
-                byte mask = 0x80; //TODO
+                byte mask = Config.File.CannonMask;
                 fileCannonPictureBox.Initialize(_stream, addressOffset, mask, _gui.CannonImage, _gui.CannonLidImage);
                 _filePictureBoxList.Add(fileCannonPictureBox);
             }
@@ -136,7 +138,7 @@ namespace SM64_Diagnostic.Managers
                 int col = 9;
                 string controlName = String.Format("textBoxTableRow{0}Col{1}", row + 1, col + 1);
                 FileCoinScoreTextbox fileCoinScoreTextBox = fileTable.Controls[controlName] as FileCoinScoreTextbox;
-                fileCoinScoreTextBox.Initialize(_stream, 0x25 + (uint)row); //TODO
+                fileCoinScoreTextBox.Initialize(_stream, Config.File.CoinScoreAddressStart + (uint)row);
                 _fileTextboxList.Add(fileCoinScoreTextBox);
             }
 
@@ -172,48 +174,48 @@ namespace SM64_Diagnostic.Managers
 
 
             FileHatPositionTextbox textboxHatLocationPositionX = hatLocationGroupbox.Controls["textboxHatLocationPositionX"] as FileHatPositionTextbox;
-            textboxHatLocationPositionX.Initialize(_stream, 0x02); //TODO
+            textboxHatLocationPositionX.Initialize(_stream, Config.File.HatPositionXAddress);
             _fileTextboxList.Add(textboxHatLocationPositionX);
 
             FileHatPositionTextbox textboxHatLocationPositionY = hatLocationGroupbox.Controls["textboxHatLocationPositionY"] as FileHatPositionTextbox;
-            textboxHatLocationPositionY.Initialize(_stream, 0x04); //TODO
+            textboxHatLocationPositionY.Initialize(_stream, Config.File.HatPositionYAddress);
             _fileTextboxList.Add(textboxHatLocationPositionY);
 
             FileHatPositionTextbox textboxHatLocationPositionZ = hatLocationGroupbox.Controls["textboxHatLocationPositionZ"] as FileHatPositionTextbox;
-            textboxHatLocationPositionZ.Initialize(_stream, 0x06); //TODO
+            textboxHatLocationPositionZ.Initialize(_stream, Config.File.HatPositionZAddress);
             _fileTextboxList.Add(textboxHatLocationPositionZ);
 
 
             FileBinaryPictureBox filePictureBoxFileStarted = splitContainerFile.Panel1.Controls["filePictureBoxFileStarted"] as FileBinaryPictureBox;
-            filePictureBoxFileStarted.Initialize(_stream, 0x0B, 0x01, _gui.FileStartedImage, _gui.FileNotStartedImage);
+            filePictureBoxFileStarted.Initialize(_stream, Config.File.FileStartedAddress, Config.File.FileStartedMask, _gui.FileStartedImage, _gui.FileNotStartedImage);
             _filePictureBoxList.Add(filePictureBoxFileStarted);
 
             FileBinaryPictureBox filePictureBoxRedCapSwitchPressed = splitContainerFile.Panel1.Controls["filePictureBoxRedCapSwitchPressed"] as FileBinaryPictureBox;
-            filePictureBoxRedCapSwitchPressed.Initialize(_stream, 0x0B, 0x02, _gui.CapSwitchRedPressedImage, _gui.CapSwitchRedUnpressedImage);
+            filePictureBoxRedCapSwitchPressed.Initialize(_stream, Config.File.CapSwitchPressedAddress, Config.File.RedCapSwitchMask, _gui.CapSwitchRedPressedImage, _gui.CapSwitchRedUnpressedImage);
             _filePictureBoxList.Add(filePictureBoxRedCapSwitchPressed);
 
             FileBinaryPictureBox filePictureBoxGreenCapSwitchPressed = splitContainerFile.Panel1.Controls["filePictureBoxGreenCapSwitchPressed"] as FileBinaryPictureBox;
-            filePictureBoxGreenCapSwitchPressed.Initialize(_stream, 0x0B, 0x04, _gui.CapSwitchGreenPressedImage, _gui.CapSwitchGreenUnpressedImage);
+            filePictureBoxGreenCapSwitchPressed.Initialize(_stream, Config.File.CapSwitchPressedAddress, Config.File.GreenCapSwitchMask, _gui.CapSwitchGreenPressedImage, _gui.CapSwitchGreenUnpressedImage);
             _filePictureBoxList.Add(filePictureBoxGreenCapSwitchPressed);
 
             FileBinaryPictureBox filePictureBoxBlueCapSwitchPressed = splitContainerFile.Panel1.Controls["filePictureBoxBlueCapSwitchPressed"] as FileBinaryPictureBox;
-            filePictureBoxBlueCapSwitchPressed.Initialize(_stream, 0x0B, 0x08, _gui.CapSwitchBluePressedImage, _gui.CapSwitchBlueUnpressedImage);
+            filePictureBoxBlueCapSwitchPressed.Initialize(_stream, Config.File.CapSwitchPressedAddress, Config.File.BlueCapSwitchMask, _gui.CapSwitchBluePressedImage, _gui.CapSwitchBlueUnpressedImage);
             _filePictureBoxList.Add(filePictureBoxBlueCapSwitchPressed);
 
             FileKeyDoorPictureBox filePictureBoxKeyDoor1Opened = splitContainerFile.Panel1.Controls["filePictureBoxKeyDoor1Opened"] as FileKeyDoorPictureBox;
-            filePictureBoxKeyDoor1Opened.Initialize(_stream, 0x0B, 0x10, 0x40, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
+            filePictureBoxKeyDoor1Opened.Initialize(_stream, Config.File.KeyDoorAddress, Config.File.KeyDoor1KeyMask, Config.File.KeyDoor1OpenedMask, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
             _filePictureBoxList.Add(filePictureBoxKeyDoor1Opened);
 
             FileKeyDoorPictureBox filePictureBoxKeyDoor2Opened = splitContainerFile.Panel1.Controls["filePictureBoxKeyDoor2Opened"] as FileKeyDoorPictureBox;
-            filePictureBoxKeyDoor2Opened.Initialize(_stream, 0x0B, 0x20, 0x80, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
+            filePictureBoxKeyDoor2Opened.Initialize(_stream, Config.File.KeyDoorAddress, Config.File.KeyDoor2KeyMask, Config.File.KeyDoor2OpenedMask, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
             _filePictureBoxList.Add(filePictureBoxKeyDoor2Opened);
 
             FileBinaryPictureBox filePictureBoxMoatDrained = splitContainerFile.Panel1.Controls["filePictureBoxMoatDrained"] as FileBinaryPictureBox;
-            filePictureBoxMoatDrained.Initialize(_stream, 0x0A, 0x02, _gui.MoatDrainedImage, _gui.MoatNotDrainedImage);
+            filePictureBoxMoatDrained.Initialize(_stream, Config.File.MoatDrainedAddress, Config.File.MoatDrainedMask, _gui.MoatDrainedImage, _gui.MoatNotDrainedImage);
             _filePictureBoxList.Add(filePictureBoxMoatDrained);
 
             FileBinaryPictureBox filePictureBoxDDDMovedBack = splitContainerFile.Panel1.Controls["filePictureBoxDDDMovedBack"] as FileBinaryPictureBox;
-            filePictureBoxDDDMovedBack.Initialize(_stream, 0x0A, 0x01, _gui.DDDPaintingMovedBackImage, _gui.DDDPaintingNotMovedBackImage);
+            filePictureBoxDDDMovedBack.Initialize(_stream, Config.File.DDDMovedBackAddress, Config.File.DDDMovedBackMask, _gui.DDDPaintingMovedBackImage, _gui.DDDPaintingNotMovedBackImage);
             _filePictureBoxList.Add(filePictureBoxDDDMovedBack);
 
             _saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
@@ -246,7 +248,7 @@ namespace SM64_Diagnostic.Managers
             // go through the 25 contiguous star bytes
             for (int i = 0; i < 25; i++)
             {
-                starByte = _stream.GetByte(CurrentFileAddress + 0x0C + (uint)i);
+                starByte = _stream.GetByte(CurrentFileAddress + Config.File.CourseStarsAddressStart + (uint)i);
                 for (int b = 0; b < 7; b++)
                 {
                     starCount += (byte)((starByte >> b) & 1);
@@ -254,7 +256,7 @@ namespace SM64_Diagnostic.Managers
             }
 
             // go through the 1 non-contiguous star byte (for toads and MIPS)
-            starByte = _stream.GetByte(CurrentFileAddress + 0x08);
+            starByte = _stream.GetByte(CurrentFileAddress + Config.File.ToadMIPSStarsAddress);
             for (int b = 0; b < 7; b++)
             {
                 starCount += (byte)((starByte >> b) & 1);
@@ -284,10 +286,25 @@ namespace SM64_Diagnostic.Managers
 
         private uint GetDoorAddressOffset(int row, int col)
         {
-            if (row == 23)
-                return 0x09;
-            else
-                return 0x0A;
+            switch (row)
+            {
+                case 1:
+                    return Config.File.WFDoorAddress;
+                case 2:
+                    return Config.File.JRBDoorAddress;
+                case 3:
+                    return Config.File.CCMDoorAddress;
+                case 18:
+                    return Config.File.PSSDoorAddress;
+                case 21:
+                    return Config.File.BitDWDoorAddress;
+                case 22:
+                    return Config.File.BitFSDoorAddress;
+                case 23:
+                    return Config.File.BitSDoorAddress;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private byte GetDoorMask(int row, int col)
@@ -295,19 +312,19 @@ namespace SM64_Diagnostic.Managers
             switch (row)
             {
                 case 1:
-                    return 0x08; // WF 1 star door
+                    return Config.File.WFDoorMask;
                 case 2:
-                    return 0x20; // JRB 3 star door
+                    return Config.File.JRBDoorMask;
                 case 3:
-                    return 0x10; // CCM 3 star door
+                    return Config.File.CCMDoorMask;
                 case 18:
-                    return 0x04; // PSS 1 star door
+                    return Config.File.PSSDoorMask;
                 case 21:
-                    return 0x40; // BitDW star door
+                    return Config.File.BitDWDoorMask;
                 case 22:
-                    return 0x80; // BitFS star door
+                    return Config.File.BitFSDoorMask;
                 case 23:
-                    return 0x10; // BitS star door
+                    return Config.File.BitSDoorMask;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -316,9 +333,9 @@ namespace SM64_Diagnostic.Managers
         private uint GetCannonAddressOffset(int row, int col)
         {
             if (row == 20)
-                return 0x23; // WMotR
+                return Config.File.WMotRCannonAddress;
             else
-                return 0x0D + (uint)row; // main courses
+                return Config.File.MainCourseCannonsAddressStart + (uint)row;
         }
 
         private uint GetStarAddressOffset(int row, int col)
@@ -326,28 +343,28 @@ namespace SM64_Diagnostic.Managers
             switch (row)
             {
                 default:
-                    return 0x0C + (uint)row; // main courses
+                    return Config.File.CourseStarsAddressStart + (uint)row;
                 case 15:
-                    return 0x20; // TotWC
+                    return Config.File.TotWCStarAddress;
                 case 16:
-                    return 0x1F; // CotMC
+                    return Config.File.CotMCStarAddress;
                 case 17:
-                    return 0x21; // VCutM
+                    return Config.File.VCutMStarAddress;
                 case 18:
-                    return 0x1E; // PSS
+                    return Config.File.PSSStarsAddress;
                 case 19:
-                    return 0x23; // SA
+                    return Config.File.SAStarAddress;
                 case 20:
-                    return 0x22; // WMotR
+                    return Config.File.WMotRStarAddress;
                 case 21:
-                    return 0x1B; // BitDW
+                    return Config.File.BitDWStarAddress;
                 case 22:
-                    return 0x1C; // BitFS
+                    return Config.File.BitFSStarAddress;
                 case 23:
-                    return 0x1D; // BitS
+                    return Config.File.BitSStarAddress;
                 case 24:
                 case 25:
-                    return 0x08; // Toad, MIPS
+                    return Config.File.ToadMIPSStarsAddress;
             }
         }
 

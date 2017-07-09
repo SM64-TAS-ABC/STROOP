@@ -809,8 +809,8 @@ namespace SM64_Diagnostic.Utilities
                                     Config.File.FileStartedMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "CapSwitchPressed":
-                                    Config.File.CapSwitchPressed = ParsingUtilities.ParseHex(subElement.Value);
+                                case "CapSwitchPressedAddress":
+                                    Config.File.CapSwitchPressedAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "RedCapSwitchMask":
