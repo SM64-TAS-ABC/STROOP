@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CourseData>
+  <Course index="1" fullName="Bob-omb Battlefield" shortName="BoB" maxCoinsWithoutGlitches="146" maxCoinsWithGlitches="255"/>
+  <Course index="2" fullName="Whomp's Fortress" shortName="WF" maxCoinsWithoutGlitches="141" maxCoinsWithGlitches="255"/>
+  <Course index="3" fullName="Jolly Roger Bay" shortName="JRB" maxCoinsWithoutGlitches="104" maxCoinsWithGlitches="104"/>
+  <Course index="4" fullName="Cool, Cool Mountain" shortName="CCM" maxCoinsWithoutGlitches="154" maxCoinsWithGlitches="154"/>
+  <Course index="5" fullName="Big Boo's Haunt" shortName="BBH" maxCoinsWithoutGlitches="151" maxCoinsWithGlitches="151"/>
+  <Course index="6" fullName="Hazy Maze Cave" shortName="HMC" maxCoinsWithoutGlitches="139" maxCoinsWithGlitches="139"/>
+  <Course index="7" fullName="Lethal Lava Land" shortName="LLL" maxCoinsWithoutGlitches="133" maxCoinsWithGlitches="133"/>
+  <Course index="8" fullName="Shifting Sand Land" shortName="SSL" maxCoinsWithoutGlitches="136" maxCoinsWithGlitches="255"/>
+  <Course index="9" fullName="Dire, Dire Docks" shortName="DDD" maxCoinsWithoutGlitches="106" maxCoinsWithGlitches="255"/>
+  <Course index="10" fullName="Snowman's Land" shortName="SL" maxCoinsWithoutGlitches="127" maxCoinsWithGlitches="255"/>
+  <Course index="11" fullName="Wet-Dry World" shortName="WDW" maxCoinsWithoutGlitches="152" maxCoinsWithGlitches="255"/>
+  <Course index="12" fullName="Tall, Tall Mountain" shortName="TTM" maxCoinsWithoutGlitches="137" maxCoinsWithGlitches="255"/>
+  <Course index="13" fullName="Tiny-Huge Island" shortName="THI" maxCoinsWithoutGlitches="192" maxCoinsWithGlitches="255"/>
+  <Course index="14" fullName="Tick Tock Clock" shortName="TTC" maxCoinsWithoutGlitches="128" maxCoinsWithGlitches="255"/>
+  <Course index="15" fullName="Rainbow Ride" shortName="RR" maxCoinsWithoutGlitches="146" maxCoinsWithGlitches="255"/>
+  <Course index="16" fullName="Tower of the Wing Cap" shortName="TotWC" maxCoinsWithoutGlitches="63" maxCoinsWithGlitches="63"/>
+  <Course index="17" fullName="Cavern of the Metal Cap" shortName="CotMC" maxCoinsWithoutGlitches="27" maxCoinsWithGlitches="27"/>
+  <Course index="18" fullName="Vanish Cap under the Moat" shortName="VCutM" maxCoinsWithoutGlitches="47" maxCoinsWithGlitches="47"/>
+  <Course index="19" fullName="The Princess's Secret Slide" shortName="PSS" maxCoinsWithoutGlitches="80" maxCoinsWithGlitches="80"/>
+  <Course index="20" fullName="The Secret Aquarium" shortName="SA" maxCoinsWithoutGlitches="56" maxCoinsWithGlitches="56"/>
+  <Course index="21" fullName="Wing Mario over the Rainbow" shortName="WMotR" maxCoinsWithoutGlitches="56" maxCoinsWithGlitches="56"/>
+  <Course index="22" fullName="Bowser in the Dark World" shortName="BitDW" maxCoinsWithoutGlitches="80" maxCoinsWithGlitches="255"/>
+  <Course index="23" fullName="Bowser in the Fire Sea" shortName="BitFS" maxCoinsWithoutGlitches="80" maxCoinsWithGlitches="250"/>
+  <Course index="24" fullName="Bowser in the Sky" shortName="BitS" maxCoinsWithoutGlitches="76" maxCoinsWithGlitches="255"/>
+</CourseData>

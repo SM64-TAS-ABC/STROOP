@@ -182,6 +182,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
+    <Compile Include="Structs\CourseDataTable.cs" />
     <Compile Include="Structs\Configurations\FileConfig.cs" />
     <Compile Include="Structs\Configurations\GotoRetrieveConfig.cs" />
     <Compile Include="Structs\Configurations\CameraHackConfig.cs" />
@@ -387,6 +388,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Schemas\MissionTableSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\CourseDataTableSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

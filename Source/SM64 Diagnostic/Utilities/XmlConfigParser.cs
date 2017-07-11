@@ -2075,6 +2075,40 @@ namespace SM64_Diagnostic.Utilities
             return animationTable;
         }
 
+        public static CourseDataTable OpenCourseDataTable(string path)
+        {
+            CourseDataTable courseDataTable = new CourseDataTable();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/CourseDataTableSchema.xsd", "CourseDataTableSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                int index = (int)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("index")).Value);
+                string fullName = element.Attribute(XName.Get("fullName")).Value;
+                string shortName = element.Attribute(XName.Get("shortName")).Value;
+                byte maxCoinsWithoutGlitches = (byte)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("maxCoinsWithoutGlitches")).Value);
+                byte maxCoinsWithGlitches = (byte)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("maxCoinsWithGlitches")).Value);
+                courseDataTable.Add(new CourseDataTable.CourseDataReference()
+                {
+                    Index = index,
+                    FullName = fullName,
+                    ShortName = shortName,
+                    MaxCoinsWithoutGlitches = maxCoinsWithoutGlitches,
+                    MaxCoinsWithGlitches = maxCoinsWithGlitches
+                });
+            }
+
+            return courseDataTable;
+        }
+
         public static PendulumSwingTable OpenPendulumSwingTable(string path)
         {
             PendulumSwingTable pendulumSwingTable = new PendulumSwingTable();
