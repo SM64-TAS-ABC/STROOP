@@ -523,7 +523,8 @@ namespace SM64_Diagnostic.Managers
             for (int i = 0; i < 15; i++)
             {
                 byte coinScore = currentEverythingCoinScore == EverythingCoinScore.Coins100 ? (byte)100 :
-                    currentEverythingCoinScore == EverythingCoinScore.MaxWithoutGlitches ? (byte)200 : (byte)250;
+                    currentEverythingCoinScore == EverythingCoinScore.MaxWithoutGlitches ? (byte)Config.CourseData.GetMaxCoinsWithoutGlitches(i+1) :
+                    (byte)Config.CourseData.GetMaxCoinsWithGlitches(i+1);
                 bufferedBytes[Config.File.CoinScoreOffsetStart + (uint)i] = everythingOn ? coinScore : (byte)0;
             }
 
