@@ -47,6 +47,13 @@ namespace SM64_Diagnostic
             _stream.SetValue(value, FileManager.Instance.CurrentFileAddress + _addressOffset);
         }
 
+        protected override void ResetValue()
+        {
+            byte value = GetCoinScoreFromMemory();
+            this._currentValue = value;
+            this.Text = value.ToString();
+        }
+
         public override void UpdateText()
         {
             byte value = GetCoinScoreFromMemory();

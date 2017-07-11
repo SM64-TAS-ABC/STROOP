@@ -36,11 +36,18 @@ namespace SM64_Diagnostic
                     SubmitValue();
                     this.Parent.Focus();
                 }
+                else if (e.KeyData == Keys.Escape)
+                {
+                    ResetText();
+                    this.Parent.Focus();
+                }
             };
             this.LostFocus += (sender, e) => SubmitValue();
         }
 
         protected abstract void SubmitValue();
+
+        protected abstract void ResetValue();
 
         public abstract void UpdateText();
     }
