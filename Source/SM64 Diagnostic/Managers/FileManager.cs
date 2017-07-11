@@ -19,12 +19,15 @@ namespace SM64_Diagnostic.Managers
 
         public enum FileMode { FileA, FileB, FileC, FileD, FileASaved, FileBSaved, FileCSaved, FileDSaved };
         public enum HatLocation { Mario, SSLKlepto, SSLGround, SLSnowman, SLGround, TTMUkiki, TTMGround };
+        public enum EverythingCoinScore { Coins100, MaxWithoutGlitches, MaxWithGlitches };
 
         TabPage _tabControl;
         FileImageGui _gui;
 
         public FileMode CurrentFileMode { get; private set; }
         public uint CurrentFileAddress { get; private set; }
+
+        private EverythingCoinScore currentEverythingCoinScore;
 
         Button _saveFileButton;
         Button _eraseFileButton;
@@ -65,6 +68,7 @@ namespace SM64_Diagnostic.Managers
 
             CurrentFileMode = FileMode.FileA;
             CurrentFileAddress = Config.File.FileAAddress;
+            currentEverythingCoinScore = EverythingCoinScore.Coins100;
 
             SplitContainer splitContainerFile = tabControl.Controls["splitContainerFile"] as SplitContainer;
 
@@ -259,6 +263,15 @@ namespace SM64_Diagnostic.Managers
 
             _numStarsButton = splitContainerFile.Panel1.Controls["buttonFileNumStars"] as Button;
             _numStarsButton.Click += NumStarsButton_Click;
+
+            // everything coin score radio buttons
+            GroupBox everythingCoinScoreGroupbox = splitContainerFile.Panel1.Controls["groupBoxEverythingCoinScores"] as GroupBox;
+            (everythingCoinScoreGroupbox.Controls["radioButtonEverythingCoinScore100Coins"] as RadioButton).Click
+                += (sender, e) => { currentEverythingCoinScore = EverythingCoinScore.Coins100; };
+            (everythingCoinScoreGroupbox.Controls["radioButtonEverythingCoinScoreMaxWithoutGlitches"] as RadioButton).Click
+                += (sender, e) => { currentEverythingCoinScore = EverythingCoinScore.MaxWithoutGlitches; };
+            (everythingCoinScoreGroupbox.Controls["radioButtonEverythingCoinScoreMaxWithGlitches"] as RadioButton).Click
+                += (sender, e) => { currentEverythingCoinScore = EverythingCoinScore.MaxWithGlitches; };
         }
 
         private short CalculateNumStars()
@@ -509,7 +522,9 @@ namespace SM64_Diagnostic.Managers
 
             for (int i = 0; i < 15; i++)
             {
-                bufferedBytes[Config.File.CoinScoreOffsetStart + (uint)i] = everythingOn ? (byte)100 : (byte)0;
+                byte coinScore = currentEverythingCoinScore == EverythingCoinScore.Coins100 ? (byte)100 :
+                    currentEverythingCoinScore == EverythingCoinScore.MaxWithoutGlitches ? (byte)200 : (byte)250;
+                bufferedBytes[Config.File.CoinScoreOffsetStart + (uint)i] = everythingOn ? coinScore : (byte)0;
             }
 
             setValues(Config.File.FileStartedOffset, Config.File.FileStartedMask, everythingOn ? true : (bool?)null);
