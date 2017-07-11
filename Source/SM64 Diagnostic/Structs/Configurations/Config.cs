@@ -26,6 +26,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static AnimationTable MarioAnimations;
         public static PendulumSwingTable PendulumSwings;
         public static MissionTable Missions;
+        public static CourseDataTable CourseData;
         public static GotoRetrieveConfig GotoRetrieve;
         public static uint LevelAddress;
         public static uint AreaAddress;
