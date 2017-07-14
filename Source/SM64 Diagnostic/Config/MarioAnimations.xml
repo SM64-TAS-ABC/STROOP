@@ -19,7 +19,7 @@
   <Animation value="15" name="skidding"/>
   <Animation value="16" name="stop skidding"/>
   <Animation value="17" name="fast long jump landing"/>
-  <Animation value="18" name=" slow long jump landing"/>
+  <Animation value="18" name="slow long jump landing"/>
   <Animation value="19" name="fast long jump"/>
   <Animation value="20" name="slow long jump"/>
   <Animation value="21" name="cannon shot / vertical wind"/>
