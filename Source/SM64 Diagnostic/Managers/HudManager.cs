@@ -21,24 +21,10 @@ namespace SM64_Diagnostic.Managers
 
             SplitContainer splitContainerHud = tabControl.Controls["splitContainerHud"] as SplitContainer;
 
-            (splitContainerHud.Panel1.Controls["buttonFillHp"] as Button).Click += buttonFill_Click;
-            (splitContainerHud.Panel1.Controls["buttonDie"] as Button).Click += buttonDie_Click;
-            (splitContainerHud.Panel1.Controls["buttonStandardHud"] as Button).Click += buttonStandardHud_Click;
-        }
-
-        private void buttonStandardHud_Click(object sender, EventArgs e)
-        {
-            ButtonUtilities.StandardHud(_stream);
-        }
-
-        private void buttonDie_Click(object sender, EventArgs e)
-        {
-            ButtonUtilities.Die(_stream);
-        }
-
-        private void buttonFill_Click(object sender, EventArgs e)
-        {
-            ButtonUtilities.RefillHp(_stream);
+            (splitContainerHud.Panel1.Controls["buttonFillHp"] as Button).Click += (sender, e) => ButtonUtilities.RefillHp(_stream);
+            (splitContainerHud.Panel1.Controls["buttonDie"] as Button).Click += (sender, e) => ButtonUtilities.Die(_stream);
+            (splitContainerHud.Panel1.Controls["buttonStandardHud"] as Button).Click += (sender, e) => ButtonUtilities.StandardHud(_stream);
+            (splitContainerHud.Panel1.Controls["button99Coins"] as Button).Click += (sender, e) => ButtonUtilities.Coins99(_stream);
         }
     }
 }

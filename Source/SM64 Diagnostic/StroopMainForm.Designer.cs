@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -254,6 +254,10 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.splitContainerFile = new System.Windows.Forms.SplitContainer();
+            this.groupBoxEverythingCoinScores = new System.Windows.Forms.GroupBox();
+            this.radioButtonEverythingCoinScoreMaxWithoutGlitches = new System.Windows.Forms.RadioButton();
+            this.radioButtonEverythingCoinScore100Coins = new System.Windows.Forms.RadioButton();
+            this.radioButtonEverythingCoinScoreMaxWithGlitches = new System.Windows.Forms.RadioButton();
             this.filePictureBoxDDDMovedBack = new SM64_Diagnostic.FileBinaryPictureBox();
             this.filePictureBoxMoatDrained = new SM64_Diagnostic.FileBinaryPictureBox();
             this.filePictureBoxKeyDoor2Opened = new SM64_Diagnostic.FileKeyDoorPictureBox();
@@ -674,10 +678,7 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBoxEverythingCoinScores = new System.Windows.Forms.GroupBox();
-            this.radioButtonEverythingCoinScoreMaxWithoutGlitches = new System.Windows.Forms.RadioButton();
-            this.radioButtonEverythingCoinScore100Coins = new System.Windows.Forms.RadioButton();
-            this.radioButtonEverythingCoinScoreMaxWithGlitches = new System.Windows.Forms.RadioButton();
+            this.button99Coins = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -742,6 +743,7 @@ namespace SM64_Diagnostic
             this.splitContainerFile.Panel1.SuspendLayout();
             this.splitContainerFile.Panel2.SuspendLayout();
             this.splitContainerFile.SuspendLayout();
+            this.groupBoxEverythingCoinScores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxDDDMovedBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxMoatDrained)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxKeyDoor2Opened)).BeginInit();
@@ -938,7 +940,6 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.groupBoxEverythingCoinScores.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -970,7 +971,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 243);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 244);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1058,7 +1059,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 156);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 157);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2011,7 +2012,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(690, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(693, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2529,7 +2530,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(699, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(702, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2578,6 +2579,7 @@ namespace SM64_Diagnostic
             // splitContainerHud.Panel1
             // 
             this.splitContainerHud.Panel1.AutoScroll = true;
+            this.splitContainerHud.Panel1.Controls.Add(this.button99Coins);
             this.splitContainerHud.Panel1.Controls.Add(this.buttonStandardHud);
             this.splitContainerHud.Panel1.Controls.Add(this.panelHudBorder);
             this.splitContainerHud.Panel1.Controls.Add(this.buttonDie);
@@ -2654,7 +2656,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(791, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(794, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3035,7 +3037,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(701, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(704, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3429,7 +3431,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(698, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(701, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3514,7 +3516,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(479, 460);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(482, 460);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -3570,6 +3572,50 @@ namespace SM64_Diagnostic
             this.splitContainerFile.SplitterDistance = 756;
             this.splitContainerFile.SplitterWidth = 1;
             this.splitContainerFile.TabIndex = 19;
+            // 
+            // groupBoxEverythingCoinScores
+            // 
+            this.groupBoxEverythingCoinScores.Controls.Add(this.radioButtonEverythingCoinScoreMaxWithoutGlitches);
+            this.groupBoxEverythingCoinScores.Controls.Add(this.radioButtonEverythingCoinScore100Coins);
+            this.groupBoxEverythingCoinScores.Controls.Add(this.radioButtonEverythingCoinScoreMaxWithGlitches);
+            this.groupBoxEverythingCoinScores.Location = new System.Drawing.Point(24, 385);
+            this.groupBoxEverythingCoinScores.Name = "groupBoxEverythingCoinScores";
+            this.groupBoxEverythingCoinScores.Size = new System.Drawing.Size(303, 47);
+            this.groupBoxEverythingCoinScores.TabIndex = 38;
+            this.groupBoxEverythingCoinScores.TabStop = false;
+            this.groupBoxEverythingCoinScores.Text = "Everything Coin Scores";
+            // 
+            // radioButtonEverythingCoinScoreMaxWithoutGlitches
+            // 
+            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.AutoSize = true;
+            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.Location = new System.Drawing.Point(84, 19);
+            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.Name = "radioButtonEverythingCoinScoreMaxWithoutGlitches";
+            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.Size = new System.Drawing.Size(108, 17);
+            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.TabIndex = 12;
+            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.Text = "Max w/o Glitches";
+            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonEverythingCoinScore100Coins
+            // 
+            this.radioButtonEverythingCoinScore100Coins.AutoSize = true;
+            this.radioButtonEverythingCoinScore100Coins.Checked = true;
+            this.radioButtonEverythingCoinScore100Coins.Location = new System.Drawing.Point(11, 19);
+            this.radioButtonEverythingCoinScore100Coins.Name = "radioButtonEverythingCoinScore100Coins";
+            this.radioButtonEverythingCoinScore100Coins.Size = new System.Drawing.Size(72, 17);
+            this.radioButtonEverythingCoinScore100Coins.TabIndex = 11;
+            this.radioButtonEverythingCoinScore100Coins.TabStop = true;
+            this.radioButtonEverythingCoinScore100Coins.Text = "100 Coins";
+            this.radioButtonEverythingCoinScore100Coins.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonEverythingCoinScoreMaxWithGlitches
+            // 
+            this.radioButtonEverythingCoinScoreMaxWithGlitches.AutoSize = true;
+            this.radioButtonEverythingCoinScoreMaxWithGlitches.Location = new System.Drawing.Point(195, 19);
+            this.radioButtonEverythingCoinScoreMaxWithGlitches.Name = "radioButtonEverythingCoinScoreMaxWithGlitches";
+            this.radioButtonEverythingCoinScoreMaxWithGlitches.Size = new System.Drawing.Size(102, 17);
+            this.radioButtonEverythingCoinScoreMaxWithGlitches.TabIndex = 13;
+            this.radioButtonEverythingCoinScoreMaxWithGlitches.Text = "Max w/ Glitches";
+            this.radioButtonEverythingCoinScoreMaxWithGlitches.UseVisualStyleBackColor = true;
             // 
             // filePictureBoxDDDMovedBack
             // 
@@ -6697,7 +6743,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(155, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(158, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7134,7 +7180,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(689, 430);
+            this.glControlMap.Size = new System.Drawing.Size(692, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -7480,8 +7526,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -7652,7 +7698,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(750, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(753, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -7751,7 +7797,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(591, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(594, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -8460,7 +8506,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(469, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(472, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9074,49 +9120,14 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // groupBoxEverythingCoinScores
+            // button99Coins
             // 
-            this.groupBoxEverythingCoinScores.Controls.Add(this.radioButtonEverythingCoinScoreMaxWithoutGlitches);
-            this.groupBoxEverythingCoinScores.Controls.Add(this.radioButtonEverythingCoinScore100Coins);
-            this.groupBoxEverythingCoinScores.Controls.Add(this.radioButtonEverythingCoinScoreMaxWithGlitches);
-            this.groupBoxEverythingCoinScores.Location = new System.Drawing.Point(24, 385);
-            this.groupBoxEverythingCoinScores.Name = "groupBoxEverythingCoinScores";
-            this.groupBoxEverythingCoinScores.Size = new System.Drawing.Size(303, 47);
-            this.groupBoxEverythingCoinScores.TabIndex = 38;
-            this.groupBoxEverythingCoinScores.TabStop = false;
-            this.groupBoxEverythingCoinScores.Text = "Everything Coin Scores";
-            // 
-            // radioButtonEverythingCoinScoreMaxWithoutGlitches
-            // 
-            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.AutoSize = true;
-            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.Location = new System.Drawing.Point(84, 19);
-            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.Name = "radioButtonEverythingCoinScoreMaxWithoutGlitches";
-            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.Size = new System.Drawing.Size(108, 17);
-            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.TabIndex = 12;
-            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.Text = "Max w/o Glitches";
-            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonEverythingCoinScore100Coins
-            // 
-            this.radioButtonEverythingCoinScore100Coins.AutoSize = true;
-            this.radioButtonEverythingCoinScore100Coins.Checked = true;
-            this.radioButtonEverythingCoinScore100Coins.Location = new System.Drawing.Point(11, 19);
-            this.radioButtonEverythingCoinScore100Coins.Name = "radioButtonEverythingCoinScore100Coins";
-            this.radioButtonEverythingCoinScore100Coins.Size = new System.Drawing.Size(72, 17);
-            this.radioButtonEverythingCoinScore100Coins.TabIndex = 11;
-            this.radioButtonEverythingCoinScore100Coins.TabStop = true;
-            this.radioButtonEverythingCoinScore100Coins.Text = "100 Coins";
-            this.radioButtonEverythingCoinScore100Coins.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonEverythingCoinScoreMaxWithGlitches
-            // 
-            this.radioButtonEverythingCoinScoreMaxWithGlitches.AutoSize = true;
-            this.radioButtonEverythingCoinScoreMaxWithGlitches.Location = new System.Drawing.Point(195, 19);
-            this.radioButtonEverythingCoinScoreMaxWithGlitches.Name = "radioButtonEverythingCoinScoreMaxWithGlitches";
-            this.radioButtonEverythingCoinScoreMaxWithGlitches.Size = new System.Drawing.Size(102, 17);
-            this.radioButtonEverythingCoinScoreMaxWithGlitches.TabIndex = 13;
-            this.radioButtonEverythingCoinScoreMaxWithGlitches.Text = "Max w/ Glitches";
-            this.radioButtonEverythingCoinScoreMaxWithGlitches.UseVisualStyleBackColor = true;
+            this.button99Coins.Location = new System.Drawing.Point(3, 163);
+            this.button99Coins.Name = "button99Coins";
+            this.button99Coins.Size = new System.Drawing.Size(93, 24);
+            this.button99Coins.TabIndex = 6;
+            this.button99Coins.Text = "99 Coins";
+            this.button99Coins.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -9222,6 +9233,8 @@ namespace SM64_Diagnostic
             this.splitContainerFile.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).EndInit();
             this.splitContainerFile.ResumeLayout(false);
+            this.groupBoxEverythingCoinScores.ResumeLayout(false);
+            this.groupBoxEverythingCoinScores.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxDDDMovedBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxMoatDrained)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxKeyDoor2Opened)).EndInit();
@@ -9439,8 +9452,6 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.groupBoxEverythingCoinScores.ResumeLayout(false);
-            this.groupBoxEverythingCoinScores.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -10092,6 +10103,7 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonEverythingCoinScoreMaxWithoutGlitches;
         private RadioButton radioButtonEverythingCoinScore100Coins;
         private RadioButton radioButtonEverythingCoinScoreMaxWithGlitches;
+        private Button button99Coins;
     }
 }
 

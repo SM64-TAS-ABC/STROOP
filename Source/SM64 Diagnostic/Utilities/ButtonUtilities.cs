@@ -615,6 +615,18 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool Coins99(ProcessStream stream)
+        {
+            bool success = true;
+            stream.Suspend();
+
+            success &= stream.SetValue((short)99, Config.Hud.CoinCountAddress);
+            success &= stream.SetValue((short)99, Config.Hud.DisplayCoinCountAddress);
+
+            stream.Resume();
+            return success;
+        }
+
         public static bool GoToTriangle(ProcessStream stream, uint triangleAddress, int vertex, bool _useMisalignmentOffset = false)
         {
             if (triangleAddress == 0x0000)
