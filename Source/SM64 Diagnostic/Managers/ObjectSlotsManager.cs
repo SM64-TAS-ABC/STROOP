@@ -147,6 +147,7 @@ namespace SM64_Diagnostic.Managers
                             //if (SelectedSlotsAddresses.Count > 1)
                             {
                                 SelectedSlotsAddresses.Remove(selectedSlot.Address);
+                                _lastSelectedBehavior = null;
                             }
                         }
                         else
