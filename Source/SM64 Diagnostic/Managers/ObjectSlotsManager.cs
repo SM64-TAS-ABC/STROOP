@@ -56,8 +56,6 @@ namespace SM64_Diagnostic.Managers
         bool _selectedUpdatePending = false;
         Image _multiImage = null;
 
-        bool _firstSlotSelect = true;
-
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum MapToggleModeType { Single, ObjectType, ProcessGroup };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
@@ -146,7 +144,7 @@ namespace SM64_Diagnostic.Managers
                         }
                         if (SelectedSlotsAddresses.Contains(selectedSlot.Address))
                         {
-                            if (SelectedSlotsAddresses.Count > 1)
+                            //if (SelectedSlotsAddresses.Count > 1)
                             {
                                 SelectedSlotsAddresses.Remove(selectedSlot.Address);
                             }
@@ -485,7 +483,11 @@ namespace SM64_Diagnostic.Managers
             else if (SelectedSlotsAddresses.Count == 0)
             {
                 _objManager.Name = "No Object Selected";
-                _firstSlotSelect = true;
+                _objManager.BackColor = Config.ObjectGroups.VacantSlotColor;
+                _objManager.Behavior = "";
+                _objManager.SlotIndex = "";
+                _objManager.SlotPos = "";
+                _objManager.Image = null;
             }
         }
 
@@ -582,14 +584,13 @@ namespace SM64_Diagnostic.Managers
         {
             var objAssoc = ObjectAssoc.FindObjectAssociation(behaviorCriteria);
             var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : behaviorCriteria;
-            if (_lastSelectedBehavior != newBehavior || _firstSlotSelect)
+            if (_lastSelectedBehavior != newBehavior || SelectedSlotsAddresses.Count == 0)
             {
                 _objManager.Behavior = String.Format("0x{0}", ((objData.Behavior + ObjectAssoc.RamOffset) & 0x00FFFFFF).ToString("X4"));
                 _objManager.Name = ObjectAssoc.GetObjectName(behaviorCriteria);
 
                 _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorCriteria), objSlot.BackColor.Lighten(0.8));
                 _lastSelectedBehavior = newBehavior;
-                _firstSlotSelect = false;
             }
             _objManager.Image = objSlot.ObjectImage;
             _objManager.BackColor = objSlot.BackColor;

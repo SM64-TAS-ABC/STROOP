@@ -84,7 +84,7 @@ namespace SM64_Diagnostic.Managers
 
                 foreach (WatchVariableControl watchVar in _dataControls)
                 {
-                    watchVar.OtherOffsets = _currentAddresses;
+                    watchVar.OtherOffsets = _currentAddresses.Count == 0 ? new List<uint> { 0 } : _currentAddresses;
                 }
             }
         }
@@ -390,7 +390,7 @@ namespace SM64_Diagnostic.Managers
             foreach (WatchVariableControl dataControl in test)
                 dataControl.EditMode = false;
 
-            if (CurrentAddresses.Count == 1)
+            if (CurrentAddresses.Count <= 1)
             {
                 _cloneButton.Enabled = true;
             }
@@ -625,6 +625,23 @@ namespace SM64_Diagnostic.Managers
                 }
 
                 firstObject = false;
+            }
+
+            if (_currentAddresses.Count == 0)
+            {
+                foreach (IDataContainer specialVar in _specialWatchVars)
+                {
+                    if (specialVar is AngleDataContainer)
+                    {
+                        var angleContainer = specialVar as AngleDataContainer;
+                        angleContainer.ValueExists = false;
+                    }
+                    else if (specialVar is DataContainer)
+                    {
+                        var dataContainer = specialVar as DataContainer;
+                        dataContainer.Text = "";
+                    }
+                }
             }
         }
 

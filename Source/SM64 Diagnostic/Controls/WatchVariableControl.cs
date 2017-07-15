@@ -296,7 +296,7 @@ namespace SM64_Diagnostic.Controls
         private void CreateControls()
         {
             this._nameLabel = new Label();
-            this._nameLabel.Size = new Size(210, 20);
+            this._nameLabel.Size = new Size(210, 20); //TODO check this
             this._nameLabel.Text = _watchVar.Name;
             this._nameLabel.Margin = new Padding(3, 3, 3, 3);
             this._nameLabel.Click += _nameLabel_Click;
