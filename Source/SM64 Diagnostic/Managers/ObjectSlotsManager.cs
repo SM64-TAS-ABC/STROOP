@@ -103,75 +103,75 @@ namespace SM64_Diagnostic.Managers
 
             _selectedUpdatePending = true;
             var selectedSlot = sender as ObjectSlot;
+            bool rightClick = ((System.Windows.Forms.MouseEventArgs)e).Button == MouseButtons.Right;
 
-            // Parse behavior based on tab opened
-            switch (ManagerGui.TabControl.SelectedTab.Text)
+            // Parse behavior based on tab opened. Right click overrides the tab to be an object tab click.
+            if (ManagerGui.TabControl.SelectedTab.Text.Equals("Cam Hack") && !rightClick)
             {
-                default:
-                    bool isMapTab = ManagerGui.TabControl.SelectedTab.Text.Equals("Map");
-                    List<uint> selection = isMapTab ? SelectedOnMapSlotsAddresses : SelectedSlotsAddresses;
-                    var keyboardState = Keyboard.GetState();
-                    bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
-                    bool isCtrlKeyHeld = keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight);
+                uint currentCamHackSlot = _stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
+                uint newCamHackSlot = currentCamHackSlot == selectedSlot.Address ? 0 : selectedSlot.Address;
+                _stream.SetValue(newCamHackSlot, Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
+            }
+            else
+            {
+                bool isMapTabClick = ManagerGui.TabControl.SelectedTab.Text.Equals("Map") && !rightClick;
+                List<uint> selection = isMapTabClick ? SelectedOnMapSlotsAddresses : SelectedSlotsAddresses;
+                var keyboardState = Keyboard.GetState();
 
-                    if (!isMapTab)
+                bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
+                bool isCtrlKeyHeld = keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight);
+
+                if (!isMapTabClick)
+                {
+                    ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
+                }
+
+                if (isShiftKeyHeld && selection.Count > 0)
+                {
+                    uint startRangeAddress = selection[selection.Count - 1];
+                    int startRange = ObjectSlots.First(o => o.Address == startRangeAddress).Index;
+                    int endRange = selectedSlot.Index;
+
+                    int rangeSize = Math.Abs(endRange - startRange);
+                    int iteratorDirection = endRange > startRange ? 1 : -1;
+
+                    for (int i = 0; i <= rangeSize; i++)
                     {
-                        ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
+                        int index = startRange + i * iteratorDirection;
+                        uint address = ObjectSlots[index].Address;
+                        if (!selection.Contains(address))
+                            selection.Add(address);
                     }
-
-                    if (isShiftKeyHeld && selection.Count > 0)
+                }
+                else
+                {
+                    // ctrl functionality is default in map tab
+                    if (isCtrlKeyHeld == isMapTabClick)
                     {
-                        uint startRangeAddress = selection[selection.Count - 1];
-                        int startRange = ObjectSlots.First(o => o.Address == startRangeAddress).Index;
-                        int endRange = selectedSlot.Index;
-
-                        int rangeSize = Math.Abs(endRange - startRange);
-                        int iteratorDirection = endRange > startRange ? 1 : -1;
-
-                        for (int i = 0; i <= rangeSize; i++)
+                        selection.Clear();
+                    }
+                    if (selection.Contains(selectedSlot.Address))
+                    {
+                        selection.Remove(selectedSlot.Address);
+                        if (!isMapTabClick)
                         {
-                            int index = startRange + i * iteratorDirection;
-                            uint address = ObjectSlots[index].Address;
-                            if (!selection.Contains(address))
-                                selection.Add(address);
+                            _lastSelectedBehavior = null;
                         }
                     }
                     else
                     {
-                        // ctrl functionality is default in map tab
-                        if (isCtrlKeyHeld == isMapTab)
-                        {
-                            selection.Clear();
-                        }
-                        if (selection.Contains(selectedSlot.Address))
-                        {
-                            selection.Remove(selectedSlot.Address);
-                            if (!isMapTab)
-                            {
-                                _lastSelectedBehavior = null;
-                            }
-                        }
-                        else
-                        {
-                            selection.Add(selectedSlot.Address);
-                        }
+                        selection.Add(selectedSlot.Address);
                     }
+                }
 
-                    if (isMapTab)
-                    {
+                if (isMapTabClick)
+                {
                         
-                    }
-                    else
-                    {
-                        _objManager.CurrentAddresses = selection;
-                    }
-                    break;
-
-                case "Cam Hack":
-                    uint currentCamHackSlot = _stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
-                    uint newCamHackSlot = currentCamHackSlot == selectedSlot.Address ? 0 : selectedSlot.Address;
-                    _stream.SetValue(newCamHackSlot, Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
-                    break;
+                }
+                else
+                {
+                    _objManager.CurrentAddresses = selection;
+                }
             }
         }
 
