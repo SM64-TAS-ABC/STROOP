@@ -12,6 +12,7 @@
     <HeaderOffset>0x00</HeaderOffset>
     <ListNextLinkOffset>0x08</ListNextLinkOffset>
     <ListPreviousLinkOffset>0x04</ListPreviousLinkOffset>
+    <ParentOffset>0x68</ParentOffset>
     <BehaviorScriptOffset>0x020C</BehaviorScriptOffset>
     <BehaviorGfxOffset>0x14</BehaviorGfxOffset>
     <BehaviorSubtypeOffset>0x0144</BehaviorSubtypeOffset>

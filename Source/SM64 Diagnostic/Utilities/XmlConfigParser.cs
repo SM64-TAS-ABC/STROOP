@@ -99,6 +99,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "ListPreviousLinkOffset":
                                     Config.ObjectSlots.PreviousLinkOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "ParentOffset":
+                                    Config.ObjectSlots.ParentOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "BehaviorScriptOffset":
                                     Config.ObjectSlots.BehaviorScriptOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
