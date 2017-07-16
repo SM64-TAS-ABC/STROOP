@@ -77,6 +77,9 @@
     <Ceiling>
       <OverlayImage path="Ceiling.png"/>
     </Ceiling>
+    <Parent>
+      <OverlayImage path="Parent.png"/>
+    </Parent>
   </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <SpawnCode gfxId="0xD5"/>

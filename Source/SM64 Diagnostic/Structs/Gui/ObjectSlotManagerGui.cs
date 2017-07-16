@@ -24,6 +24,7 @@ namespace SM64_Diagnostic.Structs
         public Image FloorObjectOverlayImage;
         public Image WallObjectOverlayImage;
         public Image CeilingObjectOverlayImage;
+        public Image ParentObjectOverlayImage;
 
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
@@ -46,6 +47,7 @@ namespace SM64_Diagnostic.Structs
             FloorObjectOverlayImage?.Dispose();
             WallObjectOverlayImage?.Dispose();
             CeilingObjectOverlayImage?.Dispose();
+            ParentObjectOverlayImage?.Dispose();
         }
     }
 }

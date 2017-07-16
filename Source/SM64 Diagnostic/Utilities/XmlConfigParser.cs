@@ -1093,7 +1093,7 @@ namespace SM64_Diagnostic.Utilities
                 selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
                 stoodOnOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
                 usedOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "", cameraHackOverlayImagePath = "",
-                floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "";
+                floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "", parentOverlayImagePath = "";
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
 
@@ -1218,6 +1218,10 @@ namespace SM64_Diagnostic.Utilities
                                 case "Ceiling":
                                     ceilingOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
+
+                                case "Parent":
+                                    parentOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -1322,7 +1326,7 @@ namespace SM64_Diagnostic.Utilities
             objectSlotManagerGui.FloorObjectOverlayImage = Image.FromFile(overlayImageDir + floorOverlayImagePath);
             objectSlotManagerGui.WallObjectOverlayImage = Image.FromFile(overlayImageDir + wallOverlayImagePath);
             objectSlotManagerGui.CeilingObjectOverlayImage = Image.FromFile(overlayImageDir + ceilingOverlayImagePath);
-
+            objectSlotManagerGui.ParentObjectOverlayImage = Image.FromFile(overlayImageDir + parentOverlayImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
             {

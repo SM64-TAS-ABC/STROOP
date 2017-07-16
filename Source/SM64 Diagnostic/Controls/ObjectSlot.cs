@@ -157,7 +157,7 @@ namespace SM64_Diagnostic
         }
 
         bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawHeldOverlay, _drawInteractionObject, _drawUsedObject,
-            _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawFloorObject, _drawWallObject, _drawCeilingObject;
+            _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawFloorObject, _drawWallObject, _drawCeilingObject, _drawParentObject;
         public bool DrawSelectedOverlay
         {
             get
@@ -309,6 +309,20 @@ namespace SM64_Diagnostic
                 if (_drawCeilingObject == value)
                     return;
                 _drawCeilingObject = value;
+                Invalidate();
+            }
+        }
+        public bool DrawParentOverlay
+        {
+            get
+            {
+                return _drawParentObject;
+            }
+            set
+            {
+                if (_drawParentObject == value)
+                    return;
+                _drawParentObject = value;
                 Invalidate();
             }
         }
@@ -479,6 +493,7 @@ namespace SM64_Diagnostic
                 }
             }
 
+            // TODO reorder object slots overlays
             // Draw Overlays
             switch (_selectionType)
             {
@@ -510,6 +525,8 @@ namespace SM64_Diagnostic
                 e.Graphics.DrawImage(_gui.CameraObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawCameraHackOverlay)
                 e.Graphics.DrawImage(_gui.CameraHackObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawParentObject)
+                e.Graphics.DrawImage(_gui.ParentObjectOverlayImage, new Rectangle(new Point(), Size));
         }
 
         

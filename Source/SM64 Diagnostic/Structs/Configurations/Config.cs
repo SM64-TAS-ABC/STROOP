@@ -47,6 +47,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static bool ShowOverlayFloorObject = true;
         public static bool ShowOverlayWallObject = true;
         public static bool ShowOverlayCeilingObject = true;
+        public static bool ShowOverlayParentObject = true;
         public static bool ScaleDiagonalPositionControllerButtons = false;
         public static bool DisableActionUpdateWhenCloning = false;
         public static bool NeutralizeTriangleWith21 = true;
