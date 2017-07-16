@@ -34,6 +34,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint MissionAddress;
         public static uint RngRecordingAreaAddress;
         public static uint RngAddress;
+        public static uint GlobalTimerAddress;
 
         public static bool SlotIndexsFromOne = true;
         public static bool MoveCameraWithPu = true;

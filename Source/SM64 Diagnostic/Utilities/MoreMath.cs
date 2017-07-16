@@ -320,5 +320,17 @@ namespace SM64_Diagnostic.Utilities
         {
             return ApplyValueToMaskedByte(currentValue, mask, useWholeMask ? mask : (byte)0);
         }
+
+        public static double RotateAngleTowards(double angle1, double angle2, double cap)
+        {
+            angle1 = FormatAngleDouble(angle1);
+            angle2 = FormatAngleDouble(angle2);
+            double angle12Diff = FormatAngleDouble(angle1 - angle2);
+            double angle21Diff = FormatAngleDouble(angle2 - angle1);
+            double rotationDiff = Math.Min(cap, Math.Min(angle12Diff, angle21Diff));
+            bool angle1Less = angle21Diff <= angle12Diff;
+            double newAngle = angle1 + (angle1Less ? 1 : -1) * rotationDiff;
+            return FormatAngleDouble(newAngle);
+        }
     }
 }

@@ -1043,6 +1043,10 @@ namespace SM64_Diagnostic.Utilities
                     case "RngAddress":
                         Config.RngAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
+
+                    case "GlobalTimerAddress":
+                        Config.GlobalTimerAddress = ParsingUtilities.ParseHex(element.Value);
+                        break;
                 }
             }
         }

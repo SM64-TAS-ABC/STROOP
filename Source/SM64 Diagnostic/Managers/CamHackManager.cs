@@ -3,6 +3,7 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Structs.Configurations;
 using SM64_Diagnostic.Utilities;
 using SM64Diagnostic.Controls;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -163,6 +164,30 @@ namespace SM64_Diagnostic.Managers
                 _currentCamHackMode = correctCamHackMode;
                 getCorrespondingRadioButton(correctCamHackMode).Checked = true;
             }
+
+            //DoTestingCalculations();
+        }
+
+        private int _globalTimer = 0;
+
+        private void DoTestingCalculations()
+        {
+            uint objAddress = _stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
+            if (objAddress == 0) return;
+
+            int currentGlobalTimer = _stream.GetInt32(Config.GlobalTimerAddress);
+            if (currentGlobalTimer == _globalTimer) return;
+            _globalTimer = currentGlobalTimer;
+
+            uint swooperTargetOffset = 0xFE;
+            ushort swooperTargetAngle = _stream.GetUInt16(objAddress + swooperTargetOffset);
+            ushort cameraAngle = _stream.GetUInt16(Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
+
+            double angleCap = 1024;
+            ushort newCameraAngle = MoreMath.FormatAngleUshort(MoreMath.RotateAngleTowards(cameraAngle, swooperTargetAngle, angleCap));
+            _stream.SetValue(newCameraAngle, Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
+
+            //Console.WriteLine(currentGlobalTimer.ToString() + ": " + swooperTargetAngle.ToString());
         }
 
         private CamHackMode getCorrectCamHackMode()
