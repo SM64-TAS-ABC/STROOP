@@ -197,6 +197,7 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                             }
                         }
+                        Config.ObjectSlots.ParentObjectAddress = 0;
                         break;
                
                     case "ObjectGroups":

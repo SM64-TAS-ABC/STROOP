@@ -8,6 +8,8 @@ namespace SM64_Diagnostic.Structs
 {
     public struct ObjectSlotsConfig
     {
+        public int MaxSlots;
+        public uint ParentObjectAddress;
         public uint LinkStartAddress;
         public uint StructSize;
         public uint HeaderOffset;
@@ -25,7 +27,6 @@ namespace SM64_Diagnostic.Structs
         public uint HomeYOffset;
         public uint HomeZOffset;
         public uint ObjectRotationOffset;
-        public int MaxSlots;
         public uint HitboxRadius;
         public uint HitboxHeight;
         public uint HitboxDownOffset;
