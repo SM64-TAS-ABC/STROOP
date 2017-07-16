@@ -30,6 +30,7 @@
               <xs:element name="ListNextLinkOffset" type="types:address"/>
               <xs:element name="ListPreviousLinkOffset" type="types:address"/>
               <xs:element name="ParentOffset" type="types:address"/>
+              <xs:element name="UnusedSlotAddress" type="types:address"/>
               <xs:element name="BehaviorScriptOffset" type="types:address"/>
               <xs:element name="BehaviorGfxOffset" type="types:address"/>
               <xs:element name="BehaviorSubtypeOffset" type="types:address"/>

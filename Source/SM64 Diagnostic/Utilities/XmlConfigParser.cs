@@ -102,6 +102,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "ParentOffset":
                                     Config.ObjectSlots.ParentOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "UnusedSlotAddress":
+                                    Config.ObjectSlots.UnusedSlotAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "BehaviorScriptOffset":
                                     Config.ObjectSlots.BehaviorScriptOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
@@ -1097,7 +1100,7 @@ namespace SM64_Diagnostic.Utilities
                 selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
                 stoodOnOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
                 usedOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "", cameraHackOverlayImagePath = "",
-                floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "", parentOverlayImagePath = "";
+                floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "", parentOverlayImagePath = "", parentlessOverlayImagePath = "";
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
 
@@ -1226,6 +1229,10 @@ namespace SM64_Diagnostic.Utilities
                                 case "Parent":
                                     parentOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
+
+                                case "Parentless":
+                                    parentlessOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -1331,6 +1338,7 @@ namespace SM64_Diagnostic.Utilities
             objectSlotManagerGui.WallObjectOverlayImage = Image.FromFile(overlayImageDir + wallOverlayImagePath);
             objectSlotManagerGui.CeilingObjectOverlayImage = Image.FromFile(overlayImageDir + ceilingOverlayImagePath);
             objectSlotManagerGui.ParentObjectOverlayImage = Image.FromFile(overlayImageDir + parentOverlayImagePath);
+            objectSlotManagerGui.ParentlessObjectOverlayImage = Image.FromFile(overlayImageDir + parentlessOverlayImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
             {
