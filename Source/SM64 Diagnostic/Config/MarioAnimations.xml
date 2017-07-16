@@ -57,9 +57,11 @@
   <Animation value="53" name="start hanging"/>
   <Animation value="54" name="putting on hat"/>
   <Animation value="55" name="star exit with hat"/>
+  <Animation value="56" name="~putting on hat fast"/>
   <Animation value="57" name="head stuck in ground"/>
   <Animation value="58" name="ground pound landing"/>
-  <Animation value="60" name="start ground pound"/>
+  <Animation value="59" name="start ground pound from flying"/>
+  <Animation value="60" name="start ground pound from freefall"/>
   <Animation value="61" name="ground pound"/>
   <Animation value="62" name="butt stuck in ground"/>
   <Animation value="63" name="'standing"/>
@@ -67,10 +69,12 @@
   <Animation value="65" name="'jump"/>
   <Animation value="66" name="'freefall landing"/>
   <Animation value="67" name="'freefall"/>
+  <Animation value="68" name="'sitting to freefall"/>
   <Animation value="69" name="'ground/air sitting"/>
   <Animation value="70" name="'stop sitting"/>
   <Animation value="71" name="shell riding on ground"/>
   <Animation value="72" name="walking"/>
+  <Animation value="73" name="~forward sideflip"/>
   <Animation value="74" name="shell riding in air"/>
   <Animation value="75" name="double jump landing"/>
   <Animation value="76" name="double jump (2/2)"/>
@@ -78,8 +82,10 @@
   <Animation value="78" name="standard jump landing"/>
   <Animation value="79" name="air kick"/>
   <Animation value="80" name="double jump (1/2)"/>
+  <Animation value="81" name="~ground pound from 'freefall"/>
   <Animation value="82" name="'air throw"/>
   <Animation value="83" name="slide kick freefall"/>
+  <Animation value="84" name="~bend knees while riding shell"/>
   <Animation value="85" name="feet stuck in ground"/>
   <Animation value="86" name="freefall"/>
   <Animation value="87" name="freefall landing"/>
@@ -93,6 +99,9 @@
   <Animation value="95" name="pulling door"/>
   <Animation value="96" name="pushing door"/>
   <Animation value="97" name="unlocking key door"/>
+  <Animation value="98" name="~start crying"/>
+  <Animation value="99" name="~crying"/>
+  <Animation value="100" name="~stop crying"/>
   <Animation value="101" name="'ground throw"/>
   <Animation value="102" name="ground kick"/>
   <Animation value="103" name="first punch (1/2)"/>
@@ -101,11 +110,13 @@
   <Animation value="106" name="second punch (2/2)"/>
   <Animation value="107" name="'picking up"/>
   <Animation value="108" name="pushing"/>
+  <Animation value="109" name="start riding shell"/>
   <Animation value="110" name="'placing down"/>
   <Animation value="111" name="forward spinning (scrunched)"/>
   <Animation value="112" name="backward spinning"/>
   <Animation value="113" name="breakdance"/>
   <Animation value="114" name="running"/>
+  <Animation value="115" name="~running 2"/>
   <Animation value="116" name="soft backward KB"/>
   <Animation value="117" name="soft forward KB"/>
   <Animation value="118" name="quicksand dying breath"/>
@@ -132,7 +143,9 @@
   <Animation value="139" name="'stop sliding"/>
   <Animation value="140" name="slide kick"/>
   <Animation value="141" name="stop slide kicking"/>
+  <Animation value="142" name="~sitting motionless"/>
   <Animation value="143" name="stop sitting"/>
+  <Animation value="144" name="sitting to freefall"/>
   <Animation value="145" name="ground/air sitting"/>
   <Animation value="146" name="tiptoeing"/>
   <Animation value="147" name="twirl landing"/>
@@ -151,11 +164,13 @@
   <Animation value="160" name="'swim (2/2)"/>
   <Animation value="161" name="'flutterkick"/>
   <Animation value="162" name="'water action end"/>
+  <Animation value="163" name="'water grabbing end"/>
   <Animation value="164" name="'in water"/>
   <Animation value="165" name="drowning - holding mouth"/>
   <Animation value="166" name="drowning - falling forward"/>
   <Animation value="167" name="water death"/>
   <Animation value="168" name="water forward KB"/>
+  <Animation value="169" name="water to freefall"/>
   <Animation value="170" name="swim (1/2)"/>
   <Animation value="171" name="swim (2/2)"/>
   <Animation value="172" name="flutterkick"/>
@@ -186,9 +201,11 @@
   <Animation value="197" name="standing - turning head to center"/>
   <Animation value="198" name="hanging - left arm"/>
   <Animation value="199" name="hanging - right arm"/>
-  <Animation value="201" name="waking up"/>
+  <Animation value="200" name="waking up from sitting"/>
+  <Animation value="201" name="waking up from lying"/>
   <Animation value="202" name="pre-tiptoeing"/>
   <Animation value="203" name="pole jump / wall kick"/>
+  <Animation value="204" name="pre-wallkick"/>
   <Animation value="205" name="star dance ground"/>
   <Animation value="206" name="stop star dance ground"/>
   <Animation value="207" name="forward spinning (non-scrunched)"/>

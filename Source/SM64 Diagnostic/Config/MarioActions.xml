@@ -198,6 +198,7 @@
   <Action name="star dance ground (doesn't exit)" value="0x00001307" afterCloneValue="0x08000207" afterUncloneValue="0x00001307" handsfreeValue="0x08000207"/>
   <Action name="star dance water" value="0x00001303" afterCloneValue="0x380022C1" afterUncloneValue="0x00001303" handsfreeValue="0x380022C1"/>
   <Action name="falling with star" value="0x00001904" afterCloneValue="0x010008A1" afterUncloneValue="0x00001904" handsfreeValue="0x010008A1"/>
+  <Action name="unlocking door text" value="0x20001305" afterCloneValue="0x08000207" afterUncloneValue="0x20001305" handsfreeValue="0x08000207"/>
   <Action name="text / cutscene" value="0x20001306" afterCloneValue="0x08000207" afterUncloneValue="0x20001306" handsfreeValue="0x08000207"/>
   <Action name="reading text (sign)" value="0x00001308" afterCloneValue="0x08000207" afterUncloneValue="0x00001308" handsfreeValue="0x08000207"/>
   <Action name="waiting for text" value="0x0000130A" afterCloneValue="0x08000207" afterUncloneValue="0x0000130A" handsfreeValue="0x08000207"/>
