@@ -45,10 +45,7 @@ namespace SM64_Diagnostic.Managers
         Dictionary<uint, Tuple<int?, int?>> _lastSlotLabel = new Dictionary<uint, Tuple<int?, int?>>();
         bool _labelsLocked = false;
         public List<uint> SelectedSlotsAddresses = new List<uint>();
-
-        List<byte> _toggleMapGroups = new List<byte>();
-        List<BehaviorCriteria> _toggleMapBehaviors = new List<BehaviorCriteria>();
-        List<uint> _toggleMapSlots = new List<uint>();
+        public List<uint> SelectedOnMapSlotsAddresses = new List<uint>();
 
         BehaviorCriteria? _lastSelectedBehavior;
         uint _stoodOnObject, _interactionObject, _heldObject, _usedObject, _closestObject, _cameraObject, _cameraHackObject, _floorObject, _wallObject, _ceilingObject;
@@ -57,7 +54,6 @@ namespace SM64_Diagnostic.Managers
         Image _multiImage = null;
 
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
-        public enum MapToggleModeType { Single, ObjectType, ProcessGroup };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
 
         public void ChangeSlotSize(int newSize)
@@ -75,10 +71,6 @@ namespace SM64_Diagnostic.Managers
             ManagerGui = managerGui;
             _mapManager = mapManager;
             _miscManager = miscManager;
-
-            // Add MapToggleModes
-            ManagerGui.MapObjectToggleModeComboBox.DataSource = Enum.GetValues(typeof(MapToggleModeType));
-            ManagerGui.MapObjectToggleModeComboBox.SelectedItem = MapToggleModeType.Single;
 
             // Add SortMethods
             ManagerGui.SortMethodComboBox.DataSource = Enum.GetValues(typeof(ObjectSlotsManager.SortMethodType));
@@ -116,12 +108,20 @@ namespace SM64_Diagnostic.Managers
             switch (ManagerGui.TabControl.SelectedTab.Text)
             {
                 default:
+                    bool isMapTab = ManagerGui.TabControl.SelectedTab.Text.Equals("Map");
+                    List<uint> selection = isMapTab ? SelectedOnMapSlotsAddresses : SelectedSlotsAddresses;
                     var keyboardState = Keyboard.GetState();
-                    ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
-                    if ((keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight))
-                        && SelectedSlotsAddresses.Count > 0)
+                    bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
+                    bool isCtrlKeyHeld = keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight);
+
+                    if (!isMapTab)
                     {
-                        uint startRangeAddress = SelectedSlotsAddresses[SelectedSlotsAddresses.Count - 1];
+                        ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
+                    }
+
+                    if (isShiftKeyHeld && selection.Count > 0)
+                    {
+                        uint startRangeAddress = selection[selection.Count - 1];
                         int startRange = ObjectSlots.First(o => o.Address == startRangeAddress).Index;
                         int endRange = selectedSlot.Index;
 
@@ -132,64 +132,38 @@ namespace SM64_Diagnostic.Managers
                         {
                             int index = startRange + i * iteratorDirection;
                             uint address = ObjectSlots[index].Address;
-                            if (!SelectedSlotsAddresses.Contains(address))
-                                SelectedSlotsAddresses.Add(address);
+                            if (!selection.Contains(address))
+                                selection.Add(address);
                         }
                     }
                     else
                     {
-                        if (!(keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight)))
+                        // ctrl functionality is default in map tab
+                        if (isCtrlKeyHeld == isMapTab)
                         {
-                            SelectedSlotsAddresses.Clear();
+                            selection.Clear();
                         }
-                        if (SelectedSlotsAddresses.Contains(selectedSlot.Address))
+                        if (selection.Contains(selectedSlot.Address))
                         {
-                            //if (SelectedSlotsAddresses.Count > 1)
+                            selection.Remove(selectedSlot.Address);
+                            if (!isMapTab)
                             {
-                                SelectedSlotsAddresses.Remove(selectedSlot.Address);
                                 _lastSelectedBehavior = null;
                             }
                         }
                         else
                         {
-                            SelectedSlotsAddresses.Add(selectedSlot.Address);
+                            selection.Add(selectedSlot.Address);
                         }
                     }
 
-                    _objManager.CurrentAddresses = SelectedSlotsAddresses;
-                    break;
-
-                case "Map":
-                    switch ((MapToggleModeType)ManagerGui.MapObjectToggleModeComboBox.SelectedItem)
+                    if (isMapTab)
                     {
-                        case MapToggleModeType.Single:
-                            if (_toggleMapSlots.Contains(selectedSlot.Address))
-                                _toggleMapSlots.Remove(selectedSlot.Address);
-                            else
-                                _toggleMapSlots.Add(selectedSlot.Address);
-
-                            UpdateSelectedMapObjectSlots();
-
-                            break;
-                        case MapToggleModeType.ObjectType:
-                            var behavior = selectedSlot.Behavior;
-                            if (_toggleMapBehaviors.Contains(behavior))
-                                _toggleMapBehaviors.Remove(behavior);
-                            else
-                                _toggleMapBehaviors.Add(behavior);
-
-                            UpdateSelectedMapObjectSlots();
-                            break;
-
-                        case MapToggleModeType.ProcessGroup:
-                            var group = selectedSlot.ProcessGroup;
-                            if (_toggleMapGroups.Contains(group))
-                                _toggleMapGroups.Remove(group);
-                            else
-                                _toggleMapGroups.Add(group);
-
-                            UpdateSelectedMapObjectSlots();
-                            break;
+                        
+                    }
+                    else
+                    {
+                        _objManager.CurrentAddresses = selection;
                     }
                     break;
 
@@ -198,28 +172,6 @@ namespace SM64_Diagnostic.Managers
                     uint newCamHackSlot = currentCamHackSlot == selectedSlot.Address ? 0 : selectedSlot.Address;
                     _stream.SetValue(newCamHackSlot, Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
                     break;
-            }
-        }
-
-        /*
-        public void SetAllSelectedMapObjectSlots()
-        {
-            foreach (var objSlot in ObjectSlots)
-            {
-                objSlot.SelectedOnMap = true;
-            }
-        }
-        */
-
-        public void UpdateSelectedMapObjectSlots()
-        {
-            foreach (var objSlot in ObjectSlots)
-            {
-                bool selected = !_toggleMapGroups.Contains(objSlot.ProcessGroup)
-                    && !_toggleMapBehaviors.Contains(objSlot.Behavior)
-                    && !_toggleMapSlots.Contains(objSlot.Address);
-
-                objSlot.SelectedOnMap = selected;
             }
         }
 
@@ -632,8 +584,7 @@ namespace SM64_Diagnostic.Managers
             else
             {
                 // Update map object coordinates and rotation
-                _mapObjects[objAddress].Show = _toggleMapBehaviors.Contains(behaviorCriteria)
-                    || _toggleMapGroups.Contains(objData.ObjectProcessGroup) || _toggleMapSlots.Contains(objAddress);
+                _mapObjects[objAddress].Show = SelectedOnMapSlotsAddresses.Contains(objAddress);
                 objSlot.Show = _mapObjects[objAddress].Show;
                 _mapObjects[objAddress].X = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
                 _mapObjects[objAddress].Y = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);

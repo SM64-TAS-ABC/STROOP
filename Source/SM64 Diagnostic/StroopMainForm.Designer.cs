@@ -38,8 +38,6 @@ namespace SM64_Diagnostic
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
             this.labelLabelMethod = new System.Windows.Forms.Label();
             this.labelSlotSize = new System.Windows.Forms.Label();
-            this.labelToggleMode = new System.Windows.Forms.Label();
-            this.comboBoxMapToggleMode = new System.Windows.Forms.ComboBox();
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.labelSortMethod = new System.Windows.Forms.Label();
             this.NoTearFlowLayoutPanelObjects = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
@@ -960,8 +958,6 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Controls.Add(this.comboBoxLabelMethod);
             this.groupBoxObjects.Controls.Add(this.labelLabelMethod);
             this.groupBoxObjects.Controls.Add(this.labelSlotSize);
-            this.groupBoxObjects.Controls.Add(this.labelToggleMode);
-            this.groupBoxObjects.Controls.Add(this.comboBoxMapToggleMode);
             this.groupBoxObjects.Controls.Add(this.checkBoxObjLockLabels);
             this.groupBoxObjects.Controls.Add(this.labelSortMethod);
             this.groupBoxObjects.Controls.Add(this.NoTearFlowLayoutPanelObjects);
@@ -971,7 +967,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 245);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 246);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1005,29 +1001,6 @@ namespace SM64_Diagnostic
             this.labelSlotSize.TabIndex = 11;
             this.labelSlotSize.Text = "Slot Size:";
             // 
-            // labelToggleMode
-            // 
-            this.labelToggleMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelToggleMode.AutoSize = true;
-            this.labelToggleMode.Location = new System.Drawing.Point(357, 19);
-            this.labelToggleMode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelToggleMode.Name = "labelToggleMode";
-            this.labelToggleMode.Size = new System.Drawing.Size(73, 13);
-            this.labelToggleMode.TabIndex = 10;
-            this.labelToggleMode.Text = "Toggle Mode:";
-            this.labelToggleMode.Visible = false;
-            // 
-            // comboBoxMapToggleMode
-            // 
-            this.comboBoxMapToggleMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxMapToggleMode.FormattingEnabled = true;
-            this.comboBoxMapToggleMode.Location = new System.Drawing.Point(434, 15);
-            this.comboBoxMapToggleMode.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxMapToggleMode.Name = "comboBoxMapToggleMode";
-            this.comboBoxMapToggleMode.Size = new System.Drawing.Size(122, 21);
-            this.comboBoxMapToggleMode.TabIndex = 9;
-            this.comboBoxMapToggleMode.Visible = false;
-            // 
             // checkBoxObjLockLabels
             // 
             this.checkBoxObjLockLabels.AutoSize = true;
@@ -1059,7 +1032,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 158);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 159);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2012,7 +1985,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(696, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(699, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2530,7 +2503,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(705, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(708, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2665,7 +2638,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(797, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(800, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3046,7 +3019,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(707, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(710, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3440,7 +3413,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(704, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(707, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3525,7 +3498,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(485, 460);
+            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(488, 460);
             this.NoTearFlowLayoutPanelController.TabIndex = 2;
             // 
             // tabPageFile
@@ -6752,7 +6725,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(161, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(164, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7189,7 +7162,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(695, 430);
+            this.glControlMap.Size = new System.Drawing.Size(698, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -7707,7 +7680,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(756, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(759, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -7806,7 +7779,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(597, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(600, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -8515,7 +8488,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(475, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(478, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9515,8 +9488,6 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.Label labelMapZoom;
         private System.Windows.Forms.CheckBox checkBoxMapShowInactive;
         private System.Windows.Forms.CheckBox checkBoxMapShowMario;
-        private System.Windows.Forms.Label labelToggleMode;
-        private System.Windows.Forms.ComboBox comboBoxMapToggleMode;
         private System.Windows.Forms.TextBox textBoxObjName;
         private System.Windows.Forms.SplitContainer splitContainerMap;
         private System.Windows.Forms.CheckBox checkBoxMapShowHolp;

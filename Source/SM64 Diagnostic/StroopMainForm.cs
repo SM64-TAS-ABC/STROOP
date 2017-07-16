@@ -134,7 +134,6 @@ namespace SM64_Diagnostic
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
             _slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
-            _slotManagerGui.MapObjectToggleModeComboBox = comboBoxMapToggleMode;
             _slotManagerGui.FlowLayoutContainer = NoTearFlowLayoutPanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
@@ -762,16 +761,7 @@ namespace SM64_Diagnostic
 
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControlMain.SelectedTab == tabPageMap)
-            {
-                comboBoxMapToggleMode.Visible = true;
-                labelToggleMode.Visible = true;
-            }
-            else
-            {
-                comboBoxMapToggleMode.Visible = false;
-                labelToggleMode.Visible = false;
-            }
+
         }
     }
 }
