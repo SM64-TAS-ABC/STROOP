@@ -200,7 +200,7 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                             }
                         }
-                        Config.ObjectSlots.ParentObjectAddress = 0;
+                        Config.ObjectSlots.HoverObjectAddress = 0;
                         break;
                
                     case "ObjectGroups":

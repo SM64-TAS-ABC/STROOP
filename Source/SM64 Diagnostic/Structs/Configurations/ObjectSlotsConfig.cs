@@ -9,7 +9,7 @@ namespace SM64_Diagnostic.Structs
     public struct ObjectSlotsConfig
     {
         public int MaxSlots;
-        public uint ParentObjectAddress;
+        public uint HoverObjectAddress;
         public uint LinkStartAddress;
         public uint StructSize;
         public uint HeaderOffset;

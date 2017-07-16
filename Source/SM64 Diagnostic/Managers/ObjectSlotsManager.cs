@@ -347,7 +347,7 @@ namespace SM64_Diagnostic.Managers
             uint ceilingTriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
             _ceilingObject = ceilingTriangleAddress == 0 ? 0 : _stream.GetUInt32(ceilingTriangleAddress + Config.TriangleOffsets.AssociatedObject);
 
-            _parentObject = _stream.GetUInt32(Config.Mario.HeldObjectPointerOffset + Config.Mario.StructAddress);
+            _parentObject = _stream.GetUInt32(Config.ObjectSlots.HoverObjectAddress + Config.ObjectSlots.ParentOffset);
 
             // Update slots
             UpdateSlots(newObjectSlotData);
@@ -467,7 +467,6 @@ namespace SM64_Diagnostic.Managers
             objSlot.DrawWallOverlay = Config.ShowOverlayWallObject && objAddress == _wallObject;
             objSlot.DrawCeilingOverlay = Config.ShowOverlayCeilingObject && objAddress == _ceilingObject;
             objSlot.DrawParentOverlay = Config.ShowOverlayParentObject && objAddress == _parentObject;
-
 
             if (objData.IsActive)
                 _activeObjCnt++;
