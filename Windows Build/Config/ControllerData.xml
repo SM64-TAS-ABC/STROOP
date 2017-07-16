@@ -10,7 +10,7 @@
   <Data type="byte" address="0xC26A7A" absoluteAddress="true" isBool="true" mask="0x20" color="#d1d1d1">Current L</Data>
   <Data type="byte" address="0xC26A7A" absoluteAddress="true" isBool="true" mask="0x08" color="#ffffdd">Current C^</Data>
   <Data type="byte" address="0xC26A7A" absoluteAddress="true" isBool="true" mask="0x04" color="#ffffdd">Current Cv</Data>
-  <Data type="byte" address="0xC26A7A" absoluteAddress="true" isBool="true" mask="0x02" color="#ffffdd">Current &lt;</Data>
+  <Data type="byte" address="0xC26A7A" absoluteAddress="true" isBool="true" mask="0x02" color="#ffffdd">Current C&lt;</Data>
   <Data type="byte" address="0xC26A7A" absoluteAddress="true" isBool="true" mask="0x01" color="#ffffdd">Current C></Data>
   <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x08" color="#d1d1d1">Current D^</Data>
   <Data type="byte" address="0xC26A7B" absoluteAddress="true" isBool="true" mask="0x04" color="#d1d1d1">Current Dv</Data>
