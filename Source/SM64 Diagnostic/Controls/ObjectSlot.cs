@@ -11,6 +11,7 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using System.Drawing.Drawing2D;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic
 {
@@ -337,8 +338,18 @@ namespace SM64_Diagnostic
 
             this.MouseDown += OnDrag;
             this.MouseUp += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
-            this.MouseEnter += (s, e) => { MouseState = MouseStateType.Over; UpdateColors(); };
-            this.MouseLeave += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
+            this.MouseEnter += (s, e) =>
+            {
+                Config.ObjectSlots.HoverObjectAddress = this.Address;
+                MouseState = MouseStateType.Over;
+                UpdateColors();
+            };
+            this.MouseLeave += (s, e) =>
+            {
+                Config.ObjectSlots.HoverObjectAddress = 0;
+                MouseState = MouseStateType.None;
+                UpdateColors();
+            };
             this.Cursor = Cursors.Hand;
             this.DoubleBuffered = true;
         }
