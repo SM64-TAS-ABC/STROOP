@@ -49,7 +49,7 @@ namespace SM64_Diagnostic.Managers
 
         BehaviorCriteria? _lastSelectedBehavior;
         uint _stoodOnObject, _interactionObject, _heldObject, _usedObject, _closestObject, _cameraObject, _cameraHackObject,
-            _floorObject, _wallObject, _ceilingObject, _parentObject, _parentlessObject;
+            _floorObject, _wallObject, _ceilingObject, _parentObject, _parentUnusedObject, _parentNoneObject;
         int _activeObjCnt;
         bool _selectedUpdatePending = false;
         Image _multiImage = null;
@@ -349,7 +349,8 @@ namespace SM64_Diagnostic.Managers
             _ceilingObject = ceilingTriangleAddress == 0 ? 0 : _stream.GetUInt32(ceilingTriangleAddress + Config.TriangleOffsets.AssociatedObject);
 
             _parentObject = _stream.GetUInt32(Config.ObjectSlots.HoverObjectAddress + Config.ObjectSlots.ParentOffset);
-            _parentlessObject = _parentObject == Config.ObjectSlots.UnusedSlotAddress ? Config.ObjectSlots.HoverObjectAddress : 0;
+            _parentUnusedObject = _parentObject == Config.ObjectSlots.UnusedSlotAddress ? Config.ObjectSlots.HoverObjectAddress : 0;
+            _parentNoneObject = _parentObject == 0 ? Config.ObjectSlots.HoverObjectAddress : 0;
 
             // Update slots
             UpdateSlots(newObjectSlotData);
@@ -469,7 +470,8 @@ namespace SM64_Diagnostic.Managers
             objSlot.DrawWallOverlay = Config.ShowOverlayWallObject && objAddress == _wallObject;
             objSlot.DrawCeilingOverlay = Config.ShowOverlayCeilingObject && objAddress == _ceilingObject;
             objSlot.DrawParentOverlay = Config.ShowOverlayParentObject && objAddress == _parentObject;
-            objSlot.DrawParentlessOverlay = Config.ShowOverlayParentObject && objAddress == _parentlessObject;
+            objSlot.DrawParentUnusedOverlay = Config.ShowOverlayParentObject && objAddress == _parentUnusedObject;
+            objSlot.DrawParentNoneOverlay = Config.ShowOverlayParentObject && objAddress == _parentNoneObject;
 
             if (objData.IsActive)
                 _activeObjCnt++;

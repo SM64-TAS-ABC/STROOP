@@ -25,7 +25,8 @@ namespace SM64_Diagnostic.Structs
         public Image WallObjectOverlayImage;
         public Image CeilingObjectOverlayImage;
         public Image ParentObjectOverlayImage;
-        public Image ParentlessObjectOverlayImage;
+        public Image ParentUnusedObjectOverlayImage;
+        public Image ParentNoneObjectOverlayImage;
 
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
@@ -49,7 +50,8 @@ namespace SM64_Diagnostic.Structs
             WallObjectOverlayImage?.Dispose();
             CeilingObjectOverlayImage?.Dispose();
             ParentObjectOverlayImage?.Dispose();
-            ParentlessObjectOverlayImage?.Dispose();
+            ParentUnusedObjectOverlayImage?.Dispose();
+            ParentNoneObjectOverlayImage?.Dispose();
         }
     }
 }

@@ -159,7 +159,7 @@ namespace SM64_Diagnostic
 
         bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawHeldOverlay, _drawInteractionObject, _drawUsedObject,
             _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawFloorObject, _drawWallObject, _drawCeilingObject,
-            _drawParentObject, _drawParentlessObject;
+            _drawParentObject, _drawParentUnusedObject, _drawParentNoneObject;
         public bool DrawSelectedOverlay
         {
             get
@@ -328,17 +328,31 @@ namespace SM64_Diagnostic
                 Invalidate();
             }
         }
-        public bool DrawParentlessOverlay
+        public bool DrawParentUnusedOverlay
         {
             get
             {
-                return _drawParentlessObject;
+                return _drawParentUnusedObject;
             }
             set
             {
-                if (_drawParentlessObject == value)
+                if (_drawParentUnusedObject == value)
                     return;
-                _drawParentlessObject = value;
+                _drawParentUnusedObject = value;
+                Invalidate();
+            }
+        }
+        public bool DrawParentNoneOverlay
+        {
+            get
+            {
+                return _drawParentNoneObject;
+            }
+            set
+            {
+                if (_drawParentNoneObject == value)
+                    return;
+                _drawParentNoneObject = value;
                 Invalidate();
             }
         }
@@ -553,8 +567,10 @@ namespace SM64_Diagnostic
                 e.Graphics.DrawImage(_gui.CameraHackObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawParentObject)
                 e.Graphics.DrawImage(_gui.ParentObjectOverlayImage, new Rectangle(new Point(), Size));
-            if (_drawParentlessObject)
-                e.Graphics.DrawImage(_gui.ParentlessObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawParentUnusedObject)
+                e.Graphics.DrawImage(_gui.ParentUnusedObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawParentNoneObject)
+                e.Graphics.DrawImage(_gui.ParentNoneObjectOverlayImage, new Rectangle(new Point(), Size));
         }
 
         

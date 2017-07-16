@@ -1100,7 +1100,8 @@ namespace SM64_Diagnostic.Utilities
                 selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
                 stoodOnOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
                 usedOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "", cameraHackOverlayImagePath = "",
-                floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "", parentOverlayImagePath = "", parentlessOverlayImagePath = "";
+                floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "",
+                parentOverlayImagePath = "", parentUnusedOverlayImagePath = "", parentNoneOverlayImagePath = "";
             uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
 
@@ -1230,8 +1231,12 @@ namespace SM64_Diagnostic.Utilities
                                     parentOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
-                                case "Parentless":
-                                    parentlessOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                case "ParentUnused":
+                                    parentUnusedOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "ParentNone":
+                                    parentNoneOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
                             }
                         }
@@ -1338,7 +1343,8 @@ namespace SM64_Diagnostic.Utilities
             objectSlotManagerGui.WallObjectOverlayImage = Image.FromFile(overlayImageDir + wallOverlayImagePath);
             objectSlotManagerGui.CeilingObjectOverlayImage = Image.FromFile(overlayImageDir + ceilingOverlayImagePath);
             objectSlotManagerGui.ParentObjectOverlayImage = Image.FromFile(overlayImageDir + parentOverlayImagePath);
-            objectSlotManagerGui.ParentlessObjectOverlayImage = Image.FromFile(overlayImageDir + parentlessOverlayImagePath);
+            objectSlotManagerGui.ParentUnusedObjectOverlayImage = Image.FromFile(overlayImageDir + parentUnusedOverlayImagePath);
+            objectSlotManagerGui.ParentNoneObjectOverlayImage = Image.FromFile(overlayImageDir + parentNoneOverlayImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
             {
