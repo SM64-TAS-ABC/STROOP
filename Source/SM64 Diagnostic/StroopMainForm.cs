@@ -680,6 +680,11 @@ namespace SM64_Diagnostic
             Config.ShowOverlayCeilingObject = checkBoxShowOverlayCeilingObject.Checked;
         }
 
+        private void checkBoxShowOverlayParentObject_CheckedChanged(object sender, EventArgs e)
+        {
+            Config.ShowOverlayParentObject = checkBoxShowOverlayParentObject.Checked;
+        }
+
         private void textBoxGotoAbove_LostFocus(object sender, EventArgs e)
         {
             float value;
