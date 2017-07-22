@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -3702,7 +3702,7 @@ namespace SM64_Diagnostic
             // 
             // buttonNothing
             // 
-            this.buttonNothing.Location = new System.Drawing.Point(266, 319);
+            this.buttonNothing.Location = new System.Drawing.Point(269, 319);
             this.buttonNothing.Margin = new System.Windows.Forms.Padding(0);
             this.buttonNothing.Name = "buttonNothing";
             this.buttonNothing.Size = new System.Drawing.Size(65, 30);
@@ -3712,7 +3712,7 @@ namespace SM64_Diagnostic
             // 
             // buttonEverything
             // 
-            this.buttonEverything.Location = new System.Drawing.Point(266, 288);
+            this.buttonEverything.Location = new System.Drawing.Point(269, 288);
             this.buttonEverything.Margin = new System.Windows.Forms.Padding(0);
             this.buttonEverything.Name = "buttonEverything";
             this.buttonEverything.Size = new System.Drawing.Size(65, 30);
@@ -3722,7 +3722,7 @@ namespace SM64_Diagnostic
             // 
             // buttonNoStars
             // 
-            this.buttonNoStars.Location = new System.Drawing.Point(23, 319);
+            this.buttonNoStars.Location = new System.Drawing.Point(21, 319);
             this.buttonNoStars.Margin = new System.Windows.Forms.Padding(0);
             this.buttonNoStars.Name = "buttonNoStars";
             this.buttonNoStars.Size = new System.Drawing.Size(56, 30);
@@ -3732,7 +3732,7 @@ namespace SM64_Diagnostic
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(83, 319);
+            this.button2.Location = new System.Drawing.Point(77, 319);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(74, 30);
@@ -3742,7 +3742,7 @@ namespace SM64_Diagnostic
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(83, 288);
+            this.button1.Location = new System.Drawing.Point(77, 288);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 30);
@@ -3752,7 +3752,7 @@ namespace SM64_Diagnostic
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(159, 319);
+            this.button4.Location = new System.Drawing.Point(151, 319);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(60, 30);
@@ -3762,7 +3762,7 @@ namespace SM64_Diagnostic
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(159, 288);
+            this.button3.Location = new System.Drawing.Point(151, 288);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(60, 30);
@@ -3772,7 +3772,7 @@ namespace SM64_Diagnostic
             // 
             // buttonAllStars
             // 
-            this.buttonAllStars.Location = new System.Drawing.Point(23, 288);
+            this.buttonAllStars.Location = new System.Drawing.Point(21, 288);
             this.buttonAllStars.Margin = new System.Windows.Forms.Padding(0);
             this.buttonAllStars.Name = "buttonAllStars";
             this.buttonAllStars.Size = new System.Drawing.Size(56, 30);
@@ -7561,8 +7561,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9170,7 +9170,7 @@ namespace SM64_Diagnostic
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(204, 288);
+            this.button5.Location = new System.Drawing.Point(211, 288);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(58, 30);
@@ -9180,7 +9180,7 @@ namespace SM64_Diagnostic
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(204, 319);
+            this.button6.Location = new System.Drawing.Point(211, 319);
             this.button6.Margin = new System.Windows.Forms.Padding(0);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(58, 30);
