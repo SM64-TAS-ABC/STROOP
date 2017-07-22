@@ -31,7 +31,7 @@ namespace SM64_Diagnostic
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -3552,7 +3552,7 @@ namespace SM64_Diagnostic
             // 
             // buttonFileErase
             // 
-            this.buttonFileErase.Location = new System.Drawing.Point(268, 396);
+            this.buttonFileErase.Location = new System.Drawing.Point(237, 77);
             this.buttonFileErase.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileErase.Name = "buttonFileErase";
             this.buttonFileErase.Size = new System.Drawing.Size(65, 30);
@@ -3562,7 +3562,7 @@ namespace SM64_Diagnostic
             // 
             // buttonFileNumStars
             // 
-            this.buttonFileNumStars.Location = new System.Drawing.Point(235, 60);
+            this.buttonFileNumStars.Location = new System.Drawing.Point(254, 379);
             this.buttonFileNumStars.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileNumStars.Name = "buttonFileNumStars";
             this.buttonFileNumStars.Size = new System.Drawing.Size(80, 40);
@@ -3946,7 +3946,7 @@ namespace SM64_Diagnostic
             // 
             // buttonFileSave
             // 
-            this.buttonFileSave.Location = new System.Drawing.Point(268, 366);
+            this.buttonFileSave.Location = new System.Drawing.Point(237, 47);
             this.buttonFileSave.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileSave.Name = "buttonFileSave";
             this.buttonFileSave.Size = new System.Drawing.Size(65, 30);
@@ -4602,8 +4602,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
