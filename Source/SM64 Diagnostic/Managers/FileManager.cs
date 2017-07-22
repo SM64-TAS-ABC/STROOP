@@ -19,7 +19,7 @@ namespace SM64_Diagnostic.Managers
 
         public enum FileMode { FileA, FileB, FileC, FileD, FileASaved, FileBSaved, FileCSaved, FileDSaved };
         public enum HatLocation { Mario, SSLKlepto, SSLGround, SLSnowman, SLGround, TTMUkiki, TTMGround };
-        public enum AllCoinsMeaning { Coins100, MaxWithoutGlitches, MaxWithGlitches };
+        public enum AllCoinsMeaning { Coins100, Coins255, MaxWithoutGlitches, MaxWithGlitches };
 
         TabPage _tabControl;
         FileImageGui _gui;
@@ -268,6 +268,8 @@ namespace SM64_Diagnostic.Managers
             GroupBox allCoinsMeaningGroupbox = splitContainerFile.Panel1.Controls["groupBoxAllCoinsMeaning"] as GroupBox;
             (allCoinsMeaningGroupbox.Controls["radioButtonAllCoinsMeaning100Coins"] as RadioButton).Click
                 += (sender, e) => { currentAllCoinsMeaning = AllCoinsMeaning.Coins100; };
+            (allCoinsMeaningGroupbox.Controls["radioButtonAllCoinsMeaning255Coins"] as RadioButton).Click
+                += (sender, e) => { currentAllCoinsMeaning = AllCoinsMeaning.Coins255; };
             (allCoinsMeaningGroupbox.Controls["radioButtonAllCoinsMeaningMaxWithoutGlitches"] as RadioButton).Click
                 += (sender, e) => { currentAllCoinsMeaning = AllCoinsMeaning.MaxWithoutGlitches; };
             (allCoinsMeaningGroupbox.Controls["radioButtonAllCoinsMeaningMaxWithGlitches"] as RadioButton).Click
@@ -501,6 +503,23 @@ namespace SM64_Diagnostic.Managers
             SetBufferedBytes(bufferedBytes);
         }
 
+        private byte GetCoinScoreForCourse(int courseIndex)
+        {
+            switch (currentAllCoinsMeaning)
+            {
+                case AllCoinsMeaning.Coins100:
+                    return 100;
+                case AllCoinsMeaning.Coins255:
+                    return 255;
+                case AllCoinsMeaning.MaxWithoutGlitches:
+                    return (byte)Config.CourseData.GetMaxCoinsWithoutGlitches(courseIndex);
+                case AllCoinsMeaning.MaxWithGlitches:
+                    return (byte)Config.CourseData.GetMaxCoinsWithGlitches(courseIndex);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         private void FileSetEverything(bool everythingOn)
         {
             byte[] bufferedBytes = GetBufferedBytes();
@@ -522,10 +541,7 @@ namespace SM64_Diagnostic.Managers
 
             for (int i = 0; i < 15; i++)
             {
-                byte coinScore = currentAllCoinsMeaning == AllCoinsMeaning.Coins100 ? (byte)100 :
-                    currentAllCoinsMeaning == AllCoinsMeaning.MaxWithoutGlitches ? (byte)Config.CourseData.GetMaxCoinsWithoutGlitches(i+1) :
-                    (byte)Config.CourseData.GetMaxCoinsWithGlitches(i+1);
-                bufferedBytes[Config.File.CoinScoreOffsetStart + (uint)i] = everythingOn ? coinScore : (byte)0;
+                bufferedBytes[Config.File.CoinScoreOffsetStart + (uint)i] = everythingOn ? GetCoinScoreForCourse(i + 1) : (byte)0;
             }
 
             setValues(Config.File.FileStartedOffset, Config.File.FileStartedMask, everythingOn ? true : (bool?)null);
