@@ -19,7 +19,9 @@ namespace SM64_Diagnostic.Managers
 
         public enum FileMode { FileA, FileB, FileC, FileD, FileASaved, FileBSaved, FileCSaved, FileDSaved };
         public enum HatLocation { Mario, SSLKlepto, SSLGround, SLSnowman, SLGround, TTMUkiki, TTMGround };
-        public enum AllCoinsMeaning { Coins100, Coins255, MaxWithoutGlitches, MaxWithGlitches };
+
+        private enum AllCoinsMeaning { Coins100, Coins255, MaxWithoutGlitches, MaxWithGlitches };
+        private enum FileStateCategory { Stars, Cannons, Doors, Coins, Misc };
 
         TabPage _tabControl;
         FileImageGui _gui;
@@ -244,34 +246,54 @@ namespace SM64_Diagnostic.Managers
             eraseFileButton.Click += FileEraseButton_Click;
 
             Button allStarsButton = splitContainerFile.Panel1.Controls["buttonAllStars"] as Button;
-            allStarsButton.Click += (sender, e) => FileSetStars(true);
+            allStarsButton.Click += (sender, e) => FileSetCategory(true, new List<FileStateCategory> { FileStateCategory.Stars });
 
             Button noStarsButton = splitContainerFile.Panel1.Controls["buttonNoStars"] as Button;
-            noStarsButton.Click += (sender, e) => FileSetStars(false);
+            noStarsButton.Click += (sender, e) => FileSetCategory(false, new List<FileStateCategory> { FileStateCategory.Stars });
 
             Button allCannonsButton = splitContainerFile.Panel1.Controls["buttonAllCannons"] as Button;
-            allCannonsButton.Click += (sender, e) => FileSetCannons(true);
+            allCannonsButton.Click += (sender, e) => FileSetCategory(true, new List<FileStateCategory> { FileStateCategory.Cannons });
 
             Button noCannonsButton = splitContainerFile.Panel1.Controls["buttonNoCannons"] as Button;
-            noCannonsButton.Click += (sender, e) => FileSetCannons(false);
+            noCannonsButton.Click += (sender, e) => FileSetCategory(false, new List<FileStateCategory> { FileStateCategory.Cannons });
 
             Button allDoorsButton = splitContainerFile.Panel1.Controls["buttonAllDoors"] as Button;
-            allDoorsButton.Click += (sender, e) => FileSetDoors(true);
+            allDoorsButton.Click += (sender, e) => FileSetCategory(true, new List<FileStateCategory> { FileStateCategory.Doors });
 
             Button noDoorsButton = splitContainerFile.Panel1.Controls["buttonNoDoors"] as Button;
-            noDoorsButton.Click += (sender, e) => FileSetDoors(false);
+            noDoorsButton.Click += (sender, e) => FileSetCategory(false, new List<FileStateCategory> { FileStateCategory.Doors });
 
             Button allCoinsButton = splitContainerFile.Panel1.Controls["buttonAllCoins"] as Button;
-            allCoinsButton.Click += (sender, e) => FileSetCoins(true);
+            allCoinsButton.Click += (sender, e) => FileSetCategory(true, new List<FileStateCategory> { FileStateCategory.Coins });
 
             Button noCoinsButton = splitContainerFile.Panel1.Controls["buttonNoCoins"] as Button;
-            noCoinsButton.Click += (sender, e) => FileSetCoins(false);
+            noCoinsButton.Click += (sender, e) => FileSetCategory(false, new List<FileStateCategory> { FileStateCategory.Coins });
 
             Button everythingButton = splitContainerFile.Panel1.Controls["buttonEverything"] as Button;
-            everythingButton.Click += (sender, e) => FileSetEverything(true);
+            everythingButton.Click += (sender, e) =>
+                FileSetCategory(
+                    true,
+                    new List<FileStateCategory>
+                    {
+                        FileStateCategory.Stars,
+                        FileStateCategory.Cannons,
+                        FileStateCategory.Doors,
+                        FileStateCategory.Coins,
+                        FileStateCategory.Misc
+                    });
 
             Button nothingButton = splitContainerFile.Panel1.Controls["buttonNothing"] as Button;
-            nothingButton.Click += (sender, e) => FileSetEverything(false);
+            nothingButton.Click += (sender, e) =>
+                FileSetCategory(
+                    false,
+                    new List<FileStateCategory>
+                    {
+                        FileStateCategory.Stars,
+                        FileStateCategory.Cannons,
+                        FileStateCategory.Doors,
+                        FileStateCategory.Coins,
+                        FileStateCategory.Misc
+                    });
 
             _numStarsButton = splitContainerFile.Panel1.Controls["buttonFileNumStars"] as Button;
             _numStarsButton.Click += NumStarsButton_Click;
@@ -500,66 +522,6 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private void FileSetStars(bool starsOn)
-        {
-            byte[] bufferedBytes = GetBufferedBytes();
-            for (int i = 0; i < numRows; i++)
-            {
-                uint courseAddressOffset = _courseStarsAddressOffsets[i];
-                byte courseMask = _courseStarsMasks[i];
-
-                byte oldByte = bufferedBytes[courseAddressOffset];
-                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, courseMask, starsOn);
-                bufferedBytes[courseAddressOffset] = newByte;
-            }
-            SetBufferedBytes(bufferedBytes);
-        }
-
-        private void FileSetCannons(bool starsOn)
-        {
-            byte[] bufferedBytes = GetBufferedBytes();
-            for (int i = 0; i < numRows; i++)
-            {
-                uint courseAddressOffset = _courseStarsAddressOffsets[i];
-                byte courseMask = _courseStarsMasks[i];
-
-                byte oldByte = bufferedBytes[courseAddressOffset];
-                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, courseMask, starsOn);
-                bufferedBytes[courseAddressOffset] = newByte;
-            }
-            SetBufferedBytes(bufferedBytes);
-        }
-
-        private void FileSetDoors(bool starsOn)
-        {
-            byte[] bufferedBytes = GetBufferedBytes();
-            for (int i = 0; i < numRows; i++)
-            {
-                uint courseAddressOffset = _courseStarsAddressOffsets[i];
-                byte courseMask = _courseStarsMasks[i];
-
-                byte oldByte = bufferedBytes[courseAddressOffset];
-                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, courseMask, starsOn);
-                bufferedBytes[courseAddressOffset] = newByte;
-            }
-            SetBufferedBytes(bufferedBytes);
-        }
-
-        private void FileSetCoins(bool starsOn)
-        {
-            byte[] bufferedBytes = GetBufferedBytes();
-            for (int i = 0; i < numRows; i++)
-            {
-                uint courseAddressOffset = _courseStarsAddressOffsets[i];
-                byte courseMask = _courseStarsMasks[i];
-
-                byte oldByte = bufferedBytes[courseAddressOffset];
-                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, courseMask, starsOn);
-                bufferedBytes[courseAddressOffset] = newByte;
-            }
-            SetBufferedBytes(bufferedBytes);
-        }
-
         private byte GetCoinScoreForCourse(int courseIndex)
         {
             switch (currentAllCoinsMeaning)
@@ -577,7 +539,7 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private void FileSetEverything(bool everythingOn)
+        private void FileSetCategory(bool setOn, List<FileStateCategory> fileCategories)
         {
             byte[] bufferedBytes = GetBufferedBytes();
 
@@ -591,27 +553,46 @@ namespace SM64_Diagnostic.Managers
 
             for (int i = 0; i < numRows; i++)
             {
-                setValues(_courseStarsAddressOffsets[i], _courseStarsMasks[i], everythingOn);
-                setValues(_courseCannonAddressOffsets[i], _courseCannonMasks[i], everythingOn);
-                setValues(_courseDoorAddressOffsets[i], _courseDoorMasks[i], everythingOn);
+                if (fileCategories.Contains(FileStateCategory.Stars))
+                {
+                    setValues(_courseStarsAddressOffsets[i], _courseStarsMasks[i], setOn);
+                }
+                if (fileCategories.Contains(FileStateCategory.Cannons))
+                {
+                    setValues(_courseCannonAddressOffsets[i], _courseCannonMasks[i], setOn);
+                }
+                if (fileCategories.Contains(FileStateCategory.Doors))
+                {
+                    setValues(_courseDoorAddressOffsets[i], _courseDoorMasks[i], setOn);
+                }
             }
 
-            for (int i = 0; i < 15; i++)
+            if (fileCategories.Contains(FileStateCategory.Coins))
             {
-                bufferedBytes[Config.File.CoinScoreOffsetStart + (uint)i] = everythingOn ? GetCoinScoreForCourse(i + 1) : (byte)0;
+                for (int i = 0; i < 15; i++)
+                {
+                    bufferedBytes[Config.File.CoinScoreOffsetStart + (uint)i] = setOn ? GetCoinScoreForCourse(i + 1) : (byte)0;
+                }
             }
 
-            setValues(Config.File.FileStartedOffset, Config.File.FileStartedMask, everythingOn ? true : (bool?)null);
-            setValues(Config.File.CapSwitchPressedOffset, Config.File.RedCapSwitchMask, everythingOn);
-            setValues(Config.File.CapSwitchPressedOffset, Config.File.GreenCapSwitchMask, everythingOn);
-            setValues(Config.File.CapSwitchPressedOffset, Config.File.BlueCapSwitchMask, everythingOn);
-            setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor1KeyMask, false);
-            setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor1OpenedMask, everythingOn);
-            setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor2KeyMask, false);
-            setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor2OpenedMask, everythingOn);
-            setValues(Config.File.MoatDrainedOffset, Config.File.MoatDrainedMask, everythingOn);
-            setValues(Config.File.DDDMovedBackOffset, Config.File.DDDMovedBackMask, everythingOn);
-            setValues(Config.File.HatLocationModeOffset, Config.File.HatLocationModeMask, everythingOn ? false : (bool?)null);
+            if (fileCategories.Contains(FileStateCategory.Doors))
+            {
+                setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor1KeyMask, false);
+                setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor1OpenedMask, setOn);
+                setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor2KeyMask, false);
+                setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor2OpenedMask, setOn);
+            }
+
+            if (fileCategories.Contains(FileStateCategory.Misc))
+            {
+                setValues(Config.File.FileStartedOffset, Config.File.FileStartedMask, setOn ? true : (bool?)null);
+                setValues(Config.File.CapSwitchPressedOffset, Config.File.RedCapSwitchMask, setOn);
+                setValues(Config.File.CapSwitchPressedOffset, Config.File.GreenCapSwitchMask, setOn);
+                setValues(Config.File.CapSwitchPressedOffset, Config.File.BlueCapSwitchMask, setOn);
+                setValues(Config.File.MoatDrainedOffset, Config.File.MoatDrainedMask, setOn);
+                setValues(Config.File.DDDMovedBackOffset, Config.File.DDDMovedBackMask, setOn);
+                setValues(Config.File.HatLocationModeOffset, Config.File.HatLocationModeMask, setOn ? false : (bool?)null);
+            }
 
             SetBufferedBytes(bufferedBytes);
         }
