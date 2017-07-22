@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -684,6 +684,7 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -3571,11 +3572,12 @@ namespace SM64_Diagnostic
             // groupBoxEverythingCoinScores
             // 
             this.groupBoxEverythingCoinScores.Controls.Add(this.radioButtonEverythingCoinScoreMaxWithoutGlitches);
+            this.groupBoxEverythingCoinScores.Controls.Add(this.radioButton1);
             this.groupBoxEverythingCoinScores.Controls.Add(this.radioButtonEverythingCoinScore100Coins);
             this.groupBoxEverythingCoinScores.Controls.Add(this.radioButtonEverythingCoinScoreMaxWithGlitches);
-            this.groupBoxEverythingCoinScores.Location = new System.Drawing.Point(24, 385);
+            this.groupBoxEverythingCoinScores.Location = new System.Drawing.Point(23, 360);
             this.groupBoxEverythingCoinScores.Name = "groupBoxEverythingCoinScores";
-            this.groupBoxEverythingCoinScores.Size = new System.Drawing.Size(303, 47);
+            this.groupBoxEverythingCoinScores.Size = new System.Drawing.Size(214, 70);
             this.groupBoxEverythingCoinScores.TabIndex = 38;
             this.groupBoxEverythingCoinScores.TabStop = false;
             this.groupBoxEverythingCoinScores.Text = "Everything Coin Scores";
@@ -3583,7 +3585,7 @@ namespace SM64_Diagnostic
             // radioButtonEverythingCoinScoreMaxWithoutGlitches
             // 
             this.radioButtonEverythingCoinScoreMaxWithoutGlitches.AutoSize = true;
-            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.Location = new System.Drawing.Point(84, 19);
+            this.radioButtonEverythingCoinScoreMaxWithoutGlitches.Location = new System.Drawing.Point(94, 19);
             this.radioButtonEverythingCoinScoreMaxWithoutGlitches.Name = "radioButtonEverythingCoinScoreMaxWithoutGlitches";
             this.radioButtonEverythingCoinScoreMaxWithoutGlitches.Size = new System.Drawing.Size(108, 17);
             this.radioButtonEverythingCoinScoreMaxWithoutGlitches.TabIndex = 12;
@@ -3594,7 +3596,7 @@ namespace SM64_Diagnostic
             // 
             this.radioButtonEverythingCoinScore100Coins.AutoSize = true;
             this.radioButtonEverythingCoinScore100Coins.Checked = true;
-            this.radioButtonEverythingCoinScore100Coins.Location = new System.Drawing.Point(11, 19);
+            this.radioButtonEverythingCoinScore100Coins.Location = new System.Drawing.Point(9, 19);
             this.radioButtonEverythingCoinScore100Coins.Name = "radioButtonEverythingCoinScore100Coins";
             this.radioButtonEverythingCoinScore100Coins.Size = new System.Drawing.Size(72, 17);
             this.radioButtonEverythingCoinScore100Coins.TabIndex = 11;
@@ -3605,7 +3607,7 @@ namespace SM64_Diagnostic
             // radioButtonEverythingCoinScoreMaxWithGlitches
             // 
             this.radioButtonEverythingCoinScoreMaxWithGlitches.AutoSize = true;
-            this.radioButtonEverythingCoinScoreMaxWithGlitches.Location = new System.Drawing.Point(195, 19);
+            this.radioButtonEverythingCoinScoreMaxWithGlitches.Location = new System.Drawing.Point(94, 42);
             this.radioButtonEverythingCoinScoreMaxWithGlitches.Name = "radioButtonEverythingCoinScoreMaxWithGlitches";
             this.radioButtonEverythingCoinScoreMaxWithGlitches.Size = new System.Drawing.Size(102, 17);
             this.radioButtonEverythingCoinScoreMaxWithGlitches.TabIndex = 13;
@@ -3615,7 +3617,7 @@ namespace SM64_Diagnostic
             // filePictureBoxDDDMovedBack
             // 
             this.filePictureBoxDDDMovedBack.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxDDDMovedBack.Image")));
-            this.filePictureBoxDDDMovedBack.Location = new System.Drawing.Point(301, 243);
+            this.filePictureBoxDDDMovedBack.Location = new System.Drawing.Point(301, 242);
             this.filePictureBoxDDDMovedBack.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxDDDMovedBack.Name = "filePictureBoxDDDMovedBack";
             this.filePictureBoxDDDMovedBack.Size = new System.Drawing.Size(30, 30);
@@ -3626,7 +3628,7 @@ namespace SM64_Diagnostic
             // filePictureBoxMoatDrained
             // 
             this.filePictureBoxMoatDrained.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxMoatDrained.Image")));
-            this.filePictureBoxMoatDrained.Location = new System.Drawing.Point(253, 243);
+            this.filePictureBoxMoatDrained.Location = new System.Drawing.Point(253, 242);
             this.filePictureBoxMoatDrained.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxMoatDrained.Name = "filePictureBoxMoatDrained";
             this.filePictureBoxMoatDrained.Size = new System.Drawing.Size(43, 30);
@@ -3637,7 +3639,7 @@ namespace SM64_Diagnostic
             // filePictureBoxKeyDoor2Opened
             // 
             this.filePictureBoxKeyDoor2Opened.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxKeyDoor2Opened.Image")));
-            this.filePictureBoxKeyDoor2Opened.Location = new System.Drawing.Point(213, 243);
+            this.filePictureBoxKeyDoor2Opened.Location = new System.Drawing.Point(213, 242);
             this.filePictureBoxKeyDoor2Opened.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxKeyDoor2Opened.Name = "filePictureBoxKeyDoor2Opened";
             this.filePictureBoxKeyDoor2Opened.Size = new System.Drawing.Size(36, 30);
@@ -3648,7 +3650,7 @@ namespace SM64_Diagnostic
             // filePictureBoxKeyDoor1Opened
             // 
             this.filePictureBoxKeyDoor1Opened.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxKeyDoor1Opened.Image")));
-            this.filePictureBoxKeyDoor1Opened.Location = new System.Drawing.Point(172, 243);
+            this.filePictureBoxKeyDoor1Opened.Location = new System.Drawing.Point(172, 242);
             this.filePictureBoxKeyDoor1Opened.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxKeyDoor1Opened.Name = "filePictureBoxKeyDoor1Opened";
             this.filePictureBoxKeyDoor1Opened.Size = new System.Drawing.Size(36, 30);
@@ -3659,7 +3661,7 @@ namespace SM64_Diagnostic
             // filePictureBoxBlueCapSwitchPressed
             // 
             this.filePictureBoxBlueCapSwitchPressed.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxBlueCapSwitchPressed.Image")));
-            this.filePictureBoxBlueCapSwitchPressed.Location = new System.Drawing.Point(138, 243);
+            this.filePictureBoxBlueCapSwitchPressed.Location = new System.Drawing.Point(138, 242);
             this.filePictureBoxBlueCapSwitchPressed.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxBlueCapSwitchPressed.Name = "filePictureBoxBlueCapSwitchPressed";
             this.filePictureBoxBlueCapSwitchPressed.Size = new System.Drawing.Size(30, 30);
@@ -3670,7 +3672,7 @@ namespace SM64_Diagnostic
             // filePictureBoxGreenCapSwitchPressed
             // 
             this.filePictureBoxGreenCapSwitchPressed.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxGreenCapSwitchPressed.Image")));
-            this.filePictureBoxGreenCapSwitchPressed.Location = new System.Drawing.Point(103, 243);
+            this.filePictureBoxGreenCapSwitchPressed.Location = new System.Drawing.Point(103, 242);
             this.filePictureBoxGreenCapSwitchPressed.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxGreenCapSwitchPressed.Name = "filePictureBoxGreenCapSwitchPressed";
             this.filePictureBoxGreenCapSwitchPressed.Size = new System.Drawing.Size(30, 30);
@@ -3681,7 +3683,7 @@ namespace SM64_Diagnostic
             // filePictureBoxRedCapSwitchPressed
             // 
             this.filePictureBoxRedCapSwitchPressed.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxRedCapSwitchPressed.Image")));
-            this.filePictureBoxRedCapSwitchPressed.Location = new System.Drawing.Point(69, 243);
+            this.filePictureBoxRedCapSwitchPressed.Location = new System.Drawing.Point(69, 242);
             this.filePictureBoxRedCapSwitchPressed.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxRedCapSwitchPressed.Name = "filePictureBoxRedCapSwitchPressed";
             this.filePictureBoxRedCapSwitchPressed.Size = new System.Drawing.Size(30, 30);
@@ -3692,7 +3694,7 @@ namespace SM64_Diagnostic
             // filePictureBoxFileStarted
             // 
             this.filePictureBoxFileStarted.Image = ((System.Drawing.Image)(resources.GetObject("filePictureBoxFileStarted.Image")));
-            this.filePictureBoxFileStarted.Location = new System.Drawing.Point(23, 243);
+            this.filePictureBoxFileStarted.Location = new System.Drawing.Point(23, 242);
             this.filePictureBoxFileStarted.Margin = new System.Windows.Forms.Padding(0);
             this.filePictureBoxFileStarted.Name = "filePictureBoxFileStarted";
             this.filePictureBoxFileStarted.Size = new System.Drawing.Size(41, 30);
@@ -3702,7 +3704,7 @@ namespace SM64_Diagnostic
             // 
             // buttonNothing
             // 
-            this.buttonNothing.Location = new System.Drawing.Point(269, 319);
+            this.buttonNothing.Location = new System.Drawing.Point(269, 316);
             this.buttonNothing.Margin = new System.Windows.Forms.Padding(0);
             this.buttonNothing.Name = "buttonNothing";
             this.buttonNothing.Size = new System.Drawing.Size(65, 30);
@@ -3712,7 +3714,7 @@ namespace SM64_Diagnostic
             // 
             // buttonEverything
             // 
-            this.buttonEverything.Location = new System.Drawing.Point(269, 288);
+            this.buttonEverything.Location = new System.Drawing.Point(269, 286);
             this.buttonEverything.Margin = new System.Windows.Forms.Padding(0);
             this.buttonEverything.Name = "buttonEverything";
             this.buttonEverything.Size = new System.Drawing.Size(65, 30);
@@ -3722,7 +3724,7 @@ namespace SM64_Diagnostic
             // 
             // buttonNoStars
             // 
-            this.buttonNoStars.Location = new System.Drawing.Point(21, 319);
+            this.buttonNoStars.Location = new System.Drawing.Point(21, 316);
             this.buttonNoStars.Margin = new System.Windows.Forms.Padding(0);
             this.buttonNoStars.Name = "buttonNoStars";
             this.buttonNoStars.Size = new System.Drawing.Size(56, 30);
@@ -3732,7 +3734,7 @@ namespace SM64_Diagnostic
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(77, 319);
+            this.button2.Location = new System.Drawing.Point(77, 316);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(74, 30);
@@ -3742,7 +3744,7 @@ namespace SM64_Diagnostic
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(77, 288);
+            this.button1.Location = new System.Drawing.Point(77, 286);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 30);
@@ -3752,7 +3754,7 @@ namespace SM64_Diagnostic
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(151, 319);
+            this.button4.Location = new System.Drawing.Point(151, 316);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(60, 30);
@@ -3762,7 +3764,7 @@ namespace SM64_Diagnostic
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(151, 288);
+            this.button3.Location = new System.Drawing.Point(151, 286);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(60, 30);
@@ -3772,7 +3774,7 @@ namespace SM64_Diagnostic
             // 
             // buttonAllStars
             // 
-            this.buttonAllStars.Location = new System.Drawing.Point(21, 288);
+            this.buttonAllStars.Location = new System.Drawing.Point(21, 286);
             this.buttonAllStars.Margin = new System.Windows.Forms.Padding(0);
             this.buttonAllStars.Name = "buttonAllStars";
             this.buttonAllStars.Size = new System.Drawing.Size(56, 30);
@@ -3782,17 +3784,17 @@ namespace SM64_Diagnostic
             // 
             // buttonFileErase
             // 
-            this.buttonFileErase.Location = new System.Drawing.Point(253, 93);
+            this.buttonFileErase.Location = new System.Drawing.Point(268, 396);
             this.buttonFileErase.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileErase.Name = "buttonFileErase";
-            this.buttonFileErase.Size = new System.Drawing.Size(45, 30);
+            this.buttonFileErase.Size = new System.Drawing.Size(65, 30);
             this.buttonFileErase.TabIndex = 41;
             this.buttonFileErase.Text = "Erase";
             this.buttonFileErase.UseVisualStyleBackColor = true;
             // 
             // buttonFileNumStars
             // 
-            this.buttonFileNumStars.Location = new System.Drawing.Point(235, 19);
+            this.buttonFileNumStars.Location = new System.Drawing.Point(235, 60);
             this.buttonFileNumStars.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileNumStars.Name = "buttonFileNumStars";
             this.buttonFileNumStars.Size = new System.Drawing.Size(80, 40);
@@ -6760,10 +6762,10 @@ namespace SM64_Diagnostic
             // 
             // buttonFileSave
             // 
-            this.buttonFileSave.Location = new System.Drawing.Point(253, 61);
+            this.buttonFileSave.Location = new System.Drawing.Point(268, 366);
             this.buttonFileSave.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileSave.Name = "buttonFileSave";
-            this.buttonFileSave.Size = new System.Drawing.Size(45, 30);
+            this.buttonFileSave.Size = new System.Drawing.Size(65, 30);
             this.buttonFileSave.TabIndex = 36;
             this.buttonFileSave.Text = "Save";
             this.buttonFileSave.UseVisualStyleBackColor = true;
@@ -7561,8 +7563,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9170,7 +9172,7 @@ namespace SM64_Diagnostic
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(211, 288);
+            this.button5.Location = new System.Drawing.Point(211, 286);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(58, 30);
@@ -9180,13 +9182,25 @@ namespace SM64_Diagnostic
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(211, 319);
+            this.button6.Location = new System.Drawing.Point(211, 316);
             this.button6.Margin = new System.Windows.Forms.Padding(0);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(58, 30);
             this.button6.TabIndex = 42;
             this.button6.Text = "No Coins";
             this.button6.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(9, 42);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(72, 17);
+            this.radioButton1.TabIndex = 11;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "255 Coins";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -10168,6 +10182,7 @@ namespace SM64_Diagnostic
         private Button button3;
         private Button button6;
         private Button button5;
+        private RadioButton radioButton1;
     }
 }
 
