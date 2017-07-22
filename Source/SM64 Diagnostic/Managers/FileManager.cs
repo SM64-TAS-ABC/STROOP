@@ -585,13 +585,13 @@ namespace SM64_Diagnostic.Managers
 
             if (fileCategories.Contains(FileCategory.Misc))
             {
-                setValues(Config.File.FileStartedOffset, Config.File.FileStartedMask, setOn ? true : (bool?)null);
+                setValues(Config.File.FileStartedOffset, Config.File.FileStartedMask, setOn);
                 setValues(Config.File.CapSwitchPressedOffset, Config.File.RedCapSwitchMask, setOn);
                 setValues(Config.File.CapSwitchPressedOffset, Config.File.GreenCapSwitchMask, setOn);
                 setValues(Config.File.CapSwitchPressedOffset, Config.File.BlueCapSwitchMask, setOn);
                 setValues(Config.File.MoatDrainedOffset, Config.File.MoatDrainedMask, setOn);
                 setValues(Config.File.DDDMovedBackOffset, Config.File.DDDMovedBackMask, setOn);
-                setValues(Config.File.HatLocationModeOffset, Config.File.HatLocationModeMask, setOn ? false : (bool?)null);
+                setValues(Config.File.HatLocationModeOffset, Config.File.HatLocationModeMask, false);
             }
 
             SetBufferedBytes(bufferedBytes);
