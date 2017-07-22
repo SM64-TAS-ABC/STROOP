@@ -247,12 +247,12 @@ namespace SM64_Diagnostic
             this.buttonNothing = new System.Windows.Forms.Button();
             this.buttonEverything = new System.Windows.Forms.Button();
             this.buttonNoStars = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonNoCannons = new System.Windows.Forms.Button();
+            this.buttonAllCannons = new System.Windows.Forms.Button();
+            this.buttonNoCoins = new System.Windows.Forms.Button();
+            this.buttonNoDoors = new System.Windows.Forms.Button();
+            this.buttonAllCoins = new System.Windows.Forms.Button();
+            this.buttonAllDoors = new System.Windows.Forms.Button();
             this.buttonAllStars = new System.Windows.Forms.Button();
             this.buttonFileErase = new System.Windows.Forms.Button();
             this.buttonFileNumStars = new System.Windows.Forms.Button();
@@ -3357,12 +3357,12 @@ namespace SM64_Diagnostic
             this.splitContainerFile.Panel1.Controls.Add(this.buttonNothing);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonEverything);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonNoStars);
-            this.splitContainerFile.Panel1.Controls.Add(this.button2);
-            this.splitContainerFile.Panel1.Controls.Add(this.button1);
-            this.splitContainerFile.Panel1.Controls.Add(this.button6);
-            this.splitContainerFile.Panel1.Controls.Add(this.button4);
-            this.splitContainerFile.Panel1.Controls.Add(this.button5);
-            this.splitContainerFile.Panel1.Controls.Add(this.button3);
+            this.splitContainerFile.Panel1.Controls.Add(this.buttonNoCannons);
+            this.splitContainerFile.Panel1.Controls.Add(this.buttonAllCannons);
+            this.splitContainerFile.Panel1.Controls.Add(this.buttonNoCoins);
+            this.splitContainerFile.Panel1.Controls.Add(this.buttonNoDoors);
+            this.splitContainerFile.Panel1.Controls.Add(this.buttonAllCoins);
+            this.splitContainerFile.Panel1.Controls.Add(this.buttonAllDoors);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonAllStars);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonFileErase);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonFileNumStars);
@@ -3465,65 +3465,65 @@ namespace SM64_Diagnostic
             this.buttonNoStars.Text = "No Stars";
             this.buttonNoStars.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonNoCannons
             // 
-            this.button2.Location = new System.Drawing.Point(77, 316);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(74, 30);
-            this.button2.TabIndex = 42;
-            this.button2.Text = "No Cannons";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonNoCannons.Location = new System.Drawing.Point(77, 316);
+            this.buttonNoCannons.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonNoCannons.Name = "buttonNoCannons";
+            this.buttonNoCannons.Size = new System.Drawing.Size(74, 30);
+            this.buttonNoCannons.TabIndex = 42;
+            this.buttonNoCannons.Text = "No Cannons";
+            this.buttonNoCannons.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonAllCannons
             // 
-            this.button1.Location = new System.Drawing.Point(77, 286);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 30);
-            this.button1.TabIndex = 42;
-            this.button1.Text = "All Cannons";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonAllCannons.Location = new System.Drawing.Point(77, 286);
+            this.buttonAllCannons.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonAllCannons.Name = "buttonAllCannons";
+            this.buttonAllCannons.Size = new System.Drawing.Size(74, 30);
+            this.buttonAllCannons.TabIndex = 42;
+            this.buttonAllCannons.Text = "All Cannons";
+            this.buttonAllCannons.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // buttonNoCoins
             // 
-            this.button6.Location = new System.Drawing.Point(211, 316);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(58, 30);
-            this.button6.TabIndex = 42;
-            this.button6.Text = "No Coins";
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonNoCoins.Location = new System.Drawing.Point(211, 316);
+            this.buttonNoCoins.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonNoCoins.Name = "buttonNoCoins";
+            this.buttonNoCoins.Size = new System.Drawing.Size(58, 30);
+            this.buttonNoCoins.TabIndex = 42;
+            this.buttonNoCoins.Text = "No Coins";
+            this.buttonNoCoins.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonNoDoors
             // 
-            this.button4.Location = new System.Drawing.Point(151, 316);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(60, 30);
-            this.button4.TabIndex = 42;
-            this.button4.Text = "No Doors";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonNoDoors.Location = new System.Drawing.Point(151, 316);
+            this.buttonNoDoors.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonNoDoors.Name = "buttonNoDoors";
+            this.buttonNoDoors.Size = new System.Drawing.Size(60, 30);
+            this.buttonNoDoors.TabIndex = 42;
+            this.buttonNoDoors.Text = "No Doors";
+            this.buttonNoDoors.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // buttonAllCoins
             // 
-            this.button5.Location = new System.Drawing.Point(211, 286);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(58, 30);
-            this.button5.TabIndex = 42;
-            this.button5.Text = "All Coins";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonAllCoins.Location = new System.Drawing.Point(211, 286);
+            this.buttonAllCoins.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonAllCoins.Name = "buttonAllCoins";
+            this.buttonAllCoins.Size = new System.Drawing.Size(58, 30);
+            this.buttonAllCoins.TabIndex = 42;
+            this.buttonAllCoins.Text = "All Coins";
+            this.buttonAllCoins.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonAllDoors
             // 
-            this.button3.Location = new System.Drawing.Point(151, 286);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(60, 30);
-            this.button3.TabIndex = 42;
-            this.button3.Text = "All Doors";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonAllDoors.Location = new System.Drawing.Point(151, 286);
+            this.buttonAllDoors.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonAllDoors.Name = "buttonAllDoors";
+            this.buttonAllDoors.Size = new System.Drawing.Size(60, 30);
+            this.buttonAllDoors.TabIndex = 42;
+            this.buttonAllDoors.Text = "All Doors";
+            this.buttonAllDoors.UseVisualStyleBackColor = true;
             // 
             // buttonAllStars
             // 
@@ -3569,7 +3569,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10173,12 +10173,12 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonAllCoinsMeaningMaxWithGlitches;
         private Button button99Coins;
         private CheckBox checkBoxShowOverlayParentObject;
-        private Button button2;
-        private Button button1;
-        private Button button4;
-        private Button button3;
-        private Button button6;
-        private Button button5;
+        private Button buttonNoCannons;
+        private Button buttonAllCannons;
+        private Button buttonNoDoors;
+        private Button buttonAllDoors;
+        private Button buttonNoCoins;
+        private Button buttonAllCoins;
         private RadioButton radioButtonAllCoinsMeaning255Coins;
     }
 }
