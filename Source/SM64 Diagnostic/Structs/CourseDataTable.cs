@@ -48,5 +48,13 @@ namespace SM64_Diagnostic.Structs
 
             return _table[index].MaxCoinsWithGlitches;
         }
+
+        public string GetFullName(int index)
+        {
+            if (!_table.ContainsKey(index))
+                return null;
+
+            return _table[index].FullName;
+        }
     }
 }

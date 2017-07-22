@@ -11,6 +11,7 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using System.Drawing.Drawing2D;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic
 {
@@ -20,11 +21,30 @@ namespace SM64_Diagnostic
         protected uint _addressOffset;
         protected byte _mask;
 
+        static ToolTip _toolTip;
+        public static ToolTip AddressToolTip
+        {
+            get
+            {
+                if (_toolTip == null)
+                {
+                    _toolTip = new ToolTip();
+                    _toolTip.IsBalloon = true;
+                    _toolTip.ShowAlways = true;
+                }
+                return _toolTip;
+            }
+            set
+            {
+                _toolTip = value;
+            }
+        }
+
         public FileCourseLabel()
         {
         }
 
-        public void Initialize(ProcessStream stream, uint addressOffset, byte mask)
+        public void Initialize(ProcessStream stream, uint addressOffset, byte mask, int courseIndex)
         {
             _stream = stream;
             _addressOffset = addressOffset;
@@ -33,6 +53,9 @@ namespace SM64_Diagnostic
             this.Click += ClickAction;
             this.MouseEnter += (s, e) => this.Cursor = Cursors.Hand;
             this.MouseLeave += (s, e) => this.Cursor = Cursors.Arrow;
+
+            string fullCourseName = Config.CourseData.GetFullName(courseIndex);
+            AddressToolTip.SetToolTip(this, fullCourseName);
         }
 
         private void SetValue(byte value)

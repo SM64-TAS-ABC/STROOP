@@ -113,7 +113,7 @@ namespace SM64_Diagnostic.Managers
             {
                 string controlName = String.Format("labelFileTableRow{0}", row + 1);
                 FileCourseLabel fileCourseLabel = fileTable.Controls[controlName] as FileCourseLabel;
-                fileCourseLabel.Initialize(_stream, _courseStarsAddressOffsets[row], _courseStarsMasks[row]);
+                fileCourseLabel.Initialize(_stream, _courseStarsAddressOffsets[row], _courseStarsMasks[row], row + 1);
             }
 
             // cannons
