@@ -21,7 +21,7 @@ namespace SM64_Diagnostic.Managers
         public enum HatLocation { Mario, SSLKlepto, SSLGround, SLSnowman, SLGround, TTMUkiki, TTMGround };
 
         private enum AllCoinsMeaning { Coins100, Coins255, MaxWithoutGlitches, MaxWithGlitches };
-        private enum FileStateCategory { Stars, Cannons, Doors, Coins, Misc };
+        private enum FileCategory { Stars, Cannons, Doors, Coins, Misc };
 
         TabPage _tabControl;
         FileImageGui _gui;
@@ -246,53 +246,53 @@ namespace SM64_Diagnostic.Managers
             eraseFileButton.Click += FileEraseButton_Click;
 
             Button allStarsButton = splitContainerFile.Panel1.Controls["buttonAllStars"] as Button;
-            allStarsButton.Click += (sender, e) => FileSetCategory(true, new List<FileStateCategory> { FileStateCategory.Stars });
+            allStarsButton.Click += (sender, e) => FileSetCategory(true, new List<FileCategory> { FileCategory.Stars });
 
             Button noStarsButton = splitContainerFile.Panel1.Controls["buttonNoStars"] as Button;
-            noStarsButton.Click += (sender, e) => FileSetCategory(false, new List<FileStateCategory> { FileStateCategory.Stars });
+            noStarsButton.Click += (sender, e) => FileSetCategory(false, new List<FileCategory> { FileCategory.Stars });
 
             Button allCannonsButton = splitContainerFile.Panel1.Controls["buttonAllCannons"] as Button;
-            allCannonsButton.Click += (sender, e) => FileSetCategory(true, new List<FileStateCategory> { FileStateCategory.Cannons });
+            allCannonsButton.Click += (sender, e) => FileSetCategory(true, new List<FileCategory> { FileCategory.Cannons });
 
             Button noCannonsButton = splitContainerFile.Panel1.Controls["buttonNoCannons"] as Button;
-            noCannonsButton.Click += (sender, e) => FileSetCategory(false, new List<FileStateCategory> { FileStateCategory.Cannons });
+            noCannonsButton.Click += (sender, e) => FileSetCategory(false, new List<FileCategory> { FileCategory.Cannons });
 
             Button allDoorsButton = splitContainerFile.Panel1.Controls["buttonAllDoors"] as Button;
-            allDoorsButton.Click += (sender, e) => FileSetCategory(true, new List<FileStateCategory> { FileStateCategory.Doors });
+            allDoorsButton.Click += (sender, e) => FileSetCategory(true, new List<FileCategory> { FileCategory.Doors });
 
             Button noDoorsButton = splitContainerFile.Panel1.Controls["buttonNoDoors"] as Button;
-            noDoorsButton.Click += (sender, e) => FileSetCategory(false, new List<FileStateCategory> { FileStateCategory.Doors });
+            noDoorsButton.Click += (sender, e) => FileSetCategory(false, new List<FileCategory> { FileCategory.Doors });
 
             Button allCoinsButton = splitContainerFile.Panel1.Controls["buttonAllCoins"] as Button;
-            allCoinsButton.Click += (sender, e) => FileSetCategory(true, new List<FileStateCategory> { FileStateCategory.Coins });
+            allCoinsButton.Click += (sender, e) => FileSetCategory(true, new List<FileCategory> { FileCategory.Coins });
 
             Button noCoinsButton = splitContainerFile.Panel1.Controls["buttonNoCoins"] as Button;
-            noCoinsButton.Click += (sender, e) => FileSetCategory(false, new List<FileStateCategory> { FileStateCategory.Coins });
+            noCoinsButton.Click += (sender, e) => FileSetCategory(false, new List<FileCategory> { FileCategory.Coins });
 
             Button everythingButton = splitContainerFile.Panel1.Controls["buttonEverything"] as Button;
             everythingButton.Click += (sender, e) =>
                 FileSetCategory(
                     true,
-                    new List<FileStateCategory>
+                    new List<FileCategory>
                     {
-                        FileStateCategory.Stars,
-                        FileStateCategory.Cannons,
-                        FileStateCategory.Doors,
-                        FileStateCategory.Coins,
-                        FileStateCategory.Misc
+                        FileCategory.Stars,
+                        FileCategory.Cannons,
+                        FileCategory.Doors,
+                        FileCategory.Coins,
+                        FileCategory.Misc
                     });
 
             Button nothingButton = splitContainerFile.Panel1.Controls["buttonNothing"] as Button;
             nothingButton.Click += (sender, e) =>
                 FileSetCategory(
                     false,
-                    new List<FileStateCategory>
+                    new List<FileCategory>
                     {
-                        FileStateCategory.Stars,
-                        FileStateCategory.Cannons,
-                        FileStateCategory.Doors,
-                        FileStateCategory.Coins,
-                        FileStateCategory.Misc
+                        FileCategory.Stars,
+                        FileCategory.Cannons,
+                        FileCategory.Doors,
+                        FileCategory.Coins,
+                        FileCategory.Misc
                     });
 
             _numStarsButton = splitContainerFile.Panel1.Controls["buttonFileNumStars"] as Button;
@@ -539,7 +539,7 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private void FileSetCategory(bool setOn, List<FileStateCategory> fileCategories)
+        private void FileSetCategory(bool setOn, List<FileCategory> fileCategories)
         {
             byte[] bufferedBytes = GetBufferedBytes();
 
@@ -553,21 +553,21 @@ namespace SM64_Diagnostic.Managers
 
             for (int i = 0; i < numRows; i++)
             {
-                if (fileCategories.Contains(FileStateCategory.Stars))
+                if (fileCategories.Contains(FileCategory.Stars))
                 {
                     setValues(_courseStarsAddressOffsets[i], _courseStarsMasks[i], setOn);
                 }
-                if (fileCategories.Contains(FileStateCategory.Cannons))
+                if (fileCategories.Contains(FileCategory.Cannons))
                 {
                     setValues(_courseCannonAddressOffsets[i], _courseCannonMasks[i], setOn);
                 }
-                if (fileCategories.Contains(FileStateCategory.Doors))
+                if (fileCategories.Contains(FileCategory.Doors))
                 {
                     setValues(_courseDoorAddressOffsets[i], _courseDoorMasks[i], setOn);
                 }
             }
 
-            if (fileCategories.Contains(FileStateCategory.Coins))
+            if (fileCategories.Contains(FileCategory.Coins))
             {
                 for (int i = 0; i < 15; i++)
                 {
@@ -575,7 +575,7 @@ namespace SM64_Diagnostic.Managers
                 }
             }
 
-            if (fileCategories.Contains(FileStateCategory.Doors))
+            if (fileCategories.Contains(FileCategory.Doors))
             {
                 setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor1KeyMask, false);
                 setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor1OpenedMask, setOn);
@@ -583,7 +583,7 @@ namespace SM64_Diagnostic.Managers
                 setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor2OpenedMask, setOn);
             }
 
-            if (fileCategories.Contains(FileStateCategory.Misc))
+            if (fileCategories.Contains(FileCategory.Misc))
             {
                 setValues(Config.File.FileStartedOffset, Config.File.FileStartedMask, setOn ? true : (bool?)null);
                 setValues(Config.File.CapSwitchPressedOffset, Config.File.RedCapSwitchMask, setOn);
