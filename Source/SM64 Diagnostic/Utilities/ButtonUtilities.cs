@@ -44,7 +44,8 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             foreach (var posAddressAngle in posAddressAngles)
             {
@@ -73,7 +74,7 @@ namespace SM64_Diagnostic.Utilities
                 success &= stream.SetValue(currentZValue, posAddressAngle.ZAddress);
             }
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -197,7 +198,8 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             foreach (var objAddress in objAddresses)
             {
@@ -224,7 +226,7 @@ namespace SM64_Diagnostic.Utilities
                 success &= stream.SetValue(rollMoving, objAddress + Config.ObjectSlots.RollMovingOffset);
             }
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -283,9 +285,11 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool CloneObject(ProcessStream stream, uint objAddress)
         {
-            bool success = true;
             var marioAddress = Config.Mario.StructAddress;
-            stream.Suspend();
+
+            bool success = true;
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             uint lastObject = stream.GetUInt32(marioAddress + Config.Mario.HeldObjectPointerOffset);
             
@@ -301,16 +305,17 @@ namespace SM64_Diagnostic.Utilities
             // Set new held value
             success &= stream.SetValue(objAddress, marioAddress + Config.Mario.HeldObjectPointerOffset);
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
         public static bool UnCloneObject(ProcessStream stream, uint objAddress)
         {
-            bool success = true;
             var marioAddress = Config.Mario.StructAddress;
 
-            stream.Suspend();
+            bool success = true;
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             // Set mario's next action
             uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
@@ -320,7 +325,7 @@ namespace SM64_Diagnostic.Utilities
             // Clear mario's held object
             success &= stream.SetValue(0x00000000U, marioAddress + Config.Mario.HeldObjectPointerOffset);
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -330,11 +335,16 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             bool success = true;
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
+
             foreach (var address in addresses)
             {
                 var test = stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset);
                 success &= stream.SetValue((short) 0x0000, address + Config.ObjectSlots.ObjectActiveOffset);
             }
+
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -344,7 +354,8 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             foreach (var address in addresses)
             {
@@ -400,7 +411,7 @@ namespace SM64_Diagnostic.Utilities
                         break;
             }
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -410,12 +421,15 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
+
             foreach (var address in addresses)
             {
                 success &= stream.SetValue(Config.ObjectSlots.ReleaseStatusReleasedValue, address + Config.ObjectSlots.ReleaseStatusOffset);
             }
-            stream.Resume();
+
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -443,12 +457,15 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
+
             foreach (var address in addresses)
             {
                 success &= stream.SetValue(0xFFFFFFFF, address + Config.ObjectSlots.InteractionStatusOffset);
             }
-            stream.Resume();
+
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -458,12 +475,15 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
+
             foreach (var address in addresses)
             {
                 success &= stream.SetValue(0x00000000, address + Config.ObjectSlots.InteractionStatusOffset);
             }
-            stream.Resume();
+
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -472,7 +492,8 @@ namespace SM64_Diagnostic.Utilities
             var marioAddress = Config.Mario.StructAddress;
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             var heldObj = stream.GetUInt32(marioAddress + Config.Mario.HeldObjectPointerOffset);
 
@@ -483,14 +504,15 @@ namespace SM64_Diagnostic.Utilities
                 success = stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
             }
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
         public static bool ToggleVisibility(ProcessStream stream)
         {
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             var marioObjRef = stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
             if (marioObjRef != 0x00000000U)
@@ -507,7 +529,7 @@ namespace SM64_Diagnostic.Utilities
                 }
             }
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -547,11 +569,12 @@ namespace SM64_Diagnostic.Utilities
             yaw += (ushort)yawOffset;
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             success &= stream.SetValue(yaw, marioAddress + Config.Mario.YawFacingOffset);
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -563,11 +586,12 @@ namespace SM64_Diagnostic.Utilities
             hspd += hspdOffset;
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             success &= stream.SetValue(hspd, marioAddress + Config.Mario.HSpeedOffset);
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -579,11 +603,12 @@ namespace SM64_Diagnostic.Utilities
             vspd += vspdOffset;
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             success &= stream.SetValue(vspd, marioAddress + Config.Mario.VSpeedOffset);
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -600,7 +625,8 @@ namespace SM64_Diagnostic.Utilities
         public static bool StandardHud(ProcessStream stream)
         {
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             success &= stream.SetValue(Config.Hud.FullHp, Config.Hud.HpAddress);
             success &= stream.SetValue(Config.Hud.StandardCoins, Config.Hud.CoinCountAddress);
@@ -611,19 +637,20 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.SetValue((short)Config.Hud.StandardLives, Config.Hud.DisplayLiveCountAddress);
             success &= stream.SetValue(Config.Hud.StandardStars, Config.Hud.DisplayStarCountAddress);
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
         public static bool Coins99(ProcessStream stream)
         {
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             success &= stream.SetValue((short)99, Config.Hud.CoinCountAddress);
             success &= stream.SetValue((short)99, Config.Hud.DisplayCoinCountAddress);
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -699,8 +726,9 @@ namespace SM64_Diagnostic.Utilities
             short yMax = (short)(Math.Max(Math.Max(v1Y, v2Y), v3Y) + 5);
 
             bool success = true;
-            stream.Suspend();
-            
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
+
             success &= stream.SetValue(v1Y, triangleAddress + Config.TriangleOffsets.Y1);
             success &= stream.SetValue(v2Y, triangleAddress + Config.TriangleOffsets.Y2);
             success &= stream.SetValue(v3Y, triangleAddress + Config.TriangleOffsets.Y3);
@@ -708,7 +736,7 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.SetValue(yMax, triangleAddress + Config.TriangleOffsets.YMax);
             success &= stream.SetValue(normOffset, triangleAddress + Config.TriangleOffsets.Offset);
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -720,11 +748,12 @@ namespace SM64_Diagnostic.Utilities
             short neutralizedSurfaceType = (short)(Config.NeutralizeTriangleWith21 ? 21 : 0);
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             success &= stream.SetValue(neutralizedSurfaceType, triangleAddress + Config.TriangleOffsets.SurfaceType);
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -750,7 +779,8 @@ namespace SM64_Diagnostic.Utilities
             float normOffset = 16000;
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             success &= stream.SetValue(v1X, triangleAddress + Config.TriangleOffsets.X1);
             success &= stream.SetValue(v1Y, triangleAddress + Config.TriangleOffsets.Y1);
@@ -766,7 +796,7 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.SetValue(normZ, triangleAddress + Config.TriangleOffsets.NormZ);
             success &= stream.SetValue(normOffset, triangleAddress + Config.TriangleOffsets.Offset);
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -804,7 +834,8 @@ namespace SM64_Diagnostic.Utilities
             short newYMax = (short)(Math.Max(Math.Max(newY1, newY2), newY3) + 5);
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             success &= stream.SetValue(newNormOffset, triangleAddress + Config.TriangleOffsets.Offset);
             success &= stream.SetValue(newX1, triangleAddress + Config.TriangleOffsets.X1);
@@ -819,7 +850,7 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.SetValue(newYMin, triangleAddress + Config.TriangleOffsets.YMin);
             success &= stream.SetValue(newYMax, triangleAddress + Config.TriangleOffsets.YMax);
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -855,7 +886,8 @@ namespace SM64_Diagnostic.Utilities
             short newYMax = (short)(Math.Max(Math.Max(newY1, newY2), newY3) + 5);
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             success &= stream.SetValue(newNormOffset, triangleAddress + Config.TriangleOffsets.Offset);
             success &= stream.SetValue(newX1, triangleAddress + Config.TriangleOffsets.X1);
@@ -870,7 +902,7 @@ namespace SM64_Diagnostic.Utilities
             success &= stream.SetValue(newYMin, triangleAddress + Config.TriangleOffsets.YMin);
             success &= stream.SetValue(newYMax, triangleAddress + Config.TriangleOffsets.YMax);
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -904,13 +936,14 @@ namespace SM64_Diagnostic.Utilities
             (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ);
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
 
             success &= stream.SetValue((float)newX, Config.Camera.CameraStructAddress + Config.Camera.XOffset);
             success &= stream.SetValue((float)newY, Config.Camera.CameraStructAddress + Config.Camera.YOffset);
             success &= stream.SetValue((float)newZ, Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
 
-            stream.Resume();
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
@@ -1035,13 +1068,14 @@ namespace SM64_Diagnostic.Utilities
                     }
 
                     bool success = true;
-                    stream.Suspend();
+                    bool streamAlreadySuspended = stream.IsSuspended;
+                    if (!streamAlreadySuspended) stream.Suspend();
 
                     success &= stream.SetValue((float)radius, Config.CameraHack.CameraHackStruct + Config.CameraHack.RadiusOffset);
                     success &= stream.SetValue(MoreMath.FormatAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
                     success &= stream.SetValue((float)height, Config.CameraHack.CameraHackStruct + Config.CameraHack.RelativeHeightOffset);
 
-                    stream.Resume();
+                    if (!streamAlreadySuspended) stream.Resume();
                     return success;
                 }
 
@@ -1127,13 +1161,14 @@ namespace SM64_Diagnostic.Utilities
                     }
 
                     bool success = true;
-                    stream.Suspend();
+                    bool streamAlreadySuspended = stream.IsSuspended;
+                    if (!streamAlreadySuspended) stream.Suspend();
 
                     success &= stream.SetValue((float)radius, Config.CameraHack.CameraHackStruct + Config.CameraHack.RadiusOffset);
                     success &= stream.SetValue(MoreMath.FormatAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
                     success &= stream.SetValue((float)height, Config.CameraHack.CameraHackStruct + Config.CameraHack.RelativeHeightOffset);
 
-                    stream.Resume();
+                    if (!streamAlreadySuspended) stream.Resume();
                     return success;
                 }
 
@@ -1185,72 +1220,18 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool TranslateCameraHackBoth(ProcessStream stream, CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            switch (camHackMode)
+            bool success = true;
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
+
+            if (camHackMode != CamHackMode.RELATIVE_ANGLE && camHackMode != CamHackMode.ABSOLUTE_ANGLE)
             {
-                case CamHackMode.REGULAR:
-                    {
-                        return TranslateCamera(stream, xOffset, yOffset, zOffset, useRelative);
-                    }
-
-                case CamHackMode.FIXED_POS:
-                case CamHackMode.FIXED_ORIENTATION:
-                    {
-                        return MoveThings(
-                            stream,
-                            new List<TripleAddressAngle> {
-                            new TripleAddressAngle(
-                                Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset,
-                                Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset,
-                                Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset,
-                                getCamHackYawFacing(stream, camHackMode))
-                            },
-                            xOffset,
-                            yOffset,
-                            zOffset,
-                            Change.ADD,
-                            useRelative);
-                    }
-
-                case CamHackMode.RELATIVE_ANGLE:
-                case CamHackMode.ABSOLUTE_ANGLE:
-                    {
-                        handleScaling(ref xOffset, ref zOffset);
-
-                        handleRelativeAngle(ref xOffset, ref zOffset, useRelative, getCamHackYawFacing(stream, camHackMode));
-                        float xDestination = xOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
-                        float yDestination = yOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
-                        float zDestination = zOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
-
-                        float xFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusXOffset);
-                        float yFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusYOffset);
-                        float zFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusZOffset);
-
-                        double radius, theta, height;
-                        (radius, theta, height) = MoreMath.EulerToCylindricalAboutPivot(xDestination, yDestination, zDestination, xFocus, yFocus, zFocus);
-
-                        ushort relativeYawOffset = 0;
-                        if (camHackMode == CamHackMode.RELATIVE_ANGLE)
-                        {
-                            uint camHackObject = stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
-                            relativeYawOffset = camHackObject == 0
-                                ? stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset)
-                                : stream.GetUInt16(camHackObject + Config.ObjectSlots.YawFacingOffset);
-                        }
-
-                        bool success = true;
-                        stream.Suspend();
-
-                        success &= stream.SetValue((float)radius, Config.CameraHack.CameraHackStruct + Config.CameraHack.RadiusOffset);
-                        success &= stream.SetValue(MoreMath.FormatAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
-                        success &= stream.SetValue((float)height, Config.CameraHack.CameraHackStruct + Config.CameraHack.RelativeHeightOffset);
-
-                        stream.Resume();
-                        return success;
-                    }
-
-                default:
-                    throw new ArgumentOutOfRangeException();
+                success &= TranslateCameraHack(stream, camHackMode, xOffset, yOffset, zOffset, useRelative);
             }
+            success &= TranslateCameraHackFocus(stream, camHackMode, xOffset, yOffset, zOffset, useRelative);
+
+            if (!streamAlreadySuspended) stream.Resume();
+            return success;
         }
     }
 }
