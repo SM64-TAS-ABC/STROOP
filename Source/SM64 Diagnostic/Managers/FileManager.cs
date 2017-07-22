@@ -29,16 +29,10 @@ namespace SM64_Diagnostic.Managers
 
         private AllCoinsMeaning currentAllCoinsMeaning;
 
-        Button _saveFileButton;
-        Button _eraseFileButton;
-        Button _allStarsButton;
-        Button _noStarsButton;
-        Button _everythingButton;
-        Button _nothingButton;
-        Button _numStarsButton;
-
         List<FilePictureBox> _filePictureBoxList;
         List<FileTextbox> _fileTextboxList;
+
+        Button _numStarsButton;
 
         int numRows = 26;
 
@@ -243,23 +237,41 @@ namespace SM64_Diagnostic.Managers
             _filePictureBoxList.Add(filePictureBoxDDDMovedBack);
 
             // buttons
-            _saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
-            _saveFileButton.Click += FileSaveButton_Click;
+            Button saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
+            saveFileButton.Click += FileSaveButton_Click;
 
-            _eraseFileButton = splitContainerFile.Panel1.Controls["buttonFileErase"] as Button;
-            _eraseFileButton.Click += FileEraseButton_Click;
+            Button eraseFileButton = splitContainerFile.Panel1.Controls["buttonFileErase"] as Button;
+            eraseFileButton.Click += FileEraseButton_Click;
 
-            _allStarsButton = splitContainerFile.Panel1.Controls["buttonAllStars"] as Button;
-            _allStarsButton.Click += (sender, e) => FileSetStars(true);
+            Button allStarsButton = splitContainerFile.Panel1.Controls["buttonAllStars"] as Button;
+            allStarsButton.Click += (sender, e) => FileSetStars(true);
 
-            _noStarsButton = splitContainerFile.Panel1.Controls["buttonNoStars"] as Button;
-            _noStarsButton.Click += (sender, e) => FileSetStars(false);
+            Button noStarsButton = splitContainerFile.Panel1.Controls["buttonNoStars"] as Button;
+            noStarsButton.Click += (sender, e) => FileSetStars(false);
 
-            _everythingButton = splitContainerFile.Panel1.Controls["buttonEverything"] as Button;
-            _everythingButton.Click += (sender, e) => FileSetEverything(true);
+            Button allCannonsButton = splitContainerFile.Panel1.Controls["buttonAllCannons"] as Button;
+            allCannonsButton.Click += (sender, e) => FileSetCannons(true);
 
-            _nothingButton = splitContainerFile.Panel1.Controls["buttonNothing"] as Button;
-            _nothingButton.Click += (sender, e) => FileSetEverything(false);
+            Button noCannonsButton = splitContainerFile.Panel1.Controls["buttonNoCannons"] as Button;
+            noCannonsButton.Click += (sender, e) => FileSetCannons(false);
+
+            Button allDoorsButton = splitContainerFile.Panel1.Controls["buttonAllDoors"] as Button;
+            allDoorsButton.Click += (sender, e) => FileSetDoors(true);
+
+            Button noDoorsButton = splitContainerFile.Panel1.Controls["buttonNoDoors"] as Button;
+            noDoorsButton.Click += (sender, e) => FileSetDoors(false);
+
+            Button allCoinsButton = splitContainerFile.Panel1.Controls["buttonAllCoins"] as Button;
+            allCoinsButton.Click += (sender, e) => FileSetCoins(true);
+
+            Button noCoinsButton = splitContainerFile.Panel1.Controls["buttonNoCoins"] as Button;
+            noCoinsButton.Click += (sender, e) => FileSetCoins(false);
+
+            Button everythingButton = splitContainerFile.Panel1.Controls["buttonEverything"] as Button;
+            everythingButton.Click += (sender, e) => FileSetEverything(true);
+
+            Button nothingButton = splitContainerFile.Panel1.Controls["buttonNothing"] as Button;
+            nothingButton.Click += (sender, e) => FileSetEverything(false);
 
             _numStarsButton = splitContainerFile.Panel1.Controls["buttonFileNumStars"] as Button;
             _numStarsButton.Click += NumStarsButton_Click;
@@ -489,6 +501,51 @@ namespace SM64_Diagnostic.Managers
         }
 
         private void FileSetStars(bool starsOn)
+        {
+            byte[] bufferedBytes = GetBufferedBytes();
+            for (int i = 0; i < numRows; i++)
+            {
+                uint courseAddressOffset = _courseStarsAddressOffsets[i];
+                byte courseMask = _courseStarsMasks[i];
+
+                byte oldByte = bufferedBytes[courseAddressOffset];
+                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, courseMask, starsOn);
+                bufferedBytes[courseAddressOffset] = newByte;
+            }
+            SetBufferedBytes(bufferedBytes);
+        }
+
+        private void FileSetCannons(bool starsOn)
+        {
+            byte[] bufferedBytes = GetBufferedBytes();
+            for (int i = 0; i < numRows; i++)
+            {
+                uint courseAddressOffset = _courseStarsAddressOffsets[i];
+                byte courseMask = _courseStarsMasks[i];
+
+                byte oldByte = bufferedBytes[courseAddressOffset];
+                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, courseMask, starsOn);
+                bufferedBytes[courseAddressOffset] = newByte;
+            }
+            SetBufferedBytes(bufferedBytes);
+        }
+
+        private void FileSetDoors(bool starsOn)
+        {
+            byte[] bufferedBytes = GetBufferedBytes();
+            for (int i = 0; i < numRows; i++)
+            {
+                uint courseAddressOffset = _courseStarsAddressOffsets[i];
+                byte courseMask = _courseStarsMasks[i];
+
+                byte oldByte = bufferedBytes[courseAddressOffset];
+                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, courseMask, starsOn);
+                bufferedBytes[courseAddressOffset] = newByte;
+            }
+            SetBufferedBytes(bufferedBytes);
+        }
+
+        private void FileSetCoins(bool starsOn)
         {
             byte[] bufferedBytes = GetBufferedBytes();
             for (int i = 0; i < numRows; i++)
