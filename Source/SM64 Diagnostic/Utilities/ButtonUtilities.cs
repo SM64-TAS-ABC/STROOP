@@ -1182,5 +1182,75 @@ namespace SM64_Diagnostic.Utilities
                 (float)zDestination,
                 Change.SET);
         }
+
+        public static bool TranslateCameraHackBoth(ProcessStream stream, CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
+        {
+            switch (camHackMode)
+            {
+                case CamHackMode.REGULAR:
+                    {
+                        return TranslateCamera(stream, xOffset, yOffset, zOffset, useRelative);
+                    }
+
+                case CamHackMode.FIXED_POS:
+                case CamHackMode.FIXED_ORIENTATION:
+                    {
+                        return MoveThings(
+                            stream,
+                            new List<TripleAddressAngle> {
+                            new TripleAddressAngle(
+                                Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset,
+                                Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset,
+                                Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset,
+                                getCamHackYawFacing(stream, camHackMode))
+                            },
+                            xOffset,
+                            yOffset,
+                            zOffset,
+                            Change.ADD,
+                            useRelative);
+                    }
+
+                case CamHackMode.RELATIVE_ANGLE:
+                case CamHackMode.ABSOLUTE_ANGLE:
+                    {
+                        handleScaling(ref xOffset, ref zOffset);
+
+                        handleRelativeAngle(ref xOffset, ref zOffset, useRelative, getCamHackYawFacing(stream, camHackMode));
+                        float xDestination = xOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
+                        float yDestination = yOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
+                        float zDestination = zOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
+
+                        float xFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusXOffset);
+                        float yFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusYOffset);
+                        float zFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusZOffset);
+
+                        double radius, theta, height;
+                        (radius, theta, height) = MoreMath.EulerToCylindricalAboutPivot(xDestination, yDestination, zDestination, xFocus, yFocus, zFocus);
+
+                        ushort relativeYawOffset = 0;
+                        if (camHackMode == CamHackMode.RELATIVE_ANGLE)
+                        {
+                            uint camHackObject = stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
+                            relativeYawOffset = camHackObject == 0
+                                ? stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset)
+                                : stream.GetUInt16(camHackObject + Config.ObjectSlots.YawFacingOffset);
+                        }
+
+                        bool success = true;
+                        stream.Suspend();
+
+                        success &= stream.SetValue((float)radius, Config.CameraHack.CameraHackStruct + Config.CameraHack.RadiusOffset);
+                        success &= stream.SetValue(MoreMath.FormatAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
+                        success &= stream.SetValue((float)height, Config.CameraHack.CameraHackStruct + Config.CameraHack.RelativeHeightOffset);
+
+                        stream.Resume();
+                        return success;
+                    }
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }

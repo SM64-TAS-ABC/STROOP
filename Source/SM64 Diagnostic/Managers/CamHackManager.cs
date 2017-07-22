@@ -152,6 +152,33 @@ namespace SM64_Diagnostic.Managers
                         hOffset,
                         -1 * vOffset);
                 });
+
+            var cameraHackBothPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackBothPos"] as GroupBox;
+            ThreeDimensionController.initialize(
+                CoordinateSystem.Euler,
+                cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosXn"] as Button,
+                cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosXp"] as Button,
+                cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosZn"] as Button,
+                cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosZp"] as Button,
+                cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosXnZn"] as Button,
+                cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosXnZp"] as Button,
+                cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosXpZn"] as Button,
+                cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosXpZp"] as Button,
+                cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosYp"] as Button,
+                cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosYn"] as Button,
+                cameraHackBothPosGroupBox.Controls["textBoxCameraHackBothPosXZ"] as TextBox,
+                cameraHackBothPosGroupBox.Controls["textBoxCameraHackBothPosY"] as TextBox,
+                cameraHackBothPosGroupBox.Controls["checkBoxCameraHackBothPosRelative"] as CheckBox,
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
+                {
+                    ButtonUtilities.TranslateCameraHackBoth(
+                        _stream,
+                        _currentCamHackMode,
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
+                        useRelative);
+                });
         }
 
         public override void Update(bool updateView)
