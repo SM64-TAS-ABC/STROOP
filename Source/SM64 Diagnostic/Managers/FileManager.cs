@@ -19,7 +19,7 @@ namespace SM64_Diagnostic.Managers
 
         public enum FileMode { FileA, FileB, FileC, FileD, FileASaved, FileBSaved, FileCSaved, FileDSaved };
         public enum HatLocation { Mario, SSLKlepto, SSLGround, SLSnowman, SLGround, TTMUkiki, TTMGround };
-        public enum EverythingCoinScore { Coins100, MaxWithoutGlitches, MaxWithGlitches };
+        public enum AllCoinsMeaning { Coins100, MaxWithoutGlitches, MaxWithGlitches };
 
         TabPage _tabControl;
         FileImageGui _gui;
@@ -27,7 +27,7 @@ namespace SM64_Diagnostic.Managers
         public FileMode CurrentFileMode { get; private set; }
         public uint CurrentFileAddress { get; private set; }
 
-        private EverythingCoinScore currentEverythingCoinScore;
+        private AllCoinsMeaning currentAllCoinsMeaning;
 
         Button _saveFileButton;
         Button _eraseFileButton;
@@ -68,7 +68,7 @@ namespace SM64_Diagnostic.Managers
 
             CurrentFileMode = FileMode.FileA;
             CurrentFileAddress = Config.File.FileAAddress;
-            currentEverythingCoinScore = EverythingCoinScore.Coins100;
+            currentAllCoinsMeaning = AllCoinsMeaning.Coins100;
 
             SplitContainer splitContainerFile = tabControl.Controls["splitContainerFile"] as SplitContainer;
 
@@ -265,13 +265,13 @@ namespace SM64_Diagnostic.Managers
             _numStarsButton.Click += NumStarsButton_Click;
 
             // everything coin score radio buttons
-            GroupBox everythingCoinScoreGroupbox = splitContainerFile.Panel1.Controls["groupBoxEverythingCoinScores"] as GroupBox;
-            (everythingCoinScoreGroupbox.Controls["radioButtonEverythingCoinScore100Coins"] as RadioButton).Click
-                += (sender, e) => { currentEverythingCoinScore = EverythingCoinScore.Coins100; };
-            (everythingCoinScoreGroupbox.Controls["radioButtonEverythingCoinScoreMaxWithoutGlitches"] as RadioButton).Click
-                += (sender, e) => { currentEverythingCoinScore = EverythingCoinScore.MaxWithoutGlitches; };
-            (everythingCoinScoreGroupbox.Controls["radioButtonEverythingCoinScoreMaxWithGlitches"] as RadioButton).Click
-                += (sender, e) => { currentEverythingCoinScore = EverythingCoinScore.MaxWithGlitches; };
+            GroupBox allCoinsMeaningGroupbox = splitContainerFile.Panel1.Controls["groupBoxAllCoinsMeaning"] as GroupBox;
+            (allCoinsMeaningGroupbox.Controls["radioButtonAllCoinsMeaning100Coins"] as RadioButton).Click
+                += (sender, e) => { currentAllCoinsMeaning = AllCoinsMeaning.Coins100; };
+            (allCoinsMeaningGroupbox.Controls["radioButtonAllCoinsMeaningMaxWithoutGlitches"] as RadioButton).Click
+                += (sender, e) => { currentAllCoinsMeaning = AllCoinsMeaning.MaxWithoutGlitches; };
+            (allCoinsMeaningGroupbox.Controls["radioButtonAllCoinsMeaningMaxWithGlitches"] as RadioButton).Click
+                += (sender, e) => { currentAllCoinsMeaning = AllCoinsMeaning.MaxWithGlitches; };
         }
 
         private short CalculateNumStars()
@@ -522,8 +522,8 @@ namespace SM64_Diagnostic.Managers
 
             for (int i = 0; i < 15; i++)
             {
-                byte coinScore = currentEverythingCoinScore == EverythingCoinScore.Coins100 ? (byte)100 :
-                    currentEverythingCoinScore == EverythingCoinScore.MaxWithoutGlitches ? (byte)Config.CourseData.GetMaxCoinsWithoutGlitches(i+1) :
+                byte coinScore = currentAllCoinsMeaning == AllCoinsMeaning.Coins100 ? (byte)100 :
+                    currentAllCoinsMeaning == AllCoinsMeaning.MaxWithoutGlitches ? (byte)Config.CourseData.GetMaxCoinsWithoutGlitches(i+1) :
                     (byte)Config.CourseData.GetMaxCoinsWithGlitches(i+1);
                 bufferedBytes[Config.File.CoinScoreOffsetStart + (uint)i] = everythingOn ? coinScore : (byte)0;
             }
