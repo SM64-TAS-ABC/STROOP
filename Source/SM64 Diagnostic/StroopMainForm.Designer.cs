@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -3698,10 +3698,10 @@ namespace SM64_Diagnostic
             // 
             // buttonNothing
             // 
-            this.buttonNothing.Location = new System.Drawing.Point(220, 335);
+            this.buttonNothing.Location = new System.Drawing.Point(220, 319);
             this.buttonNothing.Margin = new System.Windows.Forms.Padding(0);
             this.buttonNothing.Name = "buttonNothing";
-            this.buttonNothing.Size = new System.Drawing.Size(65, 40);
+            this.buttonNothing.Size = new System.Drawing.Size(65, 30);
             this.buttonNothing.TabIndex = 45;
             this.buttonNothing.Text = "Nothing";
             this.buttonNothing.UseVisualStyleBackColor = true;
@@ -3711,17 +3711,17 @@ namespace SM64_Diagnostic
             this.buttonEverything.Location = new System.Drawing.Point(220, 288);
             this.buttonEverything.Margin = new System.Windows.Forms.Padding(0);
             this.buttonEverything.Name = "buttonEverything";
-            this.buttonEverything.Size = new System.Drawing.Size(65, 40);
+            this.buttonEverything.Size = new System.Drawing.Size(65, 30);
             this.buttonEverything.TabIndex = 44;
             this.buttonEverything.Text = "Everything";
             this.buttonEverything.UseVisualStyleBackColor = true;
             // 
             // buttonNoStars
             // 
-            this.buttonNoStars.Location = new System.Drawing.Point(23, 335);
+            this.buttonNoStars.Location = new System.Drawing.Point(23, 319);
             this.buttonNoStars.Margin = new System.Windows.Forms.Padding(0);
             this.buttonNoStars.Name = "buttonNoStars";
-            this.buttonNoStars.Size = new System.Drawing.Size(59, 40);
+            this.buttonNoStars.Size = new System.Drawing.Size(59, 30);
             this.buttonNoStars.TabIndex = 43;
             this.buttonNoStars.Text = "No Stars";
             this.buttonNoStars.UseVisualStyleBackColor = true;
@@ -3731,17 +3731,17 @@ namespace SM64_Diagnostic
             this.buttonAllStars.Location = new System.Drawing.Point(23, 288);
             this.buttonAllStars.Margin = new System.Windows.Forms.Padding(0);
             this.buttonAllStars.Name = "buttonAllStars";
-            this.buttonAllStars.Size = new System.Drawing.Size(59, 40);
+            this.buttonAllStars.Size = new System.Drawing.Size(59, 30);
             this.buttonAllStars.TabIndex = 42;
             this.buttonAllStars.Text = "All Stars";
             this.buttonAllStars.UseVisualStyleBackColor = true;
             // 
             // buttonFileErase
             // 
-            this.buttonFileErase.Location = new System.Drawing.Point(286, 335);
+            this.buttonFileErase.Location = new System.Drawing.Point(286, 319);
             this.buttonFileErase.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileErase.Name = "buttonFileErase";
-            this.buttonFileErase.Size = new System.Drawing.Size(45, 40);
+            this.buttonFileErase.Size = new System.Drawing.Size(45, 30);
             this.buttonFileErase.TabIndex = 41;
             this.buttonFileErase.Text = "Erase";
             this.buttonFileErase.UseVisualStyleBackColor = true;
@@ -6719,7 +6719,7 @@ namespace SM64_Diagnostic
             this.buttonFileSave.Location = new System.Drawing.Point(286, 288);
             this.buttonFileSave.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileSave.Name = "buttonFileSave";
-            this.buttonFileSave.Size = new System.Drawing.Size(45, 40);
+            this.buttonFileSave.Size = new System.Drawing.Size(45, 30);
             this.buttonFileSave.TabIndex = 36;
             this.buttonFileSave.Text = "Save";
             this.buttonFileSave.UseVisualStyleBackColor = true;
@@ -7517,8 +7517,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9129,17 +9129,17 @@ namespace SM64_Diagnostic
             this.button1.Location = new System.Drawing.Point(83, 288);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 40);
+            this.button1.Size = new System.Drawing.Size(75, 30);
             this.button1.TabIndex = 42;
             this.button1.Text = "All Cannons";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(83, 335);
+            this.button2.Location = new System.Drawing.Point(83, 319);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 40);
+            this.button2.Size = new System.Drawing.Size(75, 30);
             this.button2.TabIndex = 42;
             this.button2.Text = "No Cannons";
             this.button2.UseVisualStyleBackColor = true;
@@ -9149,17 +9149,17 @@ namespace SM64_Diagnostic
             this.button3.Location = new System.Drawing.Point(159, 288);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(60, 40);
+            this.button3.Size = new System.Drawing.Size(60, 30);
             this.button3.TabIndex = 42;
             this.button3.Text = "All Doors";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(159, 335);
+            this.button4.Location = new System.Drawing.Point(159, 319);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(60, 40);
+            this.button4.Size = new System.Drawing.Size(60, 30);
             this.button4.TabIndex = 42;
             this.button4.Text = "No Doors";
             this.button4.UseVisualStyleBackColor = true;
