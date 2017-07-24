@@ -14,9 +14,14 @@ namespace SM64_Diagnostic.Managers
 {
     public class ActionsManager : DataManager
     {
-        public ActionsManager(ProcessStream stream, List<WatchVariable> actionsData, NoTearFlowLayoutPanel variableTable)
+        Label actionDescriptionLabel;
+        Label animationDescriptionLabel;
+
+        public ActionsManager(ProcessStream stream, List<WatchVariable> actionsData, NoTearFlowLayoutPanel variableTable, Control actionsControl)
             : base(stream, actionsData, variableTable, Config.Mario.StructAddress)
         {
+            actionDescriptionLabel = actionsControl.Controls["labelActionDescription"] as Label;
+            animationDescriptionLabel = actionsControl.Controls["labelAnimationDescription"] as Label;
         }
 
         protected override void InitializeSpecialVariables()
@@ -42,7 +47,9 @@ namespace SM64_Diagnostic.Managers
                 switch(specialVar.SpecialName)
                 {                  
                     case "ActionDescription":
-                        (specialVar as DataContainer).Text = Config.MarioActions.GetActionName(_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset));
+                        string actionDescription = Config.MarioActions.GetActionName(_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset));
+                        (specialVar as DataContainer).Text = actionDescription;
+                        actionDescriptionLabel.Text = actionDescription;
                         break;
 
                     case "PrevActionDescription":
@@ -54,7 +61,9 @@ namespace SM64_Diagnostic.Managers
                         break;
 
                     case "MarioAnimationDescription":
-                        (specialVar as DataContainer).Text = Config.MarioAnimations.GetAnimationName(marioObjAnimation);
+                        string animationDescription = Config.MarioAnimations.GetAnimationName(marioObjAnimation);
+                        (specialVar as DataContainer).Text = animationDescription;
+                        animationDescriptionLabel.Text = animationDescription;
                         break;
 
                     case "MarioAnimationTimer":

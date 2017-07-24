@@ -116,7 +116,7 @@ namespace SM64_Diagnostic
             mapGui.MapShowCeilingTriangle = checkBoxMapShowCeiling;
             currentContext.MapManager = _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
 
-            currentContext.ActionsManager = _actionsManager = new ActionsManager(_sm64Stream, _actionsData, noTearFlowLayoutPanelActions);
+            currentContext.ActionsManager = _actionsManager = new ActionsManager(_sm64Stream, _actionsData, noTearFlowLayoutPanelActions, tabPageActions);
             currentContext.WaterManager = _waterManager = new DataManager(_sm64Stream, _waterData, noTearFlowLayoutPanelWater);
             currentContext.ControllerManager = _controllerManager = new ControllerManager(_sm64Stream, _controllerData, tabPageController, NoTearFlowLayoutPanelController, _controllerImageGui);
             currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
