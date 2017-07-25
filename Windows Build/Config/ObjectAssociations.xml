@@ -977,7 +977,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13001368" name="WF Tower Platform (Unused Graphic)" subType="1">
     <SpawnCode gfxId="0x2C"/>
-    <Image path="WF Tower Platform.png"/>
+    <Image path="WF Tower Platform Unused Graphic.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001390" name="Tree Particle Spawner">
     <SpawnCode gfxId="0x00"/>
