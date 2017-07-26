@@ -31,18 +31,20 @@ namespace SM64_Diagnostic.Managers
             AddWatchVariables(data);
         }
 
-        protected void RemoveWatchVariables(IEnumerable<WatchVariableControl> watchVars)
+        protected void RemoveWatchVariables(IEnumerable<IDataContainer> watchVars)
         {
             foreach (var watchVar in watchVars)
             {
-                _dataControls.Remove(watchVar);
+                if (_dataControls.Contains(watchVar))
+                    _dataControls.Remove(watchVar);
+
                 _variableTable.Controls.Remove(watchVar.Control);
             }
         }
 
-        protected List<WatchVariableControl> AddWatchVariables(IEnumerable<WatchVariable> watchVars, Color? color = null)
+        protected List<IDataContainer> AddWatchVariables(IEnumerable<WatchVariable> watchVars, Color? color = null)
         {
-            var newControls = new List<WatchVariableControl>();
+            var newControls = new List<IDataContainer>();
             foreach (WatchVariable watchVar in watchVars)
             {
                 if (watchVar.Special && _specialWatchVars != null)
@@ -52,6 +54,7 @@ namespace SM64_Diagnostic.Managers
                         var specialVar = _specialWatchVars.Find(w => w.SpecialName == watchVar.SpecialType);
                         specialVar.Name = watchVar.Name;
                         _variableTable.Controls.Add(specialVar.Control);
+                        newControls.Add(specialVar);
                         if (watchVar.BackroundColor.HasValue)
                             specialVar.Color = watchVar.BackroundColor.Value;
                         else if (color.HasValue)

@@ -17,7 +17,7 @@ namespace SM64_Diagnostic.Managers
 {
     public class ObjectManager : DataManager
     {
-        List<WatchVariableControl> _behaviorDataControls = new List<WatchVariableControl>();
+        List<IDataContainer> _behaviorDataControls = new List<IDataContainer>();
         ObjectAssociations _objAssoc;
 
         object _watchVarLocker = new object();
@@ -55,7 +55,10 @@ namespace SM64_Diagnostic.Managers
 
                 // Add new watchVars
                 _behaviorDataControls.AddRange(AddWatchVariables(value, color));
-                _behaviorDataControls.ForEach(w => w.OtherOffsets = _currentAddresses);
+                _behaviorDataControls.ForEach(w => {
+                    if (w is WatchVariableControl)
+                        (w as WatchVariableControl).OtherOffsets = _currentAddresses;
+                });
             }
         }
 
