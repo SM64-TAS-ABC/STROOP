@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MarioData>
-  <!-- Mario offset is 0xC26BF0 -->
   <Data type="float" address="0x3C" marioOffset="true">X</Data>
   <Data type="float" address="0x40" marioOffset="true">Y</Data>
   <Data type="float" address="0x44" marioOffset="true">Z</Data>
@@ -35,7 +34,7 @@
   <Data type="short" address="0x1600" marioOffset="true" isAngle="true">First Person Pitch</Data>
   <Data type="uint" address="0x78" marioOffset="true" useHex="true" isObject="true">Interaction Object</Data>
   <Data type="uint" address="0x80" marioOffset="true" useHex="true" isObject="true">Used Object</Data>
-  <Data type="uint" address="0xc1c8b4" absoluteAddress="true" useHex="true" isObject="true">Stood On Object</Data>
+  <Data type="uint" address="0x80330E34" useHex="true" isObject="true">Stood On Object</Data>
   <Data type="uint" address="0x7C" marioOffset="true" useHex="true" isObject="true">Held Object</Data>
   <Data type="float" address="0x258" marioOffset="true">HOLP X</Data>
   <Data type="float" address="0x25C" marioOffset="true">HOLP Y</Data>
@@ -55,9 +54,9 @@
   <Data type="float" address="0xC0" marioOffset="true">Quicksand Height</Data>
   <Data type="sbyte" address="0xB4" marioOffset="true">Unsquishing Timer</Data>
   <Data type="ushort" address="0x1E" marioOffset="true">Squished Timer</Data>
-  <Data type="byte" address="0x00C19517" mask="0x01" absoluteAddress="true" isBool="true">Just Teleported</Data>
-  <Data type="int" address="0x009DC4DC" absoluteAddress="true">Blinking State</Data>
-  <Data type="short" address="0x00C1998A" absoluteAddress="true">Blinking Timer</Data>
-  <Data type="uint" address="0x00C4CBD8" absoluteAddress="true" useHex="true" isObject="true">Effective Mario Object</Data>
+  <Data type="byte" address="0x8032DA94" mask="0x01" isBool="true">Just Teleported</Data>
+  <Data type="int" address="0x800F0A5C">Blinking State</Data>
+  <Data type="short" address="0x8032DF08">Blinking Timer</Data>
+  <Data type="uint" address="0x80361158" useHex="true" isObject="true">Effective Mario Object</Data>
   <Data type="uint" address="0x88" marioOffset="true" useHex="true" isObject="true">Visual Mario Object</Data>
 </MarioData>
