@@ -50,6 +50,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static bool ShowOverlayCeilingObject = true;
         public static bool ShowOverlayParentObject = false;
         public static bool ScaleDiagonalPositionControllerButtons = false;
+        public static bool PositionControllersRelativeToMario = false;
         public static bool DisableActionUpdateWhenCloning = false;
         public static bool NeutralizeTriangleWith21 = true;
     }
