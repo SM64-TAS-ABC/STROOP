@@ -56,7 +56,7 @@ namespace SM64_Diagnostic.Utilities
                 if (change == Change.ADD)
                 {
                     handleScaling(ref currentXValue, ref currentZValue);
-                    handleRelativeAngle(ref currentXValue, ref currentZValue, useRelative, posAddressAngle.Angle);
+                    handleRelativeAngle(stream, ref currentXValue, ref currentZValue, useRelative, posAddressAngle.Angle);
                     currentXValue += stream.GetSingle(posAddressAngle.XAddress);
                     currentYValue += stream.GetSingle(posAddressAngle.YAddress);
                     currentZValue += stream.GetSingle(posAddressAngle.ZAddress);
@@ -86,10 +86,14 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static void handleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, ushort? relativeAngle)
+        public static void handleRelativeAngle(ProcessStream stream, ref float xOffset, ref float zOffset, bool useRelative, ushort? relativeAngle)
         {
             if (useRelative)
             {
+                if (Config.PositionControllersRelativeToMario)
+                {
+                    relativeAngle = stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                }
                 double thetaChange = (ushort)relativeAngle - 32768;
                 (xOffset, _, zOffset) = ((float, float, float))MoreMath.OffsetSpherically(xOffset, 0, zOffset, 0, thetaChange, 0);
             }
@@ -815,7 +819,7 @@ namespace SM64_Diagnostic.Utilities
             oldNormOffset = stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
 
             ushort relativeAngle = MoreMath.getUphillAngle(normX, normY, normZ);
-            handleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
+            handleRelativeAngle(stream, ref xOffset, ref zOffset, useRelative, relativeAngle);
 
             float newNormOffset = oldNormOffset - normX * xOffset - normY * yOffset - normZ * zOffset;
 
@@ -1046,7 +1050,7 @@ namespace SM64_Diagnostic.Utilities
                 {
                     handleScaling(ref xOffset, ref zOffset);
 
-                    handleRelativeAngle(ref xOffset, ref zOffset, useRelative, getCamHackYawFacing(stream, camHackMode));
+                    handleRelativeAngle(stream, ref xOffset, ref zOffset, useRelative, getCamHackYawFacing(stream, camHackMode));
                     float xDestination = xOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
                     float yDestination = yOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
                     float zDestination = zOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
