@@ -3253,24 +3253,42 @@
   <Object behaviorScriptAddress="0x13004AB0" name="Carpet" gfxId="0x8018D2A8">
     <SpawnCode gfxId="0x37"/>
     <Image path="Carpet.png"/>
+    <Data type="byte" address="0x188"  mask="0x04" objectOffset="true" isBool="true">Yaw Locked</Data>
+    <Data type="byte" address="0x188"  mask="0x08" objectOffset="true" isBool="true" invertBool="true">Pitch Locked</Data>
+    <Data type="byte" address="0x189"  mask="0x80" objectOffset="true" isBool="true">Track Balls</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004AB0" name="Ski Lift" gfxId="0x80184AE8">
     <SpawnCode gfxId="0x36"/>
     <Image path="Ski Lift.png"/>
+    <Data type="byte" address="0x188"  mask="0x04" objectOffset="true" isBool="true">Yaw Locked</Data>
+    <Data type="byte" address="0x188"  mask="0x08" objectOffset="true" isBool="true" invertBool="true">Pitch Locked</Data>
+    <Data type="byte" address="0x189"  mask="0x80" objectOffset="true" isBool="true">Track Balls</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004AB0" name="BitFS Fixed Track Elevator" gfxId="0x80178368">
     <SpawnCode gfxId="0x36"/>
     <Image path="BitFS Fixed Track Elevator.png"/>
+    <Data type="byte" address="0x188"  mask="0x04" objectOffset="true" isBool="true">Yaw Locked</Data>
+    <Data type="byte" address="0x188"  mask="0x08" objectOffset="true" isBool="true" invertBool="true">Pitch Locked</Data>
+    <Data type="byte" address="0x189"  mask="0x80" objectOffset="true" isBool="true">Track Balls</Data> 
   </Object>
   <Object behaviorScriptAddress="0x13004AB0" name="Fixed Track Elevator" gfxId="0x80188FFC">
     <SpawnCode gfxId="0xCA"/>
     <Image path="Checkered Elevator.png"/>
+    <Data type="byte" address="0x188"  mask="0x04" objectOffset="true" isBool="true">Yaw Locked</Data>
+    <Data type="byte" address="0x188"  mask="0x08" objectOffset="true" isBool="true" invertBool="true">Pitch Locked</Data>
+    <Data type="byte" address="0x189"  mask="0x80" objectOffset="true" isBool="true">Track Balls</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004AB0" name="Fixed Track Elevator" gfxId="0x8017C6EC">
     <Image path="Checkered Elevator.png"/>
+    <Data type="byte" address="0x188"  mask="0x04" objectOffset="true" isBool="true">Yaw Locked</Data>
+    <Data type="byte" address="0x188"  mask="0x08" objectOffset="true" isBool="true" invertBool="true">Pitch Locked</Data>
+    <Data type="byte" address="0x189"  mask="0x80" objectOffset="true" isBool="true">Track Balls</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004AB0" name="Carpet / Ski Lift / Fixed Track Elevator">
     <Image path="Carpet.png"/>
+    <Data type="byte" address="0x188"  mask="0x04" objectOffset="true" isBool="true">Yaw Locked</Data>
+    <Data type="byte" address="0x188"  mask="0x08" objectOffset="true" isBool="true" invertBool="true">Pitch Locked</Data>
+    <Data type="byte" address="0x189"  mask="0x80" objectOffset="true" isBool="true">Track Balls</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004AF4" name="Elevator Track Ball">
     <Image path="Bowling Ball.png"/>
