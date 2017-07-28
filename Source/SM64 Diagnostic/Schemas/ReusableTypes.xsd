@@ -28,6 +28,10 @@
       <xs:length value="7"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="offset">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
   <xs:complexType name="watch-variable">
     <xs:simpleContent>
       <xs:extension base="xs:string">

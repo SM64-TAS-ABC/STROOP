@@ -27,6 +27,7 @@ namespace SM64_Diagnostic.Structs
             }
         }
         public uint Address;
+        public OffsetType? Offset;
         public String Name;
         public String SpecialType;
         public bool Special;
@@ -93,6 +94,26 @@ namespace SM64_Diagnostic.Structs
             { "ulong", typeof(UInt64) },
             { "float", typeof(float) },
             { "double", typeof(double) },
+        };
+
+        public enum OffsetType
+        {
+            Absolute,
+            Relative,
+            Mario,
+        };
+
+        public static OffsetType? GetOffsetType(String offsetTypeString)
+        {
+            if (offsetTypeString == null) return null;
+            return StringToOffsetType[offsetTypeString];
+        }
+
+        readonly static Dictionary<String, OffsetType> StringToOffsetType = new Dictionary<string, OffsetType>()
+        {
+            { "Absolute", OffsetType.Absolute },
+            { "Relative", OffsetType.Relative },
+            { "Mario", OffsetType.Mario },
         };
     }
 }
