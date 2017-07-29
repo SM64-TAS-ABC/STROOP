@@ -14,6 +14,34 @@
   <Data type="short" address="0x00CCBA9C" absoluteAddress="true" isAngle="true">Theta</Data>
   <Data type="float" address="0x00CCBAA4" absoluteAddress="true">Relative Height</Data>
 
+  <Data type="int" address="0x00" offset="CamHack">Mode</Data>
+  <Data type="ushort" address="0x1C" offset="CamHack" isBool="true">Absolute Angle</Data>
+  <Data type="uint" address="0x28" offset="CamHack" useHex="true" isObject="true">Object to Follow</Data>
+  <Data type="float" address="0x04" offset="CamHack">Camera X</Data>
+  <Data type="float" address="0x08" offset="CamHack">Camera Y</Data>
+  <Data type="float" address="0x0C" offset="CamHack">Camera Z</Data>
+  <Data type="float" address="0x10" offset="CamHack">Focus X</Data>
+  <Data type="float" address="0x14" offset="CamHack">Focus Y</Data>
+  <Data type="float" address="0x18" offset="CamHack">Focus Z</Data>
+  <Data type="float" address="0x20" offset="CamHack">Radius</Data>
+  <Data type="short" address="0x1E" offset="CamHack" isAngle="true">Theta</Data>
+  <Data type="float" address="0x24" offset="CamHack">Relative Height</Data>
+  
+  <!--
+word 	camera mode	0x0
+float	camera x	0x4
+float	camera y	0x8
+float	camera z	0xc
+float	target x	0x10
+float	target y	0x14
+float	target z	0x18
+short   rotate      0x1c
+short   angle       0x1e
+float   radius	    0x20
+float   relative y	0x24
+word    object      0x28
+  -->
+
   <!-- OLD CAM HACK -->
   <!--
   <Data type="float" address="0x00CCBAA0" absoluteAddress="true">Camera X</Data>
