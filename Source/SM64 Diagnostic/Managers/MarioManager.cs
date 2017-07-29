@@ -19,7 +19,7 @@ namespace SM64_Diagnostic.Managers
         MapManager _mapManager;
 
         public MarioManager(ProcessStream stream, List<WatchVariable> marioData, Control marioControl, NoTearFlowLayoutPanel variableTable, MapManager mapManager)
-            : base(stream, marioData, variableTable, Config.Mario.StructAddress)
+            : base(stream, marioData, variableTable)
         {
             _mapManager = mapManager;
 

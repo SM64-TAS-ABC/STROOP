@@ -197,7 +197,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Object Associations", statusNum++);
             _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", _slotManagerGui);
             loadingForm.UpdateStatus("Loading Mario Data", statusNum++);
-            _marioData = XmlConfigParser.OpenWatchVarData(@"Config/MarioData.xml", "MarioDataSchema.xsd", "marioOffset");
+            _marioData = XmlConfigParser.OpenWatchVarData(@"Config/MarioData.xml", "MarioDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Camera Data", statusNum++);
             _cameraData = XmlConfigParser.OpenWatchVarData(@"Config/CameraData.xml", "CameraDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Actions Data", statusNum++);
