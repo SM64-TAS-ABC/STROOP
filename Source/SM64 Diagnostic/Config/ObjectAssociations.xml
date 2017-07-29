@@ -24,10 +24,6 @@
     <Image path="DEBUG.png"/>
     <Color>#aaaaaa</Color>
   </Debug>
-  <Controller>
-    <Image path="Controller.png"/>
-    <Color>#aaaaaa</Color>
-  </Controller>
   <Misc>
     <Image path="MISC.png"/>
     <Color>#aaaaaa</Color>
