@@ -101,6 +101,27 @@ namespace SM64_Diagnostic.Structs
             Absolute,
             Relative,
             Mario,
+            Camera,
+            File,
+            Object,
+            Triangle,
+            Graphic,
+            Waypoint,
+            Camhack,
+        };
+
+        readonly static Dictionary<String, OffsetType> StringToOffsetType = new Dictionary<string, OffsetType>()
+        {
+            { "Absolute", OffsetType.Absolute },
+            { "Relative", OffsetType.Relative },
+            { "Mario", OffsetType.Mario },
+            { "Camera", OffsetType.Camera },
+            { "File", OffsetType.File },
+            { "Object", OffsetType.Object },
+            { "Triangle", OffsetType.Triangle },
+            { "Graphic", OffsetType.Graphic },
+            { "Waypoint", OffsetType.Waypoint },
+            { "Camhack", OffsetType.Camhack },
         };
 
         public static OffsetType? GetOffsetType(String offsetTypeString)
@@ -108,12 +129,5 @@ namespace SM64_Diagnostic.Structs
             if (offsetTypeString == null) return null;
             return StringToOffsetType[offsetTypeString];
         }
-
-        readonly static Dictionary<String, OffsetType> StringToOffsetType = new Dictionary<string, OffsetType>()
-        {
-            { "Absolute", OffsetType.Absolute },
-            { "Relative", OffsetType.Relative },
-            { "Mario", OffsetType.Mario },
-        };
     }
 }
