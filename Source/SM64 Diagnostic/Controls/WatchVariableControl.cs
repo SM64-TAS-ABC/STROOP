@@ -157,37 +157,46 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public static readonly List<uint> OffsetListZero = new List<uint> { 0 };
+        public static readonly List<uint> OffsetListMario = new List<uint> { Config.Mario.StructAddress };
+        public static readonly List<uint> OffsetListCamera = new List<uint> { Config.Camera.CameraStructAddress };
+
+        private List<uint> GetOffsetListFromOffsetType(OffsetType? offsetType)
+        {
+            switch (offsetType)
+            {
+                case OffsetType.Absolute:
+                    return OffsetListZero;
+                case OffsetType.Relative:
+                    return OffsetListZero;
+                case OffsetType.Mario:
+                    return OffsetListMario;
+                case OffsetType.Camera:
+                    return OffsetListCamera;
+                case OffsetType.File:
+                    return OffsetListZero;
+                case OffsetType.Object:
+                    return OffsetListZero;
+                case OffsetType.Triangle:
+                    return OffsetListZero;
+                case OffsetType.Graphic:
+                    return OffsetListZero;
+                case OffsetType.Waypoint:
+                    return OffsetListZero;
+                case OffsetType.Camhack:
+                    return OffsetListZero;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         public List<uint> OffsetList
         {
             get
             {
                 if (_watchVar.Offset != null)
                 {
-                    switch (_watchVar.Offset)
-                    {
-                        case OffsetType.Absolute:
-                            return new List<uint> { 0 };
-                        case OffsetType.Relative:
-                            return new List<uint> { 0 };
-                        case OffsetType.Mario:
-                            return new List<uint> { Config.Mario.StructAddress };
-                        case OffsetType.Camera:
-                            return new List<uint> { 0 };
-                        case OffsetType.File:
-                            return new List<uint> { 0 };
-                        case OffsetType.Object:
-                            return new List<uint> { 0 };
-                        case OffsetType.Triangle:
-                            return new List<uint> { 0 };
-                        case OffsetType.Graphic:
-                            return new List<uint> { 0 };
-                        case OffsetType.Waypoint:
-                            return new List<uint> { 0 };
-                        case OffsetType.Camhack:
-                            return new List<uint> { 0 };
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
+                    return GetOffsetListFromOffsetType(_watchVar.Offset);
                 }
                 return OtherOffsets;
             }
