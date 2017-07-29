@@ -30,7 +30,6 @@ namespace SM64_Diagnostic.Structs
         public OffsetType Offset;
         public String Name;
         public String SpecialType;
-        public Boolean AbsoluteAddressing;
         public UInt64? Mask;
         public bool IsBool;
         public bool IsObject;
@@ -54,6 +53,15 @@ namespace SM64_Diagnostic.Structs
                 return Offset == OffsetType.Special;
             }
         }
+
+        public Boolean UseAbsoluteAddressing
+        {
+            get
+            {
+                return Offset == OffsetType.Absolute;
+            }
+        }
+
 
         int _byteCount;
         public int ByteCount

@@ -1995,8 +1995,6 @@ namespace SM64_Diagnostic.Utilities
 
             watchVar.UseHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
-            watchVar.AbsoluteAddressing = element.Attribute(XName.Get("absoluteAddress")) != null ?
-                 bool.Parse(element.Attribute(XName.Get("absoluteAddress")).Value) : false;
             watchVar.Mask = element.Attribute(XName.Get("mask")) != null ?
                 (UInt64?) ParsingUtilities.ParseExtHex(element.Attribute(XName.Get("mask")).Value) : null;
             watchVar.IsBool = element.Attribute(XName.Get("isBool")) != null ?

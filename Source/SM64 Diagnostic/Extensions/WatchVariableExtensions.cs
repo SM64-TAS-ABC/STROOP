@@ -19,7 +19,7 @@ namespace SM64_Diagnostic.Extensions
             uint offsetedAddress = offset + watchVar.Address;
             uint address;
 
-            if (watchVar.AbsoluteAddressing)
+            if (watchVar.UseAbsoluteAddressing)
                 address = stream.ConvertAddressEndianess((uint)(offsetedAddress - stream.ProcessMemoryOffset),
                     watchVar.ByteCount);
             else
@@ -39,7 +39,7 @@ namespace SM64_Diagnostic.Extensions
         {
             // Get dataBytes
             var dataBytes = stream.ReadRamLittleEndian(watchVar.HasAdditiveOffset ? offset + watchVar.Address
-                : watchVar.Address, watchVar.ByteCount, watchVar.AbsoluteAddressing);
+                : watchVar.Address, watchVar.ByteCount, watchVar.UseAbsoluteAddressing);
 
             // Make sure offset is a valid pointer
             if (watchVar.HasAdditiveOffset && offset == 0)
@@ -166,7 +166,7 @@ namespace SM64_Diagnostic.Extensions
         {
             // Get dataBytes
             var dataBytes = stream.ReadRamLittleEndian(watchVar.HasAdditiveOffset ? offset + watchVar.Address
-                : watchVar.Address, watchVar.ByteCount, watchVar.AbsoluteAddressing);
+                : watchVar.Address, watchVar.ByteCount, watchVar.UseAbsoluteAddressing);
 
             // Make sure offset is a valid pointer
             if (watchVar.HasAdditiveOffset && offset == 0)
@@ -230,7 +230,7 @@ namespace SM64_Diagnostic.Extensions
         {
             // Get dataBytes
             var dataBytes = stream.ReadRamLittleEndian(watchVar.HasAdditiveOffset ? offset + watchVar.Address
-                : watchVar.Address, watchVar.ByteCount, watchVar.AbsoluteAddressing);
+                : watchVar.Address, watchVar.ByteCount, watchVar.UseAbsoluteAddressing);
 
             // Get Uint64 value
             var intBytes = new byte[8];
@@ -252,7 +252,7 @@ namespace SM64_Diagnostic.Extensions
         {
             // Get dataBytes
             var address = watchVar.HasAdditiveOffset ? offset + watchVar.Address : watchVar.Address;
-            var dataBytes = stream.ReadRamLittleEndian(address, watchVar.ByteCount, watchVar.AbsoluteAddressing);
+            var dataBytes = stream.ReadRamLittleEndian(address, watchVar.ByteCount, watchVar.UseAbsoluteAddressing);
 
             if (watchVar.InvertBool)
                 value = !value;
@@ -279,7 +279,7 @@ namespace SM64_Diagnostic.Extensions
             var valueBytes = BitConverter.GetBytes(dataValue);
             Array.Copy(valueBytes, 0, writeBytes, 0, watchVar.ByteCount);
 
-            stream.WriteRamLittleEndian(writeBytes, address, watchVar.AbsoluteAddressing);
+            stream.WriteRamLittleEndian(writeBytes, address, watchVar.UseAbsoluteAddressing);
         }
 
         public static byte[] GetBytesFromString(this WatchVariable watchVar, ProcessStream stream, uint offset, string value)
@@ -287,7 +287,7 @@ namespace SM64_Diagnostic.Extensions
             // Get dataBytes
             var address = watchVar.HasAdditiveOffset ? offset + watchVar.Address : watchVar.Address;
             var dataBytes = new byte[8];
-            stream.ReadRamLittleEndian(address, watchVar.ByteCount, watchVar.AbsoluteAddressing).CopyTo(dataBytes, 0);
+            stream.ReadRamLittleEndian(address, watchVar.ByteCount, watchVar.UseAbsoluteAddressing).CopyTo(dataBytes, 0);
             UInt64 oldValue = BitConverter.ToUInt64(dataBytes, 0);
             UInt64 newValue;
 
@@ -366,7 +366,7 @@ namespace SM64_Diagnostic.Extensions
                 return false;
 
             return stream.WriteRamLittleEndian(dataBytes, watchVar.HasAdditiveOffset ? offset + watchVar.Address
-                : watchVar.Address, watchVar.AbsoluteAddressing);
+                : watchVar.Address, watchVar.UseAbsoluteAddressing);
         }
     }
 }
