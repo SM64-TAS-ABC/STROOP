@@ -17,6 +17,8 @@ namespace SM64_Diagnostic.Managers
 {
     public class ObjectManager : DataManager
     {
+        public static ObjectManager Instance = null;
+
         List<IDataContainer> _behaviorDataControls = new List<IDataContainer>();
         ObjectAssociations _objAssoc;
 
@@ -217,6 +219,8 @@ namespace SM64_Diagnostic.Managers
         public ObjectManager(ProcessStream stream, ObjectAssociations objAssoc, List<WatchVariable> objectData, Control objectControl, NoTearFlowLayoutPanel variableTable)
             : base(stream, objectData, variableTable)
         {
+            Instance = this;
+
             SplitContainer splitContainerObject = objectControl.Controls["splitContainerObject"] as SplitContainer;
 
             _objAssoc = objAssoc;

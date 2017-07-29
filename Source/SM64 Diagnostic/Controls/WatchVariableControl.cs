@@ -160,8 +160,9 @@ namespace SM64_Diagnostic.Controls
         public static readonly List<uint> OffsetListZero = new List<uint> { 0 };
         public static readonly List<uint> OffsetListMario = new List<uint> { Config.Mario.StructAddress };
         public static readonly List<uint> OffsetListCamera = new List<uint> { Config.Camera.CameraStructAddress };
+        public static readonly List<uint> OffsetListCamhack = new List<uint> { Config.CameraHack.CameraHackStruct };
 
-        private List<uint> GetOffsetListFromOffsetType(OffsetType? offsetType)
+        private static List<uint> GetOffsetListFromOffsetType(OffsetType? offsetType)
         {
             switch (offsetType)
             {
@@ -174,20 +175,25 @@ namespace SM64_Diagnostic.Controls
                 case OffsetType.Camera:
                     return OffsetListCamera;
                 case OffsetType.File:
-                    return OffsetListZero;
+                    return new List<uint> { FileManager.Instance.CurrentFileAddress };
                 case OffsetType.Object:
-                    return OffsetListZero;
+                    return ObjectManager.Instance.CurrentAddresses;
                 case OffsetType.Triangle:
-                    return OffsetListZero;
+                    return new List<uint> { TriangleManager.Instance.TriangleAddress };
                 case OffsetType.Graphic:
                     return OffsetListZero;
                 case OffsetType.Waypoint:
                     return OffsetListZero;
                 case OffsetType.Camhack:
-                    return OffsetListZero;
+                    return OffsetListCamhack;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private static List<uint> GetNonEmptyList(List<uint> list)
+        {
+            return list.Count == 0 ? OffsetListZero : list;
         }
 
         public List<uint> OffsetList

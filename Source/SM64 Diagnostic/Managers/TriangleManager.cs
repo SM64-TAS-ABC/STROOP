@@ -15,18 +15,20 @@ namespace SM64_Diagnostic.Managers
 {
     public class TriangleManager : DataManager
     {
+        public static TriangleManager Instance = null;
+
         MaskedTextBox _addressBox;
         uint _triangleAddress = 0;
         CheckBox _useMisalignmentOffsetCheckbox;
         int _closestVertex = 0;
 
-    uint TriangleAddress
+        public uint TriangleAddress
         {
             get
             {
                 return _triangleAddress;
             }
-            set
+            private set
             {
                 if (_triangleAddress == value)
                     return;
@@ -87,6 +89,8 @@ namespace SM64_Diagnostic.Managers
         public TriangleManager(ProcessStream stream, Control tabControl, List<WatchVariable> triangleWatchVars, NoTearFlowLayoutPanel noTearFlowLayoutPanel) 
             : base(stream, triangleWatchVars, noTearFlowLayoutPanel)
         {
+            Instance = this;
+
             SplitContainer splitContainerTriangles = tabControl.Controls["splitContainerTriangles"] as SplitContainer;
 
             _addressBox = splitContainerTriangles.Panel1.Controls["maskedTextBoxOtherTriangle"] as MaskedTextBox;
