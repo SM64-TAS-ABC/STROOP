@@ -57,10 +57,6 @@ namespace SM64_Diagnostic.Managers
 
                 // Add new watchVars
                 _behaviorDataControls.AddRange(AddWatchVariables(value, color));
-                _behaviorDataControls.ForEach(w => {
-                    if (w is WatchVariableControl)
-                        (w as WatchVariableControl).OtherOffsets = _currentAddresses;
-                });
             }
         }
 
@@ -86,11 +82,6 @@ namespace SM64_Diagnostic.Managers
                     _objAddressLabelValue.Text = "";
 
                 AddressChanged();
-
-                foreach (WatchVariableControl watchVar in _dataControls)
-                {
-                    watchVar.OtherOffsets = _currentAddresses.Count == 0 ? new List<uint> { 0 } : _currentAddresses;
-                }
             }
         }
 

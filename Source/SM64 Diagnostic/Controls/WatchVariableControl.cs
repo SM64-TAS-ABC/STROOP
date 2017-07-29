@@ -25,7 +25,6 @@ namespace SM64_Diagnostic.Controls
         ProcessStream _stream;
         string _specialName;
 
-        public List<uint> OtherOffsets = new List<uint>() { 0 };
         bool _changedByUser = true;
         bool _editMode = false;
 
@@ -230,7 +229,7 @@ namespace SM64_Diagnostic.Controls
                 {
                     return GetOffsetListFromOffsetType(_watchVar.Offset);
                 }
-                return OtherOffsets;
+                return OffsetListZero;
             }
         }
 
@@ -345,16 +344,10 @@ namespace SM64_Diagnostic.Controls
         }
 
         public WatchVariableControl(ProcessStream stream, WatchVariable watchVar)
-            : this(stream, watchVar, new List<uint>() { 0 })
-        {
-        }
-
-        public WatchVariableControl(ProcessStream stream, WatchVariable watchVar, List<uint> otherOffset)
         {
             _specialName = watchVar.Name;
             _watchVar = watchVar;
             _stream = stream;
-            OtherOffsets = otherOffset;
 
             CreateControls();
 
