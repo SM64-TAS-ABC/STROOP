@@ -19,7 +19,7 @@ namespace SM64_Diagnostic.Managers
         ControllerDisplayPanel _controllerDisplayPanel;
 
         public ControllerManager(ProcessStream stream, List<WatchVariable> controllerData, Control controllerControl, NoTearFlowLayoutPanel variableTable, ControllerImageGui gui)
-            : base(stream, controllerData, variableTable, Config.Mario.StructAddress)
+            : base(stream, controllerData, variableTable)
         {
             _gui = gui;
 
