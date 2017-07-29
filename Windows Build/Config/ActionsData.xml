@@ -6,9 +6,9 @@
   <Data special="true" specialType="PrevActionDescription">Prev. Action Desc.</Data>
   <Data type="short" address="0x18" offset="Mario">Action Phase</Data>
   <Data type="short" address="0x1A" offset="Mario">Action Timer</Data>
-  <Data special="true" specialType="MarioAnimationValue">Animation</Data>
+  <Data type="short" address="0x38" offset="MarioObj">Animation</Data>
   <Data special="true" specialType="MarioAnimationDescription">Animation Description</Data>
-  <Data special="true" specialType="MarioAnimationTimer">Animation Timer</Data>
+  <Data type="short" address="0x40" offset="MarioObj">Animation Timer</Data>
   <Data type="uint" address="0x0C" offset="Mario" isBool="true" mask="0x80000000">b00 throwing?</Data>
   <Data type="uint" address="0x0C" offset="Mario" isBool="true" mask="0x40000000">b01 (never)</Data>
   <Data type="uint" address="0x0C" offset="Mario" isBool="true" mask="0x20000000">b02 water stuff?</Data>
