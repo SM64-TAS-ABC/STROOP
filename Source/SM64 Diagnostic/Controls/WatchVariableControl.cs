@@ -211,6 +211,9 @@ namespace SM64_Diagnostic.Controls
                 case OffsetType.CamHack:
                     output = OffsetListCamHack;
                     break;
+                case OffsetType.Special:
+                    output = OffsetListZero;
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -375,7 +378,7 @@ namespace SM64_Diagnostic.Controls
             this._nameLabel.ImageAlign = ContentAlignment.MiddleRight;
             this._nameLabel.MouseHover += (sender, e) =>
             {
-                if (!_watchVar.OtherOffset)
+                if (!_watchVar.HasAdditiveOffset)
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
                         _watchVar.GetRamAddress(_stream), _watchVar.GetProcessAddress(_stream), _stream.ProcessName));
@@ -450,7 +453,7 @@ namespace SM64_Diagnostic.Controls
                 typeDescr += String.Format(" w/ mask: 0x{0:X" + _watchVar.ByteCount * 2 + "}", _watchVar.Mask);
             }
 
-            if (!_watchVar.OtherOffset)
+            if (!_watchVar.HasAdditiveOffset)
             {
                 varInfo = new VariableViewerForm(_watchVar.Name, typeDescr,
                     String.Format("0x{0:X8}", _watchVar.GetRamAddress(_stream)),

@@ -1072,8 +1072,6 @@ namespace SM64_Diagnostic.Utilities
                     continue;
 
                 var watchVar = GetWatchVariableFromElement(element);
-                watchVar.OtherOffset = (watchVar.Offset != null); //TODO fix OtherOffset
-
                 objectData.Add(watchVar);
             }
 
@@ -1288,8 +1286,6 @@ namespace SM64_Diagnostic.Utilities
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
                         {
                             var watchVar = GetWatchVariableFromElement(subElement);
-                            watchVar.OtherOffset = (watchVar.Offset != null);
-
                             watchVars.Add(watchVar);
                         }
 

@@ -1,48 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <MiscData>
-  <Data type="int" address="0x8032D5D4">Global Timer</Data>
-  <Data type="ushort" address="0x8038EEE0">RNG Value</Data>
-  <Data special="true" specialType="RngIndex">RNG Index</Data>
-  <Data special="true" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
-  <Data special="true" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
-  <Data type="byte" address="0x80222618" isBool="true" mask="0x20" invertBool="true">Music On</Data>
-  <Data type="float" address ="0x80222630">Volume</Data>
-  <Data type="byte" address="0x8032DD94" isBool="true">Special Triple Jump</Data>
-  <Data type="byte" address="0x80332618" isBool="true">Talked to Yoshi</Data>
-  <Data type="byte" address="0x8033B26E" isBool="true">Never Entered Castle</Data>
-  <Data type="short" address="0x8032DDF4">Current File</Data>
-  <Data type="byte" address="0x8032D5F5">Demo Counter</Data>
-  <Data type="short" address="0x801A7C30">Demo Timer</Data>
-  <Data type="byte" address="0x80226B7F">Sound Selection</Data>
-  <Data type="short" address="0x801A7D1C">Hand X</Data>
-  <Data type="short" address="0x801A7D20">Hand Y</Data>
-  <Data type="short" address="0x80361258">TTC Speed Setting</Data>
+  <Data type="int" address="0x8032D5D4" offset="Relative">Global Timer</Data>
+  <Data type="ushort" address="0x8038EEE0" offset="Relative">RNG Value</Data>
+  <Data special="true" offset="Special" specialType="RngIndex">RNG Index</Data>
+  <Data special="true" offset="Special" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
+  <Data special="true" offset="Special" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
+  <Data type="byte" address="0x80222618" offset="Relative" isBool="true" mask="0x20" invertBool="true">Music On</Data>
+  <Data type="float" address="0x80222630" offset="Relative">Volume</Data>
+  <Data type="byte" address="0x8032DD94" offset="Relative" isBool="true">Special Triple Jump</Data>
+  <Data type="byte" address="0x80332618" offset="Relative" isBool="true">Talked to Yoshi</Data>
+  <Data type="byte" address="0x8033B26E" offset="Relative" isBool="true">Never Entered Castle</Data>
+  <Data type="short" address="0x8032DDF4" offset="Relative">Current File</Data>
+  <Data type="byte" address="0x8032D5F5" offset="Relative">Demo Counter</Data>
+  <Data type="short" address="0x801A7C30" offset="Relative">Demo Timer</Data>
+  <Data type="byte" address="0x80226B7F" offset="Relative">Sound Selection</Data>
+  <Data type="short" address="0x801A7D1C" offset="Relative">Hand X</Data>
+  <Data type="short" address="0x801A7D20" offset="Relative">Hand Y</Data>
+  <Data type="short" address="0x80361258" offset="Relative">TTC Speed Setting</Data>
 
-  <Data type="byte" address="0x801A81A4">Mission Selected</Data>
-  <Data type="byte" address="0x8033BAC9">Mission Layout</Data>
-  <Data type="byte" address="0x80331620">Mission Name</Data>
-  <Data type="byte" address="0x8032DD84">Last Star</Data>
-  <Data type="byte" address="0x8032DD80">Last Star Course</Data>
-  <Data type="byte" address="0x80331490">Selection Index</Data>
-  <Data type="short" address="0x8032DDF8">Stage Select Index</Data>
-  <Data type="byte" address="0x8033B249">Level</Data>
-  <Data type="byte" address="0x8033B24A">Area</Data>
-  <Data type="ushort" address="0x8033BACA">Loading Point</Data>
-  <Data type="uint" address="0x8033B4A0" useHex="true">Last Area</Data>
-  <Data type="byte" address="0x8033B4A4">Last Area Entrance</Data>
-  <Data type="short" address="0x8033BACC">Last Course</Data>
-  <Data type="short" address="0x8033B256">Destination</Data>
-  <Data type="short" address="0x8033B25A">Door Direction</Data>
-  <Data type="short" address="0x8033B238">Transition State</Data>
-  <Data type="short" address="0x8033BAB0">Transition Type</Data>
-  <Data type="byte" address="0x80330EC0">Transition Progress</Data>
-  <Data type="short" address="0x8033B23C">Transition Black Fade</Data>
-  <Data type="short" address="0x8038B8A4">Transition White Fade</Data>
-  <Data type="short" address="0x8033B254">Transition Shrinking</Data>
+  <Data type="byte" address="0x801A81A4" offset="Relative">Mission Selected</Data>
+  <Data type="byte" address="0x8033BAC9" offset="Relative">Mission Layout</Data>
+  <Data type="byte" address="0x80331620" offset="Relative">Mission Name</Data>
+  <Data type="byte" address="0x8032DD84" offset="Relative">Last Star</Data>
+  <Data type="byte" address="0x8032DD80" offset="Relative">Last Star Course</Data>
+  <Data type="byte" address="0x80331490" offset="Relative">Selection Index</Data>
+  <Data type="short" address="0x8032DDF8" offset="Relative">Stage Select Index</Data>
+  <Data type="byte" address="0x8033B249" offset="Relative">Level</Data>
+  <Data type="byte" address="0x8033B24A" offset="Relative">Area</Data>
+  <Data type="ushort" address="0x8033BACA" offset="Relative">Loading Point</Data>
+  <Data type="uint" address="0x8033B4A0" offset="Relative" useHex="true">Last Area</Data>
+  <Data type="byte" address="0x8033B4A4" offset="Relative">Last Area Entrance</Data>
+  <Data type="short" address="0x8033BACC" offset="Relative">Last Course</Data>
+  <Data type="short" address="0x8033B256" offset="Relative">Destination</Data>
+  <Data type="short" address="0x8033B25A" offset="Relative">Door Direction</Data>
+  <Data type="short" address="0x8033B238" offset="Relative">Transition State</Data>
+  <Data type="short" address="0x8033BAB0" offset="Relative">Transition Type</Data>
+  <Data type="byte" address="0x80330EC0" offset="Relative">Transition Progress</Data>
+  <Data type="short" address="0x8033B23C" offset="Relative">Transition Black Fade</Data>
+  <Data type="short" address="0x8038B8A4" offset="Relative">Transition White Fade</Data>
+  <Data type="short" address="0x8033B254" offset="Relative">Transition Shrinking</Data>
 
   <!-- TODO REMOVE THESE -->
-  <Data type="byte" address="0x00C1C943" absoluteAddress="true">Transition Progress</Data>
-  <Data type="short" address="0x00C26CBE" absoluteAddress="true">Transition Black Fade</Data>
-  <Data type="short" address="0x00C77326" absoluteAddress="true">Transition White Fade</Data>
-  <Data type="short" address="0x00C26CD6" absoluteAddress="true">Transition Shrinking</Data>
+  <Data type="byte" address="0x00C1C943" absoluteAddress="true" offset="Absolute">Transition Progress</Data>
+  <Data type="short" address="0x00C26CBE" absoluteAddress="true" offset="Absolute">Transition Black Fade</Data>
+  <Data type="short" address="0x00C77326" absoluteAddress="true" offset="Absolute">Transition White Fade</Data>
+  <Data type="short" address="0x00C26CD6" absoluteAddress="true" offset="Absolute">Transition Shrinking</Data>
 </MiscData>

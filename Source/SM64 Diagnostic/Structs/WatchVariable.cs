@@ -36,10 +36,17 @@ namespace SM64_Diagnostic.Structs
         public bool IsBool;
         public bool IsObject;
         public bool UseHex;
-        public bool OtherOffset;
         public bool InvertBool;
         public bool IsAngle;
         public Color? BackroundColor;
+
+        public bool HasAdditiveOffset
+        {
+            get
+            {
+                return Offset != null && Offset != OffsetType.Relative && Offset != OffsetType.Absolute && Offset != OffsetType.Special;
+            }
+        }
 
         int _byteCount;
         public int ByteCount
@@ -112,6 +119,7 @@ namespace SM64_Diagnostic.Structs
             Waypoint,
             HackedArea,
             CamHack,
+            Special,
         };
 
         readonly static Dictionary<String, OffsetType> StringToOffsetType = new Dictionary<string, OffsetType>()
@@ -130,6 +138,7 @@ namespace SM64_Diagnostic.Structs
             { "Waypoint", OffsetType.Waypoint },
             { "HackedArea", OffsetType.HackedArea },
             { "CamHack", OffsetType.CamHack },
+            { "Special", OffsetType.Special },
         };
 
         public static OffsetType? GetOffsetType(String offsetTypeString)

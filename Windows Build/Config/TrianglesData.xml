@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrianglesData>
-  <Data special="true" specialType="Classification">Classification</Data>
+  <Data special="true" offset="Special" specialType="Classification">Classification</Data>
   <Data type="ushort" address="0x00" offset="Triangle">Surface Type</Data>
   <Data type="byte" address="0x02" offset="Triangle" useHex="true">Flags</Data>
   <Data type="byte" address="0x03" offset="Triangle">Exerted Direction</Data>
@@ -22,16 +22,16 @@
   <Data type="float" address="0x3C" offset="Mario" color="#ffcccc">Mario X</Data>
   <Data type="float" address="0x40" offset="Mario" color="#ffcccc">Mario Y</Data>
   <Data type="float" address="0x44" offset="Mario" color="#ffcccc">Mario Z</Data>
-  <Data special="true" specialType="ClosestVertex" color="#e5ccff">Closest Vertex</Data>
-  <Data special="true" specialType="ClosestVertexX" color="#e5ccff">Closest Vertex X</Data>
-  <Data special="true" specialType="ClosestVertexY" color="#e5ccff">Closest Vertex Y</Data>
-  <Data special="true" specialType="ClosestVertexZ" color="#e5ccff">Closest Vertex Z</Data>
+  <Data special="true" offset="Special" specialType="ClosestVertex" color="#e5ccff">Closest Vertex</Data>
+  <Data special="true" offset="Special" specialType="ClosestVertexX" color="#e5ccff">Closest Vertex X</Data>
+  <Data special="true" offset="Special" specialType="ClosestVertexY" color="#e5ccff">Closest Vertex Y</Data>
+  <Data special="true" offset="Special" specialType="ClosestVertexZ" color="#e5ccff">Closest Vertex Z</Data>
   
-  <Data special="true" specialType="Steepness" color="#ccd0ff">Steepness</Data>
-  <Data special="true" specialType="UpHillAngle" color="#ccd0ff">Uphill Angle</Data>
-  <Data special="true" specialType="DownHillAngle" color="#ccd0ff">Downhill Angle</Data>
-  <Data special="true" specialType="LeftHillAngle" color="#ccd0ff">Left Hill Angle</Data>
-  <Data special="true" specialType="RightHillAngle" color="#ccd0ff">Right Hill Angle</Data>
+  <Data special="true" offset="Special" specialType="Steepness" color="#ccd0ff">Steepness</Data>
+  <Data special="true" offset="Special" specialType="UpHillAngle" color="#ccd0ff">Uphill Angle</Data>
+  <Data special="true" offset="Special" specialType="DownHillAngle" color="#ccd0ff">Downhill Angle</Data>
+  <Data special="true" offset="Special" specialType="LeftHillAngle" color="#ccd0ff">Left Hill Angle</Data>
+  <Data special="true" offset="Special" specialType="RightHillAngle" color="#ccd0ff">Right Hill Angle</Data>
   <Data type="ushort" address="0x24" offset="Mario" isAngle="true" color="#ffcccc">M. Yaw (Intended)</Data>
   <Data type="ushort" address="0x2E" offset="Mario" isAngle="true" color="#ffcccc">M. Yaw (Facing)</Data>
   <Data type="float" address="0x1C" offset="Triangle">Normal X</Data>
@@ -46,19 +46,19 @@
   <Data type="uint" address="0x64" offset="Mario" useHex="true" color="#ffeccc">Ceiling Triangle</Data>
   <Data type="float" address="0x70" offset="Mario" color="#ffeccc">Floor Height</Data>
   <Data type="float" address="0x6C" offset="Mario" color="#ffeccc">Ceiling Height</Data>
-  <Data special="true" specialType="DistanceAboveFloor" color="#cfffcc">Dist Above Floor</Data>
-  <Data special="true" specialType="DistanceBelowCeiling" color="#cfffcc">Dist Below Ceiling</Data>
-  <Data special="true" specialType="NormalDistAway" color="#e5ccff">Normal Dist Away</Data>
-  <Data special="true" specialType="VerticalDistAway" color="#e5ccff">Vertical Dist Away</Data>
-  <Data special="true" specialType="HeightOnSlope" color="#e5ccff">Height On Triangle</Data>
+  <Data special="true" offset="Special" specialType="DistanceAboveFloor" color="#cfffcc">Dist Above Floor</Data>
+  <Data special="true" offset="Special" specialType="DistanceBelowCeiling" color="#cfffcc">Dist Below Ceiling</Data>
+  <Data special="true" offset="Special" specialType="NormalDistAway" color="#e5ccff">Normal Dist Away</Data>
+  <Data special="true" offset="Special" specialType="VerticalDistAway" color="#e5ccff">Vertical Dist Away</Data>
+  <Data special="true" offset="Special" specialType="HeightOnSlope" color="#e5ccff">Height On Triangle</Data>
   
-  <Data special="true" specialType="DistanceToV1" color="#e5ccff">Dist to V1</Data>
-  <Data special="true" specialType="LateralDistanceToV1" color="#e5ccff">LDist to V1</Data>
-  <Data special="true" specialType="VerticalDistanceToV1" color="#e5ccff">VDist to V1</Data>
-  <Data special="true" specialType="DistanceToV2" color="#e5ccff">Dist to V2</Data>
-  <Data special="true" specialType="LateralDistanceToV2" color="#e5ccff">LDist to V2</Data>
-  <Data special="true" specialType="VerticalDistanceToV2" color="#e5ccff">VDist to V2</Data>
-  <Data special="true" specialType="DistanceToV3" color="#e5ccff">Dist to V3</Data>
-  <Data special="true" specialType="LateralDistanceToV3" color="#e5ccff">LDist to V3</Data>
-  <Data special="true" specialType="VerticalDistanceToV3" color="#e5ccff">VDist to V3</Data>
+  <Data special="true" offset="Special" specialType="DistanceToV1" color="#e5ccff">Dist to V1</Data>
+  <Data special="true" offset="Special" specialType="LateralDistanceToV1" color="#e5ccff">LDist to V1</Data>
+  <Data special="true" offset="Special" specialType="VerticalDistanceToV1" color="#e5ccff">VDist to V1</Data>
+  <Data special="true" offset="Special" specialType="DistanceToV2" color="#e5ccff">Dist to V2</Data>
+  <Data special="true" offset="Special" specialType="LateralDistanceToV2" color="#e5ccff">LDist to V2</Data>
+  <Data special="true" offset="Special" specialType="VerticalDistanceToV2" color="#e5ccff">VDist to V2</Data>
+  <Data special="true" offset="Special" specialType="DistanceToV3" color="#e5ccff">Dist to V3</Data>
+  <Data special="true" offset="Special" specialType="LateralDistanceToV3" color="#e5ccff">LDist to V3</Data>
+  <Data special="true" offset="Special" specialType="VerticalDistanceToV3" color="#e5ccff">VDist to V3</Data>
 </TrianglesData>

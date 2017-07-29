@@ -1117,7 +1117,7 @@
     <Data type="byte" address="0x127" offset="Object" isBool="true">Grabbed</Data>
     <Data type="int" address="0x150" offset="Object">Phase</Data>
     <Data type="int" address="0x184" offset="Object">HP</Data>
-    <Data type="byte" address="0x801816D3">Blinking State</Data>
+    <Data type="byte" address="0x801816D3" offset="Relative">Blinking State</Data>
     <Data type="short" address="0x1AE" offset="Object">Blinking Timer</Data>
     <Data type="int" address="0x17C" offset="Object">Opaqueness</Data>
   </Object>
@@ -1128,7 +1128,7 @@
     <Data type="byte" address="0x127" offset="Object" isBool="true">Grabbed</Data>
     <Data type="int" address="0x150" offset="Object">Phase</Data>
     <Data type="int" address="0x184" offset="Object">HP</Data>
-    <Data type="byte" address="0x8017FE03">Blinking State</Data>
+    <Data type="byte" address="0x8017FE03" offset="Relative">Blinking State</Data>
     <Data type="short" address="0x1AE" offset="Object">Blinking Timer</Data>
     <Data type="int" address="0x17C" offset="Object">Opaqueness</Data>
   </Object>
@@ -1139,7 +1139,7 @@
     <Data type="byte" address="0x127" offset="Object" isBool="true">Grabbed</Data>
     <Data type="int" address="0x150" offset="Object">Phase</Data>
     <Data type="int" address="0x184" offset="Object">HP</Data>
-    <Data type="byte" address="0x80183F83">Blinking State</Data>
+    <Data type="byte" address="0x80183F83" offset="Relative">Blinking State</Data>
     <Data type="short" address="0x1AE" offset="Object">Blinking Timer</Data>
     <Data type="int" address="0x17C" offset="Object">Opaqueness</Data>
   </Object>
@@ -2934,7 +2934,7 @@
     <Data type="int" address="0xF4" offset="Object" isBool="true">Race Started</Data>
     <Data type="int" address="0x104" offset="Object" isBool="true">Race Finished</Data>
     <Data type="int" address="0xF8" offset="Object" isBool="true">KtQ Finished</Data>
-    <Data type="short" address="0x8036125A" isBool="true">Used Cannon</Data>
+    <Data type="short" address="0x8036125A" offset="Relative" isBool="true">Used Cannon</Data>
   </Object>
   <Object behaviorScriptAddress="0x130045F8" name="Koopa the Quick Flag">
     <SpawnCode gfxId="0x6A"/>
