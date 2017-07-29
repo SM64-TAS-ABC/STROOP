@@ -160,8 +160,8 @@ namespace SM64_Diagnostic.Controls
         public static readonly List<uint> OffsetListZero = new List<uint> { 0 };
         public static readonly List<uint> OffsetListMario = new List<uint> { Config.Mario.StructAddress };
         public static readonly List<uint> OffsetListCamera = new List<uint> { Config.Camera.CameraStructAddress };
-        public static readonly List<uint> OffsetListControllerCurrent = new List<uint> { Config.Controller.CurrentInput };
-        public static readonly List<uint> OffsetListControllerBuffered = new List<uint> { Config.Controller.BufferedInput };
+        public static readonly List<uint> OffsetListInputCurrent = new List<uint> { Config.Input.CurrentInput };
+        public static readonly List<uint> OffsetListInputBuffered = new List<uint> { Config.Input.BufferedInput };
         public static readonly List<uint> OffsetListCamhack = new List<uint> { Config.CameraHack.CameraHackStruct };
 
         private List<uint> GetOffsetListFromOffsetType(OffsetType? offsetType, bool nonEmptyList = true) //TODO make static once stream is config var
@@ -193,11 +193,11 @@ namespace SM64_Diagnostic.Controls
                 case OffsetType.Triangle:
                     output = new List<uint> { TriangleManager.Instance.TriangleAddress };
                     break;
-                case OffsetType.ControllerCurrent:
-                    output = OffsetListControllerCurrent;
+                case OffsetType.InputCurrent:
+                    output = OffsetListInputCurrent;
                     break;
-                case OffsetType.ControllerBuffered:
-                    output = OffsetListControllerBuffered;
+                case OffsetType.InputBuffered:
+                    output = OffsetListInputBuffered;
                     break;
                 case OffsetType.Graphic:
                     output = OffsetListZero;

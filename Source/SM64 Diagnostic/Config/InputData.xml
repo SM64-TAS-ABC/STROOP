@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<InputData>
+  <Data type="sbyte" address="0x02" offset="InputCurrent">Current H</Data>
+  <Data type="sbyte" address="0x03" offset="InputCurrent">Current V</Data>
+  <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x80" color="#c4cfff">Current A</Data>
+  <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x40" color="#ccffd3">Current B</Data>
+  <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x20" color="#d1d1d1">Current Z</Data>
+  <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x10" color="#ffcccc">Current S</Data>
+  <Data type="byte" address="0x01" offset="InputCurrent" isBool="true" mask="0x10" color="#d1d1d1">Current R</Data>
+  <Data type="byte" address="0x01" offset="InputCurrent" isBool="true" mask="0x20" color="#d1d1d1">Current L</Data>
+  <Data type="byte" address="0x01" offset="InputCurrent" isBool="true" mask="0x08" color="#ffffdd">Current C^</Data>
+  <Data type="byte" address="0x01" offset="InputCurrent" isBool="true" mask="0x04" color="#ffffdd">Current Cv</Data>
+  <Data type="byte" address="0x01" offset="InputCurrent" isBool="true" mask="0x02" color="#ffffdd">Current C&lt;</Data>
+  <Data type="byte" address="0x01" offset="InputCurrent" isBool="true" mask="0x01" color="#ffffdd">Current C></Data>
+  <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x08" color="#d1d1d1">Current D^</Data>
+  <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x04" color="#d1d1d1">Current Dv</Data>
+  <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x02" color="#d1d1d1">Current D&lt;</Data>
+  <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x01" color="#d1d1d1">Current D></Data>
+
+  <Data type="sbyte" address="0x02" offset="InputBuffered">Buffered H</Data>
+  <Data type="sbyte" address="0x03" offset="InputBuffered">Buffered V</Data>
+  <Data type="byte" address="0x00" offset="InputBuffered" isBool="true" mask="0x80" color="#c4cfff">Buffered A</Data>
+  <Data type="byte" address="0x00" offset="InputBuffered" isBool="true" mask="0x40" color="#ccffd3">Buffered B</Data>
+  <Data type="byte" address="0x00" offset="InputBuffered" isBool="true" mask="0x20" color="#d1d1d1">Buffered Z</Data>
+  <Data type="byte" address="0x00" offset="InputBuffered" isBool="true" mask="0x10" color="#ffcccc">Buffered S</Data>
+  <Data type="byte" address="0x01" offset="InputBuffered" isBool="true" mask="0x10" color="#d1d1d1">Buffered R</Data>
+  <Data type="byte" address="0x01" offset="InputBuffered" isBool="true" mask="0x20" color="#d1d1d1">Buffered L</Data>
+  <Data type="byte" address="0x01" offset="InputBuffered" isBool="true" mask="0x08" color="#ffffdd">Buffered C^</Data>
+  <Data type="byte" address="0x01" offset="InputBuffered" isBool="true" mask="0x04" color="#ffffdd">Buffered Cv</Data>
+  <Data type="byte" address="0x01" offset="InputBuffered" isBool="true" mask="0x02" color="#ffffdd">Buffered C&lt;</Data>
+  <Data type="byte" address="0x01" offset="InputBuffered" isBool="true" mask="0x01" color="#ffffdd">Buffered C></Data>
+  <Data type="byte" address="0x00" offset="InputBuffered" isBool="true" mask="0x08" color="#d1d1d1">Buffered D^</Data>
+  <Data type="byte" address="0x00" offset="InputBuffered" isBool="true" mask="0x04" color="#d1d1d1">Buffered Dv</Data>
+  <Data type="byte" address="0x00" offset="InputBuffered" isBool="true" mask="0x02" color="#d1d1d1">Buffered D&lt;</Data>
+  <Data type="byte" address="0x00" offset="InputBuffered" isBool="true" mask="0x01" color="#d1d1d1">Buffered D></Data>
+</InputData>

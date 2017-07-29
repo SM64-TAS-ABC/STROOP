@@ -531,137 +531,137 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
-                    case "Controller":
+                    case "Input":
                         foreach (XElement subElement in element.Elements())
                         {
                             switch (subElement.Name.ToString())
                             {
                                 case "BufferedInput":
-                                    Config.Controller.BufferedInput = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.BufferedInput = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "CurrentInput":
-                                    Config.Controller.CurrentInput = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.CurrentInput = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonAOffset":
-                                    Config.Controller.ButtonAOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonAOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonBOffset":
-                                    Config.Controller.ButtonBOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonBOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonZOffset":
-                                    Config.Controller.ButtonZOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonZOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonStartOffset":
-                                    Config.Controller.ButtonStartOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonStartOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonROffset":
-                                    Config.Controller.ButtonROffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonROffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonLOffset":
-                                    Config.Controller.ButtonLOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonLOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonCUpOffset":
-                                    Config.Controller.ButtonCUpOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonCUpOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonCDownOffset":
-                                    Config.Controller.ButtonCDownOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonCDownOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonCLeftOffset":
-                                    Config.Controller.ButtonCLeftOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonCLeftOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonCRightOffset":
-                                    Config.Controller.ButtonCRightOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonCRightOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonDUpOffset":
-                                    Config.Controller.ButtonDUpOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonDUpOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonDDownOffset":
-                                    Config.Controller.ButtonDDownOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonDDownOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonDLeftOffset":
-                                    Config.Controller.ButtonDLeftOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonDLeftOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonDRightOffset":
-                                    Config.Controller.ButtonDRightOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonDRightOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ControlStickHOffset":
-                                    Config.Controller.ControlStickHOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ControlStickHOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ControlStickVOffset":
-                                    Config.Controller.ControlStickVOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ControlStickVOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonAMask":
-                                    Config.Controller.ButtonAMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonAMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonBMask":
-                                    Config.Controller.ButtonBMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonBMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonZMask":
-                                    Config.Controller.ButtonZMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonZMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonStartMask":
-                                    Config.Controller.ButtonStartMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonStartMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonRMask":
-                                    Config.Controller.ButtonRMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonRMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonLMask":
-                                    Config.Controller.ButtonLMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonLMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonCUpMask":
-                                    Config.Controller.ButtonCUpMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonCUpMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonCDownMask":
-                                    Config.Controller.ButtonCDownMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonCDownMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonCLeftMask":
-                                    Config.Controller.ButtonCLeftMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonCLeftMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonCRightMask":
-                                    Config.Controller.ButtonCRightMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonCRightMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonDUpMask":
-                                    Config.Controller.ButtonDUpMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonDUpMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonDDownMask":
-                                    Config.Controller.ButtonDDownMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonDDownMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonDLeftMask":
-                                    Config.Controller.ButtonDLeftMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonDLeftMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonDRightMask":
-                                    Config.Controller.ButtonDRightMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Input.ButtonDRightMask = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         }
@@ -1381,14 +1381,14 @@ namespace SM64_Diagnostic.Utilities
             return assoc;
         }
 
-        public static void OpenControllerImageAssoc(string path, ControllerImageGui controllerImageGui)
+        public static void OpenInputImageAssoc(string path, InputImageGui inputImageGui)
         {
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
             var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/ControllerImageAssociationsSchema.xsd", "ControllerImageAssociationsSchema.xsd");
+            schemaSet.Add("http://tempuri.org/InputImageAssociationsSchema.xsd", "InputImageAssociationsSchema.xsd");
             schemaSet.Compile();
             
             // Load and validate document
@@ -1396,7 +1396,7 @@ namespace SM64_Diagnostic.Utilities
             doc.Validate(schemaSet, Validation);
 
             // Create path list
-            string controllerImageDir = "",
+            string inputImageDir = "",
                    buttonAPath = "",
                    buttonBPath = "",
                    buttonZPath = "",
@@ -1412,7 +1412,7 @@ namespace SM64_Diagnostic.Utilities
                    buttonDLeftPath = "",
                    buttonDRightPath = "",
                    controlStickPath = "",
-                   controllerBasePath = "";
+                   controllerPath = "";
 
             foreach (XElement element in doc.Root.Elements())
             {
@@ -1423,80 +1423,80 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "ControllerImageDirectory":
-                                    controllerImageDir = subElement.Value;
+                                case "InputImageDirectory":
+                                    inputImageDir = subElement.Value;
                                     break;
                             }
                         }
                         break;
 
-                    case "ControllerImages":
+                    case "InputImages":
                         foreach (XElement subElement in element.Elements())
                         {
                             switch (subElement.Name.ToString())
                             {
                                 case "ButtonA":
-                                    buttonAPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonAPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ButtonB":
-                                    buttonBPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonBPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ButtonZ":
-                                    buttonZPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonZPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ButtonStart":
-                                    buttonStartPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonStartPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ButtonR":
-                                    buttonRPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonRPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ButtonL":
-                                    buttonLPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonLPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ButtonCUp":
-                                    buttonCUpPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonCUpPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ButtonCDown":
-                                    buttonCDownPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonCDownPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ButtonCLeft":
-                                    buttonCLeftPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonCLeftPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ButtonCRight":
-                                    buttonCRightPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonCRightPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ButtonDUp":
-                                    buttonDUpPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonDUpPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ButtonDDown":
-                                    buttonDDownPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonDDownPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ButtonDLeft":
-                                    buttonDLeftPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonDLeftPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ButtonDRight":
-                                    buttonDRightPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    buttonDRightPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "ControlStick":
-                                    controlStickPath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                    controlStickPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
-                                case "ControllerBase":
-                                    controllerBasePath = subElement.Element(XName.Get("ControllerImage")).Attribute(XName.Get("path")).Value;
+                                case "Controller":
+                                    controllerPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
                             }
                         }
@@ -1506,26 +1506,26 @@ namespace SM64_Diagnostic.Utilities
 
             // Load Images
             // TODO: Exceptions
-            controllerImageGui.ButtonAImage = Image.FromFile(controllerImageDir + buttonAPath);
-            controllerImageGui.ButtonBImage = Image.FromFile(controllerImageDir + buttonBPath);
-            controllerImageGui.ButtonZImage = Image.FromFile(controllerImageDir + buttonZPath);
-            controllerImageGui.ButtonStartImage = Image.FromFile(controllerImageDir + buttonStartPath);
+            inputImageGui.ButtonAImage = Image.FromFile(inputImageDir + buttonAPath);
+            inputImageGui.ButtonBImage = Image.FromFile(inputImageDir + buttonBPath);
+            inputImageGui.ButtonZImage = Image.FromFile(inputImageDir + buttonZPath);
+            inputImageGui.ButtonStartImage = Image.FromFile(inputImageDir + buttonStartPath);
 
-            controllerImageGui.ButtonRImage = Image.FromFile(controllerImageDir + buttonRPath);
-            controllerImageGui.ButtonLImage = Image.FromFile(controllerImageDir + buttonLPath);
+            inputImageGui.ButtonRImage = Image.FromFile(inputImageDir + buttonRPath);
+            inputImageGui.ButtonLImage = Image.FromFile(inputImageDir + buttonLPath);
 
-            controllerImageGui.ButtonCUpImage = Image.FromFile(controllerImageDir + buttonCUpPath);
-            controllerImageGui.ButtonCDownImage = Image.FromFile(controllerImageDir + buttonCDownPath);
-            controllerImageGui.ButtonCLeftImage = Image.FromFile(controllerImageDir + buttonCLeftPath);
-            controllerImageGui.ButtonCRightImage = Image.FromFile(controllerImageDir + buttonCRightPath);
+            inputImageGui.ButtonCUpImage = Image.FromFile(inputImageDir + buttonCUpPath);
+            inputImageGui.ButtonCDownImage = Image.FromFile(inputImageDir + buttonCDownPath);
+            inputImageGui.ButtonCLeftImage = Image.FromFile(inputImageDir + buttonCLeftPath);
+            inputImageGui.ButtonCRightImage = Image.FromFile(inputImageDir + buttonCRightPath);
 
-            controllerImageGui.ButtonDUpImage = Image.FromFile(controllerImageDir + buttonDUpPath);
-            controllerImageGui.ButtonDDownImage = Image.FromFile(controllerImageDir + buttonDDownPath);
-            controllerImageGui.ButtonDLeftImage = Image.FromFile(controllerImageDir + buttonDLeftPath);
-            controllerImageGui.ButtonDRightImage = Image.FromFile(controllerImageDir + buttonDRightPath);
+            inputImageGui.ButtonDUpImage = Image.FromFile(inputImageDir + buttonDUpPath);
+            inputImageGui.ButtonDDownImage = Image.FromFile(inputImageDir + buttonDDownPath);
+            inputImageGui.ButtonDLeftImage = Image.FromFile(inputImageDir + buttonDLeftPath);
+            inputImageGui.ButtonDRightImage = Image.FromFile(inputImageDir + buttonDRightPath);
 
-            controllerImageGui.ControlStickImage = Image.FromFile(controllerImageDir + controlStickPath);
-            controllerImageGui.ControllerBaseImage = Image.FromFile(controllerImageDir + controllerBasePath);
+            inputImageGui.ControlStickImage = Image.FromFile(inputImageDir + controlStickPath);
+            inputImageGui.ControllerImage = Image.FromFile(inputImageDir + controllerPath);
         }
 
         public static void OpenFileImageAssoc(string path, FileImageGui fileImageGui)

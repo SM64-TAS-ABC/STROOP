@@ -157,7 +157,7 @@
     <YawFacingOffset>0xCE</YawFacingOffset>
     <SecondObjectAddress>0x8032DF30</SecondObjectAddress>
   </Camera>
-  <Controller>
+  <Input>
     <BufferedInput>0x80367054</BufferedInput>
     <CurrentInput>0x8033AFF8</CurrentInput>
     
@@ -192,7 +192,7 @@
     <ButtonDDownMask>0x04</ButtonDDownMask>
     <ButtonDLeftMask>0x02</ButtonDLeftMask>
     <ButtonDRightMask>0x01</ButtonDRightMask>
-  </Controller>
+  </Input>
   <File>
     <FileStructAddress>0x80207700</FileStructAddress>
     <FileStructSize>0x38</FileStructSize>

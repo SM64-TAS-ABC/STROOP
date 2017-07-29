@@ -23,10 +23,10 @@ namespace SM64_Diagnostic
         ProcessStream _sm64Stream = null;
         
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
-        ControllerImageGui _controllerImageGui = new ControllerImageGui();
+        InputImageGui _inputImageGui = new InputImageGui();
         FileImageGui _fileImageGui = new FileImageGui();
         List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, 
-            _actionsData, _waterData, _controllerData, _fileData, _quarterFrameData, _camHackData;
+            _actionsData, _waterData, _inputData, _fileData, _quarterFrameData, _camHackData;
         ObjectAssociations _objectAssoc;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
@@ -38,7 +38,7 @@ namespace SM64_Diagnostic
         ObjectSlotsManager _objectSlotManager;
         DisassemblyManager _disManager;
         MarioManager _marioManager;
-        ControllerManager _controllerManager;
+        InputManager _inputManager;
         ActionsManager _actionsManager;
         ObjectManager _objectManager;
         MapManager _mapManager;
@@ -118,7 +118,7 @@ namespace SM64_Diagnostic
 
             currentContext.ActionsManager = _actionsManager = new ActionsManager(_sm64Stream, _actionsData, noTearFlowLayoutPanelActions, tabPageActions);
             currentContext.WaterManager = _waterManager = new DataManager(_sm64Stream, _waterData, noTearFlowLayoutPanelWater);
-            currentContext.ControllerManager = _controllerManager = new ControllerManager(_sm64Stream, _controllerData, tabPageController, NoTearFlowLayoutPanelController, _controllerImageGui);
+            currentContext.InputManager = _inputManager = new InputManager(_sm64Stream, _inputData, tabPageInput, NoTearFlowLayoutPanelInput, _inputImageGui);
             currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
             currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud, NoTearFlowLayoutPanelHud);
             currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc);
@@ -204,10 +204,10 @@ namespace SM64_Diagnostic
             _actionsData = XmlConfigParser.OpenWatchVarData(@"Config/ActionsData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Water Data", statusNum++);
             _waterData = XmlConfigParser.OpenWatchVarData(@"Config/WaterData.xml", "MiscDataSchema.xsd");
-            loadingForm.UpdateStatus("Loading Controller Data", statusNum++);
-            _controllerData = XmlConfigParser.OpenWatchVarData(@"Config/ControllerData.xml", "MiscDataSchema.xsd");
-            loadingForm.UpdateStatus("Loading Controller Image Associations", statusNum++);
-            XmlConfigParser.OpenControllerImageAssoc(@"Config/ControllerImageAssociations.xml", _controllerImageGui);
+            loadingForm.UpdateStatus("Loading Input Data", statusNum++);
+            _inputData = XmlConfigParser.OpenWatchVarData(@"Config/InputData.xml", "MiscDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading Input Image Associations", statusNum++);
+            XmlConfigParser.OpenInputImageAssoc(@"Config/InputImageAssociations.xml", _inputImageGui);
             loadingForm.UpdateStatus("Loading File Data", statusNum++);
             _fileData = XmlConfigParser.OpenWatchVarData(@"Config/FileData.xml", "FileDataSchema.xsd");
             loadingForm.UpdateStatus("Loading File Image Associations", statusNum++);
@@ -263,7 +263,7 @@ namespace SM64_Diagnostic
                 _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
                 _actionsManager.Update(tabControlMain.SelectedTab == tabPageActions);
                 _waterManager.Update(tabControlMain.SelectedTab == tabPageWater);
-                _controllerManager.Update(tabControlMain.SelectedTab == tabPageController);
+                _inputManager.Update(tabControlMain.SelectedTab == tabPageInput);
                 _fileManager.Update(tabControlMain.SelectedTab == tabPageFile);
                 _quarterFrameManager.Update(tabControlMain.SelectedTab == tabPageQuarterFrame);
                 _cameraHackManager.Update(tabControlMain.SelectedTab == tabPageCamHack);
@@ -505,8 +505,8 @@ namespace SM64_Diagnostic
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerCamera"] as SplitContainer;
             else if (selectedTabPage == tabPageTriangles)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerTriangles"] as SplitContainer;
-            else if (selectedTabPage == tabPageController)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerController"] as SplitContainer;
+            else if (selectedTabPage == tabPageInput)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerInput"] as SplitContainer;
             else if (selectedTabPage == tabPageFile)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerFile"] as SplitContainer;
             else if (selectedTabPage == tabPageMap)

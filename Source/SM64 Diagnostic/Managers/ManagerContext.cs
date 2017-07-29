@@ -24,7 +24,7 @@ namespace SM64_Diagnostic.Managers
         public ScriptManager ScriptManager;
         public TriangleManager TriangleManager;
         public DataManager WaterManager;
-        public ControllerManager ControllerManager;
+        public InputManager InputManager;
         public ActionsManager ActionsManager;
         public PuManager PuManager;
         public FileManager FileManager;

@@ -18,7 +18,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static HackConfig Hacks;
         public static DebugConfig Debug;
         public static CameraConfig Camera;
-        public static ControllerConfig Controller;
+        public static InputConfig Input;
         public static FileConfig File;
         public static CameraHackConfig CameraHack;
         public static TriangleOffsetsConfig TriangleOffsets;

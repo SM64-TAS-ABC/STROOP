@@ -249,10 +249,10 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageWater = new System.Windows.Forms.TabPage();
             this.noTearFlowLayoutPanelWater = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.tabPageController = new System.Windows.Forms.TabPage();
-            this.splitContainerController = new System.Windows.Forms.SplitContainer();
-            this.controllerDisplayPanel = new SM64_Diagnostic.ControllerDisplayPanel();
-            this.NoTearFlowLayoutPanelController = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.tabPageInput = new System.Windows.Forms.TabPage();
+            this.splitContainerInput = new System.Windows.Forms.SplitContainer();
+            this.inputDisplayPanel = new SM64_Diagnostic.InputDisplayPanel();
+            this.NoTearFlowLayoutPanelInput = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.splitContainerFile = new System.Windows.Forms.SplitContainer();
             this.groupBoxAllCoinsMeaning = new System.Windows.Forms.GroupBox();
@@ -756,11 +756,11 @@ namespace SM64_Diagnostic
             this.groupBoxTrianglePos.SuspendLayout();
             this.groupBoxTriangleNormal.SuspendLayout();
             this.tabPageWater.SuspendLayout();
-            this.tabPageController.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerController)).BeginInit();
-            this.splitContainerController.Panel1.SuspendLayout();
-            this.splitContainerController.Panel2.SuspendLayout();
-            this.splitContainerController.SuspendLayout();
+            this.tabPageInput.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerInput)).BeginInit();
+            this.splitContainerInput.Panel1.SuspendLayout();
+            this.splitContainerInput.Panel2.SuspendLayout();
+            this.splitContainerInput.SuspendLayout();
             this.tabPageFile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).BeginInit();
             this.splitContainerFile.Panel1.SuspendLayout();
@@ -1122,7 +1122,7 @@ namespace SM64_Diagnostic
             this.tabControlMain.Controls.Add(this.tabPageCamera);
             this.tabControlMain.Controls.Add(this.tabPageTriangles);
             this.tabControlMain.Controls.Add(this.tabPageWater);
-            this.tabControlMain.Controls.Add(this.tabPageController);
+            this.tabControlMain.Controls.Add(this.tabPageInput);
             this.tabControlMain.Controls.Add(this.tabPageFile);
             this.tabControlMain.Controls.Add(this.tabPageMisc);
             this.tabControlMain.Controls.Add(this.tabPageDebug);
@@ -3489,66 +3489,66 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelWater.Size = new System.Drawing.Size(909, 457);
             this.noTearFlowLayoutPanelWater.TabIndex = 2;
             // 
-            // tabPageController
+            // tabPageInput
             // 
-            this.tabPageController.Controls.Add(this.splitContainerController);
-            this.tabPageController.Location = new System.Drawing.Point(4, 22);
-            this.tabPageController.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageController.Name = "tabPageController";
-            this.tabPageController.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageController.Size = new System.Drawing.Size(915, 463);
-            this.tabPageController.TabIndex = 14;
-            this.tabPageController.Text = "Controller";
+            this.tabPageInput.Controls.Add(this.splitContainerInput);
+            this.tabPageInput.Location = new System.Drawing.Point(4, 22);
+            this.tabPageInput.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageInput.Name = "tabPageInput";
+            this.tabPageInput.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPageInput.Size = new System.Drawing.Size(915, 463);
+            this.tabPageInput.TabIndex = 14;
+            this.tabPageInput.Text = "Input";
             // 
-            // splitContainerController
+            // splitContainerInput
             // 
-            this.splitContainerController.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.splitContainerInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainerController.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerController.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerController.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerController.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainerController.Name = "splitContainerController";
+            this.splitContainerInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerInput.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerInput.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerInput.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainerInput.Name = "splitContainerInput";
             // 
-            // splitContainerController.Panel1
+            // splitContainerInput.Panel1
             // 
-            this.splitContainerController.Panel1.Controls.Add(this.controllerDisplayPanel);
-            this.splitContainerController.Panel1MinSize = 0;
+            this.splitContainerInput.Panel1.Controls.Add(this.inputDisplayPanel);
+            this.splitContainerInput.Panel1MinSize = 0;
             // 
-            // splitContainerController.Panel2
+            // splitContainerInput.Panel2
             // 
-            this.splitContainerController.Panel2.Controls.Add(this.NoTearFlowLayoutPanelController);
-            this.splitContainerController.Panel2MinSize = 0;
-            this.splitContainerController.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerController.SplitterDistance = 428;
-            this.splitContainerController.SplitterWidth = 1;
-            this.splitContainerController.TabIndex = 17;
+            this.splitContainerInput.Panel2.Controls.Add(this.NoTearFlowLayoutPanelInput);
+            this.splitContainerInput.Panel2MinSize = 0;
+            this.splitContainerInput.Size = new System.Drawing.Size(915, 463);
+            this.splitContainerInput.SplitterDistance = 428;
+            this.splitContainerInput.SplitterWidth = 1;
+            this.splitContainerInput.TabIndex = 17;
             // 
-            // controllerDisplayPanel
+            // inputDisplayPanel
             // 
-            this.controllerDisplayPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.inputDisplayPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.controllerDisplayPanel.AutoSize = true;
-            this.controllerDisplayPanel.Location = new System.Drawing.Point(3, 3);
-            this.controllerDisplayPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.controllerDisplayPanel.Name = "controllerDisplayPanel";
-            this.controllerDisplayPanel.Size = new System.Drawing.Size(421, 457);
-            this.controllerDisplayPanel.TabIndex = 4;
+            this.inputDisplayPanel.AutoSize = true;
+            this.inputDisplayPanel.Location = new System.Drawing.Point(3, 3);
+            this.inputDisplayPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.inputDisplayPanel.Name = "inputDisplayPanel";
+            this.inputDisplayPanel.Size = new System.Drawing.Size(421, 457);
+            this.inputDisplayPanel.TabIndex = 4;
             // 
-            // NoTearFlowLayoutPanelController
+            // NoTearFlowLayoutPanelInput
             // 
-            this.NoTearFlowLayoutPanelController.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoTearFlowLayoutPanelInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoTearFlowLayoutPanelController.AutoScroll = true;
-            this.NoTearFlowLayoutPanelController.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelController.Location = new System.Drawing.Point(2, 2);
-            this.NoTearFlowLayoutPanelController.Margin = new System.Windows.Forms.Padding(2);
-            this.NoTearFlowLayoutPanelController.Name = "NoTearFlowLayoutPanelController";
-            this.NoTearFlowLayoutPanelController.Size = new System.Drawing.Size(479, 460);
-            this.NoTearFlowLayoutPanelController.TabIndex = 2;
+            this.NoTearFlowLayoutPanelInput.AutoScroll = true;
+            this.NoTearFlowLayoutPanelInput.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
+            this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(479, 460);
+            this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
             // 
@@ -9501,12 +9501,12 @@ namespace SM64_Diagnostic
             this.groupBoxTriangleNormal.ResumeLayout(false);
             this.groupBoxTriangleNormal.PerformLayout();
             this.tabPageWater.ResumeLayout(false);
-            this.tabPageController.ResumeLayout(false);
-            this.splitContainerController.Panel1.ResumeLayout(false);
-            this.splitContainerController.Panel1.PerformLayout();
-            this.splitContainerController.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerController)).EndInit();
-            this.splitContainerController.ResumeLayout(false);
+            this.tabPageInput.ResumeLayout(false);
+            this.splitContainerInput.Panel1.ResumeLayout(false);
+            this.splitContainerInput.Panel1.PerformLayout();
+            this.splitContainerInput.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerInput)).EndInit();
+            this.splitContainerInput.ResumeLayout(false);
             this.tabPageFile.ResumeLayout(false);
             this.splitContainerFile.Panel1.ResumeLayout(false);
             this.splitContainerFile.Panel2.ResumeLayout(false);
@@ -9902,8 +9902,8 @@ namespace SM64_Diagnostic
         private NoTearFlowLayoutPanel noTearFlowLayoutPanelActions;
         private TabPage tabPageWater;
         private NoTearFlowLayoutPanel noTearFlowLayoutPanelWater;
-        private TabPage tabPageController;
-        private NoTearFlowLayoutPanel NoTearFlowLayoutPanelController;
+        private TabPage tabPageInput;
+        private NoTearFlowLayoutPanel NoTearFlowLayoutPanelInput;
         private TabPage tabPagePu;
         private GroupBox groupBoxPuController;
         private Label labelPuConPu;
@@ -10075,7 +10075,7 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxShowOverlayCeilingObject;
         private CheckBox checkBoxShowOverlayWallObject;
         private CheckBox checkBoxShowOverlayFloorObject;
-        private SplitContainer splitContainerController;
+        private SplitContainer splitContainerInput;
         private Label labelCamHackMode;
         private RadioButton radioButtonCamHackMode3;
         private RadioButton radioButtonCamHackMode2;
@@ -10157,7 +10157,7 @@ namespace SM64_Diagnostic
         private SplitContainer splitContainerHud;
         private SplitContainer splitContainerMario;
         private SplitContainer splitContainerObject;
-        private ControllerDisplayPanel controllerDisplayPanel;
+        private InputDisplayPanel inputDisplayPanel;
         private RadioButton radioButtonFileCSaved;
         private RadioButton radioButtonFileDSaved;
         private RadioButton radioButtonFileASaved;
