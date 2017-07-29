@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MarioData>
-  <Data type="float" address="0x3C" marioOffset="true">X</Data>
+  <Data type="float" address="0x3C" offset="Mario" marioOffset="true">X</Data>
   <Data type="float" address="0x40" marioOffset="true">Y</Data>
   <Data type="float" address="0x44" marioOffset="true">Z</Data>
   <Data type="float" address="0x48" marioOffset="true">X Speed</Data>
