@@ -155,6 +155,14 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public List<uint> OffsetList
+        {
+            get
+            {
+                return OtherOffsets;
+            }
+        }
+
         public string Name
         {
             get
@@ -311,8 +319,8 @@ namespace SM64_Diagnostic.Controls
                 else
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{1:X8} + 0x{0:X8} = 0x{2:X8} [{4} + 0x{3:X8}]",
-                        _watchVar.GetRamAddress(_stream, 0, false), OtherOffsets[0], _watchVar.GetRamAddress(_stream, OtherOffsets[0]),
-                        _watchVar.GetProcessAddress(_stream, OtherOffsets[0]), _stream.ProcessName));
+                        _watchVar.GetRamAddress(_stream, 0, false), OffsetList[0], _watchVar.GetRamAddress(_stream, OffsetList[0]),
+                        _watchVar.GetProcessAddress(_stream, OffsetList[0]), _stream.ProcessName));
                 }
             };
 
@@ -387,8 +395,8 @@ namespace SM64_Diagnostic.Controls
             else
             {
                 varInfo = new VariableViewerForm(_watchVar.Name, typeDescr,
-                    String.Format("0x{0:X8}", _watchVar.GetRamAddress(_stream, OtherOffsets[0])),
-                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress(_stream, OtherOffsets[0])));
+                    String.Format("0x{0:X8}", _watchVar.GetRamAddress(_stream, OffsetList[0])),
+                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress(_stream, OffsetList[0])));
             }
             varInfo.ShowDialog();
         }
@@ -401,9 +409,9 @@ namespace SM64_Diagnostic.Controls
         private void _textBoxValue_MouseEnter(object sender, EventArgs e)
         {
             var lockedStatus = CheckState.Unchecked;
-            if (OtherOffsets.Any(o => GetIsLocked(o)))
+            if (OffsetList.Any(o => GetIsLocked(o)))
             {
-                if (OtherOffsets.All(o => GetIsLocked(o)))
+                if (OffsetList.All(o => GetIsLocked(o)))
                 {
                     lockedStatus = CheckState.Checked;
                 }
@@ -477,7 +485,7 @@ namespace SM64_Diagnostic.Controls
             if (_watchVar.Special)
                 return;
 
-            ShowLockedImage(OtherOffsets.Any(o => GetIsLocked(o)), !OtherOffsets.All(o => GetIsLocked(o)));
+            ShowLockedImage(OffsetList.Any(o => GetIsLocked(o)), !OffsetList.All(o => GetIsLocked(o)));
 
             if (_editMode)
                 return;
@@ -486,9 +494,9 @@ namespace SM64_Diagnostic.Controls
 
             if (_watchVar.IsBool)
             {
-                if (OtherOffsets.Any(o => _watchVar.GetBoolValue(_stream, o)))
+                if (OffsetList.Any(o => _watchVar.GetBoolValue(_stream, o)))
                 {
-                    if (OtherOffsets.All(o => _watchVar.GetBoolValue(_stream, o)))
+                    if (OffsetList.All(o => _watchVar.GetBoolValue(_stream, o)))
                     {
                         _checkBoxBool.CheckState = CheckState.Checked;
                     }
@@ -505,7 +513,7 @@ namespace SM64_Diagnostic.Controls
             else
             {
                 bool firstOffset = true;
-                foreach (var offset in OtherOffsets)
+                foreach (var offset in OffsetList)
                 {
                     string newText = "";
                     if (_watchVar.IsAngle)
@@ -541,7 +549,7 @@ namespace SM64_Diagnostic.Controls
 
             if (_watchVar.IsBool)
             {
-                foreach (var offset in OtherOffsets)
+                foreach (var offset in OffsetList)
                 {
                     _watchVar.SetBoolValue(_stream, offset, _checkBoxBool.Checked);
                 }
@@ -565,10 +573,10 @@ namespace SM64_Diagnostic.Controls
                 case "Lock Value":
                     EditMode = false;
                     (e.ClickedItem as ToolStripMenuItem).Checked = !(e.ClickedItem as ToolStripMenuItem).Checked;
-                    if (OtherOffsets.Any(o => GetIsLocked(o)))
-                        OtherOffsets.ForEach(o => RemoveLock(o));
+                    if (OffsetList.Any(o => GetIsLocked(o)))
+                        OffsetList.ForEach(o => RemoveLock(o));
                     else
-                        OtherOffsets.ForEach(o => LockUpdate(o));
+                        OffsetList.ForEach(o => LockUpdate(o));
                     break;
                 case "Select Object":
                     if (_watchVar.ByteCount != 4)
@@ -576,7 +584,7 @@ namespace SM64_Diagnostic.Controls
 
                     var slotManager = ManagerContext.Current.ObjectSlotManager;
                     slotManager.SelectedSlotsAddresses.Clear();
-                    foreach (var otherOffset in OtherOffsets)
+                    foreach (var otherOffset in OffsetList)
                     {
                         var objAddress = BitConverter.ToUInt32(_watchVar.GetByteData(_stream, otherOffset), 0);
                         if (ManagerContext.Current.ObjectSlotManager.ObjectSlots.Count(s => s.Address == objAddress) > 0)
@@ -611,7 +619,7 @@ namespace SM64_Diagnostic.Controls
 
             // Write new value to RAM
             byte[] writeBytes;
-            foreach (var offset in OtherOffsets)
+            foreach (var offset in OffsetList)
             {
                 if (_watchVar.IsAngle)
                 {
