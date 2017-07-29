@@ -18,7 +18,7 @@ namespace SM64_Diagnostic.Managers
         Label animationDescriptionLabel;
 
         public ActionsManager(ProcessStream stream, List<WatchVariable> actionsData, NoTearFlowLayoutPanel variableTable, Control actionsControl)
-            : base(stream, actionsData, variableTable, Config.Mario.StructAddress)
+            : base(stream, actionsData, variableTable)
         {
             actionDescriptionLabel = actionsControl.Controls["labelActionDescription"] as Label;
             animationDescriptionLabel = actionsControl.Controls["labelAnimationDescription"] as Label;

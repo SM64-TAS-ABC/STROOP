@@ -17,13 +17,11 @@ namespace SM64_Diagnostic.Managers
         protected NoTearFlowLayoutPanel _variableTable;
         protected ProcessStream _stream;
         protected List<IDataContainer> _specialWatchVars;
-        uint _otherOffset;
 
-        public DataManager(ProcessStream stream, List<WatchVariable> data, NoTearFlowLayoutPanel variableTable, uint otherOffset = 0)
+        public DataManager(ProcessStream stream, List<WatchVariable> data, NoTearFlowLayoutPanel variableTable)
         {
             _variableTable = variableTable;
             _stream = stream;
-            _otherOffset = otherOffset;
 
             _dataControls = new List<IDataContainer>();
             InitializeSpecialVariables();
@@ -69,7 +67,7 @@ namespace SM64_Diagnostic.Managers
                     continue;
                 }
 
-                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar, _otherOffset);
+                WatchVariableControl watchControl = new WatchVariableControl(_stream, watchVar);
                 if (color.HasValue)
                     watchControl.Color = color.Value;
                 _variableTable.Controls.Add(watchControl.Control);
