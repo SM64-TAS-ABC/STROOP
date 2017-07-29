@@ -162,7 +162,8 @@ namespace SM64_Diagnostic.Controls
         public static readonly List<uint> OffsetListCamera = new List<uint> { Config.Camera.CameraStructAddress };
         public static readonly List<uint> OffsetListInputCurrent = new List<uint> { Config.Input.CurrentInput };
         public static readonly List<uint> OffsetListInputBuffered = new List<uint> { Config.Input.BufferedInput };
-        public static readonly List<uint> OffsetListCamhack = new List<uint> { Config.CameraHack.CameraHackStruct };
+        public static readonly List<uint> OffsetListHackedArea = new List<uint> { Config.HackedAreaAddress };
+        public static readonly List<uint> OffsetListCamHack = new List<uint> { Config.CameraHack.CameraHackStruct };
 
         private List<uint> GetOffsetListFromOffsetType(OffsetType? offsetType, bool nonEmptyList = true) //TODO make static once stream is config var
         {
@@ -205,8 +206,11 @@ namespace SM64_Diagnostic.Controls
                 case OffsetType.Waypoint:
                     output = OffsetListZero;
                     break;
+                case OffsetType.HackedArea:
+                    output = OffsetListHackedArea;
+                    break;
                 case OffsetType.CamHack:
-                    output = OffsetListCamhack;
+                    output = OffsetListCamHack;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

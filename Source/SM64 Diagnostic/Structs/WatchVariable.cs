@@ -110,6 +110,7 @@ namespace SM64_Diagnostic.Structs
             InputBuffered,
             Graphic,
             Waypoint,
+            HackedArea,
             CamHack,
         };
 
@@ -127,6 +128,7 @@ namespace SM64_Diagnostic.Structs
             { "InputBuffered", OffsetType.InputBuffered },
             { "Graphic", OffsetType.Graphic },
             { "Waypoint", OffsetType.Waypoint },
+            { "HackedArea", OffsetType.HackedArea },
             { "CamHack", OffsetType.CamHack },
         };
 
