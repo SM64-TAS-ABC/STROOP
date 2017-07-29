@@ -199,7 +199,7 @@ namespace SM64_Diagnostic.Controls
                 case OffsetType.InputBuffered:
                     output = OffsetListInputBuffered;
                     break;
-                case OffsetType.Graphic:
+                case OffsetType.Graphics:
                     List<uint> objAddresses = GetOffsetListFromOffsetType(OffsetType.Object, false);
                     output = objAddresses.ConvertAll(objAddress => _stream.GetUInt32(objAddress + Config.ObjectSlots.BehaviorGfxOffset));
                     break;
