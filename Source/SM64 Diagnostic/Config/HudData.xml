@@ -11,8 +11,8 @@
   <Data type="byte" address="0xB2" offset="Mario">HP Decrease Counter</Data>
   <Data type="short" address="0xA8" offset="Mario">Coin Count</Data>
   <Data type="short" address="0xF2" offset="Mario">Coin Display</Data>
-  <Data type="ushort" address="0x00C1D150" absoluteAddress="true">Coin Counter</Data>
-  <Data type="sbyte" address="0x00C4CE7D" absoluteAddress="true">Red Coin Count</Data>
+  <Data type="ushort" address="0x803316D2">Coin Counter</Data>
+  <Data type="sbyte" address="0x803613FE">Red Coin Count</Data>
   <Data type="short" address="0xAA" offset="Mario">Star Count</Data>
   <Data type="short" address="0xF4" offset="Mario">Star Display</Data>
   <Data type="short" address="0xB8" offset="Mario">Checked Star Count</Data>
@@ -23,8 +23,8 @@
   <Data type="byte" address="0xFB" mask="0x02" offset="Mario" isBool="true">HUD On Coins</Data>
   <Data type="byte" address="0xFB" mask="0x04" offset="Mario" isBool="true">HUD On Stars</Data>
   <Data type="byte" address="0xFB" mask="0x40" offset="Mario" isBool="true">HUD On Time</Data>
-  <Data type="byte" address="0xc1e073" absoluteAddress="true">HP HUD State</Data>
-  <Data type="int" address="0xc1e07c" absoluteAddress="true">HP HUD Timer</Data>
-  <Data type="short" address="0xc1e070" absoluteAddress="true">HP HUD X</Data>
-  <Data type="short" address="0xc1e076" absoluteAddress="true">HP HUD Y</Data>
+  <Data type="byte" address="0x803325F0">HP HUD State</Data>
+  <Data type="int" address="0x803325FC">HP HUD Timer</Data>
+  <Data type="short" address="0x803325F2">HP HUD X</Data>
+  <Data type="short" address="0x803325F4">HP HUD Y</Data>
 </HudData>
