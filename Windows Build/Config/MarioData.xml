@@ -7,23 +7,23 @@
   <Data type="float" address="0x4C" offset="Mario">Y Speed</Data>
   <Data type="float" address="0x50" offset="Mario">Z Speed</Data>
   <Data type="float" address="0x54" offset="Mario">H Speed</Data>
-  <Data special="true" offset="Special" specialType="DeFactoSpeed">De Facto Speed</Data>
+  <Data offset="Special" specialType="DeFactoSpeed">De Facto Speed</Data>
   <Data type="float" address="0x58" offset="Mario">X Sliding Speed</Data>
   <Data type="float" address="0x5C" offset="Mario">Z Sliding Speed</Data>
-  <Data special="true" offset="Special" specialType="SlidingSpeed">H Sliding Speed</Data>
+  <Data offset="Special" specialType="SlidingSpeed">H Sliding Speed</Data>
   <Data type="ushort" address="0x38" offset="Mario" isAngle="true">Sliding Angle</Data>
-  <Data special="true" offset="Special" specialType="MovementX">Delta X</Data>
-  <Data special="true" offset="Special" specialType="MovementY">Delta Y</Data>
-  <Data special="true" offset="Special" specialType="MovementZ">Delta Z</Data>
-  <Data special="true" offset="Special" specialType="MovementForwards">Delta Forwards</Data>
-  <Data special="true" offset="Special" specialType="MovementSideways">Delta Sideways</Data>
-  <Data special="true" offset="Special" specialType="MovementLateral">Delta Lateral</Data>
-  <Data special="true" offset="Special" specialType="MovementTotal">Delta Total</Data>
-  <Data special="true" offset="Special" specialType="MovementAngle">Delta Angle</Data>
-  <Data special="true" offset="Special" specialType="QFrameCountEstimate">QFrames Est.</Data>
+  <Data offset="Special" specialType="MovementX">Delta X</Data>
+  <Data offset="Special" specialType="MovementY">Delta Y</Data>
+  <Data offset="Special" specialType="MovementZ">Delta Z</Data>
+  <Data offset="Special" specialType="MovementForwards">Delta Forwards</Data>
+  <Data offset="Special" specialType="MovementSideways">Delta Sideways</Data>
+  <Data offset="Special" specialType="MovementLateral">Delta Lateral</Data>
+  <Data offset="Special" specialType="MovementTotal">Delta Total</Data>
+  <Data offset="Special" specialType="MovementAngle">Delta Angle</Data>
+  <Data offset="Special" specialType="QFrameCountEstimate">QFrames Est.</Data>
   <Data type="ushort" address="0x2E" offset="Mario" isAngle="true">Yaw (Facing)</Data>
   <Data type="ushort" address="0x24" offset="Mario" isAngle="true">Yaw (Intended)</Data>
-  <Data special="true" offset="Special" specialType="DeltaYawIntendedFacing">DYaw Intend-Face</Data>
+  <Data offset="Special" specialType="DeltaYawIntendedFacing">DYaw Intend-Face</Data>
   <Data type="ushort" address="0x3A" offset="Mario" isAngle="true">Twirl Yaw</Data>
   <Data type="short" address="0x34" offset="Mario" isAngle="true">Yaw Velocity</Data>
   <Data type="ushort" address="0x74" offset="Mario" isAngle="true">Floor Yaw</Data>
@@ -50,7 +50,7 @@
   <Data type="short" address="0x26" offset="Mario">Hitstun Timer</Data>
   <Data type="float" address="0xBC" offset="Mario">Peak Height</Data>
   <Data type="float" address="0x70" offset="Mario">Floor Height</Data>
-  <Data special="true" offset="Special" specialType="FallHeight">Fall Height</Data>
+  <Data offset="Special" specialType="FallHeight">Fall Height</Data>
   <Data type="float" address="0xC0" offset="Mario">Quicksand Height</Data>
   <Data type="sbyte" address="0xB4" offset="Mario">Unsquishing Timer</Data>
   <Data type="ushort" address="0x1E" offset="Mario">Squished Timer</Data>

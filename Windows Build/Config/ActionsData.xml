@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ActionsData>
   <Data type="uint" address="0x0C" offset="Mario" useHex="true">Action</Data>
-  <Data special="true" offset="Special" specialType="ActionDescription">Action Description</Data>
+  <Data offset="Special" specialType="ActionDescription">Action Description</Data>
   <Data type="uint" address="0x10" offset="Mario" useHex="true">Previous Action</Data>
-  <Data special="true" offset="Special" specialType="PrevActionDescription">Prev. Action Desc.</Data>
+  <Data offset="Special" specialType="PrevActionDescription">Prev. Action Desc.</Data>
   <Data type="short" address="0x18" offset="Mario">Action Phase</Data>
   <Data type="short" address="0x1A" offset="Mario">Action Timer</Data>
   <Data type="short" address="0x38" offset="MarioObj">Animation</Data>
-  <Data special="true" offset="Special" specialType="MarioAnimationDescription">Animation Description</Data>
+  <Data offset="Special" specialType="MarioAnimationDescription">Animation Description</Data>
   <Data type="short" address="0x40" offset="MarioObj">Animation Timer</Data>
   <Data type="uint" address="0x0C" offset="Mario" isBool="true" mask="0x80000000">b00 throwing?</Data>
   <Data type="uint" address="0x0C" offset="Mario" isBool="true" mask="0x40000000">b01 (never)</Data>
