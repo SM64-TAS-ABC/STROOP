@@ -22,7 +22,7 @@ namespace SM64_Diagnostic.Managers
         RadioButton _mode3RadioButton;
 
         public CamHackManager(ProcessStream stream, List<WatchVariable> controllerData, TabPage camHackControl, NoTearFlowLayoutPanel variableTable)
-            : base(stream, controllerData, variableTable)
+            : base(stream, controllerData, variableTable, Config.CameraHack.CameraHackStruct)
         {
             _currentCamHackMode = CamHackMode.REGULAR;
 

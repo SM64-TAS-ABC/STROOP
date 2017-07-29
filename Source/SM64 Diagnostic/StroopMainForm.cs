@@ -215,7 +215,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Quarter Frame Data", statusNum++);
             _quarterFrameData = XmlConfigParser.OpenWatchVarData(@"Config/QuarterFrameData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Camera Hack Data", statusNum++);
-            _camHackData = XmlConfigParser.OpenWatchVarData(@"Config/CamHackData.xml", "MiscDataSchema.xsd");
+            _camHackData = XmlConfigParser.OpenWatchVarData(@"Config/CamHackData.xml", "MiscDataSchema.xsd", "camHackOffset");
             loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
             _triangleData = XmlConfigParser.OpenWatchVarData(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd", "triangleOffset");
             loadingForm.UpdateStatus("Loading Triangles Data", statusNum++);
