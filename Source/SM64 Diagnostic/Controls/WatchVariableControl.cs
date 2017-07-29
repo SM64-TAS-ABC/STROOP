@@ -10,6 +10,8 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Extensions;
 using System.Reflection;
 using SM64_Diagnostic.Managers;
+using static SM64_Diagnostic.Structs.WatchVariable;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Controls
 {
@@ -159,6 +161,34 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
+                if (_watchVar.Offset != null)
+                {
+                    switch (_watchVar.Offset)
+                    {
+                        case OffsetType.Absolute:
+                            return new List<uint> { 0 };
+                        case OffsetType.Relative:
+                            return new List<uint> { 0 };
+                        case OffsetType.Mario:
+                            return new List<uint> { Config.Mario.StructAddress };
+                        case OffsetType.Camera:
+                            return new List<uint> { 0 };
+                        case OffsetType.File:
+                            return new List<uint> { 0 };
+                        case OffsetType.Object:
+                            return new List<uint> { 0 };
+                        case OffsetType.Triangle:
+                            return new List<uint> { 0 };
+                        case OffsetType.Graphic:
+                            return new List<uint> { 0 };
+                        case OffsetType.Waypoint:
+                            return new List<uint> { 0 };
+                        case OffsetType.Camhack:
+                            return new List<uint> { 0 };
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
                 return OtherOffsets;
             }
         }
