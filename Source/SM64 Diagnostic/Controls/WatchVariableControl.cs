@@ -162,7 +162,7 @@ namespace SM64_Diagnostic.Controls
         public static readonly List<uint> OffsetListCamera = new List<uint> { Config.Camera.CameraStructAddress };
         public static readonly List<uint> OffsetListCamhack = new List<uint> { Config.CameraHack.CameraHackStruct };
 
-        private static List<uint> GetOffsetListFromOffsetType(OffsetType? offsetType, bool nonEmptyList = true)
+        private List<uint> GetOffsetListFromOffsetType(OffsetType? offsetType, bool nonEmptyList = true) //TODO make static once stream is config var
         {
             List<uint> output;
             switch (offsetType)
@@ -175,6 +175,9 @@ namespace SM64_Diagnostic.Controls
                     break;
                 case OffsetType.Mario:
                     output = OffsetListMario;
+                    break;
+                case OffsetType.MarioObj:
+                    output = new List<uint> { _stream.GetUInt32(Config.Mario.ObjectReferenceAddress) };
                     break;
                 case OffsetType.Camera:
                     output = OffsetListCamera;
