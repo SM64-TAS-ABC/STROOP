@@ -1037,8 +1037,8 @@ namespace SM64_Diagnostic.Utilities
                         Config.MissionAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
 
-                    case "RngRecordingAreaAddress":
-                        Config.RngRecordingAreaAddress = ParsingUtilities.ParseHex(element.Value);
+                    case "HackedAreaAddress":
+                        Config.HackedAreaAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
                     case "RngAddress":
                         Config.RngAddress = ParsingUtilities.ParseHex(element.Value);

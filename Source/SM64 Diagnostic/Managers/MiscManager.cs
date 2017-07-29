@@ -64,8 +64,8 @@ namespace SM64_Diagnostic.Managers
 
         private int GetRngCallsPerFrame()
         {
-            var currentRng = _stream.GetUInt16(Config.RngRecordingAreaAddress + 0x0E);
-            var preRng = _stream.GetUInt16(Config.RngRecordingAreaAddress + 0x0C);
+            var currentRng = _stream.GetUInt16(Config.HackedAreaAddress + 0x0E);
+            var preRng = _stream.GetUInt16(Config.HackedAreaAddress + 0x0C);
 
             return RngIndexer.GetRngIndexDiff(preRng, currentRng);
         }

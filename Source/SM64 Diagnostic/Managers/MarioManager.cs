@@ -149,12 +149,12 @@ namespace SM64_Diagnostic.Managers
             ushort marioYawIntended = _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawIntendedOffset);
             ushort marioYawIntendedTruncated = (ushort)(marioYawIntended / 16 * 16);
 
-            float movementX = (_stream.GetSingle(Config.RngRecordingAreaAddress + 0x10)
-                - _stream.GetSingle(Config.RngRecordingAreaAddress + 0x1C));
-            float movementY = (_stream.GetSingle(Config.RngRecordingAreaAddress + 0x14)
-                - _stream.GetSingle(Config.RngRecordingAreaAddress + 0x20));
-            float movementZ = (_stream.GetSingle(Config.RngRecordingAreaAddress + 0x18)
-                - _stream.GetSingle(Config.RngRecordingAreaAddress + 0x24));
+            float movementX = (_stream.GetSingle(Config.HackedAreaAddress + 0x10)
+                - _stream.GetSingle(Config.HackedAreaAddress + 0x1C));
+            float movementY = (_stream.GetSingle(Config.HackedAreaAddress + 0x14)
+                - _stream.GetSingle(Config.HackedAreaAddress + 0x20));
+            float movementZ = (_stream.GetSingle(Config.HackedAreaAddress + 0x18)
+                - _stream.GetSingle(Config.HackedAreaAddress + 0x24));
             ushort marioAngle = _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
 
             double movementLateral = Math.Sqrt(movementX * movementX + movementZ * movementZ);
@@ -236,7 +236,7 @@ namespace SM64_Diagnostic.Managers
                         break;
 
                     case "QFrameCountEstimate":
-                        var oldHSpeed = _stream.GetSingle(Config.RngRecordingAreaAddress + 0x28);
+                        var oldHSpeed = _stream.GetSingle(Config.HackedAreaAddress + 0x28);
                         var qframes = Math.Abs(Math.Round(Math.Sqrt(movementX * movementX + movementZ * movementZ) / (oldHSpeed / 4)));
                         if (qframes > 4)
                             qframes = double.NaN;

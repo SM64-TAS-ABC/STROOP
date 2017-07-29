@@ -104,7 +104,7 @@
         <xs:element name="LoadingPointAddress" type="types:address"/>
         <xs:element name="MissionAddress" type="types:address"/>
         <xs:element name="RngAddress" type="types:address"/>
-        <xs:element name="RngRecordingAreaAddress" type="types:address"/>
+        <xs:element name="HackedAreaAddress" type="types:address"/>
       </xs:all>
     </xs:complexType>
   </xs:element>

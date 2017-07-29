@@ -295,7 +295,7 @@
   <MissionLayoutAddress>0x8033BAC8</MissionLayoutAddress>
   <GlobalTimerAddress>0x8032D5D4</GlobalTimerAddress>
   <RngAddress>0x8038EEE0</RngAddress>
-  <RngRecordingAreaAddress>0x803E0000</RngRecordingAreaAddress>
+  <HackedAreaAddress>0x803E0000</HackedAreaAddress>
   <DebugAddress></DebugAddress>
   <DebugModeAddress></DebugModeAddress>
 </Config>

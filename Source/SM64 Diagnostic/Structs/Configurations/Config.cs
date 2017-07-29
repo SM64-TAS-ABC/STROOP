@@ -32,7 +32,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint AreaAddress;
         public static uint LoadingPointAddress;
         public static uint MissionAddress;
-        public static uint RngRecordingAreaAddress;
+        public static uint HackedAreaAddress;
         public static uint RngAddress;
         public static uint GlobalTimerAddress;
 

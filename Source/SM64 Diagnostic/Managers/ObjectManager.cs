@@ -705,13 +705,13 @@ namespace SM64_Diagnostic.Managers
 
         private int GetNumRngCalls(uint objAddress)
         {
-            var numberOfRngObjs = _stream.GetUInt32(Config.RngRecordingAreaAddress);
+            var numberOfRngObjs = _stream.GetUInt32(Config.HackedAreaAddress);
 
             int numOfCalls = 0;
 
             for (int i = 0; i < numberOfRngObjs; i++)
             {
-                uint rngStructAdd = (uint)(Config.RngRecordingAreaAddress + 0x30 + 0x08 * i);
+                uint rngStructAdd = (uint)(Config.HackedAreaAddress + 0x30 + 0x08 * i);
                 var address = _stream.GetUInt32(rngStructAdd + 0x04);
                 if (address != objAddress)
                     continue;
