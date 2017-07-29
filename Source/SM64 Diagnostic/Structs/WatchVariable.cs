@@ -30,7 +30,6 @@ namespace SM64_Diagnostic.Structs
         public OffsetType? Offset;
         public String Name;
         public String SpecialType;
-        public bool Special;
         public Boolean AbsoluteAddressing;
         public UInt64? Mask;
         public bool IsBool;
@@ -45,6 +44,14 @@ namespace SM64_Diagnostic.Structs
             get
             {
                 return Offset != null && Offset != OffsetType.Relative && Offset != OffsetType.Absolute && Offset != OffsetType.Special;
+            }
+        }
+
+        public bool Special
+        {
+            get
+            {
+                return Offset == OffsetType.Special;
             }
         }
 

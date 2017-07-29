@@ -1982,9 +1982,8 @@ namespace SM64_Diagnostic.Utilities
         public static WatchVariable GetWatchVariableFromElement(XElement element)
         {
             var watchVar = new WatchVariable();
-            watchVar.Special = (element.Attribute(XName.Get("special")) != null) ?
-                bool.Parse(element.Attribute(XName.Get("special")).Value) : false;
             watchVar.Name = element.Value;
+            watchVar.Offset = WatchVariable.GetOffsetType(element.Attribute(XName.Get("offset"))?.Value);
             watchVar.SpecialType = (element.Attribute(XName.Get("specialType")) != null) ?
                 element.Attribute(XName.Get("specialType")).Value : null;
             watchVar.BackroundColor = (element.Attribute(XName.Get("color")) != null) ?
@@ -2006,7 +2005,6 @@ namespace SM64_Diagnostic.Utilities
                 bool.Parse(element.Attribute(XName.Get("isObject")).Value) : false;
             watchVar.TypeName = (element.Attribute(XName.Get("type")).Value);
             watchVar.Address = ParsingUtilities.ParseHex(element.Attribute(XName.Get("address")).Value);
-            watchVar.Offset = WatchVariable.GetOffsetType(element.Attribute(XName.Get("offset"))?.Value);
             watchVar.InvertBool = element.Attribute(XName.Get("invertBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : false;
             watchVar.IsAngle = element.Attribute(XName.Get("isAngle")) != null ?
