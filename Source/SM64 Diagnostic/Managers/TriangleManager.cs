@@ -35,15 +35,6 @@ namespace SM64_Diagnostic.Managers
 
                 _triangleAddress = value;
 
-                foreach (var dataContainer in _dataControls)
-                {
-                    if (dataContainer is WatchVariableControl)
-                    {
-                        var watchVar = dataContainer as WatchVariableControl;
-                        watchVar.OtherOffsets = new List<uint>() { _triangleAddress };
-                    }
-                }
-
                 _addressBox.Text = String.Format("0x{0:X8}", _triangleAddress);
             }
         }

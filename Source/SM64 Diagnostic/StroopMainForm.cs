@@ -217,7 +217,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Camera Hack Data", statusNum++);
             _camHackData = XmlConfigParser.OpenWatchVarData(@"Config/CamHackData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
-            _triangleData = XmlConfigParser.OpenWatchVarData(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd", "triangleOffset");
+            _triangleData = XmlConfigParser.OpenWatchVarData(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Triangles Data", statusNum++);
             _hudData = XmlConfigParser.OpenWatchVarData(@"Config/HudData.xml", "HudDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Map Associations", statusNum++);

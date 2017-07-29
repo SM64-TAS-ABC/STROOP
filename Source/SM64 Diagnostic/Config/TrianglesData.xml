@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrianglesData>
   <Data special="true" specialType="Classification">Classification</Data>
-  <Data type="ushort" address="0x00" triangleOffset="true">Surface Type</Data>
-  <Data type="byte" address="0x02" triangleOffset="true" useHex="true">Flags</Data>
-  <Data type="byte" address="0x03" triangleOffset="true">Exerted Direction</Data>
-  <Data type="short" address="0x04" triangleOffset="true" useHex="true">Wall Projection</Data>
-  <Data type="byte" address="0x04" triangleOffset="true" isBool="true" mask="0x08">X Projection</Data>
-  <Data type="byte" address="0x04" triangleOffset="true" isBool="true" invertBool="true" mask="0x08">Z Projection</Data>
+  <Data type="ushort" address="0x00" offset="Triangle">Surface Type</Data>
+  <Data type="byte" address="0x02" offset="Triangle" useHex="true">Flags</Data>
+  <Data type="byte" address="0x03" offset="Triangle">Exerted Direction</Data>
+  <Data type="short" address="0x04" offset="Triangle" useHex="true">Wall Projection</Data>
+  <Data type="byte" address="0x04" offset="Triangle" isBool="true" mask="0x08">X Projection</Data>
+  <Data type="byte" address="0x04" offset="Triangle" isBool="true" invertBool="true" mask="0x08">Z Projection</Data>
   
-  <Data type="short" address="0x06" triangleOffset="true">Y Min</Data>
-  <Data type="short" address="0x08" triangleOffset="true">Y Max</Data>
-  <Data type="short" address="0x0A" triangleOffset="true">X1</Data>
-  <Data type="short" address="0x0C" triangleOffset="true">Y1</Data>
-  <Data type="short" address="0x0E" triangleOffset="true">Z1</Data>
-  <Data type="short" address="0x10" triangleOffset="true">X2</Data>
-  <Data type="short" address="0x12" triangleOffset="true">Y2</Data>
-  <Data type="short" address="0x14" triangleOffset="true">Z2</Data>
-  <Data type="short" address="0x16" triangleOffset="true">X3</Data>
-  <Data type="short" address="0x18" triangleOffset="true">Y3</Data>
-  <Data type="short" address="0x1A" triangleOffset="true">Z3</Data>
+  <Data type="short" address="0x06" offset="Triangle">Y Min</Data>
+  <Data type="short" address="0x08" offset="Triangle">Y Max</Data>
+  <Data type="short" address="0x0A" offset="Triangle">X1</Data>
+  <Data type="short" address="0x0C" offset="Triangle">Y1</Data>
+  <Data type="short" address="0x0E" offset="Triangle">Z1</Data>
+  <Data type="short" address="0x10" offset="Triangle">X2</Data>
+  <Data type="short" address="0x12" offset="Triangle">Y2</Data>
+  <Data type="short" address="0x14" offset="Triangle">Z2</Data>
+  <Data type="short" address="0x16" offset="Triangle">X3</Data>
+  <Data type="short" address="0x18" offset="Triangle">Y3</Data>
+  <Data type="short" address="0x1A" offset="Triangle">Z3</Data>
   <Data type="float" address="0x3C" offset="Mario" color="#ffcccc">Mario X</Data>
   <Data type="float" address="0x40" offset="Mario" color="#ffcccc">Mario Y</Data>
   <Data type="float" address="0x44" offset="Mario" color="#ffcccc">Mario Z</Data>
@@ -34,12 +34,12 @@
   <Data special="true" specialType="RightHillAngle" color="#ccd0ff">Right Hill Angle</Data>
   <Data type="ushort" address="0x24" offset="Mario" isAngle="true" color="#ffcccc">M. Yaw (Intended)</Data>
   <Data type="ushort" address="0x2E" offset="Mario" isAngle="true" color="#ffcccc">M. Yaw (Facing)</Data>
-  <Data type="float" address="0x1C" triangleOffset="true">Normal X</Data>
-  <Data type="float" address="0x20" triangleOffset="true">Normal Y</Data>
-  <Data type="float" address="0x24" triangleOffset="true">Normal Z</Data>
-  <Data type="float" address="0x28" triangleOffset="true">Normal Offset</Data>
-  <Data type="byte" address="0x04" triangleOffset="true" useHex="true" isBool="true" mask="0x01">Belongs to Object</Data>
-  <Data type="uint" address="0x2C" triangleOffset="true" useHex="true" isObject="true">Associated Object</Data>
+  <Data type="float" address="0x1C" offset="Triangle">Normal X</Data>
+  <Data type="float" address="0x20" offset="Triangle">Normal Y</Data>
+  <Data type="float" address="0x24" offset="Triangle">Normal Z</Data>
+  <Data type="float" address="0x28" offset="Triangle">Normal Offset</Data>
+  <Data type="byte" address="0x04" offset="Triangle" useHex="true" isBool="true" mask="0x01">Belongs to Object</Data>
+  <Data type="uint" address="0x2C" offset="Triangle" useHex="true" isObject="true">Associated Object</Data>
   
   <Data type="uint" address="0x68" offset="Mario" useHex="true" color="#ffeccc">Floor Triangle</Data>
   <Data type="uint" address="0x60" offset="Mario" useHex="true" color="#ffeccc">Wall Triangle</Data>
