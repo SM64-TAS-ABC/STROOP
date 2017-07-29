@@ -1,46 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <WaterData>
-  <Data type="short" address="0x00C26C64" absoluteAddress="true">Water Level</Data>
-  <Data type="short" address="0x00C4CC08" absoluteAddress="true">Water Level Median</Data>
-  <Data type="short" address="0x009FCD60" absoluteAddress="true">WDW Main WL</Data>
-  <Data type="short" address="0x009FEEAC" absoluteAddress="true">WDW Town WL</Data>
-  <Data type="byte" address="0x00C1C9BE" absoluteAddress="true">WDW Painting Level</Data>
-  <Data type="short" address="0x009F829E" absoluteAddress="true">Castle Lake WL</Data>
-  <Data type="short" address="0x009F8292" absoluteAddress="true">Caslte Moat WL</Data>
-  <Data type="short" address="0x00C4CC10" absoluteAddress="true">Basement Pillars WL</Data>
-  <Data type="short" address="0x00C4CC08" absoluteAddress="true">Basement Valley WL</Data>
-  <Data type="short" address="0x00A5F756" absoluteAddress="true">Basement Halls WL</Data>
-  <Data type="short" address="0x009ED598" absoluteAddress="true">Castle Courtyard WL</Data>
-  <Data type="short" address="0x009F8DB0" absoluteAddress="true">WF WL</Data>
-  <Data type="short" address="0x009F353E" absoluteAddress="true">JRB Main WL</Data>
-  <Data type="short" address="0x009F354A" absoluteAddress="true">JRB Cave WL</Data>
-  <Data type="short" address="0x009F3556" absoluteAddress="true">JRB Fog</Data>
-  <Data type="short" address="0x009F83DE" absoluteAddress="true">JRB Ship WL</Data>
-  <Data type="short" address="0x00BE3B8C" absoluteAddress="true">JRB Ship Goal WL</Data>
-  <Data type="short" address="0x00BE3BA0" absoluteAddress="true">JRB Ship End WL</Data>
-  <Data type="short" address="0x009FCDEC" absoluteAddress="true">CCM WL</Data>
-  <Data type="short" address="0x00A0D59E" absoluteAddress="true">BBH Shallow WL</Data>
-  <Data type="short" address="0x00A0D5AA" absoluteAddress="true">BBH Deep WL</Data>
-  <Data type="short" address="0x00A11BCE" absoluteAddress="true">HMC WL</Data>
-  <Data type="short" address="0x00A11BDA" absoluteAddress="true">HMC Haze (Real)</Data>
-  <Data type="short" address="0x00A11BE6" absoluteAddress="true">HMC Haze (Fake)</Data>
-  <Data type="short" address="0x00A0F782" absoluteAddress="true">LLL Volcano WL</Data>
-  <Data type="short" address="0x009F91FC" absoluteAddress="true">SSL WL</Data>
-  <Data type="short" address="0x009F4958" absoluteAddress="true">DDD Main WL</Data>
-  <Data type="short" address="0x009F59DC" absoluteAddress="true">DDD Other WL</Data>
-  <Data type="short" address="0x009F577C" absoluteAddress="true">SL Bully WL</Data>
-  <Data type="short" address="0x009F5770" absoluteAddress="true">SL Lake WL</Data>
-  <Data type="short" address="0x009FE1BC" absoluteAddress="true">TTM 1 WL</Data>
-  <Data type="short" address="0x009FE1D4" absoluteAddress="true">TTM 2 WL</Data>
-  <Data type="short" address="0x009FE1C8" absoluteAddress="true">TTM 3 WL</Data>
-  <Data type="short" address="0x009FE1E0" absoluteAddress="true">TTM 4 WL</Data>
-  <Data type="short" address="0x009F412A" absoluteAddress="true">THI Tiny 1 WL</Data>
-  <Data type="short" address="0x009F4136" absoluteAddress="true">THI Tiny 2 WL</Data>
-  <Data type="byte" address="0x00C4CCD4" absoluteAddress="true" isBool="true">THI Water Drained</Data>
-  <Data type="short" address="0x009F4142" absoluteAddress="true">THI Tiny Mt WL</Data>
-  <Data type="short" address="0x009F2A40" absoluteAddress="true">THI Huge 1 WL</Data>
-  <Data type="short" address="0x009F2A4C" absoluteAddress="true">THI Huge 2 WL</Data>
-  <Data type="short" address="0x009F2A58" absoluteAddress="true">THI Huge Mt WL</Data>
-  <Data type="short" address="0x009F2446" absoluteAddress="true">CotMC WL</Data>
-  <Data type="short" address="0x009E993C" absoluteAddress="true">SA WL</Data>
+  <Data type="short" address="0x76" offset="Mario">Water Level</Data>
+  <Data type="short" address="0x8036118A">Water Level Median</Data>
+  <Data type="short" address="0x801112E2">WDW Main WL</Data>
+  <Data type="short" address="0x8011342E">WDW Town WL</Data>
+  <Data type="byte" address="0x80330F3D">WDW Painting Level</Data>
+  <Data type="short" address="0x8010C81C">Castle Lake WL</Data>
+  <Data type="short" address="0x8010C810">Castle Moat WL</Data>
+  <Data type="short" address="0x80361192">Basement Pillars WL</Data>
+  <Data type="short" address="0x8036118A">Basement Valley WL</Data>
+  <Data type="short" address="0x80173CD4">Basement Halls WL</Data>
+  <Data type="short" address="0x80101B1A">Castle Courtyard WL</Data>
+  <Data type="short" address="0x8010D332">WF WL</Data>
+  <Data type="short" address="0x80107ABC">JRB Main WL</Data>
+  <Data type="short" address="0x80107AC8">JRB Cave WL</Data>
+  <Data type="short" address="0x80107AD4">JRB Fog</Data>
+  <Data type="short" address="0x8010C95C">JRB Ship WL</Data>
+  <Data type="short" address="0x802F810E">JRB Ship Goal WL</Data>
+  <Data type="short" address="0x802F8122">JRB Ship End WL</Data>
+  <Data type="short" address="0x8011136E">CCM WL</Data>
+  <Data type="short" address="0x80121B1C">BBH Shallow WL</Data>
+  <Data type="short" address="0x80121B28">BBH Deep WL</Data>
+  <Data type="short" address="0x8012614C">HMC WL</Data>
+  <Data type="short" address="0x80126158">HMC Haze (Real)</Data>
+  <Data type="short" address="0x80126164">HMC Haze (Fake)</Data>
+  <Data type="short" address="0x80123D00">LLL Volcano WL</Data>
+  <Data type="short" address="0x8010D77E">SSL WL</Data>
+  <Data type="short" address="0x80108EDA">DDD Main WL</Data>
+  <Data type="short" address="0x80109F5E">DDD Other WL</Data>
+  <Data type="short" address="0x80109CFE">SL Bully WL</Data>
+  <Data type="short" address="0x80109CF2">SL Lake WL</Data>
+  <Data type="short" address="0x8011273E">TTM 1 WL</Data>
+  <Data type="short" address="0x80112756">TTM 2 WL</Data>
+  <Data type="short" address="0x8011274A">TTM 3 WL</Data>
+  <Data type="short" address="0x80112762">TTM 4 WL</Data>
+  <Data type="short" address="0x801086A8">THI Tiny 1 WL</Data>
+  <Data type="short" address="0x801086B4">THI Tiny 2 WL</Data>
+  <Data type="byte" address="0x80361257" isBool="true">THI Water Drained</Data>
+  <Data type="short" address="0x801086C0">THI Tiny Mt WL</Data>
+  <Data type="short" address="0x80106FC2">THI Huge 1 WL</Data>
+  <Data type="short" address="0x80106FCE">THI Huge 2 WL</Data>
+  <Data type="short" address="0x80106FDA">THI Huge Mt WL</Data>
+  <Data type="short" address="0x801069C4">CotMC WL</Data>
+  <Data type="short" address="0x800FDEBE">SA WL</Data>
 </WaterData>
