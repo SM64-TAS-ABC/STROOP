@@ -2,7 +2,7 @@
 <FileData>
   <Data type="short" address="0xc19876" absoluteAddress="true">Current File</Data>
 
-  <Data type="byte" address="0x0C" fileOffset="true" mask="0x7F" color="#ccfffa">BoB Stars</Data>
+  <Data type="byte" address="0x0C" offset="File" fileOffset="true" mask="0x7F" color="#ccfffa">BoB Stars</Data>
   <Data type="byte" address="0x0D" fileOffset="true" mask="0x7F" color="#ccfffa">WF Stars</Data>
   <Data type="byte" address="0x0E" fileOffset="true" mask="0x7F" color="#ccfffa">JRB Stars</Data>
   <Data type="byte" address="0x0F" fileOffset="true" mask="0x7F" color="#ccfffa">CCM Stars</Data>
