@@ -1983,7 +1983,7 @@ namespace SM64_Diagnostic.Utilities
         {
             var watchVar = new WatchVariable();
             watchVar.Name = element.Value;
-            watchVar.Offset = WatchVariable.GetOffsetType(element.Attribute(XName.Get("offset"))?.Value);
+            watchVar.Offset = WatchVariable.GetOffsetType(element.Attribute(XName.Get("offset")).Value);
             watchVar.SpecialType = (element.Attribute(XName.Get("specialType")) != null) ?
                 element.Attribute(XName.Get("specialType")).Value : null;
             watchVar.BackroundColor = (element.Attribute(XName.Get("color")) != null) ?

@@ -27,7 +27,7 @@ namespace SM64_Diagnostic.Structs
             }
         }
         public uint Address;
-        public OffsetType? Offset;
+        public OffsetType Offset;
         public String Name;
         public String SpecialType;
         public Boolean AbsoluteAddressing;
@@ -148,9 +148,8 @@ namespace SM64_Diagnostic.Structs
             { "Special", OffsetType.Special },
         };
 
-        public static OffsetType? GetOffsetType(String offsetTypeString)
+        public static OffsetType GetOffsetType(String offsetTypeString)
         {
-            if (offsetTypeString == null) return null;
             return StringToOffsetType[offsetTypeString];
         }
     }
