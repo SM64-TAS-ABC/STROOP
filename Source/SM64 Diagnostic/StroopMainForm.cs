@@ -328,7 +328,7 @@ namespace SM64_Diagnostic
             for (int index = 0; index < _miscData.Count; index++)
             {
                 var watchVar = _miscData[index];
-                if (watchVar.Special)
+                if (watchVar.IsSpecial)
                     continue;
                 var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.TypeName, "", watchVar.Address);
                 _otherDataRowAssoc.Add(index, row);

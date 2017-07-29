@@ -43,11 +43,11 @@ namespace SM64_Diagnostic.Structs
         {
             get
             {
-                return Offset != null && Offset != OffsetType.Relative && Offset != OffsetType.Absolute && Offset != OffsetType.Special;
+                return Offset != OffsetType.Relative && Offset != OffsetType.Absolute && Offset != OffsetType.Special;
             }
         }
 
-        public bool Special
+        public bool IsSpecial
         {
             get
             {

@@ -45,7 +45,7 @@ namespace SM64_Diagnostic.Managers
             var newControls = new List<IDataContainer>();
             foreach (WatchVariable watchVar in watchVars)
             {
-                if (watchVar.Special && _specialWatchVars != null)
+                if (watchVar.IsSpecial && _specialWatchVars != null)
                 {
                     if (_specialWatchVars.Exists(w => w.SpecialName == watchVar.SpecialType))
                     {

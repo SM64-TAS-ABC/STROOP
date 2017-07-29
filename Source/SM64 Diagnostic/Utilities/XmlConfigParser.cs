@@ -1990,7 +1990,7 @@ namespace SM64_Diagnostic.Utilities
                 ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
 
             // We have fully parsed a special type
-            if (watchVar.Special)
+            if (watchVar.IsSpecial)
                 return watchVar;
 
             watchVar.UseHex = (element.Attribute(XName.Get("useHex")) != null) ?

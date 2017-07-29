@@ -212,8 +212,7 @@ namespace SM64_Diagnostic.Controls
                     output = OffsetListCamHack;
                     break;
                 case OffsetType.Special:
-                    output = OffsetListZero;
-                    break;
+                    throw new ArgumentOutOfRangeException("Should not get offset list for Special var");
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -228,11 +227,7 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                if (_watchVar.Offset != null)
-                {
-                    return GetOffsetListFromOffsetType(_watchVar.Offset);
-                }
-                return OffsetListZero;
+                return GetOffsetListFromOffsetType(_watchVar.Offset);
             }
         }
 
@@ -549,7 +544,7 @@ namespace SM64_Diagnostic.Controls
 
         public void Update()
         {
-            if (_watchVar.Special)
+            if (_watchVar.IsSpecial)
                 return;
 
             ShowLockedImage(OffsetList.Any(o => GetIsLocked(o)), !OffsetList.All(o => GetIsLocked(o)));
