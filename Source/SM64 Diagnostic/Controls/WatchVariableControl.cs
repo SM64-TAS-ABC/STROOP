@@ -344,8 +344,8 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public WatchVariableControl(ProcessStream stream, WatchVariable watchVar, uint otherOffset = 0)
-            : this(stream, watchVar, new List<uint>() { otherOffset })
+        public WatchVariableControl(ProcessStream stream, WatchVariable watchVar)
+            : this(stream, watchVar, new List<uint>() { 0 })
         {
         }
 
