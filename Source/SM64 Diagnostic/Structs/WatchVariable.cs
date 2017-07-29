@@ -107,7 +107,7 @@ namespace SM64_Diagnostic.Structs
             Triangle,
             Graphic,
             Waypoint,
-            Camhack,
+            CamHack,
         };
 
         readonly static Dictionary<String, OffsetType> StringToOffsetType = new Dictionary<string, OffsetType>()
@@ -121,7 +121,7 @@ namespace SM64_Diagnostic.Structs
             { "Triangle", OffsetType.Triangle },
             { "Graphic", OffsetType.Graphic },
             { "Waypoint", OffsetType.Waypoint },
-            { "Camhack", OffsetType.Camhack },
+            { "CamHack", OffsetType.CamHack },
         };
 
         public static OffsetType? GetOffsetType(String offsetTypeString)

@@ -194,7 +194,7 @@ namespace SM64_Diagnostic.Controls
                 case OffsetType.Waypoint:
                     output = OffsetListZero;
                     break;
-                case OffsetType.Camhack:
+                case OffsetType.CamHack:
                     output = OffsetListCamhack;
                     break;
                 default:
