@@ -209,7 +209,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Controller Image Associations", statusNum++);
             XmlConfigParser.OpenControllerImageAssoc(@"Config/ControllerImageAssociations.xml", _controllerImageGui);
             loadingForm.UpdateStatus("Loading File Data", statusNum++);
-            _fileData = XmlConfigParser.OpenWatchVarData(@"Config/FileData.xml", "FileDataSchema.xsd", "fileOffset"); //TODO implement this
+            _fileData = XmlConfigParser.OpenWatchVarData(@"Config/FileData.xml", "FileDataSchema.xsd");
             loadingForm.UpdateStatus("Loading File Image Associations", statusNum++);
             XmlConfigParser.OpenFileImageAssoc(@"Config/FileImageAssociations.xml", _fileImageGui);
             loadingForm.UpdateStatus("Loading Quarter Frame Data", statusNum++);

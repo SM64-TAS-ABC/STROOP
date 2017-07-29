@@ -47,7 +47,7 @@ namespace SM64_Diagnostic.Managers
         byte?[] _courseDoorMasks;
 
         public FileManager(ProcessStream stream, List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile, FileImageGui gui)
-            : base(stream, fileData, noTearFlowLayoutPanelFile, Config.File.FileAAddress)
+            : base(stream, fileData, noTearFlowLayoutPanelFile)
         {
             Instance = this;
             _tabControl = tabControl;
@@ -649,15 +649,6 @@ namespace SM64_Diagnostic.Managers
 
             CurrentFileMode = mode;
             CurrentFileAddress = getFileAddress(mode);
-
-            foreach (var dataContainer in _dataControls)
-            {
-                if (dataContainer is WatchVariableControl)
-                {
-                    var watchVar = dataContainer as WatchVariableControl;
-                    watchVar.OtherOffsets = new List<uint>() { CurrentFileAddress };
-                }
-            }
         }
 
         public override void Update(bool updateView)
