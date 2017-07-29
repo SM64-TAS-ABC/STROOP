@@ -1075,6 +1075,7 @@ namespace SM64_Diagnostic.Utilities
                 if (specialOffsetName != null)
                     watchVar.OtherOffset = (element.Attribute(XName.Get(specialOffsetName)) != null) ?
                         bool.Parse(element.Attribute(XName.Get(specialOffsetName)).Value) : false;
+                watchVar.OtherOffset |= (watchVar.Offset != null); //TODO fix OtherOffset
 
                 objectData.Add(watchVar);
             }
@@ -1292,6 +1293,7 @@ namespace SM64_Diagnostic.Utilities
                             var watchVar = GetWatchVariableFromElement(subElement);
                             watchVar.OtherOffset = (subElement.Attribute(XName.Get("objectOffset")) != null) ?
                                 bool.Parse(subElement.Attribute(XName.Get("objectOffset")).Value) : false;
+                            watchVar.OtherOffset |= (watchVar.Offset != null);
 
                             watchVars.Add(watchVar);
                         }
