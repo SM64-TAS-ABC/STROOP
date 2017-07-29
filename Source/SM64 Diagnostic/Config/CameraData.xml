@@ -1,40 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <CameraData>
-  <Data type="byte" address="0x00C28106" absoluteAddress="true" isBool="true" mask="0x0004">Mario Cam Possible</Data>
-  <Data type="byte" address="0x00C28106" absoluteAddress="true" isBool="true" mask="0x0001">Mario Cam</Data>
-  <Data type="byte" address="0x00C2810E" absoluteAddress="true" isBool="true" mask="0x0020">Fixed Cam</Data>
-  <Data type="byte" address="0x00C282CA" absoluteAddress="true" isBool="true" mask="0x0002">Far Cam</Data>
-  <Data type="byte" address="0x00C282CB" absoluteAddress="true" isBool="true" mask="0x0020">Close Cam</Data>
-  <Data type="float" address="0xc28124" absoluteAddress="true">Camera X</Data>
-  <Data type="float" address="0xc28128" absoluteAddress="true">Camera Y</Data>
-  <Data type="float" address="0xc2812c" absoluteAddress="true">Camera Z</Data>
-  <Data type="float" address="0xc2813c" absoluteAddress="true">Camera Target X</Data>
-  <Data type="float" address="0xc28140" absoluteAddress="true">Camera Target Y</Data>
-  <Data type="float" address="0xc28144" absoluteAddress="true">Camera Target Z</Data>
-  <Data type="ushort" address="0xc28164" absoluteAddress="true" isAngle="true">Camera Yaw</Data>
-  <Data type="ushort" address="0xc28166" absoluteAddress="true" isAngle="true">Camera Pitch</Data>
-  <Data type="ushort" address="0xc281fa" absoluteAddress="true" isAngle="true">Fixed Cent Angle</Data>
-  <Data type="ushort" address="0xc28194" absoluteAddress="true" isAngle="true">Target Cent Angle</Data>
-  <Data type="ushort" address="0xc28196" absoluteAddress="true" isAngle="true">Cent Angle</Data>
-  <Data type="float" address="0xc28118" absoluteAddress="true">Focus X</Data>
-  <Data type="float" address="0xc2811c" absoluteAddress="true">Focus Y</Data>
-  <Data type="float" address="0xc28120" absoluteAddress="true">Focus Z</Data>
-  <Data type="float" address="0xc281fc" absoluteAddress="true">Focus Veer Dist</Data>
-  <Data type="float" address="0xc28160" absoluteAddress="true">Cam Dist from Focus</Data>
+  <Data type="byte" address="0x6D" offset="Camera" isBool="true" mask="0x04">Mario Cam Possible</Data>
+  <Data type="byte" address="0x6D" offset="Camera" isBool="true" mask="0x01">Mario Cam</Data>
+  <Data type="byte" address="0x75" offset="Camera" isBool="true" mask="0x20">Fixed Cam</Data>
+  <Data type="byte" address="0x231" offset="Camera" isBool="true" mask="0x02">Far Cam</Data>
+  <Data type="byte" address="0x230" offset="Camera" isBool="true" mask="0x20">Close Cam</Data>
+  <Data type="float" address="0x8C" offset="Camera">Camera X</Data>
+  <Data type="float" address="0x90" offset="Camera">Camera Y</Data>
+  <Data type="float" address="0x94" offset="Camera">Camera Z</Data>
+  <Data type="float" address="0xA4" offset="Camera">Camera Target X</Data>
+  <Data type="float" address="0xA8" offset="Camera">Camera Target Y</Data>
+  <Data type="float" address="0xAC" offset="Camera">Camera Target Z</Data>
+  <Data type="ushort" address="0xCE" offset="Camera" isAngle="true">Camera Yaw</Data>
+  <Data type="ushort" address="0xCC" offset="Camera" isAngle="true">Camera Pitch</Data>
+  <Data type="ushort" address="0x160" offset="Camera" isAngle="true">Fixed Cent Angle</Data>
+  <Data type="ushort" address="0xFE" offset="Camera" isAngle="true">Target Cent Angle</Data>
+  <Data type="ushort" address="0xFC" offset="Camera" isAngle="true">Cent Angle</Data>
+  <Data type="float" address="0x80" offset="Camera">Camera Focus X</Data>
+  <Data type="float" address="0x84" offset="Camera">Camera Focus Y</Data>
+  <Data type="float" address="0x88" offset="Camera">Camera Focus Z</Data>
+  <Data type="float" address="0x164" offset="Camera">Focus Veer Dist</Data>
+  <Data type="float" address="0xC8" offset="Camera">Cam Dist from Focus</Data>
   <Data special="true" specialType="DistanceToMario">Cam Dist from Mario</Data>
-  <Data type="float" address="0xc28024" absoluteAddress="true">Zoom Dist</Data>
-  <Data type="short" address="0xc2816e" absoluteAddress="true">Yaw Shake</Data>
-  <Data type="short" address="0xc281ba" absoluteAddress="true">Yaw Shake Speed</Data>
-  <Data type="short" address="0xc281b8" absoluteAddress="true">Yaw Shake Decrease</Data>
-  <Data type="short" address="0xc281b4" absoluteAddress="true">Yaw Shake Osc.</Data>
-  <Data type="short" address="0xc28168" absoluteAddress="true">Pitch Shake</Data>
-  <Data type="short" address="0xc28170" absoluteAddress="true">Pitch Shake Speed</Data>
-  <Data type="short" address="0xc28176" absoluteAddress="true">Pitch Shake Decrease</Data>
-  <Data type="short" address="0xc28172" absoluteAddress="true">Pitch Shake Osc.</Data>
-  <Data type="short" address="0xc2816c" absoluteAddress="true">Roll Shake</Data>
-  <Data type="short" address="0xc281b0" absoluteAddress="true">Roll Shake Speed</Data>
-  <Data type="short" address="0xc281b6" absoluteAddress="true">Roll Shake Decrease</Data>
-  <Data type="short" address="0xc281b2" absoluteAddress="true">Roll Shake Osc.</Data>
-  <Data type="short" address="0xc28156" absoluteAddress="true">Camera Mode</Data>
-  <Data type="uint" address="0x00C199B0" absoluteAddress="true" useHex="true" isObject="true">Secondary Object</Data>
+  <Data type="float" address="0x8033C5A4">Zoom Dist</Data>
+  <Data type="short" address="0xD4" offset="Camera">Yaw Shake</Data>
+  <Data type="short" address="0x120" offset="Camera">Yaw Shake Speed</Data>
+  <Data type="short" address="0x122" offset="Camera">Yaw Shake Decrease</Data>
+  <Data type="short" address="0x11E" offset="Camera">Yaw Shake Osc.</Data>
+  <Data type="short" address="0xD2" offset="Camera">Pitch Shake</Data>
+  <Data type="short" address="0xDA" offset="Camera">Pitch Shake Speed</Data>
+  <Data type="short" address="0xDC" offset="Camera">Pitch Shake Decrease</Data>
+  <Data type="short" address="0xD8" offset="Camera">Pitch Shake Osc.</Data>
+  <Data type="short" address="0xD6" offset="Camera">Roll Shake</Data>
+  <Data type="short" address="0x11A" offset="Camera">Roll Shake Speed</Data>
+  <Data type="short" address="0x11C" offset="Camera">Roll Shake Decrease</Data>
+  <Data type="short" address="0x118" offset="Camera">Roll Shake Osc.</Data>
+  <Data type="short" address="0xBC" offset="Camera">Camera Mode</Data>
+  <Data type="uint" address="0x8032DF30" useHex="true" isObject="true">Secondary Object</Data>
 </CameraData>
