@@ -193,7 +193,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Miscellaneous Data", statusNum++);
             _miscData = XmlConfigParser.OpenWatchVarData(@"Config/MiscData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Object Data", statusNum++);
-            _objectData = XmlConfigParser.OpenWatchVarData(@"Config/ObjectData.xml", "ObjectDataSchema.xsd", "objectOffset");
+            _objectData = XmlConfigParser.OpenWatchVarData(@"Config/ObjectData.xml", "ObjectDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Object Associations", statusNum++);
             _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", _slotManagerGui);
             loadingForm.UpdateStatus("Loading Mario Data", statusNum++);

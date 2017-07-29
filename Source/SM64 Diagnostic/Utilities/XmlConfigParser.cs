@@ -1051,8 +1051,9 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static List<WatchVariable> OpenWatchVarData(string path, string schemaFile, string specialOffsetName = null)
+        public static List<WatchVariable> OpenWatchVarData(string path, string schemaFile)
         {
+            string specialOffsetName = null;
             var objectData = new List<WatchVariable>();
             var assembly = Assembly.GetExecutingAssembly();
 
