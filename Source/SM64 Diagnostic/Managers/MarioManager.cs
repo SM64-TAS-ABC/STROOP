@@ -120,8 +120,6 @@ namespace SM64_Diagnostic.Managers
                 new AngleDataContainer("SlidingAngle"),
                 new AngleDataContainer("DeltaYawIntendedFacing", AngleViewModeType.Signed),
                 new DataContainer("FallHeight"),
-                new DataContainer("ActionDescription"),
-                new DataContainer("PrevActionDescription"),
                 new DataContainer("MovementX"),
                 new DataContainer("MovementY"),
                 new DataContainer("MovementZ"),
@@ -193,14 +191,6 @@ namespace SM64_Diagnostic.Managers
 
                     case "FallHeight":
                         (specialVar as DataContainer).Text = (_stream.GetSingle(Config.Mario.StructAddress + Config.Mario.PeakHeightOffset) - floorY).ToString();
-                        break;
-
-                    case "ActionDescription":
-                        (specialVar as DataContainer).Text = Config.MarioActions.GetActionName(_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset));
-                        break;
-
-                    case "PrevActionDescription":
-                        (specialVar as DataContainer).Text = Config.MarioActions.GetActionName(_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset));
                         break;
 
                     case "MovementX":

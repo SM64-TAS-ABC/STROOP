@@ -30,9 +30,7 @@ namespace SM64_Diagnostic.Managers
             {
                 new DataContainer("ActionDescription"),
                 new DataContainer("PrevActionDescription"),
-                new DataContainer("MarioAnimationValue"),
                 new DataContainer("MarioAnimationDescription"),
-                new DataContainer("MarioAnimationTimer"),
             };
         }
 
@@ -56,18 +54,10 @@ namespace SM64_Diagnostic.Managers
                         (specialVar as DataContainer).Text = Config.MarioActions.GetActionName(_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset));
                         break;
 
-                    case "MarioAnimationValue":
-                        (specialVar as DataContainer).Text = marioObjAnimation.ToString();
-                        break;
-
                     case "MarioAnimationDescription":
                         string animationDescription = Config.MarioAnimations.GetAnimationName(marioObjAnimation);
                         (specialVar as DataContainer).Text = animationDescription;
                         animationDescriptionLabel.Text = animationDescription;
-                        break;
-
-                    case "MarioAnimationTimer":
-                        (specialVar as DataContainer).Text = marioObjAnimationTimer.ToString();
                         break;
                 }
             }
