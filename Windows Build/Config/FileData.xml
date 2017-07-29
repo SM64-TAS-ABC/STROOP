@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <FileData>
-  <Data type="short" address="0xc19876" absoluteAddress="true">Current File</Data>
+  <Data type="short" address="0x8032DDF4">Current File</Data>
 
   <Data type="byte" address="0x0C" offset="File" mask="0x7F" color="#ccfffa">BoB Stars</Data>
   <Data type="byte" address="0x0D" offset="File" mask="0x7F" color="#ccfffa">WF Stars</Data>
