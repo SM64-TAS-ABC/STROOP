@@ -162,38 +162,49 @@ namespace SM64_Diagnostic.Controls
         public static readonly List<uint> OffsetListCamera = new List<uint> { Config.Camera.CameraStructAddress };
         public static readonly List<uint> OffsetListCamhack = new List<uint> { Config.CameraHack.CameraHackStruct };
 
-        private static List<uint> GetOffsetListFromOffsetType(OffsetType? offsetType)
+        private static List<uint> GetOffsetListFromOffsetType(OffsetType? offsetType, bool nonEmptyList = true)
         {
+            List<uint> output;
             switch (offsetType)
             {
                 case OffsetType.Absolute:
-                    return OffsetListZero;
+                    output = OffsetListZero;
+                    break;
                 case OffsetType.Relative:
-                    return OffsetListZero;
+                    output = OffsetListZero;
+                    break;
                 case OffsetType.Mario:
-                    return OffsetListMario;
+                    output = OffsetListMario;
+                    break;
                 case OffsetType.Camera:
-                    return OffsetListCamera;
+                    output = OffsetListCamera;
+                    break;
                 case OffsetType.File:
-                    return new List<uint> { FileManager.Instance.CurrentFileAddress };
+                    output = new List<uint> { FileManager.Instance.CurrentFileAddress };
+                    break;
                 case OffsetType.Object:
-                    return ObjectManager.Instance.CurrentAddresses;
+                    output = ObjectManager.Instance.CurrentAddresses;
+                    break;
                 case OffsetType.Triangle:
-                    return new List<uint> { TriangleManager.Instance.TriangleAddress };
+                    output = new List<uint> { TriangleManager.Instance.TriangleAddress };
+                    break;
                 case OffsetType.Graphic:
-                    return OffsetListZero;
+                    output = OffsetListZero;
+                    break;
                 case OffsetType.Waypoint:
-                    return OffsetListZero;
+                    output = OffsetListZero;
+                    break;
                 case OffsetType.Camhack:
-                    return OffsetListCamhack;
+                    output = OffsetListCamhack;
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-        }
-
-        private static List<uint> GetNonEmptyList(List<uint> list)
-        {
-            return list.Count == 0 ? OffsetListZero : list;
+            if (nonEmptyList && output.Count == 0)
+            {
+                output = OffsetListZero;
+            }
+            return output;
         }
 
         public List<uint> OffsetList
