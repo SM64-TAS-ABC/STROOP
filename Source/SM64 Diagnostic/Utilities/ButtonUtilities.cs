@@ -7,6 +7,7 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
 using static SM64_Diagnostic.Managers.CamHackManager;
+using SM64_Diagnostic.Managers;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -439,20 +440,23 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool UnReleaseObject(ProcessStream stream, List<uint> addresses)
         {
-            /*
             if (addresses.Count == 0)
                 return false;
 
             bool success = true;
-            stream.Suspend();
+            bool streamAlreadySuspended = stream.IsSuspended;
+            if (!streamAlreadySuspended) stream.Suspend();
+
             foreach (var address in addresses)
             {
-                success &= stream.SetValue(Config.ObjectSlots.ReleaseStatusReleasedValue, address + Config.ObjectSlots.ReleaseStatusOffset);
+                ObjectSlot objectSlot = ObjectSlotsManager.Instance.MemoryAddressSortedSlot[address];
+                BehaviorCriteria behavior = objectSlot.Behavior;
+                uint objUnReleasedValue = 0;
+                //success &= stream.SetValue(objUnReleasedValue, address + Config.ObjectSlots.ReleaseStatusOffset);
             }
-            stream.Resume();
+
+            if (!streamAlreadySuspended) stream.Resume();
             return success;
-            */
-            return false;
         }
 
         public static bool InteractObject(ProcessStream stream, List<uint> addresses)

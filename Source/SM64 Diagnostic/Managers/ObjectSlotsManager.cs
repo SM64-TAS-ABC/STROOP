@@ -15,6 +15,8 @@ namespace SM64_Diagnostic.Managers
 {
     public class ObjectSlotsManager
     {
+        public static ObjectSlotsManager Instance;
+
         public class ObjectSlotData
         {
             public uint Address;
@@ -41,7 +43,7 @@ namespace SM64_Diagnostic.Managers
 
         Dictionary<uint, MapObject> _mapObjects = new Dictionary<uint, MapObject>();
         Dictionary<uint, int> _memoryAddressSlotIndex;
-        Dictionary<uint, ObjectSlot> _memoryAddressSortedSlot = new Dictionary<uint, ObjectSlot>();
+        public Dictionary<uint, ObjectSlot> MemoryAddressSortedSlot = new Dictionary<uint, ObjectSlot>();
         Dictionary<uint, Tuple<int?, int?>> _lastSlotLabel = new Dictionary<uint, Tuple<int?, int?>>();
         bool _labelsLocked = false;
         public List<uint> SelectedSlotsAddresses = new List<uint>();
@@ -66,6 +68,8 @@ namespace SM64_Diagnostic.Managers
         public ObjectSlotsManager(ProcessStream stream, ObjectAssociations objAssoc,
             ObjectManager objManager, ObjectSlotManagerGui managerGui, MapManager mapManager, MiscManager miscManager, TabControl tabControlMain)
         {
+            Instance = this;
+
             ObjectAssoc = objAssoc;
             _stream = stream;
             _objManager = objManager;
@@ -364,7 +368,7 @@ namespace SM64_Diagnostic.Managers
             for (int i = 0; i < Config.ObjectSlots.MaxSlots; i++)
             {
                 UpdateSlot(newObjectSlotData[i], ObjectSlots[i]);
-                _memoryAddressSortedSlot[newObjectSlotData[i].Address] = ObjectSlots[i];
+                MemoryAddressSortedSlot[newObjectSlotData[i].Address] = ObjectSlots[i];
             }
 
             BehaviorCriteria? multiBehavior = null;
@@ -372,7 +376,7 @@ namespace SM64_Diagnostic.Managers
             bool firstObject = true;
             foreach (uint slotAddress in SelectedSlotsAddresses)
             {
-                var behaviorCritera = _memoryAddressSortedSlot[slotAddress].Behavior;
+                var behaviorCritera = MemoryAddressSortedSlot[slotAddress].Behavior;
 
                 selectedBehaviorCriterias.Add(behaviorCritera);
 

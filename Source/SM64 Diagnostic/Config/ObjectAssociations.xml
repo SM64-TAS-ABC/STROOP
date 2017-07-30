@@ -1629,6 +1629,7 @@
     <SpawnCode gfxId="0x89"/>
     <Image path="Vanish Cap Block.png"/>
     <MapImage path="Vanish Cap Block Top.png" rotates="true"/>
+    <ReleaseStatus unReleasedValue="0x800ED3F0"/>
     <Data type="int" address="0xF0" offset="Object">Appearance</Data>
     <Data type="int" address="0x144" offset="Object">Contents</Data>
     <Data type="byte" address="0x14F" mask="0x01" offset="Object" isBool="true">Opening</Data>

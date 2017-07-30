@@ -1294,6 +1294,7 @@ namespace SM64_Diagnostic.Utilities
                             subType = ParsingUtilities.TryParseInt(element.Attribute(XName.Get("subType")).Value);
                         if (element.Attribute(XName.Get("appearance")) != null)
                             appearance = ParsingUtilities.TryParseInt(element.Attribute(XName.Get("appearance")).Value);
+
                         var spawnElement = element.Element(XName.Get("SpawnCode"));
                         if (spawnElement != null)
                         {
@@ -1309,6 +1310,7 @@ namespace SM64_Diagnostic.Utilities
                                 Extra = spawnExtra
                             });
                         }
+
                         string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                         string mapImagePath = null;
                         bool rotates = false;
@@ -1317,11 +1319,14 @@ namespace SM64_Diagnostic.Utilities
                             mapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                             rotates = bool.Parse(element.Element(XName.Get("MapImage")).Attribute(XName.Get("rotates")).Value);
                         }
-                        uint? releaseStatus = null;
-                        if (element.Element(XName.Get("Cloning")) != null)
+
+                        uint? unReleasedValue = null;
+                        if (element.Element(XName.Get("ReleaseStatus")) != null)
                         {
-                            releaseStatus = ParsingUtilities.ParseHex(element.Element(XName.Get("Cloning")).Attribute(XName.Get("releaseStatus")).Value);
+                            unReleasedValue = ParsingUtilities.ParseHex(element.Element(XName.Get("ReleaseStatus")).Attribute(XName.Get("unReleasedValue")).Value);
+                            Console.WriteLine(unReleasedValue);
                         }
+
                         var watchVars = new List<WatchVariable>();
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
                         {
@@ -1343,7 +1348,7 @@ namespace SM64_Diagnostic.Utilities
                             Name = name,
                             RotatesOnMap = rotates,
                             WatchVariables = watchVars,
-                            ReleaseStatus = releaseStatus
+                            ReleaseStatus = unReleasedValue
                         };
 
                         if (!assoc.AddAssociation(newBehavior))
