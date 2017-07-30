@@ -3764,6 +3764,7 @@
     <Data type="short" address="0x02" offset="Waypoint">Waypoint X</Data>
     <Data type="short" address="0x04" offset="Waypoint">Waypoint Y</Data>
     <Data type="short" address="0x06" offset="Waypoint">Waypoint Z</Data>
+    <Data type="short" address="0x08" offset="Waypoint">Next Waypoint Index</Data>
     <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Yaw to Waypoint</Data>
     <Data type="short" address="0x10A" offset="Object" isAngle="true">Pitch to Waypoint</Data>
   </Object>
