@@ -249,8 +249,13 @@ namespace SM64_Diagnostic.Utilities
             return RadiansToAngleUnitsRounded(uphillRadians);
         }
 
-        public static float getPendulumAmplitude(float accelerationDirection, float accelerationMagnitude, float angularVelocity, float angle)
+        public static float GetPendulumAmplitude(ProcessStream stream, uint pendulumAddress)
         {
+            // Get pendulum variables
+            float accelerationDirection = stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationDirection);
+            float accelerationMagnitude = stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationMagnitude);
+            float angularVelocity = stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngularVelocity);
+            float angle = stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngle);
             float acceleration = accelerationDirection * accelerationMagnitude;
 
             // Calculate one frame forwards to see if pendulum is speeding up or slowing down

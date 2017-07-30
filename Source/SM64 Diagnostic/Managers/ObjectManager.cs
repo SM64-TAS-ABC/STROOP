@@ -480,13 +480,6 @@ namespace SM64_Diagnostic.Managers
                 double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
                 double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
 
-                // Get pendulum variables
-                float pendulumAccelerationDirection = _stream.GetSingle(objAddress + Config.ObjectSlots.PendulumAccelerationDirection);
-                float pendulumAccelerationMagnitude = _stream.GetSingle(objAddress + Config.ObjectSlots.PendulumAccelerationMagnitude);
-                float pendulumAngularVelocity = _stream.GetSingle(objAddress + Config.ObjectSlots.PendulumAngularVelocity);
-                float pendulumAngle = _stream.GetSingle(objAddress + Config.ObjectSlots.PendulumAngle);
-                float pendulumAmplitude;
-
                 foreach (IDataContainer specialVar in _specialWatchVars)
                 {
                     var newText = "";
@@ -583,23 +576,11 @@ namespace SM64_Diagnostic.Managers
                             break;
 
                         case "PendulumAmplitude":
-                            pendulumAmplitude =
-                                MoreMath.getPendulumAmplitude(
-                                    pendulumAccelerationDirection,
-                                    pendulumAccelerationMagnitude,
-                                    pendulumAngularVelocity,
-                                    pendulumAngle);
-                            newText = pendulumAmplitude.ToString();
+                            newText = MoreMath.GetPendulumAmplitude(_stream, objAddress).ToString();
                             break;
 
                         case "PendulumSwingIndex":
-                            pendulumAmplitude =
-                                MoreMath.getPendulumAmplitude(
-                                    pendulumAccelerationDirection,
-                                    pendulumAccelerationMagnitude,
-                                    pendulumAngularVelocity,
-                                    pendulumAngle);
-                            int? pendulumSwingIndex = Config.PendulumSwings.GetPendulumSwingIndex((int)pendulumAmplitude);
+                            int? pendulumSwingIndex = Config.PendulumSwings.GetPendulumSwingIndex((int)MoreMath.GetPendulumAmplitude(_stream, objAddress));
                             newText = pendulumSwingIndex == null ? "Unknown Index" : pendulumSwingIndex.ToString();
                             break;
 
