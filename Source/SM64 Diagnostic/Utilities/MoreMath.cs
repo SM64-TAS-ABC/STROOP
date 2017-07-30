@@ -377,5 +377,11 @@ namespace SM64_Diagnostic.Utilities
 
             return (effortTarget, effortChange, minHSpeed, hSpeedTarget);
         }
+
+        public static (double hSpeedTarget, double hSpeedChange)
+            GetKoopaTheQuickSpecialVars(ProcessStream stream, uint racingPenguinAddress)
+        {
+            return (1, 2);
+        }
     }
 }

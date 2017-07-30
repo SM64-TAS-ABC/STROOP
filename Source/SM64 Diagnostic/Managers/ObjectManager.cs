@@ -212,6 +212,10 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("RacingPenguinMinHSpeed"),
                 new DataContainer("RacingPenguinHSpeedTarget"),
 
+                // Koopa the Quick vars
+                new DataContainer("KoopaTheQuickHSpeedTarget"),
+                new DataContainer("KoopaTheQuickHSpeedChange"),
+
                 // Hacked vars
                 new DataContainer("RngCallsPerFrame"),
             };
@@ -623,6 +627,20 @@ namespace SM64_Diagnostic.Managers
                         case "RacingPenguinHSpeedTarget":
                             {
                                 (_, _, _, double temp) = MoreMath.GetRacingPenguinSpecialVars(_stream, objAddress);
+                                newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
+
+                        case "KoopaTheQuickHSpeedTarget":
+                            {
+                                (double temp, _) = MoreMath.GetKoopaTheQuickSpecialVars(_stream, objAddress);
+                                newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
+
+                        case "KoopaTheQuickHSpeedChange":
+                            {
+                                (_, double temp) = MoreMath.GetKoopaTheQuickSpecialVars(_stream, objAddress);
                                 newText = Math.Round(temp, 3).ToString();
                                 break;
                             }

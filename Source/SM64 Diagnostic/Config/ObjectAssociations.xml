@@ -2924,6 +2924,9 @@
 
     <Data type="float" address="0xF4" offset="Object">Speed Multiplier</Data>
     <Data type="float" address="0xB8" offset="Object">H Speed</Data>
+
+    <Data offset="Special" specialType="KoopaTheQuickHSpeedTarget">H Speed Target</Data>
+    <Data offset="Special" specialType="KoopaTheQuickHSpeedChange">H Speed Change</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa the Quick #2" subType="3">
     <SpawnCode gfxId="0x68"/>
