@@ -1321,9 +1321,16 @@ namespace SM64_Diagnostic.Utilities
                         }
 
                         uint? unReleasedValue = null;
+                        uint? thrownValue = null;
+                        uint? droppedValue = null;
                         if (element.Element(XName.Get("ReleaseStatus")) != null)
                         {
-                            unReleasedValue = ParsingUtilities.ParseHex(element.Element(XName.Get("ReleaseStatus")).Attribute(XName.Get("unReleasedValue")).Value);
+                            unReleasedValue = element.Element(XName.Get("ReleaseStatus")).Attribute(XName.Get("unReleasedValue")) == null ? (uint?)null :
+                                ParsingUtilities.ParseHex(element.Element(XName.Get("ReleaseStatus")).Attribute(XName.Get("unReleasedValue")).Value);
+                            thrownValue = element.Element(XName.Get("ReleaseStatus")).Attribute(XName.Get("thrownValue")) == null ? (uint?)null :
+                                ParsingUtilities.ParseHex(element.Element(XName.Get("ReleaseStatus")).Attribute(XName.Get("thrownValue")).Value);
+                            droppedValue = element.Element(XName.Get("ReleaseStatus")).Attribute(XName.Get("droppedValue")) == null ? (uint?)null :
+                                ParsingUtilities.ParseHex(element.Element(XName.Get("ReleaseStatus")).Attribute(XName.Get("droppedValue")).Value);
                         }
 
                         var watchVars = new List<WatchVariable>();
@@ -1347,7 +1354,9 @@ namespace SM64_Diagnostic.Utilities
                             Name = name,
                             RotatesOnMap = rotates,
                             WatchVariables = watchVars,
-                            UnReleasedValue = unReleasedValue
+                            UnReleasedValue = unReleasedValue,
+                            ThrownValue = thrownValue,
+                            DroppedValue = droppedValue,
                         };
 
                         if (!assoc.AddAssociation(newBehavior))

@@ -20,6 +20,8 @@ namespace SM64_Diagnostic.Structs
         public Image MapImage;
         public Image TransparentMapImage;
         public uint? UnReleasedValue;
+        public uint? ThrownValue;
+        public uint? DroppedValue;
         public List<WatchVariable> WatchVariables = new List<WatchVariable>();
 
         public bool MeetsCriteria(BehaviorCriteria behaviorCriteria)
