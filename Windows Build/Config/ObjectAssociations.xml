@@ -3753,8 +3753,10 @@
     <SpawnCode gfxId="0x57"/>
     <Image path="Penguin.png"/>
     <MapImage path="Penguin Top.png" rotates="true"/>
-    <Data type="byte" address="0x1B3" offset="Object" isBool="true">Mario Cheated</Data>
-    <Data type="byte" address="0x1AF" offset="Object" isBool="true">Mario Finished First</Data>
+    <Data type="short" address="0x1B2" offset="Object" isBool="true">Mario Cheated</Data>
+    <Data type="short" address="0x1AE" offset="Object" isBool="true">Mario Finished First</Data>
+    <Data type="short" address="0x1B0" offset="Object" isBool="true">Penguin Finished</Data>
+    <Data type="short" address="0x1AC" offset="Object">Message</Data>
     <Data type="float" address="0x110" offset="Object">Effort</Data>
     <Data type="uint" address="0x100" offset="Object" useHex="true">Waypoint Pointer</Data>
     <Data type="int" address="0x104" offset="Object">Waypoint ID</Data>
