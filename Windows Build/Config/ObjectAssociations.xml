@@ -3756,7 +3756,10 @@
     <Data type="byte" address="0x1B3" offset="Object" isBool="true">Mario Cheated</Data>
     <Data type="byte" address="0x1AF" offset="Object" isBool="true">Mario Finished First</Data>
     <Data type="float" address="0x110" offset="Object">Effort</Data>
-    <Data type="uint" address="0x100" offset="Object" useHex="true">Current Waypoint</Data>
+    <Data type="uint" address="0x100" offset="Object" useHex="true">Waypoint Pointer</Data>
+    <Data type="int" address="0x104" offset="Object">Waypoint ID</Data>
+    <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Yaw to Waypoint</Data>
+    <Data type="short" address="0x10A" offset="Object" isAngle="true">Pitch to Waypoint</Data>
   </Object>
   <Object behaviorScriptAddress="0x130053C4" name="Finishing Line Checkpoint">
     <SpawnCode gfxId="0x00"/>
