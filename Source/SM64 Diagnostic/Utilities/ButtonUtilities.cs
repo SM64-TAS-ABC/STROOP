@@ -432,6 +432,7 @@ namespace SM64_Diagnostic.Utilities
             foreach (var address in addresses)
             {
                 success &= stream.SetValue(Config.ObjectSlots.ReleaseStatusThrownValue, address + Config.ObjectSlots.ReleaseStatusOffset);
+                success &= stream.SetValue(Config.ObjectSlots.StackIndexReleasedValue, address + Config.ObjectSlots.StackIndexOffset);
             }
 
             if (!streamAlreadySuspended) stream.Resume();
@@ -440,7 +441,6 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool UnReleaseObject(ProcessStream stream, List<uint> addresses)
         {
-            /*
             if (addresses.Count == 0)
                 return false;
 
@@ -450,19 +450,13 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (var address in addresses)
             {
-                ObjectSlot objectSlot = ObjectSlotsManager.Instance.MemoryAddressSortedSlot[address];
-                BehaviorCriteria behavior = objectSlot.Behavior;
-                uint? objUnReleasedValue = Config.ObjectAssociations.GetUnReleasedValue(behavior);
-                if (objUnReleasedValue != null)
-                {
-                    success &= stream.SetValue((uint)objUnReleasedValue, address + Config.ObjectSlots.ReleaseStatusOffset);
-                }
+                uint initialReleaseStatus = stream.GetUInt32(address + Config.ObjectSlots.InitialReleaseStatusOffset);
+                success &= stream.SetValue(initialReleaseStatus, address + Config.ObjectSlots.ReleaseStatusOffset);
+                success &= stream.SetValue(Config.ObjectSlots.StackIndexUnReleasedValue, address + Config.ObjectSlots.StackIndexOffset);
             }
 
             if (!streamAlreadySuspended) stream.Resume();
             return success;
-            */
-            return false;
         }
 
         public static bool InteractObject(ProcessStream stream, List<uint> addresses)

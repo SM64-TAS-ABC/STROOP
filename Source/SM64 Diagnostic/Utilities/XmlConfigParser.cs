@@ -186,6 +186,12 @@ namespace SM64_Diagnostic.Utilities
                                 case "StackIndexOffset":
                                     Config.ObjectSlots.StackIndexOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "StackIndexReleasedValue":
+                                    Config.ObjectSlots.StackIndexReleasedValue = uint.Parse(subElement.Value);
+                                    break;
+                                case "StackIndexUnReleasedValue":
+                                    Config.ObjectSlots.StackIndexUnReleasedValue = uint.Parse(subElement.Value);
+                                    break;
                                 case "InitialReleaseStatusOffset":
                                     Config.ObjectSlots.InitialReleaseStatusOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

@@ -48,6 +48,8 @@ namespace SM64_Diagnostic.Structs
 
         public uint ReleaseStatusOffset;
         public uint StackIndexOffset;
+        public uint StackIndexReleasedValue;
+        public uint StackIndexUnReleasedValue;
         public uint InitialReleaseStatusOffset;
         public uint ReleaseStatusThrownValue;
         public uint ReleaseStatusDroppedValue;

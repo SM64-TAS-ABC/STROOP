@@ -41,6 +41,8 @@
     <ScaleDepthOffset>0x34</ScaleDepthOffset>
     <ReleaseStatusOffset>0x1CC</ReleaseStatusOffset>
     <StackIndexOffset>0x1D0</StackIndexOffset>
+    <StackIndexReleasedValue>0</StackIndexReleasedValue>
+    <StackIndexUnReleasedValue>1</StackIndexUnReleasedValue>
     <InitialReleaseStatusOffset>0x1D4</InitialReleaseStatusOffset>
     <ReleaseStatusThrownValue>0x800EE5F8</ReleaseStatusThrownValue>
     <ReleaseStatusDroppedValue>0x800EE5F0</ReleaseStatusDroppedValue>
