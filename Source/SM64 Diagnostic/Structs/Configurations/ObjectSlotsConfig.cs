@@ -44,6 +44,7 @@ namespace SM64_Diagnostic.Structs
         public uint ReleaseStatusOffset;
         public uint ReleaseStatusReleasedValue;
         public uint InteractionStatusOffset;
+        public uint WaypointOffset;
         public uint PendulumAccelerationDirection;
         public uint PendulumAccelerationMagnitude;
         public uint PendulumAngularVelocity;

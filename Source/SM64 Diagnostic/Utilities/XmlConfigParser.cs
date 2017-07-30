@@ -189,6 +189,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "InteractionStatusOffset":
                                     Config.ObjectSlots.InteractionStatusOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "WaypointOffset":
+                                    Config.ObjectSlots.WaypointOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "PendulumAccelerationDirection":
                                     Config.ObjectSlots.PendulumAccelerationDirection = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

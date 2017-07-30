@@ -200,11 +200,12 @@ namespace SM64_Diagnostic.Controls
                     output = OffsetListInputBuffered;
                     break;
                 case OffsetType.Graphics:
-                    List<uint> objAddresses = GetOffsetListFromOffsetType(OffsetType.Object, false);
-                    output = objAddresses.ConvertAll(objAddress => _stream.GetUInt32(objAddress + Config.ObjectSlots.BehaviorGfxOffset));
+                    output = GetOffsetListFromOffsetType(OffsetType.Object, false)
+                        .ConvertAll(objAddress => _stream.GetUInt32(objAddress + Config.ObjectSlots.BehaviorGfxOffset));
                     break;
                 case OffsetType.Waypoint:
-                    output = OffsetListZero;
+                    output = GetOffsetListFromOffsetType(OffsetType.Object, false)
+                        .ConvertAll(objAddress => _stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset));
                     break;
                 case OffsetType.HackedArea:
                     output = OffsetListHackedArea;
