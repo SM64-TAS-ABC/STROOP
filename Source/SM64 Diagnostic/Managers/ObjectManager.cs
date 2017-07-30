@@ -736,7 +736,7 @@ namespace SM64_Diagnostic.Managers
 
             // Determine release or unrelease
             bool unrelease = _currentAddresses.Count > 0 && _currentAddresses.All(
-                address => ButtonUtilities.IsReleased(_stream, address));
+                address => _stream.GetUInt32(address + Config.ObjectSlots.ReleaseStatusOffset) == Config.ObjectSlots.ReleasedValue);
             if (_unrelease != unrelease)
             {
                 _unrelease = unrelease;

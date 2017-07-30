@@ -170,36 +170,6 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        public uint? GetUnReleasedValue(BehaviorCriteria behaviorCriteria)
-        {
-            var assoc = FindObjectAssociation(behaviorCriteria);
-
-            if (assoc == null)
-                return null;
-
-            else return assoc.UnReleasedValue;
-        }
-
-        public uint GetThrownValue(BehaviorCriteria behaviorCriteria)
-        {
-            var assoc = FindObjectAssociation(behaviorCriteria);
-
-            if (assoc == null)
-                return Config.ObjectSlots.ReleasedValue;
-
-            else return assoc.ThrownValue ?? Config.ObjectSlots.ReleasedValue;
-        }
-
-        public uint GetDroppedValue(BehaviorCriteria behaviorCriteria)
-        {
-            var assoc = FindObjectAssociation(behaviorCriteria);
-
-            if (assoc == null)
-                return Config.ObjectSlots.ReleasedValue;
-
-            else return assoc.DroppedValue ?? Config.ObjectSlots.ReleasedValue;
-        }
-
         public List<WatchVariable> GetWatchVariables(BehaviorCriteria behaviorCriteria)
         {
             var assoc = FindObjectAssociation(behaviorCriteria);

@@ -1629,7 +1629,6 @@
     <SpawnCode gfxId="0x89"/>
     <Image path="Vanish Cap Block.png"/>
     <MapImage path="Vanish Cap Block Top.png" rotates="true"/>
-    <ReleaseStatus unReleasedValue="0x800ED3F0" thrownValue="0x800EE5F8" droppedValue="0x800EE5F0"/>
     <Data type="int" address="0xF0" offset="Object">Appearance</Data>
     <Data type="int" address="0x144" offset="Object">Contents</Data>
     <Data type="byte" address="0x14F" mask="0x01" offset="Object" isBool="true">Opening</Data>
@@ -2249,7 +2248,6 @@
     <SpawnCode gfxId="0xbc"/>
     <Image path="Bob-omb.png"/>
     <MapImage path="Bob-omb Top.png" rotates="true"/>
-    <ReleaseStatus unReleasedValue="0x800EE320"/>
     <Data type="byte" address="0x147" offset="Object" isBool="true" invertBool="true">Can Move</Data>
     <Data type="byte" address="0x18A" offset="Object" isBool="true" invertBool="true">Has Coin</Data>
     <Data type="byte" address="0x127" offset="Object" isBool="true">Grabbed</Data>
@@ -2262,7 +2260,6 @@
     <SpawnCode gfxId="0xbc"/>
     <Image path="Bob-omb.png"/>
     <MapImage path="Bob-omb Top.png" rotates="true"/>
-    <ReleaseStatus unReleasedValue="0x800EE320"/>
     <Data type="byte" address="0x147" offset="Object" isBool="true" invertBool="true">Can Move</Data>
     <Data type="byte" address="0x18A" offset="Object" isBool="true" invertBool="true">Has Coin</Data>
     <Data type="byte" address="0x127" offset="Object" isBool="true">Grabbed</Data>

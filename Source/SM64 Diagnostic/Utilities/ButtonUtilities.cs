@@ -431,28 +431,16 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (var address in addresses)
             {
-                ObjectSlot objectSlot = ObjectSlotsManager.Instance.MemoryAddressSortedSlot[address];
-                BehaviorCriteria behavior = objectSlot.Behavior;
-                uint thrownValue = Config.ObjectAssociations.GetThrownValue(behavior);
-                success &= stream.SetValue(thrownValue, address + Config.ObjectSlots.ReleaseStatusOffset);
+                success &= stream.SetValue(Config.ObjectSlots.ReleasedValue, address + Config.ObjectSlots.ReleaseStatusOffset);
             }
 
             if (!streamAlreadySuspended) stream.Resume();
             return success;
         }
 
-        public static bool IsReleased(ProcessStream stream, uint objectAddress)
-        {
-            uint releaseStatus = stream.GetUInt32(objectAddress + Config.ObjectSlots.ReleaseStatusOffset);
-            ObjectSlot objectSlot = ObjectSlotsManager.Instance.MemoryAddressSortedSlot[objectAddress];
-            BehaviorCriteria behavior = objectSlot.Behavior;
-            uint thrownValue = Config.ObjectAssociations.GetThrownValue(behavior);
-            uint droppedValue = Config.ObjectAssociations.GetDroppedValue(behavior);
-            return releaseStatus == thrownValue || releaseStatus == droppedValue;
-        }
-
         public static bool UnReleaseObject(ProcessStream stream, List<uint> addresses)
         {
+            /*
             if (addresses.Count == 0)
                 return false;
 
@@ -473,6 +461,8 @@ namespace SM64_Diagnostic.Utilities
 
             if (!streamAlreadySuspended) stream.Resume();
             return success;
+            */
+            return false;
         }
 
         public static bool InteractObject(ProcessStream stream, List<uint> addresses)
