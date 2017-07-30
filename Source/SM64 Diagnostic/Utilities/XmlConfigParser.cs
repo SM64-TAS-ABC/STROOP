@@ -183,8 +183,8 @@ namespace SM64_Diagnostic.Utilities
                                 case "ReleaseStatusOffset":
                                     Config.ObjectSlots.ReleaseStatusOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "ReleaseStatusReleasedValue":
-                                    Config.ObjectSlots.ReleaseStatusReleasedValue = ParsingUtilities.ParseHex(subElement.Value);
+                                case "ReleasedValue":
+                                    Config.ObjectSlots.ReleasedValue = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "InteractionStatusOffset":
                                     Config.ObjectSlots.InteractionStatusOffset = ParsingUtilities.ParseHex(subElement.Value);

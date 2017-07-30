@@ -724,7 +724,8 @@ namespace SM64_Diagnostic.Managers
             }
 
             // Determine load or unload
-            bool revive = _currentAddresses.Count > 0 && _currentAddresses.All(address => _stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset) == 0x0000);
+            bool revive = _currentAddresses.Count > 0 && _currentAddresses.All(
+                address => _stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset) == 0x0000);
             if (_revive != revive)
             {
                 _revive = revive;
@@ -734,7 +735,8 @@ namespace SM64_Diagnostic.Managers
             }
 
             // Determine release or unrelease
-            bool unrelease = _currentAddresses.Count > 0 && _currentAddresses.All(address => _stream.GetUInt32(address + Config.ObjectSlots.ReleaseStatusOffset) == Config.ObjectSlots.ReleaseStatusReleasedValue);
+            bool unrelease = _currentAddresses.Count > 0 && _currentAddresses.All(
+                address => _stream.GetUInt32(address + Config.ObjectSlots.ReleaseStatusOffset) == Config.ObjectSlots.ReleasedValue);
             if (_unrelease != unrelease)
             {
                 _unrelease = unrelease;
@@ -744,7 +746,8 @@ namespace SM64_Diagnostic.Managers
             }
 
             // Determine interact or uninteract
-            bool uninteract = _currentAddresses.Count > 0 && _currentAddresses.All(address => _stream.GetUInt32(address + Config.ObjectSlots.InteractionStatusOffset) != 0);
+            bool uninteract = _currentAddresses.Count > 0 && _currentAddresses.All(
+                address => _stream.GetUInt32(address + Config.ObjectSlots.InteractionStatusOffset) != 0);
             if (_uninteract != uninteract)
             {
                 _uninteract = uninteract;

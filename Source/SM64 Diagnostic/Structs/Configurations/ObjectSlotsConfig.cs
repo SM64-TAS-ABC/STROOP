@@ -42,7 +42,7 @@ namespace SM64_Diagnostic.Structs
         public uint ScaleHeightOffset;
         public uint ScaleDepthOffset;
         public uint ReleaseStatusOffset;
-        public uint ReleaseStatusReleasedValue;
+        public uint ReleasedValue;
         public uint InteractionStatusOffset;
 
         public uint PendulumAccelerationDirection;
