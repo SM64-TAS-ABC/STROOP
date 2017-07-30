@@ -431,7 +431,7 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (var address in addresses)
             {
-                success &= stream.SetValue(Config.ObjectSlots.ReleasedValue, address + Config.ObjectSlots.ReleaseStatusOffset);
+                success &= stream.SetValue(Config.ObjectSlots.ReleaseStatusThrownValue, address + Config.ObjectSlots.ReleaseStatusOffset);
             }
 
             if (!streamAlreadySuspended) stream.Resume();

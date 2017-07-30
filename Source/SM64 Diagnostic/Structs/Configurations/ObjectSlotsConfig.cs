@@ -22,6 +22,7 @@ namespace SM64_Diagnostic.Structs
         public uint BehaviorSubtypeOffset;
         public uint BehaviorAppearance;
         public uint ObjectActiveOffset;
+
         public uint ObjectXOffset;
         public uint ObjectYOffset;
         public uint ObjectZOffset;
@@ -29,20 +30,27 @@ namespace SM64_Diagnostic.Structs
         public uint HomeYOffset;
         public uint HomeZOffset;
         public uint ObjectRotationOffset;
+
         public uint HitboxRadius;
         public uint HitboxHeight;
         public uint HitboxDownOffset;
+
         public uint YawFacingOffset;
         public uint PitchFacingOffset;
         public uint RollFacingOffset;
         public uint YawMovingOffset;
         public uint PitchMovingOffset;
         public uint RollMovingOffset;
+
         public uint ScaleWidthOffset;
         public uint ScaleHeightOffset;
         public uint ScaleDepthOffset;
+
         public uint ReleaseStatusOffset;
-        public uint ReleasedValue;
+        public uint StackIndexOffset;
+        public uint InitialReleaseStatusOffset;
+        public uint ReleaseStatusThrownValue;
+        public uint ReleaseStatusDroppedValue;
         public uint InteractionStatusOffset;
 
         public uint PendulumAccelerationDirection;
