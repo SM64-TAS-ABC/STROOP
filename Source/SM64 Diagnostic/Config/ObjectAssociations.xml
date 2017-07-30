@@ -3759,7 +3759,6 @@
     <Data type="short" address="0x1AE" offset="Object" isBool="true">Mario Finished First</Data>
     <Data type="short" address="0x1B0" offset="Object" isBool="true">Penguin Finished</Data>
     <Data type="short" address="0x1AC" offset="Object">Message</Data>
-    <Data type="float" address="0x110" offset="Object">Effort</Data>
     <Data type="uint" address="0xFC" offset="Object" useHex="true">Starter WP</Data>
     <Data type="uint" address="0x100" offset="Object" useHex="true">Current WP</Data>
     <Data type="int" address="0x104" offset="Object">Prev WP ID</Data>
@@ -3771,9 +3770,16 @@
     <Data type="short" address="0x0A" offset="Waypoint">Next WP X</Data>
     <Data type="short" address="0x0C" offset="Waypoint">Next WP Y</Data>
     <Data type="short" address="0x0E" offset="Waypoint">Next WP Z</Data>
+    <Data type="ushort" address="0xD6" offset="Object" isAngle="true">Yaw (Facing)</Data>
     <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Yaw to Next WP</Data>
     <Data type="short" address="0x10A" offset="Object" isAngle="true">Pitch to Next WP</Data>
-    <Data offset="Special" specialType="RacingPenguinVar">Racing Penguin Var</Data>
+    <Data offset="Special" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
+    <Data type="float" address="0x110" offset="Object">Effort</Data>
+    <Data offset="Special" specialType="RacingPenguinEffortTarget">Effort Target</Data>
+    <Data offset="Special" specialType="RacingPenguinEffortChange">Effort Change</Data>
+    <Data offset="Special" specialType="RacingPenguinMinHSpeed">Min H Speed</Data>
+    <Data type="float" address="0xB8" offset="Object">H Speed</Data>
+    <Data offset="Special" specialType="RacingPenguinHSpeedTarget">H Speed Target</Data>
   </Object>
   <Object behaviorScriptAddress="0x130053C4" name="Finishing Line Checkpoint">
     <SpawnCode gfxId="0x00"/>

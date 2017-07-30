@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -331,6 +332,50 @@ namespace SM64_Diagnostic.Utilities
             bool angle1Less = angle21Diff <= angle12Diff;
             double newAngle = angle1 + (angle1Less ? 1 : -1) * rotationDiff;
             return FormatAngleDouble(newAngle);
+        }
+
+        public static double MoveNumberTowards(double start, double end, double cap)
+        {
+            bool startLessThanEnd = start < end;
+            double diff = Math.Abs(end - start);
+            double cappedDiff = Math.Min(diff, cap);
+            double moved = start + (startLessThanEnd ? 1 : -1) * cappedDiff;
+            return moved;
+        }
+
+        public static (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget)
+            GetRacingPenguinSpecialVars(ProcessStream stream, uint racingPenguinAddress)
+        {
+            double marioY = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            double objectY = stream.GetSingle(racingPenguinAddress + Config.ObjectSlots.ObjectYOffset);
+            double heightDiff = marioY - objectY;
+
+            uint prevWaypointAddress = stream.GetUInt32(racingPenguinAddress + Config.ObjectSlots.WaypointOffset);
+            short prevWaypointIndex = stream.GetInt16(prevWaypointAddress);
+
+            uint effortOffset = 0x110;
+            double effort = stream.GetSingle(racingPenguinAddress + effortOffset);
+
+            double effortTarget;
+            double effortChange;
+            double minHSpeed = 70;
+            if (heightDiff > -100 || prevWaypointIndex >= 35)
+            {
+                if (prevWaypointIndex >= 35) minHSpeed = 60;
+                effortTarget = -500;
+                effortChange = 100;
+            }
+            else
+            {
+                effortTarget = 1000;
+                effortChange = 30;
+            }
+            effort = MoreMath.MoveNumberTowards(effort, effortTarget, effortChange);
+
+            double hSpeedTarget = (effort - heightDiff) * 0.1;
+            hSpeedTarget = MoreMath.Clamp(hSpeedTarget, minHSpeed, 150);
+
+            return (effortTarget, effortChange, minHSpeed, hSpeedTarget);
         }
     }
 }

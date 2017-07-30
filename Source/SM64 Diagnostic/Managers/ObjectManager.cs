@@ -201,9 +201,18 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("MarioHitboxAboveObject"),
                 new DataContainer("MarioHitboxBelowObject"),
                 new DataContainer("MarioHitboxOverlapsObject"),
+
+                // Pendulum vars
                 new DataContainer("PendulumAmplitude"),
                 new DataContainer("PendulumSwingIndex"),
-                new DataContainer("RacingPenguinVar"),
+
+                // Racing penguin vars
+                new DataContainer("RacingPenguinEffortTarget"),
+                new DataContainer("RacingPenguinEffortChange"),
+                new DataContainer("RacingPenguinMinHSpeed"),
+                new DataContainer("RacingPenguinHSpeedTarget"),
+
+                // Hacked vars
                 new DataContainer("RngCallsPerFrame"),
             };
         }
@@ -590,9 +599,33 @@ namespace SM64_Diagnostic.Managers
                             newText = pendulumSwingIndex == null ? "Unknown Index" : pendulumSwingIndex.ToString();
                             break;
 
-                        case "RacingPenguinVar":
-                            newText = "RacingPenguinVar";
-                            break;
+                        case "RacingPenguinEffortTarget":
+                            {
+                                (double temp, _, _, _) = MoreMath.GetRacingPenguinSpecialVars(_stream, objAddress);
+                                newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
+
+                        case "RacingPenguinEffortChange":
+                            {
+                                (_, double temp, _, _) = MoreMath.GetRacingPenguinSpecialVars(_stream, objAddress);
+                                newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
+
+                        case "RacingPenguinMinHSpeed":
+                            {
+                                (_, _, double temp, _) = MoreMath.GetRacingPenguinSpecialVars(_stream, objAddress);
+                                newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
+
+                        case "RacingPenguinHSpeedTarget":
+                            {
+                                (_, _, _, double temp) = MoreMath.GetRacingPenguinSpecialVars(_stream, objAddress);
+                                newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
 
                         case "RngCallsPerFrame":
                             newText = GetNumRngCalls(objAddress).ToString();
