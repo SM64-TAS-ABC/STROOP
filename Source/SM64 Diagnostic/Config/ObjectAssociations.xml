@@ -2892,6 +2892,7 @@
     <SpawnCode gfxId="0x68"/>
     <Image path="Koopa.png"/>
     <MapImage path="Koopa Top.png" rotates="true"/>
+    <Data type="int" address="0xF8" offset="Object">Movement Type</Data>
     <Data type="byte" address="0xFB" offset="Object" isBool="true">Act Shelled</Data>
     <Data type="ushort" address="0xFE" offset="Object" isAngle="true">Target Angle</Data>
     <Data type="short" address="0x1AC" offset="Object">Countdown</Data>
@@ -2902,11 +2903,11 @@
     <SpawnCode gfxId="0x68"/>
     <Image path="Koopa the Quick with Flag.png"/>
     <MapImage path="Koopa Top.png" rotates="true"/>
-    <Data type="ushort" address="0x102" offset="Object" useHex="true">Waypoint</Data>
-    <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Target Angle</Data>
+    <Data type="int" address="0xF8" offset="Object">Movement Type</Data>
+    <Data type="int" address="0x150" offset="Object">Jump State</Data>
+    <Data type="float" address="0xE4" offset="Object">Gravity</Data>
     <Data type="byte" address="0xF3" offset="Object" isBool="true">Blinking</Data>
     <Data type="int" address="0x110" offset="Object">Blinking Countdown</Data>
-
     <Data type="uint" address="0xFC" offset="Object" useHex="true">Starter WP</Data>
     <Data type="uint" address="0x100" offset="Object" useHex="true">Current WP</Data>
     <Data type="int" address="0x104" offset="Object">Prev WP ID</Data>
@@ -2921,10 +2922,9 @@
     <Data type="ushort" address="0xD6" offset="Object" isAngle="true">Yaw (Facing)</Data>
     <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Yaw to Next WP</Data>
     <Data type="short" address="0x10A" offset="Object" isAngle="true">Pitch to Next WP</Data>
-
-    <Data type="float" address="0xF4" offset="Object">Speed Multiplier</Data>
+    <Data offset="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+    <Data type="float" address="0xF4" offset="Object">H Speed Multiplier</Data>
     <Data type="float" address="0xB8" offset="Object">H Speed</Data>
-
     <Data offset="Special" specialType="KoopaTheQuickHSpeedTarget">H Speed Target</Data>
     <Data offset="Special" specialType="KoopaTheQuickHSpeedChange">H Speed Change</Data>
   </Object>
@@ -2932,16 +2932,36 @@
     <SpawnCode gfxId="0x68"/>
     <Image path="Koopa the Quick with Flag.png"/>
     <MapImage path="Koopa Top.png" rotates="true"/>
-    <Data type="ushort" address="0x102" offset="Object" useHex="true">Waypoint</Data>
-    <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Target Angle</Data>
+    <Data type="int" address="0xF8" offset="Object">Movement Type</Data>
+    <Data type="int" address="0x150" offset="Object">Jump State</Data>
+    <Data type="float" address="0xE4" offset="Object">Gravity</Data>
     <Data type="byte" address="0xF3" offset="Object" isBool="true">Blinking</Data>
     <Data type="int" address="0x110" offset="Object">Blinking Countdown</Data>
-    <Data type="float" address="0xF4" offset="Object">Speed Multiplier</Data>
+    <Data type="uint" address="0xFC" offset="Object" useHex="true">Starter WP</Data>
+    <Data type="uint" address="0x100" offset="Object" useHex="true">Current WP</Data>
+    <Data type="int" address="0x104" offset="Object">Prev WP ID</Data>
+    <Data type="short" address="0x00" offset="Waypoint">Prev WP Index</Data>
+    <Data type="short" address="0x02" offset="Waypoint">Prev WP X</Data>
+    <Data type="short" address="0x04" offset="Waypoint">Prev WP Y</Data>
+    <Data type="short" address="0x06" offset="Waypoint">Prev WP Z</Data>
+    <Data type="short" address="0x08" offset="Waypoint">Next WP Index</Data>
+    <Data type="short" address="0x0A" offset="Waypoint">Next WP X</Data>
+    <Data type="short" address="0x0C" offset="Waypoint">Next WP Y</Data>
+    <Data type="short" address="0x0E" offset="Waypoint">Next WP Z</Data>
+    <Data type="ushort" address="0xD6" offset="Object" isAngle="true">Yaw (Facing)</Data>
+    <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Yaw to Next WP</Data>
+    <Data type="short" address="0x10A" offset="Object" isAngle="true">Pitch to Next WP</Data>
+    <Data offset="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+    <Data type="float" address="0xF4" offset="Object">H Speed Multiplier</Data>
+    <Data type="float" address="0xB8" offset="Object">H Speed</Data>
+    <Data offset="Special" specialType="KoopaTheQuickHSpeedTarget">H Speed Target</Data>
+    <Data offset="Special" specialType="KoopaTheQuickHSpeedChange">H Speed Change</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa (Tiny)" subType="4">
     <SpawnCode gfxId="0x68"/>
     <Image path="Koopa.png"/>
     <MapImage path="Koopa Top.png" rotates="true"/>
+    <Data type="int" address="0xF8" offset="Object">Movement Type</Data>
     <Data type="byte" address="0xFB" offset="Object" isBool="true">Act Shelled</Data>
     <Data type="ushort" address="0xFE" offset="Object" isAngle="true">Target Angle</Data>
     <Data type="short" address="0x1AC" offset="Object">Countdown</Data>

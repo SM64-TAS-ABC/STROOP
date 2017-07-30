@@ -379,9 +379,19 @@ namespace SM64_Diagnostic.Utilities
         }
 
         public static (double hSpeedTarget, double hSpeedChange)
-            GetKoopaTheQuickSpecialVars(ProcessStream stream, uint racingPenguinAddress)
+            GetKoopaTheQuickSpecialVars(ProcessStream stream, uint koopaTheQuickAddress)
         {
-            return (1, 2);
+            uint hSpeedMultiplierOffset = 0xF4;
+            double hSpeedMultiplier = stream.GetSingle(koopaTheQuickAddress + hSpeedMultiplierOffset);
+
+            uint pitchToWaypointOffset = 0x10A;
+            short pitchToWaypointAngleUnits = stream.GetInt16(koopaTheQuickAddress + pitchToWaypointOffset);
+            double pitchToWaypointRadians = AngleUnitsToRadians(pitchToWaypointAngleUnits);
+
+            double hSpeedTarget = hSpeedMultiplier * (Math.Sin(pitchToWaypointRadians) + 1) * 6;
+            double hSpeedChange = hSpeedMultiplier * 0.1;
+
+            return (hSpeedTarget, hSpeedChange);
         }
     }
 }
