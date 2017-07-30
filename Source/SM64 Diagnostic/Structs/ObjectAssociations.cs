@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Extensions;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Structs
 {
@@ -179,24 +180,24 @@ namespace SM64_Diagnostic.Structs
             else return assoc.UnReleasedValue;
         }
 
-        public uint? GetThrownValue(BehaviorCriteria behaviorCriteria)
+        public uint GetThrownValue(BehaviorCriteria behaviorCriteria)
         {
             var assoc = FindObjectAssociation(behaviorCriteria);
 
             if (assoc == null)
-                return null;
+                return Config.ObjectSlots.ReleasedValue;
 
-            else return assoc.ThrownValue;
+            else return assoc.ThrownValue ?? Config.ObjectSlots.ReleasedValue;
         }
 
-        public uint? GetDroppedValue(BehaviorCriteria behaviorCriteria)
+        public uint GetDroppedValue(BehaviorCriteria behaviorCriteria)
         {
             var assoc = FindObjectAssociation(behaviorCriteria);
 
             if (assoc == null)
-                return null;
+                return Config.ObjectSlots.ReleasedValue;
 
-            else return assoc.DroppedValue;
+            else return assoc.DroppedValue ?? Config.ObjectSlots.ReleasedValue;
         }
 
         public List<WatchVariable> GetWatchVariables(BehaviorCriteria behaviorCriteria)
