@@ -98,7 +98,7 @@ namespace SM64_Diagnostic.Managers
                 switch (specialVar.SpecialName)
                 {
                     case "DistanceToMario":
-                        (specialVar as DataContainer).Text = Math.Round(MoreMath.DistanceTo(cameraX, cameraY, cameraZ, mX, mY, mZ),3).ToString();
+                        (specialVar as DataContainer).Text = Math.Round(MoreMath.GetDistanceBetween(cameraX, cameraY, cameraZ, mX, mY, mZ),3).ToString();
                         break;
                 }
             }

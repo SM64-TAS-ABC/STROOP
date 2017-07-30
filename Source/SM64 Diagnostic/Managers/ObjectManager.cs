@@ -481,7 +481,7 @@ namespace SM64_Diagnostic.Managers
                 objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
 
                 // Compute hitbox distances between Mario obj and obj
-                double marioHitboxAwayFromObject = MoreMath.DistanceTo(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
+                double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
                 double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
                 double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
 
@@ -492,11 +492,11 @@ namespace SM64_Diagnostic.Managers
                     switch (specialVar.SpecialName)
                     {
                         case "MarioDistanceToObject":
-                            newText = Math.Round(MoreMath.DistanceTo(mX, mY, mZ, objX, objY, objZ),3).ToString();
+                            newText = Math.Round(MoreMath.GetDistanceBetween(mX, mY, mZ, objX, objY, objZ),3).ToString();
                             break;
 
                         case "MarioLateralDistanceToObject":
-                            newText = Math.Round(MoreMath.DistanceTo(mX, mZ, objX, objZ), 3).ToString();
+                            newText = Math.Round(MoreMath.GetDistanceBetween(mX, mZ, objX, objZ), 3).ToString();
                             break;
 
                         case "MarioVerticalDistanceToObject":
@@ -504,11 +504,11 @@ namespace SM64_Diagnostic.Managers
                             break;
 
                         case "MarioDistanceToObjectHome":
-                            newText = Math.Round(MoreMath.DistanceTo(mX, mY, mZ, objHomeX, objHomeY, objHomeZ), 3).ToString();
+                            newText = Math.Round(MoreMath.GetDistanceBetween(mX, mY, mZ, objHomeX, objHomeY, objHomeZ), 3).ToString();
                             break;
 
                         case "MarioLateralDistanceToObjectHome":
-                            newText = Math.Round(MoreMath.DistanceTo(mX, mZ, objHomeX, objHomeZ), 3).ToString();
+                            newText = Math.Round(MoreMath.GetDistanceBetween(mX, mZ, objHomeX, objHomeZ), 3).ToString();
                             break;
 
                         case "MarioVerticalDistanceToObjectHome":
@@ -516,11 +516,11 @@ namespace SM64_Diagnostic.Managers
                             break;
 
                         case "ObjectDistanceToHome":
-                            newText = Math.Round(MoreMath.DistanceTo(objX, objY, objZ, objHomeX, objHomeY, objHomeZ), 3).ToString();
+                            newText = Math.Round(MoreMath.GetDistanceBetween(objX, objY, objZ, objHomeX, objHomeY, objHomeZ), 3).ToString();
                             break;
 
                         case "LateralObjectDistanceToHome":
-                            newText = Math.Round(MoreMath.DistanceTo(objX, objZ, objHomeX, objHomeZ), 3).ToString();
+                            newText = Math.Round(MoreMath.GetDistanceBetween(objX, objZ, objHomeX, objHomeZ), 3).ToString();
                             break;
 
                         case "VerticalObjectDistanceToHome":

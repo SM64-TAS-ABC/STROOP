@@ -9,18 +9,28 @@ namespace SM64_Diagnostic.Utilities
 {
     public static class MoreMath
     {
-        public static double DistanceTo(float x1, float y1, float z1, float x2, float y2, float z2)
+        public static double GetHypotenuse(double x, double y)
         {
-            float dx, dy, dz;
+            return Math.Sqrt(x * x + y * y);
+        }
+
+        public static double GetHypotenuse(double x, double y, double z)
+        {
+            return Math.Sqrt(x * x + y * y + z * z);
+        }
+
+        public static double GetDistanceBetween(double x1, double y1, double z1, double x2, double y2, double z2)
+        {
+            double dx, dy, dz;
             dx = x1 - x2;
             dy = y1 - y2;
             dz = z1 - z2;
             return Math.Sqrt(dx * dx + dy * dy + dz * dz);
         }
 
-        public static double DistanceTo(float x1, float z1, float x2, float z2)
+        public static double GetDistanceBetween(double x1, double z1, double x2, double z2)
         {
-            float dx, dz;
+            double dx, dz;
             dx = x1 - x2;
             dz = z1 - z2;
             return Math.Sqrt(dx * dx + dz * dz);
@@ -348,11 +358,41 @@ namespace SM64_Diagnostic.Utilities
             return moved;
         }
 
-        public static (double dotProduct, double distToWaypoint, double distToWaypointPlane)
-            GetWaypointSpecialVars(ProcessStream stream, uint racingPenguinAddress)
+        public static double GetDotProduct(double v1X, double v1Y, double v1Z, double v2X, double v2Y, double v2Z)
         {
+            return v1X * v2X + v1Y * v2Y + v1Z * v2Z;
+        }
 
-            return (10, 11, 12);
+        public static (double dotProduct, double distToWaypointPlane, double distToWaypoint)
+            GetWaypointSpecialVars(ProcessStream stream, uint objAddress)
+        {
+            float objX = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+            float objY = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+            float objZ = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+
+            uint prevWaypointAddress = stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset);
+            short prevWaypointIndex = stream.GetInt16(prevWaypointAddress + 0x00);
+            short prevWaypointX = stream.GetInt16(prevWaypointAddress + 0x02);
+            short prevWaypointY = stream.GetInt16(prevWaypointAddress + 0x04);
+            short prevWaypointZ = stream.GetInt16(prevWaypointAddress + 0x06);
+            short nextWaypointIndex = stream.GetInt16(prevWaypointAddress + 0x08);
+            short nextWaypointX = stream.GetInt16(prevWaypointAddress + 0x0A);
+            short nextWaypointY = stream.GetInt16(prevWaypointAddress + 0x0C);
+            short nextWaypointZ = stream.GetInt16(prevWaypointAddress + 0x0E);
+
+            float objToWaypointX = nextWaypointX - objX;
+            float objToWaypointY = nextWaypointY - objY;
+            float objToWaypointZ = nextWaypointZ - objZ;
+            float prevToNextX = nextWaypointX - prevWaypointX;
+            float prevToNextY = nextWaypointY - prevWaypointY;
+            float prevToNextZ = nextWaypointZ - prevWaypointZ;
+
+            double dotProduct = GetDotProduct(objToWaypointX, objToWaypointY, objToWaypointZ, prevToNextX, prevToNextY, prevToNextZ);
+            double prevToNextDist = GetDistanceBetween(prevWaypointX, prevWaypointY, prevWaypointZ, nextWaypointX, nextWaypointY, nextWaypointZ);
+            double distToWaypointPlane = dotProduct / prevToNextDist;
+            double distToWaypoint = GetDistanceBetween(objX, objY, objZ, nextWaypointX, nextWaypointY, nextWaypointZ);
+
+            return (dotProduct, distToWaypointPlane, distToWaypoint);
         }
 
         public static (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget)
