@@ -203,6 +203,7 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("MarioHitboxOverlapsObject"),
                 new DataContainer("PendulumAmplitude"),
                 new DataContainer("PendulumSwingIndex"),
+                new DataContainer("RacingPenguinVar"),
                 new DataContainer("RngCallsPerFrame"),
             };
         }
@@ -587,6 +588,10 @@ namespace SM64_Diagnostic.Managers
                                     pendulumAngle);
                             int? pendulumSwingIndex = Config.PendulumSwings.GetPendulumSwingIndex((int)pendulumAmplitude);
                             newText = pendulumSwingIndex == null ? "Unknown Index" : pendulumSwingIndex.ToString();
+                            break;
+
+                        case "RacingPenguinVar":
+                            newText = "RacingPenguinVar";
                             break;
 
                         case "RngCallsPerFrame":

@@ -3773,6 +3773,7 @@
     <Data type="short" address="0x0E" offset="Waypoint">Next WP Z</Data>
     <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Yaw to Next WP</Data>
     <Data type="short" address="0x10A" offset="Object" isAngle="true">Pitch to Next WP</Data>
+    <Data offset="Special" specialType="RacingPenguinVar">Racing Penguin Var</Data>
   </Object>
   <Object behaviorScriptAddress="0x130053C4" name="Finishing Line Checkpoint">
     <SpawnCode gfxId="0x00"/>
