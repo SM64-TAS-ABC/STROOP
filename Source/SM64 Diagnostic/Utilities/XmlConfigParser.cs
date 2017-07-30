@@ -1324,7 +1324,6 @@ namespace SM64_Diagnostic.Utilities
                         if (element.Element(XName.Get("ReleaseStatus")) != null)
                         {
                             unReleasedValue = ParsingUtilities.ParseHex(element.Element(XName.Get("ReleaseStatus")).Attribute(XName.Get("unReleasedValue")).Value);
-                            Console.WriteLine(unReleasedValue);
                         }
 
                         var watchVars = new List<WatchVariable>();
@@ -1348,7 +1347,7 @@ namespace SM64_Diagnostic.Utilities
                             Name = name,
                             RotatesOnMap = rotates,
                             WatchVariables = watchVars,
-                            ReleaseStatus = unReleasedValue
+                            UnReleasedValue = unReleasedValue
                         };
 
                         if (!assoc.AddAssociation(newBehavior))

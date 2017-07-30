@@ -451,8 +451,11 @@ namespace SM64_Diagnostic.Utilities
             {
                 ObjectSlot objectSlot = ObjectSlotsManager.Instance.MemoryAddressSortedSlot[address];
                 BehaviorCriteria behavior = objectSlot.Behavior;
-                uint objUnReleasedValue = 0;
-                //success &= stream.SetValue(objUnReleasedValue, address + Config.ObjectSlots.ReleaseStatusOffset);
+                uint? objUnReleasedValue = Config.ObjectAssociations.GetUnReleasedValue(behavior);
+                if (objUnReleasedValue != null)
+                {
+                    success &= stream.SetValue((uint)objUnReleasedValue, address + Config.ObjectSlots.ReleaseStatusOffset);
+                }
             }
 
             if (!streamAlreadySuspended) stream.Resume();

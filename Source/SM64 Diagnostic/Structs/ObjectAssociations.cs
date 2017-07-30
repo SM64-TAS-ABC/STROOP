@@ -169,6 +169,16 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
+        public uint? GetUnReleasedValue(BehaviorCriteria behaviorCriteria)
+        {
+            var assoc = FindObjectAssociation(behaviorCriteria);
+
+            if (assoc == null)
+                return null;
+
+            else return assoc.UnReleasedValue;
+        }
+
         public List<WatchVariable> GetWatchVariables(BehaviorCriteria behaviorCriteria)
         {
             var assoc = FindObjectAssociation(behaviorCriteria);
