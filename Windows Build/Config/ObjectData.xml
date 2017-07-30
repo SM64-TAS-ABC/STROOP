@@ -48,7 +48,9 @@
   <Data type="uint" address="0x68" offset="Object" useHex="true" isObject="true">Parent Object</Data>
   <Data type="uint" address="0x020C" offset="Object" useHex="true">Behavior Script</Data>
   <Data type="uint" address="0x14" offset="Object" useHex="true">Graphic/Model</Data>
-  <Data type="short" address="0x00" offset="Graphics">Shadow</Data>
+  <Data type="short" address="0x14" offset="Graphics">Shadow Radius</Data>
+  <Data type="byte" address="0x16" offset="Graphics">Shadow Opacity</Data>
+  <Data type="byte" address="0x17" offset="Graphics">Shadow Type</Data>
   <Data type="byte" address="0x3" mask="0x10" offset="Object" isBool="true" invertBool="true">Visible</Data>
   <Data type="int" address="0x8c" offset="Object" isBool="true" mask="0x00000800" invertBool="true">Visible 2</Data>
   <Data type="byte" address="0x3" mask="0x01" offset="Object" isBool="true">Rendered</Data>
