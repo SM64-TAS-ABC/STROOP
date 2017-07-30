@@ -20,6 +20,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static CameraConfig Camera;
         public static InputConfig Input;
         public static FileConfig File;
+        public static WaypointConfig Waypoint;
         public static CameraHackConfig CameraHack;
         public static TriangleOffsetsConfig TriangleOffsets;
         public static ActionTable MarioActions;

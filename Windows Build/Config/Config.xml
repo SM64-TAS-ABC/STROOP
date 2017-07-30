@@ -42,11 +42,16 @@
     <ReleaseStatusOffset>0x1CC</ReleaseStatusOffset>
     <ReleaseStatusReleasedValue>0x800EE5F8</ReleaseStatusReleasedValue>
     <InteractionStatusOffset>0x134</InteractionStatusOffset>
-    <WaypointOffset>0x100</WaypointOffset>
+    
     <PendulumAccelerationDirection>0xF4</PendulumAccelerationDirection>
     <PendulumAccelerationMagnitude>0x100</PendulumAccelerationMagnitude>
     <PendulumAngularVelocity>0xFC</PendulumAngularVelocity>
     <PendulumAngle>0xF8</PendulumAngle>
+
+    <WaypointOffset>0x100</WaypointOffset>
+    <PitchToWaypointOffset>0x10A</PitchToWaypointOffset>
+    <RacingPenguinEffortOffset>0x110</RacingPenguinEffortOffset>
+    <KoopaTheQuickHSpeedMultiplierOffset>0xF4</KoopaTheQuickHSpeedMultiplierOffset>
   </ObjectSlots>
   <ObjectGroups>
     <ProcessNextLinkOffset>0x60</ProcessNextLinkOffset>
@@ -269,6 +274,13 @@
     <HatPositionYOffset>0x04</HatPositionYOffset>
     <HatPositionZOffset>0x06</HatPositionZOffset>
   </File>
+  <Waypoint>
+    <StructSize>0x08</StructSize>
+    <IndexOffset>0x00</IndexOffset>
+    <XOffset>0x02</XOffset>
+    <YOffset>0x04</YOffset>
+    <ZOffset>0x06</ZOffset>
+  </Waypoint>
   <CameraHack>
     <CameraHackStruct>0x803E0000</CameraHackStruct>
     <CameraModeOffset>0x00</CameraModeOffset>

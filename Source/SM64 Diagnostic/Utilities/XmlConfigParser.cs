@@ -189,9 +189,6 @@ namespace SM64_Diagnostic.Utilities
                                 case "InteractionStatusOffset":
                                     Config.ObjectSlots.InteractionStatusOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "WaypointOffset":
-                                    Config.ObjectSlots.WaypointOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
                                 case "PendulumAccelerationDirection":
                                     Config.ObjectSlots.PendulumAccelerationDirection = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
@@ -203,6 +200,18 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                                 case "PendulumAngle":
                                     Config.ObjectSlots.PendulumAngle = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "WaypointOffset":
+                                    Config.ObjectSlots.WaypointOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "PitchToWaypointOffset":
+                                    Config.ObjectSlots.PitchToWaypointOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "RacingPenguinEffortOffset":
+                                    Config.ObjectSlots.RacingPenguinEffortOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "KoopaTheQuickHSpeedMultiplierOffset":
+                                    Config.ObjectSlots.KoopaTheQuickHSpeedMultiplierOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         }
@@ -937,6 +946,34 @@ namespace SM64_Diagnostic.Utilities
                         Config.File.FileBSavedAddress = Config.File.FileStructAddress + 3 * Config.File.FileStructSize;
                         Config.File.FileCSavedAddress = Config.File.FileStructAddress + 5 * Config.File.FileStructSize;
                         Config.File.FileDSavedAddress = Config.File.FileStructAddress + 7 * Config.File.FileStructSize;
+                        break;
+
+                    case "Waypoint":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "StructSize":
+                                    Config.Waypoint.StructSize = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "IndexOffset":
+                                    Config.Waypoint.IndexOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "XOffset":
+                                    Config.Waypoint.XOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "YOffset":
+                                    Config.Waypoint.YOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ZOffset":
+                                    Config.Waypoint.ZOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                            }
+                        }
                         break;
 
                     case "CameraHack":
