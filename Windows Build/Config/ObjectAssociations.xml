@@ -2906,7 +2906,24 @@
     <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Target Angle</Data>
     <Data type="byte" address="0xF3" offset="Object" isBool="true">Blinking</Data>
     <Data type="int" address="0x110" offset="Object">Blinking Countdown</Data>
+
+    <Data type="uint" address="0xFC" offset="Object" useHex="true">Starter WP</Data>
+    <Data type="uint" address="0x100" offset="Object" useHex="true">Current WP</Data>
+    <Data type="int" address="0x104" offset="Object">Prev WP ID</Data>
+    <Data type="short" address="0x00" offset="Waypoint">Prev WP Index</Data>
+    <Data type="short" address="0x02" offset="Waypoint">Prev WP X</Data>
+    <Data type="short" address="0x04" offset="Waypoint">Prev WP Y</Data>
+    <Data type="short" address="0x06" offset="Waypoint">Prev WP Z</Data>
+    <Data type="short" address="0x08" offset="Waypoint">Next WP Index</Data>
+    <Data type="short" address="0x0A" offset="Waypoint">Next WP X</Data>
+    <Data type="short" address="0x0C" offset="Waypoint">Next WP Y</Data>
+    <Data type="short" address="0x0E" offset="Waypoint">Next WP Z</Data>
+    <Data type="ushort" address="0xD6" offset="Object" isAngle="true">Yaw (Facing)</Data>
+    <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Yaw to Next WP</Data>
+    <Data type="short" address="0x10A" offset="Object" isAngle="true">Pitch to Next WP</Data>
+
     <Data type="float" address="0xF4" offset="Object">Speed Multiplier</Data>
+    <Data type="float" address="0xB8" offset="Object">H Speed</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa the Quick #2" subType="3">
     <SpawnCode gfxId="0x68"/>
