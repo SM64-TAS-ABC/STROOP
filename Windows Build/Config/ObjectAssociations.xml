@@ -3840,6 +3840,11 @@
     <Data type="short" address="0x0A" offset="Waypoint">Next WP X</Data>
     <Data type="short" address="0x0C" offset="Waypoint">Next WP Y</Data>
     <Data type="short" address="0x0E" offset="Waypoint">Next WP Z</Data>
+
+    <Data offset="Special" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
+    <Data offset="Special" specialType="ObjectDistanceToWaypointPlane">Dist to Plane</Data>
+    <Data offset="Special" specialType="ObjectDistanceToWaypoint">Dist to Waypoint</Data>
+
     <Data type="ushort" address="0xD6" offset="Object" isAngle="true">Yaw (Facing)</Data>
     <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Yaw to Next WP</Data>
     <Data type="short" address="0x10A" offset="Object" isAngle="true">Pitch to Next WP</Data>

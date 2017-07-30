@@ -206,6 +206,11 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("PendulumAmplitude"),
                 new DataContainer("PendulumSwingIndex"),
 
+                // Waypoint vars
+                new DataContainer("ObjectDotProductToWaypoint"),
+                new DataContainer("ObjectDistanceToWaypointPlane"),
+                new DataContainer("ObjectDistanceToWaypoint"),
+
                 // Racing penguin vars
                 new DataContainer("RacingPenguinEffortTarget"),
                 new DataContainer("RacingPenguinEffortChange"),
@@ -583,6 +588,27 @@ namespace SM64_Diagnostic.Managers
                             int? pendulumSwingIndex = Config.PendulumSwings.GetPendulumSwingIndex((int)MoreMath.GetPendulumAmplitude(_stream, objAddress));
                             newText = pendulumSwingIndex == null ? "Unknown Index" : pendulumSwingIndex.ToString();
                             break;
+
+                        case "ObjectDotProductToWaypoint":
+                            {
+                                (double temp, _, _) = MoreMath.GetWaypointSpecialVars(_stream, objAddress);
+                                newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
+
+                        case "ObjectDistanceToWaypointPlane":
+                            {
+                                (_, double temp, _) = MoreMath.GetWaypointSpecialVars(_stream, objAddress);
+                                newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
+
+                        case "ObjectDistanceToWaypoint":
+                            {
+                                (_, _, double temp) = MoreMath.GetWaypointSpecialVars(_stream, objAddress);
+                                newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
 
                         case "RacingPenguinEffortTarget":
                             {

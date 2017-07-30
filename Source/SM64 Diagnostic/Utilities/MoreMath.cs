@@ -348,6 +348,13 @@ namespace SM64_Diagnostic.Utilities
             return moved;
         }
 
+        public static (double dotProduct, double distToWaypoint, double distToWaypointPlane)
+            GetWaypointSpecialVars(ProcessStream stream, uint racingPenguinAddress)
+        {
+
+            return (10, 11, 12);
+        }
+
         public static (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget)
             GetRacingPenguinSpecialVars(ProcessStream stream, uint racingPenguinAddress)
         {
