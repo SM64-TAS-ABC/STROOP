@@ -2906,6 +2906,7 @@
     <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Target Angle</Data>
     <Data type="byte" address="0xF3" offset="Object" isBool="true">Blinking</Data>
     <Data type="int" address="0x110" offset="Object">Blinking Countdown</Data>
+    <Data type="float" address="0xF4" offset="Object">Speed Multiplier</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa the Quick #2" subType="3">
     <SpawnCode gfxId="0x68"/>
@@ -2915,6 +2916,7 @@
     <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Target Angle</Data>
     <Data type="byte" address="0xF3" offset="Object" isBool="true">Blinking</Data>
     <Data type="int" address="0x110" offset="Object">Blinking Countdown</Data>
+    <Data type="float" address="0xF4" offset="Object">Speed Multiplier</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa (Tiny)" subType="4">
     <SpawnCode gfxId="0x68"/>
@@ -3758,15 +3760,19 @@
     <Data type="short" address="0x1B0" offset="Object" isBool="true">Penguin Finished</Data>
     <Data type="short" address="0x1AC" offset="Object">Message</Data>
     <Data type="float" address="0x110" offset="Object">Effort</Data>
-    <Data type="uint" address="0x100" offset="Object" useHex="true">Waypoint Pointer</Data>
-    <Data type="int" address="0x104" offset="Object">Waypoint ID</Data>
-    <Data type="short" address="0x00" offset="Waypoint">Waypoint Index</Data>
-    <Data type="short" address="0x02" offset="Waypoint">Waypoint X</Data>
-    <Data type="short" address="0x04" offset="Waypoint">Waypoint Y</Data>
-    <Data type="short" address="0x06" offset="Waypoint">Waypoint Z</Data>
-    <Data type="short" address="0x08" offset="Waypoint">Next Waypoint Index</Data>
-    <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Yaw to Waypoint</Data>
-    <Data type="short" address="0x10A" offset="Object" isAngle="true">Pitch to Waypoint</Data>
+    <Data type="uint" address="0xFC" offset="Object" useHex="true">Starter WP</Data>
+    <Data type="uint" address="0x100" offset="Object" useHex="true">Current WP</Data>
+    <Data type="int" address="0x104" offset="Object">Prev WP ID</Data>
+    <Data type="short" address="0x00" offset="Waypoint">Prev WP Index</Data>
+    <Data type="short" address="0x02" offset="Waypoint">Prev WP X</Data>
+    <Data type="short" address="0x04" offset="Waypoint">Prev WP Y</Data>
+    <Data type="short" address="0x06" offset="Waypoint">Prev WP Z</Data>
+    <Data type="short" address="0x08" offset="Waypoint">Next WP Index</Data>
+    <Data type="short" address="0x0A" offset="Waypoint">Next WP X</Data>
+    <Data type="short" address="0x0C" offset="Waypoint">Next WP Y</Data>
+    <Data type="short" address="0x0E" offset="Waypoint">Next WP Z</Data>
+    <Data type="ushort" address="0x10E" offset="Object" isAngle="true">Yaw to Next WP</Data>
+    <Data type="short" address="0x10A" offset="Object" isAngle="true">Pitch to Next WP</Data>
   </Object>
   <Object behaviorScriptAddress="0x130053C4" name="Finishing Line Checkpoint">
     <SpawnCode gfxId="0x00"/>
