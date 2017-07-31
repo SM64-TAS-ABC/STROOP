@@ -39,7 +39,6 @@ namespace SM64_Diagnostic.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateCamera(
-                        _stream,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
@@ -65,7 +64,6 @@ namespace SM64_Diagnostic.Managers
                 (float hOffset, float vOffset, float nOffset, bool pivotOnFocus) =>
                 {
                     ButtonUtilities.TranslateCameraSpherically(
-                        _stream,
                         -1 * nOffset,
                         hOffset,
                         -1 * vOffset,

@@ -39,9 +39,9 @@ namespace SM64_Diagnostic
         {
         }
 
-        public void Initialize(ProcessStream stream, FileImageGui gui, uint addressOffset, byte mask, Image onImage, Image offImage, string missionName)
+        public void Initialize(FileImageGui gui, uint addressOffset, byte mask, Image onImage, Image offImage, string missionName)
         {
-            base.Initialize(stream, addressOffset, mask, onImage, offImage);
+            base.Initialize(addressOffset, mask, onImage, offImage);
             AddressToolTip.SetToolTip(this, missionName);
         }
     }

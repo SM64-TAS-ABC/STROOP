@@ -11,12 +11,12 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using System.Drawing.Drawing2D;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic
 {
     public abstract class FilePictureBox : PictureBox
     {
-        protected ProcessStream _stream;
         protected uint _addressOffset;
         protected byte _mask;
         protected byte _currentValue;
@@ -25,9 +25,8 @@ namespace SM64_Diagnostic
         {
         }
 
-        protected void Initialize(ProcessStream stream, uint addressOffset, byte mask)
+        protected void Initialize(uint addressOffset, byte mask)
         {
-            _stream = stream;
             _addressOffset = addressOffset;
             _mask = mask;
             _currentValue = GetValue();
@@ -48,14 +47,14 @@ namespace SM64_Diagnostic
 
         private void SetValue(byte value)
         {
-            byte oldByte = _stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
+            byte oldByte = Config.Stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
             byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, _mask, value);
-            _stream.SetValue(newByte, FileManager.Instance.CurrentFileAddress + _addressOffset);
+            Config.Stream.SetValue(newByte, FileManager.Instance.CurrentFileAddress + _addressOffset);
         }
 
         private byte GetValue()
         {
-            byte currentByte = _stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
+            byte currentByte = Config.Stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
             byte maskedCurrentByte = (byte)(currentByte & _mask);
             return maskedCurrentByte;
         }
@@ -79,7 +78,7 @@ namespace SM64_Diagnostic
 
         public virtual void UpdateImage(bool force = false)
         {
-            if (_stream == null) return;
+            if (Config.Stream == null) return;
 
             byte value = GetValue();
             if (_currentValue != value || force)

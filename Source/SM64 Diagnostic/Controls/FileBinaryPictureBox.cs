@@ -23,11 +23,11 @@ namespace SM64_Diagnostic
         {
         }
 
-        public void Initialize(ProcessStream stream, uint addressOffset, byte mask, Image onImage, Image offImage)
+        public void Initialize(uint addressOffset, byte mask, Image onImage, Image offImage)
         {
             _onImage = onImage;
             _offImage = offImage;
-            base.Initialize(stream, addressOffset, mask);
+            base.Initialize(addressOffset, mask);
         }
 
         protected override Image GetImageForValue(byte value)

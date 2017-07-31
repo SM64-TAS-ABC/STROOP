@@ -16,16 +16,14 @@ namespace SM64_Diagnostic
 {
     public abstract class FileTextbox : TextBox
     {
-        protected ProcessStream _stream;
         protected uint _addressOffset;
 
         public FileTextbox()
         {
         }
 
-        public virtual void Initialize(ProcessStream stream, uint addressOffset)
+        public virtual void Initialize(uint addressOffset)
         {
-            _stream = stream;
             _addressOffset = addressOffset;
 
             this.Click += (sender, e) => this.SelectAll();

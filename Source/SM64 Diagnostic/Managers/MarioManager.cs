@@ -26,10 +26,10 @@ namespace SM64_Diagnostic.Managers
             SplitContainer splitContainerMario = marioControl.Controls["splitContainerMario"] as SplitContainer;
 
             var toggleHandsfree = splitContainerMario.Panel1.Controls["buttonMarioToggleHandsfree"] as Button;
-            toggleHandsfree.Click += (sender, e) => ButtonUtilities.ToggleHandsfree(_stream);
+            toggleHandsfree.Click += (sender, e) => ButtonUtilities.ToggleHandsfree();
 
             var toggleVisibility = splitContainerMario.Panel1.Controls["buttonMarioVisibility"] as Button;
-            toggleVisibility.Click += (sender, e) => ButtonUtilities.ToggleVisibility(_stream);
+            toggleVisibility.Click += (sender, e) => ButtonUtilities.ToggleVisibility();
 
             var marioPosGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioPos"] as GroupBox;
             ThreeDimensionController.initialize(
@@ -50,7 +50,6 @@ namespace SM64_Diagnostic.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateMario(
-                        _stream,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
@@ -64,7 +63,7 @@ namespace SM64_Diagnostic.Managers
                 marioStatsGroupBox.Controls["textBoxMarioStatsYaw"] as TextBox,
                 (float yawValue) =>
                 {
-                    ButtonUtilities.MarioChangeYaw(_stream, (int)Math.Round(yawValue));
+                    ButtonUtilities.MarioChangeYaw((int)Math.Round(yawValue));
                 });
             ScalarController.initialize(
                 marioStatsGroupBox.Controls["buttonMarioStatsHspdN"] as Button,
@@ -72,7 +71,7 @@ namespace SM64_Diagnostic.Managers
                 marioStatsGroupBox.Controls["textBoxMarioStatsHspd"] as TextBox,
                 (float hspdValue) =>
                 {
-                    ButtonUtilities.MarioChangeHspd(_stream, hspdValue);
+                    ButtonUtilities.MarioChangeHspd(hspdValue);
                 });
 
             ScalarController.initialize(
@@ -81,7 +80,7 @@ namespace SM64_Diagnostic.Managers
                 marioStatsGroupBox.Controls["textBoxMarioStatsVspd"] as TextBox,
                 (float vspdValue) =>
                 {
-                    ButtonUtilities.MarioChangeVspd(_stream, vspdValue);
+                    ButtonUtilities.MarioChangeVspd(vspdValue);
                 });
 
             var marioHOLPGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioHOLP"] as GroupBox;
@@ -103,7 +102,6 @@ namespace SM64_Diagnostic.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateHOLP(
-                        _stream,
                         hOffset,
                         nOffset,
                         -1 * vOffset,

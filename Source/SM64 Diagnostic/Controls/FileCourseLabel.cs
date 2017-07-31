@@ -17,7 +17,6 @@ namespace SM64_Diagnostic
 {
     public class FileCourseLabel : Label
     {
-        protected ProcessStream _stream;
         protected uint _addressOffset;
         protected byte _mask;
 
@@ -44,9 +43,8 @@ namespace SM64_Diagnostic
         {
         }
 
-        public void Initialize(ProcessStream stream, uint addressOffset, byte mask, int courseIndex)
+        public void Initialize(uint addressOffset, byte mask, int courseIndex)
         {
-            _stream = stream;
             _addressOffset = addressOffset;
             _mask = mask;
 
@@ -61,15 +59,15 @@ namespace SM64_Diagnostic
         private void SetValue(byte value)
         {
             byte maskedValue = (byte)(value & _mask);
-            byte oldByte = _stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
+            byte oldByte = Config.Stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
             byte unmaskedOldByte = (byte)(oldByte & ~_mask);
             byte newByte = (byte)(unmaskedOldByte | maskedValue);
-            _stream.SetValue(newByte, FileManager.Instance.CurrentFileAddress + _addressOffset);
+            Config.Stream.SetValue(newByte, FileManager.Instance.CurrentFileAddress + _addressOffset);
         }
 
         private byte GetValue()
         {
-            byte currentByte = _stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
+            byte currentByte = Config.Stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
             byte maskedCurrentByte = (byte)(currentByte & _mask);
             return maskedCurrentByte;
         }

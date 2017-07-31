@@ -38,31 +38,31 @@ namespace SM64_Diagnostic.Managers
             switch (controlType)
             {
                 case PuControl.Home:
-                    PuUtilities.MoveToPu(_stream, 0, 0, 0);
+                    PuUtilities.MoveToPu(0, 0, 0);
                     break;
                 case PuControl.PuUp:
-                    PuUtilities.MoveToRelativePu(_stream, 0, 0, -1);
+                    PuUtilities.MoveToRelativePu(0, 0, -1);
                     break;
                 case PuControl.PuDown:
-                    PuUtilities.MoveToRelativePu(_stream, 0, 0, 1);
+                    PuUtilities.MoveToRelativePu(0, 0, 1);
                     break;
                 case PuControl.PuLeft:
-                    PuUtilities.MoveToRelativePu(_stream, -1, 0, 0);
+                    PuUtilities.MoveToRelativePu(-1, 0, 0);
                     break;
                 case PuControl.PuRight:
-                    PuUtilities.MoveToRelativePu(_stream, 1, 0, 0);
+                    PuUtilities.MoveToRelativePu(1, 0, 0);
                     break;
                 case PuControl.QpuUp:
-                    PuUtilities.MoveToRelativePu(_stream, 0, 0, -4);
+                    PuUtilities.MoveToRelativePu(0, 0, -4);
                     break;
                 case PuControl.QpuDown:
-                    PuUtilities.MoveToRelativePu(_stream, 0, 0, 4);
+                    PuUtilities.MoveToRelativePu(0, 0, 4);
                     break;
                 case PuControl.QpuLeft:
-                    PuUtilities.MoveToRelativePu(_stream, -4, 0, 0);
+                    PuUtilities.MoveToRelativePu(-4, 0, 0);
                     break;
                 case PuControl.QpuRight:
-                    PuUtilities.MoveToRelativePu(_stream, 4, 0, 0);
+                    PuUtilities.MoveToRelativePu(4, 0, 0);
                     break;
             }
         }

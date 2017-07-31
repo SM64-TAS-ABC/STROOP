@@ -38,15 +38,15 @@ namespace SM64_Diagnostic.Utilities
         
         private enum Change { SET, ADD, MULTIPLY };
 
-        private static bool MoveThings(ProcessStream stream, List<TripleAddressAngle> posAddressAngles,
+        private static bool MoveThings(List<TripleAddressAngle> posAddressAngles,
             float xValue, float yValue, float zValue, Change change, bool useRelative = false)
         {
             if (posAddressAngles.Count == 0)
                 return false;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             foreach (var posAddressAngle in posAddressAngles)
             {
@@ -57,25 +57,25 @@ namespace SM64_Diagnostic.Utilities
                 if (change == Change.ADD)
                 {
                     handleScaling(ref currentXValue, ref currentZValue);
-                    handleRelativeAngle(stream, ref currentXValue, ref currentZValue, useRelative, posAddressAngle.Angle);
-                    currentXValue += stream.GetSingle(posAddressAngle.XAddress);
-                    currentYValue += stream.GetSingle(posAddressAngle.YAddress);
-                    currentZValue += stream.GetSingle(posAddressAngle.ZAddress);
+                    handleRelativeAngle(ref currentXValue, ref currentZValue, useRelative, posAddressAngle.Angle);
+                    currentXValue += Config.Stream.GetSingle(posAddressAngle.XAddress);
+                    currentYValue += Config.Stream.GetSingle(posAddressAngle.YAddress);
+                    currentZValue += Config.Stream.GetSingle(posAddressAngle.ZAddress);
                 }
 
                 if (change == Change.MULTIPLY)
                 {
-                    currentXValue *= stream.GetSingle(posAddressAngle.XAddress);
-                    currentYValue *= stream.GetSingle(posAddressAngle.YAddress);
-                    currentZValue *= stream.GetSingle(posAddressAngle.ZAddress);
+                    currentXValue *= Config.Stream.GetSingle(posAddressAngle.XAddress);
+                    currentYValue *= Config.Stream.GetSingle(posAddressAngle.YAddress);
+                    currentZValue *= Config.Stream.GetSingle(posAddressAngle.ZAddress);
                 }
 
-                success &= stream.SetValue(currentXValue, posAddressAngle.XAddress);
-                success &= stream.SetValue(currentYValue, posAddressAngle.YAddress);
-                success &= stream.SetValue(currentZValue, posAddressAngle.ZAddress);
+                success &= Config.Stream.SetValue(currentXValue, posAddressAngle.XAddress);
+                success &= Config.Stream.SetValue(currentYValue, posAddressAngle.YAddress);
+                success &= Config.Stream.SetValue(currentZValue, posAddressAngle.ZAddress);
             }
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
@@ -87,20 +87,20 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static void handleRelativeAngle(ProcessStream stream, ref float xOffset, ref float zOffset, bool useRelative, ushort? relativeAngle)
+        public static void handleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, ushort? relativeAngle)
         {
             if (useRelative)
             {
                 if (Config.PositionControllersRelativeToMario)
                 {
-                    relativeAngle = stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                    relativeAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
                 }
                 double thetaChange = (ushort)relativeAngle - 32768;
                 (xOffset, _, zOffset) = ((float, float, float))MoreMath.OffsetSpherically(xOffset, 0, zOffset, 0, thetaChange, 0);
             }
         }
 
-        public static bool GoToObjects(ProcessStream stream, List<uint> objAddresses)
+        public static bool GoToObjects(List<uint> objAddresses)
         {
             if (objAddresses.Count == 0)
                 return false;
@@ -113,16 +113,16 @@ namespace SM64_Diagnostic.Utilities
                         Config.Mario.StructAddress + Config.Mario.ZOffset)
                 };
 
-            float xDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectXOffset));
-            float yDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectYOffset));
-            float zDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.ObjectZOffset));
+            float xDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + Config.ObjectSlots.ObjectXOffset));
+            float yDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + Config.ObjectSlots.ObjectYOffset));
+            float zDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + Config.ObjectSlots.ObjectZOffset));
 
-            handleGotoOffset(stream, ref xDestination, ref yDestination, ref zDestination);
+            handleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
+            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
 
-        public static bool RetrieveObjects(ProcessStream stream, List<uint> objAddresses)
+        public static bool RetrieveObjects(List<uint> objAddresses)
         {
             List<TripleAddressAngle> posAddressAngles =
                 objAddresses.ConvertAll<TripleAddressAngle>(
@@ -131,20 +131,20 @@ namespace SM64_Diagnostic.Utilities
                         objAddress + Config.ObjectSlots.ObjectYOffset,
                         objAddress + Config.ObjectSlots.ObjectZOffset));
 
-            float xDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-            float yDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-            float zDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            float xDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            float yDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            float zDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            handleRetrieveOffset(stream, ref xDestination, ref yDestination, ref zDestination);
+            handleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
+            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
 
-        private static void handleGotoOffset(ProcessStream stream, ref float xPos, ref float yPos, ref float zPos)
+        private static void handleGotoOffset(ref float xPos, ref float yPos, ref float zPos)
         {
             float gotoAbove = Config.GotoRetrieve.GotoAboveOffset;
             float gotoInfront = Config.GotoRetrieve.GotoInfrontOffset;
-            ushort marioYaw = stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+            ushort marioYaw = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
 
             double xOffset, zOffset;
             (xOffset, zOffset) = MoreMath.GetComponentsFromVector(-1 * gotoInfront, marioYaw);
@@ -154,11 +154,11 @@ namespace SM64_Diagnostic.Utilities
             zPos += (float)zOffset;
         }
 
-        private static void handleRetrieveOffset(ProcessStream stream, ref float xPos, ref float yPos, ref float zPos)
+        private static void handleRetrieveOffset(ref float xPos, ref float yPos, ref float zPos)
         {
             float retrieveAbove = Config.GotoRetrieve.RetrieveAboveOffset;
             float retrieveInfront = Config.GotoRetrieve.RetrieveInfrontOffset;
-            ushort marioYaw = stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+            ushort marioYaw = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
 
             double xOffset, zOffset;
             (xOffset, zOffset) = MoreMath.GetComponentsFromVector(retrieveInfront, marioYaw);
@@ -168,7 +168,7 @@ namespace SM64_Diagnostic.Utilities
             zPos += (float)zOffset;
         }
 
-        public static bool TranslateObjects(ProcessStream stream, List<uint> objAddresses,
+        public static bool TranslateObjects(List<uint> objAddresses,
             float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             List<TripleAddressAngle> posAddressAngles =
@@ -177,12 +177,12 @@ namespace SM64_Diagnostic.Utilities
                         objAddress + Config.ObjectSlots.ObjectXOffset,
                         objAddress + Config.ObjectSlots.ObjectYOffset,
                         objAddress + Config.ObjectSlots.ObjectZOffset,
-                        stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset)));
+                        Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset)));
 
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            return MoveThings(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
-        public static bool TranslateObjectHomes(ProcessStream stream, List<uint> objAddresses,
+        public static bool TranslateObjectHomes(List<uint> objAddresses,
             float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             List<TripleAddressAngle> posAddressAngles =
@@ -191,30 +191,30 @@ namespace SM64_Diagnostic.Utilities
                         objAddress + Config.ObjectSlots.HomeXOffset,
                         objAddress + Config.ObjectSlots.HomeYOffset,
                         objAddress + Config.ObjectSlots.HomeZOffset,
-                        stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset)));
+                        Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset)));
 
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            return MoveThings(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
-        public static bool RotateObjects(ProcessStream stream, List<uint> objAddresses,
+        public static bool RotateObjects(List<uint> objAddresses,
             int yawOffset, int pitchOffset, int rollOffset)
         {
             if (objAddresses.Count == 0)
                 return false;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             foreach (var objAddress in objAddresses)
             {
                 ushort yawFacing, pitchFacing, rollFacing, yawMoving, pitchMoving, rollMoving;
-                yawFacing = stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
-                pitchFacing = stream.GetUInt16(objAddress + Config.ObjectSlots.PitchFacingOffset);
-                rollFacing = stream.GetUInt16(objAddress + Config.ObjectSlots.RollFacingOffset);
-                yawMoving = stream.GetUInt16(objAddress + Config.ObjectSlots.YawMovingOffset);
-                pitchMoving = stream.GetUInt16(objAddress + Config.ObjectSlots.PitchMovingOffset);
-                rollMoving = stream.GetUInt16(objAddress + Config.ObjectSlots.RollMovingOffset);
+                yawFacing = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
+                pitchFacing = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.PitchFacingOffset);
+                rollFacing = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.RollFacingOffset);
+                yawMoving = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawMovingOffset);
+                pitchMoving = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.PitchMovingOffset);
+                rollMoving = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.RollMovingOffset);
 
                 yawFacing += (ushort)yawOffset;
                 pitchFacing += (ushort)pitchOffset;
@@ -223,19 +223,19 @@ namespace SM64_Diagnostic.Utilities
                 pitchMoving += (ushort)pitchOffset;
                 rollMoving += (ushort)rollOffset;
 
-                success &= stream.SetValue(yawFacing, objAddress + Config.ObjectSlots.YawFacingOffset);
-                success &= stream.SetValue(pitchFacing, objAddress + Config.ObjectSlots.PitchFacingOffset);
-                success &= stream.SetValue(rollFacing, objAddress + Config.ObjectSlots.RollFacingOffset);
-                success &= stream.SetValue(yawMoving, objAddress + Config.ObjectSlots.YawMovingOffset);
-                success &= stream.SetValue(pitchMoving, objAddress + Config.ObjectSlots.PitchMovingOffset);
-                success &= stream.SetValue(rollMoving, objAddress + Config.ObjectSlots.RollMovingOffset);
+                success &= Config.Stream.SetValue(yawFacing, objAddress + Config.ObjectSlots.YawFacingOffset);
+                success &= Config.Stream.SetValue(pitchFacing, objAddress + Config.ObjectSlots.PitchFacingOffset);
+                success &= Config.Stream.SetValue(rollFacing, objAddress + Config.ObjectSlots.RollFacingOffset);
+                success &= Config.Stream.SetValue(yawMoving, objAddress + Config.ObjectSlots.YawMovingOffset);
+                success &= Config.Stream.SetValue(pitchMoving, objAddress + Config.ObjectSlots.PitchMovingOffset);
+                success &= Config.Stream.SetValue(rollMoving, objAddress + Config.ObjectSlots.RollMovingOffset);
             }
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool ScaleObjects(ProcessStream stream, List<uint> objAddresses,
+        public static bool ScaleObjects(List<uint> objAddresses,
             float widthChange, float heightChange, float depthChange, bool multiply)
         {
             List<TripleAddressAngle> posAddressAngles =
@@ -245,10 +245,10 @@ namespace SM64_Diagnostic.Utilities
                         objAddress + Config.ObjectSlots.ScaleHeightOffset,
                         objAddress + Config.ObjectSlots.ScaleDepthOffset));
 
-            return MoveThings(stream, posAddressAngles, widthChange, heightChange, depthChange, multiply ? Change.MULTIPLY : Change.ADD);
+            return MoveThings(posAddressAngles, widthChange, heightChange, depthChange, multiply ? Change.MULTIPLY : Change.ADD);
         }
 
-        public static bool GoToObjectsHome(ProcessStream stream, List<uint> objAddresses)
+        public static bool GoToObjectsHome(List<uint> objAddresses)
         {
             if (objAddresses.Count == 0)
                 return false;
@@ -261,16 +261,16 @@ namespace SM64_Diagnostic.Utilities
                         Config.Mario.StructAddress + Config.Mario.ZOffset)
                 };
 
-            float xDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeXOffset));
-            float yDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeYOffset));
-            float zDestination = objAddresses.Average(obj => stream.GetSingle(obj + Config.ObjectSlots.HomeZOffset));
+            float xDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + Config.ObjectSlots.HomeXOffset));
+            float yDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + Config.ObjectSlots.HomeYOffset));
+            float zDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + Config.ObjectSlots.HomeZOffset));
 
-            handleGotoOffset(stream, ref xDestination, ref yDestination, ref zDestination);
+            handleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
+            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
 
-        public static bool RetrieveObjectsHome(ProcessStream stream, List<uint> objAddresses)
+        public static bool RetrieveObjectsHome(List<uint> objAddresses)
         {
             List<TripleAddressAngle> posAddressAngles =
                 objAddresses.ConvertAll<TripleAddressAngle>(
@@ -279,96 +279,96 @@ namespace SM64_Diagnostic.Utilities
                         objAddress + Config.ObjectSlots.HomeYOffset,
                         objAddress + Config.ObjectSlots.HomeZOffset));
 
-            float xDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-            float yDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-            float zDestination = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            float xDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            float yDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            float zDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            handleRetrieveOffset(stream, ref xDestination, ref yDestination, ref zDestination);
+            handleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return MoveThings(stream, posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
+            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
         }
 
-        public static bool CloneObject(ProcessStream stream, uint objAddress)
+        public static bool CloneObject(uint objAddress)
         {
             var marioAddress = Config.Mario.StructAddress;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            uint lastObject = stream.GetUInt32(marioAddress + Config.Mario.HeldObjectPointerOffset);
+            uint lastObject = Config.Stream.GetUInt32(marioAddress + Config.Mario.HeldObjectPointerOffset);
             
             // Set clone action flags
             if (lastObject == 0x00000000U && !Config.DisableActionUpdateWhenCloning)
             {
                 // Set Next action
-                uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
+                uint currentAction = Config.Stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
                 uint nextAction = Config.MarioActions.GetAfterCloneValue(currentAction);
-                success &= stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
+                success &= Config.Stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
             }
 
             // Set new held value
-            success &= stream.SetValue(objAddress, marioAddress + Config.Mario.HeldObjectPointerOffset);
+            success &= Config.Stream.SetValue(objAddress, marioAddress + Config.Mario.HeldObjectPointerOffset);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool UnCloneObject(ProcessStream stream, uint objAddress)
+        public static bool UnCloneObject(uint objAddress)
         {
             var marioAddress = Config.Mario.StructAddress;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             // Set mario's next action
-            uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
+            uint currentAction = Config.Stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
             uint nextAction = Config.MarioActions.GetAfterUncloneValue(currentAction);
-            success &= stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
+            success &= Config.Stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
 
             // Clear mario's held object
-            success &= stream.SetValue(0x00000000U, marioAddress + Config.Mario.HeldObjectPointerOffset);
+            success &= Config.Stream.SetValue(0x00000000U, marioAddress + Config.Mario.HeldObjectPointerOffset);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool UnloadObject(ProcessStream stream, List<uint> addresses)
+        public static bool UnloadObject(List<uint> addresses)
         {
             if (addresses.Count == 0)
                 return false;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             foreach (var address in addresses)
             {
-                var test = stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset);
-                success &= stream.SetValue((short) 0x0000, address + Config.ObjectSlots.ObjectActiveOffset);
+                var test = Config.Stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset);
+                success &= Config.Stream.SetValue((short) 0x0000, address + Config.ObjectSlots.ObjectActiveOffset);
             }
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool ReviveObject(ProcessStream stream, List<uint> addresses)
+        public static bool ReviveObject(List<uint> addresses)
         {
             if (addresses.Count == 0)
                 return false;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             foreach (var address in addresses)
             {
                 // Find process group
-                uint scriptAddress = stream.GetUInt32(address + Config.ObjectSlots.BehaviorScriptOffset);
+                uint scriptAddress = Config.Stream.GetUInt32(address + Config.ObjectSlots.BehaviorScriptOffset);
                 if (scriptAddress == 0x00000000)
                     continue;
-                uint firstScriptAction = stream.GetUInt32(scriptAddress);
+                uint firstScriptAction = Config.Stream.GetUInt32(scriptAddress);
                 if ((firstScriptAction & 0xFF000000U) != 0x00000000U)
                     continue;
                 byte processGroup = (byte)((firstScriptAction & 0x00FF0000U) >> 16);
@@ -379,169 +379,169 @@ namespace SM64_Diagnostic.Utilities
 
                 // Loop through and find last object in group
                 uint lastGroupObj = groupAddress;
-                while (stream.GetUInt32(lastGroupObj + groupConfig.ProcessNextLinkOffset) != groupAddress)
-                    lastGroupObj = stream.GetUInt32(lastGroupObj + groupConfig.ProcessNextLinkOffset);
+                while (Config.Stream.GetUInt32(lastGroupObj + groupConfig.ProcessNextLinkOffset) != groupAddress)
+                    lastGroupObj = Config.Stream.GetUInt32(lastGroupObj + groupConfig.ProcessNextLinkOffset);
 
                 // Remove object from current group
-                uint nextObj = stream.GetUInt32(address + groupConfig.ProcessNextLinkOffset);
-                uint prevObj = stream.GetUInt32(groupConfig.VactantPointerAddress);
+                uint nextObj = Config.Stream.GetUInt32(address + groupConfig.ProcessNextLinkOffset);
+                uint prevObj = Config.Stream.GetUInt32(groupConfig.VactantPointerAddress);
                 if (prevObj == address)
                 {
                     // Set new vacant pointer
-                    success &= stream.SetValue(nextObj, groupConfig.VactantPointerAddress);
+                    success &= Config.Stream.SetValue(nextObj, groupConfig.VactantPointerAddress);
                 }
                 else
                 {
                     for (int i = 0; i < Config.ObjectSlots.MaxSlots; i++)
                     {
-                        uint obj = stream.GetUInt32(prevObj + groupConfig.ProcessNextLinkOffset);
+                        uint obj = Config.Stream.GetUInt32(prevObj + groupConfig.ProcessNextLinkOffset);
                         if (obj == address)
                             break;
                         prevObj = obj;
                     }
-                    success &= stream.SetValue(nextObj, prevObj + groupConfig.ProcessNextLinkOffset);
+                    success &= Config.Stream.SetValue(nextObj, prevObj + groupConfig.ProcessNextLinkOffset);
                 }
 
                 // Insert object in new group
-                nextObj = stream.GetUInt32(lastGroupObj + groupConfig.ProcessNextLinkOffset);
-                success &= stream.SetValue(address, nextObj + groupConfig.ProcessPreviousLinkOffset);
-                success &= stream.SetValue(address, lastGroupObj + groupConfig.ProcessNextLinkOffset);
-                success &= stream.SetValue(lastGroupObj, address + groupConfig.ProcessPreviousLinkOffset);
-                success &= stream.SetValue(nextObj, address + groupConfig.ProcessNextLinkOffset);
+                nextObj = Config.Stream.GetUInt32(lastGroupObj + groupConfig.ProcessNextLinkOffset);
+                success &= Config.Stream.SetValue(address, nextObj + groupConfig.ProcessPreviousLinkOffset);
+                success &= Config.Stream.SetValue(address, lastGroupObj + groupConfig.ProcessNextLinkOffset);
+                success &= Config.Stream.SetValue(lastGroupObj, address + groupConfig.ProcessPreviousLinkOffset);
+                success &= Config.Stream.SetValue(nextObj, address + groupConfig.ProcessNextLinkOffset);
 
-                success &= stream.SetValue((short)0x0101, address + Config.ObjectSlots.ObjectActiveOffset);
+                success &= Config.Stream.SetValue((short)0x0101, address + Config.ObjectSlots.ObjectActiveOffset);
 
                 if (addresses.Count > 1)
-                    if (!stream.RefreshRam() || !success)
+                    if (!Config.Stream.RefreshRam() || !success)
                         break;
             }
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool ReleaseObject(ProcessStream stream, List<uint> addresses)
+        public static bool ReleaseObject(List<uint> addresses)
         {
             if (addresses.Count == 0)
                 return false;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             foreach (var address in addresses)
             {
-                success &= stream.SetValue(Config.ObjectSlots.ReleaseStatusThrownValue, address + Config.ObjectSlots.ReleaseStatusOffset);
-                success &= stream.SetValue(Config.ObjectSlots.StackIndexReleasedValue, address + Config.ObjectSlots.StackIndexOffset);
+                success &= Config.Stream.SetValue(Config.ObjectSlots.ReleaseStatusThrownValue, address + Config.ObjectSlots.ReleaseStatusOffset);
+                success &= Config.Stream.SetValue(Config.ObjectSlots.StackIndexReleasedValue, address + Config.ObjectSlots.StackIndexOffset);
             }
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool UnReleaseObject(ProcessStream stream, List<uint> addresses)
+        public static bool UnReleaseObject(List<uint> addresses)
         {
             if (addresses.Count == 0)
                 return false;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             foreach (var address in addresses)
             {
-                uint initialReleaseStatus = stream.GetUInt32(address + Config.ObjectSlots.InitialReleaseStatusOffset);
-                success &= stream.SetValue(initialReleaseStatus, address + Config.ObjectSlots.ReleaseStatusOffset);
-                success &= stream.SetValue(Config.ObjectSlots.StackIndexUnReleasedValue, address + Config.ObjectSlots.StackIndexOffset);
+                uint initialReleaseStatus = Config.Stream.GetUInt32(address + Config.ObjectSlots.InitialReleaseStatusOffset);
+                success &= Config.Stream.SetValue(initialReleaseStatus, address + Config.ObjectSlots.ReleaseStatusOffset);
+                success &= Config.Stream.SetValue(Config.ObjectSlots.StackIndexUnReleasedValue, address + Config.ObjectSlots.StackIndexOffset);
             }
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool InteractObject(ProcessStream stream, List<uint> addresses)
+        public static bool InteractObject(List<uint> addresses)
         {
             if (addresses.Count == 0)
                 return false;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             foreach (var address in addresses)
             {
-                success &= stream.SetValue(0xFFFFFFFF, address + Config.ObjectSlots.InteractionStatusOffset);
+                success &= Config.Stream.SetValue(0xFFFFFFFF, address + Config.ObjectSlots.InteractionStatusOffset);
             }
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool UnInteractObject(ProcessStream stream, List<uint> addresses)
+        public static bool UnInteractObject(List<uint> addresses)
         {
             if (addresses.Count == 0)
                 return false;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             foreach (var address in addresses)
             {
-                success &= stream.SetValue(0x00000000, address + Config.ObjectSlots.InteractionStatusOffset);
+                success &= Config.Stream.SetValue(0x00000000, address + Config.ObjectSlots.InteractionStatusOffset);
             }
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool ToggleHandsfree(ProcessStream stream)
+        public static bool ToggleHandsfree()
         {
             var marioAddress = Config.Mario.StructAddress;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            var heldObj = stream.GetUInt32(marioAddress + Config.Mario.HeldObjectPointerOffset);
+            var heldObj = Config.Stream.GetUInt32(marioAddress + Config.Mario.HeldObjectPointerOffset);
 
             if (heldObj != 0x00000000U)
             {
-                uint currentAction = stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
+                uint currentAction = Config.Stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
                 uint nextAction = Config.MarioActions.GetHandsfreeValue(currentAction);
-                success = stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
+                success = Config.Stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
             }
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool ToggleVisibility(ProcessStream stream)
+        public static bool ToggleVisibility()
         {
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            var marioObjRef = stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+            var marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
             if (marioObjRef != 0x00000000U)
             {
-                var marioGraphics = stream.GetUInt32(marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
+                var marioGraphics = Config.Stream.GetUInt32(marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
                 if (marioGraphics == 0)
                 { 
-                    success &= stream.SetValue(_prevMarioGraphic, marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
+                    success &= Config.Stream.SetValue(_prevMarioGraphic, marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
                 }
                 else
                 {
                     _prevMarioGraphic = marioGraphics;
-                    success &= stream.SetValue(0x00000000U, marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
+                    success &= Config.Stream.SetValue(0x00000000U, marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
                 }
             }
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool TranslateMario(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
+        public static bool TranslateMario(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             List<TripleAddressAngle> posAddressAngles =
                 new List<TripleAddressAngle> {
@@ -549,13 +549,13 @@ namespace SM64_Diagnostic.Utilities
                         Config.Mario.StructAddress + Config.Mario.XOffset,
                         Config.Mario.StructAddress + Config.Mario.YOffset,
                         Config.Mario.StructAddress + Config.Mario.ZOffset,
-                        stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset))
+                        Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset))
                 };
 
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            return MoveThings(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
-        public static bool TranslateHOLP(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
+        public static bool TranslateHOLP(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             List<TripleAddressAngle> posAddressAngles =
                 new List<TripleAddressAngle> {
@@ -563,60 +563,60 @@ namespace SM64_Diagnostic.Utilities
                         Config.Mario.StructAddress + Config.Mario.HOLPXOffset,
                         Config.Mario.StructAddress + Config.Mario.HOLPYOffset,
                         Config.Mario.StructAddress + Config.Mario.HOLPZOffset,
-                        stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset))
+                        Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset))
                 };
 
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            return MoveThings(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
-        public static bool MarioChangeYaw(ProcessStream stream, int yawOffset)
+        public static bool MarioChangeYaw(int yawOffset)
         {
             var marioAddress = Config.Mario.StructAddress;
 
-            ushort yaw = stream.GetUInt16(marioAddress + Config.Mario.YawFacingOffset);
+            ushort yaw = Config.Stream.GetUInt16(marioAddress + Config.Mario.YawFacingOffset);
             yaw += (ushort)yawOffset;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= stream.SetValue(yaw, marioAddress + Config.Mario.YawFacingOffset);
+            success &= Config.Stream.SetValue(yaw, marioAddress + Config.Mario.YawFacingOffset);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool MarioChangeHspd(ProcessStream stream, float hspdOffset)
+        public static bool MarioChangeHspd(float hspdOffset)
         {
             var marioAddress = Config.Mario.StructAddress;
 
-            float hspd = stream.GetSingle(marioAddress + Config.Mario.HSpeedOffset);
+            float hspd = Config.Stream.GetSingle(marioAddress + Config.Mario.HSpeedOffset);
             hspd += hspdOffset;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= stream.SetValue(hspd, marioAddress + Config.Mario.HSpeedOffset);
+            success &= Config.Stream.SetValue(hspd, marioAddress + Config.Mario.HSpeedOffset);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool MarioChangeVspd(ProcessStream stream, float vspdOffset)
+        public static bool MarioChangeVspd(float vspdOffset)
         {
             var marioAddress = Config.Mario.StructAddress;
 
-            float vspd = stream.GetSingle(marioAddress + Config.Mario.VSpeedOffset);
+            float vspd = Config.Stream.GetSingle(marioAddress + Config.Mario.VSpeedOffset);
             vspd += vspdOffset;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= stream.SetValue(vspd, marioAddress + Config.Mario.VSpeedOffset);
+            success &= Config.Stream.SetValue(vspd, marioAddress + Config.Mario.VSpeedOffset);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
@@ -662,7 +662,7 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool GoToTriangle(ProcessStream stream, uint triangleAddress, int vertex, bool _useMisalignmentOffset = false)
+        public static bool GoToTriangle(uint triangleAddress, int vertex, bool _useMisalignmentOffset = false)
         {
             if (triangleAddress == 0x0000)
                 return false;
@@ -671,21 +671,21 @@ namespace SM64_Diagnostic.Utilities
             switch(vertex)
             {
                 case 1:
-                    newX = stream.GetInt16(triangleAddress + Config.TriangleOffsets.X1);
-                    newY = stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y1);
-                    newZ = stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z1);
+                    newX = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.X1);
+                    newY = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y1);
+                    newZ = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z1);
                     break;
 
                 case 2:
-                    newX = stream.GetInt16(triangleAddress + Config.TriangleOffsets.X2);
-                    newY = stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y2);
-                    newZ = stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z2);
+                    newX = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.X2);
+                    newY = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y2);
+                    newZ = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z2);
                     break;
 
                 case 3:
-                    newX = stream.GetInt16(triangleAddress + Config.TriangleOffsets.X3);
-                    newY = stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y3);
-                    newZ = stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z3);
+                    newX = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.X3);
+                    newY = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y3);
+                    newZ = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z3);
                     break;
 
                 default:
@@ -699,26 +699,26 @@ namespace SM64_Diagnostic.Utilities
             }
 
             // Move mario to triangle (while in same Pu)
-            return PuUtilities.MoveToInCurrentPu(stream, newX, newY, newZ);
+            return PuUtilities.MoveToInCurrentPu(newX, newY, newZ);
         }
 
-        public static bool RetrieveTriangle(ProcessStream stream, uint triangleAddress)
+        public static bool RetrieveTriangle(uint triangleAddress)
         {
             if (triangleAddress == 0x0000)
                 return false;
 
             float normX, normY, normZ, oldNormOffset;
-            normX = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
-            normY = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
-            normZ = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
-            oldNormOffset = stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
+            normX = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
+            normY = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
+            normZ = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
+            oldNormOffset = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
 
             // Get Mario position
             float marioX, marioY, marioZ;
             var marioAddress = Config.Mario.StructAddress;
-            marioX = stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            marioY = stream.GetSingle(marioAddress + Config.Mario.YOffset);
-            marioZ = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
+            marioX = Config.Stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            marioY = Config.Stream.GetSingle(marioAddress + Config.Mario.YOffset);
+            marioZ = Config.Stream.GetSingle(marioAddress + Config.Mario.ZOffset);
 
             float normOffset = -(normX * marioX + normY * marioY + normZ * marioZ);
             float normDiff = normOffset - oldNormOffset;
@@ -726,29 +726,29 @@ namespace SM64_Diagnostic.Utilities
             short yOffset = (short)(-normDiff * normY);
 
             short v1Y, v2Y, v3Y;
-            v1Y = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y1) + yOffset);
-            v2Y = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y2) + yOffset);
-            v3Y = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y3) + yOffset);
+            v1Y = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y1) + yOffset);
+            v2Y = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y2) + yOffset);
+            v3Y = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y3) + yOffset);
 
             short yMin = (short)(Math.Min(Math.Min(v1Y, v2Y), v3Y) - 5);
             short yMax = (short)(Math.Max(Math.Max(v1Y, v2Y), v3Y) + 5);
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= stream.SetValue(v1Y, triangleAddress + Config.TriangleOffsets.Y1);
-            success &= stream.SetValue(v2Y, triangleAddress + Config.TriangleOffsets.Y2);
-            success &= stream.SetValue(v3Y, triangleAddress + Config.TriangleOffsets.Y3);
-            success &= stream.SetValue(yMin, triangleAddress + Config.TriangleOffsets.YMin);
-            success &= stream.SetValue(yMax, triangleAddress + Config.TriangleOffsets.YMax);
-            success &= stream.SetValue(normOffset, triangleAddress + Config.TriangleOffsets.Offset);
+            success &= Config.Stream.SetValue(v1Y, triangleAddress + Config.TriangleOffsets.Y1);
+            success &= Config.Stream.SetValue(v2Y, triangleAddress + Config.TriangleOffsets.Y2);
+            success &= Config.Stream.SetValue(v3Y, triangleAddress + Config.TriangleOffsets.Y3);
+            success &= Config.Stream.SetValue(yMin, triangleAddress + Config.TriangleOffsets.YMin);
+            success &= Config.Stream.SetValue(yMax, triangleAddress + Config.TriangleOffsets.YMax);
+            success &= Config.Stream.SetValue(normOffset, triangleAddress + Config.TriangleOffsets.Offset);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool NeutralizeTriangle(ProcessStream stream, uint triangleAddress)
+        public static bool NeutralizeTriangle(uint triangleAddress)
         {
             if (triangleAddress == 0x0000)
                 return false;
@@ -756,16 +756,16 @@ namespace SM64_Diagnostic.Utilities
             short neutralizedSurfaceType = (short)(Config.NeutralizeTriangleWith21 ? 21 : 0);
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= stream.SetValue(neutralizedSurfaceType, triangleAddress + Config.TriangleOffsets.SurfaceType);
+            success &= Config.Stream.SetValue(neutralizedSurfaceType, triangleAddress + Config.TriangleOffsets.SurfaceType);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool AnnihilateTriangle(ProcessStream stream, uint triangleAddress)
+        public static bool AnnihilateTriangle(uint triangleAddress)
         {
             if (triangleAddress == 0x0000)
                 return false;
@@ -787,28 +787,28 @@ namespace SM64_Diagnostic.Utilities
             float normOffset = 16000;
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= stream.SetValue(v1X, triangleAddress + Config.TriangleOffsets.X1);
-            success &= stream.SetValue(v1Y, triangleAddress + Config.TriangleOffsets.Y1);
-            success &= stream.SetValue(v1Z, triangleAddress + Config.TriangleOffsets.Z1);
-            success &= stream.SetValue(v2X, triangleAddress + Config.TriangleOffsets.X2);
-            success &= stream.SetValue(v2Y, triangleAddress + Config.TriangleOffsets.Y2);
-            success &= stream.SetValue(v2Z, triangleAddress + Config.TriangleOffsets.Z2);
-            success &= stream.SetValue(v3X, triangleAddress + Config.TriangleOffsets.X3);
-            success &= stream.SetValue(v3Y, triangleAddress + Config.TriangleOffsets.Y3);
-            success &= stream.SetValue(v3Z, triangleAddress + Config.TriangleOffsets.Z3);
-            success &= stream.SetValue(normX, triangleAddress + Config.TriangleOffsets.NormX);
-            success &= stream.SetValue(normY, triangleAddress + Config.TriangleOffsets.NormY);
-            success &= stream.SetValue(normZ, triangleAddress + Config.TriangleOffsets.NormZ);
-            success &= stream.SetValue(normOffset, triangleAddress + Config.TriangleOffsets.Offset);
+            success &= Config.Stream.SetValue(v1X, triangleAddress + Config.TriangleOffsets.X1);
+            success &= Config.Stream.SetValue(v1Y, triangleAddress + Config.TriangleOffsets.Y1);
+            success &= Config.Stream.SetValue(v1Z, triangleAddress + Config.TriangleOffsets.Z1);
+            success &= Config.Stream.SetValue(v2X, triangleAddress + Config.TriangleOffsets.X2);
+            success &= Config.Stream.SetValue(v2Y, triangleAddress + Config.TriangleOffsets.Y2);
+            success &= Config.Stream.SetValue(v2Z, triangleAddress + Config.TriangleOffsets.Z2);
+            success &= Config.Stream.SetValue(v3X, triangleAddress + Config.TriangleOffsets.X3);
+            success &= Config.Stream.SetValue(v3Y, triangleAddress + Config.TriangleOffsets.Y3);
+            success &= Config.Stream.SetValue(v3Z, triangleAddress + Config.TriangleOffsets.Z3);
+            success &= Config.Stream.SetValue(normX, triangleAddress + Config.TriangleOffsets.NormX);
+            success &= Config.Stream.SetValue(normY, triangleAddress + Config.TriangleOffsets.NormY);
+            success &= Config.Stream.SetValue(normZ, triangleAddress + Config.TriangleOffsets.NormZ);
+            success &= Config.Stream.SetValue(normOffset, triangleAddress + Config.TriangleOffsets.Offset);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool MoveTriangle(ProcessStream stream, uint triangleAddress,
+        public static bool MoveTriangle(uint triangleAddress,
             float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             if (triangleAddress == 0x0000)
@@ -817,61 +817,61 @@ namespace SM64_Diagnostic.Utilities
             handleScaling(ref xOffset, ref zOffset);
 
             float normX, normY, normZ, oldNormOffset;
-            normX = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
-            normY = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
-            normZ = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
-            oldNormOffset = stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
+            normX = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
+            normY = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
+            normZ = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
+            oldNormOffset = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
 
             ushort relativeAngle = MoreMath.getUphillAngle(normX, normY, normZ);
-            handleRelativeAngle(stream, ref xOffset, ref zOffset, useRelative, relativeAngle);
+            handleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
 
             float newNormOffset = oldNormOffset - normX * xOffset - normY * yOffset - normZ * zOffset;
 
             short newX1, newY1, newZ1, newX2, newY2, newZ2, newX3, newY3, newZ3;
-            newX1 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.X1) + xOffset);
-            newY1 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y1) + yOffset);
-            newZ1 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z1) + zOffset);
-            newX2 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.X2) + xOffset);
-            newY2 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y2) + yOffset);
-            newZ2 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z2) + zOffset);
-            newX3 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.X3) + xOffset);
-            newY3 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y3) + yOffset);
-            newZ3 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z3) + zOffset);
+            newX1 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.X1) + xOffset);
+            newY1 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y1) + yOffset);
+            newZ1 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z1) + zOffset);
+            newX2 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.X2) + xOffset);
+            newY2 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y2) + yOffset);
+            newZ2 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z2) + zOffset);
+            newX3 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.X3) + xOffset);
+            newY3 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y3) + yOffset);
+            newZ3 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z3) + zOffset);
 
             short newYMin = (short)(Math.Min(Math.Min(newY1, newY2), newY3) - 5);
             short newYMax = (short)(Math.Max(Math.Max(newY1, newY2), newY3) + 5);
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= stream.SetValue(newNormOffset, triangleAddress + Config.TriangleOffsets.Offset);
-            success &= stream.SetValue(newX1, triangleAddress + Config.TriangleOffsets.X1);
-            success &= stream.SetValue(newY1, triangleAddress + Config.TriangleOffsets.Y1);
-            success &= stream.SetValue(newZ1, triangleAddress + Config.TriangleOffsets.Z1);
-            success &= stream.SetValue(newX2, triangleAddress + Config.TriangleOffsets.X2);
-            success &= stream.SetValue(newY2, triangleAddress + Config.TriangleOffsets.Y2);
-            success &= stream.SetValue(newZ2, triangleAddress + Config.TriangleOffsets.Z2);
-            success &= stream.SetValue(newX3, triangleAddress + Config.TriangleOffsets.X3);
-            success &= stream.SetValue(newY3, triangleAddress + Config.TriangleOffsets.Y3);
-            success &= stream.SetValue(newZ3, triangleAddress + Config.TriangleOffsets.Z3);
-            success &= stream.SetValue(newYMin, triangleAddress + Config.TriangleOffsets.YMin);
-            success &= stream.SetValue(newYMax, triangleAddress + Config.TriangleOffsets.YMax);
+            success &= Config.Stream.SetValue(newNormOffset, triangleAddress + Config.TriangleOffsets.Offset);
+            success &= Config.Stream.SetValue(newX1, triangleAddress + Config.TriangleOffsets.X1);
+            success &= Config.Stream.SetValue(newY1, triangleAddress + Config.TriangleOffsets.Y1);
+            success &= Config.Stream.SetValue(newZ1, triangleAddress + Config.TriangleOffsets.Z1);
+            success &= Config.Stream.SetValue(newX2, triangleAddress + Config.TriangleOffsets.X2);
+            success &= Config.Stream.SetValue(newY2, triangleAddress + Config.TriangleOffsets.Y2);
+            success &= Config.Stream.SetValue(newZ2, triangleAddress + Config.TriangleOffsets.Z2);
+            success &= Config.Stream.SetValue(newX3, triangleAddress + Config.TriangleOffsets.X3);
+            success &= Config.Stream.SetValue(newY3, triangleAddress + Config.TriangleOffsets.Y3);
+            success &= Config.Stream.SetValue(newZ3, triangleAddress + Config.TriangleOffsets.Z3);
+            success &= Config.Stream.SetValue(newYMin, triangleAddress + Config.TriangleOffsets.YMin);
+            success &= Config.Stream.SetValue(newYMax, triangleAddress + Config.TriangleOffsets.YMax);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool MoveTriangleNormal(ProcessStream stream, uint triangleAddress, float normalChange)
+        public static bool MoveTriangleNormal(uint triangleAddress, float normalChange)
         {
             if (triangleAddress == 0x0000)
                 return false;
 
             float normX, normY, normZ, oldNormOffset;
-            normX = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
-            normY = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
-            normZ = stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
-            oldNormOffset = stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
+            normX = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
+            normY = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
+            normZ = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
+            oldNormOffset = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
 
             float newNormOffset = oldNormOffset - normalChange;
 
@@ -880,41 +880,41 @@ namespace SM64_Diagnostic.Utilities
             double zChange = normalChange * normZ;
 
             short newX1, newY1, newZ1, newX2, newY2, newZ2, newX3, newY3, newZ3;
-            newX1 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.X1) + xChange);
-            newY1 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y1) + yChange);
-            newZ1 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z1) + zChange);
-            newX2 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.X2) + xChange);
-            newY2 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y2) + yChange);
-            newZ2 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z2) + zChange);
-            newX3 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.X3) + xChange);
-            newY3 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y3) + yChange);
-            newZ3 = (short)(stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z3) + zChange);
+            newX1 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.X1) + xChange);
+            newY1 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y1) + yChange);
+            newZ1 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z1) + zChange);
+            newX2 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.X2) + xChange);
+            newY2 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y2) + yChange);
+            newZ2 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z2) + zChange);
+            newX3 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.X3) + xChange);
+            newY3 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y3) + yChange);
+            newZ3 = (short)(Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z3) + zChange);
 
             short newYMin = (short)(Math.Min(Math.Min(newY1, newY2), newY3) - 5);
             short newYMax = (short)(Math.Max(Math.Max(newY1, newY2), newY3) + 5);
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= stream.SetValue(newNormOffset, triangleAddress + Config.TriangleOffsets.Offset);
-            success &= stream.SetValue(newX1, triangleAddress + Config.TriangleOffsets.X1);
-            success &= stream.SetValue(newY1, triangleAddress + Config.TriangleOffsets.Y1);
-            success &= stream.SetValue(newZ1, triangleAddress + Config.TriangleOffsets.Z1);
-            success &= stream.SetValue(newX2, triangleAddress + Config.TriangleOffsets.X2);
-            success &= stream.SetValue(newY2, triangleAddress + Config.TriangleOffsets.Y2);
-            success &= stream.SetValue(newZ2, triangleAddress + Config.TriangleOffsets.Z2);
-            success &= stream.SetValue(newX3, triangleAddress + Config.TriangleOffsets.X3);
-            success &= stream.SetValue(newY3, triangleAddress + Config.TriangleOffsets.Y3);
-            success &= stream.SetValue(newZ3, triangleAddress + Config.TriangleOffsets.Z3);
-            success &= stream.SetValue(newYMin, triangleAddress + Config.TriangleOffsets.YMin);
-            success &= stream.SetValue(newYMax, triangleAddress + Config.TriangleOffsets.YMax);
+            success &= Config.Stream.SetValue(newNormOffset, triangleAddress + Config.TriangleOffsets.Offset);
+            success &= Config.Stream.SetValue(newX1, triangleAddress + Config.TriangleOffsets.X1);
+            success &= Config.Stream.SetValue(newY1, triangleAddress + Config.TriangleOffsets.Y1);
+            success &= Config.Stream.SetValue(newZ1, triangleAddress + Config.TriangleOffsets.Z1);
+            success &= Config.Stream.SetValue(newX2, triangleAddress + Config.TriangleOffsets.X2);
+            success &= Config.Stream.SetValue(newY2, triangleAddress + Config.TriangleOffsets.Y2);
+            success &= Config.Stream.SetValue(newZ2, triangleAddress + Config.TriangleOffsets.Z2);
+            success &= Config.Stream.SetValue(newX3, triangleAddress + Config.TriangleOffsets.X3);
+            success &= Config.Stream.SetValue(newY3, triangleAddress + Config.TriangleOffsets.Y3);
+            success &= Config.Stream.SetValue(newZ3, triangleAddress + Config.TriangleOffsets.Z3);
+            success &= Config.Stream.SetValue(newYMin, triangleAddress + Config.TriangleOffsets.YMin);
+            success &= Config.Stream.SetValue(newYMax, triangleAddress + Config.TriangleOffsets.YMax);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool TranslateCamera(ProcessStream stream, float xOffset, float yOffset, float zOffset, bool useRelative)
+        public static bool TranslateCamera(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             List<TripleAddressAngle> posAddressAngles =
                 new List<TripleAddressAngle> {
@@ -922,13 +922,13 @@ namespace SM64_Diagnostic.Utilities
                         Config.Camera.CameraStructAddress + Config.Camera.XOffset,
                         Config.Camera.CameraStructAddress + Config.Camera.YOffset,
                         Config.Camera.CameraStructAddress + Config.Camera.ZOffset,
-                        stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset))
+                        Config.Stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset))
                 };
 
-            return MoveThings(stream, posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            return MoveThings(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
-        public static bool TranslateCameraSpherically(ProcessStream stream, float radiusOffset, float thetaOffset, float phiOffset, (float, float, float) pivotPoint)
+        public static bool TranslateCameraSpherically(float radiusOffset, float thetaOffset, float phiOffset, (float, float, float) pivotPoint)
         {
             float pivotX, pivotY, pivotZ;
             (pivotX, pivotY, pivotZ) = pivotPoint;
@@ -936,40 +936,40 @@ namespace SM64_Diagnostic.Utilities
             handleScaling(ref thetaOffset, ref phiOffset);
 
             float oldX, oldY, oldZ;
-            oldX = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
-            oldY = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
-            oldZ = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
+            oldX = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
+            oldY = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
+            oldZ = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
 
             double newX, newY, newZ;
             (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ);
 
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= stream.SetValue((float)newX, Config.Camera.CameraStructAddress + Config.Camera.XOffset);
-            success &= stream.SetValue((float)newY, Config.Camera.CameraStructAddress + Config.Camera.YOffset);
-            success &= stream.SetValue((float)newZ, Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
+            success &= Config.Stream.SetValue((float)newX, Config.Camera.CameraStructAddress + Config.Camera.XOffset);
+            success &= Config.Stream.SetValue((float)newY, Config.Camera.CameraStructAddress + Config.Camera.YOffset);
+            success &= Config.Stream.SetValue((float)newZ, Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        private static ushort getCamHackYawFacing(ProcessStream stream, CamHackMode camHackMode)
+        private static ushort getCamHackYawFacing(CamHackMode camHackMode)
         {
             switch (camHackMode)
             {
                 case CamHackMode.REGULAR:
-                    return stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset);
+                    return Config.Stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset);
 
                 case CamHackMode.RELATIVE_ANGLE:
                 case CamHackMode.ABSOLUTE_ANGLE:
                 case CamHackMode.FIXED_POS:
                 case CamHackMode.FIXED_ORIENTATION:
-                    float camHackPosX = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
-                    float camHackPosZ = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
-                    float camHackFocusX = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusXOffset);
-                    float camHackFocusZ = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusZOffset);
+                    float camHackPosX = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
+                    float camHackPosZ = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
+                    float camHackFocusX = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusXOffset);
+                    float camHackFocusZ = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusZOffset);
                     return MoreMath.AngleTo_AngleUnitsRounded(camHackPosX, camHackPosZ, camHackFocusX, camHackFocusZ);
 
                 default:
@@ -977,9 +977,9 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        private static TripleAddressAngle getCamHackFocusTripleAddressController(ProcessStream stream, CamHackMode camHackMode)
+        private static TripleAddressAngle getCamHackFocusTripleAddressController(CamHackMode camHackMode)
         {
-            uint camHackObject = stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
+            uint camHackObject = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
             switch (camHackMode)
             {
                 case CamHackMode.REGULAR:
@@ -987,7 +987,7 @@ namespace SM64_Diagnostic.Utilities
                         Config.Camera.CameraStructAddress + Config.Camera.FocusXOffset,
                         Config.Camera.CameraStructAddress + Config.Camera.FocusYOffset,
                         Config.Camera.CameraStructAddress + Config.Camera.FocusZOffset,
-                        getCamHackYawFacing(stream, camHackMode));
+                        getCamHackYawFacing(camHackMode));
                 
                 case CamHackMode.RELATIVE_ANGLE:
                 case CamHackMode.ABSOLUTE_ANGLE:
@@ -998,7 +998,7 @@ namespace SM64_Diagnostic.Utilities
                             Config.Mario.StructAddress + Config.Mario.XOffset,
                             Config.Mario.StructAddress + Config.Mario.YOffset,
                             Config.Mario.StructAddress + Config.Mario.ZOffset,
-                            getCamHackYawFacing(stream, camHackMode));
+                            getCamHackYawFacing(camHackMode));
                     }
                     else // focused on object
                     {
@@ -1006,7 +1006,7 @@ namespace SM64_Diagnostic.Utilities
                             camHackObject + Config.ObjectSlots.ObjectXOffset,
                             camHackObject + Config.ObjectSlots.ObjectYOffset,
                             camHackObject + Config.ObjectSlots.ObjectZOffset,
-                            getCamHackYawFacing(stream, camHackMode));
+                            getCamHackYawFacing(camHackMode));
                     }
                 
                 case CamHackMode.FIXED_ORIENTATION:
@@ -1014,33 +1014,32 @@ namespace SM64_Diagnostic.Utilities
                         Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusXOffset,
                         Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusYOffset,
                         Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusZOffset,
-                        getCamHackYawFacing(stream, camHackMode));
+                        getCamHackYawFacing(camHackMode));
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        public static bool TranslateCameraHack(ProcessStream stream, CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
+        public static bool TranslateCameraHack(CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             switch (camHackMode)
             {
                 case CamHackMode.REGULAR:
                 {
-                    return TranslateCamera(stream, xOffset, yOffset, zOffset, useRelative);
+                    return TranslateCamera(xOffset, yOffset, zOffset, useRelative);
                 }
 
                 case CamHackMode.FIXED_POS:
                 case CamHackMode.FIXED_ORIENTATION:
                 {
                     return MoveThings(
-                        stream,
                         new List<TripleAddressAngle> {
                             new TripleAddressAngle(
                                 Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset,
                                 Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset,
                                 Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset,
-                                getCamHackYawFacing(stream, camHackMode))
+                                getCamHackYawFacing(camHackMode))
                         },
                         xOffset,
                         yOffset,
@@ -1054,14 +1053,14 @@ namespace SM64_Diagnostic.Utilities
                 {
                     handleScaling(ref xOffset, ref zOffset);
 
-                    handleRelativeAngle(stream, ref xOffset, ref zOffset, useRelative, getCamHackYawFacing(stream, camHackMode));
-                    float xDestination = xOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
-                    float yDestination = yOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
-                    float zDestination = zOffset + stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
+                    handleRelativeAngle(ref xOffset, ref zOffset, useRelative, getCamHackYawFacing(camHackMode));
+                    float xDestination = xOffset + Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
+                    float yDestination = yOffset + Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
+                    float zDestination = zOffset + Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
 
-                    float xFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusXOffset);
-                    float yFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusYOffset);
-                    float zFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusZOffset);
+                    float xFocus = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusXOffset);
+                    float yFocus = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusYOffset);
+                    float zFocus = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusZOffset);
 
                     double radius, theta, height;
                     (radius, theta, height) = MoreMath.EulerToCylindricalAboutPivot(xDestination, yDestination, zDestination, xFocus, yFocus, zFocus);
@@ -1069,21 +1068,21 @@ namespace SM64_Diagnostic.Utilities
                     ushort relativeYawOffset = 0;
                     if (camHackMode == CamHackMode.RELATIVE_ANGLE)
                     {
-                        uint camHackObject = stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
+                        uint camHackObject = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
                         relativeYawOffset = camHackObject == 0
-                            ? stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset)
-                            : stream.GetUInt16(camHackObject + Config.ObjectSlots.YawFacingOffset);
+                            ? Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset)
+                            : Config.Stream.GetUInt16(camHackObject + Config.ObjectSlots.YawFacingOffset);
                     }
 
                     bool success = true;
-                    bool streamAlreadySuspended = stream.IsSuspended;
-                    if (!streamAlreadySuspended) stream.Suspend();
+                    bool streamAlreadySuspended = Config.Stream.IsSuspended;
+                    if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-                    success &= stream.SetValue((float)radius, Config.CameraHack.CameraHackStruct + Config.CameraHack.RadiusOffset);
-                    success &= stream.SetValue(MoreMath.FormatAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
-                    success &= stream.SetValue((float)height, Config.CameraHack.CameraHackStruct + Config.CameraHack.RelativeHeightOffset);
+                    success &= Config.Stream.SetValue((float)radius, Config.CameraHack.CameraHackStruct + Config.CameraHack.RadiusOffset);
+                    success &= Config.Stream.SetValue(MoreMath.FormatAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
+                    success &= Config.Stream.SetValue((float)height, Config.CameraHack.CameraHackStruct + Config.CameraHack.RelativeHeightOffset);
 
-                    if (!streamAlreadySuspended) stream.Resume();
+                    if (!streamAlreadySuspended) Config.Stream.Resume();
                     return success;
                 }
 
@@ -1092,16 +1091,16 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static bool TranslateCameraHackSpherically(ProcessStream stream, CamHackMode camHackMode, float radiusOffset, float thetaOffset, float phiOffset)
+        public static bool TranslateCameraHackSpherically(CamHackMode camHackMode, float radiusOffset, float thetaOffset, float phiOffset)
         {
             switch (camHackMode)
             {
                 case CamHackMode.REGULAR:
                 {
-                    float xFocus = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusXOffset);
-                    float yFocus = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusYOffset);
-                    float zFocus = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusZOffset);
-                    return TranslateCameraSpherically(stream, radiusOffset, thetaOffset, phiOffset, (xFocus, yFocus, zFocus));
+                    float xFocus = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusXOffset);
+                    float yFocus = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusYOffset);
+                    float zFocus = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusZOffset);
+                    return TranslateCameraSpherically(radiusOffset, thetaOffset, phiOffset, (xFocus, yFocus, zFocus));
                 }
 
                 case CamHackMode.FIXED_POS:
@@ -1109,24 +1108,23 @@ namespace SM64_Diagnostic.Utilities
                 {
                     handleScaling(ref thetaOffset, ref phiOffset);
 
-                    TripleAddressAngle focusTripleAddressAngle = getCamHackFocusTripleAddressController(stream, camHackMode);
+                    TripleAddressAngle focusTripleAddressAngle = getCamHackFocusTripleAddressController(camHackMode);
                     uint focusXAddress, focusYAddress, focusZAddress;
                     (focusXAddress, focusYAddress, focusZAddress) = focusTripleAddressAngle.getTripleAddress();
 
-                    float xFocus = stream.GetSingle(focusTripleAddressAngle.XAddress);
-                    float yFocus = stream.GetSingle(focusTripleAddressAngle.YAddress);
-                    float zFocus = stream.GetSingle(focusTripleAddressAngle.ZAddress);
+                    float xFocus = Config.Stream.GetSingle(focusTripleAddressAngle.XAddress);
+                    float yFocus = Config.Stream.GetSingle(focusTripleAddressAngle.YAddress);
+                    float zFocus = Config.Stream.GetSingle(focusTripleAddressAngle.ZAddress);
 
-                    float xCamPos = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
-                    float yCamPos = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
-                    float zCamPos = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
+                    float xCamPos = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
+                    float yCamPos = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
+                    float zCamPos = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
 
                     double xDestination, yDestination, zDestination;
                     (xDestination, yDestination, zDestination) =
                         MoreMath.OffsetSphericallyAboutPivot(xCamPos, yCamPos, zCamPos, radiusOffset, thetaOffset, phiOffset, xFocus, yFocus, zFocus);
 
                     return MoveThings(
-                        stream,
                         new List<TripleAddressAngle> {
                             new TripleAddressAngle(
                                 Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset,
@@ -1144,13 +1142,13 @@ namespace SM64_Diagnostic.Utilities
                 {
                     handleScaling(ref thetaOffset, ref phiOffset);
 
-                    float xCamPos = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
-                    float yCamPos = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
-                    float zCamPos = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
+                    float xCamPos = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
+                    float yCamPos = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
+                    float zCamPos = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
 
-                    float xFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusXOffset);
-                    float yFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusYOffset);
-                    float zFocus = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusZOffset);
+                    float xFocus = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusXOffset);
+                    float yFocus = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusYOffset);
+                    float zFocus = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.FocusZOffset);
 
                     double xDestination, yDestination, zDestination;
                     (xDestination, yDestination, zDestination) =
@@ -1162,21 +1160,21 @@ namespace SM64_Diagnostic.Utilities
                     ushort relativeYawOffset = 0;
                     if (camHackMode == CamHackMode.RELATIVE_ANGLE)
                     {
-                        uint camHackObject = stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
+                        uint camHackObject = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
                         relativeYawOffset = camHackObject == 0
-                            ? stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset)
-                            : stream.GetUInt16(camHackObject + Config.ObjectSlots.YawFacingOffset);
+                            ? Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset)
+                            : Config.Stream.GetUInt16(camHackObject + Config.ObjectSlots.YawFacingOffset);
                     }
 
                     bool success = true;
-                    bool streamAlreadySuspended = stream.IsSuspended;
-                    if (!streamAlreadySuspended) stream.Suspend();
+                    bool streamAlreadySuspended = Config.Stream.IsSuspended;
+                    if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-                    success &= stream.SetValue((float)radius, Config.CameraHack.CameraHackStruct + Config.CameraHack.RadiusOffset);
-                    success &= stream.SetValue(MoreMath.FormatAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
-                    success &= stream.SetValue((float)height, Config.CameraHack.CameraHackStruct + Config.CameraHack.RelativeHeightOffset);
+                    success &= Config.Stream.SetValue((float)radius, Config.CameraHack.CameraHackStruct + Config.CameraHack.RadiusOffset);
+                    success &= Config.Stream.SetValue(MoreMath.FormatAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
+                    success &= Config.Stream.SetValue((float)height, Config.CameraHack.CameraHackStruct + Config.CameraHack.RelativeHeightOffset);
 
-                    if (!streamAlreadySuspended) stream.Resume();
+                    if (!streamAlreadySuspended) Config.Stream.Resume();
                     return success;
                 }
 
@@ -1185,11 +1183,10 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static bool TranslateCameraHackFocus(ProcessStream stream, CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
+        public static bool TranslateCameraHackFocus(CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             return MoveThings(
-                stream,
-                new List<TripleAddressAngle> { getCamHackFocusTripleAddressController(stream, camHackMode) },
+                new List<TripleAddressAngle> { getCamHackFocusTripleAddressController(camHackMode) },
                 xOffset,
                 yOffset,
                 zOffset,
@@ -1197,28 +1194,27 @@ namespace SM64_Diagnostic.Utilities
                 useRelative);
         }
 
-        public static bool TranslateCameraHackFocusSpherically(ProcessStream stream, CamHackMode camHackMode, float radiusOffset, float thetaOffset, float phiOffset)
+        public static bool TranslateCameraHackFocusSpherically(CamHackMode camHackMode, float radiusOffset, float thetaOffset, float phiOffset)
         {
             handleScaling(ref thetaOffset, ref phiOffset);
 
-            TripleAddressAngle focusTripleAddressAngle = getCamHackFocusTripleAddressController(stream, camHackMode);
+            TripleAddressAngle focusTripleAddressAngle = getCamHackFocusTripleAddressController(camHackMode);
             uint focusXAddress, focusYAddress, focusZAddress;
             (focusXAddress, focusYAddress, focusZAddress) = focusTripleAddressAngle.getTripleAddress();
 
-            float xFocus = stream.GetSingle(focusTripleAddressAngle.XAddress);
-            float yFocus = stream.GetSingle(focusTripleAddressAngle.YAddress);
-            float zFocus = stream.GetSingle(focusTripleAddressAngle.ZAddress);
+            float xFocus = Config.Stream.GetSingle(focusTripleAddressAngle.XAddress);
+            float yFocus = Config.Stream.GetSingle(focusTripleAddressAngle.YAddress);
+            float zFocus = Config.Stream.GetSingle(focusTripleAddressAngle.ZAddress);
 
-            float xCamPos = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
-            float yCamPos = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
-            float zCamPos = stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
+            float xCamPos = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
+            float yCamPos = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
+            float zCamPos = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
 
             double xDestination, yDestination, zDestination;
             (xDestination, yDestination, zDestination) =
                 MoreMath.OffsetSphericallyAboutPivot(xFocus, yFocus, zFocus, radiusOffset, thetaOffset, phiOffset, xCamPos, yCamPos, zCamPos);
 
             return MoveThings(
-                stream,
                 new List<TripleAddressAngle> { focusTripleAddressAngle },
                 (float)xDestination,
                 (float)yDestination,
@@ -1226,19 +1222,19 @@ namespace SM64_Diagnostic.Utilities
                 Change.SET);
         }
 
-        public static bool TranslateCameraHackBoth(ProcessStream stream, CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
+        public static bool TranslateCameraHackBoth(CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             if (camHackMode != CamHackMode.RELATIVE_ANGLE && camHackMode != CamHackMode.ABSOLUTE_ANGLE)
             {
-                success &= TranslateCameraHack(stream, camHackMode, xOffset, yOffset, zOffset, useRelative);
+                success &= TranslateCameraHack(camHackMode, xOffset, yOffset, zOffset, useRelative);
             }
-            success &= TranslateCameraHackFocus(stream, camHackMode, xOffset, yOffset, zOffset, useRelative);
+            success &= TranslateCameraHackFocus(camHackMode, xOffset, yOffset, zOffset, useRelative);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
     }

@@ -100,7 +100,7 @@ namespace SM64_Diagnostic.Managers
                     uint addressOffset = GetStarAddressOffset(row);
                     byte mask = GetStarMask(row, col);
                     string missionName = Config.Missions.GetMissionName(row + 1, col + 1);
-                    fileStarPictureBox.Initialize(_stream, _gui, addressOffset, mask, _gui.PowerStarImage, _gui.PowerStarBlackImage, missionName);
+                    fileStarPictureBox.Initialize(_gui, addressOffset, mask, _gui.PowerStarImage, _gui.PowerStarBlackImage, missionName);
                     _filePictureBoxList.Add(fileStarPictureBox);
 
                     _courseStarsAddressOffsets[row] = addressOffset;
@@ -113,7 +113,7 @@ namespace SM64_Diagnostic.Managers
             {
                 string controlName = String.Format("labelFileTableRow{0}", row + 1);
                 FileCourseLabel fileCourseLabel = fileTable.Controls[controlName] as FileCourseLabel;
-                fileCourseLabel.Initialize(_stream, _courseStarsAddressOffsets[row], _courseStarsMasks[row], row + 1);
+                fileCourseLabel.Initialize(_courseStarsAddressOffsets[row], _courseStarsMasks[row], row + 1);
             }
 
             // cannons
@@ -126,7 +126,7 @@ namespace SM64_Diagnostic.Managers
 
                 uint addressOffset = GetCannonAddressOffset(row);
                 byte mask = Config.File.CannonMask;
-                fileCannonPictureBox.Initialize(_stream, addressOffset, mask, _gui.CannonImage, _gui.CannonLidImage);
+                fileCannonPictureBox.Initialize(addressOffset, mask, _gui.CannonImage, _gui.CannonLidImage);
                 _filePictureBoxList.Add(fileCannonPictureBox);
 
                 _courseCannonAddressOffsets[row] = addressOffset;
@@ -144,7 +144,7 @@ namespace SM64_Diagnostic.Managers
                 uint addressOffset = GetDoorAddressOffset(row);
                 byte mask = GetDoorMask(row);
                 (Image onImage, Image offImage) = GetDoorImages(row);
-                fileBinaryPictureBox.Initialize(_stream, addressOffset, mask, onImage, offImage);
+                fileBinaryPictureBox.Initialize(addressOffset, mask, onImage, offImage);
                 _filePictureBoxList.Add(fileBinaryPictureBox);
 
                 _courseDoorAddressOffsets[row] = addressOffset;
@@ -157,7 +157,7 @@ namespace SM64_Diagnostic.Managers
                 int col = 9;
                 string controlName = String.Format("textBoxTableRow{0}Col{1}", row + 1, col + 1);
                 FileCoinScoreTextbox fileCoinScoreTextBox = fileTable.Controls[controlName] as FileCoinScoreTextbox;
-                fileCoinScoreTextBox.Initialize(_stream, Config.File.CoinScoreOffsetStart + (uint)row);
+                fileCoinScoreTextBox.Initialize(Config.File.CoinScoreOffsetStart + (uint)row);
                 _fileTextboxList.Add(fileCoinScoreTextBox);
             }
 
@@ -165,77 +165,77 @@ namespace SM64_Diagnostic.Managers
 
             // hat location radio button pictures
             FileHatLocationPictureBox filePictureBoxHatLocationMario = hatLocationGroupbox.Controls["filePictureBoxHatLocationMario"] as FileHatLocationPictureBox;
-            filePictureBoxHatLocationMario.Initialize(_stream, HatLocation.Mario, _gui.HatOnMarioImage, _gui.HatOnMarioGreyImage);
+            filePictureBoxHatLocationMario.Initialize(HatLocation.Mario, _gui.HatOnMarioImage, _gui.HatOnMarioGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationMario);
 
             FileHatLocationPictureBox filePictureBoxHatLocationKlepto = hatLocationGroupbox.Controls["filePictureBoxHatLocationKlepto"] as FileHatLocationPictureBox;
-            filePictureBoxHatLocationKlepto.Initialize(_stream, HatLocation.SSLKlepto, _gui.HatOnKleptoImage, _gui.HatOnKleptoGreyImage);
+            filePictureBoxHatLocationKlepto.Initialize(HatLocation.SSLKlepto, _gui.HatOnKleptoImage, _gui.HatOnKleptoGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationKlepto);
 
             FileHatLocationPictureBox filePictureBoxHatLocationSnowman = hatLocationGroupbox.Controls["filePictureBoxHatLocationSnowman"] as FileHatLocationPictureBox;
-            filePictureBoxHatLocationSnowman.Initialize(_stream, HatLocation.SLSnowman, _gui.HatOnSnowmanImage, _gui.HatOnSnowmanGreyImage);
+            filePictureBoxHatLocationSnowman.Initialize(HatLocation.SLSnowman, _gui.HatOnSnowmanImage, _gui.HatOnSnowmanGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationSnowman);
 
             FileHatLocationPictureBox filePictureBoxHatLocationUkiki = hatLocationGroupbox.Controls["filePictureBoxHatLocationUkiki"] as FileHatLocationPictureBox;
-            filePictureBoxHatLocationUkiki.Initialize(_stream, HatLocation.TTMUkiki, _gui.HatOnUkikiImage, _gui.HatOnUkikiGreyImage);
+            filePictureBoxHatLocationUkiki.Initialize(HatLocation.TTMUkiki, _gui.HatOnUkikiImage, _gui.HatOnUkikiGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationUkiki);
 
             FileHatLocationPictureBox filePictureBoxHatLocationSSLGround = hatLocationGroupbox.Controls["filePictureBoxHatLocationSSLGround"] as FileHatLocationPictureBox;
-            filePictureBoxHatLocationSSLGround.Initialize(_stream, HatLocation.SSLGround, _gui.HatOnGroundInSSLImage, _gui.HatOnGroundInSSLGreyImage);
+            filePictureBoxHatLocationSSLGround.Initialize(HatLocation.SSLGround, _gui.HatOnGroundInSSLImage, _gui.HatOnGroundInSSLGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationSSLGround);
 
             FileHatLocationPictureBox filePictureBoxHatLocationSLGround = hatLocationGroupbox.Controls["filePictureBoxHatLocationSLGround"] as FileHatLocationPictureBox;
-            filePictureBoxHatLocationSLGround.Initialize(_stream, HatLocation.SLGround, _gui.HatOnGroundInSLImage, _gui.HatOnGroundInSLGreyImage);
+            filePictureBoxHatLocationSLGround.Initialize(HatLocation.SLGround, _gui.HatOnGroundInSLImage, _gui.HatOnGroundInSLGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationSLGround);
 
             FileHatLocationPictureBox filePictureBoxHatLocationTTMGround = hatLocationGroupbox.Controls["filePictureBoxHatLocationTTMGround"] as FileHatLocationPictureBox;
-            filePictureBoxHatLocationTTMGround.Initialize(_stream, HatLocation.TTMGround, _gui.HatOnGroundInTTMImage, _gui.HatOnGroundInTTMGreyImage);
+            filePictureBoxHatLocationTTMGround.Initialize(HatLocation.TTMGround, _gui.HatOnGroundInTTMImage, _gui.HatOnGroundInTTMGreyImage);
             _filePictureBoxList.Add(filePictureBoxHatLocationTTMGround);
 
             // hat position textboxes
             FileHatPositionTextbox textboxHatLocationPositionX = hatLocationGroupbox.Controls["textboxHatLocationPositionX"] as FileHatPositionTextbox;
-            textboxHatLocationPositionX.Initialize(_stream, Config.File.HatPositionXOffset);
+            textboxHatLocationPositionX.Initialize(Config.File.HatPositionXOffset);
             _fileTextboxList.Add(textboxHatLocationPositionX);
 
             FileHatPositionTextbox textboxHatLocationPositionY = hatLocationGroupbox.Controls["textboxHatLocationPositionY"] as FileHatPositionTextbox;
-            textboxHatLocationPositionY.Initialize(_stream, Config.File.HatPositionYOffset);
+            textboxHatLocationPositionY.Initialize(Config.File.HatPositionYOffset);
             _fileTextboxList.Add(textboxHatLocationPositionY);
 
             FileHatPositionTextbox textboxHatLocationPositionZ = hatLocationGroupbox.Controls["textboxHatLocationPositionZ"] as FileHatPositionTextbox;
-            textboxHatLocationPositionZ.Initialize(_stream, Config.File.HatPositionZOffset);
+            textboxHatLocationPositionZ.Initialize(Config.File.HatPositionZOffset);
             _fileTextboxList.Add(textboxHatLocationPositionZ);
 
             // miscellaneous checkbox pictures
             FileBinaryPictureBox filePictureBoxFileStarted = splitContainerFile.Panel1.Controls["filePictureBoxFileStarted"] as FileBinaryPictureBox;
-            filePictureBoxFileStarted.Initialize(_stream, Config.File.FileStartedOffset, Config.File.FileStartedMask, _gui.FileStartedImage, _gui.FileNotStartedImage);
+            filePictureBoxFileStarted.Initialize(Config.File.FileStartedOffset, Config.File.FileStartedMask, _gui.FileStartedImage, _gui.FileNotStartedImage);
             _filePictureBoxList.Add(filePictureBoxFileStarted);
 
             FileBinaryPictureBox filePictureBoxRedCapSwitchPressed = splitContainerFile.Panel1.Controls["filePictureBoxRedCapSwitchPressed"] as FileBinaryPictureBox;
-            filePictureBoxRedCapSwitchPressed.Initialize(_stream, Config.File.CapSwitchPressedOffset, Config.File.RedCapSwitchMask, _gui.CapSwitchRedPressedImage, _gui.CapSwitchRedUnpressedImage);
+            filePictureBoxRedCapSwitchPressed.Initialize(Config.File.CapSwitchPressedOffset, Config.File.RedCapSwitchMask, _gui.CapSwitchRedPressedImage, _gui.CapSwitchRedUnpressedImage);
             _filePictureBoxList.Add(filePictureBoxRedCapSwitchPressed);
 
             FileBinaryPictureBox filePictureBoxGreenCapSwitchPressed = splitContainerFile.Panel1.Controls["filePictureBoxGreenCapSwitchPressed"] as FileBinaryPictureBox;
-            filePictureBoxGreenCapSwitchPressed.Initialize(_stream, Config.File.CapSwitchPressedOffset, Config.File.GreenCapSwitchMask, _gui.CapSwitchGreenPressedImage, _gui.CapSwitchGreenUnpressedImage);
+            filePictureBoxGreenCapSwitchPressed.Initialize(Config.File.CapSwitchPressedOffset, Config.File.GreenCapSwitchMask, _gui.CapSwitchGreenPressedImage, _gui.CapSwitchGreenUnpressedImage);
             _filePictureBoxList.Add(filePictureBoxGreenCapSwitchPressed);
 
             FileBinaryPictureBox filePictureBoxBlueCapSwitchPressed = splitContainerFile.Panel1.Controls["filePictureBoxBlueCapSwitchPressed"] as FileBinaryPictureBox;
-            filePictureBoxBlueCapSwitchPressed.Initialize(_stream, Config.File.CapSwitchPressedOffset, Config.File.BlueCapSwitchMask, _gui.CapSwitchBluePressedImage, _gui.CapSwitchBlueUnpressedImage);
+            filePictureBoxBlueCapSwitchPressed.Initialize(Config.File.CapSwitchPressedOffset, Config.File.BlueCapSwitchMask, _gui.CapSwitchBluePressedImage, _gui.CapSwitchBlueUnpressedImage);
             _filePictureBoxList.Add(filePictureBoxBlueCapSwitchPressed);
 
             FileKeyDoorPictureBox filePictureBoxKeyDoor1Opened = splitContainerFile.Panel1.Controls["filePictureBoxKeyDoor1Opened"] as FileKeyDoorPictureBox;
-            filePictureBoxKeyDoor1Opened.Initialize(_stream, Config.File.KeyDoorOffset, Config.File.KeyDoor1KeyMask, Config.File.KeyDoor1OpenedMask, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
+            filePictureBoxKeyDoor1Opened.Initialize(Config.File.KeyDoorOffset, Config.File.KeyDoor1KeyMask, Config.File.KeyDoor1OpenedMask, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
             _filePictureBoxList.Add(filePictureBoxKeyDoor1Opened);
 
             FileKeyDoorPictureBox filePictureBoxKeyDoor2Opened = splitContainerFile.Panel1.Controls["filePictureBoxKeyDoor2Opened"] as FileKeyDoorPictureBox;
-            filePictureBoxKeyDoor2Opened.Initialize(_stream, Config.File.KeyDoorOffset, Config.File.KeyDoor2KeyMask, Config.File.KeyDoor2OpenedMask, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
+            filePictureBoxKeyDoor2Opened.Initialize(Config.File.KeyDoorOffset, Config.File.KeyDoor2KeyMask, Config.File.KeyDoor2OpenedMask, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
             _filePictureBoxList.Add(filePictureBoxKeyDoor2Opened);
 
             FileBinaryPictureBox filePictureBoxMoatDrained = splitContainerFile.Panel1.Controls["filePictureBoxMoatDrained"] as FileBinaryPictureBox;
-            filePictureBoxMoatDrained.Initialize(_stream, Config.File.MoatDrainedOffset, Config.File.MoatDrainedMask, _gui.MoatDrainedImage, _gui.MoatNotDrainedImage);
+            filePictureBoxMoatDrained.Initialize(Config.File.MoatDrainedOffset, Config.File.MoatDrainedMask, _gui.MoatDrainedImage, _gui.MoatNotDrainedImage);
             _filePictureBoxList.Add(filePictureBoxMoatDrained);
 
             FileBinaryPictureBox filePictureBoxDDDMovedBack = splitContainerFile.Panel1.Controls["filePictureBoxDDDMovedBack"] as FileBinaryPictureBox;
-            filePictureBoxDDDMovedBack.Initialize(_stream, Config.File.DDDMovedBackOffset, Config.File.DDDMovedBackMask, _gui.DDDPaintingMovedBackImage, _gui.DDDPaintingNotMovedBackImage);
+            filePictureBoxDDDMovedBack.Initialize(Config.File.DDDMovedBackOffset, Config.File.DDDMovedBackMask, _gui.DDDPaintingMovedBackImage, _gui.DDDPaintingNotMovedBackImage);
             _filePictureBoxList.Add(filePictureBoxDDDMovedBack);
 
             // buttons

@@ -66,7 +66,6 @@ namespace SM64_Diagnostic.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateCameraHack(
-                        _stream,
                         _currentCamHackMode,
                         hOffset,
                         nOffset,
@@ -93,7 +92,6 @@ namespace SM64_Diagnostic.Managers
                 (float hOffset, float vOffset, float nOffset, bool _) =>
                 {
                     ButtonUtilities.TranslateCameraHackSpherically(
-                        _stream,
                         _currentCamHackMode,
                         -1 * nOffset,
                         hOffset,
@@ -119,7 +117,6 @@ namespace SM64_Diagnostic.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateCameraHackFocus(
-                        _stream,
                         _currentCamHackMode,
                         hOffset,
                         nOffset,
@@ -146,7 +143,6 @@ namespace SM64_Diagnostic.Managers
                 (float hOffset, float vOffset, float nOffset, bool _) =>
                 {
                     ButtonUtilities.TranslateCameraHackFocusSpherically(
-                        _stream,
                         _currentCamHackMode,
                         nOffset,
                         hOffset,
@@ -172,7 +168,6 @@ namespace SM64_Diagnostic.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateCameraHackBoth(
-                        _stream,
                         _currentCamHackMode,
                         hOffset,
                         nOffset,

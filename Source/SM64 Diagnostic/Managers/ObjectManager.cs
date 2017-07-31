@@ -249,33 +249,33 @@ namespace SM64_Diagnostic.Managers
             Panel objPanel = splitContainerObject.Panel1.Controls["panelObj"] as Panel;
 
             var goToButton = objPanel.Controls["buttonObjGoTo"] as Button;
-            goToButton.Click += (sender, e) => ButtonUtilities.GoToObjects(_stream, _currentAddresses);
+            goToButton.Click += (sender, e) => ButtonUtilities.GoToObjects(_currentAddresses);
 
             var retrieveButton = objPanel.Controls["buttonObjRetrieve"] as Button;
-            retrieveButton.Click += (sender, e) => ButtonUtilities.RetrieveObjects(_stream, _currentAddresses);
+            retrieveButton.Click += (sender, e) => ButtonUtilities.RetrieveObjects(_currentAddresses);
 
             var goToHomeButton = objPanel.Controls["buttonObjGoToHome"] as Button;
-            goToHomeButton.Click += (sender, e) => ButtonUtilities.GoToObjectsHome(_stream, _currentAddresses);
+            goToHomeButton.Click += (sender, e) => ButtonUtilities.GoToObjectsHome(_currentAddresses);
 
             var retrieveHomeButton = objPanel.Controls["buttonObjRetrieveHome"] as Button;
-            retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_stream, _currentAddresses);
+            retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_currentAddresses);
 
             _releaseButton = objPanel.Controls["buttonObjRelease"] as Button;
             _releaseButton.Click += (sender, e) =>
             {
                 if (_unrelease)
-                    ButtonUtilities.UnReleaseObject(_stream, _currentAddresses);
+                    ButtonUtilities.UnReleaseObject(_currentAddresses);
                 else
-                    ButtonUtilities.ReleaseObject(_stream, _currentAddresses);
+                    ButtonUtilities.ReleaseObject(_currentAddresses);
             };
 
             _interactButton = objPanel.Controls["buttonObjInteract"] as Button;
             _interactButton.Click += (sender, e) =>
             {
                 if (_uninteract)
-                    ButtonUtilities.UnInteractObject(_stream, _currentAddresses);
+                    ButtonUtilities.UnInteractObject(_currentAddresses);
                 else
-                    ButtonUtilities.InteractObject(_stream, _currentAddresses);
+                    ButtonUtilities.InteractObject(_currentAddresses);
             };
 
             _cloneButton = objPanel.Controls["buttonObjClone"] as Button;
@@ -285,18 +285,18 @@ namespace SM64_Diagnostic.Managers
                     return;
 
                 if (_unclone)
-                    ButtonUtilities.UnCloneObject(_stream, CurrentAddresses[0]);
+                    ButtonUtilities.UnCloneObject(CurrentAddresses[0]);
                 else
-                    ButtonUtilities.CloneObject(_stream, CurrentAddresses[0]);
+                    ButtonUtilities.CloneObject(CurrentAddresses[0]);
             };
 
             _unloadButton = objPanel.Controls["buttonObjUnload"] as Button;
             _unloadButton.Click += (sender, e) =>
             {
                 if (_revive)
-                    ButtonUtilities.ReviveObject(_stream, CurrentAddresses);
+                    ButtonUtilities.ReviveObject(CurrentAddresses);
                 else
-                    ButtonUtilities.UnloadObject(_stream, CurrentAddresses);
+                    ButtonUtilities.UnloadObject(CurrentAddresses);
             };
 
             var objPosGroupBox = objPanel.Controls["groupBoxObjPos"] as GroupBox;
@@ -318,7 +318,6 @@ namespace SM64_Diagnostic.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateObjects(
-                        _stream,
                         _currentAddresses,
                         hOffset,
                         nOffset,
@@ -333,7 +332,7 @@ namespace SM64_Diagnostic.Managers
                 objAngleGroupBox.Controls["textBoxObjAngleYaw"] as TextBox,
                 (float yawValue) =>
                 {
-                    ButtonUtilities.RotateObjects(Config.Stream, _currentAddresses, (int)Math.Round(yawValue), 0, 0);
+                    ButtonUtilities.RotateObjects(_currentAddresses, (int)Math.Round(yawValue), 0, 0);
                 });
             ScalarController.initialize(
                 objAngleGroupBox.Controls["buttonObjAnglePitchN"] as Button,
@@ -341,7 +340,7 @@ namespace SM64_Diagnostic.Managers
                 objAngleGroupBox.Controls["textBoxObjAnglePitch"] as TextBox,
                 (float pitchValue) =>
                 {
-                    ButtonUtilities.RotateObjects(Config.Stream, _currentAddresses, 0, (int)Math.Round(pitchValue), 0);
+                    ButtonUtilities.RotateObjects(_currentAddresses, 0, (int)Math.Round(pitchValue), 0);
                 });
             ScalarController.initialize(
                 objAngleGroupBox.Controls["buttonObjAngleRollN"] as Button,
@@ -349,7 +348,7 @@ namespace SM64_Diagnostic.Managers
                 objAngleGroupBox.Controls["textBoxObjAngleRoll"] as TextBox,
                 (float rollValue) =>
                 {
-                    ButtonUtilities.RotateObjects(Config.Stream, _currentAddresses, 0, 0, (int)Math.Round(rollValue));
+                    ButtonUtilities.RotateObjects(_currentAddresses, 0, 0, (int)Math.Round(rollValue));
                 });
 
             var objScaleGroupBox = objPanel.Controls["groupBoxObjScale"] as GroupBox;
@@ -370,7 +369,7 @@ namespace SM64_Diagnostic.Managers
                 objScaleGroupBox.Controls["checkBoxObjScaleMultiply"] as CheckBox,
                 (float widthChange, float heightChange, float depthChange, bool multiply) =>
                 {
-                    ButtonUtilities.ScaleObjects(Config.Stream, _currentAddresses, widthChange, heightChange, depthChange, multiply);
+                    ButtonUtilities.ScaleObjects(_currentAddresses, widthChange, heightChange, depthChange, multiply);
                 });
 
             var objHomeGroupBox = objPanel.Controls["groupBoxObjHome"] as GroupBox;
@@ -392,7 +391,6 @@ namespace SM64_Diagnostic.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateObjectHomes(
-                        _stream,
                         _currentAddresses,
                         hOffset,
                         nOffset,

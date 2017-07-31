@@ -37,7 +37,7 @@ namespace SM64_Diagnostic.Utilities
             return pu;
         }
 
-        public static bool MoveToInCurrentPu(ProcessStream stream, float x, float y, float z)
+        public static bool MoveToInCurrentPu(float x, float y, float z)
         {
             var marioAddress = Config.Mario.StructAddress;
 
@@ -46,9 +46,9 @@ namespace SM64_Diagnostic.Utilities
             z = GetRelativePuPosition(z);
 
             float marioX, marioY, marioZ;
-            marioX = stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            marioY = stream.GetSingle(marioAddress + Config.Mario.YOffset);
-            marioZ = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
+            marioX = Config.Stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            marioY = Config.Stream.GetSingle(marioAddress + Config.Mario.YOffset);
+            marioZ = Config.Stream.GetSingle(marioAddress + Config.Mario.ZOffset);
 
             int curPuX, curPuY, curPuZ;
             curPuX = GetPUFromCoord(marioX);
@@ -61,27 +61,27 @@ namespace SM64_Diagnostic.Utilities
             newMarioZ = z + curPuZ * PuSize;
 
             bool success = true;
-            success &= stream.SetValue(newMarioX, marioAddress + Config.Mario.XOffset);
-            success &= stream.SetValue(newMarioY, marioAddress + Config.Mario.YOffset);
-            success &= stream.SetValue(newMarioZ, marioAddress + Config.Mario.ZOffset);
+            success &= Config.Stream.SetValue(newMarioX, marioAddress + Config.Mario.XOffset);
+            success &= Config.Stream.SetValue(newMarioY, marioAddress + Config.Mario.YOffset);
+            success &= Config.Stream.SetValue(newMarioZ, marioAddress + Config.Mario.ZOffset);
             return success;
         }
 
-        public static bool MoveToRelativePu(ProcessStream stream, int newPuX, int newPuY, int newPuZ)
+        public static bool MoveToRelativePu(int newPuX, int newPuY, int newPuZ)
         {
             var marioAddress = Config.Mario.StructAddress;
 
             // Get Mario position
             float marioX, marioY, marioZ;
-            marioX = stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            marioY = stream.GetSingle(marioAddress + Config.Mario.YOffset);
-            marioZ = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
+            marioX = Config.Stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            marioY = Config.Stream.GetSingle(marioAddress + Config.Mario.YOffset);
+            marioZ = Config.Stream.GetSingle(marioAddress + Config.Mario.ZOffset);
 
             // Get Camera Position
             float cameraX, cameraY, cameraZ;
-            cameraX = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
-            cameraY = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
-            cameraZ = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
+            cameraX = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
+            cameraY = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
+            cameraZ = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
 
             // Calculate new coordinates
             float newMarioX, newMarioY, newMarioZ;
@@ -96,34 +96,34 @@ namespace SM64_Diagnostic.Utilities
 
             // Set new mario + camera position
             bool success = true;
-            success &= stream.SetValue(newMarioX, marioAddress + Config.Mario.XOffset);
-            success &= stream.SetValue(newMarioY, marioAddress + Config.Mario.YOffset);
-            success &= stream.SetValue(newMarioZ, marioAddress + Config.Mario.ZOffset);
+            success &= Config.Stream.SetValue(newMarioX, marioAddress + Config.Mario.XOffset);
+            success &= Config.Stream.SetValue(newMarioY, marioAddress + Config.Mario.YOffset);
+            success &= Config.Stream.SetValue(newMarioZ, marioAddress + Config.Mario.ZOffset);
             if (Config.MoveCameraWithPu)
             {
-                success &= stream.SetValue(newCamX, Config.Camera.CameraStructAddress + Config.Camera.XOffset);
-                success &= stream.SetValue(newCamY, Config.Camera.CameraStructAddress + Config.Camera.YOffset);
-                success &= stream.SetValue(newCamZ, Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
+                success &= Config.Stream.SetValue(newCamX, Config.Camera.CameraStructAddress + Config.Camera.XOffset);
+                success &= Config.Stream.SetValue(newCamY, Config.Camera.CameraStructAddress + Config.Camera.YOffset);
+                success &= Config.Stream.SetValue(newCamZ, Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
             }
             return success;
         }
 
-        public static bool MoveToPu(ProcessStream stream, int newPuX, int newPuY, int newPuZ)
+        public static bool MoveToPu(int newPuX, int newPuY, int newPuZ)
         {
             var marioAddress = Config.Mario.StructAddress;
 
             // Get Mario position
             float marioX, marioY, marioZ;
-            marioX = stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            marioY = stream.GetSingle(marioAddress + Config.Mario.YOffset);
-            marioZ = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
+            marioX = Config.Stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            marioY = Config.Stream.GetSingle(marioAddress + Config.Mario.YOffset);
+            marioZ = Config.Stream.GetSingle(marioAddress + Config.Mario.ZOffset);
 
 
             // Get Camera Position
             float cameraX, cameraY, cameraZ;
-            cameraX = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
-            cameraY = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
-            cameraZ = stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
+            cameraX = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
+            cameraY = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
+            cameraZ = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
 
             // Calculate new coordinates
             float newMarioX, newMarioY, newMarioZ;
@@ -138,14 +138,14 @@ namespace SM64_Diagnostic.Utilities
 
             // Set new mario + camera position
             bool success = true;
-            success &= stream.SetValue(newMarioX, marioAddress + Config.Mario.XOffset);
-            success &= stream.SetValue(newMarioY, marioAddress + Config.Mario.YOffset);
-            success &= stream.SetValue(newMarioZ, marioAddress + Config.Mario.ZOffset);
+            success &= Config.Stream.SetValue(newMarioX, marioAddress + Config.Mario.XOffset);
+            success &= Config.Stream.SetValue(newMarioY, marioAddress + Config.Mario.YOffset);
+            success &= Config.Stream.SetValue(newMarioZ, marioAddress + Config.Mario.ZOffset);
             if (Config.MoveCameraWithPu)
             {
-                success &= stream.SetValue(newCamX, Config.Camera.CameraStructAddress + Config.Camera.XOffset);
-                success &= stream.SetValue(newCamY, Config.Camera.CameraStructAddress + Config.Camera.YOffset);
-                success &= stream.SetValue(newCamZ, Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
+                success &= Config.Stream.SetValue(newCamX, Config.Camera.CameraStructAddress + Config.Camera.XOffset);
+                success &= Config.Stream.SetValue(newCamY, Config.Camera.CameraStructAddress + Config.Camera.YOffset);
+                success &= Config.Stream.SetValue(newCamZ, Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
             }
             return success;
         }

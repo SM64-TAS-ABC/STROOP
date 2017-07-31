@@ -11,6 +11,7 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using System.Drawing.Drawing2D;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic
 {
@@ -22,9 +23,9 @@ namespace SM64_Diagnostic
         {
         }
 
-        public override void Initialize(ProcessStream stream, uint addressOffset)
+        public override void Initialize(uint addressOffset)
         {
-            base.Initialize(stream, addressOffset);
+            base.Initialize(addressOffset);
 
             _currentValue = GetCoinScoreFromMemory();
             this.Text = _currentValue.ToString();
@@ -32,7 +33,7 @@ namespace SM64_Diagnostic
 
         private byte GetCoinScoreFromMemory()
         {
-            return _stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
+            return Config.Stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
         }
 
         protected override void SubmitValue()
@@ -44,7 +45,7 @@ namespace SM64_Diagnostic
                 return;
             }
 
-            _stream.SetValue(value, FileManager.Instance.CurrentFileAddress + _addressOffset);
+            Config.Stream.SetValue(value, FileManager.Instance.CurrentFileAddress + _addressOffset);
         }
 
         protected override void ResetValue()

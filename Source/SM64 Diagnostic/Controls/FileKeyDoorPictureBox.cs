@@ -28,7 +28,7 @@ namespace SM64_Diagnostic
         {
         }
 
-        public void Initialize(ProcessStream stream, uint addressOffset, byte mask1, byte mask2,
+        public void Initialize(uint addressOffset, byte mask1, byte mask2,
             Image onOnImage, Image onOffImage, Image offOnImage, Image offOffImage)
         {
             _mask1 = mask1;
@@ -39,7 +39,7 @@ namespace SM64_Diagnostic
             _offOnImage = offOnImage;
             _offOffImage = offOffImage;
 
-            base.Initialize(stream, addressOffset, (byte)(mask1 | mask2));
+            base.Initialize(addressOffset, (byte)(mask1 | mask2));
         }
 
         protected override Image GetImageForValue(byte value)

@@ -100,24 +100,24 @@ namespace SM64_Diagnostic.Managers
             (splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label).Click += TriangleSelectionLabel_Click;
 
             (splitContainerTriangles.Panel1.Controls["buttonGoToV1"] as Button).Click
-                += (sender, e) => ButtonUtilities.GoToTriangle(_stream, _triangleAddress, 1, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GoToTriangle(_triangleAddress, 1, _useMisalignmentOffsetCheckbox.Checked);
             (splitContainerTriangles.Panel1.Controls["buttonGoToV2"] as Button).Click
-                += (sender, e) => ButtonUtilities.GoToTriangle(_stream, _triangleAddress, 2, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GoToTriangle(_triangleAddress, 2, _useMisalignmentOffsetCheckbox.Checked);
             (splitContainerTriangles.Panel1.Controls["buttonGoToV3"] as Button).Click
-                += (sender, e) => ButtonUtilities.GoToTriangle(_stream, _triangleAddress, 3, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GoToTriangle(_triangleAddress, 3, _useMisalignmentOffsetCheckbox.Checked);
             (splitContainerTriangles.Panel1.Controls["buttonGoToVClosest"] as Button).Click += (sender, e) =>
             {
                 if (_closestVertex == 0)
                     return;
-                ButtonUtilities.GoToTriangle(_stream, _triangleAddress, _closestVertex, _useMisalignmentOffsetCheckbox.Checked);
+                ButtonUtilities.GoToTriangle(_triangleAddress, _closestVertex, _useMisalignmentOffsetCheckbox.Checked);
             };
 
             (splitContainerTriangles.Panel1.Controls["buttonRetrieveTriangle"] as Button).Click
-                += (sender, e) => ButtonUtilities.RetrieveTriangle(_stream, _triangleAddress);
+                += (sender, e) => ButtonUtilities.RetrieveTriangle(_triangleAddress);
             (splitContainerTriangles.Panel1.Controls["buttonNeutralizeTriangle"] as Button).Click
-                += (sender, e) => ButtonUtilities.NeutralizeTriangle(_stream, _triangleAddress);
+                += (sender, e) => ButtonUtilities.NeutralizeTriangle(_triangleAddress);
             (splitContainerTriangles.Panel1.Controls["buttonAnnihilateTriangle"] as Button).Click
-                += (sender, e) => ButtonUtilities.AnnihilateTriangle(_stream, _triangleAddress);
+                += (sender, e) => ButtonUtilities.AnnihilateTriangle(_triangleAddress);
             
             var trianglePosGroupBox = splitContainerTriangles.Panel1.Controls["groupBoxTrianglePos"] as GroupBox;
             ThreeDimensionController.initialize(
@@ -138,7 +138,6 @@ namespace SM64_Diagnostic.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.MoveTriangle(
-                        _stream,
                         _triangleAddress,
                         hOffset,
                         nOffset,
@@ -153,7 +152,7 @@ namespace SM64_Diagnostic.Managers
                 triangleNormalGroupBox.Controls["textBoxTriangleNormal"] as TextBox,
                 (float normalValue) =>
                 {
-                    ButtonUtilities.MoveTriangleNormal(_stream, _triangleAddress, normalValue);
+                    ButtonUtilities.MoveTriangleNormal(_triangleAddress, normalValue);
                 });
         }
 
