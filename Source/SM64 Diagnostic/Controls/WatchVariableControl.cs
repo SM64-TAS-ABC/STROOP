@@ -203,6 +203,10 @@ namespace SM64_Diagnostic.Controls
                     output = GetOffsetListFromOffsetType(OffsetType.Object, false)
                         .ConvertAll(objAddress => _stream.GetUInt32(objAddress + Config.ObjectSlots.BehaviorGfxOffset));
                     break;
+                case OffsetType.Animation:
+                    output = GetOffsetListFromOffsetType(OffsetType.Object, false)
+                        .ConvertAll(objAddress => _stream.GetUInt32(objAddress + Config.ObjectSlots.AnimationOffset));
+                    break;
                 case OffsetType.Waypoint:
                     output = GetOffsetListFromOffsetType(OffsetType.Object, false)
                         .ConvertAll(objAddress => _stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset));
