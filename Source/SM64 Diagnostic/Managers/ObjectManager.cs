@@ -422,7 +422,7 @@ namespace SM64_Diagnostic.Managers
 
             var variableTitle = "Object Address" + (_currentAddresses.Count > 1 ? " (First of Multiple)" : ""); 
             var variableInfo = new VariableViewerForm(variableTitle, "Object",
-                String.Format("0x{0:X8}", _currentAddresses[0]), String.Format("0x{0:X8}", (_currentAddresses[0] & 0x0FFFFFFF) + _stream.ProcessMemoryOffset));
+                String.Format("0x{0:X8}", _currentAddresses[0]), String.Format("0x{0:X8}", (_currentAddresses[0] & 0x0FFFFFFF) + Config.Stream.ProcessMemoryOffset));
             variableInfo.ShowDialog();
         }
 
@@ -430,23 +430,23 @@ namespace SM64_Diagnostic.Managers
         {
             // Get Mario position
             float mX, mY, mZ, mFacing;
-            mX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-            mY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-            mZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
-            mFacing = (float)(((_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.RotationOffset) >> 16) % 65536) / 65536f * 2 * Math.PI);
+            mX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            mY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            mZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            mFacing = (float)(((Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.RotationOffset) >> 16) % 65536) / 65536f * 2 * Math.PI);
 
             // Get Mario object position
-            var marioObjRef = _stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+            var marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
             float mObjX, mObjY, mObjZ;
-            mObjX = _stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectXOffset);
-            mObjY = _stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
-            mObjZ = _stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectZOffset);
+            mObjX = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectXOffset);
+            mObjY = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
+            mObjZ = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectZOffset);
 
             // Get Mario object hitbox variables
             float mObjHitboxRadius, mObjHitboxHeight, mObjHitboxDownOffset, mObjHitboxBottom, mObjHitboxTop;
-            mObjHitboxRadius = _stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxRadius);
-            mObjHitboxHeight = _stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxHeight);
-            mObjHitboxDownOffset = _stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
+            mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxRadius);
+            mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxHeight);
+            mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
             mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
             mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
@@ -456,25 +456,25 @@ namespace SM64_Diagnostic.Managers
             { 
                 // Get object position
                 float objX, objY, objZ, objFacing;
-                objX = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
-                objY = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                objZ = _stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
-                objFacing = (float)((UInt16)(_stream.GetUInt32(objAddress + Config.ObjectSlots.ObjectRotationOffset)) / 65536f * 2 * Math.PI);
+                objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+                objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+                objFacing = (float)((UInt16)(Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.ObjectRotationOffset)) / 65536f * 2 * Math.PI);
 
                 // Get object position
                 float objHomeX, objHomeY, objHomeZ;
-                objHomeX = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
-                objHomeY = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
-                objHomeZ = _stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
+                objHomeX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
+                objHomeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                objHomeZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
 
                 double angleObjectToMario = MoreMath.AngleTo_Radians(objX, objZ, mX, mZ);
                 double angleObjectToHome = MoreMath.AngleTo_Radians(objX, objZ, objHomeX, objHomeZ);
 
                 // Get object hitbox variables
                 float objHitboxRadius, objHitboxHeight, objHitboxDownOffset, objHitboxBottom, objHitboxTop;
-                objHitboxRadius = _stream.GetSingle(objAddress + Config.ObjectSlots.HitboxRadius);
-                objHitboxHeight = _stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
-                objHitboxDownOffset = _stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
+                objHitboxRadius = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxRadius);
+                objHitboxHeight = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
+                objHitboxDownOffset = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
                 objHitboxBottom = objY - objHitboxDownOffset;
                 objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
 
@@ -579,73 +579,73 @@ namespace SM64_Diagnostic.Managers
                             break;
 
                         case "PendulumAmplitude":
-                            newText = MoreMath.GetPendulumAmplitude(_stream, objAddress).ToString();
+                            newText = MoreMath.GetPendulumAmplitude(objAddress).ToString();
                             break;
 
                         case "PendulumSwingIndex":
-                            int? pendulumSwingIndex = Config.PendulumSwings.GetPendulumSwingIndex((int)MoreMath.GetPendulumAmplitude(_stream, objAddress));
+                            int? pendulumSwingIndex = Config.PendulumSwings.GetPendulumSwingIndex((int)MoreMath.GetPendulumAmplitude(objAddress));
                             newText = pendulumSwingIndex == null ? "Unknown Index" : pendulumSwingIndex.ToString();
                             break;
 
                         case "ObjectDotProductToWaypoint":
                             {
-                                (double temp, _, _) = MoreMath.GetWaypointSpecialVars(_stream, objAddress);
+                                (double temp, _, _) = MoreMath.GetWaypointSpecialVars(objAddress);
                                 newText = Math.Round(temp, 3).ToString();
                                 break;
                             }
 
                         case "ObjectDistanceToWaypointPlane":
                             {
-                                (_, double temp, _) = MoreMath.GetWaypointSpecialVars(_stream, objAddress);
+                                (_, double temp, _) = MoreMath.GetWaypointSpecialVars(objAddress);
                                 newText = Math.Round(temp, 3).ToString();
                                 break;
                             }
 
                         case "ObjectDistanceToWaypoint":
                             {
-                                (_, _, double temp) = MoreMath.GetWaypointSpecialVars(_stream, objAddress);
+                                (_, _, double temp) = MoreMath.GetWaypointSpecialVars(objAddress);
                                 newText = Math.Round(temp, 3).ToString();
                                 break;
                             }
 
                         case "RacingPenguinEffortTarget":
                             {
-                                (double temp, _, _, _) = MoreMath.GetRacingPenguinSpecialVars(_stream, objAddress);
+                                (double temp, _, _, _) = MoreMath.GetRacingPenguinSpecialVars(objAddress);
                                 newText = Math.Round(temp, 3).ToString();
                                 break;
                             }
 
                         case "RacingPenguinEffortChange":
                             {
-                                (_, double temp, _, _) = MoreMath.GetRacingPenguinSpecialVars(_stream, objAddress);
+                                (_, double temp, _, _) = MoreMath.GetRacingPenguinSpecialVars(objAddress);
                                 newText = Math.Round(temp, 3).ToString();
                                 break;
                             }
 
                         case "RacingPenguinMinHSpeed":
                             {
-                                (_, _, double temp, _) = MoreMath.GetRacingPenguinSpecialVars(_stream, objAddress);
+                                (_, _, double temp, _) = MoreMath.GetRacingPenguinSpecialVars(objAddress);
                                 newText = Math.Round(temp, 3).ToString();
                                 break;
                             }
 
                         case "RacingPenguinHSpeedTarget":
                             {
-                                (_, _, _, double temp) = MoreMath.GetRacingPenguinSpecialVars(_stream, objAddress);
+                                (_, _, _, double temp) = MoreMath.GetRacingPenguinSpecialVars(objAddress);
                                 newText = Math.Round(temp, 3).ToString();
                                 break;
                             }
 
                         case "KoopaTheQuickHSpeedTarget":
                             {
-                                (double temp, _) = MoreMath.GetKoopaTheQuickSpecialVars(_stream, objAddress);
+                                (double temp, _) = MoreMath.GetKoopaTheQuickSpecialVars(objAddress);
                                 newText = Math.Round(temp, 3).ToString();
                                 break;
                             }
 
                         case "KoopaTheQuickHSpeedChange":
                             {
-                                (_, double temp) = MoreMath.GetKoopaTheQuickSpecialVars(_stream, objAddress);
+                                (_, double temp) = MoreMath.GetKoopaTheQuickSpecialVars(objAddress);
                                 newText = Math.Round(temp, 3).ToString();
                                 break;
                             }
@@ -710,7 +710,7 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             // Determine which object is being held
-            uint heldObj = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.HeldObjectPointerOffset);
+            uint heldObj = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.HeldObjectPointerOffset);
 
             // Change to unclone if we are already holding the object
             if ((_currentAddresses.Contains(heldObj)) != _unclone)
@@ -723,7 +723,7 @@ namespace SM64_Diagnostic.Managers
 
             // Determine load or unload
             bool revive = _currentAddresses.Count > 0 && _currentAddresses.All(
-                address => _stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset) == 0x0000);
+                address => Config.Stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset) == 0x0000);
             if (_revive != revive)
             {
                 _revive = revive;
@@ -736,7 +736,7 @@ namespace SM64_Diagnostic.Managers
             bool unrelease = _currentAddresses.Count > 0 && _currentAddresses.All(
                 address =>
                 {
-                    uint releasedValue = _stream.GetUInt32(address + Config.ObjectSlots.ReleaseStatusOffset);
+                    uint releasedValue = Config.Stream.GetUInt32(address + Config.ObjectSlots.ReleaseStatusOffset);
                     return releasedValue == Config.ObjectSlots.ReleaseStatusThrownValue || releasedValue == Config.ObjectSlots.ReleaseStatusDroppedValue;
                 });
             if (_unrelease != unrelease)
@@ -749,7 +749,7 @@ namespace SM64_Diagnostic.Managers
 
             // Determine interact or uninteract
             bool uninteract = _currentAddresses.Count > 0 && _currentAddresses.All(
-                address => _stream.GetUInt32(address + Config.ObjectSlots.InteractionStatusOffset) != 0);
+                address => Config.Stream.GetUInt32(address + Config.ObjectSlots.InteractionStatusOffset) != 0);
             if (_uninteract != uninteract)
             {
                 _uninteract = uninteract;
@@ -764,19 +764,19 @@ namespace SM64_Diagnostic.Managers
 
         private int GetNumRngCalls(uint objAddress)
         {
-            var numberOfRngObjs = _stream.GetUInt32(Config.HackedAreaAddress);
+            var numberOfRngObjs = Config.Stream.GetUInt32(Config.HackedAreaAddress);
 
             int numOfCalls = 0;
 
             for (int i = 0; i < numberOfRngObjs; i++)
             {
                 uint rngStructAdd = (uint)(Config.HackedAreaAddress + 0x30 + 0x08 * i);
-                var address = _stream.GetUInt32(rngStructAdd + 0x04);
+                var address = Config.Stream.GetUInt32(rngStructAdd + 0x04);
                 if (address != objAddress)
                     continue;
 
-                var preRng = _stream.GetUInt16(rngStructAdd + 0x00);
-                var postRng = _stream.GetUInt16(rngStructAdd + 0x02);
+                var preRng = Config.Stream.GetUInt16(rngStructAdd + 0x00);
+                var postRng = Config.Stream.GetUInt16(rngStructAdd + 0x02);
 
                 numOfCalls = RngIndexer.GetRngIndexDiff(preRng, postRng);
                 break;

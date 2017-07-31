@@ -82,14 +82,14 @@ namespace SM64_Diagnostic.Managers
         public void ProcessSpecialVars()
         {
             float mX, mY, mZ;
-            mX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-            mY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-            mZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            mX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            mY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            mZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
             float cameraX, cameraY, cameraZ;
-            cameraX = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
-            cameraY = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
-            cameraZ = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
+            cameraX = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
+            cameraY = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
+            cameraZ = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
 
             foreach (var specialVar in _specialWatchVars)
             {
@@ -119,15 +119,15 @@ namespace SM64_Diagnostic.Managers
 
             if (pivotOnFocus)
             {
-                pivotX = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusXOffset);
-                pivotY = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusYOffset);
-                pivotZ = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusZOffset);
+                pivotX = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusXOffset);
+                pivotY = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusYOffset);
+                pivotZ = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusZOffset);
             }
             else // pivot on Mario
             {
-                pivotX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-                pivotY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-                pivotZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+                pivotX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+                pivotY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                pivotZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
             }
             return (pivotX, pivotY, pivotZ);
         }

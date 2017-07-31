@@ -36,22 +36,22 @@ namespace SM64_Diagnostic.Managers
 
         public void ProcessSpecialVars()
         {
-            var marioObjRef = _stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
-            short marioObjAnimation = _stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationOffset);
-            short marioObjAnimationTimer = _stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationTimerOffset);
+            var marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+            short marioObjAnimation = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationOffset);
+            short marioObjAnimationTimer = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationTimerOffset);
 
             foreach (var specialVar in _specialWatchVars)
             {
                 switch(specialVar.SpecialName)
                 {                  
                     case "ActionDescription":
-                        string actionDescription = Config.MarioActions.GetActionName(_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset));
+                        string actionDescription = Config.MarioActions.GetActionName(Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset));
                         (specialVar as DataContainer).Text = actionDescription;
                         actionDescriptionLabel.Text = actionDescription;
                         break;
 
                     case "PrevActionDescription":
-                        (specialVar as DataContainer).Text = Config.MarioActions.GetActionName(_stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset));
+                        (specialVar as DataContainer).Text = Config.MarioActions.GetActionName(Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset));
                         break;
 
                     case "MarioAnimationDescription":

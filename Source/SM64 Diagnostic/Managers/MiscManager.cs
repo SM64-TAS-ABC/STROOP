@@ -38,7 +38,7 @@ namespace SM64_Diagnostic.Managers
                 switch(specialVar.SpecialName)
                 {
                     case "RngIndex":
-                        int rngIndex = RngIndexer.GetRngIndex(_stream.GetUInt16(Config.RngAddress));
+                        int rngIndex = RngIndexer.GetRngIndex(Config.Stream.GetUInt16(Config.RngAddress));
                         (specialVar as DataContainer).Text = (rngIndex < 0) ? "N/A [" + (-rngIndex).ToString() + "]" : rngIndex.ToString();
                         break;
 
@@ -64,8 +64,8 @@ namespace SM64_Diagnostic.Managers
 
         private int GetRngCallsPerFrame()
         {
-            var currentRng = _stream.GetUInt16(Config.HackedAreaAddress + 0x0E);
-            var preRng = _stream.GetUInt16(Config.HackedAreaAddress + 0x0C);
+            var currentRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0E);
+            var preRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0C);
 
             return RngIndexer.GetRngIndexDiff(preRng, currentRng);
         }

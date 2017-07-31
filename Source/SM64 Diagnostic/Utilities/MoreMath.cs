@@ -259,13 +259,13 @@ namespace SM64_Diagnostic.Utilities
             return RadiansToAngleUnitsRounded(uphillRadians);
         }
 
-        public static float GetPendulumAmplitude(ProcessStream stream, uint pendulumAddress)
+        public static float GetPendulumAmplitude(uint pendulumAddress)
         {
             // Get pendulum variables
-            float accelerationDirection = stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationDirection);
-            float accelerationMagnitude = stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationMagnitude);
-            float angularVelocity = stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngularVelocity);
-            float angle = stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngle);
+            float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationDirection);
+            float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationMagnitude);
+            float angularVelocity = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngularVelocity);
+            float angle = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngle);
             float acceleration = accelerationDirection * accelerationMagnitude;
 
             // Calculate one frame forwards to see if pendulum is speeding up or slowing down
@@ -364,22 +364,22 @@ namespace SM64_Diagnostic.Utilities
         }
 
         public static (double dotProduct, double distToWaypointPlane, double distToWaypoint)
-            GetWaypointSpecialVars(ProcessStream stream, uint objAddress)
+            GetWaypointSpecialVars(uint objAddress)
         {
-            float objX = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
-            float objY = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-            float objZ = stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+            float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+            float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+            float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
 
-            uint prevWaypointAddress = stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset);
-            short prevWaypointIndex = stream.GetInt16(prevWaypointAddress + Config.Waypoint.IndexOffset);
-            short prevWaypointX = stream.GetInt16(prevWaypointAddress + Config.Waypoint.XOffset);
-            short prevWaypointY = stream.GetInt16(prevWaypointAddress + Config.Waypoint.YOffset);
-            short prevWaypointZ = stream.GetInt16(prevWaypointAddress + Config.Waypoint.ZOffset);
+            uint prevWaypointAddress = Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset);
+            short prevWaypointIndex = Config.Stream.GetInt16(prevWaypointAddress + Config.Waypoint.IndexOffset);
+            short prevWaypointX = Config.Stream.GetInt16(prevWaypointAddress + Config.Waypoint.XOffset);
+            short prevWaypointY = Config.Stream.GetInt16(prevWaypointAddress + Config.Waypoint.YOffset);
+            short prevWaypointZ = Config.Stream.GetInt16(prevWaypointAddress + Config.Waypoint.ZOffset);
             uint nextWaypointAddress = prevWaypointAddress + Config.Waypoint.StructSize;
-            short nextWaypointIndex = stream.GetInt16(nextWaypointAddress + Config.Waypoint.IndexOffset);
-            short nextWaypointX = stream.GetInt16(nextWaypointAddress + Config.Waypoint.XOffset);
-            short nextWaypointY = stream.GetInt16(nextWaypointAddress + Config.Waypoint.YOffset);
-            short nextWaypointZ = stream.GetInt16(nextWaypointAddress + Config.Waypoint.ZOffset);
+            short nextWaypointIndex = Config.Stream.GetInt16(nextWaypointAddress + Config.Waypoint.IndexOffset);
+            short nextWaypointX = Config.Stream.GetInt16(nextWaypointAddress + Config.Waypoint.XOffset);
+            short nextWaypointY = Config.Stream.GetInt16(nextWaypointAddress + Config.Waypoint.YOffset);
+            short nextWaypointZ = Config.Stream.GetInt16(nextWaypointAddress + Config.Waypoint.ZOffset);
 
             float objToWaypointX = nextWaypointX - objX;
             float objToWaypointY = nextWaypointY - objY;
@@ -397,15 +397,15 @@ namespace SM64_Diagnostic.Utilities
         }
 
         public static (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget)
-            GetRacingPenguinSpecialVars(ProcessStream stream, uint racingPenguinAddress)
+            GetRacingPenguinSpecialVars(uint racingPenguinAddress)
         {
-            double marioY = stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-            double objectY = stream.GetSingle(racingPenguinAddress + Config.ObjectSlots.ObjectYOffset);
+            double marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            double objectY = Config.Stream.GetSingle(racingPenguinAddress + Config.ObjectSlots.ObjectYOffset);
             double heightDiff = marioY - objectY;
 
-            uint prevWaypointAddress = stream.GetUInt32(racingPenguinAddress + Config.ObjectSlots.WaypointOffset);
-            short prevWaypointIndex = stream.GetInt16(prevWaypointAddress);
-            double effort = stream.GetSingle(racingPenguinAddress + Config.ObjectSlots.RacingPenguinEffortOffset);
+            uint prevWaypointAddress = Config.Stream.GetUInt32(racingPenguinAddress + Config.ObjectSlots.WaypointOffset);
+            short prevWaypointIndex = Config.Stream.GetInt16(prevWaypointAddress);
+            double effort = Config.Stream.GetSingle(racingPenguinAddress + Config.ObjectSlots.RacingPenguinEffortOffset);
 
             double effortTarget;
             double effortChange;
@@ -430,10 +430,10 @@ namespace SM64_Diagnostic.Utilities
         }
 
         public static (double hSpeedTarget, double hSpeedChange)
-            GetKoopaTheQuickSpecialVars(ProcessStream stream, uint koopaTheQuickAddress)
+            GetKoopaTheQuickSpecialVars(uint koopaTheQuickAddress)
         {
-            double hSpeedMultiplier = stream.GetSingle(koopaTheQuickAddress + Config.ObjectSlots.KoopaTheQuickHSpeedMultiplierOffset);
-            short pitchToWaypointAngleUnits = stream.GetInt16(koopaTheQuickAddress + Config.ObjectSlots.PitchToWaypointOffset);
+            double hSpeedMultiplier = Config.Stream.GetSingle(koopaTheQuickAddress + Config.ObjectSlots.KoopaTheQuickHSpeedMultiplierOffset);
+            short pitchToWaypointAngleUnits = Config.Stream.GetInt16(koopaTheQuickAddress + Config.ObjectSlots.PitchToWaypointOffset);
             double pitchToWaypointRadians = AngleUnitsToRadians(pitchToWaypointAngleUnits);
 
             double hSpeedTarget = hSpeedMultiplier * (Math.Sin(pitchToWaypointRadians) + 1) * 6;

@@ -27,7 +27,6 @@ namespace SM64_Diagnostic.Managers
             _inputDisplayPanel = splitContainerInput.Panel1.Controls["inputDisplayPanel"] as InputDisplayPanel;
 
             _inputDisplayPanel.setInputDisplayGui(_gui);
-            _inputDisplayPanel.setProcessStream(_stream);
         }
 
         public override void Update(bool updateView)

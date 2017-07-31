@@ -150,14 +150,14 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static string GetPuPosString(ProcessStream stream)
+        public static string GetPuPosString()
         {
             var marioAddress = Config.Mario.StructAddress;
 
             // Get Mario position
             float marioX, marioZ;
-            marioX = stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            marioZ = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
+            marioX = Config.Stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            marioZ = Config.Stream.GetSingle(marioAddress + Config.Mario.ZOffset);
 
             // Update PU
             int puX = PuUtilities.GetPUFromCoord(marioX);
@@ -165,14 +165,14 @@ namespace SM64_Diagnostic.Utilities
 
             return string.Format("[{0}:{1}]", puX, puZ);
         }
-        public static string GetQpuPosString(ProcessStream stream)
+        public static string GetQpuPosString()
         {
             var marioAddress = Config.Mario.StructAddress;
 
             // Get Mario position
             float marioX, marioZ;
-            marioX = stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            marioZ = stream.GetSingle(marioAddress + Config.Mario.ZOffset);
+            marioX = Config.Stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            marioZ = Config.Stream.GetSingle(marioAddress + Config.Mario.ZOffset);
 
             // Update PU
             int puX = PuUtilities.GetPUFromCoord(marioX);

@@ -620,45 +620,45 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool RefillHp(ProcessStream stream)
+        public static bool RefillHp()
         {
-            return stream.SetValue(Config.Hud.FullHp, Config.Hud.HpAddress);
+            return Config.Stream.SetValue(Config.Hud.FullHp, Config.Hud.HpAddress);
         }
 
-        public static bool Die(ProcessStream stream)
+        public static bool Die()
         {
-            return stream.SetValue((short)255, Config.Hud.HpAddress);
+            return Config.Stream.SetValue((short)255, Config.Hud.HpAddress);
         }
 
-        public static bool StandardHud(ProcessStream stream)
+        public static bool StandardHud()
         {
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= stream.SetValue(Config.Hud.FullHp, Config.Hud.HpAddress);
-            success &= stream.SetValue(Config.Hud.StandardCoins, Config.Hud.CoinCountAddress);
-            success &= stream.SetValue(Config.Hud.StandardLives, Config.Hud.LiveCountAddress);
-            success &= stream.SetValue(Config.Hud.StandardStars, Config.Hud.StarCountAddress);
-            success &= stream.SetValue(Config.Hud.FullHpInt, Config.Hud.DisplayHpAddress);
-            success &= stream.SetValue(Config.Hud.StandardCoins, Config.Hud.DisplayCoinCountAddress);
-            success &= stream.SetValue((short)Config.Hud.StandardLives, Config.Hud.DisplayLiveCountAddress);
-            success &= stream.SetValue(Config.Hud.StandardStars, Config.Hud.DisplayStarCountAddress);
+            success &= Config.Stream.SetValue(Config.Hud.FullHp, Config.Hud.HpAddress);
+            success &= Config.Stream.SetValue(Config.Hud.StandardCoins, Config.Hud.CoinCountAddress);
+            success &= Config.Stream.SetValue(Config.Hud.StandardLives, Config.Hud.LiveCountAddress);
+            success &= Config.Stream.SetValue(Config.Hud.StandardStars, Config.Hud.StarCountAddress);
+            success &= Config.Stream.SetValue(Config.Hud.FullHpInt, Config.Hud.DisplayHpAddress);
+            success &= Config.Stream.SetValue(Config.Hud.StandardCoins, Config.Hud.DisplayCoinCountAddress);
+            success &= Config.Stream.SetValue((short)Config.Hud.StandardLives, Config.Hud.DisplayLiveCountAddress);
+            success &= Config.Stream.SetValue(Config.Hud.StandardStars, Config.Hud.DisplayStarCountAddress);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool Coins99(ProcessStream stream)
+        public static bool Coins99()
         {
             bool success = true;
-            bool streamAlreadySuspended = stream.IsSuspended;
-            if (!streamAlreadySuspended) stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= stream.SetValue((short)99, Config.Hud.CoinCountAddress);
-            success &= stream.SetValue((short)99, Config.Hud.DisplayCoinCountAddress);
+            success &= Config.Stream.SetValue((short)99, Config.Hud.CoinCountAddress);
+            success &= Config.Stream.SetValue((short)99, Config.Hud.DisplayCoinCountAddress);
 
-            if (!streamAlreadySuspended) stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 

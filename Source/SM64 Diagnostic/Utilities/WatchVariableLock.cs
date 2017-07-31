@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,18 +11,16 @@ namespace SM64_Diagnostic.Utilities
     {
         uint _address;
         byte[] _data;
-        ProcessStream _stream;
 
-        public WatchVariableLock(ProcessStream stream, uint address, byte[] data)
+        public WatchVariableLock(uint address, byte[] data)
         {
-            _stream = stream;
             _data = data;
             _address = address;
         }
 
         public bool Update()
         {
-            return _stream.WriteRamLittleEndian(_data, _address);
+            return Config.Stream.WriteRamLittleEndian(_data, _address);
         }
 
         public override int GetHashCode()

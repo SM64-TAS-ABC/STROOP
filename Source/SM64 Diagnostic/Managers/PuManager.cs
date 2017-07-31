@@ -12,13 +12,11 @@ namespace SM64_Diagnostic.Managers
     public class PuManager
     {
         Control _puController;
-        ProcessStream _stream;
 
         enum PuControl { Home, PuUp, PuDown, PuLeft, PuRight, QpuUp, QpuDown, QpuLeft, QpuRight };
 
         public PuManager(Control puController)
         {
-            _stream = Config.Stream;
             _puController = puController;
 
             // Pu Controller initialize and register click events
@@ -75,8 +73,8 @@ namespace SM64_Diagnostic.Managers
             //base.Update();
             //ProcessSpecialVars();
 
-            _puController.Controls["labelPuConPuValue"].Text = PuUtilities.GetPuPosString(_stream);
-            _puController.Controls["labelPuConQpuValue"].Text = PuUtilities.GetQpuPosString(_stream);
+            _puController.Controls["labelPuConPuValue"].Text = PuUtilities.GetPuPosString();
+            _puController.Controls["labelPuConQpuValue"].Text = PuUtilities.GetQpuPosString();
         }
     }
 }

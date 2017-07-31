@@ -132,26 +132,26 @@ namespace SM64_Diagnostic.Managers
 
         public void ProcessSpecialVars()
         {
-            UInt32 floorTriangle = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
-            var floorY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.GroundYOffset);
+            UInt32 floorTriangle = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
+            var floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.GroundYOffset);
 
-            float hSpeed = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
+            float hSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
 
-            float slidingSpeedX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
-            float slidingSpeedZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+            float slidingSpeedX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+            float slidingSpeedZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
 
-            ushort marioYawFacing = _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+            ushort marioYawFacing = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
             ushort marioYawFacingTruncated = (ushort)(marioYawFacing / 16 * 16);
-            ushort marioYawIntended = _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawIntendedOffset);
+            ushort marioYawIntended = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawIntendedOffset);
             ushort marioYawIntendedTruncated = (ushort)(marioYawIntended / 16 * 16);
 
-            float movementX = (_stream.GetSingle(Config.HackedAreaAddress + 0x10)
-                - _stream.GetSingle(Config.HackedAreaAddress + 0x1C));
-            float movementY = (_stream.GetSingle(Config.HackedAreaAddress + 0x14)
-                - _stream.GetSingle(Config.HackedAreaAddress + 0x20));
-            float movementZ = (_stream.GetSingle(Config.HackedAreaAddress + 0x18)
-                - _stream.GetSingle(Config.HackedAreaAddress + 0x24));
-            ushort marioAngle = _stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+            float movementX = (Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10)
+                - Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C));
+            float movementY = (Config.Stream.GetSingle(Config.HackedAreaAddress + 0x14)
+                - Config.Stream.GetSingle(Config.HackedAreaAddress + 0x20));
+            float movementZ = (Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18)
+                - Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24));
+            ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
 
             double movementLateral = Math.Sqrt(movementX * movementX + movementZ * movementZ);
             double movementAngle = MoreMath.AngleTo_AngleUnits(0, 0, movementX, movementZ);
@@ -164,7 +164,7 @@ namespace SM64_Diagnostic.Managers
                     case "DeFactoSpeed":
                         if (floorTriangle != 0x00)
                         {
-                            float normY = _stream.GetSingle(floorTriangle + Config.TriangleOffsets.NormY);
+                            float normY = Config.Stream.GetSingle(floorTriangle + Config.TriangleOffsets.NormY);
                             (specialVar as DataContainer).Text = Math.Round(hSpeed * normY, 3).ToString();
                         }
                         else
@@ -188,7 +188,7 @@ namespace SM64_Diagnostic.Managers
                         break;
 
                     case "FallHeight":
-                        (specialVar as DataContainer).Text = (_stream.GetSingle(Config.Mario.StructAddress + Config.Mario.PeakHeightOffset) - floorY).ToString();
+                        (specialVar as DataContainer).Text = (Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.PeakHeightOffset) - floorY).ToString();
                         break;
 
                     case "MovementX":
@@ -224,7 +224,7 @@ namespace SM64_Diagnostic.Managers
                         break;
 
                     case "QFrameCountEstimate":
-                        var oldHSpeed = _stream.GetSingle(Config.HackedAreaAddress + 0x28);
+                        var oldHSpeed = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x28);
                         var qframes = Math.Abs(Math.Round(Math.Sqrt(movementX * movementX + movementZ * movementZ) / (oldHSpeed / 4)));
                         if (qframes > 4)
                             qframes = double.NaN;
@@ -239,10 +239,10 @@ namespace SM64_Diagnostic.Managers
             // Get Mario position and rotation
             float x, y, z, rot;
             var marioAddress = Config.Mario.StructAddress;
-            x = _stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            y = _stream.GetSingle(marioAddress + Config.Mario.YOffset);
-            z = _stream.GetSingle(marioAddress + Config.Mario.ZOffset);
-            rot = (float) (((_stream.GetUInt32(marioAddress + Config.Mario.RotationOffset) >> 16) % 65536) / 65536f * 360f); 
+            x = Config.Stream.GetSingle(marioAddress + Config.Mario.XOffset);
+            y = Config.Stream.GetSingle(marioAddress + Config.Mario.YOffset);
+            z = Config.Stream.GetSingle(marioAddress + Config.Mario.ZOffset);
+            rot = (float) (((Config.Stream.GetUInt32(marioAddress + Config.Mario.RotationOffset) >> 16) % 65536) / 65536f * 360f); 
 
             // Update Mario map object
             _mapManager.MarioMapObject.X = x;
@@ -253,9 +253,9 @@ namespace SM64_Diagnostic.Managers
 
             // Get holp position
             float holpX, holpY, holpZ;
-            holpX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPXOffset);
-            holpY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPYOffset);
-            holpZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPZOffset);
+            holpX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPXOffset);
+            holpY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPYOffset);
+            holpZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPZOffset);
 
             // Update holp map object position
             _mapManager.HolpMapObject.X = holpX;
@@ -265,24 +265,24 @@ namespace SM64_Diagnostic.Managers
 
             // Update camera position and rotation
             float cameraX, cameraY, cameraZ , cameraRot;
-            cameraX = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
-            cameraY = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
-            cameraZ = _stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
-            cameraRot = (float)((_stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset) / 65536f * 360f));
+            cameraX = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
+            cameraY = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
+            cameraZ = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
+            cameraRot = (float)((Config.Stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset) / 65536f * 360f));
 
             // Update floor triangle
-            UInt32 floorTriangle = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
+            UInt32 floorTriangle = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
             if (floorTriangle != 0x00)
             {
-                Int16 x1 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.X1);
-                Int16 y1 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.Y1);
-                Int16 z1 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.Z1);
-                Int16 x2 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.X2);
-                Int16 y2 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.Y2);
-                Int16 z2 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.Z2);
-                Int16 x3 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.X3);
-                Int16 y3 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.Y3);
-                Int16 z3 = _stream.GetInt16(floorTriangle + Config.TriangleOffsets.Z3);
+                Int16 x1 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.X1);
+                Int16 y1 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.Y1);
+                Int16 z1 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.Z1);
+                Int16 x2 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.X2);
+                Int16 y2 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.Y2);
+                Int16 z2 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.Z2);
+                Int16 x3 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.X3);
+                Int16 y3 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.Y3);
+                Int16 z3 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.Z3);
                 _mapManager.FloorTriangleMapObject.X1 = x1;
                 _mapManager.FloorTriangleMapObject.Z1 = z1;
                 _mapManager.FloorTriangleMapObject.X2 = x2;
@@ -294,18 +294,18 @@ namespace SM64_Diagnostic.Managers
             _mapManager.FloorTriangleMapObject.Show = (floorTriangle != 0x00);
 
             // Update ceiling triangle
-            UInt32 ceilingTriangle = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
+            UInt32 ceilingTriangle = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
             if (ceilingTriangle != 0x00)
             {
-                Int16 x1 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.X1);
-                Int16 y1 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Y1);
-                Int16 z1 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Z1);
-                Int16 x2 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.X2);
-                Int16 y2 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Y2);
-                Int16 z2 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Z2);
-                Int16 x3 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.X3);
-                Int16 y3 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Y3);
-                Int16 z3 = _stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Z3);
+                Int16 x1 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.X1);
+                Int16 y1 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Y1);
+                Int16 z1 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Z1);
+                Int16 x2 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.X2);
+                Int16 y2 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Y2);
+                Int16 z2 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Z2);
+                Int16 x3 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.X3);
+                Int16 y3 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Y3);
+                Int16 z3 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Z3);
                 _mapManager.CeilingTriangleMapObject.X1 = x1;
                 _mapManager.CeilingTriangleMapObject.Z1 = z1;
                 _mapManager.CeilingTriangleMapObject.X2 = x2;

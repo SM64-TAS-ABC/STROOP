@@ -318,7 +318,7 @@ namespace SM64_Diagnostic.Managers
             // go through the 25 contiguous star bytes
             for (int i = 0; i < 25; i++)
             {
-                starByte = _stream.GetByte(CurrentFileAddress + Config.File.CourseStarsOffsetStart + (uint)i);
+                starByte = Config.Stream.GetByte(CurrentFileAddress + Config.File.CourseStarsOffsetStart + (uint)i);
                 for (int b = 0; b < 7; b++)
                 {
                     starCount += (byte)((starByte >> b) & 1);
@@ -326,7 +326,7 @@ namespace SM64_Diagnostic.Managers
             }
 
             // go through the 1 non-contiguous star byte (for toads and MIPS)
-            starByte = _stream.GetByte(CurrentFileAddress + Config.File.ToadMIPSStarsOffset);
+            starByte = Config.Stream.GetByte(CurrentFileAddress + Config.File.ToadMIPSStarsOffset);
             for (int b = 0; b < 7; b++)
             {
                 starCount += (byte)((starByte >> b) & 1);
@@ -447,8 +447,8 @@ namespace SM64_Diagnostic.Managers
         private void NumStarsButton_Click(object sender, EventArgs e)
         {
             short numStars = CalculateNumStars();
-            _stream.SetValue(numStars, Config.Hud.StarCountAddress);
-            _stream.SetValue(numStars, Config.Hud.DisplayStarCountAddress);
+            Config.Stream.SetValue(numStars, Config.Hud.StarCountAddress);
+            Config.Stream.SetValue(numStars, Config.Hud.DisplayStarCountAddress);
         }
 
         private void FileSaveButton_Click(object sender, EventArgs e)
@@ -457,28 +457,28 @@ namespace SM64_Diagnostic.Managers
             uint nonSavedAddress = GetNonSavedFileAddress(CurrentFileMode);
 
             // Set the checksum constant
-            _stream.SetValue(Config.File.ChecksumConstantValue, nonSavedAddress + Config.File.ChecksumConstantOffset);
+            Config.Stream.SetValue(Config.File.ChecksumConstantValue, nonSavedAddress + Config.File.ChecksumConstantOffset);
 
             // Sum up all bytes to calculate the checksum
             ushort checksum = (ushort)(Config.File.ChecksumConstantValue % 256 + Config.File.ChecksumConstantValue / 256);
             for (uint i = 0; i < Config.File.FileStructSize-4; i++)
             {
-                byte b = _stream.GetByte(nonSavedAddress + i);
+                byte b = Config.Stream.GetByte(nonSavedAddress + i);
                 checksum += b;
             }
 
             // Set the checksum
-            _stream.SetValue(checksum, nonSavedAddress + Config.File.ChecksumOffset);
+            Config.Stream.SetValue(checksum, nonSavedAddress + Config.File.ChecksumOffset);
 
             // Copy all values from the unsaved struct to the saved struct
             uint savedAddress = nonSavedAddress + Config.File.FileStructSize;
             for (uint i = 0; i < Config.File.FileStructSize - 4; i++)
             {
-                byte b = _stream.GetByte(nonSavedAddress + i);
-                _stream.SetValue(b, savedAddress + i);
+                byte b = Config.Stream.GetByte(nonSavedAddress + i);
+                Config.Stream.SetValue(b, savedAddress + i);
             }
-            _stream.SetValue(Config.File.ChecksumConstantValue, savedAddress + Config.File.ChecksumConstantOffset);
-            _stream.SetValue(checksum, savedAddress + Config.File.ChecksumOffset);
+            Config.Stream.SetValue(Config.File.ChecksumConstantValue, savedAddress + Config.File.ChecksumConstantOffset);
+            Config.Stream.SetValue(checksum, savedAddress + Config.File.ChecksumOffset);
         }
 
         private void FileEraseButton_Click(object sender, EventArgs e)
@@ -491,16 +491,16 @@ namespace SM64_Diagnostic.Managers
             ushort checksum = (ushort)(Config.File.ChecksumConstantValue % 256 + Config.File.ChecksumConstantValue / 256);
 
             // Set the checksum constant and checksum (in both unsaved and saved)
-            _stream.SetValue(Config.File.ChecksumConstantValue, nonSavedAddress + Config.File.ChecksumConstantOffset);
-            _stream.SetValue(Config.File.ChecksumConstantValue, savedAddress + Config.File.ChecksumConstantOffset);
-            _stream.SetValue(checksum, nonSavedAddress + Config.File.ChecksumOffset);
-            _stream.SetValue(checksum, savedAddress + Config.File.ChecksumOffset);
+            Config.Stream.SetValue(Config.File.ChecksumConstantValue, nonSavedAddress + Config.File.ChecksumConstantOffset);
+            Config.Stream.SetValue(Config.File.ChecksumConstantValue, savedAddress + Config.File.ChecksumConstantOffset);
+            Config.Stream.SetValue(checksum, nonSavedAddress + Config.File.ChecksumOffset);
+            Config.Stream.SetValue(checksum, savedAddress + Config.File.ChecksumOffset);
 
             // Set all bytes to 0 (in both unsaved and saved)
             for (uint i = 0; i < Config.File.FileStructSize - 4; i++)
             {
-                _stream.SetValue((byte)0, nonSavedAddress + i);
-                _stream.SetValue((byte)0, savedAddress + i);
+                Config.Stream.SetValue((byte)0, nonSavedAddress + i);
+                Config.Stream.SetValue((byte)0, savedAddress + i);
             }
         }
 
@@ -509,7 +509,7 @@ namespace SM64_Diagnostic.Managers
             byte[] bufferedBytes = new byte[Config.File.FileStructSize];
             for (int i = 0; i < Config.File.FileStructSize; i++)
             {
-                bufferedBytes[i] = _stream.GetByte(CurrentFileAddress + (uint)i);
+                bufferedBytes[i] = Config.Stream.GetByte(CurrentFileAddress + (uint)i);
             }
             return bufferedBytes;
         }
@@ -518,7 +518,7 @@ namespace SM64_Diagnostic.Managers
         {
             for (int i = 0; i < Config.File.FileStructSize; i++)
             {
-                _stream.SetValue(bufferedBytes[i], CurrentFileAddress + (uint)i);
+                Config.Stream.SetValue(bufferedBytes[i], CurrentFileAddress + (uint)i);
             }
         }
 

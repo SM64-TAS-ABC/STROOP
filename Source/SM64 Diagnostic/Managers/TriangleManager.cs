@@ -161,15 +161,15 @@ namespace SM64_Diagnostic.Managers
             if (TriangleAddress == 0x0000) return;
 
             short[] coordinates = new short[9];
-            coordinates[0] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
-            coordinates[1] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
-            coordinates[2] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
-            coordinates[3] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
-            coordinates[4] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
-            coordinates[5] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
-            coordinates[6] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
-            coordinates[7] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
-            coordinates[8] = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
+            coordinates[0] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
+            coordinates[1] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
+            coordinates[2] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
+            coordinates[3] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
+            coordinates[4] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
+            coordinates[5] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
+            coordinates[6] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
+            coordinates[7] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
+            coordinates[8] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
 
             var triangleCoordinatesInfo = new TriangleCoordinatesForm(coordinates);
             triangleCoordinatesInfo.ShowDialog();
@@ -177,19 +177,19 @@ namespace SM64_Diagnostic.Managers
 
         private void ProcessSpecialVars()
         {
-            var floorY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.GroundYOffset);
+            var floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.GroundYOffset);
 
             // Get Mario position
             float marioX, marioY, marioZ;
-            marioX = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-            marioY = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-            marioZ = _stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
             float normX, normY, normZ, normOffset;
-            normX = _stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormX);
-            normY = _stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormY);
-            normZ = _stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormZ);
-            normOffset = _stream.GetSingle(TriangleAddress + Config.TriangleOffsets.Offset);
+            normX = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormX);
+            normY = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormY);
+            normZ = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormZ);
+            normOffset = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.Offset);
 
             var uphillAngle = Math.PI + Math.Atan2(normX, normZ);
             if (normX == 0 && normZ == 0)
@@ -200,15 +200,15 @@ namespace SM64_Diagnostic.Managers
             short v1X, v1Y, v1Z;
             short v2X, v2Y, v2Z;
             short v3X, v3Y, v3Z;
-            v1X = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
-            v1Y = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
-            v1Z = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
-            v2X = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
-            v2Y = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
-            v2Z = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
-            v3X = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
-            v3Y = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
-            v3Z = _stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
+            v1X = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
+            v1Y = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
+            v1Z = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
+            v2X = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
+            v2Y = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
+            v2Z = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
+            v3X = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
+            v3Y = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
+            v3Z = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
 
             var disToV = new double[]
             {
@@ -227,7 +227,7 @@ namespace SM64_Diagnostic.Managers
                         (specialVar as DataContainer).Text = (marioY - floorY).ToString();
                         break;
                     case "DistanceBelowCeiling":
-                        (specialVar as DataContainer).Text = (_stream.GetSingle(Config.Mario.StructAddress + Config.Mario.CeilingYOffset)
+                        (specialVar as DataContainer).Text = (Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.CeilingYOffset)
                             - marioY).ToString();
                         break;
                     case "ClosestVertex":
@@ -399,15 +399,15 @@ namespace SM64_Diagnostic.Managers
                 switch (Mode)
                 {
                     case TriangleMode.Ceiling:
-                        TriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
+                        TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
                         break;
 
                     case TriangleMode.Floor:
-                        TriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
+                        TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
                         break;
 
                     case TriangleMode.Wall:
-                        TriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset);
+                        TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset);
                         break;
                 }
 
