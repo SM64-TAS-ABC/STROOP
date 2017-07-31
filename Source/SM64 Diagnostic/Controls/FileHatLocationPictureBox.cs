@@ -107,8 +107,6 @@ namespace SM64_Diagnostic
 
         public override void UpdateImage(bool force = false)
         {
-            if (Config.Stream == null) return;
-
             HatLocation? currentHatLocation = GetCurrentHatLocation();
             if (_currentHatLocation != currentHatLocation || force)
             {

@@ -78,8 +78,6 @@ namespace SM64_Diagnostic
 
         public virtual void UpdateImage(bool force = false)
         {
-            if (Config.Stream == null) return;
-
             byte value = GetValue();
             if (_currentValue != value || force)
             {
