@@ -20,7 +20,6 @@ namespace SM64_Diagnostic
     public partial class StroopMainForm : Form
     {
         const string _version = "v0.2.9";
-        ProcessStream _sm64Stream = null;
         
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         InputImageGui _inputImageGui = new InputImageGui();
@@ -73,7 +72,7 @@ namespace SM64_Diagnostic
                 MessageBox.Show("Ambigous emulator type", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            return _sm64Stream.SwitchProcess(process, emulators[0]);
+            return Config.Stream.SwitchProcess(process, emulators[0]);
         }
 
         private void StroopMainForm_Load(object sender, EventArgs e)
@@ -87,16 +86,16 @@ namespace SM64_Diagnostic
             var currentContext = new ManagerContext();
             ManagerContext.Current = currentContext;
 
-            _sm64Stream = new ProcessStream();
-            _sm64Stream.OnUpdate += OnUpdate;
-            _sm64Stream.FpsUpdated += _sm64Stream_FpsUpdated;
-            _sm64Stream.OnDisconnect += _sm64Stream_OnDisconnect;
-            _sm64Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
-            _sm64Stream.OnClose += _sm64Stream_OnClose;
+            Config.Stream = new ProcessStream();
+            Config.Stream.OnUpdate += OnUpdate;
+            Config.Stream.FpsUpdated += _sm64Stream_FpsUpdated;
+            Config.Stream.OnDisconnect += _sm64Stream_OnDisconnect;
+            Config.Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
+            Config.Stream.OnClose += _sm64Stream_OnClose;
 
-            currentContext.DisassemblyManager = _disManager = new DisassemblyManager(_sm64Stream, tabPageDisassembly);
-            currentContext.ScriptManager = _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
-            currentContext.HackManager = _hackManager = new HackManager(_sm64Stream, _romHacks, _objectAssoc.SpawnHacks, tabPageHacks);
+            currentContext.DisassemblyManager = _disManager = new DisassemblyManager(Config.Stream, tabPageDisassembly);
+            currentContext.ScriptManager = _scriptManager = new ScriptManager(Config.Stream, _scriptParser, checkBoxUseRomHack);
+            currentContext.HackManager = _hackManager = new HackManager(Config.Stream, _romHacks, _objectAssoc.SpawnHacks, tabPageHacks);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -114,22 +113,22 @@ namespace SM64_Diagnostic
             mapGui.MapShowCamera = checkBoxMapShowCamera;
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
             mapGui.MapShowCeilingTriangle = checkBoxMapShowCeiling;
-            currentContext.MapManager = _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
+            currentContext.MapManager = _mapManager = new MapManager(Config.Stream, _mapAssoc, _objectAssoc, mapGui);
 
-            currentContext.ActionsManager = _actionsManager = new ActionsManager(_sm64Stream, _actionsData, noTearFlowLayoutPanelActions, tabPageActions);
-            currentContext.WaterManager = _waterManager = new DataManager(_sm64Stream, _waterData, noTearFlowLayoutPanelWater);
-            currentContext.InputManager = _inputManager = new InputManager(_sm64Stream, _inputData, tabPageInput, NoTearFlowLayoutPanelInput, _inputImageGui);
-            currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
-            currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud, NoTearFlowLayoutPanelHud);
-            currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc);
-            currentContext.CameraManager = _cameraManager = new CameraManager(_sm64Stream, _cameraData, tabPageCamera, NoTearFlowLayoutPanelCamera);
-            currentContext.TriangleManager = _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData, NoTearFlowLayoutPanelTriangles);
-            currentContext.DebugManager = _debugManager = new DebugManager(_sm64Stream, tabPageDebug);
-            currentContext.PuManager = _puManager = new PuManager(_sm64Stream, groupBoxPuController);
-            currentContext.FileManager = _fileManager = new FileManager(_sm64Stream, _fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
-            currentContext.QuarterFrameManager = _quarterFrameManager = new DataManager(_sm64Stream, _quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
-            currentContext.CameraHackManager = _cameraHackManager = new CamHackManager(_sm64Stream, _camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
-            currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
+            currentContext.ActionsManager = _actionsManager = new ActionsManager(Config.Stream, _actionsData, noTearFlowLayoutPanelActions, tabPageActions);
+            currentContext.WaterManager = _waterManager = new DataManager(Config.Stream, _waterData, noTearFlowLayoutPanelWater);
+            currentContext.InputManager = _inputManager = new InputManager(Config.Stream, _inputData, tabPageInput, NoTearFlowLayoutPanelInput, _inputImageGui);
+            currentContext.MarioManager = _marioManager = new MarioManager(Config.Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
+            currentContext.HudManager = _hudManager = new HudManager(Config.Stream, _hudData, tabPageHud, NoTearFlowLayoutPanelHud);
+            currentContext.MiscManager = _miscManager = new MiscManager(Config.Stream, _miscData, NoTearFlowLayoutPanelMisc);
+            currentContext.CameraManager = _cameraManager = new CameraManager(Config.Stream, _cameraData, tabPageCamera, NoTearFlowLayoutPanelCamera);
+            currentContext.TriangleManager = _triangleManager = new TriangleManager(Config.Stream, tabPageTriangles, _triangleData, NoTearFlowLayoutPanelTriangles);
+            currentContext.DebugManager = _debugManager = new DebugManager(Config.Stream, tabPageDebug);
+            currentContext.PuManager = _puManager = new PuManager(Config.Stream, groupBoxPuController);
+            currentContext.FileManager = _fileManager = new FileManager(Config.Stream, _fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
+            currentContext.QuarterFrameManager = _quarterFrameManager = new DataManager(Config.Stream, _quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
+            currentContext.CameraHackManager = _cameraHackManager = new CamHackManager(Config.Stream, _camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
+            currentContext.ObjectManager = _objectManager = new ObjectManager(Config.Stream, _objectAssoc, _objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
@@ -137,7 +136,7 @@ namespace SM64_Diagnostic
             _slotManagerGui.FlowLayoutContainer = NoTearFlowLayoutPanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
-            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(_sm64Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager, tabControlMain);
+            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(Config.Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager, tabControlMain);
 
             SetupViews();
 
@@ -159,13 +158,13 @@ namespace SM64_Diagnostic
                 switch (dr)
                 {
                     case DialogResult.Yes:
-                        _sm64Stream.Readonly = false;
-                        _sm64Stream.ShowWarning = false;
+                        Config.Stream.Readonly = false;
+                        Config.Stream.ShowWarning = false;
                         buttonReadOnly.Text = "Switch to Read-Only";
                         break;
 
                     case DialogResult.No:
-                        _sm64Stream.ShowWarning = false;
+                        Config.Stream.ShowWarning = false;
                         break;
 
                     case DialogResult.Cancel:
@@ -281,7 +280,7 @@ namespace SM64_Diagnostic
         {
             BeginInvoke(new Action(() =>
             {
-                labelFpsCounter.Text = "FPS: " + (int)_sm64Stream.Fps;
+                labelFpsCounter.Text = "FPS: " + (int)Config.Stream.Fps;
             }));
         }
 
@@ -456,9 +455,9 @@ namespace SM64_Diagnostic
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if (_sm64Stream.IsRunning)
+            if (Config.Stream.IsRunning)
             {
-                _sm64Stream.Stop();
+                Config.Stream.Stop();
                 e.Cancel = true;
                 Hide();
                 return;
@@ -551,9 +550,9 @@ namespace SM64_Diagnostic
 
         private void buttonReadOnly_Click(object sender, EventArgs e)
         {
-            _sm64Stream.Readonly = !_sm64Stream.Readonly;
-            buttonReadOnly.Text = _sm64Stream.Readonly ? "Switch to Read-Write" : "Switch to Read-Only";
-            _sm64Stream.ShowWarning = false;
+            Config.Stream.Readonly = !Config.Stream.Readonly;
+            buttonReadOnly.Text = Config.Stream.Readonly ? "Switch to Read-Write" : "Switch to Read-Only";
+            Config.Stream.ShowWarning = false;
         }
 
         private void StroopMainForm_Resize(object sender, EventArgs e)
@@ -594,7 +593,7 @@ namespace SM64_Diagnostic
 
         private void buttonDisconnect_Click(object sender, EventArgs e)
         {
-            _sm64Stream.SwitchProcess(null, null);
+            Config.Stream.SwitchProcess(null, null);
             panelConnect.Size = this.Size;
             panelConnect.Visible = true;
         }

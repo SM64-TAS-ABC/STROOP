@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace SM64_Diagnostic.Structs.Configurations
 {
     public static class Config
     {
+        public static ProcessStream Stream;
         public static int RefreshRateFreq;
         public static List<Emulator> Emulators = new List<Emulator>();
         public static uint RamSize;
