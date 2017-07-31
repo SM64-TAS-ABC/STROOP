@@ -63,6 +63,7 @@
   <Data type="int" address="0x9C" offset="Object">Tangible</Data>
   <Data type="float" address="0x130" offset="Object" useHex="true">Collision Type</Data>
   <Data type="uint" address="0x3C" offset="Object" useHex="true">Animation</Data>
+  <Data type="uint" address="0x04" offset="Animation" mask="0x80" isBool="true">Freeze Animation</Data>
   <Data type="short" address="0x40" offset="Object">Animation Timer</Data>
   <Data type="int" address="0xF0" offset="Object">Graphics Timer</Data>
   <Data type="float" address="0x2C" offset="Object">Scale (Width)</Data>
