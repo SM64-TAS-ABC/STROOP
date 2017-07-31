@@ -18,9 +18,9 @@ namespace SM64_Diagnostic.Managers
         RadioButton[] _dbgSettingRadioButton;
         RadioButton _dbgSettingRadioButtonOff;
 
-        public DebugManager(ProcessStream stream, Control tabControl)
+        public DebugManager(Control tabControl)
         {
-            _stream = stream;
+            _stream = Config.Stream;
 
             var panel = tabControl.Controls["NoTearFlowLayoutPanelDebugDisplayType"];
 

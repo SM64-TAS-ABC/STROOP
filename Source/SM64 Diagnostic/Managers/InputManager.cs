@@ -18,8 +18,8 @@ namespace SM64_Diagnostic.Managers
         InputImageGui _gui;
         InputDisplayPanel _inputDisplayPanel;
 
-        public InputManager(ProcessStream stream, List<WatchVariable> inputData, Control inputControl, NoTearFlowLayoutPanel variableTable, InputImageGui gui)
-            : base(stream, inputData, variableTable)
+        public InputManager(List<WatchVariable> inputData, Control inputControl, NoTearFlowLayoutPanel variableTable, InputImageGui gui)
+            : base(inputData, variableTable)
         {
             _gui = gui;
 

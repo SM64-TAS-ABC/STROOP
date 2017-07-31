@@ -226,8 +226,8 @@ namespace SM64_Diagnostic.Managers
             };
         }
 
-        public ObjectManager(ProcessStream stream, ObjectAssociations objAssoc, List<WatchVariable> objectData, Control objectControl, NoTearFlowLayoutPanel variableTable)
-            : base(stream, objectData, variableTable)
+        public ObjectManager(ObjectAssociations objAssoc, List<WatchVariable> objectData, Control objectControl, NoTearFlowLayoutPanel variableTable)
+            : base(objectData, variableTable)
         {
             Instance = this;
 
@@ -333,7 +333,7 @@ namespace SM64_Diagnostic.Managers
                 objAngleGroupBox.Controls["textBoxObjAngleYaw"] as TextBox,
                 (float yawValue) =>
                 {
-                    ButtonUtilities.RotateObjects(stream, _currentAddresses, (int)Math.Round(yawValue), 0, 0);
+                    ButtonUtilities.RotateObjects(Config.Stream, _currentAddresses, (int)Math.Round(yawValue), 0, 0);
                 });
             ScalarController.initialize(
                 objAngleGroupBox.Controls["buttonObjAnglePitchN"] as Button,
@@ -341,7 +341,7 @@ namespace SM64_Diagnostic.Managers
                 objAngleGroupBox.Controls["textBoxObjAnglePitch"] as TextBox,
                 (float pitchValue) =>
                 {
-                    ButtonUtilities.RotateObjects(stream, _currentAddresses, 0, (int)Math.Round(pitchValue), 0);
+                    ButtonUtilities.RotateObjects(Config.Stream, _currentAddresses, 0, (int)Math.Round(pitchValue), 0);
                 });
             ScalarController.initialize(
                 objAngleGroupBox.Controls["buttonObjAngleRollN"] as Button,
@@ -349,7 +349,7 @@ namespace SM64_Diagnostic.Managers
                 objAngleGroupBox.Controls["textBoxObjAngleRoll"] as TextBox,
                 (float rollValue) =>
                 {
-                    ButtonUtilities.RotateObjects(stream, _currentAddresses, 0, 0, (int)Math.Round(rollValue));
+                    ButtonUtilities.RotateObjects(Config.Stream, _currentAddresses, 0, 0, (int)Math.Round(rollValue));
                 });
 
             var objScaleGroupBox = objPanel.Controls["groupBoxObjScale"] as GroupBox;
@@ -370,7 +370,7 @@ namespace SM64_Diagnostic.Managers
                 objScaleGroupBox.Controls["checkBoxObjScaleMultiply"] as CheckBox,
                 (float widthChange, float heightChange, float depthChange, bool multiply) =>
                 {
-                    ButtonUtilities.ScaleObjects(stream, _currentAddresses, widthChange, heightChange, depthChange, multiply);
+                    ButtonUtilities.ScaleObjects(Config.Stream, _currentAddresses, widthChange, heightChange, depthChange, multiply);
                 });
 
             var objHomeGroupBox = objPanel.Controls["groupBoxObjHome"] as GroupBox;

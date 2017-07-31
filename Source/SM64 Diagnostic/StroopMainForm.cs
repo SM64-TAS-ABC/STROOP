@@ -93,9 +93,9 @@ namespace SM64_Diagnostic
             Config.Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
             Config.Stream.OnClose += _sm64Stream_OnClose;
 
-            currentContext.DisassemblyManager = _disManager = new DisassemblyManager(Config.Stream, tabPageDisassembly);
-            currentContext.ScriptManager = _scriptManager = new ScriptManager(Config.Stream, _scriptParser, checkBoxUseRomHack);
-            currentContext.HackManager = _hackManager = new HackManager(Config.Stream, _romHacks, _objectAssoc.SpawnHacks, tabPageHacks);
+            currentContext.DisassemblyManager = _disManager = new DisassemblyManager(tabPageDisassembly);
+            currentContext.ScriptManager = _scriptManager = new ScriptManager(_scriptParser, checkBoxUseRomHack);
+            currentContext.HackManager = _hackManager = new HackManager(_romHacks, _objectAssoc.SpawnHacks, tabPageHacks);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -113,22 +113,22 @@ namespace SM64_Diagnostic
             mapGui.MapShowCamera = checkBoxMapShowCamera;
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
             mapGui.MapShowCeilingTriangle = checkBoxMapShowCeiling;
-            currentContext.MapManager = _mapManager = new MapManager(Config.Stream, _mapAssoc, _objectAssoc, mapGui);
+            currentContext.MapManager = _mapManager = new MapManager(_mapAssoc, _objectAssoc, mapGui);
 
-            currentContext.ActionsManager = _actionsManager = new ActionsManager(Config.Stream, _actionsData, noTearFlowLayoutPanelActions, tabPageActions);
-            currentContext.WaterManager = _waterManager = new DataManager(Config.Stream, _waterData, noTearFlowLayoutPanelWater);
-            currentContext.InputManager = _inputManager = new InputManager(Config.Stream, _inputData, tabPageInput, NoTearFlowLayoutPanelInput, _inputImageGui);
-            currentContext.MarioManager = _marioManager = new MarioManager(Config.Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
-            currentContext.HudManager = _hudManager = new HudManager(Config.Stream, _hudData, tabPageHud, NoTearFlowLayoutPanelHud);
-            currentContext.MiscManager = _miscManager = new MiscManager(Config.Stream, _miscData, NoTearFlowLayoutPanelMisc);
-            currentContext.CameraManager = _cameraManager = new CameraManager(Config.Stream, _cameraData, tabPageCamera, NoTearFlowLayoutPanelCamera);
-            currentContext.TriangleManager = _triangleManager = new TriangleManager(Config.Stream, tabPageTriangles, _triangleData, NoTearFlowLayoutPanelTriangles);
-            currentContext.DebugManager = _debugManager = new DebugManager(Config.Stream, tabPageDebug);
-            currentContext.PuManager = _puManager = new PuManager(Config.Stream, groupBoxPuController);
-            currentContext.FileManager = _fileManager = new FileManager(Config.Stream, _fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
-            currentContext.QuarterFrameManager = _quarterFrameManager = new DataManager(Config.Stream, _quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
-            currentContext.CameraHackManager = _cameraHackManager = new CamHackManager(Config.Stream, _camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
-            currentContext.ObjectManager = _objectManager = new ObjectManager(Config.Stream, _objectAssoc, _objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
+            currentContext.ActionsManager = _actionsManager = new ActionsManager(_actionsData, noTearFlowLayoutPanelActions, tabPageActions);
+            currentContext.WaterManager = _waterManager = new DataManager(_waterData, noTearFlowLayoutPanelWater);
+            currentContext.InputManager = _inputManager = new InputManager(_inputData, tabPageInput, NoTearFlowLayoutPanelInput, _inputImageGui);
+            currentContext.MarioManager = _marioManager = new MarioManager(_marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
+            currentContext.HudManager = _hudManager = new HudManager(_hudData, tabPageHud, NoTearFlowLayoutPanelHud);
+            currentContext.MiscManager = _miscManager = new MiscManager(_miscData, NoTearFlowLayoutPanelMisc);
+            currentContext.CameraManager = _cameraManager = new CameraManager(_cameraData, tabPageCamera, NoTearFlowLayoutPanelCamera);
+            currentContext.TriangleManager = _triangleManager = new TriangleManager(tabPageTriangles, _triangleData, NoTearFlowLayoutPanelTriangles);
+            currentContext.DebugManager = _debugManager = new DebugManager(tabPageDebug);
+            currentContext.PuManager = _puManager = new PuManager(groupBoxPuController);
+            currentContext.FileManager = _fileManager = new FileManager(_fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
+            currentContext.QuarterFrameManager = _quarterFrameManager = new DataManager(_quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
+            currentContext.CameraHackManager = _cameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
+            currentContext.ObjectManager = _objectManager = new ObjectManager(_objectAssoc, _objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
@@ -136,7 +136,7 @@ namespace SM64_Diagnostic
             _slotManagerGui.FlowLayoutContainer = NoTearFlowLayoutPanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
-            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(Config.Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager, tabControlMain);
+            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(_objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager, tabControlMain);
 
             SetupViews();
 

@@ -1,4 +1,5 @@
-﻿using SM64_Diagnostic.Utilities;
+﻿using SM64_Diagnostic.Structs.Configurations;
+using SM64_Diagnostic.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace SM64_Diagnostic.Managers
 
         enum PuControl { Home, PuUp, PuDown, PuLeft, PuRight, QpuUp, QpuDown, QpuLeft, QpuRight };
 
-        public PuManager(ProcessStream stream, Control puController)
+        public PuManager(Control puController)
         {
-            _stream = stream;
+            _stream = Config.Stream;
             _puController = puController;
 
             // Pu Controller initialize and register click events

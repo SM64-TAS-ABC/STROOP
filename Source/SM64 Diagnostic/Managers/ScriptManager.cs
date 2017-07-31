@@ -7,6 +7,7 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
 using System.Windows.Forms;
 using SM64_Diagnostic.Extensions;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -20,9 +21,9 @@ namespace SM64_Diagnostic.Managers
       
         uint _freeMemPtr;
 
-        public ScriptManager(ProcessStream stream, ScriptParser parser, CheckBox useRomHackChecBox)
+        public ScriptManager(ScriptParser parser, CheckBox useRomHackChecBox)
         {
-            _stream = stream;
+            _stream = Config.Stream;
             _parser = parser;
             _useRomHackChecBox = useRomHackChecBox;
 

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using System.Drawing;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -18,10 +19,10 @@ namespace SM64_Diagnostic.Managers
         protected ProcessStream _stream;
         protected List<IDataContainer> _specialWatchVars;
 
-        public DataManager(ProcessStream stream, List<WatchVariable> data, NoTearFlowLayoutPanel variableTable)
+        public DataManager(List<WatchVariable> data, NoTearFlowLayoutPanel variableTable)
         {
             _variableTable = variableTable;
-            _stream = stream;
+            _stream = Config.Stream;
 
             _dataControls = new List<IDataContainer>();
             InitializeSpecialVariables();

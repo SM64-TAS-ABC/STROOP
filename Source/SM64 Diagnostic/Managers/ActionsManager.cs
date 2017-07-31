@@ -17,8 +17,8 @@ namespace SM64_Diagnostic.Managers
         Label actionDescriptionLabel;
         Label animationDescriptionLabel;
 
-        public ActionsManager(ProcessStream stream, List<WatchVariable> actionsData, NoTearFlowLayoutPanel variableTable, Control actionsControl)
-            : base(stream, actionsData, variableTable)
+        public ActionsManager(List<WatchVariable> actionsData, NoTearFlowLayoutPanel variableTable, Control actionsControl)
+            : base(actionsData, variableTable)
         {
             actionDescriptionLabel = actionsControl.Controls["labelActionDescription"] as Label;
             animationDescriptionLabel = actionsControl.Controls["labelAnimationDescription"] as Label;

@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using System.Drawing;
 using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -21,9 +22,9 @@ namespace SM64_Diagnostic.Managers
         Button _goButton, _moreButton;
         int _currentLines = NumberOfLinesAdd;
 
-        public DisassemblyManager(ProcessStream stream, Control tabControl)
+        public DisassemblyManager(Control tabControl)
         {
-            _stream = stream;
+            _stream = Config.Stream;
             _output = tabControl.Controls["richTextBoxDissasembly"] as RichTextBox;
             _textBoxStartAdd = tabControl.Controls["maskedTextBoxDisStart"] as MaskedTextBox;
             _goButton = tabControl.Controls["buttonDisGo"] as Button;

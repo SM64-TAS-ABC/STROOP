@@ -16,8 +16,8 @@ namespace SM64_Diagnostic.Managers
     {
         public int ActiveObjectCount = 0;
 
-        public MiscManager(ProcessStream stream, List<WatchVariable> watchVariables, NoTearFlowLayoutPanel variableTable)
-            : base(stream, watchVariables, variableTable)
+        public MiscManager(List<WatchVariable> watchVariables, NoTearFlowLayoutPanel variableTable)
+            : base(watchVariables, variableTable)
         {
         }
 

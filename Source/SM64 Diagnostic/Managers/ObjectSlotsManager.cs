@@ -65,13 +65,13 @@ namespace SM64_Diagnostic.Managers
                 objSlot.Size = new Size(newSize, newSize);
         }
 
-        public ObjectSlotsManager(ProcessStream stream, ObjectAssociations objAssoc,
+        public ObjectSlotsManager(ObjectAssociations objAssoc,
             ObjectManager objManager, ObjectSlotManagerGui managerGui, MapManager mapManager, MiscManager miscManager, TabControl tabControlMain)
         {
             Instance = this;
 
             ObjectAssoc = objAssoc;
-            _stream = stream;
+            _stream = Config.Stream;
             _objManager = objManager;
             ManagerGui = managerGui;
             _mapManager = mapManager;

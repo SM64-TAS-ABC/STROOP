@@ -20,10 +20,10 @@ namespace SM64_Diagnostic.Managers
 
         object _listLocker = new object();
 
-        public HackManager(ProcessStream stream, List<RomHack> hacks, List<SpawnHack> spawnCodes,  Control tabControl)
+        public HackManager(List<RomHack> hacks, List<SpawnHack> spawnCodes,  Control tabControl)
         {
             _hacks = hacks;
-            _stream = stream;
+            _stream = Config.Stream;
 
             var splitContainter = tabControl.Controls["splitContainerHacks"] as SplitContainer;
             _checkList = splitContainter.Panel1.Controls["groupBoxHackRam"].Controls["checkedListBoxHacks"] as CheckedListBox;

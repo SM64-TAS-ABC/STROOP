@@ -93,10 +93,10 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        public MapManager(ProcessStream stream, MapAssociations mapAssoc, ObjectAssociations objAssoc,
+        public MapManager(MapAssociations mapAssoc, ObjectAssociations objAssoc,
             MapGui mapGui)
         {
-            _stream = stream;
+            _stream = Config.Stream;
             MapAssoc = mapAssoc;
             _mapGui = mapGui;
 

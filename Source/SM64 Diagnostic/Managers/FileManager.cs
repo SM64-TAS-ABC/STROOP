@@ -46,8 +46,8 @@ namespace SM64_Diagnostic.Managers
         uint?[] _courseDoorAddressOffsets;
         byte?[] _courseDoorMasks;
 
-        public FileManager(ProcessStream stream, List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile, FileImageGui gui)
-            : base(stream, fileData, noTearFlowLayoutPanelFile)
+        public FileManager(List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile, FileImageGui gui)
+            : base(fileData, noTearFlowLayoutPanelFile)
         {
             Instance = this;
             _tabControl = tabControl;
