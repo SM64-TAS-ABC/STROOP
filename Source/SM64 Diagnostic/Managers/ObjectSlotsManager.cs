@@ -352,9 +352,19 @@ namespace SM64_Diagnostic.Managers
             uint ceilingTriangleAddress = _stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
             _ceilingObject = ceilingTriangleAddress == 0 ? 0 : _stream.GetUInt32(ceilingTriangleAddress + Config.TriangleOffsets.AssociatedObject);
 
-            _parentObject = _stream.GetUInt32(Config.ObjectSlots.HoverObjectAddress + Config.ObjectSlots.ParentOffset);
-            _parentUnusedObject = _parentObject == Config.ObjectSlots.UnusedSlotAddress ? Config.ObjectSlots.HoverObjectAddress : 0;
-            _parentNoneObject = _parentObject == 0 ? Config.ObjectSlots.HoverObjectAddress : 0;
+            ObjectSlot hoverObjectSlot = Config.ObjectSlots.HoverObjectSlot;
+            if (hoverObjectSlot != null)
+            {
+                _parentObject = _stream.GetUInt32(hoverObjectSlot.Address + Config.ObjectSlots.ParentOffset);
+                _parentUnusedObject = _parentObject == Config.ObjectSlots.UnusedSlotAddress ? hoverObjectSlot.Address : 0;
+                _parentNoneObject = _parentObject == 0 ? hoverObjectSlot.Address : 0;
+            }
+            else
+            {
+                _parentObject = 0;
+                _parentUnusedObject = 0;
+                _parentNoneObject = 0;
+            }
 
             // Update slots
             UpdateSlots(newObjectSlotData);
