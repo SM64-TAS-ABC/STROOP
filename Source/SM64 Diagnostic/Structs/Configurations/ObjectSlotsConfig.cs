@@ -22,6 +22,7 @@ namespace SM64_Diagnostic.Structs
         public uint BehaviorSubtypeOffset;
         public uint BehaviorAppearance;
         public uint ObjectActiveOffset;
+        public uint AnimationOffset;
 
         public uint ObjectXOffset;
         public uint ObjectYOffset;
