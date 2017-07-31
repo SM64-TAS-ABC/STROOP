@@ -13,7 +13,6 @@ namespace SM64_Diagnostic.Managers
     public class HackManager
     {
         List<RomHack> _hacks;
-        ProcessStream _stream;
         CheckedListBox _checkList;
         ListBox _spawnList;
         TextBox _behaviorTextbox, _gfxIdTextbox, _extraTextbox;
@@ -23,7 +22,6 @@ namespace SM64_Diagnostic.Managers
         public HackManager(List<RomHack> hacks, List<SpawnHack> spawnCodes,  Control tabControl)
         {
             _hacks = hacks;
-            _stream = Config.Stream;
 
             var splitContainter = tabControl.Controls["splitContainerHacks"] as SplitContainer;
             _checkList = splitContainter.Panel1.Controls["groupBoxHackRam"].Controls["checkedListBoxHacks"] as CheckedListBox;
@@ -52,7 +50,7 @@ namespace SM64_Diagnostic.Managers
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            Config.Hacks.SpawnHack.ClearPayload(_stream);
+            Config.Hacks.SpawnHack.ClearPayload();
         }
 
         private void _spawnList_SelectedIndexChanged(object sender, EventArgs e)
@@ -89,24 +87,24 @@ namespace SM64_Diagnostic.Managers
                 return;
             }
 
-            _stream.Suspend();
+            Config.Stream.Suspend();
 
-            Config.Hacks.SpawnHack.LoadPayload(_stream, false);
+            Config.Hacks.SpawnHack.LoadPayload(false);
 
-            _stream.SetValue(behavior, Config.Hacks.BehaviorAddress);
-            _stream.SetValue((UInt16)gfxId, Config.Hacks.GfxIdAddress);
-            _stream.SetValue((UInt16)extra, Config.Hacks.ExtraAddress);
+            Config.Stream.SetValue(behavior, Config.Hacks.BehaviorAddress);
+            Config.Stream.SetValue((UInt16)gfxId, Config.Hacks.GfxIdAddress);
+            Config.Stream.SetValue((UInt16)extra, Config.Hacks.ExtraAddress);
 
-            _stream.Resume();
+            Config.Stream.Resume();
         }
 
         private void _checkList_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             var hack = (RomHack)_checkList.Items[e.Index];
             if (e.NewValue == CheckState.Checked)
-                hack.LoadPayload(_stream);
+                hack.LoadPayload();
             else
-                hack.ClearPayload(_stream);
+                hack.ClearPayload();
         }
 
         public void Update()
@@ -115,7 +113,7 @@ namespace SM64_Diagnostic.Managers
             for (int i = 0; i < _checkList.Items.Count; i++)
             {
                 var hack = (RomHack) _checkList.Items[i];
-                hack.UpdateEnabledStatus(_stream);
+                hack.UpdateEnabledStatus();
 
                 if (_checkList.GetItemChecked(i) != hack.Enabled)
                     _checkList.SetItemChecked(i, hack.Enabled);

@@ -17,7 +17,6 @@ namespace SM64_Diagnostic.Managers
 {
     public class MapManager
     {
-        ProcessStream _stream;
         public MapAssociations MapAssoc;
         byte _currentLevel, _currentArea;
         ushort _currentLoadingPoint, _currentMissionLayout;
@@ -96,7 +95,6 @@ namespace SM64_Diagnostic.Managers
         public MapManager(MapAssociations mapAssoc, ObjectAssociations objAssoc,
             MapGui mapGui)
         {
-            _stream = Config.Stream;
             MapAssoc = mapAssoc;
             _mapGui = mapGui;
 
@@ -141,10 +139,10 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             // Get level and area
-            byte level = _stream.GetByte(Config.LevelAddress);
-            byte area = _stream.GetByte(Config.AreaAddress);
-            ushort loadingPoint = _stream.GetUInt16(Config.LoadingPointAddress);
-            ushort missionLayout = _stream.GetUInt16(Config.MissionAddress);
+            byte level = Config.Stream.GetByte(Config.LevelAddress);
+            byte area = Config.Stream.GetByte(Config.AreaAddress);
+            ushort loadingPoint = Config.Stream.GetUInt16(Config.LoadingPointAddress);
+            ushort missionLayout = Config.Stream.GetUInt16(Config.MissionAddress);
 
             // Find new map list
             if (_currentMapList == null || _currentLevel != level || _currentArea != area 
