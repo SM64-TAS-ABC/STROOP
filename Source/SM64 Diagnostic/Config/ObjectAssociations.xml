@@ -1861,11 +1861,11 @@
     <Image path="Water Level Manager.png"/>
     <Data type="byte" address="0xF6" offset="Object">Oscillation Timer</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13002634" name="Tweester Sand">
+  <Object behaviorScriptAddress="0x13002634" name="Tornado Sand">
     <SpawnCode gfxId="0x9F"/>
     <Image path="Dirt.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002650" name="Tweester">
+  <Object behaviorScriptAddress="0x13002650" name="Tornado">
     <SpawnCode gfxId="0x56"/>
     <Image path="Tweester.png"/>
     <Data type="byte" address="0x153" offset="Object" isBool="true">Coming Out</Data>
