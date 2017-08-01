@@ -13,8 +13,6 @@ namespace SM64_Diagnostic.Utilities
 {
     public static class ButtonUtilities
     {
-        static uint _prevMarioGraphic = 0x00;
-
         private struct TripleAddressAngle
         {
             public readonly uint XAddress;
@@ -528,11 +526,10 @@ namespace SM64_Diagnostic.Utilities
                 var marioGraphics = Config.Stream.GetUInt32(marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
                 if (marioGraphics == 0)
                 { 
-                    success &= Config.Stream.SetValue(_prevMarioGraphic, marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
+                    success &= Config.Stream.SetValue(Config.ObjectSlots.MarioGraphic, marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
                 }
                 else
                 {
-                    _prevMarioGraphic = marioGraphics;
                     success &= Config.Stream.SetValue(0x00000000U, marioObjRef + Config.ObjectSlots.BehaviorGfxOffset);
                 }
             }

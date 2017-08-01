@@ -23,6 +23,7 @@ namespace SM64_Diagnostic.Structs
         public uint BehaviorAppearance;
         public uint ObjectActiveOffset;
         public uint AnimationOffset;
+        public uint MarioGraphic;
 
         public uint ObjectXOffset;
         public uint ObjectYOffset;
