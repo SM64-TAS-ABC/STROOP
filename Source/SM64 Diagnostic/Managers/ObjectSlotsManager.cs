@@ -32,7 +32,6 @@ namespace SM64_Diagnostic.Managers
 
         public ObjectSlot[] ObjectSlots;
 
-        public ObjectAssociations ObjectAssoc;
         ObjectManager _objManager;
         MapManager _mapManager;
         MiscManager _miscManager;
@@ -64,12 +63,11 @@ namespace SM64_Diagnostic.Managers
                 objSlot.Size = new Size(newSize, newSize);
         }
 
-        public ObjectSlotsManager(ObjectAssociations objAssoc,
+        public ObjectSlotsManager(
             ObjectManager objManager, ObjectSlotManagerGui managerGui, MapManager mapManager, MiscManager miscManager, TabControl tabControlMain)
         {
             Instance = this;
 
-            ObjectAssoc = objAssoc;
             _objManager = objManager;
             ManagerGui = managerGui;
             _mapManager = mapManager;
@@ -336,7 +334,7 @@ namespace SM64_Diagnostic.Managers
             _interactionObject = Config.Stream.GetUInt32(Config.Mario.InteractionObjectPointerOffset + Config.Mario.StructAddress);
             _heldObject = Config.Stream.GetUInt32(Config.Mario.HeldObjectPointerOffset + Config.Mario.StructAddress);
             _usedObject = Config.Stream.GetUInt32(Config.Mario.UsedObjectPointerOffset + Config.Mario.StructAddress);
-            _closestObject = newObjectSlotData.OrderBy(s => !s.IsActive || s.Behavior == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF) ? float.MaxValue
+            _closestObject = newObjectSlotData.OrderBy(s => !s.IsActive || s.Behavior == (Config.ObjectAssociations.MarioBehavior & 0x0FFFFFFF) ? float.MaxValue
                 : s.DistanceToMario).First().Address;
             _cameraObject = Config.Stream.GetUInt32(Config.Camera.SecondObject);
             _cameraHackObject = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
@@ -409,8 +407,8 @@ namespace SM64_Diagnostic.Managers
                     {
                         if (multiBehavior.HasValue)
                         {
-                            _objManager.Behavior = String.Format("0x{0}", ((multiBehavior.Value.BehaviorAddress + ObjectAssoc.RamOffset) & 0x00FFFFFF).ToString("X4"));
-                            _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(multiBehavior.Value), Config.ObjectGroups.VacantSlotColor.Lighten(0.8));
+                            _objManager.Behavior = String.Format("0x{0}", ((multiBehavior.Value.BehaviorAddress + Config.ObjectAssociations.RamOffset) & 0x00FFFFFF).ToString("X4"));
+                            _objManager.SetBehaviorWatchVariables(Config.ObjectAssociations.GetWatchVariables(multiBehavior.Value), Config.ObjectGroups.VacantSlotColor.Lighten(0.8));
                         }
                         else
                         {
@@ -433,7 +431,7 @@ namespace SM64_Diagnostic.Managers
                             {
                                 int index = row * numCols + col;
                                 if (index >= selectedBehaviorCriterias.Count) break;
-                                Image image = ObjectAssoc.GetObjectImage(selectedBehaviorCriterias[index], false);
+                                Image image = Config.ObjectAssociations.GetObjectImage(selectedBehaviorCriterias[index], false);
                                 Rectangle rect = new Rectangle(col * imageSize, row * imageSize, imageSize, imageSize);
                                 Rectangle zoomedRect = rect.Zoom(image.Size);
                                 gfx.DrawImage(image, zoomedRect);
@@ -554,14 +552,14 @@ namespace SM64_Diagnostic.Managers
 
         void UpdateObjectManager(ObjectSlot objSlot, BehaviorCriteria behaviorCriteria, ObjectSlotData objData)
         {
-            var objAssoc = ObjectAssoc.FindObjectAssociation(behaviorCriteria);
+            var objAssoc = Config.ObjectAssociations.FindObjectAssociation(behaviorCriteria);
             var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : behaviorCriteria;
             if (_lastSelectedBehavior != newBehavior || SelectedSlotsAddresses.Count == 0)
             {
-                _objManager.Behavior = String.Format("0x{0}", ((objData.Behavior + ObjectAssoc.RamOffset) & 0x00FFFFFF).ToString("X4"));
-                _objManager.Name = ObjectAssoc.GetObjectName(behaviorCriteria);
+                _objManager.Behavior = String.Format("0x{0}", ((objData.Behavior + Config.ObjectAssociations.RamOffset) & 0x00FFFFFF).ToString("X4"));
+                _objManager.Name = Config.ObjectAssociations.GetObjectName(behaviorCriteria);
 
-                _objManager.SetBehaviorWatchVariables(ObjectAssoc.GetWatchVariables(behaviorCriteria), objSlot.BackColor.Lighten(0.8));
+                _objManager.SetBehaviorWatchVariables(Config.ObjectAssociations.GetWatchVariables(behaviorCriteria), objSlot.BackColor.Lighten(0.8));
                 _lastSelectedBehavior = newBehavior;
             }
             _objManager.Image = objSlot.ObjectImage;
@@ -580,8 +578,8 @@ namespace SM64_Diagnostic.Managers
             var objAddress = objData.Address;
 
             // Update image
-            var mapObjImage = ObjectAssoc.GetObjectMapImage(behaviorCriteria, !objData.IsActive);
-            var mapObjRotates = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
+            var mapObjImage = Config.ObjectAssociations.GetObjectMapImage(behaviorCriteria, !objData.IsActive);
+            var mapObjRotates = Config.ObjectAssociations.GetObjectMapRotates(behaviorCriteria);
             if (!_mapObjects.ContainsKey(objAddress))
             {
                 _mapObjects.Add(objAddress, new MapObject(mapObjImage));
@@ -596,7 +594,7 @@ namespace SM64_Diagnostic.Managers
                 _mapObjects[objAddress].UsesRotation = mapObjRotates;
             }
 
-            if (objData.Behavior == (ObjectAssoc.MarioBehavior & 0x0FFFFFFF))
+            if (objData.Behavior == (Config.ObjectAssociations.MarioBehavior & 0x0FFFFFFF))
             {
                 _mapObjects[objAddress].Show = false;
             }
@@ -611,7 +609,7 @@ namespace SM64_Diagnostic.Managers
                 _mapObjects[objAddress].IsActive = objData.IsActive;
                 _mapObjects[objAddress].Rotation = (float)((UInt16)(
                     Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.ObjectRotationOffset)) / 65536f * 360f);
-                _mapObjects[objAddress].UsesRotation = ObjectAssoc.GetObjectMapRotates(behaviorCriteria);
+                _mapObjects[objAddress].UsesRotation = Config.ObjectAssociations.GetObjectMapRotates(behaviorCriteria);
             }
         }
     }

@@ -26,7 +26,6 @@ namespace SM64_Diagnostic
         FileImageGui _fileImageGui = new FileImageGui();
         List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, 
             _actionsData, _waterData, _inputData, _fileData, _quarterFrameData, _camHackData;
-        ObjectAssociations _objectAssoc;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
         List<RomHack> _romHacks;
@@ -95,7 +94,7 @@ namespace SM64_Diagnostic
 
             currentContext.DisassemblyManager = _disManager = new DisassemblyManager(tabPageDisassembly);
             currentContext.ScriptManager = _scriptManager = new ScriptManager(_scriptParser, checkBoxUseRomHack);
-            currentContext.HackManager = _hackManager = new HackManager(_romHacks, _objectAssoc.SpawnHacks, tabPageHacks);
+            currentContext.HackManager = _hackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -113,7 +112,7 @@ namespace SM64_Diagnostic
             mapGui.MapShowCamera = checkBoxMapShowCamera;
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
             mapGui.MapShowCeilingTriangle = checkBoxMapShowCeiling;
-            currentContext.MapManager = _mapManager = new MapManager(_mapAssoc, _objectAssoc, mapGui);
+            currentContext.MapManager = _mapManager = new MapManager(_mapAssoc, mapGui);
 
             currentContext.ActionsManager = _actionsManager = new ActionsManager(_actionsData, noTearFlowLayoutPanelActions, tabPageActions);
             currentContext.WaterManager = _waterManager = new DataManager(_waterData, noTearFlowLayoutPanelWater);
@@ -128,7 +127,7 @@ namespace SM64_Diagnostic
             currentContext.FileManager = _fileManager = new FileManager(_fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
             currentContext.QuarterFrameManager = _quarterFrameManager = new DataManager(_quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
             currentContext.CameraHackManager = _cameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
-            currentContext.ObjectManager = _objectManager = new ObjectManager(_objectAssoc, _objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
+            currentContext.ObjectManager = _objectManager = new ObjectManager(_objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
@@ -136,7 +135,7 @@ namespace SM64_Diagnostic
             _slotManagerGui.FlowLayoutContainer = NoTearFlowLayoutPanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
-            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(_objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager, tabControlMain);
+            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(_objectManager, _slotManagerGui, _mapManager, _miscManager, tabControlMain);
 
             SetupViews();
 
@@ -194,7 +193,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Object Data", statusNum++);
             _objectData = XmlConfigParser.OpenWatchVarData(@"Config/ObjectData.xml", "ObjectDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Object Associations", statusNum++);
-            Config.ObjectAssociations = _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", _slotManagerGui);
+            Config.ObjectAssociations = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", _slotManagerGui);
             loadingForm.UpdateStatus("Loading Mario Data", statusNum++);
             _marioData = XmlConfigParser.OpenWatchVarData(@"Config/MarioData.xml", "MarioDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Camera Data", statusNum++);
@@ -287,29 +286,29 @@ namespace SM64_Diagnostic
         private void SetupViews()
         {
             // Mario Image
-            pictureBoxMario.Image = _objectAssoc.MarioImage;
-            panelMarioBorder.BackColor = _objectAssoc.MarioColor;
-            pictureBoxMario.BackColor = _objectAssoc.MarioColor.Lighten(0.5);
+            pictureBoxMario.Image = Config.ObjectAssociations.MarioImage;
+            panelMarioBorder.BackColor = Config.ObjectAssociations.MarioColor;
+            pictureBoxMario.BackColor = Config.ObjectAssociations.MarioColor.Lighten(0.5);
 
             // Camera Image
-            pictureBoxCamera.Image = _objectAssoc.CameraImage;
-            panelCameraBorder.BackColor = _objectAssoc.CameraColor;
-            pictureBoxCamera.BackColor = _objectAssoc.CameraColor.Lighten(0.5);
+            pictureBoxCamera.Image = Config.ObjectAssociations.CameraImage;
+            panelCameraBorder.BackColor = Config.ObjectAssociations.CameraColor;
+            pictureBoxCamera.BackColor = Config.ObjectAssociations.CameraColor.Lighten(0.5);
 
             // Hud Image
-            pictureBoxHud.Image = _objectAssoc.HudImage;
-            panelHudBorder.BackColor = _objectAssoc.HudColor;
-            pictureBoxHud.BackColor = _objectAssoc.HudColor.Lighten(0.5);
+            pictureBoxHud.Image = Config.ObjectAssociations.HudImage;
+            panelHudBorder.BackColor = Config.ObjectAssociations.HudColor;
+            pictureBoxHud.BackColor = Config.ObjectAssociations.HudColor.Lighten(0.5);
 
             // Debug Image
-            pictureBoxDebug.Image = _objectAssoc.DebugImage;
-            panelDebugBorder.BackColor = _objectAssoc.DebugColor;
-            pictureBoxDebug.BackColor = _objectAssoc.DebugColor.Lighten(0.5);
+            pictureBoxDebug.Image = Config.ObjectAssociations.DebugImage;
+            panelDebugBorder.BackColor = Config.ObjectAssociations.DebugColor;
+            pictureBoxDebug.BackColor = Config.ObjectAssociations.DebugColor.Lighten(0.5);
 
             // Misc Image
-            pictureBoxMisc.Image = _objectAssoc.MiscImage;
-            panelMiscBorder.BackColor = _objectAssoc.MiscColor;
-            pictureBoxMisc.BackColor = _objectAssoc.MiscColor.Lighten(0.5);
+            pictureBoxMisc.Image = Config.ObjectAssociations.MiscImage;
+            panelMiscBorder.BackColor = Config.ObjectAssociations.MiscColor;
+            pictureBoxMisc.BackColor = Config.ObjectAssociations.MiscColor.Lighten(0.5);
 
             // Setup data columns
             var nameColumn = new DataColumn("Name");

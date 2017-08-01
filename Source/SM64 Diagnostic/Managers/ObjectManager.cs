@@ -20,7 +20,6 @@ namespace SM64_Diagnostic.Managers
         public static ObjectManager Instance = null;
 
         List<IDataContainer> _behaviorDataControls = new List<IDataContainer>();
-        ObjectAssociations _objAssoc;
 
         object _watchVarLocker = new object();
 
@@ -226,14 +225,13 @@ namespace SM64_Diagnostic.Managers
             };
         }
 
-        public ObjectManager(ObjectAssociations objAssoc, List<WatchVariable> objectData, Control objectControl, NoTearFlowLayoutPanel variableTable)
+        public ObjectManager(List<WatchVariable> objectData, Control objectControl, NoTearFlowLayoutPanel variableTable)
             : base(objectData, variableTable)
         {
             Instance = this;
 
             SplitContainer splitContainerObject = objectControl.Controls["splitContainerObject"] as SplitContainer;
 
-            _objAssoc = objAssoc;
             _objAddressLabelValue = splitContainerObject.Panel1.Controls["labelObjAddValue"] as Label;
             _objAddressLabel = splitContainerObject.Panel1.Controls["labelObjAdd"] as Label;
             _objSlotIndexLabel = splitContainerObject.Panel1.Controls["labelObjSlotIndValue"] as Label;

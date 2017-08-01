@@ -406,7 +406,7 @@ namespace SM64_Diagnostic
             }
 
             // Look for cached image and use it if it exists
-            _bufferedObjectImage = _manager.ObjectAssoc.GetCachedBufferedObjectImage(_objectImage, objectImageRec.Size);
+            _bufferedObjectImage = Config.ObjectAssociations.GetCachedBufferedObjectImage(_objectImage, objectImageRec.Size);
             if (_bufferedObjectImage != null)
                 return;
 
@@ -419,7 +419,7 @@ namespace SM64_Diagnostic
                 graphics.DrawImage(_objectImage, objectImageRec);
             }
 
-            _manager.ObjectAssoc.CreateCachedBufferedObjectImage(_objectImage, _bufferedObjectImage);
+            Config.ObjectAssociations.CreateCachedBufferedObjectImage(_objectImage, _bufferedObjectImage);
         }
 
         public void UpdateColors()
@@ -443,7 +443,7 @@ namespace SM64_Diagnostic
                     _backColor = newColor.Lighten(0.7);
                     break;
             }
-            Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, !_active);
+            Image newImage = Config.ObjectAssociations.GetObjectImage(_behavior, !_active);
             if (_objectImage != newImage)
             {
                 lock (_gfxLock)

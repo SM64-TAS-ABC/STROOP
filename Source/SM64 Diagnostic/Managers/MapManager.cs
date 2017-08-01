@@ -92,18 +92,17 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        public MapManager(MapAssociations mapAssoc, ObjectAssociations objAssoc,
-            MapGui mapGui)
+        public MapManager(MapAssociations mapAssoc, MapGui mapGui)
         {
             MapAssoc = mapAssoc;
             _mapGui = mapGui;
 
-            _marioMapObj = new MapObject(objAssoc.MarioMapImage, 1);
+            _marioMapObj = new MapObject(Config.ObjectAssociations.MarioMapImage, 1);
             _marioMapObj.UsesRotation = true;
 
-            _holpMapObj = new MapObject(objAssoc.HolpImage, 2);
+            _holpMapObj = new MapObject(Config.ObjectAssociations.HolpImage, 2);
 
-            _cameraMapObj = new MapObject(objAssoc.CameraMapImage, 1);
+            _cameraMapObj = new MapObject(Config.ObjectAssociations.CameraMapImage, 1);
             _cameraMapObj.UsesRotation = true;
             _floorTriangleMapObj = new TriangleMapObject(Color.FromArgb(200, Color.Cyan), 3);
             _ceilingTriangleMapObj = new TriangleMapObject(Color.FromArgb(200, Color.Red), 2);
