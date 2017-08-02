@@ -37,7 +37,7 @@ namespace SM64_Diagnostic.Structs
         public bool InvertBool;
         public bool IsAngle;
         public Color? BackroundColor;
-        public VariableGroup Group;
+        public List<VariableGroup> GroupList;
 
         public bool HasAdditiveOffset
         {
@@ -181,6 +181,16 @@ namespace SM64_Diagnostic.Structs
         public static VariableGroup GetVariableGroup(string variableGroupString)
         {
             return StringToVariableGroup[variableGroupString];
+        }
+
+        public static List<VariableGroup> ParseVariableGroupList(string variableGroupListString)
+        {
+            List<VariableGroup> variableGroupList = new List<VariableGroup>();
+            string[] groupNames = variableGroupListString.Split(',');
+            foreach (string groupName in groupNames) {
+                variableGroupList.Add(GetVariableGroup(groupName));
+            }
+            return variableGroupList;
         }
     }
 }
