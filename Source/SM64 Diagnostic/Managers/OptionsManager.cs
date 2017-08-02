@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Structs.Configurations;
 using System.Windows.Forms;
+using static SM64_Diagnostic.Structs.Configurations.Config;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -13,6 +14,14 @@ namespace SM64_Diagnostic.Managers
     {
         public OptionsManager(TabPage tabControl)
         {
+            GroupBox groupBoxRomVersion = tabControl.Controls["groupBoxRomVersion"] as GroupBox;
+            RadioButton radioButtonRomVersionUS = groupBoxRomVersion.Controls["radioButtonRomVersionUS"] as RadioButton;
+            radioButtonRomVersionUS.Click += (sender, e) => { Config.Version = RomVersion.US; };
+            RadioButton radioButtonRomVersionJapan = groupBoxRomVersion.Controls["radioButtonRomVersionJapan"] as RadioButton;
+            radioButtonRomVersionJapan.Click += (sender, e) => { Config.Version = RomVersion.JAPAN; };
+            RadioButton radioButtonRomVersionPAL = groupBoxRomVersion.Controls["radioButtonRomVersionPAL"] as RadioButton;
+            radioButtonRomVersionPAL.Click += (sender, e) => { Config.Version = RomVersion.PAL; };
+
 
         }
     }
