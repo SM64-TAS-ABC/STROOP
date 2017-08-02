@@ -654,7 +654,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelQuarterFrame = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
             this.groupBoxRomVersion = new System.Windows.Forms.GroupBox();
-            this.radioButtonRomVersionJapan = new System.Windows.Forms.RadioButton();
+            this.radioButtonRomVersionJP = new System.Windows.Forms.RadioButton();
             this.radioButtonRomVersionUS = new System.Windows.Forms.RadioButton();
             this.radioButtonRomVersionPAL = new System.Windows.Forms.RadioButton();
             this.groupBoxGotoRetrieveOffsets = new System.Windows.Forms.GroupBox();
@@ -8827,7 +8827,7 @@ namespace SM64_Diagnostic
             // 
             // groupBoxRomVersion
             // 
-            this.groupBoxRomVersion.Controls.Add(this.radioButtonRomVersionJapan);
+            this.groupBoxRomVersion.Controls.Add(this.radioButtonRomVersionJP);
             this.groupBoxRomVersion.Controls.Add(this.radioButtonRomVersionUS);
             this.groupBoxRomVersion.Controls.Add(this.radioButtonRomVersionPAL);
             this.groupBoxRomVersion.Location = new System.Drawing.Point(450, 137);
@@ -8837,15 +8837,15 @@ namespace SM64_Diagnostic
             this.groupBoxRomVersion.TabStop = false;
             this.groupBoxRomVersion.Text = "Rom Version";
             // 
-            // radioButtonRomVersionJapan
+            // radioButtonRomVersionJP
             // 
-            this.radioButtonRomVersionJapan.AutoSize = true;
-            this.radioButtonRomVersionJapan.Location = new System.Drawing.Point(11, 42);
-            this.radioButtonRomVersionJapan.Name = "radioButtonRomVersionJapan";
-            this.radioButtonRomVersionJapan.Size = new System.Drawing.Size(54, 17);
-            this.radioButtonRomVersionJapan.TabIndex = 12;
-            this.radioButtonRomVersionJapan.Text = "Japan";
-            this.radioButtonRomVersionJapan.UseVisualStyleBackColor = true;
+            this.radioButtonRomVersionJP.AutoSize = true;
+            this.radioButtonRomVersionJP.Location = new System.Drawing.Point(11, 42);
+            this.radioButtonRomVersionJP.Name = "radioButtonRomVersionJP";
+            this.radioButtonRomVersionJP.Size = new System.Drawing.Size(37, 17);
+            this.radioButtonRomVersionJP.TabIndex = 12;
+            this.radioButtonRomVersionJP.Text = "JP";
+            this.radioButtonRomVersionJP.UseVisualStyleBackColor = true;
             // 
             // radioButtonRomVersionUS
             // 
@@ -10513,7 +10513,7 @@ namespace SM64_Diagnostic
         private Label labelActionDescription;
         private CheckBox checkBoxPositionControllersRelativeToMario;
         private GroupBox groupBoxRomVersion;
-        private RadioButton radioButtonRomVersionJapan;
+        private RadioButton radioButtonRomVersionJP;
         private RadioButton radioButtonRomVersionUS;
         private RadioButton radioButtonRomVersionPAL;
         private GroupBox groupBoxVariableListFilter;

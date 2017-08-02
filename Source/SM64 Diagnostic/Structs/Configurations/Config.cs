@@ -9,7 +9,7 @@ namespace SM64_Diagnostic.Structs.Configurations
 {
     public static class Config
     {
-        public enum RomVersion { US, JAPAN, PAL };
+        public enum RomVersion { US, JP, PAL };
         public static RomVersion Version = RomVersion.US;
 
         public static ProcessStream Stream;
