@@ -8,16 +8,19 @@ namespace SM64_Diagnostic.Structs.Configurations
 {
     public struct FileConfig
     {
-        public uint FileStructAddress;
+        public uint FileStructAddress { get { return Config.SwitchRomVersion(FileStructAddressUS, FileStructAddressJP); } }
+        public uint FileStructAddressUS;
+        public uint FileStructAddressJP;
+
         public uint FileStructSize;
-        public uint FileAAddress;
-        public uint FileBAddress;
-        public uint FileCAddress;
-        public uint FileDAddress;
-        public uint FileASavedAddress;
-        public uint FileBSavedAddress;
-        public uint FileCSavedAddress;
-        public uint FileDSavedAddress;
+        public uint FileAAddress { get { return FileStructAddress + 0 * FileStructSize; } }
+        public uint FileBAddress { get { return FileStructAddress + 2 * FileStructSize; } }
+        public uint FileCAddress { get { return FileStructAddress + 4 * FileStructSize; } }
+        public uint FileDAddress { get { return FileStructAddress + 6 * FileStructSize; } }
+        public uint FileASavedAddress { get { return FileStructAddress + 1 * FileStructSize; } }
+        public uint FileBSavedAddress { get { return FileStructAddress + 3 * FileStructSize; } }
+        public uint FileCSavedAddress { get { return FileStructAddress + 5 * FileStructSize; } }
+        public uint FileDSavedAddress { get { return FileStructAddress + 7 * FileStructSize; } }
 
         public uint ChecksumConstantOffset;
         public ushort ChecksumConstantValue;

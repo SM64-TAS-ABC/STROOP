@@ -707,8 +707,12 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "FileStructAddress":
-                                    Config.File.FileStructAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                case "FileStructAddressUS":
+                                    Config.File.FileStructAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "FileStructAddressJP":
+                                    Config.File.FileStructAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "FileStructSize":
@@ -960,15 +964,6 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                             }
                         }
-
-                        Config.File.FileAAddress = Config.File.FileStructAddress + 0 * Config.File.FileStructSize;
-                        Config.File.FileBAddress = Config.File.FileStructAddress + 2 * Config.File.FileStructSize;
-                        Config.File.FileCAddress = Config.File.FileStructAddress + 4 * Config.File.FileStructSize;
-                        Config.File.FileDAddress = Config.File.FileStructAddress + 6 * Config.File.FileStructSize;
-                        Config.File.FileASavedAddress = Config.File.FileStructAddress + 1 * Config.File.FileStructSize;
-                        Config.File.FileBSavedAddress = Config.File.FileStructAddress + 3 * Config.File.FileStructSize;
-                        Config.File.FileCSavedAddress = Config.File.FileStructAddress + 5 * Config.File.FileStructSize;
-                        Config.File.FileDSavedAddress = Config.File.FileStructAddress + 7 * Config.File.FileStructSize;
                         break;
 
                     case "Waypoint":
