@@ -27,7 +27,13 @@ namespace SM64_Diagnostic.Managers
         FileImageGui _gui;
 
         public FileMode CurrentFileMode { get; private set; }
-        public uint CurrentFileAddress { get; private set; }
+        public uint CurrentFileAddress
+        {
+            get
+            {
+                return getFileAddress(CurrentFileMode);
+            }
+        }
 
         private AllCoinsMeaning currentAllCoinsMeaning;
 
@@ -63,28 +69,27 @@ namespace SM64_Diagnostic.Managers
             _courseDoorMasks = new byte?[numRows];
 
             CurrentFileMode = FileMode.FileA;
-            CurrentFileAddress = Config.File.FileAAddress;
             currentAllCoinsMeaning = AllCoinsMeaning.Coins100;
 
             SplitContainer splitContainerFile = tabControl.Controls["splitContainerFile"] as SplitContainer;
 
             GroupBox fileGroupbox = splitContainerFile.Panel1.Controls["groupBoxFile"] as GroupBox;
             (fileGroupbox.Controls["radioButtonFileA"] as RadioButton).Click
-                += (sender, e) => FileMode_Click(sender, e, FileMode.FileA);
+                += (sender, e) => FileMode_Click(FileMode.FileA);
             (fileGroupbox.Controls["radioButtonFileB"] as RadioButton).Click
-                += (sender, e) => FileMode_Click(sender, e, FileMode.FileB);
+                += (sender, e) => FileMode_Click(FileMode.FileB);
             (fileGroupbox.Controls["radioButtonFileC"] as RadioButton).Click
-                += (sender, e) => FileMode_Click(sender, e, FileMode.FileC);
+                += (sender, e) => FileMode_Click(FileMode.FileC);
             (fileGroupbox.Controls["radioButtonFileD"] as RadioButton).Click
-                += (sender, e) => FileMode_Click(sender, e, FileMode.FileD);
+                += (sender, e) => FileMode_Click(FileMode.FileD);
             (fileGroupbox.Controls["radioButtonFileASaved"] as RadioButton).Click
-                += (sender, e) => FileMode_Click(sender, e, FileMode.FileASaved);
+                += (sender, e) => FileMode_Click(FileMode.FileASaved);
             (fileGroupbox.Controls["radioButtonFileBSaved"] as RadioButton).Click
-                += (sender, e) => FileMode_Click(sender, e, FileMode.FileBSaved);
+                += (sender, e) => FileMode_Click(FileMode.FileBSaved);
             (fileGroupbox.Controls["radioButtonFileCSaved"] as RadioButton).Click
-                += (sender, e) => FileMode_Click(sender, e, FileMode.FileCSaved);
+                += (sender, e) => FileMode_Click(FileMode.FileCSaved);
             (fileGroupbox.Controls["radioButtonFileDSaved"] as RadioButton).Click
-                += (sender, e) => FileMode_Click(sender, e, FileMode.FileDSaved);
+                += (sender, e) => FileMode_Click(FileMode.FileDSaved);
 
             TableLayoutPanel fileTable = splitContainerFile.Panel1.Controls["tableLayoutPanelFile"] as TableLayoutPanel;
 
@@ -643,12 +648,9 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private void FileMode_Click(object sender, EventArgs e, FileMode mode)
+        private void FileMode_Click(FileMode mode)
         {
-            if (CurrentFileMode == mode) return;
-
             CurrentFileMode = mode;
-            CurrentFileAddress = getFileAddress(mode);
         }
 
         public override void Update(bool updateView)
