@@ -702,7 +702,7 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxRomVersion = new System.Windows.Forms.GroupBox();
             this.radioButtonRomVersionJapan = new System.Windows.Forms.RadioButton();
             this.radioButtonRomVersionUS = new System.Windows.Forms.RadioButton();
             this.radioButtonRomVersionPAL = new System.Windows.Forms.RadioButton();
@@ -968,7 +968,7 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxRomVersion.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -8801,7 +8801,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageOptions
             // 
-            this.tabPageOptions.Controls.Add(this.groupBox1);
+            this.tabPageOptions.Controls.Add(this.groupBoxRomVersion);
             this.tabPageOptions.Controls.Add(this.groupBoxGotoRetrieveOffsets);
             this.tabPageOptions.Controls.Add(this.checkBoxNeutralizeTriangleWith21);
             this.tabPageOptions.Controls.Add(this.checkBoxDisableActionUpdateWhenCloning);
@@ -9413,17 +9413,17 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // groupBox1
+            // groupBoxRomVersion
             // 
-            this.groupBox1.Controls.Add(this.radioButtonRomVersionJapan);
-            this.groupBox1.Controls.Add(this.radioButtonRomVersionUS);
-            this.groupBox1.Controls.Add(this.radioButtonRomVersionPAL);
-            this.groupBox1.Location = new System.Drawing.Point(450, 137);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(84, 93);
-            this.groupBox1.TabIndex = 38;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Rom Version";
+            this.groupBoxRomVersion.Controls.Add(this.radioButtonRomVersionJapan);
+            this.groupBoxRomVersion.Controls.Add(this.radioButtonRomVersionUS);
+            this.groupBoxRomVersion.Controls.Add(this.radioButtonRomVersionPAL);
+            this.groupBoxRomVersion.Location = new System.Drawing.Point(450, 137);
+            this.groupBoxRomVersion.Name = "groupBoxRomVersion";
+            this.groupBoxRomVersion.Size = new System.Drawing.Size(84, 93);
+            this.groupBoxRomVersion.TabIndex = 38;
+            this.groupBoxRomVersion.TabStop = false;
+            this.groupBoxRomVersion.Text = "Rom Version";
             // 
             // radioButtonRomVersionJapan
             // 
@@ -9783,8 +9783,8 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxRomVersion.ResumeLayout(false);
+            this.groupBoxRomVersion.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -10460,7 +10460,7 @@ namespace SM64_Diagnostic
         private Label labelAnimationDescription;
         private Label labelActionDescription;
         private CheckBox checkBoxPositionControllersRelativeToMario;
-        private GroupBox groupBox1;
+        private GroupBox groupBoxRomVersion;
         private RadioButton radioButtonRomVersionJapan;
         private RadioButton radioButtonRomVersionUS;
         private RadioButton radioButtonRomVersionPAL;
