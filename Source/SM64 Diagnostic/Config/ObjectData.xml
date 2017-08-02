@@ -16,92 +16,92 @@
   <Data groupList="Simple" type="short" address="0x11A" offset="Object" isAngle="true">Yaw (Rot Speed)</Data>
   <Data groupList="Simple" type="short" address="0x116" offset="Object" isAngle="true">Pitch (Rot Speed)</Data>
   <Data groupList="Simple" type="short" address="0x11E" offset="Object" isAngle="true">Roll (Rot Speed)</Data>
-  <Data groupList="Simple" type="float" address="0x015C" offset="Object">"Dist to Mario"</Data>
-  <Data groupList="Simple" offset="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
-  <Data groupList="Simple" offset="Special" specialType="MarioLateralDistanceToObject">LDist Mario to Obj</Data>
-  <Data groupList="Simple" offset="Special" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
-  <Data groupList="Simple" offset="Special" specialType="MarioDistanceToObjectHome">Dist Mario to Home</Data>
-  <Data groupList="Simple" offset="Special" specialType="MarioLateralDistanceToObjectHome">LDist Mario to Home</Data>
-  <Data groupList="Simple" offset="Special" specialType="MarioVerticalDistanceToObjectHome">VDist Mario to Home</Data>
-  <Data groupList="Simple" offset="Special" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
-  <Data groupList="Simple" offset="Special" specialType="LateralObjectDistanceToHome">LDist Obj to Home</Data>
-  <Data groupList="Simple" offset="Special" specialType="VerticalObjectDistanceToHome">VDist Obj to Home</Data>
-  <Data groupList="Simple" type="ushort" address="0x0162" offset="Object" isAngle="true">"Angle to Mario"</Data>
-  <Data groupList="Simple" offset="Special" specialType="AngleObjectToMario">Angle Obj to Mario</Data>
-  <Data groupList="Simple" offset="Special" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>
-  <Data groupList="Simple" offset="Special" specialType="AngleMarioToObject">Angle Mario to Obj</Data>
-  <Data groupList="Simple" offset="Special" specialType="DeltaAngleMarioToObject">DAngle Mario to Obj</Data>
-  <Data groupList="Simple" offset="Special" specialType="AngleObjectToHome">Angle Obj to Home</Data>
-  <Data groupList="Simple" offset="Special" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
-  <Data groupList="Simple" offset="Special" specialType="AngleHomeToObject">Angle Home to Obj</Data>
-  <Data groupList="Simple" type="float" address="0x1f8" offset="Object">Hitbox Radius</Data>
-  <Data groupList="Simple" type="float" address="0x1fc" offset="Object">Hitbox Height</Data>
-  <Data groupList="Simple" type="float" address="0x208" offset="Object">Hitbox Down Offset</Data>
-  <Data groupList="Simple" offset="Special" specialType="MarioHitboxAwayFromObject">Mario Hitbox Away</Data>
-  <Data groupList="Simple" offset="Special" specialType="MarioHitboxAboveObject">Mario Hitbox Above</Data>
-  <Data groupList="Simple" offset="Special" specialType="MarioHitboxBelowObject">Mario Hitbox Below</Data>
-  <Data groupList="Simple" offset="Special" specialType="MarioHitboxOverlapsObject">Mario Hitbox Overlap</Data>
-  <Data groupList="Simple" type="float" address="0x128" offset="Object">Min Wall Dist</Data>
-  <Data groupList="Simple" type="float" address="0x0194" offset="Object">Tangible Dist</Data>
-  <Data groupList="Simple" type="float" address="0x019C" offset="Object">Drawing Dist</Data>
-  <Data groupList="Simple" offset="Special" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
-  <Data groupList="Simple" type="uint" address="0x68" offset="Object" useHex="true" isObject="true">Parent Object</Data>
-  <Data groupList="Simple" type="uint" address="0x020C" offset="Object" useHex="true">Behavior Script</Data>
-  <Data groupList="Simple" type="uint" address="0x14" offset="Object" useHex="true">Graphic/Model</Data>
-  <Data groupList="Simple" type="short" address="0x14" offset="Graphics">Shadow Radius</Data>
-  <Data groupList="Simple" type="byte" address="0x16" offset="Graphics">Shadow Opacity</Data>
-  <Data groupList="Simple" type="byte" address="0x17" offset="Graphics">Shadow Type</Data>
-  <Data groupList="Simple" type="byte" address="0x3" mask="0x10" offset="Object" isBool="true" invertBool="true">Visible</Data>
-  <Data groupList="Simple" type="byte" address="0x3" mask="0x01" offset="Object" isBool="true">Rendered</Data>
-  <Data groupList="Simple" type="int" address="0x8c" offset="Object" isBool="true" mask="0x00000200">Locked to Origin</Data>
-  <Data groupList="Simple" type="int" address="0x8c" offset="Object" isBool="true" mask="0x00000001">Visual Pos Updates</Data>
-  <Data groupList="Simple" type="int" address="0x8c" offset="Object" isBool="true" mask="0x00000008">Visual Angle Updates</Data>  
-  <Data groupList="Simple" type="byte" address="0x3" mask="0x04" offset="Object" isBool="true">Face Camera</Data>
-  <Data groupList="Simple" type="int" address="0x8c" offset="Object" isBool="true" mask="0x00000002">Forward Movement</Data>
-  <Data groupList="Simple" type="byte" address="0x77" offset="Object" isBool="true">Mario Close</Data>
-  <Data groupList="Simple" type="int" address="0x9C" offset="Object">Tangible</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" useHex="true">Collision Type</Data>
+  <Data groupList="Expanded" type="float" address="0x015C" offset="Object">"Dist to Mario"</Data>
+  <Data groupList="Expanded" offset="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+  <Data groupList="Expanded" offset="Special" specialType="MarioLateralDistanceToObject">LDist Mario to Obj</Data>
+  <Data groupList="Expanded" offset="Special" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
+  <Data groupList="Expanded" offset="Special" specialType="MarioDistanceToObjectHome">Dist Mario to Home</Data>
+  <Data groupList="Expanded" offset="Special" specialType="MarioLateralDistanceToObjectHome">LDist Mario to Home</Data>
+  <Data groupList="Expanded" offset="Special" specialType="MarioVerticalDistanceToObjectHome">VDist Mario to Home</Data>
+  <Data groupList="Expanded" offset="Special" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
+  <Data groupList="Expanded" offset="Special" specialType="LateralObjectDistanceToHome">LDist Obj to Home</Data>
+  <Data groupList="Expanded" offset="Special" specialType="VerticalObjectDistanceToHome">VDist Obj to Home</Data>
+  <Data groupList="Expanded" type="ushort" address="0x0162" offset="Object" isAngle="true">"Angle to Mario"</Data>
+  <Data groupList="Expanded" offset="Special" specialType="AngleObjectToMario">Angle Obj to Mario</Data>
+  <Data groupList="Expanded" offset="Special" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>
+  <Data groupList="Expanded" offset="Special" specialType="AngleMarioToObject">Angle Mario to Obj</Data>
+  <Data groupList="Expanded" offset="Special" specialType="DeltaAngleMarioToObject">DAngle Mario to Obj</Data>
+  <Data groupList="Expanded" offset="Special" specialType="AngleObjectToHome">Angle Obj to Home</Data>
+  <Data groupList="Expanded" offset="Special" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
+  <Data groupList="Expanded" offset="Special" specialType="AngleHomeToObject">Angle Home to Obj</Data>
+  <Data groupList="Expanded" type="float" address="0x1f8" offset="Object">Hitbox Radius</Data>
+  <Data groupList="Expanded" type="float" address="0x1fc" offset="Object">Hitbox Height</Data>
+  <Data groupList="Expanded" type="float" address="0x208" offset="Object">Hitbox Down Offset</Data>
+  <Data groupList="Expanded" offset="Special" specialType="MarioHitboxAwayFromObject">Mario Hitbox Away</Data>
+  <Data groupList="Expanded" offset="Special" specialType="MarioHitboxAboveObject">Mario Hitbox Above</Data>
+  <Data groupList="Expanded" offset="Special" specialType="MarioHitboxBelowObject">Mario Hitbox Below</Data>
+  <Data groupList="Expanded" offset="Special" specialType="MarioHitboxOverlapsObject">Mario Hitbox Overlap</Data>
+  <Data groupList="Expanded" type="float" address="0x128" offset="Object">Min Wall Dist</Data>
+  <Data groupList="Expanded" type="float" address="0x0194" offset="Object">Tangible Dist</Data>
+  <Data groupList="Expanded" type="float" address="0x019C" offset="Object">Drawing Dist</Data>
+  <Data groupList="Expanded" offset="Special" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
+  <Data groupList="Expanded" type="uint" address="0x68" offset="Object" useHex="true" isObject="true">Parent Object</Data>
+  <Data groupList="Expanded" type="uint" address="0x020C" offset="Object" useHex="true">Behavior Script</Data>
+  <Data groupList="Expanded" type="uint" address="0x14" offset="Object" useHex="true">Graphic/Model</Data>
+  <Data groupList="Expanded" type="short" address="0x14" offset="Graphics">Shadow Radius</Data>
+  <Data groupList="Expanded" type="byte" address="0x16" offset="Graphics">Shadow Opacity</Data>
+  <Data groupList="Expanded" type="byte" address="0x17" offset="Graphics">Shadow Type</Data>
+  <Data groupList="Expanded" type="byte" address="0x3" mask="0x10" offset="Object" isBool="true" invertBool="true">Visible</Data>
+  <Data groupList="Expanded" type="byte" address="0x3" mask="0x01" offset="Object" isBool="true">Rendered</Data>
+  <Data groupList="Expanded" type="int" address="0x8c" offset="Object" isBool="true" mask="0x00000200">Locked to Origin</Data>
+  <Data groupList="Expanded" type="int" address="0x8c" offset="Object" isBool="true" mask="0x00000001">Visual Pos Updates</Data>
+  <Data groupList="Expanded" type="int" address="0x8c" offset="Object" isBool="true" mask="0x00000008">Visual Angle Updates</Data>  
+  <Data groupList="Expanded" type="byte" address="0x3" mask="0x04" offset="Object" isBool="true">Face Camera</Data>
+  <Data groupList="Expanded" type="int" address="0x8c" offset="Object" isBool="true" mask="0x00000002">Forward Movement</Data>
+  <Data groupList="Expanded" type="byte" address="0x77" offset="Object" isBool="true">Mario Close</Data>
+  <Data groupList="Expanded" type="int" address="0x9C" offset="Object">Tangible</Data>
+  <Data groupList="Expanded,Collision" type="int" address="0x130" offset="Object" useHex="true">Collision Type</Data>
   <!--
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x80000000">Collision Flag 1</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x40000000">Igloo Barrier</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x20000000">Shocks</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x10000000">Collision Flag 4</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x08000000">BBH Entrance</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x04000000">Clam / Bubba</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x02000000">Whirlpool</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x01000000">Tornado</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00800000">Text</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00400000">Bounce Top/Bottom</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00200000">Mr. Blizzard</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00100000">Collision Flag 12</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00080000">Koopa Shell</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00040000">Burns</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00020000">Bully</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00010000">Water Ring</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00008000">Bounce Top</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00004000">Cannon Base</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00002000">Warp</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00001000">Power Star</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000800">Warp Door</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000400">Wind</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000200">Breakable Block</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000100">Collision Flag 24</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000080">Koopa</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000040">Pole</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000020">Cap</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000010">Coin</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000008">Hurtbox</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000004">Door</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000002">Grabbable</Data>
-  <Data groupList="Simple" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000001">Hoot</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x80000000">Collision Flag 1</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x40000000">Igloo Barrier</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x20000000">Shocks</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x10000000">Collision Flag 4</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x08000000">BBH Entrance</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x04000000">Clam / Bubba</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x02000000">Whirlpool</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x01000000">Tornado</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00800000">Text</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00400000">Bounce Top/Bottom</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00200000">Mr. Blizzard</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00100000">Collision Flag 12</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00080000">Koopa Shell</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00040000">Burns</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00020000">Bully</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00010000">Water Ring</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00008000">Bounce Top</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00004000">Cannon Base</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00002000">Warp</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00001000">Power Star</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000800">Warp Door</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000400">Wind</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000200">Breakable Block</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000100">Collision Flag 24</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000080">Koopa</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000040">Pole</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000020">Cap</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000010">Coin</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000008">Hurtbox</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000004">Door</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000002">Grabbable</Data>
+  <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000001">Hoot</Data>
   -->
-  <Data groupList="Simple" type="uint" address="0x3C" offset="Object" useHex="true">Animation</Data>
-  <Data groupList="Simple" type="uint" address="0x04" offset="Animation" mask="0x80" isBool="true">Freeze Animation</Data>
-  <Data groupList="Simple" type="short" address="0x40" offset="Object">Animation Timer</Data>
-  <Data groupList="Simple" type="int" address="0xF0" offset="Object">Graphics Timer</Data>
-  <Data groupList="Simple" type="float" address="0x2C" offset="Object">Scale (Width)</Data>
-  <Data groupList="Simple" type="float" address="0x30" offset="Object">Scale (Height)</Data>
-  <Data groupList="Simple" type="float" address="0x34" offset="Object">Scale (Depth)</Data>
+  <Data groupList="Expanded" type="uint" address="0x3C" offset="Object" useHex="true">Animation</Data>
+  <Data groupList="Expanded" type="uint" address="0x04" offset="Animation" mask="0x80" isBool="true">Freeze Animation</Data>
+  <Data groupList="Expanded" type="short" address="0x40" offset="Object">Animation Timer</Data>
+  <Data groupList="Expanded" type="int" address="0xF0" offset="Object">Graphics Timer</Data>
+  <Data groupList="Expanded" type="float" address="0x2C" offset="Object">Scale (Width)</Data>
+  <Data groupList="Expanded" type="float" address="0x30" offset="Object">Scale (Height)</Data>
+  <Data groupList="Expanded" type="float" address="0x34" offset="Object">Scale (Depth)</Data>
   <Data groupList="Simple" type="float" address="0x164" offset="Object">Home X</Data>
   <Data groupList="Simple" type="float" address="0x168" offset="Object">Home Y</Data>
   <Data groupList="Simple" type="float" address="0x16C" offset="Object">Home Z</Data>
