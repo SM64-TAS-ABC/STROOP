@@ -167,14 +167,14 @@ namespace SM64_Diagnostic.Structs
         public enum VariableGroup
         {
             Simple,
-            Advanced,
+            Expanded,
             Collision,
         };
 
         readonly static Dictionary<String, VariableGroup> StringToVariableGroup = new Dictionary<string, VariableGroup>()
         {
             { "Simple", VariableGroup.Simple },
-            { "Advanced", VariableGroup.Advanced },
+            { "Expanded", VariableGroup.Expanded },
             { "Collision", VariableGroup.Collision },
         };
 
