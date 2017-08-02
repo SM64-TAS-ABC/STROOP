@@ -37,6 +37,7 @@ namespace SM64_Diagnostic.Structs
         public bool InvertBool;
         public bool IsAngle;
         public Color? BackroundColor;
+        public VariableGroup Group;
 
         public bool HasAdditiveOffset
         {
@@ -158,9 +159,28 @@ namespace SM64_Diagnostic.Structs
             { "Special", OffsetType.Special },
         };
 
-        public static OffsetType GetOffsetType(String offsetTypeString)
+        public static OffsetType GetOffsetType(string offsetTypeString)
         {
             return StringToOffsetType[offsetTypeString];
+        }
+
+        public enum VariableGroup
+        {
+            Simple,
+            Advanced,
+            Collision,
+        };
+
+        readonly static Dictionary<String, VariableGroup> StringToVariableGroup = new Dictionary<string, VariableGroup>()
+        {
+            { "Simple", VariableGroup.Simple },
+            { "Advanced", VariableGroup.Advanced },
+            { "Collision", VariableGroup.Collision },
+        };
+
+        public static VariableGroup GetVariableGroup(string variableGroupString)
+        {
+            return StringToVariableGroup[variableGroupString];
         }
     }
 }
