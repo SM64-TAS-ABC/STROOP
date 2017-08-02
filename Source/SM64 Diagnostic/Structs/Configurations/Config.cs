@@ -11,6 +11,22 @@ namespace SM64_Diagnostic.Structs.Configurations
     {
         public enum RomVersion { US, JP, PAL };
         public static RomVersion Version = RomVersion.US;
+        public static uint SwitchRomVersion(uint? valUS = null, uint? valJP = null, uint? valPAL = null)
+        {
+            switch (Version)
+            {
+                case RomVersion.US:
+                    if (valUS != null) return (uint)valUS;
+                    break;
+                case RomVersion.JP:
+                    if (valJP != null) return (uint)valJP;
+                    break;
+                case RomVersion.PAL:
+                    if (valPAL != null) return (uint)valPAL;
+                    break;
+            }
+            return 0;
+        }
 
         public static ProcessStream Stream;
         public static ObjectAssociations ObjectAssociations;
