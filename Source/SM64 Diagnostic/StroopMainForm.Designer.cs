@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -706,10 +706,10 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.groupBoxVariableListFilter = new System.Windows.Forms.GroupBox();
+            this.radioButtonVariableListFilterExpanded = new System.Windows.Forms.RadioButton();
+            this.radioButtonVariableListFilterSimple = new System.Windows.Forms.RadioButton();
+            this.radioButtonVariableListFilterCollision = new System.Windows.Forms.RadioButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -973,7 +973,7 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxVariableListFilter.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1206,7 +1206,7 @@ namespace SM64_Diagnostic
             this.panelObj.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panelObj.AutoScroll = true;
-            this.panelObj.Controls.Add(this.groupBox1);
+            this.panelObj.Controls.Add(this.groupBoxVariableListFilter);
             this.panelObj.Controls.Add(this.buttonObjRelease);
             this.panelObj.Controls.Add(this.buttonObjInteract);
             this.panelObj.Controls.Add(this.groupBoxObjHome);
@@ -7645,8 +7645,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9463,49 +9463,49 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // groupBox1
+            // groupBoxVariableListFilter
             // 
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Location = new System.Drawing.Point(56, 458);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(84, 93);
-            this.groupBox1.TabIndex = 40;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Variable List";
+            this.groupBoxVariableListFilter.Controls.Add(this.radioButtonVariableListFilterExpanded);
+            this.groupBoxVariableListFilter.Controls.Add(this.radioButtonVariableListFilterSimple);
+            this.groupBoxVariableListFilter.Controls.Add(this.radioButtonVariableListFilterCollision);
+            this.groupBoxVariableListFilter.Location = new System.Drawing.Point(3, 610);
+            this.groupBoxVariableListFilter.Name = "groupBoxVariableListFilter";
+            this.groupBoxVariableListFilter.Size = new System.Drawing.Size(185, 80);
+            this.groupBoxVariableListFilter.TabIndex = 40;
+            this.groupBoxVariableListFilter.TabStop = false;
+            this.groupBoxVariableListFilter.Text = "Variable List";
             // 
-            // radioButton1
+            // radioButtonVariableListFilterExpanded
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(11, 42);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(73, 17);
-            this.radioButton1.TabIndex = 12;
-            this.radioButton1.Text = "Expanded";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonVariableListFilterExpanded.AutoSize = true;
+            this.radioButtonVariableListFilterExpanded.Location = new System.Drawing.Point(11, 37);
+            this.radioButtonVariableListFilterExpanded.Name = "radioButtonVariableListFilterExpanded";
+            this.radioButtonVariableListFilterExpanded.Size = new System.Drawing.Size(73, 17);
+            this.radioButtonVariableListFilterExpanded.TabIndex = 12;
+            this.radioButtonVariableListFilterExpanded.Text = "Expanded";
+            this.radioButtonVariableListFilterExpanded.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioButtonVariableListFilterSimple
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(11, 19);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(56, 17);
-            this.radioButton2.TabIndex = 11;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Simple";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonVariableListFilterSimple.AutoSize = true;
+            this.radioButtonVariableListFilterSimple.Checked = true;
+            this.radioButtonVariableListFilterSimple.Location = new System.Drawing.Point(11, 17);
+            this.radioButtonVariableListFilterSimple.Name = "radioButtonVariableListFilterSimple";
+            this.radioButtonVariableListFilterSimple.Size = new System.Drawing.Size(56, 17);
+            this.radioButtonVariableListFilterSimple.TabIndex = 11;
+            this.radioButtonVariableListFilterSimple.TabStop = true;
+            this.radioButtonVariableListFilterSimple.Text = "Simple";
+            this.radioButtonVariableListFilterSimple.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioButtonVariableListFilterCollision
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(11, 65);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(63, 17);
-            this.radioButton3.TabIndex = 13;
-            this.radioButton3.Text = "Collision";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButtonVariableListFilterCollision.AutoSize = true;
+            this.radioButtonVariableListFilterCollision.Location = new System.Drawing.Point(11, 57);
+            this.radioButtonVariableListFilterCollision.Name = "radioButtonVariableListFilterCollision";
+            this.radioButtonVariableListFilterCollision.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonVariableListFilterCollision.TabIndex = 13;
+            this.radioButtonVariableListFilterCollision.Text = "Collision";
+            this.radioButtonVariableListFilterCollision.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -9835,8 +9835,8 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxVariableListFilter.ResumeLayout(false);
+            this.groupBoxVariableListFilter.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -10516,10 +10516,10 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonRomVersionJapan;
         private RadioButton radioButtonRomVersionUS;
         private RadioButton radioButtonRomVersionPAL;
-        private GroupBox groupBox1;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
-        private RadioButton radioButton3;
+        private GroupBox groupBoxVariableListFilter;
+        private RadioButton radioButtonVariableListFilterExpanded;
+        private RadioButton radioButtonVariableListFilterSimple;
+        private RadioButton radioButtonVariableListFilterCollision;
     }
 }
 
