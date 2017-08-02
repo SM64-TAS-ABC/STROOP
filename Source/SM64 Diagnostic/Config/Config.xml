@@ -81,7 +81,8 @@
     <VacantPointerAddress color="#AAAAAA">0x80361150</VacantPointerAddress>
   </ObjectGroups>
   <Mario>
-    <MarioStructAddress>0x8033B170</MarioStructAddress>
+    <MarioStructAddressUS>0x8033B170</MarioStructAddressUS>
+    <MarioStructAddressJP>0x80339E00</MarioStructAddressJP>
     <ActionOffset>0x0C</ActionOffset>
     <PrevActionOffset>0x10</PrevActionOffset>
     <CoordinateOffsetX>0x3C</CoordinateOffsetX>

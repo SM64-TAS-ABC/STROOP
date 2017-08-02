@@ -283,8 +283,11 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "MarioStructAddress":
-                                    Config.Mario.StructAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                case "MarioStructAddressUS":
+                                    Config.Mario.StructAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "MarioStructAddressJP":
+                                    Config.Mario.StructAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "CoordinateOffsetX":
                                     Config.Mario.XOffset = ParsingUtilities.ParseHex(subElement.Value);

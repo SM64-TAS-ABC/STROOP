@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,10 @@ namespace SM64_Diagnostic.Structs
 {
     public struct MarioConfig
     {
-        public uint StructAddress;
+        public uint StructAddress { get { return Config.SwitchRomVersion(StructAddressUS, StructAddressJP); } }
+        public uint StructAddressUS;
+        public uint StructAddressJP;
+
         public uint ActionOffset;
         public uint PrevActionOffset;
         public uint XOffset;

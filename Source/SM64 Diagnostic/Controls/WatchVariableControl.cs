@@ -156,12 +156,6 @@ namespace SM64_Diagnostic.Controls
         }
 
         public static readonly List<uint> OffsetListZero = new List<uint> { 0 };
-        public static readonly List<uint> OffsetListMario = new List<uint> { Config.Mario.StructAddress };
-        public static readonly List<uint> OffsetListCamera = new List<uint> { Config.Camera.CameraStructAddress };
-        public static readonly List<uint> OffsetListInputCurrent = new List<uint> { Config.Input.CurrentInput };
-        public static readonly List<uint> OffsetListInputBuffered = new List<uint> { Config.Input.BufferedInput };
-        public static readonly List<uint> OffsetListHackedArea = new List<uint> { Config.HackedAreaAddress };
-        public static readonly List<uint> OffsetListCamHack = new List<uint> { Config.CameraHack.CameraHackStruct };
 
         private List<uint> GetOffsetListFromOffsetType(OffsetType? offsetType, bool nonEmptyList = true) //TODO make static once stream is config var
         {
@@ -175,13 +169,13 @@ namespace SM64_Diagnostic.Controls
                     output = OffsetListZero;
                     break;
                 case OffsetType.Mario:
-                    output = OffsetListMario;
+                    output = new List<uint> { Config.Mario.StructAddress };
                     break;
                 case OffsetType.MarioObj:
                     output = new List<uint> { Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress) };
                     break;
                 case OffsetType.Camera:
-                    output = OffsetListCamera;
+                    output = new List<uint> { Config.Camera.CameraStructAddress };
                     break;
                 case OffsetType.File:
                     output = new List<uint> { FileManager.Instance.CurrentFileAddress };
@@ -193,10 +187,10 @@ namespace SM64_Diagnostic.Controls
                     output = new List<uint> { TriangleManager.Instance.TriangleAddress };
                     break;
                 case OffsetType.InputCurrent:
-                    output = OffsetListInputCurrent;
+                    output = new List<uint> { Config.Input.CurrentInput };
                     break;
                 case OffsetType.InputBuffered:
-                    output = OffsetListInputBuffered;
+                    output = new List<uint> { Config.Input.BufferedInput };
                     break;
                 case OffsetType.Graphics:
                     output = GetOffsetListFromOffsetType(OffsetType.Object, false)
@@ -211,10 +205,10 @@ namespace SM64_Diagnostic.Controls
                         .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset));
                     break;
                 case OffsetType.HackedArea:
-                    output = OffsetListHackedArea;
+                    output = new List<uint> { Config.HackedAreaAddress };
                     break;
                 case OffsetType.CamHack:
-                    output = OffsetListCamHack;
+                    output = new List<uint> { Config.CameraHack.CameraHackStruct };
                     break;
                 case OffsetType.Special:
                     throw new ArgumentOutOfRangeException("Should not get offset list for Special var");
