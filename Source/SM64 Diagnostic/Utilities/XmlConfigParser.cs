@@ -84,8 +84,11 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "FirstObjectAddress":
-                                    Config.ObjectSlots.LinkStartAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                case "FirstObjectAddressUS":
+                                    Config.ObjectSlots.LinkStartAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "FirstObjectAddressJP":
+                                    Config.ObjectSlots.LinkStartAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "ObjectStructSize":
                                     Config.ObjectSlots.StructSize = ParsingUtilities.ParseHex(subElement.Value);

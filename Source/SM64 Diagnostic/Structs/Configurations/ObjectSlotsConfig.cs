@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,11 @@ namespace SM64_Diagnostic.Structs
     {
         public int MaxSlots;
         public ObjectSlot HoverObjectSlot;
-        public uint LinkStartAddress;
+
+        public uint LinkStartAddress { get { return Config.SwitchRomVersion(LinkStartAddressUS, LinkStartAddressJP); } }
+        public uint LinkStartAddressUS;
+        public uint LinkStartAddressJP;
+
         public uint StructSize;
         public uint HeaderOffset;
         public uint NextLinkOffset;

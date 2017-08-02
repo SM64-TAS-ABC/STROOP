@@ -7,7 +7,8 @@
   <RefreshRateFreq>30</RefreshRateFreq>
   <RamSize>0x400000</RamSize>
   <ObjectSlots>
-    <FirstObjectAddress>0x8033D488</FirstObjectAddress>
+    <FirstObjectAddressUS>0x8033D488</FirstObjectAddressUS>
+    <FirstObjectAddressJP>0x8033C118</FirstObjectAddressJP>
     <ObjectStructSize>0x0260</ObjectStructSize>
     <HeaderOffset>0x00</HeaderOffset>
     <ListNextLinkOffset>0x08</ListNextLinkOffset>
