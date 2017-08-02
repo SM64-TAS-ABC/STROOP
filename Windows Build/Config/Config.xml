@@ -65,7 +65,8 @@
     <ProcessNextLinkOffset>0x60</ProcessNextLinkOffset>
     <ProcessPreviousLinkOffset>0x64</ProcessPreviousLinkOffset>
     <ParentObjectOffset>0x68</ParentObjectOffset>
-    <FirstObjectGroupingAddress>0x8033CBE0</FirstObjectGroupingAddress>
+    <FirstObjectGroupingAddressUS>0x8033CBE0</FirstObjectGroupingAddressUS>
+    <FirstObjectGroupingAddressJP>0x8033B870</FirstObjectGroupingAddressJP>
     <ProcessGroupStructSize>0x68</ProcessGroupStructSize>
     <ProcessGroupsOrdering>
       <Group index ="0x0B" color="#FF00A5"/>
@@ -79,7 +80,8 @@
       <Group index ="0x08" color="#8000FF"/>
       <Group index ="0x0C" color="#FF00FF"/>
     </ProcessGroupsOrdering>
-    <VacantPointerAddress color="#AAAAAA">0x80361150</VacantPointerAddress>
+    <VacantPointerAddressUS color="#AAAAAA">0x80361150</VacantPointerAddressUS>
+    <VacantPointerAddressJP color="#AAAAAA">0x80361150</VacantPointerAddressJP>
   </ObjectGroups>
   <Mario>
     <MarioStructAddressUS>0x8033B170</MarioStructAddressUS>

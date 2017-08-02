@@ -255,11 +255,18 @@ namespace SM64_Diagnostic.Utilities
                                 case "ParentObjectOffset":
                                     Config.ObjectGroups.ParentObjectOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "FirstObjectGroupingAddress":
-                                    Config.ObjectGroups.FirstGroupingAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                case "FirstObjectGroupingAddressUS":
+                                    Config.ObjectGroups.FirstGroupingAddressUS = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "VacantPointerAddress":
-                                    Config.ObjectGroups.VactantPointerAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                case "FirstObjectGroupingAddressJP":
+                                    Config.ObjectGroups.FirstGroupingAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "VacantPointerAddressUS":
+                                    Config.ObjectGroups.VactantPointerAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.ObjectGroups.VacantSlotColor = ColorTranslator.FromHtml(subElement.Attribute(XName.Get("color")).Value);
+                                    break;
+                                case "VacantPointerAddressJP":
+                                    Config.ObjectGroups.VactantPointerAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     Config.ObjectGroups.VacantSlotColor = ColorTranslator.FromHtml(subElement.Attribute(XName.Get("color")).Value);
                                     break;
                                 case "ProcessGroupStructSize":
