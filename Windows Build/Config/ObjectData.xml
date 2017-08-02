@@ -60,7 +60,41 @@
   <Data type="int" address="0x8c" offset="Object" isBool="true" mask="0x00000002">Forward Movement</Data>
   <Data type="byte" address="0x77" offset="Object" isBool="true">Mario Close</Data>
   <Data type="int" address="0x9C" offset="Object">Tangible</Data>
-  <Data type="float" address="0x130" offset="Object" useHex="true">Collision Type</Data>
+  <Data type="int" address="0x130" offset="Object" useHex="true">Collision Type</Data>
+  <!--
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x80000000">Collision Flag 1</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x40000000">Igloo Barrier</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x20000000">Shocks</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x10000000">Collision Flag 4</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x08000000">BBH Entrance</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x04000000">Clam / Bubba</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x02000000">Whirlpool</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x01000000">Tornado</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00800000">Text</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00400000">Bounce Top/Bottom</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00200000">Mr. Blizzard</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00100000">Collision Flag 12</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00080000">Koopa Shell</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00040000">Burns</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00020000">Bully</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00010000">Water Ring</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00008000">Bounce Top</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00004000">Cannon Base</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00002000">Warp</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00001000">Power Star</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00000800">Warp Door</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00000400">Wind</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00000200">Breakable Block</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00000100">Collision Flag 24</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00000080">Koopa</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00000040">Pole</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00000020">Cap</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00000010">Coin</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00000008">Hurtbox</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00000004">Door</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00000002">Grabbable</Data>
+  <Data type="int" address="0x130" offset="Object" isBool="true" mask="0x00000001">Hoot</Data>
+  -->
   <Data type="uint" address="0x3C" offset="Object" useHex="true">Animation</Data>
   <Data type="uint" address="0x04" offset="Animation" mask="0x80" isBool="true">Freeze Animation</Data>
   <Data type="short" address="0x40" offset="Object">Animation Timer</Data>
