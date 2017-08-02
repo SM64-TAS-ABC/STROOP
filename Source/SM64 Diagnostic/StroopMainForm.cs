@@ -128,6 +128,7 @@ namespace SM64_Diagnostic
             currentContext.QuarterFrameManager = _quarterFrameManager = new DataManager(_quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
             currentContext.CameraHackManager = _cameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
             currentContext.ObjectManager = _objectManager = new ObjectManager(_objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
+            currentContext.OptionsManager = _optionsManager = new OptionsManager(tabPageOptions);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
