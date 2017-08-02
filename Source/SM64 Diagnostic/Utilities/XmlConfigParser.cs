@@ -2051,6 +2051,11 @@ namespace SM64_Diagnostic.Utilities
             if (watchVar.IsSpecial)
                 return watchVar;
 
+            watchVar.SetAddress(
+                ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressUS"))?.Value),
+                ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressJP"))?.Value),
+                ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressPAL"))?.Value),
+                ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("address"))?.Value));
             watchVar.UseHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
             watchVar.Mask = element.Attribute(XName.Get("mask")) != null ?
@@ -2060,7 +2065,6 @@ namespace SM64_Diagnostic.Utilities
             watchVar.IsObject = element.Attribute(XName.Get("isObject")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isObject")).Value) : false;
             watchVar.TypeName = (element.Attribute(XName.Get("type")).Value);
-            watchVar.Address = ParsingUtilities.ParseHex(element.Attribute(XName.Get("address")).Value);
             watchVar.InvertBool = element.Attribute(XName.Get("invertBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : false;
             watchVar.IsAngle = element.Attribute(XName.Get("isAngle")) != null ?

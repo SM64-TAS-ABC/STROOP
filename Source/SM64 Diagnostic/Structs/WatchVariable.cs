@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -26,7 +27,32 @@ namespace SM64_Diagnostic.Structs
                 _typeName = StringToType.First(s => s.Value == _type).Key;
             }
         }
-        public uint Address;
+
+        private uint? _addressUS;
+        private uint? _addressJP;
+        private uint? _addressPAL;
+        private uint? _address;
+        public uint Address
+        {
+            get
+            {
+                switch (Config.Version)
+                {
+                    case Config.RomVersion.US:
+                        if (_addressUS != null) return (uint)_addressUS;
+                        break;
+                    case Config.RomVersion.JP:
+                        if (_addressJP != null) return (uint)_addressJP;
+                        break;
+                    case Config.RomVersion.PAL:
+                        if (_addressPAL != null) return (uint)_addressPAL;
+                        break;
+                }
+                if (_address != null) return (uint)_address;
+                return 0;
+            }
+        }
+
         public OffsetType Offset;
         public String Name;
         public String SpecialType;
@@ -197,6 +223,17 @@ namespace SM64_Diagnostic.Structs
                 }
             }
             return variableGroupList;
+        }
+
+        public void SetAddress(uint? addressUS, uint? addressJP, uint? addressPAL, uint? address)
+        {
+            if (addressUS == null && addressJP == null && addressPAL == null && address == null)
+                throw new ArgumentOutOfRangeException();
+
+            _addressUS = addressUS;
+            _addressJP = addressJP;
+            _addressPAL = addressPAL;
+            _address = address;
         }
     }
 }

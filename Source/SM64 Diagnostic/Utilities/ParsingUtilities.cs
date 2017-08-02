@@ -20,6 +20,12 @@ namespace SM64_Diagnostic.Utilities
                 return uint.Parse(str.Substring(prefixPos + 2), NumberStyles.HexNumber);
         }
 
+        public static uint? ParseHexNullable(string str)
+        {
+            if (str == null) return null;
+            return ParseHex(str);
+        }
+
         public static UInt64 ParseExtHex(string str)
         {
             return UInt64.Parse(str.Substring(str.IndexOf("0x") + 2), NumberStyles.HexNumber);
