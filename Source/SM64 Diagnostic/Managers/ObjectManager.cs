@@ -12,6 +12,7 @@ using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
 using SM64Diagnostic.Controls;
 using static SM64_Diagnostic.Controls.AngleDataContainer;
+using static SM64_Diagnostic.Structs.WatchVariable;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -395,6 +396,28 @@ namespace SM64_Diagnostic.Managers
                         -1 * vOffset,
                         useRelative);
                 });
+
+            GroupBox variableListFilterGroupBox = objPanel.Controls["groupBoxVariableListFilter"] as GroupBox;
+            RadioButton variableListFilterSimpleRadioButton =
+                variableListFilterGroupBox.Controls["radioButtonVariableListFilterSimple"] as RadioButton;
+            variableListFilterSimpleRadioButton.Click +=
+                (sender, e) => ApplyVariableListFilter(
+                    new List<VariableGroup> { VariableGroup.Simple, VariableGroup.ObjectSpecific });
+            RadioButton variableListFilterExpandedRadioButton =
+                variableListFilterGroupBox.Controls["radioButtonVariableListFilterExpanded"] as RadioButton;
+            variableListFilterExpandedRadioButton.Click += 
+                (sender, e) => ApplyVariableListFilter(
+                    new List<VariableGroup> { VariableGroup.Simple, VariableGroup.Expanded, VariableGroup.ObjectSpecific });
+            RadioButton variableListFilterCollisionRadioButton =
+                variableListFilterGroupBox.Controls["radioButtonVariableListFilterCollision"] as RadioButton;
+            variableListFilterCollisionRadioButton.Click +=
+                (sender, e) => ApplyVariableListFilter(
+                    new List<VariableGroup> { VariableGroup.Collision });
+        }
+
+        private void ApplyVariableListFilter(List<VariableGroup> variableGroups)
+        {
+            // TODO implement this
         }
 
         private void AddressChanged()
