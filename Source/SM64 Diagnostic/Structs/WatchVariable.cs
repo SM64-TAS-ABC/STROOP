@@ -168,6 +168,7 @@ namespace SM64_Diagnostic.Structs
         {
             Simple,
             Expanded,
+            ObjectSpecific,
             Collision,
         };
 
@@ -175,6 +176,7 @@ namespace SM64_Diagnostic.Structs
         {
             { "Simple", VariableGroup.Simple },
             { "Expanded", VariableGroup.Expanded },
+            { "ObjectSpecific", VariableGroup.ObjectSpecific },
             { "Collision", VariableGroup.Collision },
         };
 
