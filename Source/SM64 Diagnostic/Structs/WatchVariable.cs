@@ -186,9 +186,13 @@ namespace SM64_Diagnostic.Structs
         public static List<VariableGroup> ParseVariableGroupList(string variableGroupListString)
         {
             List<VariableGroup> variableGroupList = new List<VariableGroup>();
-            string[] groupNames = variableGroupListString.Split(',');
-            foreach (string groupName in groupNames) {
-                variableGroupList.Add(GetVariableGroup(groupName));
+            if (variableGroupListString != null)
+            {
+                string[] groupNames = variableGroupListString.Split(',');
+                foreach (string groupName in groupNames)
+                {
+                    variableGroupList.Add(GetVariableGroup(groupName));
+                }
             }
             return variableGroupList;
         }
