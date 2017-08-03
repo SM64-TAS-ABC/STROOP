@@ -689,61 +689,7 @@ namespace SM64_Diagnostic
             Config.ShowOverlayParentObject = checkBoxShowOverlayParentObject.Checked;
         }
 
-        private void textBoxGotoAbove_LostFocus(object sender, EventArgs e)
-        {
-            float value;
-            if (float.TryParse((sender as TextBox).Text, out value))
-            {
-                Config.GotoRetrieve.GotoAboveOffset = value;
-            }
-            else
-            {
-                Config.GotoRetrieve.GotoAboveOffset = Config.GotoRetrieve.GotoAboveDefault;
-                (sender as TextBox).Text = Config.GotoRetrieve.GotoAboveDefault.ToString();
-            }
-        }
 
-        private void textBoxGotoInfront_LostFocus(object sender, EventArgs e)
-        {
-            float value;
-            if (float.TryParse((sender as TextBox).Text, out value))
-            {
-                Config.GotoRetrieve.GotoInfrontOffset = value;
-            }
-            else
-            {
-                Config.GotoRetrieve.GotoInfrontOffset = Config.GotoRetrieve.GotoInfrontDefault;
-                (sender as TextBox).Text = Config.GotoRetrieve.GotoInfrontDefault.ToString();
-            }
-        }
-
-        private void textBoxRetrieveAbove_LostFocus(object sender, EventArgs e)
-        {
-            float value;
-            if (float.TryParse((sender as TextBox).Text, out value))
-            {
-                Config.GotoRetrieve.RetrieveAboveOffset = value;
-            }
-            else
-            {
-                Config.GotoRetrieve.RetrieveAboveOffset = Config.GotoRetrieve.RetrieveAboveDefault;
-                (sender as TextBox).Text = Config.GotoRetrieve.RetrieveAboveDefault.ToString();
-            }
-        }
-
-        private void textBoxRetrieveInfront_LostFocus(object sender, EventArgs e)
-        {
-            float value;
-            if (float.TryParse((sender as TextBox).Text, out value))
-            {
-                Config.GotoRetrieve.RetrieveInfrontOffset = value;
-            }
-            else
-            {
-                Config.GotoRetrieve.RetrieveInfrontOffset = Config.GotoRetrieve.RetrieveInfrontDefault;
-                (sender as TextBox).Text = Config.GotoRetrieve.RetrieveInfrontDefault.ToString();
-            }
-        }
 
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
         {
