@@ -165,29 +165,9 @@ namespace SM64_Diagnostic.Structs
             Special,
         };
 
-        readonly static Dictionary<String, OffsetType> StringToOffsetType = new Dictionary<string, OffsetType>()
-        {
-            { "Absolute", OffsetType.Absolute },
-            { "Relative", OffsetType.Relative },
-            { "Mario", OffsetType.Mario },
-            { "MarioObj", OffsetType.MarioObj },
-            { "Camera", OffsetType.Camera },
-            { "File", OffsetType.File },
-            { "Object", OffsetType.Object },
-            { "Triangle", OffsetType.Triangle },
-            { "InputCurrent", OffsetType.InputCurrent },
-            { "InputBuffered", OffsetType.InputBuffered },
-            { "Graphics", OffsetType.Graphics },
-            { "Animation", OffsetType.Animation },
-            { "Waypoint", OffsetType.Waypoint },
-            { "HackedArea", OffsetType.HackedArea },
-            { "CamHack", OffsetType.CamHack },
-            { "Special", OffsetType.Special },
-        };
-
         public static OffsetType GetOffsetType(string offsetTypeString)
         {
-            return StringToOffsetType[offsetTypeString];
+            return (OffsetType)Enum.Parse(typeof(OffsetType), offsetTypeString);
         }
 
         public enum VariableGroup
@@ -198,17 +178,9 @@ namespace SM64_Diagnostic.Structs
             Collision,
         };
 
-        readonly static Dictionary<String, VariableGroup> StringToVariableGroup = new Dictionary<string, VariableGroup>()
-        {
-            { "Simple", VariableGroup.Simple },
-            { "Expanded", VariableGroup.Expanded },
-            { "ObjectSpecific", VariableGroup.ObjectSpecific },
-            { "Collision", VariableGroup.Collision },
-        };
-
         public static VariableGroup GetVariableGroup(string variableGroupString)
         {
-            return StringToVariableGroup[variableGroupString];
+            return (VariableGroup)Enum.Parse(typeof(VariableGroup), variableGroupString);
         }
 
         public static List<VariableGroup> ParseVariableGroupList(string variableGroupListString)
