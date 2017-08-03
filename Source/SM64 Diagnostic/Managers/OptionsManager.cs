@@ -31,6 +31,30 @@ namespace SM64_Diagnostic.Managers
             textBoxRetrieveAbove.LostFocus += this.textBoxRetrieveAbove_LostFocus;
             TextBox textBoxRetrieveInfront = groupBoxGotoRetrieveOffsets.Controls["textBoxRetrieveInfront"] as TextBox;
             textBoxRetrieveInfront.LostFocus += this.textBoxRetrieveInfront_LostFocus;
+
+            GroupBox groupBoxShowOverlay = tabControl.Controls["groupBoxShowOverlay"] as GroupBox;
+            CheckBox checkBoxShowOverlayHeldObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayHeldObject"] as CheckBox;
+            checkBoxShowOverlayHeldObject.Click += (sender, e) => Config.ShowOverlayHeldObject = checkBoxShowOverlayHeldObject.Checked;
+            CheckBox checkBoxShowOverlayStoodOnObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayStoodOnObject"] as CheckBox;
+            checkBoxShowOverlayStoodOnObject.Click += (sender, e) => Config.ShowOverlayStoodOnObject = checkBoxShowOverlayStoodOnObject.Checked;
+            CheckBox checkBoxShowOverlayInteractionObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayInteractionObject"] as CheckBox;
+            checkBoxShowOverlayInteractionObject.Click += (sender, e) => Config.ShowOverlayInteractionObject = checkBoxShowOverlayInteractionObject.Checked;
+            CheckBox checkBoxShowOverlayUsedObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayUsedObject"] as CheckBox;
+            checkBoxShowOverlayUsedObject.Click += (sender, e) => Config.ShowOverlayUsedObject = checkBoxShowOverlayUsedObject.Checked;
+            CheckBox checkBoxShowOverlayClosestObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayClosestObject"] as CheckBox;
+            checkBoxShowOverlayClosestObject.Click += (sender, e) => Config.ShowOverlayClosestObject = checkBoxShowOverlayClosestObject.Checked;
+            CheckBox checkBoxShowOverlayCameraObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayCameraObject"] as CheckBox;
+            checkBoxShowOverlayCameraObject.Click += (sender, e) => Config.ShowOverlayCameraObject = checkBoxShowOverlayCameraObject.Checked;
+            CheckBox checkBoxShowOverlayCameraHackObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayCameraHackObject"] as CheckBox;
+            checkBoxShowOverlayCameraHackObject.Click += (sender, e) => Config.ShowOverlayCameraHackObject = checkBoxShowOverlayCameraHackObject.Checked;
+            CheckBox checkBoxShowOverlayFloorObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayFloorObject"] as CheckBox;
+            checkBoxShowOverlayFloorObject.Click += (sender, e) => Config.ShowOverlayFloorObject = checkBoxShowOverlayFloorObject.Checked;
+            CheckBox checkBoxShowOverlayWallObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayWallObject"] as CheckBox;
+            checkBoxShowOverlayWallObject.Click += (sender, e) => Config.ShowOverlayWallObject = checkBoxShowOverlayWallObject.Checked;
+            CheckBox checkBoxShowOverlayCeilingObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayCeilingObject"] as CheckBox;
+            checkBoxShowOverlayCeilingObject.Click += (sender, e) => Config.ShowOverlayCeilingObject = checkBoxShowOverlayCeilingObject.Checked;
+            CheckBox checkBoxShowOverlayParentObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayParentObject"] as CheckBox;
+            checkBoxShowOverlayParentObject.Click += (sender, e) => Config.ShowOverlayParentObject = checkBoxShowOverlayParentObject.Checked;
         }
 
         private void textBoxGotoAbove_LostFocus(object sender, EventArgs e)

@@ -634,61 +634,6 @@ namespace SM64_Diagnostic
             Config.NeutralizeTriangleWith21 = checkBoxNeutralizeTriangleWith21.Checked;
         }
 
-        private void checkBoxShowOverlayHeldObject_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.ShowOverlayHeldObject = checkBoxShowOverlayHeldObject.Checked;
-        }
-
-        private void checkBoxShowOverlayStoodOnObject_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.ShowOverlayStoodOnObject = checkBoxShowOverlayStoodOnObject.Checked;
-        }
-
-        private void checkBoxShowOverlayInteractionObject_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.ShowOverlayInteractionObject = checkBoxShowOverlayInteractionObject.Checked;
-        }
-
-        private void checkBoxShowOverlayUsedObject_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.ShowOverlayUsedObject = checkBoxShowOverlayUsedObject.Checked;
-        }
-
-        private void checkBoxShowOverlayCameraObject_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.ShowOverlayCameraObject = checkBoxShowOverlayCameraObject.Checked;
-        }
-
-        private void checkBoxShowOverlayCameraHackObject_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.ShowOverlayCameraHackObject = checkBoxShowOverlayCameraHackObject.Checked;
-        }
-
-        private void checkBoxShowOverlayClosestObject_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.ShowOverlayClosestObject = checkBoxShowOverlayClosestObject.Checked;
-        }
-
-        private void checkBoxShowOverlayFloorObject_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.ShowOverlayFloorObject = checkBoxShowOverlayFloorObject.Checked;
-        }
-
-        private void checkBoxShowOverlayWallObject_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.ShowOverlayWallObject = checkBoxShowOverlayWallObject.Checked;
-        }
-
-        private void checkBoxShowOverlayCeilingObject_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.ShowOverlayCeilingObject = checkBoxShowOverlayCeilingObject.Checked;
-        }
-
-        private void checkBoxShowOverlayParentObject_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.ShowOverlayParentObject = checkBoxShowOverlayParentObject.Checked;
-        }
-
 
 
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)

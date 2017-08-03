@@ -9062,7 +9062,6 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayCameraHackObject.TabIndex = 10;
             this.checkBoxShowOverlayCameraHackObject.Text = "Camera Hack Object";
             this.checkBoxShowOverlayCameraHackObject.UseVisualStyleBackColor = true;
-            this.checkBoxShowOverlayCameraHackObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayCameraHackObject_CheckedChanged);
             // 
             // checkBoxShowOverlayParentObject
             // 
@@ -9074,7 +9073,6 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayParentObject.TabIndex = 9;
             this.checkBoxShowOverlayParentObject.Text = "Parent Object";
             this.checkBoxShowOverlayParentObject.UseVisualStyleBackColor = true;
-            this.checkBoxShowOverlayParentObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayParentObject_CheckedChanged);
             // 
             // checkBoxShowOverlayCeilingObject
             // 
@@ -9088,7 +9086,6 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayCeilingObject.TabIndex = 9;
             this.checkBoxShowOverlayCeilingObject.Text = "Ceiling Object";
             this.checkBoxShowOverlayCeilingObject.UseVisualStyleBackColor = true;
-            this.checkBoxShowOverlayCeilingObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayCeilingObject_CheckedChanged);
             // 
             // checkBoxShowOverlayWallObject
             // 
@@ -9102,7 +9099,6 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayWallObject.TabIndex = 8;
             this.checkBoxShowOverlayWallObject.Text = "Wall Object";
             this.checkBoxShowOverlayWallObject.UseVisualStyleBackColor = true;
-            this.checkBoxShowOverlayWallObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayWallObject_CheckedChanged);
             // 
             // checkBoxShowOverlayFloorObject
             // 
@@ -9116,7 +9112,6 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayFloorObject.TabIndex = 7;
             this.checkBoxShowOverlayFloorObject.Text = "Floor Object";
             this.checkBoxShowOverlayFloorObject.UseVisualStyleBackColor = true;
-            this.checkBoxShowOverlayFloorObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayFloorObject_CheckedChanged);
             // 
             // checkBoxShowOverlayUsedObject
             // 
@@ -9130,7 +9125,6 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayUsedObject.TabIndex = 4;
             this.checkBoxShowOverlayUsedObject.Text = "Used Object";
             this.checkBoxShowOverlayUsedObject.UseVisualStyleBackColor = true;
-            this.checkBoxShowOverlayUsedObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayUsedObject_CheckedChanged);
             // 
             // checkBoxShowOverlayInteractionObject
             // 
@@ -9144,7 +9138,6 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayInteractionObject.TabIndex = 3;
             this.checkBoxShowOverlayInteractionObject.Text = "Interaction Object";
             this.checkBoxShowOverlayInteractionObject.UseVisualStyleBackColor = true;
-            this.checkBoxShowOverlayInteractionObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayInteractionObject_CheckedChanged);
             // 
             // checkBoxShowOverlayCameraObject
             // 
@@ -9158,7 +9151,6 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayCameraObject.TabIndex = 5;
             this.checkBoxShowOverlayCameraObject.Text = "Camera Object";
             this.checkBoxShowOverlayCameraObject.UseVisualStyleBackColor = true;
-            this.checkBoxShowOverlayCameraObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayCameraObject_CheckedChanged);
             // 
             // checkBoxShowOverlayClosestObject
             // 
@@ -9172,7 +9164,6 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayClosestObject.TabIndex = 6;
             this.checkBoxShowOverlayClosestObject.Text = "Closest Object";
             this.checkBoxShowOverlayClosestObject.UseVisualStyleBackColor = true;
-            this.checkBoxShowOverlayClosestObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayClosestObject_CheckedChanged);
             // 
             // checkBoxShowOverlayStoodOnObject
             // 
@@ -9186,7 +9177,6 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayStoodOnObject.TabIndex = 2;
             this.checkBoxShowOverlayStoodOnObject.Text = "Stood On Object";
             this.checkBoxShowOverlayStoodOnObject.UseVisualStyleBackColor = true;
-            this.checkBoxShowOverlayStoodOnObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayStoodOnObject_CheckedChanged);
             // 
             // checkBoxShowOverlayHeldObject
             // 
@@ -9200,7 +9190,6 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayHeldObject.TabIndex = 1;
             this.checkBoxShowOverlayHeldObject.Text = "Held Object";
             this.checkBoxShowOverlayHeldObject.UseVisualStyleBackColor = true;
-            this.checkBoxShowOverlayHeldObject.CheckedChanged += new System.EventHandler(this.checkBoxShowOverlayHeldObject_CheckedChanged);
             // 
             // checkBoxPositionControllersRelativeToMario
             // 
