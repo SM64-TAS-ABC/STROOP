@@ -395,56 +395,32 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "StarCountOffset":
-                                    Config.Hud.StarCountOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "CoinCountOffset":
-                                    Config.Hud.CoinCountOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
                                 case "LifeCountOffset":
                                     Config.Hud.LifeCountOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "HpCountOffset":
                                     Config.Hud.HpCountOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "StarDisplayOffset":
-                                    Config.Hud.StarDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                case "CoinCountOffset":
+                                    Config.Hud.CoinCountOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "CoinDisplayOffset":
-                                    Config.Hud.CoinDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                case "StarCountOffset":
+                                    Config.Hud.StarCountOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+
                                 case "LifeDisplayOffset":
                                     Config.Hud.LifeDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "HpDisplayOffset":
                                     Config.Hud.HpDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "CoinDisplayOffset":
+                                    Config.Hud.CoinDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "StarDisplayOffset":
+                                    Config.Hud.StarDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
 
-
-                                case "HpAddress":
-                                    Config.Hud.HpAddress = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "LiveCountAddress":
-                                    Config.Hud.LiveCountAddress = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "CoinCountAddress":
-                                    Config.Hud.CoinCountAddress = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "StarCountAddress":
-                                    Config.Hud.StarCountAddress = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "DisplayHpAddress":
-                                    Config.Hud.DisplayHpAddress = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "DisplayLiveCountAddress":
-                                    Config.Hud.DisplayLiveCountAddress = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "DisplayCoinCountAddress":
-                                    Config.Hud.DisplayCoinCountAddress = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "DisplayStarCountAddress":
-                                    Config.Hud.DisplayStarCountAddress = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
                                 case "FullHpInt":
                                     Config.Hud.FullHpInt = short.Parse(subElement.Value);
                                     break;

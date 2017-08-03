@@ -452,8 +452,8 @@ namespace SM64_Diagnostic.Managers
         private void NumStarsButton_Click(object sender, EventArgs e)
         {
             short numStars = CalculateNumStars();
-            Config.Stream.SetValue(numStars, Config.Hud.StarCountAddress);
-            Config.Stream.SetValue(numStars, Config.Hud.DisplayStarCountAddress);
+            Config.Stream.SetValue(numStars, Config.Mario.StructAddress + Config.Hud.StarCountOffset);
+            Config.Stream.SetValue(numStars, Config.Mario.StructAddress + Config.Hud.StarDisplayOffset);
         }
 
         private void FileSaveButton_Click(object sender, EventArgs e)
