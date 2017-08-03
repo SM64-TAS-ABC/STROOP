@@ -24,13 +24,17 @@ namespace SM64_Diagnostic.Managers
 
             GroupBox groupBoxGotoRetrieveOffsets = tabControl.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
             TextBox textBoxGotoAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoAbove"] as TextBox;
-            textBoxGotoAbove.LostFocus += this.textBoxGotoAbove_LostFocus;
+            textBoxGotoAbove.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
+                sender, ref Config.GotoRetrieve.GotoAboveOffset, Config.GotoRetrieve.GotoAboveDefault);
             TextBox textBoxGotoInfront = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoInfront"] as TextBox;
-            textBoxGotoInfront.LostFocus += this.textBoxGotoInfront_LostFocus;
+            textBoxGotoInfront.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
+                sender, ref Config.GotoRetrieve.GotoInfrontOffset, Config.GotoRetrieve.GotoInfrontDefault);
             TextBox textBoxRetrieveAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxRetrieveAbove"] as TextBox;
-            textBoxRetrieveAbove.LostFocus += this.textBoxRetrieveAbove_LostFocus;
+            textBoxRetrieveAbove.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
+                sender, ref Config.GotoRetrieve.RetrieveAboveOffset, Config.GotoRetrieve.RetrieveAboveDefault);
             TextBox textBoxRetrieveInfront = groupBoxGotoRetrieveOffsets.Controls["textBoxRetrieveInfront"] as TextBox;
-            textBoxRetrieveInfront.LostFocus += this.textBoxRetrieveInfront_LostFocus;
+            textBoxRetrieveInfront.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
+                sender, ref Config.GotoRetrieve.RetrieveInfrontOffset, Config.GotoRetrieve.RetrieveInfrontDefault);
 
             GroupBox groupBoxShowOverlay = tabControl.Controls["groupBoxShowOverlay"] as GroupBox;
             CheckBox checkBoxShowOverlayHeldObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayHeldObject"] as CheckBox;
@@ -70,59 +74,17 @@ namespace SM64_Diagnostic.Managers
             checkBoxNeutralizeTriangleWith21.Click += (sender, e) => Config.NeutralizeTriangleWith21 = checkBoxNeutralizeTriangleWith21.Checked;
         }
 
-        private void textBoxGotoAbove_LostFocus(object sender, EventArgs e)
+        private void textBoxGotoRetrieve_LostFocus(object sender, ref float offset, float defaultOffset)
         {
             float value;
             if (float.TryParse((sender as TextBox).Text, out value))
             {
-                Config.GotoRetrieve.GotoAboveOffset = value;
+                offset = value;
             }
             else
             {
-                Config.GotoRetrieve.GotoAboveOffset = Config.GotoRetrieve.GotoAboveDefault;
-                (sender as TextBox).Text = Config.GotoRetrieve.GotoAboveDefault.ToString();
-            }
-        }
-
-        private void textBoxGotoInfront_LostFocus(object sender, EventArgs e)
-        {
-            float value;
-            if (float.TryParse((sender as TextBox).Text, out value))
-            {
-                Config.GotoRetrieve.GotoInfrontOffset = value;
-            }
-            else
-            {
-                Config.GotoRetrieve.GotoInfrontOffset = Config.GotoRetrieve.GotoInfrontDefault;
-                (sender as TextBox).Text = Config.GotoRetrieve.GotoInfrontDefault.ToString();
-            }
-        }
-
-        private void textBoxRetrieveAbove_LostFocus(object sender, EventArgs e)
-        {
-            float value;
-            if (float.TryParse((sender as TextBox).Text, out value))
-            {
-                Config.GotoRetrieve.RetrieveAboveOffset = value;
-            }
-            else
-            {
-                Config.GotoRetrieve.RetrieveAboveOffset = Config.GotoRetrieve.RetrieveAboveDefault;
-                (sender as TextBox).Text = Config.GotoRetrieve.RetrieveAboveDefault.ToString();
-            }
-        }
-
-        private void textBoxRetrieveInfront_LostFocus(object sender, EventArgs e)
-        {
-            float value;
-            if (float.TryParse((sender as TextBox).Text, out value))
-            {
-                Config.GotoRetrieve.RetrieveInfrontOffset = value;
-            }
-            else
-            {
-                Config.GotoRetrieve.RetrieveInfrontOffset = Config.GotoRetrieve.RetrieveInfrontDefault;
-                (sender as TextBox).Text = Config.GotoRetrieve.RetrieveInfrontDefault.ToString();
+                offset = defaultOffset;
+                (sender as TextBox).Text = defaultOffset.ToString();
             }
         }
     }
