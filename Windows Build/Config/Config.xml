@@ -125,6 +125,16 @@
     <DisplayLiveCountAddress>0x8033B260</DisplayLiveCountAddress>
     <DisplayCoinCountAddress>0x8033B262</DisplayCoinCountAddress>
     <DisplayStarCountAddress>0x8033B264</DisplayStarCountAddress>
+
+    <StarCountOffset>0xAA</StarCountOffset>
+    <CoinCountOffset>0xA8</CoinCountOffset>
+    <LifeCountOffset>0xAD</LifeCountOffset>
+    <HpCountOffset>0xAE</HpCountOffset>
+    <StarDisplayOffset>0xF4</StarDisplayOffset>
+    <CoinDisplayOffset>0xF2</CoinDisplayOffset>
+    <LifeDisplayOffset>0xF0</LifeDisplayOffset>
+    <HpDisplayOffset>0xF6</HpDisplayOffset>
+
     <FullHp>2176</FullHp>
     <FullHpInt>8</FullHpInt>
     <StandardLives>4</StandardLives>

@@ -395,6 +395,32 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
+                                case "StarCountOffset":
+                                    Config.Hud.StarCountOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "CoinCountOffset":
+                                    Config.Hud.CoinCountOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "LifeCountOffset":
+                                    Config.Hud.LifeCountOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "HpCountOffset":
+                                    Config.Hud.HpCountOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "StarDisplayOffset":
+                                    Config.Hud.StarDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "CoinDisplayOffset":
+                                    Config.Hud.CoinDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "LifeDisplayOffset":
+                                    Config.Hud.LifeDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "HpDisplayOffset":
+                                    Config.Hud.HpDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+
                                 case "HpAddress":
                                     Config.Hud.HpAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
