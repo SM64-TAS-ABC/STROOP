@@ -16,10 +16,13 @@ namespace SM64_Diagnostic.Managers
         {
             GroupBox groupBoxRomVersion = tabControl.Controls["groupBoxRomVersion"] as GroupBox;
             RadioButton radioButtonRomVersionUS = groupBoxRomVersion.Controls["radioButtonRomVersionUS"] as RadioButton;
+            radioButtonRomVersionUS.Checked = Config.Version == Config.RomVersion.US;
             radioButtonRomVersionUS.Click += (sender, e) => { Config.Version = RomVersion.US; };
             RadioButton radioButtonRomVersionJP = groupBoxRomVersion.Controls["radioButtonRomVersionJP"] as RadioButton;
+            radioButtonRomVersionJP.Checked = Config.Version == Config.RomVersion.JP;
             radioButtonRomVersionJP.Click += (sender, e) => { Config.Version = RomVersion.JP; };
             RadioButton radioButtonRomVersionPAL = groupBoxRomVersion.Controls["radioButtonRomVersionPAL"] as RadioButton;
+            radioButtonRomVersionPAL.Checked = Config.Version == Config.RomVersion.PAL;
             radioButtonRomVersionPAL.Click += (sender, e) => { Config.Version = RomVersion.PAL; };
 
             GroupBox groupBoxGotoRetrieveOffsets = tabControl.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
