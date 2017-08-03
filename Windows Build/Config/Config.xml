@@ -4,6 +4,10 @@
     <Emulator name="Mupen 5.0 RR" processName="mupen64-rerecording" ramStart="0x008EBA80"/>
     <Emulator name="Nemu64 0.8" processName="Nemu64" ramStart="0x10020000"/>
   </Emulators>
+  
+  <!-- US, JP, or PAL -->
+  <RomVersion>US</RomVersion>
+  
   <RefreshRateFreq>30</RefreshRateFreq>
   <RamSize>0x400000</RamSize>
   <ObjectSlots>
