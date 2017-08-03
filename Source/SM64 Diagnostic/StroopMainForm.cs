@@ -604,38 +604,6 @@ namespace SM64_Diagnostic
             buttonConnect_Click(sender, e);
         }
 
-        private void checkBoxStartSlotIndexOne_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.SlotIndexsFromOne = checkBoxStartSlotIndexOne.Checked;
-        }
-
-        private void checkBoxMoveCamWithPu_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
-        }
-
-        private void checkBoxScaleDiagonalPositionControllerButtons_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.ScaleDiagonalPositionControllerButtons = checkBoxScaleDiagonalPositionControllerButtons.Checked;
-        }
-
-        private void checkBoxPositionControllersRelativeToMario_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.PositionControllersRelativeToMario = checkBoxPositionControllersRelativeToMario.Checked;
-        }
-
-        private void checkBoxDisableActionUpdateWhenCloning_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.DisableActionUpdateWhenCloning = checkBoxDisableActionUpdateWhenCloning.Checked;
-        }
-
-        private void checkBoxNeutralizeTriangleWith21_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.NeutralizeTriangleWith21 = checkBoxNeutralizeTriangleWith21.Checked;
-        }
-
-
-
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
         {
             _resizeObjSlotTime = 500;

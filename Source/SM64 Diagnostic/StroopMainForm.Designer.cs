@@ -9017,7 +9017,6 @@ namespace SM64_Diagnostic
             this.checkBoxNeutralizeTriangleWith21.TabIndex = 31;
             this.checkBoxNeutralizeTriangleWith21.Text = "Neutralize Triangle With 21 (Not 0)";
             this.checkBoxNeutralizeTriangleWith21.UseVisualStyleBackColor = true;
-            this.checkBoxNeutralizeTriangleWith21.CheckedChanged += new System.EventHandler(this.checkBoxNeutralizeTriangleWith21_CheckedChanged);
             // 
             // checkBoxDisableActionUpdateWhenCloning
             // 
@@ -9028,7 +9027,6 @@ namespace SM64_Diagnostic
             this.checkBoxDisableActionUpdateWhenCloning.TabIndex = 30;
             this.checkBoxDisableActionUpdateWhenCloning.Text = "Disable Action Update When Cloning";
             this.checkBoxDisableActionUpdateWhenCloning.UseVisualStyleBackColor = true;
-            this.checkBoxDisableActionUpdateWhenCloning.CheckedChanged += new System.EventHandler(this.checkBoxDisableActionUpdateWhenCloning_CheckedChanged);
             // 
             // groupBoxShowOverlay
             // 
@@ -9200,7 +9198,6 @@ namespace SM64_Diagnostic
             this.checkBoxPositionControllersRelativeToMario.TabIndex = 8;
             this.checkBoxPositionControllersRelativeToMario.Text = "Position Controllers Relative to Mario";
             this.checkBoxPositionControllersRelativeToMario.UseVisualStyleBackColor = true;
-            this.checkBoxPositionControllersRelativeToMario.CheckedChanged += new System.EventHandler(this.checkBoxPositionControllersRelativeToMario_CheckedChanged);
             // 
             // checkBoxScaleDiagonalPositionControllerButtons
             // 
@@ -9211,7 +9208,6 @@ namespace SM64_Diagnostic
             this.checkBoxScaleDiagonalPositionControllerButtons.TabIndex = 8;
             this.checkBoxScaleDiagonalPositionControllerButtons.Text = "Scale Diagonal Position Controller Buttons";
             this.checkBoxScaleDiagonalPositionControllerButtons.UseVisualStyleBackColor = true;
-            this.checkBoxScaleDiagonalPositionControllerButtons.CheckedChanged += new System.EventHandler(this.checkBoxScaleDiagonalPositionControllerButtons_CheckedChanged);
             // 
             // label3
             // 
@@ -9234,7 +9230,6 @@ namespace SM64_Diagnostic
             this.checkBoxMoveCamWithPu.TabIndex = 4;
             this.checkBoxMoveCamWithPu.Text = "PU Controller Moves Camera";
             this.checkBoxMoveCamWithPu.UseVisualStyleBackColor = true;
-            this.checkBoxMoveCamWithPu.CheckedChanged += new System.EventHandler(this.checkBoxMoveCamWithPu_CheckedChanged);
             // 
             // checkBoxUseRomHack
             // 
@@ -9259,7 +9254,6 @@ namespace SM64_Diagnostic
             this.checkBoxStartSlotIndexOne.TabIndex = 0;
             this.checkBoxStartSlotIndexOne.Text = "Start Slot Index From 1";
             this.checkBoxStartSlotIndexOne.UseVisualStyleBackColor = true;
-            this.checkBoxStartSlotIndexOne.CheckedChanged += new System.EventHandler(this.checkBoxStartSlotIndexOne_CheckedChanged);
             // 
             // labelVersionNumber
             // 

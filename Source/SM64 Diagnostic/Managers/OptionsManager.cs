@@ -55,6 +55,19 @@ namespace SM64_Diagnostic.Managers
             checkBoxShowOverlayCeilingObject.Click += (sender, e) => Config.ShowOverlayCeilingObject = checkBoxShowOverlayCeilingObject.Checked;
             CheckBox checkBoxShowOverlayParentObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayParentObject"] as CheckBox;
             checkBoxShowOverlayParentObject.Click += (sender, e) => Config.ShowOverlayParentObject = checkBoxShowOverlayParentObject.Checked;
+
+            CheckBox checkBoxStartSlotIndexOne = tabControl.Controls["checkBoxStartSlotIndexOne"] as CheckBox;
+            checkBoxStartSlotIndexOne.Click += (sender, e) => Config.SlotIndexsFromOne = checkBoxStartSlotIndexOne.Checked;
+            CheckBox checkBoxMoveCamWithPu = tabControl.Controls["checkBoxMoveCamWithPu"] as CheckBox;
+            checkBoxMoveCamWithPu.Click += (sender, e) => Config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
+            CheckBox checkBoxScaleDiagonalPositionControllerButtons = tabControl.Controls["checkBoxScaleDiagonalPositionControllerButtons"] as CheckBox;
+            checkBoxScaleDiagonalPositionControllerButtons.Click += (sender, e) => Config.ScaleDiagonalPositionControllerButtons = checkBoxScaleDiagonalPositionControllerButtons.Checked;
+            CheckBox checkBoxPositionControllersRelativeToMario = tabControl.Controls["checkBoxPositionControllersRelativeToMario"] as CheckBox;
+            checkBoxPositionControllersRelativeToMario.Click += (sender, e) => Config.PositionControllersRelativeToMario = checkBoxPositionControllersRelativeToMario.Checked;
+            CheckBox checkBoxDisableActionUpdateWhenCloning = tabControl.Controls["checkBoxDisableActionUpdateWhenCloning"] as CheckBox;
+            checkBoxDisableActionUpdateWhenCloning.Click += (sender, e) => Config.DisableActionUpdateWhenCloning = checkBoxDisableActionUpdateWhenCloning.Checked;
+            CheckBox checkBoxNeutralizeTriangleWith21 = tabControl.Controls["checkBoxNeutralizeTriangleWith21"] as CheckBox;
+            checkBoxNeutralizeTriangleWith21.Click += (sender, e) => Config.NeutralizeTriangleWith21 = checkBoxNeutralizeTriangleWith21.Checked;
         }
 
         private void textBoxGotoAbove_LostFocus(object sender, EventArgs e)
