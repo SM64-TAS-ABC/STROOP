@@ -183,8 +183,11 @@
   </Camera>
   <Input>
     <BufferedInputAddressUS>0x80367054</BufferedInputAddressUS>
+    <BufferedInputAddressJP>0x80365CE4</BufferedInputAddressJP>
+
     <CurrentInputAddressUS>0x8033AFF8</CurrentInputAddressUS>
-    
+    <CurrentInputAddressJP>0x80339C88</CurrentInputAddressJP>
+
     <ButtonAOffset>0x00</ButtonAOffset>
     <ButtonBOffset>0x00</ButtonBOffset>
     <ButtonZOffset>0x00</ButtonZOffset>
