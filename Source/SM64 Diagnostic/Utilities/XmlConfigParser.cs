@@ -550,8 +550,11 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "CameraStructAddress":
-                                    Config.Camera.CameraStructAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                case "CameraStructAddressUS":
+                                    Config.Camera.CameraStructAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "CameraStructAddressJP":
+                                    Config.Camera.CameraStructAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "XOffset":
                                     Config.Camera.XOffset = ParsingUtilities.ParseHex(subElement.Value);

@@ -170,7 +170,8 @@
     <associatedObject>0x2C</associatedObject>
   </TriangleOffsets>
   <Camera>
-    <CameraStructAddress>0x8033C618</CameraStructAddress>
+    <CameraStructAddressUS>0x8033C618</CameraStructAddressUS>
+    <CameraStructAddressJP>0x8033B2A8</CameraStructAddressJP>
     <XOffset>0x8C</XOffset>
     <YOffset>0x90</YOffset>
     <ZOffset>0x94</ZOffset>

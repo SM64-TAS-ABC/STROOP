@@ -8,7 +8,10 @@ namespace SM64_Diagnostic.Structs.Configurations
 {
     public struct CameraConfig
     {
-        public uint CameraStructAddress;
+        public uint CameraStructAddress { get { return Config.SwitchRomVersion(CameraStructAddressUS, CameraStructAddressJP); } }
+        public uint CameraStructAddressUS;
+        public uint CameraStructAddressJP;
+
         public uint XOffset;
         public uint YOffset;
         public uint ZOffset;
