@@ -57,6 +57,6 @@
   <Data type="byte" address="0x8032DA94" offset="Relative" mask="0x01" isBool="true">Just Teleported</Data>
   <Data type="int" address="0x800F0A5C" offset="Relative">Blinking State</Data>
   <Data type="short" address="0x8032DF08" offset="Relative">Blinking Timer</Data>
-  <Data type="uint" address="0x80361158" offset="Relative" useHex="true" isObject="true">Effective Mario Object</Data>
+  <Data type="uint" addressUS="0x80361158" addressJP="0x8035FDE8" offset="Relative" useHex="true" isObject="true">Effective Mario Object</Data>
   <Data type="uint" address="0x88" offset="Mario" useHex="true" isObject="true">Visual Mario Object</Data>
 </MarioData>
