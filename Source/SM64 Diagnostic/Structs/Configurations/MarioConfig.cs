@@ -36,7 +36,11 @@ namespace SM64_Diagnostic.Structs
         public uint SlidingSpeedXOffset;
         public uint SlidingSpeedZOffset;
         public uint PeakHeightOffset;
-        public uint ObjectReferenceAddress;
+
+        public uint ObjectReferenceAddress { get { return Config.SwitchRomVersion(ObjectReferenceAddressUS, ObjectReferenceAddressJP); } }
+        public uint ObjectReferenceAddressUS;
+        public uint ObjectReferenceAddressJP;
+
         public uint ObjectAnimationOffset;
         public uint ObjectAnimationTimerOffset;
         public uint HOLPXOffset;

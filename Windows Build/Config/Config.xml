@@ -113,7 +113,8 @@
     <SlidingSpeedXOffset>0x58</SlidingSpeedXOffset>
     <SlidingSpeedZOffset>0x5C</SlidingSpeedZOffset>
     <PeakHeightOffset>0xBC</PeakHeightOffset>
-    <ObjectReferenceAddress>0x80361158</ObjectReferenceAddress>
+    <ObjectReferenceAddressUS>0x80361158</ObjectReferenceAddressUS>
+    <ObjectReferenceAddressJP>0x8035FDE8</ObjectReferenceAddressJP>
     <ObjectAnimationOffset>0x38</ObjectAnimationOffset>
     <ObjectAnimationTimerOffset>0x40</ObjectAnimationTimerOffset>
     <HOLPXOffset>0x258</HOLPXOffset>
