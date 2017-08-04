@@ -34,7 +34,7 @@
   <Data type="short" address="0x1600" offset="Mario" isAngle="true">First Person Pitch</Data>
   <Data type="uint" address="0x78" offset="Mario" useHex="true" isObject="true">Interaction Object</Data>
   <Data type="uint" address="0x80" offset="Mario" useHex="true" isObject="true">Used Object</Data>
-  <Data type="uint" address="0x80330E34" offset="Relative" useHex="true" isObject="true">Stood On Object</Data>
+  <Data type="uint" addressUS="0x80330E34" addressJP="0x8032FED4" offset="Relative" useHex="true" isObject="true">Stood On Object</Data>
   <Data type="uint" address="0x7C" offset="Mario" useHex="true" isObject="true">Held Object</Data>
   <Data type="float" address="0x258" offset="Mario">HOLP X</Data>
   <Data type="float" address="0x25C" offset="Mario">HOLP Y</Data>
