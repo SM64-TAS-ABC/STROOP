@@ -589,20 +589,20 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "BufferedInputAddressUS":
-                                    Config.Input.BufferedInputAddressUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "BufferedInputAddressJP":
-                                    Config.Input.BufferedInputAddressJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
                                 case "CurrentInputAddressUS":
                                     Config.Input.CurrentInputAddressUS = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "CurrentInputAddressJP":
                                     Config.Input.CurrentInputAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "BufferedInputAddressUS":
+                                    Config.Input.BufferedInputAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "BufferedInputAddressJP":
+                                    Config.Input.BufferedInputAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonAOffset":
