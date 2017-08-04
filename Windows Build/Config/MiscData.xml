@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <MiscData>
   <Data type="int" addressUS="0x8032D5D4" addressJP="0x8032C694" offset="Relative">Global Timer</Data>
-  <Data type="ushort" address="0x8038EEE0" offset="Relative">RNG Value</Data>
+  <Data type="ushort" addressUS="0x8038EEE0" addressJP="0x8038EEE0" offset="Relative">RNG Value</Data>
   <Data offset="Special" specialType="RngIndex">RNG Index</Data>
   <Data offset="Special" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data offset="Special" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>

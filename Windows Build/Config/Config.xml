@@ -329,8 +329,13 @@
   <AreaAddress>0x8033B24A</AreaAddress>
   <LoadingPointAddress>0x8033BACA</LoadingPointAddress>
   <MissionLayoutAddress>0x8033BAC8</MissionLayoutAddress>
-  <GlobalTimerAddress>0x8032D5D4</GlobalTimerAddress>
-  <RngAddress>0x8038EEE0</RngAddress>
+
+  <GlobalTimerAddressUS>0x8032D5D4</GlobalTimerAddressUS>
+  <GlobalTimerAddressJP>0x8032C694</GlobalTimerAddressJP>
+
+  <RngAddressUS>0x8038EEE0</RngAddressUS>
+  <RngAddressJP>0x8038EEE0</RngAddressJP>
+  
   <HackedAreaAddress>0x803E0000</HackedAreaAddress>
   <DebugAddress></DebugAddress>
   <DebugModeAddress></DebugModeAddress>

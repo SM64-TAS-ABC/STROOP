@@ -1127,12 +1127,18 @@ namespace SM64_Diagnostic.Utilities
                     case "HackedAreaAddress":
                         Config.HackedAreaAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
-                    case "RngAddress":
-                        Config.RngAddress = ParsingUtilities.ParseHex(element.Value);
+                    case "RngAddressUS":
+                        Config.RngAddressUS = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "RngAddressJP":
+                        Config.RngAddressJP = ParsingUtilities.ParseHex(element.Value);
                         break;
 
-                    case "GlobalTimerAddress":
-                        Config.GlobalTimerAddress = ParsingUtilities.ParseHex(element.Value);
+                    case "GlobalTimerAddressUS":
+                        Config.GlobalTimerAddressUS = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "GlobalTimerAddressJP":
+                        Config.GlobalTimerAddressJP = ParsingUtilities.ParseHex(element.Value);
                         break;
                 }
             }

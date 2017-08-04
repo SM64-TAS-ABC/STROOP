@@ -57,8 +57,14 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint LoadingPointAddress;
         public static uint MissionAddress;
         public static uint HackedAreaAddress;
-        public static uint RngAddress;
-        public static uint GlobalTimerAddress;
+
+        public static uint GlobalTimerAddress { get { return Config.SwitchRomVersion(GlobalTimerAddressUS, GlobalTimerAddressJP); } }
+        public static uint GlobalTimerAddressUS;
+        public static uint GlobalTimerAddressJP;
+
+        public static uint RngAddress { get { return Config.SwitchRomVersion(RngAddressUS, RngAddressJP); } }
+        public static uint RngAddressUS;
+        public static uint RngAddressJP;
 
         public static bool SlotIndexsFromOne = true;
         public static bool MoveCameraWithPu = true;
