@@ -40,7 +40,7 @@ namespace SM64_Diagnostic
             Rectangle scaledRect = new Rectangle(new Point(), Size).Zoom(_gui.ControllerImage.Size);
             e.Graphics.DrawImage(_gui.ControllerImage, scaledRect);
 
-            uint inputStruct = Config.Input.CurrentInput;
+            uint inputStruct = Config.Input.CurrentInputAddress;
 
             bool buttonAPressed = (Config.Stream.GetByte(inputStruct + Config.Input.ButtonAOffset) & Config.Input.ButtonAMask) != 0;
             if (buttonAPressed) e.Graphics.DrawImage(_gui.ButtonAImage, scaledRect);

@@ -182,8 +182,8 @@
     <SecondObjectAddress>0x8032DF30</SecondObjectAddress>
   </Camera>
   <Input>
-    <BufferedInput>0x80367054</BufferedInput>
-    <CurrentInput>0x8033AFF8</CurrentInput>
+    <BufferedInputAddressUS>0x80367054</BufferedInputAddressUS>
+    <CurrentInputAddressUS>0x8033AFF8</CurrentInputAddressUS>
     
     <ButtonAOffset>0x00</ButtonAOffset>
     <ButtonBOffset>0x00</ButtonBOffset>

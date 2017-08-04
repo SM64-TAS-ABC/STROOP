@@ -8,8 +8,14 @@ namespace SM64_Diagnostic.Structs.Configurations
 {
     public struct InputConfig
     {
-        public uint BufferedInput;
-        public uint CurrentInput;
+        public uint BufferedInputAddress { get { return Config.SwitchRomVersion(BufferedInputAddressUS, BufferedInputAddressJP); } }
+        public uint BufferedInputAddressUS;
+        public uint BufferedInputAddressJP;
+
+        public uint CurrentInputAddress { get { return Config.SwitchRomVersion(CurrentInputAddressUS, CurrentInputAddressJP); } }
+        public uint CurrentInputAddressUS;
+        public uint CurrentInputAddressJP;
+
         public uint ButtonAOffset;
         public uint ButtonBOffset;
         public uint ButtonZOffset;

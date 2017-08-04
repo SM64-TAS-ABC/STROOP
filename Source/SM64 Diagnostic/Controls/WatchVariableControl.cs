@@ -187,10 +187,10 @@ namespace SM64_Diagnostic.Controls
                     output = new List<uint> { TriangleManager.Instance.TriangleAddress };
                     break;
                 case OffsetType.InputCurrent:
-                    output = new List<uint> { Config.Input.CurrentInput };
+                    output = new List<uint> { Config.Input.CurrentInputAddress };
                     break;
                 case OffsetType.InputBuffered:
-                    output = new List<uint> { Config.Input.BufferedInput };
+                    output = new List<uint> { Config.Input.BufferedInputAddress };
                     break;
                 case OffsetType.Graphics:
                     output = GetOffsetListFromOffsetType(OffsetType.Object, false)
