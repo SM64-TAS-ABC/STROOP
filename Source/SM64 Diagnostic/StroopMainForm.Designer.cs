@@ -52,8 +52,8 @@ namespace SM64_Diagnostic
             this.radioButtonVariableListFilterExpanded = new System.Windows.Forms.RadioButton();
             this.radioButtonVariableListFilterSimple = new System.Windows.Forms.RadioButton();
             this.radioButtonVariableListFilterCollision = new System.Windows.Forms.RadioButton();
-            this.buttonObjRelease = new BinaryButton();
-            this.buttonObjInteract = new BinaryButton();
+            this.buttonObjRelease = new SM64_Diagnostic.BinaryButton();
+            this.buttonObjInteract = new SM64_Diagnostic.BinaryButton();
             this.groupBoxObjHome = new System.Windows.Forms.GroupBox();
             this.checkBoxObjHomeRelative = new System.Windows.Forms.CheckBox();
             this.textBoxObjHomeY = new System.Windows.Forms.TextBox();
@@ -111,8 +111,8 @@ namespace SM64_Diagnostic
             this.buttonObjRetrieve = new System.Windows.Forms.Button();
             this.buttonObjRetrieveHome = new System.Windows.Forms.Button();
             this.buttonObjGoTo = new System.Windows.Forms.Button();
-            this.buttonObjClone = new BinaryButton();
-            this.buttonObjUnload = new BinaryButton();
+            this.buttonObjClone = new SM64_Diagnostic.BinaryButton();
+            this.buttonObjUnload = new SM64_Diagnostic.BinaryButton();
             this.textBoxObjName = new System.Windows.Forms.TextBox();
             this.labelObjAddValue = new System.Windows.Forms.Label();
             this.labelObjSlotIndValue = new System.Windows.Forms.Label();
@@ -181,6 +181,7 @@ namespace SM64_Diagnostic
             this.panelHudBorder = new System.Windows.Forms.Panel();
             this.pictureBoxHud = new SM64_Diagnostic.Controls.IntPictureBox();
             this.buttonDie = new System.Windows.Forms.Button();
+            this.buttonTurnOnOffHud = new SM64_Diagnostic.BinaryButton();
             this.buttonFillHp = new System.Windows.Forms.Button();
             this.NoTearFlowLayoutPanelHud = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
@@ -710,7 +711,8 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.buttonTurnOnOffHud = new BinaryButton();
+            this.buttonFileCopy = new System.Windows.Forms.Button();
+            this.buttonFilePaste = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1004,7 +1006,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 263);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 264);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1069,7 +1071,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 154);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 155);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2067,7 +2069,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(693, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(696, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2585,7 +2587,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(702, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(705, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2725,6 +2727,15 @@ namespace SM64_Diagnostic
             this.buttonDie.Text = "Die";
             this.buttonDie.UseVisualStyleBackColor = true;
             // 
+            // buttonTurnOnOffHud
+            // 
+            this.buttonTurnOnOffHud.Location = new System.Drawing.Point(3, 193);
+            this.buttonTurnOnOffHud.Name = "buttonTurnOnOffHud";
+            this.buttonTurnOnOffHud.Size = new System.Drawing.Size(93, 23);
+            this.buttonTurnOnOffHud.TabIndex = 4;
+            this.buttonTurnOnOffHud.Text = "Turn Off HUD";
+            this.buttonTurnOnOffHud.UseVisualStyleBackColor = true;
+            // 
             // buttonFillHp
             // 
             this.buttonFillHp.Location = new System.Drawing.Point(3, 75);
@@ -2744,7 +2755,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(794, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(797, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3125,7 +3136,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(704, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(707, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3519,7 +3530,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(701, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(704, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3604,7 +3615,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
-            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(482, 460);
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(485, 460);
             this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -3650,10 +3661,12 @@ namespace SM64_Diagnostic
             this.splitContainerFile.Panel1.Controls.Add(this.buttonAllCoins);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonAllDoors);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonAllStars);
+            this.splitContainerFile.Panel1.Controls.Add(this.buttonFilePaste);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonFileErase);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonFileNumStars);
             this.splitContainerFile.Panel1.Controls.Add(this.tableLayoutPanelFile);
             this.splitContainerFile.Panel1.Controls.Add(this.groupBoxHatLocation);
+            this.splitContainerFile.Panel1.Controls.Add(this.buttonFileCopy);
             this.splitContainerFile.Panel1.Controls.Add(this.groupBoxFile);
             this.splitContainerFile.Panel1.Controls.Add(this.buttonFileSave);
             this.splitContainerFile.Panel1MinSize = 0;
@@ -3912,10 +3925,10 @@ namespace SM64_Diagnostic
             // 
             // buttonFileErase
             // 
-            this.buttonFileErase.Location = new System.Drawing.Point(237, 77);
+            this.buttonFileErase.Location = new System.Drawing.Point(213, 80);
             this.buttonFileErase.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileErase.Name = "buttonFileErase";
-            this.buttonFileErase.Size = new System.Drawing.Size(65, 30);
+            this.buttonFileErase.Size = new System.Drawing.Size(56, 30);
             this.buttonFileErase.TabIndex = 41;
             this.buttonFileErase.Text = "Erase";
             this.buttonFileErase.UseVisualStyleBackColor = true;
@@ -3944,7 +3957,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -6890,10 +6903,10 @@ namespace SM64_Diagnostic
             // 
             // buttonFileSave
             // 
-            this.buttonFileSave.Location = new System.Drawing.Point(237, 47);
+            this.buttonFileSave.Location = new System.Drawing.Point(213, 47);
             this.buttonFileSave.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileSave.Name = "buttonFileSave";
-            this.buttonFileSave.Size = new System.Drawing.Size(65, 30);
+            this.buttonFileSave.Size = new System.Drawing.Size(56, 30);
             this.buttonFileSave.TabIndex = 36;
             this.buttonFileSave.Text = "Save";
             this.buttonFileSave.UseVisualStyleBackColor = true;
@@ -6908,7 +6921,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(253, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(256, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7345,7 +7358,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(692, 430);
+            this.glControlMap.Size = new System.Drawing.Size(695, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -7863,7 +7876,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(810, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(813, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -7962,7 +7975,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(594, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(597, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -8825,7 +8838,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(472, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(475, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9488,14 +9501,25 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // buttonTurnOnOffHud
+            // buttonFileCopy
             // 
-            this.buttonTurnOnOffHud.Location = new System.Drawing.Point(3, 193);
-            this.buttonTurnOnOffHud.Name = "buttonTurnOnOffHud";
-            this.buttonTurnOnOffHud.Size = new System.Drawing.Size(93, 23);
-            this.buttonTurnOnOffHud.TabIndex = 4;
-            this.buttonTurnOnOffHud.Text = "Turn Off HUD";
-            this.buttonTurnOnOffHud.UseVisualStyleBackColor = true;
+            this.buttonFileCopy.Location = new System.Drawing.Point(272, 47);
+            this.buttonFileCopy.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonFileCopy.Name = "buttonFileCopy";
+            this.buttonFileCopy.Size = new System.Drawing.Size(56, 30);
+            this.buttonFileCopy.TabIndex = 36;
+            this.buttonFileCopy.Text = "Copy";
+            this.buttonFileCopy.UseVisualStyleBackColor = true;
+            // 
+            // buttonFilePaste
+            // 
+            this.buttonFilePaste.Location = new System.Drawing.Point(272, 80);
+            this.buttonFilePaste.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonFilePaste.Name = "buttonFilePaste";
+            this.buttonFilePaste.Size = new System.Drawing.Size(56, 30);
+            this.buttonFilePaste.TabIndex = 41;
+            this.buttonFilePaste.Text = "Paste";
+            this.buttonFilePaste.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -10511,6 +10535,8 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonVariableListFilterSimple;
         private RadioButton radioButtonVariableListFilterCollision;
         private BinaryButton buttonTurnOnOffHud;
+        private Button buttonFilePaste;
+        private Button buttonFileCopy;
     }
 }
 
