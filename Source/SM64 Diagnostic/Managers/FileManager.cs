@@ -250,6 +250,12 @@ namespace SM64_Diagnostic.Managers
             Button eraseFileButton = splitContainerFile.Panel1.Controls["buttonFileErase"] as Button;
             eraseFileButton.Click += FileEraseButton_Click;
 
+            Button copyFileButton = splitContainerFile.Panel1.Controls["buttonFileCopy"] as Button;
+            copyFileButton.Click += FileCopyButton_Click;
+
+            Button pasteFileButton = splitContainerFile.Panel1.Controls["buttonFilePaste"] as Button;
+            pasteFileButton.Click += FilePasteButton_Click;
+
             Button allStarsButton = splitContainerFile.Panel1.Controls["buttonAllStars"] as Button;
             allStarsButton.Click += (sender, e) => FileSetCategory(true, new List<FileCategory> { FileCategory.Stars });
 
@@ -507,6 +513,16 @@ namespace SM64_Diagnostic.Managers
                 Config.Stream.SetValue((byte)0, nonSavedAddress + i);
                 Config.Stream.SetValue((byte)0, savedAddress + i);
             }
+        }
+
+        private void FileCopyButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FilePasteButton_Click(object sender, EventArgs e)
+        {
+
         }
 
         private byte[] GetBufferedBytes()
