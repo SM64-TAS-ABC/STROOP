@@ -132,6 +132,9 @@
     <CoinDisplayOffset>0xF2</CoinDisplayOffset>
     <StarDisplayOffset>0xF4</StarDisplayOffset>
 
+    <VisibilityOffset>0xFB</VisibilityOffset>
+    <VisibilityMask>0x0F</VisibilityMask>
+
     <FullHp>2176</FullHp>
     <FullHpInt>8</FullHpInt>
     <StandardLives>4</StandardLives>

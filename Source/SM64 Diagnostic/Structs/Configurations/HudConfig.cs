@@ -18,6 +18,9 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint CoinDisplayOffset;
         public uint StarDisplayOffset;
 
+        public uint VisibilityOffset;
+        public uint VisibilityMask;
+
         public short FullHp;
         public short FullHpInt;
         public sbyte StandardLives;

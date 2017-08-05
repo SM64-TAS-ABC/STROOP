@@ -29,16 +29,13 @@ namespace SM64_Diagnostic.Managers
             (splitContainerHud.Panel1.Controls["buttonStandardHud"] as Button).Click += (sender, e) => ButtonUtilities.StandardHud();
             (splitContainerHud.Panel1.Controls["button99Coins"] as Button).Click += (sender, e) => ButtonUtilities.Coins99();
 
-            uint hudAddressOffset = 0xFB;
-            uint hudMask = 0x0F;
-
             _turnOnOffHudButton = splitContainerHud.Panel1.Controls["buttonTurnOnOffHud"] as BinaryButton;
             _turnOnOffHudButton.Initialize(
                 "Turn Off HUD",
                 "Turn On HUD",
                 () => ButtonUtilities.SetHudVisibility(false),
                 () => ButtonUtilities.SetHudVisibility(true),
-                () => (Config.Stream.GetByte(Config.Mario.StructAddress + hudAddressOffset) & hudMask) == 0);
+                () => (Config.Stream.GetByte(Config.Mario.StructAddress + Config.Hud.VisibilityOffset) & Config.Hud.VisibilityMask) == 0);
         }
 
         public override void Update(bool updateView)

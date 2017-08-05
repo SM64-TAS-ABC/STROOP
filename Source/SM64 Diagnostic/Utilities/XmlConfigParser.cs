@@ -427,6 +427,13 @@ namespace SM64_Diagnostic.Utilities
                                     Config.Hud.StarDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
+                                case "VisibilityOffset":
+                                    Config.Hud.VisibilityOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "VisibilityMask":
+                                    Config.Hud.VisibilityMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
                                 case "FullHpInt":
                                     Config.Hud.FullHpInt = short.Parse(subElement.Value);
                                     break;
