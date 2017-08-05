@@ -713,6 +713,7 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.buttonFileCopy = new System.Windows.Forms.Button();
             this.buttonFilePaste = new System.Windows.Forms.Button();
+            this.checkBoxInGameCopyPaste = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -3642,6 +3643,7 @@ namespace SM64_Diagnostic
             // splitContainerFile.Panel1
             // 
             this.splitContainerFile.Panel1.AutoScroll = true;
+            this.splitContainerFile.Panel1.Controls.Add(this.checkBoxInGameCopyPaste);
             this.splitContainerFile.Panel1.Controls.Add(this.groupBoxAllCoinsMeaning);
             this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxDDDMovedBack);
             this.splitContainerFile.Panel1.Controls.Add(this.filePictureBoxMoatDrained);
@@ -3925,7 +3927,7 @@ namespace SM64_Diagnostic
             // 
             // buttonFileErase
             // 
-            this.buttonFileErase.Location = new System.Drawing.Point(213, 80);
+            this.buttonFileErase.Location = new System.Drawing.Point(205, 70);
             this.buttonFileErase.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileErase.Name = "buttonFileErase";
             this.buttonFileErase.Size = new System.Drawing.Size(56, 30);
@@ -6812,7 +6814,7 @@ namespace SM64_Diagnostic
             this.groupBoxFile.Controls.Add(this.radioButtonFileD);
             this.groupBoxFile.Controls.Add(this.radioButtonFileC);
             this.groupBoxFile.Controls.Add(this.radioButtonFileBSaved);
-            this.groupBoxFile.Location = new System.Drawing.Point(32, 18);
+            this.groupBoxFile.Location = new System.Drawing.Point(20, 18);
             this.groupBoxFile.Name = "groupBoxFile";
             this.groupBoxFile.Size = new System.Drawing.Size(175, 114);
             this.groupBoxFile.TabIndex = 37;
@@ -6903,7 +6905,7 @@ namespace SM64_Diagnostic
             // 
             // buttonFileSave
             // 
-            this.buttonFileSave.Location = new System.Drawing.Point(213, 47);
+            this.buttonFileSave.Location = new System.Drawing.Point(205, 37);
             this.buttonFileSave.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileSave.Name = "buttonFileSave";
             this.buttonFileSave.Size = new System.Drawing.Size(56, 30);
@@ -9503,7 +9505,7 @@ namespace SM64_Diagnostic
             // 
             // buttonFileCopy
             // 
-            this.buttonFileCopy.Location = new System.Drawing.Point(272, 47);
+            this.buttonFileCopy.Location = new System.Drawing.Point(264, 37);
             this.buttonFileCopy.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFileCopy.Name = "buttonFileCopy";
             this.buttonFileCopy.Size = new System.Drawing.Size(56, 30);
@@ -9513,13 +9515,23 @@ namespace SM64_Diagnostic
             // 
             // buttonFilePaste
             // 
-            this.buttonFilePaste.Location = new System.Drawing.Point(272, 80);
+            this.buttonFilePaste.Location = new System.Drawing.Point(264, 70);
             this.buttonFilePaste.Margin = new System.Windows.Forms.Padding(0);
             this.buttonFilePaste.Name = "buttonFilePaste";
             this.buttonFilePaste.Size = new System.Drawing.Size(56, 30);
             this.buttonFilePaste.TabIndex = 41;
             this.buttonFilePaste.Text = "Paste";
             this.buttonFilePaste.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxInGameCopyPaste
+            // 
+            this.checkBoxInGameCopyPaste.AutoSize = true;
+            this.checkBoxInGameCopyPaste.Location = new System.Drawing.Point(205, 113);
+            this.checkBoxInGameCopyPaste.Name = "checkBoxInGameCopyPaste";
+            this.checkBoxInGameCopyPaste.Size = new System.Drawing.Size(125, 17);
+            this.checkBoxInGameCopyPaste.TabIndex = 54;
+            this.checkBoxInGameCopyPaste.Text = "In-Game Copy/Paste";
+            this.checkBoxInGameCopyPaste.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -9625,6 +9637,7 @@ namespace SM64_Diagnostic
             this.splitContainerInput.ResumeLayout(false);
             this.tabPageFile.ResumeLayout(false);
             this.splitContainerFile.Panel1.ResumeLayout(false);
+            this.splitContainerFile.Panel1.PerformLayout();
             this.splitContainerFile.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).EndInit();
             this.splitContainerFile.ResumeLayout(false);
@@ -10537,6 +10550,7 @@ namespace SM64_Diagnostic
         private BinaryButton buttonTurnOnOffHud;
         private Button buttonFilePaste;
         private Button buttonFileCopy;
+        private CheckBox checkBoxInGameCopyPaste;
     }
 }
 
