@@ -56,6 +56,11 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint AreaAddress;
         public static uint LoadingPointAddress;
         public static uint MissionAddress;
+
+        public static uint LevelIndexAddress { get { return Config.SwitchRomVersion(LevelIndexAddressUS, LevelIndexAddressJP); } }
+        public static uint LevelIndexAddressUS;
+        public static uint LevelIndexAddressJP;
+
         public static uint HackedAreaAddress;
 
         public static uint GlobalTimerAddress { get { return Config.SwitchRomVersion(GlobalTimerAddressUS, GlobalTimerAddressJP); } }

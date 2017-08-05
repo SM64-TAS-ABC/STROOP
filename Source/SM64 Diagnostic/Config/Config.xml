@@ -333,6 +333,9 @@
   <LoadingPointAddress>0x8033BACA</LoadingPointAddress>
   <MissionLayoutAddress>0x8033BAC8</MissionLayoutAddress>
 
+  <LevelIndexAddressUS>0x8033BAC6</LevelIndexAddressUS>
+  <LevelIndexAddressJP>0x8033A756</LevelIndexAddressJP>
+
   <GlobalTimerAddressUS>0x8032D5D4</GlobalTimerAddressUS>
   <GlobalTimerAddressJP>0x8032C694</GlobalTimerAddressJP>
 
