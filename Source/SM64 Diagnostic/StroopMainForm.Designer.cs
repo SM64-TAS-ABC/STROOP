@@ -52,7 +52,7 @@ namespace SM64_Diagnostic
             this.radioButtonVariableListFilterExpanded = new System.Windows.Forms.RadioButton();
             this.radioButtonVariableListFilterSimple = new System.Windows.Forms.RadioButton();
             this.radioButtonVariableListFilterCollision = new System.Windows.Forms.RadioButton();
-            this.buttonObjRelease = new System.Windows.Forms.Button();
+            this.buttonObjRelease = new BinaryButton();
             this.buttonObjInteract = new System.Windows.Forms.Button();
             this.groupBoxObjHome = new System.Windows.Forms.GroupBox();
             this.checkBoxObjHomeRelative = new System.Windows.Forms.CheckBox();
@@ -10047,7 +10047,7 @@ namespace SM64_Diagnostic
         private Button buttonObjHomeXnZp;
         private Button buttonObjHomeXn;
         private Button buttonObjHomeXnZn;
-        private Button buttonObjRelease;
+        private BinaryButton buttonObjRelease;
         private Button buttonObjInteract;
         private GroupBox groupBoxMarioPos;
         private TextBox textBoxMarioPosY;

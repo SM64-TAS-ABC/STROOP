@@ -32,7 +32,7 @@ namespace SM64_Diagnostic.Managers
         bool _unclone = false;
         bool _revive = false;
 
-        Button _releaseButton;
+        BinaryButton _releaseButton;
         Button _interactButton;
         Button _cloneButton;
         Button _unloadButton;
@@ -259,14 +259,18 @@ namespace SM64_Diagnostic.Managers
             var retrieveHomeButton = objPanel.Controls["buttonObjRetrieveHome"] as Button;
             retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_currentAddresses);
 
-            _releaseButton = objPanel.Controls["buttonObjRelease"] as Button;
-            _releaseButton.Click += (sender, e) =>
-            {
-                if (_unrelease)
-                    ButtonUtilities.UnReleaseObject(_currentAddresses);
-                else
-                    ButtonUtilities.ReleaseObject(_currentAddresses);
-            };
+            _releaseButton = objPanel.Controls["buttonObjRelease"] as BinaryButton;
+            _releaseButton.Initialize(
+                "Release",
+                "UnRelease",
+                () => ButtonUtilities.ReleaseObject(_currentAddresses),
+                () => ButtonUtilities.UnReleaseObject(_currentAddresses),
+                () => _currentAddresses.Count > 0 && _currentAddresses.All(
+                    address =>
+                    {
+                        uint releasedValue = Config.Stream.GetUInt32(address + Config.ObjectSlots.ReleaseStatusOffset);
+                        return releasedValue == Config.ObjectSlots.ReleaseStatusThrownValue || releasedValue == Config.ObjectSlots.ReleaseStatusDroppedValue;
+                    }));
 
             _interactButton = objPanel.Controls["buttonObjInteract"] as Button;
             _interactButton.Click += (sender, e) =>
@@ -753,20 +757,7 @@ namespace SM64_Diagnostic.Managers
                 _unloadButton.Text = _revive ? "Revive" : "Unload";
             }
 
-            // Determine release or unrelease
-            bool unrelease = _currentAddresses.Count > 0 && _currentAddresses.All(
-                address =>
-                {
-                    uint releasedValue = Config.Stream.GetUInt32(address + Config.ObjectSlots.ReleaseStatusOffset);
-                    return releasedValue == Config.ObjectSlots.ReleaseStatusThrownValue || releasedValue == Config.ObjectSlots.ReleaseStatusDroppedValue;
-                });
-            if (_unrelease != unrelease)
-            {
-                _unrelease = unrelease;
-
-                // Update button text
-                _releaseButton.Text = _unrelease ? "UnRelease" : "Release";
-            }
+            _releaseButton.UpdateButton();
 
             // Determine interact or uninteract
             bool uninteract = _currentAddresses.Count > 0 && _currentAddresses.All(
