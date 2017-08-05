@@ -103,6 +103,9 @@
     <Compile Include="Controls\BorderedTableLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\BinaryButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\InputDisplayPanel.cs">
       <SubType>Component</SubType>
     </Compile>
