@@ -521,19 +521,23 @@ namespace SM64_Diagnostic.Managers
 
         private void FileCopyButton_Click(object sender, EventArgs e)
         {
-            if(_inGameCopyPaste)
-            {
-                //uint fileAddress = GetFil
-            }
-            else
-            {
-
-            }
+            uint addressToCopy = _inGameCopyPaste ? GetNonSavedFileAddress() : getFileAddress();
+            _copiedFile = GetBufferedBytes(addressToCopy);
         }
 
         private void FilePasteButton_Click(object sender, EventArgs e)
         {
+            if (_copiedFile == null) return;
 
+            uint nonSavedAddress = GetNonSavedFileAddress();
+            List<uint> addressesToPaste = _inGameCopyPaste ?
+                new List<uint> { nonSavedAddress, nonSavedAddress + Config.File.FileStructSize } :
+                new List<uint> { CurrentFileAddress };
+
+            foreach (uint addressToPaste in addressesToPaste)
+            {
+                SetBufferedBytes(_copiedFile, addressToPaste);
+            }
         }
 
         private byte[] GetBufferedBytes(uint? nullableFileAddress = null)
