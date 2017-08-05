@@ -19,7 +19,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint StarDisplayOffset;
 
         public uint VisibilityOffset;
-        public uint VisibilityMask;
+        public byte VisibilityMask;
 
         public short FullHp;
         public short FullHpInt;

@@ -431,7 +431,7 @@ namespace SM64_Diagnostic.Utilities
                                     Config.Hud.VisibilityOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "VisibilityMask":
-                                    Config.Hud.VisibilityMask = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Hud.VisibilityMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "FullHpInt":

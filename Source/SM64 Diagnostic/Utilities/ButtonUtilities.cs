@@ -1238,7 +1238,17 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool SetHudVisibility(bool hudOn)
         {
-            return false;
+            byte currentHudVisibility = Config.Stream.GetByte(Config.Mario.StructAddress + Config.Hud.VisibilityOffset);
+            byte newHudVisibility = MoreMath.ApplyValueToMaskedByte(currentHudVisibility, Config.Hud.VisibilityMask, hudOn);
+
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            success &= Config.Stream.SetValue(newHudVisibility, Config.Mario.StructAddress + Config.Hud.VisibilityOffset);
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
         }
     }
 }
