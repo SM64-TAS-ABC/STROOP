@@ -40,6 +40,7 @@ namespace SM64_Diagnostic.Managers
         List<FilePictureBox> _filePictureBoxList;
         List<FileTextbox> _fileTextboxList;
 
+        CheckBox _inGameCopyPasteCheckbox;
         Button _numStarsButton;
 
         int numRows = 26;
@@ -244,6 +245,9 @@ namespace SM64_Diagnostic.Managers
             FileBinaryPictureBox filePictureBoxDDDMovedBack = splitContainerFile.Panel1.Controls["filePictureBoxDDDMovedBack"] as FileBinaryPictureBox;
             filePictureBoxDDDMovedBack.Initialize(Config.File.DDDMovedBackOffset, Config.File.DDDMovedBackMask, _gui.DDDPaintingMovedBackImage, _gui.DDDPaintingNotMovedBackImage);
             _filePictureBoxList.Add(filePictureBoxDDDMovedBack);
+
+            //checkbox
+            _inGameCopyPasteCheckbox = splitContainerFile.Panel1.Controls["checkboxInGameCopyPaste"] as CheckBox;
 
             // buttons
             Button saveFileButton = splitContainerFile.Panel1.Controls["buttonFileSave"] as Button;
@@ -517,11 +521,11 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        bool _inGameCopyPaste = false;
-
         private void FileCopyButton_Click(object sender, EventArgs e)
         {
-            uint addressToCopy = _inGameCopyPaste ? GetNonSavedFileAddress() : getFileAddress();
+            uint addressToCopy = _inGameCopyPasteCheckbox.Checked ?
+                GetNonSavedFileAddress() :
+                getFileAddress();
             _copiedFile = GetBufferedBytes(addressToCopy);
         }
 
@@ -530,7 +534,7 @@ namespace SM64_Diagnostic.Managers
             if (_copiedFile == null) return;
 
             uint nonSavedAddress = GetNonSavedFileAddress();
-            List<uint> addressesToPaste = _inGameCopyPaste ?
+            List<uint> addressesToPaste = _inGameCopyPasteCheckbox.Checked ?
                 new List<uint> { nonSavedAddress, nonSavedAddress + Config.File.FileStructSize } :
                 new List<uint> { CurrentFileAddress };
 
