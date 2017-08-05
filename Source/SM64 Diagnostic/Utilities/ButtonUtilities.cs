@@ -312,7 +312,7 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool UnCloneObject(uint objAddress)
+        public static bool UnCloneObject()
         {
             var marioAddress = Config.Mario.StructAddress;
 

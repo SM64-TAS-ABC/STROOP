@@ -282,7 +282,7 @@ namespace SM64_Diagnostic.Managers
                 "Clone",
                 "UnClone",
                 () => ButtonUtilities.CloneObject(_currentAddresses[0]),
-                () => ButtonUtilities.UnCloneObject(_currentAddresses[0]),
+                () => ButtonUtilities.UnCloneObject(),
                 () => _currentAddresses.Count == 1 && _currentAddresses.Contains(
                     Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.HeldObjectPointerOffset)));
 
