@@ -18,11 +18,14 @@
   <Data type="short" address="0xB8" offset="Mario">Checked Star Count</Data>
   <Data type="byte" address="0xEE" mask="0x01" offset="Mario" isBool="true">Time Counting</Data>
   <Data type="ushort" address="0xFC" offset="Mario">Time</Data>
+  
   <Data type="byte" address="0xFB" mask="0x01" offset="Mario" isBool="true">HUD On Lives</Data>
   <Data type="byte" address="0xFB" mask="0x08" offset="Mario" isBool="true">HUD On HP/Camera</Data>
   <Data type="byte" address="0xFB" mask="0x02" offset="Mario" isBool="true">HUD On Coins</Data>
   <Data type="byte" address="0xFB" mask="0x04" offset="Mario" isBool="true">HUD On Stars</Data>
   <Data type="byte" address="0xFB" mask="0x40" offset="Mario" isBool="true">HUD On Time</Data>
+  <Data type="short" addressUS="0x8033BAC6" addressJP="0x8033A756" offset="Relative">Level Index</Data>
+
   <Data type="byte" address="0x803325F0" offset="Relative">HP HUD State</Data>
   <Data type="int" address="0x803325FC" offset="Relative">HP HUD Timer</Data>
   <Data type="short" address="0x803325F2" offset="Relative">HP HUD X</Data>

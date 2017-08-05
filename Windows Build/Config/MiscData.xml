@@ -24,7 +24,9 @@
   <Data type="byte" address="0x8032DD84" offset="Relative">Last Star</Data>
   <Data type="byte" address="0x8032DD80" offset="Relative">Last Star Course</Data>
   <Data type="byte" address="0x80331490" offset="Relative">Selection Index</Data>
-  <Data type="short" address="0x8032DDF8" offset="Relative">Stage Select Index</Data>
+  <Data type="short" addressUS="0x8032DDF8" addressJP="0x8032CE98" offset="Relative">Stage Select Index</Data>
+
+  <Data type="short" addressUS="0x8033BAC6" addressJP="0x8033A756" offset="Relative">Level Index</Data>
   <Data type="byte" address="0x8033B249" offset="Relative">Level</Data>
   <Data type="byte" address="0x8033B24A" offset="Relative">Area</Data>
   <Data type="ushort" address="0x8033BACA" offset="Relative">Loading Point</Data>
@@ -33,6 +35,7 @@
   <Data type="short" address="0x8033BACC" offset="Relative">Last Course</Data>
   <Data type="short" address="0x8033B256" offset="Relative">Destination</Data>
   <Data type="short" address="0x8033B25A" offset="Relative">Door Direction</Data>
+  
   <Data type="short" address="0x8033B238" offset="Relative">Transition State</Data>
   <Data type="short" address="0x8033BAB0" offset="Relative">Transition Type</Data>
   <Data type="byte" address="0x80330EC0" offset="Relative">Transition Progress</Data>
