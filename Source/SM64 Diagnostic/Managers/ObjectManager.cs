@@ -27,15 +27,11 @@ namespace SM64_Diagnostic.Managers
         string _slotIndex;
         string _slotPos;
         string _behavior;
-        bool _unrelease = false;
-        bool _uninteract = false;
-        bool _unclone = false;
-        bool _revive = false;
 
         BinaryButton _releaseButton;
         BinaryButton _interactButton;
-        Button _cloneButton;
-        Button _unloadButton;
+        BinaryButton _cloneButton;
+        BinaryButton _unloadButton;
 
         Label _objAddressLabelValue;
         Label _objAddressLabel;
@@ -281,26 +277,23 @@ namespace SM64_Diagnostic.Managers
                 () => _currentAddresses.Count > 0 && _currentAddresses.All(
                     address => Config.Stream.GetUInt32(address + Config.ObjectSlots.InteractionStatusOffset) != 0));
 
-            _cloneButton = objPanel.Controls["buttonObjClone"] as Button;
-            _cloneButton.Click += (sender, e) =>
-            {
-                if (CurrentAddresses.Count == 0)
-                    return;
+            _cloneButton = objPanel.Controls["buttonObjClone"] as BinaryButton;
+            _cloneButton.Initialize(
+                "Clone",
+                "UnClone",
+                () => ButtonUtilities.CloneObject(_currentAddresses[0]),
+                () => ButtonUtilities.UnCloneObject(_currentAddresses[0]),
+                () => _currentAddresses.Count == 1 && _currentAddresses.Contains(
+                    Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.HeldObjectPointerOffset)));
 
-                if (_unclone)
-                    ButtonUtilities.UnCloneObject(CurrentAddresses[0]);
-                else
-                    ButtonUtilities.CloneObject(CurrentAddresses[0]);
-            };
-
-            _unloadButton = objPanel.Controls["buttonObjUnload"] as Button;
-            _unloadButton.Click += (sender, e) =>
-            {
-                if (_revive)
-                    ButtonUtilities.ReviveObject(CurrentAddresses);
-                else
-                    ButtonUtilities.UnloadObject(CurrentAddresses);
-            };
+            _unloadButton = objPanel.Controls["buttonObjUnload"] as BinaryButton;
+            _unloadButton.Initialize(
+                "Unload",
+                "Revive",
+                () => ButtonUtilities.UnloadObject(_currentAddresses),
+                () => ButtonUtilities.ReviveObject(_currentAddresses),
+                () => _currentAddresses.Count > 0 && _currentAddresses.All(
+                    address => Config.Stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset) == 0x0000));
 
             var objPosGroupBox = objPanel.Controls["groupBoxObjPos"] as GroupBox;
             ThreeDimensionController.initialize(
@@ -734,31 +727,10 @@ namespace SM64_Diagnostic.Managers
             if (!updateView)
                 return;
 
-            // Determine which object is being held
-            uint heldObj = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.HeldObjectPointerOffset);
-
-            // Change to unclone if we are already holding the object
-            if ((_currentAddresses.Contains(heldObj)) != _unclone)
-            {
-                _unclone = !_unclone;
-
-                // Update button text
-                _cloneButton.Text = _unclone ? "UnClone" : "Clone";
-            }
-
-            // Determine load or unload
-            bool revive = _currentAddresses.Count > 0 && _currentAddresses.All(
-                address => Config.Stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset) == 0x0000);
-            if (_revive != revive)
-            {
-                _revive = revive;
-
-                // Update button text
-                _unloadButton.Text = _revive ? "Revive" : "Unload";
-            }
-
             _releaseButton.UpdateButton();
             _interactButton.UpdateButton();
+            _cloneButton.UpdateButton();
+            _unloadButton.UpdateButton();
 
             base.Update(updateView);
             ProcessSpecialVars();

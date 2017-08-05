@@ -111,8 +111,8 @@ namespace SM64_Diagnostic
             this.buttonObjRetrieve = new System.Windows.Forms.Button();
             this.buttonObjRetrieveHome = new System.Windows.Forms.Button();
             this.buttonObjGoTo = new System.Windows.Forms.Button();
-            this.buttonObjClone = new System.Windows.Forms.Button();
-            this.buttonObjUnload = new System.Windows.Forms.Button();
+            this.buttonObjClone = new BinaryButton();
+            this.buttonObjUnload = new BinaryButton();
             this.textBoxObjName = new System.Windows.Forms.TextBox();
             this.labelObjAddValue = new System.Windows.Forms.Label();
             this.labelObjSlotIndValue = new System.Windows.Forms.Label();
@@ -9873,9 +9873,9 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.CheckBox checkBoxStartSlotIndexOne;
         private OpenTK.GLControl glControlMap;
         private System.Windows.Forms.Button buttonObjRetrieve;
-        private System.Windows.Forms.Button buttonObjClone;
+        private BinaryButton buttonObjClone;
         private System.Windows.Forms.Button buttonObjGoTo;
-        private System.Windows.Forms.Button buttonObjUnload;
+        private BinaryButton buttonObjUnload;
         private System.Windows.Forms.Label labelMapPuValue;
         private System.Windows.Forms.Label labelMapSubName;
         private System.Windows.Forms.Label labelMapQpu;
