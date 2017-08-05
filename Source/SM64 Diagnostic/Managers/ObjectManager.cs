@@ -33,7 +33,7 @@ namespace SM64_Diagnostic.Managers
         bool _revive = false;
 
         BinaryButton _releaseButton;
-        Button _interactButton;
+        BinaryButton _interactButton;
         Button _cloneButton;
         Button _unloadButton;
 
@@ -272,14 +272,14 @@ namespace SM64_Diagnostic.Managers
                         return releasedValue == Config.ObjectSlots.ReleaseStatusThrownValue || releasedValue == Config.ObjectSlots.ReleaseStatusDroppedValue;
                     }));
 
-            _interactButton = objPanel.Controls["buttonObjInteract"] as Button;
-            _interactButton.Click += (sender, e) =>
-            {
-                if (_uninteract)
-                    ButtonUtilities.UnInteractObject(_currentAddresses);
-                else
-                    ButtonUtilities.InteractObject(_currentAddresses);
-            };
+            _interactButton = objPanel.Controls["buttonObjInteract"] as BinaryButton;
+            _interactButton.Initialize(
+                "Interact",
+                "UnInteract",
+                () => ButtonUtilities.InteractObject(_currentAddresses),
+                () => ButtonUtilities.UnInteractObject(_currentAddresses),
+                () => _currentAddresses.Count > 0 && _currentAddresses.All(
+                    address => Config.Stream.GetUInt32(address + Config.ObjectSlots.InteractionStatusOffset) != 0));
 
             _cloneButton = objPanel.Controls["buttonObjClone"] as Button;
             _cloneButton.Click += (sender, e) =>
@@ -758,17 +758,7 @@ namespace SM64_Diagnostic.Managers
             }
 
             _releaseButton.UpdateButton();
-
-            // Determine interact or uninteract
-            bool uninteract = _currentAddresses.Count > 0 && _currentAddresses.All(
-                address => Config.Stream.GetUInt32(address + Config.ObjectSlots.InteractionStatusOffset) != 0);
-            if (_uninteract != uninteract)
-            {
-                _uninteract = uninteract;
-
-                // Update button text
-                _interactButton.Text = _uninteract ? "UnInteract" : "Interact";
-            }
+            _interactButton.UpdateButton();
 
             base.Update(updateView);
             ProcessSpecialVars();
