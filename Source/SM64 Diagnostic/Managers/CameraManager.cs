@@ -104,12 +104,11 @@ namespace SM64_Diagnostic.Managers
 
         public override void Update(bool updateView)
         {
-            ProcessSpecialVars();
-
             // We are done if we don't need to update the Mario Manager view
             if (!updateView)
                 return;
 
+            ProcessSpecialVars();
             base.Update();
         }
 

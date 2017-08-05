@@ -40,6 +40,8 @@ namespace SM64_Diagnostic.Managers
 
         public override void Update(bool updateView)
         {
+            if (!updateView) return;
+
             _turnOnOffHudButton.UpdateButton();
 
             base.Update(updateView);

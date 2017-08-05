@@ -394,26 +394,25 @@ namespace SM64_Diagnostic.Managers
 
         public override void Update(bool updateView)
         {
-            if (updateView)
+            if (!updateView) return;
+
+            switch (Mode)
             {
-                switch (Mode)
-                {
-                    case TriangleMode.Ceiling:
-                        TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
-                        break;
+                case TriangleMode.Ceiling:
+                    TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
+                    break;
 
-                    case TriangleMode.Floor:
-                        TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
-                        break;
+                case TriangleMode.Floor:
+                    TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
+                    break;
 
-                    case TriangleMode.Wall:
-                        TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset);
-                        break;
-                }
-
-                base.Update(updateView);
-                ProcessSpecialVars();
+                case TriangleMode.Wall:
+                    TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset);
+                    break;
             }
+
+            base.Update(updateView);
+            ProcessSpecialVars();
         }
     }
 }

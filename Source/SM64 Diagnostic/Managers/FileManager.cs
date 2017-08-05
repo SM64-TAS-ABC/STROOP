@@ -694,6 +694,8 @@ namespace SM64_Diagnostic.Managers
 
         public override void Update(bool updateView)
         {
+            if (!updateView) return;
+
             short currentNumStars = CalculateNumStars();
             _numStarsButton.Text = string.Format("Update HUD\r\nto " + (currentNumStars == 1 ? currentNumStars + " Star" : currentNumStars + " Stars"));
 
