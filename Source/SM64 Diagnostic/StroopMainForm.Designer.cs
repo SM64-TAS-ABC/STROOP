@@ -710,7 +710,7 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.buttonTurnOnOffHud = new System.Windows.Forms.Button();
+            this.buttonTurnOnOffHud = new BinaryButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -10510,7 +10510,7 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonVariableListFilterExpanded;
         private RadioButton radioButtonVariableListFilterSimple;
         private RadioButton radioButtonVariableListFilterCollision;
-        private Button buttonTurnOnOffHud;
+        private BinaryButton buttonTurnOnOffHud;
     }
 }
 

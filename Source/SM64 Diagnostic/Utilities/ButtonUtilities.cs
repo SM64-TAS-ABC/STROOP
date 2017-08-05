@@ -1235,5 +1235,10 @@ namespace SM64_Diagnostic.Utilities
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
+
+        public static bool SetHudVisibility(bool hudOn)
+        {
+            return false;
+        }
     }
 }
