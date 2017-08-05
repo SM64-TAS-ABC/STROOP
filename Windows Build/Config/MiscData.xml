@@ -32,7 +32,7 @@
   <Data type="ushort" address="0x8033BACA" offset="Relative">Loading Point</Data>
   <Data type="uint" address="0x8033B4A0" offset="Relative" useHex="true">Last Area</Data>
   <Data type="byte" address="0x8033B4A4" offset="Relative">Last Area Entrance</Data>
-  <Data type="short" address="0x8033BACC" offset="Relative">Last Course</Data>
+  <Data type="short" address="0x8033BACC" offset="Relative">Last Death Course</Data>
   <Data type="short" address="0x8033B256" offset="Relative">Destination</Data>
   <Data type="short" address="0x8033B25A" offset="Relative">Door Direction</Data>
   
