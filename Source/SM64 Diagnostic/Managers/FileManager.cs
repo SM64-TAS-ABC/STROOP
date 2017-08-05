@@ -31,7 +31,7 @@ namespace SM64_Diagnostic.Managers
         {
             get
             {
-                return getFileAddress(CurrentFileMode);
+                return getFileAddress();
             }
         }
 
@@ -51,6 +51,8 @@ namespace SM64_Diagnostic.Managers
         byte?[] _courseCannonMasks;
         uint?[] _courseDoorAddressOffsets;
         byte?[] _courseDoorMasks;
+
+        byte[] _copiedFile;
 
         public FileManager(List<WatchVariable> fileData, TabPage tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelFile, FileImageGui gui)
             : base(fileData, noTearFlowLayoutPanelFile)
@@ -465,7 +467,7 @@ namespace SM64_Diagnostic.Managers
         private void FileSaveButton_Click(object sender, EventArgs e)
         {
             // Get the corresponding unsaved file struct address
-            uint nonSavedAddress = GetNonSavedFileAddress(CurrentFileMode);
+            uint nonSavedAddress = GetNonSavedFileAddress();
 
             // Set the checksum constant
             Config.Stream.SetValue(Config.File.ChecksumConstantValue, nonSavedAddress + Config.File.ChecksumConstantOffset);
@@ -495,7 +497,7 @@ namespace SM64_Diagnostic.Managers
         private void FileEraseButton_Click(object sender, EventArgs e)
         {
             // Get the corresponding unsaved and saved file struct address
-            uint nonSavedAddress = GetNonSavedFileAddress(CurrentFileMode);
+            uint nonSavedAddress = GetNonSavedFileAddress();
             uint savedAddress = nonSavedAddress + Config.File.FileStructSize;
 
             // Get checksum value
@@ -515,9 +517,18 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
+        bool _inGameCopyPaste = false;
+
         private void FileCopyButton_Click(object sender, EventArgs e)
         {
+            if(_inGameCopyPaste)
+            {
+                //uint fileAddress = GetFil
+            }
+            else
+            {
 
+            }
         }
 
         private void FilePasteButton_Click(object sender, EventArgs e)
@@ -525,21 +536,23 @@ namespace SM64_Diagnostic.Managers
 
         }
 
-        private byte[] GetBufferedBytes()
+        private byte[] GetBufferedBytes(uint? nullableFileAddress = null)
         {
+            uint fileAddress = nullableFileAddress ?? CurrentFileAddress;
             byte[] bufferedBytes = new byte[Config.File.FileStructSize];
             for (int i = 0; i < Config.File.FileStructSize; i++)
             {
-                bufferedBytes[i] = Config.Stream.GetByte(CurrentFileAddress + (uint)i);
+                bufferedBytes[i] = Config.Stream.GetByte(fileAddress + (uint)i);
             }
             return bufferedBytes;
         }
 
-        private void SetBufferedBytes(byte[] bufferedBytes)
+        private void SetBufferedBytes(byte[] bufferedBytes, uint? nullableFileAddress = null)
         {
+            uint fileAddress = nullableFileAddress ?? CurrentFileAddress;
             for (int i = 0; i < Config.File.FileStructSize; i++)
             {
-                Config.Stream.SetValue(bufferedBytes[i], CurrentFileAddress + (uint)i);
+                Config.Stream.SetValue(bufferedBytes[i], fileAddress + (uint)i);
             }
         }
 
@@ -618,8 +631,9 @@ namespace SM64_Diagnostic.Managers
             SetBufferedBytes(bufferedBytes);
         }
 
-        private uint GetNonSavedFileAddress(FileMode mode)
+        private uint GetNonSavedFileAddress(FileMode? nullableMode = null)
         {
+            FileMode mode = nullableMode ?? CurrentFileMode;
             switch (mode)
             {
                 case FileMode.FileA:
@@ -639,8 +653,9 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private uint getFileAddress(FileMode mode)
+        private uint getFileAddress(FileMode? nullableMode = null)
         {
+            FileMode mode = nullableMode ?? CurrentFileMode;
             switch (mode)
             {
                 case FileMode.FileA:
