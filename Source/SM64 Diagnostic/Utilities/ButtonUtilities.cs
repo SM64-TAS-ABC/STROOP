@@ -1246,6 +1246,7 @@ namespace SM64_Diagnostic.Utilities
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             success &= Config.Stream.SetValue(newHudVisibility, Config.Mario.StructAddress + Config.Hud.VisibilityOffset);
+            success &= Config.Stream.SetValue((short)(hudOn ? 1 : 0), Config.LevelIndexAddress);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
