@@ -160,6 +160,7 @@ namespace SM64_Diagnostic.Structs
             Graphics,
             Animation,
             Waypoint,
+            Water,
             HackedArea,
             CamHack,
             Special,

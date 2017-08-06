@@ -204,6 +204,9 @@ namespace SM64_Diagnostic.Controls
                     output = GetOffsetListFromOffsetType(OffsetType.Object, false)
                         .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset));
                     break;
+                case OffsetType.Water:
+                    output = new List<uint> { Config.Stream.GetUInt32(Config.WaterPointerAddress) };
+                    break;
                 case OffsetType.HackedArea:
                     output = new List<uint> { Config.HackedAreaAddress };
                     break;
