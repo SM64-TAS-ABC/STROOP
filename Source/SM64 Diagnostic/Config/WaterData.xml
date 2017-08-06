@@ -11,14 +11,20 @@
   <Data type="short" address="0x8036118A" offset="Relative">Basement Valley WL</Data>
   <Data type="short" address="0x80173CD4" offset="Relative">Basement Halls WL</Data>
   <Data type="short" address="0x80101B1A" offset="Relative">Castle Courtyard WL</Data>
-  <Data type="short" address="0x8010D332" offset="Relative">WF WL</Data>
-  <Data type="short" address="0x80107ABC" offset="Relative">JRB Main WL</Data>
-  <Data type="short" address="0x80107AC8" offset="Relative">JRB Cave WL</Data>
-  <Data type="short" address="0x80107AD4" offset="Relative">JRB Fog</Data>
-  <Data type="short" address="0x8010C95C" offset="Relative">JRB Ship WL</Data>
+  <Data type="short" address="0x8010D332" offset="Relative">~WF WL</Data>
+  <Data type="short" address="0x0C" offset="Water">WF</Data>
+  <Data type="short" address="0x80107ABC" offset="Relative">~JRB Main WL</Data>
+  <Data type="short" address="0x0C" offset="Water">JRB Main WL</Data>
+  <Data type="short" address="0x80107AC8" offset="Relative">~JRB Cave WL</Data>
+  <Data type="short" address="0x18" offset="Water">JRB Cave WL</Data>
+  <Data type="short" address="0x80107AD4" offset="Relative">~JRB Fog</Data>
+  <Data type="short" address="0x24" offset="Water">JRB Fog</Data>
+  <Data type="short" address="0x8010C95C" offset="Relative">~JRB Ship WL</Data>
+  <Data type="short" address="0x0C" offset="Water">JRB Ship WL</Data>
   <Data type="short" address="0x802F810E" offset="Relative">JRB Ship Goal WL</Data>
   <Data type="short" address="0x802F8122" offset="Relative">JRB Ship End WL</Data>
-  <Data type="short" address="0x8011136E" offset="Relative">CCM WL</Data>
+  <Data type="short" address="0x8011136E" offset="Relative">~CCM WL</Data>
+  <Data type="short" address="0x0C" offset="Water">CCM WL</Data>
   <Data type="short" address="0x80121B1C" offset="Relative">BBH Shallow WL</Data>
   <Data type="short" address="0x80121B28" offset="Relative">BBH Deep WL</Data>
   <Data type="short" address="0x8012614C" offset="Relative">HMC WL</Data>
@@ -43,4 +49,9 @@
   <Data type="short" address="0x80106FDA" offset="Relative">THI Huge Mt WL</Data>
   <Data type="short" address="0x801069C4" offset="Relative">CotMC WL</Data>
   <Data type="short" address="0x800FDEBE" offset="Relative">SA WL</Data>
+
+  <Data type="short" address="0x00" offset="Water">BASE</Data>
+  <Data type="short" address="0x0C" offset="Water">NUM 1</Data>
+  <Data type="short" address="0x18" offset="Water">NUM 2</Data>
+  <Data type="short" address="0x24" offset="Water">NUM 3</Data>
 </WaterData>
