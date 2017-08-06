@@ -336,6 +336,9 @@
   <LevelIndexAddressUS>0x8033BAC6</LevelIndexAddressUS>
   <LevelIndexAddressJP>0x8033A756</LevelIndexAddressJP>
 
+  <WaterPointerAddressUS>0x80361184</WaterPointerAddressUS>
+  <WaterPointerAddressJP>0x8035FE14</WaterPointerAddressJP>
+
   <GlobalTimerAddressUS>0x8032D5D4</GlobalTimerAddressUS>
   <GlobalTimerAddressJP>0x8032C694</GlobalTimerAddressJP>
 

@@ -1138,6 +1138,13 @@ namespace SM64_Diagnostic.Utilities
                         Config.LevelIndexAddressJP = ParsingUtilities.ParseHex(element.Value);
                         break;
 
+                    case "WaterPointerAddressUS":
+                        Config.WaterPointerAddressUS = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "WaterPointerAddressJP":
+                        Config.WaterPointerAddressJP = ParsingUtilities.ParseHex(element.Value);
+                        break;
+
                     case "HackedAreaAddress":
                         Config.HackedAreaAddress = ParsingUtilities.ParseHex(element.Value);
                         break;
