@@ -40,7 +40,7 @@
   <Data type="short" addressUS="0x80112762" addressJP="0x8010F8E2" offset="Relative">TTM 4 WL</Data>
   <Data type="short" addressUS="0x801086A8" addressJP="0x80105828" offset="Relative">THI Tiny 1 WL</Data>
   <Data type="short" addressUS="0x801086B4" addressJP="0x80105834" offset="Relative">THI Tiny 2 WL</Data>
-  <Data type="byte" address="0x80361257" offset="Relative" isBool="true">THI Water Drained</Data>
+  <Data type="byte" addressUS="0x80361257" addressJP="0x8035FEE7" offset="Relative" isBool="true">THI Water Drained</Data>
   <Data type="short" addressUS="0x801086C0" addressJP="0x80105840" offset="Relative">THI Tiny Mt WL</Data>
   <Data type="short" addressUS="0x80106FC2" addressJP="0x80104142" offset="Relative">THI Huge 1 WL</Data>
   <Data type="short" addressUS="0x80106FCE" addressJP="0x8010414E" offset="Relative">THI Huge 2 WL</Data>
