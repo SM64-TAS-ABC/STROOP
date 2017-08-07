@@ -24,7 +24,7 @@ namespace SM64_Diagnostic
                 if (_toolTip == null)
                 {
                     _toolTip = new ToolTip();
-                    _toolTip.IsBalloon = true;
+                    _toolTip.IsBalloon = false;
                     _toolTip.ShowAlways = true;
                 }
                 return _toolTip;
