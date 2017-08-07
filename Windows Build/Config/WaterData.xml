@@ -18,8 +18,8 @@
   <Data type="short" addressUS="0x80107AC8" addressJP="0x80104C48" offset="Relative">JRB Cave WL</Data>
   <Data type="short" addressUS="0x80107AD4" addressJP="0x80104C54" offset="Relative">JRB Fog</Data>
   <Data type="short" addressUS="0x8010C95C" addressJP="0x80109ADC" offset="Relative">JRB Ship WL</Data>
-  <Data type="short" address="0x802F810E" offset="Relative">JRB Ship Goal WL</Data>
-  <Data type="short" address="0x802F8122" offset="Relative">JRB Ship End WL</Data>  
+  <Data type="short" addressUS="0x802F810E" addressJP="0x802F707E" offset="Relative">JRB Ship Goal WL</Data>
+  <Data type="short" addressUS="0x802F8122" addressJP="0x802F7092" offset="Relative">JRB Ship End WL</Data>
   <Data type="short" addressUS="0x8011136E" addressJP="0x8010E4DE" offset="Relative">CCM WL</Data>
   <Data type="short" addressUS="0x80121B1C" addressJP="0x8011EC9C" offset="Relative">BBH Shallow WL</Data>
   <Data type="short" addressUS="0x80121B28" addressJP="0x8011ECA8" offset="Relative">BBH Deep WL</Data>
