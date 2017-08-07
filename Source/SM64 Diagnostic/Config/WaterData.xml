@@ -5,7 +5,7 @@
   
   <Data type="short" addressUS="0x801112E2" addressJP="0x8010E462" offset="Relative">WDW Main WL</Data>
   <Data type="short" addressUS="0x8011342E" addressJP="0x801105AE" offset="Relative">WDW Town WL</Data>
-  <Data type="byte" address="0x80330F3D" offset="Relative">WDW Painting Level</Data>
+  <Data type="float" addressUS="0x80330F3C" addressJP="0x8032FFDC" offset="Relative">WDW Painting Level</Data>
   
   <Data type="short" addressUS="0x8010C81C" addressJP="0x801090E4" offset="Relative">Castle Lake WL</Data>
   <Data type="short" addressUS="0x8010C810" addressJP="0x801090D8" offset="Relative">Castle Moat WL</Data>
