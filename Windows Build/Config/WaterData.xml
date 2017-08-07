@@ -9,8 +9,8 @@
   
   <Data type="short" addressUS="0x8010C81C" addressJP="0x801090E4" offset="Relative">Castle Lake WL</Data>
   <Data type="short" addressUS="0x8010C810" addressJP="0x801090D8" offset="Relative">Castle Moat WL</Data>
-  <Data type="short" address="0x80361192" offset="Relative">Basement Pillars WL</Data>
-  <Data type="short" address="0x8036118A" offset="Relative">Basement Valley WL</Data>
+  <Data type="short" addressUS="0x80361192" addressJP="0x8035FE22" offset="Relative">Basement Pillars WL</Data>
+  <Data type="short" addressUS="0x8036118A" addressJP="0x8035FE1A" offset="Relative">Basement Valley WL</Data>
   <Data type="short" addressUS="0x80173CD4" addressJP="0x80170E54" offset="Relative">Basement Halls WL</Data>
   <Data type="short" addressUS="0x80101B1A" addressJP="0x800FEC9A" offset="Relative">Castle Courtyard WL</Data>
   <Data type="short" addressUS="0x8010D332" addressJP="0x8010A4B2" offset="Relative">WF WL</Data>
