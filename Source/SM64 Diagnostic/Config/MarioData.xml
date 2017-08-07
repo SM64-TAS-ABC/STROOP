@@ -54,9 +54,9 @@
   <Data type="float" address="0xC0" offset="Mario">Quicksand Height</Data>
   <Data type="sbyte" address="0xB4" offset="Mario">Unsquishing Timer</Data>
   <Data type="ushort" address="0x1E" offset="Mario">Squished Timer</Data>
-  <Data type="byte" address="0x8032DA94" offset="Relative" mask="0x01" isBool="true">Just Teleported</Data>
-  <Data type="int" address="0x800F0A5C" offset="Relative">Blinking State</Data>
-  <Data type="short" address="0x8032DF08" offset="Relative">Blinking Timer</Data>
+  <Data type="byte" addressUS="0x8032DA94" addressJP="0x8032CB34" offset="Relative" mask="0x01" isBool="true">Just Teleported</Data>
+  <Data type="int" addressUS="0x800F0A5C" addressJP="0x800EDBDC" offset="Relative">Blinking State</Data>
+  <Data type="short" addressUS="0x8032DF08" addressJP="0x8032CFA8" offset="Relative">Blinking Timer</Data>
   <Data type="uint" addressUS="0x80361158" addressJP="0x8035FDE8" offset="Relative" useHex="true" isObject="true">Effective Mario Object</Data>
   <Data type="uint" address="0x88" offset="Mario" useHex="true" isObject="true">Visual Mario Object</Data>
 </MarioData>
