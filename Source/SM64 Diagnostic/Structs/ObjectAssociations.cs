@@ -44,7 +44,9 @@ namespace SM64_Diagnostic.Structs
         public Color MiscColor;
         public Color CameraColor;
         public uint MarioBehavior;
-        public uint RamOffset;
+        public uint BehaviorBankStart { get { return Config.SwitchRomVersion(BehaviorBankStartUS, BehaviorBankStartJP); } }
+        public uint BehaviorBankStartUS;
+        public uint BehaviorBankStartJP;
 
         Dictionary<Image, Image> _cachedBufferedObjectImages = new Dictionary<Image, Image>();
         object _cachedBufferedObjectImageLocker = new object();
@@ -178,6 +180,18 @@ namespace SM64_Diagnostic.Structs
                 return new List<WatchVariable>();
 
             else return assoc.WatchVariables;
+        }
+
+        public uint AlignJPBehavior(uint segmented)
+        {
+            uint adjusted = segmented;
+            if (segmented >= 0x2998)
+                adjusted += 24;
+            if (segmented >= 0x2c6c)
+                adjusted += 12;
+            if (segmented >= 0x2ea0)
+                adjusted -= 4;
+            return adjusted;
         }
 
         ~ObjectAssociations()

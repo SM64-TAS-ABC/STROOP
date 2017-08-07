@@ -334,8 +334,8 @@ namespace SM64_Diagnostic.Managers
             _interactionObject = Config.Stream.GetUInt32(Config.Mario.InteractionObjectPointerOffset + Config.Mario.StructAddress);
             _heldObject = Config.Stream.GetUInt32(Config.Mario.HeldObjectPointerOffset + Config.Mario.StructAddress);
             _usedObject = Config.Stream.GetUInt32(Config.Mario.UsedObjectPointerOffset + Config.Mario.StructAddress);
-            _closestObject = newObjectSlotData.OrderBy(s => !s.IsActive || s.Behavior == (Config.ObjectAssociations.MarioBehavior & 0x0FFFFFFF) ? float.MaxValue
-                : s.DistanceToMario).First().Address;
+            _closestObject = newObjectSlotData.OrderBy(s => !s.IsActive || s.Behavior == (Config.ObjectAssociations.MarioBehavior & 0x00FFFFFF) +
+                Config.ObjectAssociations.BehaviorBankStart ? float.MaxValue : s.DistanceToMario).First().Address;
             _cameraObject = Config.Stream.GetUInt32(Config.Camera.SecondObject);
             _cameraHackObject = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
 
@@ -407,7 +407,7 @@ namespace SM64_Diagnostic.Managers
                     {
                         if (multiBehavior.HasValue)
                         {
-                            _objManager.Behavior = String.Format("0x{0}", ((multiBehavior.Value.BehaviorAddress + Config.ObjectAssociations.RamOffset) & 0x00FFFFFF).ToString("X4"));
+                            _objManager.Behavior = String.Format("0x{0}", multiBehavior.Value.BehaviorAddress.ToString("X4"));
                             _objManager.SetBehaviorWatchVariables(Config.ObjectAssociations.GetWatchVariables(multiBehavior.Value), Config.ObjectGroups.VacantSlotColor.Lighten(0.8));
                         }
                         else
@@ -490,9 +490,11 @@ namespace SM64_Diagnostic.Managers
             var subType = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.BehaviorSubtypeOffset);
             var appearance = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.BehaviorAppearance);
 
+            uint segmentedBehavior = objData.Behavior - Config.ObjectAssociations.BehaviorBankStart;
+
             behaviorCriteria = new BehaviorCriteria()
             {
-                BehaviorAddress = objData.Behavior,
+                BehaviorAddress = 0x13000000 + Config.SwitchRomVersion(segmentedBehavior, Config.ObjectAssociations.AlignJPBehavior(segmentedBehavior)),
                 GfxId = gfxId,
                 SubType = subType,
                 Appearance = appearance
@@ -556,7 +558,7 @@ namespace SM64_Diagnostic.Managers
             var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : behaviorCriteria;
             if (_lastSelectedBehavior != newBehavior || SelectedSlotsAddresses.Count == 0)
             {
-                _objManager.Behavior = String.Format("0x{0}", ((objData.Behavior + Config.ObjectAssociations.RamOffset) & 0x00FFFFFF).ToString("X4"));
+                _objManager.Behavior = String.Format("0x{0}", (behaviorCriteria.BehaviorAddress & 0xffffff).ToString("X4"));
                 _objManager.Name = Config.ObjectAssociations.GetObjectName(behaviorCriteria);
 
                 _objManager.SetBehaviorWatchVariables(Config.ObjectAssociations.GetWatchVariables(behaviorCriteria), objSlot.BackColor.Lighten(0.8));
@@ -594,7 +596,7 @@ namespace SM64_Diagnostic.Managers
                 _mapObjects[objAddress].UsesRotation = mapObjRotates;
             }
 
-            if (objData.Behavior == (Config.ObjectAssociations.MarioBehavior & 0x0FFFFFFF))
+            if (objData.Behavior == (Config.ObjectAssociations.MarioBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart)
             {
                 _mapObjects[objAddress].Show = false;
             }

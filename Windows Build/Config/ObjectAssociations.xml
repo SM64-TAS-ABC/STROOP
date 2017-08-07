@@ -6,7 +6,8 @@
     <OverlayImageDirectory>Resources\Overlays\</OverlayImageDirectory>
     <DefaultImage>default.png</DefaultImage>
     <EmptyImage>Empty.png</EmptyImage>
-    <RamToBehaviorOffset>0x12F14E80</RamToBehaviorOffset>
+    <BehaviorBankStartUS>0xeb180</BehaviorBankStartUS>
+    <BehaviorBankStartJP>0xe8320</BehaviorBankStartJP>
   </Config>
   <Mario behaviorScriptAddress="0x13002EC0">
     <Image path="Mario.png"/>

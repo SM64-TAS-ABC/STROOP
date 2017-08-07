@@ -1279,7 +1279,6 @@ namespace SM64_Diagnostic.Utilities
                 usedOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "", cameraHackOverlayImagePath = "",
                 floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "",
                 parentOverlayImagePath = "", parentUnusedOverlayImagePath = "", parentNoneOverlayImagePath = "";
-            uint ramToBehaviorOffset = 0;
             uint marioBehavior = 0;
 
             foreach (XElement element in doc.Root.Elements())
@@ -1306,9 +1305,11 @@ namespace SM64_Diagnostic.Utilities
                                 case "EmptyImage":
                                     emptyImagePath = subElement.Value;
                                     break;
-                                case "RamToBehaviorOffset":
-                                    ramToBehaviorOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    assoc.RamOffset = ramToBehaviorOffset;
+                                case "BehaviorBankStartUS":
+                                    assoc.BehaviorBankStartUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "BehaviorBankStartJP":
+                                    assoc.BehaviorBankStartJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         }
@@ -1422,7 +1423,6 @@ namespace SM64_Diagnostic.Utilities
                     case "Object":
                         string name = element.Attribute(XName.Get("name")).Value;
                         uint behaviorSegmented = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
-                        uint behaviorAddress = (behaviorSegmented - ramToBehaviorOffset) & 0x00FFFFFF;
                         uint? gfxId = null;
                         int? subType = null, appearance = null;
                         if (element.Attribute(XName.Get("gfxId")) != null)
@@ -1468,7 +1468,7 @@ namespace SM64_Diagnostic.Utilities
                         {
                             BehaviorCriteria = new BehaviorCriteria()
                             {
-                                BehaviorAddress = behaviorAddress,
+                                BehaviorAddress = behaviorSegmented,
                                 GfxId = gfxId,
                                 SubType = subType,
                                 Appearance = appearance
@@ -1499,7 +1499,7 @@ namespace SM64_Diagnostic.Utilities
             assoc.MiscImage = Image.FromFile(imageDir + miscImagePath);
             assoc.HolpImage = Image.FromFile(mapImageDir + holpMapImagePath);
             assoc.CameraMapImage = Image.FromFile(mapImageDir + cameraMapImagePath);
-            assoc.MarioBehavior = marioBehavior - ramToBehaviorOffset;
+            assoc.MarioBehavior = marioBehavior;
             objectSlotManagerGui.SelectedObjectOverlayImage = Image.FromFile(overlayImageDir + selectedOverlayImagePath);
             objectSlotManagerGui.TrackedAndShownObjectOverlayImage = Image.FromFile(overlayImageDir + trackedAndShownOverlayImagePath);
             objectSlotManagerGui.TrackedNotShownObjectOverlayImage = Image.FromFile(overlayImageDir + trackedNotShownOverlayImagePath);
