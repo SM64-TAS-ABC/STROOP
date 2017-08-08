@@ -18,12 +18,12 @@
   <Data type="short" address="0x801A7D20" offset="Relative">Hand Y</Data>
   <Data type="short" address="0x80361258" offset="Relative">TTC Speed Setting</Data>
 
-  <Data type="byte" address="0x801A81A4" offset="Relative">Mission Selected</Data>
-  <Data type="byte" address="0x8033BAC9" offset="Relative">Mission Layout</Data>
-  <Data type="byte" address="0x80331620" offset="Relative">Mission Name</Data>
-  <Data type="byte" address="0x8032DD84" offset="Relative">Last Star</Data>
-  <Data type="byte" address="0x8032DD80" offset="Relative">Last Star Course</Data>
-  <Data type="byte" address="0x80331490" offset="Relative">Selection Index</Data>
+  <Data type="byte" addressUS="0x801A81A4" addressJP="0x801A8014" offset="Relative">Mission Selected</Data>
+  <Data type="byte" addressUS="0x8033BAC9" addressJP="0x8033A759" offset="Relative">Mission Layout</Data>
+  <Data type="byte" addressUS="0x80331620" addressJP="0x80330534" offset="Relative">Mission Name</Data>
+  <Data type="byte" addressUS="0x8032DD84" addressJP="0x8032CE24" offset="Relative">Last Star</Data>
+  <Data type="byte" addressUS="0x8032DD80" addressJP="0x8032CE20" offset="Relative">Last Star Course</Data>
+  <Data type="byte" addressUS="0x80331490" addressJP="0x80330430" offset="Relative">Selection Index</Data>
   <Data type="short" addressUS="0x8032DDF8" addressJP="0x8032CE98" offset="Relative">Stage Select Index</Data>
 
   <Data type="short" addressUS="0x8033BAC6" addressJP="0x8033A756" offset="Relative">Level Index</Data>
