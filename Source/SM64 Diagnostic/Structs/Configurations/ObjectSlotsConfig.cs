@@ -21,7 +21,11 @@ namespace SM64_Diagnostic.Structs
         public uint NextLinkOffset;
         public uint PreviousLinkOffset;
         public uint ParentOffset;
-        public uint UnusedSlotAddress;
+
+        public uint UnusedSlotAddress { get { return Config.SwitchRomVersion(UnusedSlotAddressUS, UnusedSlotAddressJP); } }
+        public uint UnusedSlotAddressUS;
+        public uint UnusedSlotAddressJP;
+
         public uint BehaviorScriptOffset;
         public uint BehaviorGfxOffset;
         public uint BehaviorSubtypeOffset;

@@ -108,8 +108,11 @@ namespace SM64_Diagnostic.Utilities
                                 case "ParentOffset":
                                     Config.ObjectSlots.ParentOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "UnusedSlotAddress":
-                                    Config.ObjectSlots.UnusedSlotAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                case "UnusedSlotAddressUS":
+                                    Config.ObjectSlots.UnusedSlotAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "UnusedSlotAddressJP":
+                                    Config.ObjectSlots.UnusedSlotAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "BehaviorScriptOffset":
                                     Config.ObjectSlots.BehaviorScriptOffset = ParsingUtilities.ParseHex(subElement.Value);

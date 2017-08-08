@@ -18,7 +18,8 @@
     <ListNextLinkOffset>0x08</ListNextLinkOffset>
     <ListPreviousLinkOffset>0x04</ListPreviousLinkOffset>
     <ParentOffset>0x68</ParentOffset>
-    <UnusedSlotAddress>0x80360E88</UnusedSlotAddress>
+    <UnusedSlotAddressUS>0x80360E88</UnusedSlotAddressUS>
+    <UnusedSlotAddressJP>0x8035FB18</UnusedSlotAddressJP>
     <BehaviorScriptOffset>0x020C</BehaviorScriptOffset>
     <BehaviorGfxOffset>0x14</BehaviorGfxOffset>
     <BehaviorSubtypeOffset>0x0144</BehaviorSubtypeOffset>
