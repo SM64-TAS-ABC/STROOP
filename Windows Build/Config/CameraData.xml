@@ -36,5 +36,5 @@
   <Data type="short" address="0x11C" offset="Camera">Roll Shake Decrease</Data>
   <Data type="short" address="0x118" offset="Camera">Roll Shake Osc.</Data>
   <Data type="short" address="0xBC" offset="Camera">Camera Mode</Data>
-  <Data type="uint" address="0x8032DF30" offset="Relative" useHex="true" isObject="true">Secondary Object</Data>
+  <Data type="uint" addressUS="0x8032DF30" addressJP="0x8032CFD0" offset="Relative" useHex="true" isObject="true">Secondary Object</Data>
 </CameraData>
