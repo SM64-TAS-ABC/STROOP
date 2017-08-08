@@ -57,10 +57,10 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             // Turn debug on
-            Config.Stream.SetValue((byte)1, Config.Debug.AdvancedMode);
+            Config.Stream.SetValue((byte)1, Config.Debug.AdvancedModeAddress);
 
             // Set mode
-            Config.Stream.SetValue(settingValue, Config.Debug.Setting);
+            Config.Stream.SetValue(settingValue, Config.Debug.SettingAddress);
         }
 
         private void SpawnDebugCheckbox_CheckedChanged(object sender, EventArgs e)
@@ -68,8 +68,8 @@ namespace SM64_Diagnostic.Managers
             if (!_changedByUser)
                 return;
 
-            Config.Stream.SetValue(_spawnDebugCheckbox.Checked ? (byte)0x03 : (byte)0x00, Config.Debug.Setting);
-            Config.Stream.SetValue(_spawnDebugCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.SpawnMode);
+            Config.Stream.SetValue(_spawnDebugCheckbox.Checked ? (byte)0x03 : (byte)0x00, Config.Debug.SettingAddress);
+            Config.Stream.SetValue(_spawnDebugCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.SpawnModeAddress);
         }
 
         private void _classicCheckbox_CheckedChanged(object sender, EventArgs e)
@@ -77,7 +77,7 @@ namespace SM64_Diagnostic.Managers
             if (!_changedByUser)
                 return;
 
-            Config.Stream.SetValue(_classicCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ClassicMode);
+            Config.Stream.SetValue(_classicCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ClassicModeAddress);
         }
 
         private void _resourceCheckbox_CheckedChanged(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace SM64_Diagnostic.Managers
             if (!_changedByUser)
                 return;
 
-            Config.Stream.SetValue(_resourceCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ResourceMode);
+            Config.Stream.SetValue(_resourceCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ResourceModeAddress);
         }
 
         private void _stageSelectCheckbox_CheckedChanged(object sender, EventArgs e)
@@ -93,7 +93,7 @@ namespace SM64_Diagnostic.Managers
             if (!_changedByUser)
                 return;
 
-            Config.Stream.SetValue(_stageSelectCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.StageSelect);
+            Config.Stream.SetValue(_stageSelectCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.StageSelectAddress);
         }
 
         private void FreeMovementButton_Click(object sender, EventArgs e)
@@ -110,10 +110,10 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             // Turn debug off
-            Config.Stream.SetValue((byte)0, Config.Debug.AdvancedMode);
+            Config.Stream.SetValue((byte)0, Config.Debug.AdvancedModeAddress);
 
             // Set mode
-            Config.Stream.SetValue((byte)0, Config.Debug.Setting);
+            Config.Stream.SetValue((byte)0, Config.Debug.SettingAddress);
         }
 
         private void radioButtonDbgFxInfo_CheckedChanged(object sender, EventArgs e)
@@ -122,10 +122,10 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             // Turn debug on
-            Config.Stream.SetValue((byte)1, Config.Debug.AdvancedMode);
+            Config.Stream.SetValue((byte)1, Config.Debug.AdvancedModeAddress);
 
             // Set mode
-            Config.Stream.SetValue((byte)4, Config.Debug.Setting);
+            Config.Stream.SetValue((byte)4, Config.Debug.SettingAddress);
         }
 
         private void radioButtonDbgEnemyInfo_CheckedChanged(object sender, EventArgs e)
@@ -134,10 +134,10 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             // Turn debug on
-            Config.Stream.SetValue((byte)1, Config.Debug.AdvancedMode);
+            Config.Stream.SetValue((byte)1, Config.Debug.AdvancedModeAddress);
 
             // Set mode
-            Config.Stream.SetValue((byte)5, Config.Debug.Setting);
+            Config.Stream.SetValue((byte)5, Config.Debug.SettingAddress);
         }
 
         void SetChecked(CheckBox checkBox, bool value)
@@ -153,14 +153,14 @@ namespace SM64_Diagnostic.Managers
 
             _changedByUser = false;
 
-            SetChecked(_spawnDebugCheckbox, Config.Stream.GetByte(Config.Debug.Setting) == 0x03
-                 && Config.Stream.GetByte(Config.Debug.SpawnMode) == 0x01);
-            SetChecked(_classicCheckbox, Config.Stream.GetByte(Config.Debug.ClassicMode) == 0x01);
-            SetChecked(_resourceCheckbox, Config.Stream.GetByte(Config.Debug.ResourceMode) == 0x01);
-            SetChecked(_stageSelectCheckbox, Config.Stream.GetByte(Config.Debug.StageSelect) == 0x01);
+            SetChecked(_spawnDebugCheckbox, Config.Stream.GetByte(Config.Debug.SettingAddress) == 0x03
+                 && Config.Stream.GetByte(Config.Debug.SpawnModeAddress) == 0x01);
+            SetChecked(_classicCheckbox, Config.Stream.GetByte(Config.Debug.ClassicModeAddress) == 0x01);
+            SetChecked(_resourceCheckbox, Config.Stream.GetByte(Config.Debug.ResourceModeAddress) == 0x01);
+            SetChecked(_stageSelectCheckbox, Config.Stream.GetByte(Config.Debug.StageSelectAddress) == 0x01);
 
-            var setting = Config.Stream.GetByte(Config.Debug.Setting);
-            var on = Config.Stream.GetByte(Config.Debug.AdvancedMode);
+            var setting = Config.Stream.GetByte(Config.Debug.SettingAddress);
+            var on = Config.Stream.GetByte(Config.Debug.AdvancedModeAddress);
             if (on == 0x01 && setting <= _dbgSettingRadioButton.Length)
                 _dbgSettingRadioButton[setting].Checked = true;
             else

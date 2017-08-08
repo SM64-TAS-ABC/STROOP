@@ -464,27 +464,55 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "AdvancedModeAddress":
-                                    Config.Debug.AdvancedMode = ParsingUtilities.ParseHex(subElement.Value);
+                                case "AdvancedModeAddressUS":
+                                    Config.Debug.AdvancedModeAddressUS = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "SettingAddress":
-                                    Config.Debug.Setting = ParsingUtilities.ParseHex(subElement.Value);
+                                case "AdvancedModeAddressJP":
+                                    Config.Debug.AdvancedModeAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "SpawnModeAddress":
-                                    Config.Debug.SpawnMode = ParsingUtilities.ParseHex(subElement.Value);
+
+                                case "SettingAddressUS":
+                                    Config.Debug.SettingAddressUS = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "ClassicModeAddress":
-                                    Config.Debug.ClassicMode = ParsingUtilities.ParseHex(subElement.Value);
+                                case "SettingAddressJP":
+                                    Config.Debug.SettingAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "ResourceModeAddress":
-                                    Config.Debug.ResourceMode = ParsingUtilities.ParseHex(subElement.Value);
+
+                                case "SpawnModeAddressUS":
+                                    Config.Debug.SpawnModeAddressUS = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "StageSelectAddress":
-                                    Config.Debug.StageSelect = ParsingUtilities.ParseHex(subElement.Value);
+                                case "SpawnModeAddressJP":
+                                    Config.Debug.SpawnModeAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "FreeMovementAddress":
-                                    Config.Debug.FreeMovementAddress = ParsingUtilities.ParseHex(subElement.Value);
+
+                                case "ClassicModeAddressUS":
+                                    Config.Debug.ClassicModeAddressUS = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "ClassicModeAddressJP":
+                                    Config.Debug.ClassicModeAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ResourceModeAddressUS":
+                                    Config.Debug.ResourceModeAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "ResourceModeAddressJP":
+                                    Config.Debug.ResourceModeAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "StageSelectAddressUS":
+                                    Config.Debug.StageSelectAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "StageSelectAddressJP":
+                                    Config.Debug.StageSelectAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "FreeMovementAddressUS":
+                                    Config.Debug.FreeMovementAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "FreeMovementAddressJP":
+                                    Config.Debug.FreeMovementAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
                                 case "FreeMovementValue":
                                     Config.Debug.FreeMovementValue = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

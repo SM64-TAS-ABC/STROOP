@@ -144,13 +144,27 @@
     <StandardStars>120</StandardStars>
   </Hud>
   <Debug>
-    <AdvancedModeAddress>0x8033D263</AdvancedModeAddress>
-    <SettingAddress>0x80330E94</SettingAddress>
-    <SpawnModeAddress>0x8033D2DF</SpawnModeAddress>
-    <ClassicModeAddress>0x8032D598</ClassicModeAddress>
-    <ResourceModeAddress>0x8032D594</ResourceModeAddress>
-    <StageSelectAddress>0x8032D58C</StageSelectAddress>
-    <FreeMovementAddress>0x80269BD8</FreeMovementAddress>
+    <AdvancedModeAddressUS>0x8033D263</AdvancedModeAddressUS>
+    <AdvancedModeAddressJP>0x8033D263</AdvancedModeAddressJP>
+
+    <SettingAddressUS>0x80330E94</SettingAddressUS>
+    <SettingAddressJP>0x80330E94</SettingAddressJP>
+
+    <SpawnModeAddressUS>0x8033D2DF</SpawnModeAddressUS>
+    <SpawnModeAddressJP>0x8033D2DF</SpawnModeAddressJP>
+
+    <ClassicModeAddressUS>0x8032D598</ClassicModeAddressUS>
+    <ClassicModeAddressJP>0x8032D598</ClassicModeAddressJP>
+
+    <ResourceModeAddressUS>0x8032D594</ResourceModeAddressUS>
+    <ResourceModeAddressJP>0x8032D594</ResourceModeAddressJP>
+
+    <StageSelectAddressUS>0x8032D58C</StageSelectAddressUS>
+    <StageSelectAddressJP>0x8032D58C</StageSelectAddressJP>
+
+    <FreeMovementAddressUS>0x80269BD8</FreeMovementAddressUS>
+    <FreeMovementAddressJP>0x80269BD8</FreeMovementAddressJP>
+    
     <FreeMovementValue>0x0C095FAB</FreeMovementValue>
   </Debug>
   <TriangleOffsets>
