@@ -14,7 +14,7 @@
   <Data type="short" addressUS="0x8032DDF4" addressJP="0x8032CE94" offset="Relative">Current File</Data>
   <Data type="byte" addressUS="0x8032D5F5" addressJP="0x8032C6B5" offset="Relative">Demo Counter</Data>
   <Data type="short" addressUS="0x801A7C30" addressJP="0x801A7AF0" offset="Relative">Demo Timer</Data>
-  <Data type="byte" addressUS="0x80226B7F" addressJP="0x00000000" offset="Relative">Sound Selection</Data>
+  <Data type="byte" addressUS="0x80226B7F" addressJP="0x80226D7F" offset="Relative">Sound Selection</Data>
   <Data type="short" addressUS="0x801A7D1C" addressJP="0x801A7BDC" offset="Relative">Hand X</Data>
   <Data type="short" addressUS="0x801A7D20" addressJP="0x801A7BE0" offset="Relative">Hand Y</Data>
   <Data type="short" addressUS="0x80361258" addressJP="0x00000000" offset="Relative">TTC Speed Setting</Data>
