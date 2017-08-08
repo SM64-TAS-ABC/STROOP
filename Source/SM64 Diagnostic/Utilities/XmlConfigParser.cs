@@ -1163,9 +1163,13 @@ namespace SM64_Diagnostic.Utilities
                         Config.WaterPointerAddressJP = ParsingUtilities.ParseHex(element.Value);
                         break;
 
-                    case "HackedAreaAddress":
-                        Config.HackedAreaAddress = ParsingUtilities.ParseHex(element.Value);
+                    case "HackedAreaAddressUS":
+                        Config.HackedAreaAddressUS = ParsingUtilities.ParseHex(element.Value);
                         break;
+                    case "HackedAreaAddressJP":
+                        Config.HackedAreaAddressJP = ParsingUtilities.ParseHex(element.Value);
+                        break;
+
                     case "RngAddressUS":
                         Config.RngAddressUS = ParsingUtilities.ParseHex(element.Value);
                         break;

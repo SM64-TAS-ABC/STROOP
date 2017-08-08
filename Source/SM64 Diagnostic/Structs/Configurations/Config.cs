@@ -77,7 +77,9 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint WaterPointerAddressUS;
         public static uint WaterPointerAddressJP;
 
-        public static uint HackedAreaAddress;
+        public static uint HackedAreaAddress { get { return Config.SwitchRomVersion(HackedAreaAddressUS, HackedAreaAddressJP); } }
+        public static uint HackedAreaAddressUS;
+        public static uint HackedAreaAddressJP;
 
         public static uint GlobalTimerAddress { get { return Config.SwitchRomVersion(GlobalTimerAddressUS, GlobalTimerAddressJP); } }
         public static uint GlobalTimerAddressUS;

@@ -353,8 +353,9 @@
 
   <RngAddressUS>0x8038EEE0</RngAddressUS>
   <RngAddressJP>0x8038EEE0</RngAddressJP>
-  
-  <HackedAreaAddress>0x803E0000</HackedAreaAddress>
+
+  <HackedAreaAddressUS>0x803E0000</HackedAreaAddressUS>
+  <HackedAreaAddressJP>0x803E0000</HackedAreaAddressJP>
   <DebugAddress></DebugAddress>
   <DebugModeAddress></DebugModeAddress>
 </Config>
