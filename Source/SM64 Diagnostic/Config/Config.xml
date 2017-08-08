@@ -85,7 +85,7 @@
       <Group index ="0x0C" color="#FF00FF"/>
     </ProcessGroupsOrdering>
     <VacantPointerAddressUS color="#AAAAAA">0x80361150</VacantPointerAddressUS>
-    <VacantPointerAddressJP color="#AAAAAA">0x80361150</VacantPointerAddressJP>
+    <VacantPointerAddressJP color="#AAAAAA">0x8035FDE0</VacantPointerAddressJP>
   </ObjectGroups>
   <Mario>
     <MarioStructAddressUS>0x8033B170</MarioStructAddressUS>
