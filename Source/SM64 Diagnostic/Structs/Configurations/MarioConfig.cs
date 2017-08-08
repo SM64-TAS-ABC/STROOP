@@ -21,7 +21,11 @@ namespace SM64_Diagnostic.Structs
         public uint RotationOffset;
         public uint YawFacingOffset;
         public uint YawIntendedOffset;
-        public uint StoodOnObjectPointer;
+
+        public uint StoodOnObjectPointer { get { return Config.SwitchRomVersion(StoodOnObjectPointerUS, StoodOnObjectPointerJP); } }
+        public uint StoodOnObjectPointerUS;
+        public uint StoodOnObjectPointerJP;
+
         public uint InteractionObjectPointerOffset;
         public uint HeldObjectPointerOffset;
         public uint UsedObjectPointerOffset;

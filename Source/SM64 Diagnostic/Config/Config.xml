@@ -99,7 +99,8 @@
     <FacingAngleOffset>0x2A</FacingAngleOffset>
     <YawFacingOffset>0x2E</YawFacingOffset>
     <YawIntendedOffset>0x24</YawIntendedOffset>
-    <StandingOnPointer>0x80330E34</StandingOnPointer>
+    <StoodOnObjectPointerUS>0x80330E34</StoodOnObjectPointerUS>
+    <StoodOnObjectPointerJP>0x8032FED4</StoodOnObjectPointerJP>
     <InteractionObjectPointerOffset>0x78</InteractionObjectPointerOffset>
     <HeldObjectPointerOffset>0x7C</HeldObjectPointerOffset>
     <UsedObjectPointerOffset>0x80</UsedObjectPointerOffset>

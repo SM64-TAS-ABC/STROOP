@@ -332,8 +332,11 @@ namespace SM64_Diagnostic.Utilities
                                 case "PrevActionOffset":
                                     Config.Mario.PrevActionOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "StandingOnPointer":
-                                    Config.Mario.StoodOnObjectPointer = ParsingUtilities.ParseHex(subElement.Value);
+                                case "StoodOnObjectPointerUS":
+                                    Config.Mario.StoodOnObjectPointerUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "StoodOnObjectPointerJP":
+                                    Config.Mario.StoodOnObjectPointerJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "InteractionObjectPointerOffset":
                                     Config.Mario.InteractionObjectPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
