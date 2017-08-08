@@ -5,8 +5,9 @@
   <Data offset="Special" specialType="RngIndex">RNG Index</Data>
   <Data offset="Special" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data offset="Special" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
-  <Data type="byte" address="0x80222618" offset="Relative" isBool="true" mask="0x20" invertBool="true">Music On</Data>
-  <Data type="float" address="0x80222630" offset="Relative">Volume</Data>
+  
+  <Data type="byte" addressUS="0x80222618" addressJP="0x80222A18" offset="Relative" isBool="true" mask="0x20" invertBool="true">Music On</Data>
+  <Data type="float" addressUS="0x80222630" addressJP="0x80222A30" offset="Relative">Volume</Data>
   <Data type="byte" address="0x8032DD94" offset="Relative" isBool="true">Special Triple Jump</Data>
   <Data type="byte" address="0x80332618" offset="Relative" isBool="true">Talked to Yoshi</Data>
   <Data type="byte" address="0x8033B26E" offset="Relative" isBool="true">Never Entered Castle</Data>
