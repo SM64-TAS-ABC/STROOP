@@ -26,8 +26,8 @@
   <Data type="byte" address="0xFB" mask="0x40" offset="Mario" isBool="true">HUD On Time</Data>
   <Data type="short" addressUS="0x8033BAC6" addressJP="0x8033A756" offset="Relative">Level Index</Data>
 
-  <Data type="byte" address="0x803325F0" offset="Relative">HP HUD State</Data>
-  <Data type="int" address="0x803325FC" offset="Relative">HP HUD Timer</Data>
-  <Data type="short" address="0x803325F2" offset="Relative">HP HUD X</Data>
-  <Data type="short" address="0x803325F4" offset="Relative">HP HUD Y</Data>
+  <Data type="byte" addressUS="0x803325F0" addressJP="0x803314E0" offset="Relative">HP HUD State</Data>
+  <Data type="int" addressUS="0x803325FC" addressJP="0x803314EC" offset="Relative">HP HUD Timer</Data>
+  <Data type="short" addressUS="0x803325F2" addressJP="0x803314E2" offset="Relative">HP HUD X</Data>
+  <Data type="short" addressUS="0x803325F4" addressJP="0x803314E4" offset="Relative">HP HUD Y</Data>
 </HudData>
