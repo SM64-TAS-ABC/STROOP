@@ -330,10 +330,17 @@
     <RetrieveAboveDefault>300</RetrieveAboveDefault>
     <RetrieveInfrontDefault>0</RetrieveInfrontDefault>
   </GotoRetrieve>
-  <LevelAddress>0x8033B249</LevelAddress>
-  <AreaAddress>0x8033B24A</AreaAddress>
-  <LoadingPointAddress>0x8033BACA</LoadingPointAddress>
-  <MissionLayoutAddress>0x8033BAC8</MissionLayoutAddress>
+  <LevelAddressUS>0x8033B249</LevelAddressUS>
+  <LevelAddressJP>0x80339ED9</LevelAddressJP>
+
+  <AreaAddressUS>0x8033B24A</AreaAddressUS>
+  <AreaAddressJP>0x80339EDA</AreaAddressJP>
+
+  <LoadingPointAddressUS>0x8033BACA</LoadingPointAddressUS>
+  <LoadingPointAddressJP>0x8033A75A</LoadingPointAddressJP>
+
+  <MissionLayoutAddressUS>0x8033BAC8</MissionLayoutAddressUS>
+  <MissionLayoutAddressJP>0x8033A758</MissionLayoutAddressJP>
 
   <LevelIndexAddressUS>0x8033BAC6</LevelIndexAddressUS>
   <LevelIndexAddressJP>0x8033A756</LevelIndexAddressJP>

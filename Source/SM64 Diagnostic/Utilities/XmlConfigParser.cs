@@ -1121,20 +1121,32 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
-                    case "LevelAddress":
-                        Config.LevelAddress = ParsingUtilities.ParseHex(element.Value);
+                    case "LevelAddressUS":
+                        Config.LevelAddressUS = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "LevelAddressJP":
+                        Config.LevelAddressJP = ParsingUtilities.ParseHex(element.Value);
                         break;
 
-                    case "AreaAddress":
-                        Config.AreaAddress = ParsingUtilities.ParseHex(element.Value);
+                    case "AreaAddressUS":
+                        Config.AreaAddressUS = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "AreaAddressJP":
+                        Config.AreaAddressJP = ParsingUtilities.ParseHex(element.Value);
                         break;
 
-                    case "LoadingPointAddress":
-                        Config.LoadingPointAddress = ParsingUtilities.ParseHex(element.Value);
+                    case "LoadingPointAddressUS":
+                        Config.LoadingPointAddressUS = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "LoadingPointAddressJP":
+                        Config.LoadingPointAddressJP = ParsingUtilities.ParseHex(element.Value);
                         break;
 
-                    case "MissionLayoutAddress":
-                        Config.MissionAddress = ParsingUtilities.ParseHex(element.Value);
+                    case "MissionLayoutAddressUS":
+                        Config.MissionAddressUS = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "MissionLayoutAddressJP":
+                        Config.MissionAddressJP = ParsingUtilities.ParseHex(element.Value);
                         break;
 
                     case "LevelIndexAddressUS":

@@ -52,10 +52,22 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static MissionTable Missions;
         public static CourseDataTable CourseData;
         public static GotoRetrieveConfig GotoRetrieve;
-        public static uint LevelAddress;
-        public static uint AreaAddress;
-        public static uint LoadingPointAddress;
-        public static uint MissionAddress;
+
+        public static uint LevelAddress { get { return Config.SwitchRomVersion(LevelAddressUS, LevelAddressJP); } }
+        public static uint LevelAddressUS;
+        public static uint LevelAddressJP;
+
+        public static uint AreaAddress { get { return Config.SwitchRomVersion(AreaAddressUS, AreaAddressJP); } }
+        public static uint AreaAddressUS;
+        public static uint AreaAddressJP;
+
+        public static uint LoadingPointAddress { get { return Config.SwitchRomVersion(LoadingPointAddressUS, LoadingPointAddressJP); } }
+        public static uint LoadingPointAddressUS;
+        public static uint LoadingPointAddressJP;
+
+        public static uint MissionAddress { get { return Config.SwitchRomVersion(MissionAddressUS, MissionAddressJP); } }
+        public static uint MissionAddressUS;
+        public static uint MissionAddressJP;
 
         public static uint LevelIndexAddress { get { return Config.SwitchRomVersion(LevelIndexAddressUS, LevelIndexAddressJP); } }
         public static uint LevelIndexAddressUS;
