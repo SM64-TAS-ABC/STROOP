@@ -1117,7 +1117,7 @@
     <Data groupList="ObjectSpecific" type="byte" address="0x127" offset="Object" isBool="true">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="int" address="0x150" offset="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="int" address="0x184" offset="Object">HP</Data>
-    <Data groupList="ObjectSpecific" type="byte" addressUS="0x801816D3" addressJP="0x8017E6C3" offset="Relative">Blinking State 1</Data>
+    <Data groupList="ObjectSpecific" type="byte" address="0x373" offset="Graphics">Blinking State Graphic</Data>
     <Data groupList="ObjectSpecific" type="short" address="0x1AE" offset="Object">Blinking Timer</Data>
     <Data groupList="ObjectSpecific" type="int" address="0x17C" offset="Object">Opaqueness</Data>
   </Object>
@@ -1128,7 +1128,7 @@
     <Data groupList="ObjectSpecific" type="byte" address="0x127" offset="Object" isBool="true">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="int" address="0x150" offset="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="int" address="0x184" offset="Object">HP</Data>
-    <Data groupList="ObjectSpecific" type="byte" addressUS="0x8017FE03" addressJP="0x8017CDF3" offset="Relative">Blinking State 2</Data>
+    <Data groupList="ObjectSpecific" type="byte" address="0x373" offset="Graphics">Blinking State Graphic</Data>
     <Data groupList="ObjectSpecific" type="short" address="0x1AE" offset="Object">Blinking Timer</Data>
     <Data groupList="ObjectSpecific" type="int" address="0x17C" offset="Object">Opaqueness</Data>
   </Object>
@@ -1139,7 +1139,7 @@
     <Data groupList="ObjectSpecific" type="byte" address="0x127" offset="Object" isBool="true">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="int" address="0x150" offset="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="int" address="0x184" offset="Object">HP</Data>
-    <Data groupList="ObjectSpecific" type="byte" addressUS="0x80183F83" addressJP="0x80180F73" offset="Relative">Blinking State 3</Data>
+    <Data groupList="ObjectSpecific" type="byte" address="0x373" offset="Graphics">Blinking State Graphic</Data>
     <Data groupList="ObjectSpecific" type="short" address="0x1AE" offset="Object">Blinking Timer</Data>
     <Data groupList="ObjectSpecific" type="int" address="0x17C" offset="Object">Opaqueness</Data>
   </Object>
