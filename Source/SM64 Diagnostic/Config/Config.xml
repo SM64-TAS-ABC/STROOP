@@ -145,25 +145,25 @@
   </Hud>
   <Debug>
     <AdvancedModeAddressUS>0x8033D263</AdvancedModeAddressUS>
-    <AdvancedModeAddressJP>0x8033D263</AdvancedModeAddressJP>
+    <AdvancedModeAddressJP>0x8033BEF3</AdvancedModeAddressJP>
 
     <SettingAddressUS>0x80330E94</SettingAddressUS>
-    <SettingAddressJP>0x80330E94</SettingAddressJP>
+    <SettingAddressJP>0x8032FF34</SettingAddressJP>
 
     <SpawnModeAddressUS>0x8033D2DF</SpawnModeAddressUS>
-    <SpawnModeAddressJP>0x8033D2DF</SpawnModeAddressJP>
+    <SpawnModeAddressJP>0x8033BF6F</SpawnModeAddressJP>
 
     <ClassicModeAddressUS>0x8032D598</ClassicModeAddressUS>
-    <ClassicModeAddressJP>0x8032D598</ClassicModeAddressJP>
+    <ClassicModeAddressJP>0x8032C658</ClassicModeAddressJP>
 
     <ResourceModeAddressUS>0x8032D594</ResourceModeAddressUS>
-    <ResourceModeAddressJP>0x8032D594</ResourceModeAddressJP>
+    <ResourceModeAddressJP>0x8032C654</ResourceModeAddressJP>
 
     <StageSelectAddressUS>0x8032D58C</StageSelectAddressUS>
-    <StageSelectAddressJP>0x8032D58C</StageSelectAddressJP>
+    <StageSelectAddressJP>0x8032C64C</StageSelectAddressJP>
 
     <FreeMovementAddressUS>0x80269BD8</FreeMovementAddressUS>
-    <FreeMovementAddressJP>0x80269BD8</FreeMovementAddressJP>
+    <FreeMovementAddressJP>0x802699AC</FreeMovementAddressJP>
     
     <FreeMovementValue>0x0C095FAB</FreeMovementValue>
   </Debug>
