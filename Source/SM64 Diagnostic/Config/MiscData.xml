@@ -13,11 +13,11 @@
   <Data type="byte" addressUS="0x8033B26E" addressJP="0x80339EFE" offset="Relative" isBool="true">Never Entered Castle</Data>
   <Data type="short" addressUS="0x8032DDF4" addressJP="0x8032CE94" offset="Relative">Current File</Data>
   <Data type="byte" addressUS="0x8032D5F5" addressJP="0x8032C6B5" offset="Relative">Demo Counter</Data>
-  <Data type="short" address="0x801A7C30" offset="Relative">Demo Timer</Data>
-  <Data type="byte" address="0x80226B7F" offset="Relative">Sound Selection</Data>
-  <Data type="short" address="0x801A7D1C" offset="Relative">Hand X</Data>
-  <Data type="short" address="0x801A7D20" offset="Relative">Hand Y</Data>
-  <Data type="short" address="0x80361258" offset="Relative">TTC Speed Setting</Data>
+  <Data type="short" addressUS="0x801A7C30" addressJP="0x801A7AF0" offset="Relative">Demo Timer</Data>
+  <Data type="byte" addressUS="0x80226B7F" addressJP="0x00000000" offset="Relative">Sound Selection</Data>
+  <Data type="short" addressUS="0x801A7D1C" addressJP="0x801A7BDC" offset="Relative">Hand X</Data>
+  <Data type="short" addressUS="0x801A7D20" addressJP="0x801A7BE0" offset="Relative">Hand Y</Data>
+  <Data type="short" addressUS="0x80361258" addressJP="0x00000000" offset="Relative">TTC Speed Setting</Data>
 
   <Data type="byte" addressUS="0x801A81A4" addressJP="0x801A8014" offset="Relative">Mission Selected</Data>
   <Data type="byte" addressUS="0x8033BAC9" addressJP="0x8033A759" offset="Relative">Mission Layout</Data>
