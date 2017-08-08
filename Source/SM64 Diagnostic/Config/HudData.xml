@@ -11,8 +11,8 @@
   <Data type="byte" address="0xB2" offset="Mario">HP Decrease Counter</Data>
   <Data type="short" address="0xA8" offset="Mario">Coin Count</Data>
   <Data type="short" address="0xF2" offset="Mario">Coin Display</Data>
-  <Data type="ushort" address="0x803316D2" offset="Relative">Coin Counter</Data>
-  <Data type="sbyte" address="0x803613FE" offset="Relative">Red Coin Count</Data>
+  <Data type="ushort" addressUS="0x803316D2" addressJP="0x803305CA" offset="Relative">Coin Counter</Data>
+  <Data type="sbyte" addressUS="0x803613FE" addressJP="0x8036008E" offset="Relative">Red Coin Count</Data>
   <Data type="short" address="0xAA" offset="Mario">Star Count</Data>
   <Data type="short" address="0xF4" offset="Mario">Star Display</Data>
   <Data type="short" address="0xB8" offset="Mario">Checked Star Count</Data>
