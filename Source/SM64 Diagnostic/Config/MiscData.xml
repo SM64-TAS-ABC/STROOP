@@ -8,9 +8,9 @@
   
   <Data type="byte" addressUS="0x80222618" addressJP="0x80222A18" offset="Relative" isBool="true" mask="0x20" invertBool="true">Music On</Data>
   <Data type="float" addressUS="0x80222630" addressJP="0x80222A30" offset="Relative">Volume</Data>
-  <Data type="byte" address="0x8032DD94" offset="Relative" isBool="true">Special Triple Jump</Data>
-  <Data type="byte" address="0x80332618" offset="Relative" isBool="true">Talked to Yoshi</Data>
-  <Data type="byte" address="0x8033B26E" offset="Relative" isBool="true">Never Entered Castle</Data>
+  <Data type="byte" addressUS="0x8032DD94" addressJP="0x8032CE34" offset="Relative" isBool="true">Special Triple Jump</Data>
+  <Data type="byte" addressUS="0x80332618" addressJP="0x80331508" offset="Relative" isBool="true">Talked to Yoshi</Data>
+  <Data type="byte" addressUS="0x8033B26E" addressJP="0x80339EFE" offset="Relative" isBool="true">Never Entered Castle</Data>
   <Data type="short" addressUS="0x8032DDF4" addressJP="0x8032CE94" offset="Relative">Current File</Data>
   <Data type="byte" addressUS="0x8032D5F5" addressJP="0x8032C6B5" offset="Relative">Demo Counter</Data>
   <Data type="short" address="0x801A7C30" offset="Relative">Demo Timer</Data>
