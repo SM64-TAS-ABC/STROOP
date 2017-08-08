@@ -1041,8 +1041,11 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "CameraHackStruct":
-                                    Config.CameraHack.CameraHackStruct = ParsingUtilities.ParseHex(subElement.Value);
+                                case "CameraHackStructUS":
+                                    Config.CameraHack.CameraHackStructUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "CameraHackStructJP":
+                                    Config.CameraHack.CameraHackStructJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "CameraModeOffset":
