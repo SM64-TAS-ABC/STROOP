@@ -36,10 +36,10 @@
   <Data type="short" address="0x8033B256" offset="Relative">Destination</Data>
   <Data type="short" address="0x8033B25A" offset="Relative">Door Direction</Data>
   
-  <Data type="short" address="0x8033B238" offset="Relative">Transition State</Data>
-  <Data type="short" address="0x8033BAB0" offset="Relative">Transition Type</Data>
-  <Data type="byte" address="0x80330EC0" offset="Relative">Transition Progress</Data>
-  <Data type="short" address="0x8033B23C" offset="Relative">Transition Black Fade</Data>
-  <Data type="short" address="0x8038B8A4" offset="Relative">Transition White Fade</Data>
-  <Data type="short" address="0x8033B254" offset="Relative">Transition Shrinking</Data>
+  <Data type="short" addressUS="0x8033B238" addressJP="0x80339EC8" offset="Relative">Transition State</Data>
+  <Data type="short" addressUS="0x8033BAB0" addressJP="0x8033A740" offset="Relative">Transition Type</Data>
+  <Data type="byte" addressUS="0x80330EC0" addressJP="0x8032FF60" offset="Relative">Transition Progress</Data>
+  <Data type="short" addressUS="0x8033B23C" addressJP="0x80339ECC" offset="Relative">Transition Black Fade</Data>
+  <Data type="short" addressUS="0x8038B8A4" addressJP="0x8038B8A4" offset="Relative">Transition White Fade</Data>
+  <Data type="short" addressUS="0x8033B254" addressJP="0x80339EE4" offset="Relative">Transition Shrinking</Data>
 </MiscData>
