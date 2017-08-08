@@ -27,14 +27,14 @@
   <Data type="short" addressUS="0x8032DDF8" addressJP="0x8032CE98" offset="Relative">Stage Select Index</Data>
 
   <Data type="short" addressUS="0x8033BAC6" addressJP="0x8033A756" offset="Relative">Level Index</Data>
-  <Data type="byte" address="0x8033B249" offset="Relative">Level</Data>
-  <Data type="byte" address="0x8033B24A" offset="Relative">Area</Data>
-  <Data type="ushort" address="0x8033BACA" offset="Relative">Loading Point</Data>
-  <Data type="uint" address="0x8033B4A0" offset="Relative" useHex="true">Last Area</Data>
-  <Data type="byte" address="0x8033B4A4" offset="Relative">Last Area Entrance</Data>
-  <Data type="short" address="0x8033BACC" offset="Relative">Last Death Course</Data>
-  <Data type="short" address="0x8033B256" offset="Relative">Destination</Data>
-  <Data type="short" address="0x8033B25A" offset="Relative">Door Direction</Data>
+  <Data type="byte" addressUS="0x8033B249" addressJP="0x80339ED9" offset="Relative">Level</Data>
+  <Data type="byte" addressUS="0x8033B24A" addressJP="0x80339EDA" offset="Relative">Area</Data>
+  <Data type="ushort" addressUS="0x8033BACA" addressJP="0x8033A75A" offset="Relative">Loading Point</Data>
+  <Data type="uint" addressUS="0x8033B4A0" addressJP="0x8033A130" offset="Relative" useHex="true">Last Area</Data>
+  <Data type="byte" addressUS="0x8033B4A4" addressJP="0x8033A134" offset="Relative">Last Area Entrance</Data>
+  <Data type="short" addressUS="0x8033BACC" addressJP="0x8033A75C" offset="Relative">Last Death Course</Data>
+  <Data type="short" addressUS="0x8033B256" addressJP="0x80339EE6" offset="Relative">Destination</Data>
+  <Data type="short" addressUS="0x8033B25A" addressJP="0x80339EEA" offset="Relative">Door Direction</Data>
   
   <Data type="short" addressUS="0x8033B238" addressJP="0x80339EC8" offset="Relative">Transition State</Data>
   <Data type="short" addressUS="0x8033BAB0" addressJP="0x8033A740" offset="Relative">Transition Type</Data>
