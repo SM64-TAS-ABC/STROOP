@@ -6,7 +6,7 @@
   </Emulators>
   
   <!-- US, JP, or PAL -->
-  <RomVersion>JP</RomVersion>
+  <RomVersion>US</RomVersion>
   
   <RefreshRateFreq>30</RefreshRateFreq>
   <RamSize>0x400000</RamSize>
