@@ -163,13 +163,13 @@
     <StageSelectAddressJP>0x8032C64C</StageSelectAddressJP>
 
     <FreeMovementAddressUS>0x80269BDA</FreeMovementAddressUS>
-    <FreeMovementAddressJP>0x802699AC</FreeMovementAddressJP>
+    <FreeMovementAddressJP>0x8026976E</FreeMovementAddressJP>
 
     <FreeMovementOnValueUS>0x5FAB</FreeMovementOnValueUS>
-    <FreeMovementOnValueJP>0x5FAB</FreeMovementOnValueJP>
+    <FreeMovementOnValueJP>0x5F0D</FreeMovementOnValueJP>
 
     <FreeMovementOffValueUS>0x98D5</FreeMovementOffValueUS>
-    <FreeMovementOffValueJP>0x98D5</FreeMovementOffValueJP>
+    <FreeMovementOffValueJP>0x97D1</FreeMovementOffValueJP>
   </Debug>
   <TriangleOffsets>
     <surfaceType>0x00</surfaceType>
