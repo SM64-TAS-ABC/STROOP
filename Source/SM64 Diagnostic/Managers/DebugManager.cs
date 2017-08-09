@@ -21,7 +21,6 @@ namespace SM64_Diagnostic.Managers
         {
             var panel = tabControl.Controls["NoTearFlowLayoutPanelDebugDisplayType"];
 
-            var freeMovementButton = tabControl.Controls["buttonDbgFreeMovement"] as Button;
             _spawnDebugCheckbox = tabControl.Controls["checkBoxDbgSpawnDbg"] as CheckBox;
             _classicCheckbox = tabControl.Controls["checkBoxDbgClassicDbg"] as CheckBox;
             _resourceCheckbox = tabControl.Controls["checkBoxDbgResource"] as CheckBox;
@@ -33,7 +32,6 @@ namespace SM64_Diagnostic.Managers
             _resourceCheckbox.CheckedChanged += _resourceCheckbox_CheckedChanged;
             _stageSelectCheckbox.CheckedChanged += _stageSelectCheckbox_CheckedChanged;
             _freeMovementCheckbox.CheckedChanged += _freeMovementCheckbox_CheckedChanged;
-            freeMovementButton.Click += FreeMovementButton_Click;
 
             _dbgSettingRadioButtonOff = panel.Controls["radioButtonDbgOff"] as RadioButton;
             _dbgSettingRadioButton = new RadioButton[6];
@@ -104,14 +102,6 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             Config.Stream.SetValue(_freeMovementCheckbox.Checked ? Config.Debug.FreeMovementOnValue : Config.Debug.FreeMovementOffValue, Config.Debug.FreeMovementAddress);
-        }
-
-        private void FreeMovementButton_Click(object sender, EventArgs e)
-        {
-            if (!_changedByUser)
-                return;
-
-            Config.Stream.SetValue(Config.Debug.FreeMovementOnValue, Config.Debug.FreeMovementAddress);
         }
 
         private void radioButtonDbgOff_CheckedChanged(object sender, EventArgs e)
