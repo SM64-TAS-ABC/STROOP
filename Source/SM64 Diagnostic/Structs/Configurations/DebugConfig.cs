@@ -36,6 +36,6 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint FreeMovementAddressUS;
         public uint FreeMovementAddressJP;
 
-        public uint FreeMovementValue;
+        public ushort FreeMovementValue;
     }
 }

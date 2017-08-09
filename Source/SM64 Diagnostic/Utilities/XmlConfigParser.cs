@@ -514,7 +514,7 @@ namespace SM64_Diagnostic.Utilities
                                     break;
 
                                 case "FreeMovementValue":
-                                    Config.Debug.FreeMovementValue = ParsingUtilities.ParseHex(subElement.Value);
+                                    Config.Debug.FreeMovementValue = (ushort)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         }

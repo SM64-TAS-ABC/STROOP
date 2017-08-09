@@ -162,10 +162,10 @@
     <StageSelectAddressUS>0x8032D58C</StageSelectAddressUS>
     <StageSelectAddressJP>0x8032C64C</StageSelectAddressJP>
 
-    <FreeMovementAddressUS>0x80269BD8</FreeMovementAddressUS>
+    <FreeMovementAddressUS>0x80269BDA</FreeMovementAddressUS>
     <FreeMovementAddressJP>0x802699AC</FreeMovementAddressJP>
     
-    <FreeMovementValue>0x0C095FAB</FreeMovementValue>
+    <FreeMovementValue>0x5FAB</FreeMovementValue>
   </Debug>
   <TriangleOffsets>
     <surfaceType>0x00</surfaceType>
