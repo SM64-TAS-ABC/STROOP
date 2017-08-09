@@ -112,23 +112,17 @@ namespace SM64_Diagnostic.Managers
             Config.Stream.SetValue((byte)5, Config.Debug.SettingAddress);
         }
 
-        void SetChecked(CheckBox checkBox, bool value)
-        {
-            if (checkBox.Checked != value)
-                checkBox.Checked = value;
-        }
-
         public void Update(bool updateView = false)
         {
             if (!updateView)
                 return;
 
-            SetChecked(_spawnDebugCheckbox, Config.Stream.GetByte(Config.Debug.SettingAddress) == 0x03
-                 && Config.Stream.GetByte(Config.Debug.SpawnModeAddress) == 0x01);
-            SetChecked(_classicCheckbox, Config.Stream.GetByte(Config.Debug.ClassicModeAddress) == 0x01);
-            SetChecked(_resourceCheckbox, Config.Stream.GetByte(Config.Debug.ResourceModeAddress) == 0x01);
-            SetChecked(_stageSelectCheckbox, Config.Stream.GetByte(Config.Debug.StageSelectAddress) == 0x01);
-            SetChecked(_freeMovementCheckbox, Config.Stream.GetUInt16(Config.Debug.FreeMovementAddress) == Config.Debug.FreeMovementOnValue);
+            _spawnDebugCheckbox.Checked = Config.Stream.GetByte(Config.Debug.SettingAddress) == 0x03
+                 && Config.Stream.GetByte(Config.Debug.SpawnModeAddress) == 0x01;
+            _classicCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ClassicModeAddress) == 0x01;
+            _resourceCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ResourceModeAddress) == 0x01;
+            _stageSelectCheckbox.Checked = Config.Stream.GetByte(Config.Debug.StageSelectAddress) == 0x01;
+            _freeMovementCheckbox.Checked = Config.Stream.GetUInt16(Config.Debug.FreeMovementAddress) == Config.Debug.FreeMovementOnValue;
 
             var setting = Config.Stream.GetByte(Config.Debug.SettingAddress);
             var on = Config.Stream.GetByte(Config.Debug.AdvancedModeAddress);
