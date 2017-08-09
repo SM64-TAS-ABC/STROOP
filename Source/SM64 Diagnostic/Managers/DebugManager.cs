@@ -13,7 +13,7 @@ namespace SM64_Diagnostic.Managers
     public class DebugManager
     {
         bool _changedByUser = true;
-        CheckBox _spawnDebugCheckbox, _classicCheckbox, _resourceCheckbox, _stageSelectCheckbox;
+        CheckBox _spawnDebugCheckbox, _classicCheckbox, _resourceCheckbox, _stageSelectCheckbox, _freeMovementCheckbox;
         RadioButton[] _dbgSettingRadioButton;
         RadioButton _dbgSettingRadioButtonOff;
 
@@ -26,11 +26,13 @@ namespace SM64_Diagnostic.Managers
             _classicCheckbox = tabControl.Controls["checkBoxDbgClassicDbg"] as CheckBox;
             _resourceCheckbox = tabControl.Controls["checkBoxDbgResource"] as CheckBox;
             _stageSelectCheckbox = tabControl.Controls["checkBoxDbgStageSelect"] as CheckBox;
+            _freeMovementCheckbox = tabControl.Controls["checkBoxDbgFreeMovement"] as CheckBox;
 
             _spawnDebugCheckbox.CheckedChanged += SpawnDebugCheckbox_CheckedChanged;
             _classicCheckbox.CheckedChanged += _classicCheckbox_CheckedChanged;
             _resourceCheckbox.CheckedChanged += _resourceCheckbox_CheckedChanged;
             _stageSelectCheckbox.CheckedChanged += _stageSelectCheckbox_CheckedChanged;
+            _freeMovementCheckbox.CheckedChanged += _freeMovementCheckbox_CheckedChanged;
             freeMovementButton.Click += FreeMovementButton_Click;
 
             _dbgSettingRadioButtonOff = panel.Controls["radioButtonDbgOff"] as RadioButton;
@@ -96,6 +98,14 @@ namespace SM64_Diagnostic.Managers
             Config.Stream.SetValue(_stageSelectCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.StageSelectAddress);
         }
 
+        private void _freeMovementCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_changedByUser)
+                return;
+
+            Config.Stream.SetValue(_freeMovementCheckbox.Checked ? Config.Debug.FreeMovementOnValue : Config.Debug.FreeMovementOffValue, Config.Debug.FreeMovementAddress);
+        }
+
         private void FreeMovementButton_Click(object sender, EventArgs e)
         {
             if (!_changedByUser)
@@ -158,6 +168,7 @@ namespace SM64_Diagnostic.Managers
             SetChecked(_classicCheckbox, Config.Stream.GetByte(Config.Debug.ClassicModeAddress) == 0x01);
             SetChecked(_resourceCheckbox, Config.Stream.GetByte(Config.Debug.ResourceModeAddress) == 0x01);
             SetChecked(_stageSelectCheckbox, Config.Stream.GetByte(Config.Debug.StageSelectAddress) == 0x01);
+            SetChecked(_freeMovementCheckbox, Config.Stream.GetUInt16(Config.Debug.FreeMovementAddress) == Config.Debug.FreeMovementOnValue);
 
             var setting = Config.Stream.GetByte(Config.Debug.SettingAddress);
             var on = Config.Stream.GetByte(Config.Debug.AdvancedModeAddress);
