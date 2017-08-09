@@ -12,7 +12,6 @@ namespace SM64_Diagnostic.Managers
 {
     public class DebugManager
     {
-        bool _changedByUser = true;
         CheckBox _spawnDebugCheckbox, _classicCheckbox, _resourceCheckbox, _stageSelectCheckbox, _freeMovementCheckbox;
         RadioButton[] _dbgSettingRadioButton;
         RadioButton _dbgSettingRadioButtonOff;
@@ -53,9 +52,6 @@ namespace SM64_Diagnostic.Managers
 
         private void radioButtonDbgSetting_CheckChanged(object sender, EventArgs e, byte settingValue)
         {
-            if (!_changedByUser)
-                return;
-
             // Turn debug on
             Config.Stream.SetValue((byte)1, Config.Debug.AdvancedModeAddress);
 
@@ -65,50 +61,32 @@ namespace SM64_Diagnostic.Managers
 
         private void SpawnDebugCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (!_changedByUser)
-                return;
-
             Config.Stream.SetValue(_spawnDebugCheckbox.Checked ? (byte)0x03 : (byte)0x00, Config.Debug.SettingAddress);
             Config.Stream.SetValue(_spawnDebugCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.SpawnModeAddress);
         }
 
         private void _classicCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (!_changedByUser)
-                return;
-
             Config.Stream.SetValue(_classicCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ClassicModeAddress);
         }
 
         private void _resourceCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (!_changedByUser)
-                return;
-
             Config.Stream.SetValue(_resourceCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ResourceModeAddress);
         }
 
         private void _stageSelectCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (!_changedByUser)
-                return;
-
             Config.Stream.SetValue(_stageSelectCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.StageSelectAddress);
         }
 
         private void _freeMovementCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (!_changedByUser)
-                return;
-
             Config.Stream.SetValue(_freeMovementCheckbox.Checked ? Config.Debug.FreeMovementOnValue : Config.Debug.FreeMovementOffValue, Config.Debug.FreeMovementAddress);
         }
 
         private void radioButtonDbgOff_CheckedChanged(object sender, EventArgs e)
         {
-            if (!_changedByUser)
-                return;
-
             // Turn debug off
             Config.Stream.SetValue((byte)0, Config.Debug.AdvancedModeAddress);
 
@@ -118,9 +96,6 @@ namespace SM64_Diagnostic.Managers
 
         private void radioButtonDbgFxInfo_CheckedChanged(object sender, EventArgs e)
         {
-            if (!_changedByUser)
-                return;
-
             // Turn debug on
             Config.Stream.SetValue((byte)1, Config.Debug.AdvancedModeAddress);
 
@@ -130,9 +105,6 @@ namespace SM64_Diagnostic.Managers
 
         private void radioButtonDbgEnemyInfo_CheckedChanged(object sender, EventArgs e)
         {
-            if (!_changedByUser)
-                return;
-
             // Turn debug on
             Config.Stream.SetValue((byte)1, Config.Debug.AdvancedModeAddress);
 
@@ -151,8 +123,6 @@ namespace SM64_Diagnostic.Managers
             if (!updateView)
                 return;
 
-            _changedByUser = false;
-
             SetChecked(_spawnDebugCheckbox, Config.Stream.GetByte(Config.Debug.SettingAddress) == 0x03
                  && Config.Stream.GetByte(Config.Debug.SpawnModeAddress) == 0x01);
             SetChecked(_classicCheckbox, Config.Stream.GetByte(Config.Debug.ClassicModeAddress) == 0x01);
@@ -166,8 +136,6 @@ namespace SM64_Diagnostic.Managers
                 _dbgSettingRadioButton[setting].Checked = true;
             else
                 _dbgSettingRadioButtonOff.Checked = true;
-
-            _changedByUser = true;
         }
     }
 }
