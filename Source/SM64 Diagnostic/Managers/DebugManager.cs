@@ -27,11 +27,11 @@ namespace SM64_Diagnostic.Managers
             _stageSelectCheckbox = tabControl.Controls["checkBoxDbgStageSelect"] as CheckBox;
             _freeMovementCheckbox = tabControl.Controls["checkBoxDbgFreeMovement"] as CheckBox;
 
-            _spawnDebugCheckbox.CheckedChanged += SpawnDebugCheckbox_CheckedChanged;
-            _classicCheckbox.CheckedChanged += _classicCheckbox_CheckedChanged;
-            _resourceCheckbox.CheckedChanged += _resourceCheckbox_CheckedChanged;
-            _stageSelectCheckbox.CheckedChanged += _stageSelectCheckbox_CheckedChanged;
-            _freeMovementCheckbox.CheckedChanged += _freeMovementCheckbox_CheckedChanged;
+            _spawnDebugCheckbox.Click += SpawnDebugCheckbox_CheckedChanged;
+            _classicCheckbox.Click += _classicCheckbox_CheckedChanged;
+            _resourceCheckbox.Click += _resourceCheckbox_CheckedChanged;
+            _stageSelectCheckbox.Click += _stageSelectCheckbox_CheckedChanged;
+            _freeMovementCheckbox.Click += _freeMovementCheckbox_CheckedChanged;
 
             _dbgSettingRadioButtonOff = panel.Controls["radioButtonDbgOff"] as RadioButton;
             _dbgSettingRadioButton = new RadioButton[6];
