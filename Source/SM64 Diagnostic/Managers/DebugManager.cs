@@ -101,7 +101,7 @@ namespace SM64_Diagnostic.Managers
             if (!_changedByUser)
                 return;
 
-            Config.Stream.SetValue(Config.Debug.FreeMovementValue, Config.Debug.FreeMovementAddress);
+            Config.Stream.SetValue(Config.Debug.FreeMovementOnValue, Config.Debug.FreeMovementAddress);
         }
 
         private void radioButtonDbgOff_CheckedChanged(object sender, EventArgs e)

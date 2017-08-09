@@ -164,8 +164,9 @@
 
     <FreeMovementAddressUS>0x80269BDA</FreeMovementAddressUS>
     <FreeMovementAddressJP>0x802699AC</FreeMovementAddressJP>
-    
-    <FreeMovementValue>0x5FAB</FreeMovementValue>
+
+    <FreeMovementOnValue>0x5FAB</FreeMovementOnValue>
+    <FreeMovementOffValue>0x98D5</FreeMovementOffValue>
   </Debug>
   <TriangleOffsets>
     <surfaceType>0x00</surfaceType>
