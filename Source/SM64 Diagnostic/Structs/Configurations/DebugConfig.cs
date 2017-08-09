@@ -36,7 +36,12 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint FreeMovementAddressUS;
         public uint FreeMovementAddressJP;
 
-        public ushort FreeMovementOnValue;
-        public ushort FreeMovementOffValue;
+        public ushort FreeMovementOnValue { get { return Config.SwitchRomVersion(FreeMovementOnValueUS, FreeMovementOnValueJP); } }
+        public ushort FreeMovementOnValueUS;
+        public ushort FreeMovementOnValueJP;
+
+        public ushort FreeMovementOffValue { get { return Config.SwitchRomVersion(FreeMovementOffValueUS, FreeMovementOffValueJP); } }
+        public ushort FreeMovementOffValueUS;
+        public ushort FreeMovementOffValueJP;
     }
 }

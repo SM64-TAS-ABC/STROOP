@@ -11,6 +11,7 @@ namespace SM64_Diagnostic.Structs.Configurations
     {
         public enum RomVersion { US, JP, PAL };
         public static RomVersion Version = RomVersion.US;
+
         public static uint SwitchRomVersion(uint? valUS = null, uint? valJP = null, uint? valPAL = null)
         {
             switch (Version)
@@ -23,6 +24,22 @@ namespace SM64_Diagnostic.Structs.Configurations
                     break;
                 case RomVersion.PAL:
                     if (valPAL != null) return (uint)valPAL;
+                    break;
+            }
+            return 0;
+        }
+        public static ushort SwitchRomVersion(ushort? valUS = null, ushort? valJP = null, ushort? valPAL = null)
+        {
+            switch (Version)
+            {
+                case RomVersion.US:
+                    if (valUS != null) return (ushort)valUS;
+                    break;
+                case RomVersion.JP:
+                    if (valJP != null) return (ushort)valJP;
+                    break;
+                case RomVersion.PAL:
+                    if (valPAL != null) return (ushort)valPAL;
                     break;
             }
             return 0;

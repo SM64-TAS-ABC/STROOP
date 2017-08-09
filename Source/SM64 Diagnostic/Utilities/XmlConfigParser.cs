@@ -513,11 +513,18 @@ namespace SM64_Diagnostic.Utilities
                                     Config.Debug.FreeMovementAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "FreeMovementOnValue":
-                                    Config.Debug.FreeMovementOnValue = (ushort)ParsingUtilities.ParseHex(subElement.Value);
+                                case "FreeMovementOnValueUS":
+                                    Config.Debug.FreeMovementOnValueUS = (ushort)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "FreeMovementOffValue":
-                                    Config.Debug.FreeMovementOffValue = (ushort)ParsingUtilities.ParseHex(subElement.Value);
+                                case "FreeMovementOnValueJP":
+                                    Config.Debug.FreeMovementOnValueJP = (ushort)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "FreeMovementOffValueUS":
+                                    Config.Debug.FreeMovementOffValueUS = (ushort)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "FreeMovementOffValueJP":
+                                    Config.Debug.FreeMovementOffValueJP = (ushort)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         }
