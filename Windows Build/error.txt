@@ -149,3 +149,9 @@ System.Object MarshaledInvoke(System.Windows.Forms.Control, System.Delegate, Sys
    at System.Windows.Forms.Control.Invoke(Delegate method, Object[] args)
    at SM64_Diagnostic.StroopMainForm.OnUpdate(Object sender, EventArgs e)
    at SM64_Diagnostic.Utilities.ProcessStream.ProcessUpdateTask(Object sender, DoWorkEventArgs e)
+The given key was not present in the dictionary.
+System.Object MarshaledInvoke(System.Windows.Forms.Control, System.Delegate, System.Object[], Boolean)
+   at System.Windows.Forms.Control.MarshaledInvoke(Control caller, Delegate method, Object[] args, Boolean synchronous)
+   at System.Windows.Forms.Control.Invoke(Delegate method, Object[] args)
+   at SM64_Diagnostic.StroopMainForm.OnUpdate(Object sender, EventArgs e)
+   at SM64_Diagnostic.Utilities.ProcessStream.ProcessUpdateTask(Object sender, DoWorkEventArgs e)
