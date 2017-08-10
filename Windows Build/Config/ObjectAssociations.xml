@@ -1218,6 +1218,9 @@
     <SpawnCode gfxId="0xCC"/>
     <Image path="Bowser Key.png"/>
   </Object>
+  <Object behaviorScriptAddress="0x13001BF4" name="Mystery Object #2">
+    <Image path="default.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x13001C04" name="Poundable Pillar">
     <SpawnCode gfxId="0x36"/>
     <Image path="Poundable Pillar.png"/>
@@ -1980,6 +1983,9 @@
     <SpawnCode gfxId="0x00"/>
     <Image path="Sound Effect.png"/>
   </Object>
+  <Object behaviorScriptAddress="0x130029B0" name="Mystery Object #4">
+    <Image path="default.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x13002A20" name="Star?">
     <Image path="Power Star Yellow.png"/>
   </Object>
@@ -2557,6 +2563,9 @@
   <Object behaviorScriptAddress="0x13003C7C" name="Bird Sound Effect">
     <SpawnCode gfxId="0x00"/>
     <Image path="Sound Effect.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003C90" name="Mystery Object #3">
+    <Image path="default.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003CA4" name="Falling Sand Sound Effect">
     <SpawnCode gfxId="0x00"/>
@@ -4037,6 +4046,9 @@
   </Object>
   <Object behaviorScriptAddress="0x13FA4BD8" name="Yellow Background">
     <Image path="File Yellow Background.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13FA4B90" name="Mystery Object #1">
+    <Image path="default.png"/>
   </Object>
 
   <!--
