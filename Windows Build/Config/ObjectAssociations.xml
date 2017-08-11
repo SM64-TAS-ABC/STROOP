@@ -83,6 +83,9 @@
     <ParentNone>
       <OverlayImage path="ParentNone.png"/>
     </ParentNone>
+    <Marked>
+      <OverlayImage path="Marked.png"/>
+    </Marked>
   </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <SpawnCode gfxId="0xD5"/>

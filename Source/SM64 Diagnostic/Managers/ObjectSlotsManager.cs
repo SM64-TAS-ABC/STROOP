@@ -482,6 +482,7 @@ namespace SM64_Diagnostic.Managers
             objSlot.DrawParentOverlay = Config.ShowOverlayParentObject && objAddress == _parentObject;
             objSlot.DrawParentUnusedOverlay = Config.ShowOverlayParentObject && objAddress == _parentUnusedObject;
             objSlot.DrawParentNoneOverlay = Config.ShowOverlayParentObject && objAddress == _parentNoneObject;
+            objSlot.DrawMarkedOverlay = false; //TODO fix this Config.ShowOverlayParentObject && objAddress == _parentNoneObject;
 
             if (objData.IsActive)
                 _activeObjCnt++;
