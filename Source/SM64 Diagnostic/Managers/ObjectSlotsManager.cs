@@ -96,7 +96,7 @@ namespace SM64_Diagnostic.Managers
             ChangeSlotSize(DefaultSlotSize);
         }
 
-        private enum ClickType { ObjectClick, MapClick, CamHackClick };
+        private enum ClickType { ObjectClick, MapClick, CamHackClick, MarkClick };
 
         private void OnSlotClick(object sender, EventArgs e)
         {
@@ -108,11 +108,16 @@ namespace SM64_Diagnostic.Managers
             var selectedSlot = sender as ObjectSlot;
             bool rightClick = ((System.Windows.Forms.MouseEventArgs)e).Button == MouseButtons.Right;
             var keyboardState = Keyboard.GetState();
-            bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
             bool isCtrlKeyHeld = keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight);
+            bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
+            bool isAltKeyHeld = keyboardState.IsKeyDown(Key.AltLeft) || keyboardState.IsKeyDown(Key.AltRight);
 
             ClickType click;
-            if (rightClick)
+            if (isAltKeyHeld)
+            {
+                click = ClickType.MarkClick;
+            }
+            else if (rightClick)
             {
                 click = ClickType.ObjectClick;
             }
@@ -126,8 +131,11 @@ namespace SM64_Diagnostic.Managers
                     click = ClickType.ObjectClick;
             }
 
-            // Parse behavior based on tab opened. Right click overrides the tab to be an object tab click.
-            if (click == ClickType.CamHackClick)
+            if (click == ClickType.MarkClick)
+            {
+                
+            }
+            else if (click == ClickType.CamHackClick)
             {
                 uint currentCamHackSlot = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
                 uint newCamHackSlot = currentCamHackSlot == selectedSlot.Address ? 0 : selectedSlot.Address;
