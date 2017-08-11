@@ -46,6 +46,7 @@ namespace SM64_Diagnostic.Managers
         bool _labelsLocked = false;
         public List<uint> SelectedSlotsAddresses = new List<uint>();
         public List<uint> SelectedOnMapSlotsAddresses = new List<uint>();
+        public List<uint> MarkedSlotsAddresses = new List<uint>();
 
         BehaviorCriteria? _lastSelectedBehavior;
         uint _stoodOnObject, _interactionObject, _heldObject, _usedObject, _closestObject, _cameraObject, _cameraHackObject,
@@ -131,11 +132,7 @@ namespace SM64_Diagnostic.Managers
                     click = ClickType.ObjectClick;
             }
 
-            if (click == ClickType.MarkClick)
-            {
-                
-            }
-            else if (click == ClickType.CamHackClick)
+            if (click == ClickType.CamHackClick)
             {
                 uint currentCamHackSlot = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
                 uint newCamHackSlot = currentCamHackSlot == selectedSlot.Address ? 0 : selectedSlot.Address;
@@ -143,10 +140,23 @@ namespace SM64_Diagnostic.Managers
             }
             else
             {
-                bool isMapClick = click == ClickType.MapClick;
-                List<uint> selection = isMapClick ? SelectedOnMapSlotsAddresses : SelectedSlotsAddresses;
+                List<uint> selection;
+                switch (click)
+                {
+                    case ClickType.ObjectClick:
+                        selection = SelectedSlotsAddresses;
+                        break;
+                    case ClickType.MapClick:
+                        selection = SelectedOnMapSlotsAddresses;
+                        break;
+                    case ClickType.MarkClick:
+                        selection = MarkedSlotsAddresses;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
 
-                if (!isMapClick)
+                if (click == ClickType.ObjectClick)
                 {
                     ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
                 }
@@ -171,7 +181,7 @@ namespace SM64_Diagnostic.Managers
                 else
                 {
                     // ctrl functionality is default in map tab
-                    if (isCtrlKeyHeld == isMapClick)
+                    if (isCtrlKeyHeld == (click != ClickType.ObjectClick))
                     {
                         selection.Clear();
                     }
@@ -179,7 +189,7 @@ namespace SM64_Diagnostic.Managers
                     if (selection.Contains(selectedSlot.Address))
                     {
                         selection.Remove(selectedSlot.Address);
-                        if (!isMapClick)
+                        if (click == ClickType.ObjectClick)
                         {
                             _lastSelectedBehavior = null;
                         }
@@ -190,7 +200,7 @@ namespace SM64_Diagnostic.Managers
                     }
                 }
 
-                if (!isMapClick)
+                if (click == ClickType.ObjectClick)
                 {
                     _objManager.CurrentAddresses = selection;
                 }
@@ -503,7 +513,7 @@ namespace SM64_Diagnostic.Managers
             objSlot.DrawParentOverlay = Config.ShowOverlayParentObject && objAddress == _parentObject;
             objSlot.DrawParentUnusedOverlay = Config.ShowOverlayParentObject && objAddress == _parentUnusedObject;
             objSlot.DrawParentNoneOverlay = Config.ShowOverlayParentObject && objAddress == _parentNoneObject;
-            objSlot.DrawMarkedOverlay = false; //TODO fix this Config.ShowOverlayParentObject && objAddress == _parentNoneObject;
+            objSlot.DrawMarkedOverlay = MarkedSlotsAddresses.Contains(objAddress);
 
             if (objData.IsActive)
                 _activeObjCnt++;
