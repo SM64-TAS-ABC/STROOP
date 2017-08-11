@@ -96,6 +96,8 @@ namespace SM64_Diagnostic.Managers
             ChangeSlotSize(DefaultSlotSize);
         }
 
+        private enum ClickType { ObjectClick, MapClick, CamHackClick };
+
         private void OnSlotClick(object sender, EventArgs e)
         {
             // Make sure the tab has loaded
@@ -105,9 +107,27 @@ namespace SM64_Diagnostic.Managers
             _selectedUpdatePending = true;
             var selectedSlot = sender as ObjectSlot;
             bool rightClick = ((System.Windows.Forms.MouseEventArgs)e).Button == MouseButtons.Right;
+            var keyboardState = Keyboard.GetState();
+            bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
+            bool isCtrlKeyHeld = keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight);
+
+            ClickType click;
+            if (rightClick)
+            {
+                click = ClickType.ObjectClick;
+            }
+            else
+            {
+                if (ManagerGui.TabControl.SelectedTab.Text.Equals("Cam Hack"))
+                    click = ClickType.CamHackClick;
+                else if (ManagerGui.TabControl.SelectedTab.Text.Equals("Map"))
+                    click = ClickType.MapClick;
+                else
+                    click = ClickType.ObjectClick;
+            }
 
             // Parse behavior based on tab opened. Right click overrides the tab to be an object tab click.
-            if (ManagerGui.TabControl.SelectedTab.Text.Equals("Cam Hack") && !rightClick)
+            if (click == ClickType.CamHackClick)
             {
                 uint currentCamHackSlot = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
                 uint newCamHackSlot = currentCamHackSlot == selectedSlot.Address ? 0 : selectedSlot.Address;
@@ -115,14 +135,10 @@ namespace SM64_Diagnostic.Managers
             }
             else
             {
-                bool isMapTabClick = ManagerGui.TabControl.SelectedTab.Text.Equals("Map") && !rightClick;
-                List<uint> selection = isMapTabClick ? SelectedOnMapSlotsAddresses : SelectedSlotsAddresses;
-                var keyboardState = Keyboard.GetState();
+                bool isMapClick = click == ClickType.MapClick;
+                List<uint> selection = isMapClick ? SelectedOnMapSlotsAddresses : SelectedSlotsAddresses;
 
-                bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
-                bool isCtrlKeyHeld = keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight);
-
-                if (!isMapTabClick)
+                if (!isMapClick)
                 {
                     ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
                 }
@@ -147,14 +163,15 @@ namespace SM64_Diagnostic.Managers
                 else
                 {
                     // ctrl functionality is default in map tab
-                    if (isCtrlKeyHeld == isMapTabClick)
+                    if (isCtrlKeyHeld == isMapClick)
                     {
                         selection.Clear();
                     }
+
                     if (selection.Contains(selectedSlot.Address))
                     {
                         selection.Remove(selectedSlot.Address);
-                        if (!isMapTabClick)
+                        if (!isMapClick)
                         {
                             _lastSelectedBehavior = null;
                         }
@@ -165,11 +182,7 @@ namespace SM64_Diagnostic.Managers
                     }
                 }
 
-                if (isMapTabClick)
-                {
-                        
-                }
-                else
+                if (!isMapClick)
                 {
                     _objManager.CurrentAddresses = selection;
                 }
