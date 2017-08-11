@@ -549,6 +549,8 @@ namespace SM64_Diagnostic
 
             // TODO reorder object slots overlays
             // Draw Overlays
+            if (_drawMarkedOverlay)
+                e.Graphics.DrawImage(_gui.MarkedObjectOverlayImage, new Rectangle(new Point(), Size));
             switch (_selectionType)
             {
                 case SelectionType.MAP_SELECTION:
@@ -585,8 +587,6 @@ namespace SM64_Diagnostic
                 e.Graphics.DrawImage(_gui.ParentUnusedObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawParentNoneOverlay)
                 e.Graphics.DrawImage(_gui.ParentNoneObjectOverlayImage, new Rectangle(new Point(), Size));
-            if (_drawMarkedOverlay)
-                e.Graphics.DrawImage(_gui.MarkedObjectOverlayImage, new Rectangle(new Point(), Size));
         }
 
         
