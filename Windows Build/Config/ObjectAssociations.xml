@@ -6,9 +6,9 @@
     <OverlayImageDirectory>Resources\Overlays\</OverlayImageDirectory>
     <DefaultImage>default.png</DefaultImage>
     <EmptyImage>Empty.png</EmptyImage>
-    <BehaviorBankStartUS>0xeb180</BehaviorBankStartUS>
-    <BehaviorBankStartJP>0xe8320</BehaviorBankStartJP>
-  </Config>
+    <SegmentTableUS>0x33b400</SegmentTableUS>
+    <SegmentTableJP>0x33A090</SegmentTableJP>
+</Config>
   <Mario behaviorScriptAddress="0x13002EC0">
     <Image path="Mario.png"/>
     <MapImage path="Mario Top.png"/>
@@ -2217,6 +2217,45 @@
   <Object behaviorScriptAddress="0x13002F94" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
   </Object>
+  <Object behaviorScriptAddress="0x13002FC0" name="Yellow Background">
+    <Image path="File Yellow Background.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002fe4" name="Save File (Started)" gfxId="0x800925B0">
+    <Image path="File Started.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002fe4" name="Save File (New)" gfxId="0x80092670">
+    <Image path="File New.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002fe4" name="Score Option" gfxId="0x80092568">
+    <Image path="File Green.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002fe4" name="Copy Option" gfxId="0x800924D8">
+    <Image path="File Blue.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002fe4" name="Erase Option" gfxId="0x80092490">
+    <Image path="File Red.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002fe4" name="Stereo Option" gfxId="0x800926D0">
+    <Image path="File Purple.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002fe4" name="Return Option" gfxId="0x80092520">
+    <Image path="File Yellow.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002fe4" name="Save File (Started)" gfxId="0x80092430">
+    <Image path="File Started.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002fe4" name="Save File (New)" gfxId="0x80092610">
+    <Image path="File New.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002fe4" name="Stereo Option Choice" gfxId="0x80092718">
+    <Image path="File Blank.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13002fe4" name="File / Option">
+    <Image path="File Blank.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13003008" name="Mystery Object #1">
+    <Image path="default.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x1300302C" name="Selectable Star (Yellow)">
     <SpawnCode gfxId="0x7A"/>
     <Image path="Power Star Yellow.png"/>
@@ -4014,50 +4053,6 @@
   <Object behaviorScriptAddress="0x130056A4" name="Bird Spawner (for Ending Cutscene)">
     <SpawnCode gfxId="0x00"/>
     <Image path="Bird Spawner.png"/>
-  </Object>
-  
-  <Object behaviorScriptAddress="0x12FA4BB4" name="Save File (Started)" gfxId="0x800925B0">
-    <Image path="File Started.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x12FA4BB4" name="Save File (New)" gfxId="0x80092670">
-    <Image path="File New.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x12FA4BB4" name="Score Option" gfxId="0x80092568">
-    <Image path="File Green.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x12FA4BB4" name="Copy Option" gfxId="0x800924D8">
-    <Image path="File Blue.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x12FA4BB4" name="Erase Option" gfxId="0x80092490">
-    <Image path="File Red.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x12FA4BB4" name="Stereo Option" gfxId="0x800926D0">
-    <Image path="File Purple.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x12FA4BB4" name="Return Option" gfxId="0x80092520">
-    <Image path="File Yellow.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x12FA4BB4" name="Save File (Started)" gfxId="0x80092430">
-    <Image path="File Started.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x12FA4BB4" name="Save File (New)" gfxId="0x80092610">
-    <Image path="File New.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x12FA4BB4" name="Stereo Option Choice" gfxId="0x80092718">
-    <Image path="File Blank.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x12FA4BB4" name="File / Option">
-    <Image path="File Blank.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x12FA4BD8" name="Yellow Background">
-    <Image path="File Yellow Background.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x12FA4B90" name="Mystery Object #1">
-    <Image path="default.png"/>
-  </Object>
-
-  <Object behaviorScriptAddress="0x12F14E80" name="Uninitialized Object">
-    <Image path="Empty.png"/>
   </Object>
 
   <!--

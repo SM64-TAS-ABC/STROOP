@@ -1305,11 +1305,11 @@ namespace SM64_Diagnostic.Utilities
                                 case "EmptyImage":
                                     emptyImagePath = subElement.Value;
                                     break;
-                                case "BehaviorBankStartUS":
-                                    assoc.BehaviorBankStartUS = ParsingUtilities.ParseHex(subElement.Value);
+                                case "SegmentTableUS":
+                                    assoc.SegmentTableUS = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "BehaviorBankStartJP":
-                                    assoc.BehaviorBankStartJP = ParsingUtilities.ParseHex(subElement.Value);
+                                case "SegmentTableJP":
+                                    assoc.SegmentTableJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         }

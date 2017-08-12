@@ -314,6 +314,9 @@ namespace SM64_Diagnostic.Managers
                 }
             }
 
+            // Check behavior bank
+            Config.ObjectAssociations.BehaviorBankStart = Config.Stream.GetUInt32(Config.ObjectAssociations.SegmentTable + 0x13 * 4);
+
             // Get mario position
             float marioX, marioY, marioZ;
             marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
@@ -522,11 +525,12 @@ namespace SM64_Diagnostic.Managers
             var subType = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.BehaviorSubtypeOffset);
             var appearance = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.BehaviorAppearance);
 
-            uint segmentedBehavior = objData.Behavior - Config.ObjectAssociations.BehaviorBankStart;
-
+            uint segmentedBehavior = 0x13000000 + objData.Behavior - Config.ObjectAssociations.BehaviorBankStart;
+            if (objData.Behavior == 0) // uninitialized object
+                segmentedBehavior = 0;
             behaviorCriteria = new BehaviorCriteria()
             {
-                BehaviorAddress = 0x13000000 + Config.SwitchRomVersion(segmentedBehavior, Config.ObjectAssociations.AlignJPBehavior(segmentedBehavior)),
+                BehaviorAddress = Config.SwitchRomVersion(segmentedBehavior, Config.ObjectAssociations.AlignJPBehavior(segmentedBehavior)),
                 GfxId = gfxId,
                 SubType = subType,
                 Appearance = appearance
