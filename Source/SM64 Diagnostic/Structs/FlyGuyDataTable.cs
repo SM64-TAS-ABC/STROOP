@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,37 +10,64 @@ namespace SM64_Diagnostic.Structs
     public class FlyGuyDataTable
     {
         private static readonly int CycleSize = 64;
+        private static readonly int CycleStart = 48;
+        private static readonly double Amplitude = 1.5;
+
+        double[] relativeHeights;
+        double[] prevHeightDiffs;
+        double maxRelativeHeight;
 
         public FlyGuyDataTable()
         {
-            double[] relativeHeightOffsets = new double[CycleSize];
-            double[] nextHeightDiffs = new double[CycleSize];
+            relativeHeights = new double[CycleSize];
+            prevHeightDiffs = new double[CycleSize];
 
+            double prevHeightDiff = 0;
+            double relativeHeight = 0;
             for (int i = 0; i < CycleSize; i++)
             {
-                double radians = (i / (double)CycleSize) * 2 * Math.PI;
-
+                int cycleIndex = (CycleStart + i) % CycleSize;
+                double radians = (cycleIndex / (double)CycleSize) * 2 * Math.PI;
+                prevHeightDiff = Math.Cos(radians) * Amplitude;
+                prevHeightDiffs[cycleIndex] = prevHeightDiff;
+                relativeHeight += prevHeightDiff;
+                relativeHeights[cycleIndex] = relativeHeight;
             }
+
+            maxRelativeHeight = relativeHeights.Max();
         }
 
         public double GetRelativeHeight(int oscillationTimer)
         {
-            return -1;
+            oscillationTimer = NormalizeIndex(oscillationTimer);
+            return relativeHeights[oscillationTimer];
+        }
+
+        public double GetPrevHeightDiff(int oscillationTimer)
+        {
+            oscillationTimer = NormalizeIndex(oscillationTimer);
+            return prevHeightDiffs[oscillationTimer];
         }
 
         public double GetNextHeightDiff(int oscillationTimer)
         {
-            return 1;
+            oscillationTimer = NormalizeIndex(oscillationTimer + 1);
+            return prevHeightDiffs[oscillationTimer];
         }
 
-        public double GetMinHeight(int oscillationTimer)
+        public double GetMinHeight(int oscillationTimer, double currentHeight)
         {
-            return 2;
+            return currentHeight - GetRelativeHeight(oscillationTimer);
         }
 
-        public double GetMaxHeight(int oscillationTimer)
+        public double GetMaxHeight(int oscillationTimer, double currentHeight)
         {
-            return 3;
+            return GetMinHeight(oscillationTimer, currentHeight) + maxRelativeHeight;
+        }
+
+        private int NormalizeIndex(int index)
+        {
+            return MoreMath.NonNegativeModulus(index, CycleSize);
         }
     }
 }
