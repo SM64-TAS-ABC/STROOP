@@ -96,7 +96,9 @@
   <Data groupList="Collision" type="int" address="0x130" offset="Object" isBool="true" mask="0x00000001">Hoot</Data>
   -->
   <Data groupList="Expanded" type="uint" address="0x3C" offset="Object" useHex="true">Animation</Data>
-  <Data groupList="Expanded" type="uint" address="0x04" offset="Animation" mask="0x80" isBool="true">Freeze Animation</Data>
+  <Data groupList="Expanded" type="short" address="0x00" offset="Animation" mask="0x0001" isBool="true">Don't Loop Animation</Data>
+  <Data groupList="Expanded" type="short" address="0x00" offset="Animation" mask="0x0002" isBool="true">Reverse Animation</Data>
+  <Data groupList="Expanded" type="short" address="0x00" offset="Animation" mask="0x0004" isBool="true">Freeze Animation</Data>
   <Data groupList="Expanded" type="short" address="0x40" offset="Object">Animation Timer</Data>
   <Data groupList="Expanded" type="int" address="0xF0" offset="Object">Graphics Timer</Data>
   <Data groupList="Expanded" type="float" address="0x2C" offset="Object">Scale (Width)</Data>
