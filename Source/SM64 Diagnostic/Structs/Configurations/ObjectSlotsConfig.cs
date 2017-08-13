@@ -75,5 +75,7 @@ namespace SM64_Diagnostic.Structs
         public uint PitchToWaypointOffset;
         public uint RacingPenguinEffortOffset;
         public uint KoopaTheQuickHSpeedMultiplierOffset;
+
+        public uint FlyGuyOscillationTimerOffset;
     }
 }

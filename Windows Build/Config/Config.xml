@@ -65,6 +65,8 @@
     <PitchToWaypointOffset>0x10A</PitchToWaypointOffset>
     <RacingPenguinEffortOffset>0x110</RacingPenguinEffortOffset>
     <KoopaTheQuickHSpeedMultiplierOffset>0xF4</KoopaTheQuickHSpeedMultiplierOffset>
+
+    <FlyGuyOscillationTimerOffset>0xF8</FlyGuyOscillationTimerOffset>
   </ObjectSlots>
   <ObjectGroups>
     <ProcessNextLinkOffset>0x60</ProcessNextLinkOffset>

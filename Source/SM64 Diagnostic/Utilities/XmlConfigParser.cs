@@ -243,6 +243,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "KoopaTheQuickHSpeedMultiplierOffset":
                                     Config.ObjectSlots.KoopaTheQuickHSpeedMultiplierOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "FlyGuyOscillationTimerOffset":
+                                    Config.ObjectSlots.FlyGuyOscillationTimerOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;
