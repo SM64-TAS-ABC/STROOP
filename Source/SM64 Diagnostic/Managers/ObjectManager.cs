@@ -217,6 +217,11 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("KoopaTheQuickHSpeedTarget"),
                 new DataContainer("KoopaTheQuickHSpeedChange"),
 
+                // Fly Guy vars
+                new DataContainer("FlyGuyNextHeightDiff"),
+                new DataContainer("FlyGuyMinHeight"),
+                new DataContainer("FlyGuyMaxHeight"),
+
                 // Hacked vars
                 new DataContainer("RngCallsPerFrame"),
             };
@@ -665,6 +670,24 @@ namespace SM64_Diagnostic.Managers
                             {
                                 (_, double temp) = MoreMath.GetKoopaTheQuickSpecialVars(objAddress);
                                 newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
+
+                        case "FlyGuyNextHeightDiff":
+                            {
+                                newText = "test 1";
+                                break;
+                            }
+
+                        case "FlyGuyMinHeight":
+                            {
+                                newText = "test 2";
+                                break;
+                            }
+
+                        case "FlyGuyMaxHeight":
+                            {
+                                newText = "test 3";
                                 break;
                             }
 
