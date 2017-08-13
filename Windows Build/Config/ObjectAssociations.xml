@@ -3130,6 +3130,7 @@
     <Data groupList="ObjectSpecific" type="float" address="0x10C" offset="Object">Scale Change</Data>
     <Data groupList="ObjectSpecific" type="float" address="0x2C" offset="Object">Scale</Data>
     <Data groupList="ObjectSpecific" type="int" address="0xF8" offset="Object" mask="0x0000003F">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyRelativeHeight">Relative Height</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyMinHeight">Min Height</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyMaxHeight">Max Height</Data>
@@ -3143,6 +3144,7 @@
     <Data groupList="ObjectSpecific" type="float" address="0x10C" offset="Object">Scale Change</Data>
     <Data groupList="ObjectSpecific" type="float" address="0x2C" offset="Object">Scale</Data>
     <Data groupList="ObjectSpecific" type="int" address="0xF8" offset="Object" mask="0x0000003F">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyRelativeHeight">Relative Height</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyMinHeight">Min Height</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyMaxHeight">Max Height</Data>

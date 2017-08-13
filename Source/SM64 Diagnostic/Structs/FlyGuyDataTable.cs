@@ -17,8 +17,14 @@ namespace SM64_Diagnostic.Structs
 
             for (int i = 0; i < CycleSize; i++)
             {
+                double radians = (i / (double)CycleSize) * 2 * Math.PI;
 
             }
+        }
+
+        public double GetRelativeHeight(int oscillationTimer)
+        {
+            return -1;
         }
 
         public double GetNextHeightDiff(int oscillationTimer)

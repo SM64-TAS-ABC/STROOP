@@ -218,6 +218,7 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("KoopaTheQuickHSpeedChange"),
 
                 // Fly Guy vars
+                new DataContainer("FlyGuyRelativeHeight"),
                 new DataContainer("FlyGuyNextHeightDiff"),
                 new DataContainer("FlyGuyMinHeight"),
                 new DataContainer("FlyGuyMaxHeight"),
@@ -669,6 +670,14 @@ namespace SM64_Diagnostic.Managers
                         case "KoopaTheQuickHSpeedChange":
                             {
                                 (_, double temp) = MoreMath.GetKoopaTheQuickSpecialVars(objAddress);
+                                newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
+
+                        case "FlyGuyRelativeHeight":
+                            {
+                                int flyGuyOscillationTimer = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.FlyGuyOscillationTimerOffset);
+                                double temp = Config.FlyGuyData.GetRelativeHeight(flyGuyOscillationTimer);
                                 newText = Math.Round(temp, 3).ToString();
                                 break;
                             }
