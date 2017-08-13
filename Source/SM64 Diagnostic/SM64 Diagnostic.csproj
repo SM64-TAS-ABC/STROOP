@@ -186,6 +186,7 @@
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
     <Compile Include="Structs\Configurations\WaypointConfig.cs" />
+    <Compile Include="Structs\FlyGuyDataTable.cs" />
     <Compile Include="Structs\CourseDataTable.cs" />
     <Compile Include="Structs\Configurations\FileConfig.cs" />
     <Compile Include="Structs\Configurations\GotoRetrieveConfig.cs" />

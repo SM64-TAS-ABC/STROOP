@@ -233,6 +233,7 @@ namespace SM64_Diagnostic
             Config.PendulumSwings = XmlConfigParser.OpenPendulumSwingTable(@"Config/PendulumSwings.xml");
             Config.Missions = XmlConfigParser.OpenMissionTable(@"Config/Missions.xml");
             Config.CourseData = XmlConfigParser.OpenCourseDataTable(@"Config/CourseData.xml");
+            Config.FlyGuyData = new FlyGuyDataTable();
 
             loadingForm.UpdateStatus("Finishing", statusNum);
         }

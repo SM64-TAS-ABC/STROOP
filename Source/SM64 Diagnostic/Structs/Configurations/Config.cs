@@ -68,6 +68,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static PendulumSwingTable PendulumSwings;
         public static MissionTable Missions;
         public static CourseDataTable CourseData;
+        public static FlyGuyDataTable FlyGuyData;
         public static GotoRetrieveConfig GotoRetrieve;
 
         public static uint LevelAddress { get { return Config.SwitchRomVersion(LevelAddressUS, LevelAddressJP); } }
