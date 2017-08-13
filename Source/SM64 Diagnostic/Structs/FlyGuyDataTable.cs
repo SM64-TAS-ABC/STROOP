@@ -26,12 +26,12 @@ namespace SM64_Diagnostic.Structs
             return 1;
         }
 
-        public double GetHeightMin(int oscillationTimer)
+        public double GetMinHeight(int oscillationTimer)
         {
             return 2;
         }
 
-        public double GetHeightMax(int oscillationTimer)
+        public double GetMaxHeight(int oscillationTimer)
         {
             return 3;
         }

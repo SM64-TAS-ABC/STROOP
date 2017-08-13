@@ -675,19 +675,25 @@ namespace SM64_Diagnostic.Managers
 
                         case "FlyGuyNextHeightDiff":
                             {
-                                newText = "test 1";
+                                int flyGuyOscillationTimer = Config.Stream.GetInt32(objAddress + 0xF8);
+                                double temp = Config.FlyGuyData.GetNextHeightDiff(flyGuyOscillationTimer);
+                                newText = Math.Round(temp, 3).ToString();
                                 break;
                             }
 
                         case "FlyGuyMinHeight":
                             {
-                                newText = "test 2";
+                                int flyGuyOscillationTimer = Config.Stream.GetInt32(objAddress + 0xF8);
+                                double temp = Config.FlyGuyData.GetMinHeight(flyGuyOscillationTimer);
+                                newText = Math.Round(temp, 3).ToString();
                                 break;
                             }
 
                         case "FlyGuyMaxHeight":
                             {
-                                newText = "test 3";
+                                int flyGuyOscillationTimer = Config.Stream.GetInt32(objAddress + 0xF8);
+                                double temp = Config.FlyGuyData.GetMaxHeight(flyGuyOscillationTimer);
+                                newText = Math.Round(temp, 3).ToString();
                                 break;
                             }
 

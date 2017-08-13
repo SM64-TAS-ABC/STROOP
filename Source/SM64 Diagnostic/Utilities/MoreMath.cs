@@ -215,6 +215,14 @@ namespace SM64_Diagnostic.Utilities
         }
 
         /** Gets the value in [0, modulus). */
+        public static int NonNegativeModulus(int value, int modulus)
+        {
+            value %= modulus;
+            if (value < 0) value += modulus;
+            return value;
+        }
+
+        /** Gets the value in [0, modulus). */
         public static double NonNegativeModulus(double value, double modulus)
         {
             value %= modulus;
