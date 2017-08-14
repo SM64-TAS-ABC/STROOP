@@ -218,6 +218,7 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("KoopaTheQuickHSpeedChange"),
 
                 // Fly Guy vars
+                new DataContainer("FlyGuyZone"),
                 new DataContainer("FlyGuyRelativeHeight"),
                 new DataContainer("FlyGuyNextHeightDiff"),
                 new DataContainer("FlyGuyMinHeight"),
@@ -671,6 +672,15 @@ namespace SM64_Diagnostic.Managers
                             {
                                 (_, double temp) = MoreMath.GetKoopaTheQuickSpecialVars(objAddress);
                                 newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
+
+                        case "FlyGuyZone":
+                            {
+                                double heightDiff = mY - objY;
+                                if (heightDiff < -400) newText = "Low";
+                                else if (heightDiff > -200) newText = "High";
+                                else newText = "Medium";
                                 break;
                             }
 
