@@ -3127,9 +3127,10 @@
     <MapImage path="Fly Guy Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="uint" address="0x144" offset="Object" isBool="true">Shoots Fire</Data>
     <Data groupList="ObjectSpecific" type="short" address="0x10A" offset="Object" mask="0x1000" isBool="true">Spiraling</Data>
-    <Data groupList="ObjectSpecific" type="float" address="0x10C" offset="Object">Scale Change</Data>
     <Data groupList="ObjectSpecific" type="float" address="0x2C" offset="Object">Scale</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0x10C" offset="Object">Scale Change</Data>
     <Data groupList="ObjectSpecific" type="int" address="0xF8" offset="Object" mask="0x0000003F">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0x100" offset="Object">Y Speed Change</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyRelativeHeight">Relative Height</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyMinHeight">Min Height</Data>
@@ -3141,9 +3142,10 @@
     <MapImage path="Fly Guy Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="uint" address="0x144" offset="Object" isBool="true">Shoots Fire</Data>
     <Data groupList="ObjectSpecific" type="short" address="0x10A" offset="Object" mask="0x1000" isBool="true">Spiraling</Data>
-    <Data groupList="ObjectSpecific" type="float" address="0x10C" offset="Object">Scale Change</Data>
     <Data groupList="ObjectSpecific" type="float" address="0x2C" offset="Object">Scale</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0x10C" offset="Object">Scale Change</Data>
     <Data groupList="ObjectSpecific" type="int" address="0xF8" offset="Object" mask="0x0000003F">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0x100" offset="Object">Y Speed Change</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyRelativeHeight">Relative Height</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyMinHeight">Min Height</Data>
