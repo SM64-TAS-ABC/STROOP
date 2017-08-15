@@ -97,7 +97,8 @@ namespace SM64_Diagnostic.Managers
             (splitContainerTriangles.Panel1.Controls["radioButtonTriOther"] as RadioButton).Click
                 += (sender, e) => Mode_Click(sender, e, TriangleMode.Other);
 
-            (splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label).Click += TriangleSelectionLabel_Click;
+            (splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label).Click
+                += (sender, e) => ShowCoordinates();
 
             (splitContainerTriangles.Panel1.Controls["buttonGoToV1"] as Button).Click
                 += (sender, e) => ButtonUtilities.GoToTriangle(_triangleAddress, 1, _useMisalignmentOffsetCheckbox.Checked);
@@ -154,9 +155,21 @@ namespace SM64_Diagnostic.Managers
                 {
                     ButtonUtilities.MoveTriangleNormal(_triangleAddress, normalValue);
                 });
+
+            (splitContainerTriangles.Panel1.Controls["buttonTriangleShowCoords"] as Button).Click
+                += (sender, e) => ShowCoordinates();
+            (splitContainerTriangles.Panel1.Controls["buttonTriangleShowEquation"] as Button).Click
+                += (sender, e) => ShowCoordinates();
+
+            (splitContainerTriangles.Panel1.Controls["checkBoxRecordTriangleData"] as CheckBox).Click
+                += (sender, e) => ShowCoordinates();
+            (splitContainerTriangles.Panel1.Controls["buttonTriangleShowData"] as Button).Click
+                += (sender, e) => ShowCoordinates();
+            (splitContainerTriangles.Panel1.Controls["buttonTriangleClearData"] as Button).Click
+                += (sender, e) => ShowCoordinates();
         }
 
-        private void TriangleSelectionLabel_Click(object sender, EventArgs e)
+        private void ShowCoordinates()
         {
             if (TriangleAddress == 0x0000) return;
 
