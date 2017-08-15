@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -3218,7 +3218,7 @@ namespace SM64_Diagnostic
             this.groupBoxTrianglePos.Controls.Add(this.buttonTrianglePosXnZp);
             this.groupBoxTrianglePos.Controls.Add(this.buttonTrianglePosXn);
             this.groupBoxTrianglePos.Controls.Add(this.buttonTrianglePosXnZn);
-            this.groupBoxTrianglePos.Location = new System.Drawing.Point(4, 222);
+            this.groupBoxTrianglePos.Location = new System.Drawing.Point(2, 222);
             this.groupBoxTrianglePos.Name = "groupBoxTrianglePos";
             this.groupBoxTrianglePos.Size = new System.Drawing.Size(185, 146);
             this.groupBoxTrianglePos.TabIndex = 29;
@@ -3361,7 +3361,7 @@ namespace SM64_Diagnostic
             this.groupBoxTriangleNormal.Controls.Add(this.textBoxTriangleNormal);
             this.groupBoxTriangleNormal.Controls.Add(this.buttonTriangleNormalN);
             this.groupBoxTriangleNormal.Controls.Add(this.buttonTriangleNormalP);
-            this.groupBoxTriangleNormal.Location = new System.Drawing.Point(4, 374);
+            this.groupBoxTriangleNormal.Location = new System.Drawing.Point(2, 374);
             this.groupBoxTriangleNormal.Name = "groupBoxTriangleNormal";
             this.groupBoxTriangleNormal.Size = new System.Drawing.Size(185, 45);
             this.groupBoxTriangleNormal.TabIndex = 31;
@@ -3412,7 +3412,7 @@ namespace SM64_Diagnostic
             // 
             // buttonAnnihilateTriangle
             // 
-            this.buttonAnnihilateTriangle.Location = new System.Drawing.Point(100, 170);
+            this.buttonAnnihilateTriangle.Location = new System.Drawing.Point(98, 170);
             this.buttonAnnihilateTriangle.Name = "buttonAnnihilateTriangle";
             this.buttonAnnihilateTriangle.Size = new System.Drawing.Size(87, 23);
             this.buttonAnnihilateTriangle.TabIndex = 15;
@@ -3433,7 +3433,7 @@ namespace SM64_Diagnostic
             // 
             // buttonNeutralizeTriangle
             // 
-            this.buttonNeutralizeTriangle.Location = new System.Drawing.Point(7, 170);
+            this.buttonNeutralizeTriangle.Location = new System.Drawing.Point(5, 170);
             this.buttonNeutralizeTriangle.Name = "buttonNeutralizeTriangle";
             this.buttonNeutralizeTriangle.Size = new System.Drawing.Size(87, 23);
             this.buttonNeutralizeTriangle.TabIndex = 14;
@@ -3452,7 +3452,7 @@ namespace SM64_Diagnostic
             // 
             // buttonGoToVClosest
             // 
-            this.buttonGoToVClosest.Location = new System.Drawing.Point(7, 141);
+            this.buttonGoToVClosest.Location = new System.Drawing.Point(5, 141);
             this.buttonGoToVClosest.Name = "buttonGoToVClosest";
             this.buttonGoToVClosest.Size = new System.Drawing.Size(87, 23);
             this.buttonGoToVClosest.TabIndex = 13;
@@ -3472,7 +3472,7 @@ namespace SM64_Diagnostic
             // checkBoxVertexMisalignment
             // 
             this.checkBoxVertexMisalignment.AutoSize = true;
-            this.checkBoxVertexMisalignment.Location = new System.Drawing.Point(7, 199);
+            this.checkBoxVertexMisalignment.Location = new System.Drawing.Point(6, 199);
             this.checkBoxVertexMisalignment.Name = "checkBoxVertexMisalignment";
             this.checkBoxVertexMisalignment.Size = new System.Drawing.Size(151, 17);
             this.checkBoxVertexMisalignment.TabIndex = 12;
@@ -3490,7 +3490,7 @@ namespace SM64_Diagnostic
             // 
             // buttonRetrieveTriangle
             // 
-            this.buttonRetrieveTriangle.Location = new System.Drawing.Point(100, 141);
+            this.buttonRetrieveTriangle.Location = new System.Drawing.Point(98, 141);
             this.buttonRetrieveTriangle.Name = "buttonRetrieveTriangle";
             this.buttonRetrieveTriangle.Size = new System.Drawing.Size(87, 23);
             this.buttonRetrieveTriangle.TabIndex = 11;
@@ -3508,7 +3508,7 @@ namespace SM64_Diagnostic
             // 
             // buttonGoToV3
             // 
-            this.buttonGoToV3.Location = new System.Drawing.Point(131, 112);
+            this.buttonGoToV3.Location = new System.Drawing.Point(129, 112);
             this.buttonGoToV3.Name = "buttonGoToV3";
             this.buttonGoToV3.Size = new System.Drawing.Size(56, 23);
             this.buttonGoToV3.TabIndex = 10;
@@ -3517,7 +3517,7 @@ namespace SM64_Diagnostic
             // 
             // buttonGoToV1
             // 
-            this.buttonGoToV1.Location = new System.Drawing.Point(7, 112);
+            this.buttonGoToV1.Location = new System.Drawing.Point(5, 112);
             this.buttonGoToV1.Name = "buttonGoToV1";
             this.buttonGoToV1.Size = new System.Drawing.Size(57, 23);
             this.buttonGoToV1.TabIndex = 8;
@@ -3526,7 +3526,7 @@ namespace SM64_Diagnostic
             // 
             // buttonGoToV2
             // 
-            this.buttonGoToV2.Location = new System.Drawing.Point(70, 112);
+            this.buttonGoToV2.Location = new System.Drawing.Point(68, 112);
             this.buttonGoToV2.Name = "buttonGoToV2";
             this.buttonGoToV2.Size = new System.Drawing.Size(55, 23);
             this.buttonGoToV2.TabIndex = 9;
@@ -7748,8 +7748,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9547,7 +9547,7 @@ namespace SM64_Diagnostic
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(100, 425);
+            this.button1.Location = new System.Drawing.Point(98, 425);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 23);
             this.button1.TabIndex = 11;
@@ -9566,7 +9566,7 @@ namespace SM64_Diagnostic
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(7, 425);
+            this.button2.Location = new System.Drawing.Point(5, 425);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 23);
             this.button2.TabIndex = 13;
@@ -9575,7 +9575,7 @@ namespace SM64_Diagnostic
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(7, 477);
+            this.button3.Location = new System.Drawing.Point(5, 477);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 23);
             this.button3.TabIndex = 14;
@@ -9584,7 +9584,7 @@ namespace SM64_Diagnostic
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(100, 477);
+            this.button4.Location = new System.Drawing.Point(98, 477);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(87, 23);
             this.button4.TabIndex = 15;
@@ -9594,7 +9594,7 @@ namespace SM64_Diagnostic
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(7, 454);
+            this.checkBox2.Location = new System.Drawing.Point(6, 459);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(140, 17);
             this.checkBox2.TabIndex = 12;
