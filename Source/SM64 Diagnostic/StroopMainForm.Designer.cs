@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -714,12 +714,12 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonTriangleShowEquation = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.buttonTriangleShowCoords = new System.Windows.Forms.Button();
+            this.buttonTriangleShowData = new System.Windows.Forms.Button();
+            this.buttonTriangleClearData = new System.Windows.Forms.Button();
+            this.checkBoxRecordTriangleData = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -3173,20 +3173,20 @@ namespace SM64_Diagnostic
             this.splitContainerTriangles.Panel1.Controls.Add(this.groupBoxTrianglePos);
             this.splitContainerTriangles.Panel1.Controls.Add(this.groupBoxTriangleNormal);
             this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriOther);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.button4);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleClearData);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonAnnihilateTriangle);
             this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriFloor);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.button3);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleShowData);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonNeutralizeTriangle);
             this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriWall);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.button2);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleShowCoords);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToVClosest);
             this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriCeiling);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.checkBox2);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxRecordTriangleData);
             this.splitContainerTriangles.Panel1.Controls.Add(this.checkBox1);
             this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxVertexMisalignment);
             this.splitContainerTriangles.Panel1.Controls.Add(this.maskedTextBoxOtherTriangle);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.button1);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleShowEquation);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonRetrieveTriangle);
             this.splitContainerTriangles.Panel1.Controls.Add(this.labelTriangleSelection);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToV3);
@@ -7748,8 +7748,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9545,14 +9545,14 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // button1
+            // buttonTriangleShowEquation
             // 
-            this.button1.Location = new System.Drawing.Point(98, 425);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Show Equation";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonTriangleShowEquation.Location = new System.Drawing.Point(98, 425);
+            this.buttonTriangleShowEquation.Name = "buttonTriangleShowEquation";
+            this.buttonTriangleShowEquation.Size = new System.Drawing.Size(87, 23);
+            this.buttonTriangleShowEquation.TabIndex = 11;
+            this.buttonTriangleShowEquation.Text = "Show Equation";
+            this.buttonTriangleShowEquation.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
@@ -9564,42 +9564,42 @@ namespace SM64_Diagnostic
             this.checkBox1.Text = "Vertex Misalignment Offset";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonTriangleShowCoords
             // 
-            this.button2.Location = new System.Drawing.Point(5, 425);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Show Coords";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonTriangleShowCoords.Location = new System.Drawing.Point(5, 425);
+            this.buttonTriangleShowCoords.Name = "buttonTriangleShowCoords";
+            this.buttonTriangleShowCoords.Size = new System.Drawing.Size(87, 23);
+            this.buttonTriangleShowCoords.TabIndex = 13;
+            this.buttonTriangleShowCoords.Text = "Show Coords";
+            this.buttonTriangleShowCoords.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonTriangleShowData
             // 
-            this.button3.Location = new System.Drawing.Point(5, 477);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 23);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Show Data";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonTriangleShowData.Location = new System.Drawing.Point(5, 477);
+            this.buttonTriangleShowData.Name = "buttonTriangleShowData";
+            this.buttonTriangleShowData.Size = new System.Drawing.Size(87, 23);
+            this.buttonTriangleShowData.TabIndex = 14;
+            this.buttonTriangleShowData.Text = "Show Data";
+            this.buttonTriangleShowData.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonTriangleClearData
             // 
-            this.button4.Location = new System.Drawing.Point(98, 477);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 23);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "Clear Data";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonTriangleClearData.Location = new System.Drawing.Point(98, 477);
+            this.buttonTriangleClearData.Name = "buttonTriangleClearData";
+            this.buttonTriangleClearData.Size = new System.Drawing.Size(87, 23);
+            this.buttonTriangleClearData.TabIndex = 15;
+            this.buttonTriangleClearData.Text = "Clear Data";
+            this.buttonTriangleClearData.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // checkBoxRecordTriangleData
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 459);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(140, 17);
-            this.checkBox2.TabIndex = 12;
-            this.checkBox2.Text = "Record Triangle Data: 0";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxRecordTriangleData.AutoSize = true;
+            this.checkBoxRecordTriangleData.Location = new System.Drawing.Point(6, 459);
+            this.checkBoxRecordTriangleData.Name = "checkBoxRecordTriangleData";
+            this.checkBoxRecordTriangleData.Size = new System.Drawing.Size(140, 17);
+            this.checkBoxRecordTriangleData.TabIndex = 12;
+            this.checkBoxRecordTriangleData.Text = "Record Triangle Data: 0";
+            this.checkBoxRecordTriangleData.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -10619,12 +10619,12 @@ namespace SM64_Diagnostic
         private Button buttonFileCopy;
         private CheckBox checkBoxInGameCopyPaste;
         private CheckBox checkBoxDbgFreeMovement;
-        private Button button4;
-        private Button button3;
-        private Button button2;
-        private CheckBox checkBox2;
+        private Button buttonTriangleClearData;
+        private Button buttonTriangleShowData;
+        private Button buttonTriangleShowCoords;
+        private CheckBox checkBoxRecordTriangleData;
         private CheckBox checkBox1;
-        private Button button1;
+        private Button buttonTriangleShowEquation;
     }
 }
 
