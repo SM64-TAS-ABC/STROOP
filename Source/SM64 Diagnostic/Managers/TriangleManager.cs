@@ -159,7 +159,7 @@ namespace SM64_Diagnostic.Managers
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowCoords"] as Button).Click
                 += (sender, e) => ShowCoordinates();
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowEquation"] as Button).Click
-                += (sender, e) => ShowCoordinates();
+                += (sender, e) => ShowEquation();
 
             (splitContainerTriangles.Panel1.Controls["checkBoxRecordTriangleData"] as CheckBox).Click
                 += (sender, e) => ShowCoordinates();
@@ -170,6 +170,25 @@ namespace SM64_Diagnostic.Managers
         }
 
         private void ShowCoordinates()
+        {
+            if (TriangleAddress == 0x0000) return;
+
+            short[] coordinates = new short[9];
+            coordinates[0] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
+            coordinates[1] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
+            coordinates[2] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
+            coordinates[3] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
+            coordinates[4] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
+            coordinates[5] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
+            coordinates[6] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
+            coordinates[7] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
+            coordinates[8] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
+
+            var triangleCoordinatesInfo = new TriangleCoordinatesForm(coordinates);
+            triangleCoordinatesInfo.ShowDialog();
+        }
+
+        private void ShowEquation()
         {
             if (TriangleAddress == 0x0000) return;
 
