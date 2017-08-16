@@ -184,7 +184,7 @@ namespace SM64_Diagnostic.Managers
             coordinates[7] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
             coordinates[8] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
 
-            var triangleCoordinatesInfo = new TriangleCoordinatesForm();
+            var triangleCoordinatesInfo = new TriangleInfoForm();
             triangleCoordinatesInfo.SetCoordinates(coordinates);
             triangleCoordinatesInfo.ShowDialog();
         }
@@ -204,7 +204,7 @@ namespace SM64_Diagnostic.Managers
             coordinates[7] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
             coordinates[8] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
 
-            var triangleCoordinatesInfo = new TriangleCoordinatesForm();
+            var triangleCoordinatesInfo = new TriangleInfoForm();
             triangleCoordinatesInfo.SetCoordinates(coordinates);
             triangleCoordinatesInfo.ShowDialog();
         }

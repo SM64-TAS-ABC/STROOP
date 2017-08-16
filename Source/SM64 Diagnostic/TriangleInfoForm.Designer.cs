@@ -1,6 +1,6 @@
 ﻿namespace SM64_Diagnostic
 {
-    partial class TriangleCoordinatesForm
+    partial class TriangleInfoForm
     {
         /// <summary>
         /// Required designer variable.

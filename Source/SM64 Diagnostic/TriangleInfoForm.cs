@@ -13,11 +13,11 @@ using SM64_Diagnostic.Utilities;
 
 namespace SM64_Diagnostic
 {
-    public partial class TriangleCoordinatesForm : Form
+    public partial class TriangleInfoForm : Form
     {
         short[] _coordinates;
 
-        public TriangleCoordinatesForm()
+        public TriangleInfoForm()
         {
             InitializeComponent();
         }
