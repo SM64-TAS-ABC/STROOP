@@ -211,12 +211,23 @@ namespace SM64_Diagnostic.Managers
 
         private void ShowTriangleData()
         {
+            short[] coordinates = new short[9];
+            coordinates[0] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
+            coordinates[1] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
+            coordinates[2] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
+            coordinates[3] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
+            coordinates[4] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
+            coordinates[5] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
+            coordinates[6] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
+            coordinates[7] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
+            coordinates[8] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
 
+            _triangleData.Add(coordinates);
         }
 
         private void ClearTriangleData()
         {
-
+            _triangleData.Clear();
         }
 
         private void ProcessSpecialVars()
