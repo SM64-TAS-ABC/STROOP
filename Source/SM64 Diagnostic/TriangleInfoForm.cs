@@ -24,10 +24,30 @@ namespace SM64_Diagnostic
         public void SetCoordinates(short[] coordinates)
         {
             labelTitle.Text = "Triangle Coordinates";
-            textBoxTriangleInfo.Text =
+            textBoxTriangleInfo.Text = StringifyCoordinates(coordinates);
+        }
+
+        public void SetData(List<short[]> coordinateList)
+        {
+            labelTitle.Text = "Triangle Data";
+            textBoxTriangleInfo.Text = "todo";// StringifyCoordinates(coordinates);
+        }
+
+        private String StringifyCoordinates(short[] coordinates, bool repeatCoordinates = false)
+        {
+            if (coordinates.Length != 9) throw new ArgumentOutOfRangeException();
+
+            string text =
                 coordinates[0] + "\t" + coordinates[1] + "\t" + coordinates[2] + "\r\n" +
                 coordinates[3] + "\t" + coordinates[4] + "\t" + coordinates[5] + "\r\n" +
                 coordinates[6] + "\t" + coordinates[7] + "\t" + coordinates[8];
+
+            if (repeatCoordinates)
+            {
+                text += "\r\n" + coordinates[0] + "\t" + coordinates[1] + "\t" + coordinates[2];
+            }
+
+            return text;
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
