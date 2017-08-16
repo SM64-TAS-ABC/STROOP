@@ -184,29 +184,24 @@ namespace SM64_Diagnostic.Managers
             coordinates[7] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
             coordinates[8] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
 
-            var triangleCoordinatesInfo = new TriangleInfoForm();
-            triangleCoordinatesInfo.SetCoordinates(coordinates);
-            triangleCoordinatesInfo.ShowDialog();
+            var triangleInfoForm = new TriangleInfoForm();
+            triangleInfoForm.SetCoordinates(coordinates);
+            triangleInfoForm.ShowDialog();
         }
 
         private void ShowEquation()
         {
             if (TriangleAddress == 0x0000) return;
 
-            short[] coordinates = new short[9];
-            coordinates[0] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
-            coordinates[1] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
-            coordinates[2] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
-            coordinates[3] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
-            coordinates[4] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
-            coordinates[5] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
-            coordinates[6] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
-            coordinates[7] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
-            coordinates[8] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
+            float normX, normY, normZ, normOffset;
+            normX = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormX);
+            normY = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormY);
+            normZ = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormZ);
+            normOffset = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.Offset);
 
-            var triangleCoordinatesInfo = new TriangleInfoForm();
-            triangleCoordinatesInfo.SetCoordinates(coordinates);
-            triangleCoordinatesInfo.ShowDialog();
+            var triangleInfoForm = new TriangleInfoForm();
+            triangleInfoForm.SetEquation(normX, normY, normZ, normOffset);
+            triangleInfoForm.ShowDialog();
         }
 
         private void ProcessSpecialVars()
