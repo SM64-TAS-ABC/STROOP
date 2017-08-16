@@ -76,11 +76,11 @@
             this.labelTitle.AutoSize = true;
             this.tableLayoutPanelMain.SetColumnSpan(this.labelTitle, 2);
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(96, 24);
+            this.labelTitle.Location = new System.Drawing.Point(119, 24);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(124, 13);
+            this.labelTitle.Size = new System.Drawing.Size(79, 13);
             this.labelTitle.TabIndex = 8;
-            this.labelTitle.Text = "Triangle Coordinates";
+            this.labelTitle.Text = "Triangle Info";
             // 
             // textBoxTriangleCoordinates
             // 
@@ -107,7 +107,7 @@
             this.MinimumSize = new System.Drawing.Size(357, 244);
             this.Name = "TriangleCoordinatesForm";
             this.ShowIcon = false;
-            this.Text = "Triangle Coordinates";
+            this.Text = "Triangle Info";
             this.Load += new System.EventHandler(this.VariableViewerForm_Load);
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.tableLayoutPanelMain.PerformLayout();

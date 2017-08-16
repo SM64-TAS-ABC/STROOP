@@ -17,11 +17,16 @@ namespace SM64_Diagnostic
     {
         short[] _coordinates;
 
-        public TriangleCoordinatesForm(short[] coordinates)
+        public TriangleCoordinatesForm()
         {
             InitializeComponent();
+        }
+
+        public void SetCoordinates(short[] coordinates)
+        {
             _coordinates = coordinates;
             textBoxTriangleCoordinates.Click += (sender, e) => textBoxTriangleCoordinates.SelectAll();
+            labelTitle.Text = "Triangle Coordinates";
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
