@@ -74,6 +74,7 @@ namespace SM64_Diagnostic.Managers
         public TriangleMode Mode = TriangleMode.Floor;
 
         CheckBox _recordTriangleDataCheckbox;
+        Label _recordTriangleCountLabel;
         List<short[]> _triangleData;
 
         /// <summary>
@@ -166,6 +167,7 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => ShowTriangleEquation();
 
             _recordTriangleDataCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxRecordTriangleData"] as CheckBox;
+            _recordTriangleCountLabel = splitContainerTriangles.Panel1.Controls["labelRecordTriangleCount"] as Label;
 
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowData"] as Button).Click
                 += (sender, e) => ShowTriangleData();
@@ -467,7 +469,7 @@ namespace SM64_Diagnostic.Managers
 
             if (!updateView) return;
 
-            _recordTriangleDataCheckbox.Text = "Record Triangle Data: " + _triangleData.Count;
+            _recordTriangleCountLabel.Text = _triangleData.Count.ToString();
 
             base.Update(updateView);
             ProcessSpecialVars();
