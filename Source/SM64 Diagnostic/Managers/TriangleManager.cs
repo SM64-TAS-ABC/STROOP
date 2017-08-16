@@ -73,6 +73,7 @@ namespace SM64_Diagnostic.Managers
         public enum TriangleMode {Floor, Wall, Ceiling, Other};
         public TriangleMode Mode = TriangleMode.Floor;
 
+        CheckBox _recordTriangleDataCheckbox;
         bool _recordTriangleData;
         List<short[]> _triangleData;
 
@@ -163,8 +164,10 @@ namespace SM64_Diagnostic.Managers
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowEquation"] as Button).Click
                 += (sender, e) => ShowTriangleEquation();
 
-            (splitContainerTriangles.Panel1.Controls["checkBoxRecordTriangleData"] as CheckBox).Click
-                += (sender, e) => _recordTriangleData = (sender as CheckBox).Checked;
+            _recordTriangleDataCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxRecordTriangleData"] as CheckBox;
+            _recordTriangleDataCheckbox.Click += (sender, e) =>
+                _recordTriangleData = _recordTriangleDataCheckbox.Checked;
+
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowData"] as Button).Click
                 += (sender, e) => ShowTriangleData();
             (splitContainerTriangles.Panel1.Controls["buttonTriangleClearData"] as Button).Click
@@ -173,7 +176,7 @@ namespace SM64_Diagnostic.Managers
 
         private void ShowTriangleCoordinates()
         {
-            if (TriangleAddress == 0x0000) return;
+            if (TriangleAddress == 0) return;
 
             short[] coordinates = new short[9];
             coordinates[0] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
@@ -193,7 +196,7 @@ namespace SM64_Diagnostic.Managers
 
         private void ShowTriangleEquation()
         {
-            if (TriangleAddress == 0x0000) return;
+            if (TriangleAddress == 0) return;
 
             float normX, normY, normZ, normOffset;
             normX = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormX);
@@ -391,7 +394,7 @@ namespace SM64_Diagnostic.Managers
                         }
                         break;
                     case "CheckTriangleExistsAngle":
-                        (specialVar as AngleDataContainer).ValueExists = (TriangleAddress != 0x0000);
+                        (specialVar as AngleDataContainer).ValueExists = (TriangleAddress != 0);
                         break;
                 }
             }
