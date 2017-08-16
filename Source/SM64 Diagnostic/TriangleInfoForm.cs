@@ -15,22 +15,19 @@ namespace SM64_Diagnostic
 {
     public partial class TriangleInfoForm : Form
     {
-        short[] _coordinates;
-
         public TriangleInfoForm()
         {
             InitializeComponent();
+            textBoxTriangleInfo.Click += (sender, e) => textBoxTriangleInfo.SelectAll();
         }
 
         public void SetCoordinates(short[] coordinates)
         {
-            _coordinates = coordinates;
-            textBoxTriangleInfo.Click += (sender, e) => textBoxTriangleInfo.SelectAll();
             labelTitle.Text = "Triangle Coordinates";
             textBoxTriangleInfo.Text =
-                _coordinates[0] + "\t" + _coordinates[1] + "\t" + _coordinates[2] + "\r\n" +
-                _coordinates[3] + "\t" + _coordinates[4] + "\t" + _coordinates[5] + "\r\n" +
-                _coordinates[6] + "\t" + _coordinates[7] + "\t" + _coordinates[8];
+                coordinates[0] + "\t" + coordinates[1] + "\t" + coordinates[2] + "\r\n" +
+                coordinates[3] + "\t" + coordinates[4] + "\t" + coordinates[5] + "\r\n" +
+                coordinates[6] + "\t" + coordinates[7] + "\t" + coordinates[8];
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
