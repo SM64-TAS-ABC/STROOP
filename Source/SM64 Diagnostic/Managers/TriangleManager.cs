@@ -71,9 +71,11 @@ namespace SM64_Diagnostic.Managers
         }
 
         public enum TriangleMode {Floor, Wall, Ceiling, Other};
-
         public TriangleMode Mode = TriangleMode.Floor;
-        
+
+        bool _recordTriangleData;
+        List<short[]> _triangleData;
+
         /// <summary>
         /// Manages illumanati
         /// </summary>
@@ -98,7 +100,7 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => Mode_Click(sender, e, TriangleMode.Other);
 
             (splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label).Click
-                += (sender, e) => ShowCoordinates();
+                += (sender, e) => ShowTriangleCoordinates();
 
             (splitContainerTriangles.Panel1.Controls["buttonGoToV1"] as Button).Click
                 += (sender, e) => ButtonUtilities.GoToTriangle(_triangleAddress, 1, _useMisalignmentOffsetCheckbox.Checked);
@@ -157,19 +159,19 @@ namespace SM64_Diagnostic.Managers
                 });
 
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowCoords"] as Button).Click
-                += (sender, e) => ShowCoordinates();
+                += (sender, e) => ShowTriangleCoordinates();
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowEquation"] as Button).Click
-                += (sender, e) => ShowEquation();
+                += (sender, e) => ShowTriangleEquation();
 
             (splitContainerTriangles.Panel1.Controls["checkBoxRecordTriangleData"] as CheckBox).Click
-                += (sender, e) => ShowCoordinates();
+                += (sender, e) => _recordTriangleData = (sender as CheckBox).Checked;
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowData"] as Button).Click
-                += (sender, e) => ShowCoordinates();
+                += (sender, e) => ShowTriangleData();
             (splitContainerTriangles.Panel1.Controls["buttonTriangleClearData"] as Button).Click
-                += (sender, e) => ShowCoordinates();
+                += (sender, e) => ClearTriangleData();
         }
 
-        private void ShowCoordinates()
+        private void ShowTriangleCoordinates()
         {
             if (TriangleAddress == 0x0000) return;
 
@@ -189,7 +191,7 @@ namespace SM64_Diagnostic.Managers
             triangleInfoForm.ShowDialog();
         }
 
-        private void ShowEquation()
+        private void ShowTriangleEquation()
         {
             if (TriangleAddress == 0x0000) return;
 
@@ -202,6 +204,16 @@ namespace SM64_Diagnostic.Managers
             var triangleInfoForm = new TriangleInfoForm();
             triangleInfoForm.SetEquation(normX, normY, normZ, normOffset);
             triangleInfoForm.ShowDialog();
+        }
+
+        private void ShowTriangleData()
+        {
+
+        }
+
+        private void ClearTriangleData()
+        {
+
         }
 
         private void ProcessSpecialVars()
