@@ -85,11 +85,12 @@
             // textBoxTriangleCoordinates
             // 
             this.textBoxTriangleCoordinates.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTriangleCoordinates.Location = new System.Drawing.Point(45, 65);
+            this.textBoxTriangleCoordinates.Location = new System.Drawing.Point(46, 65);
             this.textBoxTriangleCoordinates.Multiline = true;
             this.textBoxTriangleCoordinates.Name = "textBoxTriangleCoordinates";
             this.textBoxTriangleCoordinates.ReadOnly = true;
             this.tableLayoutPanelMain.SetRowSpan(this.textBoxTriangleCoordinates, 3);
+            this.textBoxTriangleCoordinates.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxTriangleCoordinates.Size = new System.Drawing.Size(226, 66);
             this.textBoxTriangleCoordinates.TabIndex = 3;
             this.textBoxTriangleCoordinates.Text = "\r\n";
