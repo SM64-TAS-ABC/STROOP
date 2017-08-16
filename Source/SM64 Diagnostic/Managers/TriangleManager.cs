@@ -74,7 +74,6 @@ namespace SM64_Diagnostic.Managers
         public TriangleMode Mode = TriangleMode.Floor;
 
         CheckBox _recordTriangleDataCheckbox;
-        bool _recordTriangleData;
         List<short[]> _triangleData;
 
         /// <summary>
@@ -84,6 +83,8 @@ namespace SM64_Diagnostic.Managers
             : base(triangleWatchVars, noTearFlowLayoutPanel)
         {
             Instance = this;
+
+            _triangleData = new List<short[]>();
 
             SplitContainer splitContainerTriangles = tabControl.Controls["splitContainerTriangles"] as SplitContainer;
 
@@ -165,8 +166,6 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => ShowTriangleEquation();
 
             _recordTriangleDataCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxRecordTriangleData"] as CheckBox;
-            _recordTriangleDataCheckbox.Click += (sender, e) =>
-                _recordTriangleData = _recordTriangleDataCheckbox.Checked;
 
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowData"] as Button).Click
                 += (sender, e) => ShowTriangleData();
@@ -174,23 +173,27 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => ClearTriangleData();
         }
 
+        private short[] GetTriangleCoordinates(uint? nullableTriAddress = null)
+        {
+            uint triAddress = nullableTriAddress ?? TriangleAddress;
+            short[] coordinates = new short[9];
+            coordinates[0] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.X1);
+            coordinates[1] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.Y1);
+            coordinates[2] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.Z1);
+            coordinates[3] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.X2);
+            coordinates[4] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.Y2);
+            coordinates[5] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.Z2);
+            coordinates[6] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.X3);
+            coordinates[7] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.Y3);
+            coordinates[8] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.Z3);
+            return coordinates;
+        }
+
         private void ShowTriangleCoordinates()
         {
             if (TriangleAddress == 0) return;
-
-            short[] coordinates = new short[9];
-            coordinates[0] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
-            coordinates[1] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
-            coordinates[2] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
-            coordinates[3] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
-            coordinates[4] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
-            coordinates[5] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
-            coordinates[6] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
-            coordinates[7] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
-            coordinates[8] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
-
             var triangleInfoForm = new TriangleInfoForm();
-            triangleInfoForm.SetCoordinates(coordinates);
+            triangleInfoForm.SetCoordinates(GetTriangleCoordinates());
             triangleInfoForm.ShowDialog();
         }
 
@@ -211,18 +214,9 @@ namespace SM64_Diagnostic.Managers
 
         private void ShowTriangleData()
         {
-            short[] coordinates = new short[9];
-            coordinates[0] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
-            coordinates[1] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
-            coordinates[2] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
-            coordinates[3] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
-            coordinates[4] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
-            coordinates[5] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
-            coordinates[6] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
-            coordinates[7] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
-            coordinates[8] = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
-
-            _triangleData.Add(coordinates);
+            var triangleInfoForm = new TriangleInfoForm();
+            triangleInfoForm.SetData(_triangleData);
+            triangleInfoForm.ShowDialog();
         }
 
         private void ClearTriangleData()
@@ -450,6 +444,14 @@ namespace SM64_Diagnostic.Managers
         public override void Update(bool updateView)
         {
             if (!updateView) return;
+
+            _recordTriangleDataCheckbox.Text = "Record Triangle Data: " + _triangleData.Count;
+            if (_recordTriangleDataCheckbox.Checked && TriangleAddress != 0)
+            {
+                short[] coordinates = GetTriangleCoordinates();
+                bool hasAlready = _triangleData.Any(coords => Enumerable.SequenceEqual(coords, coordinates));
+                if (!hasAlready) _triangleData.Add(coordinates);
+            }
 
             switch (Mode)
             {
