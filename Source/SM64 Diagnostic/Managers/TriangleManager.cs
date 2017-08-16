@@ -443,16 +443,6 @@ namespace SM64_Diagnostic.Managers
 
         public override void Update(bool updateView)
         {
-            if (!updateView) return;
-
-            _recordTriangleDataCheckbox.Text = "Record Triangle Data: " + _triangleData.Count;
-            if (_recordTriangleDataCheckbox.Checked && TriangleAddress != 0)
-            {
-                short[] coordinates = GetTriangleCoordinates();
-                bool hasAlready = _triangleData.Any(coords => Enumerable.SequenceEqual(coords, coordinates));
-                if (!hasAlready) _triangleData.Add(coordinates);
-            }
-
             switch (Mode)
             {
                 case TriangleMode.Ceiling:
@@ -467,6 +457,17 @@ namespace SM64_Diagnostic.Managers
                     TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset);
                     break;
             }
+
+            if (_recordTriangleDataCheckbox.Checked && TriangleAddress != 0)
+            {
+                short[] coordinates = GetTriangleCoordinates();
+                bool hasAlready = _triangleData.Any(coords => Enumerable.SequenceEqual(coords, coordinates));
+                if (!hasAlready) _triangleData.Add(coordinates);
+            }
+
+            if (!updateView) return;
+
+            _recordTriangleDataCheckbox.Text = "Record Triangle Data: " + _triangleData.Count;
 
             base.Update(updateView);
             ProcessSpecialVars();
