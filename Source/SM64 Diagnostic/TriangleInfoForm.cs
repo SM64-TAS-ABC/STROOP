@@ -27,10 +27,20 @@ namespace SM64_Diagnostic
             textBoxTriangleInfo.Text = StringifyCoordinates(coordinates);
         }
 
+        public void SetEquation(float normalX, float normalY, float normalZ, float normalOffset)
+        {
+            labelTitle.Text = "Triangle Equation";
+            textBoxTriangleInfo.Text =
+                normalX + "x + " + normalY + "y + " + normalZ + "z + " + normalOffset + " = 0";
+        }
+
         public void SetData(List<short[]> coordinateList)
         {
             labelTitle.Text = "Triangle Data";
-            textBoxTriangleInfo.Text = "todo";// StringifyCoordinates(coordinates);
+            textBoxTriangleInfo.Text = String.Join(
+                "\r\n\r\n",
+                coordinateList.ConvertAll(
+                    coordinates => StringifyCoordinates(coordinates, true)));
         }
 
         private String StringifyCoordinates(short[] coordinates, bool repeatCoordinates = false)
