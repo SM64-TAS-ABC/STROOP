@@ -31,7 +31,7 @@
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.buttonOk = new System.Windows.Forms.Button();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.textBoxTriangleCoordinates = new System.Windows.Forms.TextBox();
+            this.textBoxTriangleInfo = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +45,7 @@
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.43533F));
             this.tableLayoutPanelMain.Controls.Add(this.buttonOk, 1, 3);
             this.tableLayoutPanelMain.Controls.Add(this.labelTitle, 0, 0);
-            this.tableLayoutPanelMain.Controls.Add(this.textBoxTriangleCoordinates, 1, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxTriangleInfo, 1, 1);
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
             this.tableLayoutPanelMain.RowCount = 4;
@@ -82,20 +82,20 @@
             this.labelTitle.TabIndex = 8;
             this.labelTitle.Text = "Triangle Info";
             // 
-            // textBoxTriangleCoordinates
+            // textBoxTriangleInfo
             // 
-            this.textBoxTriangleCoordinates.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTriangleCoordinates.Location = new System.Drawing.Point(46, 65);
-            this.textBoxTriangleCoordinates.Multiline = true;
-            this.textBoxTriangleCoordinates.Name = "textBoxTriangleCoordinates";
-            this.textBoxTriangleCoordinates.ReadOnly = true;
-            this.tableLayoutPanelMain.SetRowSpan(this.textBoxTriangleCoordinates, 3);
-            this.textBoxTriangleCoordinates.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxTriangleCoordinates.Size = new System.Drawing.Size(226, 66);
-            this.textBoxTriangleCoordinates.TabIndex = 3;
-            this.textBoxTriangleCoordinates.Text = "\r\n";
+            this.textBoxTriangleInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTriangleInfo.Location = new System.Drawing.Point(46, 65);
+            this.textBoxTriangleInfo.Multiline = true;
+            this.textBoxTriangleInfo.Name = "textBoxTriangleInfo";
+            this.textBoxTriangleInfo.ReadOnly = true;
+            this.tableLayoutPanelMain.SetRowSpan(this.textBoxTriangleInfo, 3);
+            this.textBoxTriangleInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxTriangleInfo.Size = new System.Drawing.Size(226, 66);
+            this.textBoxTriangleInfo.TabIndex = 3;
+            this.textBoxTriangleInfo.Text = "\r\n";
             // 
-            // TriangleCoordinatesForm
+            // TriangleInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -105,7 +105,7 @@
             this.MaximumSize = new System.Drawing.Size(357, 244);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(357, 244);
-            this.Name = "TriangleCoordinatesForm";
+            this.Name = "TriangleInfoForm";
             this.ShowIcon = false;
             this.Text = "Triangle Info";
             this.Load += new System.EventHandler(this.VariableViewerForm_Load);
@@ -120,6 +120,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Label labelTitle;
-        private System.Windows.Forms.TextBox textBoxTriangleCoordinates;
+        private System.Windows.Forms.TextBox textBoxTriangleInfo;
     }
 }
