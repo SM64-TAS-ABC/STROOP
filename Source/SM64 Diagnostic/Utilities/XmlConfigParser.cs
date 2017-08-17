@@ -69,7 +69,9 @@ namespace SM64_Diagnostic.Utilities
                             {
                                 Name = subElement.Attribute(XName.Get("name")).Value,
                                 ProcessName = subElement.Attribute(XName.Get("processName")).Value,
-                                RamStart = ParsingUtilities.ParseHex(subElement.Attribute(XName.Get("ramStart")).Value)
+                                RamStart = ParsingUtilities.ParseHex(subElement.Attribute(XName.Get("ramStart")).Value),
+                                Dll = subElement.Attribute(XName.Get("offsetDll")) != null
+                                    ? subElement.Attribute(XName.Get("offsetDll")).Value : null
                             });
                         }
                         break;

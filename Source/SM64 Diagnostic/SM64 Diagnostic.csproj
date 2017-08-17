@@ -43,6 +43,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -258,7 +259,9 @@
     <Compile Include="VariableViewerForm.Designer.cs">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EmbeddedResource Include="LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -472,7 +475,7 @@ del "$(TargetDir)STROOP.exe.config"
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>xcopy /E /Y /I "$(ProjectDir)Resources" "$(TargetDir)Resources"</PreBuildEvent>
+    <PreBuildEvent>xcopy /E /Y /I "$(ProjectDir)Resources" "$(TargetDir)Resources" /D</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

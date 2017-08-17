@@ -17,30 +17,31 @@ namespace SM64_Diagnostic.Extensions
 
         public static uint GetRamAddress(this WatchVariable watchVar, uint offset = 0, bool addressArea = true)
         {
-            uint offsetedAddress = offset + watchVar.Address;
+            var offsetedAddress = new UIntPtr(offset + watchVar.Address);
             uint address;
 
             if (watchVar.UseAbsoluteAddressing)
-                address = Config.Stream.ConvertAddressEndianess((uint)(offsetedAddress - Config.Stream.ProcessMemoryOffset),
+                address = (uint) Config.Stream.ConvertAddressEndianess(
+                    new UIntPtr(offsetedAddress.ToUInt64() - (ulong) Config.Stream.ProcessMemoryOffset.ToInt64()),
                     watchVar.ByteCount);
             else
-                address = offsetedAddress;
+                address = offsetedAddress.ToUInt32();
 
             return addressArea ? address | 0x80000000 : address & 0x0FFFFFFF;
         }
 
-        public static uint GetProcessAddress(this WatchVariable watchVar, uint offset = 0)
+        public static UIntPtr GetProcessAddress(this WatchVariable watchVar, uint offset = 0)
         {
             uint address = GetRamAddress(watchVar, offset, false);
-            return (uint)Config.Stream.ConvertAddressEndianess(
-                (int)(address + Config.Stream.ProcessMemoryOffset), watchVar.ByteCount);
+            return Config.Stream.ConvertAddressEndianess(
+                new UIntPtr(address + (ulong) Config.Stream.ProcessMemoryOffset.ToInt64()), watchVar.ByteCount);
         }
 
         public static byte[] GetByteData(this WatchVariable watchVar, uint offset)
         {
             // Get dataBytes
-            var dataBytes = Config.Stream.ReadRamLittleEndian(watchVar.HasAdditiveOffset ? offset + watchVar.Address
-                : watchVar.Address, watchVar.ByteCount, watchVar.UseAbsoluteAddressing);
+            var dataBytes = Config.Stream.ReadRamLittleEndian(watchVar.HasAdditiveOffset ? new UIntPtr(offset + watchVar.Address)
+                : new UIntPtr(watchVar.Address), watchVar.ByteCount, watchVar.UseAbsoluteAddressing);
 
             // Make sure offset is a valid pointer
             if (watchVar.HasAdditiveOffset && offset == 0)
@@ -166,11 +167,10 @@ namespace SM64_Diagnostic.Extensions
         public static string GetAngleStringValue(this WatchVariable watchVar, uint offset, WatchVariableControl.AngleViewModeType viewMode, bool truncated = false)
         {
             // Get dataBytes
-            var dataBytes = Config.Stream.ReadRamLittleEndian(watchVar.HasAdditiveOffset ? offset + watchVar.Address
-                : watchVar.Address, watchVar.ByteCount, watchVar.UseAbsoluteAddressing);
+            var dataBytes = watchVar.GetByteData(offset);
 
             // Make sure offset is a valid pointer
-            if (watchVar.HasAdditiveOffset && offset == 0)
+            if (dataBytes == null)
                 return "(none)";
 
             // Make sure dataType is a valid angle type
@@ -230,8 +230,11 @@ namespace SM64_Diagnostic.Extensions
         public static bool GetBoolValue(this WatchVariable watchVar, uint offset)
         {
             // Get dataBytes
-            var dataBytes = Config.Stream.ReadRamLittleEndian(watchVar.HasAdditiveOffset ? offset + watchVar.Address
-                : watchVar.Address, watchVar.ByteCount, watchVar.UseAbsoluteAddressing);
+            var dataBytes = watchVar.GetByteData(offset);
+
+            // Make sure offset is a valid pointer
+            if (dataBytes == null)
+                return false;
 
             // Get Uint64 value
             var intBytes = new byte[8];
@@ -253,7 +256,11 @@ namespace SM64_Diagnostic.Extensions
         {
             // Get dataBytes
             var address = watchVar.HasAdditiveOffset ? offset + watchVar.Address : watchVar.Address;
-            var dataBytes = Config.Stream.ReadRamLittleEndian(address, watchVar.ByteCount, watchVar.UseAbsoluteAddressing);
+            var dataBytes = watchVar.GetByteData(offset);
+
+            // Make sure offset is a valid pointer
+            if (dataBytes == null)
+                return;
 
             if (watchVar.InvertBool)
                 value = !value;
@@ -288,7 +295,7 @@ namespace SM64_Diagnostic.Extensions
             // Get dataBytes
             var address = watchVar.HasAdditiveOffset ? offset + watchVar.Address : watchVar.Address;
             var dataBytes = new byte[8];
-            Config.Stream.ReadRamLittleEndian(address, watchVar.ByteCount, watchVar.UseAbsoluteAddressing).CopyTo(dataBytes, 0);
+            Config.Stream.ReadRamLittleEndian(new UIntPtr(address), watchVar.ByteCount, watchVar.UseAbsoluteAddressing).CopyTo(dataBytes, 0);
             UInt64 oldValue = BitConverter.ToUInt64(dataBytes, 0);
             UInt64 newValue;
 
