@@ -34,13 +34,13 @@ namespace SM64_Diagnostic
                 normalX + "x + " + normalY + "y + " + normalZ + "z + " + normalOffset + " = 0";
         }
 
-        public void SetData(List<short[]> coordinateList)
+        public void SetData(List<short[]> coordinateList, bool repeatFirstVertex)
         {
             labelTitle.Text = "Triangle Data";
             textBoxTriangleInfo.Text = String.Join(
                 "\r\n\r\n",
                 coordinateList.ConvertAll(
-                    coordinates => StringifyCoordinates(coordinates, true)));
+                    coordinates => StringifyCoordinates(coordinates, repeatFirstVertex)));
         }
 
         private String StringifyCoordinates(short[] coordinates, bool repeatCoordinates = false)
