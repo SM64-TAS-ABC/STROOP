@@ -3133,12 +3133,14 @@
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyMinHeight">Min Height</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyMaxHeight">Max Height</Data>
-    <Data groupList="ObjectSpecific" type="short" address="0x10A" offset="Object" mask="0x1000" isBool="true">Spiraling</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" type="int" address="0x14C" offset="Object">State</Data>
+    <Data groupList="ObjectSpecific" type="uint" address="0x108" offset="Object" useHex="true">Spiraling</Data>
+    <Data groupList="ObjectSpecific" type="short" address="0xDA" offset="Object" isAngle="true">Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="ushort" address="0xCA" offset="Object" isAngle="true">Yaw (Moving)</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="AngleObjectToHome">Angle Obj to Home</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
-    <Data groupList="ObjectSpecific" offset="Special" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
-    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyZone">Zone</Data>
     <Data groupList="ObjectSpecific" type="float" address="0xB0" offset="Object">Y Speed</Data>
@@ -3156,12 +3158,14 @@
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyMinHeight">Min Height</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyMaxHeight">Max Height</Data>
-    <Data groupList="ObjectSpecific" type="short" address="0x10A" offset="Object" mask="0x1000" isBool="true">Spiraling</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" type="int" address="0x14C" offset="Object">State</Data>
+    <Data groupList="ObjectSpecific" type="uint" address="0x108" offset="Object" useHex="true">Spiraling</Data>
+    <Data groupList="ObjectSpecific" type="short" address="0xDA" offset="Object" isAngle="true">Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="ushort" address="0xCA" offset="Object" isAngle="true">Yaw (Moving)</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="AngleObjectToHome">Angle Obj to Home</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
-    <Data groupList="ObjectSpecific" offset="Special" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
-    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="FlyGuyZone">Zone</Data>
     <Data groupList="ObjectSpecific" type="float" address="0xB0" offset="Object">Y Speed</Data>
