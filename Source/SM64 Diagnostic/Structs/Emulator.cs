@@ -11,5 +11,6 @@ namespace SM64_Diagnostic.Structs
         public string Name;
         public string ProcessName;
         public uint RamStart;
+        public string Dll;
     }
 }

@@ -447,7 +447,7 @@ namespace SM64_Diagnostic.Managers
 
             var variableTitle = "Object Address" + (_currentAddresses.Count > 1 ? " (First of Multiple)" : ""); 
             var variableInfo = new VariableViewerForm(variableTitle, "Object",
-                String.Format("0x{0:X8}", _currentAddresses[0]), String.Format("0x{0:X8}", (_currentAddresses[0] & 0x0FFFFFFF) + Config.Stream.ProcessMemoryOffset));
+                String.Format("0x{0:X8}", _currentAddresses[0]), String.Format("0x{0:X8}", (_currentAddresses[0] & ~0x80000000) + Config.Stream.ProcessMemoryOffset.ToInt64()));
             variableInfo.ShowDialog();
         }
 
@@ -790,7 +790,7 @@ namespace SM64_Diagnostic.Managers
 
             int numOfCalls = 0;
 
-            for (int i = 0; i < numberOfRngObjs; i++)
+            for (int i = 0; i < Math.Min(numberOfRngObjs, Config.ObjectSlots.MaxSlots); i++)
             {
                 uint rngStructAdd = (uint)(Config.HackedAreaAddress + 0x30 + 0x08 * i);
                 var address = Config.Stream.GetUInt32(rngStructAdd + 0x04);
