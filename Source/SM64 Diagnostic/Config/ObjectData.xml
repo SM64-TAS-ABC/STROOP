@@ -13,9 +13,9 @@
   <Data groupList="Simple" type="ushort" address="0xCA" offset="Object" isAngle="true">Yaw (Moving)</Data>
   <Data groupList="Simple" type="short" address="0xC6" offset="Object" isAngle="true">Pitch (Moving)</Data>
   <Data groupList="Simple" type="short" address="0xCE" offset="Object" isAngle="true">Roll (Moving)</Data>
-  <Data groupList="Simple" type="short" address="0x11A" offset="Object" isAngle="true">Yaw (Rot Speed)</Data>
-  <Data groupList="Simple" type="short" address="0x116" offset="Object" isAngle="true">Pitch (Rot Speed)</Data>
-  <Data groupList="Simple" type="short" address="0x11E" offset="Object" isAngle="true">Roll (Rot Speed)</Data>
+  <Data groupList="Simple" type="short" address="0x11A" offset="Object" isAngle="true">Yaw Velocity</Data>
+  <Data groupList="Simple" type="short" address="0x116" offset="Object" isAngle="true">Pitch Velocity</Data>
+  <Data groupList="Simple" type="short" address="0x11E" offset="Object" isAngle="true">Roll Velocity</Data>
   <Data groupList="Expanded" type="float" address="0x015C" offset="Object">"Dist to Mario"</Data>
   <Data groupList="Expanded" offset="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
   <Data groupList="Expanded" offset="Special" specialType="MarioLateralDistanceToObject">LDist Mario to Obj</Data>
