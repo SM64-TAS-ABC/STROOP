@@ -74,6 +74,7 @@ namespace SM64_Diagnostic.Managers
         public TriangleMode Mode = TriangleMode.Floor;
 
         CheckBox _recordTriangleDataCheckbox;
+        CheckBox _repeatFirstVertexCheckbox;
         Label _recordTriangleCountLabel;
         List<short[]> _triangleData;
 
@@ -173,6 +174,8 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => ShowTriangleData();
             (splitContainerTriangles.Panel1.Controls["buttonTriangleClearData"] as Button).Click
                 += (sender, e) => ClearTriangleData();
+
+            _repeatFirstVertexCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxRepeatFirstVertex"] as CheckBox;
         }
 
         private short[] GetTriangleCoordinates(uint? nullableTriAddress = null)
