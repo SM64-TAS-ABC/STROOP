@@ -336,16 +336,16 @@ namespace SM64_Diagnostic.Managers
                         (specialVar as DataContainer).Text = coordZ.ToString();
                         goto case "CheckTriangleExists";
                     case "UpHillAngle":
-                        (specialVar as AngleDataContainer).AngleValue = uphillAngle;
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle);
                         goto case "CheckTriangleExistsAngle";
                     case "DownHillAngle":
-                        (specialVar as AngleDataContainer).AngleValue = uphillAngle + Math.PI;
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI);
                         goto case "CheckTriangleExistsAngle";
                     case "RightHillAngle":
-                        (specialVar as AngleDataContainer).AngleValue = uphillAngle - Math.PI / 2;
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle - Math.PI / 2);
                         goto case "CheckTriangleExistsAngle";
                     case "LeftHillAngle":
-                        (specialVar as AngleDataContainer).AngleValue = uphillAngle + Math.PI / 2;
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
                         goto case "CheckTriangleExistsAngle";
                     case "Classification":
                         if (normY > 0.01)
@@ -356,7 +356,7 @@ namespace SM64_Diagnostic.Managers
                             (specialVar as DataContainer).Text = "Wall";
                         goto case "CheckTriangleExists";
                     case "Steepness":
-                        (specialVar as AngleDataContainer).AngleValue = Math.Acos(normY);
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(Math.Acos(normY));
                         goto case "CheckTriangleExistsAngle";
                     case "NormalDistAway":
                         (specialVar as DataContainer).Text = Math.Round(marioX * normX + marioY * normY + marioZ * normZ + normOffset, 3).ToString();
