@@ -140,9 +140,9 @@ namespace SM64_Diagnostic.Managers
             float slidingSpeedZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
 
             ushort marioYawFacing = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
-            ushort marioYawFacingTruncated = (ushort)(marioYawFacing / 16 * 16);
+            ushort marioYawFacingTruncated = MoreMath.FormatAngleTruncated(marioYawFacing);
             ushort marioYawIntended = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawIntendedOffset);
-            ushort marioYawIntendedTruncated = (ushort)(marioYawIntended / 16 * 16);
+            ushort marioYawIntendedTruncated = MoreMath.FormatAngleTruncated(marioYawIntended);
 
             float movementX = (Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10)
                 - Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C));
@@ -177,7 +177,7 @@ namespace SM64_Diagnostic.Managers
                         break;
 
                     case "DeltaYawIntendedFacing":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.AngleUnitsToRadians(marioYawIntendedTruncated - marioYawFacingTruncated);
+                        (specialVar as AngleDataContainer).AngleValue = marioYawIntendedTruncated - marioYawFacingTruncated;
                         (specialVar as AngleDataContainer).ValueExists = true;
                         break;
 
