@@ -67,6 +67,12 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("DistanceToV3"),
                 new DataContainer("LateralDistanceToV3"),
                 new DataContainer("VerticalDistanceToV3"),
+                new AngleDataContainer("AngleV1ToV2"),
+                new AngleDataContainer("AngleV2ToV1"),
+                new AngleDataContainer("AngleV2ToV3"),
+                new AngleDataContainer("AngleV3ToV2"),
+                new AngleDataContainer("AngleV1ToV3"),
+                new AngleDataContainer("AngleV3ToV1"),
             };
         }
 
@@ -234,16 +240,14 @@ namespace SM64_Diagnostic.Managers
             var floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.GroundYOffset);
 
             // Get Mario position
-            float marioX, marioY, marioZ;
-            marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-            marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-            marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            float marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            float normX, normY, normZ, normOffset;
-            normX = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormX);
-            normY = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormY);
-            normZ = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormZ);
-            normOffset = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.Offset);
+            float normX = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormX);
+            float normY = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormY);
+            float normZ = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormZ);
+            float normOffset = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.Offset);
 
             var uphillAngle = Math.PI + Math.Atan2(normX, normZ);
             if (normX == 0 && normZ == 0)
@@ -251,18 +255,15 @@ namespace SM64_Diagnostic.Managers
             if (normY < -0.01)
                 uphillAngle += Math.PI;
 
-            short v1X, v1Y, v1Z;
-            short v2X, v2Y, v2Z;
-            short v3X, v3Y, v3Z;
-            v1X = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
-            v1Y = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
-            v1Z = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
-            v2X = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
-            v2Y = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
-            v2Z = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
-            v3X = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
-            v3Y = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
-            v3Z = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
+            short v1X = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
+            short v1Y = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
+            short v1Z = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z1);
+            short v2X = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X2);
+            short v2Y = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y2);
+            short v2Z = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z2);
+            short v3X = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X3);
+            short v3Y = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y3);
+            short v3Z = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Z3);
 
             var disToV = new double[]
             {
@@ -365,6 +366,7 @@ namespace SM64_Diagnostic.Managers
                         (specialVar as DataContainer).Text = Math.Round(marioY + (marioX * normX + marioZ * normZ + normOffset) / normY, 3).ToString();
                         goto case "CheckTriangleExists";
                     case "HeightOnSlope":
+
                         (specialVar as DataContainer).Text = Math.Round((-marioX * normX - marioZ * normZ - normOffset) / normY, 3).ToString();
                         goto case "CheckTriangleExists";
                     case "DistanceToV1":
@@ -394,6 +396,25 @@ namespace SM64_Diagnostic.Managers
                     case "VerticalDistanceToV3":
                         (specialVar as DataContainer).Text = Math.Round(marioY - v3Y, 3).ToString();
                         goto case "CheckTriangleExists";
+
+                    case "AngleV1ToV2":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        goto case "CheckTriangleExistsAngle";
+                    case "AngleV2ToV1":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        goto case "CheckTriangleExistsAngle";
+                    case "AngleV2ToV3":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        goto case "CheckTriangleExistsAngle";
+                    case "AngleV3ToV2":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        goto case "CheckTriangleExistsAngle";
+                    case "AngleV1ToV3":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        goto case "CheckTriangleExistsAngle";
+                    case "AngleV3ToV1":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        goto case "CheckTriangleExistsAngle";
 
                     // Special
                     case "CheckTriangleExists":

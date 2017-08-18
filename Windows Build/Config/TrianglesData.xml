@@ -61,4 +61,11 @@
   <Data offset="Special" specialType="DistanceToV3" color="#e5ccff">Dist to V3</Data>
   <Data offset="Special" specialType="LateralDistanceToV3" color="#e5ccff">LDist to V3</Data>
   <Data offset="Special" specialType="VerticalDistanceToV3" color="#e5ccff">VDist to V3</Data>
+
+  <Data offset="Special" specialType="AngleV1ToV2" color="#e5ccff">Angle V1 to V2</Data>
+  <Data offset="Special" specialType="AngleV2ToV1" color="#e5ccff">Angle V2 to V1</Data>
+  <Data offset="Special" specialType="AngleV2ToV3" color="#e5ccff">Angle V2 to V3</Data>
+  <Data offset="Special" specialType="AngleV3ToV2" color="#e5ccff">Angle V3 to V2</Data>
+  <Data offset="Special" specialType="AngleV1ToV3" color="#e5ccff">Angle V1 to V3</Data>
+  <Data offset="Special" specialType="AngleV3ToV1" color="#e5ccff">Angle V3 to V1</Data>
 </TrianglesData>
