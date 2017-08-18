@@ -454,54 +454,48 @@ namespace SM64_Diagnostic.Managers
         private void ProcessSpecialVars()
         {
             // Get Mario position
-            float mX, mY, mZ, mFacing;
-            mX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-            mY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-            mZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
-            mFacing = (float)(((Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.RotationOffset) >> 16) % 65536) / 65536f * 2 * Math.PI);
+            float mX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            float mY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            float mZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            ushort mFacing = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
 
             // Get Mario object position
             var marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
-            float mObjX, mObjY, mObjZ;
-            mObjX = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectXOffset);
-            mObjY = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
-            mObjZ = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectZOffset);
+            float mObjX = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectXOffset);
+            float mObjY = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
+            float mObjZ = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectZOffset);
 
             // Get Mario object hitbox variables
-            float mObjHitboxRadius, mObjHitboxHeight, mObjHitboxDownOffset, mObjHitboxBottom, mObjHitboxTop;
-            mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxRadius);
-            mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxHeight);
-            mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
-            mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
-            mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
+            float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxRadius);
+            float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxHeight);
+            float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
+            float mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
+            float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
             bool firstObject = true;
 
             foreach (var objAddress in _currentAddresses)
             { 
                 // Get object position
-                float objX, objY, objZ, objFacing;
-                objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
-                objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
-                objFacing = (float)((UInt16)(Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.ObjectRotationOffset)) / 65536f * 2 * Math.PI);
+                float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+                float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+                ushort objFacing = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
 
                 // Get object position
-                float objHomeX, objHomeY, objHomeZ;
-                objHomeX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
-                objHomeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
-                objHomeZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
+                float objHomeX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
+                float objHomeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                float objHomeZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
 
-                double angleObjectToMario = MoreMath.AngleTo_Radians(objX, objZ, mX, mZ);
-                double angleObjectToHome = MoreMath.AngleTo_Radians(objX, objZ, objHomeX, objHomeZ);
+                double angleObjectToMario = MoreMath.AngleTo_AngleUnits(objX, objZ, mX, mZ);
+                double angleObjectToHome = MoreMath.AngleTo_AngleUnits(objX, objZ, objHomeX, objHomeZ);
 
                 // Get object hitbox variables
-                float objHitboxRadius, objHitboxHeight, objHitboxDownOffset, objHitboxBottom, objHitboxTop;
-                objHitboxRadius = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxRadius);
-                objHitboxHeight = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
-                objHitboxDownOffset = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
-                objHitboxBottom = objY - objHitboxDownOffset;
-                objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
+                float objHitboxRadius = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxRadius);
+                float objHitboxHeight = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
+                float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
+                float objHitboxBottom = objY - objHitboxDownOffset;
+                float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
 
                 // Compute hitbox distances between Mario obj and obj
                 double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
@@ -551,11 +545,11 @@ namespace SM64_Diagnostic.Managers
                             break;
 
                         case "AngleMarioToObject":
-                            newAngle = angleObjectToMario + Math.PI;
+                            newAngle = MoreMath.ReverseAngle(angleObjectToMario);
                             break;
 
                         case "DeltaAngleMarioToObject":
-                            newAngle = mFacing - (angleObjectToMario + Math.PI);
+                            newAngle = mFacing - MoreMath.ReverseAngle(angleObjectToMario);
                             break;
 
                         case "AngleObjectToMario":
@@ -575,7 +569,7 @@ namespace SM64_Diagnostic.Managers
                             break;
 
                         case "AngleHomeToObject":
-                            newAngle = angleObjectToHome + Math.PI;
+                            newAngle = MoreMath.ReverseAngle(angleObjectToHome);
                             break;
 
                         case "MarioHitboxAwayFromObject":
@@ -728,12 +722,11 @@ namespace SM64_Diagnostic.Managers
                         {
                             angleContainer.ValueExists = newAngle.HasValue;
                             if (newAngle.HasValue)
+                            {
+                                newAngle = MoreMath.FormatAngleDouble(newAngle.Value);
                                 angleContainer.AngleValue = newAngle.Value;
+                            }
                         }
-
-                        newAngle %= Math.PI * 2;
-                        if (newAngle < 0)
-                            newAngle += Math.PI * 2;
 
                         // Check when multiple objects have different values
                         angleContainer.ValueExists &= newAngle == angleContainer.AngleValue;

@@ -58,15 +58,38 @@ namespace SM64_Diagnostic.Utilities
             return (magnitude, angle);
         }
 
-        public static ushort FormatAngleUshort(double angle)
-        {
-            double nonNegative = NonNegativeModulus(angle, 65536);
-            return (ushort)(Math.Round(nonNegative) % 65536);
-        }
-
         public static double FormatAngleDouble(double angle)
         {
             return NonNegativeModulus(angle, 65536);
+        }
+
+        public static ushort FormatAngleUshort(double angle)
+        {
+            double nonNegative = FormatAngleDouble(angle);
+            return (ushort)(Math.Round(nonNegative) % 65536);
+        }
+
+        public static short FormatAngleShort(double angle)
+        {
+            ushort angleUshort = FormatAngleUshort(angle);
+            short angleShort;
+            if (angleUshort > 32767)
+            {
+                angleShort = (short)(angleUshort - 65536);
+            }
+            else
+            {
+                angleShort = (short)angleUshort;
+            }
+            return angleShort;
+        }
+
+        public static ushort FormatAngleTruncated(double angle)
+        {
+            angle = FormatAngleDouble(angle);
+            ushort angleUshort = (ushort)angle;
+            ushort angleTruncated = (ushort)(angleUshort - (angleUshort % 16));
+            return angleTruncated;
         }
 
         public static double AngleTo_Radians(double xFrom, double zFrom, double xTo, double zTo)
@@ -169,6 +192,17 @@ namespace SM64_Diagnostic.Utilities
         {
             double radians = angleUnits / 65536 * (2 * Math.PI);
             return NonNegativeModulus(radians, 2 * Math.PI);
+        }
+
+        public static double AngleUnitsToDegrees(double angleUnits)
+        {
+            double radians = angleUnits / 65536 * 360;
+            return NonNegativeModulus(radians, 360);
+        }
+
+        public static double ReverseAngle(double angleUnits)
+        {
+            return FormatAngleDouble(angleUnits + 32768);
         }
 
         public static (double x, double y, double z) OffsetSpherically(

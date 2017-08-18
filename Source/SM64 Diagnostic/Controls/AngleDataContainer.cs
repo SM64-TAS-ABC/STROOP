@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -178,9 +179,7 @@ namespace SM64_Diagnostic.Controls
             }
             set
             {
-                _angleValue = value % (Math.PI * 2);
-                if (_angleValue < 0)
-                    _angleValue += Math.PI * 2;
+                _angleValue = MoreMath.FormatAngleDouble(value);
                 UpdateAngleValue();
             }
         }
@@ -254,26 +253,25 @@ namespace SM64_Diagnostic.Controls
 
             if (_angleTruncated)
             {
-                double roundFactor = 65536 / (Math.PI * 2) / 16;
-                angleValue = Math.Floor(_angleValue * roundFactor) / roundFactor;
+                angleValue = MoreMath.FormatAngleTruncated(angleValue);
             }
 
             switch (_angleViewMode)
             {
                 case AngleViewModeType.Degrees:
-                    _textBoxValue.Text = (angleValue / (Math.PI * 2) * 360).ToString();
+                    _textBoxValue.Text = MoreMath.AngleUnitsToDegrees(angleValue).ToString();
                     break;
 
                 case AngleViewModeType.Radians:
-                    _textBoxValue.Text = angleValue.ToString();
+                    _textBoxValue.Text = MoreMath.AngleUnitsToRadians(angleValue).ToString();
                     break;
 
                 case AngleViewModeType.Signed:
-                    _textBoxValue.Text = ((short)(angleValue / (Math.PI * 2) * 65536)).ToString();
+                    _textBoxValue.Text = MoreMath.FormatAngleShort(angleValue).ToString();
                     break;
 
                 case AngleViewModeType.Unsigned:
-                    _textBoxValue.Text = ((ushort)(angleValue / (Math.PI * 2) * 65536)).ToString();
+                    _textBoxValue.Text = MoreMath.FormatAngleUshort(angleValue).ToString();
                     break;
             }       
         }
