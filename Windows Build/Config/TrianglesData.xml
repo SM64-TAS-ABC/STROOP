@@ -52,15 +52,15 @@
   <Data offset="Special" specialType="VerticalDistAway" color="#e5ccff">Vertical Dist Away</Data>
   <Data offset="Special" specialType="HeightOnSlope" color="#e5ccff">Height On Triangle</Data>
   
-  <Data offset="Special" specialType="DistanceToV1" color="#e5ccff">Dist to V1</Data>
-  <Data offset="Special" specialType="LateralDistanceToV1" color="#e5ccff">LDist to V1</Data>
-  <Data offset="Special" specialType="VerticalDistanceToV1" color="#e5ccff">VDist to V1</Data>
-  <Data offset="Special" specialType="DistanceToV2" color="#e5ccff">Dist to V2</Data>
-  <Data offset="Special" specialType="LateralDistanceToV2" color="#e5ccff">LDist to V2</Data>
-  <Data offset="Special" specialType="VerticalDistanceToV2" color="#e5ccff">VDist to V2</Data>
-  <Data offset="Special" specialType="DistanceToV3" color="#e5ccff">Dist to V3</Data>
-  <Data offset="Special" specialType="LateralDistanceToV3" color="#e5ccff">LDist to V3</Data>
-  <Data offset="Special" specialType="VerticalDistanceToV3" color="#e5ccff">VDist to V3</Data>
+  <Data offset="Special" specialType="DistanceToV1" color="#d0d0d0">Dist to V1</Data>
+  <Data offset="Special" specialType="LateralDistanceToV1" color="#d0d0d0">LDist to V1</Data>
+  <Data offset="Special" specialType="VerticalDistanceToV1" color="#d0d0d0">VDist to V1</Data>
+  <Data offset="Special" specialType="DistanceToV2" color="#d0d0d0">Dist to V2</Data>
+  <Data offset="Special" specialType="LateralDistanceToV2" color="#d0d0d0">LDist to V2</Data>
+  <Data offset="Special" specialType="VerticalDistanceToV2" color="#d0d0d0">VDist to V2</Data>
+  <Data offset="Special" specialType="DistanceToV3" color="#d0d0d0">Dist to V3</Data>
+  <Data offset="Special" specialType="LateralDistanceToV3" color="#d0d0d0">LDist to V3</Data>
+  <Data offset="Special" specialType="VerticalDistanceToV3" color="#d0d0d0">VDist to V3</Data>
 
   <Data offset="Special" specialType="AngleV1ToV2" color="#e5ccff">Angle V1 to V2</Data>
   <Data offset="Special" specialType="AngleV2ToV1" color="#e5ccff">Angle V2 to V1</Data>

@@ -398,22 +398,22 @@ namespace SM64_Diagnostic.Managers
                         goto case "CheckTriangleExists";
 
                     case "AngleV1ToV2":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.AngleTo_AngleUnits(v1X, v1Z, v2X, v2Z);
                         goto case "CheckTriangleExistsAngle";
                     case "AngleV2ToV1":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.AngleTo_AngleUnits(v2X, v2Z, v1X, v1Z);
                         goto case "CheckTriangleExistsAngle";
                     case "AngleV2ToV3":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.AngleTo_AngleUnits(v2X, v2Z, v3X, v3Z);
                         goto case "CheckTriangleExistsAngle";
                     case "AngleV3ToV2":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.AngleTo_AngleUnits(v3X, v3Z, v2X, v2Z);
                         goto case "CheckTriangleExistsAngle";
                     case "AngleV1ToV3":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.AngleTo_AngleUnits(v1X, v1Z, v3X, v3Z);
                         goto case "CheckTriangleExistsAngle";
                     case "AngleV3ToV1":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.AngleTo_AngleUnits(v3X, v3Z, v1X, v1Z);
                         goto case "CheckTriangleExistsAngle";
 
                     // Special
