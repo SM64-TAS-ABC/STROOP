@@ -200,9 +200,19 @@ namespace SM64_Diagnostic.Utilities
             return NonNegativeModulus(radians, 360);
         }
 
+        public static double RotateAngleCCW(double angleUnits, double rotationDiff)
+        {
+            return FormatAngleDouble(angleUnits + rotationDiff);
+        }
+
+        public static double RotateAngleCW(double angleUnits, double rotationDiff)
+        {
+            return RotateAngleCCW(angleUnits, -1 * rotationDiff);
+        }
+
         public static double ReverseAngle(double angleUnits)
         {
-            return FormatAngleDouble(angleUnits + 32768);
+            return RotateAngleCCW(angleUnits, 32768);
         }
 
         public static (double x, double y, double z) OffsetSpherically(

@@ -115,7 +115,6 @@ namespace SM64_Diagnostic.Managers
             {
                 new DataContainer("DeFactoSpeed"),
                 new DataContainer("SlidingSpeed"),
-                new AngleDataContainer("SlidingAngle"),
                 new AngleDataContainer("DeltaYawIntendedFacing", AngleViewModeType.Signed),
                 new DataContainer("FallHeight"),
                 new DataContainer("MovementX"),
@@ -175,11 +174,6 @@ namespace SM64_Diagnostic.Managers
 
                     case "SlidingSpeed":
                         (specialVar as DataContainer).Text = Math.Round(Math.Sqrt(slidingSpeedX * slidingSpeedX + slidingSpeedZ * slidingSpeedZ), 3).ToString();
-                        break;
-
-                    case "SlidingAngle":
-                        (specialVar as AngleDataContainer).AngleValue = Math.PI / 2 - Math.Atan2(slidingSpeedZ, slidingSpeedX);
-                        (specialVar as AngleDataContainer).ValueExists = (slidingSpeedX != 0) || (slidingSpeedZ != 0);
                         break;
 
                     case "DeltaYawIntendedFacing":
