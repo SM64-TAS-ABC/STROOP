@@ -13,9 +13,18 @@ namespace SM64_Diagnostic.Managers
 {
     public class DebugManager : DataManager
     {
-        CheckBox _spawnModeCheckbox, _classicModeCheckbox, _resourceMeterCheckbox, _stageSelectCheckbox, _freeMovementCheckbox;
-        RadioButton[] _advancedModeSettingRadioButtons;
         RadioButton _advancedModeOffRadioButton;
+        RadioButton[] _advancedModeSettingRadioButtons;
+
+        RadioButton _resourceMeterOffRadioButton;
+        RadioButton _resourceMeter1RadioButton;
+        RadioButton _resourceMeter2RadioButton;
+
+        CheckBox _classicModeCheckbox;
+        CheckBox _spawnModeCheckbox;
+        CheckBox _stageSelectCheckbox;
+        CheckBox _freeMovementCheckbox;
+        CheckBox _resourceMeterCheckbox;
 
         public DebugManager(List<WatchVariable> variableData, Control tabControl, NoTearFlowLayoutPanel variableTable)
             : base(variableData, variableTable)
@@ -50,8 +59,28 @@ namespace SM64_Diagnostic.Managers
             }
 
             // Resource meter
+            GroupBox resourceMeterGroupbox = splitContainerDebug.Panel1.Controls["groupBoxResourceMeter"] as GroupBox;
 
+            _resourceMeterOffRadioButton = resourceMeterGroupbox.Controls["radioButtonResourceMeterOff"] as RadioButton;
+            _resourceMeterOffRadioButton.Click += (sender, e) =>
+            {
+                Config.Stream.SetValue((byte)0, Config.Debug.ResourceModeAddress);
+                Config.Stream.SetValue((ushort)0, Config.Debug.ResourceModeSettingAddress);
+            };
 
+            _resourceMeter1RadioButton = resourceMeterGroupbox.Controls["radioButtonResourceMeter1"] as RadioButton;
+            _resourceMeter1RadioButton.Click += (sender, e) =>
+            {
+                Config.Stream.SetValue((byte)1, Config.Debug.ResourceModeAddress);
+                Config.Stream.SetValue((ushort)0, Config.Debug.ResourceModeSettingAddress);
+            };
+
+            _resourceMeter2RadioButton = resourceMeterGroupbox.Controls["radioButtonResourceMeter2"] as RadioButton;
+            _resourceMeter2RadioButton.Click += (sender, e) =>
+            {
+                Config.Stream.SetValue((byte)1, Config.Debug.ResourceModeAddress);
+                Config.Stream.SetValue((ushort)1, Config.Debug.ResourceModeSettingAddress);
+            };
 
             // Misc debug
             GroupBox miscDebugGroupbox = splitContainerDebug.Panel1.Controls["groupBoxMiscDebug"] as GroupBox;
