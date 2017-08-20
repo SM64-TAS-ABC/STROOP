@@ -2304,6 +2304,8 @@
     <Data groupList="ObjectSpecific" type="int" address="0xFC" offset="Object">Fuse Timer</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="BobombBloatSize">Bloat Size</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="BobombRadius">Radius</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="BobombSpaceBetween">Space Between</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioLateralDistanceToObject">LDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="byte" address="0xF3" offset="Object" isBool="true">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" address="0xF4" offset="Object">Blinking Timer</Data>
   </Object>
@@ -2318,6 +2320,8 @@
     <Data groupList="ObjectSpecific" type="int" address="0xFC" offset="Object">Fuse Timer</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="BobombBloatSize">Bloat Size</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="BobombRadius">Radius</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="BobombSpaceBetween">Space Between</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioLateralDistanceToObject">LDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="byte" address="0xF3" offset="Object" isBool="true">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" address="0xF4" offset="Object">Blinking Timer</Data>
   </Object>

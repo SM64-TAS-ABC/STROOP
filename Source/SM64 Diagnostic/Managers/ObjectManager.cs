@@ -227,6 +227,7 @@ namespace SM64_Diagnostic.Managers
                 // Bobomb vars
                 new DataContainer("BobombBloatSize"),
                 new DataContainer("BobombRadius"),
+                new DataContainer("BobombSpaceBetween"),
 
                 // Hacked vars
                 new DataContainer("RngCallsPerFrame"),
@@ -745,7 +746,16 @@ namespace SM64_Diagnostic.Managers
                             {
                                 float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
                                 float radius = 32 + scale * 65;
-                                newText = radius.ToString();
+                                newText = Math.Round(radius, 3).ToString();
+                                break;
+                            }
+
+                        case "BobombSpaceBetween":
+                            {
+                                float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
+                                float radius = 32 + scale * 65;
+                                double lateralDistance = MoreMath.GetDistanceBetween(mX, mZ, objX, objZ);
+                                newText = Math.Round(lateralDistance - radius, 3).ToString();
                                 break;
                             }
 
