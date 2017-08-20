@@ -82,7 +82,7 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        public void Update(bool updateView = false)
+        public override void Update(bool updateView)
         {
             if (!updateView)
                 return;
