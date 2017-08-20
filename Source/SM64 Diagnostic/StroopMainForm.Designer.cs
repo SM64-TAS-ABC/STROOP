@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -7189,9 +7189,9 @@ namespace SM64_Diagnostic
             this.checkBoxSpawnMode.AutoSize = true;
             this.checkBoxSpawnMode.Location = new System.Drawing.Point(6, 46);
             this.checkBoxSpawnMode.Name = "checkBoxSpawnMode";
-            this.checkBoxSpawnMode.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxSpawnMode.Size = new System.Drawing.Size(89, 17);
             this.checkBoxSpawnMode.TabIndex = 12;
-            this.checkBoxSpawnMode.Text = "Spawn Debug";
+            this.checkBoxSpawnMode.Text = "Spawn Mode";
             this.checkBoxSpawnMode.UseVisualStyleBackColor = true;
             // 
             // checkBoxStageSelect
@@ -7209,9 +7209,9 @@ namespace SM64_Diagnostic
             this.checkBoxClassicMode.AutoSize = true;
             this.checkBoxClassicMode.Location = new System.Drawing.Point(6, 21);
             this.checkBoxClassicMode.Name = "checkBoxClassicMode";
-            this.checkBoxClassicMode.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxClassicMode.Size = new System.Drawing.Size(89, 17);
             this.checkBoxClassicMode.TabIndex = 23;
-            this.checkBoxClassicMode.Text = "Classic Debug";
+            this.checkBoxClassicMode.Text = "Classic Mode";
             this.checkBoxClassicMode.UseVisualStyleBackColor = true;
             // 
             // groupBoxResourceMeter
@@ -7903,8 +7903,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
