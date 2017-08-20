@@ -163,7 +163,7 @@
     <ResourceModeAddressJP>0x8032C654</ResourceModeAddressJP>
 
     <ResourceModeSettingAddressUS>0x8032DF10</ResourceModeSettingAddressUS>
-    <ResourceModeSettingAddressJP>0x8032DF10</ResourceModeSettingAddressJP>
+    <ResourceModeSettingAddressJP>0x8032CFB0</ResourceModeSettingAddressJP>
 
     <StageSelectAddressUS>0x8032D58C</StageSelectAddressUS>
     <StageSelectAddressJP>0x8032C64C</StageSelectAddressJP>
