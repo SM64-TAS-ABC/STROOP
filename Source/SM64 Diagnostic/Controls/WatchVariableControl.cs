@@ -453,13 +453,13 @@ namespace SM64_Diagnostic.Controls
             {
                 varInfo = new VariableViewerForm(_watchVar.Name, typeDescr,
                     String.Format("0x{0:X8}", _watchVar.GetRamAddress()),
-                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress()));
+                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress().ToUInt64()));
             }
             else
             {
                 varInfo = new VariableViewerForm(_watchVar.Name, typeDescr,
                     String.Format("0x{0:X8}", _watchVar.GetRamAddress(OffsetList[0])),
-                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress(OffsetList[0])));
+                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress(OffsetList[0]).ToUInt64()));
             }
             varInfo.ShowDialog();
         }
