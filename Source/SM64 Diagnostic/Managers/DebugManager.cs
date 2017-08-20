@@ -24,7 +24,6 @@ namespace SM64_Diagnostic.Managers
         CheckBox _spawnModeCheckbox;
         CheckBox _stageSelectCheckbox;
         CheckBox _freeMovementCheckbox;
-        CheckBox _resourceMeterCheckbox;
 
         public DebugManager(List<WatchVariable> variableData, Control tabControl, NoTearFlowLayoutPanel variableTable)
             : base(variableData, variableTable)
@@ -111,12 +110,6 @@ namespace SM64_Diagnostic.Managers
                     _freeMovementCheckbox.Checked ? Config.Debug.FreeMovementOnValue : Config.Debug.FreeMovementOffValue,
                     Config.Debug.FreeMovementAddress);
             };
-
-            _resourceMeterCheckbox = tabControl.Controls["checkBoxResourceMeter"] as CheckBox;
-            _resourceMeterCheckbox.Click += (sender, e) =>
-            {
-                Config.Stream.SetValue(_resourceMeterCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ResourceModeAddress);
-            };
         }
 
         public override void Update(bool updateView)
@@ -160,7 +153,6 @@ namespace SM64_Diagnostic.Managers
                  && Config.Stream.GetByte(Config.Debug.SpawnModeAddress) == 0x01;
             _stageSelectCheckbox.Checked = Config.Stream.GetByte(Config.Debug.StageSelectAddress) == 0x01;
             _freeMovementCheckbox.Checked = Config.Stream.GetUInt16(Config.Debug.FreeMovementAddress) == Config.Debug.FreeMovementOnValue;
-            _resourceMeterCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ResourceModeAddress) == 0x01;
 
             base.Update();
         }

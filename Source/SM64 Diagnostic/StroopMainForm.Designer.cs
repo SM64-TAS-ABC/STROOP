@@ -31,7 +31,7 @@ namespace SM64_Diagnostic
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -286,7 +286,6 @@ namespace SM64_Diagnostic
             this.tabPageMisc = new System.Windows.Forms.TabPage();
             this.panelMiscBorder = new System.Windows.Forms.Panel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
-            this.checkBoxResourceMeter = new System.Windows.Forms.CheckBox();
             this.panelDebugBorder = new System.Windows.Forms.Panel();
             this.splitContainerDebug = new System.Windows.Forms.SplitContainer();
             this.groupBoxMiscDebug = new System.Windows.Forms.GroupBox();
@@ -4151,7 +4150,6 @@ namespace SM64_Diagnostic
             // 
             // tabPageDebug
             // 
-            this.tabPageDebug.Controls.Add(this.checkBoxResourceMeter);
             this.tabPageDebug.Controls.Add(this.panelDebugBorder);
             this.tabPageDebug.Controls.Add(this.splitContainerDebug);
             this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
@@ -4160,16 +4158,6 @@ namespace SM64_Diagnostic
             this.tabPageDebug.Size = new System.Drawing.Size(915, 463);
             this.tabPageDebug.TabIndex = 8;
             this.tabPageDebug.Text = "Debug";
-            // 
-            // checkBoxResourceMeter
-            // 
-            this.checkBoxResourceMeter.AutoSize = true;
-            this.checkBoxResourceMeter.Location = new System.Drawing.Point(243, 50);
-            this.checkBoxResourceMeter.Name = "checkBoxResourceMeter";
-            this.checkBoxResourceMeter.Size = new System.Drawing.Size(107, 17);
-            this.checkBoxResourceMeter.TabIndex = 25;
-            this.checkBoxResourceMeter.Text = "Resource Debug";
-            this.checkBoxResourceMeter.UseVisualStyleBackColor = true;
             // 
             // panelDebugBorder
             // 
@@ -4937,8 +4925,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9827,7 +9815,6 @@ namespace SM64_Diagnostic
             this.tabPageMisc.ResumeLayout(false);
             this.panelMiscBorder.ResumeLayout(false);
             this.tabPageDebug.ResumeLayout(false);
-            this.tabPageDebug.PerformLayout();
             this.panelDebugBorder.ResumeLayout(false);
             this.splitContainerDebug.Panel1.ResumeLayout(false);
             this.splitContainerDebug.Panel2.ResumeLayout(false);
@@ -10198,7 +10185,6 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxStageSelect;
         private CheckBox checkBoxClassicMode;
         private CheckBox checkBoxSpawnMode;
-        private CheckBox checkBoxResourceMeter;
         private Panel panelObj;
         private TextBox textBoxObjPosXZ;
         private Button buttonObjPosXnZn;
