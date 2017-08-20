@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -505,6 +505,16 @@ namespace SM64_Diagnostic
             this.pictureBoxMisc = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelMisc = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
+            this.checkBoxDbgResource = new System.Windows.Forms.CheckBox();
+            this.panelDebugBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxDebug = new SM64_Diagnostic.Controls.IntPictureBox();
+            this.splitContainerDebug = new System.Windows.Forms.SplitContainer();
+            this.groupBoxMiscDebug = new System.Windows.Forms.GroupBox();
+            this.checkBoxDbgFreeMovement = new System.Windows.Forms.CheckBox();
+            this.checkBoxDbgSpawnDbg = new System.Windows.Forms.CheckBox();
+            this.checkBoxDbgStageSelect = new System.Windows.Forms.CheckBox();
+            this.checkBoxDbgClassicDbg = new System.Windows.Forms.CheckBox();
+            this.groupBoxResourceMeter = new System.Windows.Forms.GroupBox();
             this.groupBoxAdvancedMode = new System.Windows.Forms.GroupBox();
             this.radioButtonDbgOff = new System.Windows.Forms.RadioButton();
             this.radioButtonDbgEnemyInfo = new System.Windows.Forms.RadioButton();
@@ -514,13 +524,6 @@ namespace SM64_Diagnostic
             this.radioButtonDbgStgInfo = new System.Windows.Forms.RadioButton();
             this.radioButtonDbgMapInfo = new System.Windows.Forms.RadioButton();
             this.noTearFlowLayoutPanelDebug = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
-            this.checkBoxDbgResource = new System.Windows.Forms.CheckBox();
-            this.checkBoxDbgFreeMovement = new System.Windows.Forms.CheckBox();
-            this.checkBoxDbgStageSelect = new System.Windows.Forms.CheckBox();
-            this.checkBoxDbgClassicDbg = new System.Windows.Forms.CheckBox();
-            this.checkBoxDbgSpawnDbg = new System.Windows.Forms.CheckBox();
-            this.panelDebugBorder = new System.Windows.Forms.Panel();
-            this.pictureBoxDebug = new SM64_Diagnostic.Controls.IntPictureBox();
             this.tabPageMap = new System.Windows.Forms.TabPage();
             this.splitContainerMap = new System.Windows.Forms.SplitContainer();
             this.checkBoxMapShowCeiling = new System.Windows.Forms.CheckBox();
@@ -721,9 +724,9 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.splitContainerDebug = new System.Windows.Forms.SplitContainer();
-            this.groupBoxResourceMeter = new System.Windows.Forms.GroupBox();
-            this.groupBoxMiscDebug = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -950,9 +953,15 @@ namespace SM64_Diagnostic
             this.panelMiscBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
             this.tabPageDebug.SuspendLayout();
-            this.groupBoxAdvancedMode.SuspendLayout();
             this.panelDebugBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).BeginInit();
+            this.splitContainerDebug.Panel1.SuspendLayout();
+            this.splitContainerDebug.Panel2.SuspendLayout();
+            this.splitContainerDebug.SuspendLayout();
+            this.groupBoxMiscDebug.SuspendLayout();
+            this.groupBoxResourceMeter.SuspendLayout();
+            this.groupBoxAdvancedMode.SuspendLayout();
             this.tabPageMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).BeginInit();
             this.splitContainerMap.Panel1.SuspendLayout();
@@ -988,11 +997,6 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).BeginInit();
-            this.splitContainerDebug.Panel1.SuspendLayout();
-            this.splitContainerDebug.Panel2.SuspendLayout();
-            this.splitContainerDebug.SuspendLayout();
-            this.groupBoxMiscDebug.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1022,7 +1026,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 275);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 276);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1087,7 +1091,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 156);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 157);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2085,7 +2089,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(699, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(702, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2603,7 +2607,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(708, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(711, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2771,7 +2775,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(800, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(803, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3152,7 +3156,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(710, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(713, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3623,7 +3627,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(707, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(710, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3708,7 +3712,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
-            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(488, 460);
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(491, 460);
             this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4071,7 +4075,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7045,7 +7049,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(259, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(262, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7106,6 +7110,133 @@ namespace SM64_Diagnostic
             this.tabPageDebug.Size = new System.Drawing.Size(915, 463);
             this.tabPageDebug.TabIndex = 8;
             this.tabPageDebug.Text = "Debug";
+            // 
+            // checkBoxDbgResource
+            // 
+            this.checkBoxDbgResource.AutoSize = true;
+            this.checkBoxDbgResource.Location = new System.Drawing.Point(243, 50);
+            this.checkBoxDbgResource.Name = "checkBoxDbgResource";
+            this.checkBoxDbgResource.Size = new System.Drawing.Size(107, 17);
+            this.checkBoxDbgResource.TabIndex = 25;
+            this.checkBoxDbgResource.Text = "Resource Debug";
+            this.checkBoxDbgResource.UseVisualStyleBackColor = true;
+            // 
+            // panelDebugBorder
+            // 
+            this.panelDebugBorder.Controls.Add(this.pictureBoxDebug);
+            this.panelDebugBorder.Location = new System.Drawing.Point(5, 5);
+            this.panelDebugBorder.Margin = new System.Windows.Forms.Padding(2);
+            this.panelDebugBorder.Name = "panelDebugBorder";
+            this.panelDebugBorder.Size = new System.Drawing.Size(57, 55);
+            this.panelDebugBorder.TabIndex = 3;
+            // 
+            // pictureBoxDebug
+            // 
+            this.pictureBoxDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxDebug.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxDebug.Location = new System.Drawing.Point(2, 2);
+            this.pictureBoxDebug.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxDebug.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxDebug.Name = "pictureBoxDebug";
+            this.pictureBoxDebug.Size = new System.Drawing.Size(51, 50);
+            this.pictureBoxDebug.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDebug.TabIndex = 0;
+            this.pictureBoxDebug.TabStop = false;
+            // 
+            // splitContainerDebug
+            // 
+            this.splitContainerDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainerDebug.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerDebug.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerDebug.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerDebug.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainerDebug.Name = "splitContainerDebug";
+            // 
+            // splitContainerDebug.Panel1
+            // 
+            this.splitContainerDebug.Panel1.AutoScroll = true;
+            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxMiscDebug);
+            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxResourceMeter);
+            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxAdvancedMode);
+            this.splitContainerDebug.Panel1MinSize = 0;
+            // 
+            // splitContainerDebug.Panel2
+            // 
+            this.splitContainerDebug.Panel2.Controls.Add(this.noTearFlowLayoutPanelDebug);
+            this.splitContainerDebug.Panel2MinSize = 0;
+            this.splitContainerDebug.Size = new System.Drawing.Size(915, 463);
+            this.splitContainerDebug.SplitterDistance = 378;
+            this.splitContainerDebug.SplitterWidth = 1;
+            this.splitContainerDebug.TabIndex = 39;
+            // 
+            // groupBoxMiscDebug
+            // 
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxDbgFreeMovement);
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxDbgSpawnDbg);
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxDbgStageSelect);
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxDbgClassicDbg);
+            this.groupBoxMiscDebug.Location = new System.Drawing.Point(193, 254);
+            this.groupBoxMiscDebug.Name = "groupBoxMiscDebug";
+            this.groupBoxMiscDebug.Size = new System.Drawing.Size(117, 125);
+            this.groupBoxMiscDebug.TabIndex = 38;
+            this.groupBoxMiscDebug.TabStop = false;
+            this.groupBoxMiscDebug.Text = "Misc Debug";
+            // 
+            // checkBoxDbgFreeMovement
+            // 
+            this.checkBoxDbgFreeMovement.AutoSize = true;
+            this.checkBoxDbgFreeMovement.Location = new System.Drawing.Point(6, 96);
+            this.checkBoxDbgFreeMovement.Name = "checkBoxDbgFreeMovement";
+            this.checkBoxDbgFreeMovement.Size = new System.Drawing.Size(100, 17);
+            this.checkBoxDbgFreeMovement.TabIndex = 24;
+            this.checkBoxDbgFreeMovement.Text = "Free Movement";
+            this.checkBoxDbgFreeMovement.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDbgSpawnDbg
+            // 
+            this.checkBoxDbgSpawnDbg.AutoSize = true;
+            this.checkBoxDbgSpawnDbg.Location = new System.Drawing.Point(6, 46);
+            this.checkBoxDbgSpawnDbg.Name = "checkBoxDbgSpawnDbg";
+            this.checkBoxDbgSpawnDbg.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxDbgSpawnDbg.TabIndex = 12;
+            this.checkBoxDbgSpawnDbg.Text = "Spawn Debug";
+            this.checkBoxDbgSpawnDbg.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDbgStageSelect
+            // 
+            this.checkBoxDbgStageSelect.AutoSize = true;
+            this.checkBoxDbgStageSelect.Location = new System.Drawing.Point(6, 71);
+            this.checkBoxDbgStageSelect.Name = "checkBoxDbgStageSelect";
+            this.checkBoxDbgStageSelect.Size = new System.Drawing.Size(87, 17);
+            this.checkBoxDbgStageSelect.TabIndex = 24;
+            this.checkBoxDbgStageSelect.Text = "Stage Select";
+            this.checkBoxDbgStageSelect.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDbgClassicDbg
+            // 
+            this.checkBoxDbgClassicDbg.AutoSize = true;
+            this.checkBoxDbgClassicDbg.Location = new System.Drawing.Point(6, 21);
+            this.checkBoxDbgClassicDbg.Name = "checkBoxDbgClassicDbg";
+            this.checkBoxDbgClassicDbg.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxDbgClassicDbg.TabIndex = 23;
+            this.checkBoxDbgClassicDbg.Text = "Classic Debug";
+            this.checkBoxDbgClassicDbg.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxResourceMeter
+            // 
+            this.groupBoxResourceMeter.Controls.Add(this.radioButton1);
+            this.groupBoxResourceMeter.Controls.Add(this.radioButton2);
+            this.groupBoxResourceMeter.Controls.Add(this.radioButton3);
+            this.groupBoxResourceMeter.Location = new System.Drawing.Point(41, 254);
+            this.groupBoxResourceMeter.Name = "groupBoxResourceMeter";
+            this.groupBoxResourceMeter.Size = new System.Drawing.Size(125, 184);
+            this.groupBoxResourceMeter.TabIndex = 38;
+            this.groupBoxResourceMeter.TabStop = false;
+            this.groupBoxResourceMeter.Text = "Resource Meter";
             // 
             // groupBoxAdvancedMode
             // 
@@ -7205,82 +7336,8 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelDebug.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelDebug.Name = "noTearFlowLayoutPanelDebug";
-            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(528, 455);
+            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(531, 455);
             this.noTearFlowLayoutPanelDebug.TabIndex = 26;
-            // 
-            // checkBoxDbgResource
-            // 
-            this.checkBoxDbgResource.AutoSize = true;
-            this.checkBoxDbgResource.Location = new System.Drawing.Point(243, 50);
-            this.checkBoxDbgResource.Name = "checkBoxDbgResource";
-            this.checkBoxDbgResource.Size = new System.Drawing.Size(107, 17);
-            this.checkBoxDbgResource.TabIndex = 25;
-            this.checkBoxDbgResource.Text = "Resource Debug";
-            this.checkBoxDbgResource.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxDbgFreeMovement
-            // 
-            this.checkBoxDbgFreeMovement.AutoSize = true;
-            this.checkBoxDbgFreeMovement.Location = new System.Drawing.Point(6, 96);
-            this.checkBoxDbgFreeMovement.Name = "checkBoxDbgFreeMovement";
-            this.checkBoxDbgFreeMovement.Size = new System.Drawing.Size(100, 17);
-            this.checkBoxDbgFreeMovement.TabIndex = 24;
-            this.checkBoxDbgFreeMovement.Text = "Free Movement";
-            this.checkBoxDbgFreeMovement.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxDbgStageSelect
-            // 
-            this.checkBoxDbgStageSelect.AutoSize = true;
-            this.checkBoxDbgStageSelect.Location = new System.Drawing.Point(6, 71);
-            this.checkBoxDbgStageSelect.Name = "checkBoxDbgStageSelect";
-            this.checkBoxDbgStageSelect.Size = new System.Drawing.Size(87, 17);
-            this.checkBoxDbgStageSelect.TabIndex = 24;
-            this.checkBoxDbgStageSelect.Text = "Stage Select";
-            this.checkBoxDbgStageSelect.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxDbgClassicDbg
-            // 
-            this.checkBoxDbgClassicDbg.AutoSize = true;
-            this.checkBoxDbgClassicDbg.Location = new System.Drawing.Point(6, 21);
-            this.checkBoxDbgClassicDbg.Name = "checkBoxDbgClassicDbg";
-            this.checkBoxDbgClassicDbg.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxDbgClassicDbg.TabIndex = 23;
-            this.checkBoxDbgClassicDbg.Text = "Classic Debug";
-            this.checkBoxDbgClassicDbg.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxDbgSpawnDbg
-            // 
-            this.checkBoxDbgSpawnDbg.AutoSize = true;
-            this.checkBoxDbgSpawnDbg.Location = new System.Drawing.Point(6, 46);
-            this.checkBoxDbgSpawnDbg.Name = "checkBoxDbgSpawnDbg";
-            this.checkBoxDbgSpawnDbg.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxDbgSpawnDbg.TabIndex = 12;
-            this.checkBoxDbgSpawnDbg.Text = "Spawn Debug";
-            this.checkBoxDbgSpawnDbg.UseVisualStyleBackColor = true;
-            // 
-            // panelDebugBorder
-            // 
-            this.panelDebugBorder.Controls.Add(this.pictureBoxDebug);
-            this.panelDebugBorder.Location = new System.Drawing.Point(5, 5);
-            this.panelDebugBorder.Margin = new System.Windows.Forms.Padding(2);
-            this.panelDebugBorder.Name = "panelDebugBorder";
-            this.panelDebugBorder.Size = new System.Drawing.Size(57, 55);
-            this.panelDebugBorder.TabIndex = 3;
-            // 
-            // pictureBoxDebug
-            // 
-            this.pictureBoxDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxDebug.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxDebug.Location = new System.Drawing.Point(2, 2);
-            this.pictureBoxDebug.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxDebug.MaximumSize = new System.Drawing.Size(133, 130);
-            this.pictureBoxDebug.Name = "pictureBoxDebug";
-            this.pictureBoxDebug.Size = new System.Drawing.Size(51, 50);
-            this.pictureBoxDebug.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxDebug.TabIndex = 0;
-            this.pictureBoxDebug.TabStop = false;
             // 
             // tabPageMap
             // 
@@ -7480,7 +7537,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(698, 430);
+            this.glControlMap.Size = new System.Drawing.Size(701, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -7826,8 +7883,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -7998,7 +8055,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(846, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(849, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -8097,7 +8154,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(600, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(603, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -8960,7 +9017,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(478, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(481, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9623,55 +9680,37 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // splitContainerDebug
+            // radioButton1
             // 
-            this.splitContainerDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainerDebug.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerDebug.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerDebug.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerDebug.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainerDebug.Name = "splitContainerDebug";
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(11, 21);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(39, 17);
+            this.radioButton1.TabIndex = 7;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Off";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // splitContainerDebug.Panel1
+            // radioButton2
             // 
-            this.splitContainerDebug.Panel1.AutoScroll = true;
-            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxMiscDebug);
-            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxResourceMeter);
-            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxAdvancedMode);
-            this.splitContainerDebug.Panel1MinSize = 0;
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(11, 44);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(96, 17);
+            this.radioButton2.TabIndex = 8;
+            this.radioButton2.Text = "Object Counter";
+            this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // splitContainerDebug.Panel2
+            // radioButton3
             // 
-            this.splitContainerDebug.Panel2.Controls.Add(this.noTearFlowLayoutPanelDebug);
-            this.splitContainerDebug.Panel2MinSize = 0;
-            this.splitContainerDebug.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerDebug.SplitterDistance = 378;
-            this.splitContainerDebug.SplitterWidth = 1;
-            this.splitContainerDebug.TabIndex = 39;
-            // 
-            // groupBoxResourceMeter
-            // 
-            this.groupBoxResourceMeter.Location = new System.Drawing.Point(41, 254);
-            this.groupBoxResourceMeter.Name = "groupBoxResourceMeter";
-            this.groupBoxResourceMeter.Size = new System.Drawing.Size(125, 184);
-            this.groupBoxResourceMeter.TabIndex = 38;
-            this.groupBoxResourceMeter.TabStop = false;
-            this.groupBoxResourceMeter.Text = "Resource Meter";
-            // 
-            // groupBoxMiscDebug
-            // 
-            this.groupBoxMiscDebug.Controls.Add(this.checkBoxDbgFreeMovement);
-            this.groupBoxMiscDebug.Controls.Add(this.checkBoxDbgSpawnDbg);
-            this.groupBoxMiscDebug.Controls.Add(this.checkBoxDbgStageSelect);
-            this.groupBoxMiscDebug.Controls.Add(this.checkBoxDbgClassicDbg);
-            this.groupBoxMiscDebug.Location = new System.Drawing.Point(193, 254);
-            this.groupBoxMiscDebug.Name = "groupBoxMiscDebug";
-            this.groupBoxMiscDebug.Size = new System.Drawing.Size(117, 125);
-            this.groupBoxMiscDebug.TabIndex = 38;
-            this.groupBoxMiscDebug.TabStop = false;
-            this.groupBoxMiscDebug.Text = "Misc Debug";
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(11, 67);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(77, 17);
+            this.radioButton3.TabIndex = 9;
+            this.radioButton3.Text = "Check Info";
+            this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -9947,10 +9986,18 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
             this.tabPageDebug.ResumeLayout(false);
             this.tabPageDebug.PerformLayout();
-            this.groupBoxAdvancedMode.ResumeLayout(false);
-            this.groupBoxAdvancedMode.PerformLayout();
             this.panelDebugBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
+            this.splitContainerDebug.Panel1.ResumeLayout(false);
+            this.splitContainerDebug.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).EndInit();
+            this.splitContainerDebug.ResumeLayout(false);
+            this.groupBoxMiscDebug.ResumeLayout(false);
+            this.groupBoxMiscDebug.PerformLayout();
+            this.groupBoxResourceMeter.ResumeLayout(false);
+            this.groupBoxResourceMeter.PerformLayout();
+            this.groupBoxAdvancedMode.ResumeLayout(false);
+            this.groupBoxAdvancedMode.PerformLayout();
             this.tabPageMap.ResumeLayout(false);
             this.splitContainerMap.Panel1.ResumeLayout(false);
             this.splitContainerMap.Panel1.PerformLayout();
@@ -10004,12 +10051,6 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.splitContainerDebug.Panel1.ResumeLayout(false);
-            this.splitContainerDebug.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).EndInit();
-            this.splitContainerDebug.ResumeLayout(false);
-            this.groupBoxMiscDebug.ResumeLayout(false);
-            this.groupBoxMiscDebug.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -10707,6 +10748,9 @@ namespace SM64_Diagnostic
         private SplitContainer splitContainerDebug;
         private GroupBox groupBoxMiscDebug;
         private GroupBox groupBoxResourceMeter;
+        private RadioButton radioButton1;
+        private RadioButton radioButton2;
+        private RadioButton radioButton3;
     }
 }
 
