@@ -505,7 +505,7 @@ namespace SM64_Diagnostic
             this.pictureBoxMisc = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelMisc = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
-            this.groupBoxDebugAdvancedMode = new System.Windows.Forms.GroupBox();
+            this.groupBoxAdvancedMode = new System.Windows.Forms.GroupBox();
             this.radioButtonDbgOff = new System.Windows.Forms.RadioButton();
             this.radioButtonDbgEnemyInfo = new System.Windows.Forms.RadioButton();
             this.radioButtonDbgObjCnt = new System.Windows.Forms.RadioButton();
@@ -519,7 +519,6 @@ namespace SM64_Diagnostic
             this.checkBoxDbgStageSelect = new System.Windows.Forms.CheckBox();
             this.checkBoxDbgClassicDbg = new System.Windows.Forms.CheckBox();
             this.checkBoxDbgSpawnDbg = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.panelDebugBorder = new System.Windows.Forms.Panel();
             this.pictureBoxDebug = new SM64_Diagnostic.Controls.IntPictureBox();
             this.tabPageMap = new System.Windows.Forms.TabPage();
@@ -723,6 +722,8 @@ namespace SM64_Diagnostic
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.splitContainerDebug = new System.Windows.Forms.SplitContainer();
+            this.groupBoxResourceMeter = new System.Windows.Forms.GroupBox();
+            this.groupBoxMiscDebug = new System.Windows.Forms.GroupBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -949,7 +950,7 @@ namespace SM64_Diagnostic
             this.panelMiscBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
             this.tabPageDebug.SuspendLayout();
-            this.groupBoxDebugAdvancedMode.SuspendLayout();
+            this.groupBoxAdvancedMode.SuspendLayout();
             this.panelDebugBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
             this.tabPageMap.SuspendLayout();
@@ -988,6 +989,7 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).BeginInit();
+            this.splitContainerDebug.Panel1.SuspendLayout();
             this.splitContainerDebug.Panel2.SuspendLayout();
             this.splitContainerDebug.SuspendLayout();
             this.SuspendLayout();
@@ -7094,13 +7096,11 @@ namespace SM64_Diagnostic
             // 
             // tabPageDebug
             // 
-            this.tabPageDebug.Controls.Add(this.groupBoxDebugAdvancedMode);
             this.tabPageDebug.Controls.Add(this.checkBoxDbgResource);
             this.tabPageDebug.Controls.Add(this.checkBoxDbgFreeMovement);
             this.tabPageDebug.Controls.Add(this.checkBoxDbgStageSelect);
             this.tabPageDebug.Controls.Add(this.checkBoxDbgClassicDbg);
             this.tabPageDebug.Controls.Add(this.checkBoxDbgSpawnDbg);
-            this.tabPageDebug.Controls.Add(this.label2);
             this.tabPageDebug.Controls.Add(this.panelDebugBorder);
             this.tabPageDebug.Controls.Add(this.splitContainerDebug);
             this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
@@ -7110,21 +7110,21 @@ namespace SM64_Diagnostic
             this.tabPageDebug.TabIndex = 8;
             this.tabPageDebug.Text = "Debug";
             // 
-            // groupBoxDebugAdvancedMode
+            // groupBoxAdvancedMode
             // 
-            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgOff);
-            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgEnemyInfo);
-            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgObjCnt);
-            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgFxInfo);
-            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgChkInfo);
-            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgStgInfo);
-            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgMapInfo);
-            this.groupBoxDebugAdvancedMode.Location = new System.Drawing.Point(73, 25);
-            this.groupBoxDebugAdvancedMode.Name = "groupBoxDebugAdvancedMode";
-            this.groupBoxDebugAdvancedMode.Size = new System.Drawing.Size(125, 184);
-            this.groupBoxDebugAdvancedMode.TabIndex = 38;
-            this.groupBoxDebugAdvancedMode.TabStop = false;
-            this.groupBoxDebugAdvancedMode.Text = "Advanced Mode";
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgOff);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgEnemyInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgObjCnt);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgFxInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgChkInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgStgInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgMapInfo);
+            this.groupBoxAdvancedMode.Location = new System.Drawing.Point(6, 64);
+            this.groupBoxAdvancedMode.Name = "groupBoxAdvancedMode";
+            this.groupBoxAdvancedMode.Size = new System.Drawing.Size(125, 184);
+            this.groupBoxAdvancedMode.TabIndex = 38;
+            this.groupBoxAdvancedMode.TabStop = false;
+            this.groupBoxAdvancedMode.Text = "Advanced Mode";
             // 
             // radioButtonDbgOff
             // 
@@ -7260,15 +7260,6 @@ namespace SM64_Diagnostic
             this.checkBoxDbgSpawnDbg.TabIndex = 12;
             this.checkBoxDbgSpawnDbg.Text = "Spawn Debug";
             this.checkBoxDbgSpawnDbg.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(68, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Debug:";
             // 
             // panelDebugBorder
             // 
@@ -9649,6 +9640,9 @@ namespace SM64_Diagnostic
             // splitContainerDebug.Panel1
             // 
             this.splitContainerDebug.Panel1.AutoScroll = true;
+            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxMiscDebug);
+            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxResourceMeter);
+            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxAdvancedMode);
             this.splitContainerDebug.Panel1MinSize = 0;
             // 
             // splitContainerDebug.Panel2
@@ -9659,6 +9653,24 @@ namespace SM64_Diagnostic
             this.splitContainerDebug.SplitterDistance = 378;
             this.splitContainerDebug.SplitterWidth = 1;
             this.splitContainerDebug.TabIndex = 39;
+            // 
+            // groupBoxResourceMeter
+            // 
+            this.groupBoxResourceMeter.Location = new System.Drawing.Point(41, 254);
+            this.groupBoxResourceMeter.Name = "groupBoxResourceMeter";
+            this.groupBoxResourceMeter.Size = new System.Drawing.Size(125, 184);
+            this.groupBoxResourceMeter.TabIndex = 38;
+            this.groupBoxResourceMeter.TabStop = false;
+            this.groupBoxResourceMeter.Text = "Resource Meter";
+            // 
+            // groupBoxMiscDebug
+            // 
+            this.groupBoxMiscDebug.Location = new System.Drawing.Point(193, 254);
+            this.groupBoxMiscDebug.Name = "groupBoxMiscDebug";
+            this.groupBoxMiscDebug.Size = new System.Drawing.Size(125, 184);
+            this.groupBoxMiscDebug.TabIndex = 38;
+            this.groupBoxMiscDebug.TabStop = false;
+            this.groupBoxMiscDebug.Text = "Misc Debug";
             // 
             // StroopMainForm
             // 
@@ -9934,8 +9946,8 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
             this.tabPageDebug.ResumeLayout(false);
             this.tabPageDebug.PerformLayout();
-            this.groupBoxDebugAdvancedMode.ResumeLayout(false);
-            this.groupBoxDebugAdvancedMode.PerformLayout();
+            this.groupBoxAdvancedMode.ResumeLayout(false);
+            this.groupBoxAdvancedMode.PerformLayout();
             this.panelDebugBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
             this.tabPageMap.ResumeLayout(false);
@@ -9991,6 +10003,7 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.splitContainerDebug.Panel1.ResumeLayout(false);
             this.splitContainerDebug.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).EndInit();
             this.splitContainerDebug.ResumeLayout(false);
@@ -10080,7 +10093,6 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.RadioButton radioButtonDbgMapInfo;
         private System.Windows.Forms.RadioButton radioButtonDbgChkInfo;
         private System.Windows.Forms.RadioButton radioButtonDbgObjCnt;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelDebugBorder;
         private IntPictureBox pictureBoxDebug;
         private NoTearFlowLayoutPanel NoTearFlowLayoutPanelMisc;
@@ -10688,8 +10700,10 @@ namespace SM64_Diagnostic
         private Label labelRecordTriangleCount;
         private CheckBox checkBoxRepeatFirstVertex;
         private NoTearFlowLayoutPanel noTearFlowLayoutPanelDebug;
-        private GroupBox groupBoxDebugAdvancedMode;
+        private GroupBox groupBoxAdvancedMode;
         private SplitContainer splitContainerDebug;
+        private GroupBox groupBoxMiscDebug;
+        private GroupBox groupBoxResourceMeter;
     }
 }
 

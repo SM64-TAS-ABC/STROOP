@@ -20,7 +20,9 @@ namespace SM64_Diagnostic.Managers
         public DebugManager(List<WatchVariable> variableData, Control tabControl, NoTearFlowLayoutPanel variableTable)
             : base(variableData, variableTable)
         {
-            GroupBox advancedModeGroupbox = tabControl.Controls["groupBoxDebugAdvancedMode"] as GroupBox;
+            SplitContainer splitContainerDebug = tabControl.Controls["splitContainerDebug"] as SplitContainer;
+
+            GroupBox advancedModeGroupbox = splitContainerDebug.Panel1.Controls["groupBoxAdvancedMode"] as GroupBox;
 
             _spawnDebugCheckbox = tabControl.Controls["checkBoxDbgSpawnDbg"] as CheckBox;
             _spawnDebugCheckbox.Click += (sender, e) =>
