@@ -13,36 +13,34 @@ namespace SM64_Diagnostic.Managers
 {
     public class DebugManager : DataManager
     {
-        CheckBox _spawnDebugCheckbox, _classicCheckbox, _resourceCheckbox, _stageSelectCheckbox, _freeMovementCheckbox;
-        RadioButton[] _dbgSettingRadioButton;
-        RadioButton _dbgSettingRadioButtonOff;
+        CheckBox _spawnModeCheckbox, _classicModeCheckbox, _resourceMeterCheckbox, _stageSelectCheckbox, _freeMovementCheckbox;
+        RadioButton[] _advancedModeSettingRadioButtons;
+        RadioButton _advancedModeOffRadioButton;
 
         public DebugManager(List<WatchVariable> variableData, Control tabControl, NoTearFlowLayoutPanel variableTable)
             : base(variableData, variableTable)
         {
             SplitContainer splitContainerDebug = tabControl.Controls["splitContainerDebug"] as SplitContainer;
 
-            GroupBox advancedModeGroupbox = splitContainerDebug.Panel1.Controls["groupBoxAdvancedMode"] as GroupBox;
-
             GroupBox miscDebugGroupbox = splitContainerDebug.Panel1.Controls["groupBoxMiscDebug"] as GroupBox;
 
-            _spawnDebugCheckbox = miscDebugGroupbox.Controls["checkBoxDbgSpawnDbg"] as CheckBox;
-            _spawnDebugCheckbox.Click += (sender, e) =>
+            _spawnModeCheckbox = miscDebugGroupbox.Controls["checkBoxDbgSpawnDbg"] as CheckBox;
+            _spawnModeCheckbox.Click += (sender, e) =>
             {
-                Config.Stream.SetValue(_spawnDebugCheckbox.Checked ? (byte)0x03 : (byte)0x00, Config.Debug.AdvancedModeSettingAddress);
-                Config.Stream.SetValue(_spawnDebugCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.SpawnModeAddress);
+                Config.Stream.SetValue(_spawnModeCheckbox.Checked ? (byte)0x03 : (byte)0x00, Config.Debug.AdvancedModeSettingAddress);
+                Config.Stream.SetValue(_spawnModeCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.SpawnModeAddress);
             };
 
-            _classicCheckbox = miscDebugGroupbox.Controls["checkBoxDbgClassicDbg"] as CheckBox;
-            _classicCheckbox.Click += (sender, e) =>
+            _classicModeCheckbox = miscDebugGroupbox.Controls["checkBoxDbgClassicDbg"] as CheckBox;
+            _classicModeCheckbox.Click += (sender, e) =>
             {
-                Config.Stream.SetValue(_classicCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ClassicModeAddress);
+                Config.Stream.SetValue(_classicModeCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ClassicModeAddress);
             };
 
-            _resourceCheckbox = tabControl.Controls["checkBoxDbgResource"] as CheckBox;
-            _resourceCheckbox.Click += (sender, e) =>
+            _resourceMeterCheckbox = tabControl.Controls["checkBoxDbgResource"] as CheckBox;
+            _resourceMeterCheckbox.Click += (sender, e) =>
             {
-                Config.Stream.SetValue(_resourceCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ResourceModeAddress);
+                Config.Stream.SetValue(_resourceMeterCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ResourceModeAddress);
             };
 
             _stageSelectCheckbox = miscDebugGroupbox.Controls["checkBoxDbgStageSelect"] as CheckBox;
@@ -59,24 +57,26 @@ namespace SM64_Diagnostic.Managers
                     Config.Debug.FreeMovementAddress);
             };
 
-            _dbgSettingRadioButtonOff = advancedModeGroupbox.Controls["radioButtonAdvancedModeOff"] as RadioButton;
-            _dbgSettingRadioButtonOff.Click += (sender, e) =>
+            GroupBox advancedModeGroupbox = splitContainerDebug.Panel1.Controls["groupBoxAdvancedMode"] as GroupBox;
+
+            _advancedModeOffRadioButton = advancedModeGroupbox.Controls["radioButtonAdvancedModeOff"] as RadioButton;
+            _advancedModeOffRadioButton.Click += (sender, e) =>
             {
                 Config.Stream.SetValue((byte)0, Config.Debug.AdvancedModeAddress);
                 Config.Stream.SetValue((byte)0, Config.Debug.AdvancedModeSettingAddress);
             };
 
-            _dbgSettingRadioButton = new RadioButton[6];
-            _dbgSettingRadioButton[0] = advancedModeGroupbox.Controls["radioButtonAdvancedModeObjectCounter"] as RadioButton;
-            _dbgSettingRadioButton[1] = advancedModeGroupbox.Controls["radioButtonAdvancedModeCheckInfo"] as RadioButton;
-            _dbgSettingRadioButton[2] = advancedModeGroupbox.Controls["radioButtonAdvancedModeMapInfo"] as RadioButton;
-            _dbgSettingRadioButton[3] = advancedModeGroupbox.Controls["radioButtonAdvancedModeStageInfo"] as RadioButton;
-            _dbgSettingRadioButton[4] = advancedModeGroupbox.Controls["radioButtonAdvancedModeEffectInfo"] as RadioButton;
-            _dbgSettingRadioButton[5] = advancedModeGroupbox.Controls["radioButtonAdvancedModeEnemyInfo"] as RadioButton;
-            for (int i = 0; i < _dbgSettingRadioButton.Length; i++)
+            _advancedModeSettingRadioButtons = new RadioButton[6];
+            _advancedModeSettingRadioButtons[0] = advancedModeGroupbox.Controls["radioButtonAdvancedModeObjectCounter"] as RadioButton;
+            _advancedModeSettingRadioButtons[1] = advancedModeGroupbox.Controls["radioButtonAdvancedModeCheckInfo"] as RadioButton;
+            _advancedModeSettingRadioButtons[2] = advancedModeGroupbox.Controls["radioButtonAdvancedModeMapInfo"] as RadioButton;
+            _advancedModeSettingRadioButtons[3] = advancedModeGroupbox.Controls["radioButtonAdvancedModeStageInfo"] as RadioButton;
+            _advancedModeSettingRadioButtons[4] = advancedModeGroupbox.Controls["radioButtonAdvancedModeEffectInfo"] as RadioButton;
+            _advancedModeSettingRadioButtons[5] = advancedModeGroupbox.Controls["radioButtonAdvancedModeEnemyInfo"] as RadioButton;
+            for (int i = 0; i < _advancedModeSettingRadioButtons.Length; i++)
             {
                 byte localIndex = (byte)i;
-                _dbgSettingRadioButton[i].Click += (sender, e) =>
+                _advancedModeSettingRadioButtons[i].Click += (sender, e) =>
                 {
                     Config.Stream.SetValue((byte)1, Config.Debug.AdvancedModeAddress);
                     Config.Stream.SetValue(localIndex, Config.Debug.AdvancedModeSettingAddress);
@@ -89,10 +89,10 @@ namespace SM64_Diagnostic.Managers
             if (!updateView)
                 return;
 
-            _spawnDebugCheckbox.Checked = Config.Stream.GetByte(Config.Debug.AdvancedModeSettingAddress) == 0x03
+            _spawnModeCheckbox.Checked = Config.Stream.GetByte(Config.Debug.AdvancedModeSettingAddress) == 0x03
                  && Config.Stream.GetByte(Config.Debug.SpawnModeAddress) == 0x01;
-            _classicCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ClassicModeAddress) == 0x01;
-            _resourceCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ResourceModeAddress) == 0x01;
+            _classicModeCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ClassicModeAddress) == 0x01;
+            _resourceMeterCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ResourceModeAddress) == 0x01;
             _stageSelectCheckbox.Checked = Config.Stream.GetByte(Config.Debug.StageSelectAddress) == 0x01;
             _freeMovementCheckbox.Checked = Config.Stream.GetUInt16(Config.Debug.FreeMovementAddress) == Config.Debug.FreeMovementOnValue;
 
@@ -100,14 +100,14 @@ namespace SM64_Diagnostic.Managers
             var on = Config.Stream.GetByte(Config.Debug.AdvancedModeAddress);
             if (on % 2 != 0)
             {
-                if (setting > 0 && setting < _dbgSettingRadioButton.Length)
-                    _dbgSettingRadioButton[setting].Checked = true;
+                if (setting > 0 && setting < _advancedModeSettingRadioButtons.Length)
+                    _advancedModeSettingRadioButtons[setting].Checked = true;
                 else
-                    _dbgSettingRadioButton[0].Checked = true;
+                    _advancedModeSettingRadioButtons[0].Checked = true;
             }
             else
             {
-                _dbgSettingRadioButtonOff.Checked = true;
+                _advancedModeOffRadioButton.Checked = true;
             }
 
             base.Update();
