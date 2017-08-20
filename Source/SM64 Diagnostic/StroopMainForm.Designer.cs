@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -992,6 +992,7 @@ namespace SM64_Diagnostic
             this.splitContainerDebug.Panel1.SuspendLayout();
             this.splitContainerDebug.Panel2.SuspendLayout();
             this.splitContainerDebug.SuspendLayout();
+            this.groupBoxMiscDebug.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -7097,10 +7098,6 @@ namespace SM64_Diagnostic
             // tabPageDebug
             // 
             this.tabPageDebug.Controls.Add(this.checkBoxDbgResource);
-            this.tabPageDebug.Controls.Add(this.checkBoxDbgFreeMovement);
-            this.tabPageDebug.Controls.Add(this.checkBoxDbgStageSelect);
-            this.tabPageDebug.Controls.Add(this.checkBoxDbgClassicDbg);
-            this.tabPageDebug.Controls.Add(this.checkBoxDbgSpawnDbg);
             this.tabPageDebug.Controls.Add(this.panelDebugBorder);
             this.tabPageDebug.Controls.Add(this.splitContainerDebug);
             this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
@@ -7224,7 +7221,7 @@ namespace SM64_Diagnostic
             // checkBoxDbgFreeMovement
             // 
             this.checkBoxDbgFreeMovement.AutoSize = true;
-            this.checkBoxDbgFreeMovement.Location = new System.Drawing.Point(243, 125);
+            this.checkBoxDbgFreeMovement.Location = new System.Drawing.Point(6, 96);
             this.checkBoxDbgFreeMovement.Name = "checkBoxDbgFreeMovement";
             this.checkBoxDbgFreeMovement.Size = new System.Drawing.Size(100, 17);
             this.checkBoxDbgFreeMovement.TabIndex = 24;
@@ -7234,7 +7231,7 @@ namespace SM64_Diagnostic
             // checkBoxDbgStageSelect
             // 
             this.checkBoxDbgStageSelect.AutoSize = true;
-            this.checkBoxDbgStageSelect.Location = new System.Drawing.Point(243, 100);
+            this.checkBoxDbgStageSelect.Location = new System.Drawing.Point(6, 71);
             this.checkBoxDbgStageSelect.Name = "checkBoxDbgStageSelect";
             this.checkBoxDbgStageSelect.Size = new System.Drawing.Size(87, 17);
             this.checkBoxDbgStageSelect.TabIndex = 24;
@@ -7244,7 +7241,7 @@ namespace SM64_Diagnostic
             // checkBoxDbgClassicDbg
             // 
             this.checkBoxDbgClassicDbg.AutoSize = true;
-            this.checkBoxDbgClassicDbg.Location = new System.Drawing.Point(243, 25);
+            this.checkBoxDbgClassicDbg.Location = new System.Drawing.Point(6, 21);
             this.checkBoxDbgClassicDbg.Name = "checkBoxDbgClassicDbg";
             this.checkBoxDbgClassicDbg.Size = new System.Drawing.Size(94, 17);
             this.checkBoxDbgClassicDbg.TabIndex = 23;
@@ -7254,7 +7251,7 @@ namespace SM64_Diagnostic
             // checkBoxDbgSpawnDbg
             // 
             this.checkBoxDbgSpawnDbg.AutoSize = true;
-            this.checkBoxDbgSpawnDbg.Location = new System.Drawing.Point(243, 75);
+            this.checkBoxDbgSpawnDbg.Location = new System.Drawing.Point(6, 46);
             this.checkBoxDbgSpawnDbg.Name = "checkBoxDbgSpawnDbg";
             this.checkBoxDbgSpawnDbg.Size = new System.Drawing.Size(94, 17);
             this.checkBoxDbgSpawnDbg.TabIndex = 12;
@@ -7829,8 +7826,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9665,9 +9662,13 @@ namespace SM64_Diagnostic
             // 
             // groupBoxMiscDebug
             // 
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxDbgFreeMovement);
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxDbgSpawnDbg);
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxDbgStageSelect);
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxDbgClassicDbg);
             this.groupBoxMiscDebug.Location = new System.Drawing.Point(193, 254);
             this.groupBoxMiscDebug.Name = "groupBoxMiscDebug";
-            this.groupBoxMiscDebug.Size = new System.Drawing.Size(125, 184);
+            this.groupBoxMiscDebug.Size = new System.Drawing.Size(117, 125);
             this.groupBoxMiscDebug.TabIndex = 38;
             this.groupBoxMiscDebug.TabStop = false;
             this.groupBoxMiscDebug.Text = "Misc Debug";
@@ -10007,6 +10008,8 @@ namespace SM64_Diagnostic
             this.splitContainerDebug.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).EndInit();
             this.splitContainerDebug.ResumeLayout(false);
+            this.groupBoxMiscDebug.ResumeLayout(false);
+            this.groupBoxMiscDebug.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

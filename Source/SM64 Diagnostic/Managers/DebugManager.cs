@@ -24,14 +24,16 @@ namespace SM64_Diagnostic.Managers
 
             GroupBox advancedModeGroupbox = splitContainerDebug.Panel1.Controls["groupBoxAdvancedMode"] as GroupBox;
 
-            _spawnDebugCheckbox = tabControl.Controls["checkBoxDbgSpawnDbg"] as CheckBox;
+            GroupBox miscDebugGroupbox = splitContainerDebug.Panel1.Controls["groupBoxMiscDebug"] as GroupBox;
+
+            _spawnDebugCheckbox = miscDebugGroupbox.Controls["checkBoxDbgSpawnDbg"] as CheckBox;
             _spawnDebugCheckbox.Click += (sender, e) =>
             {
                 Config.Stream.SetValue(_spawnDebugCheckbox.Checked ? (byte)0x03 : (byte)0x00, Config.Debug.AdvancedModeSettingAddress);
                 Config.Stream.SetValue(_spawnDebugCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.SpawnModeAddress);
             };
 
-            _classicCheckbox = tabControl.Controls["checkBoxDbgClassicDbg"] as CheckBox;
+            _classicCheckbox = miscDebugGroupbox.Controls["checkBoxDbgClassicDbg"] as CheckBox;
             _classicCheckbox.Click += (sender, e) =>
             {
                 Config.Stream.SetValue(_classicCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ClassicModeAddress);
@@ -43,13 +45,13 @@ namespace SM64_Diagnostic.Managers
                 Config.Stream.SetValue(_resourceCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ResourceModeAddress);
             };
 
-            _stageSelectCheckbox = tabControl.Controls["checkBoxDbgStageSelect"] as CheckBox;
+            _stageSelectCheckbox = miscDebugGroupbox.Controls["checkBoxDbgStageSelect"] as CheckBox;
             _stageSelectCheckbox.Click += (sender, e) =>
             {
                 Config.Stream.SetValue(_stageSelectCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.StageSelectAddress);
             };
 
-            _freeMovementCheckbox = tabControl.Controls["checkBoxDbgFreeMovement"] as CheckBox;
+            _freeMovementCheckbox = miscDebugGroupbox.Controls["checkBoxDbgFreeMovement"] as CheckBox;
             _freeMovementCheckbox.Click += (sender, e) => 
             {
                 Config.Stream.SetValue(
