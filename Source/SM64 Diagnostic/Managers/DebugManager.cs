@@ -140,7 +140,19 @@ namespace SM64_Diagnostic.Managers
             }
 
             // Resource meter
-
+            byte resourceMeterOn = Config.Stream.GetByte(Config.Debug.ResourceModeAddress);
+            ushort resourceMeterSetting = Config.Stream.GetUInt16(Config.Debug.ResourceModeSettingAddress);
+            if (resourceMeterOn != 0)
+            {
+                if (resourceMeterSetting != 0)
+                    _resourceMeter2RadioButton.Checked = true;
+                else
+                    _resourceMeter1RadioButton.Checked = true;
+            }
+            else
+            {
+                _resourceMeterOffRadioButton.Checked = true;
+            }
 
             // Misc debug
             _classicModeCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ClassicModeAddress) == 0x01;
