@@ -12,9 +12,9 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint AdvancedModeAddressUS;
         public uint AdvancedModeAddressJP;
 
-        public uint SettingAddress { get { return Config.SwitchRomVersion(SettingAddressUS, SettingAddressJP); } }
-        public uint SettingAddressUS;
-        public uint SettingAddressJP;
+        public uint AdvancedModeSettingAddress { get { return Config.SwitchRomVersion(AdvancedModeSettingAddressUS, AdvancedModeSettingAddressJP); } }
+        public uint AdvancedModeSettingAddressUS;
+        public uint AdvancedModeSettingAddressJP;
 
         public uint SpawnModeAddress { get { return Config.SwitchRomVersion(SpawnModeAddressUS, SpawnModeAddressJP); } }
         public uint SpawnModeAddressUS;

@@ -23,7 +23,7 @@ namespace SM64_Diagnostic.Managers
             _spawnDebugCheckbox = tabControl.Controls["checkBoxDbgSpawnDbg"] as CheckBox;
             _spawnDebugCheckbox.Click += (sender, e) =>
             {
-                Config.Stream.SetValue(_spawnDebugCheckbox.Checked ? (byte)0x03 : (byte)0x00, Config.Debug.SettingAddress);
+                Config.Stream.SetValue(_spawnDebugCheckbox.Checked ? (byte)0x03 : (byte)0x00, Config.Debug.AdvancedModeSettingAddress);
                 Config.Stream.SetValue(_spawnDebugCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.SpawnModeAddress);
             };
 
@@ -57,7 +57,7 @@ namespace SM64_Diagnostic.Managers
             _dbgSettingRadioButtonOff.Click += (sender, e) =>
             {
                 Config.Stream.SetValue((byte)0, Config.Debug.AdvancedModeAddress);
-                Config.Stream.SetValue((byte)0, Config.Debug.SettingAddress);
+                Config.Stream.SetValue((byte)0, Config.Debug.AdvancedModeSettingAddress);
             };
 
             _dbgSettingRadioButton = new RadioButton[6];
@@ -73,7 +73,7 @@ namespace SM64_Diagnostic.Managers
                 _dbgSettingRadioButton[i].Click += (sender, e) =>
                 {
                     Config.Stream.SetValue((byte)1, Config.Debug.AdvancedModeAddress);
-                    Config.Stream.SetValue(localIndex, Config.Debug.SettingAddress);
+                    Config.Stream.SetValue(localIndex, Config.Debug.AdvancedModeSettingAddress);
                 };
             }
         }
@@ -83,14 +83,14 @@ namespace SM64_Diagnostic.Managers
             if (!updateView)
                 return;
 
-            _spawnDebugCheckbox.Checked = Config.Stream.GetByte(Config.Debug.SettingAddress) == 0x03
+            _spawnDebugCheckbox.Checked = Config.Stream.GetByte(Config.Debug.AdvancedModeSettingAddress) == 0x03
                  && Config.Stream.GetByte(Config.Debug.SpawnModeAddress) == 0x01;
             _classicCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ClassicModeAddress) == 0x01;
             _resourceCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ResourceModeAddress) == 0x01;
             _stageSelectCheckbox.Checked = Config.Stream.GetByte(Config.Debug.StageSelectAddress) == 0x01;
             _freeMovementCheckbox.Checked = Config.Stream.GetUInt16(Config.Debug.FreeMovementAddress) == Config.Debug.FreeMovementOnValue;
 
-            var setting = Config.Stream.GetByte(Config.Debug.SettingAddress);
+            var setting = Config.Stream.GetByte(Config.Debug.AdvancedModeSettingAddress);
             var on = Config.Stream.GetByte(Config.Debug.AdvancedModeAddress);
             if (on % 2 != 0)
             {

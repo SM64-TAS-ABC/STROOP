@@ -476,11 +476,11 @@ namespace SM64_Diagnostic.Utilities
                                     Config.Debug.AdvancedModeAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "SettingAddressUS":
-                                    Config.Debug.SettingAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                case "AdvancedModeSettingAddressUS":
+                                    Config.Debug.AdvancedModeSettingAddressUS = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "SettingAddressJP":
-                                    Config.Debug.SettingAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                case "AdvancedModeSettingAddressJP":
+                                    Config.Debug.AdvancedModeSettingAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "SpawnModeAddressUS":

@@ -150,8 +150,8 @@
     <AdvancedModeAddressUS>0x8033D263</AdvancedModeAddressUS>
     <AdvancedModeAddressJP>0x8033BEF3</AdvancedModeAddressJP>
 
-    <SettingAddressUS>0x80330E94</SettingAddressUS>
-    <SettingAddressJP>0x8032FF34</SettingAddressJP>
+    <AdvancedModeSettingAddressUS>0x80330E94</AdvancedModeSettingAddressUS>
+    <AdvancedModeSettingAddressJP>0x8032FF34</AdvancedModeSettingAddressJP>
 
     <SpawnModeAddressUS>0x8033D2DF</SpawnModeAddressUS>
     <SpawnModeAddressJP>0x8033BF6F</SpawnModeAddressJP>
