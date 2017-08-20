@@ -224,6 +224,10 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("FlyGuyMinHeight"),
                 new DataContainer("FlyGuyMaxHeight"),
 
+                // Bobomb vars
+                new DataContainer("BobombBloatSize"),
+                new DataContainer("BobombRadius"),
+
                 // Hacked vars
                 new DataContainer("RngCallsPerFrame"),
             };
@@ -707,6 +711,18 @@ namespace SM64_Diagnostic.Managers
                                 int flyGuyOscillationTimer = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.FlyGuyOscillationTimerOffset);
                                 double temp = Config.FlyGuyData.GetMaxHeight(flyGuyOscillationTimer, objY);
                                 newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
+
+                        case "BobombBloatSize":
+                            {
+                                newText = "BobombBloatSize";
+                                break;
+                            }
+
+                        case "BobombRadius":
+                            {
+                                newText = "BobombRadius";
                                 break;
                             }
 
