@@ -20,7 +20,7 @@ namespace SM64_Diagnostic.Managers
         public DebugManager(List<WatchVariable> variableData, Control tabControl, NoTearFlowLayoutPanel variableTable)
             : base(variableData, variableTable)
         {
-            var panel = tabControl.Controls["NoTearFlowLayoutPanelDebugDisplayType"];
+            GroupBox advancedModeGroupbox = tabControl.Controls["groupBoxDebugAdvancedMode"] as GroupBox;
 
             _spawnDebugCheckbox = tabControl.Controls["checkBoxDbgSpawnDbg"] as CheckBox;
             _spawnDebugCheckbox.Click += (sender, e) =>
@@ -55,7 +55,7 @@ namespace SM64_Diagnostic.Managers
                     Config.Debug.FreeMovementAddress);
             };
 
-            _dbgSettingRadioButtonOff = panel.Controls["radioButtonDbgOff"] as RadioButton;
+            _dbgSettingRadioButtonOff = advancedModeGroupbox.Controls["radioButtonDbgOff"] as RadioButton;
             _dbgSettingRadioButtonOff.Click += (sender, e) =>
             {
                 Config.Stream.SetValue((byte)0, Config.Debug.AdvancedModeAddress);
@@ -63,12 +63,12 @@ namespace SM64_Diagnostic.Managers
             };
 
             _dbgSettingRadioButton = new RadioButton[6];
-            _dbgSettingRadioButton[0] = panel.Controls["radioButtonDbgObjCnt"] as RadioButton;
-            _dbgSettingRadioButton[1] = panel.Controls["radioButtonDbgChkInfo"] as RadioButton;
-            _dbgSettingRadioButton[2] = panel.Controls["radioButtonDbgMapInfo"] as RadioButton;
-            _dbgSettingRadioButton[3] = panel.Controls["radioButtonDbgStgInfo"] as RadioButton;
-            _dbgSettingRadioButton[4] = panel.Controls["radioButtonDbgFxInfo"] as RadioButton;
-            _dbgSettingRadioButton[5] = panel.Controls["radioButtonDbgEnemyInfo"] as RadioButton;
+            _dbgSettingRadioButton[0] = advancedModeGroupbox.Controls["radioButtonDbgObjCnt"] as RadioButton;
+            _dbgSettingRadioButton[1] = advancedModeGroupbox.Controls["radioButtonDbgChkInfo"] as RadioButton;
+            _dbgSettingRadioButton[2] = advancedModeGroupbox.Controls["radioButtonDbgMapInfo"] as RadioButton;
+            _dbgSettingRadioButton[3] = advancedModeGroupbox.Controls["radioButtonDbgStgInfo"] as RadioButton;
+            _dbgSettingRadioButton[4] = advancedModeGroupbox.Controls["radioButtonDbgFxInfo"] as RadioButton;
+            _dbgSettingRadioButton[5] = advancedModeGroupbox.Controls["radioButtonDbgEnemyInfo"] as RadioButton;
             for (int i = 0; i < _dbgSettingRadioButton.Length; i++)
             {
                 byte localIndex = (byte)i;

@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -513,7 +513,6 @@ namespace SM64_Diagnostic
             this.label2 = new System.Windows.Forms.Label();
             this.panelDebugBorder = new System.Windows.Forms.Panel();
             this.pictureBoxDebug = new SM64_Diagnostic.Controls.IntPictureBox();
-            this.NoTearFlowLayoutPanelDebugDisplayType = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.radioButtonDbgOff = new System.Windows.Forms.RadioButton();
             this.radioButtonDbgObjCnt = new System.Windows.Forms.RadioButton();
             this.radioButtonDbgChkInfo = new System.Windows.Forms.RadioButton();
@@ -722,6 +721,7 @@ namespace SM64_Diagnostic
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.noTearFlowLayoutPanelDebug = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.groupBoxDebugAdvancedMode = new System.Windows.Forms.GroupBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -950,7 +950,6 @@ namespace SM64_Diagnostic
             this.tabPageDebug.SuspendLayout();
             this.panelDebugBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
-            this.NoTearFlowLayoutPanelDebugDisplayType.SuspendLayout();
             this.tabPageMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).BeginInit();
             this.splitContainerMap.Panel1.SuspendLayout();
@@ -986,6 +985,7 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.groupBoxDebugAdvancedMode.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -7090,6 +7090,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageDebug
             // 
+            this.tabPageDebug.Controls.Add(this.groupBoxDebugAdvancedMode);
             this.tabPageDebug.Controls.Add(this.noTearFlowLayoutPanelDebug);
             this.tabPageDebug.Controls.Add(this.checkBoxDbgResource);
             this.tabPageDebug.Controls.Add(this.checkBoxDbgFreeMovement);
@@ -7098,7 +7099,6 @@ namespace SM64_Diagnostic
             this.tabPageDebug.Controls.Add(this.checkBoxDbgSpawnDbg);
             this.tabPageDebug.Controls.Add(this.label2);
             this.tabPageDebug.Controls.Add(this.panelDebugBorder);
-            this.tabPageDebug.Controls.Add(this.NoTearFlowLayoutPanelDebugDisplayType);
             this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
             this.tabPageDebug.Name = "tabPageDebug";
             this.tabPageDebug.Padding = new System.Windows.Forms.Padding(3);
@@ -7189,28 +7189,11 @@ namespace SM64_Diagnostic
             this.pictureBoxDebug.TabIndex = 0;
             this.pictureBoxDebug.TabStop = false;
             // 
-            // NoTearFlowLayoutPanelDebugDisplayType
-            // 
-            this.NoTearFlowLayoutPanelDebugDisplayType.AutoScroll = true;
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgOff);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgObjCnt);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgChkInfo);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgMapInfo);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgStgInfo);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgFxInfo);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Controls.Add(this.radioButtonDbgEnemyInfo);
-            this.NoTearFlowLayoutPanelDebugDisplayType.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelDebugDisplayType.Location = new System.Drawing.Point(71, 23);
-            this.NoTearFlowLayoutPanelDebugDisplayType.Name = "NoTearFlowLayoutPanelDebugDisplayType";
-            this.NoTearFlowLayoutPanelDebugDisplayType.Size = new System.Drawing.Size(167, 177);
-            this.NoTearFlowLayoutPanelDebugDisplayType.TabIndex = 11;
-            this.NoTearFlowLayoutPanelDebugDisplayType.WrapContents = false;
-            // 
             // radioButtonDbgOff
             // 
             this.radioButtonDbgOff.AutoSize = true;
             this.radioButtonDbgOff.Checked = true;
-            this.radioButtonDbgOff.Location = new System.Drawing.Point(3, 3);
+            this.radioButtonDbgOff.Location = new System.Drawing.Point(11, 19);
             this.radioButtonDbgOff.Name = "radioButtonDbgOff";
             this.radioButtonDbgOff.Size = new System.Drawing.Size(39, 17);
             this.radioButtonDbgOff.TabIndex = 1;
@@ -7221,7 +7204,7 @@ namespace SM64_Diagnostic
             // radioButtonDbgObjCnt
             // 
             this.radioButtonDbgObjCnt.AutoSize = true;
-            this.radioButtonDbgObjCnt.Location = new System.Drawing.Point(3, 26);
+            this.radioButtonDbgObjCnt.Location = new System.Drawing.Point(11, 42);
             this.radioButtonDbgObjCnt.Name = "radioButtonDbgObjCnt";
             this.radioButtonDbgObjCnt.Size = new System.Drawing.Size(96, 17);
             this.radioButtonDbgObjCnt.TabIndex = 5;
@@ -7231,7 +7214,7 @@ namespace SM64_Diagnostic
             // radioButtonDbgChkInfo
             // 
             this.radioButtonDbgChkInfo.AutoSize = true;
-            this.radioButtonDbgChkInfo.Location = new System.Drawing.Point(3, 49);
+            this.radioButtonDbgChkInfo.Location = new System.Drawing.Point(11, 65);
             this.radioButtonDbgChkInfo.Name = "radioButtonDbgChkInfo";
             this.radioButtonDbgChkInfo.Size = new System.Drawing.Size(77, 17);
             this.radioButtonDbgChkInfo.TabIndex = 6;
@@ -7241,7 +7224,7 @@ namespace SM64_Diagnostic
             // radioButtonDbgMapInfo
             // 
             this.radioButtonDbgMapInfo.AutoSize = true;
-            this.radioButtonDbgMapInfo.Location = new System.Drawing.Point(3, 72);
+            this.radioButtonDbgMapInfo.Location = new System.Drawing.Point(11, 88);
             this.radioButtonDbgMapInfo.Name = "radioButtonDbgMapInfo";
             this.radioButtonDbgMapInfo.Size = new System.Drawing.Size(67, 17);
             this.radioButtonDbgMapInfo.TabIndex = 7;
@@ -7251,7 +7234,7 @@ namespace SM64_Diagnostic
             // radioButtonDbgStgInfo
             // 
             this.radioButtonDbgStgInfo.AutoSize = true;
-            this.radioButtonDbgStgInfo.Location = new System.Drawing.Point(3, 95);
+            this.radioButtonDbgStgInfo.Location = new System.Drawing.Point(11, 111);
             this.radioButtonDbgStgInfo.Name = "radioButtonDbgStgInfo";
             this.radioButtonDbgStgInfo.Size = new System.Drawing.Size(74, 17);
             this.radioButtonDbgStgInfo.TabIndex = 8;
@@ -7261,7 +7244,7 @@ namespace SM64_Diagnostic
             // radioButtonDbgFxInfo
             // 
             this.radioButtonDbgFxInfo.AutoSize = true;
-            this.radioButtonDbgFxInfo.Location = new System.Drawing.Point(3, 118);
+            this.radioButtonDbgFxInfo.Location = new System.Drawing.Point(11, 134);
             this.radioButtonDbgFxInfo.Name = "radioButtonDbgFxInfo";
             this.radioButtonDbgFxInfo.Size = new System.Drawing.Size(74, 17);
             this.radioButtonDbgFxInfo.TabIndex = 9;
@@ -7271,7 +7254,7 @@ namespace SM64_Diagnostic
             // radioButtonDbgEnemyInfo
             // 
             this.radioButtonDbgEnemyInfo.AutoSize = true;
-            this.radioButtonDbgEnemyInfo.Location = new System.Drawing.Point(3, 141);
+            this.radioButtonDbgEnemyInfo.Location = new System.Drawing.Point(11, 157);
             this.radioButtonDbgEnemyInfo.Name = "radioButtonDbgEnemyInfo";
             this.radioButtonDbgEnemyInfo.Size = new System.Drawing.Size(78, 17);
             this.radioButtonDbgEnemyInfo.TabIndex = 10;
@@ -7822,8 +7805,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9632,6 +9615,22 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(223, 254);
             this.noTearFlowLayoutPanelDebug.TabIndex = 26;
             // 
+            // groupBoxDebugAdvancedMode
+            // 
+            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgOff);
+            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgEnemyInfo);
+            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgObjCnt);
+            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgFxInfo);
+            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgChkInfo);
+            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgStgInfo);
+            this.groupBoxDebugAdvancedMode.Controls.Add(this.radioButtonDbgMapInfo);
+            this.groupBoxDebugAdvancedMode.Location = new System.Drawing.Point(73, 25);
+            this.groupBoxDebugAdvancedMode.Name = "groupBoxDebugAdvancedMode";
+            this.groupBoxDebugAdvancedMode.Size = new System.Drawing.Size(125, 184);
+            this.groupBoxDebugAdvancedMode.TabIndex = 38;
+            this.groupBoxDebugAdvancedMode.TabStop = false;
+            this.groupBoxDebugAdvancedMode.Text = "Advanced Mode";
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -9908,8 +9907,6 @@ namespace SM64_Diagnostic
             this.tabPageDebug.PerformLayout();
             this.panelDebugBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
-            this.NoTearFlowLayoutPanelDebugDisplayType.ResumeLayout(false);
-            this.NoTearFlowLayoutPanelDebugDisplayType.PerformLayout();
             this.tabPageMap.ResumeLayout(false);
             this.splitContainerMap.Panel1.ResumeLayout(false);
             this.splitContainerMap.Panel1.PerformLayout();
@@ -9963,6 +9960,8 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.groupBoxDebugAdvancedMode.ResumeLayout(false);
+            this.groupBoxDebugAdvancedMode.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -10074,7 +10073,6 @@ namespace SM64_Diagnostic
         private TabPage tabPageHacks;
         private CheckedListBox checkedListBoxHacks;
         private Label labelPureInterpretterRequire;
-        private NoTearFlowLayoutPanel NoTearFlowLayoutPanelDebugDisplayType;
         private Button buttonGoToV3;
         private Button buttonGoToV2;
         private Button buttonGoToV1;
@@ -10658,6 +10656,7 @@ namespace SM64_Diagnostic
         private Label labelRecordTriangleCount;
         private CheckBox checkBoxRepeatFirstVertex;
         private NoTearFlowLayoutPanel noTearFlowLayoutPanelDebug;
+        private GroupBox groupBoxDebugAdvancedMode;
     }
 }
 
