@@ -25,7 +25,7 @@ namespace SM64_Diagnostic
         InputImageGui _inputImageGui = new InputImageGui();
         FileImageGui _fileImageGui = new FileImageGui();
         List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, 
-            _actionsData, _waterData, _inputData, _fileData, _quarterFrameData, _camHackData;
+            _debugData, _actionsData, _waterData, _inputData, _fileData, _quarterFrameData, _camHackData;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
         List<RomHack> _romHacks;
@@ -122,7 +122,7 @@ namespace SM64_Diagnostic
             currentContext.MiscManager = _miscManager = new MiscManager(_miscData, NoTearFlowLayoutPanelMisc);
             currentContext.CameraManager = _cameraManager = new CameraManager(_cameraData, tabPageCamera, NoTearFlowLayoutPanelCamera);
             currentContext.TriangleManager = _triangleManager = new TriangleManager(tabPageTriangles, _triangleData, NoTearFlowLayoutPanelTriangles);
-            currentContext.DebugManager = _debugManager = new DebugManager(tabPageDebug);
+            currentContext.DebugManager = _debugManager = new DebugManager(_debugData, tabPageDebug, noTearFlowLayoutPanelDebug);
             currentContext.PuManager = _puManager = new PuManager(groupBoxPuController);
             currentContext.FileManager = _fileManager = new FileManager(_fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
             currentContext.QuarterFrameManager = _quarterFrameManager = new DataManager(_quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
@@ -215,9 +215,11 @@ namespace SM64_Diagnostic
             _quarterFrameData = XmlConfigParser.OpenWatchVarData(@"Config/QuarterFrameData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Camera Hack Data", statusNum++);
             _camHackData = XmlConfigParser.OpenWatchVarData(@"Config/CamHackData.xml", "MiscDataSchema.xsd");
-            loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
-            _triangleData = XmlConfigParser.OpenWatchVarData(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Triangles Data", statusNum++);
+            _triangleData = XmlConfigParser.OpenWatchVarData(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading Debug Data", statusNum++);
+            _debugData = XmlConfigParser.OpenWatchVarData(@"Config/MarioData.xml", "MarioDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
             _hudData = XmlConfigParser.OpenWatchVarData(@"Config/HudData.xml", "HudDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Map Associations", statusNum++);
             _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");

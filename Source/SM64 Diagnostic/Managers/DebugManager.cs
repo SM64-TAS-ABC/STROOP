@@ -7,16 +7,18 @@ using SM64_Diagnostic.Utilities;
 using System.Windows.Forms;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Structs.Configurations;
+using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic.Managers
 {
-    public class DebugManager
+    public class DebugManager : DataManager
     {
         CheckBox _spawnDebugCheckbox, _classicCheckbox, _resourceCheckbox, _stageSelectCheckbox, _freeMovementCheckbox;
         RadioButton[] _dbgSettingRadioButton;
         RadioButton _dbgSettingRadioButtonOff;
 
-        public DebugManager(Control tabControl)
+        public DebugManager(List<WatchVariable> variableData, Control tabControl, NoTearFlowLayoutPanel variableTable)
+            : base(variableData, variableTable)
         {
             var panel = tabControl.Controls["NoTearFlowLayoutPanelDebugDisplayType"];
 
