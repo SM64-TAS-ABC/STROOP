@@ -504,6 +504,13 @@ namespace SM64_Diagnostic.Utilities
                                     Config.Debug.ResourceModeAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
+                                case "ResourceModeSettingAddressUS":
+                                    Config.Debug.ResourceModeSettingAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "ResourceModeSettingAddressJP":
+                                    Config.Debug.ResourceModeSettingAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
                                 case "StageSelectAddressUS":
                                     Config.Debug.StageSelectAddressUS = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

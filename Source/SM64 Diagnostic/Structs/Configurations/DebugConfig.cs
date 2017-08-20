@@ -28,6 +28,10 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint ResourceModeAddressUS;
         public uint ResourceModeAddressJP;
 
+        public uint ResourceModeSettingAddress { get { return Config.SwitchRomVersion(ResourceModeSettingAddressUS, ResourceModeSettingAddressJP); } }
+        public uint ResourceModeSettingAddressUS;
+        public uint ResourceModeSettingAddressJP;
+
         public uint StageSelectAddress { get { return Config.SwitchRomVersion(StageSelectAddressUS, StageSelectAddressJP); } }
         public uint StageSelectAddressUS;
         public uint StageSelectAddressJP;
