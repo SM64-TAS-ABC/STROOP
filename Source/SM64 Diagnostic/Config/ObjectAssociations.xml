@@ -881,9 +881,13 @@
     <SpawnCode gfxId="0x00"/>
     <Image path="Flame Spawner.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13001124" name="Flame">
+  <Object behaviorScriptAddress="0x13001124" name="Orange Flame">
     <SpawnCode gfxId="0x90"/>
     <Image path="Orange Flame.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001124" name="Blue Flame" subType="1">
+    <SpawnCode gfxId="0x90"/>
+    <Image path="Blue Flame.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001168" name="Orange Podoboo Spawner">
     <SpawnCode gfxId="0x00"/>
