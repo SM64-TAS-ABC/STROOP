@@ -724,9 +724,9 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButtonResourceMeterOff = new System.Windows.Forms.RadioButton();
+            this.radioButtonResourceMeter1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonResourceMeter2 = new System.Windows.Forms.RadioButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -7228,12 +7228,12 @@ namespace SM64_Diagnostic
             // 
             // groupBoxResourceMeter
             // 
-            this.groupBoxResourceMeter.Controls.Add(this.radioButton1);
-            this.groupBoxResourceMeter.Controls.Add(this.radioButton2);
-            this.groupBoxResourceMeter.Controls.Add(this.radioButton3);
+            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeterOff);
+            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeter1);
+            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeter2);
             this.groupBoxResourceMeter.Location = new System.Drawing.Point(41, 254);
             this.groupBoxResourceMeter.Name = "groupBoxResourceMeter";
-            this.groupBoxResourceMeter.Size = new System.Drawing.Size(125, 184);
+            this.groupBoxResourceMeter.Size = new System.Drawing.Size(104, 94);
             this.groupBoxResourceMeter.TabIndex = 38;
             this.groupBoxResourceMeter.TabStop = false;
             this.groupBoxResourceMeter.Text = "Resource Meter";
@@ -9680,37 +9680,37 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // radioButton1
+            // radioButtonResourceMeterOff
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(11, 21);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(39, 17);
-            this.radioButton1.TabIndex = 7;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Off";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonResourceMeterOff.AutoSize = true;
+            this.radioButtonResourceMeterOff.Checked = true;
+            this.radioButtonResourceMeterOff.Location = new System.Drawing.Point(11, 21);
+            this.radioButtonResourceMeterOff.Name = "radioButtonResourceMeterOff";
+            this.radioButtonResourceMeterOff.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonResourceMeterOff.TabIndex = 7;
+            this.radioButtonResourceMeterOff.TabStop = true;
+            this.radioButtonResourceMeterOff.Text = "Off";
+            this.radioButtonResourceMeterOff.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioButtonResourceMeter1
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(11, 44);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(96, 17);
-            this.radioButton2.TabIndex = 8;
-            this.radioButton2.Text = "Object Counter";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonResourceMeter1.AutoSize = true;
+            this.radioButtonResourceMeter1.Location = new System.Drawing.Point(11, 44);
+            this.radioButtonResourceMeter1.Name = "radioButtonResourceMeter1";
+            this.radioButtonResourceMeter1.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonResourceMeter1.TabIndex = 8;
+            this.radioButtonResourceMeter1.Text = "Meter 1";
+            this.radioButtonResourceMeter1.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioButtonResourceMeter2
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(11, 67);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(77, 17);
-            this.radioButton3.TabIndex = 9;
-            this.radioButton3.Text = "Check Info";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButtonResourceMeter2.AutoSize = true;
+            this.radioButtonResourceMeter2.Location = new System.Drawing.Point(11, 67);
+            this.radioButtonResourceMeter2.Name = "radioButtonResourceMeter2";
+            this.radioButtonResourceMeter2.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonResourceMeter2.TabIndex = 9;
+            this.radioButtonResourceMeter2.Text = "Meter 2";
+            this.radioButtonResourceMeter2.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -10748,9 +10748,9 @@ namespace SM64_Diagnostic
         private SplitContainer splitContainerDebug;
         private GroupBox groupBoxMiscDebug;
         private GroupBox groupBoxResourceMeter;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
-        private RadioButton radioButton3;
+        private RadioButton radioButtonResourceMeterOff;
+        private RadioButton radioButtonResourceMeter1;
+        private RadioButton radioButtonResourceMeter2;
     }
 }
 
