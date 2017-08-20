@@ -109,6 +109,8 @@ namespace SM64_Diagnostic.Managers
             {
                 _dbgSettingRadioButtonOff.Checked = true;
             }
+
+            base.Update();
         }
     }
 }

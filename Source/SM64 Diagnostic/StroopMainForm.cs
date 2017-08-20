@@ -218,7 +218,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Triangles Data", statusNum++);
             _triangleData = XmlConfigParser.OpenWatchVarData(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Debug Data", statusNum++);
-            _debugData = XmlConfigParser.OpenWatchVarData(@"Config/MarioData.xml", "MarioDataSchema.xsd");
+            _debugData = XmlConfigParser.OpenWatchVarData(@"Config/DebugData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
             _hudData = XmlConfigParser.OpenWatchVarData(@"Config/HudData.xml", "HudDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Map Associations", statusNum++);
