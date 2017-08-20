@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -7100,7 +7100,6 @@ namespace SM64_Diagnostic
             // 
             // tabPageDebug
             // 
-            this.tabPageDebug.Controls.Add(this.panelDebugBorder);
             this.tabPageDebug.Controls.Add(this.splitContainerDebug);
             this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
             this.tabPageDebug.Name = "tabPageDebug";
@@ -7112,7 +7111,7 @@ namespace SM64_Diagnostic
             // panelDebugBorder
             // 
             this.panelDebugBorder.Controls.Add(this.pictureBoxDebug);
-            this.panelDebugBorder.Location = new System.Drawing.Point(5, 5);
+            this.panelDebugBorder.Location = new System.Drawing.Point(4, 4);
             this.panelDebugBorder.Margin = new System.Windows.Forms.Padding(2);
             this.panelDebugBorder.Name = "panelDebugBorder";
             this.panelDebugBorder.Size = new System.Drawing.Size(57, 55);
@@ -7147,6 +7146,7 @@ namespace SM64_Diagnostic
             // splitContainerDebug.Panel1
             // 
             this.splitContainerDebug.Panel1.AutoScroll = true;
+            this.splitContainerDebug.Panel1.Controls.Add(this.panelDebugBorder);
             this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxMiscDebug);
             this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxResourceMeter);
             this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxAdvancedMode);
@@ -7903,8 +7903,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
