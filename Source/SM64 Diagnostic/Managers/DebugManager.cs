@@ -24,32 +24,32 @@ namespace SM64_Diagnostic.Managers
 
             GroupBox miscDebugGroupbox = splitContainerDebug.Panel1.Controls["groupBoxMiscDebug"] as GroupBox;
 
-            _spawnModeCheckbox = miscDebugGroupbox.Controls["checkBoxDbgSpawnDbg"] as CheckBox;
+            _spawnModeCheckbox = miscDebugGroupbox.Controls["checkBoxSpawnMode"] as CheckBox;
             _spawnModeCheckbox.Click += (sender, e) =>
             {
                 Config.Stream.SetValue(_spawnModeCheckbox.Checked ? (byte)0x03 : (byte)0x00, Config.Debug.AdvancedModeSettingAddress);
                 Config.Stream.SetValue(_spawnModeCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.SpawnModeAddress);
             };
 
-            _classicModeCheckbox = miscDebugGroupbox.Controls["checkBoxDbgClassicDbg"] as CheckBox;
+            _classicModeCheckbox = miscDebugGroupbox.Controls["checkBoxClassicMode"] as CheckBox;
             _classicModeCheckbox.Click += (sender, e) =>
             {
                 Config.Stream.SetValue(_classicModeCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ClassicModeAddress);
             };
 
-            _resourceMeterCheckbox = tabControl.Controls["checkBoxDbgResource"] as CheckBox;
+            _resourceMeterCheckbox = tabControl.Controls["checkBoxResourceMeter"] as CheckBox;
             _resourceMeterCheckbox.Click += (sender, e) =>
             {
                 Config.Stream.SetValue(_resourceMeterCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ResourceModeAddress);
             };
 
-            _stageSelectCheckbox = miscDebugGroupbox.Controls["checkBoxDbgStageSelect"] as CheckBox;
+            _stageSelectCheckbox = miscDebugGroupbox.Controls["checkBoxStageSelect"] as CheckBox;
             _stageSelectCheckbox.Click += (sender, e) =>
             {
                 Config.Stream.SetValue(_stageSelectCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.StageSelectAddress);
             };
 
-            _freeMovementCheckbox = miscDebugGroupbox.Controls["checkBoxDbgFreeMovement"] as CheckBox;
+            _freeMovementCheckbox = miscDebugGroupbox.Controls["checkBoxFreeMovement"] as CheckBox;
             _freeMovementCheckbox.Click += (sender, e) => 
             {
                 Config.Stream.SetValue(
