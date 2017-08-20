@@ -743,7 +743,9 @@ namespace SM64_Diagnostic.Managers
 
                         case "BobombRadius":
                             {
-                                newText = "BobombRadius";
+                                float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
+                                float radius = 32 + scale * 65;
+                                newText = radius.ToString();
                                 break;
                             }
 
