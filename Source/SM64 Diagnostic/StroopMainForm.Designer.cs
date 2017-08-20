@@ -516,13 +516,13 @@ namespace SM64_Diagnostic
             this.checkBoxDbgClassicDbg = new System.Windows.Forms.CheckBox();
             this.groupBoxResourceMeter = new System.Windows.Forms.GroupBox();
             this.groupBoxAdvancedMode = new System.Windows.Forms.GroupBox();
-            this.radioButtonDbgOff = new System.Windows.Forms.RadioButton();
-            this.radioButtonDbgEnemyInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonDbgObjCnt = new System.Windows.Forms.RadioButton();
-            this.radioButtonDbgFxInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonDbgChkInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonDbgStgInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonDbgMapInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeOff = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeEnemyInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeObjectCounter = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeEffectInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeCheckInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeStageInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeMapInfo = new System.Windows.Forms.RadioButton();
             this.noTearFlowLayoutPanelDebug = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageMap = new System.Windows.Forms.TabPage();
             this.splitContainerMap = new System.Windows.Forms.SplitContainer();
@@ -7240,13 +7240,13 @@ namespace SM64_Diagnostic
             // 
             // groupBoxAdvancedMode
             // 
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgOff);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgEnemyInfo);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgObjCnt);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgFxInfo);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgChkInfo);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgStgInfo);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonDbgMapInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeOff);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeEnemyInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeObjectCounter);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeEffectInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeCheckInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeStageInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeMapInfo);
             this.groupBoxAdvancedMode.Location = new System.Drawing.Point(6, 64);
             this.groupBoxAdvancedMode.Name = "groupBoxAdvancedMode";
             this.groupBoxAdvancedMode.Size = new System.Drawing.Size(125, 184);
@@ -7254,77 +7254,77 @@ namespace SM64_Diagnostic
             this.groupBoxAdvancedMode.TabStop = false;
             this.groupBoxAdvancedMode.Text = "Advanced Mode";
             // 
-            // radioButtonDbgOff
+            // radioButtonAdvancedModeOff
             // 
-            this.radioButtonDbgOff.AutoSize = true;
-            this.radioButtonDbgOff.Checked = true;
-            this.radioButtonDbgOff.Location = new System.Drawing.Point(11, 19);
-            this.radioButtonDbgOff.Name = "radioButtonDbgOff";
-            this.radioButtonDbgOff.Size = new System.Drawing.Size(39, 17);
-            this.radioButtonDbgOff.TabIndex = 1;
-            this.radioButtonDbgOff.TabStop = true;
-            this.radioButtonDbgOff.Text = "Off";
-            this.radioButtonDbgOff.UseVisualStyleBackColor = true;
+            this.radioButtonAdvancedModeOff.AutoSize = true;
+            this.radioButtonAdvancedModeOff.Checked = true;
+            this.radioButtonAdvancedModeOff.Location = new System.Drawing.Point(11, 19);
+            this.radioButtonAdvancedModeOff.Name = "radioButtonAdvancedModeOff";
+            this.radioButtonAdvancedModeOff.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonAdvancedModeOff.TabIndex = 1;
+            this.radioButtonAdvancedModeOff.TabStop = true;
+            this.radioButtonAdvancedModeOff.Text = "Off";
+            this.radioButtonAdvancedModeOff.UseVisualStyleBackColor = true;
             // 
-            // radioButtonDbgEnemyInfo
+            // radioButtonAdvancedModeEnemyInfo
             // 
-            this.radioButtonDbgEnemyInfo.AutoSize = true;
-            this.radioButtonDbgEnemyInfo.Location = new System.Drawing.Point(11, 157);
-            this.radioButtonDbgEnemyInfo.Name = "radioButtonDbgEnemyInfo";
-            this.radioButtonDbgEnemyInfo.Size = new System.Drawing.Size(78, 17);
-            this.radioButtonDbgEnemyInfo.TabIndex = 10;
-            this.radioButtonDbgEnemyInfo.Text = "Enemy Info";
-            this.radioButtonDbgEnemyInfo.UseVisualStyleBackColor = true;
+            this.radioButtonAdvancedModeEnemyInfo.AutoSize = true;
+            this.radioButtonAdvancedModeEnemyInfo.Location = new System.Drawing.Point(11, 157);
+            this.radioButtonAdvancedModeEnemyInfo.Name = "radioButtonAdvancedModeEnemyInfo";
+            this.radioButtonAdvancedModeEnemyInfo.Size = new System.Drawing.Size(78, 17);
+            this.radioButtonAdvancedModeEnemyInfo.TabIndex = 10;
+            this.radioButtonAdvancedModeEnemyInfo.Text = "Enemy Info";
+            this.radioButtonAdvancedModeEnemyInfo.UseVisualStyleBackColor = true;
             // 
-            // radioButtonDbgObjCnt
+            // radioButtonAdvancedModeObjectCounter
             // 
-            this.radioButtonDbgObjCnt.AutoSize = true;
-            this.radioButtonDbgObjCnt.Location = new System.Drawing.Point(11, 42);
-            this.radioButtonDbgObjCnt.Name = "radioButtonDbgObjCnt";
-            this.radioButtonDbgObjCnt.Size = new System.Drawing.Size(96, 17);
-            this.radioButtonDbgObjCnt.TabIndex = 5;
-            this.radioButtonDbgObjCnt.Text = "Object Counter";
-            this.radioButtonDbgObjCnt.UseVisualStyleBackColor = true;
+            this.radioButtonAdvancedModeObjectCounter.AutoSize = true;
+            this.radioButtonAdvancedModeObjectCounter.Location = new System.Drawing.Point(11, 42);
+            this.radioButtonAdvancedModeObjectCounter.Name = "radioButtonAdvancedModeObjectCounter";
+            this.radioButtonAdvancedModeObjectCounter.Size = new System.Drawing.Size(96, 17);
+            this.radioButtonAdvancedModeObjectCounter.TabIndex = 5;
+            this.radioButtonAdvancedModeObjectCounter.Text = "Object Counter";
+            this.radioButtonAdvancedModeObjectCounter.UseVisualStyleBackColor = true;
             // 
-            // radioButtonDbgFxInfo
+            // radioButtonAdvancedModeEffectInfo
             // 
-            this.radioButtonDbgFxInfo.AutoSize = true;
-            this.radioButtonDbgFxInfo.Location = new System.Drawing.Point(11, 134);
-            this.radioButtonDbgFxInfo.Name = "radioButtonDbgFxInfo";
-            this.radioButtonDbgFxInfo.Size = new System.Drawing.Size(74, 17);
-            this.radioButtonDbgFxInfo.TabIndex = 9;
-            this.radioButtonDbgFxInfo.Text = "Effect Info";
-            this.radioButtonDbgFxInfo.UseVisualStyleBackColor = true;
+            this.radioButtonAdvancedModeEffectInfo.AutoSize = true;
+            this.radioButtonAdvancedModeEffectInfo.Location = new System.Drawing.Point(11, 134);
+            this.radioButtonAdvancedModeEffectInfo.Name = "radioButtonAdvancedModeEffectInfo";
+            this.radioButtonAdvancedModeEffectInfo.Size = new System.Drawing.Size(74, 17);
+            this.radioButtonAdvancedModeEffectInfo.TabIndex = 9;
+            this.radioButtonAdvancedModeEffectInfo.Text = "Effect Info";
+            this.radioButtonAdvancedModeEffectInfo.UseVisualStyleBackColor = true;
             // 
-            // radioButtonDbgChkInfo
+            // radioButtonAdvancedModeCheckInfo
             // 
-            this.radioButtonDbgChkInfo.AutoSize = true;
-            this.radioButtonDbgChkInfo.Location = new System.Drawing.Point(11, 65);
-            this.radioButtonDbgChkInfo.Name = "radioButtonDbgChkInfo";
-            this.radioButtonDbgChkInfo.Size = new System.Drawing.Size(77, 17);
-            this.radioButtonDbgChkInfo.TabIndex = 6;
-            this.radioButtonDbgChkInfo.Text = "Check Info";
-            this.radioButtonDbgChkInfo.UseVisualStyleBackColor = true;
+            this.radioButtonAdvancedModeCheckInfo.AutoSize = true;
+            this.radioButtonAdvancedModeCheckInfo.Location = new System.Drawing.Point(11, 65);
+            this.radioButtonAdvancedModeCheckInfo.Name = "radioButtonAdvancedModeCheckInfo";
+            this.radioButtonAdvancedModeCheckInfo.Size = new System.Drawing.Size(77, 17);
+            this.radioButtonAdvancedModeCheckInfo.TabIndex = 6;
+            this.radioButtonAdvancedModeCheckInfo.Text = "Check Info";
+            this.radioButtonAdvancedModeCheckInfo.UseVisualStyleBackColor = true;
             // 
-            // radioButtonDbgStgInfo
+            // radioButtonAdvancedModeStageInfo
             // 
-            this.radioButtonDbgStgInfo.AutoSize = true;
-            this.radioButtonDbgStgInfo.Location = new System.Drawing.Point(11, 111);
-            this.radioButtonDbgStgInfo.Name = "radioButtonDbgStgInfo";
-            this.radioButtonDbgStgInfo.Size = new System.Drawing.Size(74, 17);
-            this.radioButtonDbgStgInfo.TabIndex = 8;
-            this.radioButtonDbgStgInfo.Text = "Stage Info";
-            this.radioButtonDbgStgInfo.UseVisualStyleBackColor = true;
+            this.radioButtonAdvancedModeStageInfo.AutoSize = true;
+            this.radioButtonAdvancedModeStageInfo.Location = new System.Drawing.Point(11, 111);
+            this.radioButtonAdvancedModeStageInfo.Name = "radioButtonAdvancedModeStageInfo";
+            this.radioButtonAdvancedModeStageInfo.Size = new System.Drawing.Size(74, 17);
+            this.radioButtonAdvancedModeStageInfo.TabIndex = 8;
+            this.radioButtonAdvancedModeStageInfo.Text = "Stage Info";
+            this.radioButtonAdvancedModeStageInfo.UseVisualStyleBackColor = true;
             // 
-            // radioButtonDbgMapInfo
+            // radioButtonAdvancedModeMapInfo
             // 
-            this.radioButtonDbgMapInfo.AutoSize = true;
-            this.radioButtonDbgMapInfo.Location = new System.Drawing.Point(11, 88);
-            this.radioButtonDbgMapInfo.Name = "radioButtonDbgMapInfo";
-            this.radioButtonDbgMapInfo.Size = new System.Drawing.Size(67, 17);
-            this.radioButtonDbgMapInfo.TabIndex = 7;
-            this.radioButtonDbgMapInfo.Text = "Map Info";
-            this.radioButtonDbgMapInfo.UseVisualStyleBackColor = true;
+            this.radioButtonAdvancedModeMapInfo.AutoSize = true;
+            this.radioButtonAdvancedModeMapInfo.Location = new System.Drawing.Point(11, 88);
+            this.radioButtonAdvancedModeMapInfo.Name = "radioButtonAdvancedModeMapInfo";
+            this.radioButtonAdvancedModeMapInfo.Size = new System.Drawing.Size(67, 17);
+            this.radioButtonAdvancedModeMapInfo.TabIndex = 7;
+            this.radioButtonAdvancedModeMapInfo.Text = "Map Info";
+            this.radioButtonAdvancedModeMapInfo.UseVisualStyleBackColor = true;
             // 
             // noTearFlowLayoutPanelDebug
             // 
@@ -10129,14 +10129,14 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.CheckBox checkBoxMapShowCamera;
         private System.Windows.Forms.TrackBar trackBarObjSlotSize;
         private System.Windows.Forms.TabPage tabPageDebug;
-        private System.Windows.Forms.RadioButton radioButtonDbgOff;
+        private System.Windows.Forms.RadioButton radioButtonAdvancedModeOff;
         private System.Windows.Forms.TabPage tabPageMisc;
-        private System.Windows.Forms.RadioButton radioButtonDbgEnemyInfo;
-        private System.Windows.Forms.RadioButton radioButtonDbgFxInfo;
-        private System.Windows.Forms.RadioButton radioButtonDbgStgInfo;
-        private System.Windows.Forms.RadioButton radioButtonDbgMapInfo;
-        private System.Windows.Forms.RadioButton radioButtonDbgChkInfo;
-        private System.Windows.Forms.RadioButton radioButtonDbgObjCnt;
+        private System.Windows.Forms.RadioButton radioButtonAdvancedModeEnemyInfo;
+        private System.Windows.Forms.RadioButton radioButtonAdvancedModeEffectInfo;
+        private System.Windows.Forms.RadioButton radioButtonAdvancedModeStageInfo;
+        private System.Windows.Forms.RadioButton radioButtonAdvancedModeMapInfo;
+        private System.Windows.Forms.RadioButton radioButtonAdvancedModeCheckInfo;
+        private System.Windows.Forms.RadioButton radioButtonAdvancedModeObjectCounter;
         private System.Windows.Forms.Panel panelDebugBorder;
         private IntPictureBox pictureBoxDebug;
         private NoTearFlowLayoutPanel NoTearFlowLayoutPanelMisc;

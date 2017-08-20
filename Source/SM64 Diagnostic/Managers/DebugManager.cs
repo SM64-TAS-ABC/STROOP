@@ -59,7 +59,7 @@ namespace SM64_Diagnostic.Managers
                     Config.Debug.FreeMovementAddress);
             };
 
-            _dbgSettingRadioButtonOff = advancedModeGroupbox.Controls["radioButtonDbgOff"] as RadioButton;
+            _dbgSettingRadioButtonOff = advancedModeGroupbox.Controls["radioButtonAdvancedModeOff"] as RadioButton;
             _dbgSettingRadioButtonOff.Click += (sender, e) =>
             {
                 Config.Stream.SetValue((byte)0, Config.Debug.AdvancedModeAddress);
@@ -67,12 +67,12 @@ namespace SM64_Diagnostic.Managers
             };
 
             _dbgSettingRadioButton = new RadioButton[6];
-            _dbgSettingRadioButton[0] = advancedModeGroupbox.Controls["radioButtonDbgObjCnt"] as RadioButton;
-            _dbgSettingRadioButton[1] = advancedModeGroupbox.Controls["radioButtonDbgChkInfo"] as RadioButton;
-            _dbgSettingRadioButton[2] = advancedModeGroupbox.Controls["radioButtonDbgMapInfo"] as RadioButton;
-            _dbgSettingRadioButton[3] = advancedModeGroupbox.Controls["radioButtonDbgStgInfo"] as RadioButton;
-            _dbgSettingRadioButton[4] = advancedModeGroupbox.Controls["radioButtonDbgFxInfo"] as RadioButton;
-            _dbgSettingRadioButton[5] = advancedModeGroupbox.Controls["radioButtonDbgEnemyInfo"] as RadioButton;
+            _dbgSettingRadioButton[0] = advancedModeGroupbox.Controls["radioButtonAdvancedModeObjectCounter"] as RadioButton;
+            _dbgSettingRadioButton[1] = advancedModeGroupbox.Controls["radioButtonAdvancedModeCheckInfo"] as RadioButton;
+            _dbgSettingRadioButton[2] = advancedModeGroupbox.Controls["radioButtonAdvancedModeMapInfo"] as RadioButton;
+            _dbgSettingRadioButton[3] = advancedModeGroupbox.Controls["radioButtonAdvancedModeStageInfo"] as RadioButton;
+            _dbgSettingRadioButton[4] = advancedModeGroupbox.Controls["radioButtonAdvancedModeEffectInfo"] as RadioButton;
+            _dbgSettingRadioButton[5] = advancedModeGroupbox.Controls["radioButtonAdvancedModeEnemyInfo"] as RadioButton;
             for (int i = 0; i < _dbgSettingRadioButton.Length; i++)
             {
                 byte localIndex = (byte)i;
