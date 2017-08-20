@@ -716,7 +716,28 @@ namespace SM64_Diagnostic.Managers
 
                         case "BobombBloatSize":
                             {
-                                newText = "BobombBloatSize";
+                                float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
+                                switch(scale)
+                                {
+                                    case 1.0f:
+                                        newText = "B0";
+                                        break;
+                                    case 1.2f:
+                                        newText = "B1";
+                                        break;
+                                    case 1.4f:
+                                        newText = "B2";
+                                        break;
+                                    case 1.6f:
+                                        newText = "B3";
+                                        break;
+                                    case 1.8f:
+                                        newText = "B4";
+                                        break;
+                                    default:
+                                        newText = "Unknown Bloat Size";
+                                        break;
+                                }
                                 break;
                             }
 
