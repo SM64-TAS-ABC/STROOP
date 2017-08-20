@@ -259,11 +259,11 @@ namespace SM64_Diagnostic.Controls
             switch (_angleViewMode)
             {
                 case AngleViewModeType.Degrees:
-                    _textBoxValue.Text = MoreMath.AngleUnitsToDegrees(angleValue).ToString();
+                    _textBoxValue.Text = Math.Round(MoreMath.AngleUnitsToDegrees(angleValue), 3).ToString();
                     break;
 
                 case AngleViewModeType.Radians:
-                    _textBoxValue.Text = MoreMath.AngleUnitsToRadians(angleValue).ToString();
+                    _textBoxValue.Text = Math.Round(MoreMath.AngleUnitsToRadians(angleValue), 3).ToString();
                     break;
 
                 case AngleViewModeType.Signed:
