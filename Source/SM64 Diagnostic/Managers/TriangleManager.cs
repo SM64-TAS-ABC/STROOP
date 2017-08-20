@@ -10,6 +10,7 @@ using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
 using SM64Diagnostic.Controls;
+using static SM64_Diagnostic.Controls.AngleDataContainer;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -53,10 +54,10 @@ namespace SM64_Diagnostic.Managers
                 new AngleDataContainer("DownHillAngle"),
                 new AngleDataContainer("LeftHillAngle"),
                 new AngleDataContainer("RightHillAngle"),
-                new AngleDataContainer("UpHillDeltaAngle"),
-                new AngleDataContainer("DownHillDeltaAngle"),
-                new AngleDataContainer("LeftHillDeltaAngle"),
-                new AngleDataContainer("RightHillDeltaAngle"),
+                new AngleDataContainer("UpHillDeltaAngle", AngleViewModeType.Signed),
+                new AngleDataContainer("DownHillDeltaAngle", AngleViewModeType.Signed),
+                new AngleDataContainer("LeftHillDeltaAngle", AngleViewModeType.Signed),
+                new AngleDataContainer("RightHillDeltaAngle", AngleViewModeType.Signed),
                 new DataContainer("Classification"),
                 new AngleDataContainer("Steepness"),
                 new DataContainer("NormalDistAway"),
@@ -253,11 +254,20 @@ namespace SM64_Diagnostic.Managers
             float normZ = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormZ);
             float normOffset = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.Offset);
 
-            var uphillAngle = Math.PI + Math.Atan2(normX, normZ);
+            double uphillAngleRadians = Math.PI + Math.Atan2(normX, normZ);
             if (normX == 0 && normZ == 0)
-                uphillAngle = double.NaN;
+                uphillAngleRadians = double.NaN;
             if (normY < -0.01)
-                uphillAngle += Math.PI;
+                uphillAngleRadians += Math.PI;
+            double downhillAngleRadians = uphillAngleRadians + Math.PI;
+            double lefthillAngleRadians = uphillAngleRadians + Math.PI / 2;
+            double righthillAngleRadians = uphillAngleRadians - Math.PI / 2;
+            double uphillAngle = MoreMath.RadiansToAngleUnits(uphillAngleRadians);
+            double downhillAngle = MoreMath.RadiansToAngleUnits(downhillAngleRadians);
+            double lefthillAngle = MoreMath.RadiansToAngleUnits(lefthillAngleRadians);
+            double righthillAngle = MoreMath.RadiansToAngleUnits(righthillAngleRadians);
+
+            ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
 
             short v1X = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.X1);
             short v1Y = Config.Stream.GetInt16(TriangleAddress + Config.TriangleOffsets.Y1);
@@ -341,29 +351,29 @@ namespace SM64_Diagnostic.Managers
                         (specialVar as DataContainer).Text = coordZ.ToString();
                         goto case "CheckTriangleExists";
                     case "UpHillAngle":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle);
+                        (specialVar as AngleDataContainer).AngleValue = uphillAngle;
                         goto case "CheckTriangleExistsAngle";
                     case "DownHillAngle":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI);
+                        (specialVar as AngleDataContainer).AngleValue = downhillAngle;
                         goto case "CheckTriangleExistsAngle";
                     case "LeftHillAngle":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        (specialVar as AngleDataContainer).AngleValue = lefthillAngle;
                         goto case "CheckTriangleExistsAngle";
                     case "RightHillAngle":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle - Math.PI / 2);
+                        (specialVar as AngleDataContainer).AngleValue = righthillAngle;
                         goto case "CheckTriangleExistsAngle";
 
                     case "UpHillDeltaAngle":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle);
+                        (specialVar as AngleDataContainer).AngleValue = marioAngle - uphillAngle;
                         goto case "CheckTriangleExistsAngle";
                     case "DownHillDeltaAngle":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI);
+                        (specialVar as AngleDataContainer).AngleValue = marioAngle - downhillAngle;
                         goto case "CheckTriangleExistsAngle";
                     case "LeftHillDeltaAngle":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        (specialVar as AngleDataContainer).AngleValue = marioAngle - lefthillAngle;
                         goto case "CheckTriangleExistsAngle";
                     case "RightHillDeltaAngle":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle - Math.PI / 2);
+                        (specialVar as AngleDataContainer).AngleValue = marioAngle - righthillAngle;
                         goto case "CheckTriangleExistsAngle";
 
                     case "Classification":
