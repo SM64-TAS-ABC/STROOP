@@ -153,17 +153,17 @@
     <AdvancedModeSettingAddressUS>0x80330E94</AdvancedModeSettingAddressUS>
     <AdvancedModeSettingAddressJP>0x8032FF34</AdvancedModeSettingAddressJP>
 
-    <SpawnModeAddressUS>0x8033D2DF</SpawnModeAddressUS>
-    <SpawnModeAddressJP>0x8033BF6F</SpawnModeAddressJP>
+    <ResourceMeterAddressUS>0x8032D594</ResourceMeterAddressUS>
+    <ResourceMeterAddressJP>0x8032C654</ResourceMeterAddressJP>
+
+    <ResourceMeterSettingAddressUS>0x8032DF10</ResourceMeterSettingAddressUS>
+    <ResourceMeterSettingAddressJP>0x8032CFB0</ResourceMeterSettingAddressJP>
 
     <ClassicModeAddressUS>0x8032D598</ClassicModeAddressUS>
     <ClassicModeAddressJP>0x8032C658</ClassicModeAddressJP>
 
-    <ResourceModeAddressUS>0x8032D594</ResourceModeAddressUS>
-    <ResourceModeAddressJP>0x8032C654</ResourceModeAddressJP>
-
-    <ResourceModeSettingAddressUS>0x8032DF10</ResourceModeSettingAddressUS>
-    <ResourceModeSettingAddressJP>0x8032CFB0</ResourceModeSettingAddressJP>
+    <SpawnModeAddressUS>0x8033D2DF</SpawnModeAddressUS>
+    <SpawnModeAddressJP>0x8033BF6F</SpawnModeAddressJP>
 
     <StageSelectAddressUS>0x8032D58C</StageSelectAddressUS>
     <StageSelectAddressJP>0x8032C64C</StageSelectAddressJP>

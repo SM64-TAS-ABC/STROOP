@@ -63,22 +63,22 @@ namespace SM64_Diagnostic.Managers
             _resourceMeterOffRadioButton = resourceMeterGroupbox.Controls["radioButtonResourceMeterOff"] as RadioButton;
             _resourceMeterOffRadioButton.Click += (sender, e) =>
             {
-                Config.Stream.SetValue((byte)0, Config.Debug.ResourceModeAddress);
-                Config.Stream.SetValue((ushort)0, Config.Debug.ResourceModeSettingAddress);
+                Config.Stream.SetValue((byte)0, Config.Debug.ResourceMeterAddress);
+                Config.Stream.SetValue((ushort)0, Config.Debug.ResourceMeterSettingAddress);
             };
 
             _resourceMeter1RadioButton = resourceMeterGroupbox.Controls["radioButtonResourceMeter1"] as RadioButton;
             _resourceMeter1RadioButton.Click += (sender, e) =>
             {
-                Config.Stream.SetValue((byte)1, Config.Debug.ResourceModeAddress);
-                Config.Stream.SetValue((ushort)0, Config.Debug.ResourceModeSettingAddress);
+                Config.Stream.SetValue((byte)1, Config.Debug.ResourceMeterAddress);
+                Config.Stream.SetValue((ushort)0, Config.Debug.ResourceMeterSettingAddress);
             };
 
             _resourceMeter2RadioButton = resourceMeterGroupbox.Controls["radioButtonResourceMeter2"] as RadioButton;
             _resourceMeter2RadioButton.Click += (sender, e) =>
             {
-                Config.Stream.SetValue((byte)1, Config.Debug.ResourceModeAddress);
-                Config.Stream.SetValue((ushort)1, Config.Debug.ResourceModeSettingAddress);
+                Config.Stream.SetValue((byte)1, Config.Debug.ResourceMeterAddress);
+                Config.Stream.SetValue((ushort)1, Config.Debug.ResourceMeterSettingAddress);
             };
 
             // Misc debug
@@ -133,8 +133,8 @@ namespace SM64_Diagnostic.Managers
             }
 
             // Resource meter
-            byte resourceMeterOn = Config.Stream.GetByte(Config.Debug.ResourceModeAddress);
-            ushort resourceMeterSetting = Config.Stream.GetUInt16(Config.Debug.ResourceModeSettingAddress);
+            byte resourceMeterOn = Config.Stream.GetByte(Config.Debug.ResourceMeterAddress);
+            ushort resourceMeterSetting = Config.Stream.GetUInt16(Config.Debug.ResourceMeterSettingAddress);
             if (resourceMeterOn != 0)
             {
                 if (resourceMeterSetting != 0)

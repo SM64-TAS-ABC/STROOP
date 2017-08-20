@@ -16,21 +16,21 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint AdvancedModeSettingAddressUS;
         public uint AdvancedModeSettingAddressJP;
 
-        public uint SpawnModeAddress { get { return Config.SwitchRomVersion(SpawnModeAddressUS, SpawnModeAddressJP); } }
-        public uint SpawnModeAddressUS;
-        public uint SpawnModeAddressJP;
+        public uint ResourceMeterAddress { get { return Config.SwitchRomVersion(ResourceMeterAddressUS, ResourceMeterAddressJP); } }
+        public uint ResourceMeterAddressUS;
+        public uint ResourceMeterAddressJP;
+
+        public uint ResourceMeterSettingAddress { get { return Config.SwitchRomVersion(ResourceMeterSettingAddressUS, ResourceMeterSettingAddressJP); } }
+        public uint ResourceMeterSettingAddressUS;
+        public uint ResourceMeterSettingAddressJP;
 
         public uint ClassicModeAddress { get { return Config.SwitchRomVersion(ClassicModeAddressUS, ClassicModeAddressJP); } }
         public uint ClassicModeAddressUS;
         public uint ClassicModeAddressJP;
 
-        public uint ResourceModeAddress { get { return Config.SwitchRomVersion(ResourceModeAddressUS, ResourceModeAddressJP); } }
-        public uint ResourceModeAddressUS;
-        public uint ResourceModeAddressJP;
-
-        public uint ResourceModeSettingAddress { get { return Config.SwitchRomVersion(ResourceModeSettingAddressUS, ResourceModeSettingAddressJP); } }
-        public uint ResourceModeSettingAddressUS;
-        public uint ResourceModeSettingAddressJP;
+        public uint SpawnModeAddress { get { return Config.SwitchRomVersion(SpawnModeAddressUS, SpawnModeAddressJP); } }
+        public uint SpawnModeAddressUS;
+        public uint SpawnModeAddressJP;
 
         public uint StageSelectAddress { get { return Config.SwitchRomVersion(StageSelectAddressUS, StageSelectAddressJP); } }
         public uint StageSelectAddressUS;

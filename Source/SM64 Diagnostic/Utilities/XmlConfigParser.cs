@@ -483,11 +483,18 @@ namespace SM64_Diagnostic.Utilities
                                     Config.Debug.AdvancedModeSettingAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "SpawnModeAddressUS":
-                                    Config.Debug.SpawnModeAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                case "ResourceMeterAddressUS":
+                                    Config.Debug.ResourceMeterAddressUS = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "SpawnModeAddressJP":
-                                    Config.Debug.SpawnModeAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                case "ResourceMeterAddressJP":
+                                    Config.Debug.ResourceMeterAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "ResourceMeterSettingAddressUS":
+                                    Config.Debug.ResourceMeterSettingAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "ResourceMeterSettingAddressJP":
+                                    Config.Debug.ResourceMeterSettingAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ClassicModeAddressUS":
@@ -497,18 +504,11 @@ namespace SM64_Diagnostic.Utilities
                                     Config.Debug.ClassicModeAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "ResourceModeAddressUS":
-                                    Config.Debug.ResourceModeAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                case "SpawnModeAddressUS":
+                                    Config.Debug.SpawnModeAddressUS = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "ResourceModeAddressJP":
-                                    Config.Debug.ResourceModeAddressJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "ResourceModeSettingAddressUS":
-                                    Config.Debug.ResourceModeSettingAddressUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "ResourceModeSettingAddressJP":
-                                    Config.Debug.ResourceModeSettingAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                case "SpawnModeAddressJP":
+                                    Config.Debug.SpawnModeAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "StageSelectAddressUS":
