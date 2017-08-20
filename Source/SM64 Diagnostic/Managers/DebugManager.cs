@@ -22,41 +22,7 @@ namespace SM64_Diagnostic.Managers
         {
             SplitContainer splitContainerDebug = tabControl.Controls["splitContainerDebug"] as SplitContainer;
 
-            GroupBox miscDebugGroupbox = splitContainerDebug.Panel1.Controls["groupBoxMiscDebug"] as GroupBox;
-
-            _spawnModeCheckbox = miscDebugGroupbox.Controls["checkBoxSpawnMode"] as CheckBox;
-            _spawnModeCheckbox.Click += (sender, e) =>
-            {
-                Config.Stream.SetValue(_spawnModeCheckbox.Checked ? (byte)0x03 : (byte)0x00, Config.Debug.AdvancedModeSettingAddress);
-                Config.Stream.SetValue(_spawnModeCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.SpawnModeAddress);
-            };
-
-            _classicModeCheckbox = miscDebugGroupbox.Controls["checkBoxClassicMode"] as CheckBox;
-            _classicModeCheckbox.Click += (sender, e) =>
-            {
-                Config.Stream.SetValue(_classicModeCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ClassicModeAddress);
-            };
-
-            _resourceMeterCheckbox = tabControl.Controls["checkBoxResourceMeter"] as CheckBox;
-            _resourceMeterCheckbox.Click += (sender, e) =>
-            {
-                Config.Stream.SetValue(_resourceMeterCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ResourceModeAddress);
-            };
-
-            _stageSelectCheckbox = miscDebugGroupbox.Controls["checkBoxStageSelect"] as CheckBox;
-            _stageSelectCheckbox.Click += (sender, e) =>
-            {
-                Config.Stream.SetValue(_stageSelectCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.StageSelectAddress);
-            };
-
-            _freeMovementCheckbox = miscDebugGroupbox.Controls["checkBoxFreeMovement"] as CheckBox;
-            _freeMovementCheckbox.Click += (sender, e) => 
-            {
-                Config.Stream.SetValue(
-                    _freeMovementCheckbox.Checked ? Config.Debug.FreeMovementOnValue : Config.Debug.FreeMovementOffValue,
-                    Config.Debug.FreeMovementAddress);
-            };
-
+            // Advanced mode
             GroupBox advancedModeGroupbox = splitContainerDebug.Panel1.Controls["groupBoxAdvancedMode"] as GroupBox;
 
             _advancedModeOffRadioButton = advancedModeGroupbox.Controls["radioButtonAdvancedModeOff"] as RadioButton;
@@ -82,6 +48,46 @@ namespace SM64_Diagnostic.Managers
                     Config.Stream.SetValue(localIndex, Config.Debug.AdvancedModeSettingAddress);
                 };
             }
+
+            // Resource meter
+
+
+
+            // Misc debug
+            GroupBox miscDebugGroupbox = splitContainerDebug.Panel1.Controls["groupBoxMiscDebug"] as GroupBox;
+
+            _classicModeCheckbox = miscDebugGroupbox.Controls["checkBoxClassicMode"] as CheckBox;
+            _classicModeCheckbox.Click += (sender, e) =>
+            {
+                Config.Stream.SetValue(_classicModeCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ClassicModeAddress);
+            };
+
+            _spawnModeCheckbox = miscDebugGroupbox.Controls["checkBoxSpawnMode"] as CheckBox;
+            _spawnModeCheckbox.Click += (sender, e) =>
+            {
+                Config.Stream.SetValue(_spawnModeCheckbox.Checked ? (byte)0x03 : (byte)0x00, Config.Debug.AdvancedModeSettingAddress);
+                Config.Stream.SetValue(_spawnModeCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.SpawnModeAddress);
+            };
+
+            _stageSelectCheckbox = miscDebugGroupbox.Controls["checkBoxStageSelect"] as CheckBox;
+            _stageSelectCheckbox.Click += (sender, e) =>
+            {
+                Config.Stream.SetValue(_stageSelectCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.StageSelectAddress);
+            };
+
+            _freeMovementCheckbox = miscDebugGroupbox.Controls["checkBoxFreeMovement"] as CheckBox;
+            _freeMovementCheckbox.Click += (sender, e) => 
+            {
+                Config.Stream.SetValue(
+                    _freeMovementCheckbox.Checked ? Config.Debug.FreeMovementOnValue : Config.Debug.FreeMovementOffValue,
+                    Config.Debug.FreeMovementAddress);
+            };
+
+            _resourceMeterCheckbox = tabControl.Controls["checkBoxResourceMeter"] as CheckBox;
+            _resourceMeterCheckbox.Click += (sender, e) =>
+            {
+                Config.Stream.SetValue(_resourceMeterCheckbox.Checked ? (byte)0x01 : (byte)0x00, Config.Debug.ResourceModeAddress);
+            };
         }
 
         public override void Update(bool updateView)
@@ -89,19 +95,13 @@ namespace SM64_Diagnostic.Managers
             if (!updateView)
                 return;
 
-            _spawnModeCheckbox.Checked = Config.Stream.GetByte(Config.Debug.AdvancedModeSettingAddress) == 0x03
-                 && Config.Stream.GetByte(Config.Debug.SpawnModeAddress) == 0x01;
-            _classicModeCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ClassicModeAddress) == 0x01;
-            _resourceMeterCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ResourceModeAddress) == 0x01;
-            _stageSelectCheckbox.Checked = Config.Stream.GetByte(Config.Debug.StageSelectAddress) == 0x01;
-            _freeMovementCheckbox.Checked = Config.Stream.GetUInt16(Config.Debug.FreeMovementAddress) == Config.Debug.FreeMovementOnValue;
-
-            var setting = Config.Stream.GetByte(Config.Debug.AdvancedModeSettingAddress);
-            var on = Config.Stream.GetByte(Config.Debug.AdvancedModeAddress);
-            if (on % 2 != 0)
+            // Advanced mode
+            byte advancedModeOn = Config.Stream.GetByte(Config.Debug.AdvancedModeAddress);
+            byte advancedModeSetting = Config.Stream.GetByte(Config.Debug.AdvancedModeSettingAddress);
+            if (advancedModeOn % 2 != 0)
             {
-                if (setting > 0 && setting < _advancedModeSettingRadioButtons.Length)
-                    _advancedModeSettingRadioButtons[setting].Checked = true;
+                if (advancedModeSetting > 0 && advancedModeSetting < _advancedModeSettingRadioButtons.Length)
+                    _advancedModeSettingRadioButtons[advancedModeSetting].Checked = true;
                 else
                     _advancedModeSettingRadioButtons[0].Checked = true;
             }
@@ -109,6 +109,17 @@ namespace SM64_Diagnostic.Managers
             {
                 _advancedModeOffRadioButton.Checked = true;
             }
+
+            // Resource meter
+
+
+            // Misc debug
+            _classicModeCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ClassicModeAddress) == 0x01;
+            _spawnModeCheckbox.Checked = Config.Stream.GetByte(Config.Debug.AdvancedModeSettingAddress) == 0x03
+                 && Config.Stream.GetByte(Config.Debug.SpawnModeAddress) == 0x01;
+            _stageSelectCheckbox.Checked = Config.Stream.GetByte(Config.Debug.StageSelectAddress) == 0x01;
+            _freeMovementCheckbox.Checked = Config.Stream.GetUInt16(Config.Debug.FreeMovementAddress) == Config.Debug.FreeMovementOnValue;
+            _resourceMeterCheckbox.Checked = Config.Stream.GetByte(Config.Debug.ResourceModeAddress) == 0x01;
 
             base.Update();
         }
