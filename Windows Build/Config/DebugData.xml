@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DebugData>
+  <Data type="byte" addressUS="0x8033D263" addressJP="0x8033BEF3" offset="Relative">Advanced Mode</Data>
+  <Data type="byte" addressUS="0x80330E94" addressJP="0x8032FF34" offset="Relative">Advanced Mode Setting</Data>
+  <Data type="byte" addressUS="0x8033D2DF" addressJP="0x8033BF6F" offset="Relative">Spawn Mode</Data>
+  <Data type="byte" addressUS="0x8032D598" addressJP="0x8032C658" offset="Relative">Classic Mode</Data>
+  <Data type="byte" addressUS="0x8032D594" addressJP="0x8032C654" offset="Relative">Resource Meter</Data>
+  <Data type="ushort" addressUS="0x8032DF10" addressJP="0x8032CFB0" offset="Relative">Resource Meter Setting</Data>
+  <Data type="byte" addressUS="0x8032D58C" addressJP="0x8032C64C" offset="Relative">Stage Select</Data>
+  <Data type="ushort" addressUS="0x80269BDA" addressJP="0x8026976E" offset="Relative">Free Movement</Data>
+</DebugData>
