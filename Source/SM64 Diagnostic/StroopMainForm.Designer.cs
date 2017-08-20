@@ -1014,7 +1014,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 272);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 273);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1079,7 +1079,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 153);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 154);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2077,7 +2077,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(690, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(693, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2595,7 +2595,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(699, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(702, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2763,7 +2763,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(791, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(794, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3144,7 +3144,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(701, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(704, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3615,7 +3615,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(698, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(701, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3700,7 +3700,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
-            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(479, 460);
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(482, 460);
             this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4063,7 +4063,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7037,7 +7037,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(250, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(253, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7474,7 +7474,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(689, 430);
+            this.glControlMap.Size = new System.Drawing.Size(692, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -7992,7 +7992,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(837, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(840, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -8091,7 +8091,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(591, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(594, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -8954,7 +8954,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(469, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(472, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9069,7 +9069,7 @@ namespace SM64_Diagnostic
             // 
             this.labelRetrieveInfrontSuffix.AutoSize = true;
             this.labelRetrieveInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveInfrontSuffix.Location = new System.Drawing.Point(106, 99);
+            this.labelRetrieveInfrontSuffix.Location = new System.Drawing.Point(106, 98);
             this.labelRetrieveInfrontSuffix.Name = "labelRetrieveInfrontSuffix";
             this.labelRetrieveInfrontSuffix.Size = new System.Drawing.Size(39, 13);
             this.labelRetrieveInfrontSuffix.TabIndex = 39;
@@ -9087,7 +9087,7 @@ namespace SM64_Diagnostic
             // 
             // textBoxRetrieveInfront
             // 
-            this.textBoxRetrieveInfront.Location = new System.Drawing.Point(58, 96);
+            this.textBoxRetrieveInfront.Location = new System.Drawing.Point(60, 95);
             this.textBoxRetrieveInfront.Name = "textBoxRetrieveInfront";
             this.textBoxRetrieveInfront.Size = new System.Drawing.Size(42, 20);
             this.textBoxRetrieveInfront.TabIndex = 37;
@@ -9108,7 +9108,7 @@ namespace SM64_Diagnostic
             // 
             this.labelRetrieveAbovePrefix.AutoSize = true;
             this.labelRetrieveAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveAbovePrefix.Location = new System.Drawing.Point(11, 72);
+            this.labelRetrieveAbovePrefix.Location = new System.Drawing.Point(11, 73);
             this.labelRetrieveAbovePrefix.Name = "labelRetrieveAbovePrefix";
             this.labelRetrieveAbovePrefix.Size = new System.Drawing.Size(47, 13);
             this.labelRetrieveAbovePrefix.TabIndex = 35;
@@ -9116,7 +9116,7 @@ namespace SM64_Diagnostic
             // 
             // textBoxRetrieveAbove
             // 
-            this.textBoxRetrieveAbove.Location = new System.Drawing.Point(58, 70);
+            this.textBoxRetrieveAbove.Location = new System.Drawing.Point(60, 70);
             this.textBoxRetrieveAbove.Name = "textBoxRetrieveAbove";
             this.textBoxRetrieveAbove.Size = new System.Drawing.Size(42, 20);
             this.textBoxRetrieveAbove.TabIndex = 34;
@@ -9127,7 +9127,7 @@ namespace SM64_Diagnostic
             // 
             this.labelGotoInfrontSuffix.AutoSize = true;
             this.labelGotoInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoInfrontSuffix.Location = new System.Drawing.Point(106, 49);
+            this.labelGotoInfrontSuffix.Location = new System.Drawing.Point(106, 48);
             this.labelGotoInfrontSuffix.Name = "labelGotoInfrontSuffix";
             this.labelGotoInfrontSuffix.Size = new System.Drawing.Size(39, 13);
             this.labelGotoInfrontSuffix.TabIndex = 33;
@@ -9145,7 +9145,7 @@ namespace SM64_Diagnostic
             // 
             // textBoxGotoInfront
             // 
-            this.textBoxGotoInfront.Location = new System.Drawing.Point(58, 46);
+            this.textBoxGotoInfront.Location = new System.Drawing.Point(60, 45);
             this.textBoxGotoInfront.Name = "textBoxGotoInfront";
             this.textBoxGotoInfront.Size = new System.Drawing.Size(42, 20);
             this.textBoxGotoInfront.TabIndex = 31;
@@ -9166,7 +9166,7 @@ namespace SM64_Diagnostic
             // 
             this.labelGotoAbovePrefix.AutoSize = true;
             this.labelGotoAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoAbovePrefix.Location = new System.Drawing.Point(11, 22);
+            this.labelGotoAbovePrefix.Location = new System.Drawing.Point(11, 23);
             this.labelGotoAbovePrefix.Name = "labelGotoAbovePrefix";
             this.labelGotoAbovePrefix.Size = new System.Drawing.Size(33, 13);
             this.labelGotoAbovePrefix.TabIndex = 29;
@@ -9174,7 +9174,7 @@ namespace SM64_Diagnostic
             // 
             // textBoxGotoAbove
             // 
-            this.textBoxGotoAbove.Location = new System.Drawing.Point(58, 20);
+            this.textBoxGotoAbove.Location = new System.Drawing.Point(60, 20);
             this.textBoxGotoAbove.Name = "textBoxGotoAbove";
             this.textBoxGotoAbove.Size = new System.Drawing.Size(42, 20);
             this.textBoxGotoAbove.TabIndex = 28;
