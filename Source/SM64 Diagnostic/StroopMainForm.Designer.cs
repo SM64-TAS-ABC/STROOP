@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -988,6 +988,7 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -7094,7 +7095,6 @@ namespace SM64_Diagnostic
             // tabPageDebug
             // 
             this.tabPageDebug.Controls.Add(this.groupBoxDebugAdvancedMode);
-            this.tabPageDebug.Controls.Add(this.noTearFlowLayoutPanelDebug);
             this.tabPageDebug.Controls.Add(this.checkBoxDbgResource);
             this.tabPageDebug.Controls.Add(this.checkBoxDbgFreeMovement);
             this.tabPageDebug.Controls.Add(this.checkBoxDbgStageSelect);
@@ -7205,10 +7205,10 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Right)));
             this.noTearFlowLayoutPanelDebug.AutoScroll = true;
             this.noTearFlowLayoutPanelDebug.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.noTearFlowLayoutPanelDebug.Location = new System.Drawing.Point(496, 100);
+            this.noTearFlowLayoutPanelDebug.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelDebug.Name = "noTearFlowLayoutPanelDebug";
-            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(223, 254);
+            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(528, 455);
             this.noTearFlowLayoutPanelDebug.TabIndex = 26;
             // 
             // checkBoxDbgResource
@@ -7838,8 +7838,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9650,9 +9650,13 @@ namespace SM64_Diagnostic
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1MinSize = 0;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.noTearFlowLayoutPanelDebug);
             this.splitContainer1.Panel2MinSize = 0;
             this.splitContainer1.Size = new System.Drawing.Size(915, 463);
-            this.splitContainer1.SplitterDistance = 117;
+            this.splitContainer1.SplitterDistance = 378;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 39;
             // 
@@ -9987,6 +9991,7 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
