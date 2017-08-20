@@ -34,6 +34,10 @@
   <Data offset="Special" specialType="RightHillAngle" color="#ccd0ff">Right Hill Angle</Data>
   <Data type="ushort" address="0x24" offset="Mario" isAngle="true" color="#ffcccc">M. Yaw (Intended)</Data>
   <Data type="ushort" address="0x2E" offset="Mario" isAngle="true" color="#ffcccc">M. Yaw (Facing)</Data>
+  <Data offset="Special" specialType="UpHillDeltaAngle" color="#ccd0ff">Uphill DAngle</Data>
+  <Data offset="Special" specialType="DownHillDeltaAngle" color="#ccd0ff">Downhill DAngle</Data>
+  <Data offset="Special" specialType="LeftHillDeltaAngle" color="#ccd0ff">Left Hill DAngle</Data>
+  <Data offset="Special" specialType="RightHillDeltaAngle" color="#ccd0ff">Right Hill DAngle</Data>
   <Data type="float" address="0x1C" offset="Triangle">Normal X</Data>
   <Data type="float" address="0x20" offset="Triangle">Normal Y</Data>
   <Data type="float" address="0x24" offset="Triangle">Normal Z</Data>

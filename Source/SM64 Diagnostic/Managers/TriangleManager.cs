@@ -53,6 +53,10 @@ namespace SM64_Diagnostic.Managers
                 new AngleDataContainer("DownHillAngle"),
                 new AngleDataContainer("LeftHillAngle"),
                 new AngleDataContainer("RightHillAngle"),
+                new AngleDataContainer("UpHillDeltaAngle"),
+                new AngleDataContainer("DownHillDeltaAngle"),
+                new AngleDataContainer("LeftHillDeltaAngle"),
+                new AngleDataContainer("RightHillDeltaAngle"),
                 new DataContainer("Classification"),
                 new AngleDataContainer("Steepness"),
                 new DataContainer("NormalDistAway"),
@@ -342,12 +346,26 @@ namespace SM64_Diagnostic.Managers
                     case "DownHillAngle":
                         (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI);
                         goto case "CheckTriangleExistsAngle";
-                    case "RightHillAngle":
-                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle - Math.PI / 2);
-                        goto case "CheckTriangleExistsAngle";
                     case "LeftHillAngle":
                         (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
                         goto case "CheckTriangleExistsAngle";
+                    case "RightHillAngle":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle - Math.PI / 2);
+                        goto case "CheckTriangleExistsAngle";
+
+                    case "UpHillDeltaAngle":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle);
+                        goto case "CheckTriangleExistsAngle";
+                    case "DownHillDeltaAngle":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI);
+                        goto case "CheckTriangleExistsAngle";
+                    case "LeftHillDeltaAngle":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle + Math.PI / 2);
+                        goto case "CheckTriangleExistsAngle";
+                    case "RightHillDeltaAngle":
+                        (specialVar as AngleDataContainer).AngleValue = MoreMath.RadiansToAngleUnits(uphillAngle - Math.PI / 2);
+                        goto case "CheckTriangleExistsAngle";
+
                     case "Classification":
                         if (normY > 0.01)
                             (specialVar as DataContainer).Text = "Floor";
