@@ -48,12 +48,13 @@
   <Data type="uint" address="0x04" offset="Mario" isBool="true" mask="0x01">Should Have Hat</Data>
   <Data type="ushort" address="0xB6" offset="Mario">Cap Timer</Data>
   <Data type="short" address="0x26" offset="Mario">Hitstun Timer</Data>
+  <Data type="sbyte" address="0xB4" offset="Mario">Unsquishing Timer</Data>
+  <Data type="ushort" address="0x1E" offset="Mario">Squished Timer</Data>
+  <Data type="short" address="0x1A" offset="Mario">Water Shell Timer</Data>
   <Data type="float" address="0xBC" offset="Mario">Peak Height</Data>
   <Data type="float" address="0x70" offset="Mario">Floor Height</Data>
   <Data offset="Special" specialType="FallHeight">Fall Height</Data>
   <Data type="float" address="0xC0" offset="Mario">Quicksand Height</Data>
-  <Data type="sbyte" address="0xB4" offset="Mario">Unsquishing Timer</Data>
-  <Data type="ushort" address="0x1E" offset="Mario">Squished Timer</Data>
   <Data type="byte" addressUS="0x8032DA94" addressJP="0x8032CB34" offset="Relative" mask="0x01" isBool="true">Just Teleported</Data>
   <Data type="int" addressUS="0x800F0A5C" addressJP="0x800EDBDC" offset="Relative">Blinking State</Data>
   <Data type="short" addressUS="0x8032DF08" addressJP="0x8032CFA8" offset="Relative">Blinking Timer</Data>
