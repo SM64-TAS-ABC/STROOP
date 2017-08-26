@@ -57,7 +57,7 @@ namespace SM64_Diagnostic.Managers
 
         public ModelManager(Control tabControl)
         {
-            SplitContainer splitContainer1 = tabControl.Controls["splitContainer1"] as SplitContainer;
+            SplitContainer splitContainer1 = tabControl.Controls["splitContainerModel"] as SplitContainer;
             _glControl = splitContainer1.Panel2.Controls["glControlModelView"] as GLControl;
             _textBoxAddress = splitContainer1.Panel1.Controls["textBoxModelAddress"] as TextBox;
             SplitContainer splitContainerData = splitContainer1.Panel1.Controls["splitContainerModelTables"] as SplitContainer;
