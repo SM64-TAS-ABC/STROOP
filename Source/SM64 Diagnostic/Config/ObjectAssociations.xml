@@ -4055,24 +4055,28 @@
     <SpawnCode gfxId="0xBB"/>
     <Image path="Butterfly.png"/>
     <Data groupList="ObjectSpecific" type="int" address="0x108" offset="Object">Activation Type</Data>
-    <Data groupList="ObjectSpecific" type="ushort" address="0x106" offset="Object" isAngle="true">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0xFC" offset="Object">Final Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="ushort" address="0x106" offset="Object" isAngle="true">Current Target Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawned)" subType="1">
     <SpawnCode gfxId="0xBB"/>
     <Image path="Butterfly.png"/>
     <Data groupList="ObjectSpecific" type="int" address="0x108" offset="Object">Activation Type</Data>
-    <Data groupList="ObjectSpecific" type="ushort" address="0x106" offset="Object" isAngle="true">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0xFC" offset="Object">Final Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="ushort" address="0x106" offset="Object" isAngle="true">Current Target Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawned)" subType="2">
     <Image path="Butterfly.png"/>
     <Data groupList="ObjectSpecific" type="int" address="0x108" offset="Object">Activation Type</Data>
-    <Data groupList="ObjectSpecific" type="ushort" address="0x106" offset="Object" isAngle="true">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0xFC" offset="Object">Final Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="ushort" address="0x106" offset="Object" isAngle="true">Current Target Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawns Others w/o Bombs)" subType="4">
     <SpawnCode gfxId="0xBB"/>
     <Image path="Butterfly.png"/>
     <Data groupList="ObjectSpecific" type="int" address="0x108" offset="Object">Activation Type</Data>
-    <Data groupList="ObjectSpecific" type="ushort" address="0x106" offset="Object" isAngle="true">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0xFC" offset="Object">Final Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="ushort" address="0x106" offset="Object" isAngle="true">Current Target Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x130055DC" name="Bubba">
     <SpawnCode gfxId="0x59"/>
