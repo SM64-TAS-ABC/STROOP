@@ -137,7 +137,7 @@ namespace SM64_Diagnostic.Managers
                         click = ClickType.MapClick;
                         break;
 
-                    case "Model":
+                    case "Hitbox":
                         click = ClickType.ModelClick;
                         break;
 
@@ -602,7 +602,8 @@ namespace SM64_Diagnostic.Managers
             // Update object manager image
             if (SelectedSlotsAddresses.Count <= 1 && SelectedSlotsAddresses.Contains(objAddress))
             {
-                _modelManager.ModelPointer = Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.HitboxPointerOffset);
+                if (objData.IsActive)
+                    _modelManager.ModelPointer = Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.HitboxPointerOffset);
                 UpdateObjectManager(objSlot, behaviorCriteria, objData);
             }
 

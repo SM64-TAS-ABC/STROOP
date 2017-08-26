@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -672,6 +672,22 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageQuarterFrame = new System.Windows.Forms.TabPage();
             this.noTearFlowLayoutPanelQuarterFrame = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.tabPageModel = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxModelAddress = new System.Windows.Forms.TextBox();
+            this.splitContainerModel = new System.Windows.Forms.SplitContainer();
+            this.dataGridViewVertices = new System.Windows.Forms.DataGridView();
+            this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTriangles = new System.Windows.Forms.DataGridView();
+            this.Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.glControlModelView = new OpenTK.GLControl();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
             this.groupBoxRomVersion = new System.Windows.Forms.GroupBox();
             this.radioButtonRomVersionJP = new System.Windows.Forms.RadioButton();
@@ -710,16 +726,6 @@ namespace SM64_Diagnostic
             this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
-            this.tabPageModel = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxModelAddress = new System.Windows.Forms.TextBox();
-            this.splitContainerModel = new System.Windows.Forms.SplitContainer();
-            this.dataGridViewVertices = new System.Windows.Forms.DataGridView();
-            this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.glControlModelView = new OpenTK.GLControl();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
             this.panelConnect = new System.Windows.Forms.Panel();
@@ -736,10 +742,8 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.dataGridViewTriangles = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelModelVertices = new System.Windows.Forms.Label();
+            this.labelTriangles = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1005,18 +1009,18 @@ namespace SM64_Diagnostic
             this.groupBoxCameraHackSphericalPos.SuspendLayout();
             this.groupBoxCameraHackPos.SuspendLayout();
             this.tabPageQuarterFrame.SuspendLayout();
-            this.tabPageOptions.SuspendLayout();
-            this.groupBoxRomVersion.SuspendLayout();
-            this.groupBoxGotoRetrieveOffsets.SuspendLayout();
-            this.groupBoxShowOverlay.SuspendLayout();
             this.tabPageModel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerModel)).BeginInit();
             this.splitContainerModel.Panel1.SuspendLayout();
             this.splitContainerModel.Panel2.SuspendLayout();
             this.splitContainerModel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVertices)).BeginInit();
-            this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTriangles)).BeginInit();
+            this.tabPageOptions.SuspendLayout();
+            this.groupBoxRomVersion.SuspendLayout();
+            this.groupBoxGotoRetrieveOffsets.SuspendLayout();
+            this.groupBoxShowOverlay.SuspendLayout();
+            this.panelConnect.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1046,7 +1050,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 285);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 287);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1111,7 +1115,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 160);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 162);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2110,7 +2114,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(711, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(717, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2628,7 +2632,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(720, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(726, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2796,7 +2800,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(812, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(818, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3177,7 +3181,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(722, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(728, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3648,7 +3652,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(719, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(725, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3733,7 +3737,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
-            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(500, 460);
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(506, 460);
             this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4096,7 +4100,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7070,7 +7074,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(271, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(277, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7378,7 +7382,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelDebug.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelDebug.Name = "noTearFlowLayoutPanelDebug";
-            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(539, 455);
+            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(545, 455);
             this.noTearFlowLayoutPanelDebug.TabIndex = 26;
             // 
             // tabPageMap
@@ -7579,7 +7583,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(710, 430);
+            this.glControlMap.Size = new System.Drawing.Size(716, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -7925,8 +7929,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -8097,7 +8101,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(876, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(882, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -8196,7 +8200,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(612, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(618, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -9059,7 +9063,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(490, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(496, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9084,6 +9088,167 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelQuarterFrame.Name = "noTearFlowLayoutPanelQuarterFrame";
             this.noTearFlowLayoutPanelQuarterFrame.Size = new System.Drawing.Size(905, 453);
             this.noTearFlowLayoutPanelQuarterFrame.TabIndex = 2;
+            // 
+            // tabPageModel
+            // 
+            this.tabPageModel.Controls.Add(this.label1);
+            this.tabPageModel.Controls.Add(this.textBoxModelAddress);
+            this.tabPageModel.Controls.Add(this.splitContainerModel);
+            this.tabPageModel.Controls.Add(this.glControlModelView);
+            this.tabPageModel.Location = new System.Drawing.Point(4, 22);
+            this.tabPageModel.Name = "tabPageModel";
+            this.tabPageModel.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageModel.Size = new System.Drawing.Size(915, 463);
+            this.tabPageModel.TabIndex = 18;
+            this.tabPageModel.Text = "Hitbox";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Hitbox Address:";
+            // 
+            // textBoxModelAddress
+            // 
+            this.textBoxModelAddress.Location = new System.Drawing.Point(92, 3);
+            this.textBoxModelAddress.Name = "textBoxModelAddress";
+            this.textBoxModelAddress.ReadOnly = true;
+            this.textBoxModelAddress.Size = new System.Drawing.Size(100, 20);
+            this.textBoxModelAddress.TabIndex = 9;
+            // 
+            // splitContainerModel
+            // 
+            this.splitContainerModel.Location = new System.Drawing.Point(7, 29);
+            this.splitContainerModel.Name = "splitContainerModel";
+            this.splitContainerModel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerModel.Panel1
+            // 
+            this.splitContainerModel.Panel1.Controls.Add(this.labelModelVertices);
+            this.splitContainerModel.Panel1.Controls.Add(this.dataGridViewVertices);
+            // 
+            // splitContainerModel.Panel2
+            // 
+            this.splitContainerModel.Panel2.Controls.Add(this.labelTriangles);
+            this.splitContainerModel.Panel2.Controls.Add(this.dataGridViewTriangles);
+            this.splitContainerModel.Size = new System.Drawing.Size(419, 428);
+            this.splitContainerModel.SplitterDistance = 167;
+            this.splitContainerModel.TabIndex = 2;
+            // 
+            // dataGridViewVertices
+            // 
+            this.dataGridViewVertices.AllowUserToAddRows = false;
+            this.dataGridViewVertices.AllowUserToDeleteRows = false;
+            this.dataGridViewVertices.AllowUserToResizeRows = false;
+            this.dataGridViewVertices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewVertices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewVertices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewVertices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Index,
+            this.X,
+            this.Y,
+            this.Z});
+            this.dataGridViewVertices.Location = new System.Drawing.Point(3, 16);
+            this.dataGridViewVertices.Name = "dataGridViewVertices";
+            this.dataGridViewVertices.ReadOnly = true;
+            this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewVertices.Size = new System.Drawing.Size(413, 148);
+            this.dataGridViewVertices.TabIndex = 1;
+            // 
+            // Index
+            // 
+            this.Index.HeaderText = "Index";
+            this.Index.Name = "Index";
+            this.Index.ReadOnly = true;
+            // 
+            // X
+            // 
+            this.X.HeaderText = "X";
+            this.X.Name = "X";
+            this.X.ReadOnly = true;
+            // 
+            // Y
+            // 
+            this.Y.HeaderText = "Y";
+            this.Y.Name = "Y";
+            this.Y.ReadOnly = true;
+            // 
+            // Z
+            // 
+            this.Z.HeaderText = "Z";
+            this.Z.Name = "Z";
+            this.Z.ReadOnly = true;
+            // 
+            // dataGridViewTriangles
+            // 
+            this.dataGridViewTriangles.AllowUserToAddRows = false;
+            this.dataGridViewTriangles.AllowUserToDeleteRows = false;
+            this.dataGridViewTriangles.AllowUserToResizeRows = false;
+            this.dataGridViewTriangles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewTriangles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewTriangles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTriangles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Group,
+            this.Type,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dataGridViewTriangles.Location = new System.Drawing.Point(3, 16);
+            this.dataGridViewTriangles.Name = "dataGridViewTriangles";
+            this.dataGridViewTriangles.ReadOnly = true;
+            this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(416, 238);
+            this.dataGridViewTriangles.TabIndex = 2;
+            // 
+            // Group
+            // 
+            this.Group.HeaderText = "Group";
+            this.Group.Name = "Group";
+            this.Group.ReadOnly = true;
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "T1";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "T2";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "T3";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // glControlModelView
+            // 
+            this.glControlModelView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.glControlModelView.BackColor = System.Drawing.Color.Black;
+            this.glControlModelView.Location = new System.Drawing.Point(432, 6);
+            this.glControlModelView.Name = "glControlModelView";
+            this.glControlModelView.Size = new System.Drawing.Size(477, 451);
+            this.glControlModelView.TabIndex = 0;
+            this.glControlModelView.VSync = false;
+            this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
             // 
             // tabPageOptions
             // 
@@ -9535,112 +9700,6 @@ namespace SM64_Diagnostic
             this.checkBoxStartSlotIndexOne.Text = "Start Slot Index From 1";
             this.checkBoxStartSlotIndexOne.UseVisualStyleBackColor = true;
             // 
-            // tabPageModel
-            // 
-            this.tabPageModel.Controls.Add(this.label1);
-            this.tabPageModel.Controls.Add(this.textBoxModelAddress);
-            this.tabPageModel.Controls.Add(this.splitContainerModel);
-            this.tabPageModel.Controls.Add(this.glControlModelView);
-            this.tabPageModel.Location = new System.Drawing.Point(4, 22);
-            this.tabPageModel.Name = "tabPageModel";
-            this.tabPageModel.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageModel.Size = new System.Drawing.Size(915, 463);
-            this.tabPageModel.TabIndex = 18;
-            this.tabPageModel.Text = "Model";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Model Address:";
-            // 
-            // textBoxModelAddress
-            // 
-            this.textBoxModelAddress.Location = new System.Drawing.Point(92, 3);
-            this.textBoxModelAddress.Name = "textBoxModelAddress";
-            this.textBoxModelAddress.ReadOnly = true;
-            this.textBoxModelAddress.Size = new System.Drawing.Size(100, 20);
-            this.textBoxModelAddress.TabIndex = 9;
-            // 
-            // splitContainerModel
-            // 
-            this.splitContainerModel.Location = new System.Drawing.Point(7, 29);
-            this.splitContainerModel.Name = "splitContainerModel";
-            this.splitContainerModel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainerModel.Panel1
-            // 
-            this.splitContainerModel.Panel1.Controls.Add(this.dataGridViewVertices);
-            // 
-            // splitContainerModel.Panel2
-            // 
-            this.splitContainerModel.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModel.Size = new System.Drawing.Size(419, 428);
-            this.splitContainerModel.SplitterDistance = 167;
-            this.splitContainerModel.TabIndex = 2;
-            // 
-            // dataGridViewVertices
-            // 
-            this.dataGridViewVertices.AllowUserToAddRows = false;
-            this.dataGridViewVertices.AllowUserToDeleteRows = false;
-            this.dataGridViewVertices.AllowUserToResizeRows = false;
-            this.dataGridViewVertices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewVertices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewVertices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewVertices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Index,
-            this.X,
-            this.Y,
-            this.Z});
-            this.dataGridViewVertices.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewVertices.Name = "dataGridViewVertices";
-            this.dataGridViewVertices.ReadOnly = true;
-            this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(413, 161);
-            this.dataGridViewVertices.TabIndex = 1;
-            // 
-            // Index
-            // 
-            this.Index.HeaderText = "Index";
-            this.Index.Name = "Index";
-            this.Index.ReadOnly = true;
-            // 
-            // X
-            // 
-            this.X.HeaderText = "X";
-            this.X.Name = "X";
-            this.X.ReadOnly = true;
-            // 
-            // Y
-            // 
-            this.Y.HeaderText = "Y";
-            this.Y.Name = "Y";
-            this.Y.ReadOnly = true;
-            // 
-            // Z
-            // 
-            this.Z.HeaderText = "Z";
-            this.Z.Name = "Z";
-            this.Z.ReadOnly = true;
-            // 
-            // glControlModelView
-            // 
-            this.glControlModelView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.glControlModelView.BackColor = System.Drawing.Color.Black;
-            this.glControlModelView.Location = new System.Drawing.Point(432, 6);
-            this.glControlModelView.Name = "glControlModelView";
-            this.glControlModelView.Size = new System.Drawing.Size(477, 451);
-            this.glControlModelView.TabIndex = 0;
-            this.glControlModelView.VSync = false;
-            this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
-            // 
             // labelVersionNumber
             // 
             this.labelVersionNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -9828,44 +9887,23 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // dataGridViewTriangles
+            // labelModelVertices
             // 
-            this.dataGridViewTriangles.AllowUserToAddRows = false;
-            this.dataGridViewTriangles.AllowUserToDeleteRows = false;
-            this.dataGridViewTriangles.AllowUserToResizeRows = false;
-            this.dataGridViewTriangles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewTriangles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewTriangles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTriangles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.dataGridViewTriangles.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewTriangles.Name = "dataGridViewTriangles";
-            this.dataGridViewTriangles.ReadOnly = true;
-            this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(413, 251);
-            this.dataGridViewTriangles.TabIndex = 2;
+            this.labelModelVertices.AutoSize = true;
+            this.labelModelVertices.Location = new System.Drawing.Point(3, 0);
+            this.labelModelVertices.Name = "labelModelVertices";
+            this.labelModelVertices.Size = new System.Drawing.Size(48, 13);
+            this.labelModelVertices.TabIndex = 11;
+            this.labelModelVertices.Text = "Vertices:";
             // 
-            // dataGridViewTextBoxColumn2
+            // labelTriangles
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "T1";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "T2";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "T3";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.labelTriangles.AutoSize = true;
+            this.labelTriangles.Location = new System.Drawing.Point(3, 0);
+            this.labelTriangles.Name = "labelTriangles";
+            this.labelTriangles.Size = new System.Drawing.Size(50, 13);
+            this.labelTriangles.TabIndex = 12;
+            this.labelTriangles.Text = "Triangles";
             // 
             // StroopMainForm
             // 
@@ -10195,6 +10233,16 @@ namespace SM64_Diagnostic
             this.groupBoxCameraHackPos.ResumeLayout(false);
             this.groupBoxCameraHackPos.PerformLayout();
             this.tabPageQuarterFrame.ResumeLayout(false);
+            this.tabPageModel.ResumeLayout(false);
+            this.tabPageModel.PerformLayout();
+            this.splitContainerModel.Panel1.ResumeLayout(false);
+            this.splitContainerModel.Panel1.PerformLayout();
+            this.splitContainerModel.Panel2.ResumeLayout(false);
+            this.splitContainerModel.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerModel)).EndInit();
+            this.splitContainerModel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVertices)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTriangles)).EndInit();
             this.tabPageOptions.ResumeLayout(false);
             this.tabPageOptions.PerformLayout();
             this.groupBoxRomVersion.ResumeLayout(false);
@@ -10203,16 +10251,8 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.PerformLayout();
             this.groupBoxShowOverlay.ResumeLayout(false);
             this.groupBoxShowOverlay.PerformLayout();
-            this.tabPageModel.ResumeLayout(false);
-            this.tabPageModel.PerformLayout();
-            this.splitContainerModel.Panel1.ResumeLayout(false);
-            this.splitContainerModel.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerModel)).EndInit();
-            this.splitContainerModel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVertices)).EndInit();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTriangles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -10923,9 +10963,13 @@ namespace SM64_Diagnostic
         private DataGridViewTextBoxColumn Y;
         private DataGridViewTextBoxColumn Z;
         private DataGridView dataGridViewTriangles;
+        private DataGridViewTextBoxColumn Group;
+        private DataGridViewTextBoxColumn Type;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private Label labelModelVertices;
+        private Label labelTriangles;
     }
 }
 

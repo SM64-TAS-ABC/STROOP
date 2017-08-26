@@ -146,6 +146,12 @@ namespace SM64_Diagnostic.Controls
         bool[] _vertexSelected = new bool[0];
         object _modelLock = new object();
 
+        public void ClearModel()
+        {
+            _vertices = new Vector3[0];
+            _triangles = new int[0][];
+        }
+
         public void ChangeModel(List<short[]> vertices, List<int[]> triangles)
         {
             var maxRadius = vertices.Max(v => MoreMath.GetDistanceBetween(v[0], v[2], 0, 0));
@@ -167,8 +173,9 @@ namespace SM64_Diagnostic.Controls
                 _triangles = new int[triangles.Count][];
                 for (int i = 0; i < _triangles.Length; i++)
                 {
-                    _triangles[i] = (int[]) triangles[i].Clone();
+                    _triangles[i] = triangles[i].Select(t => t >= _vertices.Length || t < 0 ? 0 : t).ToArray();
                 }
+
                 _vertexSelected = new bool[_vertices.Length];
                 _triangleSelected = new bool[_triangles.Length];
             }

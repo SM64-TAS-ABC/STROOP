@@ -130,18 +130,28 @@ namespace SM64_Diagnostic.Managers
         public List<int[]> GetTrianglesFromContinuedModelPonter(uint contModelPtr)
         {
             var triangles = new List<int[]>();
-            var type = Config.Stream.GetUInt16(contModelPtr); // Type (unused, but here anyway for doc.)
-            contModelPtr += 2;
-            int numberOfTriangles = Math.Min(Config.Stream.GetUInt16(contModelPtr), (ushort)(500 / 3));
-            contModelPtr += 2;
 
-            for (int i = 0; i < numberOfTriangles; i++)
+            for (int totalVertices = 0, group = 0; totalVertices < 500 / 2; group++)
             {
-                var v1 = Config.Stream.GetInt16(contModelPtr);
-                var v2 = Config.Stream.GetInt16(contModelPtr + 0x02);
-                var v3 = Config.Stream.GetInt16(contModelPtr + 0x04);
-                contModelPtr += 0x06;
-                triangles.Add(new int[3] { v1, v2, v3 });
+                var type = Config.Stream.GetUInt16(contModelPtr); // Type (unused, but here anyway for doc.)
+
+                if (type == 0x41)
+                    break;
+
+                contModelPtr += 2;
+                int numberOfTriangles = Config.Stream.GetUInt16(contModelPtr);
+                contModelPtr += 2;
+
+                totalVertices += numberOfTriangles;
+
+                for (int i = 0; i < numberOfTriangles; i++)
+                {
+                    var v1 = Config.Stream.GetInt16(contModelPtr);
+                    var v2 = Config.Stream.GetInt16(contModelPtr + 0x02);
+                    var v3 = Config.Stream.GetInt16(contModelPtr + 0x04);
+                    contModelPtr += 0x06;
+                    triangles.Add(new int[] { v1, v2, v3, group, type});
+                }
             }
 
             return triangles;
@@ -153,6 +163,8 @@ namespace SM64_Diagnostic.Managers
             {
                 _textBoxAddress.Text = ModelPointer == 0 ? "0x00000000" : "(None)";
                 _dataGridViewVertices.Rows.Clear();
+                _dataGridViewTriangles.Rows.Clear();
+                _modelView?.ClearModel();
                 return;
             }
 
@@ -161,8 +173,7 @@ namespace SM64_Diagnostic.Managers
             var modelPtr = ModelPointer.Value;
             var vertices = GetVerticesFromModelPointer(ref modelPtr);
             var triangles = GetTrianglesFromContinuedModelPonter(modelPtr);
-            _modelView.ChangeModel(vertices, triangles);
-
+            _modelView?.ChangeModel(vertices, triangles);
 
             // TODO: transformation
 
@@ -177,7 +188,7 @@ namespace SM64_Diagnostic.Managers
             for (int i = 0; i < triangles.Count; i++)
             {
                 var t = triangles[i];
-                _dataGridViewTriangles.Rows.Add(t[0], t[1], t[2]);
+                _dataGridViewTriangles.Rows.Add(t[3], t[4], t[0], t[1], t[2]);
             }
 
         }
