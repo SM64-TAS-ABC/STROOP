@@ -1182,12 +1182,12 @@ namespace SM64_Diagnostic
             this.tabControlMain.Controls.Add(this.tabPageDebug);
             this.tabControlMain.Controls.Add(this.tabPageMap);
             this.tabControlMain.Controls.Add(this.tabPagePu);
+            this.tabControlMain.Controls.Add(this.tabPageModel);
             this.tabControlMain.Controls.Add(this.tabPageExpressions);
             this.tabControlMain.Controls.Add(this.tabPageDisassembly);
             this.tabControlMain.Controls.Add(this.tabPageHacks);
             this.tabControlMain.Controls.Add(this.tabPageCamHack);
             this.tabControlMain.Controls.Add(this.tabPageQuarterFrame);
-            this.tabControlMain.Controls.Add(this.tabPageModel);
             this.tabControlMain.Controls.Add(this.tabPageOptions);
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(2, 2);
