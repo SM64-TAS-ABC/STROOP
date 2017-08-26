@@ -22,23 +22,7 @@ namespace SM64_Diagnostic.Managers
         private DataGridView _dataGridViewTriangles;
         private TextBox _textBoxAddress;
 
-        private uint _modelObjectAddress = 0;
-        public uint ModelObjectAddress
-        {
-            get
-            {
-                return _modelObjectAddress;
-            }
-            set
-            {
-                if (_modelObjectAddress == value)
-                    return;
-
-                _modelObjectAddress = value;
-
-                UpdateModelPointer();
-            }
-        }
+        public uint ModelObjectAddress;
 
         public uint ModelPointer
         {
@@ -48,6 +32,7 @@ namespace SM64_Diagnostic.Managers
                 return modelObjectAddress == 0 ? 0 : Config.Stream.GetUInt32(modelObjectAddress + Config.ObjectSlots.HitboxPointerOffset);
             }
         }
+        private uint _previousModelPointer = 0;
 
         private bool _isLoaded = false;
         public bool IsLoaded
@@ -206,6 +191,13 @@ namespace SM64_Diagnostic.Managers
         {
             if (!_isLoaded)
                 return;
+
+            uint currentModelPointer = ModelPointer;
+            if (currentModelPointer != _previousModelPointer)
+            {
+                _previousModelPointer = currentModelPointer;
+                UpdateModelPointer();
+            }
 
             _modelView.Control.Invalidate();
         }
