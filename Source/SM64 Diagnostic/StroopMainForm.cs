@@ -534,6 +534,8 @@ namespace SM64_Diagnostic
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerDebug"] as SplitContainer;
             else if (selectedTabPage == tabPageMap)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMap"] as SplitContainer;
+            else if (selectedTabPage == tabPageModel)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerModel"] as SplitContainer;
             else if (selectedTabPage == tabPageHacks)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerHacks"] as SplitContainer;
             else if (selectedTabPage == tabPageCamHack)
