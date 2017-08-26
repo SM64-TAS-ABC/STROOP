@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -1028,6 +1028,7 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
@@ -7938,8 +7939,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9101,9 +9102,6 @@ namespace SM64_Diagnostic
             // tabPageModel
             // 
             this.tabPageModel.Controls.Add(this.splitContainer1);
-            this.tabPageModel.Controls.Add(this.label1);
-            this.tabPageModel.Controls.Add(this.textBoxModelAddress);
-            this.tabPageModel.Controls.Add(this.splitContainerModelTables);
             this.tabPageModel.Location = new System.Drawing.Point(4, 22);
             this.tabPageModel.Name = "tabPageModel";
             this.tabPageModel.Padding = new System.Windows.Forms.Padding(3);
@@ -9114,7 +9112,7 @@ namespace SM64_Diagnostic
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 6);
+            this.label1.Location = new System.Drawing.Point(3, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 10;
@@ -9122,7 +9120,7 @@ namespace SM64_Diagnostic
             // 
             // textBoxModelAddress
             // 
-            this.textBoxModelAddress.Location = new System.Drawing.Point(92, 3);
+            this.textBoxModelAddress.Location = new System.Drawing.Point(89, 3);
             this.textBoxModelAddress.Name = "textBoxModelAddress";
             this.textBoxModelAddress.ReadOnly = true;
             this.textBoxModelAddress.Size = new System.Drawing.Size(100, 20);
@@ -9130,7 +9128,8 @@ namespace SM64_Diagnostic
             // 
             // splitContainerModelTables
             // 
-            this.splitContainerModelTables.Location = new System.Drawing.Point(7, 29);
+            this.splitContainerModelTables.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerModelTables.Location = new System.Drawing.Point(39, 55);
             this.splitContainerModelTables.Name = "splitContainerModelTables";
             this.splitContainerModelTables.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -9143,8 +9142,8 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(419, 428);
-            this.splitContainerModelTables.SplitterDistance = 167;
+            this.splitContainerModelTables.Size = new System.Drawing.Size(419, 325);
+            this.splitContainerModelTables.SplitterDistance = 126;
             this.splitContainerModelTables.TabIndex = 2;
             // 
             // labelModelVertices
@@ -9175,7 +9174,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(413, 148);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(413, 107);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9231,7 +9230,7 @@ namespace SM64_Diagnostic
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(416, 238);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(416, 118);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -9272,7 +9271,7 @@ namespace SM64_Diagnostic
             this.glControlModelView.BackColor = System.Drawing.Color.Black;
             this.glControlModelView.Location = new System.Drawing.Point(3, 38);
             this.glControlModelView.Name = "glControlModelView";
-            this.glControlModelView.Size = new System.Drawing.Size(292, 332);
+            this.glControlModelView.Size = new System.Drawing.Size(250, 294);
             this.glControlModelView.TabIndex = 0;
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
@@ -9965,21 +9964,24 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(365, 6);
+            this.splitContainer1.Location = new System.Drawing.Point(92, 44);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainerModelTables);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.textBoxModelAddress);
             this.splitContainer1.Panel1MinSize = 0;
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.glControlModelView);
             this.splitContainer1.Panel2MinSize = 0;
-            this.splitContainer1.Size = new System.Drawing.Size(517, 427);
-            this.splitContainer1.SplitterDistance = 207;
+            this.splitContainer1.Size = new System.Drawing.Size(790, 389);
+            this.splitContainer1.SplitterDistance = 522;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 32;
             // 
@@ -10312,7 +10314,6 @@ namespace SM64_Diagnostic
             this.groupBoxCameraHackPos.PerformLayout();
             this.tabPageQuarterFrame.ResumeLayout(false);
             this.tabPageModel.ResumeLayout(false);
-            this.tabPageModel.PerformLayout();
             this.splitContainerModelTables.Panel1.ResumeLayout(false);
             this.splitContainerModelTables.Panel1.PerformLayout();
             this.splitContainerModelTables.Panel2.ResumeLayout(false);
@@ -10333,6 +10334,8 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);

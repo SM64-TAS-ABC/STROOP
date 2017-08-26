@@ -59,8 +59,8 @@ namespace SM64_Diagnostic.Managers
         {
             SplitContainer splitContainer1 = tabControl.Controls["splitContainer1"] as SplitContainer;
             _glControl = splitContainer1.Panel2.Controls["glControlModelView"] as GLControl;
-            _textBoxAddress = tabControl.Controls["textBoxModelAddress"] as TextBox;
-            SplitContainer splitContainerData = tabControl.Controls["splitContainerModelTables"] as SplitContainer;
+            _textBoxAddress = splitContainer1.Panel1.Controls["textBoxModelAddress"] as TextBox;
+            SplitContainer splitContainerData = splitContainer1.Panel1.Controls["splitContainerModelTables"] as SplitContainer;
             _dataGridViewVertices = splitContainerData.Panel1.Controls["dataGridViewVertices"] as DataGridView;
             _dataGridViewTriangles = splitContainerData.Panel2.Controls["dataGridViewTriangles"] as DataGridView;
 
