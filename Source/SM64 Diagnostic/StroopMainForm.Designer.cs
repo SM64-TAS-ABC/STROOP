@@ -748,7 +748,7 @@ namespace SM64_Diagnostic
             this.radioButtonPositionControllerRelativeAngleMario = new System.Windows.Forms.RadioButton();
             this.radioButtonPositionControllerRelativeAngleRecommended = new System.Windows.Forms.RadioButton();
             this.radioButtonPositionControllerRelativeAngleCustom = new System.Windows.Forms.RadioButton();
-            this.textBoxPositionControllerRelativeAngleCustom = new System.Windows.Forms.TextBox();
+            this.textBoxPositionControllerRelativeAngleCustom = new BetterTextbox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();

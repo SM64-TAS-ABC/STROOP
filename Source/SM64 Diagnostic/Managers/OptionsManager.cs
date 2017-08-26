@@ -56,8 +56,8 @@ namespace SM64_Diagnostic.Managers
                 groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleCustom"] as RadioButton;
             radioButtonPositionControllerRelativeAngleCustom.Click += (sender, e) =>
                 Config.PositionControllerRelativeAngle.Relativity = RelativityType.Custom;
-            TextBox textBoxPositionControllerRelativeAngleCustom =
-                groupBoxPositionControllerRelativeAngle.Controls["textBoxPositionControllerRelativeAngleCustom"] as TextBox;
+            BetterTextbox textBoxPositionControllerRelativeAngleCustom =
+                groupBoxPositionControllerRelativeAngle.Controls["textBoxPositionControllerRelativeAngleCustom"] as BetterTextbox;
             textBoxPositionControllerRelativeAngleCustom.LostFocus += (sender, e) =>
             {
                 double value;
