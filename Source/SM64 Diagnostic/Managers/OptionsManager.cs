@@ -29,16 +29,16 @@ namespace SM64_Diagnostic.Managers
 
             // goto/retrieve offsets
             GroupBox groupBoxGotoRetrieveOffsets = tabControl.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
-            TextBox textBoxGotoAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoAbove"] as TextBox;
+            BetterTextbox textBoxGotoAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoAbove"] as BetterTextbox;
             textBoxGotoAbove.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
                 sender, ref Config.GotoRetrieve.GotoAboveOffset, Config.GotoRetrieve.GotoAboveDefault);
-            TextBox textBoxGotoInfront = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoInfront"] as TextBox;
+            BetterTextbox textBoxGotoInfront = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoInfront"] as BetterTextbox;
             textBoxGotoInfront.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
                 sender, ref Config.GotoRetrieve.GotoInfrontOffset, Config.GotoRetrieve.GotoInfrontDefault);
-            TextBox textBoxRetrieveAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxRetrieveAbove"] as TextBox;
+            BetterTextbox textBoxRetrieveAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxRetrieveAbove"] as BetterTextbox;
             textBoxRetrieveAbove.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
                 sender, ref Config.GotoRetrieve.RetrieveAboveOffset, Config.GotoRetrieve.RetrieveAboveDefault);
-            TextBox textBoxRetrieveInfront = groupBoxGotoRetrieveOffsets.Controls["textBoxRetrieveInfront"] as TextBox;
+            BetterTextbox textBoxRetrieveInfront = groupBoxGotoRetrieveOffsets.Controls["textBoxRetrieveInfront"] as BetterTextbox;
             textBoxRetrieveInfront.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
                 sender, ref Config.GotoRetrieve.RetrieveInfrontOffset, Config.GotoRetrieve.RetrieveInfrontDefault);
 
