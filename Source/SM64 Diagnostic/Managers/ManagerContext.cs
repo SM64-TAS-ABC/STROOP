@@ -16,6 +16,7 @@ namespace SM64_Diagnostic.Managers
         public HackManager HackManager;
         public HudManager HudManager;
         public MapManager MapManager;
+        public ModelManager ModelManager;
         public MarioManager MarioManager;
         public MiscManager MiscManager;
         public ObjectManager ObjectManager;

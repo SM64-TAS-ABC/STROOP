@@ -35,6 +35,7 @@ namespace SM64_Diagnostic.Managers
         ObjectManager _objManager;
         MapManager _mapManager;
         MiscManager _miscManager;
+        ModelManager _modelManager;
         public ObjectSlotManagerGui ManagerGui;
 
         public const byte VacantGroup = 0xFF;
@@ -65,7 +66,8 @@ namespace SM64_Diagnostic.Managers
         }
 
         public ObjectSlotsManager(
-            ObjectManager objManager, ObjectSlotManagerGui managerGui, MapManager mapManager, MiscManager miscManager, TabControl tabControlMain)
+            ObjectManager objManager, ObjectSlotManagerGui managerGui, MapManager mapManager, MiscManager miscManager, 
+            ModelManager modelManager, TabControl tabControlMain)
         {
             Instance = this;
 
@@ -73,6 +75,7 @@ namespace SM64_Diagnostic.Managers
             ManagerGui = managerGui;
             _mapManager = mapManager;
             _miscManager = miscManager;
+            _modelManager = modelManager;
 
             // Add SortMethods
             ManagerGui.SortMethodComboBox.DataSource = Enum.GetValues(typeof(ObjectSlotsManager.SortMethodType));
@@ -97,7 +100,7 @@ namespace SM64_Diagnostic.Managers
             ChangeSlotSize(DefaultSlotSize);
         }
 
-        private enum ClickType { ObjectClick, MapClick, CamHackClick, MarkClick };
+        private enum ClickType { ObjectClick, MapClick, CamHackClick, ModelClick, MarkClick };
 
         private void OnSlotClick(object sender, EventArgs e)
         {
@@ -124,12 +127,24 @@ namespace SM64_Diagnostic.Managers
             }
             else
             {
-                if (ManagerGui.TabControl.SelectedTab.Text.Equals("Cam Hack"))
-                    click = ClickType.CamHackClick;
-                else if (ManagerGui.TabControl.SelectedTab.Text.Equals("Map"))
-                    click = ClickType.MapClick;
-                else
-                    click = ClickType.ObjectClick;
+                switch (ManagerGui.TabControl.SelectedTab.Text)
+                {
+                    case "Cam Hack":
+                        click = ClickType.CamHackClick;
+                        break;
+
+                    case "Map":
+                        click = ClickType.MapClick;
+                        break;
+
+                    case "Model":
+                        click = ClickType.ModelClick;
+                        break;
+
+                    default:
+                        click = ClickType.ObjectClick;
+                        break;
+                }
             }
 
             if (click == ClickType.CamHackClick)
@@ -144,6 +159,7 @@ namespace SM64_Diagnostic.Managers
                 switch (click)
                 {
                     case ClickType.ObjectClick:
+                    case ClickType.ModelClick:
                         selection = SelectedSlotsAddresses;
                         break;
                     case ClickType.MapClick:
@@ -181,7 +197,8 @@ namespace SM64_Diagnostic.Managers
                 else
                 {
                     // ctrl functionality is default in map tab
-                    if (isCtrlKeyHeld == (click != ClickType.ObjectClick))
+                    if (isCtrlKeyHeld == (click != ClickType.ObjectClick)
+                        || (click == ClickType.ModelClick))
                     {
                         selection.Clear();
                     }
@@ -479,6 +496,7 @@ namespace SM64_Diagnostic.Managers
                     _objManager.BackColor = Config.ObjectGroups.VacantSlotColor;
                     _objManager.SlotIndex = "";
                     _objManager.SlotPos = "";
+
                     _selectedUpdatePending = false;
                 }
             }
@@ -490,6 +508,7 @@ namespace SM64_Diagnostic.Managers
                 _objManager.SlotIndex = "";
                 _objManager.SlotPos = "";
                 _objManager.Image = null;
+                _modelManager.ModelPointer = null;
             }
         }
 
@@ -582,7 +601,10 @@ namespace SM64_Diagnostic.Managers
 
             // Update object manager image
             if (SelectedSlotsAddresses.Count <= 1 && SelectedSlotsAddresses.Contains(objAddress))
+            {
+                _modelManager.ModelPointer = Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.HitboxPointerOffset);
                 UpdateObjectManager(objSlot, behaviorCriteria, objData);
+            }
 
             // Update the map
             UpdateMapObject(objData, objSlot, behaviorCriteria);

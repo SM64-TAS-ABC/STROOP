@@ -101,6 +101,8 @@ namespace SM64_Diagnostic.ManagerClasses
 
         public void OnResize(object sender, EventArgs e)
         {
+            Control.MakeCurrent();
+
             SetupViewport();
             SetMapView();
         }

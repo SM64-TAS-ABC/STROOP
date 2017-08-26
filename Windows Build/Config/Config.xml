@@ -36,6 +36,7 @@
     <HomeOffsetZ>0x16C</HomeOffsetZ>
     <RotationOffset>0xD4</RotationOffset>
     <MaxObjectSlots>240</MaxObjectSlots>
+    <HitboxPointerOffset>0x218</HitboxPointerOffset>
     <HitboxRadius>0x1f8</HitboxRadius>
     <HitboxHeight>0x1fc</HitboxHeight>
     <HitboxDownOffset>0x208</HitboxDownOffset>

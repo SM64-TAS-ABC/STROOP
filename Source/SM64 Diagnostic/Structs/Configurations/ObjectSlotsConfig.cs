@@ -42,6 +42,7 @@ namespace SM64_Diagnostic.Structs
         public uint HomeZOffset;
         public uint ObjectRotationOffset;
 
+        public uint HitboxPointerOffset;
         public uint HitboxRadius;
         public uint HitboxHeight;
         public uint HitboxDownOffset;

@@ -40,6 +40,7 @@ namespace SM64_Diagnostic
         ActionsManager _actionsManager;
         ObjectManager _objectManager;
         MapManager _mapManager;
+        ModelManager _modelManager;
         OptionsManager _optionsManager;
         ScriptManager _scriptManager;
         HudManager _hudManager;
@@ -113,6 +114,7 @@ namespace SM64_Diagnostic
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
             mapGui.MapShowCeilingTriangle = checkBoxMapShowCeiling;
             currentContext.MapManager = _mapManager = new MapManager(_mapAssoc, mapGui);
+            currentContext.ModelManager = _modelManager = new ModelManager(tabPageModel);
 
             currentContext.ActionsManager = _actionsManager = new ActionsManager(_actionsData, noTearFlowLayoutPanelActions, tabPageActions);
             currentContext.WaterManager = _waterManager = new DataManager(_waterData, noTearFlowLayoutPanelWater);
@@ -136,7 +138,8 @@ namespace SM64_Diagnostic
             _slotManagerGui.FlowLayoutContainer = NoTearFlowLayoutPanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
-            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(_objectManager, _slotManagerGui, _mapManager, _miscManager, tabControlMain);
+            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(_objectManager, 
+                _slotManagerGui, _mapManager, _miscManager, _modelManager, tabControlMain);
 
             SetupViews();
 
@@ -274,6 +277,7 @@ namespace SM64_Diagnostic
                 _debugManager.Update(tabControlMain.SelectedTab == tabPageDebug);
                 _puManager.Update(tabControlMain.SelectedTab == tabPagePu);
                 _mapManager?.Update();
+                _modelManager?.Update();
                 _scriptManager.Update();
                 _hackManager.Update();
             }));
@@ -428,6 +432,8 @@ namespace SM64_Diagnostic
             NoTearFlowLayoutPanelMario.Visible = false;
             if (_mapManager != null && _mapManager.IsLoaded)
                 _mapManager.Visible = false;
+            if (_modelManager != null && _modelManager.IsLoaded)
+                _modelManager.Visible = false;
             await Task.Run(() =>
             {
                 while (_resizeTimeLeft > 0)
@@ -441,6 +447,8 @@ namespace SM64_Diagnostic
             NoTearFlowLayoutPanelMario.Visible = true;
             if (_mapManager != null && _mapManager.IsLoaded)
                 _mapManager.Visible = true;
+            if (_modelManager != null && _modelManager.IsLoaded)
+                _modelManager.Visible = true;
 
             _resizing = false;
         }
@@ -472,6 +480,17 @@ namespace SM64_Diagnostic
         private void _sm64Stream_OnClose(object sender, EventArgs e)
         {
             Invoke(new Action(() => Close()));
+        }
+
+        private async void glControlModelView_Load(object sender, EventArgs e)
+        {
+            await Task.Run(() => {
+                while (_modelManager == null)
+                {
+                    Task.Delay(1).Wait();
+                }
+            });
+            _modelManager.Load();
         }
 
         private void buttonShowTopPanel_Click(object sender, EventArgs e)
