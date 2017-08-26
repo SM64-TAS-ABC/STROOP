@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -744,6 +744,11 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.groupBoxPositionControllerRelativeAngle = new System.Windows.Forms.GroupBox();
+            this.radioButtonPositionControllerRelativeAngleMario = new System.Windows.Forms.RadioButton();
+            this.radioButtonPositionControllerRelativeAngleRecommended = new System.Windows.Forms.RadioButton();
+            this.radioButtonPositionControllerRelativeAngleCustom = new System.Windows.Forms.RadioButton();
+            this.textBoxPositionControllerRelativeAngleCustom = new System.Windows.Forms.TextBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1021,6 +1026,7 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.groupBoxPositionControllerRelativeAngle.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -7929,8 +7935,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9270,6 +9276,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageOptions
             // 
+            this.tabPageOptions.Controls.Add(this.groupBoxPositionControllerRelativeAngle);
             this.tabPageOptions.Controls.Add(this.groupBoxRomVersion);
             this.tabPageOptions.Controls.Add(this.groupBoxGotoRetrieveOffsets);
             this.tabPageOptions.Controls.Add(this.checkBoxNeutralizeTriangleWith21);
@@ -9905,6 +9912,60 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
+            // groupBoxPositionControllerRelativeAngle
+            // 
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.textBoxPositionControllerRelativeAngleCustom);
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleMario);
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleRecommended);
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleCustom);
+            this.groupBoxPositionControllerRelativeAngle.Location = new System.Drawing.Point(16, 192);
+            this.groupBoxPositionControllerRelativeAngle.Name = "groupBoxPositionControllerRelativeAngle";
+            this.groupBoxPositionControllerRelativeAngle.Size = new System.Drawing.Size(141, 99);
+            this.groupBoxPositionControllerRelativeAngle.TabIndex = 39;
+            this.groupBoxPositionControllerRelativeAngle.TabStop = false;
+            this.groupBoxPositionControllerRelativeAngle.Text = "Pos Controller Rel Angle";
+            // 
+            // radioButtonPositionControllerRelativeAngleMario
+            // 
+            this.radioButtonPositionControllerRelativeAngleMario.AutoSize = true;
+            this.radioButtonPositionControllerRelativeAngleMario.Location = new System.Drawing.Point(11, 42);
+            this.radioButtonPositionControllerRelativeAngleMario.Name = "radioButtonPositionControllerRelativeAngleMario";
+            this.radioButtonPositionControllerRelativeAngleMario.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonPositionControllerRelativeAngleMario.TabIndex = 12;
+            this.radioButtonPositionControllerRelativeAngleMario.Text = "Mario";
+            this.radioButtonPositionControllerRelativeAngleMario.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonPositionControllerRelativeAngleRecommended
+            // 
+            this.radioButtonPositionControllerRelativeAngleRecommended.AutoSize = true;
+            this.radioButtonPositionControllerRelativeAngleRecommended.Checked = true;
+            this.radioButtonPositionControllerRelativeAngleRecommended.Location = new System.Drawing.Point(11, 19);
+            this.radioButtonPositionControllerRelativeAngleRecommended.Name = "radioButtonPositionControllerRelativeAngleRecommended";
+            this.radioButtonPositionControllerRelativeAngleRecommended.Size = new System.Drawing.Size(97, 17);
+            this.radioButtonPositionControllerRelativeAngleRecommended.TabIndex = 11;
+            this.radioButtonPositionControllerRelativeAngleRecommended.TabStop = true;
+            this.radioButtonPositionControllerRelativeAngleRecommended.Text = "Recommended";
+            this.radioButtonPositionControllerRelativeAngleRecommended.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonPositionControllerRelativeAngleCustom
+            // 
+            this.radioButtonPositionControllerRelativeAngleCustom.AutoSize = true;
+            this.radioButtonPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(11, 65);
+            this.radioButtonPositionControllerRelativeAngleCustom.Name = "radioButtonPositionControllerRelativeAngleCustom";
+            this.radioButtonPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonPositionControllerRelativeAngleCustom.TabIndex = 13;
+            this.radioButtonPositionControllerRelativeAngleCustom.Text = "Custom:";
+            this.radioButtonPositionControllerRelativeAngleCustom.UseVisualStyleBackColor = true;
+            // 
+            // textBoxPositionControllerRelativeAngleCustom
+            // 
+            this.textBoxPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(74, 64);
+            this.textBoxPositionControllerRelativeAngleCustom.Name = "textBoxPositionControllerRelativeAngleCustom";
+            this.textBoxPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(50, 20);
+            this.textBoxPositionControllerRelativeAngleCustom.TabIndex = 38;
+            this.textBoxPositionControllerRelativeAngleCustom.Text = "32768";
+            this.textBoxPositionControllerRelativeAngleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -10253,6 +10314,8 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.groupBoxPositionControllerRelativeAngle.ResumeLayout(false);
+            this.groupBoxPositionControllerRelativeAngle.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -10970,6 +11033,11 @@ namespace SM64_Diagnostic
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private Label labelModelVertices;
         private Label labelTriangles;
+        private GroupBox groupBoxPositionControllerRelativeAngle;
+        private TextBox textBoxPositionControllerRelativeAngleCustom;
+        private RadioButton radioButtonPositionControllerRelativeAngleMario;
+        private RadioButton radioButtonPositionControllerRelativeAngleRecommended;
+        private RadioButton radioButtonPositionControllerRelativeAngleCustom;
     }
 }
 
