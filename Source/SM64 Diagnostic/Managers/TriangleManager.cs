@@ -240,7 +240,7 @@ namespace SM64_Diagnostic.Managers
         private void ShowTriangleVertices()
         {
             var triangleInfoForm = new TriangleInfoForm();
-            triangleInfoForm.SetData(_triangleData, _repeatFirstVertexCheckbox.Checked);
+            triangleInfoForm.SetVertices(_triangleData);
             triangleInfoForm.ShowDialog();
         }
 
