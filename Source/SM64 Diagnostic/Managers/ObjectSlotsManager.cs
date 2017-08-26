@@ -100,7 +100,7 @@ namespace SM64_Diagnostic.Managers
             ChangeSlotSize(DefaultSlotSize);
         }
 
-        private enum ClickType { ObjectClick, MapClick, CamHackClick, ModelClick, MarkClick };
+        private enum ClickType { ObjectClick, MapClick, ModelClick, CamHackClick, MarkClick };
 
         private void OnSlotClick(object sender, EventArgs e)
         {
@@ -147,7 +147,11 @@ namespace SM64_Diagnostic.Managers
                 }
             }
 
-            if (click == ClickType.CamHackClick)
+            if (click == ClickType.ModelClick)
+            {
+                _modelManager.ModelPointer = Config.Stream.GetUInt32(selectedSlot.Address + Config.ObjectSlots.HitboxPointerOffset);
+            }
+            else if (click == ClickType.CamHackClick)
             {
                 uint currentCamHackSlot = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
                 uint newCamHackSlot = currentCamHackSlot == selectedSlot.Address ? 0 : selectedSlot.Address;
@@ -159,7 +163,6 @@ namespace SM64_Diagnostic.Managers
                 switch (click)
                 {
                     case ClickType.ObjectClick:
-                    case ClickType.ModelClick:
                         selection = SelectedSlotsAddresses;
                         break;
                     case ClickType.MapClick:
@@ -197,8 +200,7 @@ namespace SM64_Diagnostic.Managers
                 else
                 {
                     // ctrl functionality is default in map tab
-                    if (isCtrlKeyHeld == (click != ClickType.ObjectClick)
-                        || (click == ClickType.ModelClick))
+                    if (isCtrlKeyHeld == (click != ClickType.ObjectClick))
                     {
                         selection.Clear();
                     }
@@ -389,7 +391,7 @@ namespace SM64_Diagnostic.Managers
                 Config.ObjectAssociations.BehaviorBankStart ? float.MaxValue : s.DistanceToMario).First().Address;
             _cameraObject = Config.Stream.GetUInt32(Config.Camera.SecondObject);
             _cameraHackObject = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
-            _modelObject = Config.Stream.GetUInt32(Config.Camera.SecondObject); //TODO fix this model
+            _modelObject = _modelManager.ModelPointer;
 
             uint floorTriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
             _floorObject = floorTriangleAddress == 0 ? 0 : Config.Stream.GetUInt32(floorTriangleAddress + Config.TriangleOffsets.AssociatedObject);
@@ -509,7 +511,6 @@ namespace SM64_Diagnostic.Managers
                 _objManager.SlotIndex = "";
                 _objManager.SlotPos = "";
                 _objManager.Image = null;
-                _modelManager.ModelPointer = 0;
             }
         }
 
@@ -530,7 +531,7 @@ namespace SM64_Diagnostic.Managers
             objSlot.DrawClosestOverlay = Config.ShowOverlayClosestObject && objAddress == _closestObject;
             objSlot.DrawCameraOverlay = Config.ShowOverlayCameraObject && objAddress == _cameraObject;
             objSlot.DrawCameraHackOverlay = Config.ShowOverlayCameraHackObject && objAddress == _cameraHackObject;
-            objSlot.DrawModelOverlay = objAddress == _cameraHackObject; //TODO fix this model
+            objSlot.DrawModelOverlay = objAddress == _modelManager.ModelPointer;
             objSlot.DrawFloorOverlay = Config.ShowOverlayFloorObject && objAddress == _floorObject;
             objSlot.DrawWallOverlay = Config.ShowOverlayWallObject && objAddress == _wallObject;
             objSlot.DrawCeilingOverlay = Config.ShowOverlayCeilingObject && objAddress == _ceilingObject;
@@ -604,8 +605,6 @@ namespace SM64_Diagnostic.Managers
             // Update object manager image
             if (SelectedSlotsAddresses.Count <= 1 && SelectedSlotsAddresses.Contains(objAddress))
             {
-                if (objData.IsActive)
-                    _modelManager.ModelPointer = Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.HitboxPointerOffset);
                 UpdateObjectManager(objSlot, behaviorCriteria, objData);
             }
 

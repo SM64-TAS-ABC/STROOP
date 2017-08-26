@@ -37,7 +37,7 @@ namespace SM64_Diagnostic
         bool _active = false;
         BehaviorCriteria _behavior;
 
-        enum SelectionType { NOT_SELECTED, NORMAL_SELECTION, MAP_SELECTION };
+        enum SelectionType { NOT_SELECTED, NORMAL_SELECTION, MAP_SELECTION, MODEL_SELECTION };
         SelectionType _selectionType = SelectionType.NOT_SELECTED;
 
         int prevHeight;
@@ -495,12 +495,16 @@ namespace SM64_Diagnostic
                     _backBrush.Color = _backColor;
                 }
             }
-
+            
+            //TODO use nested tertiary statements
             SelectionType newSelectionType =
                 tabControlMain.SelectedTab.Text.Equals("Map") && Show ? SelectionType.MAP_SELECTION :
                 tabControlMain.SelectedTab.Text.Equals("Map") && !Show ? SelectionType.NOT_SELECTED :
+                tabControlMain.SelectedTab.Text.Equals("Model") && DrawModelOverlay ? SelectionType.MODEL_SELECTION :
+                tabControlMain.SelectedTab.Text.Equals("Model") && !DrawModelOverlay ? SelectionType.NOT_SELECTED :
                 tabControlMain.SelectedTab.Text.Equals("Cam Hack") ? SelectionType.NOT_SELECTED :
-                DrawSelectedOverlay ? SelectionType.NORMAL_SELECTION : SelectionType.NOT_SELECTED;
+                DrawSelectedOverlay ? SelectionType.NORMAL_SELECTION :
+                SelectionType.NOT_SELECTED;
             bool selectionTypeUpdated = newSelectionType != _selectionType;
             _selectionType = newSelectionType;
 
@@ -568,16 +572,18 @@ namespace SM64_Diagnostic
                 e.Graphics.DrawImage(_gui.MarkedObjectOverlayImage, new Rectangle(new Point(), Size));
             switch (_selectionType)
             {
-                case SelectionType.MAP_SELECTION:
-                    e.Graphics.DrawImage(_gui.TrackedAndShownObjectOverlayImage, new Rectangle(new Point(), Size));
-                    break;
-
                 case SelectionType.NORMAL_SELECTION:
                     e.Graphics.DrawImage(_gui.SelectedObjectOverlayImage, new Rectangle(new Point(), Size));
                     break;
+
+                case SelectionType.MODEL_SELECTION:
+                    e.Graphics.DrawImage(_gui.ModelObjectOverlayImage, new Rectangle(new Point(), Size));
+                    break;
+
+                case SelectionType.MAP_SELECTION:
+                    e.Graphics.DrawImage(_gui.TrackedAndShownObjectOverlayImage, new Rectangle(new Point(), Size));
+                    break;
             }
-            if (_drawModelOverlay)
-                e.Graphics.DrawImage(_gui.ModelObjectOverlayImage, new Rectangle(new Point(), Size)); //TODO fix this model
             if (_drawWallOverlay)
                 e.Graphics.DrawImage(_gui.WallObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawFloorObject)
