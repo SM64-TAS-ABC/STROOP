@@ -669,6 +669,19 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool Lives99()
+        {
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            success &= Config.Stream.SetValue((sbyte)99, Config.Mario.StructAddress + Config.Hud.LifeCountOffset);
+            success &= Config.Stream.SetValue((short)99, Config.Mario.StructAddress + Config.Hud.LifeDisplayOffset);
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
         public static bool GoToTriangle(uint triangleAddress, int vertex, bool _useMisalignmentOffset = false)
         {
             if (triangleAddress == 0x0000)

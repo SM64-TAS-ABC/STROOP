@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -749,6 +749,7 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.button99Lives = new SM64_Diagnostic.BinaryButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -2718,6 +2719,7 @@ namespace SM64_Diagnostic
             this.splitContainerHud.Panel1.Controls.Add(this.buttonStandardHud);
             this.splitContainerHud.Panel1.Controls.Add(this.panelHudBorder);
             this.splitContainerHud.Panel1.Controls.Add(this.buttonDie);
+            this.splitContainerHud.Panel1.Controls.Add(this.button99Lives);
             this.splitContainerHud.Panel1.Controls.Add(this.buttonTurnOnOffHud);
             this.splitContainerHud.Panel1.Controls.Add(this.buttonFillHp);
             this.splitContainerHud.Panel1MinSize = 0;
@@ -2733,7 +2735,7 @@ namespace SM64_Diagnostic
             // 
             // button99Coins
             // 
-            this.button99Coins.Location = new System.Drawing.Point(3, 163);
+            this.button99Coins.Location = new System.Drawing.Point(3, 133);
             this.button99Coins.Name = "button99Coins";
             this.button99Coins.Size = new System.Drawing.Size(93, 24);
             this.button99Coins.TabIndex = 6;
@@ -2742,7 +2744,7 @@ namespace SM64_Diagnostic
             // 
             // buttonStandardHud
             // 
-            this.buttonStandardHud.Location = new System.Drawing.Point(3, 133);
+            this.buttonStandardHud.Location = new System.Drawing.Point(3, 192);
             this.buttonStandardHud.Name = "buttonStandardHud";
             this.buttonStandardHud.Size = new System.Drawing.Size(93, 24);
             this.buttonStandardHud.TabIndex = 6;
@@ -2784,7 +2786,7 @@ namespace SM64_Diagnostic
             // 
             // buttonTurnOnOffHud
             // 
-            this.buttonTurnOnOffHud.Location = new System.Drawing.Point(3, 193);
+            this.buttonTurnOnOffHud.Location = new System.Drawing.Point(3, 222);
             this.buttonTurnOnOffHud.Name = "buttonTurnOnOffHud";
             this.buttonTurnOnOffHud.Size = new System.Drawing.Size(93, 23);
             this.buttonTurnOnOffHud.TabIndex = 4;
@@ -8147,8 +8149,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9988,6 +9990,15 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
+            // button99Lives
+            // 
+            this.button99Lives.Location = new System.Drawing.Point(3, 163);
+            this.button99Lives.Name = "button99Lives";
+            this.button99Lives.Size = new System.Drawing.Size(93, 23);
+            this.button99Lives.TabIndex = 4;
+            this.button99Lives.Text = "99 Lives";
+            this.button99Lives.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -11064,6 +11075,7 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonPositionControllerRelativeAngleCustom;
         private BetterTextbox textBoxPositionControllerRelativeAngleCustom;
         private SplitContainer splitContainerModel;
+        private BinaryButton button99Lives;
     }
 }
 
