@@ -208,7 +208,7 @@ namespace SM64_Diagnostic.Managers
             ushort cameraAngle = Config.Stream.GetUInt16(Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
 
             double angleCap = 1024;
-            ushort newCameraAngle = MoreMath.FormatAngleUshort(MoreMath.RotateAngleTowards(cameraAngle, swooperTargetAngle, angleCap));
+            ushort newCameraAngle = MoreMath.NormalizeAngleUshort(MoreMath.RotateAngleTowards(cameraAngle, swooperTargetAngle, angleCap));
             Config.Stream.SetValue(newCameraAngle, Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
 
             //Console.WriteLine(currentGlobalTimer.ToString() + ": " + swooperTargetAngle.ToString());

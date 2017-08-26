@@ -140,9 +140,9 @@ namespace SM64_Diagnostic.Managers
             float slidingSpeedZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
 
             ushort marioYawFacing = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
-            ushort marioYawFacingTruncated = MoreMath.FormatAngleTruncated(marioYawFacing);
+            ushort marioYawFacingTruncated = MoreMath.NormalizeAngleTruncated(marioYawFacing);
             ushort marioYawIntended = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawIntendedOffset);
-            ushort marioYawIntendedTruncated = MoreMath.FormatAngleTruncated(marioYawIntended);
+            ushort marioYawIntendedTruncated = MoreMath.NormalizeAngleTruncated(marioYawIntended);
 
             float movementX = (Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10)
                 - Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C));
@@ -214,7 +214,7 @@ namespace SM64_Diagnostic.Managers
                         break;
 
                     case "MovementAngle":
-                        (specialVar as DataContainer).Text = MoreMath.FormatAngleUshort(movementAngle).ToString();
+                        (specialVar as DataContainer).Text = MoreMath.NormalizeAngleUshort(movementAngle).ToString();
                         break;
 
                     case "QFrameCountEstimate":

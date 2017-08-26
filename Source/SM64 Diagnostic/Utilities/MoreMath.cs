@@ -46,7 +46,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static (double sidewaysDist, double forwardsDist) GetComponentsFromVectorRelatively(double magnitude, double vectorAngle, double baseAngle)
         {
-            double rotatedAngle = FormatAngleDouble(vectorAngle - baseAngle);
+            double rotatedAngle = NormalizeAngleDouble(vectorAngle - baseAngle);
             (double xComponent, double zComponent) = GetComponentsFromVector(magnitude, rotatedAngle);
             return (-1 * xComponent, zComponent);
         }
@@ -58,20 +58,20 @@ namespace SM64_Diagnostic.Utilities
             return (magnitude, angle);
         }
 
-        public static double FormatAngleDouble(double angle)
+        public static double NormalizeAngleDouble(double angle)
         {
             return NonNegativeModulus(angle, 65536);
         }
 
-        public static ushort FormatAngleUshort(double angle)
+        public static ushort NormalizeAngleUshort(double angle)
         {
-            double nonNegative = FormatAngleDouble(angle);
+            double nonNegative = NormalizeAngleDouble(angle);
             return (ushort)(Math.Round(nonNegative) % 65536);
         }
 
-        public static short FormatAngleShort(double angle)
+        public static short NormalizeAngleShort(double angle)
         {
-            ushort angleUshort = FormatAngleUshort(angle);
+            ushort angleUshort = NormalizeAngleUshort(angle);
             short angleShort;
             if (angleUshort > 32767)
             {
@@ -84,9 +84,9 @@ namespace SM64_Diagnostic.Utilities
             return angleShort;
         }
 
-        public static ushort FormatAngleTruncated(double angle)
+        public static ushort NormalizeAngleTruncated(double angle)
         {
-            angle = FormatAngleDouble(angle);
+            angle = NormalizeAngleDouble(angle);
             ushort angleUshort = (ushort)angle;
             ushort angleTruncated = (ushort)(angleUshort - (angleUshort % 16));
             return angleTruncated;
@@ -202,7 +202,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static double RotateAngleCCW(double angleUnits, double rotationDiff)
         {
-            return FormatAngleDouble(angleUnits + rotationDiff);
+            return NormalizeAngleDouble(angleUnits + rotationDiff);
         }
 
         public static double RotateAngleCW(double angleUnits, double rotationDiff)
@@ -391,14 +391,14 @@ namespace SM64_Diagnostic.Utilities
 
         public static double RotateAngleTowards(double angle1, double angle2, double cap)
         {
-            angle1 = FormatAngleDouble(angle1);
-            angle2 = FormatAngleDouble(angle2);
-            double angle12Diff = FormatAngleDouble(angle1 - angle2);
-            double angle21Diff = FormatAngleDouble(angle2 - angle1);
+            angle1 = NormalizeAngleDouble(angle1);
+            angle2 = NormalizeAngleDouble(angle2);
+            double angle12Diff = NormalizeAngleDouble(angle1 - angle2);
+            double angle21Diff = NormalizeAngleDouble(angle2 - angle1);
             double rotationDiff = Math.Min(cap, Math.Min(angle12Diff, angle21Diff));
             bool angle1Less = angle21Diff <= angle12Diff;
             double newAngle = angle1 + (angle1Less ? 1 : -1) * rotationDiff;
-            return FormatAngleDouble(newAngle);
+            return NormalizeAngleDouble(newAngle);
         }
 
         public static double MoveNumberTowards(double start, double end, double cap)

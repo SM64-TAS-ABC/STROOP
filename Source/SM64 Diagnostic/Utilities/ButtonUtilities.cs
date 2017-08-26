@@ -99,7 +99,7 @@ namespace SM64_Diagnostic.Utilities
                         relativeAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
                         break;
                     case RelativityType.Custom:
-                        relativeAngle = MoreMath.FormatAngleUshort(Config.PositionControllerRelativeAngle.CustomAngle);
+                        relativeAngle = MoreMath.NormalizeAngleUshort(Config.PositionControllerRelativeAngle.CustomAngle);
                         break;
                 }
                 double thetaChange = (ushort)relativeAngle - 32768;
@@ -1086,7 +1086,7 @@ namespace SM64_Diagnostic.Utilities
                     if (!streamAlreadySuspended) Config.Stream.Suspend();
 
                     success &= Config.Stream.SetValue((float)radius, Config.CameraHack.CameraHackStruct + Config.CameraHack.RadiusOffset);
-                    success &= Config.Stream.SetValue(MoreMath.FormatAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
+                    success &= Config.Stream.SetValue(MoreMath.NormalizeAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
                     success &= Config.Stream.SetValue((float)height, Config.CameraHack.CameraHackStruct + Config.CameraHack.RelativeHeightOffset);
 
                     if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -1178,7 +1178,7 @@ namespace SM64_Diagnostic.Utilities
                     if (!streamAlreadySuspended) Config.Stream.Suspend();
 
                     success &= Config.Stream.SetValue((float)radius, Config.CameraHack.CameraHackStruct + Config.CameraHack.RadiusOffset);
-                    success &= Config.Stream.SetValue(MoreMath.FormatAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
+                    success &= Config.Stream.SetValue(MoreMath.NormalizeAngleUshort(theta + 32768 - relativeYawOffset), Config.CameraHack.CameraHackStruct + Config.CameraHack.ThetaOffset);
                     success &= Config.Stream.SetValue((float)height, Config.CameraHack.CameraHackStruct + Config.CameraHack.RelativeHeightOffset);
 
                     if (!streamAlreadySuspended) Config.Stream.Resume();

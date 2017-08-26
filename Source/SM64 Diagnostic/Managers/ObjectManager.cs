@@ -781,7 +781,7 @@ namespace SM64_Diagnostic.Managers
                             angleContainer.ValueExists = newAngle.HasValue;
                             if (newAngle.HasValue)
                             {
-                                newAngle = MoreMath.FormatAngleDouble(newAngle.Value);
+                                newAngle = MoreMath.NormalizeAngleDouble(newAngle.Value);
                                 angleContainer.AngleValue = newAngle.Value;
                             }
                         }

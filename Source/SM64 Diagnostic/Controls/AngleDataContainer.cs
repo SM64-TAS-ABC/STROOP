@@ -179,7 +179,7 @@ namespace SM64_Diagnostic.Controls
             }
             set
             {
-                _angleValue = MoreMath.FormatAngleDouble(value);
+                _angleValue = MoreMath.NormalizeAngleDouble(value);
                 UpdateAngleValue();
             }
         }
@@ -253,7 +253,7 @@ namespace SM64_Diagnostic.Controls
 
             if (_angleTruncated)
             {
-                angleValue = MoreMath.FormatAngleTruncated(angleValue);
+                angleValue = MoreMath.NormalizeAngleTruncated(angleValue);
             }
 
             switch (_angleViewMode)
@@ -267,11 +267,11 @@ namespace SM64_Diagnostic.Controls
                     break;
 
                 case AngleViewModeType.Signed:
-                    _textBoxValue.Text = MoreMath.FormatAngleShort(angleValue).ToString();
+                    _textBoxValue.Text = MoreMath.NormalizeAngleShort(angleValue).ToString();
                     break;
 
                 case AngleViewModeType.Unsigned:
-                    _textBoxValue.Text = MoreMath.FormatAngleUshort(angleValue).ToString();
+                    _textBoxValue.Text = MoreMath.NormalizeAngleUshort(angleValue).ToString();
                     break;
             }       
         }
