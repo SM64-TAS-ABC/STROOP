@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -691,6 +691,11 @@ namespace SM64_Diagnostic
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.glControlModelView = new OpenTK.GLControl();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.groupBoxPositionControllerRelativeAngle = new System.Windows.Forms.GroupBox();
+            this.textBoxPositionControllerRelativeAngleCustom = new SM64_Diagnostic.BetterTextbox();
+            this.radioButtonPositionControllerRelativeAngleMario = new System.Windows.Forms.RadioButton();
+            this.radioButtonPositionControllerRelativeAngleRecommended = new System.Windows.Forms.RadioButton();
+            this.radioButtonPositionControllerRelativeAngleCustom = new System.Windows.Forms.RadioButton();
             this.groupBoxRomVersion = new System.Windows.Forms.GroupBox();
             this.radioButtonRomVersionJP = new System.Windows.Forms.RadioButton();
             this.radioButtonRomVersionUS = new System.Windows.Forms.RadioButton();
@@ -698,16 +703,16 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets = new System.Windows.Forms.GroupBox();
             this.labelRetrieveInfrontSuffix = new System.Windows.Forms.Label();
             this.labelRetrieveInfrontPrefix = new System.Windows.Forms.Label();
-            this.textBoxRetrieveInfront = new BetterTextbox();
+            this.textBoxRetrieveInfront = new SM64_Diagnostic.BetterTextbox();
             this.labelRetrieveAboveSuffix = new System.Windows.Forms.Label();
             this.labelRetrieveAbovePrefix = new System.Windows.Forms.Label();
-            this.textBoxRetrieveAbove = new BetterTextbox();
+            this.textBoxRetrieveAbove = new SM64_Diagnostic.BetterTextbox();
             this.labelGotoInfrontSuffix = new System.Windows.Forms.Label();
             this.labelGotoInfrontPrefix = new System.Windows.Forms.Label();
-            this.textBoxGotoInfront = new BetterTextbox();
+            this.textBoxGotoInfront = new SM64_Diagnostic.BetterTextbox();
             this.labelGotoAboveSuffix = new System.Windows.Forms.Label();
             this.labelGotoAbovePrefix = new System.Windows.Forms.Label();
-            this.textBoxGotoAbove = new BetterTextbox();
+            this.textBoxGotoAbove = new SM64_Diagnostic.BetterTextbox();
             this.checkBoxNeutralizeTriangleWith21 = new System.Windows.Forms.CheckBox();
             this.checkBoxDisableActionUpdateWhenCloning = new System.Windows.Forms.CheckBox();
             this.groupBoxShowOverlay = new System.Windows.Forms.GroupBox();
@@ -722,7 +727,6 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayClosestObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayStoodOnObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayHeldObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxPositionControllersRelativeToMario = new System.Windows.Forms.CheckBox();
             this.checkBoxScaleDiagonalPositionControllerButtons = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
@@ -744,11 +748,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBoxPositionControllerRelativeAngle = new System.Windows.Forms.GroupBox();
-            this.radioButtonPositionControllerRelativeAngleMario = new System.Windows.Forms.RadioButton();
-            this.radioButtonPositionControllerRelativeAngleRecommended = new System.Windows.Forms.RadioButton();
-            this.radioButtonPositionControllerRelativeAngleCustom = new System.Windows.Forms.RadioButton();
-            this.textBoxPositionControllerRelativeAngleCustom = new BetterTextbox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1022,11 +1021,11 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVertices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTriangles)).BeginInit();
             this.tabPageOptions.SuspendLayout();
+            this.groupBoxPositionControllerRelativeAngle.SuspendLayout();
             this.groupBoxRomVersion.SuspendLayout();
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.groupBoxPositionControllerRelativeAngle.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1056,7 +1055,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 288);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 289);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1121,7 +1120,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 163);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 164);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2120,7 +2119,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(720, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(723, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2638,7 +2637,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(729, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(732, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2806,7 +2805,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(821, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(824, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3187,7 +3186,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(731, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(734, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3658,7 +3657,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(728, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(731, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3743,7 +3742,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
-            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(509, 460);
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(512, 460);
             this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4106,7 +4105,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 109F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7080,7 +7079,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(280, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(283, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7388,7 +7387,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelDebug.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelDebug.Name = "noTearFlowLayoutPanelDebug";
-            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(548, 455);
+            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(551, 455);
             this.noTearFlowLayoutPanelDebug.TabIndex = 26;
             // 
             // tabPageMap
@@ -7589,7 +7588,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(719, 430);
+            this.glControlMap.Size = new System.Drawing.Size(722, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -7935,8 +7934,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -8107,7 +8106,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(885, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(888, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -8206,7 +8205,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(621, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(624, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -9069,7 +9068,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(499, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(502, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9282,7 +9281,6 @@ namespace SM64_Diagnostic
             this.tabPageOptions.Controls.Add(this.checkBoxNeutralizeTriangleWith21);
             this.tabPageOptions.Controls.Add(this.checkBoxDisableActionUpdateWhenCloning);
             this.tabPageOptions.Controls.Add(this.groupBoxShowOverlay);
-            this.tabPageOptions.Controls.Add(this.checkBoxPositionControllersRelativeToMario);
             this.tabPageOptions.Controls.Add(this.checkBoxScaleDiagonalPositionControllerButtons);
             this.tabPageOptions.Controls.Add(this.label3);
             this.tabPageOptions.Controls.Add(this.checkBoxMoveCamWithPu);
@@ -9294,6 +9292,60 @@ namespace SM64_Diagnostic
             this.tabPageOptions.Size = new System.Drawing.Size(915, 463);
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
+            // 
+            // groupBoxPositionControllerRelativeAngle
+            // 
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.textBoxPositionControllerRelativeAngleCustom);
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleMario);
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleRecommended);
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleCustom);
+            this.groupBoxPositionControllerRelativeAngle.Location = new System.Drawing.Point(16, 192);
+            this.groupBoxPositionControllerRelativeAngle.Name = "groupBoxPositionControllerRelativeAngle";
+            this.groupBoxPositionControllerRelativeAngle.Size = new System.Drawing.Size(141, 99);
+            this.groupBoxPositionControllerRelativeAngle.TabIndex = 39;
+            this.groupBoxPositionControllerRelativeAngle.TabStop = false;
+            this.groupBoxPositionControllerRelativeAngle.Text = "Pos Controller Rel Angle";
+            // 
+            // textBoxPositionControllerRelativeAngleCustom
+            // 
+            this.textBoxPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(74, 64);
+            this.textBoxPositionControllerRelativeAngleCustom.Name = "textBoxPositionControllerRelativeAngleCustom";
+            this.textBoxPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(50, 20);
+            this.textBoxPositionControllerRelativeAngleCustom.TabIndex = 38;
+            this.textBoxPositionControllerRelativeAngleCustom.Text = "32768";
+            this.textBoxPositionControllerRelativeAngleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // radioButtonPositionControllerRelativeAngleMario
+            // 
+            this.radioButtonPositionControllerRelativeAngleMario.AutoSize = true;
+            this.radioButtonPositionControllerRelativeAngleMario.Location = new System.Drawing.Point(11, 42);
+            this.radioButtonPositionControllerRelativeAngleMario.Name = "radioButtonPositionControllerRelativeAngleMario";
+            this.radioButtonPositionControllerRelativeAngleMario.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonPositionControllerRelativeAngleMario.TabIndex = 12;
+            this.radioButtonPositionControllerRelativeAngleMario.Text = "Mario";
+            this.radioButtonPositionControllerRelativeAngleMario.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonPositionControllerRelativeAngleRecommended
+            // 
+            this.radioButtonPositionControllerRelativeAngleRecommended.AutoSize = true;
+            this.radioButtonPositionControllerRelativeAngleRecommended.Checked = true;
+            this.radioButtonPositionControllerRelativeAngleRecommended.Location = new System.Drawing.Point(11, 19);
+            this.radioButtonPositionControllerRelativeAngleRecommended.Name = "radioButtonPositionControllerRelativeAngleRecommended";
+            this.radioButtonPositionControllerRelativeAngleRecommended.Size = new System.Drawing.Size(97, 17);
+            this.radioButtonPositionControllerRelativeAngleRecommended.TabIndex = 11;
+            this.radioButtonPositionControllerRelativeAngleRecommended.TabStop = true;
+            this.radioButtonPositionControllerRelativeAngleRecommended.Text = "Recommended";
+            this.radioButtonPositionControllerRelativeAngleRecommended.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonPositionControllerRelativeAngleCustom
+            // 
+            this.radioButtonPositionControllerRelativeAngleCustom.AutoSize = true;
+            this.radioButtonPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(11, 65);
+            this.radioButtonPositionControllerRelativeAngleCustom.Name = "radioButtonPositionControllerRelativeAngleCustom";
+            this.radioButtonPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonPositionControllerRelativeAngleCustom.TabIndex = 13;
+            this.radioButtonPositionControllerRelativeAngleCustom.Text = "Custom:";
+            this.radioButtonPositionControllerRelativeAngleCustom.UseVisualStyleBackColor = true;
             // 
             // groupBoxRomVersion
             // 
@@ -9481,7 +9533,7 @@ namespace SM64_Diagnostic
             this.checkBoxNeutralizeTriangleWith21.AutoSize = true;
             this.checkBoxNeutralizeTriangleWith21.Checked = true;
             this.checkBoxNeutralizeTriangleWith21.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNeutralizeTriangleWith21.Location = new System.Drawing.Point(3, 125);
+            this.checkBoxNeutralizeTriangleWith21.Location = new System.Drawing.Point(3, 105);
             this.checkBoxNeutralizeTriangleWith21.Name = "checkBoxNeutralizeTriangleWith21";
             this.checkBoxNeutralizeTriangleWith21.Size = new System.Drawing.Size(189, 17);
             this.checkBoxNeutralizeTriangleWith21.TabIndex = 31;
@@ -9491,7 +9543,7 @@ namespace SM64_Diagnostic
             // checkBoxDisableActionUpdateWhenCloning
             // 
             this.checkBoxDisableActionUpdateWhenCloning.AutoSize = true;
-            this.checkBoxDisableActionUpdateWhenCloning.Location = new System.Drawing.Point(3, 105);
+            this.checkBoxDisableActionUpdateWhenCloning.Location = new System.Drawing.Point(3, 85);
             this.checkBoxDisableActionUpdateWhenCloning.Name = "checkBoxDisableActionUpdateWhenCloning";
             this.checkBoxDisableActionUpdateWhenCloning.Size = new System.Drawing.Size(202, 17);
             this.checkBoxDisableActionUpdateWhenCloning.TabIndex = 30;
@@ -9659,16 +9711,6 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayHeldObject.Text = "Held Object";
             this.checkBoxShowOverlayHeldObject.UseVisualStyleBackColor = true;
             // 
-            // checkBoxPositionControllersRelativeToMario
-            // 
-            this.checkBoxPositionControllersRelativeToMario.AutoSize = true;
-            this.checkBoxPositionControllersRelativeToMario.Location = new System.Drawing.Point(3, 65);
-            this.checkBoxPositionControllersRelativeToMario.Name = "checkBoxPositionControllersRelativeToMario";
-            this.checkBoxPositionControllersRelativeToMario.Size = new System.Drawing.Size(198, 17);
-            this.checkBoxPositionControllersRelativeToMario.TabIndex = 8;
-            this.checkBoxPositionControllersRelativeToMario.Text = "Position Controllers Relative to Mario";
-            this.checkBoxPositionControllersRelativeToMario.UseVisualStyleBackColor = true;
-            // 
             // checkBoxScaleDiagonalPositionControllerButtons
             // 
             this.checkBoxScaleDiagonalPositionControllerButtons.AutoSize = true;
@@ -9694,7 +9736,7 @@ namespace SM64_Diagnostic
             this.checkBoxMoveCamWithPu.AutoSize = true;
             this.checkBoxMoveCamWithPu.Checked = true;
             this.checkBoxMoveCamWithPu.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMoveCamWithPu.Location = new System.Drawing.Point(3, 85);
+            this.checkBoxMoveCamWithPu.Location = new System.Drawing.Point(3, 65);
             this.checkBoxMoveCamWithPu.Name = "checkBoxMoveCamWithPu";
             this.checkBoxMoveCamWithPu.Size = new System.Drawing.Size(162, 17);
             this.checkBoxMoveCamWithPu.TabIndex = 4;
@@ -9911,60 +9953,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.TabIndex = 20;
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
-            // 
-            // groupBoxPositionControllerRelativeAngle
-            // 
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.textBoxPositionControllerRelativeAngleCustom);
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleMario);
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleRecommended);
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleCustom);
-            this.groupBoxPositionControllerRelativeAngle.Location = new System.Drawing.Point(16, 192);
-            this.groupBoxPositionControllerRelativeAngle.Name = "groupBoxPositionControllerRelativeAngle";
-            this.groupBoxPositionControllerRelativeAngle.Size = new System.Drawing.Size(141, 99);
-            this.groupBoxPositionControllerRelativeAngle.TabIndex = 39;
-            this.groupBoxPositionControllerRelativeAngle.TabStop = false;
-            this.groupBoxPositionControllerRelativeAngle.Text = "Pos Controller Rel Angle";
-            // 
-            // radioButtonPositionControllerRelativeAngleMario
-            // 
-            this.radioButtonPositionControllerRelativeAngleMario.AutoSize = true;
-            this.radioButtonPositionControllerRelativeAngleMario.Location = new System.Drawing.Point(11, 42);
-            this.radioButtonPositionControllerRelativeAngleMario.Name = "radioButtonPositionControllerRelativeAngleMario";
-            this.radioButtonPositionControllerRelativeAngleMario.Size = new System.Drawing.Size(51, 17);
-            this.radioButtonPositionControllerRelativeAngleMario.TabIndex = 12;
-            this.radioButtonPositionControllerRelativeAngleMario.Text = "Mario";
-            this.radioButtonPositionControllerRelativeAngleMario.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonPositionControllerRelativeAngleRecommended
-            // 
-            this.radioButtonPositionControllerRelativeAngleRecommended.AutoSize = true;
-            this.radioButtonPositionControllerRelativeAngleRecommended.Checked = true;
-            this.radioButtonPositionControllerRelativeAngleRecommended.Location = new System.Drawing.Point(11, 19);
-            this.radioButtonPositionControllerRelativeAngleRecommended.Name = "radioButtonPositionControllerRelativeAngleRecommended";
-            this.radioButtonPositionControllerRelativeAngleRecommended.Size = new System.Drawing.Size(97, 17);
-            this.radioButtonPositionControllerRelativeAngleRecommended.TabIndex = 11;
-            this.radioButtonPositionControllerRelativeAngleRecommended.TabStop = true;
-            this.radioButtonPositionControllerRelativeAngleRecommended.Text = "Recommended";
-            this.radioButtonPositionControllerRelativeAngleRecommended.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonPositionControllerRelativeAngleCustom
-            // 
-            this.radioButtonPositionControllerRelativeAngleCustom.AutoSize = true;
-            this.radioButtonPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(11, 65);
-            this.radioButtonPositionControllerRelativeAngleCustom.Name = "radioButtonPositionControllerRelativeAngleCustom";
-            this.radioButtonPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(63, 17);
-            this.radioButtonPositionControllerRelativeAngleCustom.TabIndex = 13;
-            this.radioButtonPositionControllerRelativeAngleCustom.Text = "Custom:";
-            this.radioButtonPositionControllerRelativeAngleCustom.UseVisualStyleBackColor = true;
-            // 
-            // textBoxPositionControllerRelativeAngleCustom
-            // 
-            this.textBoxPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(74, 64);
-            this.textBoxPositionControllerRelativeAngleCustom.Name = "textBoxPositionControllerRelativeAngleCustom";
-            this.textBoxPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(50, 20);
-            this.textBoxPositionControllerRelativeAngleCustom.TabIndex = 38;
-            this.textBoxPositionControllerRelativeAngleCustom.Text = "32768";
-            this.textBoxPositionControllerRelativeAngleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // StroopMainForm
             // 
@@ -10306,6 +10294,8 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTriangles)).EndInit();
             this.tabPageOptions.ResumeLayout(false);
             this.tabPageOptions.PerformLayout();
+            this.groupBoxPositionControllerRelativeAngle.ResumeLayout(false);
+            this.groupBoxPositionControllerRelativeAngle.PerformLayout();
             this.groupBoxRomVersion.ResumeLayout(false);
             this.groupBoxRomVersion.PerformLayout();
             this.groupBoxGotoRetrieveOffsets.ResumeLayout(false);
@@ -10314,8 +10304,6 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.groupBoxPositionControllerRelativeAngle.ResumeLayout(false);
-            this.groupBoxPositionControllerRelativeAngle.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -10986,7 +10974,6 @@ namespace SM64_Diagnostic
         private Button buttonCameraHackBothPosXnZn;
         private Label labelAnimationDescription;
         private Label labelActionDescription;
-        private CheckBox checkBoxPositionControllersRelativeToMario;
         private GroupBox groupBoxRomVersion;
         private RadioButton radioButtonRomVersionJP;
         private RadioButton radioButtonRomVersionUS;
@@ -11034,10 +11021,10 @@ namespace SM64_Diagnostic
         private Label labelModelVertices;
         private Label labelTriangles;
         private GroupBox groupBoxPositionControllerRelativeAngle;
-        private TextBox textBoxPositionControllerRelativeAngleCustom;
         private RadioButton radioButtonPositionControllerRelativeAngleMario;
         private RadioButton radioButtonPositionControllerRelativeAngleRecommended;
         private RadioButton radioButtonPositionControllerRelativeAngleCustom;
+        private BetterTextbox textBoxPositionControllerRelativeAngleCustom;
     }
 }
 

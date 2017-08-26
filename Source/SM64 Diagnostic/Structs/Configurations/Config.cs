@@ -110,6 +110,10 @@ namespace SM64_Diagnostic.Structs.Configurations
 
         public static bool SlotIndexsFromOne = true;
         public static bool MoveCameraWithPu = true;
+        public static bool ScaleDiagonalPositionControllerButtons = false;
+        public static bool DisableActionUpdateWhenCloning = false;
+        public static bool NeutralizeTriangleWith21 = true;
+
         public static bool ShowOverlayHeldObject = true;
         public static bool ShowOverlayStoodOnObject = true;
         public static bool ShowOverlayInteractionObject = true;
@@ -121,9 +125,5 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static bool ShowOverlayWallObject = true;
         public static bool ShowOverlayCeilingObject = true;
         public static bool ShowOverlayParentObject = false;
-        public static bool ScaleDiagonalPositionControllerButtons = false;
-        public static bool PositionControllersRelativeToMario = false;
-        public static bool DisableActionUpdateWhenCloning = false;
-        public static bool NeutralizeTriangleWith21 = true;
     }
 }
