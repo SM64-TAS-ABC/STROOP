@@ -22,6 +22,24 @@ namespace SM64_Diagnostic.Managers
         private DataGridView _dataGridViewTriangles;
         private TextBox _textBoxAddress;
 
+        private uint _modelObject = 0;
+        public uint ModelObject
+        {
+            get
+            {
+                return _modelObject;
+            }
+            set
+            {
+                if (_modelObject == value)
+                    return;
+
+                _modelObject = value;
+
+                UpdateModelPointer();
+            }
+        }
+
         private uint _modelPointer = 0;
         public uint ModelPointer
         {
