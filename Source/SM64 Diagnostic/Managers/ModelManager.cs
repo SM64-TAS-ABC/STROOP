@@ -40,21 +40,12 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private uint _modelPointer = 0;
         public uint ModelPointer
         {
             get
             {
-                return _modelPointer;
-            }
-            set
-            {
-                if (_modelPointer == value)
-                    return;
-
-                _modelPointer = value;
-
-                UpdateModelPointer();
+                uint objAddress = ModelObject;
+                return objAddress == 0 ? 0 : Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.HitboxPointerOffset);
             }
         }
 

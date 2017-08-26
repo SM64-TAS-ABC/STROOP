@@ -149,7 +149,7 @@ namespace SM64_Diagnostic.Managers
 
             if (click == ClickType.ModelClick)
             {
-                _modelManager.ModelPointer = Config.Stream.GetUInt32(selectedSlot.Address + Config.ObjectSlots.HitboxPointerOffset);
+                _modelManager.ModelObject = selectedSlot.Address;
             }
             else if (click == ClickType.CamHackClick)
             {
