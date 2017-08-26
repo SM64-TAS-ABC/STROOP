@@ -21,6 +21,7 @@ namespace SM64_Diagnostic.Structs
         public Image ClosestObjectOverlayImage;
         public Image CameraObjectOverlayImage;
         public Image CameraHackObjectOverlayImage;
+        public Image ModelObjectOverlayImage;
         public Image FloorObjectOverlayImage;
         public Image WallObjectOverlayImage;
         public Image CeilingObjectOverlayImage;
@@ -47,6 +48,7 @@ namespace SM64_Diagnostic.Structs
             ClosestObjectOverlayImage?.Dispose();
             CameraObjectOverlayImage?.Dispose();
             CameraHackObjectOverlayImage?.Dispose();
+            ModelObjectOverlayImage?.Dispose();
             FloorObjectOverlayImage?.Dispose();
             WallObjectOverlayImage?.Dispose();
             CeilingObjectOverlayImage?.Dispose();

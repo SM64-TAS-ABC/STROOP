@@ -157,8 +157,9 @@ namespace SM64_Diagnostic
             }
         }
 
-        bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawHeldOverlay, _drawInteractionObject, _drawUsedObject,
-            _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawFloorObject, _drawWallOverlay, _drawCeilingOverlay,
+        bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawHeldOverlay, _drawInteractionOverlay, _drawUsedOverlay,
+            _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawModelOverlay, _modelOverlay,
+            _drawFloorObject, _drawWallOverlay, _drawCeilingOverlay,
             _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawMarkedOverlay;
         public bool DrawSelectedOverlay
         {
@@ -206,13 +207,13 @@ namespace SM64_Diagnostic
         {
             get
             {
-                return _drawInteractionObject;
+                return _drawInteractionOverlay;
             }
             set
             {
-                if (_drawInteractionObject == value)
+                if (_drawInteractionOverlay == value)
                     return;
-                _drawInteractionObject = value;
+                _drawInteractionOverlay = value;
                 Invalidate();
             }
         }
@@ -220,13 +221,13 @@ namespace SM64_Diagnostic
         {
             get
             {
-                return _drawUsedObject;
+                return _drawUsedOverlay;
             }
             set
             {
-                if (_drawUsedObject == value)
+                if (_drawUsedOverlay == value)
                     return;
-                _drawUsedObject = value;
+                _drawUsedOverlay = value;
                 Invalidate();
             }
         }
@@ -269,6 +270,20 @@ namespace SM64_Diagnostic
                 if (_drawCameraHackOverlay == value)
                     return;
                 _drawCameraHackOverlay = value;
+                Invalidate();
+            }
+        }
+        public bool DrawModelOverlay
+        {
+            get
+            {
+                return _drawModelOverlay;
+            }
+            set
+            {
+                if (_drawModelOverlay == value)
+                    return;
+                _drawModelOverlay = value;
                 Invalidate();
             }
         }
@@ -561,19 +576,21 @@ namespace SM64_Diagnostic
                     e.Graphics.DrawImage(_gui.SelectedObjectOverlayImage, new Rectangle(new Point(), Size));
                     break;
             }
+            if (_drawModelOverlay)
+                e.Graphics.DrawImage(_gui.ModelObjectOverlayImage, new Rectangle(new Point(), Size)); //TODO fix this model
             if (_drawWallOverlay)
                 e.Graphics.DrawImage(_gui.WallObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawFloorObject)
                 e.Graphics.DrawImage(_gui.FloorObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawCeilingOverlay)
                 e.Graphics.DrawImage(_gui.CeilingObjectOverlayImage, new Rectangle(new Point(), Size));
-            if (_drawInteractionObject)
+            if (_drawInteractionOverlay)
                 e.Graphics.DrawImage(_gui.InteractionObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawHeldOverlay)
                 e.Graphics.DrawImage(_gui.HeldObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawStoodOnOverlay)
                 e.Graphics.DrawImage(_gui.StoodOnObjectOverlayImage, new Rectangle(new Point(), Size));
-            if (_drawUsedObject)
+            if (_drawUsedOverlay)
                 e.Graphics.DrawImage(_gui.UsedObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawClosestOverlay)
                 e.Graphics.DrawImage(_gui.ClosestObjectOverlayImage, new Rectangle(new Point(), Size));

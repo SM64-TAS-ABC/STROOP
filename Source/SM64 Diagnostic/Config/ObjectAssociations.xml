@@ -65,6 +65,9 @@
     <CameraHack>
       <OverlayImage path="CameraHack.png"/>
     </CameraHack>
+    <Model>
+      <OverlayImage path="Model.png"/>
+    </Model>
     <Floor>
       <OverlayImage path="Floor.png"/>
     </Floor>
