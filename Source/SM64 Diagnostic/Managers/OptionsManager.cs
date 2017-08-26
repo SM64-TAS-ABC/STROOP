@@ -41,6 +41,17 @@ namespace SM64_Diagnostic.Managers
             textBoxRetrieveInfront.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
                 sender, ref Config.GotoRetrieve.RetrieveInfrontOffset, Config.GotoRetrieve.RetrieveInfrontDefault);
 
+            // position controller relative angle
+            GroupBox groupBoxPositionControllerRelativeAngle = tabControl.Controls["groupBoxPositionControllerRelativeAngle"] as GroupBox;
+            RadioButton radioButtonPositionControllerRelativeAngleRecommended =
+                groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleRecommended"] as RadioButton;
+            RadioButton radioButtonPositionControllerRelativeAngleMario =
+                groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleMario"] as RadioButton;
+            RadioButton radioButtonPositionControllerRelativeAngleCustom =
+                groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleCustom"] as RadioButton;
+            TextBox textBoxPositionControllerRelativeAngleCustom =
+                groupBoxPositionControllerRelativeAngle.Controls["textBoxPositionControllerRelativeAngleCustom"] as TextBox;
+
             // object slot overlays
             GroupBox groupBoxShowOverlay = tabControl.Controls["groupBoxShowOverlay"] as GroupBox;
             List<CheckBox> overlaysCheckboxes = new List<CheckBox>();
