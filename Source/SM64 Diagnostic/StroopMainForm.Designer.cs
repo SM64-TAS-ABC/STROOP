@@ -239,7 +239,7 @@ namespace SM64_Diagnostic
             this.buttonTriangleNormalN = new System.Windows.Forms.Button();
             this.buttonTriangleNormalP = new System.Windows.Forms.Button();
             this.radioButtonTriOther = new System.Windows.Forms.RadioButton();
-            this.buttonTriangleClearData = new System.Windows.Forms.Button();
+            this.buttonTriangleShowVertices = new System.Windows.Forms.Button();
             this.buttonAnnihilateTriangle = new System.Windows.Forms.Button();
             this.radioButtonTriFloor = new System.Windows.Forms.RadioButton();
             this.buttonTriangleShowData = new System.Windows.Forms.Button();
@@ -750,7 +750,7 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonTriangleClearData = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -3233,8 +3233,8 @@ namespace SM64_Diagnostic
             this.splitContainerTriangles.Panel1.Controls.Add(this.groupBoxTrianglePos);
             this.splitContainerTriangles.Panel1.Controls.Add(this.groupBoxTriangleNormal);
             this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriOther);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.button2);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleClearData);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleShowVertices);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonAnnihilateTriangle);
             this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriFloor);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleShowData);
@@ -3472,14 +3472,14 @@ namespace SM64_Diagnostic
             this.radioButtonTriOther.Text = "Other:";
             this.radioButtonTriOther.UseVisualStyleBackColor = true;
             // 
-            // buttonTriangleClearData
+            // buttonTriangleShowVertices
             // 
-            this.buttonTriangleClearData.Location = new System.Drawing.Point(98, 477);
-            this.buttonTriangleClearData.Name = "buttonTriangleClearData";
-            this.buttonTriangleClearData.Size = new System.Drawing.Size(87, 23);
-            this.buttonTriangleClearData.TabIndex = 15;
-            this.buttonTriangleClearData.Text = "Clear Data";
-            this.buttonTriangleClearData.UseVisualStyleBackColor = true;
+            this.buttonTriangleShowVertices.Location = new System.Drawing.Point(98, 477);
+            this.buttonTriangleShowVertices.Name = "buttonTriangleShowVertices";
+            this.buttonTriangleShowVertices.Size = new System.Drawing.Size(87, 23);
+            this.buttonTriangleShowVertices.TabIndex = 15;
+            this.buttonTriangleShowVertices.Text = "Show Vertices";
+            this.buttonTriangleShowVertices.UseVisualStyleBackColor = true;
             // 
             // buttonAnnihilateTriangle
             // 
@@ -10001,14 +10001,14 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // button2
+            // buttonTriangleClearData
             // 
-            this.button2.Location = new System.Drawing.Point(5, 503);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(180, 23);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Clear Data";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonTriangleClearData.Location = new System.Drawing.Point(5, 503);
+            this.buttonTriangleClearData.Name = "buttonTriangleClearData";
+            this.buttonTriangleClearData.Size = new System.Drawing.Size(180, 23);
+            this.buttonTriangleClearData.TabIndex = 15;
+            this.buttonTriangleClearData.Text = "Clear Data";
+            this.buttonTriangleClearData.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -11047,7 +11047,7 @@ namespace SM64_Diagnostic
         private Button buttonFileCopy;
         private CheckBox checkBoxInGameCopyPaste;
         private CheckBox checkBoxFreeMovement;
-        private Button buttonTriangleClearData;
+        private Button buttonTriangleShowVertices;
         private Button buttonTriangleShowData;
         private Button buttonTriangleShowCoords;
         private CheckBox checkBoxRecordTriangleData;
@@ -11087,7 +11087,7 @@ namespace SM64_Diagnostic
         private BetterTextbox textBoxPositionControllerRelativeAngleCustom;
         private SplitContainer splitContainerModel;
         private BinaryButton button99Lives;
-        private Button button2;
+        private Button buttonTriangleClearData;
     }
 }
 
