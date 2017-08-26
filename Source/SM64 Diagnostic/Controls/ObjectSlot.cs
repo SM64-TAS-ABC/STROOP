@@ -495,16 +495,24 @@ namespace SM64_Diagnostic
                     _backBrush.Color = _backColor;
                 }
             }
-            
-            //TODO use nested tertiary statements
-            SelectionType newSelectionType =
-                tabControlMain.SelectedTab.Text.Equals("Map") && Show ? SelectionType.MAP_SELECTION :
-                tabControlMain.SelectedTab.Text.Equals("Map") && !Show ? SelectionType.NOT_SELECTED :
-                tabControlMain.SelectedTab.Text.Equals("Model") && DrawModelOverlay ? SelectionType.MODEL_SELECTION :
-                tabControlMain.SelectedTab.Text.Equals("Model") && !DrawModelOverlay ? SelectionType.NOT_SELECTED :
-                tabControlMain.SelectedTab.Text.Equals("Cam Hack") ? SelectionType.NOT_SELECTED :
-                DrawSelectedOverlay ? SelectionType.NORMAL_SELECTION :
-                SelectionType.NOT_SELECTED;
+
+            SelectionType newSelectionType;
+            switch (tabControlMain.SelectedTab.Text)
+            {
+                default:
+                    newSelectionType = DrawSelectedOverlay ? SelectionType.NORMAL_SELECTION : SelectionType.NOT_SELECTED;
+                    break;
+                case "Map":
+                    newSelectionType = Show ? SelectionType.MAP_SELECTION : SelectionType.NOT_SELECTED;
+                    break;
+                case "Model":
+                    newSelectionType = DrawModelOverlay ? SelectionType.MODEL_SELECTION : SelectionType.NOT_SELECTED;
+                    break;
+                case "Cam Hack":
+                    newSelectionType = SelectionType.NOT_SELECTED;
+                    break;
+            }
+
             bool selectionTypeUpdated = newSelectionType != _selectionType;
             _selectionType = newSelectionType;
 
@@ -612,6 +620,6 @@ namespace SM64_Diagnostic
                 e.Graphics.DrawImage(_gui.ParentNoneObjectOverlayImage, new Rectangle(new Point(), Size));
         }
 
-        
+
     }
 }
