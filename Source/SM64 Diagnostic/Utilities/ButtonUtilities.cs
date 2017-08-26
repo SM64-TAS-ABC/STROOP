@@ -8,6 +8,7 @@ using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
 using static SM64_Diagnostic.Managers.CamHackManager;
 using SM64_Diagnostic.Managers;
+using static SM64_Diagnostic.Structs.Configurations.PositionControllerRelativeAngleConfig;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -89,9 +90,17 @@ namespace SM64_Diagnostic.Utilities
         {
             if (useRelative)
             {
-                if (Config.PositionControllersRelativeToMario)
+                switch (Config.PositionControllerRelativeAngle.Relativity)
                 {
-                    relativeAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                    case RelativityType.Recommended:
+                        // relativeAngle is already correct
+                        break;
+                    case RelativityType.Mario:
+                        relativeAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                        break;
+                    case RelativityType.Custom:
+                        relativeAngle = MoreMath.FormatAngleUshort(Config.PositionControllerRelativeAngle.CustomAngle);
+                        break;
                 }
                 double thetaChange = (ushort)relativeAngle - 32768;
                 (xOffset, _, zOffset) = ((float, float, float))MoreMath.OffsetSpherically(xOffset, 0, zOffset, 0, thetaChange, 0);
