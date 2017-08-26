@@ -22,8 +22,8 @@ namespace SM64_Diagnostic.Managers
         private DataGridView _dataGridViewTriangles;
         private TextBox _textBoxAddress;
 
-        private uint? _modelPointer = null;
-        public uint? ModelPointer
+        private uint _modelPointer = 0;
+        public uint ModelPointer
         {
             get
             {
@@ -65,7 +65,7 @@ namespace SM64_Diagnostic.Managers
         {
             _glControl = tabControl.Controls["glControlModelView"] as GLControl;
             _textBoxAddress = tabControl.Controls["textBoxModelAddress"] as TextBox;
-            var splitContainerData = tabControl.Controls["splitContainerModel"] as SplitContainer;
+            SplitContainer splitContainerData = tabControl.Controls["splitContainerModel"] as SplitContainer;
             _dataGridViewVertices = splitContainerData.Panel1.Controls["dataGridViewVertices"] as DataGridView;
             _dataGridViewTriangles = splitContainerData.Panel2.Controls["dataGridViewTriangles"] as DataGridView;
 
@@ -77,7 +77,7 @@ namespace SM64_Diagnostic.Managers
 
         private void _dataGridViewVertices_SelectionChanged(object sender, EventArgs e)
         {
-            var selection = new bool[_dataGridViewVertices.Rows.Count];
+            bool[] selection = new bool[_dataGridViewVertices.Rows.Count];
             
             foreach (DataGridViewRow row in _dataGridViewVertices.SelectedRows)
             {
@@ -89,7 +89,7 @@ namespace SM64_Diagnostic.Managers
 
         private void _dataGridViewTriangles_SelectionChanged(object sender, EventArgs e)
         {
-            var selection = new bool[_dataGridViewTriangles.Rows.Count];
+            bool[] selection = new bool[_dataGridViewTriangles.Rows.Count];
 
             foreach (DataGridViewRow row in _dataGridViewTriangles.SelectedRows)
             {
@@ -110,16 +110,16 @@ namespace SM64_Diagnostic.Managers
 
         public List<short[]> GetVerticesFromModelPointer(ref uint modelPtr)
         {
-            var vertices = new List<short[]>();
+            List<short[]> vertices = new List<short[]>();
             modelPtr += 2;
             int numberOfVertices = Math.Min(Config.Stream.GetUInt16(modelPtr), (ushort) 500);
             modelPtr += 2;
 
             for (int i = 0; i < numberOfVertices; i++)
             {
-                var x = Config.Stream.GetInt16(modelPtr);
-                var y = Config.Stream.GetInt16(modelPtr + 0x02);
-                var z = Config.Stream.GetInt16(modelPtr + 0x04);
+                short x = Config.Stream.GetInt16(modelPtr);
+                short y = Config.Stream.GetInt16(modelPtr + 0x02);
+                short z = Config.Stream.GetInt16(modelPtr + 0x04);
                 modelPtr += 0x06;
                 vertices.Add(new short[3] { x, y, z });
             }
@@ -133,7 +133,7 @@ namespace SM64_Diagnostic.Managers
 
             for (int totalVertices = 0, group = 0; totalVertices < 500 / 2; group++)
             {
-                var type = Config.Stream.GetUInt16(contModelPtr); // Type (unused, but here anyway for doc.)
+                ushort type = Config.Stream.GetUInt16(contModelPtr); // Type (unused, but here anyway for doc.)
 
                 if (type == 0x41)
                     break;
@@ -146,9 +146,9 @@ namespace SM64_Diagnostic.Managers
 
                 for (int i = 0; i < numberOfTriangles; i++)
                 {
-                    var v1 = Config.Stream.GetInt16(contModelPtr);
-                    var v2 = Config.Stream.GetInt16(contModelPtr + 0x02);
-                    var v3 = Config.Stream.GetInt16(contModelPtr + 0x04);
+                    short v1 = Config.Stream.GetInt16(contModelPtr);
+                    short v2 = Config.Stream.GetInt16(contModelPtr + 0x02);
+                    short v3 = Config.Stream.GetInt16(contModelPtr + 0x04);
                     contModelPtr += 0x06;
                     triangles.Add(new int[] { v1, v2, v3, group, type});
                 }
@@ -159,7 +159,7 @@ namespace SM64_Diagnostic.Managers
 
         public void UpdateModelPointer()
         {
-            if (!ModelPointer.HasValue || ModelPointer == 0)
+            if (ModelPointer == 0)
             {
                 _textBoxAddress.Text = ModelPointer == 0 ? "0x00000000" : "(None)";
                 _dataGridViewVertices.Rows.Clear();
@@ -168,11 +168,11 @@ namespace SM64_Diagnostic.Managers
                 return;
             }
 
-            _textBoxAddress.Text = String.Format("0x{0:X8}", ModelPointer.Value);
+            _textBoxAddress.Text = String.Format("0x{0:X8}", ModelPointer);
 
-            var modelPtr = ModelPointer.Value;
-            var vertices = GetVerticesFromModelPointer(ref modelPtr);
-            var triangles = GetTrianglesFromContinuedModelPonter(modelPtr);
+            uint modelPtr = ModelPointer;
+            List<short[]> vertices = GetVerticesFromModelPointer(ref modelPtr);
+            List<int[]> triangles = GetTrianglesFromContinuedModelPonter(modelPtr);
             _modelView?.ChangeModel(vertices, triangles);
 
             // TODO: transformation
@@ -180,14 +180,14 @@ namespace SM64_Diagnostic.Managers
             _dataGridViewVertices.Rows.Clear();
             for (int i = 0; i < vertices.Count; i++)
             {
-                var v = vertices[i];
+                short[] v = vertices[i];
                 _dataGridViewVertices.Rows.Add(i, v[0], v[1], v[2]);
             }
 
             _dataGridViewTriangles.Rows.Clear();
             for (int i = 0; i < triangles.Count; i++)
             {
-                var t = triangles[i];
+                int[] t = triangles[i];
                 _dataGridViewTriangles.Rows.Add(t[3], t[4], t[0], t[1], t[2]);
             }
 

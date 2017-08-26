@@ -509,7 +509,7 @@ namespace SM64_Diagnostic.Managers
                 _objManager.SlotIndex = "";
                 _objManager.SlotPos = "";
                 _objManager.Image = null;
-                _modelManager.ModelPointer = null;
+                _modelManager.ModelPointer = 0;
             }
         }
 
