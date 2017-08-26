@@ -3957,12 +3957,13 @@
     <Data groupList="ObjectSpecific" type="ushort" address="0x10E" offset="Object" isAngle="true">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="short" address="0x10A" offset="Object" isAngle="true">Pitch to Next WP</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
-    <Data groupList="ObjectSpecific" type="float" address="0x110" offset="Object">Effort</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="RacingPenguinEffortTarget">Effort Target</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0x110" offset="Object">Effort</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="RacingPenguinEffortChange">Effort Change</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="RacingPenguinMinHSpeed">Min H Speed</Data>
-    <Data groupList="ObjectSpecific" type="float" address="0xB8" offset="Object">H Speed</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="RacingPenguinHSpeedTarget">H Speed Target</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0xB8" offset="Object">H Speed</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="RacingPenguinDiffHSpeedTarget">Diff H Speed - Target</Data>
   </Object>
   <Object behaviorScriptAddress="0x130053C4" name="Finishing Line Checkpoint">
     <SpawnCode gfxId="0x00"/>
