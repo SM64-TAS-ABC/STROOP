@@ -28,17 +28,24 @@
     <ObjectActiveOffset>0x74</ObjectActiveOffset>
     <AnimationOffset>0x3C</AnimationOffset>
     <MarioGraphic>0x800F0860</MarioGraphic>
+    
     <CoordinateOffsetX>0xA0</CoordinateOffsetX>
     <CoordinateOffsetY>0xA4</CoordinateOffsetY>
     <CoordinateOffsetZ>0xA8</CoordinateOffsetZ>
+
+    <YSpeedOffset>0xB0</YSpeedOffset>
+    <HSpeedOffset>0xB8</HSpeedOffset>
+
     <HomeOffsetX>0x164</HomeOffsetX>
     <HomeOffsetY>0x168</HomeOffsetY>
     <HomeOffsetZ>0x16C</HomeOffsetZ>
     <RotationOffset>0xD4</RotationOffset>
     <MaxObjectSlots>240</MaxObjectSlots>
+    
     <HitboxRadius>0x1f8</HitboxRadius>
     <HitboxHeight>0x1fc</HitboxHeight>
     <HitboxDownOffset>0x208</HitboxDownOffset>
+    
     <YawFacingOffset>0xD6</YawFacingOffset>
     <PitchFacingOffset>0xD2</PitchFacingOffset>
     <RollFacingOffset>0xDA</RollFacingOffset>
@@ -48,6 +55,7 @@
     <ScaleWidthOffset>0x2C</ScaleWidthOffset>
     <ScaleHeightOffset>0x30</ScaleHeightOffset>
     <ScaleDepthOffset>0x34</ScaleDepthOffset>
+    
     <ReleaseStatusOffset>0x1CC</ReleaseStatusOffset>
     <StackIndexOffset>0x1D0</StackIndexOffset>
     <StackIndexReleasedValue>0</StackIndexReleasedValue>

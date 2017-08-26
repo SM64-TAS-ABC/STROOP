@@ -146,6 +146,14 @@ namespace SM64_Diagnostic.Utilities
                                 case "CoordinateOffsetZ":
                                     Config.ObjectSlots.ObjectZOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+
+                                case "YSpeedOffset":
+                                    Config.ObjectSlots.YSpeedOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "HSpeedOffset":
+                                    Config.ObjectSlots.HSpeedOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
                                 case "HomeOffsetX":
                                     Config.ObjectSlots.HomeXOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

@@ -37,6 +37,10 @@ namespace SM64_Diagnostic.Structs
         public uint ObjectXOffset;
         public uint ObjectYOffset;
         public uint ObjectZOffset;
+
+        public uint YSpeedOffset;
+        public uint HSpeedOffset;
+
         public uint HomeXOffset;
         public uint HomeYOffset;
         public uint HomeZOffset;

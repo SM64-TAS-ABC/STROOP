@@ -664,7 +664,7 @@ namespace SM64_Diagnostic.Managers
                         case "RacingPenguinDiffHSpeedTarget":
                             {
                                 (_, _, _, double targetHSpeed) = MoreMath.GetRacingPenguinSpecialVars(objAddress);
-                                float hSpeed = Config.Stream.GetSingle(objAddress + 0xB8);
+                                float hSpeed = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HSpeedOffset);
                                 newText = Math.Round(hSpeed - targetHSpeed, 3).ToString();
                                 break;
                             }
