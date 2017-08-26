@@ -137,7 +137,7 @@ namespace SM64_Diagnostic.Managers
                         click = ClickType.MapClick;
                         break;
 
-                    case "Hitbox":
+                    case "Model":
                         click = ClickType.ModelClick;
                         break;
 

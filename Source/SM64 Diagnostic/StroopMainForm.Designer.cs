@@ -676,11 +676,13 @@ namespace SM64_Diagnostic
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxModelAddress = new System.Windows.Forms.TextBox();
             this.splitContainerModel = new System.Windows.Forms.SplitContainer();
+            this.labelModelVertices = new System.Windows.Forms.Label();
             this.dataGridViewVertices = new System.Windows.Forms.DataGridView();
             this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelTriangles = new System.Windows.Forms.Label();
             this.dataGridViewTriangles = new System.Windows.Forms.DataGridView();
             this.Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -742,8 +744,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.labelModelVertices = new System.Windows.Forms.Label();
-            this.labelTriangles = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1050,7 +1050,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 287);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 288);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1115,7 +1115,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 162);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 163);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2114,7 +2114,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(717, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(720, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2632,7 +2632,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(726, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(729, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2800,7 +2800,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(818, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(821, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3181,7 +3181,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(728, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(731, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3652,7 +3652,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(725, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(728, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3737,7 +3737,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
-            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(506, 460);
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(509, 460);
             this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4100,7 +4100,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7074,7 +7074,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(277, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(280, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7382,7 +7382,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelDebug.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelDebug.Name = "noTearFlowLayoutPanelDebug";
-            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(545, 455);
+            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(548, 455);
             this.noTearFlowLayoutPanelDebug.TabIndex = 26;
             // 
             // tabPageMap
@@ -7583,7 +7583,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(716, 430);
+            this.glControlMap.Size = new System.Drawing.Size(719, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -8101,7 +8101,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(882, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(885, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -8200,7 +8200,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(618, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(621, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -9063,7 +9063,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(496, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(499, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9100,16 +9100,16 @@ namespace SM64_Diagnostic
             this.tabPageModel.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageModel.Size = new System.Drawing.Size(915, 463);
             this.tabPageModel.TabIndex = 18;
-            this.tabPageModel.Text = "Hitbox";
+            this.tabPageModel.Text = "Model";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Hitbox Address:";
+            this.label1.Text = "Model Address:";
             // 
             // textBoxModelAddress
             // 
@@ -9137,6 +9137,15 @@ namespace SM64_Diagnostic
             this.splitContainerModel.Size = new System.Drawing.Size(419, 428);
             this.splitContainerModel.SplitterDistance = 167;
             this.splitContainerModel.TabIndex = 2;
+            // 
+            // labelModelVertices
+            // 
+            this.labelModelVertices.AutoSize = true;
+            this.labelModelVertices.Location = new System.Drawing.Point(3, 0);
+            this.labelModelVertices.Name = "labelModelVertices";
+            this.labelModelVertices.Size = new System.Drawing.Size(48, 13);
+            this.labelModelVertices.TabIndex = 11;
+            this.labelModelVertices.Text = "Vertices:";
             // 
             // dataGridViewVertices
             // 
@@ -9183,6 +9192,15 @@ namespace SM64_Diagnostic
             this.Z.HeaderText = "Z";
             this.Z.Name = "Z";
             this.Z.ReadOnly = true;
+            // 
+            // labelTriangles
+            // 
+            this.labelTriangles.AutoSize = true;
+            this.labelTriangles.Location = new System.Drawing.Point(3, 0);
+            this.labelTriangles.Name = "labelTriangles";
+            this.labelTriangles.Size = new System.Drawing.Size(50, 13);
+            this.labelTriangles.TabIndex = 12;
+            this.labelTriangles.Text = "Triangles";
             // 
             // dataGridViewTriangles
             // 
@@ -9886,24 +9904,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.TabIndex = 20;
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
-            // 
-            // labelModelVertices
-            // 
-            this.labelModelVertices.AutoSize = true;
-            this.labelModelVertices.Location = new System.Drawing.Point(3, 0);
-            this.labelModelVertices.Name = "labelModelVertices";
-            this.labelModelVertices.Size = new System.Drawing.Size(48, 13);
-            this.labelModelVertices.TabIndex = 11;
-            this.labelModelVertices.Text = "Vertices:";
-            // 
-            // labelTriangles
-            // 
-            this.labelTriangles.AutoSize = true;
-            this.labelTriangles.Location = new System.Drawing.Point(3, 0);
-            this.labelTriangles.Name = "labelTriangles";
-            this.labelTriangles.Size = new System.Drawing.Size(50, 13);
-            this.labelTriangles.TabIndex = 12;
-            this.labelTriangles.Text = "Triangles";
             // 
             // StroopMainForm
             // 
