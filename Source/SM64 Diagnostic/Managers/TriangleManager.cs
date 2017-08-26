@@ -183,6 +183,8 @@ namespace SM64_Diagnostic.Managers
 
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowData"] as Button).Click
                 += (sender, e) => ShowTriangleData();
+            (splitContainerTriangles.Panel1.Controls["buttonTriangleShowVertices"] as Button).Click
+                += (sender, e) => ShowTriangleVertices();
             (splitContainerTriangles.Panel1.Controls["buttonTriangleClearData"] as Button).Click
                 += (sender, e) => ClearTriangleData();
 
@@ -229,6 +231,13 @@ namespace SM64_Diagnostic.Managers
         }
 
         private void ShowTriangleData()
+        {
+            var triangleInfoForm = new TriangleInfoForm();
+            triangleInfoForm.SetData(_triangleData, _repeatFirstVertexCheckbox.Checked);
+            triangleInfoForm.ShowDialog();
+        }
+
+        private void ShowTriangleVertices()
         {
             var triangleInfoForm = new TriangleInfoForm();
             triangleInfoForm.SetData(_triangleData, _repeatFirstVertexCheckbox.Checked);
