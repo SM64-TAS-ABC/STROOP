@@ -57,7 +57,8 @@ namespace SM64_Diagnostic.Managers
 
         public ModelManager(Control tabControl)
         {
-            _glControl = tabControl.Controls["glControlModelView"] as GLControl;
+            SplitContainer splitContainer1 = tabControl.Controls["splitContainer1"] as SplitContainer;
+            _glControl = splitContainer1.Panel2.Controls["glControlModelView"] as GLControl;
             _textBoxAddress = tabControl.Controls["textBoxModelAddress"] as TextBox;
             SplitContainer splitContainerData = tabControl.Controls["splitContainerModelTables"] as SplitContainer;
             _dataGridViewVertices = splitContainerData.Panel1.Controls["dataGridViewVertices"] as DataGridView;
