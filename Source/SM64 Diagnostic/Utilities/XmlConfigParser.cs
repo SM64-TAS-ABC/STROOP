@@ -14,6 +14,7 @@ using SM64_Diagnostic.Extensions;
 using System.Xml;
 using System.Net;
 using SM64_Diagnostic.Structs.Configurations;
+using static SM64_Diagnostic.Structs.Configurations.PositionControllerRelativeAngleConfig;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -47,6 +48,9 @@ namespace SM64_Diagnostic.Utilities
             Config.ObjectGroups.ProcessingGroups = new List<byte>();
             Config.ObjectGroups.ProcessingGroupsColor = new Dictionary<byte, Color>();
             var assembly = Assembly.GetExecutingAssembly();
+
+            Config.PositionControllerRelativeAngle.Relativity = RelativityType.Recommended;
+            Config.PositionControllerRelativeAngle.CustomAngle = 32768;
 
             // Create schema set
             var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };

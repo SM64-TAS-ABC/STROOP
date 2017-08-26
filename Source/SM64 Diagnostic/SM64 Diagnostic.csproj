@@ -189,6 +189,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
+    <Compile Include="Structs\Configurations\PositionControllerRelativeAngleConfig.cs" />
     <Compile Include="Structs\Configurations\WaypointConfig.cs" />
     <Compile Include="Structs\FlyGuyDataTable.cs" />
     <Compile Include="Structs\CourseDataTable.cs" />
