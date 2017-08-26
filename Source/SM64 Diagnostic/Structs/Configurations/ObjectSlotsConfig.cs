@@ -30,6 +30,7 @@ namespace SM64_Diagnostic.Structs
         public uint BehaviorGfxOffset;
         public uint BehaviorSubtypeOffset;
         public uint BehaviorAppearance;
+        public uint ModelPointerOffset;
         public uint ObjectActiveOffset;
         public uint AnimationOffset;
         public uint MarioGraphic;
@@ -46,7 +47,6 @@ namespace SM64_Diagnostic.Structs
         public uint HomeZOffset;
         public uint ObjectRotationOffset;
 
-        public uint HitboxPointerOffset;
         public uint HitboxRadius;
         public uint HitboxHeight;
         public uint HitboxDownOffset;

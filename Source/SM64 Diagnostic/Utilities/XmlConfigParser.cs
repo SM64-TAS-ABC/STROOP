@@ -128,6 +128,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "BehaviorAppearance":
                                     Config.ObjectSlots.BehaviorAppearance = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "ModelPointerOffset":
+                                    Config.ObjectSlots.ModelPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "ObjectActiveOffset":
                                     Config.ObjectSlots.ObjectActiveOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
@@ -168,9 +171,6 @@ namespace SM64_Diagnostic.Utilities
                                     break;
                                 case "MaxObjectSlots":
                                     Config.ObjectSlots.MaxSlots = int.Parse(subElement.Value);
-                                    break;
-                                case "HitboxPointerOffset":
-                                    Config.ObjectSlots.HitboxPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "HitboxRadius":
                                     Config.ObjectSlots.HitboxRadius = ParsingUtilities.ParseHex(subElement.Value);

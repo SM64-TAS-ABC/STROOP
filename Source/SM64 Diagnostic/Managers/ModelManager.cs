@@ -29,7 +29,7 @@ namespace SM64_Diagnostic.Managers
             get
             {
                 uint modelObjectAddress = ModelObjectAddress;
-                return modelObjectAddress == 0 ? 0 : Config.Stream.GetUInt32(modelObjectAddress + Config.ObjectSlots.HitboxPointerOffset);
+                return modelObjectAddress == 0 ? 0 : Config.Stream.GetUInt32(modelObjectAddress + Config.ObjectSlots.ModelPointerOffset);
             }
         }
         private uint _previousModelPointer = 0;
