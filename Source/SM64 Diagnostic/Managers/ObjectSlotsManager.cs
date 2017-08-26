@@ -391,7 +391,7 @@ namespace SM64_Diagnostic.Managers
                 Config.ObjectAssociations.BehaviorBankStart ? float.MaxValue : s.DistanceToMario).First().Address;
             _cameraObject = Config.Stream.GetUInt32(Config.Camera.SecondObject);
             _cameraHackObject = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
-            _modelObject = _modelManager.ModelPointer;
+            _modelObject = _modelManager.ModelObjectAddress;
 
             uint floorTriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
             _floorObject = floorTriangleAddress == 0 ? 0 : Config.Stream.GetUInt32(floorTriangleAddress + Config.TriangleOffsets.AssociatedObject);
@@ -531,7 +531,7 @@ namespace SM64_Diagnostic.Managers
             objSlot.DrawClosestOverlay = Config.ShowOverlayClosestObject && objAddress == _closestObject;
             objSlot.DrawCameraOverlay = Config.ShowOverlayCameraObject && objAddress == _cameraObject;
             objSlot.DrawCameraHackOverlay = Config.ShowOverlayCameraHackObject && objAddress == _cameraHackObject;
-            objSlot.DrawModelOverlay = objAddress == _modelManager.ModelPointer;
+            objSlot.DrawModelOverlay = objAddress == _modelObject;
             objSlot.DrawFloorOverlay = Config.ShowOverlayFloorObject && objAddress == _floorObject;
             objSlot.DrawWallOverlay = Config.ShowOverlayWallObject && objAddress == _wallObject;
             objSlot.DrawCeilingOverlay = Config.ShowOverlayCeilingObject && objAddress == _ceilingObject;
