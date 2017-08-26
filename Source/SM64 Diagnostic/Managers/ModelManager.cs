@@ -22,19 +22,19 @@ namespace SM64_Diagnostic.Managers
         private DataGridView _dataGridViewTriangles;
         private TextBox _textBoxAddress;
 
-        private uint _modelObject = 0;
-        public uint ModelObject
+        private uint _modelObjectAddress = 0;
+        public uint ModelObjectAddress
         {
             get
             {
-                return _modelObject;
+                return _modelObjectAddress;
             }
             set
             {
-                if (_modelObject == value)
+                if (_modelObjectAddress == value)
                     return;
 
-                _modelObject = value;
+                _modelObjectAddress = value;
 
                 UpdateModelPointer();
             }
@@ -44,8 +44,8 @@ namespace SM64_Diagnostic.Managers
         {
             get
             {
-                uint objAddress = ModelObject;
-                return objAddress == 0 ? 0 : Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.HitboxPointerOffset);
+                uint modelObjectAddress = ModelObjectAddress;
+                return modelObjectAddress == 0 ? 0 : Config.Stream.GetUInt32(modelObjectAddress + Config.ObjectSlots.HitboxPointerOffset);
             }
         }
 

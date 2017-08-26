@@ -149,7 +149,7 @@ namespace SM64_Diagnostic.Managers
 
             if (click == ClickType.ModelClick)
             {
-                _modelManager.ModelObject = selectedSlot.Address;
+                _modelManager.ModelObjectAddress = selectedSlot.Address;
             }
             else if (click == ClickType.CamHackClick)
             {
