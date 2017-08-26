@@ -108,6 +108,9 @@
     <Compile Include="Controls\BinaryButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\BetterTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\InputDisplayPanel.cs">
       <SubType>Component</SubType>
     </Compile>
