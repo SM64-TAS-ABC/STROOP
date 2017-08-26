@@ -212,6 +212,7 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("RacingPenguinEffortChange"),
                 new DataContainer("RacingPenguinMinHSpeed"),
                 new DataContainer("RacingPenguinHSpeedTarget"),
+                new DataContainer("RacingPenguinDiffHSpeedTarget"),
 
                 // Koopa the Quick vars
                 new DataContainer("KoopaTheQuickHSpeedTarget"),
@@ -657,6 +658,14 @@ namespace SM64_Diagnostic.Managers
                             {
                                 (_, _, _, double temp) = MoreMath.GetRacingPenguinSpecialVars(objAddress);
                                 newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
+
+                        case "RacingPenguinDiffHSpeedTarget":
+                            {
+                                (_, _, _, double targetHSpeed) = MoreMath.GetRacingPenguinSpecialVars(objAddress);
+                                float hSpeed = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HSpeedOffset);
+                                newText = Math.Round(hSpeed - targetHSpeed, 3).ToString();
                                 break;
                             }
 
