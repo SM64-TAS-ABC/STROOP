@@ -21,6 +21,8 @@ namespace SM64_Diagnostic.Managers
         private DataGridView _dataGridViewVertices;
         private DataGridView _dataGridViewTriangles;
         private TextBox _textBoxAddress;
+        private Label _labelModelVertices;
+        private Label _labelModelTriangles;
 
         public uint ModelObjectAddress;
 
@@ -57,12 +59,15 @@ namespace SM64_Diagnostic.Managers
 
         public ModelManager(Control tabControl)
         {
-            SplitContainer splitContainer1 = tabControl.Controls["splitContainerModel"] as SplitContainer;
-            _glControl = splitContainer1.Panel2.Controls["glControlModelView"] as GLControl;
-            _textBoxAddress = splitContainer1.Panel1.Controls["textBoxModelAddress"] as TextBox;
-            SplitContainer splitContainerData = splitContainer1.Panel1.Controls["splitContainerModelTables"] as SplitContainer;
-            _dataGridViewVertices = splitContainerData.Panel1.Controls["dataGridViewVertices"] as DataGridView;
-            _dataGridViewTriangles = splitContainerData.Panel2.Controls["dataGridViewTriangles"] as DataGridView;
+            SplitContainer splitContainerModel = tabControl.Controls["splitContainerModel"] as SplitContainer;
+            _glControl = splitContainerModel.Panel2.Controls["glControlModelView"] as GLControl;
+            _textBoxAddress = splitContainerModel.Panel1.Controls["textBoxModelAddress"] as TextBox;
+
+            SplitContainer splitContainerTables = splitContainerModel.Panel1.Controls["splitContainerModelTables"] as SplitContainer;
+            _dataGridViewVertices = splitContainerTables.Panel1.Controls["dataGridViewVertices"] as DataGridView;
+            _labelModelVertices = splitContainerTables.Panel1.Controls["labelModelVertices"] as Label;
+            _dataGridViewTriangles = splitContainerTables.Panel2.Controls["dataGridViewTriangles"] as DataGridView;
+            _labelModelTriangles = splitContainerTables.Panel2.Controls["labelModelTriangles"] as Label;
 
             _dataGridViewVertices.SelectionChanged += _dataGridViewVertices_SelectionChanged;
             _dataGridViewTriangles.SelectionChanged += _dataGridViewTriangles_SelectionChanged;

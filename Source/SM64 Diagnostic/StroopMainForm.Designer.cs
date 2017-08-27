@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -575,7 +575,7 @@ namespace SM64_Diagnostic
             this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelTriangles = new System.Windows.Forms.Label();
+            this.labelModelTriangles = new System.Windows.Forms.Label();
             this.dataGridViewTriangles = new System.Windows.Forms.DataGridView();
             this.Group = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -7939,7 +7939,7 @@ namespace SM64_Diagnostic
             // 
             // splitContainerModelTables.Panel2
             // 
-            this.splitContainerModelTables.Panel2.Controls.Add(this.labelTriangles);
+            this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
             this.splitContainerModelTables.Size = new System.Drawing.Size(424, 429);
             this.splitContainerModelTables.SplitterDistance = 200;
@@ -8000,14 +8000,14 @@ namespace SM64_Diagnostic
             this.Z.Name = "Z";
             this.Z.ReadOnly = true;
             // 
-            // labelTriangles
+            // labelModelTriangles
             // 
-            this.labelTriangles.AutoSize = true;
-            this.labelTriangles.Location = new System.Drawing.Point(3, 0);
-            this.labelTriangles.Name = "labelTriangles";
-            this.labelTriangles.Size = new System.Drawing.Size(53, 13);
-            this.labelTriangles.TabIndex = 12;
-            this.labelTriangles.Text = "Triangles:";
+            this.labelModelTriangles.AutoSize = true;
+            this.labelModelTriangles.Location = new System.Drawing.Point(3, 0);
+            this.labelModelTriangles.Name = "labelModelTriangles";
+            this.labelModelTriangles.Size = new System.Drawing.Size(53, 13);
+            this.labelModelTriangles.TabIndex = 12;
+            this.labelModelTriangles.Text = "Triangles:";
             // 
             // dataGridViewTriangles
             // 
@@ -8160,8 +8160,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -11079,7 +11079,7 @@ namespace SM64_Diagnostic
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private Label labelModelVertices;
-        private Label labelTriangles;
+        private Label labelModelTriangles;
         private GroupBox groupBoxPositionControllerRelativeAngle;
         private RadioButton radioButtonPositionControllerRelativeAngleMario;
         private RadioButton radioButtonPositionControllerRelativeAngleRecommended;
