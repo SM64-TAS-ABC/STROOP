@@ -204,6 +204,8 @@ namespace SM64_Diagnostic.Managers
                 _previousModelPointer = currentModelPointer;
                 UpdateModelPointer();
             }
+            _labelModelVertices.Text = "Vertices: " + _dataGridViewVertices.Rows.Count;
+            _labelModelTriangles.Text = "Triangles: " + _dataGridViewTriangles.Rows.Count;
 
             _modelView.Control.Invalidate();
         }
