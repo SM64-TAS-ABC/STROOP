@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -8005,9 +8005,9 @@ namespace SM64_Diagnostic
             this.labelTriangles.AutoSize = true;
             this.labelTriangles.Location = new System.Drawing.Point(3, 0);
             this.labelTriangles.Name = "labelTriangles";
-            this.labelTriangles.Size = new System.Drawing.Size(50, 13);
+            this.labelTriangles.Size = new System.Drawing.Size(53, 13);
             this.labelTriangles.TabIndex = 12;
-            this.labelTriangles.Text = "Triangles";
+            this.labelTriangles.Text = "Triangles:";
             // 
             // dataGridViewTriangles
             // 
@@ -8160,8 +8160,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
