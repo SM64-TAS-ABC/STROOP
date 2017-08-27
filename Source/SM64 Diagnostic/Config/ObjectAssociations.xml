@@ -344,19 +344,23 @@
     <SpawnCode gfxId="0x7A"/>
     <Image path="Power Star Yellow.png"/>
     <Data groupList="ObjectSpecific" type="byte" address="0x188" offset="Object">Mission</Data>
+    <Data groupList="ObjectSpecific" type="byte" address="0x192" mask="0x04" offset="Object" isBool="true">Displays Text</Data>
   </Object>
   <Object behaviorScriptAddress="0x130007F8" name="Power Star (Blue)" gfxId="0x800F8C00">
     <SpawnCode gfxId="0x79"/>
     <Image path="Power Star Blue.png"/>
     <Data groupList="ObjectSpecific" type="byte" address="0x188" offset="Object">Mission</Data>
+    <Data groupList="ObjectSpecific" type="byte" address="0x192" mask="0x04" offset="Object" isBool="true">Displays Text</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300080C" name="Power Star (Yellow)">
     <Image path="Power Star Yellow.png"/>
     <Data groupList="ObjectSpecific" type="byte" address="0x188" offset="Object">Mission</Data>
+    <Data groupList="ObjectSpecific" type="byte" address="0x192" mask="0x04" offset="Object" isBool="true">Displays Text</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300080C" name="Power Star (Blue)" gfxId="0x800F8C00">
     <Image path="Power Star Blue.png"/>
     <Data groupList="ObjectSpecific" type="byte" address="0x188" offset="Object">Mission</Data>
+    <Data groupList="ObjectSpecific" type="byte" address="0x192" mask="0x04" offset="Object" isBool="true">Displays Text</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000830" name="Blue Coin">
     <SpawnCode gfxId="0x76"/>
@@ -2689,18 +2693,22 @@
   <Object behaviorScriptAddress="0x13003E3C" name="Power Star (Yellow)">
     <Image path="Power Star Yellow.png"/>
     <Data groupList="ObjectSpecific" type="byte" address="0x188" offset="Object">Mission</Data>
+    <Data groupList="ObjectSpecific" type="byte" address="0x192" mask="0x04" offset="Object" isBool="true">Displays Text</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003E3C" name="Power Star (Blue)" gfxId="0x800F8C00">
     <Image path="Power Star Blue.png"/>
     <Data groupList="ObjectSpecific" type="byte" address="0x188" offset="Object">Mission</Data>
+    <Data groupList="ObjectSpecific" type="byte" address="0x192" mask="0x04" offset="Object" isBool="true">Displays Text</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003E64" name="Power Star (Yellow)">
     <Image path="Power Star Yellow.png"/>
     <Data groupList="ObjectSpecific" type="byte" address="0x188" offset="Object">Mission</Data>
+    <Data groupList="ObjectSpecific" type="byte" address="0x192" mask="0x04" offset="Object" isBool="true">Displays Text</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003E64" name="Power Star (Blue)" gfxId="0x800F8C00">
     <Image path="Power Star Blue.png"/>
     <Data groupList="ObjectSpecific" type="byte" address="0x188" offset="Object">Mission</Data>
+    <Data groupList="ObjectSpecific" type="byte" address="0x192" mask="0x04" offset="Object" isBool="true">Displays Text</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003E8C" name="Red Coin Star Spawner">
     <SpawnCode gfxId="0x00"/>
