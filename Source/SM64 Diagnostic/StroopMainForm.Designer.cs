@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -181,7 +181,7 @@ namespace SM64_Diagnostic
             this.panelHudBorder = new System.Windows.Forms.Panel();
             this.pictureBoxHud = new SM64_Diagnostic.Controls.IntPictureBox();
             this.buttonDie = new System.Windows.Forms.Button();
-            this.button99Lives = new SM64_Diagnostic.BinaryButton();
+            this.button100Lives = new SM64_Diagnostic.BinaryButton();
             this.buttonTurnOnOffHud = new SM64_Diagnostic.BinaryButton();
             this.buttonFillHp = new System.Windows.Forms.Button();
             this.NoTearFlowLayoutPanelHud = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
@@ -2720,7 +2720,7 @@ namespace SM64_Diagnostic
             this.splitContainerHud.Panel1.Controls.Add(this.buttonStandardHud);
             this.splitContainerHud.Panel1.Controls.Add(this.panelHudBorder);
             this.splitContainerHud.Panel1.Controls.Add(this.buttonDie);
-            this.splitContainerHud.Panel1.Controls.Add(this.button99Lives);
+            this.splitContainerHud.Panel1.Controls.Add(this.button100Lives);
             this.splitContainerHud.Panel1.Controls.Add(this.buttonTurnOnOffHud);
             this.splitContainerHud.Panel1.Controls.Add(this.buttonFillHp);
             this.splitContainerHud.Panel1MinSize = 0;
@@ -2785,14 +2785,14 @@ namespace SM64_Diagnostic
             this.buttonDie.Text = "Die";
             this.buttonDie.UseVisualStyleBackColor = true;
             // 
-            // button99Lives
+            // button100Lives
             // 
-            this.button99Lives.Location = new System.Drawing.Point(3, 163);
-            this.button99Lives.Name = "button99Lives";
-            this.button99Lives.Size = new System.Drawing.Size(93, 23);
-            this.button99Lives.TabIndex = 4;
-            this.button99Lives.Text = "99 Lives";
-            this.button99Lives.UseVisualStyleBackColor = true;
+            this.button100Lives.Location = new System.Drawing.Point(3, 163);
+            this.button100Lives.Name = "button100Lives";
+            this.button100Lives.Size = new System.Drawing.Size(93, 23);
+            this.button100Lives.TabIndex = 4;
+            this.button100Lives.Text = "100 Lives";
+            this.button100Lives.UseVisualStyleBackColor = true;
             // 
             // buttonTurnOnOffHud
             // 
@@ -8160,8 +8160,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -11086,7 +11086,7 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonPositionControllerRelativeAngleCustom;
         private BetterTextbox textBoxPositionControllerRelativeAngleCustom;
         private SplitContainer splitContainerModel;
-        private BinaryButton button99Lives;
+        private BinaryButton button100Lives;
         private Button buttonTriangleClearData;
     }
 }
