@@ -669,14 +669,14 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool Lives99()
+        public static bool Lives100()
         {
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue((sbyte)99, Config.Mario.StructAddress + Config.Hud.LifeCountOffset);
-            success &= Config.Stream.SetValue((short)99, Config.Mario.StructAddress + Config.Hud.LifeDisplayOffset);
+            success &= Config.Stream.SetValue((sbyte)100, Config.Mario.StructAddress + Config.Hud.LifeCountOffset);
+            success &= Config.Stream.SetValue((short)100, Config.Mario.StructAddress + Config.Hud.LifeDisplayOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
