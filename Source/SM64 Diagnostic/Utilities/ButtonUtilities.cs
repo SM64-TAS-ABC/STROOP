@@ -86,10 +86,13 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static void handleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, ushort? relativeAngle)
+        public static void handleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, double? relativeAngle)
         {
             if (useRelative)
             {
+                if (!relativeAngle.HasValue)
+                    throw new ArgumentNullException();
+
                 switch (Config.PositionControllerRelativeAngle.Relativity)
                 {
                     case RelativityType.Recommended:
@@ -102,7 +105,7 @@ namespace SM64_Diagnostic.Utilities
                         relativeAngle = MoreMath.NormalizeAngleUshort(Config.PositionControllerRelativeAngle.CustomAngle);
                         break;
                 }
-                double thetaChange = (ushort)relativeAngle - 32768;
+                double thetaChange = MoreMath.NormalizeAngleDouble(relativeAngle.Value - 32768);
                 (xOffset, _, zOffset) = ((float, float, float))MoreMath.OffsetSpherically(xOffset, 0, zOffset, 0, thetaChange, 0);
             }
         }
