@@ -198,14 +198,14 @@ namespace SM64_Diagnostic.ManagerClasses
             }
         }
 
-        public void DrawTexture(int texId, PointF loc, SizeF size, float angle = 0)
+        public void DrawTexture(int texId, PointF loc, SizeF size, float angle = 0, float alpha = 1)
         {
             // Place and rotate texture to correct location on control
             GL.LoadIdentity();
             GL.Translate(new Vector3(loc.X, loc.Y, 0));
             GL.Rotate(360-angle, Vector3.UnitZ);
+            GL.Color4(1.0, 1.0, 1.0, alpha);
 
-            
             // Start drawing texture
             GL.BindTexture(TextureTarget.Texture2D, texId);
             GL.Begin(PrimitiveType.Quads);

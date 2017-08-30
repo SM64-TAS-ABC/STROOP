@@ -70,6 +70,8 @@ namespace SM64_Diagnostic
             }
             set
             {
+                if (_behavior == value)
+                    return;
                 _behavior = value;
                 UpdateColors();
             }
@@ -497,19 +499,25 @@ namespace SM64_Diagnostic
             }
 
             SelectionType newSelectionType;
-            switch (tabControlMain.SelectedTab.Text)
+            switch (_manager.ActiveTab)
             {
-                default:
-                    newSelectionType = DrawSelectedOverlay ? SelectionType.NORMAL_SELECTION : SelectionType.NOT_SELECTED;
+                case ObjectSlotsManager.TabType.Map:
+                    newSelectionType = Show ? SelectionType.MAP_SELECTION 
+                        : SelectionType.NOT_SELECTED;
                     break;
-                case "Map":
-                    newSelectionType = Show ? SelectionType.MAP_SELECTION : SelectionType.NOT_SELECTED;
+
+                case ObjectSlotsManager.TabType.Model:
+                    newSelectionType = DrawModelOverlay ? SelectionType.MODEL_SELECTION
+                        : SelectionType.NOT_SELECTED;
                     break;
-                case "Model":
-                    newSelectionType = DrawModelOverlay ? SelectionType.MODEL_SELECTION : SelectionType.NOT_SELECTED;
-                    break;
-                case "Cam Hack":
+
+                case ObjectSlotsManager.TabType.CamHack:
                     newSelectionType = SelectionType.NOT_SELECTED;
+                    break;
+
+                default:
+                    newSelectionType = DrawSelectedOverlay ? SelectionType.NORMAL_SELECTION 
+                        : SelectionType.NOT_SELECTED;
                     break;
             }
 
@@ -548,6 +556,7 @@ namespace SM64_Diagnostic
                 }
 
                 // Draw Text
+                e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixel;
                 var textSize = TextRenderer.MeasureText(e.Graphics, Text, Font);
                 var textLocation = new Point((int) (Width - textSize.Width) / 2, (int)(Height - textSize.Height - BorderSize));
                 TextRenderer.DrawText(e.Graphics, Text, Font, textLocation, TextColor);

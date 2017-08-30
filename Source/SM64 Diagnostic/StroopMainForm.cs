@@ -146,6 +146,10 @@ namespace SM64_Diagnostic
             _resizing = false;
             labelVersionNumber.Text = _version;
 
+            // Collect garbage, we are fully loaded now!
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
             // Load process
             buttonRefresh_Click(this, new EventArgs());
             panelConnect.Location = new Point();

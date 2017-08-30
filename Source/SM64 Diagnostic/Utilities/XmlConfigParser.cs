@@ -1577,7 +1577,6 @@ namespace SM64_Diagnostic.Utilities
                     }
                 }
                 obj.TransparentImage = obj.Image.GetOpaqueImage(0.5f);
-                obj.TransparentMapImage = obj.Image.GetOpaqueImage(0.5f);
             }
 
             return assoc;

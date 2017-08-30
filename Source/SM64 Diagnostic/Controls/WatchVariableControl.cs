@@ -225,6 +225,22 @@ namespace SM64_Diagnostic.Controls
             return output;
         }
 
+        private CheckState _checkBoxCheckState = CheckState.Unchecked;
+        public CheckState CheckBoxCheckState
+        {
+            get
+            {
+                return _checkBoxCheckState;
+            }
+            set
+            {
+                if (_checkBoxCheckState == value)
+                    return;
+                _checkBoxCheckState = value;
+                _checkBoxBool.CheckState = value;
+            }
+        }
+
         public List<uint> OffsetList
         {
             get
@@ -391,6 +407,7 @@ namespace SM64_Diagnostic.Controls
             {
                 this._checkBoxBool = new CheckBox();
                 this._checkBoxBool.CheckAlign = ContentAlignment.MiddleRight;
+                this._checkBoxBool.CheckState = CheckState.Unchecked; 
                 this._checkBoxBool.CheckedChanged += OnEdited;
                 this._checkBoxBool.MouseEnter += (sender, e) =>
                 {
@@ -561,16 +578,16 @@ namespace SM64_Diagnostic.Controls
                 {
                     if (OffsetList.All(o => _watchVar.GetBoolValue(o)))
                     {
-                        _checkBoxBool.CheckState = CheckState.Checked;
+                        CheckBoxCheckState = CheckState.Checked;
                     }
                     else
                     {
-                        _checkBoxBool.CheckState = CheckState.Indeterminate;
+                        CheckBoxCheckState = CheckState.Indeterminate;
                     }
                 }
                 else
                 {
-                    _checkBoxBool.CheckState = CheckState.Unchecked;
+                    CheckBoxCheckState = CheckState.Unchecked;
                 }
             }
             else

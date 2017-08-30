@@ -76,6 +76,8 @@ namespace SM64_Diagnostic.Structs
             }
             set
             {
+                _defaultImage?.Dispose();
+                _transparentDefaultImage?.Dispose();
                 _defaultImage = value;
                 _transparentDefaultImage = value.GetOpaqueImage(0.5f);
             }
@@ -91,14 +93,24 @@ namespace SM64_Diagnostic.Structs
             _spawnHacks.Add(hack);
         }
 
+        private Dictionary<BehaviorCriteria, ObjectBehaviorAssociation> _cachedObjAssoc = new Dictionary<BehaviorCriteria, ObjectBehaviorAssociation>();
         public ObjectBehaviorAssociation FindObjectAssociation(BehaviorCriteria behaviorCriteria)
         {
+            if (_cachedObjAssoc.ContainsKey(behaviorCriteria))
+            {
+                return _cachedObjAssoc[behaviorCriteria];
+            }
+
             var possibleAssoc = _objAssoc.Where(objAssoc => objAssoc.MeetsCriteria(behaviorCriteria));
 
             if (possibleAssoc.Count() > 1 && possibleAssoc.Any(objAssoc => objAssoc.BehaviorCriteria.BehaviorOnly()))
                 possibleAssoc = possibleAssoc.Where(objAssoc => !objAssoc.BehaviorCriteria.BehaviorOnly());
 
-            return possibleAssoc.FirstOrDefault();
+            var behaviorAssoc = possibleAssoc.FirstOrDefault();
+
+            _cachedObjAssoc[behaviorCriteria] = behaviorAssoc;
+
+            return behaviorAssoc;
         }
 
         public Image GetObjectImage(BehaviorCriteria behaviorCriteria, bool transparent)
@@ -113,7 +125,7 @@ namespace SM64_Diagnostic.Structs
             return transparent ? assoc.TransparentImage : assoc.Image;
         }
 
-        public Image GetObjectMapImage(BehaviorCriteria behaviorCriteria, bool transparent)
+        public Image GetObjectMapImage(BehaviorCriteria behaviorCriteria)
         {
             if (behaviorCriteria.BehaviorAddress == 0)
                 return EmptyImage;
@@ -122,7 +134,7 @@ namespace SM64_Diagnostic.Structs
             if (assoc == null)
                 return _defaultImage;
 
-            return transparent ? assoc.TransparentMapImage : assoc.MapImage;
+            return assoc.MapImage;
         }
 
         public bool GetObjectMapRotates(BehaviorCriteria behaviorCriteria)
@@ -210,7 +222,6 @@ namespace SM64_Diagnostic.Structs
                 obj.Image?.Dispose();
                 obj.TransparentImage?.Dispose();
                 obj.MapImage?.Dispose();
-                obj.TransparentMapImage?.Dispose();
             }
 
             _transparentDefaultImage?.Dispose();

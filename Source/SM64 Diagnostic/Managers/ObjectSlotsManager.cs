@@ -58,6 +58,8 @@ namespace SM64_Diagnostic.Managers
 
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
+        public SortMethodType SortMethod = SortMethodType.ProcessingOrder;
+        public SlotLabelType LabelMethod = SlotLabelType.Recommended;
 
         public void ChangeSlotSize(int newSize)
         {
@@ -79,11 +81,12 @@ namespace SM64_Diagnostic.Managers
 
             // Add SortMethods
             ManagerGui.SortMethodComboBox.DataSource = Enum.GetValues(typeof(ObjectSlotsManager.SortMethodType));
-            ManagerGui.SortMethodComboBox.SelectedItem = SortMethodType.ProcessingOrder;
 
             // Add LabelMethods
             ManagerGui.LabelMethodComboBox.DataSource = Enum.GetValues(typeof(ObjectSlotsManager.SlotLabelType));
-            ManagerGui.LabelMethodComboBox.SelectedItem = SlotLabelType.Recommended;
+
+            ManagerGui.TabControl.Selected += TabControl_Selected;
+            TabControl_Selected(this, new TabControlEventArgs(ManagerGui.TabControl.SelectedTab, -1, TabControlAction.Selected));
 
             // Create and setup object slots
             ObjectSlot.tabControlMain = tabControlMain;
@@ -99,6 +102,36 @@ namespace SM64_Diagnostic.Managers
             // Change default
             ChangeSlotSize(DefaultSlotSize);
         }
+
+        private void TabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            switch (e.TabPage.Text)
+            {
+                case "Object":
+                    ActiveTab = TabType.Object;
+                    break;
+
+                case "Map":
+                    ActiveTab = TabType.Map;
+                    break;
+
+                case "Model":
+                    ActiveTab = TabType.Model;
+                    break;
+
+                case "Cam Hack":
+                    ActiveTab = TabType.CamHack;
+                    break;
+
+                default:
+                    ActiveTab = TabType.Other;
+                    break;
+            }
+        }
+
+        public enum TabType { Map, Model, CamHack, Object, Other };
+
+        public TabType ActiveTab;
 
         private enum ClickType { ObjectClick, MapClick, ModelClick, CamHackClick, MarkClick };
 
@@ -127,17 +160,17 @@ namespace SM64_Diagnostic.Managers
             }
             else
             {
-                switch (ManagerGui.TabControl.SelectedTab.Text)
+                switch (ActiveTab)
                 {
-                    case "Cam Hack":
+                    case TabType.CamHack:
                         click = ClickType.CamHackClick;
                         break;
 
-                    case "Map":
+                    case TabType.Map:
                         click = ClickType.MapClick;
                         break;
 
-                    case "Model":
+                    case TabType.Model:
                         click = ClickType.ModelClick;
                         break;
 
@@ -316,6 +349,8 @@ namespace SM64_Diagnostic.Managers
 
         public void Update()
         {
+            LabelMethod = (SlotLabelType) ManagerGui.LabelMethodComboBox.SelectedItem;
+            SortMethod = (SortMethodType) ManagerGui.SortMethodComboBox.SelectedItem;
             var groupConfig = Config.ObjectGroups;
             var slotConfig = Config.ObjectSlots;
 
@@ -362,7 +397,7 @@ namespace SM64_Diagnostic.Managers
             }
 
             // Processing sort order
-            switch ((SortMethodType)ManagerGui.SortMethodComboBox.SelectedItem)
+            switch (SortMethod)
             {
                 case SortMethodType.ProcessingOrder:
                     // Data is already sorted by processing order
@@ -573,11 +608,10 @@ namespace SM64_Diagnostic.Managers
                 _lastSlotLabel[objAddress] = new Tuple<int?, int?>(objData.ProcessIndex, objData.VacantSlotIndex);
 
             string labelText = "";
-            switch ((SlotLabelType)ManagerGui.LabelMethodComboBox.SelectedItem)
+            switch (LabelMethod)
             {
                 case SlotLabelType.Recommended:
-                    var sortMethod = (SortMethodType)ManagerGui.SortMethodComboBox.SelectedItem;
-                    if (sortMethod == SortMethodType.MemoryOrder)
+                    if (SortMethod == SortMethodType.MemoryOrder)
                         goto case SlotLabelType.SlotIndex;
                     goto case SlotLabelType.SlotPosVs;
 
@@ -636,26 +670,28 @@ namespace SM64_Diagnostic.Managers
 
         void UpdateMapObject(ObjectSlotData objData, ObjectSlot objSlot, BehaviorCriteria behaviorCriteria)
         {
-            if (ManagerGui.TabControl.SelectedTab.Text != "Map" || !_mapManager.IsLoaded)
+            if (ActiveTab != TabType.Map || !_mapManager.IsLoaded)
                 return;
 
             var objAddress = objData.Address;
 
             // Update image
-            var mapObjImage = Config.ObjectAssociations.GetObjectMapImage(behaviorCriteria, !objData.IsActive);
+            var mapObjImage = Config.ObjectAssociations.GetObjectMapImage(behaviorCriteria);
             var mapObjRotates = Config.ObjectAssociations.GetObjectMapRotates(behaviorCriteria);
             if (!_mapObjects.ContainsKey(objAddress))
             {
-                _mapObjects.Add(objAddress, new MapObject(mapObjImage));
-                _mapManager.AddMapObject(_mapObjects[objAddress]);
-                _mapObjects[objAddress].UsesRotation = mapObjRotates;
+                var mapObj = new MapObject(mapObjImage);
+                mapObj.UsesRotation = mapObjRotates;
+                _mapObjects.Add(objAddress, mapObj);
+                _mapManager.AddMapObject(mapObj);
             }
             else if (_mapObjects[objAddress].Image != mapObjImage)
             {
                 _mapManager.RemoveMapObject(_mapObjects[objAddress]);
-                _mapObjects[objAddress] = new MapObject(mapObjImage);
-                _mapManager.AddMapObject(_mapObjects[objAddress]);
-                _mapObjects[objAddress].UsesRotation = mapObjRotates;
+                var mapObj = new MapObject(mapObjImage);
+                mapObj.UsesRotation = mapObjRotates;
+                _mapObjects[objAddress] = mapObj;
+                _mapManager.AddMapObject(mapObj);
             }
 
             if (objData.Behavior == (Config.ObjectAssociations.MarioBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart)
@@ -665,15 +701,17 @@ namespace SM64_Diagnostic.Managers
             else
             {
                 // Update map object coordinates and rotation
-                _mapObjects[objAddress].Show = SelectedOnMapSlotsAddresses.Contains(objAddress);
+                var mapObj = _mapObjects[objAddress];
+                mapObj.Show = SelectedOnMapSlotsAddresses.Contains(objAddress);
                 objSlot.Show = _mapObjects[objAddress].Show;
-                _mapObjects[objAddress].X = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
-                _mapObjects[objAddress].Y = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                _mapObjects[objAddress].Z = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
-                _mapObjects[objAddress].IsActive = objData.IsActive;
-                _mapObjects[objAddress].Rotation = (float)((UInt16)(
+                mapObj.X = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+                mapObj.Y = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                mapObj.Z = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+                mapObj.IsActive = objData.IsActive;
+                mapObj.Transparent = !mapObj.IsActive;
+                mapObj.Rotation = (float)((UInt16)(
                     Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.ObjectRotationOffset)) / 65536f * 360f);
-                _mapObjects[objAddress].UsesRotation = Config.ObjectAssociations.GetObjectMapRotates(behaviorCriteria);
+                mapObj.UsesRotation = Config.ObjectAssociations.GetObjectMapRotates(behaviorCriteria);
             }
         }
     }
