@@ -317,7 +317,7 @@ namespace SM64_Diagnostic.Utilities
             if (localAddress + length > _ram.Length)
                 return new byte[length];
 
-            Array.Copy(_ram, localAddress, readBytes, 0, length);
+            Buffer.BlockCopy(_ram, (int)localAddress, readBytes, 0, length);
             return readBytes;
         }
 
@@ -530,7 +530,7 @@ namespace SM64_Diagnostic.Utilities
                 }
                 FpsUpdated?.Invoke(this, new EventArgs());
             
-                Task.Delay(timeToWait).Wait();
+                Thread.Sleep(timeToWait);
             }
 
             OnClose?.BeginInvoke(this, new EventArgs(), null, null);

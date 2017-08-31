@@ -536,9 +536,12 @@ namespace SM64_Diagnostic
             UpdateColors();
             Refresh();
         }
+
+        int _fontHeight;
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+            e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
             lock (_gfxLock)
             {
                 // Border
@@ -553,13 +556,15 @@ namespace SM64_Diagnostic
                     prevHeight = Height;
                     Font?.Dispose();
                     Font = new Font(FontFamily.GenericSansSerif, Math.Max(6, 6 / 40.0f * Height));
+
+                    // Font.Height doesn't work for some reason that probably makes sense, but don't really want to look into right now
+                    _fontHeight = TextRenderer.MeasureText(e.Graphics, "ABCDEF", Font).Height;
                 }
 
                 // Draw Text
                 e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixel;
-                var textSize = TextRenderer.MeasureText(e.Graphics, Text, Font);
-                var textLocation = new Point((int) (Width - textSize.Width) / 2, (int)(Height - textSize.Height - BorderSize));
-                TextRenderer.DrawText(e.Graphics, Text, Font, textLocation, TextColor);
+                var textLocation = new Point(Width + 1, Height - BorderSize - _fontHeight + 1);
+                TextRenderer.DrawText(e.Graphics, Text, Font, textLocation, TextColor, TextFormatFlags.HorizontalCenter | TextFormatFlags.Top);
                 if (textLocation != _textLocation)
                 {
                     _textLocation = textLocation;
