@@ -45,7 +45,7 @@ namespace SM64_Diagnostic
 
         public void SetVertices(List<short[]> coordinateList)
         {
-
+            labelTitle.Text = "Triangle Vertices";
             List<short[]> vertexList = new List<short[]>();
             coordinateList.ForEach(
                 coordinates =>
