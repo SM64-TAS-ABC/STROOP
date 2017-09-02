@@ -42,6 +42,7 @@ namespace SM64_Diagnostic
         MapManager _mapManager;
         ModelManager _modelManager;
         OptionsManager _optionsManager;
+        TestingManager _testingManager;
         ScriptManager _scriptManager;
         HudManager _hudManager;
         MiscManager _miscManager;
@@ -131,6 +132,7 @@ namespace SM64_Diagnostic
             currentContext.CameraHackManager = _cameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
             currentContext.ObjectManager = _objectManager = new ObjectManager(_objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
             currentContext.OptionsManager = _optionsManager = new OptionsManager(tabPageOptions);
+            currentContext.TestingManager = _testingManager = new TestingManager(tabPageOptions);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
@@ -280,6 +282,7 @@ namespace SM64_Diagnostic
                 _triangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
                 _debugManager.Update(tabControlMain.SelectedTab == tabPageDebug);
                 _puManager.Update(tabControlMain.SelectedTab == tabPagePu);
+                _testingManager.Update(tabControlMain.SelectedTab == tabPageTesting);
                 _mapManager?.Update();
                 _modelManager?.Update();
                 _scriptManager.Update();
