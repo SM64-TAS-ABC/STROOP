@@ -85,12 +85,9 @@ namespace SM64_Diagnostic.Managers
 
         private void ShowData()
         {
-            System.Diagnostics.Trace.WriteLine("------------------------------------");
-            foreach (KeyValuePair<int, float> entry in _marioYDictionary)
-            {
-                System.Diagnostics.Trace.WriteLine(entry.Key + " => " + entry.Value);
-            }
-            System.Diagnostics.Trace.WriteLine("------------------------------------");
+            var triangleInfoForm = new TriangleInfoForm();
+            triangleInfoForm.SetDictionary(_marioYDictionary);
+            triangleInfoForm.ShowDialog();
         }
 
         public void Update(bool updateView)

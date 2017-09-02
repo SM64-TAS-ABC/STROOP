@@ -104,6 +104,17 @@ namespace SM64_Diagnostic
             return text;
         }
 
+        public void SetDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
+        {
+            labelTitle.Text = "Dictionary";
+            String text = "";
+            foreach (KeyValuePair<TKey, TValue> entry in dictionary)
+            {
+                text += (entry.Key + "\t" + entry.Value + "\r\n");
+            }
+            textBoxTriangleInfo.Text = text;
+        }
+
         private void buttonOk_Click(object sender, EventArgs e)
         {
             Close();
