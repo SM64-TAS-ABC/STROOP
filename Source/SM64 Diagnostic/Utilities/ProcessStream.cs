@@ -25,7 +25,7 @@ namespace SM64_Diagnostic.Utilities
         BackgroundWorker _streamUpdater;
         byte[] _ram;
         bool _lastUpdateBeforePausing = false;
-        int _interval;
+        volatile int _interval;
         object _enableLocker = new object();
         object _fpsQueueLocker = new object();
 
@@ -77,9 +77,11 @@ namespace SM64_Diagnostic.Utilities
                 }
                 return fps;
             }
+            set
+            {
+                _interval = (int)(1000.0f / value);
+            }
         }
-
-        public volatile Boolean UnlimitedFPS = false; 
 
         public Boolean IsSuspended = false;
         public Boolean IsClosed = true;
@@ -520,7 +522,7 @@ namespace SM64_Diagnostic.Utilities
 
                 // Calculate delay to match correct FPS
                 prevTime.Stop();
-                timeToWait = UnlimitedFPS ? 0 : _interval - (int)prevTime.ElapsedMilliseconds;
+                timeToWait = _interval - (int)prevTime.ElapsedMilliseconds;
                 timeToWait = Math.Max(timeToWait, 0);
 
                 // Calculate Fps
