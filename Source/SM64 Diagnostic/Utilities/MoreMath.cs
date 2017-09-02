@@ -58,6 +58,14 @@ namespace SM64_Diagnostic.Utilities
             return (magnitude, angle);
         }
 
+        public static double GetDistanceFromPointToLine(
+            double pX, double pZ, double v1X, double v1Z, double v2X, double v2Z)
+        {
+            double numerator = Math.Abs((v2Z - v1Z) * pX - (v2X - v1X) * pZ + v2X * v1Z - v2Z * v1X);
+            double denominator = GetDistanceBetween(v1X, v1Z, v2X, v2Z);
+            return numerator / denominator;
+        }
+
         public static double NormalizeAngleDouble(double angle)
         {
             return NonNegativeModulus(angle, 65536);
