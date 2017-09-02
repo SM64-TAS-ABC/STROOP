@@ -72,6 +72,9 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("DistanceToV3"),
                 new DataContainer("LateralDistanceToV3"),
                 new DataContainer("VerticalDistanceToV3"),
+                new DataContainer("DistanceToLine12"),
+                new DataContainer("DistanceToLine23"),
+                new DataContainer("DistanceToLine13"),
                 new AngleDataContainer("AngleV1ToV2"),
                 new AngleDataContainer("AngleV2ToV1"),
                 new AngleDataContainer("AngleV2ToV3"),
@@ -432,6 +435,16 @@ namespace SM64_Diagnostic.Managers
                         goto case "CheckTriangleExists";
                     case "VerticalDistanceToV3":
                         (specialVar as DataContainer).Text = Math.Round(marioY - v3Y, 3).ToString();
+                        goto case "CheckTriangleExists";
+
+                    case "DistanceToLine12":
+                        (specialVar as DataContainer).Text = Math.Round(1.0, 3).ToString();
+                        goto case "CheckTriangleExists";
+                    case "DistanceToLine23":
+                        (specialVar as DataContainer).Text = Math.Round(2.0, 3).ToString();
+                        goto case "CheckTriangleExists";
+                    case "DistanceToLine13":
+                        (specialVar as DataContainer).Text = Math.Round(3.0, 3).ToString();
                         goto case "CheckTriangleExists";
 
                     case "AngleV1ToV2":
