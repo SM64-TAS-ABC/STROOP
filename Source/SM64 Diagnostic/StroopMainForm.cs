@@ -132,7 +132,7 @@ namespace SM64_Diagnostic
             currentContext.CameraHackManager = _cameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
             currentContext.ObjectManager = _objectManager = new ObjectManager(_objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
             currentContext.OptionsManager = _optionsManager = new OptionsManager(tabPageOptions);
-            currentContext.TestingManager = _testingManager = new TestingManager(tabPageOptions);
+            currentContext.TestingManager = _testingManager = new TestingManager(tabPageTesting);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
