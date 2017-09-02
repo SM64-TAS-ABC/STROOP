@@ -16,9 +16,34 @@ namespace SM64_Diagnostic
 {
     public class BetterTextbox : TextBox
     {
+        private string lastSubmittedText;
+
+        public override string Text
+        {
+            get
+            {
+                return base.Text;
+            }
+            set
+            {
+                if (lastSubmittedText == null)
+                {
+                    lastSubmittedText = value;
+                }
+                base.Text = value;
+            }
+        }
+
         public BetterTextbox()
         {
+            AddLostFocusAction(() => lastSubmittedText = this.Text);
+            AddDoubleClickAction(() => this.SelectAll());
             AddEnterAction(() => Parent.Focus());
+            AddEscapeAction(() =>
+            {
+                this.Text = lastSubmittedText;
+                this.Parent.Focus();
+            });
         }
 
         public void AddEnterAction(Action enterAction)
@@ -32,9 +57,25 @@ namespace SM64_Diagnostic
             };
         }
 
+        public void AddEscapeAction(Action escapeAction)
+        {
+            this.KeyDown += (sender, e) =>
+            {
+                if (e.KeyData == Keys.Escape)
+                {
+                    escapeAction();
+                }
+            };
+        }
+
         public void AddLostFocusAction(Action lostFocusAction)
         {
             this.LostFocus += (sender, e) => lostFocusAction();
+        }
+
+        public void AddDoubleClickAction(Action doubleClickAction)
+        {
+            this.DoubleClick += (sender, e) => doubleClickAction();
         }
     }
 }

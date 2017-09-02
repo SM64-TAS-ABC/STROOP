@@ -27,6 +27,7 @@
     <BehaviorAppearance>0xF0</BehaviorAppearance>
     <ModelPointerOffset>0x218</ModelPointerOffset>
     <ObjectActiveOffset>0x74</ObjectActiveOffset>
+    <TimerOffset>0x154</TimerOffset>
     <AnimationOffset>0x3C</AnimationOffset>
     <MarioGraphic>0x800F0860</MarioGraphic>
     

@@ -138,6 +138,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "ObjectActiveOffset":
                                     Config.ObjectSlots.ObjectActiveOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "TimerOffset":
+                                    Config.ObjectSlots.TimerOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "AnimationOffset":
                                     Config.ObjectSlots.AnimationOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

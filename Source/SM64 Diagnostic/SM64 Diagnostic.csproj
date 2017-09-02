@@ -183,6 +183,7 @@
     <Compile Include="Managers\CameraManager.cs" />
     <Compile Include="Managers\MarioManager.cs" />
     <Compile Include="Managers\ObjectManager.cs" />
+    <Compile Include="Managers\TestingManager.cs" />
     <Compile Include="Managers\OptionsManager.cs" />
     <Compile Include="Managers\PuManager.cs" />
     <Compile Include="Managers\ScriptManager.cs" />

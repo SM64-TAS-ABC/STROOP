@@ -72,6 +72,9 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("DistanceToV3"),
                 new DataContainer("LateralDistanceToV3"),
                 new DataContainer("VerticalDistanceToV3"),
+                new DataContainer("DistanceToLine12"),
+                new DataContainer("DistanceToLine23"),
+                new DataContainer("DistanceToLine13"),
                 new AngleDataContainer("AngleV1ToV2"),
                 new AngleDataContainer("AngleV2ToV1"),
                 new AngleDataContainer("AngleV2ToV3"),
@@ -432,6 +435,31 @@ namespace SM64_Diagnostic.Managers
                         goto case "CheckTriangleExists";
                     case "VerticalDistanceToV3":
                         (specialVar as DataContainer).Text = Math.Round(marioY - v3Y, 3).ToString();
+                        goto case "CheckTriangleExists";
+
+                    case "DistanceToLine12":
+                        {
+                            double dist = MoreMath.GetDistanceFromPointToLine(marioX, marioZ, v1X, v1Z, v2X, v2Z);
+                            bool insideTri = (v1Z - marioZ) * (v2X - v1X) >= (v1X - marioX) * (v2Z - v1Z);
+                            double signedDist = dist * (insideTri ? 1 : -1);
+                            (specialVar as DataContainer).Text = Math.Round(signedDist, 3).ToString();
+                        }
+                        goto case "CheckTriangleExists";
+                    case "DistanceToLine23":
+                        {
+                            double dist = MoreMath.GetDistanceFromPointToLine(marioX, marioZ, v2X, v2Z, v3X, v3Z);
+                            bool insideTri = (v2Z - marioZ) * (v3X - v2X) >= (v2X - marioX) * (v3Z - v2Z);
+                            double signedDist = dist * (insideTri ? 1 : -1);
+                            (specialVar as DataContainer).Text = Math.Round(signedDist, 3).ToString();
+                        }
+                        goto case "CheckTriangleExists";
+                    case "DistanceToLine13":
+                        {
+                            double dist = MoreMath.GetDistanceFromPointToLine(marioX, marioZ, v1X, v1Z, v3X, v3Z);
+                            bool insideTri = (v3Z - marioZ) * (v1X - v3X) >= (v3X - marioX) * (v1Z - v3Z);
+                            double signedDist = dist * (insideTri ? 1 : -1);
+                            (specialVar as DataContainer).Text = Math.Round(signedDist, 3).ToString();
+                        }
                         goto case "CheckTriangleExists";
 
                     case "AngleV1ToV2":

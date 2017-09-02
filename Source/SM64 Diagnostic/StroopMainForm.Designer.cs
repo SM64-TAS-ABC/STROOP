@@ -56,11 +56,11 @@ namespace SM64_Diagnostic
             this.buttonObjInteract = new SM64_Diagnostic.BinaryButton();
             this.groupBoxObjHome = new System.Windows.Forms.GroupBox();
             this.checkBoxObjHomeRelative = new System.Windows.Forms.CheckBox();
-            this.textBoxObjHomeY = new System.Windows.Forms.TextBox();
+            this.textBoxObjHomeY = new SM64_Diagnostic.BetterTextbox();
             this.buttonObjHomeYp = new System.Windows.Forms.Button();
             this.buttonObjHomeYn = new System.Windows.Forms.Button();
             this.buttonObjHomeXpZp = new System.Windows.Forms.Button();
-            this.textBoxObjHomeXZ = new System.Windows.Forms.TextBox();
+            this.textBoxObjHomeXZ = new SM64_Diagnostic.BetterTextbox();
             this.buttonObjHomeXp = new System.Windows.Forms.Button();
             this.buttonObjHomeXpZn = new System.Windows.Forms.Button();
             this.buttonObjHomeZn = new System.Windows.Forms.Button();
@@ -71,22 +71,22 @@ namespace SM64_Diagnostic
             this.groupBoxObjScale = new System.Windows.Forms.GroupBox();
             this.checkBoxObjScaleMultiply = new System.Windows.Forms.CheckBox();
             this.checkBoxObjScaleAggregate = new System.Windows.Forms.CheckBox();
-            this.textBoxObjScaleDepth = new System.Windows.Forms.TextBox();
-            this.textBoxObjScaleHeight = new System.Windows.Forms.TextBox();
-            this.textBoxObjScaleWidth = new System.Windows.Forms.TextBox();
+            this.textBoxObjScaleDepth = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxObjScaleHeight = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxObjScaleWidth = new SM64_Diagnostic.BetterTextbox();
             this.buttonObjScaleDepthN = new System.Windows.Forms.Button();
             this.buttonObjScaleHeightN = new System.Windows.Forms.Button();
             this.buttonObjScaleWidthN = new System.Windows.Forms.Button();
             this.buttonObjScaleDepthP = new System.Windows.Forms.Button();
             this.buttonObjScaleHeightP = new System.Windows.Forms.Button();
             this.buttonObjScaleWidthP = new System.Windows.Forms.Button();
-            this.textBoxObjScaleAggregate = new System.Windows.Forms.TextBox();
+            this.textBoxObjScaleAggregate = new SM64_Diagnostic.BetterTextbox();
             this.buttonObjScaleAggregateN = new System.Windows.Forms.Button();
             this.buttonObjScaleAggregateP = new System.Windows.Forms.Button();
             this.groupBoxObjAngle = new System.Windows.Forms.GroupBox();
-            this.textBoxObjAngleRoll = new System.Windows.Forms.TextBox();
-            this.textBoxObjAnglePitch = new System.Windows.Forms.TextBox();
-            this.textBoxObjAngleYaw = new System.Windows.Forms.TextBox();
+            this.textBoxObjAngleRoll = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxObjAnglePitch = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxObjAngleYaw = new SM64_Diagnostic.BetterTextbox();
             this.buttonObjAngleRollN = new System.Windows.Forms.Button();
             this.buttonObjAnglePitchN = new System.Windows.Forms.Button();
             this.buttonObjAngleYawN = new System.Windows.Forms.Button();
@@ -95,11 +95,11 @@ namespace SM64_Diagnostic
             this.buttonObjAngleYawP = new System.Windows.Forms.Button();
             this.groupBoxObjPos = new System.Windows.Forms.GroupBox();
             this.checkBoxObjPosRelative = new System.Windows.Forms.CheckBox();
-            this.textBoxObjPosY = new System.Windows.Forms.TextBox();
+            this.textBoxObjPosY = new SM64_Diagnostic.BetterTextbox();
             this.buttonObjPosYp = new System.Windows.Forms.Button();
             this.buttonObjPosYn = new System.Windows.Forms.Button();
             this.buttonObjPosXpZp = new System.Windows.Forms.Button();
-            this.textBoxObjPosXZ = new System.Windows.Forms.TextBox();
+            this.textBoxObjPosXZ = new SM64_Diagnostic.BetterTextbox();
             this.buttonObjPosXp = new System.Windows.Forms.Button();
             this.buttonObjPosXpZn = new System.Windows.Forms.Button();
             this.buttonObjPosZn = new System.Windows.Forms.Button();
@@ -128,9 +128,9 @@ namespace SM64_Diagnostic
             this.tabPageMario = new System.Windows.Forms.TabPage();
             this.splitContainerMario = new System.Windows.Forms.SplitContainer();
             this.groupBoxMarioStats = new System.Windows.Forms.GroupBox();
-            this.textBoxMarioStatsVspd = new System.Windows.Forms.TextBox();
-            this.textBoxMarioStatsHspd = new System.Windows.Forms.TextBox();
-            this.textBoxMarioStatsYaw = new System.Windows.Forms.TextBox();
+            this.textBoxMarioStatsVspd = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxMarioStatsHspd = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxMarioStatsYaw = new SM64_Diagnostic.BetterTextbox();
             this.buttonMarioStatsVspdN = new System.Windows.Forms.Button();
             this.buttonMarioStatsHspdN = new System.Windows.Forms.Button();
             this.buttonMarioStatsYawN = new System.Windows.Forms.Button();
@@ -139,11 +139,11 @@ namespace SM64_Diagnostic
             this.buttonMarioStatsYawP = new System.Windows.Forms.Button();
             this.groupBoxMarioHOLP = new System.Windows.Forms.GroupBox();
             this.checkBoxMarioHOLPRelative = new System.Windows.Forms.CheckBox();
-            this.textBoxMarioHOLPY = new System.Windows.Forms.TextBox();
+            this.textBoxMarioHOLPY = new SM64_Diagnostic.BetterTextbox();
             this.buttonMarioHOLPYp = new System.Windows.Forms.Button();
             this.buttonMarioHOLPYn = new System.Windows.Forms.Button();
             this.buttonMarioHOLPXpZp = new System.Windows.Forms.Button();
-            this.textBoxMarioHOLPXZ = new System.Windows.Forms.TextBox();
+            this.textBoxMarioHOLPXZ = new SM64_Diagnostic.BetterTextbox();
             this.buttonMarioHOLPXp = new System.Windows.Forms.Button();
             this.buttonMarioHOLPXpZn = new System.Windows.Forms.Button();
             this.buttonMarioHOLPZn = new System.Windows.Forms.Button();
@@ -155,11 +155,11 @@ namespace SM64_Diagnostic
             this.pictureBoxMario = new SM64_Diagnostic.Controls.IntPictureBox();
             this.groupBoxMarioPos = new System.Windows.Forms.GroupBox();
             this.checkBoxMarioPosRelative = new System.Windows.Forms.CheckBox();
-            this.textBoxMarioPosY = new System.Windows.Forms.TextBox();
+            this.textBoxMarioPosY = new SM64_Diagnostic.BetterTextbox();
             this.buttonMarioPosYp = new System.Windows.Forms.Button();
             this.buttonMarioPosYn = new System.Windows.Forms.Button();
             this.buttonMarioPosXpZp = new System.Windows.Forms.Button();
-            this.textBoxMarioPosXZ = new System.Windows.Forms.TextBox();
+            this.textBoxMarioPosXZ = new SM64_Diagnostic.BetterTextbox();
             this.buttonMarioPosXp = new System.Windows.Forms.Button();
             this.buttonMarioPosXpZn = new System.Windows.Forms.Button();
             this.buttonMarioPosZn = new System.Windows.Forms.Button();
@@ -189,11 +189,11 @@ namespace SM64_Diagnostic
             this.SplitContainerCamera = new System.Windows.Forms.SplitContainer();
             this.groupBoxCameraSphericalPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraSphericalPosPivotOnFocus = new System.Windows.Forms.CheckBox();
-            this.textBoxCameraSphericalPosR = new System.Windows.Forms.TextBox();
+            this.textBoxCameraSphericalPosR = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraSphericalPosRn = new System.Windows.Forms.Button();
             this.buttonCameraSphericalPosRp = new System.Windows.Forms.Button();
             this.buttonCameraSphericalPosTpPp = new System.Windows.Forms.Button();
-            this.textBoxCameraSphericalPosTP = new System.Windows.Forms.TextBox();
+            this.textBoxCameraSphericalPosTP = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraSphericalPosTp = new System.Windows.Forms.Button();
             this.buttonCameraSphericalPosTpPn = new System.Windows.Forms.Button();
             this.buttonCameraSphericalPosPn = new System.Windows.Forms.Button();
@@ -205,11 +205,11 @@ namespace SM64_Diagnostic
             this.pictureBoxCamera = new SM64_Diagnostic.Controls.IntPictureBox();
             this.groupBoxCameraPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraPosRelative = new System.Windows.Forms.CheckBox();
-            this.textBoxCameraPosY = new System.Windows.Forms.TextBox();
+            this.textBoxCameraPosY = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraPosYp = new System.Windows.Forms.Button();
             this.buttonCameraPosYn = new System.Windows.Forms.Button();
             this.buttonCameraPosXpZp = new System.Windows.Forms.Button();
-            this.textBoxCameraPosXZ = new System.Windows.Forms.TextBox();
+            this.textBoxCameraPosXZ = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraPosXp = new System.Windows.Forms.Button();
             this.buttonCameraPosXpZn = new System.Windows.Forms.Button();
             this.buttonCameraPosZn = new System.Windows.Forms.Button();
@@ -222,11 +222,11 @@ namespace SM64_Diagnostic
             this.splitContainerTriangles = new System.Windows.Forms.SplitContainer();
             this.groupBoxTrianglePos = new System.Windows.Forms.GroupBox();
             this.checkBoxTrianglePosRelative = new System.Windows.Forms.CheckBox();
-            this.textBoxTrianglePosY = new System.Windows.Forms.TextBox();
+            this.textBoxTrianglePosY = new SM64_Diagnostic.BetterTextbox();
             this.buttonTrianglePosYp = new System.Windows.Forms.Button();
             this.buttonTrianglePosYn = new System.Windows.Forms.Button();
             this.buttonTrianglePosXpZp = new System.Windows.Forms.Button();
-            this.textBoxTrianglePosXZ = new System.Windows.Forms.TextBox();
+            this.textBoxTrianglePosXZ = new SM64_Diagnostic.BetterTextbox();
             this.buttonTrianglePosXp = new System.Windows.Forms.Button();
             this.buttonTrianglePosXpZn = new System.Windows.Forms.Button();
             this.buttonTrianglePosZn = new System.Windows.Forms.Button();
@@ -235,10 +235,11 @@ namespace SM64_Diagnostic
             this.buttonTrianglePosXn = new System.Windows.Forms.Button();
             this.buttonTrianglePosXnZn = new System.Windows.Forms.Button();
             this.groupBoxTriangleNormal = new System.Windows.Forms.GroupBox();
-            this.textBoxTriangleNormal = new System.Windows.Forms.TextBox();
+            this.textBoxTriangleNormal = new SM64_Diagnostic.BetterTextbox();
             this.buttonTriangleNormalN = new System.Windows.Forms.Button();
             this.buttonTriangleNormalP = new System.Windows.Forms.Button();
             this.radioButtonTriOther = new System.Windows.Forms.RadioButton();
+            this.buttonTriangleClearData = new System.Windows.Forms.Button();
             this.buttonTriangleShowVertices = new System.Windows.Forms.Button();
             this.buttonAnnihilateTriangle = new System.Windows.Forms.Button();
             this.radioButtonTriFloor = new System.Windows.Forms.RadioButton();
@@ -604,24 +605,24 @@ namespace SM64_Diagnostic
             this.checkedListBoxHacks = new System.Windows.Forms.CheckedListBox();
             this.groupBoxHackSpawn = new System.Windows.Forms.GroupBox();
             this.labelSpawnBehavior = new System.Windows.Forms.Label();
-            this.textBoxSpawnBehavior = new System.Windows.Forms.TextBox();
+            this.textBoxSpawnBehavior = new SM64_Diagnostic.BetterTextbox();
             this.labelSpawnHint = new System.Windows.Forms.Label();
             this.buttonSpawnReset = new System.Windows.Forms.Button();
             this.labelSpawnExtra = new System.Windows.Forms.Label();
             this.labelSpawnGfxId = new System.Windows.Forms.Label();
-            this.textBoxSpawnExtra = new System.Windows.Forms.TextBox();
-            this.textBoxSpawnGfxId = new System.Windows.Forms.TextBox();
+            this.textBoxSpawnExtra = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxSpawnGfxId = new SM64_Diagnostic.BetterTextbox();
             this.buttonHackSpawn = new System.Windows.Forms.Button();
             this.listBoxSpawn = new System.Windows.Forms.ListBox();
             this.tabPageCamHack = new System.Windows.Forms.TabPage();
             this.splitContainerCamHack = new System.Windows.Forms.SplitContainer();
             this.groupBoxCameraHackBothPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraHackBothPosRelative = new System.Windows.Forms.CheckBox();
-            this.textBoxCameraHackBothPosY = new System.Windows.Forms.TextBox();
+            this.textBoxCameraHackBothPosY = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraHackBothPosYp = new System.Windows.Forms.Button();
             this.buttonCameraHackBothPosYn = new System.Windows.Forms.Button();
             this.buttonCameraHackBothPosXpZp = new System.Windows.Forms.Button();
-            this.textBoxCameraHackBothPosXZ = new System.Windows.Forms.TextBox();
+            this.textBoxCameraHackBothPosXZ = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraHackBothPosXp = new System.Windows.Forms.Button();
             this.buttonCameraHackBothPosXpZn = new System.Windows.Forms.Button();
             this.buttonCameraHackBothPosZn = new System.Windows.Forms.Button();
@@ -630,11 +631,11 @@ namespace SM64_Diagnostic
             this.buttonCameraHackBothPosXn = new System.Windows.Forms.Button();
             this.buttonCameraHackBothPosXnZn = new System.Windows.Forms.Button();
             this.groupBoxCameraHackSphericalFocusPos = new System.Windows.Forms.GroupBox();
-            this.textBoxCameraHackSphericalFocusPosR = new System.Windows.Forms.TextBox();
+            this.textBoxCameraHackSphericalFocusPosR = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraHackSphericalFocusPosRp = new System.Windows.Forms.Button();
             this.buttonCameraHackSphericalFocusPosRn = new System.Windows.Forms.Button();
             this.buttonCameraHackSphericalFocusPosTnPp = new System.Windows.Forms.Button();
-            this.textBoxCameraHackSphericalFocusPosTP = new System.Windows.Forms.TextBox();
+            this.textBoxCameraHackSphericalFocusPosTP = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraHackSphericalFocusPosTn = new System.Windows.Forms.Button();
             this.buttonCameraHackSphericalFocusPosTnPn = new System.Windows.Forms.Button();
             this.buttonCameraHackSphericalFocusPosPn = new System.Windows.Forms.Button();
@@ -644,11 +645,11 @@ namespace SM64_Diagnostic
             this.buttonCameraHackSphericalFocusPosTpPn = new System.Windows.Forms.Button();
             this.groupBoxCameraHackFocusPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraHackFocusPosRelative = new System.Windows.Forms.CheckBox();
-            this.textBoxCameraHackFocusPosY = new System.Windows.Forms.TextBox();
+            this.textBoxCameraHackFocusPosY = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraHackFocusPosYp = new System.Windows.Forms.Button();
             this.buttonCameraHackFocusPosYn = new System.Windows.Forms.Button();
             this.buttonCameraHackFocusPosXpZp = new System.Windows.Forms.Button();
-            this.textBoxCameraHackFocusPosXZ = new System.Windows.Forms.TextBox();
+            this.textBoxCameraHackFocusPosXZ = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraHackFocusPosXp = new System.Windows.Forms.Button();
             this.buttonCameraHackFocusPosXpZn = new System.Windows.Forms.Button();
             this.buttonCameraHackFocusPosZn = new System.Windows.Forms.Button();
@@ -657,11 +658,11 @@ namespace SM64_Diagnostic
             this.buttonCameraHackFocusPosXn = new System.Windows.Forms.Button();
             this.buttonCameraHackFocusPosXnZn = new System.Windows.Forms.Button();
             this.groupBoxCameraHackSphericalPos = new System.Windows.Forms.GroupBox();
-            this.textBoxCameraHackSphericalPosR = new System.Windows.Forms.TextBox();
+            this.textBoxCameraHackSphericalPosR = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraHackSphericalPosRn = new System.Windows.Forms.Button();
             this.buttonCameraHackSphericalPosRp = new System.Windows.Forms.Button();
             this.buttonCameraHackSphericalPosTpPp = new System.Windows.Forms.Button();
-            this.textBoxCameraHackSphericalPosTP = new System.Windows.Forms.TextBox();
+            this.textBoxCameraHackSphericalPosTP = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraHackSphericalPosTp = new System.Windows.Forms.Button();
             this.buttonCameraHackSphericalPosTpPn = new System.Windows.Forms.Button();
             this.buttonCameraHackSphericalPosPn = new System.Windows.Forms.Button();
@@ -671,11 +672,11 @@ namespace SM64_Diagnostic
             this.buttonCameraHackSphericalPosTnPn = new System.Windows.Forms.Button();
             this.groupBoxCameraHackPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraHackPosRelative = new System.Windows.Forms.CheckBox();
-            this.textBoxCameraHackPosY = new System.Windows.Forms.TextBox();
+            this.textBoxCameraHackPosY = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraHackPosYp = new System.Windows.Forms.Button();
             this.buttonCameraHackPosYn = new System.Windows.Forms.Button();
             this.buttonCameraHackPosXpZp = new System.Windows.Forms.Button();
-            this.textBoxCameraHackPosXZ = new System.Windows.Forms.TextBox();
+            this.textBoxCameraHackPosXZ = new SM64_Diagnostic.BetterTextbox();
             this.buttonCameraHackPosXp = new System.Windows.Forms.Button();
             this.buttonCameraHackPosXpZn = new System.Windows.Forms.Button();
             this.buttonCameraHackPosZn = new System.Windows.Forms.Button();
@@ -734,6 +735,7 @@ namespace SM64_Diagnostic
             this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
+            this.tabPageTesting = new System.Windows.Forms.TabPage();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
             this.panelConnect = new System.Windows.Forms.Panel();
@@ -750,7 +752,21 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.buttonTriangleClearData = new System.Windows.Forms.Button();
+            this.buttonTestingClear = new System.Windows.Forms.Button();
+            this.checkBoxTestingRecord = new System.Windows.Forms.CheckBox();
+            this.labelMetric1Value = new System.Windows.Forms.Label();
+            this.labelMetric1Name = new System.Windows.Forms.Label();
+            this.labelMetric2Value = new System.Windows.Forms.Label();
+            this.labelMetric2Name = new System.Windows.Forms.Label();
+            this.labelMetric3Value = new System.Windows.Forms.Label();
+            this.labelMetric3Name = new System.Windows.Forms.Label();
+            this.labelMetric4Value = new System.Windows.Forms.Label();
+            this.labelMetric4Name = new System.Windows.Forms.Label();
+            this.labelMetric5Value = new System.Windows.Forms.Label();
+            this.labelMetric5Name = new System.Windows.Forms.Label();
+            this.labelMetric6Value = new System.Windows.Forms.Label();
+            this.labelMetric6Name = new System.Windows.Forms.Label();
+            this.buttonTestingShow = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1032,6 +1048,7 @@ namespace SM64_Diagnostic
             this.groupBoxRomVersion.SuspendLayout();
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
+            this.tabPageTesting.SuspendLayout();
             this.panelConnect.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1062,7 +1079,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 294);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 296);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1204,6 +1221,7 @@ namespace SM64_Diagnostic
             this.tabControlMain.Controls.Add(this.tabPageCamHack);
             this.tabControlMain.Controls.Add(this.tabPageQuarterFrame);
             this.tabControlMain.Controls.Add(this.tabPageOptions);
+            this.tabControlMain.Controls.Add(this.tabPageTesting);
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(2, 2);
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(2);
@@ -3472,6 +3490,15 @@ namespace SM64_Diagnostic
             this.radioButtonTriOther.Text = "Other:";
             this.radioButtonTriOther.UseVisualStyleBackColor = true;
             // 
+            // buttonTriangleClearData
+            // 
+            this.buttonTriangleClearData.Location = new System.Drawing.Point(5, 503);
+            this.buttonTriangleClearData.Name = "buttonTriangleClearData";
+            this.buttonTriangleClearData.Size = new System.Drawing.Size(180, 23);
+            this.buttonTriangleClearData.TabIndex = 15;
+            this.buttonTriangleClearData.Text = "Clear Data";
+            this.buttonTriangleClearData.UseVisualStyleBackColor = true;
+            // 
             // buttonTriangleShowVertices
             // 
             this.buttonTriangleShowVertices.Location = new System.Drawing.Point(98, 477);
@@ -4123,7 +4150,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8332,7 +8359,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(903, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(909, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -9814,6 +9841,30 @@ namespace SM64_Diagnostic
             this.checkBoxStartSlotIndexOne.Text = "Start Slot Index From 1";
             this.checkBoxStartSlotIndexOne.UseVisualStyleBackColor = true;
             // 
+            // tabPageTesting
+            // 
+            this.tabPageTesting.Controls.Add(this.labelMetric6Name);
+            this.tabPageTesting.Controls.Add(this.labelMetric5Name);
+            this.tabPageTesting.Controls.Add(this.labelMetric4Name);
+            this.tabPageTesting.Controls.Add(this.labelMetric3Name);
+            this.tabPageTesting.Controls.Add(this.labelMetric2Name);
+            this.tabPageTesting.Controls.Add(this.labelMetric1Name);
+            this.tabPageTesting.Controls.Add(this.labelMetric6Value);
+            this.tabPageTesting.Controls.Add(this.labelMetric5Value);
+            this.tabPageTesting.Controls.Add(this.labelMetric4Value);
+            this.tabPageTesting.Controls.Add(this.labelMetric3Value);
+            this.tabPageTesting.Controls.Add(this.labelMetric2Value);
+            this.tabPageTesting.Controls.Add(this.labelMetric1Value);
+            this.tabPageTesting.Controls.Add(this.checkBoxTestingRecord);
+            this.tabPageTesting.Controls.Add(this.buttonTestingShow);
+            this.tabPageTesting.Controls.Add(this.buttonTestingClear);
+            this.tabPageTesting.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTesting.Name = "tabPageTesting";
+            this.tabPageTesting.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTesting.Size = new System.Drawing.Size(915, 463);
+            this.tabPageTesting.TabIndex = 19;
+            this.tabPageTesting.Text = "Testing";
+            // 
             // labelVersionNumber
             // 
             this.labelVersionNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -10001,14 +10052,173 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // buttonTriangleClearData
+            // buttonTestingClear
             // 
-            this.buttonTriangleClearData.Location = new System.Drawing.Point(5, 503);
-            this.buttonTriangleClearData.Name = "buttonTriangleClearData";
-            this.buttonTriangleClearData.Size = new System.Drawing.Size(180, 23);
-            this.buttonTriangleClearData.TabIndex = 15;
-            this.buttonTriangleClearData.Text = "Clear Data";
-            this.buttonTriangleClearData.UseVisualStyleBackColor = true;
+            this.buttonTestingClear.Location = new System.Drawing.Point(228, 75);
+            this.buttonTestingClear.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTestingClear.Name = "buttonTestingClear";
+            this.buttonTestingClear.Size = new System.Drawing.Size(100, 34);
+            this.buttonTestingClear.TabIndex = 16;
+            this.buttonTestingClear.Text = "Clear";
+            this.buttonTestingClear.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxTestingRecord
+            // 
+            this.checkBoxTestingRecord.AutoSize = true;
+            this.checkBoxTestingRecord.Location = new System.Drawing.Point(228, 41);
+            this.checkBoxTestingRecord.Name = "checkBoxTestingRecord";
+            this.checkBoxTestingRecord.Size = new System.Drawing.Size(61, 17);
+            this.checkBoxTestingRecord.TabIndex = 17;
+            this.checkBoxTestingRecord.Text = "Record";
+            this.checkBoxTestingRecord.UseVisualStyleBackColor = true;
+            // 
+            // labelMetric1Value
+            // 
+            this.labelMetric1Value.AutoSize = true;
+            this.labelMetric1Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMetric1Value.Location = new System.Drawing.Point(138, 23);
+            this.labelMetric1Value.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelMetric1Value.Name = "labelMetric1Value";
+            this.labelMetric1Value.Size = new System.Drawing.Size(60, 15);
+            this.labelMetric1Value.TabIndex = 18;
+            this.labelMetric1Value.Text = "Value";
+            this.labelMetric1Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelMetric1Name
+            // 
+            this.labelMetric1Name.AutoSize = true;
+            this.labelMetric1Name.Location = new System.Drawing.Point(32, 24);
+            this.labelMetric1Name.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelMetric1Name.Name = "labelMetric1Name";
+            this.labelMetric1Name.Size = new System.Drawing.Size(100, 13);
+            this.labelMetric1Name.TabIndex = 18;
+            this.labelMetric1Name.Text = "Name:";
+            this.labelMetric1Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelMetric2Value
+            // 
+            this.labelMetric2Value.AutoSize = true;
+            this.labelMetric2Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMetric2Value.Location = new System.Drawing.Point(138, 44);
+            this.labelMetric2Value.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelMetric2Value.Name = "labelMetric2Value";
+            this.labelMetric2Value.Size = new System.Drawing.Size(60, 15);
+            this.labelMetric2Value.TabIndex = 18;
+            this.labelMetric2Value.Text = "Value";
+            this.labelMetric2Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelMetric2Name
+            // 
+            this.labelMetric2Name.AutoSize = true;
+            this.labelMetric2Name.Location = new System.Drawing.Point(32, 45);
+            this.labelMetric2Name.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelMetric2Name.Name = "labelMetric2Name";
+            this.labelMetric2Name.Size = new System.Drawing.Size(100, 13);
+            this.labelMetric2Name.TabIndex = 18;
+            this.labelMetric2Name.Text = "Name:";
+            this.labelMetric2Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelMetric3Value
+            // 
+            this.labelMetric3Value.AutoSize = true;
+            this.labelMetric3Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMetric3Value.Location = new System.Drawing.Point(138, 66);
+            this.labelMetric3Value.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelMetric3Value.Name = "labelMetric3Value";
+            this.labelMetric3Value.Size = new System.Drawing.Size(60, 15);
+            this.labelMetric3Value.TabIndex = 18;
+            this.labelMetric3Value.Text = "Value";
+            this.labelMetric3Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelMetric3Name
+            // 
+            this.labelMetric3Name.AutoSize = true;
+            this.labelMetric3Name.Location = new System.Drawing.Point(32, 67);
+            this.labelMetric3Name.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelMetric3Name.Name = "labelMetric3Name";
+            this.labelMetric3Name.Size = new System.Drawing.Size(100, 13);
+            this.labelMetric3Name.TabIndex = 18;
+            this.labelMetric3Name.Text = "Name:";
+            this.labelMetric3Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelMetric4Value
+            // 
+            this.labelMetric4Value.AutoSize = true;
+            this.labelMetric4Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMetric4Value.Location = new System.Drawing.Point(138, 89);
+            this.labelMetric4Value.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelMetric4Value.Name = "labelMetric4Value";
+            this.labelMetric4Value.Size = new System.Drawing.Size(60, 15);
+            this.labelMetric4Value.TabIndex = 18;
+            this.labelMetric4Value.Text = "Value";
+            this.labelMetric4Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelMetric4Name
+            // 
+            this.labelMetric4Name.AutoSize = true;
+            this.labelMetric4Name.Location = new System.Drawing.Point(32, 90);
+            this.labelMetric4Name.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelMetric4Name.Name = "labelMetric4Name";
+            this.labelMetric4Name.Size = new System.Drawing.Size(100, 13);
+            this.labelMetric4Name.TabIndex = 18;
+            this.labelMetric4Name.Text = "Name:";
+            this.labelMetric4Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelMetric5Value
+            // 
+            this.labelMetric5Value.AutoSize = true;
+            this.labelMetric5Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMetric5Value.Location = new System.Drawing.Point(138, 111);
+            this.labelMetric5Value.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelMetric5Value.Name = "labelMetric5Value";
+            this.labelMetric5Value.Size = new System.Drawing.Size(60, 15);
+            this.labelMetric5Value.TabIndex = 18;
+            this.labelMetric5Value.Text = "Value";
+            this.labelMetric5Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelMetric5Name
+            // 
+            this.labelMetric5Name.AutoSize = true;
+            this.labelMetric5Name.Location = new System.Drawing.Point(32, 112);
+            this.labelMetric5Name.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelMetric5Name.Name = "labelMetric5Name";
+            this.labelMetric5Name.Size = new System.Drawing.Size(100, 13);
+            this.labelMetric5Name.TabIndex = 18;
+            this.labelMetric5Name.Text = "Name:";
+            this.labelMetric5Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelMetric6Value
+            // 
+            this.labelMetric6Value.AutoSize = true;
+            this.labelMetric6Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMetric6Value.Location = new System.Drawing.Point(138, 136);
+            this.labelMetric6Value.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelMetric6Value.Name = "labelMetric6Value";
+            this.labelMetric6Value.Size = new System.Drawing.Size(60, 15);
+            this.labelMetric6Value.TabIndex = 18;
+            this.labelMetric6Value.Text = "Value";
+            this.labelMetric6Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelMetric6Name
+            // 
+            this.labelMetric6Name.AutoSize = true;
+            this.labelMetric6Name.Location = new System.Drawing.Point(32, 137);
+            this.labelMetric6Name.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelMetric6Name.Name = "labelMetric6Name";
+            this.labelMetric6Name.Size = new System.Drawing.Size(100, 13);
+            this.labelMetric6Name.TabIndex = 18;
+            this.labelMetric6Name.Text = "Name:";
+            this.labelMetric6Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // buttonTestingShow
+            // 
+            this.buttonTestingShow.Location = new System.Drawing.Point(228, 116);
+            this.buttonTestingShow.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTestingShow.Name = "buttonTestingShow";
+            this.buttonTestingShow.Size = new System.Drawing.Size(100, 34);
+            this.buttonTestingShow.TabIndex = 16;
+            this.buttonTestingShow.Text = "Show";
+            this.buttonTestingShow.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -10362,6 +10572,8 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.PerformLayout();
             this.groupBoxShowOverlay.ResumeLayout(false);
             this.groupBoxShowOverlay.PerformLayout();
+            this.tabPageTesting.ResumeLayout(false);
+            this.tabPageTesting.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
             this.ResumeLayout(false);
@@ -10500,8 +10712,8 @@ namespace SM64_Diagnostic
         private Button buttonHackSpawn;
         private Label labelSpawnExtra;
         private Label labelSpawnGfxId;
-        private TextBox textBoxSpawnExtra;
-        private TextBox textBoxSpawnGfxId;
+        private BetterTextbox textBoxSpawnExtra;
+        private BetterTextbox textBoxSpawnGfxId;
         private Label labelSpawnHint;
         private Button buttonSpawnReset;
         private Button buttonReadOnly;
@@ -10512,10 +10724,10 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxClassicMode;
         private CheckBox checkBoxSpawnMode;
         private Panel panelObj;
-        private TextBox textBoxObjPosXZ;
+        private BetterTextbox textBoxObjPosXZ;
         private Button buttonObjPosXnZn;
         private GroupBox groupBoxObjPos;
-        private TextBox textBoxObjPosY;
+        private BetterTextbox textBoxObjPosY;
         private Button buttonObjPosYp;
         private Button buttonObjPosYn;
         private Button buttonObjPosXpZp;
@@ -10558,21 +10770,21 @@ namespace SM64_Diagnostic
         private Button buttonAnnihilateTriangle;
         private Button buttonNeutralizeTriangle;
         private GroupBox groupBoxObjAngle;
-        private TextBox textBoxObjAngleYaw;
+        private BetterTextbox textBoxObjAngleYaw;
         private Button buttonObjAngleYawP;
         private Button buttonObjAngleYawN;
-        private TextBox textBoxObjAngleRoll;
-        private TextBox textBoxObjAnglePitch;
+        private BetterTextbox textBoxObjAngleRoll;
+        private BetterTextbox textBoxObjAnglePitch;
         private Button buttonObjAngleRollN;
         private Button buttonObjAnglePitchN;
         private Button buttonObjAngleRollP;
         private Button buttonObjAnglePitchP;
         private GroupBox groupBoxObjHome;
-        private TextBox textBoxObjHomeY;
+        private BetterTextbox textBoxObjHomeY;
         private Button buttonObjHomeYp;
         private Button buttonObjHomeYn;
         private Button buttonObjHomeXpZp;
-        private TextBox textBoxObjHomeXZ;
+        private BetterTextbox textBoxObjHomeXZ;
         private Button buttonObjHomeXp;
         private Button buttonObjHomeXpZn;
         private Button buttonObjHomeZn;
@@ -10583,11 +10795,11 @@ namespace SM64_Diagnostic
         private BinaryButton buttonObjRelease;
         private BinaryButton buttonObjInteract;
         private GroupBox groupBoxMarioPos;
-        private TextBox textBoxMarioPosY;
+        private BetterTextbox textBoxMarioPosY;
         private Button buttonMarioPosYp;
         private Button buttonMarioPosYn;
         private Button buttonMarioPosXpZp;
-        private TextBox textBoxMarioPosXZ;
+        private BetterTextbox textBoxMarioPosXZ;
         private Button buttonMarioPosXp;
         private Button buttonMarioPosXpZn;
         private Button buttonMarioPosZn;
@@ -10596,9 +10808,9 @@ namespace SM64_Diagnostic
         private Button buttonMarioPosXn;
         private Button buttonMarioPosXnZn;
         private GroupBox groupBoxMarioStats;
-        private TextBox textBoxMarioStatsVspd;
-        private TextBox textBoxMarioStatsHspd;
-        private TextBox textBoxMarioStatsYaw;
+        private BetterTextbox textBoxMarioStatsVspd;
+        private BetterTextbox textBoxMarioStatsHspd;
+        private BetterTextbox textBoxMarioStatsYaw;
         private Button buttonMarioStatsVspdN;
         private Button buttonMarioStatsHspdN;
         private Button buttonMarioStatsYawN;
@@ -10606,11 +10818,11 @@ namespace SM64_Diagnostic
         private Button buttonMarioStatsHspdP;
         private Button buttonMarioStatsYawP;
         private GroupBox groupBoxMarioHOLP;
-        private TextBox textBoxMarioHOLPY;
+        private BetterTextbox textBoxMarioHOLPY;
         private Button buttonMarioHOLPYp;
         private Button buttonMarioHOLPYn;
         private Button buttonMarioHOLPXpZp;
-        private TextBox textBoxMarioHOLPXZ;
+        private BetterTextbox textBoxMarioHOLPXZ;
         private Button buttonMarioHOLPXp;
         private Button buttonMarioHOLPXpZn;
         private Button buttonMarioHOLPZn;
@@ -10619,11 +10831,11 @@ namespace SM64_Diagnostic
         private Button buttonMarioHOLPXn;
         private Button buttonMarioHOLPXnZn;
         private GroupBox groupBoxTrianglePos;
-        private TextBox textBoxTrianglePosY;
+        private BetterTextbox textBoxTrianglePosY;
         private Button buttonTrianglePosYp;
         private Button buttonTrianglePosYn;
         private Button buttonTrianglePosXpZp;
-        private TextBox textBoxTrianglePosXZ;
+        private BetterTextbox textBoxTrianglePosXZ;
         private Button buttonTrianglePosXp;
         private Button buttonTrianglePosXpZn;
         private Button buttonTrianglePosZn;
@@ -10632,11 +10844,11 @@ namespace SM64_Diagnostic
         private Button buttonTrianglePosXn;
         private Button buttonTrianglePosXnZn;
         private GroupBox groupBoxCameraPos;
-        private TextBox textBoxCameraPosY;
+        private BetterTextbox textBoxCameraPosY;
         private Button buttonCameraPosYp;
         private Button buttonCameraPosYn;
         private Button buttonCameraPosXpZp;
-        private TextBox textBoxCameraPosXZ;
+        private BetterTextbox textBoxCameraPosXZ;
         private Button buttonCameraPosXp;
         private Button buttonCameraPosXpZn;
         private Button buttonCameraPosZn;
@@ -10645,15 +10857,15 @@ namespace SM64_Diagnostic
         private Button buttonCameraPosXn;
         private Button buttonCameraPosXnZn;
         private GroupBox groupBoxTriangleNormal;
-        private TextBox textBoxTriangleNormal;
+        private BetterTextbox textBoxTriangleNormal;
         private Button buttonTriangleNormalN;
         private Button buttonTriangleNormalP;
         private GroupBox groupBoxCameraSphericalPos;
-        private TextBox textBoxCameraSphericalPosR;
+        private BetterTextbox textBoxCameraSphericalPosR;
         private Button buttonCameraSphericalPosRn;
         private Button buttonCameraSphericalPosRp;
         private Button buttonCameraSphericalPosTpPp;
-        private TextBox textBoxCameraSphericalPosTP;
+        private BetterTextbox textBoxCameraSphericalPosTP;
         private Button buttonCameraSphericalPosTp;
         private Button buttonCameraSphericalPosTpPn;
         private Button buttonCameraSphericalPosPn;
@@ -10681,9 +10893,9 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxDisableActionUpdateWhenCloning;
         private CheckBox checkBoxNeutralizeTriangleWith21;
         private GroupBox groupBoxObjScale;
-        private TextBox textBoxObjScaleDepth;
-        private TextBox textBoxObjScaleHeight;
-        private TextBox textBoxObjScaleWidth;
+        private BetterTextbox textBoxObjScaleDepth;
+        private BetterTextbox textBoxObjScaleHeight;
+        private BetterTextbox textBoxObjScaleWidth;
         private Button buttonObjScaleDepthN;
         private Button buttonObjScaleHeightN;
         private Button buttonObjScaleWidthN;
@@ -10692,7 +10904,7 @@ namespace SM64_Diagnostic
         private Button buttonObjScaleWidthP;
         private CheckBox checkBoxObjScaleMultiply;
         private CheckBox checkBoxObjScaleAggregate;
-        private TextBox textBoxObjScaleAggregate;
+        private BetterTextbox textBoxObjScaleAggregate;
         private Button buttonObjScaleAggregateN;
         private Button buttonObjScaleAggregateP;
         private Button buttonShowBottomPane;
@@ -10712,11 +10924,11 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxShowOverlayCameraHackObject;
         private RadioButton radioButtonCamHackMode1AbsoluteAngle;
         private GroupBox groupBoxCameraHackSphericalFocusPos;
-        private TextBox textBoxCameraHackSphericalFocusPosR;
+        private BetterTextbox textBoxCameraHackSphericalFocusPosR;
         private Button buttonCameraHackSphericalFocusPosRp;
         private Button buttonCameraHackSphericalFocusPosRn;
         private Button buttonCameraHackSphericalFocusPosTnPp;
-        private TextBox textBoxCameraHackSphericalFocusPosTP;
+        private BetterTextbox textBoxCameraHackSphericalFocusPosTP;
         private Button buttonCameraHackSphericalFocusPosTn;
         private Button buttonCameraHackSphericalFocusPosTnPn;
         private Button buttonCameraHackSphericalFocusPosPn;
@@ -10726,11 +10938,11 @@ namespace SM64_Diagnostic
         private Button buttonCameraHackSphericalFocusPosTpPn;
         private GroupBox groupBoxCameraHackFocusPos;
         private CheckBox checkBoxCameraHackFocusPosRelative;
-        private TextBox textBoxCameraHackFocusPosY;
+        private BetterTextbox textBoxCameraHackFocusPosY;
         private Button buttonCameraHackFocusPosYp;
         private Button buttonCameraHackFocusPosYn;
         private Button buttonCameraHackFocusPosXpZp;
-        private TextBox textBoxCameraHackFocusPosXZ;
+        private BetterTextbox textBoxCameraHackFocusPosXZ;
         private Button buttonCameraHackFocusPosXp;
         private Button buttonCameraHackFocusPosXpZn;
         private Button buttonCameraHackFocusPosZn;
@@ -10739,11 +10951,11 @@ namespace SM64_Diagnostic
         private Button buttonCameraHackFocusPosXn;
         private Button buttonCameraHackFocusPosXnZn;
         private GroupBox groupBoxCameraHackSphericalPos;
-        private TextBox textBoxCameraHackSphericalPosR;
+        private BetterTextbox textBoxCameraHackSphericalPosR;
         private Button buttonCameraHackSphericalPosRn;
         private Button buttonCameraHackSphericalPosRp;
         private Button buttonCameraHackSphericalPosTpPp;
-        private TextBox textBoxCameraHackSphericalPosTP;
+        private BetterTextbox textBoxCameraHackSphericalPosTP;
         private Button buttonCameraHackSphericalPosTp;
         private Button buttonCameraHackSphericalPosTpPn;
         private Button buttonCameraHackSphericalPosPn;
@@ -10753,11 +10965,11 @@ namespace SM64_Diagnostic
         private Button buttonCameraHackSphericalPosTnPn;
         private GroupBox groupBoxCameraHackPos;
         private CheckBox checkBoxCameraHackPosRelative;
-        private TextBox textBoxCameraHackPosY;
+        private BetterTextbox textBoxCameraHackPosY;
         private Button buttonCameraHackPosYp;
         private Button buttonCameraHackPosYn;
         private Button buttonCameraHackPosXpZp;
-        private TextBox textBoxCameraHackPosXZ;
+        private BetterTextbox textBoxCameraHackPosXZ;
         private Button buttonCameraHackPosXp;
         private Button buttonCameraHackPosXpZn;
         private Button buttonCameraHackPosZn;
@@ -10795,7 +11007,7 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonFileB;
         private Button buttonFileSave;
         private Label labelSpawnBehavior;
-        private TextBox textBoxSpawnBehavior;
+        private BetterTextbox textBoxSpawnBehavior;
         private GroupBox groupBoxFile;
         private GroupBox groupBoxHatLocation;
         private TableLayoutPanel tableLayoutPanelFile;
@@ -11020,11 +11232,11 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonAllCoinsMeaning255Coins;
         private GroupBox groupBoxCameraHackBothPos;
         private CheckBox checkBoxCameraHackBothPosRelative;
-        private TextBox textBoxCameraHackBothPosY;
+        private BetterTextbox textBoxCameraHackBothPosY;
         private Button buttonCameraHackBothPosYp;
         private Button buttonCameraHackBothPosYn;
         private Button buttonCameraHackBothPosXpZp;
-        private TextBox textBoxCameraHackBothPosXZ;
+        private BetterTextbox textBoxCameraHackBothPosXZ;
         private Button buttonCameraHackBothPosXp;
         private Button buttonCameraHackBothPosXpZn;
         private Button buttonCameraHackBothPosZn;
@@ -11088,6 +11300,22 @@ namespace SM64_Diagnostic
         private SplitContainer splitContainerModel;
         private BinaryButton button100Lives;
         private Button buttonTriangleClearData;
+        private TabPage tabPageTesting;
+        private CheckBox checkBoxTestingRecord;
+        private Button buttonTestingClear;
+        private Label labelMetric6Name;
+        private Label labelMetric5Name;
+        private Label labelMetric4Name;
+        private Label labelMetric3Name;
+        private Label labelMetric2Name;
+        private Label labelMetric1Name;
+        private Label labelMetric6Value;
+        private Label labelMetric5Value;
+        private Label labelMetric4Value;
+        private Label labelMetric3Value;
+        private Label labelMetric2Value;
+        private Label labelMetric1Value;
+        private Button buttonTestingShow;
     }
 }
 

@@ -22,6 +22,7 @@ namespace SM64_Diagnostic.Managers
         public ObjectManager ObjectManager;
         public ObjectSlotsManager ObjectSlotManager;
         public OptionsManager OptionsManager;
+        public TestingManager TestingManager;
         public ScriptManager ScriptManager;
         public TriangleManager TriangleManager;
         public DataManager WaterManager;

@@ -48,7 +48,8 @@
   <Data groupList="Expanded" offset="Special" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data groupList="Expanded" type="uint" address="0x68" offset="Object" useHex="true" isObject="true">Parent Object</Data>
   <Data groupList="Expanded" type="uint" address="0x020C" offset="Object" useHex="true">Behavior Script</Data>
-  <Data groupList="Expanded" type="uint" address="0x14" offset="Object" useHex="true">Graphic/Model</Data>
+  <Data groupList="Expanded" type="uint" address="0x14" offset="Object" useHex="true">Graphics</Data>
+  <Data groupList="Expanded" type="uint" address="0x218" offset="Object" useHex="true">Model</Data>
   <Data groupList="Expanded" type="short" address="0x14" offset="Graphics">Shadow Radius</Data>
   <Data groupList="Expanded" type="byte" address="0x16" offset="Graphics">Shadow Opacity</Data>
   <Data groupList="Expanded" type="byte" address="0x17" offset="Graphics">Shadow Type</Data>

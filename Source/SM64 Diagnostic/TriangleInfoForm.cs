@@ -45,7 +45,7 @@ namespace SM64_Diagnostic
 
         public void SetVertices(List<short[]> coordinateList)
         {
-
+            labelTitle.Text = "Triangle Vertices";
             List<short[]> vertexList = new List<short[]>();
             coordinateList.ForEach(
                 coordinates =>
@@ -102,6 +102,17 @@ namespace SM64_Diagnostic
             if (coordinate.Length != 3) throw new ArgumentOutOfRangeException();
             string text = coordinate[0] + "\t" + coordinate[1] + "\t" + coordinate[2];
             return text;
+        }
+
+        public void SetDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
+        {
+            labelTitle.Text = "Dictionary";
+            String text = "";
+            foreach (KeyValuePair<TKey, TValue> entry in dictionary)
+            {
+                text += (entry.Key + "\t" + entry.Value + "\r\n");
+            }
+            textBoxTriangleInfo.Text = text;
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
