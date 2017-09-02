@@ -289,7 +289,7 @@ namespace SM64_Diagnostic
 
         private void _sm64Stream_FpsUpdated(object sender, EventArgs e)
         {
-            BeginInvoke(new Action(() =>
+            Invoke(new Action(() =>
             {
                 labelFpsCounter.Text = "FPS: " + (int)Config.Stream.Fps;
             }));

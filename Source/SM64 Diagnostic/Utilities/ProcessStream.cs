@@ -79,6 +79,8 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
+        public volatile Boolean UnlimitedFPS = false; 
+
         public Boolean IsSuspended = false;
         public Boolean IsClosed = true;
         public Boolean IsEnabled = false;
@@ -507,7 +509,7 @@ namespace SM64_Diagnostic.Utilities
                 int timeToWait;
 
                 if (!RefreshRam())
-                    continue;
+                    goto FrameLimitStreamUpdate;
 
                 OnUpdate?.Invoke(this, new EventArgs());
 
@@ -518,7 +520,7 @@ namespace SM64_Diagnostic.Utilities
 
                 // Calculate delay to match correct FPS
                 prevTime.Stop();
-                timeToWait = _interval - (int)prevTime.ElapsedMilliseconds;
+                timeToWait = UnlimitedFPS ? 0 : _interval - (int)prevTime.ElapsedMilliseconds;
                 timeToWait = Math.Max(timeToWait, 0);
 
                 // Calculate Fps
@@ -529,8 +531,11 @@ namespace SM64_Diagnostic.Utilities
                     _fpsTimes.Enqueue(prevTime.ElapsedMilliseconds + timeToWait);
                 }
                 FpsUpdated?.Invoke(this, new EventArgs());
-            
-                Thread.Sleep(timeToWait);
+
+                if (timeToWait > 0)
+                    Thread.Sleep(timeToWait);
+                else
+                    Thread.Yield();
             }
 
             OnClose?.BeginInvoke(this, new EventArgs(), null, null);
