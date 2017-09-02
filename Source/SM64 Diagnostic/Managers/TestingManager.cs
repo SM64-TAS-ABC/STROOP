@@ -32,8 +32,8 @@ namespace SM64_Diagnostic.Managers
         Label _labelMetric6Value;
 
         Dictionary<int, float> _marioYDictionary;
-        int? _previousGlobalTimer;
-        int _currentGlobalTimer;
+        int? _previousTimer;
+        int _currentTimer;
         int _globalTimerDiff;
         int _collisions;
         int _badCollisions;
@@ -66,7 +66,8 @@ namespace SM64_Diagnostic.Managers
             _labelMetric2Name.Text = "Collisions:";
             _labelMetric3Name.Text = "Bad Collisions:";
             _labelMetric4Name.Text = "Gaps:";
-            _labelMetric5Name.Text = "Global Timer Diff:";
+            _labelMetric5Name.Text = "Timer:";
+            _labelMetric6Name.Text = "Mario Y:";
 
             _marioYDictionary = new Dictionary<int, float>();
             ClearData();
@@ -75,8 +76,8 @@ namespace SM64_Diagnostic.Managers
         private void ClearData()
         {
             _marioYDictionary.Clear();
-            _previousGlobalTimer = null;
-            _currentGlobalTimer = 0;
+            _previousTimer = null;
+            _currentTimer = 0;
             _globalTimerDiff = 0;
             _collisions = 0;
             _badCollisions = 0;
@@ -94,39 +95,41 @@ namespace SM64_Diagnostic.Managers
         {
             if (!updateView) return;
 
+            // get current stream values
+            uint marioObjAddress = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+            _currentTimer = Config.Stream.GetInt32(marioObjAddress + Config.ObjectSlots.TimerOffset);
+            float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+
             if (_checkBoxTestingRecord.Checked)
             {
-                // get current stream values
-                _currentGlobalTimer = Config.Stream.GetInt32(Config.GlobalTimerAddress);
-                float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-
                 // check for key collisions
-                bool keyCollision = _marioYDictionary.ContainsKey(_currentGlobalTimer);
+                bool keyCollision = _marioYDictionary.ContainsKey(_currentTimer);
                 if (keyCollision) _collisions++;
 
                 // check for value collisions
-                bool valueCollision = keyCollision && _marioYDictionary[_currentGlobalTimer] == marioY;
+                bool valueCollision = keyCollision && _marioYDictionary[_currentTimer] == marioY;
                 if (keyCollision && !valueCollision) _badCollisions++;
 
                 // check the global timer difference
-                if (_previousGlobalTimer != null)
+                if (_previousTimer != null)
                 {
-                    _globalTimerDiff = _currentGlobalTimer - _previousGlobalTimer.Value;
+                    _globalTimerDiff = _currentTimer - _previousTimer.Value;
                     if (_globalTimerDiff > 1) _gaps += _globalTimerDiff - 1;
                 }
 
                 // update dictionary if need be
-                if (!keyCollision) _marioYDictionary[_currentGlobalTimer] = marioY;
+                if (!keyCollision) _marioYDictionary[_currentTimer] = marioY;
 
                 // update previous global timer value
-                _previousGlobalTimer = _currentGlobalTimer;
+                _previousTimer = _currentTimer;
             }
 
             _labelMetric1Value.Text = _marioYDictionary.Count.ToString();
             _labelMetric2Value.Text = _collisions.ToString();
             _labelMetric3Value.Text = _badCollisions.ToString();
             _labelMetric4Value.Text = _gaps.ToString();
-            _labelMetric5Value.Text = _globalTimerDiff.ToString();
+            _labelMetric5Value.Text = _currentTimer.ToString();
+            _labelMetric6Value.Text = marioY.ToString();
         }
     }
 }
