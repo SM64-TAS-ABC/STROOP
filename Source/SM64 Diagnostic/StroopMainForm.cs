@@ -294,7 +294,7 @@ namespace SM64_Diagnostic
         {
             Invoke(new Action(() =>
             {
-                labelFpsCounter.Text = "FPS: " + (int)Config.Stream.Fps;
+                labelFpsCounter.Text = "FPS: " + (int)Config.Stream.FpsInPractice;
             }));
         }
 

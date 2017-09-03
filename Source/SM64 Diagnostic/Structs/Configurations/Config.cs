@@ -56,7 +56,7 @@ namespace SM64_Diagnostic.Structs.Configurations
             get
             {
                 uint freq = RefreshRateFreq;
-                if (freq == 0) return Double.PositiveInfinity;
+                if (freq == 0) return 0;
                 else return 1000.0 / freq;
             }
         }

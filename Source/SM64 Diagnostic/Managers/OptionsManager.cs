@@ -117,6 +117,19 @@ namespace SM64_Diagnostic.Managers
             // FPS
             GroupBox groupBoxFPS = tabControl.Controls["groupBoxFPS"] as GroupBox;
             BetterTextbox betterTextboxFPS = groupBoxFPS.Controls["betterTextboxFPS"] as BetterTextbox;
+            betterTextboxFPS.AddLostFocusAction(
+                () =>
+                {
+                    uint value;
+                    if (uint.TryParse(betterTextboxFPS.Text, out value))
+                    {
+                        Config.RefreshRateFreq = value;
+                    }
+                    else
+                    {
+                        betterTextboxFPS.Text = Config.RefreshRateFreq.ToString();
+                    }
+                });
 
             // miscellaneous
             CheckBox checkBoxStartSlotIndexOne = tabControl.Controls["checkBoxStartSlotIndexOne"] as CheckBox;

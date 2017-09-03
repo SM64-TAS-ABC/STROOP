@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using SM64_Diagnostic.Structs;
-using System.Threading;
-using System.IO;
-using System.ComponentModel;
+﻿using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Structs.Configurations;
+using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -25,7 +22,6 @@ namespace SM64_Diagnostic.Utilities
         BackgroundWorker _streamUpdater;
         byte[] _ram;
         bool _lastUpdateBeforePausing = false;
-        volatile int _interval;
         object _enableLocker = new object();
         object _fpsQueueLocker = new object();
 
@@ -66,7 +62,7 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public double Fps
+        public double FpsInPractice
         {
             get
             {
@@ -76,10 +72,6 @@ namespace SM64_Diagnostic.Utilities
                     fps = _fpsTimes.Count == 0 ? 0 : 1000 / _fpsTimes.Average();
                 }
                 return fps;
-            }
-            set
-            {
-                _interval = (int)(1000.0f / value);
             }
         }
 
@@ -103,7 +95,6 @@ namespace SM64_Diagnostic.Utilities
         {
             _process = process;
 
-            _interval = (int) Config.RefreshRateInterval;
             _ram = new byte[Config.RamSize];
 
             _streamUpdater = new BackgroundWorker();
@@ -522,7 +513,7 @@ namespace SM64_Diagnostic.Utilities
 
                 // Calculate delay to match correct FPS
                 prevTime.Stop();
-                timeToWait = _interval - (int)prevTime.ElapsedMilliseconds;
+                timeToWait = (int)Config.RefreshRateInterval - (int)prevTime.ElapsedMilliseconds;
                 timeToWait = Math.Max(timeToWait, 0);
 
                 // Calculate Fps

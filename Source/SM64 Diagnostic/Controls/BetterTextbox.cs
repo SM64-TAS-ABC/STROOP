@@ -41,9 +41,14 @@ namespace SM64_Diagnostic
             AddEnterAction(() => Parent.Focus());
             AddEscapeAction(() =>
             {
-                this.Text = lastSubmittedText;
+                this.Reset();
                 this.Parent.Focus();
             });
+        }
+
+        public void Reset()
+        {
+            this.Text = lastSubmittedText;
         }
 
         public void AddEnterAction(Action enterAction)
