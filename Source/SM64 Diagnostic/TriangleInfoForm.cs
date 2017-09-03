@@ -104,10 +104,14 @@ namespace SM64_Diagnostic
             return text;
         }
 
-        public void SetDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
+        public void SetDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary, string keyName = null, string valueName = null)
         {
             labelTitle.Text = "Dictionary";
             String text = "";
+            if (keyName != null && valueName != null)
+            {
+                text += (keyName + "\t" + valueName + "\r\n");
+            }
             foreach (KeyValuePair<TKey, TValue> entry in dictionary)
             {
                 text += (entry.Key + "\t" + entry.Value + "\r\n");

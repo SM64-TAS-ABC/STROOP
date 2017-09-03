@@ -81,12 +81,17 @@ namespace SM64_Diagnostic.Managers
             public float Vspd;
             public float Hspd;
 
-            public List<string> VarNames()
+            public static List<string> VarNames()
             {
                 return new List<string>()
                 {
                     "X", "Y", "Z", "Angle", "Vspd", "Hspd"
                 };
+            }
+
+            public static string VarNamesString()
+            {
+                return String.Join("\t", VarNames());
             }
 
             public List<Object> VarValues()
@@ -111,8 +116,8 @@ namespace SM64_Diagnostic.Managers
                 Y = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset),
                 Z = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset),
                 Angle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset),
-                Vspd = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset),
-                Hspd = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.VSpeedOffset),
+                Vspd = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.VSpeedOffset),
+                Hspd = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset),
             };
         }
 
@@ -136,7 +141,7 @@ namespace SM64_Diagnostic.Managers
         private void ShowData()
         {
             var triangleInfoForm = new TriangleInfoForm();
-            triangleInfoForm.SetDictionary(_varStateDictionary);
+            triangleInfoForm.SetDictionary(_varStateDictionary, "Timer", VarState.VarNamesString());
             triangleInfoForm.ShowDialog();
         }
 
