@@ -83,7 +83,7 @@ namespace SM64_Diagnostic.Utilities
                         Config.Version = (Config.RomVersion)Enum.Parse(typeof(Config.RomVersion), element.Value);
                         break;
                     case "RefreshRateFreq":
-                        Config.RefreshRateFreq = int.Parse(element.Value);
+                        Config.RefreshRateFreq = uint.Parse(element.Value);
                         break;
                     case "RamSize":
                         Config.RamSize = ParsingUtilities.ParseHex(element.Value);

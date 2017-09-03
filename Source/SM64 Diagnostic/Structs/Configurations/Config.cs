@@ -50,7 +50,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static ObjectGroupsConfig ObjectGroups;
         public static ObjectSlotsConfig ObjectSlots;
 
-        public static int RefreshRateFreq;
+        public static uint RefreshRateFreq;
         public static List<Emulator> Emulators = new List<Emulator>();
         public static uint RamSize;
         public static MarioConfig Mario;
