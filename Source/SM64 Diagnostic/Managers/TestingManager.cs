@@ -31,7 +31,7 @@ namespace SM64_Diagnostic.Managers
         Label _labelMetric5Value;
         Label _labelMetric6Value;
 
-        Dictionary<int, float> _marioYDictionary;
+        Dictionary<int, VarState> _varStateDictionary;
         int? _previousTimer;
         int _currentTimer;
         int _globalTimerDiff;
@@ -39,10 +39,10 @@ namespace SM64_Diagnostic.Managers
         int _badCollisions;
         int _gaps;
 
-
         public TestingManager(TabPage tabControl)
         {
             _checkBoxTestingRecord = tabControl.Controls["checkBoxTestingRecord"] as CheckBox;
+            _checkBoxTestingRecord.Click += (sender, e) => SetRecordOn(_checkBoxTestingRecord.Checked);
             _buttonTestingClear = tabControl.Controls["buttonTestingClear"] as Button;
             _buttonTestingClear.Click += (sender, e) => ClearData();
             _buttonTestingShow = tabControl.Controls["buttonTestingShow"] as Button;
@@ -67,15 +67,64 @@ namespace SM64_Diagnostic.Managers
             _labelMetric3Name.Text = "Bad Collisions:";
             _labelMetric4Name.Text = "Gaps:";
             _labelMetric5Name.Text = "Timer:";
-            _labelMetric6Name.Text = "Mario Y:";
 
-            _marioYDictionary = new Dictionary<int, float>();
+            _varStateDictionary = new Dictionary<int, VarState>();
             ClearData();
+        }
+
+        private struct VarState
+        {
+            public float X;
+            public float Y;
+            public float Z;
+            public ushort Angle;
+            public float Vspd;
+            public float Hspd;
+
+            public List<string> VarNames()
+            {
+                return new List<string>()
+                {
+                    "X", "Y", "Z", "Angle", "Vspd", "Hspd"
+                };
+            }
+
+            public List<Object> VarValues()
+            {
+                return new List<Object>()
+                {
+                    X, Y, Z, Angle, Vspd, Hspd
+                };
+            }
+
+            public override string ToString()
+            {
+                return String.Join("\t", VarValues());
+            }
+        }
+
+        private VarState getCurrentVarState()
+        {
+            return new VarState()
+            {
+                X = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset),
+                Y = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset),
+                Z = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset),
+                Angle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset),
+                Vspd = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset),
+                Hspd = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.VSpeedOffset),
+            };
+        }
+
+        private void SetRecordOn(bool recordOn)
+        {
+            if (recordOn) Config.RefreshRateFreq = 0;
+            else Config.RefreshRateFreq = 30;
         }
 
         private void ClearData()
         {
-            _marioYDictionary.Clear();
+            _varStateDictionary.Clear();
             _previousTimer = null;
             _currentTimer = 0;
             _globalTimerDiff = 0;
@@ -87,7 +136,7 @@ namespace SM64_Diagnostic.Managers
         private void ShowData()
         {
             var triangleInfoForm = new TriangleInfoForm();
-            triangleInfoForm.SetDictionary(_marioYDictionary);
+            triangleInfoForm.SetDictionary(_varStateDictionary);
             triangleInfoForm.ShowDialog();
         }
 
@@ -98,16 +147,17 @@ namespace SM64_Diagnostic.Managers
             // get current stream values
             uint marioObjAddress = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
             _currentTimer = Config.Stream.GetInt32(marioObjAddress + Config.ObjectSlots.TimerOffset);
-            float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+
+            VarState varState = getCurrentVarState();
 
             if (_checkBoxTestingRecord.Checked)
             {
                 // check for key collisions
-                bool keyCollision = _marioYDictionary.ContainsKey(_currentTimer);
+                bool keyCollision = _varStateDictionary.ContainsKey(_currentTimer);
                 if (keyCollision) _collisions++;
 
                 // check for value collisions
-                bool valueCollision = keyCollision && _marioYDictionary[_currentTimer] == marioY;
+                bool valueCollision = keyCollision && _varStateDictionary[_currentTimer].Equals(varState);
                 if (keyCollision && !valueCollision) _badCollisions++;
 
                 // check the global timer difference
@@ -118,18 +168,17 @@ namespace SM64_Diagnostic.Managers
                 }
 
                 // update dictionary if need be
-                if (!keyCollision) _marioYDictionary[_currentTimer] = marioY;
+                if (!keyCollision) _varStateDictionary[_currentTimer] = varState;
 
                 // update previous global timer value
                 _previousTimer = _currentTimer;
             }
 
-            _labelMetric1Value.Text = _marioYDictionary.Count.ToString();
+            _labelMetric1Value.Text = _varStateDictionary.Count.ToString();
             _labelMetric2Value.Text = _collisions.ToString();
             _labelMetric3Value.Text = _badCollisions.ToString();
             _labelMetric4Value.Text = _gaps.ToString();
             _labelMetric5Value.Text = _currentTimer.ToString();
-            _labelMetric6Value.Text = marioY.ToString();
         }
     }
 }
