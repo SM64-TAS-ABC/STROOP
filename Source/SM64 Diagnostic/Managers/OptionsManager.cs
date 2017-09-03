@@ -114,6 +114,10 @@ namespace SM64_Diagnostic.Managers
                 overlaysCheckboxes.ForEach(checkbox => checkbox.Checked = newChecked);
             };
 
+            // FPS
+            GroupBox groupBoxFPS = tabControl.Controls["groupBoxFPS"] as GroupBox;
+            BetterTextbox betterTextboxFPS = groupBoxFPS.Controls["betterTextboxFPS"] as BetterTextbox;
+
             // miscellaneous
             CheckBox checkBoxStartSlotIndexOne = tabControl.Controls["checkBoxStartSlotIndexOne"] as CheckBox;
             checkBoxStartSlotIndexOne.Click += (sender, e) => Config.SlotIndexsFromOne = checkBoxStartSlotIndexOne.Checked;
