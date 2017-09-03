@@ -51,6 +51,16 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static ObjectSlotsConfig ObjectSlots;
 
         public static uint RefreshRateFreq;
+        public static double RefreshRateInterval
+        {
+            get
+            {
+                uint freq = RefreshRateFreq;
+                if (freq == 0) return Double.PositiveInfinity;
+                else return 1000.0 / freq;
+            }
+        }
+
         public static List<Emulator> Emulators = new List<Emulator>();
         public static uint RamSize;
         public static MarioConfig Mario;

@@ -103,7 +103,7 @@ namespace SM64_Diagnostic.Utilities
         {
             _process = process;
 
-            _interval = (int) (1000.0f / Config.RefreshRateFreq);
+            _interval = (int) Config.RefreshRateInterval;
             _ram = new byte[Config.RamSize];
 
             _streamUpdater = new BackgroundWorker();
