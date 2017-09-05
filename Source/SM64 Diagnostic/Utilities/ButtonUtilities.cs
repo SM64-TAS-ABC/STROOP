@@ -564,6 +564,19 @@ namespace SM64_Diagnostic.Utilities
             return MoveThings(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
+        public static bool SetMarioPosition(float xValue, float yValue, float zValue)
+        {
+            List<TripleAddressAngle> posAddressAngles =
+                new List<TripleAddressAngle> {
+                    new TripleAddressAngle(
+                        Config.Mario.StructAddress + Config.Mario.XOffset,
+                        Config.Mario.StructAddress + Config.Mario.YOffset,
+                        Config.Mario.StructAddress + Config.Mario.ZOffset)
+                };
+
+            return MoveThings(posAddressAngles, xValue, yValue, zValue, Change.SET);
+        }
+
         public static bool TranslateHOLP(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             List<TripleAddressAngle> posAddressAngles =
