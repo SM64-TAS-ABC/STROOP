@@ -440,7 +440,7 @@ namespace SM64_Diagnostic.Managers
                     case "DistanceToLine12":
                         {
                             double dist = MoreMath.GetDistanceFromPointToLine(marioX, marioZ, v1X, v1Z, v2X, v2Z);
-                            bool insideTri = (v1Z - marioZ) * (v2X - v1X) >= (v1X - marioX) * (v2Z - v1Z);
+                            bool insideTri = MoreMath.IsPointInsideTriangle(marioX, marioZ, v1X, v1Z, v2X, v2Z, v3X, v3Z);
                             double signedDist = dist * (insideTri ? 1 : -1);
                             (specialVar as DataContainer).Text = Math.Round(signedDist, 3).ToString();
                         }
@@ -448,7 +448,7 @@ namespace SM64_Diagnostic.Managers
                     case "DistanceToLine23":
                         {
                             double dist = MoreMath.GetDistanceFromPointToLine(marioX, marioZ, v2X, v2Z, v3X, v3Z);
-                            bool insideTri = (v2Z - marioZ) * (v3X - v2X) >= (v2X - marioX) * (v3Z - v2Z);
+                            bool insideTri = MoreMath.IsPointInsideTriangle(marioX, marioZ, v1X, v1Z, v2X, v2Z, v3X, v3Z);
                             double signedDist = dist * (insideTri ? 1 : -1);
                             (specialVar as DataContainer).Text = Math.Round(signedDist, 3).ToString();
                         }
@@ -456,7 +456,7 @@ namespace SM64_Diagnostic.Managers
                     case "DistanceToLine13":
                         {
                             double dist = MoreMath.GetDistanceFromPointToLine(marioX, marioZ, v1X, v1Z, v3X, v3Z);
-                            bool insideTri = (v3Z - marioZ) * (v1X - v3X) >= (v3X - marioX) * (v1Z - v3Z);
+                            bool insideTri = MoreMath.IsPointInsideTriangle(marioX, marioZ, v1X, v1Z, v2X, v2Z, v3X, v3Z);
                             double signedDist = dist * (insideTri ? 1 : -1);
                             (specialVar as DataContainer).Text = Math.Round(signedDist, 3).ToString();
                         }

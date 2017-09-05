@@ -319,6 +319,15 @@ namespace SM64_Diagnostic.Utilities
             return RadiansToAngleUnitsRounded(uphillRadians);
         }
 
+        public static bool IsPointInsideTriangle(
+            double x0, double z0, double v1X, double v1Z, double v2X, double v2Z, double v3X, double v3Z)
+        {
+            bool bool1 = (v1Z - z0) * (v2X - v1X) >= (v1X - x0) * (v2Z - v1Z);
+            bool bool2 = (v2Z - z0) * (v3X - v2X) >= (v2X - x0) * (v3Z - v2Z);
+            bool bool3 = (v3Z - z0) * (v1X - v3X) >= (v3X - x0) * (v1Z - v3Z);
+            return bool1 == bool2 && bool2 == bool3;
+        }
+
         public static float GetPendulumAmplitude(uint pendulumAddress)
         {
             // Get pendulum variables
