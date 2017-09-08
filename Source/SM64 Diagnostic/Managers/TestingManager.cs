@@ -81,17 +81,25 @@ namespace SM64_Diagnostic.Managers
             public float Vspd;
             public float Hspd;
 
+            public static VarState GetCurrent()
+            {
+                return new VarState()
+                {
+                    X = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset),
+                    Y = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset),
+                    Z = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset),
+                    Angle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset),
+                    Vspd = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.VSpeedOffset),
+                    Hspd = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset),
+                };
+            }
+
             public static List<string> VarNames()
             {
                 return new List<string>()
                 {
                     "X", "Y", "Z", "Angle", "Vspd", "Hspd"
                 };
-            }
-
-            public static string VarNamesString()
-            {
-                return String.Join("\t", VarNames());
             }
 
             public List<Object> VarValues()
@@ -102,23 +110,15 @@ namespace SM64_Diagnostic.Managers
                 };
             }
 
+            public static string VarNamesString()
+            {
+                return String.Join("\t", VarNames());
+            }
+
             public override string ToString()
             {
                 return String.Join("\t", VarValues());
             }
-        }
-
-        private VarState getCurrentVarState()
-        {
-            return new VarState()
-            {
-                X = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset),
-                Y = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset),
-                Z = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset),
-                Angle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset),
-                Vspd = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.VSpeedOffset),
-                Hspd = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset),
-            };
         }
 
         private void SetRecordOn(bool recordOn)
@@ -153,7 +153,7 @@ namespace SM64_Diagnostic.Managers
             uint marioObjAddress = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
             _currentTimer = Config.Stream.GetInt32(marioObjAddress + Config.ObjectSlots.TimerOffset);
 
-            VarState varState = getCurrentVarState();
+            VarState varState = VarState.GetCurrent();
 
             if (_checkBoxTestingRecord.Checked)
             {
