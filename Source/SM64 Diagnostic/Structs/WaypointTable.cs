@@ -25,6 +25,8 @@ namespace SM64_Diagnostic.Structs
 
         Dictionary<short, WaypointReference> _waypointDictionary;
         Dictionary<WaypointReference, double> _distanceDictionary;
+        Dictionary<WaypointReference, WaypointReference?> _previousWaypointDictionary;
+        Dictionary<WaypointReference, WaypointReference?> _nextWaypointDictionary;
 
         public WaypointTable(List<WaypointReference> waypoints)
         {
@@ -54,6 +56,21 @@ namespace SM64_Diagnostic.Structs
                 }
                 previousWaypoint = currentWaypoint;
             }
+
+            _previousWaypointDictionary = new Dictionary<WaypointReference, WaypointReference?>();
+            _nextWaypointDictionary = new Dictionary<WaypointReference, WaypointReference?>();
+            previousWaypoint = null;
+            foreach (KeyValuePair<short, WaypointReference> entry in _waypointDictionary)
+            {
+                WaypointReference currentWaypoint = entry.Value;
+                _previousWaypointDictionary[currentWaypoint] = previousWaypoint;
+                if (previousWaypoint != null)
+                {
+                    _nextWaypointDictionary[previousWaypoint.Value] = currentWaypoint;
+                }
+                previousWaypoint = currentWaypoint;
+            }
+            _nextWaypointDictionary[previousWaypoint.Value] = null;
         }
 
         public double GetProgress(uint objAddress)
