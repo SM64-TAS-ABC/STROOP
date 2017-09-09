@@ -31,6 +31,10 @@ namespace SM64_Diagnostic.Managers
         Label _labelMetric5Value;
         Label _labelMetric6Value;
 
+        GroupBox _groupBoxVars;
+        RadioButton _radioButtonMario;
+        RadioButton _radioButtonPenguin;
+
         Dictionary<int, VarState> _varStateDictionary;
         int? _previousTimer;
         int _currentTimer;
@@ -61,6 +65,10 @@ namespace SM64_Diagnostic.Managers
             _labelMetric4Value = tabControl.Controls["labelMetric4Value"] as Label;
             _labelMetric5Value = tabControl.Controls["labelMetric5Value"] as Label;
             _labelMetric6Value = tabControl.Controls["labelMetric6Value"] as Label;
+
+            _groupBoxVars = tabControl.Controls["groupBoxVars"] as GroupBox;
+            _radioButtonMario = _groupBoxVars.Controls["radioButtonMario"] as RadioButton;
+            _radioButtonPenguin = _groupBoxVars.Controls["radioButtonPenguin"] as RadioButton;
 
             _labelMetric1Name.Text = "Data Count:";
             _labelMetric2Name.Text = "Collisions:";
