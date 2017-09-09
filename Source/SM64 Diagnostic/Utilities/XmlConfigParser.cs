@@ -2371,6 +2371,38 @@ namespace SM64_Diagnostic.Utilities
             return pendulumSwingTable;
         }
 
+        public static WaypointTable OpenWaypointTable(string path)
+        {
+            WaypointTable waypointTable = new WaypointTable();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/WaypointTableSchema.xsd", "WaypointTableSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                short index = (short)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("index")).Value);
+                short x = (short)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("x")).Value);
+                short y = (short)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("y")).Value);
+                short z = (short)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("z")).Value);
+                waypointTable.Add(new WaypointTable.WaypointReference()
+                {
+                    Index = index,
+                    X = x,
+                    Y = y,
+                    Z = z,
+                });
+            }
+
+            return waypointTable;
+        }
+
         public static MissionTable OpenMissionTable(string path)
         {
             MissionTable missionTable = new MissionTable();
