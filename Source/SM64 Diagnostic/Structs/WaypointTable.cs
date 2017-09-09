@@ -21,15 +21,15 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        Dictionary<short, WaypointReference> _table = new Dictionary<short, WaypointReference>();
+        Dictionary<short, WaypointReference> _table;
 
-        public WaypointTable()
+        public WaypointTable(List<WaypointReference> waypoints)
         {
-        }
-
-        public void Add(WaypointReference waypointRef)
-        {
-            _table.Add(waypointRef.Index, waypointRef);
+            _table = new Dictionary<short, WaypointReference>();
+            foreach (WaypointReference waypointRef in waypoints)
+            {
+                _table.Add(waypointRef.Index, waypointRef);
+            }
         }
 
         public double GetProgress(uint objAddress)

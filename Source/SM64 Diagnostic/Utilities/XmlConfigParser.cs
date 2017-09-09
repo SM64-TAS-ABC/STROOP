@@ -2373,7 +2373,6 @@ namespace SM64_Diagnostic.Utilities
 
         public static WaypointTable OpenWaypointTable(string path)
         {
-            WaypointTable waypointTable = new WaypointTable();
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
@@ -2385,13 +2384,14 @@ namespace SM64_Diagnostic.Utilities
             var doc = XDocument.Load(path);
             doc.Validate(schemaSet, Validation);
 
+            List<WaypointTable.WaypointReference> waypoints = new List<WaypointTable.WaypointReference>();
             foreach (XElement element in doc.Root.Elements())
             {
                 short index = (short)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("index")).Value);
                 short x = (short)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("x")).Value);
                 short y = (short)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("y")).Value);
                 short z = (short)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("z")).Value);
-                waypointTable.Add(new WaypointTable.WaypointReference()
+                waypoints.Add(new WaypointTable.WaypointReference()
                 {
                     Index = index,
                     X = x,
@@ -2400,7 +2400,7 @@ namespace SM64_Diagnostic.Utilities
                 });
             }
 
-            return waypointTable;
+            return new WaypointTable(waypoints);
         }
 
         public static MissionTable OpenMissionTable(string path)
