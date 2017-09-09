@@ -3041,6 +3041,7 @@
     <Data groupList="ObjectSpecific" type="float" address="0xB8" offset="Object">H Speed</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="KoopaTheQuickHSpeedTarget">H Speed Target</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="KoopaTheQuickHSpeedChange">H Speed Change</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="KoopaTheQuick1Progress">Progress</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa the Quick #2" subType="3">
     <SpawnCode gfxId="0x68"/>
@@ -3073,6 +3074,7 @@
     <Data groupList="ObjectSpecific" type="float" address="0xB8" offset="Object">H Speed</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="KoopaTheQuickHSpeedTarget">H Speed Target</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="KoopaTheQuickHSpeedChange">H Speed Change</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="KoopaTheQuick2Progress">Progress</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa (Tiny)" subType="4">
     <SpawnCode gfxId="0x68"/>
@@ -3975,6 +3977,7 @@
     <Data groupList="ObjectSpecific" offset="Special" specialType="RacingPenguinHSpeedTarget">H Speed Target</Data>
     <Data groupList="ObjectSpecific" type="float" address="0xB8" offset="Object">H Speed</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="RacingPenguinDiffHSpeedTarget">Diff H Speed - Target</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="RacingPenguinProgress">Progress</Data>
   </Object>
   <Object behaviorScriptAddress="0x130053C4" name="Finishing Line Checkpoint">
     <SpawnCode gfxId="0x00"/>

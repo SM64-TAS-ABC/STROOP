@@ -213,10 +213,13 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("RacingPenguinMinHSpeed"),
                 new DataContainer("RacingPenguinHSpeedTarget"),
                 new DataContainer("RacingPenguinDiffHSpeedTarget"),
+                new DataContainer("RacingPenguinProgress"),
 
                 // Koopa the Quick vars
                 new DataContainer("KoopaTheQuickHSpeedTarget"),
                 new DataContainer("KoopaTheQuickHSpeedChange"),
+                new DataContainer("KoopaTheQuick1Progress"),
+                new DataContainer("KoopaTheQuick2Progress"),
 
                 // Fly Guy vars
                 new DataContainer("FlyGuyZone"),
@@ -669,6 +672,13 @@ namespace SM64_Diagnostic.Managers
                                 break;
                             }
 
+                        case "RacingPenguinProgress":
+                            {
+                                double progress = Config.RacingPenguinWaypoints.GetProgress(objAddress);
+                                newText = Math.Round(progress, 3).ToString();
+                                break;
+                            }
+
                         case "KoopaTheQuickHSpeedTarget":
                             {
                                 (double temp, _) = MoreMath.GetKoopaTheQuickSpecialVars(objAddress);
@@ -680,6 +690,20 @@ namespace SM64_Diagnostic.Managers
                             {
                                 (_, double temp) = MoreMath.GetKoopaTheQuickSpecialVars(objAddress);
                                 newText = Math.Round(temp, 3).ToString();
+                                break;
+                            }
+
+                        case "KoopaTheQuick1Progress":
+                            {
+                                double progress = Config.KoopaTheQuick1Waypoints.GetProgress(objAddress);
+                                newText = Math.Round(progress, 3).ToString();
+                                break;
+                            }
+
+                        case "KoopaTheQuick2Progress":
+                            {
+                                double progress = Config.KoopaTheQuick2Waypoints.GetProgress(objAddress);
+                                newText = Math.Round(progress, 3).ToString();
                                 break;
                             }
 

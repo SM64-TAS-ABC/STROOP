@@ -31,5 +31,10 @@ namespace SM64_Diagnostic.Structs
         {
             _table.Add(waypointRef.Index, waypointRef);
         }
+
+        public double GetProgress(uint objAddress)
+        {
+            return 1;
+        }
     }
 }
