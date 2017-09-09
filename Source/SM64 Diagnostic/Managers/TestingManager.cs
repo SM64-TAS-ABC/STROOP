@@ -14,6 +14,8 @@ namespace SM64_Diagnostic.Managers
 {
     public class TestingManager
     {
+        public static TestingManager Instance;
+
         CheckBox _checkBoxTestingRecord;
         Button _buttonTestingClear;
         Button _buttonTestingShow;
@@ -40,7 +42,8 @@ namespace SM64_Diagnostic.Managers
 
         VarToRecord _varToRecord;
 
-        Dictionary<int, VarState> _varStateDictionary;
+        public Dictionary<int, VarState> VarStateDictionary;
+
         int? _previousTimer;
         int _currentTimer;
         int _globalTimerDiff;
@@ -50,6 +53,8 @@ namespace SM64_Diagnostic.Managers
 
         public TestingManager(TabPage tabControl)
         {
+            Instance = this;
+
             _checkBoxTestingRecord = tabControl.Controls["checkBoxTestingRecord"] as CheckBox;
             _checkBoxTestingRecord.Click += (sender, e) => SetRecordOn(_checkBoxTestingRecord.Checked);
             _buttonTestingClear = tabControl.Controls["buttonTestingClear"] as Button;
@@ -92,12 +97,12 @@ namespace SM64_Diagnostic.Managers
             _labelMetric4Name.Text = "Gaps:";
             _labelMetric5Name.Text = "Timer:";
 
-            _varStateDictionary = new Dictionary<int, VarState>();
+            VarStateDictionary = new Dictionary<int, VarState>();
             ClearData();
 
             foreach ((int timer, double progress) in _plushRacingPenguinProgress)
             {
-                _varStateDictionary.Add(timer, new VarStatePenguin() { Progress = progress });
+                VarStateDictionary.Add(timer, new VarStatePenguin() { Progress = progress });
             }
         }
 
@@ -216,7 +221,7 @@ namespace SM64_Diagnostic.Managers
 
         private void ClearData()
         {
-            _varStateDictionary.Clear();
+            VarStateDictionary.Clear();
             _previousTimer = null;
             _currentTimer = 0;
             _globalTimerDiff = 0;
@@ -240,7 +245,7 @@ namespace SM64_Diagnostic.Managers
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            triangleInfoForm.SetDictionary(_varStateDictionary, "Timer", varNamesString);
+            triangleInfoForm.SetDictionary(VarStateDictionary, "Timer", varNamesString);
             triangleInfoForm.ShowDialog();
         }
 
@@ -279,11 +284,11 @@ namespace SM64_Diagnostic.Managers
             if (_checkBoxTestingRecord.Checked)
             {
                 // check for key collisions
-                bool keyCollision = _varStateDictionary.ContainsKey(_currentTimer);
+                bool keyCollision = VarStateDictionary.ContainsKey(_currentTimer);
                 if (keyCollision) _collisions++;
 
                 // check for value collisions
-                bool valueCollision = keyCollision && _varStateDictionary[_currentTimer].Equals(varState);
+                bool valueCollision = keyCollision && VarStateDictionary[_currentTimer].Equals(varState);
                 if (keyCollision && !valueCollision)
                 {
                     _badCollisions++;
@@ -298,13 +303,13 @@ namespace SM64_Diagnostic.Managers
                 }
 
                 // update dictionary if need be
-                if (!keyCollision) _varStateDictionary[_currentTimer] = varState;
+                if (!keyCollision) VarStateDictionary[_currentTimer] = varState;
 
                 // update previous global timer value
                 _previousTimer = _currentTimer;
             }
 
-            _labelMetric1Value.Text = _varStateDictionary.Count.ToString();
+            _labelMetric1Value.Text = VarStateDictionary.Count.ToString();
             _labelMetric2Value.Text = _collisions.ToString();
             _labelMetric3Value.Text = _badCollisions.ToString();
             _labelMetric4Value.Text = _gaps.ToString();

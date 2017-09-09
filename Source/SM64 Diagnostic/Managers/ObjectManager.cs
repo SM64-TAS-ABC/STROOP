@@ -214,6 +214,7 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("RacingPenguinHSpeedTarget"),
                 new DataContainer("RacingPenguinDiffHSpeedTarget"),
                 new DataContainer("RacingPenguinProgress"),
+                new DataContainer("RacingPenguinProgressDiff"),
 
                 // Koopa the Quick vars
                 new DataContainer("KoopaTheQuickHSpeedTarget"),
@@ -676,6 +677,31 @@ namespace SM64_Diagnostic.Managers
                             {
                                 double progress = Config.RacingPenguinWaypoints.GetProgress(objAddress);
                                 newText = Math.Round(progress, 3).ToString();
+                                break;
+                            }
+
+                        case "RacingPenguinProgressDiff":
+                            {
+                                TestingManager testingManager = TestingManager.Instance;
+                                Dictionary<int, TestingManager.VarState> dictionary = testingManager.VarStateDictionary;
+                                var currentTimer = Config.Stream.GetInt32(Config.SwitchRomVersion(0x803493DC, 0x803463EC));
+                                if (!dictionary.ContainsKey(currentTimer))
+                                {
+                                    newText = "N/A";
+                                    break;
+                                }
+                                TestingManager.VarState varState = dictionary[currentTimer];
+                                if (!(varState is TestingManager.VarStatePenguin))
+                                {
+                                    newText = "N/A";
+                                    break;
+                                }
+                                TestingManager.VarStatePenguin varStatePenguin = varState as TestingManager.VarStatePenguin;
+                                double varStateProgress = varStatePenguin.Progress;
+
+                                double currentProgress = Config.RacingPenguinWaypoints.GetProgress(objAddress);
+                                double progressDiff = currentProgress - varStateProgress;
+                                newText = Math.Round(progressDiff, 3).ToString();
                                 break;
                             }
 
