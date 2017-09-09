@@ -91,7 +91,6 @@ namespace SM64_Diagnostic.Managers
             _labelMetric3Name.Text = "Bad Collisions:";
             _labelMetric4Name.Text = "Gaps:";
             _labelMetric5Name.Text = "Timer:";
-            _labelMetric6Name.Text = "Var to Record:";
 
             _varStateDictionary = new Dictionary<int, VarState>();
             ClearData();
@@ -245,8 +244,18 @@ namespace SM64_Diagnostic.Managers
             if (!updateView) return;
 
             // get current stream values
-            uint marioObjAddress = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
-            _currentTimer = Config.Stream.GetInt32(marioObjAddress + Config.ObjectSlots.TimerOffset);
+            switch (_varToRecord)
+            {
+                case VarToRecord.Mario:
+                    uint marioObjAddress = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+                    _currentTimer = Config.Stream.GetInt32(marioObjAddress + Config.ObjectSlots.TimerOffset);
+                    break;
+                case VarToRecord.Penguin:
+                    _currentTimer = Config.Stream.GetInt32(Config.SwitchRomVersion(0x803493DC, 0x803463EC));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
 
             VarState varState;
             switch (_varToRecord)
@@ -256,6 +265,7 @@ namespace SM64_Diagnostic.Managers
                     break;
                 case VarToRecord.Penguin:
                     varState = VarStatePenguin.GetCurrent();
+                    _labelMetric6Value.Text = ((int) (varState as VarStatePenguin).Progress).ToString();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -269,7 +279,11 @@ namespace SM64_Diagnostic.Managers
 
                 // check for value collisions
                 bool valueCollision = keyCollision && _varStateDictionary[_currentTimer].Equals(varState);
-                if (keyCollision && !valueCollision) _badCollisions++;
+                if (keyCollision && !valueCollision)
+                {
+                    _badCollisions++;
+                    //System.Diagnostics.Trace.WriteLine("timer " + _currentTimer + " was " + _varStateDictionary[_currentTimer] + " but attempted " + varState);
+                }
 
                 // check the global timer difference
                 if (_previousTimer != null)
@@ -290,7 +304,6 @@ namespace SM64_Diagnostic.Managers
             _labelMetric3Value.Text = _badCollisions.ToString();
             _labelMetric4Value.Text = _gaps.ToString();
             _labelMetric5Value.Text = _currentTimer.ToString();
-            _labelMetric6Value.Text = _varToRecord.ToString();
         }
     }
 }
