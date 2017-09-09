@@ -96,7 +96,12 @@ namespace SM64_Diagnostic.Managers
             ClearData();
         }
 
-        private struct VarState
+        public abstract class VarState
+        {
+            public abstract List<Object> VarValues();
+        }
+
+        public class VarStateMario : VarState
         {
             public float X;
             public float Y;
@@ -107,7 +112,7 @@ namespace SM64_Diagnostic.Managers
 
             public static VarState GetCurrent()
             {
-                return new VarState()
+                return new VarStateMario()
                 {
                     X = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset),
                     Y = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset),
@@ -126,7 +131,7 @@ namespace SM64_Diagnostic.Managers
                 };
             }
 
-            public List<Object> VarValues()
+            public override List<Object> VarValues()
             {
                 return new List<Object>()
                 {
@@ -142,6 +147,59 @@ namespace SM64_Diagnostic.Managers
             public override string ToString()
             {
                 return String.Join("\t", VarValues());
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (!(obj is VarStateMario)) return false;
+                VarStateMario other = obj as VarStateMario;
+                return Enumerable.SequenceEqual(this.VarValues(), other.VarValues());
+            }
+        }
+
+        public class VarStatePenguin : VarState
+        {
+            public double Progress;
+
+            public static VarStatePenguin GetCurrent()
+            {
+                return new VarStatePenguin()
+                {
+                    Progress = 0,
+                };
+            }
+
+            public static List<string> VarNames()
+            {
+                return new List<string>()
+                {
+                    "Progress"
+                };
+            }
+
+            public override List<Object> VarValues()
+            {
+                return new List<Object>()
+                {
+                    Progress
+                };
+            }
+
+            public static string VarNamesString()
+            {
+                return String.Join("\t", VarNames());
+            }
+
+            public override string ToString()
+            {
+                return String.Join("\t", VarValues());
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (!(obj is VarStatePenguin)) return false;
+                VarStatePenguin other = obj as VarStatePenguin;
+                return Enumerable.SequenceEqual(this.VarValues(), other.VarValues());
             }
         }
 
@@ -165,7 +223,7 @@ namespace SM64_Diagnostic.Managers
         private void ShowData()
         {
             var triangleInfoForm = new TriangleInfoForm();
-            triangleInfoForm.SetDictionary(_varStateDictionary, "Timer", VarState.VarNamesString());
+            triangleInfoForm.SetDictionary(_varStateDictionary, "Timer", VarStateMario.VarNamesString());
             triangleInfoForm.ShowDialog();
         }
 
@@ -177,7 +235,7 @@ namespace SM64_Diagnostic.Managers
             uint marioObjAddress = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
             _currentTimer = Config.Stream.GetInt32(marioObjAddress + Config.ObjectSlots.TimerOffset);
 
-            VarState varState = VarState.GetCurrent();
+            VarState varState = VarStateMario.GetCurrent();
 
             if (_checkBoxTestingRecord.Checked)
             {
