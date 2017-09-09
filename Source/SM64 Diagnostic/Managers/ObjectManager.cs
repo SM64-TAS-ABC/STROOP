@@ -42,6 +42,12 @@ namespace SM64_Diagnostic.Managers
         Panel _objectBorderPanel;
         IntPictureBox _objectImagePictureBox;
 
+        // racing penguin vars
+        int _racingPenguinPreviousTimer;
+        int _racingPenguinCurrentTimer;
+        double _racingPenguinPreviousProgressDiff;
+        double _racingPenguinCurrentProgressDiff;
+
         #region Fields
         public void SetBehaviorWatchVariables(List<WatchVariable> value, Color color)
         {
@@ -215,6 +221,7 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("RacingPenguinDiffHSpeedTarget"),
                 new DataContainer("RacingPenguinProgress"),
                 new DataContainer("RacingPenguinProgressDiff"),
+                new DataContainer("RacingPenguinProgressDiffDelta"),
 
                 // Koopa the Quick vars
                 new DataContainer("KoopaTheQuickHSpeedTarget"),
@@ -702,6 +709,40 @@ namespace SM64_Diagnostic.Managers
                                 double currentProgress = Config.RacingPenguinWaypoints.GetProgress(objAddress);
                                 double progressDiff = currentProgress - varStateProgress;
                                 newText = Math.Round(progressDiff, 3).ToString();
+                                break;
+                            }
+
+                        case "RacingPenguinProgressDiffDelta":
+                            {
+                                TestingManager testingManager = TestingManager.Instance;
+                                Dictionary<int, TestingManager.VarState> dictionary = testingManager.VarStateDictionary;
+                                var currentTimer = Config.Stream.GetInt32(Config.SwitchRomVersion(0x803493DC, 0x803463EC));
+                                if (!dictionary.ContainsKey(currentTimer))
+                                {
+                                    newText = "N/A";
+                                    break;
+                                }
+                                TestingManager.VarState varState = dictionary[currentTimer];
+                                if (!(varState is TestingManager.VarStatePenguin))
+                                {
+                                    newText = "N/A";
+                                    break;
+                                }
+                                TestingManager.VarStatePenguin varStatePenguin = varState as TestingManager.VarStatePenguin;
+                                double varStateProgress = varStatePenguin.Progress;
+
+                                double currentProgress = Config.RacingPenguinWaypoints.GetProgress(objAddress);
+                                double progressDiff = currentProgress - varStateProgress;
+
+                                if (currentTimer != _racingPenguinCurrentTimer)
+                                {
+                                    _racingPenguinPreviousTimer = _racingPenguinCurrentTimer;
+                                    _racingPenguinPreviousProgressDiff = _racingPenguinCurrentProgressDiff;
+                                    _racingPenguinCurrentTimer = currentTimer;
+                                    _racingPenguinCurrentProgressDiff = progressDiff;
+                                }
+
+                                newText = Math.Round(_racingPenguinCurrentProgressDiff - _racingPenguinPreviousProgressDiff, 3).ToString();
                                 break;
                             }
 

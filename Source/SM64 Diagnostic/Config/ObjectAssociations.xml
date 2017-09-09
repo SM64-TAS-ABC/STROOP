@@ -3979,6 +3979,7 @@
     <Data groupList="ObjectSpecific" offset="Special" specialType="RacingPenguinDiffHSpeedTarget">Diff H Speed - Target</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="RacingPenguinProgress">Progress</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="RacingPenguinProgressDiff">Progress Diff</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="RacingPenguinProgressDiffDelta">Progress Diff Delta</Data>
   </Object>
   <Object behaviorScriptAddress="0x130053C4" name="Finishing Line Checkpoint">
     <SpawnCode gfxId="0x00"/>
