@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Waypoints>
+  <Waypoint index="0" x="-2220" y="204" z="5520"/>
+  <Waypoint index="1" x="-2020" y="204" z="5820"/>
+  <Waypoint index="2" x="760" y="765" z="5680"/>
+  <Waypoint index="3" x="1920" y="768" z="5040"/>
+  <Waypoint index="4" x="2000" y="768" z="4360"/>
+  <Waypoint index="5" x="1240" y="768" z="3600"/>
+  <Waypoint index="6" x="-280" y="768" z="2720"/>
+  <Waypoint index="7" x="-1680" y="768" z="1840"/>
+  <Waypoint index="8" x="-2280" y="0" z="1800"/>
+  <Waypoint index="9" x="-2720" y="0" z="1120"/>
+  <Waypoint index="10" x="-2520" y="0" z="480"/>
+  <Waypoint index="11" x="-1720" y="0" z="120"/>
+  <Waypoint index="12" x="560" y="630" z="-840"/>
+  <Waypoint index="13" x="2700" y="1571" z="-1500"/>
+  <Waypoint index="14" x="4520" y="1830" z="-2600"/>
+  <Waypoint index="15" x="6240" y="1943" z="-3500"/>
+  <Waypoint index="16" x="6380" y="2066" z="-6180"/>
+  <Waypoint index="17" x="4000" y="2390" z="-7720"/>
+  <Waypoint index="18" x="-120" y="2608" z="-5515"/>
+  <Waypoint index="19" x="-180" y="2641" z="-4860"/>
+  <Waypoint index="20" x="580" y="2769" z="-3380"/>
+  <Waypoint index="21" x="1670" y="2867" z="-2580"/>
+  <Waypoint index="22" x="2216" y="2900" z="-2126"/>
+  <Waypoint index="23" x="3167" y="2965" z="-1870"/>
+  <Waypoint index="24" x="4069" y="3050" z="-2487"/>
+  <Waypoint index="25" x="4880" y="3037" z="-3416"/>
+  <Waypoint index="26" x="5020" y="3181" z="-5760"/>
+  <Waypoint index="27" x="4660" y="3354" z="-6300"/>
+  <Waypoint index="28" x="3940" y="3514" z="-6800"/>
+  <Waypoint index="29" x="3200" y="3619" z="-6850"/>
+  <Waypoint index="30" x="1290" y="3768" z="-5793"/>
+  <Waypoint index="31" x="1150" y="3900" z="-3670"/>
+  <Waypoint index="32" x="2980" y="4046" z="-2930"/>
+  <Waypoint index="33" x="4334" y="4186" z="-3680"/>
+  <Waypoint index="34" x="4180" y="4242" z="-4220"/>
+  <Waypoint index="35" x="3660" y="4242" z="-4380"/>
+</Waypoints>

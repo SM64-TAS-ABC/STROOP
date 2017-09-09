@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Waypoints>
+  <Waypoint index="0" x="-1900" y="-511" z="2400"/>
+  <Waypoint index="1" x="-2750" y="-511" z="3300"/>
+  <Waypoint index="2" x="-4900" y="-511" z="1200"/>
+  <Waypoint index="3" x="-4894" y="100" z="-2146"/>
+  <Waypoint index="4" x="-5200" y="143" z="-5050"/>
+  <Waypoint index="5" x="-2800" y="-962" z="-4900"/>
+  <Waypoint index="6" x="500" y="-1637" z="-4900"/>
+  <Waypoint index="7" x="1500" y="-2047" z="-5200"/>
+  <Waypoint index="8" x="2971" y="-2046" z="-5428"/>
+  <Waypoint index="9" x="5642" y="-1535" z="-5442"/>
+  <Waypoint index="10" x="6371" y="-1535" z="-6271"/>
+  <Waypoint index="11" x="6814" y="-1535" z="-6328"/>
+</Waypoints>

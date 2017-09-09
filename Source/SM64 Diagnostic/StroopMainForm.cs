@@ -242,6 +242,9 @@ namespace SM64_Diagnostic
             Config.MarioActions = XmlConfigParser.OpenActionTable(@"Config/MarioActions.xml");
             Config.MarioAnimations = XmlConfigParser.OpenAnimationTable(@"Config/MarioAnimations.xml");
             Config.PendulumSwings = XmlConfigParser.OpenPendulumSwingTable(@"Config/PendulumSwings.xml");
+            Config.RacingPenguinWaypoints = XmlConfigParser.OpenWaypointTable(@"Config/RacingPenguinWaypoints.xml");
+            Config.KoopaTheQuick1Waypoints = XmlConfigParser.OpenWaypointTable(@"Config/KoopaTheQuick1Waypoints.xml");
+            Config.KoopaTheQuick2Waypoints = XmlConfigParser.OpenWaypointTable(@"Config/KoopaTheQuick2Waypoints.xml");
             Config.Missions = XmlConfigParser.OpenMissionTable(@"Config/Missions.xml");
             Config.CourseData = XmlConfigParser.OpenCourseDataTable(@"Config/CourseData.xml");
             Config.FlyGuyData = new FlyGuyDataTable();
