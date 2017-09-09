@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -769,7 +769,7 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBoxVars = new System.Windows.Forms.GroupBox();
+            this.groupBoxVarToRecord = new System.Windows.Forms.GroupBox();
             this.radioButtonPenguin = new System.Windows.Forms.RadioButton();
             this.radioButtonMario = new System.Windows.Forms.RadioButton();
             this.groupBoxObjects.SuspendLayout();
@@ -1056,7 +1056,7 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.SuspendLayout();
             this.tabPageTesting.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.groupBoxVars.SuspendLayout();
+            this.groupBoxVarToRecord.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -8194,8 +8194,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9870,7 +9870,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageTesting
             // 
-            this.tabPageTesting.Controls.Add(this.groupBoxVars);
+            this.tabPageTesting.Controls.Add(this.groupBoxVarToRecord);
             this.tabPageTesting.Controls.Add(this.labelMetric6Name);
             this.tabPageTesting.Controls.Add(this.labelMetric5Name);
             this.tabPageTesting.Controls.Add(this.labelMetric4Name);
@@ -10248,16 +10248,16 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // groupBoxVars
+            // groupBoxVarToRecord
             // 
-            this.groupBoxVars.Controls.Add(this.radioButtonPenguin);
-            this.groupBoxVars.Controls.Add(this.radioButtonMario);
-            this.groupBoxVars.Location = new System.Drawing.Point(109, 183);
-            this.groupBoxVars.Name = "groupBoxVars";
-            this.groupBoxVars.Size = new System.Drawing.Size(118, 77);
-            this.groupBoxVars.TabIndex = 39;
-            this.groupBoxVars.TabStop = false;
-            this.groupBoxVars.Text = "Var to Record";
+            this.groupBoxVarToRecord.Controls.Add(this.radioButtonPenguin);
+            this.groupBoxVarToRecord.Controls.Add(this.radioButtonMario);
+            this.groupBoxVarToRecord.Location = new System.Drawing.Point(109, 183);
+            this.groupBoxVarToRecord.Name = "groupBoxVarToRecord";
+            this.groupBoxVarToRecord.Size = new System.Drawing.Size(118, 77);
+            this.groupBoxVarToRecord.TabIndex = 39;
+            this.groupBoxVarToRecord.TabStop = false;
+            this.groupBoxVarToRecord.Text = "Var to Record";
             // 
             // radioButtonPenguin
             // 
@@ -10639,8 +10639,8 @@ namespace SM64_Diagnostic
             this.tabPageTesting.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.groupBoxVars.ResumeLayout(false);
-            this.groupBoxVars.PerformLayout();
+            this.groupBoxVarToRecord.ResumeLayout(false);
+            this.groupBoxVarToRecord.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -11383,7 +11383,7 @@ namespace SM64_Diagnostic
         private Button buttonTestingShow;
         private GroupBox groupBoxFPS;
         private BetterTextbox betterTextboxFPS;
-        private GroupBox groupBoxVars;
+        private GroupBox groupBoxVarToRecord;
         private RadioButton radioButtonPenguin;
         private RadioButton radioButtonMario;
     }

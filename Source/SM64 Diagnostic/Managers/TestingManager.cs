@@ -31,9 +31,13 @@ namespace SM64_Diagnostic.Managers
         Label _labelMetric5Value;
         Label _labelMetric6Value;
 
-        GroupBox _groupBoxVars;
+        GroupBox _groupBoxVarToRecord;
         RadioButton _radioButtonMario;
         RadioButton _radioButtonPenguin;
+
+        enum VarToRecord { Mario, Penguin };
+
+        VarToRecord _varToRecord;
 
         Dictionary<int, VarState> _varStateDictionary;
         int? _previousTimer;
@@ -66,15 +70,27 @@ namespace SM64_Diagnostic.Managers
             _labelMetric5Value = tabControl.Controls["labelMetric5Value"] as Label;
             _labelMetric6Value = tabControl.Controls["labelMetric6Value"] as Label;
 
-            _groupBoxVars = tabControl.Controls["groupBoxVars"] as GroupBox;
-            _radioButtonMario = _groupBoxVars.Controls["radioButtonMario"] as RadioButton;
-            _radioButtonPenguin = _groupBoxVars.Controls["radioButtonPenguin"] as RadioButton;
+            _groupBoxVarToRecord = tabControl.Controls["groupBoxVarToRecord"] as GroupBox;
+            _radioButtonMario = _groupBoxVarToRecord.Controls["radioButtonMario"] as RadioButton;
+            _radioButtonMario.Click += (sender, e) => _varToRecord = VarToRecord.Mario;
+            _radioButtonPenguin = _groupBoxVarToRecord.Controls["radioButtonPenguin"] as RadioButton;
+            _radioButtonPenguin.Click += (sender, e) => _varToRecord = VarToRecord.Penguin;
+
+            if (_radioButtonMario.Checked)
+            {
+                _varToRecord = VarToRecord.Mario;
+            }
+            else
+            {
+                _varToRecord = VarToRecord.Penguin;
+            }
 
             _labelMetric1Name.Text = "Data Count:";
             _labelMetric2Name.Text = "Collisions:";
             _labelMetric3Name.Text = "Bad Collisions:";
             _labelMetric4Name.Text = "Gaps:";
             _labelMetric5Name.Text = "Timer:";
+            _labelMetric6Name.Text = "Var to Record:";
 
             _varStateDictionary = new Dictionary<int, VarState>();
             ClearData();
@@ -192,6 +208,7 @@ namespace SM64_Diagnostic.Managers
             _labelMetric3Value.Text = _badCollisions.ToString();
             _labelMetric4Value.Text = _gaps.ToString();
             _labelMetric5Value.Text = _currentTimer.ToString();
+            _labelMetric6Value.Text = _varToRecord.ToString();
         }
     }
 }
