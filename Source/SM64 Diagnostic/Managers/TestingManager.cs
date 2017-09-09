@@ -165,7 +165,7 @@ namespace SM64_Diagnostic.Managers
             {
                 return new VarStatePenguin()
                 {
-                    Progress = 0,
+                    Progress = 0, //TODO update this
                 };
             }
 
@@ -223,7 +223,19 @@ namespace SM64_Diagnostic.Managers
         private void ShowData()
         {
             var triangleInfoForm = new TriangleInfoForm();
-            triangleInfoForm.SetDictionary(_varStateDictionary, "Timer", VarStateMario.VarNamesString());
+            string varNamesString;
+            switch (_varToRecord)
+            {
+                case VarToRecord.Mario:
+                    varNamesString = VarStateMario.VarNamesString();
+                    break;
+                case VarToRecord.Penguin:
+                    varNamesString = VarStatePenguin.VarNamesString();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            triangleInfoForm.SetDictionary(_varStateDictionary, "Timer", varNamesString);
             triangleInfoForm.ShowDialog();
         }
 
@@ -235,7 +247,18 @@ namespace SM64_Diagnostic.Managers
             uint marioObjAddress = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
             _currentTimer = Config.Stream.GetInt32(marioObjAddress + Config.ObjectSlots.TimerOffset);
 
-            VarState varState = VarStateMario.GetCurrent();
+            VarState varState;
+            switch (_varToRecord)
+            {
+                case VarToRecord.Mario:
+                    varState = VarStateMario.GetCurrent();
+                    break;
+                case VarToRecord.Penguin:
+                    varState = VarStatePenguin.GetCurrent();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
 
             if (_checkBoxTestingRecord.Checked)
             {
