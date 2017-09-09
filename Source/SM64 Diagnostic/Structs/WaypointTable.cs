@@ -78,11 +78,32 @@ namespace SM64_Diagnostic.Structs
             uint waypointAddress = Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset);
             if (waypointAddress == 0) return 0;
             short prevWaypointIndex = Config.Stream.GetInt16(waypointAddress + Config.Waypoint.IndexOffset);
+
             if (!_waypointDictionary.ContainsKey(prevWaypointIndex)) return 0;
-            WaypointReference waypoint = _waypointDictionary[prevWaypointIndex];
-            if (!_distanceDictionary.ContainsKey(waypoint)) return 0;
-            double distance = _distanceDictionary[waypoint];
-            return distance;
+            WaypointReference previousWaypoint = _waypointDictionary[prevWaypointIndex];
+
+            if (!_nextWaypointDictionary.ContainsKey(previousWaypoint)) return 0;
+            WaypointReference? nullableNextWaypoint = _nextWaypointDictionary[previousWaypoint];
+            WaypointReference nextWaypoint;
+            if (nullableNextWaypoint == null)
+            {
+                if (!_previousWaypointDictionary.ContainsKey(previousWaypoint)) return 0;
+                WaypointReference? nullablePreviousPreviousWaypoint = _previousWaypointDictionary[previousWaypoint];
+                if (nullablePreviousPreviousWaypoint == null) return 0;
+                nextWaypoint = previousWaypoint;
+                previousWaypoint = nullablePreviousPreviousWaypoint.Value;
+            }
+            else
+            {
+                nextWaypoint = nullableNextWaypoint.Value;
+            }
+
+            /*
+            if (!_distanceDictionary.ContainsKey(previousWaypoint)) return 0;
+            double distance = _distanceDictionary[previousWaypoint];
+            */
+
+            return previousWaypoint.Index + nextWaypoint.Index / 100.0;
         }
     }
 }
