@@ -66,6 +66,23 @@ namespace SM64_Diagnostic.Utilities
             return numerator / denominator;
         }
 
+        public static double GetPlaneDistanceBetweenPoints(
+            double pointX, double pointY, double pointZ, double startX, double startY, double startZ, double endX, double endY, double endZ)
+        {
+            double startToPointX = pointX - startX;
+            double startToPointY = pointY - startY;
+            double startToPointZ = pointZ - startZ;
+            double startToEndX = endX - startX;
+            double startToEndY = endY - startY;
+            double startToEndZ = endZ - startZ;
+
+            double dotProduct = GetDotProduct(startToPointX, startToPointY, startToPointZ, startToEndX, startToEndY, startToEndZ);
+            double prevToNextDist = GetDistanceBetween(startX, startY, startZ, endX, endY, endZ);
+            double planeDistance = dotProduct / prevToNextDist;
+
+            return planeDistance;
+        }
+
         public static double NormalizeAngleDouble(double angle)
         {
             return NonNegativeModulus(angle, 65536);

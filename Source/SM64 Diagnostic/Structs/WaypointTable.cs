@@ -98,12 +98,22 @@ namespace SM64_Diagnostic.Structs
                 nextWaypoint = nullableNextWaypoint.Value;
             }
 
+            float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+            float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+            float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+
+            double planeDistance = MoreMath.GetPlaneDistanceBetweenPoints(
+                objX, objY, objZ,
+                previousWaypoint.X, previousWaypoint.Y, previousWaypoint.Z,
+                nextWaypoint.X, nextWaypoint.Y, nextWaypoint.Z);
+
             /*
             if (!_distanceDictionary.ContainsKey(previousWaypoint)) return 0;
             double distance = _distanceDictionary[previousWaypoint];
             */
 
-            return previousWaypoint.Index + nextWaypoint.Index / 100.0;
+            return planeDistance;
+            //return previousWaypoint.Index + nextWaypoint.Index / 100.0;
         }
     }
 }
