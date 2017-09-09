@@ -102,18 +102,16 @@ namespace SM64_Diagnostic.Structs
             float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
             float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
 
+            if (!_distanceDictionary.ContainsKey(previousWaypoint)) return 0;
+            double previousDistance = _distanceDictionary[previousWaypoint];
+
             double planeDistance = MoreMath.GetPlaneDistanceBetweenPoints(
                 objX, objY, objZ,
                 previousWaypoint.X, previousWaypoint.Y, previousWaypoint.Z,
                 nextWaypoint.X, nextWaypoint.Y, nextWaypoint.Z);
+            double totalDistance = previousDistance + planeDistance;
 
-            /*
-            if (!_distanceDictionary.ContainsKey(previousWaypoint)) return 0;
-            double distance = _distanceDictionary[previousWaypoint];
-            */
-
-            return planeDistance;
-            //return previousWaypoint.Index + nextWaypoint.Index / 100.0;
+            return totalDistance;
         }
     }
 }
