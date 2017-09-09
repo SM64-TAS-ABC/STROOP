@@ -8,6 +8,7 @@ using SM64_Diagnostic.Structs.Configurations;
 using System.Windows.Forms;
 using static SM64_Diagnostic.Structs.Configurations.Config;
 using static SM64_Diagnostic.Structs.Configurations.PositionControllerRelativeAngleConfig;
+using SM64_Diagnostic.Utilities;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -165,7 +166,7 @@ namespace SM64_Diagnostic.Managers
             {
                 return new VarStatePenguin()
                 {
-                    Progress = 0, //TODO update this
+                    Progress = Config.RacingPenguinWaypoints.GetProgress(Config.SwitchRomVersion(0x80348448, 0x803451F8)),
                 };
             }
 
