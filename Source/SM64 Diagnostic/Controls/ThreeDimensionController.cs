@@ -94,6 +94,23 @@ namespace SM64Diagnostic.Controls
                 checkbox.CheckedChanged += (sender, e) => actionCheckedChanged();
             }
 
+            // Implement ToolStripMenu
+
+            List<Button> buttonList = new List<Button>()
+            {
+                buttonSquareUp,
+                buttonSquareUpRight,
+                buttonSquareRight,
+                buttonSquareDownRight,
+                buttonSquareDown,
+                buttonSquareDownLeft,
+                buttonSquareLeft,
+                buttonSquareUpLeft,
+            };
+
+            List<(int, int)> positionList = buttonList.ConvertAll(
+                button => (button.Location.X, button.Location.Y));
+
             ToolStripMenuItem itemLeft = new ToolStripMenuItem("Face Left");
             ToolStripMenuItem itemRight = new ToolStripMenuItem("Face Right");
             ToolStripMenuItem itemUp = new ToolStripMenuItem("Face Up");
@@ -103,7 +120,7 @@ namespace SM64Diagnostic.Controls
             ToolStripMenuItem itemUpRight = new ToolStripMenuItem("Face Up-Right");
             ToolStripMenuItem itemDownRight = new ToolStripMenuItem("Face Down-Right");
 
-            Action<FacingDirection> SetFacingDirection = (FacingDirection facingDirection) =>
+            Action<FacingDirection, int> SetFacingDirection = (FacingDirection facingDirection, int direction) =>
             {
                 itemLeft.Checked = facingDirection == FacingDirection.Left;
                 itemRight.Checked = facingDirection == FacingDirection.Right;
@@ -113,16 +130,25 @@ namespace SM64Diagnostic.Controls
                 itemDownLeft.Checked = facingDirection == FacingDirection.DownLeft;
                 itemUpRight.Checked = facingDirection == FacingDirection.UpRight;
                 itemDownRight.Checked = facingDirection == FacingDirection.DownRight;
+
+                for (int i = 0; i < buttonList.Count; i++)
+                {
+                    int newDirection = (direction + i) % buttonList.Count;
+                    (int x, int y) = positionList[newDirection];
+                    Point newPoint = new Point(x, y);
+                    Button button = buttonList[i];
+                    button.Location = newPoint;
+                }
             };
 
-            itemLeft.Click += (sender, e) => SetFacingDirection(FacingDirection.Left);
-            itemRight.Click += (sender, e) => SetFacingDirection(FacingDirection.Right);
-            itemUp.Click += (sender, e) => SetFacingDirection(FacingDirection.Up);
-            itemDown.Click += (sender, e) => SetFacingDirection(FacingDirection.Down);
-            itemUpLeft.Click += (sender, e) => SetFacingDirection(FacingDirection.UpLeft);
-            itemDownLeft.Click += (sender, e) => SetFacingDirection(FacingDirection.DownLeft);
-            itemUpRight.Click += (sender, e) => SetFacingDirection(FacingDirection.UpRight);
-            itemDownRight.Click += (sender, e) => SetFacingDirection(FacingDirection.DownRight);
+            itemLeft.Click += (sender, e) => SetFacingDirection(FacingDirection.Left, 6);
+            itemRight.Click += (sender, e) => SetFacingDirection(FacingDirection.Right, 2);
+            itemUp.Click += (sender, e) => SetFacingDirection(FacingDirection.Up, 0);
+            itemDown.Click += (sender, e) => SetFacingDirection(FacingDirection.Down, 4);
+            itemUpLeft.Click += (sender, e) => SetFacingDirection(FacingDirection.UpLeft, 7);
+            itemDownLeft.Click += (sender, e) => SetFacingDirection(FacingDirection.DownLeft, 5);
+            itemUpRight.Click += (sender, e) => SetFacingDirection(FacingDirection.UpRight, 1);
+            itemDownRight.Click += (sender, e) => SetFacingDirection(FacingDirection.DownRight, 3);
 
             ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
             contextMenuStrip.Items.Add(itemLeft);
