@@ -108,8 +108,8 @@ namespace SM64Diagnostic.Controls
                 buttonSquareUpLeft,
             };
 
-            List<(int, int)> positionList = buttonList.ConvertAll(
-                button => (button.Location.X, button.Location.Y));
+            List<Point> positionList = buttonList.ConvertAll(
+                button => new Point(button.Location.X, button.Location.Y));
 
             ToolStripMenuItem itemLeft = new ToolStripMenuItem("Face Left");
             ToolStripMenuItem itemRight = new ToolStripMenuItem("Face Right");
@@ -134,8 +134,7 @@ namespace SM64Diagnostic.Controls
                 for (int i = 0; i < buttonList.Count; i++)
                 {
                     int newDirection = (direction + i) % buttonList.Count;
-                    (int x, int y) = positionList[newDirection];
-                    Point newPoint = new Point(x, y);
+                    Point newPoint = positionList[newDirection];
                     Button button = buttonList[i];
                     button.Location = newPoint;
                 }
