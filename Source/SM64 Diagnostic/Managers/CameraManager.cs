@@ -23,6 +23,7 @@ namespace SM64_Diagnostic.Managers
             var cameraPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraPos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Euler,
+                cameraPosGroupBox,
                 cameraPosGroupBox.Controls["buttonCameraPosXn"] as Button,
                 cameraPosGroupBox.Controls["buttonCameraPosXp"] as Button,
                 cameraPosGroupBox.Controls["buttonCameraPosZn"] as Button,
@@ -48,6 +49,7 @@ namespace SM64_Diagnostic.Managers
             var cameraSphericalPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraSphericalPos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Spherical,
+                cameraSphericalPosGroupBox,
                 cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTn"] as Button,
                 cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTp"] as Button,
                 cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosPn"] as Button,

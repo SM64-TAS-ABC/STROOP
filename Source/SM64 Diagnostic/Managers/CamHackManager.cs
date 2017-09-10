@@ -50,6 +50,7 @@ namespace SM64_Diagnostic.Managers
             var cameraHackPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackPos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Euler,
+                cameraHackPosGroupBox,
                 cameraHackPosGroupBox.Controls["buttonCameraHackPosXn"] as Button,
                 cameraHackPosGroupBox.Controls["buttonCameraHackPosXp"] as Button,
                 cameraHackPosGroupBox.Controls["buttonCameraHackPosZn"] as Button,
@@ -76,6 +77,7 @@ namespace SM64_Diagnostic.Managers
             var cameraHackSphericalPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackSphericalPos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Spherical,
+                cameraHackSphericalPosGroupBox,
                 cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTn"] as Button,
                 cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTp"] as Button,
                 cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosPn"] as Button,
@@ -101,6 +103,7 @@ namespace SM64_Diagnostic.Managers
             var cameraHackFocusPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackFocusPos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Euler,
+                cameraHackFocusPosGroupBox,
                 cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosXn"] as Button,
                 cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosXp"] as Button,
                 cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosZn"] as Button,
@@ -127,6 +130,7 @@ namespace SM64_Diagnostic.Managers
             var cameraHackSphericalFocusPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackSphericalFocusPos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Spherical,
+                cameraHackSphericalFocusPosGroupBox,
                 cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosTn"] as Button,
                 cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosTp"] as Button,
                 cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosPn"] as Button,
@@ -152,6 +156,7 @@ namespace SM64_Diagnostic.Managers
             var cameraHackBothPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackBothPos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Euler,
+                cameraHackBothPosGroupBox,
                 cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosXn"] as Button,
                 cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosXp"] as Button,
                 cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosZn"] as Button,

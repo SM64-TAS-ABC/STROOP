@@ -322,6 +322,7 @@ namespace SM64_Diagnostic.Managers
             var objPosGroupBox = objPanel.Controls["groupBoxObjPos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Euler,
+                objPosGroupBox,
                 objPosGroupBox.Controls["buttonObjPosXn"] as Button,
                 objPosGroupBox.Controls["buttonObjPosXp"] as Button,
                 objPosGroupBox.Controls["buttonObjPosZn"] as Button,
@@ -395,6 +396,7 @@ namespace SM64_Diagnostic.Managers
             var objHomeGroupBox = objPanel.Controls["groupBoxObjHome"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Euler,
+                objHomeGroupBox,
                 objHomeGroupBox.Controls["buttonObjHomeXn"] as Button,
                 objHomeGroupBox.Controls["buttonObjHomeXp"] as Button,
                 objHomeGroupBox.Controls["buttonObjHomeZn"] as Button,

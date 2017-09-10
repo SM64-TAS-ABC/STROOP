@@ -34,6 +34,7 @@ namespace SM64_Diagnostic.Managers
             var marioPosGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioPos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Euler,
+                marioPosGroupBox,
                 marioPosGroupBox.Controls["buttonMarioPosXn"] as Button,
                 marioPosGroupBox.Controls["buttonMarioPosXp"] as Button,
                 marioPosGroupBox.Controls["buttonMarioPosZn"] as Button,
@@ -86,6 +87,7 @@ namespace SM64_Diagnostic.Managers
             var marioHOLPGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioHOLP"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Euler,
+                marioHOLPGroupBox,
                 marioHOLPGroupBox.Controls["buttonMarioHOLPXn"] as Button,
                 marioHOLPGroupBox.Controls["buttonMarioHOLPXp"] as Button,
                 marioHOLPGroupBox.Controls["buttonMarioHOLPZn"] as Button,

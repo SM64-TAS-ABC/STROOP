@@ -143,6 +143,7 @@ namespace SM64_Diagnostic.Managers
             var trianglePosGroupBox = splitContainerTriangles.Panel1.Controls["groupBoxTrianglePos"] as GroupBox;
             ThreeDimensionController.initialize(
                 CoordinateSystem.Euler,
+                trianglePosGroupBox,
                 trianglePosGroupBox.Controls["buttonTrianglePosXn"] as Button,
                 trianglePosGroupBox.Controls["buttonTrianglePosXp"] as Button,
                 trianglePosGroupBox.Controls["buttonTrianglePosZn"] as Button,

@@ -14,6 +14,7 @@ namespace SM64Diagnostic.Controls
     {
         public static void initialize(
             CoordinateSystem coordinateSystem,
+            GroupBox groupbox,
             Button buttonSquareLeft,
             Button buttonSquareRight,
             Button buttonSquareTop,
