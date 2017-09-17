@@ -149,6 +149,11 @@ namespace SM64Diagnostic.Controls
 
             aggregateCheckbox.CheckedChanged += (sender, e) => actionAggregateCheckedChanged();
             multiplyCheckbox.CheckedChanged += (sender, e) => actionMultiplyCheckedChanged();
+
+            InversionController.AddInversionContextMenuStrip(scaleWidthLeftButton, scaleWidthRightButton);
+            InversionController.AddInversionContextMenuStrip(scaleHeightLeftButton, scaleHeightRightButton);
+            InversionController.AddInversionContextMenuStrip(scaleDepthLeftButton, scaleDepthRightButton);
+            InversionController.AddInversionContextMenuStrip(scaleAggregateLeftButton, scaleAggregateRightButton);
         }
     }
 }

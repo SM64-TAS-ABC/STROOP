@@ -142,6 +142,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\ModelGraphics.cs" />
+    <Compile Include="Controls\InversionController.cs" />
     <Compile Include="Controls\ScaleController.cs" />
     <Compile Include="Controls\ScalarController.cs" />
     <Compile Include="Controls\ThreeDimensionController.cs" />
