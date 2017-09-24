@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <InputData>
-  <Data type="sbyte" address="0x02" offset="InputCurrent">Current H</Data>
-  <Data type="sbyte" address="0x03" offset="InputCurrent">Current V</Data>
+  <Data type="float" address="0x00C26A1C" offset="Absolute">Magnitude</Data>
+  <Data type="float" address="0x00C26A54" offset="Absolute">Magnitude</Data>
+  
+  <Data type="sbyte" address="0x02" offset="InputCurrent">Current X</Data>
+  <Data type="sbyte" address="0x03" offset="InputCurrent">Current Y</Data>
   <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x80" color="#c4cfff">Current A</Data>
   <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x40" color="#ccffd3">Current B</Data>
   <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x20" color="#d1d1d1">Current Z</Data>
@@ -17,8 +20,8 @@
   <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x02" color="#d1d1d1">Current D&lt;</Data>
   <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x01" color="#d1d1d1">Current D></Data>
 
-  <Data type="sbyte" address="0x02" offset="InputBuffered">Buffered H</Data>
-  <Data type="sbyte" address="0x03" offset="InputBuffered">Buffered V</Data>
+  <Data type="sbyte" address="0x02" offset="InputBuffered">Buffered X</Data>
+  <Data type="sbyte" address="0x03" offset="InputBuffered">Buffered Y</Data>
   <Data type="byte" address="0x00" offset="InputBuffered" isBool="true" mask="0x80" color="#c4cfff">Buffered A</Data>
   <Data type="byte" address="0x00" offset="InputBuffered" isBool="true" mask="0x40" color="#ccffd3">Buffered B</Data>
   <Data type="byte" address="0x00" offset="InputBuffered" isBool="true" mask="0x20" color="#d1d1d1">Buffered Z</Data>
