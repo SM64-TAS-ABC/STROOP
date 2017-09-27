@@ -681,6 +681,14 @@ namespace SM64_Diagnostic.Utilities
                                     Config.Input.CurrentInputAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
+                                case "JustPressedInputAddressUS":
+                                    Config.Input.JustPressedInputAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
+                                case "JustPressedInputAddressJP":
+                                    Config.Input.JustPressedInputAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
                                 case "BufferedInputAddressUS":
                                     Config.Input.BufferedInputAddressUS = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

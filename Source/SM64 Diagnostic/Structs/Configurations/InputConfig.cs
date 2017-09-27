@@ -12,6 +12,10 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint CurrentInputAddressUS;
         public uint CurrentInputAddressJP;
 
+        public uint JustPressedInputAddress { get { return Config.SwitchRomVersion(JustPressedInputAddressUS, JustPressedInputAddressJP); } }
+        public uint JustPressedInputAddressUS;
+        public uint JustPressedInputAddressJP;
+
         public uint BufferedInputAddress { get { return Config.SwitchRomVersion(BufferedInputAddressUS, BufferedInputAddressJP); } }
         public uint BufferedInputAddressUS;
         public uint BufferedInputAddressJP;
