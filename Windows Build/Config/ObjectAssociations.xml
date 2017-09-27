@@ -185,7 +185,8 @@
     <Data groupList="ObjectSpecific" type="byte" address="0x127" offset="Object" isBool="true">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="int" address="0x150" offset="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="int" address="0x184" offset="Object">HP</Data>
-    <Data groupList="ObjectSpecific" type="int" address="0xFC" offset="Object">Num A Presses</Data>
+    <Data groupList="ObjectSpecific" type="int" address="0xFC" offset="Object">Escape Counter</Data>
+    <Data groupList="ObjectSpecific" type="int" addressUS="0x80361270" addressJP="0x8035FF00" offset="Relative" isBool="true">Control Stick Held</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000254" name="King Bob-omb Anchor">
     <Image path="King Bob-omb Anchor.png"/>
@@ -246,7 +247,7 @@
     <Data groupList="ObjectSpecific" type="int" address="0x150" offset="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="int" address="0xFC" offset="Object">Stopping </Data>
     <Data groupList="ObjectSpecific" type="int" address="0x178" offset="Object">Throwing Phase</Data>
-    <Data groupList="ObjectSpecific" type="int" address="0x100" offset="Object">Num A Presses</Data>
+    <Data groupList="ObjectSpecific" type="int" address="0x100" offset="Object">Escape Counter</Data>
     <Data groupList="ObjectSpecific" type="int" addressUS="0x80361270" addressJP="0x8035FF00" offset="Relative" isBool="true">Control Stick Held</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000584" name="Chuckya Anchor">
