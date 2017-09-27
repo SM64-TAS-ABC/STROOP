@@ -156,6 +156,7 @@ namespace SM64_Diagnostic.Structs
             Object,
             Triangle,
             InputCurrent,
+            InputJustPressed,
             InputBuffered,
             Graphics,
             Animation,

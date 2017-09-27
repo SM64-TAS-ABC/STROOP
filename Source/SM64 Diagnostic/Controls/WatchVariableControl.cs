@@ -189,6 +189,9 @@ namespace SM64_Diagnostic.Controls
                 case OffsetType.InputCurrent:
                     output = new List<uint> { Config.Input.CurrentInputAddress };
                     break;
+                case OffsetType.InputJustPressed:
+                    output = new List<uint> { Config.Input.CurrentInputAddress };
+                    break;
                 case OffsetType.InputBuffered:
                     output = new List<uint> { Config.Input.BufferedInputAddress };
                     break;
