@@ -25,8 +25,6 @@
   <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x02" color="#d1d1d1">Current D&lt;</Data>
   <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x01" color="#d1d1d1">Current D></Data>
   
-  <Data type="sbyte" address="0x02" offset="InputJustPressed">Just Pressed X</Data>
-  <Data type="sbyte" address="0x03" offset="InputJustPressed">Just Pressed Y</Data>
   <Data type="byte" address="0x00" offset="InputJustPressed" isBool="true" mask="0x80" color="#c4cfff">Just Pressed A</Data>
   <Data type="byte" address="0x00" offset="InputJustPressed" isBool="true" mask="0x40" color="#ccffd3">Just Pressed B</Data>
   <Data type="byte" address="0x00" offset="InputJustPressed" isBool="true" mask="0x20" color="#d1d1d1">Just Pressed Z</Data>
@@ -41,7 +39,7 @@
   <Data type="byte" address="0x00" offset="InputJustPressed" isBool="true" mask="0x04" color="#d1d1d1">Just Pressed Dv</Data>
   <Data type="byte" address="0x00" offset="InputJustPressed" isBool="true" mask="0x02" color="#d1d1d1">Just Pressed D&lt;</Data>
   <Data type="byte" address="0x00" offset="InputJustPressed" isBool="true" mask="0x01" color="#d1d1d1">Just Pressed D></Data>
-
+  
   <Data type="sbyte" address="0x02" offset="InputBuffered">Buffered X</Data>
   <Data type="sbyte" address="0x03" offset="InputBuffered">Buffered Y</Data>
   <Data type="byte" address="0x00" offset="InputBuffered" isBool="true" mask="0x80" color="#c4cfff">Buffered A</Data>

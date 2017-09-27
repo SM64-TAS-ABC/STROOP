@@ -190,7 +190,7 @@ namespace SM64_Diagnostic.Controls
                     output = new List<uint> { Config.Input.CurrentInputAddress };
                     break;
                 case OffsetType.InputJustPressed:
-                    output = new List<uint> { Config.Input.CurrentInputAddress };
+                    output = new List<uint> { 0x8033AFA2 };
                     break;
                 case OffsetType.InputBuffered:
                     output = new List<uint> { Config.Input.BufferedInputAddress };
