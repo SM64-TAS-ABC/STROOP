@@ -1,12 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <InputData>
-  <Data type="float" address="0x00C26A14" offset="Absolute">Effective X</Data>
-  <Data type="float" address="0x00C26A18" offset="Absolute">Effective Y</Data>
-  <Data type="float" address="0x00C26A1C" offset="Absolute">Magnitude</Data>
-  
-  <Data type="float" address="0x00C26A4C" offset="Absolute">Effective X</Data>
-  <Data type="float" address="0x00C26A50" offset="Absolute">Effective Y</Data>
-  <Data type="float" address="0x00C26A54" offset="Absolute">Magnitude</Data>
+  <Data type="float" address="0x8033AF94" offset="Relative">Effective X</Data>
+  <Data type="float" address="0x8033AF98" offset="Relative">Effective Y</Data>
+  <Data type="float" address="0x8033AF9C" offset="Relative">Magnitude</Data>
   
   <Data type="sbyte" address="0x02" offset="InputCurrent">Current X</Data>
   <Data type="sbyte" address="0x03" offset="InputCurrent">Current Y</Data>
