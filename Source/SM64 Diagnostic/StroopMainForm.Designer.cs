@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -782,23 +782,23 @@ namespace SM64_Diagnostic
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.groupBoxControlStick = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.betterTextbox1 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox2 = new SM64_Diagnostic.BetterTextbox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.labelControlStick8 = new System.Windows.Forms.Label();
+            this.labelControlStick7 = new System.Windows.Forms.Label();
+            this.labelControlStick6 = new System.Windows.Forms.Label();
+            this.labelControlStick5 = new System.Windows.Forms.Label();
+            this.checkBoxUseInput = new System.Windows.Forms.CheckBox();
+            this.labelControlStick4 = new System.Windows.Forms.Label();
+            this.labelControlSick1 = new System.Windows.Forms.Label();
+            this.labelControlStick3 = new System.Windows.Forms.Label();
+            this.labelControlSick2 = new System.Windows.Forms.Label();
+            this.labelControlSick6 = new System.Windows.Forms.Label();
+            this.labelControlSick3 = new System.Windows.Forms.Label();
+            this.labelControlSick5 = new System.Windows.Forms.Label();
+            this.labelControlSick4 = new System.Windows.Forms.Label();
+            this.betterTextboxControlStick1 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextboxControlStick2 = new SM64_Diagnostic.BetterTextbox();
+            this.labelControlStick1 = new System.Windows.Forms.Label();
+            this.labelControlStick2 = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -8223,8 +8223,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -10411,217 +10411,217 @@ namespace SM64_Diagnostic
             // 
             // groupBoxControlStick
             // 
-            this.groupBoxControlStick.Controls.Add(this.label2);
-            this.groupBoxControlStick.Controls.Add(this.betterTextbox2);
-            this.groupBoxControlStick.Controls.Add(this.label4);
-            this.groupBoxControlStick.Controls.Add(this.betterTextbox1);
-            this.groupBoxControlStick.Controls.Add(this.label5);
-            this.groupBoxControlStick.Controls.Add(this.label6);
-            this.groupBoxControlStick.Controls.Add(this.checkBox1);
-            this.groupBoxControlStick.Controls.Add(this.label7);
-            this.groupBoxControlStick.Controls.Add(this.label8);
-            this.groupBoxControlStick.Controls.Add(this.label16);
-            this.groupBoxControlStick.Controls.Add(this.label15);
-            this.groupBoxControlStick.Controls.Add(this.label9);
-            this.groupBoxControlStick.Controls.Add(this.label10);
-            this.groupBoxControlStick.Controls.Add(this.label11);
-            this.groupBoxControlStick.Controls.Add(this.label12);
-            this.groupBoxControlStick.Controls.Add(this.label13);
-            this.groupBoxControlStick.Controls.Add(this.label14);
-            this.groupBoxControlStick.Location = new System.Drawing.Point(388, 116);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick8);
+            this.groupBoxControlStick.Controls.Add(this.betterTextboxControlStick2);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick7);
+            this.groupBoxControlStick.Controls.Add(this.betterTextboxControlStick1);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick6);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick5);
+            this.groupBoxControlStick.Controls.Add(this.checkBoxUseInput);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick4);
+            this.groupBoxControlStick.Controls.Add(this.labelControlSick1);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick2);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick1);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick3);
+            this.groupBoxControlStick.Controls.Add(this.labelControlSick2);
+            this.groupBoxControlStick.Controls.Add(this.labelControlSick6);
+            this.groupBoxControlStick.Controls.Add(this.labelControlSick3);
+            this.groupBoxControlStick.Controls.Add(this.labelControlSick5);
+            this.groupBoxControlStick.Controls.Add(this.labelControlSick4);
+            this.groupBoxControlStick.Location = new System.Drawing.Point(343, 6);
             this.groupBoxControlStick.Name = "groupBoxControlStick";
-            this.groupBoxControlStick.Size = new System.Drawing.Size(331, 297);
+            this.groupBoxControlStick.Size = new System.Drawing.Size(203, 234);
             this.groupBoxControlStick.TabIndex = 41;
             this.groupBoxControlStick.TabStop = false;
             this.groupBoxControlStick.Text = "Control Stick";
             // 
-            // label2
+            // labelControlStick8
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 231);
-            this.label2.MinimumSize = new System.Drawing.Size(100, 2);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Name:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelControlStick8.AutoSize = true;
+            this.labelControlStick8.Location = new System.Drawing.Point(9, 203);
+            this.labelControlStick8.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStick8.Name = "labelControlStick8";
+            this.labelControlStick8.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStick8.TabIndex = 18;
+            this.labelControlStick8.Text = "Diff:";
+            this.labelControlStick8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label4
+            // labelControlStick7
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 206);
-            this.label4.MinimumSize = new System.Drawing.Size(100, 2);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 13);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Name:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelControlStick7.AutoSize = true;
+            this.labelControlStick7.Location = new System.Drawing.Point(9, 178);
+            this.labelControlStick7.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStick7.Name = "labelControlStick7";
+            this.labelControlStick7.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStick7.TabIndex = 18;
+            this.labelControlStick7.Text = "Angle Intended:";
+            this.labelControlStick7.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label5
+            // labelControlStick6
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 184);
-            this.label5.MinimumSize = new System.Drawing.Size(100, 2);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 13);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Name:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelControlStick6.AutoSize = true;
+            this.labelControlStick6.Location = new System.Drawing.Point(9, 156);
+            this.labelControlStick6.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStick6.Name = "labelControlStick6";
+            this.labelControlStick6.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStick6.TabIndex = 18;
+            this.labelControlStick6.Text = "Angle Guess:";
+            this.labelControlStick6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label6
+            // labelControlStick5
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 161);
-            this.label6.MinimumSize = new System.Drawing.Size(100, 2);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 13);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Name:";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelControlStick5.AutoSize = true;
+            this.labelControlStick5.Location = new System.Drawing.Point(9, 133);
+            this.labelControlStick5.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStick5.Name = "labelControlStick5";
+            this.labelControlStick5.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStick5.TabIndex = 18;
+            this.labelControlStick5.Text = "Angle:";
+            this.labelControlStick5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // checkBox1
+            // checkBoxUseInput
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(115, 37);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(61, 17);
-            this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Record";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxUseInput.AutoSize = true;
+            this.checkBoxUseInput.Location = new System.Drawing.Point(115, 15);
+            this.checkBoxUseInput.Name = "checkBoxUseInput";
+            this.checkBoxUseInput.Size = new System.Drawing.Size(72, 17);
+            this.checkBoxUseInput.TabIndex = 17;
+            this.checkBoxUseInput.Text = "Use Input";
+            this.checkBoxUseInput.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // labelControlStick4
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 139);
-            this.label7.MinimumSize = new System.Drawing.Size(100, 2);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 13);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Name:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelControlStick4.AutoSize = true;
+            this.labelControlStick4.Location = new System.Drawing.Point(9, 111);
+            this.labelControlStick4.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStick4.Name = "labelControlStick4";
+            this.labelControlStick4.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStick4.TabIndex = 18;
+            this.labelControlStick4.Text = "Effective Y:";
+            this.labelControlStick4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label8
+            // labelControlSick1
             // 
-            this.label8.AutoSize = true;
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label8.Location = new System.Drawing.Point(115, 117);
-            this.label8.MinimumSize = new System.Drawing.Size(60, 2);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 15);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Value";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelControlSick1.AutoSize = true;
+            this.labelControlSick1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelControlSick1.Location = new System.Drawing.Point(115, 89);
+            this.labelControlSick1.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelControlSick1.Name = "labelControlSick1";
+            this.labelControlSick1.Size = new System.Drawing.Size(60, 15);
+            this.labelControlSick1.TabIndex = 18;
+            this.labelControlSick1.Text = "Value";
+            this.labelControlSick1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label9
+            // labelControlStick3
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 118);
-            this.label9.MinimumSize = new System.Drawing.Size(100, 2);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 13);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Name:";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelControlStick3.AutoSize = true;
+            this.labelControlStick3.Location = new System.Drawing.Point(9, 90);
+            this.labelControlStick3.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStick3.Name = "labelControlStick3";
+            this.labelControlStick3.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStick3.TabIndex = 18;
+            this.labelControlStick3.Text = "Effective X:";
+            this.labelControlStick3.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label10
+            // labelControlSick2
             // 
-            this.label10.AutoSize = true;
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Location = new System.Drawing.Point(115, 138);
-            this.label10.MinimumSize = new System.Drawing.Size(60, 2);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(60, 15);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Value";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelControlSick2.AutoSize = true;
+            this.labelControlSick2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelControlSick2.Location = new System.Drawing.Point(115, 110);
+            this.labelControlSick2.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelControlSick2.Name = "labelControlSick2";
+            this.labelControlSick2.Size = new System.Drawing.Size(60, 15);
+            this.labelControlSick2.TabIndex = 18;
+            this.labelControlSick2.Text = "Value";
+            this.labelControlSick2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label11
+            // labelControlSick6
             // 
-            this.label11.AutoSize = true;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Location = new System.Drawing.Point(115, 230);
-            this.label11.MinimumSize = new System.Drawing.Size(60, 2);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(60, 15);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "Value";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelControlSick6.AutoSize = true;
+            this.labelControlSick6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelControlSick6.Location = new System.Drawing.Point(115, 202);
+            this.labelControlSick6.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelControlSick6.Name = "labelControlSick6";
+            this.labelControlSick6.Size = new System.Drawing.Size(60, 15);
+            this.labelControlSick6.TabIndex = 18;
+            this.labelControlSick6.Text = "Value";
+            this.labelControlSick6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label12
+            // labelControlSick3
             // 
-            this.label12.AutoSize = true;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label12.Location = new System.Drawing.Point(115, 160);
-            this.label12.MinimumSize = new System.Drawing.Size(60, 2);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 15);
-            this.label12.TabIndex = 18;
-            this.label12.Text = "Value";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelControlSick3.AutoSize = true;
+            this.labelControlSick3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelControlSick3.Location = new System.Drawing.Point(115, 132);
+            this.labelControlSick3.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelControlSick3.Name = "labelControlSick3";
+            this.labelControlSick3.Size = new System.Drawing.Size(60, 15);
+            this.labelControlSick3.TabIndex = 18;
+            this.labelControlSick3.Text = "Value";
+            this.labelControlSick3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label13
+            // labelControlSick5
             // 
-            this.label13.AutoSize = true;
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.Location = new System.Drawing.Point(115, 205);
-            this.label13.MinimumSize = new System.Drawing.Size(60, 2);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(60, 15);
-            this.label13.TabIndex = 18;
-            this.label13.Text = "Value";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelControlSick5.AutoSize = true;
+            this.labelControlSick5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelControlSick5.Location = new System.Drawing.Point(115, 177);
+            this.labelControlSick5.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelControlSick5.Name = "labelControlSick5";
+            this.labelControlSick5.Size = new System.Drawing.Size(60, 15);
+            this.labelControlSick5.TabIndex = 18;
+            this.labelControlSick5.Text = "Value";
+            this.labelControlSick5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label14
+            // labelControlSick4
             // 
-            this.label14.AutoSize = true;
-            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label14.Location = new System.Drawing.Point(115, 183);
-            this.label14.MinimumSize = new System.Drawing.Size(60, 2);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 15);
-            this.label14.TabIndex = 18;
-            this.label14.Text = "Value";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelControlSick4.AutoSize = true;
+            this.labelControlSick4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelControlSick4.Location = new System.Drawing.Point(115, 155);
+            this.labelControlSick4.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelControlSick4.Name = "labelControlSick4";
+            this.labelControlSick4.Size = new System.Drawing.Size(60, 15);
+            this.labelControlSick4.TabIndex = 18;
+            this.labelControlSick4.Text = "Value";
+            this.labelControlSick4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // betterTextbox1
+            // betterTextboxControlStick1
             // 
-            this.betterTextbox1.Location = new System.Drawing.Point(115, 66);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(60, 20);
-            this.betterTextbox1.TabIndex = 28;
-            this.betterTextbox1.Text = "100";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextboxControlStick1.Location = new System.Drawing.Point(115, 38);
+            this.betterTextboxControlStick1.Name = "betterTextboxControlStick1";
+            this.betterTextboxControlStick1.Size = new System.Drawing.Size(60, 20);
+            this.betterTextboxControlStick1.TabIndex = 28;
+            this.betterTextboxControlStick1.Text = "100";
+            this.betterTextboxControlStick1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox2
+            // betterTextboxControlStick2
             // 
-            this.betterTextbox2.Location = new System.Drawing.Point(115, 92);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(60, 20);
-            this.betterTextbox2.TabIndex = 28;
-            this.betterTextbox2.Text = "100";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextboxControlStick2.Location = new System.Drawing.Point(115, 64);
+            this.betterTextboxControlStick2.Name = "betterTextboxControlStick2";
+            this.betterTextboxControlStick2.Size = new System.Drawing.Size(60, 20);
+            this.betterTextboxControlStick2.TabIndex = 28;
+            this.betterTextboxControlStick2.Text = "100";
+            this.betterTextboxControlStick2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label15
+            // labelControlStick1
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(9, 69);
-            this.label15.MinimumSize = new System.Drawing.Size(100, 2);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(100, 13);
-            this.label15.TabIndex = 18;
-            this.label15.Text = "Name:";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelControlStick1.AutoSize = true;
+            this.labelControlStick1.Location = new System.Drawing.Point(9, 41);
+            this.labelControlStick1.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStick1.Name = "labelControlStick1";
+            this.labelControlStick1.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStick1.TabIndex = 18;
+            this.labelControlStick1.Text = "Raw X:";
+            this.labelControlStick1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label16
+            // labelControlStick2
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(9, 95);
-            this.label16.MinimumSize = new System.Drawing.Size(100, 2);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(100, 13);
-            this.label16.TabIndex = 18;
-            this.label16.Text = "Name:";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelControlStick2.AutoSize = true;
+            this.labelControlStick2.Location = new System.Drawing.Point(9, 67);
+            this.labelControlStick2.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStick2.Name = "labelControlStick2";
+            this.labelControlStick2.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStick2.TabIndex = 18;
+            this.labelControlStick2.Text = "Raw Y:";
+            this.labelControlStick2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // StroopMainForm
             // 
@@ -11741,23 +11741,23 @@ namespace SM64_Diagnostic
         private Label labelGotoX;
         private Button buttonGotoGetCurrent;
         private GroupBox groupBoxControlStick;
-        private Label label2;
-        private BetterTextbox betterTextbox2;
-        private Label label4;
-        private BetterTextbox betterTextbox1;
-        private Label label5;
-        private Label label6;
-        private CheckBox checkBox1;
-        private Label label7;
-        private Label label8;
-        private Label label16;
-        private Label label15;
-        private Label label9;
-        private Label label10;
-        private Label label11;
-        private Label label12;
-        private Label label13;
-        private Label label14;
+        private Label labelControlStick8;
+        private BetterTextbox betterTextboxControlStick2;
+        private Label labelControlStick7;
+        private BetterTextbox betterTextboxControlStick1;
+        private Label labelControlStick6;
+        private Label labelControlStick5;
+        private CheckBox checkBoxUseInput;
+        private Label labelControlStick4;
+        private Label labelControlSick1;
+        private Label labelControlStick2;
+        private Label labelControlStick1;
+        private Label labelControlStick3;
+        private Label labelControlSick2;
+        private Label labelControlSick6;
+        private Label labelControlSick3;
+        private Label labelControlSick5;
+        private Label labelControlSick4;
     }
 }
 
