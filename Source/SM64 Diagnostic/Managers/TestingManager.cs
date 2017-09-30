@@ -16,6 +16,8 @@ namespace SM64_Diagnostic.Managers
     {
         public static TestingManager Instance;
 
+        // Recording
+        GroupBox _groupBoxRecording;
         CheckBox _checkBoxTestingRecord;
         Button _buttonTestingClear;
         Button _buttonTestingShow;
@@ -34,7 +36,6 @@ namespace SM64_Diagnostic.Managers
         Label _labelMetric5Value;
         Label _labelMetric6Value;
 
-        GroupBox _groupBoxVarToRecord;
         RadioButton _radioButtonMario;
         RadioButton _radioButtonPenguin;
 
@@ -51,35 +52,56 @@ namespace SM64_Diagnostic.Managers
         int _badCollisions;
         int _gaps;
 
+        // Control stick
+        GroupBox _groupBoxControlStick;
+        CheckBox _checkBoxUseInput;
+        BetterTextbox _betterTextboxControlStick1;
+        BetterTextbox _betterTextboxControlStick2;
+        Label _labelControlStick1;
+        Label _labelControlStick2;
+        Label _labelControlStick3;
+        Label _labelControlStick4;
+        Label _labelControlStick5;
+        Label _labelControlStick6;
+
+        // Goto
+        GroupBox _groupBoxGoto;
+        BetterTextbox _betterTextboxGotoX;
+        BetterTextbox _betterTextboxGotoY;
+        BetterTextbox _betterTextboxGotoZ;
+        Button _buttonGoto;
+
         public TestingManager(TabPage tabControl)
         {
             Instance = this;
 
-            _checkBoxTestingRecord = tabControl.Controls["checkBoxTestingRecord"] as CheckBox;
+            // Recording
+            _groupBoxRecording = tabControl.Controls["groupBoxRecording"] as GroupBox;
+
+            _checkBoxTestingRecord = _groupBoxRecording.Controls["checkBoxTestingRecord"] as CheckBox;
             _checkBoxTestingRecord.Click += (sender, e) => SetRecordOn(_checkBoxTestingRecord.Checked);
-            _buttonTestingClear = tabControl.Controls["buttonTestingClear"] as Button;
+            _buttonTestingClear = _groupBoxRecording.Controls["buttonTestingClear"] as Button;
             _buttonTestingClear.Click += (sender, e) => ClearData();
-            _buttonTestingShow = tabControl.Controls["buttonTestingShow"] as Button;
+            _buttonTestingShow = _groupBoxRecording.Controls["buttonTestingShow"] as Button;
             _buttonTestingShow.Click += (sender, e) => ShowData();
 
-            _labelMetric1Name = tabControl.Controls["labelMetric1Name"] as Label;
-            _labelMetric2Name = tabControl.Controls["labelMetric2Name"] as Label;
-            _labelMetric3Name = tabControl.Controls["labelMetric3Name"] as Label;
-            _labelMetric4Name = tabControl.Controls["labelMetric4Name"] as Label;
-            _labelMetric5Name = tabControl.Controls["labelMetric5Name"] as Label;
-            _labelMetric6Name = tabControl.Controls["labelMetric6Name"] as Label;
+            _labelMetric1Name = _groupBoxRecording.Controls["labelMetric1Name"] as Label;
+            _labelMetric2Name = _groupBoxRecording.Controls["labelMetric2Name"] as Label;
+            _labelMetric3Name = _groupBoxRecording.Controls["labelMetric3Name"] as Label;
+            _labelMetric4Name = _groupBoxRecording.Controls["labelMetric4Name"] as Label;
+            _labelMetric5Name = _groupBoxRecording.Controls["labelMetric5Name"] as Label;
+            _labelMetric6Name = _groupBoxRecording.Controls["labelMetric6Name"] as Label;
 
-            _labelMetric1Value = tabControl.Controls["labelMetric1Value"] as Label;
-            _labelMetric2Value = tabControl.Controls["labelMetric2Value"] as Label;
-            _labelMetric3Value = tabControl.Controls["labelMetric3Value"] as Label;
-            _labelMetric4Value = tabControl.Controls["labelMetric4Value"] as Label;
-            _labelMetric5Value = tabControl.Controls["labelMetric5Value"] as Label;
-            _labelMetric6Value = tabControl.Controls["labelMetric6Value"] as Label;
+            _labelMetric1Value = _groupBoxRecording.Controls["labelMetric1Value"] as Label;
+            _labelMetric2Value = _groupBoxRecording.Controls["labelMetric2Value"] as Label;
+            _labelMetric3Value = _groupBoxRecording.Controls["labelMetric3Value"] as Label;
+            _labelMetric4Value = _groupBoxRecording.Controls["labelMetric4Value"] as Label;
+            _labelMetric5Value = _groupBoxRecording.Controls["labelMetric5Value"] as Label;
+            _labelMetric6Value = _groupBoxRecording.Controls["labelMetric6Value"] as Label;
 
-            _groupBoxVarToRecord = tabControl.Controls["groupBoxVarToRecord"] as GroupBox;
-            _radioButtonMario = _groupBoxVarToRecord.Controls["radioButtonMario"] as RadioButton;
+            _radioButtonMario = _groupBoxRecording.Controls["radioButtonMario"] as RadioButton;
             _radioButtonMario.Click += (sender, e) => _varToRecord = VarToRecord.Mario;
-            _radioButtonPenguin = _groupBoxVarToRecord.Controls["radioButtonPenguin"] as RadioButton;
+            _radioButtonPenguin = _groupBoxRecording.Controls["radioButtonPenguin"] as RadioButton;
             _radioButtonPenguin.Click += (sender, e) => _varToRecord = VarToRecord.Penguin;
 
             if (_radioButtonMario.Checked)
@@ -104,6 +126,38 @@ namespace SM64_Diagnostic.Managers
             {
                 VarStateDictionary.Add(timer, new VarStatePenguin() { Progress = progress });
             }
+
+            /*
+            // Control stick
+            _groupBoxControlStick = tabControl.Controls["groupBoxControlStick"] as GroupBox;
+            _checkBoxUseInput = _groupBoxControlStick.Controls["checkBoxUseInput"] as CheckBox;
+            _betterTextboxControlStick1 = _groupBoxControlStick.Controls["betterTextboxControlStick1"] as BetterTextbox;
+            _betterTextboxControlStick2 = _groupBoxControlStick.Controls["betterTextboxControlStick2"] as BetterTextbox;
+            _labelControlStick1 = _groupBoxControlStick.Controls["labelControlStick1"] as Label;
+            _labelControlStick2 = _groupBoxControlStick.Controls["labelControlStick2"] as Label;
+            _labelControlStick3 = _groupBoxControlStick.Controls["labelControlStick3"] as Label;
+            _labelControlStick4 = _groupBoxControlStick.Controls["labelControlStick4"] as Label;
+            _labelControlStick5 = _groupBoxControlStick.Controls["labelControlStick5"] as Label;
+            _labelControlStick6 = _groupBoxControlStick.Controls["labelControlStick6"] as Label;
+
+            // Goto
+            _groupBoxGoto = tabControl.Controls["groupBoxGoto"] as GroupBox;
+            _betterTextboxGotoX = _groupBoxGoto.Controls["betterTextboxGotoX"] as BetterTextbox;
+            _betterTextboxGotoY = _groupBoxGoto.Controls["betterTextboxGotoY"] as BetterTextbox;
+            _betterTextboxGotoZ = _groupBoxGoto.Controls["betterTextboxGotoZ"] as BetterTextbox;
+            _buttonGoto = _groupBoxGoto.Controls["buttonGoto"] as Button;
+            _buttonGoto.Click += (sender, e) =>
+            {
+                double? gotoX = MoreMath.ParseDoubleNullable(_betterTextboxGotoX.Text);
+                double? gotoY = MoreMath.ParseDoubleNullable(_betterTextboxGotoY.Text);
+                double? gotoZ = MoreMath.ParseDoubleNullable(_betterTextboxGotoZ.Text);
+                if (gotoX.HasValue && gotoY.HasValue && gotoZ.HasValue)
+                {
+                    ButtonUtilities.SetMarioPosition(
+                        (float)gotoX.Value, (float)gotoY.Value, (float)gotoZ.Value);
+                }
+            };
+            */
         }
 
         public abstract class VarState
@@ -314,6 +368,33 @@ namespace SM64_Diagnostic.Managers
             _labelMetric3Value.Text = _badCollisions.ToString();
             _labelMetric4Value.Text = _gaps.ToString();
             _labelMetric5Value.Text = _currentTimer.ToString();
+
+            /*
+            // Control stick
+            if (_checkBoxUseInput.Checked)
+            {
+                sbyte currentX = Config.Stream.GetSByte(Config.Input.CurrentInputAddress + Config.Input.ControlStickXOffset);
+                sbyte currentY = Config.Stream.GetSByte(Config.Input.CurrentInputAddress + Config.Input.ControlStickYOffset);
+                _betterTextboxControlStick1.Text = currentX.ToString();
+                _betterTextboxControlStick2.Text = currentY.ToString();
+            }
+
+            int rawX = MoreMath.ParseInt(_betterTextboxControlStick1.Text);
+            int rawY = MoreMath.ParseInt(_betterTextboxControlStick2.Text);
+            (double effectiveX, double effectiveY) = MoreMath.GetEffectiveInput(rawX, -1 * rawY);
+            _labelControlStick1.Text = Math.Round(effectiveX, 3).ToString();
+            _labelControlStick2.Text = Math.Round(effectiveY, 3).ToString();
+            double angle = MoreMath.AngleTo_AngleUnits(effectiveX, effectiveY);
+            ushort cameraAngle = Config.Stream.GetUInt16(Config.Camera.CameraStructAddress + 0xFC);
+            angle = MoreMath.NormalizeAngleDouble(angle + cameraAngle);
+            _labelControlStick3.Text = Math.Round(angle, 0).ToString();
+            int angleGuess = MoreMath.NormalizeAngleUshort(angle);
+            _labelControlStick4.Text = angleGuess.ToString();
+            int angleInteded = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawIntendedOffset);
+            _labelControlStick5.Text = angleInteded.ToString();
+            int diff = angleGuess - angleInteded;
+            _labelControlStick6.Text = diff.ToString();
+            */
         }
 
         private static List<(int, double)> _plushRacingPenguinProgress = new List<(int, double)> {

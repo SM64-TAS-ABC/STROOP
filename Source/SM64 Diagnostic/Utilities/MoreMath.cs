@@ -9,6 +9,46 @@ namespace SM64_Diagnostic.Utilities
 {
     public static class MoreMath
     {
+        public static int ParseInt(string text)
+        {
+            int parsed;
+            if (int.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return 0;
+        }
+
+        public static int? ParseIntNullable(string text)
+        {
+            int parsed;
+            if (int.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return null;
+        }
+
+        public static double ParseDouble(string text)
+        {
+            double parsed;
+            if (double.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return 0;
+        }
+
+        public static double? ParseDoubleNullable(string text)
+        {
+            double parsed;
+            if (double.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return null;
+        }
+
         public static double GetHypotenuse(double x, double y)
         {
             return Math.Sqrt(x * x + y * y);
@@ -122,9 +162,19 @@ namespace SM64_Diagnostic.Utilities
             return Math.Atan2(xTo - xFrom, zTo - zFrom);
         }
 
+        public static double AngleTo_Radians(double xTo, double zTo)
+        {
+            return AngleTo_Radians(0, 0, xTo, zTo);
+        }
+
         public static double AngleTo_AngleUnits(double xFrom, double zFrom, double xTo, double zTo)
         {
             return RadiansToAngleUnits(AngleTo_Radians(xFrom, zFrom, xTo, zTo));
+        }
+
+        public static double AngleTo_AngleUnits(double xTo, double zTo)
+        {
+            return AngleTo_AngleUnits(0, 0, xTo, zTo);
         }
 
         public static ushort AngleTo_AngleUnitsRounded(double xFrom, double zFrom, double xTo, double zTo)
@@ -345,6 +395,19 @@ namespace SM64_Diagnostic.Utilities
             return bool1 == bool2 && bool2 == bool3;
         }
 
+        public static (double effectiveX, double effectiveY) GetEffectiveInput(double rawX, double rawY)
+        {
+            double effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
+            double effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
+            double hypotenuse = GetHypotenuse(effectiveX, effectiveY);
+            if (hypotenuse > 64)
+            {
+                effectiveX *= 64 / hypotenuse;
+                effectiveY *= 64 / hypotenuse;
+            }
+            return (effectiveX, effectiveY);
+        }
+
         public static float GetPendulumAmplitude(uint pendulumAddress)
         {
             // Get pendulum variables
@@ -357,7 +420,7 @@ namespace SM64_Diagnostic.Utilities
             // Calculate one frame forwards to see if pendulum is speeding up or slowing down
             float nextAccelerationDirection = accelerationDirection;
             if (angle > 0) nextAccelerationDirection = -1;
-            if (angle< 0) nextAccelerationDirection = 1;
+            if (angle < 0) nextAccelerationDirection = 1;
             float nextAcceleration = nextAccelerationDirection * accelerationMagnitude;
             float nextAngularVelocity = angularVelocity + nextAcceleration;
             float nextAngle = angle + nextAngularVelocity;
@@ -382,10 +445,10 @@ namespace SM64_Diagnostic.Utilities
                 float B = nextAngularVelocity - nextAcceleration / 2;
                 float C = -1 * tentativeSpeedUpDistance;
                 double tentativeSpeedUpDuration = (-B + nextAccelerationDirection * Math.Sqrt(B * B - 4 * A * C)) / (2 * A);
-                speedUpDuration = (int) Math.Ceiling(tentativeSpeedUpDuration);
+                speedUpDuration = (int)Math.Ceiling(tentativeSpeedUpDuration);
 
                 // d = t * v + t(t-1)/2 * a
-                speedUpDistance = speedUpDuration* nextAngularVelocity + speedUpDuration* (speedUpDuration - 1) / 2 * nextAcceleration;
+                speedUpDistance = speedUpDuration * nextAngularVelocity + speedUpDuration * (speedUpDuration - 1) / 2 * nextAcceleration;
                 inflectionAngle = angle + speedUpDistance;
 
                 // v_f = v_i + t * a
