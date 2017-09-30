@@ -70,6 +70,7 @@ namespace SM64_Diagnostic.Managers
         BetterTextbox _betterTextboxGotoY;
         BetterTextbox _betterTextboxGotoZ;
         Button _buttonGoto;
+        Button _buttonGotoGetCurrent;
 
         public TestingManager(TabPage tabControl)
         {
@@ -157,6 +158,16 @@ namespace SM64_Diagnostic.Managers
                     ButtonUtilities.SetMarioPosition(
                         (float)gotoX.Value, (float)gotoY.Value, (float)gotoZ.Value);
                 }
+            };
+            _buttonGotoGetCurrent = _groupBoxGoto.Controls["buttonGotoGetCurrent"] as Button;
+            _buttonGotoGetCurrent.Click += (sender, e) =>
+            {
+                float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+                float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                float marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+                _betterTextboxGotoX.Text = marioX.ToString();
+                _betterTextboxGotoY.Text = marioY.ToString();
+                _betterTextboxGotoZ.Text = marioZ.ToString();
             };
         }
 
