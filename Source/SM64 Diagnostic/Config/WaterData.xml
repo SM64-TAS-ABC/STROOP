@@ -54,4 +54,6 @@
   <Data type="short" address="0x18" offset="Water">Water Level 2</Data>
   <Data type="short" address="0x24" offset="Water">Water Level 3</Data>
   <Data type="short" address="0x30" offset="Water">Water Level 4</Data>
+
+  <Data type="float" addressUS="0x8038BBA8" addressJP="0x8038BBA8" offset="Relative">Default WL</Data>
 </WaterData>
