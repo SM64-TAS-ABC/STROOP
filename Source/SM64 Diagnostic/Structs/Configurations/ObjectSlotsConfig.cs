@@ -83,5 +83,7 @@ namespace SM64_Diagnostic.Structs
         public uint KoopaTheQuickHSpeedMultiplierOffset;
 
         public uint FlyGuyOscillationTimerOffset;
+
+        public uint ScuttlebugTargetAngleOffset;
     }
 }

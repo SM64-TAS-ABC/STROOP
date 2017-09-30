@@ -242,7 +242,7 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("BobombSpaceBetween"),
 
                 // Scuttlebug vars
-                new AngleDataContainer("ScuttlebugDeltaAngleToTarget"),
+                new AngleDataContainer("ScuttlebugDeltaAngleToTarget", AngleViewModeType.Signed),
 
                 // Hacked vars
                 new DataContainer("RngCallsPerFrame"),
@@ -866,7 +866,7 @@ namespace SM64_Diagnostic.Managers
 
                         case "ScuttlebugDeltaAngleToTarget":
                             {
-                                uint targetAngle = Config.Stream.GetUInt16(objAddress + 0x162);
+                                uint targetAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.ScuttlebugTargetAngleOffset);
                                 newAngle = objFacing - targetAngle;
                                 break;
                             }

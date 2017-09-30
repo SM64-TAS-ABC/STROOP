@@ -266,6 +266,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "FlyGuyOscillationTimerOffset":
                                     Config.ObjectSlots.FlyGuyOscillationTimerOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "ScuttlebugTargetAngleOffset":
+                                    Config.ObjectSlots.ScuttlebugTargetAngleOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;

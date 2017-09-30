@@ -77,6 +77,8 @@
     <KoopaTheQuickHSpeedMultiplierOffset>0xF4</KoopaTheQuickHSpeedMultiplierOffset>
 
     <FlyGuyOscillationTimerOffset>0xF8</FlyGuyOscillationTimerOffset>
+
+    <ScuttlebugTargetAngleOffset>0x162</ScuttlebugTargetAngleOffset>
   </ObjectSlots>
   <ObjectGroups>
     <ProcessNextLinkOffset>0x60</ProcessNextLinkOffset>
