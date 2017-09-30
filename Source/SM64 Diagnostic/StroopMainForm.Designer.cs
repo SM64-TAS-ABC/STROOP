@@ -772,6 +772,14 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.groupBoxGoto = new System.Windows.Forms.GroupBox();
+            this.buttonGoto = new System.Windows.Forms.Button();
+            this.labelGotoX = new System.Windows.Forms.Label();
+            this.betterTextboxGotoX = new SM64_Diagnostic.BetterTextbox();
+            this.labelGotoY = new System.Windows.Forms.Label();
+            this.betterTextboxGotoY = new SM64_Diagnostic.BetterTextbox();
+            this.labelGotoZ = new System.Windows.Forms.Label();
+            this.betterTextboxGotoZ = new SM64_Diagnostic.BetterTextbox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1057,6 +1065,7 @@ namespace SM64_Diagnostic
             this.tabPageTesting.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.groupBoxGoto.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -9870,6 +9879,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageTesting
             // 
+            this.tabPageTesting.Controls.Add(this.groupBoxGoto);
             this.tabPageTesting.Controls.Add(this.groupBoxRecording);
             this.tabPageTesting.Location = new System.Drawing.Point(4, 22);
             this.tabPageTesting.Name = "tabPageTesting";
@@ -10281,6 +10291,92 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
+            // groupBoxGoto
+            // 
+            this.groupBoxGoto.Controls.Add(this.betterTextboxGotoZ);
+            this.groupBoxGoto.Controls.Add(this.betterTextboxGotoY);
+            this.groupBoxGoto.Controls.Add(this.betterTextboxGotoX);
+            this.groupBoxGoto.Controls.Add(this.labelGotoZ);
+            this.groupBoxGoto.Controls.Add(this.buttonGoto);
+            this.groupBoxGoto.Controls.Add(this.labelGotoY);
+            this.groupBoxGoto.Controls.Add(this.labelGotoX);
+            this.groupBoxGoto.Location = new System.Drawing.Point(6, 201);
+            this.groupBoxGoto.Name = "groupBoxGoto";
+            this.groupBoxGoto.Size = new System.Drawing.Size(116, 136);
+            this.groupBoxGoto.TabIndex = 40;
+            this.groupBoxGoto.TabStop = false;
+            this.groupBoxGoto.Text = "Goto";
+            // 
+            // buttonGoto
+            // 
+            this.buttonGoto.Location = new System.Drawing.Point(12, 92);
+            this.buttonGoto.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonGoto.Name = "buttonGoto";
+            this.buttonGoto.Size = new System.Drawing.Size(93, 34);
+            this.buttonGoto.TabIndex = 16;
+            this.buttonGoto.Text = "Goto";
+            this.buttonGoto.UseVisualStyleBackColor = true;
+            // 
+            // labelGotoX
+            // 
+            this.labelGotoX.AutoSize = true;
+            this.labelGotoX.Location = new System.Drawing.Point(9, 19);
+            this.labelGotoX.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelGotoX.Name = "labelGotoX";
+            this.labelGotoX.Size = new System.Drawing.Size(20, 13);
+            this.labelGotoX.TabIndex = 18;
+            this.labelGotoX.Text = "X:";
+            this.labelGotoX.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // betterTextboxGotoX
+            // 
+            this.betterTextboxGotoX.Location = new System.Drawing.Point(35, 16);
+            this.betterTextboxGotoX.Name = "betterTextboxGotoX";
+            this.betterTextboxGotoX.Size = new System.Drawing.Size(70, 20);
+            this.betterTextboxGotoX.TabIndex = 28;
+            this.betterTextboxGotoX.Text = "100";
+            this.betterTextboxGotoX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelGotoY
+            // 
+            this.labelGotoY.AutoSize = true;
+            this.labelGotoY.Location = new System.Drawing.Point(9, 45);
+            this.labelGotoY.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelGotoY.Name = "labelGotoY";
+            this.labelGotoY.Size = new System.Drawing.Size(20, 13);
+            this.labelGotoY.TabIndex = 18;
+            this.labelGotoY.Text = "Y:";
+            this.labelGotoY.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // betterTextboxGotoY
+            // 
+            this.betterTextboxGotoY.Location = new System.Drawing.Point(35, 42);
+            this.betterTextboxGotoY.Name = "betterTextboxGotoY";
+            this.betterTextboxGotoY.Size = new System.Drawing.Size(70, 20);
+            this.betterTextboxGotoY.TabIndex = 28;
+            this.betterTextboxGotoY.Text = "100";
+            this.betterTextboxGotoY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelGotoZ
+            // 
+            this.labelGotoZ.AutoSize = true;
+            this.labelGotoZ.Location = new System.Drawing.Point(9, 70);
+            this.labelGotoZ.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelGotoZ.Name = "labelGotoZ";
+            this.labelGotoZ.Size = new System.Drawing.Size(20, 13);
+            this.labelGotoZ.TabIndex = 18;
+            this.labelGotoZ.Text = "Z:";
+            this.labelGotoZ.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // betterTextboxGotoZ
+            // 
+            this.betterTextboxGotoZ.Location = new System.Drawing.Point(35, 67);
+            this.betterTextboxGotoZ.Name = "betterTextboxGotoZ";
+            this.betterTextboxGotoZ.Size = new System.Drawing.Size(70, 20);
+            this.betterTextboxGotoZ.TabIndex = 28;
+            this.betterTextboxGotoZ.Text = "100";
+            this.betterTextboxGotoZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -10640,6 +10736,8 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.groupBoxGoto.ResumeLayout(false);
+            this.groupBoxGoto.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -11385,6 +11483,14 @@ namespace SM64_Diagnostic
         private GroupBox groupBoxRecording;
         private RadioButton radioButtonPenguin;
         private RadioButton radioButtonMario;
+        private GroupBox groupBoxGoto;
+        private BetterTextbox betterTextboxGotoZ;
+        private BetterTextbox betterTextboxGotoY;
+        private BetterTextbox betterTextboxGotoX;
+        private Label labelGotoZ;
+        private Button buttonGoto;
+        private Label labelGotoY;
+        private Label labelGotoX;
     }
 }
 

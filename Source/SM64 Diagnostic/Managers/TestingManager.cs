@@ -139,6 +139,7 @@ namespace SM64_Diagnostic.Managers
             _labelControlStick4 = _groupBoxControlStick.Controls["labelControlStick4"] as Label;
             _labelControlStick5 = _groupBoxControlStick.Controls["labelControlStick5"] as Label;
             _labelControlStick6 = _groupBoxControlStick.Controls["labelControlStick6"] as Label;
+            */
 
             // Goto
             _groupBoxGoto = tabControl.Controls["groupBoxGoto"] as GroupBox;
@@ -157,7 +158,6 @@ namespace SM64_Diagnostic.Managers
                         (float)gotoX.Value, (float)gotoY.Value, (float)gotoZ.Value);
                 }
             };
-            */
         }
 
         public abstract class VarState
