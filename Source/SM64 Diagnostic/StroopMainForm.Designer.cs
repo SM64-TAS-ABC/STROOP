@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -738,6 +738,24 @@ namespace SM64_Diagnostic
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.tabPageTesting = new System.Windows.Forms.TabPage();
+            this.groupBoxControlStick = new System.Windows.Forms.GroupBox();
+            this.labelControlStickName8 = new System.Windows.Forms.Label();
+            this.betterTextboxControlStick2 = new SM64_Diagnostic.BetterTextbox();
+            this.labelControlStickName7 = new System.Windows.Forms.Label();
+            this.betterTextboxControlStick1 = new SM64_Diagnostic.BetterTextbox();
+            this.labelControlStickName6 = new System.Windows.Forms.Label();
+            this.labelControlStickName5 = new System.Windows.Forms.Label();
+            this.checkBoxUseInput = new System.Windows.Forms.CheckBox();
+            this.labelControlStickName4 = new System.Windows.Forms.Label();
+            this.labelControlStick1 = new System.Windows.Forms.Label();
+            this.labelControlStickName2 = new System.Windows.Forms.Label();
+            this.labelControlStickName1 = new System.Windows.Forms.Label();
+            this.labelControlStickName3 = new System.Windows.Forms.Label();
+            this.labelControlStick2 = new System.Windows.Forms.Label();
+            this.labelControlStick6 = new System.Windows.Forms.Label();
+            this.labelControlStick3 = new System.Windows.Forms.Label();
+            this.labelControlStick5 = new System.Windows.Forms.Label();
+            this.labelControlStick4 = new System.Windows.Forms.Label();
             this.groupBoxGoto = new System.Windows.Forms.GroupBox();
             this.betterTextboxGotoZ = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxGotoY = new SM64_Diagnostic.BetterTextbox();
@@ -781,24 +799,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBoxControlStick = new System.Windows.Forms.GroupBox();
-            this.labelControlStickName8 = new System.Windows.Forms.Label();
-            this.labelControlStickName7 = new System.Windows.Forms.Label();
-            this.labelControlStickName6 = new System.Windows.Forms.Label();
-            this.labelControlStickName5 = new System.Windows.Forms.Label();
-            this.checkBoxUseInput = new System.Windows.Forms.CheckBox();
-            this.labelControlStickName4 = new System.Windows.Forms.Label();
-            this.labelControlStick1 = new System.Windows.Forms.Label();
-            this.labelControlStickName3 = new System.Windows.Forms.Label();
-            this.labelControlStick2 = new System.Windows.Forms.Label();
-            this.labelControlStick6 = new System.Windows.Forms.Label();
-            this.labelControlStick3 = new System.Windows.Forms.Label();
-            this.labelControlStick5 = new System.Windows.Forms.Label();
-            this.labelControlStick4 = new System.Windows.Forms.Label();
-            this.betterTextboxControlStick1 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextboxControlStick2 = new SM64_Diagnostic.BetterTextbox();
-            this.labelControlStickName1 = new System.Windows.Forms.Label();
-            this.labelControlStickName2 = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1082,10 +1082,10 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.tabPageTesting.SuspendLayout();
+            this.groupBoxControlStick.SuspendLayout();
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.groupBoxControlStick.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1115,7 +1115,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 303);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 304);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1180,7 +1180,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 156);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 153);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2180,7 +2180,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(699, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(690, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2698,7 +2698,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(708, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(699, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2876,7 +2876,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(800, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(791, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3257,7 +3257,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(710, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(701, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3738,7 +3738,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(707, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(698, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3823,7 +3823,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
-            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(488, 460);
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(479, 460);
             this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4186,7 +4186,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7160,7 +7160,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(259, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(250, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7468,7 +7468,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelDebug.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelDebug.Name = "noTearFlowLayoutPanelDebug";
-            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(527, 455);
+            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(518, 455);
             this.noTearFlowLayoutPanelDebug.TabIndex = 26;
             // 
             // tabPageMap
@@ -7669,7 +7669,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(698, 430);
+            this.glControlMap.Size = new System.Drawing.Size(689, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -8150,7 +8150,7 @@ namespace SM64_Diagnostic
             this.glControlModelView.BackColor = System.Drawing.Color.Black;
             this.glControlModelView.Location = new System.Drawing.Point(3, 5);
             this.glControlModelView.Name = "glControlModelView";
-            this.glControlModelView.Size = new System.Drawing.Size(481, 451);
+            this.glControlModelView.Size = new System.Drawing.Size(472, 451);
             this.glControlModelView.TabIndex = 0;
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
@@ -8223,8 +8223,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -8395,7 +8395,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(930, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(933, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -8494,7 +8494,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(600, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(591, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -9357,7 +9357,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(478, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(469, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9909,6 +9909,220 @@ namespace SM64_Diagnostic
             this.tabPageTesting.TabIndex = 19;
             this.tabPageTesting.Text = "Testing";
             // 
+            // groupBoxControlStick
+            // 
+            this.groupBoxControlStick.Controls.Add(this.labelControlStickName8);
+            this.groupBoxControlStick.Controls.Add(this.betterTextboxControlStick2);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStickName7);
+            this.groupBoxControlStick.Controls.Add(this.betterTextboxControlStick1);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStickName6);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStickName5);
+            this.groupBoxControlStick.Controls.Add(this.checkBoxUseInput);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStickName4);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick1);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStickName2);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStickName1);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStickName3);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick2);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick6);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick3);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick5);
+            this.groupBoxControlStick.Controls.Add(this.labelControlStick4);
+            this.groupBoxControlStick.Location = new System.Drawing.Point(343, 6);
+            this.groupBoxControlStick.Name = "groupBoxControlStick";
+            this.groupBoxControlStick.Size = new System.Drawing.Size(203, 234);
+            this.groupBoxControlStick.TabIndex = 41;
+            this.groupBoxControlStick.TabStop = false;
+            this.groupBoxControlStick.Text = "Control Stick";
+            // 
+            // labelControlStickName8
+            // 
+            this.labelControlStickName8.AutoSize = true;
+            this.labelControlStickName8.Location = new System.Drawing.Point(9, 203);
+            this.labelControlStickName8.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStickName8.Name = "labelControlStickName8";
+            this.labelControlStickName8.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStickName8.TabIndex = 18;
+            this.labelControlStickName8.Text = "Diff:";
+            this.labelControlStickName8.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // betterTextboxControlStick2
+            // 
+            this.betterTextboxControlStick2.Location = new System.Drawing.Point(115, 64);
+            this.betterTextboxControlStick2.Name = "betterTextboxControlStick2";
+            this.betterTextboxControlStick2.Size = new System.Drawing.Size(60, 20);
+            this.betterTextboxControlStick2.TabIndex = 28;
+            this.betterTextboxControlStick2.Text = "100";
+            this.betterTextboxControlStick2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelControlStickName7
+            // 
+            this.labelControlStickName7.AutoSize = true;
+            this.labelControlStickName7.Location = new System.Drawing.Point(9, 178);
+            this.labelControlStickName7.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStickName7.Name = "labelControlStickName7";
+            this.labelControlStickName7.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStickName7.TabIndex = 18;
+            this.labelControlStickName7.Text = "Angle Intended:";
+            this.labelControlStickName7.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // betterTextboxControlStick1
+            // 
+            this.betterTextboxControlStick1.Location = new System.Drawing.Point(115, 38);
+            this.betterTextboxControlStick1.Name = "betterTextboxControlStick1";
+            this.betterTextboxControlStick1.Size = new System.Drawing.Size(60, 20);
+            this.betterTextboxControlStick1.TabIndex = 28;
+            this.betterTextboxControlStick1.Text = "100";
+            this.betterTextboxControlStick1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelControlStickName6
+            // 
+            this.labelControlStickName6.AutoSize = true;
+            this.labelControlStickName6.Location = new System.Drawing.Point(9, 156);
+            this.labelControlStickName6.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStickName6.Name = "labelControlStickName6";
+            this.labelControlStickName6.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStickName6.TabIndex = 18;
+            this.labelControlStickName6.Text = "Angle Guess:";
+            this.labelControlStickName6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelControlStickName5
+            // 
+            this.labelControlStickName5.AutoSize = true;
+            this.labelControlStickName5.Location = new System.Drawing.Point(9, 133);
+            this.labelControlStickName5.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStickName5.Name = "labelControlStickName5";
+            this.labelControlStickName5.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStickName5.TabIndex = 18;
+            this.labelControlStickName5.Text = "Angle:";
+            this.labelControlStickName5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // checkBoxUseInput
+            // 
+            this.checkBoxUseInput.AutoSize = true;
+            this.checkBoxUseInput.Location = new System.Drawing.Point(115, 15);
+            this.checkBoxUseInput.Name = "checkBoxUseInput";
+            this.checkBoxUseInput.Size = new System.Drawing.Size(72, 17);
+            this.checkBoxUseInput.TabIndex = 17;
+            this.checkBoxUseInput.Text = "Use Input";
+            this.checkBoxUseInput.UseVisualStyleBackColor = true;
+            // 
+            // labelControlStickName4
+            // 
+            this.labelControlStickName4.AutoSize = true;
+            this.labelControlStickName4.Location = new System.Drawing.Point(9, 111);
+            this.labelControlStickName4.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStickName4.Name = "labelControlStickName4";
+            this.labelControlStickName4.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStickName4.TabIndex = 18;
+            this.labelControlStickName4.Text = "Effective Y:";
+            this.labelControlStickName4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelControlStick1
+            // 
+            this.labelControlStick1.AutoSize = true;
+            this.labelControlStick1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelControlStick1.Location = new System.Drawing.Point(115, 89);
+            this.labelControlStick1.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelControlStick1.Name = "labelControlStick1";
+            this.labelControlStick1.Size = new System.Drawing.Size(60, 15);
+            this.labelControlStick1.TabIndex = 18;
+            this.labelControlStick1.Text = "Value";
+            this.labelControlStick1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelControlStickName2
+            // 
+            this.labelControlStickName2.AutoSize = true;
+            this.labelControlStickName2.Location = new System.Drawing.Point(9, 67);
+            this.labelControlStickName2.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStickName2.Name = "labelControlStickName2";
+            this.labelControlStickName2.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStickName2.TabIndex = 18;
+            this.labelControlStickName2.Text = "Raw Y:";
+            this.labelControlStickName2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelControlStickName1
+            // 
+            this.labelControlStickName1.AutoSize = true;
+            this.labelControlStickName1.Location = new System.Drawing.Point(9, 41);
+            this.labelControlStickName1.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStickName1.Name = "labelControlStickName1";
+            this.labelControlStickName1.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStickName1.TabIndex = 18;
+            this.labelControlStickName1.Text = "Raw X:";
+            this.labelControlStickName1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelControlStickName3
+            // 
+            this.labelControlStickName3.AutoSize = true;
+            this.labelControlStickName3.Location = new System.Drawing.Point(9, 90);
+            this.labelControlStickName3.MinimumSize = new System.Drawing.Size(100, 2);
+            this.labelControlStickName3.Name = "labelControlStickName3";
+            this.labelControlStickName3.Size = new System.Drawing.Size(100, 13);
+            this.labelControlStickName3.TabIndex = 18;
+            this.labelControlStickName3.Text = "Effective X:";
+            this.labelControlStickName3.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelControlStick2
+            // 
+            this.labelControlStick2.AutoSize = true;
+            this.labelControlStick2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelControlStick2.Location = new System.Drawing.Point(115, 110);
+            this.labelControlStick2.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelControlStick2.Name = "labelControlStick2";
+            this.labelControlStick2.Size = new System.Drawing.Size(60, 15);
+            this.labelControlStick2.TabIndex = 18;
+            this.labelControlStick2.Text = "Value";
+            this.labelControlStick2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelControlStick6
+            // 
+            this.labelControlStick6.AutoSize = true;
+            this.labelControlStick6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelControlStick6.Location = new System.Drawing.Point(115, 202);
+            this.labelControlStick6.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelControlStick6.Name = "labelControlStick6";
+            this.labelControlStick6.Size = new System.Drawing.Size(60, 15);
+            this.labelControlStick6.TabIndex = 18;
+            this.labelControlStick6.Text = "Value";
+            this.labelControlStick6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelControlStick3
+            // 
+            this.labelControlStick3.AutoSize = true;
+            this.labelControlStick3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelControlStick3.Location = new System.Drawing.Point(115, 132);
+            this.labelControlStick3.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelControlStick3.Name = "labelControlStick3";
+            this.labelControlStick3.Size = new System.Drawing.Size(60, 15);
+            this.labelControlStick3.TabIndex = 18;
+            this.labelControlStick3.Text = "Value";
+            this.labelControlStick3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelControlStick5
+            // 
+            this.labelControlStick5.AutoSize = true;
+            this.labelControlStick5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelControlStick5.Location = new System.Drawing.Point(115, 177);
+            this.labelControlStick5.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelControlStick5.Name = "labelControlStick5";
+            this.labelControlStick5.Size = new System.Drawing.Size(60, 15);
+            this.labelControlStick5.TabIndex = 18;
+            this.labelControlStick5.Text = "Value";
+            this.labelControlStick5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelControlStick4
+            // 
+            this.labelControlStick4.AutoSize = true;
+            this.labelControlStick4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelControlStick4.Location = new System.Drawing.Point(115, 155);
+            this.labelControlStick4.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelControlStick4.Name = "labelControlStick4";
+            this.labelControlStick4.Size = new System.Drawing.Size(60, 15);
+            this.labelControlStick4.TabIndex = 18;
+            this.labelControlStick4.Text = "Value";
+            this.labelControlStick4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // groupBoxGoto
             // 
             this.groupBoxGoto.Controls.Add(this.betterTextboxGotoZ);
@@ -10409,220 +10623,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // groupBoxControlStick
-            // 
-            this.groupBoxControlStick.Controls.Add(this.labelControlStickName8);
-            this.groupBoxControlStick.Controls.Add(this.betterTextboxControlStick2);
-            this.groupBoxControlStick.Controls.Add(this.labelControlStickName7);
-            this.groupBoxControlStick.Controls.Add(this.betterTextboxControlStick1);
-            this.groupBoxControlStick.Controls.Add(this.labelControlStickName6);
-            this.groupBoxControlStick.Controls.Add(this.labelControlStickName5);
-            this.groupBoxControlStick.Controls.Add(this.checkBoxUseInput);
-            this.groupBoxControlStick.Controls.Add(this.labelControlStickName4);
-            this.groupBoxControlStick.Controls.Add(this.labelControlStick1);
-            this.groupBoxControlStick.Controls.Add(this.labelControlStickName2);
-            this.groupBoxControlStick.Controls.Add(this.labelControlStickName1);
-            this.groupBoxControlStick.Controls.Add(this.labelControlStickName3);
-            this.groupBoxControlStick.Controls.Add(this.labelControlStick2);
-            this.groupBoxControlStick.Controls.Add(this.labelControlStick6);
-            this.groupBoxControlStick.Controls.Add(this.labelControlStick3);
-            this.groupBoxControlStick.Controls.Add(this.labelControlStick5);
-            this.groupBoxControlStick.Controls.Add(this.labelControlStick4);
-            this.groupBoxControlStick.Location = new System.Drawing.Point(343, 6);
-            this.groupBoxControlStick.Name = "groupBoxControlStick";
-            this.groupBoxControlStick.Size = new System.Drawing.Size(203, 234);
-            this.groupBoxControlStick.TabIndex = 41;
-            this.groupBoxControlStick.TabStop = false;
-            this.groupBoxControlStick.Text = "Control Stick";
-            // 
-            // labelControlStickName8
-            // 
-            this.labelControlStickName8.AutoSize = true;
-            this.labelControlStickName8.Location = new System.Drawing.Point(9, 203);
-            this.labelControlStickName8.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelControlStickName8.Name = "labelControlStickName8";
-            this.labelControlStickName8.Size = new System.Drawing.Size(100, 13);
-            this.labelControlStickName8.TabIndex = 18;
-            this.labelControlStickName8.Text = "Diff:";
-            this.labelControlStickName8.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelControlStickName7
-            // 
-            this.labelControlStickName7.AutoSize = true;
-            this.labelControlStickName7.Location = new System.Drawing.Point(9, 178);
-            this.labelControlStickName7.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelControlStickName7.Name = "labelControlStickName7";
-            this.labelControlStickName7.Size = new System.Drawing.Size(100, 13);
-            this.labelControlStickName7.TabIndex = 18;
-            this.labelControlStickName7.Text = "Angle Intended:";
-            this.labelControlStickName7.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelControlStickName6
-            // 
-            this.labelControlStickName6.AutoSize = true;
-            this.labelControlStickName6.Location = new System.Drawing.Point(9, 156);
-            this.labelControlStickName6.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelControlStickName6.Name = "labelControlStickName6";
-            this.labelControlStickName6.Size = new System.Drawing.Size(100, 13);
-            this.labelControlStickName6.TabIndex = 18;
-            this.labelControlStickName6.Text = "Angle Guess:";
-            this.labelControlStickName6.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelControlStickName5
-            // 
-            this.labelControlStickName5.AutoSize = true;
-            this.labelControlStickName5.Location = new System.Drawing.Point(9, 133);
-            this.labelControlStickName5.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelControlStickName5.Name = "labelControlStickName5";
-            this.labelControlStickName5.Size = new System.Drawing.Size(100, 13);
-            this.labelControlStickName5.TabIndex = 18;
-            this.labelControlStickName5.Text = "Angle:";
-            this.labelControlStickName5.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // checkBoxUseInput
-            // 
-            this.checkBoxUseInput.AutoSize = true;
-            this.checkBoxUseInput.Location = new System.Drawing.Point(115, 15);
-            this.checkBoxUseInput.Name = "checkBoxUseInput";
-            this.checkBoxUseInput.Size = new System.Drawing.Size(72, 17);
-            this.checkBoxUseInput.TabIndex = 17;
-            this.checkBoxUseInput.Text = "Use Input";
-            this.checkBoxUseInput.UseVisualStyleBackColor = true;
-            // 
-            // labelControlStickName4
-            // 
-            this.labelControlStickName4.AutoSize = true;
-            this.labelControlStickName4.Location = new System.Drawing.Point(9, 111);
-            this.labelControlStickName4.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelControlStickName4.Name = "labelControlStickName4";
-            this.labelControlStickName4.Size = new System.Drawing.Size(100, 13);
-            this.labelControlStickName4.TabIndex = 18;
-            this.labelControlStickName4.Text = "Effective Y:";
-            this.labelControlStickName4.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelControlStick1
-            // 
-            this.labelControlStick1.AutoSize = true;
-            this.labelControlStick1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelControlStick1.Location = new System.Drawing.Point(115, 89);
-            this.labelControlStick1.MinimumSize = new System.Drawing.Size(60, 2);
-            this.labelControlStick1.Name = "labelControlStick1";
-            this.labelControlStick1.Size = new System.Drawing.Size(60, 15);
-            this.labelControlStick1.TabIndex = 18;
-            this.labelControlStick1.Text = "Value";
-            this.labelControlStick1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // labelControlStickName3
-            // 
-            this.labelControlStickName3.AutoSize = true;
-            this.labelControlStickName3.Location = new System.Drawing.Point(9, 90);
-            this.labelControlStickName3.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelControlStickName3.Name = "labelControlStickName3";
-            this.labelControlStickName3.Size = new System.Drawing.Size(100, 13);
-            this.labelControlStickName3.TabIndex = 18;
-            this.labelControlStickName3.Text = "Effective X:";
-            this.labelControlStickName3.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelControlStick2
-            // 
-            this.labelControlStick2.AutoSize = true;
-            this.labelControlStick2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelControlStick2.Location = new System.Drawing.Point(115, 110);
-            this.labelControlStick2.MinimumSize = new System.Drawing.Size(60, 2);
-            this.labelControlStick2.Name = "labelControlStick2";
-            this.labelControlStick2.Size = new System.Drawing.Size(60, 15);
-            this.labelControlStick2.TabIndex = 18;
-            this.labelControlStick2.Text = "Value";
-            this.labelControlStick2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // labelControlStick6
-            // 
-            this.labelControlStick6.AutoSize = true;
-            this.labelControlStick6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelControlStick6.Location = new System.Drawing.Point(115, 202);
-            this.labelControlStick6.MinimumSize = new System.Drawing.Size(60, 2);
-            this.labelControlStick6.Name = "labelControlStick6";
-            this.labelControlStick6.Size = new System.Drawing.Size(60, 15);
-            this.labelControlStick6.TabIndex = 18;
-            this.labelControlStick6.Text = "Value";
-            this.labelControlStick6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // labelControlStick3
-            // 
-            this.labelControlStick3.AutoSize = true;
-            this.labelControlStick3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelControlStick3.Location = new System.Drawing.Point(115, 132);
-            this.labelControlStick3.MinimumSize = new System.Drawing.Size(60, 2);
-            this.labelControlStick3.Name = "labelControlStick3";
-            this.labelControlStick3.Size = new System.Drawing.Size(60, 15);
-            this.labelControlStick3.TabIndex = 18;
-            this.labelControlStick3.Text = "Value";
-            this.labelControlStick3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // labelControlStick5
-            // 
-            this.labelControlStick5.AutoSize = true;
-            this.labelControlStick5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelControlStick5.Location = new System.Drawing.Point(115, 177);
-            this.labelControlStick5.MinimumSize = new System.Drawing.Size(60, 2);
-            this.labelControlStick5.Name = "labelControlStick5";
-            this.labelControlStick5.Size = new System.Drawing.Size(60, 15);
-            this.labelControlStick5.TabIndex = 18;
-            this.labelControlStick5.Text = "Value";
-            this.labelControlStick5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // labelControlStick4
-            // 
-            this.labelControlStick4.AutoSize = true;
-            this.labelControlStick4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelControlStick4.Location = new System.Drawing.Point(115, 155);
-            this.labelControlStick4.MinimumSize = new System.Drawing.Size(60, 2);
-            this.labelControlStick4.Name = "labelControlStick4";
-            this.labelControlStick4.Size = new System.Drawing.Size(60, 15);
-            this.labelControlStick4.TabIndex = 18;
-            this.labelControlStick4.Text = "Value";
-            this.labelControlStick4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // betterTextboxControlStick1
-            // 
-            this.betterTextboxControlStick1.Location = new System.Drawing.Point(115, 38);
-            this.betterTextboxControlStick1.Name = "betterTextboxControlStick1";
-            this.betterTextboxControlStick1.Size = new System.Drawing.Size(60, 20);
-            this.betterTextboxControlStick1.TabIndex = 28;
-            this.betterTextboxControlStick1.Text = "100";
-            this.betterTextboxControlStick1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // betterTextboxControlStick2
-            // 
-            this.betterTextboxControlStick2.Location = new System.Drawing.Point(115, 64);
-            this.betterTextboxControlStick2.Name = "betterTextboxControlStick2";
-            this.betterTextboxControlStick2.Size = new System.Drawing.Size(60, 20);
-            this.betterTextboxControlStick2.TabIndex = 28;
-            this.betterTextboxControlStick2.Text = "100";
-            this.betterTextboxControlStick2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelControlStickName1
-            // 
-            this.labelControlStickName1.AutoSize = true;
-            this.labelControlStickName1.Location = new System.Drawing.Point(9, 41);
-            this.labelControlStickName1.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelControlStickName1.Name = "labelControlStickName1";
-            this.labelControlStickName1.Size = new System.Drawing.Size(100, 13);
-            this.labelControlStickName1.TabIndex = 18;
-            this.labelControlStickName1.Text = "Raw X:";
-            this.labelControlStickName1.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelControlStickName2
-            // 
-            this.labelControlStickName2.AutoSize = true;
-            this.labelControlStickName2.Location = new System.Drawing.Point(9, 67);
-            this.labelControlStickName2.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelControlStickName2.Name = "labelControlStickName2";
-            this.labelControlStickName2.Size = new System.Drawing.Size(100, 13);
-            this.labelControlStickName2.TabIndex = 18;
-            this.labelControlStickName2.Text = "Raw Y:";
-            this.labelControlStickName2.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -10978,14 +10978,14 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.ResumeLayout(false);
             this.groupBoxShowOverlay.PerformLayout();
             this.tabPageTesting.ResumeLayout(false);
+            this.groupBoxControlStick.ResumeLayout(false);
+            this.groupBoxControlStick.PerformLayout();
             this.groupBoxGoto.ResumeLayout(false);
             this.groupBoxGoto.PerformLayout();
             this.groupBoxRecording.ResumeLayout(false);
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.groupBoxControlStick.ResumeLayout(false);
-            this.groupBoxControlStick.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
