@@ -241,6 +241,9 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("BobombRadius"),
                 new DataContainer("BobombSpaceBetween"),
 
+                // Scuttlebug vars
+                new AngleDataContainer("ScuttlebugDeltaAngleToTarget"),
+
                 // Hacked vars
                 new DataContainer("RngCallsPerFrame"),
             };
@@ -861,6 +864,13 @@ namespace SM64_Diagnostic.Managers
                                 break;
                             }
 
+                        case "ScuttlebugDeltaAngleToTarget":
+                            {
+                                uint targetAngle = Config.Stream.GetUInt16(objAddress + 0x162);
+                                newAngle = objFacing - targetAngle;
+                                break;
+                            }
+                        
                         case "RngCallsPerFrame":
                             newText = GetNumRngCalls(objAddress).ToString();
                             break;

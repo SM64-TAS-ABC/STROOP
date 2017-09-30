@@ -2069,6 +2069,7 @@
     <MapImage path="Scuttlebug Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" address="0x198" offset="Object">Num Coins</Data>
     <Data groupList="ObjectSpecific" type="ushort" address="0x162" offset="Object" isAngle="true">Target Angle</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="ScuttlebugDeltaAngleToTarget">DAngle to Target</Data>
     <Data groupList="ObjectSpecific" type="byte" address="0xFB" offset="Object" isBool="true">Lunging</Data>
     <Data groupList="ObjectSpecific" type="int" address="0xFC" offset="Object">Lunging Timer</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="MarioLateralDistanceToObjectHome">LDist Mario to Home</Data>
