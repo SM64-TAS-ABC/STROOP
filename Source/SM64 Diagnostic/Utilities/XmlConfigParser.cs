@@ -756,12 +756,12 @@ namespace SM64_Diagnostic.Utilities
                                     Config.Input.ButtonDRightOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "ControlStickHOffset":
-                                    Config.Input.ControlStickHOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                case "ControlStickXOffset":
+                                    Config.Input.ControlStickXOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
-                                case "ControlStickVOffset":
-                                    Config.Input.ControlStickVOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                case "ControlStickYOffset":
+                                    Config.Input.ControlStickYOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
                                 case "ButtonAMask":

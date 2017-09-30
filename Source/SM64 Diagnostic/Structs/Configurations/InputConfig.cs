@@ -34,8 +34,8 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint ButtonDDownOffset;
         public uint ButtonDLeftOffset;
         public uint ButtonDRightOffset;
-        public uint ControlStickHOffset;
-        public uint ControlStickVOffset;
+        public uint ControlStickXOffset;
+        public uint ControlStickYOffset;
         public uint ButtonAMask;
         public uint ButtonBMask;
         public uint ButtonZMask;

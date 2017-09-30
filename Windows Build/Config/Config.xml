@@ -246,8 +246,8 @@
     <ButtonDDownOffset>0x00</ButtonDDownOffset>
     <ButtonDLeftOffset>0x00</ButtonDLeftOffset>
     <ButtonDRightOffset>0x00</ButtonDRightOffset>
-    <ControlStickHOffset>0x02</ControlStickHOffset>
-    <ControlStickVOffset>0x03</ControlStickVOffset>
+    <ControlStickXOffset>0x02</ControlStickXOffset>
+    <ControlStickYOffset>0x03</ControlStickYOffset>
 
     <ButtonAMask>0x80</ButtonAMask>
     <ButtonBMask>0x40</ButtonBMask>

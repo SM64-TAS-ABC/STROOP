@@ -85,8 +85,8 @@ namespace SM64_Diagnostic
             if (buttonDRightPressed) e.Graphics.DrawImage(_gui.ButtonDRightImage, scaledRect);
 
             float controlStickOffsetScale = 0.0003f;
-            sbyte controlStickH = (sbyte)Config.Stream.GetByte(inputAddress + Config.Input.ControlStickHOffset);
-            sbyte controlStickV = (sbyte)Config.Stream.GetByte(inputAddress + Config.Input.ControlStickVOffset);
+            sbyte controlStickH = (sbyte)Config.Stream.GetByte(inputAddress + Config.Input.ControlStickXOffset);
+            sbyte controlStickV = (sbyte)Config.Stream.GetByte(inputAddress + Config.Input.ControlStickYOffset);
             float hOffset = controlStickH * controlStickOffsetScale * scaledRect.Width;
             float vOffset = controlStickV * controlStickOffsetScale * scaledRect.Width;
 
