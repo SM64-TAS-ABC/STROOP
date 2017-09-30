@@ -128,7 +128,6 @@ namespace SM64_Diagnostic.Managers
                 VarStateDictionary.Add(timer, new VarStatePenguin() { Progress = progress });
             }
 
-            /*
             // Control stick
             _groupBoxControlStick = tabControl.Controls["groupBoxControlStick"] as GroupBox;
             _checkBoxUseInput = _groupBoxControlStick.Controls["checkBoxUseInput"] as CheckBox;
@@ -140,7 +139,6 @@ namespace SM64_Diagnostic.Managers
             _labelControlStick4 = _groupBoxControlStick.Controls["labelControlStick4"] as Label;
             _labelControlStick5 = _groupBoxControlStick.Controls["labelControlStick5"] as Label;
             _labelControlStick6 = _groupBoxControlStick.Controls["labelControlStick6"] as Label;
-            */
 
             // Goto
             _groupBoxGoto = tabControl.Controls["groupBoxGoto"] as GroupBox;
@@ -380,7 +378,6 @@ namespace SM64_Diagnostic.Managers
             _labelMetric4Value.Text = _gaps.ToString();
             _labelMetric5Value.Text = _currentTimer.ToString();
 
-            /*
             // Control stick
             if (_checkBoxUseInput.Checked)
             {
@@ -405,7 +402,6 @@ namespace SM64_Diagnostic.Managers
             _labelControlStick5.Text = angleInteded.ToString();
             int diff = angleGuess - angleInteded;
             _labelControlStick6.Text = diff.ToString();
-            */
         }
 
         private static List<(int, double)> _plushRacingPenguinProgress = new List<(int, double)> {
