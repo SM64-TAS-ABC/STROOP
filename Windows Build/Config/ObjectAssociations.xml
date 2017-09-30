@@ -2074,8 +2074,8 @@
     <Data groupList="ObjectSpecific" type="ushort" address="0xCA" offset="Object" isAngle="true">Yaw (Moving)</Data>
     <Data groupList="ObjectSpecific" type="ushort" address="0x162" offset="Object" isAngle="true">Target Angle</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="ScuttlebugDeltaAngleToTarget">DAngle to Target</Data>
-    <!--<Data groupList="ObjectSpecific" offset="Special" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>-->
-    <!--<Data groupList="ObjectSpecific" offset="Special" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>-->
+    <Data groupList="ObjectSpecific" offset="Special" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
     <Data groupList="ObjectSpecific" type="float" address="0xB0" offset="Object">Y Speed</Data>
     <Data groupList="ObjectSpecific" type="float" address="0xA4" offset="Object">Y</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="LateralObjectDistanceToHome">LDist Obj to Home</Data>
