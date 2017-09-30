@@ -743,6 +743,7 @@ namespace SM64_Diagnostic
             this.betterTextboxGotoY = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxGotoX = new SM64_Diagnostic.BetterTextbox();
             this.labelGotoZ = new System.Windows.Forms.Label();
+            this.buttonGotoGetCurrent = new System.Windows.Forms.Button();
             this.buttonGoto = new System.Windows.Forms.Button();
             this.labelGotoY = new System.Windows.Forms.Label();
             this.labelGotoX = new System.Windows.Forms.Label();
@@ -780,7 +781,24 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.buttonGotoGetCurrent = new System.Windows.Forms.Button();
+            this.groupBoxControlStick = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.betterTextbox1 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox2 = new SM64_Diagnostic.BetterTextbox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1067,6 +1085,7 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.groupBoxControlStick.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1096,7 +1115,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 302);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 303);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1161,7 +1180,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 155);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 156);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2161,7 +2180,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(696, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(699, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2679,7 +2698,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(705, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(708, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageActions
@@ -2857,7 +2876,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(797, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(800, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3238,7 +3257,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(707, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(710, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3719,7 +3738,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(704, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(707, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3804,7 +3823,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
-            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(485, 460);
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(488, 460);
             this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4167,7 +4186,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7141,7 +7160,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(256, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(259, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7449,7 +7468,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelDebug.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelDebug.Name = "noTearFlowLayoutPanelDebug";
-            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(524, 455);
+            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(527, 455);
             this.noTearFlowLayoutPanelDebug.TabIndex = 26;
             // 
             // tabPageMap
@@ -7650,7 +7669,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(695, 430);
+            this.glControlMap.Size = new System.Drawing.Size(698, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -8131,7 +8150,7 @@ namespace SM64_Diagnostic
             this.glControlModelView.BackColor = System.Drawing.Color.Black;
             this.glControlModelView.Location = new System.Drawing.Point(3, 5);
             this.glControlModelView.Name = "glControlModelView";
-            this.glControlModelView.Size = new System.Drawing.Size(478, 451);
+            this.glControlModelView.Size = new System.Drawing.Size(481, 451);
             this.glControlModelView.TabIndex = 0;
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
@@ -8376,7 +8395,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(927, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(930, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -8475,7 +8494,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(597, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(600, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -9338,7 +9357,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(475, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(478, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9880,6 +9899,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageTesting
             // 
+            this.tabPageTesting.Controls.Add(this.groupBoxControlStick);
             this.tabPageTesting.Controls.Add(this.groupBoxGoto);
             this.tabPageTesting.Controls.Add(this.groupBoxRecording);
             this.tabPageTesting.Location = new System.Drawing.Point(4, 22);
@@ -9943,6 +9963,16 @@ namespace SM64_Diagnostic
             this.labelGotoZ.TabIndex = 18;
             this.labelGotoZ.Text = "Z:";
             this.labelGotoZ.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // buttonGotoGetCurrent
+            // 
+            this.buttonGotoGetCurrent.Location = new System.Drawing.Point(12, 130);
+            this.buttonGotoGetCurrent.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonGotoGetCurrent.Name = "buttonGotoGetCurrent";
+            this.buttonGotoGetCurrent.Size = new System.Drawing.Size(93, 34);
+            this.buttonGotoGetCurrent.TabIndex = 16;
+            this.buttonGotoGetCurrent.Text = "Get Current";
+            this.buttonGotoGetCurrent.UseVisualStyleBackColor = true;
             // 
             // buttonGoto
             // 
@@ -10379,15 +10409,219 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // buttonGotoGetCurrent
+            // groupBoxControlStick
             // 
-            this.buttonGotoGetCurrent.Location = new System.Drawing.Point(12, 130);
-            this.buttonGotoGetCurrent.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonGotoGetCurrent.Name = "buttonGotoGetCurrent";
-            this.buttonGotoGetCurrent.Size = new System.Drawing.Size(93, 34);
-            this.buttonGotoGetCurrent.TabIndex = 16;
-            this.buttonGotoGetCurrent.Text = "Get Current";
-            this.buttonGotoGetCurrent.UseVisualStyleBackColor = true;
+            this.groupBoxControlStick.Controls.Add(this.label2);
+            this.groupBoxControlStick.Controls.Add(this.betterTextbox2);
+            this.groupBoxControlStick.Controls.Add(this.label4);
+            this.groupBoxControlStick.Controls.Add(this.betterTextbox1);
+            this.groupBoxControlStick.Controls.Add(this.label5);
+            this.groupBoxControlStick.Controls.Add(this.label6);
+            this.groupBoxControlStick.Controls.Add(this.checkBox1);
+            this.groupBoxControlStick.Controls.Add(this.label7);
+            this.groupBoxControlStick.Controls.Add(this.label8);
+            this.groupBoxControlStick.Controls.Add(this.label16);
+            this.groupBoxControlStick.Controls.Add(this.label15);
+            this.groupBoxControlStick.Controls.Add(this.label9);
+            this.groupBoxControlStick.Controls.Add(this.label10);
+            this.groupBoxControlStick.Controls.Add(this.label11);
+            this.groupBoxControlStick.Controls.Add(this.label12);
+            this.groupBoxControlStick.Controls.Add(this.label13);
+            this.groupBoxControlStick.Controls.Add(this.label14);
+            this.groupBoxControlStick.Location = new System.Drawing.Point(388, 116);
+            this.groupBoxControlStick.Name = "groupBoxControlStick";
+            this.groupBoxControlStick.Size = new System.Drawing.Size(331, 297);
+            this.groupBoxControlStick.TabIndex = 41;
+            this.groupBoxControlStick.TabStop = false;
+            this.groupBoxControlStick.Text = "Control Stick";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 231);
+            this.label2.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Name:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 206);
+            this.label4.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Name:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 184);
+            this.label5.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Name:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 161);
+            this.label6.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Name:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(115, 37);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(61, 17);
+            this.checkBox1.TabIndex = 17;
+            this.checkBox1.Text = "Record";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 139);
+            this.label7.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Name:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label8.Location = new System.Drawing.Point(115, 117);
+            this.label8.MinimumSize = new System.Drawing.Size(60, 2);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(60, 15);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Value";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(9, 118);
+            this.label9.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Name:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Location = new System.Drawing.Point(115, 138);
+            this.label10.MinimumSize = new System.Drawing.Size(60, 2);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(60, 15);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Value";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label11.Location = new System.Drawing.Point(115, 230);
+            this.label11.MinimumSize = new System.Drawing.Size(60, 2);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(60, 15);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Value";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label12.Location = new System.Drawing.Point(115, 160);
+            this.label12.MinimumSize = new System.Drawing.Size(60, 2);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(60, 15);
+            this.label12.TabIndex = 18;
+            this.label12.Text = "Value";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label13.Location = new System.Drawing.Point(115, 205);
+            this.label13.MinimumSize = new System.Drawing.Size(60, 2);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(60, 15);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "Value";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label14.Location = new System.Drawing.Point(115, 183);
+            this.label14.MinimumSize = new System.Drawing.Size(60, 2);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(60, 15);
+            this.label14.TabIndex = 18;
+            this.label14.Text = "Value";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // betterTextbox1
+            // 
+            this.betterTextbox1.Location = new System.Drawing.Point(115, 66);
+            this.betterTextbox1.Name = "betterTextbox1";
+            this.betterTextbox1.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox1.TabIndex = 28;
+            this.betterTextbox1.Text = "100";
+            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox2
+            // 
+            this.betterTextbox2.Location = new System.Drawing.Point(115, 92);
+            this.betterTextbox2.Name = "betterTextbox2";
+            this.betterTextbox2.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox2.TabIndex = 28;
+            this.betterTextbox2.Text = "100";
+            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(9, 69);
+            this.label15.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(100, 13);
+            this.label15.TabIndex = 18;
+            this.label15.Text = "Name:";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(9, 95);
+            this.label16.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(100, 13);
+            this.label16.TabIndex = 18;
+            this.label16.Text = "Name:";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // StroopMainForm
             // 
@@ -10750,6 +10984,8 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.groupBoxControlStick.ResumeLayout(false);
+            this.groupBoxControlStick.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -11504,6 +11740,24 @@ namespace SM64_Diagnostic
         private Label labelGotoY;
         private Label labelGotoX;
         private Button buttonGotoGetCurrent;
+        private GroupBox groupBoxControlStick;
+        private Label label2;
+        private BetterTextbox betterTextbox2;
+        private Label label4;
+        private BetterTextbox betterTextbox1;
+        private Label label5;
+        private Label label6;
+        private CheckBox checkBox1;
+        private Label label7;
+        private Label label8;
+        private Label label16;
+        private Label label15;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private Label label12;
+        private Label label13;
+        private Label label14;
     }
 }
 
