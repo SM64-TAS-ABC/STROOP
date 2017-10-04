@@ -2011,6 +2011,10 @@
   </Object>
   <Object behaviorScriptAddress="0x13002A48" name="Mario Ghost" subType="1717986918">
     <Image path="Mario Back.png"/>
+    <Data groupList="ObjectSpecific" type="ushort" address="0x1C" offset="Object" isAngle="true">Angle</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0x20" offset="Object">X</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0x24" offset="Object">Y</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0x28" offset="Object">Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002A5C" name="BitDW Trap Door Manager">
     <SpawnCode gfxId="0x00"/>
