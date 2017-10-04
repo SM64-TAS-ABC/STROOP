@@ -25,10 +25,10 @@ namespace SM64_Diagnostic.Managers
 
             SplitContainer splitContainerMario = marioControl.Controls["splitContainerMario"] as SplitContainer;
 
-            var toggleHandsfree = splitContainerMario.Panel1.Controls["buttonMarioToggleHandsfree"] as Button;
+            Button toggleHandsfree = splitContainerMario.Panel1.Controls["buttonMarioToggleHandsfree"] as Button;
             toggleHandsfree.Click += (sender, e) => ButtonUtilities.ToggleHandsfree();
 
-            var toggleVisibility = splitContainerMario.Panel1.Controls["buttonMarioVisibility"] as Button;
+            Button toggleVisibility = splitContainerMario.Panel1.Controls["buttonMarioVisibility"] as Button;
             toggleVisibility.Click += (sender, e) => ButtonUtilities.ToggleVisibility();
 
             var marioPosGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioPos"] as GroupBox;
@@ -83,6 +83,12 @@ namespace SM64_Diagnostic.Managers
                 {
                     ButtonUtilities.MarioChangeVspd(vspdValue);
                 });
+
+            Button buttonMarioHOLPGoto = splitContainerMario.Panel1.Controls["buttonMarioHOLPGoto"] as Button;
+            buttonMarioHOLPGoto.Click += (sender, e) => ButtonUtilities.ToggleVisibility();
+
+            Button buttonMarioHOLPRetrieve = splitContainerMario.Panel1.Controls["buttonMarioHOLPRetrieve"] as Button;
+            buttonMarioHOLPRetrieve.Click += (sender, e) => ButtonUtilities.ToggleVisibility();
 
             var marioHOLPGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioHOLP"] as GroupBox;
             ThreeDimensionController.initialize(
