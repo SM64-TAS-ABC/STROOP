@@ -85,10 +85,10 @@ namespace SM64_Diagnostic.Managers
                 });
 
             Button buttonMarioHOLPGoto = splitContainerMario.Panel1.Controls["buttonMarioHOLPGoto"] as Button;
-            buttonMarioHOLPGoto.Click += (sender, e) => ButtonUtilities.ToggleVisibility();
+            buttonMarioHOLPGoto.Click += (sender, e) => ButtonUtilities.GotoHOLP();
 
             Button buttonMarioHOLPRetrieve = splitContainerMario.Panel1.Controls["buttonMarioHOLPRetrieve"] as Button;
-            buttonMarioHOLPRetrieve.Click += (sender, e) => ButtonUtilities.ToggleVisibility();
+            buttonMarioHOLPRetrieve.Click += (sender, e) => ButtonUtilities.RetrieveHOLP();
 
             var marioHOLPGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioHOLP"] as GroupBox;
             ThreeDimensionController.initialize(

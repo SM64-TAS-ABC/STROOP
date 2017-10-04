@@ -577,6 +577,40 @@ namespace SM64_Diagnostic.Utilities
             return MoveThings(posAddressAngles, xValue, yValue, zValue, Change.SET);
         }
 
+        public static bool GotoHOLP()
+        {
+            List<TripleAddressAngle> posAddressAngles =
+                new List<TripleAddressAngle> {
+                    new TripleAddressAngle(
+                        Config.Mario.StructAddress + Config.Mario.XOffset,
+                        Config.Mario.StructAddress + Config.Mario.YOffset,
+                        Config.Mario.StructAddress + Config.Mario.ZOffset)
+                };
+
+            float xDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPXOffset);
+            float yDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPYOffset);
+            float zDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPZOffset);
+
+            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
+        }
+
+        public static bool RetrieveHOLP()
+        {
+            List<TripleAddressAngle> posAddressAngles =
+                new List<TripleAddressAngle> {
+                    new TripleAddressAngle(
+                        Config.Mario.StructAddress + Config.Mario.HOLPXOffset,
+                        Config.Mario.StructAddress + Config.Mario.HOLPYOffset,
+                        Config.Mario.StructAddress + Config.Mario.HOLPZOffset)
+                };
+
+            float xDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            float yDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            float zDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+
+            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
+        }
+
         public static bool TranslateHOLP(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             List<TripleAddressAngle> posAddressAngles =
