@@ -247,8 +247,8 @@ namespace SM64_Diagnostic.Managers
                 // Mario ghost vars
                 new DataContainer("MarioGhostVerticalDistance"),
                 new DataContainer("MarioGhostLateralDistance"),
-                new DataContainer("MarioGhostForwardDistance"),
-                new DataContainer("MarioGhostSideDistance"),
+                new DataContainer("MarioGhostForwardsDistance"),
+                new DataContainer("MarioGhostSidewaysDistance"),
 
                 // Hacked vars
                 new DataContainer("RngCallsPerFrame"),
@@ -879,25 +879,39 @@ namespace SM64_Diagnostic.Managers
 
                         case "MarioGhostVerticalDistance":
                             {
-                                newText = "1";
+                                float ghostY = Config.Stream.GetSingle(objAddress + 0x24);
+                                newText = Math.Round(mY - ghostY, 3).ToString();
                                 break;
                             }
 
                         case "MarioGhostLateralDistance":
                             {
-                                newText = "2";
+                                float ghostX = Config.Stream.GetSingle(objAddress + 0x20);
+                                float ghostZ = Config.Stream.GetSingle(objAddress + 0x28);
+                                double hDistToGhost = MoreMath.GetDistanceBetween(mX, mZ, ghostX, ghostZ);
+                                newText = Math.Round(hDistToGhost, 3).ToString();
                                 break;
                             }
 
-                        case "MarioGhostForwardDistance":
+                        case "MarioGhostForwardsDistance":
                             {
-                                newText = "3";
+                                float ghostX = Config.Stream.GetSingle(objAddress + 0x20);
+                                float ghostZ = Config.Stream.GetSingle(objAddress + 0x28);
+                                double hDistToGhost = MoreMath.GetDistanceBetween(mX, mZ, ghostX, ghostZ);
+                                double angleFromGhost = MoreMath.AngleTo_AngleUnits(ghostX, ghostZ, mX, mZ);
+                                (double movementSideways, double movementForwards) = MoreMath.GetComponentsFromVectorRelatively(hDistToGhost, angleFromGhost, mFacing);
+                                newText = Math.Round(movementForwards, 3).ToString();
                                 break;
                             }
 
-                        case "MarioGhostSideDistance":
+                        case "MarioGhostSidewaysDistance":
                             {
-                                newText = "4";
+                                float ghostX = Config.Stream.GetSingle(objAddress + 0x20);
+                                float ghostZ = Config.Stream.GetSingle(objAddress + 0x28);
+                                double hDistToGhost = MoreMath.GetDistanceBetween(mX, mZ, ghostX, ghostZ);
+                                double angleFromGhost = MoreMath.AngleTo_AngleUnits(ghostX, ghostZ, mX, mZ);
+                                (double movementSideways, double movementForwards) = MoreMath.GetComponentsFromVectorRelatively(hDistToGhost, angleFromGhost, mFacing);
+                                newText = Math.Round(movementSideways, 3).ToString();
                                 break;
                             }
                         
