@@ -1241,10 +1241,10 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlMain.Controls.Add(this.tabPageObjects);
             this.tabControlMain.Controls.Add(this.tabPageMario);
-            this.tabControlMain.Controls.Add(this.tabPageActions);
             this.tabControlMain.Controls.Add(this.tabPageHud);
             this.tabControlMain.Controls.Add(this.tabPageCamera);
             this.tabControlMain.Controls.Add(this.tabPageTriangles);
+            this.tabControlMain.Controls.Add(this.tabPageActions);
             this.tabControlMain.Controls.Add(this.tabPageWater);
             this.tabControlMain.Controls.Add(this.tabPageInput);
             this.tabControlMain.Controls.Add(this.tabPageFile);
