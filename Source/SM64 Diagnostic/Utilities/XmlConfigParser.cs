@@ -176,6 +176,26 @@ namespace SM64_Diagnostic.Utilities
                                 case "RotationOffset":
                                     Config.ObjectSlots.ObjectRotationOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+
+                                case "GraphicsOffsetX":
+                                    Config.ObjectSlots.GraphicsXOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "GraphicsOffsetY":
+                                    Config.ObjectSlots.GraphicsYOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "GraphicsOffsetZ":
+                                    Config.ObjectSlots.GraphicsZOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "GraphicsOffsetYaw":
+                                    Config.ObjectSlots.GraphicsYawOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "GraphicsOffsetPitch":
+                                    Config.ObjectSlots.GraphicsPitchOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "GraphicsOffsetRoll":
+                                    Config.ObjectSlots.GraphicsRollOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
                                 case "MaxObjectSlots":
                                     Config.ObjectSlots.MaxSlots = int.Parse(subElement.Value);
                                     break;

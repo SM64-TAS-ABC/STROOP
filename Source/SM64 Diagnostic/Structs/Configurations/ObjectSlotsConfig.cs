@@ -48,6 +48,13 @@ namespace SM64_Diagnostic.Structs
         public uint HomeZOffset;
         public uint ObjectRotationOffset;
 
+        public uint GraphicsXOffset;
+        public uint GraphicsYOffset;
+        public uint GraphicsZOffset;
+        public uint GraphicsYawOffset;
+        public uint GraphicsPitchOffset;
+        public uint GraphicsRollOffset;
+
         public uint HitboxRadius;
         public uint HitboxHeight;
         public uint HitboxDownOffset;

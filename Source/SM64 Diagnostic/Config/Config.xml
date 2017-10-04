@@ -42,6 +42,14 @@
     <HomeOffsetY>0x168</HomeOffsetY>
     <HomeOffsetZ>0x16C</HomeOffsetZ>
     <RotationOffset>0xD4</RotationOffset>
+
+    <GraphicsOffsetX>0x20</GraphicsOffsetX>
+    <GraphicsOffsetY>0x24</GraphicsOffsetY>
+    <GraphicsOffsetZ>0x28</GraphicsOffsetZ>
+    <GraphicsOffsetYaw>0x1C</GraphicsOffsetYaw>
+    <GraphicsOffsetPitch>0x1A</GraphicsOffsetPitch>
+    <GraphicsOffsetRoll>0x1E</GraphicsOffsetRoll>
+
     <MaxObjectSlots>240</MaxObjectSlots>
     <HitboxRadius>0x1f8</HitboxRadius>
     <HitboxHeight>0x1fc</HitboxHeight>
