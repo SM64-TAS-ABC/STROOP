@@ -2015,6 +2015,10 @@
     <Data groupList="ObjectSpecific" type="float" address="0x20" offset="Object">X</Data>
     <Data groupList="ObjectSpecific" type="float" address="0x24" offset="Object">Y</Data>
     <Data groupList="ObjectSpecific" type="float" address="0x28" offset="Object">Z</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioGhostVerticalDistance">Vertical Dist</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioGhostLateralDistance">Lateral Dist</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioGhostForwardDistance">Forward Dist</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioGhostSideDistance">Side Dist</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002A5C" name="BitDW Trap Door Manager">
     <SpawnCode gfxId="0x00"/>

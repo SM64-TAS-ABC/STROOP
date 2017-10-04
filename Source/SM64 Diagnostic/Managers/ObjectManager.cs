@@ -244,6 +244,12 @@ namespace SM64_Diagnostic.Managers
                 // Scuttlebug vars
                 new AngleDataContainer("ScuttlebugDeltaAngleToTarget", AngleViewModeType.Signed),
 
+                // Mario ghost vars
+                new DataContainer("MarioGhostVerticalDistance"),
+                new DataContainer("MarioGhostLateralDistance"),
+                new DataContainer("MarioGhostForwardDistance"),
+                new DataContainer("MarioGhostSideDistance"),
+
                 // Hacked vars
                 new DataContainer("RngCallsPerFrame"),
             };
@@ -868,6 +874,30 @@ namespace SM64_Diagnostic.Managers
                             {
                                 uint targetAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.ScuttlebugTargetAngleOffset);
                                 newAngle = objFacing - targetAngle;
+                                break;
+                            }
+
+                        case "MarioGhostVerticalDistance":
+                            {
+                                newText = "1";
+                                break;
+                            }
+
+                        case "MarioGhostLateralDistance":
+                            {
+                                newText = "2";
+                                break;
+                            }
+
+                        case "MarioGhostForwardDistance":
+                            {
+                                newText = "3";
+                                break;
+                            }
+
+                        case "MarioGhostSideDistance":
+                            {
+                                newText = "4";
                                 break;
                             }
                         
