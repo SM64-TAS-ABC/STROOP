@@ -110,7 +110,7 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static bool GoToObjects(List<uint> objAddresses)
+        public static bool GotoObjects(List<uint> objAddresses)
         {
             if (objAddresses.Count == 0)
                 return false;
@@ -258,7 +258,7 @@ namespace SM64_Diagnostic.Utilities
             return MoveThings(posAddressAngles, widthChange, heightChange, depthChange, multiply ? Change.MULTIPLY : Change.ADD);
         }
 
-        public static bool GoToObjectsHome(List<uint> objAddresses)
+        public static bool GotoObjectsHome(List<uint> objAddresses)
         {
             if (objAddresses.Count == 0)
                 return false;
@@ -732,7 +732,7 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool GoToTriangle(uint triangleAddress, int vertex, bool _useMisalignmentOffset = false)
+        public static bool GotoTriangle(uint triangleAddress, int vertex, bool _useMisalignmentOffset = false)
         {
             if (triangleAddress == 0x0000)
                 return false;

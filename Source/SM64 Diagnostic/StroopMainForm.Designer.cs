@@ -107,10 +107,10 @@ namespace SM64_Diagnostic
             this.buttonObjPosXnZp = new System.Windows.Forms.Button();
             this.buttonObjPosXn = new System.Windows.Forms.Button();
             this.buttonObjPosXnZn = new System.Windows.Forms.Button();
-            this.buttonObjGoToHome = new System.Windows.Forms.Button();
+            this.buttonObjGotoHome = new System.Windows.Forms.Button();
             this.buttonObjRetrieve = new System.Windows.Forms.Button();
             this.buttonObjRetrieveHome = new System.Windows.Forms.Button();
-            this.buttonObjGoTo = new System.Windows.Forms.Button();
+            this.buttonObjGoto = new System.Windows.Forms.Button();
             this.buttonObjClone = new SM64_Diagnostic.BinaryButton();
             this.buttonObjUnload = new SM64_Diagnostic.BinaryButton();
             this.textBoxObjName = new System.Windows.Forms.TextBox();
@@ -247,7 +247,7 @@ namespace SM64_Diagnostic
             this.buttonNeutralizeTriangle = new System.Windows.Forms.Button();
             this.radioButtonTriWall = new System.Windows.Forms.RadioButton();
             this.buttonTriangleShowCoords = new System.Windows.Forms.Button();
-            this.buttonGoToVClosest = new System.Windows.Forms.Button();
+            this.buttonGotoVClosest = new System.Windows.Forms.Button();
             this.radioButtonTriCeiling = new System.Windows.Forms.RadioButton();
             this.checkBoxRepeatFirstVertex = new System.Windows.Forms.CheckBox();
             this.checkBoxRecordTriangleData = new System.Windows.Forms.CheckBox();
@@ -257,9 +257,9 @@ namespace SM64_Diagnostic
             this.buttonRetrieveTriangle = new System.Windows.Forms.Button();
             this.labelRecordTriangleCount = new System.Windows.Forms.Label();
             this.labelTriangleSelection = new System.Windows.Forms.Label();
-            this.buttonGoToV3 = new System.Windows.Forms.Button();
-            this.buttonGoToV1 = new System.Windows.Forms.Button();
-            this.buttonGoToV2 = new System.Windows.Forms.Button();
+            this.buttonGotoV3 = new System.Windows.Forms.Button();
+            this.buttonGotoV1 = new System.Windows.Forms.Button();
+            this.buttonGotoV2 = new System.Windows.Forms.Button();
             this.NoTearFlowLayoutPanelTriangles = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageWater = new System.Windows.Forms.TabPage();
             this.noTearFlowLayoutPanelWater = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
@@ -1329,10 +1329,10 @@ namespace SM64_Diagnostic
             this.panelObj.Controls.Add(this.groupBoxObjScale);
             this.panelObj.Controls.Add(this.groupBoxObjAngle);
             this.panelObj.Controls.Add(this.groupBoxObjPos);
-            this.panelObj.Controls.Add(this.buttonObjGoToHome);
+            this.panelObj.Controls.Add(this.buttonObjGotoHome);
             this.panelObj.Controls.Add(this.buttonObjRetrieve);
             this.panelObj.Controls.Add(this.buttonObjRetrieveHome);
-            this.panelObj.Controls.Add(this.buttonObjGoTo);
+            this.panelObj.Controls.Add(this.buttonObjGoto);
             this.panelObj.Controls.Add(this.buttonObjClone);
             this.panelObj.Controls.Add(this.buttonObjUnload);
             this.panelObj.Location = new System.Drawing.Point(2, 87);
@@ -1998,15 +1998,15 @@ namespace SM64_Diagnostic
             this.buttonObjPosXnZn.Text = "X-Z-";
             this.buttonObjPosXnZn.UseVisualStyleBackColor = true;
             // 
-            // buttonObjGoToHome
+            // buttonObjGotoHome
             // 
-            this.buttonObjGoToHome.Location = new System.Drawing.Point(2, 28);
-            this.buttonObjGoToHome.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonObjGoToHome.Name = "buttonObjGoToHome";
-            this.buttonObjGoToHome.Size = new System.Drawing.Size(91, 21);
-            this.buttonObjGoToHome.TabIndex = 17;
-            this.buttonObjGoToHome.Text = "Go To Home";
-            this.buttonObjGoToHome.UseVisualStyleBackColor = true;
+            this.buttonObjGotoHome.Location = new System.Drawing.Point(2, 28);
+            this.buttonObjGotoHome.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonObjGotoHome.Name = "buttonObjGotoHome";
+            this.buttonObjGotoHome.Size = new System.Drawing.Size(91, 21);
+            this.buttonObjGotoHome.TabIndex = 17;
+            this.buttonObjGotoHome.Text = "Go To Home";
+            this.buttonObjGotoHome.UseVisualStyleBackColor = true;
             // 
             // buttonObjRetrieve
             // 
@@ -2028,15 +2028,15 @@ namespace SM64_Diagnostic
             this.buttonObjRetrieveHome.Text = "Retrieve Home";
             this.buttonObjRetrieveHome.UseVisualStyleBackColor = true;
             // 
-            // buttonObjGoTo
+            // buttonObjGoto
             // 
-            this.buttonObjGoTo.Location = new System.Drawing.Point(2, 3);
-            this.buttonObjGoTo.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonObjGoTo.Name = "buttonObjGoTo";
-            this.buttonObjGoTo.Size = new System.Drawing.Size(91, 21);
-            this.buttonObjGoTo.TabIndex = 13;
-            this.buttonObjGoTo.Text = "Go To";
-            this.buttonObjGoTo.UseVisualStyleBackColor = true;
+            this.buttonObjGoto.Location = new System.Drawing.Point(2, 3);
+            this.buttonObjGoto.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonObjGoto.Name = "buttonObjGoto";
+            this.buttonObjGoto.Size = new System.Drawing.Size(91, 21);
+            this.buttonObjGoto.TabIndex = 13;
+            this.buttonObjGoto.Text = "Go To";
+            this.buttonObjGoto.UseVisualStyleBackColor = true;
             // 
             // buttonObjClone
             // 
@@ -3299,7 +3299,7 @@ namespace SM64_Diagnostic
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonNeutralizeTriangle);
             this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriWall);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleShowCoords);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToVClosest);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGotoVClosest);
             this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriCeiling);
             this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxRepeatFirstVertex);
             this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxRecordTriangleData);
@@ -3309,9 +3309,9 @@ namespace SM64_Diagnostic
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonRetrieveTriangle);
             this.splitContainerTriangles.Panel1.Controls.Add(this.labelRecordTriangleCount);
             this.splitContainerTriangles.Panel1.Controls.Add(this.labelTriangleSelection);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToV3);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToV1);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGoToV2);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGotoV3);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGotoV1);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGotoV2);
             this.splitContainerTriangles.Panel1MinSize = 0;
             // 
             // splitContainerTriangles.Panel2
@@ -3606,14 +3606,14 @@ namespace SM64_Diagnostic
             this.buttonTriangleShowCoords.Text = "Show Coords";
             this.buttonTriangleShowCoords.UseVisualStyleBackColor = true;
             // 
-            // buttonGoToVClosest
+            // buttonGotoVClosest
             // 
-            this.buttonGoToVClosest.Location = new System.Drawing.Point(5, 141);
-            this.buttonGoToVClosest.Name = "buttonGoToVClosest";
-            this.buttonGoToVClosest.Size = new System.Drawing.Size(87, 23);
-            this.buttonGoToVClosest.TabIndex = 13;
-            this.buttonGoToVClosest.Text = "Goto Closest";
-            this.buttonGoToVClosest.UseVisualStyleBackColor = true;
+            this.buttonGotoVClosest.Location = new System.Drawing.Point(5, 141);
+            this.buttonGotoVClosest.Name = "buttonGotoVClosest";
+            this.buttonGotoVClosest.Size = new System.Drawing.Size(87, 23);
+            this.buttonGotoVClosest.TabIndex = 13;
+            this.buttonGotoVClosest.Text = "Goto Closest";
+            this.buttonGotoVClosest.UseVisualStyleBackColor = true;
             // 
             // radioButtonTriCeiling
             // 
@@ -3705,32 +3705,32 @@ namespace SM64_Diagnostic
             this.labelTriangleSelection.TabIndex = 6;
             this.labelTriangleSelection.Text = "Triangle:";
             // 
-            // buttonGoToV3
+            // buttonGotoV3
             // 
-            this.buttonGoToV3.Location = new System.Drawing.Point(129, 112);
-            this.buttonGoToV3.Name = "buttonGoToV3";
-            this.buttonGoToV3.Size = new System.Drawing.Size(56, 23);
-            this.buttonGoToV3.TabIndex = 10;
-            this.buttonGoToV3.Text = "Goto V3";
-            this.buttonGoToV3.UseVisualStyleBackColor = true;
+            this.buttonGotoV3.Location = new System.Drawing.Point(129, 112);
+            this.buttonGotoV3.Name = "buttonGotoV3";
+            this.buttonGotoV3.Size = new System.Drawing.Size(56, 23);
+            this.buttonGotoV3.TabIndex = 10;
+            this.buttonGotoV3.Text = "Goto V3";
+            this.buttonGotoV3.UseVisualStyleBackColor = true;
             // 
-            // buttonGoToV1
+            // buttonGotoV1
             // 
-            this.buttonGoToV1.Location = new System.Drawing.Point(5, 112);
-            this.buttonGoToV1.Name = "buttonGoToV1";
-            this.buttonGoToV1.Size = new System.Drawing.Size(57, 23);
-            this.buttonGoToV1.TabIndex = 8;
-            this.buttonGoToV1.Text = "Goto V1";
-            this.buttonGoToV1.UseVisualStyleBackColor = true;
+            this.buttonGotoV1.Location = new System.Drawing.Point(5, 112);
+            this.buttonGotoV1.Name = "buttonGotoV1";
+            this.buttonGotoV1.Size = new System.Drawing.Size(57, 23);
+            this.buttonGotoV1.TabIndex = 8;
+            this.buttonGotoV1.Text = "Goto V1";
+            this.buttonGotoV1.UseVisualStyleBackColor = true;
             // 
-            // buttonGoToV2
+            // buttonGotoV2
             // 
-            this.buttonGoToV2.Location = new System.Drawing.Point(68, 112);
-            this.buttonGoToV2.Name = "buttonGoToV2";
-            this.buttonGoToV2.Size = new System.Drawing.Size(55, 23);
-            this.buttonGoToV2.TabIndex = 9;
-            this.buttonGoToV2.Text = "Goto V2";
-            this.buttonGoToV2.UseVisualStyleBackColor = true;
+            this.buttonGotoV2.Location = new System.Drawing.Point(68, 112);
+            this.buttonGotoV2.Name = "buttonGotoV2";
+            this.buttonGotoV2.Size = new System.Drawing.Size(55, 23);
+            this.buttonGotoV2.TabIndex = 9;
+            this.buttonGotoV2.Text = "Goto V2";
+            this.buttonGotoV2.UseVisualStyleBackColor = true;
             // 
             // NoTearFlowLayoutPanelTriangles
             // 
@@ -11055,7 +11055,7 @@ namespace SM64_Diagnostic
         private OpenTK.GLControl glControlMap;
         private System.Windows.Forms.Button buttonObjRetrieve;
         private BinaryButton buttonObjClone;
-        private System.Windows.Forms.Button buttonObjGoTo;
+        private System.Windows.Forms.Button buttonObjGoto;
         private BinaryButton buttonObjUnload;
         private System.Windows.Forms.Label labelMapPuValue;
         private System.Windows.Forms.Label labelMapSubName;
@@ -11118,9 +11118,9 @@ namespace SM64_Diagnostic
         private TabPage tabPageHacks;
         private CheckedListBox checkedListBoxHacks;
         private Label labelPureInterpretterRequire;
-        private Button buttonGoToV3;
-        private Button buttonGoToV2;
-        private Button buttonGoToV1;
+        private Button buttonGotoV3;
+        private Button buttonGotoV2;
+        private Button buttonGotoV1;
         private Button buttonRetrieveTriangle;
         private CheckBox checkBoxVertexMisalignment;
         private ComboBox comboBoxLabelMethod;
@@ -11131,9 +11131,9 @@ namespace SM64_Diagnostic
         private Label labelNotConnected;
         private Button buttonConnect;
         private ListBox listBoxProcessesList;
-        private Button buttonGoToVClosest;
+        private Button buttonGotoVClosest;
         private Button buttonObjRetrieveHome;
-        private Button buttonObjGoToHome;
+        private Button buttonObjGotoHome;
         private Label labelFpsCounter;
         private Button buttonShowTopPane;
         private Button buttonShowTopBottomPane;

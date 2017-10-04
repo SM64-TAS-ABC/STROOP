@@ -276,14 +276,14 @@ namespace SM64_Diagnostic.Managers
 
             Panel objPanel = splitContainerObject.Panel1.Controls["panelObj"] as Panel;
 
-            var goToButton = objPanel.Controls["buttonObjGoTo"] as Button;
-            goToButton.Click += (sender, e) => ButtonUtilities.GoToObjects(_currentAddresses);
+            var goToButton = objPanel.Controls["buttonObjGoto"] as Button;
+            goToButton.Click += (sender, e) => ButtonUtilities.GotoObjects(_currentAddresses);
 
             var retrieveButton = objPanel.Controls["buttonObjRetrieve"] as Button;
             retrieveButton.Click += (sender, e) => ButtonUtilities.RetrieveObjects(_currentAddresses);
 
-            var goToHomeButton = objPanel.Controls["buttonObjGoToHome"] as Button;
-            goToHomeButton.Click += (sender, e) => ButtonUtilities.GoToObjectsHome(_currentAddresses);
+            var goToHomeButton = objPanel.Controls["buttonObjGotoHome"] as Button;
+            goToHomeButton.Click += (sender, e) => ButtonUtilities.GotoObjectsHome(_currentAddresses);
 
             var retrieveHomeButton = objPanel.Controls["buttonObjRetrieveHome"] as Button;
             retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_currentAddresses);
