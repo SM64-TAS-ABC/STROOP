@@ -879,15 +879,15 @@ namespace SM64_Diagnostic.Managers
 
                         case "MarioGhostVerticalDistance":
                             {
-                                float ghostY = Config.Stream.GetSingle(objAddress + 0x24);
+                                float ghostY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsYOffset);
                                 newText = Math.Round(mY - ghostY, 3).ToString();
                                 break;
                             }
 
                         case "MarioGhostHorizontalDistance":
                             {
-                                float ghostX = Config.Stream.GetSingle(objAddress + 0x20);
-                                float ghostZ = Config.Stream.GetSingle(objAddress + 0x28);
+                                float ghostX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsXOffset);
+                                float ghostZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsZOffset);
                                 double hDistToGhost = MoreMath.GetDistanceBetween(mX, mZ, ghostX, ghostZ);
                                 newText = Math.Round(hDistToGhost, 3).ToString();
                                 break;
@@ -895,8 +895,8 @@ namespace SM64_Diagnostic.Managers
 
                         case "MarioGhostForwardsDistance":
                             {
-                                float ghostX = Config.Stream.GetSingle(objAddress + 0x20);
-                                float ghostZ = Config.Stream.GetSingle(objAddress + 0x28);
+                                float ghostX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsXOffset);
+                                float ghostZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsZOffset);
                                 double hDistToGhost = MoreMath.GetDistanceBetween(mX, mZ, ghostX, ghostZ);
                                 double angleFromGhost = MoreMath.AngleTo_AngleUnits(ghostX, ghostZ, mX, mZ);
                                 (double movementSideways, double movementForwards) = MoreMath.GetComponentsFromVectorRelatively(hDistToGhost, angleFromGhost, mFacing);
@@ -906,8 +906,8 @@ namespace SM64_Diagnostic.Managers
 
                         case "MarioGhostSidewaysDistance":
                             {
-                                float ghostX = Config.Stream.GetSingle(objAddress + 0x20);
-                                float ghostZ = Config.Stream.GetSingle(objAddress + 0x28);
+                                float ghostX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsXOffset);
+                                float ghostZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsZOffset);
                                 double hDistToGhost = MoreMath.GetDistanceBetween(mX, mZ, ghostX, ghostZ);
                                 double angleFromGhost = MoreMath.AngleTo_AngleUnits(ghostX, ghostZ, mX, mZ);
                                 (double movementSideways, double movementForwards) = MoreMath.GetComponentsFromVectorRelatively(hDistToGhost, angleFromGhost, mFacing);
