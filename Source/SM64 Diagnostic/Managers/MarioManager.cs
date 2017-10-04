@@ -124,7 +124,7 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("MovementZ"),
                 new DataContainer("MovementForwards"),
                 new DataContainer("MovementSideways"),
-                new DataContainer("MovementLateral"),
+                new DataContainer("MovementHorizontal"),
                 new DataContainer("MovementTotal"),
                 new DataContainer("MovementAngle"),
                 new DataContainer("QFrameCountEstimate")
@@ -154,9 +154,9 @@ namespace SM64_Diagnostic.Managers
                 - Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24));
             ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
 
-            double movementLateral = Math.Sqrt(movementX * movementX + movementZ * movementZ);
+            double movementHorizontal = Math.Sqrt(movementX * movementX + movementZ * movementZ);
             double movementAngle = MoreMath.AngleTo_AngleUnits(0, 0, movementX, movementZ);
-            (double movementSideways, double movementForwards) = MoreMath.GetComponentsFromVectorRelatively(movementLateral, movementAngle, marioAngle);
+            (double movementSideways, double movementForwards) = MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
 
             foreach (var specialVar in _specialWatchVars)
             {
@@ -207,8 +207,8 @@ namespace SM64_Diagnostic.Managers
                         (specialVar as DataContainer).Text = Math.Round(movementSideways, 3).ToString();
                         break;
 
-                    case "MovementLateral":
-                        (specialVar as DataContainer).Text = Math.Round(movementLateral, 3).ToString();
+                    case "MovementHorizontal":
+                        (specialVar as DataContainer).Text = Math.Round(movementHorizontal, 3).ToString();
                         break;
 
                     case "MovementTotal":

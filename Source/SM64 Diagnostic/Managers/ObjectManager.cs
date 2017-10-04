@@ -184,10 +184,10 @@ namespace SM64_Diagnostic.Managers
             _specialWatchVars = new List<IDataContainer>()
             {
                 new DataContainer("MarioDistanceToObject"),
-                new DataContainer("MarioLateralDistanceToObject"),
+                new DataContainer("MarioHorizontalDistanceToObject"),
                 new DataContainer("MarioVerticalDistanceToObject"),
                 new DataContainer("MarioDistanceToObjectHome"),
-                new DataContainer("MarioLateralDistanceToObjectHome"),
+                new DataContainer("MarioHorizontalDistanceToObjectHome"),
                 new DataContainer("MarioVerticalDistanceToObjectHome"),
                 new AngleDataContainer("AngleObjectToMario"),
                 new AngleDataContainer("DeltaAngleObjectToMario", AngleViewModeType.Signed),
@@ -197,7 +197,7 @@ namespace SM64_Diagnostic.Managers
                 new AngleDataContainer("DeltaAngleObjectToHome", AngleViewModeType.Signed),
                 new AngleDataContainer("AngleHomeToObject"),
                 new DataContainer("ObjectDistanceToHome"),
-                new DataContainer("LateralObjectDistanceToHome"),
+                new DataContainer("HorizontalObjectDistanceToHome"),
                 new DataContainer("VerticalObjectDistanceToHome"),
                 new DataContainer("MarioHitboxAwayFromObject"),
                 new DataContainer("MarioHitboxAboveObject"),
@@ -246,7 +246,7 @@ namespace SM64_Diagnostic.Managers
 
                 // Mario ghost vars
                 new DataContainer("MarioGhostVerticalDistance"),
-                new DataContainer("MarioGhostLateralDistance"),
+                new DataContainer("MarioGhostHorizontalDistance"),
                 new DataContainer("MarioGhostForwardsDistance"),
                 new DataContainer("MarioGhostSidewaysDistance"),
 
@@ -540,7 +540,7 @@ namespace SM64_Diagnostic.Managers
                             newText = Math.Round(MoreMath.GetDistanceBetween(mX, mY, mZ, objX, objY, objZ),3).ToString();
                             break;
 
-                        case "MarioLateralDistanceToObject":
+                        case "MarioHorizontalDistanceToObject":
                             newText = Math.Round(MoreMath.GetDistanceBetween(mX, mZ, objX, objZ), 3).ToString();
                             break;
 
@@ -552,7 +552,7 @@ namespace SM64_Diagnostic.Managers
                             newText = Math.Round(MoreMath.GetDistanceBetween(mX, mY, mZ, objHomeX, objHomeY, objHomeZ), 3).ToString();
                             break;
 
-                        case "MarioLateralDistanceToObjectHome":
+                        case "MarioHorizontalDistanceToObjectHome":
                             newText = Math.Round(MoreMath.GetDistanceBetween(mX, mZ, objHomeX, objHomeZ), 3).ToString();
                             break;
 
@@ -564,7 +564,7 @@ namespace SM64_Diagnostic.Managers
                             newText = Math.Round(MoreMath.GetDistanceBetween(objX, objY, objZ, objHomeX, objHomeY, objHomeZ), 3).ToString();
                             break;
 
-                        case "LateralObjectDistanceToHome":
+                        case "HorizontalObjectDistanceToHome":
                             newText = Math.Round(MoreMath.GetDistanceBetween(objX, objZ, objHomeX, objHomeZ), 3).ToString();
                             break;
 
@@ -865,8 +865,8 @@ namespace SM64_Diagnostic.Managers
                             {
                                 float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
                                 float radius = 32 + scale * 65;
-                                double lateralDistance = MoreMath.GetDistanceBetween(mX, mZ, objX, objZ);
-                                newText = Math.Round(lateralDistance - radius, 3).ToString();
+                                double horizontalDistance = MoreMath.GetDistanceBetween(mX, mZ, objX, objZ);
+                                newText = Math.Round(horizontalDistance - radius, 3).ToString();
                                 break;
                             }
 
@@ -884,7 +884,7 @@ namespace SM64_Diagnostic.Managers
                                 break;
                             }
 
-                        case "MarioGhostLateralDistance":
+                        case "MarioGhostHorizontalDistance":
                             {
                                 float ghostX = Config.Stream.GetSingle(objAddress + 0x20);
                                 float ghostZ = Config.Stream.GetSingle(objAddress + 0x28);

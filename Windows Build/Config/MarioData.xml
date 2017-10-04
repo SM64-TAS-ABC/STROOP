@@ -17,7 +17,7 @@
   <Data offset="Special" specialType="MovementZ">Delta Z</Data>
   <Data offset="Special" specialType="MovementForwards">Delta Forwards</Data>
   <Data offset="Special" specialType="MovementSideways">Delta Sideways</Data>
-  <Data offset="Special" specialType="MovementLateral">Delta Lateral</Data>
+  <Data offset="Special" specialType="MovementHorizontal">Delta Horizontal</Data>
   <Data offset="Special" specialType="MovementTotal">Delta Total</Data>
   <Data offset="Special" specialType="MovementAngle">Delta Angle</Data>
   <Data offset="Special" specialType="QFrameCountEstimate">QFrames Est.</Data>

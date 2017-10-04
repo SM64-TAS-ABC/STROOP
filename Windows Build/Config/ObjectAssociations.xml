@@ -2016,7 +2016,7 @@
     <Data groupList="ObjectSpecific" type="float" address="0x24" offset="Object">Y</Data>
     <Data groupList="ObjectSpecific" type="float" address="0x28" offset="Object">Z</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="MarioGhostVerticalDistance">Vertical Dist</Data>
-    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioGhostLateralDistance">Lateral Dist</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioGhostHorizontalDistance">Horizontal Dist</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="MarioGhostForwardsDistance">Forwards Dist</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="MarioGhostSidewaysDistance">Sideways Dist</Data>
   </Object>
@@ -2081,7 +2081,7 @@
     <Data groupList="ObjectSpecific" type="int" address="0x198" offset="Object">Num Coins</Data>
     <Data groupList="ObjectSpecific" type="byte" address="0xFB" offset="Object" isBool="true">Lunging</Data>
     <Data groupList="ObjectSpecific" type="int" address="0xFC" offset="Object">Lunging Timer</Data>
-    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioLateralDistanceToObjectHome">LDist Mario to Home</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioHorizontalDistanceToObjectHome">HDist Mario to Home</Data>
     <Data groupList="ObjectSpecific" type="ushort" address="0xCA" offset="Object" isAngle="true">Yaw (Moving)</Data>
     <Data groupList="ObjectSpecific" type="ushort" address="0x162" offset="Object" isAngle="true">Target Angle</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="ScuttlebugDeltaAngleToTarget">DAngle to Target</Data>
@@ -2089,7 +2089,7 @@
     <Data groupList="ObjectSpecific" offset="Special" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
     <Data groupList="ObjectSpecific" type="float" address="0xB0" offset="Object">Y Speed</Data>
     <Data groupList="ObjectSpecific" type="float" address="0xA4" offset="Object">Y</Data>
-    <Data groupList="ObjectSpecific" offset="Special" specialType="LateralObjectDistanceToHome">LDist Obj to Home</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="HorizontalObjectDistanceToHome">HDist Obj to Home</Data>
     <Data groupList="ObjectSpecific" type="float" address="0xB8" offset="Object">H Speed</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002BA0" name="Scuttlebug Spawner">
@@ -2338,7 +2338,7 @@
     <Data groupList="ObjectSpecific" offset="Special" specialType="BobombBloatSize">Bloat Size</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="BobombRadius">Radius</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="BobombSpaceBetween">Space Between</Data>
-    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioLateralDistanceToObject">LDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="byte" address="0xF3" offset="Object" isBool="true">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" address="0xF4" offset="Object">Blinking Timer</Data>
   </Object>
@@ -2354,7 +2354,7 @@
     <Data groupList="ObjectSpecific" offset="Special" specialType="BobombBloatSize">Bloat Size</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="BobombRadius">Radius</Data>
     <Data groupList="ObjectSpecific" offset="Special" specialType="BobombSpaceBetween">Space Between</Data>
-    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioLateralDistanceToObject">LDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="byte" address="0xF3" offset="Object" isBool="true">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" address="0xF4" offset="Object">Blinking Timer</Data>
   </Object>

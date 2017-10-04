@@ -68,23 +68,23 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("YDistanceToV1"),
                 new DataContainer("XDistanceToV1"),
                 new DataContainer("ZDistanceToV1"),
-                new DataContainer("LDistanceToV1"),
+                new DataContainer("HDistanceToV1"),
                 new DataContainer("DistanceToV2"),
                 new DataContainer("YDistanceToV2"),
                 new DataContainer("XDistanceToV2"),
                 new DataContainer("ZDistanceToV2"),
-                new DataContainer("LDistanceToV2"),
+                new DataContainer("HDistanceToV2"),
                 new DataContainer("DistanceToV3"),
                 new DataContainer("YDistanceToV3"),
                 new DataContainer("XDistanceToV3"),
                 new DataContainer("ZDistanceToV3"),
-                new DataContainer("LDistanceToV3"),
+                new DataContainer("HDistanceToV3"),
 
                 new DataContainer("DistanceToV2"),
-                new DataContainer("LateralDistanceToV2"),
+                new DataContainer("HorizontalDistanceToV2"),
                 new DataContainer("VerticalDistanceToV2"),
                 new DataContainer("DistanceToV3"),
-                new DataContainer("LateralDistanceToV3"),
+                new DataContainer("HorizontalDistanceToV3"),
                 new DataContainer("VerticalDistanceToV3"),
 
                 new DataContainer("DistanceToLine12"),
@@ -437,7 +437,7 @@ namespace SM64_Diagnostic.Managers
                     case "ZDistanceToV1":
                         (specialVar as DataContainer).Text = Math.Round(marioZ - v1Z, 3).ToString();
                         goto case "CheckTriangleExists";
-                    case "LDistanceToV1":
+                    case "HDistanceToV1":
                         (specialVar as DataContainer).Text = Math.Round(MoreMath.GetDistanceBetween(marioX, marioZ, v1X, v1Z), 3).ToString();
                         goto case "CheckTriangleExists";
 
@@ -453,7 +453,7 @@ namespace SM64_Diagnostic.Managers
                     case "ZDistanceToV2":
                         (specialVar as DataContainer).Text = Math.Round(marioZ - v2Z, 3).ToString();
                         goto case "CheckTriangleExists";
-                    case "LDistanceToV2":
+                    case "HDistanceToV2":
                         (specialVar as DataContainer).Text = Math.Round(MoreMath.GetDistanceBetween(marioX, marioZ, v2X, v2Z), 3).ToString();
                         goto case "CheckTriangleExists";
 
@@ -469,7 +469,7 @@ namespace SM64_Diagnostic.Managers
                     case "ZDistanceToV3":
                         (specialVar as DataContainer).Text = Math.Round(marioZ - v3Z, 3).ToString();
                         goto case "CheckTriangleExists";
-                    case "LDistanceToV3":
+                    case "HDistanceToV3":
                         (specialVar as DataContainer).Text = Math.Round(MoreMath.GetDistanceBetween(marioX, marioZ, v3X, v3Z), 3).ToString();
                         goto case "CheckTriangleExists";
 

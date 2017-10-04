@@ -18,13 +18,13 @@
   <Data groupList="Simple" type="short" address="0x11E" offset="Object" isAngle="true">Roll Velocity</Data>
   <Data groupList="Expanded" type="float" address="0x015C" offset="Object">"Dist to Mario"</Data>
   <Data groupList="Expanded" offset="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
-  <Data groupList="Expanded" offset="Special" specialType="MarioLateralDistanceToObject">LDist Mario to Obj</Data>
+  <Data groupList="Expanded" offset="Special" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
   <Data groupList="Expanded" offset="Special" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
   <Data groupList="Expanded" offset="Special" specialType="MarioDistanceToObjectHome">Dist Mario to Home</Data>
-  <Data groupList="Expanded" offset="Special" specialType="MarioLateralDistanceToObjectHome">LDist Mario to Home</Data>
+  <Data groupList="Expanded" offset="Special" specialType="MarioHorizontalDistanceToObjectHome">HDist Mario to Home</Data>
   <Data groupList="Expanded" offset="Special" specialType="MarioVerticalDistanceToObjectHome">VDist Mario to Home</Data>
   <Data groupList="Expanded" offset="Special" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
-  <Data groupList="Expanded" offset="Special" specialType="LateralObjectDistanceToHome">LDist Obj to Home</Data>
+  <Data groupList="Expanded" offset="Special" specialType="HorizontalObjectDistanceToHome">HDist Obj to Home</Data>
   <Data groupList="Expanded" offset="Special" specialType="VerticalObjectDistanceToHome">VDist Obj to Home</Data>
   <Data groupList="Expanded" type="ushort" address="0x0162" offset="Object" isAngle="true">"Angle to Mario"</Data>
   <Data groupList="Expanded" offset="Special" specialType="AngleObjectToMario">Angle Obj to Mario</Data>
