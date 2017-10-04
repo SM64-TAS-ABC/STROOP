@@ -2009,6 +2009,9 @@
   <Object behaviorScriptAddress="0x13002A48" name="Landscape Visual">
     <Image path="Landscape Visual.png"/>
   </Object>
+  <Object behaviorScriptAddress="0x13002A48" name="Mario Ghost" subType="1717986918">
+    <Image path="Mario Back.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x13002A5C" name="BitDW Trap Door Manager">
     <SpawnCode gfxId="0x00"/>
     <Image path="BitDW Trap Door Manager.png"/>
