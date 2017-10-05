@@ -424,8 +424,14 @@ namespace SM64_Diagnostic.Managers
             _interactionObject = Config.Stream.GetUInt32(Config.Mario.InteractionObjectPointerOffset + Config.Mario.StructAddress);
             _heldObject = Config.Stream.GetUInt32(Config.Mario.HeldObjectPointerOffset + Config.Mario.StructAddress);
             _usedObject = Config.Stream.GetUInt32(Config.Mario.UsedObjectPointerOffset + Config.Mario.StructAddress);
-            _closestObject = newObjectSlotData.OrderBy(s => !s.IsActive || s.Behavior == (Config.ObjectAssociations.MarioBehavior & 0x00FFFFFF) +
-                Config.ObjectAssociations.BehaviorBankStart ? float.MaxValue : s.DistanceToMario).First().Address;
+            _closestObject = newObjectSlotData.FindAll(
+                    s => s.IsActive &&
+                    s.Behavior != (Config.ObjectAssociations.MarioBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
+                    s.Behavior != (0x130024AC & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
+                    s.Behavior != (0x130024DC & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
+                    s.Behavior != (0x13002500 & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart)
+                .OrderBy(s => s.DistanceToMario).FirstOrDefault()?.Address ?? 0;
+
             _cameraObject = Config.Stream.GetUInt32(Config.Camera.SecondObject);
             _cameraHackObject = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
             _modelObject = _modelManager.ModelObjectAddress;
