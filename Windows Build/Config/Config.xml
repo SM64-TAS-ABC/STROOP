@@ -30,7 +30,12 @@
     <TimerOffset>0x154</TimerOffset>
     <AnimationOffset>0x3C</AnimationOffset>
     <MarioGraphic>0x800F0860</MarioGraphic>
-    
+
+    <MarioBehavior>0x13002EC0</MarioBehavior>
+    <DustSpawnerBehavior>0x130024AC</DustSpawnerBehavior>
+    <DustBallBehavior>0x130024DC</DustBallBehavior>
+    <DustBehavior>0x13002500</DustBehavior>
+
     <CoordinateOffsetX>0xA0</CoordinateOffsetX>
     <CoordinateOffsetY>0xA4</CoordinateOffsetY>
     <CoordinateOffsetZ>0xA8</CoordinateOffsetZ>

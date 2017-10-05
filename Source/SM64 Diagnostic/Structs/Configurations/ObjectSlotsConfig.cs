@@ -36,6 +36,11 @@ namespace SM64_Diagnostic.Structs
         public uint AnimationOffset;
         public uint MarioGraphic;
 
+        public uint MarioBehavior;
+        public uint DustSpawnerBehavior;
+        public uint DustBallBehavior;
+        public uint DustBehavior;
+
         public uint ObjectXOffset;
         public uint ObjectYOffset;
         public uint ObjectZOffset;

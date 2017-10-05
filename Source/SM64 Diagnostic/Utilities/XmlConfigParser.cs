@@ -147,6 +147,20 @@ namespace SM64_Diagnostic.Utilities
                                 case "MarioGraphic":
                                     Config.ObjectSlots.MarioGraphic = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+
+                                case "MarioBehavior":
+                                    Config.ObjectSlots.MarioBehavior = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "DustSpawnerBehavior":
+                                    Config.ObjectSlots.DustSpawnerBehavior = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "DustBallBehavior":
+                                    Config.ObjectSlots.DustBallBehavior = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "DustBehavior":
+                                    Config.ObjectSlots.DustBehavior = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
                                 case "CoordinateOffsetX":
                                     Config.ObjectSlots.ObjectXOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
