@@ -1231,8 +1231,8 @@ namespace SM64_Diagnostic
             this.tabControlMain.Controls.Add(this.tabPageHud);
             this.tabControlMain.Controls.Add(this.tabPageCamera);
             this.tabControlMain.Controls.Add(this.tabPageTriangles);
-            this.tabControlMain.Controls.Add(this.tabPageActions);
             this.tabControlMain.Controls.Add(this.tabPageWater);
+            this.tabControlMain.Controls.Add(this.tabPageActions);
             this.tabControlMain.Controls.Add(this.tabPageInput);
             this.tabControlMain.Controls.Add(this.tabPageFile);
             this.tabControlMain.Controls.Add(this.tabPageMisc);
