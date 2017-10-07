@@ -126,6 +126,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static bool ScaleDiagonalPositionControllerButtons = false;
         public static bool DisableActionUpdateWhenCloning = false;
         public static bool NeutralizeTriangleWith21 = true;
+        public static bool ExcludeDustForClosestObject = true;
 
         public static bool ShowOverlayHeldObject = true;
         public static bool ShowOverlayStoodOnObject = true;
