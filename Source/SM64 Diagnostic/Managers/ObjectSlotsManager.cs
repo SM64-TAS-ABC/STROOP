@@ -424,17 +424,23 @@ namespace SM64_Diagnostic.Managers
             _interactionObject = Config.Stream.GetUInt32(Config.Mario.InteractionObjectPointerOffset + Config.Mario.StructAddress);
             _heldObject = Config.Stream.GetUInt32(Config.Mario.HeldObjectPointerOffset + Config.Mario.StructAddress);
             _usedObject = Config.Stream.GetUInt32(Config.Mario.UsedObjectPointerOffset + Config.Mario.StructAddress);
-            _closestObject = newObjectSlotData.FindAll(
-                    s => s.IsActive &&
-                    s.Behavior != (Config.ObjectSlots.MarioBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
-                    s.Behavior != (Config.ObjectSlots.DustSpawnerBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
-                    s.Behavior != (Config.ObjectSlots.DustBallBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
-                    s.Behavior != (Config.ObjectSlots.DustBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart)
-                .OrderBy(s => s.DistanceToMario).FirstOrDefault()?.Address ?? 0;
-
             _cameraObject = Config.Stream.GetUInt32(Config.Camera.SecondObject);
             _cameraHackObject = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
             _modelObject = _modelManager.ModelObjectAddress;
+
+            List<ObjectSlotData> closestObjectCandidates =
+                newObjectSlotData.FindAll(s =>
+                    s.IsActive &&
+                    s.Behavior != (Config.ObjectSlots.MarioBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart);
+            if (Config.ExcludeDustForClosestObject)
+            {
+                closestObjectCandidates =
+                    closestObjectCandidates.FindAll(s =>
+                        s.Behavior != (Config.ObjectSlots.DustSpawnerBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
+                        s.Behavior != (Config.ObjectSlots.DustBallBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
+                        s.Behavior != (Config.ObjectSlots.DustBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart);
+            }
+            _closestObject = closestObjectCandidates.OrderBy(s => s.DistanceToMario).FirstOrDefault()?.Address ?? 0;
 
             uint floorTriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
             _floorObject = floorTriangleAddress == 0 ? 0 : Config.Stream.GetUInt32(floorTriangleAddress + Config.TriangleOffsets.AssociatedObject);
