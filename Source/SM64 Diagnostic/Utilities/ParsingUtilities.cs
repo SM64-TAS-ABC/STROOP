@@ -217,5 +217,20 @@ namespace SM64_Diagnostic.Utilities
         {
             return ParseDoubleNullable(text) ?? 0;
         }
+
+        public static bool? ParseBoolNullable(string text)
+        {
+            bool parsed;
+            if (bool.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return null;
+        }
+
+        public static bool ParseBool(string text)
+        {
+            return ParseBoolNullable(text) ?? false;
+        }
     }
 }
