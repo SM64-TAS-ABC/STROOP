@@ -469,7 +469,17 @@ namespace SM64_Diagnostic.Managers
 
         private void StateTransferUpdate()
         {
-
+            _betterTextboxStateTransferVar1Current.Text = Config.Stream.GetInt32(Config.GlobalTimerAddress).ToString();
+            _betterTextboxStateTransferVar2Current.Text = Config.Stream.GetUInt16(Config.RngAddress).ToString();
+            _betterTextboxStateTransferVar3Current.Text = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPXOffset).ToString();
+            _betterTextboxStateTransferVar4Current.Text = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPYOffset).ToString();
+            _betterTextboxStateTransferVar5Current.Text = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPZOffset).ToString();
+            _betterTextboxStateTransferVar6Current.Text = Config.Stream.GetUInt16(Config.Mario.StructAddress + 0x38).ToString(); // sliding yaw
+            _betterTextboxStateTransferVar7Current.Text = Config.Stream.GetUInt16(Config.Mario.StructAddress + 0x3A).ToString(); // twirl yaw
+            _betterTextboxStateTransferVar8Current.Text = (true).ToString();
+            _betterTextboxStateTransferVar9Current.Text = (0).ToString();
+            _betterTextboxStateTransferVar10Current.Text = (0).ToString();
+            _betterTextboxStateTransferVar11Current.Text = (0).ToString();
         }
 
         private void StateTransferSave()

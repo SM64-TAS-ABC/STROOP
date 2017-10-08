@@ -11,7 +11,7 @@
   <Data type="float" address="0x58" offset="Mario">X Sliding Speed</Data>
   <Data type="float" address="0x5C" offset="Mario">Z Sliding Speed</Data>
   <Data offset="Special" specialType="SlidingSpeed">H Sliding Speed</Data>
-  <Data type="ushort" address="0x38" offset="Mario" isAngle="true">Sliding Angle</Data>
+  <Data type="ushort" address="0x38" offset="Mario" isAngle="true">Sliding Yaw</Data>
   <Data offset="Special" specialType="MovementX">Delta X</Data>
   <Data offset="Special" specialType="MovementY">Delta Y</Data>
   <Data offset="Special" specialType="MovementZ">Delta Z</Data>

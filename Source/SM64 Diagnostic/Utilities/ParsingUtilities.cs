@@ -98,19 +98,34 @@ namespace SM64_Diagnostic.Utilities
             return ParseUIntNullable(text) ?? 0;
         }
 
-        public static double? ParseDoubleNullable(string text)
+        public static short? ParseShortNullable(string text)
         {
-            double parsed;
-            if (double.TryParse(text, out parsed))
+            short parsed;
+            if (short.TryParse(text, out parsed))
             {
                 return parsed;
             }
             return null;
         }
 
-        public static double ParseDouble(string text)
+        public static short ParseShort(string text)
         {
-            return ParseDoubleNullable(text) ?? 0;
+            return ParseShortNullable(text) ?? 0;
+        }
+
+        public static ushort? ParseUShortNullable(string text)
+        {
+            ushort parsed;
+            if (ushort.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return null;
+        }
+
+        public static ushort ParseUShort(string text)
+        {
+            return ParseUShortNullable(text) ?? 0;
         }
 
         public static long? ParseLongNullable(string text)
@@ -171,6 +186,36 @@ namespace SM64_Diagnostic.Utilities
         public static sbyte ParseSByte(string text)
         {
             return ParseSByteNullable(text) ?? 0;
+        }
+
+        public static float? ParseFloatNullable(string text)
+        {
+            float parsed;
+            if (float.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return null;
+        }
+
+        public static float ParseFloat(string text)
+        {
+            return ParseFloatNullable(text) ?? 0;
+        }
+
+        public static double? ParseDoubleNullable(string text)
+        {
+            double parsed;
+            if (double.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return null;
+        }
+
+        public static double ParseDouble(string text)
+        {
+            return ParseDoubleNullable(text) ?? 0;
         }
     }
 }
