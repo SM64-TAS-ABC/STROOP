@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -8281,8 +8281,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -10763,7 +10763,7 @@ namespace SM64_Diagnostic
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 13);
             this.label10.TabIndex = 18;
-            this.label10.Text = "Raw X:";
+            this.label10.Text = "Global Timer:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // betterTextbox3
@@ -10954,7 +10954,7 @@ namespace SM64_Diagnostic
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 13);
             this.label2.TabIndex = 18;
-            this.label2.Text = "Raw X:";
+            this.label2.Text = "RNG:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label4
@@ -10965,7 +10965,7 @@ namespace SM64_Diagnostic
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 13);
             this.label4.TabIndex = 18;
-            this.label4.Text = "Raw X:";
+            this.label4.Text = "HOLP X:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label5
@@ -10976,7 +10976,7 @@ namespace SM64_Diagnostic
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 13);
             this.label5.TabIndex = 18;
-            this.label5.Text = "Raw X:";
+            this.label5.Text = "HOLP Y:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label6
@@ -10987,7 +10987,7 @@ namespace SM64_Diagnostic
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 13);
             this.label6.TabIndex = 18;
-            this.label6.Text = "Raw X:";
+            this.label6.Text = "HOLP Z:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label7
@@ -10998,7 +10998,7 @@ namespace SM64_Diagnostic
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 13);
             this.label7.TabIndex = 18;
-            this.label7.Text = "Raw X:";
+            this.label7.Text = "Sliding Yaw:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label8
@@ -11009,7 +11009,7 @@ namespace SM64_Diagnostic
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 13);
             this.label8.TabIndex = 18;
-            this.label8.Text = "Raw X:";
+            this.label8.Text = "Twirl Yaw:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label9
@@ -11020,7 +11020,7 @@ namespace SM64_Diagnostic
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 13);
             this.label9.TabIndex = 18;
-            this.label9.Text = "Raw X:";
+            this.label9.Text = "M Cam Possible:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label11
@@ -11031,7 +11031,7 @@ namespace SM64_Diagnostic
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(100, 13);
             this.label11.TabIndex = 18;
-            this.label11.Text = "Raw X:";
+            this.label11.Text = "File Data:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label12
@@ -11042,7 +11042,7 @@ namespace SM64_Diagnostic
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(100, 13);
             this.label12.TabIndex = 18;
-            this.label12.Text = "Raw X:";
+            this.label12.Text = "Life Count:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label13
@@ -11053,7 +11053,7 @@ namespace SM64_Diagnostic
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(100, 13);
             this.label13.TabIndex = 18;
-            this.label13.Text = "Raw X:";
+            this.label13.Text = "Star Count:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // StroopMainForm
