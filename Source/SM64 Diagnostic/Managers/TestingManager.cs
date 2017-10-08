@@ -200,7 +200,9 @@ namespace SM64_Diagnostic.Managers
             // State Transfer
             _groupBoxStateTransfer = tabControl.Controls["groupBoxStateTransfer"] as GroupBox;
             _buttonStateTransferSave = _groupBoxStateTransfer.Controls["buttonStateTransferSave"] as Button;
+            _buttonStateTransferSave.Click += (sender, e) => StateTransferSave();
             _buttonStateTransferApply = _groupBoxStateTransfer.Controls["buttonStateTransferApply"] as Button;
+            _buttonStateTransferApply.Click += (sender, e) => StateTransferApply();
 
             _betterTextboxStateTransferVar1Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar1Current"] as BetterTextbox;
             _betterTextboxStateTransferVar2Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar2Current"] as BetterTextbox;
@@ -460,6 +462,24 @@ namespace SM64_Diagnostic.Managers
             _labelControlStick5.Text = angleInteded.ToString();
             int diff = angleGuess - angleInteded;
             _labelControlStick6.Text = diff.ToString();
+
+            // State Transfer
+            StateTransferUpdate();
+        }
+
+        private void StateTransferUpdate()
+        {
+
+        }
+
+        private void StateTransferSave()
+        {
+
+        }
+
+        private void StateTransferApply()
+        {
+
         }
 
         private static List<(int, double)> _plushRacingPenguinProgress = new List<(int, double)> {
