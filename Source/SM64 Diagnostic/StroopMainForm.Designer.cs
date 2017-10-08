@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -802,6 +802,31 @@ namespace SM64_Diagnostic
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.checkBoxExcludeDustForClosestObject = new System.Windows.Forms.CheckBox();
+            this.groupBoxStateTransfer = new System.Windows.Forms.GroupBox();
+            this.betterTextbox1 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox2 = new SM64_Diagnostic.BetterTextbox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.betterTextbox3 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox4 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox5 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox6 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox7 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox8 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox9 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox10 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox11 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox12 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox13 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox14 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox15 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox16 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox17 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox18 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox19 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox20 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox21 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox22 = new SM64_Diagnostic.BetterTextbox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1089,6 +1114,7 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.groupBoxStateTransfer.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -8246,8 +8272,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9923,6 +9949,7 @@ namespace SM64_Diagnostic
             // 
             // tabPageTesting
             // 
+            this.tabPageTesting.Controls.Add(this.groupBoxStateTransfer);
             this.tabPageTesting.Controls.Add(this.groupBoxControlStick);
             this.tabPageTesting.Controls.Add(this.groupBoxGoto);
             this.tabPageTesting.Controls.Add(this.groupBoxRecording);
@@ -9952,7 +9979,7 @@ namespace SM64_Diagnostic
             this.groupBoxControlStick.Controls.Add(this.labelControlStick3);
             this.groupBoxControlStick.Controls.Add(this.labelControlStick5);
             this.groupBoxControlStick.Controls.Add(this.labelControlStick4);
-            this.groupBoxControlStick.Location = new System.Drawing.Point(343, 6);
+            this.groupBoxControlStick.Location = new System.Drawing.Point(128, 201);
             this.groupBoxControlStick.Name = "groupBoxControlStick";
             this.groupBoxControlStick.Size = new System.Drawing.Size(203, 234);
             this.groupBoxControlStick.TabIndex = 41;
@@ -10659,6 +10686,259 @@ namespace SM64_Diagnostic
             this.checkBoxExcludeDustForClosestObject.Text = "Exclude Dust for Closest Object";
             this.checkBoxExcludeDustForClosestObject.UseVisualStyleBackColor = true;
             // 
+            // groupBoxStateTransfer
+            // 
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox22);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox21);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox11);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox20);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox8);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox19);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox10);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox18);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox7);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox17);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox4);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox16);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox9);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox15);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox6);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox14);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox3);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox13);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox5);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox12);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox1);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextbox2);
+            this.groupBoxStateTransfer.Controls.Add(this.label9);
+            this.groupBoxStateTransfer.Controls.Add(this.label10);
+            this.groupBoxStateTransfer.Location = new System.Drawing.Point(343, 6);
+            this.groupBoxStateTransfer.Name = "groupBoxStateTransfer";
+            this.groupBoxStateTransfer.Size = new System.Drawing.Size(337, 341);
+            this.groupBoxStateTransfer.TabIndex = 41;
+            this.groupBoxStateTransfer.TabStop = false;
+            this.groupBoxStateTransfer.Text = "State Transfer";
+            // 
+            // betterTextbox1
+            // 
+            this.betterTextbox1.Location = new System.Drawing.Point(115, 60);
+            this.betterTextbox1.Name = "betterTextbox1";
+            this.betterTextbox1.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox1.TabIndex = 28;
+            this.betterTextbox1.Text = "100";
+            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox2
+            // 
+            this.betterTextbox2.Location = new System.Drawing.Point(115, 35);
+            this.betterTextbox2.Name = "betterTextbox2";
+            this.betterTextbox2.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox2.TabIndex = 28;
+            this.betterTextbox2.Text = "100";
+            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(9, 67);
+            this.label9.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Raw Y:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(9, 41);
+            this.label10.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(100, 13);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Raw X:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // betterTextbox3
+            // 
+            this.betterTextbox3.Location = new System.Drawing.Point(115, 85);
+            this.betterTextbox3.Name = "betterTextbox3";
+            this.betterTextbox3.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox3.TabIndex = 28;
+            this.betterTextbox3.Text = "100";
+            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox4
+            // 
+            this.betterTextbox4.Location = new System.Drawing.Point(115, 110);
+            this.betterTextbox4.Name = "betterTextbox4";
+            this.betterTextbox4.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox4.TabIndex = 28;
+            this.betterTextbox4.Text = "100";
+            this.betterTextbox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox5
+            // 
+            this.betterTextbox5.Location = new System.Drawing.Point(115, 135);
+            this.betterTextbox5.Name = "betterTextbox5";
+            this.betterTextbox5.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox5.TabIndex = 28;
+            this.betterTextbox5.Text = "100";
+            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox6
+            // 
+            this.betterTextbox6.Location = new System.Drawing.Point(115, 160);
+            this.betterTextbox6.Name = "betterTextbox6";
+            this.betterTextbox6.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox6.TabIndex = 28;
+            this.betterTextbox6.Text = "100";
+            this.betterTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox7
+            // 
+            this.betterTextbox7.Location = new System.Drawing.Point(115, 185);
+            this.betterTextbox7.Name = "betterTextbox7";
+            this.betterTextbox7.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox7.TabIndex = 28;
+            this.betterTextbox7.Text = "100";
+            this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox8
+            // 
+            this.betterTextbox8.Location = new System.Drawing.Point(115, 210);
+            this.betterTextbox8.Name = "betterTextbox8";
+            this.betterTextbox8.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox8.TabIndex = 28;
+            this.betterTextbox8.Text = "100";
+            this.betterTextbox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox9
+            // 
+            this.betterTextbox9.Location = new System.Drawing.Point(115, 235);
+            this.betterTextbox9.Name = "betterTextbox9";
+            this.betterTextbox9.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox9.TabIndex = 28;
+            this.betterTextbox9.Text = "100";
+            this.betterTextbox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox10
+            // 
+            this.betterTextbox10.Location = new System.Drawing.Point(115, 260);
+            this.betterTextbox10.Name = "betterTextbox10";
+            this.betterTextbox10.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox10.TabIndex = 28;
+            this.betterTextbox10.Text = "100";
+            this.betterTextbox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox11
+            // 
+            this.betterTextbox11.Location = new System.Drawing.Point(115, 285);
+            this.betterTextbox11.Name = "betterTextbox11";
+            this.betterTextbox11.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox11.TabIndex = 28;
+            this.betterTextbox11.Text = "100";
+            this.betterTextbox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox12
+            // 
+            this.betterTextbox12.Location = new System.Drawing.Point(180, 35);
+            this.betterTextbox12.Name = "betterTextbox12";
+            this.betterTextbox12.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox12.TabIndex = 28;
+            this.betterTextbox12.Text = "100";
+            this.betterTextbox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox13
+            // 
+            this.betterTextbox13.Location = new System.Drawing.Point(180, 60);
+            this.betterTextbox13.Name = "betterTextbox13";
+            this.betterTextbox13.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox13.TabIndex = 28;
+            this.betterTextbox13.Text = "100";
+            this.betterTextbox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox14
+            // 
+            this.betterTextbox14.Location = new System.Drawing.Point(180, 135);
+            this.betterTextbox14.Name = "betterTextbox14";
+            this.betterTextbox14.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox14.TabIndex = 28;
+            this.betterTextbox14.Text = "100";
+            this.betterTextbox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox15
+            // 
+            this.betterTextbox15.Location = new System.Drawing.Point(180, 85);
+            this.betterTextbox15.Name = "betterTextbox15";
+            this.betterTextbox15.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox15.TabIndex = 28;
+            this.betterTextbox15.Text = "100";
+            this.betterTextbox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox16
+            // 
+            this.betterTextbox16.Location = new System.Drawing.Point(180, 160);
+            this.betterTextbox16.Name = "betterTextbox16";
+            this.betterTextbox16.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox16.TabIndex = 28;
+            this.betterTextbox16.Text = "100";
+            this.betterTextbox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox17
+            // 
+            this.betterTextbox17.Location = new System.Drawing.Point(180, 235);
+            this.betterTextbox17.Name = "betterTextbox17";
+            this.betterTextbox17.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox17.TabIndex = 28;
+            this.betterTextbox17.Text = "100";
+            this.betterTextbox17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox18
+            // 
+            this.betterTextbox18.Location = new System.Drawing.Point(180, 110);
+            this.betterTextbox18.Name = "betterTextbox18";
+            this.betterTextbox18.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox18.TabIndex = 28;
+            this.betterTextbox18.Text = "100";
+            this.betterTextbox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox19
+            // 
+            this.betterTextbox19.Location = new System.Drawing.Point(180, 185);
+            this.betterTextbox19.Name = "betterTextbox19";
+            this.betterTextbox19.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox19.TabIndex = 28;
+            this.betterTextbox19.Text = "100";
+            this.betterTextbox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox20
+            // 
+            this.betterTextbox20.Location = new System.Drawing.Point(180, 260);
+            this.betterTextbox20.Name = "betterTextbox20";
+            this.betterTextbox20.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox20.TabIndex = 28;
+            this.betterTextbox20.Text = "100";
+            this.betterTextbox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox21
+            // 
+            this.betterTextbox21.Location = new System.Drawing.Point(180, 210);
+            this.betterTextbox21.Name = "betterTextbox21";
+            this.betterTextbox21.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox21.TabIndex = 28;
+            this.betterTextbox21.Text = "100";
+            this.betterTextbox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox22
+            // 
+            this.betterTextbox22.Location = new System.Drawing.Point(180, 285);
+            this.betterTextbox22.Name = "betterTextbox22";
+            this.betterTextbox22.Size = new System.Drawing.Size(60, 20);
+            this.betterTextbox22.TabIndex = 28;
+            this.betterTextbox22.Text = "100";
+            this.betterTextbox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -11022,6 +11302,8 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.groupBoxStateTransfer.ResumeLayout(false);
+            this.groupBoxStateTransfer.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -11797,6 +12079,31 @@ namespace SM64_Diagnostic
         private Button buttonMarioHOLPRetrieve;
         private Button buttonMarioHOLPGoto;
         private CheckBox checkBoxExcludeDustForClosestObject;
+        private GroupBox groupBoxStateTransfer;
+        private BetterTextbox betterTextbox1;
+        private BetterTextbox betterTextbox2;
+        private Label label9;
+        private Label label10;
+        private BetterTextbox betterTextbox22;
+        private BetterTextbox betterTextbox21;
+        private BetterTextbox betterTextbox11;
+        private BetterTextbox betterTextbox20;
+        private BetterTextbox betterTextbox8;
+        private BetterTextbox betterTextbox19;
+        private BetterTextbox betterTextbox10;
+        private BetterTextbox betterTextbox18;
+        private BetterTextbox betterTextbox7;
+        private BetterTextbox betterTextbox17;
+        private BetterTextbox betterTextbox4;
+        private BetterTextbox betterTextbox16;
+        private BetterTextbox betterTextbox9;
+        private BetterTextbox betterTextbox15;
+        private BetterTextbox betterTextbox6;
+        private BetterTextbox betterTextbox14;
+        private BetterTextbox betterTextbox3;
+        private BetterTextbox betterTextbox13;
+        private BetterTextbox betterTextbox5;
+        private BetterTextbox betterTextbox12;
     }
 }
 
