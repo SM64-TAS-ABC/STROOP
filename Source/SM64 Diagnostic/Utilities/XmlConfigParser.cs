@@ -704,6 +704,12 @@ namespace SM64_Diagnostic.Utilities
                                 case "YawFacingOffset":
                                     Config.Camera.YawFacingOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "MarioCamPossibleOffset":
+                                    Config.Camera.MarioCamPossibleOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "MarioCamPossibleMask":
+                                    Config.Camera.MarioCamPossibleMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "SecondObjectAddress":
                                     Config.Camera.SecondObject = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

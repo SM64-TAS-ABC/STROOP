@@ -534,9 +534,9 @@ namespace SM64_Diagnostic.Managers
             bool? value8 = ParsingUtilities.ParseBoolNullable(_betterTextboxStateTransferVar8Saved.Text);
             if (value8.HasValue)
             {
-                byte oldByte = Config.Stream.GetByte(Config.Camera.CameraStructAddress + 0x6D);
-                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, 0x04, value8.Value);
-                Config.Stream.SetValue(newByte, Config.Camera.CameraStructAddress + 0x6D);
+                byte oldByte = Config.Stream.GetByte(Config.Camera.CameraStructAddress + Config.Camera.MarioCamPossibleOffset);
+                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, Config.Camera.MarioCamPossibleMask, value8.Value);
+                Config.Stream.SetValue(newByte, Config.Camera.CameraStructAddress + Config.Camera.MarioCamPossibleOffset);
             }
 
             if (_stateTransferFileData != null) FileManager.Instance.SetBufferedBytes(_stateTransferFileData, FileManager.Instance.GetInGameFileAddress());

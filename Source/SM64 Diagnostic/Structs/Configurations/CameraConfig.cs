@@ -19,6 +19,8 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint FocusYOffset;
         public uint FocusZOffset;
         public uint YawFacingOffset;
+        public uint MarioCamPossibleOffset;
+        public byte MarioCamPossibleMask;
         public uint SecondObject;
     }
 }
