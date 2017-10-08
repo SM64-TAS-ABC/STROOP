@@ -72,6 +72,35 @@ namespace SM64_Diagnostic.Managers
         Button _buttonGoto;
         Button _buttonGotoGetCurrent;
 
+        // State Transfer
+        GroupBox _groupBoxStateTransfer;
+        Button _buttonStateTransferSave;
+        Button _buttonStateTransferApply;
+
+        BetterTextbox _betterTextboxStateTransferVar1Current;
+        BetterTextbox _betterTextboxStateTransferVar2Current;
+        BetterTextbox _betterTextboxStateTransferVar3Current;
+        BetterTextbox _betterTextboxStateTransferVar4Current;
+        BetterTextbox _betterTextboxStateTransferVar5Current;
+        BetterTextbox _betterTextboxStateTransferVar6Current;
+        BetterTextbox _betterTextboxStateTransferVar7Current;
+        BetterTextbox _betterTextboxStateTransferVar8Current;
+        BetterTextbox _betterTextboxStateTransferVar9Current;
+        BetterTextbox _betterTextboxStateTransferVar10Current;
+        BetterTextbox _betterTextboxStateTransferVar11Current;
+
+        BetterTextbox _betterTextboxStateTransferVar1Saved;
+        BetterTextbox _betterTextboxStateTransferVar2Saved;
+        BetterTextbox _betterTextboxStateTransferVar3Saved;
+        BetterTextbox _betterTextboxStateTransferVar4Saved;
+        BetterTextbox _betterTextboxStateTransferVar5Saved;
+        BetterTextbox _betterTextboxStateTransferVar6Saved;
+        BetterTextbox _betterTextboxStateTransferVar7Saved;
+        BetterTextbox _betterTextboxStateTransferVar8Saved;
+        BetterTextbox _betterTextboxStateTransferVar9Saved;
+        BetterTextbox _betterTextboxStateTransferVar10Saved;
+        BetterTextbox _betterTextboxStateTransferVar11Saved;
+
         public TestingManager(TabPage tabControl)
         {
             Instance = this;
@@ -167,6 +196,35 @@ namespace SM64_Diagnostic.Managers
                 _betterTextboxGotoY.Text = marioY.ToString();
                 _betterTextboxGotoZ.Text = marioZ.ToString();
             };
+
+            // State Transfer
+            _groupBoxStateTransfer = tabControl.Controls["groupBoxStateTransfer"] as GroupBox;
+            _buttonStateTransferSave = _groupBoxStateTransfer.Controls["buttonStateTransferSave"] as Button;
+            _buttonStateTransferApply = _groupBoxStateTransfer.Controls["buttonStateTransferApply"] as Button;
+
+            _betterTextboxStateTransferVar1Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar1Current"] as BetterTextbox;
+            _betterTextboxStateTransferVar2Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar2Current"] as BetterTextbox;
+            _betterTextboxStateTransferVar3Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar3Current"] as BetterTextbox;
+            _betterTextboxStateTransferVar4Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar4Current"] as BetterTextbox;
+            _betterTextboxStateTransferVar5Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar5Current"] as BetterTextbox;
+            _betterTextboxStateTransferVar6Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar6Current"] as BetterTextbox;
+            _betterTextboxStateTransferVar7Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar7Current"] as BetterTextbox;
+            _betterTextboxStateTransferVar8Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar8Current"] as BetterTextbox;
+            _betterTextboxStateTransferVar9Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar9Current"] as BetterTextbox;
+            _betterTextboxStateTransferVar10Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar10Current"] as BetterTextbox;
+            _betterTextboxStateTransferVar11Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar11Current"] as BetterTextbox;
+
+            _betterTextboxStateTransferVar1Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar1Saved"] as BetterTextbox;
+            _betterTextboxStateTransferVar2Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar2Saved"] as BetterTextbox;
+            _betterTextboxStateTransferVar3Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar3Saved"] as BetterTextbox;
+            _betterTextboxStateTransferVar4Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar4Saved"] as BetterTextbox;
+            _betterTextboxStateTransferVar5Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar5Saved"] as BetterTextbox;
+            _betterTextboxStateTransferVar6Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar6Saved"] as BetterTextbox;
+            _betterTextboxStateTransferVar7Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar7Saved"] as BetterTextbox;
+            _betterTextboxStateTransferVar8Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar8Saved"] as BetterTextbox;
+            _betterTextboxStateTransferVar9Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar9Saved"] as BetterTextbox;
+            _betterTextboxStateTransferVar10Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar10Saved"] as BetterTextbox;
+            _betterTextboxStateTransferVar11Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar11Saved"] as BetterTextbox;
         }
 
         public abstract class VarState
