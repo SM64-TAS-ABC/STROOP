@@ -21,6 +21,9 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint YawFacingOffset;
         public uint MarioCamPossibleOffset;
         public byte MarioCamPossibleMask;
-        public uint SecondObject;
+
+        public uint SecondaryObjectAddress { get { return Config.SwitchRomVersion(SecondaryObjectAddressUS, SecondaryObjectAddressJP); } }
+        public uint SecondaryObjectAddressUS;
+        public uint SecondaryObjectAddressJP;
     }
 }

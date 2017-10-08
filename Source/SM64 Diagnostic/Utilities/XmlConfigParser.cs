@@ -710,8 +710,11 @@ namespace SM64_Diagnostic.Utilities
                                 case "MarioCamPossibleMask":
                                     Config.Camera.MarioCamPossibleMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "SecondObjectAddress":
-                                    Config.Camera.SecondObject = ParsingUtilities.ParseHex(subElement.Value);
+                                case "SecondaryObjectAddressUS":
+                                    Config.Camera.SecondaryObjectAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "SecondaryObjectAddressJP":
+                                    Config.Camera.SecondaryObjectAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                             }
                         }

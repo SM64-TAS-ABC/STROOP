@@ -237,7 +237,8 @@
     <YawFacingOffset>0xCE</YawFacingOffset>
     <MarioCamPossibleOffset>0x6D</MarioCamPossibleOffset>
     <MarioCamPossibleMask>0x04</MarioCamPossibleMask>
-    <SecondObjectAddress>0x8032DF30</SecondObjectAddress>
+    <SecondaryObjectAddressUS>0x8032DF30</SecondaryObjectAddressUS>
+    <SecondaryObjectAddressJP>0x8032CFD0</SecondaryObjectAddressJP>
   </Camera>
   <Input>
     <CurrentInputAddressUS>0x8033AFF8</CurrentInputAddressUS>
