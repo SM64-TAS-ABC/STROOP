@@ -68,16 +68,6 @@ namespace SM64_Diagnostic.Utilities
             return true;
         }
 
-        public static int ParseInt(string text)
-        {
-            int parsed;
-            if (int.TryParse(text, out parsed))
-            {
-                return parsed;
-            }
-            return 0;
-        }
-
         public static int? ParseIntNullable(string text)
         {
             int parsed;
@@ -88,14 +78,24 @@ namespace SM64_Diagnostic.Utilities
             return null;
         }
 
-        public static double ParseDouble(string text)
+        public static int ParseInt(string text)
         {
-            double parsed;
-            if (double.TryParse(text, out parsed))
+            return ParseIntNullable(text) ?? 0;
+        }
+
+        public static uint? ParseUIntNullable(string text)
+        {
+            uint parsed;
+            if (uint.TryParse(text, out parsed))
             {
                 return parsed;
             }
-            return 0;
+            return null;
+        }
+
+        public static uint ParseUInt(string text)
+        {
+            return ParseUIntNullable(text) ?? 0;
         }
 
         public static double? ParseDoubleNullable(string text)
@@ -106,6 +106,71 @@ namespace SM64_Diagnostic.Utilities
                 return parsed;
             }
             return null;
+        }
+
+        public static double ParseDouble(string text)
+        {
+            return ParseDoubleNullable(text) ?? 0;
+        }
+
+        public static long? ParseLongNullable(string text)
+        {
+            long parsed;
+            if (long.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return null;
+        }
+
+        public static long ParseLong(string text)
+        {
+            return ParseLongNullable(text) ?? 0;
+        }
+
+        public static ulong? ParseULongNullable(string text)
+        {
+            ulong parsed;
+            if (ulong.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return null;
+        }
+
+        public static ulong ParseULong(string text)
+        {
+            return ParseULongNullable(text) ?? 0;
+        }
+
+        public static byte? ParseByteNullable(string text)
+        {
+            byte parsed;
+            if (byte.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return null;
+        }
+
+        public static byte ParseByte(string text)
+        {
+            return ParseByteNullable(text) ?? 0;
+        }
+
+        public static sbyte? ParseSByteNullable(string text)
+        {
+            sbyte parsed;
+            if (sbyte.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return null;
+        }
+
+        public static sbyte ParseSByte(string text)
+        {
+            return ParseSByteNullable(text) ?? 0;
         }
     }
 }
