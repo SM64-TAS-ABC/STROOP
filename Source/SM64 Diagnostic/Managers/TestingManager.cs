@@ -483,7 +483,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar6Current.Text = Config.Stream.GetUInt16(Config.Mario.StructAddress + 0x38).ToString(); // sliding yaw
             _betterTextboxStateTransferVar7Current.Text = Config.Stream.GetUInt16(Config.Mario.StructAddress + 0x3A).ToString(); // twirl yaw
             _betterTextboxStateTransferVar8Current.Text = ((Config.Stream.GetByte(Config.Camera.CameraStructAddress + 0x6D) & 0x04) != 0).ToString();
-            _betterTextboxStateTransferVar9Current.Text = (0).ToString();
+            _betterTextboxStateTransferVar9Current.Text = FileManager.Instance.GetChecksum(FileManager.Instance.GetInGameFileAddress()).ToString();
             _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Hud.HpCountOffset).ToString();
             _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(Config.Mario.StructAddress + Config.Hud.LifeCountOffset).ToString();
             _betterTextboxStateTransferVar12Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Hud.StarCountOffset).ToString();

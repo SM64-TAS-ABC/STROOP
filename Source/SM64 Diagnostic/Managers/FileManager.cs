@@ -468,6 +468,18 @@ namespace SM64_Diagnostic.Managers
             Config.Stream.SetValue(numStars, Config.Mario.StructAddress + Config.Hud.StarDisplayOffset);
         }
 
+        public ushort GetChecksum(uint? nullableFileAddress = null)
+        {
+            uint fileAddress = nullableFileAddress ?? CurrentFileAddress;
+            ushort checksum = (ushort)(Config.File.ChecksumConstantValue % 256 + Config.File.ChecksumConstantValue / 256);
+            for (uint i = 0; i < Config.File.FileStructSize - 4; i++)
+            {
+                byte b = Config.Stream.GetByte(fileAddress + i);
+                checksum += b;
+            }
+            return checksum;
+        }
+
         private void FileSaveButton_Click(object sender, EventArgs e)
         {
             // Get the corresponding unsaved file struct address
@@ -684,6 +696,26 @@ namespace SM64_Diagnostic.Managers
                     return Config.File.FileDSavedAddress;
                 default:
                     throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public uint GetInGameFileAddress()
+        {
+            // TODO fix this to be a config var
+            //< Data type = "short" addressUS = "0x8032DDF4" addressJP = "0x8032CE94" offset = "Relative" > Current File </ Data >
+            short inGameFile = Config.Stream.GetInt16(0x8032DDF4);
+            switch (inGameFile)
+            {
+                case 1:
+                    return Config.File.FileAAddress;
+                case 2:
+                    return Config.File.FileBAddress;
+                case 3:
+                    return Config.File.FileCAddress;
+                case 4:
+                    return Config.File.FileDAddress;
+                default:
+                    return Config.File.FileAAddress;
             }
         }
 
