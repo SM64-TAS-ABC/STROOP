@@ -109,6 +109,10 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint WaterPointerAddressUS;
         public static uint WaterPointerAddressJP;
 
+        public static uint CurrentFileAddress { get { return Config.SwitchRomVersion(CurrentFileAddressUS, CurrentFileAddressJP); } }
+        public static uint CurrentFileAddressUS;
+        public static uint CurrentFileAddressJP;
+
         public static uint HackedAreaAddress { get { return Config.SwitchRomVersion(HackedAreaAddressUS, HackedAreaAddressJP); } }
         public static uint HackedAreaAddressUS;
         public static uint HackedAreaAddressJP;

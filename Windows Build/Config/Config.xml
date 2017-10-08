@@ -407,6 +407,9 @@
   <RngAddressUS>0x8038EEE0</RngAddressUS>
   <RngAddressJP>0x8038EEE0</RngAddressJP>
 
+  <CurrentFileAddressUS>0x8032DDF4</CurrentFileAddressUS>
+  <CurrentFileAddressJP>0x8032CE94</CurrentFileAddressJP>
+
   <HackedAreaAddressUS>0x803E0000</HackedAreaAddressUS>
   <HackedAreaAddressJP>0x803E0000</HackedAreaAddressJP>
   <DebugAddress></DebugAddress>

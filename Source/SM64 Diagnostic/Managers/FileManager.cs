@@ -701,9 +701,7 @@ namespace SM64_Diagnostic.Managers
 
         public uint GetInGameFileAddress()
         {
-            // TODO fix this to be a config var
-            //< Data type = "short" addressUS = "0x8032DDF4" addressJP = "0x8032CE94" offset = "Relative" > Current File </ Data >
-            short inGameFile = Config.Stream.GetInt16(0x8032DDF4);
+            short inGameFile = Config.Stream.GetInt16(Config.CurrentFileAddress);
             switch (inGameFile)
             {
                 case 1:

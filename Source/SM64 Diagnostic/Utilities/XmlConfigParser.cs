@@ -1279,6 +1279,13 @@ namespace SM64_Diagnostic.Utilities
                         Config.WaterPointerAddressJP = ParsingUtilities.ParseHex(element.Value);
                         break;
 
+                    case "CurrentFileAddressUS":
+                        Config.CurrentFileAddressUS = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "CurrentFileAddressJP":
+                        Config.CurrentFileAddressJP = ParsingUtilities.ParseHex(element.Value);
+                        break;
+
                     case "HackedAreaAddressUS":
                         Config.HackedAreaAddressUS = ParsingUtilities.ParseHex(element.Value);
                         break;
