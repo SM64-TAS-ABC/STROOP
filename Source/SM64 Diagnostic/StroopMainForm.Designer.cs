@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -836,6 +836,10 @@ namespace SM64_Diagnostic
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -8281,8 +8285,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -10702,6 +10706,8 @@ namespace SM64_Diagnostic
             this.groupBoxStateTransfer.Controls.Add(this.betterTextbox11);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextbox20);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextbox8);
+            this.groupBoxStateTransfer.Controls.Add(this.button2);
+            this.groupBoxStateTransfer.Controls.Add(this.button1);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextbox19);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextbox10);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextbox18);
@@ -10729,17 +10735,19 @@ namespace SM64_Diagnostic
             this.groupBoxStateTransfer.Controls.Add(this.label5);
             this.groupBoxStateTransfer.Controls.Add(this.label4);
             this.groupBoxStateTransfer.Controls.Add(this.label2);
+            this.groupBoxStateTransfer.Controls.Add(this.label15);
+            this.groupBoxStateTransfer.Controls.Add(this.label14);
             this.groupBoxStateTransfer.Controls.Add(this.label10);
             this.groupBoxStateTransfer.Location = new System.Drawing.Point(343, 6);
             this.groupBoxStateTransfer.Name = "groupBoxStateTransfer";
-            this.groupBoxStateTransfer.Size = new System.Drawing.Size(337, 341);
+            this.groupBoxStateTransfer.Size = new System.Drawing.Size(258, 359);
             this.groupBoxStateTransfer.TabIndex = 41;
             this.groupBoxStateTransfer.TabStop = false;
             this.groupBoxStateTransfer.Text = "State Transfer";
             // 
             // betterTextbox1
             // 
-            this.betterTextbox1.Location = new System.Drawing.Point(115, 60);
+            this.betterTextbox1.Location = new System.Drawing.Point(114, 92);
             this.betterTextbox1.Name = "betterTextbox1";
             this.betterTextbox1.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox1.TabIndex = 28;
@@ -10748,7 +10756,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox2
             // 
-            this.betterTextbox2.Location = new System.Drawing.Point(115, 35);
+            this.betterTextbox2.Location = new System.Drawing.Point(114, 67);
             this.betterTextbox2.Name = "betterTextbox2";
             this.betterTextbox2.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox2.TabIndex = 28;
@@ -10758,7 +10766,7 @@ namespace SM64_Diagnostic
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 38);
+            this.label10.Location = new System.Drawing.Point(11, 70);
             this.label10.MinimumSize = new System.Drawing.Size(100, 2);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 13);
@@ -10768,7 +10776,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox3
             // 
-            this.betterTextbox3.Location = new System.Drawing.Point(115, 85);
+            this.betterTextbox3.Location = new System.Drawing.Point(114, 117);
             this.betterTextbox3.Name = "betterTextbox3";
             this.betterTextbox3.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox3.TabIndex = 28;
@@ -10777,7 +10785,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox4
             // 
-            this.betterTextbox4.Location = new System.Drawing.Point(115, 110);
+            this.betterTextbox4.Location = new System.Drawing.Point(114, 142);
             this.betterTextbox4.Name = "betterTextbox4";
             this.betterTextbox4.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox4.TabIndex = 28;
@@ -10786,7 +10794,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox5
             // 
-            this.betterTextbox5.Location = new System.Drawing.Point(115, 135);
+            this.betterTextbox5.Location = new System.Drawing.Point(114, 167);
             this.betterTextbox5.Name = "betterTextbox5";
             this.betterTextbox5.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox5.TabIndex = 28;
@@ -10795,7 +10803,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox6
             // 
-            this.betterTextbox6.Location = new System.Drawing.Point(115, 160);
+            this.betterTextbox6.Location = new System.Drawing.Point(114, 192);
             this.betterTextbox6.Name = "betterTextbox6";
             this.betterTextbox6.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox6.TabIndex = 28;
@@ -10804,7 +10812,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox7
             // 
-            this.betterTextbox7.Location = new System.Drawing.Point(115, 185);
+            this.betterTextbox7.Location = new System.Drawing.Point(114, 217);
             this.betterTextbox7.Name = "betterTextbox7";
             this.betterTextbox7.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox7.TabIndex = 28;
@@ -10813,7 +10821,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox8
             // 
-            this.betterTextbox8.Location = new System.Drawing.Point(115, 210);
+            this.betterTextbox8.Location = new System.Drawing.Point(114, 242);
             this.betterTextbox8.Name = "betterTextbox8";
             this.betterTextbox8.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox8.TabIndex = 28;
@@ -10822,7 +10830,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox9
             // 
-            this.betterTextbox9.Location = new System.Drawing.Point(115, 235);
+            this.betterTextbox9.Location = new System.Drawing.Point(114, 267);
             this.betterTextbox9.Name = "betterTextbox9";
             this.betterTextbox9.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox9.TabIndex = 28;
@@ -10831,7 +10839,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox10
             // 
-            this.betterTextbox10.Location = new System.Drawing.Point(115, 260);
+            this.betterTextbox10.Location = new System.Drawing.Point(114, 292);
             this.betterTextbox10.Name = "betterTextbox10";
             this.betterTextbox10.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox10.TabIndex = 28;
@@ -10840,7 +10848,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox11
             // 
-            this.betterTextbox11.Location = new System.Drawing.Point(115, 285);
+            this.betterTextbox11.Location = new System.Drawing.Point(114, 317);
             this.betterTextbox11.Name = "betterTextbox11";
             this.betterTextbox11.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox11.TabIndex = 28;
@@ -10849,7 +10857,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox12
             // 
-            this.betterTextbox12.Location = new System.Drawing.Point(180, 35);
+            this.betterTextbox12.Location = new System.Drawing.Point(179, 67);
             this.betterTextbox12.Name = "betterTextbox12";
             this.betterTextbox12.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox12.TabIndex = 28;
@@ -10858,7 +10866,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox13
             // 
-            this.betterTextbox13.Location = new System.Drawing.Point(180, 60);
+            this.betterTextbox13.Location = new System.Drawing.Point(179, 92);
             this.betterTextbox13.Name = "betterTextbox13";
             this.betterTextbox13.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox13.TabIndex = 28;
@@ -10867,7 +10875,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox14
             // 
-            this.betterTextbox14.Location = new System.Drawing.Point(180, 135);
+            this.betterTextbox14.Location = new System.Drawing.Point(179, 167);
             this.betterTextbox14.Name = "betterTextbox14";
             this.betterTextbox14.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox14.TabIndex = 28;
@@ -10876,7 +10884,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox15
             // 
-            this.betterTextbox15.Location = new System.Drawing.Point(180, 85);
+            this.betterTextbox15.Location = new System.Drawing.Point(179, 117);
             this.betterTextbox15.Name = "betterTextbox15";
             this.betterTextbox15.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox15.TabIndex = 28;
@@ -10885,7 +10893,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox16
             // 
-            this.betterTextbox16.Location = new System.Drawing.Point(180, 160);
+            this.betterTextbox16.Location = new System.Drawing.Point(179, 192);
             this.betterTextbox16.Name = "betterTextbox16";
             this.betterTextbox16.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox16.TabIndex = 28;
@@ -10894,7 +10902,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox17
             // 
-            this.betterTextbox17.Location = new System.Drawing.Point(180, 235);
+            this.betterTextbox17.Location = new System.Drawing.Point(179, 267);
             this.betterTextbox17.Name = "betterTextbox17";
             this.betterTextbox17.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox17.TabIndex = 28;
@@ -10903,7 +10911,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox18
             // 
-            this.betterTextbox18.Location = new System.Drawing.Point(180, 110);
+            this.betterTextbox18.Location = new System.Drawing.Point(179, 142);
             this.betterTextbox18.Name = "betterTextbox18";
             this.betterTextbox18.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox18.TabIndex = 28;
@@ -10912,7 +10920,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox19
             // 
-            this.betterTextbox19.Location = new System.Drawing.Point(180, 185);
+            this.betterTextbox19.Location = new System.Drawing.Point(179, 217);
             this.betterTextbox19.Name = "betterTextbox19";
             this.betterTextbox19.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox19.TabIndex = 28;
@@ -10921,7 +10929,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox20
             // 
-            this.betterTextbox20.Location = new System.Drawing.Point(180, 260);
+            this.betterTextbox20.Location = new System.Drawing.Point(179, 292);
             this.betterTextbox20.Name = "betterTextbox20";
             this.betterTextbox20.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox20.TabIndex = 28;
@@ -10930,7 +10938,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox21
             // 
-            this.betterTextbox21.Location = new System.Drawing.Point(180, 210);
+            this.betterTextbox21.Location = new System.Drawing.Point(179, 242);
             this.betterTextbox21.Name = "betterTextbox21";
             this.betterTextbox21.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox21.TabIndex = 28;
@@ -10939,7 +10947,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextbox22
             // 
-            this.betterTextbox22.Location = new System.Drawing.Point(180, 285);
+            this.betterTextbox22.Location = new System.Drawing.Point(179, 317);
             this.betterTextbox22.Name = "betterTextbox22";
             this.betterTextbox22.Size = new System.Drawing.Size(60, 20);
             this.betterTextbox22.TabIndex = 28;
@@ -10949,7 +10957,7 @@ namespace SM64_Diagnostic
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 63);
+            this.label2.Location = new System.Drawing.Point(11, 95);
             this.label2.MinimumSize = new System.Drawing.Size(100, 2);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 13);
@@ -10960,7 +10968,7 @@ namespace SM64_Diagnostic
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 88);
+            this.label4.Location = new System.Drawing.Point(11, 120);
             this.label4.MinimumSize = new System.Drawing.Size(100, 2);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 13);
@@ -10971,7 +10979,7 @@ namespace SM64_Diagnostic
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 113);
+            this.label5.Location = new System.Drawing.Point(11, 145);
             this.label5.MinimumSize = new System.Drawing.Size(100, 2);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 13);
@@ -10982,7 +10990,7 @@ namespace SM64_Diagnostic
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 138);
+            this.label6.Location = new System.Drawing.Point(11, 170);
             this.label6.MinimumSize = new System.Drawing.Size(100, 2);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 13);
@@ -10993,7 +11001,7 @@ namespace SM64_Diagnostic
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 163);
+            this.label7.Location = new System.Drawing.Point(11, 195);
             this.label7.MinimumSize = new System.Drawing.Size(100, 2);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 13);
@@ -11004,7 +11012,7 @@ namespace SM64_Diagnostic
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 188);
+            this.label8.Location = new System.Drawing.Point(11, 220);
             this.label8.MinimumSize = new System.Drawing.Size(100, 2);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 13);
@@ -11015,7 +11023,7 @@ namespace SM64_Diagnostic
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 213);
+            this.label9.Location = new System.Drawing.Point(11, 245);
             this.label9.MinimumSize = new System.Drawing.Size(100, 2);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 13);
@@ -11026,7 +11034,7 @@ namespace SM64_Diagnostic
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 238);
+            this.label11.Location = new System.Drawing.Point(11, 270);
             this.label11.MinimumSize = new System.Drawing.Size(100, 2);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(100, 13);
@@ -11037,7 +11045,7 @@ namespace SM64_Diagnostic
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 263);
+            this.label12.Location = new System.Drawing.Point(11, 295);
             this.label12.MinimumSize = new System.Drawing.Size(100, 2);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(100, 13);
@@ -11048,13 +11056,53 @@ namespace SM64_Diagnostic
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 288);
+            this.label13.Location = new System.Drawing.Point(11, 320);
             this.label13.MinimumSize = new System.Drawing.Size(100, 2);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(100, 13);
             this.label13.TabIndex = 18;
             this.label13.Text = "Star Count:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(124, 51);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.TabIndex = 18;
+            this.label14.Text = "Current";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(190, 51);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(38, 13);
+            this.label15.TabIndex = 18;
+            this.label15.Text = "Saved";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(114, 17);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(60, 25);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(179, 17);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(60, 25);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Apply";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -12230,6 +12278,10 @@ namespace SM64_Diagnostic
         private Label label5;
         private Label label4;
         private Label label2;
+        private Label label15;
+        private Label label14;
+        private Button button2;
+        private Button button1;
     }
 }
 
