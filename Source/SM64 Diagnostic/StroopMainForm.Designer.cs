@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -805,7 +805,6 @@ namespace SM64_Diagnostic
             this.groupBoxStateTransfer = new System.Windows.Forms.GroupBox();
             this.betterTextbox1 = new SM64_Diagnostic.BetterTextbox();
             this.betterTextbox2 = new SM64_Diagnostic.BetterTextbox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.betterTextbox3 = new SM64_Diagnostic.BetterTextbox();
             this.betterTextbox4 = new SM64_Diagnostic.BetterTextbox();
@@ -827,6 +826,16 @@ namespace SM64_Diagnostic
             this.betterTextbox20 = new SM64_Diagnostic.BetterTextbox();
             this.betterTextbox21 = new SM64_Diagnostic.BetterTextbox();
             this.betterTextbox22 = new SM64_Diagnostic.BetterTextbox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -8272,8 +8281,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -10710,7 +10719,16 @@ namespace SM64_Diagnostic
             this.groupBoxStateTransfer.Controls.Add(this.betterTextbox12);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextbox1);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextbox2);
+            this.groupBoxStateTransfer.Controls.Add(this.label13);
+            this.groupBoxStateTransfer.Controls.Add(this.label12);
+            this.groupBoxStateTransfer.Controls.Add(this.label11);
             this.groupBoxStateTransfer.Controls.Add(this.label9);
+            this.groupBoxStateTransfer.Controls.Add(this.label8);
+            this.groupBoxStateTransfer.Controls.Add(this.label7);
+            this.groupBoxStateTransfer.Controls.Add(this.label6);
+            this.groupBoxStateTransfer.Controls.Add(this.label5);
+            this.groupBoxStateTransfer.Controls.Add(this.label4);
+            this.groupBoxStateTransfer.Controls.Add(this.label2);
             this.groupBoxStateTransfer.Controls.Add(this.label10);
             this.groupBoxStateTransfer.Location = new System.Drawing.Point(343, 6);
             this.groupBoxStateTransfer.Name = "groupBoxStateTransfer";
@@ -10737,21 +10755,10 @@ namespace SM64_Diagnostic
             this.betterTextbox2.Text = "100";
             this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 67);
-            this.label9.MinimumSize = new System.Drawing.Size(100, 2);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 13);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Raw Y:";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 41);
+            this.label10.Location = new System.Drawing.Point(12, 38);
             this.label10.MinimumSize = new System.Drawing.Size(100, 2);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 13);
@@ -10938,6 +10945,116 @@ namespace SM64_Diagnostic
             this.betterTextbox22.TabIndex = 28;
             this.betterTextbox22.Text = "100";
             this.betterTextbox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 63);
+            this.label2.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Raw X:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 88);
+            this.label4.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Raw X:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 113);
+            this.label5.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Raw X:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 138);
+            this.label6.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Raw X:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 163);
+            this.label7.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Raw X:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 188);
+            this.label8.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(100, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Raw X:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 213);
+            this.label9.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Raw X:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 238);
+            this.label11.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 13);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Raw X:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(12, 263);
+            this.label12.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 13);
+            this.label12.TabIndex = 18;
+            this.label12.Text = "Raw X:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(12, 288);
+            this.label13.MinimumSize = new System.Drawing.Size(100, 2);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(100, 13);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "Raw X:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // StroopMainForm
             // 
@@ -12082,7 +12199,6 @@ namespace SM64_Diagnostic
         private GroupBox groupBoxStateTransfer;
         private BetterTextbox betterTextbox1;
         private BetterTextbox betterTextbox2;
-        private Label label9;
         private Label label10;
         private BetterTextbox betterTextbox22;
         private BetterTextbox betterTextbox21;
@@ -12104,6 +12220,16 @@ namespace SM64_Diagnostic
         private BetterTextbox betterTextbox13;
         private BetterTextbox betterTextbox5;
         private BetterTextbox betterTextbox12;
+        private Label label13;
+        private Label label12;
+        private Label label11;
+        private Label label9;
+        private Label label8;
+        private Label label7;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label2;
     }
 }
 
