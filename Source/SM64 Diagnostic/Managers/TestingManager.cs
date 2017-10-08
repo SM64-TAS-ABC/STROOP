@@ -481,8 +481,8 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar3Current.Text = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPXOffset).ToString();
             _betterTextboxStateTransferVar4Current.Text = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPYOffset).ToString();
             _betterTextboxStateTransferVar5Current.Text = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPZOffset).ToString();
-            _betterTextboxStateTransferVar6Current.Text = Config.Stream.GetUInt16(Config.Mario.StructAddress + 0x38).ToString(); // sliding yaw
-            _betterTextboxStateTransferVar7Current.Text = Config.Stream.GetUInt16(Config.Mario.StructAddress + 0x3A).ToString(); // twirl yaw
+            _betterTextboxStateTransferVar6Current.Text = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.SlidingYawOffset).ToString();
+            _betterTextboxStateTransferVar7Current.Text = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.TwirlYawOffset).ToString();
             _betterTextboxStateTransferVar8Current.Text = ((Config.Stream.GetByte(Config.Camera.CameraStructAddress + 0x6D) & 0x04) != 0).ToString();
             _betterTextboxStateTransferVar9Current.Text = FileManager.Instance.GetChecksum(FileManager.Instance.GetInGameFileAddress()).ToString();
             _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Hud.HpCountOffset).ToString();
@@ -526,10 +526,10 @@ namespace SM64_Diagnostic.Managers
             if (value5.HasValue) Config.Stream.SetValue(value5.Value, Config.Mario.StructAddress + Config.Mario.HOLPZOffset);
 
             ushort? value6 = ParsingUtilities.ParseUShortNullable(_betterTextboxStateTransferVar6Saved.Text);
-            if (value6.HasValue) Config.Stream.SetValue(value6.Value, Config.Mario.StructAddress + 0x38);
+            if (value6.HasValue) Config.Stream.SetValue(value6.Value, Config.Mario.StructAddress + Config.Mario.SlidingYawOffset);
 
             ushort? value7 = ParsingUtilities.ParseUShortNullable(_betterTextboxStateTransferVar7Saved.Text);
-            if (value7.HasValue) Config.Stream.SetValue(value7.Value, Config.Mario.StructAddress + 0x3A);
+            if (value7.HasValue) Config.Stream.SetValue(value7.Value, Config.Mario.StructAddress + Config.Mario.TwirlYawOffset);
 
             bool? value8 = ParsingUtilities.ParseBoolNullable(_betterTextboxStateTransferVar8Saved.Text);
             if (value8.HasValue)

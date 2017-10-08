@@ -141,6 +141,8 @@
     <MarioStructSize>0xC4</MarioStructSize>
     <SlidingSpeedXOffset>0x58</SlidingSpeedXOffset>
     <SlidingSpeedZOffset>0x5C</SlidingSpeedZOffset>
+    <SlidingYawOffset>0x38</SlidingYawOffset>
+    <TwirlYawOffset>0x3A</TwirlYawOffset>
     <PeakHeightOffset>0xBC</PeakHeightOffset>
     <ObjectReferenceAddressUS>0x80361158</ObjectReferenceAddressUS>
     <ObjectReferenceAddressJP>0x8035FDE8</ObjectReferenceAddressJP>
