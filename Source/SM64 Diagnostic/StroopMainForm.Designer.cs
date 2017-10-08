@@ -3674,7 +3674,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -6637,7 +6637,7 @@ namespace SM64_Diagnostic
             this.labelStateTransferVar11Name.Name = "labelStateTransferVar11Name";
             this.labelStateTransferVar11Name.Size = new System.Drawing.Size(100, 13);
             this.labelStateTransferVar11Name.TabIndex = 18;
-            this.labelStateTransferVar11Name.Text = "HP Count:";
+            this.labelStateTransferVar11Name.Text = "Life Count:";
             this.labelStateTransferVar11Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // labelStateTransferVar10Name
@@ -6648,7 +6648,7 @@ namespace SM64_Diagnostic
             this.labelStateTransferVar10Name.Name = "labelStateTransferVar10Name";
             this.labelStateTransferVar10Name.Size = new System.Drawing.Size(100, 13);
             this.labelStateTransferVar10Name.TabIndex = 18;
-            this.labelStateTransferVar10Name.Text = "Life Count:";
+            this.labelStateTransferVar10Name.Text = "HP Count:";
             this.labelStateTransferVar10Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // labelStateTransferVar9Name
