@@ -556,7 +556,7 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private byte[] GetBufferedBytes(uint? nullableFileAddress = null)
+        public byte[] GetBufferedBytes(uint? nullableFileAddress = null)
         {
             uint fileAddress = nullableFileAddress ?? CurrentFileAddress;
             byte[] bufferedBytes = new byte[Config.File.FileStructSize];
@@ -567,7 +567,7 @@ namespace SM64_Diagnostic.Managers
             return bufferedBytes;
         }
 
-        private void SetBufferedBytes(byte[] bufferedBytes, uint? nullableFileAddress = null)
+        public void SetBufferedBytes(byte[] bufferedBytes, uint? nullableFileAddress = null)
         {
             uint fileAddress = nullableFileAddress ?? CurrentFileAddress;
             for (int i = 0; i < Config.File.FileStructSize; i++)

@@ -103,6 +103,7 @@ namespace SM64_Diagnostic.Managers
         BetterTextbox _betterTextboxStateTransferVar10Saved;
         BetterTextbox _betterTextboxStateTransferVar11Saved;
         BetterTextbox _betterTextboxStateTransferVar12Saved;
+        byte[] _stateTransferFileData;
 
         public TestingManager(TabPage tabControl)
         {
@@ -491,7 +492,19 @@ namespace SM64_Diagnostic.Managers
 
         private void StateTransferSave()
         {
-
+            _betterTextboxStateTransferVar1Saved.Text = _betterTextboxStateTransferVar1Current.Text;
+            _betterTextboxStateTransferVar2Saved.Text = _betterTextboxStateTransferVar2Current.Text;
+            _betterTextboxStateTransferVar3Saved.Text = _betterTextboxStateTransferVar3Current.Text;
+            _betterTextboxStateTransferVar4Saved.Text = _betterTextboxStateTransferVar4Current.Text;
+            _betterTextboxStateTransferVar5Saved.Text = _betterTextboxStateTransferVar5Current.Text;
+            _betterTextboxStateTransferVar6Saved.Text = _betterTextboxStateTransferVar6Current.Text;
+            _betterTextboxStateTransferVar7Saved.Text = _betterTextboxStateTransferVar7Current.Text;
+            _betterTextboxStateTransferVar8Saved.Text = _betterTextboxStateTransferVar8Current.Text;
+            _betterTextboxStateTransferVar9Saved.Text = _betterTextboxStateTransferVar9Current.Text;
+            _betterTextboxStateTransferVar10Saved.Text = _betterTextboxStateTransferVar10Current.Text;
+            _betterTextboxStateTransferVar11Saved.Text = _betterTextboxStateTransferVar11Current.Text;
+            _betterTextboxStateTransferVar12Saved.Text = _betterTextboxStateTransferVar12Current.Text;
+            _stateTransferFileData = FileManager.Instance.GetBufferedBytes();
         }
 
         private void StateTransferApply()
