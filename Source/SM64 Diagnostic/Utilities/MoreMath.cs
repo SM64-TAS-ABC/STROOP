@@ -9,46 +9,6 @@ namespace SM64_Diagnostic.Utilities
 {
     public static class MoreMath
     {
-        public static int ParseInt(string text)
-        {
-            int parsed;
-            if (int.TryParse(text, out parsed))
-            {
-                return parsed;
-            }
-            return 0;
-        }
-
-        public static int? ParseIntNullable(string text)
-        {
-            int parsed;
-            if (int.TryParse(text, out parsed))
-            {
-                return parsed;
-            }
-            return null;
-        }
-
-        public static double ParseDouble(string text)
-        {
-            double parsed;
-            if (double.TryParse(text, out parsed))
-            {
-                return parsed;
-            }
-            return 0;
-        }
-
-        public static double? ParseDoubleNullable(string text)
-        {
-            double parsed;
-            if (double.TryParse(text, out parsed))
-            {
-                return parsed;
-            }
-            return null;
-        }
-
         public static double GetHypotenuse(double x, double y)
         {
             return Math.Sqrt(x * x + y * y);

@@ -177,9 +177,9 @@ namespace SM64_Diagnostic.Managers
             _buttonGoto = _groupBoxGoto.Controls["buttonGoto"] as Button;
             _buttonGoto.Click += (sender, e) =>
             {
-                double? gotoX = MoreMath.ParseDoubleNullable(_betterTextboxGotoX.Text);
-                double? gotoY = MoreMath.ParseDoubleNullable(_betterTextboxGotoY.Text);
-                double? gotoZ = MoreMath.ParseDoubleNullable(_betterTextboxGotoZ.Text);
+                double? gotoX = ParsingUtilities.ParseDoubleNullable(_betterTextboxGotoX.Text);
+                double? gotoY = ParsingUtilities.ParseDoubleNullable(_betterTextboxGotoY.Text);
+                double? gotoZ = ParsingUtilities.ParseDoubleNullable(_betterTextboxGotoZ.Text);
                 if (gotoX.HasValue && gotoY.HasValue && gotoZ.HasValue)
                 {
                     ButtonUtilities.SetMarioPosition(
@@ -447,8 +447,8 @@ namespace SM64_Diagnostic.Managers
                 _betterTextboxControlStick2.Text = currentY.ToString();
             }
 
-            int rawX = MoreMath.ParseInt(_betterTextboxControlStick1.Text);
-            int rawY = MoreMath.ParseInt(_betterTextboxControlStick2.Text);
+            int rawX = ParsingUtilities.ParseInt(_betterTextboxControlStick1.Text);
+            int rawY = ParsingUtilities.ParseInt(_betterTextboxControlStick2.Text);
             (double effectiveX, double effectiveY) = MoreMath.GetEffectiveInput(rawX, -1 * rawY);
             _labelControlStick1.Text = Math.Round(effectiveX, 3).ToString();
             _labelControlStick2.Text = Math.Round(effectiveY, 3).ToString();

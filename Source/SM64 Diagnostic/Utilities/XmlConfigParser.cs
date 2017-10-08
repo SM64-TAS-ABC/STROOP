@@ -1511,9 +1511,9 @@ namespace SM64_Diagnostic.Utilities
                         if (element.Attribute(XName.Get("gfxId")) != null)
                             gfxId = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxId")).Value) | 0x80000000U;
                         if (element.Attribute(XName.Get("subType")) != null)
-                            subType = ParsingUtilities.TryParseInt(element.Attribute(XName.Get("subType")).Value);
+                            subType = ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("subType")).Value);
                         if (element.Attribute(XName.Get("appearance")) != null)
-                            appearance = ParsingUtilities.TryParseInt(element.Attribute(XName.Get("appearance")).Value);
+                            appearance = ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("appearance")).Value);
 
                         var spawnElement = element.Element(XName.Get("SpawnCode"));
                         if (spawnElement != null)
@@ -2342,7 +2342,7 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (XElement element in doc.Root.Elements())
             {
-                int animationValue = (int)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("value")).Value);
+                int animationValue = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("value")).Value);
                 string animationName = element.Attribute(XName.Get("name")).Value;
                 animationTable.Add(new AnimationTable.AnimationReference()
                 {
@@ -2370,11 +2370,11 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (XElement element in doc.Root.Elements())
             {
-                int index = (int)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("index")).Value);
+                int index = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("index")).Value);
                 string fullName = element.Attribute(XName.Get("fullName")).Value;
                 string shortName = element.Attribute(XName.Get("shortName")).Value;
-                byte maxCoinsWithoutGlitches = (byte)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("maxCoinsWithoutGlitches")).Value);
-                byte maxCoinsWithGlitches = (byte)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("maxCoinsWithGlitches")).Value);
+                byte maxCoinsWithoutGlitches = (byte)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("maxCoinsWithoutGlitches")).Value);
+                byte maxCoinsWithGlitches = (byte)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("maxCoinsWithGlitches")).Value);
                 courseDataTable.Add(new CourseDataTable.CourseDataReference()
                 {
                     Index = index,
@@ -2404,8 +2404,8 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (XElement element in doc.Root.Elements())
             {
-                int index = (int)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("index")).Value);
-                int amplitude = (int)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("amplitude")).Value);
+                int index = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("index")).Value);
+                int amplitude = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("amplitude")).Value);
                 pendulumSwingTable.Add(new PendulumSwingTable.PendulumSwingReference()
                 {
                     Index = index,
@@ -2432,10 +2432,10 @@ namespace SM64_Diagnostic.Utilities
             List<WaypointTable.WaypointReference> waypoints = new List<WaypointTable.WaypointReference>();
             foreach (XElement element in doc.Root.Elements())
             {
-                short index = (short)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("index")).Value);
-                short x = (short)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("x")).Value);
-                short y = (short)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("y")).Value);
-                short z = (short)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("z")).Value);
+                short index = (short)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("index")).Value);
+                short x = (short)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("x")).Value);
+                short y = (short)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("y")).Value);
+                short z = (short)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("z")).Value);
                 waypoints.Add(new WaypointTable.WaypointReference()
                 {
                     Index = index,
@@ -2464,8 +2464,8 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (XElement element in doc.Root.Elements())
             {
-                int courseIndex = (int)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("courseIndex")).Value);
-                int missionIndex = (int)ParsingUtilities.TryParseInt(element.Attribute(XName.Get("missionIndex")).Value);
+                int courseIndex = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("courseIndex")).Value);
+                int missionIndex = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("missionIndex")).Value);
                 string missionName = element.Attribute(XName.Get("missionName")).Value;
                 missionTable.Add(new MissionTable.MissionReference()
                 {

@@ -68,14 +68,44 @@ namespace SM64_Diagnostic.Utilities
             return true;
         }
 
-
-        public static int? TryParseInt(string str)
+        public static int ParseInt(string text)
         {
-            int value;
-            if (!int.TryParse(str, out value))
-                return null;
+            int parsed;
+            if (int.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return 0;
+        }
 
-            return value;
+        public static int? ParseIntNullable(string text)
+        {
+            int parsed;
+            if (int.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return null;
+        }
+
+        public static double ParseDouble(string text)
+        {
+            double parsed;
+            if (double.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return 0;
+        }
+
+        public static double? ParseDoubleNullable(string text)
+        {
+            double parsed;
+            if (double.TryParse(text, out parsed))
+            {
+                return parsed;
+            }
+            return null;
         }
     }
 }
