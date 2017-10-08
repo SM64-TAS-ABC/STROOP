@@ -76,6 +76,7 @@ namespace SM64_Diagnostic.Managers
         GroupBox _groupBoxStateTransfer;
         Button _buttonStateTransferSave;
         Button _buttonStateTransferApply;
+        CheckBox _checkBoxStateTransferOffsetGlobalTimer;
 
         BetterTextbox _betterTextboxStateTransferVar1Current;
         BetterTextbox _betterTextboxStateTransferVar2Current;
@@ -88,6 +89,7 @@ namespace SM64_Diagnostic.Managers
         BetterTextbox _betterTextboxStateTransferVar9Current;
         BetterTextbox _betterTextboxStateTransferVar10Current;
         BetterTextbox _betterTextboxStateTransferVar11Current;
+        BetterTextbox _betterTextboxStateTransferVar12Current;
 
         BetterTextbox _betterTextboxStateTransferVar1Saved;
         BetterTextbox _betterTextboxStateTransferVar2Saved;
@@ -100,6 +102,7 @@ namespace SM64_Diagnostic.Managers
         BetterTextbox _betterTextboxStateTransferVar9Saved;
         BetterTextbox _betterTextboxStateTransferVar10Saved;
         BetterTextbox _betterTextboxStateTransferVar11Saved;
+        BetterTextbox _betterTextboxStateTransferVar12Saved;
 
         public TestingManager(TabPage tabControl)
         {
@@ -203,6 +206,7 @@ namespace SM64_Diagnostic.Managers
             _buttonStateTransferSave.Click += (sender, e) => StateTransferSave();
             _buttonStateTransferApply = _groupBoxStateTransfer.Controls["buttonStateTransferApply"] as Button;
             _buttonStateTransferApply.Click += (sender, e) => StateTransferApply();
+            _checkBoxStateTransferOffsetGlobalTimer = _groupBoxStateTransfer.Controls["checkBoxStateTransferOffsetGlobalTimer"] as CheckBox;
 
             _betterTextboxStateTransferVar1Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar1Current"] as BetterTextbox;
             _betterTextboxStateTransferVar2Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar2Current"] as BetterTextbox;
@@ -215,6 +219,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar9Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar9Current"] as BetterTextbox;
             _betterTextboxStateTransferVar10Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar10Current"] as BetterTextbox;
             _betterTextboxStateTransferVar11Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar11Current"] as BetterTextbox;
+            _betterTextboxStateTransferVar12Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar12Current"] as BetterTextbox;
 
             _betterTextboxStateTransferVar1Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar1Saved"] as BetterTextbox;
             _betterTextboxStateTransferVar2Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar2Saved"] as BetterTextbox;
@@ -227,6 +232,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar9Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar9Saved"] as BetterTextbox;
             _betterTextboxStateTransferVar10Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar10Saved"] as BetterTextbox;
             _betterTextboxStateTransferVar11Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar11Saved"] as BetterTextbox;
+            _betterTextboxStateTransferVar12Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar12Saved"] as BetterTextbox;
         }
 
         public abstract class VarState
@@ -480,6 +486,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar9Current.Text = (0).ToString();
             _betterTextboxStateTransferVar10Current.Text = (0).ToString();
             _betterTextboxStateTransferVar11Current.Text = (0).ToString();
+            _betterTextboxStateTransferVar12Current.Text = (0).ToString();
         }
 
         private void StateTransferSave()
