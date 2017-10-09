@@ -107,6 +107,17 @@ namespace SM64_Diagnostic.Managers
         BetterTextbox _betterTextboxStateTransferVar13Saved;
         byte[] _stateTransferFileData;
 
+        // Obj at HOLP
+        GroupBox _groupBoxObjAtHOLP;
+        CheckBox _checkBoxObjAtHOLPOn;
+        BetterTextbox _betterTextboxObjAtHOLP;
+
+        // Obj at Home
+        GroupBox _groupBoxObjAtHome;
+        CheckBox _checkBoxObjAtHomeOn;
+        BetterTextbox _betterTextboxObjAtHomeObj;
+        BetterTextbox _betterTextboxObjAtHomeHome;
+
         public TestingManager(TabPage tabControl)
         {
             Instance = this;
@@ -238,6 +249,17 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar11Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar11Saved"] as BetterTextbox;
             _betterTextboxStateTransferVar12Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar12Saved"] as BetterTextbox;
             _betterTextboxStateTransferVar13Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar13Saved"] as BetterTextbox;
+
+            // Obj at HOLP
+            _groupBoxObjAtHOLP = tabControl.Controls["groupBoxObjAtHOLP"] as GroupBox;
+            _checkBoxObjAtHOLPOn = _groupBoxObjAtHOLP.Controls["checkBoxObjAtHOLPOn"] as CheckBox;
+            _betterTextboxObjAtHOLP = _groupBoxObjAtHOLP.Controls["betterTextboxObjAtHOLP"] as BetterTextbox;
+
+            // Obj at Home
+            _groupBoxObjAtHome = tabControl.Controls["groupBoxObjAtHome"] as GroupBox;
+            _checkBoxObjAtHomeOn = _groupBoxObjAtHome.Controls["checkBoxObjAtHomeOn"] as CheckBox;
+            _betterTextboxObjAtHomeObj = _groupBoxObjAtHome.Controls["betterTextboxObjAtHomeObj"] as BetterTextbox;
+            _betterTextboxObjAtHomeHome = _groupBoxObjAtHome.Controls["betterTextboxObjAtHomeHome"] as BetterTextbox;
         }
 
         public abstract class VarState
@@ -385,6 +407,19 @@ namespace SM64_Diagnostic.Managers
 
         public void Update(bool updateView)
         {
+            // Obj at HOLP
+            if (_checkBoxObjAtHOLPOn.Checked)
+            {
+                //_betterTextboxObjAtHOLP;
+            }
+
+            // Obj at Home
+            if (_checkBoxObjAtHomeOn.Checked)
+            {
+                //_betterTextboxObjAtHomeObj;
+                //_betterTextboxObjAtHomeHome;
+            }
+
             if (!updateView) return;
 
             // get current stream values
