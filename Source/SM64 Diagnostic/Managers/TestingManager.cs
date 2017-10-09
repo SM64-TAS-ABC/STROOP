@@ -494,9 +494,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Hud.HpCountOffset).ToString();
             _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(Config.Mario.StructAddress + Config.Hud.LifeCountOffset).ToString();
             _betterTextboxStateTransferVar12Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Hud.StarCountOffset).ToString();
-            _betterTextboxStateTransferVar13Current.Text =
-                ((Config.Stream.GetByte(
-                    Config.Camera.CameraStructAddress + Config.Camera.MarioCamPossibleOffset) & Config.Camera.MarioCamPossibleMask) != 0).ToString();
+            _betterTextboxStateTransferVar13Current.Text = Config.Stream.GetByte(0x8032DD94).ToString();
         }
 
         private void StateTransferSave()
@@ -572,13 +570,8 @@ namespace SM64_Diagnostic.Managers
                 Config.Stream.SetValue(value12.Value, Config.Mario.StructAddress + Config.Hud.StarDisplayOffset);
             }
 
-            bool? value13 = ParsingUtilities.ParseBoolNullable(_betterTextboxStateTransferVar13Saved.Text);
-            if (value13.HasValue)
-            {
-                byte oldByte = Config.Stream.GetByte(Config.Camera.CameraStructAddress + Config.Camera.MarioCamPossibleOffset);
-                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, Config.Camera.MarioCamPossibleMask, value13.Value);
-                Config.Stream.SetValue(newByte, Config.Camera.CameraStructAddress + Config.Camera.MarioCamPossibleOffset);
-            }
+            byte? value13 = ParsingUtilities.ParseByteNullable(_betterTextboxStateTransferVar13Saved.Text);
+            if (value13.HasValue) Config.Stream.SetValue(value13.Value, 0x8032DD94);
         }
 
         private static List<(int, double)> _plushRacingPenguinProgress = new List<(int, double)> {
