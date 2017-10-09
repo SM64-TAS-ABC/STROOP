@@ -90,6 +90,7 @@ namespace SM64_Diagnostic.Managers
         BetterTextbox _betterTextboxStateTransferVar10Current;
         BetterTextbox _betterTextboxStateTransferVar11Current;
         BetterTextbox _betterTextboxStateTransferVar12Current;
+        BetterTextbox _betterTextboxStateTransferVar13Current;
 
         BetterTextbox _betterTextboxStateTransferVar1Saved;
         BetterTextbox _betterTextboxStateTransferVar2Saved;
@@ -103,6 +104,7 @@ namespace SM64_Diagnostic.Managers
         BetterTextbox _betterTextboxStateTransferVar10Saved;
         BetterTextbox _betterTextboxStateTransferVar11Saved;
         BetterTextbox _betterTextboxStateTransferVar12Saved;
+        BetterTextbox _betterTextboxStateTransferVar13Saved;
         byte[] _stateTransferFileData;
 
         public TestingManager(TabPage tabControl)
@@ -221,6 +223,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar10Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar10Current"] as BetterTextbox;
             _betterTextboxStateTransferVar11Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar11Current"] as BetterTextbox;
             _betterTextboxStateTransferVar12Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar12Current"] as BetterTextbox;
+            _betterTextboxStateTransferVar13Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar13Current"] as BetterTextbox;
 
             _betterTextboxStateTransferVar1Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar1Saved"] as BetterTextbox;
             _betterTextboxStateTransferVar2Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar2Saved"] as BetterTextbox;
@@ -234,6 +237,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar10Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar10Saved"] as BetterTextbox;
             _betterTextboxStateTransferVar11Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar11Saved"] as BetterTextbox;
             _betterTextboxStateTransferVar12Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar12Saved"] as BetterTextbox;
+            _betterTextboxStateTransferVar13Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar13Saved"] as BetterTextbox;
         }
 
         public abstract class VarState
@@ -483,11 +487,16 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar5Current.Text = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPZOffset).ToString();
             _betterTextboxStateTransferVar6Current.Text = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.SlidingYawOffset).ToString();
             _betterTextboxStateTransferVar7Current.Text = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.TwirlYawOffset).ToString();
-            _betterTextboxStateTransferVar8Current.Text = ((Config.Stream.GetByte(Config.Camera.CameraStructAddress + 0x6D) & 0x04) != 0).ToString();
+            _betterTextboxStateTransferVar8Current.Text =
+                ((Config.Stream.GetByte(
+                    Config.Camera.CameraStructAddress + Config.Camera.MarioCamPossibleOffset) & Config.Camera.MarioCamPossibleMask) != 0).ToString();
             _betterTextboxStateTransferVar9Current.Text = FileManager.Instance.GetChecksum(FileManager.Instance.GetInGameFileAddress()).ToString();
             _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Hud.HpCountOffset).ToString();
             _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(Config.Mario.StructAddress + Config.Hud.LifeCountOffset).ToString();
             _betterTextboxStateTransferVar12Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Hud.StarCountOffset).ToString();
+            _betterTextboxStateTransferVar13Current.Text =
+                ((Config.Stream.GetByte(
+                    Config.Camera.CameraStructAddress + Config.Camera.MarioCamPossibleOffset) & Config.Camera.MarioCamPossibleMask) != 0).ToString();
         }
 
         private void StateTransferSave()
@@ -504,6 +513,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar10Saved.Text = _betterTextboxStateTransferVar10Current.Text;
             _betterTextboxStateTransferVar11Saved.Text = _betterTextboxStateTransferVar11Current.Text;
             _betterTextboxStateTransferVar12Saved.Text = _betterTextboxStateTransferVar12Current.Text;
+            _betterTextboxStateTransferVar13Saved.Text = _betterTextboxStateTransferVar13Current.Text;
             _stateTransferFileData = FileManager.Instance.GetBufferedBytes();
         }
 
@@ -560,6 +570,14 @@ namespace SM64_Diagnostic.Managers
             {
                 Config.Stream.SetValue(value12.Value, Config.Mario.StructAddress + Config.Hud.StarCountOffset);
                 Config.Stream.SetValue(value12.Value, Config.Mario.StructAddress + Config.Hud.StarDisplayOffset);
+            }
+
+            bool? value13 = ParsingUtilities.ParseBoolNullable(_betterTextboxStateTransferVar13Saved.Text);
+            if (value13.HasValue)
+            {
+                byte oldByte = Config.Stream.GetByte(Config.Camera.CameraStructAddress + Config.Camera.MarioCamPossibleOffset);
+                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, Config.Camera.MarioCamPossibleMask, value13.Value);
+                Config.Stream.SetValue(newByte, Config.Camera.CameraStructAddress + Config.Camera.MarioCamPossibleOffset);
             }
         }
 
