@@ -494,7 +494,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Hud.HpCountOffset).ToString();
             _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(Config.Mario.StructAddress + Config.Hud.LifeCountOffset).ToString();
             _betterTextboxStateTransferVar12Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Hud.StarCountOffset).ToString();
-            _betterTextboxStateTransferVar13Current.Text = Config.Stream.GetByte(0x8032DD94).ToString();
+            _betterTextboxStateTransferVar13Current.Text = Config.Stream.GetByte(Config.SpecialTripleJumpAddress).ToString();
         }
 
         private void StateTransferSave()
@@ -571,7 +571,7 @@ namespace SM64_Diagnostic.Managers
             }
 
             byte? value13 = ParsingUtilities.ParseByteNullable(_betterTextboxStateTransferVar13Saved.Text);
-            if (value13.HasValue) Config.Stream.SetValue(value13.Value, 0x8032DD94);
+            if (value13.HasValue) Config.Stream.SetValue(value13.Value, Config.SpecialTripleJumpAddress);
         }
 
         private static List<(int, double)> _plushRacingPenguinProgress = new List<(int, double)> {

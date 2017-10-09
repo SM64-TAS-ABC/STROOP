@@ -113,6 +113,10 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint CurrentFileAddressUS;
         public static uint CurrentFileAddressJP;
 
+        public static uint SpecialTripleJumpAddress { get { return Config.SwitchRomVersion(SpecialTripleJumpAddressUS, SpecialTripleJumpAddressJP); } }
+        public static uint SpecialTripleJumpAddressUS;
+        public static uint SpecialTripleJumpAddressJP;
+
         public static uint HackedAreaAddress { get { return Config.SwitchRomVersion(HackedAreaAddressUS, HackedAreaAddressJP); } }
         public static uint HackedAreaAddressUS;
         public static uint HackedAreaAddressJP;

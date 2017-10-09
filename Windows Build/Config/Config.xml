@@ -415,6 +415,9 @@
   <CurrentFileAddressUS>0x8032DDF4</CurrentFileAddressUS>
   <CurrentFileAddressJP>0x8032CE94</CurrentFileAddressJP>
 
+  <SpecialTripleJumpAddressUS>0x8032DD94</SpecialTripleJumpAddressUS>
+  <SpecialTripleJumpAddressJP>0x8032CE34</SpecialTripleJumpAddressJP>
+
   <HackedAreaAddressUS>0x803E0000</HackedAreaAddressUS>
   <HackedAreaAddressJP>0x803E0000</HackedAreaAddressJP>
   <DebugAddress></DebugAddress>

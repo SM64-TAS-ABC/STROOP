@@ -1301,6 +1301,13 @@ namespace SM64_Diagnostic.Utilities
                         Config.CurrentFileAddressJP = ParsingUtilities.ParseHex(element.Value);
                         break;
 
+                    case "SpecialTripleJumpAddressUS":
+                        Config.SpecialTripleJumpAddressUS = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "SpecialTripleJumpAddressJP":
+                        Config.SpecialTripleJumpAddressJP = ParsingUtilities.ParseHex(element.Value);
+                        break;
+
                     case "HackedAreaAddressUS":
                         Config.HackedAreaAddressUS = ParsingUtilities.ParseHex(element.Value);
                         break;
