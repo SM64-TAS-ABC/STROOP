@@ -23,7 +23,15 @@ namespace SM64_Diagnostic.Utilities
         public static uint? ParseHexNullable(string str)
         {
             if (str == null) return null;
-            return ParseHex(str);
+            try
+            {
+                uint parsed = ParseHex(str);
+                return parsed;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
         public static UInt64 ParseExtHex(string str)

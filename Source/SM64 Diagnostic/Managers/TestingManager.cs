@@ -410,14 +410,34 @@ namespace SM64_Diagnostic.Managers
             // Obj at HOLP
             if (_checkBoxObjAtHOLPOn.Checked)
             {
-                //_betterTextboxObjAtHOLP;
+                uint? objAddress = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtHOLP.Text);
+                if (objAddress.HasValue)
+                {
+                    float holpX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPXOffset);
+                    float holpY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPYOffset);
+                    float holpZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPZOffset);
+
+                    Config.Stream.SetValue(holpX, objAddress.Value + Config.ObjectSlots.ObjectXOffset);
+                    Config.Stream.SetValue(holpY, objAddress.Value + Config.ObjectSlots.ObjectYOffset);
+                    Config.Stream.SetValue(holpZ, objAddress.Value + Config.ObjectSlots.ObjectZOffset);
+                }
             }
 
             // Obj at Home
             if (_checkBoxObjAtHomeOn.Checked)
             {
-                //_betterTextboxObjAtHomeObj;
-                //_betterTextboxObjAtHomeHome;
+                uint? objAddress = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtHomeObj.Text);
+                uint? homeObjAddress = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtHomeHome.Text);
+                if (objAddress.HasValue && homeObjAddress.HasValue)
+                {
+                    float homeX = Config.Stream.GetSingle(homeObjAddress.Value + Config.ObjectSlots.HomeXOffset);
+                    float homeY = Config.Stream.GetSingle(homeObjAddress.Value + Config.ObjectSlots.HomeYOffset);
+                    float homeZ = Config.Stream.GetSingle(homeObjAddress.Value + Config.ObjectSlots.HomeZOffset);
+
+                    Config.Stream.SetValue(homeX, objAddress.Value + Config.ObjectSlots.ObjectXOffset);
+                    Config.Stream.SetValue(homeY, objAddress.Value + Config.ObjectSlots.ObjectYOffset);
+                    Config.Stream.SetValue(homeZ, objAddress.Value + Config.ObjectSlots.ObjectZOffset);
+                }
             }
 
             if (!updateView) return;
