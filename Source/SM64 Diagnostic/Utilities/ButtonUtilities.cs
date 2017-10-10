@@ -676,7 +676,7 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool RefillHp()
+        public static bool FullHp()
         {
             return Config.Stream.SetValue(Config.Hud.FullHp, Config.Mario.StructAddress + Config.Hud.HpCountOffset);
         }

@@ -181,7 +181,7 @@ namespace SM64_Diagnostic
             this.buttonDie = new System.Windows.Forms.Button();
             this.button100Lives = new SM64_Diagnostic.BinaryButton();
             this.buttonTurnOnOffHud = new SM64_Diagnostic.BinaryButton();
-            this.buttonFillHp = new System.Windows.Forms.Button();
+            this.buttonFullHp = new System.Windows.Forms.Button();
             this.NoTearFlowLayoutPanelHud = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
             this.SplitContainerCamera = new System.Windows.Forms.SplitContainer();
@@ -2812,7 +2812,7 @@ namespace SM64_Diagnostic
             this.splitContainerHud.Panel1.Controls.Add(this.buttonDie);
             this.splitContainerHud.Panel1.Controls.Add(this.button100Lives);
             this.splitContainerHud.Panel1.Controls.Add(this.buttonTurnOnOffHud);
-            this.splitContainerHud.Panel1.Controls.Add(this.buttonFillHp);
+            this.splitContainerHud.Panel1.Controls.Add(this.buttonFullHp);
             this.splitContainerHud.Panel1MinSize = 0;
             // 
             // splitContainerHud.Panel2
@@ -2893,14 +2893,14 @@ namespace SM64_Diagnostic
             this.buttonTurnOnOffHud.Text = "Turn Off HUD";
             this.buttonTurnOnOffHud.UseVisualStyleBackColor = true;
             // 
-            // buttonFillHp
+            // buttonFullHp
             // 
-            this.buttonFillHp.Location = new System.Drawing.Point(3, 75);
-            this.buttonFillHp.Name = "buttonFillHp";
-            this.buttonFillHp.Size = new System.Drawing.Size(93, 23);
-            this.buttonFillHp.TabIndex = 4;
-            this.buttonFillHp.Text = "Fill HP";
-            this.buttonFillHp.UseVisualStyleBackColor = true;
+            this.buttonFullHp.Location = new System.Drawing.Point(3, 75);
+            this.buttonFullHp.Name = "buttonFullHp";
+            this.buttonFullHp.Size = new System.Drawing.Size(93, 23);
+            this.buttonFullHp.TabIndex = 4;
+            this.buttonFullHp.Text = "Full HP";
+            this.buttonFullHp.UseVisualStyleBackColor = true;
             // 
             // NoTearFlowLayoutPanelHud
             // 
@@ -11770,7 +11770,7 @@ namespace SM64_Diagnostic
         private NoTearFlowLayoutPanel NoTearFlowLayoutPanelTriangles;
         private Button buttonStandardHud;
         private Button buttonDie;
-        private Button buttonFillHp;
+        private Button buttonFullHp;
         private TabPage tabPageHacks;
         private CheckedListBox checkedListBoxHacks;
         private Label labelPureInterpretterRequire;
