@@ -26,7 +26,7 @@ namespace SM64_Diagnostic
         {
             _addressOffset = addressOffset;
 
-            this.Click += (sender, e) => this.SelectAll();
+            this.DoubleClick += (sender, e) => this.SelectAll();
             this.KeyDown += (sender, e) =>
             {
                 if (e.KeyData == Keys.Enter)
