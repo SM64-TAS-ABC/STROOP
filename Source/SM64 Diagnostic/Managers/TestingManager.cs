@@ -118,6 +118,12 @@ namespace SM64_Diagnostic.Managers
         BetterTextbox _betterTextboxObjAtHomeObj;
         BetterTextbox _betterTextboxObjAtHomeHome;
 
+        // Obj at Obj
+        GroupBox _groupBoxObjAtObj;
+        CheckBox _checkBoxObjAtObjOn;
+        BetterTextbox _betterTextboxObjAtObj1;
+        BetterTextbox _betterTextboxObjAtObj2;
+
         public TestingManager(TabPage tabControl)
         {
             Instance = this;
@@ -260,6 +266,12 @@ namespace SM64_Diagnostic.Managers
             _checkBoxObjAtHomeOn = _groupBoxObjAtHome.Controls["checkBoxObjAtHomeOn"] as CheckBox;
             _betterTextboxObjAtHomeObj = _groupBoxObjAtHome.Controls["betterTextboxObjAtHomeObj"] as BetterTextbox;
             _betterTextboxObjAtHomeHome = _groupBoxObjAtHome.Controls["betterTextboxObjAtHomeHome"] as BetterTextbox;
+
+            // Obj at Obj
+            _groupBoxObjAtObj = tabControl.Controls["groupBoxObjAtObj"] as GroupBox;
+            _checkBoxObjAtObjOn = _groupBoxObjAtObj.Controls["checkBoxObjAtObjOn"] as CheckBox;
+            _betterTextboxObjAtObj1 = _groupBoxObjAtObj.Controls["betterTextboxObjAtObj1"] as BetterTextbox;
+            _betterTextboxObjAtObj2 = _groupBoxObjAtObj.Controls["betterTextboxObjAtObj2"] as BetterTextbox;
         }
 
         public abstract class VarState
@@ -437,6 +449,23 @@ namespace SM64_Diagnostic.Managers
                     Config.Stream.SetValue(homeX, objAddress.Value + Config.ObjectSlots.ObjectXOffset);
                     Config.Stream.SetValue(homeY, objAddress.Value + Config.ObjectSlots.ObjectYOffset);
                     Config.Stream.SetValue(homeZ, objAddress.Value + Config.ObjectSlots.ObjectZOffset);
+                }
+            }
+
+            // Obj at Obj
+            if (_checkBoxObjAtObjOn.Checked)
+            {
+                uint? obj1Address = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtObj1.Text);
+                uint? obj2Address = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtObj2.Text);
+                if (obj1Address.HasValue && obj2Address.HasValue)
+                {
+                    float posX = Config.Stream.GetSingle(obj2Address.Value + Config.ObjectSlots.ObjectXOffset);
+                    float posY = Config.Stream.GetSingle(obj2Address.Value + Config.ObjectSlots.ObjectYOffset);
+                    float posZ = Config.Stream.GetSingle(obj2Address.Value + Config.ObjectSlots.ObjectZOffset);
+
+                    Config.Stream.SetValue(posX, obj1Address.Value + Config.ObjectSlots.ObjectXOffset);
+                    Config.Stream.SetValue(posY, obj1Address.Value + Config.ObjectSlots.ObjectYOffset);
+                    Config.Stream.SetValue(posZ, obj1Address.Value + Config.ObjectSlots.ObjectZOffset);
                 }
             }
 
