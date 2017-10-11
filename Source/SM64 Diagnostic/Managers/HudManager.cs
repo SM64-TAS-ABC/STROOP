@@ -14,8 +14,8 @@ namespace SM64_Diagnostic.Managers
     public class HudManager : DataManager
     {
         Control _tabControl;
-        bool _turnOnHud;
         BinaryButton _turnOnOffHudButton;
+        CheckBox _checkBoxFullHP;
 
         public HudManager(List<WatchVariable> hudData, Control tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelHud)
             : base(hudData, noTearFlowLayoutPanelHud)
@@ -37,10 +37,17 @@ namespace SM64_Diagnostic.Managers
                 () => ButtonUtilities.SetHudVisibility(false),
                 () => ButtonUtilities.SetHudVisibility(true),
                 () => (Config.Stream.GetByte(Config.Mario.StructAddress + Config.Hud.VisibilityOffset) & Config.Hud.VisibilityMask) == 0);
+
+            _checkBoxFullHP = splitContainerHud.Panel1.Controls["checkBoxFullHP"] as CheckBox;
         }
 
         public override void Update(bool updateView)
         {
+            if (_checkBoxFullHP.Checked)
+            {
+                ButtonUtilities.FullHp();
+            }
+
             if (!updateView) return;
 
             _turnOnOffHudButton.UpdateButton();
