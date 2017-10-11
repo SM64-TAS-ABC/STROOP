@@ -863,6 +863,7 @@ namespace SM64_Diagnostic
             this.betterTextboxObjAtObj1 = new SM64_Diagnostic.BetterTextbox();
             this.labelObjAtObj2 = new System.Windows.Forms.Label();
             this.labelObjAtObj1 = new System.Windows.Forms.Label();
+            this.checkBoxFullHP = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -2813,6 +2814,7 @@ namespace SM64_Diagnostic
             // splitContainerHud.Panel1
             // 
             this.splitContainerHud.Panel1.AutoScroll = true;
+            this.splitContainerHud.Panel1.Controls.Add(this.checkBoxFullHP);
             this.splitContainerHud.Panel1.Controls.Add(this.button99Coins);
             this.splitContainerHud.Panel1.Controls.Add(this.buttonStandardHud);
             this.splitContainerHud.Panel1.Controls.Add(this.panelHudBorder);
@@ -11369,6 +11371,16 @@ namespace SM64_Diagnostic
             this.labelObjAtObj1.Text = "Obj 1:";
             this.labelObjAtObj1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // checkBoxFullHP
+            // 
+            this.checkBoxFullHP.AutoSize = true;
+            this.checkBoxFullHP.Location = new System.Drawing.Point(4, 251);
+            this.checkBoxFullHP.Name = "checkBoxFullHP";
+            this.checkBoxFullHP.Size = new System.Drawing.Size(60, 17);
+            this.checkBoxFullHP.TabIndex = 18;
+            this.checkBoxFullHP.Text = "Full HP";
+            this.checkBoxFullHP.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -11436,6 +11448,7 @@ namespace SM64_Diagnostic
             this.groupBoxMarioPos.PerformLayout();
             this.tabPageHud.ResumeLayout(false);
             this.splitContainerHud.Panel1.ResumeLayout(false);
+            this.splitContainerHud.Panel1.PerformLayout();
             this.splitContainerHud.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).EndInit();
             this.splitContainerHud.ResumeLayout(false);
@@ -12576,6 +12589,7 @@ namespace SM64_Diagnostic
         private BetterTextbox betterTextboxObjAtObj1;
         private Label labelObjAtObj2;
         private Label labelObjAtObj1;
+        private CheckBox checkBoxFullHP;
     }
 }
 
