@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -743,7 +743,9 @@ namespace SM64_Diagnostic
             this.tabPageTesting = new System.Windows.Forms.TabPage();
             this.groupBoxStateTransfer = new System.Windows.Forms.GroupBox();
             this.checkBoxStateTransferOffsetGlobalTimer = new System.Windows.Forms.CheckBox();
+            this.betterTextboxStateTransferVar13Saved = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar12Saved = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextboxStateTransferVar13Current = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar11Saved = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar12Current = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar8Saved = new SM64_Diagnostic.BetterTextbox();
@@ -767,6 +769,7 @@ namespace SM64_Diagnostic
             this.betterTextboxStateTransferVar2Saved = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar5Current = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar1Saved = new SM64_Diagnostic.BetterTextbox();
+            this.labelStateTransferVar13Name = new System.Windows.Forms.Label();
             this.betterTextboxStateTransferVar2Current = new SM64_Diagnostic.BetterTextbox();
             this.labelStateTransferVar12Name = new System.Windows.Forms.Label();
             this.betterTextboxStateTransferVar1Current = new SM64_Diagnostic.BetterTextbox();
@@ -801,6 +804,16 @@ namespace SM64_Diagnostic
             this.labelControlStick3 = new System.Windows.Forms.Label();
             this.labelControlStick5 = new System.Windows.Forms.Label();
             this.labelControlStick4 = new System.Windows.Forms.Label();
+            this.groupBoxObjAtHome = new System.Windows.Forms.GroupBox();
+            this.checkBoxObjAtHomeOn = new System.Windows.Forms.CheckBox();
+            this.betterTextboxObjAtHomeHome = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextboxObjAtHomeObj = new SM64_Diagnostic.BetterTextbox();
+            this.labelObjAtHomeHome = new System.Windows.Forms.Label();
+            this.labelObjAtHomeObj = new System.Windows.Forms.Label();
+            this.groupBoxObjAtHOLP = new System.Windows.Forms.GroupBox();
+            this.checkBoxObjAtHOLPOn = new System.Windows.Forms.CheckBox();
+            this.betterTextboxObjAtHOLP = new SM64_Diagnostic.BetterTextbox();
+            this.labelObjAtHOLP = new System.Windows.Forms.Label();
             this.groupBoxGoto = new System.Windows.Forms.GroupBox();
             this.betterTextboxGotoZ = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxGotoY = new SM64_Diagnostic.BetterTextbox();
@@ -844,19 +857,12 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.labelStateTransferVar13Name = new System.Windows.Forms.Label();
-            this.betterTextboxStateTransferVar13Current = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextboxStateTransferVar13Saved = new SM64_Diagnostic.BetterTextbox();
-            this.groupBoxObjAtHOLP = new System.Windows.Forms.GroupBox();
-            this.betterTextboxObjAtHOLP = new SM64_Diagnostic.BetterTextbox();
-            this.labelObjAtHOLP = new System.Windows.Forms.Label();
-            this.checkBoxObjAtHOLPOn = new System.Windows.Forms.CheckBox();
-            this.groupBoxObjAtHome = new System.Windows.Forms.GroupBox();
-            this.checkBoxObjAtHomeOn = new System.Windows.Forms.CheckBox();
-            this.betterTextboxObjAtHomeHome = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextboxObjAtHomeObj = new SM64_Diagnostic.BetterTextbox();
-            this.labelObjAtHomeHome = new System.Windows.Forms.Label();
-            this.labelObjAtHomeObj = new System.Windows.Forms.Label();
+            this.groupBoxObjAtObj = new System.Windows.Forms.GroupBox();
+            this.checkBoxObjAtObjOn = new System.Windows.Forms.CheckBox();
+            this.betterTextboxObjAtObj2 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextboxObjAtObj1 = new SM64_Diagnostic.BetterTextbox();
+            this.labelObjAtObj2 = new System.Windows.Forms.Label();
+            this.labelObjAtObj1 = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1142,11 +1148,12 @@ namespace SM64_Diagnostic
             this.tabPageTesting.SuspendLayout();
             this.groupBoxStateTransfer.SuspendLayout();
             this.groupBoxControlStick.SuspendLayout();
+            this.groupBoxObjAtHome.SuspendLayout();
+            this.groupBoxObjAtHOLP.SuspendLayout();
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.groupBoxObjAtHOLP.SuspendLayout();
-            this.groupBoxObjAtHome.SuspendLayout();
+            this.groupBoxObjAtObj.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1176,7 +1183,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 309);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 310);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1241,7 +1248,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 153);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 154);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2241,7 +2248,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(690, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(693, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2779,7 +2786,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(699, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(702, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageHud
@@ -2912,7 +2919,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(791, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(794, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3293,7 +3300,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(701, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(704, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3774,7 +3781,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(698, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(701, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3904,7 +3911,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
-            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(479, 460);
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(482, 460);
             this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4267,7 +4274,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 136F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7241,7 +7248,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(250, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(253, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7549,7 +7556,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelDebug.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelDebug.Name = "noTearFlowLayoutPanelDebug";
-            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(518, 455);
+            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(521, 455);
             this.noTearFlowLayoutPanelDebug.TabIndex = 26;
             // 
             // tabPageMap
@@ -7750,7 +7757,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(689, 430);
+            this.glControlMap.Size = new System.Drawing.Size(692, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -8231,7 +8238,7 @@ namespace SM64_Diagnostic
             this.glControlModelView.BackColor = System.Drawing.Color.Black;
             this.glControlModelView.Location = new System.Drawing.Point(3, 5);
             this.glControlModelView.Name = "glControlModelView";
-            this.glControlModelView.Size = new System.Drawing.Size(472, 451);
+            this.glControlModelView.Size = new System.Drawing.Size(475, 451);
             this.glControlModelView.TabIndex = 0;
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
@@ -8304,8 +8311,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -8476,7 +8483,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(948, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(951, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -8575,7 +8582,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(591, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(594, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -9438,7 +9445,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(469, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(472, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9997,6 +10004,7 @@ namespace SM64_Diagnostic
             this.tabPageTesting.AutoScroll = true;
             this.tabPageTesting.Controls.Add(this.groupBoxStateTransfer);
             this.tabPageTesting.Controls.Add(this.groupBoxControlStick);
+            this.tabPageTesting.Controls.Add(this.groupBoxObjAtObj);
             this.tabPageTesting.Controls.Add(this.groupBoxObjAtHome);
             this.tabPageTesting.Controls.Add(this.groupBoxObjAtHOLP);
             this.tabPageTesting.Controls.Add(this.groupBoxGoto);
@@ -10073,6 +10081,14 @@ namespace SM64_Diagnostic
             this.checkBoxStateTransferOffsetGlobalTimer.Text = "Offset Global Timer";
             this.checkBoxStateTransferOffsetGlobalTimer.UseVisualStyleBackColor = true;
             // 
+            // betterTextboxStateTransferVar13Saved
+            // 
+            this.betterTextboxStateTransferVar13Saved.Location = new System.Drawing.Point(182, 367);
+            this.betterTextboxStateTransferVar13Saved.Name = "betterTextboxStateTransferVar13Saved";
+            this.betterTextboxStateTransferVar13Saved.Size = new System.Drawing.Size(60, 20);
+            this.betterTextboxStateTransferVar13Saved.TabIndex = 28;
+            this.betterTextboxStateTransferVar13Saved.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // betterTextboxStateTransferVar12Saved
             // 
             this.betterTextboxStateTransferVar12Saved.Location = new System.Drawing.Point(182, 342);
@@ -10080,6 +10096,15 @@ namespace SM64_Diagnostic
             this.betterTextboxStateTransferVar12Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar12Saved.TabIndex = 28;
             this.betterTextboxStateTransferVar12Saved.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextboxStateTransferVar13Current
+            // 
+            this.betterTextboxStateTransferVar13Current.Location = new System.Drawing.Point(117, 367);
+            this.betterTextboxStateTransferVar13Current.Name = "betterTextboxStateTransferVar13Current";
+            this.betterTextboxStateTransferVar13Current.Size = new System.Drawing.Size(60, 20);
+            this.betterTextboxStateTransferVar13Current.TabIndex = 28;
+            this.betterTextboxStateTransferVar13Current.Text = "100";
+            this.betterTextboxStateTransferVar13Current.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // betterTextboxStateTransferVar11Saved
             // 
@@ -10278,6 +10303,17 @@ namespace SM64_Diagnostic
             this.betterTextboxStateTransferVar1Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar1Saved.TabIndex = 28;
             this.betterTextboxStateTransferVar1Saved.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelStateTransferVar13Name
+            // 
+            this.labelStateTransferVar13Name.AutoSize = true;
+            this.labelStateTransferVar13Name.Location = new System.Drawing.Point(5, 370);
+            this.labelStateTransferVar13Name.MinimumSize = new System.Drawing.Size(110, 2);
+            this.labelStateTransferVar13Name.Name = "labelStateTransferVar13Name";
+            this.labelStateTransferVar13Name.Size = new System.Drawing.Size(110, 13);
+            this.labelStateTransferVar13Name.TabIndex = 18;
+            this.labelStateTransferVar13Name.Text = "Special Triple Jump:";
+            this.labelStateTransferVar13Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // betterTextboxStateTransferVar2Current
             // 
@@ -10662,6 +10698,112 @@ namespace SM64_Diagnostic
             this.labelControlStick4.TabIndex = 18;
             this.labelControlStick4.Text = "Value";
             this.labelControlStick4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // groupBoxObjAtHome
+            // 
+            this.groupBoxObjAtHome.Controls.Add(this.checkBoxObjAtHomeOn);
+            this.groupBoxObjAtHome.Controls.Add(this.betterTextboxObjAtHomeHome);
+            this.groupBoxObjAtHome.Controls.Add(this.betterTextboxObjAtHomeObj);
+            this.groupBoxObjAtHome.Controls.Add(this.labelObjAtHomeHome);
+            this.groupBoxObjAtHome.Controls.Add(this.labelObjAtHomeObj);
+            this.groupBoxObjAtHome.Location = new System.Drawing.Point(610, 80);
+            this.groupBoxObjAtHome.Name = "groupBoxObjAtHome";
+            this.groupBoxObjAtHome.Size = new System.Drawing.Size(144, 93);
+            this.groupBoxObjAtHome.TabIndex = 40;
+            this.groupBoxObjAtHome.TabStop = false;
+            this.groupBoxObjAtHome.Text = "Obj at Home";
+            // 
+            // checkBoxObjAtHomeOn
+            // 
+            this.checkBoxObjAtHomeOn.AutoSize = true;
+            this.checkBoxObjAtHomeOn.Location = new System.Drawing.Point(50, 19);
+            this.checkBoxObjAtHomeOn.Name = "checkBoxObjAtHomeOn";
+            this.checkBoxObjAtHomeOn.Size = new System.Drawing.Size(40, 17);
+            this.checkBoxObjAtHomeOn.TabIndex = 29;
+            this.checkBoxObjAtHomeOn.Text = "On";
+            this.checkBoxObjAtHomeOn.UseVisualStyleBackColor = true;
+            // 
+            // betterTextboxObjAtHomeHome
+            // 
+            this.betterTextboxObjAtHomeHome.Location = new System.Drawing.Point(50, 64);
+            this.betterTextboxObjAtHomeHome.Name = "betterTextboxObjAtHomeHome";
+            this.betterTextboxObjAtHomeHome.Size = new System.Drawing.Size(78, 20);
+            this.betterTextboxObjAtHomeHome.TabIndex = 28;
+            this.betterTextboxObjAtHomeHome.Text = "0x00000000";
+            this.betterTextboxObjAtHomeHome.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextboxObjAtHomeObj
+            // 
+            this.betterTextboxObjAtHomeObj.Location = new System.Drawing.Point(50, 40);
+            this.betterTextboxObjAtHomeObj.Name = "betterTextboxObjAtHomeObj";
+            this.betterTextboxObjAtHomeObj.Size = new System.Drawing.Size(78, 20);
+            this.betterTextboxObjAtHomeObj.TabIndex = 28;
+            this.betterTextboxObjAtHomeObj.Text = "0x00000000";
+            this.betterTextboxObjAtHomeObj.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelObjAtHomeHome
+            // 
+            this.labelObjAtHomeHome.AutoSize = true;
+            this.labelObjAtHomeHome.Location = new System.Drawing.Point(11, 67);
+            this.labelObjAtHomeHome.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelObjAtHomeHome.Name = "labelObjAtHomeHome";
+            this.labelObjAtHomeHome.Size = new System.Drawing.Size(38, 13);
+            this.labelObjAtHomeHome.TabIndex = 18;
+            this.labelObjAtHomeHome.Text = "Home:";
+            this.labelObjAtHomeHome.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelObjAtHomeObj
+            // 
+            this.labelObjAtHomeObj.AutoSize = true;
+            this.labelObjAtHomeObj.Location = new System.Drawing.Point(23, 43);
+            this.labelObjAtHomeObj.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelObjAtHomeObj.Name = "labelObjAtHomeObj";
+            this.labelObjAtHomeObj.Size = new System.Drawing.Size(26, 13);
+            this.labelObjAtHomeObj.TabIndex = 18;
+            this.labelObjAtHomeObj.Text = "Obj:";
+            this.labelObjAtHomeObj.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // groupBoxObjAtHOLP
+            // 
+            this.groupBoxObjAtHOLP.Controls.Add(this.checkBoxObjAtHOLPOn);
+            this.groupBoxObjAtHOLP.Controls.Add(this.betterTextboxObjAtHOLP);
+            this.groupBoxObjAtHOLP.Controls.Add(this.labelObjAtHOLP);
+            this.groupBoxObjAtHOLP.Location = new System.Drawing.Point(610, 6);
+            this.groupBoxObjAtHOLP.Name = "groupBoxObjAtHOLP";
+            this.groupBoxObjAtHOLP.Size = new System.Drawing.Size(144, 68);
+            this.groupBoxObjAtHOLP.TabIndex = 40;
+            this.groupBoxObjAtHOLP.TabStop = false;
+            this.groupBoxObjAtHOLP.Text = "Obj at HOLP";
+            // 
+            // checkBoxObjAtHOLPOn
+            // 
+            this.checkBoxObjAtHOLPOn.AutoSize = true;
+            this.checkBoxObjAtHOLPOn.Location = new System.Drawing.Point(50, 19);
+            this.checkBoxObjAtHOLPOn.Name = "checkBoxObjAtHOLPOn";
+            this.checkBoxObjAtHOLPOn.Size = new System.Drawing.Size(40, 17);
+            this.checkBoxObjAtHOLPOn.TabIndex = 29;
+            this.checkBoxObjAtHOLPOn.Text = "On";
+            this.checkBoxObjAtHOLPOn.UseVisualStyleBackColor = true;
+            // 
+            // betterTextboxObjAtHOLP
+            // 
+            this.betterTextboxObjAtHOLP.Location = new System.Drawing.Point(50, 40);
+            this.betterTextboxObjAtHOLP.Name = "betterTextboxObjAtHOLP";
+            this.betterTextboxObjAtHOLP.Size = new System.Drawing.Size(78, 20);
+            this.betterTextboxObjAtHOLP.TabIndex = 28;
+            this.betterTextboxObjAtHOLP.Text = "0x00000000";
+            this.betterTextboxObjAtHOLP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelObjAtHOLP
+            // 
+            this.labelObjAtHOLP.AutoSize = true;
+            this.labelObjAtHOLP.Location = new System.Drawing.Point(23, 43);
+            this.labelObjAtHOLP.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelObjAtHOLP.Name = "labelObjAtHOLP";
+            this.labelObjAtHOLP.Size = new System.Drawing.Size(26, 13);
+            this.labelObjAtHOLP.TabIndex = 18;
+            this.labelObjAtHOLP.Text = "Obj:";
+            this.labelObjAtHOLP.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // groupBoxGoto
             // 
@@ -11163,139 +11305,69 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // labelStateTransferVar13Name
+            // groupBoxObjAtObj
             // 
-            this.labelStateTransferVar13Name.AutoSize = true;
-            this.labelStateTransferVar13Name.Location = new System.Drawing.Point(5, 370);
-            this.labelStateTransferVar13Name.MinimumSize = new System.Drawing.Size(110, 2);
-            this.labelStateTransferVar13Name.Name = "labelStateTransferVar13Name";
-            this.labelStateTransferVar13Name.Size = new System.Drawing.Size(110, 13);
-            this.labelStateTransferVar13Name.TabIndex = 18;
-            this.labelStateTransferVar13Name.Text = "Special Triple Jump:";
-            this.labelStateTransferVar13Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.groupBoxObjAtObj.Controls.Add(this.checkBoxObjAtObjOn);
+            this.groupBoxObjAtObj.Controls.Add(this.betterTextboxObjAtObj2);
+            this.groupBoxObjAtObj.Controls.Add(this.betterTextboxObjAtObj1);
+            this.groupBoxObjAtObj.Controls.Add(this.labelObjAtObj2);
+            this.groupBoxObjAtObj.Controls.Add(this.labelObjAtObj1);
+            this.groupBoxObjAtObj.Location = new System.Drawing.Point(610, 179);
+            this.groupBoxObjAtObj.Name = "groupBoxObjAtObj";
+            this.groupBoxObjAtObj.Size = new System.Drawing.Size(144, 93);
+            this.groupBoxObjAtObj.TabIndex = 40;
+            this.groupBoxObjAtObj.TabStop = false;
+            this.groupBoxObjAtObj.Text = "Obj at Obj";
             // 
-            // betterTextboxStateTransferVar13Current
+            // checkBoxObjAtObjOn
             // 
-            this.betterTextboxStateTransferVar13Current.Location = new System.Drawing.Point(117, 367);
-            this.betterTextboxStateTransferVar13Current.Name = "betterTextboxStateTransferVar13Current";
-            this.betterTextboxStateTransferVar13Current.Size = new System.Drawing.Size(60, 20);
-            this.betterTextboxStateTransferVar13Current.TabIndex = 28;
-            this.betterTextboxStateTransferVar13Current.Text = "100";
-            this.betterTextboxStateTransferVar13Current.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.checkBoxObjAtObjOn.AutoSize = true;
+            this.checkBoxObjAtObjOn.Location = new System.Drawing.Point(50, 19);
+            this.checkBoxObjAtObjOn.Name = "checkBoxObjAtObjOn";
+            this.checkBoxObjAtObjOn.Size = new System.Drawing.Size(40, 17);
+            this.checkBoxObjAtObjOn.TabIndex = 29;
+            this.checkBoxObjAtObjOn.Text = "On";
+            this.checkBoxObjAtObjOn.UseVisualStyleBackColor = true;
             // 
-            // betterTextboxStateTransferVar13Saved
+            // betterTextboxObjAtObj2
             // 
-            this.betterTextboxStateTransferVar13Saved.Location = new System.Drawing.Point(182, 367);
-            this.betterTextboxStateTransferVar13Saved.Name = "betterTextboxStateTransferVar13Saved";
-            this.betterTextboxStateTransferVar13Saved.Size = new System.Drawing.Size(60, 20);
-            this.betterTextboxStateTransferVar13Saved.TabIndex = 28;
-            this.betterTextboxStateTransferVar13Saved.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextboxObjAtObj2.Location = new System.Drawing.Point(50, 64);
+            this.betterTextboxObjAtObj2.Name = "betterTextboxObjAtObj2";
+            this.betterTextboxObjAtObj2.Size = new System.Drawing.Size(78, 20);
+            this.betterTextboxObjAtObj2.TabIndex = 28;
+            this.betterTextboxObjAtObj2.Text = "0x00000000";
+            this.betterTextboxObjAtObj2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // groupBoxObjAtHOLP
+            // betterTextboxObjAtObj1
             // 
-            this.groupBoxObjAtHOLP.Controls.Add(this.checkBoxObjAtHOLPOn);
-            this.groupBoxObjAtHOLP.Controls.Add(this.betterTextboxObjAtHOLP);
-            this.groupBoxObjAtHOLP.Controls.Add(this.labelObjAtHOLP);
-            this.groupBoxObjAtHOLP.Location = new System.Drawing.Point(610, 6);
-            this.groupBoxObjAtHOLP.Name = "groupBoxObjAtHOLP";
-            this.groupBoxObjAtHOLP.Size = new System.Drawing.Size(144, 68);
-            this.groupBoxObjAtHOLP.TabIndex = 40;
-            this.groupBoxObjAtHOLP.TabStop = false;
-            this.groupBoxObjAtHOLP.Text = "Obj at HOLP";
+            this.betterTextboxObjAtObj1.Location = new System.Drawing.Point(50, 40);
+            this.betterTextboxObjAtObj1.Name = "betterTextboxObjAtObj1";
+            this.betterTextboxObjAtObj1.Size = new System.Drawing.Size(78, 20);
+            this.betterTextboxObjAtObj1.TabIndex = 28;
+            this.betterTextboxObjAtObj1.Text = "0x00000000";
+            this.betterTextboxObjAtObj1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextboxObjAtHOLP
+            // labelObjAtObj2
             // 
-            this.betterTextboxObjAtHOLP.Location = new System.Drawing.Point(50, 40);
-            this.betterTextboxObjAtHOLP.Name = "betterTextboxObjAtHOLP";
-            this.betterTextboxObjAtHOLP.Size = new System.Drawing.Size(78, 20);
-            this.betterTextboxObjAtHOLP.TabIndex = 28;
-            this.betterTextboxObjAtHOLP.Text = "0x00000000";
-            this.betterTextboxObjAtHOLP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.labelObjAtObj2.AutoSize = true;
+            this.labelObjAtObj2.Location = new System.Drawing.Point(14, 67);
+            this.labelObjAtObj2.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelObjAtObj2.Name = "labelObjAtObj2";
+            this.labelObjAtObj2.Size = new System.Drawing.Size(35, 13);
+            this.labelObjAtObj2.TabIndex = 18;
+            this.labelObjAtObj2.Text = "Obj 2:";
+            this.labelObjAtObj2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // labelObjAtHOLP
+            // labelObjAtObj1
             // 
-            this.labelObjAtHOLP.AutoSize = true;
-            this.labelObjAtHOLP.Location = new System.Drawing.Point(23, 43);
-            this.labelObjAtHOLP.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelObjAtHOLP.Name = "labelObjAtHOLP";
-            this.labelObjAtHOLP.Size = new System.Drawing.Size(26, 13);
-            this.labelObjAtHOLP.TabIndex = 18;
-            this.labelObjAtHOLP.Text = "Obj:";
-            this.labelObjAtHOLP.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // checkBoxObjAtHOLPOn
-            // 
-            this.checkBoxObjAtHOLPOn.AutoSize = true;
-            this.checkBoxObjAtHOLPOn.Location = new System.Drawing.Point(50, 19);
-            this.checkBoxObjAtHOLPOn.Name = "checkBoxObjAtHOLPOn";
-            this.checkBoxObjAtHOLPOn.Size = new System.Drawing.Size(40, 17);
-            this.checkBoxObjAtHOLPOn.TabIndex = 29;
-            this.checkBoxObjAtHOLPOn.Text = "On";
-            this.checkBoxObjAtHOLPOn.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxObjAtHome
-            // 
-            this.groupBoxObjAtHome.Controls.Add(this.checkBoxObjAtHomeOn);
-            this.groupBoxObjAtHome.Controls.Add(this.betterTextboxObjAtHomeHome);
-            this.groupBoxObjAtHome.Controls.Add(this.betterTextboxObjAtHomeObj);
-            this.groupBoxObjAtHome.Controls.Add(this.labelObjAtHomeHome);
-            this.groupBoxObjAtHome.Controls.Add(this.labelObjAtHomeObj);
-            this.groupBoxObjAtHome.Location = new System.Drawing.Point(610, 80);
-            this.groupBoxObjAtHome.Name = "groupBoxObjAtHome";
-            this.groupBoxObjAtHome.Size = new System.Drawing.Size(144, 93);
-            this.groupBoxObjAtHome.TabIndex = 40;
-            this.groupBoxObjAtHome.TabStop = false;
-            this.groupBoxObjAtHome.Text = "Obj at Home";
-            // 
-            // checkBoxObjAtHomeOn
-            // 
-            this.checkBoxObjAtHomeOn.AutoSize = true;
-            this.checkBoxObjAtHomeOn.Location = new System.Drawing.Point(50, 19);
-            this.checkBoxObjAtHomeOn.Name = "checkBoxObjAtHomeOn";
-            this.checkBoxObjAtHomeOn.Size = new System.Drawing.Size(40, 17);
-            this.checkBoxObjAtHomeOn.TabIndex = 29;
-            this.checkBoxObjAtHomeOn.Text = "On";
-            this.checkBoxObjAtHomeOn.UseVisualStyleBackColor = true;
-            // 
-            // betterTextboxObjAtHomeHome
-            // 
-            this.betterTextboxObjAtHomeHome.Location = new System.Drawing.Point(50, 64);
-            this.betterTextboxObjAtHomeHome.Name = "betterTextboxObjAtHomeHome";
-            this.betterTextboxObjAtHomeHome.Size = new System.Drawing.Size(78, 20);
-            this.betterTextboxObjAtHomeHome.TabIndex = 28;
-            this.betterTextboxObjAtHomeHome.Text = "0x00000000";
-            this.betterTextboxObjAtHomeHome.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // betterTextboxObjAtHomeObj
-            // 
-            this.betterTextboxObjAtHomeObj.Location = new System.Drawing.Point(50, 40);
-            this.betterTextboxObjAtHomeObj.Name = "betterTextboxObjAtHomeObj";
-            this.betterTextboxObjAtHomeObj.Size = new System.Drawing.Size(78, 20);
-            this.betterTextboxObjAtHomeObj.TabIndex = 28;
-            this.betterTextboxObjAtHomeObj.Text = "0x00000000";
-            this.betterTextboxObjAtHomeObj.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelObjAtHomeHome
-            // 
-            this.labelObjAtHomeHome.AutoSize = true;
-            this.labelObjAtHomeHome.Location = new System.Drawing.Point(11, 67);
-            this.labelObjAtHomeHome.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelObjAtHomeHome.Name = "labelObjAtHomeHome";
-            this.labelObjAtHomeHome.Size = new System.Drawing.Size(38, 13);
-            this.labelObjAtHomeHome.TabIndex = 18;
-            this.labelObjAtHomeHome.Text = "Home:";
-            this.labelObjAtHomeHome.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelObjAtHomeObj
-            // 
-            this.labelObjAtHomeObj.AutoSize = true;
-            this.labelObjAtHomeObj.Location = new System.Drawing.Point(23, 43);
-            this.labelObjAtHomeObj.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelObjAtHomeObj.Name = "labelObjAtHomeObj";
-            this.labelObjAtHomeObj.Size = new System.Drawing.Size(26, 13);
-            this.labelObjAtHomeObj.TabIndex = 18;
-            this.labelObjAtHomeObj.Text = "Obj:";
-            this.labelObjAtHomeObj.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelObjAtObj1.AutoSize = true;
+            this.labelObjAtObj1.Location = new System.Drawing.Point(14, 43);
+            this.labelObjAtObj1.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelObjAtObj1.Name = "labelObjAtObj1";
+            this.labelObjAtObj1.Size = new System.Drawing.Size(35, 13);
+            this.labelObjAtObj1.TabIndex = 18;
+            this.labelObjAtObj1.Text = "Obj 1:";
+            this.labelObjAtObj1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // StroopMainForm
             // 
@@ -11656,16 +11728,18 @@ namespace SM64_Diagnostic
             this.groupBoxStateTransfer.PerformLayout();
             this.groupBoxControlStick.ResumeLayout(false);
             this.groupBoxControlStick.PerformLayout();
+            this.groupBoxObjAtHome.ResumeLayout(false);
+            this.groupBoxObjAtHome.PerformLayout();
+            this.groupBoxObjAtHOLP.ResumeLayout(false);
+            this.groupBoxObjAtHOLP.PerformLayout();
             this.groupBoxGoto.ResumeLayout(false);
             this.groupBoxGoto.PerformLayout();
             this.groupBoxRecording.ResumeLayout(false);
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.groupBoxObjAtHOLP.ResumeLayout(false);
-            this.groupBoxObjAtHOLP.PerformLayout();
-            this.groupBoxObjAtHome.ResumeLayout(false);
-            this.groupBoxObjAtHome.PerformLayout();
+            this.groupBoxObjAtObj.ResumeLayout(false);
+            this.groupBoxObjAtObj.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -12496,6 +12570,12 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxObjAtHOLPOn;
         private BetterTextbox betterTextboxObjAtHOLP;
         private Label labelObjAtHOLP;
+        private GroupBox groupBoxObjAtObj;
+        private CheckBox checkBoxObjAtObjOn;
+        private BetterTextbox betterTextboxObjAtObj2;
+        private BetterTextbox betterTextboxObjAtObj1;
+        private Label labelObjAtObj2;
+        private Label labelObjAtObj1;
     }
 }
 
