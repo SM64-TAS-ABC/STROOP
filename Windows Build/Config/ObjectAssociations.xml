@@ -2194,6 +2194,9 @@
     <Data groupList="ObjectSpecific" type="ushort" address="0x112" offset="Object" isAngle="true">Cannon Yaw</Data>
     <Data groupList="ObjectSpecific" type="float" address="0x110" offset="Object">Pole Height</Data>
     <Data groupList="ObjectSpecific" type="short" address="0x3A" offset="Object">Relative Height</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0x20" offset="Object">Graphics X</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0x24" offset="Object">Graphics Y</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0x28" offset="Object">Graphics Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002EF8" name="Toad">
     <SpawnCode gfxId="0xDD"/>
