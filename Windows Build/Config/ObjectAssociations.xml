@@ -2454,6 +2454,9 @@
   <Object behaviorScriptAddress="0x13003588" name="Cork Box Dust">
     <Image path="Cork Box Dust.png"/>
   </Object>
+  <Object behaviorScriptAddress="0x130035B0" name="Bob-omb Explosion Bubble">
+    <Image path="Splash Bubble.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x13003614" name="Grabbable Cork Box / Bob-omb Spawner">
     <SpawnCode gfxId="0x00"/>
     <Image path="Grabbable Cork Box Bob-omb Spawner.png"/>
