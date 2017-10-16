@@ -928,42 +928,6 @@
     <SpawnCode gfxId="0x00"/>
     <Image path="WF Water Level Checker.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Boo Key~ (BBH)" subType="1">
-    <SpawnCode gfxId="0x55"/>
-    <Image path="Boo Key.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Blargg~ (LLL)" subType="2">
-    <SpawnCode gfxId="0x54"/>
-    <Image path="Blargg.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Underwater Mine~ (DDD)" subType="3">
-    <SpawnCode gfxId="0xB3"/>
-    <Image path="Floating Mine.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Ice Cover~ (SL)" subType="4">
-    <SpawnCode gfxId="0x37"/>
-    <Image path="Ice Cover.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Ice Triangle~ (SL)" subType="5">
-    <SpawnCode gfxId="0x38"/>
-    <Image path="Ice Triangle.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Yoshi Egg~ (WF)" subType="6">
-    <SpawnCode gfxId="0x57"/>
-    <Image path="Yoshi Egg.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x13001298" name="White Thing~ (VCutM)" subType="7">
-    <SpawnCode gfxId="0x37"/>
-    <Image path="White Thing.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Checkerboard~ (VCutM)" subType="8">
-    <SpawnCode gfxId="0x38"/>
-    <Image path="Checkerboard.png"/>
-  </Object>
-  <Object behaviorScriptAddress="0x13001298" name="Blue Thing~ (TotWC)" subType="9">
-    <SpawnCode gfxId="0xD0"/>
-    <Image path="Blue Thing.png"/>
-  </Object>
   <Object behaviorScriptAddress="0x130012B4" name="Spindrift">
     <SpawnCode gfxId="0x54"/>
     <Image path="Spindrift.png"/>
@@ -1236,6 +1200,7 @@
     <Image path="Bowser Key.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001BF4" name="Moat Water Level Manager">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Moat Water Level Manager.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13001C04" name="Poundable Pillar">
@@ -2001,6 +1966,7 @@
     <Image path="Sound Effect.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130029B0" name="Noop Object">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Null Symbol.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002A20" name="Star?">
@@ -2641,9 +2607,11 @@
     <Image path="Pyramid Top Activator.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003C30" name="Waterfall Sound Effect">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Sound Effect.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003C44" name="Lavafall Sound Effect">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Sound Effect.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003C58" name="Castle Flag">
@@ -2655,6 +2623,7 @@
     <Image path="Sound Effect.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003C90" name="Ambient Noise Sound Effect">
+    <SpawnCode gfxId="0x00"/>
     <Image path="Sound Effect.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003CA4" name="Falling Sand Sound Effect">
@@ -4152,6 +4121,43 @@
   <Object behaviorScriptAddress="0x130056A4" name="Bird Spawner (for Ending Cutscene)">
     <SpawnCode gfxId="0x00"/>
     <Image path="Bird Spawner.png"/>
+  </Object>
+  
+  <Object behaviorScriptAddress="0x13001298" name="Boo Key~ (BBH)" subType="1">
+    <SpawnCode gfxId="0x55"/>
+    <Image path="Boo Key.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001298" name="Blargg~ (LLL)" subType="2">
+    <SpawnCode gfxId="0x54"/>
+    <Image path="Blargg.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001298" name="Underwater Mine~ (DDD)" subType="3">
+    <SpawnCode gfxId="0xB3"/>
+    <Image path="Floating Mine.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001298" name="Ice Cover~ (SL)" subType="4">
+    <SpawnCode gfxId="0x37"/>
+    <Image path="Ice Cover.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001298" name="Ice Triangle~ (SL)" subType="5">
+    <SpawnCode gfxId="0x38"/>
+    <Image path="Ice Triangle.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001298" name="Yoshi Egg~ (WF)" subType="6">
+    <SpawnCode gfxId="0x57"/>
+    <Image path="Yoshi Egg.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001298" name="White Thing~ (VCutM)" subType="7">
+    <SpawnCode gfxId="0x37"/>
+    <Image path="White Thing.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001298" name="Checkerboard~ (VCutM)" subType="8">
+    <SpawnCode gfxId="0x38"/>
+    <Image path="Checkerboard.png"/>
+  </Object>
+  <Object behaviorScriptAddress="0x13001298" name="Blue Thing~ (TotWC)" subType="9">
+    <SpawnCode gfxId="0xD0"/>
+    <Image path="Blue Thing.png"/>
   </Object>
 
   <!--
