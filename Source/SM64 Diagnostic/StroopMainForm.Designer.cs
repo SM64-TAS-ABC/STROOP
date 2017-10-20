@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -1157,6 +1157,8 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMisc)).BeginInit();
+            this.splitContainerMisc.Panel1.SuspendLayout();
+            this.splitContainerMisc.Panel2.SuspendLayout();
             this.splitContainerMisc.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -7268,8 +7270,6 @@ namespace SM64_Diagnostic
             // 
             // tabPageMisc
             // 
-            this.tabPageMisc.Controls.Add(this.panelMiscBorder);
-            this.tabPageMisc.Controls.Add(this.NoTearFlowLayoutPanelMisc);
             this.tabPageMisc.Controls.Add(this.splitContainerMisc);
             this.tabPageMisc.Location = new System.Drawing.Point(4, 22);
             this.tabPageMisc.Name = "tabPageMisc";
@@ -7280,7 +7280,7 @@ namespace SM64_Diagnostic
             // panelMiscBorder
             // 
             this.panelMiscBorder.Controls.Add(this.pictureBoxMisc);
-            this.panelMiscBorder.Location = new System.Drawing.Point(3, 6);
+            this.panelMiscBorder.Location = new System.Drawing.Point(2, 2);
             this.panelMiscBorder.Margin = new System.Windows.Forms.Padding(2);
             this.panelMiscBorder.Name = "panelMiscBorder";
             this.panelMiscBorder.Size = new System.Drawing.Size(57, 55);
@@ -7308,10 +7308,10 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NoTearFlowLayoutPanelMisc.AutoScroll = true;
             this.NoTearFlowLayoutPanelMisc.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.NoTearFlowLayoutPanelMisc.Location = new System.Drawing.Point(64, 5);
+            this.NoTearFlowLayoutPanelMisc.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMisc.Name = "NoTearFlowLayoutPanelMisc";
-            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(849, 456);
+            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(709, 457);
             this.NoTearFlowLayoutPanelMisc.TabIndex = 5;
             // 
             // tabPageDebug
@@ -8327,8 +8327,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -11392,13 +11392,21 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainerMisc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainerMisc.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerMisc.Location = new System.Drawing.Point(8, 8);
+            this.splitContainerMisc.Location = new System.Drawing.Point(0, 0);
             this.splitContainerMisc.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainerMisc.Name = "splitContainerMisc";
+            // 
+            // splitContainerMisc.Panel1
+            // 
+            this.splitContainerMisc.Panel1.Controls.Add(this.panelMiscBorder);
             this.splitContainerMisc.Panel1MinSize = 0;
+            // 
+            // splitContainerMisc.Panel2
+            // 
+            this.splitContainerMisc.Panel2.Controls.Add(this.NoTearFlowLayoutPanelMisc);
             this.splitContainerMisc.Panel2MinSize = 0;
-            this.splitContainerMisc.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerMisc.SplitterDistance = 428;
+            this.splitContainerMisc.Size = new System.Drawing.Size(913, 463);
+            this.splitContainerMisc.SplitterDistance = 197;
             this.splitContainerMisc.SplitterWidth = 1;
             this.splitContainerMisc.TabIndex = 18;
             // 
@@ -11774,6 +11782,8 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.splitContainerMisc.Panel1.ResumeLayout(false);
+            this.splitContainerMisc.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMisc)).EndInit();
             this.splitContainerMisc.ResumeLayout(false);
             this.ResumeLayout(false);
