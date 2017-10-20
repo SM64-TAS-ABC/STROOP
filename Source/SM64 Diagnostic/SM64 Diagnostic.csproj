@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="LoadingHandler.cs" />
     <Compile Include="Managers\CamHackManager.cs" />
+    <Compile Include="Managers\WaterManager.cs" />
     <Compile Include="Managers\ModelManager.cs" />
     <Compile Include="Managers\DebugManager.cs" />
     <Compile Include="Managers\FileManager.cs" />

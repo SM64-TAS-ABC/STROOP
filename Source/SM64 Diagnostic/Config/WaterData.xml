@@ -2,7 +2,11 @@
 <WaterData>
   <Data type="short" address="0x76" offset="Mario">Water Level</Data>
   <Data type="short" addressUS="0x8036118A" addressJP="0x8035FE1A" offset="Relative">Water Level Median</Data>
-  
+
+  <Data offset="Special" specialType="WaterAboveMedian">Water Above Median</Data>
+  <Data offset="Special" specialType="MarioAboveWater">Mario Above Water</Data>
+  <Data type="float" address="0x40" offset="Mario">Mario Y</Data>
+
   <Data type="short" addressUS="0x801112E2" addressJP="0x8010E462" offset="Relative">WDW Main WL</Data>
   <Data type="short" addressUS="0x8011342E" addressJP="0x801105AE" offset="Relative">WDW Town WL</Data>
   <Data type="float" addressUS="0x80330F3C" addressJP="0x8032FFDC" offset="Relative">WDW Painting Level</Data>
