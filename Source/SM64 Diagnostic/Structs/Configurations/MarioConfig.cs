@@ -52,5 +52,7 @@ namespace SM64_Diagnostic.Structs
         public uint HOLPXOffset;
         public uint HOLPYOffset;
         public uint HOLPZOffset;
+
+        public uint WaterLevelOffset;
     }
 }

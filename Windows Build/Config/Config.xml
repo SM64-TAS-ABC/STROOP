@@ -151,6 +151,7 @@
     <HOLPXOffset>0x258</HOLPXOffset>
     <HOLPYOffset>0x25C</HOLPYOffset>
     <HOLPZOffset>0x260</HOLPZOffset>
+    <WaterLevelOffset>0x76</WaterLevelOffset>
   </Mario>
   <Hud>
     <LifeCountOffset>0xAD</LifeCountOffset>
@@ -402,6 +403,9 @@
 
   <LevelIndexAddressUS>0x8033BAC6</LevelIndexAddressUS>
   <LevelIndexAddressJP>0x8033A756</LevelIndexAddressJP>
+
+  <WaterLevelMedianAddressUS>0x8036118A</WaterLevelMedianAddressUS>
+  <WaterLevelMedianAddressJP>0x8035FE1A</WaterLevelMedianAddressJP>
 
   <WaterPointerAddressUS>0x80361184</WaterPointerAddressUS>
   <WaterPointerAddressJP>0x8035FE14</WaterPointerAddressJP>

@@ -464,6 +464,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "HOLPZOffset":
                                     Config.Mario.HOLPZOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "WaterLevelOffset":
+                                    Config.Mario.WaterLevelOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;
@@ -1285,6 +1288,13 @@ namespace SM64_Diagnostic.Utilities
                         break;
                     case "LevelIndexAddressJP":
                         Config.LevelIndexAddressJP = ParsingUtilities.ParseHex(element.Value);
+                        break;
+
+                    case "WaterLevelMedianAddressUS":
+                        Config.WaterLevelMedianAddressUS = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "WaterLevelMedianAddressJP":
+                        Config.WaterLevelMedianAddressJP = ParsingUtilities.ParseHex(element.Value);
                         break;
 
                     case "WaterPointerAddressUS":

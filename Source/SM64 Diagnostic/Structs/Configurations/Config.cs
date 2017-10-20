@@ -105,6 +105,10 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint LevelIndexAddressUS;
         public static uint LevelIndexAddressJP;
 
+        public static uint WaterLevelMedianAddress { get { return Config.SwitchRomVersion(WaterLevelMedianAddressUS, WaterLevelMedianAddressJP); } }
+        public static uint WaterLevelMedianAddressUS;
+        public static uint WaterLevelMedianAddressJP;
+
         public static uint WaterPointerAddress { get { return Config.SwitchRomVersion(WaterPointerAddressUS, WaterPointerAddressJP); } }
         public static uint WaterPointerAddressUS;
         public static uint WaterPointerAddressJP;

@@ -36,16 +36,16 @@ namespace SM64_Diagnostic.Managers
                 {
                     case "WaterAboveMedian":
                         {
-                            double waterLevel = Config.Stream.GetInt16(Config.Mario.StructAddress + 0x76);
-                            double waterLevelMedian = Config.Stream.GetInt16(0x8036118A);
-                            (specialVar as DataContainer).Text = Math.Round(waterLevel - waterLevelMedian, 3).ToString();
+                            short waterLevel = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Mario.WaterLevelOffset);
+                            short waterLevelMedian = Config.Stream.GetInt16(Config.WaterLevelMedianAddress);
+                            (specialVar as DataContainer).Text = Math.Round((double)(waterLevel - waterLevelMedian), 3).ToString();
                             break;
                         }
 
                     case "MarioAboveWater":
                         {
-                            double waterLevel = Config.Stream.GetInt16(Config.Mario.StructAddress + 0x76);
-                            double marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                            short waterLevel = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Mario.WaterLevelOffset);
+                            float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
                             (specialVar as DataContainer).Text = Math.Round(marioY - waterLevel, 3).ToString();
                             break;
                         }
