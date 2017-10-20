@@ -16,9 +16,17 @@ namespace SM64_Diagnostic.Managers
     {
         public int ActiveObjectCount = 0;
 
-        public MiscManager(List<WatchVariable> watchVariables, NoTearFlowLayoutPanel variableTable)
+        BetterTextbox _betterTextboxRNGIndex;
+        CheckBox _checkBoxTurnOffMusic;
+
+        public MiscManager(List<WatchVariable> watchVariables, NoTearFlowLayoutPanel variableTable, Control miscControl)
             : base(watchVariables, variableTable)
         {
+            SplitContainer splitContainerMisc = miscControl.Controls["splitContainerMisc"] as SplitContainer;
+            GroupBox groupBoxRNGIndex = splitContainerMisc.Panel1.Controls["groupBoxRNGIndex"] as GroupBox;
+            _betterTextboxRNGIndex = groupBoxRNGIndex.Controls["betterTextboxRNGIndex"] as BetterTextbox;
+
+            _checkBoxTurnOffMusic = splitContainerMisc.Panel1.Controls["checkBoxTurnOffMusic"] as CheckBox;
         }
 
         protected override void InitializeSpecialVariables()

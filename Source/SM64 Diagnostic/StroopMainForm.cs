@@ -122,7 +122,7 @@ namespace SM64_Diagnostic
             currentContext.InputManager = _inputManager = new InputManager(_inputData, tabPageInput, NoTearFlowLayoutPanelInput, _inputImageGui);
             currentContext.MarioManager = _marioManager = new MarioManager(_marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
             currentContext.HudManager = _hudManager = new HudManager(_hudData, tabPageHud, NoTearFlowLayoutPanelHud);
-            currentContext.MiscManager = _miscManager = new MiscManager(_miscData, NoTearFlowLayoutPanelMisc);
+            currentContext.MiscManager = _miscManager = new MiscManager(_miscData, NoTearFlowLayoutPanelMisc, tabPageMisc);
             currentContext.CameraManager = _cameraManager = new CameraManager(_cameraData, tabPageCamera, NoTearFlowLayoutPanelCamera);
             currentContext.TriangleManager = _triangleManager = new TriangleManager(tabPageTriangles, _triangleData, NoTearFlowLayoutPanelTriangles);
             currentContext.DebugManager = _debugManager = new DebugManager(_debugData, tabPageDebug, noTearFlowLayoutPanelDebug);
