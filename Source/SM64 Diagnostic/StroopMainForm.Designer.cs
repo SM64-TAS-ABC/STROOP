@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -865,6 +865,9 @@ namespace SM64_Diagnostic
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.splitContainerMisc = new System.Windows.Forms.SplitContainer();
+            this.groupBoxRNGIndex = new System.Windows.Forms.GroupBox();
+            this.betterTextboxRNGIndex = new SM64_Diagnostic.BetterTextbox();
+            this.checkBoxTurnOffMusic = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1160,6 +1163,7 @@ namespace SM64_Diagnostic
             this.splitContainerMisc.Panel1.SuspendLayout();
             this.splitContainerMisc.Panel2.SuspendLayout();
             this.splitContainerMisc.SuspendLayout();
+            this.groupBoxRNGIndex.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -7311,7 +7315,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMisc.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMisc.Name = "NoTearFlowLayoutPanelMisc";
-            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(709, 457);
+            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(778, 457);
             this.NoTearFlowLayoutPanelMisc.TabIndex = 5;
             // 
             // tabPageDebug
@@ -8327,8 +8331,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -11398,6 +11402,9 @@ namespace SM64_Diagnostic
             // 
             // splitContainerMisc.Panel1
             // 
+            this.splitContainerMisc.Panel1.AutoScroll = true;
+            this.splitContainerMisc.Panel1.Controls.Add(this.checkBoxTurnOffMusic);
+            this.splitContainerMisc.Panel1.Controls.Add(this.groupBoxRNGIndex);
             this.splitContainerMisc.Panel1.Controls.Add(this.panelMiscBorder);
             this.splitContainerMisc.Panel1MinSize = 0;
             // 
@@ -11406,9 +11413,38 @@ namespace SM64_Diagnostic
             this.splitContainerMisc.Panel2.Controls.Add(this.NoTearFlowLayoutPanelMisc);
             this.splitContainerMisc.Panel2MinSize = 0;
             this.splitContainerMisc.Size = new System.Drawing.Size(913, 463);
-            this.splitContainerMisc.SplitterDistance = 197;
+            this.splitContainerMisc.SplitterDistance = 128;
             this.splitContainerMisc.SplitterWidth = 1;
             this.splitContainerMisc.TabIndex = 18;
+            // 
+            // groupBoxRNGIndex
+            // 
+            this.groupBoxRNGIndex.Controls.Add(this.betterTextboxRNGIndex);
+            this.groupBoxRNGIndex.Location = new System.Drawing.Point(5, 62);
+            this.groupBoxRNGIndex.Name = "groupBoxRNGIndex";
+            this.groupBoxRNGIndex.Size = new System.Drawing.Size(78, 46);
+            this.groupBoxRNGIndex.TabIndex = 31;
+            this.groupBoxRNGIndex.TabStop = false;
+            this.groupBoxRNGIndex.Text = "RNG Index";
+            // 
+            // betterTextboxRNGIndex
+            // 
+            this.betterTextboxRNGIndex.Location = new System.Drawing.Point(6, 19);
+            this.betterTextboxRNGIndex.Name = "betterTextboxRNGIndex";
+            this.betterTextboxRNGIndex.Size = new System.Drawing.Size(66, 20);
+            this.betterTextboxRNGIndex.TabIndex = 33;
+            this.betterTextboxRNGIndex.Text = "0";
+            this.betterTextboxRNGIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // checkBoxTurnOffMusic
+            // 
+            this.checkBoxTurnOffMusic.AutoSize = true;
+            this.checkBoxTurnOffMusic.Location = new System.Drawing.Point(5, 114);
+            this.checkBoxTurnOffMusic.Name = "checkBoxTurnOffMusic";
+            this.checkBoxTurnOffMusic.Size = new System.Drawing.Size(96, 17);
+            this.checkBoxTurnOffMusic.TabIndex = 32;
+            this.checkBoxTurnOffMusic.Text = "Turn Off Music";
+            this.checkBoxTurnOffMusic.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -11783,9 +11819,12 @@ namespace SM64_Diagnostic
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
             this.splitContainerMisc.Panel1.ResumeLayout(false);
+            this.splitContainerMisc.Panel1.PerformLayout();
             this.splitContainerMisc.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMisc)).EndInit();
             this.splitContainerMisc.ResumeLayout(false);
+            this.groupBoxRNGIndex.ResumeLayout(false);
+            this.groupBoxRNGIndex.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -12624,6 +12663,9 @@ namespace SM64_Diagnostic
         private Label labelObjAtObj1;
         private CheckBox checkBoxFullHP;
         private SplitContainer splitContainerMisc;
+        private CheckBox checkBoxTurnOffMusic;
+        private GroupBox groupBoxRNGIndex;
+        private BetterTextbox betterTextboxRNGIndex;
     }
 }
 
