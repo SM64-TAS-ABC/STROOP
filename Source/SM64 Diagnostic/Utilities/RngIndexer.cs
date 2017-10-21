@@ -16,10 +16,10 @@ namespace SM64_Diagnostic.Utilities
 
         static RngIndexer()
         {
-            GenerateRngTable();
+            GenerateRngDictionaries();
         }
 
-        private static void GenerateRngTable()
+        private static void GenerateRngDictionaries()
         {
             IndexToRNGDictionary = new Dictionary<int, ushort>();
             RNGToIndexDictionary = new Dictionary<ushort, int>();
