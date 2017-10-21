@@ -61,21 +61,29 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        public override void Update(bool updateView)
-        {
-            if (!updateView)
-                return;
-
-            base.Update();
-            ProcessSpecialVars();
-        }
-
         private int GetRngCallsPerFrame()
         {
             var currentRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0E);
             var preRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0C);
 
             return RngIndexer.GetRngIndexDiff(preRng, currentRng);
+        }
+
+        public override void Update(bool updateView)
+        {
+            if (_checkBoxTurnOffMusic.Checked)
+            {
+                byte oldMusicByte = Config.Stream.GetByte(0x80222618);
+                byte newMusicByte = MoreMath.ApplyValueToMaskedByte(oldMusicByte, 0x20, true);
+                Config.Stream.SetValue(newMusicByte, 0x80222618);
+                Config.Stream.SetValue((float)0, 0x80222630);
+            }
+
+            if (!updateView)
+                return;
+
+            base.Update();
+            ProcessSpecialVars();
         }
 
     }
