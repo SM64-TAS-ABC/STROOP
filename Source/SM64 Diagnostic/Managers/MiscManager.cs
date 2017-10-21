@@ -85,7 +85,7 @@ namespace SM64_Diagnostic.Managers
                 byte oldMusicByte = Config.Stream.GetByte(Config.MusicOnAddress);
                 byte newMusicByte = MoreMath.ApplyValueToMaskedByte(oldMusicByte, Config.MusicOnMask, true);
                 Config.Stream.SetValue(newMusicByte, Config.MusicOnAddress);
-                Config.Stream.SetValue((float)0, Config.MusicVolumeAddress);
+                Config.Stream.SetValue(0f, Config.MusicVolumeAddress);
             }
 
             if (!updateView)
