@@ -40,8 +40,8 @@ namespace SM64_Diagnostic.Utilities
                 rngValue = GetNextRNG(rngValue, false);
             }
 
-            RNGToIndexStringDictionary.Add(22026, "~" + 0);
             RNGToIndexStringDictionary.Add(58704, "~" + -1);
+            RNGToIndexStringDictionary.Add(22026, "~" + 0);
         }
 
         private static ushort GetNextRNG(ushort rng, bool earlyReset = true)
