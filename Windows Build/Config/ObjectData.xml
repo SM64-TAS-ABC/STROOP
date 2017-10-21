@@ -53,6 +53,7 @@
   <Data groupList="Expanded" type="float" address="0x128" offset="Object">Min Wall Dist</Data>
   <Data groupList="Expanded" type="float" address="0x0194" offset="Object">Tangible Dist</Data>
   <Data groupList="Expanded" type="float" address="0x019C" offset="Object">Drawing Dist</Data>
+  <Data groupList="Expanded" type="float" address="0xE8" offset="Object">Floor Height</Data>
   <Data groupList="Expanded" type="float" address="0xE4" offset="Object">Gravity</Data>
   <Data groupList="Expanded" offset="Special" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data groupList="Expanded" type="uint" address="0x68" offset="Object" useHex="true" isObject="true">Parent Object</Data>
