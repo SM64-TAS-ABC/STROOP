@@ -8,47 +8,43 @@ namespace SM64_Diagnostic.Utilities
 {
     public static class RngIndexer
     {
-        static int[] _rngTableIndex;
+        public static readonly int RNG_COUNT = 65114;
 
-        public static int GetRngIndex(ushort rngValue)
-        {
-            return _rngTableIndex[rngValue];
-        }
-
-        public static int GetRngIndexDiff(ushort rngValue1, ushort rngValue2)
-        {
-            int preRng = _rngTableIndex[rngValue1];
-            int currentRng = _rngTableIndex[rngValue2];
-            return (currentRng >= preRng) ? currentRng - preRng : currentRng - preRng + 65114;
-        }
+        private static Dictionary<int, ushort> IndexToRNGDictionary;
+        private static Dictionary<ushort, int> RNGToIndexDictionary;
+        private static Dictionary<ushort, string> RNGToIndexStringDictionary;
 
         static RngIndexer()
         {
             GenerateRngTable();
         }
 
-        public static void GenerateRngTable()
+        private static void GenerateRngTable()
         {
-            _rngTableIndex = Enumerable.Repeat<int>(-1, ushort.MaxValue + 1).ToArray();
-            ushort _currentRng = 0;
-            for (ushort i = 0; i < 65114; i++)
+            IndexToRNGDictionary = new Dictionary<int, ushort>();
+            RNGToIndexDictionary = new Dictionary<ushort, int>();
+            RNGToIndexStringDictionary = new Dictionary<ushort, string>();
+
+            ushort rngValue = 0;
+            for (int index = 0; index < RNG_COUNT; index++)
             {
-                _rngTableIndex[_currentRng] = i;
-                _currentRng = NextRNG(_currentRng);
+                IndexToRNGDictionary.Add(index, rngValue);
+                RNGToIndexDictionary.Add(rngValue, index);
+                RNGToIndexStringDictionary.Add(rngValue, index.ToString());
+                rngValue = GetNextRNG(rngValue, false);
             }
 
-            int naIndex = -1;
-            for (int i = 0; i < _rngTableIndex.Length; i++)
+            for (int index = RNG_COUNT; rngValue != 0; index++)
             {
-                if (_rngTableIndex[i] == -1)
-                {
-                    _rngTableIndex[i] = naIndex;
-                    naIndex--;
-                }
+                RNGToIndexStringDictionary.Add(rngValue, "~" + index.ToString());
+                rngValue = GetNextRNG(rngValue, false);
             }
+
+            RNGToIndexStringDictionary.Add(22026, "~" + 0);
+            RNGToIndexStringDictionary.Add(58704, "~" + -1);
         }
 
-        public static ushort NextRNG(ushort rng)
+        private static ushort GetNextRNG(ushort rng, bool earlyReset = true)
         {
             if (rng == 0x560A)
                 rng = 0;
@@ -60,7 +56,7 @@ namespace SM64_Diagnostic.Utilities
             ushort s1 = (ushort)(0xFF80 ^ (s0 >> 1));
             if ((s0 & 1) == 0)
             {
-                if (s1 == 0xAA55)
+                if ((s1 == 0xAA55) && earlyReset)
                     rng = 0;
                 else
                     rng = (ushort)(s1 ^ 0x1FF4);
@@ -69,6 +65,29 @@ namespace SM64_Diagnostic.Utilities
                 rng = (ushort)(s1 ^ 0x8180);
 
             return rng;
+        }
+
+        public static int GetRngIndex(ushort rngValue)
+        {
+            return RNGToIndexDictionary[rngValue];
+        }
+
+        public static string GetRngIndexString(ushort rngValue)
+        {
+            return RNGToIndexStringDictionary[rngValue];
+        }
+
+        public static ushort GetRngValue(int index)
+        {
+            index = MoreMath.NonNegativeModulus(index, RNG_COUNT);
+            return IndexToRNGDictionary[index];
+        }
+
+        public static int GetRngIndexDiff(ushort rngValue1, ushort rngValue2)
+        {
+            int index1 = GetRngIndex(rngValue1);
+            int index2 = GetRngIndex(rngValue2);
+            return MoreMath.NonNegativeModulus(index2 - index1, RNG_COUNT);
         }
     }
 }

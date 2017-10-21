@@ -46,8 +46,8 @@ namespace SM64_Diagnostic.Managers
                 switch(specialVar.SpecialName)
                 {
                     case "RngIndex":
-                        int rngIndex = RngIndexer.GetRngIndex(Config.Stream.GetUInt16(Config.RngAddress));
-                        (specialVar as DataContainer).Text = (rngIndex < 0) ? "N/A [" + (-rngIndex).ToString() + "]" : rngIndex.ToString();
+                        ushort rngValue = Config.Stream.GetUInt16(Config.RngAddress);
+                        (specialVar as DataContainer).Text = RngIndexer.GetRngIndexString(rngValue);
                         break;
 
                     case "RngCallsPerFrame":
