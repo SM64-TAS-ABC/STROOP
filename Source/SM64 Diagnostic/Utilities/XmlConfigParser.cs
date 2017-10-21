@@ -1338,6 +1338,24 @@ namespace SM64_Diagnostic.Utilities
                     case "GlobalTimerAddressJP":
                         Config.GlobalTimerAddressJP = ParsingUtilities.ParseHex(element.Value);
                         break;
+
+                    case "MusicOnAddressUS":
+                        Config.MusicOnAddressUS = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "MusicOnAddressJP":
+                        Config.MusicOnAddressJP = ParsingUtilities.ParseHex(element.Value);
+                        break;
+
+                    case "MusicOnMask":
+                        Config.MusicOnMask = (byte)ParsingUtilities.ParseHex(element.Value);
+                        break;
+
+                    case "MusicVolumeAddressUS":
+                        Config.MusicVolumeAddressUS = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "MusicVolumeAddressJP":
+                        Config.MusicVolumeAddressJP = ParsingUtilities.ParseHex(element.Value);
+                        break;
                 }
             }
         }

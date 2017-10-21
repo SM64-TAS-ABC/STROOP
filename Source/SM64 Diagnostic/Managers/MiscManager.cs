@@ -82,10 +82,10 @@ namespace SM64_Diagnostic.Managers
         {
             if (_checkBoxTurnOffMusic.Checked)
             {
-                byte oldMusicByte = Config.Stream.GetByte(0x80222618);
-                byte newMusicByte = MoreMath.ApplyValueToMaskedByte(oldMusicByte, 0x20, true);
-                Config.Stream.SetValue(newMusicByte, 0x80222618);
-                Config.Stream.SetValue((float)0, 0x80222630);
+                byte oldMusicByte = Config.Stream.GetByte(Config.MusicOnAddress);
+                byte newMusicByte = MoreMath.ApplyValueToMaskedByte(oldMusicByte, Config.MusicOnMask, true);
+                Config.Stream.SetValue(newMusicByte, Config.MusicOnAddress);
+                Config.Stream.SetValue((float)0, Config.MusicVolumeAddress);
             }
 
             if (!updateView)

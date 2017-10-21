@@ -133,6 +133,16 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint RngAddressUS;
         public static uint RngAddressJP;
 
+        public static uint MusicOnAddress { get { return Config.SwitchRomVersion(MusicOnAddressUS, MusicOnAddressJP); } }
+        public static uint MusicOnAddressUS;
+        public static uint MusicOnAddressJP;
+
+        public static byte MusicOnMask;
+
+        public static uint MusicVolumeAddress { get { return Config.SwitchRomVersion(MusicVolumeAddressUS, MusicVolumeAddressJP); } }
+        public static uint MusicVolumeAddressUS;
+        public static uint MusicVolumeAddressJP;
+
         public static bool SlotIndexsFromOne = true;
         public static bool MoveCameraWithPu = true;
         public static bool ScaleDiagonalPositionControllerButtons = false;

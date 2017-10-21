@@ -416,6 +416,14 @@
   <RngAddressUS>0x8038EEE0</RngAddressUS>
   <RngAddressJP>0x8038EEE0</RngAddressJP>
 
+  <MusicOnAddressUS>0x80222618</MusicOnAddressUS>
+  <MusicOnAddressJP>0x80222A18</MusicOnAddressJP>
+
+  <MusicOnMask>0x20</MusicOnMask>
+
+  <MusicVolumeAddressUS>0x80222630</MusicVolumeAddressUS>
+  <MusicVolumeAddressJP>0x80222A30</MusicVolumeAddressJP>
+
   <CurrentFileAddressUS>0x8032DDF4</CurrentFileAddressUS>
   <CurrentFileAddressJP>0x8032CE94</CurrentFileAddressJP>
 
