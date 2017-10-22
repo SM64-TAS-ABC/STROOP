@@ -1339,6 +1339,13 @@ namespace SM64_Diagnostic.Utilities
                         Config.GlobalTimerAddressJP = ParsingUtilities.ParseHex(element.Value);
                         break;
 
+                    case "AnimationTimerAddressUS":
+                        Config.AnimationTimerAddressUS = ParsingUtilities.ParseHex(element.Value);
+                        break;
+                    case "AnimationTimerAddressJP":
+                        Config.AnimationTimerAddressJP = ParsingUtilities.ParseHex(element.Value);
+                        break;
+
                     case "MusicOnAddressUS":
                         Config.MusicOnAddressUS = ParsingUtilities.ParseHex(element.Value);
                         break;

@@ -416,6 +416,9 @@
   <RngAddressUS>0x8038EEE0</RngAddressUS>
   <RngAddressJP>0x8038EEE0</RngAddressJP>
 
+  <AnimationTimerAddressUS>0x8032DF08</AnimationTimerAddressUS>
+  <AnimationTimerAddressJP>0x8032CFA8</AnimationTimerAddressJP>
+
   <MusicOnAddressUS>0x80222618</MusicOnAddressUS>
   <MusicOnAddressJP>0x80222A18</MusicOnAddressJP>
 

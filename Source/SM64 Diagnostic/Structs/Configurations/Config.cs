@@ -133,6 +133,10 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint RngAddressUS;
         public static uint RngAddressJP;
 
+        public static uint AnimationTimerAddress { get { return Config.SwitchRomVersion(AnimationTimerAddressUS, AnimationTimerAddressJP); } }
+        public static uint AnimationTimerAddressUS;
+        public static uint AnimationTimerAddressJP;
+
         public static uint MusicOnAddress { get { return Config.SwitchRomVersion(MusicOnAddressUS, MusicOnAddressJP); } }
         public static uint MusicOnAddressUS;
         public static uint MusicOnAddressJP;
