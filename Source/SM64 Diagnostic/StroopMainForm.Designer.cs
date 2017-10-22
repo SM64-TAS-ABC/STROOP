@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -745,7 +745,7 @@ namespace SM64_Diagnostic
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.tabPageTesting = new System.Windows.Forms.TabPage();
             this.groupBoxStateTransfer = new System.Windows.Forms.GroupBox();
-            this.checkBoxStateTransferOffsetGlobalTimer = new System.Windows.Forms.CheckBox();
+            this.checkBoxStateTransferOffsetTimers = new System.Windows.Forms.CheckBox();
             this.betterTextboxStateTransferVar13Saved = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar12Saved = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar13Current = new SM64_Diagnostic.BetterTextbox();
@@ -8389,8 +8389,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -10072,7 +10072,7 @@ namespace SM64_Diagnostic
             // 
             // groupBoxStateTransfer
             // 
-            this.groupBoxStateTransfer.Controls.Add(this.checkBoxStateTransferOffsetGlobalTimer);
+            this.groupBoxStateTransfer.Controls.Add(this.checkBoxStateTransferOffsetTimers);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar14Saved);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar13Saved);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar12Saved);
@@ -10126,17 +10126,17 @@ namespace SM64_Diagnostic
             this.groupBoxStateTransfer.TabStop = false;
             this.groupBoxStateTransfer.Text = "State Transfer";
             // 
-            // checkBoxStateTransferOffsetGlobalTimer
+            // checkBoxStateTransferOffsetTimers
             // 
-            this.checkBoxStateTransferOffsetGlobalTimer.AutoSize = true;
-            this.checkBoxStateTransferOffsetGlobalTimer.Checked = true;
-            this.checkBoxStateTransferOffsetGlobalTimer.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxStateTransferOffsetGlobalTimer.Location = new System.Drawing.Point(117, 406);
-            this.checkBoxStateTransferOffsetGlobalTimer.Name = "checkBoxStateTransferOffsetGlobalTimer";
-            this.checkBoxStateTransferOffsetGlobalTimer.Size = new System.Drawing.Size(116, 17);
-            this.checkBoxStateTransferOffsetGlobalTimer.TabIndex = 29;
-            this.checkBoxStateTransferOffsetGlobalTimer.Text = "Offset Global Timer";
-            this.checkBoxStateTransferOffsetGlobalTimer.UseVisualStyleBackColor = true;
+            this.checkBoxStateTransferOffsetTimers.AutoSize = true;
+            this.checkBoxStateTransferOffsetTimers.Checked = true;
+            this.checkBoxStateTransferOffsetTimers.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxStateTransferOffsetTimers.Location = new System.Drawing.Point(117, 406);
+            this.checkBoxStateTransferOffsetTimers.Name = "checkBoxStateTransferOffsetTimers";
+            this.checkBoxStateTransferOffsetTimers.Size = new System.Drawing.Size(88, 17);
+            this.checkBoxStateTransferOffsetTimers.TabIndex = 29;
+            this.checkBoxStateTransferOffsetTimers.Text = "Offset Timers";
+            this.checkBoxStateTransferOffsetTimers.UseVisualStyleBackColor = true;
             // 
             // betterTextboxStateTransferVar13Saved
             // 
@@ -12647,7 +12647,7 @@ namespace SM64_Diagnostic
         private BetterTextbox betterTextboxStateTransferVar12Saved;
         private BetterTextbox betterTextboxStateTransferVar12Current;
         private Label labelStateTransferVar12Name;
-        private CheckBox checkBoxStateTransferOffsetGlobalTimer;
+        private CheckBox checkBoxStateTransferOffsetTimers;
         private BetterTextbox betterTextboxStateTransferVar13Saved;
         private BetterTextbox betterTextboxStateTransferVar13Current;
         private Label labelStateTransferVar13Name;

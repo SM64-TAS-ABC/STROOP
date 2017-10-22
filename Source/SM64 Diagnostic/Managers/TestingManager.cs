@@ -76,7 +76,7 @@ namespace SM64_Diagnostic.Managers
         GroupBox _groupBoxStateTransfer;
         Button _buttonStateTransferSave;
         Button _buttonStateTransferApply;
-        CheckBox _checkBoxStateTransferOffsetGlobalTimer;
+        CheckBox _checkBoxStateTransferOffsetTimers;
 
         BetterTextbox _betterTextboxStateTransferVar1Current;
         BetterTextbox _betterTextboxStateTransferVar2Current;
@@ -91,6 +91,7 @@ namespace SM64_Diagnostic.Managers
         BetterTextbox _betterTextboxStateTransferVar11Current;
         BetterTextbox _betterTextboxStateTransferVar12Current;
         BetterTextbox _betterTextboxStateTransferVar13Current;
+        BetterTextbox _betterTextboxStateTransferVar14Current;
 
         BetterTextbox _betterTextboxStateTransferVar1Saved;
         BetterTextbox _betterTextboxStateTransferVar2Saved;
@@ -105,6 +106,7 @@ namespace SM64_Diagnostic.Managers
         BetterTextbox _betterTextboxStateTransferVar11Saved;
         BetterTextbox _betterTextboxStateTransferVar12Saved;
         BetterTextbox _betterTextboxStateTransferVar13Saved;
+        BetterTextbox _betterTextboxStateTransferVar14Saved;
         byte[] _stateTransferFileData;
 
         // Obj at HOLP
@@ -226,7 +228,7 @@ namespace SM64_Diagnostic.Managers
             _buttonStateTransferSave.Click += (sender, e) => StateTransferSave();
             _buttonStateTransferApply = _groupBoxStateTransfer.Controls["buttonStateTransferApply"] as Button;
             _buttonStateTransferApply.Click += (sender, e) => StateTransferApply();
-            _checkBoxStateTransferOffsetGlobalTimer = _groupBoxStateTransfer.Controls["checkBoxStateTransferOffsetGlobalTimer"] as CheckBox;
+            _checkBoxStateTransferOffsetTimers = _groupBoxStateTransfer.Controls["checkBoxStateTransferOffsetTimers"] as CheckBox;
 
             _betterTextboxStateTransferVar1Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar1Current"] as BetterTextbox;
             _betterTextboxStateTransferVar2Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar2Current"] as BetterTextbox;
@@ -241,6 +243,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar11Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar11Current"] as BetterTextbox;
             _betterTextboxStateTransferVar12Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar12Current"] as BetterTextbox;
             _betterTextboxStateTransferVar13Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar13Current"] as BetterTextbox;
+            _betterTextboxStateTransferVar14Current = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar14Current"] as BetterTextbox;
 
             _betterTextboxStateTransferVar1Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar1Saved"] as BetterTextbox;
             _betterTextboxStateTransferVar2Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar2Saved"] as BetterTextbox;
@@ -255,6 +258,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar11Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar11Saved"] as BetterTextbox;
             _betterTextboxStateTransferVar12Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar12Saved"] as BetterTextbox;
             _betterTextboxStateTransferVar13Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar13Saved"] as BetterTextbox;
+            _betterTextboxStateTransferVar14Saved = _groupBoxStateTransfer.Controls["betterTextboxStateTransferVar14Saved"] as BetterTextbox;
 
             // Obj at HOLP
             _groupBoxObjAtHOLP = tabControl.Controls["groupBoxObjAtHOLP"] as GroupBox;
@@ -579,6 +583,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(Config.Mario.StructAddress + Config.Hud.LifeCountOffset).ToString();
             _betterTextboxStateTransferVar12Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Hud.StarCountOffset).ToString();
             _betterTextboxStateTransferVar13Current.Text = Config.Stream.GetByte(Config.SpecialTripleJumpAddress).ToString();
+            _betterTextboxStateTransferVar14Current.Text = Config.Stream.GetInt16(Config.AnimationTimerAddress).ToString();
         }
 
         private void StateTransferSave()
@@ -596,14 +601,15 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar11Saved.Text = _betterTextboxStateTransferVar11Current.Text;
             _betterTextboxStateTransferVar12Saved.Text = _betterTextboxStateTransferVar12Current.Text;
             _betterTextboxStateTransferVar13Saved.Text = _betterTextboxStateTransferVar13Current.Text;
+            _betterTextboxStateTransferVar14Saved.Text = _betterTextboxStateTransferVar14Current.Text;
             _stateTransferFileData = FileManager.Instance.GetBufferedBytes();
         }
 
         private void StateTransferApply()
         {
-            int globalTimerOffset = _checkBoxStateTransferOffsetGlobalTimer.Checked ? -1 : 0;
+            int timersOffset = _checkBoxStateTransferOffsetTimers.Checked ? -1 : 0;
             int? value1 = ParsingUtilities.ParseIntNullable(_betterTextboxStateTransferVar1Saved.Text);
-            if (value1.HasValue) Config.Stream.SetValue(value1.Value + globalTimerOffset, Config.GlobalTimerAddress);
+            if (value1.HasValue) Config.Stream.SetValue(value1.Value + timersOffset, Config.GlobalTimerAddress);
 
             ushort? value2 = ParsingUtilities.ParseUShortNullable(_betterTextboxStateTransferVar2Saved.Text);
             if (value2.HasValue) Config.Stream.SetValue(value2.Value, Config.RngAddress);
@@ -656,6 +662,9 @@ namespace SM64_Diagnostic.Managers
 
             byte? value13 = ParsingUtilities.ParseByteNullable(_betterTextboxStateTransferVar13Saved.Text);
             if (value13.HasValue) Config.Stream.SetValue(value13.Value, Config.SpecialTripleJumpAddress);
+
+            short? value14 = ParsingUtilities.ParseShortNullable(_betterTextboxStateTransferVar14Saved.Text);
+            if (value14.HasValue) Config.Stream.SetValue((short)(value14.Value + timersOffset), Config.AnimationTimerAddress);
         }
 
         private static List<(int, double)> _plushRacingPenguinProgress = new List<(int, double)> {
