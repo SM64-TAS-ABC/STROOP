@@ -9,7 +9,7 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
-using SM64Diagnostic.Controls;
+using static SM64_Diagnostic.Utilities.ControlUtilities;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -21,7 +21,7 @@ namespace SM64_Diagnostic.Managers
             var splitContainer = tabControl.Controls["splitContainerCamera"] as SplitContainer;
             
             var cameraPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraPos"] as GroupBox;
-            ThreeDimensionController.initialize(
+            ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
                 cameraPosGroupBox,
                 cameraPosGroupBox.Controls["buttonCameraPosXn"] as Button,
@@ -47,7 +47,7 @@ namespace SM64_Diagnostic.Managers
                 });
 
             var cameraSphericalPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraSphericalPos"] as GroupBox;
-            ThreeDimensionController.initialize(
+            ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Spherical,
                 cameraSphericalPosGroupBox,
                 cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTn"] as Button,

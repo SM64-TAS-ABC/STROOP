@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
-using SM64Diagnostic.Controls;
 using static SM64_Diagnostic.Controls.AngleDataContainer;
 using static SM64_Diagnostic.Structs.WatchVariable;
+using static SM64_Diagnostic.Utilities.ControlUtilities;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -329,7 +329,7 @@ namespace SM64_Diagnostic.Managers
                     address => Config.Stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset) == 0x0000));
 
             var objPosGroupBox = objPanel.Controls["groupBoxObjPos"] as GroupBox;
-            ThreeDimensionController.initialize(
+            ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
                 objPosGroupBox,
                 objPosGroupBox.Controls["buttonObjPosXn"] as Button,
@@ -356,7 +356,7 @@ namespace SM64_Diagnostic.Managers
                 });
 
             var objAngleGroupBox = objPanel.Controls["groupBoxObjAngle"] as GroupBox;
-            ScalarController.initialize(
+            ControlUtilities.InitializeScalarController(
                 objAngleGroupBox.Controls["buttonObjAngleYawN"] as Button,
                 objAngleGroupBox.Controls["buttonObjAngleYawP"] as Button,
                 objAngleGroupBox.Controls["textBoxObjAngleYaw"] as TextBox,
@@ -364,7 +364,7 @@ namespace SM64_Diagnostic.Managers
                 {
                     ButtonUtilities.RotateObjects(_currentAddresses, (int)Math.Round(yawValue), 0, 0);
                 });
-            ScalarController.initialize(
+            ControlUtilities.InitializeScalarController(
                 objAngleGroupBox.Controls["buttonObjAnglePitchN"] as Button,
                 objAngleGroupBox.Controls["buttonObjAnglePitchP"] as Button,
                 objAngleGroupBox.Controls["textBoxObjAnglePitch"] as TextBox,
@@ -372,7 +372,7 @@ namespace SM64_Diagnostic.Managers
                 {
                     ButtonUtilities.RotateObjects(_currentAddresses, 0, (int)Math.Round(pitchValue), 0);
                 });
-            ScalarController.initialize(
+            ControlUtilities.InitializeScalarController(
                 objAngleGroupBox.Controls["buttonObjAngleRollN"] as Button,
                 objAngleGroupBox.Controls["buttonObjAngleRollP"] as Button,
                 objAngleGroupBox.Controls["textBoxObjAngleRoll"] as TextBox,
@@ -382,7 +382,7 @@ namespace SM64_Diagnostic.Managers
                 });
 
             var objScaleGroupBox = objPanel.Controls["groupBoxObjScale"] as GroupBox;
-            ScaleController.initialize(
+            ControlUtilities.InitializeScaleController(
                 objScaleGroupBox.Controls["buttonObjScaleWidthN"] as Button,
                 objScaleGroupBox.Controls["buttonObjScaleWidthP"] as Button,
                 objScaleGroupBox.Controls["buttonObjScaleHeightN"] as Button,
@@ -403,7 +403,7 @@ namespace SM64_Diagnostic.Managers
                 });
 
             var objHomeGroupBox = objPanel.Controls["groupBoxObjHome"] as GroupBox;
-            ThreeDimensionController.initialize(
+            ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
                 objHomeGroupBox,
                 objHomeGroupBox.Controls["buttonObjHomeXn"] as Button,

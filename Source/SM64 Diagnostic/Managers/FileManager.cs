@@ -8,7 +8,6 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Structs.Configurations;
-using SM64Diagnostic.Controls;
 using System.Drawing;
 
 namespace SM64_Diagnostic.Managers

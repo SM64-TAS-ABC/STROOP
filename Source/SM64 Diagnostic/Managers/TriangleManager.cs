@@ -9,8 +9,8 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
-using SM64Diagnostic.Controls;
 using static SM64_Diagnostic.Controls.AngleDataContainer;
+using static SM64_Diagnostic.Utilities.ControlUtilities;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -156,7 +156,7 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => ButtonUtilities.AnnihilateTriangle(_triangleAddress);
             
             var trianglePosGroupBox = splitContainerTriangles.Panel1.Controls["groupBoxTrianglePos"] as GroupBox;
-            ThreeDimensionController.initialize(
+            ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
                 trianglePosGroupBox,
                 trianglePosGroupBox.Controls["buttonTrianglePosXn"] as Button,
@@ -183,7 +183,7 @@ namespace SM64_Diagnostic.Managers
                 });
 
             var triangleNormalGroupBox = splitContainerTriangles.Panel1.Controls["groupBoxTriangleNormal"] as GroupBox;
-            ScalarController.initialize(
+            ControlUtilities.InitializeScalarController(
                 triangleNormalGroupBox.Controls["buttontriangleNormalN"] as Button,
                 triangleNormalGroupBox.Controls["buttontriangleNormalP"] as Button,
                 triangleNormalGroupBox.Controls["textBoxTriangleNormal"] as TextBox,

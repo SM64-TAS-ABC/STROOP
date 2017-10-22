@@ -9,8 +9,8 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
-using SM64Diagnostic.Controls;
 using static SM64_Diagnostic.Controls.AngleDataContainer;
+using static SM64_Diagnostic.Utilities.ControlUtilities;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -32,7 +32,7 @@ namespace SM64_Diagnostic.Managers
             toggleVisibility.Click += (sender, e) => ButtonUtilities.ToggleVisibility();
 
             var marioPosGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioPos"] as GroupBox;
-            ThreeDimensionController.initialize(
+            ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
                 marioPosGroupBox,
                 marioPosGroupBox.Controls["buttonMarioPosXn"] as Button,
@@ -58,7 +58,7 @@ namespace SM64_Diagnostic.Managers
                 });
 
             var marioStatsGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioStats"] as GroupBox;
-            ScalarController.initialize(
+            ControlUtilities.InitializeScalarController(
                 marioStatsGroupBox.Controls["buttonMarioStatsYawN"] as Button,
                 marioStatsGroupBox.Controls["buttonMarioStatsYawP"] as Button,
                 marioStatsGroupBox.Controls["textBoxMarioStatsYaw"] as TextBox,
@@ -66,7 +66,7 @@ namespace SM64_Diagnostic.Managers
                 {
                     ButtonUtilities.MarioChangeYaw((int)Math.Round(yawValue));
                 });
-            ScalarController.initialize(
+            ControlUtilities.InitializeScalarController(
                 marioStatsGroupBox.Controls["buttonMarioStatsHspdN"] as Button,
                 marioStatsGroupBox.Controls["buttonMarioStatsHspdP"] as Button,
                 marioStatsGroupBox.Controls["textBoxMarioStatsHspd"] as TextBox,
@@ -75,7 +75,7 @@ namespace SM64_Diagnostic.Managers
                     ButtonUtilities.MarioChangeHspd(hspdValue);
                 });
 
-            ScalarController.initialize(
+            ControlUtilities.InitializeScalarController(
                 marioStatsGroupBox.Controls["buttonMarioStatsVspdN"] as Button,
                 marioStatsGroupBox.Controls["buttonMarioStatsVspdP"] as Button,
                 marioStatsGroupBox.Controls["textBoxMarioStatsVspd"] as TextBox,
@@ -91,7 +91,7 @@ namespace SM64_Diagnostic.Managers
             buttonMarioHOLPRetrieve.Click += (sender, e) => ButtonUtilities.RetrieveHOLP();
 
             var marioHOLPGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioHOLP"] as GroupBox;
-            ThreeDimensionController.initialize(
+            ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
                 marioHOLPGroupBox,
                 marioHOLPGroupBox.Controls["buttonMarioHOLPXn"] as Button,
