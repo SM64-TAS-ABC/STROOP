@@ -144,7 +144,7 @@ namespace SM64_Diagnostic.Utilities
             return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
-        public static bool RetrieveObjects(List<uint> objAddresses)
+        public static bool RetrieveObjects(List<uint> objAddresses, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
             List<TripleAddressAngle> posAddressAngles =
                 objAddresses.ConvertAll<TripleAddressAngle>(
@@ -159,7 +159,7 @@ namespace SM64_Diagnostic.Utilities
 
             handleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
+            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         private static void handleGotoOffset(ref float xPos, ref float yPos, ref float zPos)
@@ -270,7 +270,7 @@ namespace SM64_Diagnostic.Utilities
             return MoveThings(posAddressAngles, widthChange, heightChange, depthChange, multiply ? Change.MULTIPLY : Change.ADD);
         }
 
-        public static bool GotoObjectsHome(List<uint> objAddresses)
+        public static bool GotoObjectsHome(List<uint> objAddresses, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
             if (objAddresses.Count == 0)
                 return false;
@@ -289,10 +289,10 @@ namespace SM64_Diagnostic.Utilities
 
             handleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
+            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
-        public static bool RetrieveObjectsHome(List<uint> objAddresses)
+        public static bool RetrieveObjectsHome(List<uint> objAddresses, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
             List<TripleAddressAngle> posAddressAngles =
                 objAddresses.ConvertAll<TripleAddressAngle>(
@@ -307,7 +307,7 @@ namespace SM64_Diagnostic.Utilities
 
             handleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
+            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         public static bool CloneObject(uint objAddress)

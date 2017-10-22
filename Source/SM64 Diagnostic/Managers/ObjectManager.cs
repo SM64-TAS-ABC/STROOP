@@ -290,12 +290,39 @@ namespace SM64_Diagnostic.Managers
 
             var retrieveButton = objPanel.Controls["buttonObjRetrieve"] as Button;
             retrieveButton.Click += (sender, e) => ButtonUtilities.RetrieveObjects(_currentAddresses);
+            ControlUtilities.AddContextMenuStripFunctions(
+                retrieveButton,
+                new List<string>() { "Retrieve X", "Retrieve Y", "Retrieve Z", "Retrieve Laterally" },
+                new List<Action>() {
+                    () => ButtonUtilities.RetrieveObjects(_currentAddresses, (true, false, false)),
+                    () => ButtonUtilities.RetrieveObjects(_currentAddresses, (false, true, false)),
+                    () => ButtonUtilities.RetrieveObjects(_currentAddresses, (false, false, true)),
+                    () => ButtonUtilities.RetrieveObjects(_currentAddresses, (true, false, true)),
+                });
 
             var goToHomeButton = objPanel.Controls["buttonObjGotoHome"] as Button;
             goToHomeButton.Click += (sender, e) => ButtonUtilities.GotoObjectsHome(_currentAddresses);
+            ControlUtilities.AddContextMenuStripFunctions(
+                goToHomeButton,
+                new List<string>() { "Goto Home X", "Goto Home Y", "Goto Home Z", "Goto Home Laterally" },
+                new List<Action>() {
+                    () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (true, false, false)),
+                    () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (false, true, false)),
+                    () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (false, false, true)),
+                    () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (true, false, true)),
+                });
 
             var retrieveHomeButton = objPanel.Controls["buttonObjRetrieveHome"] as Button;
             retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_currentAddresses);
+            ControlUtilities.AddContextMenuStripFunctions(
+                retrieveHomeButton,
+                new List<string>() { "Retrieve Home X", "Retrieve Home Y", "Retrieve Home Z", "Retrieve Home Laterally" },
+                new List<Action>() {
+                    () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (true, false, false)),
+                    () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (false, true, false)),
+                    () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (false, false, true)),
+                    () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (true, false, true)),
+                });
 
             _releaseButton = objPanel.Controls["buttonObjRelease"] as BinaryButton;
             _releaseButton.Initialize(
