@@ -594,7 +594,7 @@ namespace SM64_Diagnostic.Utilities
             return MoveThings(posAddressAngles, xValue, yValue, zValue, Change.SET);
         }
 
-        public static bool GotoHOLP()
+        public static bool GotoHOLP((bool affectX, bool affectY, bool affectZ)? affects = null)
         {
             List<TripleAddressAngle> posAddressAngles =
                 new List<TripleAddressAngle> {
@@ -608,10 +608,10 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPYOffset);
             float zDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPZOffset);
 
-            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
+            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
-        public static bool RetrieveHOLP()
+        public static bool RetrieveHOLP((bool affectX, bool affectY, bool affectZ)? affects = null)
         {
             List<TripleAddressAngle> posAddressAngles =
                 new List<TripleAddressAngle> {
@@ -625,7 +625,7 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             float zDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
+            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         public static bool TranslateHOLP(float xOffset, float yOffset, float zOffset, bool useRelative)

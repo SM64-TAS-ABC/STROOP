@@ -86,9 +86,29 @@ namespace SM64_Diagnostic.Managers
 
             Button buttonMarioHOLPGoto = splitContainerMario.Panel1.Controls["buttonMarioHOLPGoto"] as Button;
             buttonMarioHOLPGoto.Click += (sender, e) => ButtonUtilities.GotoHOLP();
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonMarioHOLPGoto,
+                new List<string>() { "Goto HOLP", "Goto HOLP Laterally", "Goto HOLP X", "Goto HOLP Y", "Goto HOLP Z" },
+                new List<Action>() {
+                    () => ButtonUtilities.GotoHOLP((true, true, true)),
+                    () => ButtonUtilities.GotoHOLP((true, false, true)),
+                    () => ButtonUtilities.GotoHOLP((true, false, false)),
+                    () => ButtonUtilities.GotoHOLP((false, true, false)),
+                    () => ButtonUtilities.GotoHOLP((false, false, true)),
+                });
 
             Button buttonMarioHOLPRetrieve = splitContainerMario.Panel1.Controls["buttonMarioHOLPRetrieve"] as Button;
             buttonMarioHOLPRetrieve.Click += (sender, e) => ButtonUtilities.RetrieveHOLP();
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonMarioHOLPRetrieve,
+                new List<string>() { "Retrieve HOLP", "Retrieve HOLP Laterally", "Retrieve HOLP X", "Retrieve HOLP Y", "Retrieve HOLP Z" },
+                new List<Action>() {
+                    () => ButtonUtilities.RetrieveHOLP((true, true, true)),
+                    () => ButtonUtilities.RetrieveHOLP((true, false, true)),
+                    () => ButtonUtilities.RetrieveHOLP((true, false, false)),
+                    () => ButtonUtilities.RetrieveHOLP((false, true, false)),
+                    () => ButtonUtilities.RetrieveHOLP((false, false, true)),
+                });
 
             var marioHOLPGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioHOLP"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
