@@ -167,6 +167,8 @@ namespace SM64_Diagnostic.Utilities
             contextMenuStrip.Items.Add(itemDownRight);
             groupbox.ContextMenuStrip = contextMenuStrip;
 
+            AddInversionContextMenuStrip(buttonLineUp, buttonLineDown);
+
             itemUp.Checked = true;
         }
 
