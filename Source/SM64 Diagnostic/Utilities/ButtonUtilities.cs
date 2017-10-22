@@ -310,7 +310,7 @@ namespace SM64_Diagnostic.Utilities
             return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
-        public static bool CloneObject(uint objAddress)
+        public static bool CloneObject(uint objAddress, bool updateAction = true)
         {
             var marioAddress = Config.Mario.StructAddress;
 
@@ -321,7 +321,7 @@ namespace SM64_Diagnostic.Utilities
             uint lastObject = Config.Stream.GetUInt32(marioAddress + Config.Mario.HeldObjectPointerOffset);
             
             // Set clone action flags
-            if (lastObject == 0x00000000U && !Config.DisableActionUpdateWhenCloning)
+            if (lastObject == 0x00000000U && updateAction)
             {
                 // Set Next action
                 uint currentAction = Config.Stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
@@ -336,7 +336,7 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool UnCloneObject()
+        public static bool UnCloneObject(bool updateAction = true)
         {
             var marioAddress = Config.Mario.StructAddress;
 
@@ -345,9 +345,12 @@ namespace SM64_Diagnostic.Utilities
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             // Set mario's next action
-            uint currentAction = Config.Stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
-            uint nextAction = Config.MarioActions.GetAfterUncloneValue(currentAction);
-            success &= Config.Stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
+            if (updateAction)
+            {
+                uint currentAction = Config.Stream.GetUInt32(marioAddress + Config.Mario.ActionOffset);
+                uint nextAction = Config.MarioActions.GetAfterUncloneValue(currentAction);
+                success &= Config.Stream.SetValue(nextAction, marioAddress + Config.Mario.ActionOffset);
+            }
 
             // Clear mario's held object
             success &= Config.Stream.SetValue(0x00000000U, marioAddress + Config.Mario.HeldObjectPointerOffset);
@@ -442,10 +445,12 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool ReleaseObject(List<uint> addresses)
+        public static bool ReleaseObject(List<uint> addresses, bool useThrownValue = true)
         {
             if (addresses.Count == 0)
                 return false;
+
+            uint releasedValue = useThrownValue ? Config.ObjectSlots.ReleaseStatusThrownValue : Config.ObjectSlots.ReleaseStatusDroppedValue;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
@@ -453,7 +458,7 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (var address in addresses)
             {
-                success &= Config.Stream.SetValue(Config.ObjectSlots.ReleaseStatusThrownValue, address + Config.ObjectSlots.ReleaseStatusOffset);
+                success &= Config.Stream.SetValue(releasedValue, address + Config.ObjectSlots.ReleaseStatusOffset);
                 success &= Config.Stream.SetValue(Config.ObjectSlots.StackIndexReleasedValue, address + Config.ObjectSlots.StackIndexOffset);
             }
 

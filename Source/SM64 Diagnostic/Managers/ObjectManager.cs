@@ -280,48 +280,52 @@ namespace SM64_Diagnostic.Managers
             goToButton.Click += (sender, e) => ButtonUtilities.GotoObjects(_currentAddresses);
             ControlUtilities.AddContextMenuStripFunctions(
                 goToButton,
-                new List<string>() { "Goto X", "Goto Y", "Goto Z", "Goto Laterally" },
+                new List<string>() { "Goto", "Goto Laterally", "Goto X", "Goto Y", "Goto Z" },
                 new List<Action>() {
+                    () => ButtonUtilities.GotoObjects(_currentAddresses, (true, true, true)),
+                    () => ButtonUtilities.GotoObjects(_currentAddresses, (true, false, true)),
                     () => ButtonUtilities.GotoObjects(_currentAddresses, (true, false, false)),
                     () => ButtonUtilities.GotoObjects(_currentAddresses, (false, true, false)),
                     () => ButtonUtilities.GotoObjects(_currentAddresses, (false, false, true)),
-                    () => ButtonUtilities.GotoObjects(_currentAddresses, (true, false, true)),
                 });
 
             var retrieveButton = objPanel.Controls["buttonObjRetrieve"] as Button;
             retrieveButton.Click += (sender, e) => ButtonUtilities.RetrieveObjects(_currentAddresses);
             ControlUtilities.AddContextMenuStripFunctions(
                 retrieveButton,
-                new List<string>() { "Retrieve X", "Retrieve Y", "Retrieve Z", "Retrieve Laterally" },
+                new List<string>() { "Retrieve", "Retrieve Laterally", "Retrieve X", "Retrieve Y", "Retrieve Z" },
                 new List<Action>() {
+                    () => ButtonUtilities.RetrieveObjects(_currentAddresses, (true, true, true)),
+                    () => ButtonUtilities.RetrieveObjects(_currentAddresses, (true, false, true)),
                     () => ButtonUtilities.RetrieveObjects(_currentAddresses, (true, false, false)),
                     () => ButtonUtilities.RetrieveObjects(_currentAddresses, (false, true, false)),
                     () => ButtonUtilities.RetrieveObjects(_currentAddresses, (false, false, true)),
-                    () => ButtonUtilities.RetrieveObjects(_currentAddresses, (true, false, true)),
                 });
 
             var goToHomeButton = objPanel.Controls["buttonObjGotoHome"] as Button;
             goToHomeButton.Click += (sender, e) => ButtonUtilities.GotoObjectsHome(_currentAddresses);
             ControlUtilities.AddContextMenuStripFunctions(
                 goToHomeButton,
-                new List<string>() { "Goto Home X", "Goto Home Y", "Goto Home Z", "Goto Home Laterally" },
+                new List<string>() { "Goto Home", "Goto Home Laterally", "Goto Home X", "Goto Home Y", "Goto Home Z" },
                 new List<Action>() {
+                    () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (true, true, true)),
+                    () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (true, false, true)),
                     () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (true, false, false)),
                     () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (false, true, false)),
                     () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (false, false, true)),
-                    () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (true, false, true)),
                 });
 
             var retrieveHomeButton = objPanel.Controls["buttonObjRetrieveHome"] as Button;
             retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_currentAddresses);
             ControlUtilities.AddContextMenuStripFunctions(
                 retrieveHomeButton,
-                new List<string>() { "Retrieve Home X", "Retrieve Home Y", "Retrieve Home Z", "Retrieve Home Laterally" },
+                new List<string>() { "Retrieve Home", "Retrieve Home Laterally", "Retrieve Home X", "Retrieve Home Y", "Retrieve Home Z" },
                 new List<Action>() {
+                    () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (true, true, true)),
+                    () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (true, false, true)),
                     () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (true, false, false)),
                     () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (false, true, false)),
                     () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (false, false, true)),
-                    () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (true, false, true)),
                 });
 
             _releaseButton = objPanel.Controls["buttonObjRelease"] as BinaryButton;
@@ -336,6 +340,14 @@ namespace SM64_Diagnostic.Managers
                         uint releasedValue = Config.Stream.GetUInt32(address + Config.ObjectSlots.ReleaseStatusOffset);
                         return releasedValue == Config.ObjectSlots.ReleaseStatusThrownValue || releasedValue == Config.ObjectSlots.ReleaseStatusDroppedValue;
                     }));
+            ControlUtilities.AddContextMenuStripFunctions(
+                _releaseButton,
+                new List<string>() { "Release by Throwing", "Release by Dropping", "UnRelease" },
+                new List<Action>() {
+                    () => ButtonUtilities.ReleaseObject(_currentAddresses, true),
+                    () => ButtonUtilities.ReleaseObject(_currentAddresses, false),
+                    () => ButtonUtilities.UnReleaseObject(_currentAddresses),
+                });
 
             _interactButton = objPanel.Controls["buttonObjInteract"] as BinaryButton;
             _interactButton.Initialize(
@@ -345,6 +357,13 @@ namespace SM64_Diagnostic.Managers
                 () => ButtonUtilities.UnInteractObject(_currentAddresses),
                 () => _currentAddresses.Count > 0 && _currentAddresses.All(
                     address => Config.Stream.GetUInt32(address + Config.ObjectSlots.InteractionStatusOffset) != 0));
+            ControlUtilities.AddContextMenuStripFunctions(
+                _interactButton,
+                new List<string>() { "Interact", "UnInteract" },
+                new List<Action>() {
+                    () => ButtonUtilities.InteractObject(_currentAddresses),
+                    () => ButtonUtilities.UnInteractObject(_currentAddresses),
+                });
 
             _cloneButton = objPanel.Controls["buttonObjClone"] as BinaryButton;
             _cloneButton.Initialize(
@@ -354,6 +373,20 @@ namespace SM64_Diagnostic.Managers
                 () => ButtonUtilities.UnCloneObject(),
                 () => _currentAddresses.Count == 1 && _currentAddresses.Contains(
                     Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.HeldObjectPointerOffset)));
+            ControlUtilities.AddContextMenuStripFunctions(
+                _cloneButton,
+                new List<string>() {
+                    "Clone with Action Update",
+                    "Clone without Action Update",
+                    "UnClone with Action Update",
+                    "UnClone without Action Update",
+                },
+                new List<Action>() {
+                    () => ButtonUtilities.CloneObject(_currentAddresses[0], true),
+                    () => ButtonUtilities.CloneObject(_currentAddresses[0], false),
+                    () => ButtonUtilities.UnCloneObject(true),
+                    () => ButtonUtilities.UnCloneObject(false),
+                });
 
             _unloadButton = objPanel.Controls["buttonObjUnload"] as BinaryButton;
             _unloadButton.Initialize(
@@ -363,6 +396,13 @@ namespace SM64_Diagnostic.Managers
                 () => ButtonUtilities.ReviveObject(_currentAddresses),
                 () => _currentAddresses.Count > 0 && _currentAddresses.All(
                     address => Config.Stream.GetUInt16(address + Config.ObjectSlots.ObjectActiveOffset) == 0x0000));
+            ControlUtilities.AddContextMenuStripFunctions(
+                _unloadButton,
+                new List<string>() { "Unload", "Revive" },
+                new List<Action>() {
+                    () => ButtonUtilities.UnloadObject(_currentAddresses),
+                    () => ButtonUtilities.ReviveObject(_currentAddresses),
+                });
 
             var objPosGroupBox = objPanel.Controls["groupBoxObjPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
