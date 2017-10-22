@@ -359,5 +359,23 @@ namespace SM64_Diagnostic.Utilities
 
             itemNormal.Checked = true;
         }
+
+        public static void AddContextMenuStripFunctions(
+            Control control,
+            List<string> functionNames,
+            List<Action> functions)
+        {
+            if (functionNames.Count != functions.Count) throw new ArgumentOutOfRangeException();
+
+            List<ToolStripMenuItem> items = functionNames.ConvertAll(name => new ToolStripMenuItem(name));
+            for (int i = 0; i < items.Count; i++)
+            {
+                items[i].Click += (sender, e) => functions[i]();
+            }
+
+            ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
+            items.ForEach(item => contextMenuStrip.Items.Add(item));
+            control.ContextMenuStrip = contextMenuStrip;
+        }
     }
 }
