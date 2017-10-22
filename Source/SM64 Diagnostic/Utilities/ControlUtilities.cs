@@ -370,7 +370,8 @@ namespace SM64_Diagnostic.Utilities
             List<ToolStripMenuItem> items = functionNames.ConvertAll(name => new ToolStripMenuItem(name));
             for (int i = 0; i < items.Count; i++)
             {
-                items[i].Click += (sender, e) => functions[i]();
+                Action action = functions[i];
+                items[i].Click += (sender, e) => action();
             }
 
             ContextMenuStrip contextMenuStrip = new ContextMenuStrip();

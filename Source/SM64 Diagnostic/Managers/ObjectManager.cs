@@ -278,6 +278,10 @@ namespace SM64_Diagnostic.Managers
 
             var goToButton = objPanel.Controls["buttonObjGoto"] as Button;
             goToButton.Click += (sender, e) => ButtonUtilities.GotoObjects(_currentAddresses);
+            ControlUtilities.AddContextMenuStripFunctions(
+                goToButton,
+                new List<string>() { "goto", "retrieve" },
+                new List<Action>() { () => ButtonUtilities.GotoObjects(_currentAddresses), () => ButtonUtilities.RetrieveObjects(_currentAddresses) });
 
             var retrieveButton = objPanel.Controls["buttonObjRetrieve"] as Button;
             retrieveButton.Click += (sender, e) => ButtonUtilities.RetrieveObjects(_currentAddresses);
