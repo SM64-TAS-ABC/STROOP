@@ -38,7 +38,8 @@ namespace SM64_Diagnostic.Utilities
         private enum Change { SET, ADD, MULTIPLY };
 
         private static bool MoveThings(List<TripleAddressAngle> posAddressAngles,
-            float xValue, float yValue, float zValue, Change change, bool useRelative = false)
+            float xValue, float yValue, float zValue, Change change, bool useRelative = false,
+            (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
             if (posAddressAngles.Count == 0)
                 return false;
@@ -69,9 +70,20 @@ namespace SM64_Diagnostic.Utilities
                     currentZValue *= Config.Stream.GetSingle(posAddressAngle.ZAddress);
                 }
 
-                success &= Config.Stream.SetValue(currentXValue, posAddressAngle.XAddress);
-                success &= Config.Stream.SetValue(currentYValue, posAddressAngle.YAddress);
-                success &= Config.Stream.SetValue(currentZValue, posAddressAngle.ZAddress);
+                if (!affects.HasValue || affects.Value.affectX)
+                {
+                    success &= Config.Stream.SetValue(currentXValue, posAddressAngle.XAddress);
+                }
+
+                if (!affects.HasValue || affects.Value.affectY)
+                {
+                    success &= Config.Stream.SetValue(currentYValue, posAddressAngle.YAddress);
+                }
+
+                if (!affects.HasValue || affects.Value.affectZ)
+                {
+                    success &= Config.Stream.SetValue(currentZValue, posAddressAngle.ZAddress);
+                }
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -110,7 +122,7 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static bool GotoObjects(List<uint> objAddresses)
+        public static bool GotoObjects(List<uint> objAddresses, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
             if (objAddresses.Count == 0)
                 return false;
@@ -129,7 +141,7 @@ namespace SM64_Diagnostic.Utilities
 
             handleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET);
+            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         public static bool RetrieveObjects(List<uint> objAddresses)

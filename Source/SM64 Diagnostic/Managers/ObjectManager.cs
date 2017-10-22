@@ -280,8 +280,13 @@ namespace SM64_Diagnostic.Managers
             goToButton.Click += (sender, e) => ButtonUtilities.GotoObjects(_currentAddresses);
             ControlUtilities.AddContextMenuStripFunctions(
                 goToButton,
-                new List<string>() { "goto", "retrieve" },
-                new List<Action>() { () => ButtonUtilities.GotoObjects(_currentAddresses), () => ButtonUtilities.RetrieveObjects(_currentAddresses) });
+                new List<string>() { "Goto X", "Goto Y", "Goto Z", "Goto Laterally" },
+                new List<Action>() {
+                    () => ButtonUtilities.GotoObjects(_currentAddresses, (true, false, false)),
+                    () => ButtonUtilities.GotoObjects(_currentAddresses, (false, true, false)),
+                    () => ButtonUtilities.GotoObjects(_currentAddresses, (false, false, true)),
+                    () => ButtonUtilities.GotoObjects(_currentAddresses, (true, false, true)),
+                });
 
             var retrieveButton = objPanel.Controls["buttonObjRetrieve"] as Button;
             retrieveButton.Click += (sender, e) => ButtonUtilities.RetrieveObjects(_currentAddresses);
