@@ -138,8 +138,6 @@ namespace SM64_Diagnostic.Managers
             checkBoxMoveCamWithPu.Click += (sender, e) => Config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
             CheckBox checkBoxScaleDiagonalPositionControllerButtons = tabControl.Controls["checkBoxScaleDiagonalPositionControllerButtons"] as CheckBox;
             checkBoxScaleDiagonalPositionControllerButtons.Click += (sender, e) => Config.ScaleDiagonalPositionControllerButtons = checkBoxScaleDiagonalPositionControllerButtons.Checked;
-            CheckBox checkBoxNeutralizeTriangleWith21 = tabControl.Controls["checkBoxNeutralizeTriangleWith21"] as CheckBox;
-            checkBoxNeutralizeTriangleWith21.Click += (sender, e) => Config.NeutralizeTriangleWith21 = checkBoxNeutralizeTriangleWith21.Checked;
             CheckBox checkBoxExcludeDustForClosestObject = tabControl.Controls["checkBoxExcludeDustForClosestObject"] as CheckBox;
             checkBoxExcludeDustForClosestObject.Click += (sender, e) => Config.ExcludeDustForClosestObject = checkBoxExcludeDustForClosestObject.Checked;
         }

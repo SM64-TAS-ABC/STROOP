@@ -835,12 +835,12 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool NeutralizeTriangle(uint triangleAddress)
+        public static bool NeutralizeTriangle(uint triangleAddress, bool use21 = true)
         {
             if (triangleAddress == 0x0000)
                 return false;
 
-            short neutralizedSurfaceType = (short)(Config.NeutralizeTriangleWith21 ? 21 : 0);
+            short neutralizedSurfaceType = (short)(use21 ? 21 : 0);
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;

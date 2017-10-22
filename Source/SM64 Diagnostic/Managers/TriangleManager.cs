@@ -150,8 +150,17 @@ namespace SM64_Diagnostic.Managers
 
             (splitContainerTriangles.Panel1.Controls["buttonRetrieveTriangle"] as Button).Click
                 += (sender, e) => ButtonUtilities.RetrieveTriangle(_triangleAddress);
-            (splitContainerTriangles.Panel1.Controls["buttonNeutralizeTriangle"] as Button).Click
-                += (sender, e) => ButtonUtilities.NeutralizeTriangle(_triangleAddress);
+
+            Button buttonNeutralizeTriangle = splitContainerTriangles.Panel1.Controls["buttonNeutralizeTriangle"] as Button;
+            buttonNeutralizeTriangle.Click += (sender, e) => ButtonUtilities.NeutralizeTriangle(_triangleAddress);
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonNeutralizeTriangle,
+                new List<string>() { "Neutralize with 0", "Neutralize with 21" },
+                new List<Action>() {
+                    () => ButtonUtilities.NeutralizeTriangle(_triangleAddress, false),
+                    () => ButtonUtilities.NeutralizeTriangle(_triangleAddress, true),
+                });
+
             (splitContainerTriangles.Panel1.Controls["buttonAnnihilateTriangle"] as Button).Click
                 += (sender, e) => ButtonUtilities.AnnihilateTriangle(_triangleAddress);
             
