@@ -13,7 +13,7 @@ namespace SM64_Diagnostic.Utilities
     public static class ControlUtilities
     {
         public enum CoordinateSystem { Euler, Spherical };
-        public enum FacingDirection { Left, Right, Up, Down, UpLeft, DownLeft, UpRight, DownRight };
+        private enum FacingDirection { Left, Right, Up, Down, UpLeft, DownLeft, UpRight, DownRight };
 
         private static readonly string SUBTRACT_SYMBOL = "-";
         private static readonly string ADD_SYMBOL = "+";
@@ -330,7 +330,7 @@ namespace SM64_Diagnostic.Utilities
             AddInversionContextMenuStrip(buttonLeft, buttonRight);
         }
 
-        public static void AddInversionContextMenuStrip(
+        private static void AddInversionContextMenuStrip(
             Button buttonLeft,
             Button buttonRight)
         {
