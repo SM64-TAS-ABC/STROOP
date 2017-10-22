@@ -29,7 +29,7 @@ namespace SM64_Diagnostic.Utilities
                 Angle = angle;
             }
 
-            public (uint XAddress, uint YAddress, uint ZAddress) getTripleAddress()
+            public (uint XAddress, uint YAddress, uint ZAddress) GetTripleAddress()
             {
                 return (XAddress, YAddress, ZAddress);
             }
@@ -37,7 +37,7 @@ namespace SM64_Diagnostic.Utilities
         
         private enum Change { SET, ADD, MULTIPLY };
 
-        private static bool MoveThings(List<TripleAddressAngle> posAddressAngles,
+        private static bool ChangeValues(List<TripleAddressAngle> posAddressAngles,
             float xValue, float yValue, float zValue, Change change, bool useRelative = false,
             (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
@@ -56,8 +56,8 @@ namespace SM64_Diagnostic.Utilities
 
                 if (change == Change.ADD)
                 {
-                    handleScaling(ref currentXValue, ref currentZValue);
-                    handleRelativeAngle(ref currentXValue, ref currentZValue, useRelative, posAddressAngle.Angle);
+                    HandleScaling(ref currentXValue, ref currentZValue);
+                    HandleRelativeAngle(ref currentXValue, ref currentZValue, useRelative, posAddressAngle.Angle);
                     currentXValue += Config.Stream.GetSingle(posAddressAngle.XAddress);
                     currentYValue += Config.Stream.GetSingle(posAddressAngle.YAddress);
                     currentZValue += Config.Stream.GetSingle(posAddressAngle.ZAddress);
@@ -90,7 +90,7 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static void handleScaling(ref float xOffset, ref float zOffset)
+        public static void HandleScaling(ref float xOffset, ref float zOffset)
         {
             if (Config.ScaleDiagonalPositionControllerButtons)
             {
@@ -98,7 +98,7 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static void handleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, double? relativeAngle)
+        public static void HandleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, double? relativeAngle)
         {
             if (useRelative)
             {
@@ -139,9 +139,9 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + Config.ObjectSlots.ObjectYOffset));
             float zDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + Config.ObjectSlots.ObjectZOffset));
 
-            handleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
+            HandleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
+            return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         public static bool RetrieveObjects(List<uint> objAddresses, (bool affectX, bool affectY, bool affectZ)? affects = null)
@@ -157,12 +157,12 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             float zDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            handleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
+            HandleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
+            return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
-        private static void handleGotoOffset(ref float xPos, ref float yPos, ref float zPos)
+        private static void HandleGotoOffset(ref float xPos, ref float yPos, ref float zPos)
         {
             float gotoAbove = Config.GotoRetrieve.GotoAboveOffset;
             float gotoInfront = Config.GotoRetrieve.GotoInfrontOffset;
@@ -176,7 +176,7 @@ namespace SM64_Diagnostic.Utilities
             zPos += (float)zOffset;
         }
 
-        private static void handleRetrieveOffset(ref float xPos, ref float yPos, ref float zPos)
+        private static void HandleRetrieveOffset(ref float xPos, ref float yPos, ref float zPos)
         {
             float retrieveAbove = Config.GotoRetrieve.RetrieveAboveOffset;
             float retrieveInfront = Config.GotoRetrieve.RetrieveInfrontOffset;
@@ -201,7 +201,7 @@ namespace SM64_Diagnostic.Utilities
                         objAddress + Config.ObjectSlots.ObjectZOffset,
                         Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset)));
 
-            return MoveThings(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool TranslateObjectHomes(List<uint> objAddresses,
@@ -215,7 +215,7 @@ namespace SM64_Diagnostic.Utilities
                         objAddress + Config.ObjectSlots.HomeZOffset,
                         Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset)));
 
-            return MoveThings(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool RotateObjects(List<uint> objAddresses,
@@ -267,7 +267,7 @@ namespace SM64_Diagnostic.Utilities
                         objAddress + Config.ObjectSlots.ScaleHeightOffset,
                         objAddress + Config.ObjectSlots.ScaleDepthOffset));
 
-            return MoveThings(posAddressAngles, widthChange, heightChange, depthChange, multiply ? Change.MULTIPLY : Change.ADD);
+            return ChangeValues(posAddressAngles, widthChange, heightChange, depthChange, multiply ? Change.MULTIPLY : Change.ADD);
         }
 
         public static bool GotoObjectsHome(List<uint> objAddresses, (bool affectX, bool affectY, bool affectZ)? affects = null)
@@ -287,9 +287,9 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + Config.ObjectSlots.HomeYOffset));
             float zDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + Config.ObjectSlots.HomeZOffset));
 
-            handleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
+            HandleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
+            return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         public static bool RetrieveObjectsHome(List<uint> objAddresses, (bool affectX, bool affectY, bool affectZ)? affects = null)
@@ -305,9 +305,9 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             float zDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            handleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
+            HandleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
+            return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         public static bool CloneObject(uint objAddress, bool updateAction = true)
@@ -578,7 +578,7 @@ namespace SM64_Diagnostic.Utilities
                         Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset))
                 };
 
-            return MoveThings(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool SetMarioPosition(float xValue, float yValue, float zValue)
@@ -591,7 +591,7 @@ namespace SM64_Diagnostic.Utilities
                         Config.Mario.StructAddress + Config.Mario.ZOffset)
                 };
 
-            return MoveThings(posAddressAngles, xValue, yValue, zValue, Change.SET);
+            return ChangeValues(posAddressAngles, xValue, yValue, zValue, Change.SET);
         }
 
         public static bool GotoHOLP((bool affectX, bool affectY, bool affectZ)? affects = null)
@@ -608,7 +608,7 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPYOffset);
             float zDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPZOffset);
 
-            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
+            return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         public static bool RetrieveHOLP((bool affectX, bool affectY, bool affectZ)? affects = null)
@@ -625,7 +625,7 @@ namespace SM64_Diagnostic.Utilities
             float yDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             float zDestination = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
-            return MoveThings(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
+            return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         public static bool TranslateHOLP(float xOffset, float yOffset, float zOffset, bool useRelative)
@@ -639,7 +639,7 @@ namespace SM64_Diagnostic.Utilities
                         Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset))
                 };
 
-            return MoveThings(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool MarioChangeYaw(int yawOffset)
@@ -901,7 +901,7 @@ namespace SM64_Diagnostic.Utilities
             if (triangleAddress == 0x0000)
                 return false;
 
-            handleScaling(ref xOffset, ref zOffset);
+            HandleScaling(ref xOffset, ref zOffset);
 
             float normX, normY, normZ, oldNormOffset;
             normX = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
@@ -910,7 +910,7 @@ namespace SM64_Diagnostic.Utilities
             oldNormOffset = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
 
             ushort relativeAngle = MoreMath.getUphillAngle(normX, normY, normZ);
-            handleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
+            HandleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
 
             float newNormOffset = oldNormOffset - normX * xOffset - normY * yOffset - normZ * zOffset;
 
@@ -1012,7 +1012,7 @@ namespace SM64_Diagnostic.Utilities
                         Config.Stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset))
                 };
 
-            return MoveThings(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool TranslateCameraSpherically(float radiusOffset, float thetaOffset, float phiOffset, (float, float, float) pivotPoint)
@@ -1020,7 +1020,7 @@ namespace SM64_Diagnostic.Utilities
             float pivotX, pivotY, pivotZ;
             (pivotX, pivotY, pivotZ) = pivotPoint;
 
-            handleScaling(ref thetaOffset, ref phiOffset);
+            HandleScaling(ref thetaOffset, ref phiOffset);
 
             float oldX, oldY, oldZ;
             oldX = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
@@ -1120,7 +1120,7 @@ namespace SM64_Diagnostic.Utilities
                 case CamHackMode.FIXED_POS:
                 case CamHackMode.FIXED_ORIENTATION:
                 {
-                    return MoveThings(
+                    return ChangeValues(
                         new List<TripleAddressAngle> {
                             new TripleAddressAngle(
                                 Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset,
@@ -1138,9 +1138,9 @@ namespace SM64_Diagnostic.Utilities
                 case CamHackMode.RELATIVE_ANGLE:
                 case CamHackMode.ABSOLUTE_ANGLE:
                 {
-                    handleScaling(ref xOffset, ref zOffset);
+                    HandleScaling(ref xOffset, ref zOffset);
 
-                    handleRelativeAngle(ref xOffset, ref zOffset, useRelative, getCamHackYawFacing(camHackMode));
+                    HandleRelativeAngle(ref xOffset, ref zOffset, useRelative, getCamHackYawFacing(camHackMode));
                     float xDestination = xOffset + Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
                     float yDestination = yOffset + Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
                     float zDestination = zOffset + Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraZOffset);
@@ -1193,11 +1193,11 @@ namespace SM64_Diagnostic.Utilities
                 case CamHackMode.FIXED_POS:
                 case CamHackMode.FIXED_ORIENTATION:
                 {
-                    handleScaling(ref thetaOffset, ref phiOffset);
+                    HandleScaling(ref thetaOffset, ref phiOffset);
 
                     TripleAddressAngle focusTripleAddressAngle = getCamHackFocusTripleAddressController(camHackMode);
                     uint focusXAddress, focusYAddress, focusZAddress;
-                    (focusXAddress, focusYAddress, focusZAddress) = focusTripleAddressAngle.getTripleAddress();
+                    (focusXAddress, focusYAddress, focusZAddress) = focusTripleAddressAngle.GetTripleAddress();
 
                     float xFocus = Config.Stream.GetSingle(focusTripleAddressAngle.XAddress);
                     float yFocus = Config.Stream.GetSingle(focusTripleAddressAngle.YAddress);
@@ -1211,7 +1211,7 @@ namespace SM64_Diagnostic.Utilities
                     (xDestination, yDestination, zDestination) =
                         MoreMath.OffsetSphericallyAboutPivot(xCamPos, yCamPos, zCamPos, radiusOffset, thetaOffset, phiOffset, xFocus, yFocus, zFocus);
 
-                    return MoveThings(
+                    return ChangeValues(
                         new List<TripleAddressAngle> {
                             new TripleAddressAngle(
                                 Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset,
@@ -1227,7 +1227,7 @@ namespace SM64_Diagnostic.Utilities
                 case CamHackMode.RELATIVE_ANGLE:
                 case CamHackMode.ABSOLUTE_ANGLE:
                 {
-                    handleScaling(ref thetaOffset, ref phiOffset);
+                    HandleScaling(ref thetaOffset, ref phiOffset);
 
                     float xCamPos = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraXOffset);
                     float yCamPos = Config.Stream.GetSingle(Config.CameraHack.CameraHackStruct + Config.CameraHack.CameraYOffset);
@@ -1272,7 +1272,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool TranslateCameraHackFocus(CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            return MoveThings(
+            return ChangeValues(
                 new List<TripleAddressAngle> { getCamHackFocusTripleAddressController(camHackMode) },
                 xOffset,
                 yOffset,
@@ -1283,11 +1283,11 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool TranslateCameraHackFocusSpherically(CamHackMode camHackMode, float radiusOffset, float thetaOffset, float phiOffset)
         {
-            handleScaling(ref thetaOffset, ref phiOffset);
+            HandleScaling(ref thetaOffset, ref phiOffset);
 
             TripleAddressAngle focusTripleAddressAngle = getCamHackFocusTripleAddressController(camHackMode);
             uint focusXAddress, focusYAddress, focusZAddress;
-            (focusXAddress, focusYAddress, focusZAddress) = focusTripleAddressAngle.getTripleAddress();
+            (focusXAddress, focusYAddress, focusZAddress) = focusTripleAddressAngle.GetTripleAddress();
 
             float xFocus = Config.Stream.GetSingle(focusTripleAddressAngle.XAddress);
             float yFocus = Config.Stream.GetSingle(focusTripleAddressAngle.YAddress);
@@ -1301,7 +1301,7 @@ namespace SM64_Diagnostic.Utilities
             (xDestination, yDestination, zDestination) =
                 MoreMath.OffsetSphericallyAboutPivot(xFocus, yFocus, zFocus, radiusOffset, thetaOffset, phiOffset, xCamPos, yCamPos, zCamPos);
 
-            return MoveThings(
+            return ChangeValues(
                 new List<TripleAddressAngle> { focusTripleAddressAngle },
                 (float)xDestination,
                 (float)yDestination,
