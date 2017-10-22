@@ -146,7 +146,6 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static bool SlotIndexsFromOne = true;
         public static bool MoveCameraWithPu = true;
         public static bool ScaleDiagonalPositionControllerButtons = false;
-        public static bool DisableActionUpdateWhenCloning = false;
         public static bool NeutralizeTriangleWith21 = true;
         public static bool ExcludeDustForClosestObject = true;
 
