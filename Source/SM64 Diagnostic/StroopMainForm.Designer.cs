@@ -866,6 +866,9 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.labelStateTransferVar14Name = new System.Windows.Forms.Label();
+            this.betterTextboxStateTransferVar14Current = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextboxStateTransferVar14Saved = new SM64_Diagnostic.BetterTextbox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1191,7 +1194,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 315);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 316);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1256,7 +1259,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 153);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 154);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2256,7 +2259,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(690, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(693, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2794,7 +2797,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(699, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(702, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageHud
@@ -2938,7 +2941,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(791, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(794, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3319,7 +3322,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(701, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(704, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3800,7 +3803,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(698, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(701, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3930,7 +3933,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
-            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(479, 460);
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(482, 460);
             this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4293,7 +4296,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7267,7 +7270,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(250, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(253, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7370,7 +7373,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMisc.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMisc.Name = "NoTearFlowLayoutPanelMisc";
-            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(778, 457);
+            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(781, 457);
             this.NoTearFlowLayoutPanelMisc.TabIndex = 5;
             // 
             // tabPageDebug
@@ -7631,7 +7634,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelDebug.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelDebug.Name = "noTearFlowLayoutPanelDebug";
-            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(518, 455);
+            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(521, 455);
             this.noTearFlowLayoutPanelDebug.TabIndex = 26;
             // 
             // tabPageMap
@@ -7832,7 +7835,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(689, 430);
+            this.glControlMap.Size = new System.Drawing.Size(692, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -8313,7 +8316,7 @@ namespace SM64_Diagnostic
             this.glControlModelView.BackColor = System.Drawing.Color.Black;
             this.glControlModelView.Location = new System.Drawing.Point(3, 5);
             this.glControlModelView.Name = "glControlModelView";
-            this.glControlModelView.Size = new System.Drawing.Size(472, 451);
+            this.glControlModelView.Size = new System.Drawing.Size(475, 451);
             this.glControlModelView.TabIndex = 0;
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
@@ -8558,7 +8561,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(966, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(969, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -8657,7 +8660,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(591, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(594, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -9520,7 +9523,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(469, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(472, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -10070,8 +10073,10 @@ namespace SM64_Diagnostic
             // groupBoxStateTransfer
             // 
             this.groupBoxStateTransfer.Controls.Add(this.checkBoxStateTransferOffsetGlobalTimer);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar14Saved);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar13Saved);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar12Saved);
+            this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar14Current);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar13Current);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar11Saved);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar12Current);
@@ -10095,6 +10100,7 @@ namespace SM64_Diagnostic
             this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar3Current);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar2Saved);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar5Current);
+            this.groupBoxStateTransfer.Controls.Add(this.labelStateTransferVar14Name);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar1Saved);
             this.groupBoxStateTransfer.Controls.Add(this.labelStateTransferVar13Name);
             this.groupBoxStateTransfer.Controls.Add(this.betterTextboxStateTransferVar2Current);
@@ -10125,7 +10131,7 @@ namespace SM64_Diagnostic
             this.checkBoxStateTransferOffsetGlobalTimer.AutoSize = true;
             this.checkBoxStateTransferOffsetGlobalTimer.Checked = true;
             this.checkBoxStateTransferOffsetGlobalTimer.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxStateTransferOffsetGlobalTimer.Location = new System.Drawing.Point(117, 393);
+            this.checkBoxStateTransferOffsetGlobalTimer.Location = new System.Drawing.Point(117, 406);
             this.checkBoxStateTransferOffsetGlobalTimer.Name = "checkBoxStateTransferOffsetGlobalTimer";
             this.checkBoxStateTransferOffsetGlobalTimer.Size = new System.Drawing.Size(116, 17);
             this.checkBoxStateTransferOffsetGlobalTimer.TabIndex = 29;
@@ -10134,7 +10140,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar13Saved
             // 
-            this.betterTextboxStateTransferVar13Saved.Location = new System.Drawing.Point(182, 367);
+            this.betterTextboxStateTransferVar13Saved.Location = new System.Drawing.Point(182, 356);
             this.betterTextboxStateTransferVar13Saved.Name = "betterTextboxStateTransferVar13Saved";
             this.betterTextboxStateTransferVar13Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar13Saved.TabIndex = 28;
@@ -10142,7 +10148,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar12Saved
             // 
-            this.betterTextboxStateTransferVar12Saved.Location = new System.Drawing.Point(182, 342);
+            this.betterTextboxStateTransferVar12Saved.Location = new System.Drawing.Point(182, 331);
             this.betterTextboxStateTransferVar12Saved.Name = "betterTextboxStateTransferVar12Saved";
             this.betterTextboxStateTransferVar12Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar12Saved.TabIndex = 28;
@@ -10150,7 +10156,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar13Current
             // 
-            this.betterTextboxStateTransferVar13Current.Location = new System.Drawing.Point(117, 367);
+            this.betterTextboxStateTransferVar13Current.Location = new System.Drawing.Point(117, 356);
             this.betterTextboxStateTransferVar13Current.Name = "betterTextboxStateTransferVar13Current";
             this.betterTextboxStateTransferVar13Current.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar13Current.TabIndex = 28;
@@ -10159,7 +10165,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar11Saved
             // 
-            this.betterTextboxStateTransferVar11Saved.Location = new System.Drawing.Point(182, 317);
+            this.betterTextboxStateTransferVar11Saved.Location = new System.Drawing.Point(182, 306);
             this.betterTextboxStateTransferVar11Saved.Name = "betterTextboxStateTransferVar11Saved";
             this.betterTextboxStateTransferVar11Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar11Saved.TabIndex = 28;
@@ -10167,7 +10173,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar12Current
             // 
-            this.betterTextboxStateTransferVar12Current.Location = new System.Drawing.Point(117, 342);
+            this.betterTextboxStateTransferVar12Current.Location = new System.Drawing.Point(117, 331);
             this.betterTextboxStateTransferVar12Current.Name = "betterTextboxStateTransferVar12Current";
             this.betterTextboxStateTransferVar12Current.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar12Current.TabIndex = 28;
@@ -10176,7 +10182,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar8Saved
             // 
-            this.betterTextboxStateTransferVar8Saved.Location = new System.Drawing.Point(182, 242);
+            this.betterTextboxStateTransferVar8Saved.Location = new System.Drawing.Point(182, 231);
             this.betterTextboxStateTransferVar8Saved.Name = "betterTextboxStateTransferVar8Saved";
             this.betterTextboxStateTransferVar8Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar8Saved.TabIndex = 28;
@@ -10184,7 +10190,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar11Current
             // 
-            this.betterTextboxStateTransferVar11Current.Location = new System.Drawing.Point(117, 317);
+            this.betterTextboxStateTransferVar11Current.Location = new System.Drawing.Point(117, 306);
             this.betterTextboxStateTransferVar11Current.Name = "betterTextboxStateTransferVar11Current";
             this.betterTextboxStateTransferVar11Current.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar11Current.TabIndex = 28;
@@ -10193,7 +10199,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar10Saved
             // 
-            this.betterTextboxStateTransferVar10Saved.Location = new System.Drawing.Point(182, 292);
+            this.betterTextboxStateTransferVar10Saved.Location = new System.Drawing.Point(182, 281);
             this.betterTextboxStateTransferVar10Saved.Name = "betterTextboxStateTransferVar10Saved";
             this.betterTextboxStateTransferVar10Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar10Saved.TabIndex = 28;
@@ -10201,7 +10207,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar8Current
             // 
-            this.betterTextboxStateTransferVar8Current.Location = new System.Drawing.Point(117, 242);
+            this.betterTextboxStateTransferVar8Current.Location = new System.Drawing.Point(117, 231);
             this.betterTextboxStateTransferVar8Current.Name = "betterTextboxStateTransferVar8Current";
             this.betterTextboxStateTransferVar8Current.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar8Current.TabIndex = 28;
@@ -10210,7 +10216,7 @@ namespace SM64_Diagnostic
             // 
             // buttonStateTransferApply
             // 
-            this.buttonStateTransferApply.Location = new System.Drawing.Point(182, 17);
+            this.buttonStateTransferApply.Location = new System.Drawing.Point(182, 13);
             this.buttonStateTransferApply.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStateTransferApply.Name = "buttonStateTransferApply";
             this.buttonStateTransferApply.Size = new System.Drawing.Size(60, 25);
@@ -10220,7 +10226,7 @@ namespace SM64_Diagnostic
             // 
             // buttonStateTransferSave
             // 
-            this.buttonStateTransferSave.Location = new System.Drawing.Point(117, 17);
+            this.buttonStateTransferSave.Location = new System.Drawing.Point(117, 13);
             this.buttonStateTransferSave.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStateTransferSave.Name = "buttonStateTransferSave";
             this.buttonStateTransferSave.Size = new System.Drawing.Size(60, 25);
@@ -10230,7 +10236,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar7Saved
             // 
-            this.betterTextboxStateTransferVar7Saved.Location = new System.Drawing.Point(182, 217);
+            this.betterTextboxStateTransferVar7Saved.Location = new System.Drawing.Point(182, 206);
             this.betterTextboxStateTransferVar7Saved.Name = "betterTextboxStateTransferVar7Saved";
             this.betterTextboxStateTransferVar7Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar7Saved.TabIndex = 28;
@@ -10238,7 +10244,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar10Current
             // 
-            this.betterTextboxStateTransferVar10Current.Location = new System.Drawing.Point(117, 292);
+            this.betterTextboxStateTransferVar10Current.Location = new System.Drawing.Point(117, 281);
             this.betterTextboxStateTransferVar10Current.Name = "betterTextboxStateTransferVar10Current";
             this.betterTextboxStateTransferVar10Current.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar10Current.TabIndex = 28;
@@ -10247,7 +10253,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar4Saved
             // 
-            this.betterTextboxStateTransferVar4Saved.Location = new System.Drawing.Point(182, 142);
+            this.betterTextboxStateTransferVar4Saved.Location = new System.Drawing.Point(182, 131);
             this.betterTextboxStateTransferVar4Saved.Name = "betterTextboxStateTransferVar4Saved";
             this.betterTextboxStateTransferVar4Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar4Saved.TabIndex = 28;
@@ -10255,7 +10261,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar7Current
             // 
-            this.betterTextboxStateTransferVar7Current.Location = new System.Drawing.Point(117, 217);
+            this.betterTextboxStateTransferVar7Current.Location = new System.Drawing.Point(117, 206);
             this.betterTextboxStateTransferVar7Current.Name = "betterTextboxStateTransferVar7Current";
             this.betterTextboxStateTransferVar7Current.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar7Current.TabIndex = 28;
@@ -10264,7 +10270,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar9Saved
             // 
-            this.betterTextboxStateTransferVar9Saved.Location = new System.Drawing.Point(182, 267);
+            this.betterTextboxStateTransferVar9Saved.Location = new System.Drawing.Point(182, 256);
             this.betterTextboxStateTransferVar9Saved.Name = "betterTextboxStateTransferVar9Saved";
             this.betterTextboxStateTransferVar9Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar9Saved.TabIndex = 28;
@@ -10272,7 +10278,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar4Current
             // 
-            this.betterTextboxStateTransferVar4Current.Location = new System.Drawing.Point(117, 142);
+            this.betterTextboxStateTransferVar4Current.Location = new System.Drawing.Point(117, 131);
             this.betterTextboxStateTransferVar4Current.Name = "betterTextboxStateTransferVar4Current";
             this.betterTextboxStateTransferVar4Current.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar4Current.TabIndex = 28;
@@ -10281,7 +10287,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar6Saved
             // 
-            this.betterTextboxStateTransferVar6Saved.Location = new System.Drawing.Point(182, 192);
+            this.betterTextboxStateTransferVar6Saved.Location = new System.Drawing.Point(182, 181);
             this.betterTextboxStateTransferVar6Saved.Name = "betterTextboxStateTransferVar6Saved";
             this.betterTextboxStateTransferVar6Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar6Saved.TabIndex = 28;
@@ -10289,7 +10295,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar9Current
             // 
-            this.betterTextboxStateTransferVar9Current.Location = new System.Drawing.Point(117, 267);
+            this.betterTextboxStateTransferVar9Current.Location = new System.Drawing.Point(117, 256);
             this.betterTextboxStateTransferVar9Current.Name = "betterTextboxStateTransferVar9Current";
             this.betterTextboxStateTransferVar9Current.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar9Current.TabIndex = 28;
@@ -10298,7 +10304,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar3Saved
             // 
-            this.betterTextboxStateTransferVar3Saved.Location = new System.Drawing.Point(182, 117);
+            this.betterTextboxStateTransferVar3Saved.Location = new System.Drawing.Point(182, 106);
             this.betterTextboxStateTransferVar3Saved.Name = "betterTextboxStateTransferVar3Saved";
             this.betterTextboxStateTransferVar3Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar3Saved.TabIndex = 28;
@@ -10306,7 +10312,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar6Current
             // 
-            this.betterTextboxStateTransferVar6Current.Location = new System.Drawing.Point(117, 192);
+            this.betterTextboxStateTransferVar6Current.Location = new System.Drawing.Point(117, 181);
             this.betterTextboxStateTransferVar6Current.Name = "betterTextboxStateTransferVar6Current";
             this.betterTextboxStateTransferVar6Current.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar6Current.TabIndex = 28;
@@ -10315,7 +10321,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar5Saved
             // 
-            this.betterTextboxStateTransferVar5Saved.Location = new System.Drawing.Point(182, 167);
+            this.betterTextboxStateTransferVar5Saved.Location = new System.Drawing.Point(182, 156);
             this.betterTextboxStateTransferVar5Saved.Name = "betterTextboxStateTransferVar5Saved";
             this.betterTextboxStateTransferVar5Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar5Saved.TabIndex = 28;
@@ -10323,7 +10329,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar3Current
             // 
-            this.betterTextboxStateTransferVar3Current.Location = new System.Drawing.Point(117, 117);
+            this.betterTextboxStateTransferVar3Current.Location = new System.Drawing.Point(117, 106);
             this.betterTextboxStateTransferVar3Current.Name = "betterTextboxStateTransferVar3Current";
             this.betterTextboxStateTransferVar3Current.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar3Current.TabIndex = 28;
@@ -10332,7 +10338,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar2Saved
             // 
-            this.betterTextboxStateTransferVar2Saved.Location = new System.Drawing.Point(182, 92);
+            this.betterTextboxStateTransferVar2Saved.Location = new System.Drawing.Point(182, 81);
             this.betterTextboxStateTransferVar2Saved.Name = "betterTextboxStateTransferVar2Saved";
             this.betterTextboxStateTransferVar2Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar2Saved.TabIndex = 28;
@@ -10340,7 +10346,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar5Current
             // 
-            this.betterTextboxStateTransferVar5Current.Location = new System.Drawing.Point(117, 167);
+            this.betterTextboxStateTransferVar5Current.Location = new System.Drawing.Point(117, 156);
             this.betterTextboxStateTransferVar5Current.Name = "betterTextboxStateTransferVar5Current";
             this.betterTextboxStateTransferVar5Current.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar5Current.TabIndex = 28;
@@ -10349,7 +10355,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar1Saved
             // 
-            this.betterTextboxStateTransferVar1Saved.Location = new System.Drawing.Point(182, 67);
+            this.betterTextboxStateTransferVar1Saved.Location = new System.Drawing.Point(182, 56);
             this.betterTextboxStateTransferVar1Saved.Name = "betterTextboxStateTransferVar1Saved";
             this.betterTextboxStateTransferVar1Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar1Saved.TabIndex = 28;
@@ -10358,7 +10364,7 @@ namespace SM64_Diagnostic
             // labelStateTransferVar13Name
             // 
             this.labelStateTransferVar13Name.AutoSize = true;
-            this.labelStateTransferVar13Name.Location = new System.Drawing.Point(5, 370);
+            this.labelStateTransferVar13Name.Location = new System.Drawing.Point(5, 359);
             this.labelStateTransferVar13Name.MinimumSize = new System.Drawing.Size(110, 2);
             this.labelStateTransferVar13Name.Name = "labelStateTransferVar13Name";
             this.labelStateTransferVar13Name.Size = new System.Drawing.Size(110, 13);
@@ -10368,7 +10374,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar2Current
             // 
-            this.betterTextboxStateTransferVar2Current.Location = new System.Drawing.Point(117, 92);
+            this.betterTextboxStateTransferVar2Current.Location = new System.Drawing.Point(117, 81);
             this.betterTextboxStateTransferVar2Current.Name = "betterTextboxStateTransferVar2Current";
             this.betterTextboxStateTransferVar2Current.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar2Current.TabIndex = 28;
@@ -10378,7 +10384,7 @@ namespace SM64_Diagnostic
             // labelStateTransferVar12Name
             // 
             this.labelStateTransferVar12Name.AutoSize = true;
-            this.labelStateTransferVar12Name.Location = new System.Drawing.Point(5, 345);
+            this.labelStateTransferVar12Name.Location = new System.Drawing.Point(5, 334);
             this.labelStateTransferVar12Name.MinimumSize = new System.Drawing.Size(110, 2);
             this.labelStateTransferVar12Name.Name = "labelStateTransferVar12Name";
             this.labelStateTransferVar12Name.Size = new System.Drawing.Size(110, 13);
@@ -10388,7 +10394,7 @@ namespace SM64_Diagnostic
             // 
             // betterTextboxStateTransferVar1Current
             // 
-            this.betterTextboxStateTransferVar1Current.Location = new System.Drawing.Point(117, 67);
+            this.betterTextboxStateTransferVar1Current.Location = new System.Drawing.Point(117, 56);
             this.betterTextboxStateTransferVar1Current.Name = "betterTextboxStateTransferVar1Current";
             this.betterTextboxStateTransferVar1Current.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar1Current.TabIndex = 28;
@@ -10398,7 +10404,7 @@ namespace SM64_Diagnostic
             // labelStateTransferVar11Name
             // 
             this.labelStateTransferVar11Name.AutoSize = true;
-            this.labelStateTransferVar11Name.Location = new System.Drawing.Point(5, 320);
+            this.labelStateTransferVar11Name.Location = new System.Drawing.Point(5, 309);
             this.labelStateTransferVar11Name.MinimumSize = new System.Drawing.Size(110, 2);
             this.labelStateTransferVar11Name.Name = "labelStateTransferVar11Name";
             this.labelStateTransferVar11Name.Size = new System.Drawing.Size(110, 13);
@@ -10409,7 +10415,7 @@ namespace SM64_Diagnostic
             // labelStateTransferVar10Name
             // 
             this.labelStateTransferVar10Name.AutoSize = true;
-            this.labelStateTransferVar10Name.Location = new System.Drawing.Point(5, 295);
+            this.labelStateTransferVar10Name.Location = new System.Drawing.Point(5, 284);
             this.labelStateTransferVar10Name.MinimumSize = new System.Drawing.Size(110, 2);
             this.labelStateTransferVar10Name.Name = "labelStateTransferVar10Name";
             this.labelStateTransferVar10Name.Size = new System.Drawing.Size(110, 13);
@@ -10420,7 +10426,7 @@ namespace SM64_Diagnostic
             // labelStateTransferVar9Name
             // 
             this.labelStateTransferVar9Name.AutoSize = true;
-            this.labelStateTransferVar9Name.Location = new System.Drawing.Point(5, 270);
+            this.labelStateTransferVar9Name.Location = new System.Drawing.Point(5, 259);
             this.labelStateTransferVar9Name.MinimumSize = new System.Drawing.Size(110, 2);
             this.labelStateTransferVar9Name.Name = "labelStateTransferVar9Name";
             this.labelStateTransferVar9Name.Size = new System.Drawing.Size(110, 13);
@@ -10431,7 +10437,7 @@ namespace SM64_Diagnostic
             // labelStateTransferVar8Name
             // 
             this.labelStateTransferVar8Name.AutoSize = true;
-            this.labelStateTransferVar8Name.Location = new System.Drawing.Point(5, 245);
+            this.labelStateTransferVar8Name.Location = new System.Drawing.Point(5, 234);
             this.labelStateTransferVar8Name.MinimumSize = new System.Drawing.Size(110, 2);
             this.labelStateTransferVar8Name.Name = "labelStateTransferVar8Name";
             this.labelStateTransferVar8Name.Size = new System.Drawing.Size(110, 13);
@@ -10442,7 +10448,7 @@ namespace SM64_Diagnostic
             // labelStateTransferVar7Name
             // 
             this.labelStateTransferVar7Name.AutoSize = true;
-            this.labelStateTransferVar7Name.Location = new System.Drawing.Point(5, 220);
+            this.labelStateTransferVar7Name.Location = new System.Drawing.Point(5, 209);
             this.labelStateTransferVar7Name.MinimumSize = new System.Drawing.Size(110, 2);
             this.labelStateTransferVar7Name.Name = "labelStateTransferVar7Name";
             this.labelStateTransferVar7Name.Size = new System.Drawing.Size(110, 13);
@@ -10453,7 +10459,7 @@ namespace SM64_Diagnostic
             // labelStateTransferVar6Name
             // 
             this.labelStateTransferVar6Name.AutoSize = true;
-            this.labelStateTransferVar6Name.Location = new System.Drawing.Point(5, 195);
+            this.labelStateTransferVar6Name.Location = new System.Drawing.Point(5, 184);
             this.labelStateTransferVar6Name.MinimumSize = new System.Drawing.Size(110, 2);
             this.labelStateTransferVar6Name.Name = "labelStateTransferVar6Name";
             this.labelStateTransferVar6Name.Size = new System.Drawing.Size(110, 13);
@@ -10464,7 +10470,7 @@ namespace SM64_Diagnostic
             // labelStateTransferVar5Name
             // 
             this.labelStateTransferVar5Name.AutoSize = true;
-            this.labelStateTransferVar5Name.Location = new System.Drawing.Point(5, 170);
+            this.labelStateTransferVar5Name.Location = new System.Drawing.Point(5, 159);
             this.labelStateTransferVar5Name.MinimumSize = new System.Drawing.Size(110, 2);
             this.labelStateTransferVar5Name.Name = "labelStateTransferVar5Name";
             this.labelStateTransferVar5Name.Size = new System.Drawing.Size(110, 13);
@@ -10475,7 +10481,7 @@ namespace SM64_Diagnostic
             // labelStateTransferVar4Name
             // 
             this.labelStateTransferVar4Name.AutoSize = true;
-            this.labelStateTransferVar4Name.Location = new System.Drawing.Point(5, 145);
+            this.labelStateTransferVar4Name.Location = new System.Drawing.Point(5, 134);
             this.labelStateTransferVar4Name.MinimumSize = new System.Drawing.Size(110, 2);
             this.labelStateTransferVar4Name.Name = "labelStateTransferVar4Name";
             this.labelStateTransferVar4Name.Size = new System.Drawing.Size(110, 13);
@@ -10486,7 +10492,7 @@ namespace SM64_Diagnostic
             // labelStateTransferVar3Name
             // 
             this.labelStateTransferVar3Name.AutoSize = true;
-            this.labelStateTransferVar3Name.Location = new System.Drawing.Point(5, 120);
+            this.labelStateTransferVar3Name.Location = new System.Drawing.Point(5, 109);
             this.labelStateTransferVar3Name.MinimumSize = new System.Drawing.Size(110, 2);
             this.labelStateTransferVar3Name.Name = "labelStateTransferVar3Name";
             this.labelStateTransferVar3Name.Size = new System.Drawing.Size(110, 13);
@@ -10497,7 +10503,7 @@ namespace SM64_Diagnostic
             // labelStateTransferVar2Name
             // 
             this.labelStateTransferVar2Name.AutoSize = true;
-            this.labelStateTransferVar2Name.Location = new System.Drawing.Point(5, 95);
+            this.labelStateTransferVar2Name.Location = new System.Drawing.Point(5, 84);
             this.labelStateTransferVar2Name.MinimumSize = new System.Drawing.Size(110, 2);
             this.labelStateTransferVar2Name.Name = "labelStateTransferVar2Name";
             this.labelStateTransferVar2Name.Size = new System.Drawing.Size(110, 13);
@@ -10508,7 +10514,7 @@ namespace SM64_Diagnostic
             // labelStateTransferSaved
             // 
             this.labelStateTransferSaved.AutoSize = true;
-            this.labelStateTransferSaved.Location = new System.Drawing.Point(193, 51);
+            this.labelStateTransferSaved.Location = new System.Drawing.Point(193, 40);
             this.labelStateTransferSaved.Name = "labelStateTransferSaved";
             this.labelStateTransferSaved.Size = new System.Drawing.Size(38, 13);
             this.labelStateTransferSaved.TabIndex = 18;
@@ -10518,7 +10524,7 @@ namespace SM64_Diagnostic
             // labelStateTransferCurrent
             // 
             this.labelStateTransferCurrent.AutoSize = true;
-            this.labelStateTransferCurrent.Location = new System.Drawing.Point(127, 51);
+            this.labelStateTransferCurrent.Location = new System.Drawing.Point(127, 40);
             this.labelStateTransferCurrent.Name = "labelStateTransferCurrent";
             this.labelStateTransferCurrent.Size = new System.Drawing.Size(41, 13);
             this.labelStateTransferCurrent.TabIndex = 18;
@@ -10528,7 +10534,7 @@ namespace SM64_Diagnostic
             // labelStateTransferVar1Name
             // 
             this.labelStateTransferVar1Name.AutoSize = true;
-            this.labelStateTransferVar1Name.Location = new System.Drawing.Point(5, 70);
+            this.labelStateTransferVar1Name.Location = new System.Drawing.Point(5, 59);
             this.labelStateTransferVar1Name.MinimumSize = new System.Drawing.Size(110, 2);
             this.labelStateTransferVar1Name.Name = "labelStateTransferVar1Name";
             this.labelStateTransferVar1Name.Size = new System.Drawing.Size(110, 13);
@@ -11419,6 +11425,34 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.TabIndex = 20;
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
+            // 
+            // labelStateTransferVar14Name
+            // 
+            this.labelStateTransferVar14Name.AutoSize = true;
+            this.labelStateTransferVar14Name.Location = new System.Drawing.Point(5, 384);
+            this.labelStateTransferVar14Name.MinimumSize = new System.Drawing.Size(110, 2);
+            this.labelStateTransferVar14Name.Name = "labelStateTransferVar14Name";
+            this.labelStateTransferVar14Name.Size = new System.Drawing.Size(110, 13);
+            this.labelStateTransferVar14Name.TabIndex = 18;
+            this.labelStateTransferVar14Name.Text = "Animation Timer:";
+            this.labelStateTransferVar14Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // betterTextboxStateTransferVar14Current
+            // 
+            this.betterTextboxStateTransferVar14Current.Location = new System.Drawing.Point(117, 381);
+            this.betterTextboxStateTransferVar14Current.Name = "betterTextboxStateTransferVar14Current";
+            this.betterTextboxStateTransferVar14Current.Size = new System.Drawing.Size(60, 20);
+            this.betterTextboxStateTransferVar14Current.TabIndex = 28;
+            this.betterTextboxStateTransferVar14Current.Text = "100";
+            this.betterTextboxStateTransferVar14Current.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextboxStateTransferVar14Saved
+            // 
+            this.betterTextboxStateTransferVar14Saved.Location = new System.Drawing.Point(182, 381);
+            this.betterTextboxStateTransferVar14Saved.Name = "betterTextboxStateTransferVar14Saved";
+            this.betterTextboxStateTransferVar14Saved.Size = new System.Drawing.Size(60, 20);
+            this.betterTextboxStateTransferVar14Saved.TabIndex = 28;
+            this.betterTextboxStateTransferVar14Saved.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // StroopMainForm
             // 
@@ -12638,6 +12672,9 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxTurnOffMusic;
         private GroupBox groupBoxRNGIndex;
         private BetterTextbox betterTextboxRNGIndex;
+        private BetterTextbox betterTextboxStateTransferVar14Saved;
+        private BetterTextbox betterTextboxStateTransferVar14Current;
+        private Label labelStateTransferVar14Name;
     }
 }
 
