@@ -102,6 +102,8 @@ namespace SM64_Diagnostic.Managers
         public enum TriangleMode {Floor, Wall, Ceiling, Other};
         public TriangleMode Mode = TriangleMode.Floor;
 
+        CheckBox _checkBoxNeutralizeTriangle;
+
         CheckBox _recordTriangleDataCheckbox;
         CheckBox _repeatFirstVertexCheckbox;
         Label _recordTriangleCountLabel;
@@ -200,6 +202,8 @@ namespace SM64_Diagnostic.Managers
                 {
                     ButtonUtilities.MoveTriangleNormal(_triangleAddress, normalValue);
                 });
+
+            _checkBoxNeutralizeTriangle = splitContainerTriangles.Panel1.Controls["checkBoxNeutralizeTriangle"] as CheckBox;
 
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowCoords"] as Button).Click
                 += (sender, e) => ShowTriangleCoordinates();
@@ -592,6 +596,11 @@ namespace SM64_Diagnostic.Managers
                 case TriangleMode.Wall:
                     TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset);
                     break;
+            }
+
+            if (_checkBoxNeutralizeTriangle.Checked && TriangleAddress != 0)
+            {
+                ButtonUtilities.NeutralizeTriangle(TriangleAddress);
             }
 
             if (_recordTriangleDataCheckbox.Checked && TriangleAddress != 0)
