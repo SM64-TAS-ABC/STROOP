@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -869,6 +869,7 @@ namespace SM64_Diagnostic
             this.labelStateTransferVar14Name = new System.Windows.Forms.Label();
             this.betterTextboxStateTransferVar14Current = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar14Saved = new SM64_Diagnostic.BetterTextbox();
+            this.checkBoxNeutralizeTriangle = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -3363,6 +3364,7 @@ namespace SM64_Diagnostic
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonGotoVClosest);
             this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriCeiling);
             this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxRepeatFirstVertex);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxNeutralizeTriangle);
             this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxRecordTriangleData);
             this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxVertexMisalignment);
             this.splitContainerTriangles.Panel1.Controls.Add(this.maskedTextBoxOtherTriangle);
@@ -3593,7 +3595,7 @@ namespace SM64_Diagnostic
             // 
             // buttonTriangleClearData
             // 
-            this.buttonTriangleClearData.Location = new System.Drawing.Point(5, 503);
+            this.buttonTriangleClearData.Location = new System.Drawing.Point(5, 526);
             this.buttonTriangleClearData.Name = "buttonTriangleClearData";
             this.buttonTriangleClearData.Size = new System.Drawing.Size(180, 23);
             this.buttonTriangleClearData.TabIndex = 15;
@@ -3602,7 +3604,7 @@ namespace SM64_Diagnostic
             // 
             // buttonTriangleShowVertices
             // 
-            this.buttonTriangleShowVertices.Location = new System.Drawing.Point(98, 477);
+            this.buttonTriangleShowVertices.Location = new System.Drawing.Point(98, 500);
             this.buttonTriangleShowVertices.Name = "buttonTriangleShowVertices";
             this.buttonTriangleShowVertices.Size = new System.Drawing.Size(87, 23);
             this.buttonTriangleShowVertices.TabIndex = 15;
@@ -3632,7 +3634,7 @@ namespace SM64_Diagnostic
             // 
             // buttonTriangleShowData
             // 
-            this.buttonTriangleShowData.Location = new System.Drawing.Point(5, 477);
+            this.buttonTriangleShowData.Location = new System.Drawing.Point(5, 500);
             this.buttonTriangleShowData.Name = "buttonTriangleShowData";
             this.buttonTriangleShowData.Size = new System.Drawing.Size(87, 23);
             this.buttonTriangleShowData.TabIndex = 14;
@@ -3660,7 +3662,7 @@ namespace SM64_Diagnostic
             // 
             // buttonTriangleShowCoords
             // 
-            this.buttonTriangleShowCoords.Location = new System.Drawing.Point(5, 425);
+            this.buttonTriangleShowCoords.Location = new System.Drawing.Point(5, 448);
             this.buttonTriangleShowCoords.Name = "buttonTriangleShowCoords";
             this.buttonTriangleShowCoords.Size = new System.Drawing.Size(87, 23);
             this.buttonTriangleShowCoords.TabIndex = 13;
@@ -3691,7 +3693,7 @@ namespace SM64_Diagnostic
             this.checkBoxRepeatFirstVertex.AutoSize = true;
             this.checkBoxRepeatFirstVertex.Checked = true;
             this.checkBoxRepeatFirstVertex.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxRepeatFirstVertex.Location = new System.Drawing.Point(6, 529);
+            this.checkBoxRepeatFirstVertex.Location = new System.Drawing.Point(6, 552);
             this.checkBoxRepeatFirstVertex.Name = "checkBoxRepeatFirstVertex";
             this.checkBoxRepeatFirstVertex.Size = new System.Drawing.Size(116, 17);
             this.checkBoxRepeatFirstVertex.TabIndex = 12;
@@ -3701,7 +3703,7 @@ namespace SM64_Diagnostic
             // checkBoxRecordTriangleData
             // 
             this.checkBoxRecordTriangleData.AutoSize = true;
-            this.checkBoxRecordTriangleData.Location = new System.Drawing.Point(6, 459);
+            this.checkBoxRecordTriangleData.Location = new System.Drawing.Point(6, 482);
             this.checkBoxRecordTriangleData.Name = "checkBoxRecordTriangleData";
             this.checkBoxRecordTriangleData.Size = new System.Drawing.Size(128, 17);
             this.checkBoxRecordTriangleData.TabIndex = 12;
@@ -3729,7 +3731,7 @@ namespace SM64_Diagnostic
             // 
             // buttonTriangleShowEquation
             // 
-            this.buttonTriangleShowEquation.Location = new System.Drawing.Point(98, 425);
+            this.buttonTriangleShowEquation.Location = new System.Drawing.Point(98, 448);
             this.buttonTriangleShowEquation.Name = "buttonTriangleShowEquation";
             this.buttonTriangleShowEquation.Size = new System.Drawing.Size(87, 23);
             this.buttonTriangleShowEquation.TabIndex = 11;
@@ -3749,7 +3751,7 @@ namespace SM64_Diagnostic
             // 
             this.labelRecordTriangleCount.AutoSize = true;
             this.labelRecordTriangleCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelRecordTriangleCount.Location = new System.Drawing.Point(144, 459);
+            this.labelRecordTriangleCount.Location = new System.Drawing.Point(144, 482);
             this.labelRecordTriangleCount.MinimumSize = new System.Drawing.Size(40, 2);
             this.labelRecordTriangleCount.Name = "labelRecordTriangleCount";
             this.labelRecordTriangleCount.Size = new System.Drawing.Size(40, 15);
@@ -8389,8 +8391,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -11454,6 +11456,16 @@ namespace SM64_Diagnostic
             this.betterTextboxStateTransferVar14Saved.TabIndex = 28;
             this.betterTextboxStateTransferVar14Saved.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // checkBoxNeutralizeTriangle
+            // 
+            this.checkBoxNeutralizeTriangle.AutoSize = true;
+            this.checkBoxNeutralizeTriangle.Location = new System.Drawing.Point(6, 425);
+            this.checkBoxNeutralizeTriangle.Name = "checkBoxNeutralizeTriangle";
+            this.checkBoxNeutralizeTriangle.Size = new System.Drawing.Size(114, 17);
+            this.checkBoxNeutralizeTriangle.TabIndex = 12;
+            this.checkBoxNeutralizeTriangle.Text = "Neutralize Triangle";
+            this.checkBoxNeutralizeTriangle.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -12675,6 +12687,7 @@ namespace SM64_Diagnostic
         private BetterTextbox betterTextboxStateTransferVar14Saved;
         private BetterTextbox betterTextboxStateTransferVar14Current;
         private Label labelStateTransferVar14Name;
+        private CheckBox checkBoxNeutralizeTriangle;
     }
 }
 
