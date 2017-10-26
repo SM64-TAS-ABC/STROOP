@@ -607,8 +607,14 @@ namespace SM64_Diagnostic.Managers
                 Appearance = appearance
             };
 
-            objSlot.Behavior = behaviorCriteria;
-
+            if (Config.ObjectAssociations.RecognizedBehavior(behaviorCriteria))
+            {
+                objSlot.Behavior = behaviorCriteria;
+            }
+            else
+            {
+                behaviorCriteria = objSlot.Behavior; // skip update, bad behavior
+            }
             var processGroup = objData.ObjectProcessGroup;
             objSlot.ProcessGroup = processGroup;
 

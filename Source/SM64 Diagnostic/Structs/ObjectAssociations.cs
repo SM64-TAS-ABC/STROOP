@@ -195,6 +195,12 @@ namespace SM64_Diagnostic.Structs
             else return assoc.WatchVariables;
         }
 
+        public bool RecognizedBehavior(BehaviorCriteria behaviorCriteria)
+        {
+            var assoc = FindObjectAssociation(behaviorCriteria);
+            return assoc != null;
+        }
+
         public uint AlignJPBehavior(uint segmented)
         {
             if (segmented >= 0x13002ea0)
