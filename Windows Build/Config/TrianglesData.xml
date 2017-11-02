@@ -55,22 +55,27 @@
   <Data offset="Special" specialType="NormalDistAway" color="#e5ccff">Normal Dist Away</Data>
   <Data offset="Special" specialType="VerticalDistAway" color="#e5ccff">Vertical Dist Away</Data>
   <Data offset="Special" specialType="HeightOnSlope" color="#e5ccff">Height On Triangle</Data>
+
+  <Data type="uint" addressUS="0x8038EE9C" addressJP="0x8038EE9C" offset="Relative" useHex="true" color="#d0d0d0">Tri List Pointer</Data>
+  <Data type="short" addressUS="0x8038EEA0" addressJP="0x8038EEA0" offset="Relative" color="#d0d0d0">Tri List Capacity</Data>
+  <Data type="int" addressUS="0x80361178" addressJP="0x8035FE08" offset="Relative" color="#d0d0d0">Level Tri Count</Data>
+  <Data type="int" addressUS="0x80361170" addressJP="0x8035FE00" offset="Relative" color="#d0d0d0">Total Tri Count</Data>
   
-  <Data offset="Special" specialType="DistanceToV1" color="#d0d0d0">Dist to V1</Data>
-  <Data offset="Special" specialType="YDistanceToV1" color="#d0d0d0">YDist to V1</Data>
-  <Data offset="Special" specialType="XDistanceToV1" color="#d0d0d0">XDist to V1</Data>
-  <Data offset="Special" specialType="ZDistanceToV1" color="#d0d0d0">ZDist to V1</Data>
-  <Data offset="Special" specialType="HDistanceToV1" color="#d0d0d0">HDist to V1</Data>
-  <Data offset="Special" specialType="DistanceToV2" color="#d0d0d0">Dist to V2</Data>
-  <Data offset="Special" specialType="YDistanceToV2" color="#d0d0d0">YDist to V2</Data>
-  <Data offset="Special" specialType="XDistanceToV2" color="#d0d0d0">XDist to V2</Data>
-  <Data offset="Special" specialType="ZDistanceToV2" color="#d0d0d0">ZDist to V2</Data>
-  <Data offset="Special" specialType="HDistanceToV2" color="#d0d0d0">HDist to V2</Data>
-  <Data offset="Special" specialType="DistanceToV3" color="#d0d0d0">Dist to V3</Data>
-  <Data offset="Special" specialType="YDistanceToV3" color="#d0d0d0">YDist to V3</Data>
-  <Data offset="Special" specialType="XDistanceToV3" color="#d0d0d0">XDist to V3</Data>
-  <Data offset="Special" specialType="ZDistanceToV3" color="#d0d0d0">ZDist to V3</Data>
-  <Data offset="Special" specialType="HDistanceToV3" color="#d0d0d0">HDist to V3</Data>
+  <Data offset="Special" specialType="DistanceToV1" color="#e5ccff">Dist to V1</Data>
+  <Data offset="Special" specialType="YDistanceToV1" color="#e5ccff">YDist to V1</Data>
+  <Data offset="Special" specialType="XDistanceToV1" color="#e5ccff">XDist to V1</Data>
+  <Data offset="Special" specialType="ZDistanceToV1" color="#e5ccff">ZDist to V1</Data>
+  <Data offset="Special" specialType="HDistanceToV1" color="#e5ccff">HDist to V1</Data>
+  <Data offset="Special" specialType="DistanceToV2" color="#e5ccff">Dist to V2</Data>
+  <Data offset="Special" specialType="YDistanceToV2" color="#e5ccff">YDist to V2</Data>
+  <Data offset="Special" specialType="XDistanceToV2" color="#e5ccff">XDist to V2</Data>
+  <Data offset="Special" specialType="ZDistanceToV2" color="#e5ccff">ZDist to V2</Data>
+  <Data offset="Special" specialType="HDistanceToV2" color="#e5ccff">HDist to V2</Data>
+  <Data offset="Special" specialType="DistanceToV3" color="#e5ccff">Dist to V3</Data>
+  <Data offset="Special" specialType="YDistanceToV3" color="#e5ccff">YDist to V3</Data>
+  <Data offset="Special" specialType="XDistanceToV3" color="#e5ccff">XDist to V3</Data>
+  <Data offset="Special" specialType="ZDistanceToV3" color="#e5ccff">ZDist to V3</Data>
+  <Data offset="Special" specialType="HDistanceToV3" color="#e5ccff">HDist to V3</Data>
 
   <Data offset="Special" specialType="DistanceToLine12" color="#ccfffa">Dist to Line12</Data>
   <Data offset="Special" specialType="DistanceToLine23" color="#ccfffa">Dist to Line23</Data>
