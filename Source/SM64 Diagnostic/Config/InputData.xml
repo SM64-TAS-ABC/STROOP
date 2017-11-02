@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <InputData>
-  <Data type="float" addressUS="0x8033AF94" addressJP="0x80339C24" offset="Relative">Effective X</Data>
-  <Data type="float" addressUS="0x8033AF98" addressJP="0x80339C28" offset="Relative">Effective Y</Data>
-  <Data type="float" addressUS="0x8033AF9C" addressJP="0x80339C2C" offset="Relative">Magnitude</Data>
-  
+  <Data type="float" addressUS="0x8033AF94" addressJP="0x80339C24" offset="Relative" color="#ccfffa">Effective X</Data>
+  <Data type="float" addressUS="0x8033AF98" addressJP="0x80339C28" offset="Relative" color="#ccfffa">Effective Y</Data>
+  <Data type="float" addressUS="0x8033AF9C" addressJP="0x80339C2C" offset="Relative" color="#ccfffa">Magnitude</Data>
+
   <Data type="sbyte" address="0x02" offset="InputCurrent">Current X</Data>
   <Data type="sbyte" address="0x03" offset="InputCurrent">Current Y</Data>
   <Data type="byte" address="0x00" offset="InputCurrent" isBool="true" mask="0x80" color="#c4cfff">Current A</Data>
