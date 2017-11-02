@@ -20,5 +20,15 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint NormX, NormY, NormZ;
         public uint Offset;
         public uint AssociatedObject;
+
+        public uint TriangleListPointerAddress;
+
+        public uint LevelTriangleCountAddress { get { return Config.SwitchRomVersion(LevelTriangleCountAddressUS, LevelTriangleCountAddressJP); } }
+        public uint LevelTriangleCountAddressUS;
+        public uint LevelTriangleCountAddressJP;
+
+        public uint TotalTriangleCountAddress { get { return Config.SwitchRomVersion(TotalTriangleCountAddressUS, TotalTriangleCountAddressJP); } }
+        public uint TotalTriangleCountAddressUS;
+        public uint TotalTriangleCountAddressJP;
     }
 }

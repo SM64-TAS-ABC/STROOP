@@ -225,6 +225,13 @@
     <normZ>0x24</normZ>
     <offset>0x28</offset>
     <associatedObject>0x2C</associatedObject>
+    
+    <TriangleListPointerAddress>0x8038EE9C</TriangleListPointerAddress>
+    <LevelTriangleCountAddressUS>0x80361178</LevelTriangleCountAddressUS>
+    <LevelTriangleCountAddressJP>0x8035FE08</LevelTriangleCountAddressJP>
+    <TotalTriangleCountAddressUS>0x80361170</TotalTriangleCountAddressUS>
+    <TotalTriangleCountAddressJP>0x8035FE00</TotalTriangleCountAddressJP>
+    
   </TriangleOffsets>
   <Camera>
     <CameraStructAddressUS>0x8033C618</CameraStructAddressUS>

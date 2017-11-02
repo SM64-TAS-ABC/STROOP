@@ -533,7 +533,8 @@ namespace SM64_Diagnostic.Managers
                         goto case "CheckTriangleExistsAngle";
 
                     case "ObjectTriCount":
-                        (specialVar as DataContainer).Text = (Config.Stream.GetInt32(0x80361170) - Config.Stream.GetInt32(0x80361178)).ToString();
+                        (specialVar as DataContainer).Text =
+                            (Config.Stream.GetInt32(Config.TriangleOffsets.TotalTriangleCountAddress) - Config.Stream.GetInt32(Config.TriangleOffsets.LevelTriangleCountAddress)).ToString();
                         break;
 
                     // Special

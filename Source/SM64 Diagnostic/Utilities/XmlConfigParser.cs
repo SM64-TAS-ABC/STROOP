@@ -671,6 +671,22 @@ namespace SM64_Diagnostic.Utilities
                                 case "associatedObject":
                                     Config.TriangleOffsets.AssociatedObject = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+
+                                case "TriangleListPointerAddress":
+                                    Config.TriangleOffsets.TriangleListPointerAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "LevelTriangleCountAddressUS":
+                                    Config.TriangleOffsets.LevelTriangleCountAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "LevelTriangleCountAddressJP":
+                                    Config.TriangleOffsets.LevelTriangleCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "TotalTriangleCountAddressUS":
+                                    Config.TriangleOffsets.TotalTriangleCountAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "TotalTriangleCountAddressJP":
+                                    Config.TriangleOffsets.TotalTriangleCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         } 
                         break;
