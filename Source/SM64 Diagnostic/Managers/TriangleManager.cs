@@ -96,6 +96,8 @@ namespace SM64_Diagnostic.Managers
                 new AngleDataContainer("AngleV3ToV2"),
                 new AngleDataContainer("AngleV1ToV3"),
                 new AngleDataContainer("AngleV3ToV1"),
+
+                new DataContainer("ObjectTriCount"),
             };
         }
 
@@ -529,6 +531,10 @@ namespace SM64_Diagnostic.Managers
                     case "AngleV3ToV1":
                         (specialVar as AngleDataContainer).AngleValue = MoreMath.AngleTo_AngleUnits(v3X, v3Z, v1X, v1Z);
                         goto case "CheckTriangleExistsAngle";
+
+                    case "ObjectTriCount":
+                        (specialVar as DataContainer).Text = (Config.Stream.GetInt32(0x80361170) - Config.Stream.GetInt32(0x80361178)).ToString();
+                        break;
 
                     // Special
                     case "CheckTriangleExists":

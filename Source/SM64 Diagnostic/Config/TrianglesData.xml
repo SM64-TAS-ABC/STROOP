@@ -59,6 +59,7 @@
   <Data type="uint" addressUS="0x8038EE9C" addressJP="0x8038EE9C" offset="Relative" useHex="true" color="#d0d0d0">Tri List Pointer</Data>
   <Data type="short" addressUS="0x8038EEA0" addressJP="0x8038EEA0" offset="Relative" color="#d0d0d0">Tri List Capacity</Data>
   <Data type="int" addressUS="0x80361178" addressJP="0x8035FE08" offset="Relative" color="#d0d0d0">Level Tri Count</Data>
+  <Data offset="Special" specialType="ObjectTriCount" color="#d0d0d0">Object Tri Count</Data>
   <Data type="int" addressUS="0x80361170" addressJP="0x8035FE00" offset="Relative" color="#d0d0d0">Total Tri Count</Data>
   
   <Data offset="Special" specialType="DistanceToV1" color="#e5ccff">Dist to V1</Data>
