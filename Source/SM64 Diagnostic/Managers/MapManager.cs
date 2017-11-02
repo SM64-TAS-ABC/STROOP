@@ -222,7 +222,7 @@ namespace SM64_Diagnostic.Managers
             float holpRelX = PuUtilities.GetRelativePuPosition(_holpMapObj.X, holpPuX);
             float holpRelZ = PuUtilities.GetRelativePuPosition(_holpMapObj.Z, holpPuZ);
             var holpCoord = new PointF(holpRelX, holpRelZ);
-            _holpMapObj.Draw = _mapGui.MapShowHolp.Checked && puX == holpPuX && puY == holpPuY && puZ == holpPuZ;
+            _holpMapObj.Draw = _mapGui.MapShowHolp.Checked;
             _holpMapObj.LocationOnContol = CalculateLocationOnControl(holpCoord, mapView);
 
             int cameraPuX = PuUtilities.GetPUFromCoord(_cameraMapObj.X);
@@ -231,7 +231,7 @@ namespace SM64_Diagnostic.Managers
             float cameraRelX = PuUtilities.GetRelativePuPosition(_cameraMapObj.X, cameraPuX);
             float cameraRelZ = PuUtilities.GetRelativePuPosition(_cameraMapObj.Z, cameraPuZ);
             var cameraCoord = new PointF(cameraRelX, cameraRelZ);
-            _cameraMapObj.Draw = _mapGui.MapShowCamera.Checked && puX == cameraPuX && puY == cameraPuY && puZ == cameraPuZ;
+            _cameraMapObj.Draw = _mapGui.MapShowCamera.Checked;
             _cameraMapObj.LocationOnContol = CalculateLocationOnControl(cameraCoord, mapView);
 
             float floorTrianglePuX1 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X1);
