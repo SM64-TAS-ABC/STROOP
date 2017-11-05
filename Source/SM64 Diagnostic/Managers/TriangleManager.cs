@@ -292,6 +292,10 @@ namespace SM64_Diagnostic.Managers
             float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             float marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
 
+            marioX = PuUtilities.GetRelativePuPosition(marioX);
+            marioY = PuUtilities.GetRelativePuPosition(marioY);
+            marioZ = PuUtilities.GetRelativePuPosition(marioZ);
+
             float normX = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormX);
             float normY = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormY);
             float normZ = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormZ);
