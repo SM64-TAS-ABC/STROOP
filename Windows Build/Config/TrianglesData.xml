@@ -82,10 +82,20 @@
   <Data offset="Special" specialType="DistanceToLine23" color="#ccfffa">Dist to Line23</Data>
   <Data offset="Special" specialType="DistanceToLine13" color="#ccfffa">Dist to Line13</Data>
 
-  <Data offset="Special" specialType="AngleV1ToV2" color="#e5ccff">Angle V1 to V2</Data>
-  <Data offset="Special" specialType="AngleV2ToV1" color="#e5ccff">Angle V2 to V1</Data>
-  <Data offset="Special" specialType="AngleV2ToV3" color="#e5ccff">Angle V2 to V3</Data>
-  <Data offset="Special" specialType="AngleV3ToV2" color="#e5ccff">Angle V3 to V2</Data>
-  <Data offset="Special" specialType="AngleV1ToV3" color="#e5ccff">Angle V1 to V3</Data>
-  <Data offset="Special" specialType="AngleV3ToV1" color="#e5ccff">Angle V3 to V1</Data>
+  <Data offset="Special" specialType="AngleMarioToV1" color="#e5ccff">Angle Mario to V1</Data>
+  <Data offset="Special" specialType="DeltaAngleMarioToV1" color="#e5ccff">DAngle Mario to V1</Data>
+  <Data offset="Special" specialType="AngleV1ToMario" color="#e5ccff">Angle V1 to Mario</Data>
+  <Data offset="Special" specialType="AngleMarioToV2" color="#e5ccff">Angle Mario to V2</Data>
+  <Data offset="Special" specialType="DeltaAngleMarioToV2" color="#e5ccff">DAngle Mario to V2</Data>
+  <Data offset="Special" specialType="AngleV2ToMario" color="#e5ccff">Angle V2 to Mario</Data>
+  <Data offset="Special" specialType="AngleMarioToV3" color="#e5ccff">Angle Mario to V3</Data>
+  <Data offset="Special" specialType="DeltaAngleMarioToV3" color="#e5ccff">DAngle Mario to V3</Data>
+  <Data offset="Special" specialType="AngleV3ToMario" color="#e5ccff">Angle V3 to Mario</Data>
+
+  <Data offset="Special" specialType="AngleV1ToV2" color="#ccd0ff">Angle V1 to V2</Data>
+  <Data offset="Special" specialType="AngleV2ToV1" color="#ccd0ff">Angle V2 to V1</Data>
+  <Data offset="Special" specialType="AngleV2ToV3" color="#ccd0ff">Angle V2 to V3</Data>
+  <Data offset="Special" specialType="AngleV3ToV2" color="#ccd0ff">Angle V3 to V2</Data>
+  <Data offset="Special" specialType="AngleV1ToV3" color="#ccd0ff">Angle V1 to V3</Data>
+  <Data offset="Special" specialType="AngleV3ToV1" color="#ccd0ff">Angle V3 to V1</Data>
 </TrianglesData>

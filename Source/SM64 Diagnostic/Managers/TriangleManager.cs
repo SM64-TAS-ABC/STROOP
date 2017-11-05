@@ -90,6 +90,17 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("DistanceToLine12"),
                 new DataContainer("DistanceToLine23"),
                 new DataContainer("DistanceToLine13"),
+
+                new AngleDataContainer("AngleMarioToV1"),
+                new AngleDataContainer("DeltaAngleMarioToV1", AngleViewModeType.Signed),
+                new AngleDataContainer("AngleV1ToMario"),
+                new AngleDataContainer("AngleMarioToV2"),
+                new AngleDataContainer("DeltaAngleMarioToV2", AngleViewModeType.Signed),
+                new AngleDataContainer("AngleV2ToMario"),
+                new AngleDataContainer("AngleMarioToV3"),
+                new AngleDataContainer("DeltaAngleMarioToV3", AngleViewModeType.Signed),
+                new AngleDataContainer("AngleV3ToMario"),
+
                 new AngleDataContainer("AngleV1ToV2"),
                 new AngleDataContainer("AngleV2ToV1"),
                 new AngleDataContainer("AngleV2ToV3"),
@@ -335,6 +346,13 @@ namespace SM64_Diagnostic.Managers
 
             _closestVertex = disToV.IndexOfMin() + 1;
 
+            double angleMarioToV1 = MoreMath.AngleTo_AngleUnits(marioX, marioZ, v1X, v1Z);
+            double angleV1ToMario = MoreMath.AngleTo_AngleUnits(v1X, v1Z, marioX, marioZ);
+            double angleMarioToV2 = MoreMath.AngleTo_AngleUnits(marioX, marioZ, v2X, v2Z);
+            double angleV2ToMario = MoreMath.AngleTo_AngleUnits(v2X, v2Z, marioX, marioZ);
+            double angleMarioToV3 = MoreMath.AngleTo_AngleUnits(marioX, marioZ, v3X, v3Z);
+            double angleV3ToMario = MoreMath.AngleTo_AngleUnits(v3X, v3Z, marioX, marioZ);
+
             foreach (IDataContainer specialVar in _specialWatchVars)
             {
                 switch (specialVar.SpecialName)
@@ -516,6 +534,34 @@ namespace SM64_Diagnostic.Managers
                             (specialVar as DataContainer).Text = Math.Round(signedDist, 3).ToString();
                         }
                         goto case "CheckTriangleExists";
+
+                    case "AngleMarioToV1":
+                        (specialVar as AngleDataContainer).AngleValue = angleMarioToV1;
+                        goto case "CheckTriangleExistsAngle";
+                    case "DeltaAngleMarioToV1":
+                        (specialVar as AngleDataContainer).AngleValue = marioAngle - angleMarioToV1;
+                        goto case "CheckTriangleExistsAngle";
+                    case "AngleV1ToMario":
+                        (specialVar as AngleDataContainer).AngleValue = angleV1ToMario;
+                        goto case "CheckTriangleExistsAngle";
+                    case "AngleMarioToV2":
+                        (specialVar as AngleDataContainer).AngleValue = angleMarioToV2;
+                        goto case "CheckTriangleExistsAngle";
+                    case "DeltaAngleMarioToV2":
+                        (specialVar as AngleDataContainer).AngleValue = marioAngle - angleMarioToV2;
+                        goto case "CheckTriangleExistsAngle";
+                    case "AngleV2ToMario":
+                        (specialVar as AngleDataContainer).AngleValue = angleV2ToMario;
+                        goto case "CheckTriangleExistsAngle";
+                    case "AngleMarioToV3":
+                        (specialVar as AngleDataContainer).AngleValue = angleMarioToV3;
+                        goto case "CheckTriangleExistsAngle";
+                    case "DeltaAngleMarioToV3":
+                        (specialVar as AngleDataContainer).AngleValue = marioAngle - angleMarioToV3;
+                        goto case "CheckTriangleExistsAngle";
+                    case "AngleV3ToMario":
+                        (specialVar as AngleDataContainer).AngleValue = angleV3ToMario;
+                        goto case "CheckTriangleExistsAngle";
 
                     case "AngleV1ToV2":
                         (specialVar as AngleDataContainer).AngleValue = MoreMath.AngleTo_AngleUnits(v1X, v1Z, v2X, v2Z);
