@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -249,6 +249,7 @@ namespace SM64_Diagnostic
             this.buttonGotoVClosest = new System.Windows.Forms.Button();
             this.radioButtonTriCeiling = new System.Windows.Forms.RadioButton();
             this.checkBoxRepeatFirstVertex = new System.Windows.Forms.CheckBox();
+            this.checkBoxNeutralizeTriangle = new System.Windows.Forms.CheckBox();
             this.checkBoxRecordTriangleData = new System.Windows.Forms.CheckBox();
             this.checkBoxVertexMisalignment = new System.Windows.Forms.CheckBox();
             this.maskedTextBoxOtherTriangle = new System.Windows.Forms.MaskedTextBox();
@@ -746,8 +747,10 @@ namespace SM64_Diagnostic
             this.tabPageTesting = new System.Windows.Forms.TabPage();
             this.groupBoxStateTransfer = new System.Windows.Forms.GroupBox();
             this.checkBoxStateTransferOffsetTimers = new System.Windows.Forms.CheckBox();
+            this.betterTextboxStateTransferVar14Saved = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar13Saved = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar12Saved = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextboxStateTransferVar14Current = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar13Current = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar11Saved = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar12Current = new SM64_Diagnostic.BetterTextbox();
@@ -771,6 +774,7 @@ namespace SM64_Diagnostic
             this.betterTextboxStateTransferVar3Current = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar2Saved = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxStateTransferVar5Current = new SM64_Diagnostic.BetterTextbox();
+            this.labelStateTransferVar14Name = new System.Windows.Forms.Label();
             this.betterTextboxStateTransferVar1Saved = new SM64_Diagnostic.BetterTextbox();
             this.labelStateTransferVar13Name = new System.Windows.Forms.Label();
             this.betterTextboxStateTransferVar2Current = new SM64_Diagnostic.BetterTextbox();
@@ -866,10 +870,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.labelStateTransferVar14Name = new System.Windows.Forms.Label();
-            this.betterTextboxStateTransferVar14Current = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextboxStateTransferVar14Saved = new SM64_Diagnostic.BetterTextbox();
-            this.checkBoxNeutralizeTriangle = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1195,7 +1195,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 316);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 317);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1260,7 +1260,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 153);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 154);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2260,7 +2260,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(690, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(693, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2798,7 +2798,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(699, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(702, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageHud
@@ -2942,7 +2942,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(791, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(794, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3323,7 +3323,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(701, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(704, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3700,6 +3700,16 @@ namespace SM64_Diagnostic
             this.checkBoxRepeatFirstVertex.Text = "Repeat First Vertex";
             this.checkBoxRepeatFirstVertex.UseVisualStyleBackColor = true;
             // 
+            // checkBoxNeutralizeTriangle
+            // 
+            this.checkBoxNeutralizeTriangle.AutoSize = true;
+            this.checkBoxNeutralizeTriangle.Location = new System.Drawing.Point(6, 425);
+            this.checkBoxNeutralizeTriangle.Name = "checkBoxNeutralizeTriangle";
+            this.checkBoxNeutralizeTriangle.Size = new System.Drawing.Size(114, 17);
+            this.checkBoxNeutralizeTriangle.TabIndex = 12;
+            this.checkBoxNeutralizeTriangle.Text = "Neutralize Triangle";
+            this.checkBoxNeutralizeTriangle.UseVisualStyleBackColor = true;
+            // 
             // checkBoxRecordTriangleData
             // 
             this.checkBoxRecordTriangleData.AutoSize = true;
@@ -3805,7 +3815,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(698, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(701, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -3935,7 +3945,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
-            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(479, 460);
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(482, 460);
             this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4298,7 +4308,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7272,7 +7282,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(250, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(253, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7375,7 +7385,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMisc.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMisc.Name = "NoTearFlowLayoutPanelMisc";
-            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(778, 457);
+            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(781, 457);
             this.NoTearFlowLayoutPanelMisc.TabIndex = 5;
             // 
             // tabPageDebug
@@ -7636,7 +7646,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelDebug.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelDebug.Name = "noTearFlowLayoutPanelDebug";
-            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(518, 455);
+            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(521, 455);
             this.noTearFlowLayoutPanelDebug.TabIndex = 26;
             // 
             // tabPageMap
@@ -7837,7 +7847,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(689, 430);
+            this.glControlMap.Size = new System.Drawing.Size(692, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -8318,7 +8328,7 @@ namespace SM64_Diagnostic
             this.glControlModelView.BackColor = System.Drawing.Color.Black;
             this.glControlModelView.Location = new System.Drawing.Point(3, 5);
             this.glControlModelView.Name = "glControlModelView";
-            this.glControlModelView.Size = new System.Drawing.Size(472, 451);
+            this.glControlModelView.Size = new System.Drawing.Size(475, 451);
             this.glControlModelView.TabIndex = 0;
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
@@ -8391,8 +8401,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -8563,7 +8573,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(969, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(972, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -8662,7 +8672,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(591, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(594, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -9525,7 +9535,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(469, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(472, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -10140,6 +10150,14 @@ namespace SM64_Diagnostic
             this.checkBoxStateTransferOffsetTimers.Text = "Offset Timers";
             this.checkBoxStateTransferOffsetTimers.UseVisualStyleBackColor = true;
             // 
+            // betterTextboxStateTransferVar14Saved
+            // 
+            this.betterTextboxStateTransferVar14Saved.Location = new System.Drawing.Point(182, 381);
+            this.betterTextboxStateTransferVar14Saved.Name = "betterTextboxStateTransferVar14Saved";
+            this.betterTextboxStateTransferVar14Saved.Size = new System.Drawing.Size(60, 20);
+            this.betterTextboxStateTransferVar14Saved.TabIndex = 28;
+            this.betterTextboxStateTransferVar14Saved.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // betterTextboxStateTransferVar13Saved
             // 
             this.betterTextboxStateTransferVar13Saved.Location = new System.Drawing.Point(182, 356);
@@ -10155,6 +10173,15 @@ namespace SM64_Diagnostic
             this.betterTextboxStateTransferVar12Saved.Size = new System.Drawing.Size(60, 20);
             this.betterTextboxStateTransferVar12Saved.TabIndex = 28;
             this.betterTextboxStateTransferVar12Saved.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextboxStateTransferVar14Current
+            // 
+            this.betterTextboxStateTransferVar14Current.Location = new System.Drawing.Point(117, 381);
+            this.betterTextboxStateTransferVar14Current.Name = "betterTextboxStateTransferVar14Current";
+            this.betterTextboxStateTransferVar14Current.Size = new System.Drawing.Size(60, 20);
+            this.betterTextboxStateTransferVar14Current.TabIndex = 28;
+            this.betterTextboxStateTransferVar14Current.Text = "100";
+            this.betterTextboxStateTransferVar14Current.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // betterTextboxStateTransferVar13Current
             // 
@@ -10354,6 +10381,17 @@ namespace SM64_Diagnostic
             this.betterTextboxStateTransferVar5Current.TabIndex = 28;
             this.betterTextboxStateTransferVar5Current.Text = "100";
             this.betterTextboxStateTransferVar5Current.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelStateTransferVar14Name
+            // 
+            this.labelStateTransferVar14Name.AutoSize = true;
+            this.labelStateTransferVar14Name.Location = new System.Drawing.Point(5, 384);
+            this.labelStateTransferVar14Name.MinimumSize = new System.Drawing.Size(110, 2);
+            this.labelStateTransferVar14Name.Name = "labelStateTransferVar14Name";
+            this.labelStateTransferVar14Name.Size = new System.Drawing.Size(110, 13);
+            this.labelStateTransferVar14Name.TabIndex = 18;
+            this.labelStateTransferVar14Name.Text = "Animation Timer:";
+            this.labelStateTransferVar14Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // betterTextboxStateTransferVar1Saved
             // 
@@ -11428,62 +11466,24 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // labelStateTransferVar14Name
-            // 
-            this.labelStateTransferVar14Name.AutoSize = true;
-            this.labelStateTransferVar14Name.Location = new System.Drawing.Point(5, 384);
-            this.labelStateTransferVar14Name.MinimumSize = new System.Drawing.Size(110, 2);
-            this.labelStateTransferVar14Name.Name = "labelStateTransferVar14Name";
-            this.labelStateTransferVar14Name.Size = new System.Drawing.Size(110, 13);
-            this.labelStateTransferVar14Name.TabIndex = 18;
-            this.labelStateTransferVar14Name.Text = "Animation Timer:";
-            this.labelStateTransferVar14Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // betterTextboxStateTransferVar14Current
-            // 
-            this.betterTextboxStateTransferVar14Current.Location = new System.Drawing.Point(117, 381);
-            this.betterTextboxStateTransferVar14Current.Name = "betterTextboxStateTransferVar14Current";
-            this.betterTextboxStateTransferVar14Current.Size = new System.Drawing.Size(60, 20);
-            this.betterTextboxStateTransferVar14Current.TabIndex = 28;
-            this.betterTextboxStateTransferVar14Current.Text = "100";
-            this.betterTextboxStateTransferVar14Current.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // betterTextboxStateTransferVar14Saved
-            // 
-            this.betterTextboxStateTransferVar14Saved.Location = new System.Drawing.Point(182, 381);
-            this.betterTextboxStateTransferVar14Saved.Name = "betterTextboxStateTransferVar14Saved";
-            this.betterTextboxStateTransferVar14Saved.Size = new System.Drawing.Size(60, 20);
-            this.betterTextboxStateTransferVar14Saved.TabIndex = 28;
-            this.betterTextboxStateTransferVar14Saved.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // checkBoxNeutralizeTriangle
-            // 
-            this.checkBoxNeutralizeTriangle.AutoSize = true;
-            this.checkBoxNeutralizeTriangle.Location = new System.Drawing.Point(6, 425);
-            this.checkBoxNeutralizeTriangle.Name = "checkBoxNeutralizeTriangle";
-            this.checkBoxNeutralizeTriangle.Size = new System.Drawing.Size(114, 17);
-            this.checkBoxNeutralizeTriangle.TabIndex = 12;
-            this.checkBoxNeutralizeTriangle.Text = "Neutralize Triangle";
-            this.checkBoxNeutralizeTriangle.UseVisualStyleBackColor = true;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 741);
             this.Controls.Add(this.panelConnect);
+            this.Controls.Add(this.buttonShowTopPane);
+            this.Controls.Add(this.buttonShowTopBottomPane);
+            this.Controls.Add(this.buttonShowBottomPane);
+            this.Controls.Add(this.buttonShowRightPane);
+            this.Controls.Add(this.buttonShowLeftRightPane);
+            this.Controls.Add(this.buttonShowLeftPane);
             this.Controls.Add(this.buttonReadOnly);
             this.Controls.Add(this.buttonDisconnect);
             this.Controls.Add(this.labelVersionNumber);
             this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.labelProcessSelect);
             this.Controls.Add(this.labelFpsCounter);
-            this.Controls.Add(this.buttonShowLeftPane);
-            this.Controls.Add(this.buttonShowLeftRightPane);
-            this.Controls.Add(this.buttonShowBottomPane);
-            this.Controls.Add(this.buttonShowRightPane);
-            this.Controls.Add(this.buttonShowTopBottomPane);
-            this.Controls.Add(this.buttonShowTopPane);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
