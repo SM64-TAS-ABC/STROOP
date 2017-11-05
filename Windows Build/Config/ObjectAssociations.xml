@@ -3140,8 +3140,14 @@
     <SpawnCode gfxId="0x64"/>
     <Image path="Swooper.png"/>
     <MapImage path="Swooper Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" address="0xFE" offset="Object" isAngle="true">Target Angle</Data>
     <Data groupList="ObjectSpecific" type="byte" address="0x45" offset="Object">Wing Flap</Data>
+    <Data groupList="ObjectSpecific" type="short" address="0xDA" offset="Object" isAngle="true">Roll (Facing)</Data>
+    <Data groupList="ObjectSpecific" type="ushort" address="0xFE" offset="Object" isAngle="true">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="ushort" address="0xCA" offset="Object" isAngle="true">Yaw (Moving)</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="AngleObjectToMario">Angle Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" offset="Special" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" type="short" address="0x11A" offset="Object" isAngle="true">Yaw Velocity</Data>
+    <Data groupList="ObjectSpecific" type="int" addressUS="0x8032D5D4" addressJP="0x8032C694" offset="Relative">Global Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130046DC" name="Fly Guy (Doesn't Shoot Fire)" subType="0">
     <SpawnCode gfxId="0xDC"/>
