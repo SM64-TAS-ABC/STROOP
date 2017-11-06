@@ -3618,7 +3618,9 @@
     <MapImage path="TTC Moving Bar Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" address="0xF4" offset="Object">Timer Max</Data>
     <Data groupList="ObjectSpecific" type="int" address="0xF8" offset="Object">Countdown</Data>
-    <Data groupList="ObjectSpecific" type="float" address="0xFC" offset="Object">Protrusion Distance</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0xFC" offset="Object">Protrusion Dist</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0x104" offset="Object">Prev Protrusion Dist</Data>
+    <Data groupList="ObjectSpecific" type="float" address="0x100" offset="Object">Protrusion Speed</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004CCC" name="TTC Rotating Cog" subType="0">
     <SpawnCode gfxId="0x3c"/>
