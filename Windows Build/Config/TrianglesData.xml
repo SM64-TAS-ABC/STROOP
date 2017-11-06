@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrianglesData>
   <Data offset="Special" specialType="Classification">Classification</Data>
+
   <Data type="ushort" address="0x00" offset="Triangle">Surface Type</Data>
-  <Data type="byte" address="0x02" offset="Triangle" useHex="true">Flags</Data>
-  <Data type="byte" address="0x03" offset="Triangle">Exerted Direction</Data>
-  <Data type="short" address="0x04" offset="Triangle" useHex="true">Wall Projection</Data>
+  <Data type="byte" address="0x04" offset="Triangle" useHex="true">Flags</Data>
   <Data type="byte" address="0x04" offset="Triangle" isBool="true" mask="0x08">X Projection</Data>
   <Data type="byte" address="0x04" offset="Triangle" isBool="true" invertBool="true" mask="0x08">Z Projection</Data>
-  
+  <Data type="byte" address="0x05" offset="Triangle">Area</Data>
+  <Data type="byte" address="0x03" offset="Triangle">Exertion Angle</Data>
+  <Data type="byte" address="0x02" offset="Triangle">Exertion Force Index</Data>
+
   <Data type="short" address="0x06" offset="Triangle">Y Min</Data>
   <Data type="short" address="0x08" offset="Triangle">Y Max</Data>
   <Data type="short" address="0x0A" offset="Triangle">X1</Data>
