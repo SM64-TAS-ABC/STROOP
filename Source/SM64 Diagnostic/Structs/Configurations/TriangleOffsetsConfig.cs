@@ -9,16 +9,25 @@ namespace SM64_Diagnostic.Structs.Configurations
     public struct TriangleOffsetsConfig
     {
         public uint SurfaceType;
+        public uint ExertionForceIndex;
+        public uint ExertionAngle;
         public uint Flags;
-        public uint WindDirection;
+        public uint Area;
         public uint YMin;
         public uint YMax;
-        public uint WallProjection;
-        public uint X1, Y1, Z1;
-        public uint X2, Y2, Z2;
-        public uint X3, Y3, Z3;
-        public uint NormX, NormY, NormZ;
-        public uint Offset;
+        public uint X1;
+        public uint Y1;
+        public uint Z1;
+        public uint X2;
+        public uint Y2;
+        public uint Z2;
+        public uint X3;
+        public uint Y3;
+        public uint Z3;
+        public uint NormX;
+        public uint NormY;
+        public uint NormZ;
+        public uint NormOffset;
         public uint AssociatedObject;
 
         public uint TriangleListPointerAddress;

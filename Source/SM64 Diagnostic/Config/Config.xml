@@ -205,26 +205,27 @@
     <FreeMovementOffValueJP>0x97D1</FreeMovementOffValueJP>
   </Debug>
   <TriangleOffsets>
-    <surfaceType>0x00</surfaceType>
-    <flags>0x02</flags>
-    <windDirection>0x03</windDirection>
-    <wallProjection>0x04</wallProjection>
-    <yMin>0x06</yMin>
-    <yMax>0x08</yMax>
-    <x1>0x0A</x1>
-    <y1>0x0C</y1>
-    <z1>0x0E</z1>
-    <x2>0x10</x2>
-    <y2>0x12</y2>
-    <z2>0x14</z2>
-    <x3>0x16</x3>
-    <y3>0x18</y3>
-    <z3>0x1A</z3>
-    <normX>0x1C</normX>
-    <normY>0x20</normY>
-    <normZ>0x24</normZ>
-    <offset>0x28</offset>
-    <associatedObject>0x2C</associatedObject>
+    <SurfaceType>0x00</SurfaceType>
+    <ExertionForceIndex>0x02</ExertionForceIndex>
+    <ExertionAngle>0x03</ExertionAngle>
+    <Flags>0x04</Flags>
+    <Area>0x05</Area>
+    <YMin>0x06</YMin>
+    <YMax>0x08</YMax>
+    <X1>0x0A</X1>
+    <Y1>0x0C</Y1>
+    <Z1>0x0E</Z1>
+    <X2>0x10</X2>
+    <Y2>0x12</Y2>
+    <Z2>0x14</Z2>
+    <X3>0x16</X3>
+    <Y3>0x18</Y3>
+    <Z3>0x1A</Z3>
+    <NormX>0x1C</NormX>
+    <NormY>0x20</NormY>
+    <NormZ>0x24</NormZ>
+    <NormOffset>0x28</NormOffset>
+    <AssociatedObject>0x2C</AssociatedObject>
     
     <TriangleListPointerAddress>0x8038EE9C</TriangleListPointerAddress>
     <LevelTriangleCountAddressUS>0x80361178</LevelTriangleCountAddressUS>

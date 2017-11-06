@@ -268,7 +268,7 @@ namespace SM64_Diagnostic.Managers
             normX = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormX);
             normY = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormY);
             normZ = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormZ);
-            normOffset = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.Offset);
+            normOffset = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormOffset);
 
             var triangleInfoForm = new TriangleInfoForm();
             triangleInfoForm.SetEquation(normX, normY, normZ, normOffset);
@@ -310,7 +310,7 @@ namespace SM64_Diagnostic.Managers
             float normX = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormX);
             float normY = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormY);
             float normZ = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormZ);
-            float normOffset = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.Offset);
+            float normOffset = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormOffset);
 
             double uphillAngleRadians = Math.PI + Math.Atan2(normX, normZ);
             if (normX == 0 && normZ == 0)

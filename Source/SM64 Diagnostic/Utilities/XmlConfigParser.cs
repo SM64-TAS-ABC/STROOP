@@ -611,64 +611,67 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "surfaceType":
+                                case "SurfaceType":
                                     Config.TriangleOffsets.SurfaceType = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "flags":
+                                case "ExertionForceIndex":
+                                    Config.TriangleOffsets.ExertionForceIndex = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "ExertionAngle":
+                                    Config.TriangleOffsets.ExertionAngle = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "Flags":
                                     Config.TriangleOffsets.Flags = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "windDirection":
-                                    Config.TriangleOffsets.WindDirection = ParsingUtilities.ParseHex(subElement.Value);
+                                case "Area":
+                                    Config.TriangleOffsets.Area = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "wallProjection":
-                                    Config.TriangleOffsets.WallProjection = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "yMin":
+                                case "YMin":
                                     Config.TriangleOffsets.YMin = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "yMax":
+                                case "YMax":
                                     Config.TriangleOffsets.YMax = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "x1":
+                                case "X1":
                                     Config.TriangleOffsets.X1 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "y1":
+                                case "Y1":
                                     Config.TriangleOffsets.Y1 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "z1":
+                                case "Z1":
                                     Config.TriangleOffsets.Z1 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "x2":
+                                case "X2":
                                     Config.TriangleOffsets.X2 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "y2":
+                                case "Y2":
                                     Config.TriangleOffsets.Y2 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "z2":
+                                case "Z2":
                                     Config.TriangleOffsets.Z2 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "x3":
+                                case "X3":
                                     Config.TriangleOffsets.X3 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "y3":
+                                case "Y3":
                                     Config.TriangleOffsets.Y3 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "z3":
+                                case "Z3":
                                     Config.TriangleOffsets.Z3 = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "normX":
+                                case "NormX":
                                     Config.TriangleOffsets.NormX = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "normY":
+                                case "NormY":
                                     Config.TriangleOffsets.NormY = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "normZ":
+                                case "NormZ":
                                     Config.TriangleOffsets.NormZ = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "offset":
-                                    Config.TriangleOffsets.Offset = ParsingUtilities.ParseHex(subElement.Value);
+                                case "NormOffset":
+                                    Config.TriangleOffsets.NormOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "associatedObject":
+                                case "AssociatedObject":
                                     Config.TriangleOffsets.AssociatedObject = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 

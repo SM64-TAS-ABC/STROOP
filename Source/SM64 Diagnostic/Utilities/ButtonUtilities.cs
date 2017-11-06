@@ -798,7 +798,7 @@ namespace SM64_Diagnostic.Utilities
             normX = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
             normY = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
             normZ = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
-            oldNormOffset = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
+            oldNormOffset = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormOffset);
 
             // Get Mario position
             float marioX, marioY, marioZ;
@@ -829,7 +829,7 @@ namespace SM64_Diagnostic.Utilities
             success &= Config.Stream.SetValue(v3Y, triangleAddress + Config.TriangleOffsets.Y3);
             success &= Config.Stream.SetValue(yMin, triangleAddress + Config.TriangleOffsets.YMin);
             success &= Config.Stream.SetValue(yMax, triangleAddress + Config.TriangleOffsets.YMax);
-            success &= Config.Stream.SetValue(normOffset, triangleAddress + Config.TriangleOffsets.Offset);
+            success &= Config.Stream.SetValue(normOffset, triangleAddress + Config.TriangleOffsets.NormOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -889,7 +889,7 @@ namespace SM64_Diagnostic.Utilities
             success &= Config.Stream.SetValue(normX, triangleAddress + Config.TriangleOffsets.NormX);
             success &= Config.Stream.SetValue(normY, triangleAddress + Config.TriangleOffsets.NormY);
             success &= Config.Stream.SetValue(normZ, triangleAddress + Config.TriangleOffsets.NormZ);
-            success &= Config.Stream.SetValue(normOffset, triangleAddress + Config.TriangleOffsets.Offset);
+            success &= Config.Stream.SetValue(normOffset, triangleAddress + Config.TriangleOffsets.NormOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -907,7 +907,7 @@ namespace SM64_Diagnostic.Utilities
             normX = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
             normY = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
             normZ = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
-            oldNormOffset = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
+            oldNormOffset = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormOffset);
 
             ushort relativeAngle = MoreMath.getUphillAngle(normX, normY, normZ);
             HandleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
@@ -932,7 +932,7 @@ namespace SM64_Diagnostic.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(newNormOffset, triangleAddress + Config.TriangleOffsets.Offset);
+            success &= Config.Stream.SetValue(newNormOffset, triangleAddress + Config.TriangleOffsets.NormOffset);
             success &= Config.Stream.SetValue(newX1, triangleAddress + Config.TriangleOffsets.X1);
             success &= Config.Stream.SetValue(newY1, triangleAddress + Config.TriangleOffsets.Y1);
             success &= Config.Stream.SetValue(newZ1, triangleAddress + Config.TriangleOffsets.Z1);
@@ -958,7 +958,7 @@ namespace SM64_Diagnostic.Utilities
             normX = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
             normY = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
             normZ = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
-            oldNormOffset = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.Offset);
+            oldNormOffset = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormOffset);
 
             float newNormOffset = oldNormOffset - normalChange;
 
@@ -984,7 +984,7 @@ namespace SM64_Diagnostic.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(newNormOffset, triangleAddress + Config.TriangleOffsets.Offset);
+            success &= Config.Stream.SetValue(newNormOffset, triangleAddress + Config.TriangleOffsets.NormOffset);
             success &= Config.Stream.SetValue(newX1, triangleAddress + Config.TriangleOffsets.X1);
             success &= Config.Stream.SetValue(newY1, triangleAddress + Config.TriangleOffsets.Y1);
             success &= Config.Stream.SetValue(newZ1, triangleAddress + Config.TriangleOffsets.Z1);
