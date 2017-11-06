@@ -73,6 +73,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static WaypointConfig Waypoint;
         public static CameraHackConfig CameraHack;
         public static TriangleOffsetsConfig TriangleOffsets;
+        public static TriangleConfig Triangle;
         public static ActionTable MarioActions;
         public static AnimationTable MarioAnimations;
         public static PendulumSwingTable PendulumSwings;

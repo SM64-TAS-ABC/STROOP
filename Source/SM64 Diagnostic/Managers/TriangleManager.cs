@@ -584,7 +584,7 @@ namespace SM64_Diagnostic.Managers
 
                     case "ObjectTriCount":
                         (specialVar as DataContainer).Text =
-                            (Config.Stream.GetInt32(Config.TriangleOffsets.TotalTriangleCountAddress) - Config.Stream.GetInt32(Config.TriangleOffsets.LevelTriangleCountAddress)).ToString();
+                            (Config.Stream.GetInt32(Config.Triangle.TotalTriangleCountAddress) - Config.Stream.GetInt32(Config.Triangle.LevelTriangleCountAddress)).ToString();
                         break;
 
                     // Special

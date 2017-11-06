@@ -674,24 +674,32 @@ namespace SM64_Diagnostic.Utilities
                                 case "AssociatedObject":
                                     Config.TriangleOffsets.AssociatedObject = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-
-                                case "TriangleListPointerAddress":
-                                    Config.TriangleOffsets.TriangleListPointerAddress = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "LevelTriangleCountAddressUS":
-                                    Config.TriangleOffsets.LevelTriangleCountAddressUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "LevelTriangleCountAddressJP":
-                                    Config.TriangleOffsets.LevelTriangleCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "TotalTriangleCountAddressUS":
-                                    Config.TriangleOffsets.TotalTriangleCountAddressUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "TotalTriangleCountAddressJP":
-                                    Config.TriangleOffsets.TotalTriangleCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
                             }
                         } 
+                        break;
+
+                    case "Triangle":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "TriangleListPointerAddress":
+                                    Config.Triangle.TriangleListPointerAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "LevelTriangleCountAddressUS":
+                                    Config.Triangle.LevelTriangleCountAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "LevelTriangleCountAddressJP":
+                                    Config.Triangle.LevelTriangleCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "TotalTriangleCountAddressUS":
+                                    Config.Triangle.TotalTriangleCountAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "TotalTriangleCountAddressJP":
+                                    Config.Triangle.TotalTriangleCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                            }
+                        }
                         break;
 
                     case "Camera":
