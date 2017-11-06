@@ -186,6 +186,10 @@ namespace SM64_Diagnostic.Controls
                 case OffsetType.Triangle:
                     output = new List<uint> { TriangleManager.Instance.TriangleAddress };
                     break;
+                case OffsetType.TriangleExertionForceTable:
+                    uint exertionForceIndex = Config.Stream.GetByte(TriangleManager.Instance.TriangleAddress + Config.TriangleOffsets.ExertionForceIndex);
+                    output = new List<uint> { Config.Triangle.ExertionForceTableAddress + 2 * exertionForceIndex };
+                    break;
                 case OffsetType.InputCurrent:
                     output = new List<uint> { Config.Input.CurrentInputAddress };
                     break;

@@ -155,6 +155,7 @@ namespace SM64_Diagnostic.Structs
             File,
             Object,
             Triangle,
+            TriangleExertionForceTable,
             InputCurrent,
             InputJustPressed,
             InputBuffered,

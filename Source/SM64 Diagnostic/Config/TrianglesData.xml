@@ -9,6 +9,7 @@
   <Data type="byte" address="0x05" offset="Triangle">Area</Data>
   <Data type="byte" address="0x03" offset="Triangle">Exertion Angle</Data>
   <Data type="byte" address="0x02" offset="Triangle">Exertion Force Index</Data>
+  <Data type="short" address="0x00" offset="TriangleExertionForceTable">Exertion Force</Data>
 
   <Data type="short" address="0x06" offset="Triangle">Y Min</Data>
   <Data type="short" address="0x08" offset="Triangle">Y Max</Data>
