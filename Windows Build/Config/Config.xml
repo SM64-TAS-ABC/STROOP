@@ -233,7 +233,7 @@
     <LevelTriangleCountAddressJP>0x8035FE08</LevelTriangleCountAddressJP>
     <TotalTriangleCountAddressUS>0x80361170</TotalTriangleCountAddressUS>
     <TotalTriangleCountAddressJP>0x8035FE00</TotalTriangleCountAddressJP>
-    <ExertionForceTableAddressUS>0x8032D4F4</ExertionForceTableAddressUS>
+    <ExertionForceTableAddressUS>0x8032DD38</ExertionForceTableAddressUS>
     <ExertionForceTableAddressJP>0x8032CDD8</ExertionForceTableAddressJP>
   </Triangle>
   <Camera>
