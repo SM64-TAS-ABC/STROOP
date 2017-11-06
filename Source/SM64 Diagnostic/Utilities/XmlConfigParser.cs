@@ -698,6 +698,12 @@ namespace SM64_Diagnostic.Utilities
                                 case "TotalTriangleCountAddressJP":
                                     Config.Triangle.TotalTriangleCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "ExertionForceTableAddressUS":
+                                    Config.Triangle.ExertionForceTableAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "ExertionForceTableAddressJP":
+                                    Config.Triangle.ExertionForceTableAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;

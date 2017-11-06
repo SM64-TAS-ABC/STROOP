@@ -17,5 +17,9 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint TotalTriangleCountAddress { get { return Config.SwitchRomVersion(TotalTriangleCountAddressUS, TotalTriangleCountAddressJP); } }
         public uint TotalTriangleCountAddressUS;
         public uint TotalTriangleCountAddressJP;
+
+        public uint ExertionForceTableAddress { get { return Config.SwitchRomVersion(ExertionForceTableAddressUS, ExertionForceTableAddressJP); } }
+        public uint ExertionForceTableAddressUS;
+        public uint ExertionForceTableAddressJP;
     }
 }
