@@ -33,10 +33,6 @@ namespace SM64_Diagnostic.Managers
         Label _recordTriangleCountLabel;
         List<short[]> _triangleData;
 
-        Button _showLevelTris;
-        Button _showObjTris;
-        Button _showAllTris;
-
         public uint TriangleAddress
         {
             get
@@ -239,9 +235,12 @@ namespace SM64_Diagnostic.Managers
 
             _repeatFirstVertexCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxRepeatFirstVertex"] as CheckBox;
 
-            _showLevelTris = splitContainerTriangles.Panel1.Controls["buttonTriangleShowLevelTris"] as Button;
-            _showObjTris = splitContainerTriangles.Panel1.Controls["buttonTriangleShowObjTris"] as Button;
-            _showAllTris = splitContainerTriangles.Panel1.Controls["buttonTriangleShowAllTris"] as Button;
+            (splitContainerTriangles.Panel1.Controls["buttonTriangleShowLevelTris"] as Button).Click
+                += (sender, e) => ShowLevelTriangles();
+            (splitContainerTriangles.Panel1.Controls["buttonTriangleShowObjTris"] as Button).Click
+                += (sender, e) => ShowObjectTriangles();
+            (splitContainerTriangles.Panel1.Controls["buttonTriangleShowAllTris"] as Button).Click
+                += (sender, e) => ShowAllTriangles();
         }
 
         private short[] GetTriangleCoordinates(uint? nullableTriAddress = null)
@@ -300,6 +299,21 @@ namespace SM64_Diagnostic.Managers
         private void ClearTriangleData()
         {
             _triangleData.Clear();
+        }
+
+        private void ShowLevelTriangles()
+        {
+
+        }
+
+        private void ShowObjectTriangles()
+        {
+
+        }
+
+        private void ShowAllTriangles()
+        {
+
         }
 
         private void ProcessSpecialVars()
