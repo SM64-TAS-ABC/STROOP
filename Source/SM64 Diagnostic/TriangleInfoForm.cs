@@ -80,6 +80,12 @@ namespace SM64_Diagnostic
                     coordinate => StringifyCoordinate(coordinate)));
         }
 
+        public void SetTriangles(List<TriangleStruct> triangleList)
+        {
+            labelTitle.Text = "Triangles";
+            textBoxTriangleInfo.Text = triangleList.Count.ToString();
+        }
+
         private String StringifyCoordinates(short[] coordinates, bool repeatCoordinates = false)
         {
             if (coordinates.Length != 9) throw new ArgumentOutOfRangeException();

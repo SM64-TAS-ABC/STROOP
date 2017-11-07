@@ -329,7 +329,16 @@ namespace SM64_Diagnostic.Managers
 
         private void ShowTriangleRange(uint startAddress, int numTriangles)
         {
-
+            List<TriangleStruct> triangleList = new List<TriangleStruct>();
+            for (int i = 0; i < numTriangles; i++)
+            {
+                uint address = startAddress + (uint)(i * Config.Triangle.TriangleStructSize);
+                TriangleStruct triangle = new TriangleStruct(address);
+                triangleList.Add(triangle);
+            }
+            var triangleInfoForm = new TriangleInfoForm();
+            triangleInfoForm.SetTriangles(triangleList);
+            triangleInfoForm.ShowDialog();
         }
 
         private void ProcessSpecialVars()
