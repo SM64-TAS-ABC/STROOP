@@ -23,6 +23,20 @@ namespace SM64_Diagnostic.Managers
         CheckBox _useMisalignmentOffsetCheckbox;
         int _closestVertex = 0;
 
+        public enum TriangleMode { Floor, Wall, Ceiling, Other };
+        public TriangleMode Mode = TriangleMode.Floor;
+
+        CheckBox _checkBoxNeutralizeTriangle;
+
+        CheckBox _recordTriangleDataCheckbox;
+        CheckBox _repeatFirstVertexCheckbox;
+        Label _recordTriangleCountLabel;
+        List<short[]> _triangleData;
+
+        Button _showLevelTris;
+        Button _showObjTris;
+        Button _showAllTris;
+
         public uint TriangleAddress
         {
             get
@@ -111,16 +125,6 @@ namespace SM64_Diagnostic.Managers
                 new DataContainer("ObjectTriCount"),
             };
         }
-
-        public enum TriangleMode {Floor, Wall, Ceiling, Other};
-        public TriangleMode Mode = TriangleMode.Floor;
-
-        CheckBox _checkBoxNeutralizeTriangle;
-
-        CheckBox _recordTriangleDataCheckbox;
-        CheckBox _repeatFirstVertexCheckbox;
-        Label _recordTriangleCountLabel;
-        List<short[]> _triangleData;
 
         /// <summary>
         /// Manages illumanati
@@ -234,6 +238,10 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => ClearTriangleData();
 
             _repeatFirstVertexCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxRepeatFirstVertex"] as CheckBox;
+
+            _showLevelTris = splitContainerTriangles.Panel1.Controls["buttonTriangleShowLevelTris"] as Button;
+            _showObjTris = splitContainerTriangles.Panel1.Controls["buttonTriangleShowObjTris"] as Button;
+            _showAllTris = splitContainerTriangles.Panel1.Controls["buttonTriangleShowAllTris"] as Button;
         }
 
         private short[] GetTriangleCoordinates(uint? nullableTriAddress = null)
