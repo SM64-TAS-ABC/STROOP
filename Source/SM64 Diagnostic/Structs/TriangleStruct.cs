@@ -38,6 +38,33 @@ namespace SM64_Diagnostic.Structs
 
         public readonly uint AssociatedObject;
 
+        private readonly List<Object> fieldList;
+
+        private readonly static List<string> fieldNameList = new List<string> {
+                "Address",
+                "SurfaceType",
+                "ExertionForceIndex",
+                "ExertionAngle",
+                "Flags",
+                "Area",
+                "YMin",
+                "YMax",
+                "X1",
+                "Y1",
+                "Z1",
+                "X2",
+                "Y2",
+                "Z2",
+                "X3",
+                "Y3",
+                "Z3",
+                "NormX",
+                "NormY",
+                "NormZ",
+                "NormOffset",
+                "AssociatedObject",
+            };
+
         public TriangleStruct(uint triangleAddress)
         {
             Address = triangleAddress;
@@ -67,6 +94,36 @@ namespace SM64_Diagnostic.Structs
             NormOffset = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormOffset);
 
             AssociatedObject = Config.Stream.GetUInt32(triangleAddress + Config.TriangleOffsets.AssociatedObject);
+
+            fieldList = new List<object> {
+                Address,
+                SurfaceType,
+                ExertionForceIndex,
+                ExertionAngle,
+                Flags,
+                Area,
+                YMin,
+                YMax,
+                X1,
+                Y1,
+                Z1,
+                X2,
+                Y2,
+                Z2,
+                X3,
+                Y3,
+                Z3,
+                NormX,
+                NormY,
+                NormZ,
+                NormOffset,
+                AssociatedObject,
+            };
+        }
+
+        public override string ToString()
+        {
+            return String.Join("\t", fieldList);
         }
     }
 }
