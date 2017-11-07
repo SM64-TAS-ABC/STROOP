@@ -303,15 +303,31 @@ namespace SM64_Diagnostic.Managers
 
         private void ShowLevelTriangles()
         {
-
+            uint triangleListAddress = Config.Triangle.TriangleListPointerAddress;
+            int numLevelTriangles = Config.Stream.GetInt32(Config.Triangle.LevelTriangleCountAddress);
+            ShowTriangleRange(triangleListAddress, numLevelTriangles);
         }
 
         private void ShowObjectTriangles()
         {
+            uint triangleListAddress = Config.Triangle.TriangleListPointerAddress;
+            int numTotalTriangles = Config.Stream.GetInt32(Config.Triangle.TotalTriangleCountAddress);
+            int numLevelTriangles = Config.Stream.GetInt32(Config.Triangle.LevelTriangleCountAddress);
 
+            uint objectTriangleListAddress = triangleListAddress + (uint)(numLevelTriangles * Config.Triangle.TriangleStructSize);
+            int numObjectTriangles = numTotalTriangles - numLevelTriangles;
+
+            ShowTriangleRange(objectTriangleListAddress, numObjectTriangles);
         }
 
         private void ShowAllTriangles()
+        {
+            uint triangleListAddress = Config.Triangle.TriangleListPointerAddress;
+            int numTotalTriangles = Config.Stream.GetInt32(Config.Triangle.TotalTriangleCountAddress);
+            ShowTriangleRange(triangleListAddress, numTotalTriangles);
+        }
+
+        private void ShowTriangleRange(uint startAddress, int numTriangles)
         {
 
         }
