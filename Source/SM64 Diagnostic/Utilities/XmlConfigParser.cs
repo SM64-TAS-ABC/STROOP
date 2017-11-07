@@ -623,8 +623,8 @@ namespace SM64_Diagnostic.Utilities
                                 case "Flags":
                                     Config.TriangleOffsets.Flags = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "Area":
-                                    Config.TriangleOffsets.Area = ParsingUtilities.ParseHex(subElement.Value);
+                                case "Room":
+                                    Config.TriangleOffsets.Room = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "YMin":
                                     Config.TriangleOffsets.YMin = ParsingUtilities.ParseHex(subElement.Value);

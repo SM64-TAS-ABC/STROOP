@@ -209,7 +209,7 @@
     <ExertionForceIndex>0x02</ExertionForceIndex>
     <ExertionAngle>0x03</ExertionAngle>
     <Flags>0x04</Flags>
-    <Area>0x05</Area>
+    <Room>0x05</Room>
     <YMin>0x06</YMin>
     <YMax>0x08</YMax>
     <X1>0x0A</X1>

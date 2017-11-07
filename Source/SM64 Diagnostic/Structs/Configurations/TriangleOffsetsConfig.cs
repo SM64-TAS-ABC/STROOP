@@ -12,7 +12,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint ExertionForceIndex;
         public uint ExertionAngle;
         public uint Flags;
-        public uint Area;
+        public uint Room;
         public uint YMin;
         public uint YMax;
         public uint X1;

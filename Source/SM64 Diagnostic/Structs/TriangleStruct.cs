@@ -16,7 +16,7 @@ namespace SM64_Diagnostic.Structs
         public readonly byte ExertionForceIndex;
         public readonly byte ExertionAngle;
         public readonly byte Flags;
-        public readonly byte Area;
+        public readonly byte Room;
 
         public readonly short YMin;
         public readonly short YMax;
@@ -44,7 +44,7 @@ namespace SM64_Diagnostic.Structs
                 "ExertionForceIndex",
                 "ExertionAngle",
                 "Flags",
-                "Area",
+                "Room",
                 "YMin",
                 "YMax",
                 "X1",
@@ -73,7 +73,7 @@ namespace SM64_Diagnostic.Structs
             ExertionForceIndex = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.ExertionForceIndex);
             ExertionAngle = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.ExertionAngle);
             Flags = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.Flags);
-            Area = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.Area);
+            Room = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.Room);
 
             YMin = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.YMin);
             YMax = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.YMax);
@@ -101,7 +101,7 @@ namespace SM64_Diagnostic.Structs
                 ExertionForceIndex,
                 ExertionAngle,
                 "0x" + Flags.ToString("X2"),
-                Area,
+                Room,
                 YMin,
                 YMax,
                 X1,
