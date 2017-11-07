@@ -38,8 +38,6 @@ namespace SM64_Diagnostic.Structs
 
         public readonly uint AssociatedObject;
 
-        private readonly List<Object> FieldList;
-
         public readonly static List<string> FieldNameList = new List<string> {
                 "Address",
                 "SurfaceType",
@@ -64,6 +62,8 @@ namespace SM64_Diagnostic.Structs
                 "NormOffset",
                 "AssociatedObject",
             };
+
+        private readonly List<Object> FieldValueList;
 
         public TriangleStruct(uint triangleAddress)
         {
@@ -95,12 +95,12 @@ namespace SM64_Diagnostic.Structs
 
             AssociatedObject = Config.Stream.GetUInt32(triangleAddress + Config.TriangleOffsets.AssociatedObject);
 
-            FieldList = new List<object> {
-                Address,
+            FieldValueList = new List<object> {
+                "0x" + Address.ToString("X8"),
                 SurfaceType,
                 ExertionForceIndex,
                 ExertionAngle,
-                Flags,
+                "0x" + Flags.ToString("X2"),
                 Area,
                 YMin,
                 YMax,
@@ -117,13 +117,13 @@ namespace SM64_Diagnostic.Structs
                 NormY,
                 NormZ,
                 NormOffset,
-                AssociatedObject,
+                "0x" + AssociatedObject.ToString("X8"),
             };
         }
 
         public override string ToString()
         {
-            return String.Join("\t", FieldList);
+            return String.Join("\t", FieldValueList);
         }
 
         public static string GetFieldNameString()
