@@ -602,16 +602,6 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        private double FixAngle(double angle)
-        {
-            angle = Math.Round(angle);
-            angle %= 65536;
-            if (angle > 32768)
-                angle -= 65536;
-
-            return angle;
-        }
-
         private void Mode_Click(object sender, EventArgs e, TriangleMode mode)
         {
             if (!(sender as RadioButton).Checked)
