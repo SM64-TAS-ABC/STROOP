@@ -228,6 +228,7 @@
     <AssociatedObject>0x2C</AssociatedObject>
   </TriangleOffsets>
   <Triangle>
+    <TriangleStructSize>0x30</TriangleStructSize>
     <TriangleListPointerAddress>0x8038EE9C</TriangleListPointerAddress>
     <LevelTriangleCountAddressUS>0x80361178</LevelTriangleCountAddressUS>
     <LevelTriangleCountAddressJP>0x8035FE08</LevelTriangleCountAddressJP>

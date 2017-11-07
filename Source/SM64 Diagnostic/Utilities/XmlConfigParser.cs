@@ -683,6 +683,9 @@ namespace SM64_Diagnostic.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
+                                case "TriangleStructSize":
+                                    Config.Triangle.TriangleStructSize = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                                 case "TriangleListPointerAddress":
                                     Config.Triangle.TriangleListPointerAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

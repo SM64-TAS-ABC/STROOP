@@ -8,6 +8,7 @@ namespace SM64_Diagnostic.Structs.Configurations
 {
     public struct TriangleConfig
     {
+        public uint TriangleStructSize;
         public uint TriangleListPointerAddress;
 
         public uint LevelTriangleCountAddress { get { return Config.SwitchRomVersion(LevelTriangleCountAddressUS, LevelTriangleCountAddressJP); } }
