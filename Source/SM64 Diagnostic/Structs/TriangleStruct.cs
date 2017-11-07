@@ -10,6 +10,8 @@ namespace SM64_Diagnostic.Structs
 {
     public class TriangleStruct
     {
+        public readonly uint Address;
+
         public readonly ushort SurfaceType;
         public readonly byte ExertionForceIndex;
         public readonly byte ExertionAngle;
@@ -38,6 +40,8 @@ namespace SM64_Diagnostic.Structs
 
         public TriangleStruct(uint triangleAddress)
         {
+            Address = triangleAddress;
+
             SurfaceType = Config.Stream.GetUInt16(triangleAddress + Config.TriangleOffsets.SurfaceType);
             ExertionForceIndex = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.ExertionForceIndex);
             ExertionAngle = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.ExertionAngle);
