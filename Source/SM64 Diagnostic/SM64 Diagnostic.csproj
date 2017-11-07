@@ -232,6 +232,7 @@
     <Compile Include="Utilities\Kernal32NativeMethods.cs" />
     <Compile Include="Utilities\MoreMath.cs" />
     <Compile Include="Utilities\ControlUtilities.cs" />
+    <Compile Include="Utilities\TriangleUtilities.cs" />
     <Compile Include="Utilities\ScriptParser.cs" />
     <Compile Include="Controls\Map\TriangleMapObject.cs" />
     <Compile Include="Structs\WatchExpression.cs" />

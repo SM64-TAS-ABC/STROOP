@@ -236,11 +236,11 @@ namespace SM64_Diagnostic.Managers
             _repeatFirstVertexCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxRepeatFirstVertex"] as CheckBox;
 
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowLevelTris"] as Button).Click
-                += (sender, e) => ShowLevelTriangles();
+                += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetLevelTriangles());
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowObjTris"] as Button).Click
-                += (sender, e) => ShowObjectTriangles();
+                += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetObjectTriangles());
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowAllTris"] as Button).Click
-                += (sender, e) => ShowAllTriangles();
+                += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetAllTriangles());
         }
 
         private short[] GetTriangleCoordinates(uint? nullableTriAddress = null)
@@ -299,46 +299,6 @@ namespace SM64_Diagnostic.Managers
         private void ClearTriangleData()
         {
             _triangleData.Clear();
-        }
-
-        private void ShowLevelTriangles()
-        {
-            uint triangleListAddress = Config.Stream.GetUInt32(Config.Triangle.TriangleListPointerAddress);
-            int numLevelTriangles = Config.Stream.GetInt32(Config.Triangle.LevelTriangleCountAddress);
-            ShowTriangleRange(triangleListAddress, numLevelTriangles);
-        }
-
-        private void ShowObjectTriangles()
-        {
-            uint triangleListAddress = Config.Stream.GetUInt32(Config.Triangle.TriangleListPointerAddress);
-            int numTotalTriangles = Config.Stream.GetInt32(Config.Triangle.TotalTriangleCountAddress);
-            int numLevelTriangles = Config.Stream.GetInt32(Config.Triangle.LevelTriangleCountAddress);
-
-            uint objectTriangleListAddress = triangleListAddress + (uint)(numLevelTriangles * Config.Triangle.TriangleStructSize);
-            int numObjectTriangles = numTotalTriangles - numLevelTriangles;
-
-            ShowTriangleRange(objectTriangleListAddress, numObjectTriangles);
-        }
-
-        private void ShowAllTriangles()
-        {
-            uint triangleListAddress = Config.Stream.GetUInt32(Config.Triangle.TriangleListPointerAddress);
-            int numTotalTriangles = Config.Stream.GetInt32(Config.Triangle.TotalTriangleCountAddress);
-            ShowTriangleRange(triangleListAddress, numTotalTriangles);
-        }
-
-        private void ShowTriangleRange(uint startAddress, int numTriangles)
-        {
-            List<TriangleStruct> triangleList = new List<TriangleStruct>();
-            for (int i = 0; i < numTriangles; i++)
-            {
-                uint address = startAddress + (uint)(i * Config.Triangle.TriangleStructSize);
-                TriangleStruct triangle = new TriangleStruct(address);
-                triangleList.Add(triangle);
-            }
-            var triangleInfoForm = new TriangleInfoForm();
-            triangleInfoForm.SetTriangles(triangleList);
-            triangleInfoForm.ShowDialog();
         }
 
         private void ProcessSpecialVars()
