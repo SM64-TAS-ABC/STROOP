@@ -83,7 +83,12 @@ namespace SM64_Diagnostic
         public void SetTriangles(List<TriangleStruct> triangleList)
         {
             labelTitle.Text = "Triangles";
-            textBoxTriangleInfo.Text = triangleList.Count.ToString();
+            string text = TriangleStruct.GetFieldNameString() + "\n";
+            foreach (TriangleStruct triangle in triangleList)
+            {
+                text += triangle + "\r\n";
+            }
+            textBoxTriangleInfo.Text = text;
         }
 
         private String StringifyCoordinates(short[] coordinates, bool repeatCoordinates = false)

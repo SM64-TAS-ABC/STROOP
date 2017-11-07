@@ -38,9 +38,9 @@ namespace SM64_Diagnostic.Structs
 
         public readonly uint AssociatedObject;
 
-        private readonly List<Object> fieldList;
+        private readonly List<Object> FieldList;
 
-        private readonly static List<string> fieldNameList = new List<string> {
+        public readonly static List<string> FieldNameList = new List<string> {
                 "Address",
                 "SurfaceType",
                 "ExertionForceIndex",
@@ -95,7 +95,7 @@ namespace SM64_Diagnostic.Structs
 
             AssociatedObject = Config.Stream.GetUInt32(triangleAddress + Config.TriangleOffsets.AssociatedObject);
 
-            fieldList = new List<object> {
+            FieldList = new List<object> {
                 Address,
                 SurfaceType,
                 ExertionForceIndex,
@@ -123,7 +123,12 @@ namespace SM64_Diagnostic.Structs
 
         public override string ToString()
         {
-            return String.Join("\t", fieldList);
+            return String.Join("\t", FieldList);
+        }
+
+        public static string GetFieldNameString()
+        {
+            return String.Join("\t", FieldNameList);
         }
     }
 }
