@@ -56,6 +56,7 @@
   <Data groupList="Expanded" type="float" address="0xE8" offset="Object">Floor Height</Data>
   <Data groupList="Expanded" type="float" address="0xE4" offset="Object">Gravity</Data>
   <Data groupList="Expanded" type="int" address="0x180" offset="Object">Damage</Data>
+  <Data groupList="Expanded" type="int" address="0x1A0" offset="Object">Native Room</Data>
   <Data groupList="Expanded" offset="Special" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data groupList="Expanded" type="uint" address="0x68" offset="Object" useHex="true" isObject="true">Parent Object</Data>
   <Data groupList="Expanded" type="uint" address="0x020C" offset="Object" useHex="true">Behavior Script</Data>
