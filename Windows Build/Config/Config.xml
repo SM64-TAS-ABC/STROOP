@@ -132,7 +132,7 @@
     <HeldObjectPointerOffset>0x7C</HeldObjectPointerOffset>
     <UsedObjectPointerOffset>0x80</UsedObjectPointerOffset>
     <CeilingYOffset>0x6C</CeilingYOffset>
-    <GroundYOffset>0x70</GroundYOffset>
+    <FloorYOffset>0x70</FloorYOffset>
     <FloorTriangleOffset>0x68</FloorTriangleOffset>
     <WallTriangleOffset>0x60</WallTriangleOffset>
     <CeilingTriangleOffset>0x64</CeilingTriangleOffset>

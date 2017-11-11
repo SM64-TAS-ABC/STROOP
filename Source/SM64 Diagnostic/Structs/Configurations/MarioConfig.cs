@@ -34,7 +34,7 @@ namespace SM64_Diagnostic.Structs
         public uint CeilingTriangleOffset;
         public uint HSpeedOffset;
         public uint VSpeedOffset;
-        public uint GroundYOffset;
+        public uint FloorYOffset;
         public uint CeilingYOffset;
         public uint StructSize;
         public uint SlidingSpeedXOffset;

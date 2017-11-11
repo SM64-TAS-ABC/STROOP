@@ -160,7 +160,7 @@ namespace SM64_Diagnostic.Managers
         public void ProcessSpecialVars()
         {
             UInt32 floorTriangle = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
-            var floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.GroundYOffset);
+            var floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
 
             float hSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
 
@@ -341,7 +341,7 @@ namespace SM64_Diagnostic.Managers
             // Update intended next position map object position
             float normY = floorTriangle == 0 ? 1 : Config.Stream.GetSingle(floorTriangle + Config.TriangleOffsets.NormY);
             float hSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
-            float floorY = Config.Stream.GetSingle(0x8033B1E0);
+            float floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
             bool aboveFloor = y > floorY + 0.001;
             double multiplier = aboveFloor ? 1 : normY;
             double defactoSpeed = hSpeed * multiplier;

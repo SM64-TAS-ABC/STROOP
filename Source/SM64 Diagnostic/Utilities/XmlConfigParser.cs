@@ -410,8 +410,8 @@ namespace SM64_Diagnostic.Utilities
                                 case "CeilingYOffset":
                                     Config.Mario.CeilingYOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
-                                case "GroundYOffset":
-                                    Config.Mario.GroundYOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                case "FloorYOffset":
+                                    Config.Mario.FloorYOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
                                 case "HSpeedOffset":
                                     Config.Mario.HSpeedOffset = ParsingUtilities.ParseHex(subElement.Value);

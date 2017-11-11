@@ -303,7 +303,7 @@ namespace SM64_Diagnostic.Managers
 
         private void ProcessSpecialVars()
         {
-            var floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.GroundYOffset);
+            var floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
 
             // Get Mario position
             float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
