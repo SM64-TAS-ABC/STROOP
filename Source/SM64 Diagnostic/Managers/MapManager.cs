@@ -240,7 +240,7 @@ namespace SM64_Diagnostic.Managers
             float intendedNextPositionRelX = PuUtilities.GetRelativePuPosition(_intendedNextPositionMapObj.X, intendedNextPositionPuX);
             float intendedNextPositionRelZ = PuUtilities.GetRelativePuPosition(_intendedNextPositionMapObj.Z, intendedNextPositionPuZ);
             var intendedNextPositionCoord = new PointF(intendedNextPositionRelX, intendedNextPositionRelZ);
-            _intendedNextPositionMapObj.Draw = _mapGui.MapShowHolp.Checked;
+            _intendedNextPositionMapObj.Draw = _mapGui.MapShowIntendedNextPosition.Checked;
             _intendedNextPositionMapObj.LocationOnContol = CalculateLocationOnControl(intendedNextPositionCoord, mapView);
 
             int cameraPuX = PuUtilities.GetPUFromCoord(_cameraMapObj.X);

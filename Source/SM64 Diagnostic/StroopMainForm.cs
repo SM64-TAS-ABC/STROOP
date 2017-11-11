@@ -111,6 +111,7 @@ namespace SM64_Diagnostic
             mapGui.MapShowInactiveObjects = checkBoxMapShowInactive;
             mapGui.MapShowMario = checkBoxMapShowMario;
             mapGui.MapShowHolp = checkBoxMapShowHolp;
+            mapGui.MapShowIntendedNextPosition = checkBoxMapShowIntendedNextPosition;
             mapGui.MapShowCamera = checkBoxMapShowCamera;
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
             mapGui.MapShowCeilingTriangle = checkBoxMapShowCeiling;
