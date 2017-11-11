@@ -25,6 +25,7 @@ namespace SM64_Diagnostic.Managers
         MapGraphics _mapGraphics;
         MapObject _marioMapObj;
         MapObject _holpMapObj;
+        MapObject _intendedNextPositionMapObj;
         MapObject _cameraMapObj;
         TriangleMapObject _floorTriangleMapObj;
         TriangleMapObject _ceilingTriangleMapObj;
@@ -53,6 +54,14 @@ namespace SM64_Diagnostic.Managers
             get
             {
                 return _holpMapObj;
+            }
+        }
+
+        public MapObject IntendedNextPositionMapObject
+        {
+            get
+            {
+                return _intendedNextPositionMapObj;
             }
         }
 
@@ -101,6 +110,7 @@ namespace SM64_Diagnostic.Managers
             _marioMapObj.UsesRotation = true;
 
             _holpMapObj = new MapObject(Config.ObjectAssociations.HolpImage, 2);
+            _intendedNextPositionMapObj = new MapObject(Config.ObjectAssociations.IntendedNextPositionImage, 2);
 
             _cameraMapObj = new MapObject(Config.ObjectAssociations.CameraMapImage, 1);
             _cameraMapObj.UsesRotation = true;
@@ -122,6 +132,7 @@ namespace SM64_Diagnostic.Managers
             // Add Mario's map object
             _mapGraphics.AddMapObject(_marioMapObj);
             _mapGraphics.AddMapObject(_holpMapObj);
+            _mapGraphics.AddMapObject(_intendedNextPositionMapObj);
             _mapGraphics.AddMapObject(_cameraMapObj);
             _mapGraphics.AddMapObject(_floorTriangleMapObj);
             _mapGraphics.AddMapObject(_ceilingTriangleMapObj);
@@ -217,13 +228,20 @@ namespace SM64_Diagnostic.Managers
             _marioMapObj.Draw = _mapGui.MapShowMario.Checked;
 
             int holpPuX = PuUtilities.GetPUFromCoord(_holpMapObj.X);
-            int holpPuY = PuUtilities.GetPUFromCoord(_holpMapObj.Y);
             int holpPuZ = PuUtilities.GetPUFromCoord(_holpMapObj.Z);
             float holpRelX = PuUtilities.GetRelativePuPosition(_holpMapObj.X, holpPuX);
             float holpRelZ = PuUtilities.GetRelativePuPosition(_holpMapObj.Z, holpPuZ);
             var holpCoord = new PointF(holpRelX, holpRelZ);
             _holpMapObj.Draw = _mapGui.MapShowHolp.Checked;
             _holpMapObj.LocationOnContol = CalculateLocationOnControl(holpCoord, mapView);
+
+            int intendedNextPositionPuX = PuUtilities.GetPUFromCoord(_intendedNextPositionMapObj.X);
+            int intendedNextPositionPuZ = PuUtilities.GetPUFromCoord(_intendedNextPositionMapObj.Z);
+            float intendedNextPositionRelX = PuUtilities.GetRelativePuPosition(_intendedNextPositionMapObj.X, intendedNextPositionPuX);
+            float intendedNextPositionRelZ = PuUtilities.GetRelativePuPosition(_intendedNextPositionMapObj.Z, intendedNextPositionPuZ);
+            var intendedNextPositionCoord = new PointF(intendedNextPositionRelX, intendedNextPositionRelZ);
+            _intendedNextPositionMapObj.Draw = _mapGui.MapShowHolp.Checked;
+            _intendedNextPositionMapObj.LocationOnContol = CalculateLocationOnControl(intendedNextPositionCoord, mapView);
 
             int cameraPuX = PuUtilities.GetPUFromCoord(_cameraMapObj.X);
             int cameraPuY = PuUtilities.GetPUFromCoord(_cameraMapObj.Y);

@@ -338,6 +338,19 @@ namespace SM64_Diagnostic.Managers
             }
             _mapManager.CeilingTriangleMapObject.Show = (ceilingTriangle != 0x00);
 
+            // Update intended next position map object position
+            float normY = floorTriangle == 0 ? 1 : Config.Stream.GetSingle(floorTriangle + Config.TriangleOffsets.NormY);
+            float hSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
+            float floorY = Config.Stream.GetSingle(0x8033B1E0);
+            bool aboveFloor = y > floorY + 0.001;
+            double multiplier = aboveFloor ? 1 : normY;
+            double defactoSpeed = hSpeed * multiplier;
+            double defactoSpeedQStep = defactoSpeed * 0.25;
+            ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+            (double xDist, double zDist) = MoreMath.GetComponentsFromVector(defactoSpeedQStep, marioAngle);
+            _mapManager.IntendedNextPositionMapObject.X = (float)(MoreMath.MaybeNegativeModulus(x + xDist, 65536));
+            _mapManager.IntendedNextPositionMapObject.Z = (float)(MoreMath.MaybeNegativeModulus(z + zDist, 65536));
+
             // Update camera map object position
             _mapManager.CameraMapObject.X = cameraX;
             _mapManager.CameraMapObject.Y = cameraY;
