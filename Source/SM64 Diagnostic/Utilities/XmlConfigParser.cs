@@ -1447,7 +1447,7 @@ namespace SM64_Diagnostic.Utilities
 
             // Create Behavior-ImagePath list
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", overlayImageDir = "",
-                marioImagePath = "", holpMapImagePath = "", hudImagePath = "", debugImagePath = "",
+                marioImagePath = "", holpMapImagePath = "", intendedNextPositionImagePath = "", hudImagePath = "", debugImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
                 stoodOnOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
@@ -1523,6 +1523,10 @@ namespace SM64_Diagnostic.Utilities
                         holpMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
+                    case "IntendedNextPosition":
+                        intendedNextPositionImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+                    
                     case "Overlays":
                         foreach (XElement subElement in element.Elements())
                         {
@@ -1681,6 +1685,7 @@ namespace SM64_Diagnostic.Utilities
             assoc.DebugImage = Image.FromFile(imageDir + debugImagePath);
             assoc.MiscImage = Image.FromFile(imageDir + miscImagePath);
             assoc.HolpImage = Image.FromFile(mapImageDir + holpMapImagePath);
+            assoc.IntendedNextPositionImage = Image.FromFile(mapImageDir + intendedNextPositionImagePath);
             assoc.CameraMapImage = Image.FromFile(mapImageDir + cameraMapImagePath);
             assoc.MarioBehavior = marioBehavior;
             objectSlotManagerGui.SelectedObjectOverlayImage = Image.FromFile(overlayImageDir + selectedOverlayImagePath);
