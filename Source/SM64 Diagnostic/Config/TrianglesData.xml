@@ -6,6 +6,8 @@
   <Data type="byte" address="0x04" offset="Triangle" useHex="true">Flags</Data>
   <Data type="byte" address="0x04" offset="Triangle" isBool="true" mask="0x08">X Projection</Data>
   <Data type="byte" address="0x04" offset="Triangle" isBool="true" invertBool="true" mask="0x08">Z Projection</Data>
+  <Data type="byte" address="0x04" offset="Triangle" useHex="true" isBool="true" mask="0x01">Belongs to Object</Data>
+  <Data type="byte" address="0x04" offset="Triangle" useHex="true" isBool="true" mask="0x02">No Cam Collision</Data>
   <Data type="byte" address="0x05" offset="Triangle">Room</Data>
   <Data type="byte" address="0x03" offset="Triangle">Exertion Angle</Data>
   <Data type="byte" address="0x02" offset="Triangle">Exertion Force Index</Data>
@@ -45,7 +47,6 @@
   <Data type="float" address="0x20" offset="Triangle">Normal Y</Data>
   <Data type="float" address="0x24" offset="Triangle">Normal Z</Data>
   <Data type="float" address="0x28" offset="Triangle">Normal Offset</Data>
-  <Data type="byte" address="0x04" offset="Triangle" useHex="true" isBool="true" mask="0x01">Belongs to Object</Data>
   <Data type="uint" address="0x2C" offset="Triangle" useHex="true" isObject="true">Associated Object</Data>
   
   <Data type="uint" address="0x68" offset="Mario" useHex="true" color="#ffeccc">Floor Triangle</Data>
