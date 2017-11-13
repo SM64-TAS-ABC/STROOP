@@ -17,6 +17,13 @@ namespace SM64_Diagnostic.Utilities
             return GetTrianglesInRange(triangleListAddress, numLevelTriangles);
         }
 
+        public static List<uint> GetLevelTriangleAddresses()
+        {
+            uint triangleListAddress = Config.Stream.GetUInt32(Config.Triangle.TriangleListPointerAddress);
+            int numLevelTriangles = Config.Stream.GetInt32(Config.Triangle.LevelTriangleCountAddress);
+            return GetTriangleAddressesInRange(triangleListAddress, numLevelTriangles);
+        }
+
         public static List<TriangleStruct> GetObjectTriangles()
         {
             uint triangleListAddress = Config.Stream.GetUInt32(Config.Triangle.TriangleListPointerAddress);
@@ -48,6 +55,17 @@ namespace SM64_Diagnostic.Utilities
             return triangleList;
         }
 
+        public static List<uint> GetTriangleAddressesInRange(uint startAddress, int numTriangles)
+        {
+            List<uint> triangleAddressList = new List<uint>();
+            for (int i = 0; i < numTriangles; i++)
+            {
+                uint address = startAddress + (uint)(i * Config.Triangle.TriangleStructSize);
+                triangleAddressList.Add(address);
+            }
+            return triangleAddressList;
+        }
+
         public static void ShowTriangles(List<TriangleStruct> triangleList)
         {
             TriangleInfoForm triangleInfoForm = new TriangleInfoForm();
@@ -57,12 +75,20 @@ namespace SM64_Diagnostic.Utilities
 
         public static void NeutralizeAllTriangles()
         {
-
+            List<uint> triangleAddresses = GetLevelTriangleAddresses();
+            triangleAddresses.ForEach(address =>
+            {
+                ButtonUtilities.NeutralizeTriangle(address);
+            });
         }
 
         public static void DisableAllCamCollision()
         {
-
+            List<uint> triangleAddresses = GetLevelTriangleAddresses();
+            triangleAddresses.ForEach(address =>
+            {
+                ButtonUtilities.DisableCamCollisionForTriangle(address);
+            });
         }
     }
 }

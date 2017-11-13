@@ -852,6 +852,23 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool DisableCamCollisionForTriangle(uint triangleAddress)
+        {
+            if (triangleAddress == 0x0000)
+                return false;
+
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            byte oldFlags = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.Flags);
+            byte newFlags = MoreMath.ApplyValueToMaskedByte(oldFlags, 0x02, true);
+            success &= Config.Stream.SetValue(newFlags, triangleAddress + Config.TriangleOffsets.Flags);
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
         public static bool AnnihilateTriangle(uint triangleAddress)
         {
             if (triangleAddress == 0x0000)
