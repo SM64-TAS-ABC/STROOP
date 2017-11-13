@@ -54,5 +54,15 @@ namespace SM64_Diagnostic.Utilities
             triangleInfoForm.SetTriangles(triangleList);
             triangleInfoForm.ShowDialog();
         }
+
+        public static void NeutralizeAllTriangles()
+        {
+
+        }
+
+        public static void DisableAllCamCollision()
+        {
+
+        }
     }
 }

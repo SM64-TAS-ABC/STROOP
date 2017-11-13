@@ -241,6 +241,11 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetObjectTriangles());
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowAllTris"] as Button).Click
                 += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetAllTriangles());
+
+            (splitContainerTriangles.Panel1.Controls["buttonTriangleNeutralizeAllTriangles"] as Button).Click
+                += (sender, e) => TriangleUtilities.NeutralizeAllTriangles();
+            (splitContainerTriangles.Panel1.Controls["buttonTriangleDisableAllCamCollision"] as Button).Click
+                += (sender, e) => TriangleUtilities.DisableAllCamCollision();
         }
 
         private short[] GetTriangleCoordinates(uint? nullableTriAddress = null)
