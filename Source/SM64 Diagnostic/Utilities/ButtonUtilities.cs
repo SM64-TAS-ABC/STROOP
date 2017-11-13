@@ -862,7 +862,7 @@ namespace SM64_Diagnostic.Utilities
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             byte oldFlags = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.Flags);
-            byte newFlags = MoreMath.ApplyValueToMaskedByte(oldFlags, 0x02, true);
+            byte newFlags = MoreMath.ApplyValueToMaskedByte(oldFlags, Config.TriangleOffsets.NoCamCollisionMask, true);
             success &= Config.Stream.SetValue(newFlags, triangleAddress + Config.TriangleOffsets.Flags);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();

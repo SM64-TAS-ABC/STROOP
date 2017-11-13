@@ -226,6 +226,10 @@
     <NormZ>0x24</NormZ>
     <NormOffset>0x28</NormOffset>
     <AssociatedObject>0x2C</AssociatedObject>
+
+    <BelongsToObjectMask>0x01</BelongsToObjectMask>
+    <NoCamCollisionMask>0x02</NoCamCollisionMask>
+    <ProjectionMask>0x08</ProjectionMask>
   </TriangleOffsets>
   <Triangle>
     <TriangleStructSize>0x30</TriangleStructSize>

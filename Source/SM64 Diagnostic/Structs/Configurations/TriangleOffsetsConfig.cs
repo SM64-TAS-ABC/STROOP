@@ -29,5 +29,9 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint NormZ;
         public uint NormOffset;
         public uint AssociatedObject;
+
+        public byte BelongsToObjectMask;
+        public byte NoCamCollisionMask;
+        public byte ProjectionMask;
     }
 }

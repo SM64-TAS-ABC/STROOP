@@ -674,6 +674,16 @@ namespace SM64_Diagnostic.Utilities
                                 case "AssociatedObject":
                                     Config.TriangleOffsets.AssociatedObject = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+
+                                case "BelongsToObjectMask":
+                                    Config.TriangleOffsets.BelongsToObjectMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "NoCamCollisionMask":
+                                    Config.TriangleOffsets.NoCamCollisionMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "ProjectionMask":
+                                    Config.TriangleOffsets.ProjectionMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         } 
                         break;
