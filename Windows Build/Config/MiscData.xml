@@ -25,6 +25,7 @@
   <Data type="int" addressUS="0x80361408" addressJP="0x80360098" offset="Relative">Snow Center X</Data>
   <Data type="int" addressUS="0x8036140C" addressJP="0x8036009C" offset="Relative">Snow Center Y</Data>
   <Data type="int" addressUS="0x80361410" addressJP="0x803600A0" offset="Relative">Snow Center Z</Data>
+  <Data type="short" addressUS="0x80180B06" addressJP="0x8017DC86" offset="Relative">JRB Ship Snow Type</Data>
   <Data type="short" addressUS="0x80184E8A" addressJP="0x80181FFA" offset="Relative">CCM Snow Type</Data>
   <Data type="short" addressUS="0x80170CF6" addressJP="0x8016DE76" offset="Relative">SL Snow Type</Data>
 
