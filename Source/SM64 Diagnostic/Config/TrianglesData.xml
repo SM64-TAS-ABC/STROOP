@@ -59,12 +59,17 @@
   <Data offset="Special" specialType="NormalDistAway" color="#e5ccff">Normal Dist Away</Data>
   <Data offset="Special" specialType="VerticalDistAway" color="#e5ccff">Vertical Dist Away</Data>
   <Data offset="Special" specialType="HeightOnSlope" color="#e5ccff">Height On Triangle</Data>
-
+  
   <Data type="uint" addressUS="0x8038EE9C" addressJP="0x8038EE9C" offset="Relative" useHex="true" color="#d0d0d0">Tri List Pointer</Data>
   <Data type="short" addressUS="0x8038EEA0" addressJP="0x8038EEA0" offset="Relative" color="#d0d0d0">Tri List Capacity</Data>
   <Data type="int" addressUS="0x80361178" addressJP="0x8035FE08" offset="Relative" color="#d0d0d0">Level Tri Count</Data>
   <Data offset="Special" specialType="ObjectTriCount" color="#d0d0d0">Object Tri Count</Data>
   <Data type="int" addressUS="0x80361170" addressJP="0x8035FE00" offset="Relative" color="#d0d0d0">Total Tri Count</Data>
+  
+  <Data type="uint" addressUS="0x8038EE98" addressJP="0x8038EE98" offset="Relative" useHex="true" color="#d0d0d0">Node List Pointer</Data>
+  <Data type="int" addressUS="0x80361174" addressJP="0x8035FE04" offset="Relative" color="#d0d0d0">Level Node Count</Data>
+  <Data offset="Special" specialType="ObjectNodeCount" color="#d0d0d0">Object Node Count</Data>
+  <Data type="int" addressUS="0x8036116C" addressJP="0x8035FDFC" offset="Relative" color="#d0d0d0">Total Node Count</Data>
   
   <Data offset="Special" specialType="DistanceToV1" color="#e5ccff">Dist to V1</Data>
   <Data offset="Special" specialType="YDistanceToV1" color="#e5ccff">YDist to V1</Data>

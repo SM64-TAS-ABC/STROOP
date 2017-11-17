@@ -696,6 +696,7 @@ namespace SM64_Diagnostic.Utilities
                                 case "TriangleStructSize":
                                     Config.Triangle.TriangleStructSize = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+
                                 case "TriangleListPointerAddress":
                                     Config.Triangle.TriangleListPointerAddress = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
@@ -711,6 +712,23 @@ namespace SM64_Diagnostic.Utilities
                                 case "TotalTriangleCountAddressJP":
                                     Config.Triangle.TotalTriangleCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+
+                                case "NodeListPointerAddress":
+                                    Config.Triangle.NodeListPointerAddress = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "LevelNodeCountAddressUS":
+                                    Config.Triangle.LevelNodeCountAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "LevelNodeCountAddressJP":
+                                    Config.Triangle.LevelNodeCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "TotalNodeCountAddressUS":
+                                    Config.Triangle.TotalNodeCountAddressUS = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+                                case "TotalNodeCountAddressJP":
+                                    Config.Triangle.TotalNodeCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
                                 case "ExertionForceTableAddressUS":
                                     Config.Triangle.ExertionForceTableAddressUS = ParsingUtilities.ParseHex(subElement.Value);
                                     break;

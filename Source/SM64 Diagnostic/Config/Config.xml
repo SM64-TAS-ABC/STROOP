@@ -233,11 +233,19 @@
   </TriangleOffsets>
   <Triangle>
     <TriangleStructSize>0x30</TriangleStructSize>
+    
     <TriangleListPointerAddress>0x8038EE9C</TriangleListPointerAddress>
     <LevelTriangleCountAddressUS>0x80361178</LevelTriangleCountAddressUS>
     <LevelTriangleCountAddressJP>0x8035FE08</LevelTriangleCountAddressJP>
     <TotalTriangleCountAddressUS>0x80361170</TotalTriangleCountAddressUS>
     <TotalTriangleCountAddressJP>0x8035FE00</TotalTriangleCountAddressJP>
+
+    <NodeListPointerAddress>0x8038EE98</NodeListPointerAddress>
+    <LevelNodeCountAddressUS>0x80361174</LevelNodeCountAddressUS>
+    <LevelNodeCountAddressJP>0x8035FE04</LevelNodeCountAddressJP>
+    <TotalNodeCountAddressUS>0x8036116C</TotalNodeCountAddressUS>
+    <TotalNodeCountAddressJP>0x8035FDFC</TotalNodeCountAddressJP>
+
     <ExertionForceTableAddressUS>0x8032DD38</ExertionForceTableAddressUS>
     <ExertionForceTableAddressJP>0x8032CDD8</ExertionForceTableAddressJP>
   </Triangle>

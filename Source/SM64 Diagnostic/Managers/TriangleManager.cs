@@ -119,6 +119,7 @@ namespace SM64_Diagnostic.Managers
                 new AngleDataContainer("AngleV3ToV1"),
 
                 new DataContainer("ObjectTriCount"),
+                new DataContainer("ObjectNodeCount"),
             };
         }
 
@@ -597,6 +598,10 @@ namespace SM64_Diagnostic.Managers
                     case "ObjectTriCount":
                         (specialVar as DataContainer).Text =
                             (Config.Stream.GetInt32(Config.Triangle.TotalTriangleCountAddress) - Config.Stream.GetInt32(Config.Triangle.LevelTriangleCountAddress)).ToString();
+                        break;
+                    case "ObjectNodeCount":
+                        (specialVar as DataContainer).Text =
+                            (Config.Stream.GetInt32(Config.Triangle.TotalNodeCountAddress) - Config.Stream.GetInt32(Config.Triangle.LevelNodeCountAddress)).ToString();
                         break;
 
                     // Special
