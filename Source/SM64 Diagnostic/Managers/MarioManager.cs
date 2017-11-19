@@ -264,6 +264,7 @@ namespace SM64_Diagnostic.Managers
             x = Config.Stream.GetSingle(marioAddress + Config.Mario.XOffset);
             y = Config.Stream.GetSingle(marioAddress + Config.Mario.YOffset);
             z = Config.Stream.GetSingle(marioAddress + Config.Mario.ZOffset);
+            ushort marioFacing = Config.Stream.GetUInt16(marioAddress + Config.Mario.YawFacingOffset);
             rot = (float) (((Config.Stream.GetUInt32(marioAddress + Config.Mario.RotationOffset) >> 16) % 65536) / 65536f * 360f); 
 
             // Update Mario map object
@@ -348,8 +349,14 @@ namespace SM64_Diagnostic.Managers
             double defactoSpeedQStep = defactoSpeed * 0.25;
             ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
             (double xDist, double zDist) = MoreMath.GetComponentsFromVector(defactoSpeedQStep, marioAngle);
-            _mapManager.IntendedNextPositionMapObject.X = (float)(MoreMath.MaybeNegativeModulus(x + xDist, 65536));
-            _mapManager.IntendedNextPositionMapObject.Z = (float)(MoreMath.MaybeNegativeModulus(z + zDist, 65536));
+            double intendedNextPositionX = MoreMath.MaybeNegativeModulus(x + xDist, 65536);
+            double intendedNextPositionZ = MoreMath.MaybeNegativeModulus(z + zDist, 65536);
+            _mapManager.IntendedNextPositionMapObject.X = (float)intendedNextPositionX;
+            _mapManager.IntendedNextPositionMapObject.Z = (float)intendedNextPositionZ;
+            bool marioStationary = x == intendedNextPositionX && z == intendedNextPositionZ;
+            double angleToIntendedNextPosition = MoreMath.AngleTo_AngleUnits(x, z, intendedNextPositionX, intendedNextPositionZ);
+            _mapManager.IntendedNextPositionMapObject.Rotation =
+                marioStationary ? (float)MoreMath.AngleUnitsToDegrees(marioAngle) : (float)MoreMath.AngleUnitsToDegrees(angleToIntendedNextPosition);
 
             // Update camera map object position
             _mapManager.CameraMapObject.X = cameraX;

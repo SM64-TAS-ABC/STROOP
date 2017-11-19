@@ -111,6 +111,7 @@ namespace SM64_Diagnostic.Managers
 
             _holpMapObj = new MapObject(Config.ObjectAssociations.HolpImage, 2);
             _intendedNextPositionMapObj = new MapObject(Config.ObjectAssociations.IntendedNextPositionImage, 2);
+            _intendedNextPositionMapObj.UsesRotation = true;
 
             _cameraMapObj = new MapObject(Config.ObjectAssociations.CameraMapImage, 1);
             _cameraMapObj.UsesRotation = true;
