@@ -355,8 +355,11 @@ namespace SM64_Diagnostic.Managers
             _mapManager.IntendedNextPositionMapObject.Z = (float)intendedNextPositionZ;
             bool marioStationary = x == intendedNextPositionX && z == intendedNextPositionZ;
             double angleToIntendedNextPosition = MoreMath.AngleTo_AngleUnits(x, z, intendedNextPositionX, intendedNextPositionZ);
+            /*
             _mapManager.IntendedNextPositionMapObject.Rotation =
                 marioStationary ? (float)MoreMath.AngleUnitsToDegrees(marioAngle) : (float)MoreMath.AngleUnitsToDegrees(angleToIntendedNextPosition);
+                */
+            _mapManager.IntendedNextPositionMapObject.Rotation = rot;
 
             // Update camera map object position
             _mapManager.CameraMapObject.X = cameraX;
