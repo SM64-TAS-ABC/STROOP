@@ -66,6 +66,23 @@ namespace SM64_Diagnostic.Utilities
             return numerator / denominator;
         }
 
+        public static double GetSignedDistanceFromPointToLine(
+            double pX, double pZ, double v1X, double v1Z, double v2X, double v2Z, double v3X, double v3Z, int p1Index, int p2Index)
+        {
+            double[] vX = new double[] { v1X, v2X, v3X };
+            double[] vZ = new double[] { v1Z, v2Z, v3Z };
+
+            double p1X = vX[p1Index - 1];
+            double p1Z = vZ[p1Index - 1];
+            double p2X = vX[p2Index - 1];
+            double p2Z = vZ[p2Index - 1];
+
+            double dist = MoreMath.GetDistanceFromPointToLine(pX, pZ, p1X, p1Z, p2X, p2Z);
+            bool insideTri = MoreMath.IsPointInsideTriangle(pX, pZ, v1X, v1Z, v2X, v2Z, v3X, v3Z);
+            double signedDist = dist * (insideTri ? 1 : -1);
+            return signedDist;
+        }
+
         public static double GetPlaneDistanceBetweenPoints(
             double pointX, double pointY, double pointZ, double startX, double startY, double startZ, double endX, double endY, double endZ)
         {
