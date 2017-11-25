@@ -67,7 +67,7 @@ namespace SM64_Diagnostic.Utilities
         }
 
         public static double GetSignedDistanceFromPointToLine(
-            double pX, double pZ, double v1X, double v1Z, double v2X, double v2Z, double v3X, double v3Z, double yNorm, int p1Index, int p2Index)
+            double pX, double pZ, double v1X, double v1Z, double v2X, double v2Z, double v3X, double v3Z, int p1Index, int p2Index)
         {
             double[] vX = new double[] { v1X, v2X, v3X };
             double[] vZ = new double[] { v1Z, v2Z, v3Z };
