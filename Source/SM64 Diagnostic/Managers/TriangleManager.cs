@@ -537,7 +537,7 @@ namespace SM64_Diagnostic.Managers
                         goto case "CheckTriangleExists";
                     case "DistanceToLine13":
                         {
-                            double signedDistToLine = MoreMath.GetSignedDistanceFromPointToLine(marioX, marioZ, v1X, v1Z, v2X, v2Z, v3X, v3Z, normY, 1, 3);
+                            double signedDistToLine = MoreMath.GetSignedDistanceFromPointToLine(marioX, marioZ, v1X, v1Z, v2X, v2Z, v3X, v3Z, normY, 3, 1);
                             (specialVar as DataContainer).Text = Math.Round(signedDistToLine, 3).ToString();
                         }
                         goto case "CheckTriangleExists";

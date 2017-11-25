@@ -78,8 +78,10 @@ namespace SM64_Diagnostic.Utilities
             double p2Z = vZ[p2Index - 1];
 
             double dist = MoreMath.GetDistanceFromPointToLine(pX, pZ, p1X, p1Z, p2X, p2Z);
-            bool insideTri = MoreMath.IsPointInsideTriangle(pX, pZ, v1X, v1Z, v2X, v2Z, v3X, v3Z);
-            double signedDist = dist * (insideTri ? 1 : -1);
+            bool leftOfLine = MoreMath.IsPointLeftOfLine(pX, pZ, p1X, p1Z, p2X, p2Z);
+            bool floorTri = MoreMath.IsPointLeftOfLine(v3X, v3Z, v1X, v1Z, v2X, v2Z);
+            bool onSideOfLineTowardsTri = floorTri == leftOfLine;
+            double signedDist = dist * (onSideOfLineTowardsTri ? 1 : -1);
             return signedDist;
         }
 
