@@ -83,6 +83,21 @@ namespace SM64_Diagnostic.Utilities
             return signedDist;
         }
 
+        public static bool IsPointInsideTriangle(
+            double pX, double pZ, double v1X, double v1Z, double v2X, double v2Z, double v3X, double v3Z)
+        {
+            bool leftOf12 = IsPointLeftOfLine(pX, pZ, v1X, v1Z, v2X, v2Z);
+            bool leftOf23 = IsPointLeftOfLine(pX, pZ, v2X, v2Z, v3X, v3Z);
+            bool leftOf31 = IsPointLeftOfLine(pX, pZ, v3X, v3Z, v1X, v1Z);
+            return leftOf12 == leftOf23 && leftOf23 == leftOf31;
+        }
+
+        public static bool IsPointLeftOfLine(
+            double pX, double pZ, double v1X, double v1Z, double v2X, double v2Z)
+        {
+            return (v1Z - pZ) * (v2X - v1X) >= (v1X - pX) * (v2Z - v1Z);
+        }
+
         public static double GetPlaneDistanceBetweenPoints(
             double pointX, double pointY, double pointZ, double startX, double startY, double startZ, double endX, double endY, double endZ)
         {
@@ -361,15 +376,6 @@ namespace SM64_Diagnostic.Utilities
             if (normX == 0 && normZ == 0)
                 uphillRadians = 0;
             return RadiansToAngleUnitsRounded(uphillRadians);
-        }
-
-        public static bool IsPointInsideTriangle(
-            double x0, double z0, double v1X, double v1Z, double v2X, double v2Z, double v3X, double v3Z)
-        {
-            bool bool1 = (v1Z - z0) * (v2X - v1X) >= (v1X - x0) * (v2Z - v1Z);
-            bool bool2 = (v2Z - z0) * (v3X - v2X) >= (v2X - x0) * (v3Z - v2Z);
-            bool bool3 = (v3Z - z0) * (v1X - v3X) >= (v3X - x0) * (v1Z - v3Z);
-            return bool1 == bool2 && bool2 == bool3;
         }
 
         public static (double effectiveX, double effectiveY) GetEffectiveInput(double rawX, double rawY)
