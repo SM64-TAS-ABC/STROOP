@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -878,6 +878,7 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.checkBoxNeutralizeTrianglesWith21 = new System.Windows.Forms.CheckBox();
             this.checkBoxUseMisalignmentOffsetForDistanceToLine = new System.Windows.Forms.CheckBox();
+            this.buttonPasteAndGoto = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -8470,8 +8471,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -11043,13 +11044,14 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.Controls.Add(this.betterTextboxGotoY);
             this.groupBoxGoto.Controls.Add(this.betterTextboxGotoX);
             this.groupBoxGoto.Controls.Add(this.labelGotoZ);
+            this.groupBoxGoto.Controls.Add(this.buttonPasteAndGoto);
             this.groupBoxGoto.Controls.Add(this.buttonGotoGetCurrent);
             this.groupBoxGoto.Controls.Add(this.buttonGoto);
             this.groupBoxGoto.Controls.Add(this.labelGotoY);
             this.groupBoxGoto.Controls.Add(this.labelGotoX);
             this.groupBoxGoto.Location = new System.Drawing.Point(6, 201);
             this.groupBoxGoto.Name = "groupBoxGoto";
-            this.groupBoxGoto.Size = new System.Drawing.Size(116, 175);
+            this.groupBoxGoto.Size = new System.Drawing.Size(116, 206);
             this.groupBoxGoto.TabIndex = 40;
             this.groupBoxGoto.TabStop = false;
             this.groupBoxGoto.Text = "Goto";
@@ -11560,6 +11562,16 @@ namespace SM64_Diagnostic
             this.checkBoxUseMisalignmentOffsetForDistanceToLine.TabIndex = 31;
             this.checkBoxUseMisalignmentOffsetForDistanceToLine.Text = "Use Misalignment Offset For Distance To Line";
             this.checkBoxUseMisalignmentOffsetForDistanceToLine.UseVisualStyleBackColor = true;
+            // 
+            // buttonPasteAndGoto
+            // 
+            this.buttonPasteAndGoto.Location = new System.Drawing.Point(12, 168);
+            this.buttonPasteAndGoto.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPasteAndGoto.Name = "buttonPasteAndGoto";
+            this.buttonPasteAndGoto.Size = new System.Drawing.Size(93, 34);
+            this.buttonPasteAndGoto.TabIndex = 16;
+            this.buttonPasteAndGoto.Text = "Paste && Goto";
+            this.buttonPasteAndGoto.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -12791,6 +12803,7 @@ namespace SM64_Diagnostic
         private Button buttonTriangleNeutralizeAllTriangles;
         private CheckBox checkBoxUseMisalignmentOffsetForDistanceToLine;
         private CheckBox checkBoxNeutralizeTrianglesWith21;
+        private Button buttonPasteAndGoto;
     }
 }
 
