@@ -373,7 +373,7 @@
   </Object>
   <Object behaviorScriptAddress="0x13000888" name="Boo Coin">
     <SpawnCode gfxId="0x84"/>
-    <Image path="Boo Coin.png"/>
+    <Image path="Boo Coin Yellow.png"/>
     <Data groupList="ObjectSpecific" type="uint" address="0x68" offset="Object" useHex="true" isObject="true">Host Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x130008D0" name="Premature Yellow Coin">
