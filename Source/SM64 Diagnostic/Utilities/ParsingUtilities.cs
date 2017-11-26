@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
 using System.Xml;
+using System.Text.RegularExpressions;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -240,5 +241,22 @@ namespace SM64_Diagnostic.Utilities
         {
             return ParseBoolNullable(text) ?? false;
         }
+
+        public static List<string> ParseTextStrings(string text)
+        {
+            text = text
+                .Replace('\n', ' ')
+                .Replace('\r', ' ')
+                .Replace('\t', ' ')
+                .Replace('(', ' ')
+                .Replace(')', ' ');
+            text = Regex.Replace(text, @"\s+", " ");
+            string[] stringArray = text.Split(' ');
+
+            List<string> stringList = new List<string>();
+            stringList.AddRange(stringArray);
+            return stringList;
+        }
+
     }
 }

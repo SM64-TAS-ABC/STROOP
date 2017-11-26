@@ -201,37 +201,11 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxGotoY = _groupBoxGoto.Controls["betterTextboxGotoY"] as BetterTextbox;
             _betterTextboxGotoZ = _groupBoxGoto.Controls["betterTextboxGotoZ"] as BetterTextbox;
             _buttonGoto = _groupBoxGoto.Controls["buttonGoto"] as Button;
-            _buttonGoto.Click += (sender, e) =>
-            {
-                double? gotoX = ParsingUtilities.ParseDoubleNullable(_betterTextboxGotoX.Text);
-                double? gotoY = ParsingUtilities.ParseDoubleNullable(_betterTextboxGotoY.Text);
-                double? gotoZ = ParsingUtilities.ParseDoubleNullable(_betterTextboxGotoZ.Text);
-                if (gotoX.HasValue && gotoY.HasValue && gotoZ.HasValue)
-                {
-                    ButtonUtilities.SetMarioPosition(
-                        (float)gotoX.Value, (float)gotoY.Value, (float)gotoZ.Value);
-                }
-            };
+            _buttonGoto.Click += (sender, e) => GotoClick();
             _buttonGotoGetCurrent = _groupBoxGoto.Controls["buttonGotoGetCurrent"] as Button;
-            _buttonGotoGetCurrent.Click += (sender, e) =>
-            {
-                float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-                float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-                float marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
-                _betterTextboxGotoX.Text = marioX.ToString();
-                _betterTextboxGotoY.Text = marioY.ToString();
-                _betterTextboxGotoZ.Text = marioZ.ToString();
-            };
+            _buttonGotoGetCurrent.Click += (sender, e) => GotoGetCurrentClick();
             _buttonPasteAndGoto = _groupBoxGoto.Controls["buttonPasteAndGoto"] as Button;
-            _buttonPasteAndGoto.Click += (sender, e) =>
-            {
-                float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-                float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-                float marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
-                _betterTextboxGotoX.Text = marioX.ToString();
-                _betterTextboxGotoY.Text = marioY.ToString();
-                _betterTextboxGotoZ.Text = marioZ.ToString();
-            };
+            _buttonPasteAndGoto.Click += (sender, e) => PasteAndGotoClick();
 
             // State Transfer
             _groupBoxStateTransfer = tabControl.Controls["groupBoxStateTransfer"] as GroupBox;
@@ -575,6 +549,40 @@ namespace SM64_Diagnostic.Managers
 
             // State Transfer
             StateTransferUpdate();
+        }
+
+        private void GotoClick()
+        {
+            double? gotoX = ParsingUtilities.ParseDoubleNullable(_betterTextboxGotoX.Text);
+            double? gotoY = ParsingUtilities.ParseDoubleNullable(_betterTextboxGotoY.Text);
+            double? gotoZ = ParsingUtilities.ParseDoubleNullable(_betterTextboxGotoZ.Text);
+            if (gotoX.HasValue && gotoY.HasValue && gotoZ.HasValue)
+            {
+                ButtonUtilities.SetMarioPosition(
+                    (float)gotoX.Value, (float)gotoY.Value, (float)gotoZ.Value);
+            }
+        }
+
+        private void GotoGetCurrentClick()
+        {
+            float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            float marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            _betterTextboxGotoX.Text = marioX.ToString();
+            _betterTextboxGotoY.Text = marioY.ToString();
+            _betterTextboxGotoZ.Text = marioZ.ToString();
+        }
+
+        private void PasteAndGotoClick()
+        {
+            string clipboardText = Clipboard.GetText();
+            List<string> parsedStrings = ParsingUtilities.ParseTextStrings(clipboardText);
+            List<TextBox> textboxes = new List<TextBox>() { _betterTextboxGotoX, _betterTextboxGotoY, _betterTextboxGotoZ };
+            for (int i = 0; i < parsedStrings.Count && i < textboxes.Count; i++)
+            {
+                textboxes[i].Text = parsedStrings[i];
+            }
+            GotoClick();
         }
 
         private void StateTransferUpdate()
