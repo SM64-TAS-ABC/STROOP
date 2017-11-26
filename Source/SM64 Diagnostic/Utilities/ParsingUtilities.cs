@@ -248,6 +248,7 @@ namespace SM64_Diagnostic.Utilities
                 .Replace('\n', ' ')
                 .Replace('\r', ' ')
                 .Replace('\t', ' ')
+                .Replace(',', ' ')
                 .Replace('(', ' ')
                 .Replace(')', ' ');
             text = Regex.Replace(text, @"\s+", " ");
