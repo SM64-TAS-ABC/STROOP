@@ -348,7 +348,8 @@ namespace SM64_Diagnostic.Managers
             double defactoSpeed = hSpeed * multiplier;
             double defactoSpeedQStep = defactoSpeed * 0.25;
             ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
-            (double xDist, double zDist) = MoreMath.GetComponentsFromVector(defactoSpeedQStep, marioAngle);
+            ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(marioAngle);
+            (double xDist, double zDist) = MoreMath.GetComponentsFromVector(defactoSpeedQStep, marioAngleTruncated);
             double intendedNextPositionX = MoreMath.MaybeNegativeModulus(x + xDist, 65536);
             double intendedNextPositionZ = MoreMath.MaybeNegativeModulus(z + zDist, 65536);
             _mapManager.IntendedNextPositionMapObject.X = (float)intendedNextPositionX;
