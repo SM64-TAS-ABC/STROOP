@@ -153,12 +153,10 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static bool ScaleDiagonalPositionControllerButtons = false;
         public static bool ExcludeDustForClosestObject = true;
         public static bool NeutralizeTrianglesWith21 = true;
-        public static short NeutralizeTriangleValue
+        public static short NeutralizeTriangleValue(bool? use21Nullable = null)
         {
-            get
-            {
-                return (short)(NeutralizeTrianglesWith21 ? 21 : 0);
-            }
+            bool use21 = use21Nullable ?? NeutralizeTrianglesWith21;
+            return (short)(use21 ? 21 : 0);
         }
         public static bool UseMisalignmentOffsetForDistanceToLine = true;
 

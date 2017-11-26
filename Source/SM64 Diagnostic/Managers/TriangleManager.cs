@@ -171,8 +171,9 @@ namespace SM64_Diagnostic.Managers
             buttonNeutralizeTriangle.Click += (sender, e) => ButtonUtilities.NeutralizeTriangle(_triangleAddress);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonNeutralizeTriangle,
-                new List<string>() { "Neutralize with 0", "Neutralize with 21" },
+                new List<string>() { "Neutralize", "Neutralize with 0", "Neutralize with 21" },
                 new List<Action>() {
+                    () => ButtonUtilities.NeutralizeTriangle(_triangleAddress),
                     () => ButtonUtilities.NeutralizeTriangle(_triangleAddress, false),
                     () => ButtonUtilities.NeutralizeTriangle(_triangleAddress, true),
                 });

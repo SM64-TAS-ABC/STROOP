@@ -835,18 +835,19 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool NeutralizeTriangle(uint triangleAddress, bool use21 = true)
+        public static bool NeutralizeTriangle(uint triangleAddress, bool? use21Nullable = null)
         {
             if (triangleAddress == 0x0000)
                 return false;
 
-            short neutralizedSurfaceType = (short)(use21 ? 21 : 0);
+
+            short neutralizeValue = Config.NeutralizeTriangleValue(use21Nullable);
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(neutralizedSurfaceType, triangleAddress + Config.TriangleOffsets.SurfaceType);
+            success &= Config.Stream.SetValue(neutralizeValue, triangleAddress + Config.TriangleOffsets.SurfaceType);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
