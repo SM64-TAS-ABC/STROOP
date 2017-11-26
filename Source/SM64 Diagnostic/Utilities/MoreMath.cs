@@ -67,7 +67,7 @@ namespace SM64_Diagnostic.Utilities
         }
 
         public static double GetSignedDistanceFromPointToLine(
-            double pX, double pZ, double v1X, double v1Z, double v2X, double v2Z, double v3X, double v3Z, int p1Index, int p2Index)
+            double pX, double pZ, double v1X, double v1Z, double v2X, double v2Z, double v3X, double v3Z, int p1Index, int p2Index, bool misalignmentOffset = false)
         {
             double[] vX = new double[] { v1X, v2X, v3X };
             double[] vZ = new double[] { v1Z, v2Z, v3Z };
@@ -82,6 +82,27 @@ namespace SM64_Diagnostic.Utilities
             bool floorTri = MoreMath.IsPointLeftOfLine(v3X, v3Z, v1X, v1Z, v2X, v2Z);
             bool onSideOfLineTowardsTri = floorTri == leftOfLine;
             double signedDist = dist * (onSideOfLineTowardsTri ? 1 : -1);
+
+            if (misalignmentOffset)
+            {
+                if (p1X == p2X)
+                {
+                    bool thirdPointOnLeft = p1Z >= p2Z == floorTri;
+                    if ((thirdPointOnLeft && p1X >= 0) || (!thirdPointOnLeft && p1X <= 0))
+                    {
+                        signedDist += 1;
+                    }
+                }
+                else if (p1Z == p2Z)
+                {
+                    bool thirdPointOnTop = p1X <= p2X == floorTri;
+                    if ((thirdPointOnTop && p1Z >= 0) || (!thirdPointOnTop && p1Z <= 0))
+                    {
+                        signedDist += 1;
+                    }
+                }
+            }
+
             return signedDist;
         }
 
