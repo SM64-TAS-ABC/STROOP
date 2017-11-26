@@ -371,6 +371,16 @@
     <SpawnCode gfxId="0x76"/>
     <Image path="Blue Coin.png"/>
   </Object>
+  <Object behaviorScriptAddress="0x13000888" name="Yellow Boo Coin" gfxId="0x800F8AA4">
+    <SpawnCode gfxId="0x84"/>
+    <Image path="Boo Coin Yellow.png"/>
+    <Data groupList="ObjectSpecific" type="uint" address="0x68" offset="Object" useHex="true" isObject="true">Host Object</Data>
+  </Object>
+  <Object behaviorScriptAddress="0x13000888" name="Blue Boo Coin" gfxId="0x800F9464">
+    <SpawnCode gfxId="0x84"/>
+    <Image path="Boo Coin Blue.png"/>
+    <Data groupList="ObjectSpecific" type="uint" address="0x68" offset="Object" useHex="true" isObject="true">Host Object</Data>
+  </Object>
   <Object behaviorScriptAddress="0x13000888" name="Boo Coin">
     <SpawnCode gfxId="0x84"/>
     <Image path="Boo Coin Yellow.png"/>
