@@ -140,6 +140,10 @@ namespace SM64_Diagnostic.Managers
             checkBoxScaleDiagonalPositionControllerButtons.Click += (sender, e) => Config.ScaleDiagonalPositionControllerButtons = checkBoxScaleDiagonalPositionControllerButtons.Checked;
             CheckBox checkBoxExcludeDustForClosestObject = tabControl.Controls["checkBoxExcludeDustForClosestObject"] as CheckBox;
             checkBoxExcludeDustForClosestObject.Click += (sender, e) => Config.ExcludeDustForClosestObject = checkBoxExcludeDustForClosestObject.Checked;
+            CheckBox checkBoxNeutralizeTrianglesWith21 = tabControl.Controls["checkBoxNeutralizeTrianglesWith21"] as CheckBox;
+            checkBoxNeutralizeTrianglesWith21.Click += (sender, e) => Config.NeutralizeTrianglesWith21 = checkBoxNeutralizeTrianglesWith21.Checked;
+            CheckBox checkBoxUseMisalignmentOffsetForDistanceToLine = tabControl.Controls["checkBoxUseMisalignmentOffsetForDistanceToLine"] as CheckBox;
+            checkBoxUseMisalignmentOffsetForDistanceToLine.Click += (sender, e) => Config.UseMisalignmentOffsetForDistanceToLine = checkBoxUseMisalignmentOffsetForDistanceToLine.Checked;
         }
 
         private void textBoxGotoRetrieve_LostFocus(object sender, ref float offset, float defaultOffset)

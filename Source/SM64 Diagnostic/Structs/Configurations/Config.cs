@@ -152,6 +152,15 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static bool MoveCameraWithPu = true;
         public static bool ScaleDiagonalPositionControllerButtons = false;
         public static bool ExcludeDustForClosestObject = true;
+        public static bool NeutralizeTrianglesWith21 = true;
+        public static short NeutralizeTriangleValue
+        {
+            get
+            {
+                return (short)(NeutralizeTrianglesWith21 ? 21 : 0);
+            }
+        }
+        public static bool UseMisalignmentOffsetForDistanceToLine = true;
 
         public static bool ShowOverlayHeldObject = true;
         public static bool ShowOverlayStoodOnObject = true;
