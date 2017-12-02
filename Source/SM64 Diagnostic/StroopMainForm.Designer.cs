@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -732,6 +732,7 @@ namespace SM64_Diagnostic
             this.labelGotoAboveSuffix = new System.Windows.Forms.Label();
             this.labelGotoAbovePrefix = new System.Windows.Forms.Label();
             this.textBoxGotoAbove = new SM64_Diagnostic.BetterTextbox();
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine = new System.Windows.Forms.CheckBox();
             this.checkBoxExcludeDustForClosestObject = new System.Windows.Forms.CheckBox();
             this.groupBoxShowOverlay = new System.Windows.Forms.GroupBox();
             this.checkBoxShowOverlayCameraHackObject = new System.Windows.Forms.CheckBox();
@@ -746,6 +747,7 @@ namespace SM64_Diagnostic
             this.checkBoxShowOverlayStoodOnObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayHeldObject = new System.Windows.Forms.CheckBox();
             this.checkBoxScaleDiagonalPositionControllerButtons = new System.Windows.Forms.CheckBox();
+            this.checkBoxNeutralizeTrianglesWith21 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
@@ -838,6 +840,7 @@ namespace SM64_Diagnostic
             this.betterTextboxGotoY = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxGotoX = new SM64_Diagnostic.BetterTextbox();
             this.labelGotoZ = new System.Windows.Forms.Label();
+            this.buttonPasteAndGoto = new System.Windows.Forms.Button();
             this.buttonGotoGetCurrent = new System.Windows.Forms.Button();
             this.buttonGoto = new System.Windows.Forms.Button();
             this.labelGotoY = new System.Windows.Forms.Label();
@@ -876,9 +879,23 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.checkBoxNeutralizeTrianglesWith21 = new System.Windows.Forms.CheckBox();
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine = new System.Windows.Forms.CheckBox();
-            this.buttonPasteAndGoto = new System.Windows.Forms.Button();
+            this.groupBoxSchedule = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labelSchedule3 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.labelSchedule4 = new System.Windows.Forms.Label();
+            this.labelSchedule5 = new System.Windows.Forms.Label();
+            this.labelSchedule7 = new System.Windows.Forms.Label();
+            this.labelSchedule6 = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
+            this.labelSchedule2 = new System.Windows.Forms.Label();
+            this.labelScheduleButtonReset = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelSchedule1 = new System.Windows.Forms.Label();
+            this.labelScheduleButtonSet = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1175,6 +1192,7 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.groupBoxSchedule.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1204,7 +1222,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 324);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 325);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1269,7 +1287,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 153);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 154);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -2269,7 +2287,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(690, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(693, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -2807,7 +2825,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(699, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(702, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageHud
@@ -2951,7 +2969,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(791, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(794, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3332,7 +3350,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(701, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(704, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -3874,7 +3892,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(698, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(701, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -4004,7 +4022,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
-            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(479, 460);
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(482, 460);
             this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4367,7 +4385,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7341,7 +7359,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(250, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(253, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7444,7 +7462,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMisc.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMisc.Name = "NoTearFlowLayoutPanelMisc";
-            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(778, 457);
+            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(781, 457);
             this.NoTearFlowLayoutPanelMisc.TabIndex = 5;
             // 
             // tabPageDebug
@@ -7705,7 +7723,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelDebug.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelDebug.Name = "noTearFlowLayoutPanelDebug";
-            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(518, 455);
+            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(521, 455);
             this.noTearFlowLayoutPanelDebug.TabIndex = 26;
             // 
             // tabPageMap
@@ -7917,7 +7935,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(689, 430);
+            this.glControlMap.Size = new System.Drawing.Size(692, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -8398,7 +8416,7 @@ namespace SM64_Diagnostic
             this.glControlModelView.BackColor = System.Drawing.Color.Black;
             this.glControlModelView.Location = new System.Drawing.Point(3, 5);
             this.glControlModelView.Name = "glControlModelView";
-            this.glControlModelView.Size = new System.Drawing.Size(472, 451);
+            this.glControlModelView.Size = new System.Drawing.Size(475, 451);
             this.glControlModelView.TabIndex = 0;
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
@@ -8471,8 +8489,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -8643,7 +8661,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(597, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(600, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -8742,7 +8760,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(585, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(588, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -9605,7 +9623,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(469, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(472, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -9908,6 +9926,18 @@ namespace SM64_Diagnostic
             this.textBoxGotoAbove.Text = "300";
             this.textBoxGotoAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // checkBoxUseMisalignmentOffsetForDistanceToLine
+            // 
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.AutoSize = true;
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Checked = true;
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Location = new System.Drawing.Point(3, 125);
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Name = "checkBoxUseMisalignmentOffsetForDistanceToLine";
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Size = new System.Drawing.Size(242, 17);
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.TabIndex = 31;
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Text = "Use Misalignment Offset For Distance To Line";
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.UseVisualStyleBackColor = true;
+            // 
             // checkBoxExcludeDustForClosestObject
             // 
             this.checkBoxExcludeDustForClosestObject.AutoSize = true;
@@ -10091,6 +10121,18 @@ namespace SM64_Diagnostic
             this.checkBoxScaleDiagonalPositionControllerButtons.Text = "Scale Diagonal Position Controller Buttons";
             this.checkBoxScaleDiagonalPositionControllerButtons.UseVisualStyleBackColor = true;
             // 
+            // checkBoxNeutralizeTrianglesWith21
+            // 
+            this.checkBoxNeutralizeTrianglesWith21.AutoSize = true;
+            this.checkBoxNeutralizeTrianglesWith21.Checked = true;
+            this.checkBoxNeutralizeTrianglesWith21.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxNeutralizeTrianglesWith21.Location = new System.Drawing.Point(3, 105);
+            this.checkBoxNeutralizeTrianglesWith21.Name = "checkBoxNeutralizeTrianglesWith21";
+            this.checkBoxNeutralizeTrianglesWith21.Size = new System.Drawing.Size(156, 17);
+            this.checkBoxNeutralizeTrianglesWith21.TabIndex = 4;
+            this.checkBoxNeutralizeTrianglesWith21.Text = "Neutralize Triangles with 21";
+            this.checkBoxNeutralizeTrianglesWith21.UseVisualStyleBackColor = true;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -10140,6 +10182,7 @@ namespace SM64_Diagnostic
             // tabPageTesting
             // 
             this.tabPageTesting.AutoScroll = true;
+            this.tabPageTesting.Controls.Add(this.groupBoxSchedule);
             this.tabPageTesting.Controls.Add(this.groupBoxStateTransfer);
             this.tabPageTesting.Controls.Add(this.groupBoxControlStick);
             this.tabPageTesting.Controls.Add(this.groupBoxObjAtObj);
@@ -11094,6 +11137,16 @@ namespace SM64_Diagnostic
             this.labelGotoZ.Text = "Z:";
             this.labelGotoZ.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // buttonPasteAndGoto
+            // 
+            this.buttonPasteAndGoto.Location = new System.Drawing.Point(12, 168);
+            this.buttonPasteAndGoto.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPasteAndGoto.Name = "buttonPasteAndGoto";
+            this.buttonPasteAndGoto.Size = new System.Drawing.Size(93, 34);
+            this.buttonPasteAndGoto.TabIndex = 16;
+            this.buttonPasteAndGoto.Text = "Paste && Goto";
+            this.buttonPasteAndGoto.UseVisualStyleBackColor = true;
+            // 
             // buttonGotoGetCurrent
             // 
             this.buttonGotoGetCurrent.Location = new System.Drawing.Point(12, 130);
@@ -11539,39 +11592,211 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // checkBoxNeutralizeTrianglesWith21
+            // groupBoxSchedule
             // 
-            this.checkBoxNeutralizeTrianglesWith21.AutoSize = true;
-            this.checkBoxNeutralizeTrianglesWith21.Checked = true;
-            this.checkBoxNeutralizeTrianglesWith21.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNeutralizeTrianglesWith21.Location = new System.Drawing.Point(3, 105);
-            this.checkBoxNeutralizeTrianglesWith21.Name = "checkBoxNeutralizeTrianglesWith21";
-            this.checkBoxNeutralizeTrianglesWith21.Size = new System.Drawing.Size(156, 17);
-            this.checkBoxNeutralizeTrianglesWith21.TabIndex = 4;
-            this.checkBoxNeutralizeTrianglesWith21.Text = "Neutralize Triangles with 21";
-            this.checkBoxNeutralizeTrianglesWith21.UseVisualStyleBackColor = true;
+            this.groupBoxSchedule.Controls.Add(this.labelScheduleButtonSet);
+            this.groupBoxSchedule.Controls.Add(this.labelScheduleButtonReset);
+            this.groupBoxSchedule.Controls.Add(this.label4);
+            this.groupBoxSchedule.Controls.Add(this.label5);
+            this.groupBoxSchedule.Controls.Add(this.label6);
+            this.groupBoxSchedule.Controls.Add(this.label7);
+            this.groupBoxSchedule.Controls.Add(this.labelSchedule1);
+            this.groupBoxSchedule.Controls.Add(this.label2);
+            this.groupBoxSchedule.Controls.Add(this.labelSchedule2);
+            this.groupBoxSchedule.Controls.Add(this.label);
+            this.groupBoxSchedule.Controls.Add(this.labelSchedule3);
+            this.groupBoxSchedule.Controls.Add(this.label9);
+            this.groupBoxSchedule.Controls.Add(this.labelSchedule4);
+            this.groupBoxSchedule.Controls.Add(this.labelSchedule5);
+            this.groupBoxSchedule.Controls.Add(this.labelSchedule7);
+            this.groupBoxSchedule.Controls.Add(this.labelSchedule6);
+            this.groupBoxSchedule.Location = new System.Drawing.Point(610, 278);
+            this.groupBoxSchedule.Name = "groupBoxSchedule";
+            this.groupBoxSchedule.Size = new System.Drawing.Size(209, 168);
+            this.groupBoxSchedule.TabIndex = 42;
+            this.groupBoxSchedule.TabStop = false;
+            this.groupBoxSchedule.Text = "Schedule";
             // 
-            // checkBoxUseMisalignmentOffsetForDistanceToLine
+            // label4
             // 
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.AutoSize = true;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Checked = true;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Location = new System.Drawing.Point(3, 125);
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Name = "checkBoxUseMisalignmentOffsetForDistanceToLine";
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Size = new System.Drawing.Size(242, 17);
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.TabIndex = 31;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Text = "Use Misalignment Offset For Distance To Line";
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 147);
+            this.label4.MinimumSize = new System.Drawing.Size(50, 2);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(52, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "H Speed:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // buttonPasteAndGoto
+            // label5
             // 
-            this.buttonPasteAndGoto.Location = new System.Drawing.Point(12, 168);
-            this.buttonPasteAndGoto.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonPasteAndGoto.Name = "buttonPasteAndGoto";
-            this.buttonPasteAndGoto.Size = new System.Drawing.Size(93, 34);
-            this.buttonPasteAndGoto.TabIndex = 16;
-            this.buttonPasteAndGoto.Text = "Paste && Goto";
-            this.buttonPasteAndGoto.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 125);
+            this.label5.MinimumSize = new System.Drawing.Size(50, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "V Speed:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 102);
+            this.label6.MinimumSize = new System.Drawing.Size(50, 2);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Z Pos:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 80);
+            this.label7.MinimumSize = new System.Drawing.Size(50, 2);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(50, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Y Pos:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelSchedule3
+            // 
+            this.labelSchedule3.AutoSize = true;
+            this.labelSchedule3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelSchedule3.Location = new System.Drawing.Point(65, 58);
+            this.labelSchedule3.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelSchedule3.Name = "labelSchedule3";
+            this.labelSchedule3.Size = new System.Drawing.Size(60, 15);
+            this.labelSchedule3.TabIndex = 18;
+            this.labelSchedule3.Text = "Value";
+            this.labelSchedule3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(13, 59);
+            this.label9.MinimumSize = new System.Drawing.Size(50, 2);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(50, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "X Pos:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelSchedule4
+            // 
+            this.labelSchedule4.AutoSize = true;
+            this.labelSchedule4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelSchedule4.Location = new System.Drawing.Point(65, 79);
+            this.labelSchedule4.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelSchedule4.Name = "labelSchedule4";
+            this.labelSchedule4.Size = new System.Drawing.Size(60, 15);
+            this.labelSchedule4.TabIndex = 18;
+            this.labelSchedule4.Text = "Value";
+            this.labelSchedule4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelSchedule5
+            // 
+            this.labelSchedule5.AutoSize = true;
+            this.labelSchedule5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelSchedule5.Location = new System.Drawing.Point(65, 101);
+            this.labelSchedule5.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelSchedule5.Name = "labelSchedule5";
+            this.labelSchedule5.Size = new System.Drawing.Size(60, 15);
+            this.labelSchedule5.TabIndex = 18;
+            this.labelSchedule5.Text = "Value";
+            this.labelSchedule5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelSchedule7
+            // 
+            this.labelSchedule7.AutoSize = true;
+            this.labelSchedule7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelSchedule7.Location = new System.Drawing.Point(65, 146);
+            this.labelSchedule7.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelSchedule7.Name = "labelSchedule7";
+            this.labelSchedule7.Size = new System.Drawing.Size(60, 15);
+            this.labelSchedule7.TabIndex = 18;
+            this.labelSchedule7.Text = "Value";
+            this.labelSchedule7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelSchedule6
+            // 
+            this.labelSchedule6.AutoSize = true;
+            this.labelSchedule6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelSchedule6.Location = new System.Drawing.Point(65, 124);
+            this.labelSchedule6.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelSchedule6.Name = "labelSchedule6";
+            this.labelSchedule6.Size = new System.Drawing.Size(60, 15);
+            this.labelSchedule6.TabIndex = 18;
+            this.labelSchedule6.Text = "Value";
+            this.labelSchedule6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(13, 37);
+            this.label.MinimumSize = new System.Drawing.Size(50, 2);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(50, 13);
+            this.label.TabIndex = 18;
+            this.label.Text = "Frame:";
+            this.label.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelSchedule2
+            // 
+            this.labelSchedule2.AutoSize = true;
+            this.labelSchedule2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelSchedule2.Location = new System.Drawing.Point(65, 36);
+            this.labelSchedule2.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelSchedule2.Name = "labelSchedule2";
+            this.labelSchedule2.Size = new System.Drawing.Size(60, 15);
+            this.labelSchedule2.TabIndex = 18;
+            this.labelSchedule2.Text = "Value";
+            this.labelSchedule2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelScheduleButtonReset
+            // 
+            this.labelScheduleButtonReset.Location = new System.Drawing.Point(136, 112);
+            this.labelScheduleButtonReset.Margin = new System.Windows.Forms.Padding(2);
+            this.labelScheduleButtonReset.Name = "labelScheduleButtonReset";
+            this.labelScheduleButtonReset.Size = new System.Drawing.Size(65, 49);
+            this.labelScheduleButtonReset.TabIndex = 43;
+            this.labelScheduleButtonReset.Text = "Reset";
+            this.labelScheduleButtonReset.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 16);
+            this.label2.MinimumSize = new System.Drawing.Size(50, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Current:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelSchedule1
+            // 
+            this.labelSchedule1.AutoSize = true;
+            this.labelSchedule1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelSchedule1.Location = new System.Drawing.Point(65, 15);
+            this.labelSchedule1.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelSchedule1.Name = "labelSchedule1";
+            this.labelSchedule1.Size = new System.Drawing.Size(60, 15);
+            this.labelSchedule1.TabIndex = 18;
+            this.labelSchedule1.Text = "Value";
+            this.labelSchedule1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelScheduleButtonSet
+            // 
+            this.labelScheduleButtonSet.Location = new System.Drawing.Point(136, 16);
+            this.labelScheduleButtonSet.Margin = new System.Windows.Forms.Padding(2);
+            this.labelScheduleButtonSet.Name = "labelScheduleButtonSet";
+            this.labelScheduleButtonSet.Size = new System.Drawing.Size(65, 53);
+            this.labelScheduleButtonSet.TabIndex = 43;
+            this.labelScheduleButtonSet.Text = "Set";
+            this.labelScheduleButtonSet.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -11952,6 +12177,8 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.groupBoxSchedule.ResumeLayout(false);
+            this.groupBoxSchedule.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -12804,6 +13031,23 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxUseMisalignmentOffsetForDistanceToLine;
         private CheckBox checkBoxNeutralizeTrianglesWith21;
         private Button buttonPasteAndGoto;
+        private GroupBox groupBoxSchedule;
+        private Button labelScheduleButtonSet;
+        private Button labelScheduleButtonReset;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label labelSchedule1;
+        private Label label2;
+        private Label labelSchedule2;
+        private Label label;
+        private Label labelSchedule3;
+        private Label label9;
+        private Label labelSchedule4;
+        private Label labelSchedule5;
+        private Label labelSchedule7;
+        private Label labelSchedule6;
     }
 }
 
