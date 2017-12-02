@@ -127,6 +127,18 @@ namespace SM64_Diagnostic.Managers
         BetterTextbox _betterTextboxObjAtObj1;
         BetterTextbox _betterTextboxObjAtObj2;
 
+        // Schedule
+        GroupBox _groupBoxSchedule;
+        Label _labelSchedule1;
+        Label _labelSchedule2;
+        Label _labelSchedule3;
+        Label _labelSchedule4;
+        Label _labelSchedule5;
+        Label _labelSchedule6;
+        Label _labelSchedule7;
+        Button _buttonScheduleButtonSet;
+        Button _buttonScheduleButtonReset;
+
         public TestingManager(TabPage tabControl)
         {
             Instance = this;
@@ -261,6 +273,18 @@ namespace SM64_Diagnostic.Managers
             _checkBoxObjAtObjOn = _groupBoxObjAtObj.Controls["checkBoxObjAtObjOn"] as CheckBox;
             _betterTextboxObjAtObj1 = _groupBoxObjAtObj.Controls["betterTextboxObjAtObj1"] as BetterTextbox;
             _betterTextboxObjAtObj2 = _groupBoxObjAtObj.Controls["betterTextboxObjAtObj2"] as BetterTextbox;
+
+            // Schedule
+            _groupBoxSchedule = tabControl.Controls["groupBoxSchedule"] as GroupBox;
+            _labelSchedule1 = _groupBoxSchedule.Controls["labelSchedule1"] as Label;
+            _labelSchedule2 = _groupBoxSchedule.Controls["labelSchedule2"] as Label;
+            _labelSchedule3 = _groupBoxSchedule.Controls["labelSchedule3"] as Label;
+            _labelSchedule4 = _groupBoxSchedule.Controls["labelSchedule4"] as Label;
+            _labelSchedule5 = _groupBoxSchedule.Controls["labelSchedule5"] as Label;
+            _labelSchedule6 = _groupBoxSchedule.Controls["labelSchedule6"] as Label;
+            _labelSchedule7 = _groupBoxSchedule.Controls["labelSchedule7"] as Label;
+            _buttonScheduleButtonSet = _groupBoxSchedule.Controls["buttonScheduleButtonSet"] as Button;
+            _buttonScheduleButtonReset = _groupBoxSchedule.Controls["buttonScheduleButtonReset"] as Button;
         }
 
         public abstract class VarState
@@ -408,6 +432,9 @@ namespace SM64_Diagnostic.Managers
 
         public void Update(bool updateView)
         {
+            // Schedule
+
+
             // Obj at HOLP
             if (_checkBoxObjAtHOLPOn.Checked)
             {

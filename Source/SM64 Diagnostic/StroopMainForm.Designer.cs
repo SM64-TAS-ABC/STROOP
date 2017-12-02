@@ -892,10 +892,10 @@ namespace SM64_Diagnostic
             this.labelSchedule6 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.labelSchedule2 = new System.Windows.Forms.Label();
-            this.labelScheduleButtonReset = new System.Windows.Forms.Button();
+            this.buttonScheduleButtonReset = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.labelSchedule1 = new System.Windows.Forms.Label();
-            this.labelScheduleButtonSet = new System.Windows.Forms.Button();
+            this.buttonScheduleButtonSet = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -11594,8 +11594,8 @@ namespace SM64_Diagnostic
             // 
             // groupBoxSchedule
             // 
-            this.groupBoxSchedule.Controls.Add(this.labelScheduleButtonSet);
-            this.groupBoxSchedule.Controls.Add(this.labelScheduleButtonReset);
+            this.groupBoxSchedule.Controls.Add(this.buttonScheduleButtonSet);
+            this.groupBoxSchedule.Controls.Add(this.buttonScheduleButtonReset);
             this.groupBoxSchedule.Controls.Add(this.label4);
             this.groupBoxSchedule.Controls.Add(this.label5);
             this.groupBoxSchedule.Controls.Add(this.label6);
@@ -11755,15 +11755,15 @@ namespace SM64_Diagnostic
             this.labelSchedule2.Text = "Value";
             this.labelSchedule2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // labelScheduleButtonReset
+            // buttonScheduleButtonReset
             // 
-            this.labelScheduleButtonReset.Location = new System.Drawing.Point(136, 112);
-            this.labelScheduleButtonReset.Margin = new System.Windows.Forms.Padding(2);
-            this.labelScheduleButtonReset.Name = "labelScheduleButtonReset";
-            this.labelScheduleButtonReset.Size = new System.Drawing.Size(65, 49);
-            this.labelScheduleButtonReset.TabIndex = 43;
-            this.labelScheduleButtonReset.Text = "Reset";
-            this.labelScheduleButtonReset.UseVisualStyleBackColor = true;
+            this.buttonScheduleButtonReset.Location = new System.Drawing.Point(136, 112);
+            this.buttonScheduleButtonReset.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonScheduleButtonReset.Name = "buttonScheduleButtonReset";
+            this.buttonScheduleButtonReset.Size = new System.Drawing.Size(65, 49);
+            this.buttonScheduleButtonReset.TabIndex = 43;
+            this.buttonScheduleButtonReset.Text = "Reset";
+            this.buttonScheduleButtonReset.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -11788,15 +11788,15 @@ namespace SM64_Diagnostic
             this.labelSchedule1.Text = "Value";
             this.labelSchedule1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // labelScheduleButtonSet
+            // buttonScheduleButtonSet
             // 
-            this.labelScheduleButtonSet.Location = new System.Drawing.Point(136, 16);
-            this.labelScheduleButtonSet.Margin = new System.Windows.Forms.Padding(2);
-            this.labelScheduleButtonSet.Name = "labelScheduleButtonSet";
-            this.labelScheduleButtonSet.Size = new System.Drawing.Size(65, 53);
-            this.labelScheduleButtonSet.TabIndex = 43;
-            this.labelScheduleButtonSet.Text = "Set";
-            this.labelScheduleButtonSet.UseVisualStyleBackColor = true;
+            this.buttonScheduleButtonSet.Location = new System.Drawing.Point(136, 16);
+            this.buttonScheduleButtonSet.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonScheduleButtonSet.Name = "buttonScheduleButtonSet";
+            this.buttonScheduleButtonSet.Size = new System.Drawing.Size(65, 53);
+            this.buttonScheduleButtonSet.TabIndex = 43;
+            this.buttonScheduleButtonSet.Text = "Set";
+            this.buttonScheduleButtonSet.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -13032,8 +13032,8 @@ namespace SM64_Diagnostic
         private CheckBox checkBoxNeutralizeTrianglesWith21;
         private Button buttonPasteAndGoto;
         private GroupBox groupBoxSchedule;
-        private Button labelScheduleButtonSet;
-        private Button labelScheduleButtonReset;
+        private Button buttonScheduleButtonSet;
+        private Button buttonScheduleButtonReset;
         private Label label4;
         private Label label5;
         private Label label6;
