@@ -87,8 +87,12 @@ namespace SM64_Diagnostic.Utilities
             List<uint> triangleAddresses = GetLevelTriangleAddresses();
             triangleAddresses.ForEach(address =>
             {
-                ButtonUtilities.DisableCamCollisionForTriangle(address);
+                //float ynorm = Config.Stream.GetSingle(address + Config.TriangleOffsets.NormY);
+                //if (ynorm <= 0.01 && ynorm >= -0.01)
+                //{
+                    ButtonUtilities.DisableCamCollisionForTriangle(address);
+                //}
             });
         }
     }
-}
+} 

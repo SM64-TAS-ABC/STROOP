@@ -136,7 +136,11 @@ namespace SM64_Diagnostic.Managers
         Label _labelSchedule5;
         Label _labelSchedule6;
         Label _labelSchedule7;
+        Label _labelScheduleIndex;
+        Label _labelScheduleDescription;
         Button _buttonScheduleButtonSet;
+        Button _buttonSchedulePrevious;
+        Button _buttonScheduleNext;
         Button _buttonScheduleButtonReset;
 
         public TestingManager(TabPage tabControl)
@@ -283,8 +287,16 @@ namespace SM64_Diagnostic.Managers
             _labelSchedule5 = _groupBoxSchedule.Controls["labelSchedule5"] as Label;
             _labelSchedule6 = _groupBoxSchedule.Controls["labelSchedule6"] as Label;
             _labelSchedule7 = _groupBoxSchedule.Controls["labelSchedule7"] as Label;
+            _labelScheduleIndex = _groupBoxSchedule.Controls["labelScheduleIndex"] as Label;
+            _labelScheduleDescription = _groupBoxSchedule.Controls["labelScheduleDescription"] as Label;
             _buttonScheduleButtonSet = _groupBoxSchedule.Controls["buttonScheduleButtonSet"] as Button;
+            _buttonScheduleButtonSet.Click += (sender, e) => buttonScheduleButtonSetClick();
+            _buttonSchedulePrevious = _groupBoxSchedule.Controls["buttonSchedulePrevious"] as Button;
+            _buttonSchedulePrevious.Click += (sender, e) => buttonScheduleButtonPreviousClick();
+            _buttonScheduleNext = _groupBoxSchedule.Controls["buttonScheduleNext"] as Button;
+            _buttonScheduleNext.Click += (sender, e) => buttonScheduleButtonNextClick();
             _buttonScheduleButtonReset = _groupBoxSchedule.Controls["buttonScheduleButtonReset"] as Button;
+            _buttonScheduleButtonReset.Click += (sender, e) => buttonScheduleButtonResetClick();
         }
 
         public abstract class VarState
@@ -433,7 +445,18 @@ namespace SM64_Diagnostic.Managers
         public void Update(bool updateView)
         {
             // Schedule
-
+            {
+                (int frame, double? x, double? y, double? z, double? hspd, string description) = _rollingRocksScheduleList[_rollingRocksScheduleIndex];
+                _labelSchedule1.Text = Config.Stream.GetInt32(Config.GlobalTimerAddress).ToString();
+                _labelSchedule2.Text = (frame + _rollingRocksScheduleIndexOffset).ToString();
+                if (x.HasValue) _labelSchedule3.Text = x.Value.ToString();
+                if (y.HasValue) _labelSchedule4.Text = y.Value.ToString();
+                if (z.HasValue) _labelSchedule5.Text = z.Value.ToString();
+                _labelSchedule6.Text = (0).ToString();
+                if (hspd.HasValue) _labelSchedule7.Text = hspd.Value.ToString();
+                _labelScheduleIndex.Text = _rollingRocksScheduleIndex.ToString();
+                _labelScheduleDescription.Text = description.ToString();
+            }
 
             // Obj at HOLP
             if (_checkBoxObjAtHOLPOn.Checked)
@@ -578,6 +601,60 @@ namespace SM64_Diagnostic.Managers
             StateTransferUpdate();
         }
 
+        private void buttonScheduleButtonPreviousClick()
+        {
+            _rollingRocksScheduleIndex--;
+        }
+
+        private void buttonScheduleButtonNextClick()
+        {
+            _rollingRocksScheduleIndex++;
+        }
+
+        private void buttonScheduleButtonSetClick()
+        {
+            // Schedule
+            {
+                (int frame, double? x, double? y, double? z, double? hspd, string description) = _rollingRocksScheduleList[_rollingRocksScheduleIndex];
+                if (x.HasValue) Config.Stream.SetValue((float)x.Value, Config.Mario.StructAddress + Config.Mario.XOffset);
+                if (y.HasValue) Config.Stream.SetValue((float)y.Value, Config.Mario.StructAddress + Config.Mario.YOffset);
+                if (z.HasValue) Config.Stream.SetValue((float)z.Value, Config.Mario.StructAddress + Config.Mario.ZOffset);
+                if (hspd.HasValue) Config.Stream.SetValue((float)hspd.Value, Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
+
+                if (frame == 8288)
+                {
+                    Config.Stream.SetValue((uint)0x04000471, Config.Mario.StructAddress + Config.Mario.ActionOffset);
+                }
+
+                if (frame == 8819 || frame == 9926 || frame == 10060 || frame == 10463 || frame == 10475)
+                {
+                    Config.Stream.SetValue((uint)16779404, Config.Mario.StructAddress + Config.Mario.ActionOffset);
+                }
+
+                if (frame == 10476)
+                {
+                    Config.Stream.SetValue((float)0, Config.Mario.StructAddress + Config.Mario.VSpeedOffset);
+                }
+
+                if (frame == 10060)
+                {
+                    ButtonUtilities.UnloadObject(new List<uint> { 0x8034DC28 });
+                }
+
+                if (frame == 10475)
+                {
+                    Config.Stream.SetValue((ushort)32832, Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                }
+
+                _rollingRocksScheduleIndex++;
+            }
+        }
+
+        private void buttonScheduleButtonResetClick()
+        {
+            _rollingRocksScheduleIndex = 47;
+        }
+
         private void GotoClick()
         {
             double? gotoX = ParsingUtilities.ParseDoubleNullable(_betterTextboxGotoX.Text);
@@ -712,6 +789,96 @@ namespace SM64_Diagnostic.Managers
             short? value14 = ParsingUtilities.ParseShortNullable(_betterTextboxStateTransferVar14Saved.Text);
             if (value14.HasValue) Config.Stream.SetValue((short)(value14.Value + timersOffset), Config.AnimationTimerAddress);
         }
+
+        private static int _rollingRocksScheduleIndexOffset = -8582;
+        private static int _rollingRocksScheduleIndex = 47;
+        private static List<(int, double?, double?, double?, double?, string)> _rollingRocksScheduleList = new List<(int, double?, double?, double?, double?, string)>() {
+            (6431,-3075.048,-4929.741,-1614.7,null,"T0 up to T1"),
+            (6508,-3444.3,-5082.954,-1614.7,null,"T1 left to T2"),
+            (6646,-3444.3,-4874.296,-2182.7,null,"up on T2"),
+            (6668,-3990,-4977.589,-2182.7,null,"T2 left to T3"),
+            (6789,-4469,-4837.459,-2182.7,null,"left on T3"),
+            (6918,-4469,-4732.842,-2461.3,null,"T3 up to T4"),
+            (6919,-4469,-4604.239,-2801,null,"T4 up to T5"),
+            (7045,-4304,-4474.807,-2967,null,"up right on T5"),
+            (7053,-4464,-4378.722,-3127,null,"up left on T5"),
+            (7054,-4624,-4283.233,-3287,null,"up left on T5"),
+            (7055,-4783,-4189.12,-3446,null,"T5 up left to T6"),
+            (7184,-4595,-4017.744,-3635,null,"up right on T6"),
+            (7185,-4407,-3843.24,-3823,null,"T6 up right to T7"),
+            (7310,-4193,-3685.867,-3823,null,"right on T7"),
+            (7431,-4193,-3573.963,-3950,null,"up on T7"),
+            (7432,-4193,-3473.41,-4077,null,"T7 up to T8"),
+            (7552,-4193,-3221.987,-4804,null,"T8 up to T9"),
+            (7687,-4193,-3221.812,-4796,null,"up on T9"),
+            (7688,-4193,-3221.658,-4789,null,"up on T9"),
+            (7689,-4193,-3221.527,-4783,null,"up on T9"),
+            (7690,-4193,-3221.417,-4778,null,"up on T9"),
+            (7691,-4193,-3221.329,-4774,null,"up on T9"),
+            (7692,-4193,-3221.263,-4771,null,"up on T9"),
+            (7693,-4193,-3221.219,-4769,null,"up on T9"),
+            (7694,-4193,-3221.197,-4768,null,"up on T9"),
+            (7695,-4193,-3221.197,-4768,null,"up on T9"),
+            (7696,-4193,-3221.219,-4769.3,null,"up on T9"),
+            (7697,-4193,-3221.263,-4771,null,"up on T9"),
+            (7698,-4193,-3221.307,-4773.8,null,"up on T9"),
+            (7699,-4193,-3221.395,-4777.5,null,"up on T9"),
+            (7700,-4193,-3221.527,-4782.2,null,"up on T9"),
+            (7701,-4193,-3221.636,-4787.8,null,"up on T9"),
+            (7702,-4193,-3221.79,-4794.3,null,"up on T9"),
+            (7703,-4193,-3221.944,-4801.8,null,"up on T9"),
+            (7832,-3738,-2956.358,-5604.6,null,"T9 up right to T10"),
+            (7960,-3738,-2855.501,-5963.5,null,"up on T10"),
+            (7961,-3336,-2610,-6321,null,"up rightish on T10"),
+            (8091,-3267,-2585.499,-6321,null,"right on T10"),
+            (8125,-3267,-2575.666,-6355.5,null,"up on T10"),
+            (8154,-3262,-2573.504,-6355.5,null,"right on T10"),
+            (8155,-3256.8,-2571.703,-6355.5,null,"right on T10"),
+            (8156,-3253,-2570.622,-6355.5,null,"right on T10"),
+            (8157,-3250.3,-2569.541,-6355.5,null,"right on T10"),
+            (8158,-3248.516,-2568.82,-6355.5,null,"right on T10"),
+
+            //(8287,-3343.166,-2568.82,-2522.1,-271351.3,"T10 down to air"),
+            //(8287,-3556.288,-2400,-7124.406,-271349,"FAKE air to E1"),
+
+            (8288,-3556.288,-2559,-7124.406,null,"air to E1"),
+            (8466,-3556.288,-2509,-7124.406,null,"first AB kick observed on E1"),
+            (8678,-3556.288,-419,-7124.406,null,"last AB kick observed on E1"),
+
+
+
+            (8682,3738.2,-409,-7124.406,null,"E1 right to end of hallway"),
+            (8819,2508.7,-409,-5997.712,null,"end of hallway down left to maze"),
+            (8820,1279.6,-409,-4870.587,-100000,"maze down left to ground"),
+            (8821,-1178.719,-409,-2616.338,null,"down left on ground"),
+            (9318,-3575.1,-409,-2616.338,null,"to end of swooper hall"),
+            (9455,-2610.438,-409,-2616.338,null,"end of hallway to E2"),
+            //(9635,-2610.438,-359,-2616.338,null,"first AB kick observed on E2"),
+            //(9911,-2610.438,2355,-2616.338,null,"last AB kick observed on E2"),
+            (9926,-2610.438,2355,-2709.56,null,"up in E2 room (E2 to air)"),
+            (9927,-2610.438,2355,-2802.2,-100000,"up in E2 room (air to ground)"),
+            (9928,-2610.438,2355,-3172.8,null,"up in E2 room (full frame)"),
+            (9929,-2610.438,2355,-3265.4,null,"up in E2 room (partial frame)"),
+            (10060,-2573.59,2355,-2762.4,null,"down right to air"),
+            (10061,-2537.3,2355,-2259.5,-100000,"down right to ground"),
+            (10201,-2389.3,2355,-2259.5,null,"right in E2 room"),
+            (10202,-2240.2,2355,-2259.5,null,"right in E2 room"),
+            (10203,-2089.9,2355,-2259.5,null,"right in E2 room"),
+            (10333,-2089.9,2355,-2996,null,"up in E2 room"),
+            (10462,-3931.4,2355,-2596.7,null,"left out of E2 room"),
+            (10463,-5776.75,null,-2194.125,null,"SELF HACK left to air"),
+            (10464,-6695.484,2450,-1992.8,-100000,"air to amazing"),
+            (10475,-6304.189,2458,-3758.5,null,"up off of amazing"),
+            (10476,-5516.607,2458,-7291.004,null,"to scuttlebug"),
+            (10486,-5426.081,2640,-7295.098,null,"into misalignment"),
+            (10502,-5426.081,2810,-7295.098,null,"GP landing"),
+            (10530,-5426.138,2830,-7285.947,null,"AB kick observed"),
+            (10542,-5424.576,2810,-7107.368,null,"dive observed"),
+            (10554,-5288.326,2840,-6887.377,null,"DR observed"),
+            (10566,-5112.072,2888,-6730.258,null,"star collect"),
+            (10571,-5112.072,2810,-6730.258,null,"star land"),
+            (10682,-5112.072,2810,-6730.258,null,"black frame"),
+        };
 
         private static List<(int, double)> _plushRacingPenguinProgress = new List<(int, double)> {
             (   1, 0   ),
