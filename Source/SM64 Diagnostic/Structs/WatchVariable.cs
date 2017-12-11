@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -26,19 +27,68 @@ namespace SM64_Diagnostic.Structs
                 _typeName = StringToType.First(s => s.Value == _type).Key;
             }
         }
-        public uint Address;
+
+        private uint? _addressUS;
+        private uint? _addressJP;
+        private uint? _addressPAL;
+        private uint? _address;
+        public uint Address
+        {
+            get
+            {
+                switch (Config.Version)
+                {
+                    case Config.RomVersion.US:
+                        if (_addressUS != null) return (uint)_addressUS;
+                        break;
+                    case Config.RomVersion.JP:
+                        if (_addressJP != null) return (uint)_addressJP;
+                        break;
+                    case Config.RomVersion.PAL:
+                        if (_addressPAL != null) return (uint)_addressPAL;
+                        break;
+                }
+                if (_address != null) return (uint)_address;
+                return 0;
+            }
+        }
+
+        public OffsetType Offset;
         public String Name;
         public String SpecialType;
-        public bool Special;
-        public Boolean AbsoluteAddressing;
         public UInt64? Mask;
         public bool IsBool;
         public bool IsObject;
         public bool UseHex;
-        public bool OtherOffset;
         public bool InvertBool;
         public bool IsAngle;
         public Color? BackroundColor;
+        public List<VariableGroup> GroupList;
+
+        public bool HasAdditiveOffset
+        {
+            get
+            {
+                return Offset != OffsetType.Relative && Offset != OffsetType.Absolute && Offset != OffsetType.Special;
+            }
+        }
+
+        public bool IsSpecial
+        {
+            get
+            {
+                return Offset == OffsetType.Special;
+            }
+        }
+
+        public Boolean UseAbsoluteAddressing
+        {
+            get
+            {
+                return Offset == OffsetType.Absolute;
+            }
+        }
+
 
         int _byteCount;
         public int ByteCount
@@ -94,5 +144,71 @@ namespace SM64_Diagnostic.Structs
             { "float", typeof(float) },
             { "double", typeof(double) },
         };
+
+        public enum OffsetType
+        {
+            Absolute,
+            Relative,
+            Mario,
+            MarioObj,
+            Camera,
+            File,
+            Object,
+            Triangle,
+            TriangleExertionForceTable,
+            InputCurrent,
+            InputJustPressed,
+            InputBuffered,
+            Graphics,
+            Animation,
+            Waypoint,
+            Water,
+            HackedArea,
+            CamHack,
+            Special,
+        };
+
+        public static OffsetType GetOffsetType(string offsetTypeString)
+        {
+            return (OffsetType)Enum.Parse(typeof(OffsetType), offsetTypeString);
+        }
+
+        public enum VariableGroup
+        {
+            Simple,
+            Expanded,
+            ObjectSpecific,
+            Collision,
+        };
+
+        public static VariableGroup GetVariableGroup(string variableGroupString)
+        {
+            return (VariableGroup)Enum.Parse(typeof(VariableGroup), variableGroupString);
+        }
+
+        public static List<VariableGroup> ParseVariableGroupList(string variableGroupListString)
+        {
+            List<VariableGroup> variableGroupList = new List<VariableGroup>();
+            if (variableGroupListString != null)
+            {
+                string[] groupNames = variableGroupListString.Split(',');
+                foreach (string groupName in groupNames)
+                {
+                    variableGroupList.Add(GetVariableGroup(groupName));
+                }
+            }
+            return variableGroupList;
+        }
+
+        public void SetAddress(uint? addressUS, uint? addressJP, uint? addressPAL, uint? address)
+        {
+            if (addressUS == null && addressJP == null && addressPAL == null && address == null)
+                throw new ArgumentOutOfRangeException();
+
+            _addressUS = addressUS;
+            _addressJP = addressJP;
+            _addressPAL = addressPAL;
+            _address = address;
+        }
     }
 }

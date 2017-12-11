@@ -75,7 +75,12 @@ namespace SM64_Diagnostic.Structs
 
         public override int GetHashCode()
         {
-            return new Tuple<uint, uint?, int?, int?>(BehaviorAddress, GfxId, SubType, Appearance).GetHashCode();
+            int hash = 17;
+            hash = hash * 23 + BehaviorAddress.GetHashCode();
+            hash = hash * 23 + GfxId.GetHashCode();
+            hash = hash * 23 + SubType.GetHashCode();
+            hash = hash * 23 + Appearance.GetHashCode();
+            return hash;
         }
     }
 }

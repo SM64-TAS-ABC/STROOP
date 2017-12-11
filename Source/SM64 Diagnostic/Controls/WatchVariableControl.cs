@@ -10,24 +10,24 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Extensions;
 using System.Reflection;
 using SM64_Diagnostic.Managers;
+using static SM64_Diagnostic.Structs.WatchVariable;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Controls
 {
     public class WatchVariableControl : IDataContainer
     {
-        TableLayoutPanel _tablePanel;
+        BorderedTableLayoutPanel _tablePanel;
         Label _nameLabel;
         WatchVariable _watchVar;
         CheckBox _checkBoxBool;
         TextBox _textBoxValue;
-        ProcessStream _stream;
         string _specialName;
 
-        public List<uint> OtherOffsets = new List<uint>() { 0 };
         bool _changedByUser = true;
         bool _editMode = false;
 
-        static Image _lockedImage = new Bitmap(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SM64_Diagnostic.Resources.lock.png")), new Size(16, 16));
+        static Image _lockedImage = new Bitmap(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SM64_Diagnostic.EmbeddedResources.lock.png")), new Size(16, 16));
         static Image _someLockedImage = _lockedImage.GetOpaqueImage(0.5f);
 
         static WatchVariableControl _lastSelected;
@@ -52,6 +52,9 @@ namespace SM64_Diagnostic.Controls
                     newItem = new ToolStripMenuItem("Lock Value");
                     newItem.Name = "LockValue";
                     _menu.Items.Add(newItem);
+                    newItem = new ToolStripMenuItem("Highlight");
+                    newItem.Name = "Highlight";
+                    _menu.Items.Add(newItem);
                 }
                 return _menu;
             }
@@ -72,11 +75,30 @@ namespace SM64_Diagnostic.Controls
                     newItem = new ToolStripMenuItem("Lock Value");
                     newItem.Name = "LockValue";
                     _angleMenu.Items.Add(newItem);
+                    newItem = new ToolStripMenuItem("Highlight");
+                    newItem.Name = "Highlight";
+                    _angleMenu.Items.Add(newItem);
 
                     _angleMenu.Items.Add(AngleDropDownMenu[0]);
                     _angleMenu.Items.Add(AngleDropDownMenu[1]);
                 }
                 return _angleMenu;
+            }
+        }
+
+        private static ContextMenuStrip _checkMenu;
+        public static ContextMenuStrip CheckMenu
+        {
+            get
+            {
+                if (_checkMenu == null)
+                {
+                    _checkMenu = new ContextMenuStrip();
+                    var newItem = new ToolStripMenuItem("Highlight");
+                    newItem.Name = "Highlight";
+                    _checkMenu.Items.Add(newItem);
+                }
+                return _checkMenu;
             }
         }
 
@@ -130,6 +152,115 @@ namespace SM64_Diagnostic.Controls
             set
             {
                 _toolTip = value;
+            }
+        }
+
+        public static readonly List<uint> OffsetListZero = new List<uint> { 0 };
+
+        private List<uint> GetOffsetListFromOffsetType(OffsetType? offsetType, bool nonEmptyList = true) //TODO make static once stream is config var
+        {
+            List<uint> output;
+            switch (offsetType)
+            {
+                case OffsetType.Absolute:
+                    output = OffsetListZero;
+                    break;
+                case OffsetType.Relative:
+                    output = OffsetListZero;
+                    break;
+                case OffsetType.Mario:
+                    output = new List<uint> { Config.Mario.StructAddress };
+                    break;
+                case OffsetType.MarioObj:
+                    output = new List<uint> { Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress) };
+                    break;
+                case OffsetType.Camera:
+                    output = new List<uint> { Config.Camera.CameraStructAddress };
+                    break;
+                case OffsetType.File:
+                    output = new List<uint> { FileManager.Instance.CurrentFileAddress };
+                    break;
+                case OffsetType.Object:
+                    output = ObjectManager.Instance.CurrentAddresses;
+                    break;
+                case OffsetType.Triangle:
+                    output = new List<uint> { TriangleManager.Instance.TriangleAddress };
+                    break;
+                case OffsetType.TriangleExertionForceTable:
+                    uint triangleAddress = TriangleManager.Instance.TriangleAddress;
+                    if (triangleAddress == 0)
+                    {
+                        output = OffsetListZero;
+                    }
+                    else
+                    {
+                        uint exertionForceIndex = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.ExertionForceIndex);
+                        output = new List<uint> { Config.Triangle.ExertionForceTableAddress + 2 * exertionForceIndex };
+                    }
+                    break;
+                case OffsetType.InputCurrent:
+                    output = new List<uint> { Config.Input.CurrentInputAddress };
+                    break;
+                case OffsetType.InputJustPressed:
+                    output = new List<uint> { Config.Input.JustPressedInputAddress };
+                    break;
+                case OffsetType.InputBuffered:
+                    output = new List<uint> { Config.Input.BufferedInputAddress };
+                    break;
+                case OffsetType.Graphics:
+                    output = GetOffsetListFromOffsetType(OffsetType.Object, false)
+                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.BehaviorGfxOffset));
+                    break;
+                case OffsetType.Animation:
+                    output = GetOffsetListFromOffsetType(OffsetType.Object, false)
+                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.AnimationOffset));
+                    break;
+                case OffsetType.Waypoint:
+                    output = GetOffsetListFromOffsetType(OffsetType.Object, false)
+                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset));
+                    break;
+                case OffsetType.Water:
+                    output = new List<uint> { Config.Stream.GetUInt32(Config.WaterPointerAddress) };
+                    break;
+                case OffsetType.HackedArea:
+                    output = new List<uint> { Config.HackedAreaAddress };
+                    break;
+                case OffsetType.CamHack:
+                    output = new List<uint> { Config.CameraHack.CameraHackStruct };
+                    break;
+                case OffsetType.Special:
+                    throw new ArgumentOutOfRangeException("Should not get offset list for Special var");
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            if (nonEmptyList && output.Count == 0)
+            {
+                output = OffsetListZero;
+            }
+            return output;
+        }
+
+        private CheckState _checkBoxCheckState = CheckState.Unchecked;
+        public CheckState CheckBoxCheckState
+        {
+            get
+            {
+                return _checkBoxCheckState;
+            }
+            set
+            {
+                if (_checkBoxCheckState == value)
+                    return;
+                _checkBoxCheckState = value;
+                _checkBoxBool.CheckState = value;
+            }
+        }
+
+        public List<uint> OffsetList
+        {
+            get
+            {
+                return GetOffsetListFromOffsetType(_watchVar.Offset);
             }
         }
 
@@ -243,17 +374,10 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public WatchVariableControl(ProcessStream stream, WatchVariable watchVar, uint otherOffset = 0)
-            : this(stream, watchVar, new List<uint>() { otherOffset })
-        {
-        }
-
-        public WatchVariableControl(ProcessStream stream, WatchVariable watchVar, List<uint> otherOffset)
+        public WatchVariableControl(WatchVariable watchVar)
         {
             _specialName = watchVar.Name;
             _watchVar = watchVar;
-            _stream = stream;
-            OtherOffsets = otherOffset;
 
             CreateControls();
 
@@ -263,34 +387,34 @@ namespace SM64_Diagnostic.Controls
 
         public WatchVariableLock GetVariableLock(uint offset)
         {
-            var lockCriteria = new WatchVariableLock(_stream, _watchVar.GetRamAddress(_stream, offset, false), new byte[_watchVar.ByteCount]);
+            var lockCriteria = new WatchVariableLock(_watchVar.GetRamAddress(offset, false), new byte[_watchVar.ByteCount]);
 
-            if (!_stream.LockedVariables.ContainsKey(lockCriteria))
+            if (!Config.Stream.LockedVariables.ContainsKey(lockCriteria))
                 return null;
 
-            return _stream.LockedVariables[lockCriteria];
+            return Config.Stream.LockedVariables[lockCriteria];
         }
 
         private void CreateControls()
         {
             this._nameLabel = new Label();
-            this._nameLabel.Width = 210;
+            this._nameLabel.Size = new Size(210, 20); //TODO check this
             this._nameLabel.Text = _watchVar.Name;
             this._nameLabel.Margin = new Padding(3, 3, 3, 3);
             this._nameLabel.Click += _nameLabel_Click;
             this._nameLabel.ImageAlign = ContentAlignment.MiddleRight;
             this._nameLabel.MouseHover += (sender, e) =>
             {
-                if (!_watchVar.OtherOffset)
+                if (!_watchVar.HasAdditiveOffset)
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
-                        _watchVar.GetRamAddress(_stream), _watchVar.GetProcessAddress(_stream), _stream.ProcessName));
+                        _watchVar.GetRamAddress(), _watchVar.GetProcessAddress(), Config.Stream.ProcessName));
                 }
                 else
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{1:X8} + 0x{0:X8} = 0x{2:X8} [{4} + 0x{3:X8}]",
-                        _watchVar.GetRamAddress(_stream, 0, false), OtherOffsets[0], _watchVar.GetRamAddress(_stream, OtherOffsets[0]),
-                        _watchVar.GetProcessAddress(_stream, OtherOffsets[0]), _stream.ProcessName));
+                        _watchVar.GetRamAddress(0, false), OffsetList[0], _watchVar.GetRamAddress(OffsetList[0]),
+                        _watchVar.GetProcessAddress(OffsetList[0]), Config.Stream.ProcessName));
                 }
             };
 
@@ -298,7 +422,14 @@ namespace SM64_Diagnostic.Controls
             {
                 this._checkBoxBool = new CheckBox();
                 this._checkBoxBool.CheckAlign = ContentAlignment.MiddleRight;
+                this._checkBoxBool.CheckState = CheckState.Unchecked; 
                 this._checkBoxBool.CheckedChanged += OnEdited;
+                this._checkBoxBool.MouseEnter += (sender, e) =>
+                {
+                    _lastSelected = this;
+                    (CheckMenu.Items["Highlight"] as ToolStripMenuItem).Checked = _tablePanel.ShowBorder;
+                };
+                this._checkBoxBool.ContextMenuStrip = WatchVariableControl.CheckMenu;
             }
             else
             {
@@ -324,7 +455,7 @@ namespace SM64_Diagnostic.Controls
                     WatchVariableControl.Menu.ItemClicked += OnMenuStripClick;
             }
 
-            this._tablePanel = new TableLayoutPanel();
+            this._tablePanel = new BorderedTableLayoutPanel();
             this._tablePanel.Size = new Size(230, _nameLabel.Height + 2);
             this._tablePanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             this._tablePanel.RowCount = 1;
@@ -336,6 +467,7 @@ namespace SM64_Diagnostic.Controls
             this._tablePanel.Padding = new Padding(0);
             this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120));
             this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
+            this._tablePanel.ShowBorder = false;
             this._tablePanel.Controls.Add(_nameLabel, 0, 0);
             this._tablePanel.Controls.Add(_watchVar.IsBool ? this._checkBoxBool as Control : this._textBoxValue, 1, 0);
         }
@@ -349,17 +481,17 @@ namespace SM64_Diagnostic.Controls
                 typeDescr += String.Format(" w/ mask: 0x{0:X" + _watchVar.ByteCount * 2 + "}", _watchVar.Mask);
             }
 
-            if (!_watchVar.OtherOffset)
+            if (!_watchVar.HasAdditiveOffset)
             {
                 varInfo = new VariableViewerForm(_watchVar.Name, typeDescr,
-                    String.Format("0x{0:X8}", _watchVar.GetRamAddress(_stream)),
-                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress(_stream)));
+                    String.Format("0x{0:X8}", _watchVar.GetRamAddress()),
+                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress().ToUInt64()));
             }
             else
             {
                 varInfo = new VariableViewerForm(_watchVar.Name, typeDescr,
-                    String.Format("0x{0:X8}", _watchVar.GetRamAddress(_stream, OtherOffsets[0])),
-                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress(_stream, OtherOffsets[0])));
+                    String.Format("0x{0:X8}", _watchVar.GetRamAddress(OffsetList[0])),
+                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress(OffsetList[0]).ToUInt64()));
             }
             varInfo.ShowDialog();
         }
@@ -372,9 +504,9 @@ namespace SM64_Diagnostic.Controls
         private void _textBoxValue_MouseEnter(object sender, EventArgs e)
         {
             var lockedStatus = CheckState.Unchecked;
-            if (OtherOffsets.Any(o => GetIsLocked(o)))
+            if (OffsetList.Any(o => GetIsLocked(o)))
             {
-                if (OtherOffsets.All(o => GetIsLocked(o)))
+                if (OffsetList.All(o => GetIsLocked(o)))
                 {
                     lockedStatus = CheckState.Checked;
                 }
@@ -389,6 +521,7 @@ namespace SM64_Diagnostic.Controls
             {
                 (AngleMenu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
                 (AngleMenu.Items["LockValue"] as ToolStripMenuItem).CheckState = lockedStatus;
+                (AngleMenu.Items["Highlight"] as ToolStripMenuItem).Checked = _tablePanel.ShowBorder;
                 (AngleDropDownMenu[0].DropDownItems[0] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Recommended);
                 (AngleDropDownMenu[0].DropDownItems[1] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Unsigned);
                 (AngleDropDownMenu[0].DropDownItems[2] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Signed);
@@ -399,7 +532,8 @@ namespace SM64_Diagnostic.Controls
             else
             {
                 (Menu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
-                (Menu.Items["HexView"] as ToolStripMenuItem).CheckState = lockedStatus;
+                (Menu.Items["LockValue"] as ToolStripMenuItem).CheckState = lockedStatus;
+                (Menu.Items["Highlight"] as ToolStripMenuItem).Checked = _tablePanel.ShowBorder;
                 ObjectDropDownMenu.ForEach(d => Menu.Items.Remove(d));
                 if (_watchVar.IsObject)
                 {
@@ -443,10 +577,10 @@ namespace SM64_Diagnostic.Controls
 
         public void Update()
         {
-            if (_watchVar.Special)
+            if (_watchVar.IsSpecial)
                 return;
 
-            ShowLockedImage(OtherOffsets.Any(o => GetIsLocked(o)), !OtherOffsets.All(o => GetIsLocked(o)));
+            ShowLockedImage(OffsetList.Any(o => GetIsLocked(o)), !OffsetList.All(o => GetIsLocked(o)));
 
             if (_editMode)
                 return;
@@ -455,35 +589,35 @@ namespace SM64_Diagnostic.Controls
 
             if (_watchVar.IsBool)
             {
-                if (OtherOffsets.Any(o => _watchVar.GetBoolValue(_stream, o)))
+                if (OffsetList.Any(o => _watchVar.GetBoolValue(o)))
                 {
-                    if (OtherOffsets.All(o => _watchVar.GetBoolValue(_stream, o)))
+                    if (OffsetList.All(o => _watchVar.GetBoolValue(o)))
                     {
-                        _checkBoxBool.CheckState = CheckState.Checked;
+                        CheckBoxCheckState = CheckState.Checked;
                     }
                     else
                     {
-                        _checkBoxBool.CheckState = CheckState.Indeterminate;
+                        CheckBoxCheckState = CheckState.Indeterminate;
                     }
                 }
                 else
                 {
-                    _checkBoxBool.CheckState = CheckState.Unchecked;
+                    CheckBoxCheckState = CheckState.Unchecked;
                 }
             }
             else
             {
                 bool firstOffset = true;
-                foreach (var offset in OtherOffsets)
+                foreach (var offset in OffsetList)
                 {
                     string newText = "";
                     if (_watchVar.IsAngle)
                     {
-                        newText = _watchVar.GetAngleStringValue(_stream, offset, _angleViewMode, _angleTruncated);
+                        newText = _watchVar.GetAngleStringValue(offset, _angleViewMode, _angleTruncated);
                     }
                     else
                     {
-                        newText = _watchVar.GetStringValue(_stream, offset);
+                        newText = _watchVar.GetStringValue(offset);
                     }
 
                     if (firstOffset)
@@ -510,9 +644,9 @@ namespace SM64_Diagnostic.Controls
 
             if (_watchVar.IsBool)
             {
-                foreach (var offset in OtherOffsets)
+                foreach (var offset in OffsetList)
                 {
-                    _watchVar.SetBoolValue(_stream, offset, _checkBoxBool.Checked);
+                    _watchVar.SetBoolValue(offset, _checkBoxBool.Checked);
                 }
             }
         }
@@ -534,10 +668,10 @@ namespace SM64_Diagnostic.Controls
                 case "Lock Value":
                     EditMode = false;
                     (e.ClickedItem as ToolStripMenuItem).Checked = !(e.ClickedItem as ToolStripMenuItem).Checked;
-                    if (OtherOffsets.Any(o => GetIsLocked(o)))
-                        OtherOffsets.ForEach(o => RemoveLock(o));
+                    if (OffsetList.Any(o => GetIsLocked(o)))
+                        OffsetList.ForEach(o => RemoveLock(o));
                     else
-                        OtherOffsets.ForEach(o => LockUpdate(o));
+                        OffsetList.ForEach(o => LockUpdate(o));
                     break;
                 case "Select Object":
                     if (_watchVar.ByteCount != 4)
@@ -545,12 +679,17 @@ namespace SM64_Diagnostic.Controls
 
                     var slotManager = ManagerContext.Current.ObjectSlotManager;
                     slotManager.SelectedSlotsAddresses.Clear();
-                    foreach (var otherOffset in OtherOffsets)
+                    foreach (var otherOffset in OffsetList)
                     {
-                        var objAddress = BitConverter.ToUInt32(_watchVar.GetByteData(_stream, otherOffset), 0);
+                        var objAddress = BitConverter.ToUInt32(_watchVar.GetByteData(otherOffset), 0);
                         if (ManagerContext.Current.ObjectSlotManager.ObjectSlots.Count(s => s.Address == objAddress) > 0)
                             slotManager.SelectedSlotsAddresses.Add(objAddress);
                     }
+                    break;
+                case "Highlight":
+                    var toolItem = (e.ClickedItem as ToolStripMenuItem);
+                    toolItem.Checked = !toolItem.Checked;
+                    _tablePanel.ShowBorder = toolItem.Checked;
                     break;
             }
         }
@@ -571,28 +710,28 @@ namespace SM64_Diagnostic.Controls
             // Exit edit mode
             EditMode = false;
 
-            _stream.Suspend();
+            Config.Stream.Suspend();
 
             // Write new value to RAM
             byte[] writeBytes;
-            foreach (var offset in OtherOffsets)
+            foreach (var offset in OffsetList)
             {
                 if (_watchVar.IsAngle)
                 {
-                    writeBytes = _watchVar.GetBytesFromAngleString(_stream, _textBoxValue.Text, _angleViewMode);
+                    writeBytes = _watchVar.GetBytesFromAngleString(_textBoxValue.Text, _angleViewMode);
                 }
                 else
                 {
-                    writeBytes = _watchVar.GetBytesFromString(_stream, offset, _textBoxValue.Text);
+                    writeBytes = _watchVar.GetBytesFromString(offset, _textBoxValue.Text);
                 }
-                _watchVar.SetBytes(_stream, offset, writeBytes);
+                _watchVar.SetBytes(offset, writeBytes);
 
                 // Update locked value
                 if (GetIsLocked(offset))
                     LockUpdate(offset, writeBytes);
             }
 
-            _stream.Resume();
+            Config.Stream.Resume();
         }
 
         public bool GetIsLocked(uint offset)
@@ -600,20 +739,23 @@ namespace SM64_Diagnostic.Controls
             return GetVariableLock(offset) != null;
         }
 
-        private void RemoveLock(uint offset)
+        private bool RemoveLock(uint offset)
         {
+            WatchVariableLock removed;
             var lockedVar = GetVariableLock(offset);
             if (lockedVar != null)
-                _stream.LockedVariables.Remove(lockedVar);
+                return Config.Stream.LockedVariables.TryRemove(lockedVar, out removed);
+
+            return true;
         }
 
         private void LockUpdate(uint offset, byte[] lockedBytes = null)
         {
             if (lockedBytes == null)
-                lockedBytes = _watchVar.GetByteData(_stream, offset);
+                lockedBytes = _watchVar.GetByteData(offset);
 
-            var lockedVar = new WatchVariableLock(_stream, _watchVar.GetRamAddress(_stream, offset, false), lockedBytes);
-            _stream.LockedVariables[lockedVar] = lockedVar;
+            var lockedVar = new WatchVariableLock(_watchVar.GetRamAddress(offset, false), lockedBytes);
+            Config.Stream.LockedVariables[lockedVar] = lockedVar;
         }
     }
 }

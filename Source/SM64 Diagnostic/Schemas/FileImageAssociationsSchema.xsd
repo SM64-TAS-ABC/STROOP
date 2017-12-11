@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="FileImageAssociationsSchema"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/FileImageAssociationsSchema.xsd"
+    xmlns:mstns="http://tempuri.org/FileImageAssociationsSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:types="http://tempuri.org/ReusableTypes.xsd"
+>
+  <xs:element name ="FileImageAssociations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Config">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="FileImageDirectory" type="xs:string"/>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FileImages">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="FileImage">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="ControllerImage" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:attribute name="path" use="required" type="xs:string"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="PowerStarBlack">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="FileImage" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:attribute name="path" use="required" type="xs:string"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

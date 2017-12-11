@@ -13,17 +13,19 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.ManagerClasses;
 using SM64_Diagnostic.Managers;
 using SM64_Diagnostic.Extensions;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic
 {
     public partial class StroopMainForm : Form
     {
-        const string _version = "v0.2.8";
-        ProcessStream _sm64Stream = null;
-
+        const string _version = "v0.2.9";
+        
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
-        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData;
-        ObjectAssociations _objectAssoc;
+        InputImageGui _inputImageGui = new InputImageGui();
+        FileImageGui _fileImageGui = new FileImageGui();
+        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, 
+            _debugData, _actionsData, _waterData, _inputData, _fileData, _quarterFrameData, _camHackData;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
         List<RomHack> _romHacks;
@@ -34,9 +36,13 @@ namespace SM64_Diagnostic
         ObjectSlotsManager _objectSlotManager;
         DisassemblyManager _disManager;
         MarioManager _marioManager;
+        InputManager _inputManager;
+        ActionsManager _actionsManager;
         ObjectManager _objectManager;
         MapManager _mapManager;
+        ModelManager _modelManager;
         OptionsManager _optionsManager;
+        TestingManager _testingManager;
         ScriptManager _scriptManager;
         HudManager _hudManager;
         MiscManager _miscManager;
@@ -44,6 +50,10 @@ namespace SM64_Diagnostic
         HackManager _hackManager;
         TriangleManager _triangleManager;
         DebugManager _debugManager;
+        CamHackManager _cameraHackManager;
+        DataManager _waterManager, _quarterFrameManager;
+        FileManager _fileManager;
+        PuManager _puManager;
 
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
@@ -63,7 +73,7 @@ namespace SM64_Diagnostic
                 MessageBox.Show("Ambigous emulator type", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            return _sm64Stream.SwitchProcess(process, emulators[0]);
+            return Config.Stream.SwitchProcess(process, emulators[0]);
         }
 
         private void StroopMainForm_Load(object sender, EventArgs e)
@@ -77,16 +87,16 @@ namespace SM64_Diagnostic
             var currentContext = new ManagerContext();
             ManagerContext.Current = currentContext;
 
-            _sm64Stream = new ProcessStream();
-            _sm64Stream.OnUpdate += OnUpdate;
-            _sm64Stream.FpsUpdated += _sm64Stream_FpsUpdated;
-            _sm64Stream.OnDisconnect += _sm64Stream_OnDisconnect;
-            _sm64Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
-            _sm64Stream.OnClose += _sm64Stream_OnClose;
+            Config.Stream = new ProcessStream();
+            Config.Stream.OnUpdate += OnUpdate;
+            Config.Stream.FpsUpdated += _sm64Stream_FpsUpdated;
+            Config.Stream.OnDisconnect += _sm64Stream_OnDisconnect;
+            Config.Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
+            Config.Stream.OnClose += _sm64Stream_OnClose;
 
-            currentContext.DisassemblyManager = _disManager = new DisassemblyManager(_sm64Stream, tabPageDisassembly);
-            currentContext.ScriptManager = _scriptManager = new ScriptManager(_sm64Stream, _scriptParser, checkBoxUseRomHack);
-            currentContext.HackManager = _hackManager = new HackManager(_sm64Stream, _romHacks, _objectAssoc.SpawnHacks, tabPageHacks);
+            currentContext.DisassemblyManager = _disManager = new DisassemblyManager(tabPageDisassembly);
+            currentContext.ScriptManager = _scriptManager = new ScriptManager(_scriptParser, checkBoxUseRomHack);
+            currentContext.HackManager = _hackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -100,58 +110,48 @@ namespace SM64_Diagnostic
             mapGui.MapZoomTrackbar = trackBarMapZoom;
             mapGui.MapShowInactiveObjects = checkBoxMapShowInactive;
             mapGui.MapShowMario = checkBoxMapShowMario;
-            mapGui.MapShowObjects = checkBoxMapShowObj;
             mapGui.MapShowHolp = checkBoxMapShowHolp;
+            mapGui.MapShowIntendedNextPosition = checkBoxMapShowIntendedNextPosition;
             mapGui.MapShowCamera = checkBoxMapShowCamera;
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
-            currentContext.MapManager = _mapManager = new MapManager(_sm64Stream, _mapAssoc, _objectAssoc, mapGui);
+            mapGui.MapShowCeilingTriangle = checkBoxMapShowCeiling;
+            currentContext.MapManager = _mapManager = new MapManager(_mapAssoc, mapGui);
+            currentContext.ModelManager = _modelManager = new ModelManager(tabPageModel);
 
-            currentContext.MarioManager = _marioManager = new MarioManager(_sm64Stream, _marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
-            currentContext.HudManager = _hudManager = new HudManager(_sm64Stream, _hudData, tabPageHud);
-            currentContext.MiscManager = _miscManager = new MiscManager(_sm64Stream, _miscData, NoTearFlowLayoutPanelMisc, groupBoxPuController);
-            currentContext.CameraManager = _cameraManager = new CameraManager(_sm64Stream, _cameraData, NoTearFlowLayoutPanelCamera);
-            currentContext.TriangleManager = _triangleManager = new TriangleManager(_sm64Stream, tabPageTriangles, _triangleData);
-            currentContext.DebugManager = _debugManager = new DebugManager(_sm64Stream, tabPageDebug);
-
-            // Create object manager
-            var objectGui = new ObjectDataGui()
-            {
-                ObjectBorderPanel = panelObjectBorder,
-                ObjectFlowLayout = NoTearFlowLayoutPanelObject,
-                ObjectImagePictureBox = pictureBoxObject,
-                ObjAddressLabelValue = labelObjAddValue,
-                ObjAddressLabel = labelObjAdd,
-                ObjBehaviorLabel = labelObjBhvValue,
-                ObjectNameTextBox = textBoxObjName,
-                ObjSlotIndexLabel = labelObjSlotIndValue,
-                ObjSlotPositionLabel = labelObjSlotPosValue,
-                CloneButton = buttonObjClone,
-                GoToButton = buttonObjGoTo,
-                RetrieveButton = buttonObjRetrieve,
-                GoToHomeButton = buttonObjGoToHome,
-                RetrieveHomeButton = buttonObjRetrieveHome,
-                UnloadButton = buttonObjUnload
-            };
-            currentContext.ObjectManager = _objectManager = new ObjectManager(_sm64Stream, _objectAssoc, _objectData, objectGui);
-
-            // Create options manager
-            var optionGui = new OptionsGui();
-            optionGui.CheckBoxStartFromOne = checkBoxStartSlotIndexOne;
-            currentContext.OptionsManager = _optionsManager = new OptionsManager(optionGui);
+            currentContext.ActionsManager = _actionsManager = new ActionsManager(_actionsData, noTearFlowLayoutPanelActions, tabPageActions);
+            currentContext.WaterManager = _waterManager = new WaterManager(_waterData, noTearFlowLayoutPanelWater);
+            currentContext.InputManager = _inputManager = new InputManager(_inputData, tabPageInput, NoTearFlowLayoutPanelInput, _inputImageGui);
+            currentContext.MarioManager = _marioManager = new MarioManager(_marioData, tabPageMario, NoTearFlowLayoutPanelMario, _mapManager);
+            currentContext.HudManager = _hudManager = new HudManager(_hudData, tabPageHud, NoTearFlowLayoutPanelHud);
+            currentContext.MiscManager = _miscManager = new MiscManager(_miscData, NoTearFlowLayoutPanelMisc, tabPageMisc);
+            currentContext.CameraManager = _cameraManager = new CameraManager(_cameraData, tabPageCamera, NoTearFlowLayoutPanelCamera);
+            currentContext.TriangleManager = _triangleManager = new TriangleManager(tabPageTriangles, _triangleData, NoTearFlowLayoutPanelTriangles);
+            currentContext.DebugManager = _debugManager = new DebugManager(_debugData, tabPageDebug, noTearFlowLayoutPanelDebug);
+            currentContext.PuManager = _puManager = new PuManager(groupBoxPuController);
+            currentContext.FileManager = _fileManager = new FileManager(_fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
+            currentContext.QuarterFrameManager = _quarterFrameManager = new DataManager(_quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
+            currentContext.CameraHackManager = _cameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
+            currentContext.ObjectManager = _objectManager = new ObjectManager(_objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
+            currentContext.OptionsManager = _optionsManager = new OptionsManager(tabPageOptions);
+            currentContext.TestingManager = _testingManager = new TestingManager(tabPageTesting);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
             _slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
-            _slotManagerGui.MapObjectToggleModeComboBox = comboBoxMapToggleMode;
             _slotManagerGui.FlowLayoutContainer = NoTearFlowLayoutPanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
-            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(_sm64Stream, _objectAssoc, _objectManager, _slotManagerGui, _mapManager, _miscManager);
+            currentContext.ObjectSlotManager = _objectSlotManager = new ObjectSlotsManager(_objectManager, 
+                _slotManagerGui, _mapManager, _miscManager, _modelManager, tabControlMain);
 
             SetupViews();
 
             _resizing = false;
             labelVersionNumber.Text = _version;
+
+            // Collect garbage, we are fully loaded now!
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
 
             // Load process
             buttonRefresh_Click(this, new EventArgs());
@@ -168,13 +168,13 @@ namespace SM64_Diagnostic
                 switch (dr)
                 {
                     case DialogResult.Yes:
-                        _sm64Stream.Readonly = false;
-                        _sm64Stream.ShowWarning = false;
-                        buttonReadOnly.Text = "Enable Read-only";
+                        Config.Stream.Readonly = false;
+                        Config.Stream.ShowWarning = false;
+                        buttonReadOnly.Text = "Switch to Read-Only";
                         break;
 
                     case DialogResult.No:
-                        _sm64Stream.ShowWarning = false;
+                        Config.Stream.ShowWarning = false;
                         break;
 
                     case DialogResult.Cancel:
@@ -187,6 +187,7 @@ namespace SM64_Diagnostic
         {
             this.BeginInvoke(new Action(() => {
                 buttonRefresh_Click(this, new EventArgs());
+                panelConnect.Size = this.Size;
                 panelConnect.Visible = true;
             }));
         }
@@ -201,16 +202,34 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Miscellaneous Data", statusNum++);
             _miscData = XmlConfigParser.OpenWatchVarData(@"Config/MiscData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Object Data", statusNum++);
-            _objectData = XmlConfigParser.OpenWatchVarData(@"Config/ObjectData.xml", "ObjectDataSchema.xsd", "objectOffset");
+            _objectData = XmlConfigParser.OpenWatchVarData(@"Config/ObjectData.xml", "ObjectDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Object Associations", statusNum++);
-            _objectAssoc = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", _slotManagerGui);
+            Config.ObjectAssociations = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", _slotManagerGui);
             loadingForm.UpdateStatus("Loading Mario Data", statusNum++);
-            _marioData = XmlConfigParser.OpenWatchVarData(@"Config/MarioData.xml", "MarioDataSchema.xsd", "marioOffset");
+            _marioData = XmlConfigParser.OpenWatchVarData(@"Config/MarioData.xml", "MarioDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Camera Data", statusNum++);
             _cameraData = XmlConfigParser.OpenWatchVarData(@"Config/CameraData.xml", "CameraDataSchema.xsd");
-            loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
-            _triangleData = XmlConfigParser.OpenWatchVarData(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd", "triangleOffset");
+            loadingForm.UpdateStatus("Loading Actions Data", statusNum++);
+            _actionsData = XmlConfigParser.OpenWatchVarData(@"Config/ActionsData.xml", "MiscDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading Water Data", statusNum++);
+            _waterData = XmlConfigParser.OpenWatchVarData(@"Config/WaterData.xml", "MiscDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading Input Data", statusNum++);
+            _inputData = XmlConfigParser.OpenWatchVarData(@"Config/InputData.xml", "MiscDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading Input Image Associations", statusNum++);
+            XmlConfigParser.OpenInputImageAssoc(@"Config/InputImageAssociations.xml", _inputImageGui);
+            loadingForm.UpdateStatus("Loading File Data", statusNum++);
+            _fileData = XmlConfigParser.OpenWatchVarData(@"Config/FileData.xml", "FileDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading File Image Associations", statusNum++);
+            XmlConfigParser.OpenFileImageAssoc(@"Config/FileImageAssociations.xml", _fileImageGui);
+            loadingForm.UpdateStatus("Loading Quarter Frame Data", statusNum++);
+            _quarterFrameData = XmlConfigParser.OpenWatchVarData(@"Config/QuarterFrameData.xml", "MiscDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading Camera Hack Data", statusNum++);
+            _camHackData = XmlConfigParser.OpenWatchVarData(@"Config/CamHackData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Triangles Data", statusNum++);
+            _triangleData = XmlConfigParser.OpenWatchVarData(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading Debug Data", statusNum++);
+            _debugData = XmlConfigParser.OpenWatchVarData(@"Config/DebugData.xml", "MiscDataSchema.xsd");
+            loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
             _hudData = XmlConfigParser.OpenWatchVarData(@"Config/HudData.xml", "HudDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Map Associations", statusNum++);
             _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
@@ -222,6 +241,14 @@ namespace SM64_Diagnostic
             _romHacks = hacksConfig.Item2;
             loadingForm.UpdateStatus("Loading Mario Actions", statusNum++);
             Config.MarioActions = XmlConfigParser.OpenActionTable(@"Config/MarioActions.xml");
+            Config.MarioAnimations = XmlConfigParser.OpenAnimationTable(@"Config/MarioAnimations.xml");
+            Config.PendulumSwings = XmlConfigParser.OpenPendulumSwingTable(@"Config/PendulumSwings.xml");
+            Config.RacingPenguinWaypoints = XmlConfigParser.OpenWaypointTable(@"Config/RacingPenguinWaypoints.xml");
+            Config.KoopaTheQuick1Waypoints = XmlConfigParser.OpenWaypointTable(@"Config/KoopaTheQuick1Waypoints.xml");
+            Config.KoopaTheQuick2Waypoints = XmlConfigParser.OpenWaypointTable(@"Config/KoopaTheQuick2Waypoints.xml");
+            Config.Missions = XmlConfigParser.OpenMissionTable(@"Config/Missions.xml");
+            Config.CourseData = XmlConfigParser.OpenCourseDataTable(@"Config/CourseData.xml");
+            Config.FlyGuyData = new FlyGuyDataTable();
 
             loadingForm.UpdateStatus("Finishing", statusNum);
         }
@@ -249,9 +276,19 @@ namespace SM64_Diagnostic
                 _marioManager.Update(tabControlMain.SelectedTab == tabPageMario);
                 _cameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
                 _hudManager.Update(tabControlMain.SelectedTab == tabPageHud);
+                _actionsManager.Update(tabControlMain.SelectedTab == tabPageActions);
+                _waterManager.Update(tabControlMain.SelectedTab == tabPageWater);
+                _inputManager.Update(tabControlMain.SelectedTab == tabPageInput);
+                _fileManager.Update(tabControlMain.SelectedTab == tabPageFile);
+                _quarterFrameManager.Update(tabControlMain.SelectedTab == tabPageQuarterFrame);
+                _cameraHackManager.Update(tabControlMain.SelectedTab == tabPageCamHack);
                 _miscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
                 _triangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
+                _debugManager.Update(tabControlMain.SelectedTab == tabPageDebug);
+                _puManager.Update(tabControlMain.SelectedTab == tabPagePu);
+                _testingManager.Update(tabControlMain.SelectedTab == tabPageTesting);
                 _mapManager?.Update();
+                _modelManager?.Update();
                 _scriptManager.Update();
                 _hackManager.Update();
             }));
@@ -259,38 +296,38 @@ namespace SM64_Diagnostic
 
         private void _sm64Stream_FpsUpdated(object sender, EventArgs e)
         {
-            BeginInvoke(new Action(() =>
+            Invoke(new Action(() =>
             {
-                labelFpsCounter.Text = "FPS: " + (int)_sm64Stream.Fps;
+                labelFpsCounter.Text = "FPS: " + (int)Config.Stream.FpsInPractice;
             }));
         }
 
         private void SetupViews()
         {
             // Mario Image
-            pictureBoxMario.Image = _objectAssoc.MarioImage;
-            panelMarioBorder.BackColor = _objectAssoc.MarioColor;
-            pictureBoxMario.BackColor = _objectAssoc.MarioColor.Lighten(0.5);
+            pictureBoxMario.Image = Config.ObjectAssociations.MarioImage;
+            panelMarioBorder.BackColor = Config.ObjectAssociations.MarioColor;
+            pictureBoxMario.BackColor = Config.ObjectAssociations.MarioColor.Lighten(0.5);
 
             // Camera Image
-            pictureBoxCamera.Image = _objectAssoc.CameraImage;
-            panelCameraBorder.BackColor = _objectAssoc.CameraColor;
-            pictureBoxCamera.BackColor = _objectAssoc.CameraColor.Lighten(0.5);
+            pictureBoxCamera.Image = Config.ObjectAssociations.CameraImage;
+            panelCameraBorder.BackColor = Config.ObjectAssociations.CameraColor;
+            pictureBoxCamera.BackColor = Config.ObjectAssociations.CameraColor.Lighten(0.5);
 
             // Hud Image
-            pictureBoxHud.Image = _objectAssoc.HudImage;
-            panelHudBorder.BackColor = _objectAssoc.HudColor;
-            pictureBoxHud.BackColor = _objectAssoc.HudColor.Lighten(0.5);
+            pictureBoxHud.Image = Config.ObjectAssociations.HudImage;
+            panelHudBorder.BackColor = Config.ObjectAssociations.HudColor;
+            pictureBoxHud.BackColor = Config.ObjectAssociations.HudColor.Lighten(0.5);
 
             // Debug Image
-            pictureBoxDebug.Image = _objectAssoc.DebugImage;
-            panelDebugBorder.BackColor = _objectAssoc.DebugColor;
-            pictureBoxDebug.BackColor = _objectAssoc.DebugColor.Lighten(0.5);
+            pictureBoxDebug.Image = Config.ObjectAssociations.DebugImage;
+            panelDebugBorder.BackColor = Config.ObjectAssociations.DebugColor;
+            pictureBoxDebug.BackColor = Config.ObjectAssociations.DebugColor.Lighten(0.5);
 
             // Misc Image
-            pictureBoxMisc.Image = _objectAssoc.MiscImage;
-            panelMiscBorder.BackColor = _objectAssoc.MiscColor;
-            pictureBoxMisc.BackColor = _objectAssoc.MiscColor.Lighten(0.5);
+            pictureBoxMisc.Image = Config.ObjectAssociations.MiscImage;
+            panelMiscBorder.BackColor = Config.ObjectAssociations.MiscColor;
+            pictureBoxMisc.BackColor = Config.ObjectAssociations.MiscColor.Lighten(0.5);
 
             // Setup data columns
             var nameColumn = new DataColumn("Name");
@@ -308,7 +345,7 @@ namespace SM64_Diagnostic
             for (int index = 0; index < _miscData.Count; index++)
             {
                 var watchVar = _miscData[index];
-                if (watchVar.Special)
+                if (watchVar.IsSpecial)
                     continue;
                 var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.TypeName, "", watchVar.Address);
                 _otherDataRowAssoc.Add(index, row);
@@ -316,7 +353,6 @@ namespace SM64_Diagnostic
 
 #if !DEBUG
             tabControlMain.TabPages.Remove(tabPageExpressions);
-            tabControlMain.TabPages.Remove(tabPageStars);
 #endif
         }
 
@@ -390,6 +426,11 @@ namespace SM64_Diagnostic
             }*/
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private async void NoTearFlowLayoutPanelObjects_Resize(object sender, EventArgs e)
         {
             _resizeTimeLeft = 500;
@@ -402,6 +443,8 @@ namespace SM64_Diagnostic
             NoTearFlowLayoutPanelMario.Visible = false;
             if (_mapManager != null && _mapManager.IsLoaded)
                 _mapManager.Visible = false;
+            if (_modelManager != null && _modelManager.IsLoaded)
+                _modelManager.Visible = false;
             await Task.Run(() =>
             {
                 while (_resizeTimeLeft > 0)
@@ -415,6 +458,8 @@ namespace SM64_Diagnostic
             NoTearFlowLayoutPanelMario.Visible = true;
             if (_mapManager != null && _mapManager.IsLoaded)
                 _mapManager.Visible = true;
+            if (_modelManager != null && _modelManager.IsLoaded)
+                _modelManager.Visible = true;
 
             _resizing = false;
         }
@@ -432,9 +477,9 @@ namespace SM64_Diagnostic
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if (_sm64Stream.IsRunning)
+            if (Config.Stream.IsRunning)
             {
-                _sm64Stream.Stop();
+                Config.Stream.Stop();
                 e.Cancel = true;
                 Hide();
                 return;
@@ -448,21 +493,110 @@ namespace SM64_Diagnostic
             Invoke(new Action(() => Close()));
         }
 
-        private void buttonCollapseBottom_Click(object sender, EventArgs e)
+        private async void glControlModelView_Load(object sender, EventArgs e)
         {
-            splitContainerMain.Panel2Collapsed = !splitContainerMain.Panel2Collapsed;
+            await Task.Run(() => {
+                while (_modelManager == null)
+                {
+                    Task.Delay(1).Wait();
+                }
+            });
+            _modelManager.Load();
         }
 
-        private void buttonCollapseTop_Click(object sender, EventArgs e)
+        private void buttonShowTopPanel_Click(object sender, EventArgs e)
         {
-            splitContainerMain.Panel1Collapsed = !splitContainerMain.Panel1Collapsed;
+            splitContainerMain.Panel1Collapsed = false;
+            splitContainerMain.Panel2Collapsed = true;
+        }
+
+        private void buttonShowBottomPanel_Click(object sender, EventArgs e)
+        {
+            splitContainerMain.Panel1Collapsed = true;
+            splitContainerMain.Panel2Collapsed = false;
+        }
+
+        private void buttonShowTopBottomPanel_Click(object sender, EventArgs e)
+        {
+            splitContainerMain.Panel1Collapsed = false;
+            splitContainerMain.Panel2Collapsed = false;
+        }
+
+        private SplitContainer getSelectedTabSplitContainer()
+        {
+            SplitContainer selectedTabSplitContainer = null;
+            TabPage selectedTabPage = tabControlMain.SelectedTab;
+
+            if (selectedTabPage == tabPageObjects)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerObject"] as SplitContainer;
+            else if (selectedTabPage == tabPageMario)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMario"] as SplitContainer;
+            else if (selectedTabPage == tabPageHud)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerHud"] as SplitContainer;
+            else if (selectedTabPage == tabPageCamera)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerCamera"] as SplitContainer;
+            else if (selectedTabPage == tabPageTriangles)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerTriangles"] as SplitContainer;
+            else if (selectedTabPage == tabPageInput)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerInput"] as SplitContainer;
+            else if (selectedTabPage == tabPageFile)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerFile"] as SplitContainer;
+            else if (selectedTabPage == tabPageMisc)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMisc"] as SplitContainer;
+            else if (selectedTabPage == tabPageDebug)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerDebug"] as SplitContainer;
+            else if (selectedTabPage == tabPageMap)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMap"] as SplitContainer;
+            else if (selectedTabPage == tabPageModel)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerModel"] as SplitContainer;
+            else if (selectedTabPage == tabPageHacks)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerHacks"] as SplitContainer;
+            else if (selectedTabPage == tabPageCamHack)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerCamHack"] as SplitContainer;
+        
+            return selectedTabSplitContainer;
+        }
+
+        private void buttonShowLeftPanel_Click(object sender, EventArgs e)
+        {
+            SplitContainer selectedTabSplitContainer = getSelectedTabSplitContainer();
+            if (selectedTabSplitContainer != null)
+            {
+                selectedTabSplitContainer.Panel1Collapsed = false;
+                selectedTabSplitContainer.Panel2Collapsed = true;
+            }
+        }
+
+        private void buttonShowRightPanel_Click(object sender, EventArgs e)
+        {
+            SplitContainer selectedTabSplitContainer = getSelectedTabSplitContainer();
+            if (selectedTabSplitContainer != null)
+            {
+                selectedTabSplitContainer.Panel1Collapsed = true;
+                selectedTabSplitContainer.Panel2Collapsed = false;
+            }
+        }
+
+        private void buttonShowLeftRightPanel_Click(object sender, EventArgs e)
+        {
+            SplitContainer selectedTabSplitContainer = getSelectedTabSplitContainer();
+            if (selectedTabSplitContainer != null)
+            {
+                selectedTabSplitContainer.Panel1Collapsed = false;
+                selectedTabSplitContainer.Panel2Collapsed = false;
+            }
         }
 
         private void buttonReadOnly_Click(object sender, EventArgs e)
         {
-            _sm64Stream.Readonly = !_sm64Stream.Readonly;
-            buttonReadOnly.Text = _sm64Stream.Readonly ? "Disable Read-only" : "Enable Read-only";
-            _sm64Stream.ShowWarning = false;
+            Config.Stream.Readonly = !Config.Stream.Readonly;
+            buttonReadOnly.Text = Config.Stream.Readonly ? "Switch to Read-Write" : "Switch to Read-Only";
+            Config.Stream.ShowWarning = false;
+        }
+
+        private void StroopMainForm_Resize(object sender, EventArgs e)
+        {
+            panelConnect.Size = this.Size;
         }
 
         private void buttonConnect_Click(object sender, EventArgs e)
@@ -498,19 +632,15 @@ namespace SM64_Diagnostic
 
         private void buttonDisconnect_Click(object sender, EventArgs e)
         {
-            _sm64Stream.SwitchProcess(null, null);
+            Config.Stream.SwitchProcess(null, null);
             panelConnect.Size = this.Size;
             panelConnect.Visible = true;
         }
 
-        private void checkBoxMoveCamWithPu_CheckedChanged(object sender, EventArgs e)
+        private void buttonRefreshAndConnect_Click(object sender, EventArgs e)
         {
-            Config.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
-        }
-
-        private void checkBoxUseOverlays_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.ShowOverlays = checkBoxUseOverlays.Checked;
+            buttonRefresh_Click(sender, e);
+            buttonConnect_Click(sender, e);
         }
 
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
@@ -538,18 +668,7 @@ namespace SM64_Diagnostic
 
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControlMain.SelectedTab == tabPageMap)
-            {
-                _objectSlotManager.UpdateSelectedMapObjectSlots();
-                comboBoxMapToggleMode.Visible = true;
-                labelToggleMode.Visible = true;
-            }
-            else
-            {
-                _objectSlotManager.SetAllSelectedMapObjectSlots();
-                comboBoxMapToggleMode.Visible = false;
-                labelToggleMode.Visible = false;
-            }
+
         }
     }
 }

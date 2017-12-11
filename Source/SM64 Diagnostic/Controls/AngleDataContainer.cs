@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace SM64_Diagnostic.Controls
     public class AngleDataContainer : IDataContainer
     {
         Label _nameLabel;
-        TableLayoutPanel _tablePanel;
+        BorderedTableLayoutPanel _tablePanel;
         TextBox _textBoxValue;
         string _specialName;
 
@@ -19,15 +20,16 @@ namespace SM64_Diagnostic.Controls
 
         public enum AngleViewModeType { Signed, Unsigned, Degrees, Radians };
 
-        AngleViewModeType _angleViewMode = AngleViewModeType.Unsigned;
+        AngleViewModeType _angleViewMode;
         bool _angleTruncated = false;
 
-        public AngleDataContainer(string name)
+        public AngleDataContainer(string name, AngleViewModeType angleViewMode = AngleViewModeType.Unsigned)
         {
             _specialName = name;
+            _angleViewMode = angleViewMode;
 
             this._nameLabel = new Label();
-            this._nameLabel.Width = 210;
+            this._nameLabel.Size = new Size(210, 20);
             this._nameLabel.Text = name;
             this._nameLabel.Margin = new Padding(3, 3, 3, 3);
 
@@ -40,7 +42,7 @@ namespace SM64_Diagnostic.Controls
             this._textBoxValue.ContextMenuStrip = AngleMenu;
             this._textBoxValue.MouseEnter += _textBoxValue_MouseEnter;
 
-            this._tablePanel = new TableLayoutPanel();
+            this._tablePanel = new BorderedTableLayoutPanel();
             this._tablePanel.Size = new Size(230, _nameLabel.Height + 2);
             this._tablePanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             this._tablePanel.RowCount = 1;
@@ -50,6 +52,7 @@ namespace SM64_Diagnostic.Controls
             this._tablePanel.ColumnStyles.Clear();
             this._tablePanel.Margin = new Padding(0);
             this._tablePanel.Padding = new Padding(0);
+            this._tablePanel.ShowBorder = false;
             this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120));
             this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
             this._tablePanel.Controls.Add(_nameLabel, 0, 0);
@@ -58,6 +61,16 @@ namespace SM64_Diagnostic.Controls
             AngleMenu.ItemClicked += OnMenuStripClick;
             AngleDropDownMenu[0].DropDownItemClicked += AngleDropDownMenu_DropDownItemClicked;
             AngleDropDownMenu[1].Click += TruncateAngleMenu_ItemClicked;
+            AngleDropDownMenu[2].Click += AngleDataContainer_Click;
+        }
+
+        private void AngleDataContainer_Click(object sender, EventArgs e)
+        {
+            if (this != _lastSelected)
+                return;
+
+            AngleDropDownMenu[2].Checked = !AngleDropDownMenu[2].Checked;
+            _tablePanel.ShowBorder = AngleDropDownMenu[2].Checked;
         }
 
         private void TruncateAngleMenu_ItemClicked(object sender, EventArgs e)
@@ -108,6 +121,7 @@ namespace SM64_Diagnostic.Controls
             (AngleDropDownMenu[0].DropDownItems[2] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Degrees);
             (AngleDropDownMenu[0].DropDownItems[3] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Radians);
             (AngleDropDownMenu[1] as ToolStripMenuItem).Checked = _angleTruncated;
+            (AngleDropDownMenu[2] as ToolStripMenuItem).Checked = _tablePanel.ShowBorder;
         }
 
         public Control Control
@@ -165,9 +179,7 @@ namespace SM64_Diagnostic.Controls
             }
             set
             {
-                _angleValue = value % (Math.PI * 2);
-                if (_angleValue < 0)
-                    _angleValue += Math.PI * 2;
+                _angleValue = MoreMath.NormalizeAngleDouble(value);
                 UpdateAngleValue();
             }
         }
@@ -203,6 +215,7 @@ namespace SM64_Diagnostic.Controls
 
                     _angleMenu.Items.Add(AngleDropDownMenu[0]);
                     _angleMenu.Items.Add(AngleDropDownMenu[1]);
+                    _angleMenu.Items.Add(AngleDropDownMenu[2]);
                 }
                 return _angleMenu;
             }
@@ -215,13 +228,14 @@ namespace SM64_Diagnostic.Controls
             {
                 if (_angleMenuDropDown == null)
                 {
-                    _angleMenuDropDown = new ToolStripMenuItem[2];
+                    _angleMenuDropDown = new ToolStripMenuItem[3];
                     _angleMenuDropDown[0] = new ToolStripMenuItem("View Angle As");
                     _angleMenuDropDown[0].DropDownItems.Add("Unsigned (short)");
                     _angleMenuDropDown[0].DropDownItems.Add("Signed (short)");
                     _angleMenuDropDown[0].DropDownItems.Add("Degrees");
                     _angleMenuDropDown[0].DropDownItems.Add("Radians");
                     _angleMenuDropDown[1] = new ToolStripMenuItem("Truncate Angle (by 16)");
+                    _angleMenuDropDown[2] = new ToolStripMenuItem("Highlight");
                 }
                 return _angleMenuDropDown;
             }
@@ -239,26 +253,25 @@ namespace SM64_Diagnostic.Controls
 
             if (_angleTruncated)
             {
-                double roundFactor = 65536 / (Math.PI * 2) / 16;
-                angleValue = Math.Floor(_angleValue * roundFactor) / roundFactor;
+                angleValue = MoreMath.NormalizeAngleTruncated(angleValue);
             }
 
             switch (_angleViewMode)
             {
                 case AngleViewModeType.Degrees:
-                    _textBoxValue.Text = (angleValue / (Math.PI * 2) * 360).ToString();
+                    _textBoxValue.Text = Math.Round(MoreMath.AngleUnitsToDegrees(angleValue), 3).ToString();
                     break;
 
                 case AngleViewModeType.Radians:
-                    _textBoxValue.Text = angleValue.ToString();
+                    _textBoxValue.Text = Math.Round(MoreMath.AngleUnitsToRadians(angleValue), 3).ToString();
                     break;
 
                 case AngleViewModeType.Signed:
-                    _textBoxValue.Text = ((short)(angleValue / (Math.PI * 2) * 65536)).ToString();
+                    _textBoxValue.Text = MoreMath.NormalizeAngleShort(angleValue).ToString();
                     break;
 
                 case AngleViewModeType.Unsigned:
-                    _textBoxValue.Text = ((ushort)(angleValue / (Math.PI * 2) * 65536)).ToString();
+                    _textBoxValue.Text = MoreMath.NormalizeAngleUshort(angleValue).ToString();
                     break;
             }       
         }

@@ -7,22 +7,21 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Structs;
 using System.Windows.Forms;
 using SM64_Diagnostic.Extensions;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Managers
 {
 
     public class ScriptManager
     {
-        ProcessStream _stream;
         ScriptParser _parser;
         readonly byte[] byteUintFF = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
         CheckBox _useRomHackChecBox;
       
         uint _freeMemPtr;
 
-        public ScriptManager(ProcessStream stream, ScriptParser parser, CheckBox useRomHackChecBox)
+        public ScriptManager(ScriptParser parser, CheckBox useRomHackChecBox)
         {
-            _stream = stream;
             _parser = parser;
             _useRomHackChecBox = useRomHackChecBox;
 
@@ -50,8 +49,8 @@ namespace SM64_Diagnostic.Managers
         public void ExecuteScript(GameScript script)
         {
             // Copy jump bytes
-            uint prevInst1 = _stream.GetUInt32(script.InsertAddress);
-            uint prevInst2 = _stream.GetUInt32(script.InsertAddress + 4);
+            uint prevInst1 = Config.Stream.GetUInt32(script.InsertAddress);
+            uint prevInst2 = Config.Stream.GetUInt32(script.InsertAddress + 4);
             byte[] prevInstBytes = new byte[8];
             BitConverter.GetBytes(prevInst1).CopyTo(prevInstBytes, 0);
             BitConverter.GetBytes(prevInst2).CopyTo(prevInstBytes, 4);
@@ -66,8 +65,8 @@ namespace SM64_Diagnostic.Managers
             Task.Delay(100).Wait();
 
             // Copy jump bytes (They may have changed)
-            prevInst1 = _stream.GetUInt32(script.InsertAddress);
-            prevInst2 = _stream.GetUInt32(script.InsertAddress + 4);
+            prevInst1 = Config.Stream.GetUInt32(script.InsertAddress);
+            prevInst2 = Config.Stream.GetUInt32(script.InsertAddress + 4);
             prevInstBytes = new byte[8];
             BitConverter.GetBytes(prevInst1).CopyTo(prevInstBytes, 0);
             BitConverter.GetBytes(prevInst2).CopyTo(prevInstBytes, 4);
@@ -97,7 +96,7 @@ namespace SM64_Diagnostic.Managers
 
             // Write script
             Buffer.BlockCopy(script.Script, 0, scriptBytes, 0, scriptLength);
-            success &= _stream.WriteRamLittleEndian(scriptBytes, scriptAddress);
+            success &= Config.Stream.WriteRamLittleEndian(scriptBytes, scriptAddress);
 
             scriptAddress += (uint)(scriptLength);
             script.PostInstrSpace = scriptAddress;
@@ -105,15 +104,15 @@ namespace SM64_Diagnostic.Managers
             scriptAddress += (uint)(2*sizeof(uint));
 
             uint jumpBackToInsertPointInst = JumpToAddressInst(script.InsertAddress + 8);
-            success &= _stream.WriteRamLittleEndian(BitConverter.GetBytes(jumpBackToInsertPointInst), scriptAddress);
+            success &= Config.Stream.WriteRamLittleEndian(BitConverter.GetBytes(jumpBackToInsertPointInst), scriptAddress);
 
             script.Allocated = success;
             if (!script.Allocated)
                 return false;
 
             // Write jump
-            script.Allocated &= _stream.WriteRamLittleEndian(prevInstBytes, script.PostInstrSpace);
-            script.Allocated &= _stream.WriteRamLittleEndian(script.JumpInstBytes, script.InsertAddress);
+            script.Allocated &= Config.Stream.WriteRamLittleEndian(prevInstBytes, script.PostInstrSpace);
+            script.Allocated &= Config.Stream.WriteRamLittleEndian(script.JumpInstBytes, script.InsertAddress);
 
             return success;
         }

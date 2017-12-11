@@ -8,14 +8,19 @@ namespace SM64_Diagnostic.Structs.Configurations
 {
     public struct HudConfig
     {
-        public uint HpAddress;
-        public uint LiveCountAddress;
-        public uint CoinCountAddress;
-        public uint StarCountAddress;
-        public uint DisplayHpAddress;
-        public uint DisplayLiveCountAddress;
-        public uint DisplayCoinCountAddress;
-        public uint DisplayStarCountAddress;
+        public uint LifeCountOffset;
+        public uint HpCountOffset;
+        public uint CoinCountOffset;
+        public uint StarCountOffset;
+
+        public uint LifeDisplayOffset;
+        public uint HpDisplayOffset;
+        public uint CoinDisplayOffset;
+        public uint StarDisplayOffset;
+
+        public uint VisibilityOffset;
+        public byte VisibilityMask;
+
         public short FullHp;
         public short FullHpInt;
         public sbyte StandardLives;

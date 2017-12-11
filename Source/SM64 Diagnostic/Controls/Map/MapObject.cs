@@ -20,7 +20,8 @@ namespace SM64_Diagnostic.Structs
         public bool IsActive;
         public float Rotation;
         public bool UsesRotation;
-        public bool Show = true;
+        public bool Transparent = false;
+        public bool Show = false;
 
         public int TextureId;
 
@@ -34,7 +35,8 @@ namespace SM64_Diagnostic.Structs
 
         public override void DrawOnControl(MapGraphics graphics)
         {
-            graphics.DrawTexture(TextureId, LocationOnContol, graphics.ScaleImageSize(Image.Size, graphics.IconSize), UsesRotation ? Rotation : 0);
+            graphics.DrawTexture(TextureId, LocationOnContol, graphics.ScaleImageSize(Image.Size, graphics.IconSize), 
+                UsesRotation ? Rotation : 0, Transparent ?  0.5f : 1.0f);
         }
 
         public override void Load(MapGraphics graphics)

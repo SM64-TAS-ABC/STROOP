@@ -10,7 +10,7 @@ namespace SM64_Diagnostic.Extensions
 {
     public static class WatchExpressionExtensions
     {
-        public static string Evaluate(this WatchExpression watchExp, ProcessStream stream)
+        public static string Evaluate(this WatchExpression watchExp)
         {
             if (watchExp.Error != null)
                 return watchExp.Error;

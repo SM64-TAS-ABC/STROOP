@@ -3,35 +3,102 @@
   <Emulators>
     <Emulator name="Mupen 5.0 RR" processName="mupen64-rerecording" ramStart="0x008EBA80"/>
     <Emulator name="Nemu64 0.8" processName="Nemu64" ramStart="0x10020000"/>
+    <Emulator name="BizHawk" processName="EmuHawk" offsetDll="mupen64plus.dll" ramStart="0x691C0"/>
   </Emulators>
+  
+  <!-- US, JP, or PAL -->
+  <RomVersion>US</RomVersion>
+  
   <RefreshRateFreq>30</RefreshRateFreq>
   <RamSize>0x400000</RamSize>
   <ObjectSlots>
-    <FirstObjectAddress>0x8033D488</FirstObjectAddress>
+    <FirstObjectAddressUS>0x8033D488</FirstObjectAddressUS>
+    <FirstObjectAddressJP>0x8033C118</FirstObjectAddressJP>
     <ObjectStructSize>0x0260</ObjectStructSize>
     <HeaderOffset>0x00</HeaderOffset>
     <ListNextLinkOffset>0x08</ListNextLinkOffset>
     <ListPreviousLinkOffset>0x04</ListPreviousLinkOffset>
+    <ParentOffset>0x68</ParentOffset>
+    <UnusedSlotAddressUS>0x80360E88</UnusedSlotAddressUS>
+    <UnusedSlotAddressJP>0x8035FB18</UnusedSlotAddressJP>
     <BehaviorScriptOffset>0x020C</BehaviorScriptOffset>
     <BehaviorGfxOffset>0x14</BehaviorGfxOffset>
     <BehaviorSubtypeOffset>0x0144</BehaviorSubtypeOffset>
     <BehaviorAppearance>0xF0</BehaviorAppearance>
+    <ModelPointerOffset>0x218</ModelPointerOffset>
     <ObjectActiveOffset>0x74</ObjectActiveOffset>
+    <TimerOffset>0x154</TimerOffset>
+    <AnimationOffset>0x3C</AnimationOffset>
+    <MarioGraphic>0x800F0860</MarioGraphic>
+
+    <MarioBehavior>0x13002EC0</MarioBehavior>
+    <DustSpawnerBehavior>0x130024AC</DustSpawnerBehavior>
+    <DustBallBehavior>0x130024DC</DustBallBehavior>
+    <DustBehavior>0x13002500</DustBehavior>
+
     <CoordinateOffsetX>0xA0</CoordinateOffsetX>
     <CoordinateOffsetY>0xA4</CoordinateOffsetY>
     <CoordinateOffsetZ>0xA8</CoordinateOffsetZ>
+
+    <YSpeedOffset>0xB0</YSpeedOffset>
+    <HSpeedOffset>0xB8</HSpeedOffset>
+
     <HomeOffsetX>0x164</HomeOffsetX>
     <HomeOffsetY>0x168</HomeOffsetY>
     <HomeOffsetZ>0x16C</HomeOffsetZ>
     <RotationOffset>0xD4</RotationOffset>
+
+    <GraphicsOffsetX>0x20</GraphicsOffsetX>
+    <GraphicsOffsetY>0x24</GraphicsOffsetY>
+    <GraphicsOffsetZ>0x28</GraphicsOffsetZ>
+    <GraphicsOffsetYaw>0x1C</GraphicsOffsetYaw>
+    <GraphicsOffsetPitch>0x1A</GraphicsOffsetPitch>
+    <GraphicsOffsetRoll>0x1E</GraphicsOffsetRoll>
+
     <MaxObjectSlots>240</MaxObjectSlots>
-    <MoveToMarioYOffset>300</MoveToMarioYOffset>
+    <HitboxRadius>0x1f8</HitboxRadius>
+    <HitboxHeight>0x1fc</HitboxHeight>
+    <HitboxDownOffset>0x208</HitboxDownOffset>
+    
+    <YawFacingOffset>0xD6</YawFacingOffset>
+    <PitchFacingOffset>0xD2</PitchFacingOffset>
+    <RollFacingOffset>0xDA</RollFacingOffset>
+    <YawMovingOffset>0xCA</YawMovingOffset>
+    <PitchMovingOffset>0xC6</PitchMovingOffset>
+    <RollMovingOffset>0xCE</RollMovingOffset>
+    <ScaleWidthOffset>0x2C</ScaleWidthOffset>
+    <ScaleHeightOffset>0x30</ScaleHeightOffset>
+    <ScaleDepthOffset>0x34</ScaleDepthOffset>
+    
+    <ReleaseStatusOffset>0x1CC</ReleaseStatusOffset>
+    <StackIndexOffset>0x1D0</StackIndexOffset>
+    <StackIndexReleasedValue>0</StackIndexReleasedValue>
+    <StackIndexUnReleasedValue>1</StackIndexUnReleasedValue>
+    <InitialReleaseStatusOffset>0x1D4</InitialReleaseStatusOffset>
+    <ReleaseStatusThrownValue>0x800EE5F8</ReleaseStatusThrownValue>
+    <ReleaseStatusDroppedValue>0x800EE5F0</ReleaseStatusDroppedValue>
+    <InteractionStatusOffset>0x134</InteractionStatusOffset>
+    
+    <PendulumAccelerationDirection>0xF4</PendulumAccelerationDirection>
+    <PendulumAccelerationMagnitude>0x100</PendulumAccelerationMagnitude>
+    <PendulumAngularVelocity>0xFC</PendulumAngularVelocity>
+    <PendulumAngle>0xF8</PendulumAngle>
+
+    <WaypointOffset>0x100</WaypointOffset>
+    <PitchToWaypointOffset>0x10A</PitchToWaypointOffset>
+    <RacingPenguinEffortOffset>0x110</RacingPenguinEffortOffset>
+    <KoopaTheQuickHSpeedMultiplierOffset>0xF4</KoopaTheQuickHSpeedMultiplierOffset>
+
+    <FlyGuyOscillationTimerOffset>0xF8</FlyGuyOscillationTimerOffset>
+
+    <ScuttlebugTargetAngleOffset>0x162</ScuttlebugTargetAngleOffset>
   </ObjectSlots>
   <ObjectGroups>
     <ProcessNextLinkOffset>0x60</ProcessNextLinkOffset>
     <ProcessPreviousLinkOffset>0x64</ProcessPreviousLinkOffset>
     <ParentObjectOffset>0x68</ParentObjectOffset>
-    <FirstObjectGroupingAddress>0x8033CBE0</FirstObjectGroupingAddress>
+    <FirstObjectGroupingAddressUS>0x8033CBE0</FirstObjectGroupingAddressUS>
+    <FirstObjectGroupingAddressJP>0x8033B870</FirstObjectGroupingAddressJP>
     <ProcessGroupStructSize>0x68</ProcessGroupStructSize>
     <ProcessGroupsOrdering>
       <Group index ="0x0B" color="#FF00A5"/>
@@ -45,42 +112,61 @@
       <Group index ="0x08" color="#8000FF"/>
       <Group index ="0x0C" color="#FF00FF"/>
     </ProcessGroupsOrdering>
-    <VacantPointerAddress color="#AAAAAA">0x80361150</VacantPointerAddress>
+    <VacantPointerAddressUS color="#AAAAAA">0x80361150</VacantPointerAddressUS>
+    <VacantPointerAddressJP color="#AAAAAA">0x8035FDE0</VacantPointerAddressJP>
   </ObjectGroups>
   <Mario>
-    <MarioStructAddress>0x8033B170</MarioStructAddress>
+    <MarioStructAddressUS>0x8033B170</MarioStructAddressUS>
+    <MarioStructAddressJP>0x80339E00</MarioStructAddressJP>
     <ActionOffset>0x0C</ActionOffset>
     <PrevActionOffset>0x10</PrevActionOffset>
     <CoordinateOffsetX>0x3C</CoordinateOffsetX>
     <CoordinateOffsetY>0x40</CoordinateOffsetY>
     <CoordinateOffsetZ>0x44</CoordinateOffsetZ>
     <FacingAngleOffset>0x2A</FacingAngleOffset>
-    <StandingOnPointer>0x80330E34</StandingOnPointer>
-    <InteractingObjectPointerOffset>0x78</InteractingObjectPointerOffset>
-    <HoldingObjectPointerOffset>0x7C</HoldingObjectPointerOffset>
-    <UsingObjectPointerOffset>0x80</UsingObjectPointerOffset>
+    <YawFacingOffset>0x2E</YawFacingOffset>
+    <YawIntendedOffset>0x24</YawIntendedOffset>
+    <StoodOnObjectPointerUS>0x80330E34</StoodOnObjectPointerUS>
+    <StoodOnObjectPointerJP>0x8032FED4</StoodOnObjectPointerJP>
+    <InteractionObjectPointerOffset>0x78</InteractionObjectPointerOffset>
+    <HeldObjectPointerOffset>0x7C</HeldObjectPointerOffset>
+    <UsedObjectPointerOffset>0x80</UsedObjectPointerOffset>
     <CeilingYOffset>0x6C</CeilingYOffset>
-    <GroundYOffset>0x70</GroundYOffset>
+    <FloorYOffset>0x70</FloorYOffset>
     <FloorTriangleOffset>0x68</FloorTriangleOffset>
     <WallTriangleOffset>0x60</WallTriangleOffset>
     <CeilingTriangleOffset>0x64</CeilingTriangleOffset>
     <HSpeedOffset>0x54</HSpeedOffset>
+    <VSpeedOffset>0x4C</VSpeedOffset>
     <MarioStructSize>0xC4</MarioStructSize>
-    <MoveToObjectYOffset>300</MoveToObjectYOffset>
     <SlidingSpeedXOffset>0x58</SlidingSpeedXOffset>
     <SlidingSpeedZOffset>0x5C</SlidingSpeedZOffset>
+    <SlidingYawOffset>0x38</SlidingYawOffset>
+    <TwirlYawOffset>0x3A</TwirlYawOffset>
     <PeakHeightOffset>0xBC</PeakHeightOffset>
-    <ObjectReferenceAddress>0x80361158</ObjectReferenceAddress>
+    <ObjectReferenceAddressUS>0x80361158</ObjectReferenceAddressUS>
+    <ObjectReferenceAddressJP>0x8035FDE8</ObjectReferenceAddressJP>
+    <ObjectAnimationOffset>0x38</ObjectAnimationOffset>
+    <ObjectAnimationTimerOffset>0x40</ObjectAnimationTimerOffset>
+    <HOLPXOffset>0x258</HOLPXOffset>
+    <HOLPYOffset>0x25C</HOLPYOffset>
+    <HOLPZOffset>0x260</HOLPZOffset>
+    <WaterLevelOffset>0x76</WaterLevelOffset>
   </Mario>
   <Hud>
-    <HpAddress>0x8033B21e</HpAddress>
-    <LiveCountAddress>0x8033B21D</LiveCountAddress>
-    <CoinCountAddress>0x8033B218</CoinCountAddress>
-    <StarCountAddress>0x8033B21A</StarCountAddress>
-    <DisplayHpAddress>0x8033B266</DisplayHpAddress>
-    <DisplayLiveCountAddress>0x8033B260</DisplayLiveCountAddress>
-    <DisplayCoinCountAddress>0x8033B262</DisplayCoinCountAddress>
-    <DisplayStarCountAddress>0x8033B264</DisplayStarCountAddress>
+    <LifeCountOffset>0xAD</LifeCountOffset>
+    <HpCountOffset>0xAE</HpCountOffset>
+    <CoinCountOffset>0xA8</CoinCountOffset>
+    <StarCountOffset>0xAA</StarCountOffset>
+
+    <LifeDisplayOffset>0xF0</LifeDisplayOffset>
+    <HpDisplayOffset>0xF6</HpDisplayOffset>
+    <CoinDisplayOffset>0xF2</CoinDisplayOffset>
+    <StarDisplayOffset>0xF4</StarDisplayOffset>
+
+    <VisibilityOffset>0xFB</VisibilityOffset>
+    <VisibilityMask>0x0F</VisibilityMask>
+
     <FullHp>2176</FullHp>
     <FullHpInt>8</FullHpInt>
     <StandardLives>4</StandardLives>
@@ -88,44 +174,290 @@
     <StandardStars>120</StandardStars>
   </Hud>
   <Debug>
-    <ToggleAddress>0x8033D263</ToggleAddress>
-    <SettingAddress>0x80330E94</SettingAddress>
+    <AdvancedModeAddressUS>0x8033D263</AdvancedModeAddressUS>
+    <AdvancedModeAddressJP>0x8033BEF3</AdvancedModeAddressJP>
+
+    <AdvancedModeSettingAddressUS>0x80330E94</AdvancedModeSettingAddressUS>
+    <AdvancedModeSettingAddressJP>0x8032FF34</AdvancedModeSettingAddressJP>
+
+    <ResourceMeterAddressUS>0x8032D594</ResourceMeterAddressUS>
+    <ResourceMeterAddressJP>0x8032C654</ResourceMeterAddressJP>
+
+    <ResourceMeterSettingAddressUS>0x8032DF10</ResourceMeterSettingAddressUS>
+    <ResourceMeterSettingAddressJP>0x8032CFB0</ResourceMeterSettingAddressJP>
+
+    <ClassicModeAddressUS>0x8032D598</ClassicModeAddressUS>
+    <ClassicModeAddressJP>0x8032C658</ClassicModeAddressJP>
+
+    <SpawnModeAddressUS>0x8033D2DF</SpawnModeAddressUS>
+    <SpawnModeAddressJP>0x8033BF6F</SpawnModeAddressJP>
+
+    <StageSelectAddressUS>0x8032D58C</StageSelectAddressUS>
+    <StageSelectAddressJP>0x8032C64C</StageSelectAddressJP>
+
+    <FreeMovementAddressUS>0x80269BDA</FreeMovementAddressUS>
+    <FreeMovementAddressJP>0x8026976E</FreeMovementAddressJP>
+
+    <FreeMovementOnValueUS>0x5FAB</FreeMovementOnValueUS>
+    <FreeMovementOnValueJP>0x5F0D</FreeMovementOnValueJP>
+
+    <FreeMovementOffValueUS>0x98D5</FreeMovementOffValueUS>
+    <FreeMovementOffValueJP>0x97D1</FreeMovementOffValueJP>
   </Debug>
   <TriangleOffsets>
-    <surfaceType>0x00</surfaceType>
-    <flags>0x02</flags>
-    <windDirection>0x03</windDirection>
-    <wallProjection>0x04</wallProjection>
-    <yMin>0x06</yMin>
-    <yMax>0x08</yMax>
-    <x1>0x0A</x1>
-    <y1>0x0C</y1>
-    <z1>0x0E</z1>
-    <x2>0x10</x2>
-    <y2>0x12</y2>
-    <z2>0x14</z2>
-    <x3>0x16</x3>
-    <y3>0x18</y3>
-    <z3>0x1A</z3>
-    <normX>0x1C</normX>
-    <normY>0x20</normY>
-    <normZ>0x24</normZ>
-    <offset>0x28</offset>
-    <associatedObject>0x2C</associatedObject>
+    <SurfaceType>0x00</SurfaceType>
+    <ExertionForceIndex>0x02</ExertionForceIndex>
+    <ExertionAngle>0x03</ExertionAngle>
+    <Flags>0x04</Flags>
+    <Room>0x05</Room>
+    <YMin>0x06</YMin>
+    <YMax>0x08</YMax>
+    <X1>0x0A</X1>
+    <Y1>0x0C</Y1>
+    <Z1>0x0E</Z1>
+    <X2>0x10</X2>
+    <Y2>0x12</Y2>
+    <Z2>0x14</Z2>
+    <X3>0x16</X3>
+    <Y3>0x18</Y3>
+    <Z3>0x1A</Z3>
+    <NormX>0x1C</NormX>
+    <NormY>0x20</NormY>
+    <NormZ>0x24</NormZ>
+    <NormOffset>0x28</NormOffset>
+    <AssociatedObject>0x2C</AssociatedObject>
+
+    <BelongsToObjectMask>0x01</BelongsToObjectMask>
+    <NoCamCollisionMask>0x02</NoCamCollisionMask>
+    <ProjectionMask>0x08</ProjectionMask>
   </TriangleOffsets>
-  <HolpX>0x8033B3C8</HolpX>
-  <HolpY>0x8033B3CC</HolpY>
-  <HolpZ>0x8033B3D0</HolpZ>
-  <CameraX>0x8033C6A4</CameraX>
-  <CameraY>0x8033C6A8</CameraY>
-  <CameraZ>0x8033C6AC</CameraZ>
-  <CameraRot>0x8033C6E4</CameraRot>
-  <LevelAddress>0x8033B249</LevelAddress>
-  <AreaAddress>0x8033B24A</AreaAddress>
-  <LoadingPointAddress>0x8033BACA</LoadingPointAddress>
-  <MissionLayoutAddress>0x8033BAC8</MissionLayoutAddress>
-  <RngAddress>0x8038EEE0</RngAddress>
-  <RngRecordingAreaAddress>0x803E0000</RngRecordingAreaAddress>
+  <Triangle>
+    <TriangleStructSize>0x30</TriangleStructSize>
+    
+    <TriangleListPointerAddress>0x8038EE9C</TriangleListPointerAddress>
+    <LevelTriangleCountAddressUS>0x80361178</LevelTriangleCountAddressUS>
+    <LevelTriangleCountAddressJP>0x8035FE08</LevelTriangleCountAddressJP>
+    <TotalTriangleCountAddressUS>0x80361170</TotalTriangleCountAddressUS>
+    <TotalTriangleCountAddressJP>0x8035FE00</TotalTriangleCountAddressJP>
+
+    <NodeListPointerAddress>0x8038EE98</NodeListPointerAddress>
+    <LevelNodeCountAddressUS>0x80361174</LevelNodeCountAddressUS>
+    <LevelNodeCountAddressJP>0x8035FE04</LevelNodeCountAddressJP>
+    <TotalNodeCountAddressUS>0x8036116C</TotalNodeCountAddressUS>
+    <TotalNodeCountAddressJP>0x8035FDFC</TotalNodeCountAddressJP>
+
+    <ExertionForceTableAddressUS>0x8032DD38</ExertionForceTableAddressUS>
+    <ExertionForceTableAddressJP>0x8032CDD8</ExertionForceTableAddressJP>
+  </Triangle>
+  <Camera>
+    <CameraStructAddressUS>0x8033C618</CameraStructAddressUS>
+    <CameraStructAddressJP>0x8033B2A8</CameraStructAddressJP>
+    <XOffset>0x8C</XOffset>
+    <YOffset>0x90</YOffset>
+    <ZOffset>0x94</ZOffset>
+    <FocusXOffset>0x80</FocusXOffset>
+    <FocusYOffset>0x84</FocusYOffset>
+    <FocusZOffset>0x88</FocusZOffset>
+    <YawFacingOffset>0xCE</YawFacingOffset>
+    <MarioCamPossibleOffset>0x6D</MarioCamPossibleOffset>
+    <MarioCamPossibleMask>0x04</MarioCamPossibleMask>
+    <SecondaryObjectAddressUS>0x8032DF30</SecondaryObjectAddressUS>
+    <SecondaryObjectAddressJP>0x8032CFD0</SecondaryObjectAddressJP>
+  </Camera>
+  <Input>
+    <CurrentInputAddressUS>0x8033AFF8</CurrentInputAddressUS>
+    <CurrentInputAddressJP>0x80339C88</CurrentInputAddressJP>
+
+    <JustPressedInputAddressUS>0x8033AFA2</JustPressedInputAddressUS>
+    <JustPressedInputAddressJP>0x80339C32</JustPressedInputAddressJP>
+
+    <BufferedInputAddressUS>0x80367054</BufferedInputAddressUS>
+    <BufferedInputAddressJP>0x80365CE4</BufferedInputAddressJP>
+
+    <ButtonAOffset>0x00</ButtonAOffset>
+    <ButtonBOffset>0x00</ButtonBOffset>
+    <ButtonZOffset>0x00</ButtonZOffset>
+    <ButtonStartOffset>0x00</ButtonStartOffset>
+    <ButtonROffset>0x01</ButtonROffset>
+    <ButtonLOffset>0x01</ButtonLOffset>
+    <ButtonCUpOffset>0x01</ButtonCUpOffset>
+    <ButtonCDownOffset>0x01</ButtonCDownOffset>
+    <ButtonCLeftOffset>0x01</ButtonCLeftOffset>
+    <ButtonCRightOffset>0x01</ButtonCRightOffset>
+    <ButtonDUpOffset>0x00</ButtonDUpOffset>
+    <ButtonDDownOffset>0x00</ButtonDDownOffset>
+    <ButtonDLeftOffset>0x00</ButtonDLeftOffset>
+    <ButtonDRightOffset>0x00</ButtonDRightOffset>
+    <ControlStickXOffset>0x02</ControlStickXOffset>
+    <ControlStickYOffset>0x03</ControlStickYOffset>
+
+    <ButtonAMask>0x80</ButtonAMask>
+    <ButtonBMask>0x40</ButtonBMask>
+    <ButtonZMask>0x20</ButtonZMask>
+    <ButtonStartMask>0x10</ButtonStartMask>
+    <ButtonRMask>0x10</ButtonRMask>
+    <ButtonLMask>0x20</ButtonLMask>
+    <ButtonCUpMask>0x08</ButtonCUpMask>
+    <ButtonCDownMask>0x04</ButtonCDownMask>
+    <ButtonCLeftMask>0x02</ButtonCLeftMask>
+    <ButtonCRightMask>0x01</ButtonCRightMask>
+    <ButtonDUpMask>0x08</ButtonDUpMask>
+    <ButtonDDownMask>0x04</ButtonDDownMask>
+    <ButtonDLeftMask>0x02</ButtonDLeftMask>
+    <ButtonDRightMask>0x01</ButtonDRightMask>
+  </Input>
+  <File>
+    <FileStructAddressUS>0x80207700</FileStructAddressUS>
+    <FileStructAddressJP>0x80207B00</FileStructAddressJP>
+    <FileStructSize>0x38</FileStructSize>
+    
+    <ChecksumConstantOffset>0x34</ChecksumConstantOffset>
+    <ChecksumConstantValue>0x4441</ChecksumConstantValue>
+    <ChecksumOffset>0x36</ChecksumOffset>
+
+    <CourseStarsOffsetStart>0x0C</CourseStarsOffsetStart>
+    <TotWCStarOffset>0x20</TotWCStarOffset>
+    <CotMCStarOffset>0x1F</CotMCStarOffset>
+    <VCutMStarOffset>0x21</VCutMStarOffset>
+    <PSSStarsOffset>0x1E</PSSStarsOffset>
+    <SAStarOffset>0x23</SAStarOffset>
+    <WMotRStarOffset>0x22</WMotRStarOffset>
+    <BitDWStarOffset>0x1B</BitDWStarOffset>
+    <BitFSStarOffset>0x1C</BitFSStarOffset>
+    <BitSStarOffset>0x1D</BitSStarOffset>
+    <ToadMIPSStarsOffset>0x08</ToadMIPSStarsOffset>
+
+    <MainCourseCannonsOffsetStart>0x0D</MainCourseCannonsOffsetStart>
+    <WMotRCannonOffset>0x23</WMotRCannonOffset>
+    <CannonMask>0x80</CannonMask>
+
+    <WFDoorOffset>0x0A</WFDoorOffset>
+    <JRBDoorOffset>0x0A</JRBDoorOffset>
+    <CCMDoorOffset>0x0A</CCMDoorOffset>
+    <PSSDoorOffset>0x0A</PSSDoorOffset>
+    <BitDWDoorOffset>0x0A</BitDWDoorOffset>
+    <BitFSDoorOffset>0x0A</BitFSDoorOffset>
+    <BitSDoorOffset>0x09</BitSDoorOffset>
+
+    <WFDoorMask>0x08</WFDoorMask>
+    <JRBDoorMask>0x20</JRBDoorMask>
+    <CCMDoorMask>0x10</CCMDoorMask>
+    <PSSDoorMask>0x04</PSSDoorMask>
+    <BitDWDoorMask>0x40</BitDWDoorMask>
+    <BitFSDoorMask>0x80</BitFSDoorMask>
+    <BitSDoorMask>0x10</BitSDoorMask>
+
+    <CoinScoreOffsetStart>0x25</CoinScoreOffsetStart>
+
+    <FileStartedOffset>0x0B</FileStartedOffset>
+    <FileStartedMask>0x01</FileStartedMask>
+    <CapSwitchPressedOffset>0x0B</CapSwitchPressedOffset>
+    <RedCapSwitchMask>0x02</RedCapSwitchMask>
+    <GreenCapSwitchMask>0x04</GreenCapSwitchMask>
+    <BlueCapSwitchMask>0x08</BlueCapSwitchMask>
+    <KeyDoorOffset>0x0B</KeyDoorOffset>
+    <KeyDoor1KeyMask>0x10</KeyDoor1KeyMask>
+    <KeyDoor1OpenedMask>0x40</KeyDoor1OpenedMask>
+    <KeyDoor2KeyMask>0x20</KeyDoor2KeyMask>
+    <KeyDoor2OpenedMask>0x80</KeyDoor2OpenedMask>
+    <MoatDrainedOffset>0x0A</MoatDrainedOffset>
+    <MoatDrainedMask>0x02</MoatDrainedMask>
+    <DDDMovedBackOffset>0x0A</DDDMovedBackOffset>
+    <DDDMovedBackMask>0x01</DDDMovedBackMask>
+
+    <HatLocationModeOffset>0x09</HatLocationModeOffset>
+    <HatLocationModeMask>0x0F</HatLocationModeMask>
+    <HatLocationMarioMask>0x00</HatLocationMarioMask>
+    <HatLocationGroundMask>0x01</HatLocationGroundMask>
+    <HatLocationKleptoMask>0x02</HatLocationKleptoMask>
+    <HatLocationUkikiMask>0x04</HatLocationUkikiMask>
+    <HatLocationSnowmanMask>0x08</HatLocationSnowmanMask>
+
+    <HatLocationCourseOffset>0x00</HatLocationCourseOffset>
+    <HatLocationCourseSSLValue>0x0801</HatLocationCourseSSLValue>
+    <HatLocationCourseSLValue>0x0A01</HatLocationCourseSLValue>
+    <HatLocationCourseTTMValue>0x2401</HatLocationCourseTTMValue>
+
+    <HatPositionXOffset>0x02</HatPositionXOffset>
+    <HatPositionYOffset>0x04</HatPositionYOffset>
+    <HatPositionZOffset>0x06</HatPositionZOffset>
+  </File>
+  <Waypoint>
+    <StructSize>0x08</StructSize>
+    <IndexOffset>0x00</IndexOffset>
+    <XOffset>0x02</XOffset>
+    <YOffset>0x04</YOffset>
+    <ZOffset>0x06</ZOffset>
+  </Waypoint>
+  <CameraHack>
+    <CameraHackStructUS>0x803E0000</CameraHackStructUS>
+    <CameraHackStructJP>0x803E0000</CameraHackStructJP>
+    
+    <CameraModeOffset>0x00</CameraModeOffset>
+    <CameraXOffset>0x04</CameraXOffset>
+    <CameraYOffset>0x08</CameraYOffset>
+    <CameraZOffset>0x0C</CameraZOffset>
+    <FocusXOffset>0x10</FocusXOffset>
+    <FocusYOffset>0x14</FocusYOffset>
+    <FocusZOffset>0x18</FocusZOffset>
+    <AbsoluteAngleOffset>0x1C</AbsoluteAngleOffset>
+    <ThetaOffset>0x1E</ThetaOffset>
+    <RadiusOffset>0x20</RadiusOffset>
+    <RelativeHeightOffset>0x24</RelativeHeightOffset>
+    <ObjectOffset>0x28</ObjectOffset>
+  </CameraHack>
+  <GotoRetrieve>
+    <GotoAboveDefault>300</GotoAboveDefault>
+    <GotoInfrontDefault>0</GotoInfrontDefault>
+    <RetrieveAboveDefault>300</RetrieveAboveDefault>
+    <RetrieveInfrontDefault>0</RetrieveInfrontDefault>
+  </GotoRetrieve>
+  <LevelAddressUS>0x8033B249</LevelAddressUS>
+  <LevelAddressJP>0x80339ED9</LevelAddressJP>
+
+  <AreaAddressUS>0x8033B24A</AreaAddressUS>
+  <AreaAddressJP>0x80339EDA</AreaAddressJP>
+
+  <LoadingPointAddressUS>0x8033BACA</LoadingPointAddressUS>
+  <LoadingPointAddressJP>0x8033A75A</LoadingPointAddressJP>
+
+  <MissionLayoutAddressUS>0x8033BAC8</MissionLayoutAddressUS>
+  <MissionLayoutAddressJP>0x8033A758</MissionLayoutAddressJP>
+
+  <LevelIndexAddressUS>0x8033BAC6</LevelIndexAddressUS>
+  <LevelIndexAddressJP>0x8033A756</LevelIndexAddressJP>
+
+  <WaterLevelMedianAddressUS>0x8036118A</WaterLevelMedianAddressUS>
+  <WaterLevelMedianAddressJP>0x8035FE1A</WaterLevelMedianAddressJP>
+
+  <WaterPointerAddressUS>0x80361184</WaterPointerAddressUS>
+  <WaterPointerAddressJP>0x8035FE14</WaterPointerAddressJP>
+
+  <GlobalTimerAddressUS>0x8032D5D4</GlobalTimerAddressUS>
+  <GlobalTimerAddressJP>0x8032C694</GlobalTimerAddressJP>
+
+  <RngAddressUS>0x8038EEE0</RngAddressUS>
+  <RngAddressJP>0x8038EEE0</RngAddressJP>
+
+  <AnimationTimerAddressUS>0x8032DF08</AnimationTimerAddressUS>
+  <AnimationTimerAddressJP>0x8032CFA8</AnimationTimerAddressJP>
+
+  <MusicOnAddressUS>0x80222618</MusicOnAddressUS>
+  <MusicOnAddressJP>0x80222A18</MusicOnAddressJP>
+
+  <MusicOnMask>0x20</MusicOnMask>
+
+  <MusicVolumeAddressUS>0x80222630</MusicVolumeAddressUS>
+  <MusicVolumeAddressJP>0x80222A30</MusicVolumeAddressJP>
+
+  <CurrentFileAddressUS>0x8032DDF4</CurrentFileAddressUS>
+  <CurrentFileAddressJP>0x8032CE94</CurrentFileAddressJP>
+
+  <SpecialTripleJumpAddressUS>0x8032DD94</SpecialTripleJumpAddressUS>
+  <SpecialTripleJumpAddressJP>0x8032CE34</SpecialTripleJumpAddressJP>
+
+  <HackedAreaAddressUS>0x803E0000</HackedAreaAddressUS>
+  <HackedAreaAddressJP>0x803E0000</HackedAreaAddressJP>
   <DebugAddress></DebugAddress>
   <DebugModeAddress></DebugModeAddress>
 </Config>

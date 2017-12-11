@@ -28,10 +28,13 @@
       <xs:length value="7"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="offset">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
   <xs:complexType name="watch-variable">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <xs:attribute name="special" use="optional" type="xs:boolean"/>
         <xs:attribute name="specialType" use="optional" type="xs:string"/>
         <xs:attribute name="type" use="optional">
           <xs:simpleType>
@@ -60,7 +63,6 @@
             </xs:restriction>
           </xs:simpleType>
         </xs:attribute>
-        <xs:attribute name="absoluteAddress" type="xs:boolean" use="optional"/>
         <xs:attribute name="mask" type="address" use="optional"/>
         <xs:attribute name="useHex" type="xs:boolean" use="optional"/>
         <xs:attribute name="isBool" type="xs:boolean" use="optional"/>

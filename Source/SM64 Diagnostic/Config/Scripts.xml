@@ -4,7 +4,7 @@
     <ScriptDirectory>Resources\Scripts\</ScriptDirectory>
     <FreeMemoryArea>0x803e1000</FreeMemoryArea>
   </Config>
-  <Script insertAddress="0x8024BCD8" path="RNGFrameProc.src64" />
-  <Script insertAddress="0x80385ce4 " path="RNGObjectStartProc.src64" />
-  <Script insertAddress="0x80385d2C" path="RNGObjectEndProc.src64" />
+  <Script insertAddress="0x8024BCD8" path="FrameProc.src64" />
+  <Script insertAddress="0x80385ce4 " path="ObjectStartProc.src64" />
+  <Script insertAddress="0x80385d2C" path="ObjectEndProc.src64" />
 </Scripts>

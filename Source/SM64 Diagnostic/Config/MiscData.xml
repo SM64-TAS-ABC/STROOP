@@ -1,38 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <MiscData>
-  <Data type="int" address="0x00C19054" absoluteAddress="true">Global Timer</Data>
-  <Data type="ushort" address="0x8038EEE0">RNG Value</Data>
-  <Data special="true" specialType="RngIndex">RNG Index</Data>
-  <Data special="true" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
-  <Data special="true" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
-  <Data type="ushort" address="0x00C1D150" absoluteAddress="true">Coin Counter</Data>
-  <Data type="sbyte" address="0x00C4CE7D" absoluteAddress="true">Red Coin Count</Data>
-  <Data type="byte" address="0x00a93c27" absoluteAddress="true">Mission Selected</Data>
-  <Data type="byte" address="0x00C2754A" absoluteAddress="true">Mission Layout</Data>
-  <Data type="byte" address="0x00C1D0A3" absoluteAddress="true">Mission Name</Data>
-  <Data type="byte" address="0x00C19807" absoluteAddress="true">Star Collected</Data>
-  <Data type="byte" address="0x80222618" isBool="true" mask="0x20" invertBool="true">Music On</Data>
-  <Data type="float" address ="0x80222630">Volume</Data>
-  <Data type="byte" address="0x8033B249">Level</Data>
-  <Data type="byte" address="0x8033B24A">Area</Data>
-  <Data type="ushort" address="0x8033BACA">Loading Point</Data>
-  <Data type="byte" address="0x00C19817" absoluteAddress="true" isBool="true">Special Triple Jump</Data>
-  <Data type="byte" address="0x00C1E09B" absoluteAddress="true" isBool="true">Talked to Yoshi</Data>
-  <Data type="byte" address="0x00C26CED" absoluteAddress="true" isBool="true">Never Entered Castle</Data>
-  <Data type="short" address="0xc19876" absoluteAddress="true">Current File</Data>
-  <Data type="byte" address="0x00C19076" absoluteAddress="true">Demo Counter</Data>
-  <Data type="short" address="0xa936b2" absoluteAddress="true">Demo Timer</Data>
-  <Data type="byte" address="0x00B125FC" absoluteAddress="true">Sound Selection</Data>
-  <Data type="byte" address="0xc1cf13" absoluteAddress="true">Arrow Selection</Data>
-  <Data type="short" address="0xa9379e" absoluteAddress="true">Hand X</Data>
-  <Data type="short" address="0xa937a2" absoluteAddress="true">Hand Y</Data>
-  <Data type="ushort" address="0x00C4CCDA" absoluteAddress="true">TTC Speed Setting</Data>
-  <Data type="byte" address="0x00C341B0" absoluteAddress="true">BBH 'Go Round Boo Cnt</Data>
-  <Data type="short" address="0x009FCD60" absoluteAddress="true">WDW Main Water Level</Data>
-  <Data type="short" address="0x009FEEAC" absoluteAddress="true">WDW Town Water Level</Data>
-  <Data type="byte" address="0x00C1C9BE" absoluteAddress="true">WDW Painting Level</Data>
-  <Data type="short" address="0x00C26C64" absoluteAddress="true">Water Level</Data>
-  <Data type="short" address="0x00C4CC08" absoluteAddress="true">Water Level Median</Data>
-  <Data type="byte" address="0x00C4CCD4" absoluteAddress="true" isBool="true">THI Water Drained</Data>
-  <Data type="short" address="0x009F4142" absoluteAddress="true">THI Tiny Water Level</Data>
+  <Data type="int" addressUS="0x8032D5D4" addressJP="0x8032C694" offset="Relative">Global Timer</Data>
+  <Data type="ushort" addressUS="0x8038EEE0" addressJP="0x8038EEE0" offset="Relative">RNG Value</Data>
+  <Data offset="Special" specialType="RngIndex">RNG Index</Data>
+  <Data offset="Special" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
+  <Data offset="Special" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
+  <Data type="short" addressUS="0x8032DF08" addressJP="0x8032CFA8" offset="Relative">Animation Timer</Data>
+
+  <Data type="byte" addressUS="0x80222618" addressJP="0x80222A18" offset="Relative" isBool="true" mask="0x20" invertBool="true">Music On</Data>
+  <Data type="float" addressUS="0x80222630" addressJP="0x80222A30" offset="Relative">Volume</Data>
+  <Data type="byte" addressUS="0x8032DD94" addressJP="0x8032CE34" offset="Relative" isBool="true">Special Triple Jump</Data>
+  <Data type="byte" addressUS="0x80332618" addressJP="0x80331508" offset="Relative" isBool="true">Talked to Yoshi</Data>
+  <Data type="byte" addressUS="0x8033B26E" addressJP="0x80339EFE" offset="Relative" isBool="true">Never Entered Castle</Data>
+  <Data type="short" addressUS="0x8032DDF4" addressJP="0x8032CE94" offset="Relative">Current File</Data>
+  <Data type="byte" addressUS="0x8032D5F5" addressJP="0x8032C6B5" offset="Relative">Demo Counter</Data>
+  <Data type="short" addressUS="0x801A7C30" addressJP="0x801A7AF0" offset="Relative">Demo Timer</Data>
+  <Data type="byte" addressUS="0x80226B7F" addressJP="0x80226D7F" offset="Relative">Sound Selection</Data>
+  <Data type="short" addressUS="0x801A7D1C" addressJP="0x801A7BDC" offset="Relative">Hand X</Data>
+  <Data type="short" addressUS="0x801A7D20" addressJP="0x801A7BE0" offset="Relative">Hand Y</Data>
+  <Data type="short" addressUS="0x80361258" addressJP="0x8035FEE8" offset="Relative">TTC Speed Setting</Data>
+
+  <Data type="short" addressUS="0x80361414" addressJP="0x803600A4" offset="Relative">Snow Counter</Data>
+  <Data type="short" addressUS="0x80361416" addressJP="0x803600A6" offset="Relative">Snow Max</Data>
+  <Data type="int" addressUS="0x80361408" addressJP="0x80360098" offset="Relative">Snow Center X</Data>
+  <Data type="int" addressUS="0x8036140C" addressJP="0x8036009C" offset="Relative">Snow Center Y</Data>
+  <Data type="int" addressUS="0x80361410" addressJP="0x803600A0" offset="Relative">Snow Center Z</Data>
+  <Data type="short" addressUS="0x80180B06" addressJP="0x8017DC86" offset="Relative">JRB Ship Snow Type</Data>
+  <Data type="short" addressUS="0x80184E8A" addressJP="0x80181FFA" offset="Relative">CCM Snow Type</Data>
+  <Data type="short" addressUS="0x80170CF6" addressJP="0x8016DE76" offset="Relative">SL Snow Type</Data>
+
+  <Data type="byte" addressUS="0x801A81A4" addressJP="0x801A8014" offset="Relative">Mission Selected</Data>
+  <Data type="short" addressUS="0x8033BAC8" addressJP="0x8033A758" offset="Relative">Mission Layout</Data>
+  <Data type="byte" addressUS="0x80331620" addressJP="0x80330534" offset="Relative">Mission Name</Data>
+  <Data type="byte" addressUS="0x8032DD84" addressJP="0x8032CE24" offset="Relative">Last Star</Data>
+  <Data type="byte" addressUS="0x8032DD80" addressJP="0x8032CE20" offset="Relative">Last Star Course</Data>
+  <Data type="byte" addressUS="0x80331490" addressJP="0x80330430" offset="Relative">Selection Index</Data>
+  <Data type="short" addressUS="0x8032DDF8" addressJP="0x8032CE98" offset="Relative">Stage Select Index</Data>
+
+  <Data type="short" addressUS="0x8033BAC6" addressJP="0x8033A756" offset="Relative">Level Index</Data>
+  <Data type="byte" addressUS="0x8033B249" addressJP="0x80339ED9" offset="Relative">Level</Data>
+  <Data type="byte" addressUS="0x8033B24A" addressJP="0x80339EDA" offset="Relative">Area</Data>
+  <Data type="short" addressUS="0x8033BACA" addressJP="0x8033A75A" offset="Relative">Loading Point</Data>
+  <Data type="uint" addressUS="0x8033B4A0" addressJP="0x8033A130" offset="Relative" useHex="true">Last Area</Data>
+  <Data type="byte" addressUS="0x8033B4A4" addressJP="0x8033A134" offset="Relative">Last Area Entrance</Data>
+  <Data type="short" addressUS="0x8033BACC" addressJP="0x8033A75C" offset="Relative">Last Death Course</Data>
+  <Data type="short" addressUS="0x8033B256" addressJP="0x80339EE6" offset="Relative">Destination</Data>
+  <Data type="short" addressUS="0x8033B25A" addressJP="0x80339EEA" offset="Relative">Door Direction</Data>
+  
+  <Data type="short" addressUS="0x8033B238" addressJP="0x80339EC8" offset="Relative">Transition State</Data>
+  <Data type="short" addressUS="0x8033BAB0" addressJP="0x8033A740" offset="Relative">Transition Type</Data>
+  <Data type="byte" addressUS="0x80330EC0" addressJP="0x8032FF60" offset="Relative">Transition Progress</Data>
+  <Data type="short" addressUS="0x8033B23C" addressJP="0x80339ECC" offset="Relative">Transition Black Fade</Data>
+  <Data type="short" addressUS="0x8038B8A4" addressJP="0x8038B8A4" offset="Relative">Transition White Fade</Data>
+  <Data type="short" addressUS="0x8033B254" addressJP="0x80339EE4" offset="Relative">Transition Shrinking</Data>
 </MiscData>

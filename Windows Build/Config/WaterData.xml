@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WaterData>
+  <Data type="short" address="0x76" offset="Mario">Water Level</Data>
+  <Data type="short" addressUS="0x8036118A" addressJP="0x8035FE1A" offset="Relative">Water Level Median</Data>
+
+  <Data offset="Special" specialType="WaterAboveMedian">Water Above Median</Data>
+  <Data offset="Special" specialType="MarioAboveWater">Mario Above Water</Data>
+  <Data type="float" address="0x40" offset="Mario">Mario Y</Data>
+
+  <Data type="short" addressUS="0x801112E2" addressJP="0x8010E462" offset="Relative">WDW Main WL</Data>
+  <Data type="short" addressUS="0x8011342E" addressJP="0x801105AE" offset="Relative">WDW Town WL</Data>
+  <Data type="float" addressUS="0x80330F3C" addressJP="0x8032FFDC" offset="Relative">WDW Painting Level</Data>
+  
+  <Data type="short" addressUS="0x8010C81C" addressJP="0x801090E4" offset="Relative">Castle Lake WL</Data>
+  <Data type="short" addressUS="0x8010C810" addressJP="0x801090D8" offset="Relative">Castle Moat WL</Data>
+  <Data type="short" addressUS="0x80361192" addressJP="0x8035FE22" offset="Relative">Basement Pillars WL</Data>
+  <Data type="short" addressUS="0x8036118A" addressJP="0x8035FE1A" offset="Relative">Basement Valley WL</Data>
+  <Data type="short" addressUS="0x80173CD4" addressJP="0x80170E54" offset="Relative">Basement Halls WL</Data>
+  <Data type="short" addressUS="0x80101B1A" addressJP="0x800FEC9A" offset="Relative">Castle Courtyard WL</Data>
+  <Data type="short" addressUS="0x8010D332" addressJP="0x8010A4B2" offset="Relative">WF WL</Data>
+  <Data type="short" addressUS="0x80107ABC" addressJP="0x80104C3C" offset="Relative">JRB Main WL</Data>
+  <Data type="short" addressUS="0x80107AC8" addressJP="0x80104C48" offset="Relative">JRB Cave WL</Data>
+  <Data type="short" addressUS="0x80107AD4" addressJP="0x80104C54" offset="Relative">JRB Fog</Data>
+  <Data type="short" addressUS="0x8010C95C" addressJP="0x80109ADC" offset="Relative">JRB Ship WL</Data>
+  <Data type="short" addressUS="0x802F810E" addressJP="0x802F707E" offset="Relative">JRB Ship Goal WL</Data>
+  <Data type="short" addressUS="0x802F8122" addressJP="0x802F7092" offset="Relative">JRB Ship End WL</Data>
+  <Data type="short" addressUS="0x8011136E" addressJP="0x8010E4DE" offset="Relative">CCM WL</Data>
+  <Data type="short" addressUS="0x80121B1C" addressJP="0x8011EC9C" offset="Relative">BBH Shallow WL</Data>
+  <Data type="short" addressUS="0x80121B28" addressJP="0x8011ECA8" offset="Relative">BBH Deep WL</Data>
+  <Data type="short" addressUS="0x8012614C" addressJP="0x801232CC" offset="Relative">HMC WL</Data>
+  <Data type="short" addressUS="0x80126158" addressJP="0x801232D8" offset="Relative">HMC Haze (Real)</Data>
+  <Data type="short" addressUS="0x80126164" addressJP="0x801232E4" offset="Relative">HMC Haze (Fake)</Data>
+  <Data type="short" addressUS="0x80123D00" addressJP="0x80120F10" offset="Relative">LLL Volcano WL</Data>
+  <Data type="short" addressUS="0x8010D766" addressJP="0x8010A8E6" offset="Relative">SSL Sand 1</Data>
+  <Data type="short" addressUS="0x8010D772" addressJP="0x8010A8F2" offset="Relative">SSL Sand 2</Data>
+  <Data type="short" addressUS="0x8010D77E" addressJP="0x8010A8FE" offset="Relative">SSL WL</Data>
+  <Data type="short" addressUS="0x80108EDA" addressJP="0x8010605A" offset="Relative">DDD Main WL</Data>
+  <Data type="short" addressUS="0x80109F5E" addressJP="0x801070DE" offset="Relative">DDD Other WL</Data>
+  <Data type="short" addressUS="0x80109CFE" addressJP="0x80106E7E" offset="Relative">SL Bully WL</Data>
+  <Data type="short" addressUS="0x80109CF2" addressJP="0x80106E72" offset="Relative">SL Lake WL</Data>
+  <Data type="short" addressUS="0x8011273E" addressJP="0x8010F8BE" offset="Relative">TTM 1 WL</Data>
+  <Data type="short" addressUS="0x80112756" addressJP="0x8010F8D6" offset="Relative">TTM 2 WL</Data>
+  <Data type="short" addressUS="0x8011274A" addressJP="0x8010F8CA" offset="Relative">TTM 3 WL</Data>
+  <Data type="short" addressUS="0x80112762" addressJP="0x8010F8E2" offset="Relative">TTM 4 WL</Data>
+  <Data type="short" addressUS="0x801086A8" addressJP="0x80105828" offset="Relative">THI Tiny 1 WL</Data>
+  <Data type="short" addressUS="0x801086B4" addressJP="0x80105834" offset="Relative">THI Tiny 2 WL</Data>
+  <Data type="byte" addressUS="0x80361257" addressJP="0x8035FEE7" offset="Relative" isBool="true">THI Water Drained</Data>
+  <Data type="short" addressUS="0x801086C0" addressJP="0x80105840" offset="Relative">THI Tiny Mt WL</Data>
+  <Data type="short" addressUS="0x80106FC2" addressJP="0x80104142" offset="Relative">THI Huge 1 WL</Data>
+  <Data type="short" addressUS="0x80106FCE" addressJP="0x8010414E" offset="Relative">THI Huge 2 WL</Data>
+  <Data type="short" addressUS="0x80106FDA" addressJP="0x8010415A" offset="Relative">THI Huge Mt WL</Data>
+  <Data type="short" addressUS="0x801069C4" addressJP="0x80103B44" offset="Relative">CotMC WL</Data>
+  <Data type="short" addressUS="0x800FDEBE" addressJP="0x800FB03E" offset="Relative">SA WL</Data>
+  
+  <Data type="uint" addressUS="0x80361184" addressJP="0x8035FE14" offset="Relative" useHex="true">Water Pointer</Data>
+  <Data type="short" address="0x00" offset="Water">Num Water Levels</Data>
+  <Data type="short" address="0x0C" offset="Water">Water Level 1</Data>
+  <Data type="short" address="0x18" offset="Water">Water Level 2</Data>
+  <Data type="short" address="0x24" offset="Water">Water Level 3</Data>
+  <Data type="short" address="0x30" offset="Water">Water Level 4</Data>
+
+  <Data type="float" addressUS="0x8038BBA8" addressJP="0x8038BBA8" offset="Relative">Default WL</Data>
+</WaterData>

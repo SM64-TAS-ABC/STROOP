@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using System.Drawing;
 using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -14,16 +15,14 @@ namespace SM64_Diagnostic.Managers
     {
         const int NumberOfLinesAdd = 40;
 
-        ProcessStream _stream;
         RichTextBox _output;
         MaskedTextBox _textBoxStartAdd;
         uint _lastProcessAddress;
         Button _goButton, _moreButton;
         int _currentLines = NumberOfLinesAdd;
 
-        public DisassemblyManager(ProcessStream stream, Control tabControl)
+        public DisassemblyManager(Control tabControl)
         {
-            _stream = stream;
             _output = tabControl.Controls["richTextBoxDissasembly"] as RichTextBox;
             _textBoxStartAdd = tabControl.Controls["maskedTextBoxDisStart"] as MaskedTextBox;
             _goButton = tabControl.Controls["buttonDisGo"] as Button;
@@ -72,7 +71,7 @@ namespace SM64_Diagnostic.Managers
         private void DisassemblyLines(int numberOfLines)
         {
             _output.Visible = false;
-            var instructionBytes = _stream.ReadRamLittleEndian(_lastProcessAddress, 4 * numberOfLines);
+            var instructionBytes = Config.Stream.ReadRamLittleEndian(new UIntPtr(_lastProcessAddress), 4 * numberOfLines);
             for (int i = 0; i < numberOfLines; i++, _lastProcessAddress += 4)
             {
                 // Get next bytes

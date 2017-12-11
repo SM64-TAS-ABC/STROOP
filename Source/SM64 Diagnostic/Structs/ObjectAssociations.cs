@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Extensions;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Structs
 {
@@ -36,6 +37,7 @@ namespace SM64_Diagnostic.Structs
         public Image CameraImage;
         public Image CameraMapImage;
         public Image HolpImage;
+        public Image IntendedNextPositionImage;
         public Image MarioMapImage;
         public Color MarioColor;
         public Color HudColor;
@@ -43,7 +45,13 @@ namespace SM64_Diagnostic.Structs
         public Color MiscColor;
         public Color CameraColor;
         public uint MarioBehavior;
-        public uint RamOffset;
+        public uint SegmentTable { get { return Config.SwitchRomVersion(SegmentTableUS, SegmentTableJP); } }
+        public uint SegmentTableUS;
+        public uint SegmentTableJP;
+        public uint BehaviorBankStart;
+
+        Dictionary<Image, Image> _cachedBufferedObjectImages = new Dictionary<Image, Image>();
+        object _cachedBufferedObjectImageLocker = new object();
 
         public HashSet<ObjectBehaviorAssociation> BehaviorAssociations
         {
@@ -69,6 +77,8 @@ namespace SM64_Diagnostic.Structs
             }
             set
             {
+                _defaultImage?.Dispose();
+                _transparentDefaultImage?.Dispose();
                 _defaultImage = value;
                 _transparentDefaultImage = value.GetOpaqueImage(0.5f);
             }
@@ -84,14 +94,24 @@ namespace SM64_Diagnostic.Structs
             _spawnHacks.Add(hack);
         }
 
+        private Dictionary<BehaviorCriteria, ObjectBehaviorAssociation> _cachedObjAssoc = new Dictionary<BehaviorCriteria, ObjectBehaviorAssociation>();
         public ObjectBehaviorAssociation FindObjectAssociation(BehaviorCriteria behaviorCriteria)
         {
+            if (_cachedObjAssoc.ContainsKey(behaviorCriteria))
+            {
+                return _cachedObjAssoc[behaviorCriteria];
+            }
+
             var possibleAssoc = _objAssoc.Where(objAssoc => objAssoc.MeetsCriteria(behaviorCriteria));
 
             if (possibleAssoc.Count() > 1 && possibleAssoc.Any(objAssoc => objAssoc.BehaviorCriteria.BehaviorOnly()))
                 possibleAssoc = possibleAssoc.Where(objAssoc => !objAssoc.BehaviorCriteria.BehaviorOnly());
 
-            return possibleAssoc.FirstOrDefault();
+            var behaviorAssoc = possibleAssoc.FirstOrDefault();
+
+            _cachedObjAssoc[behaviorCriteria] = behaviorAssoc;
+
+            return behaviorAssoc;
         }
 
         public Image GetObjectImage(BehaviorCriteria behaviorCriteria, bool transparent)
@@ -106,7 +126,7 @@ namespace SM64_Diagnostic.Structs
             return transparent ? assoc.TransparentImage : assoc.Image;
         }
 
-        public Image GetObjectMapImage(BehaviorCriteria behaviorCriteria, bool transparent)
+        public Image GetObjectMapImage(BehaviorCriteria behaviorCriteria)
         {
             if (behaviorCriteria.BehaviorAddress == 0)
                 return EmptyImage;
@@ -115,7 +135,7 @@ namespace SM64_Diagnostic.Structs
             if (assoc == null)
                 return _defaultImage;
 
-            return transparent ? assoc.TransparentMapImage : assoc.MapImage;
+            return assoc.MapImage;
         }
 
         public bool GetObjectMapRotates(BehaviorCriteria behaviorCriteria)
@@ -138,6 +158,34 @@ namespace SM64_Diagnostic.Structs
             return assoc.Name;
         }
 
+        public Image GetCachedBufferedObjectImage(Image objectImage, Size size)
+        {
+            lock (_cachedBufferedObjectImageLocker)
+            {
+                if (!_cachedBufferedObjectImages.ContainsKey(objectImage))
+                    return null;
+
+                // Make sure cached size matches
+                var _bufferedImage = _cachedBufferedObjectImages[objectImage];
+                if (size != _bufferedImage.Size)
+                    return null;
+
+                return _bufferedImage;
+            }
+        }
+
+        public void CreateCachedBufferedObjectImage(Image objectImage, Image bufferedObjectImage)
+        {
+            // Dispose of previous image
+            lock (_cachedBufferedObjectImageLocker)
+            {
+                if (_cachedBufferedObjectImages.ContainsKey(objectImage))
+                    _cachedBufferedObjectImages[objectImage]?.Dispose();
+
+                _cachedBufferedObjectImages[objectImage] = bufferedObjectImage;
+            }
+        }
+
         public List<WatchVariable> GetWatchVariables(BehaviorCriteria behaviorCriteria)
         {
             var assoc = FindObjectAssociation(behaviorCriteria);
@@ -148,15 +196,39 @@ namespace SM64_Diagnostic.Structs
             else return assoc.WatchVariables;
         }
 
+        public bool RecognizedBehavior(BehaviorCriteria behaviorCriteria)
+        {
+            var assoc = FindObjectAssociation(behaviorCriteria);
+            return assoc != null;
+        }
+
+        public uint AlignJPBehavior(uint segmented)
+        {
+            if (segmented >= 0x13002ea0)
+                return segmented + 32;
+            if (segmented >= 0x13002c6c)
+                return segmented + 36;
+            if (segmented >= 0x13002998)
+                return segmented + 24;
+            return segmented;
+        }
+
         ~ObjectAssociations()
         {
+            lock (_cachedBufferedObjectImageLocker)
+            {
+                foreach (var img in _cachedBufferedObjectImages)
+                {
+                    img.Value.Dispose();
+                }
+            }
+
             // Unload and dispose of all images
             foreach (var obj in _objAssoc)
             {
                 obj.Image?.Dispose();
                 obj.TransparentImage?.Dispose();
                 obj.MapImage?.Dispose();
-                obj.TransparentMapImage?.Dispose();
             }
 
             _transparentDefaultImage?.Dispose();

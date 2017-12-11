@@ -11,11 +11,13 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using System.Drawing.Drawing2D;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic
 {
     public class ObjectSlot : Panel
     {
+        public static TabControl tabControlMain;
         const int BorderSize = 2;
 
         ObjectSlotsManager _manager;
@@ -25,11 +27,18 @@ namespace SM64_Diagnostic
         SolidBrush _borderBrush = new SolidBrush(Color.White), _backBrush = new SolidBrush(Color.White);
         SolidBrush _textBrush = new SolidBrush(Color.Black);
         Image _objectImage;
+        Image _bufferedObjectImage;
+        Point _textLocation = new Point();
+        Point _objectImageLocation = new Point();
         string _text;
 
-        bool _selected = true;
+        bool _selected = false;
+        public bool Show = false;
         bool _active = false;
         BehaviorCriteria _behavior;
+
+        enum SelectionType { NOT_SELECTED, NORMAL_SELECTION, MAP_SELECTION, MODEL_SELECTION };
+        SelectionType _selectionType = SelectionType.NOT_SELECTED;
 
         int prevHeight;
         object _gfxLock = new object();
@@ -61,6 +70,8 @@ namespace SM64_Diagnostic
             }
             set
             {
+                if (_behavior == value)
+                    return;
                 _behavior = value;
                 UpdateColors();
             }
@@ -148,8 +159,10 @@ namespace SM64_Diagnostic
             }
         }
 
-        bool _drawSelectedOverlay, _drawStandingOnOverlay, _drawHoldingOverlay, _drawInteractingObject, _drawUsingObject,
-            _drawClosestOverlay;
+        bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawHeldOverlay, _drawInteractionOverlay, _drawUsedOverlay,
+            _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawModelOverlay, _modelOverlay,
+            _drawFloorObject, _drawWallOverlay, _drawCeilingOverlay,
+            _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawMarkedOverlay;
         public bool DrawSelectedOverlay
         {
             get
@@ -164,64 +177,62 @@ namespace SM64_Diagnostic
                 Invalidate();
             }
         }
-        public bool DrawStandingOnOverlay
+        public bool DrawStoodOnOverlay
         {
             get
             {
-                return _drawStandingOnOverlay;
+                return _drawStoodOnOverlay;
             }
             set
             {
-                if (_drawStandingOnOverlay == value)
+                if (_drawStoodOnOverlay == value)
                     return;
-                _drawStandingOnOverlay = value;
+                _drawStoodOnOverlay = value;
                 Invalidate();
             }
         }
-        public bool DrawHoldingOverlay
+        public bool DrawHeldOverlay
         {
             get
             {
-                return _drawHoldingOverlay;
+                return _drawHeldOverlay;
             }
             set
             {
-                if (_drawHoldingOverlay == value)
+                if (_drawHeldOverlay == value)
                     return;
-                _drawHoldingOverlay = value;
+                _drawHeldOverlay = value;
                 Invalidate();
             }
         }
-        public bool DrawInteractingOverlay
+        public bool DrawInteractionOverlay
         {
             get
             {
-                return _drawInteractingObject;
+                return _drawInteractionOverlay;
             }
             set
             {
-                if (_drawInteractingObject == value)
+                if (_drawInteractionOverlay == value)
                     return;
-                _drawInteractingObject = value;
+                _drawInteractionOverlay = value;
                 Invalidate();
             }
         }
-
-        public bool DrawUsingOverlay
+        public bool DrawUsedOverlay
         {
             get
             {
-                return _drawUsingObject;
+                return _drawUsedOverlay;
             }
             set
             {
-                if (_drawUsingObject == value)
+                if (_drawUsedOverlay == value)
                     return;
-                _drawUsingObject = value;
+                _drawUsedOverlay = value;
                 Invalidate();
             }
         }
-
         public bool DrawClosestOverlay
         {
             get
@@ -236,6 +247,146 @@ namespace SM64_Diagnostic
                 Invalidate();
             }
         }
+        public bool DrawCameraOverlay
+        {
+            get
+            {
+                return _drawCameraOverlay;
+            }
+            set
+            {
+                if (_drawCameraOverlay == value)
+                    return;
+                _drawCameraOverlay = value;
+                Invalidate();
+            }
+        }
+        public bool DrawCameraHackOverlay
+        {
+            get
+            {
+                return _drawCameraHackOverlay;
+            }
+            set
+            {
+                if (_drawCameraHackOverlay == value)
+                    return;
+                _drawCameraHackOverlay = value;
+                Invalidate();
+            }
+        }
+        public bool DrawModelOverlay
+        {
+            get
+            {
+                return _drawModelOverlay;
+            }
+            set
+            {
+                if (_drawModelOverlay == value)
+                    return;
+                _drawModelOverlay = value;
+                Invalidate();
+            }
+        }
+        public bool DrawFloorOverlay
+        {
+            get
+            {
+                return _drawFloorObject;
+            }
+            set
+            {
+                if (_drawFloorObject == value)
+                    return;
+                _drawFloorObject = value;
+                Invalidate();
+            }
+        }
+        public bool DrawWallOverlay
+        {
+            get
+            {
+                return _drawWallOverlay;
+            }
+            set
+            {
+                if (_drawWallOverlay == value)
+                    return;
+                _drawWallOverlay = value;
+                Invalidate();
+            }
+        }
+        public bool DrawCeilingOverlay
+        {
+            get
+            {
+                return _drawCeilingOverlay;
+            }
+            set
+            {
+                if (_drawCeilingOverlay == value)
+                    return;
+                _drawCeilingOverlay = value;
+                Invalidate();
+            }
+        }
+        public bool DrawParentOverlay
+        {
+            get
+            {
+                return _drawParentOverlay;
+            }
+            set
+            {
+                if (_drawParentOverlay == value)
+                    return;
+                _drawParentOverlay = value;
+                Invalidate();
+            }
+        }
+        public bool DrawParentUnusedOverlay
+        {
+            get
+            {
+                return _drawParentUnusedOverlay;
+            }
+            set
+            {
+                if (_drawParentUnusedOverlay == value)
+                    return;
+                _drawParentUnusedOverlay = value;
+                Invalidate();
+            }
+        }
+        public bool DrawParentNoneOverlay
+        {
+            get
+            {
+                return _drawParentNoneOverlay;
+            }
+            set
+            {
+                if (_drawParentNoneOverlay == value)
+                    return;
+                _drawParentNoneOverlay = value;
+                Invalidate();
+            }
+        }
+        public bool DrawMarkedOverlay
+        {
+            get
+            {
+                return _drawMarkedOverlay;
+            }
+            set
+            {
+                if (_drawMarkedOverlay == value)
+                    return;
+                _drawMarkedOverlay = value;
+                Invalidate();
+            }
+        }
 
         public ObjectSlot(int index, ObjectSlotsManager manager, ObjectSlotManagerGui gui, Size size)
         {
@@ -247,72 +398,91 @@ namespace SM64_Diagnostic
 
             this.MouseDown += OnDrag;
             this.MouseUp += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
-            this.MouseEnter += (s, e) => { MouseState = MouseStateType.Over; UpdateColors(); };
-            this.MouseLeave += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
+            this.MouseEnter += (s, e) =>
+            {
+                Config.ObjectSlots.HoverObjectSlot = this;
+                MouseState = MouseStateType.Over;
+                UpdateColors();
+            };
+            this.MouseLeave += (s, e) =>
+            {
+                Config.ObjectSlots.HoverObjectSlot = null;
+                MouseState = MouseStateType.None;
+                UpdateColors();
+            };
             this.Cursor = Cursors.Hand;
             this.DoubleBuffered = true;
         }
 
-        void UpdateColors()
+        private void RebufferObjectImage()
+        {
+            // Remove last image reference
+            _bufferedObjectImage = null;
+
+            // Make sure object needs a new image
+            if (_objectImage == null)
+                return;
+
+            // Calculate new rectangle to draw image
+            var objectImageRec = (new Rectangle(BorderSize, BorderSize + 1,
+            Width - BorderSize * 2, _textLocation.Y - 1 - BorderSize))
+            .Zoom(_objectImage.Size);
+            _objectImageLocation = objectImageRec.Location;
+
+            // If the image is too small, we don't need to draw it
+            if (objectImageRec.Height <= 0 || objectImageRec.Width <= 0)
+            {
+                _bufferedObjectImage = new Bitmap(1, 1);
+                return;
+            }
+
+            // Look for cached image and use it if it exists
+            _bufferedObjectImage = Config.ObjectAssociations.GetCachedBufferedObjectImage(_objectImage, objectImageRec.Size);
+            if (_bufferedObjectImage != null)
+                return;
+
+            // Otherwise create new image and add it to cache
+            _bufferedObjectImage = new Bitmap(objectImageRec.Width, objectImageRec.Height);
+            objectImageRec.Location = new Point();
+            using (var graphics = Graphics.FromImage(_bufferedObjectImage))
+            {
+                graphics.InterpolationMode = InterpolationMode.High;
+                graphics.DrawImage(_objectImage, objectImageRec);
+            }
+
+            Config.ObjectAssociations.CreateCachedBufferedObjectImage(_objectImage, _bufferedObjectImage);
+        }
+
+        public void UpdateColors()
         {
             var oldBorderColor = _borderColor;
             var oldBackColor = _backColor;
             bool imageUpdated = false;
-            if (!_selected)
+            var newColor = _mainColor;
+            switch (MouseState)
             {
-                var newColor = _mainColor;
-                switch (MouseState)
-                {
-                    case MouseStateType.Down:
-                        _borderColor = newColor.Darken(0.5);
-                        _backColor = newColor.Darken(0.5).Lighten(0.5);
-                        break;
-                    case MouseStateType.Over:
-                        _borderColor = newColor.Lighten(0.75);
-                        _backColor = newColor.Lighten(0.92);
-                        break;
-                    default:
-                        _borderColor = newColor.Lighten(0.5);
-                        _backColor = newColor.Lighten(0.85);
-                        break;
-                }
-                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, true);
-                if (_objectImage != newImage)
-                {
-                    lock (_gfxLock)
-                    {
-                        _objectImage = newImage;
-                    }
-                    imageUpdated = true;
-                }
+                case MouseStateType.Down:
+                    _borderColor = newColor.Darken(0.5);
+                    _backColor = newColor.Darken(0.5).Lighten(0.5);
+                    break;
+                case MouseStateType.Over:
+                    _borderColor = newColor.Lighten(0.5);
+                    _backColor = newColor.Lighten(0.85);
+                    break;
+                default:
+                    _borderColor = newColor;
+                    _backColor = newColor.Lighten(0.7);
+                    break;
             }
-            else
+            Image newImage = Config.ObjectAssociations.GetObjectImage(_behavior, !_active);
+            if (_objectImage != newImage)
             {
-                var newColor = _mainColor;
-                switch (MouseState)
+                lock (_gfxLock)
                 {
-                    case MouseStateType.Down:
-                        _borderColor = newColor.Darken(0.5);
-                        _backColor = newColor.Darken(0.5).Lighten(0.5);
-                        break;
-                    case MouseStateType.Over:
-                        _borderColor = newColor.Lighten(0.5);
-                        _backColor = newColor.Lighten(0.85);
-                        break;
-                    default:
-                        _borderColor = newColor;
-                        _backColor = newColor.Lighten(0.7);
-                        break;
+                    _objectImage = newImage;
+                    RebufferObjectImage();
                 }
-                Image newImage = _manager.ObjectAssoc.GetObjectImage(_behavior, !_active);
-                if (_objectImage != newImage)
-                {
-                    lock (_gfxLock)
-                    {
-                        _objectImage = newImage;
-                    }
-                    imageUpdated = true;
-                }
+                imageUpdated = true;
             }
 
             bool colorUpdated = false;
@@ -328,7 +498,33 @@ namespace SM64_Diagnostic
                 }
             }
 
-            if (!imageUpdated && !colorUpdated)
+            SelectionType newSelectionType;
+            switch (_manager.ActiveTab)
+            {
+                case ObjectSlotsManager.TabType.Map:
+                    newSelectionType = Show ? SelectionType.MAP_SELECTION 
+                        : SelectionType.NOT_SELECTED;
+                    break;
+
+                case ObjectSlotsManager.TabType.Model:
+                    newSelectionType = DrawModelOverlay ? SelectionType.MODEL_SELECTION
+                        : SelectionType.NOT_SELECTED;
+                    break;
+
+                case ObjectSlotsManager.TabType.CamHack:
+                    newSelectionType = SelectionType.NOT_SELECTED;
+                    break;
+
+                default:
+                    newSelectionType = DrawSelectedOverlay ? SelectionType.NORMAL_SELECTION 
+                        : SelectionType.NOT_SELECTED;
+                    break;
+            }
+
+            bool selectionTypeUpdated = newSelectionType != _selectionType;
+            _selectionType = newSelectionType;
+
+            if (!imageUpdated && !colorUpdated && !selectionTypeUpdated)
                 return;
 
             Invalidate();
@@ -340,8 +536,12 @@ namespace SM64_Diagnostic
             UpdateColors();
             Refresh();
         }
+
+        int _fontHeight;
         protected override void OnPaint(PaintEventArgs e)
         {
+            e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+            e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
             lock (_gfxLock)
             {
                 // Border
@@ -354,40 +554,86 @@ namespace SM64_Diagnostic
                 if (Height != prevHeight)
                 {
                     prevHeight = Height;
+                    Font?.Dispose();
                     Font = new Font(FontFamily.GenericSansSerif, Math.Max(6, 6 / 40.0f * Height));
+
+                    // Font.Height doesn't work for some reason that probably makes sense, but don't really want to look into right now
+                    _fontHeight = TextRenderer.MeasureText(e.Graphics, "ABCDEF", Font).Height;
                 }
 
                 // Draw Text
-                var textSize = e.Graphics.MeasureString(Text, Font);
-                var textLocation = new PointF((Width - textSize.Width) / 2, Height - textSize.Height);
-                e.Graphics.DrawString(Text, Font, _textBrush, textLocation);
+                e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixel;
+                var textLocation = new Point(Width + 1, Height - BorderSize - _fontHeight + 1);
+                TextRenderer.DrawText(e.Graphics, Text, Font, textLocation, TextColor, TextFormatFlags.HorizontalCenter | TextFormatFlags.Top);
+                if (textLocation != _textLocation)
+                {
+                    _textLocation = textLocation;
+                    RebufferObjectImage();
+                }
 
                 // Draw Object Image
                 if (_objectImage != null)
                 {
-                    e.Graphics.InterpolationMode = InterpolationMode.High;
-                    var objectImageLocaction = (new RectangleF(BorderSize, BorderSize + 1,
-                        Width - BorderSize * 2, textLocation.Y - 1 - BorderSize))
-                        .Zoom(_objectImage.Size);
-                    e.Graphics.DrawImage(_objectImage, objectImageLocaction);
+                    try
+                    {
+                        e.Graphics.DrawImageUnscaled(_bufferedObjectImage, _objectImageLocation);
+                    }
+                    catch (ObjectDisposedException)
+                    {
+                        // The buffered image may have gotten disposed
+                        RebufferObjectImage();
+                        Invalidate();
+                        return;
+                    }
                 }
             }
 
+            // TODO reorder object slots overlays
             // Draw Overlays
-            if (DrawSelectedOverlay)
-                e.Graphics.DrawImage(_gui.SelectedObjectOverlayImage, new Rectangle(new Point(), Size));
-            if (_drawInteractingObject)
-                e.Graphics.DrawImage(_gui.InteractingObjectOverlayImage, new Rectangle(new Point(), Size));
-            if (_drawHoldingOverlay)
-                e.Graphics.DrawImage(_gui.HoldingObjectOverlayImage, new Rectangle(new Point(), Size));
-            if (_drawStandingOnOverlay)
-                e.Graphics.DrawImage(_gui.StandingOnObjectOverlayImage, new Rectangle(new Point(), Size));
-            if (_drawUsingObject)
-                e.Graphics.DrawImage(_gui.UsingObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawMarkedOverlay)
+                e.Graphics.DrawImage(_gui.MarkedObjectOverlayImage, new Rectangle(new Point(), Size));
+            switch (_selectionType)
+            {
+                case SelectionType.NORMAL_SELECTION:
+                    e.Graphics.DrawImage(_gui.SelectedObjectOverlayImage, new Rectangle(new Point(), Size));
+                    break;
+
+                case SelectionType.MODEL_SELECTION:
+                    e.Graphics.DrawImage(_gui.ModelObjectOverlayImage, new Rectangle(new Point(), Size));
+                    break;
+
+                case SelectionType.MAP_SELECTION:
+                    e.Graphics.DrawImage(_gui.TrackedAndShownObjectOverlayImage, new Rectangle(new Point(), Size));
+                    break;
+            }
+            if (_drawWallOverlay)
+                e.Graphics.DrawImage(_gui.WallObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawFloorObject)
+                e.Graphics.DrawImage(_gui.FloorObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawCeilingOverlay)
+                e.Graphics.DrawImage(_gui.CeilingObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawInteractionOverlay)
+                e.Graphics.DrawImage(_gui.InteractionObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawHeldOverlay)
+                e.Graphics.DrawImage(_gui.HeldObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawStoodOnOverlay)
+                e.Graphics.DrawImage(_gui.StoodOnObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawUsedOverlay)
+                e.Graphics.DrawImage(_gui.UsedObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawClosestOverlay)
                 e.Graphics.DrawImage(_gui.ClosestObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawCameraOverlay)
+                e.Graphics.DrawImage(_gui.CameraObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawCameraHackOverlay)
+                e.Graphics.DrawImage(_gui.CameraHackObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawParentOverlay)
+                e.Graphics.DrawImage(_gui.ParentObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawParentUnusedOverlay)
+                e.Graphics.DrawImage(_gui.ParentUnusedObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawParentNoneOverlay)
+                e.Graphics.DrawImage(_gui.ParentNoneObjectOverlayImage, new Rectangle(new Point(), Size));
         }
 
-        
+
     }
 }

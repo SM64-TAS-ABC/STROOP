@@ -11,12 +11,12 @@ using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using SM64_Diagnostic.ManagerClasses;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Managers
 {
     public class MapManager
     {
-        ProcessStream _stream;
         public MapAssociations MapAssoc;
         byte _currentLevel, _currentArea;
         ushort _currentLoadingPoint, _currentMissionLayout;
@@ -25,8 +25,10 @@ namespace SM64_Diagnostic.Managers
         MapGraphics _mapGraphics;
         MapObject _marioMapObj;
         MapObject _holpMapObj;
+        MapObject _intendedNextPositionMapObj;
         MapObject _cameraMapObj;
         TriangleMapObject _floorTriangleMapObj;
+        TriangleMapObject _ceilingTriangleMapObj;
         List<MapObject> _mapObjects = new List<MapObject>();
         MapGui _mapGui;
         bool _isLoaded = false;
@@ -55,6 +57,14 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
+        public MapObject IntendedNextPositionMapObject
+        {
+            get
+            {
+                return _intendedNextPositionMapObj;
+            }
+        }
+
         public MapObject CameraMapObject
         {
             get
@@ -71,6 +81,14 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
+        public TriangleMapObject CeilingTriangleMapObject
+        {
+            get
+            {
+                return _ceilingTriangleMapObj;
+            }
+        }
+
         public bool Visible
         {
             get
@@ -83,21 +101,22 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        public MapManager(ProcessStream stream, MapAssociations mapAssoc, ObjectAssociations objAssoc,
-            MapGui mapGui)
+        public MapManager(MapAssociations mapAssoc, MapGui mapGui)
         {
-            _stream = stream;
             MapAssoc = mapAssoc;
             _mapGui = mapGui;
 
-            _marioMapObj = new MapObject(objAssoc.MarioMapImage, 1);
+            _marioMapObj = new MapObject(Config.ObjectAssociations.MarioMapImage, 1);
             _marioMapObj.UsesRotation = true;
 
-            _holpMapObj = new MapObject(objAssoc.HolpImage, 2);
+            _holpMapObj = new MapObject(Config.ObjectAssociations.HolpImage, 2);
+            _intendedNextPositionMapObj = new MapObject(Config.ObjectAssociations.IntendedNextPositionImage, 2);
+            _intendedNextPositionMapObj.UsesRotation = true;
 
-            _cameraMapObj = new MapObject(objAssoc.CameraMapImage, 1);
+            _cameraMapObj = new MapObject(Config.ObjectAssociations.CameraMapImage, 1);
             _cameraMapObj.UsesRotation = true;
-            _floorTriangleMapObj = new TriangleMapObject(Color.FromArgb(200, Color.Yellow), 3);
+            _floorTriangleMapObj = new TriangleMapObject(Color.FromArgb(200, Color.Cyan), 3);
+            _ceilingTriangleMapObj = new TriangleMapObject(Color.FromArgb(200, Color.Red), 2);
         }
 
         public void Load()
@@ -114,8 +133,10 @@ namespace SM64_Diagnostic.Managers
             // Add Mario's map object
             _mapGraphics.AddMapObject(_marioMapObj);
             _mapGraphics.AddMapObject(_holpMapObj);
+            _mapGraphics.AddMapObject(_intendedNextPositionMapObj);
             _mapGraphics.AddMapObject(_cameraMapObj);
             _mapGraphics.AddMapObject(_floorTriangleMapObj);
+            _mapGraphics.AddMapObject(_ceilingTriangleMapObj);
 
             //----- Register events ------
             // Set image
@@ -129,10 +150,10 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             // Get level and area
-            byte level = _stream.GetByte(Config.LevelAddress);
-            byte area = _stream.GetByte(Config.AreaAddress);
-            ushort loadingPoint = _stream.GetUInt16(Config.LoadingPointAddress);
-            ushort missionLayout = _stream.GetUInt16(Config.MissionAddress);
+            byte level = Config.Stream.GetByte(Config.LevelAddress);
+            byte area = Config.Stream.GetByte(Config.AreaAddress);
+            ushort loadingPoint = Config.Stream.GetUInt16(Config.LoadingPointAddress);
+            ushort missionLayout = Config.Stream.GetUInt16(Config.MissionAddress);
 
             // Find new map list
             if (_currentMapList == null || _currentLevel != level || _currentArea != area 
@@ -208,13 +229,20 @@ namespace SM64_Diagnostic.Managers
             _marioMapObj.Draw = _mapGui.MapShowMario.Checked;
 
             int holpPuX = PuUtilities.GetPUFromCoord(_holpMapObj.X);
-            int holpPuY = PuUtilities.GetPUFromCoord(_holpMapObj.Y);
             int holpPuZ = PuUtilities.GetPUFromCoord(_holpMapObj.Z);
             float holpRelX = PuUtilities.GetRelativePuPosition(_holpMapObj.X, holpPuX);
             float holpRelZ = PuUtilities.GetRelativePuPosition(_holpMapObj.Z, holpPuZ);
             var holpCoord = new PointF(holpRelX, holpRelZ);
-            _holpMapObj.Draw = _mapGui.MapShowHolp.Checked && puX == holpPuX && puY == holpPuY && puZ == holpPuZ;
+            _holpMapObj.Draw = _mapGui.MapShowHolp.Checked;
             _holpMapObj.LocationOnContol = CalculateLocationOnControl(holpCoord, mapView);
+
+            int intendedNextPositionPuX = PuUtilities.GetPUFromCoord(_intendedNextPositionMapObj.X);
+            int intendedNextPositionPuZ = PuUtilities.GetPUFromCoord(_intendedNextPositionMapObj.Z);
+            float intendedNextPositionRelX = PuUtilities.GetRelativePuPosition(_intendedNextPositionMapObj.X, intendedNextPositionPuX);
+            float intendedNextPositionRelZ = PuUtilities.GetRelativePuPosition(_intendedNextPositionMapObj.Z, intendedNextPositionPuZ);
+            var intendedNextPositionCoord = new PointF(intendedNextPositionRelX, intendedNextPositionRelZ);
+            _intendedNextPositionMapObj.Draw = _mapGui.MapShowIntendedNextPosition.Checked;
+            _intendedNextPositionMapObj.LocationOnContol = CalculateLocationOnControl(intendedNextPositionCoord, mapView);
 
             int cameraPuX = PuUtilities.GetPUFromCoord(_cameraMapObj.X);
             int cameraPuY = PuUtilities.GetPUFromCoord(_cameraMapObj.Y);
@@ -222,42 +250,41 @@ namespace SM64_Diagnostic.Managers
             float cameraRelX = PuUtilities.GetRelativePuPosition(_cameraMapObj.X, cameraPuX);
             float cameraRelZ = PuUtilities.GetRelativePuPosition(_cameraMapObj.Z, cameraPuZ);
             var cameraCoord = new PointF(cameraRelX, cameraRelZ);
-            _cameraMapObj.Draw = _mapGui.MapShowCamera.Checked && puX == cameraPuX && puY == cameraPuY && puZ == cameraPuZ;
+            _cameraMapObj.Draw = _mapGui.MapShowCamera.Checked;
             _cameraMapObj.LocationOnContol = CalculateLocationOnControl(cameraCoord, mapView);
 
-            float trianglePuX1 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X1);
-            float trianglePuZ1 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z1);
-            float trianglePuX2 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X2);
-            float trianglePuZ2 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z2);
-            float trianglePuX3 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X3);
-            float trianglePuZ3 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z3);
-            _floorTriangleMapObj.P1OnControl = CalculateLocationOnControl(new PointF(trianglePuX1, trianglePuZ1), mapView);
-            _floorTriangleMapObj.P2OnControl = CalculateLocationOnControl(new PointF(trianglePuX2, trianglePuZ2), mapView);
-            _floorTriangleMapObj.P3OnControl = CalculateLocationOnControl(new PointF(trianglePuX3, trianglePuZ3), mapView);
+            float floorTrianglePuX1 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X1);
+            float floorTrianglePuZ1 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z1);
+            float floorTrianglePuX2 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X2);
+            float floorTrianglePuZ2 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z2);
+            float floorTrianglePuX3 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.X3);
+            float floorTrianglePuZ3 = PuUtilities.GetRelativePuPosition(_floorTriangleMapObj.Z3);
+            _floorTriangleMapObj.P1OnControl = CalculateLocationOnControl(new PointF(floorTrianglePuX1, floorTrianglePuZ1), mapView);
+            _floorTriangleMapObj.P2OnControl = CalculateLocationOnControl(new PointF(floorTrianglePuX2, floorTrianglePuZ2), mapView);
+            _floorTriangleMapObj.P3OnControl = CalculateLocationOnControl(new PointF(floorTrianglePuX3, floorTrianglePuZ3), mapView);
             _floorTriangleMapObj.Draw = _floorTriangleMapObj.Show & _mapGui.MapShowFloorTriangle.Checked;
-  
+
+            float ceilingTrianglePuX1 = PuUtilities.GetRelativePuPosition(_ceilingTriangleMapObj.X1);
+            float ceilingTrianglePuZ1 = PuUtilities.GetRelativePuPosition(_ceilingTriangleMapObj.Z1);
+            float ceilingTrianglePuX2 = PuUtilities.GetRelativePuPosition(_ceilingTriangleMapObj.X2);
+            float ceilingTrianglePuZ2 = PuUtilities.GetRelativePuPosition(_ceilingTriangleMapObj.Z2);
+            float ceilingTrianglePuX3 = PuUtilities.GetRelativePuPosition(_ceilingTriangleMapObj.X3);
+            float ceilingTrianglePuZ3 = PuUtilities.GetRelativePuPosition(_ceilingTriangleMapObj.Z3);
+            _ceilingTriangleMapObj.P1OnControl = CalculateLocationOnControl(new PointF(ceilingTrianglePuX1, ceilingTrianglePuZ1), mapView);
+            _ceilingTriangleMapObj.P2OnControl = CalculateLocationOnControl(new PointF(ceilingTrianglePuX2, ceilingTrianglePuZ2), mapView);
+            _ceilingTriangleMapObj.P3OnControl = CalculateLocationOnControl(new PointF(ceilingTrianglePuX3, ceilingTrianglePuZ3), mapView);
+            _ceilingTriangleMapObj.Draw = _ceilingTriangleMapObj.Show & _mapGui.MapShowCeilingTriangle.Checked;
 
             // Calculate object slot's cooridnates
             foreach (var mapObj in _mapObjects)
             {
-                if (!_mapGui.MapShowObjects.Checked)
-                {
-                    mapObj.Draw = false;
-                    continue;
-                }
-
-                // Make sure the object is in the same PU as Mario
-                var objPuX = PuUtilities.GetPUFromCoord(mapObj.X);
-                var objPuY = PuUtilities.GetPUFromCoord(mapObj.Y);
-                var objPuZ = PuUtilities.GetPUFromCoord(mapObj.Z);
-
-                // Don't draw the object if it is in a separate PU as mario
-                mapObj.Draw = (mapObj.Show && objPuX == puX && objPuY == puY && objPuZ == puZ 
-                    && (_mapGui.MapShowInactiveObjects.Checked || mapObj.IsActive));
+                mapObj.Draw = (mapObj.Show && (_mapGui.MapShowInactiveObjects.Checked || mapObj.IsActive));
                 if (!mapObj.Draw)
                     continue;
 
                 // Adjust object coordinates relative from current PU
+                var objPuX = PuUtilities.GetPUFromCoord(mapObj.X);
+                var objPuZ = PuUtilities.GetPUFromCoord(mapObj.Z);
                 float objPosX = PuUtilities.GetRelativePuPosition(mapObj.X, objPuX);
                 float objPosZ = PuUtilities.GetRelativePuPosition(mapObj.Z, objPuZ);
                 var objCoords = new PointF(objPosX, objPosZ);

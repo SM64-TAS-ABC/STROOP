@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<InputImageAssociations>
+  <Config>
+    <InputImageDirectory>Resources\Input Images\</InputImageDirectory>
+  </Config>
+  <InputImages>
+    <ButtonA>
+      <InputImage path="ButtonA.png"/>
+    </ButtonA>
+    <ButtonB>
+      <InputImage path="ButtonB.png"/>
+    </ButtonB>
+    <ButtonZ>
+      <InputImage path="ButtonZ.png"/>
+    </ButtonZ>
+    <ButtonStart>
+      <InputImage path="ButtonStart.png"/>
+    </ButtonStart>
+
+    <ButtonR>
+      <InputImage path="ButtonR.png"/>
+    </ButtonR>
+    <ButtonL>
+      <InputImage path="ButtonL.png"/>
+    </ButtonL>
+
+    <ButtonCUp>
+      <InputImage path="ButtonCUp.png"/>
+    </ButtonCUp>
+    <ButtonCDown>
+      <InputImage path="ButtonCDown.png"/>
+    </ButtonCDown>
+    <ButtonCLeft>
+      <InputImage path="ButtonCLeft.png"/>
+    </ButtonCLeft>
+    <ButtonCRight>
+      <InputImage path="ButtonCRight.png"/>
+    </ButtonCRight>
+
+    <ButtonDUp>
+      <InputImage path="ButtonDUp.png"/>
+    </ButtonDUp>
+    <ButtonDDown>
+      <InputImage path="ButtonDDown.png"/>
+    </ButtonDDown>
+    <ButtonDLeft>
+      <InputImage path="ButtonDLeft.png"/>
+    </ButtonDLeft>
+    <ButtonDRight>
+      <InputImage path="ButtonDRight.png"/>
+    </ButtonDRight>
+
+    <ControlStick>
+      <InputImage path="ControlStick.png"/>
+    </ControlStick>
+    <Controller>
+      <InputImage path="Controller.png"/>
+    </Controller>
+  </InputImages>
+</InputImageAssociations>

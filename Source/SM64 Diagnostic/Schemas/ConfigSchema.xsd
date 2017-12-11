@@ -29,6 +29,8 @@
               <xs:element name="HeaderOffset" type="types:address"/>
               <xs:element name="ListNextLinkOffset" type="types:address"/>
               <xs:element name="ListPreviousLinkOffset" type="types:address"/>
+              <xs:element name="ParentOffset" type="types:address"/>
+              <xs:element name="UnusedSlotAddress" type="types:address"/>
               <xs:element name="BehaviorScriptOffset" type="types:address"/>
               <xs:element name="BehaviorGfxOffset" type="types:address"/>
               <xs:element name="BehaviorSubtypeOffset" type="types:address"/>
@@ -83,9 +85,9 @@
               <xs:element name="CoordinateOffsetZ" type="types:address"/>
               <xs:element name="FacingAngleOffset" type="types:address"/>
               <xs:element name="StandingOnPointer" type="types:address"/>
-              <xs:element name="InteractingObjectPointerOffset" type="types:address"/>
-              <xs:element name="HoldingObjectPointerOffset" type="types:address"/>
-              <xs:element name="UsingObjectPointerOffset" type="types:address"/>
+              <xs:element name="InteractionObjectPointerOffset" type="types:address"/>
+              <xs:element name="HeldObjectPointerOffset" type="types:address"/>
+              <xs:element name="UsedObjectPointerOffset" type="types:address"/>
               <xs:element name ="MoveToObjectYOffset" type="xs:float"/>
               <xs:element name="MarioStructAddress" type="types:address"/>
               <xs:element name="CeilingYOffset" type="types:address"/>
@@ -101,15 +103,8 @@
         <xs:element name="AreaAddress" type="types:address"/>
         <xs:element name="LoadingPointAddress" type="types:address"/>
         <xs:element name="MissionAddress" type="types:address"/>
-        <xs:element name="HolpX" type="types:address"/>
-        <xs:element name="HolpY" type="types:address"/>
-        <xs:element name="HolpZ" type="types:address"/>
-        <xs:element name="CameraX" type="types:address"/>
-        <xs:element name="CameraY" type="types:address"/>
-        <xs:element name="CameraZ" type="types:address"/>
-        <xs:element name="CameraRot" type="types:address"/>
         <xs:element name="RngAddress" type="types:address"/>
-        <xs:element name="RngRecordingAreaAddress" type="types:address"/>
+        <xs:element name="HackedAreaAddress" type="types:address"/>
       </xs:all>
     </xs:complexType>
   </xs:element>

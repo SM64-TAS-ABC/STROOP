@@ -1,15 +1,14 @@
-﻿using System;
+﻿using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Structs.Configurations;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using SM64_Diagnostic.Structs;
-using System.Threading;
-using System.IO;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -18,11 +17,11 @@ namespace SM64_Diagnostic.Utilities
         Emulator _emulator;
         IntPtr _processHandle;
         Process _process;
+        IntPtr _ramStart = new IntPtr();
         Queue<double> _fpsTimes = new Queue<double>();
         BackgroundWorker _streamUpdater;
         byte[] _ram;
         bool _lastUpdateBeforePausing = false;
-        int _interval;
         object _enableLocker = new object();
         object _fpsQueueLocker = new object();
 
@@ -33,17 +32,17 @@ namespace SM64_Diagnostic.Utilities
         public event EventHandler WarnReadonlyOff;
         public event EventHandler OnClose;
 
-        public bool Readonly = true;
-        public bool ShowWarning = true;
+        public bool Readonly = false;
+        public bool ShowWarning = false;
 
-        public Dictionary<WatchVariableLock, WatchVariableLock> LockedVariables = 
-            new Dictionary<WatchVariableLock, WatchVariableLock>();
+        public ConcurrentDictionary<WatchVariableLock, WatchVariableLock> LockedVariables = 
+            new ConcurrentDictionary<WatchVariableLock, WatchVariableLock>();
 
-        public uint ProcessMemoryOffset
+        public IntPtr ProcessMemoryOffset
         {
             get
             {
-                return _emulator == null ? 0 : _emulator.RamStart;
+                return _ramStart; 
             }
         }
 
@@ -63,7 +62,7 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public double Fps
+        public double FpsInPractice
         {
             get
             {
@@ -96,7 +95,6 @@ namespace SM64_Diagnostic.Utilities
         {
             _process = process;
 
-            _interval = (int) (1000.0f / Config.RefreshRateFreq);
             _ram = new byte[Config.RamSize];
 
             _streamUpdater = new BackgroundWorker();
@@ -149,12 +147,30 @@ namespace SM64_Diagnostic.Utilities
             if (_process != null)
                 _process.Exited -= ProcessClosed;
 
-            // Make sure the new process has a value
-            if (newProcess == null)
+            // Find DLL offset if needed
+            IntPtr dllOffset = new IntPtr();
+            bool dllSuccess = true;
+            if (emulator != null && emulator.Dll != null)
+            {
+                var dll = newProcess.Modules.Cast<ProcessModule>()
+                    .FirstOrDefault(d => d.ModuleName == emulator.Dll);
+                if (dll == null)
+                {
+                    dllSuccess = false;
+                }
+                else
+                {
+                    dllOffset = dll.BaseAddress;
+                }
+            }
+
+            // Make sure the new process has a value and that all DLLs where found
+            if (newProcess == null || emulator == null || !dllSuccess)
             {
                 _processHandle = new IntPtr();
                 _process = null;
                 _emulator = null;
+                _ramStart = new IntPtr();
                 OnStatusChanged?.Invoke(this, new EventArgs());
                 return false;
             }
@@ -162,6 +178,7 @@ namespace SM64_Diagnostic.Utilities
             // Open and set new process
             _process = newProcess;
             _emulator = emulator;
+            _ramStart = new IntPtr(_emulator.RamStart + dllOffset.ToInt64());
             _processHandle = Kernal32NativeMethods.ProcessGetHandleFromId(0x0838, false, _process.Id);
 
             if ((int)_processHandle == 0)
@@ -197,15 +214,17 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
             int numOfBytes = 0;
-            return Kernal32NativeMethods.ProcessReadMemory(_processHandle, (IntPtr) (absoluteAddressing ? address : address + _emulator.RamStart),
+            return Kernal32NativeMethods.ProcessReadMemory(_processHandle, absoluteAddressing ? new IntPtr(address) : new IntPtr(address + ProcessMemoryOffset.ToInt64()),
                 buffer, (IntPtr)buffer.Length, ref numOfBytes);
         }
 
-        public bool WriteProcessMemory(int address, byte[] buffer, bool absoluteAddressing = false)
+        public bool WriteProcessMemory(UIntPtr address, byte[] buffer, bool absoluteAddressing = false)
         {
             int numOfBytes = 0;
-            return Kernal32NativeMethods.ProcessWriteMemory(_processHandle, (IntPtr)(absoluteAddressing ? address : 
-                ConvertAddressEndianess((int)((address + _emulator.RamStart) & ~0x80000000U), buffer.Length)),
+            if (!absoluteAddressing)
+                address = new UIntPtr(address.ToUInt32() & ~0x80000000U);
+            return Kernal32NativeMethods.ProcessWriteMemory(_processHandle, absoluteAddressing ? new IntPtr((long) address.ToUInt64()) :
+                new IntPtr((long) ConvertAddressEndianess(new UIntPtr(address.ToUInt32() + (ulong) ProcessMemoryOffset.ToInt64()), buffer.Length)),
                 buffer, (IntPtr)buffer.Length, ref numOfBytes);
         }
 
@@ -247,52 +266,53 @@ namespace SM64_Diagnostic.Utilities
 
         public byte GetByte(uint address, bool absoluteAddress = false)
         {
-            return ReadRamLittleEndian(address, 1, absoluteAddress)[0];
+            return ReadRamLittleEndian(new UIntPtr(address), 1, absoluteAddress)[0];
         }
 
         public sbyte GetSByte(uint address, bool absoluteAddress = false)
         {
-            return (sbyte)ReadRamLittleEndian(address, 1, absoluteAddress)[0];
+            return (sbyte)ReadRamLittleEndian(new UIntPtr(address), 1, absoluteAddress)[0];
         }
 
         public short GetInt16(uint address, bool absoluteAddress = false)
         { 
-            return BitConverter.ToInt16(ReadRamLittleEndian(address, 2, absoluteAddress), 0);
+            return BitConverter.ToInt16(ReadRamLittleEndian(new UIntPtr(address), 2, absoluteAddress), 0);
         }
 
         public ushort GetUInt16(uint address, bool absoluteAddress = false)
         {
-            return BitConverter.ToUInt16(ReadRamLittleEndian(address, 2, absoluteAddress), 0);
+            return BitConverter.ToUInt16(ReadRamLittleEndian(new UIntPtr(address), 2, absoluteAddress), 0);
         }
 
         public int GetInt32(uint address, bool absoluteAddress = false)
         {
-            return BitConverter.ToInt32(ReadRamLittleEndian(address, 4, absoluteAddress), 0);
+            return BitConverter.ToInt32(ReadRamLittleEndian(new UIntPtr(address), 4, absoluteAddress), 0);
         }
 
         public uint GetUInt32(uint address, bool absoluteAddress = false)
         {
-            return BitConverter.ToUInt32(ReadRamLittleEndian(address, 4, absoluteAddress), 0);
+            return BitConverter.ToUInt32(ReadRamLittleEndian(new UIntPtr(address), 4, absoluteAddress), 0);
         }
 
         public float GetSingle(uint address, bool absoluteAddress = false)
         {
-            return BitConverter.ToSingle(ReadRamLittleEndian(address, 4, absoluteAddress), 0);
+            return BitConverter.ToSingle(ReadRamLittleEndian(new UIntPtr(address), 4, absoluteAddress), 0);
         }
 
-        public byte[] ReadRamLittleEndian(uint address, int length, bool absoluteAddress = false)
+        public byte[] ReadRamLittleEndian(UIntPtr address, int length, bool absoluteAddress = false)
         {
             byte[] readBytes = new byte[length];
+            uint localAddress;
 
             if (absoluteAddress)
-                address = address - _emulator.RamStart;
+                localAddress = (uint) (address.ToUInt64() - (ulong)ProcessMemoryOffset.ToInt64());
             else
-                address = ConvertAddressEndianess(address & ~0x80000000U, length);
+                localAddress = ConvertAddressEndianess(address.ToUInt32() & ~0x80000000, length);
 
-            if (address + length > _ram.Length)
+            if (localAddress + length > _ram.Length)
                 return new byte[length];
 
-            Array.Copy(_ram, address, readBytes, 0, length);
+            Buffer.BlockCopy(_ram, (int)localAddress, readBytes, 0, length);
             return readBytes;
         }
 
@@ -373,7 +393,7 @@ namespace SM64_Diagnostic.Utilities
                 Suspend();
 
             // Write memory to game/process
-            bool result = WriteProcessMemory((int)address, writeBytes, absoluteAddress);
+            bool result = WriteProcessMemory(new UIntPtr(address), writeBytes, absoluteAddress);
 
             // Resume stream 
             if (safeWrite && !preSuspended)
@@ -406,7 +426,7 @@ namespace SM64_Diagnostic.Utilities
             {
                 byte[] writeBytes = new byte[Math.Min(alignment, length.Value)];
                 Array.Copy(buffer, bufPos, writeBytes, 0, writeBytes.Length);
-                success &= WriteProcessMemory((int)address, writeBytes.Reverse().ToArray());
+                success &= WriteProcessMemory(new UIntPtr(address), writeBytes.Reverse().ToArray());
                 length -= writeBytes.Length;
                 bufPos += writeBytes.Length;
                 address += alignment;
@@ -423,7 +443,7 @@ namespace SM64_Diagnostic.Utilities
                     writeBytes[i + 2] = buffer[bufPos + 1];
                     writeBytes[i + 3] = buffer[bufPos];
                 }
-                success &= WriteProcessMemory((int)(address + _emulator.RamStart), writeBytes, true);
+                success &= WriteProcessMemory(new UIntPtr(address + (ulong) ProcessMemoryOffset.ToInt64()), writeBytes, true);
                 address += (uint)writeBytes.Length;
                 length -= writeBytes.Length;
             }
@@ -433,7 +453,7 @@ namespace SM64_Diagnostic.Utilities
             {
                 byte[] writeBytes = new byte[length.Value];
                 Array.Copy(buffer, bufPos, writeBytes, 0, writeBytes.Length);
-                success &= WriteProcessMemory((int)address, writeBytes.Reverse().ToArray());
+                success &= WriteProcessMemory(new UIntPtr(address), writeBytes.Reverse().ToArray());
             }
 
             // Resume stream 
@@ -446,6 +466,19 @@ namespace SM64_Diagnostic.Utilities
         public void Stop()
         {
             _streamUpdater.CancelAsync();
+        }
+
+        public bool RefreshRam()
+        {
+            try
+            {
+                // Read whole ram value to buffer
+                return ReadProcessMemory(0, _ram);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         private void ProcessUpdateTask(object sender, DoWorkEventArgs e)
@@ -467,30 +500,20 @@ namespace SM64_Diagnostic.Utilities
                 _lastUpdateBeforePausing = false;
 
                 int timeToWait;
-                try
-                {
-                    // Read whole ram value to buffer
-                    if (!ReadProcessMemory(0, _ram))
-                        continue;
 
-                    OnUpdate?.Invoke(this, new EventArgs());
+                if (!RefreshRam())
+                    goto FrameLimitStreamUpdate;
 
-                    foreach (var lockVar in LockedVariables)
-                        lockVar.Value.Update();
-                }
-                catch (Exception ee)
-                {
-                    LogException(ee);
-                    MessageBox.Show("A Fatal Error has occured. See output.txt for details. The program will now exit.", 
-                        "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
-                    break;
-                }
+                OnUpdate?.Invoke(this, new EventArgs());
+
+                foreach (var lockVar in LockedVariables)
+                    lockVar.Value.Update();
 
                 FrameLimitStreamUpdate:
 
                 // Calculate delay to match correct FPS
                 prevTime.Stop();
-                timeToWait = _interval - (int)prevTime.ElapsedMilliseconds;
+                timeToWait = (int)Config.RefreshRateInterval - (int)prevTime.ElapsedMilliseconds;
                 timeToWait = Math.Max(timeToWait, 0);
 
                 // Calculate Fps
@@ -501,21 +524,24 @@ namespace SM64_Diagnostic.Utilities
                     _fpsTimes.Enqueue(prevTime.ElapsedMilliseconds + timeToWait);
                 }
                 FpsUpdated?.Invoke(this, new EventArgs());
-            
-                Task.Delay(timeToWait).Wait();
+
+                if (timeToWait > 0)
+                    Thread.Sleep(timeToWait);
+                else
+                    Thread.Yield();
             }
 
             OnClose?.BeginInvoke(this, new EventArgs(), null, null);
         }
 
-        public int ConvertAddressEndianess(int address, int dataSize)
+        public UIntPtr ConvertAddressEndianess(UIntPtr address, int dataSize)
         {
             switch (dataSize)
             {
                 case 1:
                 case 2:
                 case 3:
-                    return (int)(address & ~0x03) | (_fixAddress[dataSize - 1] - address & 0x03);
+                    return new UIntPtr((address.ToUInt64() & ~0x03UL) | (_fixAddress[dataSize - 1] - address.ToUInt64() & 0x03UL));
                 default:
                     return address;
             }

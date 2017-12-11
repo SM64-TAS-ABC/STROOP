@@ -16,12 +16,21 @@ namespace SM64_Diagnostic.Managers
         public HackManager HackManager;
         public HudManager HudManager;
         public MapManager MapManager;
+        public ModelManager ModelManager;
         public MarioManager MarioManager;
         public MiscManager MiscManager;
         public ObjectManager ObjectManager;
         public ObjectSlotsManager ObjectSlotManager;
         public OptionsManager OptionsManager;
+        public TestingManager TestingManager;
         public ScriptManager ScriptManager;
         public TriangleManager TriangleManager;
+        public DataManager WaterManager;
+        public InputManager InputManager;
+        public ActionsManager ActionsManager;
+        public PuManager PuManager;
+        public FileManager FileManager;
+        public DataManager QuarterFrameManager;
+        public DataManager CameraHackManager;
     }
 }

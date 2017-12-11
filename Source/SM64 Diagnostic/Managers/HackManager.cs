@@ -6,23 +6,22 @@ using System.Threading.Tasks;
 using SM64_Diagnostic.Structs;
 using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Managers
 {
     public class HackManager
     {
         List<RomHack> _hacks;
-        ProcessStream _stream;
         CheckedListBox _checkList;
         ListBox _spawnList;
-        TextBox _gfxIdTextbox, _extraTextbox;
+        TextBox _behaviorTextbox, _gfxIdTextbox, _extraTextbox;
 
         object _listLocker = new object();
 
-        public HackManager(ProcessStream stream, List<RomHack> hacks, List<SpawnHack> spawnCodes,  Control tabControl)
+        public HackManager(List<RomHack> hacks, List<SpawnHack> spawnCodes,  Control tabControl)
         {
             _hacks = hacks;
-            _stream = stream;
 
             var splitContainter = tabControl.Controls["splitContainerHacks"] as SplitContainer;
             _checkList = splitContainter.Panel1.Controls["groupBoxHackRam"].Controls["checkedListBoxHacks"] as CheckedListBox;
@@ -30,6 +29,7 @@ namespace SM64_Diagnostic.Managers
             var spawnGroup = splitContainter.Panel2.Controls["groupBoxHackSpawn"];
             _spawnList = spawnGroup.Controls["listBoxSpawn"] as ListBox;
             var spawnButton = spawnGroup.Controls["buttonHackSpawn"] as Button;
+            _behaviorTextbox = spawnGroup.Controls["textBoxSpawnBehavior"] as TextBox;
             _gfxIdTextbox = spawnGroup.Controls["textBoxSpawnGfxId"] as TextBox;
             _extraTextbox = spawnGroup.Controls["textBoxSpawnExtra"] as TextBox;
             var resetButton = spawnGroup.Controls["buttonSpawnReset"] as Button;
@@ -50,7 +50,7 @@ namespace SM64_Diagnostic.Managers
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            Config.Hacks.SpawnHack.ClearPayload(_stream);
+            Config.Hacks.SpawnHack.ClearPayload();
         }
 
         private void _spawnList_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,6 +60,7 @@ namespace SM64_Diagnostic.Managers
 
             var selectedHack = _spawnList.SelectedItem as SpawnHack;
 
+            _behaviorTextbox.Text = String.Format("0x{0:X8}", selectedHack.Behavior);
             _gfxIdTextbox.Text = String.Format("0x{0:X2}", selectedHack.GfxId);
             _extraTextbox.Text = String.Format("0x{0:X2}", selectedHack.Extra);
         }
@@ -69,38 +70,41 @@ namespace SM64_Diagnostic.Managers
             if (_spawnList.SelectedItems.Count == 0)
                 return;
 
-            uint gfxId, extra;
+            uint behavior, gfxId, extra;
+            if (!ParsingUtilities.TryParseHex(_behaviorTextbox.Text, out behavior))
+            {
+                MessageBox.Show("Could not parse behavior!");
+                return;
+            }
             if (!ParsingUtilities.TryParseHex(_gfxIdTextbox.Text, out gfxId))
             {
-                MessageBox.Show("Fail");
+                MessageBox.Show("Could not parse gfxId!");
                 return;
             }
             if (!ParsingUtilities.TryParseHex(_extraTextbox.Text, out extra))
             {
-                MessageBox.Show("Fail");
+                MessageBox.Show("Could not parse extra!");
                 return;
             }
 
-            _stream.Suspend();
+            Config.Stream.Suspend();
 
-            Config.Hacks.SpawnHack.LoadPayload(_stream, false);
+            Config.Hacks.SpawnHack.LoadPayload(false);
 
-            var selectedHack = _spawnList.SelectedItem as SpawnHack;
+            Config.Stream.SetValue(behavior, Config.Hacks.BehaviorAddress);
+            Config.Stream.SetValue((UInt16)gfxId, Config.Hacks.GfxIdAddress);
+            Config.Stream.SetValue((UInt16)extra, Config.Hacks.ExtraAddress);
 
-            _stream.SetValue(selectedHack.Behavior, Config.Hacks.BehaviorAddress);
-            _stream.SetValue((UInt16)gfxId, Config.Hacks.GfxIdAddress);
-            _stream.SetValue((UInt16)extra, Config.Hacks.ExtraAddress);
-
-            _stream.Resume();
+            Config.Stream.Resume();
         }
 
         private void _checkList_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             var hack = (RomHack)_checkList.Items[e.Index];
             if (e.NewValue == CheckState.Checked)
-                hack.LoadPayload(_stream);
+                hack.LoadPayload();
             else
-                hack.ClearPayload(_stream);
+                hack.ClearPayload();
         }
 
         public void Update()
@@ -109,7 +113,7 @@ namespace SM64_Diagnostic.Managers
             for (int i = 0; i < _checkList.Items.Count; i++)
             {
                 var hack = (RomHack) _checkList.Items[i];
-                hack.UpdateEnabledStatus(_stream);
+                hack.UpdateEnabledStatus();
 
                 if (_checkList.GetItemChecked(i) != hack.Enabled)
                     _checkList.SetItemChecked(i, hack.Enabled);

@@ -8,32 +8,34 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Controls;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Managers
 {
     public class MiscManager : DataManager
     {
-        Control _puController;
-
         public int ActiveObjectCount = 0;
 
-        enum PuControl { Home, PuUp, PuDown, PuLeft, PuRight, QpuUp, QpuDown, QpuLeft, QpuRight};
+        BetterTextbox _betterTextboxRNGIndex;
+        CheckBox _checkBoxTurnOffMusic;
 
-        public MiscManager(ProcessStream stream, List<WatchVariable> watchVariables, NoTearFlowLayoutPanel variableTable, Control puController)
-            : base(stream, watchVariables, variableTable)
+        public MiscManager(List<WatchVariable> watchVariables, NoTearFlowLayoutPanel variableTable, Control miscControl)
+            : base(watchVariables, variableTable)
         {
-            _puController = puController;
+            SplitContainer splitContainerMisc = miscControl.Controls["splitContainerMisc"] as SplitContainer;
+            GroupBox groupBoxRNGIndex = splitContainerMisc.Panel1.Controls["groupBoxRNGIndex"] as GroupBox;
+            _betterTextboxRNGIndex = groupBoxRNGIndex.Controls["betterTextboxRNGIndex"] as BetterTextbox;
+            _betterTextboxRNGIndex.AddEnterAction(() =>
+            {
+                int? index = ParsingUtilities.ParseIntNullable(_betterTextboxRNGIndex.Text);
+                if (index.HasValue)
+                {
+                    ushort rngValue = RngIndexer.GetRngValue(index.Value);
+                    Config.Stream.SetValue(rngValue, Config.RngAddress);
+                }
+            });
 
-            // Pu Controller initialize and register click events
-            _puController.Controls["buttonPuConHome"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.Home);
-            _puController.Controls["buttonPuConZnQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuUp);
-            _puController.Controls["buttonPuConZpQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuDown);
-            _puController.Controls["buttonPuConXnQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuLeft);
-            _puController.Controls["buttonPuConXpQpu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.QpuRight);
-            _puController.Controls["buttonPuConZnPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuUp);
-            _puController.Controls["buttonPuConZpPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuDown);
-            _puController.Controls["buttonPuConXnPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuLeft);
-            _puController.Controls["buttonPuConXpPu"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.PuRight);
+            _checkBoxTurnOffMusic = splitContainerMisc.Panel1.Controls["checkBoxTurnOffMusic"] as CheckBox;
         }
 
         protected override void InitializeSpecialVariables()
@@ -46,40 +48,6 @@ namespace SM64_Diagnostic.Managers
             };
         }
 
-        private void PuControl_Click(object sender, EventArgs e, PuControl controlType)
-        {
-            switch(controlType)
-            {
-                case PuControl.Home:
-                    PuUtilities.MoveToPu(_stream, 0, 0, 0);
-                    break;
-                case PuControl.PuUp:
-                    PuUtilities.MoveToRelativePu(_stream, 0, 0, -1);
-                    break;
-                case PuControl.PuDown:
-                    PuUtilities.MoveToRelativePu(_stream, 0, 0, 1);
-                    break;
-                case PuControl.PuLeft:
-                    PuUtilities.MoveToRelativePu(_stream, -1, 0, 0);
-                    break;
-                case PuControl.PuRight:
-                    PuUtilities.MoveToRelativePu(_stream, 1, 0, 0);
-                    break;
-                case PuControl.QpuUp:
-                    PuUtilities.MoveToRelativePu(_stream, 0, 0, -4);
-                    break;
-                case PuControl.QpuDown:
-                    PuUtilities.MoveToRelativePu(_stream, 0, 0, 4);
-                    break;
-                case PuControl.QpuLeft:
-                    PuUtilities.MoveToRelativePu(_stream, -4, 0, 0);
-                    break;
-                case PuControl.QpuRight:
-                    PuUtilities.MoveToRelativePu(_stream, 4, 0, 0);
-                    break;
-            }
-        }
-
         private void ProcessSpecialVars()
         {
             foreach (var specialVar in _specialWatchVars)
@@ -87,8 +55,8 @@ namespace SM64_Diagnostic.Managers
                 switch(specialVar.SpecialName)
                 {
                     case "RngIndex":
-                        int rngIndex = RngIndexer.GetRngIndex(_stream.GetUInt16(Config.RngAddress));
-                        (specialVar as DataContainer).Text = (rngIndex < 0) ? "N/A [" + (-rngIndex).ToString() + "]" : rngIndex.ToString();
+                        ushort rngValue = Config.Stream.GetUInt16(Config.RngAddress);
+                        (specialVar as DataContainer).Text = RngIndexer.GetRngIndexString(rngValue);
                         break;
 
                     case "RngCallsPerFrame":
@@ -102,24 +70,29 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
+        private int GetRngCallsPerFrame()
+        {
+            var currentRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0E);
+            var preRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0C);
+
+            return RngIndexer.GetRngIndexDiff(preRng, currentRng);
+        }
+
         public override void Update(bool updateView)
         {
+            if (_checkBoxTurnOffMusic.Checked)
+            {
+                byte oldMusicByte = Config.Stream.GetByte(Config.MusicOnAddress);
+                byte newMusicByte = MoreMath.ApplyValueToMaskedByte(oldMusicByte, Config.MusicOnMask, true);
+                Config.Stream.SetValue(newMusicByte, Config.MusicOnAddress);
+                Config.Stream.SetValue(0f, Config.MusicVolumeAddress);
+            }
+
             if (!updateView)
                 return;
 
             base.Update();
             ProcessSpecialVars();
-
-            _puController.Controls["labelPuConPuValue"].Text = PuUtilities.GetPuPosString(_stream);
-            _puController.Controls["labelPuConQpuValue"].Text = PuUtilities.GetQpuPosString(_stream);
-        }
-
-        private int GetRngCallsPerFrame()
-        {
-            var currentRng = _stream.GetUInt16(Config.RngRecordingAreaAddress + 0x0E);
-            var preRng = _stream.GetUInt16(Config.RngRecordingAreaAddress + 0x0C);
-
-            return RngIndexer.GetRngIndexDiff(preRng, currentRng);
         }
 
     }

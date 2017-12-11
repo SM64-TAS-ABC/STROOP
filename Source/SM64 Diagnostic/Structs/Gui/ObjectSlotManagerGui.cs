@@ -12,15 +12,26 @@ namespace SM64_Diagnostic.Structs
     public class ObjectSlotManagerGui
     {
         public Image SelectedObjectOverlayImage;
-        public Image StandingOnObjectOverlayImage;
-        public Image HoldingObjectOverlayImage;
-        public Image InteractingObjectOverlayImage;
-        public Image UsingObjectOverlayImage;
+        public Image TrackedAndShownObjectOverlayImage;
+        public Image TrackedNotShownObjectOverlayImage;
+        public Image StoodOnObjectOverlayImage;
+        public Image HeldObjectOverlayImage;
+        public Image InteractionObjectOverlayImage;
+        public Image UsedObjectOverlayImage;
         public Image ClosestObjectOverlayImage;
+        public Image CameraObjectOverlayImage;
+        public Image CameraHackObjectOverlayImage;
+        public Image ModelObjectOverlayImage;
+        public Image FloorObjectOverlayImage;
+        public Image WallObjectOverlayImage;
+        public Image CeilingObjectOverlayImage;
+        public Image ParentObjectOverlayImage;
+        public Image ParentUnusedObjectOverlayImage;
+        public Image ParentNoneObjectOverlayImage;
+        public Image MarkedObjectOverlayImage;
 
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
-        public ComboBox MapObjectToggleModeComboBox;
         public ComboBox SortMethodComboBox;
         public ComboBox LabelMethodComboBox;
         public NoTearFlowLayoutPanel FlowLayoutContainer;
@@ -28,11 +39,23 @@ namespace SM64_Diagnostic.Structs
         ~ObjectSlotManagerGui()
         {
             SelectedObjectOverlayImage?.Dispose();
-            StandingOnObjectOverlayImage?.Dispose();
-            HoldingObjectOverlayImage?.Dispose();
-            InteractingObjectOverlayImage?.Dispose();
-            UsingObjectOverlayImage?.Dispose();
+            TrackedAndShownObjectOverlayImage?.Dispose();
+            TrackedNotShownObjectOverlayImage?.Dispose();
+            StoodOnObjectOverlayImage?.Dispose();
+            HeldObjectOverlayImage?.Dispose();
+            InteractionObjectOverlayImage?.Dispose();
+            UsedObjectOverlayImage?.Dispose();
             ClosestObjectOverlayImage?.Dispose();
+            CameraObjectOverlayImage?.Dispose();
+            CameraHackObjectOverlayImage?.Dispose();
+            ModelObjectOverlayImage?.Dispose();
+            FloorObjectOverlayImage?.Dispose();
+            WallObjectOverlayImage?.Dispose();
+            CeilingObjectOverlayImage?.Dispose();
+            ParentObjectOverlayImage?.Dispose();
+            ParentUnusedObjectOverlayImage?.Dispose();
+            ParentNoneObjectOverlayImage?.Dispose();
+            MarkedObjectOverlayImage?.Dispose();
         }
     }
 }

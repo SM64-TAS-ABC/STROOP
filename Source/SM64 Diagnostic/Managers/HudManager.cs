@@ -7,36 +7,52 @@ using SM64_Diagnostic.Structs;
 using System.Windows.Forms;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
+using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Managers
 {
     public class HudManager : DataManager
     {
         Control _tabControl;
+        BinaryButton _turnOnOffHudButton;
+        CheckBox _checkBoxFullHP;
 
-        public HudManager(ProcessStream stream, List<WatchVariable> hudData, Control tabControl)
-            : base(stream, hudData, tabControl.Controls["NoTearFlowLayoutPanelHud"] as NoTearFlowLayoutPanel)
+        public HudManager(List<WatchVariable> hudData, Control tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelHud)
+            : base(hudData, noTearFlowLayoutPanelHud)
         {
             _tabControl = tabControl;
 
-            (_tabControl.Controls["buttonFillHp"] as Button).Click += buttonFill_Click;
-            (_tabControl.Controls["buttonDie"] as Button).Click += buttonDie_Click;
-            (_tabControl.Controls["buttonStandardHud"] as Button).Click += buttonStandardHud_Click;
+            SplitContainer splitContainerHud = tabControl.Controls["splitContainerHud"] as SplitContainer;
+
+            (splitContainerHud.Panel1.Controls["buttonFullHp"] as Button).Click += (sender, e) => ButtonUtilities.FullHp();
+            (splitContainerHud.Panel1.Controls["buttonDie"] as Button).Click += (sender, e) => ButtonUtilities.Die();
+            (splitContainerHud.Panel1.Controls["button99Coins"] as Button).Click += (sender, e) => ButtonUtilities.Coins99();
+            (splitContainerHud.Panel1.Controls["button100Lives"] as Button).Click += (sender, e) => ButtonUtilities.Lives100();
+            (splitContainerHud.Panel1.Controls["buttonStandardHud"] as Button).Click += (sender, e) => ButtonUtilities.StandardHud();
+
+            _turnOnOffHudButton = splitContainerHud.Panel1.Controls["buttonTurnOnOffHud"] as BinaryButton;
+            _turnOnOffHudButton.Initialize(
+                "Turn Off HUD",
+                "Turn On HUD",
+                () => ButtonUtilities.SetHudVisibility(false),
+                () => ButtonUtilities.SetHudVisibility(true),
+                () => (Config.Stream.GetByte(Config.Mario.StructAddress + Config.Hud.VisibilityOffset) & Config.Hud.VisibilityMask) == 0);
+
+            _checkBoxFullHP = splitContainerHud.Panel1.Controls["checkBoxFullHP"] as CheckBox;
         }
 
-        private void buttonStandardHud_Click(object sender, EventArgs e)
+        public override void Update(bool updateView)
         {
-            MarioActions.StandardHud(_stream);
-        }
+            if (_checkBoxFullHP.Checked)
+            {
+                ButtonUtilities.FullHp();
+            }
 
-        private void buttonDie_Click(object sender, EventArgs e)
-        {
-            MarioActions.Die(_stream);
-        }
+            if (!updateView) return;
 
-        private void buttonFill_Click(object sender, EventArgs e)
-        {
-            MarioActions.RefillHp(_stream);
+            _turnOnOffHudButton.UpdateButton();
+
+            base.Update(updateView);
         }
     }
 }
