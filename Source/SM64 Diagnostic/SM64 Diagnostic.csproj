@@ -56,7 +56,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>icon2.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -488,6 +488,7 @@
     <EmbeddedResource Include="EmbeddedResources\select_bottom.png" />
     <EmbeddedResource Include="EmbeddedResources\select_top.png" />
     <Content Include="icon.ico" />
+    <Content Include="icon2.ico" />
     <Content Include="Licenses.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
