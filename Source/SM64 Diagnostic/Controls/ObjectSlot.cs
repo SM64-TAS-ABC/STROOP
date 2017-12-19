@@ -33,7 +33,7 @@ namespace SM64_Diagnostic
         string _text;
 
         bool _selected = false;
-        public bool Show = false;
+        public new bool Show = false;
         bool _active = false;
         BehaviorCriteria _behavior;
 
@@ -160,7 +160,7 @@ namespace SM64_Diagnostic
         }
 
         bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawHeldOverlay, _drawInteractionOverlay, _drawUsedOverlay,
-            _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawModelOverlay, _modelOverlay,
+            _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawModelOverlay,
             _drawFloorObject, _drawWallOverlay, _drawCeilingOverlay,
             _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawMarkedOverlay;
         public bool DrawSelectedOverlay
