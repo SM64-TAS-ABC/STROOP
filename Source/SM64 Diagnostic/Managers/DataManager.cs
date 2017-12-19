@@ -14,9 +14,11 @@ namespace SM64_Diagnostic.Managers
 {
     public class DataManager
     {
+        private NoTearFlowLayoutPanel _variableTable;
         protected List<IDataContainer> _dataControls;
-        protected NoTearFlowLayoutPanel _variableTable;
-        protected List<IDataContainer> _specialWatchVars;
+        protected List<IDataContainer> _specialDataControls = new List<IDataContainer>();
+
+        protected virtual List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>();
 
         public DataManager(List<WatchVariable> data, NoTearFlowLayoutPanel variableTable)
         {
@@ -31,9 +33,7 @@ namespace SM64_Diagnostic.Managers
         {
             foreach (var watchVar in watchVars)
             {
-                if (_dataControls.Contains(watchVar))
-                    _dataControls.Remove(watchVar);
-
+                _dataControls.Remove(watchVar);
                 _variableTable.Controls.Remove(watchVar.Control);
             }
         }
@@ -41,30 +41,47 @@ namespace SM64_Diagnostic.Managers
         protected List<IDataContainer> AddWatchVariables(IEnumerable<WatchVariable> watchVars, Color? color = null)
         {
             var newControls = new List<IDataContainer>();
+            // Add every watch variable
             foreach (WatchVariable watchVar in watchVars)
             {
-                if (watchVar.IsSpecial && _specialWatchVars != null)
+                // Handle special variables
+                if (watchVar.IsSpecial)
                 {
-                    if (_specialWatchVars.Exists(w => w.SpecialName == watchVar.SpecialType))
+                    // Find special variable container
+                    if (_specialWatchVars.Exists(w => w.Name == watchVar.SpecialType))
                     {
-                        var specialVar = _specialWatchVars.Find(w => w.SpecialName == watchVar.SpecialType);
-                        specialVar.Name = watchVar.Name;
-                        _variableTable.Controls.Add(specialVar.Control);
-                        newControls.Add(specialVar);
+                        // Create new container
+                        SpecialWatchVariable specialVar = _specialWatchVars.Find(w => w.Name == watchVar.SpecialType);
+                        IDataContainer specialVarControl;
+                        if (specialVar.IsAngle)
+                            specialVarControl = new AngleDataContainer(watchVar.SpecialType, specialVar.AngleViewMode);
+                        else
+                            specialVarControl = new DataContainer(watchVar.SpecialType);
+                        specialVarControl.Name = watchVar.Name;
+
+                        // Add special variable control to the tableview
+                        _variableTable.Controls.Add(specialVarControl.Control);
+                        _specialDataControls.Add(specialVarControl);
+                        _dataControls.Add(specialVarControl);
+                        newControls.Add(specialVarControl);
+
+                        // Colorize control
                         if (watchVar.BackroundColor.HasValue)
-                            specialVar.Color = watchVar.BackroundColor.Value;
+                            specialVarControl.Color = watchVar.BackroundColor.Value;
                         else if (color.HasValue)
-                            specialVar.Color = color.Value;
+                            specialVarControl.Color = color.Value;
                     }
                     else
                     {
                         var failedContainer = new DataContainer(watchVar.Name);
                         failedContainer.Text = "Couldn't Find";
                         _variableTable.Controls.Add(failedContainer.Control);
+                        _dataControls.Add(failedContainer);
                     }
                     continue;
                 }
 
+                // If not special, add a new watch control.
                 WatchVariableControl watchControl = new WatchVariableControl(watchVar);
                 if (color.HasValue)
                     watchControl.Color = color.Value;

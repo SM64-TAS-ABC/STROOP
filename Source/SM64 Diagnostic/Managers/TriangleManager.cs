@@ -50,78 +50,75 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        protected override void InitializeSpecialVariables()
+        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
         {
-            _specialWatchVars = new List<IDataContainer>()
-            {
-                new DataContainer("DistanceAboveFloor"),
-                new DataContainer("DistanceBelowCeiling"),
-                new DataContainer("ClosestVertex"),
-                new DataContainer("ClosestVertexX"),
-                new DataContainer("ClosestVertexY"),
-                new DataContainer("ClosestVertexZ"),
-                new AngleDataContainer("UpHillAngle"),
-                new AngleDataContainer("DownHillAngle"),
-                new AngleDataContainer("LeftHillAngle"),
-                new AngleDataContainer("RightHillAngle"),
-                new AngleDataContainer("UpHillDeltaAngle", AngleViewModeType.Signed),
-                new AngleDataContainer("DownHillDeltaAngle", AngleViewModeType.Signed),
-                new AngleDataContainer("LeftHillDeltaAngle", AngleViewModeType.Signed),
-                new AngleDataContainer("RightHillDeltaAngle", AngleViewModeType.Signed),
-                new DataContainer("Classification"),
-                new AngleDataContainer("Steepness"),
-                new DataContainer("NormalDistAway"),
-                new DataContainer("VerticalDistAway"),
-                new DataContainer("HeightOnSlope"),
+            new SpecialWatchVariable("DistanceAboveFloor"),
+            new SpecialWatchVariable("DistanceBelowCeiling"),
+            new SpecialWatchVariable("ClosestVertex"),
+            new SpecialWatchVariable("ClosestVertexX"),
+            new SpecialWatchVariable("ClosestVertexY"),
+            new SpecialWatchVariable("ClosestVertexZ"),
+            new SpecialWatchVariable("UpHillAngle", true),
+            new SpecialWatchVariable("DownHillAngle", true),
+            new SpecialWatchVariable("LeftHillAngle", true),
+            new SpecialWatchVariable("RightHillAngle", true),
+            new SpecialWatchVariable("UpHillDeltaAngle", true, AngleViewModeType.Signed),
+            new SpecialWatchVariable("DownHillDeltaAngle", true, AngleViewModeType.Signed),
+            new SpecialWatchVariable("LeftHillDeltaAngle", true, AngleViewModeType.Signed),
+            new SpecialWatchVariable("RightHillDeltaAngle", true, AngleViewModeType.Signed),
+            new SpecialWatchVariable("Classification"),
+            new SpecialWatchVariable("Steepness", true),
+            new SpecialWatchVariable("NormalDistAway"),
+            new SpecialWatchVariable("VerticalDistAway"),
+            new SpecialWatchVariable("HeightOnSlope"),
 
-                new DataContainer("DistanceToV1"),
-                new DataContainer("YDistanceToV1"),
-                new DataContainer("XDistanceToV1"),
-                new DataContainer("ZDistanceToV1"),
-                new DataContainer("HDistanceToV1"),
-                new DataContainer("DistanceToV2"),
-                new DataContainer("YDistanceToV2"),
-                new DataContainer("XDistanceToV2"),
-                new DataContainer("ZDistanceToV2"),
-                new DataContainer("HDistanceToV2"),
-                new DataContainer("DistanceToV3"),
-                new DataContainer("YDistanceToV3"),
-                new DataContainer("XDistanceToV3"),
-                new DataContainer("ZDistanceToV3"),
-                new DataContainer("HDistanceToV3"),
+            new SpecialWatchVariable("DistanceToV1"),
+            new SpecialWatchVariable("YDistanceToV1"),
+            new SpecialWatchVariable("XDistanceToV1"),
+            new SpecialWatchVariable("ZDistanceToV1"),
+            new SpecialWatchVariable("HDistanceToV1"),
+            new SpecialWatchVariable("DistanceToV2"),
+            new SpecialWatchVariable("YDistanceToV2"),
+            new SpecialWatchVariable("XDistanceToV2"),
+            new SpecialWatchVariable("ZDistanceToV2"),
+            new SpecialWatchVariable("HDistanceToV2"),
+            new SpecialWatchVariable("DistanceToV3"),
+            new SpecialWatchVariable("YDistanceToV3"),
+            new SpecialWatchVariable("XDistanceToV3"),
+            new SpecialWatchVariable("ZDistanceToV3"),
+            new SpecialWatchVariable("HDistanceToV3"),
 
-                new DataContainer("DistanceToV2"),
-                new DataContainer("HorizontalDistanceToV2"),
-                new DataContainer("VerticalDistanceToV2"),
-                new DataContainer("DistanceToV3"),
-                new DataContainer("HorizontalDistanceToV3"),
-                new DataContainer("VerticalDistanceToV3"),
+            new SpecialWatchVariable("DistanceToV2"),
+            new SpecialWatchVariable("HorizontalDistanceToV2"),
+            new SpecialWatchVariable("VerticalDistanceToV2"),
+            new SpecialWatchVariable("DistanceToV3"),
+            new SpecialWatchVariable("HorizontalDistanceToV3"),
+            new SpecialWatchVariable("VerticalDistanceToV3"),
 
-                new DataContainer("DistanceToLine12"),
-                new DataContainer("DistanceToLine23"),
-                new DataContainer("DistanceToLine13"),
+            new SpecialWatchVariable("DistanceToLine12"),
+            new SpecialWatchVariable("DistanceToLine23"),
+            new SpecialWatchVariable("DistanceToLine13"),
 
-                new AngleDataContainer("AngleMarioToV1"),
-                new AngleDataContainer("DeltaAngleMarioToV1", AngleViewModeType.Signed),
-                new AngleDataContainer("AngleV1ToMario"),
-                new AngleDataContainer("AngleMarioToV2"),
-                new AngleDataContainer("DeltaAngleMarioToV2", AngleViewModeType.Signed),
-                new AngleDataContainer("AngleV2ToMario"),
-                new AngleDataContainer("AngleMarioToV3"),
-                new AngleDataContainer("DeltaAngleMarioToV3", AngleViewModeType.Signed),
-                new AngleDataContainer("AngleV3ToMario"),
+            new SpecialWatchVariable("AngleMarioToV1", true),
+            new SpecialWatchVariable("DeltaAngleMarioToV1", true, AngleViewModeType.Signed),
+            new SpecialWatchVariable("AngleV1ToMario", true),
+            new SpecialWatchVariable("AngleMarioToV2", true),
+            new SpecialWatchVariable("DeltaAngleMarioToV2", true, AngleViewModeType.Signed),
+            new SpecialWatchVariable("AngleV2ToMario", true),
+            new SpecialWatchVariable("AngleMarioToV3", true),
+            new SpecialWatchVariable("DeltaAngleMarioToV3", true, AngleViewModeType.Signed),
+            new SpecialWatchVariable("AngleV3ToMario", true),
 
-                new AngleDataContainer("AngleV1ToV2"),
-                new AngleDataContainer("AngleV2ToV1"),
-                new AngleDataContainer("AngleV2ToV3"),
-                new AngleDataContainer("AngleV3ToV2"),
-                new AngleDataContainer("AngleV1ToV3"),
-                new AngleDataContainer("AngleV3ToV1"),
+            new SpecialWatchVariable("AngleV1ToV2", true),
+            new SpecialWatchVariable("AngleV2ToV1", true),
+            new SpecialWatchVariable("AngleV2ToV3", true),
+            new SpecialWatchVariable("AngleV3ToV2", true),
+            new SpecialWatchVariable("AngleV1ToV3", true),
+            new SpecialWatchVariable("AngleV3ToV1", true),
 
-                new DataContainer("ObjectTriCount"),
-                new DataContainer("ObjectNodeCount"),
-            };
-        }
+            new SpecialWatchVariable("ObjectTriCount"),
+            new SpecialWatchVariable("ObjectNodeCount"),
+        };
 
         /// <summary>
         /// Manages illumanati
@@ -367,7 +364,7 @@ namespace SM64_Diagnostic.Managers
             double angleMarioToV3 = MoreMath.AngleTo_AngleUnits(marioX, marioZ, v3X, v3Z);
             double angleV3ToMario = MoreMath.AngleTo_AngleUnits(v3X, v3Z, marioX, marioZ);
 
-            foreach (IDataContainer specialVar in _specialWatchVars)
+            foreach (IDataContainer specialVar in _specialDataControls)
             {
                 switch (specialVar.SpecialName)
                 {

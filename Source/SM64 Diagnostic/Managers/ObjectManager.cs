@@ -179,81 +179,78 @@ namespace SM64_Diagnostic.Managers
 
         #endregion
 
-        protected override void InitializeSpecialVariables()
+        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
         {
-            _specialWatchVars = new List<IDataContainer>()
-            {
-                new DataContainer("MarioDistanceToObject"),
-                new DataContainer("MarioHorizontalDistanceToObject"),
-                new DataContainer("MarioVerticalDistanceToObject"),
-                new DataContainer("MarioDistanceToObjectHome"),
-                new DataContainer("MarioHorizontalDistanceToObjectHome"),
-                new DataContainer("MarioVerticalDistanceToObjectHome"),
-                new AngleDataContainer("AngleObjectToMario"),
-                new AngleDataContainer("DeltaAngleObjectToMario", AngleViewModeType.Signed),
-                new AngleDataContainer("AngleMarioToObject"),
-                new AngleDataContainer("DeltaAngleMarioToObject", AngleViewModeType.Signed),
-                new AngleDataContainer("AngleObjectToHome"),
-                new AngleDataContainer("DeltaAngleObjectToHome", AngleViewModeType.Signed),
-                new AngleDataContainer("AngleHomeToObject"),
-                new DataContainer("ObjectDistanceToHome"),
-                new DataContainer("HorizontalObjectDistanceToHome"),
-                new DataContainer("VerticalObjectDistanceToHome"),
-                new DataContainer("MarioHitboxAwayFromObject"),
-                new DataContainer("MarioHitboxAboveObject"),
-                new DataContainer("MarioHitboxBelowObject"),
-                new DataContainer("MarioHitboxOverlapsObject"),
+            new SpecialWatchVariable("MarioDistanceToObject"),
+            new SpecialWatchVariable("MarioHorizontalDistanceToObject"),
+            new SpecialWatchVariable("MarioVerticalDistanceToObject"),
+            new SpecialWatchVariable("MarioDistanceToObjectHome"),
+            new SpecialWatchVariable("MarioHorizontalDistanceToObjectHome"),
+            new SpecialWatchVariable("MarioVerticalDistanceToObjectHome"),
+            new SpecialWatchVariable("AngleObjectToMario", true),
+            new SpecialWatchVariable("DeltaAngleObjectToMario", true, AngleViewModeType.Signed),
+            new SpecialWatchVariable("AngleMarioToObject", true),
+            new SpecialWatchVariable("DeltaAngleMarioToObject", true, AngleViewModeType.Signed),
+            new SpecialWatchVariable("AngleObjectToHome", true),
+            new SpecialWatchVariable("DeltaAngleObjectToHome", true, AngleViewModeType.Signed),
+            new SpecialWatchVariable("AngleHomeToObject", true),
+            new SpecialWatchVariable("ObjectDistanceToHome"),
+            new SpecialWatchVariable("HorizontalObjectDistanceToHome"),
+            new SpecialWatchVariable("VerticalObjectDistanceToHome"),
+            new SpecialWatchVariable("MarioHitboxAwayFromObject"),
+            new SpecialWatchVariable("MarioHitboxAboveObject"),
+            new SpecialWatchVariable("MarioHitboxBelowObject"),
+            new SpecialWatchVariable("MarioHitboxOverlapsObject"),
 
-                // Pendulum vars
-                new DataContainer("PendulumAmplitude"),
-                new DataContainer("PendulumSwingIndex"),
+            // Pendulum vars
+            new SpecialWatchVariable("PendulumAmplitude"),
+            new SpecialWatchVariable("PendulumSwingIndex"),
 
-                // Waypoint vars
-                new DataContainer("ObjectDotProductToWaypoint"),
-                new DataContainer("ObjectDistanceToWaypointPlane"),
-                new DataContainer("ObjectDistanceToWaypoint"),
+            // Waypoint vars
+            new SpecialWatchVariable("ObjectDotProductToWaypoint"),
+            new SpecialWatchVariable("ObjectDistanceToWaypointPlane"),
+            new SpecialWatchVariable("ObjectDistanceToWaypoint"),
 
-                // Racing penguin vars
-                new DataContainer("RacingPenguinEffortTarget"),
-                new DataContainer("RacingPenguinEffortChange"),
-                new DataContainer("RacingPenguinMinHSpeed"),
-                new DataContainer("RacingPenguinHSpeedTarget"),
-                new DataContainer("RacingPenguinDiffHSpeedTarget"),
-                new DataContainer("RacingPenguinProgress"),
-                new DataContainer("RacingPenguinProgressDiff"),
-                new DataContainer("RacingPenguinProgressDiffDelta"),
+            // Racing penguin vars
+            new SpecialWatchVariable("RacingPenguinEffortTarget"),
+            new SpecialWatchVariable("RacingPenguinEffortChange"),
+            new SpecialWatchVariable("RacingPenguinMinHSpeed"),
+            new SpecialWatchVariable("RacingPenguinHSpeedTarget"),
+            new SpecialWatchVariable("RacingPenguinDiffHSpeedTarget"),
+            new SpecialWatchVariable("RacingPenguinProgress"),
+            new SpecialWatchVariable("RacingPenguinProgressDiff"),
+            new SpecialWatchVariable("RacingPenguinProgressDiffDelta"),
 
-                // Koopa the Quick vars
-                new DataContainer("KoopaTheQuickHSpeedTarget"),
-                new DataContainer("KoopaTheQuickHSpeedChange"),
-                new DataContainer("KoopaTheQuick1Progress"),
-                new DataContainer("KoopaTheQuick2Progress"),
+            // Koopa the Quick vars
+            new SpecialWatchVariable("KoopaTheQuickHSpeedTarget"),
+            new SpecialWatchVariable("KoopaTheQuickHSpeedChange"),
+            new SpecialWatchVariable("KoopaTheQuick1Progress"),
+            new SpecialWatchVariable("KoopaTheQuick2Progress"),
 
-                // Fly Guy vars
-                new DataContainer("FlyGuyZone"),
-                new DataContainer("FlyGuyRelativeHeight"),
-                new DataContainer("FlyGuyNextHeightDiff"),
-                new DataContainer("FlyGuyMinHeight"),
-                new DataContainer("FlyGuyMaxHeight"),
+            // Fly Guy vars
+            new SpecialWatchVariable("FlyGuyZone"),
+            new SpecialWatchVariable("FlyGuyRelativeHeight"),
+            new SpecialWatchVariable("FlyGuyNextHeightDiff"),
+            new SpecialWatchVariable("FlyGuyMinHeight"),
+            new SpecialWatchVariable("FlyGuyMaxHeight"),
 
-                // Bobomb vars
-                new DataContainer("BobombBloatSize"),
-                new DataContainer("BobombRadius"),
-                new DataContainer("BobombSpaceBetween"),
+            // Bobomb vars
+            new SpecialWatchVariable("BobombBloatSize"),
+            new SpecialWatchVariable("BobombRadius"),
+            new SpecialWatchVariable("BobombSpaceBetween"),
 
-                // Scuttlebug vars
-                new AngleDataContainer("ScuttlebugDeltaAngleToTarget", AngleViewModeType.Signed),
+            // Scuttlebug vars
+            new SpecialWatchVariable("ScuttlebugDeltaAngleToTarget", true, AngleViewModeType.Signed),
 
-                // Mario ghost vars
-                new DataContainer("MarioGhostVerticalDistance"),
-                new DataContainer("MarioGhostHorizontalDistance"),
-                new DataContainer("MarioGhostForwardsDistance"),
-                new DataContainer("MarioGhostSidewaysDistance"),
+            // Mario ghost vars
+            new SpecialWatchVariable("MarioGhostVerticalDistance"),
+            new SpecialWatchVariable("MarioGhostHorizontalDistance"),
+            new SpecialWatchVariable("MarioGhostForwardsDistance"),
+            new SpecialWatchVariable("MarioGhostSidewaysDistance"),
 
-                // Hacked vars
-                new DataContainer("RngCallsPerFrame"),
-            };
-        }
+            // Hacked vars
+            new SpecialWatchVariable("RngCallsPerFrame"),
+        };
 
         public ObjectManager(List<WatchVariable> objectData, Control objectControl, NoTearFlowLayoutPanel variableTable)
             : base(objectData, variableTable)
@@ -606,7 +603,7 @@ namespace SM64_Diagnostic.Managers
                 double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
                 double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
 
-                foreach (IDataContainer specialVar in _specialWatchVars)
+                foreach (IDataContainer specialVar in _specialDataControls)
                 {
                     var newText = "";
                     double? newAngle = null;
@@ -1028,7 +1025,7 @@ namespace SM64_Diagnostic.Managers
 
             if (_currentAddresses.Count == 0)
             {
-                foreach (IDataContainer specialVar in _specialWatchVars)
+                foreach (IDataContainer specialVar in _specialDataControls)
                 {
                     if (specialVar is AngleDataContainer)
                     {

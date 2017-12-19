@@ -19,18 +19,15 @@ namespace SM64_Diagnostic.Managers
         {
         }
 
-        protected override void InitializeSpecialVariables()
+        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
         {
-            _specialWatchVars = new List<IDataContainer>()
-            {
-                new DataContainer("WaterAboveMedian"),
-                new DataContainer("MarioAboveWater"),
-            };
-        }
+            new SpecialWatchVariable("WaterAboveMedian"),
+            new SpecialWatchVariable("MarioAboveWater"),
+        };
 
         private void ProcessSpecialVars()
         {
-            foreach (var specialVar in _specialWatchVars)
+            foreach (var specialVar in _specialDataControls)
             {
                 switch(specialVar.SpecialName)
                 {

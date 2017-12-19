@@ -38,19 +38,16 @@ namespace SM64_Diagnostic.Managers
             _checkBoxTurnOffMusic = splitContainerMisc.Panel1.Controls["checkBoxTurnOffMusic"] as CheckBox;
         }
 
-        protected override void InitializeSpecialVariables()
+        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
         {
-            _specialWatchVars = new List<IDataContainer>()
-            {
-                new DataContainer("RngIndex"),
-                new DataContainer("RngCallsPerFrame"),
-                new DataContainer("NumberOfLoadedObjects")
-            };
-        }
+            new SpecialWatchVariable("RngIndex"),
+            new SpecialWatchVariable("RngCallsPerFrame"),
+            new SpecialWatchVariable("NumberOfLoadedObjects")
+        };
 
         private void ProcessSpecialVars()
         {
-            foreach (var specialVar in _specialWatchVars)
+            foreach (var specialVar in _specialDataControls)
             {
                 switch(specialVar.SpecialName)
                 {

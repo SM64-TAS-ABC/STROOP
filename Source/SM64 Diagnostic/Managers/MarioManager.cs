@@ -137,25 +137,22 @@ namespace SM64_Diagnostic.Managers
                 });
         }
 
-        protected override void InitializeSpecialVariables()
+        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
         {
-            _specialWatchVars = new List<IDataContainer>()
-            {
-                new DataContainer("DeFactoSpeed"),
-                new DataContainer("SlidingSpeed"),
-                new AngleDataContainer("DeltaYawIntendedFacing", AngleViewModeType.Signed),
-                new DataContainer("FallHeight"),
-                new DataContainer("MovementX"),
-                new DataContainer("MovementY"),
-                new DataContainer("MovementZ"),
-                new DataContainer("MovementForwards"),
-                new DataContainer("MovementSideways"),
-                new DataContainer("MovementHorizontal"),
-                new DataContainer("MovementTotal"),
-                new DataContainer("MovementAngle"),
-                new DataContainer("QFrameCountEstimate")
-            };
-        }
+            new SpecialWatchVariable("DeFactoSpeed"),
+            new SpecialWatchVariable("SlidingSpeed"),
+            new SpecialWatchVariable("DeltaYawIntendedFacing", true, AngleViewModeType.Signed),
+            new SpecialWatchVariable("FallHeight"),
+            new SpecialWatchVariable("MovementX"),
+            new SpecialWatchVariable("MovementY"),
+            new SpecialWatchVariable("MovementZ"),
+            new SpecialWatchVariable("MovementForwards"),
+            new SpecialWatchVariable("MovementSideways"),
+            new SpecialWatchVariable("MovementHorizontal"),
+            new SpecialWatchVariable("MovementTotal"),
+            new SpecialWatchVariable("MovementAngle"),
+            new SpecialWatchVariable("QFrameCountEstimate")
+        };
 
         public void ProcessSpecialVars()
         {
@@ -184,7 +181,7 @@ namespace SM64_Diagnostic.Managers
             double movementAngle = MoreMath.AngleTo_AngleUnits(0, 0, movementX, movementZ);
             (double movementSideways, double movementForwards) = MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
 
-            foreach (var specialVar in _specialWatchVars)
+            foreach (var specialVar in _specialDataControls)
             {
                 switch(specialVar.SpecialName)
                 {

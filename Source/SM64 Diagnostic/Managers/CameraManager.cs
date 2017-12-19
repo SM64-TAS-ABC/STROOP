@@ -73,13 +73,10 @@ namespace SM64_Diagnostic.Managers
                 });
         }
 
-        protected override void InitializeSpecialVariables()
+        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
         {
-            _specialWatchVars = new List<IDataContainer>()
-            {
-                new DataContainer("DistanceToMario"),
-            };
-        }
+            new SpecialWatchVariable("DistanceToMario"),
+        };
 
         public void ProcessSpecialVars()
         {
@@ -93,7 +90,7 @@ namespace SM64_Diagnostic.Managers
             cameraY = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
             cameraZ = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
 
-            foreach (var specialVar in _specialWatchVars)
+            foreach (var specialVar in _specialDataControls)
             {
                 switch (specialVar.SpecialName)
                 {

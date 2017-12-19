@@ -24,15 +24,12 @@ namespace SM64_Diagnostic.Managers
             animationDescriptionLabel = actionsControl.Controls["labelAnimationDescription"] as Label;
         }
 
-        protected override void InitializeSpecialVariables()
+        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
         {
-            _specialWatchVars = new List<IDataContainer>()
-            {
-                new DataContainer("ActionDescription"),
-                new DataContainer("PrevActionDescription"),
-                new DataContainer("MarioAnimationDescription"),
-            };
-        }
+             new SpecialWatchVariable("ActionDescription"),
+             new SpecialWatchVariable("PrevActionDescription"),
+             new SpecialWatchVariable("MarioAnimationDescription"),
+        };
 
         public void ProcessSpecialVars()
         {
@@ -40,7 +37,7 @@ namespace SM64_Diagnostic.Managers
             short marioObjAnimation = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationOffset);
             short marioObjAnimationTimer = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationTimerOffset);
 
-            foreach (var specialVar in _specialWatchVars)
+            foreach (var specialVar in _specialDataControls)
             {
                 switch(specialVar.SpecialName)
                 {                  
