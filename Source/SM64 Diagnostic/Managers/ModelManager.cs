@@ -239,7 +239,7 @@ namespace SM64_Diagnostic.Managers
         {
             if (ModelPointer == 0)
             {
-                _textBoxAddress.Text = ModelPointer == 0 ? "0x00000000" : "(None)";
+                _textBoxAddress.Text = "(None)";
                 _dataGridViewVertices.Rows.Clear();
                 _dataGridViewTriangles.Rows.Clear();
                 _modelView?.ClearModel();
