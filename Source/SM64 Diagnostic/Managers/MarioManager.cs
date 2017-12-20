@@ -62,25 +62,25 @@ namespace SM64_Diagnostic.Managers
                 marioStatsGroupBox.Controls["buttonMarioStatsYawN"] as Button,
                 marioStatsGroupBox.Controls["buttonMarioStatsYawP"] as Button,
                 marioStatsGroupBox.Controls["textBoxMarioStatsYaw"] as TextBox,
-                (float yawValue) =>
+                (float value) =>
                 {
-                    ButtonUtilities.MarioChangeYaw((int)Math.Round(yawValue));
+                    ButtonUtilities.MarioChangeYaw((int)Math.Round(value));
                 });
             ControlUtilities.InitializeScalarController(
                 marioStatsGroupBox.Controls["buttonMarioStatsHspdN"] as Button,
                 marioStatsGroupBox.Controls["buttonMarioStatsHspdP"] as Button,
                 marioStatsGroupBox.Controls["textBoxMarioStatsHspd"] as TextBox,
-                (float hspdValue) =>
+                (float value) =>
                 {
-                    ButtonUtilities.MarioChangeHspd(hspdValue);
+                    ButtonUtilities.MarioChangeHspd(value);
                 });
             ControlUtilities.InitializeScalarController(
                 marioStatsGroupBox.Controls["buttonMarioStatsVspdN"] as Button,
                 marioStatsGroupBox.Controls["buttonMarioStatsVspdP"] as Button,
                 marioStatsGroupBox.Controls["textBoxMarioStatsVspd"] as TextBox,
-                (float vspdValue) =>
+                (float value) =>
                 {
-                    ButtonUtilities.MarioChangeVspd(vspdValue);
+                    ButtonUtilities.MarioChangeVspd(value);
                 });
 
             var marioSlidingSpeedGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioSlidingSpeed"] as GroupBox;
@@ -88,33 +88,33 @@ namespace SM64_Diagnostic.Managers
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedXn"] as Button,
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedXp"] as Button,
                 marioSlidingSpeedGroupBox.Controls["textBoxMarioSlidingSpeedX"] as TextBox,
-                (float yawValue) =>
+                (float value) =>
                 {
-                    ButtonUtilities.MarioChangeYaw((int)Math.Round(yawValue));
+                    ButtonUtilities.MarioChangeSlidingSpeedX(value);
                 });
             ControlUtilities.InitializeScalarController(
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedZn"] as Button,
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedZp"] as Button,
                 marioSlidingSpeedGroupBox.Controls["textBoxMarioSlidingSpeedZ"] as TextBox,
-                (float hspdValue) =>
+                (float value) =>
                 {
-                    ButtonUtilities.MarioChangeHspd(hspdValue);
+                    ButtonUtilities.MarioChangeSlidingSpeedZ(value);
                 });
             ControlUtilities.InitializeScalarController(
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedHn"] as Button,
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedHp"] as Button,
                 marioSlidingSpeedGroupBox.Controls["textBoxMarioSlidingSpeedH"] as TextBox,
-                (float vspdValue) =>
+                (float value) =>
                 {
-                    ButtonUtilities.MarioChangeVspd(vspdValue);
+                    ButtonUtilities.MarioChangeSlidingSpeedH(value);
                 });
             ControlUtilities.InitializeScalarController(
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedYawN"] as Button,
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedYawP"] as Button,
                 marioSlidingSpeedGroupBox.Controls["textBoxMarioSlidingSpeedYaw"] as TextBox,
-                (float vspdValue) =>
+                (float value) =>
                 {
-                    ButtonUtilities.MarioChangeVspd(vspdValue);
+                    ButtonUtilities.MarioChangeSlidingSpeedYaw(value);
                 });
 
             Button buttonMarioHOLPGoto = splitContainerMario.Panel1.Controls["buttonMarioHOLPGoto"] as Button;

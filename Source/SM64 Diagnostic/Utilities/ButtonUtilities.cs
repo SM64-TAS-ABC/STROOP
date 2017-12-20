@@ -693,6 +693,74 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
+        public static bool MarioChangeSlidingSpeedX(float vspdOffset)
+        {
+            var marioAddress = Config.Mario.StructAddress;
+
+            float vspd = Config.Stream.GetSingle(marioAddress + Config.Mario.VSpeedOffset);
+            vspd += vspdOffset;
+
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            success &= Config.Stream.SetValue(vspd, marioAddress + Config.Mario.VSpeedOffset);
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
+        public static bool MarioChangeSlidingSpeedZ(float vspdOffset)
+        {
+            var marioAddress = Config.Mario.StructAddress;
+
+            float vspd = Config.Stream.GetSingle(marioAddress + Config.Mario.VSpeedOffset);
+            vspd += vspdOffset;
+
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            success &= Config.Stream.SetValue(vspd, marioAddress + Config.Mario.VSpeedOffset);
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
+        public static bool MarioChangeSlidingSpeedH(float vspdOffset)
+        {
+            var marioAddress = Config.Mario.StructAddress;
+
+            float vspd = Config.Stream.GetSingle(marioAddress + Config.Mario.VSpeedOffset);
+            vspd += vspdOffset;
+
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            success &= Config.Stream.SetValue(vspd, marioAddress + Config.Mario.VSpeedOffset);
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
+        public static bool MarioChangeSlidingSpeedYaw(float vspdOffset)
+        {
+            var marioAddress = Config.Mario.StructAddress;
+
+            float vspd = Config.Stream.GetSingle(marioAddress + Config.Mario.VSpeedOffset);
+            vspd += vspdOffset;
+
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            success &= Config.Stream.SetValue(vspd, marioAddress + Config.Mario.VSpeedOffset);
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
         public static bool FullHp()
         {
             return Config.Stream.SetValue(Config.Hud.FullHp, Config.Mario.StructAddress + Config.Hud.HpCountOffset);
