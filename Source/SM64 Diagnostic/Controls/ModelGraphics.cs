@@ -70,13 +70,20 @@ namespace SM64_Diagnostic.Controls
 
             Control.Paint += OnPaint;
             Control.Resize += OnResize;
-            
+            Control.MouseDown += Control_MouseClick;
+
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
             GL.Enable(EnableCap.DepthTest);
 
             _timer.Enabled = true;
 
             SetupViewport();
+        }
+
+        volatile bool _mousePressedWithin = false;
+        private void Control_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            _mousePressedWithin = true;
         }
 
         bool _mousePressed = false;
@@ -97,7 +104,7 @@ namespace SM64_Diagnostic.Controls
 
             // Handle mouse
             MouseState mouseState = Mouse.GetCursorState();
-            if (mouseState.LeftButton == OpenTK.Input.ButtonState.Pressed)
+            if (mouseState.LeftButton == OpenTK.Input.ButtonState.Pressed && _mousePressedWithin)
             {
                 // Reset previous coordinates so no movement occurs during the initial press 
                 if (!_mousePressed)
@@ -123,6 +130,8 @@ namespace SM64_Diagnostic.Controls
             }
             else
             {
+                if (_mousePressed)
+                    _mousePressedWithin = false;
                 _mousePressed = false;
             }
 
@@ -180,6 +189,9 @@ namespace SM64_Diagnostic.Controls
             // Set default background color (clear drawing area)
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.ClearColor(Color.Black);
+            GL.DepthMask(true);
+            GL.DepthFunc(DepthFunction.Lequal);
+            GL.DepthRange(0.0, 1.0f);
 
             SetupViewport();
 
