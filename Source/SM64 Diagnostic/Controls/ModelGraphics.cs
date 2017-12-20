@@ -135,6 +135,10 @@ namespace SM64_Diagnostic.Controls
                 _mousePressed = false;
             }
 
+            // Don't do anything if we don't have focus
+            if (!Control.Focused)
+                return;
+
             Vector3 relDeltaPos = new Vector3(0, 0, 0);
             float posSpeed = speedMul * _modelRadius * 0.01f; // Move at a rate relative to the model size
 
