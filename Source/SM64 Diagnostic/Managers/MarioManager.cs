@@ -74,11 +74,44 @@ namespace SM64_Diagnostic.Managers
                 {
                     ButtonUtilities.MarioChangeHspd(hspdValue);
                 });
-
             ControlUtilities.InitializeScalarController(
                 marioStatsGroupBox.Controls["buttonMarioStatsVspdN"] as Button,
                 marioStatsGroupBox.Controls["buttonMarioStatsVspdP"] as Button,
                 marioStatsGroupBox.Controls["textBoxMarioStatsVspd"] as TextBox,
+                (float vspdValue) =>
+                {
+                    ButtonUtilities.MarioChangeVspd(vspdValue);
+                });
+
+            var marioSlidingSpeedGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioSlidingSpeed"] as GroupBox;
+            ControlUtilities.InitializeScalarController(
+                marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedXn"] as Button,
+                marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedXp"] as Button,
+                marioSlidingSpeedGroupBox.Controls["textBoxMarioSlidingSpeedX"] as TextBox,
+                (float yawValue) =>
+                {
+                    ButtonUtilities.MarioChangeYaw((int)Math.Round(yawValue));
+                });
+            ControlUtilities.InitializeScalarController(
+                marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedZn"] as Button,
+                marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedZp"] as Button,
+                marioSlidingSpeedGroupBox.Controls["textBoxMarioSlidingSpeedZ"] as TextBox,
+                (float hspdValue) =>
+                {
+                    ButtonUtilities.MarioChangeHspd(hspdValue);
+                });
+            ControlUtilities.InitializeScalarController(
+                marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedHn"] as Button,
+                marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedHp"] as Button,
+                marioSlidingSpeedGroupBox.Controls["textBoxMarioSlidingSpeedH"] as TextBox,
+                (float vspdValue) =>
+                {
+                    ButtonUtilities.MarioChangeVspd(vspdValue);
+                });
+            ControlUtilities.InitializeScalarController(
+                marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedYawN"] as Button,
+                marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedYawP"] as Button,
+                marioSlidingSpeedGroupBox.Controls["textBoxMarioSlidingSpeedYaw"] as TextBox,
                 (float vspdValue) =>
                 {
                     ButtonUtilities.MarioChangeVspd(vspdValue);

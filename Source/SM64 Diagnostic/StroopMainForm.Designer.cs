@@ -901,9 +901,9 @@ namespace SM64_Diagnostic
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.groupBoxMarioSlidingSpeed = new System.Windows.Forms.GroupBox();
-            this.betterTextbox1 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox2 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox3 = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxMarioSlidingSpeedH = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxMarioSlidingSpeedZ = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxMarioSlidingSpeedX = new SM64_Diagnostic.BetterTextbox();
             this.buttonMarioSlidingSpeedHn = new System.Windows.Forms.Button();
             this.buttonMarioSlidingSpeedZn = new System.Windows.Forms.Button();
             this.buttonMarioSlidingSpeedXn = new System.Windows.Forms.Button();
@@ -912,7 +912,7 @@ namespace SM64_Diagnostic
             this.buttonMarioSlidingSpeedXp = new System.Windows.Forms.Button();
             this.buttonMarioSlidingSpeedYawP = new System.Windows.Forms.Button();
             this.buttonMarioSlidingSpeedYawN = new System.Windows.Forms.Button();
-            this.betterTextbox4 = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxMarioSlidingSpeedYaw = new SM64_Diagnostic.BetterTextbox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -11867,10 +11867,10 @@ namespace SM64_Diagnostic
             // 
             // groupBoxMarioSlidingSpeed
             // 
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.betterTextbox4);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.betterTextbox1);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.betterTextbox2);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.betterTextbox3);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.textBoxMarioSlidingSpeedYaw);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.textBoxMarioSlidingSpeedH);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.textBoxMarioSlidingSpeedZ);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.textBoxMarioSlidingSpeedX);
             this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedYawN);
             this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedHn);
             this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedZn);
@@ -11886,35 +11886,35 @@ namespace SM64_Diagnostic
             this.groupBoxMarioSlidingSpeed.TabStop = false;
             this.groupBoxMarioSlidingSpeed.Text = "Sliding Speed";
             // 
-            // betterTextbox1
+            // textBoxMarioSlidingSpeedH
             // 
-            this.betterTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox1.Location = new System.Drawing.Point(67, 69);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox1.TabIndex = 33;
-            this.betterTextbox1.Text = "100";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMarioSlidingSpeedH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMarioSlidingSpeedH.Location = new System.Drawing.Point(67, 69);
+            this.textBoxMarioSlidingSpeedH.Name = "textBoxMarioSlidingSpeedH";
+            this.textBoxMarioSlidingSpeedH.Size = new System.Drawing.Size(51, 20);
+            this.textBoxMarioSlidingSpeedH.TabIndex = 33;
+            this.textBoxMarioSlidingSpeedH.Text = "100";
+            this.textBoxMarioSlidingSpeedH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox2
+            // textBoxMarioSlidingSpeedZ
             // 
-            this.betterTextbox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox2.Location = new System.Drawing.Point(67, 44);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox2.TabIndex = 33;
-            this.betterTextbox2.Text = "100";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMarioSlidingSpeedZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMarioSlidingSpeedZ.Location = new System.Drawing.Point(67, 44);
+            this.textBoxMarioSlidingSpeedZ.Name = "textBoxMarioSlidingSpeedZ";
+            this.textBoxMarioSlidingSpeedZ.Size = new System.Drawing.Size(51, 20);
+            this.textBoxMarioSlidingSpeedZ.TabIndex = 33;
+            this.textBoxMarioSlidingSpeedZ.Text = "100";
+            this.textBoxMarioSlidingSpeedZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox3
+            // textBoxMarioSlidingSpeedX
             // 
-            this.betterTextbox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox3.Location = new System.Drawing.Point(67, 19);
-            this.betterTextbox3.Name = "betterTextbox3";
-            this.betterTextbox3.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox3.TabIndex = 33;
-            this.betterTextbox3.Text = "100";
-            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMarioSlidingSpeedX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMarioSlidingSpeedX.Location = new System.Drawing.Point(67, 19);
+            this.textBoxMarioSlidingSpeedX.Name = "textBoxMarioSlidingSpeedX";
+            this.textBoxMarioSlidingSpeedX.Size = new System.Drawing.Size(51, 20);
+            this.textBoxMarioSlidingSpeedX.TabIndex = 33;
+            this.textBoxMarioSlidingSpeedX.Text = "100";
+            this.textBoxMarioSlidingSpeedX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonMarioSlidingSpeedHn
             // 
@@ -12004,15 +12004,15 @@ namespace SM64_Diagnostic
             this.buttonMarioSlidingSpeedYawN.Text = "Yaw-";
             this.buttonMarioSlidingSpeedYawN.UseVisualStyleBackColor = true;
             // 
-            // betterTextbox4
+            // textBoxMarioSlidingSpeedYaw
             // 
-            this.betterTextbox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox4.Location = new System.Drawing.Point(67, 94);
-            this.betterTextbox4.Name = "betterTextbox4";
-            this.betterTextbox4.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox4.TabIndex = 33;
-            this.betterTextbox4.Text = "1024";
-            this.betterTextbox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMarioSlidingSpeedYaw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMarioSlidingSpeedYaw.Location = new System.Drawing.Point(67, 94);
+            this.textBoxMarioSlidingSpeedYaw.Name = "textBoxMarioSlidingSpeedYaw";
+            this.textBoxMarioSlidingSpeedYaw.Size = new System.Drawing.Size(51, 20);
+            this.textBoxMarioSlidingSpeedYaw.TabIndex = 33;
+            this.textBoxMarioSlidingSpeedYaw.Text = "1024";
+            this.textBoxMarioSlidingSpeedYaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // StroopMainForm
             // 
@@ -13271,10 +13271,10 @@ namespace SM64_Diagnostic
         private Button buttonScheduleNext;
         private Button buttonSchedulePrevious;
         private GroupBox groupBoxMarioSlidingSpeed;
-        private BetterTextbox betterTextbox4;
-        private BetterTextbox betterTextbox1;
-        private BetterTextbox betterTextbox2;
-        private BetterTextbox betterTextbox3;
+        private BetterTextbox textBoxMarioSlidingSpeedYaw;
+        private BetterTextbox textBoxMarioSlidingSpeedH;
+        private BetterTextbox textBoxMarioSlidingSpeedZ;
+        private BetterTextbox textBoxMarioSlidingSpeedX;
         private Button buttonMarioSlidingSpeedYawN;
         private Button buttonMarioSlidingSpeedHn;
         private Button buttonMarioSlidingSpeedZn;
