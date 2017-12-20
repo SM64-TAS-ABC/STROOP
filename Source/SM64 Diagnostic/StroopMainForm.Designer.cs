@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -127,6 +127,19 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.tabPageMario = new System.Windows.Forms.TabPage();
             this.splitContainerMario = new System.Windows.Forms.SplitContainer();
+            this.groupBoxMarioSlidingSpeed = new System.Windows.Forms.GroupBox();
+            this.textBoxMarioSlidingSpeedYaw = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxMarioSlidingSpeedH = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxMarioSlidingSpeedZ = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxMarioSlidingSpeedX = new SM64_Diagnostic.BetterTextbox();
+            this.buttonMarioSlidingSpeedYawN = new System.Windows.Forms.Button();
+            this.buttonMarioSlidingSpeedHn = new System.Windows.Forms.Button();
+            this.buttonMarioSlidingSpeedZn = new System.Windows.Forms.Button();
+            this.buttonMarioSlidingSpeedXn = new System.Windows.Forms.Button();
+            this.buttonMarioSlidingSpeedYawP = new System.Windows.Forms.Button();
+            this.buttonMarioSlidingSpeedHp = new System.Windows.Forms.Button();
+            this.buttonMarioSlidingSpeedZp = new System.Windows.Forms.Button();
+            this.buttonMarioSlidingSpeedXp = new System.Windows.Forms.Button();
             this.groupBoxMarioStats = new System.Windows.Forms.GroupBox();
             this.textBoxMarioStatsVspd = new SM64_Diagnostic.BetterTextbox();
             this.textBoxMarioStatsHspd = new SM64_Diagnostic.BetterTextbox();
@@ -583,6 +596,51 @@ namespace SM64_Diagnostic
             this.buttonPuConHome = new System.Windows.Forms.Button();
             this.tabPageModel = new System.Windows.Forms.TabPage();
             this.splitContainerModel = new System.Windows.Forms.SplitContainer();
+            this.groupBoxTransformation = new System.Windows.Forms.GroupBox();
+            this.labelTransScaleValue = new System.Windows.Forms.Label();
+            this.labelTransAngleValue = new System.Windows.Forms.Label();
+            this.labelTransPosValue = new System.Windows.Forms.Label();
+            this.checkBoxTransUseObj = new System.Windows.Forms.CheckBox();
+            this.groupBoxTransScale = new System.Windows.Forms.GroupBox();
+            this.checkBoxTransScaleMultiply = new System.Windows.Forms.CheckBox();
+            this.checkBoxTransScaleAggregate = new System.Windows.Forms.CheckBox();
+            this.textbpxTransScaleDValue = new SM64_Diagnostic.BetterTextbox();
+            this.textbpxTransScaleHValue = new SM64_Diagnostic.BetterTextbox();
+            this.textbpxTransScaleWValue = new SM64_Diagnostic.BetterTextbox();
+            this.buttonTransScaleDn = new System.Windows.Forms.Button();
+            this.buttonTransScaleHn = new System.Windows.Forms.Button();
+            this.buttonTransScaleWn = new System.Windows.Forms.Button();
+            this.buttonTransScaleDp = new System.Windows.Forms.Button();
+            this.buttonTransScaleHp = new System.Windows.Forms.Button();
+            this.buttonTransScaleWp = new System.Windows.Forms.Button();
+            this.betterTextbox4 = new SM64_Diagnostic.BetterTextbox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.groupBoxTransAngle = new System.Windows.Forms.GroupBox();
+            this.textboxTransAngleRValue = new SM64_Diagnostic.BetterTextbox();
+            this.textboxTransAnglePValue = new SM64_Diagnostic.BetterTextbox();
+            this.textboxTransAngleYValue = new SM64_Diagnostic.BetterTextbox();
+            this.buttonTransAngleRn = new System.Windows.Forms.Button();
+            this.buttonTransAnglePn = new System.Windows.Forms.Button();
+            this.buttonTransAngleYn = new System.Windows.Forms.Button();
+            this.buttonTransAngleRp = new System.Windows.Forms.Button();
+            this.buttonTransAnglePp = new System.Windows.Forms.Button();
+            this.buttonTransAngleYp = new System.Windows.Forms.Button();
+            this.groupBoxTransPos = new System.Windows.Forms.GroupBox();
+            this.checkBoxTransPosRel = new System.Windows.Forms.CheckBox();
+            this.textboxTransPosYValue = new SM64_Diagnostic.BetterTextbox();
+            this.buttonTransPosYp = new System.Windows.Forms.Button();
+            this.buttonTransPosYn = new System.Windows.Forms.Button();
+            this.buttonTransPosXpZp = new System.Windows.Forms.Button();
+            this.textboxTransPosXZValue = new SM64_Diagnostic.BetterTextbox();
+            this.buttonTransPosXp = new System.Windows.Forms.Button();
+            this.buttonTransPosXpZn = new System.Windows.Forms.Button();
+            this.buttonTransPosZn = new System.Windows.Forms.Button();
+            this.buttonTransPosZp = new System.Windows.Forms.Button();
+            this.buttonTransPosXnZp = new System.Windows.Forms.Button();
+            this.buttonTransPosXn = new System.Windows.Forms.Button();
+            this.buttonTransPosXnZn = new System.Windows.Forms.Button();
+            this.buttonTransReset = new System.Windows.Forms.Button();
             this.splitContainerModelTables = new System.Windows.Forms.SplitContainer();
             this.labelModelVertices = new System.Windows.Forms.Label();
             this.dataGridViewVertices = new System.Windows.Forms.DataGridView();
@@ -900,19 +958,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBoxMarioSlidingSpeed = new System.Windows.Forms.GroupBox();
-            this.textBoxMarioSlidingSpeedH = new SM64_Diagnostic.BetterTextbox();
-            this.textBoxMarioSlidingSpeedZ = new SM64_Diagnostic.BetterTextbox();
-            this.textBoxMarioSlidingSpeedX = new SM64_Diagnostic.BetterTextbox();
-            this.buttonMarioSlidingSpeedHn = new System.Windows.Forms.Button();
-            this.buttonMarioSlidingSpeedZn = new System.Windows.Forms.Button();
-            this.buttonMarioSlidingSpeedXn = new System.Windows.Forms.Button();
-            this.buttonMarioSlidingSpeedHp = new System.Windows.Forms.Button();
-            this.buttonMarioSlidingSpeedZp = new System.Windows.Forms.Button();
-            this.buttonMarioSlidingSpeedXp = new System.Windows.Forms.Button();
-            this.buttonMarioSlidingSpeedYawP = new System.Windows.Forms.Button();
-            this.buttonMarioSlidingSpeedYawN = new System.Windows.Forms.Button();
-            this.textBoxMarioSlidingSpeedYaw = new SM64_Diagnostic.BetterTextbox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -938,6 +983,7 @@ namespace SM64_Diagnostic
             this.splitContainerMario.Panel1.SuspendLayout();
             this.splitContainerMario.Panel2.SuspendLayout();
             this.splitContainerMario.SuspendLayout();
+            this.groupBoxMarioSlidingSpeed.SuspendLayout();
             this.groupBoxMarioStats.SuspendLayout();
             this.groupBoxMarioHOLP.SuspendLayout();
             this.panelMarioBorder.SuspendLayout();
@@ -1167,6 +1213,10 @@ namespace SM64_Diagnostic
             this.splitContainerModel.Panel1.SuspendLayout();
             this.splitContainerModel.Panel2.SuspendLayout();
             this.splitContainerModel.SuspendLayout();
+            this.groupBoxTransformation.SuspendLayout();
+            this.groupBoxTransScale.SuspendLayout();
+            this.groupBoxTransAngle.SuspendLayout();
+            this.groupBoxTransPos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerModelTables)).BeginInit();
             this.splitContainerModelTables.Panel1.SuspendLayout();
             this.splitContainerModelTables.Panel2.SuspendLayout();
@@ -1210,7 +1260,6 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.groupBoxMarioSlidingSpeed.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -2353,6 +2402,155 @@ namespace SM64_Diagnostic
             this.splitContainerMario.SplitterDistance = 208;
             this.splitContainerMario.SplitterWidth = 1;
             this.splitContainerMario.TabIndex = 31;
+            // 
+            // groupBoxMarioSlidingSpeed
+            // 
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.textBoxMarioSlidingSpeedYaw);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.textBoxMarioSlidingSpeedH);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.textBoxMarioSlidingSpeedZ);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.textBoxMarioSlidingSpeedX);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedYawN);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedHn);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedZn);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedXn);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedYawP);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedHp);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedZp);
+            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedXp);
+            this.groupBoxMarioSlidingSpeed.Location = new System.Drawing.Point(2, 364);
+            this.groupBoxMarioSlidingSpeed.Name = "groupBoxMarioSlidingSpeed";
+            this.groupBoxMarioSlidingSpeed.Size = new System.Drawing.Size(185, 120);
+            this.groupBoxMarioSlidingSpeed.TabIndex = 31;
+            this.groupBoxMarioSlidingSpeed.TabStop = false;
+            this.groupBoxMarioSlidingSpeed.Text = "Sliding Speed";
+            // 
+            // textBoxMarioSlidingSpeedYaw
+            // 
+            this.textBoxMarioSlidingSpeedYaw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMarioSlidingSpeedYaw.Location = new System.Drawing.Point(67, 94);
+            this.textBoxMarioSlidingSpeedYaw.Name = "textBoxMarioSlidingSpeedYaw";
+            this.textBoxMarioSlidingSpeedYaw.Size = new System.Drawing.Size(51, 20);
+            this.textBoxMarioSlidingSpeedYaw.TabIndex = 33;
+            this.textBoxMarioSlidingSpeedYaw.Text = "1024";
+            this.textBoxMarioSlidingSpeedYaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxMarioSlidingSpeedH
+            // 
+            this.textBoxMarioSlidingSpeedH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMarioSlidingSpeedH.Location = new System.Drawing.Point(67, 69);
+            this.textBoxMarioSlidingSpeedH.Name = "textBoxMarioSlidingSpeedH";
+            this.textBoxMarioSlidingSpeedH.Size = new System.Drawing.Size(51, 20);
+            this.textBoxMarioSlidingSpeedH.TabIndex = 33;
+            this.textBoxMarioSlidingSpeedH.Text = "100";
+            this.textBoxMarioSlidingSpeedH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxMarioSlidingSpeedZ
+            // 
+            this.textBoxMarioSlidingSpeedZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMarioSlidingSpeedZ.Location = new System.Drawing.Point(67, 44);
+            this.textBoxMarioSlidingSpeedZ.Name = "textBoxMarioSlidingSpeedZ";
+            this.textBoxMarioSlidingSpeedZ.Size = new System.Drawing.Size(51, 20);
+            this.textBoxMarioSlidingSpeedZ.TabIndex = 33;
+            this.textBoxMarioSlidingSpeedZ.Text = "100";
+            this.textBoxMarioSlidingSpeedZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxMarioSlidingSpeedX
+            // 
+            this.textBoxMarioSlidingSpeedX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMarioSlidingSpeedX.Location = new System.Drawing.Point(67, 19);
+            this.textBoxMarioSlidingSpeedX.Name = "textBoxMarioSlidingSpeedX";
+            this.textBoxMarioSlidingSpeedX.Size = new System.Drawing.Size(51, 20);
+            this.textBoxMarioSlidingSpeedX.TabIndex = 33;
+            this.textBoxMarioSlidingSpeedX.Text = "100";
+            this.textBoxMarioSlidingSpeedX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonMarioSlidingSpeedYawN
+            // 
+            this.buttonMarioSlidingSpeedYawN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioSlidingSpeedYawN.Location = new System.Drawing.Point(3, 91);
+            this.buttonMarioSlidingSpeedYawN.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioSlidingSpeedYawN.Name = "buttonMarioSlidingSpeedYawN";
+            this.buttonMarioSlidingSpeedYawN.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioSlidingSpeedYawN.TabIndex = 35;
+            this.buttonMarioSlidingSpeedYawN.Text = "Yaw-";
+            this.buttonMarioSlidingSpeedYawN.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioSlidingSpeedHn
+            // 
+            this.buttonMarioSlidingSpeedHn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioSlidingSpeedHn.Location = new System.Drawing.Point(3, 66);
+            this.buttonMarioSlidingSpeedHn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioSlidingSpeedHn.Name = "buttonMarioSlidingSpeedHn";
+            this.buttonMarioSlidingSpeedHn.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioSlidingSpeedHn.TabIndex = 35;
+            this.buttonMarioSlidingSpeedHn.Text = "H-";
+            this.buttonMarioSlidingSpeedHn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioSlidingSpeedZn
+            // 
+            this.buttonMarioSlidingSpeedZn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioSlidingSpeedZn.Location = new System.Drawing.Point(3, 41);
+            this.buttonMarioSlidingSpeedZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioSlidingSpeedZn.Name = "buttonMarioSlidingSpeedZn";
+            this.buttonMarioSlidingSpeedZn.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioSlidingSpeedZn.TabIndex = 35;
+            this.buttonMarioSlidingSpeedZn.Text = "Z-";
+            this.buttonMarioSlidingSpeedZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioSlidingSpeedXn
+            // 
+            this.buttonMarioSlidingSpeedXn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioSlidingSpeedXn.Location = new System.Drawing.Point(3, 16);
+            this.buttonMarioSlidingSpeedXn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioSlidingSpeedXn.Name = "buttonMarioSlidingSpeedXn";
+            this.buttonMarioSlidingSpeedXn.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioSlidingSpeedXn.TabIndex = 35;
+            this.buttonMarioSlidingSpeedXn.Text = "X-";
+            this.buttonMarioSlidingSpeedXn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioSlidingSpeedYawP
+            // 
+            this.buttonMarioSlidingSpeedYawP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioSlidingSpeedYawP.Location = new System.Drawing.Point(121, 91);
+            this.buttonMarioSlidingSpeedYawP.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioSlidingSpeedYawP.Name = "buttonMarioSlidingSpeedYawP";
+            this.buttonMarioSlidingSpeedYawP.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioSlidingSpeedYawP.TabIndex = 35;
+            this.buttonMarioSlidingSpeedYawP.Text = "Yaw+";
+            this.buttonMarioSlidingSpeedYawP.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioSlidingSpeedHp
+            // 
+            this.buttonMarioSlidingSpeedHp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioSlidingSpeedHp.Location = new System.Drawing.Point(121, 66);
+            this.buttonMarioSlidingSpeedHp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioSlidingSpeedHp.Name = "buttonMarioSlidingSpeedHp";
+            this.buttonMarioSlidingSpeedHp.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioSlidingSpeedHp.TabIndex = 35;
+            this.buttonMarioSlidingSpeedHp.Text = "H+";
+            this.buttonMarioSlidingSpeedHp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioSlidingSpeedZp
+            // 
+            this.buttonMarioSlidingSpeedZp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioSlidingSpeedZp.Location = new System.Drawing.Point(121, 41);
+            this.buttonMarioSlidingSpeedZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioSlidingSpeedZp.Name = "buttonMarioSlidingSpeedZp";
+            this.buttonMarioSlidingSpeedZp.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioSlidingSpeedZp.TabIndex = 35;
+            this.buttonMarioSlidingSpeedZp.Text = "Z+";
+            this.buttonMarioSlidingSpeedZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioSlidingSpeedXp
+            // 
+            this.buttonMarioSlidingSpeedXp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioSlidingSpeedXp.Location = new System.Drawing.Point(121, 16);
+            this.buttonMarioSlidingSpeedXp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioSlidingSpeedXp.Name = "buttonMarioSlidingSpeedXp";
+            this.buttonMarioSlidingSpeedXp.Size = new System.Drawing.Size(61, 25);
+            this.buttonMarioSlidingSpeedXp.TabIndex = 35;
+            this.buttonMarioSlidingSpeedXp.Text = "X+";
+            this.buttonMarioSlidingSpeedXp.UseVisualStyleBackColor = true;
             // 
             // groupBoxMarioStats
             // 
@@ -8256,6 +8454,7 @@ namespace SM64_Diagnostic
             // splitContainerModel.Panel1
             // 
             this.splitContainerModel.Panel1.AutoScroll = true;
+            this.splitContainerModel.Panel1.Controls.Add(this.groupBoxTransformation);
             this.splitContainerModel.Panel1.Controls.Add(this.splitContainerModelTables);
             this.splitContainerModel.Panel1.Controls.Add(this.label1);
             this.splitContainerModel.Panel1.Controls.Add(this.textBoxModelAddress);
@@ -8266,13 +8465,520 @@ namespace SM64_Diagnostic
             this.splitContainerModel.Panel2.Controls.Add(this.glControlModelView);
             this.splitContainerModel.Panel2MinSize = 0;
             this.splitContainerModel.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerModel.SplitterDistance = 432;
+            this.splitContainerModel.SplitterDistance = 416;
             this.splitContainerModel.SplitterWidth = 1;
             this.splitContainerModel.TabIndex = 32;
             // 
+            // groupBoxTransformation
+            // 
+            this.groupBoxTransformation.Controls.Add(this.labelTransScaleValue);
+            this.groupBoxTransformation.Controls.Add(this.labelTransAngleValue);
+            this.groupBoxTransformation.Controls.Add(this.labelTransPosValue);
+            this.groupBoxTransformation.Controls.Add(this.checkBoxTransUseObj);
+            this.groupBoxTransformation.Controls.Add(this.groupBoxTransScale);
+            this.groupBoxTransformation.Controls.Add(this.groupBoxTransAngle);
+            this.groupBoxTransformation.Controls.Add(this.groupBoxTransPos);
+            this.groupBoxTransformation.Controls.Add(this.buttonTransReset);
+            this.groupBoxTransformation.Location = new System.Drawing.Point(3, 447);
+            this.groupBoxTransformation.Name = "groupBoxTransformation";
+            this.groupBoxTransformation.Size = new System.Drawing.Size(390, 282);
+            this.groupBoxTransformation.TabIndex = 11;
+            this.groupBoxTransformation.TabStop = false;
+            this.groupBoxTransformation.Text = "Transformation";
+            this.groupBoxTransformation.Visible = false;
+            // 
+            // labelTransScaleValue
+            // 
+            this.labelTransScaleValue.AutoSize = true;
+            this.labelTransScaleValue.Location = new System.Drawing.Point(6, 71);
+            this.labelTransScaleValue.Name = "labelTransScaleValue";
+            this.labelTransScaleValue.Size = new System.Drawing.Size(73, 13);
+            this.labelTransScaleValue.TabIndex = 36;
+            this.labelTransScaleValue.Text = "Scale: (x, y, z)";
+            // 
+            // labelTransAngleValue
+            // 
+            this.labelTransAngleValue.AutoSize = true;
+            this.labelTransAngleValue.Location = new System.Drawing.Point(6, 58);
+            this.labelTransAngleValue.Name = "labelTransAngleValue";
+            this.labelTransAngleValue.Size = new System.Drawing.Size(72, 13);
+            this.labelTransAngleValue.TabIndex = 35;
+            this.labelTransAngleValue.Text = "Angle: (y, p, r)";
+            // 
+            // labelTransPosValue
+            // 
+            this.labelTransPosValue.AutoSize = true;
+            this.labelTransPosValue.Location = new System.Drawing.Point(6, 45);
+            this.labelTransPosValue.Name = "labelTransPosValue";
+            this.labelTransPosValue.Size = new System.Drawing.Size(83, 13);
+            this.labelTransPosValue.TabIndex = 34;
+            this.labelTransPosValue.Text = "Position: (x, y, z)";
+            // 
+            // checkBoxTransUseObj
+            // 
+            this.checkBoxTransUseObj.AutoSize = true;
+            this.checkBoxTransUseObj.Checked = true;
+            this.checkBoxTransUseObj.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxTransUseObj.Location = new System.Drawing.Point(87, 23);
+            this.checkBoxTransUseObj.Name = "checkBoxTransUseObj";
+            this.checkBoxTransUseObj.Size = new System.Drawing.Size(120, 17);
+            this.checkBoxTransUseObj.TabIndex = 33;
+            this.checkBoxTransUseObj.Text = "Use current object\'s";
+            this.checkBoxTransUseObj.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxTransScale
+            // 
+            this.groupBoxTransScale.Controls.Add(this.checkBoxTransScaleMultiply);
+            this.groupBoxTransScale.Controls.Add(this.checkBoxTransScaleAggregate);
+            this.groupBoxTransScale.Controls.Add(this.textbpxTransScaleDValue);
+            this.groupBoxTransScale.Controls.Add(this.textbpxTransScaleHValue);
+            this.groupBoxTransScale.Controls.Add(this.textbpxTransScaleWValue);
+            this.groupBoxTransScale.Controls.Add(this.buttonTransScaleDn);
+            this.groupBoxTransScale.Controls.Add(this.buttonTransScaleHn);
+            this.groupBoxTransScale.Controls.Add(this.buttonTransScaleWn);
+            this.groupBoxTransScale.Controls.Add(this.buttonTransScaleDp);
+            this.groupBoxTransScale.Controls.Add(this.buttonTransScaleHp);
+            this.groupBoxTransScale.Controls.Add(this.buttonTransScaleWp);
+            this.groupBoxTransScale.Controls.Add(this.betterTextbox4);
+            this.groupBoxTransScale.Controls.Add(this.button8);
+            this.groupBoxTransScale.Controls.Add(this.button9);
+            this.groupBoxTransScale.Location = new System.Drawing.Point(200, 182);
+            this.groupBoxTransScale.Name = "groupBoxTransScale";
+            this.groupBoxTransScale.Size = new System.Drawing.Size(185, 95);
+            this.groupBoxTransScale.TabIndex = 32;
+            this.groupBoxTransScale.TabStop = false;
+            this.groupBoxTransScale.Text = "Scale";
+            // 
+            // checkBoxTransScaleMultiply
+            // 
+            this.checkBoxTransScaleMultiply.AutoSize = true;
+            this.checkBoxTransScaleMultiply.Location = new System.Drawing.Point(124, 0);
+            this.checkBoxTransScaleMultiply.Name = "checkBoxTransScaleMultiply";
+            this.checkBoxTransScaleMultiply.Size = new System.Drawing.Size(61, 17);
+            this.checkBoxTransScaleMultiply.TabIndex = 38;
+            this.checkBoxTransScaleMultiply.Text = "Multiply";
+            this.checkBoxTransScaleMultiply.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxTransScaleAggregate
+            // 
+            this.checkBoxTransScaleAggregate.AutoSize = true;
+            this.checkBoxTransScaleAggregate.Location = new System.Drawing.Point(50, 0);
+            this.checkBoxTransScaleAggregate.Name = "checkBoxTransScaleAggregate";
+            this.checkBoxTransScaleAggregate.Size = new System.Drawing.Size(75, 17);
+            this.checkBoxTransScaleAggregate.TabIndex = 39;
+            this.checkBoxTransScaleAggregate.Text = "Aggregate";
+            this.checkBoxTransScaleAggregate.UseVisualStyleBackColor = true;
+            // 
+            // textbpxTransScaleDValue
+            // 
+            this.textbpxTransScaleDValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textbpxTransScaleDValue.Location = new System.Drawing.Point(67, 69);
+            this.textbpxTransScaleDValue.Name = "textbpxTransScaleDValue";
+            this.textbpxTransScaleDValue.Size = new System.Drawing.Size(51, 20);
+            this.textbpxTransScaleDValue.TabIndex = 33;
+            this.textbpxTransScaleDValue.Text = "1";
+            this.textbpxTransScaleDValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textbpxTransScaleHValue
+            // 
+            this.textbpxTransScaleHValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textbpxTransScaleHValue.Location = new System.Drawing.Point(67, 44);
+            this.textbpxTransScaleHValue.Name = "textbpxTransScaleHValue";
+            this.textbpxTransScaleHValue.Size = new System.Drawing.Size(51, 20);
+            this.textbpxTransScaleHValue.TabIndex = 33;
+            this.textbpxTransScaleHValue.Text = "1";
+            this.textbpxTransScaleHValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textbpxTransScaleWValue
+            // 
+            this.textbpxTransScaleWValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textbpxTransScaleWValue.Location = new System.Drawing.Point(67, 19);
+            this.textbpxTransScaleWValue.Name = "textbpxTransScaleWValue";
+            this.textbpxTransScaleWValue.Size = new System.Drawing.Size(51, 20);
+            this.textbpxTransScaleWValue.TabIndex = 33;
+            this.textbpxTransScaleWValue.Text = "1";
+            this.textbpxTransScaleWValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonTransScaleDn
+            // 
+            this.buttonTransScaleDn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransScaleDn.Location = new System.Drawing.Point(3, 66);
+            this.buttonTransScaleDn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransScaleDn.Name = "buttonTransScaleDn";
+            this.buttonTransScaleDn.Size = new System.Drawing.Size(61, 25);
+            this.buttonTransScaleDn.TabIndex = 35;
+            this.buttonTransScaleDn.Text = "Depth-";
+            this.buttonTransScaleDn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransScaleHn
+            // 
+            this.buttonTransScaleHn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransScaleHn.Location = new System.Drawing.Point(3, 41);
+            this.buttonTransScaleHn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransScaleHn.Name = "buttonTransScaleHn";
+            this.buttonTransScaleHn.Size = new System.Drawing.Size(61, 25);
+            this.buttonTransScaleHn.TabIndex = 35;
+            this.buttonTransScaleHn.Text = "Height-";
+            this.buttonTransScaleHn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransScaleWn
+            // 
+            this.buttonTransScaleWn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransScaleWn.Location = new System.Drawing.Point(3, 16);
+            this.buttonTransScaleWn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransScaleWn.Name = "buttonTransScaleWn";
+            this.buttonTransScaleWn.Size = new System.Drawing.Size(61, 25);
+            this.buttonTransScaleWn.TabIndex = 35;
+            this.buttonTransScaleWn.Text = "Width-";
+            this.buttonTransScaleWn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransScaleDp
+            // 
+            this.buttonTransScaleDp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransScaleDp.Location = new System.Drawing.Point(121, 66);
+            this.buttonTransScaleDp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransScaleDp.Name = "buttonTransScaleDp";
+            this.buttonTransScaleDp.Size = new System.Drawing.Size(61, 25);
+            this.buttonTransScaleDp.TabIndex = 35;
+            this.buttonTransScaleDp.Text = "Depth+";
+            this.buttonTransScaleDp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransScaleHp
+            // 
+            this.buttonTransScaleHp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransScaleHp.Location = new System.Drawing.Point(121, 41);
+            this.buttonTransScaleHp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransScaleHp.Name = "buttonTransScaleHp";
+            this.buttonTransScaleHp.Size = new System.Drawing.Size(61, 25);
+            this.buttonTransScaleHp.TabIndex = 35;
+            this.buttonTransScaleHp.Text = "Height+";
+            this.buttonTransScaleHp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransScaleWp
+            // 
+            this.buttonTransScaleWp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransScaleWp.Location = new System.Drawing.Point(121, 16);
+            this.buttonTransScaleWp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransScaleWp.Name = "buttonTransScaleWp";
+            this.buttonTransScaleWp.Size = new System.Drawing.Size(61, 25);
+            this.buttonTransScaleWp.TabIndex = 35;
+            this.buttonTransScaleWp.Text = "Width+";
+            this.buttonTransScaleWp.UseVisualStyleBackColor = true;
+            // 
+            // betterTextbox4
+            // 
+            this.betterTextbox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox4.Location = new System.Drawing.Point(67, 44);
+            this.betterTextbox4.Name = "betterTextbox4";
+            this.betterTextbox4.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox4.TabIndex = 40;
+            this.betterTextbox4.Text = "1";
+            this.betterTextbox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextbox4.Visible = false;
+            // 
+            // button8
+            // 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.Location = new System.Drawing.Point(3, 16);
+            this.button8.Margin = new System.Windows.Forms.Padding(0);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(61, 75);
+            this.button8.TabIndex = 41;
+            this.button8.Text = "Scale-";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Visible = false;
+            // 
+            // button9
+            // 
+            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button9.Location = new System.Drawing.Point(121, 16);
+            this.button9.Margin = new System.Windows.Forms.Padding(0);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(61, 75);
+            this.button9.TabIndex = 42;
+            this.button9.Text = "Scale+";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Visible = false;
+            // 
+            // groupBoxTransAngle
+            // 
+            this.groupBoxTransAngle.Controls.Add(this.textboxTransAngleRValue);
+            this.groupBoxTransAngle.Controls.Add(this.textboxTransAnglePValue);
+            this.groupBoxTransAngle.Controls.Add(this.textboxTransAngleYValue);
+            this.groupBoxTransAngle.Controls.Add(this.buttonTransAngleRn);
+            this.groupBoxTransAngle.Controls.Add(this.buttonTransAnglePn);
+            this.groupBoxTransAngle.Controls.Add(this.buttonTransAngleYn);
+            this.groupBoxTransAngle.Controls.Add(this.buttonTransAngleRp);
+            this.groupBoxTransAngle.Controls.Add(this.buttonTransAnglePp);
+            this.groupBoxTransAngle.Controls.Add(this.buttonTransAngleYp);
+            this.groupBoxTransAngle.Location = new System.Drawing.Point(200, 87);
+            this.groupBoxTransAngle.Name = "groupBoxTransAngle";
+            this.groupBoxTransAngle.Size = new System.Drawing.Size(185, 95);
+            this.groupBoxTransAngle.TabIndex = 31;
+            this.groupBoxTransAngle.TabStop = false;
+            this.groupBoxTransAngle.Text = "Angle";
+            // 
+            // textboxTransAngleRValue
+            // 
+            this.textboxTransAngleRValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textboxTransAngleRValue.Location = new System.Drawing.Point(67, 69);
+            this.textboxTransAngleRValue.Name = "textboxTransAngleRValue";
+            this.textboxTransAngleRValue.Size = new System.Drawing.Size(51, 20);
+            this.textboxTransAngleRValue.TabIndex = 33;
+            this.textboxTransAngleRValue.Text = "1024";
+            this.textboxTransAngleRValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textboxTransAnglePValue
+            // 
+            this.textboxTransAnglePValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textboxTransAnglePValue.Location = new System.Drawing.Point(67, 44);
+            this.textboxTransAnglePValue.Name = "textboxTransAnglePValue";
+            this.textboxTransAnglePValue.Size = new System.Drawing.Size(51, 20);
+            this.textboxTransAnglePValue.TabIndex = 33;
+            this.textboxTransAnglePValue.Text = "1024";
+            this.textboxTransAnglePValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textboxTransAngleYValue
+            // 
+            this.textboxTransAngleYValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textboxTransAngleYValue.Location = new System.Drawing.Point(67, 19);
+            this.textboxTransAngleYValue.Name = "textboxTransAngleYValue";
+            this.textboxTransAngleYValue.Size = new System.Drawing.Size(51, 20);
+            this.textboxTransAngleYValue.TabIndex = 33;
+            this.textboxTransAngleYValue.Text = "1024";
+            this.textboxTransAngleYValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonTransAngleRn
+            // 
+            this.buttonTransAngleRn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransAngleRn.Location = new System.Drawing.Point(3, 66);
+            this.buttonTransAngleRn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransAngleRn.Name = "buttonTransAngleRn";
+            this.buttonTransAngleRn.Size = new System.Drawing.Size(61, 25);
+            this.buttonTransAngleRn.TabIndex = 35;
+            this.buttonTransAngleRn.Text = "Roll-";
+            this.buttonTransAngleRn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransAnglePn
+            // 
+            this.buttonTransAnglePn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransAnglePn.Location = new System.Drawing.Point(3, 41);
+            this.buttonTransAnglePn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransAnglePn.Name = "buttonTransAnglePn";
+            this.buttonTransAnglePn.Size = new System.Drawing.Size(61, 25);
+            this.buttonTransAnglePn.TabIndex = 35;
+            this.buttonTransAnglePn.Text = "Pitch-";
+            this.buttonTransAnglePn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransAngleYn
+            // 
+            this.buttonTransAngleYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransAngleYn.Location = new System.Drawing.Point(3, 16);
+            this.buttonTransAngleYn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransAngleYn.Name = "buttonTransAngleYn";
+            this.buttonTransAngleYn.Size = new System.Drawing.Size(61, 25);
+            this.buttonTransAngleYn.TabIndex = 35;
+            this.buttonTransAngleYn.Text = "Yaw-";
+            this.buttonTransAngleYn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransAngleRp
+            // 
+            this.buttonTransAngleRp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransAngleRp.Location = new System.Drawing.Point(121, 66);
+            this.buttonTransAngleRp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransAngleRp.Name = "buttonTransAngleRp";
+            this.buttonTransAngleRp.Size = new System.Drawing.Size(61, 25);
+            this.buttonTransAngleRp.TabIndex = 35;
+            this.buttonTransAngleRp.Text = "Roll+";
+            this.buttonTransAngleRp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransAnglePp
+            // 
+            this.buttonTransAnglePp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransAnglePp.Location = new System.Drawing.Point(121, 41);
+            this.buttonTransAnglePp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransAnglePp.Name = "buttonTransAnglePp";
+            this.buttonTransAnglePp.Size = new System.Drawing.Size(61, 25);
+            this.buttonTransAnglePp.TabIndex = 35;
+            this.buttonTransAnglePp.Text = "Pitch+";
+            this.buttonTransAnglePp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransAngleYp
+            // 
+            this.buttonTransAngleYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransAngleYp.Location = new System.Drawing.Point(121, 16);
+            this.buttonTransAngleYp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransAngleYp.Name = "buttonTransAngleYp";
+            this.buttonTransAngleYp.Size = new System.Drawing.Size(61, 25);
+            this.buttonTransAngleYp.TabIndex = 35;
+            this.buttonTransAngleYp.Text = "Yaw+";
+            this.buttonTransAngleYp.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxTransPos
+            // 
+            this.groupBoxTransPos.Controls.Add(this.checkBoxTransPosRel);
+            this.groupBoxTransPos.Controls.Add(this.textboxTransPosYValue);
+            this.groupBoxTransPos.Controls.Add(this.buttonTransPosYp);
+            this.groupBoxTransPos.Controls.Add(this.buttonTransPosYn);
+            this.groupBoxTransPos.Controls.Add(this.buttonTransPosXpZp);
+            this.groupBoxTransPos.Controls.Add(this.textboxTransPosXZValue);
+            this.groupBoxTransPos.Controls.Add(this.buttonTransPosXp);
+            this.groupBoxTransPos.Controls.Add(this.buttonTransPosXpZn);
+            this.groupBoxTransPos.Controls.Add(this.buttonTransPosZn);
+            this.groupBoxTransPos.Controls.Add(this.buttonTransPosZp);
+            this.groupBoxTransPos.Controls.Add(this.buttonTransPosXnZp);
+            this.groupBoxTransPos.Controls.Add(this.buttonTransPosXn);
+            this.groupBoxTransPos.Controls.Add(this.buttonTransPosXnZn);
+            this.groupBoxTransPos.Location = new System.Drawing.Point(9, 87);
+            this.groupBoxTransPos.Name = "groupBoxTransPos";
+            this.groupBoxTransPos.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxTransPos.TabIndex = 30;
+            this.groupBoxTransPos.TabStop = false;
+            this.groupBoxTransPos.Text = "Position";
+            // 
+            // checkBoxTransPosRel
+            // 
+            this.checkBoxTransPosRel.AutoSize = true;
+            this.checkBoxTransPosRel.Location = new System.Drawing.Point(120, 0);
+            this.checkBoxTransPosRel.Name = "checkBoxTransPosRel";
+            this.checkBoxTransPosRel.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxTransPosRel.TabIndex = 37;
+            this.checkBoxTransPosRel.Text = "Relative";
+            this.checkBoxTransPosRel.UseVisualStyleBackColor = true;
+            // 
+            // textboxTransPosYValue
+            // 
+            this.textboxTransPosYValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textboxTransPosYValue.Location = new System.Drawing.Point(140, 70);
+            this.textboxTransPosYValue.Name = "textboxTransPosYValue";
+            this.textboxTransPosYValue.Size = new System.Drawing.Size(42, 20);
+            this.textboxTransPosYValue.TabIndex = 33;
+            this.textboxTransPosYValue.Text = "100";
+            this.textboxTransPosYValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonTransPosYp
+            // 
+            this.buttonTransPosYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransPosYp.Location = new System.Drawing.Point(140, 16);
+            this.buttonTransPosYp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransPosYp.Name = "buttonTransPosYp";
+            this.buttonTransPosYp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTransPosYp.TabIndex = 35;
+            this.buttonTransPosYp.Text = "Y+";
+            this.buttonTransPosYp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransPosYn
+            // 
+            this.buttonTransPosYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTransPosYn.Location = new System.Drawing.Point(140, 100);
+            this.buttonTransPosYn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransPosYn.Name = "buttonTransPosYn";
+            this.buttonTransPosYn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTransPosYn.TabIndex = 34;
+            this.buttonTransPosYn.Text = "Y-";
+            this.buttonTransPosYn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransPosXpZp
+            // 
+            this.buttonTransPosXpZp.Location = new System.Drawing.Point(87, 100);
+            this.buttonTransPosXpZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransPosXpZp.Name = "buttonTransPosXpZp";
+            this.buttonTransPosXpZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTransPosXpZp.TabIndex = 32;
+            this.buttonTransPosXpZp.Text = "X+Z+";
+            this.buttonTransPosXpZp.UseVisualStyleBackColor = true;
+            // 
+            // textboxTransPosXZValue
+            // 
+            this.textboxTransPosXZValue.Location = new System.Drawing.Point(45, 70);
+            this.textboxTransPosXZValue.Name = "textboxTransPosXZValue";
+            this.textboxTransPosXZValue.Size = new System.Drawing.Size(42, 20);
+            this.textboxTransPosXZValue.TabIndex = 27;
+            this.textboxTransPosXZValue.Text = "100";
+            this.textboxTransPosXZValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonTransPosXp
+            // 
+            this.buttonTransPosXp.Location = new System.Drawing.Point(87, 58);
+            this.buttonTransPosXp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransPosXp.Name = "buttonTransPosXp";
+            this.buttonTransPosXp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTransPosXp.TabIndex = 31;
+            this.buttonTransPosXp.Text = "X+";
+            this.buttonTransPosXp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransPosXpZn
+            // 
+            this.buttonTransPosXpZn.Location = new System.Drawing.Point(87, 16);
+            this.buttonTransPosXpZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransPosXpZn.Name = "buttonTransPosXpZn";
+            this.buttonTransPosXpZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTransPosXpZn.TabIndex = 30;
+            this.buttonTransPosXpZn.Text = "X+Z-";
+            this.buttonTransPosXpZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransPosZn
+            // 
+            this.buttonTransPosZn.Location = new System.Drawing.Point(45, 16);
+            this.buttonTransPosZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransPosZn.Name = "buttonTransPosZn";
+            this.buttonTransPosZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTransPosZn.TabIndex = 29;
+            this.buttonTransPosZn.Text = "Z-";
+            this.buttonTransPosZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransPosZp
+            // 
+            this.buttonTransPosZp.Location = new System.Drawing.Point(45, 100);
+            this.buttonTransPosZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransPosZp.Name = "buttonTransPosZp";
+            this.buttonTransPosZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTransPosZp.TabIndex = 28;
+            this.buttonTransPosZp.Text = "Z+";
+            this.buttonTransPosZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransPosXnZp
+            // 
+            this.buttonTransPosXnZp.Location = new System.Drawing.Point(3, 100);
+            this.buttonTransPosXnZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransPosXnZp.Name = "buttonTransPosXnZp";
+            this.buttonTransPosXnZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTransPosXnZp.TabIndex = 27;
+            this.buttonTransPosXnZp.Text = "X-Z+";
+            this.buttonTransPosXnZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransPosXn
+            // 
+            this.buttonTransPosXn.Location = new System.Drawing.Point(3, 58);
+            this.buttonTransPosXn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransPosXn.Name = "buttonTransPosXn";
+            this.buttonTransPosXn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTransPosXn.TabIndex = 26;
+            this.buttonTransPosXn.Text = "X-";
+            this.buttonTransPosXn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransPosXnZn
+            // 
+            this.buttonTransPosXnZn.Location = new System.Drawing.Point(3, 16);
+            this.buttonTransPosXnZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTransPosXnZn.Name = "buttonTransPosXnZn";
+            this.buttonTransPosXnZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTransPosXnZn.TabIndex = 25;
+            this.buttonTransPosXnZn.Text = "X-Z-";
+            this.buttonTransPosXnZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransReset
+            // 
+            this.buttonTransReset.Location = new System.Drawing.Point(6, 19);
+            this.buttonTransReset.Name = "buttonTransReset";
+            this.buttonTransReset.Size = new System.Drawing.Size(75, 23);
+            this.buttonTransReset.TabIndex = 0;
+            this.buttonTransReset.Text = "Reset";
+            this.buttonTransReset.UseVisualStyleBackColor = true;
+            // 
             // splitContainerModelTables
             // 
-            this.splitContainerModelTables.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.splitContainerModelTables.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainerModelTables.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
@@ -8289,7 +8995,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(424, 429);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(411, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -8321,7 +9027,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(418, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(405, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -8377,7 +9083,7 @@ namespace SM64_Diagnostic
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(418, 206);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(405, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -8435,7 +9141,7 @@ namespace SM64_Diagnostic
             this.glControlModelView.BackColor = System.Drawing.Color.Black;
             this.glControlModelView.Location = new System.Drawing.Point(3, 5);
             this.glControlModelView.Name = "glControlModelView";
-            this.glControlModelView.Size = new System.Drawing.Size(472, 451);
+            this.glControlModelView.Size = new System.Drawing.Size(488, 451);
             this.glControlModelView.TabIndex = 0;
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
@@ -8508,8 +9214,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -11865,155 +12571,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // groupBoxMarioSlidingSpeed
-            // 
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.textBoxMarioSlidingSpeedYaw);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.textBoxMarioSlidingSpeedH);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.textBoxMarioSlidingSpeedZ);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.textBoxMarioSlidingSpeedX);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedYawN);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedHn);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedZn);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedXn);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedYawP);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedHp);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedZp);
-            this.groupBoxMarioSlidingSpeed.Controls.Add(this.buttonMarioSlidingSpeedXp);
-            this.groupBoxMarioSlidingSpeed.Location = new System.Drawing.Point(2, 364);
-            this.groupBoxMarioSlidingSpeed.Name = "groupBoxMarioSlidingSpeed";
-            this.groupBoxMarioSlidingSpeed.Size = new System.Drawing.Size(185, 120);
-            this.groupBoxMarioSlidingSpeed.TabIndex = 31;
-            this.groupBoxMarioSlidingSpeed.TabStop = false;
-            this.groupBoxMarioSlidingSpeed.Text = "Sliding Speed";
-            // 
-            // textBoxMarioSlidingSpeedH
-            // 
-            this.textBoxMarioSlidingSpeedH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxMarioSlidingSpeedH.Location = new System.Drawing.Point(67, 69);
-            this.textBoxMarioSlidingSpeedH.Name = "textBoxMarioSlidingSpeedH";
-            this.textBoxMarioSlidingSpeedH.Size = new System.Drawing.Size(51, 20);
-            this.textBoxMarioSlidingSpeedH.TabIndex = 33;
-            this.textBoxMarioSlidingSpeedH.Text = "100";
-            this.textBoxMarioSlidingSpeedH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxMarioSlidingSpeedZ
-            // 
-            this.textBoxMarioSlidingSpeedZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxMarioSlidingSpeedZ.Location = new System.Drawing.Point(67, 44);
-            this.textBoxMarioSlidingSpeedZ.Name = "textBoxMarioSlidingSpeedZ";
-            this.textBoxMarioSlidingSpeedZ.Size = new System.Drawing.Size(51, 20);
-            this.textBoxMarioSlidingSpeedZ.TabIndex = 33;
-            this.textBoxMarioSlidingSpeedZ.Text = "100";
-            this.textBoxMarioSlidingSpeedZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxMarioSlidingSpeedX
-            // 
-            this.textBoxMarioSlidingSpeedX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxMarioSlidingSpeedX.Location = new System.Drawing.Point(67, 19);
-            this.textBoxMarioSlidingSpeedX.Name = "textBoxMarioSlidingSpeedX";
-            this.textBoxMarioSlidingSpeedX.Size = new System.Drawing.Size(51, 20);
-            this.textBoxMarioSlidingSpeedX.TabIndex = 33;
-            this.textBoxMarioSlidingSpeedX.Text = "100";
-            this.textBoxMarioSlidingSpeedX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonMarioSlidingSpeedHn
-            // 
-            this.buttonMarioSlidingSpeedHn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMarioSlidingSpeedHn.Location = new System.Drawing.Point(3, 66);
-            this.buttonMarioSlidingSpeedHn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioSlidingSpeedHn.Name = "buttonMarioSlidingSpeedHn";
-            this.buttonMarioSlidingSpeedHn.Size = new System.Drawing.Size(61, 25);
-            this.buttonMarioSlidingSpeedHn.TabIndex = 35;
-            this.buttonMarioSlidingSpeedHn.Text = "H-";
-            this.buttonMarioSlidingSpeedHn.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioSlidingSpeedZn
-            // 
-            this.buttonMarioSlidingSpeedZn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMarioSlidingSpeedZn.Location = new System.Drawing.Point(3, 41);
-            this.buttonMarioSlidingSpeedZn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioSlidingSpeedZn.Name = "buttonMarioSlidingSpeedZn";
-            this.buttonMarioSlidingSpeedZn.Size = new System.Drawing.Size(61, 25);
-            this.buttonMarioSlidingSpeedZn.TabIndex = 35;
-            this.buttonMarioSlidingSpeedZn.Text = "Z-";
-            this.buttonMarioSlidingSpeedZn.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioSlidingSpeedXn
-            // 
-            this.buttonMarioSlidingSpeedXn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMarioSlidingSpeedXn.Location = new System.Drawing.Point(3, 16);
-            this.buttonMarioSlidingSpeedXn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioSlidingSpeedXn.Name = "buttonMarioSlidingSpeedXn";
-            this.buttonMarioSlidingSpeedXn.Size = new System.Drawing.Size(61, 25);
-            this.buttonMarioSlidingSpeedXn.TabIndex = 35;
-            this.buttonMarioSlidingSpeedXn.Text = "X-";
-            this.buttonMarioSlidingSpeedXn.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioSlidingSpeedHp
-            // 
-            this.buttonMarioSlidingSpeedHp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMarioSlidingSpeedHp.Location = new System.Drawing.Point(121, 66);
-            this.buttonMarioSlidingSpeedHp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioSlidingSpeedHp.Name = "buttonMarioSlidingSpeedHp";
-            this.buttonMarioSlidingSpeedHp.Size = new System.Drawing.Size(61, 25);
-            this.buttonMarioSlidingSpeedHp.TabIndex = 35;
-            this.buttonMarioSlidingSpeedHp.Text = "H+";
-            this.buttonMarioSlidingSpeedHp.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioSlidingSpeedZp
-            // 
-            this.buttonMarioSlidingSpeedZp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMarioSlidingSpeedZp.Location = new System.Drawing.Point(121, 41);
-            this.buttonMarioSlidingSpeedZp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioSlidingSpeedZp.Name = "buttonMarioSlidingSpeedZp";
-            this.buttonMarioSlidingSpeedZp.Size = new System.Drawing.Size(61, 25);
-            this.buttonMarioSlidingSpeedZp.TabIndex = 35;
-            this.buttonMarioSlidingSpeedZp.Text = "Z+";
-            this.buttonMarioSlidingSpeedZp.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioSlidingSpeedXp
-            // 
-            this.buttonMarioSlidingSpeedXp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMarioSlidingSpeedXp.Location = new System.Drawing.Point(121, 16);
-            this.buttonMarioSlidingSpeedXp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioSlidingSpeedXp.Name = "buttonMarioSlidingSpeedXp";
-            this.buttonMarioSlidingSpeedXp.Size = new System.Drawing.Size(61, 25);
-            this.buttonMarioSlidingSpeedXp.TabIndex = 35;
-            this.buttonMarioSlidingSpeedXp.Text = "X+";
-            this.buttonMarioSlidingSpeedXp.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioSlidingSpeedYawP
-            // 
-            this.buttonMarioSlidingSpeedYawP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMarioSlidingSpeedYawP.Location = new System.Drawing.Point(121, 91);
-            this.buttonMarioSlidingSpeedYawP.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioSlidingSpeedYawP.Name = "buttonMarioSlidingSpeedYawP";
-            this.buttonMarioSlidingSpeedYawP.Size = new System.Drawing.Size(61, 25);
-            this.buttonMarioSlidingSpeedYawP.TabIndex = 35;
-            this.buttonMarioSlidingSpeedYawP.Text = "Yaw+";
-            this.buttonMarioSlidingSpeedYawP.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioSlidingSpeedYawN
-            // 
-            this.buttonMarioSlidingSpeedYawN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMarioSlidingSpeedYawN.Location = new System.Drawing.Point(3, 91);
-            this.buttonMarioSlidingSpeedYawN.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioSlidingSpeedYawN.Name = "buttonMarioSlidingSpeedYawN";
-            this.buttonMarioSlidingSpeedYawN.Size = new System.Drawing.Size(61, 25);
-            this.buttonMarioSlidingSpeedYawN.TabIndex = 35;
-            this.buttonMarioSlidingSpeedYawN.Text = "Yaw-";
-            this.buttonMarioSlidingSpeedYawN.UseVisualStyleBackColor = true;
-            // 
-            // textBoxMarioSlidingSpeedYaw
-            // 
-            this.textBoxMarioSlidingSpeedYaw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxMarioSlidingSpeedYaw.Location = new System.Drawing.Point(67, 94);
-            this.textBoxMarioSlidingSpeedYaw.Name = "textBoxMarioSlidingSpeedYaw";
-            this.textBoxMarioSlidingSpeedYaw.Size = new System.Drawing.Size(51, 20);
-            this.textBoxMarioSlidingSpeedYaw.TabIndex = 33;
-            this.textBoxMarioSlidingSpeedYaw.Text = "1024";
-            this.textBoxMarioSlidingSpeedYaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -12071,6 +12628,8 @@ namespace SM64_Diagnostic
             this.splitContainerMario.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMario)).EndInit();
             this.splitContainerMario.ResumeLayout(false);
+            this.groupBoxMarioSlidingSpeed.ResumeLayout(false);
+            this.groupBoxMarioSlidingSpeed.PerformLayout();
             this.groupBoxMarioStats.ResumeLayout(false);
             this.groupBoxMarioStats.PerformLayout();
             this.groupBoxMarioHOLP.ResumeLayout(false);
@@ -12325,6 +12884,14 @@ namespace SM64_Diagnostic
             this.splitContainerModel.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerModel)).EndInit();
             this.splitContainerModel.ResumeLayout(false);
+            this.groupBoxTransformation.ResumeLayout(false);
+            this.groupBoxTransformation.PerformLayout();
+            this.groupBoxTransScale.ResumeLayout(false);
+            this.groupBoxTransScale.PerformLayout();
+            this.groupBoxTransAngle.ResumeLayout(false);
+            this.groupBoxTransAngle.PerformLayout();
+            this.groupBoxTransPos.ResumeLayout(false);
+            this.groupBoxTransPos.PerformLayout();
             this.splitContainerModelTables.Panel1.ResumeLayout(false);
             this.splitContainerModelTables.Panel1.PerformLayout();
             this.splitContainerModelTables.Panel2.ResumeLayout(false);
@@ -12395,8 +12962,6 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.groupBoxMarioSlidingSpeed.ResumeLayout(false);
-            this.groupBoxMarioSlidingSpeed.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -13283,6 +13848,51 @@ namespace SM64_Diagnostic
         private Button buttonMarioSlidingSpeedHp;
         private Button buttonMarioSlidingSpeedZp;
         private Button buttonMarioSlidingSpeedXp;
+        private GroupBox groupBoxTransformation;
+        private Label labelTransScaleValue;
+        private Label labelTransAngleValue;
+        private Label labelTransPosValue;
+        private CheckBox checkBoxTransUseObj;
+        private GroupBox groupBoxTransScale;
+        private CheckBox checkBoxTransScaleMultiply;
+        private CheckBox checkBoxTransScaleAggregate;
+        private BetterTextbox textbpxTransScaleDValue;
+        private BetterTextbox textbpxTransScaleHValue;
+        private BetterTextbox textbpxTransScaleWValue;
+        private Button buttonTransScaleDn;
+        private Button buttonTransScaleHn;
+        private Button buttonTransScaleWn;
+        private Button buttonTransScaleDp;
+        private Button buttonTransScaleHp;
+        private Button buttonTransScaleWp;
+        private BetterTextbox betterTextbox4;
+        private Button button8;
+        private Button button9;
+        private GroupBox groupBoxTransAngle;
+        private BetterTextbox textboxTransAngleRValue;
+        private BetterTextbox textboxTransAnglePValue;
+        private BetterTextbox textboxTransAngleYValue;
+        private Button buttonTransAngleRn;
+        private Button buttonTransAnglePn;
+        private Button buttonTransAngleYn;
+        private Button buttonTransAngleRp;
+        private Button buttonTransAnglePp;
+        private Button buttonTransAngleYp;
+        private GroupBox groupBoxTransPos;
+        private CheckBox checkBoxTransPosRel;
+        private BetterTextbox textboxTransPosYValue;
+        private Button buttonTransPosYp;
+        private Button buttonTransPosYn;
+        private Button buttonTransPosXpZp;
+        private BetterTextbox textboxTransPosXZValue;
+        private Button buttonTransPosXp;
+        private Button buttonTransPosXpZn;
+        private Button buttonTransPosZn;
+        private Button buttonTransPosZp;
+        private Button buttonTransPosXnZp;
+        private Button buttonTransPosXn;
+        private Button buttonTransPosXnZn;
+        private Button buttonTransReset;
     }
 }
 
