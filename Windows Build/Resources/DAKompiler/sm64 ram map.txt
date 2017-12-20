@@ -1,0 +1,255 @@
+version     1.0
+rom         Super Mario 64      #exact spacing and case are ignored
+
+# all numbers are hex
+
+# special type syntax:
+#   *type, *(type)      pointer to a type
+#   **type              pointer to a pointer to a type
+#   *type target        pointer to a type, but refer to the thing pointed to as target
+#   [type] #            array of a type, # elements long
+#   [*type] #           array of pointers to a type
+
+# careful with parentheses for these
+#   *([type] #)         pointer to an array of a type, # elements long
+#   *[type] target      pointer to an array of a type, refer to as target
+
+# format for sections
+#section name           region specifier    (could be U, J, or E  (or blank for region independent))
+
+structs
+#   struct name         size (bytes)        base struct (must already be defined)
+    Vector              c
+        0       x               single
+        4       y               single
+        8       z               single
+
+    ShortVector         6
+        0       x               short
+        4       y               short
+        8       z               short
+
+    AffineTransform     40
+        0       xColumn         Vector
+        10      yColumn         Vector
+        20      zColumn         Vector
+        30      translation     Vector
+        3c      one             single
+
+    Triangle            30
+        0       type            enum TriangleType
+        2       wind            short       #used for wind triangles, maybe others?
+        4       flags           Bflag
+            3           projectAlongX
+
+        5       room            byte
+        6       lowerBound      short
+        8       upperBound      short
+        a       vertexA         ShortVector
+        10      vertexB         ShortVector
+        16      vertexC         ShortVector
+        1c      normal          Vector
+        28      offset          single
+        2c      object          *Object
+
+    gfxNode             14
+        00      gfxType         enum GFXtype
+        02      gfxFlags        Hflag
+        04      gfxPrev         *gfxNode
+        08      gfxNext         *gfxNode
+        0c      gfxParent       *gfxNode
+        10      gfxChild        *gfxNode
+
+    Object              260             gfxNode
+        1a      showPitch       short
+        1c      showYaw         short
+        1e      showRoll        short
+        20      showPos         Vector
+        2c      scale           Vector
+
+        50      transform       *AffineTransform
+        54      posOffset       Vector
+        60      next            *Object
+        64      previous        *Object
+        68      parent          *Object
+
+        74      active          Hflag
+        76      numColliders    short
+        78      colliders       [*Object] 4
+
+        # beginning of variable block which can change for different types of objects
+        8c      flags           Wflag
+            d       calcMarioAngle
+            6       calcMarioDist
+            3       setShowYaw
+            1       simpleMovement
+            0       setShowPos
+
+        a0      realPos         Vector
+        ac      realVel         Vector
+        b8      hspeed          single
+
+        c8      heading         word
+        d0      realPitch       word
+        d4      realYaw         word
+        d8      realRoll        word
+
+        144     subtype         word
+        14c     action          word
+        154     timer           word
+        15c     marioDist       single
+        160     marioAngle      word
+        164     spawn           Vector      #can be updated by some objects (e.g. scuttlebugs)
+
+        188     initCode        word        #?? | subtype | valid | isMario
+        18c     prevAction      word
+
+        1cc     scriptEntry     address     #the next line of the object script to execute
+        1d0     stackIndex      word
+        1d4     stack           [word] 10
+
+        1f8     colRadius       single      #properties of collision cylinder
+        1fc     colHeight       single
+
+        208     yOffset         single      #height to shift collision cylinder by
+        20c     scriptStart     address     #beginning of object script
+
+        21c     savedTransform  AffineTransform   #note this is not a pointer
+        25c     initData        address
+
+    BigPenguin          260             Object
+        f4      waitTime        word        #time to wait before talking again
+        fc      startWaypoint   address
+        100     currWaypoint    address
+        104     waypointID      word
+        108     slopeToWaypoint word
+        10c     yawToWaypoint   word
+        110     effort          single
+
+        1ac     message         short
+        1ae     marioWon        short
+        1b0     finished        short
+        1b2     cheated         short
+
+    Mario               c4
+        02      input           Hflag
+        04      caps            Wflag
+        0c      action          word
+        10      prevAction      word
+        14      groundType      word
+        18      animation       ushort
+        1a      cycles          ushort
+
+        20      analogTilt      single
+
+        28      sinceApress     ubyte
+        29      sinceBpress     ubyte
+
+        2c      pitch           short
+        2e      heading         short
+        30      roll            short
+
+        3c      position        Vector
+        48      velocity        Vector
+        54      hspeed          single
+
+        60      wallTri         *Triangle
+        64      ceilingTri      *Triangle
+        68      floorTri        *Triangle
+        6c      ceilHeight      single
+        70      floorHeight     single
+        76      waterHeight     short
+
+        78      bumped          *Object
+        88      object          *Object
+
+        94      cameraInfo      address
+        98      HOLPstruct      address
+        9c      controller      address
+
+        a8      coins           short
+        aa      stars           short
+        ac      keys            short
+        ad      lives           short
+        ae      health          short
+        b2      hurtTimer       ubyte
+        b3      healTimer       ubyte
+        b4      squished        ubyte       #0 if normal, ff if just squished, counts down from 1f while squished
+        b6      capTimer        ushort
+
+        bc      fallPeak        single      #height from which mario started falling 
+        c0      quicksand       single      #controls mario's movement/apparent height in quicksand
+
+
+
+functions       J
+    8024a27c        instantWarp
+
+    8024a594        storeLevelBytes
+        A0      level       byte
+        A1      zone        byte
+        A2      warp        byte
+        A3                  word
+
+    80249734        storeSpecialMode
+        A0      mode        word
+
+    8029db7c        distanceToObject
+        A0                  *Object
+        A1                  *Object
+
+    8029df18        angleToObject
+        A0                  *Object
+        A1                  *Object
+
+    8031dc78        queueObjectSound
+        A0      soundID     word
+        A1                  *Object
+
+    80322b20        sqrt
+        F12                 single
+
+    8037a9a8        arcTan              
+        #compute the arctangent of the angle of (z,x) from the positive Z axis
+        F12     z           single
+        F14     x           single
+
+globals         J
+    8032c9d8        marioPointer        *Mario      marioData
+    8032ce98        courseID            short
+    80339e00        marioData           Mario
+    8035fde8        marioObject         *Object
+    8035fdf0        currObject          *Object
+    8035fdf4        scriptPointer       address
+
+enums
+    TriangleType                    short
+        01          lava
+        05          hangable
+        0a          deathPlane
+
+        24          thirdSandRing
+        25          firstSandRing
+        27          secondSandRing
+        2c          windyGround     #Mario is pushed back by wind
+        2d          deathSand
+        2e          ice
+        38          windArea        #Mario is carried by wind
+
+        72          painting
+        7b          invisCap
+
+    GFXtype                         short
+        02          screenSpaceMap
+        04          masterDisplayList   #handles and categorizes all display lists
+        18          object
+        1c          scalingMatrix
+        28          shadow
+        114         camera
+
+#this might end up completely different
+
+trigtables
+    80386000        sin
+    80387000        cos
+

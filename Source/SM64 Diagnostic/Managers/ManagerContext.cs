@@ -13,6 +13,7 @@ namespace SM64_Diagnostic.Managers
         public CameraManager CameraManager;
         public DebugManager DebugManager;
         public DisassemblyManager DisassemblyManager;
+        public DecompilerManager DecompilerManager;
         public HackManager HackManager;
         public HudManager HudManager;
         public MapManager MapManager;
