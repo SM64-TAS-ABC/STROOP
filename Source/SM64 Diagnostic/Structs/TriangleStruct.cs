@@ -40,6 +40,7 @@ namespace SM64_Diagnostic.Structs
 
         public readonly static List<string> FieldNameList = new List<string> {
                 "Address",
+                "Classification",
                 "SurfaceType",
                 "ExertionForceIndex",
                 "ExertionAngle",
@@ -97,6 +98,7 @@ namespace SM64_Diagnostic.Structs
 
             FieldValueList = new List<object> {
                 "0x" + Address.ToString("X8"),
+                GetClassification(NormY),
                 SurfaceType,
                 ExertionForceIndex,
                 ExertionAngle,
@@ -129,6 +131,13 @@ namespace SM64_Diagnostic.Structs
         public static string GetFieldNameString()
         {
             return String.Join("\t", FieldNameList);
+        }
+
+        private static string GetClassification(double yNorm)
+        {
+            if (yNorm > 0.01) return "Floor";
+            if (yNorm < -0.01) return "Ceiling";
+            return "Wall";
         }
     }
 }
