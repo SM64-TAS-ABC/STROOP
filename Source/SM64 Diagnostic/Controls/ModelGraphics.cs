@@ -46,6 +46,8 @@ namespace SM64_Diagnostic.Controls
 
             Control.Paint += OnPaint;
             Control.Resize += OnResize;
+            Control.DragOver += Control_DragOver;
+            Control.MouseWheel += Control_MouseWheel;
 
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
             GL.Enable(EnableCap.DepthTest);
@@ -53,6 +55,16 @@ namespace SM64_Diagnostic.Controls
             _timer.Enabled = true;
 
             SetupViewport();
+        }
+
+        private void Control_MouseWheel(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void Control_DragOver(object sender, DragEventArgs e)
+        {
+            float x = e.X / Control.Width;
+            float y = e.Y / Control.Height;
         }
 
         public void OnPaint(object sender, EventArgs e)
@@ -90,10 +102,25 @@ namespace SM64_Diagnostic.Controls
             SetPerspectiveProjection(w, h, 60f);
         }
 
+        public Color ColorFromTri(Vector3 v1, Vector3 v2, Vector3 v3)
+        {
+            float normY = Vector3.Cross(v2 - v1, v3 - v1).Normalized().Y;
+            // Floor
+            if (normY > 0.01)
+                return Color.LightBlue;
+            // Ceiling
+            else if (normY < -0.01)
+                return Color.Pink;
+            // Wall   
+            else
+                return Color.LightGreen;
+        }
+
         private void DrawModel()
         {
             lock (_modelLock)
             {
+                // Draw triangles
                 GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
                 GL.Begin(PrimitiveType.Triangles);
                 for (int i = 0; i < _triangles.Length; i++)
@@ -103,13 +130,14 @@ namespace SM64_Diagnostic.Controls
 
                     var t = _triangles[i];
 
-                    GL.Color3(Color.Yellow);
+                    GL.Color3(_triangleColors[i]);
                     GL.Vertex3(_vertices[t[0]]);
                     GL.Vertex3(_vertices[t[1]]);
                     GL.Vertex3(_vertices[t[2]]);
                 }
                 GL.End();
 
+                // Draw lines
                 GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
                 GL.LineWidth(3.0f);
                 GL.Begin(PrimitiveType.Triangles);
@@ -124,14 +152,19 @@ namespace SM64_Diagnostic.Controls
                 }
                 GL.End();
 
+                // Draw vertices
                 GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Point);
                 GL.PointSize(8.0f);
+                GL.Color3(Color.Yellow);
                 GL.Begin(PrimitiveType.Points);
                 for (int i = 0; i < _vertices.Length; i++)
                 {
                     var v = _vertices[i];
 
-                    GL.Color3(_vertexSelected[i] ? Color.Yellow : Color.Red);
+                    // Only show vertices that are selected
+                    if (!_vertexSelected[i])
+                        continue;
+                    
                     GL.Vertex3(v);
                 }
                 GL.End();
@@ -141,6 +174,7 @@ namespace SM64_Diagnostic.Controls
         Random rng = new Random();
 
         Vector3[] _vertices = new Vector3[0];
+        Color[] _triangleColors = new Color[0];
         int[][] _triangles = new int[0][];
         bool[] _triangleSelected = new bool[0];
         bool[] _vertexSelected = new bool[0];
@@ -149,6 +183,7 @@ namespace SM64_Diagnostic.Controls
         public void ClearModel()
         {
             _vertices = new Vector3[0];
+            _triangleColors = new Color[0];
             _triangles = new int[0][];
         }
 
@@ -159,23 +194,32 @@ namespace SM64_Diagnostic.Controls
             var minHeight = vertices.Min(v => v[1]);
 
             _cameraHeight = maxHeight +  (float) (Math.Sqrt(2) * maxRadius);
-            _cameraRadius = (float) maxRadius * 2f;
+            _cameraRadius = (float)maxRadius * 2f;
 
             _modelCenter = new Vector3(0, (maxHeight + minHeight) / 2, 0);
 
             lock (_modelLock)
             {
+                // Create vertice point vectors
                 _vertices = new Vector3[vertices.Count];
-                for(int i = 0; i < _vertices.Length; i++)
+                for (int i = 0; i < _vertices.Length; i++)
                 {
                     _vertices[i] = new Vector3(vertices[i][0], vertices[i][1], vertices[i][2]);
                 }
+
+                // Create triangle
                 _triangles = new int[triangles.Count][];
+                _triangleColors = new Color[triangles.Count];
                 for (int i = 0; i < _triangles.Length; i++)
                 {
+                    // Make sure vertices exist
                     _triangles[i] = triangles[i].Select(t => t >= _vertices.Length || t < 0 ? 0 : t).ToArray();
+                    // Find triangle colors
+                    var tri = _triangles[i];
+                    _triangleColors[i] = ColorFromTri(_vertices[tri[0]], _vertices[tri[1]], _vertices[tri[2]]);
                 }
 
+                // Unselect all triangle and vertices
                 _vertexSelected = new bool[_vertices.Length];
                 _triangleSelected = new bool[_triangles.Length];
             }
@@ -201,7 +245,7 @@ namespace SM64_Diagnostic.Controls
 
         private void SetPerspectiveProjection(int width, int height, float FOV)
         {
-            var projectionMatrix = Matrix4.CreatePerspectiveFieldOfView((float)Math.PI * (FOV / 180f), width / (float)height, 0.2f, 10000.0f);
+            var projectionMatrix = Matrix4.CreatePerspectiveFieldOfView((float)Math.PI * (FOV / 180f), width / (float)height, 0.2f, 100000.0f);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadMatrix(ref projectionMatrix); // this replaces the old matrix, no need for GL.LoadIdentity()
         }

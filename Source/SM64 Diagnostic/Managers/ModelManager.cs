@@ -190,7 +190,7 @@ namespace SM64_Diagnostic.Managers
                 int[] t = triangles[i];
                 _dataGridViewTriangles.Rows.Add(t[3], t[4], t[0], t[1], t[2]);
             }
-
+            _dataGridViewTriangles.SelectAll();
         }
 
         public virtual void Update(bool updateView = false)
