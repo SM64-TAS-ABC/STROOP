@@ -57,6 +57,27 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
+        /// <summary>
+        /// Mode of camera movement in the view. ManualMode indicates the camera 
+        /// should fly around with user input. Otherwise a value of false indicates
+        /// the camera rotates around the model (automatically).
+        /// </summary>
+        public bool ManualMode
+        {
+            get
+            {
+                if (_modelView == null)
+                    return false;
+
+                return _modelView.ManualMode;
+            }
+            set
+            {
+                if (_modelView != null)
+                    _modelView.ManualMode = value;
+            }
+        }
+
         public ModelManager(Control tabControl)
         {
             SplitContainer splitContainerModel = tabControl.Controls["splitContainerModel"] as SplitContainer;

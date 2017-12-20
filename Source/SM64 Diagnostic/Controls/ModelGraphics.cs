@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
+using OpenTK.Input;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -20,11 +21,19 @@ namespace SM64_Diagnostic.Controls
         volatile float _cameraRadius = 0;
         volatile float _cameraHeight = 0;
 
+        Vector3 _cameraPosition;
+        Vector3 _cameraLook;
+        float _cameraManualAngleLat;
+        float _cameraManualAngleLong;
+
         Vector3 _modelCenter;
+        float _modelRadius;
 
         public RectangleF MapView;
         public GLControl Control;
         Timer _timer;
+
+        public bool ManualMode = false;
 
         public ModelGraphics(GLControl control)
         {
@@ -36,7 +45,22 @@ namespace SM64_Diagnostic.Controls
 
         private void _timer_Tick(object sender, EventArgs e)
         {
-            _cameraAngle += 0.01f;
+            if (!ManualMode)
+            {
+                KeyboardState keyState = Keyboard.GetState();
+
+                float speed = 0.01f;
+                if (keyState.IsKeyDown(Key.ControlLeft) || keyState.IsKeyDown(Key.ControlRight))
+                    speed = 0.0f;
+                else if(keyState.IsKeyDown(Key.ShiftLeft) || keyState.IsKeyDown(Key.ShiftRight))
+                    speed = 0.03f;
+                else if (keyState.IsKeyDown(Key.AltLeft) || keyState.IsKeyDown(Key.AltRight))
+                    speed = 0.003f;
+
+                _cameraAngle += speed;
+            }
+
+            CameraFly();
         }
 
         public void Load()
@@ -46,9 +70,7 @@ namespace SM64_Diagnostic.Controls
 
             Control.Paint += OnPaint;
             Control.Resize += OnResize;
-            Control.DragOver += Control_DragOver;
-            Control.MouseWheel += Control_MouseWheel;
-
+            
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
             GL.Enable(EnableCap.DepthTest);
 
@@ -57,14 +79,98 @@ namespace SM64_Diagnostic.Controls
             SetupViewport();
         }
 
-        private void Control_MouseWheel(object sender, MouseEventArgs e)
-        {
-        }
+        bool _mousePressed = false;
 
-        private void Control_DragOver(object sender, DragEventArgs e)
+        Vector2 _pMouseCoords;
+        public void CameraFly()
         {
-            float x = e.X / Control.Width;
-            float y = e.Y / Control.Height;
+            KeyboardState keyState = Keyboard.GetState();
+
+            // Calculate key speed multiplier
+            float speedMul = 1f;
+            if (keyState.IsKeyDown(Key.ControlLeft) || keyState.IsKeyDown(Key.ControlRight))
+                speedMul = 0.0f;
+            else if (keyState.IsKeyDown(Key.ShiftLeft) || keyState.IsKeyDown(Key.ShiftRight))
+                speedMul = 3.0f;
+            else if (keyState.IsKeyDown(Key.AltLeft) || keyState.IsKeyDown(Key.AltRight))
+                speedMul = 0.3f;
+
+            // Handle mouse
+            MouseState mouseState = Mouse.GetCursorState();
+            if (mouseState.LeftButton == OpenTK.Input.ButtonState.Pressed)
+            {
+                // Reset previous coordinates so no movement occurs during the initial press 
+                if (!_mousePressed)
+                {
+                    _pMouseCoords = new Vector2(mouseState.X, mouseState.Y);
+                }
+
+                // Calcualte mouse delta
+                Vector2 delta = new Vector2(mouseState.X, mouseState.Y) - _pMouseCoords;
+
+                // Add 
+                delta *= speedMul * 0.009f;
+
+                // Trackball (add mouse deltas to angle)
+                _cameraManualAngleLat += delta.X;
+                _cameraManualAngleLong += -delta.Y;
+
+                // Update mouse coordinates for next time
+                _pMouseCoords = new Vector2(mouseState.X, mouseState.Y);
+
+                _mousePressed = true;
+                ManualMode = true;
+            }
+            else
+            {
+                _mousePressed = false;
+            }
+
+            Vector3 relDeltaPos = new Vector3(0, 0, 0);
+            float posSpeed = speedMul * _modelRadius * 0.01f; // Move at a rate relative to the model size
+
+            // Handle Positional Movement 
+            if (keyState.IsKeyDown(Key.W) || keyState.IsKeyDown(Key.Up))
+            {
+                relDeltaPos.Z += posSpeed;
+                ManualMode = true;
+            }
+            if (keyState.IsKeyDown(Key.A) || keyState.IsKeyDown(Key.Left))
+            {
+                relDeltaPos.X += posSpeed;
+                ManualMode = true;
+            }
+            if (keyState.IsKeyDown(Key.S) || keyState.IsKeyDown(Key.Down))
+            {
+                relDeltaPos.Z += -posSpeed;
+                ManualMode = true;
+            }
+            if (keyState.IsKeyDown(Key.D) || keyState.IsKeyDown(Key.Right))
+            {
+                relDeltaPos.X += -posSpeed;
+                ManualMode = true;
+            }
+            if (keyState.IsKeyDown(Key.Q))
+            {
+                relDeltaPos.Y += -posSpeed;
+                ManualMode = true;
+            }
+            if (keyState.IsKeyDown(Key.E))
+            {
+                relDeltaPos.Y += posSpeed;
+                ManualMode = true;
+            }
+
+            // Update camera position
+            // This requires converting the coordinate system from the camera coordinates 
+            // to the world coordinates. The camera X unit is calculate from the 
+            // cross product of the camera Y unit and the camera Z unit. The camera
+            // Y unit is the world Y unit since the Y coordinate is always up.
+            // The Z unit is the normalized camera look vector (to move towards the look),
+            // Hence, move formard.
+            _cameraPosition += Vector3.Cross(Vector3.UnitY, _cameraLook) * relDeltaPos.X
+                + Vector3.UnitY * relDeltaPos.Y
+                + _cameraLook * relDeltaPos.Z;
         }
 
         public void OnPaint(object sender, EventArgs e)
@@ -77,10 +183,27 @@ namespace SM64_Diagnostic.Controls
 
             SetupViewport();
 
-            var cameraPos = new Vector3((float)(_cameraRadius * Math.Cos(_cameraAngle)),
-                _cameraHeight, (float)(_cameraRadius * Math.Sin(_cameraAngle)));
-            SetLookAtCamera(cameraPos, _modelCenter); 
+            if (ManualMode)
+            {
+                // Convert the long. and lat. angles into a camera look vector
+                _cameraLook.Y = (float) (Math.Sin(_cameraManualAngleLong));
+                float yy = (float) Math.Sqrt(1 - _cameraLook.Y * _cameraLook.Y);
+                _cameraLook.X = (float) Math.Cos(_cameraManualAngleLat) * yy;
+                _cameraLook.Z = (float) Math.Sin(_cameraManualAngleLat) * yy;
+            }
+            else
+            {
+                // Rotate around model
+                _cameraPosition = new Vector3((float)(_cameraRadius * Math.Cos(_cameraAngle)),
+                    _cameraHeight, (float)(_cameraRadius * Math.Sin(_cameraAngle)));
+                _cameraLook = (_modelCenter - _cameraPosition).Normalized();
 
+                // Update the long. and lat. angles for switching to manual mode
+                _cameraManualAngleLat = (float) Math.Atan2(_cameraLook.Z, _cameraLook.X);
+                _cameraManualAngleLong = (float) Math.Asin(_cameraLook.Y);
+            } 
+
+            SetLookAtCamera(_cameraPosition, _cameraPosition + _cameraLook);
             DrawModel();
 
             Control.SwapBuffers();
@@ -189,14 +312,17 @@ namespace SM64_Diagnostic.Controls
 
         public void ChangeModel(List<short[]> vertices, List<int[]> triangles)
         {
+            ManualMode = false;
+
             var maxRadius = vertices.Max(v => MoreMath.GetDistanceBetween(v[0], v[2], 0, 0));
             var maxHeight = vertices.Max(v => v[1]);
             var minHeight = vertices.Min(v => v[1]);
 
-            _cameraHeight = maxHeight +  (float) (Math.Sqrt(2) * maxRadius);
+            _cameraHeight = maxHeight + (float) (Math.Sqrt(2) * maxRadius);
             _cameraRadius = (float)maxRadius * 2f;
 
             _modelCenter = new Vector3(0, (maxHeight + minHeight) / 2, 0);
+            _modelRadius = vertices.Max(v => (new Vector3(v[0], v[1], v[2]) - _modelCenter).Length);
 
             lock (_modelLock)
             {

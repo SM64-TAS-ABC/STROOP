@@ -185,6 +185,7 @@ namespace SM64_Diagnostic.Managers
                 uint currentModelObjectAddress = _modelManager.ModelObjectAddress;
                 uint newModelObjectAddress = currentModelObjectAddress == selectedSlot.Address ? 0 : selectedSlot.Address;
                 _modelManager.ModelObjectAddress = newModelObjectAddress;
+                _modelManager.ManualMode = false;
             }
             else if (click == ClickType.CamHackClick)
             {
