@@ -23,6 +23,7 @@ namespace SM64_Diagnostic.Managers
         private TextBox _textBoxAddress;
         private Label _labelModelVertices;
         private Label _labelModelTriangles;
+        private CheckBox _checkBoxLevel;
 
         public uint ModelObjectAddress;
 
@@ -93,7 +94,63 @@ namespace SM64_Diagnostic.Managers
             _dataGridViewVertices.SelectionChanged += _dataGridViewVertices_SelectionChanged;
             _dataGridViewTriangles.SelectionChanged += _dataGridViewTriangles_SelectionChanged;
 
+            _checkBoxLevel = splitContainerModel.Panel1.Controls["checkBoxModelLevel"] as CheckBox;
+            _checkBoxLevel.Click += CheckBoxLevel_CheckedChanged;
+
             UpdateModelPointer();
+        }
+
+        private void UpdateCounts()
+        {
+            _labelModelVertices.Text = "Vertices: " + _dataGridViewVertices.Rows.Count;
+            _labelModelTriangles.Text = "Triangles: " + _dataGridViewTriangles.Rows.Count;
+        }
+
+        private void CheckBoxLevel_CheckedChanged(object sender, EventArgs e)
+        {
+            SwitchLevelModel();
+
+            _textBoxAddress.Text = "(Level)";
+            UpdateCounts();
+            _checkBoxLevel.Checked = true;
+        }
+
+        private void SwitchLevelModel()
+        {
+            List<TriangleStruct> triangleStructs = TriangleUtilities.GetLevelTriangles();
+
+            // Build vertice and triangle list from triangle set
+            List<int[]> triangles = new List<int[]>();
+            List<short[]> vertices = new List<short[]>();
+            List<int> surfaceTypes = new List<int>();
+            triangleStructs.ForEach(t =>
+            {
+                var vIndex = vertices.Count;
+                triangles.Add(new int[] { vIndex, vIndex + 1, vIndex + 2 });
+                surfaceTypes.Add(t.SurfaceType);
+                vertices.Add(new short[] { t.X1, t.Y1, t.Z1 });
+                vertices.Add(new short[] { t.X2, t.Y2, t.Z2 });
+                vertices.Add(new short[] { t.X3, t.Y3, t.Z3 });
+            });
+
+            _modelView?.ChangeModel(vertices, triangles);
+
+            // Update tables
+            _dataGridViewVertices.Rows.Clear();
+            for (int i = 0; i < vertices.Count; i++)
+            {
+                short[] v = vertices[i];
+                _dataGridViewVertices.Rows.Add(i, v[0], v[1], v[2]);
+            }
+            _dataGridViewTriangles.Rows.Clear();
+            for (int i = 0; i < triangles.Count; i++)
+            {
+                int[] t = triangles[i];
+                _dataGridViewTriangles.Rows.Add(0, surfaceTypes[i], t[0], t[1], t[2]);
+            }
+            _dataGridViewTriangles.SelectAll();
+
+            ModelObjectAddress = _previousModelPointer = 0;
         }
 
         private void _dataGridViewVertices_SelectionChanged(object sender, EventArgs e)
@@ -212,6 +269,7 @@ namespace SM64_Diagnostic.Managers
                 _dataGridViewTriangles.Rows.Add(t[3], t[4], t[0], t[1], t[2]);
             }
             _dataGridViewTriangles.SelectAll();
+            _checkBoxLevel.Checked = false;
         }
 
         public virtual void Update(bool updateView = false)
@@ -225,8 +283,7 @@ namespace SM64_Diagnostic.Managers
                 _previousModelPointer = currentModelPointer;
                 UpdateModelPointer();
             }
-            _labelModelVertices.Text = "Vertices: " + _dataGridViewVertices.Rows.Count;
-            _labelModelTriangles.Text = "Triangles: " + _dataGridViewTriangles.Rows.Count;
+            UpdateCounts();
 
             _modelView.Control.Invalidate();
         }

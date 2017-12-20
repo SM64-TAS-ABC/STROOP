@@ -596,6 +596,7 @@ namespace SM64_Diagnostic
             this.buttonPuConHome = new System.Windows.Forms.Button();
             this.tabPageModel = new System.Windows.Forms.TabPage();
             this.splitContainerModel = new System.Windows.Forms.SplitContainer();
+            this.checkBoxModelLevel = new System.Windows.Forms.CheckBox();
             this.groupBoxTransformation = new System.Windows.Forms.GroupBox();
             this.labelTransScaleValue = new System.Windows.Forms.Label();
             this.labelTransAngleValue = new System.Windows.Forms.Label();
@@ -8454,6 +8455,7 @@ namespace SM64_Diagnostic
             // splitContainerModel.Panel1
             // 
             this.splitContainerModel.Panel1.AutoScroll = true;
+            this.splitContainerModel.Panel1.Controls.Add(this.checkBoxModelLevel);
             this.splitContainerModel.Panel1.Controls.Add(this.groupBoxTransformation);
             this.splitContainerModel.Panel1.Controls.Add(this.splitContainerModelTables);
             this.splitContainerModel.Panel1.Controls.Add(this.label1);
@@ -8468,6 +8470,17 @@ namespace SM64_Diagnostic
             this.splitContainerModel.SplitterDistance = 416;
             this.splitContainerModel.SplitterWidth = 1;
             this.splitContainerModel.TabIndex = 32;
+            // 
+            // checkBoxModelLevel
+            // 
+            this.checkBoxModelLevel.AutoCheck = false;
+            this.checkBoxModelLevel.AutoSize = true;
+            this.checkBoxModelLevel.Location = new System.Drawing.Point(193, 5);
+            this.checkBoxModelLevel.Name = "checkBoxModelLevel";
+            this.checkBoxModelLevel.Size = new System.Drawing.Size(78, 17);
+            this.checkBoxModelLevel.TabIndex = 12;
+            this.checkBoxModelLevel.Text = "View Level";
+            this.checkBoxModelLevel.UseVisualStyleBackColor = true;
             // 
             // groupBoxTransformation
             // 
@@ -8978,8 +8991,7 @@ namespace SM64_Diagnostic
             // 
             // splitContainerModelTables
             // 
-            this.splitContainerModelTables.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.splitContainerModelTables.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainerModelTables.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerModelTables.Location = new System.Drawing.Point(3, 29);
@@ -13893,6 +13905,7 @@ namespace SM64_Diagnostic
         private Button buttonTransPosXn;
         private Button buttonTransPosXnZn;
         private Button buttonTransReset;
+        private CheckBox checkBoxModelLevel;
     }
 }
 
