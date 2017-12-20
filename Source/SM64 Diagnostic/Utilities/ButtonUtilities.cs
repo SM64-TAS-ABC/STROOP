@@ -693,72 +693,85 @@ namespace SM64_Diagnostic.Utilities
             return success;
         }
 
-        public static bool MarioChangeSlidingSpeedX(float vspdOffset)
+        public static void MarioChangeSlidingSpeedX(float xOffset)
         {
-            var marioAddress = Config.Mario.StructAddress;
+            float slidingSpeedX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+            float slidingSpeedZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
 
-            float vspd = Config.Stream.GetSingle(marioAddress + Config.Mario.VSpeedOffset);
-            vspd += vspdOffset;
+            float newSlidingSpeedX = slidingSpeedX + xOffset;
+            ushort newSlidingSpeedYaw = MoreMath.AngleTo_AngleUnitsRounded(newSlidingSpeedX, slidingSpeedZ);
 
-            bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(vspd, marioAddress + Config.Mario.VSpeedOffset);
+            Config.Stream.SetValue(newSlidingSpeedX, Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+            Config.Stream.SetValue(newSlidingSpeedYaw, Config.Mario.StructAddress + Config.Mario.SlidingYawOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
-            return success;
         }
 
-        public static bool MarioChangeSlidingSpeedZ(float vspdOffset)
+        public static void MarioChangeSlidingSpeedZ(float zOffset)
         {
-            var marioAddress = Config.Mario.StructAddress;
+            float slidingSpeedX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+            float slidingSpeedZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
 
-            float vspd = Config.Stream.GetSingle(marioAddress + Config.Mario.VSpeedOffset);
-            vspd += vspdOffset;
+            float newSlidingSpeedZ = slidingSpeedZ + zOffset;
+            ushort newSlidingSpeedYaw = MoreMath.AngleTo_AngleUnitsRounded(slidingSpeedX, newSlidingSpeedZ);
 
-            bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(vspd, marioAddress + Config.Mario.VSpeedOffset);
+            Config.Stream.SetValue(newSlidingSpeedZ, Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+            Config.Stream.SetValue(newSlidingSpeedYaw, Config.Mario.StructAddress + Config.Mario.SlidingYawOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
-            return success;
         }
 
-        public static bool MarioChangeSlidingSpeedH(float vspdOffset)
+        public static void MarioChangeSlidingSpeedH(float hOffset)
         {
-            var marioAddress = Config.Mario.StructAddress;
+            float slidingSpeedX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+            float slidingSpeedZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+            double slidingSpeedH = MoreMath.GetHypotenuse(slidingSpeedX, slidingSpeedZ);
 
-            float vspd = Config.Stream.GetSingle(marioAddress + Config.Mario.VSpeedOffset);
-            vspd += vspdOffset;
+            double? slidingSpeedYawComputed = MoreMath.AngleTo_AngleUnitsNullable(slidingSpeedX, slidingSpeedZ);
+            ushort slidingSpeedYawMemory = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.SlidingYawOffset);
+            double slidingSpeedYaw = slidingSpeedYawComputed ?? slidingSpeedYawMemory;
 
-            bool success = true;
+            double newSlidingSpeedH = slidingSpeedH + hOffset;
+            (double newSlidingSpeedX, double newSlidingSpeedZ) = MoreMath.GetComponentsFromVector(newSlidingSpeedH, slidingSpeedYaw);
+            double newSlidingSpeedYaw = MoreMath.AngleTo_AngleUnits(newSlidingSpeedX, newSlidingSpeedZ);
+
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(vspd, marioAddress + Config.Mario.VSpeedOffset);
+            Config.Stream.SetValue((float)newSlidingSpeedX, Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+            Config.Stream.SetValue((float)newSlidingSpeedZ, Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+            Config.Stream.SetValue(MoreMath.NormalizeAngleUshort(newSlidingSpeedYaw), Config.Mario.StructAddress + Config.Mario.SlidingYawOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
-            return success;
         }
 
-        public static bool MarioChangeSlidingSpeedYaw(float vspdOffset)
+        public static void MarioChangeSlidingSpeedYaw(float yawOffset)
         {
-            var marioAddress = Config.Mario.StructAddress;
+            float slidingSpeedX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+            float slidingSpeedZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+            double slidingSpeedH = MoreMath.GetHypotenuse(slidingSpeedX, slidingSpeedZ);
 
-            float vspd = Config.Stream.GetSingle(marioAddress + Config.Mario.VSpeedOffset);
-            vspd += vspdOffset;
+            double? slidingSpeedYawComputed = MoreMath.AngleTo_AngleUnitsNullable(slidingSpeedX, slidingSpeedZ);
+            ushort slidingSpeedYawMemory = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.SlidingYawOffset);
+            double slidingSpeedYaw = slidingSpeedYawComputed ?? slidingSpeedYawMemory;
 
-            bool success = true;
+            double newSlidingSpeedYaw = slidingSpeedYaw + yawOffset;
+            (double newSlidingSpeedX, double newSlidingSpeedZ) = MoreMath.GetComponentsFromVector(slidingSpeedH, newSlidingSpeedYaw);
+
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(vspd, marioAddress + Config.Mario.VSpeedOffset);
+            Config.Stream.SetValue((float)newSlidingSpeedX, Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+            Config.Stream.SetValue((float)newSlidingSpeedZ, Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+            Config.Stream.SetValue(MoreMath.NormalizeAngleUshort(newSlidingSpeedYaw), Config.Mario.StructAddress + Config.Mario.SlidingYawOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
-            return success;
         }
 
         public static bool FullHp()

@@ -193,9 +193,20 @@ namespace SM64_Diagnostic.Utilities
             return AngleTo_AngleUnits(0, 0, xTo, zTo);
         }
 
+        public static double? AngleTo_AngleUnitsNullable(double xTo, double zTo)
+        {
+            if (xTo == 0 && zTo == 0) return null;
+            return AngleTo_AngleUnits(0, 0, xTo, zTo);
+        }
+
         public static ushort AngleTo_AngleUnitsRounded(double xFrom, double zFrom, double xTo, double zTo)
         {
             return RadiansToAngleUnitsRounded(AngleTo_Radians(xFrom, zFrom, xTo, zTo));
+        }
+
+        public static ushort AngleTo_AngleUnitsRounded(double xTo, double zTo)
+        {
+            return AngleTo_AngleUnitsRounded(0, 0, xTo, zTo);
         }
 
         public static (double radius, double theta, double phi) EulerToSpherical_Radians(double x, double y, double z)
