@@ -28,6 +28,8 @@ namespace SM64_Diagnostic.Controls
 
         Vector3 _modelCenter;
         float _modelRadius;
+        float _zoom = 1.0f;
+        float _pov = 90f; // Calculated from Zoom
 
         public RectangleF MapView;
         public GLControl Control;
@@ -89,6 +91,7 @@ namespace SM64_Diagnostic.Controls
         bool _mousePressed = false;
 
         Vector2 _pMouseCoords;
+        float? _pMouseScroll = null;
         public void CameraFly()
         {
             KeyboardState keyState = Keyboard.GetState();
@@ -115,8 +118,9 @@ namespace SM64_Diagnostic.Controls
                 // Calcualte mouse delta
                 Vector2 delta = new Vector2(mouseState.X, mouseState.Y) - _pMouseCoords;
 
-                // Add 
+                // Add speed multiplier
                 delta *= speedMul * 0.009f;
+                delta *= _pov / 90;
 
                 // Trackball (add mouse deltas to angle)
                 _cameraManualAngleLat += delta.X;
@@ -138,6 +142,12 @@ namespace SM64_Diagnostic.Controls
             // Don't do anything if we don't have focus
             if (!Control.Focused)
                 return;
+
+            if (!_pMouseScroll.HasValue)
+                _pMouseScroll = mouseState.Scroll.Y;
+            float deltaScroll = mouseState.Scroll.Y - _pMouseScroll.Value;
+            _zoom += deltaScroll * 0.1f * speedMul;
+            _pMouseScroll = mouseState.Scroll.Y;
 
             Vector3 relDeltaPos = new Vector3(0, 0, 0);
             float posSpeed = speedMul * _modelRadius * 0.01f; // Move at a rate relative to the model size
@@ -217,8 +227,9 @@ namespace SM64_Diagnostic.Controls
                 // Update the long. and lat. angles for switching to manual mode
                 _cameraManualAngleLat = (float) Math.Atan2(_cameraLook.Z, _cameraLook.X);
                 _cameraManualAngleLong = (float) Math.Asin(_cameraLook.Y);
-            } 
+            }
 
+            _pov = (float)(90f + Math.Atan(_zoom) * 180f / Math.PI);
             SetLookAtCamera(_cameraPosition, _cameraPosition + _cameraLook);
             DrawModel();
 
@@ -238,7 +249,7 @@ namespace SM64_Diagnostic.Controls
 
             GL.Viewport(0, 0, w, h); // Use all of the glControl painting area\
 
-            SetPerspectiveProjection(w, h, 60f);
+            SetPerspectiveProjection(w, h, _pov);
         }
 
         public Color ColorFromTri(Vector3 v1, Vector3 v2, Vector3 v3)
@@ -339,6 +350,8 @@ namespace SM64_Diagnostic.Controls
 
             _modelCenter = new Vector3(0, (maxHeight + minHeight) / 2, 0);
             _modelRadius = vertices.Max(v => (new Vector3(v[0], v[1], v[2]) - _modelCenter).Length);
+
+            _zoom = -0.57735026919f; // 60 degree FOV
 
             lock (_modelLock)
             {
