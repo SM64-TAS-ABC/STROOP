@@ -204,6 +204,7 @@
     <Compile Include="Structs\Gui\InputImageGui.cs" />
     <Compile Include="Structs\MissionTable.cs" />
     <Compile Include="Structs\SpecialWatchVariable.cs" />
+    <Compile Include="Structs\TriangleClassification.cs" />
     <Compile Include="Structs\TriangleStruct.cs" />
     <Compile Include="Structs\WaypointTable.cs" />
     <Compile Include="Structs\PendulumSwingTable.cs" />

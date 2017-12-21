@@ -38,6 +38,12 @@ namespace SM64_Diagnostic.Structs
 
         public readonly uint AssociatedObject;
 
+        public readonly TriangleClassification Classification;
+
+        public readonly bool XProjection;
+        public readonly bool BelongsToObject;
+        public readonly bool NoCamCollision;
+
         public readonly static List<string> FieldNameList = new List<string> {
                 "Address",
                 "Classification",
@@ -45,6 +51,9 @@ namespace SM64_Diagnostic.Structs
                 "ExertionForceIndex",
                 "ExertionAngle",
                 "Flags",
+                "XProjection",
+                "BelongsToObject",
+                "NoCamCollision",
                 "Room",
                 "YMin",
                 "YMax",
@@ -96,13 +105,22 @@ namespace SM64_Diagnostic.Structs
 
             AssociatedObject = Config.Stream.GetUInt32(triangleAddress + Config.TriangleOffsets.AssociatedObject);
 
+            Classification = GetClassification(NormY);
+
+            XProjection = (Flags & Config.TriangleOffsets.ProjectionMask) != 0;
+            BelongsToObject = (Flags & Config.TriangleOffsets.BelongsToObjectMask) != 0;
+            NoCamCollision = (Flags & Config.TriangleOffsets.NoCamCollisionMask) != 0;
+
             FieldValueList = new List<object> {
                 "0x" + Address.ToString("X8"),
-                GetClassification(NormY),
+                Classification,
                 SurfaceType,
                 ExertionForceIndex,
                 ExertionAngle,
                 "0x" + Flags.ToString("X2"),
+                XProjection,
+                BelongsToObject,
+                NoCamCollision,
                 Room,
                 YMin,
                 YMax,
@@ -132,12 +150,12 @@ namespace SM64_Diagnostic.Structs
         {
             return String.Join("\t", FieldNameList);
         }
-
-        private static string GetClassification(double yNorm)
+ 
+        public static TriangleClassification GetClassification(double yNorm)
         {
-            if (yNorm > 0.01) return "Floor";
-            if (yNorm < -0.01) return "Ceiling";
-            return "Wall";
+            if (yNorm > 0.01) return TriangleClassification.Floor;
+            if (yNorm < -0.01) return TriangleClassification.Ceiling;
+            return TriangleClassification.Wall;
         }
     }
 }
