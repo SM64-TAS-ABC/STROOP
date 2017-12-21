@@ -670,7 +670,7 @@ namespace SM64_Diagnostic
             this.buttonDisGo = new System.Windows.Forms.Button();
             this.maskedTextBoxDisStart = new System.Windows.Forms.MaskedTextBox();
             this.labelDisStart = new System.Windows.Forms.Label();
-            this.richTextBoxDissasembly = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxDissasembly = new RichTextBoxEx();
             this.tabPageHacks = new System.Windows.Forms.TabPage();
             this.splitContainerHacks = new System.Windows.Forms.SplitContainer();
             this.groupBoxHackRam = new System.Windows.Forms.GroupBox();
@@ -13014,7 +13014,7 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.Button buttonDisGo;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxDisStart;
         private System.Windows.Forms.Label labelDisStart;
-        private System.Windows.Forms.RichTextBox richTextBoxDissasembly;
+        private RichTextBoxEx richTextBoxDissasembly;
         private System.Windows.Forms.TabPage tabPageMap;
         private System.Windows.Forms.TabPage tabPageOptions;
         private System.Windows.Forms.CheckBox checkBoxStartSlotIndexOne;

@@ -8,6 +8,7 @@ using SM64_Diagnostic.Utilities;
 using System.Drawing;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Structs.Configurations;
+using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -15,7 +16,7 @@ namespace SM64_Diagnostic.Managers
     {
         const int NumberOfLinesAdd = 40;
 
-        RichTextBox _output;
+        RichTextBoxEx _output;
         MaskedTextBox _textBoxStartAdd;
         uint _lastProcessAddress;
         Button _goButton, _moreButton;
@@ -23,11 +24,12 @@ namespace SM64_Diagnostic.Managers
 
         public DisassemblyManager(Control tabControl)
         {
-            _output = tabControl.Controls["richTextBoxDissasembly"] as RichTextBox;
+            _output = tabControl.Controls["richTextBoxDissasembly"] as RichTextBoxEx;
             _textBoxStartAdd = tabControl.Controls["maskedTextBoxDisStart"] as MaskedTextBox;
             _goButton = tabControl.Controls["buttonDisGo"] as Button;
             _moreButton = tabControl.Controls["buttonDisMore"] as Button;
 
+            _output.LinkClicked += _output_LinkClicked;
             _goButton.Click += GoButton_Pressed;
             _moreButton.Click += MoreButton_Click;
             _textBoxStartAdd.TextChanged += (sender, e) =>
@@ -35,6 +37,16 @@ namespace SM64_Diagnostic.Managers
                 _currentLines = NumberOfLinesAdd;
                 _goButton.Text = "Go";
             };
+        }
+
+        private void _output_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            uint address;
+            if (!ParsingUtilities.TryParseHex(e.LinkText, out address))
+                return;
+
+            _textBoxStartAdd.Text = e.LinkText;
+            StartShowDisassmbly(address, NumberOfLinesAdd);
         }
 
         private void MoreButton_Click(object sender, EventArgs e)
@@ -114,6 +126,7 @@ namespace SM64_Diagnostic.Managers
                     _output.SelectedText = "";
                     _output.Select(findIndex, _output.Text.IndexOf('<', findIndex) - findIndex);
                     _output.SelectionColor = Color.Blue;
+                    _output.SetSelectionLink(true);
                     _output.Select(_output.Text.IndexOf('<', findIndex), "</span>".Length);
                     _output.SelectedText = "";
                     _output.ReadOnly = true;
