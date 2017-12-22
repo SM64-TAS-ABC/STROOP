@@ -12,7 +12,7 @@ using SM64_Diagnostic.Structs.Configurations;
 namespace SM64_Diagnostic.Managers
 {
 
-    public class ScriptManager
+    public class InjectionManager
     {
         ScriptParser _parser;
         readonly byte[] byteUintFF = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
@@ -20,7 +20,7 @@ namespace SM64_Diagnostic.Managers
       
         uint _freeMemPtr;
 
-        public ScriptManager(ScriptParser parser, CheckBox useRomHackChecBox)
+        public InjectionManager(ScriptParser parser, CheckBox useRomHackChecBox)
         {
             _parser = parser;
             _useRomHackChecBox = useRomHackChecBox;

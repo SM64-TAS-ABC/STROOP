@@ -187,7 +187,7 @@
     <Compile Include="Managers\TestingManager.cs" />
     <Compile Include="Managers\OptionsManager.cs" />
     <Compile Include="Managers\PuManager.cs" />
-    <Compile Include="Managers\ScriptManager.cs" />
+    <Compile Include="Managers\InjectionManager.cs" />
     <Compile Include="Controls\WatchVariableControl.cs" />
     <Compile Include="Managers\TriangleManager.cs" />
     <Compile Include="Controls\ObjectSlot.cs">

@@ -43,7 +43,7 @@ namespace SM64_Diagnostic
         ModelManager _modelManager;
         OptionsManager _optionsManager;
         TestingManager _testingManager;
-        ScriptManager _scriptManager;
+        InjectionManager _injectionManager;
         HudManager _hudManager;
         MiscManager _miscManager;
         CameraManager _cameraManager;
@@ -95,7 +95,7 @@ namespace SM64_Diagnostic
             Config.Stream.OnClose += _sm64Stream_OnClose;
 
             currentContext.DisassemblyManager = _disManager = new DisassemblyManager(tabPageDisassembly);
-            currentContext.ScriptManager = _scriptManager = new ScriptManager(_scriptParser, checkBoxUseRomHack);
+            currentContext.InjectionManager = _injectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
             currentContext.HackManager = _hackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
 
             // Create map manager
@@ -289,7 +289,7 @@ namespace SM64_Diagnostic
                 _testingManager.Update(tabControlMain.SelectedTab == tabPageTesting);
                 _mapManager?.Update();
                 _modelManager?.Update();
-                _scriptManager.Update();
+                _injectionManager.Update();
                 _hackManager.Update();
             }));
         }
