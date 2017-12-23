@@ -668,9 +668,8 @@ namespace SM64_Diagnostic
             this.tabPageDisassembly = new System.Windows.Forms.TabPage();
             this.buttonDisMore = new System.Windows.Forms.Button();
             this.buttonDisGo = new System.Windows.Forms.Button();
-            this.maskedTextBoxDisStart = new System.Windows.Forms.MaskedTextBox();
             this.labelDisStart = new System.Windows.Forms.Label();
-            this.richTextBoxDissasembly = new RichTextBoxEx();
+            this.richTextBoxDissasembly = new SM64_Diagnostic.Controls.RichTextBoxEx();
             this.tabPageHacks = new System.Windows.Forms.TabPage();
             this.splitContainerHacks = new System.Windows.Forms.SplitContainer();
             this.groupBoxHackRam = new System.Windows.Forms.GroupBox();
@@ -959,6 +958,12 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.tabPageScripts = new System.Windows.Forms.TabPage();
+            this.richTextBoxExScript = new SM64_Diagnostic.Controls.RichTextBoxEx();
+            this.labelScriptAddress = new System.Windows.Forms.Label();
+            this.textBoxDisAddress = new System.Windows.Forms.TextBox();
+            this.textBoxScriptAddress = new System.Windows.Forms.TextBox();
+            this.buttonScriptGo = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1261,6 +1266,7 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.tabPageScripts.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1428,6 +1434,7 @@ namespace SM64_Diagnostic
             this.tabControlMain.Controls.Add(this.tabPageModel);
             this.tabControlMain.Controls.Add(this.tabPageExpressions);
             this.tabControlMain.Controls.Add(this.tabPageDisassembly);
+            this.tabControlMain.Controls.Add(this.tabPageScripts);
             this.tabControlMain.Controls.Add(this.tabPageHacks);
             this.tabControlMain.Controls.Add(this.tabPageCamHack);
             this.tabControlMain.Controls.Add(this.tabPageQuarterFrame);
@@ -1440,7 +1447,6 @@ namespace SM64_Diagnostic
             this.tabControlMain.SelectedIndex = 0;
             this.tabControlMain.Size = new System.Drawing.Size(923, 489);
             this.tabControlMain.TabIndex = 3;
-            this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             // 
             // tabPageObjects
             // 
@@ -9246,9 +9252,9 @@ namespace SM64_Diagnostic
             // tabPageDisassembly
             // 
             this.tabPageDisassembly.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageDisassembly.Controls.Add(this.textBoxDisAddress);
             this.tabPageDisassembly.Controls.Add(this.buttonDisMore);
             this.tabPageDisassembly.Controls.Add(this.buttonDisGo);
-            this.tabPageDisassembly.Controls.Add(this.maskedTextBoxDisStart);
             this.tabPageDisassembly.Controls.Add(this.labelDisStart);
             this.tabPageDisassembly.Controls.Add(this.richTextBoxDissasembly);
             this.tabPageDisassembly.Location = new System.Drawing.Point(4, 22);
@@ -9278,15 +9284,6 @@ namespace SM64_Diagnostic
             this.buttonDisGo.TabIndex = 5;
             this.buttonDisGo.Text = "Go";
             this.buttonDisGo.UseVisualStyleBackColor = true;
-            // 
-            // maskedTextBoxDisStart
-            // 
-            this.maskedTextBoxDisStart.Location = new System.Drawing.Point(79, 2);
-            this.maskedTextBoxDisStart.Margin = new System.Windows.Forms.Padding(2);
-            this.maskedTextBoxDisStart.Mask = "\\0xaaAAAAAA";
-            this.maskedTextBoxDisStart.Name = "maskedTextBoxDisStart";
-            this.maskedTextBoxDisStart.Size = new System.Drawing.Size(87, 20);
-            this.maskedTextBoxDisStart.TabIndex = 4;
             // 
             // labelDisStart
             // 
@@ -12583,6 +12580,67 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
+            // tabPageScripts
+            // 
+            this.tabPageScripts.Controls.Add(this.buttonScriptGo);
+            this.tabPageScripts.Controls.Add(this.textBoxScriptAddress);
+            this.tabPageScripts.Controls.Add(this.labelScriptAddress);
+            this.tabPageScripts.Controls.Add(this.richTextBoxExScript);
+            this.tabPageScripts.Location = new System.Drawing.Point(4, 22);
+            this.tabPageScripts.Name = "tabPageScripts";
+            this.tabPageScripts.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageScripts.Size = new System.Drawing.Size(915, 463);
+            this.tabPageScripts.TabIndex = 20;
+            this.tabPageScripts.Text = "Scripts";
+            // 
+            // richTextBoxExScript
+            // 
+            this.richTextBoxExScript.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxExScript.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxExScript.Location = new System.Drawing.Point(2, 31);
+            this.richTextBoxExScript.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxExScript.Name = "richTextBoxExScript";
+            this.richTextBoxExScript.ReadOnly = true;
+            this.richTextBoxExScript.Size = new System.Drawing.Size(911, 430);
+            this.richTextBoxExScript.TabIndex = 1;
+            this.richTextBoxExScript.Text = "";
+            // 
+            // labelScriptAddress
+            // 
+            this.labelScriptAddress.AutoSize = true;
+            this.labelScriptAddress.Location = new System.Drawing.Point(2, 9);
+            this.labelScriptAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelScriptAddress.Name = "labelScriptAddress";
+            this.labelScriptAddress.Size = new System.Drawing.Size(73, 13);
+            this.labelScriptAddress.TabIndex = 5;
+            this.labelScriptAddress.Text = "Start Address:";
+            // 
+            // textBoxDisAddress
+            // 
+            this.textBoxDisAddress.Location = new System.Drawing.Point(73, 3);
+            this.textBoxDisAddress.Name = "textBoxDisAddress";
+            this.textBoxDisAddress.Size = new System.Drawing.Size(93, 20);
+            this.textBoxDisAddress.TabIndex = 7;
+            // 
+            // textBoxScriptAddress
+            // 
+            this.textBoxScriptAddress.Location = new System.Drawing.Point(73, 6);
+            this.textBoxScriptAddress.Name = "textBoxScriptAddress";
+            this.textBoxScriptAddress.Size = new System.Drawing.Size(100, 20);
+            this.textBoxScriptAddress.TabIndex = 6;
+            // 
+            // buttonScriptGo
+            // 
+            this.buttonScriptGo.Location = new System.Drawing.Point(178, 5);
+            this.buttonScriptGo.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonScriptGo.Name = "buttonScriptGo";
+            this.buttonScriptGo.Size = new System.Drawing.Size(62, 20);
+            this.buttonScriptGo.TabIndex = 7;
+            this.buttonScriptGo.Text = "Go";
+            this.buttonScriptGo.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -12974,6 +13032,8 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.tabPageScripts.ResumeLayout(false);
+            this.tabPageScripts.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -13012,7 +13072,6 @@ namespace SM64_Diagnostic
         private System.Windows.Forms.DataGridView dataGridViewExpressions;
         private System.Windows.Forms.TabPage tabPageDisassembly;
         private System.Windows.Forms.Button buttonDisGo;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxDisStart;
         private System.Windows.Forms.Label labelDisStart;
         private RichTextBoxEx richTextBoxDissasembly;
         private System.Windows.Forms.TabPage tabPageMap;
@@ -13906,6 +13965,12 @@ namespace SM64_Diagnostic
         private Button buttonTransPosXnZn;
         private Button buttonTransReset;
         private CheckBox checkBoxModelLevel;
+        private TextBox textBoxDisAddress;
+        private TabPage tabPageScripts;
+        private Label labelScriptAddress;
+        private RichTextBoxEx richTextBoxExScript;
+        private TextBox textBoxScriptAddress;
+        private Button buttonScriptGo;
     }
 }
 

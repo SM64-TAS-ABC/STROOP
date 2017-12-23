@@ -17,7 +17,7 @@ namespace SM64_Diagnostic.Managers
         const int NumberOfLinesAdd = 40;
 
         RichTextBoxEx _output;
-        MaskedTextBox _textBoxStartAdd;
+        TextBox _textBoxStartAdd;
         uint _lastProcessAddress;
         Button _goButton, _moreButton;
         int _currentLines = NumberOfLinesAdd;
@@ -25,7 +25,7 @@ namespace SM64_Diagnostic.Managers
         public DisassemblyManager(Control tabControl)
         {
             _output = tabControl.Controls["richTextBoxDissasembly"] as RichTextBoxEx;
-            _textBoxStartAdd = tabControl.Controls["maskedTextBoxDisStart"] as MaskedTextBox;
+            _textBoxStartAdd = tabControl.Controls["textBoxDisAddress"] as TextBox;
             _goButton = tabControl.Controls["buttonDisGo"] as Button;
             _moreButton = tabControl.Controls["buttonDisMore"] as Button;
 

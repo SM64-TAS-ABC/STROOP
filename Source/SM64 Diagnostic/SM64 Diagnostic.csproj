@@ -166,6 +166,7 @@
     </Compile>
     <Compile Include="LoadingHandler.cs" />
     <Compile Include="Managers\CamHackManager.cs" />
+    <Compile Include="Managers\ScriptManager.cs" />
     <Compile Include="Managers\WaterManager.cs" />
     <Compile Include="Managers\ModelManager.cs" />
     <Compile Include="Managers\DebugManager.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Structs\RomHack.cs" />
     <Compile Include="Structs\SpawnHack.cs" />
+    <Compile Include="Utilities\BehaviorDecoder.cs" />
     <Compile Include="Utilities\Kernal32NativeMethods.cs" />
     <Compile Include="Utilities\MoreMath.cs" />
     <Compile Include="Utilities\ControlUtilities.cs" />

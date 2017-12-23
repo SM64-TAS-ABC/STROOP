@@ -59,7 +59,7 @@
   <Data groupList="Expanded" type="int" address="0x1A0" offset="Object">Native Room</Data>
   <Data groupList="Expanded" offset="Special" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data groupList="Expanded" type="uint" address="0x68" offset="Object" useHex="true" isObject="true">Parent Object</Data>
-  <Data groupList="Expanded" type="uint" address="0x020C" offset="Object" useHex="true">Behavior Script</Data>
+  <Data groupList="Expanded" type="uint" address="0x020C" offset="Object" useHex="true" isScript="true">Behavior Script</Data>
   <Data groupList="Expanded" type="uint" address="0x14" offset="Object" useHex="true">Graphics</Data>
   <Data groupList="Expanded" type="uint" address="0x218" offset="Object" useHex="true">Model</Data>
   <Data groupList="Expanded" type="short" address="0x14" offset="Graphics">Shadow Radius</Data>

@@ -72,6 +72,8 @@ namespace SM64_Diagnostic
             Config.Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
             Config.Stream.OnClose += _sm64Stream_OnClose;
 
+            currentContext.StroopMainForm = this;
+
             currentContext.DisassemblyManager = new DisassemblyManager(tabPageDisassembly);
             currentContext.InjectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
             currentContext.HackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
@@ -112,6 +114,7 @@ namespace SM64_Diagnostic
             currentContext.ObjectManager = new ObjectManager(_objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
             currentContext.OptionsManager = new OptionsManager(tabPageOptions);
             currentContext.TestingManager = new TestingManager(tabPageTesting);
+            currentContext.ScriptManager = new ScriptManager(tabPageScripts);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
@@ -648,9 +651,9 @@ namespace SM64_Diagnostic
             _objSlotResizing = false;
         }
 
-        private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
+        public void SwitchTab(string name)
         {
-
+            tabControlMain.SelectTab(name);
         }
     }
 }

@@ -136,6 +136,20 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        private static List<ToolStripMenuItem> _scriptDropDownMenu;
+        public static List<ToolStripMenuItem> ScriptDropDownMenu
+        {
+            get
+            {
+                if (_scriptDropDownMenu == null)
+                {
+                    _scriptDropDownMenu = new List<ToolStripMenuItem>();
+                    _scriptDropDownMenu.Add(new ToolStripMenuItem("View Script"));
+                }
+                return _scriptDropDownMenu;
+            }
+        }
+
         static ToolTip _toolTip;
         public static ToolTip AddressToolTip
         {
@@ -539,6 +553,11 @@ namespace SM64_Diagnostic.Controls
                 {
                     ObjectDropDownMenu.ForEach(d => Menu.Items.Add(d));
                 }
+                ScriptDropDownMenu.ForEach(d => Menu.Items.Remove(d));
+                if (_watchVar.IsScript)
+                {
+                    ScriptDropDownMenu.ForEach(d => Menu.Items.Add(d));
+                }
             }
         }
 
@@ -685,6 +704,15 @@ namespace SM64_Diagnostic.Controls
                         if (ManagerContext.Current.ObjectSlotManager.ObjectSlots.Count(s => s.Address == objAddress) > 0)
                             slotManager.SelectedSlotsAddresses.Add(objAddress);
                     }
+                    break;
+                case "View Script":
+                    if (_watchVar.ByteCount != 4 || OffsetList.First() == 0)
+                        return;
+
+                    ScriptManager scriptManager = ManagerContext.Current.ScriptManager;
+                    var scriptAddress = BitConverter.ToUInt32(_watchVar.GetByteData(OffsetList.First()), 0);
+                    scriptManager.Go(scriptAddress);
+                    ManagerContext.Current.StroopMainForm.SwitchTab("tabPageScripts");
                     break;
                 case "Highlight":
                     var toolItem = (e.ClickedItem as ToolStripMenuItem);

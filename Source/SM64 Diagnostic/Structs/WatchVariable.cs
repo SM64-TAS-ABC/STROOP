@@ -59,6 +59,7 @@ namespace SM64_Diagnostic.Structs
         public UInt64? Mask;
         public bool IsBool;
         public bool IsObject;
+        public bool IsScript;
         public bool UseHex;
         public bool InvertBool;
         public bool IsAngle;
