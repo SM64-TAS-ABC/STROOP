@@ -18,7 +18,7 @@ namespace SM64_Diagnostic.Utilities
             Jump = 0x04,
             ForLoopBegin = 0x05,
             ForLoopEnd = 0x06,
-            BackCommand = 0x07,
+            JumpBack = 0x07,
             LoopStart = 0x08,
             LoopEnd = 0x09,
             Empty_0A = 0x0A,
@@ -39,9 +39,9 @@ namespace SM64_Diagnostic.Utilities
             Empty_19 = 0x19,
             Empty_1A = 0x1A,
             SetModelID = 0x1B,
-            LoadChildObjectAndStore = 0x1C,
+            SpawnChildObject = 0x1C,
             Deactivate = 0x1D,
-            MoveToGround = 0x1E,
+            PositionOnGround = 0x1E,
             SetWaves = 0x1F,
             Cmd_20 = 0x20,
             ConfigAsBillboard = 0x21,
@@ -55,11 +55,11 @@ namespace SM64_Diagnostic.Utilities
             LoadChildObjectWParam = 0x29,
             SetHitbox = 0x2A,
             SetHitboxSphere2 = 0x2B,
-            LoadChildObject = 0x2C,
+            SpawnObject = 0x2C,
             SetHome = 0x2D,
             Cmd_2E = 0x2E,
             Cmd_2F = 0x2F,
-            SetGravity = 0x30,
+            SetPhysics = 0x30,
             Cmd_31 = 0x31,
             SetScaleUniform = 0x32,
             SetChildObject = 0x33,
@@ -78,7 +78,7 @@ namespace SM64_Diagnostic.Utilities
             { BehaviorCommandType.Jump, 8 },
             { BehaviorCommandType.ForLoopBegin, 4 },
             { BehaviorCommandType.ForLoopEnd, 4 },
-            { BehaviorCommandType.BackCommand, 4 },
+            { BehaviorCommandType.JumpBack, 4 },
             { BehaviorCommandType.LoopStart, 4 },
             { BehaviorCommandType.LoopEnd, 4 },
             { BehaviorCommandType.Empty_0A, 4 },
@@ -94,14 +94,14 @@ namespace SM64_Diagnostic.Utilities
             { BehaviorCommandType.Cmd_14, 8 },
             { BehaviorCommandType.Cmd_15, 4 },
             { BehaviorCommandType.Cmd_16, 8 },
-            { BehaviorCommandType.Cmd_17, 4 },
+            { BehaviorCommandType.Cmd_17, 8 },
             { BehaviorCommandType.Empty_18, 4 },
             { BehaviorCommandType.Empty_19, 4 },
             { BehaviorCommandType.Empty_1A, 4 },
             { BehaviorCommandType.SetModelID, 4 },
-            { BehaviorCommandType.LoadChildObjectAndStore, 12 },
+            { BehaviorCommandType.SpawnChildObject, 12 },
             { BehaviorCommandType.Deactivate, 4 },
-            { BehaviorCommandType.MoveToGround, 4 },
+            { BehaviorCommandType.PositionOnGround, 4 },
             { BehaviorCommandType.SetWaves, 4 },
             { BehaviorCommandType.Cmd_20, 4 },
             { BehaviorCommandType.ConfigAsBillboard, 4 },
@@ -112,22 +112,44 @@ namespace SM64_Diagnostic.Utilities
             { BehaviorCommandType.Cmd_26, 4 },
             { BehaviorCommandType.SetUInt32, 8 },
             { BehaviorCommandType.Animate, 4 },
-            { BehaviorCommandType.LoadChildObjectWParam, 29 },
-            { BehaviorCommandType.SetHitbox, 4 },
-            { BehaviorCommandType.SetHitboxSphere2, 4 },
-            { BehaviorCommandType.LoadChildObject, 4 },
+            { BehaviorCommandType.LoadChildObjectWParam, 12 },
+            { BehaviorCommandType.SetHitbox, 8 },
+            { BehaviorCommandType.SetHitboxSphere2, 12 },
+            { BehaviorCommandType.SpawnObject, 12 },
             { BehaviorCommandType.SetHome, 4 },
-            { BehaviorCommandType.Cmd_2E, 4 },
-            { BehaviorCommandType.Cmd_2F, 4 },
-            { BehaviorCommandType.SetGravity, 4 },
-            { BehaviorCommandType.Cmd_31, 4 },
+            { BehaviorCommandType.Cmd_2E, 8 },
+            { BehaviorCommandType.Cmd_2F, 8},
+            { BehaviorCommandType.SetPhysics, 20 },
+            { BehaviorCommandType.Cmd_31, 8 },
             { BehaviorCommandType.SetScaleUniform, 4 },
             { BehaviorCommandType.SetChildObject, 4 },
             { BehaviorCommandType.Cmd_34, 4 },
             { BehaviorCommandType.Cmd_35, 4 },
-            { BehaviorCommandType.Cmd_36, 4 },
-            { BehaviorCommandType.Cmd_37, 4 },
+            { BehaviorCommandType.Cmd_36, 8 },
+            { BehaviorCommandType.Cmd_37, 8 },
         };
+
+        static Dictionary<short, string> OffsetNames = new Dictionary<short, string>()
+        {
+            {0x8C, "flags"},
+            {0x9C, "collision_timer"},
+            {0xA0, "x"},
+            {0xA4, "y"},
+            {0xA8, "z"},
+            {0xAC, "x_speed"},
+            {0xB0, "y_speed"},
+            {0xB4, "z_speed"},
+            {0xB8, "h_speed"},
+            {0xE4, "gravity"},
+        };
+
+        private static string GetOffsetName(short offset)
+        {
+            if (OffsetNames.ContainsKey(offset))
+                return $".{OffsetNames[offset]}";
+            else
+                return $"[0x{offset:X2}]";
+        }
 
         public static string Decode(uint address)
         {
@@ -159,28 +181,128 @@ namespace SM64_Diagnostic.Utilities
             switch (cmd)
             {
                 case BehaviorCommandType.Start:
-                    byte processGroup = stream.GetByte(address++);
-                    decoded = $"obj.process_group = 0x{processGroup:X2}";
-                    break;
+                    {
+                        byte processGroup = stream.GetByte(address++);
+                        decoded = $"obj.process_group = 0x{processGroup:X2}";
+                        break;
+                    }
                 case BehaviorCommandType.LoopStart:
-                    decoded = "while(True):";
-                    incrementIndentation = true;
-                    break;
+                    {
+                        decoded = "while(True):";
+                        incrementIndentation = true;
+                        break;
+                    }
                 case BehaviorCommandType.LoopEnd:
-                    decoded = "";
-                    _indentationLevel--;
-                    break;
+                    {
+                        decoded = "";
+                        _indentationLevel--;
+                        break;
+                    }
                 case BehaviorCommandType.Call:
-                    address += 3; // Ignored
-                    uint function = stream.GetUInt32(address);
-                    decoded = $"fn{function:X8}()";
-                    break;
+                    {
+                        address += 3; // Ignored
+                        uint function = stream.GetUInt32(address);
+                        decoded = $"fn{function:X8}()";
+                        break;
+                    }
                 case BehaviorCommandType.LogicalOr:
-                    short offset = (short) (0x88 + stream.GetByte(address++) * 4);
-                    ushort operand = stream.GetUInt16(address);
-                    decoded = $"obj[0x{offset:X3}] |= 0x{operand}";
-                    break; 
-                
+                    {
+                        short offset = (short)(0x88 + stream.GetByte(address++) * 4);
+                        ushort operand = BitConverter.ToUInt16(stream.ReadRam(address, sizeof(UInt16)), 0);
+                        decoded = $"obj{GetOffsetName(offset)} |= 0x{operand:X4}";
+                        break;
+                    }
+                case BehaviorCommandType.JumpBack:
+                    {
+                        decoded = $"ExecutePrevious()";
+                        break;
+                    }
+                case BehaviorCommandType.SetHitbox:
+                    {
+                        address += 3; // Ignored
+                        UInt32 hitboxPtr = BitConverter.ToUInt32(stream.ReadRam(address, sizeof(UInt32)), 0);
+                        decoded = $"obj.hitbox_ptr = 0x{hitboxPtr:X8}";
+                        break;
+                    }
+                case BehaviorCommandType.SetPositionOffset:
+                case BehaviorCommandType.SetParameter:
+                    {
+                        short offset = (short)(0x88 + stream.GetByte(address++) * 4);
+                        ushort operand = BitConverter.ToUInt16(stream.ReadRam(address, sizeof(UInt16)), 0);
+                        decoded = $"obj{GetOffsetName(offset)} += 0x{operand:X4}";
+                        break;
+                    }
+                case BehaviorCommandType.SetAnimationRate:
+                case BehaviorCommandType.SetSightDistance:
+                    {
+                        short offset = (short)(0x88 + stream.GetByte(address++) * 4);
+                        ushort operand = BitConverter.ToUInt16(stream.ReadRam(address, sizeof(UInt16)), 0);
+                        decoded = $"obj{GetOffsetName(offset)} = 0x{operand:X4}";
+                        break;
+                    }
+                case BehaviorCommandType.PositionOnGround:
+                    {
+                        decoded = $"obj.position_on_ground()\nobj[0xEC] = 2";
+                        break;
+                    }
+                case BehaviorCommandType.SetHitboxSphere:
+                    {
+                        address += 3;
+                        UInt16 xz = stream.GetUInt16(address);
+                        address += 2;
+                        UInt16 y = stream.GetUInt16(address);
+                        decoded = $"obj.set_sphere_hitbox(radius_xz={xz}, radius_y={y})";
+                        break;
+                    }
+                case BehaviorCommandType.SetHome:
+                    {
+                        decoded = $"obj.set_current_pos_as_home()";
+                        break;
+                    }
+                case BehaviorCommandType.SetPhysics:
+                    {
+                        address += 3;
+                        UInt16 minWallDistance = stream.GetUInt16(address);
+                        address += 2;
+                        float floorHeight = stream.GetUInt16(address) / 100.0f;
+                        address += 2;
+                        float bounce = stream.GetUInt16(address) / 100.0f;
+                        address += 2;
+                        float drag = stream.GetUInt16(address) / 100.0f;
+                        address += 2;
+                        float v_174 = stream.GetUInt16(address) / 100.0f;
+                        address += 2;
+                        float buoyancy = stream.GetUInt16(address) / 100.0f;
+                        address += 2;
+                        address += 4; // Ignored?
+                        decoded = $"SetGravity(min_wall_distance={minWallDistance}, floor_height={floorHeight}, bounce={bounce}, drag={drag}, obj[0x174] = {v_174}), bouyancy={buoyancy})";
+                        break;
+                    }
+                case BehaviorCommandType.Animate:
+                    {
+                        byte number = stream.GetByte(address++);
+                        decoded = $"obj.animate(animation_number={number})";
+                        break;
+                    }
+                case BehaviorCommandType.SpawnChildObject:
+                    {
+                        address += 3; // Ignored
+                        UInt32 modelId = stream.GetUInt32(address);
+                        address += 4;
+                        UInt32 behavior = stream.GetUInt32(address);
+                        decoded = $"obj.SpawnChildObject(model=0x{modelId:X8}, behavior=0x{behavior:X8})";
+                        break;
+                    }
+                case BehaviorCommandType.SpawnObject:
+                    {
+                        address += 3; // Ignored
+                        UInt32 modelId = stream.GetUInt32(address);
+                        address += 4;
+                        UInt32 behavior = stream.GetUInt32(address);
+                        decoded = $"SpawnObject(model=0x{modelId:X8}, behavior=0x{behavior:X8})";
+                        break;
+                    }
+
                 case BehaviorCommandType.Empty_0A:
                 case BehaviorCommandType.Empty_0B:
                 case BehaviorCommandType.Empty_18:
@@ -195,9 +317,9 @@ namespace SM64_Diagnostic.Utilities
             }
 
             string indentation = new String('\t', _indentationLevel);
-            decoded = $"{indentation}{decoded}\n";
+            decoded = $"{cmdByte:X2} {indentation}{decoded}\n";
 
-            // Increment address
+            // Incremet address
             lineAddress += cmd.HasValue && BehaviorCommandLength.ContainsKey(cmd.Value) 
                 ? BehaviorCommandLength[cmd.Value] : 4;
 
