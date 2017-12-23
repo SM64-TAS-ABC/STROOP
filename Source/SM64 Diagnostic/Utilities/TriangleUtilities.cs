@@ -73,26 +73,39 @@ namespace SM64_Diagnostic.Utilities
             triangleInfoForm.ShowDialog();
         }
 
-        public static void NeutralizeAllTriangles()
+        public static void NeutralizeTriangles(TriangleClassification? classification = null)
         {
             List<uint> triangleAddresses = GetLevelTriangleAddresses();
             triangleAddresses.ForEach(address =>
             {
-                ButtonUtilities.NeutralizeTriangle(address);
+                float ynorm = Config.Stream.GetSingle(address + Config.TriangleOffsets.NormY);
+                TriangleClassification triClassification = CalculateClassification(ynorm);
+                if (classification == null || classification == triClassification)
+                {
+                    ButtonUtilities.NeutralizeTriangle(address);
+                }
             });
         }
 
-        public static void DisableAllCamCollision()
+        public static void DisableCamCollision(TriangleClassification? classification = null)
         {
             List<uint> triangleAddresses = GetLevelTriangleAddresses();
             triangleAddresses.ForEach(address =>
             {
-                //float ynorm = Config.Stream.GetSingle(address + Config.TriangleOffsets.NormY);
-                //if (ynorm <= 0.01 && ynorm >= -0.01)
-                //{
+                float ynorm = Config.Stream.GetSingle(address + Config.TriangleOffsets.NormY);
+                TriangleClassification triClassification = CalculateClassification(ynorm);
+                if (classification == null || classification == triClassification)
+                {
                     ButtonUtilities.DisableCamCollisionForTriangle(address);
-                //}
+                }
             });
+        }
+
+        public static TriangleClassification CalculateClassification(double yNorm)
+        {
+            if (yNorm > 0.01) return TriangleClassification.Floor;
+            if (yNorm < -0.01) return TriangleClassification.Ceiling;
+            return TriangleClassification.Wall;
         }
     }
 } 

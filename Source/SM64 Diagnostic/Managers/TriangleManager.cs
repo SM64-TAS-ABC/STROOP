@@ -241,10 +241,41 @@ namespace SM64_Diagnostic.Managers
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowAllTris"] as Button).Click
                 += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetAllTriangles());
 
-            (splitContainerTriangles.Panel1.Controls["buttonTriangleNeutralizeAllTriangles"] as Button).Click
-                += (sender, e) => TriangleUtilities.NeutralizeAllTriangles();
-            (splitContainerTriangles.Panel1.Controls["buttonTriangleDisableAllCamCollision"] as Button).Click
-                += (sender, e) => TriangleUtilities.DisableAllCamCollision();
+            var buttonTriangleNeutralizeAllTriangles = splitContainerTriangles.Panel1.Controls["buttonTriangleNeutralizeAllTriangles"] as Button;
+            buttonTriangleNeutralizeAllTriangles.Click += (sender, e) => TriangleUtilities.NeutralizeTriangles();
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonTriangleNeutralizeAllTriangles,
+                new List<string>() {
+                    "Neutralize All Triangles",
+                    "Neutralize Wall Triangles",
+                    "Neutralize Floor Triangles",
+                    "Neutralize Ceiling Triangles",
+                },
+                new List<Action>() {
+                    () => TriangleUtilities.NeutralizeTriangles(),
+                    () => TriangleUtilities.NeutralizeTriangles(TriangleClassification.Wall),
+                    () => TriangleUtilities.NeutralizeTriangles(TriangleClassification.Floor),
+                    () => TriangleUtilities.NeutralizeTriangles(TriangleClassification.Ceiling),
+                });
+
+            var buttonTriangleDisableAllCamCollision = splitContainerTriangles.Panel1.Controls["buttonTriangleDisableAllCamCollision"] as Button;
+            buttonTriangleDisableAllCamCollision.Click += (sender, e) => TriangleUtilities.DisableCamCollision();
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonTriangleDisableAllCamCollision,
+                new List<string>() {
+                    "Disable Cam Collision for All Triangles",
+                    "Disable Cam Collision for Wall Triangles",
+                    "Disable Cam Collision for Floor Triangles",
+                    "Disable Cam Collision for Ceiling Triangles",
+                },
+                new List<Action>() {
+                    () => TriangleUtilities.DisableCamCollision(),
+                    () => TriangleUtilities.DisableCamCollision(TriangleClassification.Wall),
+                    () => TriangleUtilities.DisableCamCollision(TriangleClassification.Floor),
+                    () => TriangleUtilities.DisableCamCollision(TriangleClassification.Ceiling),
+                });
         }
 
         private short[] GetTriangleCoordinates(uint? nullableTriAddress = null)

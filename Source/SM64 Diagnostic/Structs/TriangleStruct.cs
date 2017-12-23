@@ -105,7 +105,7 @@ namespace SM64_Diagnostic.Structs
 
             AssociatedObject = Config.Stream.GetUInt32(triangleAddress + Config.TriangleOffsets.AssociatedObject);
 
-            Classification = CalculateClassification(NormY);
+            Classification = TriangleUtilities.CalculateClassification(NormY);
 
             XProjection = (Flags & Config.TriangleOffsets.ProjectionMask) != 0;
             BelongsToObject = (Flags & Config.TriangleOffsets.BelongsToObjectMask) != 0;
@@ -149,13 +149,6 @@ namespace SM64_Diagnostic.Structs
         public static string GetFieldNameString()
         {
             return String.Join("\t", FieldNameList);
-        }
- 
-        public static TriangleClassification CalculateClassification(double yNorm)
-        {
-            if (yNorm > 0.01) return TriangleClassification.Floor;
-            if (yNorm < -0.01) return TriangleClassification.Ceiling;
-            return TriangleClassification.Wall;
         }
 
         public bool IsWall()
