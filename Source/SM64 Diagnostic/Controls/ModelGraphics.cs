@@ -126,6 +126,15 @@ namespace SM64_Diagnostic.Controls
                 _cameraManualAngleLat += delta.X;
                 _cameraManualAngleLong += -delta.Y;
 
+                if (_cameraManualAngleLong > Math.PI / 2 - 0.001f)
+                {
+                    _cameraManualAngleLong = (float) (Math.PI / 2) - 0.001f;
+                }
+                else if (_cameraManualAngleLong < -Math.PI / 2 + 0.001f)
+                {
+                    _cameraManualAngleLong = (float) (-Math.PI / 2) + 0.001f;
+                }
+
                 // Update mouse coordinates for next time
                 _pMouseCoords = new Vector2(mouseState.X, mouseState.Y);
 
