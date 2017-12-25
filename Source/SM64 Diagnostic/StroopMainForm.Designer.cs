@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -1012,7 +1012,7 @@ namespace SM64_Diagnostic
             this.button29 = new System.Windows.Forms.Button();
             this.button30 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
-            this.noTearFlowLayoutPanel1 = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.NoTearFlowLayoutPanelArea = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -9300,8 +9300,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -12757,7 +12757,7 @@ namespace SM64_Diagnostic
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.noTearFlowLayoutPanel1);
+            this.splitContainer1.Panel2.Controls.Add(this.NoTearFlowLayoutPanelArea);
             this.splitContainer1.Panel2MinSize = 0;
             this.splitContainer1.Size = new System.Drawing.Size(915, 463);
             this.splitContainer1.SplitterDistance = 208;
@@ -13228,18 +13228,18 @@ namespace SM64_Diagnostic
             this.button31.Text = "Goto V2";
             this.button31.UseVisualStyleBackColor = true;
             // 
-            // noTearFlowLayoutPanel1
+            // NoTearFlowLayoutPanelArea
             // 
-            this.noTearFlowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoTearFlowLayoutPanelArea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanel1.AutoScroll = true;
-            this.noTearFlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.noTearFlowLayoutPanel1.Location = new System.Drawing.Point(2, 4);
-            this.noTearFlowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
-            this.noTearFlowLayoutPanel1.Name = "noTearFlowLayoutPanel1";
-            this.noTearFlowLayoutPanel1.Size = new System.Drawing.Size(707, 453);
-            this.noTearFlowLayoutPanel1.TabIndex = 7;
+            this.NoTearFlowLayoutPanelArea.AutoScroll = true;
+            this.NoTearFlowLayoutPanelArea.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.NoTearFlowLayoutPanelArea.Location = new System.Drawing.Point(2, 4);
+            this.NoTearFlowLayoutPanelArea.Margin = new System.Windows.Forms.Padding(2);
+            this.NoTearFlowLayoutPanelArea.Name = "NoTearFlowLayoutPanelArea";
+            this.NoTearFlowLayoutPanelArea.Size = new System.Drawing.Size(707, 453);
+            this.NoTearFlowLayoutPanelArea.TabIndex = 7;
             // 
             // StroopMainForm
             // 
@@ -14629,7 +14629,7 @@ namespace SM64_Diagnostic
         private Button button29;
         private Button button30;
         private Button button31;
-        private NoTearFlowLayoutPanel noTearFlowLayoutPanel1;
+        private NoTearFlowLayoutPanel NoTearFlowLayoutPanelArea;
     }
 }
 

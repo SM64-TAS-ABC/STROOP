@@ -30,6 +30,7 @@ namespace SM64_Diagnostic.Managers
         public ActionsManager ActionsManager;
         public PuManager PuManager;
         public FileManager FileManager;
+        public AreaManager AreaManager;
         public DataManager QuarterFrameManager;
         public DataManager CameraHackManager;
         public ScriptManager ScriptManager;

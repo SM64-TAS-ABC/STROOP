@@ -25,7 +25,7 @@ namespace SM64_Diagnostic
         InputImageGui _inputImageGui = new InputImageGui();
         FileImageGui _fileImageGui = new FileImageGui();
         List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, 
-            _debugData, _actionsData, _waterData, _inputData, _fileData, _quarterFrameData, _camHackData;
+            _debugData, _actionsData, _waterData, _inputData, _fileData, _areaData, _quarterFrameData, _camHackData;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
         List<RomHack> _romHacks;
@@ -109,6 +109,7 @@ namespace SM64_Diagnostic
             currentContext.DebugManager = new DebugManager(_debugData, tabPageDebug, noTearFlowLayoutPanelDebug);
             currentContext.PuManager = new PuManager(groupBoxPuController);
             currentContext.FileManager = new FileManager(_fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
+            currentContext.AreaManager = new AreaManager(tabPageArea, _areaData, NoTearFlowLayoutPanelArea);
             currentContext.QuarterFrameManager = new DataManager(_quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
             currentContext.CameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
             currentContext.ObjectManager = new ObjectManager(_objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
@@ -201,6 +202,8 @@ namespace SM64_Diagnostic
             _fileData = XmlConfigParser.OpenWatchVarData(@"Config/FileData.xml", "FileDataSchema.xsd");
             loadingForm.UpdateStatus("Loading File Image Associations", statusNum++);
             XmlConfigParser.OpenFileImageAssoc(@"Config/FileImageAssociations.xml", _fileImageGui);
+            loadingForm.UpdateStatus("Loading Area Data", statusNum++);
+            _areaData = XmlConfigParser.OpenWatchVarData(@"Config/AreaData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Quarter Frame Data", statusNum++);
             _quarterFrameData = XmlConfigParser.OpenWatchVarData(@"Config/QuarterFrameData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Camera Hack Data", statusNum++);
