@@ -20,7 +20,6 @@ namespace SM64_Diagnostic.Managers
 
         public uint SelectedAreaAddress { get {return _selectedAreaAddress; } }
         private uint _selectedAreaAddress;
-        public int SelectedAreaIndex { get { return Config.Area.GetAreaIndex(_selectedAreaAddress) ?? 0; } }
 
         List<RadioButton> _selectedAreaRadioButtons;
         CheckBox _selectCurrentAreaCheckbox;
