@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrianglesData>
+
+
+  <Data type="uint" addressUS="0x8033B200" addressJP="0x8033B200" offset="Relative" useHex="true">Test 1</Data>
+  <Data type="uint" addressUS="0x8032DDCC" addressJP="0x8032DDCC" offset="Relative" useHex="true">Test 2</Data>
+
   <Data offset="Special" specialType="Classification">Classification</Data>
 
   <Data type="ushort" address="0x00" offset="Triangle">Surface Type</Data>
