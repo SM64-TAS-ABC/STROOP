@@ -18,10 +18,15 @@ namespace SM64_Diagnostic.Managers
     {
         public static AreaManager Instance = null;
 
+        public uint SelectedAreaAddress { get {return _selectedAreaAddress; } }
+        private uint _selectedAreaAddress;
+
         public AreaManager(Control tabControl, List<WatchVariable> areaWatchVars, NoTearFlowLayoutPanel noTearFlowLayoutPanel) 
             : base(areaWatchVars, noTearFlowLayoutPanel)
         {
             Instance = this;
+
+            _selectedAreaAddress = Config.Area.AreaStartAddress;
 
             SplitContainer splitContainerArea = tabControl.Controls["splitContainerArea"] as SplitContainer;
             

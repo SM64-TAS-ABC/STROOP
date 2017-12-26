@@ -237,7 +237,7 @@ namespace SM64_Diagnostic.Controls
                     output = new List<uint> { Config.Stream.GetUInt32(Config.WaterPointerAddress) };
                     break;
                 case OffsetType.Area:
-                    output = new List<uint> { Config.Area.AreaStartAddress };
+                    output = new List<uint> { AreaManager.Instance.SelectedAreaAddress };
                     break;
                 case OffsetType.HackedArea:
                     output = new List<uint> { Config.HackedAreaAddress };
