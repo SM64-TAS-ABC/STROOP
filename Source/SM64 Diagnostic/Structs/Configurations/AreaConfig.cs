@@ -18,6 +18,8 @@ namespace SM64_Diagnostic.Structs.Configurations
         public readonly uint CurrentAreaPointerAddressUS = 0x8032DDCC;
         public readonly uint CurrentAreaPointerAddressJP = 0x8032CE6C;
 
+        public readonly uint TerrainTypeOffset = 0x02;
+
         public int? GetAreaIndex(uint areaAddress)
         {
             for (int i = 0; i < 8; i++)

@@ -65,17 +65,17 @@ namespace SM64_Diagnostic.Managers
                 switch (specialVar.SpecialName)
                 {
                     case "CurrentAreaIndexMario":
-                        uint currentArea1 = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.AreaPointerOffset);
-                        (specialVar as DataContainer).Text = Config.Area.GetAreaIndex(currentArea1).ToString();
+                        uint currentAreaMario = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.AreaPointerOffset);
+                        (specialVar as DataContainer).Text = Config.Area.GetAreaIndex(currentAreaMario).ToString();
                         break;
 
                     case "CurrentAreaIndex":
-                        uint currentArea2 = Config.Stream.GetUInt32(Config.Area.CurrentAreaPointerAddress);
-                        (specialVar as DataContainer).Text = Config.Area.GetAreaIndex(currentArea2).ToString();
+                        uint currentArea = Config.Stream.GetUInt32(Config.Area.CurrentAreaPointerAddress);
+                        (specialVar as DataContainer).Text = Config.Area.GetAreaIndex(currentArea).ToString();
                         break;
 
                     case "AreaTerrainDescription":
-                        short terrainType = Config.Stream.GetInt16(_selectedAreaAddress + 0x02);
+                        short terrainType = Config.Stream.GetInt16(_selectedAreaAddress + Config.Area.TerrainTypeOffset);
                         (specialVar as DataContainer).Text = GetAreaDescription(terrainType);
                         break;
                 }
