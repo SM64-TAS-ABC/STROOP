@@ -21,6 +21,9 @@ namespace SM64_Diagnostic.Managers
         public uint SelectedAreaAddress { get {return _selectedAreaAddress; } }
         private uint _selectedAreaAddress;
 
+        List<RadioButton> _selectedAreaRadioButtons;
+        CheckBox _selectCurrentAreaCheckbox;
+
         public AreaManager(Control tabControl, List<WatchVariable> areaWatchVars, NoTearFlowLayoutPanel noTearFlowLayoutPanel) 
             : base(areaWatchVars, noTearFlowLayoutPanel)
         {
@@ -29,7 +32,13 @@ namespace SM64_Diagnostic.Managers
             _selectedAreaAddress = Config.Area.AreaStartAddress;
 
             SplitContainer splitContainerArea = tabControl.Controls["splitContainerArea"] as SplitContainer;
-            
+
+            _selectedAreaRadioButtons = new List<RadioButton>();
+            for (int i = 0; i < 8; i++)
+            {
+                _selectedAreaRadioButtons.Add(splitContainerArea.Panel1.Controls["radioButtonArea" + i] as RadioButton);
+            }
+            _selectCurrentAreaCheckbox = splitContainerArea.Panel1.Controls["checkBoxSelectCurrentArea"] as CheckBox;
         }
 
         protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
