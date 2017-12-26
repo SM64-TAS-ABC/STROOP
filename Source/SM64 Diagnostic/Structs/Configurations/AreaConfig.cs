@@ -23,5 +23,10 @@ namespace SM64_Diagnostic.Structs.Configurations
             }
             return null;
         }
+
+        public uint GetAreaAddress(int index)
+        {
+            return (uint)(AreaStartAddress + index * AreaStructSize);
+        }
     }
 }
