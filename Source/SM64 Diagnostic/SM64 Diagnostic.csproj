@@ -196,6 +196,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
+    <Compile Include="Structs\Configurations\AreaConfig.cs" />
     <Compile Include="Structs\Configurations\PositionControllerRelativeAngleConfig.cs" />
     <Compile Include="Structs\Configurations\TriangleConfig.cs" />
     <Compile Include="Structs\Configurations\WaypointConfig.cs" />

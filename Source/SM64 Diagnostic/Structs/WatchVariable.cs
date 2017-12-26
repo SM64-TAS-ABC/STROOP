@@ -146,6 +146,7 @@ namespace SM64_Diagnostic.Structs
             { "double", typeof(double) },
         };
 
+        // TODO add new offset types
         public enum OffsetType
         {
             Absolute,
@@ -164,6 +165,7 @@ namespace SM64_Diagnostic.Structs
             Animation,
             Waypoint,
             Water,
+            Area,
             HackedArea,
             CamHack,
             Special,

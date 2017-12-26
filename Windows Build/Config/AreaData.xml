@@ -1,116 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrianglesData>
-
-
   <Data type="uint" addressUS="0x8033B200" addressJP="0x8033B200" offset="Relative" useHex="true">Test 1</Data>
   <Data type="uint" addressUS="0x8032DDCC" addressJP="0x8032DDCC" offset="Relative" useHex="true">Test 2</Data>
 
-  <Data offset="Special" specialType="Classification">Classification</Data>
+  <Data type="byte" address="0x00" offset="Area">Area ID</Data>
+  <Data type="byte" address="0x01" offset="Area">Is Current Area</Data>
+  <Data type="short" address="0x02" offset="Area">Terrain Type</Data>
 
-  <Data type="ushort" address="0x00" offset="Triangle">Surface Type</Data>
-  <Data type="ushort" address="0x00" offset="Triangle">Surface Type</Data>
-  <Data type="byte" address="0x04" offset="Triangle" useHex="true">Flags</Data>
-  <Data type="byte" address="0x04" offset="Triangle" isBool="true" mask="0x08">X Projection</Data>
-  <Data type="byte" address="0x04" offset="Triangle" isBool="true" invertBool="true" mask="0x08">Z Projection</Data>
-  <Data type="byte" address="0x04" offset="Triangle" useHex="true" isBool="true" mask="0x01">Belongs to Object</Data>
-  <Data type="byte" address="0x04" offset="Triangle" useHex="true" isBool="true" mask="0x02">No Cam Collision</Data>
-  <Data type="byte" address="0x05" offset="Triangle">Room</Data>
-  <Data type="byte" address="0x03" offset="Triangle">Exertion Angle</Data>
-  <Data type="byte" address="0x02" offset="Triangle">Exertion Force Index</Data>
-  <Data type="short" address="0x00" offset="TriangleExertionForceTable">Exertion Force</Data>
+  <Data type="uint" address="0x04" offset="Area" useHex="true">Geo Layout Ptr</Data>
+  <Data type="uint" address="0x08" offset="Area" useHex="true">Collision Ptr</Data>
+  <Data type="uint" address="0x0C" offset="Area" useHex="true">Mystery 1</Data>
+  <Data type="uint" address="0x10" offset="Area" useHex="true">Mini Objects Ptr</Data>
 
-  <Data type="short" address="0x06" offset="Triangle">Y Min</Data>
-  <Data type="short" address="0x08" offset="Triangle">Y Max</Data>
-  <Data type="short" address="0x0A" offset="Triangle">X1</Data>
-  <Data type="short" address="0x0C" offset="Triangle">Y1</Data>
-  <Data type="short" address="0x0E" offset="Triangle">Z1</Data>
-  <Data type="short" address="0x10" offset="Triangle">X2</Data>
-  <Data type="short" address="0x12" offset="Triangle">Y2</Data>
-  <Data type="short" address="0x14" offset="Triangle">Z2</Data>
-  <Data type="short" address="0x16" offset="Triangle">X3</Data>
-  <Data type="short" address="0x18" offset="Triangle">Y3</Data>
-  <Data type="short" address="0x1A" offset="Triangle">Z3</Data>
-  <Data type="float" address="0x3C" offset="Mario" color="#ffcccc">Mario X</Data>
-  <Data type="float" address="0x40" offset="Mario" color="#ffcccc">Mario Y</Data>
-  <Data type="float" address="0x44" offset="Mario" color="#ffcccc">Mario Z</Data>
-  <Data offset="Special" specialType="ClosestVertex" color="#e5ccff">Closest Vertex</Data>
-  <Data offset="Special" specialType="ClosestVertexX" color="#e5ccff">Closest Vertex X</Data>
-  <Data offset="Special" specialType="ClosestVertexY" color="#e5ccff">Closest Vertex Y</Data>
-  <Data offset="Special" specialType="ClosestVertexZ" color="#e5ccff">Closest Vertex Z</Data>
-  
-  <Data offset="Special" specialType="Steepness" color="#ccd0ff">Steepness</Data>
-  <Data offset="Special" specialType="UpHillAngle" color="#ccd0ff">Uphill Angle</Data>
-  <Data offset="Special" specialType="DownHillAngle" color="#ccd0ff">Downhill Angle</Data>
-  <Data offset="Special" specialType="LeftHillAngle" color="#ccd0ff">Left Hill Angle</Data>
-  <Data offset="Special" specialType="RightHillAngle" color="#ccd0ff">Right Hill Angle</Data>
-  <Data type="ushort" address="0x24" offset="Mario" isAngle="true" color="#ffcccc">M. Yaw (Intended)</Data>
-  <Data type="ushort" address="0x2E" offset="Mario" isAngle="true" color="#ffcccc">M. Yaw (Facing)</Data>
-  <Data offset="Special" specialType="UpHillDeltaAngle" color="#e5ccff">Uphill DAngle</Data>
-  <Data offset="Special" specialType="DownHillDeltaAngle" color="#e5ccff">Downhill DAngle</Data>
-  <Data offset="Special" specialType="LeftHillDeltaAngle" color="#e5ccff">Left Hill DAngle</Data>
-  <Data offset="Special" specialType="RightHillDeltaAngle" color="#e5ccff">Right Hill DAngle</Data>
-  <Data type="float" address="0x1C" offset="Triangle">Normal X</Data>
-  <Data type="float" address="0x20" offset="Triangle">Normal Y</Data>
-  <Data type="float" address="0x24" offset="Triangle">Normal Z</Data>
-  <Data type="float" address="0x28" offset="Triangle">Normal Offset</Data>
-  <Data type="uint" address="0x2C" offset="Triangle" useHex="true" isObject="true">Associated Object</Data>
-  
-  <Data type="uint" address="0x68" offset="Mario" useHex="true" color="#ffeccc">Floor Triangle</Data>
-  <Data type="uint" address="0x60" offset="Mario" useHex="true" color="#ffeccc">Wall Triangle</Data>
-  <Data type="uint" address="0x64" offset="Mario" useHex="true" color="#ffeccc">Ceiling Triangle</Data>
-  <Data type="float" address="0x70" offset="Mario" color="#ffeccc">Floor Height</Data>
-  <Data type="float" address="0x6C" offset="Mario" color="#ffeccc">Ceiling Height</Data>
-  <Data offset="Special" specialType="DistanceAboveFloor" color="#cfffcc">Dist Above Floor</Data>
-  <Data offset="Special" specialType="DistanceBelowCeiling" color="#cfffcc">Dist Below Ceiling</Data>
-  <Data offset="Special" specialType="NormalDistAway" color="#e5ccff">Normal Dist Away</Data>
-  <Data offset="Special" specialType="VerticalDistAway" color="#e5ccff">Vertical Dist Away</Data>
-  <Data offset="Special" specialType="HeightOnSlope" color="#e5ccff">Height On Triangle</Data>
-  
-  <Data type="uint" addressUS="0x8038EE9C" addressJP="0x8038EE9C" offset="Relative" useHex="true" color="#d0d0d0">Tri List Pointer</Data>
-  <Data type="short" addressUS="0x8038EEA0" addressJP="0x8038EEA0" offset="Relative" color="#d0d0d0">Tri List Capacity</Data>
-  <Data type="int" addressUS="0x80361178" addressJP="0x8035FE08" offset="Relative" color="#d0d0d0">Level Tri Count</Data>
-  <Data offset="Special" specialType="ObjectTriCount" color="#d0d0d0">Object Tri Count</Data>
-  <Data type="int" addressUS="0x80361170" addressJP="0x8035FE00" offset="Relative" color="#d0d0d0">Total Tri Count</Data>
-  
-  <Data type="uint" addressUS="0x8038EE98" addressJP="0x8038EE98" offset="Relative" useHex="true" color="#d0d0d0">Node List Pointer</Data>
-  <Data type="int" addressUS="0x80361174" addressJP="0x8035FE04" offset="Relative" color="#d0d0d0">Level Node Count</Data>
-  <Data offset="Special" specialType="ObjectNodeCount" color="#d0d0d0">Object Node Count</Data>
-  <Data type="int" addressUS="0x8036116C" addressJP="0x8035FDFC" offset="Relative" color="#d0d0d0">Total Node Count</Data>
-  
-  <Data offset="Special" specialType="DistanceToV1" color="#e5ccff">Dist to V1</Data>
-  <Data offset="Special" specialType="YDistanceToV1" color="#e5ccff">YDist to V1</Data>
-  <Data offset="Special" specialType="XDistanceToV1" color="#e5ccff">XDist to V1</Data>
-  <Data offset="Special" specialType="ZDistanceToV1" color="#e5ccff">ZDist to V1</Data>
-  <Data offset="Special" specialType="HDistanceToV1" color="#e5ccff">HDist to V1</Data>
-  <Data offset="Special" specialType="DistanceToV2" color="#e5ccff">Dist to V2</Data>
-  <Data offset="Special" specialType="YDistanceToV2" color="#e5ccff">YDist to V2</Data>
-  <Data offset="Special" specialType="XDistanceToV2" color="#e5ccff">XDist to V2</Data>
-  <Data offset="Special" specialType="ZDistanceToV2" color="#e5ccff">ZDist to V2</Data>
-  <Data offset="Special" specialType="HDistanceToV2" color="#e5ccff">HDist to V2</Data>
-  <Data offset="Special" specialType="DistanceToV3" color="#e5ccff">Dist to V3</Data>
-  <Data offset="Special" specialType="YDistanceToV3" color="#e5ccff">YDist to V3</Data>
-  <Data offset="Special" specialType="XDistanceToV3" color="#e5ccff">XDist to V3</Data>
-  <Data offset="Special" specialType="ZDistanceToV3" color="#e5ccff">ZDist to V3</Data>
-  <Data offset="Special" specialType="HDistanceToV3" color="#e5ccff">HDist to V3</Data>
+  <Data type="uint" address="0x14" offset="Area" useHex="true">Warp Links Head Ptr</Data>
+  <Data type="uint" address="0x18" offset="Area" useHex="true">Mystery 2</Data>
+  <Data type="uint" address="0x1C" offset="Area" useHex="true">Mystery 3</Data>
+  <Data type="uint" address="0x20" offset="Area" useHex="true">Objects Head Ptr</Data>
 
-  <Data offset="Special" specialType="DistanceToLine12" color="#ccfffa">Dist to Line12</Data>
-  <Data offset="Special" specialType="DistanceToLine23" color="#ccfffa">Dist to Line23</Data>
-  <Data offset="Special" specialType="DistanceToLine13" color="#ccfffa">Dist to Line13</Data>
+  <Data type="uint" address="0x24" offset="Area" useHex="true">Level Camera Ptr</Data>
+  <Data type="uint" address="0x28" offset="Area" useHex="true">Mystery 4</Data>
+  <Data type="uint" address="0x2C" offset="Area" useHex="true">Mystery 5</Data>
+  <Data type="uint" address="0x30" offset="Area" useHex="true">Mystery 6</Data>
 
-  <Data offset="Special" specialType="AngleMarioToV1" color="#e5ccff">Angle Mario to V1</Data>
-  <Data offset="Special" specialType="DeltaAngleMarioToV1" color="#e5ccff">DAngle Mario to V1</Data>
-  <Data offset="Special" specialType="AngleV1ToMario" color="#e5ccff">Angle V1 to Mario</Data>
-  <Data offset="Special" specialType="AngleMarioToV2" color="#e5ccff">Angle Mario to V2</Data>
-  <Data offset="Special" specialType="DeltaAngleMarioToV2" color="#e5ccff">DAngle Mario to V2</Data>
-  <Data offset="Special" specialType="AngleV2ToMario" color="#e5ccff">Angle V2 to Mario</Data>
-  <Data offset="Special" specialType="AngleMarioToV3" color="#e5ccff">Angle Mario to V3</Data>
-  <Data offset="Special" specialType="DeltaAngleMarioToV3" color="#e5ccff">DAngle Mario to V3</Data>
-  <Data offset="Special" specialType="AngleV3ToMario" color="#e5ccff">Angle V3 to Mario</Data>
+  <Data type="byte" address="0x34" offset="Area" useHex="true">Level Dialog Index</Data>
+  <Data type="byte" address="0x35" offset="Area" useHex="true">Always 0xFF</Data>
 
-  <Data offset="Special" specialType="AngleV1ToV2" color="#ccd0ff">Angle V1 to V2</Data>
-  <Data offset="Special" specialType="AngleV2ToV1" color="#ccd0ff">Angle V2 to V1</Data>
-  <Data offset="Special" specialType="AngleV2ToV3" color="#ccd0ff">Angle V2 to V3</Data>
-  <Data offset="Special" specialType="AngleV3ToV2" color="#ccd0ff">Angle V3 to V2</Data>
-  <Data offset="Special" specialType="AngleV1ToV3" color="#ccd0ff">Angle V1 to V3</Data>
-  <Data offset="Special" specialType="AngleV3ToV1" color="#ccd0ff">Angle V3 to V1</Data>
+  <Data type="short" address="0x36" offset="Area" useHex="true">Music Param 1</Data>
+  <Data type="short" address="0x38" offset="Area" useHex="true">Music Param 2</Data>
+  <Data type="ushort" address="0x3A" offset="Area" useHex="true">Unused</Data>
 </TrianglesData>
