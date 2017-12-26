@@ -268,6 +268,7 @@ namespace SM64_Diagnostic
                 currentContext.CameraHackManager.Update(tabControlMain.SelectedTab == tabPageCamHack);
                 currentContext.MiscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
                 currentContext.TriangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
+                currentContext.AreaManager.Update(tabControlMain.SelectedTab == tabPageArea);
                 currentContext.DebugManager.Update(tabControlMain.SelectedTab == tabPageDebug);
                 currentContext.PuManager.Update(tabControlMain.SelectedTab == tabPagePu);
                 currentContext.TestingManager.Update(tabControlMain.SelectedTab == tabPageTesting);
@@ -535,6 +536,8 @@ namespace SM64_Diagnostic
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerDebug"] as SplitContainer;
             else if (selectedTabPage == tabPageMap)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMap"] as SplitContainer;
+            else if (selectedTabPage == tabPageArea)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerArea"] as SplitContainer;
             else if (selectedTabPage == tabPageModel)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerModel"] as SplitContainer;
             else if (selectedTabPage == tabPageHacks)
