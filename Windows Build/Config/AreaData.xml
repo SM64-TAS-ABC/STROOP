@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrianglesData>
-  <Data type="uint" addressUS="0x8033B200" addressJP="0x8033B200" offset="Relative" useHex="true">Test 1</Data>
-  <Data type="uint" addressUS="0x8032DDCC" addressJP="0x8032DDCC" offset="Relative" useHex="true">Test 2</Data>
+  <Data type="uint" addressUS="0x8033B200" addressJP="0x8033B200" offset="Relative" useHex="true">Current Area Ptr 1</Data>
+  <Data type="uint" addressUS="0x8032DDCC" addressJP="0x8032DDCC" offset="Relative" useHex="true">Current Area Ptr 2</Data>
+
+  <Data offset="Special" specialType="CurrentAreaIndex1">Current Area Index 1</Data>
+  <Data offset="Special" specialType="CurrentAreaIndex2">Current Area Index 2</Data>
 
   <Data type="byte" address="0x00" offset="Area">Area ID</Data>
   <Data type="byte" address="0x01" offset="Area">Is Current Area</Data>

@@ -27,11 +27,37 @@ namespace SM64_Diagnostic.Managers
             
         }
 
+        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
+        {
+            new SpecialWatchVariable("CurrentAreaIndex1"),
+            new SpecialWatchVariable("CurrentAreaIndex2"),
+        };
+
+        public void ProcessSpecialVars()
+        {
+            foreach (var specialVar in _specialDataControls)
+            {
+                switch (specialVar.SpecialName)
+                {
+                    case "CurrentAreaIndex1":
+                        uint currentArea1 = Config.Stream.GetUInt32(0x8033B200);
+                        (specialVar as DataContainer).Text = Config.Area.GetAreaIndex(currentArea1).ToString();
+                        break;
+
+                    case "CurrentAreaIndex2":
+                        uint currentArea2 = Config.Stream.GetUInt32(0x8032DDCC);
+                        (specialVar as DataContainer).Text = Config.Area.GetAreaIndex(currentArea2).ToString();
+                        break;
+                }
+            }
+        }
+
         public override void Update(bool updateView)
         {
             if (!updateView) return;
 
             base.Update(updateView);
+            ProcessSpecialVars();
         }
     }
 }
