@@ -56,12 +56,8 @@ namespace SM64_Diagnostic.Managers
         {
             new SpecialWatchVariable("CurrentAreaIndex1"),
             new SpecialWatchVariable("CurrentAreaIndex2"),
+            new SpecialWatchVariable("AreaTerrainDescription"),
         };
-
-        public void SelectArea(int areaIndex)
-        {
-
-        }
 
         public void ProcessSpecialVars()
         {
@@ -78,7 +74,35 @@ namespace SM64_Diagnostic.Managers
                         uint currentArea2 = Config.Stream.GetUInt32(0x8032DDCC);
                         (specialVar as DataContainer).Text = Config.Area.GetAreaIndex(currentArea2).ToString();
                         break;
+
+                    case "AreaTerrainDescription":
+                        short terrainType = Config.Stream.GetInt16(_selectedAreaAddress + 0x02);
+                        (specialVar as DataContainer).Text = GetAreaDescription(terrainType);
+                        break;
                 }
+            }
+        }
+
+        public string GetAreaDescription(int terrainType)
+        {
+            switch (terrainType)
+            {
+                case 0:
+                    return "Grassy";
+                case 1:
+                    return "Normal";
+                case 2:
+                    return "Cold";
+                case 3:
+                    return "Sandy";
+                case 4:
+                    return "Spooky";
+                case 5:
+                    return "Aquatic";
+                case 6:
+                    return "Slide";
+                default:
+                    return "Unrecognized";
             }
         }
 

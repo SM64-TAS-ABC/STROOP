@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrianglesData>
-  <Data type="uint" addressUS="0x8033B200" addressJP="0x8033B200" offset="Relative" useHex="true" color="#ccfffa">Current Area Ptr</Data>
-  <Data offset="Special" specialType="CurrentAreaIndex1" color="#ccfffa">Current Area Index</Data>
+  <Data type="uint" addressUS="0x90" offset="Mario" useHex="true" color="#ffcccc">Current Area Ptr (M)</Data>
+  <Data offset="Special" specialType="CurrentAreaIndex1" color="#ffcccc">Current Area Index (M)</Data>
 
-  <Data type="uint" addressUS="0x8032DDCC" addressJP="0x8032DDCC" offset="Relative" useHex="true" color="#ffcccc">Current Area Ptr (M)</Data>
-  <Data offset="Special" specialType="CurrentAreaIndex2" color="#ffcccc">Current Area Index (M)</Data>
+  <Data type="uint" addressUS="0x8032DDCC" addressJP="0x8032DDCC" offset="Relative" useHex="true" color="#ccfffa">Current Area Ptr</Data>
+  <Data offset="Special" specialType="CurrentAreaIndex2" color="#ccfffa">Current Area Index</Data>
 
   <Data type="byte" address="0x00" offset="Area">Area ID</Data>
   <Data type="byte" address="0x01" offset="Area" isBool="true">Is Current Area</Data>
   <Data type="short" address="0x02" offset="Area">Terrain Type</Data>
+  <Data offset="Special" specialType="AreaTerrainDescription">Terrain Description</Data>
 
   <Data type="uint" address="0x04" offset="Area" useHex="true">Geo Layout Ptr</Data>
   <Data type="uint" address="0x08" offset="Area" useHex="true">Collision Ptr</Data>
