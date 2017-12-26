@@ -152,6 +152,7 @@
     <HOLPYOffset>0x25C</HOLPYOffset>
     <HOLPZOffset>0x260</HOLPZOffset>
     <WaterLevelOffset>0x76</WaterLevelOffset>
+    <AreaPointerOffset>0x90</AreaPointerOffset>
   </Mario>
   <Hud>
     <LifeCountOffset>0xAD</LifeCountOffset>

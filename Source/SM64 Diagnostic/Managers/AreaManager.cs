@@ -54,8 +54,8 @@ namespace SM64_Diagnostic.Managers
 
         protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
         {
-            new SpecialWatchVariable("CurrentAreaIndex1"),
-            new SpecialWatchVariable("CurrentAreaIndex2"),
+            new SpecialWatchVariable("CurrentAreaIndexMario"),
+            new SpecialWatchVariable("CurrentAreaIndex"),
             new SpecialWatchVariable("AreaTerrainDescription"),
         };
 
@@ -65,13 +65,13 @@ namespace SM64_Diagnostic.Managers
             {
                 switch (specialVar.SpecialName)
                 {
-                    case "CurrentAreaIndex1":
-                        uint currentArea1 = Config.Stream.GetUInt32(0x8033B200);
+                    case "CurrentAreaIndexMario":
+                        uint currentArea1 = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.AreaPointerOffset);
                         (specialVar as DataContainer).Text = Config.Area.GetAreaIndex(currentArea1).ToString();
                         break;
 
-                    case "CurrentAreaIndex2":
-                        uint currentArea2 = Config.Stream.GetUInt32(0x8032DDCC);
+                    case "CurrentAreaIndex":
+                        uint currentArea2 = Config.Stream.GetUInt32(Config.Area.CurrentAreaPointerAddress);
                         (specialVar as DataContainer).Text = Config.Area.GetAreaIndex(currentArea2).ToString();
                         break;
 
@@ -110,7 +110,7 @@ namespace SM64_Diagnostic.Managers
         {
             if (_selectCurrentAreaCheckbox.Checked)
             {
-                _selectedAreaAddress = Config.Stream.GetUInt32(0x8033B200);
+                _selectedAreaAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.AreaPointerOffset);
             }
 
             if (!updateView) return;

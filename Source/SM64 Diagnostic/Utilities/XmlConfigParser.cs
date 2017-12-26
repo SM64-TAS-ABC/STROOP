@@ -467,6 +467,9 @@ namespace SM64_Diagnostic.Utilities
                                 case "WaterLevelOffset":
                                     Config.Mario.WaterLevelOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
+                                case "AreaPointerOffset":
+                                    Config.Mario.AreaPointerOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
                             }
                         }
                         break;
