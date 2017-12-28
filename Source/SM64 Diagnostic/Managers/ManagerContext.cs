@@ -32,6 +32,7 @@ namespace SM64_Diagnostic.Managers
         public FileManager FileManager;
         public AreaManager AreaManager;
         public DataManager QuarterFrameManager;
+        public DataManager XManager;
         public DataManager CameraHackManager;
         public ScriptManager ScriptManager;
         public StroopMainForm StroopMainForm;

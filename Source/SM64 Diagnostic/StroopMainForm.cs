@@ -111,6 +111,7 @@ namespace SM64_Diagnostic
             currentContext.FileManager = new FileManager(_fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
             currentContext.AreaManager = new AreaManager(tabPageArea, _areaData, NoTearFlowLayoutPanelArea);
             currentContext.QuarterFrameManager = new DataManager(_quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
+            currentContext.XManager = new DataManager(_waterData, noTearFlowLayoutPanelX);
             currentContext.CameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
             currentContext.ObjectManager = new ObjectManager(_objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
             currentContext.OptionsManager = new OptionsManager(tabPageOptions);
@@ -265,6 +266,7 @@ namespace SM64_Diagnostic
                 currentContext.InputManager.Update(tabControlMain.SelectedTab == tabPageInput);
                 currentContext.FileManager.Update(tabControlMain.SelectedTab == tabPageFile);
                 currentContext.QuarterFrameManager.Update(tabControlMain.SelectedTab == tabPageQuarterFrame);
+                currentContext.XManager.Update(tabControlMain.SelectedTab == tabPageX);
                 currentContext.CameraHackManager.Update(tabControlMain.SelectedTab == tabPageCamHack);
                 currentContext.MiscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
                 currentContext.TriangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
