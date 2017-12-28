@@ -111,7 +111,7 @@ namespace SM64_Diagnostic
             currentContext.FileManager = new FileManager(_fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
             currentContext.AreaManager = new AreaManager(tabPageArea, _areaData, NoTearFlowLayoutPanelArea);
             currentContext.QuarterFrameManager = new DataManager(_quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
-            currentContext.XManager = new DataManager(_waterData, noTearFlowLayoutPanelX);
+            currentContext.XManager = new DataManager(_waterData, noTearFlowLayoutPanelX, true);
             currentContext.CameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
             currentContext.ObjectManager = new ObjectManager(_objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
             currentContext.OptionsManager = new OptionsManager(tabPageOptions);

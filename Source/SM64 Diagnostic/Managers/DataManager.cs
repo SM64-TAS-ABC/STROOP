@@ -20,13 +20,24 @@ namespace SM64_Diagnostic.Managers
 
         protected virtual List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>();
 
-        public DataManager(List<WatchVariable> data, NoTearFlowLayoutPanel variableTable)
+        public DataManager(List<WatchVariable> data, NoTearFlowLayoutPanel variableTable, bool varXSystem = false)
         {
-            _variableTable = variableTable;
-            _dataControls = new List<IDataContainer>();
-            InitializeSpecialVariables();
+            if (varXSystem)
+            {
+                _variableTable = variableTable;
+                _dataControls = new List<IDataContainer>();
+                InitializeSpecialVariables();
 
-            AddWatchVariables(data);
+                AddWatchVariables(data);
+            }
+            else
+            {
+                _variableTable = variableTable;
+                _dataControls = new List<IDataContainer>();
+                InitializeSpecialVariables();
+
+                AddWatchVariables(data);
+            }
         }
 
         protected void RemoveWatchVariables(IEnumerable<IDataContainer> watchVars)
