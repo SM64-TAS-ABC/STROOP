@@ -15,6 +15,7 @@ using System.Xml;
 using System.Net;
 using SM64_Diagnostic.Structs.Configurations;
 using static SM64_Diagnostic.Structs.Configurations.PositionControllerRelativeAngleConfig;
+using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -1459,6 +1460,35 @@ namespace SM64_Diagnostic.Utilities
             }
 
             return objectData;
+        }
+
+        public static List<VarX> OpenWatchVarX(string path, string schemaFile)
+        {
+            var objectData = new List<WatchVariable>();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/CameraDataSchema.xsd", schemaFile);
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                if (element.Name.ToString() != "Data")
+                    continue;
+
+                var watchVar = GetWatchVariableFromElement(element);
+                objectData.Add(watchVar);
+            }
+
+            //return objectData;
+
+            return new List<VarX>();
         }
 
         public static ObjectAssociations OpenObjectAssoc(string path, ObjectSlotManagerGui objectSlotManagerGui)

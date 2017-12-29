@@ -14,6 +14,7 @@ using SM64_Diagnostic.ManagerClasses;
 using SM64_Diagnostic.Managers;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
+using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic
 {
@@ -26,6 +27,7 @@ namespace SM64_Diagnostic
         FileImageGui _fileImageGui = new FileImageGui();
         List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, 
             _debugData, _actionsData, _waterData, _inputData, _fileData, _areaData, _quarterFrameData, _camHackData;
+        List<VarX> _varXData;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
         List<RomHack> _romHacks;
@@ -111,7 +113,7 @@ namespace SM64_Diagnostic
             currentContext.FileManager = new FileManager(_fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
             currentContext.AreaManager = new AreaManager(tabPageArea, _areaData, NoTearFlowLayoutPanelArea);
             currentContext.QuarterFrameManager = new DataManager(_quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
-            currentContext.XManager = new DataManager(_waterData, noTearFlowLayoutPanelX, true);
+            currentContext.XManager = new DataManager(_waterData, noTearFlowLayoutPanelX, true, _varXData);
             currentContext.CameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
             currentContext.ObjectManager = new ObjectManager(_objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
             currentContext.OptionsManager = new OptionsManager(tabPageOptions);
@@ -195,6 +197,7 @@ namespace SM64_Diagnostic
             _actionsData = XmlConfigParser.OpenWatchVarData(@"Config/ActionsData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Water Data", statusNum++);
             _waterData = XmlConfigParser.OpenWatchVarData(@"Config/WaterData.xml", "MiscDataSchema.xsd");
+            _varXData = XmlConfigParser.OpenWatchVarX(@"Config/WaterData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Input Data", statusNum++);
             _inputData = XmlConfigParser.OpenWatchVarData(@"Config/InputData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Input Image Associations", statusNum++);
