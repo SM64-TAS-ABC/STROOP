@@ -32,8 +32,6 @@ namespace SM64_Diagnostic.Controls
 
         static WatchVariableControl _lastSelected;
 
-        public enum AngleViewModeType { Recommended, Signed, Unsigned, Degrees, Radians };
-
         AngleViewModeType _angleViewMode = AngleViewModeType.Recommended;
         Boolean _angleTruncated = false;
 

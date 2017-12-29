@@ -111,7 +111,7 @@ namespace SM64_Diagnostic.Extensions
                 return dataValue.ToString();
         }
   
-        public static byte[] GetBytesFromAngleString(this WatchVariable watchVar, string value, WatchVariableControl.AngleViewModeType viewMode)
+        public static byte[] GetBytesFromAngleString(this WatchVariable watchVar, string value, AngleViewModeType viewMode)
         {
             if (watchVar.Type != typeof(UInt32) && watchVar.Type != typeof(UInt16)
                 && watchVar.Type != typeof(Int32) && watchVar.Type != typeof(Int16))
@@ -128,9 +128,9 @@ namespace SM64_Diagnostic.Extensions
             {
                 switch (viewMode)
                 {
-                    case WatchVariableControl.AngleViewModeType.Signed:
-                    case WatchVariableControl.AngleViewModeType.Unsigned:
-                    case WatchVariableControl.AngleViewModeType.Recommended:
+                    case AngleViewModeType.Signed:
+                    case AngleViewModeType.Unsigned:
+                    case AngleViewModeType.Recommended:
                         int tempValue;
                         if (int.TryParse(value, out tempValue))
                             writeValue = (uint)tempValue;
@@ -139,14 +139,14 @@ namespace SM64_Diagnostic.Extensions
                         break;
                         
 
-                    case WatchVariableControl.AngleViewModeType.Degrees:
+                    case AngleViewModeType.Degrees:
                         double degValue;
                         if (!double.TryParse(value, out degValue))
                             return null;
                         writeValue = (UInt16)(degValue / (360d / 65536));
                         break;
 
-                    case WatchVariableControl.AngleViewModeType.Radians:
+                    case AngleViewModeType.Radians:
                         double radValue;
                         if (!double.TryParse(value, out radValue))
                             return null;
@@ -158,13 +158,13 @@ namespace SM64_Diagnostic.Extensions
             return BitConverter.GetBytes(writeValue).Take(watchVar.ByteCount).ToArray();
         }
 
-        public static bool SetAngleStringValue(this WatchVariable watchVar, uint offset, string value, WatchVariableControl.AngleViewModeType viewMode)
+        public static bool SetAngleStringValue(this WatchVariable watchVar, uint offset, string value, AngleViewModeType viewMode)
         {
             var dataBytes = watchVar.GetBytesFromAngleString(value, viewMode);
             return watchVar.SetBytes(offset, dataBytes);
         }
 
-        public static string GetAngleStringValue(this WatchVariable watchVar, uint offset, WatchVariableControl.AngleViewModeType viewMode, bool truncated = false)
+        public static string GetAngleStringValue(this WatchVariable watchVar, uint offset, AngleViewModeType viewMode, bool truncated = false)
         {
             // Get dataBytes
             var dataBytes = watchVar.GetByteData(offset);
@@ -193,7 +193,7 @@ namespace SM64_Diagnostic.Extensions
             // Print hex
             if (watchVar.UseHex)
             {
-                if (viewMode == WatchVariableControl.AngleViewModeType.Recommended && watchVar.ByteCount == 4)
+                if (viewMode == AngleViewModeType.Recommended && watchVar.ByteCount == 4)
                     return "0x" + dataValue.ToString("X8"); 
                 else
                     return "0x" + ((UInt16)dataValue).ToString("X4");
@@ -201,7 +201,7 @@ namespace SM64_Diagnostic.Extensions
 
             switch(viewMode)
             {
-                case WatchVariableControl.AngleViewModeType.Recommended:
+                case AngleViewModeType.Recommended:
                     if (watchVar.Type == typeof(Int16))
                         return ((Int16)dataValue).ToString();
                     else if (watchVar.Type == typeof(UInt16))
@@ -211,16 +211,16 @@ namespace SM64_Diagnostic.Extensions
                     else
                         return dataValue.ToString();
 
-                case WatchVariableControl.AngleViewModeType.Unsigned:
+                case AngleViewModeType.Unsigned:
                     return ((UInt16)dataValue).ToString();
 
-                case WatchVariableControl.AngleViewModeType.Signed:
+                case AngleViewModeType.Signed:
                     return ((Int16)(dataValue)).ToString();
 
-                case WatchVariableControl.AngleViewModeType.Degrees:
+                case AngleViewModeType.Degrees:
                     return (((UInt16)dataValue) * (360d / 65536)).ToString();
 
-                case WatchVariableControl.AngleViewModeType.Radians:
+                case AngleViewModeType.Radians:
                     return (((UInt16)dataValue) * (2 * Math.PI / 65536)).ToString();
             }
 

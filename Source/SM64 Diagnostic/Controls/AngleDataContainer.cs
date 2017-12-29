@@ -18,8 +18,6 @@ namespace SM64_Diagnostic.Controls
 
         static AngleDataContainer _lastSelected;
 
-        public enum AngleViewModeType { Signed, Unsigned, Degrees, Radians };
-
         AngleViewModeType _angleViewMode;
         bool _angleTruncated = false;
 
