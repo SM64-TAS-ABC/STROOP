@@ -1464,7 +1464,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static List<VarX> OpenWatchVarX(string path, string schemaFile)
         {
-            var objectData = new List<WatchVariable>();
+            var objectData = new List<VarX>();
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
@@ -1483,12 +1483,10 @@ namespace SM64_Diagnostic.Utilities
                     continue;
 
                 var watchVar = GetWatchVariableFromElement(element);
-                objectData.Add(watchVar);
+                objectData.Add(new VarX(watchVar));
             }
 
-            //return objectData;
-
-            return new List<VarX>();
+            return objectData;
         }
 
         public static ObjectAssociations OpenObjectAssoc(string path, ObjectSlotManagerGui objectSlotManagerGui)
