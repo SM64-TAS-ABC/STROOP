@@ -16,6 +16,7 @@ namespace SM64_Diagnostic.Managers
     {
         private NoTearFlowLayoutPanel _variableTable;
         protected List<IDataContainer> _dataControls;
+        protected List<VarX> _varXList;
         protected List<IDataContainer> _specialDataControls = new List<IDataContainer>();
 
         protected virtual List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>();
@@ -25,9 +26,10 @@ namespace SM64_Diagnostic.Managers
             if (varXSystem)
             {
                 _variableTable = variableTable;
+                _varXList = varXList;
+
                 _dataControls = new List<IDataContainer>();
                 InitializeSpecialVariables();
-
                 AddWatchVariables(data);
             }
             else
