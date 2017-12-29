@@ -14,6 +14,7 @@ namespace SM64_Diagnostic.Managers
 {
     public class DataManager
     {
+        private bool _varXSystem;
         private NoTearFlowLayoutPanel _variableTable;
         protected List<IDataContainer> _dataControls;
         protected List<VarX> _varXList;
@@ -23,19 +24,27 @@ namespace SM64_Diagnostic.Managers
 
         public DataManager(List<WatchVariable> data, NoTearFlowLayoutPanel variableTable, bool varXSystem = false, List<VarX> varXList = null)
         {
-            if (varXSystem)
+            _varXSystem = varXSystem;
+
+            if (_varXSystem)
             {
                 _variableTable = variableTable;
                 _varXList = varXList;
+                foreach (VarX varX in varXList)
+                {
+                    _variableTable.Controls.Add(varX.Control);
+                }
+
 
                 _dataControls = new List<IDataContainer>();
+                /*
                 foreach (WatchVariable watchVar in data)
                 {
                     WatchVariableControl watchControl = new WatchVariableControl(watchVar);
                     _variableTable.Controls.Add(watchControl.Control);
                     _dataControls.Add(watchControl);
                 }
-
+                */
             }
             else
             {
@@ -117,9 +126,20 @@ namespace SM64_Diagnostic.Managers
 
         public virtual void Update(bool updateView = false)
         {
-            // Update watch variables
-            foreach (var watchVar in _dataControls)
-                watchVar.Update();
+            if (_varXSystem)
+            {
+                foreach (VarX varX in _varXList)
+                {
+                    varX.Update();
+                }
+            }
+            else
+            {
+                foreach (var watchVar in _dataControls)
+                {
+                    watchVar.Update();
+                }
+            }
         }
     }
 }
