@@ -29,8 +29,13 @@ namespace SM64_Diagnostic.Managers
                 _varXList = varXList;
 
                 _dataControls = new List<IDataContainer>();
-                InitializeSpecialVariables();
-                AddWatchVariables(data);
+                foreach (WatchVariable watchVar in data)
+                {
+                    WatchVariableControl watchControl = new WatchVariableControl(watchVar);
+                    _variableTable.Controls.Add(watchControl.Control);
+                    _dataControls.Add(watchControl);
+                }
+
             }
             else
             {
