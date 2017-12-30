@@ -112,6 +112,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\AngleViewModeType.cs" />
+    <Compile Include="Controls\AddressHolder.cs" />
     <Compile Include="Controls\VarX.cs" />
     <Compile Include="Controls\InputDisplayPanel.cs">
       <SubType>Component</SubType>

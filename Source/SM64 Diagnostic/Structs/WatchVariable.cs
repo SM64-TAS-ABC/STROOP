@@ -1,4 +1,5 @@
-﻿using SM64_Diagnostic.Structs.Configurations;
+﻿using SM64_Diagnostic.Controls;
+using SM64_Diagnostic.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -29,28 +30,12 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        private uint? _addressUS;
-        private uint? _addressJP;
-        private uint? _addressPAL;
-        private uint? _address;
+        private AddressHolder _addressHolder;
         public uint Address
         {
             get
             {
-                switch (Config.Version)
-                {
-                    case Config.RomVersion.US:
-                        if (_addressUS != null) return (uint)_addressUS;
-                        break;
-                    case Config.RomVersion.JP:
-                        if (_addressJP != null) return (uint)_addressJP;
-                        break;
-                    case Config.RomVersion.PAL:
-                        if (_addressPAL != null) return (uint)_addressPAL;
-                        break;
-                }
-                if (_address != null) return (uint)_address;
-                return 0;
+                return _addressHolder.Address;
             }
         }
 
@@ -119,15 +104,9 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        public void SetAddress(uint? addressUS, uint? addressJP, uint? addressPAL, uint? address)
+        public void SetAddress(AddressHolder addressHolder)
         {
-            if (addressUS == null && addressJP == null && addressPAL == null && address == null)
-                throw new ArgumentOutOfRangeException();
-
-            _addressUS = addressUS;
-            _addressJP = addressJP;
-            _addressPAL = addressPAL;
-            _address = address;
+            _addressHolder = addressHolder;
         }
     }
 }

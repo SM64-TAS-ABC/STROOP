@@ -2418,10 +2418,11 @@ namespace SM64_Diagnostic.Utilities
                 return watchVar;
 
             watchVar.SetAddress(
-                ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressUS"))?.Value),
-                ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressJP"))?.Value),
-                ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressPAL"))?.Value),
-                ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("address"))?.Value));
+                new AddressHolder(
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressUS"))?.Value),
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressJP"))?.Value),
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressPAL"))?.Value),
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("address"))?.Value)));
             watchVar.UseHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
             watchVar.Mask = element.Attribute(XName.Get("mask")) != null ?
