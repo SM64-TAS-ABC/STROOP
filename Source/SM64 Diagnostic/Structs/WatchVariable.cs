@@ -35,13 +35,13 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        public AddressHolder _addressHolder;
-        public uint Address { get { return _addressHolder.Address; } }
+        public AddressHolder AddressHolder;
+        public uint Address { get { return AddressHolder.Address; } }
 
         public OffsetType Offset;
-        public String Name;
-        public String SpecialType;
-        public UInt64? Mask;
+        public string Name;
+        public string SpecialType;
+        public ulong? Mask;
         public bool IsBool;
         public bool IsObject;
         public bool UseHex;
@@ -100,11 +100,6 @@ namespace SM64_Diagnostic.Structs
                 _type = StringToType[_typeName];
                 _byteCount = TypeSize[_type];
             }
-        }
-
-        public void SetAddress(AddressHolder addressHolder)
-        {
-            _addressHolder = addressHolder;
         }
     }
 }

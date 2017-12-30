@@ -2405,37 +2405,63 @@ namespace SM64_Diagnostic.Utilities
         public static WatchVariable GetWatchVariableFromElement(XElement element)
         {
             var watchVar = new WatchVariable();
-            watchVar.Name = element.Value;
-            watchVar.Offset = GetOffsetType(element.Attribute(XName.Get("offset")).Value);
-            watchVar.GroupList = ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
-            watchVar.SpecialType = (element.Attribute(XName.Get("specialType")) != null) ?
+
+            string name = element.Value;
+            watchVar.Name = name;
+
+            OffsetType offset = GetOffsetType(element.Attribute(XName.Get("offset")).Value);
+            watchVar.Offset = offset;
+
+            List<VariableGroup> groupList = ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
+            watchVar.GroupList = groupList;
+
+            string specialType = (element.Attribute(XName.Get("specialType")) != null) ?
                 element.Attribute(XName.Get("specialType")).Value : null;
-            watchVar.BackroundColor = (element.Attribute(XName.Get("color")) != null) ?
+            watchVar.SpecialType = specialType;
+
+            Color? color = (element.Attribute(XName.Get("color")) != null) ?
                 ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
+            watchVar.BackroundColor = color;
 
             // We have fully parsed a special type
-            if (watchVar.IsSpecial)
+            if (offset == OffsetType.Special)
                 return watchVar;
 
-            watchVar.SetAddress(
+            AddressHolder addressHolder = 
                 new AddressHolder(
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressUS"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressJP"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressPAL"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("address"))?.Value)));
-            watchVar.UseHex = (element.Attribute(XName.Get("useHex")) != null) ?
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("address"))?.Value));
+            watchVar.AddressHolder = addressHolder;
+
+            bool useHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
-            watchVar.Mask = element.Attribute(XName.Get("mask")) != null ?
-                (UInt64?) ParsingUtilities.ParseExtHex(element.Attribute(XName.Get("mask")).Value) : null;
-            watchVar.IsBool = element.Attribute(XName.Get("isBool")) != null ?
+            watchVar.UseHex = useHex;
+
+            ulong? mask = element.Attribute(XName.Get("mask")) != null ?
+                (ulong?)ParsingUtilities.ParseExtHex(element.Attribute(XName.Get("mask")).Value) : null;
+            watchVar.Mask = mask;
+
+            bool isBool = element.Attribute(XName.Get("isBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isBool")).Value) : false;
-            watchVar.IsObject = element.Attribute(XName.Get("isObject")) != null ?
+            watchVar.IsBool = isBool;
+
+            bool isObject = element.Attribute(XName.Get("isObject")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isObject")).Value) : false;
-            watchVar.TypeName = (element.Attribute(XName.Get("type")).Value);
-            watchVar.InvertBool = element.Attribute(XName.Get("invertBool")) != null ?
+            watchVar.IsObject = isObject;
+
+            string typeName = (element.Attribute(XName.Get("type")).Value);
+            watchVar.TypeName = typeName;
+
+            bool invertBool = element.Attribute(XName.Get("invertBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : false;
-            watchVar.IsAngle = element.Attribute(XName.Get("isAngle")) != null ?
+            watchVar.InvertBool = invertBool;
+
+            bool isAngle = element.Attribute(XName.Get("isAngle")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isAngle")).Value) : false;
+            watchVar.IsAngle = isAngle;
+
             return watchVar;
         }
 
