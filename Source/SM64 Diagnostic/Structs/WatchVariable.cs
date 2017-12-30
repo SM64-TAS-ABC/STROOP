@@ -12,6 +12,11 @@ namespace SM64_Diagnostic.Structs
 {
     public class WatchVariable
     {
+        public WatchVariable()
+        {
+
+        }
+
         Type _type;
         public Type Type
         {
@@ -30,14 +35,8 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        private AddressHolder _addressHolder;
-        public uint Address
-        {
-            get
-            {
-                return _addressHolder.Address;
-            }
-        }
+        public AddressHolder _addressHolder;
+        public uint Address { get { return _addressHolder.Address; } }
 
         public OffsetType Offset;
         public String Name;

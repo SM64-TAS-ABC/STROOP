@@ -18,22 +18,6 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarX
     {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         BorderedTableLayoutPanel _tablePanel;
         Label _nameLabel;
         WatchVariable _watchVar;
