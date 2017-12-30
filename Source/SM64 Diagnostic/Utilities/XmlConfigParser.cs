@@ -2431,8 +2431,6 @@ namespace SM64_Diagnostic.Utilities
                 bool.Parse(element.Attribute(XName.Get("isBool")).Value) : false;
             watchVar.IsObject = element.Attribute(XName.Get("isObject")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isObject")).Value) : false;
-            watchVar.IsScript = element.Attribute(XName.Get("isScript")) != null ?
-                bool.Parse(element.Attribute(XName.Get("isScript")).Value) : false;
             watchVar.TypeName = (element.Attribute(XName.Get("type")).Value);
             watchVar.InvertBool = element.Attribute(XName.Get("invertBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : false;

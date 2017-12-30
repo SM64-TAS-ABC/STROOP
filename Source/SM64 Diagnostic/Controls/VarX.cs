@@ -468,10 +468,6 @@ namespace SM64_Diagnostic.Controls
                     ObjectDropDownMenu.ForEach(d => Menu.Items.Add(d));
                 }
                 ScriptDropDownMenu.ForEach(d => Menu.Items.Remove(d));
-                if (_watchVar.IsScript)
-                {
-                    ScriptDropDownMenu.ForEach(d => Menu.Items.Add(d));
-                }
             }
         }
 
