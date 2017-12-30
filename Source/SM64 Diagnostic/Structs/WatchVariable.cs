@@ -12,24 +12,24 @@ namespace SM64_Diagnostic.Structs
 {
     public class WatchVariable
     {
-        public AddressHolder AddressHolder;
+        public readonly AddressHolder AddressHolder;
         public uint Address { get { return AddressHolder.Address; } }
 
-        public OffsetType Offset;
-        public string Name;
-        public string SpecialType;
-        public ulong? Mask;
-        public bool IsBool;
-        public bool IsObject;
+        public readonly OffsetType Offset;
+        public readonly string Name;
+        public readonly string SpecialType;
+        public readonly ulong? Mask;
+        public readonly bool IsBool;
+        public readonly bool IsObject;
+        public readonly bool IsAngle;
+        public readonly Color? BackroundColor;
+        public readonly List<VariableGroup> GroupList;
+        public readonly string TypeName;
+        public readonly Type Type;
+        public readonly int ByteCount;
+
         public bool UseHex;
         public bool InvertBool;
-        public bool IsAngle;
-        public Color? BackroundColor;
-        public List<VariableGroup> GroupList;
-
-        public string TypeName;
-        public Type Type;
-        public int ByteCount;
 
         public WatchVariable(
             string name,
