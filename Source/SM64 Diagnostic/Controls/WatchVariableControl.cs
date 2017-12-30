@@ -12,6 +12,7 @@ using System.Reflection;
 using SM64_Diagnostic.Managers;
 using static SM64_Diagnostic.Structs.WatchVariable;
 using SM64_Diagnostic.Structs.Configurations;
+using static SM64_Diagnostic.Structs.VarXUtilities;
 
 namespace SM64_Diagnostic.Controls
 {
