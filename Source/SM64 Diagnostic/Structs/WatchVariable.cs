@@ -12,6 +12,25 @@ namespace SM64_Diagnostic.Structs
 {
     public class WatchVariable
     {
+        public AddressHolder AddressHolder;
+        public uint Address { get { return AddressHolder.Address; } }
+
+        public OffsetType Offset;
+        public string Name;
+        public string SpecialType;
+        public ulong? Mask;
+        public bool IsBool;
+        public bool IsObject;
+        public bool UseHex;
+        public bool InvertBool;
+        public bool IsAngle;
+        public Color? BackroundColor;
+        public List<VariableGroup> GroupList;
+
+        public string TypeName;
+        public Type Type;
+        public int ByteCount;
+
         public WatchVariable(
             string name,
             OffsetType offset,
@@ -40,43 +59,13 @@ namespace SM64_Diagnostic.Structs
             Mask = mask;
             IsBool = isBool;
             IsObject = isObject;
-            TypeName = typeName;
             InvertBool = invertBool;
             IsAngle = isAngle;
+
+            TypeName = typeName;
+            Type = StringToType[TypeName];
+            ByteCount = TypeSize[Type];
         }
-
-        Type _type;
-        public Type Type
-        {
-            get
-            {
-                return _type;
-            }
-            set
-            {
-                if (_type == value)
-                    return;
-
-                _type = value;
-                _byteCount = TypeSize[_type];
-                _typeName = StringToType.First(s => s.Value == _type).Key;
-            }
-        }
-
-        public AddressHolder AddressHolder;
-        public uint Address { get { return AddressHolder.Address; } }
-
-        public OffsetType Offset;
-        public string Name;
-        public string SpecialType;
-        public ulong? Mask;
-        public bool IsBool;
-        public bool IsObject;
-        public bool UseHex;
-        public bool InvertBool;
-        public bool IsAngle;
-        public Color? BackroundColor;
-        public List<VariableGroup> GroupList;
 
         public bool HasAdditiveOffset
         {
@@ -94,7 +83,7 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        public Boolean UseAbsoluteAddressing
+        public bool UseAbsoluteAddressing
         {
             get
             {
@@ -102,32 +91,5 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-
-        int _byteCount;
-        public int ByteCount
-        {
-            get
-            {
-                return _byteCount;
-            }
-        }
-
-        string _typeName;
-        public string TypeName
-        {
-            get
-            {
-                return _typeName;
-            }
-            set
-            {
-                if (_typeName == value || !StringToType.ContainsKey(value))
-                    return;
-
-                _typeName = value;
-                _type = StringToType[_typeName];
-                _byteCount = TypeSize[_type];
-            }
-        }
     }
 }
