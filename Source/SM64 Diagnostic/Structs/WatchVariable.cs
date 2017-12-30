@@ -12,9 +12,37 @@ namespace SM64_Diagnostic.Structs
 {
     public class WatchVariable
     {
-        public WatchVariable()
+        public WatchVariable(
+            string name,
+            OffsetType offset,
+            List<VariableGroup> groupList,
+            string specialType,
+            Color? backgroundColor,
+            AddressHolder addressHolder,
+            bool useHex,
+            ulong? mask,
+            bool isBool,
+            bool isObject,
+            string typeName,
+            bool invertBool,
+            bool isAngle)
         {
+            Name = name;
+            Offset = offset;
+            GroupList = groupList;
+            SpecialType = specialType;
+            BackroundColor = backgroundColor;
 
+            if (IsSpecial) return;
+
+            AddressHolder = addressHolder;
+            UseHex = useHex;
+            Mask = mask;
+            IsBool = isBool;
+            IsObject = isObject;
+            TypeName = typeName;
+            InvertBool = invertBool;
+            IsAngle = isAngle;
         }
 
         Type _type;

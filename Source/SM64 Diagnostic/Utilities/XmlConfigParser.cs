@@ -2404,28 +2404,17 @@ namespace SM64_Diagnostic.Utilities
 
         public static WatchVariable GetWatchVariableFromElement(XElement element)
         {
-            var watchVar = new WatchVariable();
-
             string name = element.Value;
-            watchVar.Name = name;
 
             OffsetType offset = GetOffsetType(element.Attribute(XName.Get("offset")).Value);
-            watchVar.Offset = offset;
 
             List<VariableGroup> groupList = ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
-            watchVar.GroupList = groupList;
 
             string specialType = (element.Attribute(XName.Get("specialType")) != null) ?
                 element.Attribute(XName.Get("specialType")).Value : null;
-            watchVar.SpecialType = specialType;
 
-            Color? color = (element.Attribute(XName.Get("color")) != null) ?
+            Color? backgroundColor = (element.Attribute(XName.Get("color")) != null) ?
                 ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
-            watchVar.BackroundColor = color;
-
-            // We have fully parsed a special type
-            if (offset == OffsetType.Special)
-                return watchVar;
 
             AddressHolder addressHolder = 
                 new AddressHolder(
@@ -2433,36 +2422,41 @@ namespace SM64_Diagnostic.Utilities
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressJP"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressPAL"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("address"))?.Value));
-            watchVar.AddressHolder = addressHolder;
 
             bool useHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
-            watchVar.UseHex = useHex;
 
             ulong? mask = element.Attribute(XName.Get("mask")) != null ?
                 (ulong?)ParsingUtilities.ParseExtHex(element.Attribute(XName.Get("mask")).Value) : null;
-            watchVar.Mask = mask;
 
             bool isBool = element.Attribute(XName.Get("isBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isBool")).Value) : false;
-            watchVar.IsBool = isBool;
 
             bool isObject = element.Attribute(XName.Get("isObject")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isObject")).Value) : false;
-            watchVar.IsObject = isObject;
 
-            string typeName = (element.Attribute(XName.Get("type")).Value);
-            watchVar.TypeName = typeName;
+            string typeName = (element.Attribute(XName.Get("type"))?.Value);
 
             bool invertBool = element.Attribute(XName.Get("invertBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : false;
-            watchVar.InvertBool = invertBool;
 
             bool isAngle = element.Attribute(XName.Get("isAngle")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isAngle")).Value) : false;
-            watchVar.IsAngle = isAngle;
 
-            return watchVar;
+            return new WatchVariable(
+                name,
+                offset,
+                groupList,
+                specialType,
+                backgroundColor,
+                addressHolder,
+                useHex,
+                mask,
+                isBool,
+                isObject,
+                typeName,
+                invertBool,
+                isAngle);
         }
 
         public static ActionTable OpenActionTable(string path)

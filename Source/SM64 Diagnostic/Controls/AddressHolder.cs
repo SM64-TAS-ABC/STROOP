@@ -48,7 +48,8 @@ namespace SM64_Diagnostic.Controls
         {
             if (addressUS == null && addressJP == null && addressPAL == null && addressOffset == null)
             {
-                throw new ArgumentOutOfRangeException("Cannot instantiate Address with all null values");
+                //TODO add this back in after var refactor
+                //throw new ArgumentOutOfRangeException("Cannot instantiate Address with all null values");
             }
 
             AddressUS = addressUS;
