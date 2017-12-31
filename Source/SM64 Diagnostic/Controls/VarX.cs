@@ -220,6 +220,8 @@ namespace SM64_Diagnostic.Controls
             Config.Stream.Suspend();
 
 
+
+
             /*
             // Write new value to RAM
             byte[] writeBytes;

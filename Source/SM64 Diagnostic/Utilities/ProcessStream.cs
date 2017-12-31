@@ -356,6 +356,19 @@ namespace SM64_Diagnostic.Utilities
 
         public bool SetValue(Type type, object value, uint address, bool absoluteAddress = false)
         {
+            if (value is string)
+            {
+                if (type == typeof(byte)) value = ParsingUtilities.ParseByteNullable((string)value);
+                if (type == typeof(sbyte)) value = ParsingUtilities.ParseSByteNullable((string)value);
+                if (type == typeof(short)) value = ParsingUtilities.ParseShortNullable((string)value);
+                if (type == typeof(ushort)) value = ParsingUtilities.ParseUShortNullable((string)value);
+                if (type == typeof(int)) value = ParsingUtilities.ParseIntNullable((string)value);
+                if (type == typeof(uint)) value = ParsingUtilities.ParseUIntNullable((string)value);
+                if (type == typeof(float)) value = ParsingUtilities.ParseFloatNullable((string)value);
+            }
+
+            if (value == null) return false;
+
             if (type == typeof(byte)) return SetValue((byte)value, address, absoluteAddress);
             if (type == typeof(sbyte)) return SetValue((sbyte)value, address, absoluteAddress);
             if (type == typeof(short)) return SetValue((short)value, address, absoluteAddress);
