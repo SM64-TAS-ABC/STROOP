@@ -2479,8 +2479,12 @@ namespace SM64_Diagnostic.Utilities
                 ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
 
             string typeName = (element.Attribute(XName.Get("type"))?.Value);
-            Type type = StringToType[typeName];
-            int byteCount = TypeSize[type];
+            int byteCount = 0;
+            if (baseAddressType != BaseAddressTypeEnum.Special)
+            {
+                Type type = StringToType[typeName];
+                byteCount = TypeSize[type];
+            }
 
             AddressHolder addressHolder =
                 new AddressHolder(

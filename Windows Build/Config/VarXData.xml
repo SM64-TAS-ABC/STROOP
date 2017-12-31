@@ -20,4 +20,11 @@
   <Data groupList="Simple" type="float" offset="0xA0" baseAddressType="Object">Object X</Data>
   <Data groupList="Simple" type="float" offset="0xA4" baseAddressType="Object">Object Y</Data>
   <Data groupList="Simple" type="float" offset="0xA8" baseAddressType="Object">Object Z</Data>
+
+  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
+
+  <Data type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" baseAddressType="Relative">RNG Value</Data>
+  <Data baseAddressType="Special" specialType="RngIndex">RNG Index</Data>
 </WaterData>

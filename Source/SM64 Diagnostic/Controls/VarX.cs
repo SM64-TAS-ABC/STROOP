@@ -16,8 +16,8 @@ namespace SM64_Diagnostic.Controls
     {
         public readonly AddressHolder AddressHolder;
         public readonly string Name;
-        public readonly string TypeName;
-        public readonly Type Type;
+        public readonly string MemoryTypeName;
+        public readonly Type MemoryType;
 
         public VarX(
             string name,
@@ -30,19 +30,20 @@ namespace SM64_Diagnostic.Controls
             ulong? mask,
             bool isBool,
             bool isObject,
-            string typeName,
+            string memoryTypeName,
             bool invertBool,
             bool isAngle)
         {
             Name = name;
             AddressHolder = addressHolder;
 
+            CreateControls();
+
             if (IsSpecial) return;
 
-            TypeName = typeName;
-            Type = VarXUtilities.StringToType[TypeName];
+            MemoryTypeName = memoryTypeName;
+            MemoryType = VarXUtilities.StringToType[MemoryTypeName];
 
-            CreateControls();
         }
 
         public bool IsSpecial
@@ -132,7 +133,7 @@ namespace SM64_Diagnostic.Controls
         private void _nameLabel_Click(object sender, EventArgs e)
         {
             VariableViewerForm varInfo;
-            var typeDescr = TypeName;
+            var typeDescr = MemoryTypeName;
 
             varInfo = new VariableViewerForm(Name, typeDescr,
                 String.Format("0x{0:X8}", AddressHolder.GetRamAddress()),
@@ -156,13 +157,15 @@ namespace SM64_Diagnostic.Controls
 
         public string GetStringValue()
         {
+            if (IsSpecial) return "SPECIAL";
+
             string combinedVarString = "";
             string firstVarString = "";
             bool atLeastOneVarIncorporated = false;
 
             foreach (uint address in AddressHolder.EffectiveAddressList)
             {
-                object value = Config.Stream.GetValue(Type, address, AddressHolder.UseAbsoluteAddressing);
+                object value = Config.Stream.GetValue(MemoryType, address, AddressHolder.UseAbsoluteAddressing);
                 string varString = value.ToString();
 
                 if (!atLeastOneVarIncorporated)
@@ -201,11 +204,13 @@ namespace SM64_Diagnostic.Controls
 
         public void SetStringValue(string stringValue)
         {
+            if (IsSpecial) return;
+
             Config.Stream.Suspend();
 
             foreach (uint address in AddressHolder.EffectiveAddressList)
             {
-                Config.Stream.SetValue(Type, stringValue, address, AddressHolder.UseAbsoluteAddressing);
+                Config.Stream.SetValue(MemoryType, stringValue, address, AddressHolder.UseAbsoluteAddressing);
             }
 
             Config.Stream.Resume();
