@@ -73,7 +73,6 @@ namespace SM64_Diagnostic.Controls
             ByteCount = TypeSize[Type];
 
 
-            _specialName = Name;
             CreateControls();
             if (BackroundColor.HasValue)
                 Color = BackroundColor.Value;
@@ -120,7 +119,6 @@ namespace SM64_Diagnostic.Controls
         Label _nameLabel;
         CheckBox _checkBoxBool;
         TextBox _textBoxValue;
-        string _specialName;
 
         bool _changedByUser = true;
         bool _editMode = false;
@@ -286,18 +284,6 @@ namespace SM64_Diagnostic.Controls
             get
             {
                 return GetOffsetListFromOffsetType(Offset);
-            }
-        }
-
-        public string SpecialName
-        {
-            get
-            {
-                return _specialName;
-            }
-            set
-            {
-                _specialName = value;
             }
         }
 
