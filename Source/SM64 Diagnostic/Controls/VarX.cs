@@ -196,16 +196,16 @@ namespace SM64_Diagnostic.Controls
             // Exit edit mode
             EditMode = false;
 
-            SetStringValue();
+            SetStringValue(_textBox.Text);
         }
 
-        public void SetStringValue()
+        public void SetStringValue(string stringValue)
         {
             Config.Stream.Suspend();
 
             foreach (uint address in AddressHolder.EffectiveAddressList)
             {
-                Config.Stream.SetValue(Type, _textBox.Text, address, AddressHolder.UseAbsoluteAddressing);
+                Config.Stream.SetValue(Type, stringValue, address, AddressHolder.UseAbsoluteAddressing);
             }
 
             Config.Stream.Resume();
