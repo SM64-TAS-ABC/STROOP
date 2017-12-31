@@ -59,15 +59,6 @@ namespace SM64_Diagnostic.Controls
 
 
 
-
-
-
-
-
-
-
-
-
         BorderedTableLayoutPanel _tablePanel;
         Label _nameLabel;
         TextBox _textBox;
@@ -187,26 +178,6 @@ namespace SM64_Diagnostic.Controls
                 object value = Config.Stream.GetValue(Type, address, AddressHolder.UseAbsoluteAddressing);
                 _textBox.Text = value.ToString();
             }
-
-            /*
-            bool firstBaseAddress = true;
-            foreach (var baseAddress in AddressHolder.BaseAddressList)
-            {
-                string newText = GetStringValue(baseAddress);
-
-                if (firstBaseAddress)
-                {
-                    _textBox.Text = newText;
-                }
-                else if (_textBox.Text != newText)
-                {
-                    _textBox.Text = "";
-                    continue;
-                }
-
-                firstBaseAddress = false;
-            }
-            */
         }
         
         private void OnTextValueKeyDown(object sender, KeyEventArgs e)
@@ -235,140 +206,5 @@ namespace SM64_Diagnostic.Controls
             Config.Stream.Resume();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public byte[] GetByteData(uint offset)
-        {
-            // Get dataBytes
-            var dataBytes = Config.Stream.ReadRamLittleEndian(new UIntPtr(AddressHolder.EffectiveAddress),
-                ByteCount, AddressHolder.UseAbsoluteAddressing);
-
-            // Make sure offset is a valid pointer
-            if (AddressHolder.IsAdditive && offset == 0)
-                return null;
-
-            return dataBytes;
-        }
-
-        public string GetStringValue(uint offset)
-        {
-            // Get dataBytes
-            var dataBytes = GetByteData(offset);
-
-            // Make sure offset is a valid pointer
-            if (dataBytes == null)
-                return "(none)";
-
-            // Parse floating point
-            if ((Type == typeof(float) || Type == typeof(double)))
-            {
-                if (Type == typeof(float))
-                    return BitConverter.ToSingle(dataBytes, 0).ToString();
-
-                if (Type == typeof(double))
-                    return BitConverter.ToDouble(dataBytes, 0).ToString();
-            }
-
-            // Get Uint64 value
-            var intBytes = new byte[8];
-            dataBytes.CopyTo(intBytes, 0);
-            UInt64 dataValue = BitConverter.ToUInt64(intBytes, 0);
-            
-            // Print signed
-            if (Type == typeof(Int64))
-                return ((Int64)dataValue).ToString();
-            else if (Type == typeof(Int32))
-                return ((Int32)dataValue).ToString();
-            else if (Type == typeof(Int16))
-                return ((Int16)dataValue).ToString();
-            else if (Type == typeof(sbyte))
-                return ((sbyte)dataValue).ToString();
-            else
-                return dataValue.ToString();
-        }
-        
-        public byte[] GetBytesFromString(uint offset, string value)
-        {
-            // Get dataBytes
-            var address = AddressHolder.EffectiveAddress;
-            var dataBytes = new byte[8];
-            Config.Stream.ReadRamLittleEndian(new UIntPtr(address), ByteCount, AddressHolder.UseAbsoluteAddressing).CopyTo(dataBytes, 0);
-            UInt64 oldValue = BitConverter.ToUInt64(dataBytes, 0);
-            UInt64 newValue;
-
-            // Handle hex variable
-            if (ParsingUtilities.IsHex(value))
-            {
-                if (!ParsingUtilities.TryParseExtHex(value, out newValue))
-                    return null;
-            }
-            // Handle floats
-            else if (Type == typeof(float))
-            {
-                float newFloatValue;
-                if (!float.TryParse(value, out newFloatValue))
-                    return null;
-
-                // Get bytes
-                newValue = BitConverter.ToUInt32(BitConverter.GetBytes(newFloatValue), 0);
-            }
-            else if (Type == typeof(double))
-            {
-                double newFloatValue;
-                if (double.TryParse(value, out newFloatValue))
-                    return null;
-
-                // Get bytes
-                newValue = BitConverter.ToUInt64(BitConverter.GetBytes(newFloatValue), 0);
-            }
-            else if (Type == typeof(UInt64))
-            {
-                if (!UInt64.TryParse(value, out newValue))
-                {
-                    Int64 newValueInt;
-                    if (!Int64.TryParse(value, out newValueInt))
-                        return null;
-
-                    newValue = (UInt64)newValueInt;
-                }
-            }
-            else
-            {
-                Int64 tempInt;
-                if (!Int64.TryParse(value, out tempInt))
-                    return null;
-                newValue = (UInt64)tempInt;
-            }
-
-            var writeBytes = new byte[ByteCount];
-            var valueBytes = BitConverter.GetBytes(newValue);
-            Array.Copy(valueBytes, 0, writeBytes, 0, ByteCount);
-
-            return writeBytes;
-        }
-
-        public bool SetBytes(uint offset, byte[] dataBytes)
-        {
-            if (dataBytes == null)
-                return false;
-
-            return Config.Stream.WriteRamLittleEndian(dataBytes, AddressHolder.EffectiveAddress, AddressHolder.UseAbsoluteAddressing);
-        }
     }
 }
