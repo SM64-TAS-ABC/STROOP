@@ -23,6 +23,16 @@ namespace SM64_Diagnostic.Structs
             switch (specialType)
             {
                 case "MarioDistanceToObject":
+                    getterFunction = () =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        List<Position> objPoses = GetObjectPositions();
+                        return objPoses.ConvertAll(objPos =>
+                        {
+                            return (object)MoreMath.GetDistanceBetween(
+                                marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
+                        });
+                    };
                     break;
 
                 case "MarioHorizontalDistanceToObject":
@@ -59,6 +69,39 @@ namespace SM64_Diagnostic.Structs
         private static List<object> CreateList(params object[] objs)
         {
             return new List<object>(objs);
+        }
+
+        private static Position GetMarioPosition()
+        {
+            float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+            float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            float marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            return new Position(marioX, marioY, marioZ);
+        }
+
+        private static List<Position> GetObjectPositions()
+        {
+            return ObjectManager.Instance.CurrentAddresses.ConvertAll(objAddress =>
+            {
+                float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+                float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+                return new Position(objX, objY, objZ);
+            });
+        }
+
+        private struct Position
+        {
+            public readonly float X;
+            public readonly float Y;
+            public readonly float Z;
+
+            public Position(float x, float y, float z)
+            {
+                X = x;
+                Y = y;
+                Z = z;
+            }
         }
     }
 }
