@@ -1059,7 +1059,6 @@ namespace SM64_Diagnostic.Controls
             UInt64 oldValue = BitConverter.ToUInt64(dataBytes, 0);
             UInt64 newValue;
 
-
             // Handle object values
             uint? objectAddress;
             if (IsObject && (objectAddress = ManagerContext.Current.ObjectSlotManager.GetSlotAddressFromName(value)).HasValue)
@@ -1120,12 +1119,6 @@ namespace SM64_Diagnostic.Controls
             Array.Copy(valueBytes, 0, writeBytes, 0, ByteCount);
 
             return writeBytes;
-        }
-
-        public bool SetStringValue(uint offset, string value)
-        {
-            var dataBytes = GetBytesFromString(offset, value);
-            return SetBytes(offset, dataBytes);
         }
 
         public bool SetBytes(uint offset, byte[] dataBytes)
