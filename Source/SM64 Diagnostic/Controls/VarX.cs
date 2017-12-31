@@ -169,9 +169,8 @@ namespace SM64_Diagnostic.Controls
             string firstVarString = null;
             bool atLeastOneVarIncorporated = false;
 
-            foreach (uint address in AddressHolder.EffectiveAddressList)
+            foreach (object value in _getterFunction())
             {
-                object value = Config.Stream.GetValue(MemoryType, address, AddressHolder.UseAbsoluteAddressing);
                 string varString = value.ToString();
 
                 if (!atLeastOneVarIncorporated)
@@ -217,10 +216,7 @@ namespace SM64_Diagnostic.Controls
 
             Config.Stream.Suspend();
 
-            foreach (uint address in AddressHolder.EffectiveAddressList)
-            {
-                Config.Stream.SetValue(MemoryType, stringValue, address, AddressHolder.UseAbsoluteAddressing);
-            }
+            _setterFunction(stringValue);
 
             Config.Stream.Resume();
         }
