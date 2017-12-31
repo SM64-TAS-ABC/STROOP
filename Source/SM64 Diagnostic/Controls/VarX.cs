@@ -361,14 +361,14 @@ namespace SM64_Diagnostic.Controls
             {
                 if (!AddressHolder.IsAdditive)
                 {
-                    AddressToolTip.SetToolTip(this._nameLabel, "TODO 1" /*String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
-                        _watchVar.GetRamAddress(), _watchVar.GetProcessAddress(), Config.Stream.ProcessName)*/);
+                    AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
+                        AddressHolder.GetRamAddress(), AddressHolder.GetProcessAddress(), Config.Stream.ProcessName));
                 }
                 else
                 {
-                    AddressToolTip.SetToolTip(this._nameLabel, "TODO 2" /*String.Format("0x{1:X8} + 0x{0:X8} = 0x{2:X8} [{4} + 0x{3:X8}]",
-                        _watchVar.GetRamAddress(0, false), OffsetList[0], _watchVar.GetRamAddress(OffsetList[0]),
-                        _watchVar.GetProcessAddress(OffsetList[0]), Config.Stream.ProcessName)*/);
+                    AddressToolTip.SetToolTip(this._nameLabel, String.Format("0x{1:X8} + 0x{0:X8} = 0x{2:X8} [{4} + 0x{3:X8}]",
+                        AddressHolder.GetRamAddress(false), AddressHolder.Offset, AddressHolder.GetRamAddress(),
+                        AddressHolder.GetProcessAddress(), Config.Stream.ProcessName));
                 }
             };
 
