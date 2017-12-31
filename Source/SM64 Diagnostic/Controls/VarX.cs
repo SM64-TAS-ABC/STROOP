@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.Controls
     public class VarX
     {
         public readonly AddressHolder AddressHolder;
-        public uint Address { get { return AddressHolder.Address; } }
+        public uint Address { get { return AddressHolder.Offset; } }
 
         public readonly BaseAddressType BaseAddress;
         public readonly string Name;

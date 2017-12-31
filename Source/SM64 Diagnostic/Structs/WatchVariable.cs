@@ -13,7 +13,7 @@ namespace SM64_Diagnostic.Structs
     public class WatchVariable
     {
         public readonly AddressHolder AddressHolder;
-        public uint Address { get { return AddressHolder.Address; } }
+        public uint Address { get { return AddressHolder.Offset; } }
 
         public readonly BaseAddressType Offset;
         public readonly string Name;

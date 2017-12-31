@@ -16,10 +16,10 @@ namespace SM64_Diagnostic.Controls
 {
     public class AddressHolder
     {
-        public readonly uint? AddressUS;
-        public readonly uint? AddressJP;
-        public readonly uint? AddressPAL;
-        public readonly uint? AddressOffset;
+        public readonly uint? OffsetUS;
+        public readonly uint? OffsetJP;
+        public readonly uint? OffsetPAL;
+        public readonly uint? OffsetDefault;
 
         public readonly BaseAddressType BaseAddress;
         public readonly int ByteCount;
@@ -40,23 +40,23 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public uint Address
+        public uint Offset
         {
             get
             {
                 switch (Config.Version)
                 {
                     case Config.RomVersion.US:
-                        if (AddressUS != null) return AddressUS.Value;
+                        if (OffsetUS != null) return OffsetUS.Value;
                         break;
                     case Config.RomVersion.JP:
-                        if (AddressJP != null) return AddressJP.Value;
+                        if (OffsetJP != null) return OffsetJP.Value;
                         break;
                     case Config.RomVersion.PAL:
-                        if (AddressPAL != null) return AddressPAL.Value;
+                        if (OffsetPAL != null) return OffsetPAL.Value;
                         break;
                 }
-                if (AddressOffset != null) return AddressOffset.Value;
+                if (OffsetDefault != null) return OffsetDefault.Value;
                 return 0;
             }
         }
@@ -69,7 +69,7 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public AddressHolder(int byteCount, BaseAddressType offset,
+        public AddressHolder(int byteCount, BaseAddressType baseAddress,
             uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault)
         {
             if (offsetUS == null && offsetJP == null && offsetPAL == null && offsetDefault == null)
@@ -79,18 +79,18 @@ namespace SM64_Diagnostic.Controls
             }
 
             ByteCount = byteCount;
-            BaseAddress = offset;
+            BaseAddress = baseAddress;
 
-            AddressUS = offsetUS;
-            AddressJP = offsetJP;
-            AddressPAL = offsetPAL;
-            AddressOffset = offsetDefault;
+            OffsetUS = offsetUS;
+            OffsetJP = offsetJP;
+            OffsetPAL = offsetPAL;
+            OffsetDefault = offsetDefault;
         }
 
         public uint GetRamAddress(bool addressArea = true)
         {
-            uint offset = BaseAddressList[0];
-            var offsetedAddress = new UIntPtr(offset + Address);
+            uint baseAddress = BaseAddressList[0];
+            var offsetedAddress = new UIntPtr(baseAddress + Offset);
             uint address;
 
             if (UseAbsoluteAddressing)

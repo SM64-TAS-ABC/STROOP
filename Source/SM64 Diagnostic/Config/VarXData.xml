@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <WaterData>
+  <Data type="float" address="0x3C" offset="Mario">Mario X</Data>
+  <Data type="float" address="0x40" offset="Mario">Mario Y</Data>
+  <Data type="float" address="0x44" offset="Mario">Mario Z</Data>
+  
   <Data type="short" addressUS="0x8010C81C" addressJP="0x801090E4" offset="Relative">Castle Lake WL</Data>
   <Data type="short" addressUS="0x8010C810" addressJP="0x801090D8" offset="Relative">Castle Moat WL</Data>
   <Data type="short" addressUS="0x80361192" addressJP="0x8035FE22" offset="Relative">Basement Pillars WL</Data>
