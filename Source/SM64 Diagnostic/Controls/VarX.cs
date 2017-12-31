@@ -159,8 +159,8 @@ namespace SM64_Diagnostic.Controls
         {
             if (IsSpecial) return "SPECIAL";
 
-            string combinedVarString = "";
-            string firstVarString = "";
+            string combinedVarString = "(none)";
+            string firstVarString = null;
             bool atLeastOneVarIncorporated = false;
 
             foreach (uint address in AddressHolder.EffectiveAddressList)
@@ -176,7 +176,7 @@ namespace SM64_Diagnostic.Controls
                 }
                 else
                 {
-                    if (varString != firstVarString) combinedVarString = "";
+                    if (varString != firstVarString) combinedVarString = "(multiple values)";
                 }
             }
 

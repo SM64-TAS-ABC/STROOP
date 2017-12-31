@@ -136,16 +136,15 @@ namespace SM64_Diagnostic.Controls
 
         public uint GetRamAddress(bool addressArea = true)
         {
-            uint baseAddress = BaseAddressList[0];
-            var offsetedAddress = new UIntPtr(baseAddress + Offset);
+            UIntPtr effectiveAddress = new UIntPtr(EffectiveAddressUnsafe);
             uint address;
 
             if (UseAbsoluteAddressing)
                 address = (uint)Config.Stream.ConvertAddressEndianess(
-                    new UIntPtr(offsetedAddress.ToUInt64() - (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()),
+                    new UIntPtr(effectiveAddress.ToUInt64() - (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()),
                     ByteCount);
             else
-                address = offsetedAddress.ToUInt32();
+                address = effectiveAddress.ToUInt32();
 
             return addressArea ? address | 0x80000000 : address & 0x0FFFFFFF;
         }
