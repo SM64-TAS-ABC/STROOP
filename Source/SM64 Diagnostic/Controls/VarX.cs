@@ -176,7 +176,11 @@ namespace SM64_Diagnostic.Controls
                 }
                 else
                 {
-                    if (varString != firstVarString) combinedVarString = "(multiple values)";
+                    if (varString != firstVarString)
+                    {
+                        combinedVarString = "(multiple values)";
+                        break;
+                    }
                 }
             }
 
