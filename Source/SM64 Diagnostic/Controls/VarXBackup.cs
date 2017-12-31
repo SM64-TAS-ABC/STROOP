@@ -790,7 +790,7 @@ namespace SM64_Diagnostic.Controls
         public byte[] GetByteData(uint offset)
         {
             // Get dataBytes
-            var dataBytes = Config.Stream.ReadRamLittleEndian(new UIntPtr(AddressHolder.EffectiveAddress),
+            var dataBytes = Config.Stream.ReadRamLittleEndian(new UIntPtr(AddressHolder.EffectiveAddressUnsafe),
                 ByteCount, AddressHolder.UseAbsoluteAddressing);
 
             // Make sure offset is a valid pointer
@@ -1060,7 +1060,7 @@ namespace SM64_Diagnostic.Controls
         public byte[] GetBytesFromString(uint offset, string value)
         {
             // Get dataBytes
-            var address = AddressHolder.EffectiveAddress;
+            var address = AddressHolder.EffectiveAddressUnsafe;
             var dataBytes = new byte[8];
             Config.Stream.ReadRamLittleEndian(new UIntPtr(address), ByteCount, AddressHolder.UseAbsoluteAddressing).CopyTo(dataBytes, 0);
             UInt64 oldValue = BitConverter.ToUInt64(dataBytes, 0);
@@ -1137,7 +1137,7 @@ namespace SM64_Diagnostic.Controls
             if (dataBytes == null)
                 return false;
 
-            return Config.Stream.WriteRamLittleEndian(dataBytes, AddressHolder.EffectiveAddress, AddressHolder.UseAbsoluteAddressing);
+            return Config.Stream.WriteRamLittleEndian(dataBytes, AddressHolder.EffectiveAddressUnsafe, AddressHolder.UseAbsoluteAddressing);
         }
     }
 }

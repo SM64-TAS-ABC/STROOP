@@ -65,7 +65,7 @@ namespace SM64_Diagnostic.Structs
 
         private static readonly List<uint> BaseAddressListZero = new List<uint> { 0 };
 
-        public static List<uint> GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum? baseAddressType, bool returnNonEmptyList = true)
+        public static List<uint> GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum? baseAddressType, bool returnNonEmptyList)
         {
             List<uint> output;
             switch (baseAddressType)

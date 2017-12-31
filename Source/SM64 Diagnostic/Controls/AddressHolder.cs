@@ -24,6 +24,9 @@ namespace SM64_Diagnostic.Controls
         public readonly uint? OffsetPAL;
         public readonly uint? OffsetDefault;
 
+        // TODO remove this
+        private readonly bool _returnNonEmptyList;
+
         public bool UseAbsoluteAddressing
         {
             get
@@ -65,15 +68,24 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                return VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType);
+                return VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType, _returnNonEmptyList);
             }
         }
 
-        public uint BaseAddress
+        public uint BaseAddressUnsafe
         {
             get
             {
                 return BaseAddressList[0];
+            }
+        }
+
+        public uint? BaseAddress
+        {
+            get
+            {
+                List<uint> baseAddressList = BaseAddressList;
+                return baseAddressList.Count == 0 ? (uint?)null : baseAddressList[0];
             }
         }
 
@@ -85,7 +97,7 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public uint EffectiveAddress
+        public uint EffectiveAddressUnsafe
         {
             get
             {
@@ -93,8 +105,17 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public uint? EffectiveAddress
+        {
+            get
+            {
+                List<uint> effectiveAddressList = EffectiveAddressList;
+                return effectiveAddressList.Count == 0 ? (uint?)null : effectiveAddressList[0];
+            }
+        }
+
         public AddressHolder(int byteCount, BaseAddressTypeEnum baseAddress,
-            uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault)
+            uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, bool returnNonEmptyList)
         {
             if (offsetUS == null && offsetJP == null && offsetPAL == null && offsetDefault == null)
             {
@@ -109,6 +130,8 @@ namespace SM64_Diagnostic.Controls
             OffsetJP = offsetJP;
             OffsetPAL = offsetPAL;
             OffsetDefault = offsetDefault;
+
+            _returnNonEmptyList = returnNonEmptyList;
         }
 
         public uint GetRamAddress(bool addressArea = true)

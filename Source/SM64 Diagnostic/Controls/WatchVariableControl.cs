@@ -188,7 +188,7 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                return GetBaseAddressListFromBaseAddressType(_watchVar.Offset);
+                return GetBaseAddressListFromBaseAddressType(_watchVar.Offset, true);
             }
         }
 

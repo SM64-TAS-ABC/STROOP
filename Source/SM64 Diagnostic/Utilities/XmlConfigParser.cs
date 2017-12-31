@@ -2428,7 +2428,8 @@ namespace SM64_Diagnostic.Utilities
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetPAL"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value));
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value),
+                    true);
 
             bool useHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
@@ -2493,7 +2494,8 @@ namespace SM64_Diagnostic.Utilities
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetPAL"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value));
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value),
+                    false);
 
             bool useHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
