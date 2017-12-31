@@ -16,4 +16,8 @@
 
   <Data type="ushort" offset="0x2E" baseAddressType="Mario" isAngle="true">Yaw (US)</Data>
   <Data type="short" offset="0x2E" baseAddressType="Mario" isAngle="true">Yaw (S)</Data>
+
+  <Data groupList="Simple" type="float" offset="0xA0" baseAddressType="Object">Object X</Data>
+  <Data groupList="Simple" type="float" offset="0xA4" baseAddressType="Object">Object Y</Data>
+  <Data groupList="Simple" type="float" offset="0xA8" baseAddressType="Object">Object Z</Data>
 </WaterData>

@@ -203,7 +203,8 @@ namespace SM64_Diagnostic.Managers
 
                 if (click == ClickType.ObjectClick)
                 {
-                    ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
+                    //TODO uncomment this so that clicking objects goes back to obj tab
+                    //ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
                 }
 
                 if (isShiftKeyHeld && selection.Count > 0)

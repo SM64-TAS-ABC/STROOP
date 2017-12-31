@@ -173,10 +173,27 @@ namespace SM64_Diagnostic.Controls
             if (_editMode)
                 return;
 
+            string combinedVarString = "";
+            string firstVarString = "";
+            bool atLeastOneVarIncorporated = false;
+
             foreach (uint address in AddressHolder.EffectiveAddressList)
             {
                 object value = Config.Stream.GetValue(Type, address, AddressHolder.UseAbsoluteAddressing);
-                _textBox.Text = value.ToString();
+                string varString = value.ToString();
+
+                if (!atLeastOneVarIncorporated)
+                {
+                    combinedVarString = varString;
+                    firstVarString = varString;
+                    atLeastOneVarIncorporated = true;
+                }
+                else
+                {
+                    if (varString != firstVarString) combinedVarString = "";
+                }
+
+                _textBox.Text = combinedVarString.ToString();
             }
         }
         
