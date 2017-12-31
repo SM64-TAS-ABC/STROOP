@@ -15,23 +15,23 @@ namespace SM64_Diagnostic.Controls
     public class VarX
     {
         public readonly AddressHolder AddressHolder;
-        public uint Address { get { return AddressHolder.Offset; } }
+        //public uint Address { get { return AddressHolder.Offset; } }
 
-        public readonly BaseAddressTypeEnum BaseAddress;
+        //public readonly BaseAddressTypeEnum BaseAddress;
         public readonly string Name;
-        public readonly string SpecialType;
-        public readonly ulong? Mask;
-        public readonly bool IsBool;
-        public readonly bool IsObject;
-        public readonly bool IsAngle;
-        public readonly Color? BackroundColor;
-        public readonly List<VariableGroup> GroupList;
+        //public readonly string SpecialType;
+        //public readonly ulong? Mask;
+        //public readonly bool IsBool;
+        //public readonly bool IsObject;
+        //public readonly bool IsAngle;
+        //public readonly Color? BackroundColor;
+        //public readonly List<VariableGroup> GroupList;
         public readonly string TypeName;
         public readonly Type Type;
         public readonly int ByteCount;
 
-        public bool UseHex;
-        public bool InvertBool;
+        //public bool UseHex;
+        //public bool InvertBool;
 
         public VarX(
             string name,
@@ -49,20 +49,20 @@ namespace SM64_Diagnostic.Controls
             bool isAngle)
         {
             Name = name;
-            BaseAddress = offset;
-            GroupList = groupList;
-            SpecialType = specialType;
-            BackroundColor = backgroundColor;
+            //BaseAddress = offset;
+            //GroupList = groupList;
+            //SpecialType = specialType;
+            //BackroundColor = backgroundColor;
+            AddressHolder = addressHolder;
 
             if (IsSpecial) return;
 
-            AddressHolder = addressHolder;
-            UseHex = useHex;
-            Mask = mask;
-            IsBool = isBool;
-            IsObject = isObject;
-            InvertBool = invertBool;
-            IsAngle = isAngle;
+            //UseHex = useHex;
+            //Mask = mask;
+            //IsBool = isBool;
+            //IsObject = isObject;
+            //InvertBool = invertBool;
+            //IsAngle = isAngle;
 
             TypeName = typeName;
             Type = VarXUtilities.StringToType[TypeName];
@@ -70,15 +70,15 @@ namespace SM64_Diagnostic.Controls
 
 
             CreateControls();
-            if (BackroundColor.HasValue)
-                Color = BackroundColor.Value;
+            //if (BackroundColor.HasValue)
+            //    Color = BackroundColor.Value;
         }
 
         public bool IsSpecial
         {
             get
             {
-                return BaseAddress == BaseAddressTypeEnum.Special;
+                return AddressHolder.BaseAddressType == BaseAddressTypeEnum.Special;
             }
         }
 
@@ -97,20 +97,21 @@ namespace SM64_Diagnostic.Controls
 
         BorderedTableLayoutPanel _tablePanel;
         Label _nameLabel;
-        CheckBox _checkBoxBool;
+        //CheckBox _checkBoxBool;
         TextBox _textBoxValue;
 
-        bool _changedByUser = true;
+        //bool _changedByUser = true;
         bool _editMode = false;
 
-        static Image _lockedImage = new Bitmap(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SM64_Diagnostic.EmbeddedResources.lock.png")), new Size(16, 16));
-        static Image _someLockedImage = _lockedImage.GetOpaqueImage(0.5f);
+        //static Image _lockedImage = new Bitmap(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SM64_Diagnostic.EmbeddedResources.lock.png")), new Size(16, 16));
+        //static Image _someLockedImage = _lockedImage.GetOpaqueImage(0.5f);
 
-        static VarX _lastSelected;
+        //static VarX _lastSelected;
 
-        AngleViewModeType _angleViewMode = AngleViewModeType.Recommended;
-        Boolean _angleTruncated = false;
+        //AngleViewModeType _angleViewMode = AngleViewModeType.Recommended;
+        //Boolean _angleTruncated = false;
 
+        /*
         private static ContextMenuStrip _menu;
         public static ContextMenuStrip Menu
         {
@@ -133,7 +134,9 @@ namespace SM64_Diagnostic.Controls
                 return _menu;
             }
         }
+        */
 
+        /*
         private static ContextMenuStrip _angleMenu;
         public static ContextMenuStrip AngleMenu
         {
@@ -159,7 +162,9 @@ namespace SM64_Diagnostic.Controls
                 return _angleMenu;
             }
         }
+        */
 
+        /*
         private static ContextMenuStrip _checkMenu;
         public static ContextMenuStrip CheckMenu
         {
@@ -175,7 +180,9 @@ namespace SM64_Diagnostic.Controls
                 return _checkMenu;
             }
         }
+        */
 
+        /*
         private static ToolStripMenuItem[] _angleMenuDropDown;
         public static ToolStripMenuItem[] AngleDropDownMenu
         {
@@ -195,7 +202,9 @@ namespace SM64_Diagnostic.Controls
                 return _angleMenuDropDown;
             }
         }
+        */
 
+        /*
         private static List<ToolStripMenuItem> _objectDropDownMenu;
         public static List<ToolStripMenuItem> ObjectDropDownMenu
         {
@@ -209,7 +218,9 @@ namespace SM64_Diagnostic.Controls
                 return _objectDropDownMenu;
             }
         }
+        */
 
+        /*
         private static List<ToolStripMenuItem> _scriptDropDownMenu;
         public static List<ToolStripMenuItem> ScriptDropDownMenu
         {
@@ -223,7 +234,9 @@ namespace SM64_Diagnostic.Controls
                 return _scriptDropDownMenu;
             }
         }
+        */
 
+        /*
         static ToolTip _toolTip;
         public static ToolTip AddressToolTip
         {
@@ -242,7 +255,9 @@ namespace SM64_Diagnostic.Controls
                 _toolTip = value;
             }
         }
+        */
 
+        /* 
         private CheckState _checkBoxCheckState = CheckState.Unchecked;
         public CheckState CheckBoxCheckState
         {
@@ -258,6 +273,7 @@ namespace SM64_Diagnostic.Controls
                 _checkBoxBool.CheckState = value;
             }
         }
+        */
 
         public string Value
         {
@@ -277,6 +293,7 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        /*
         public Color Color
         {
             get
@@ -292,6 +309,7 @@ namespace SM64_Diagnostic.Controls
                     _checkBoxBool.BackColor = Color;
             }
         }
+        */
 
         public Control Control
         {
@@ -301,6 +319,7 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        /*
         Image _lastLockedImage = null;
         private void ShowLockedImage(bool show, bool transparent = false)
         {
@@ -314,6 +333,7 @@ namespace SM64_Diagnostic.Controls
             _lastLockedImage = nextImage;
             _nameLabel.Image = nextImage;
         }
+        */
 
         public bool EditMode
         {
@@ -327,7 +347,7 @@ namespace SM64_Diagnostic.Controls
                 if (_textBoxValue != null)
                 {
                     _textBoxValue.ReadOnly = !_editMode;
-                    _textBoxValue.BackColor = _editMode ? Color.White : Color == Color.Transparent ? SystemColors.Control : Color;
+                    _textBoxValue.BackColor = _editMode ? Color.White : SystemColors.Control; // Color == Color.Transparent ? SystemColors.Control : Color;
                     if (_editMode)
                     {
                         _textBoxValue.Focus();
@@ -357,6 +377,7 @@ namespace SM64_Diagnostic.Controls
             this._nameLabel.Margin = new Padding(3, 3, 3, 3);
             this._nameLabel.Click += _nameLabel_Click;
             this._nameLabel.ImageAlign = ContentAlignment.MiddleRight;
+            /*
             this._nameLabel.MouseHover += (sender, e) =>
             {
                 if (!AddressHolder.IsAdditive)
@@ -371,7 +392,9 @@ namespace SM64_Diagnostic.Controls
                         AddressHolder.GetProcessAddress(), Config.Stream.ProcessName));
                 }
             };
+            */
 
+            /*
             if (IsBool)
             {
                 this._checkBoxBool = new CheckBox();
@@ -386,6 +409,7 @@ namespace SM64_Diagnostic.Controls
                 this._checkBoxBool.ContextMenuStrip = WatchVariableControl.CheckMenu;
             }
             else
+            */
             {
                 this._textBoxValue = new TextBox();
                 this._textBoxValue.ReadOnly = true;
@@ -394,11 +418,12 @@ namespace SM64_Diagnostic.Controls
                 this._textBoxValue.Width = 200;
                 this._textBoxValue.Margin = new Padding(6, 3, 6, 3);
                 this._textBoxValue.TextChanged += OnEdited;
-                this._textBoxValue.ContextMenuStrip = IsAngle ? WatchVariableControl.AngleMenu : WatchVariableControl.Menu;
+                //this._textBoxValue.ContextMenuStrip = IsAngle ? WatchVariableControl.AngleMenu : WatchVariableControl.Menu;
                 this._textBoxValue.KeyDown += OnTextValueKeyDown;
                 this._textBoxValue.MouseEnter += _textBoxValue_MouseEnter;
                 this._textBoxValue.DoubleClick += _textBoxValue_DoubleClick;
                 this._textBoxValue.Leave += (sender, e) => { EditMode = false; };
+                /*
                 if (IsAngle)
                 {
                     WatchVariableControl.AngleMenu.ItemClicked += OnMenuStripClick;
@@ -407,6 +432,7 @@ namespace SM64_Diagnostic.Controls
                 }
                 else
                     WatchVariableControl.Menu.ItemClicked += OnMenuStripClick;
+                    */
             }
 
             this._tablePanel = new BorderedTableLayoutPanel();
@@ -423,18 +449,21 @@ namespace SM64_Diagnostic.Controls
             this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
             this._tablePanel.ShowBorder = false;
             this._tablePanel.Controls.Add(_nameLabel, 0, 0);
-            this._tablePanel.Controls.Add(IsBool ? this._checkBoxBool as Control : this._textBoxValue, 1, 0);
+            this._tablePanel.Controls.Add(/*IsBool ? this._checkBoxBool as Control :*/ this._textBoxValue, 1, 0);
         }
 
         private void _nameLabel_Click(object sender, EventArgs e)
         {
             VariableViewerForm varInfo;
             var typeDescr = TypeName;
+            /*
             if (Mask.HasValue)
             {
                 typeDescr += String.Format(" w/ mask: 0x{0:X" + ByteCount * 2 + "}", Mask);
             }
+            */
 
+            /*
             if (!AddressHolder.IsAdditive)
             {
                 varInfo = new VariableViewerForm(Name, typeDescr,
@@ -443,10 +472,11 @@ namespace SM64_Diagnostic.Controls
             }
             else
             {
+            */
                 varInfo = new VariableViewerForm(Name, typeDescr,
                     String.Format("0x{0:X8}", AddressHolder.GetRamAddress()),
                     String.Format("0x{0:X8}", AddressHolder.GetProcessAddress().ToUInt64()));
-            }
+            //}
             varInfo.ShowDialog();
         }
 
@@ -472,11 +502,12 @@ namespace SM64_Diagnostic.Controls
             }
             */
 
+            /*
             _lastSelected = this;
             if (IsAngle)
             {
                 (AngleMenu.Items["HexView"] as ToolStripMenuItem).Checked = UseHex;
-                /*(AngleMenu.Items["LockValue"] as ToolStripMenuItem).CheckState = lockedStatus;*/
+                //(AngleMenu.Items["LockValue"] as ToolStripMenuItem).CheckState = lockedStatus;
                 (AngleMenu.Items["Highlight"] as ToolStripMenuItem).Checked = _tablePanel.ShowBorder;
                 (AngleDropDownMenu[0].DropDownItems[0] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Recommended);
                 (AngleDropDownMenu[0].DropDownItems[1] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Unsigned);
@@ -488,7 +519,7 @@ namespace SM64_Diagnostic.Controls
             else
             {
                 (Menu.Items["HexView"] as ToolStripMenuItem).Checked = UseHex;
-                /*(Menu.Items["LockValue"] as ToolStripMenuItem).CheckState = lockedStatus;*/
+                //(Menu.Items["LockValue"] as ToolStripMenuItem).CheckState = lockedStatus;
                 (Menu.Items["Highlight"] as ToolStripMenuItem).Checked = _tablePanel.ShowBorder;
                 ObjectDropDownMenu.ForEach(d => Menu.Items.Remove(d));
                 if (IsObject)
@@ -497,8 +528,10 @@ namespace SM64_Diagnostic.Controls
                 }
                 ScriptDropDownMenu.ForEach(d => Menu.Items.Remove(d));
             }
+            */
         }
 
+        /*
         private void AngleDropDownMenu_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             if (this != _lastSelected)
@@ -523,7 +556,9 @@ namespace SM64_Diagnostic.Controls
                     break;
             }
         }
+        */
 
+        /*
         private void TruncateAngleMenu_ItemClicked(object sender, EventArgs e)
         {
             if (this != _lastSelected)
@@ -531,21 +566,21 @@ namespace SM64_Diagnostic.Controls
 
             _angleTruncated = !_angleTruncated;
         }
+        */
 
         public void Update()
         {
             if (IsSpecial)
                 return;
 
-            /*
-            ShowLockedImage(OffsetList.Any(o => GetIsLocked(o)), !OffsetList.All(o => GetIsLocked(o)));
-            */
+            //ShowLockedImage(OffsetList.Any(o => GetIsLocked(o)), !OffsetList.All(o => GetIsLocked(o)));
 
             if (_editMode)
                 return;
 
-            _changedByUser = false;
+            //_changedByUser = false;
 
+            /*
             if (IsBool)
             {
                 if (AddressHolder.BaseAddressList.Any(o => GetBoolValue(o)))
@@ -565,16 +600,19 @@ namespace SM64_Diagnostic.Controls
                 }
             }
             else
+            */
             {
                 bool firstBaseAddress = true;
                 foreach (var baseAddress in AddressHolder.BaseAddressList)
                 {
                     string newText = "";
+                    /*
                     if (IsAngle)
                     {
                         newText = GetAngleStringValue(baseAddress, _angleViewMode, _angleTruncated);
                     }
                     else
+                    */
                     {
                         newText = GetStringValue(baseAddress);
                     }
@@ -593,11 +631,12 @@ namespace SM64_Diagnostic.Controls
                 }
             }
 
-            _changedByUser = true;
+            //_changedByUser = true;
         }
 
         private void OnEdited(object sender, EventArgs e)
         {
+            /*
             if (!_changedByUser)
                 return;
 
@@ -608,8 +647,10 @@ namespace SM64_Diagnostic.Controls
                     SetBoolValue(baseAddress, _checkBoxBool.Checked);
                 }
             }
+            */
         }
 
+        /*
         private void OnMenuStripClick(object sender, ToolStripItemClickedEventArgs e)
         {
             if (this != _lastSelected)
@@ -624,7 +665,6 @@ namespace SM64_Diagnostic.Controls
                     UseHex = !(e.ClickedItem as ToolStripMenuItem).Checked;
                     (e.ClickedItem as ToolStripMenuItem).Checked = !(e.ClickedItem as ToolStripMenuItem).Checked;
                     break;
-                    /*
                 case "Lock Value":
                     EditMode = false;
                     (e.ClickedItem as ToolStripMenuItem).Checked = !(e.ClickedItem as ToolStripMenuItem).Checked;
@@ -633,8 +673,6 @@ namespace SM64_Diagnostic.Controls
                     else
                         OffsetList.ForEach(o => LockUpdate(o));
                     break;
-                    */
-                    /*
                 case "Select Object":
                     if (_watchVar.ByteCount != 4)
                         return;
@@ -648,7 +686,6 @@ namespace SM64_Diagnostic.Controls
                             slotManager.SelectedSlotsAddresses.Add(objAddress);
                     }
                     break;
-                    */
                 case "Highlight":
                     var toolItem = (e.ClickedItem as ToolStripMenuItem);
                     toolItem.Checked = !toolItem.Checked;
@@ -656,6 +693,7 @@ namespace SM64_Diagnostic.Controls
                     break;
             }
         }
+        */
 
         private void OnTextValueKeyDown(object sender, KeyEventArgs e)
         {
@@ -679,11 +717,13 @@ namespace SM64_Diagnostic.Controls
             byte[] writeBytes;
             foreach (var baseAddress in AddressHolder.BaseAddressList)
             {
+                /*
                 if (IsAngle)
                 {
                     writeBytes = GetBytesFromAngleString(_textBoxValue.Text, _angleViewMode);
                 }
                 else
+                */
                 {
                     writeBytes = GetBytesFromString(baseAddress, _textBoxValue.Text);
                 }
@@ -750,8 +790,8 @@ namespace SM64_Diagnostic.Controls
         public byte[] GetByteData(uint offset)
         {
             // Get dataBytes
-            var dataBytes = Config.Stream.ReadRamLittleEndian(AddressHolder.IsAdditive ? new UIntPtr(offset + Address)
-                : new UIntPtr(Address), ByteCount, AddressHolder.UseAbsoluteAddressing);
+            var dataBytes = Config.Stream.ReadRamLittleEndian(new UIntPtr(AddressHolder.EffectiveAddress),
+                ByteCount, AddressHolder.UseAbsoluteAddressing);
 
             // Make sure offset is a valid pointer
             if (AddressHolder.IsAdditive && offset == 0)
@@ -770,6 +810,7 @@ namespace SM64_Diagnostic.Controls
                 return "(none)";
 
             // Parse object type
+            /*
             if (IsObject)
             {
                 var objAddress = BitConverter.ToUInt32(dataBytes, 0);
@@ -780,9 +821,10 @@ namespace SM64_Diagnostic.Controls
                 if (slotName != null)
                     return "Slot: " + slotName;
             }
+            */
 
             // Parse floating point
-            if (!UseHex && (Type == typeof(float) || Type == typeof(double)))
+            if (/*!UseHex && */(Type == typeof(float) || Type == typeof(double)))
             {
                 if (Type == typeof(float))
                     return BitConverter.ToSingle(dataBytes, 0).ToString();
@@ -797,16 +839,22 @@ namespace SM64_Diagnostic.Controls
             UInt64 dataValue = BitConverter.ToUInt64(intBytes, 0);
 
             // Apply mask
+            /*
             if (Mask.HasValue)
                 dataValue &= Mask.Value;
+            */
 
             // Boolean parsing
+            /*
             if (IsBool)
                 return (dataValue != 0x00).ToString();
+            */
 
             // Print hex
+            /*
             if (UseHex)
                 return "0x" + dataValue.ToString("X" + ByteCount * 2);
+            */
 
             // Print signed
             if (Type == typeof(Int64))
@@ -821,6 +869,7 @@ namespace SM64_Diagnostic.Controls
                 return dataValue.ToString();
         }
 
+        /*
         public byte[] GetBytesFromAngleString(string value, AngleViewModeType viewMode)
         {
             if (Type != typeof(UInt32) && Type != typeof(UInt16)
@@ -867,13 +916,17 @@ namespace SM64_Diagnostic.Controls
 
             return BitConverter.GetBytes(writeValue).Take(ByteCount).ToArray();
         }
+        */
 
+        /*
         public bool SetAngleStringValue(uint offset, string value, AngleViewModeType viewMode)
         {
             var dataBytes = GetBytesFromAngleString(value, viewMode);
             return SetBytes(offset, dataBytes);
         }
+        */
 
+        /*
         public string GetAngleStringValue(uint offset, AngleViewModeType viewMode, bool truncated = false)
         {
             // Get dataBytes
@@ -936,7 +989,9 @@ namespace SM64_Diagnostic.Controls
 
             return "Error: ang. parse";
         }
+        */
 
+        /*
         public bool GetBoolValue(uint offset)
         {
             // Get dataBytes
@@ -960,7 +1015,9 @@ namespace SM64_Diagnostic.Controls
             value = InvertBool ? !value : value;
             return value;
         }
+        */
 
+        /*
         public void SetBoolValue(uint offset, bool value)
         {
             // Get dataBytes
@@ -998,6 +1055,7 @@ namespace SM64_Diagnostic.Controls
 
             Config.Stream.WriteRamLittleEndian(writeBytes, address, AddressHolder.UseAbsoluteAddressing);
         }
+        */
 
         public byte[] GetBytesFromString(uint offset, string value)
         {
@@ -1009,12 +1067,14 @@ namespace SM64_Diagnostic.Controls
             UInt64 newValue;
 
             // Handle object values
+            /*
             uint? objectAddress;
             if (IsObject && (objectAddress = ManagerContext.Current.ObjectSlotManager.GetSlotAddressFromName(value)).HasValue)
             {
                 newValue = objectAddress.Value;
             }
             else
+            */
             // Handle hex variable
             if (ParsingUtilities.IsHex(value))
             {
@@ -1060,8 +1120,10 @@ namespace SM64_Diagnostic.Controls
             }
 
             // Apply mask
+            /*
             if (Mask.HasValue)
                 newValue = (newValue & Mask.Value) | ((~Mask.Value) & oldValue);
+            */
 
             var writeBytes = new byte[ByteCount];
             var valueBytes = BitConverter.GetBytes(newValue);
