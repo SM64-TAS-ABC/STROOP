@@ -2406,7 +2406,7 @@ namespace SM64_Diagnostic.Utilities
         {
             string name = element.Value;
 
-            BaseAddressTypeEnum offset = GetBaseAddressType(element.Attribute(XName.Get("offset")).Value);
+            BaseAddressTypeEnum offset = GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
 
             List<VariableGroup> groupList = ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
 
@@ -2468,7 +2468,7 @@ namespace SM64_Diagnostic.Utilities
         {
             string name = element.Value;
 
-            BaseAddressTypeEnum offset = GetBaseAddressType(element.Attribute(XName.Get("offset")).Value);
+            BaseAddressTypeEnum offset = GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
 
             List<VariableGroup> groupList = ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
 

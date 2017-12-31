@@ -1,63 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MarioData>
-  <Data type="float" address="0x3C" offset="Mario">X</Data>
-  <Data type="float" address="0x40" offset="Mario">Y</Data>
-  <Data type="float" address="0x44" offset="Mario">Z</Data>
-  <Data type="float" address="0x48" offset="Mario">X Speed</Data>
-  <Data type="float" address="0x4C" offset="Mario">Y Speed</Data>
-  <Data type="float" address="0x50" offset="Mario">Z Speed</Data>
-  <Data type="float" address="0x54" offset="Mario">H Speed</Data>
-  <Data offset="Special" specialType="DeFactoSpeed">De Facto Speed</Data>
-  <Data type="float" address="0x58" offset="Mario">X Sliding Speed</Data>
-  <Data type="float" address="0x5C" offset="Mario">Z Sliding Speed</Data>
-  <Data offset="Special" specialType="SlidingSpeed">H Sliding Speed</Data>
-  <Data type="ushort" address="0x38" offset="Mario" isAngle="true">Sliding Yaw</Data>
-  <Data offset="Special" specialType="MovementX">Delta X</Data>
-  <Data offset="Special" specialType="MovementY">Delta Y</Data>
-  <Data offset="Special" specialType="MovementZ">Delta Z</Data>
-  <Data offset="Special" specialType="MovementForwards">Delta Forwards</Data>
-  <Data offset="Special" specialType="MovementSideways">Delta Sideways</Data>
-  <Data offset="Special" specialType="MovementHorizontal">Delta Horizontal</Data>
-  <Data offset="Special" specialType="MovementTotal">Delta Total</Data>
-  <Data offset="Special" specialType="MovementAngle">Delta Angle</Data>
-  <Data offset="Special" specialType="QFrameCountEstimate">QFrames Est.</Data>
-  <Data type="ushort" address="0x2E" offset="Mario" isAngle="true">Yaw (Facing)</Data>
-  <Data type="ushort" address="0x24" offset="Mario" isAngle="true">Yaw (Intended)</Data>
-  <Data offset="Special" specialType="DeltaYawIntendedFacing">DYaw Intend-Face</Data>
-  <Data type="ushort" address="0x3A" offset="Mario" isAngle="true">Twirl Yaw</Data>
-  <Data type="short" address="0x34" offset="Mario" isAngle="true">Yaw Velocity</Data>
-  <Data type="ushort" address="0x74" offset="Mario" isAngle="true">Floor Yaw</Data>
-  <Data type="short" address="0x2C" offset="Mario" isAngle="true">Pitch</Data>
-  <Data type="short" address="0x30" offset="Mario" isAngle="true">Roll</Data>
-  <Data type="short" address="0x32" offset="Mario" isAngle="true">Flying Pull Back</Data>
-  <Data type="short" address="0x1602" offset="Mario" isAngle="true">First Person Yaw</Data>
-  <Data type="short" address="0x1600" offset="Mario" isAngle="true">First Person Pitch</Data>
-  <Data type="uint" address="0x78" offset="Mario" useHex="true" isObject="true">Interaction Object</Data>
-  <Data type="uint" address="0x80" offset="Mario" useHex="true" isObject="true">Used Object</Data>
-  <Data type="uint" addressUS="0x80330E34" addressJP="0x8032FED4" offset="Relative" useHex="true" isObject="true">Stood On Object</Data>
-  <Data type="uint" address="0x7C" offset="Mario" useHex="true" isObject="true">Held Object</Data>
-  <Data type="float" address="0x258" offset="Mario">HOLP X</Data>
-  <Data type="float" address="0x25C" offset="Mario">HOLP Y</Data>
-  <Data type="float" address="0x260" offset="Mario">HOLP Z</Data>
-  <Data type="byte" address="0x24A" offset="Mario">HOLP Type</Data>
-  <Data type="uint" address="0x04" offset="Mario" isBool="true" mask="0x10">Hat on Head</Data>
-  <Data type="uint" address="0x04" offset="Mario" isBool="true" mask="0x20">Hat in Hand</Data>
-  <Data type="uint" address="0x04" offset="Mario" isBool="true" mask="0x08">Wing Cap</Data>
-  <Data type="uint" address="0x04" offset="Mario" isBool="true" mask="0x04">Metal Cap</Data>
-  <Data type="uint" address="0x04" offset="Mario" isBool="true" mask="0x02">Vanish Cap</Data>
-  <Data type="uint" address="0x04" offset="Mario" isBool="true" mask="0x01">Should Have Hat</Data>
-  <Data type="ushort" address="0xB6" offset="Mario">Cap Timer</Data>
-  <Data type="short" address="0x26" offset="Mario">Hitstun Timer</Data>
-  <Data type="sbyte" address="0xB4" offset="Mario">Unsquishing Timer</Data>
-  <Data type="ushort" address="0x1E" offset="Mario">Squished Timer</Data>
-  <Data type="short" address="0x1A" offset="Mario">Water Shell Timer</Data>
-  <Data type="float" address="0xBC" offset="Mario">Peak Height</Data>
-  <Data type="float" address="0x70" offset="Mario">Floor Height</Data>
-  <Data offset="Special" specialType="FallHeight">Fall Height</Data>
-  <Data type="float" address="0xC0" offset="Mario">Quicksand Height</Data>
-  <Data type="byte" addressUS="0x8032DA94" addressJP="0x8032CB34" offset="Relative" mask="0x01" isBool="true">Just Teleported</Data>
-  <Data type="int" addressUS="0x800F0A5C" addressJP="0x800EDBDC" offset="Relative">Blinking State</Data>
-  <Data type="short" addressUS="0x8032DF08" addressJP="0x8032CFA8" offset="Relative">Blinking Timer</Data>
-  <Data type="uint" addressUS="0x80361158" addressJP="0x8035FDE8" offset="Relative" useHex="true" isObject="true">Effective Mario Object</Data>
-  <Data type="uint" address="0x88" offset="Mario" useHex="true" isObject="true">Visual Mario Object</Data>
+  <Data type="float" address="0x3C" baseAddressType="Mario">X</Data>
+  <Data type="float" address="0x40" baseAddressType="Mario">Y</Data>
+  <Data type="float" address="0x44" baseAddressType="Mario">Z</Data>
+  <Data type="float" address="0x48" baseAddressType="Mario">X Speed</Data>
+  <Data type="float" address="0x4C" baseAddressType="Mario">Y Speed</Data>
+  <Data type="float" address="0x50" baseAddressType="Mario">Z Speed</Data>
+  <Data type="float" address="0x54" baseAddressType="Mario">H Speed</Data>
+  <Data baseAddressType="Special" specialType="DeFactoSpeed">De Facto Speed</Data>
+  <Data type="float" address="0x58" baseAddressType="Mario">X Sliding Speed</Data>
+  <Data type="float" address="0x5C" baseAddressType="Mario">Z Sliding Speed</Data>
+  <Data baseAddressType="Special" specialType="SlidingSpeed">H Sliding Speed</Data>
+  <Data type="ushort" address="0x38" baseAddressType="Mario" isAngle="true">Sliding Yaw</Data>
+  <Data baseAddressType="Special" specialType="MovementX">Delta X</Data>
+  <Data baseAddressType="Special" specialType="MovementY">Delta Y</Data>
+  <Data baseAddressType="Special" specialType="MovementZ">Delta Z</Data>
+  <Data baseAddressType="Special" specialType="MovementForwards">Delta Forwards</Data>
+  <Data baseAddressType="Special" specialType="MovementSideways">Delta Sideways</Data>
+  <Data baseAddressType="Special" specialType="MovementHorizontal">Delta Horizontal</Data>
+  <Data baseAddressType="Special" specialType="MovementTotal">Delta Total</Data>
+  <Data baseAddressType="Special" specialType="MovementAngle">Delta Angle</Data>
+  <Data baseAddressType="Special" specialType="QFrameCountEstimate">QFrames Est.</Data>
+  <Data type="ushort" address="0x2E" baseAddressType="Mario" isAngle="true">Yaw (Facing)</Data>
+  <Data type="ushort" address="0x24" baseAddressType="Mario" isAngle="true">Yaw (Intended)</Data>
+  <Data baseAddressType="Special" specialType="DeltaYawIntendedFacing">DYaw Intend-Face</Data>
+  <Data type="ushort" address="0x3A" baseAddressType="Mario" isAngle="true">Twirl Yaw</Data>
+  <Data type="short" address="0x34" baseAddressType="Mario" isAngle="true">Yaw Velocity</Data>
+  <Data type="ushort" address="0x74" baseAddressType="Mario" isAngle="true">Floor Yaw</Data>
+  <Data type="short" address="0x2C" baseAddressType="Mario" isAngle="true">Pitch</Data>
+  <Data type="short" address="0x30" baseAddressType="Mario" isAngle="true">Roll</Data>
+  <Data type="short" address="0x32" baseAddressType="Mario" isAngle="true">Flying Pull Back</Data>
+  <Data type="short" address="0x1602" baseAddressType="Mario" isAngle="true">First Person Yaw</Data>
+  <Data type="short" address="0x1600" baseAddressType="Mario" isAngle="true">First Person Pitch</Data>
+  <Data type="uint" address="0x78" baseAddressType="Mario" useHex="true" isObject="true">Interaction Object</Data>
+  <Data type="uint" address="0x80" baseAddressType="Mario" useHex="true" isObject="true">Used Object</Data>
+  <Data type="uint" addressUS="0x80330E34" addressJP="0x8032FED4" baseAddressType="Relative" useHex="true" isObject="true">Stood On Object</Data>
+  <Data type="uint" address="0x7C" baseAddressType="Mario" useHex="true" isObject="true">Held Object</Data>
+  <Data type="float" address="0x258" baseAddressType="Mario">HOLP X</Data>
+  <Data type="float" address="0x25C" baseAddressType="Mario">HOLP Y</Data>
+  <Data type="float" address="0x260" baseAddressType="Mario">HOLP Z</Data>
+  <Data type="byte" address="0x24A" baseAddressType="Mario">HOLP Type</Data>
+  <Data type="uint" address="0x04" baseAddressType="Mario" isBool="true" mask="0x10">Hat on Head</Data>
+  <Data type="uint" address="0x04" baseAddressType="Mario" isBool="true" mask="0x20">Hat in Hand</Data>
+  <Data type="uint" address="0x04" baseAddressType="Mario" isBool="true" mask="0x08">Wing Cap</Data>
+  <Data type="uint" address="0x04" baseAddressType="Mario" isBool="true" mask="0x04">Metal Cap</Data>
+  <Data type="uint" address="0x04" baseAddressType="Mario" isBool="true" mask="0x02">Vanish Cap</Data>
+  <Data type="uint" address="0x04" baseAddressType="Mario" isBool="true" mask="0x01">Should Have Hat</Data>
+  <Data type="ushort" address="0xB6" baseAddressType="Mario">Cap Timer</Data>
+  <Data type="short" address="0x26" baseAddressType="Mario">Hitstun Timer</Data>
+  <Data type="sbyte" address="0xB4" baseAddressType="Mario">Unsquishing Timer</Data>
+  <Data type="ushort" address="0x1E" baseAddressType="Mario">Squished Timer</Data>
+  <Data type="short" address="0x1A" baseAddressType="Mario">Water Shell Timer</Data>
+  <Data type="float" address="0xBC" baseAddressType="Mario">Peak Height</Data>
+  <Data type="float" address="0x70" baseAddressType="Mario">Floor Height</Data>
+  <Data baseAddressType="Special" specialType="FallHeight">Fall Height</Data>
+  <Data type="float" address="0xC0" baseAddressType="Mario">Quicksand Height</Data>
+  <Data type="byte" addressUS="0x8032DA94" addressJP="0x8032CB34" baseAddressType="Relative" mask="0x01" isBool="true">Just Teleported</Data>
+  <Data type="int" addressUS="0x800F0A5C" addressJP="0x800EDBDC" baseAddressType="Relative">Blinking State</Data>
+  <Data type="short" addressUS="0x8032DF08" addressJP="0x8032CFA8" baseAddressType="Relative">Blinking Timer</Data>
+  <Data type="uint" addressUS="0x80361158" addressJP="0x8035FDE8" baseAddressType="Relative" useHex="true" isObject="true">Effective Mario Object</Data>
+  <Data type="uint" address="0x88" baseAddressType="Mario" useHex="true" isObject="true">Visual Mario Object</Data>
 </MarioData>
