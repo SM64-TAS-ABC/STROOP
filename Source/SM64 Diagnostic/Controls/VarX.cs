@@ -37,20 +37,24 @@ namespace SM64_Diagnostic.Controls
 
             CreateControls();
 
-            if (AddressHolder.IsSpecial) return;
-
-            _getterFunction = () =>
+            if (AddressHolder.IsSpecial)
             {
-                return AddressHolder.EffectiveAddressList.ConvertAll(
-                    address => Config.Stream.GetValue(AddressHolder.MemoryType, address, AddressHolder.UseAbsoluteAddressing));
-            };
-
-            _setterFunction = (string stringValue) =>
+                (_getterFunction, _setterFunction) = VarXSpecialUtilities.CreateGetterSetterFunctions(specialType);
+            }
+            else
             {
-                AddressHolder.EffectiveAddressList.ForEach(
-                    address => Config.Stream.SetValue(AddressHolder.MemoryType, stringValue, address, AddressHolder.UseAbsoluteAddressing));
-            };
+                _getterFunction = () =>
+                {
+                    return AddressHolder.EffectiveAddressList.ConvertAll(
+                        address => Config.Stream.GetValue(AddressHolder.MemoryType, address, AddressHolder.UseAbsoluteAddressing));
+                };
 
+                _setterFunction = (string stringValue) =>
+                {
+                    AddressHolder.EffectiveAddressList.ForEach(
+                        address => Config.Stream.SetValue(AddressHolder.MemoryType, stringValue, address, AddressHolder.UseAbsoluteAddressing));
+                };
+            }
         }
 
 
@@ -156,8 +160,6 @@ namespace SM64_Diagnostic.Controls
 
         public string GetStringValue()
         {
-            if (AddressHolder.IsSpecial) return "SPECIAL";
-
             string combinedVarString = "(none)";
             string firstVarString = null;
             bool atLeastOneVarIncorporated = false;
@@ -205,8 +207,6 @@ namespace SM64_Diagnostic.Controls
 
         public void SetStringValue(string stringValue)
         {
-            if (AddressHolder.IsSpecial) return;
-
             Config.Stream.Suspend();
 
             _setterFunction(stringValue);
