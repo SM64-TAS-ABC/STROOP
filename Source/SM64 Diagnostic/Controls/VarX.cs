@@ -70,7 +70,7 @@ namespace SM64_Diagnostic.Controls
 
         BorderedTableLayoutPanel _tablePanel;
         Label _nameLabel;
-        TextBox _textBoxValue;
+        TextBox _textBox;
 
         bool _editMode = false;
 
@@ -80,17 +80,17 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                if (_textBoxValue == null)
+                if (_textBox == null)
                     return "";
 
-                return _textBoxValue.Text;
+                return _textBox.Text;
             }
             set
             {
-                if (_textBoxValue == null)
+                if (_textBox == null)
                     return;
 
-                _textBoxValue.Text = value;
+                _textBox.Text = value;
             }
         }
 
@@ -111,14 +111,14 @@ namespace SM64_Diagnostic.Controls
             set
             {
                 _editMode = value;
-                if (_textBoxValue != null)
+                if (_textBox != null)
                 {
-                    _textBoxValue.ReadOnly = !_editMode;
-                    _textBoxValue.BackColor = _editMode ? Color.White : SystemColors.Control;
+                    _textBox.ReadOnly = !_editMode;
+                    _textBox.BackColor = _editMode ? Color.White : SystemColors.Control;
                     if (_editMode)
                     {
-                        _textBoxValue.Focus();
-                        _textBoxValue.SelectAll();
+                        _textBox.Focus();
+                        _textBox.SelectAll();
                     }
                 }
             }
@@ -133,15 +133,15 @@ namespace SM64_Diagnostic.Controls
             this._nameLabel.Click += _nameLabel_Click;
             this._nameLabel.ImageAlign = ContentAlignment.MiddleRight;
 
-            this._textBoxValue = new TextBox();
-            this._textBoxValue.ReadOnly = true;
-            this._textBoxValue.BorderStyle = BorderStyle.None;
-            this._textBoxValue.TextAlign = HorizontalAlignment.Right;
-            this._textBoxValue.Width = 200;
-            this._textBoxValue.Margin = new Padding(6, 3, 6, 3);
-            this._textBoxValue.KeyDown += OnTextValueKeyDown;
-            this._textBoxValue.DoubleClick += _textBoxValue_DoubleClick;
-            this._textBoxValue.Leave += (sender, e) => { EditMode = false; };
+            this._textBox = new TextBox();
+            this._textBox.ReadOnly = true;
+            this._textBox.BorderStyle = BorderStyle.None;
+            this._textBox.TextAlign = HorizontalAlignment.Right;
+            this._textBox.Width = 200;
+            this._textBox.Margin = new Padding(6, 3, 6, 3);
+            this._textBox.KeyDown += OnTextValueKeyDown;
+            this._textBox.DoubleClick += _textBoxValue_DoubleClick;
+            this._textBox.Leave += (sender, e) => { EditMode = false; };
 
             this._tablePanel = new BorderedTableLayoutPanel();
             this._tablePanel.Size = new Size(230, _nameLabel.Height + 2);
@@ -157,7 +157,7 @@ namespace SM64_Diagnostic.Controls
             this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
             this._tablePanel.ShowBorder = false;
             this._tablePanel.Controls.Add(_nameLabel, 0, 0);
-            this._tablePanel.Controls.Add(this._textBoxValue, 1, 0);
+            this._tablePanel.Controls.Add(this._textBox, 1, 0);
         }
 
         private void _nameLabel_Click(object sender, EventArgs e)
@@ -189,11 +189,11 @@ namespace SM64_Diagnostic.Controls
 
                 if (firstBaseAddress)
                 {
-                    _textBoxValue.Text = newText;
+                    _textBox.Text = newText;
                 }
-                else if (_textBoxValue.Text != newText)
+                else if (_textBox.Text != newText)
                 {
-                    _textBoxValue.Text = "";
+                    _textBox.Text = "";
                     continue;
                 }
 
@@ -219,20 +219,10 @@ namespace SM64_Diagnostic.Controls
 
             Config.Stream.Suspend();
 
-
-
-
-            /*
-            // Write new value to RAM
-            byte[] writeBytes;
-            foreach (var baseAddress in AddressHolder.BaseAddressList)
+            foreach (uint address in AddressHolder.EffectiveAddressList)
             {
-                writeBytes = GetBytesFromString(baseAddress, _textBoxValue.Text);
-                SetBytes(baseAddress, writeBytes);
+                Config.Stream.SetValue(Type, _textBox.Text, address, AddressHolder.UseAbsoluteAddressing);
             }
-            */
-
-
 
             Config.Stream.Resume();
         }

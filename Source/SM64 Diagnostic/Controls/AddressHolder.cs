@@ -77,11 +77,19 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public List<uint> EffectiveAddressList
+        {
+            get
+            {
+                return BaseAddressList.ConvertAll(baseAddress => baseAddress + Offset);
+            }
+        }
+
         public uint EffectiveAddress
         {
             get
             {
-                return IsAdditive ? BaseAddress + Offset : BaseAddress;
+                return EffectiveAddressList[0];
             }
         }
 
