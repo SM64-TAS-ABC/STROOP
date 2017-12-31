@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <WaterData>
-  <Data type="float" address="0x3C" baseAddressType="Mario">Mario X</Data>
-  <Data type="float" address="0x40" baseAddressType="Mario">Mario Y</Data>
-  <Data type="float" address="0x44" baseAddressType="Mario">Mario Z</Data>
+  <Data type="float" offset="0x3C" baseAddressType="Mario">Mario X</Data>
+  <Data type="float" offset="0x40" baseAddressType="Mario">Mario Y</Data>
+  <Data type="float" offset="0x44" baseAddressType="Mario">Mario Z</Data>
   
-  <Data type="short" addressUS="0x8010C81C" addressJP="0x801090E4" baseAddressType="Relative">Castle Lake WL</Data>
-  <Data type="short" addressUS="0x8010C810" addressJP="0x801090D8" baseAddressType="Relative">Castle Moat WL</Data>
-  <Data type="short" addressUS="0x80361192" addressJP="0x8035FE22" baseAddressType="Relative">Basement Pillars WL</Data>
-  <Data type="short" addressUS="0x8036118A" addressJP="0x8035FE1A" baseAddressType="Relative">Basement Valley WL</Data>
+  <Data type="short" offsetUS="0x8010C81C" offsetJP="0x801090E4" baseAddressType="Relative">Castle Lake WL</Data>
+  <Data type="short" offsetUS="0x8010C810" offsetJP="0x801090D8" baseAddressType="Relative">Castle Moat WL</Data>
+  <Data type="short" offsetUS="0x80361192" offsetJP="0x8035FE22" baseAddressType="Relative">Basement Pillars WL</Data>
+  <Data type="short" offsetUS="0x8036118A" offsetJP="0x8035FE1A" baseAddressType="Relative">Basement Valley WL</Data>
 </WaterData>

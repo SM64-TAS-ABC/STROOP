@@ -1,44 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ActionsData>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" useHex="true">Action</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" useHex="true">Action</Data>
   <Data baseAddressType="Special" specialType="ActionDescription">Action Description</Data>
-  <Data type="uint" address="0x10" baseAddressType="Mario" useHex="true">Previous Action</Data>
+  <Data type="uint" offset="0x10" baseAddressType="Mario" useHex="true">Previous Action</Data>
   <Data baseAddressType="Special" specialType="PrevActionDescription">Prev. Action Desc.</Data>
-  <Data type="short" address="0x18" baseAddressType="Mario">Action Phase</Data>
-  <Data type="short" address="0x1A" baseAddressType="Mario">Action Timer</Data>
-  <Data type="short" address="0x38" baseAddressType="MarioObj">Animation</Data>
+  <Data type="short" offset="0x18" baseAddressType="Mario">Action Phase</Data>
+  <Data type="short" offset="0x1A" baseAddressType="Mario">Action Timer</Data>
+  <Data type="short" offset="0x38" baseAddressType="MarioObj">Animation</Data>
   <Data baseAddressType="Special" specialType="MarioAnimationDescription">Animation Description</Data>
-  <Data type="short" address="0x40" baseAddressType="MarioObj">Animation Timer</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x80000000">b00 throwing?</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x40000000">b01 (never)</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x20000000">b02 water stuff?</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x10000000">b03 water/twirl?</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x08000000">b04 pause exit</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x04000000">b05 ground stuff?</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x02000000">b06 jumps?</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x01000000">b07 air?</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00800000">b08 attacking</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00400000">b09 standing still</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00200000">b10 hanging on ceiling</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00100000">b11 holding pole</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00080000">b12 horizontal</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00040000">b13 sitting/sliding</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00020000">b14 hurt</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00010000">b15 riding shell</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00008000">b16 small hitbox?</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00004000">b17 metal</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00002000">b18 water</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00001000">b19 no control</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000800">b20 invincible2?</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000400">b21 transitioning?</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000200">b22 invincible?</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000100">b23 using hands?</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000080">b24</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000040">b25</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000020">b26</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000010">b27</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000008">b28</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000004">b29</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000002">b30</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000001">b31</Data>
+  <Data type="short" offset="0x40" baseAddressType="MarioObj">Animation Timer</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x80000000">b00 throwing?</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x40000000">b01 (never)</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x20000000">b02 water stuff?</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x10000000">b03 water/twirl?</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x08000000">b04 pause exit</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x04000000">b05 ground stuff?</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x02000000">b06 jumps?</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x01000000">b07 air?</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00800000">b08 attacking</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00400000">b09 standing still</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00200000">b10 hanging on ceiling</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00100000">b11 holding pole</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00080000">b12 horizontal</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00040000">b13 sitting/sliding</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00020000">b14 hurt</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00010000">b15 riding shell</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00008000">b16 small hitbox?</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00004000">b17 metal</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00002000">b18 water</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00001000">b19 no control</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000800">b20 invincible2?</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000400">b21 transitioning?</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000200">b22 invincible?</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000100">b23 using hands?</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000080">b24</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000040">b25</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000020">b26</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000010">b27</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000008">b28</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000004">b29</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000002">b30</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Mario" isBool="true" mask="0x00000001">b31</Data>
 </ActionsData>

@@ -5,10 +5,10 @@
     <Emulator name="Nemu64 0.8" processName="Nemu64" ramStart="0x10020000"/>
     <Emulator name="BizHawk" processName="EmuHawk" offsetDll="mupen64plus.dll" ramStart="0x691C0"/>
   </Emulators>
-  
+
   <!-- US, JP, or PAL -->
   <RomVersion>US</RomVersion>
-  
+
   <RefreshRateFreq>30</RefreshRateFreq>
   <RamSize>0x400000</RamSize>
   <ObjectSlots>
@@ -59,7 +59,7 @@
     <HitboxRadius>0x1f8</HitboxRadius>
     <HitboxHeight>0x1fc</HitboxHeight>
     <HitboxDownOffset>0x208</HitboxDownOffset>
-    
+
     <YawFacingOffset>0xD6</YawFacingOffset>
     <PitchFacingOffset>0xD2</PitchFacingOffset>
     <RollFacingOffset>0xDA</RollFacingOffset>
@@ -69,7 +69,7 @@
     <ScaleWidthOffset>0x2C</ScaleWidthOffset>
     <ScaleHeightOffset>0x30</ScaleHeightOffset>
     <ScaleDepthOffset>0x34</ScaleDepthOffset>
-    
+
     <ReleaseStatusOffset>0x1CC</ReleaseStatusOffset>
     <StackIndexOffset>0x1D0</StackIndexOffset>
     <StackIndexReleasedValue>0</StackIndexReleasedValue>
@@ -78,7 +78,7 @@
     <ReleaseStatusThrownValue>0x800EE5F8</ReleaseStatusThrownValue>
     <ReleaseStatusDroppedValue>0x800EE5F0</ReleaseStatusDroppedValue>
     <InteractionStatusOffset>0x134</InteractionStatusOffset>
-    
+
     <PendulumAccelerationDirection>0xF4</PendulumAccelerationDirection>
     <PendulumAccelerationMagnitude>0x100</PendulumAccelerationMagnitude>
     <PendulumAngularVelocity>0xFC</PendulumAngularVelocity>
@@ -234,7 +234,7 @@
   </TriangleOffsets>
   <Triangle>
     <TriangleStructSize>0x30</TriangleStructSize>
-    
+
     <TriangleListPointerAddress>0x8038EE9C</TriangleListPointerAddress>
     <LevelTriangleCountAddressUS>0x80361178</LevelTriangleCountAddressUS>
     <LevelTriangleCountAddressJP>0x8035FE08</LevelTriangleCountAddressJP>
@@ -311,7 +311,7 @@
     <FileStructAddressUS>0x80207700</FileStructAddressUS>
     <FileStructAddressJP>0x80207B00</FileStructAddressJP>
     <FileStructSize>0x38</FileStructSize>
-    
+
     <ChecksumConstantOffset>0x34</ChecksumConstantOffset>
     <ChecksumConstantValue>0x4441</ChecksumConstantValue>
     <ChecksumOffset>0x36</ChecksumOffset>
@@ -393,7 +393,7 @@
   <CameraHack>
     <CameraHackStructUS>0x803E0000</CameraHackStructUS>
     <CameraHackStructJP>0x803E0000</CameraHackStructJP>
-    
+
     <CameraModeOffset>0x00</CameraModeOffset>
     <CameraXOffset>0x04</CameraXOffset>
     <CameraYOffset>0x08</CameraYOffset>

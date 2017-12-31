@@ -2406,7 +2406,7 @@ namespace SM64_Diagnostic.Utilities
         {
             string name = element.Value;
 
-            BaseAddressTypeEnum offset = GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
+            BaseAddressTypeEnum baseAddressType = GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
 
             List<VariableGroup> groupList = ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
 
@@ -2417,18 +2417,18 @@ namespace SM64_Diagnostic.Utilities
                 ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
 
             string typeName = (element.Attribute(XName.Get("type"))?.Value);
-            typeName = offset == BaseAddressTypeEnum.Special ? "byte" : typeName; // TODO fix this hacky solution
+            typeName = baseAddressType == BaseAddressTypeEnum.Special ? "byte" : typeName; // TODO fix this hacky solution
             Type type = StringToType[typeName];
             int byteCount = TypeSize[type];
 
             AddressHolder addressHolder =
                 new AddressHolder(
                     byteCount,
-                    offset,
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressUS"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressJP"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressPAL"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("address"))?.Value));
+                    baseAddressType,
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value),
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value),
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetPAL"))?.Value),
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value));
 
             bool useHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
@@ -2450,7 +2450,7 @@ namespace SM64_Diagnostic.Utilities
 
             return new WatchVariable(
                 name,
-                offset,
+                baseAddressType,
                 groupList,
                 specialType,
                 backgroundColor,
@@ -2468,7 +2468,7 @@ namespace SM64_Diagnostic.Utilities
         {
             string name = element.Value;
 
-            BaseAddressTypeEnum offset = GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
+            BaseAddressTypeEnum baseAddressType = GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
 
             List<VariableGroup> groupList = ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
 
@@ -2485,11 +2485,11 @@ namespace SM64_Diagnostic.Utilities
             AddressHolder addressHolder =
                 new AddressHolder(
                     byteCount,
-                    offset,
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressUS"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressJP"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressPAL"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("address"))?.Value));
+                    baseAddressType,
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value),
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value),
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetPAL"))?.Value),
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value));
 
             bool useHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
@@ -2511,7 +2511,7 @@ namespace SM64_Diagnostic.Utilities
 
             return new VarX(
                 name,
-                offset,
+                baseAddressType,
                 groupList,
                 specialType,
                 backgroundColor,

@@ -1,56 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <MiscData>
-  <Data type="int" addressUS="0x8032D5D4" addressJP="0x8032C694" baseAddressType="Relative">Global Timer</Data>
-  <Data type="ushort" addressUS="0x8038EEE0" addressJP="0x8038EEE0" baseAddressType="Relative">RNG Value</Data>
+  <Data type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" baseAddressType="Relative">Global Timer</Data>
+  <Data type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" baseAddressType="Relative">RNG Value</Data>
   <Data baseAddressType="Special" specialType="RngIndex">RNG Index</Data>
   <Data baseAddressType="Special" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data baseAddressType="Special" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
-  <Data type="short" addressUS="0x8032DF08" addressJP="0x8032CFA8" baseAddressType="Relative">Animation Timer</Data>
+  <Data type="short" offsetUS="0x8032DF08" offsetJP="0x8032CFA8" baseAddressType="Relative">Animation Timer</Data>
 
-  <Data type="byte" addressUS="0x80222618" addressJP="0x80222A18" baseAddressType="Relative" isBool="true" mask="0x20" invertBool="true">Music On</Data>
-  <Data type="float" addressUS="0x80222630" addressJP="0x80222A30" baseAddressType="Relative">Volume</Data>
-  <Data type="byte" addressUS="0x8032DD94" addressJP="0x8032CE34" baseAddressType="Relative" isBool="true">Special Triple Jump</Data>
-  <Data type="byte" addressUS="0x80332618" addressJP="0x80331508" baseAddressType="Relative" isBool="true">Talked to Yoshi</Data>
-  <Data type="byte" addressUS="0x8033B26E" addressJP="0x80339EFE" baseAddressType="Relative" isBool="true">Never Entered Castle</Data>
-  <Data type="short" addressUS="0x8032DDF4" addressJP="0x8032CE94" baseAddressType="Relative">Current File</Data>
-  <Data type="byte" addressUS="0x8032D5F5" addressJP="0x8032C6B5" baseAddressType="Relative">Demo Counter</Data>
-  <Data type="short" addressUS="0x801A7C30" addressJP="0x801A7AF0" baseAddressType="Relative">Demo Timer</Data>
-  <Data type="byte" addressUS="0x80226B7F" addressJP="0x80226D7F" baseAddressType="Relative">Sound Selection</Data>
-  <Data type="short" addressUS="0x801A7D1C" addressJP="0x801A7BDC" baseAddressType="Relative">Hand X</Data>
-  <Data type="short" addressUS="0x801A7D20" addressJP="0x801A7BE0" baseAddressType="Relative">Hand Y</Data>
-  <Data type="short" addressUS="0x80361258" addressJP="0x8035FEE8" baseAddressType="Relative">TTC Speed Setting</Data>
+  <Data type="byte" offsetUS="0x80222618" offsetJP="0x80222A18" baseAddressType="Relative" isBool="true" mask="0x20" invertBool="true">Music On</Data>
+  <Data type="float" offsetUS="0x80222630" offsetJP="0x80222A30" baseAddressType="Relative">Volume</Data>
+  <Data type="byte" offsetUS="0x8032DD94" offsetJP="0x8032CE34" baseAddressType="Relative" isBool="true">Special Triple Jump</Data>
+  <Data type="byte" offsetUS="0x80332618" offsetJP="0x80331508" baseAddressType="Relative" isBool="true">Talked to Yoshi</Data>
+  <Data type="byte" offsetUS="0x8033B26E" offsetJP="0x80339EFE" baseAddressType="Relative" isBool="true">Never Entered Castle</Data>
+  <Data type="short" offsetUS="0x8032DDF4" offsetJP="0x8032CE94" baseAddressType="Relative">Current File</Data>
+  <Data type="byte" offsetUS="0x8032D5F5" offsetJP="0x8032C6B5" baseAddressType="Relative">Demo Counter</Data>
+  <Data type="short" offsetUS="0x801A7C30" offsetJP="0x801A7AF0" baseAddressType="Relative">Demo Timer</Data>
+  <Data type="byte" offsetUS="0x80226B7F" offsetJP="0x80226D7F" baseAddressType="Relative">Sound Selection</Data>
+  <Data type="short" offsetUS="0x801A7D1C" offsetJP="0x801A7BDC" baseAddressType="Relative">Hand X</Data>
+  <Data type="short" offsetUS="0x801A7D20" offsetJP="0x801A7BE0" baseAddressType="Relative">Hand Y</Data>
+  <Data type="short" offsetUS="0x80361258" offsetJP="0x8035FEE8" baseAddressType="Relative">TTC Speed Setting</Data>
 
-  <Data type="short" addressUS="0x80361414" addressJP="0x803600A4" baseAddressType="Relative">Snow Counter</Data>
-  <Data type="short" addressUS="0x80361416" addressJP="0x803600A6" baseAddressType="Relative">Snow Max</Data>
-  <Data type="int" addressUS="0x80361408" addressJP="0x80360098" baseAddressType="Relative">Snow Center X</Data>
-  <Data type="int" addressUS="0x8036140C" addressJP="0x8036009C" baseAddressType="Relative">Snow Center Y</Data>
-  <Data type="int" addressUS="0x80361410" addressJP="0x803600A0" baseAddressType="Relative">Snow Center Z</Data>
-  <Data type="short" addressUS="0x80180B06" addressJP="0x8017DC86" baseAddressType="Relative">JRB Ship Snow Type</Data>
-  <Data type="short" addressUS="0x80184E8A" addressJP="0x80181FFA" baseAddressType="Relative">CCM Snow Type</Data>
-  <Data type="short" addressUS="0x80170CF6" addressJP="0x8016DE76" baseAddressType="Relative">SL Snow Type</Data>
+  <Data type="short" offsetUS="0x80361414" offsetJP="0x803600A4" baseAddressType="Relative">Snow Counter</Data>
+  <Data type="short" offsetUS="0x80361416" offsetJP="0x803600A6" baseAddressType="Relative">Snow Max</Data>
+  <Data type="int" offsetUS="0x80361408" offsetJP="0x80360098" baseAddressType="Relative">Snow Center X</Data>
+  <Data type="int" offsetUS="0x8036140C" offsetJP="0x8036009C" baseAddressType="Relative">Snow Center Y</Data>
+  <Data type="int" offsetUS="0x80361410" offsetJP="0x803600A0" baseAddressType="Relative">Snow Center Z</Data>
+  <Data type="short" offsetUS="0x80180B06" offsetJP="0x8017DC86" baseAddressType="Relative">JRB Ship Snow Type</Data>
+  <Data type="short" offsetUS="0x80184E8A" offsetJP="0x80181FFA" baseAddressType="Relative">CCM Snow Type</Data>
+  <Data type="short" offsetUS="0x80170CF6" offsetJP="0x8016DE76" baseAddressType="Relative">SL Snow Type</Data>
 
-  <Data type="byte" addressUS="0x801A81A4" addressJP="0x801A8014" baseAddressType="Relative">Mission Selected</Data>
-  <Data type="short" addressUS="0x8033BAC8" addressJP="0x8033A758" baseAddressType="Relative">Mission Layout</Data>
-  <Data type="byte" addressUS="0x80331620" addressJP="0x80330534" baseAddressType="Relative">Mission Name</Data>
-  <Data type="byte" addressUS="0x8032DD84" addressJP="0x8032CE24" baseAddressType="Relative">Last Star</Data>
-  <Data type="byte" addressUS="0x8032DD80" addressJP="0x8032CE20" baseAddressType="Relative">Last Star Course</Data>
-  <Data type="byte" addressUS="0x80331490" addressJP="0x80330430" baseAddressType="Relative">Selection Index</Data>
-  <Data type="short" addressUS="0x8032DDF8" addressJP="0x8032CE98" baseAddressType="Relative">Stage Select Index</Data>
+  <Data type="byte" offsetUS="0x801A81A4" offsetJP="0x801A8014" baseAddressType="Relative">Mission Selected</Data>
+  <Data type="short" offsetUS="0x8033BAC8" offsetJP="0x8033A758" baseAddressType="Relative">Mission Layout</Data>
+  <Data type="byte" offsetUS="0x80331620" offsetJP="0x80330534" baseAddressType="Relative">Mission Name</Data>
+  <Data type="byte" offsetUS="0x8032DD84" offsetJP="0x8032CE24" baseAddressType="Relative">Last Star</Data>
+  <Data type="byte" offsetUS="0x8032DD80" offsetJP="0x8032CE20" baseAddressType="Relative">Last Star Course</Data>
+  <Data type="byte" offsetUS="0x80331490" offsetJP="0x80330430" baseAddressType="Relative">Selection Index</Data>
+  <Data type="short" offsetUS="0x8032DDF8" offsetJP="0x8032CE98" baseAddressType="Relative">Stage Select Index</Data>
 
-  <Data type="short" addressUS="0x8033BAC6" addressJP="0x8033A756" baseAddressType="Relative">Level Index</Data>
-  <Data type="byte" addressUS="0x8033B249" addressJP="0x80339ED9" baseAddressType="Relative">Level</Data>
-  <Data type="byte" addressUS="0x8033B24A" addressJP="0x80339EDA" baseAddressType="Relative">Area</Data>
-  <Data type="short" addressUS="0x8033BACA" addressJP="0x8033A75A" baseAddressType="Relative">Loading Point</Data>
-  <Data type="uint" addressUS="0x8033B4A0" addressJP="0x8033A130" baseAddressType="Relative" useHex="true">Last Area</Data>
-  <Data type="byte" addressUS="0x8033B4A4" addressJP="0x8033A134" baseAddressType="Relative">Last Area Entrance</Data>
-  <Data type="short" addressUS="0x8033BACC" addressJP="0x8033A75C" baseAddressType="Relative">Last Death Course</Data>
-  <Data type="short" addressUS="0x8033B256" addressJP="0x80339EE6" baseAddressType="Relative">Destination</Data>
-  <Data type="short" addressUS="0x8033B25A" addressJP="0x80339EEA" baseAddressType="Relative">Door Direction</Data>
+  <Data type="short" offsetUS="0x8033BAC6" offsetJP="0x8033A756" baseAddressType="Relative">Level Index</Data>
+  <Data type="byte" offsetUS="0x8033B249" offsetJP="0x80339ED9" baseAddressType="Relative">Level</Data>
+  <Data type="byte" offsetUS="0x8033B24A" offsetJP="0x80339EDA" baseAddressType="Relative">Area</Data>
+  <Data type="short" offsetUS="0x8033BACA" offsetJP="0x8033A75A" baseAddressType="Relative">Loading Point</Data>
+  <Data type="uint" offsetUS="0x8033B4A0" offsetJP="0x8033A130" baseAddressType="Relative" useHex="true">Last Area</Data>
+  <Data type="byte" offsetUS="0x8033B4A4" offsetJP="0x8033A134" baseAddressType="Relative">Last Area Entrance</Data>
+  <Data type="short" offsetUS="0x8033BACC" offsetJP="0x8033A75C" baseAddressType="Relative">Last Death Course</Data>
+  <Data type="short" offsetUS="0x8033B256" offsetJP="0x80339EE6" baseAddressType="Relative">Destination</Data>
+  <Data type="short" offsetUS="0x8033B25A" offsetJP="0x80339EEA" baseAddressType="Relative">Door Direction</Data>
   
-  <Data type="short" addressUS="0x8033B238" addressJP="0x80339EC8" baseAddressType="Relative">Transition State</Data>
-  <Data type="short" addressUS="0x8033BAB0" addressJP="0x8033A740" baseAddressType="Relative">Transition Type</Data>
-  <Data type="byte" addressUS="0x80330EC0" addressJP="0x8032FF60" baseAddressType="Relative">Transition Progress</Data>
-  <Data type="short" addressUS="0x8033B23C" addressJP="0x80339ECC" baseAddressType="Relative">Transition Black Fade</Data>
-  <Data type="short" addressUS="0x8038B8A4" addressJP="0x8038B8A4" baseAddressType="Relative">Transition White Fade</Data>
-  <Data type="short" addressUS="0x8033B254" addressJP="0x80339EE4" baseAddressType="Relative">Transition Shrinking</Data>
+  <Data type="short" offsetUS="0x8033B238" offsetJP="0x80339EC8" baseAddressType="Relative">Transition State</Data>
+  <Data type="short" offsetUS="0x8033BAB0" offsetJP="0x8033A740" baseAddressType="Relative">Transition Type</Data>
+  <Data type="byte" offsetUS="0x80330EC0" offsetJP="0x8032FF60" baseAddressType="Relative">Transition Progress</Data>
+  <Data type="short" offsetUS="0x8033B23C" offsetJP="0x80339ECC" baseAddressType="Relative">Transition Black Fade</Data>
+  <Data type="short" offsetUS="0x8038B8A4" offsetJP="0x8038B8A4" baseAddressType="Relative">Transition White Fade</Data>
+  <Data type="short" offsetUS="0x8033B254" offsetJP="0x80339EE4" baseAddressType="Relative">Transition Shrinking</Data>
 </MiscData>

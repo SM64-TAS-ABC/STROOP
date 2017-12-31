@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrianglesData>
-  <Data type="uint" address="0x90" baseAddressType="Mario" useHex="true" color="#ffcccc">Current Area Ptr (M)</Data>
+  <Data type="uint" offset="0x90" baseAddressType="Mario" useHex="true" color="#ffcccc">Current Area Ptr (M)</Data>
   <Data baseAddressType="Special" specialType="CurrentAreaIndexMario" color="#ffcccc">Current Area Index (M)</Data>
 
-  <Data type="uint" addressUS="0x8032DDCC" addressJP="0x8032CE6C" baseAddressType="Relative" useHex="true" color="#ccfffa">Current Area Ptr</Data>
+  <Data type="uint" offsetUS="0x8032DDCC" offsetJP="0x8032CE6C" baseAddressType="Relative" useHex="true" color="#ccfffa">Current Area Ptr</Data>
   <Data baseAddressType="Special" specialType="CurrentAreaIndex" color="#ccfffa">Current Area Index</Data>
 
-  <Data type="byte" address="0x00" baseAddressType="Area">Area ID</Data>
-  <Data type="byte" address="0x01" baseAddressType="Area" isBool="true">Is Current Area</Data>
-  <Data type="short" address="0x02" baseAddressType="Area">Terrain Type</Data>
+  <Data type="byte" offset="0x00" baseAddressType="Area">Area ID</Data>
+  <Data type="byte" offset="0x01" baseAddressType="Area" isBool="true">Is Current Area</Data>
+  <Data type="short" offset="0x02" baseAddressType="Area">Terrain Type</Data>
   <Data baseAddressType="Special" specialType="AreaTerrainDescription">Terrain Description</Data>
 
-  <Data type="uint" address="0x04" baseAddressType="Area" useHex="true">Geo Layout Ptr</Data>
-  <Data type="uint" address="0x08" baseAddressType="Area" useHex="true">Collision Ptr</Data>
-  <Data type="uint" address="0x0C" baseAddressType="Area" useHex="true">Mystery 1</Data>
-  <Data type="uint" address="0x10" baseAddressType="Area" useHex="true">Mini Objects Ptr</Data>
+  <Data type="uint" offset="0x04" baseAddressType="Area" useHex="true">Geo Layout Ptr</Data>
+  <Data type="uint" offset="0x08" baseAddressType="Area" useHex="true">Collision Ptr</Data>
+  <Data type="uint" offset="0x0C" baseAddressType="Area" useHex="true">Mystery 1</Data>
+  <Data type="uint" offset="0x10" baseAddressType="Area" useHex="true">Mini Objects Ptr</Data>
 
-  <Data type="uint" address="0x14" baseAddressType="Area" useHex="true">Warp Links Head Ptr</Data>
-  <Data type="uint" address="0x18" baseAddressType="Area" useHex="true">Mystery 2</Data>
-  <Data type="uint" address="0x1C" baseAddressType="Area" useHex="true">Mystery 3</Data>
-  <Data type="uint" address="0x20" baseAddressType="Area" useHex="true">Objects Head Ptr</Data>
+  <Data type="uint" offset="0x14" baseAddressType="Area" useHex="true">Warp Links Head Ptr</Data>
+  <Data type="uint" offset="0x18" baseAddressType="Area" useHex="true">Mystery 2</Data>
+  <Data type="uint" offset="0x1C" baseAddressType="Area" useHex="true">Mystery 3</Data>
+  <Data type="uint" offset="0x20" baseAddressType="Area" useHex="true">Objects Head Ptr</Data>
 
-  <Data type="uint" address="0x24" baseAddressType="Area" useHex="true">Level Camera Ptr</Data>
-  <Data type="uint" address="0x28" baseAddressType="Area" useHex="true">Mystery 4</Data>
-  <Data type="uint" address="0x2C" baseAddressType="Area" useHex="true">Mystery 5</Data>
-  <Data type="uint" address="0x30" baseAddressType="Area" useHex="true">Mystery 6</Data>
+  <Data type="uint" offset="0x24" baseAddressType="Area" useHex="true">Level Camera Ptr</Data>
+  <Data type="uint" offset="0x28" baseAddressType="Area" useHex="true">Mystery 4</Data>
+  <Data type="uint" offset="0x2C" baseAddressType="Area" useHex="true">Mystery 5</Data>
+  <Data type="uint" offset="0x30" baseAddressType="Area" useHex="true">Mystery 6</Data>
 
-  <Data type="sbyte" address="0x34" baseAddressType="Area">Level Dialog Index</Data>
-  <Data type="byte" address="0x35" baseAddressType="Area" useHex="true">Always 0xFF</Data>
+  <Data type="sbyte" offset="0x34" baseAddressType="Area">Level Dialog Index</Data>
+  <Data type="byte" offset="0x35" baseAddressType="Area" useHex="true">Always 0xFF</Data>
 
-  <Data type="short" address="0x36" baseAddressType="Area">Music Param 1</Data>
-  <Data type="short" address="0x38" baseAddressType="Area">Music Param 2</Data>
-  <Data type="ushort" address="0x3A" baseAddressType="Area" useHex="true">Unused</Data>
+  <Data type="short" offset="0x36" baseAddressType="Area">Music Param 1</Data>
+  <Data type="short" offset="0x38" baseAddressType="Area">Music Param 2</Data>
+  <Data type="ushort" offset="0x3A" baseAddressType="Area" useHex="true">Unused</Data>
 </TrianglesData>

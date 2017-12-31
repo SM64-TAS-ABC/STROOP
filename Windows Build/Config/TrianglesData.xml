@@ -2,31 +2,31 @@
 <TrianglesData>
   <Data baseAddressType="Special" specialType="Classification">Classification</Data>
 
-  <Data type="ushort" address="0x00" baseAddressType="Triangle">Surface Type</Data>
-  <Data type="byte" address="0x04" baseAddressType="Triangle" useHex="true">Flags</Data>
-  <Data type="byte" address="0x04" baseAddressType="Triangle" isBool="true" mask="0x08">X Projection</Data>
-  <Data type="byte" address="0x04" baseAddressType="Triangle" isBool="true" invertBool="true" mask="0x08">Z Projection</Data>
-  <Data type="byte" address="0x04" baseAddressType="Triangle" useHex="true" isBool="true" mask="0x01">Belongs to Object</Data>
-  <Data type="byte" address="0x04" baseAddressType="Triangle" useHex="true" isBool="true" mask="0x02">No Cam Collision</Data>
-  <Data type="byte" address="0x05" baseAddressType="Triangle">Room</Data>
-  <Data type="byte" address="0x03" baseAddressType="Triangle">Exertion Angle</Data>
-  <Data type="byte" address="0x02" baseAddressType="Triangle">Exertion Force Index</Data>
-  <Data type="short" address="0x00" baseAddressType="TriangleExertionForceTable">Exertion Force</Data>
+  <Data type="ushort" offset="0x00" baseAddressType="Triangle">Surface Type</Data>
+  <Data type="byte" offset="0x04" baseAddressType="Triangle" useHex="true">Flags</Data>
+  <Data type="byte" offset="0x04" baseAddressType="Triangle" isBool="true" mask="0x08">X Projection</Data>
+  <Data type="byte" offset="0x04" baseAddressType="Triangle" isBool="true" invertBool="true" mask="0x08">Z Projection</Data>
+  <Data type="byte" offset="0x04" baseAddressType="Triangle" useHex="true" isBool="true" mask="0x01">Belongs to Object</Data>
+  <Data type="byte" offset="0x04" baseAddressType="Triangle" useHex="true" isBool="true" mask="0x02">No Cam Collision</Data>
+  <Data type="byte" offset="0x05" baseAddressType="Triangle">Room</Data>
+  <Data type="byte" offset="0x03" baseAddressType="Triangle">Exertion Angle</Data>
+  <Data type="byte" offset="0x02" baseAddressType="Triangle">Exertion Force Index</Data>
+  <Data type="short" offset="0x00" baseAddressType="TriangleExertionForceTable">Exertion Force</Data>
 
-  <Data type="short" address="0x06" baseAddressType="Triangle">Y Min</Data>
-  <Data type="short" address="0x08" baseAddressType="Triangle">Y Max</Data>
-  <Data type="short" address="0x0A" baseAddressType="Triangle">X1</Data>
-  <Data type="short" address="0x0C" baseAddressType="Triangle">Y1</Data>
-  <Data type="short" address="0x0E" baseAddressType="Triangle">Z1</Data>
-  <Data type="short" address="0x10" baseAddressType="Triangle">X2</Data>
-  <Data type="short" address="0x12" baseAddressType="Triangle">Y2</Data>
-  <Data type="short" address="0x14" baseAddressType="Triangle">Z2</Data>
-  <Data type="short" address="0x16" baseAddressType="Triangle">X3</Data>
-  <Data type="short" address="0x18" baseAddressType="Triangle">Y3</Data>
-  <Data type="short" address="0x1A" baseAddressType="Triangle">Z3</Data>
-  <Data type="float" address="0x3C" baseAddressType="Mario" color="#ffcccc">Mario X</Data>
-  <Data type="float" address="0x40" baseAddressType="Mario" color="#ffcccc">Mario Y</Data>
-  <Data type="float" address="0x44" baseAddressType="Mario" color="#ffcccc">Mario Z</Data>
+  <Data type="short" offset="0x06" baseAddressType="Triangle">Y Min</Data>
+  <Data type="short" offset="0x08" baseAddressType="Triangle">Y Max</Data>
+  <Data type="short" offset="0x0A" baseAddressType="Triangle">X1</Data>
+  <Data type="short" offset="0x0C" baseAddressType="Triangle">Y1</Data>
+  <Data type="short" offset="0x0E" baseAddressType="Triangle">Z1</Data>
+  <Data type="short" offset="0x10" baseAddressType="Triangle">X2</Data>
+  <Data type="short" offset="0x12" baseAddressType="Triangle">Y2</Data>
+  <Data type="short" offset="0x14" baseAddressType="Triangle">Z2</Data>
+  <Data type="short" offset="0x16" baseAddressType="Triangle">X3</Data>
+  <Data type="short" offset="0x18" baseAddressType="Triangle">Y3</Data>
+  <Data type="short" offset="0x1A" baseAddressType="Triangle">Z3</Data>
+  <Data type="float" offset="0x3C" baseAddressType="Mario" color="#ffcccc">Mario X</Data>
+  <Data type="float" offset="0x40" baseAddressType="Mario" color="#ffcccc">Mario Y</Data>
+  <Data type="float" offset="0x44" baseAddressType="Mario" color="#ffcccc">Mario Z</Data>
   <Data baseAddressType="Special" specialType="ClosestVertex" color="#e5ccff">Closest Vertex</Data>
   <Data baseAddressType="Special" specialType="ClosestVertexX" color="#e5ccff">Closest Vertex X</Data>
   <Data baseAddressType="Special" specialType="ClosestVertexY" color="#e5ccff">Closest Vertex Y</Data>
@@ -37,39 +37,39 @@
   <Data baseAddressType="Special" specialType="DownHillAngle" color="#ccd0ff">Downhill Angle</Data>
   <Data baseAddressType="Special" specialType="LeftHillAngle" color="#ccd0ff">Left Hill Angle</Data>
   <Data baseAddressType="Special" specialType="RightHillAngle" color="#ccd0ff">Right Hill Angle</Data>
-  <Data type="ushort" address="0x24" baseAddressType="Mario" isAngle="true" color="#ffcccc">M. Yaw (Intended)</Data>
-  <Data type="ushort" address="0x2E" baseAddressType="Mario" isAngle="true" color="#ffcccc">M. Yaw (Facing)</Data>
+  <Data type="ushort" offset="0x24" baseAddressType="Mario" isAngle="true" color="#ffcccc">M. Yaw (Intended)</Data>
+  <Data type="ushort" offset="0x2E" baseAddressType="Mario" isAngle="true" color="#ffcccc">M. Yaw (Facing)</Data>
   <Data baseAddressType="Special" specialType="UpHillDeltaAngle" color="#e5ccff">Uphill DAngle</Data>
   <Data baseAddressType="Special" specialType="DownHillDeltaAngle" color="#e5ccff">Downhill DAngle</Data>
   <Data baseAddressType="Special" specialType="LeftHillDeltaAngle" color="#e5ccff">Left Hill DAngle</Data>
   <Data baseAddressType="Special" specialType="RightHillDeltaAngle" color="#e5ccff">Right Hill DAngle</Data>
-  <Data type="float" address="0x1C" baseAddressType="Triangle">Normal X</Data>
-  <Data type="float" address="0x20" baseAddressType="Triangle">Normal Y</Data>
-  <Data type="float" address="0x24" baseAddressType="Triangle">Normal Z</Data>
-  <Data type="float" address="0x28" baseAddressType="Triangle">Normal Offset</Data>
-  <Data type="uint" address="0x2C" baseAddressType="Triangle" useHex="true" isObject="true">Associated Object</Data>
+  <Data type="float" offset="0x1C" baseAddressType="Triangle">Normal X</Data>
+  <Data type="float" offset="0x20" baseAddressType="Triangle">Normal Y</Data>
+  <Data type="float" offset="0x24" baseAddressType="Triangle">Normal Z</Data>
+  <Data type="float" offset="0x28" baseAddressType="Triangle">Normal Offset</Data>
+  <Data type="uint" offset="0x2C" baseAddressType="Triangle" useHex="true" isObject="true">Associated Object</Data>
   
-  <Data type="uint" address="0x68" baseAddressType="Mario" useHex="true" color="#ffeccc">Floor Triangle</Data>
-  <Data type="uint" address="0x60" baseAddressType="Mario" useHex="true" color="#ffeccc">Wall Triangle</Data>
-  <Data type="uint" address="0x64" baseAddressType="Mario" useHex="true" color="#ffeccc">Ceiling Triangle</Data>
-  <Data type="float" address="0x70" baseAddressType="Mario" color="#ffeccc">Floor Height</Data>
-  <Data type="float" address="0x6C" baseAddressType="Mario" color="#ffeccc">Ceiling Height</Data>
+  <Data type="uint" offset="0x68" baseAddressType="Mario" useHex="true" color="#ffeccc">Floor Triangle</Data>
+  <Data type="uint" offset="0x60" baseAddressType="Mario" useHex="true" color="#ffeccc">Wall Triangle</Data>
+  <Data type="uint" offset="0x64" baseAddressType="Mario" useHex="true" color="#ffeccc">Ceiling Triangle</Data>
+  <Data type="float" offset="0x70" baseAddressType="Mario" color="#ffeccc">Floor Height</Data>
+  <Data type="float" offset="0x6C" baseAddressType="Mario" color="#ffeccc">Ceiling Height</Data>
   <Data baseAddressType="Special" specialType="DistanceAboveFloor" color="#cfffcc">Dist Above Floor</Data>
   <Data baseAddressType="Special" specialType="DistanceBelowCeiling" color="#cfffcc">Dist Below Ceiling</Data>
   <Data baseAddressType="Special" specialType="NormalDistAway" color="#e5ccff">Normal Dist Away</Data>
   <Data baseAddressType="Special" specialType="VerticalDistAway" color="#e5ccff">Vertical Dist Away</Data>
   <Data baseAddressType="Special" specialType="HeightOnSlope" color="#e5ccff">Height On Triangle</Data>
   
-  <Data type="uint" addressUS="0x8038EE9C" addressJP="0x8038EE9C" baseAddressType="Relative" useHex="true" color="#d0d0d0">Tri List Pointer</Data>
-  <Data type="short" addressUS="0x8038EEA0" addressJP="0x8038EEA0" baseAddressType="Relative" color="#d0d0d0">Tri List Capacity</Data>
-  <Data type="int" addressUS="0x80361178" addressJP="0x8035FE08" baseAddressType="Relative" color="#d0d0d0">Level Tri Count</Data>
+  <Data type="uint" offsetUS="0x8038EE9C" offsetJP="0x8038EE9C" baseAddressType="Relative" useHex="true" color="#d0d0d0">Tri List Pointer</Data>
+  <Data type="short" offsetUS="0x8038EEA0" offsetJP="0x8038EEA0" baseAddressType="Relative" color="#d0d0d0">Tri List Capacity</Data>
+  <Data type="int" offsetUS="0x80361178" offsetJP="0x8035FE08" baseAddressType="Relative" color="#d0d0d0">Level Tri Count</Data>
   <Data baseAddressType="Special" specialType="ObjectTriCount" color="#d0d0d0">Object Tri Count</Data>
-  <Data type="int" addressUS="0x80361170" addressJP="0x8035FE00" baseAddressType="Relative" color="#d0d0d0">Total Tri Count</Data>
+  <Data type="int" offsetUS="0x80361170" offsetJP="0x8035FE00" baseAddressType="Relative" color="#d0d0d0">Total Tri Count</Data>
   
-  <Data type="uint" addressUS="0x8038EE98" addressJP="0x8038EE98" baseAddressType="Relative" useHex="true" color="#d0d0d0">Node List Pointer</Data>
-  <Data type="int" addressUS="0x80361174" addressJP="0x8035FE04" baseAddressType="Relative" color="#d0d0d0">Level Node Count</Data>
+  <Data type="uint" offsetUS="0x8038EE98" offsetJP="0x8038EE98" baseAddressType="Relative" useHex="true" color="#d0d0d0">Node List Pointer</Data>
+  <Data type="int" offsetUS="0x80361174" offsetJP="0x8035FE04" baseAddressType="Relative" color="#d0d0d0">Level Node Count</Data>
   <Data baseAddressType="Special" specialType="ObjectNodeCount" color="#d0d0d0">Object Node Count</Data>
-  <Data type="int" addressUS="0x8036116C" addressJP="0x8035FDFC" baseAddressType="Relative" color="#d0d0d0">Total Node Count</Data>
+  <Data type="int" offsetUS="0x8036116C" offsetJP="0x8035FDFC" baseAddressType="Relative" color="#d0d0d0">Total Node Count</Data>
   
   <Data baseAddressType="Special" specialType="DistanceToV1" color="#e5ccff">Dist to V1</Data>
   <Data baseAddressType="Special" specialType="YDistanceToV1" color="#e5ccff">YDist to V1</Data>
