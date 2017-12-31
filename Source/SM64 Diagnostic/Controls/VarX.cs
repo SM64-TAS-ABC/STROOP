@@ -17,7 +17,7 @@ namespace SM64_Diagnostic.Controls
         public readonly AddressHolder AddressHolder;
         public uint Address { get { return AddressHolder.Offset; } }
 
-        public readonly BaseAddressType BaseAddress;
+        public readonly BaseAddressTypeEnum BaseAddress;
         public readonly string Name;
         public readonly string SpecialType;
         public readonly ulong? Mask;
@@ -35,7 +35,7 @@ namespace SM64_Diagnostic.Controls
 
         public VarX(
             string name,
-            BaseAddressType offset,
+            BaseAddressTypeEnum offset,
             List<VariableGroup> groupList,
             string specialType,
             Color? backgroundColor,
@@ -78,7 +78,7 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                return BaseAddress == BaseAddressType.Special;
+                return BaseAddress == BaseAddressTypeEnum.Special;
             }
         }
 
@@ -359,7 +359,7 @@ namespace SM64_Diagnostic.Controls
             this._nameLabel.ImageAlign = ContentAlignment.MiddleRight;
             this._nameLabel.MouseHover += (sender, e) =>
             {
-                if (!AddressHolder.HasAdditiveBaseAddress)
+                if (!AddressHolder.IsAdditive)
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, "TODO 1" /*String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
                         _watchVar.GetRamAddress(), _watchVar.GetProcessAddress(), Config.Stream.ProcessName)*/);
@@ -435,7 +435,7 @@ namespace SM64_Diagnostic.Controls
                 typeDescr += String.Format(" w/ mask: 0x{0:X" + ByteCount * 2 + "}", Mask);
             }
 
-            if (!AddressHolder.HasAdditiveBaseAddress)
+            if (!AddressHolder.IsAdditive)
             {
                 varInfo = new VariableViewerForm(Name, typeDescr,
                     String.Format("0x{0:X8}", AddressHolder.GetRamAddress()),
@@ -750,11 +750,11 @@ namespace SM64_Diagnostic.Controls
         public byte[] GetByteData(uint offset)
         {
             // Get dataBytes
-            var dataBytes = Config.Stream.ReadRamLittleEndian(AddressHolder.HasAdditiveBaseAddress ? new UIntPtr(offset + Address)
+            var dataBytes = Config.Stream.ReadRamLittleEndian(AddressHolder.IsAdditive ? new UIntPtr(offset + Address)
                 : new UIntPtr(Address), ByteCount, AddressHolder.UseAbsoluteAddressing);
 
             // Make sure offset is a valid pointer
-            if (AddressHolder.HasAdditiveBaseAddress && offset == 0)
+            if (AddressHolder.IsAdditive && offset == 0)
                 return null;
 
             return dataBytes;
@@ -964,7 +964,7 @@ namespace SM64_Diagnostic.Controls
         public void SetBoolValue(uint offset, bool value)
         {
             // Get dataBytes
-            var address = AddressHolder.HasAdditiveBaseAddress ? offset + Address : Address;
+            var address = AddressHolder.EffectiveAddress;
             var dataBytes = GetByteData(offset);
 
             // Make sure offset is a valid pointer
@@ -1002,7 +1002,7 @@ namespace SM64_Diagnostic.Controls
         public byte[] GetBytesFromString(uint offset, string value)
         {
             // Get dataBytes
-            var address = AddressHolder.HasAdditiveBaseAddress ? offset + Address : Address;
+            var address = AddressHolder.EffectiveAddress;
             var dataBytes = new byte[8];
             Config.Stream.ReadRamLittleEndian(new UIntPtr(address), ByteCount, AddressHolder.UseAbsoluteAddressing).CopyTo(dataBytes, 0);
             UInt64 oldValue = BitConverter.ToUInt64(dataBytes, 0);
@@ -1075,8 +1075,7 @@ namespace SM64_Diagnostic.Controls
             if (dataBytes == null)
                 return false;
 
-            return Config.Stream.WriteRamLittleEndian(dataBytes, AddressHolder.HasAdditiveBaseAddress ? offset + Address
-                : Address, AddressHolder.UseAbsoluteAddressing);
+            return Config.Stream.WriteRamLittleEndian(dataBytes, AddressHolder.EffectiveAddress, AddressHolder.UseAbsoluteAddressing);
         }
     }
 }

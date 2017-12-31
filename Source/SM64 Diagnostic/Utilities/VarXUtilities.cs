@@ -39,9 +39,9 @@ namespace SM64_Diagnostic.Structs
             { "double", typeof(double) },
         };
 
-        public static BaseAddressType GetBaseAddressType(string offsetTypeString)
+        public static BaseAddressTypeEnum GetBaseAddressType(string offsetTypeString)
         {
-            return (BaseAddressType)Enum.Parse(typeof(BaseAddressType), offsetTypeString);
+            return (BaseAddressTypeEnum)Enum.Parse(typeof(BaseAddressTypeEnum), offsetTypeString);
         }
 
         public static VariableGroup GetVariableGroup(string variableGroupString)
@@ -65,36 +65,36 @@ namespace SM64_Diagnostic.Structs
 
         private static readonly List<uint> BaseAddressListZero = new List<uint> { 0 };
 
-        public static List<uint> GetBaseAddressListFromBaseAddressType(BaseAddressType? baseAddressType, bool returnNonEmptyList = true)
+        public static List<uint> GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum? baseAddressType, bool returnNonEmptyList = true)
         {
             List<uint> output;
             switch (baseAddressType)
             {
-                case BaseAddressType.Absolute:
+                case BaseAddressTypeEnum.Absolute:
                     output = BaseAddressListZero;
                     break;
-                case BaseAddressType.Relative:
+                case BaseAddressTypeEnum.Relative:
                     output = BaseAddressListZero;
                     break;
-                case BaseAddressType.Mario:
+                case BaseAddressTypeEnum.Mario:
                     output = new List<uint> { Config.Mario.StructAddress };
                     break;
-                case BaseAddressType.MarioObj:
+                case BaseAddressTypeEnum.MarioObj:
                     output = new List<uint> { Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress) };
                     break;
-                case BaseAddressType.Camera:
+                case BaseAddressTypeEnum.Camera:
                     output = new List<uint> { Config.Camera.CameraStructAddress };
                     break;
-                case BaseAddressType.File:
+                case BaseAddressTypeEnum.File:
                     output = new List<uint> { FileManager.Instance.CurrentFileAddress };
                     break;
-                case BaseAddressType.Object:
+                case BaseAddressTypeEnum.Object:
                     output = ObjectManager.Instance.CurrentAddresses;
                     break;
-                case BaseAddressType.Triangle:
+                case BaseAddressTypeEnum.Triangle:
                     output = new List<uint> { TriangleManager.Instance.TriangleAddress };
                     break;
-                case BaseAddressType.TriangleExertionForceTable:
+                case BaseAddressTypeEnum.TriangleExertionForceTable:
                     uint triangleAddress = TriangleManager.Instance.TriangleAddress;
                     if (triangleAddress == 0)
                     {
@@ -106,40 +106,40 @@ namespace SM64_Diagnostic.Structs
                         output = new List<uint> { Config.Triangle.ExertionForceTableAddress + 2 * exertionForceIndex };
                     }
                     break;
-                case BaseAddressType.InputCurrent:
+                case BaseAddressTypeEnum.InputCurrent:
                     output = new List<uint> { Config.Input.CurrentInputAddress };
                     break;
-                case BaseAddressType.InputJustPressed:
+                case BaseAddressTypeEnum.InputJustPressed:
                     output = new List<uint> { Config.Input.JustPressedInputAddress };
                     break;
-                case BaseAddressType.InputBuffered:
+                case BaseAddressTypeEnum.InputBuffered:
                     output = new List<uint> { Config.Input.BufferedInputAddress };
                     break;
-                case BaseAddressType.Graphics:
-                    output = GetBaseAddressListFromBaseAddressType(BaseAddressType.Object, false)
+                case BaseAddressTypeEnum.Graphics:
+                    output = GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Object, false)
                         .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.BehaviorGfxOffset));
                     break;
-                case BaseAddressType.Animation:
-                    output = GetBaseAddressListFromBaseAddressType(BaseAddressType.Object, false)
+                case BaseAddressTypeEnum.Animation:
+                    output = GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Object, false)
                         .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.AnimationOffset));
                     break;
-                case BaseAddressType.Waypoint:
-                    output = GetBaseAddressListFromBaseAddressType(BaseAddressType.Object, false)
+                case BaseAddressTypeEnum.Waypoint:
+                    output = GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Object, false)
                         .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset));
                     break;
-                case BaseAddressType.Water:
+                case BaseAddressTypeEnum.Water:
                     output = new List<uint> { Config.Stream.GetUInt32(Config.WaterPointerAddress) };
                     break;
-                case BaseAddressType.Area:
+                case BaseAddressTypeEnum.Area:
                     output = new List<uint> { AreaManager.Instance.SelectedAreaAddress };
                     break;
-                case BaseAddressType.HackedArea:
+                case BaseAddressTypeEnum.HackedArea:
                     output = new List<uint> { Config.HackedAreaAddress };
                     break;
-                case BaseAddressType.CamHack:
+                case BaseAddressTypeEnum.CamHack:
                     output = new List<uint> { Config.CameraHack.CameraHackStruct };
                     break;
-                case BaseAddressType.Special:
+                case BaseAddressTypeEnum.Special:
                     throw new ArgumentOutOfRangeException("Should not get offset list for Special var");
                 default:
                     throw new ArgumentOutOfRangeException();

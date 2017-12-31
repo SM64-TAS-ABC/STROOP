@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace SM64_Diagnostic.Structs
 {
     // TODO add new offset types
-    public enum BaseAddressType
+    public enum BaseAddressTypeEnum
     {
         Absolute,
         Relative,

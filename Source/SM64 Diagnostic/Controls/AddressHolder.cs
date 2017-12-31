@@ -16,27 +16,27 @@ namespace SM64_Diagnostic.Controls
 {
     public class AddressHolder
     {
+        public readonly int ByteCount;
+        public readonly BaseAddressTypeEnum BaseAddressType;
+
         public readonly uint? OffsetUS;
         public readonly uint? OffsetJP;
         public readonly uint? OffsetPAL;
         public readonly uint? OffsetDefault;
 
-        public readonly BaseAddressType BaseAddress;
-        public readonly int ByteCount;
-
         public bool UseAbsoluteAddressing
         {
             get
             {
-                return BaseAddress == BaseAddressType.Absolute;
+                return BaseAddressType == BaseAddressTypeEnum.Absolute;
             }
         }
 
-        public bool HasAdditiveBaseAddress
+        public bool IsAdditive
         {
             get
             {
-                return BaseAddress != BaseAddressType.Relative && BaseAddress != BaseAddressType.Absolute && BaseAddress != BaseAddressType.Special;
+                return BaseAddressType != BaseAddressTypeEnum.Relative && BaseAddressType != BaseAddressTypeEnum.Absolute && BaseAddressType != BaseAddressTypeEnum.Special;
             }
         }
 
@@ -65,11 +65,27 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                return VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddress);
+                return VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType);
             }
         }
 
-        public AddressHolder(int byteCount, BaseAddressType baseAddress,
+        public uint BaseAddress
+        {
+            get
+            {
+                return BaseAddressList[0];
+            }
+        }
+
+        public uint EffectiveAddress
+        {
+            get
+            {
+                return IsAdditive ? BaseAddress + Offset : BaseAddress;
+            }
+        }
+
+        public AddressHolder(int byteCount, BaseAddressTypeEnum baseAddress,
             uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault)
         {
             if (offsetUS == null && offsetJP == null && offsetPAL == null && offsetDefault == null)
@@ -79,7 +95,7 @@ namespace SM64_Diagnostic.Controls
             }
 
             ByteCount = byteCount;
-            BaseAddress = baseAddress;
+            BaseAddressType = baseAddress;
 
             OffsetUS = offsetUS;
             OffsetJP = offsetJP;
