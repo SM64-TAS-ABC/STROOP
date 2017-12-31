@@ -19,6 +19,9 @@ namespace SM64_Diagnostic.Controls
         public readonly string MemoryTypeName;
         public readonly Type MemoryType;
 
+        private readonly Func<List<object>> _getterFunction;
+        private readonly Action<string> _setterFunction;
+
         public VarX(
             string name,
             List<VariableGroup> groupList,
@@ -42,6 +45,18 @@ namespace SM64_Diagnostic.Controls
 
             MemoryTypeName = memoryTypeName;
             MemoryType = VarXUtilities.StringToType[MemoryTypeName];
+
+            _getterFunction = () =>
+            {
+                return AddressHolder.EffectiveAddressList.ConvertAll(
+                    address => Config.Stream.GetValue(MemoryType, address, AddressHolder.UseAbsoluteAddressing));
+            };
+
+            _setterFunction = (string stringValue) =>
+            {
+                AddressHolder.EffectiveAddressList.ForEach(
+                    address => Config.Stream.SetValue(MemoryType, stringValue, address, AddressHolder.UseAbsoluteAddressing));
+            };
 
         }
 
