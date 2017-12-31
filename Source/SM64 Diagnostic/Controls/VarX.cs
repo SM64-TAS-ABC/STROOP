@@ -65,26 +65,6 @@ namespace SM64_Diagnostic.Controls
 
         bool _editMode = false;
 
-
-
-        public string Value
-        {
-            get
-            {
-                if (_textBox == null)
-                    return "";
-
-                return _textBox.Text;
-            }
-            set
-            {
-                if (_textBox == null)
-                    return;
-
-                _textBox.Text = value;
-            }
-        }
-
         public Control Control
         {
             get
