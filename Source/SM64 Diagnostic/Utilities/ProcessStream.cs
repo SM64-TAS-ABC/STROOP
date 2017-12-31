@@ -354,15 +354,15 @@ namespace SM64_Diagnostic.Utilities
             return Readonly;
         }
 
-        public void SetValue(Type type, object value, uint address, bool absoluteAddress = false)
+        public bool SetValue(Type type, object value, uint address, bool absoluteAddress = false)
         {
-            if (type == typeof(byte)) { SetValue((byte)value, address, absoluteAddress); return; }
-            if (type == typeof(sbyte)) { SetValue((sbyte)value, address, absoluteAddress); return; }
-            if (type == typeof(short)) { SetValue((short)value, address, absoluteAddress); return; }
-            if (type == typeof(ushort)) { SetValue((ushort)value, address, absoluteAddress); return; }
-            if (type == typeof(int)) { SetValue((int)value, address, absoluteAddress); return; }
-            if (type == typeof(uint)) { SetValue((uint)value, address, absoluteAddress); return; }
-            if (type == typeof(float)) { SetValue((float)value, address, absoluteAddress); return; }
+            if (type == typeof(byte)) return SetValue((byte)value, address, absoluteAddress);
+            if (type == typeof(sbyte)) return SetValue((sbyte)value, address, absoluteAddress);
+            if (type == typeof(short)) return SetValue((short)value, address, absoluteAddress);
+            if (type == typeof(ushort)) return SetValue((ushort)value, address, absoluteAddress);
+            if (type == typeof(int)) return SetValue((int)value, address, absoluteAddress);
+            if (type == typeof(uint)) return SetValue((uint)value, address, absoluteAddress);
+            if (type == typeof(float)) return SetValue((float)value, address, absoluteAddress);
 
             throw new ArgumentOutOfRangeException("Cannot call ProcessStream.SetValue with type " + type);
         }
