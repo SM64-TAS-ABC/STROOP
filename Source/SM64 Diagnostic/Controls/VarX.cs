@@ -29,7 +29,6 @@ namespace SM64_Diagnostic.Controls
             ulong? mask,
             bool isBool,
             bool isObject,
-            string memoryTypeName,
             bool invertBool,
             bool isAngle)
         {

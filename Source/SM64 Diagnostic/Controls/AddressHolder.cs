@@ -136,7 +136,7 @@ namespace SM64_Diagnostic.Controls
 
             BaseAddressType = baseAddress;
 
-            MemoryTypeName = IsSpecial ? "Special" : memoryTypeName;
+            MemoryTypeName = IsSpecial ? "special" : memoryTypeName;
             MemoryType = IsSpecial ? null : VarXUtilities.StringToType[MemoryTypeName];
             ByteCount = IsSpecial ? 0 : VarXUtilities.TypeSize[MemoryType];
 

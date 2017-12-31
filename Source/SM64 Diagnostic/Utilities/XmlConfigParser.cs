@@ -2516,7 +2516,6 @@ namespace SM64_Diagnostic.Utilities
                 mask,
                 isBool,
                 isObject,
-                typeName,
                 invertBool,
                 isAngle);
         }
