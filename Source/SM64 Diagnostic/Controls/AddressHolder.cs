@@ -16,7 +16,10 @@ namespace SM64_Diagnostic.Controls
 {
     public class AddressHolder
     {
+        public readonly string MemoryTypeName;
+        public readonly Type MemoryType;
         public readonly int ByteCount;
+
         public readonly BaseAddressTypeEnum BaseAddressType;
 
         public readonly uint? OffsetUS;
@@ -122,7 +125,7 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public AddressHolder(int byteCount, BaseAddressTypeEnum baseAddress,
+        public AddressHolder(string memoryTypeName, BaseAddressTypeEnum baseAddress,
             uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, bool returnNonEmptyList)
         {
             if (offsetUS == null && offsetJP == null && offsetPAL == null && offsetDefault == null)
@@ -131,8 +134,11 @@ namespace SM64_Diagnostic.Controls
                 //throw new ArgumentOutOfRangeException("Cannot instantiate Address with all null values");
             }
 
-            ByteCount = byteCount;
             BaseAddressType = baseAddress;
+
+            MemoryTypeName = IsSpecial ? "Special" : memoryTypeName;
+            MemoryType = IsSpecial ? null : VarXUtilities.StringToType[MemoryTypeName];
+            ByteCount = IsSpecial ? 0 : VarXUtilities.TypeSize[MemoryType];
 
             OffsetUS = offsetUS;
             OffsetJP = offsetJP;
@@ -144,6 +150,9 @@ namespace SM64_Diagnostic.Controls
 
         public uint GetRamAddress(bool addressArea = true)
         {
+            // TODO fix this
+            if (IsSpecial) return 0;
+
             UIntPtr effectiveAddress = new UIntPtr(EffectiveAddressUnsafe);
             uint address;
 

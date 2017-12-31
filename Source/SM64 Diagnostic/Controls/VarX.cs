@@ -14,11 +14,8 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarX
     {
-        public readonly AddressHolder AddressHolder;
         public readonly string Name;
-        public readonly string MemoryTypeName;
-        public readonly Type MemoryType;
-
+        public readonly AddressHolder AddressHolder;
         private readonly Func<List<object>> _getterFunction;
         private readonly Action<string> _setterFunction;
 
@@ -43,19 +40,16 @@ namespace SM64_Diagnostic.Controls
 
             if (AddressHolder.IsSpecial) return;
 
-            MemoryTypeName = memoryTypeName;
-            MemoryType = VarXUtilities.StringToType[MemoryTypeName];
-
             _getterFunction = () =>
             {
                 return AddressHolder.EffectiveAddressList.ConvertAll(
-                    address => Config.Stream.GetValue(MemoryType, address, AddressHolder.UseAbsoluteAddressing));
+                    address => Config.Stream.GetValue(AddressHolder.MemoryType, address, AddressHolder.UseAbsoluteAddressing));
             };
 
             _setterFunction = (string stringValue) =>
             {
                 AddressHolder.EffectiveAddressList.ForEach(
-                    address => Config.Stream.SetValue(MemoryType, stringValue, address, AddressHolder.UseAbsoluteAddressing));
+                    address => Config.Stream.SetValue(AddressHolder.MemoryType, stringValue, address, AddressHolder.UseAbsoluteAddressing));
             };
 
         }
@@ -139,7 +133,7 @@ namespace SM64_Diagnostic.Controls
         private void _nameLabel_Click(object sender, EventArgs e)
         {
             VariableViewerForm varInfo;
-            var typeDescr = MemoryTypeName;
+            string typeDescr = AddressHolder.MemoryTypeName;
 
             varInfo = new VariableViewerForm(Name, typeDescr,
                 String.Format("0x{0:X8}", AddressHolder.GetRamAddress()),

@@ -16,7 +16,6 @@ using System.Net;
 using SM64_Diagnostic.Structs.Configurations;
 using static SM64_Diagnostic.Structs.Configurations.PositionControllerRelativeAngleConfig;
 using SM64_Diagnostic.Controls;
-using static SM64_Diagnostic.Structs.VarXUtilities;
 
 namespace SM64_Diagnostic.Utilities
 {
@@ -2406,9 +2405,9 @@ namespace SM64_Diagnostic.Utilities
         {
             string name = element.Value;
 
-            BaseAddressTypeEnum baseAddressType = GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
+            BaseAddressTypeEnum baseAddressType = VarXUtilities.GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
 
-            List<VariableGroup> groupList = ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
+            List<VariableGroup> groupList = VarXUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
 
             string specialType = (element.Attribute(XName.Get("specialType")) != null) ?
                 element.Attribute(XName.Get("specialType")).Value : null;
@@ -2418,12 +2417,10 @@ namespace SM64_Diagnostic.Utilities
 
             string typeName = (element.Attribute(XName.Get("type"))?.Value);
             typeName = baseAddressType == BaseAddressTypeEnum.Special ? "byte" : typeName; // TODO fix this hacky solution
-            Type type = StringToType[typeName];
-            int byteCount = TypeSize[type];
 
             AddressHolder addressHolder =
                 new AddressHolder(
-                    byteCount,
+                    typeName,
                     baseAddressType,
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value),
@@ -2469,9 +2466,9 @@ namespace SM64_Diagnostic.Utilities
         {
             string name = element.Value;
 
-            BaseAddressTypeEnum baseAddressType = GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
+            BaseAddressTypeEnum baseAddressType = VarXUtilities.GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
 
-            List<VariableGroup> groupList = ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
+            List<VariableGroup> groupList = VarXUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
 
             string specialType = (element.Attribute(XName.Get("specialType")) != null) ?
                 element.Attribute(XName.Get("specialType")).Value : null;
@@ -2480,16 +2477,10 @@ namespace SM64_Diagnostic.Utilities
                 ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
 
             string typeName = (element.Attribute(XName.Get("type"))?.Value);
-            int byteCount = 0;
-            if (baseAddressType != BaseAddressTypeEnum.Special)
-            {
-                Type type = StringToType[typeName];
-                byteCount = TypeSize[type];
-            }
 
             AddressHolder addressHolder =
                 new AddressHolder(
-                    byteCount,
+                    typeName,
                     baseAddressType,
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value),
