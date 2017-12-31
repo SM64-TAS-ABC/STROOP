@@ -78,27 +78,11 @@ namespace SM64_Diagnostic.Controls
                 Color = BackroundColor.Value;
         }
 
-        public bool HasAdditiveOffset
-        {
-            get
-            {
-                return Offset != OffsetType.Relative && Offset != OffsetType.Absolute && Offset != OffsetType.Special;
-            }
-        }
-
         public bool IsSpecial
         {
             get
             {
                 return Offset == OffsetType.Special;
-            }
-        }
-
-        public bool UseAbsoluteAddressing
-        {
-            get
-            {
-                return Offset == OffsetType.Absolute;
             }
         }
 
@@ -387,7 +371,7 @@ namespace SM64_Diagnostic.Controls
             this._nameLabel.ImageAlign = ContentAlignment.MiddleRight;
             this._nameLabel.MouseHover += (sender, e) =>
             {
-                if (!HasAdditiveOffset)
+                if (!AddressHolder.HasAdditiveOffset)
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, "TODO 1" /*String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
                         _watchVar.GetRamAddress(), _watchVar.GetProcessAddress(), Config.Stream.ProcessName)*/);
@@ -463,17 +447,17 @@ namespace SM64_Diagnostic.Controls
                 typeDescr += String.Format(" w/ mask: 0x{0:X" + ByteCount * 2 + "}", Mask);
             }
 
-            if (!HasAdditiveOffset)
+            if (!AddressHolder.HasAdditiveOffset)
             {
                 varInfo = new VariableViewerForm(Name, typeDescr,
-                    String.Format("0x{0:X8}", GetRamAddress()),
-                    String.Format("0x{0:X8}", GetProcessAddress().ToUInt64()));
+                    String.Format("0x{0:X8}", AddressHolder.GetRamAddress()),
+                    String.Format("0x{0:X8}", AddressHolder.GetProcessAddress().ToUInt64()));
             }
             else
             {
                 varInfo = new VariableViewerForm(Name, typeDescr,
-                    String.Format("0x{0:X8}", GetRamAddress(OffsetList[0])),
-                    String.Format("0x{0:X8}", GetProcessAddress(OffsetList[0]).ToUInt64()));
+                    String.Format("0x{0:X8}", AddressHolder.GetRamAddress()),
+                    String.Format("0x{0:X8}", AddressHolder.GetProcessAddress().ToUInt64()));
             }
             varInfo.ShowDialog();
         }
@@ -775,37 +759,14 @@ namespace SM64_Diagnostic.Controls
 
 
 
-
-        public uint GetRamAddress(uint offset = 0, bool addressArea = true)
-        {
-            var offsetedAddress = new UIntPtr(offset + Address);
-            uint address;
-
-            if (UseAbsoluteAddressing)
-                address = (uint)Config.Stream.ConvertAddressEndianess(
-                    new UIntPtr(offsetedAddress.ToUInt64() - (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()),
-                    ByteCount);
-            else
-                address = offsetedAddress.ToUInt32();
-
-            return addressArea ? address | 0x80000000 : address & 0x0FFFFFFF;
-        }
-
-        public UIntPtr GetProcessAddress(uint offset = 0)
-        {
-            uint address = GetRamAddress(offset, false);
-            return Config.Stream.ConvertAddressEndianess(
-                new UIntPtr(address + (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()), ByteCount);
-        }
-
         public byte[] GetByteData(uint offset)
         {
             // Get dataBytes
-            var dataBytes = Config.Stream.ReadRamLittleEndian(HasAdditiveOffset ? new UIntPtr(offset + Address)
-                : new UIntPtr(Address), ByteCount, UseAbsoluteAddressing);
+            var dataBytes = Config.Stream.ReadRamLittleEndian(AddressHolder.HasAdditiveOffset ? new UIntPtr(offset + Address)
+                : new UIntPtr(Address), ByteCount, AddressHolder.UseAbsoluteAddressing);
 
             // Make sure offset is a valid pointer
-            if (HasAdditiveOffset && offset == 0)
+            if (AddressHolder.HasAdditiveOffset && offset == 0)
                 return null;
 
             return dataBytes;
@@ -1015,7 +976,7 @@ namespace SM64_Diagnostic.Controls
         public void SetBoolValue(uint offset, bool value)
         {
             // Get dataBytes
-            var address = HasAdditiveOffset ? offset + Address : Address;
+            var address = AddressHolder.HasAdditiveOffset ? offset + Address : Address;
             var dataBytes = GetByteData(offset);
 
             // Make sure offset is a valid pointer
@@ -1047,15 +1008,15 @@ namespace SM64_Diagnostic.Controls
             var valueBytes = BitConverter.GetBytes(dataValue);
             Array.Copy(valueBytes, 0, writeBytes, 0, ByteCount);
 
-            Config.Stream.WriteRamLittleEndian(writeBytes, address, UseAbsoluteAddressing);
+            Config.Stream.WriteRamLittleEndian(writeBytes, address, AddressHolder.UseAbsoluteAddressing);
         }
 
         public byte[] GetBytesFromString(uint offset, string value)
         {
             // Get dataBytes
-            var address = HasAdditiveOffset ? offset + Address : Address;
+            var address = AddressHolder.HasAdditiveOffset ? offset + Address : Address;
             var dataBytes = new byte[8];
-            Config.Stream.ReadRamLittleEndian(new UIntPtr(address), ByteCount, UseAbsoluteAddressing).CopyTo(dataBytes, 0);
+            Config.Stream.ReadRamLittleEndian(new UIntPtr(address), ByteCount, AddressHolder.UseAbsoluteAddressing).CopyTo(dataBytes, 0);
             UInt64 oldValue = BitConverter.ToUInt64(dataBytes, 0);
             UInt64 newValue;
 
@@ -1126,8 +1087,8 @@ namespace SM64_Diagnostic.Controls
             if (dataBytes == null)
                 return false;
 
-            return Config.Stream.WriteRamLittleEndian(dataBytes, HasAdditiveOffset ? offset + Address
-                : Address, UseAbsoluteAddressing);
+            return Config.Stream.WriteRamLittleEndian(dataBytes, AddressHolder.HasAdditiveOffset ? offset + Address
+                : Address, AddressHolder.UseAbsoluteAddressing);
         }
     }
 }

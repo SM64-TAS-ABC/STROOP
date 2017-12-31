@@ -2416,8 +2416,15 @@ namespace SM64_Diagnostic.Utilities
             Color? backgroundColor = (element.Attribute(XName.Get("color")) != null) ?
                 ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
 
-            AddressHolder addressHolder = 
+            string typeName = (element.Attribute(XName.Get("type"))?.Value);
+            typeName = offset == OffsetType.Special ? "byte" : typeName; // TODO fix this hacky solution
+            Type type = StringToType[typeName];
+            int byteCount = TypeSize[type];
+
+            AddressHolder addressHolder =
                 new AddressHolder(
+                    byteCount,
+                    offset,
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressUS"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressJP"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressPAL"))?.Value),
@@ -2434,8 +2441,6 @@ namespace SM64_Diagnostic.Utilities
 
             bool isObject = element.Attribute(XName.Get("isObject")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isObject")).Value) : false;
-
-            string typeName = (element.Attribute(XName.Get("type"))?.Value);
 
             bool invertBool = element.Attribute(XName.Get("invertBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : false;
@@ -2473,8 +2478,14 @@ namespace SM64_Diagnostic.Utilities
             Color? backgroundColor = (element.Attribute(XName.Get("color")) != null) ?
                 ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
 
+            string typeName = (element.Attribute(XName.Get("type"))?.Value);
+            Type type = StringToType[typeName];
+            int byteCount = TypeSize[type];
+
             AddressHolder addressHolder =
                 new AddressHolder(
+                    byteCount,
+                    offset,
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressUS"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressJP"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressPAL"))?.Value),
@@ -2491,8 +2502,6 @@ namespace SM64_Diagnostic.Utilities
 
             bool isObject = element.Attribute(XName.Get("isObject")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isObject")).Value) : false;
-
-            string typeName = (element.Attribute(XName.Get("type"))?.Value);
 
             bool invertBool = element.Attribute(XName.Get("invertBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : false;
