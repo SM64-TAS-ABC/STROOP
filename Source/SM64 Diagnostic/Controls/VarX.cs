@@ -197,9 +197,8 @@ namespace SM64_Diagnostic.Controls
                 return;
 
             // Exit edit mode
-            EditMode = false;
-
             SetStringValue(_textBox.Text);
+            EditMode = false;
         }
 
         public void SetStringValue(string stringValue)
