@@ -1,5 +1,6 @@
 ﻿using SM64_Diagnostic.Managers;
 using SM64_Diagnostic.Structs.Configurations;
+using SM64_Diagnostic.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,29 +17,48 @@ namespace SM64_Diagnostic.Structs
 
         public static (Func<List<object>> getter, Action<string> setter) CreateGetterSetterFunctions(string specialType)
         {
-            switch(specialType)
+            Func<List<object>> getterFunction = DEFAULT_GETTER;
+            Action<string> setterFunction = DEFAULT_SETTER;
+
+            switch (specialType)
             {
                 case "MarioDistanceToObject":
-                    {
-                        return (DEFAULT_GETTER, DEFAULT_SETTER);
-                    }
+                    break;
+
                 case "MarioHorizontalDistanceToObject":
-                    {
-                        return (DEFAULT_GETTER, DEFAULT_SETTER);
-                    }
+                    break;
+
                 case "MarioVerticalDistanceToObject":
-                    {
-                        return (DEFAULT_GETTER, DEFAULT_SETTER);
-                    }
+                    break;
+
                 case "RngIndex":
+                    getterFunction = () =>
                     {
-                        return (DEFAULT_GETTER, DEFAULT_SETTER);
-                    }
+                        ushort rngValue = Config.Stream.GetUInt16(Config.RngAddress);
+                        string rngIndexString = RngIndexer.GetRngIndexString(rngValue);
+                        return CreateList(rngIndexString);
+                    };
+                    setterFunction = (string stringValue) =>
+                    {
+                        int? index = ParsingUtilities.ParseIntNullable(stringValue);
+                        if (index.HasValue)
+                        {
+                            ushort rngValue = RngIndexer.GetRngValue(index.Value);
+                            Config.Stream.SetValue(rngValue, Config.RngAddress);
+                        }
+                    };
+                    break;
+
                 default:
-                    {
-                        return (DEFAULT_GETTER, DEFAULT_SETTER);
-                    }
+                    break;
             }
+
+            return (getterFunction, setterFunction);
+        }
+
+        private static List<object> CreateList(params object[] objs)
+        {
+            return new List<object>(objs);
         }
     }
 }

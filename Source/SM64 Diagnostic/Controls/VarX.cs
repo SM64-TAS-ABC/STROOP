@@ -48,7 +48,6 @@ namespace SM64_Diagnostic.Controls
                     return AddressHolder.EffectiveAddressList.ConvertAll(
                         address => Config.Stream.GetValue(AddressHolder.MemoryType, address, AddressHolder.UseAbsoluteAddressing));
                 };
-
                 _setterFunction = (string stringValue) =>
                 {
                     AddressHolder.EffectiveAddressList.ForEach(
