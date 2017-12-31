@@ -18,7 +18,6 @@ namespace SM64_Diagnostic.Controls
         public readonly string Name;
         public readonly string TypeName;
         public readonly Type Type;
-        public readonly int ByteCount;
 
         public VarX(
             string name,
@@ -42,7 +41,6 @@ namespace SM64_Diagnostic.Controls
 
             TypeName = typeName;
             Type = VarXUtilities.StringToType[TypeName];
-            ByteCount = VarXUtilities.TypeSize[Type];
 
             CreateControls();
         }
