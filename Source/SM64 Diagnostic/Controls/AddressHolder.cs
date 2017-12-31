@@ -43,6 +43,14 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public bool IsSpecial
+        {
+            get
+            {
+                return BaseAddressType == BaseAddressTypeEnum.Special;
+            }
+        }
+
         public uint Offset
         {
             get

@@ -21,7 +21,6 @@ namespace SM64_Diagnostic.Controls
 
         public VarX(
             string name,
-            BaseAddressTypeEnum offset,
             List<VariableGroup> groupList,
             string specialType,
             Color? backgroundColor,
@@ -39,19 +38,11 @@ namespace SM64_Diagnostic.Controls
 
             CreateControls();
 
-            if (IsSpecial) return;
+            if (AddressHolder.IsSpecial) return;
 
             MemoryTypeName = memoryTypeName;
             MemoryType = VarXUtilities.StringToType[MemoryTypeName];
 
-        }
-
-        public bool IsSpecial
-        {
-            get
-            {
-                return AddressHolder.BaseAddressType == BaseAddressTypeEnum.Special;
-            }
         }
 
 
@@ -157,7 +148,7 @@ namespace SM64_Diagnostic.Controls
 
         public string GetStringValue()
         {
-            if (IsSpecial) return "SPECIAL";
+            if (AddressHolder.IsSpecial) return "SPECIAL";
 
             string combinedVarString = "(none)";
             string firstVarString = null;
@@ -207,7 +198,7 @@ namespace SM64_Diagnostic.Controls
 
         public void SetStringValue(string stringValue)
         {
-            if (IsSpecial) return;
+            if (AddressHolder.IsSpecial) return;
 
             Config.Stream.Suspend();
 

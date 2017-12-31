@@ -2517,7 +2517,6 @@ namespace SM64_Diagnostic.Utilities
 
             return new VarX(
                 name,
-                baseAddressType,
                 groupList,
                 specialType,
                 backgroundColor,
