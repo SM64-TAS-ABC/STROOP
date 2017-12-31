@@ -114,7 +114,7 @@ namespace SM64_Diagnostic.Controls
                 if (_textBoxValue != null)
                 {
                     _textBoxValue.ReadOnly = !_editMode;
-                    _textBoxValue.BackColor = _editMode ? Color.White : SystemColors.Control; // Color == Color.Transparent ? SystemColors.Control : Color;
+                    _textBoxValue.BackColor = _editMode ? Color.White : SystemColors.Control;
                     if (_editMode)
                     {
                         _textBoxValue.Focus();
@@ -179,9 +179,6 @@ namespace SM64_Diagnostic.Controls
 
         public void Update()
         {
-            if (IsSpecial)
-                return;
-
             if (_editMode)
                 return;
 
@@ -222,6 +219,8 @@ namespace SM64_Diagnostic.Controls
 
             Config.Stream.Suspend();
 
+
+            /*
             // Write new value to RAM
             byte[] writeBytes;
             foreach (var baseAddress in AddressHolder.BaseAddressList)
@@ -229,6 +228,9 @@ namespace SM64_Diagnostic.Controls
                 writeBytes = GetBytesFromString(baseAddress, _textBoxValue.Text);
                 SetBytes(baseAddress, writeBytes);
             }
+            */
+
+
 
             Config.Stream.Resume();
         }

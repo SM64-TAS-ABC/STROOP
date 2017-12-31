@@ -3,9 +3,17 @@
   <Data type="float" offset="0x3C" baseAddressType="Mario">Mario X</Data>
   <Data type="float" offset="0x40" baseAddressType="Mario">Mario Y</Data>
   <Data type="float" offset="0x44" baseAddressType="Mario">Mario Z</Data>
-  
-  <Data type="short" offsetUS="0x8010C81C" offsetJP="0x801090E4" baseAddressType="Relative">Castle Lake WL</Data>
-  <Data type="short" offsetUS="0x8010C810" offsetJP="0x801090D8" baseAddressType="Relative">Castle Moat WL</Data>
-  <Data type="short" offsetUS="0x80361192" offsetJP="0x8035FE22" baseAddressType="Relative">Basement Pillars WL</Data>
-  <Data type="short" offsetUS="0x8036118A" offsetJP="0x8035FE1A" baseAddressType="Relative">Basement Valley WL</Data>
+
+  <Data type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" baseAddressType="Relative">G Timer (S, Rel)</Data>
+  <Data type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" baseAddressType="Relative">G Timer (US, Rel)</Data>
+
+  <Data type="int" offsetUS="0x00C19054" offsetJP="0x00C19054" baseAddressType="Absolute">G Timer (S, Ab)</Data>
+  <Data type="uint" offsetUS="0x00C19054" offsetJP="0x00C19054" baseAddressType="Absolute">G Timer (US, Ab)</Data>
+
+  <Data type="short" offset="0xAE" baseAddressType="Mario">HP (Dec)</Data>
+  <Data type="byte" offset="0xB2" baseAddressType="Mario">HP Dec (US)</Data>
+  <Data type="sbyte" offset="0xB2" baseAddressType="Mario">HP Dec (S)</Data>
+
+  <Data type="ushort" offset="0x2E" baseAddressType="Mario" isAngle="true">Yaw (US)</Data>
+  <Data type="short" offset="0x2E" baseAddressType="Mario" isAngle="true">Yaw (S)</Data>
 </WaterData>

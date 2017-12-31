@@ -264,6 +264,19 @@ namespace SM64_Diagnostic.Utilities
             OnDisconnect?.Invoke(this, new EventArgs());
         }
 
+        public object GetValue(Type type, uint address, bool absoluteAddress = false)
+        {
+            if (type == typeof(byte)) return GetByte(address, absoluteAddress);
+            if (type == typeof(sbyte)) return GetSByte(address, absoluteAddress);
+            if (type == typeof(short)) return GetInt16(address, absoluteAddress);
+            if (type == typeof(ushort)) return GetUInt16(address, absoluteAddress);
+            if (type == typeof(int)) return GetInt32(address, absoluteAddress);
+            if (type == typeof(uint)) return GetUInt32(address, absoluteAddress);
+            if (type == typeof(float)) return GetSingle(address, absoluteAddress);
+
+            throw new ArgumentOutOfRangeException("Cannot call ProcessStream.GetValue with type " + type);
+        }
+
         public byte GetByte(uint address, bool absoluteAddress = false)
         {
             return ReadRamLittleEndian(new UIntPtr(address), 1, absoluteAddress)[0];
@@ -339,6 +352,19 @@ namespace SM64_Diagnostic.Utilities
                 WarnReadonlyOff?.Invoke(this, new EventArgs());
 
             return Readonly;
+        }
+
+        public void SetValue(Type type, object value, uint address, bool absoluteAddress = false)
+        {
+            if (type == typeof(byte)) { SetValue((byte)value, address, absoluteAddress); return; }
+            if (type == typeof(sbyte)) { SetValue((sbyte)value, address, absoluteAddress); return; }
+            if (type == typeof(short)) { SetValue((short)value, address, absoluteAddress); return; }
+            if (type == typeof(ushort)) { SetValue((ushort)value, address, absoluteAddress); return; }
+            if (type == typeof(int)) { SetValue((int)value, address, absoluteAddress); return; }
+            if (type == typeof(uint)) { SetValue((uint)value, address, absoluteAddress); return; }
+            if (type == typeof(float)) { SetValue((float)value, address, absoluteAddress); return; }
+
+            throw new ArgumentOutOfRangeException("Cannot call ProcessStream.SetValue with type " + type);
         }
 
         public bool SetValue(byte value, uint address, bool absoluteAddress = false)
