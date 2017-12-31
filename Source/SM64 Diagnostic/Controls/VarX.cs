@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Drawing;
-using SM64_Diagnostic.Utilities;
-using SM64_Diagnostic.Structs;
-using SM64_Diagnostic.Extensions;
-using System.Reflection;
+﻿using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Managers;
-using static SM64_Diagnostic.Structs.WatchVariable;
+using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Structs.Configurations;
-using static SM64_Diagnostic.Structs.VarXUtilities;
+using SM64_Diagnostic.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Controls
 {
@@ -21,7 +17,7 @@ namespace SM64_Diagnostic.Controls
         public readonly AddressHolder AddressHolder;
         public uint Address { get { return AddressHolder.Address; } }
 
-        public readonly OffsetType Offset;
+        public readonly BaseAddressType BaseAddress;
         public readonly string Name;
         public readonly string SpecialType;
         public readonly ulong? Mask;
@@ -39,7 +35,7 @@ namespace SM64_Diagnostic.Controls
 
         public VarX(
             string name,
-            OffsetType offset,
+            BaseAddressType offset,
             List<VariableGroup> groupList,
             string specialType,
             Color? backgroundColor,
@@ -53,7 +49,7 @@ namespace SM64_Diagnostic.Controls
             bool isAngle)
         {
             Name = name;
-            Offset = offset;
+            BaseAddress = offset;
             GroupList = groupList;
             SpecialType = specialType;
             BackroundColor = backgroundColor;
@@ -69,8 +65,8 @@ namespace SM64_Diagnostic.Controls
             IsAngle = isAngle;
 
             TypeName = typeName;
-            Type = StringToType[TypeName];
-            ByteCount = TypeSize[Type];
+            Type = VarXUtilities.StringToType[TypeName];
+            ByteCount = VarXUtilities.TypeSize[Type];
 
 
             CreateControls();
@@ -82,7 +78,7 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                return Offset == OffsetType.Special;
+                return BaseAddress == BaseAddressType.Special;
             }
         }
 
@@ -263,14 +259,6 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public List<uint> OffsetList
-        {
-            get
-            {
-                return GetOffsetListFromOffsetType(Offset);
-            }
-        }
-
         public string Value
         {
             get
@@ -371,7 +359,7 @@ namespace SM64_Diagnostic.Controls
             this._nameLabel.ImageAlign = ContentAlignment.MiddleRight;
             this._nameLabel.MouseHover += (sender, e) =>
             {
-                if (!AddressHolder.HasAdditiveOffset)
+                if (!AddressHolder.HasAdditiveBaseAddress)
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, "TODO 1" /*String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
                         _watchVar.GetRamAddress(), _watchVar.GetProcessAddress(), Config.Stream.ProcessName)*/);
@@ -447,7 +435,7 @@ namespace SM64_Diagnostic.Controls
                 typeDescr += String.Format(" w/ mask: 0x{0:X" + ByteCount * 2 + "}", Mask);
             }
 
-            if (!AddressHolder.HasAdditiveOffset)
+            if (!AddressHolder.HasAdditiveBaseAddress)
             {
                 varInfo = new VariableViewerForm(Name, typeDescr,
                     String.Format("0x{0:X8}", AddressHolder.GetRamAddress()),
@@ -560,9 +548,9 @@ namespace SM64_Diagnostic.Controls
 
             if (IsBool)
             {
-                if (OffsetList.Any(o => GetBoolValue(o)))
+                if (AddressHolder.BaseAddressList.Any(o => GetBoolValue(o)))
                 {
-                    if (OffsetList.All(o => GetBoolValue(o)))
+                    if (AddressHolder.BaseAddressList.All(o => GetBoolValue(o)))
                     {
                         CheckBoxCheckState = CheckState.Checked;
                     }
@@ -578,20 +566,20 @@ namespace SM64_Diagnostic.Controls
             }
             else
             {
-                bool firstOffset = true;
-                foreach (var offset in OffsetList)
+                bool firstBaseAddress = true;
+                foreach (var baseAddress in AddressHolder.BaseAddressList)
                 {
                     string newText = "";
                     if (IsAngle)
                     {
-                        newText = GetAngleStringValue(offset, _angleViewMode, _angleTruncated);
+                        newText = GetAngleStringValue(baseAddress, _angleViewMode, _angleTruncated);
                     }
                     else
                     {
-                        newText = GetStringValue(offset);
+                        newText = GetStringValue(baseAddress);
                     }
 
-                    if (firstOffset)
+                    if (firstBaseAddress)
                     {
                         _textBoxValue.Text = newText;
                     }
@@ -601,7 +589,7 @@ namespace SM64_Diagnostic.Controls
                         continue;
                     }
 
-                    firstOffset = false;
+                    firstBaseAddress = false;
                 }
             }
 
@@ -615,9 +603,9 @@ namespace SM64_Diagnostic.Controls
 
             if (IsBool)
             {
-                foreach (var offset in OffsetList)
+                foreach (var baseAddress in AddressHolder.BaseAddressList)
                 {
-                    SetBoolValue(offset, _checkBoxBool.Checked);
+                    SetBoolValue(baseAddress, _checkBoxBool.Checked);
                 }
             }
         }
@@ -689,7 +677,7 @@ namespace SM64_Diagnostic.Controls
 
             // Write new value to RAM
             byte[] writeBytes;
-            foreach (var offset in OffsetList)
+            foreach (var baseAddress in AddressHolder.BaseAddressList)
             {
                 if (IsAngle)
                 {
@@ -697,9 +685,9 @@ namespace SM64_Diagnostic.Controls
                 }
                 else
                 {
-                    writeBytes = GetBytesFromString(offset, _textBoxValue.Text);
+                    writeBytes = GetBytesFromString(baseAddress, _textBoxValue.Text);
                 }
-                SetBytes(offset, writeBytes);
+                SetBytes(baseAddress, writeBytes);
 
                 // Update locked value
                 /*
@@ -762,11 +750,11 @@ namespace SM64_Diagnostic.Controls
         public byte[] GetByteData(uint offset)
         {
             // Get dataBytes
-            var dataBytes = Config.Stream.ReadRamLittleEndian(AddressHolder.HasAdditiveOffset ? new UIntPtr(offset + Address)
+            var dataBytes = Config.Stream.ReadRamLittleEndian(AddressHolder.HasAdditiveBaseAddress ? new UIntPtr(offset + Address)
                 : new UIntPtr(Address), ByteCount, AddressHolder.UseAbsoluteAddressing);
 
             // Make sure offset is a valid pointer
-            if (AddressHolder.HasAdditiveOffset && offset == 0)
+            if (AddressHolder.HasAdditiveBaseAddress && offset == 0)
                 return null;
 
             return dataBytes;
@@ -976,7 +964,7 @@ namespace SM64_Diagnostic.Controls
         public void SetBoolValue(uint offset, bool value)
         {
             // Get dataBytes
-            var address = AddressHolder.HasAdditiveOffset ? offset + Address : Address;
+            var address = AddressHolder.HasAdditiveBaseAddress ? offset + Address : Address;
             var dataBytes = GetByteData(offset);
 
             // Make sure offset is a valid pointer
@@ -1014,7 +1002,7 @@ namespace SM64_Diagnostic.Controls
         public byte[] GetBytesFromString(uint offset, string value)
         {
             // Get dataBytes
-            var address = AddressHolder.HasAdditiveOffset ? offset + Address : Address;
+            var address = AddressHolder.HasAdditiveBaseAddress ? offset + Address : Address;
             var dataBytes = new byte[8];
             Config.Stream.ReadRamLittleEndian(new UIntPtr(address), ByteCount, AddressHolder.UseAbsoluteAddressing).CopyTo(dataBytes, 0);
             UInt64 oldValue = BitConverter.ToUInt64(dataBytes, 0);
@@ -1087,7 +1075,7 @@ namespace SM64_Diagnostic.Controls
             if (dataBytes == null)
                 return false;
 
-            return Config.Stream.WriteRamLittleEndian(dataBytes, AddressHolder.HasAdditiveOffset ? offset + Address
+            return Config.Stream.WriteRamLittleEndian(dataBytes, AddressHolder.HasAdditiveBaseAddress ? offset + Address
                 : Address, AddressHolder.UseAbsoluteAddressing);
         }
     }

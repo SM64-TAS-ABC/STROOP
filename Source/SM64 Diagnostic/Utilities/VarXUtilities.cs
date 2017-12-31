@@ -39,43 +39,10 @@ namespace SM64_Diagnostic.Structs
             { "double", typeof(double) },
         };
 
-        // TODO add new offset types
-        public enum OffsetType
+        public static BaseAddressType GetBaseAddressType(string offsetTypeString)
         {
-            Absolute,
-            Relative,
-            Mario,
-            MarioObj,
-            Camera,
-            File,
-            Object,
-            Triangle,
-            TriangleExertionForceTable,
-            InputCurrent,
-            InputJustPressed,
-            InputBuffered,
-            Graphics,
-            Animation,
-            Waypoint,
-            Water,
-            Area,
-            HackedArea,
-            CamHack,
-            Special,
-        };
-
-        public static OffsetType GetOffsetType(string offsetTypeString)
-        {
-            return (OffsetType)Enum.Parse(typeof(OffsetType), offsetTypeString);
+            return (BaseAddressType)Enum.Parse(typeof(BaseAddressType), offsetTypeString);
         }
-
-        public enum VariableGroup
-        {
-            Simple,
-            Expanded,
-            ObjectSpecific,
-            Collision,
-        };
 
         public static VariableGroup GetVariableGroup(string variableGroupString)
         {
@@ -96,42 +63,42 @@ namespace SM64_Diagnostic.Structs
             return variableGroupList;
         }
 
-        private static readonly List<uint> OffsetListZero = new List<uint> { 0 };
+        private static readonly List<uint> BaseAddressListZero = new List<uint> { 0 };
 
-        public static List<uint> GetOffsetListFromOffsetType(OffsetType? offsetType, bool returnNonEmptyList = true)
+        public static List<uint> GetBaseAddressListFromBaseAddressType(BaseAddressType? baseAddressType, bool returnNonEmptyList = true)
         {
             List<uint> output;
-            switch (offsetType)
+            switch (baseAddressType)
             {
-                case OffsetType.Absolute:
-                    output = OffsetListZero;
+                case BaseAddressType.Absolute:
+                    output = BaseAddressListZero;
                     break;
-                case OffsetType.Relative:
-                    output = OffsetListZero;
+                case BaseAddressType.Relative:
+                    output = BaseAddressListZero;
                     break;
-                case OffsetType.Mario:
+                case BaseAddressType.Mario:
                     output = new List<uint> { Config.Mario.StructAddress };
                     break;
-                case OffsetType.MarioObj:
+                case BaseAddressType.MarioObj:
                     output = new List<uint> { Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress) };
                     break;
-                case OffsetType.Camera:
+                case BaseAddressType.Camera:
                     output = new List<uint> { Config.Camera.CameraStructAddress };
                     break;
-                case OffsetType.File:
+                case BaseAddressType.File:
                     output = new List<uint> { FileManager.Instance.CurrentFileAddress };
                     break;
-                case OffsetType.Object:
+                case BaseAddressType.Object:
                     output = ObjectManager.Instance.CurrentAddresses;
                     break;
-                case OffsetType.Triangle:
+                case BaseAddressType.Triangle:
                     output = new List<uint> { TriangleManager.Instance.TriangleAddress };
                     break;
-                case OffsetType.TriangleExertionForceTable:
+                case BaseAddressType.TriangleExertionForceTable:
                     uint triangleAddress = TriangleManager.Instance.TriangleAddress;
                     if (triangleAddress == 0)
                     {
-                        output = OffsetListZero;
+                        output = BaseAddressListZero;
                     }
                     else
                     {
@@ -139,47 +106,47 @@ namespace SM64_Diagnostic.Structs
                         output = new List<uint> { Config.Triangle.ExertionForceTableAddress + 2 * exertionForceIndex };
                     }
                     break;
-                case OffsetType.InputCurrent:
+                case BaseAddressType.InputCurrent:
                     output = new List<uint> { Config.Input.CurrentInputAddress };
                     break;
-                case OffsetType.InputJustPressed:
+                case BaseAddressType.InputJustPressed:
                     output = new List<uint> { Config.Input.JustPressedInputAddress };
                     break;
-                case OffsetType.InputBuffered:
+                case BaseAddressType.InputBuffered:
                     output = new List<uint> { Config.Input.BufferedInputAddress };
                     break;
-                case OffsetType.Graphics:
-                    output = GetOffsetListFromOffsetType(OffsetType.Object, false)
+                case BaseAddressType.Graphics:
+                    output = GetBaseAddressListFromBaseAddressType(BaseAddressType.Object, false)
                         .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.BehaviorGfxOffset));
                     break;
-                case OffsetType.Animation:
-                    output = GetOffsetListFromOffsetType(OffsetType.Object, false)
+                case BaseAddressType.Animation:
+                    output = GetBaseAddressListFromBaseAddressType(BaseAddressType.Object, false)
                         .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.AnimationOffset));
                     break;
-                case OffsetType.Waypoint:
-                    output = GetOffsetListFromOffsetType(OffsetType.Object, false)
+                case BaseAddressType.Waypoint:
+                    output = GetBaseAddressListFromBaseAddressType(BaseAddressType.Object, false)
                         .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset));
                     break;
-                case OffsetType.Water:
+                case BaseAddressType.Water:
                     output = new List<uint> { Config.Stream.GetUInt32(Config.WaterPointerAddress) };
                     break;
-                case OffsetType.Area:
+                case BaseAddressType.Area:
                     output = new List<uint> { AreaManager.Instance.SelectedAreaAddress };
                     break;
-                case OffsetType.HackedArea:
+                case BaseAddressType.HackedArea:
                     output = new List<uint> { Config.HackedAreaAddress };
                     break;
-                case OffsetType.CamHack:
+                case BaseAddressType.CamHack:
                     output = new List<uint> { Config.CameraHack.CameraHackStruct };
                     break;
-                case OffsetType.Special:
+                case BaseAddressType.Special:
                     throw new ArgumentOutOfRangeException("Should not get offset list for Special var");
                 default:
                     throw new ArgumentOutOfRangeException();
             }
             if (returnNonEmptyList && output.Count == 0)
             {
-                output = OffsetListZero;
+                output = BaseAddressListZero;
             }
             return output;
         }

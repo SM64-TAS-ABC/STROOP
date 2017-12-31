@@ -2406,7 +2406,7 @@ namespace SM64_Diagnostic.Utilities
         {
             string name = element.Value;
 
-            OffsetType offset = GetOffsetType(element.Attribute(XName.Get("offset")).Value);
+            BaseAddressType offset = GetBaseAddressType(element.Attribute(XName.Get("offset")).Value);
 
             List<VariableGroup> groupList = ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
 
@@ -2417,7 +2417,7 @@ namespace SM64_Diagnostic.Utilities
                 ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
 
             string typeName = (element.Attribute(XName.Get("type"))?.Value);
-            typeName = offset == OffsetType.Special ? "byte" : typeName; // TODO fix this hacky solution
+            typeName = offset == BaseAddressType.Special ? "byte" : typeName; // TODO fix this hacky solution
             Type type = StringToType[typeName];
             int byteCount = TypeSize[type];
 
@@ -2468,7 +2468,7 @@ namespace SM64_Diagnostic.Utilities
         {
             string name = element.Value;
 
-            OffsetType offset = GetOffsetType(element.Attribute(XName.Get("offset")).Value);
+            BaseAddressType offset = GetBaseAddressType(element.Attribute(XName.Get("offset")).Value);
 
             List<VariableGroup> groupList = ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
 

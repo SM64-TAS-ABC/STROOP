@@ -10,9 +10,7 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Extensions;
 using System.Reflection;
 using SM64_Diagnostic.Managers;
-using static SM64_Diagnostic.Structs.WatchVariable;
 using SM64_Diagnostic.Structs.Configurations;
-using static SM64_Diagnostic.Structs.VarXUtilities;
 
 namespace SM64_Diagnostic.Controls
 {
@@ -23,22 +21,22 @@ namespace SM64_Diagnostic.Controls
         public readonly uint? AddressPAL;
         public readonly uint? AddressOffset;
 
-        public readonly OffsetType Offset;
+        public readonly BaseAddressType BaseAddress;
         public readonly int ByteCount;
 
         public bool UseAbsoluteAddressing
         {
             get
             {
-                return Offset == OffsetType.Absolute;
+                return BaseAddress == BaseAddressType.Absolute;
             }
         }
 
-        public bool HasAdditiveOffset
+        public bool HasAdditiveBaseAddress
         {
             get
             {
-                return Offset != OffsetType.Relative && Offset != OffsetType.Absolute && Offset != OffsetType.Special;
+                return BaseAddress != BaseAddressType.Relative && BaseAddress != BaseAddressType.Absolute && BaseAddress != BaseAddressType.Special;
             }
         }
 
@@ -63,35 +61,35 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public List<uint> OffsetList
+        public List<uint> BaseAddressList
         {
             get
             {
-                return GetOffsetListFromOffsetType(Offset);
+                return VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddress);
             }
         }
 
-        public AddressHolder(int byteCount, OffsetType offset,
-            uint? addressUS, uint? addressJP, uint? addressPAL, uint? addressOffset)
+        public AddressHolder(int byteCount, BaseAddressType offset,
+            uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault)
         {
-            if (addressUS == null && addressJP == null && addressPAL == null && addressOffset == null)
+            if (offsetUS == null && offsetJP == null && offsetPAL == null && offsetDefault == null)
             {
                 //TODO add this back in after var refactor
                 //throw new ArgumentOutOfRangeException("Cannot instantiate Address with all null values");
             }
 
             ByteCount = byteCount;
-            Offset = offset;
+            BaseAddress = offset;
 
-            AddressUS = addressUS;
-            AddressJP = addressJP;
-            AddressPAL = addressPAL;
-            AddressOffset = addressOffset;
+            AddressUS = offsetUS;
+            AddressJP = offsetJP;
+            AddressPAL = offsetPAL;
+            AddressOffset = offsetDefault;
         }
 
         public uint GetRamAddress(bool addressArea = true)
         {
-            uint offset = OffsetList[0];
+            uint offset = BaseAddressList[0];
             var offsetedAddress = new UIntPtr(offset + Address);
             uint address;
 

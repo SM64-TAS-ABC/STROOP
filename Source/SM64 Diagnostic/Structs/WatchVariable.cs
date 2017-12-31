@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.Structs
         public readonly AddressHolder AddressHolder;
         public uint Address { get { return AddressHolder.Address; } }
 
-        public readonly OffsetType Offset;
+        public readonly BaseAddressType Offset;
         public readonly string Name;
         public readonly string SpecialType;
         public readonly ulong? Mask;
@@ -33,7 +33,7 @@ namespace SM64_Diagnostic.Structs
 
         public WatchVariable(
             string name,
-            OffsetType offset,
+            BaseAddressType offset,
             List<VariableGroup> groupList,
             string specialType,
             Color? backgroundColor,
@@ -71,7 +71,7 @@ namespace SM64_Diagnostic.Structs
         {
             get
             {
-                return Offset != OffsetType.Relative && Offset != OffsetType.Absolute && Offset != OffsetType.Special;
+                return Offset != BaseAddressType.Relative && Offset != BaseAddressType.Absolute && Offset != BaseAddressType.Special;
             }
         }
 
@@ -79,7 +79,7 @@ namespace SM64_Diagnostic.Structs
         {
             get
             {
-                return Offset == OffsetType.Special;
+                return Offset == BaseAddressType.Special;
             }
         }
 
@@ -87,7 +87,7 @@ namespace SM64_Diagnostic.Structs
         {
             get
             {
-                return Offset == OffsetType.Absolute;
+                return Offset == BaseAddressType.Absolute;
             }
         }
 
