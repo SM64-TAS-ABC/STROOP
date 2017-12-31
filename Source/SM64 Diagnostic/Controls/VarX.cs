@@ -182,6 +182,13 @@ namespace SM64_Diagnostic.Controls
             if (_editMode)
                 return;
 
+            foreach (uint address in AddressHolder.EffectiveAddressList)
+            {
+                object value = Config.Stream.GetValue(Type, address, AddressHolder.UseAbsoluteAddressing);
+                _textBox.Text = value.ToString();
+            }
+
+            /*
             bool firstBaseAddress = true;
             foreach (var baseAddress in AddressHolder.BaseAddressList)
             {
@@ -199,6 +206,7 @@ namespace SM64_Diagnostic.Controls
 
                 firstBaseAddress = false;
             }
+            */
         }
         
         private void OnTextValueKeyDown(object sender, KeyEventArgs e)
