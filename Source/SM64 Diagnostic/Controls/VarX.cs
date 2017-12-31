@@ -151,6 +151,11 @@ namespace SM64_Diagnostic.Controls
             if (_editMode)
                 return;
 
+            _textBox.Text = GetStringValue();
+        }
+
+        public string GetStringValue()
+        {
             string combinedVarString = "";
             string firstVarString = "";
             bool atLeastOneVarIncorporated = false;
@@ -170,9 +175,9 @@ namespace SM64_Diagnostic.Controls
                 {
                     if (varString != firstVarString) combinedVarString = "";
                 }
-
-                _textBox.Text = combinedVarString.ToString();
             }
+
+            return combinedVarString;
         }
         
         private void OnTextValueKeyDown(object sender, KeyEventArgs e)
@@ -191,6 +196,11 @@ namespace SM64_Diagnostic.Controls
             // Exit edit mode
             EditMode = false;
 
+            SetStringValue();
+        }
+
+        public void SetStringValue()
+        {
             Config.Stream.Suspend();
 
             foreach (uint address in AddressHolder.EffectiveAddressList)
