@@ -18,9 +18,106 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarX
     {
+        public readonly AddressHolder AddressHolder;
+        public uint Address { get { return AddressHolder.Address; } }
+
+        public readonly OffsetType Offset;
+        public readonly string Name;
+        public readonly string SpecialType;
+        public readonly ulong? Mask;
+        public readonly bool IsBool;
+        public readonly bool IsObject;
+        public readonly bool IsAngle;
+        public readonly Color? BackroundColor;
+        public readonly List<VariableGroup> GroupList;
+        public readonly string TypeName;
+        public readonly Type Type;
+        public readonly int ByteCount;
+
+        public bool UseHex;
+        public bool InvertBool;
+
+        public VarX(
+            string name,
+            OffsetType offset,
+            List<VariableGroup> groupList,
+            string specialType,
+            Color? backgroundColor,
+            AddressHolder addressHolder,
+            bool useHex,
+            ulong? mask,
+            bool isBool,
+            bool isObject,
+            string typeName,
+            bool invertBool,
+            bool isAngle)
+        {
+            Name = name;
+            Offset = offset;
+            GroupList = groupList;
+            SpecialType = specialType;
+            BackroundColor = backgroundColor;
+
+            if (IsSpecial) return;
+
+            AddressHolder = addressHolder;
+            UseHex = useHex;
+            Mask = mask;
+            IsBool = isBool;
+            IsObject = isObject;
+            InvertBool = invertBool;
+            IsAngle = isAngle;
+
+            TypeName = typeName;
+            Type = StringToType[TypeName];
+            ByteCount = TypeSize[Type];
+
+
+            _specialName = Name;
+            CreateControls();
+            if (BackroundColor.HasValue)
+                Color = BackroundColor.Value;
+        }
+
+        public bool HasAdditiveOffset
+        {
+            get
+            {
+                return Offset != OffsetType.Relative && Offset != OffsetType.Absolute && Offset != OffsetType.Special;
+            }
+        }
+
+        public bool IsSpecial
+        {
+            get
+            {
+                return Offset == OffsetType.Special;
+            }
+        }
+
+        public bool UseAbsoluteAddressing
+        {
+            get
+            {
+                return Offset == OffsetType.Absolute;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         BorderedTableLayoutPanel _tablePanel;
         Label _nameLabel;
-        WatchVariable _watchVar;
         CheckBox _checkBoxBool;
         TextBox _textBoxValue;
         string _specialName;
@@ -188,19 +285,7 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                return GetOffsetListFromOffsetType(_watchVar.Offset);
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                return _nameLabel.Text;
-            }
-            set
-            {
-                _nameLabel.Text = value;
+                return GetOffsetListFromOffsetType(Offset);
             }
         }
 
@@ -243,7 +328,7 @@ namespace SM64_Diagnostic.Controls
             set
             {
                 Control.BackColor = value;
-                if (!_watchVar.IsBool)
+                if (!IsBool)
                     _textBoxValue.BackColor = Color;
                 else
                     _checkBoxBool.BackColor = Color;
@@ -255,14 +340,6 @@ namespace SM64_Diagnostic.Controls
             get
             {
                 return _tablePanel;
-            }
-        }
-
-        public WatchVariable WatchVariable
-        {
-            get
-            {
-                return _watchVar;
             }
         }
 
@@ -302,17 +379,6 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public VarX(WatchVariable watchVar)
-        {
-            _specialName = watchVar.Name;
-            _watchVar = watchVar;
-
-            CreateControls();
-
-            if (watchVar.BackroundColor.HasValue)
-                Color = watchVar.BackroundColor.Value;
-        }
-
         /*
         public WatchVariableLock GetVariableLock(uint offset)
         {
@@ -329,13 +395,13 @@ namespace SM64_Diagnostic.Controls
         {
             this._nameLabel = new Label();
             this._nameLabel.Size = new Size(210, 20); //TODO check this
-            this._nameLabel.Text = _watchVar.Name;
+            this._nameLabel.Text = Name;
             this._nameLabel.Margin = new Padding(3, 3, 3, 3);
             this._nameLabel.Click += _nameLabel_Click;
             this._nameLabel.ImageAlign = ContentAlignment.MiddleRight;
             this._nameLabel.MouseHover += (sender, e) =>
             {
-                if (!_watchVar.HasAdditiveOffset)
+                if (!HasAdditiveOffset)
                 {
                     AddressToolTip.SetToolTip(this._nameLabel, "TODO 1" /*String.Format("0x{0:X8} [{2} + 0x{1:X8}]",
                         _watchVar.GetRamAddress(), _watchVar.GetProcessAddress(), Config.Stream.ProcessName)*/);
@@ -348,7 +414,7 @@ namespace SM64_Diagnostic.Controls
                 }
             };
 
-            if (_watchVar.IsBool)
+            if (IsBool)
             {
                 this._checkBoxBool = new CheckBox();
                 this._checkBoxBool.CheckAlign = ContentAlignment.MiddleRight;
@@ -370,12 +436,12 @@ namespace SM64_Diagnostic.Controls
                 this._textBoxValue.Width = 200;
                 this._textBoxValue.Margin = new Padding(6, 3, 6, 3);
                 this._textBoxValue.TextChanged += OnEdited;
-                this._textBoxValue.ContextMenuStrip = _watchVar.IsAngle ? WatchVariableControl.AngleMenu : WatchVariableControl.Menu;
+                this._textBoxValue.ContextMenuStrip = IsAngle ? WatchVariableControl.AngleMenu : WatchVariableControl.Menu;
                 this._textBoxValue.KeyDown += OnTextValueKeyDown;
                 this._textBoxValue.MouseEnter += _textBoxValue_MouseEnter;
                 this._textBoxValue.DoubleClick += _textBoxValue_DoubleClick;
                 this._textBoxValue.Leave += (sender, e) => { EditMode = false; };
-                if (_watchVar.IsAngle)
+                if (IsAngle)
                 {
                     WatchVariableControl.AngleMenu.ItemClicked += OnMenuStripClick;
                     WatchVariableControl.AngleDropDownMenu[0].DropDownItemClicked += AngleDropDownMenu_DropDownItemClicked;
@@ -399,29 +465,29 @@ namespace SM64_Diagnostic.Controls
             this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
             this._tablePanel.ShowBorder = false;
             this._tablePanel.Controls.Add(_nameLabel, 0, 0);
-            this._tablePanel.Controls.Add(_watchVar.IsBool ? this._checkBoxBool as Control : this._textBoxValue, 1, 0);
+            this._tablePanel.Controls.Add(IsBool ? this._checkBoxBool as Control : this._textBoxValue, 1, 0);
         }
 
         private void _nameLabel_Click(object sender, EventArgs e)
         {
             VariableViewerForm varInfo;
-            var typeDescr = _watchVar.TypeName;
-            if (_watchVar.Mask.HasValue)
+            var typeDescr = TypeName;
+            if (Mask.HasValue)
             {
-                typeDescr += String.Format(" w/ mask: 0x{0:X" + _watchVar.ByteCount * 2 + "}", _watchVar.Mask);
+                typeDescr += String.Format(" w/ mask: 0x{0:X" + ByteCount * 2 + "}", Mask);
             }
 
-            if (!_watchVar.HasAdditiveOffset)
+            if (!HasAdditiveOffset)
             {
-                varInfo = new VariableViewerForm(_watchVar.Name, typeDescr,
-                    String.Format("0x{0:X8}", _watchVar.GetRamAddress()),
-                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress().ToUInt64()));
+                varInfo = new VariableViewerForm(Name, typeDescr,
+                    String.Format("0x{0:X8}", GetRamAddress()),
+                    String.Format("0x{0:X8}", GetProcessAddress().ToUInt64()));
             }
             else
             {
-                varInfo = new VariableViewerForm(_watchVar.Name, typeDescr,
-                    String.Format("0x{0:X8}", _watchVar.GetRamAddress(OffsetList[0])),
-                    String.Format("0x{0:X8}", _watchVar.GetProcessAddress(OffsetList[0]).ToUInt64()));
+                varInfo = new VariableViewerForm(Name, typeDescr,
+                    String.Format("0x{0:X8}", GetRamAddress(OffsetList[0])),
+                    String.Format("0x{0:X8}", GetProcessAddress(OffsetList[0]).ToUInt64()));
             }
             varInfo.ShowDialog();
         }
@@ -449,9 +515,9 @@ namespace SM64_Diagnostic.Controls
             */
 
             _lastSelected = this;
-            if (_watchVar.IsAngle)
+            if (IsAngle)
             {
-                (AngleMenu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
+                (AngleMenu.Items["HexView"] as ToolStripMenuItem).Checked = UseHex;
                 /*(AngleMenu.Items["LockValue"] as ToolStripMenuItem).CheckState = lockedStatus;*/
                 (AngleMenu.Items["Highlight"] as ToolStripMenuItem).Checked = _tablePanel.ShowBorder;
                 (AngleDropDownMenu[0].DropDownItems[0] as ToolStripMenuItem).Checked = (_angleViewMode == AngleViewModeType.Recommended);
@@ -463,11 +529,11 @@ namespace SM64_Diagnostic.Controls
             }
             else
             {
-                (Menu.Items["HexView"] as ToolStripMenuItem).Checked = _watchVar.UseHex;
+                (Menu.Items["HexView"] as ToolStripMenuItem).Checked = UseHex;
                 /*(Menu.Items["LockValue"] as ToolStripMenuItem).CheckState = lockedStatus;*/
                 (Menu.Items["Highlight"] as ToolStripMenuItem).Checked = _tablePanel.ShowBorder;
                 ObjectDropDownMenu.ForEach(d => Menu.Items.Remove(d));
-                if (_watchVar.IsObject)
+                if (IsObject)
                 {
                     ObjectDropDownMenu.ForEach(d => Menu.Items.Add(d));
                 }
@@ -510,7 +576,7 @@ namespace SM64_Diagnostic.Controls
 
         public void Update()
         {
-            if (_watchVar.IsSpecial)
+            if (IsSpecial)
                 return;
 
             /*
@@ -522,11 +588,11 @@ namespace SM64_Diagnostic.Controls
 
             _changedByUser = false;
 
-            if (_watchVar.IsBool)
+            if (IsBool)
             {
-                if (OffsetList.Any(o => _watchVar.GetBoolValue(o)))
+                if (OffsetList.Any(o => GetBoolValue(o)))
                 {
-                    if (OffsetList.All(o => _watchVar.GetBoolValue(o)))
+                    if (OffsetList.All(o => GetBoolValue(o)))
                     {
                         CheckBoxCheckState = CheckState.Checked;
                     }
@@ -546,13 +612,13 @@ namespace SM64_Diagnostic.Controls
                 foreach (var offset in OffsetList)
                 {
                     string newText = "";
-                    if (_watchVar.IsAngle)
+                    if (IsAngle)
                     {
-                        newText = _watchVar.GetAngleStringValue(offset, _angleViewMode, _angleTruncated);
+                        newText = GetAngleStringValue(offset, _angleViewMode, _angleTruncated);
                     }
                     else
                     {
-                        newText = _watchVar.GetStringValue(offset);
+                        newText = GetStringValue(offset);
                     }
 
                     if (firstOffset)
@@ -577,11 +643,11 @@ namespace SM64_Diagnostic.Controls
             if (!_changedByUser)
                 return;
 
-            if (_watchVar.IsBool)
+            if (IsBool)
             {
                 foreach (var offset in OffsetList)
                 {
-                    _watchVar.SetBoolValue(offset, _checkBoxBool.Checked);
+                    SetBoolValue(offset, _checkBoxBool.Checked);
                 }
             }
         }
@@ -597,7 +663,7 @@ namespace SM64_Diagnostic.Controls
                     EditMode = true;
                     break;
                 case "View As Hexadecimal":
-                    _watchVar.UseHex = !(e.ClickedItem as ToolStripMenuItem).Checked;
+                    UseHex = !(e.ClickedItem as ToolStripMenuItem).Checked;
                     (e.ClickedItem as ToolStripMenuItem).Checked = !(e.ClickedItem as ToolStripMenuItem).Checked;
                     break;
                     /*
@@ -655,15 +721,15 @@ namespace SM64_Diagnostic.Controls
             byte[] writeBytes;
             foreach (var offset in OffsetList)
             {
-                if (_watchVar.IsAngle)
+                if (IsAngle)
                 {
-                    writeBytes = _watchVar.GetBytesFromAngleString(_textBoxValue.Text, _angleViewMode);
+                    writeBytes = GetBytesFromAngleString(_textBoxValue.Text, _angleViewMode);
                 }
                 else
                 {
-                    writeBytes = _watchVar.GetBytesFromString(offset, _textBoxValue.Text);
+                    writeBytes = GetBytesFromString(offset, _textBoxValue.Text);
                 }
-                _watchVar.SetBytes(offset, writeBytes);
+                SetBytes(offset, writeBytes);
 
                 // Update locked value
                 /*
@@ -704,5 +770,385 @@ namespace SM64_Diagnostic.Controls
             Config.Stream.LockedVariables[lockedVar] = lockedVar;
         }
         */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public uint GetRamAddress(uint offset = 0, bool addressArea = true)
+        {
+            var offsetedAddress = new UIntPtr(offset + Address);
+            uint address;
+
+            if (UseAbsoluteAddressing)
+                address = (uint)Config.Stream.ConvertAddressEndianess(
+                    new UIntPtr(offsetedAddress.ToUInt64() - (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()),
+                    ByteCount);
+            else
+                address = offsetedAddress.ToUInt32();
+
+            return addressArea ? address | 0x80000000 : address & 0x0FFFFFFF;
+        }
+
+        public UIntPtr GetProcessAddress(uint offset = 0)
+        {
+            uint address = GetRamAddress(offset, false);
+            return Config.Stream.ConvertAddressEndianess(
+                new UIntPtr(address + (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()), ByteCount);
+        }
+
+        public byte[] GetByteData(uint offset)
+        {
+            // Get dataBytes
+            var dataBytes = Config.Stream.ReadRamLittleEndian(HasAdditiveOffset ? new UIntPtr(offset + Address)
+                : new UIntPtr(Address), ByteCount, UseAbsoluteAddressing);
+
+            // Make sure offset is a valid pointer
+            if (HasAdditiveOffset && offset == 0)
+                return null;
+
+            return dataBytes;
+        }
+
+        public string GetStringValue(uint offset)
+        {
+            // Get dataBytes
+            var dataBytes = GetByteData(offset);
+
+            // Make sure offset is a valid pointer
+            if (dataBytes == null)
+                return "(none)";
+
+            // Parse object type
+            if (IsObject)
+            {
+                var objAddress = BitConverter.ToUInt32(dataBytes, 0);
+                if (objAddress == 0)
+                    return "(none)";
+
+                var slotName = ManagerContext.Current.ObjectSlotManager.GetSlotNameFromAddress(objAddress);
+                if (slotName != null)
+                    return "Slot: " + slotName;
+            }
+
+            // Parse floating point
+            if (!UseHex && (Type == typeof(float) || Type == typeof(double)))
+            {
+                if (Type == typeof(float))
+                    return BitConverter.ToSingle(dataBytes, 0).ToString();
+
+                if (Type == typeof(double))
+                    return BitConverter.ToDouble(dataBytes, 0).ToString();
+            }
+
+            // Get Uint64 value
+            var intBytes = new byte[8];
+            dataBytes.CopyTo(intBytes, 0);
+            UInt64 dataValue = BitConverter.ToUInt64(intBytes, 0);
+
+            // Apply mask
+            if (Mask.HasValue)
+                dataValue &= Mask.Value;
+
+            // Boolean parsing
+            if (IsBool)
+                return (dataValue != 0x00).ToString();
+
+            // Print hex
+            if (UseHex)
+                return "0x" + dataValue.ToString("X" + ByteCount * 2);
+
+            // Print signed
+            if (Type == typeof(Int64))
+                return ((Int64)dataValue).ToString();
+            else if (Type == typeof(Int32))
+                return ((Int32)dataValue).ToString();
+            else if (Type == typeof(Int16))
+                return ((Int16)dataValue).ToString();
+            else if (Type == typeof(sbyte))
+                return ((sbyte)dataValue).ToString();
+            else
+                return dataValue.ToString();
+        }
+
+        public byte[] GetBytesFromAngleString(string value, AngleViewModeType viewMode)
+        {
+            if (Type != typeof(UInt32) && Type != typeof(UInt16)
+                && Type != typeof(Int32) && Type != typeof(Int16))
+                return null;
+
+            UInt32 writeValue = 0;
+
+            // Print hex
+            if (ParsingUtilities.IsHex(value))
+            {
+                ParsingUtilities.TryParseHex(value, out writeValue);
+            }
+            else
+            {
+                switch (viewMode)
+                {
+                    case AngleViewModeType.Signed:
+                    case AngleViewModeType.Unsigned:
+                    case AngleViewModeType.Recommended:
+                        int tempValue;
+                        if (int.TryParse(value, out tempValue))
+                            writeValue = (uint)tempValue;
+                        else if (!uint.TryParse(value, out writeValue))
+                            return null;
+                        break;
+
+
+                    case AngleViewModeType.Degrees:
+                        double degValue;
+                        if (!double.TryParse(value, out degValue))
+                            return null;
+                        writeValue = (UInt16)(degValue / (360d / 65536));
+                        break;
+
+                    case AngleViewModeType.Radians:
+                        double radValue;
+                        if (!double.TryParse(value, out radValue))
+                            return null;
+                        writeValue = (UInt16)(radValue / (2 * Math.PI / 65536));
+                        break;
+                }
+            }
+
+            return BitConverter.GetBytes(writeValue).Take(ByteCount).ToArray();
+        }
+
+        public bool SetAngleStringValue(uint offset, string value, AngleViewModeType viewMode)
+        {
+            var dataBytes = GetBytesFromAngleString(value, viewMode);
+            return SetBytes(offset, dataBytes);
+        }
+
+        public string GetAngleStringValue(uint offset, AngleViewModeType viewMode, bool truncated = false)
+        {
+            // Get dataBytes
+            var dataBytes = GetByteData(offset);
+
+            // Make sure offset is a valid pointer
+            if (dataBytes == null)
+                return "(none)";
+
+            // Make sure dataType is a valid angle type
+            if (Type != typeof(UInt32) && Type != typeof(UInt16)
+                && Type != typeof(Int32) && Type != typeof(Int16))
+                return "Error: datatype";
+
+            // Get Uint32 value
+            UInt32 dataValue = (Type == typeof(UInt32)) ? BitConverter.ToUInt32(dataBytes, 0)
+                : BitConverter.ToUInt16(dataBytes, 0);
+
+            // Apply mask
+            if (Mask.HasValue)
+                dataValue = (UInt32)(dataValue & Mask.Value);
+
+            // Truncate by 16
+            if (truncated)
+                dataValue &= ~0x000FU;
+
+            // Print hex
+            if (UseHex)
+            {
+                if (viewMode == AngleViewModeType.Recommended && ByteCount == 4)
+                    return "0x" + dataValue.ToString("X8");
+                else
+                    return "0x" + ((UInt16)dataValue).ToString("X4");
+            }
+
+            switch (viewMode)
+            {
+                case AngleViewModeType.Recommended:
+                    if (Type == typeof(Int16))
+                        return ((Int16)dataValue).ToString();
+                    else if (Type == typeof(UInt16))
+                        return ((UInt16)dataValue).ToString();
+                    else if (Type == typeof(Int32))
+                        return ((Int32)dataValue).ToString();
+                    else
+                        return dataValue.ToString();
+
+                case AngleViewModeType.Unsigned:
+                    return ((UInt16)dataValue).ToString();
+
+                case AngleViewModeType.Signed:
+                    return ((Int16)(dataValue)).ToString();
+
+                case AngleViewModeType.Degrees:
+                    return (((UInt16)dataValue) * (360d / 65536)).ToString();
+
+                case AngleViewModeType.Radians:
+                    return (((UInt16)dataValue) * (2 * Math.PI / 65536)).ToString();
+            }
+
+            return "Error: ang. parse";
+        }
+
+        public bool GetBoolValue(uint offset)
+        {
+            // Get dataBytes
+            var dataBytes = GetByteData(offset);
+
+            // Make sure offset is a valid pointer
+            if (dataBytes == null)
+                return false;
+
+            // Get Uint64 value
+            var intBytes = new byte[8];
+            dataBytes.CopyTo(intBytes, 0);
+            UInt64 dataValue = BitConverter.ToUInt64(intBytes, 0);
+
+            // Apply mask
+            if (Mask.HasValue)
+                dataValue &= Mask.Value;
+
+            // Boolean parsing
+            bool value = (dataValue != 0x00);
+            value = InvertBool ? !value : value;
+            return value;
+        }
+
+        public void SetBoolValue(uint offset, bool value)
+        {
+            // Get dataBytes
+            var address = HasAdditiveOffset ? offset + Address : Address;
+            var dataBytes = GetByteData(offset);
+
+            // Make sure offset is a valid pointer
+            if (dataBytes == null)
+                return;
+
+            if (InvertBool)
+                value = !value;
+
+            // Get Uint64 value
+            var intBytes = new byte[8];
+            dataBytes.CopyTo(intBytes, 0);
+            UInt64 dataValue = BitConverter.ToUInt64(intBytes, 0);
+
+            // Apply mask
+            if (Mask.HasValue)
+            {
+                if (value)
+                    dataValue |= Mask.Value;
+                else
+                    dataValue &= ~Mask.Value;
+            }
+            else
+            {
+                dataValue = value ? 1U : 0U;
+            }
+
+            var writeBytes = new byte[ByteCount];
+            var valueBytes = BitConverter.GetBytes(dataValue);
+            Array.Copy(valueBytes, 0, writeBytes, 0, ByteCount);
+
+            Config.Stream.WriteRamLittleEndian(writeBytes, address, UseAbsoluteAddressing);
+        }
+
+        public byte[] GetBytesFromString(uint offset, string value)
+        {
+            // Get dataBytes
+            var address = HasAdditiveOffset ? offset + Address : Address;
+            var dataBytes = new byte[8];
+            Config.Stream.ReadRamLittleEndian(new UIntPtr(address), ByteCount, UseAbsoluteAddressing).CopyTo(dataBytes, 0);
+            UInt64 oldValue = BitConverter.ToUInt64(dataBytes, 0);
+            UInt64 newValue;
+
+
+            // Handle object values
+            uint? objectAddress;
+            if (IsObject && (objectAddress = ManagerContext.Current.ObjectSlotManager.GetSlotAddressFromName(value)).HasValue)
+            {
+                newValue = objectAddress.Value;
+            }
+            else
+            // Handle hex variable
+            if (ParsingUtilities.IsHex(value))
+            {
+                if (!ParsingUtilities.TryParseExtHex(value, out newValue))
+                    return null;
+            }
+            // Handle floats
+            else if (Type == typeof(float))
+            {
+                float newFloatValue;
+                if (!float.TryParse(value, out newFloatValue))
+                    return null;
+
+                // Get bytes
+                newValue = BitConverter.ToUInt32(BitConverter.GetBytes(newFloatValue), 0);
+            }
+            else if (Type == typeof(double))
+            {
+                double newFloatValue;
+                if (double.TryParse(value, out newFloatValue))
+                    return null;
+
+                // Get bytes
+                newValue = BitConverter.ToUInt64(BitConverter.GetBytes(newFloatValue), 0);
+            }
+            else if (Type == typeof(UInt64))
+            {
+                if (!UInt64.TryParse(value, out newValue))
+                {
+                    Int64 newValueInt;
+                    if (!Int64.TryParse(value, out newValueInt))
+                        return null;
+
+                    newValue = (UInt64)newValueInt;
+                }
+            }
+            else
+            {
+                Int64 tempInt;
+                if (!Int64.TryParse(value, out tempInt))
+                    return null;
+                newValue = (UInt64)tempInt;
+            }
+
+            // Apply mask
+            if (Mask.HasValue)
+                newValue = (newValue & Mask.Value) | ((~Mask.Value) & oldValue);
+
+            var writeBytes = new byte[ByteCount];
+            var valueBytes = BitConverter.GetBytes(newValue);
+            Array.Copy(valueBytes, 0, writeBytes, 0, ByteCount);
+
+            return writeBytes;
+        }
+
+        public bool SetStringValue(uint offset, string value)
+        {
+            var dataBytes = GetBytesFromString(offset, value);
+            return SetBytes(offset, dataBytes);
+        }
+
+        public bool SetBytes(uint offset, byte[] dataBytes)
+        {
+            if (dataBytes == null)
+                return false;
+
+            return Config.Stream.WriteRamLittleEndian(dataBytes, HasAdditiveOffset ? offset + Address
+                : Address, UseAbsoluteAddressing);
+        }
     }
 }

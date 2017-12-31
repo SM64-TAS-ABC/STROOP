@@ -1483,8 +1483,8 @@ namespace SM64_Diagnostic.Utilities
                 if (element.Name.ToString() != "Data")
                     continue;
 
-                var watchVar = GetWatchVariableFromElement(element);
-                objectData.Add(new VarX(watchVar));
+                VarX varX = GetVarXFromElement(element);
+                objectData.Add(varX);
             }
 
             return objectData;
@@ -2444,6 +2444,63 @@ namespace SM64_Diagnostic.Utilities
                 bool.Parse(element.Attribute(XName.Get("isAngle")).Value) : false;
 
             return new WatchVariable(
+                name,
+                offset,
+                groupList,
+                specialType,
+                backgroundColor,
+                addressHolder,
+                useHex,
+                mask,
+                isBool,
+                isObject,
+                typeName,
+                invertBool,
+                isAngle);
+        }
+
+        public static VarX GetVarXFromElement(XElement element)
+        {
+            string name = element.Value;
+
+            OffsetType offset = GetOffsetType(element.Attribute(XName.Get("offset")).Value);
+
+            List<VariableGroup> groupList = ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
+
+            string specialType = (element.Attribute(XName.Get("specialType")) != null) ?
+                element.Attribute(XName.Get("specialType")).Value : null;
+
+            Color? backgroundColor = (element.Attribute(XName.Get("color")) != null) ?
+                ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
+
+            AddressHolder addressHolder =
+                new AddressHolder(
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressUS"))?.Value),
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressJP"))?.Value),
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("addressPAL"))?.Value),
+                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("address"))?.Value));
+
+            bool useHex = (element.Attribute(XName.Get("useHex")) != null) ?
+                bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
+
+            ulong? mask = element.Attribute(XName.Get("mask")) != null ?
+                (ulong?)ParsingUtilities.ParseExtHex(element.Attribute(XName.Get("mask")).Value) : null;
+
+            bool isBool = element.Attribute(XName.Get("isBool")) != null ?
+                bool.Parse(element.Attribute(XName.Get("isBool")).Value) : false;
+
+            bool isObject = element.Attribute(XName.Get("isObject")) != null ?
+                bool.Parse(element.Attribute(XName.Get("isObject")).Value) : false;
+
+            string typeName = (element.Attribute(XName.Get("type"))?.Value);
+
+            bool invertBool = element.Attribute(XName.Get("invertBool")) != null ?
+                bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : false;
+
+            bool isAngle = element.Attribute(XName.Get("isAngle")) != null ?
+                bool.Parse(element.Attribute(XName.Get("isAngle")).Value) : false;
+
+            return new VarX(
                 name,
                 offset,
                 groupList,
