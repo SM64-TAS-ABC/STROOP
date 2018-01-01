@@ -88,7 +88,15 @@ namespace SM64_Diagnostic.Controls
 
         public override void SetValue(string stringValue)
         {
-            base.SetValue(stringValue);
+            double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            if (!newValueNullable.HasValue)
+            {
+                base.SetValue(stringValue);
+                return;
+            }
+            double newValue = newValueNullable.Value;
+            if (_negate) newValue = newValue * -1;
+            base.SetValue(newValue.ToString());
         }
     }
 }
