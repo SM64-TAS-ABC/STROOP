@@ -73,5 +73,14 @@ namespace SM64_Diagnostic.Controls
             Control.ContextMenuStrip.Items.Add(itemNegate);
         }
 
+        public override List<object> GetValue()
+        {
+            return base.GetValue();
+        }
+
+        public override void SetValue(string stringValue)
+        {
+            base.SetValue(stringValue);
+        }
     }
 }
