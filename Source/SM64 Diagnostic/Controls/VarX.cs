@@ -188,16 +188,16 @@ namespace SM64_Diagnostic.Controls
             if (_editMode)
                 return;
 
-            _textBox.Text = GetStringValue();
+            _textBox.Text = GetValueFinal();
         }
 
-        public string GetStringValue()
+        public string GetValueFinal()
         {
             string combinedVarString = "(none)";
             string firstVarString = null;
             bool atLeastOneVarIncorporated = false;
 
-            foreach (object value in _getterFunction())
+            foreach (object value in GetValue())
             {
                 string varString = value.ToString();
 
@@ -219,7 +219,12 @@ namespace SM64_Diagnostic.Controls
 
             return combinedVarString;
         }
-        
+
+        public virtual List<object> GetValue()
+        {
+            return _getterFunction();
+        }
+
         private void OnTextValueKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Escape)
@@ -234,17 +239,22 @@ namespace SM64_Diagnostic.Controls
                 return;
 
             // Exit edit mode
-            SetStringValue(_textBox.Text);
+            SetValueFinal(_textBox.Text);
             EditMode = false;
         }
 
-        public void SetStringValue(string stringValue)
+        public void SetValueFinal(string stringValue)
         {
             Config.Stream.Suspend();
 
-            _setterFunction(stringValue);
+            SetValue(stringValue);
 
             Config.Stream.Resume();
+        }
+
+        public virtual void SetValue(string stringValue)
+        {
+            _setterFunction(stringValue);
         }
 
     }

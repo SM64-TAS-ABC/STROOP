@@ -23,10 +23,10 @@ namespace SM64_Diagnostic.Controls
         public VarXNumber(string name, AddressHolder addressHolder)
             : base(name, addressHolder)
         {
-            AddContextMenuStrip();
+            AddNumberContextMenuStrip();
         }
 
-        private void AddContextMenuStrip()
+        private void AddNumberContextMenuStrip()
         {
             ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to ...");
 
