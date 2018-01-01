@@ -16,21 +16,10 @@ namespace SM64_Diagnostic.Controls
     {
         public readonly string Name;
         public readonly AddressHolder AddressHolder;
-        private readonly Func<List<object>> _getterFunction;
-        private readonly Action<string> _setterFunction;
+        protected readonly Func<List<object>> _getterFunction;
+        protected readonly Action<string> _setterFunction;
 
-        public VarX(
-            string name,
-            List<VariableGroup> groupList,
-            string specialType,
-            Color? backgroundColor,
-            AddressHolder addressHolder,
-            bool useHex,
-            ulong? mask,
-            bool isBool,
-            bool isObject,
-            bool invertBool,
-            bool isAngle)
+        public VarX(string name, AddressHolder addressHolder)
         {
             Name = name;
             AddressHolder = addressHolder;
@@ -38,7 +27,7 @@ namespace SM64_Diagnostic.Controls
             // Created getter/setter functions
             if (AddressHolder.IsSpecial)
             {
-                (_getterFunction, _setterFunction) = VarXSpecialUtilities.CreateGetterSetterFunctions(specialType);
+                (_getterFunction, _setterFunction) = VarXSpecialUtilities.CreateGetterSetterFunctions(AddressHolder.SpecialType);
             }
             else
             {
@@ -56,18 +45,16 @@ namespace SM64_Diagnostic.Controls
 
             CreateControls();
             AddContextMenuStrip();
-
         }
 
 
 
 
 
-        BorderedTableLayoutPanel _tablePanel;
-        Label _nameLabel;
-        TextBox _textBox;
-
-        bool _editMode = false;
+        private BorderedTableLayoutPanel _tablePanel;
+        private Label _nameLabel;
+        private TextBox _textBox;
+        private bool _editMode = false;
 
         public Control Control
         {

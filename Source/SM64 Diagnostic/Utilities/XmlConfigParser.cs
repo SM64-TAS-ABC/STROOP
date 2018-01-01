@@ -2421,6 +2421,7 @@ namespace SM64_Diagnostic.Utilities
             AddressHolder addressHolder =
                 new AddressHolder(
                     typeName,
+                    specialType,
                     baseAddressType,
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value),
@@ -2481,6 +2482,7 @@ namespace SM64_Diagnostic.Utilities
             AddressHolder addressHolder =
                 new AddressHolder(
                     typeName,
+                    specialType,
                     baseAddressType,
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value),
@@ -2508,16 +2510,7 @@ namespace SM64_Diagnostic.Utilities
 
             return new VarX(
                 name,
-                groupList,
-                specialType,
-                backgroundColor,
-                addressHolder,
-                useHex,
-                mask,
-                isBool,
-                isObject,
-                invertBool,
-                isAngle);
+                addressHolder);
         }
 
         public static ActionTable OpenActionTable(string path)

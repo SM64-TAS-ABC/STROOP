@@ -20,6 +20,8 @@ namespace SM64_Diagnostic.Controls
         public readonly Type MemoryType;
         public readonly int ByteCount;
 
+        public readonly string SpecialType;
+
         public readonly BaseAddressTypeEnum BaseAddressType;
 
         public readonly uint? OffsetUS;
@@ -125,7 +127,7 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public AddressHolder(string memoryTypeName, BaseAddressTypeEnum baseAddress,
+        public AddressHolder(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddress,
             uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, bool returnNonEmptyList)
         {
             if (offsetUS == null && offsetJP == null && offsetPAL == null && offsetDefault == null)
@@ -136,14 +138,16 @@ namespace SM64_Diagnostic.Controls
 
             BaseAddressType = baseAddress;
 
-            MemoryTypeName = IsSpecial ? "special" : memoryTypeName;
-            MemoryType = IsSpecial ? null : VarXUtilities.StringToType[MemoryTypeName];
-            ByteCount = IsSpecial ? 0 : VarXUtilities.TypeSize[MemoryType];
-
             OffsetUS = offsetUS;
             OffsetJP = offsetJP;
             OffsetPAL = offsetPAL;
             OffsetDefault = offsetDefault;
+
+            MemoryTypeName = IsSpecial ? "special" : memoryTypeName;
+            MemoryType = IsSpecial ? null : VarXUtilities.StringToType[MemoryTypeName];
+            ByteCount = IsSpecial ? 0 : VarXUtilities.TypeSize[MemoryType];
+
+            SpecialType = specialType;
 
             _returnNonEmptyList = returnNonEmptyList;
         }
