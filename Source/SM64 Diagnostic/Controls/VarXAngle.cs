@@ -14,15 +14,27 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarXAngle : VarXNumber
     {
-        public VarXAngle(string name, AddressHolder addressHolder)
+        private bool? _signed;
+
+        public VarXAngle(string name, AddressHolder addressHolder, bool? signed = null)
             : base(name, addressHolder, 0)
         {
+            _signed = signed;
             AddAngleContextMenuStrip();
         }
 
         private void AddAngleContextMenuStrip()
         {
+            ToolStripMenuItem itemSign = new ToolStripMenuItem("Signed?");
+            ControlUtilities.AddDropDownItems(
+                itemSign,
+                new List<string> { "Recommended", "Signed", "Unsigned" },
+                new List<object> { null, true, false },
+                (object obj) => { _signed = (bool?)obj; },
+                null);
 
+            Control.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            Control.ContextMenuStrip.Items.Add(itemSign);
         }
 
         public override List<object> GetValue()

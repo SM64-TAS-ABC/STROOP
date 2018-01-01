@@ -380,5 +380,35 @@ namespace SM64_Diagnostic.Utilities
             items.ForEach(item => contextMenuStrip.Items.Add(item));
             control.ContextMenuStrip = contextMenuStrip;
         }
+
+        public static void AddDropDownItems(
+            ToolStripMenuItem topLevelItem,
+            List<string> itemNames,
+            List<object> itemValues,
+            Action<object> setterAction,
+            object startingValue)
+        {
+            if (itemNames.Count != itemValues.Count) throw new ArgumentOutOfRangeException();
+
+            List<ToolStripMenuItem> itemList = new List<ToolStripMenuItem>();
+            for (int i = 0; i < itemNames.Count; i++)
+            {
+                itemList.Add(new ToolStripMenuItem(itemNames[i]));
+            }
+
+            for (int i = 0; i < itemList.Count; i++)
+            {
+                int index = i;
+                ToolStripMenuItem item = itemList[index];
+                item.Click += (sender, e) =>
+                {
+                    setterAction(itemValues[index]);
+                    itemList.ForEach(item2 => item2.Checked = item2 == item);
+                };
+                if (itemValues[index] == startingValue) item.Checked = true;
+            }
+
+            itemList.ForEach(item => topLevelItem.DropDownItems.Add(item));
+        }
     }
 }
