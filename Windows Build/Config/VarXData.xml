@@ -14,9 +14,6 @@
   <Data type="byte" offset="0xB2" baseAddressType="Mario">HP Dec (US)</Data>
   <Data type="sbyte" offset="0xB2" baseAddressType="Mario">HP Dec (S)</Data>
 
-  <Data type="ushort" offset="0x2E" baseAddressType="Mario" isAngle="true">Yaw (US)</Data>
-  <Data type="short" offset="0x2E" baseAddressType="Mario" isAngle="true">Yaw (S)</Data>
-
   <Data groupList="Simple" type="float" offset="0xA0" baseAddressType="Object">Object X</Data>
   <Data groupList="Simple" type="float" offset="0xA4" baseAddressType="Object">Object Y</Data>
   <Data groupList="Simple" type="float" offset="0xA8" baseAddressType="Object">Object Z</Data>
@@ -38,9 +35,11 @@
   <Data baseAddressType="Special" specialType="MarioAnimationDescription" subclass="String">Animation Description</Data>
   <Data type="short" offset="0x40" baseAddressType="MarioObj">Animation Timer</Data>
 
-  <Data groupList="Simple" type="ushort" offset="0xD6" baseAddressType="Object" isAngle="true">Obj Yaw (Facing)</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleObjectToMario">Angle Obj to Mario</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleMarioToObject">Angle Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleMarioToObject">DAngle Mario to Obj</Data>
+  <Data type="ushort" offset="0x2E" baseAddressType="Mario" subclass="Angle">Yaw (US)</Data>
+  <Data type="short" offset="0x2E" baseAddressType="Mario" subclass="Angle">Yaw (S)</Data>
+  <Data groupList="Simple" type="ushort" offset="0xD6" baseAddressType="Object" subclass="Angle">Obj Yaw (Facing)</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleObjectToMario" subclass="Angle">Angle Obj to Mario</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleObjectToMario" subclass="Angle">DAngle Obj to Mario</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleMarioToObject" subclass="Angle">Angle Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleMarioToObject" subclass="Angle">DAngle Mario to Obj</Data>
 </WaterData>

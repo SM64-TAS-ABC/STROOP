@@ -26,6 +26,10 @@ namespace SM64_Diagnostic.Controls
             {
                 return new VarXNumber(name, addressHolder);
             }
+            else if (varXSubclcass == VarXSubclass.Angle)
+            {
+                return new VarXAngle(name, addressHolder);
+            }
             else
             {
                 return new VarX(name, addressHolder);
