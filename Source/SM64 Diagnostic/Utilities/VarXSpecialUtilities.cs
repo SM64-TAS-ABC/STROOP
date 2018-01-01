@@ -94,6 +94,54 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
+                case "AngleObjectToMario":
+                    getterFunction = () =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        List<Position> objPoses = GetObjectPositions();
+                        return objPoses.ConvertAll(objPos =>
+                        {
+                            return (object)MoreMath.AngleTo_AngleUnits(objPos.X, objPos.Z, marioPos.X, marioPos.Z);
+                        });
+                    };
+                    break;
+
+                case "DeltaAngleObjectToMario":
+                    getterFunction = () =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        List<Position> objPoses = GetObjectPositions();
+                        return objPoses.ConvertAll(objPos =>
+                        {
+                            return (object)(objPos.Angle - MoreMath.AngleTo_AngleUnits(objPos.X, objPos.Z, marioPos.X, marioPos.Z));
+                        });
+                    };
+                    break;
+
+                case "AngleMarioToObject":
+                    getterFunction = () =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        List<Position> objPoses = GetObjectPositions();
+                        return objPoses.ConvertAll(objPos =>
+                        {
+                            return (object)MoreMath.AngleTo_AngleUnits(marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                        });
+                    };
+                    break;
+
+                case "DeltaAngleMarioToObject":
+                    getterFunction = () =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        List<Position> objPoses = GetObjectPositions();
+                        return objPoses.ConvertAll(objPos =>
+                        {
+                            return (object)(marioPos.Angle - MoreMath.AngleTo_AngleUnits(marioPos.X, marioPos.Z, objPos.X, objPos.Z));
+                        });
+                    };
+                    break;
+
                 case "ActionDescription":
                     getterFunction = () =>
                     {
@@ -155,7 +203,8 @@ namespace SM64_Diagnostic.Structs
             float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
             float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             float marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
-            return new Position(marioX, marioY, marioZ);
+            ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+            return new Position(marioX, marioY, marioZ, marioAngle);
         }
 
         private static void SetMarioPosition(double? x, double? y, double? z)
@@ -172,7 +221,8 @@ namespace SM64_Diagnostic.Structs
                 float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
                 float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
                 float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
-                return new Position(objX, objY, objZ);
+                ushort objAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
+                return new Position(objX, objY, objZ, objAngle);
             });
         }
 
@@ -181,12 +231,14 @@ namespace SM64_Diagnostic.Structs
             public readonly float X;
             public readonly float Y;
             public readonly float Z;
+            public readonly ushort Angle;
 
-            public Position(float x, float y, float z)
+            public Position(float x, float y, float z, ushort angle)
             {
                 X = x;
                 Y = y;
                 Z = z;
+                Angle = angle;
             }
         }
     }

@@ -37,4 +37,10 @@
   <Data type="short" offset="0x38" baseAddressType="MarioObj">Animation</Data>
   <Data baseAddressType="Special" specialType="MarioAnimationDescription" subclass="String">Animation Description</Data>
   <Data type="short" offset="0x40" baseAddressType="MarioObj">Animation Timer</Data>
+
+  <Data groupList="Simple" type="ushort" offset="0xD6" baseAddressType="Object" isAngle="true">Obj Yaw (Facing)</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleObjectToMario">Angle Obj to Mario</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleMarioToObject">Angle Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleMarioToObject">DAngle Mario to Obj</Data>
 </WaterData>
