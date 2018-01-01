@@ -39,9 +39,15 @@ namespace SM64_Diagnostic.Structs
             { "double", typeof(double) },
         };
 
-        public static BaseAddressTypeEnum GetBaseAddressType(string offsetTypeString)
+        public static BaseAddressTypeEnum GetBaseAddressType(string baseAddressTypeString)
         {
-            return (BaseAddressTypeEnum)Enum.Parse(typeof(BaseAddressTypeEnum), offsetTypeString);
+            return (BaseAddressTypeEnum)Enum.Parse(typeof(BaseAddressTypeEnum), baseAddressTypeString);
+        }
+
+        public static VarXSubclass GetVarXSubclass(string subclassString)
+        {
+            if (subclassString == null) return VarXSubclass.Number;
+            return (VarXSubclass)Enum.Parse(typeof(VarXSubclass), subclassString);
         }
 
         public static VariableGroup GetVariableGroup(string variableGroupString)

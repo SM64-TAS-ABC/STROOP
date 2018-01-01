@@ -19,6 +19,12 @@ namespace SM64_Diagnostic.Controls
         protected readonly Func<List<object>> _getterFunction;
         protected readonly Action<string> _setterFunction;
 
+        public static VarX CreateVarX(
+            string name, AddressHolder addressHolder, VarXSubclass varXSubclcass)
+        {
+            return new VarX(name, addressHolder);
+        }
+
         public VarX(string name, AddressHolder addressHolder)
         {
             Name = name;

@@ -2469,6 +2469,8 @@ namespace SM64_Diagnostic.Utilities
 
             BaseAddressTypeEnum baseAddressType = VarXUtilities.GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
 
+            VarXSubclass varXSubclass = VarXUtilities.GetVarXSubclass(element.Attribute(XName.Get("subclass"))?.Value);
+
             List<VariableGroup> groupList = VarXUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
 
             string specialType = (element.Attribute(XName.Get("specialType")) != null) ?
@@ -2508,9 +2510,10 @@ namespace SM64_Diagnostic.Utilities
             bool isAngle = element.Attribute(XName.Get("isAngle")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isAngle")).Value) : false;
 
-            return new VarX(
+            return VarX.CreateVarX(
                 name,
-                addressHolder);
+                addressHolder,
+                varXSubclass);
         }
 
         public static ActionTable OpenActionTable(string path)
