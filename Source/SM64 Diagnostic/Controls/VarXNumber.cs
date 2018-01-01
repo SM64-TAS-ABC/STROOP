@@ -33,37 +33,13 @@ namespace SM64_Diagnostic.Controls
         private void AddNumberContextMenuStrip()
         {
             ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to ...");
-
-            ToolStripMenuItem itemRoundNone = new ToolStripMenuItem("No rounding");
-            List<ToolStripMenuItem> itemRoundList = new List<ToolStripMenuItem>();
-            for (int i = 0; i <= MAX_ROUNDING_LIMIT; i++)
-            {
-                itemRoundList.Add(new ToolStripMenuItem(i + " decimal place(s)"));
-            }
-
-            itemRoundNone.Click += (sender, e) =>
-            {
-                _roundingLimit = null;
-                itemRoundNone.Checked = true;
-                itemRoundList.ForEach(item => item.Checked = false);
-            };
-            for (int i = 0; i < itemRoundList.Count; i++)
-            {
-                ToolStripMenuItem item = itemRoundList[i];
-                int index = i;
-                item.Click += (sender, e) =>
-                {
-                    _roundingLimit = index;
-                    itemRoundNone.Checked = false;
-                    itemRoundList.ForEach(item2 => item2.Checked = item2 == item);
-                };
-            }
-
-            if (_roundingLimit.HasValue) itemRoundList[_roundingLimit.Value].Checked = true;
-            else itemRoundNone.Checked = true;
-
-            itemRoundTo.DropDownItems.Add(itemRoundNone);
-            itemRoundList.ForEach(item => itemRoundTo.DropDownItems.Add(item));
+            List<int> roundingLimitNumbers = Enumerable.Range(0, MAX_ROUNDING_LIMIT + 1).ToList();
+            ControlUtilities.AddDropDownItems(
+                itemRoundTo,
+                new List<string>() { "No rounding" }.Concat(roundingLimitNumbers.ConvertAll(i => i + " decimal place(s)")).ToList(),
+                new List<object>() { null }.Concat(roundingLimitNumbers.ConvertAll(i => (object)i)).ToList(),
+                (object obj) => { _roundingLimit = (int?)obj; },
+                _roundingLimit);
 
             ToolStripMenuItem itemNegate = new ToolStripMenuItem("Negate");
             itemNegate.Click += (sender, e) =>

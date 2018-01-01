@@ -405,7 +405,7 @@ namespace SM64_Diagnostic.Utilities
                     setterAction(itemValues[index]);
                     itemList.ForEach(item2 => item2.Checked = item2 == item);
                 };
-                if (itemValues[index] == startingValue) item.Checked = true;
+                if (Object.Equals(itemValues[index],startingValue)) item.Checked = true;
             }
 
             itemList.ForEach(item => topLevelItem.DropDownItems.Add(item));
