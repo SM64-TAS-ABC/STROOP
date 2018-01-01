@@ -35,8 +35,7 @@ namespace SM64_Diagnostic.Controls
             Name = name;
             AddressHolder = addressHolder;
 
-            CreateControls();
-
+            // Created getter/setter functions
             if (AddressHolder.IsSpecial)
             {
                 (_getterFunction, _setterFunction) = VarXSpecialUtilities.CreateGetterSetterFunctions(specialType);
@@ -54,6 +53,10 @@ namespace SM64_Diagnostic.Controls
                         address => Config.Stream.SetValue(AddressHolder.MemoryType, stringValue, address, AddressHolder.UseAbsoluteAddressing));
                 };
             }
+
+            CreateControls();
+            AddContextMenuStrip();
+
         }
 
 
@@ -71,6 +74,14 @@ namespace SM64_Diagnostic.Controls
             get
             {
                 return _tablePanel;
+            }
+        }
+
+        public List<Control> Controls
+        {
+            get
+            {
+                return new List<Control>() { _tablePanel, _nameLabel, _textBox };
             }
         }
 
@@ -130,6 +141,31 @@ namespace SM64_Diagnostic.Controls
             this._tablePanel.ShowBorder = false;
             this._tablePanel.Controls.Add(_nameLabel, 0, 0);
             this._tablePanel.Controls.Add(this._textBox, 1, 0);
+        }
+
+        private void AddContextMenuStrip()
+        {
+            ToolStripMenuItem itemEdit = new ToolStripMenuItem("Edit");
+            ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight");
+
+            itemEdit.Click += (sender, e) => { EditMode = true; };
+            itemHighlight.Click += (sender, e) =>
+            {
+                bool currentlyHighlighted = _tablePanel.ShowBorder;
+                _tablePanel.ShowBorder = !currentlyHighlighted;
+                itemHighlight.Checked = !currentlyHighlighted;
+            };
+
+            ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
+            contextMenuStrip.Items.Add(itemEdit);
+            contextMenuStrip.Items.Add(itemHighlight);
+            //contextMenuStrip.Items.Add(new ToolStripSeparator());
+            //submenu.DropDownItems.Add(item);
+
+            foreach (Control control in Controls)
+            {
+                control.ContextMenuStrip = contextMenuStrip;
+            }
         }
 
         private void _nameLabel_Click(object sender, EventArgs e)
