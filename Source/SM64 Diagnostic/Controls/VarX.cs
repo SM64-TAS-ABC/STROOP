@@ -159,8 +159,6 @@ namespace SM64_Diagnostic.Controls
             ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
             contextMenuStrip.Items.Add(itemEdit);
             contextMenuStrip.Items.Add(itemHighlight);
-            //contextMenuStrip.Items.Add(new ToolStripSeparator());
-            //submenu.DropDownItems.Add(item);
 
             foreach (Control control in Controls)
             {
