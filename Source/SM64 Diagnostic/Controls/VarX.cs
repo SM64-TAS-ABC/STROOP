@@ -22,7 +22,14 @@ namespace SM64_Diagnostic.Controls
         public static VarX CreateVarX(
             string name, AddressHolder addressHolder, VarXSubclass varXSubclcass)
         {
-            return new VarX(name, addressHolder);
+            if (varXSubclcass == VarXSubclass.Number)
+            {
+                return new VarXNumber(name, addressHolder);
+            }
+            else
+            {
+                return new VarX(name, addressHolder);
+            }
         }
 
         public VarX(string name, AddressHolder addressHolder)

@@ -31,12 +31,9 @@ namespace SM64_Diagnostic.Controls
             //contextMenuStrip.Items.Add(new ToolStripSeparator());
             //submenu.DropDownItems.Add(item);
 
-            foreach (Control control in Controls)
-            {
-                control.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-                control.ContextMenuStrip.Items.Add(itemEdit);
-                control.ContextMenuStrip.Items.Add(itemHighlight);
-            }
+            Control.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            Control.ContextMenuStrip.Items.Add(itemEdit);
+            Control.ContextMenuStrip.Items.Add(itemHighlight);
         }
 
     }
