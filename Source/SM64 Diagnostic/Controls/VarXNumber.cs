@@ -75,7 +75,14 @@ namespace SM64_Diagnostic.Controls
 
         public override List<object> GetValue()
         {
-            return base.GetValue();
+            return base.GetValue().ConvertAll(objValue =>
+            {
+                double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objValue.ToString());
+                if (!newValueNullable.HasValue) return objValue;
+                double newValue = newValueNullable.Value;
+                if (_roundingLimit.HasValue) newValue = Math.Round(newValue, _roundingLimit.Value);
+                return (object)newValue;
+            });
         }
 
         public override void SetValue(string stringValue)
