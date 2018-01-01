@@ -81,6 +81,7 @@ namespace SM64_Diagnostic.Controls
                 if (!newValueNullable.HasValue) return objValue;
                 double newValue = newValueNullable.Value;
                 if (_roundingLimit.HasValue) newValue = Math.Round(newValue, _roundingLimit.Value);
+                if (_negate) newValue = newValue * -1;
                 return (object)newValue;
             });
         }
