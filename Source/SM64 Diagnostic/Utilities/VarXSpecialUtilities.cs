@@ -33,12 +33,65 @@ namespace SM64_Diagnostic.Structs
                                 marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
                         });
                     };
+                    setterFunction = (string stringValue) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        List<Position> objPoses = GetObjectPositions();
+                        if (objPoses.Count == 0) return;
+                        Position objPos = objPoses[0];
+                        double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAway.HasValue) return;
+                        (double newMarioX, double newMarioY, double newMarioZ) =
+                            MoreMath.ExtrapolateLine3D(objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway.Value);
+                        SetMarioPosition(newMarioX, newMarioY, newMarioZ);
+                    };
                     break;
 
                 case "MarioHorizontalDistanceToObject":
+                    getterFunction = () =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        List<Position> objPoses = GetObjectPositions();
+                        return objPoses.ConvertAll(objPos =>
+                        {
+                            return (object)MoreMath.GetDistanceBetween(
+                                marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                        });
+                    };
+                    setterFunction = (string stringValue) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        List<Position> objPoses = GetObjectPositions();
+                        if (objPoses.Count == 0) return;
+                        Position objPos = objPoses[0];
+                        double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAway.HasValue) return;
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.ExtrapolateLineHorizontally(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway.Value);
+                        SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
                     break;
 
                 case "MarioVerticalDistanceToObject":
+                    getterFunction = () =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        List<Position> objPoses = GetObjectPositions();
+                        return objPoses.ConvertAll(objPos =>
+                        {
+                            return (object)(marioPos.Y - objPos.Y);
+                        });
+                    };
+                    setterFunction = (string stringValue) =>
+                    {
+                        List<Position> objPoses = GetObjectPositions();
+                        if (objPoses.Count == 0) return;
+                        Position objPos = objPoses[0];
+                        double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAbove.HasValue) return;
+                        double newMarioY = objPos.Y + distAbove.Value;
+                        SetMarioPosition(null, newMarioY, null);
+                    };
                     break;
 
                 case "RngIndex":
@@ -51,11 +104,9 @@ namespace SM64_Diagnostic.Structs
                     setterFunction = (string stringValue) =>
                     {
                         int? index = ParsingUtilities.ParseIntNullable(stringValue);
-                        if (index.HasValue)
-                        {
-                            ushort rngValue = RngIndexer.GetRngValue(index.Value);
-                            Config.Stream.SetValue(rngValue, Config.RngAddress);
-                        }
+                        if (!index.HasValue) return;
+                        ushort rngValue = RngIndexer.GetRngValue(index.Value);
+                        Config.Stream.SetValue(rngValue, Config.RngAddress);
                     };
                     break;
 
@@ -77,6 +128,13 @@ namespace SM64_Diagnostic.Structs
             float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
             float marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
             return new Position(marioX, marioY, marioZ);
+        }
+
+        private static void SetMarioPosition(double? x, double? y, double? z)
+        {
+            if (x.HasValue) Config.Stream.SetValue((float)x.Value, Config.Mario.StructAddress + Config.Mario.XOffset);
+            if (y.HasValue) Config.Stream.SetValue((float)y.Value, Config.Mario.StructAddress + Config.Mario.YOffset);
+            if (z.HasValue) Config.Stream.SetValue((float)z.Value, Config.Mario.StructAddress + Config.Mario.ZOffset);
         }
 
         private static List<Position> GetObjectPositions()

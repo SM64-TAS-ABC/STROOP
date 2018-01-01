@@ -58,6 +58,43 @@ namespace SM64_Diagnostic.Utilities
             return (magnitude, angle);
         }
 
+        public static (double x, double y, double z) ScaleVector3D(
+            double xComp, double yComp, double zComp, double finalDist)
+        {
+            double magnitude = GetHypotenuse(xComp, yComp, zComp);
+            if (magnitude == 0) return (finalDist, 0, 0);
+            double multiplier = finalDist / magnitude;
+            return (xComp * multiplier, yComp * multiplier, zComp * multiplier);
+        }
+
+        public static (double x, double z) ScaleVector2D(
+            double xComp, double zComp, double finalDist)
+        {
+            double magnitude = GetHypotenuse(xComp, zComp);
+            if (magnitude == 0) return (finalDist, 0);
+            double multiplier = finalDist / magnitude;
+            return (xComp * multiplier, zComp * multiplier);
+        }
+
+        public static (double x, double y, double z) ExtrapolateLine3D(
+            double p1X, double p1Y, double p1Z, double p2X, double p2Y, double p2Z, double finalDist)
+        {
+            double diffX = p2X - p1X;
+            double diffY = p2Y - p1Y;
+            double diffZ = p2Z - p1Z;
+            (double scaledX, double scaledY, double scaledZ) = ScaleVector3D(diffX, diffY, diffZ, finalDist);
+            return (p1X + scaledX, p1Y + scaledY, p1Z + scaledZ);
+        }
+
+        public static (double x, double z) ExtrapolateLineHorizontally(
+            double p1X, double p1Z, double p2X, double p2Z, double finalDist)
+        {
+            double diffX = p2X - p1X;
+            double diffZ = p2Z - p1Z;
+            (double scaledX, double scaledZ) = ScaleVector2D(diffX, diffZ, finalDist);
+            return (p1X + scaledX, p1Z + scaledZ);
+        }
+
         public static double GetDistanceFromPointToLine(
             double pX, double pZ, double v1X, double v1Z, double v2X, double v2Z)
         {
