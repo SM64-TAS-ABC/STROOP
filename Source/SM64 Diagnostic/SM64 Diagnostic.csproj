@@ -243,6 +243,7 @@
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Structs\RomHack.cs" />
     <Compile Include="Structs\SpawnHack.cs" />
+    <Compile Include="Utilities\AngleUnitType.cs" />
     <Compile Include="Utilities\VarXSubclass.cs" />
     <Compile Include="Utilities\VariableGroup.cs" />
     <Compile Include="Utilities\BaseAddressTypeEnum.cs" />
