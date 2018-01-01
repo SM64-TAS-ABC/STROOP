@@ -94,6 +94,34 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
+                case "ActionDescription":
+                    getterFunction = () =>
+                    {
+                        uint action = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset);
+                        string actionDescription = Config.MarioActions.GetActionName(action);
+                        return CreateList(actionDescription);
+                    };
+                    break;
+
+                case "PrevActionDescription":
+                    getterFunction = () =>
+                    {
+                        uint prevAction = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset);
+                        string actionDescription = Config.MarioActions.GetActionName(prevAction);
+                        return CreateList(actionDescription);
+                    };
+                    break;
+
+                case "MarioAnimationDescription":
+                    getterFunction = () =>
+                    {
+                        uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+                        short marioObjAnimation = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationOffset);
+                        string animationDescription = Config.MarioAnimations.GetAnimationName(marioObjAnimation);
+                        return CreateList(animationDescription);
+                    };
+                    break;
+
                 case "RngIndex":
                     getterFunction = () =>
                     {
@@ -117,9 +145,9 @@ namespace SM64_Diagnostic.Structs
             return (getterFunction, setterFunction);
         }
 
-        private static List<object> CreateList(params object[] objs)
+        private static List<object> CreateList(object obj)
         {
-            return new List<object>(objs);
+            return new List<object>() { obj };
         }
 
         private static Position GetMarioPosition()
