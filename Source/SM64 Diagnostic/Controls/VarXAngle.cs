@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.Controls
     public class VarXAngle : VarXNumber
     {
         public VarXAngle(string name, AddressHolder addressHolder)
-            : base(name, addressHolder)
+            : base(name, addressHolder, 0)
         {
             AddAngleContextMenuStrip();
         }

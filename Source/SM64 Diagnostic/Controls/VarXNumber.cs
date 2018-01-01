@@ -14,15 +14,19 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarXNumber : VarX
     {
-        private static readonly int NUM_ROUNDING_OPTIONS = 10;
-        private static readonly int DEFAULT_ROUNDING_LIMIT = 3;
+        private static readonly int MAX_ROUNDING_LIMIT = 10;
 
-        private int? _roundingLimit = DEFAULT_ROUNDING_LIMIT;
+        private int? _roundingLimit;
         private bool _negate = false;
 
-        public VarXNumber(string name, AddressHolder addressHolder)
+        public VarXNumber(string name, AddressHolder addressHolder, int? roundingLimit = 3)
             : base(name, addressHolder)
         {
+            if (roundingLimit.HasValue && (roundingLimit.Value < 0 || roundingLimit.Value > MAX_ROUNDING_LIMIT))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            _roundingLimit = roundingLimit;
             AddNumberContextMenuStrip();
         }
 
@@ -32,7 +36,7 @@ namespace SM64_Diagnostic.Controls
 
             ToolStripMenuItem itemRoundNone = new ToolStripMenuItem("No rounding");
             List<ToolStripMenuItem> itemRoundList = new List<ToolStripMenuItem>();
-            for (int i = 0; i <= NUM_ROUNDING_OPTIONS; i++)
+            for (int i = 0; i <= MAX_ROUNDING_LIMIT; i++)
             {
                 itemRoundList.Add(new ToolStripMenuItem(i + " decimal place(s)"));
             }
