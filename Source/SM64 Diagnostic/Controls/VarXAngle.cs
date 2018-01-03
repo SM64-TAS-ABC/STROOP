@@ -123,7 +123,21 @@ namespace SM64_Diagnostic.Controls
 
         public override void SetValue(string stringValue)
         {
-            base.SetValue(stringValue);
+            double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            if (!newValueNullable.HasValue)
+            {
+                base.SetValue(stringValue);
+                return;
+            }
+            double newValue = newValueNullable.Value;
+
+            newValue = (newValue / GetAngleUnitTypeMaxValue()) * 65536;
+
+            newValue = _effectiveSigned ?
+                MoreMath.MaybeNegativeModulus(newValue, 65536) :
+                MoreMath.NonNegativeModulus(newValue, 65536);
+
+            base.SetValue(newValue.ToString());
         }
     }
 }
