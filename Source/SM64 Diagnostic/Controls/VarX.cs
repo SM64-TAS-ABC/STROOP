@@ -22,17 +22,23 @@ namespace SM64_Diagnostic.Controls
         public static VarX CreateVarX(
             string name, AddressHolder addressHolder, VarXSubclass varXSubclcass)
         {
-            if (varXSubclcass == VarXSubclass.Number)
+            switch (varXSubclcass)
             {
-                return new VarXNumber(name, addressHolder);
-            }
-            else if (varXSubclcass == VarXSubclass.Angle)
-            {
-                return new VarXAngle(name, addressHolder);
-            }
-            else
-            {
-                return new VarX(name, addressHolder);
+                case VarXSubclass.String:
+                case VarXSubclass.Boolean:
+                case VarXSubclass.Object:
+                    return new VarX(name, addressHolder);
+
+                case VarXSubclass.Number:
+                    return new VarXNumber(name, addressHolder);
+
+                case VarXSubclass.UnsignedAngle:
+                    return new VarXAngle(name, addressHolder, false);
+                case VarXSubclass.SignedAngle:
+                    return new VarXAngle(name, addressHolder, true);
+
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 

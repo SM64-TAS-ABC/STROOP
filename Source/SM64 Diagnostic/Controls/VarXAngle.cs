@@ -14,17 +14,22 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarXAngle : VarXNumber
     {
-        private bool? _signed;
+        private readonly bool _recommendedSigned;
+        private bool? _currentSigned;
+        private bool _effectiveSigned { get { return _currentSigned ?? _recommendedSigned; } }
+
         private AngleUnitType _angleUnitType;
 
         public VarXAngle(
             string name,
             AddressHolder addressHolder,
-            bool? signed = null,
+            bool recommendedSigned,
             AngleUnitType angleUnitType = AngleUnitType.InGameUnits)
             : base(name, addressHolder, 0)
         {
-            _signed = signed;
+            _recommendedSigned = recommendedSigned;
+            _currentSigned = null;
+            _angleUnitType = angleUnitType;
             AddAngleContextMenuStrip();
         }
 
@@ -35,7 +40,7 @@ namespace SM64_Diagnostic.Controls
                 itemSign,
                 new List<string> { "Recommended", "Signed", "Unsigned" },
                 new List<object> { null, true, false },
-                (object obj) => { _signed = (bool?)obj; },
+                (object obj) => { _currentSigned = (bool?)obj; },
                 null);
 
             ToolStripMenuItem itemUnits = new ToolStripMenuItem("Units...");
@@ -59,8 +64,9 @@ namespace SM64_Diagnostic.Controls
                 if (!newValueNullable.HasValue) return objValue;
                 double newValue = newValueNullable.Value;
 
-                if (_signed == true) newValue = MoreMath.MaybeNegativeModulus(newValue, 65536);
-                else if (_signed == false) newValue = MoreMath.NonNegativeModulus(newValue, 65536);
+                newValue = _effectiveSigned ?
+                    MoreMath.MaybeNegativeModulus(newValue, 65536) :
+                    MoreMath.NonNegativeModulus(newValue, 65536);
 
                 newValue = (newValue / 65536) * GetAngleUnitTypeMaxValue();
 

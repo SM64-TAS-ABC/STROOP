@@ -35,11 +35,11 @@
   <Data baseAddressType="Special" specialType="MarioAnimationDescription" subclass="String">Animation Description</Data>
   <Data type="short" offset="0x40" baseAddressType="MarioObj">Animation Timer</Data>
 
-  <Data type="ushort" offset="0x2E" baseAddressType="Mario" subclass="Angle">Yaw (US)</Data>
-  <Data type="short" offset="0x2E" baseAddressType="Mario" subclass="Angle">Yaw (S)</Data>
-  <Data groupList="Simple" type="ushort" offset="0xD6" baseAddressType="Object" subclass="Angle">Obj Yaw (Facing)</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleObjectToMario" subclass="Angle">Angle Obj to Mario</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleObjectToMario" subclass="Angle">DAngle Obj to Mario</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleMarioToObject" subclass="Angle">Angle Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleMarioToObject" subclass="Angle">DAngle Mario to Obj</Data>
+  <Data type="ushort" offset="0x2E" baseAddressType="Mario" subclass="UnsignedAngle">Yaw (US)</Data>
+  <Data type="short" offset="0x2E" baseAddressType="Mario" subclass="SignedAngle">Yaw (S)</Data>
+  <Data groupList="Simple" type="ushort" offset="0xD6" baseAddressType="Object" subclass="UnsignedAngle">Obj Yaw (Facing)</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleObjectToMario" subclass="UnsignedAngle">Angle Obj to Mario</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleObjectToMario" subclass="SignedAngle">DAngle Obj to Mario</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleMarioToObject" subclass="UnsignedAngle">Angle Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleMarioToObject" subclass="SignedAngle">DAngle Mario to Obj</Data>
 </WaterData>
