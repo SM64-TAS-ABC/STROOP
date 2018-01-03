@@ -60,10 +60,19 @@ namespace SM64_Diagnostic.Controls
                 double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objValue.ToString());
                 if (!newValueNullable.HasValue) return objValue;
                 double newValue = newValueNullable.Value;
-                if (_roundingLimit.HasValue) newValue = Math.Round(newValue, _roundingLimit.Value);
                 if (_negate) newValue = newValue * -1;
                 return (object)newValue;
             });
+        }
+
+        public override string GetDisplayedValue(string stringValue)
+        {
+            stringValue = base.GetDisplayedValue(stringValue);
+            double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            if (!newValueNullable.HasValue) return stringValue;
+            double newValue = newValueNullable.Value;
+            if (_roundingLimit.HasValue) newValue = Math.Round(newValue, _roundingLimit.Value);
+            return newValue.ToString();
         }
 
         public override void SetValue(string stringValue)
