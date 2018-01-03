@@ -354,7 +354,7 @@ namespace SM64_Diagnostic.Utilities
             return Readonly;
         }
 
-        public bool SetValue(Type type, object value, uint address, bool absoluteAddress = false)
+        public bool SetValueStrict(Type type, object value, uint address, bool absoluteAddress = false)
         {
             if (value is string)
             {
@@ -376,6 +376,26 @@ namespace SM64_Diagnostic.Utilities
             if (type == typeof(int)) return SetValue((int)value, address, absoluteAddress);
             if (type == typeof(uint)) return SetValue((uint)value, address, absoluteAddress);
             if (type == typeof(float)) return SetValue((float)value, address, absoluteAddress);
+
+            throw new ArgumentOutOfRangeException("Cannot call ProcessStream.SetValue with type " + type);
+        }
+
+        public bool SetValueLoose(Type type, object value, uint address, bool absoluteAddress = false)
+        {
+            if (value is string)
+            {
+                value = ParsingUtilities.ParseDoubleNullable((string)value);
+            }
+
+            if (value == null) return false;
+
+            if (type == typeof(byte)) return SetValue(Convert.ToByte(value), address, absoluteAddress);
+            if (type == typeof(sbyte)) return SetValue(Convert.ToSByte(value), address, absoluteAddress);
+            if (type == typeof(short)) return SetValue(Convert.ToInt16(value), address, absoluteAddress);
+            if (type == typeof(ushort)) return SetValue(Convert.ToUInt16(value), address, absoluteAddress);
+            if (type == typeof(int)) return SetValue(Convert.ToInt32(value), address, absoluteAddress);
+            if (type == typeof(uint)) return SetValue(Convert.ToUInt32(value), address, absoluteAddress);
+            if (type == typeof(float)) return SetValue(Convert.ToSingle(value), address, absoluteAddress);
 
             throw new ArgumentOutOfRangeException("Cannot call ProcessStream.SetValue with type " + type);
         }
