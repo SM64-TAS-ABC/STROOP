@@ -53,7 +53,56 @@ namespace SM64_Diagnostic.Controls
 
         public override List<object> GetValue()
         {
-            return base.GetValue();
+            return base.GetValue().ConvertAll(objValue =>
+            {
+                double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objValue.ToString());
+                if (!newValueNullable.HasValue) return objValue;
+                double newValue = newValueNullable.Value;
+
+                if (_signed == true) newValue = MoreMath.MaybeNegativeModulus(newValue, 65536);
+                else if (_signed == false) newValue = MoreMath.NonNegativeModulus(newValue, 65536);
+
+                newValue = (newValue / 65536) * GetAngleUnitTypeMaxValue();
+
+                return (object)newValue;
+            });
+        }
+
+        private double GetAngleUnitTypeMaxValue(AngleUnitType? angleUnitTypeNullable = null)
+        {
+            AngleUnitType angleUnitType = angleUnitTypeNullable ?? _angleUnitType;
+            switch (angleUnitType)
+            {
+                case AngleUnitType.InGameUnits:
+                    return 65536;
+                case AngleUnitType.Degrees:
+                    return 360;
+                case AngleUnitType.Radians:
+                    return 2 * Math.PI;
+                case AngleUnitType.Revolutions:
+                    return 1;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        /*
+        private double GetAngleUnitTypeAndSignMaxValue(AngleUnitType? angleUnitTypeNullable = null, bool? signedNullable = null)
+        {
+            AngleUnitType angleUnitType = angleUnitTypeNullable ?? _angleUnitType;
+            bool? signed = signedNullable ?? _signed;
+
+        }
+        */
+
+        public override string GetDisplayedValue(string stringValue)
+        {
+            stringValue = base.GetDisplayedValue(stringValue);
+            double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            if (!newValueNullable.HasValue) return stringValue;
+            double newValue = newValueNullable.Value;
+            if (newValue == GetAngleUnitTypeMaxValue()) newValue = 0;
+            return newValue.ToString();
         }
 
         public override void SetValue(string stringValue)
