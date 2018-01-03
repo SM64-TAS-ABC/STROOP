@@ -200,6 +200,7 @@ namespace SM64_Diagnostic.Controls
             string combinedVarString = "(none)";
             string firstVarString = null;
             bool atLeastOneVarIncorporated = false;
+            bool nonTrivialValue = false;
 
             foreach (object value in GetValue())
             {
@@ -210,23 +211,34 @@ namespace SM64_Diagnostic.Controls
                     combinedVarString = varString;
                     firstVarString = varString;
                     atLeastOneVarIncorporated = true;
+                    nonTrivialValue = true;
                 }
                 else
                 {
                     if (varString != firstVarString)
                     {
                         combinedVarString = "(multiple values)";
+                        nonTrivialValue = false;
                         break;
                     }
                 }
             }
 
+            if (nonTrivialValue)
+            {
+                combinedVarString = GetDisplayedValue(combinedVarString);
+            }
             return combinedVarString;
         }
 
         public virtual List<object> GetValue()
         {
             return _getterFunction();
+        }
+
+        public virtual string GetDisplayedValue(string stringValue)
+        {
+            return stringValue;
         }
 
         private void OnTextValueKeyDown(object sender, KeyEventArgs e)
