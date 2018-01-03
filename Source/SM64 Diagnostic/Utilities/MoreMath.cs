@@ -422,6 +422,13 @@ namespace SM64_Diagnostic.Utilities
             return value;
         }
 
+        /** Rounds and then wraps the value to be in [-range/2, range/2) if signed or [0, range) if unsigned. */
+        public static double GetIntInRange(double value, int range, bool signed)
+        {
+            value = Math.Round(value);
+            return signed ? MaybeNegativeModulus(value, range) : NonNegativeModulus(value, range);
+        }
+
         public static double GetAngleDifference(double angle1, double angle2)
         {
             return MaybeNegativeModulus(angle2 - angle1, 32768);
