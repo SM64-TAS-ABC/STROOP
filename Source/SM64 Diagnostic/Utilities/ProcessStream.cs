@@ -354,7 +354,7 @@ namespace SM64_Diagnostic.Utilities
             return Readonly;
         }
 
-        public bool SetValueStrict(Type type, object value, uint address, bool absoluteAddress = false)
+        public bool SetValue(Type type, object value, uint address, bool absoluteAddress = false)
         {
             if (value is string)
             {
@@ -380,7 +380,7 @@ namespace SM64_Diagnostic.Utilities
             throw new ArgumentOutOfRangeException("Cannot call ProcessStream.SetValue with type " + type);
         }
 
-        public bool SetValueLoose(Type type, object value, uint address, bool absoluteAddress = false)
+        public bool SetValueRoundingWrapping(Type type, object value, uint address, bool absoluteAddress = false)
         {
             if (value is string)
             {
@@ -395,7 +395,7 @@ namespace SM64_Diagnostic.Utilities
                 if (type == typeof(uint)) value = MoreMath.GetIntInRange((double)value, 1.0 + uint.MaxValue - uint.MinValue, false);
             }
 
-            return SetValueStrict(type, value.ToString(), address, absoluteAddress);
+            return SetValue(type, value.ToString(), address, absoluteAddress);
         }
 
         public bool SetValue(byte value, uint address, bool absoluteAddress = false)

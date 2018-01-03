@@ -62,7 +62,7 @@ namespace SM64_Diagnostic.Controls
                 _setterFunction = (string stringValue) =>
                 {
                     AddressHolder.EffectiveAddressList.ForEach(
-                        address => Config.Stream.SetValueLoose(AddressHolder.MemoryType, stringValue, address, AddressHolder.UseAbsoluteAddressing));
+                        address => Config.Stream.SetValueRoundingWrapping(AddressHolder.MemoryType, stringValue, address, AddressHolder.UseAbsoluteAddressing));
                 };
             }
 
