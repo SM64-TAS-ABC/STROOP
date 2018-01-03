@@ -92,14 +92,21 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        /*
-        private double GetAngleUnitTypeAndSignMaxValue(AngleUnitType? angleUnitTypeNullable = null, bool? signedNullable = null)
+        private double GetAngleUnitTypeAndMaybeSignedMaxValue(AngleUnitType? angleUnitTypeNullable = null, bool? signedNullable = null)
         {
             AngleUnitType angleUnitType = angleUnitTypeNullable ?? _angleUnitType;
-            bool? signed = signedNullable ?? _signed;
-
+            bool signed = signedNullable ?? _effectiveSigned;
+            double maxValue = GetAngleUnitTypeMaxValue(angleUnitType);
+            return signed ? maxValue / 2 : maxValue;
         }
-        */
+
+        private double GetAngleUnitTypeAndMaybeSignedMinValue(AngleUnitType? angleUnitTypeNullable = null, bool? signedNullable = null)
+        {
+            AngleUnitType angleUnitType = angleUnitTypeNullable ?? _angleUnitType;
+            bool signed = signedNullable ?? _effectiveSigned;
+            double maxValue = GetAngleUnitTypeMaxValue(angleUnitType);
+            return signed ? -1 * maxValue / 2 : 0;
+        }
 
         public override string GetDisplayedValue(string stringValue)
         {
@@ -107,7 +114,10 @@ namespace SM64_Diagnostic.Controls
             double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
             if (!newValueNullable.HasValue) return stringValue;
             double newValue = newValueNullable.Value;
-            if (newValue == GetAngleUnitTypeMaxValue()) newValue = 0;
+
+            // Handle the case of the variable rounding to outside the accepted interval
+            if (newValue == GetAngleUnitTypeAndMaybeSignedMaxValue()) newValue = GetAngleUnitTypeAndMaybeSignedMinValue();
+
             return newValue.ToString();
         }
 
