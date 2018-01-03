@@ -116,11 +116,17 @@ namespace SM64_Diagnostic.Managers
                     ActiveTab = TabType.Other;
                     break;
             }
+
+            // TODO remove X
+            TabX = e.TabPage.Text == "X";
         }
 
         public enum TabType { Map, Model, CamHack, Object, Other };
 
         public TabType ActiveTab;
+
+        // TODO remove X
+        public bool TabX = false;
 
         private enum ClickType { ObjectClick, MapClick, ModelClick, CamHackClick, MarkClick };
 
@@ -203,8 +209,11 @@ namespace SM64_Diagnostic.Managers
 
                 if (click == ClickType.ObjectClick)
                 {
-                    //TODO uncomment this so that clicking objects goes back to obj tab
-                    ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
+                    // TODO remove X
+                    if (!TabX)
+                    {
+                        ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
+                    }
                 }
 
                 if (isShiftKeyHeld && selection.Count > 0)
