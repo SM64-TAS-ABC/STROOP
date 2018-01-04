@@ -59,8 +59,8 @@ namespace SM64_Diagnostic.Controls
 
 
         private BorderedTableLayoutPanel _tablePanel;
-        private Label _nameLabel;
-        private TextBox _textBox;
+        protected Label _nameLabel;
+        protected TextBox _textBox;
 
         private bool _editMode;
         private bool _highlighted;

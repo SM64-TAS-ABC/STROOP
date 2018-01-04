@@ -38,7 +38,15 @@ namespace SM64_Diagnostic.Controls
             ToolStripMenuItem itemSelectObject = new ToolStripMenuItem("Select Object");
             itemSelectObject.Click += (sender, e) =>
             {
-                // TODO select obj
+                string stringValue = _textBox.Text;
+                uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
+                if (uintValueNullable.HasValue)
+                {
+                    uint uintValue = uintValueNullable.Value;
+                    ObjectSlotsManager objectSlotsManager = ManagerContext.Current.ObjectSlotManager;
+                    objectSlotsManager.SelectedSlotsAddresses.Clear();
+                    objectSlotsManager.SelectedSlotsAddresses.Add(uintValue);
+                }
             };
 
             Control.ContextMenuStrip.Items.Add(new ToolStripSeparator());
