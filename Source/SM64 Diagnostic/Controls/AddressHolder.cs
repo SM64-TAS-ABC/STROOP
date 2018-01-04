@@ -166,10 +166,10 @@ namespace SM64_Diagnostic.Controls
                     return EffectiveAddressList.ConvertAll(
                         address => Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing));
                 };
-                _setterFunction = (string stringValue) =>
+                _setterFunction = (string value) =>
                 {
                     EffectiveAddressList.ForEach(
-                        address => Config.Stream.SetValueRoundingWrapping(MemoryType, stringValue, address, UseAbsoluteAddressing));
+                        address => Config.Stream.SetValueRoundingWrapping(MemoryType, value, address, UseAbsoluteAddressing));
                 };
             }
         }
@@ -181,7 +181,9 @@ namespace SM64_Diagnostic.Controls
 
         public void SetValue(string stringValue)
         {
+            Config.Stream.Suspend();
             _setterFunction(stringValue);
+            Config.Stream.Resume();
         }
 
         public uint GetRamAddress(bool addressArea = true)

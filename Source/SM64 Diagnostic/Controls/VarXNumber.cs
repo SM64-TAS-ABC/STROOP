@@ -53,39 +53,27 @@ namespace SM64_Diagnostic.Controls
             Control.ContextMenuStrip.Items.Add(itemNegate);
         }
 
-        public override List<object> GetValue()
+        public override string HandleRounding(string stringValue)
         {
-            return base.GetValue().ConvertAll(objValue =>
-            {
-                double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objValue.ToString());
-                if (!newValueNullable.HasValue) return objValue;
-                double newValue = newValueNullable.Value;
-                if (_negate) newValue = newValue * -1;
-                return (object)newValue;
-            });
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            if (!doubleValueNullable.HasValue) return stringValue;
+            double doubleValue = doubleValueNullable.Value;
+            if (_roundingLimit.HasValue) doubleValue = Math.Round(doubleValue, _roundingLimit.Value);
+            return doubleValue.ToString();
         }
 
-        public override string GetDisplayedValue(string stringValue)
+        public override string HandleNegating(string stringValue)
         {
-            stringValue = base.GetDisplayedValue(stringValue);
-            double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!newValueNullable.HasValue) return stringValue;
-            double newValue = newValueNullable.Value;
-            if (_roundingLimit.HasValue) newValue = Math.Round(newValue, _roundingLimit.Value);
-            return newValue.ToString();
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            if (!doubleValueNullable.HasValue) return stringValue;
+            double doubleValue = doubleValueNullable.Value;
+            if (_negate) doubleValue = -1 * doubleValue;
+            return doubleValue.ToString();
         }
 
-        public override void SetValue(string stringValue)
+        public override string HandleUnnegating(string stringValue)
         {
-            double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!newValueNullable.HasValue)
-            {
-                base.SetValue(stringValue);
-                return;
-            }
-            double newValue = newValueNullable.Value;
-            if (_negate) newValue = newValue * -1;
-            base.SetValue(newValue.ToString());
+            return HandleNegating(stringValue);
         }
     }
 }

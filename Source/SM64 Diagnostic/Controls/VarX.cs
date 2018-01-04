@@ -180,82 +180,141 @@ namespace SM64_Diagnostic.Controls
             _textBox.Text = GetValueFinal();
         }
 
+        private void OnTextValueKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Escape)
+            {
+                EditMode = false;
+                return;
+            }
+
+            if (e.KeyData == Keys.Enter)
+            {
+                SetValueFinal(_textBox.Text);
+                EditMode = false;
+                return;
+            }
+        }
+
+
+
+
+
+
         public string GetValueFinal()
         {
-            string combinedVarString = "(none)";
-            string firstVarString = null;
-            bool atLeastOneVarIncorporated = false;
+            List<string> values = AddressHolder.GetValues().ConvertAll(obj => obj.ToString());
+            (bool meaningfulValue, string value) = CombineValues(values);
+            if (!meaningfulValue) return value;
+
+            value = HandleAngleConverting(value);
+            value = HandleRounding(value);
+            value = HandleAngleRoundingOut(value);
+            value = HandleNegating(value);
+            value = HandleHexDisplaying(value);
+            value = HandleObjectDisplaying(value);
+
+            return value;
+        }
+
+        public void SetValueFinal(string value)
+        {
+            value = HandleObjectUndisplaying(value);
+            value = HandleHexUndisplaying(value);
+            value = HandleUnnegating(value);
+            value = HandleAngleUnconverting(value);
+
+            AddressHolder.SetValue(value);
+        }
+
+
+
+
+
+        public (bool meaningfulValue, string stringValue) CombineValues(List<string> values)
+        {
+            string combinedValue = "(none)";
+            string firstValue = null;
+            bool atLeastOneValueIncorporated = false;
             bool meaningfulValue = false;
 
-            foreach (object value in GetValue())
+            foreach (string value in values)
             {
-                string varString = value.ToString();
-
-                if (!atLeastOneVarIncorporated)
+                if (!atLeastOneValueIncorporated)
                 {
-                    combinedVarString = varString;
-                    firstVarString = varString;
-                    atLeastOneVarIncorporated = true;
+                    combinedValue = value;
+                    firstValue = value;
+                    atLeastOneValueIncorporated = true;
                     meaningfulValue = true;
                 }
                 else
                 {
-                    if (varString != firstVarString)
+                    if (value != firstValue)
                     {
-                        combinedVarString = "(multiple values)";
+                        combinedValue = "(multiple values)";
                         meaningfulValue = false;
                         break;
                     }
                 }
             }
 
-            if (meaningfulValue)
-            {
-                combinedVarString = GetDisplayedValue(combinedVarString);
-            }
-            return combinedVarString;
+            return (meaningfulValue, combinedValue);
         }
 
-        public virtual List<object> GetValue()
+        // Number methods
+
+        public virtual string HandleRounding(string value)
         {
-            return AddressHolder.GetValues();
+            return value;
         }
 
-        public virtual string GetDisplayedValue(string stringValue)
+        public virtual string HandleNegating(string value)
         {
-            return stringValue;
+            return value;
         }
 
-        private void OnTextValueKeyDown(object sender, KeyEventArgs e)
+        public virtual string HandleUnnegating(string value)
         {
-            if (e.KeyData == Keys.Escape)
-            {
-                // Exit edit mode
-                EditMode = false;
-                return;
-            }
-
-            // On "Enter" key press
-            if (e.KeyData != Keys.Enter)
-                return;
-
-            // Exit edit mode
-            SetValueFinal(_textBox.Text);
-            EditMode = false;
+            return value;
         }
 
-        public void SetValueFinal(string stringValue)
+        public virtual string HandleHexDisplaying(string value)
         {
-            Config.Stream.Suspend();
-
-            SetValue(stringValue);
-
-            Config.Stream.Resume();
+            return value;
         }
 
-        public virtual void SetValue(string stringValue)
+        public virtual string HandleHexUndisplaying(string value)
         {
-            AddressHolder.SetValue(stringValue);
+            return value;
+        }
+
+        // Angle methods
+
+        public virtual string HandleAngleConverting(string value)
+        {
+            return value;
+        }
+
+        public virtual string HandleAngleUnconverting(string value)
+        {
+            return value;
+        }
+
+        public virtual string HandleAngleRoundingOut(string value)
+        {
+            return value;
+        }
+
+        // Object methods
+
+        public virtual string HandleObjectDisplaying(string value)
+        {
+            return value;
+        }
+
+        public virtual string HandleObjectUndisplaying(string value)
+        {
+            return value;
         }
 
     }

@@ -56,24 +56,6 @@ namespace SM64_Diagnostic.Controls
             Control.ContextMenuStrip.Items.Add(itemUnits);
         }
 
-        public override List<object> GetValue()
-        {
-            return base.GetValue().ConvertAll(objValue =>
-            {
-                double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objValue.ToString());
-                if (!newValueNullable.HasValue) return objValue;
-                double newValue = newValueNullable.Value;
-
-                newValue = _effectiveSigned ?
-                    MoreMath.MaybeNegativeModulus(newValue, 65536) :
-                    MoreMath.NonNegativeModulus(newValue, 65536);
-
-                newValue = (newValue / 65536) * GetAngleUnitTypeMaxValue();
-
-                return (object)newValue;
-            });
-        }
-
         private double GetAngleUnitTypeMaxValue(AngleUnitType? angleUnitTypeNullable = null)
         {
             AngleUnitType angleUnitType = angleUnitTypeNullable ?? _angleUnitType;
@@ -108,36 +90,43 @@ namespace SM64_Diagnostic.Controls
             return signed ? -1 * maxValue / 2 : 0;
         }
 
-        public override string GetDisplayedValue(string stringValue)
+        public override string HandleAngleConverting(string stringValue)
         {
-            stringValue = base.GetDisplayedValue(stringValue);
-            double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!newValueNullable.HasValue) return stringValue;
-            double newValue = newValueNullable.Value;
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            if (!doubleValueNullable.HasValue) return stringValue;
+            double doubleValue = doubleValueNullable.Value;
 
-            // Handle the case of the variable rounding to outside the accepted interval
-            if (newValue == GetAngleUnitTypeAndMaybeSignedMaxValue()) newValue = GetAngleUnitTypeAndMaybeSignedMinValue();
+            doubleValue = _effectiveSigned ?
+                    MoreMath.MaybeNegativeModulus(doubleValue, 65536) :
+                    MoreMath.NonNegativeModulus(doubleValue, 65536);
+            doubleValue = (doubleValue / 65536) * GetAngleUnitTypeMaxValue();
 
-            return newValue.ToString();
+            return doubleValue.ToString();
         }
 
-        public override void SetValue(string stringValue)
+        public override string HandleAngleUnconverting(string stringValue)
         {
-            double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!newValueNullable.HasValue)
-            {
-                base.SetValue(stringValue);
-                return;
-            }
-            double newValue = newValueNullable.Value;
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            if (!doubleValueNullable.HasValue) return stringValue;
+            double doubleValue = doubleValueNullable.Value;
 
-            newValue = (newValue / GetAngleUnitTypeMaxValue()) * 65536;
+            doubleValue = (doubleValue / GetAngleUnitTypeMaxValue()) * 65536;
+            doubleValue = _effectiveSigned ?
+                MoreMath.MaybeNegativeModulus(doubleValue, 65536) :
+                MoreMath.NonNegativeModulus(doubleValue, 65536);
 
-            newValue = _effectiveSigned ?
-                MoreMath.MaybeNegativeModulus(newValue, 65536) :
-                MoreMath.NonNegativeModulus(newValue, 65536);
+            return doubleValue.ToString();
+        }
 
-            base.SetValue(newValue.ToString());
+        public override string HandleAngleRoundingOut(string stringValue)
+        {
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            if (!doubleValueNullable.HasValue) return stringValue;
+            double doubleValue = doubleValueNullable.Value;
+
+            if (doubleValue == GetAngleUnitTypeAndMaybeSignedMaxValue()) doubleValue = GetAngleUnitTypeAndMaybeSignedMinValue();
+
+            return doubleValue.ToString();
         }
     }
 }
