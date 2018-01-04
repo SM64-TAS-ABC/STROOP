@@ -17,16 +17,21 @@ namespace SM64_Diagnostic.Controls
         private static readonly int MAX_ROUNDING_LIMIT = 10;
 
         private int? _roundingLimit;
-        private bool _negate = false;
+        private bool _displayAsHex;
+        private bool _negate;
 
-        public VarXNumber(string name, AddressHolder addressHolder, int? roundingLimit = 3)
+        public VarXNumber(string name, AddressHolder addressHolder, int? roundingLimit = 3, bool displayAsHex = false)
             : base(name, addressHolder)
         {
-            if (roundingLimit.HasValue && (roundingLimit.Value < 0 || roundingLimit.Value > MAX_ROUNDING_LIMIT))
+            if (roundingLimit.HasValue)
             {
-                throw new ArgumentOutOfRangeException();
+                roundingLimit = MoreMath.Clamp(roundingLimit.Value, 0, MAX_ROUNDING_LIMIT);
             }
+
             _roundingLimit = roundingLimit;
+            _displayAsHex = displayAsHex;
+            _negate = false;
+
             AddNumberContextMenuStrip();
         }
 
@@ -41,6 +46,13 @@ namespace SM64_Diagnostic.Controls
                 (object obj) => { _roundingLimit = (int?)obj; },
                 _roundingLimit);
 
+            ToolStripMenuItem itemDisplayAsHex = new ToolStripMenuItem("Display as Hex");
+            itemDisplayAsHex.Click += (sender, e) =>
+            {
+                _displayAsHex = !_displayAsHex;
+                itemDisplayAsHex.Checked = _displayAsHex;
+            };
+
             ToolStripMenuItem itemNegate = new ToolStripMenuItem("Negate");
             itemNegate.Click += (sender, e) =>
             {
@@ -50,6 +62,7 @@ namespace SM64_Diagnostic.Controls
 
             Control.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Control.ContextMenuStrip.Items.Add(itemRoundTo);
+            Control.ContextMenuStrip.Items.Add(itemDisplayAsHex);
             Control.ContextMenuStrip.Items.Add(itemNegate);
         }
 
@@ -74,6 +87,30 @@ namespace SM64_Diagnostic.Controls
         public override string HandleUnnegating(string stringValue)
         {
             return HandleNegating(stringValue);
+        }
+
+        public override string HandleHexDisplaying(string stringValue)
+        {
+            if (!_displayAsHex) return stringValue;
+
+            int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
+            if (intValueNullable.HasValue)
+            {
+                return String.Format("0x{0:X8}", intValueNullable.Value);
+            }
+
+            uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
+            if (uintValueNullable.HasValue)
+            {
+                return String.Format("0x{0:X8}", uintValueNullable.Value);
+            }
+
+            return stringValue;
+        }
+
+        public override string HandleHexUndisplaying(string value)
+        {
+            return base.HandleHexUndisplaying(value);
         }
     }
 }

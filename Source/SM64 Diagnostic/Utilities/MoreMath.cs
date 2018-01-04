@@ -439,6 +439,11 @@ namespace SM64_Diagnostic.Utilities
             return Math.Min(Math.Max(value, min), max);
         }
 
+        public static int Clamp(int value, int min, int max)
+        {
+            return Math.Min(Math.Max(value, min), max);
+        }
+
         public static (double scaledX, double scaledZ) ScaleValues(double xValue, double zValue)
         {
             double magnitude = Math.Max(Math.Abs(xValue), Math.Abs(zValue));
