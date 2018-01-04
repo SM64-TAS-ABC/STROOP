@@ -153,9 +153,13 @@ namespace SM64_Diagnostic.Controls
             };
             itemHighlight.Checked = _highlighted;
 
+            ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy");
+            itemCopy.Click += (sender, e) => { Clipboard.SetText(_textBox.Text); };
+
             ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
             contextMenuStrip.Items.Add(itemEdit);
             contextMenuStrip.Items.Add(itemHighlight);
+            contextMenuStrip.Items.Add(itemCopy);
 
             foreach (Control control in Controls)
             {
