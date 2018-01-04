@@ -113,6 +113,7 @@
     </Compile>
     <Compile Include="Controls\AngleViewModeType.cs" />
     <Compile Include="Controls\AddressHolder.cs" />
+    <Compile Include="Controls\VarXObject.cs" />
     <Compile Include="Controls\VarXAngle.cs" />
     <Compile Include="Controls\VarXNumber.cs" />
     <Compile Include="Controls\VarXBackup.cs" />
