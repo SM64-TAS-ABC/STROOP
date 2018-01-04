@@ -111,6 +111,7 @@ namespace SM64_Diagnostic.Controls
             this._nameLabel.Margin = new Padding(3, 3, 3, 3);
             this._nameLabel.Click += _nameLabel_Click;
             this._nameLabel.ImageAlign = ContentAlignment.MiddleRight;
+            this._nameLabel.BackColor = Color.Transparent;
 
             this._textBox = new TextBox();
             this._textBox.ReadOnly = true;
