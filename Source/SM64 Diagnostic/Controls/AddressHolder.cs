@@ -29,6 +29,9 @@ namespace SM64_Diagnostic.Controls
         public readonly uint? OffsetPAL;
         public readonly uint? OffsetDefault;
 
+        private readonly Func<List<object>> _getterFunction;
+        private readonly Action<string> _setterFunction;
+
         // TODO remove this
         private readonly bool _returnNonEmptyList;
 
@@ -150,6 +153,35 @@ namespace SM64_Diagnostic.Controls
             SpecialType = specialType;
 
             _returnNonEmptyList = returnNonEmptyList;
+
+            // Created getter/setter functions
+            if (IsSpecial)
+            {
+                (_getterFunction, _setterFunction) = VarXSpecialUtilities.CreateGetterSetterFunctions(SpecialType);
+            }
+            else
+            {
+                _getterFunction = () =>
+                {
+                    return EffectiveAddressList.ConvertAll(
+                        address => Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing));
+                };
+                _setterFunction = (string stringValue) =>
+                {
+                    EffectiveAddressList.ForEach(
+                        address => Config.Stream.SetValueRoundingWrapping(MemoryType, stringValue, address, UseAbsoluteAddressing));
+                };
+            }
+        }
+
+        public List<object> GetValues()
+        {
+            return _getterFunction();
+        }
+
+        public void SetValue(string stringValue)
+        {
+            _setterFunction(stringValue);
         }
 
         public uint GetRamAddress(bool addressArea = true)

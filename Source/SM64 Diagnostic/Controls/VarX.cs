@@ -16,8 +16,6 @@ namespace SM64_Diagnostic.Controls
     {
         public readonly string Name;
         public readonly AddressHolder AddressHolder;
-        protected readonly Func<List<object>> _getterFunction;
-        protected readonly Action<string> _setterFunction;
 
         public static VarX CreateVarX(
             string name, AddressHolder addressHolder, VarXSubclass varXSubclcass)
@@ -46,25 +44,6 @@ namespace SM64_Diagnostic.Controls
         {
             Name = name;
             AddressHolder = addressHolder;
-
-            // Created getter/setter functions
-            if (AddressHolder.IsSpecial)
-            {
-                (_getterFunction, _setterFunction) = VarXSpecialUtilities.CreateGetterSetterFunctions(AddressHolder.SpecialType);
-            }
-            else
-            {
-                _getterFunction = () =>
-                {
-                    return AddressHolder.EffectiveAddressList.ConvertAll(
-                        address => Config.Stream.GetValue(AddressHolder.MemoryType, address, AddressHolder.UseAbsoluteAddressing));
-                };
-                _setterFunction = (string stringValue) =>
-                {
-                    AddressHolder.EffectiveAddressList.ForEach(
-                        address => Config.Stream.SetValueRoundingWrapping(AddressHolder.MemoryType, stringValue, address, AddressHolder.UseAbsoluteAddressing));
-                };
-            }
 
             CreateControls();
             AddContextMenuStrip();
@@ -239,7 +218,7 @@ namespace SM64_Diagnostic.Controls
 
         public virtual List<object> GetValue()
         {
-            return _getterFunction();
+            return AddressHolder.GetValues();
         }
 
         public virtual string GetDisplayedValue(string stringValue)
@@ -276,7 +255,7 @@ namespace SM64_Diagnostic.Controls
 
         public virtual void SetValue(string stringValue)
         {
-            _setterFunction(stringValue);
+            AddressHolder.SetValue(stringValue);
         }
 
     }
