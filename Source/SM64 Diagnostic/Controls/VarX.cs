@@ -220,7 +220,7 @@ namespace SM64_Diagnostic.Controls
 
         public string GetValueFinal()
         {
-            List<string> values = AddressHolder.GetValues().ConvertAll(obj => obj.ToString());
+            List<string> values = AddressHolder.GetValues();
             (bool meaningfulValue, string value) = CombineValues(values);
             if (!meaningfulValue) return value;
 

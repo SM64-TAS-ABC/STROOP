@@ -29,7 +29,7 @@ namespace SM64_Diagnostic.Controls
         public readonly uint? OffsetPAL;
         public readonly uint? OffsetDefault;
 
-        private readonly Func<List<object>> _getterFunction;
+        private readonly Func<List<string>> _getterFunction;
         private readonly Action<string> _setterFunction;
 
         // TODO remove this
@@ -164,7 +164,7 @@ namespace SM64_Diagnostic.Controls
                 _getterFunction = () =>
                 {
                     return EffectiveAddressList.ConvertAll(
-                        address => Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing));
+                        address => Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing).ToString());
                 };
                 _setterFunction = (string value) =>
                 {
@@ -174,7 +174,7 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public List<object> GetValues()
+        public List<string> GetValues()
         {
             return _getterFunction();
         }

@@ -12,12 +12,12 @@ namespace SM64_Diagnostic.Structs
 {
     public static class VarXSpecialUtilities
     {
-        public readonly static Func<List<object>> DEFAULT_GETTER = () => new List<object>() { "UNIMPLEMENTED" };
+        public readonly static Func<List<string>> DEFAULT_GETTER = () => new List<string>() { "UNIMPLEMENTED" };
         public readonly static Action<string> DEFAULT_SETTER = (string stringValue) => { };
 
-        public static (Func<List<object>> getter, Action<string> setter) CreateGetterSetterFunctions(string specialType)
+        public static (Func<List<string>> getter, Action<string> setter) CreateGetterSetterFunctions(string specialType)
         {
-            Func<List<object>> getterFunction = DEFAULT_GETTER;
+            Func<List<string>> getterFunction = DEFAULT_GETTER;
             Action<string> setterFunction = DEFAULT_SETTER;
 
             switch (specialType)
@@ -29,8 +29,8 @@ namespace SM64_Diagnostic.Structs
                         List<Position> objPoses = GetObjectPositions();
                         return objPoses.ConvertAll(objPos =>
                         {
-                            return (object)MoreMath.GetDistanceBetween(
-                                marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
+                            return MoreMath.GetDistanceBetween(
+                                marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z).ToString();
                         });
                     };
                     setterFunction = (string stringValue) =>
@@ -54,8 +54,8 @@ namespace SM64_Diagnostic.Structs
                         List<Position> objPoses = GetObjectPositions();
                         return objPoses.ConvertAll(objPos =>
                         {
-                            return (object)MoreMath.GetDistanceBetween(
-                                marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                            return MoreMath.GetDistanceBetween(
+                                marioPos.X, marioPos.Z, objPos.X, objPos.Z).ToString();
                         });
                     };
                     setterFunction = (string stringValue) =>
@@ -79,7 +79,7 @@ namespace SM64_Diagnostic.Structs
                         List<Position> objPoses = GetObjectPositions();
                         return objPoses.ConvertAll(objPos =>
                         {
-                            return (object)(marioPos.Y - objPos.Y);
+                            return (marioPos.Y - objPos.Y).ToString();
                         });
                     };
                     setterFunction = (string stringValue) =>
@@ -101,7 +101,7 @@ namespace SM64_Diagnostic.Structs
                         List<Position> objPoses = GetObjectPositions();
                         return objPoses.ConvertAll(objPos =>
                         {
-                            return (object)MoreMath.AngleTo_AngleUnits(objPos.X, objPos.Z, marioPos.X, marioPos.Z);
+                            return MoreMath.AngleTo_AngleUnits(objPos.X, objPos.Z, marioPos.X, marioPos.Z).ToString();
                         });
                     };
                     break;
@@ -113,7 +113,7 @@ namespace SM64_Diagnostic.Structs
                         List<Position> objPoses = GetObjectPositions();
                         return objPoses.ConvertAll(objPos =>
                         {
-                            return (object)(objPos.Angle - MoreMath.AngleTo_AngleUnits(objPos.X, objPos.Z, marioPos.X, marioPos.Z));
+                            return (objPos.Angle - MoreMath.AngleTo_AngleUnits(objPos.X, objPos.Z, marioPos.X, marioPos.Z)).ToString();
                         });
                     };
                     break;
@@ -125,7 +125,7 @@ namespace SM64_Diagnostic.Structs
                         List<Position> objPoses = GetObjectPositions();
                         return objPoses.ConvertAll(objPos =>
                         {
-                            return (object)MoreMath.AngleTo_AngleUnits(marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                            return MoreMath.AngleTo_AngleUnits(marioPos.X, marioPos.Z, objPos.X, objPos.Z).ToString();
                         });
                     };
                     break;
@@ -137,7 +137,7 @@ namespace SM64_Diagnostic.Structs
                         List<Position> objPoses = GetObjectPositions();
                         return objPoses.ConvertAll(objPos =>
                         {
-                            return (object)(marioPos.Angle - MoreMath.AngleTo_AngleUnits(marioPos.X, marioPos.Z, objPos.X, objPos.Z));
+                            return (marioPos.Angle - MoreMath.AngleTo_AngleUnits(marioPos.X, marioPos.Z, objPos.X, objPos.Z)).ToString();
                         });
                     };
                     break;
@@ -193,9 +193,9 @@ namespace SM64_Diagnostic.Structs
             return (getterFunction, setterFunction);
         }
 
-        private static List<object> CreateList(object obj)
+        private static List<string> CreateList(string stringValue)
         {
-            return new List<object>() { obj };
+            return new List<string>() { stringValue };
         }
 
         private static Position GetMarioPosition()
