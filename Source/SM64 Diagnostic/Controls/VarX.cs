@@ -141,9 +141,6 @@ namespace SM64_Diagnostic.Controls
 
         private void AddContextMenuStrip()
         {
-            ToolStripMenuItem itemEdit = new ToolStripMenuItem("Edit");
-            itemEdit.Click += (sender, e) => { EditMode = true; };
-
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight");
             itemHighlight.Click += (sender, e) =>
             {
@@ -153,13 +150,20 @@ namespace SM64_Diagnostic.Controls
             };
             itemHighlight.Checked = _highlighted;
 
+            ToolStripMenuItem itemEdit = new ToolStripMenuItem("Edit");
+            itemEdit.Click += (sender, e) => { EditMode = true; };
+
             ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy");
             itemCopy.Click += (sender, e) => { Clipboard.SetText(_textBox.Text); };
 
+            ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
+            itemPaste.Click += (sender, e) => { SetValueFinal(Clipboard.GetText()); };
+
             ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
-            contextMenuStrip.Items.Add(itemEdit);
             contextMenuStrip.Items.Add(itemHighlight);
+            contextMenuStrip.Items.Add(itemEdit);
             contextMenuStrip.Items.Add(itemCopy);
+            contextMenuStrip.Items.Add(itemPaste);
 
             foreach (Control control in Controls)
             {
