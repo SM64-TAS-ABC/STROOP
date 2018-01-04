@@ -42,4 +42,9 @@
   <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleObjectToMario" subclass="SignedAngle">DAngle Obj to Mario</Data>
   <Data groupList="Expanded" baseAddressType="Special" specialType="AngleMarioToObject" subclass="UnsignedAngle">Angle Mario to Obj</Data>
   <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleMarioToObject" subclass="SignedAngle">DAngle Mario to Obj</Data>
+
+  <Data type="uint" offset="0x78" baseAddressType="Mario" subclass="Object">Interaction Object</Data>
+  <Data type="uint" offset="0x80" baseAddressType="Mario" subclass="Object">Used Object</Data>
+  <Data type="uint" offsetUS="0x80330E34" offsetJP="0x8032FED4" baseAddressType="Relative" subclass="Object">Stood On Object</Data>
+  <Data type="uint" offset="0x7C" baseAddressType="Mario" subclass="Object">Held Object</Data>
 </WaterData>

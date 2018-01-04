@@ -24,7 +24,6 @@ namespace SM64_Diagnostic.Controls
             {
                 case VarXSubclass.String:
                 case VarXSubclass.Boolean:
-                case VarXSubclass.Object:
                     return new VarX(name, addressHolder);
 
                 case VarXSubclass.Number:
@@ -35,6 +34,9 @@ namespace SM64_Diagnostic.Controls
                 case VarXSubclass.SignedAngle:
                     return new VarXAngle(name, addressHolder, true);
 
+                case VarXSubclass.Object:
+                    return new VarXObject(name, addressHolder);
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -44,6 +46,9 @@ namespace SM64_Diagnostic.Controls
         {
             Name = name;
             AddressHolder = addressHolder;
+
+            _editMode = false;
+            _highlighted = false;
 
             CreateControls();
             AddContextMenuStrip();
@@ -56,7 +61,9 @@ namespace SM64_Diagnostic.Controls
         private BorderedTableLayoutPanel _tablePanel;
         private Label _nameLabel;
         private TextBox _textBox;
-        private bool _editMode = false;
+
+        private bool _editMode;
+        private bool _highlighted;
 
         public Control Control
         {
@@ -135,15 +142,16 @@ namespace SM64_Diagnostic.Controls
         private void AddContextMenuStrip()
         {
             ToolStripMenuItem itemEdit = new ToolStripMenuItem("Edit");
-            ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight");
-
             itemEdit.Click += (sender, e) => { EditMode = true; };
+
+            ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight");
             itemHighlight.Click += (sender, e) =>
             {
-                bool currentlyHighlighted = _tablePanel.ShowBorder;
-                _tablePanel.ShowBorder = !currentlyHighlighted;
-                itemHighlight.Checked = !currentlyHighlighted;
+                _highlighted = !_highlighted;
+                _tablePanel.ShowBorder = _highlighted;
+                itemHighlight.Checked = _highlighted;
             };
+            itemHighlight.Checked = _highlighted;
 
             ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
             contextMenuStrip.Items.Add(itemEdit);

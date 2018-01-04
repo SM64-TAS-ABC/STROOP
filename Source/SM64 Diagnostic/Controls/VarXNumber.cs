@@ -52,6 +52,7 @@ namespace SM64_Diagnostic.Controls
                 _displayAsHex = !_displayAsHex;
                 itemDisplayAsHex.Checked = _displayAsHex;
             };
+            itemDisplayAsHex.Checked = _displayAsHex;
 
             ToolStripMenuItem itemNegate = new ToolStripMenuItem("Negate");
             itemNegate.Click += (sender, e) =>
@@ -59,6 +60,7 @@ namespace SM64_Diagnostic.Controls
                 _negate = !_negate;
                 itemNegate.Checked = _negate;
             };
+            itemNegate.Checked = _negate;
 
             Control.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Control.ContextMenuStrip.Items.Add(itemRoundTo);
