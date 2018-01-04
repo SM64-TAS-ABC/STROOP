@@ -29,7 +29,7 @@ namespace SM64_Diagnostic.Utilities
                 uint parsed = ParseHex(str);
                 return parsed;
             }
-            catch (Exception)
+            catch (FormatException)
             {
                 return null;
             }

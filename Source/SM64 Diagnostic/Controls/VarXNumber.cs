@@ -93,16 +93,18 @@ namespace SM64_Diagnostic.Controls
         {
             if (!_displayAsHex) return stringValue;
 
-            int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
+            string numHexDigits = AddressHolder.ByteCount > 0 ? (AddressHolder.ByteCount * 2).ToString() : "";
+
+            int ? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
             if (intValueNullable.HasValue)
             {
-                return String.Format("0x{0:X8}", intValueNullable.Value);
+                return String.Format("0x{0:X" + numHexDigits + "}", intValueNullable.Value);
             }
 
             uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
             if (uintValueNullable.HasValue)
             {
-                return String.Format("0x{0:X8}", uintValueNullable.Value);
+                return String.Format("0x{0:X" + numHexDigits + "}", uintValueNullable.Value);
             }
 
             return stringValue;
@@ -110,7 +112,12 @@ namespace SM64_Diagnostic.Controls
 
         public override string HandleHexUndisplaying(string value)
         {
-            return base.HandleHexUndisplaying(value);
+            if (value != null && value.Length >= 2 && value.Substring(0,2) == "0x")
+            {
+                uint? parsed = ParsingUtilities.ParseHexNullable(value);
+                if (parsed != null) return parsed.ToString();
+            }
+            return value;
         }
     }
 }
