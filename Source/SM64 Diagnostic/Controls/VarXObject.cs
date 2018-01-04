@@ -46,6 +46,12 @@ namespace SM64_Diagnostic.Controls
             Control.ContextMenuStrip.Items.Add(itemSelectObject);
         }
 
+        public override string HandleHexDisplaying(string value)
+        {
+            // prevent hex display if we're displaying as object
+            return _displayAsObject ? value : base.HandleHexDisplaying(value);
+        }
+
         public override string HandleObjectDisplaying(string value)
         {
             return base.HandleObjectDisplaying(value);
