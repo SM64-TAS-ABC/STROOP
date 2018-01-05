@@ -31,12 +31,12 @@ namespace SM64_Diagnostic.Controls
             _roundingLimit = roundingLimit;
             _displayAsHex = displayAsHex;
             _displayAsNegated = false;
-
-            AddNumberContextMenuStripItems();
         }
 
-        private void AddNumberContextMenuStripItems()
+        protected override void AddContextMenuStripItems()
         {
+            base.AddContextMenuStripItems();
+
             ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to ...");
             List<int> roundingLimitNumbers = Enumerable.Range(0, MAX_ROUNDING_LIMIT + 1).ToList();
             ControlUtilities.AddDropDownItems(

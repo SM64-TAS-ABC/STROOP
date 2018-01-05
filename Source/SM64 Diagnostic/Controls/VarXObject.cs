@@ -23,11 +23,12 @@ namespace SM64_Diagnostic.Controls
             : base(name, addressHolder, backgroundColor, 0, true)
         {
             _displayAsObject = true;
-            AddAngleContextMenuStripItems();
         }
 
-        private void AddAngleContextMenuStripItems()
+        protected override void AddContextMenuStripItems()
         {
+            base.AddContextMenuStripItems();
+
             ToolStripMenuItem itemDisplayAsObject = new ToolStripMenuItem("Display as Object");
             itemDisplayAsObject.Click += (sender, e) =>
             {

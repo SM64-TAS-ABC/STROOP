@@ -158,7 +158,7 @@ namespace SM64_Diagnostic.Controls
             this._tablePanel.ContextMenuStrip = _contextMenuStrip;
         }
 
-        private void AddContextMenuStripItems()
+        protected virtual void AddContextMenuStripItems()
         {
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight");
             itemHighlight.Click += (sender, e) =>
