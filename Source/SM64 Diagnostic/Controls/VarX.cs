@@ -87,8 +87,8 @@ namespace SM64_Diagnostic.Controls
 
             _editMode = false;
             _highlighted = false;
-           _justFailed = false;
-           _lastFailureTime = DateTime.Now;
+            _justFailed = false;
+            _lastFailureTime = DateTime.Now;
 
             CreateControls();
             AddContextMenuStrip();
@@ -171,7 +171,7 @@ namespace SM64_Diagnostic.Controls
             itemEdit.Click += (sender, e) => { EditMode = true; };
 
             ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy");
-            itemCopy.Click += (sender, e) => { Clipboard.SetText(_textBox.Text); };
+            itemCopy.Click += (sender, e) => { Clipboard.SetText(GetValueFinal(false)); };
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
             itemPaste.Click += (sender, e) => { SetValueFinal(Clipboard.GetText()); };
@@ -268,14 +268,14 @@ namespace SM64_Diagnostic.Controls
 
 
 
-        public string GetValueFinal()
+        public string GetValueFinal(bool handleRounding = true)
         {
             List<string> values = AddressHolder.GetValues();
             (bool meaningfulValue, string value) = CombineValues(values);
             if (!meaningfulValue) return value;
 
             value = HandleAngleConverting(value);
-            value = HandleRounding(value);
+            if (handleRounding) value = HandleRounding(value);
             value = HandleAngleRoundingOut(value);
             value = HandleNegating(value);
             value = HandleHexDisplaying(value);
