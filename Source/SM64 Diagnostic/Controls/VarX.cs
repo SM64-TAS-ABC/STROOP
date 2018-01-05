@@ -122,6 +122,7 @@ namespace SM64_Diagnostic.Controls
             this._textBox.KeyDown += OnTextValueKeyDown;
             this._textBox.DoubleClick += _textBoxValue_DoubleClick;
             this._textBox.Leave += (sender, e) => { EditMode = false; };
+            this._nameLabel.BackColor = Color.Transparent;
 
             this._tablePanel = new BorderedTableLayoutPanel();
             this._tablePanel.Size = new Size(230, _nameLabel.Height + 2);
@@ -207,10 +208,19 @@ namespace SM64_Diagnostic.Controls
 
             if (e.KeyData == Keys.Enter)
             {
-                SetValueFinal(_textBox.Text);
+                bool success = SetValueFinal(_textBox.Text);
                 EditMode = false;
+                if (!success)
+                {
+                    InvokeFailureToSet();
+                }
                 return;
             }
+        }
+
+        private void InvokeFailureToSet()
+        {
+            _tablePanel.BackColor = Color.Red;
         }
 
 
