@@ -32,10 +32,10 @@ namespace SM64_Diagnostic.Controls
             _displayAsHex = displayAsHex;
             _displayAsNegated = false;
 
-            AddNumberContextMenuStrip();
+            AddNumberContextMenuStripItems();
         }
 
-        private void AddNumberContextMenuStrip()
+        private void AddNumberContextMenuStripItems()
         {
             ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to ...");
             List<int> roundingLimitNumbers = Enumerable.Range(0, MAX_ROUNDING_LIMIT + 1).ToList();
@@ -62,10 +62,10 @@ namespace SM64_Diagnostic.Controls
             };
             itemDisplayAsNegated.Checked = _displayAsNegated;
 
-            Control.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Control.ContextMenuStrip.Items.Add(itemRoundTo);
-            Control.ContextMenuStrip.Items.Add(itemDisplayAsHex);
-            Control.ContextMenuStrip.Items.Add(itemDisplayAsNegated);
+            _contextMenuStrip.Items.Add(new ToolStripSeparator());
+            _contextMenuStrip.Items.Add(itemRoundTo);
+            _contextMenuStrip.Items.Add(itemDisplayAsHex);
+            _contextMenuStrip.Items.Add(itemDisplayAsNegated);
         }
 
         public override string HandleRounding(string stringValue)

@@ -23,10 +23,10 @@ namespace SM64_Diagnostic.Controls
             : base(name, addressHolder, backgroundColor, 0, true)
         {
             _displayAsObject = true;
-            AddAngleContextMenuStrip();
+            AddAngleContextMenuStripItems();
         }
 
-        private void AddAngleContextMenuStrip()
+        private void AddAngleContextMenuStripItems()
         {
             ToolStripMenuItem itemDisplayAsObject = new ToolStripMenuItem("Display as Object");
             itemDisplayAsObject.Click += (sender, e) =>
@@ -50,9 +50,9 @@ namespace SM64_Diagnostic.Controls
                 }
             };
 
-            Control.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Control.ContextMenuStrip.Items.Add(itemDisplayAsObject);
-            Control.ContextMenuStrip.Items.Add(itemSelectObject);
+            _contextMenuStrip.Items.Add(new ToolStripSeparator());
+            _contextMenuStrip.Items.Add(itemDisplayAsObject);
+            _contextMenuStrip.Items.Add(itemSelectObject);
         }
 
         public override string HandleHexDisplaying(string value)

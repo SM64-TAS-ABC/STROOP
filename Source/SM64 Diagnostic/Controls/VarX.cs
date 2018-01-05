@@ -33,6 +33,7 @@ namespace SM64_Diagnostic.Controls
                 {
                     _textBox.ReadOnly = !_editMode;
                     _textBox.BackColor = _editMode ? Color.White : _currentColor;
+                    _textBox.ContextMenuStrip = _editMode ? _textboxOldContextMenuStrip : _contextMenuStrip;
                     if (_editMode)
                     {
                         _textBox.Focus();
@@ -91,7 +92,7 @@ namespace SM64_Diagnostic.Controls
             _lastFailureTime = DateTime.Now;
 
             CreateControls();
-            AddContextMenuStrip();
+            AddContextMenuStripItems();
         }
 
 
@@ -102,19 +103,14 @@ namespace SM64_Diagnostic.Controls
         protected Label _nameLabel;
         protected TextBox _textBox;
 
+        protected ContextMenuStrip _textboxOldContextMenuStrip;
+        protected ContextMenuStrip _contextMenuStrip;
+
         public Control Control
         {
             get
             {
                 return _tablePanel;
-            }
-        }
-
-        public List<Control> Controls
-        {
-            get
-            {
-                return new List<Control>() { _tablePanel, _nameLabel, _textBox };
             }
         }
         
@@ -154,9 +150,15 @@ namespace SM64_Diagnostic.Controls
             this._tablePanel.Controls.Add(_nameLabel, 0, 0);
             this._tablePanel.Controls.Add(this._textBox, 1, 0);
             this._tablePanel.BackColor = _currentColor;
+
+            _textboxOldContextMenuStrip = _textBox.ContextMenuStrip;
+            _contextMenuStrip = new ContextMenuStrip();
+            this._nameLabel.ContextMenuStrip = _contextMenuStrip;
+            this._textBox.ContextMenuStrip = _contextMenuStrip;
+            this._tablePanel.ContextMenuStrip = _contextMenuStrip;
         }
 
-        private void AddContextMenuStrip()
+        private void AddContextMenuStripItems()
         {
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight");
             itemHighlight.Click += (sender, e) =>
@@ -176,16 +178,10 @@ namespace SM64_Diagnostic.Controls
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
             itemPaste.Click += (sender, e) => { SetValueFinal(Clipboard.GetText()); };
 
-            ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
-            contextMenuStrip.Items.Add(itemHighlight);
-            contextMenuStrip.Items.Add(itemEdit);
-            contextMenuStrip.Items.Add(itemCopy);
-            contextMenuStrip.Items.Add(itemPaste);
-
-            foreach (Control control in Controls)
-            {
-                control.ContextMenuStrip = contextMenuStrip;
-            }
+            _contextMenuStrip.Items.Add(itemHighlight);
+            _contextMenuStrip.Items.Add(itemEdit);
+            _contextMenuStrip.Items.Add(itemCopy);
+            _contextMenuStrip.Items.Add(itemPaste);
         }
 
         private void _nameLabel_Click(object sender, EventArgs e)

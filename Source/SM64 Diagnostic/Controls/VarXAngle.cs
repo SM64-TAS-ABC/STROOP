@@ -31,10 +31,10 @@ namespace SM64_Diagnostic.Controls
             _recommendedSigned = recommendedSigned;
             _currentSigned = null;
             _angleUnitType = angleUnitType;
-            AddAngleContextMenuStrip();
+            AddAngleContextMenuStripItems();
         }
 
-        private void AddAngleContextMenuStrip()
+        private void AddAngleContextMenuStripItems()
         {
             ToolStripMenuItem itemSign = new ToolStripMenuItem("Sign...");
             ControlUtilities.AddDropDownItems(
@@ -52,9 +52,9 @@ namespace SM64_Diagnostic.Controls
                 (object obj) => { _angleUnitType = (AngleUnitType)obj; },
                 _angleUnitType);
 
-            Control.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Control.ContextMenuStrip.Items.Add(itemSign);
-            Control.ContextMenuStrip.Items.Add(itemUnits);
+            _contextMenuStrip.Items.Add(new ToolStripSeparator());
+            _contextMenuStrip.Items.Add(itemSign);
+            _contextMenuStrip.Items.Add(itemUnits);
         }
 
         private double GetAngleUnitTypeMaxValue(AngleUnitType? angleUnitTypeNullable = null)
