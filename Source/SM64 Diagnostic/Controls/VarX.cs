@@ -234,14 +234,14 @@ namespace SM64_Diagnostic.Controls
             return value;
         }
 
-        public void SetValueFinal(string value)
+        public bool SetValueFinal(string value)
         {
             value = HandleObjectUndisplaying(value);
             value = HandleHexUndisplaying(value);
             value = HandleUnnegating(value);
             value = HandleAngleUnconverting(value);
 
-            AddressHolder.SetValue(value);
+            return AddressHolder.SetValue(value);
         }
 
 

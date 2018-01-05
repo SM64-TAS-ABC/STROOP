@@ -30,7 +30,7 @@ namespace SM64_Diagnostic.Controls
         public readonly uint? OffsetDefault;
 
         private readonly Func<List<string>> _getterFunction;
-        private readonly Action<string> _setterFunction;
+        private readonly Func<string, bool> _setterFunction;
 
         // TODO remove this
         private readonly bool _returnNonEmptyList;
@@ -168,8 +168,10 @@ namespace SM64_Diagnostic.Controls
                 };
                 _setterFunction = (string value) =>
                 {
-                    EffectiveAddressList.ForEach(
-                        address => Config.Stream.SetValueRoundingWrapping(MemoryType, value, address, UseAbsoluteAddressing));
+                    return EffectiveAddressList.ConvertAll(
+                        address => Config.Stream.SetValueRoundingWrapping(
+                            MemoryType, value, address, UseAbsoluteAddressing))
+                            .Aggregate(true, (b1, b2) => b1 && b2);
                 };
             }
         }
@@ -179,11 +181,12 @@ namespace SM64_Diagnostic.Controls
             return _getterFunction();
         }
 
-        public void SetValue(string stringValue)
+        public bool SetValue(string stringValue)
         {
             Config.Stream.Suspend();
-            _setterFunction(stringValue);
+            bool success = _setterFunction(stringValue);
             Config.Stream.Resume();
+            return success;
         }
 
         public uint GetRamAddress(bool addressArea = true)

@@ -354,6 +354,24 @@ namespace SM64_Diagnostic.Utilities
             return Readonly;
         }
 
+        public bool SetValueRoundingWrapping(Type type, object value, uint address, bool absoluteAddress = false)
+        {
+            if (value is string)
+            {
+                value = ParsingUtilities.ParseDoubleNullable((string)value);
+                if (value == null) return false;
+
+                if (type == typeof(byte)) value = MoreMath.GetIntInRange((double)value, 1.0 + byte.MaxValue - byte.MinValue, false);
+                if (type == typeof(sbyte)) value = MoreMath.GetIntInRange((double)value, 1.0 + sbyte.MaxValue - sbyte.MinValue, true);
+                if (type == typeof(short)) value = MoreMath.GetIntInRange((double)value, 1.0 + short.MaxValue - short.MinValue, true);
+                if (type == typeof(ushort)) value = MoreMath.GetIntInRange((double)value, 1.0 + ushort.MaxValue - ushort.MinValue, false);
+                if (type == typeof(int)) value = MoreMath.GetIntInRange((double)value, 1.0 + int.MaxValue - int.MinValue, true);
+                if (type == typeof(uint)) value = MoreMath.GetIntInRange((double)value, 1.0 + uint.MaxValue - uint.MinValue, false);
+            }
+
+            return SetValue(type, value.ToString(), address, absoluteAddress);
+        }
+
         public bool SetValue(Type type, object value, uint address, bool absoluteAddress = false)
         {
             if (value is string)
@@ -378,24 +396,6 @@ namespace SM64_Diagnostic.Utilities
             if (type == typeof(float)) return SetValue((float)value, address, absoluteAddress);
 
             throw new ArgumentOutOfRangeException("Cannot call ProcessStream.SetValue with type " + type);
-        }
-
-        public bool SetValueRoundingWrapping(Type type, object value, uint address, bool absoluteAddress = false)
-        {
-            if (value is string)
-            {
-                value = ParsingUtilities.ParseDoubleNullable((string)value);
-                if (value == null) return false;
-
-                if (type == typeof(byte)) value = MoreMath.GetIntInRange((double)value, 1.0 + byte.MaxValue - byte.MinValue, false);
-                if (type == typeof(sbyte)) value = MoreMath.GetIntInRange((double)value, 1.0 + sbyte.MaxValue - sbyte.MinValue, true);
-                if (type == typeof(short)) value = MoreMath.GetIntInRange((double)value, 1.0 + short.MaxValue - short.MinValue, true);
-                if (type == typeof(ushort)) value = MoreMath.GetIntInRange((double)value, 1.0 + ushort.MaxValue - ushort.MinValue, false);
-                if (type == typeof(int)) value = MoreMath.GetIntInRange((double)value, 1.0 + int.MaxValue - int.MinValue, true);
-                if (type == typeof(uint)) value = MoreMath.GetIntInRange((double)value, 1.0 + uint.MaxValue - uint.MinValue, false);
-            }
-
-            return SetValue(type, value.ToString(), address, absoluteAddress);
         }
 
         public bool SetValue(byte value, uint address, bool absoluteAddress = false)
