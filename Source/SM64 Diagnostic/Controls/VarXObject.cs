@@ -18,8 +18,9 @@ namespace SM64_Diagnostic.Controls
 
         public VarXObject(
             string name,
-            AddressHolder addressHolder)
-            : base(name, addressHolder, 0, true)
+            AddressHolder addressHolder,
+            Color? backgroundColor)
+            : base(name, addressHolder, backgroundColor, 0, true)
         {
             _displayAsObject = true;
             AddAngleContextMenuStrip();

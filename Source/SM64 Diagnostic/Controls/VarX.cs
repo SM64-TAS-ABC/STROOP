@@ -14,38 +14,44 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarX
     {
+        public static readonly Color DEFAULT_COLOR = SystemColors.Control;
+
         public readonly string Name;
         public readonly AddressHolder AddressHolder;
+        private readonly Color _baseColor;
+        private Color _currentColor;
 
         public static VarX CreateVarX(
-            string name, AddressHolder addressHolder, VarXSubclass varXSubclcass)
+            string name, AddressHolder addressHolder, VarXSubclass varXSubclcass, Color? backgroundColor)
         {
             switch (varXSubclcass)
             {
                 case VarXSubclass.String:
                 case VarXSubclass.Boolean:
-                    return new VarX(name, addressHolder);
+                    return new VarX(name, addressHolder, backgroundColor);
 
                 case VarXSubclass.Number:
-                    return new VarXNumber(name, addressHolder);
+                    return new VarXNumber(name, addressHolder, backgroundColor);
 
                 case VarXSubclass.UnsignedAngle:
-                    return new VarXAngle(name, addressHolder, false);
+                    return new VarXAngle(name, addressHolder, backgroundColor, false);
                 case VarXSubclass.SignedAngle:
-                    return new VarXAngle(name, addressHolder, true);
+                    return new VarXAngle(name, addressHolder, backgroundColor, true);
 
                 case VarXSubclass.Object:
-                    return new VarXObject(name, addressHolder);
+                    return new VarXObject(name, addressHolder, backgroundColor);
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        public VarX(string name, AddressHolder addressHolder)
+        public VarX(string name, AddressHolder addressHolder, Color? backgroundColor)
         {
             Name = name;
             AddressHolder = addressHolder;
+            _baseColor = backgroundColor ?? DEFAULT_COLOR;
+            _currentColor = _baseColor;
 
             _editMode = false;
             _highlighted = false;
@@ -122,7 +128,6 @@ namespace SM64_Diagnostic.Controls
             this._textBox.KeyDown += OnTextValueKeyDown;
             this._textBox.DoubleClick += _textBoxValue_DoubleClick;
             this._textBox.Leave += (sender, e) => { EditMode = false; };
-            this._nameLabel.BackColor = Color.Transparent;
 
             this._tablePanel = new BorderedTableLayoutPanel();
             this._tablePanel.Size = new Size(230, _nameLabel.Height + 2);
@@ -190,12 +195,52 @@ namespace SM64_Diagnostic.Controls
             EditMode = true;
         }
 
+
+
+        private bool _justFailed = false;
+        private DateTime _lastFailureTime = DateTime.Now;
+
+        private static readonly int FAILURE_DURATION_MS = 1000;
+        private static readonly Color FAILURE_COLOR = Color.Red;
+
+        private void InvokeFailure()
+        {
+            _justFailed = true;
+            _lastFailureTime = DateTime.Now;
+        }
+
+
+
+
         public void Update()
         {
             if (_editMode)
                 return;
 
             _textBox.Text = GetValueFinal();
+            UpdateColor();
+        }
+
+        private void UpdateColor()
+        {
+            DateTime currentTime = DateTime.Now;
+            if (_justFailed)
+            {
+                double timeSinceLastFailure = currentTime.Subtract(_lastFailureTime).TotalMilliseconds;
+                if (timeSinceLastFailure > FAILURE_DURATION_MS)
+                {
+                    _justFailed = false;
+                    _currentColor = _baseColor;
+                }
+                else
+                {
+                    _currentColor = ColorUtilities.InterpolateColor(
+                        FAILURE_COLOR, DEFAULT_COLOR, timeSinceLastFailure / FAILURE_DURATION_MS);
+                }
+            }
+
+            _tablePanel.BackColor = _currentColor;
+            //if (!EditMode) _textBox.BackColor = _currentColor;
         }
 
         private void OnTextValueKeyDown(object sender, KeyEventArgs e)
@@ -212,15 +257,10 @@ namespace SM64_Diagnostic.Controls
                 EditMode = false;
                 if (!success)
                 {
-                    InvokeFailureToSet();
+                    InvokeFailure();
                 }
                 return;
             }
-        }
-
-        private void InvokeFailureToSet()
-        {
-            _tablePanel.BackColor = Color.Red;
         }
 
 

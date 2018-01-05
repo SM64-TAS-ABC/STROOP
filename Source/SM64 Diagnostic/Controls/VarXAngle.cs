@@ -23,9 +23,10 @@ namespace SM64_Diagnostic.Controls
         public VarXAngle(
             string name,
             AddressHolder addressHolder,
+            Color? backgroundColor,
             bool recommendedSigned,
             AngleUnitType angleUnitType = AngleUnitType.InGameUnits)
-            : base(name, addressHolder, 0)
+            : base(name, addressHolder, backgroundColor, 0)
         {
             _recommendedSigned = recommendedSigned;
             _currentSigned = null;

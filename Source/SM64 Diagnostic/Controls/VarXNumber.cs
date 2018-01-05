@@ -20,8 +20,8 @@ namespace SM64_Diagnostic.Controls
         private bool _displayAsHex;
         private bool _negate;
 
-        public VarXNumber(string name, AddressHolder addressHolder, int? roundingLimit = 3, bool displayAsHex = false)
-            : base(name, addressHolder)
+        public VarXNumber(string name, AddressHolder addressHolder, Color? backgroundColor, int? roundingLimit = 3, bool displayAsHex = false)
+            : base(name, addressHolder, backgroundColor)
         {
             if (roundingLimit.HasValue)
             {

@@ -2513,7 +2513,8 @@ namespace SM64_Diagnostic.Utilities
             return VarX.CreateVarX(
                 name,
                 addressHolder,
-                varXSubclass);
+                varXSubclass,
+                backgroundColor);
         }
 
         public static ActionTable OpenActionTable(string path)

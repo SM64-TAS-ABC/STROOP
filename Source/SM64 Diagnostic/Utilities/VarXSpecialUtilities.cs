@@ -13,7 +13,7 @@ namespace SM64_Diagnostic.Structs
     public static class VarXSpecialUtilities
     {
         public readonly static Func<List<string>> DEFAULT_GETTER = () => new List<string>() { "UNIMPLEMENTED" };
-        public readonly static Func<string, bool> DEFAULT_SETTER = (string stringValue) => true;
+        public readonly static Func<string, bool> DEFAULT_SETTER = (string stringValue) => false;
 
         public static (Func<List<string>> getter, Func<string, bool> setter) CreateGetterSetterFunctions(string specialType)
         {
