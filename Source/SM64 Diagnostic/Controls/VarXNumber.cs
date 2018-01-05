@@ -18,7 +18,7 @@ namespace SM64_Diagnostic.Controls
 
         private int? _roundingLimit;
         private bool _displayAsHex;
-        private bool _negate;
+        private bool _displayAsNegated;
 
         public VarXNumber(string name, AddressHolder addressHolder, Color? backgroundColor, int? roundingLimit = 3, bool displayAsHex = false)
             : base(name, addressHolder, backgroundColor)
@@ -30,7 +30,7 @@ namespace SM64_Diagnostic.Controls
 
             _roundingLimit = roundingLimit;
             _displayAsHex = displayAsHex;
-            _negate = false;
+            _displayAsNegated = false;
 
             AddNumberContextMenuStrip();
         }
@@ -54,18 +54,18 @@ namespace SM64_Diagnostic.Controls
             };
             itemDisplayAsHex.Checked = _displayAsHex;
 
-            ToolStripMenuItem itemNegate = new ToolStripMenuItem("Negate");
-            itemNegate.Click += (sender, e) =>
+            ToolStripMenuItem itemDisplayAsNegated = new ToolStripMenuItem("Display as Negated");
+            itemDisplayAsNegated.Click += (sender, e) =>
             {
-                _negate = !_negate;
-                itemNegate.Checked = _negate;
+                _displayAsNegated = !_displayAsNegated;
+                itemDisplayAsNegated.Checked = _displayAsNegated;
             };
-            itemNegate.Checked = _negate;
+            itemDisplayAsNegated.Checked = _displayAsNegated;
 
             Control.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Control.ContextMenuStrip.Items.Add(itemRoundTo);
             Control.ContextMenuStrip.Items.Add(itemDisplayAsHex);
-            Control.ContextMenuStrip.Items.Add(itemNegate);
+            Control.ContextMenuStrip.Items.Add(itemDisplayAsNegated);
         }
 
         public override string HandleRounding(string stringValue)
@@ -82,7 +82,7 @@ namespace SM64_Diagnostic.Controls
             double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
             if (!doubleValueNullable.HasValue) return stringValue;
             double doubleValue = doubleValueNullable.Value;
-            if (_negate) doubleValue = -1 * doubleValue;
+            if (_displayAsNegated) doubleValue = -1 * doubleValue;
             return doubleValue.ToString();
         }
 
