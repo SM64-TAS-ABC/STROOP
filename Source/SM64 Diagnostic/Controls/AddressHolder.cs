@@ -168,7 +168,9 @@ namespace SM64_Diagnostic.Controls
                 };
                 _setterFunction = (string value) =>
                 {
-                    return EffectiveAddressList.ConvertAll(
+                    List<uint> effectiveAddressList = EffectiveAddressList;
+                    if (effectiveAddressList.Count == 0) return false;
+                    return effectiveAddressList.ConvertAll(
                         address => Config.Stream.SetValueRoundingWrapping(
                             MemoryType, value, address, UseAbsoluteAddressing))
                             .Aggregate(true, (b1, b2) => b1 && b2);

@@ -37,7 +37,7 @@ namespace SM64_Diagnostic.Structs
                     {
                         Position marioPos = GetMarioPosition();
                         List<Position> objPoses = GetObjectPositions();
-                        if (objPoses.Count == 0) return true;
+                        if (objPoses.Count == 0) return false;
                         Position objPos = objPoses[0];
                         double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAway.HasValue) return false;
@@ -62,7 +62,7 @@ namespace SM64_Diagnostic.Structs
                     {
                         Position marioPos = GetMarioPosition();
                         List<Position> objPoses = GetObjectPositions();
-                        if (objPoses.Count == 0) return true;
+                        if (objPoses.Count == 0) return false;
                         Position objPos = objPoses[0];
                         double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAway.HasValue) return false;
@@ -85,7 +85,7 @@ namespace SM64_Diagnostic.Structs
                     setterFunction = (string stringValue) =>
                     {
                         List<Position> objPoses = GetObjectPositions();
-                        if (objPoses.Count == 0) return true;
+                        if (objPoses.Count == 0) return false;
                         Position objPos = objPoses[0];
                         double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAbove.HasValue) return false;
