@@ -230,7 +230,7 @@ namespace SM64_Diagnostic.Controls
                 if (timeSinceLastFailure < FAILURE_DURATION_MS)
                 {
                     _currentColor = ColorUtilities.InterpolateColor(
-                        FAILURE_COLOR, DEFAULT_COLOR, timeSinceLastFailure / FAILURE_DURATION_MS);
+                        FAILURE_COLOR, _baseColor, timeSinceLastFailure / FAILURE_DURATION_MS);
                 }
                 else
                 {

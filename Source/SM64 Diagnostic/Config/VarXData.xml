@@ -29,8 +29,8 @@
   <Data baseAddressType="Special" specialType="ActionDescription" subclass="String">Action Description</Data>
   <Data type="uint" offset="0x10" baseAddressType="Mario" useHex="true">Previous Action</Data>
   <Data baseAddressType="Special" specialType="PrevActionDescription" subclass="String">Prev. Action Desc.</Data>
-  <Data type="short" offset="0x18" baseAddressType="Mario">Action Phase</Data>
-  <Data type="short" offset="0x1A" baseAddressType="Mario">Action Timer</Data>
+  <Data type="short" offset="0x18" baseAddressType="Mario" color="#ccd0ff">Action Phase</Data>
+  <Data type="short" offset="0x1A" baseAddressType="Mario" color="#abcdef">Action Timer</Data>
   <Data type="short" offset="0x38" baseAddressType="MarioObj">Animation</Data>
   <Data baseAddressType="Special" specialType="MarioAnimationDescription" subclass="String">Animation Description</Data>
   <Data type="short" offset="0x40" baseAddressType="MarioObj">Animation Timer</Data>
