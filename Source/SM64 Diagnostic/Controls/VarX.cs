@@ -14,12 +14,44 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarX
     {
-        public static readonly Color DEFAULT_COLOR = SystemColors.Control;
-
         public readonly string Name;
         public readonly AddressHolder AddressHolder;
+
+        private bool _editMode;
+        private bool _highlighted;
+
+        public bool EditMode
+        {
+            get
+            {
+                return _editMode;
+            }
+            set
+            {
+                _editMode = value;
+                if (_textBox != null)
+                {
+                    _textBox.ReadOnly = !_editMode;
+                    _textBox.BackColor = _editMode ? Color.White : _currentColor;
+                    if (_editMode)
+                    {
+                        _textBox.Focus();
+                        _textBox.SelectAll();
+                    }
+                }
+            }
+        }
+
+        private static readonly int FAILURE_DURATION_MS = 1000;
+        private static readonly Color FAILURE_COLOR = Color.Red;
+        private static readonly Color DEFAULT_COLOR = SystemColors.Control;
+
         private readonly Color _baseColor;
         private Color _currentColor;
+        private bool _justFailed;
+        private DateTime _lastFailureTime;
+
+
 
         public static VarX CreateVarX(
             string name, AddressHolder addressHolder, VarXSubclass varXSubclcass, Color? backgroundColor)
@@ -55,6 +87,8 @@ namespace SM64_Diagnostic.Controls
 
             _editMode = false;
             _highlighted = false;
+           _justFailed = false;
+           _lastFailureTime = DateTime.Now;
 
             CreateControls();
             AddContextMenuStrip();
@@ -67,9 +101,6 @@ namespace SM64_Diagnostic.Controls
         private BorderedTableLayoutPanel _tablePanel;
         protected Label _nameLabel;
         protected TextBox _textBox;
-
-        private bool _editMode;
-        private bool _highlighted;
 
         public Control Control
         {
@@ -84,28 +115,6 @@ namespace SM64_Diagnostic.Controls
             get
             {
                 return new List<Control>() { _tablePanel, _nameLabel, _textBox };
-            }
-        }
-
-        public bool EditMode
-        {
-            get
-            {
-                return _editMode;
-            }
-            set
-            {
-                _editMode = value;
-                if (_textBox != null)
-                {
-                    _textBox.ReadOnly = !_editMode;
-                    _textBox.BackColor = _editMode ? Color.White : SystemColors.Control;
-                    if (_editMode)
-                    {
-                        _textBox.Focus();
-                        _textBox.SelectAll();
-                    }
-                }
             }
         }
         
@@ -144,6 +153,7 @@ namespace SM64_Diagnostic.Controls
             this._tablePanel.ShowBorder = false;
             this._tablePanel.Controls.Add(_nameLabel, 0, 0);
             this._tablePanel.Controls.Add(this._textBox, 1, 0);
+            this._tablePanel.BackColor = _currentColor;
         }
 
         private void AddContextMenuStrip()
@@ -195,52 +205,42 @@ namespace SM64_Diagnostic.Controls
             EditMode = true;
         }
 
-
-
-        private bool _justFailed = false;
-        private DateTime _lastFailureTime = DateTime.Now;
-
-        private static readonly int FAILURE_DURATION_MS = 1000;
-        private static readonly Color FAILURE_COLOR = Color.Red;
-
         private void InvokeFailure()
         {
             _justFailed = true;
             _lastFailureTime = DateTime.Now;
         }
 
-
-
-
         public void Update()
         {
-            if (_editMode)
-                return;
+            if (!_editMode)
+            {
+                _textBox.Text = GetValueFinal();
+            }
 
-            _textBox.Text = GetValueFinal();
             UpdateColor();
         }
 
         private void UpdateColor()
         {
-            DateTime currentTime = DateTime.Now;
             if (_justFailed)
             {
+                DateTime currentTime = DateTime.Now;
                 double timeSinceLastFailure = currentTime.Subtract(_lastFailureTime).TotalMilliseconds;
-                if (timeSinceLastFailure > FAILURE_DURATION_MS)
-                {
-                    _justFailed = false;
-                    _currentColor = _baseColor;
-                }
-                else
+                if (timeSinceLastFailure < FAILURE_DURATION_MS)
                 {
                     _currentColor = ColorUtilities.InterpolateColor(
                         FAILURE_COLOR, DEFAULT_COLOR, timeSinceLastFailure / FAILURE_DURATION_MS);
                 }
+                else
+                {
+                    _currentColor = _baseColor;
+                    _justFailed = false;
+                }
             }
 
             _tablePanel.BackColor = _currentColor;
-            //if (!EditMode) _textBox.BackColor = _currentColor;
+            if (!_editMode) _textBox.BackColor = _currentColor;
         }
 
         private void OnTextValueKeyDown(object sender, KeyEventArgs e)

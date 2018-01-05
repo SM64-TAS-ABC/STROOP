@@ -102,6 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\AngleDataContainer.cs" />
+    <Compile Include="Controls\TransparentTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\BorderedTableLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
