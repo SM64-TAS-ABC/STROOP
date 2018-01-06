@@ -680,7 +680,7 @@ namespace SM64_Diagnostic.Managers
         private void PasteAndGotoClick()
         {
             string clipboardText = Clipboard.GetText();
-            List<string> parsedStrings = ParsingUtilities.ParseTextStrings(clipboardText);
+            List<string> parsedStrings = ParsingUtilities.ParseTextIntoStrings(clipboardText);
             List<TextBox> textboxes = new List<TextBox>() { _betterTextboxGotoX, _betterTextboxGotoY, _betterTextboxGotoZ };
             for (int i = 0; i < parsedStrings.Count && i < textboxes.Count; i++)
             {

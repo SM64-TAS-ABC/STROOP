@@ -14,6 +14,10 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarXNumber : VarX
     {
+        private ToolStripSeparator _separatorCoordinates;
+        private ToolStripMenuItem _itemCopyCoordinates;
+        private ToolStripMenuItem _itemPasteCoordinates;
+
         private static readonly int MAX_ROUNDING_LIMIT = 10;
 
         private int? _roundingLimit;
@@ -38,6 +42,7 @@ namespace SM64_Diagnostic.Controls
             _displayAsHex = displayAsHex;
             _displayAsNegated = false;
 
+            AddCoordinateContextMenuStripItems();
             AddNumberContextMenuStripItems();
 
             if (coordinate != null) VarXCoordinateUtilities.NotifyVarXCoordinate(coordinate.Value, this);
@@ -75,6 +80,50 @@ namespace SM64_Diagnostic.Controls
             _contextMenuStrip.Items.Add(itemDisplayAsHex);
             _contextMenuStrip.Items.Add(itemDisplayAsNegated);
         }
+
+        private void AddCoordinateContextMenuStripItems()
+        {
+            _separatorCoordinates = new ToolStripSeparator();
+            _separatorCoordinates.Visible = false;
+
+            _itemCopyCoordinates = new ToolStripMenuItem("Copy Coordinates");
+            _itemCopyCoordinates.Visible = false;
+
+            _itemPasteCoordinates = new ToolStripMenuItem("Paste Coordinates");
+            _itemPasteCoordinates.Visible = false;
+
+            _contextMenuStrip.Items.Add(_separatorCoordinates);
+            _contextMenuStrip.Items.Add(_itemCopyCoordinates);
+            _contextMenuStrip.Items.Add(_itemPasteCoordinates);
+        }
+
+        public void AddCoordinateContextMenuStripItemFunctionality(List<VarXNumber> coordinates)
+        {
+            if (coordinates.Count != 3) throw new ArgumentOutOfRangeException();
+
+            _itemCopyCoordinates.Click += (sender, e) =>
+            {
+                Clipboard.SetText(
+                    String.Join(",", coordinates.ConvertAll(
+                        coord => coord.GetValueForTextbox(false))));
+            };
+
+            _itemPasteCoordinates.Click += (sender, e) =>
+            {
+                List<string> stringList = ParsingUtilities.ParseTextIntoStrings(Clipboard.GetText());
+                if (stringList.Count < 3) return;
+                for (int i = 0; i < 3; i++)
+                {
+                    coordinates[i].SetValueFromTextbox(stringList[i]);
+                }
+            };
+
+            _separatorCoordinates.Visible = true;
+            _itemCopyCoordinates.Visible = true;
+            _itemPasteCoordinates.Visible = true;
+        }
+
+
 
         protected override string HandleRounding(string stringValue)
         {

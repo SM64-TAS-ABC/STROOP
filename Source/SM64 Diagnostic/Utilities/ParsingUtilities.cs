@@ -242,7 +242,7 @@ namespace SM64_Diagnostic.Utilities
             return ParseBoolNullable(text) ?? false;
         }
 
-        public static List<string> ParseTextStrings(string text)
+        public static List<string> ParseTextIntoStrings(string text)
         {
             text = text
                 .Replace('\n', ' ')
