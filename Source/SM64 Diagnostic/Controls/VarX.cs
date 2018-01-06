@@ -130,11 +130,6 @@ namespace SM64_Diagnostic.Controls
             varInfo.ShowDialog();
         }
 
-        public void _textBoxValue_DoubleClick()
-        {
-            _varXControl.EditMode = true;
-        }
-
         public void InvokeFailure()
         {
             _justFailed = true;

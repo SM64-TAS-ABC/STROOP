@@ -98,7 +98,7 @@ namespace SM64_Diagnostic.Controls
             _textBox.Width = 200;
             _textBox.Margin = new Padding(6, 3, 6, 3);
             _textBox.KeyDown += (sender, e) => _varX.OnTextValueKeyDown(e);
-            _textBox.DoubleClick += (sender, e) => _varX._textBoxValue_DoubleClick();
+            _textBox.DoubleClick += (sender, e) => { EditMode = true; };
             _textBox.Leave += (sender, e) => { EditMode = false; };
             base.Controls.Add(this._textBox, 1, 0);
 
