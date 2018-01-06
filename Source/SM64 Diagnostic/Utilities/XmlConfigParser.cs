@@ -2506,17 +2506,21 @@ namespace SM64_Diagnostic.Utilities
             bool isObject = element.Attribute(XName.Get("isObject")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isObject")).Value) : false;
 
-            bool invertBool = element.Attribute(XName.Get("invertBool")) != null ?
-                bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : false;
+            bool? invertBool = element.Attribute(XName.Get("invertBool")) != null ?
+                bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : (bool?)null;
 
             bool isAngle = element.Attribute(XName.Get("isAngle")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isAngle")).Value) : false;
+
+            bool? signed = element.Attribute(XName.Get("signed")) != null ?
+                bool.Parse(element.Attribute(XName.Get("signed")).Value) : (bool?)null;
 
             return new VarXControl(
                 name,
                 addressHolder,
                 varXSubclass,
                 backgroundColor,
+                signed,
                 invertBool);
         }
 

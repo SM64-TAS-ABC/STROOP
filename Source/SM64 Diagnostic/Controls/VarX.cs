@@ -24,7 +24,8 @@ namespace SM64_Diagnostic.Controls
             AddressHolder addressHolder,
             VarXControl varXControl,
             VarXSubclass varXSubclcass,
-            bool invertBool = false)
+            bool? signed,
+            bool? invertBool)
         {
             switch (varXSubclcass)
             {
@@ -34,10 +35,8 @@ namespace SM64_Diagnostic.Controls
                 case VarXSubclass.Number:
                     return new VarXNumber(addressHolder, varXControl);
 
-                case VarXSubclass.UnsignedAngle:
-                    return new VarXAngle(addressHolder, varXControl, false);
-                case VarXSubclass.SignedAngle:
-                    return new VarXAngle(addressHolder, varXControl, true);
+                case VarXSubclass.Angle:
+                    return new VarXAngle(addressHolder, varXControl, signed);
 
                 case VarXSubclass.Object:
                     return new VarXObject(addressHolder, varXControl);

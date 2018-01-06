@@ -14,8 +14,7 @@ namespace SM64_Diagnostic.Structs
         Number,
         String,
         Object,
-        UnsignedAngle,
-        SignedAngle,
+        Angle,
         Boolean,
     };
 }

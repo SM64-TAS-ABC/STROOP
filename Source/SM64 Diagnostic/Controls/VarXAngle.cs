@@ -14,21 +14,17 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarXAngle : VarXNumber
     {
-        private readonly bool _recommendedSigned;
-        private bool? _currentSigned;
-        private bool _effectiveSigned { get { return _currentSigned ?? _recommendedSigned; } }
-
+        private bool _signed;
         private AngleUnitType _angleUnitType;
 
         public VarXAngle(
             AddressHolder addressHolder,
             VarXControl varXControl,
-            bool recommendedSigned,
+            bool? signed,
             AngleUnitType angleUnitType = AngleUnitType.InGameUnits)
             : base(addressHolder, varXControl, 0)
         {
-            _recommendedSigned = recommendedSigned;
-            _currentSigned = null;
+            _signed = signed ?? false;
             _angleUnitType = angleUnitType;
 
             AddAngleContextMenuStripItems();
@@ -36,13 +32,13 @@ namespace SM64_Diagnostic.Controls
 
         private void AddAngleContextMenuStripItems()
         {
-            ToolStripMenuItem itemSign = new ToolStripMenuItem("Sign...");
-            ControlUtilities.AddDropDownItems(
-                itemSign,
-                new List<string> { "Recommended", "Signed", "Unsigned" },
-                new List<object> { null, true, false },
-                (object obj) => { _currentSigned = (bool?)obj; },
-                null);
+            ToolStripMenuItem itemSigned = new ToolStripMenuItem("Signed");
+            itemSigned.Click += (sender, e) =>
+            {
+                _signed = !_signed;
+                itemSigned.Checked = _signed;
+            };
+            itemSigned.Checked = _signed;
 
             ToolStripMenuItem itemUnits = new ToolStripMenuItem("Units...");
             ControlUtilities.AddDropDownItems(
@@ -53,7 +49,7 @@ namespace SM64_Diagnostic.Controls
                 _angleUnitType);
 
             _contextMenuStrip.Items.Add(new ToolStripSeparator());
-            _contextMenuStrip.Items.Add(itemSign);
+            _contextMenuStrip.Items.Add(itemSigned);
             _contextMenuStrip.Items.Add(itemUnits);
         }
 
@@ -78,7 +74,7 @@ namespace SM64_Diagnostic.Controls
         private double GetAngleUnitTypeAndMaybeSignedMaxValue(AngleUnitType? angleUnitTypeNullable = null, bool? signedNullable = null)
         {
             AngleUnitType angleUnitType = angleUnitTypeNullable ?? _angleUnitType;
-            bool signed = signedNullable ?? _effectiveSigned;
+            bool signed = signedNullable ?? _signed;
             double maxValue = GetAngleUnitTypeMaxValue(angleUnitType);
             return signed ? maxValue / 2 : maxValue;
         }
@@ -86,7 +82,7 @@ namespace SM64_Diagnostic.Controls
         private double GetAngleUnitTypeAndMaybeSignedMinValue(AngleUnitType? angleUnitTypeNullable = null, bool? signedNullable = null)
         {
             AngleUnitType angleUnitType = angleUnitTypeNullable ?? _angleUnitType;
-            bool signed = signedNullable ?? _effectiveSigned;
+            bool signed = signedNullable ?? _signed;
             double maxValue = GetAngleUnitTypeMaxValue(angleUnitType);
             return signed ? -1 * maxValue / 2 : 0;
         }
@@ -97,7 +93,7 @@ namespace SM64_Diagnostic.Controls
             if (!doubleValueNullable.HasValue) return stringValue;
             double doubleValue = doubleValueNullable.Value;
 
-            doubleValue = _effectiveSigned ?
+            doubleValue = _signed ?
                     MoreMath.MaybeNegativeModulus(doubleValue, 65536) :
                     MoreMath.NonNegativeModulus(doubleValue, 65536);
             doubleValue = (doubleValue / 65536) * GetAngleUnitTypeMaxValue();
@@ -112,7 +108,7 @@ namespace SM64_Diagnostic.Controls
             double doubleValue = doubleValueNullable.Value;
 
             doubleValue = (doubleValue / GetAngleUnitTypeMaxValue()) * 65536;
-            doubleValue = _effectiveSigned ?
+            doubleValue = _signed ?
                 MoreMath.MaybeNegativeModulus(doubleValue, 65536) :
                 MoreMath.NonNegativeModulus(doubleValue, 65536);
 

@@ -20,11 +20,11 @@ namespace SM64_Diagnostic.Controls
         public VarXBoolean(
             AddressHolder addressHolder,
             VarXControl varXControl,
-            bool displayAsInverted = false)
+            bool? displayAsInverted)
             : base(addressHolder, varXControl, 0, false, true)
         {
             _displayAsCheckbox = true;
-            _displayAsInverted = displayAsInverted;
+            _displayAsInverted = displayAsInverted ?? false;
 
             AddBooleanContextMenuStripItems();
         }

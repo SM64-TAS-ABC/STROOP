@@ -91,7 +91,8 @@ namespace SM64_Diagnostic.Controls
             AddressHolder addressHolder,
             VarXSubclass varXSubclcass,
             Color? backgroundColor,
-            bool invertBool = false)
+            bool? signed,
+            bool? invertBool)
         {
             // Initialize main fields
             VarName = name;
@@ -114,7 +115,7 @@ namespace SM64_Diagnostic.Controls
             base.Controls.Add(_valueCheckBox, 1, 0);
 
             // Create var x
-            _varX = VarX.CreateVarX(addressHolder, this, varXSubclcass, invertBool);
+            _varX = VarX.CreateVarX(addressHolder, this, varXSubclcass, signed, invertBool);
 
             // Initialize context menu strip
             _textboxOldContextMenuStrip = _valueTextBox.ContextMenuStrip;
