@@ -11,12 +11,12 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarXControl : TableLayoutPanel
     {
-        public VarX _varX;
-        public string _name;
+        public readonly VarX _varX;
+        public readonly string VarName;
 
         public Label _nameLabel;
-        public TextBox _textBox;
-        public CheckBox _checkBoxBool;
+        public TextBox _valueTextBox;
+        public CheckBox _valueCheckBox;
         public ContextMenuStrip _contextMenuStrip;
         public ContextMenuStrip _textboxOldContextMenuStrip;
 
@@ -58,15 +58,15 @@ namespace SM64_Diagnostic.Controls
             set
             {
                 _editMode = value;
-                if (_textBox != null)
+                if (_valueTextBox != null)
                 {
-                    _textBox.ReadOnly = !_editMode;
-                    _textBox.BackColor = _editMode ? Color.White : _currentColor;
-                    _textBox.ContextMenuStrip = _editMode ? _textboxOldContextMenuStrip : _contextMenuStrip;
+                    _valueTextBox.ReadOnly = !_editMode;
+                    _valueTextBox.BackColor = _editMode ? Color.White : _currentColor;
+                    _valueTextBox.ContextMenuStrip = _editMode ? _textboxOldContextMenuStrip : _contextMenuStrip;
                     if (_editMode)
                     {
-                        _textBox.Focus();
-                        _textBox.SelectAll();
+                        _valueTextBox.Focus();
+                        _valueTextBox.SelectAll();
                     }
                 }
             }
@@ -78,7 +78,7 @@ namespace SM64_Diagnostic.Controls
         public VarXControl(VarX varX, string name, Color? backgroundColor, bool useCheckbox)
         {
             _varX = varX;
-            _name = name;
+            VarName = name;
             _showBorder = true;
             _editMode = false;
 
@@ -116,7 +116,7 @@ namespace SM64_Diagnostic.Controls
             // Name Label
             _nameLabel = new Label();
             _nameLabel.Size = new Size(210, nameLabelHeight);
-            _nameLabel.Text = _name;
+            _nameLabel.Text = VarName;
             _nameLabel.Margin = new Padding(3, 3, 3, 3);
             _nameLabel.Click += (sender, e) => _varX.ShowVarInfo();
             _nameLabel.ImageAlign = ContentAlignment.MiddleRight;
@@ -124,24 +124,24 @@ namespace SM64_Diagnostic.Controls
             base.Controls.Add(_nameLabel, 0, 0);
 
             // Textbox
-            _textBox = new TextBox();
-            _textBox.ReadOnly = true;
-            _textBox.BorderStyle = BorderStyle.None;
-            _textBox.TextAlign = HorizontalAlignment.Right;
-            _textBox.Width = 200;
-            _textBox.Margin = new Padding(6, 3, 6, 3);
-            _textBox.KeyDown += (sender, e) => OnTextValueKeyDown(e);
-            _textBox.DoubleClick += (sender, e) => { EditMode = true; };
-            _textBox.Leave += (sender, e) => { EditMode = false; };
-            base.Controls.Add(this._textBox, 1, 0);
+            _valueTextBox = new TextBox();
+            _valueTextBox.ReadOnly = true;
+            _valueTextBox.BorderStyle = BorderStyle.None;
+            _valueTextBox.TextAlign = HorizontalAlignment.Right;
+            _valueTextBox.Width = 200;
+            _valueTextBox.Margin = new Padding(6, 3, 6, 3);
+            _valueTextBox.KeyDown += (sender, e) => OnTextValueKeyDown(e);
+            _valueTextBox.DoubleClick += (sender, e) => { EditMode = true; };
+            _valueTextBox.Leave += (sender, e) => { EditMode = false; };
+            base.Controls.Add(this._valueTextBox, 1, 0);
 
             // Checkbox
-            _checkBoxBool = new CheckBox();
-            _checkBoxBool.CheckAlign = ContentAlignment.MiddleRight;
-            _checkBoxBool.CheckState = CheckState.Unchecked;
-            _checkBoxBool.Click += (sender, e) => _varX.SetValueFromCheckbox(_checkBoxBool.CheckState);
-            _checkBoxBool.BackColor = Color.Transparent;
-            base.Controls.Add(this._checkBoxBool, 1, 0);
+            _valueCheckBox = new CheckBox();
+            _valueCheckBox.CheckAlign = ContentAlignment.MiddleRight;
+            _valueCheckBox.CheckState = CheckState.Unchecked;
+            _valueCheckBox.Click += (sender, e) => _varX.SetValueFromCheckbox(_valueCheckBox.CheckState);
+            _valueCheckBox.BackColor = Color.Transparent;
+            base.Controls.Add(this._valueCheckBox, 1, 0);
 
             // Only let one of Textbox/Checkbox remain visible
             SetUseCheckbox(useCheckbox);
@@ -150,10 +150,10 @@ namespace SM64_Diagnostic.Controls
         private void InitializeContextMenuStrip()
         {
             // Context Menu Strip
-            _textboxOldContextMenuStrip = _textBox.ContextMenuStrip;
+            _textboxOldContextMenuStrip = _valueTextBox.ContextMenuStrip;
             _contextMenuStrip = new ContextMenuStrip();
             _nameLabel.ContextMenuStrip = _contextMenuStrip;
-            _textBox.ContextMenuStrip = _contextMenuStrip;
+            _valueTextBox.ContextMenuStrip = _contextMenuStrip;
             base.ContextMenuStrip = _contextMenuStrip;
         }
 
@@ -161,13 +161,13 @@ namespace SM64_Diagnostic.Controls
         {
             if (useCheckbox)
             {
-                _textBox.Visible = false;
-                _checkBoxBool.Visible = true;
+                _valueTextBox.Visible = false;
+                _valueCheckBox.Visible = true;
             }
             else
             {
-                _textBox.Visible = true;
-                _checkBoxBool.Visible = false;
+                _valueTextBox.Visible = true;
+                _valueCheckBox.Visible = false;
             }
         }
 
@@ -205,7 +205,7 @@ namespace SM64_Diagnostic.Controls
         }
         */
 
-        public void OnTextValueKeyDown(KeyEventArgs e)
+        private void OnTextValueKeyDown(KeyEventArgs e)
         {
             if (e.KeyData == Keys.Escape)
             {
@@ -215,7 +215,7 @@ namespace SM64_Diagnostic.Controls
 
             if (e.KeyData == Keys.Enter)
             {
-                bool success = _varX.SetValueFromTextbox(_textBox.Text);
+                bool success = _varX.SetValueFromTextbox(_valueTextBox.Text);
                 EditMode = false;
                 if (!success)
                 {
@@ -229,14 +229,14 @@ namespace SM64_Diagnostic.Controls
         {
             if (!EditMode)
             {
-                _textBox.Text = _varX.GetValueForTextbox();
-                _checkBoxBool.CheckState = _varX.GetValueForCheckbox();
+                _valueTextBox.Text = _varX.GetValueForTextbox();
+                _valueCheckBox.CheckState = _varX.GetValueForCheckbox();
             }
 
             UpdateColor();
         }
 
-        public void UpdateColor()
+        private void UpdateColor()
         {
             if (_justFailed)
             {
@@ -255,7 +255,7 @@ namespace SM64_Diagnostic.Controls
             }
 
             BackColor = _currentColor;
-            if (!EditMode) _textBox.BackColor = _currentColor;
+            if (!EditMode) _valueTextBox.BackColor = _currentColor;
         }
 
         public void InvokeFailure()

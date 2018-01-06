@@ -79,7 +79,7 @@ namespace SM64_Diagnostic.Controls
             itemEdit.Click += (sender, e) => { _varXControl.EditMode = true; };
 
             ToolStripMenuItem itemCopyAsIs = new ToolStripMenuItem("Copy (As Is)");
-            itemCopyAsIs.Click += (sender, e) => { Clipboard.SetText(_varXControl._textBox.Text); };
+            itemCopyAsIs.Click += (sender, e) => { Clipboard.SetText(_varXControl._valueTextBox.Text); };
 
             ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy (Unrounded)");
             itemCopyUnrounded.Click += (sender, e) => { Clipboard.SetText(GetValueForTextbox(false)); };
@@ -107,7 +107,7 @@ namespace SM64_Diagnostic.Controls
             VariableViewerForm varInfo;
             string typeDescr = AddressHolder.MemoryTypeName;
 
-            varInfo = new VariableViewerForm(_varXControl.Name, typeDescr,
+            varInfo = new VariableViewerForm(_varXControl.VarName, typeDescr,
                 String.Format("0x{0:X8}", AddressHolder.GetRamAddress()),
                 String.Format("0x{0:X8}", AddressHolder.GetProcessAddress().ToUInt64()));
 
