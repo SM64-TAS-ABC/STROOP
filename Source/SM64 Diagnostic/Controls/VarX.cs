@@ -160,14 +160,7 @@ namespace SM64_Diagnostic.Controls
             _tablePanel.Controls.Add(this._checkBoxBool, 1, 0);
             _tablePanel.BackColor = _currentColor;
 
-            if (useCheckbox)
-            {
-                _textBox.Visible = false;
-            }
-            else
-            {
-                _checkBoxBool.Visible = false;
-            }
+            SetUseCheckbox(useCheckbox);
 
             _textboxOldContextMenuStrip = _textBox.ContextMenuStrip;
             _contextMenuStrip = new ContextMenuStrip();
@@ -228,6 +221,20 @@ namespace SM64_Diagnostic.Controls
         {
             _justFailed = true;
             _lastFailureTime = DateTime.Now;
+        }
+
+        protected void SetUseCheckbox(bool useCheckbox)
+        {
+            if (useCheckbox)
+            {
+                _textBox.Visible = false;
+                _checkBoxBool.Visible = true;
+            }
+            else
+            {
+                _textBox.Visible = true;
+                _checkBoxBool.Visible = false;
+            }
         }
 
         public void Update()

@@ -34,6 +34,7 @@ namespace SM64_Diagnostic.Controls
             {
                 _displayAsCheckbox = !_displayAsCheckbox;
                 itemDisplayAsCheckbox.Checked = _displayAsCheckbox;
+                SetUseCheckbox(_displayAsCheckbox);
             };
             itemDisplayAsCheckbox.Checked = _displayAsCheckbox;
 
