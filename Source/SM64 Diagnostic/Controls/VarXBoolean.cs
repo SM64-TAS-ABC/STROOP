@@ -18,11 +18,10 @@ namespace SM64_Diagnostic.Controls
         private bool _displayAsInverted;
 
         public VarXBoolean(
-            string name,
             AddressHolder addressHolder,
-            Color? backgroundColor,
+            VarXControl varXControl,
             bool displayAsInverted = false)
-            : base(name, addressHolder, backgroundColor, 0, false, true)
+            : base(addressHolder, varXControl, 0, false, true)
         {
             _displayAsCheckbox = true;
             _displayAsInverted = displayAsInverted;
@@ -68,7 +67,7 @@ namespace SM64_Diagnostic.Controls
             if (checkState == CheckState.Indeterminate) return "";
 
             string offValue = "0";
-            string onValue = AddressHolder.Mask?.ToString() ?? "1";
+            string onValue = _addressHolder.Mask?.ToString() ?? "1";
 
             return HandleInverting(checkState == CheckState.Unchecked) ? offValue : onValue;
         }

@@ -14,46 +14,47 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarX
     {
-        protected readonly AddressHolder AddressHolder;
+        protected readonly AddressHolder _addressHolder;
         protected readonly VarXControl _varXControl;
 
+        private readonly bool _startsAsCheckbox;
+
         public static VarX CreateVarX(
-            string name,
             AddressHolder addressHolder,
+            VarXControl varXControl,
             VarXSubclass varXSubclcass,
-            Color? backgroundColor,
             bool invertBool = false)
         {
             switch (varXSubclcass)
             {
                 case VarXSubclass.String:
-                    return new VarX(name, addressHolder, backgroundColor);
+                    return new VarX(addressHolder, varXControl);
 
                 case VarXSubclass.Number:
-                    return new VarXNumber(name, addressHolder, backgroundColor);
+                    return new VarXNumber(addressHolder, varXControl);
 
                 case VarXSubclass.UnsignedAngle:
-                    return new VarXAngle(name, addressHolder, backgroundColor, false);
+                    return new VarXAngle(addressHolder, varXControl, false);
                 case VarXSubclass.SignedAngle:
-                    return new VarXAngle(name, addressHolder, backgroundColor, true);
+                    return new VarXAngle(addressHolder, varXControl, true);
 
                 case VarXSubclass.Object:
-                    return new VarXObject(name, addressHolder, backgroundColor);
+                    return new VarXObject(addressHolder, varXControl);
 
                 case VarXSubclass.Boolean:
-                    return new VarXBoolean(name, addressHolder, backgroundColor, invertBool);
+                    return new VarXBoolean(addressHolder, varXControl, invertBool);
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        protected VarX(string name, AddressHolder addressHolder, Color? backgroundColor, bool useCheckbox = false)
+        protected VarX(AddressHolder addressHolder, VarXControl varXControl, bool useCheckbox = false)
         {
-            AddressHolder = addressHolder;
+            _addressHolder = addressHolder;
+            _varXControl = varXControl;
 
-            _varXControl = new VarXControl(this, name, backgroundColor, useCheckbox);
-
+            _startsAsCheckbox = useCheckbox;
             AddContextMenuStripItems();
         }
 
@@ -63,6 +64,11 @@ namespace SM64_Diagnostic.Controls
             {
                 return _varXControl;
             }
+        }
+
+        public bool StartsAsCheckbox()
+        {
+            return _startsAsCheckbox;
         }
 
         protected void AddContextMenuStripItems()
@@ -94,22 +100,14 @@ namespace SM64_Diagnostic.Controls
             _varXControl._contextMenuStrip.Items.Add(itemPaste);
         }
 
-
-
-        public void Update()
-        {
-            _varXControl.UpdateControl();
-        }
-
-
         public void ShowVarInfo()
         {
             VariableViewerForm varInfo;
-            string typeDescr = AddressHolder.MemoryTypeName;
+            string typeDescr = _addressHolder.MemoryTypeName;
 
             varInfo = new VariableViewerForm(_varXControl.VarName, typeDescr,
-                String.Format("0x{0:X8}", AddressHolder.GetRamAddress()),
-                String.Format("0x{0:X8}", AddressHolder.GetProcessAddress().ToUInt64()));
+                String.Format("0x{0:X8}", _addressHolder.GetRamAddress()),
+                String.Format("0x{0:X8}", _addressHolder.GetProcessAddress().ToUInt64()));
 
             varInfo.ShowDialog();
         }
@@ -119,7 +117,7 @@ namespace SM64_Diagnostic.Controls
 
         public string GetValueForTextbox(bool handleRounding = true)
         {
-            List<string> values = AddressHolder.GetValues();
+            List<string> values = _addressHolder.GetValues();
             (bool meaningfulValue, string value) = CombineValues(values);
             if (!meaningfulValue) return value;
 
@@ -140,13 +138,13 @@ namespace SM64_Diagnostic.Controls
             value = HandleUnnegating(value);
             value = HandleAngleUnconverting(value);
 
-            return AddressHolder.SetValue(value);
+            return _addressHolder.SetValue(value);
         }
 
 
         public CheckState GetValueForCheckbox()
         {
-            List<string> values = AddressHolder.GetValues();
+            List<string> values = _addressHolder.GetValues();
             List<CheckState> checkStates = values.ConvertAll(value => ConvertValueToCheckState(value));
             CheckState checkState = CombineCheckStates(checkStates);
             return checkState;
@@ -155,10 +153,8 @@ namespace SM64_Diagnostic.Controls
         public bool SetValueFromCheckbox(CheckState checkState)
         {
             string value = ConvertCheckStateToValue(checkState);
-            return AddressHolder.SetValue(value);
+            return _addressHolder.SetValue(value);
         }
-
-
 
 
         protected (bool meaningfulValue, string stringValue) CombineValues(List<string> values)

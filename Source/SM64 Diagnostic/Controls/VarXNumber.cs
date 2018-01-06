@@ -21,13 +21,12 @@ namespace SM64_Diagnostic.Controls
         private bool _displayAsNegated;
 
         public VarXNumber(
-            string name,
             AddressHolder addressHolder,
-            Color? backgroundColor,
+            VarXControl varXControl,
             int? roundingLimit = 3,
             bool displayAsHex = false,
             bool useCheckbox = false)
-            : base(name, addressHolder, backgroundColor, useCheckbox)
+            : base(addressHolder, varXControl, useCheckbox)
         {
             if (roundingLimit.HasValue)
             {
@@ -101,7 +100,7 @@ namespace SM64_Diagnostic.Controls
         {
             if (!_displayAsHex) return stringValue;
 
-            string numHexDigits = AddressHolder.ByteCount > 0 ? (AddressHolder.ByteCount * 2).ToString() : "";
+            string numHexDigits = _addressHolder.ByteCount > 0 ? (_addressHolder.ByteCount * 2).ToString() : "";
 
             int ? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
             if (intValueNullable.HasValue)

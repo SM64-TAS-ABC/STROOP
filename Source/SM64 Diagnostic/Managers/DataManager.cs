@@ -17,22 +17,22 @@ namespace SM64_Diagnostic.Managers
         private bool _varXSystem;
         private NoTearFlowLayoutPanel _variableTable;
         protected List<IDataContainer> _dataControls;
-        protected List<VarX> _varXList;
+        protected List<VarXControl> _varXControlList;
         protected List<IDataContainer> _specialDataControls = new List<IDataContainer>();
 
         protected virtual List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>();
 
-        public DataManager(List<WatchVariable> data, NoTearFlowLayoutPanel variableTable, bool varXSystem = false, List<VarX> varXList = null)
+        public DataManager(List<WatchVariable> data, NoTearFlowLayoutPanel variableTable, bool varXSystem = false, List<VarXControl> varXControlList = null)
         {
             _varXSystem = varXSystem;
 
             if (_varXSystem)
             {
                 _variableTable = variableTable;
-                _varXList = varXList;
-                foreach (VarX varX in varXList)
+                _varXControlList = varXControlList;
+                foreach (VarXControl varXControl in varXControlList)
                 {
-                    _variableTable.Controls.Add(varX.Control);
+                    _variableTable.Controls.Add(varXControl);
                 }
 
 
@@ -128,9 +128,9 @@ namespace SM64_Diagnostic.Managers
         {
             if (_varXSystem)
             {
-                foreach (VarX varX in _varXList)
+                foreach (VarXControl varXControl in _varXControlList)
                 {
-                    varX.Update();
+                    varXControl.UpdateControl();
                 }
             }
             else

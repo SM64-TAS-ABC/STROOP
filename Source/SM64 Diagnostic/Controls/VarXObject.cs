@@ -17,10 +17,9 @@ namespace SM64_Diagnostic.Controls
         private bool _displayAsObject;
 
         public VarXObject(
-            string name,
             AddressHolder addressHolder,
-            Color? backgroundColor)
-            : base(name, addressHolder, backgroundColor, 0, true)
+            VarXControl varXControl)
+            : base(addressHolder, varXControl, 0, true)
         {
             _displayAsObject = true;
 

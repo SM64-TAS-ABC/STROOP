@@ -1462,9 +1462,9 @@ namespace SM64_Diagnostic.Utilities
             return objectData;
         }
 
-        public static List<VarX> OpenWatchVarX(string path, string schemaFile)
+        public static List<VarXControl> OpenWatchVarXControl(string path, string schemaFile)
         {
-            var objectData = new List<VarX>();
+            var objectData = new List<VarXControl>();
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
@@ -1482,8 +1482,8 @@ namespace SM64_Diagnostic.Utilities
                 if (element.Name.ToString() != "Data")
                     continue;
 
-                VarX varX = GetVarXFromElement(element);
-                objectData.Add(varX);
+                VarXControl varXControl = GetVarXControlFromElement(element);
+                objectData.Add(varXControl);
             }
 
             return objectData;
@@ -2464,7 +2464,7 @@ namespace SM64_Diagnostic.Utilities
                 isAngle);
         }
 
-        public static VarX GetVarXFromElement(XElement element)
+        public static VarXControl GetVarXControlFromElement(XElement element)
         {
             string name = element.Value;
 
@@ -2512,7 +2512,7 @@ namespace SM64_Diagnostic.Utilities
             bool isAngle = element.Attribute(XName.Get("isAngle")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isAngle")).Value) : false;
 
-            return VarX.CreateVarX(
+            return new VarXControl(
                 name,
                 addressHolder,
                 varXSubclass,
