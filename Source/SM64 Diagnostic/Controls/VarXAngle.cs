@@ -116,9 +116,12 @@ namespace SM64_Diagnostic.Controls
             if (!doubleValueNullable.HasValue) return stringValue;
             double doubleValue = doubleValueNullable.Value;
 
-            doubleValue = _signed ?
+            if (_constrainToOneRevolution)
+            {
+                doubleValue = _signed ?
                     MoreMath.MaybeNegativeModulus(doubleValue, 65536) :
                     MoreMath.NonNegativeModulus(doubleValue, 65536);
+            }
             doubleValue = (doubleValue / 65536) * GetAngleUnitTypeMaxValue();
 
             return doubleValue.ToString();
@@ -131,9 +134,12 @@ namespace SM64_Diagnostic.Controls
             double doubleValue = doubleValueNullable.Value;
 
             doubleValue = (doubleValue / GetAngleUnitTypeMaxValue()) * 65536;
-            doubleValue = _signed ?
-                MoreMath.MaybeNegativeModulus(doubleValue, 65536) :
-                MoreMath.NonNegativeModulus(doubleValue, 65536);
+            if (_constrainToOneRevolution)
+            {
+                doubleValue = _signed ?
+                    MoreMath.MaybeNegativeModulus(doubleValue, 65536) :
+                    MoreMath.NonNegativeModulus(doubleValue, 65536);
+            }
 
             return doubleValue.ToString();
         }
