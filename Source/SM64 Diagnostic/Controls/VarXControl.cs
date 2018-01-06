@@ -98,7 +98,7 @@ namespace SM64_Diagnostic.Controls
             _showBorder = false;
             _editMode = false;
 
-            // initialize color fields
+            // Initialize color fields
             _baseColor = backgroundColor ?? DEFAULT_COLOR;
             _currentColor = _baseColor;
             _justFailed = false;
