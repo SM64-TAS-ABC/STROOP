@@ -112,7 +112,9 @@ namespace SM64_Diagnostic.Controls
 
 
 
-        public string GetValueForTextbox(bool handleRounding = true)
+        public string GetValueForTextbox(
+            bool handleRounding = true,
+            bool handleFormatting = true)
         {
             List<string> values = _addressHolder.GetValues();
             (bool meaningfulValue, string value) = CombineValues(values);
@@ -122,8 +124,8 @@ namespace SM64_Diagnostic.Controls
             if (handleRounding) value = HandleRounding(value);
             value = HandleAngleRoundingOut(value);
             value = HandleNegating(value);
-            value = HandleHexDisplaying(value);
-            value = HandleObjectDisplaying(value);
+            if (handleFormatting) value = HandleHexDisplaying(value);
+            if (handleFormatting) value = HandleObjectDisplaying(value);
 
             return value;
         }

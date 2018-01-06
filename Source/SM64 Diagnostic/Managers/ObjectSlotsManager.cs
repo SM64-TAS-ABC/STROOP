@@ -137,19 +137,30 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             _selectedUpdatePending = true;
-            var selectedSlot = sender as ObjectSlot;
-            bool rightClick = ((System.Windows.Forms.MouseEventArgs)e).Button == MouseButtons.Right;
-            var keyboardState = Keyboard.GetState();
+            ObjectSlot selectedSlot = sender as ObjectSlot;
+            bool isRightClick = ((System.Windows.Forms.MouseEventArgs)e).Button == MouseButtons.Right;
+            KeyboardState keyboardState = Keyboard.GetState();
             bool isCtrlKeyHeld = keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight);
             bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
             bool isAltKeyHeld = keyboardState.IsKeyDown(Key.AltLeft) || keyboardState.IsKeyDown(Key.AltRight);
 
+            DoSlotClick(selectedSlot, isRightClick, isCtrlKeyHeld, isShiftKeyHeld, isAltKeyHeld);
+        }
+
+        public void SelectSlotByAddress(uint address)
+        {
+            ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.Address == address);
+            if (slot != null) DoSlotClick(slot, false, false, false, false);
+        }
+
+        private void DoSlotClick(ObjectSlot selectedSlot, bool isRightClick, bool isCtrlKeyHeld, bool isShiftKeyHeld, bool isAltKeyHeld)
+        { 
             ClickType click;
             if (isAltKeyHeld)
             {
                 click = ClickType.MarkClick;
             }
-            else if (rightClick)
+            else if (isRightClick)
             {
                 click = ClickType.ObjectClick;
             }
