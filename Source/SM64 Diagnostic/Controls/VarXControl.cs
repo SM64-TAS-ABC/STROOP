@@ -186,40 +186,6 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        /*
-        public Color BorderColor
-        {
-            get
-            {
-                return _borderPen.Color;
-            }
-            set
-            {
-                if (_borderPen.Color == value)
-                    return;
-
-                _borderPen.Color = value;
-                Invalidate();
-            }
-        }
-
-        public float BorderWidth
-        {
-            get
-            {
-                return _borderPen.Width;
-            }
-            set
-            {
-                if (_borderPen.Width == value)
-                    return;
-
-                _borderPen.Width = value;
-                Invalidate();
-            }
-        }
-        */
-
         private void OnTextValueKeyDown(KeyEventArgs e)
         {
             if (e.KeyData == Keys.Escape)
