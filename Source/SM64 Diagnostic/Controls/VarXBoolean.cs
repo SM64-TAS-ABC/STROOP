@@ -41,6 +41,31 @@ namespace SM64_Diagnostic.Controls
             _contextMenuStrip.Items.Add(new ToolStripSeparator());
             _contextMenuStrip.Items.Add(itemDisplayAsCheckbox);
         }
-        
+
+
+        public override CheckState ConvertValueToCheckState(string value)
+        {
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
+            if (!doubleValueNullable.HasValue) return CheckState.Unchecked;
+            double doubleValue = doubleValueNullable.Value;
+            return doubleValue == 0 ? CheckState.Unchecked : CheckState.Checked;
+        }
+
+        public override string ConvertCheckStateToValue(CheckState checkState)
+        {
+            switch (checkState)
+            {
+                case CheckState.Unchecked:
+                    return "0";
+                case CheckState.Checked:
+                    return "1";
+                case CheckState.Indeterminate:
+                    return "";
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+
     }
 }

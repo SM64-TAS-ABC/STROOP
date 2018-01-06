@@ -116,7 +116,7 @@ namespace SM64_Diagnostic.Controls
                 return _tablePanel;
             }
         }
-        
+
         private void CreateControls(bool useCheckbox)
         {
             _nameLabel = new Label();
@@ -140,7 +140,7 @@ namespace SM64_Diagnostic.Controls
             _checkBoxBool = new CheckBox();
             _checkBoxBool.CheckAlign = ContentAlignment.MiddleRight;
             _checkBoxBool.CheckState = CheckState.Unchecked;
-            _checkBoxBool.CheckedChanged += CheckboxClick;
+            _checkBoxBool.Click += (sender, e) => SetCheckboxValue(_checkBoxBool.CheckState);
 
             _tablePanel = new BorderedTableLayoutPanel();
             _tablePanel.Size = new Size(230, _nameLabel.Height + 2);
@@ -169,11 +169,6 @@ namespace SM64_Diagnostic.Controls
             _tablePanel.ContextMenuStrip = _contextMenuStrip;
         }
 
-        private void CheckboxClick(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
-
         protected void AddContextMenuStripItems()
         {
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight");
@@ -189,10 +184,10 @@ namespace SM64_Diagnostic.Controls
             itemEdit.Click += (sender, e) => { EditMode = true; };
 
             ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy");
-            itemCopy.Click += (sender, e) => { Clipboard.SetText(GetValueFinal(false)); };
+            itemCopy.Click += (sender, e) => { Clipboard.SetText(GetTextboxValue(false)); };
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
-            itemPaste.Click += (sender, e) => { SetValueFinal(Clipboard.GetText()); };
+            itemPaste.Click += (sender, e) => { SetTextboxValue(Clipboard.GetText()); };
 
             _contextMenuStrip.Items.Add(itemHighlight);
             _contextMenuStrip.Items.Add(itemEdit);
@@ -241,7 +236,8 @@ namespace SM64_Diagnostic.Controls
         {
             if (!_editMode)
             {
-                _textBox.Text = GetValueFinal();
+                _textBox.Text = GetTextboxValue();
+                _checkBoxBool.CheckState = GetCheckboxValue();
             }
 
             UpdateColor();
@@ -279,7 +275,7 @@ namespace SM64_Diagnostic.Controls
 
             if (e.KeyData == Keys.Enter)
             {
-                bool success = SetValueFinal(_textBox.Text);
+                bool success = SetTextboxValue(_textBox.Text);
                 EditMode = false;
                 if (!success)
                 {
@@ -294,7 +290,7 @@ namespace SM64_Diagnostic.Controls
 
 
 
-        public string GetValueFinal(bool handleRounding = true)
+        public string GetTextboxValue(bool handleRounding = true)
         {
             List<string> values = AddressHolder.GetValues();
             (bool meaningfulValue, string value) = CombineValues(values);
@@ -310,7 +306,7 @@ namespace SM64_Diagnostic.Controls
             return value;
         }
 
-        public bool SetValueFinal(string value)
+        public bool SetTextboxValue(string value)
         {
             value = HandleObjectUndisplaying(value);
             value = HandleHexUndisplaying(value);
@@ -321,37 +317,43 @@ namespace SM64_Diagnostic.Controls
         }
 
 
-
-
-
-        public (bool meaningfulValue, string stringValue) CombineValues(List<string> values)
+        private CheckState GetCheckboxValue()
         {
-            string combinedValue = "(none)";
-            string firstValue = null;
-            bool atLeastOneValueIncorporated = false;
-            bool meaningfulValue = false;
+            List<string> values = AddressHolder.GetValues();
+            List<CheckState> checkStates = values.ConvertAll(value => ConvertValueToCheckState(value));
+            CheckState checkState = CombineCheckStates(checkStates);
+            return checkState;
+        }
 
-            foreach (string value in values)
+        private bool SetCheckboxValue(CheckState checkState)
+        {
+            string value = ConvertCheckStateToValue(checkState);
+            return AddressHolder.SetValue(value);
+        }
+
+
+
+
+        protected (bool meaningfulValue, string stringValue) CombineValues(List<string> values)
+        {
+            if (values.Count == 0) return (false, "(none)");
+            string firstValue = values[0];
+            for (int i = 1; i < values.Count; i++)
             {
-                if (!atLeastOneValueIncorporated)
-                {
-                    combinedValue = value;
-                    firstValue = value;
-                    atLeastOneValueIncorporated = true;
-                    meaningfulValue = true;
-                }
-                else
-                {
-                    if (value != firstValue)
-                    {
-                        combinedValue = "(multiple values)";
-                        meaningfulValue = false;
-                        break;
-                    }
-                }
+                if (values[i] != firstValue) return (false, "multiple values");
             }
+            return (true, firstValue);
+        }
 
-            return (meaningfulValue, combinedValue);
+        protected CheckState CombineCheckStates(List<CheckState> checkStates)
+        {
+            if (checkStates.Count == 0) return CheckState.Unchecked;
+            CheckState firstCheckState = checkStates[0];
+            for (int i = 1; i < checkStates.Count; i++)
+            {
+                if (checkStates[i] != firstCheckState) return CheckState.Indeterminate;
+            }
+            return firstCheckState;
         }
 
         // Number methods
@@ -409,6 +411,19 @@ namespace SM64_Diagnostic.Controls
         {
             return value;
         }
+
+        // Boolean methods
+
+        public virtual CheckState ConvertValueToCheckState(string value)
+        {
+            return CheckState.Unchecked;
+        }
+
+        public virtual string ConvertCheckStateToValue(CheckState checkState)
+        {
+            return "";
+        }
+
 
     }
 }
