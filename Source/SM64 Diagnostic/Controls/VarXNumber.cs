@@ -39,6 +39,8 @@ namespace SM64_Diagnostic.Controls
             _displayAsNegated = false;
 
             AddNumberContextMenuStripItems();
+
+            if (coordinate != null) VarXCoordinateUtilities.NotifyVarXCoordinate(coordinate.Value, this);
         }
 
         private void AddNumberContextMenuStripItems()
