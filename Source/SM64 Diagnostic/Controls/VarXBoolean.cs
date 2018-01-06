@@ -30,7 +30,7 @@ namespace SM64_Diagnostic.Controls
             AddBooleanContextMenuStripItems();
         }
 
-        protected void AddBooleanContextMenuStripItems()
+        private void AddBooleanContextMenuStripItems()
         {
             ToolStripMenuItem itemDisplayAsCheckbox = new ToolStripMenuItem("Display as Checkbox");
             itemDisplayAsCheckbox.Click += (sender, e) =>
@@ -55,7 +55,7 @@ namespace SM64_Diagnostic.Controls
         }
 
 
-        public override CheckState ConvertValueToCheckState(string value)
+        protected override CheckState ConvertValueToCheckState(string value)
         {
             double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
             if (!doubleValueNullable.HasValue) return CheckState.Unchecked;
@@ -63,7 +63,7 @@ namespace SM64_Diagnostic.Controls
             return HandleInverting(doubleValue == 0) ? CheckState.Unchecked : CheckState.Checked;
         }
 
-        public override string ConvertCheckStateToValue(CheckState checkState)
+        protected override string ConvertCheckStateToValue(CheckState checkState)
         {
             if (checkState == CheckState.Indeterminate) return "";
 
@@ -73,7 +73,7 @@ namespace SM64_Diagnostic.Controls
             return HandleInverting(checkState == CheckState.Unchecked) ? offValue : onValue;
         }
 
-        private bool HandleInverting(bool boolValue)
+        protected bool HandleInverting(bool boolValue)
         {
             return boolValue != _displayAsInverted;
         }

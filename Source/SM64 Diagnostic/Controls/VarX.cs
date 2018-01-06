@@ -14,7 +14,7 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarX
     {
-        public readonly AddressHolder AddressHolder;
+        protected readonly AddressHolder AddressHolder;
         protected readonly VarXControl _varXControl;
 
         public static VarX CreateVarX(
@@ -48,7 +48,7 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public VarX(string name, AddressHolder addressHolder, Color? backgroundColor, bool useCheckbox = false)
+        protected VarX(string name, AddressHolder addressHolder, Color? backgroundColor, bool useCheckbox = false)
         {
             AddressHolder = addressHolder;
 
@@ -56,8 +56,6 @@ namespace SM64_Diagnostic.Controls
 
             AddContextMenuStripItems();
         }
-
-
 
         public Control Control
         {
@@ -115,7 +113,6 @@ namespace SM64_Diagnostic.Controls
 
             varInfo.ShowDialog();
         }
-
 
 
 
@@ -188,68 +185,68 @@ namespace SM64_Diagnostic.Controls
 
         // Number methods
 
-        public virtual string HandleRounding(string value)
+        protected virtual string HandleRounding(string value)
         {
             return value;
         }
 
-        public virtual string HandleNegating(string value)
+        protected virtual string HandleNegating(string value)
         {
             return value;
         }
 
-        public virtual string HandleUnnegating(string value)
+        protected virtual string HandleUnnegating(string value)
         {
             return value;
         }
 
-        public virtual string HandleHexDisplaying(string value)
+        protected virtual string HandleHexDisplaying(string value)
         {
             return value;
         }
 
-        public virtual string HandleHexUndisplaying(string value)
+        protected virtual string HandleHexUndisplaying(string value)
         {
             return value;
         }
 
         // Angle methods
 
-        public virtual string HandleAngleConverting(string value)
+        protected virtual string HandleAngleConverting(string value)
         {
             return value;
         }
 
-        public virtual string HandleAngleUnconverting(string value)
+        protected virtual string HandleAngleUnconverting(string value)
         {
             return value;
         }
 
-        public virtual string HandleAngleRoundingOut(string value)
+        protected virtual string HandleAngleRoundingOut(string value)
         {
             return value;
         }
 
         // Object methods
 
-        public virtual string HandleObjectDisplaying(string value)
+        protected virtual string HandleObjectDisplaying(string value)
         {
             return value;
         }
 
-        public virtual string HandleObjectUndisplaying(string value)
+        protected virtual string HandleObjectUndisplaying(string value)
         {
             return value;
         }
 
         // Boolean methods
 
-        public virtual CheckState ConvertValueToCheckState(string value)
+        protected virtual CheckState ConvertValueToCheckState(string value)
         {
             return CheckState.Unchecked;
         }
 
-        public virtual string ConvertCheckStateToValue(CheckState checkState)
+        protected virtual string ConvertCheckStateToValue(CheckState checkState)
         {
             return "";
         }

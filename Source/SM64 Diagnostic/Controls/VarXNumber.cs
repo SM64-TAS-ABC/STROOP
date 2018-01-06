@@ -41,7 +41,7 @@ namespace SM64_Diagnostic.Controls
             AddNumberContextMenuStripItems();
         }
 
-        protected void AddNumberContextMenuStripItems()
+        private void AddNumberContextMenuStripItems()
         {
             ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to ...");
             List<int> roundingLimitNumbers = Enumerable.Range(0, MAX_ROUNDING_LIMIT + 1).ToList();
@@ -74,7 +74,7 @@ namespace SM64_Diagnostic.Controls
             _varXControl._contextMenuStrip.Items.Add(itemDisplayAsNegated);
         }
 
-        public override string HandleRounding(string stringValue)
+        protected override string HandleRounding(string stringValue)
         {
             double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
             if (!doubleValueNullable.HasValue) return stringValue;
@@ -83,7 +83,7 @@ namespace SM64_Diagnostic.Controls
             return doubleValue.ToString();
         }
 
-        public override string HandleNegating(string stringValue)
+        protected override string HandleNegating(string stringValue)
         {
             double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
             if (!doubleValueNullable.HasValue) return stringValue;
@@ -92,12 +92,12 @@ namespace SM64_Diagnostic.Controls
             return doubleValue.ToString();
         }
 
-        public override string HandleUnnegating(string stringValue)
+        protected override string HandleUnnegating(string stringValue)
         {
             return HandleNegating(stringValue);
         }
 
-        public override string HandleHexDisplaying(string stringValue)
+        protected override string HandleHexDisplaying(string stringValue)
         {
             if (!_displayAsHex) return stringValue;
 
@@ -118,7 +118,7 @@ namespace SM64_Diagnostic.Controls
             return stringValue;
         }
 
-        public override string HandleHexUndisplaying(string value)
+        protected override string HandleHexUndisplaying(string value)
         {
             if (value != null && value.Length >= 2 && value.Substring(0,2) == "0x")
             {

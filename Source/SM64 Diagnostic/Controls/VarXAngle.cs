@@ -35,7 +35,7 @@ namespace SM64_Diagnostic.Controls
             AddAngleContextMenuStripItems();
         }
 
-        protected void AddAngleContextMenuStripItems()
+        private void AddAngleContextMenuStripItems()
         {
             ToolStripMenuItem itemSign = new ToolStripMenuItem("Sign...");
             ControlUtilities.AddDropDownItems(
@@ -92,7 +92,7 @@ namespace SM64_Diagnostic.Controls
             return signed ? -1 * maxValue / 2 : 0;
         }
 
-        public override string HandleAngleConverting(string stringValue)
+        protected override string HandleAngleConverting(string stringValue)
         {
             double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
             if (!doubleValueNullable.HasValue) return stringValue;
@@ -106,7 +106,7 @@ namespace SM64_Diagnostic.Controls
             return doubleValue.ToString();
         }
 
-        public override string HandleAngleUnconverting(string stringValue)
+        protected override string HandleAngleUnconverting(string stringValue)
         {
             double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
             if (!doubleValueNullable.HasValue) return stringValue;
@@ -120,7 +120,7 @@ namespace SM64_Diagnostic.Controls
             return doubleValue.ToString();
         }
 
-        public override string HandleAngleRoundingOut(string stringValue)
+        protected override string HandleAngleRoundingOut(string stringValue)
         {
             double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
             if (!doubleValueNullable.HasValue) return stringValue;

@@ -27,7 +27,7 @@ namespace SM64_Diagnostic.Controls
             AddObjectContextMenuStripItems();
         }
 
-        protected void AddObjectContextMenuStripItems()
+        private void AddObjectContextMenuStripItems()
         {
             ToolStripMenuItem itemDisplayAsObject = new ToolStripMenuItem("Display as Object");
             itemDisplayAsObject.Click += (sender, e) =>
@@ -56,18 +56,18 @@ namespace SM64_Diagnostic.Controls
             _varXControl._contextMenuStrip.Items.Add(itemSelectObject);
         }
 
-        public override string HandleHexDisplaying(string value)
+        protected override string HandleHexDisplaying(string value)
         {
             // prevent hex display if we're displaying as object
             return _displayAsObject ? value : base.HandleHexDisplaying(value);
         }
 
-        public override string HandleObjectDisplaying(string value)
+        protected override string HandleObjectDisplaying(string value)
         {
             return base.HandleObjectDisplaying(value);
         }
 
-        public override string HandleObjectUndisplaying(string value)
+        protected override string HandleObjectUndisplaying(string value)
         {
             return base.HandleObjectUndisplaying(value);
         }
