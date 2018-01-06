@@ -169,7 +169,7 @@ namespace SM64_Diagnostic.Controls
                 _getterFunction = () =>
                 {
                     return EffectiveAddressList.ConvertAll(
-                        address => Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing).ToString());
+                        address => Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing, Mask).ToString());
                 };
                 _setterFunction = (string value) =>
                 {
@@ -177,7 +177,7 @@ namespace SM64_Diagnostic.Controls
                     if (effectiveAddressList.Count == 0) return false;
                     return effectiveAddressList.ConvertAll(
                         address => Config.Stream.SetValueRoundingWrapping(
-                            MemoryType, value, address, UseAbsoluteAddressing))
+                            MemoryType, value, address, UseAbsoluteAddressing, Mask))
                             .Aggregate(true, (b1, b2) => b1 && b2);
                 };
             }
