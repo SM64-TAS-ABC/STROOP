@@ -2427,6 +2427,7 @@ namespace SM64_Diagnostic.Utilities
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetPAL"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value),
+                    null,
                     true);
 
             bool useHex = (element.Attribute(XName.Get("useHex")) != null) ?
@@ -2481,6 +2482,9 @@ namespace SM64_Diagnostic.Utilities
 
             string typeName = (element.Attribute(XName.Get("type"))?.Value);
 
+            uint? mask = element.Attribute(XName.Get("mask")) != null ?
+                (uint?)ParsingUtilities.ParseHex(element.Attribute(XName.Get("mask")).Value) : null;
+
             AddressHolder addressHolder =
                 new AddressHolder(
                     typeName,
@@ -2490,13 +2494,11 @@ namespace SM64_Diagnostic.Utilities
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetPAL"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value),
+                    mask,
                     false);
 
             bool useHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
-
-            ulong? mask = element.Attribute(XName.Get("mask")) != null ?
-                (ulong?)ParsingUtilities.ParseExtHex(element.Attribute(XName.Get("mask")).Value) : null;
 
             bool isBool = element.Attribute(XName.Get("isBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isBool")).Value) : false;

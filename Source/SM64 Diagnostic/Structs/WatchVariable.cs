@@ -12,7 +12,7 @@ namespace SM64_Diagnostic.Structs
 {
     public class WatchVariable
     {
-        public readonly AddressHolder AddressHolder;
+        private readonly AddressHolder AddressHolder;
         public uint Address { get { return AddressHolder.Offset; } }
 
         public readonly BaseAddressTypeEnum Offset;

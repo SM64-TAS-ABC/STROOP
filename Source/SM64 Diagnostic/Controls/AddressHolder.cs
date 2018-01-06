@@ -29,6 +29,8 @@ namespace SM64_Diagnostic.Controls
         public readonly uint? OffsetPAL;
         public readonly uint? OffsetDefault;
 
+        public readonly uint? Mask;
+
         private readonly Func<List<string>> _getterFunction;
         private readonly Func<string, bool> _setterFunction;
 
@@ -131,7 +133,7 @@ namespace SM64_Diagnostic.Controls
         }
 
         public AddressHolder(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddress,
-            uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, bool returnNonEmptyList)
+            uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, uint? mask, bool returnNonEmptyList)
         {
             if (offsetUS == null && offsetJP == null && offsetPAL == null && offsetDefault == null)
             {
@@ -152,6 +154,9 @@ namespace SM64_Diagnostic.Controls
 
             SpecialType = specialType;
 
+            Mask = mask;
+
+            // TODO remove this after var x is the norm
             _returnNonEmptyList = returnNonEmptyList;
 
             // Created getter/setter functions
