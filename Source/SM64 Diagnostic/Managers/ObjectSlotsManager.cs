@@ -262,8 +262,11 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
+        // TODO remove this once var x is the norm
         public string GetSlotNameFromAddress(uint address)
         {
+            if (address == 0) return "(none)";
+
             var slot = ObjectSlots.FirstOrDefault(s => s.Address == address);
             if (slot == null)
                 return null;
@@ -271,20 +274,38 @@ namespace SM64_Diagnostic.Managers
             return slot.Text;
         }
 
+        // TODO remove this once var x is the norm
         public uint? GetSlotAddressFromName(string name)
         {
+            if (name == null) return null;
+
             name = name.ToLower();
 
-            if (!name.StartsWith("slot: "))
+            if (!name.StartsWith("slot"))
                 return null;
 
-            name = name.Remove(0, "slot: ".Length);
+            name = name.Remove(0, "slot".Length);
+            name = name.Trim();
 
             var slot = ObjectSlots.FirstOrDefault(s => s.Text.ToLower() == name);
             if (slot == null)
                 return null;
 
             return slot.Address;
+        }
+
+        public string GetSlotNameFromAddressVarX(uint address)
+        {
+            ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.Address == address);
+            return slot?.Text;
+        }
+
+        public uint? GetSlotAddressFromNameVarX(string name)
+        {
+            if (name == null) return null;
+            name = name.ToLower().Trim();
+            ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.Text.ToLower() == name);
+            return slot?.Address;
         }
 
         private List<ObjectSlotData> GetProcessedObjects(ObjectGroupsConfig groupConfig, ObjectSlotsConfig slotConfig)

@@ -61,14 +61,31 @@ namespace SM64_Diagnostic.Controls
             return _displayAsObject ? value : base.HandleHexDisplaying(value);
         }
 
-        protected override string HandleObjectDisplaying(string value)
+        protected override string HandleObjectDisplaying(string stringValue)
         {
-            return base.HandleObjectDisplaying(value);
+            if (!_displayAsObject) return stringValue;
+
+            uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
+            if (!uintValueNullable.HasValue) return stringValue;
+            uint uintValue = uintValueNullable.Value;
+
+            if (uintValue == 0) return "(no object)";
+
+            string slotName = ObjectSlotsManager.Instance.GetSlotNameFromAddressVarX(uintValue);
+            return "Slot " + slotName;
         }
 
-        protected override string HandleObjectUndisplaying(string value)
+        protected override string HandleObjectUndisplaying(string stringValue)
         {
-            return base.HandleObjectUndisplaying(value);
+            string slotName = stringValue.ToLower();
+
+            if (slotName == "(no object)" || slotName == "no object") return "0";
+
+            if (!slotName.StartsWith("slot")) return stringValue;
+            slotName = slotName.Remove(0, "slot".Length);
+            slotName = slotName.Trim();
+            uint? address = ObjectSlotsManager.Instance.GetSlotAddressFromNameVarX(slotName);
+            return address != null ? address.Value.ToString() : stringValue;
         }
     }
 }

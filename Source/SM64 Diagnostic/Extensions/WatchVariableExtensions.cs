@@ -68,7 +68,7 @@ namespace SM64_Diagnostic.Extensions
 
                 var slotName = ManagerContext.Current.ObjectSlotManager.GetSlotNameFromAddress(objAddress);
                 if (slotName != null)
-                    return "Slot: " + slotName;
+                    return "Slot " + slotName;
             }
 
             // Parse floating point
