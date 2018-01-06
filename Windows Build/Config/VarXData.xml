@@ -48,10 +48,10 @@
   <Data type="uint" offsetUS="0x80330E34" offsetJP="0x8032FED4" baseAddressType="Relative" subclass="Object">Stood On Object</Data>
   <Data type="uint" offset="0x7C" baseAddressType="Mario" subclass="Object">Held Object</Data>
 
-  <Data type="uint" offset="0x04" baseAddressType="Mario" isBool="true" mask="0x10">Hat on Head</Data>
-  <Data type="uint" offset="0x04" baseAddressType="Mario" isBool="true" mask="0x20">Hat in Hand</Data>
-  <Data type="uint" offset="0x04" baseAddressType="Mario" isBool="true" mask="0x08">Wing Cap</Data>
-  <Data type="uint" offset="0x04" baseAddressType="Mario" isBool="true" mask="0x04">Metal Cap</Data>
-  <Data type="uint" offset="0x04" baseAddressType="Mario" isBool="true" mask="0x02">Vanish Cap</Data>
-  <Data type="uint" offset="0x04" baseAddressType="Mario" isBool="true" mask="0x01">Should Have Hat</Data>
+  <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x10">Hat on Head</Data>
+  <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x20">Hat in Hand</Data>
+  <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x08">Wing Cap</Data>
+  <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x04">Metal Cap</Data>
+  <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x02">Vanish Cap</Data>
+  <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x01">Should Have Hat</Data>
 </WaterData>

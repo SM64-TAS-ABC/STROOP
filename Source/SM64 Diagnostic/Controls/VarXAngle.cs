@@ -31,12 +31,12 @@ namespace SM64_Diagnostic.Controls
             _recommendedSigned = recommendedSigned;
             _currentSigned = null;
             _angleUnitType = angleUnitType;
+
+            AddAngleContextMenuStripItems();
         }
 
-        protected override void AddContextMenuStripItems()
+        protected void AddAngleContextMenuStripItems()
         {
-            base.AddContextMenuStripItems();
-
             ToolStripMenuItem itemSign = new ToolStripMenuItem("Sign...");
             ControlUtilities.AddDropDownItems(
                 itemSign,

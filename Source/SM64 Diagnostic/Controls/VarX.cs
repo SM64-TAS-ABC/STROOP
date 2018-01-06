@@ -60,7 +60,6 @@ namespace SM64_Diagnostic.Controls
             switch (varXSubclcass)
             {
                 case VarXSubclass.String:
-                case VarXSubclass.Boolean:
                     return new VarX(name, addressHolder, backgroundColor);
 
                 case VarXSubclass.Number:
@@ -74,12 +73,15 @@ namespace SM64_Diagnostic.Controls
                 case VarXSubclass.Object:
                     return new VarXObject(name, addressHolder, backgroundColor);
 
+                case VarXSubclass.Boolean:
+                    return new VarXBoolean(name, addressHolder, backgroundColor);
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        public VarX(string name, AddressHolder addressHolder, Color? backgroundColor)
+        public VarX(string name, AddressHolder addressHolder, Color? backgroundColor, bool useCheckbox = false)
         {
             Name = name;
             AddressHolder = addressHolder;
@@ -91,7 +93,7 @@ namespace SM64_Diagnostic.Controls
             _justFailed = false;
             _lastFailureTime = DateTime.Now;
 
-            CreateControls();
+            CreateControls(useCheckbox);
             AddContextMenuStripItems();
         }
 
@@ -102,6 +104,7 @@ namespace SM64_Diagnostic.Controls
         private BorderedTableLayoutPanel _tablePanel;
         protected Label _nameLabel;
         protected TextBox _textBox;
+        protected CheckBox _checkBoxBool;
 
         protected ContextMenuStrip _textboxOldContextMenuStrip;
         protected ContextMenuStrip _contextMenuStrip;
@@ -114,51 +117,71 @@ namespace SM64_Diagnostic.Controls
             }
         }
         
-        private void CreateControls()
+        private void CreateControls(bool useCheckbox)
         {
-            this._nameLabel = new Label();
-            this._nameLabel.Size = new Size(210, 20); //TODO check this
-            this._nameLabel.Text = Name;
-            this._nameLabel.Margin = new Padding(3, 3, 3, 3);
-            this._nameLabel.Click += _nameLabel_Click;
-            this._nameLabel.ImageAlign = ContentAlignment.MiddleRight;
-            this._nameLabel.BackColor = Color.Transparent;
+            _nameLabel = new Label();
+            _nameLabel.Size = new Size(210, 20); //TODO check this
+            _nameLabel.Text = Name;
+            _nameLabel.Margin = new Padding(3, 3, 3, 3);
+            _nameLabel.Click += _nameLabel_Click;
+            _nameLabel.ImageAlign = ContentAlignment.MiddleRight;
+            _nameLabel.BackColor = Color.Transparent;
 
-            this._textBox = new TextBox();
-            this._textBox.ReadOnly = true;
-            this._textBox.BorderStyle = BorderStyle.None;
-            this._textBox.TextAlign = HorizontalAlignment.Right;
-            this._textBox.Width = 200;
-            this._textBox.Margin = new Padding(6, 3, 6, 3);
-            this._textBox.KeyDown += OnTextValueKeyDown;
-            this._textBox.DoubleClick += _textBoxValue_DoubleClick;
-            this._textBox.Leave += (sender, e) => { EditMode = false; };
+            _textBox = new TextBox();
+            _textBox.ReadOnly = true;
+            _textBox.BorderStyle = BorderStyle.None;
+            _textBox.TextAlign = HorizontalAlignment.Right;
+            _textBox.Width = 200;
+            _textBox.Margin = new Padding(6, 3, 6, 3);
+            _textBox.KeyDown += OnTextValueKeyDown;
+            _textBox.DoubleClick += _textBoxValue_DoubleClick;
+            _textBox.Leave += (sender, e) => { EditMode = false; };
 
-            this._tablePanel = new BorderedTableLayoutPanel();
-            this._tablePanel.Size = new Size(230, _nameLabel.Height + 2);
-            this._tablePanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            this._tablePanel.RowCount = 1;
-            this._tablePanel.ColumnCount = 2;
-            this._tablePanel.RowStyles.Clear();
-            this._tablePanel.RowStyles.Add(new RowStyle(SizeType.Absolute, _nameLabel.Height + 3));
-            this._tablePanel.ColumnStyles.Clear();
-            this._tablePanel.Margin = new Padding(0);
-            this._tablePanel.Padding = new Padding(0);
-            this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120));
-            this._tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
-            this._tablePanel.ShowBorder = false;
-            this._tablePanel.Controls.Add(_nameLabel, 0, 0);
-            this._tablePanel.Controls.Add(this._textBox, 1, 0);
-            this._tablePanel.BackColor = _currentColor;
+            _checkBoxBool = new CheckBox();
+            _checkBoxBool.CheckAlign = ContentAlignment.MiddleRight;
+            _checkBoxBool.CheckState = CheckState.Unchecked;
+            _checkBoxBool.CheckedChanged += CheckboxClick;
+
+            _tablePanel = new BorderedTableLayoutPanel();
+            _tablePanel.Size = new Size(230, _nameLabel.Height + 2);
+            _tablePanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+            _tablePanel.RowCount = 1;
+            _tablePanel.ColumnCount = 2;
+            _tablePanel.RowStyles.Clear();
+            _tablePanel.RowStyles.Add(new RowStyle(SizeType.Absolute, _nameLabel.Height + 3));
+            _tablePanel.ColumnStyles.Clear();
+            _tablePanel.Margin = new Padding(0);
+            _tablePanel.Padding = new Padding(0);
+            _tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120));
+            _tablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
+            _tablePanel.ShowBorder = false;
+            _tablePanel.Controls.Add(_nameLabel, 0, 0);
+            _tablePanel.Controls.Add(this._textBox, 1, 0);
+            _tablePanel.Controls.Add(this._checkBoxBool, 1, 0);
+            _tablePanel.BackColor = _currentColor;
+
+            if (useCheckbox)
+            {
+                _textBox.Visible = false;
+            }
+            else
+            {
+                _checkBoxBool.Visible = false;
+            }
 
             _textboxOldContextMenuStrip = _textBox.ContextMenuStrip;
             _contextMenuStrip = new ContextMenuStrip();
-            this._nameLabel.ContextMenuStrip = _contextMenuStrip;
-            this._textBox.ContextMenuStrip = _contextMenuStrip;
-            this._tablePanel.ContextMenuStrip = _contextMenuStrip;
+            _nameLabel.ContextMenuStrip = _contextMenuStrip;
+            _textBox.ContextMenuStrip = _contextMenuStrip;
+            _tablePanel.ContextMenuStrip = _contextMenuStrip;
         }
 
-        protected virtual void AddContextMenuStripItems()
+        private void CheckboxClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        protected void AddContextMenuStripItems()
         {
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight");
             itemHighlight.Click += (sender, e) =>

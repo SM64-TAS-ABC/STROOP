@@ -20,8 +20,14 @@ namespace SM64_Diagnostic.Controls
         private bool _displayAsHex;
         private bool _displayAsNegated;
 
-        public VarXNumber(string name, AddressHolder addressHolder, Color? backgroundColor, int? roundingLimit = 3, bool displayAsHex = false)
-            : base(name, addressHolder, backgroundColor)
+        public VarXNumber(
+            string name,
+            AddressHolder addressHolder,
+            Color? backgroundColor,
+            int? roundingLimit = 3,
+            bool displayAsHex = false,
+            bool useCheckbox = false)
+            : base(name, addressHolder, backgroundColor, useCheckbox)
         {
             if (roundingLimit.HasValue)
             {
@@ -31,12 +37,12 @@ namespace SM64_Diagnostic.Controls
             _roundingLimit = roundingLimit;
             _displayAsHex = displayAsHex;
             _displayAsNegated = false;
+
+            AddNumberContextMenuStripItems();
         }
 
-        protected override void AddContextMenuStripItems()
+        protected void AddNumberContextMenuStripItems()
         {
-            base.AddContextMenuStripItems();
-
             ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to ...");
             List<int> roundingLimitNumbers = Enumerable.Range(0, MAX_ROUNDING_LIMIT + 1).ToList();
             ControlUtilities.AddDropDownItems(
