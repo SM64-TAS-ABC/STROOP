@@ -246,7 +246,7 @@ namespace SM64_Diagnostic.Controls
             if (!_editMode) _valueTextBox.BackColor = _currentColor;
         }
 
-        public void InvokeFailure()
+        private void InvokeFailure()
         {
             _justFailed = true;
             _lastFailureTime = DateTime.Now;
