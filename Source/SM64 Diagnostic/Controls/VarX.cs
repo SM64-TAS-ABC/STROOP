@@ -140,7 +140,7 @@ namespace SM64_Diagnostic.Controls
             _checkBoxBool = new CheckBox();
             _checkBoxBool.CheckAlign = ContentAlignment.MiddleRight;
             _checkBoxBool.CheckState = CheckState.Unchecked;
-            _checkBoxBool.Click += (sender, e) => SetCheckboxValue(_checkBoxBool.CheckState);
+            _checkBoxBool.Click += (sender, e) => SetValueFromCheckbox(_checkBoxBool.CheckState);
 
             _tablePanel = new BorderedTableLayoutPanel();
             _tablePanel.Size = new Size(230, _nameLabel.Height + 2);
@@ -184,10 +184,10 @@ namespace SM64_Diagnostic.Controls
             itemEdit.Click += (sender, e) => { EditMode = true; };
 
             ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy");
-            itemCopy.Click += (sender, e) => { Clipboard.SetText(GetTextboxValue(false)); };
+            itemCopy.Click += (sender, e) => { Clipboard.SetText(GetValueForTextbox(false)); };
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
-            itemPaste.Click += (sender, e) => { SetTextboxValue(Clipboard.GetText()); };
+            itemPaste.Click += (sender, e) => { SetValueFromTextbox(Clipboard.GetText()); };
 
             _contextMenuStrip.Items.Add(itemHighlight);
             _contextMenuStrip.Items.Add(itemEdit);
@@ -236,8 +236,8 @@ namespace SM64_Diagnostic.Controls
         {
             if (!_editMode)
             {
-                _textBox.Text = GetTextboxValue();
-                _checkBoxBool.CheckState = GetCheckboxValue();
+                _textBox.Text = GetValueForTextbox();
+                _checkBoxBool.CheckState = GetValueForCheckbox();
             }
 
             UpdateColor();
@@ -275,7 +275,7 @@ namespace SM64_Diagnostic.Controls
 
             if (e.KeyData == Keys.Enter)
             {
-                bool success = SetTextboxValue(_textBox.Text);
+                bool success = SetValueFromTextbox(_textBox.Text);
                 EditMode = false;
                 if (!success)
                 {
@@ -290,7 +290,7 @@ namespace SM64_Diagnostic.Controls
 
 
 
-        public string GetTextboxValue(bool handleRounding = true)
+        public string GetValueForTextbox(bool handleRounding = true)
         {
             List<string> values = AddressHolder.GetValues();
             (bool meaningfulValue, string value) = CombineValues(values);
@@ -306,7 +306,7 @@ namespace SM64_Diagnostic.Controls
             return value;
         }
 
-        public bool SetTextboxValue(string value)
+        public bool SetValueFromTextbox(string value)
         {
             value = HandleObjectUndisplaying(value);
             value = HandleHexUndisplaying(value);
@@ -317,7 +317,7 @@ namespace SM64_Diagnostic.Controls
         }
 
 
-        private CheckState GetCheckboxValue()
+        private CheckState GetValueForCheckbox()
         {
             List<string> values = AddressHolder.GetValues();
             List<CheckState> checkStates = values.ConvertAll(value => ConvertValueToCheckState(value));
@@ -325,7 +325,7 @@ namespace SM64_Diagnostic.Controls
             return checkState;
         }
 
-        private bool SetCheckboxValue(CheckState checkState)
+        private bool SetValueFromCheckbox(CheckState checkState)
         {
             string value = ConvertCheckStateToValue(checkState);
             return AddressHolder.SetValue(value);
