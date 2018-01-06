@@ -1449,6 +1449,7 @@ namespace SM64_Diagnostic
             this.tabControlMain.Controls.Add(this.tabPageInput);
             this.tabControlMain.Controls.Add(this.tabPageFile);
             this.tabControlMain.Controls.Add(this.tabPageMisc);
+            this.tabControlMain.Controls.Add(this.tabPageX);
             this.tabControlMain.Controls.Add(this.tabPageDebug);
             this.tabControlMain.Controls.Add(this.tabPageMap);
             this.tabControlMain.Controls.Add(this.tabPagePu);
@@ -1462,7 +1463,6 @@ namespace SM64_Diagnostic
             this.tabControlMain.Controls.Add(this.tabPageQuarterFrame);
             this.tabControlMain.Controls.Add(this.tabPageOptions);
             this.tabControlMain.Controls.Add(this.tabPageTesting);
-            this.tabControlMain.Controls.Add(this.tabPageX);
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(2, 2);
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(2);
