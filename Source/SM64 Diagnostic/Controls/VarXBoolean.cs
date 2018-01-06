@@ -58,7 +58,7 @@ namespace SM64_Diagnostic.Controls
                 case CheckState.Unchecked:
                     return "0";
                 case CheckState.Checked:
-                    return "1";
+                    return AddressHolder.Mask?.ToString() ?? "1";
                 case CheckState.Indeterminate:
                     return "";
                 default:

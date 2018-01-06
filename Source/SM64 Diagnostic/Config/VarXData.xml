@@ -56,4 +56,5 @@
   <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x01">Should Have Hat</Data>
 
   <Data type="byte" offset="0x3" mask="0x10" baseAddressType="Object" subclass="Boolean">NOT Visible</Data>
+  <Data type="byte" offset="0x3" mask="0x04" baseAddressType="Object" subclass="Boolean">Face Camera</Data>
 </WaterData>
