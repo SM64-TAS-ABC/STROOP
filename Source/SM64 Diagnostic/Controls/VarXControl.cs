@@ -21,6 +21,23 @@ namespace SM64_Diagnostic.Controls
 
         private Color _currentColor = SystemColors.Control;
 
+        private bool _showBorder;
+        public bool ShowBorder
+        {
+            get
+            {
+                return _showBorder;
+            }
+            set
+            {
+                if (_showBorder == value)
+                    return;
+
+                _showBorder = value;
+                Invalidate();
+            }
+        }
+
         private bool _editMode;
         public bool EditMode
         {
@@ -52,6 +69,7 @@ namespace SM64_Diagnostic.Controls
         {
             _varX = varX;
             _name = name;
+            _showBorder = true;
             _editMode = false;
 
             InitializeBase();
@@ -140,23 +158,7 @@ namespace SM64_Diagnostic.Controls
 
         private Pen _borderPen = new Pen(Color.Red, 5);
 
-        private bool _showBorder = true;
-        public bool ShowBorder
-        {
-            get
-            {
-                return _showBorder;
-            }
-            set
-            {
-                if (_showBorder == value)
-                    return;
 
-                _showBorder = value;
-                Invalidate();
-            }
-        }
-        /*
         public Color BorderColor
         {
             get
@@ -198,7 +200,7 @@ namespace SM64_Diagnostic.Controls
             if (_showBorder)
                 e.Graphics.DrawRectangle(_borderPen, rec);
         }
-        */
+
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

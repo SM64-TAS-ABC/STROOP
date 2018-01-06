@@ -18,7 +18,6 @@ namespace SM64_Diagnostic.Controls
 
         protected readonly VarXControl _varXControl;
 
-        private bool _highlighted;
 
         
 
@@ -71,7 +70,6 @@ namespace SM64_Diagnostic.Controls
             _baseColor = backgroundColor ?? DEFAULT_COLOR;
             _currentColor = _baseColor;
 
-            _highlighted = false;
             _justFailed = false;
             _lastFailureTime = DateTime.Now;
 
@@ -93,11 +91,10 @@ namespace SM64_Diagnostic.Controls
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight");
             itemHighlight.Click += (sender, e) =>
             {
-                _highlighted = !_highlighted;
-                _varXControl.ShowBorder = _highlighted;
-                itemHighlight.Checked = _highlighted;
+                _varXControl.ShowBorder = !_varXControl.ShowBorder;
+                itemHighlight.Checked = _varXControl.ShowBorder;
             };
-            itemHighlight.Checked = _highlighted;
+            itemHighlight.Checked = _varXControl.ShowBorder;
 
             ToolStripMenuItem itemEdit = new ToolStripMenuItem("Edit");
             itemEdit.Click += (sender, e) => { _varXControl.EditMode = true; };
