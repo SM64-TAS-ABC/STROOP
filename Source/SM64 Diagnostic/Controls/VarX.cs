@@ -18,31 +18,9 @@ namespace SM64_Diagnostic.Controls
 
         protected readonly VarXControl _varXControl;
 
-        private bool _editMode;
         private bool _highlighted;
 
-        public bool EditMode
-        {
-            get
-            {
-                return _editMode;
-            }
-            set
-            {
-                _editMode = value;
-                if (_varXControl._textBox != null)
-                {
-                    _varXControl._textBox.ReadOnly = !_editMode;
-                    _varXControl._textBox.BackColor = _editMode ? Color.White : _currentColor;
-                    _varXControl._textBox.ContextMenuStrip = _editMode ? _varXControl._textboxOldContextMenuStrip : _varXControl._contextMenuStrip;
-                    if (_editMode)
-                    {
-                        _varXControl._textBox.Focus();
-                        _varXControl._textBox.SelectAll();
-                    }
-                }
-            }
-        }
+        
 
         private static readonly int FAILURE_DURATION_MS = 1000;
         private static readonly Color FAILURE_COLOR = Color.Red;
@@ -93,7 +71,6 @@ namespace SM64_Diagnostic.Controls
             _baseColor = backgroundColor ?? DEFAULT_COLOR;
             _currentColor = _baseColor;
 
-            _editMode = false;
             _highlighted = false;
             _justFailed = false;
             _lastFailureTime = DateTime.Now;
@@ -123,7 +100,7 @@ namespace SM64_Diagnostic.Controls
             itemHighlight.Checked = _highlighted;
 
             ToolStripMenuItem itemEdit = new ToolStripMenuItem("Edit");
-            itemEdit.Click += (sender, e) => { EditMode = true; };
+            itemEdit.Click += (sender, e) => { _varXControl.EditMode = true; };
 
             ToolStripMenuItem itemCopyAsIs = new ToolStripMenuItem("Copy (As Is)");
             itemCopyAsIs.Click += (sender, e) => { Clipboard.SetText(_varXControl._textBox.Text); };
@@ -155,7 +132,7 @@ namespace SM64_Diagnostic.Controls
 
         public void _textBoxValue_DoubleClick()
         {
-            EditMode = true;
+            _varXControl.EditMode = true;
         }
 
         public void InvokeFailure()
@@ -166,7 +143,7 @@ namespace SM64_Diagnostic.Controls
 
         public void Update()
         {
-            if (!_editMode)
+            if (!_varXControl.EditMode)
             {
                 _varXControl._textBox.Text = GetValueForTextbox();
                 _varXControl._checkBoxBool.CheckState = GetValueForCheckbox();
@@ -194,21 +171,21 @@ namespace SM64_Diagnostic.Controls
             }
 
             _varXControl.BackColor = _currentColor;
-            if (!_editMode) _varXControl._textBox.BackColor = _currentColor;
+            if (!_varXControl.EditMode) _varXControl._textBox.BackColor = _currentColor;
         }
 
         public void OnTextValueKeyDown(KeyEventArgs e)
         {
             if (e.KeyData == Keys.Escape)
             {
-                EditMode = false;
+                _varXControl.EditMode = false;
                 return;
             }
 
             if (e.KeyData == Keys.Enter)
             {
                 bool success = SetValueFromTextbox(_varXControl._textBox.Text);
-                EditMode = false;
+                _varXControl.EditMode = false;
                 if (!success)
                 {
                     InvokeFailure();

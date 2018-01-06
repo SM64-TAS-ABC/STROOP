@@ -21,6 +21,30 @@ namespace SM64_Diagnostic.Controls
 
         private Color _currentColor = SystemColors.Control;
 
+        private bool _editMode;
+        public bool EditMode
+        {
+            get
+            {
+                return _editMode;
+            }
+            set
+            {
+                _editMode = value;
+                if (_textBox != null)
+                {
+                    _textBox.ReadOnly = !_editMode;
+                    _textBox.BackColor = _editMode ? Color.White : _currentColor;
+                    _textBox.ContextMenuStrip = _editMode ? _textboxOldContextMenuStrip : _contextMenuStrip;
+                    if (_editMode)
+                    {
+                        _textBox.Focus();
+                        _textBox.SelectAll();
+                    }
+                }
+            }
+        }
+
         // TODO refactor this
         private static readonly int nameLabelHeight = 20;
 
@@ -28,6 +52,7 @@ namespace SM64_Diagnostic.Controls
         {
             _varX = varX;
             _name = name;
+            _editMode = false;
 
             InitializeBase();
             InitializeControls(useCheckbox);
@@ -74,7 +99,7 @@ namespace SM64_Diagnostic.Controls
             _textBox.Margin = new Padding(6, 3, 6, 3);
             _textBox.KeyDown += (sender, e) => _varX.OnTextValueKeyDown(e);
             _textBox.DoubleClick += (sender, e) => _varX._textBoxValue_DoubleClick();
-            _textBox.Leave += (sender, e) => { _varX.EditMode = false; };
+            _textBox.Leave += (sender, e) => { EditMode = false; };
             base.Controls.Add(this._textBox, 1, 0);
 
             // Checkbox
