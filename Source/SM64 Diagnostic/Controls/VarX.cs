@@ -55,7 +55,11 @@ namespace SM64_Diagnostic.Controls
 
 
         public static VarX CreateVarX(
-            string name, AddressHolder addressHolder, VarXSubclass varXSubclcass, Color? backgroundColor)
+            string name,
+            AddressHolder addressHolder,
+            VarXSubclass varXSubclcass,
+            Color? backgroundColor,
+            bool invertBool = false)
         {
             switch (varXSubclcass)
             {
@@ -74,7 +78,7 @@ namespace SM64_Diagnostic.Controls
                     return new VarXObject(name, addressHolder, backgroundColor);
 
                 case VarXSubclass.Boolean:
-                    return new VarXBoolean(name, addressHolder, backgroundColor);
+                    return new VarXBoolean(name, addressHolder, backgroundColor, invertBool);
 
                 default:
                     throw new ArgumentOutOfRangeException();

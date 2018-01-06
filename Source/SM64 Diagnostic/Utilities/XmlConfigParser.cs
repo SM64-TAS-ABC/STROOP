@@ -2516,7 +2516,8 @@ namespace SM64_Diagnostic.Utilities
                 name,
                 addressHolder,
                 varXSubclass,
-                backgroundColor);
+                backgroundColor,
+                invertBool);
         }
 
         public static ActionTable OpenActionTable(string path)

@@ -15,14 +15,17 @@ namespace SM64_Diagnostic.Controls
     public class VarXBoolean : VarXNumber
     {
         private bool _displayAsCheckbox;
+        private bool _displayAsInverted;
 
         public VarXBoolean(
             string name,
             AddressHolder addressHolder,
-            Color? backgroundColor)
+            Color? backgroundColor,
+            bool displayAsInverted = false)
             : base(name, addressHolder, backgroundColor, 0, false, true)
         {
             _displayAsCheckbox = true;
+            _displayAsInverted = displayAsInverted;
 
             AddBooleanContextMenuStripItems();
         }
@@ -38,8 +41,17 @@ namespace SM64_Diagnostic.Controls
             };
             itemDisplayAsCheckbox.Checked = _displayAsCheckbox;
 
+            ToolStripMenuItem itemDisplayAsInverted = new ToolStripMenuItem("Display as Inverted");
+            itemDisplayAsInverted.Click += (sender, e) =>
+            {
+                _displayAsInverted = !_displayAsInverted;
+                itemDisplayAsInverted.Checked = _displayAsInverted;
+            };
+            itemDisplayAsInverted.Checked = _displayAsInverted;
+
             _contextMenuStrip.Items.Add(new ToolStripSeparator());
             _contextMenuStrip.Items.Add(itemDisplayAsCheckbox);
+            _contextMenuStrip.Items.Add(itemDisplayAsInverted);
         }
 
 
@@ -48,22 +60,22 @@ namespace SM64_Diagnostic.Controls
             double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
             if (!doubleValueNullable.HasValue) return CheckState.Unchecked;
             double doubleValue = doubleValueNullable.Value;
-            return doubleValue == 0 ? CheckState.Unchecked : CheckState.Checked;
+            return HandleInverting(doubleValue == 0) ? CheckState.Unchecked : CheckState.Checked;
         }
 
         public override string ConvertCheckStateToValue(CheckState checkState)
         {
-            switch (checkState)
-            {
-                case CheckState.Unchecked:
-                    return "0";
-                case CheckState.Checked:
-                    return AddressHolder.Mask?.ToString() ?? "1";
-                case CheckState.Indeterminate:
-                    return "";
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            if (checkState == CheckState.Indeterminate) return "";
+
+            string offValue = "0";
+            string onValue = AddressHolder.Mask?.ToString() ?? "1";
+
+            return HandleInverting(checkState == CheckState.Unchecked) ? offValue : onValue;
+        }
+
+        private bool HandleInverting(bool boolValue)
+        {
+            return boolValue != _displayAsInverted;
         }
 
 
