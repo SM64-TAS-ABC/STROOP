@@ -112,10 +112,13 @@ namespace SM64_Diagnostic.Controls
             {
                 List<string> stringList = ParsingUtilities.ParseTextIntoStrings(Clipboard.GetText());
                 if (stringList.Count < 3) return;
+
+                Config.Stream.Suspend();
                 for (int i = 0; i < 3; i++)
                 {
                     coordinateVarList[i].SetValueFromTextbox(stringList[i]);
                 }
+                Config.Stream.Resume();
             };
 
             _separatorCoordinates.Visible = true;

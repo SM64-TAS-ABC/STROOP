@@ -194,9 +194,10 @@ namespace SM64_Diagnostic.Controls
 
         public bool SetValue(string stringValue)
         {
-            Config.Stream.Suspend();
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
             bool success = _setterFunction(stringValue);
-            Config.Stream.Resume();
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
