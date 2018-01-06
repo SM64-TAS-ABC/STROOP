@@ -100,18 +100,29 @@ namespace SM64_Diagnostic.Controls
         {
             if (!_displayAsHex) return stringValue;
 
-            string numHexDigits = _addressHolder.ByteCount != null ? (_addressHolder.ByteCount.Value * 2).ToString() : "";
+            int? numHexDigits = GetNumNibbles();
+            string stringHexDigits = numHexDigits?.ToString() ?? "";
 
-            int ? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
+            int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
             if (intValueNullable.HasValue)
             {
-                return String.Format("0x{0:X" + numHexDigits + "}", intValueNullable.Value);
+                string hexFormat = String.Format("{0:X" + stringHexDigits + "}", intValueNullable.Value);
+                if (numHexDigits.HasValue && hexFormat.Length > numHexDigits.Value)
+                {
+                    hexFormat = hexFormat.Substring(hexFormat.Length - numHexDigits.Value);
+                }
+                return "0x" + hexFormat;
             }
 
             uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
             if (uintValueNullable.HasValue)
             {
-                return String.Format("0x{0:X" + numHexDigits + "}", uintValueNullable.Value);
+                string hexFormat = String.Format("{0:X" + stringHexDigits + "}", uintValueNullable.Value);
+                if (numHexDigits.HasValue && hexFormat.Length > numHexDigits.Value)
+                {
+                    hexFormat = hexFormat.Substring(hexFormat.Length - numHexDigits.Value);
+                }
+                return "0x" + hexFormat;
             }
 
             return stringValue;
@@ -125,6 +136,11 @@ namespace SM64_Diagnostic.Controls
                 if (parsed != null) return parsed.ToString();
             }
             return value;
+        }
+
+        protected virtual int? GetNumNibbles()
+        {
+            return _addressHolder.ByteCount != null ? _addressHolder.ByteCount * 2 : null;
         }
     }
 }

@@ -155,5 +155,10 @@ namespace SM64_Diagnostic.Controls
 
             return doubleValue.ToString();
         }
+
+        protected override int? GetNumNibbles()
+        {
+            return _addressHolder.IsSpecial || _constrainToOneRevolution ? 4 : base.GetNumNibbles();
+        }
     }
 }
