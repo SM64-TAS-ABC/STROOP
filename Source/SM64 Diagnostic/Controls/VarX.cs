@@ -16,6 +16,7 @@ namespace SM64_Diagnostic.Controls
     {
         protected readonly AddressHolder _addressHolder;
         protected readonly VarXControl _varXControl;
+        protected readonly ContextMenuStrip _contextMenuStrip;
 
         private readonly bool _startsAsCheckbox;
 
@@ -55,20 +56,18 @@ namespace SM64_Diagnostic.Controls
             _varXControl = varXControl;
 
             _startsAsCheckbox = useCheckbox;
+            _contextMenuStrip = new ContextMenuStrip();
             AddContextMenuStripItems();
-        }
-
-        public Control Control
-        {
-            get
-            {
-                return _varXControl;
-            }
         }
 
         public bool StartsAsCheckbox()
         {
             return _startsAsCheckbox;
+        }
+
+        public ContextMenuStrip GetContextMenuStrip()
+        {
+            return _contextMenuStrip;
         }
 
         protected void AddContextMenuStripItems()
@@ -85,7 +84,7 @@ namespace SM64_Diagnostic.Controls
             itemEdit.Click += (sender, e) => { _varXControl.EditMode = true; };
 
             ToolStripMenuItem itemCopyAsIs = new ToolStripMenuItem("Copy (As Is)");
-            itemCopyAsIs.Click += (sender, e) => { Clipboard.SetText(_varXControl._valueTextBox.Text); };
+            itemCopyAsIs.Click += (sender, e) => { Clipboard.SetText(_varXControl.TextBoxValue); };
 
             ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy (Unrounded)");
             itemCopyUnrounded.Click += (sender, e) => { Clipboard.SetText(GetValueForTextbox(false)); };
@@ -93,11 +92,11 @@ namespace SM64_Diagnostic.Controls
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
             itemPaste.Click += (sender, e) => { SetValueFromTextbox(Clipboard.GetText()); };
 
-            _varXControl._contextMenuStrip.Items.Add(itemHighlight);
-            _varXControl._contextMenuStrip.Items.Add(itemEdit);
-            _varXControl._contextMenuStrip.Items.Add(itemCopyAsIs);
-            _varXControl._contextMenuStrip.Items.Add(itemCopyUnrounded);
-            _varXControl._contextMenuStrip.Items.Add(itemPaste);
+            _contextMenuStrip.Items.Add(itemHighlight);
+            _contextMenuStrip.Items.Add(itemEdit);
+            _contextMenuStrip.Items.Add(itemCopyAsIs);
+            _contextMenuStrip.Items.Add(itemCopyUnrounded);
+            _contextMenuStrip.Items.Add(itemPaste);
         }
 
         public void ShowVarInfo()
@@ -111,7 +110,6 @@ namespace SM64_Diagnostic.Controls
 
             varInfo.ShowDialog();
         }
-
 
 
 
@@ -141,7 +139,6 @@ namespace SM64_Diagnostic.Controls
             return _addressHolder.SetValue(value);
         }
 
-
         public CheckState GetValueForCheckbox()
         {
             List<string> values = _addressHolder.GetValues();
@@ -155,6 +152,7 @@ namespace SM64_Diagnostic.Controls
             string value = ConvertCheckStateToValue(checkState);
             return _addressHolder.SetValue(value);
         }
+
 
 
         protected (bool meaningfulValue, string stringValue) CombineValues(List<string> values)
@@ -178,6 +176,8 @@ namespace SM64_Diagnostic.Controls
             }
             return firstCheckState;
         }
+
+
 
         // Number methods
 

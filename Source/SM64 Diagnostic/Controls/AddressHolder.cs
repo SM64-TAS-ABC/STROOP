@@ -49,7 +49,9 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                return BaseAddressType != BaseAddressTypeEnum.Relative && BaseAddressType != BaseAddressTypeEnum.Absolute && BaseAddressType != BaseAddressTypeEnum.Special;
+                return BaseAddressType != BaseAddressTypeEnum.Relative &&
+                    BaseAddressType != BaseAddressTypeEnum.Absolute &&
+                    BaseAddressType != BaseAddressTypeEnum.Special;
             }
         }
 

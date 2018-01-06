@@ -13,24 +13,34 @@ namespace SM64_Diagnostic.Controls
     public class VarXControl : TableLayoutPanel
     {
         public readonly string VarName;
-        public readonly VarX _varX;
+        private readonly VarX _varX;
 
-        public readonly Label _nameLabel;
-        public readonly TextBox _valueTextBox;
-        public readonly CheckBox _valueCheckBox;
-        public readonly ContextMenuStrip _contextMenuStrip;
-        public readonly ContextMenuStrip _textboxOldContextMenuStrip;
+        private readonly Label _nameLabel;
+        private readonly TextBox _valueTextBox;
+        private readonly CheckBox _valueCheckBox;
+        private readonly ContextMenuStrip _contextMenuStrip;
+        private readonly ContextMenuStrip _textboxOldContextMenuStrip;
 
-        private readonly Pen _borderPen = new Pen(Color.Red, 5);
+        public string TextBoxValue
+        {
+            get { return _valueTextBox.Text; }
+            set { _valueTextBox.Text = value; }
+        }
 
-        public static readonly int FAILURE_DURATION_MS = 1000;
-        public static readonly Color FAILURE_COLOR = Color.Red;
-        public static readonly Color DEFAULT_COLOR = SystemColors.Control;
+        public CheckState CheckBoxValue
+        {
+            get { return _valueCheckBox.CheckState; }
+            set { _valueCheckBox.CheckState = value; }
+        }
 
-        public readonly Color _baseColor;
-        public Color _currentColor;
-        public bool _justFailed;
-        public DateTime _lastFailureTime;
+        private static readonly Pen _borderPen = new Pen(Color.Red, 5);
+        private static readonly int FAILURE_DURATION_MS = 1000;
+        private static readonly Color FAILURE_COLOR = Color.Red;
+        private static readonly Color DEFAULT_COLOR = SystemColors.Control;
+        private readonly Color _baseColor;
+        private Color _currentColor;
+        private bool _justFailed;
+        private DateTime _lastFailureTime;
 
         private bool _showBorder;
         public bool ShowBorder
@@ -103,15 +113,15 @@ namespace SM64_Diagnostic.Controls
             base.Controls.Add(_valueTextBox, 1, 0);
             base.Controls.Add(_valueCheckBox, 1, 0);
 
+            // Create var x
+            _varX = VarX.CreateVarX(addressHolder, this, varXSubclcass, invertBool);
+
             // Initialize context menu strip
             _textboxOldContextMenuStrip = _valueTextBox.ContextMenuStrip;
-            _contextMenuStrip = new ContextMenuStrip();
+            _contextMenuStrip = _varX.GetContextMenuStrip();
             _nameLabel.ContextMenuStrip = _contextMenuStrip;
             _valueTextBox.ContextMenuStrip = _contextMenuStrip;
             base.ContextMenuStrip = _contextMenuStrip;
-
-            // Create var x
-            _varX = VarX.CreateVarX(addressHolder, this, varXSubclcass, invertBool);
 
             // Set whether to start as a checkbox
             SetUseCheckbox(_varX.StartsAsCheckbox());
@@ -233,7 +243,7 @@ namespace SM64_Diagnostic.Controls
             }
 
             BackColor = _currentColor;
-            if (!EditMode) _valueTextBox.BackColor = _currentColor;
+            if (!_editMode) _valueTextBox.BackColor = _currentColor;
         }
 
         public void InvokeFailure()

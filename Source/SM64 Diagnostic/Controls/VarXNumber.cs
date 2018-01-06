@@ -67,10 +67,10 @@ namespace SM64_Diagnostic.Controls
             };
             itemDisplayAsNegated.Checked = _displayAsNegated;
 
-            _varXControl._contextMenuStrip.Items.Add(new ToolStripSeparator());
-            _varXControl._contextMenuStrip.Items.Add(itemRoundTo);
-            _varXControl._contextMenuStrip.Items.Add(itemDisplayAsHex);
-            _varXControl._contextMenuStrip.Items.Add(itemDisplayAsNegated);
+            _contextMenuStrip.Items.Add(new ToolStripSeparator());
+            _contextMenuStrip.Items.Add(itemRoundTo);
+            _contextMenuStrip.Items.Add(itemDisplayAsHex);
+            _contextMenuStrip.Items.Add(itemDisplayAsNegated);
         }
 
         protected override string HandleRounding(string stringValue)

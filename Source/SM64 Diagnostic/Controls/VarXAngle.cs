@@ -52,9 +52,9 @@ namespace SM64_Diagnostic.Controls
                 (object obj) => { _angleUnitType = (AngleUnitType)obj; },
                 _angleUnitType);
 
-            _varXControl._contextMenuStrip.Items.Add(new ToolStripSeparator());
-            _varXControl._contextMenuStrip.Items.Add(itemSign);
-            _varXControl._contextMenuStrip.Items.Add(itemUnits);
+            _contextMenuStrip.Items.Add(new ToolStripSeparator());
+            _contextMenuStrip.Items.Add(itemSign);
+            _contextMenuStrip.Items.Add(itemUnits);
         }
 
         private double GetAngleUnitTypeMaxValue(AngleUnitType? angleUnitTypeNullable = null)
