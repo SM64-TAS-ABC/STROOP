@@ -23,9 +23,9 @@ namespace SM64_Diagnostic.Controls
         public VarXNumber(
             AddressHolder addressHolder,
             VarXControl varXControl,
-            int? roundingLimit = 3,
-            bool displayAsHex = false,
-            bool useCheckbox = false,
+            int? roundingLimit = DEFAULT_ROUNDING_LIMIT,
+            bool displayAsHex = DEFAULT_DISPLAY_AS_HEX,
+            bool useCheckbox = DEFAULT_USE_CHECKBOX,
             VarXCoordinate? coordinate = null)
             : base(addressHolder, varXControl, useCheckbox)
         {

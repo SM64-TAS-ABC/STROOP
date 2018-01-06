@@ -19,7 +19,7 @@ namespace SM64_Diagnostic.Controls
         public VarXObject(
             AddressHolder addressHolder,
             VarXControl varXControl)
-            : base(addressHolder, varXControl, 0, true)
+            : base(addressHolder, varXControl, DEFAULT_ROUNDING_LIMIT, true)
         {
             _displayAsObject = true;
 

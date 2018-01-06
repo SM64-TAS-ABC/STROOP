@@ -21,7 +21,7 @@ namespace SM64_Diagnostic.Controls
             AddressHolder addressHolder,
             VarXControl varXControl,
             bool? displayAsInverted)
-            : base(addressHolder, varXControl, 0, false, true)
+            : base(addressHolder, varXControl, DEFAULT_ROUNDING_LIMIT, DEFAULT_DISPLAY_AS_HEX, true)
         {
             _displayAsCheckbox = true;
             _displayAsInverted = displayAsInverted ?? false;

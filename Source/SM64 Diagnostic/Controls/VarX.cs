@@ -14,6 +14,10 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarX
     {
+        protected const int DEFAULT_ROUNDING_LIMIT = 3;
+        protected const bool DEFAULT_DISPLAY_AS_HEX = false;
+        protected const bool DEFAULT_USE_CHECKBOX = false;
+
         protected readonly AddressHolder _addressHolder;
         protected readonly VarXControl _varXControl;
         protected readonly ContextMenuStrip _contextMenuStrip;
@@ -34,7 +38,13 @@ namespace SM64_Diagnostic.Controls
                     return new VarX(addressHolder, varXControl);
 
                 case VarXSubclass.Number:
-                    return new VarXNumber(addressHolder, varXControl, 3, false, false, coordinate);
+                    return new VarXNumber(
+                        addressHolder,
+                        varXControl,
+                        DEFAULT_ROUNDING_LIMIT,
+                        DEFAULT_DISPLAY_AS_HEX,
+                        DEFAULT_USE_CHECKBOX,
+                        coordinate);
 
                 case VarXSubclass.Angle:
                     return new VarXAngle(addressHolder, varXControl, signed);
