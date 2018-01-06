@@ -415,7 +415,7 @@ namespace SM64_Diagnostic.Utilities
             if (mask != null)
             {
                 byte oldValue = GetByte(address, absoluteAddress);
-                value = (byte)((oldValue & ~mask) | (value & mask));
+                value = (byte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             return WriteRamLittleEndian(new byte[] { value }, address, absoluteAddress);
         }
@@ -425,7 +425,7 @@ namespace SM64_Diagnostic.Utilities
             if (mask != null)
             {
                 sbyte oldValue = GetSByte(address, absoluteAddress);
-                value = (sbyte)((oldValue & ~mask) | (value & mask));
+                value = (sbyte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             return WriteRamLittleEndian(new byte[] { (byte)value }, address, absoluteAddress);
         }
@@ -435,7 +435,7 @@ namespace SM64_Diagnostic.Utilities
             if (mask != null)
             {
                 short oldValue = GetInt16(address, absoluteAddress);
-                value = (short)((oldValue & ~mask) | (value & mask));
+                value = (short)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
         }
@@ -445,7 +445,7 @@ namespace SM64_Diagnostic.Utilities
             if (mask != null)
             {
                 ushort oldValue = GetUInt16(address, absoluteAddress);
-                value = (ushort)((oldValue & ~mask) | (value & mask));
+                value = (ushort)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
         }
@@ -455,7 +455,7 @@ namespace SM64_Diagnostic.Utilities
             if (mask != null)
             {
                 int oldValue = GetInt32(address, absoluteAddress);
-                value = (int)((oldValue & ~mask) | (value & mask));
+                value = (int)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
         }
@@ -465,7 +465,7 @@ namespace SM64_Diagnostic.Utilities
             if (mask != null)
             {
                 uint oldValue = GetUInt32(address, absoluteAddress);
-                value = (uint)((oldValue & ~mask) | (value & mask));
+                value = (uint)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
         }
