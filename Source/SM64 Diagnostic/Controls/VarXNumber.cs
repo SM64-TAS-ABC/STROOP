@@ -25,7 +25,8 @@ namespace SM64_Diagnostic.Controls
             VarXControl varXControl,
             int? roundingLimit = 3,
             bool displayAsHex = false,
-            bool useCheckbox = false)
+            bool useCheckbox = false,
+            VarXCoordinate? coordinate = null)
             : base(addressHolder, varXControl, useCheckbox)
         {
             if (roundingLimit.HasValue)

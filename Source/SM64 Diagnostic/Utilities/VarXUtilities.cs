@@ -53,28 +53,33 @@ namespace SM64_Diagnostic.Structs
             {typeof(double), true},
         };
 
-        public static BaseAddressTypeEnum GetBaseAddressType(string baseAddressTypeString)
+        public static BaseAddressTypeEnum GetBaseAddressType(string stringValue)
         {
-            return (BaseAddressTypeEnum)Enum.Parse(typeof(BaseAddressTypeEnum), baseAddressTypeString);
+            return (BaseAddressTypeEnum)Enum.Parse(typeof(BaseAddressTypeEnum), stringValue);
         }
 
-        public static VarXSubclass GetVarXSubclass(string subclassString)
+        public static VarXSubclass GetVarXSubclass(string stringValue)
         {
-            if (subclassString == null) return VarXSubclass.Number;
-            return (VarXSubclass)Enum.Parse(typeof(VarXSubclass), subclassString);
+            if (stringValue == null) return VarXSubclass.Number;
+            return (VarXSubclass)Enum.Parse(typeof(VarXSubclass), stringValue);
         }
 
-        public static VariableGroup GetVariableGroup(string variableGroupString)
+        public static VarXCoordinate GetVarXCoordinate(string stringValue)
         {
-            return (VariableGroup)Enum.Parse(typeof(VariableGroup), variableGroupString);
+            return (VarXCoordinate)Enum.Parse(typeof(VarXCoordinate), stringValue);
         }
 
-        public static List<VariableGroup> ParseVariableGroupList(string variableGroupListString)
+        public static VariableGroup GetVariableGroup(string stringValue)
+        {
+            return (VariableGroup)Enum.Parse(typeof(VariableGroup), stringValue);
+        }
+
+        public static List<VariableGroup> ParseVariableGroupList(string stringValue)
         {
             List<VariableGroup> variableGroupList = new List<VariableGroup>();
-            if (variableGroupListString != null)
+            if (stringValue != null)
             {
-                string[] groupNames = variableGroupListString.Split(',');
+                string[] groupNames = stringValue.Split(',');
                 foreach (string groupName in groupNames)
                 {
                     variableGroupList.Add(GetVariableGroup(groupName));

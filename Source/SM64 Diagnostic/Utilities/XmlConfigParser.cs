@@ -2515,13 +2515,17 @@ namespace SM64_Diagnostic.Utilities
             bool? signed = element.Attribute(XName.Get("signed")) != null ?
                 bool.Parse(element.Attribute(XName.Get("signed")).Value) : (bool?)null;
 
+            VarXCoordinate? coordinate = element.Attribute(XName.Get("coord")) != null ?
+                VarXUtilities.GetVarXCoordinate(element.Attribute(XName.Get("coord")).Value) : (VarXCoordinate?)null;
+
             return new VarXControl(
                 name,
                 addressHolder,
                 varXSubclass,
                 backgroundColor,
                 signed,
-                invertBool);
+                invertBool,
+                coordinate);
         }
 
         public static ActionTable OpenActionTable(string path)

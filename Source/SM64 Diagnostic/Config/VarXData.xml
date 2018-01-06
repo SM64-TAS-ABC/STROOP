@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <WaterData>
-  <Data type="float" offset="0x3C" baseAddressType="Mario">Mario X</Data>
-  <Data type="float" offset="0x40" baseAddressType="Mario">Mario Y</Data>
-  <Data type="float" offset="0x44" baseAddressType="Mario">Mario Z</Data>
+  <Data type="float" offset="0x3C" baseAddressType="Mario" coord="X">Mario X</Data>
+  <Data type="float" offset="0x40" baseAddressType="Mario" coord="Y">Mario Y</Data>
+  <Data type="float" offset="0x44" baseAddressType="Mario" coord="Z">Mario Z</Data>
 
   <Data type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" baseAddressType="Relative">G Timer (S, Rel)</Data>
   <Data type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" baseAddressType="Relative">G Timer (US, Rel)</Data>
@@ -14,9 +14,9 @@
   <Data type="byte" offset="0xB2" baseAddressType="Mario">HP Dec (US)</Data>
   <Data type="sbyte" offset="0xB2" baseAddressType="Mario">HP Dec (S)</Data>
 
-  <Data groupList="Simple" type="float" offset="0xA0" baseAddressType="Object">Object X</Data>
-  <Data groupList="Simple" type="float" offset="0xA4" baseAddressType="Object">Object Y</Data>
-  <Data groupList="Simple" type="float" offset="0xA8" baseAddressType="Object">Object Z</Data>
+  <Data groupList="Simple" type="float" offset="0xA0" baseAddressType="Object" coord="X">Object X</Data>
+  <Data groupList="Simple" type="float" offset="0xA4" baseAddressType="Object" coord="Y">Object Y</Data>
+  <Data groupList="Simple" type="float" offset="0xA8" baseAddressType="Object" coord="Z">Object Z</Data>
 
   <Data groupList="Expanded" baseAddressType="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
   <Data groupList="Expanded" baseAddressType="Special" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
