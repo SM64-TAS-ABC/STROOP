@@ -12,8 +12,8 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarXControl : TableLayoutPanel
     {
-        public readonly VarX _varX;
         public readonly string VarName;
+        public readonly VarX _varX;
 
         public readonly Label _nameLabel;
         public readonly TextBox _valueTextBox;
@@ -21,7 +21,7 @@ namespace SM64_Diagnostic.Controls
         public readonly ContextMenuStrip _contextMenuStrip;
         public readonly ContextMenuStrip _textboxOldContextMenuStrip;
 
-        private Pen _borderPen = new Pen(Color.Red, 5);
+        private readonly Pen _borderPen = new Pen(Color.Red, 5);
 
         public static readonly int FAILURE_DURATION_MS = 1000;
         public static readonly Color FAILURE_COLOR = Color.Red;
