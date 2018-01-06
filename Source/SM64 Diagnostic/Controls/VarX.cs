@@ -18,18 +18,6 @@ namespace SM64_Diagnostic.Controls
 
         protected readonly VarXControl _varXControl;
 
-
-        
-
-        private static readonly int FAILURE_DURATION_MS = 1000;
-        private static readonly Color FAILURE_COLOR = Color.Red;
-        private static readonly Color DEFAULT_COLOR = SystemColors.Control;
-
-        private readonly Color _baseColor;
-        private Color _currentColor;
-        private bool _justFailed;
-        private DateTime _lastFailureTime;
-
         public static VarX CreateVarX(
             string name,
             AddressHolder addressHolder,
@@ -65,13 +53,7 @@ namespace SM64_Diagnostic.Controls
         {
             AddressHolder = addressHolder;
 
-            _varXControl = new VarXControl(this, name, useCheckbox);
-
-            _baseColor = backgroundColor ?? DEFAULT_COLOR;
-            _currentColor = _baseColor;
-
-            _justFailed = false;
-            _lastFailureTime = DateTime.Now;
+            _varXControl = new VarXControl(this, name, backgroundColor, useCheckbox);
 
             AddContextMenuStripItems();
         }
@@ -127,11 +109,7 @@ namespace SM64_Diagnostic.Controls
             varInfo.ShowDialog();
         }
 
-        public void InvokeFailure()
-        {
-            _justFailed = true;
-            _lastFailureTime = DateTime.Now;
-        }
+
 
         public void Update()
         {
@@ -141,50 +119,10 @@ namespace SM64_Diagnostic.Controls
                 _varXControl._checkBoxBool.CheckState = GetValueForCheckbox();
             }
 
-            UpdateColor();
+            _varXControl.UpdateColor();
         }
 
-        public void UpdateColor()
-        {
-            if (_justFailed)
-            {
-                DateTime currentTime = DateTime.Now;
-                double timeSinceLastFailure = currentTime.Subtract(_lastFailureTime).TotalMilliseconds;
-                if (timeSinceLastFailure < FAILURE_DURATION_MS)
-                {
-                    _currentColor = ColorUtilities.InterpolateColor(
-                        FAILURE_COLOR, _baseColor, timeSinceLastFailure / FAILURE_DURATION_MS);
-                }
-                else
-                {
-                    _currentColor = _baseColor;
-                    _justFailed = false;
-                }
-            }
 
-            _varXControl.BackColor = _currentColor;
-            if (!_varXControl.EditMode) _varXControl._textBox.BackColor = _currentColor;
-        }
-
-        public void OnTextValueKeyDown(KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Escape)
-            {
-                _varXControl.EditMode = false;
-                return;
-            }
-
-            if (e.KeyData == Keys.Enter)
-            {
-                bool success = SetValueFromTextbox(_varXControl._textBox.Text);
-                _varXControl.EditMode = false;
-                if (!success)
-                {
-                    InvokeFailure();
-                }
-                return;
-            }
-        }
 
 
 

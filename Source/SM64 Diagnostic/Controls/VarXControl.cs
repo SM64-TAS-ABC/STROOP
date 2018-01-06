@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -19,7 +20,14 @@ namespace SM64_Diagnostic.Controls
         public ContextMenuStrip _contextMenuStrip;
         public ContextMenuStrip _textboxOldContextMenuStrip;
 
-        private Color _currentColor = SystemColors.Control;
+        public static readonly int FAILURE_DURATION_MS = 1000;
+        public static readonly Color FAILURE_COLOR = Color.Red;
+        public static readonly Color DEFAULT_COLOR = SystemColors.Control;
+
+        public readonly Color _baseColor;
+        public Color _currentColor;
+        public bool _justFailed;
+        public DateTime _lastFailureTime;
 
         private bool _showBorder;
         public bool ShowBorder
@@ -65,12 +73,17 @@ namespace SM64_Diagnostic.Controls
         // TODO refactor this
         private static readonly int nameLabelHeight = 20;
 
-        public VarXControl(VarX varX, string name, bool useCheckbox)
+        public VarXControl(VarX varX, string name, Color? backgroundColor, bool useCheckbox)
         {
             _varX = varX;
             _name = name;
             _showBorder = true;
             _editMode = false;
+
+            _baseColor = backgroundColor ?? DEFAULT_COLOR;
+            _currentColor = _baseColor;
+            _justFailed = false;
+            _lastFailureTime = DateTime.Now;
 
             InitializeBase();
             InitializeControls(useCheckbox);
@@ -115,7 +128,7 @@ namespace SM64_Diagnostic.Controls
             _textBox.TextAlign = HorizontalAlignment.Right;
             _textBox.Width = 200;
             _textBox.Margin = new Padding(6, 3, 6, 3);
-            _textBox.KeyDown += (sender, e) => _varX.OnTextValueKeyDown(e);
+            _textBox.KeyDown += (sender, e) => OnTextValueKeyDown(e);
             _textBox.DoubleClick += (sender, e) => { EditMode = true; };
             _textBox.Leave += (sender, e) => { EditMode = false; };
             base.Controls.Add(this._textBox, 1, 0);
@@ -191,6 +204,54 @@ namespace SM64_Diagnostic.Controls
             }
         }
         */
+
+        public void OnTextValueKeyDown(KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Escape)
+            {
+                EditMode = false;
+                return;
+            }
+
+            if (e.KeyData == Keys.Enter)
+            {
+                bool success = _varX.SetValueFromTextbox(_textBox.Text);
+                EditMode = false;
+                if (!success)
+                {
+                    InvokeFailure();
+                }
+                return;
+            }
+        }
+
+        public void UpdateColor()
+        {
+            if (_justFailed)
+            {
+                DateTime currentTime = DateTime.Now;
+                double timeSinceLastFailure = currentTime.Subtract(_lastFailureTime).TotalMilliseconds;
+                if (timeSinceLastFailure < FAILURE_DURATION_MS)
+                {
+                    _currentColor = ColorUtilities.InterpolateColor(
+                        FAILURE_COLOR, _baseColor, timeSinceLastFailure / FAILURE_DURATION_MS);
+                }
+                else
+                {
+                    _currentColor = _baseColor;
+                    _justFailed = false;
+                }
+            }
+
+            BackColor = _currentColor;
+            if (!EditMode) _textBox.BackColor = _currentColor;
+        }
+
+        public void InvokeFailure()
+        {
+            _justFailed = true;
+            _lastFailureTime = DateTime.Now;
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
