@@ -40,7 +40,7 @@ namespace SM64_Diagnostic.Controls
             ToolStripMenuItem itemSelectObject = new ToolStripMenuItem("Select Object");
             itemSelectObject.Click += (sender, e) =>
             {
-                string stringValue = _textBox.Text;
+                string stringValue = _varXControl._textBox.Text;
                 uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
                 if (uintValueNullable.HasValue)
                 {
@@ -51,9 +51,9 @@ namespace SM64_Diagnostic.Controls
                 }
             };
 
-            _contextMenuStrip.Items.Add(new ToolStripSeparator());
-            _contextMenuStrip.Items.Add(itemDisplayAsObject);
-            _contextMenuStrip.Items.Add(itemSelectObject);
+            _varXControl._contextMenuStrip.Items.Add(new ToolStripSeparator());
+            _varXControl._contextMenuStrip.Items.Add(itemDisplayAsObject);
+            _varXControl._contextMenuStrip.Items.Add(itemSelectObject);
         }
 
         public override string HandleHexDisplaying(string value)

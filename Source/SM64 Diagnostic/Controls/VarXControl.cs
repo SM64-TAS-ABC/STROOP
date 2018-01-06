@@ -10,16 +10,25 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarXControl : TableLayoutPanel
     {
+        public VarX _varX;
+        public string _name;
+
         public Label _nameLabel;
         public TextBox _textBox;
         public CheckBox _checkBoxBool;
         public ContextMenuStrip _contextMenuStrip;
-        private ContextMenuStrip _textboxOldContextMenuStrip;
+        public ContextMenuStrip _textboxOldContextMenuStrip;
 
         private Color _currentColor = SystemColors.Control;
 
-        public VarXControl(bool useCheckbox)
+        // TODO refactor this
+        private static readonly int nameLabelHeight = 20;
+
+        public VarXControl(VarX varX, string name, bool useCheckbox)
         {
+            _varX = varX;
+            _name = name;
+
             InitializeBase();
             InitializeControls(useCheckbox);
             InitializeContextMenuStrip();
@@ -30,12 +39,12 @@ namespace SM64_Diagnostic.Controls
 
         private void InitializeBase()
         {
-            base.Size = new Size(230, _nameLabel.Height + 2);
+            base.Size = new Size(230, nameLabelHeight + 2);
             base.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             base.RowCount = 1;
             base.ColumnCount = 2;
             base.RowStyles.Clear();
-            base.RowStyles.Add(new RowStyle(SizeType.Absolute, _nameLabel.Height + 3));
+            base.RowStyles.Add(new RowStyle(SizeType.Absolute, nameLabelHeight + 3));
             base.ColumnStyles.Clear();
             base.Margin = new Padding(0);
             base.Padding = new Padding(0);
@@ -48,10 +57,10 @@ namespace SM64_Diagnostic.Controls
         {
             // Name Label
             _nameLabel = new Label();
-            _nameLabel.Size = new Size(210, 20);
-            _nameLabel.Text = Name;
+            _nameLabel.Size = new Size(210, nameLabelHeight);
+            _nameLabel.Text = _name;
             _nameLabel.Margin = new Padding(3, 3, 3, 3);
-            //_nameLabel.Click += _nameLabel_Click;
+            _nameLabel.Click += (sender, e) => _varX._nameLabel_Click();
             _nameLabel.ImageAlign = ContentAlignment.MiddleRight;
             _nameLabel.BackColor = Color.Transparent;
             base.Controls.Add(_nameLabel, 0, 0);
@@ -63,16 +72,16 @@ namespace SM64_Diagnostic.Controls
             _textBox.TextAlign = HorizontalAlignment.Right;
             _textBox.Width = 200;
             _textBox.Margin = new Padding(6, 3, 6, 3);
-            //_textBox.KeyDown += OnTextValueKeyDown;
-            //_textBox.DoubleClick += _textBoxValue_DoubleClick;
-            //_textBox.Leave += (sender, e) => { EditMode = false; };
+            _textBox.KeyDown += (sender, e) => _varX.OnTextValueKeyDown(e);
+            _textBox.DoubleClick += (sender, e) => _varX._textBoxValue_DoubleClick();
+            _textBox.Leave += (sender, e) => { _varX.EditMode = false; };
             base.Controls.Add(this._textBox, 1, 0);
 
             // Checkbox
             _checkBoxBool = new CheckBox();
             _checkBoxBool.CheckAlign = ContentAlignment.MiddleRight;
             _checkBoxBool.CheckState = CheckState.Unchecked;
-            //_checkBoxBool.Click += (sender, e) => SetValueFromCheckbox(_checkBoxBool.CheckState);
+            _checkBoxBool.Click += (sender, e) => _varX.SetValueFromCheckbox(_checkBoxBool.CheckState);
             _checkBoxBool.BackColor = Color.Transparent;
             base.Controls.Add(this._checkBoxBool, 1, 0);
 
