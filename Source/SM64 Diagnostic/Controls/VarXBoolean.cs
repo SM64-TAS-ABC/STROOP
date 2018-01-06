@@ -72,7 +72,7 @@ namespace SM64_Diagnostic.Controls
             return HandleInverting(checkState == CheckState.Unchecked) ? offValue : onValue;
         }
 
-        protected bool HandleInverting(bool boolValue)
+        private bool HandleInverting(bool boolValue)
         {
             return boolValue != _displayAsInverted;
         }
