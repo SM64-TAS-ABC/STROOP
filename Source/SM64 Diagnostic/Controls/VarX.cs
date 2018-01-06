@@ -188,15 +188,19 @@ namespace SM64_Diagnostic.Controls
             ToolStripMenuItem itemEdit = new ToolStripMenuItem("Edit");
             itemEdit.Click += (sender, e) => { EditMode = true; };
 
-            ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy");
-            itemCopy.Click += (sender, e) => { Clipboard.SetText(GetValueForTextbox(false)); };
+            ToolStripMenuItem itemCopyAsIs = new ToolStripMenuItem("Copy (As Is)");
+            itemCopyAsIs.Click += (sender, e) => { Clipboard.SetText(_textBox.Text); };
+
+            ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy (Unrounded)");
+            itemCopyUnrounded.Click += (sender, e) => { Clipboard.SetText(GetValueForTextbox(false)); };
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
             itemPaste.Click += (sender, e) => { SetValueFromTextbox(Clipboard.GetText()); };
 
             _contextMenuStrip.Items.Add(itemHighlight);
             _contextMenuStrip.Items.Add(itemEdit);
-            _contextMenuStrip.Items.Add(itemCopy);
+            _contextMenuStrip.Items.Add(itemCopyAsIs);
+            _contextMenuStrip.Items.Add(itemCopyUnrounded);
             _contextMenuStrip.Items.Add(itemPaste);
         }
 
