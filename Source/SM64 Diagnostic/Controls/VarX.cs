@@ -90,6 +90,9 @@ namespace SM64_Diagnostic.Controls
             };
             itemHighlight.Checked = _varXControl.ShowBorder;
 
+            ToolStripMenuItem itemLock = new ToolStripMenuItem("Lock");
+            itemLock.Click += (sender, e) => { };
+
             ToolStripMenuItem itemEdit = new ToolStripMenuItem("Edit");
             itemEdit.Click += (sender, e) => { _varXControl.EditMode = true; };
 
@@ -103,6 +106,7 @@ namespace SM64_Diagnostic.Controls
             itemPaste.Click += (sender, e) => { SetValueFromTextbox(Clipboard.GetText()); };
 
             _contextMenuStrip.Items.Add(itemHighlight);
+            _contextMenuStrip.Items.Add(itemLock);
             _contextMenuStrip.Items.Add(itemEdit);
             _contextMenuStrip.Items.Add(itemCopyAsIs);
             _contextMenuStrip.Items.Add(itemCopyUnrounded);
