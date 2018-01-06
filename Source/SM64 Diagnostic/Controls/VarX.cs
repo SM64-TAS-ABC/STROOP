@@ -113,13 +113,7 @@ namespace SM64_Diagnostic.Controls
 
         public void Update()
         {
-            if (!_varXControl.EditMode)
-            {
-                _varXControl._textBox.Text = GetValueForTextbox();
-                _varXControl._checkBoxBool.CheckState = GetValueForCheckbox();
-            }
-
-            _varXControl.UpdateColor();
+            _varXControl.UpdateControl();
         }
 
 
