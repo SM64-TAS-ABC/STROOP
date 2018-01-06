@@ -279,32 +279,44 @@ namespace SM64_Diagnostic.Utilities
 
         public byte GetByte(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            return ReadRamLittleEndian(new UIntPtr(address), 1, absoluteAddress)[0];
+            byte value = ReadRamLittleEndian(new UIntPtr(address), 1, absoluteAddress)[0];
+            if (mask != null) value = (byte)(value & mask.Value);
+            return value;
         }
 
         public sbyte GetSByte(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            return (sbyte)ReadRamLittleEndian(new UIntPtr(address), 1, absoluteAddress)[0];
+            sbyte value = (sbyte)ReadRamLittleEndian(new UIntPtr(address), 1, absoluteAddress)[0];
+            if (mask != null) value = (sbyte)(value & mask.Value);
+            return value;
         }
 
         public short GetInt16(uint address, bool absoluteAddress = false, uint? mask = null)
         { 
-            return BitConverter.ToInt16(ReadRamLittleEndian(new UIntPtr(address), 2, absoluteAddress), 0);
+            short value = BitConverter.ToInt16(ReadRamLittleEndian(new UIntPtr(address), 2, absoluteAddress), 0);
+            if (mask != null) value = (short)(value & mask.Value);
+            return value;
         }
 
         public ushort GetUInt16(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            return BitConverter.ToUInt16(ReadRamLittleEndian(new UIntPtr(address), 2, absoluteAddress), 0);
+            ushort value = BitConverter.ToUInt16(ReadRamLittleEndian(new UIntPtr(address), 2, absoluteAddress), 0);
+            if (mask != null) value = (ushort)(value & mask.Value);
+            return value;
         }
 
         public int GetInt32(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            return BitConverter.ToInt32(ReadRamLittleEndian(new UIntPtr(address), 4, absoluteAddress), 0);
+            int value = BitConverter.ToInt32(ReadRamLittleEndian(new UIntPtr(address), 4, absoluteAddress), 0);
+            if (mask != null) value = (int)(value & mask.Value);
+            return value;
         }
 
         public uint GetUInt32(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            return BitConverter.ToUInt32(ReadRamLittleEndian(new UIntPtr(address), 4, absoluteAddress), 0);
+            uint value = BitConverter.ToUInt32(ReadRamLittleEndian(new UIntPtr(address), 4, absoluteAddress), 0);
+            if (mask != null) value = (uint)(value & mask.Value);
+            return value;
         }
 
         public float GetSingle(uint address, bool absoluteAddress = false, uint? mask = null)
@@ -361,12 +373,12 @@ namespace SM64_Diagnostic.Utilities
                 value = ParsingUtilities.ParseDoubleNullable((string)value);
                 if (value == null) return false;
 
-                if (type == typeof(byte)) value = MoreMath.GetIntInRange((double)value, 1.0 + byte.MaxValue - byte.MinValue, false);
-                if (type == typeof(sbyte)) value = MoreMath.GetIntInRange((double)value, 1.0 + sbyte.MaxValue - sbyte.MinValue, true);
-                if (type == typeof(short)) value = MoreMath.GetIntInRange((double)value, 1.0 + short.MaxValue - short.MinValue, true);
-                if (type == typeof(ushort)) value = MoreMath.GetIntInRange((double)value, 1.0 + ushort.MaxValue - ushort.MinValue, false);
-                if (type == typeof(int)) value = MoreMath.GetIntInRange((double)value, 1.0 + int.MaxValue - int.MinValue, true);
-                if (type == typeof(uint)) value = MoreMath.GetIntInRange((double)value, 1.0 + uint.MaxValue - uint.MinValue, false);
+                if (type == typeof(byte)) value = MoreMath.GetIntegerInRange((double)value, 1.0 + byte.MaxValue - byte.MinValue, false);
+                if (type == typeof(sbyte)) value = MoreMath.GetIntegerInRange((double)value, 1.0 + sbyte.MaxValue - sbyte.MinValue, true);
+                if (type == typeof(short)) value = MoreMath.GetIntegerInRange((double)value, 1.0 + short.MaxValue - short.MinValue, true);
+                if (type == typeof(ushort)) value = MoreMath.GetIntegerInRange((double)value, 1.0 + ushort.MaxValue - ushort.MinValue, false);
+                if (type == typeof(int)) value = MoreMath.GetIntegerInRange((double)value, 1.0 + int.MaxValue - int.MinValue, true);
+                if (type == typeof(uint)) value = MoreMath.GetIntegerInRange((double)value, 1.0 + uint.MaxValue - uint.MinValue, false);
             }
 
             return SetValue(type, value.ToString(), address, absoluteAddress, mask);
@@ -400,31 +412,37 @@ namespace SM64_Diagnostic.Utilities
 
         public bool SetValue(byte value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
+            if (mask != null) value = (byte)(value & mask.Value);
             return WriteRamLittleEndian(new byte[] { value }, address, absoluteAddress);
         }
 
         public bool SetValue(sbyte value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
+            if (mask != null) value = (sbyte)(value & mask.Value);
             return WriteRamLittleEndian(new byte[] { (byte)value }, address, absoluteAddress);
         }
 
         public bool SetValue(Int16 value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
+            if (mask != null) value = (short)(value & mask.Value);
             return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
         }
 
         public bool SetValue(UInt16 value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
+            if (mask != null) value = (ushort)(value & mask.Value);
             return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
         }
 
         public bool SetValue(Int32 value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
+            if (mask != null) value = (int)(value & mask.Value);
             return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
         }
 
         public bool SetValue(UInt32 value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
+            if (mask != null) value = (uint)(value & mask.Value);
             return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
         }
 
