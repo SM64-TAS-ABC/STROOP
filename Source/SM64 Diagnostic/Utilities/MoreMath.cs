@@ -444,6 +444,14 @@ namespace SM64_Diagnostic.Utilities
             return Math.Min(Math.Max(value, min), max);
         }
 
+        public static double TruncateToMultipleOf16(double value)
+        {
+            double divided = value / 16;
+            double truncated = Math.Floor(divided);
+            double multipled = truncated * 16;
+            return multipled;
+        }
+
         public static (double scaledX, double scaledZ) ScaleValues(double xValue, double zValue)
         {
             double magnitude = Math.Max(Math.Abs(xValue), Math.Abs(zValue));

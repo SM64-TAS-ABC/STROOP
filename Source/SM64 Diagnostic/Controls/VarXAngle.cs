@@ -116,6 +116,7 @@ namespace SM64_Diagnostic.Controls
             if (!doubleValueNullable.HasValue) return stringValue;
             double doubleValue = doubleValueNullable.Value;
 
+            if (_truncateToMultipleOf16) doubleValue = MoreMath.TruncateToMultipleOf16(doubleValue);
             if (_constrainToOneRevolution)
             {
                 doubleValue = _signed ?
