@@ -97,14 +97,14 @@ namespace SM64_Diagnostic.Controls
             _contextMenuStrip.Items.Add(_itemPasteCoordinates);
         }
 
-        public void AddCoordinateContextMenuStripItemFunctionality(List<VarXNumber> coordinates)
+        public void AddCoordinateContextMenuStripItemFunctionality(List<VarXNumber> coordinateVarList)
         {
-            if (coordinates.Count != 3) throw new ArgumentOutOfRangeException();
+            if (coordinateVarList.Count != 3) throw new ArgumentOutOfRangeException();
 
             _itemCopyCoordinates.Click += (sender, e) =>
             {
                 Clipboard.SetText(
-                    String.Join(",", coordinates.ConvertAll(
+                    String.Join(",", coordinateVarList.ConvertAll(
                         coord => coord.GetValueForTextbox(false))));
             };
 
@@ -114,7 +114,7 @@ namespace SM64_Diagnostic.Controls
                 if (stringList.Count < 3) return;
                 for (int i = 0; i < 3; i++)
                 {
-                    coordinates[i].SetValueFromTextbox(stringList[i]);
+                    coordinateVarList[i].SetValueFromTextbox(stringList[i]);
                 }
             };
 
