@@ -160,7 +160,7 @@ namespace SM64_Diagnostic.Controls
             string firstValue = values[0];
             for (int i = 1; i < values.Count; i++)
             {
-                if (values[i] != firstValue) return (false, "multiple values");
+                if (values[i] != firstValue) return (false, "(multiple values)");
             }
             return (true, firstValue);
         }
