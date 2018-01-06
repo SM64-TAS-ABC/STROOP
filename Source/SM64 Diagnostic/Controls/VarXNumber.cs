@@ -100,7 +100,7 @@ namespace SM64_Diagnostic.Controls
         {
             if (!_displayAsHex) return stringValue;
 
-            string numHexDigits = _addressHolder.ByteCount > 0 ? (_addressHolder.ByteCount * 2).ToString() : "";
+            string numHexDigits = _addressHolder.ByteCount != null ? (_addressHolder.ByteCount.Value * 2).ToString() : "";
 
             int ? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
             if (intValueNullable.HasValue)

@@ -17,17 +17,20 @@ namespace SM64_Diagnostic.Controls
         private bool _signed;
         private AngleUnitType _angleUnitType;
         private bool _truncateToMultipleOf16;
+        private bool _constrainToOneRevolution;
 
         public VarXAngle(
             AddressHolder addressHolder,
             VarXControl varXControl,
-            bool? signed,
-            AngleUnitType angleUnitType = AngleUnitType.InGameUnits)
+            bool? signed)
             : base(addressHolder, varXControl, 0)
         {
-            _signed = signed ?? false;
-            _angleUnitType = angleUnitType;
+            _signed = _addressHolder.IsSpecial ?
+                signed ?? false :
+                _addressHolder.SignedType.Value;
+            _angleUnitType = AngleUnitType.InGameUnits;
             _truncateToMultipleOf16 = false;
+            _constrainToOneRevolution = false;
 
             AddAngleContextMenuStripItems();
         }
@@ -58,10 +61,19 @@ namespace SM64_Diagnostic.Controls
             };
             itemTruncateToMultipleOf16.Checked = _truncateToMultipleOf16;
 
+            ToolStripMenuItem itemConstrainToOneRevolution = new ToolStripMenuItem("Constrain to One Revolution");
+            itemConstrainToOneRevolution.Click += (sender, e) =>
+            {
+                _constrainToOneRevolution = !_constrainToOneRevolution;
+                itemConstrainToOneRevolution.Checked = _constrainToOneRevolution;
+            };
+            itemConstrainToOneRevolution.Checked = _constrainToOneRevolution;
+
             _contextMenuStrip.Items.Add(new ToolStripSeparator());
             _contextMenuStrip.Items.Add(itemSigned);
             _contextMenuStrip.Items.Add(itemUnits);
             _contextMenuStrip.Items.Add(itemTruncateToMultipleOf16);
+            _contextMenuStrip.Items.Add(itemConstrainToOneRevolution);
         }
 
         private double GetAngleUnitTypeMaxValue(AngleUnitType? angleUnitTypeNullable = null)

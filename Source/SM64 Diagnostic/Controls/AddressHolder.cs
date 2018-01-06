@@ -18,7 +18,8 @@ namespace SM64_Diagnostic.Controls
     {
         public readonly string MemoryTypeName;
         public readonly Type MemoryType;
-        public readonly int ByteCount;
+        public readonly int? ByteCount;
+        public readonly bool? SignedType;
 
         public readonly string SpecialType;
 
@@ -152,7 +153,8 @@ namespace SM64_Diagnostic.Controls
 
             MemoryTypeName = IsSpecial ? "special" : memoryTypeName;
             MemoryType = IsSpecial ? null : VarXUtilities.StringToType[MemoryTypeName];
-            ByteCount = IsSpecial ? 0 : VarXUtilities.TypeSize[MemoryType];
+            ByteCount = IsSpecial ? (int?)null : VarXUtilities.TypeSize[MemoryType];
+            SignedType = IsSpecial ? (bool?)null : VarXUtilities.TypeSign[MemoryType];
 
             SpecialType = specialType;
 
@@ -209,7 +211,7 @@ namespace SM64_Diagnostic.Controls
             if (UseAbsoluteAddressing)
                 address = (uint)Config.Stream.ConvertAddressEndianess(
                     new UIntPtr(effectiveAddress.ToUInt64() - (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()),
-                    ByteCount);
+                    ByteCount.Value);
             else
                 address = effectiveAddress.ToUInt32();
 
@@ -220,7 +222,7 @@ namespace SM64_Diagnostic.Controls
         {
             uint address = GetRamAddress(false);
             return Config.Stream.ConvertAddressEndianess(
-                new UIntPtr(address + (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()), ByteCount);
+                new UIntPtr(address + (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()), ByteCount.Value);
         }
     }
 }
