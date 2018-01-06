@@ -145,6 +145,7 @@ namespace SM64_Diagnostic.Controls
             _checkBoxBool.CheckAlign = ContentAlignment.MiddleRight;
             _checkBoxBool.CheckState = CheckState.Unchecked;
             _checkBoxBool.Click += (sender, e) => SetValueFromCheckbox(_checkBoxBool.CheckState);
+            _checkBoxBool.BackColor = Color.Transparent;
 
             _tablePanel = new BorderedTableLayoutPanel();
             _tablePanel.Size = new Size(230, _nameLabel.Height + 2);
