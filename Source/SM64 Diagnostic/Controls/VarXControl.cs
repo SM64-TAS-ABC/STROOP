@@ -158,7 +158,7 @@ namespace SM64_Diagnostic.Controls
 
         private Pen _borderPen = new Pen(Color.Red, 5);
 
-
+        /*
         public Color BorderColor
         {
             get
@@ -190,6 +190,7 @@ namespace SM64_Diagnostic.Controls
                 Invalidate();
             }
         }
+        */
 
         protected override void OnPaint(PaintEventArgs e)
         {
