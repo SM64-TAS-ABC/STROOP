@@ -16,6 +16,7 @@ namespace SM64_Diagnostic.Controls
     {
         private bool _signed;
         private AngleUnitType _angleUnitType;
+        private bool _truncateToMultipleOf16;
 
         public VarXAngle(
             AddressHolder addressHolder,
@@ -26,6 +27,7 @@ namespace SM64_Diagnostic.Controls
         {
             _signed = signed ?? false;
             _angleUnitType = angleUnitType;
+            _truncateToMultipleOf16 = false;
 
             AddAngleContextMenuStripItems();
         }
@@ -48,9 +50,18 @@ namespace SM64_Diagnostic.Controls
                 (object obj) => { _angleUnitType = (AngleUnitType)obj; },
                 _angleUnitType);
 
+            ToolStripMenuItem itemTruncateToMultipleOf16 = new ToolStripMenuItem("Truncate to Multiple of 16");
+            itemTruncateToMultipleOf16.Click += (sender, e) =>
+            {
+                _truncateToMultipleOf16 = !_truncateToMultipleOf16;
+                itemTruncateToMultipleOf16.Checked = _truncateToMultipleOf16;
+            };
+            itemTruncateToMultipleOf16.Checked = _truncateToMultipleOf16;
+
             _contextMenuStrip.Items.Add(new ToolStripSeparator());
             _contextMenuStrip.Items.Add(itemSigned);
             _contextMenuStrip.Items.Add(itemUnits);
+            _contextMenuStrip.Items.Add(itemTruncateToMultipleOf16);
         }
 
         private double GetAngleUnitTypeMaxValue(AngleUnitType? angleUnitTypeNullable = null)
