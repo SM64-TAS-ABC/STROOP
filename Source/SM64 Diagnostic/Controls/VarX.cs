@@ -15,7 +15,6 @@ namespace SM64_Diagnostic.Controls
     public class VarX
     {
         public readonly AddressHolder AddressHolder;
-
         protected readonly VarXControl _varXControl;
 
         public static VarX CreateVarX(
@@ -97,7 +96,15 @@ namespace SM64_Diagnostic.Controls
             _varXControl._contextMenuStrip.Items.Add(itemPaste);
         }
 
-        public void _nameLabel_Click()
+
+
+        public void Update()
+        {
+            _varXControl.UpdateControl();
+        }
+
+
+        public void ShowVarInfo()
         {
             VariableViewerForm varInfo;
             string typeDescr = AddressHolder.MemoryTypeName;
@@ -108,16 +115,6 @@ namespace SM64_Diagnostic.Controls
 
             varInfo.ShowDialog();
         }
-
-
-
-        public void Update()
-        {
-            _varXControl.UpdateControl();
-        }
-
-
-
 
 
 

@@ -20,6 +20,8 @@ namespace SM64_Diagnostic.Controls
         public ContextMenuStrip _contextMenuStrip;
         public ContextMenuStrip _textboxOldContextMenuStrip;
 
+        private Pen _borderPen = new Pen(Color.Red, 5);
+
         public static readonly int FAILURE_DURATION_MS = 1000;
         public static readonly Color FAILURE_COLOR = Color.Red;
         public static readonly Color DEFAULT_COLOR = SystemColors.Control;
@@ -116,7 +118,7 @@ namespace SM64_Diagnostic.Controls
             _nameLabel.Size = new Size(210, nameLabelHeight);
             _nameLabel.Text = _name;
             _nameLabel.Margin = new Padding(3, 3, 3, 3);
-            _nameLabel.Click += (sender, e) => _varX._nameLabel_Click();
+            _nameLabel.Click += (sender, e) => _varX.ShowVarInfo();
             _nameLabel.ImageAlign = ContentAlignment.MiddleRight;
             _nameLabel.BackColor = Color.Transparent;
             base.Controls.Add(_nameLabel, 0, 0);
@@ -168,8 +170,6 @@ namespace SM64_Diagnostic.Controls
                 _checkBoxBool.Visible = false;
             }
         }
-
-        private Pen _borderPen = new Pen(Color.Red, 5);
 
         /*
         public Color BorderColor
