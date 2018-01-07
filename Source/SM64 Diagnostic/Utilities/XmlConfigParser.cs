@@ -2497,8 +2497,8 @@ namespace SM64_Diagnostic.Utilities
                     mask,
                     false);
 
-            bool useHex = (element.Attribute(XName.Get("useHex")) != null) ?
-                bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
+            bool? useHex = (element.Attribute(XName.Get("useHex")) != null) ?
+                bool.Parse(element.Attribute(XName.Get("useHex")).Value) : (bool?)null;
 
             bool isBool = element.Attribute(XName.Get("isBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("isBool")).Value) : false;
@@ -2523,6 +2523,7 @@ namespace SM64_Diagnostic.Utilities
                 addressHolder,
                 varXSubclass,
                 backgroundColor,
+                useHex,
                 signed,
                 invertBool,
                 coordinate);

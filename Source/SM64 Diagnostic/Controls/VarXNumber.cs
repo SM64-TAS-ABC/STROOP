@@ -28,7 +28,7 @@ namespace SM64_Diagnostic.Controls
             AddressHolder addressHolder,
             VarXControl varXControl,
             int? roundingLimit = DEFAULT_ROUNDING_LIMIT,
-            bool displayAsHex = DEFAULT_DISPLAY_AS_HEX,
+            bool? displayAsHex = DEFAULT_DISPLAY_AS_HEX,
             bool useCheckbox = DEFAULT_USE_CHECKBOX,
             VarXCoordinate? coordinate = null)
             : base(addressHolder, varXControl, useCheckbox)
@@ -39,7 +39,7 @@ namespace SM64_Diagnostic.Controls
             }
 
             _roundingLimit = roundingLimit;
-            _displayAsHex = displayAsHex;
+            _displayAsHex = displayAsHex ?? DEFAULT_DISPLAY_AS_HEX;
             _displayAsNegated = false;
 
             AddCoordinateContextMenuStripItems();

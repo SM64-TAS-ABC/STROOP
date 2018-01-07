@@ -31,6 +31,7 @@ namespace SM64_Diagnostic.Controls
             AddressHolder addressHolder,
             VarXControl varXControl,
             VarXSubclass varXSubclcass,
+            bool? useHex,
             bool? signed,
             bool? invertBool,
             VarXCoordinate? coordinate)
@@ -45,7 +46,7 @@ namespace SM64_Diagnostic.Controls
                         addressHolder,
                         varXControl,
                         DEFAULT_ROUNDING_LIMIT,
-                        DEFAULT_DISPLAY_AS_HEX,
+                        useHex,
                         DEFAULT_USE_CHECKBOX,
                         coordinate);
 
