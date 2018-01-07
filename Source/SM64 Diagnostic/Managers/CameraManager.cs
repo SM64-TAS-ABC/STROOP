@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.Managers
 {
     public class CameraManager : DataManager
     {
-        public CameraManager(List<WatchVariable> cameraData, Control tabControl, NoTearFlowLayoutPanel variableTable)
+        public CameraManager(List<VarXControl> cameraData, Control tabControl, NoTearFlowLayoutPanel variableTable)
             : base(cameraData, variableTable)
         {
             var splitContainer = tabControl.Controls["splitContainerCamera"] as SplitContainer;
@@ -73,41 +73,12 @@ namespace SM64_Diagnostic.Managers
                 });
         }
 
-        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
-        {
-            new SpecialWatchVariable("CameraDistanceToMario"),
-        };
-
-        public void ProcessSpecialVars()
-        {
-            float mX, mY, mZ;
-            mX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-            mY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-            mZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
-
-            float cameraX, cameraY, cameraZ;
-            cameraX = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
-            cameraY = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
-            cameraZ = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
-
-            foreach (var specialVar in _specialDataControls)
-            {
-                switch (specialVar.SpecialName)
-                {
-                    case "CameraDistanceToMario":
-                        (specialVar as DataContainer).Text = Math.Round(MoreMath.GetDistanceBetween(cameraX, cameraY, cameraZ, mX, mY, mZ),3).ToString();
-                        break;
-                }
-            }
-        }
-
         public override void Update(bool updateView)
         {
             // We are done if we don't need to update the Mario Manager view
             if (!updateView)
                 return;
 
-            ProcessSpecialVars();
             base.Update();
         }
 

@@ -2,7 +2,7 @@
 <CamHackData>
   <Data type="int" offset="0x00" baseAddressType="CamHack">Mode</Data>
   <Data type="ushort" offset="0x1C" baseAddressType="CamHack" subclass="Boolean">Absolute Angle</Data>
-  <Data type="uint" offset="0x28" baseAddressType="CamHack" useHex="true" subclass="Object">Object to Follow</Data>
+  <Data type="uint" offset="0x28" baseAddressType="CamHack" subclass="Object">Object to Follow</Data>
   <Data type="float" offset="0x04" baseAddressType="CamHack">Camera X</Data>
   <Data type="float" offset="0x08" baseAddressType="CamHack">Camera Y</Data>
   <Data type="float" offset="0x0C" baseAddressType="CamHack">Camera Z</Data>
