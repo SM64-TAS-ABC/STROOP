@@ -101,6 +101,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\AddressHolderLock.cs" />
     <Compile Include="Controls\AngleDataContainer.cs" />
     <Compile Include="Controls\TransparentTextbox.cs">
       <SubType>Component</SubType>
@@ -368,6 +369,7 @@
     </Content>
     <Content Include="Config\VarXData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Config\WaterData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

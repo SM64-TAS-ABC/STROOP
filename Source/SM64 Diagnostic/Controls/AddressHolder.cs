@@ -201,6 +201,50 @@ namespace SM64_Diagnostic.Controls
             return success;
         }
 
+        public List<AddressHolderLock> GetLocks()
+        {
+            if (IsSpecial)
+            {
+                List<string> values = _getterFunction();
+                if (values.Count == 0) return new List<AddressHolderLock>();
+                return new List<AddressHolderLock>()
+                {
+                    new AddressHolderLock(
+                        IsSpecial, MemoryType, ByteCount, Mask, null, SpecialType, _setterFunction, values[0])
+                };
+            }
+            else
+            {
+                List<string> values = _getterFunction();
+                List<uint> effectiveAddresses = EffectiveAddressList;
+                if (values.Count != effectiveAddresses.Count) return new List<AddressHolderLock>();
+
+                List<AddressHolderLock> locks = new List<AddressHolderLock>();
+                for (int i = 0; i < values.Count; i++)
+                {
+                    locks.Add(new AddressHolderLock(
+                        IsSpecial, MemoryType, ByteCount, Mask, effectiveAddresses[i], SpecialType, _setterFunction, values[i]));
+                }
+                return locks;
+            }
+        }
+
+        public bool CoincidesWithLock(AddressHolderLock varLock)
+        {
+            if (this.IsSpecial != varLock.IsSpecial) return false;
+
+            if (this.IsSpecial)
+            {
+                return this.SpecialType == varLock.SpecialType;
+            }
+            else
+            {
+                return EffectiveAddressList.Any(effectiveAddress => false); //TODO fix this
+            }
+        }
+
+
+
         public uint GetRamAddress(bool addressArea = true)
         {
             // TODO fix this
