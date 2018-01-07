@@ -1462,7 +1462,7 @@ namespace SM64_Diagnostic.Utilities
             return objectData;
         }
 
-        public static List<VarXControl> OpenWatchVarXControl(string path, string schemaFile)
+        public static List<VarXControl> OpenVarXControls(string path, string schemaFile)
         {
             var objectData = new List<VarXControl>();
             var assembly = Assembly.GetExecutingAssembly();

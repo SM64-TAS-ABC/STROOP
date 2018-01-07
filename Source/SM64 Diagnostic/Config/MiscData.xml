@@ -7,11 +7,11 @@
   <Data baseAddressType="Special" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
   <Data type="short" offsetUS="0x8032DF08" offsetJP="0x8032CFA8" baseAddressType="Relative">Animation Timer</Data>
 
-  <Data type="byte" offsetUS="0x80222618" offsetJP="0x80222A18" baseAddressType="Relative" isBool="true" mask="0x20" invertBool="true">Music On</Data>
+  <Data type="byte" offsetUS="0x80222618" offsetJP="0x80222A18" baseAddressType="Relative" subclass="Boolean" mask="0x20" invertBool="true">Music On</Data>
   <Data type="float" offsetUS="0x80222630" offsetJP="0x80222A30" baseAddressType="Relative">Volume</Data>
-  <Data type="byte" offsetUS="0x8032DD94" offsetJP="0x8032CE34" baseAddressType="Relative" isBool="true">Special Triple Jump</Data>
-  <Data type="byte" offsetUS="0x80332618" offsetJP="0x80331508" baseAddressType="Relative" isBool="true">Talked to Yoshi</Data>
-  <Data type="byte" offsetUS="0x8033B26E" offsetJP="0x80339EFE" baseAddressType="Relative" isBool="true">Never Entered Castle</Data>
+  <Data type="byte" offsetUS="0x8032DD94" offsetJP="0x8032CE34" baseAddressType="Relative" subclass="Boolean">Special Triple Jump</Data>
+  <Data type="byte" offsetUS="0x80332618" offsetJP="0x80331508" baseAddressType="Relative" subclass="Boolean">Talked to Yoshi</Data>
+  <Data type="byte" offsetUS="0x8033B26E" offsetJP="0x80339EFE" baseAddressType="Relative" subclass="Boolean">Never Entered Castle</Data>
   <Data type="short" offsetUS="0x8032DDF4" offsetJP="0x8032CE94" baseAddressType="Relative">Current File</Data>
   <Data type="byte" offsetUS="0x8032D5F5" offsetJP="0x8032C6B5" baseAddressType="Relative">Demo Counter</Data>
   <Data type="short" offsetUS="0x801A7C30" offsetJP="0x801A7AF0" baseAddressType="Relative">Demo Timer</Data>
@@ -53,24 +53,4 @@
   <Data type="short" offsetUS="0x8033B23C" offsetJP="0x80339ECC" baseAddressType="Relative">Transition Black Fade</Data>
   <Data type="short" offsetUS="0x8038B8A4" offsetJP="0x8038B8A4" baseAddressType="Relative">Transition White Fade</Data>
   <Data type="short" offsetUS="0x8033B254" offsetJP="0x80339EE4" baseAddressType="Relative">Transition Shrinking</Data>
-
-  <!--
-  <Data type="float" offset="0x3C" baseAddressType="Mario">Mario X</Data>
-  <Data type="float" offset="0x40" baseAddressType="Mario">Mario Y</Data>
-  <Data type="float" offset="0x44" baseAddressType="Mario">Mario Z</Data>
-
-  <Data type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" baseAddressType="Relative">G Timer (S, Rel)</Data>
-  <Data type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" baseAddressType="Relative">G Timer (US, Rel)</Data>
-
-  <Data type="int" offsetUS="0x00C19054" offsetJP="0x00C19054" baseAddressType="Absolute">G Timer (S, Ab)</Data>
-  <Data type="uint" offsetUS="0x00C19054" offsetJP="0x00C19054" baseAddressType="Absolute">G Timer (US, Ab)</Data>
-
-  <Data type="short" offset="0xAE" baseAddressType="Mario">HP (Dec)</Data>
-  <Data type="byte" offset="0xB2" baseAddressType="Mario">HP Dec (US)</Data>
-  <Data type="sbyte" offset="0xB2" baseAddressType="Mario">HP Dec (S)</Data>
-
-  <Data type="ushort" offset="0x2E" baseAddressType="Mario" isAngle="true">Yaw (US)</Data>
-  <Data type="short" offset="0x2E" baseAddressType="Mario" isAngle="true">Yaw (S)</Data>
-  -->
-
 </MiscData>

@@ -17,8 +17,8 @@ namespace SM64_Diagnostic.Managers
         BetterTextbox _betterTextboxRNGIndex;
         CheckBox _checkBoxTurnOffMusic;
 
-        public MiscManager(List<WatchVariable> watchVariables, NoTearFlowLayoutPanel variableTable, Control miscControl)
-            : base(watchVariables, variableTable)
+        public MiscManager(List<VarXControl> variables, NoTearFlowLayoutPanel variableTable, Control miscControl)
+            : base(null, variableTable, true, variables)
         {
             SplitContainer splitContainerMisc = miscControl.Controls["splitContainerMisc"] as SplitContainer;
             GroupBox groupBoxRNGIndex = splitContainerMisc.Panel1.Controls["groupBoxRNGIndex"] as GroupBox;
@@ -36,42 +36,6 @@ namespace SM64_Diagnostic.Managers
             _checkBoxTurnOffMusic = splitContainerMisc.Panel1.Controls["checkBoxTurnOffMusic"] as CheckBox;
         }
 
-        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
-        {
-            new SpecialWatchVariable("RngIndex"),
-            new SpecialWatchVariable("RngCallsPerFrame"),
-            new SpecialWatchVariable("NumberOfLoadedObjects")
-        };
-
-        private void ProcessSpecialVars()
-        {
-            foreach (var specialVar in _specialDataControls)
-            {
-                switch(specialVar.SpecialName)
-                {
-                    case "RngIndex":
-                        ushort rngValue = Config.Stream.GetUInt16(Config.RngAddress);
-                        (specialVar as DataContainer).Text = RngIndexer.GetRngIndexString(rngValue);
-                        break;
-
-                    case "RngCallsPerFrame":
-                        (specialVar as DataContainer).Text = GetRngCallsPerFrame().ToString();
-                        break;
-
-                    case "NumberOfLoadedObjects":
-                        (specialVar as DataContainer).Text = ObjectSlotsManager.Instance.ActiveObjectCount.ToString();
-                        break;
-                }
-            }
-        }
-
-        private int GetRngCallsPerFrame()
-        {
-            var currentRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0E);
-            var preRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0C);
-            return RngIndexer.GetRngIndexDiff(preRng, currentRng);
-        }
-
         public override void Update(bool updateView)
         {
             if (_checkBoxTurnOffMusic.Checked)
@@ -86,7 +50,6 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             base.Update();
-            ProcessSpecialVars();
         }
 
     }

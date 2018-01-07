@@ -25,9 +25,9 @@ namespace SM64_Diagnostic
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         InputImageGui _inputImageGui = new InputImageGui();
         FileImageGui _fileImageGui = new FileImageGui();
-        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, 
+        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _triangleData, 
             _debugData, _actionsData, _varXData, _inputData, _fileData, _areaData, _quarterFrameData, _camHackData;
-        List<VarXControl> _varXList, _waterData;
+        List<VarXControl> _varXList, _waterData, _miscData;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
         List<RomHack> _romHacks;
@@ -184,7 +184,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading main configuration", statusNum++);
             XmlConfigParser.OpenConfig(@"Config/Config.xml");
             loadingForm.UpdateStatus("Loading Miscellaneous Data", statusNum++);
-            _miscData = XmlConfigParser.OpenWatchVarData(@"Config/MiscData.xml", "MiscDataSchema.xsd");
+            _miscData = XmlConfigParser.OpenVarXControls(@"Config/MiscData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Object Data", statusNum++);
             _objectData = XmlConfigParser.OpenWatchVarData(@"Config/ObjectData.xml", "ObjectDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Object Associations", statusNum++);
@@ -196,9 +196,9 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Actions Data", statusNum++);
             _actionsData = XmlConfigParser.OpenWatchVarData(@"Config/ActionsData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Water Data", statusNum++);
-            _waterData = XmlConfigParser.OpenWatchVarXControl(@"Config/WaterData.xml", "MiscDataSchema.xsd");
+            _waterData = XmlConfigParser.OpenVarXControls(@"Config/WaterData.xml", "MiscDataSchema.xsd");
             _varXData = XmlConfigParser.OpenWatchVarData(@"Config/VarXData.xml", "MiscDataSchema.xsd");
-            _varXList = XmlConfigParser.OpenWatchVarXControl(@"Config/VarXData.xml", "MiscDataSchema.xsd");
+            _varXList = XmlConfigParser.OpenVarXControls(@"Config/VarXData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Input Data", statusNum++);
             _inputData = XmlConfigParser.OpenWatchVarData(@"Config/InputData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Input Image Associations", statusNum++);
@@ -334,6 +334,7 @@ namespace SM64_Diagnostic
             dataGridViewExpressions.DataSource = _tableOtherData;
 
             // Setup other data table
+            /*
             for (int index = 0; index < _miscData.Count; index++)
             {
                 var watchVar = _miscData[index];
@@ -342,6 +343,7 @@ namespace SM64_Diagnostic
                 var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.TypeName, "", watchVar.Address);
                 _otherDataRowAssoc.Add(index, row);
             }
+            */
 
 #if !DEBUG
             tabControlMain.TabPages.Remove(tabPageExpressions);
