@@ -7,7 +7,7 @@
   <Data baseAddressType="Special" specialType="CurrentAreaIndex" color="#ccfffa">Current Area Index</Data>
 
   <Data type="byte" offset="0x00" baseAddressType="Area">Area ID</Data>
-  <Data type="byte" offset="0x01" baseAddressType="Area" isBool="true">Is Current Area</Data>
+  <Data type="byte" offset="0x01" baseAddressType="Area" subclass="Boolean">Is Current Area</Data>
   <Data type="short" offset="0x02" baseAddressType="Area">Terrain Type</Data>
   <Data baseAddressType="Special" specialType="AreaTerrainDescription">Terrain Description</Data>
 

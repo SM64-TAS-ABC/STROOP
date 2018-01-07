@@ -29,7 +29,7 @@ namespace SM64_Diagnostic.Managers
         {
             Instance = this;
 
-            _selectedAreaAddress = Config.Area.GetAreaAddress(0);
+            _selectedAreaAddress = AreaUtilities.GetAreaAddress(0);
 
             SplitContainer splitContainerArea = tabControl.Controls["splitContainerArea"] as SplitContainer;
 
@@ -46,7 +46,7 @@ namespace SM64_Diagnostic.Managers
                 _selectedAreaRadioButtons[i].Click += (sender, e) =>
                 {
                     _selectCurrentAreaCheckbox.Checked = false;
-                    _selectedAreaAddress = Config.Area.GetAreaAddress(index);
+                    _selectedAreaAddress = AreaUtilities.GetAreaAddress(index);
                 };
             }
         }
@@ -66,42 +66,19 @@ namespace SM64_Diagnostic.Managers
                 {
                     case "CurrentAreaIndexMario":
                         uint currentAreaMario = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.AreaPointerOffset);
-                        (specialVar as DataContainer).Text = Config.Area.GetAreaIndex(currentAreaMario).ToString();
+                        (specialVar as DataContainer).Text = AreaUtilities.GetAreaIndex(currentAreaMario).ToString();
                         break;
 
                     case "CurrentAreaIndex":
                         uint currentArea = Config.Stream.GetUInt32(Config.Area.CurrentAreaPointerAddress);
-                        (specialVar as DataContainer).Text = Config.Area.GetAreaIndex(currentArea).ToString();
+                        (specialVar as DataContainer).Text = AreaUtilities.GetAreaIndex(currentArea).ToString();
                         break;
 
                     case "AreaTerrainDescription":
                         short terrainType = Config.Stream.GetInt16(_selectedAreaAddress + Config.Area.TerrainTypeOffset);
-                        (specialVar as DataContainer).Text = GetAreaDescription(terrainType);
+                        (specialVar as DataContainer).Text = AreaUtilities.GetAreaDescription(terrainType);
                         break;
                 }
-            }
-        }
-
-        public string GetAreaDescription(int terrainType)
-        {
-            switch (terrainType)
-            {
-                case 0:
-                    return "Grassy";
-                case 1:
-                    return "Normal";
-                case 2:
-                    return "Cold";
-                case 3:
-                    return "Sandy";
-                case 4:
-                    return "Spooky";
-                case 5:
-                    return "Aquatic";
-                case 6:
-                    return "Slide";
-                default:
-                    return "Unrecognized";
             }
         }
 
@@ -117,7 +94,7 @@ namespace SM64_Diagnostic.Managers
             base.Update(updateView);
             ProcessSpecialVars();
 
-            int? currentAreaIndex = Config.Area.GetAreaIndex(_selectedAreaAddress);
+            int? currentAreaIndex = AreaUtilities.GetAreaIndex(_selectedAreaAddress);
             for (int i = 0; i < _selectedAreaRadioButtons.Count; i++)
             {
                 _selectedAreaRadioButtons[i].Checked = i == currentAreaIndex;
