@@ -136,9 +136,11 @@ namespace SM64_Diagnostic.Controls
             VariableViewerForm varInfo;
             string typeDescr = _addressHolder.MemoryTypeName;
 
-            varInfo = new VariableViewerForm(_varXControl.VarName, typeDescr,
-                String.Format("0x{0:X8}", _addressHolder.GetRamAddress()),
-                String.Format("0x{0:X8}", _addressHolder.GetProcessAddress().ToUInt64()));
+            varInfo = new VariableViewerForm(
+                _varXControl.VarName,
+                typeDescr,
+                _addressHolder.GetRamAddressString(),
+                _addressHolder.GetProcessAddressString());
 
             varInfo.ShowDialog();
         }

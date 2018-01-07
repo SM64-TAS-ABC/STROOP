@@ -236,34 +236,16 @@ namespace SM64_Diagnostic.Controls
                 return locks;
             }
         }
-        
-        /*
-        public bool CoincidesWithLock(AddressHolderLock varLock)
-        {
-            if (this.IsSpecial != varLock.IsSpecial) return false;
 
-            if (this.IsSpecial)
-            {
-                return this.SpecialType == varLock.SpecialType;
-            }
-            else
-            {
-                return EffectiveAddressList.Any(effectiveAddress =>
-                {
-                    bool equalEffectiveAddresses = effectiveAddress == varLock.EffectiveAddress;
-                    bool equalByteCounts = this.ByteCount == varLock.ByteCount;
-                    bool overlappingMasks = (this.Mask.Value &varLock.Mask.Value) != 0;
-                    return equalEffectiveAddresses && equalByteCounts && overlappingMasks;
-                });
-            }
+        public string GetRamAddressString(bool addressArea = true)
+        {
+            if (IsSpecial) return "(none)";
+            if (EffectiveAddressList.Count == 0) return "(none)";
+            return String.Format("0x{0:X8}", GetRamAddress(addressArea));
         }
-        */
 
         public uint GetRamAddress(bool addressArea = true)
         {
-            // TODO fix this
-            if (IsSpecial) return 0;
-
             UIntPtr effectiveAddress = new UIntPtr(EffectiveAddressUnsafe);
             uint address;
 
@@ -275,6 +257,13 @@ namespace SM64_Diagnostic.Controls
                 address = effectiveAddress.ToUInt32();
 
             return addressArea ? address | 0x80000000 : address & 0x0FFFFFFF;
+        }
+
+        public string GetProcessAddressString()
+        {
+            if (IsSpecial) return "(none)";
+            if (EffectiveAddressList.Count == 0) return "(none)";
+            return String.Format("0x{0:X8}", GetProcessAddress().ToUInt64());
         }
 
         public UIntPtr GetProcessAddress()
