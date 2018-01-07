@@ -144,14 +144,7 @@ namespace SM64_Diagnostic.Controls
 
         public void UpdateItemCheckStates()
         {
-            if (IsLocked())
-            {
-                _itemLock.Checked = true;
-            }
-            else
-            {
-                _itemLock.Checked = false;
-            }
+            _itemLock.Checked = IsLocked();
         }
 
 

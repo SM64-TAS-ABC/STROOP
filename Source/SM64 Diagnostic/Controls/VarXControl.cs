@@ -1,9 +1,11 @@
-﻿using SM64_Diagnostic.Structs;
+﻿using SM64_Diagnostic.Extensions;
+using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -82,6 +84,9 @@ namespace SM64_Diagnostic.Controls
                 }
             }
         }
+
+        private static Image _lockedImage = new Bitmap(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SM64_Diagnostic.EmbeddedResources.lock.png")), new Size(16, 16));
+        private static Image _someLockedImage = _lockedImage.GetOpaqueImage(0.5f);
 
         // TODO refactor this
         private static readonly int nameLabelHeight = 20;
@@ -224,6 +229,8 @@ namespace SM64_Diagnostic.Controls
             }
 
             _varX.UpdateItemCheckStates();
+            _nameLabel.Image = _varX.IsLocked() ? _lockedImage : null;
+
             UpdateColor();
         }
 
