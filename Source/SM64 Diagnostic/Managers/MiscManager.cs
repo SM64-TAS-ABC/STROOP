@@ -18,7 +18,7 @@ namespace SM64_Diagnostic.Managers
         CheckBox _checkBoxTurnOffMusic;
 
         public MiscManager(List<VarXControl> variables, NoTearFlowLayoutPanel variableTable, Control miscControl)
-            : base(null, variableTable, true, variables)
+            : base(variables, variableTable)
         {
             SplitContainer splitContainerMisc = miscControl.Controls["splitContainerMisc"] as SplitContainer;
             GroupBox groupBoxRNGIndex = splitContainerMisc.Panel1.Controls["groupBoxRNGIndex"] as GroupBox;
