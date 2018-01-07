@@ -170,6 +170,8 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
+                // Water vars
+
                 case "WaterAboveMedian":
                     getterFunction = () =>
                     {
