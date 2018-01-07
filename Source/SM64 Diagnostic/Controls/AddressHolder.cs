@@ -239,11 +239,15 @@ namespace SM64_Diagnostic.Controls
             }
             else
             {
-                return EffectiveAddressList.Any(effectiveAddress => false); //TODO fix this
+                return EffectiveAddressList.Any(effectiveAddress =>
+                {
+                    bool equalEffectiveAddresses = effectiveAddress == varLock.EffectiveAddress;
+                    bool equalByteCounts = this.ByteCount == varLock.ByteCount;
+                    bool overlappingMasks = (this.Mask.Value &varLock.Mask.Value) != 0;
+                    return equalEffectiveAddresses && equalByteCounts && overlappingMasks;
+                });
             }
         }
-
-
 
         public uint GetRamAddress(bool addressArea = true)
         {
