@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <CamHackData>
   <Data type="int" offset="0x00" baseAddressType="CamHack">Mode</Data>
-  <Data type="ushort" offset="0x1C" baseAddressType="CamHack" isBool="true">Absolute Angle</Data>
-  <Data type="uint" offset="0x28" baseAddressType="CamHack" useHex="true" isObject="true">Object to Follow</Data>
+  <Data type="ushort" offset="0x1C" baseAddressType="CamHack" subclass="Boolean">Absolute Angle</Data>
+  <Data type="uint" offset="0x28" baseAddressType="CamHack" useHex="true" subclass="Object">Object to Follow</Data>
   <Data type="float" offset="0x04" baseAddressType="CamHack">Camera X</Data>
   <Data type="float" offset="0x08" baseAddressType="CamHack">Camera Y</Data>
   <Data type="float" offset="0x0C" baseAddressType="CamHack">Camera Z</Data>
@@ -10,6 +10,6 @@
   <Data type="float" offset="0x14" baseAddressType="CamHack">Focus Y</Data>
   <Data type="float" offset="0x18" baseAddressType="CamHack">Focus Z</Data>
   <Data type="float" offset="0x20" baseAddressType="CamHack">Radius</Data>
-  <Data type="short" offset="0x1E" baseAddressType="CamHack" isAngle="true">Theta</Data>
+  <Data type="short" offset="0x1E" baseAddressType="CamHack" subclass="Angle">Theta</Data>
   <Data type="float" offset="0x24" baseAddressType="CamHack">Relative Height</Data>
 </CamHackData>
