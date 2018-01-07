@@ -259,44 +259,44 @@ namespace SM64_Diagnostic.Utilities
             return stringList;
         }
 
-        public static byte? ParseByteRoundingWrapping(string value)
+        public static byte? ParseByteRoundingWrapping(object value)
         {
-            double? doubleValue = ParseDoubleNullable(value);
+            double? doubleValue = ParseDoubleNullable(value.ToString());
             if (doubleValue.HasValue) return ParseByteRoundingWrapping(doubleValue.Value);
             return null;
         }
 
-        public static sbyte? ParseSByteRoundingWrapping(string value)
+        public static sbyte? ParseSByteRoundingWrapping(object value)
         {
-            double? doubleValue = ParseDoubleNullable(value);
+            double? doubleValue = ParseDoubleNullable(value.ToString());
             if (doubleValue.HasValue) return ParseSByteRoundingWrapping(doubleValue.Value);
             return null;
         }
 
-        public static short? ParseShortRoundingWrapping(string value)
+        public static short? ParseShortRoundingWrapping(object value)
         {
-            double? doubleValue = ParseDoubleNullable(value);
+            double? doubleValue = ParseDoubleNullable(value.ToString());
             if (doubleValue.HasValue) return ParseShortRoundingWrapping(doubleValue.Value);
             return null;
         }
 
-        public static ushort? ParseUShortRoundingWrapping(string value)
+        public static ushort? ParseUShortRoundingWrapping(object value)
         {
-            double? doubleValue = ParseDoubleNullable(value);
+            double? doubleValue = ParseDoubleNullable(value.ToString());
             if (doubleValue.HasValue) return ParseUShortRoundingWrapping(doubleValue.Value);
             return null;
         }
 
-        public static int? ParseIntRoundingWrapping(string value)
+        public static int? ParseIntRoundingWrapping(object value)
         {
-            double? doubleValue = ParseDoubleNullable(value);
+            double? doubleValue = ParseDoubleNullable(value.ToString());
             if (doubleValue.HasValue) return ParseIntRoundingWrapping(doubleValue.Value);
             return null;
         }
 
-        public static uint? ParseUIntRoundingWrapping(string value)
+        public static uint? ParseUIntRoundingWrapping(object value)
         {
-            double? doubleValue = ParseDoubleNullable(value);
+            double? doubleValue = ParseDoubleNullable(value.ToString());
             if (doubleValue.HasValue) return ParseUIntRoundingWrapping(doubleValue.Value);
             return null;
         }
