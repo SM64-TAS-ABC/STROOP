@@ -17,47 +17,11 @@ namespace SM64_Diagnostic.Managers
         Label actionDescriptionLabel;
         Label animationDescriptionLabel;
 
-        public ActionsManager(List<WatchVariable> actionsData, NoTearFlowLayoutPanel variableTable, Control actionsControl)
-            : base(actionsData, variableTable)
+        public ActionsManager(List<VarXControl> variables, NoTearFlowLayoutPanel variableTable, Control actionsControl)
+            : base(variables, variableTable)
         {
             actionDescriptionLabel = actionsControl.Controls["labelActionDescription"] as Label;
             animationDescriptionLabel = actionsControl.Controls["labelAnimationDescription"] as Label;
-        }
-
-        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
-        {
-             new SpecialWatchVariable("ActionDescription"),
-             new SpecialWatchVariable("PrevActionDescription"),
-             new SpecialWatchVariable("MarioAnimationDescription"),
-        };
-
-        public void ProcessSpecialVars()
-        {
-            var marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
-            short marioObjAnimation = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationOffset);
-            short marioObjAnimationTimer = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationTimerOffset);
-
-            foreach (var specialVar in _specialDataControls)
-            {
-                switch(specialVar.SpecialName)
-                {                  
-                    case "ActionDescription":
-                        string actionDescription = Config.MarioActions.GetActionName(Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset));
-                        (specialVar as DataContainer).Text = actionDescription;
-                        actionDescriptionLabel.Text = actionDescription;
-                        break;
-
-                    case "PrevActionDescription":
-                        (specialVar as DataContainer).Text = Config.MarioActions.GetActionName(Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset));
-                        break;
-
-                    case "MarioAnimationDescription":
-                        string animationDescription = Config.MarioAnimations.GetAnimationName(marioObjAnimation);
-                        (specialVar as DataContainer).Text = animationDescription;
-                        animationDescriptionLabel.Text = animationDescription;
-                        break;
-                }
-            }
         }
 
         public override void Update(bool updateView)
@@ -67,7 +31,17 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             base.Update();
-            ProcessSpecialVars();
+
+            // Update action label
+            uint action = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset);
+            string actionDescription = Config.MarioActions.GetActionName(action);
+            actionDescriptionLabel.Text = actionDescription;
+
+            // Update animation label
+            uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+            short animation = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationOffset);
+            string animationDescription = Config.MarioAnimations.GetAnimationName(animation);
+            animationDescriptionLabel.Text = animationDescription;
         }
     }
 }
