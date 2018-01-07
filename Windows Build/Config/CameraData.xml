@@ -21,7 +21,7 @@
   <Data type="float" offset="0x88" baseAddressType="Camera">Camera Focus Z</Data>
   <Data type="float" offset="0x164" baseAddressType="Camera">Focus Veer Dist</Data>
   <Data type="float" offset="0xC8" baseAddressType="Camera">Cam Dist from Focus</Data>
-  <Data baseAddressType="Special" specialType="DistanceToMario">Cam Dist from Mario</Data>
+  <Data baseAddressType="Special" specialType="CameraDistanceToMario">Cam Dist from Mario</Data>
   <Data type="float" offsetUS="0x8033C5A4" offsetJP="0x8033B234" baseAddressType="Relative">FOV</Data>
   <Data type="short" offset="0xD4" baseAddressType="Camera">Yaw Shake</Data>
   <Data type="short" offset="0x120" baseAddressType="Camera">Yaw Shake Speed</Data>

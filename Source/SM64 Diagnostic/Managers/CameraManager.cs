@@ -75,7 +75,7 @@ namespace SM64_Diagnostic.Managers
 
         protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
         {
-            new SpecialWatchVariable("DistanceToMario"),
+            new SpecialWatchVariable("CameraDistanceToMario"),
         };
 
         public void ProcessSpecialVars()
@@ -94,7 +94,7 @@ namespace SM64_Diagnostic.Managers
             {
                 switch (specialVar.SpecialName)
                 {
-                    case "DistanceToMario":
+                    case "CameraDistanceToMario":
                         (specialVar as DataContainer).Text = Math.Round(MoreMath.GetDistanceBetween(cameraX, cameraY, cameraZ, mX, mY, mZ),3).ToString();
                         break;
                 }
