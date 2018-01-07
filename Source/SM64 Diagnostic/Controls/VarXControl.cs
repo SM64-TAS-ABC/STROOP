@@ -223,6 +223,7 @@ namespace SM64_Diagnostic.Controls
                 _valueCheckBox.CheckState = _varX.GetValueForCheckbox();
             }
 
+            _varX.UpdateItemCheckStates();
             UpdateColor();
         }
 

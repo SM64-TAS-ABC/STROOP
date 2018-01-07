@@ -14,10 +14,10 @@ namespace SM64_Diagnostic.Structs
     {
         private class VarXLock
         {
-            public readonly VarX Variable;
+            public readonly AddressHolder Variable;
             public readonly string Value;
 
-            public VarXLock(VarX variable, string value)
+            public VarXLock(AddressHolder variable, string value)
             {
                 Variable = variable;
                 Value = value;
@@ -26,20 +26,20 @@ namespace SM64_Diagnostic.Structs
 
         private static List<VarXLock> _lockList = new List<VarXLock>();
 
-        public static void AddLock(VarX varX, string value)
+        public static void AddLock(AddressHolder variable, string value)
         {
-            VarXLock varXLock = new VarXLock(varX, value);
+            VarXLock varXLock = new VarXLock(variable, value);
             _lockList.Add(varXLock);
         }
 
-        public static void RemoveLock(VarX varX)
+        public static void RemoveLock(AddressHolder variable)
         {
-            _lockList.RemoveAll(varLock => varLock.Variable == varX);
+            _lockList.RemoveAll(varLock => varLock.Variable == variable);
         }
 
-        public static bool ContainsLock(VarX varX)
+        public static bool ContainsLock(AddressHolder variable)
         {
-            return _lockList.Any(varLock => varLock.Variable == varX);
+            return _lockList.Any(varLock => varLock.Variable == variable);
         }
 
     };

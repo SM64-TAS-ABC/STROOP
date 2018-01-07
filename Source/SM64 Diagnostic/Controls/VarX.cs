@@ -22,6 +22,8 @@ namespace SM64_Diagnostic.Controls
         protected readonly VarXControl _varXControl;
         protected readonly ContextMenuStrip _contextMenuStrip;
 
+        private ToolStripMenuItem _itemLock;
+
         private readonly bool _startsAsCheckbox;
 
         public static VarX CreateVarX(
@@ -90,8 +92,18 @@ namespace SM64_Diagnostic.Controls
             };
             itemHighlight.Checked = _varXControl.ShowBorder;
 
-            ToolStripMenuItem itemLock = new ToolStripMenuItem("Lock");
-            itemLock.Click += (sender, e) => { };
+            _itemLock = new ToolStripMenuItem("Lock");
+            _itemLock.Click += (sender, e) =>
+            {
+                if (VarXLockManager.ContainsLock(_addressHolder))
+                {
+                    VarXLockManager.RemoveLock(_addressHolder);
+                }
+                else
+                {
+                    VarXLockManager.AddLock(_addressHolder, _varXControl.TextBoxValue);
+                }
+            };
 
             ToolStripMenuItem itemEdit = new ToolStripMenuItem("Edit");
             itemEdit.Click += (sender, e) => { _varXControl.EditMode = true; };
@@ -106,7 +118,7 @@ namespace SM64_Diagnostic.Controls
             itemPaste.Click += (sender, e) => { SetValueFromTextbox(Clipboard.GetText()); };
 
             _contextMenuStrip.Items.Add(itemHighlight);
-            _contextMenuStrip.Items.Add(itemLock);
+            _contextMenuStrip.Items.Add(_itemLock);
             _contextMenuStrip.Items.Add(itemEdit);
             _contextMenuStrip.Items.Add(itemCopyAsIs);
             _contextMenuStrip.Items.Add(itemCopyUnrounded);
@@ -123,6 +135,23 @@ namespace SM64_Diagnostic.Controls
                 String.Format("0x{0:X8}", _addressHolder.GetProcessAddress().ToUInt64()));
 
             varInfo.ShowDialog();
+        }
+
+        public bool IsLocked()
+        {
+            return VarXLockManager.ContainsLock(_addressHolder);
+        }
+
+        public void UpdateItemCheckStates()
+        {
+            if (IsLocked())
+            {
+                _itemLock.Checked = true;
+            }
+            else
+            {
+                _itemLock.Checked = false;
+            }
         }
 
 
