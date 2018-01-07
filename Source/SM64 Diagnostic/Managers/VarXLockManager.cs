@@ -67,6 +67,17 @@ namespace SM64_Diagnostic.Structs
             varLock.UpdateLockValue(value);
         }
 
+        public static void RemoveAllLocks()
+        {
+            _lockList.Clear();
+            _lockDict.Clear();
+        }
+
+        public static bool AnyLocks()
+        {
+            return _lockList.Count > 0;
+        }
+
         public static void Update()
         {
             _lockList.ForEach(varLock => varLock.Update());

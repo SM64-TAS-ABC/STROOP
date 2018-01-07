@@ -23,6 +23,7 @@ namespace SM64_Diagnostic.Controls
         protected readonly ContextMenuStrip _contextMenuStrip;
 
         private ToolStripMenuItem _itemLock;
+        private ToolStripMenuItem _itemRemoveAllLocks;
 
         private readonly bool _startsAsCheckbox;
 
@@ -105,6 +106,9 @@ namespace SM64_Diagnostic.Controls
                 }
             };
 
+            _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
+            _itemRemoveAllLocks.Click += (sender, e) => { VarXLockManager.RemoveAllLocks(); };
+
             ToolStripMenuItem itemEdit = new ToolStripMenuItem("Edit");
             itemEdit.Click += (sender, e) => { _varXControl.EditMode = true; };
 
@@ -119,6 +123,7 @@ namespace SM64_Diagnostic.Controls
 
             _contextMenuStrip.Items.Add(itemHighlight);
             _contextMenuStrip.Items.Add(_itemLock);
+            _contextMenuStrip.Items.Add(_itemRemoveAllLocks);
             _contextMenuStrip.Items.Add(itemEdit);
             _contextMenuStrip.Items.Add(itemCopyAsIs);
             _contextMenuStrip.Items.Add(itemCopyUnrounded);
@@ -145,6 +150,7 @@ namespace SM64_Diagnostic.Controls
         public void UpdateItemCheckStates()
         {
             _itemLock.Checked = IsLocked();
+            _itemRemoveAllLocks.Enabled = VarXLockManager.AnyLocks();
         }
 
 
