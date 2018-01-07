@@ -142,6 +142,21 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
+                // Camera vars
+
+                case "CameraDistanceToMario":
+                    getterFunction = () =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position cameraPos = GetCameraPosition();
+                        double dist = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, cameraPos.X, cameraPos.Y, cameraPos.Z);
+                        return CreateList(dist);
+                    };
+                    break;
+
+                // Action vars
+
                 case "ActionDescription":
                     getterFunction = () =>
                     {
@@ -155,8 +170,8 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = () =>
                     {
                         uint prevAction = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset);
-                        string actionDescription = Config.MarioActions.GetActionName(prevAction);
-                        return CreateList(actionDescription);
+                        string prevActionDescription = Config.MarioActions.GetActionName(prevAction);
+                        return CreateList(prevActionDescription);
                     };
                     break;
 
@@ -164,22 +179,9 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = () =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
-                        short marioObjAnimation = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationOffset);
-                        string animationDescription = Config.MarioAnimations.GetAnimationName(marioObjAnimation);
+                        short animation = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationOffset);
+                        string animationDescription = Config.MarioAnimations.GetAnimationName(animation);
                         return CreateList(animationDescription);
-                    };
-                    break;
-
-                // Camera vars
-
-                case "CameraDistanceToMario":
-                    getterFunction = () =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position cameraPos = GetCameraPosition();
-                        double dist = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Y, marioPos.Z, cameraPos.X, cameraPos.Y, cameraPos.Z);
-                        return CreateList(dist);
                     };
                     break;
 
