@@ -245,6 +245,15 @@ namespace SM64_Diagnostic.Structs
                         string currentAreaIndexMario = AreaUtilities.GetAreaIndexString(currentAreaMario);
                         return CreateList(currentAreaIndexMario);
                     };
+                    setterFunction = (string stringValue) =>
+                    {
+                        int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        if (!intValueNullable.HasValue) return false;
+                        int currentAreaIndexMario = intValueNullable.Value;
+                        if (currentAreaIndexMario < 0 || currentAreaIndexMario >= 8) return false;
+                        uint currentAreaAddressMario = AreaUtilities.GetAreaAddress(currentAreaIndexMario);
+                        return Config.Stream.SetValue(currentAreaAddressMario, Config.Mario.StructAddress + Config.Mario.AreaPointerOffset);
+                    };
                     break;
 
                 case "CurrentAreaIndex":
@@ -254,14 +263,30 @@ namespace SM64_Diagnostic.Structs
                         string currentAreaIndex = AreaUtilities.GetAreaIndexString(currentArea);
                         return CreateList(currentAreaIndex);
                     };
+                    setterFunction = (string stringValue) =>
+                    {
+                        int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        if (!intValueNullable.HasValue) return false;
+                        int currentAreaIndex = intValueNullable.Value;
+                        if (currentAreaIndex < 0 || currentAreaIndex >= 8) return false;
+                        uint currentAreaAddress = AreaUtilities.GetAreaAddress(currentAreaIndex);
+                        return Config.Stream.SetValue(currentAreaAddress, Config.Area.CurrentAreaPointerAddress);
+                    };
                     break;
 
                 case "AreaTerrainDescription":
                     getterFunction = () =>
                     {
                         short terrainType = Config.Stream.GetInt16(AreaManager.Instance.SelectedAreaAddress + Config.Area.TerrainTypeOffset);
-                        string terrainDescription = AreaUtilities.GetAreaDescription(terrainType);
+                        string terrainDescription = AreaUtilities.GetTerrainDescription(terrainType);
                         return CreateList(terrainDescription);
+                    };
+                    setterFunction = (string stringValue) =>
+                    {
+                        short? terrainTypeNullable = AreaUtilities.GetTerrainType(stringValue);
+                        if (!terrainTypeNullable.HasValue) return false;
+                        short terrainType = terrainTypeNullable.Value;
+                        return Config.Stream.SetValue(terrainType, AreaManager.Instance.SelectedAreaAddress + Config.Area.TerrainTypeOffset);
                     };
                     break;
 

@@ -31,7 +31,7 @@ namespace SM64_Diagnostic.Structs
             return (uint)(Config.Area.AreaStartAddress + index * Config.Area.AreaStructSize);
         }
 
-        public static string GetAreaDescription(int terrainType)
+        public static string GetTerrainDescription(short terrainType)
         {
             switch (terrainType)
             {
@@ -51,6 +51,30 @@ namespace SM64_Diagnostic.Structs
                     return "Slide";
                 default:
                     return "Unrecognized";
+            }
+        }
+
+        public static short? GetTerrainType(string terrainDescription)
+        {
+            terrainDescription = terrainDescription.ToLower().Trim();
+            switch (terrainDescription)
+            {
+                case "grassy":
+                    return 0;
+                case "normal":
+                    return 1;
+                case "cold":
+                    return 2;
+                case "sandy":
+                    return 3;
+                case "spooky":
+                    return 4;
+                case "aquatic":
+                    return 5;
+                case "slide":
+                    return 6;
+                default:
+                    return null;
             }
         }
 

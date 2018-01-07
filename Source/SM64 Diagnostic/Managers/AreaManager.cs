@@ -76,7 +76,7 @@ namespace SM64_Diagnostic.Managers
 
                     case "AreaTerrainDescription":
                         short terrainType = Config.Stream.GetInt16(_selectedAreaAddress + Config.Area.TerrainTypeOffset);
-                        (specialVar as DataContainer).Text = AreaUtilities.GetAreaDescription(terrainType);
+                        (specialVar as DataContainer).Text = AreaUtilities.GetTerrainDescription(terrainType);
                         break;
                 }
             }
