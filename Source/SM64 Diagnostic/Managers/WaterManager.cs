@@ -14,40 +14,10 @@ namespace SM64_Diagnostic.Managers
 {
     public class WaterManager : DataManager
     {
-        public WaterManager(List<WatchVariable> watchVariables, NoTearFlowLayoutPanel variableTable)
-            : base(watchVariables, variableTable)
+        public WaterManager(List<VarXControl> variables, NoTearFlowLayoutPanel variableTable)
+            : base(null, variableTable, true, variables)
         {
-        }
 
-        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
-        {
-            new SpecialWatchVariable("WaterAboveMedian"),
-            new SpecialWatchVariable("MarioAboveWater"),
-        };
-
-        private void ProcessSpecialVars()
-        {
-            foreach (var specialVar in _specialDataControls)
-            {
-                switch(specialVar.SpecialName)
-                {
-                    case "WaterAboveMedian":
-                        {
-                            short waterLevel = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Mario.WaterLevelOffset);
-                            short waterLevelMedian = Config.Stream.GetInt16(Config.WaterLevelMedianAddress);
-                            (specialVar as DataContainer).Text = Math.Round((double)(waterLevel - waterLevelMedian), 3).ToString();
-                            break;
-                        }
-
-                    case "MarioAboveWater":
-                        {
-                            short waterLevel = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Mario.WaterLevelOffset);
-                            float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-                            (specialVar as DataContainer).Text = Math.Round(marioY - waterLevel, 3).ToString();
-                            break;
-                        }
-                }
-            }
         }
 
         public override void Update(bool updateView)
@@ -56,7 +26,6 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             base.Update();
-            ProcessSpecialVars();
         }
 
     }

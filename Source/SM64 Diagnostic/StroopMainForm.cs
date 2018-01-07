@@ -26,8 +26,8 @@ namespace SM64_Diagnostic
         InputImageGui _inputImageGui = new InputImageGui();
         FileImageGui _fileImageGui = new FileImageGui();
         List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _miscData, _triangleData, 
-            _debugData, _actionsData, _waterData, _varXData, _inputData, _fileData, _areaData, _quarterFrameData, _camHackData;
-        List<VarXControl> _varXList;
+            _debugData, _actionsData, _varXData, _inputData, _fileData, _areaData, _quarterFrameData, _camHackData;
+        List<VarXControl> _varXList, _waterData;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
         List<RomHack> _romHacks;
@@ -196,7 +196,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Actions Data", statusNum++);
             _actionsData = XmlConfigParser.OpenWatchVarData(@"Config/ActionsData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Water Data", statusNum++);
-            _waterData = XmlConfigParser.OpenWatchVarData(@"Config/WaterData.xml", "MiscDataSchema.xsd");
+            _waterData = XmlConfigParser.OpenWatchVarXControl(@"Config/WaterData.xml", "MiscDataSchema.xsd");
             _varXData = XmlConfigParser.OpenWatchVarData(@"Config/VarXData.xml", "MiscDataSchema.xsd");
             _varXList = XmlConfigParser.OpenWatchVarXControl(@"Config/VarXData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Input Data", statusNum++);
