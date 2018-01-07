@@ -135,11 +135,11 @@ namespace SM64_Diagnostic.Controls
             SetUseCheckbox(_varX.StartsAsCheckbox());
 
             // Add functions
-            _valueTextBox.KeyDown += (sender, e) => OnTextValueKeyDown(e);
             _nameLabel.Click += (sender, e) => _varX.ShowVarInfo();
-            _valueCheckBox.Click += (sender, e) => _varX.SetValueFromCheckbox(_valueCheckBox.CheckState);
+            _valueTextBox.KeyDown += (sender, e) => OnTextValueKeyDown(e);
             _valueTextBox.DoubleClick += (sender, e) => { EditMode = true; };
             _valueTextBox.Leave += (sender, e) => { EditMode = false; };
+            _valueCheckBox.Click += (sender, e) => _varX.SetValueFromCheckbox(_valueCheckBox.CheckState);
 
         }
 
