@@ -134,14 +134,11 @@ namespace SM64_Diagnostic.Controls
         public void ShowVarInfo()
         {
             VariableViewerForm varInfo;
-            string typeDescr = _addressHolder.MemoryTypeName;
-
             varInfo = new VariableViewerForm(
                 _varXControl.VarName,
-                typeDescr,
+                _addressHolder.GetTypeDescription(),
                 _addressHolder.GetRamAddressString(),
                 _addressHolder.GetProcessAddressString());
-
             varInfo.ShowDialog();
         }
 

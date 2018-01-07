@@ -155,7 +155,7 @@ namespace SM64_Diagnostic.Controls
         {
             if (!_displayAsHex) return stringValue;
 
-            int? numHexDigits = GetNumNibbles();
+            int? numHexDigits = GetHexDigitCount();
             string stringHexDigits = numHexDigits?.ToString() ?? "";
 
             int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
@@ -193,9 +193,9 @@ namespace SM64_Diagnostic.Controls
             return value;
         }
 
-        protected virtual int? GetNumNibbles()
+        protected virtual int? GetHexDigitCount()
         {
-            return _addressHolder.ByteCount != null ? _addressHolder.ByteCount * 2 : null;
+            return _addressHolder.NibbleCount;
         }
     }
 }

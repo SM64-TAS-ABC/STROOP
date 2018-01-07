@@ -156,9 +156,9 @@ namespace SM64_Diagnostic.Controls
             return doubleValue.ToString();
         }
 
-        protected override int? GetNumNibbles()
+        protected override int? GetHexDigitCount()
         {
-            return _addressHolder.IsSpecial || _constrainToOneRevolution ? 4 : base.GetNumNibbles();
+            return _addressHolder.IsSpecial || _constrainToOneRevolution ? 4 : base.GetHexDigitCount();
         }
     }
 }

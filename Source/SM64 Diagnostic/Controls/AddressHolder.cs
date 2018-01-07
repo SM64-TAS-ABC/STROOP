@@ -19,6 +19,7 @@ namespace SM64_Diagnostic.Controls
         public readonly string MemoryTypeName;
         public readonly Type MemoryType;
         public readonly int? ByteCount;
+        public readonly int? NibbleCount;
         public readonly bool? SignedType;
 
         public readonly string SpecialType;
@@ -152,9 +153,10 @@ namespace SM64_Diagnostic.Controls
             OffsetPAL = offsetPAL;
             OffsetDefault = offsetDefault;
 
-            MemoryTypeName = IsSpecial ? "special" : memoryTypeName;
+            MemoryTypeName = IsSpecial ? null : memoryTypeName;
             MemoryType = IsSpecial ? null : VarXUtilities.StringToType[MemoryTypeName];
             ByteCount = IsSpecial ? (int?)null : VarXUtilities.TypeSize[MemoryType];
+            NibbleCount = IsSpecial ? (int?)null : VarXUtilities.TypeSize[MemoryType] * 2;
             SignedType = IsSpecial ? (bool?)null : VarXUtilities.TypeSign[MemoryType];
 
             SpecialType = specialType;
@@ -234,6 +236,23 @@ namespace SM64_Diagnostic.Controls
                         IsSpecial, MemoryType, ByteCount, Mask, effectiveAddresses[i], SpecialType, _dynamicSetterFunction, values[i]));
                 }
                 return locks;
+            }
+        }
+
+        public string GetTypeDescription()
+        {
+            if (IsSpecial)
+            {
+                return "special (" + SpecialType + ")";
+            }
+            else
+            {
+                string maskString = "";
+                if (Mask != null)
+                {
+                    maskString = " with mask " + String.Format("0x{0:X" + NibbleCount.Value + "}", Mask.Value);
+                }
+                return MemoryTypeName + maskString;
             }
         }
 
