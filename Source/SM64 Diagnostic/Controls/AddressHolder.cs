@@ -34,6 +34,7 @@ namespace SM64_Diagnostic.Controls
 
         private readonly Func<List<string>> _getterFunction;
         private readonly Func<string, bool> _setterFunction;
+        private readonly Func<string, uint?, bool> _dynamicSetterFunction;
 
         // TODO remove this
         private readonly bool _returnNonEmptyList;
@@ -167,6 +168,7 @@ namespace SM64_Diagnostic.Controls
             if (IsSpecial)
             {
                 (_getterFunction, _setterFunction) = VarXSpecialUtilities.CreateGetterSetterFunctions(SpecialType);
+                _dynamicSetterFunction = (string stringValue, uint? effectiveAddressNullable) => _setterFunction(stringValue);
             }
             else
             {
@@ -175,13 +177,19 @@ namespace SM64_Diagnostic.Controls
                     return EffectiveAddressList.ConvertAll(
                         address => Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing, Mask).ToString());
                 };
+                _dynamicSetterFunction = (string value, uint? effectiveAddressNullable) =>
+                {
+                    if (!effectiveAddressNullable.HasValue) return false;
+                    uint effectiveAddress = effectiveAddressNullable.Value;
+                    return Config.Stream.SetValueRoundingWrapping(
+                        MemoryType, value, effectiveAddress, UseAbsoluteAddressing, Mask);
+                };
                 _setterFunction = (string value) =>
                 {
                     List<uint> effectiveAddressList = EffectiveAddressList;
                     if (effectiveAddressList.Count == 0) return false;
                     return effectiveAddressList.ConvertAll(
-                        address => Config.Stream.SetValueRoundingWrapping(
-                            MemoryType, value, address, UseAbsoluteAddressing, Mask))
+                        effectiveAddress => _dynamicSetterFunction(value, effectiveAddress))
                             .Aggregate(true, (b1, b2) => b1 && b2);
                 };
             }
@@ -210,7 +218,7 @@ namespace SM64_Diagnostic.Controls
                 return new List<AddressHolderLock>()
                 {
                     new AddressHolderLock(
-                        IsSpecial, MemoryType, ByteCount, Mask, null, SpecialType, _setterFunction, values[0])
+                        IsSpecial, MemoryType, ByteCount, Mask, null, SpecialType, _dynamicSetterFunction, values[0])
                 };
             }
             else
@@ -223,7 +231,7 @@ namespace SM64_Diagnostic.Controls
                 for (int i = 0; i < values.Count; i++)
                 {
                     locks.Add(new AddressHolderLock(
-                        IsSpecial, MemoryType, ByteCount, Mask, effectiveAddresses[i], SpecialType, _setterFunction, values[i]));
+                        IsSpecial, MemoryType, ByteCount, Mask, effectiveAddresses[i], SpecialType, _dynamicSetterFunction, values[i]));
                 }
                 return locks;
             }
