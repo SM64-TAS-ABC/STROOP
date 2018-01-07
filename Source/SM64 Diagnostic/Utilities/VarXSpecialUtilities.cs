@@ -171,6 +171,7 @@ namespace SM64_Diagnostic.Structs
                     break;
 
                 // Camera vars
+
                 case "CameraDistanceToMario":
                     getterFunction = () =>
                     {
