@@ -169,6 +169,8 @@ namespace SM64_Diagnostic.Controls
 
         public bool SetValueFromTextbox(string value)
         {
+            if (IsLocked()) VarXLockManager.UpdateLockValue(_addressHolder, value);
+
             value = HandleObjectUndisplaying(value);
             value = HandleHexUndisplaying(value);
             value = HandleUnnegating(value);

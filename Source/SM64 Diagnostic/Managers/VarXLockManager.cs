@@ -15,36 +15,56 @@ namespace SM64_Diagnostic.Structs
         private class VarXLock
         {
             public readonly AddressHolder Variable;
-            public readonly string Value;
+            private string _value;
+            public string Value { get { return _value; } }
 
             public VarXLock(AddressHolder variable, string value)
             {
                 Variable = variable;
-                Value = value;
+                _value = value;
             }
 
             public void Update()
             {
-                Variable.SetValue(Value);
+                Variable.SetValue(_value);
+            }
+
+            public void UpdateLockValue(string value)
+            {
+                _value = value;
             }
         }
 
         private static List<VarXLock> _lockList = new List<VarXLock>();
+        private static Dictionary<AddressHolder, VarXLock> _lockDict = new Dictionary<AddressHolder, VarXLock>();
 
         public static void AddLock(AddressHolder variable, string value)
         {
             VarXLock varXLock = new VarXLock(variable, value);
             _lockList.Add(varXLock);
+            _lockDict.Add(variable, varXLock);
         }
 
         public static void RemoveLock(AddressHolder variable)
         {
-            _lockList.RemoveAll(varLock => varLock.Variable == variable);
+            if (!_lockDict.ContainsKey(variable)) return;
+
+            VarXLock varLock = _lockDict[variable];
+            _lockList.Remove(varLock);
+            _lockDict.Remove(variable);
         }
 
         public static bool ContainsLock(AddressHolder variable)
         {
-            return _lockList.Any(varLock => varLock.Variable == variable);
+            return _lockDict.ContainsKey(variable);
+        }
+
+        public static void UpdateLockValue(AddressHolder variable, string value)
+        {
+            if (!_lockDict.ContainsKey(variable)) return;
+
+            VarXLock varLock = _lockDict[variable];
+            varLock.UpdateLockValue(value);
         }
 
         public static void Update()
