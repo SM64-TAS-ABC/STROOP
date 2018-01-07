@@ -175,14 +175,14 @@ namespace SM64_Diagnostic.Controls
 
         public bool SetValueFromTextbox(string value)
         {
-            if (IsLocked()) VarXLockManager.UpdateLockValues(_addressHolder);
-
             value = HandleObjectUndisplaying(value);
             value = HandleHexUndisplaying(value);
             value = HandleUnnegating(value);
             value = HandleAngleUnconverting(value);
 
-            return _addressHolder.SetValue(value);
+            bool success = _addressHolder.SetValue(value);
+            if (success && IsLocked()) VarXLockManager.UpdateLockValues(_addressHolder, value);
+            return success;
         }
 
         public CheckState GetValueForCheckbox()

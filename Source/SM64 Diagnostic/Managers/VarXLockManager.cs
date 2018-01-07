@@ -43,14 +43,14 @@ namespace SM64_Diagnostic.Structs
             return false;
         }
 
-        public static void UpdateLockValues(AddressHolder variable)
+        public static void UpdateLockValues(AddressHolder variable, string newValue)
         {
             List<AddressHolderLock> newLocks = variable.GetLocks();
             foreach (AddressHolderLock newLock in newLocks)
             {
                 AddressHolderLock currentLock = _lockList.FirstOrDefault(current => current.Equals(newLock));
                 if (currentLock == null) continue;
-                currentLock.UpdateLockValue(newLock.Value);
+                currentLock.UpdateLockValue(newValue);
             }
         }
 
