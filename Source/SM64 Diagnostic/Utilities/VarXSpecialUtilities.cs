@@ -216,6 +216,24 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
+                case "RngCallsPerFrame":
+                    getterFunction = () =>
+                    {
+                        ushort preRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0C);
+                        ushort currentRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0E);
+                        int rngDiff = RngIndexer.GetRngIndexDiff(preRng, currentRng);
+                        return CreateList(rngDiff);
+                    };
+                    break;
+
+                case "NumberOfLoadedObjects":
+                    getterFunction = () =>
+                    {
+                        int numberOfLoadedObjects = ObjectSlotsManager.Instance.ActiveObjectCount;
+                        return CreateList(numberOfLoadedObjects);
+                    };
+                    break;
+
                 default:
                     break;
             }

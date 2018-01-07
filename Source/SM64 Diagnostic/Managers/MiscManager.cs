@@ -14,8 +14,6 @@ namespace SM64_Diagnostic.Managers
 {
     public class MiscManager : DataManager
     {
-        public int ActiveObjectCount = 0;
-
         BetterTextbox _betterTextboxRNGIndex;
         CheckBox _checkBoxTurnOffMusic;
 
@@ -61,7 +59,7 @@ namespace SM64_Diagnostic.Managers
                         break;
 
                     case "NumberOfLoadedObjects":
-                        (specialVar as DataContainer).Text = ActiveObjectCount.ToString();
+                        (specialVar as DataContainer).Text = ObjectSlotsManager.Instance.ActiveObjectCount.ToString();
                         break;
                 }
             }
@@ -71,7 +69,6 @@ namespace SM64_Diagnostic.Managers
         {
             var currentRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0E);
             var preRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0C);
-
             return RngIndexer.GetRngIndexDiff(preRng, currentRng);
         }
 

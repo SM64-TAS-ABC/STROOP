@@ -47,9 +47,11 @@ namespace SM64_Diagnostic.Managers
         BehaviorCriteria? _lastSelectedBehavior;
         uint _stoodOnObject, _interactionObject, _heldObject, _usedObject, _closestObject, _cameraObject, _cameraHackObject,
             _modelObject, _floorObject, _wallObject, _ceilingObject, _parentObject, _parentUnusedObject, _parentNoneObject;
-        int _activeObjCnt;
         bool _selectedUpdatePending = false;
         Image _multiImage = null;
+
+        private int _activeObjectCount;
+        public int ActiveObjectCount { get { return _activeObjectCount; } }
 
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
@@ -452,7 +454,7 @@ namespace SM64_Diagnostic.Managers
                     break;
             }
 
-            _activeObjCnt = 0;
+            _activeObjectCount = 0;
 
             _stoodOnObject = Config.Stream.GetUInt32(Config.Mario.StoodOnObjectPointer);
             _interactionObject = Config.Stream.GetUInt32(Config.Mario.InteractionObjectPointerOffset + Config.Mario.StructAddress);
@@ -534,7 +536,6 @@ namespace SM64_Diagnostic.Managers
                 }
             }
 
-            ManagerContext.Current.MiscManager.ActiveObjectCount = _activeObjCnt;
             ObjectManager objManager = ManagerContext.Current.ObjectManager;
 
             if (SelectedSlotsAddresses.Count > 1)
@@ -625,7 +626,7 @@ namespace SM64_Diagnostic.Managers
             objSlot.DrawMarkedOverlay = MarkedSlotsAddresses.Contains(objAddress);
 
             if (objData.IsActive)
-                _activeObjCnt++;
+                _activeObjectCount++;
 
             var gfxId = Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.BehaviorGfxOffset);
             var subType = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.BehaviorSubtypeOffset);
