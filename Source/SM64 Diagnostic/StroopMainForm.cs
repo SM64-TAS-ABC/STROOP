@@ -25,10 +25,10 @@ namespace SM64_Diagnostic
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         InputImageGui _inputImageGui = new InputImageGui();
         FileImageGui _fileImageGui = new FileImageGui();
-        List<WatchVariable> _objectData, _marioData, _cameraData, _hudData, _triangleData, 
+        List<WatchVariable> _objectData, _marioData, _cameraData, _triangleData, 
             _actionsData, _varXData, _quarterFrameData;
         List<VarXControl> _varXList, _waterData, _miscData, _areaData, _inputData, _fileData,
-            _debugData, _camHackData;
+            _debugData, _camHackData, _hudData;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
         List<RomHack> _romHacks;
@@ -219,7 +219,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Debug Data", statusNum++);
             _debugData = XmlConfigParser.OpenVarXControls(@"Config/DebugData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
-            _hudData = XmlConfigParser.OpenWatchVarData(@"Config/HudData.xml", "HudDataSchema.xsd");
+            _hudData = XmlConfigParser.OpenVarXControls(@"Config/HudData.xml", "HudDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Map Associations", statusNum++);
             _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
             loadingForm.UpdateStatus("Loading Scripts", statusNum++);
