@@ -170,6 +170,27 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
+                case "MarioAboveWater":
+                    getterFunction = () =>
+                    {
+                        short waterLevel = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Mario.WaterLevelOffset);
+                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        float marioAboveWater = marioY - waterLevel;
+                        return CreateList(marioAboveWater);
+                    };
+                    setterFunction = (string stringValue) =>
+                    {
+                        double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!doubleValueNullable.HasValue) return false;
+                        double goalMarioAboveWater = doubleValueNullable.Value;
+                        short waterLevel = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Mario.WaterLevelOffset);
+                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        double goalWaterLevel = waterLevel + goalMarioAboveWater;
+
+                        return false; //TODO do this
+                    };
+                    break;
+
                 case "RngIndex":
                     getterFunction = () =>
                     {
@@ -193,9 +214,9 @@ namespace SM64_Diagnostic.Structs
             return (getterFunction, setterFunction);
         }
 
-        private static List<string> CreateList(string stringValue)
+        private static List<string> CreateList(object value)
         {
-            return new List<string>() { stringValue };
+            return new List<string>() { value.ToString() };
         }
 
         private static Position GetMarioPosition()

@@ -44,7 +44,7 @@
   <Data type="short" offsetUS="0x80112762" offsetJP="0x8010F8E2" baseAddressType="Relative">TTM 4 WL</Data>
   <Data type="short" offsetUS="0x801086A8" offsetJP="0x80105828" baseAddressType="Relative">THI Tiny 1 WL</Data>
   <Data type="short" offsetUS="0x801086B4" offsetJP="0x80105834" baseAddressType="Relative">THI Tiny 2 WL</Data>
-  <Data type="byte" offsetUS="0x80361257" offsetJP="0x8035FEE7" baseAddressType="Relative" isBool="true">THI Water Drained</Data>
+  <Data type="byte" offsetUS="0x80361257" offsetJP="0x8035FEE7" baseAddressType="Relative" subclass="Boolean">THI Water Drained</Data>
   <Data type="short" offsetUS="0x801086C0" offsetJP="0x80105840" baseAddressType="Relative">THI Tiny Mt WL</Data>
   <Data type="short" offsetUS="0x80106FC2" offsetJP="0x80104142" baseAddressType="Relative">THI Huge 1 WL</Data>
   <Data type="short" offsetUS="0x80106FCE" offsetJP="0x8010414E" baseAddressType="Relative">THI Huge 2 WL</Data>

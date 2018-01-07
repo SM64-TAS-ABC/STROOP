@@ -373,12 +373,12 @@ namespace SM64_Diagnostic.Utilities
                 value = ParsingUtilities.ParseDoubleNullable((string)value);
                 if (value == null) return false;
 
-                if (type == typeof(byte)) value = MoreMath.GetIntegerInRange((double)value, 1.0 + byte.MaxValue - byte.MinValue, false);
-                if (type == typeof(sbyte)) value = MoreMath.GetIntegerInRange((double)value, 1.0 + sbyte.MaxValue - sbyte.MinValue, true);
-                if (type == typeof(short)) value = MoreMath.GetIntegerInRange((double)value, 1.0 + short.MaxValue - short.MinValue, true);
-                if (type == typeof(ushort)) value = MoreMath.GetIntegerInRange((double)value, 1.0 + ushort.MaxValue - ushort.MinValue, false);
-                if (type == typeof(int)) value = MoreMath.GetIntegerInRange((double)value, 1.0 + int.MaxValue - int.MinValue, true);
-                if (type == typeof(uint)) value = MoreMath.GetIntegerInRange((double)value, 1.0 + uint.MaxValue - uint.MinValue, false);
+                if (type == typeof(byte)) value = ParsingUtilities.ParseByteRoundingWrapping((double)value);
+                if (type == typeof(sbyte)) value = ParsingUtilities.ParseSByteRoundingWrapping((double)value);
+                if (type == typeof(short)) value = ParsingUtilities.ParseShortRoundingWrapping((double)value);
+                if (type == typeof(ushort)) value = ParsingUtilities.ParseUShortRoundingWrapping((double)value);
+                if (type == typeof(int)) value = ParsingUtilities.ParseIntRoundingWrapping((double)value);
+                if (type == typeof(uint)) value = ParsingUtilities.ParseUIntRoundingWrapping((double)value);
             }
 
             return SetValue(type, value.ToString(), address, absoluteAddress, mask);
