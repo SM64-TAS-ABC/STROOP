@@ -26,9 +26,9 @@ namespace SM64_Diagnostic
         InputImageGui _inputImageGui = new InputImageGui();
         FileImageGui _fileImageGui = new FileImageGui();
         List<WatchVariable> _objectData, _marioData, _triangleData, 
-            _actionsData, _quarterFrameData;
+            _actionsData;
         List<VarXControl> _varXList, _waterData, _miscData, _areaData, _inputData, _fileData,
-            _debugData, _camHackData, _hudData, _cameraData;
+            _debugData, _camHackData, _hudData, _cameraData, _quarterFrameData;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
         List<RomHack> _romHacks;
@@ -210,7 +210,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Area Data", statusNum++);
             _areaData = XmlConfigParser.OpenVarXControls(@"Config/AreaData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Quarter Frame Data", statusNum++);
-            _quarterFrameData = XmlConfigParser.OpenWatchVarData(@"Config/QuarterFrameData.xml", "MiscDataSchema.xsd");
+            _quarterFrameData = XmlConfigParser.OpenVarXControls(@"Config/QuarterFrameData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Camera Hack Data", statusNum++);
             _camHackData = XmlConfigParser.OpenVarXControls(@"Config/CamHackData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Triangles Data", statusNum++);
