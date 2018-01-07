@@ -18,33 +18,33 @@
   <Data type="byte" offset="0x19" baseAddressType="File" mask="0x7F" color="#ccfffa">TTC Stars</Data>
   <Data type="byte" offset="0x1A" baseAddressType="File" mask="0x7F" color="#ccfffa">RR Stars</Data>
 
-  <Data type="byte" offset="0x20" baseAddressType="File" isBool="true" mask="0x01" color="#ccd0ff">TotWC Star</Data>
-  <Data type="byte" offset="0x1F" baseAddressType="File" isBool="true" mask="0x01" color="#ccd0ff">CotMC Star</Data>
-  <Data type="byte" offset="0x21" baseAddressType="File" isBool="true" mask="0x01" color="#ccd0ff">VCutM Star</Data>
-  <Data type="byte" offset="0x1E" baseAddressType="File" isBool="true" mask="0x01" color="#ccd0ff">PSS Star</Data>
-  <Data type="byte" offset="0x1E" baseAddressType="File" isBool="true" mask="0x02" color="#ccd0ff">PSS Under 21" Star</Data>
-  <Data type="byte" offset="0x23" baseAddressType="File" isBool="true" mask="0x01" color="#ccd0ff">SA Star</Data>
-  <Data type="byte" offset="0x22" baseAddressType="File" isBool="true" mask="0x01" color="#ccd0ff">WMotR Star</Data>
-  <Data type="byte" offset="0x1B" baseAddressType="File" isBool="true" mask="0x01" color="#ccd0ff">BitDW Star</Data>
-  <Data type="byte" offset="0x1C" baseAddressType="File" isBool="true" mask="0x01" color="#ccd0ff">BitFS Star</Data>
-  <Data type="byte" offset="0x1D" baseAddressType="File" isBool="true" mask="0x01" color="#ccd0ff">BitS Star</Data>
-  <Data type="byte" offset="0x08" baseAddressType="File" isBool="true" mask="0x01" color="#ccd0ff">Toad 1 Star</Data>
-  <Data type="byte" offset="0x08" baseAddressType="File" isBool="true" mask="0x02" color="#ccd0ff">Toad 2 Star</Data>
-  <Data type="byte" offset="0x08" baseAddressType="File" isBool="true" mask="0x04" color="#ccd0ff">Toad 3 Star</Data>
-  <Data type="byte" offset="0x08" baseAddressType="File" isBool="true" mask="0x08" color="#ccd0ff">MIPS 1 Star</Data>
-  <Data type="byte" offset="0x08" baseAddressType="File" isBool="true" mask="0x10" color="#ccd0ff">MIPS 2 Star</Data>
+  <Data type="byte" offset="0x20" baseAddressType="File" subclass="Boolean" mask="0x01" color="#ccd0ff">TotWC Star</Data>
+  <Data type="byte" offset="0x1F" baseAddressType="File" subclass="Boolean" mask="0x01" color="#ccd0ff">CotMC Star</Data>
+  <Data type="byte" offset="0x21" baseAddressType="File" subclass="Boolean" mask="0x01" color="#ccd0ff">VCutM Star</Data>
+  <Data type="byte" offset="0x1E" baseAddressType="File" subclass="Boolean" mask="0x01" color="#ccd0ff">PSS Star</Data>
+  <Data type="byte" offset="0x1E" baseAddressType="File" subclass="Boolean" mask="0x02" color="#ccd0ff">PSS Under 21" Star</Data>
+  <Data type="byte" offset="0x23" baseAddressType="File" subclass="Boolean" mask="0x01" color="#ccd0ff">SA Star</Data>
+  <Data type="byte" offset="0x22" baseAddressType="File" subclass="Boolean" mask="0x01" color="#ccd0ff">WMotR Star</Data>
+  <Data type="byte" offset="0x1B" baseAddressType="File" subclass="Boolean" mask="0x01" color="#ccd0ff">BitDW Star</Data>
+  <Data type="byte" offset="0x1C" baseAddressType="File" subclass="Boolean" mask="0x01" color="#ccd0ff">BitFS Star</Data>
+  <Data type="byte" offset="0x1D" baseAddressType="File" subclass="Boolean" mask="0x01" color="#ccd0ff">BitS Star</Data>
+  <Data type="byte" offset="0x08" baseAddressType="File" subclass="Boolean" mask="0x01" color="#ccd0ff">Toad 1 Star</Data>
+  <Data type="byte" offset="0x08" baseAddressType="File" subclass="Boolean" mask="0x02" color="#ccd0ff">Toad 2 Star</Data>
+  <Data type="byte" offset="0x08" baseAddressType="File" subclass="Boolean" mask="0x04" color="#ccd0ff">Toad 3 Star</Data>
+  <Data type="byte" offset="0x08" baseAddressType="File" subclass="Boolean" mask="0x08" color="#ccd0ff">MIPS 1 Star</Data>
+  <Data type="byte" offset="0x08" baseAddressType="File" subclass="Boolean" mask="0x10" color="#ccd0ff">MIPS 2 Star</Data>
 
-  <Data type="byte" offset="0x0D" baseAddressType="File" isBool="true" mask="0x80" color="#cfffcc">BoB Cannon</Data>
-  <Data type="byte" offset="0x0E" baseAddressType="File" isBool="true" mask="0x80" color="#cfffcc">WF Cannon</Data>
-  <Data type="byte" offset="0x0F" baseAddressType="File" isBool="true" mask="0x80" color="#cfffcc">JRB Cannon</Data>
-  <Data type="byte" offset="0x10" baseAddressType="File" isBool="true" mask="0x80" color="#cfffcc">CCM Cannon</Data>
-  <Data type="byte" offset="0x14" baseAddressType="File" isBool="true" mask="0x80" color="#cfffcc">SSL Cannon</Data>
-  <Data type="byte" offset="0x16" baseAddressType="File" isBool="true" mask="0x80" color="#cfffcc">SL Cannon</Data>
-  <Data type="byte" offset="0x17" baseAddressType="File" isBool="true" mask="0x80" color="#cfffcc">WDW Cannon</Data>
-  <Data type="byte" offset="0x18" baseAddressType="File" isBool="true" mask="0x80" color="#cfffcc">TTM Cannon</Data>
-  <Data type="byte" offset="0x19" baseAddressType="File" isBool="true" mask="0x80" color="#cfffcc">THI Cannon</Data>
-  <Data type="byte" offset="0x1B" baseAddressType="File" isBool="true" mask="0x80" color="#cfffcc">RR Cannon</Data>
-  <Data type="byte" offset="0x23" baseAddressType="File" isBool="true" mask="0x80" color="#cfffcc">WMotR Cannon</Data>
+  <Data type="byte" offset="0x0D" baseAddressType="File" subclass="Boolean" mask="0x80" color="#cfffcc">BoB Cannon</Data>
+  <Data type="byte" offset="0x0E" baseAddressType="File" subclass="Boolean" mask="0x80" color="#cfffcc">WF Cannon</Data>
+  <Data type="byte" offset="0x0F" baseAddressType="File" subclass="Boolean" mask="0x80" color="#cfffcc">JRB Cannon</Data>
+  <Data type="byte" offset="0x10" baseAddressType="File" subclass="Boolean" mask="0x80" color="#cfffcc">CCM Cannon</Data>
+  <Data type="byte" offset="0x14" baseAddressType="File" subclass="Boolean" mask="0x80" color="#cfffcc">SSL Cannon</Data>
+  <Data type="byte" offset="0x16" baseAddressType="File" subclass="Boolean" mask="0x80" color="#cfffcc">SL Cannon</Data>
+  <Data type="byte" offset="0x17" baseAddressType="File" subclass="Boolean" mask="0x80" color="#cfffcc">WDW Cannon</Data>
+  <Data type="byte" offset="0x18" baseAddressType="File" subclass="Boolean" mask="0x80" color="#cfffcc">TTM Cannon</Data>
+  <Data type="byte" offset="0x19" baseAddressType="File" subclass="Boolean" mask="0x80" color="#cfffcc">THI Cannon</Data>
+  <Data type="byte" offset="0x1B" baseAddressType="File" subclass="Boolean" mask="0x80" color="#cfffcc">RR Cannon</Data>
+  <Data type="byte" offset="0x23" baseAddressType="File" subclass="Boolean" mask="0x80" color="#cfffcc">WMotR Cannon</Data>
 
   <Data type="byte" offset="0x25" baseAddressType="File" color="#ffeccc">BoB Coin Score</Data>
   <Data type="byte" offset="0x26" baseAddressType="File" color="#ffeccc">WF Coin Score</Data>
@@ -62,155 +62,155 @@
   <Data type="byte" offset="0x32" baseAddressType="File" color="#ffeccc">TTC Coin Score</Data>
   <Data type="byte" offset="0x33" baseAddressType="File" color="#ffeccc">RR Coin Score</Data>
 
-  <Data type="byte" offset="0x0B" baseAddressType="File" isBool="true" mask="0x02" color="#ffcccc">Wing Cap</Data>
-  <Data type="byte" offset="0x0B" baseAddressType="File" isBool="true" mask="0x04" color="#ffcccc">Metal Cap</Data>
-  <Data type="byte" offset="0x0B" baseAddressType="File" isBool="true" mask="0x08" color="#ffcccc">Vanish Cap</Data>
+  <Data type="byte" offset="0x0B" baseAddressType="File" subclass="Boolean" mask="0x02" color="#ffcccc">Wing Cap</Data>
+  <Data type="byte" offset="0x0B" baseAddressType="File" subclass="Boolean" mask="0x04" color="#ffcccc">Metal Cap</Data>
+  <Data type="byte" offset="0x0B" baseAddressType="File" subclass="Boolean" mask="0x08" color="#ffcccc">Vanish Cap</Data>
 
-  <Data type="byte" offset="0x0B" baseAddressType="File" isBool="true" mask="0x10" color="#e5ccff">Bowser 1 Key</Data>
-  <Data type="byte" offset="0x0B" baseAddressType="File" isBool="true" mask="0x40" color="#e5ccff">Basement Door</Data>
-  <Data type="byte" offset="0x0B" baseAddressType="File" isBool="true" mask="0x20" color="#e5ccff">Bowser 2 Key</Data>
-  <Data type="byte" offset="0x0B" baseAddressType="File" isBool="true" mask="0x80" color="#e5ccff">Upstairs Door</Data>
-  <Data type="byte" offset="0x0A" baseAddressType="File" isBool="true" mask="0x08" color="#e5ccff">WF Door</Data>
-  <Data type="byte" offset="0x0A" baseAddressType="File" isBool="true" mask="0x20" color="#e5ccff">JRB Door</Data>
-  <Data type="byte" offset="0x0A" baseAddressType="File" isBool="true" mask="0x10" color="#e5ccff">CCM Door</Data>
-  <Data type="byte" offset="0x0A" baseAddressType="File" isBool="true" mask="0x04" color="#e5ccff">PSS Door</Data>
-  <Data type="byte" offset="0x0A" baseAddressType="File" isBool="true" mask="0x40" color="#e5ccff">BitDW Door</Data>
-  <Data type="byte" offset="0x0A" baseAddressType="File" isBool="true" mask="0x80" color="#e5ccff">BitFS Door</Data>
-  <Data type="byte" offset="0x09" baseAddressType="File" isBool="true" mask="0x10" color="#e5ccff">50 Star Door</Data>
+  <Data type="byte" offset="0x0B" baseAddressType="File" subclass="Boolean" mask="0x10" color="#e5ccff">Bowser 1 Key</Data>
+  <Data type="byte" offset="0x0B" baseAddressType="File" subclass="Boolean" mask="0x40" color="#e5ccff">Basement Door</Data>
+  <Data type="byte" offset="0x0B" baseAddressType="File" subclass="Boolean" mask="0x20" color="#e5ccff">Bowser 2 Key</Data>
+  <Data type="byte" offset="0x0B" baseAddressType="File" subclass="Boolean" mask="0x80" color="#e5ccff">Upstairs Door</Data>
+  <Data type="byte" offset="0x0A" baseAddressType="File" subclass="Boolean" mask="0x08" color="#e5ccff">WF Door</Data>
+  <Data type="byte" offset="0x0A" baseAddressType="File" subclass="Boolean" mask="0x20" color="#e5ccff">JRB Door</Data>
+  <Data type="byte" offset="0x0A" baseAddressType="File" subclass="Boolean" mask="0x10" color="#e5ccff">CCM Door</Data>
+  <Data type="byte" offset="0x0A" baseAddressType="File" subclass="Boolean" mask="0x04" color="#e5ccff">PSS Door</Data>
+  <Data type="byte" offset="0x0A" baseAddressType="File" subclass="Boolean" mask="0x40" color="#e5ccff">BitDW Door</Data>
+  <Data type="byte" offset="0x0A" baseAddressType="File" subclass="Boolean" mask="0x80" color="#e5ccff">BitFS Door</Data>
+  <Data type="byte" offset="0x09" baseAddressType="File" subclass="Boolean" mask="0x10" color="#e5ccff">50 Star Door</Data>
 
-  <Data type="byte" offset="0x09" baseAddressType="File" isBool="true" mask="0x01" color="#ffcccc">Hat on Ground</Data>
-  <Data type="byte" offset="0x09" baseAddressType="File" isBool="true" mask="0x02" color="#ffcccc">Hat on Klepto</Data>
-  <Data type="byte" offset="0x09" baseAddressType="File" isBool="true" mask="0x08" color="#ffcccc">Hat on Snowman</Data>
-  <Data type="byte" offset="0x09" baseAddressType="File" isBool="true" mask="0x04" color="#ffcccc">Hat on Ukiki</Data>
+  <Data type="byte" offset="0x09" baseAddressType="File" subclass="Boolean" mask="0x01" color="#ffcccc">Hat on Ground</Data>
+  <Data type="byte" offset="0x09" baseAddressType="File" subclass="Boolean" mask="0x02" color="#ffcccc">Hat on Klepto</Data>
+  <Data type="byte" offset="0x09" baseAddressType="File" subclass="Boolean" mask="0x08" color="#ffcccc">Hat on Snowman</Data>
+  <Data type="byte" offset="0x09" baseAddressType="File" subclass="Boolean" mask="0x04" color="#ffcccc">Hat on Ukiki</Data>
   <Data type="ushort" offset="0x00" baseAddressType="File" color="#ffcccc">Hat Course (SSL=2049,SL=2561,TTM=9217)</Data>
   <Data type="short" offset="0x02" baseAddressType="File" color="#ffcccc">Hat X</Data>
   <Data type="short" offset="0x04" baseAddressType="File" color="#ffcccc">Hat Y</Data>
   <Data type="short" offset="0x06" baseAddressType="File" color="#ffcccc">Hat Z</Data>
 
-  <Data type="byte" offset="0x0B" baseAddressType="File" isBool="true" mask="0x01" color="#ffccff">File Exists</Data>
-  <Data type="byte" offset="0x0A" baseAddressType="File" isBool="true" mask="0x01" color="#ffccff">DDD Moved Back</Data>
-  <Data type="byte" offset="0x0A" baseAddressType="File" isBool="true" mask="0x02" color="#ffccff">Moat Drained</Data>
+  <Data type="byte" offset="0x0B" baseAddressType="File" subclass="Boolean" mask="0x01" color="#ffccff">File Exists</Data>
+  <Data type="byte" offset="0x0A" baseAddressType="File" subclass="Boolean" mask="0x01" color="#ffccff">DDD Moved Back</Data>
+  <Data type="byte" offset="0x0A" baseAddressType="File" subclass="Boolean" mask="0x02" color="#ffccff">Moat Drained</Data>
 
   <Data type="ushort" offset="0x34" baseAddressType="File" color="#d0d0d0">Checksum Constant</Data>
   <Data type="ushort" offset="0x36" baseAddressType="File" color="#d0d0d0">Checksum</Data>
 
-  <Data type="byte" offset="0x0C" baseAddressType="File" isBool="true" mask="0x01">BoB: Big Bob-omb on the Summit</Data>
-  <Data type="byte" offset="0x0C" baseAddressType="File" isBool="true" mask="0x02">BoB: Footrace with Koopa the Quick</Data>
-  <Data type="byte" offset="0x0C" baseAddressType="File" isBool="true" mask="0x04">BoB: Shoot to the Island in the Sky</Data>
-  <Data type="byte" offset="0x0C" baseAddressType="File" isBool="true" mask="0x08">BoB: Find the 8 Red Coins</Data>
-  <Data type="byte" offset="0x0C" baseAddressType="File" isBool="true" mask="0x10">BoB: Mario Wings to the Sky</Data>
-  <Data type="byte" offset="0x0C" baseAddressType="File" isBool="true" mask="0x20">BoB: Behind Chain Chomp's Gate</Data>
-  <Data type="byte" offset="0x0C" baseAddressType="File" isBool="true" mask="0x40">BoB: 100 Coins</Data>
+  <Data type="byte" offset="0x0C" baseAddressType="File" subclass="Boolean" mask="0x01">BoB: Big Bob-omb on the Summit</Data>
+  <Data type="byte" offset="0x0C" baseAddressType="File" subclass="Boolean" mask="0x02">BoB: Footrace with Koopa the Quick</Data>
+  <Data type="byte" offset="0x0C" baseAddressType="File" subclass="Boolean" mask="0x04">BoB: Shoot to the Island in the Sky</Data>
+  <Data type="byte" offset="0x0C" baseAddressType="File" subclass="Boolean" mask="0x08">BoB: Find the 8 Red Coins</Data>
+  <Data type="byte" offset="0x0C" baseAddressType="File" subclass="Boolean" mask="0x10">BoB: Mario Wings to the Sky</Data>
+  <Data type="byte" offset="0x0C" baseAddressType="File" subclass="Boolean" mask="0x20">BoB: Behind Chain Chomp's Gate</Data>
+  <Data type="byte" offset="0x0C" baseAddressType="File" subclass="Boolean" mask="0x40">BoB: 100 Coins</Data>
 
-  <Data type="byte" offset="0x0D" baseAddressType="File" isBool="true" mask="0x01">WF: Chip Off Whomp's Block</Data>
-  <Data type="byte" offset="0x0D" baseAddressType="File" isBool="true" mask="0x02">WF: To the Top of the Fortress</Data>
-  <Data type="byte" offset="0x0D" baseAddressType="File" isBool="true" mask="0x04">WF: Shoot into the Wild Blue</Data>
-  <Data type="byte" offset="0x0D" baseAddressType="File" isBool="true" mask="0x08">WF: Red Coins on the Floating Isle</Data>
-  <Data type="byte" offset="0x0D" baseAddressType="File" isBool="true" mask="0x10">WF: Fall onto the Caged Island</Data>
-  <Data type="byte" offset="0x0D" baseAddressType="File" isBool="true" mask="0x20">WF: Blast Away the Wall</Data>
-  <Data type="byte" offset="0x0D" baseAddressType="File" isBool="true" mask="0x40">WF: 100 Coins</Data>
+  <Data type="byte" offset="0x0D" baseAddressType="File" subclass="Boolean" mask="0x01">WF: Chip Off Whomp's Block</Data>
+  <Data type="byte" offset="0x0D" baseAddressType="File" subclass="Boolean" mask="0x02">WF: To the Top of the Fortress</Data>
+  <Data type="byte" offset="0x0D" baseAddressType="File" subclass="Boolean" mask="0x04">WF: Shoot into the Wild Blue</Data>
+  <Data type="byte" offset="0x0D" baseAddressType="File" subclass="Boolean" mask="0x08">WF: Red Coins on the Floating Isle</Data>
+  <Data type="byte" offset="0x0D" baseAddressType="File" subclass="Boolean" mask="0x10">WF: Fall onto the Caged Island</Data>
+  <Data type="byte" offset="0x0D" baseAddressType="File" subclass="Boolean" mask="0x20">WF: Blast Away the Wall</Data>
+  <Data type="byte" offset="0x0D" baseAddressType="File" subclass="Boolean" mask="0x40">WF: 100 Coins</Data>
 
-  <Data type="byte" offset="0x0E" baseAddressType="File" isBool="true" mask="0x01">JRB: Plunder in the Sunken Ship</Data>
-  <Data type="byte" offset="0x0E" baseAddressType="File" isBool="true" mask="0x02">JRB: Can the Eel Come Out to Play?</Data>
-  <Data type="byte" offset="0x0E" baseAddressType="File" isBool="true" mask="0x04">JRB: Treasure of the Ocean Cave</Data>
-  <Data type="byte" offset="0x0E" baseAddressType="File" isBool="true" mask="0x08">JRB: Red Coins on the Ship Afloat</Data>
-  <Data type="byte" offset="0x0E" baseAddressType="File" isBool="true" mask="0x10">JRB: Blast to the Stone Pillar</Data>
-  <Data type="byte" offset="0x0E" baseAddressType="File" isBool="true" mask="0x20">JRB: Through the Jet Stream</Data>
-  <Data type="byte" offset="0x0E" baseAddressType="File" isBool="true" mask="0x40">JRB: 100 Coins</Data>
+  <Data type="byte" offset="0x0E" baseAddressType="File" subclass="Boolean" mask="0x01">JRB: Plunder in the Sunken Ship</Data>
+  <Data type="byte" offset="0x0E" baseAddressType="File" subclass="Boolean" mask="0x02">JRB: Can the Eel Come Out to Play?</Data>
+  <Data type="byte" offset="0x0E" baseAddressType="File" subclass="Boolean" mask="0x04">JRB: Treasure of the Ocean Cave</Data>
+  <Data type="byte" offset="0x0E" baseAddressType="File" subclass="Boolean" mask="0x08">JRB: Red Coins on the Ship Afloat</Data>
+  <Data type="byte" offset="0x0E" baseAddressType="File" subclass="Boolean" mask="0x10">JRB: Blast to the Stone Pillar</Data>
+  <Data type="byte" offset="0x0E" baseAddressType="File" subclass="Boolean" mask="0x20">JRB: Through the Jet Stream</Data>
+  <Data type="byte" offset="0x0E" baseAddressType="File" subclass="Boolean" mask="0x40">JRB: 100 Coins</Data>
 
-  <Data type="byte" offset="0x0F" baseAddressType="File" isBool="true" mask="0x01">CCM: Slip Slidin' Away</Data>
-  <Data type="byte" offset="0x0F" baseAddressType="File" isBool="true" mask="0x02">CCM: Li'l Penguin Lost</Data>
-  <Data type="byte" offset="0x0F" baseAddressType="File" isBool="true" mask="0x04">CCM: Big Penguin Race</Data>
-  <Data type="byte" offset="0x0F" baseAddressType="File" isBool="true" mask="0x08">CCM: Frosty Slide for 8 Red Coins</Data>
-  <Data type="byte" offset="0x0F" baseAddressType="File" isBool="true" mask="0x10">CCM: Snowman's Lost His Head</Data>
-  <Data type="byte" offset="0x0F" baseAddressType="File" isBool="true" mask="0x20">CCM: Wall Kicks Will Work</Data>
-  <Data type="byte" offset="0x0F" baseAddressType="File" isBool="true" mask="0x40">CCM: 100 Coins</Data>
+  <Data type="byte" offset="0x0F" baseAddressType="File" subclass="Boolean" mask="0x01">CCM: Slip Slidin' Away</Data>
+  <Data type="byte" offset="0x0F" baseAddressType="File" subclass="Boolean" mask="0x02">CCM: Li'l Penguin Lost</Data>
+  <Data type="byte" offset="0x0F" baseAddressType="File" subclass="Boolean" mask="0x04">CCM: Big Penguin Race</Data>
+  <Data type="byte" offset="0x0F" baseAddressType="File" subclass="Boolean" mask="0x08">CCM: Frosty Slide for 8 Red Coins</Data>
+  <Data type="byte" offset="0x0F" baseAddressType="File" subclass="Boolean" mask="0x10">CCM: Snowman's Lost His Head</Data>
+  <Data type="byte" offset="0x0F" baseAddressType="File" subclass="Boolean" mask="0x20">CCM: Wall Kicks Will Work</Data>
+  <Data type="byte" offset="0x0F" baseAddressType="File" subclass="Boolean" mask="0x40">CCM: 100 Coins</Data>
 
-  <Data type="byte" offset="0x10" baseAddressType="File" isBool="true" mask="0x01">BBH: Go On a Ghost Hunt</Data>
-  <Data type="byte" offset="0x10" baseAddressType="File" isBool="true" mask="0x02">BBH: Ride Big Boo's Merry-Go-Round</Data>
-  <Data type="byte" offset="0x10" baseAddressType="File" isBool="true" mask="0x04">BBH: Secret of the Haunted Books</Data>
-  <Data type="byte" offset="0x10" baseAddressType="File" isBool="true" mask="0x08">BBH: Seek the 8 Red Coins</Data>
-  <Data type="byte" offset="0x10" baseAddressType="File" isBool="true" mask="0x10">BBH: Big Boo's Balcony</Data>
-  <Data type="byte" offset="0x10" baseAddressType="File" isBool="true" mask="0x20">BBH: Eye to Eye in the Secret Room</Data>
-  <Data type="byte" offset="0x10" baseAddressType="File" isBool="true" mask="0x40">BBH: 100 Coins</Data>
+  <Data type="byte" offset="0x10" baseAddressType="File" subclass="Boolean" mask="0x01">BBH: Go On a Ghost Hunt</Data>
+  <Data type="byte" offset="0x10" baseAddressType="File" subclass="Boolean" mask="0x02">BBH: Ride Big Boo's Merry-Go-Round</Data>
+  <Data type="byte" offset="0x10" baseAddressType="File" subclass="Boolean" mask="0x04">BBH: Secret of the Haunted Books</Data>
+  <Data type="byte" offset="0x10" baseAddressType="File" subclass="Boolean" mask="0x08">BBH: Seek the 8 Red Coins</Data>
+  <Data type="byte" offset="0x10" baseAddressType="File" subclass="Boolean" mask="0x10">BBH: Big Boo's Balcony</Data>
+  <Data type="byte" offset="0x10" baseAddressType="File" subclass="Boolean" mask="0x20">BBH: Eye to Eye in the Secret Room</Data>
+  <Data type="byte" offset="0x10" baseAddressType="File" subclass="Boolean" mask="0x40">BBH: 100 Coins</Data>
 
-  <Data type="byte" offset="0x11" baseAddressType="File" isBool="true" mask="0x01">HMC: Swimming Beast in the Cavern</Data>
-  <Data type="byte" offset="0x11" baseAddressType="File" isBool="true" mask="0x02">HMC: Elevate for 8 Red Coins</Data>
-  <Data type="byte" offset="0x11" baseAddressType="File" isBool="true" mask="0x04">HMC: Metal-Head Mario Can Move!</Data>
-  <Data type="byte" offset="0x11" baseAddressType="File" isBool="true" mask="0x08">HMC: Navigating the Toxic Maze</Data>
-  <Data type="byte" offset="0x11" baseAddressType="File" isBool="true" mask="0x10">HMC: A-Maze-ing Emergency Exit</Data>
-  <Data type="byte" offset="0x11" baseAddressType="File" isBool="true" mask="0x20">HMC: Watch for Rolling Rocks</Data>
-  <Data type="byte" offset="0x11" baseAddressType="File" isBool="true" mask="0x40">HMC: 100 Coins</Data>
+  <Data type="byte" offset="0x11" baseAddressType="File" subclass="Boolean" mask="0x01">HMC: Swimming Beast in the Cavern</Data>
+  <Data type="byte" offset="0x11" baseAddressType="File" subclass="Boolean" mask="0x02">HMC: Elevate for 8 Red Coins</Data>
+  <Data type="byte" offset="0x11" baseAddressType="File" subclass="Boolean" mask="0x04">HMC: Metal-Head Mario Can Move!</Data>
+  <Data type="byte" offset="0x11" baseAddressType="File" subclass="Boolean" mask="0x08">HMC: Navigating the Toxic Maze</Data>
+  <Data type="byte" offset="0x11" baseAddressType="File" subclass="Boolean" mask="0x10">HMC: A-Maze-ing Emergency Exit</Data>
+  <Data type="byte" offset="0x11" baseAddressType="File" subclass="Boolean" mask="0x20">HMC: Watch for Rolling Rocks</Data>
+  <Data type="byte" offset="0x11" baseAddressType="File" subclass="Boolean" mask="0x40">HMC: 100 Coins</Data>
 
-  <Data type="byte" offset="0x12" baseAddressType="File" isBool="true" mask="0x01">LLL: Boil the Big Bully</Data>
-  <Data type="byte" offset="0x12" baseAddressType="File" isBool="true" mask="0x02">LLL: Bully the Bullies</Data>
-  <Data type="byte" offset="0x12" baseAddressType="File" isBool="true" mask="0x04">LLL: 8-Coin Puzzle with 15 Pieces</Data>
-  <Data type="byte" offset="0x12" baseAddressType="File" isBool="true" mask="0x08">LLL: Red-Hot Log Rolling</Data>
-  <Data type="byte" offset="0x12" baseAddressType="File" isBool="true" mask="0x10">LLL: Hot-Foot-It into the Volcano</Data>
-  <Data type="byte" offset="0x12" baseAddressType="File" isBool="true" mask="0x20">LLL: Elevator Tour in the Volcano</Data>
-  <Data type="byte" offset="0x12" baseAddressType="File" isBool="true" mask="0x40">LLL: 100 Coins</Data>
+  <Data type="byte" offset="0x12" baseAddressType="File" subclass="Boolean" mask="0x01">LLL: Boil the Big Bully</Data>
+  <Data type="byte" offset="0x12" baseAddressType="File" subclass="Boolean" mask="0x02">LLL: Bully the Bullies</Data>
+  <Data type="byte" offset="0x12" baseAddressType="File" subclass="Boolean" mask="0x04">LLL: 8-Coin Puzzle with 15 Pieces</Data>
+  <Data type="byte" offset="0x12" baseAddressType="File" subclass="Boolean" mask="0x08">LLL: Red-Hot Log Rolling</Data>
+  <Data type="byte" offset="0x12" baseAddressType="File" subclass="Boolean" mask="0x10">LLL: Hot-Foot-It into the Volcano</Data>
+  <Data type="byte" offset="0x12" baseAddressType="File" subclass="Boolean" mask="0x20">LLL: Elevator Tour in the Volcano</Data>
+  <Data type="byte" offset="0x12" baseAddressType="File" subclass="Boolean" mask="0x40">LLL: 100 Coins</Data>
 
-  <Data type="byte" offset="0x13" baseAddressType="File" isBool="true" mask="0x01">SSL: In the Talons of the Big Bird</Data>
-  <Data type="byte" offset="0x13" baseAddressType="File" isBool="true" mask="0x02">SSL: Shining Atop the Pyramid</Data>
-  <Data type="byte" offset="0x13" baseAddressType="File" isBool="true" mask="0x04">SSL: Inside the Ancient Pyramid</Data>
-  <Data type="byte" offset="0x13" baseAddressType="File" isBool="true" mask="0x08">SSL: Stand Tall on the Four Pillars</Data>
-  <Data type="byte" offset="0x13" baseAddressType="File" isBool="true" mask="0x10">SSL: Free Flying for 8 Red Coins</Data>
-  <Data type="byte" offset="0x13" baseAddressType="File" isBool="true" mask="0x20">SSL: Pyramid Puzzle</Data>
-  <Data type="byte" offset="0x13" baseAddressType="File" isBool="true" mask="0x40">SSL: 100 Coins</Data>
+  <Data type="byte" offset="0x13" baseAddressType="File" subclass="Boolean" mask="0x01">SSL: In the Talons of the Big Bird</Data>
+  <Data type="byte" offset="0x13" baseAddressType="File" subclass="Boolean" mask="0x02">SSL: Shining Atop the Pyramid</Data>
+  <Data type="byte" offset="0x13" baseAddressType="File" subclass="Boolean" mask="0x04">SSL: Inside the Ancient Pyramid</Data>
+  <Data type="byte" offset="0x13" baseAddressType="File" subclass="Boolean" mask="0x08">SSL: Stand Tall on the Four Pillars</Data>
+  <Data type="byte" offset="0x13" baseAddressType="File" subclass="Boolean" mask="0x10">SSL: Free Flying for 8 Red Coins</Data>
+  <Data type="byte" offset="0x13" baseAddressType="File" subclass="Boolean" mask="0x20">SSL: Pyramid Puzzle</Data>
+  <Data type="byte" offset="0x13" baseAddressType="File" subclass="Boolean" mask="0x40">SSL: 100 Coins</Data>
 
-  <Data type="byte" offset="0x14" baseAddressType="File" isBool="true" mask="0x01">DDD: Board Bowser's Sub</Data>
-  <Data type="byte" offset="0x14" baseAddressType="File" isBool="true" mask="0x02">DDD: Chests in the Current</Data>
-  <Data type="byte" offset="0x14" baseAddressType="File" isBool="true" mask="0x04">DDD: Pole-Jumping for Red Coins</Data>
-  <Data type="byte" offset="0x14" baseAddressType="File" isBool="true" mask="0x08">DDD: Through the Jet Stream</Data>
-  <Data type="byte" offset="0x14" baseAddressType="File" isBool="true" mask="0x10">DDD: The Manta Ray's Reward</Data>
-  <Data type="byte" offset="0x14" baseAddressType="File" isBool="true" mask="0x20">DDD: Collect the Caps…</Data>
-  <Data type="byte" offset="0x14" baseAddressType="File" isBool="true" mask="0x40">DDD: 100 Coins</Data>
+  <Data type="byte" offset="0x14" baseAddressType="File" subclass="Boolean" mask="0x01">DDD: Board Bowser's Sub</Data>
+  <Data type="byte" offset="0x14" baseAddressType="File" subclass="Boolean" mask="0x02">DDD: Chests in the Current</Data>
+  <Data type="byte" offset="0x14" baseAddressType="File" subclass="Boolean" mask="0x04">DDD: Pole-Jumping for Red Coins</Data>
+  <Data type="byte" offset="0x14" baseAddressType="File" subclass="Boolean" mask="0x08">DDD: Through the Jet Stream</Data>
+  <Data type="byte" offset="0x14" baseAddressType="File" subclass="Boolean" mask="0x10">DDD: The Manta Ray's Reward</Data>
+  <Data type="byte" offset="0x14" baseAddressType="File" subclass="Boolean" mask="0x20">DDD: Collect the Caps…</Data>
+  <Data type="byte" offset="0x14" baseAddressType="File" subclass="Boolean" mask="0x40">DDD: 100 Coins</Data>
 
-  <Data type="byte" offset="0x15" baseAddressType="File" isBool="true" mask="0x01">SL: Snowman's Big Head</Data>
-  <Data type="byte" offset="0x15" baseAddressType="File" isBool="true" mask="0x02">SL: Chill with the Bully</Data>
-  <Data type="byte" offset="0x15" baseAddressType="File" isBool="true" mask="0x04">SL: In the Deep Freeze</Data>
-  <Data type="byte" offset="0x15" baseAddressType="File" isBool="true" mask="0x08">SL: Whirl from the Freezing Pond</Data>
-  <Data type="byte" offset="0x15" baseAddressType="File" isBool="true" mask="0x10">SL: Shell Shreddin' for Red Coins</Data>
-  <Data type="byte" offset="0x15" baseAddressType="File" isBool="true" mask="0x20">SL: Into the Igloo</Data>
-  <Data type="byte" offset="0x15" baseAddressType="File" isBool="true" mask="0x40">SL: 100 Coins</Data>
+  <Data type="byte" offset="0x15" baseAddressType="File" subclass="Boolean" mask="0x01">SL: Snowman's Big Head</Data>
+  <Data type="byte" offset="0x15" baseAddressType="File" subclass="Boolean" mask="0x02">SL: Chill with the Bully</Data>
+  <Data type="byte" offset="0x15" baseAddressType="File" subclass="Boolean" mask="0x04">SL: In the Deep Freeze</Data>
+  <Data type="byte" offset="0x15" baseAddressType="File" subclass="Boolean" mask="0x08">SL: Whirl from the Freezing Pond</Data>
+  <Data type="byte" offset="0x15" baseAddressType="File" subclass="Boolean" mask="0x10">SL: Shell Shreddin' for Red Coins</Data>
+  <Data type="byte" offset="0x15" baseAddressType="File" subclass="Boolean" mask="0x20">SL: Into the Igloo</Data>
+  <Data type="byte" offset="0x15" baseAddressType="File" subclass="Boolean" mask="0x40">SL: 100 Coins</Data>
 
-  <Data type="byte" offset="0x16" baseAddressType="File" isBool="true" mask="0x01">WDW: Shocking Arrow Lifts!</Data>
-  <Data type="byte" offset="0x16" baseAddressType="File" isBool="true" mask="0x02">WDW: Top O' the Town</Data>
-  <Data type="byte" offset="0x16" baseAddressType="File" isBool="true" mask="0x04">WDW: Secrets in the Shallows &amp; Sky</Data>
-  <Data type="byte" offset="0x16" baseAddressType="File" isBool="true" mask="0x08">WDW: Express Elevator--Hurry Up!</Data>
-  <Data type="byte" offset="0x16" baseAddressType="File" isBool="true" mask="0x10">WDW: Go to Town for Red Coins</Data>
-  <Data type="byte" offset="0x16" baseAddressType="File" isBool="true" mask="0x20">WDW: Quick Race Through Downtown!</Data>
-  <Data type="byte" offset="0x16" baseAddressType="File" isBool="true" mask="0x40">WDW: 100 Coins</Data>
+  <Data type="byte" offset="0x16" baseAddressType="File" subclass="Boolean" mask="0x01">WDW: Shocking Arrow Lifts!</Data>
+  <Data type="byte" offset="0x16" baseAddressType="File" subclass="Boolean" mask="0x02">WDW: Top O' the Town</Data>
+  <Data type="byte" offset="0x16" baseAddressType="File" subclass="Boolean" mask="0x04">WDW: Secrets in the Shallows &amp; Sky</Data>
+  <Data type="byte" offset="0x16" baseAddressType="File" subclass="Boolean" mask="0x08">WDW: Express Elevator--Hurry Up!</Data>
+  <Data type="byte" offset="0x16" baseAddressType="File" subclass="Boolean" mask="0x10">WDW: Go to Town for Red Coins</Data>
+  <Data type="byte" offset="0x16" baseAddressType="File" subclass="Boolean" mask="0x20">WDW: Quick Race Through Downtown!</Data>
+  <Data type="byte" offset="0x16" baseAddressType="File" subclass="Boolean" mask="0x40">WDW: 100 Coins</Data>
 
-  <Data type="byte" offset="0x17" baseAddressType="File" isBool="true" mask="0x01">TTM: Scale the Mountain</Data>
-  <Data type="byte" offset="0x17" baseAddressType="File" isBool="true" mask="0x02">TTM: Mystery of the Monkey Cage</Data>
-  <Data type="byte" offset="0x17" baseAddressType="File" isBool="true" mask="0x04">TTM: Scary 'Shrooms, Red Coins</Data>
-  <Data type="byte" offset="0x17" baseAddressType="File" isBool="true" mask="0x08">TTM: Mysterious Mountainside</Data>
-  <Data type="byte" offset="0x17" baseAddressType="File" isBool="true" mask="0x10">TTM: Breathtaking View from Bridge</Data>
-  <Data type="byte" offset="0x17" baseAddressType="File" isBool="true" mask="0x20">TTM: Blast to the Lonely Mushroom</Data>
-  <Data type="byte" offset="0x17" baseAddressType="File" isBool="true" mask="0x40">TTM: 100 Coins</Data>
+  <Data type="byte" offset="0x17" baseAddressType="File" subclass="Boolean" mask="0x01">TTM: Scale the Mountain</Data>
+  <Data type="byte" offset="0x17" baseAddressType="File" subclass="Boolean" mask="0x02">TTM: Mystery of the Monkey Cage</Data>
+  <Data type="byte" offset="0x17" baseAddressType="File" subclass="Boolean" mask="0x04">TTM: Scary 'Shrooms, Red Coins</Data>
+  <Data type="byte" offset="0x17" baseAddressType="File" subclass="Boolean" mask="0x08">TTM: Mysterious Mountainside</Data>
+  <Data type="byte" offset="0x17" baseAddressType="File" subclass="Boolean" mask="0x10">TTM: Breathtaking View from Bridge</Data>
+  <Data type="byte" offset="0x17" baseAddressType="File" subclass="Boolean" mask="0x20">TTM: Blast to the Lonely Mushroom</Data>
+  <Data type="byte" offset="0x17" baseAddressType="File" subclass="Boolean" mask="0x40">TTM: 100 Coins</Data>
 
-  <Data type="byte" offset="0x18" baseAddressType="File" isBool="true" mask="0x01">THI: Pluck the Piranha Flower</Data>
-  <Data type="byte" offset="0x18" baseAddressType="File" isBool="true" mask="0x02">THI: The Tip Top of the Huge Island</Data>
-  <Data type="byte" offset="0x18" baseAddressType="File" isBool="true" mask="0x04">THI: Rematch with Koopa the Quick</Data>
-  <Data type="byte" offset="0x18" baseAddressType="File" isBool="true" mask="0x08">THI: Five Itty Bitty Secrets</Data>
-  <Data type="byte" offset="0x18" baseAddressType="File" isBool="true" mask="0x10">THI: Wiggler's Red Coins</Data>
-  <Data type="byte" offset="0x18" baseAddressType="File" isBool="true" mask="0x20">THI: Make Wiggler Squirm</Data>
-  <Data type="byte" offset="0x18" baseAddressType="File" isBool="true" mask="0x40">THI: 100 Coins</Data>
+  <Data type="byte" offset="0x18" baseAddressType="File" subclass="Boolean" mask="0x01">THI: Pluck the Piranha Flower</Data>
+  <Data type="byte" offset="0x18" baseAddressType="File" subclass="Boolean" mask="0x02">THI: The Tip Top of the Huge Island</Data>
+  <Data type="byte" offset="0x18" baseAddressType="File" subclass="Boolean" mask="0x04">THI: Rematch with Koopa the Quick</Data>
+  <Data type="byte" offset="0x18" baseAddressType="File" subclass="Boolean" mask="0x08">THI: Five Itty Bitty Secrets</Data>
+  <Data type="byte" offset="0x18" baseAddressType="File" subclass="Boolean" mask="0x10">THI: Wiggler's Red Coins</Data>
+  <Data type="byte" offset="0x18" baseAddressType="File" subclass="Boolean" mask="0x20">THI: Make Wiggler Squirm</Data>
+  <Data type="byte" offset="0x18" baseAddressType="File" subclass="Boolean" mask="0x40">THI: 100 Coins</Data>
 
-  <Data type="byte" offset="0x19" baseAddressType="File" isBool="true" mask="0x01">TTC: Roll into the Cage</Data>
-  <Data type="byte" offset="0x19" baseAddressType="File" isBool="true" mask="0x02">TTC: The Pit and the Pendulums</Data>
-  <Data type="byte" offset="0x19" baseAddressType="File" isBool="true" mask="0x04">TTC: Get a Hand</Data>
-  <Data type="byte" offset="0x19" baseAddressType="File" isBool="true" mask="0x08">TTC: Stomp on the Thwomp</Data>
-  <Data type="byte" offset="0x19" baseAddressType="File" isBool="true" mask="0x10">TTC: Timed Jumps on Moving Bars</Data>
-  <Data type="byte" offset="0x19" baseAddressType="File" isBool="true" mask="0x20">TTC: Stop Time for Red Coins</Data>
-  <Data type="byte" offset="0x19" baseAddressType="File" isBool="true" mask="0x40">TTC: 100 Coins</Data>
+  <Data type="byte" offset="0x19" baseAddressType="File" subclass="Boolean" mask="0x01">TTC: Roll into the Cage</Data>
+  <Data type="byte" offset="0x19" baseAddressType="File" subclass="Boolean" mask="0x02">TTC: The Pit and the Pendulums</Data>
+  <Data type="byte" offset="0x19" baseAddressType="File" subclass="Boolean" mask="0x04">TTC: Get a Hand</Data>
+  <Data type="byte" offset="0x19" baseAddressType="File" subclass="Boolean" mask="0x08">TTC: Stomp on the Thwomp</Data>
+  <Data type="byte" offset="0x19" baseAddressType="File" subclass="Boolean" mask="0x10">TTC: Timed Jumps on Moving Bars</Data>
+  <Data type="byte" offset="0x19" baseAddressType="File" subclass="Boolean" mask="0x20">TTC: Stop Time for Red Coins</Data>
+  <Data type="byte" offset="0x19" baseAddressType="File" subclass="Boolean" mask="0x40">TTC: 100 Coins</Data>
 
-  <Data type="byte" offset="0x1A" baseAddressType="File" isBool="true" mask="0x01">RR: Cruiser Crossing the Rainbow</Data>
-  <Data type="byte" offset="0x1A" baseAddressType="File" isBool="true" mask="0x02">RR: The Big House in the Sky</Data>
-  <Data type="byte" offset="0x1A" baseAddressType="File" isBool="true" mask="0x04">RR: Coins Amassed in a Maze</Data>
-  <Data type="byte" offset="0x1A" baseAddressType="File" isBool="true" mask="0x08">RR: Swingin' in the Breeze</Data>
-  <Data type="byte" offset="0x1A" baseAddressType="File" isBool="true" mask="0x10">RR: Tricky Triangles!</Data>
-  <Data type="byte" offset="0x1A" baseAddressType="File" isBool="true" mask="0x20">RR: Somewhere Over the Rainbow</Data>
-  <Data type="byte" offset="0x1A" baseAddressType="File" isBool="true" mask="0x40">RR: 100 Coins</Data>
+  <Data type="byte" offset="0x1A" baseAddressType="File" subclass="Boolean" mask="0x01">RR: Cruiser Crossing the Rainbow</Data>
+  <Data type="byte" offset="0x1A" baseAddressType="File" subclass="Boolean" mask="0x02">RR: The Big House in the Sky</Data>
+  <Data type="byte" offset="0x1A" baseAddressType="File" subclass="Boolean" mask="0x04">RR: Coins Amassed in a Maze</Data>
+  <Data type="byte" offset="0x1A" baseAddressType="File" subclass="Boolean" mask="0x08">RR: Swingin' in the Breeze</Data>
+  <Data type="byte" offset="0x1A" baseAddressType="File" subclass="Boolean" mask="0x10">RR: Tricky Triangles!</Data>
+  <Data type="byte" offset="0x1A" baseAddressType="File" subclass="Boolean" mask="0x20">RR: Somewhere Over the Rainbow</Data>
+  <Data type="byte" offset="0x1A" baseAddressType="File" subclass="Boolean" mask="0x40">RR: 100 Coins</Data>
 </FileData>
