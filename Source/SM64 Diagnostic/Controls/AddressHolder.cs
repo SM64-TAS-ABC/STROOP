@@ -228,7 +228,8 @@ namespace SM64_Diagnostic.Controls
                 return locks;
             }
         }
-
+        
+        /*
         public bool CoincidesWithLock(AddressHolderLock varLock)
         {
             if (this.IsSpecial != varLock.IsSpecial) return false;
@@ -248,6 +249,7 @@ namespace SM64_Diagnostic.Controls
                 });
             }
         }
+        */
 
         public uint GetRamAddress(bool addressArea = true)
         {

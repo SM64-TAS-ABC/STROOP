@@ -12,75 +12,61 @@ namespace SM64_Diagnostic.Structs
 {
     public static class VarXLockManager
     {
-        private class VarXLock
+        private static List<AddressHolderLock> _lockList = new List<AddressHolderLock>();
+
+        public static void AddLocks(AddressHolder variable)
         {
-            public readonly AddressHolder Variable;
-            private string _value;
-            public string Value { get { return _value; } }
-
-            public VarXLock(AddressHolder variable, string value)
+            List<AddressHolderLock> newLocks = variable.GetLocks();
+            foreach (AddressHolderLock newLock in newLocks)
             {
-                Variable = variable;
-                _value = value;
-            }
-
-            public void Update()
-            {
-                Variable.SetValue(_value);
-            }
-
-            public void UpdateLockValue(string value)
-            {
-                _value = value;
+                if (!_lockList.Contains(newLock)) _lockList.Add(newLock);
             }
         }
 
-        private static List<VarXLock> _lockList = new List<VarXLock>();
-        private static Dictionary<AddressHolder, VarXLock> _lockDict = new Dictionary<AddressHolder, VarXLock>();
-
-        public static void AddLock(AddressHolder variable, string value)
+        public static void RemoveLocks(AddressHolder variable)
         {
-            VarXLock varXLock = new VarXLock(variable, value);
-            _lockList.Add(varXLock);
-            _lockDict.Add(variable, varXLock);
+            List<AddressHolderLock> newLocks = variable.GetLocks();
+            foreach (AddressHolderLock newLock in newLocks)
+            {
+                _lockList.Remove(newLock);
+            }
         }
 
-        public static void RemoveLock(AddressHolder variable)
+        public static bool ContainsLocks(AddressHolder variable)
         {
-            if (!_lockDict.ContainsKey(variable)) return;
-
-            VarXLock varLock = _lockDict[variable];
-            _lockList.Remove(varLock);
-            _lockDict.Remove(variable);
+            if (!ContainsAnyLocks()) return false;
+            List<AddressHolderLock> newLocks = variable.GetLocks();
+            foreach (AddressHolderLock newLock in newLocks)
+            {
+                if (_lockList.Contains(newLock)) return true;
+            }
+            return false;
         }
 
-        public static bool ContainsLock(AddressHolder variable)
+        public static void UpdateLockValues(AddressHolder variable)
         {
-            return _lockDict.ContainsKey(variable);
-        }
-
-        public static void UpdateLockValue(AddressHolder variable, string value)
-        {
-            if (!_lockDict.ContainsKey(variable)) return;
-
-            VarXLock varLock = _lockDict[variable];
-            varLock.UpdateLockValue(value);
+            List<AddressHolderLock> newLocks = variable.GetLocks();
+            foreach (AddressHolderLock newLock in newLocks)
+            {
+                AddressHolderLock currentLock = _lockList.FirstOrDefault(current => current.Equals(newLock));
+                if (currentLock == null) continue;
+                currentLock.UpdateLockValue(newLock.Value);
+            }
         }
 
         public static void RemoveAllLocks()
         {
             _lockList.Clear();
-            _lockDict.Clear();
         }
 
-        public static bool AnyLocks()
+        public static bool ContainsAnyLocks()
         {
             return _lockList.Count > 0;
         }
 
         public static void Update()
         {
-            _lockList.ForEach(varLock => varLock.Update());
+            _lockList.ForEach(varLock => varLock.Invoke());
         }
 
     };

@@ -48,14 +48,26 @@ namespace SM64_Diagnostic.Controls
             _value = value;
         }
 
-        public void UpdateLock()
+        public void Invoke()
         {
             SetterFunction(_value);
         }
 
-        public void ChangeLockValue(string value)
+        public void UpdateLockValue(string value)
         {
             _value = value;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is AddressHolderLock)) return false;
+            AddressHolderLock other = (AddressHolderLock)obj;
+            return this.IsSpecial == other.IsSpecial &&
+                   this.MemoryType == other.MemoryType &&
+                   this.ByteCount == other.ByteCount &&
+                   this.Mask == other.Mask &&
+                   this.EffectiveAddress == other.EffectiveAddress &&
+                   this.SpecialType == other.SpecialType;
         }
 
     }

@@ -96,13 +96,13 @@ namespace SM64_Diagnostic.Controls
             _itemLock = new ToolStripMenuItem("Lock");
             _itemLock.Click += (sender, e) =>
             {
-                if (VarXLockManager.ContainsLock(_addressHolder))
+                if (VarXLockManager.ContainsLocks(_addressHolder))
                 {
-                    VarXLockManager.RemoveLock(_addressHolder);
+                    VarXLockManager.RemoveLocks(_addressHolder);
                 }
                 else
                 {
-                    VarXLockManager.AddLock(_addressHolder, _varXControl.TextBoxValue);
+                    VarXLockManager.AddLocks(_addressHolder);
                 }
             };
 
@@ -144,13 +144,13 @@ namespace SM64_Diagnostic.Controls
 
         public bool IsLocked()
         {
-            return VarXLockManager.ContainsLock(_addressHolder);
+            return VarXLockManager.ContainsLocks(_addressHolder);
         }
 
         public void UpdateItemCheckStates()
         {
             _itemLock.Checked = IsLocked();
-            _itemRemoveAllLocks.Enabled = VarXLockManager.AnyLocks();
+            _itemRemoveAllLocks.Visible = VarXLockManager.ContainsAnyLocks();
         }
 
 
@@ -175,7 +175,7 @@ namespace SM64_Diagnostic.Controls
 
         public bool SetValueFromTextbox(string value)
         {
-            if (IsLocked()) VarXLockManager.UpdateLockValue(_addressHolder, value);
+            if (IsLocked()) VarXLockManager.UpdateLockValues(_addressHolder);
 
             value = HandleObjectUndisplaying(value);
             value = HandleHexUndisplaying(value);
