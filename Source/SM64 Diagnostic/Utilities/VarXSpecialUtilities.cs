@@ -170,6 +170,16 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
+                case "WaterAboveMedian":
+                    getterFunction = () =>
+                    {
+                        short waterLevel = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Mario.WaterLevelOffset);
+                        short waterLevelMedian = Config.Stream.GetInt16(Config.WaterLevelMedianAddress);
+                        double waterAboveMedian = waterLevel - waterLevelMedian;
+                        return CreateList(waterAboveMedian);
+                    };
+                    break;
+
                 case "MarioAboveWater":
                     getterFunction = () =>
                     {
@@ -185,9 +195,8 @@ namespace SM64_Diagnostic.Structs
                         double goalMarioAboveWater = doubleValueNullable.Value;
                         short waterLevel = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Mario.WaterLevelOffset);
                         float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-                        double goalWaterLevel = waterLevel + goalMarioAboveWater;
-
-                        return false; //TODO do this
+                        double goalMarioY = waterLevel + goalMarioAboveWater;
+                        return Config.Stream.SetValue((float)goalMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
                     };
                     break;
 
