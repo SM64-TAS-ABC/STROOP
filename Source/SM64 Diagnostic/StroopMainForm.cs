@@ -282,6 +282,7 @@ namespace SM64_Diagnostic
                 currentContext.ModelManager?.Update();
                 currentContext.InjectionManager.Update();
                 currentContext.HackManager.Update();
+                VarXLockManager.Update();
             }));
         }
 

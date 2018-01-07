@@ -22,6 +22,11 @@ namespace SM64_Diagnostic.Structs
                 Variable = variable;
                 Value = value;
             }
+
+            public void Update()
+            {
+                Variable.SetValue(Value);
+            }
         }
 
         private static List<VarXLock> _lockList = new List<VarXLock>();
@@ -40,6 +45,11 @@ namespace SM64_Diagnostic.Structs
         public static bool ContainsLock(AddressHolder variable)
         {
             return _lockList.Any(varLock => varLock.Variable == variable);
+        }
+
+        public static void Update()
+        {
+            _lockList.ForEach(varLock => varLock.Update());
         }
 
     };
