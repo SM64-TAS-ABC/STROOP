@@ -229,9 +229,24 @@ namespace SM64_Diagnostic.Controls
             }
 
             _varX.UpdateItemCheckStates();
-            _nameLabel.Image = _varX.IsLocked() ? _lockedImage : null;
+            _nameLabel.Image = GetImageForCheckState(_varX.GetLockedCheckState());
 
             UpdateColor();
+        }
+
+        private Image GetImageForCheckState(CheckState checkState)
+        {
+            switch (checkState)
+            {
+                case CheckState.Unchecked:
+                    return null;
+                case CheckState.Checked:
+                    return _lockedImage;
+                case CheckState.Indeterminate:
+                    return _someLockedImage;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private void UpdateColor()

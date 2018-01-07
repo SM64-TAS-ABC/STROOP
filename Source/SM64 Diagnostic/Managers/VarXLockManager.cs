@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Structs
 {
@@ -32,15 +33,26 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        public static bool ContainsLocks(AddressHolder variable)
+        public static bool ContainsLocksBool(AddressHolder variable)
         {
-            if (!ContainsAnyLocks()) return false;
+            return ContainsLocksCheckState(variable) != CheckState.Unchecked;
+        }
+
+        public static CheckState ContainsLocksCheckState(AddressHolder variable)
+        {
+            if (!ContainsAnyLocks()) return CheckState.Unchecked;
             List<AddressHolderLock> newLocks = variable.GetLocks();
-            foreach (AddressHolderLock newLock in newLocks)
+
+            if (newLocks.Count == 0) return CheckState.Unchecked;
+            CheckState firstCheckState =
+                _lockList.Contains(newLocks[0]) ? CheckState.Checked : CheckState.Unchecked;
+            for (int i = 1; i < newLocks.Count; i++)
             {
-                if (_lockList.Contains(newLock)) return true;
+                CheckState checkState =
+                    _lockList.Contains(newLocks[i]) ? CheckState.Checked : CheckState.Unchecked;
+                if (checkState != firstCheckState) return CheckState.Indeterminate;
             }
-            return false;
+            return firstCheckState;
         }
 
         public static void UpdateLockValues(AddressHolder variable, string newValue)
