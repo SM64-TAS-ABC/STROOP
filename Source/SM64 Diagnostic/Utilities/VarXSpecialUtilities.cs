@@ -170,6 +170,18 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
+                // Camera vars
+                case "CameraDistanceToMario":
+                    getterFunction = () =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position cameraPos = GetCameraPosition();
+                        double dist = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, cameraPos.X, cameraPos.Y, cameraPos.Z);
+                        return CreateList(dist);
+                    };
+                    break;
+
                 // Water vars
 
                 case "WaterAboveMedian":
@@ -332,6 +344,15 @@ namespace SM64_Diagnostic.Structs
                 ushort objAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
                 return new Position(objX, objY, objZ, objAngle);
             });
+        }
+
+        private static Position GetCameraPosition()
+        {
+            float cameraX = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
+            float cameraY = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
+            float cameraZ = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
+            ushort cameraAngle = Config.Stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset);
+            return new Position(cameraX, cameraY, cameraZ, cameraAngle);
         }
 
         private struct Position
