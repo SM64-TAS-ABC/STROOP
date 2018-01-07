@@ -303,32 +303,106 @@ namespace SM64_Diagnostic.Utilities
 
         public static byte ParseByteRoundingWrapping(double value)
         {
-            return (byte)MoreMath.GetIntegerInRange(value, 1.0 + byte.MaxValue - byte.MinValue, false);
+            return (byte)MoreMath.GetIntegerInRangeWrapped(value, 1.0 + byte.MaxValue - byte.MinValue, false);
         }
 
         public static sbyte ParseSByteRoundingWrapping(double value)
         {
-            return (sbyte)MoreMath.GetIntegerInRange(value, 1.0 + sbyte.MaxValue - sbyte.MinValue, true);
+            return (sbyte)MoreMath.GetIntegerInRangeWrapped(value, 1.0 + sbyte.MaxValue - sbyte.MinValue, true);
         }
 
         public static short ParseShortRoundingWrapping(double value)
         {
-            return (short)MoreMath.GetIntegerInRange(value, 1.0 + short.MaxValue - short.MinValue, true);
+            return (short)MoreMath.GetIntegerInRangeWrapped(value, 1.0 + short.MaxValue - short.MinValue, true);
         }
 
         public static ushort ParseUShortRoundingWrapping(double value)
         {
-            return (ushort)MoreMath.GetIntegerInRange(value, 1.0 + ushort.MaxValue - ushort.MinValue, false);
+            return (ushort)MoreMath.GetIntegerInRangeWrapped(value, 1.0 + ushort.MaxValue - ushort.MinValue, false);
         }
 
         public static int ParseIntRoundingWrapping(double value)
         {
-            return (int)MoreMath.GetIntegerInRange(value, 1.0 + int.MaxValue - int.MinValue, true);
+            return (int)MoreMath.GetIntegerInRangeWrapped(value, 1.0 + int.MaxValue - int.MinValue, true);
         }
 
         public static uint ParseUIntRoundingWrapping(double value)
         {
-            return (uint)MoreMath.GetIntegerInRange(value, 1.0 + uint.MaxValue - uint.MinValue, false);
+            return (uint)MoreMath.GetIntegerInRangeWrapped(value, 1.0 + uint.MaxValue - uint.MinValue, false);
+        }
+
+
+
+        public static byte? ParseByteRoundingCapping(object value)
+        {
+            double? doubleValue = ParseDoubleNullable(value.ToString());
+            if (doubleValue.HasValue) return ParseByteRoundingCapping(doubleValue.Value);
+            return null;
+        }
+
+        public static sbyte? ParseSByteRoundingCapping(object value)
+        {
+            double? doubleValue = ParseDoubleNullable(value.ToString());
+            if (doubleValue.HasValue) return ParseSByteRoundingCapping(doubleValue.Value);
+            return null;
+        }
+
+        public static short? ParseShortRoundingCapping(object value)
+        {
+            double? doubleValue = ParseDoubleNullable(value.ToString());
+            if (doubleValue.HasValue) return ParseShortRoundingCapping(doubleValue.Value);
+            return null;
+        }
+
+        public static ushort? ParseUShortRoundingCapping(object value)
+        {
+            double? doubleValue = ParseDoubleNullable(value.ToString());
+            if (doubleValue.HasValue) return ParseUShortRoundingCapping(doubleValue.Value);
+            return null;
+        }
+
+        public static int? ParseIntRoundingCapping(object value)
+        {
+            double? doubleValue = ParseDoubleNullable(value.ToString());
+            if (doubleValue.HasValue) return ParseIntRoundingCapping(doubleValue.Value);
+            return null;
+        }
+
+        public static uint? ParseUIntRoundingCapping(object value)
+        {
+            double? doubleValue = ParseDoubleNullable(value.ToString());
+            if (doubleValue.HasValue) return ParseUIntRoundingCapping(doubleValue.Value);
+            return null;
+        }
+
+        public static byte ParseByteRoundingCapping(double value)
+        {
+            return (byte)MoreMath.GetIntegerInRangeCapped(value, 1.0 + byte.MaxValue - byte.MinValue, false);
+        }
+
+        public static sbyte ParseSByteRoundingCapping(double value)
+        {
+            return (sbyte)MoreMath.GetIntegerInRangeCapped(value, 1.0 + sbyte.MaxValue - sbyte.MinValue, true);
+        }
+
+        public static short ParseShortRoundingCapping(double value)
+        {
+            return (short)MoreMath.GetIntegerInRangeCapped(value, 1.0 + short.MaxValue - short.MinValue, true);
+        }
+
+        public static ushort ParseUShortRoundingCapping(double value)
+        {
+            return (ushort)MoreMath.GetIntegerInRangeCapped(value, 1.0 + ushort.MaxValue - ushort.MinValue, false);
+        }
+
+        public static int ParseIntRoundingCapping(double value)
+        {
+            return (int)MoreMath.GetIntegerInRangeCapped(value, 1.0 + int.MaxValue - int.MinValue, true);
+        }
+
+        public static uint ParseUIntRoundingCapping(double value)
+        {
+            return (uint)MoreMath.GetIntegerInRangeCapped(value, 1.0 + uint.MaxValue - uint.MinValue, false);
         }
 
 

@@ -423,10 +423,20 @@ namespace SM64_Diagnostic.Utilities
         }
 
         /** Rounds and then wraps the value to be in [-range/2, range/2) if signed or [0, range) if unsigned. */
-        public static double GetIntegerInRange(double value, double range, bool signed)
+        public static double GetIntegerInRangeWrapped(double value, double range, bool signed)
         {
             value = Math.Round(value, MidpointRounding.AwayFromZero);
             return signed ? MaybeNegativeModulus(value, range) : NonNegativeModulus(value, range);
+        }
+
+        /** Rounds and then caps the value to be in [-range/2, range/2) if signed or [0, range) if unsigned. */
+        public static double GetIntegerInRangeCapped(double value, double range, bool signed)
+        {
+            value = Math.Round(value, MidpointRounding.AwayFromZero);
+            double min = signed ? -1 * range / 2 : 0;
+            double exclusiveMax = signed ? range / 2 : range;
+            double inclusiveMax = exclusiveMax - 1;
+            return Clamp(value, min, inclusiveMax);
         }
 
         public static double GetAngleDifference(double angle1, double angle2)
