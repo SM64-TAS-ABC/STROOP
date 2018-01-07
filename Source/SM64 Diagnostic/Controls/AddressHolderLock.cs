@@ -70,5 +70,12 @@ namespace SM64_Diagnostic.Controls
                    this.SpecialType == other.SpecialType;
         }
 
+        public override int GetHashCode()
+        {
+            return IsSpecial ?
+                SpecialType.GetHashCode() :
+                unchecked((int)EffectiveAddress);
+        }
+
     }
 }
