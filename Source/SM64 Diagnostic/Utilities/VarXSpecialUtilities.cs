@@ -200,6 +200,8 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
+                // Misc vars
+
                 case "RngIndex":
                     getterFunction = () =>
                     {
@@ -231,6 +233,35 @@ namespace SM64_Diagnostic.Structs
                     {
                         int numberOfLoadedObjects = ObjectSlotsManager.Instance.ActiveObjectCount;
                         return CreateList(numberOfLoadedObjects);
+                    };
+                    break;
+
+                // Area vars
+
+                case "CurrentAreaIndexMario":
+                    getterFunction = () =>
+                    {
+                        uint currentAreaMario = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.AreaPointerOffset);
+                        string currentAreaIndexMario = AreaUtilities.GetAreaIndexString(currentAreaMario);
+                        return CreateList(currentAreaIndexMario);
+                    };
+                    break;
+
+                case "CurrentAreaIndex":
+                    getterFunction = () =>
+                    {
+                        uint currentArea = Config.Stream.GetUInt32(Config.Area.CurrentAreaPointerAddress);
+                        string currentAreaIndex = AreaUtilities.GetAreaIndexString(currentArea);
+                        return CreateList(currentAreaIndex);
+                    };
+                    break;
+
+                case "AreaTerrainDescription":
+                    getterFunction = () =>
+                    {
+                        short terrainType = Config.Stream.GetInt16(AreaManager.Instance.SelectedAreaAddress + Config.Area.TerrainTypeOffset);
+                        string terrainDescription = AreaUtilities.GetAreaDescription(terrainType);
+                        return CreateList(terrainDescription);
                     };
                     break;
 

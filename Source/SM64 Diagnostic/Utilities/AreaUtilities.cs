@@ -21,6 +21,11 @@ namespace SM64_Diagnostic.Structs
             return null;
         }
 
+        public static string GetAreaIndexString(uint areaAddress)
+        {
+            return GetAreaIndex(areaAddress)?.ToString() ?? "Unrecognized";
+        }
+
         public static uint GetAreaAddress(int index)
         {
             return (uint)(Config.Area.AreaStartAddress + index * Config.Area.AreaStructSize);
