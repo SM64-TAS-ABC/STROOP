@@ -30,7 +30,7 @@ namespace SM64_Diagnostic.Controls
                 _addressHolder.SignedType.Value;
             _angleUnitType = AngleUnitType.InGameUnits;
             _truncateToMultipleOf16 = false;
-            _constrainToOneRevolution = false;
+            _constrainToOneRevolution = _addressHolder.IsSpecial;
 
             AddAngleContextMenuStripItems();
         }

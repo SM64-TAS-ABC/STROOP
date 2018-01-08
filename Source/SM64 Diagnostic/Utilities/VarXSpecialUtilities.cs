@@ -102,19 +102,32 @@ namespace SM64_Diagnostic.Structs
                         });
                     };
                     break;
-
+                    */
                 case "DeltaAngleObjectToMario":
-                    getterFunction = () =>
+                    getterFunction = (uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        List<Position> objPoses = GetObjectPositions();
-                        return objPoses.ConvertAll(objPos =>
-                        {
-                            return (objPos.Angle - MoreMath.AngleTo_AngleUnits(objPos.X, objPos.Z, marioPos.X, marioPos.Z)).ToString();
-                        });
+                        Position objPos = GetObjectPosition(objAddress);
+                        double angleToMario = MoreMath.AngleTo_AngleUnits(
+                            objPos.X, objPos.Z, marioPos.X, marioPos.Z);
+                        double angleDiff = objPos.Angle - angleToMario;
+                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
+                    };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleToMario = MoreMath.AngleTo_AngleUnits(
+                            objPos.X, objPos.Z, marioPos.X, marioPos.Z);
+                        double newObjAngleDouble = angleToMario + angleDiff;
+                        ushort newObjAngleUShort = MoreMath.NormalizeAngleUshort(newObjAngleDouble);
+                        return SetObjectPosition(objAddress, null, null, null, newObjAngleUShort);
                     };
                     break;
-
+                    /*
                 case "AngleMarioToObject":
                     getterFunction = () =>
                     {
@@ -325,12 +338,13 @@ namespace SM64_Diagnostic.Structs
             return new Position(marioX, marioY, marioZ, marioAngle);
         }
 
-        private static bool SetMarioPosition(double? x, double? y, double? z)
+        private static bool SetMarioPosition(double? x, double? y, double? z, ushort? angle = null)
         {
             bool success = true;
             if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, Config.Mario.StructAddress + Config.Mario.XOffset);
             if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, Config.Mario.StructAddress + Config.Mario.YOffset);
             if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, Config.Mario.StructAddress + Config.Mario.ZOffset);
+            if (angle.HasValue) success &= Config.Stream.SetValue((ushort)angle.Value, Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
             return success;
         }
 
@@ -343,10 +357,15 @@ namespace SM64_Diagnostic.Structs
             return new Position(objX, objY, objZ, objAngle);
         }
 
-        private static List<Position> GetObjectPositions()
+        private static bool SetObjectPosition(uint objAddress, double? x, double? y, double? z, ushort? angle = null)
         {
-            return ObjectManager.Instance.CurrentAddresses.ConvertAll(
-                objAddress => GetObjectPosition(objAddress));
+            bool success = true;
+            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, objAddress + Config.ObjectSlots.ObjectXOffset);
+            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, objAddress + Config.ObjectSlots.ObjectYOffset);
+            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, objAddress + Config.ObjectSlots.ObjectZOffset);
+            if (angle.HasValue) success &= Config.Stream.SetValue((ushort)angle.Value, objAddress + Config.ObjectSlots.YawFacingOffset);
+            if (angle.HasValue) success &= Config.Stream.SetValue((ushort)angle.Value, objAddress + Config.ObjectSlots.YawMovingOffset);
+            return success;
         }
 
         private static Position GetCameraPosition()
