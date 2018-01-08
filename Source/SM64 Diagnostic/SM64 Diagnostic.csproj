@@ -124,7 +124,6 @@
     <Compile Include="Controls\VarXObject.cs" />
     <Compile Include="Controls\VarXAngle.cs" />
     <Compile Include="Controls\VarXNumber.cs" />
-    <Compile Include="Controls\VarXBackup.cs" />
     <Compile Include="Controls\VarX.cs" />
     <Compile Include="Controls\InputDisplayPanel.cs">
       <SubType>Component</SubType>

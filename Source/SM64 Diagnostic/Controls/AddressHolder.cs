@@ -40,24 +40,6 @@ namespace SM64_Diagnostic.Controls
         // TODO remove this
         private readonly bool _returnNonEmptyList;
 
-        public bool UseAbsoluteAddressing
-        {
-            get
-            {
-                return BaseAddressType == BaseAddressTypeEnum.Absolute;
-            }
-        }
-
-        public bool IsAdditive
-        {
-            get
-            {
-                return BaseAddressType != BaseAddressTypeEnum.Relative &&
-                    BaseAddressType != BaseAddressTypeEnum.Absolute &&
-                    BaseAddressType != BaseAddressTypeEnum.Special;
-            }
-        }
-
         public bool IsSpecial
         {
             get
@@ -66,6 +48,15 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        private bool UseAbsoluteAddressing
+        {
+            get
+            {
+                return BaseAddressType == BaseAddressTypeEnum.Absolute;
+            }
+        }
+
+        // TODO make this private once var x is the norm
         public uint Offset
         {
             get
@@ -87,53 +78,12 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public List<uint> BaseAddressList
+        private List<uint> EffectiveAddressList
         {
             get
             {
-                return VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType, _returnNonEmptyList);
-            }
-        }
-
-        public uint BaseAddressUnsafe
-        {
-            get
-            {
-                return BaseAddressList[0];
-            }
-        }
-
-        public uint? BaseAddress
-        {
-            get
-            {
-                List<uint> baseAddressList = BaseAddressList;
-                return baseAddressList.Count == 0 ? (uint?)null : baseAddressList[0];
-            }
-        }
-
-        public List<uint> EffectiveAddressList
-        {
-            get
-            {
-                return BaseAddressList.ConvertAll(baseAddress => baseAddress + Offset);
-            }
-        }
-
-        public uint EffectiveAddressUnsafe
-        {
-            get
-            {
-                return EffectiveAddressList[0];
-            }
-        }
-
-        public uint? EffectiveAddress
-        {
-            get
-            {
-                List<uint> effectiveAddressList = EffectiveAddressList;
-                return effectiveAddressList.Count == 0 ? (uint?)null : effectiveAddressList[0];
+                List<uint> baseAddressList = VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType, _returnNonEmptyList);
+                return baseAddressList.ConvertAll(baseAddress => baseAddress + Offset);
             }
         }
 
@@ -265,7 +215,10 @@ namespace SM64_Diagnostic.Controls
 
         public uint GetRamAddress(bool addressArea = true)
         {
-            UIntPtr effectiveAddress = new UIntPtr(EffectiveAddressUnsafe);
+            List<uint> effectiveAddresses = EffectiveAddressList;
+            if (effectiveAddresses.Count == 0) return 0;
+
+            UIntPtr effectiveAddress = new UIntPtr(effectiveAddresses[0]);
             uint address;
 
             if (UseAbsoluteAddressing)
