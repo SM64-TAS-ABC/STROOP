@@ -25,31 +25,31 @@
   <Data groupList="Expanded" type="short" offset="0x1E" baseAddressType="Object" isAngle="true">Gfx Roll</Data>
   -->
   <Data groupList="Expanded" type="float" offset="0x015C" baseAddressType="Object">"Dist to Mario"</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioDistanceToObjectHome">Dist Mario to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioHorizontalDistanceToObjectHome">HDist Mario to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioVerticalDistanceToObjectHome">VDist Mario to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="HorizontalObjectDistanceToHome">HDist Obj to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="VerticalObjectDistanceToHome">VDist Obj to Home</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="MarioDistanceToObjectHome">Dist Mario to Home</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="MarioHorizontalDistanceToObjectHome">HDist Mario to Home</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="MarioVerticalDistanceToObjectHome">VDist Mario to Home</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="HorizontalObjectDistanceToHome">HDist Obj to Home</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="VerticalObjectDistanceToHome">VDist Obj to Home</Data>
   <Data groupList="Expanded" type="ushort" offset="0x0162" baseAddressType="Object" isAngle="true">"Angle to Mario"</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleObjectToMario">Angle Obj to Mario</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleMarioToObject">Angle Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleMarioToObject">DAngle Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleObjectToHome">Angle Obj to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="AngleHomeToObject">Angle Home to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="AngleObjectToMario">Angle Obj to Mario</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="AngleMarioToObject">Angle Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="DeltaAngleMarioToObject">DAngle Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="AngleObjectToHome">Angle Obj to Home</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="AngleHomeToObject">Angle Home to Obj</Data>
   <Data groupList="Expanded" type="uint" offset="0x218" baseAddressType="Object" useHex="true">Hitbox Pointer</Data>
   <Data groupList="Expanded" type="float" offset="0x1f8" baseAddressType="Object">Hitbox Radius</Data>
   <Data groupList="Expanded" type="float" offset="0x1fc" baseAddressType="Object">Hitbox Height</Data>
   <Data groupList="Expanded" type="float" offset="0x208" baseAddressType="Object">Hitbox Down Offset</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioHitboxAwayFromObject">Mario Hitbox Away</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioHitboxAboveObject">Mario Hitbox Above</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioHitboxBelowObject">Mario Hitbox Below</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioHitboxOverlapsObject">Mario Hitbox Overlap</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="MarioHitboxAwayFromObject">Mario Hitbox Away</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="MarioHitboxAboveObject">Mario Hitbox Above</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="MarioHitboxBelowObject">Mario Hitbox Below</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="MarioHitboxOverlapsObject">Mario Hitbox Overlap</Data>
   <Data groupList="Expanded" type="float" offset="0x128" baseAddressType="Object">Min Wall Dist</Data>
   <Data groupList="Expanded" type="float" offset="0x0194" baseAddressType="Object">Tangible Dist</Data>
   <Data groupList="Expanded" type="float" offset="0x019C" baseAddressType="Object">Drawing Dist</Data>
@@ -57,7 +57,7 @@
   <Data groupList="Expanded" type="float" offset="0xE4" baseAddressType="Object">Gravity</Data>
   <Data groupList="Expanded" type="int" offset="0x180" baseAddressType="Object">Damage</Data>
   <Data groupList="Expanded" type="int" offset="0x1A0" baseAddressType="Object">Native Room</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data groupList="Expanded" type="uint" offset="0x68" baseAddressType="Object" useHex="true" isObject="true">Parent Object</Data>
   <Data groupList="Expanded" type="uint" offset="0x020C" baseAddressType="Object" useHex="true">Behavior Script</Data>
   <Data groupList="Expanded" type="uint" offset="0x14" baseAddressType="Object" useHex="true">Graphics</Data>

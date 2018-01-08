@@ -18,30 +18,30 @@
   <Data groupList="Simple" type="float" offset="0xA4" baseAddressType="Object" coord="Y">Object Y</Data>
   <Data groupList="Simple" type="float" offset="0xA8" baseAddressType="Object" coord="Z">Object Z</Data>
 
-  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Special" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
 
   <Data type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" baseAddressType="Relative">RNG Value</Data>
-  <Data baseAddressType="Special" specialType="RngIndex">RNG Index</Data>
+  <Data baseAddressType="None" specialType="RngIndex">RNG Index</Data>
 
   <Data type="uint" offset="0x0C" baseAddressType="Mario" useHex="true">Action</Data>
-  <Data baseAddressType="Special" specialType="ActionDescription" subclass="String">Action Description</Data>
+  <Data baseAddressType="None" specialType="ActionDescription" subclass="String">Action Description</Data>
   <Data type="uint" offset="0x10" baseAddressType="Mario" useHex="true">Previous Action</Data>
-  <Data baseAddressType="Special" specialType="PrevActionDescription" subclass="String">Prev. Action Desc.</Data>
+  <Data baseAddressType="None" specialType="PrevActionDescription" subclass="String">Prev. Action Desc.</Data>
   <Data type="short" offset="0x18" baseAddressType="Mario" color="#ccd0ff">Action Phase</Data>
   <Data type="short" offset="0x1A" baseAddressType="Mario" color="#abcdef">Action Timer</Data>
   <Data type="short" offset="0x38" baseAddressType="MarioObj">Animation</Data>
-  <Data baseAddressType="Special" specialType="MarioAnimationDescription" subclass="String">Animation Description</Data>
+  <Data baseAddressType="None" specialType="MarioAnimationDescription" subclass="String">Animation Description</Data>
   <Data type="short" offset="0x40" baseAddressType="MarioObj">Animation Timer</Data>
 
   <Data type="ushort" offset="0x2E" baseAddressType="Mario" subclass="Angle">Yaw (US)</Data>
   <Data type="short" offset="0x2E" baseAddressType="Mario" subclass="Angle">Yaw (S)</Data>
   <Data type="ushort" offset="0xD6" baseAddressType="Object" subclass="Angle">Obj Yaw (Facing)</Data>
-  <Data baseAddressType="Special" specialType="AngleObjectToMario" subclass="Angle">Angle Obj to Mario</Data>
-  <Data baseAddressType="Special" specialType="DeltaAngleObjectToMario" subclass="Angle" signed="true">DAngle Obj to Mario</Data>
-  <Data baseAddressType="Special" specialType="AngleMarioToObject" subclass="Angle">Angle Mario to Obj</Data>
-  <Data baseAddressType="Special" specialType="DeltaAngleMarioToObject" subclass="Angle" signed="true">DAngle Mario to Obj</Data>
+  <Data baseAddressType="None" specialType="AngleObjectToMario" subclass="Angle">Angle Obj to Mario</Data>
+  <Data baseAddressType="None" specialType="DeltaAngleObjectToMario" subclass="Angle" signed="true">DAngle Obj to Mario</Data>
+  <Data baseAddressType="None" specialType="AngleMarioToObject" subclass="Angle">Angle Mario to Obj</Data>
+  <Data baseAddressType="None" specialType="DeltaAngleMarioToObject" subclass="Angle" signed="true">DAngle Mario to Obj</Data>
   
   <Data type="int" offset="0xF4" baseAddressType="Object" subclass="Angle">Angular Distance</Data>
 

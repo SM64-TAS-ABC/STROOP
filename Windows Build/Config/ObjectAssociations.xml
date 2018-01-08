@@ -1994,10 +1994,10 @@
     <Data groupList="ObjectSpecific" type="float" offset="0x20" baseAddressType="Object">X</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x24" baseAddressType="Object">Y</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x28" baseAddressType="Object">Z</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioGhostVerticalDistance">Vertical Dist</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioGhostHorizontalDistance">Horizontal Dist</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioGhostForwardsDistance">Forwards Dist</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioGhostSidewaysDistance">Sideways Dist</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioGhostVerticalDistance">Vertical Dist</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioGhostHorizontalDistance">Horizontal Dist</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioGhostForwardsDistance">Forwards Dist</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioGhostSidewaysDistance">Sideways Dist</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002A5C" name="BitDW Trap Door Manager">
     <SpawnCode gfxId="0x00"/>
@@ -2060,15 +2060,15 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x198" baseAddressType="Object">Num Coins</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xFB" baseAddressType="Object" isBool="true">Lunging</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" baseAddressType="Object">Lunging Timer</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioHorizontalDistanceToObjectHome">HDist Mario to Home</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioHorizontalDistanceToObjectHome">HDist Mario to Home</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" baseAddressType="Object" isAngle="true">Yaw (Moving)</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x162" baseAddressType="Object" isAngle="true">Target Angle</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ScuttlebugDeltaAngleToTarget">DAngle to Target</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ScuttlebugDeltaAngleToTarget">DAngle to Target</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB0" baseAddressType="Object">Y Speed</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xA4" baseAddressType="Object">Y</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="HorizontalObjectDistanceToHome">HDist Obj to Home</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="HorizontalObjectDistanceToHome">HDist Obj to Home</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB8" baseAddressType="Object">H Speed</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002BA0" name="Scuttlebug Spawner">
@@ -2317,10 +2317,10 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" baseAddressType="Object" isBool="true">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xFB" baseAddressType="Object" isBool="true">Fuse On</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" baseAddressType="Object">Fuse Timer</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="BobombBloatSize">Bloat Size</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="BobombRadius">Radius</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="BobombSpaceBetween">Space Between</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="BobombBloatSize">Bloat Size</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="BobombRadius">Radius</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="BobombSpaceBetween">Space Between</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" baseAddressType="Object" isBool="true">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" baseAddressType="Object">Blinking Timer</Data>
   </Object>
@@ -2333,10 +2333,10 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" baseAddressType="Object" isBool="true">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xFB" baseAddressType="Object" isBool="true">Fuse On</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" baseAddressType="Object">Fuse Timer</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="BobombBloatSize">Bloat Size</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="BobombRadius">Radius</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="BobombSpaceBetween">Space Between</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="BobombBloatSize">Bloat Size</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="BobombRadius">Radius</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="BobombSpaceBetween">Space Between</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" baseAddressType="Object" isBool="true">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" baseAddressType="Object">Blinking Timer</Data>
   </Object>
@@ -2968,9 +2968,9 @@
     <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint">Next WP X</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint">Next WP Y</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint">Next WP Z</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" baseAddressType="Object" isAngle="true">Yaw (Facing)</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" baseAddressType="Object" isAngle="true">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" baseAddressType="Object" isAngle="true">Pitch to Next WP</Data>
@@ -2993,9 +2993,9 @@
     <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint">Next WP X</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint">Next WP Y</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint">Next WP Z</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" baseAddressType="Object" isAngle="true">Yaw (Facing)</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" baseAddressType="Object" isAngle="true">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" baseAddressType="Object" isAngle="true">Pitch to Next WP</Data>
@@ -3040,18 +3040,18 @@
     <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint">Next WP X</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint">Next WP Y</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint">Next WP Z</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" baseAddressType="Object" isAngle="true">Yaw (Facing)</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" baseAddressType="Object" isAngle="true">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" baseAddressType="Object" isAngle="true">Pitch to Next WP</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF4" baseAddressType="Object">H Speed Multiplier</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB8" baseAddressType="Object">H Speed</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="KoopaTheQuickHSpeedTarget">H Speed Target</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="KoopaTheQuickHSpeedChange">H Speed Change</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="KoopaTheQuick1Progress">Progress</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="KoopaTheQuickHSpeedTarget">H Speed Target</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="KoopaTheQuickHSpeedChange">H Speed Change</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="KoopaTheQuick1Progress">Progress</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa the Quick #2" subType="3">
     <SpawnCode gfxId="0x68"/>
@@ -3073,18 +3073,18 @@
     <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint">Next WP X</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint">Next WP Y</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint">Next WP Z</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" baseAddressType="Object" isAngle="true">Yaw (Facing)</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" baseAddressType="Object" isAngle="true">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" baseAddressType="Object" isAngle="true">Pitch to Next WP</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF4" baseAddressType="Object">H Speed Multiplier</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB8" baseAddressType="Object">H Speed</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="KoopaTheQuickHSpeedTarget">H Speed Target</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="KoopaTheQuickHSpeedChange">H Speed Change</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="KoopaTheQuick2Progress">Progress</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="KoopaTheQuickHSpeedTarget">H Speed Target</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="KoopaTheQuickHSpeedChange">H Speed Change</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="KoopaTheQuick2Progress">Progress</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa (Tiny)" subType="4">
     <SpawnCode gfxId="0x68"/>
@@ -3157,8 +3157,8 @@
     <Data groupList="ObjectSpecific" type="short" offset="0xDA" baseAddressType="Object" isAngle="true">Roll (Facing)</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" baseAddressType="Object" isAngle="true">Target Angle</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" baseAddressType="Object" isAngle="true">Yaw (Moving)</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="AngleObjectToMario">Angle Obj to Mario</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="AngleObjectToMario">Angle Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x11A" baseAddressType="Object" isAngle="true">Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" baseAddressType="Relative">Global Timer</Data>
   </Object>
@@ -3170,20 +3170,20 @@
     <Data groupList="ObjectSpecific" type="float" offset="0x2C" baseAddressType="Object">Scale</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x10C" baseAddressType="Object">Scale Change</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" baseAddressType="Object" mask="0x0000003F">Oscillation Timer</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="FlyGuyRelativeHeight">Relative Height</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="FlyGuyMinHeight">Min Height</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="FlyGuyMaxHeight">Max Height</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="FlyGuyRelativeHeight">Relative Height</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="FlyGuyMinHeight">Min Height</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="FlyGuyMaxHeight">Max Height</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x14C" baseAddressType="Object">State</Data>
     <Data groupList="ObjectSpecific" type="uint" offset="0x108" baseAddressType="Object" useHex="true">Spiraling</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0xDA" baseAddressType="Object" isAngle="true">Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" baseAddressType="Object" isAngle="true">Yaw (Moving)</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="AngleObjectToHome">Angle Obj to Home</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="FlyGuyZone">Zone</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="AngleObjectToHome">Angle Obj to Home</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="FlyGuyZone">Zone</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB0" baseAddressType="Object">Y Speed</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x100" baseAddressType="Object">Y Speed Change</Data>
   </Object>
@@ -3195,20 +3195,20 @@
     <Data groupList="ObjectSpecific" type="float" offset="0x2C" baseAddressType="Object">Scale</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x10C" baseAddressType="Object">Scale Change</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" baseAddressType="Object" mask="0x0000003F">Oscillation Timer</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="FlyGuyRelativeHeight">Relative Height</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="FlyGuyMinHeight">Min Height</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="FlyGuyMaxHeight">Max Height</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="FlyGuyRelativeHeight">Relative Height</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="FlyGuyMinHeight">Min Height</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="FlyGuyMaxHeight">Max Height</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x14C" baseAddressType="Object">State</Data>
     <Data groupList="ObjectSpecific" type="uint" offset="0x108" baseAddressType="Object" useHex="true">Spiraling</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0xDA" baseAddressType="Object" isAngle="true">Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" baseAddressType="Object" isAngle="true">Yaw (Moving)</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="AngleObjectToHome">Angle Obj to Home</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="FlyGuyZone">Zone</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="AngleObjectToHome">Angle Obj to Home</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="FlyGuyZone">Zone</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB0" baseAddressType="Object">Y Speed</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x100" baseAddressType="Object">Y Speed Change</Data>
   </Object>
@@ -3596,8 +3596,8 @@
     <Data groupList="ObjectSpecific" type="float" offset="0xFC" baseAddressType="Object">Angular Velocity</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" baseAddressType="Object">Angle</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" baseAddressType="Object">Waiting Timer</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="PendulumAmplitude">Amplitude</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="PendulumSwingIndex">Swing Index</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="PendulumAmplitude">Amplitude</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="PendulumSwingIndex">Swing Index</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004C5C" name="TTC Treadmill (Long)" subType="0">
     <SpawnCode gfxId="0x39"/>
@@ -3982,23 +3982,23 @@
     <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint">Next WP X</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint">Next WP Y</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint">Next WP Z</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" baseAddressType="Object" isAngle="true">Yaw (Facing)</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" baseAddressType="Object" isAngle="true">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" baseAddressType="Object" isAngle="true">Pitch to Next WP</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="RacingPenguinEffortTarget">Effort Target</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="RacingPenguinEffortTarget">Effort Target</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x110" baseAddressType="Object">Effort</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="RacingPenguinEffortChange">Effort Change</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="RacingPenguinMinHSpeed">Min H Speed</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="RacingPenguinHSpeedTarget">H Speed Target</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="RacingPenguinEffortChange">Effort Change</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="RacingPenguinMinHSpeed">Min H Speed</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="RacingPenguinHSpeedTarget">H Speed Target</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB8" baseAddressType="Object">H Speed</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="RacingPenguinDiffHSpeedTarget">Diff H Speed - Target</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="RacingPenguinProgress">Progress</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="RacingPenguinProgressDiff">Progress Diff</Data>
-    <Data groupList="ObjectSpecific" baseAddressType="Special" specialType="RacingPenguinProgressDiffDelta">Progress Diff Delta</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="RacingPenguinDiffHSpeedTarget">Diff H Speed - Target</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="RacingPenguinProgress">Progress</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="RacingPenguinProgressDiff">Progress Diff</Data>
+    <Data groupList="ObjectSpecific" baseAddressType="None" specialType="RacingPenguinProgressDiffDelta">Progress Diff Delta</Data>
   </Object>
   <Object behaviorScriptAddress="0x130053C4" name="Finishing Line Checkpoint">
     <SpawnCode gfxId="0x00"/>

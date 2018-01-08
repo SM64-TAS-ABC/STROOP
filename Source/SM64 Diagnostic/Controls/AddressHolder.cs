@@ -33,28 +33,15 @@ namespace SM64_Diagnostic.Controls
 
         public readonly uint? Mask;
 
-        private readonly Func<List<string>> _getterFunction;
-        private readonly Func<string, bool> _setterFunction;
-        private readonly Func<string, uint?, bool> _dynamicSetterFunction;
+        private readonly Func<uint, string> _getterFunction;
+        private readonly Func<string, uint, bool> _setterFunction;
 
         // TODO remove this
         private readonly bool _returnNonEmptyList;
 
-        public bool IsSpecial
-        {
-            get
-            {
-                return BaseAddressType == BaseAddressTypeEnum.Special;
-            }
-        }
+        public bool IsSpecial { get { return SpecialType != null; } }
 
-        private bool UseAbsoluteAddressing
-        {
-            get
-            {
-                return BaseAddressType == BaseAddressTypeEnum.Absolute;
-            }
-        }
+        private bool UseAbsoluteAddressing { get { return BaseAddressType == BaseAddressTypeEnum.Absolute; } }
 
         // TODO make this private once var x is the norm
         public uint Offset
@@ -82,7 +69,13 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                return VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType, _returnNonEmptyList)
+                if (_returnNonEmptyList)
+                {
+                    return VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType, true)
+                        .ConvertAll(baseAddress => baseAddress + Offset);
+                }
+
+                return VarXUtilities.GetBaseAddressListFromBaseAddressTypeVarX(BaseAddressType)
                     .ConvertAll(baseAddress => baseAddress + Offset);
             }
         }
@@ -103,13 +96,13 @@ namespace SM64_Diagnostic.Controls
             OffsetPAL = offsetPAL;
             OffsetDefault = offsetDefault;
 
+            SpecialType = specialType;
+
             MemoryTypeName = IsSpecial ? null : memoryTypeName;
             MemoryType = IsSpecial ? null : VarXUtilities.StringToType[MemoryTypeName];
             ByteCount = IsSpecial ? (int?)null : VarXUtilities.TypeSize[MemoryType];
             NibbleCount = IsSpecial ? (int?)null : VarXUtilities.TypeSize[MemoryType] * 2;
             SignedType = IsSpecial ? (bool?)null : VarXUtilities.TypeSign[MemoryType];
-
-            SpecialType = specialType;
 
             Mask = mask;
 
@@ -120,73 +113,52 @@ namespace SM64_Diagnostic.Controls
             if (IsSpecial)
             {
                 (_getterFunction, _setterFunction) = VarXSpecialUtilities.CreateGetterSetterFunctions(SpecialType);
-                _dynamicSetterFunction = (string stringValue, uint? effectiveAddressNullable) => _setterFunction(stringValue);
             }
             else
             {
-                _getterFunction = () =>
+                _getterFunction = (uint address) =>
                 {
-                    return EffectiveAddressList.ConvertAll(
-                        address => Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing, Mask).ToString());
+                    return Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing, Mask).ToString();
                 };
-                _dynamicSetterFunction = (string value, uint? effectiveAddressNullable) =>
+                _setterFunction = (string value, uint address) =>
                 {
-                    if (!effectiveAddressNullable.HasValue) return false;
-                    uint effectiveAddress = effectiveAddressNullable.Value;
                     return Config.Stream.SetValueRoundingWrapping(
-                        MemoryType, value, effectiveAddress, UseAbsoluteAddressing, Mask);
+                        MemoryType, value, address, UseAbsoluteAddressing, Mask);
                 };
-                _setterFunction = (string value) =>
-                {
-                    List<uint> effectiveAddressList = EffectiveAddressList;
-                    if (effectiveAddressList.Count == 0) return false;
-                    return effectiveAddressList.ConvertAll(
-                        effectiveAddress => _dynamicSetterFunction(value, effectiveAddress))
-                            .Aggregate(true, (b1, b2) => b1 && b2);
-                };
+
             }
         }
 
         public List<string> GetValues()
         {
-            return _getterFunction();
+            return EffectiveAddressList.ConvertAll(
+                address => _getterFunction(address));
         }
 
-        public bool SetValue(string stringValue)
+        public bool SetValue(string value)
         {
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
-            bool success = _setterFunction(stringValue);
+            bool success = EffectiveAddressList.ConvertAll(
+                address => _setterFunction(value, address))
+                    .Aggregate(true, (b1, b2) => b1 && b2);
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
         public List<AddressHolderLock> GetLocks()
         {
-            if (IsSpecial)
-            {
-                List<string> values = _getterFunction();
-                if (values.Count == 0) return new List<AddressHolderLock>();
-                return new List<AddressHolderLock>()
-                {
-                    new AddressHolderLock(
-                        IsSpecial, MemoryType, ByteCount, Mask, null, SpecialType, _dynamicSetterFunction, values[0])
-                };
-            }
-            else
-            {
-                List<string> values = _getterFunction();
-                List<uint> effectiveAddresses = EffectiveAddressList;
-                if (values.Count != effectiveAddresses.Count) return new List<AddressHolderLock>();
+            List<string> values = GetValues();
+            List<uint> effectiveAddresses = EffectiveAddressList;
+            if (values.Count != effectiveAddresses.Count) return new List<AddressHolderLock>();
 
-                List<AddressHolderLock> locks = new List<AddressHolderLock>();
-                for (int i = 0; i < values.Count; i++)
-                {
-                    locks.Add(new AddressHolderLock(
-                        IsSpecial, MemoryType, ByteCount, Mask, effectiveAddresses[i], SpecialType, _dynamicSetterFunction, values[i]));
-                }
-                return locks;
+            List<AddressHolderLock> locks = new List<AddressHolderLock>();
+            for (int i = 0; i < values.Count; i++)
+            {
+                locks.Add(new AddressHolderLock(
+                    IsSpecial, MemoryType, ByteCount, Mask, effectiveAddresses[i], SpecialType, _setterFunction, values[i]));
             }
+            return locks;
         }
 
         public string GetTypeDescription()

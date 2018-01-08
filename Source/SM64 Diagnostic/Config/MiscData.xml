@@ -2,9 +2,9 @@
 <MiscData>
   <Data type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" baseAddressType="Relative">Global Timer</Data>
   <Data type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" baseAddressType="Relative">RNG Value</Data>
-  <Data baseAddressType="Special" specialType="RngIndex">RNG Index</Data>
-  <Data baseAddressType="Special" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
-  <Data baseAddressType="Special" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
+  <Data baseAddressType="None" specialType="RngIndex">RNG Index</Data>
+  <Data baseAddressType="None" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
+  <Data baseAddressType="None" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
   <Data type="short" offsetUS="0x8032DF08" offsetJP="0x8032CFA8" baseAddressType="Relative">Animation Timer</Data>
 
   <Data type="byte" offsetUS="0x80222618" offsetJP="0x80222A18" baseAddressType="Relative" subclass="Boolean" mask="0x20" invertBool="true">Music On</Data>

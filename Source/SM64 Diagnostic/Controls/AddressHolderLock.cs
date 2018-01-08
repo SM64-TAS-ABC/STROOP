@@ -20,9 +20,9 @@ namespace SM64_Diagnostic.Controls
         public readonly Type MemoryType;
         public readonly int? ByteCount;
         public readonly uint? Mask;
-        public readonly uint? EffectiveAddress;
+        public readonly uint EffectiveAddress;
         public readonly string SpecialType;
-        public readonly Func<string, uint?, bool> DynamicSetterFunction;
+        public readonly Func<string, uint, bool> SetterFunction;
 
         private string _value;
         public string Value { get { return _value; } }
@@ -32,9 +32,9 @@ namespace SM64_Diagnostic.Controls
             Type memoryType,
             int? byteCount,
             uint? mask,
-            uint? effectiveAddress,
+            uint effectiveAddress,
             string specialType,
-            Func<string, uint?, bool> dynamicSetterFunction,
+            Func<string, uint, bool> setterFunction,
             string value)
         {
             IsSpecial = isSpecial;
@@ -43,14 +43,14 @@ namespace SM64_Diagnostic.Controls
             Mask = mask;
             EffectiveAddress = effectiveAddress;
             SpecialType = specialType;
-            DynamicSetterFunction = dynamicSetterFunction;
+            SetterFunction = setterFunction;
 
             _value = value;
         }
 
         public void Invoke()
         {
-            DynamicSetterFunction(_value, EffectiveAddress);
+            SetterFunction(_value, EffectiveAddress);
         }
 
         public void UpdateLockValue(string value)

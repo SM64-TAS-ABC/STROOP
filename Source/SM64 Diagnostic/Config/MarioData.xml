@@ -7,23 +7,23 @@
   <Data type="float" offset="0x4C" baseAddressType="Mario">Y Speed</Data>
   <Data type="float" offset="0x50" baseAddressType="Mario">Z Speed</Data>
   <Data type="float" offset="0x54" baseAddressType="Mario">H Speed</Data>
-  <Data baseAddressType="Special" specialType="DeFactoSpeed">De Facto Speed</Data>
+  <Data baseAddressType="None" specialType="DeFactoSpeed">De Facto Speed</Data>
   <Data type="float" offset="0x58" baseAddressType="Mario">X Sliding Speed</Data>
   <Data type="float" offset="0x5C" baseAddressType="Mario">Z Sliding Speed</Data>
-  <Data baseAddressType="Special" specialType="SlidingSpeed">H Sliding Speed</Data>
+  <Data baseAddressType="None" specialType="SlidingSpeed">H Sliding Speed</Data>
   <Data type="ushort" offset="0x38" baseAddressType="Mario" isAngle="true">Sliding Yaw</Data>
-  <Data baseAddressType="Special" specialType="MovementX">Delta X</Data>
-  <Data baseAddressType="Special" specialType="MovementY">Delta Y</Data>
-  <Data baseAddressType="Special" specialType="MovementZ">Delta Z</Data>
-  <Data baseAddressType="Special" specialType="MovementForwards">Delta Forwards</Data>
-  <Data baseAddressType="Special" specialType="MovementSideways">Delta Sideways</Data>
-  <Data baseAddressType="Special" specialType="MovementHorizontal">Delta Horizontal</Data>
-  <Data baseAddressType="Special" specialType="MovementTotal">Delta Total</Data>
-  <Data baseAddressType="Special" specialType="MovementAngle">Delta Angle</Data>
-  <Data baseAddressType="Special" specialType="QFrameCountEstimate">QFrames Est.</Data>
+  <Data baseAddressType="None" specialType="MovementX">Delta X</Data>
+  <Data baseAddressType="None" specialType="MovementY">Delta Y</Data>
+  <Data baseAddressType="None" specialType="MovementZ">Delta Z</Data>
+  <Data baseAddressType="None" specialType="MovementForwards">Delta Forwards</Data>
+  <Data baseAddressType="None" specialType="MovementSideways">Delta Sideways</Data>
+  <Data baseAddressType="None" specialType="MovementHorizontal">Delta Horizontal</Data>
+  <Data baseAddressType="None" specialType="MovementTotal">Delta Total</Data>
+  <Data baseAddressType="None" specialType="MovementAngle">Delta Angle</Data>
+  <Data baseAddressType="None" specialType="QFrameCountEstimate">QFrames Est.</Data>
   <Data type="ushort" offset="0x2E" baseAddressType="Mario" isAngle="true">Yaw (Facing)</Data>
   <Data type="ushort" offset="0x24" baseAddressType="Mario" isAngle="true">Yaw (Intended)</Data>
-  <Data baseAddressType="Special" specialType="DeltaYawIntendedFacing">DYaw Intend-Face</Data>
+  <Data baseAddressType="None" specialType="DeltaYawIntendedFacing">DYaw Intend-Face</Data>
   <Data type="ushort" offset="0x3A" baseAddressType="Mario" isAngle="true">Twirl Yaw</Data>
   <Data type="short" offset="0x34" baseAddressType="Mario" isAngle="true">Yaw Velocity</Data>
   <Data type="ushort" offset="0x74" baseAddressType="Mario" isAngle="true">Floor Yaw</Data>
@@ -53,7 +53,7 @@
   <Data type="short" offset="0x1A" baseAddressType="Mario">Water Shell Timer</Data>
   <Data type="float" offset="0xBC" baseAddressType="Mario">Peak Height</Data>
   <Data type="float" offset="0x70" baseAddressType="Mario">Floor Height</Data>
-  <Data baseAddressType="Special" specialType="FallHeight">Fall Height</Data>
+  <Data baseAddressType="None" specialType="FallHeight">Fall Height</Data>
   <Data type="float" offset="0xC0" baseAddressType="Mario">Quicksand Height</Data>
   <Data type="byte" offsetUS="0x8032DA94" offsetJP="0x8032CB34" baseAddressType="Relative" mask="0x01" isBool="true">Just Teleported</Data>
   <Data type="int" offsetUS="0x800F0A5C" offsetJP="0x800EDBDC" baseAddressType="Relative">Blinking State</Data>

@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrianglesData>
   <Data type="uint" offset="0x90" baseAddressType="Mario" useHex="true" color="#ffcccc">Current Area Ptr (M)</Data>
-  <Data baseAddressType="Special" specialType="CurrentAreaIndexMario" color="#ffcccc">Current Area Index (M)</Data>
+  <Data baseAddressType="None" specialType="CurrentAreaIndexMario" color="#ffcccc">Current Area Index (M)</Data>
 
   <Data type="uint" offsetUS="0x8032DDCC" offsetJP="0x8032CE6C" baseAddressType="Relative" useHex="true" color="#ccfffa">Current Area Ptr</Data>
-  <Data baseAddressType="Special" specialType="CurrentAreaIndex" color="#ccfffa">Current Area Index</Data>
+  <Data baseAddressType="None" specialType="CurrentAreaIndex" color="#ccfffa">Current Area Index</Data>
 
   <Data type="byte" offset="0x00" baseAddressType="Area">Area ID</Data>
   <Data type="byte" offset="0x01" baseAddressType="Area" subclass="Boolean">Is Current Area</Data>
   <Data type="short" offset="0x02" baseAddressType="Area">Terrain Type</Data>
-  <Data baseAddressType="Special" specialType="AreaTerrainDescription">Terrain Description</Data>
+  <Data baseAddressType="None" specialType="AreaTerrainDescription">Terrain Description</Data>
 
   <Data type="uint" offset="0x04" baseAddressType="Area" useHex="true">Geo Layout Ptr</Data>
   <Data type="uint" offset="0x08" baseAddressType="Area" useHex="true">Collision Ptr</Data>

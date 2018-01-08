@@ -12,8 +12,11 @@ namespace SM64_Diagnostic.Structs
     // TODO add new offset types
     public enum BaseAddressTypeEnum
     {
+        None,
+
         Absolute,
         Relative,
+
         Mario,
         MarioObj,
         Camera,
@@ -31,6 +34,5 @@ namespace SM64_Diagnostic.Structs
         Area,
         HackedArea,
         CamHack,
-        Special,
     };
 }

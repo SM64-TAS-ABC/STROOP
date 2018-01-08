@@ -12,41 +12,38 @@ namespace SM64_Diagnostic.Structs
 {
     public static class VarXSpecialUtilities
     {
-        private readonly static Func<List<string>> DEFAULT_GETTER = () => new List<string>() { "UNIMPLEMENTED" };
-        private readonly static Func<string, bool> DEFAULT_SETTER = (string stringValue) => false;
+        private readonly static Func<uint, string> DEFAULT_GETTER = (uint address) => "UNIMPLEMENTED";
+        private readonly static Func<string, uint, bool> DEFAULT_SETTER = (string value, uint address) => false;
 
-        public static (Func<List<string>> getter, Func<string, bool> setter) CreateGetterSetterFunctions(string specialType)
+        public static (Func<uint, string> getter, Func<string, uint, bool> setter) CreateGetterSetterFunctions(string specialType)
         {
-            Func<List<string>> getterFunction = DEFAULT_GETTER;
-            Func<string, bool> setterFunction = DEFAULT_SETTER;
+            Func<uint, string> getterFunction = DEFAULT_GETTER;
+            Func<string, uint, bool> setterFunction = DEFAULT_SETTER;
 
             switch (specialType)
             {
                 case "MarioDistanceToObject":
-                    getterFunction = () =>
+                    getterFunction = (uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        List<Position> objPoses = GetObjectPositions();
-                        return objPoses.ConvertAll(objPos =>
-                        {
-                            return MoreMath.GetDistanceBetween(
-                                marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z).ToString();
-                        });
+                        Position objPos = GetObjectPosition(objAddress);
+                        return MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z).ToString();
                     };
-                    setterFunction = (string stringValue) =>
+                    setterFunction = (string stringValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        List<Position> objPoses = GetObjectPositions();
-                        if (objPoses.Count == 0) return false;
-                        Position objPos = objPoses[0];
-                        double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAway.HasValue) return false;
+                        Position objPos = GetObjectPosition(objAddress);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAwayNullable.HasValue) return false;
+                        double distAway = distAwayNullable.Value;
                         (double newMarioX, double newMarioY, double newMarioZ) =
-                            MoreMath.ExtrapolateLine3D(objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway.Value);
+                            MoreMath.ExtrapolateLine3D(
+                                objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
                         return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
                     };
                     break;
-
+                    /*
                 case "MarioHorizontalDistanceToObject":
                     getterFunction = () =>
                     {
@@ -141,71 +138,71 @@ namespace SM64_Diagnostic.Structs
                         });
                     };
                     break;
-
+                    */
                 // Camera vars
 
                 case "CameraDistanceToMario":
-                    getterFunction = () =>
+                    getterFunction = (uint dummy) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position cameraPos = GetCameraPosition();
                         double dist = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Y, marioPos.Z, cameraPos.X, cameraPos.Y, cameraPos.Z);
-                        return CreateList(dist);
+                        return dist.ToString();
                     };
                     break;
 
                 // Action vars
 
                 case "ActionDescription":
-                    getterFunction = () =>
+                    getterFunction = (uint dummy) =>
                     {
                         uint action = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset);
                         string actionDescription = Config.MarioActions.GetActionName(action);
-                        return CreateList(actionDescription);
+                        return actionDescription;
                     };
                     break;
 
                 case "PrevActionDescription":
-                    getterFunction = () =>
+                    getterFunction = (uint dummy) =>
                     {
                         uint prevAction = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset);
                         string prevActionDescription = Config.MarioActions.GetActionName(prevAction);
-                        return CreateList(prevActionDescription);
+                        return prevActionDescription;
                     };
                     break;
 
                 case "MarioAnimationDescription":
-                    getterFunction = () =>
+                    getterFunction = (uint dummy) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
                         short animation = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationOffset);
                         string animationDescription = Config.MarioAnimations.GetAnimationName(animation);
-                        return CreateList(animationDescription);
+                        return animationDescription;
                     };
                     break;
 
                 // Water vars
 
                 case "WaterAboveMedian":
-                    getterFunction = () =>
+                    getterFunction = (uint dummy) =>
                     {
                         short waterLevel = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Mario.WaterLevelOffset);
                         short waterLevelMedian = Config.Stream.GetInt16(Config.WaterLevelMedianAddress);
                         double waterAboveMedian = waterLevel - waterLevelMedian;
-                        return CreateList(waterAboveMedian);
+                        return waterAboveMedian.ToString();
                     };
                     break;
 
                 case "MarioAboveWater":
-                    getterFunction = () =>
+                    getterFunction = (uint dummy) =>
                     {
                         short waterLevel = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Mario.WaterLevelOffset);
                         float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
                         float marioAboveWater = marioY - waterLevel;
-                        return CreateList(marioAboveWater);
+                        return marioAboveWater.ToString();
                     };
-                    setterFunction = (string stringValue) =>
+                    setterFunction = (string stringValue, uint dummy) =>
                     {
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!doubleValueNullable.HasValue) return false;
@@ -220,13 +217,13 @@ namespace SM64_Diagnostic.Structs
                 // Misc vars
 
                 case "RngIndex":
-                    getterFunction = () =>
+                    getterFunction = (uint dummy) =>
                     {
                         ushort rngValue = Config.Stream.GetUInt16(Config.RngAddress);
                         string rngIndexString = RngIndexer.GetRngIndexString(rngValue);
-                        return CreateList(rngIndexString);
+                        return rngIndexString;
                     };
-                    setterFunction = (string stringValue) =>
+                    setterFunction = (string stringValue, uint dummy) =>
                     {
                         int? index = ParsingUtilities.ParseIntNullable(stringValue);
                         if (!index.HasValue) return false;
@@ -236,33 +233,33 @@ namespace SM64_Diagnostic.Structs
                     break;
 
                 case "RngCallsPerFrame":
-                    getterFunction = () =>
+                    getterFunction = (uint dummy) =>
                     {
                         ushort preRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0C);
                         ushort currentRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0E);
                         int rngDiff = RngIndexer.GetRngIndexDiff(preRng, currentRng);
-                        return CreateList(rngDiff);
+                        return rngDiff.ToString();
                     };
                     break;
 
                 case "NumberOfLoadedObjects":
-                    getterFunction = () =>
+                    getterFunction = (uint dummy) =>
                     {
                         int numberOfLoadedObjects = ObjectSlotsManager.Instance.ActiveObjectCount;
-                        return CreateList(numberOfLoadedObjects);
+                        return numberOfLoadedObjects.ToString();
                     };
                     break;
 
                 // Area vars
 
                 case "CurrentAreaIndexMario":
-                    getterFunction = () =>
+                    getterFunction = (uint dummy) =>
                     {
                         uint currentAreaMario = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.AreaPointerOffset);
                         string currentAreaIndexMario = AreaUtilities.GetAreaIndexString(currentAreaMario);
-                        return CreateList(currentAreaIndexMario);
+                        return currentAreaIndexMario;
                     };
-                    setterFunction = (string stringValue) =>
+                    setterFunction = (string stringValue, uint dummy) =>
                     {
                         int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
                         if (!intValueNullable.HasValue) return false;
@@ -274,13 +271,13 @@ namespace SM64_Diagnostic.Structs
                     break;
 
                 case "CurrentAreaIndex":
-                    getterFunction = () =>
+                    getterFunction = (uint dummy) =>
                     {
                         uint currentArea = Config.Stream.GetUInt32(Config.Area.CurrentAreaPointerAddress);
                         string currentAreaIndex = AreaUtilities.GetAreaIndexString(currentArea);
-                        return CreateList(currentAreaIndex);
+                        return currentAreaIndex;
                     };
-                    setterFunction = (string stringValue) =>
+                    setterFunction = (string stringValue, uint dummy) =>
                     {
                         int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
                         if (!intValueNullable.HasValue) return false;
@@ -292,13 +289,13 @@ namespace SM64_Diagnostic.Structs
                     break;
 
                 case "AreaTerrainDescription":
-                    getterFunction = () =>
+                    getterFunction = (uint dummy) =>
                     {
                         short terrainType = Config.Stream.GetInt16(AreaManager.Instance.SelectedAreaAddress + Config.Area.TerrainTypeOffset);
                         string terrainDescription = AreaUtilities.GetTerrainDescription(terrainType);
-                        return CreateList(terrainDescription);
+                        return terrainDescription;
                     };
-                    setterFunction = (string stringValue) =>
+                    setterFunction = (string stringValue, uint dummy) =>
                     {
                         short? terrainTypeNullable = AreaUtilities.GetTerrainType(stringValue);
                         if (!terrainTypeNullable.HasValue) return false;
@@ -337,16 +334,19 @@ namespace SM64_Diagnostic.Structs
             return success;
         }
 
+        private static Position GetObjectPosition(uint objAddress)
+        {
+            float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+            float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+            float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+            ushort objAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
+            return new Position(objX, objY, objZ, objAngle);
+        }
+
         private static List<Position> GetObjectPositions()
         {
-            return ObjectManager.Instance.CurrentAddresses.ConvertAll(objAddress =>
-            {
-                float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
-                float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
-                ushort objAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
-                return new Position(objX, objY, objZ, objAngle);
-            });
+            return ObjectManager.Instance.CurrentAddresses.ConvertAll(
+                objAddress => GetObjectPosition(objAddress));
         }
 
         private static Position GetCameraPosition()

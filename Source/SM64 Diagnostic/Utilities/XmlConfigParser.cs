@@ -2415,8 +2415,10 @@ namespace SM64_Diagnostic.Utilities
             Color? backgroundColor = (element.Attribute(XName.Get("color")) != null) ?
                 ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
 
+            bool isSpecial = specialType != null;
+
             string typeName = (element.Attribute(XName.Get("type"))?.Value);
-            typeName = baseAddressType == BaseAddressTypeEnum.Special ? "byte" : typeName; // TODO fix this hacky solution
+            typeName = isSpecial ? "byte" : typeName; // TODO fix this hacky solution
 
             AddressHolder addressHolder =
                 new AddressHolder(

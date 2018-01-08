@@ -89,7 +89,9 @@ namespace SM64_Diagnostic.Structs
         }
 
         private static readonly List<uint> BaseAddressListZero = new List<uint> { 0 };
+        private static readonly List<uint> BaseAddressListEmpy = new List<uint> { };
 
+        // TODO remove this version once var X is the norm
         public static List<uint> GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum? baseAddressType, bool returnNonEmptyList)
         {
             List<uint> output;
@@ -164,8 +166,8 @@ namespace SM64_Diagnostic.Structs
                 case BaseAddressTypeEnum.CamHack:
                     output = new List<uint> { Config.CameraHack.CameraHackStruct };
                     break;
-                case BaseAddressTypeEnum.Special:
-                    throw new ArgumentOutOfRangeException("Should not get offset list for Special var");
+                case BaseAddressTypeEnum.None:
+                    throw new ArgumentOutOfRangeException("None in switch statement");
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -174,6 +176,86 @@ namespace SM64_Diagnostic.Structs
                 output = BaseAddressListZero;
             }
             return output;
+        }
+
+        public static List<uint> GetBaseAddressListFromBaseAddressTypeVarX(BaseAddressTypeEnum baseAddressType)
+        {
+            switch (baseAddressType)
+            {
+                case BaseAddressTypeEnum.None:
+                    return BaseAddressListZero;
+
+                case BaseAddressTypeEnum.Absolute:
+                    return BaseAddressListZero;
+
+                case BaseAddressTypeEnum.Relative:
+                    return BaseAddressListZero;
+
+                case BaseAddressTypeEnum.Mario:
+                    return new List<uint> { Config.Mario.StructAddress };
+
+                case BaseAddressTypeEnum.MarioObj:
+                    return new List<uint> { Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress) };
+
+                case BaseAddressTypeEnum.Camera:
+                    return new List<uint> { Config.Camera.CameraStructAddress };
+
+                case BaseAddressTypeEnum.File:
+                    return new List<uint> { FileManager.Instance.CurrentFileAddress };
+
+                case BaseAddressTypeEnum.Object:
+                    return ObjectManager.Instance.CurrentAddresses;
+
+                case BaseAddressTypeEnum.Triangle:
+                    {
+                        uint triangleAddress = TriangleManager.Instance.TriangleAddress;
+                        return triangleAddress != 0 ? new List<uint>() { triangleAddress } : BaseAddressListEmpy;
+                    }
+
+                case BaseAddressTypeEnum.TriangleExertionForceTable:
+                    return GetBaseAddressListFromBaseAddressTypeVarX(BaseAddressTypeEnum.Triangle)
+                        .ConvertAll(triangleAddress =>
+                        {
+                            uint exertionForceIndex = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.ExertionForceIndex);
+                            return Config.Triangle.ExertionForceTableAddress + 2 * exertionForceIndex;
+                        });
+
+                case BaseAddressTypeEnum.InputCurrent:
+                    return new List<uint> { Config.Input.CurrentInputAddress };
+
+                case BaseAddressTypeEnum.InputJustPressed:
+                    return new List<uint> { Config.Input.JustPressedInputAddress };
+
+                case BaseAddressTypeEnum.InputBuffered:
+                    return new List<uint> { Config.Input.BufferedInputAddress };
+
+                case BaseAddressTypeEnum.Graphics:
+                    return GetBaseAddressListFromBaseAddressTypeVarX(BaseAddressTypeEnum.Object)
+                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.BehaviorGfxOffset));
+
+                case BaseAddressTypeEnum.Animation:
+                    return GetBaseAddressListFromBaseAddressTypeVarX(BaseAddressTypeEnum.Object)
+                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.AnimationOffset));
+
+                case BaseAddressTypeEnum.Waypoint:
+                    return GetBaseAddressListFromBaseAddressTypeVarX(BaseAddressTypeEnum.Object)
+                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset));
+
+                case BaseAddressTypeEnum.Water:
+                    return new List<uint> { Config.Stream.GetUInt32(Config.WaterPointerAddress) };
+
+                case BaseAddressTypeEnum.Area:
+                    return new List<uint> { AreaManager.Instance.SelectedAreaAddress };
+
+                case BaseAddressTypeEnum.HackedArea:
+                    return new List<uint> { Config.HackedAreaAddress };
+
+                case BaseAddressTypeEnum.CamHack:
+                    return new List<uint> { Config.CameraHack.CameraHackStruct };
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

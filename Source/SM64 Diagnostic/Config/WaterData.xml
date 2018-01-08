@@ -3,8 +3,8 @@
   <Data type="short" offset="0x76" baseAddressType="Mario">Water Level</Data>
   <Data type="short" offsetUS="0x8036118A" offsetJP="0x8035FE1A" baseAddressType="Relative">Water Level Median</Data>
 
-  <Data baseAddressType="Special" specialType="WaterAboveMedian">Water Above Median</Data>
-  <Data baseAddressType="Special" specialType="MarioAboveWater">Mario Above Water</Data>
+  <Data baseAddressType="None" specialType="WaterAboveMedian">Water Above Median</Data>
+  <Data baseAddressType="None" specialType="MarioAboveWater">Mario Above Water</Data>
   <Data type="float" offset="0x40" baseAddressType="Mario">Mario Y</Data>
 
   <Data type="short" offsetUS="0x801112E2" offsetJP="0x8010E462" baseAddressType="Relative">WDW Main WL</Data>

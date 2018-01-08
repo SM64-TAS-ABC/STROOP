@@ -71,7 +71,7 @@ namespace SM64_Diagnostic.Structs
         {
             get
             {
-                return Offset != BaseAddressTypeEnum.Relative && Offset != BaseAddressTypeEnum.Absolute && Offset != BaseAddressTypeEnum.Special;
+                return Offset != BaseAddressTypeEnum.Relative && Offset != BaseAddressTypeEnum.Absolute && !IsSpecial;
             }
         }
 
@@ -79,7 +79,7 @@ namespace SM64_Diagnostic.Structs
         {
             get
             {
-                return Offset == BaseAddressTypeEnum.Special;
+                return SpecialType != null;
             }
         }
 
