@@ -82,8 +82,8 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                List<uint> baseAddressList = VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType, _returnNonEmptyList);
-                return baseAddressList.ConvertAll(baseAddress => baseAddress + Offset);
+                return VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType, _returnNonEmptyList)
+                    .ConvertAll(baseAddress => baseAddress + Offset);
             }
         }
 
