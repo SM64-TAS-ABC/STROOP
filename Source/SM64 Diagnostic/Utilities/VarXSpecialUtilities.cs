@@ -159,7 +159,11 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint dummy) =>
                     {
                         ushort time = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Hud.TimeOffset);
-                        return time.ToString();
+                        int totalDeciSeconds = time / 3;
+                        int deciSecondComponent = totalDeciSeconds % 10;
+                        int secondComponent = (totalDeciSeconds / 10) % 60;
+                        int minuteComponent = (totalDeciSeconds / 600);
+                        return minuteComponent + "'" + secondComponent.ToString("D2") + "\"" + deciSecondComponent;
                     };
                     break;
 
