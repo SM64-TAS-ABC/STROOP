@@ -90,19 +90,18 @@ namespace SM64_Diagnostic.Structs
                         return SetMarioPosition(null, newMarioY, null);
                     };
                     break;
-
+                    */
                 case "AngleObjectToMario":
-                    getterFunction = () =>
+                    getterFunction = (uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        List<Position> objPoses = GetObjectPositions();
-                        return objPoses.ConvertAll(objPos =>
-                        {
-                            return MoreMath.AngleTo_AngleUnits(objPos.X, objPos.Z, marioPos.X, marioPos.Z).ToString();
-                        });
+                        Position objPos = GetObjectPosition(objAddress);
+                        double angleToMario = MoreMath.AngleTo_AngleUnits(
+                            objPos.X, objPos.Z, marioPos.X, marioPos.Z);
+                        return MoreMath.NormalizeAngleDouble(angleToMario).ToString();
                     };
                     break;
-                    */
+
                 case "DeltaAngleObjectToMario":
                     getterFunction = (uint objAddress) =>
                     {
@@ -127,31 +126,29 @@ namespace SM64_Diagnostic.Structs
                         return SetObjectPosition(objAddress, null, null, null, newObjAngleUShort);
                     };
                     break;
-                    /*
+
                 case "AngleMarioToObject":
-                    getterFunction = () =>
+                    getterFunction = (uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        List<Position> objPoses = GetObjectPositions();
-                        return objPoses.ConvertAll(objPos =>
-                        {
-                            return MoreMath.AngleTo_AngleUnits(marioPos.X, marioPos.Z, objPos.X, objPos.Z).ToString();
-                        });
+                        Position objPos = GetObjectPosition(objAddress);
+                        double angleToObject = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                        return MoreMath.NormalizeAngleDouble(angleToObject).ToString();
                     };
                     break;
 
                 case "DeltaAngleMarioToObject":
-                    getterFunction = () =>
+                    getterFunction = (uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        List<Position> objPoses = GetObjectPositions();
-                        return objPoses.ConvertAll(objPos =>
-                        {
-                            return (marioPos.Angle - MoreMath.AngleTo_AngleUnits(marioPos.X, marioPos.Z, objPos.X, objPos.Z)).ToString();
-                        });
+                        Position objPos = GetObjectPosition(objAddress);
+                        double angleToObject = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                        double angleDiff = marioPos.Angle - angleToObject;
+                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
                     };
                     break;
-                    */
 
                 // HUD vars
 
