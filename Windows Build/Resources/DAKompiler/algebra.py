@@ -1,4 +1,5 @@
 from __future__ import print_function
+from python27_comp import to_bytes
 import basicTypes
 import struct
 
@@ -36,7 +37,7 @@ class Literal:
 
         topbyte = self.value >> 24
         if topbyte | 0x80 in range(0xbd,0xc8):
-            return '{:.4f}'.format(struct.unpack('>f',self.value.to_bytes(4,byteorder='big'))[0])
+            return '{:.4f}'.format(struct.unpack('>f',to_bytes(self.value,4,byteorder='big'))[0])
 
         if 'h' in spec or topbyte == 0x80 or self.type == basicTypes.address:
             return hex(self.value)
