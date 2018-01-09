@@ -38,10 +38,11 @@
   <Data type="ushort" offset="0x2E" baseAddressType="Mario" subclass="Angle">Yaw (US)</Data>
   <Data type="short" offset="0x2E" baseAddressType="Mario" subclass="Angle">Yaw (S)</Data>
   <Data type="ushort" offset="0xD6" baseAddressType="Object" subclass="Angle">Obj Yaw (Facing)</Data>
-  <Data baseAddressType="Object" specialType="AngleObjectToMario" subclass="Angle">Angle Obj to Mario</Data>
-  <Data baseAddressType="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" signed="true">DAngle Obj to Mario</Data>
-  <Data baseAddressType="Object" specialType="AngleMarioToObject" subclass="Angle">Angle Mario to Obj</Data>
-  <Data baseAddressType="Object" specialType="DeltaAngleMarioToObject" subclass="Angle" signed="true">DAngle Mario to Obj</Data>
+  
+  <Data baseAddressType="Object" specialType="AngleObjectToMario" subclass="Angle" type="ushort">Angle Obj to Mario</Data>
+  <Data baseAddressType="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" type="short">DAngle Obj to Mario</Data>
+  <Data baseAddressType="Object" specialType="AngleMarioToObject" subclass="Angle" type="ushort">Angle Mario to Obj</Data>
+  <Data baseAddressType="Object" specialType="DeltaAngleMarioToObject" subclass="Angle" type="short">DAngle Mario to Obj</Data>
   
   <Data type="int" offset="0xF4" baseAddressType="Object" subclass="Angle">Angular Distance</Data>
 

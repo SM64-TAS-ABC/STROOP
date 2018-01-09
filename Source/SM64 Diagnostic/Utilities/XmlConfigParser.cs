@@ -2526,6 +2526,16 @@ namespace SM64_Diagnostic.Utilities
                 throw new ArgumentOutOfRangeException("xml var is both object and uses hex (redundant)");
             }
 
+            if (varXSubclass == VarXSubclass.Angle && specialType != null && typeName == null)
+            {
+                throw new ArgumentOutOfRangeException("Special angle vars must have a type");
+            }
+
+            if (signed != null)
+            {
+                throw new ArgumentOutOfRangeException("signed is outdated");
+            }
+
             VarXCoordinate? coordinate = element.Attribute(XName.Get("coord")) != null ?
                 VarXUtilities.GetVarXCoordinate(element.Attribute(XName.Get("coord")).Value) : (VarXCoordinate?)null;
 
