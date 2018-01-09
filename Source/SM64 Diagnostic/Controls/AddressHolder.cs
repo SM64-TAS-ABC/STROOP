@@ -98,11 +98,11 @@ namespace SM64_Diagnostic.Controls
 
             SpecialType = specialType;
 
-            MemoryTypeName = IsSpecial ? null : memoryTypeName;
-            MemoryType = IsSpecial ? null : VarXUtilities.StringToType[MemoryTypeName];
-            ByteCount = IsSpecial ? (int?)null : VarXUtilities.TypeSize[MemoryType];
-            NibbleCount = IsSpecial ? (int?)null : VarXUtilities.TypeSize[MemoryType] * 2;
-            SignedType = IsSpecial ? (bool?)null : VarXUtilities.TypeSign[MemoryType];
+            MemoryTypeName = memoryTypeName;
+            MemoryType = memoryTypeName == null ? null : VarXUtilities.StringToType[MemoryTypeName];
+            ByteCount = memoryTypeName == null ? (int?)null : VarXUtilities.TypeSize[MemoryType];
+            NibbleCount = memoryTypeName == null ? (int?)null : VarXUtilities.TypeSize[MemoryType] * 2;
+            SignedType = memoryTypeName == null ? (bool?)null : VarXUtilities.TypeSign[MemoryType];
 
             Mask = mask;
 
