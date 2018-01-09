@@ -2548,7 +2548,6 @@ namespace SM64_Diagnostic.Utilities
                 varXSubclass,
                 backgroundColor,
                 useHex,
-                signed,
                 invertBool,
                 coordinate);
         }

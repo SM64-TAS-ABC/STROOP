@@ -32,7 +32,6 @@ namespace SM64_Diagnostic.Controls
             VarXControl varXControl,
             VarXSubclass varXSubclcass,
             bool? useHex,
-            bool? signed,
             bool? invertBool,
             VarXCoordinate? coordinate)
         {
@@ -51,7 +50,7 @@ namespace SM64_Diagnostic.Controls
                         coordinate);
 
                 case VarXSubclass.Angle:
-                    return new VarXAngle(addressHolder, varXControl, signed);
+                    return new VarXAngle(addressHolder, varXControl);
 
                 case VarXSubclass.Object:
                     return new VarXObject(addressHolder, varXControl);

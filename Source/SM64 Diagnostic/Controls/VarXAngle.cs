@@ -31,16 +31,13 @@ namespace SM64_Diagnostic.Controls
 
         public VarXAngle(
             AddressHolder addressHolder,
-            VarXControl varXControl,
-            bool? signed)
+            VarXControl varXControl)
             : base(addressHolder, varXControl, 0)
         {
-            _signed = _addressHolder.IsSpecial ?
-                signed ?? false :
-                _addressHolder.SignedType.Value;
+            _signed = _addressHolder.SignedType.Value;
             _angleUnitType = AngleUnitType.InGameUnits;
             _truncateToMultipleOf16 = false;
-            _constrainToOneRevolution = _addressHolder.IsSpecial;
+            _constrainToOneRevolution = false;
 
             AddAngleContextMenuStripItems();
         }
