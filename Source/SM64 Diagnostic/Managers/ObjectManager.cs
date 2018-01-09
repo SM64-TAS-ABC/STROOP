@@ -265,6 +265,7 @@ namespace SM64_Diagnostic.Managers
             _objSlotIndexLabel = splitContainerObject.Panel1.Controls["labelObjSlotIndValue"] as Label;
             _objSlotPositionLabel = splitContainerObject.Panel1.Controls["labelObjSlotPosValue"] as Label;
             _objBehaviorLabel = splitContainerObject.Panel1.Controls["labelObjBhvValue"] as Label;
+            _objBehaviorLabel.Click += _objBehaviorLabel_Click;
             _objectNameTextBox = splitContainerObject.Panel1.Controls["textBoxObjName"] as TextBox;
             _objectBorderPanel = splitContainerObject.Panel1.Controls["panelObjectBorder"] as Panel;
             _objectImagePictureBox = _objectBorderPanel.Controls["pictureBoxObject"] as IntPictureBox;
@@ -519,6 +520,17 @@ namespace SM64_Diagnostic.Managers
             variableListFilterCollisionRadioButton.Click +=
                 (sender, e) => ApplyVariableListFilter(
                     new List<VariableGroup> { VariableGroup.Collision });
+        }
+
+        private void _objBehaviorLabel_Click(object sender, EventArgs e)
+        {
+            if (CurrentAddresses.Count == 0)
+                return;
+
+            ScriptManager scriptManager = ManagerContext.Current.ScriptManager;
+            var scriptAddress = Config.Stream.GetUInt32(CurrentAddresses[0] + Config.ObjectSlots.BehaviorScriptOffset);
+            scriptManager.Go(scriptAddress);
+            ManagerContext.Current.StroopMainForm.SwitchTab("tabPageScripts");
         }
 
         private void ApplyVariableListFilter(List<VariableGroup> variableGroups)
