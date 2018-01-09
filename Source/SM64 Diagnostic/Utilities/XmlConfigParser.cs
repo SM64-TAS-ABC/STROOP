@@ -2526,9 +2526,12 @@ namespace SM64_Diagnostic.Utilities
                 throw new ArgumentOutOfRangeException("xml var is both object and uses hex (redundant)");
             }
 
-            if (varXSubclass == VarXSubclass.Angle && specialType != null && typeName == null)
+            if (varXSubclass == VarXSubclass.Angle && specialType != null)
             {
-                throw new ArgumentOutOfRangeException("Special angle vars must have a type");
+                if (typeName != "ushort" && typeName != "short" && typeName != "uint" && typeName != "int")
+                {
+                    throw new ArgumentOutOfRangeException("Special angle vars must have a good type");
+                }
             }
 
             if (signed != null)

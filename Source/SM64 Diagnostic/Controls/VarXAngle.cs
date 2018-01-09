@@ -19,6 +19,16 @@ namespace SM64_Diagnostic.Controls
         private bool _truncateToMultipleOf16;
         private bool _constrainToOneRevolution;
 
+        private Type _effectiveType
+        {
+            get
+            {
+                if (_addressHolder.ByteCount == 2 || _constrainToOneRevolution)
+                    return _signed ? typeof(short) : typeof(ushort);
+                else return _signed ? typeof(int) : typeof(uint);
+            }
+        }
+
         public VarXAngle(
             AddressHolder addressHolder,
             VarXControl varXControl,
@@ -117,12 +127,7 @@ namespace SM64_Diagnostic.Controls
             double doubleValue = doubleValueNullable.Value;
 
             if (_truncateToMultipleOf16) doubleValue = MoreMath.TruncateToMultipleOf16(doubleValue);
-            if (_constrainToOneRevolution)
-            {
-                doubleValue = _signed ?
-                    MoreMath.MaybeNegativeModulus(doubleValue, 65536) :
-                    MoreMath.NonNegativeModulus(doubleValue, 65536);
-            }
+            doubleValue = MoreMath.NormalizeAngleUsingType(doubleValue, _effectiveType);
             doubleValue = (doubleValue / 65536) * GetAngleUnitTypeMaxValue();
 
             return doubleValue.ToString();
@@ -135,12 +140,6 @@ namespace SM64_Diagnostic.Controls
             double doubleValue = doubleValueNullable.Value;
 
             doubleValue = (doubleValue / GetAngleUnitTypeMaxValue()) * 65536;
-            if (_constrainToOneRevolution)
-            {
-                doubleValue = _signed ?
-                    MoreMath.MaybeNegativeModulus(doubleValue, 65536) :
-                    MoreMath.NonNegativeModulus(doubleValue, 65536);
-            }
 
             return doubleValue.ToString();
         }
@@ -158,7 +157,7 @@ namespace SM64_Diagnostic.Controls
 
         protected override int? GetHexDigitCount()
         {
-            return _addressHolder.IsSpecial || _constrainToOneRevolution ? 4 : base.GetHexDigitCount();
+            return _constrainToOneRevolution ? 4 : base.GetHexDigitCount();
         }
     }
 }

@@ -210,6 +210,15 @@ namespace SM64_Diagnostic.Utilities
             return angleTruncated;
         }
 
+        public static double NormalizeAngleUsingType(double angle, Type type)
+        {
+            if (type == typeof(short)) return MaybeNegativeModulus(angle, 1.0 + short.MaxValue - short.MinValue);
+            if (type == typeof(ushort)) return NonNegativeModulus(angle, 1.0 + ushort.MaxValue - ushort.MinValue);
+            if (type == typeof(int)) return MaybeNegativeModulus(angle, 1.0 + int.MaxValue - int.MinValue);
+            if (type == typeof(uint)) return NonNegativeModulus(angle, 1.0 + uint.MaxValue - uint.MinValue);
+            throw new ArgumentOutOfRangeException("Cannot call NormalizeAngleUsingType with type " + type);
+        }
+
         public static double AngleTo_Radians(double xFrom, double zFrom, double xTo, double zTo)
         {
             return Math.Atan2(xTo - xFrom, zTo - zFrom);
