@@ -214,6 +214,18 @@ namespace SM64_Diagnostic.Structs
                             marioPos.X, marioPos.Y, marioPos.Z, cameraPos.X, cameraPos.Y, cameraPos.Z);
                         return dist.ToString();
                     };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position cameraPos = GetCameraPosition();
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAwayNullable.HasValue) return false;
+                        double distAway = distAwayNullable.Value;
+                        (double newCameraX, double newCameraY, double newCameraZ) =
+                            MoreMath.ExtrapolateLine3D(
+                                marioPos.X, marioPos.Y, marioPos.Z, cameraPos.X, cameraPos.Y, cameraPos.Z, distAway);
+                        return SetCameraPosition(newCameraX, newCameraY, newCameraZ);
+                    };
                     break;
 
                 // Action vars
@@ -375,11 +387,6 @@ namespace SM64_Diagnostic.Structs
             return (getterFunction, setterFunction);
         }
 
-        private static List<string> CreateList(object value)
-        {
-            return new List<string>() { value.ToString() };
-        }
-
         private static Position GetMarioPosition()
         {
             float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
@@ -426,6 +433,16 @@ namespace SM64_Diagnostic.Structs
             float cameraZ = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
             ushort cameraAngle = Config.Stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset);
             return new Position(cameraX, cameraY, cameraZ, cameraAngle);
+        }
+
+        private static bool SetCameraPosition(double? x, double? y, double? z, ushort? angle = null)
+        {
+            bool success = true;
+            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, Config.Camera.CameraStructAddress + Config.Camera.XOffset);
+            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, Config.Camera.CameraStructAddress + Config.Camera.YOffset);
+            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
+            if (angle.HasValue) success &= Config.Stream.SetValue((ushort)angle.Value, Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset);
+            return success;
         }
 
         private struct Position
