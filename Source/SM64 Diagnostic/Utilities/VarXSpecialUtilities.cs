@@ -165,6 +165,42 @@ namespace SM64_Diagnostic.Structs
                         int minuteComponent = (totalDeciSeconds / 600);
                         return minuteComponent + "'" + secondComponent.ToString("D2") + "\"" + deciSecondComponent;
                     };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        if (stringValue == null) return false;
+                        if (stringValue.Length == 0) stringValue = "0" + stringValue;
+                        if (stringValue.Length == 1) stringValue = "\"" + stringValue;
+                        if (stringValue.Length == 2) stringValue = "0" + stringValue;
+                        if (stringValue.Length == 3) stringValue = "0" + stringValue;
+                        if (stringValue.Length == 4) stringValue = "'" + stringValue;
+                        if (stringValue.Length == 5) stringValue = "0" + stringValue;
+
+                        string minuteComponentString = stringValue.Substring(0, stringValue.Length - 5);
+                        string leftMarker = stringValue.Substring(stringValue.Length - 5, 1);
+                        string secondComponentString = stringValue.Substring(stringValue.Length - 4, 2);
+                        string rightMarker = stringValue.Substring(stringValue.Length - 2, 1);
+                        string deciSecondComponentString = stringValue.Substring(stringValue.Length - 1, 1);
+
+                        if (leftMarker != "\"" && leftMarker != "'") return false;
+                        if (rightMarker != "\"" && rightMarker != "'" && rightMarker != ".") return false;
+
+                        int? minuteComponentNullable = ParsingUtilities.ParseIntNullable(minuteComponentString);
+                        int? secondComponentNullable = ParsingUtilities.ParseIntNullable(secondComponentString);
+                        int? deciSecondComponentNullable = ParsingUtilities.ParseIntNullable(deciSecondComponentString);
+
+                        if (!minuteComponentNullable.HasValue ||
+                            !secondComponentNullable.HasValue ||
+                            !deciSecondComponentNullable.HasValue) return false;
+
+                        int totalDeciSeconds =
+                            deciSecondComponentNullable.Value +
+                            secondComponentNullable.Value * 10 +
+                            minuteComponentNullable.Value * 600;
+
+                        int time = totalDeciSeconds * 3;
+                        ushort timeUShort = ParsingUtilities.ParseUShortRoundingCapping(time);
+                        return Config.Stream.SetValue(timeUShort, Config.Mario.StructAddress + Config.Hud.TimeOffset);
+                    };
                     break;
 
                 // Camera vars
