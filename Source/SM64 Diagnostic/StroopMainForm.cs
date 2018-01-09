@@ -77,6 +77,7 @@ namespace SM64_Diagnostic
             currentContext.StroopMainForm = this;
 
             currentContext.DisassemblyManager = new DisassemblyManager(tabPageDisassembly);
+            currentContext.DecompilerManager = new DecompilerManager(tabPageDecompiler);
             currentContext.InjectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
             currentContext.HackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
 

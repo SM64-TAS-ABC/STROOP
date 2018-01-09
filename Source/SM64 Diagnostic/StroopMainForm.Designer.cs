@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -961,6 +961,10 @@ namespace SM64_Diagnostic
             this.labelMetric3Value = new System.Windows.Forms.Label();
             this.labelMetric5Value = new System.Windows.Forms.Label();
             this.labelMetric4Value = new System.Windows.Forms.Label();
+            this.tabPageDecompiler = new System.Windows.Forms.TabPage();
+            this.splitContainerDecompiler = new System.Windows.Forms.SplitContainer();
+            this.decompilerViewHost = new System.Windows.Forms.Integration.ElementHost();
+            this.decompilerView = new SM64_Diagnostic.Controls.DecompilerView();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
             this.panelConnect = new System.Windows.Forms.Panel();
@@ -979,6 +983,10 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.tabPageX = new System.Windows.Forms.TabPage();
             this.noTearFlowLayoutPanelX = new SM64_Diagnostic.Controls.NoTearFlowLayoutPanel();
+            this.listViewDecompiler = new System.Windows.Forms.ListView();
+            this.textBoxDecompilerAddress = new System.Windows.Forms.TextBox();
+            this.buttonDecompilerDecompile = new System.Windows.Forms.Button();
+            this.labelDecompilerAddress = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1288,6 +1296,11 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
             this.tabPageX.SuspendLayout();
+            this.tabPageDecompiler.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).BeginInit();
+            this.splitContainerDecompiler.Panel1.SuspendLayout();
+            this.splitContainerDecompiler.Panel2.SuspendLayout();
+            this.splitContainerDecompiler.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1463,6 +1476,7 @@ namespace SM64_Diagnostic
             this.tabControlMain.Controls.Add(this.tabPageQuarterFrame);
             this.tabControlMain.Controls.Add(this.tabPageOptions);
             this.tabControlMain.Controls.Add(this.tabPageTesting);
+            this.tabControlMain.Controls.Add(this.tabPageDecompiler);
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(2, 2);
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(2);
@@ -9417,8 +9431,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -12639,6 +12653,47 @@ namespace SM64_Diagnostic
             this.labelMetric4Value.Text = "Value";
             this.labelMetric4Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // tabPageDecompiler
+            // 
+            this.tabPageDecompiler.Controls.Add(this.textBoxDecompilerAddress);
+            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerDecompile);
+            this.tabPageDecompiler.Controls.Add(this.labelDecompilerAddress);
+            this.tabPageDecompiler.Controls.Add(this.splitContainerDecompiler);
+            this.tabPageDecompiler.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDecompiler.Name = "tabPageDecompiler";
+            this.tabPageDecompiler.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDecompiler.Size = new System.Drawing.Size(915, 463);
+            this.tabPageDecompiler.TabIndex = 23;
+            this.tabPageDecompiler.Text = "Decompiler";
+            // 
+            // splitContainerDecompiler
+            // 
+            this.splitContainerDecompiler.Location = new System.Drawing.Point(6, 27);
+            this.splitContainerDecompiler.Name = "splitContainerDecompiler";
+            // 
+            // splitContainerDecompiler.Panel1
+            // 
+            this.splitContainerDecompiler.Panel1.Controls.Add(this.listViewDecompiler);
+            // 
+            // splitContainerDecompiler.Panel2
+            // 
+            this.splitContainerDecompiler.Panel2.Controls.Add(this.decompilerViewHost);
+            this.splitContainerDecompiler.Size = new System.Drawing.Size(903, 430);
+            this.splitContainerDecompiler.SplitterDistance = 301;
+            this.splitContainerDecompiler.TabIndex = 1;
+            // 
+            // decompilerViewHost
+            // 
+            this.decompilerViewHost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.decompilerViewHost.Location = new System.Drawing.Point(3, 3);
+            this.decompilerViewHost.Name = "decompilerViewHost";
+            this.decompilerViewHost.Size = new System.Drawing.Size(592, 424);
+            this.decompilerViewHost.TabIndex = 0;
+            this.decompilerViewHost.Text = "elementHost1";
+            this.decompilerViewHost.Child = this.decompilerView;
+            // 
             // labelVersionNumber
             // 
             this.labelVersionNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -12849,6 +12904,41 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelX.Name = "noTearFlowLayoutPanelX";
             this.noTearFlowLayoutPanelX.Size = new System.Drawing.Size(909, 457);
             this.noTearFlowLayoutPanelX.TabIndex = 3;
+            // 
+            // listViewDecompiler
+            // 
+            this.listViewDecompiler.Location = new System.Drawing.Point(4, 4);
+            this.listViewDecompiler.Name = "listViewDecompiler";
+            this.listViewDecompiler.Size = new System.Drawing.Size(294, 385);
+            this.listViewDecompiler.TabIndex = 0;
+            this.listViewDecompiler.UseCompatibleStateImageBehavior = false;
+            // 
+            // textBoxDecompilerAddress
+            // 
+            this.textBoxDecompilerAddress.Location = new System.Drawing.Point(55, 3);
+            this.textBoxDecompilerAddress.Name = "textBoxDecompilerAddress";
+            this.textBoxDecompilerAddress.Size = new System.Drawing.Size(93, 20);
+            this.textBoxDecompilerAddress.TabIndex = 10;
+            // 
+            // buttonDecompilerDecompile
+            // 
+            this.buttonDecompilerDecompile.Location = new System.Drawing.Point(153, 3);
+            this.buttonDecompilerDecompile.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDecompilerDecompile.Name = "buttonDecompilerDecompile";
+            this.buttonDecompilerDecompile.Size = new System.Drawing.Size(62, 20);
+            this.buttonDecompilerDecompile.TabIndex = 9;
+            this.buttonDecompilerDecompile.Text = "Go";
+            this.buttonDecompilerDecompile.UseVisualStyleBackColor = true;
+            // 
+            // labelDecompilerAddress
+            // 
+            this.labelDecompilerAddress.AutoSize = true;
+            this.labelDecompilerAddress.Location = new System.Drawing.Point(2, 6);
+            this.labelDecompilerAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDecompilerAddress.Name = "labelDecompilerAddress";
+            this.labelDecompilerAddress.Size = new System.Drawing.Size(48, 13);
+            this.labelDecompilerAddress.TabIndex = 8;
+            this.labelDecompilerAddress.Text = "Address:";
             // 
             // StroopMainForm
             // 
@@ -13247,6 +13337,13 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.PerformLayout();
             this.groupBoxRecording.ResumeLayout(false);
             this.groupBoxRecording.PerformLayout();
+            this.tabPageX.ResumeLayout(false);
+            this.tabPageDecompiler.ResumeLayout(false);
+            this.tabPageDecompiler.PerformLayout();
+            this.splitContainerDecompiler.Panel1.ResumeLayout(false);
+            this.splitContainerDecompiler.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).EndInit();
+            this.splitContainerDecompiler.ResumeLayout(false);
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
             this.tabPageX.ResumeLayout(false);
@@ -14202,6 +14299,14 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonArea6;
         private TabPage tabPageX;
         private NoTearFlowLayoutPanel noTearFlowLayoutPanelX;
+        private TabPage tabPageDecompiler;
+        private SplitContainer splitContainerDecompiler;
+        private System.Windows.Forms.Integration.ElementHost decompilerViewHost;
+        private DecompilerView decompilerView;
+        private TextBox textBoxDecompilerAddress;
+        private Button buttonDecompilerDecompile;
+        private Label labelDecompilerAddress;
+        private ListView listViewDecompiler;
     }
 }
 
