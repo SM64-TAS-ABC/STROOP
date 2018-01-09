@@ -18,6 +18,8 @@ namespace SM64_Diagnostic.Structs.Configurations
         public uint CoinDisplayOffset;
         public uint StarDisplayOffset;
 
+        public uint TimeOffset;
+
         public uint VisibilityOffset;
         public byte VisibilityMask;
 

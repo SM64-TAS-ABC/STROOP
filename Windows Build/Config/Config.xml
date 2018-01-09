@@ -165,6 +165,8 @@
     <CoinDisplayOffset>0xF2</CoinDisplayOffset>
     <StarDisplayOffset>0xF4</StarDisplayOffset>
 
+    <TimeOffset>0xFC</TimeOffset>
+
     <VisibilityOffset>0xFB</VisibilityOffset>
     <VisibilityMask>0x0F</VisibilityMask>
 

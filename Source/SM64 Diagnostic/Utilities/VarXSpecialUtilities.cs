@@ -152,6 +152,17 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
                     */
+
+                // HUD vars
+
+                case "HudTimeText":
+                    getterFunction = (uint dummy) =>
+                    {
+                        ushort time = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Hud.TimeOffset);
+                        return time.ToString();
+                    };
+                    break;
+
                 // Camera vars
 
                 case "CameraDistanceToMario":

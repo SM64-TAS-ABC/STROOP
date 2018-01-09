@@ -506,6 +506,10 @@ namespace SM64_Diagnostic.Utilities
                                     Config.Hud.StarDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
 
+                                case "TimeOffset":
+                                    Config.Hud.TimeOffset = ParsingUtilities.ParseHex(subElement.Value);
+                                    break;
+
                                 case "VisibilityOffset":
                                     Config.Hud.VisibilityOffset = ParsingUtilities.ParseHex(subElement.Value);
                                     break;
