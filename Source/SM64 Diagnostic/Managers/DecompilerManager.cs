@@ -47,21 +47,22 @@ namespace SM64_Diagnostic.Managers
             ElementHost decompilerViewHost = splitContainerDecompiler.Panel2.Controls["decompilerViewHost"] as ElementHost;
             _decompilerView = decompilerViewHost.Child as DecompilerView;
 
-            buttonDecompile.Click += ButtonDecompile_Click;
+            buttonDecompile.Click += (sender, e) => Decompile();
 
             CreateDecompileEngine();
         }
 
-        private void ButtonDecompile_Click(object sender, EventArgs e)
+        public void Decompile(string strAddress = null)
         {
-            uint address;
-            string strAddress = _textBoxAddress.Text;
+            if (strAddress == null)
+                strAddress = _textBoxAddress.Text;
 
             // Remove "fn" from the front
             int fnIndex = strAddress.IndexOf("fn");
             if (fnIndex == 0)
                 strAddress = strAddress.Substring(2);
 
+            uint address;
             if (!ParsingUtilities.TryParseHex(strAddress, out address))
             {
                 MessageBox.Show(String.Format("Address {0} is not valid!", _textBoxAddress.Text),

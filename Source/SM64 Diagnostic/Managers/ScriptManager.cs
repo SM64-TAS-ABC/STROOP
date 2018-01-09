@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,13 +15,22 @@ namespace SM64_Diagnostic.Managers
         RichTextBoxEx _output;
         TextBox _textBoxScriptAddress;
 
+        static Regex functionRegex = new Regex("fn[0-9a-fA-F]{8}");
+
         public ScriptManager(Control tabControl)
         {
             _output = tabControl.Controls["richTextBoxExScript"] as RichTextBoxEx;
+            _output.LinkClicked += _output_LinkClicked;
             _textBoxScriptAddress = tabControl.Controls["textBoxScriptAddress"] as TextBox;
 
             Button goButton = tabControl.Controls["buttonScriptGo"] as Button;
             goButton.Click += (sender, e) => Go();
+        }
+
+        private void _output_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            ManagerContext.Current.DecompilerManager.Decompile(e.LinkText);
+            ManagerContext.Current.StroopMainForm.SwitchTab("tabPageDecompiler");
         }
 
         public void Go(uint? scriptAddress = null)
@@ -51,7 +61,19 @@ namespace SM64_Diagnostic.Managers
         {
             string unprocessed = BehaviorDecoder.Decode(address);
 
-            _output.Text = unprocessed == null ? "Failed to decode" : unprocessed;
+            if (unprocessed == null)
+            { 
+                _output.Text = "Failed to decode";
+                return;
+            }
+
+            _output.Text = unprocessed;
+
+            foreach (Match function in functionRegex.Matches(unprocessed))
+            {
+                _output.Select(function.Index, function.Length);
+                _output.SetSelectionLink(true);
+            }
         }
     }
 }
