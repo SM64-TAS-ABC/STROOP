@@ -730,48 +730,60 @@ namespace SM64_Diagnostic.Structs
                 case "AngleV1ToV2":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleV1ToV2 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                        return angleV1ToV2.ToString();
                     };
                     break;
 
                 case "AngleV2ToV1":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleV2ToV1 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X2, triStruct.Z2, triStruct.X1, triStruct.Z1);
+                        return angleV2ToV1.ToString();
                     };
                     break;
 
                 case "AngleV2ToV3":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleV2ToV3 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
+                        return angleV2ToV3.ToString();
                     };
                     break;
 
                 case "AngleV3ToV2":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleV3ToV2 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X3, triStruct.Z3, triStruct.X2, triStruct.Z2);
+                        return angleV3ToV2.ToString();
                     };
                     break;
 
                 case "AngleV1ToV3":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleV1ToV3 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X1, triStruct.Z1, triStruct.X3, triStruct.Z3);
+                        return angleV1ToV3.ToString();
                     };
                     break;
 
                 case "AngleV3ToV1":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleV3ToV1 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
+                        return angleV3ToV1.ToString();
                     };
                     break;
 
