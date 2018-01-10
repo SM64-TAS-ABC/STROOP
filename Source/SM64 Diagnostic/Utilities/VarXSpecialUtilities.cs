@@ -109,7 +109,7 @@ namespace SM64_Diagnostic.Structs
                         Position objPos = GetObjectPosition(objAddress);
                         double angleToMario = MoreMath.AngleTo_AngleUnits(
                             objPos.X, objPos.Z, marioPos.X, marioPos.Z);
-                        double angleDiff = objPos.Angle - angleToMario;
+                        double angleDiff = objPos.Angle.Value - angleToMario;
                         return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
                     };
                     setterFunction = (string stringValue, uint objAddress) =>
@@ -145,7 +145,7 @@ namespace SM64_Diagnostic.Structs
                         Position objPos = GetObjectPosition(objAddress);
                         double angleToObject = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, objPos.X, objPos.Z);
-                        double angleDiff = marioPos.Angle - angleToObject;
+                        double angleDiff = marioPos.Angle.Value - angleToObject;
                         return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
                     };
                     break;
@@ -231,7 +231,7 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint triAddress) =>
                     {
 
-                        return "UNIMPLEMENTED2";
+                        return "V" + GetClosestTriangleVertexIndex(triAddress);
                     };
                     break;
 
@@ -239,7 +239,7 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint triAddress) =>
                     {
 
-                        return "UNIMPLEMENTED2";
+                        return GetClosestTriangleVertexPosition(triAddress).X.ToString();
                     };
                     break;
 
@@ -247,7 +247,7 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint triAddress) =>
                     {
 
-                        return "UNIMPLEMENTED2";
+                        return GetClosestTriangleVertexPosition(triAddress).Y.ToString();
                     };
                     break;
 
@@ -255,7 +255,7 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint triAddress) =>
                     {
 
-                        return "UNIMPLEMENTED2";
+                        return GetClosestTriangleVertexPosition(triAddress).Z.ToString();
                     };
                     break;
 
@@ -818,6 +818,24 @@ namespace SM64_Diagnostic.Structs
             return (getterFunction, setterFunction);
         }
 
+        // Position logic
+
+        private struct Position
+        {
+            public readonly float X;
+            public readonly float Y;
+            public readonly float Z;
+            public readonly ushort? Angle;
+
+            public Position(float x, float y, float z, ushort? angle = null)
+            {
+                X = x;
+                Y = y;
+                Z = z;
+                Angle = angle;
+            }
+        }
+
         private static Position GetMarioPosition()
         {
             float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
@@ -876,20 +894,31 @@ namespace SM64_Diagnostic.Structs
             return success;
         }
 
-        private struct Position
-        {
-            public readonly float X;
-            public readonly float Y;
-            public readonly float Z;
-            public readonly ushort Angle;
+        // Triangle utilitiy methods
 
-            public Position(float x, float y, float z, ushort angle)
-            {
-                X = x;
-                Y = y;
-                Z = z;
-                Angle = angle;
-            }
+        private static int GetClosestTriangleVertexIndex(uint triAddress)
+        {
+            Position marioPos = GetMarioPosition();
+            TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+            double distToV1 = MoreMath.GetDistanceBetween(
+                marioPos.X, marioPos.Y, marioPos.Z, triStruct.X1, triStruct.Y1, triStruct.Z1);
+            double distToV2 = MoreMath.GetDistanceBetween(
+                marioPos.X, marioPos.Y, marioPos.Z, triStruct.X2, triStruct.Y2, triStruct.Z2);
+            double distToV3 = MoreMath.GetDistanceBetween(
+                marioPos.X, marioPos.Y, marioPos.Z, triStruct.X3, triStruct.Y3, triStruct.Z3);
+
+            if (distToV1 <= distToV2 && distToV1 <= distToV3) return 1;
+            else return distToV2 <= distToV3 ? 2 : 3;
+        }
+
+        private static Position GetClosestTriangleVertexPosition(uint triAddress)
+        {
+            int closestTriangleVertexIndex = GetClosestTriangleVertexIndex(triAddress);
+            TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+            if (closestTriangleVertexIndex == 1) return new Position(triStruct.X1, triStruct.Y1, triStruct.Z1);
+            if (closestTriangleVertexIndex == 2) return new Position(triStruct.X2, triStruct.Y2, triStruct.Z2);
+            if (closestTriangleVertexIndex == 3) return new Position(triStruct.X3, triStruct.Y3, triStruct.Z3);
+            throw new ArgumentOutOfRangeException();
         }
     }
 }
