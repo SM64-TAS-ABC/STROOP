@@ -311,40 +311,43 @@ namespace SM64_Diagnostic.Structs
                 case "UpHillDeltaAngle":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                        double uphillAngle = GetTriangleUphillAngle(triAddress);
+                        double angleDiff = marioAngle - uphillAngle;
+                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
                     };
                     break;
 
                 case "DownHillDeltaAngle":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                        double uphillAngle = GetTriangleUphillAngle(triAddress);
+                        double downhillAngle = MoreMath.ReverseAngle(uphillAngle);
+                        double angleDiff = marioAngle - downhillAngle;
+                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
                     };
                     break;
 
                 case "LeftHillDeltaAngle":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
-                    };
-                    break;
-
-                case "xxxxxx":
-                    getterFunction = (uint triAddress) =>
-                    {
-
-                        return "UNIMPLEMENTED2";
+                        ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                        double uphillAngle = GetTriangleUphillAngle(triAddress);
+                        double lefthillAngle = MoreMath.RotateAngleCCW(uphillAngle, 16384);
+                        double angleDiff = marioAngle - lefthillAngle;
+                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
                     };
                     break;
 
                 case "RightHillDeltaAngle":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                        double uphillAngle = GetTriangleUphillAngle(triAddress);
+                        double righthillAngle = MoreMath.RotateAngleCW(uphillAngle, 16384);
+                        double angleDiff = marioAngle - righthillAngle;
+                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
                     };
                     break;
 
