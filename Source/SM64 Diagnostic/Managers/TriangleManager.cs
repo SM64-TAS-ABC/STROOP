@@ -18,6 +18,8 @@ namespace SM64_Diagnostic.Managers
     {
         public static TriangleManager Instance = null;
 
+        private Dictionary<uint, TriangleStruct> _triangleCache;
+
         MaskedTextBox _addressBox;
         uint _triangleAddress = 0;
         CheckBox _useMisalignmentOffsetCheckbox;
@@ -41,11 +43,13 @@ namespace SM64_Diagnostic.Managers
             }
             private set
             {
+                // update cache
+                if (value != 0) GetTriangleStruct(value);
+
                 if (_triangleAddress == value)
                     return;
 
                 _triangleAddress = value;
-
                 _addressBox.Text = String.Format("0x{0:X8}", _triangleAddress);
             }
         }
@@ -127,6 +131,8 @@ namespace SM64_Diagnostic.Managers
             : base(triangleWatchVars, noTearFlowLayoutPanel)
         {
             Instance = this;
+
+            _triangleCache = new Dictionary<uint, TriangleStruct>();
 
             _triangleData = new List<short[]>();
 
@@ -668,8 +674,17 @@ namespace SM64_Diagnostic.Managers
             (_addressBox.Parent.Controls["radioButtonTriOther"] as RadioButton).Checked = true;
         }
 
+        public TriangleStruct GetTriangleStruct(uint address)
+        {
+            if (_triangleCache.ContainsKey(address)) return _triangleCache[address];
+            TriangleStruct triStruct = new TriangleStruct(address);
+            _triangleCache.Add(address, triStruct);
+            return triStruct;
+        }
+
         public override void Update(bool updateView)
         {
+            _triangleCache.Clear();
             switch (Mode)
             {
                 case TriangleMode.Ceiling:
