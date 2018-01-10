@@ -9,7 +9,7 @@
   <Data type="byte" offset="0x00" baseAddressType="Area">Area ID</Data>
   <Data type="byte" offset="0x01" baseAddressType="Area" subclass="Boolean">Is Current Area</Data>
   <Data type="short" offset="0x02" baseAddressType="Area">Terrain Type</Data>
-  <Data baseAddressType="None" specialType="AreaTerrainDescription">Terrain Description</Data>
+  <Data baseAddressType="None" specialType="AreaTerrainDescription" subclass="String">Terrain Description</Data>
 
   <Data type="uint" offset="0x04" baseAddressType="Area" useHex="true">Geo Layout Ptr</Data>
   <Data type="uint" offset="0x08" baseAddressType="Area" useHex="true">Collision Ptr</Data>

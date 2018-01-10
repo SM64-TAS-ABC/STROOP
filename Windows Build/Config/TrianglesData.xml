@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrianglesData>
-  <Data baseAddressType="Triangle" specialType="Classification">Classification</Data>
+  <Data baseAddressType="Triangle" specialType="Classification" subclass="String">Classification</Data>
 
   <Data type="ushort" offset="0x00" baseAddressType="Triangle">Surface Type</Data>
   <Data type="byte" offset="0x04" baseAddressType="Triangle" useHex="true">Flags</Data>
@@ -27,7 +27,7 @@
   <Data type="float" offset="0x3C" baseAddressType="Mario" color="#ffcccc">Mario X</Data>
   <Data type="float" offset="0x40" baseAddressType="Mario" color="#ffcccc">Mario Y</Data>
   <Data type="float" offset="0x44" baseAddressType="Mario" color="#ffcccc">Mario Z</Data>
-  <Data baseAddressType="Triangle" specialType="ClosestVertex" color="#e5ccff">Closest Vertex</Data>
+  <Data baseAddressType="Triangle" specialType="ClosestVertex" subclass="String" color="#e5ccff">Closest Vertex</Data>
   <Data baseAddressType="Triangle" specialType="ClosestVertexX" color="#e5ccff">Closest Vertex X</Data>
   <Data baseAddressType="Triangle" specialType="ClosestVertexY" color="#e5ccff">Closest Vertex Y</Data>
   <Data baseAddressType="Triangle" specialType="ClosestVertexZ" color="#e5ccff">Closest Vertex Z</Data>
