@@ -227,6 +227,13 @@ namespace SM64_Diagnostic.Structs
 
                 // Triangle vars
 
+                case "Classification":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        return TriangleManager.Instance.GetTriangleStruct(triAddress).Classification.ToString();
+                    };
+                    break;
+
                 case "ClosestVertex":
                     getterFunction = (uint triAddress) =>
                     {
