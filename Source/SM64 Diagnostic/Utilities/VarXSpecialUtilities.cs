@@ -230,7 +230,8 @@ namespace SM64_Diagnostic.Structs
                 case "Classification":
                     getterFunction = (uint triAddress) =>
                     {
-                        return TriangleManager.Instance.GetTriangleStruct(triAddress).Classification.ToString();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        return triStruct.Classification.ToString();
                     };
                     break;
 
@@ -269,8 +270,9 @@ namespace SM64_Diagnostic.Structs
                 case "Steepness":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double steepness = MoreMath.RadiansToAngleUnits(Math.Acos(triStruct.NormY));
+                        return steepness.ToString();
                     };
                     break;
 
@@ -278,31 +280,31 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint triAddress) =>
                     {
 
-                        return "UNIMPLEMENTED2";
+                        return GetTriangleUphillAngle(triAddress).ToString();
                     };
                     break;
 
                 case "DownHillAngle":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        double uphillAngle = GetTriangleUphillAngle(triAddress);
+                        return MoreMath.ReverseAngle(uphillAngle).ToString();
                     };
                     break;
 
                 case "LeftHillAngle":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        double uphillAngle = GetTriangleUphillAngle(triAddress);
+                        return MoreMath.RotateAngleCCW(uphillAngle, 16384).ToString();
                     };
                     break;
 
                 case "RightHillAngle":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        double uphillAngle = GetTriangleUphillAngle(triAddress);
+                        return MoreMath.RotateAngleCW(uphillAngle, 16384).ToString();
                     };
                     break;
 
@@ -926,6 +928,15 @@ namespace SM64_Diagnostic.Structs
             if (closestTriangleVertexIndex == 2) return new Position(triStruct.X2, triStruct.Y2, triStruct.Z2);
             if (closestTriangleVertexIndex == 3) return new Position(triStruct.X3, triStruct.Y3, triStruct.Z3);
             throw new ArgumentOutOfRangeException();
+        }
+
+        private static double GetTriangleUphillAngle(uint triAddress)
+        {
+            TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+            double uphillAngleRadians = Math.PI + Math.Atan2(triStruct.NormX, triStruct.NormZ);
+            if (triStruct.NormX == 0 && triStruct.NormZ == 0) uphillAngleRadians = double.NaN;
+            if (triStruct.IsCeiling()) uphillAngleRadians += Math.PI;
+            return MoreMath.RadiansToAngleUnits(uphillAngleRadians);
         }
     }
 }
