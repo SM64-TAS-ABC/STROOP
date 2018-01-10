@@ -225,6 +225,440 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
+                // Triangle vars
+
+                case "ClosestVertex":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "ClosestVertexX":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "ClosestVertexY":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "ClosestVertexZ":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "Steepness":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "UpHillAngle":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "DownHillAngle":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "LeftHillAngle":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "RightHillAngle":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "UpHillDeltaAngle":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "DownHillDeltaAngle":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "LeftHillDeltaAngle":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "xxxxxx":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "RightHillDeltaAngle":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "DistanceAboveFloor":
+                    getterFunction = (uint dummy) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "DistanceBelowCeiling":
+                    getterFunction = (uint dummy) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "NormalDistAway":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "VerticalDistAway":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "HeightOnSlope":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "ObjectTriCount":
+                    getterFunction = (uint dummy) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "ObjectNodeCount":
+                    getterFunction = (uint dummy) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "DistanceToV1":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "YDistanceToV1":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "XDistanceToV1":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "ZDistanceToV1":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "HDistanceToV1":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "DistanceToV2":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "YDistanceToV2":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "XDistanceToV2":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "ZDistanceToV2":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "HDistanceToV2":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "DistanceToV3":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "YDistanceToV3":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "XDistanceToV3":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "ZDistanceToV3":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "HDistanceToV3":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "DistanceToLine12":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "DistanceToLine23":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "DistanceToLine13":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "AngleMarioToV1":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "DeltaAngleMarioToV1":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "AngleV1ToMario":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "AngleMarioToV2":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "DeltaAngleMarioToV2":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "AngleV2ToMario":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "AngleMarioToV3":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "DeltaAngleMarioToV3":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "AngleV3ToMario":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "AngleV1ToV2":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "AngleV2ToV1":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "AngleV2ToV3":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "AngleV3ToV2":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "AngleV1ToV3":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
+                case "AngleV3ToV1":
+                    getterFunction = (uint triAddress) =>
+                    {
+
+                        return "UNIMPLEMENTED2";
+                    };
+                    break;
+
                 // Action vars
 
                 case "ActionDescription":
