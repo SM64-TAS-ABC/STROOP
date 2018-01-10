@@ -410,16 +410,20 @@ namespace SM64_Diagnostic.Structs
                 case "ObjectTriCount":
                     getterFunction = (uint dummy) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        int totalTriangleCount = Config.Stream.GetInt32(Config.Triangle.TotalTriangleCountAddress);
+                        int levelTriangleCount = Config.Stream.GetInt32(Config.Triangle.LevelTriangleCountAddress);
+                        int objectTriangleCount = totalTriangleCount - levelTriangleCount;
+                        return objectTriangleCount.ToString();
                     };
                     break;
 
                 case "ObjectNodeCount":
                     getterFunction = (uint dummy) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        int totalNodeCount = Config.Stream.GetInt32(Config.Triangle.TotalNodeCountAddress);
+                        int levelNodeCount = Config.Stream.GetInt32(Config.Triangle.LevelNodeCountAddress);
+                        int objectNodeCount = totalNodeCount - levelNodeCount;
+                        return objectNodeCount.ToString();
                     };
                     break;
 
