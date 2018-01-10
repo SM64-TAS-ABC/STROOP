@@ -224,8 +224,8 @@ namespace SM64_Diagnostic.Controls
         {
             if (!EditMode)
             {
-                _valueTextBox.Text = _varX.GetValueForTextbox();
-                _valueCheckBox.CheckState = _varX.GetValueForCheckbox();
+                if (_valueTextBox.Visible) _valueTextBox.Text = _varX.GetValueForTextbox();
+                if (_valueCheckBox.Visible) _valueCheckBox.CheckState = _varX.GetValueForCheckbox();
             }
 
             _varX.UpdateItemCheckStates();
