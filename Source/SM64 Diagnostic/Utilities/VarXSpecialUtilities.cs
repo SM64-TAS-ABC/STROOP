@@ -374,24 +374,36 @@ namespace SM64_Diagnostic.Structs
                 case "NormalDistAway":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double normalDistAway =
+                            marioPos.X * triStruct.NormX +
+                            marioPos.Y * triStruct.NormY +
+                            marioPos.Z * triStruct.NormZ +
+                            triStruct.NormOffset;
+                        return normalDistAway.ToString();
                     };
                     break;
 
                 case "VerticalDistAway":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double verticalDistAway =
+                            marioPos.Y + (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
+                        return verticalDistAway.ToString();
                     };
                     break;
 
                 case "HeightOnSlope":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double heightOnTriangle =
+                            (-marioPos.X * triStruct.NormX - marioPos.Z * triStruct.NormZ - triStruct.NormOffset) / triStruct.NormY;
+                        return heightOnTriangle.ToString();
                     };
                     break;
 
