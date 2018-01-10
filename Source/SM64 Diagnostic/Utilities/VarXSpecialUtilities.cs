@@ -354,8 +354,8 @@ namespace SM64_Diagnostic.Structs
                 case "DistanceAboveFloor":
                     getterFunction = (uint dummy) =>
                     {
-                        float floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
                         float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        float floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
                         float distAboveFloor = marioY - floorY;
                         return distAboveFloor.ToString();
                     };
@@ -364,8 +364,8 @@ namespace SM64_Diagnostic.Structs
                 case "DistanceBelowCeiling":
                     getterFunction = (uint dummy) =>
                     {
-                        float ceilingY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.CeilingYOffset);
                         float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        float ceilingY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.CeilingYOffset);
                         float distBelowCeiling = ceilingY - marioY;
                         return distBelowCeiling.ToString();
                     };
@@ -430,120 +430,156 @@ namespace SM64_Diagnostic.Structs
                 case "DistanceToV1":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
-                    };
-                    break;
-
-                case "YDistanceToV1":
-                    getterFunction = (uint triAddress) =>
-                    {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double distToV1 = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, triStruct.X1, triStruct.Y1, triStruct.Z1);
+                        return distToV1.ToString();
                     };
                     break;
 
                 case "XDistanceToV1":
                     getterFunction = (uint triAddress) =>
                     {
+                        float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double xDistToV1 = marioX - triStruct.X1;
+                        return xDistToV1.ToString();
+                    };
+                    break;
 
-                        return "UNIMPLEMENTED2";
+                case "YDistanceToV1":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double yDistToV1 = marioY - triStruct.Y1;
+                        return yDistToV1.ToString();
                     };
                     break;
 
                 case "ZDistanceToV1":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        float marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double zDistToV1 = marioZ - triStruct.Z1;
+                        return zDistToV1.ToString();
                     };
                     break;
 
                 case "HDistanceToV1":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double hDistToV1 = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
+                        return hDistToV1.ToString();
                     };
                     break;
 
                 case "DistanceToV2":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
-                    };
-                    break;
-
-                case "YDistanceToV2":
-                    getterFunction = (uint triAddress) =>
-                    {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double distToV2 = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, triStruct.X2, triStruct.Y2, triStruct.Z2);
+                        return distToV2.ToString();
                     };
                     break;
 
                 case "XDistanceToV2":
                     getterFunction = (uint triAddress) =>
                     {
+                        float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double xDistToV2 = marioX - triStruct.X2;
+                        return xDistToV2.ToString();
+                    };
+                    break;
 
-                        return "UNIMPLEMENTED2";
+                case "YDistanceToV2":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double yDistToV2 = marioY - triStruct.Y2;
+                        return yDistToV2.ToString();
                     };
                     break;
 
                 case "ZDistanceToV2":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        float marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double zDistToV2 = marioZ - triStruct.Z2;
+                        return zDistToV2.ToString();
                     };
                     break;
 
                 case "HDistanceToV2":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double hDistToV2 = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
+                        return hDistToV2.ToString();
                     };
                     break;
 
                 case "DistanceToV3":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
-                    };
-                    break;
-
-                case "YDistanceToV3":
-                    getterFunction = (uint triAddress) =>
-                    {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double distToV3 = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, triStruct.X3, triStruct.Y3, triStruct.Z3);
+                        return distToV3.ToString();
                     };
                     break;
 
                 case "XDistanceToV3":
                     getterFunction = (uint triAddress) =>
                     {
+                        float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double xDistToV3 = marioX - triStruct.X3;
+                        return xDistToV3.ToString();
+                    };
+                    break;
 
-                        return "UNIMPLEMENTED2";
+                case "YDistanceToV3":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double yDistToV3 = marioY - triStruct.Y3;
+                        return yDistToV3.ToString();
                     };
                     break;
 
                 case "ZDistanceToV3":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        float marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double zDistToV3 = marioZ - triStruct.Z3;
+                        return zDistToV3.ToString();
                     };
                     break;
 
                 case "HDistanceToV3":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double hDistToV3 = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
+                        return hDistToV3.ToString();
                     };
                     break;
 
