@@ -586,24 +586,42 @@ namespace SM64_Diagnostic.Structs
                 case "DistanceToLine12":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
+                            marioPos.X, marioPos.Z,
+                            triStruct.X1, triStruct.Z1,
+                            triStruct.X2, triStruct.Z2,
+                            triStruct.X3, triStruct.Z3, 1, 2);
+                        return signedDistToLine12.ToString();
                     };
                     break;
 
                 case "DistanceToLine23":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
+                            marioPos.X, marioPos.Z,
+                            triStruct.X1, triStruct.Z1,
+                            triStruct.X2, triStruct.Z2,
+                            triStruct.X3, triStruct.Z3, 2, 3);
+                        return signedDistToLine23.ToString();
                     };
                     break;
 
                 case "DistanceToLine13":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
+                            marioPos.X, marioPos.Z,
+                            triStruct.X1, triStruct.Z1,
+                            triStruct.X2, triStruct.Z2,
+                            triStruct.X3, triStruct.Z3, 3, 1);
+                        return signedDistToLine31.ToString();
                     };
                     break;
 
