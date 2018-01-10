@@ -628,72 +628,102 @@ namespace SM64_Diagnostic.Structs
                 case "AngleMarioToV1":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleToV1 = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
+                        return angleToV1.ToString();
                     };
                     break;
 
                 case "DeltaAngleMarioToV1":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleToV1 = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
+                        double angleDiff = marioPos.Angle.Value - angleToV1;
+                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
                     };
                     break;
 
                 case "AngleV1ToMario":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleV1ToMario = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X1, triStruct.Z1, marioPos.X, marioPos.Z);
+                        return angleV1ToMario.ToString();
                     };
                     break;
 
                 case "AngleMarioToV2":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleToV2 = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
+                        return angleToV2.ToString();
                     };
                     break;
 
                 case "DeltaAngleMarioToV2":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleToV2 = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
+                        double angleDiff = marioPos.Angle.Value - angleToV2;
+                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
                     };
                     break;
 
                 case "AngleV2ToMario":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleV2ToMario = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X2, triStruct.Z2, marioPos.X, marioPos.Z);
+                        return angleV2ToMario.ToString();
                     };
                     break;
 
                 case "AngleMarioToV3":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleToV3 = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
+                        return angleToV3.ToString();
                     };
                     break;
 
                 case "DeltaAngleMarioToV3":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleToV3 = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
+                        double angleDiff = marioPos.Angle.Value - angleToV3;
+                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
                     };
                     break;
 
                 case "AngleV3ToMario":
                     getterFunction = (uint triAddress) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double angleV3ToMario = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X3, triStruct.Z3, marioPos.X, marioPos.Z);
+                        return angleV3ToMario.ToString();
                     };
                     break;
 
