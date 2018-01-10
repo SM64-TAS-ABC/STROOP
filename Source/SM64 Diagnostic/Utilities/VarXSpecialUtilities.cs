@@ -354,16 +354,20 @@ namespace SM64_Diagnostic.Structs
                 case "DistanceAboveFloor":
                     getterFunction = (uint dummy) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        float floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
+                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        float distAboveFloor = marioY - floorY;
+                        return distAboveFloor.ToString();
                     };
                     break;
 
                 case "DistanceBelowCeiling":
                     getterFunction = (uint dummy) =>
                     {
-
-                        return "UNIMPLEMENTED2";
+                        float ceilingY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.CeilingYOffset);
+                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        float distBelowCeiling = ceilingY - marioY;
+                        return distBelowCeiling.ToString();
                     };
                     break;
 
