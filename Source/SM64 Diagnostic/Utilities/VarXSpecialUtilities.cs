@@ -375,7 +375,7 @@ namespace SM64_Diagnostic.Structs
                         string rightMarker = stringValue.Substring(stringValue.Length - 2, 1);
                         string deciSecondComponentString = stringValue.Substring(stringValue.Length - 1, 1);
 
-                        if (leftMarker != "\"" && leftMarker != "'") return false;
+                        if (leftMarker != "\"" && leftMarker != "'" && leftMarker != ".") return false;
                         if (rightMarker != "\"" && rightMarker != "'" && rightMarker != ".") return false;
 
                         int? minuteComponentNullable = ParsingUtilities.ParseIntNullable(minuteComponentString);
