@@ -57,7 +57,7 @@
   <Data groupList="Expanded" type="float" offset="0xE4" baseAddressType="Object">Gravity</Data>
   <Data groupList="Expanded" type="int" offset="0x180" baseAddressType="Object">Damage</Data>
   <Data groupList="Expanded" type="int" offset="0x1A0" baseAddressType="Object">Native Room</Data>
-  <Data groupList="Expanded" baseAddressType="None" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
+  <Data groupList="Expanded" baseAddressType="None" specialType="ObjectRngCallsPerFrame">RNG Calls/Frame</Data>
   <Data groupList="Expanded" type="uint" offset="0x68" baseAddressType="Object" useHex="true" isObject="true">Parent Object</Data>
   <Data groupList="Expanded" type="uint" offset="0x020C" baseAddressType="Object" useHex="true">Behavior Script</Data>
   <Data groupList="Expanded" type="uint" offset="0x14" baseAddressType="Object" useHex="true">Graphics</Data>

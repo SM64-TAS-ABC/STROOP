@@ -22,6 +22,8 @@ namespace SM64_Diagnostic.Structs
 
             switch (specialType)
             {
+                // Object generic vars
+
                 case "MarioDistanceToObject":
                     getterFunction = (uint objAddress) =>
                     {
@@ -43,10 +45,13 @@ namespace SM64_Diagnostic.Structs
                         return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
                     };
                     break;
-                    /*
+
                 case "MarioHorizontalDistanceToObject":
-                    getterFunction = () =>
+                    getterFunction = (uint objAddress) =>
                     {
+                        return "UNIMP2";
+                    };
+                        /*
                         Position marioPos = GetMarioPosition();
                         List<Position> objPoses = GetObjectPositions();
                         return objPoses.ConvertAll(objPos =>
@@ -67,11 +72,15 @@ namespace SM64_Diagnostic.Structs
                             MoreMath.ExtrapolateLineHorizontally(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway.Value);
                         return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
+                    */
                     break;
 
                 case "MarioVerticalDistanceToObject":
-                    getterFunction = () =>
+                    getterFunction = (uint objAddress) =>
                     {
+                        return "UNIMP2";
+                    };
+                        /*
                         Position marioPos = GetMarioPosition();
                         List<Position> objPoses = GetObjectPositions();
                         return objPoses.ConvertAll(objPos =>
@@ -89,8 +98,51 @@ namespace SM64_Diagnostic.Structs
                         double newMarioY = objPos.Y + distAbove.Value;
                         return SetMarioPosition(null, newMarioY, null);
                     };
-                    break;
                     */
+                    break;
+
+                case "MarioDistanceToObjectHome":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MarioHorizontalDistanceToObjectHome":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MarioVerticalDistanceToObjectHome":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "ObjectDistanceToHome":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "HorizontalObjectDistanceToHome":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "VerticalObjectDistanceToHome":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
                 case "AngleObjectToMario":
                     getterFunction = (uint objAddress) =>
                     {
@@ -150,6 +202,288 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
+                case "AngleObjectToHome":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "DeltaAngleObjectToHome":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "AngleHomeToObject":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MarioHitboxAwayFromObject":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MarioHitboxAboveObject":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MarioHitboxBelowObject":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MarioHitboxOverlapsObject":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "ObjectRngCallsPerFrame":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                // Object specific vars - Pendulum
+
+                case "PendulumAmplitude":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "PendulumSwingIndex":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                // Object specific vars - Waypoint
+
+                case "ObjectDotProductToWaypoint":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "ObjectDistanceToWaypointPlane":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "ObjectDistanceToWaypoint":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                // Object specific vars - Racing Penguin
+
+                case "RacingPenguinEffortTarget":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "RacingPenguinEffortChange":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "RacingPenguinMinHSpeed":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "RacingPenguinHSpeedTarget":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "RacingPenguinDiffHSpeedTarget":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "RacingPenguinProgress":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "RacingPenguinProgressDiff":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "RacingPenguinProgressDiffDelta":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                // Object specific vars - Koopa the Quick
+
+                case "KoopaTheQuickHSpeedTarget":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "KoopaTheQuickHSpeedChange":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "KoopaTheQuick1Progress":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "KoopaTheQuick2Progress":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                // Object specific vars - Fly Guy
+
+                case "FlyGuyZone":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "FlyGuyRelativeHeight":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "FlyGuyNextHeightDiff":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "FlyGuyMinHeight":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "FlyGuyMaxHeight":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                // Object specific vars - Bob-omb
+
+                case "BobombBloatSize":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "BobombRadius":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "BobombSpaceBetween":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                // Object specific vars - Scuttlebug
+
+                case "ScuttlebugDeltaAngleToTarget":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                // Object specific vars - Ghost
+
+                case "MarioGhostVerticalDistance":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MarioGhostHorizontalDistance":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MarioGhostForwardsDistance":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MarioGhostSidewaysDistance":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+                    
                 // Mario vars
 
                 case "DeFactoSpeed":
