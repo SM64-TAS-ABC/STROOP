@@ -150,6 +150,99 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
+                // Mario vars
+
+                case "DeFactoSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "SlidingSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MovementX":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MovementY":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MovementZ":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MovementForwards":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MovementSideways":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MovementHorizontal":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MovementTotal":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "MovementAngle":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "QFrameCountEstimate":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "DeltaYawIntendedFacing":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+
+                case "FallHeight":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "UNIMP2";
+                    };
+                    break;
+                    
                 // HUD vars
 
                 case "HudTimeText":
