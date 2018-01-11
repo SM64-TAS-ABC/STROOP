@@ -188,7 +188,10 @@ namespace SM64_Diagnostic.Structs
                 case "SlidingSpeed":
                     getterFunction = (uint dummy) =>
                     {
-                        return "UNIMP2";
+                        float xSlidingSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+                        float zSlidingSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+                        double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
+                        return hSlidingSpeed.ToString();
                     };
                     break;
 
@@ -306,21 +309,41 @@ namespace SM64_Diagnostic.Structs
                 case "QFrameCountEstimate":
                     getterFunction = (uint dummy) =>
                     {
-                        return "UNIMP2";
+                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float movementX = endX - startX;
+                        float endY = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x14);
+                        float startY = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x20);
+                        float movementY = endY - startY;
+                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float movementZ = endZ - startZ;
+                        float oldHSpeed = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x28);
+                        double qframes = Math.Abs(Math.Round(Math.Sqrt(movementX * movementX + movementZ * movementZ) / (oldHSpeed / 4)));
+                        if (qframes > 4) qframes = double.NaN;
+                        return qframes.ToString();
                     };
                     break;
 
                 case "DeltaYawIntendedFacing":
                     getterFunction = (uint dummy) =>
                     {
-                        return "UNIMP2";
+                        ushort marioYawFacing = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                        ushort marioYawFacingTruncated = MoreMath.NormalizeAngleTruncated(marioYawFacing);
+                        ushort marioYawIntended = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawIntendedOffset);
+                        ushort marioYawIntendedTruncated = MoreMath.NormalizeAngleTruncated(marioYawIntended);
+                        int deltaYaw = marioYawIntendedTruncated - marioYawFacingTruncated;
+                        return deltaYaw.ToString();
                     };
                     break;
 
                 case "FallHeight":
                     getterFunction = (uint dummy) =>
                     {
-                        return "UNIMP2";
+                        float peakHeight = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.PeakHeightOffset);
+                        float floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
+                        float fallHeight = peakHeight - floorY;
+                        return fallHeight.ToString();
                     };
                     break;
                     
