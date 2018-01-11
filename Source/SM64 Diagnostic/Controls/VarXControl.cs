@@ -14,6 +14,7 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarXControl : TableLayoutPanel
     {
+        private VarXPrecursor _varXPrecursor;
         public readonly string VarName;
         private readonly VarX _varX;
 
@@ -92,6 +93,7 @@ namespace SM64_Diagnostic.Controls
         private static readonly int nameLabelHeight = 20;
 
         public VarXControl(
+            VarXPrecursor varXPrecursor,
             string name,
             AddressHolder addressHolder,
             VarXSubclass varXSubclass,
@@ -100,6 +102,9 @@ namespace SM64_Diagnostic.Controls
             bool? invertBool,
             VarXCoordinate? coordinate)
         {
+            // Store the precursor
+            _varXPrecursor = varXPrecursor;
+
             // Initialize main fields
             VarName = name;
             _showBorder = false;

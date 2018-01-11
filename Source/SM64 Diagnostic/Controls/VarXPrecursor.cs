@@ -43,6 +43,7 @@ namespace SM64_Diagnostic.Controls
         public VarXControl CreateVarXControl()
         {
             return new VarXControl(
+                this,
                 _name,
                 _addressHolder,
                 _varXSubclass,

@@ -2472,6 +2472,11 @@ namespace SM64_Diagnostic.Utilities
 
         public static VarXControl GetVarXControlFromElement(XElement element)
         {
+            return GetVarXPrecursorFromElement(element).CreateVarXControl();
+        }
+
+        public static VarXPrecursor GetVarXPrecursorFromElement(XElement element)
+        {
             string name = element.Value;
 
             BaseAddressTypeEnum baseAddressType = VarXUtilities.GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
@@ -2542,7 +2547,7 @@ namespace SM64_Diagnostic.Utilities
             VarXCoordinate? coordinate = element.Attribute(XName.Get("coord")) != null ?
                 VarXUtilities.GetVarXCoordinate(element.Attribute(XName.Get("coord")).Value) : (VarXCoordinate?)null;
 
-            return new VarXControl(
+            return new VarXPrecursor(
                 name,
                 addressHolder,
                 varXSubclass,
