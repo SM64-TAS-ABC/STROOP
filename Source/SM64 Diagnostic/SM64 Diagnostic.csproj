@@ -151,6 +151,7 @@
     </Compile>
     <Compile Include="Controls\AngleViewModeType.cs" />
     <Compile Include="Controls\AddressHolder.cs" />
+    <Compile Include="Controls\VarXPrecursor.cs" />
     <Compile Include="Controls\VarXControl.cs">
       <SubType>Component</SubType>
     </Compile>
