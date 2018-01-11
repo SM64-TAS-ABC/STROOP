@@ -195,56 +195,111 @@ namespace SM64_Diagnostic.Structs
                 case "MovementX":
                     getterFunction = (uint dummy) =>
                     {
-                        return "UNIMP2";
+                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float movementX = endX - startX;
+                        return movementX.ToString();
                     };
                     break;
 
                 case "MovementY":
                     getterFunction = (uint dummy) =>
                     {
-                        return "UNIMP2";
+                        float endY = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x14);
+                        float startY = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x20);
+                        float movementY = endY - startY;
+                        return movementY.ToString();
                     };
                     break;
 
                 case "MovementZ":
                     getterFunction = (uint dummy) =>
                     {
-                        return "UNIMP2";
+                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float movementZ = endZ - startZ;
+                        return movementZ.ToString();
                     };
                     break;
 
                 case "MovementForwards":
                     getterFunction = (uint dummy) =>
                     {
-                        return "UNIMP2";
+                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float movementX = endX - startX;
+                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float movementZ = endZ - startZ;
+                        double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
+                        double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
+                        ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                        (double movementSideways, double movementForwards) =
+                            MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
+                        return movementForwards.ToString();
                     };
                     break;
 
                 case "MovementSideways":
                     getterFunction = (uint dummy) =>
                     {
-                        return "UNIMP2";
+                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float movementX = endX - startX;
+                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float movementZ = endZ - startZ;
+                        double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
+                        double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
+                        ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                        (double movementSideways, double movementForwards) =
+                            MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
+                        return movementSideways.ToString();
                     };
                     break;
 
                 case "MovementHorizontal":
                     getterFunction = (uint dummy) =>
                     {
-                        return "UNIMP2";
+                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float movementX = endX - startX;
+                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float movementZ = endZ - startZ;
+                        double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
+                        return movementHorizontal.ToString();
                     };
                     break;
 
                 case "MovementTotal":
                     getterFunction = (uint dummy) =>
                     {
-                        return "UNIMP2";
+                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float movementX = endX - startX;
+                        float endY = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x14);
+                        float startY = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x20);
+                        float movementY = endY - startY;
+                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float movementZ = endZ - startZ;
+                        double movementTotal = MoreMath.GetHypotenuse(movementX, movementY, movementZ);
+                        return movementTotal.ToString();
                     };
                     break;
 
                 case "MovementAngle":
                     getterFunction = (uint dummy) =>
                     {
-                        return "UNIMP2";
+                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float movementX = endX - startX;
+                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float movementZ = endZ - startZ;
+                        double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
+                        return movementAngle.ToString();
                     };
                     break;
 
