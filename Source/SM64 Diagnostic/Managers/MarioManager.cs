@@ -16,8 +16,8 @@ namespace SM64_Diagnostic.Managers
 {
     public class MarioManager : DataManager
     {
-        public MarioManager(List<WatchVariable> marioData, Control marioControl, NoTearFlowLayoutPanel variableTable)
-            : base(marioData, variableTable)
+        public MarioManager(List<VarXControl> variables, Control marioControl, NoTearFlowLayoutPanel variableTable)
+            : base(variables, variableTable)
         {
             SplitContainer splitContainerMario = marioControl.Controls["splitContainerMario"] as SplitContainer;
 
@@ -166,122 +166,6 @@ namespace SM64_Diagnostic.Managers
                 });
         }
 
-        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
-        {
-            new SpecialWatchVariable("DeFactoSpeed"),
-            new SpecialWatchVariable("SlidingSpeed"),
-            new SpecialWatchVariable("DeltaYawIntendedFacing", true, AngleViewModeType.Signed),
-            new SpecialWatchVariable("FallHeight"),
-            new SpecialWatchVariable("MovementX"),
-            new SpecialWatchVariable("MovementY"),
-            new SpecialWatchVariable("MovementZ"),
-            new SpecialWatchVariable("MovementForwards"),
-            new SpecialWatchVariable("MovementSideways"),
-            new SpecialWatchVariable("MovementHorizontal"),
-            new SpecialWatchVariable("MovementTotal"),
-            new SpecialWatchVariable("MovementAngle"),
-            new SpecialWatchVariable("QFrameCountEstimate")
-        };
-
-        public void ProcessSpecialVars()
-        {
-            UInt32 floorTriangle = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
-            var floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
-
-            float hSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
-
-            float slidingSpeedX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
-            float slidingSpeedZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
-
-            ushort marioYawFacing = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
-            ushort marioYawFacingTruncated = MoreMath.NormalizeAngleTruncated(marioYawFacing);
-            ushort marioYawIntended = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawIntendedOffset);
-            ushort marioYawIntendedTruncated = MoreMath.NormalizeAngleTruncated(marioYawIntended);
-
-            float movementX = (Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10)
-                - Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C));
-            float movementY = (Config.Stream.GetSingle(Config.HackedAreaAddress + 0x14)
-                - Config.Stream.GetSingle(Config.HackedAreaAddress + 0x20));
-            float movementZ = (Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18)
-                - Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24));
-            ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
-
-            double movementHorizontal = Math.Sqrt(movementX * movementX + movementZ * movementZ);
-            double movementAngle = MoreMath.AngleTo_AngleUnits(0, 0, movementX, movementZ);
-            (double movementSideways, double movementForwards) = MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
-
-            foreach (var specialVar in _specialDataControls)
-            {
-                switch(specialVar.SpecialName)
-                {
-                    case "DeFactoSpeed":
-                        if (floorTriangle != 0x00)
-                        {
-                            float normY = Config.Stream.GetSingle(floorTriangle + Config.TriangleOffsets.NormY);
-                            (specialVar as DataContainer).Text = Math.Round(hSpeed * normY, 3).ToString();
-                        }
-                        else
-                        {
-                            (specialVar as DataContainer).Text = "(No Floor)";
-                        }
-                        break;
-
-                    case "SlidingSpeed":
-                        (specialVar as DataContainer).Text = Math.Round(Math.Sqrt(slidingSpeedX * slidingSpeedX + slidingSpeedZ * slidingSpeedZ), 3).ToString();
-                        break;
-
-                    case "DeltaYawIntendedFacing":
-                        (specialVar as AngleDataContainer).AngleValue = marioYawIntendedTruncated - marioYawFacingTruncated;
-                        (specialVar as AngleDataContainer).ValueExists = true;
-                        break;
-
-                    case "FallHeight":
-                        (specialVar as DataContainer).Text = (Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.PeakHeightOffset) - floorY).ToString();
-                        break;
-
-                    case "MovementX":
-                        (specialVar as DataContainer).Text = movementX.ToString();
-                        break;
-
-                    case "MovementY":
-                        (specialVar as DataContainer).Text = movementY.ToString();
-                        break;
-
-                    case "MovementZ":
-                        (specialVar as DataContainer).Text = movementZ.ToString();
-                        break;
-
-                    case "MovementForwards":
-                        (specialVar as DataContainer).Text = Math.Round(movementForwards, 3).ToString();
-                        break;
-
-                    case "MovementSideways":
-                        (specialVar as DataContainer).Text = Math.Round(movementSideways, 3).ToString();
-                        break;
-
-                    case "MovementHorizontal":
-                        (specialVar as DataContainer).Text = Math.Round(movementHorizontal, 3).ToString();
-                        break;
-
-                    case "MovementTotal":
-                        (specialVar as DataContainer).Text = Math.Round(Math.Sqrt(movementX * movementX + movementY * movementY + movementZ * movementZ), 3).ToString();
-                        break;
-
-                    case "MovementAngle":
-                        (specialVar as DataContainer).Text = MoreMath.NormalizeAngleUshort(movementAngle).ToString();
-                        break;
-
-                    case "QFrameCountEstimate":
-                        var oldHSpeed = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x28);
-                        var qframes = Math.Abs(Math.Round(Math.Sqrt(movementX * movementX + movementZ * movementZ) / (oldHSpeed / 4)));
-                        if (qframes > 4)
-                            qframes = double.NaN;
-                        (specialVar as DataContainer).Text = qframes.ToString();
-                        break;
-                }
-            }
-        }
-
         public override void Update(bool updateView)
         {
             MapManager mapManager = ManagerContext.Current.MapManager;
@@ -400,7 +284,6 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             base.Update();
-            ProcessSpecialVars();
         }
     }
 }
