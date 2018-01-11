@@ -155,7 +155,33 @@ namespace SM64_Diagnostic.Structs
                 case "DeFactoSpeed":
                     getterFunction = (uint dummy) =>
                     {
-                        return "UNIMP2";
+                        uint floorTri = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
+                        float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + Config.TriangleOffsets.NormY);
+                        float hSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
+
+                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        float floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
+                        float distAboveFloor = marioY - floorY;
+
+                        float defactoSpeed = distAboveFloor == 0 ? hSpeed * yNorm : hSpeed;
+                        return defactoSpeed.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? defactoSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!defactoSpeedNullable.HasValue) return false;
+                        double defactoSpeed = defactoSpeedNullable.Value;
+
+                        uint floorTri = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
+                        float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + Config.TriangleOffsets.NormY);
+                        float hSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
+
+                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        float floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
+                        float distAboveFloor = marioY - floorY;
+
+                        float newHSpeed = distAboveFloor == 0 ? (float)defactoSpeed / yNorm : hSpeed;
+                        return Config.Stream.SetValue(newHSpeed, Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
                     };
                     break;
 
