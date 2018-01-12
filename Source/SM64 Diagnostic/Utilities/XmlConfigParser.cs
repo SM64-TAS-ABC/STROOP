@@ -1439,33 +1439,6 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static List<WatchVariable> OpenWatchVarData(string path, string schemaFile)
-        {
-            var objectData = new List<WatchVariable>();
-            var assembly = Assembly.GetExecutingAssembly();
-
-            // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
-            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
-            schemaSet.Add("http://tempuri.org/CameraDataSchema.xsd", schemaFile);
-            schemaSet.Compile();
-
-            // Load and validate document
-            var doc = XDocument.Load(path);
-            doc.Validate(schemaSet, Validation);
-
-            foreach (XElement element in doc.Root.Elements())
-            {
-                if (element.Name.ToString() != "Data")
-                    continue;
-
-                var watchVar = GetWatchVariableFromElement(element);
-                objectData.Add(watchVar);
-            }
-
-            return objectData;
-        }
-
         public static List<VarXControl> OpenVarXControls(string path, string schemaFile)
         {
             var objectData = new List<VarXControl>();
@@ -2403,71 +2376,6 @@ namespace SM64_Diagnostic.Utilities
             }
 
             return new Tuple<HackConfig, List<RomHack>>(hackConfig, hacks);
-        }
-
-        public static WatchVariable GetWatchVariableFromElement(XElement element)
-        {
-            string name = element.Value;
-
-            BaseAddressTypeEnum baseAddressType = VarXUtilities.GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
-
-            List<VariableGroup> groupList = VarXUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
-
-            string specialType = (element.Attribute(XName.Get("specialType")) != null) ?
-                element.Attribute(XName.Get("specialType")).Value : null;
-
-            Color? backgroundColor = (element.Attribute(XName.Get("color")) != null) ?
-                ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
-
-            bool isSpecial = specialType != null;
-
-            string typeName = (element.Attribute(XName.Get("type"))?.Value);
-            typeName = isSpecial ? "byte" : typeName; // TODO fix this hacky solution
-
-            AddressHolder addressHolder =
-                new AddressHolder(
-                    typeName,
-                    specialType,
-                    baseAddressType,
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetPAL"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value),
-                    null,
-                    true);
-
-            bool useHex = (element.Attribute(XName.Get("useHex")) != null) ?
-                bool.Parse(element.Attribute(XName.Get("useHex")).Value) : false;
-
-            ulong? mask = element.Attribute(XName.Get("mask")) != null ?
-                (ulong?)ParsingUtilities.ParseExtHex(element.Attribute(XName.Get("mask")).Value) : null;
-
-            bool isBool = element.Attribute(XName.Get("isBool")) != null ?
-                bool.Parse(element.Attribute(XName.Get("isBool")).Value) : false;
-
-            bool isObject = element.Attribute(XName.Get("isObject")) != null ?
-                bool.Parse(element.Attribute(XName.Get("isObject")).Value) : false;
-
-            bool invertBool = element.Attribute(XName.Get("invertBool")) != null ?
-                bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : false;
-
-            bool isAngle = element.Attribute(XName.Get("isAngle")) != null ?
-                bool.Parse(element.Attribute(XName.Get("isAngle")).Value) : false;
-
-            return new WatchVariable(
-                name,
-                baseAddressType,
-                groupList,
-                specialType,
-                backgroundColor,
-                addressHolder,
-                useHex,
-                mask,
-                isBool,
-                isObject,
-                typeName,
-                invertBool,
-                isAngle);
         }
 
         public static VarXControl GetVarXControlFromElement(XElement element)
