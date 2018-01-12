@@ -19,8 +19,6 @@ namespace SM64_Diagnostic.Managers
     {
         public static ObjectManager Instance = null;
 
-        object _watchVarLocker = new object();
-
         string _slotIndex;
         string _slotPos;
         string _behavior;
@@ -38,21 +36,12 @@ namespace SM64_Diagnostic.Managers
         TextBox _objectNameTextBox;
         Panel _objectBorderPanel;
         IntPictureBox _objectImagePictureBox;
-
-        // racing penguin vars
-        int _racingPenguinPreviousTimer;
-        int _racingPenguinCurrentTimer;
-        double _racingPenguinPreviousProgressDiff;
-        double _racingPenguinCurrentProgressDiff;
-
+        
         #region Fields
         public void SetBehaviorWatchVariables(List<VarXPrecursor> precursors, Color color)
         {
-            lock (_watchVarLocker)
-            {
-                RemoveObjSpecificVars();
-                AddTheseVarXControls(precursors.ConvertAll(precursor => precursor.CreateVarXControl(color)));
-            }
+            RemoveObjSpecificVars();
+            AddTheseVarXControls(precursors.ConvertAll(precursor => precursor.CreateVarXControl(color)));
         }
 
         List<uint> _currentAddresses = new List<uint>();
@@ -493,27 +482,5 @@ namespace SM64_Diagnostic.Managers
             base.Update(updateView);
         }
 
-        private int GetNumRngCalls(uint objAddress)
-        {
-            var numberOfRngObjs = Config.Stream.GetUInt32(Config.HackedAreaAddress);
-
-            int numOfCalls = 0;
-
-            for (int i = 0; i < Math.Min(numberOfRngObjs, Config.ObjectSlots.MaxSlots); i++)
-            {
-                uint rngStructAdd = (uint)(Config.HackedAreaAddress + 0x30 + 0x08 * i);
-                var address = Config.Stream.GetUInt32(rngStructAdd + 0x04);
-                if (address != objAddress)
-                    continue;
-
-                var preRng = Config.Stream.GetUInt16(rngStructAdd + 0x00);
-                var postRng = Config.Stream.GetUInt16(rngStructAdd + 0x02);
-
-                numOfCalls = RngIndexer.GetRngIndexDiff(preRng, postRng);
-                break;
-            }
-
-            return numOfCalls;
-        }
     }
 }
