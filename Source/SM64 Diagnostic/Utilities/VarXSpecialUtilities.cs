@@ -254,28 +254,86 @@ namespace SM64_Diagnostic.Structs
                 case "MarioHitboxAwayFromObject":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+                        float mObjX = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectXOffset);
+                        float mObjZ = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectZOffset);
+                        float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxRadius);
+
+                        float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+                        float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+                        float objHitboxRadius = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxRadius);
+
+                        double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
+                        return marioHitboxAwayFromObject.ToString();
                     };
                     break;
 
                 case "MarioHitboxAboveObject":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+                        float mObjY = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
+                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxHeight);
+                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
+                        float mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
+
+                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
+                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
+                        float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
+
+                        double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
+                        return marioHitboxAboveObject.ToString();
                     };
                     break;
 
                 case "MarioHitboxBelowObject":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+                        float mObjY = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
+                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxHeight);
+                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
+                        float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
+
+                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
+                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
+                        float objHitboxBottom = objY - objHitboxDownOffset;
+
+                        double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
+                        return marioHitboxBelowObject.ToString();
                     };
                     break;
 
                 case "MarioHitboxOverlapsObject":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+                        float mObjX = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectXOffset);
+                        float mObjY = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
+                        float mObjZ = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectZOffset);
+                        float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxRadius);
+                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxHeight);
+                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
+                        float mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
+                        float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
+
+                        float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                        float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+                        float objHitboxRadius = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxRadius);
+                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
+                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
+                        float objHitboxBottom = objY - objHitboxDownOffset;
+                        float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
+
+                        double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
+                        double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
+                        double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
+
+                        bool overlap = marioHitboxAwayFromObject < 0 && marioHitboxAboveObject <= 0 && marioHitboxBelowObject <= 0;
+                        return overlap ? "1" : "0";
                     };
                     break;
 

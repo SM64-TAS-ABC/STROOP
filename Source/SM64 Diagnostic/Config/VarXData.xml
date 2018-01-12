@@ -112,7 +112,7 @@
   <Data groupList="Expanded" baseAddressType="Object" specialType="MarioHitboxAwayFromObject">Mario Hitbox Away</Data>
   <Data groupList="Expanded" baseAddressType="Object" specialType="MarioHitboxAboveObject">Mario Hitbox Above</Data>
   <Data groupList="Expanded" baseAddressType="Object" specialType="MarioHitboxBelowObject">Mario Hitbox Below</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioHitboxOverlapsObject">Mario Hitbox Overlap</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioHitboxOverlapsObject" subclass="Boolean">Mario Hitbox Overlap</Data>
   <Data groupList="Expanded" type="float" offset="0x128" baseAddressType="Object">Min Wall Dist</Data>
   <Data groupList="Expanded" type="float" offset="0x0194" baseAddressType="Object">Tangible Dist</Data>
   <Data groupList="Expanded" type="float" offset="0x019C" baseAddressType="Object">Drawing Dist</Data>

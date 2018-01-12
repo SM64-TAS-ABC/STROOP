@@ -143,7 +143,7 @@ namespace SM64_Diagnostic.Controls
             _valueTextBox.KeyDown += (sender, e) => OnTextValueKeyDown(e);
             _valueTextBox.DoubleClick += (sender, e) => { EditMode = true; };
             _valueTextBox.Leave += (sender, e) => { EditMode = false; };
-            _valueCheckBox.Click += (sender, e) => _varX.SetValueFromCheckbox(_valueCheckBox.CheckState);
+            _valueCheckBox.Click += (sender, e) => OnCheckboxClick();
 
         }
 
@@ -223,6 +223,12 @@ namespace SM64_Diagnostic.Controls
                 if (!success) InvokeFailure();
                 return;
             }
+        }
+
+        private void OnCheckboxClick()
+        {
+            bool success = _varX.SetValueFromCheckbox(_valueCheckBox.CheckState);
+            if (!success) InvokeFailure();
         }
 
         public void UpdateControl()
