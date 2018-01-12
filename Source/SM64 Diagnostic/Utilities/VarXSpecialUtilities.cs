@@ -386,33 +386,27 @@ namespace SM64_Diagnostic.Structs
                 case "ObjectDotProductToWaypoint":
                     getterFunction = (uint objAddress) =>
                     {
-                        (double objectDotProductToWaypoint,
-                         double objectDistanceToWaypointPlane,
-                         double objectDistanceToWaypoint) =
+                        (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
                             MoreMath.GetWaypointSpecialVars(objAddress);
-                        return objectDotProductToWaypoint.ToString();
+                        return dotProduct.ToString();
                     };
                     break;
 
                 case "ObjectDistanceToWaypointPlane":
                     getterFunction = (uint objAddress) =>
                     {
-                        (double objectDotProductToWaypoint,
-                         double objectDistanceToWaypointPlane,
-                         double objectDistanceToWaypoint) =
+                        (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
                             MoreMath.GetWaypointSpecialVars(objAddress);
-                        return objectDistanceToWaypointPlane.ToString();
+                        return distToWaypointPlane.ToString();
                     };
                     break;
 
                 case "ObjectDistanceToWaypoint":
                     getterFunction = (uint objAddress) =>
                     {
-                        (double objectDotProductToWaypoint,
-                         double objectDistanceToWaypointPlane,
-                         double objectDistanceToWaypoint) =
+                        (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
                             MoreMath.GetWaypointSpecialVars(objAddress);
-                        return objectDistanceToWaypoint.ToString();
+                        return distToWaypoint.ToString();
                     };
                     break;
 
@@ -421,28 +415,36 @@ namespace SM64_Diagnostic.Structs
                 case "RacingPenguinEffortTarget":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
+                            GetRacingPenguinSpecialVars(objAddress);
+                        return effortTarget.ToString();
                     };
                     break;
 
                 case "RacingPenguinEffortChange":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
+                            GetRacingPenguinSpecialVars(objAddress);
+                        return effortChange.ToString();
                     };
                     break;
 
                 case "RacingPenguinMinHSpeed":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
+                            GetRacingPenguinSpecialVars(objAddress);
+                        return minHSpeed.ToString();
                     };
                     break;
 
                 case "RacingPenguinHSpeedTarget":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
+                            GetRacingPenguinSpecialVars(objAddress);
+                        return hSpeedTarget.ToString();
                     };
                     break;
 
