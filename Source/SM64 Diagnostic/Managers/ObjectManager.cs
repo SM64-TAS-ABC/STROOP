@@ -167,8 +167,20 @@ namespace SM64_Diagnostic.Managers
             Instance = this;
 
             variableTable.SetVariableGroups(
-                new List<VariableGroup>() { VariableGroup.Simple, VariableGroup.Expanded, VariableGroup.ObjectSpecific, VariableGroup.Collision },
-                new List<VariableGroup>() { VariableGroup.Simple, VariableGroup.Expanded, VariableGroup.ObjectSpecific });
+                new List<VariableGroup>()
+                {
+                    VariableGroup.Basic,
+                    VariableGroup.Intermediate,
+                    VariableGroup.Advanced,
+                    VariableGroup.ObjectSpecific,
+                    VariableGroup.Collision
+                },
+                new List<VariableGroup>()
+                {
+                    VariableGroup.Basic,
+                    VariableGroup.Intermediate,
+                    VariableGroup.ObjectSpecific
+                });
 
             SplitContainer splitContainerObject = objectControl.Controls["splitContainerObject"] as SplitContainer;
 

@@ -11,9 +11,12 @@ namespace SM64_Diagnostic.Structs
 {
     public enum VariableGroup
     {
-        Simple,
-        Expanded,
+        Basic,
+        Intermediate,
+        Advanced,
+
         ObjectSpecific,
+
         Collision,
     };
 }

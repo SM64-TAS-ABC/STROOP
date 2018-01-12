@@ -1,81 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ObjectData>
-  <Data groupList="Simple" type="float" offset="0xA0" baseAddressType="Object">X</Data>
-  <Data groupList="Simple" type="float" offset="0xA4" baseAddressType="Object">Y</Data>
-  <Data groupList="Simple" type="float" offset="0xA8" baseAddressType="Object">Z</Data>
-  <Data groupList="Simple" type="float" offset="0xAC" baseAddressType="Object">X Speed</Data>
-  <Data groupList="Simple" type="float" offset="0xB0" baseAddressType="Object">Y Speed</Data>
-  <Data groupList="Simple" type="float" offset="0xB4" baseAddressType="Object">Z Speed</Data>
-  <Data groupList="Simple" type="float" offset="0xB8" baseAddressType="Object">H Speed</Data>
-  <Data groupList="Simple" type="ushort" offset="0xD6" baseAddressType="Object" subclass="Angle">Yaw (Facing)</Data>
-  <Data groupList="Simple" type="short" offset="0xD2" baseAddressType="Object" subclass="Angle">Pitch (Facing)</Data>
-  <Data groupList="Simple" type="short" offset="0xDA" baseAddressType="Object" subclass="Angle">Roll (Facing)</Data>
-  <Data groupList="Simple" type="ushort" offset="0xCA" baseAddressType="Object" subclass="Angle">Yaw (Moving)</Data>
-  <Data groupList="Simple" type="short" offset="0xC6" baseAddressType="Object" subclass="Angle">Pitch (Moving)</Data>
-  <Data groupList="Simple" type="short" offset="0xCE" baseAddressType="Object" subclass="Angle">Roll (Moving)</Data>
-  <Data groupList="Simple" type="short" offset="0x11A" baseAddressType="Object" subclass="Angle">Yaw Velocity</Data>
-  <Data groupList="Simple" type="short" offset="0x116" baseAddressType="Object" subclass="Angle">Pitch Velocity</Data>
-  <Data groupList="Simple" type="short" offset="0x11E" baseAddressType="Object" subclass="Angle">Roll Velocity</Data>
-  <!--
-  <Data groupList="Expanded" type="float" offset="0x20" baseAddressType="Object">Gfx X</Data>
-  <Data groupList="Expanded" type="float" offset="0x24" baseAddressType="Object">Gfx Y</Data>
-  <Data groupList="Expanded" type="float" offset="0x28" baseAddressType="Object">Gfx Z</Data>
-  <Data groupList="Expanded" type="ushort" offset="0x1C" baseAddressType="Object" subclass="Angle">Gfx Yaw</Data>
-  <Data groupList="Expanded" type="short" offset="0x1A" baseAddressType="Object" subclass="Angle">Gfx Pitch</Data>
-  <Data groupList="Expanded" type="short" offset="0x1E" baseAddressType="Object" subclass="Angle">Gfx Roll</Data>
-  -->
-  <Data groupList="Expanded" type="float" offset="0x015C" baseAddressType="Object">"Dist to Mario"</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioDistanceToObjectHome">Dist Mario to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioHorizontalDistanceToObjectHome">HDist Mario to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioVerticalDistanceToObjectHome">VDist Mario to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="HorizontalObjectDistanceToHome">HDist Obj to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="VerticalObjectDistanceToHome">VDist Obj to Home</Data>
-  <Data groupList="Expanded" type="ushort" offset="0x0162" baseAddressType="Object" subclass="Angle">"Angle to Mario"</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="AngleObjectToMario" subclass="Angle" type="ushort">Angle Obj to Mario</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" type="short">DAngle Obj to Mario</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="AngleMarioToObject" subclass="Angle" type="ushort">Angle Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="DeltaAngleMarioToObject" subclass="Angle" type="short">DAngle Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="AngleObjectToHome" subclass="Angle" type="ushort">Angle Obj to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" type="short">DAngle Obj to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="AngleHomeToObject" subclass="Angle" type="ushort">Angle Home to Obj</Data>
-  <Data groupList="Expanded" type="uint" offset="0x218" baseAddressType="Object" useHex="true">Hitbox Pointer</Data>
-  <Data groupList="Expanded" type="float" offset="0x1f8" baseAddressType="Object">Hitbox Radius</Data>
-  <Data groupList="Expanded" type="float" offset="0x1fc" baseAddressType="Object">Hitbox Height</Data>
-  <Data groupList="Expanded" type="float" offset="0x208" baseAddressType="Object">Hitbox Down Offset</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioHitboxAwayFromObject">Mario Hitbox Away</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioHitboxAboveObject">Mario Hitbox Above</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioHitboxBelowObject">Mario Hitbox Below</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioHitboxOverlapsObject" subclass="Boolean">Mario Hitbox Overlap</Data>
-  <Data groupList="Expanded" type="float" offset="0x128" baseAddressType="Object">Min Wall Dist</Data>
-  <Data groupList="Expanded" type="float" offset="0x0194" baseAddressType="Object">Tangible Dist</Data>
-  <Data groupList="Expanded" type="float" offset="0x019C" baseAddressType="Object">Drawing Dist</Data>
-  <Data groupList="Expanded" type="float" offset="0xE8" baseAddressType="Object">Floor Height</Data>
-  <Data groupList="Expanded" type="float" offset="0xE4" baseAddressType="Object">Gravity</Data>
-  <Data groupList="Expanded" type="int" offset="0x180" baseAddressType="Object">Damage</Data>
-  <Data groupList="Expanded" type="int" offset="0x1A0" baseAddressType="Object">Native Room</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="ObjectRngCallsPerFrame">RNG Calls/Frame</Data>
-  <Data groupList="Expanded" type="uint" offset="0x68" baseAddressType="Object" subclass="Object">Parent Object</Data>
-  <Data groupList="Expanded" type="uint" offset="0x020C" baseAddressType="Object" useHex="true">Behavior Script</Data>
-  <Data groupList="Expanded" type="uint" offset="0x14" baseAddressType="Object" useHex="true">Graphics</Data>
-  <Data groupList="Expanded" type="uint" offset="0x218" baseAddressType="Object" useHex="true">Model</Data>
-  <Data groupList="Expanded" type="short" offset="0x14" baseAddressType="Graphics">Shadow Radius</Data>
-  <Data groupList="Expanded" type="byte" offset="0x16" baseAddressType="Graphics">Shadow Opacity</Data>
-  <Data groupList="Expanded" type="byte" offset="0x17" baseAddressType="Graphics">Shadow Type</Data>
-  <Data groupList="Expanded" type="byte" offset="0x3" mask="0x10" baseAddressType="Object" subclass="Boolean" invertBool="true">Visible</Data>
-  <Data groupList="Expanded" type="byte" offset="0x3" mask="0x01" baseAddressType="Object" subclass="Boolean">Rendered</Data>
-  <Data groupList="Expanded" type="int" offset="0x8c" baseAddressType="Object" subclass="Boolean" mask="0x00000200">Locked to Origin</Data>
-  <Data groupList="Expanded" type="int" offset="0x8c" baseAddressType="Object" subclass="Boolean" mask="0x00000001">Visual Pos Updates</Data>
-  <Data groupList="Expanded" type="int" offset="0x8c" baseAddressType="Object" subclass="Boolean" mask="0x00000008">Visual Angle Updates</Data>
-  <Data groupList="Expanded" type="byte" offset="0x3" mask="0x04" baseAddressType="Object" subclass="Boolean">Face Camera</Data>
-  <Data groupList="Expanded" type="int" offset="0x8c" baseAddressType="Object" subclass="Boolean" mask="0x00000002">Forward Movement</Data>
-  <Data groupList="Expanded" type="byte" offset="0x77" baseAddressType="Object" subclass="Boolean">Mario Close</Data>
-  <Data groupList="Expanded" type="int" offset="0x9C" baseAddressType="Object">Tangible</Data>
-  <Data groupList="Expanded,Collision" type="int" offset="0x130" baseAddressType="Object" useHex="true">Collision Type</Data>
-  <!--
+  <Data groupList="Basic" type="float" offset="0xA0" baseAddressType="Object">X</Data>
+  <Data groupList="Basic" type="float" offset="0xA4" baseAddressType="Object">Y</Data>
+  <Data groupList="Basic" type="float" offset="0xA8" baseAddressType="Object">Z</Data>
+  <Data groupList="Basic" type="float" offset="0xAC" baseAddressType="Object">X Speed</Data>
+  <Data groupList="Basic" type="float" offset="0xB0" baseAddressType="Object">Y Speed</Data>
+  <Data groupList="Basic" type="float" offset="0xB4" baseAddressType="Object">Z Speed</Data>
+  <Data groupList="Basic" type="float" offset="0xB8" baseAddressType="Object">H Speed</Data>
+  <Data groupList="Basic" type="ushort" offset="0xD6" baseAddressType="Object" subclass="Angle">Yaw (Facing)</Data>
+  <Data groupList="Basic" type="short" offset="0xD2" baseAddressType="Object" subclass="Angle">Pitch (Facing)</Data>
+  <Data groupList="Basic" type="short" offset="0xDA" baseAddressType="Object" subclass="Angle">Roll (Facing)</Data>
+  <Data groupList="Basic" type="ushort" offset="0xCA" baseAddressType="Object" subclass="Angle">Yaw (Moving)</Data>
+  <Data groupList="Basic" type="short" offset="0xC6" baseAddressType="Object" subclass="Angle">Pitch (Moving)</Data>
+  <Data groupList="Basic" type="short" offset="0xCE" baseAddressType="Object" subclass="Angle">Roll (Moving)</Data>
+  <Data groupList="Basic" type="short" offset="0x11A" baseAddressType="Object" subclass="Angle">Yaw Velocity</Data>
+  <Data groupList="Basic" type="short" offset="0x116" baseAddressType="Object" subclass="Angle">Pitch Velocity</Data>
+  <Data groupList="Basic" type="short" offset="0x11E" baseAddressType="Object" subclass="Angle">Roll Velocity</Data>
+
+  <Data groupList="Advanced" type="float" offset="0x20" baseAddressType="Object">Gfx X</Data>
+  <Data groupList="Advanced" type="float" offset="0x24" baseAddressType="Object">Gfx Y</Data>
+  <Data groupList="Advanced" type="float" offset="0x28" baseAddressType="Object">Gfx Z</Data>
+  <Data groupList="Advanced" type="ushort" offset="0x1C" baseAddressType="Object" subclass="Angle">Gfx Yaw</Data>
+  <Data groupList="Advanced" type="short" offset="0x1A" baseAddressType="Object" subclass="Angle">Gfx Pitch</Data>
+  <Data groupList="Advanced" type="short" offset="0x1E" baseAddressType="Object" subclass="Angle">Gfx Roll</Data>
+
+  <Data groupList="Advanced" type="float" offset="0x015C" baseAddressType="Object">"Dist to Mario"</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="MarioDistanceToObjectHome">Dist Mario to Home</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="MarioHorizontalDistanceToObjectHome">HDist Mario to Home</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="MarioVerticalDistanceToObjectHome">VDist Mario to Home</Data>
+  <Data groupList="Advanced" baseAddressType="Object" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
+  <Data groupList="Advanced" baseAddressType="Object" specialType="HorizontalObjectDistanceToHome">HDist Obj to Home</Data>
+  <Data groupList="Advanced" baseAddressType="Object" specialType="VerticalObjectDistanceToHome">VDist Obj to Home</Data>
+  <Data groupList="Advanced" type="ushort" offset="0x0162" baseAddressType="Object" subclass="Angle">"Angle to Mario"</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="AngleObjectToMario" subclass="Angle" type="ushort">Angle Obj to Mario</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" type="short">DAngle Obj to Mario</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="AngleMarioToObject" subclass="Angle" type="ushort">Angle Mario to Obj</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="DeltaAngleMarioToObject" subclass="Angle" type="short">DAngle Mario to Obj</Data>
+  <Data groupList="Advanced" baseAddressType="Object" specialType="AngleObjectToHome" subclass="Angle" type="ushort">Angle Obj to Home</Data>
+  <Data groupList="Advanced" baseAddressType="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" type="short">DAngle Obj to Home</Data>
+  <Data groupList="Advanced" baseAddressType="Object" specialType="AngleHomeToObject" subclass="Angle" type="ushort">Angle Home to Obj</Data>
+  <Data groupList="Advanced" type="uint" offset="0x218" baseAddressType="Object" useHex="true">Hitbox Pointer</Data>
+  <Data groupList="Advanced" type="float" offset="0x1f8" baseAddressType="Object">Hitbox Radius</Data>
+  <Data groupList="Advanced" type="float" offset="0x1fc" baseAddressType="Object">Hitbox Height</Data>
+  <Data groupList="Advanced" type="float" offset="0x208" baseAddressType="Object">Hitbox Down Offset</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="MarioHitboxAwayFromObject">Mario Hitbox Away</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="MarioHitboxAboveObject">Mario Hitbox Above</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="MarioHitboxBelowObject">Mario Hitbox Below</Data>
+  <Data groupList="Intermediate" baseAddressType="Object" specialType="MarioHitboxOverlapsObject" subclass="Boolean">Mario Hitbox Overlap</Data>
+  <Data groupList="Advanced" type="float" offset="0x128" baseAddressType="Object">Min Wall Dist</Data>
+  <Data groupList="Advanced" type="float" offset="0x0194" baseAddressType="Object">Tangible Dist</Data>
+  <Data groupList="Advanced" type="float" offset="0x019C" baseAddressType="Object">Drawing Dist</Data>
+  <Data groupList="Advanced" type="float" offset="0xE8" baseAddressType="Object">Floor Height</Data>
+  <Data groupList="Advanced" type="float" offset="0xE4" baseAddressType="Object">Gravity</Data>
+  <Data groupList="Advanced" type="int" offset="0x180" baseAddressType="Object">Damage</Data>
+  <Data groupList="Advanced" type="int" offset="0x1A0" baseAddressType="Object">Native Room</Data>
+  <Data groupList="Advanced" baseAddressType="Object" specialType="ObjectRngCallsPerFrame">RNG Calls/Frame</Data>
+  <Data groupList="Advanced" type="uint" offset="0x68" baseAddressType="Object" subclass="Object">Parent Object</Data>
+  <Data groupList="Advanced" type="uint" offset="0x020C" baseAddressType="Object" useHex="true">Behavior Script</Data>
+  <Data groupList="Intermediate" type="uint" offset="0x14" baseAddressType="Object" useHex="true">Graphics</Data>
+  <Data groupList="Intermediate" type="uint" offset="0x218" baseAddressType="Object" useHex="true">Model</Data>
+  <Data groupList="Advanced" type="short" offset="0x14" baseAddressType="Graphics">Shadow Radius</Data>
+  <Data groupList="Advanced" type="byte" offset="0x16" baseAddressType="Graphics">Shadow Opacity</Data>
+  <Data groupList="Advanced" type="byte" offset="0x17" baseAddressType="Graphics">Shadow Type</Data>
+  <Data groupList="Intermediate" type="byte" offset="0x3" mask="0x10" baseAddressType="Object" subclass="Boolean" invertBool="true">Visible</Data>
+  <Data groupList="Intermediate" type="byte" offset="0x3" mask="0x01" baseAddressType="Object" subclass="Boolean">Rendered</Data>
+  <Data groupList="Advanced" type="int" offset="0x8c" baseAddressType="Object" subclass="Boolean" mask="0x00000200">Locked to Origin</Data>
+  <Data groupList="Advanced" type="int" offset="0x8c" baseAddressType="Object" subclass="Boolean" mask="0x00000001">Visual Pos Updates</Data>
+  <Data groupList="Advanced" type="int" offset="0x8c" baseAddressType="Object" subclass="Boolean" mask="0x00000008">Visual Angle Updates</Data>
+  <Data groupList="Intermediate" type="byte" offset="0x3" mask="0x04" baseAddressType="Object" subclass="Boolean">Face Camera</Data>
+  <Data groupList="Advanced" type="int" offset="0x8c" baseAddressType="Object" subclass="Boolean" mask="0x00000002">Forward Movement</Data>
+  <Data groupList="Advanced" type="byte" offset="0x77" baseAddressType="Object" subclass="Boolean">Mario Close</Data>
+  <Data groupList="Advanced" type="int" offset="0x9C" baseAddressType="Object">Tangible</Data>
+  <Data groupList="Advanced,Collision" type="int" offset="0x130" baseAddressType="Object" useHex="true">Collision Type</Data>
+ 
   <Data groupList="Collision" type="int" offset="0x130" baseAddressType="Object" subclass="Boolean" mask="0x80000000">Collision Flag 1</Data>
   <Data groupList="Collision" type="int" offset="0x130" baseAddressType="Object" subclass="Boolean" mask="0x40000000">Igloo Barrier</Data>
   <Data groupList="Collision" type="int" offset="0x130" baseAddressType="Object" subclass="Boolean" mask="0x20000000">Shocks</Data>
@@ -108,22 +108,22 @@
   <Data groupList="Collision" type="int" offset="0x130" baseAddressType="Object" subclass="Boolean" mask="0x00000004">Door</Data>
   <Data groupList="Collision" type="int" offset="0x130" baseAddressType="Object" subclass="Boolean" mask="0x00000002">Grabbable</Data>
   <Data groupList="Collision" type="int" offset="0x130" baseAddressType="Object" subclass="Boolean" mask="0x00000001">Hoot</Data>
-  -->
-  <Data groupList="Expanded" type="uint" offset="0x3C" baseAddressType="Object" useHex="true">Animation</Data>
-  <Data groupList="Expanded" type="short" offset="0x00" baseAddressType="Animation" mask="0x0001" subclass="Boolean">Don't Loop Animation</Data>
-  <Data groupList="Expanded" type="short" offset="0x00" baseAddressType="Animation" mask="0x0002" subclass="Boolean">Reverse Animation</Data>
-  <Data groupList="Expanded" type="short" offset="0x00" baseAddressType="Animation" mask="0x0004" subclass="Boolean">Freeze Animation</Data>
-  <Data groupList="Expanded" type="short" offset="0x40" baseAddressType="Object">Animation Timer</Data>
-  <Data groupList="Expanded" type="int" offset="0xF0" baseAddressType="Object">Graphics Timer</Data>
-  <Data groupList="Expanded" type="float" offset="0x2C" baseAddressType="Object">Scale (Width)</Data>
-  <Data groupList="Expanded" type="float" offset="0x30" baseAddressType="Object">Scale (Height)</Data>
-  <Data groupList="Expanded" type="float" offset="0x34" baseAddressType="Object">Scale (Depth)</Data>
-  <Data groupList="Simple" type="float" offset="0x164" baseAddressType="Object">Home X</Data>
-  <Data groupList="Simple" type="float" offset="0x168" baseAddressType="Object">Home Y</Data>
-  <Data groupList="Simple" type="float" offset="0x16C" baseAddressType="Object">Home Z</Data>
-  <Data groupList="Simple" type="uint" offset="0x1CC" baseAddressType="Object" useHex="true">Release Status</Data>
-  <Data groupList="Simple" type="uint" offset="0x134" baseAddressType="Object" useHex="true">Interaction Status</Data>
-  <Data groupList="Simple" type="int" offset="0x144" baseAddressType="Object">Subtype</Data>
-  <Data groupList="Simple" type="int" offset="0x14C" baseAddressType="Object">State</Data>
-  <Data groupList="Simple" type="int" offset="0x154" baseAddressType="Object">Timer</Data>
+
+  <Data groupList="Intermediate" type="uint" offset="0x3C" baseAddressType="Object" useHex="true">Animation</Data>
+  <Data groupList="Advanced" type="short" offset="0x00" baseAddressType="Animation" mask="0x0001" subclass="Boolean">Don't Loop Animation</Data>
+  <Data groupList="Advanced" type="short" offset="0x00" baseAddressType="Animation" mask="0x0002" subclass="Boolean">Reverse Animation</Data>
+  <Data groupList="Advanced" type="short" offset="0x00" baseAddressType="Animation" mask="0x0004" subclass="Boolean">Freeze Animation</Data>
+  <Data groupList="Intermediate" type="short" offset="0x40" baseAddressType="Object">Animation Timer</Data>
+  <Data groupList="Intermediate" type="int" offset="0xF0" baseAddressType="Object">Graphics Timer</Data>
+  <Data groupList="Intermediate" type="float" offset="0x2C" baseAddressType="Object">Scale (Width)</Data>
+  <Data groupList="Intermediate" type="float" offset="0x30" baseAddressType="Object">Scale (Height)</Data>
+  <Data groupList="Intermediate" type="float" offset="0x34" baseAddressType="Object">Scale (Depth)</Data>
+  <Data groupList="Basic" type="float" offset="0x164" baseAddressType="Object">Home X</Data>
+  <Data groupList="Basic" type="float" offset="0x168" baseAddressType="Object">Home Y</Data>
+  <Data groupList="Basic" type="float" offset="0x16C" baseAddressType="Object">Home Z</Data>
+  <Data groupList="Basic" type="uint" offset="0x1CC" baseAddressType="Object" useHex="true">Release Status</Data>
+  <Data groupList="Basic" type="uint" offset="0x134" baseAddressType="Object" useHex="true">Interaction Status</Data>
+  <Data groupList="Basic" type="int" offset="0x144" baseAddressType="Object">Subtype</Data>
+  <Data groupList="Basic" type="int" offset="0x14C" baseAddressType="Object">State</Data>
+  <Data groupList="Basic" type="int" offset="0x154" baseAddressType="Object">Timer</Data>
 </ObjectData>
