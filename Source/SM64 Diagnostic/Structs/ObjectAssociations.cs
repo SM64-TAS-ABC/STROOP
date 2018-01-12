@@ -7,6 +7,7 @@ using System.Drawing;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
+using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic.Structs
 {
@@ -186,14 +187,14 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        public List<WatchVariable> GetWatchVariables(BehaviorCriteria behaviorCriteria)
+        public List<VarXPrecursor> GetWatchVarXPrecursors(BehaviorCriteria behaviorCriteria)
         {
             var assoc = FindObjectAssociation(behaviorCriteria);
 
             if (assoc == null)
-                return new List<WatchVariable>();
+                return new List<VarXPrecursor>();
 
-            else return assoc.WatchVariables;
+            else return assoc.VarXPrecursors;
         }
 
         public bool RecognizedBehavior(BehaviorCriteria behaviorCriteria)

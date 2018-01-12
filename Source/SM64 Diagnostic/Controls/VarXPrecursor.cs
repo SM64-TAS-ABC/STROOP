@@ -40,14 +40,14 @@ namespace SM64_Diagnostic.Controls
             _coordinate = coordinate;
         }
 
-        public VarXControl CreateVarXControl()
+        public VarXControl CreateVarXControl(Color? newColor = null)
         {
             return new VarXControl(
                 this,
                 _name,
                 _addressHolder,
                 _varXSubclass,
-                _backgroundColor,
+                newColor ?? _backgroundColor,
                 _useHex,
                 _invertBool,
                 _coordinate);

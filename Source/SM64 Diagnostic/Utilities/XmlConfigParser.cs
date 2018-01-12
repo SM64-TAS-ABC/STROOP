@@ -1707,13 +1707,10 @@ namespace SM64_Diagnostic.Utilities
                             rotates = bool.Parse(element.Element(XName.Get("MapImage")).Attribute(XName.Get("rotates")).Value);
                         }
 
-                        var watchVars = new List<WatchVariable>();
                         List<VarXPrecursor> precursors = new List<VarXPrecursor>();
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
                         {
-                            var watchVar = GetWatchVariableFromElement(subElement);
-                            watchVars.Add(watchVar);
-                            VarXPrecursor precursor = null;// GetVarXPrecursorFromElement(subElement);
+                            VarXPrecursor precursor = GetVarXPrecursorFromElement(subElement);
                             precursors.Add(precursor);
                         }
 
@@ -1730,7 +1727,6 @@ namespace SM64_Diagnostic.Utilities
                             MapImagePath = mapImagePath,
                             Name = name,
                             RotatesOnMap = rotates,
-                            WatchVariables = watchVars,
                             VarXPrecursors = precursors,
                         };
 

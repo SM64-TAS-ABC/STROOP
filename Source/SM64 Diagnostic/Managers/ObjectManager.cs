@@ -50,16 +50,21 @@ namespace SM64_Diagnostic.Managers
         double _racingPenguinCurrentProgressDiff;
 
         #region Fields
-        public void SetBehaviorWatchVariables(List<WatchVariable> value, Color color)
+        public void SetBehaviorWatchVariables(List<VarXPrecursor> precursors, Color color)
         {
             lock (_watchVarLocker)
             {
+                RemoveObjSpecificVars();
+                AddTheseVarXControls(precursors.ConvertAll(precursor => precursor.CreateVarXControl(color)));
+
+                /*
                 // Remove old watchVars from list
                 RemoveWatchVariables(_behaviorDataControls);
                 _behaviorDataControls.Clear();
 
                 // Add new watchVars
                 _behaviorDataControls.AddRange(AddWatchVariables(value, color));
+                */
             }
         }
 

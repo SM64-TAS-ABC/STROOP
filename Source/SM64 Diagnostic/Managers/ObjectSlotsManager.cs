@@ -10,6 +10,7 @@ using System.Drawing;
 using SM64_Diagnostic.Extensions;
 using OpenTK.Input;
 using SM64_Diagnostic.Structs.Configurations;
+using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -547,12 +548,12 @@ namespace SM64_Diagnostic.Managers
                         if (multiBehavior.HasValue)
                         {
                             objManager.Behavior = String.Format("0x{0}", multiBehavior.Value.BehaviorAddress.ToString("X4"));
-                            objManager.SetBehaviorWatchVariables(Config.ObjectAssociations.GetWatchVariables(multiBehavior.Value), Config.ObjectGroups.VacantSlotColor.Lighten(0.8));
+                            objManager.SetBehaviorWatchVariables(Config.ObjectAssociations.GetWatchVarXPrecursors(multiBehavior.Value), Config.ObjectGroups.VacantSlotColor.Lighten(0.8));
                         }
                         else
                         {
                             objManager.Behavior = "";
-                            objManager.SetBehaviorWatchVariables(new List<WatchVariable>(), Color.White);
+                            objManager.SetBehaviorWatchVariables(new List<VarXPrecursor>(), Color.White);
                         }
                         _lastSelectedBehavior = multiBehavior;
                     }
@@ -712,7 +713,7 @@ namespace SM64_Diagnostic.Managers
                 objManager.Behavior = String.Format("0x{0}", (behaviorCriteria.BehaviorAddress & 0xffffff).ToString("X4"));
                 objManager.Name = Config.ObjectAssociations.GetObjectName(behaviorCriteria);
 
-                objManager.SetBehaviorWatchVariables(Config.ObjectAssociations.GetWatchVariables(behaviorCriteria), objSlot.BackColor.Lighten(0.8));
+                objManager.SetBehaviorWatchVariables(Config.ObjectAssociations.GetWatchVarXPrecursors(behaviorCriteria), objSlot.BackColor.Lighten(0.8));
                 _lastSelectedBehavior = newBehavior;
             }
             objManager.Image = objSlot.ObjectImage;

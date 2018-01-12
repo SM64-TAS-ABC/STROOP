@@ -62,6 +62,24 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
+        protected void RemoveObjSpecificVars()
+        {
+            foreach (Control control in _variableTable.Controls)
+            {
+                if (!(control is VarXControl)) continue;
+                VarXControl varXControl = control as VarXControl;
+            }
+        }
+
+        protected void AddTheseVarXControls(List<VarXControl> varXControls)
+        {
+            varXControls.ForEach(control =>
+            {
+                _varXControlList.Add(control);
+                _variableTable.Controls.Add(control);
+            });
+        }
+
         protected void RemoveWatchVariables(IEnumerable<IDataContainer> watchVars)
         {
             foreach (var watchVar in watchVars)
