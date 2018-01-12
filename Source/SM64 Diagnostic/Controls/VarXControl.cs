@@ -17,6 +17,7 @@ namespace SM64_Diagnostic.Controls
         private VarXPrecursor _varXPrecursor;
         public readonly string VarName;
         private readonly VarX _varX;
+        private readonly List<VariableGroup> _groupList;
 
         private readonly Label _nameLabel;
         private readonly TextBox _valueTextBox;
@@ -100,13 +101,15 @@ namespace SM64_Diagnostic.Controls
             Color? backgroundColor,
             bool? useHex,
             bool? invertBool,
-            VarXCoordinate? coordinate)
+            VarXCoordinate? coordinate,
+            List<VariableGroup> groupList)
         {
             // Store the precursor
             _varXPrecursor = varXPrecursor;
 
             // Initialize main fields
             VarName = name;
+            _groupList = groupList;
             _showBorder = false;
             _editMode = false;
 
@@ -286,6 +289,11 @@ namespace SM64_Diagnostic.Controls
         {
             _justFailed = true;
             _lastFailureTime = DateTime.Now;
+        }
+
+        public bool BelongsToGroup(VariableGroup variableGroup)
+        {
+            return _groupList.Contains(variableGroup);
         }
 
         protected override void OnPaint(PaintEventArgs e)

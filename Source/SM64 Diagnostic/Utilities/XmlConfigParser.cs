@@ -2483,7 +2483,7 @@ namespace SM64_Diagnostic.Utilities
 
             VarXSubclass varXSubclass = VarXUtilities.GetVarXSubclass(element.Attribute(XName.Get("subclass"))?.Value);
 
-            List<VariableGroup> groupList = VarXUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groups"))?.Value);
+            List<VariableGroup> groupList = VarXUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
 
             string specialType = (element.Attribute(XName.Get("specialType")) != null) ?
                 element.Attribute(XName.Get("specialType")).Value : null;
@@ -2554,7 +2554,8 @@ namespace SM64_Diagnostic.Utilities
                 backgroundColor,
                 useHex,
                 invertBool,
-                coordinate);
+                coordinate,
+                groupList);
         }
 
         public static ActionTable OpenActionTable(string path)

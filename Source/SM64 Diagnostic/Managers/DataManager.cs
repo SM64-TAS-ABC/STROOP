@@ -64,19 +64,23 @@ namespace SM64_Diagnostic.Managers
 
         protected void RemoveObjSpecificVars()
         {
-            foreach (Control control in _variableTable.Controls)
+            List<VarXControl> objSpecificsVars =
+                _varXControlList.FindAll(
+                    varXControl => varXControl.BelongsToGroup(VariableGroup.ObjectSpecific));
+
+            objSpecificsVars.ForEach(objSepcificVar =>
             {
-                if (!(control is VarXControl)) continue;
-                VarXControl varXControl = control as VarXControl;
-            }
+                _varXControlList.Remove(objSepcificVar);
+                _variableTable.Controls.Remove(objSepcificVar);
+            });
         }
 
         protected void AddTheseVarXControls(List<VarXControl> varXControls)
         {
-            varXControls.ForEach(control =>
+            varXControls.ForEach(varXControl =>
             {
-                _varXControlList.Add(control);
-                _variableTable.Controls.Add(control);
+                _varXControlList.Add(varXControl);
+                _variableTable.Controls.Add(varXControl);
             });
         }
 

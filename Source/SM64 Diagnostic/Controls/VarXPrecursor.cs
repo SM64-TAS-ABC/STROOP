@@ -21,6 +21,7 @@ namespace SM64_Diagnostic.Controls
         private readonly bool? _useHex;
         private readonly bool? _invertBool;
         private readonly VarXCoordinate? _coordinate;
+        private readonly List<VariableGroup> _groupList;
 
         public VarXPrecursor(
             string name,
@@ -29,7 +30,8 @@ namespace SM64_Diagnostic.Controls
             Color? backgroundColor,
             bool? useHex,
             bool? invertBool,
-            VarXCoordinate? coordinate)
+            VarXCoordinate? coordinate,
+            List<VariableGroup> groupList)
         {
             _name = name;
             _addressHolder = addressHolder;
@@ -38,6 +40,7 @@ namespace SM64_Diagnostic.Controls
             _useHex = useHex;
             _invertBool = invertBool;
             _coordinate = coordinate;
+            _groupList = groupList;
         }
 
         public VarXControl CreateVarXControl(Color? newColor = null)
@@ -50,7 +53,8 @@ namespace SM64_Diagnostic.Controls
                 newColor ?? _backgroundColor,
                 _useHex,
                 _invertBool,
-                _coordinate);
+                _coordinate,
+                _groupList);
         }
 
     }
