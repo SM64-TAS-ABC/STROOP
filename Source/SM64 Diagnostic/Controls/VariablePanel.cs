@@ -17,6 +17,13 @@ namespace SM64_Diagnostic.Controls
         {
             _varXControlsList = new List<VarXControl>();
             _objectLock = new Object();
+            ContextMenuStrip = new ContextMenuStrip();
+
+            ToolStripMenuItem item1 = new ToolStripMenuItem("option1");
+            ToolStripMenuItem item2 = new ToolStripMenuItem("option2");
+
+            ContextMenuStrip.Items.Add(item1);
+            ContextMenuStrip.Items.Add(item2);
         }
 
         protected override CreateParams CreateParams
