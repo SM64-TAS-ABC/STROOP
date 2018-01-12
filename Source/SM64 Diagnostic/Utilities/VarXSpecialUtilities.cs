@@ -625,21 +625,45 @@ namespace SM64_Diagnostic.Structs
                 case "BobombBloatSize":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
+                        switch (scale)
+                        {
+                            case 1.0f:
+                                return "B0";
+                            case 1.2f:
+                                return "B1";
+                            case 1.4f:
+                                return "B2";
+                            case 1.6f:
+                                return "B3";
+                            case 1.8f:
+                                return "B4";
+                            default:
+                                return "Unknown Bloat Size";
+                        }
                     };
                     break;
 
                 case "BobombRadius":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
+                        float radius = 32 + scale * 65;
+                        return radius.ToString();
                     };
                     break;
 
                 case "BobombSpaceBetween":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double hDist = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                        float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
+                        float radius = 32 + scale * 65;
+                        double spaceBetween = hDist - radius;
+                        return spaceBetween.ToString();
                     };
                     break;
 
