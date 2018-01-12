@@ -387,7 +387,7 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
-                            MoreMath.GetWaypointSpecialVars(objAddress);
+                            GetWaypointSpecialVars(objAddress);
                         return dotProduct.ToString();
                     };
                     break;
@@ -396,7 +396,7 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
-                            MoreMath.GetWaypointSpecialVars(objAddress);
+                            GetWaypointSpecialVars(objAddress);
                         return distToWaypointPlane.ToString();
                     };
                     break;
@@ -405,7 +405,7 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
-                            MoreMath.GetWaypointSpecialVars(objAddress);
+                            GetWaypointSpecialVars(objAddress);
                         return distToWaypoint.ToString();
                     };
                     break;
