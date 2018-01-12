@@ -386,21 +386,33 @@ namespace SM64_Diagnostic.Structs
                 case "ObjectDotProductToWaypoint":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        (double objectDotProductToWaypoint,
+                         double objectDistanceToWaypointPlane,
+                         double objectDistanceToWaypoint) =
+                            MoreMath.GetWaypointSpecialVars(objAddress);
+                        return objectDotProductToWaypoint.ToString();
                     };
                     break;
 
                 case "ObjectDistanceToWaypointPlane":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        (double objectDotProductToWaypoint,
+                         double objectDistanceToWaypointPlane,
+                         double objectDistanceToWaypoint) =
+                            MoreMath.GetWaypointSpecialVars(objAddress);
+                        return objectDistanceToWaypointPlane.ToString();
                     };
                     break;
 
                 case "ObjectDistanceToWaypoint":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        (double objectDotProductToWaypoint,
+                         double objectDistanceToWaypointPlane,
+                         double objectDistanceToWaypoint) =
+                            MoreMath.GetWaypointSpecialVars(objAddress);
+                        return objectDistanceToWaypoint.ToString();
                     };
                     break;
 
