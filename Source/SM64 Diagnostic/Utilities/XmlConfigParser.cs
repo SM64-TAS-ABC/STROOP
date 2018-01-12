@@ -2413,8 +2413,7 @@ namespace SM64_Diagnostic.Utilities
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetPAL"))?.Value),
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value),
-                    mask,
-                    false);
+                    mask);
 
             // TODO remove this once var x is the norm
             if (element.Attribute(XName.Get("isBool")) != null ||

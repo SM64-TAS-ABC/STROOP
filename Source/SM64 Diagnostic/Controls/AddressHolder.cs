@@ -36,15 +36,11 @@ namespace SM64_Diagnostic.Controls
         private readonly Func<uint, string> _getterFunction;
         private readonly Func<string, uint, bool> _setterFunction;
 
-        // TODO remove this
-        private readonly bool _returnNonEmptyList;
-
         public bool IsSpecial { get { return SpecialType != null; } }
 
         private bool UseAbsoluteAddressing { get { return BaseAddressType == BaseAddressTypeEnum.Absolute; } }
 
-        // TODO make this private once var x is the norm
-        public uint Offset
+        private uint Offset
         {
             get
             {
@@ -69,26 +65,14 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                if (_returnNonEmptyList)
-                {
-                    return VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType, true)
-                        .ConvertAll(baseAddress => baseAddress + Offset);
-                }
-
-                return VarXUtilities.GetBaseAddressListFromBaseAddressTypeVarX(BaseAddressType)
+                return VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType)
                     .ConvertAll(baseAddress => baseAddress + Offset);
             }
         }
 
         public AddressHolder(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddress,
-            uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, uint? mask, bool returnNonEmptyList)
+            uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, uint? mask)
         {
-            if (offsetUS == null && offsetJP == null && offsetPAL == null && offsetDefault == null)
-            {
-                //TODO add this back in after var refactor
-                //throw new ArgumentOutOfRangeException("Cannot instantiate Address with all null values");
-            }
-
             BaseAddressType = baseAddress;
 
             OffsetUS = offsetUS;
@@ -105,10 +89,7 @@ namespace SM64_Diagnostic.Controls
             SignedType = memoryTypeName == null ? (bool?)null : VarXUtilities.TypeSign[MemoryType];
 
             Mask = mask;
-
-            // TODO remove this after var x is the norm
-            _returnNonEmptyList = returnNonEmptyList;
-
+            
             // Created getter/setter functions
             if (IsSpecial)
             {
