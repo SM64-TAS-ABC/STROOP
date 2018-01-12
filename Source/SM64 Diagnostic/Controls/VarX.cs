@@ -200,7 +200,9 @@ namespace SM64_Diagnostic.Controls
         public bool SetValueFromCheckbox(CheckState checkState)
         {
             string value = ConvertCheckStateToValue(checkState);
-            return _addressHolder.SetValue(value);
+            bool success = _addressHolder.SetValue(value);
+            if (success && GetLockedBool()) VarXLockManager.UpdateLockValues(_addressHolder, value);
+            return success;
         }
 
 
