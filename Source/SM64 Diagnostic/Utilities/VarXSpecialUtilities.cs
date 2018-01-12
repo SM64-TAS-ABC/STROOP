@@ -684,28 +684,51 @@ namespace SM64_Diagnostic.Structs
                 case "MarioGhostVerticalDistance":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        float ghostY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsYOffset);
+                        float yDiff = marioY - ghostY;
+                        return yDiff.ToString();
                     };
                     break;
 
                 case "MarioGhostHorizontalDistance":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        Position marioPos = GetMarioPosition();
+                        Position ghostPos = GetObjectGraphicsPosition(objAddress);
+                        double hDistToGhost = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Z, ghostPos.X, ghostPos.Z);
+                        return hDistToGhost.ToString();
                     };
                     break;
 
                 case "MarioGhostForwardsDistance":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        Position marioPos = GetMarioPosition();
+                        Position ghostPos = GetObjectGraphicsPosition(objAddress);
+                        double hDistToGhost = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Z, ghostPos.X, ghostPos.Z);
+                        double angleFromGhost = MoreMath.AngleTo_AngleUnits(
+                            ghostPos.X, ghostPos.Z, marioPos.X, marioPos.Z);
+                        (double movementSideways, double movementForwards) =
+                            MoreMath.GetComponentsFromVectorRelatively(hDistToGhost, angleFromGhost, marioPos.Angle.Value);
+                        return movementForwards.ToString();
                     };
                     break;
 
                 case "MarioGhostSidewaysDistance":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        Position marioPos = GetMarioPosition();
+                        Position ghostPos = GetObjectGraphicsPosition(objAddress);
+                        double hDistToGhost = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Z, ghostPos.X, ghostPos.Z);
+                        double angleFromGhost = MoreMath.AngleTo_AngleUnits(
+                            ghostPos.X, ghostPos.Z, marioPos.X, marioPos.Z);
+                        (double movementSideways, double movementForwards) =
+                            MoreMath.GetComponentsFromVectorRelatively(hDistToGhost, angleFromGhost, marioPos.Angle.Value);
+                        return movementSideways.ToString();
                     };
                     break;
                     
@@ -1735,7 +1758,7 @@ namespace SM64_Diagnostic.Structs
             if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, Config.Mario.StructAddress + Config.Mario.XOffset);
             if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, Config.Mario.StructAddress + Config.Mario.YOffset);
             if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, Config.Mario.StructAddress + Config.Mario.ZOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue((ushort)angle.Value, Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
             return success;
         }
 
@@ -1754,17 +1777,26 @@ namespace SM64_Diagnostic.Structs
             if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, objAddress + Config.ObjectSlots.ObjectXOffset);
             if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, objAddress + Config.ObjectSlots.ObjectYOffset);
             if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, objAddress + Config.ObjectSlots.ObjectZOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue((ushort)angle.Value, objAddress + Config.ObjectSlots.YawFacingOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue((ushort)angle.Value, objAddress + Config.ObjectSlots.YawMovingOffset);
+            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, objAddress + Config.ObjectSlots.YawFacingOffset);
+            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, objAddress + Config.ObjectSlots.YawMovingOffset);
             return success;
         }
 
         private static Position GetObjectHomePosition(uint objAddress)
         {
-            float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
-            float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
-            float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
-            return new Position(objX, objY, objZ);
+            float homeX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
+            float homeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+            float homeZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
+            return new Position(homeX, homeY, homeZ);
+        }
+
+        private static Position GetObjectGraphicsPosition(uint objAddress)
+        {
+            float graphicsX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsXOffset);
+            float graphicsY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsYOffset);
+            float graphicsZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsZOffset);
+            ushort graphicsAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.GraphicsYawOffset);
+            return new Position(graphicsX, graphicsY, graphicsZ, graphicsAngle);
         }
 
         private static Position GetCameraPosition()
@@ -1782,7 +1814,7 @@ namespace SM64_Diagnostic.Structs
             if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, Config.Camera.CameraStructAddress + Config.Camera.XOffset);
             if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, Config.Camera.CameraStructAddress + Config.Camera.YOffset);
             if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue((ushort)angle.Value, Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset);
+            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset);
             return success;
         }
 
