@@ -181,6 +181,11 @@ namespace SM64_Diagnostic.Utilities
             return NonNegativeModulus(angle, 65536);
         }
 
+        public static double NormalizeAngleDoubleSigned(double angle)
+        {
+            return MaybeNegativeModulus(angle, 65536);
+        }
+
         public static ushort NormalizeAngleUshort(double angle)
         {
             double nonNegative = NormalizeAngleDouble(angle);

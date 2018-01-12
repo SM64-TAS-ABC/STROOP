@@ -177,7 +177,7 @@ namespace SM64_Diagnostic.Structs
                         double angleToMario = MoreMath.AngleTo_AngleUnits(
                             objPos.X, objPos.Z, marioPos.X, marioPos.Z);
                         double angleDiff = objPos.Angle.Value - angleToMario;
-                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
                     setterFunction = (string stringValue, uint objAddress) =>
                     {
@@ -213,7 +213,7 @@ namespace SM64_Diagnostic.Structs
                         double angleToObject = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, objPos.X, objPos.Z);
                         double angleDiff = marioPos.Angle.Value - angleToObject;
-                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
                     break;
 
@@ -236,7 +236,7 @@ namespace SM64_Diagnostic.Structs
                         double angleToHome = MoreMath.AngleTo_AngleUnits(
                             objPos.X, objPos.Z, homePos.X, homePos.Z);
                         double angleDiff = objPos.Angle.Value - angleToHome;
-                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
                     break;
 
@@ -695,7 +695,7 @@ namespace SM64_Diagnostic.Structs
                         ushort marioYawIntended = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawIntendedOffset);
                         ushort marioYawIntendedTruncated = MoreMath.NormalizeAngleTruncated(marioYawIntended);
                         int deltaYaw = marioYawIntendedTruncated - marioYawFacingTruncated;
-                        return deltaYaw.ToString();
+                        return MoreMath.NormalizeAngleDoubleSigned(deltaYaw).ToString();
                     };
                     break;
 
@@ -873,7 +873,7 @@ namespace SM64_Diagnostic.Structs
                         ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
                         double angleDiff = marioAngle - uphillAngle;
-                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
                     break;
 
@@ -884,7 +884,7 @@ namespace SM64_Diagnostic.Structs
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
                         double downhillAngle = MoreMath.ReverseAngle(uphillAngle);
                         double angleDiff = marioAngle - downhillAngle;
-                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
                     break;
 
@@ -895,7 +895,7 @@ namespace SM64_Diagnostic.Structs
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
                         double lefthillAngle = MoreMath.RotateAngleCCW(uphillAngle, 16384);
                         double angleDiff = marioAngle - lefthillAngle;
-                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
                     break;
 
@@ -906,7 +906,7 @@ namespace SM64_Diagnostic.Structs
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
                         double righthillAngle = MoreMath.RotateAngleCW(uphillAngle, 16384);
                         double angleDiff = marioAngle - righthillAngle;
-                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
                     break;
 
@@ -1203,7 +1203,7 @@ namespace SM64_Diagnostic.Structs
                         double angleToV1 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
                         double angleDiff = marioPos.Angle.Value - angleToV1;
-                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
                     break;
 
@@ -1237,7 +1237,7 @@ namespace SM64_Diagnostic.Structs
                         double angleToV2 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
                         double angleDiff = marioPos.Angle.Value - angleToV2;
-                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
                     break;
 
@@ -1271,7 +1271,7 @@ namespace SM64_Diagnostic.Structs
                         double angleToV3 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
                         double angleDiff = marioPos.Angle.Value - angleToV3;
-                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
                     break;
 
