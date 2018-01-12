@@ -573,35 +573,50 @@ namespace SM64_Diagnostic.Structs
                 case "FlyGuyZone":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                        double heightDiff = marioY - objY;
+                        if (heightDiff < -400) return "Low";
+                        if (heightDiff > -200) return "High";
+                        return "Medium";
                     };
                     break;
 
                 case "FlyGuyRelativeHeight":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        int oscillationTimer = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.FlyGuyOscillationTimerOffset);
+                        double relativeHeight = Config.FlyGuyData.GetRelativeHeight(oscillationTimer);
+                        return relativeHeight.ToString();
                     };
                     break;
 
                 case "FlyGuyNextHeightDiff":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        int oscillationTimer = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.FlyGuyOscillationTimerOffset);
+                        double nextRelativeHeight = Config.FlyGuyData.GetNextHeightDiff(oscillationTimer);
+                        return nextRelativeHeight.ToString();
                     };
                     break;
 
                 case "FlyGuyMinHeight":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                        int oscillationTimer = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.FlyGuyOscillationTimerOffset);
+                        double minHeight = Config.FlyGuyData.GetMinHeight(oscillationTimer, objY);
+                        return minHeight.ToString();
                     };
                     break;
 
                 case "FlyGuyMaxHeight":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                        int oscillationTimer = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.FlyGuyOscillationTimerOffset);
+                        double maxHeight = Config.FlyGuyData.GetMaxHeight(oscillationTimer, objY);
+                        return maxHeight.ToString();
                     };
                     break;
 
