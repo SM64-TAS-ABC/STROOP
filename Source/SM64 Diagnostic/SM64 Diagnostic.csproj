@@ -193,7 +193,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\Map\MapBaseObject.cs" />
-    <Compile Include="Controls\NoTearFlowLayoutContainer.cs">
+    <Compile Include="Controls\VariablePanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\RichTextBoxEx.cs">

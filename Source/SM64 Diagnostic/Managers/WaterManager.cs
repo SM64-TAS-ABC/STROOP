@@ -14,7 +14,7 @@ namespace SM64_Diagnostic.Managers
 {
     public class WaterManager : DataManager
     {
-        public WaterManager(List<VarXControl> variables, NoTearFlowLayoutPanel variableTable)
+        public WaterManager(List<VarXControl> variables, VariablePanel variableTable)
             : base(variables, variableTable)
         {
 

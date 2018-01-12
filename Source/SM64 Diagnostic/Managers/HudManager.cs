@@ -17,7 +17,7 @@ namespace SM64_Diagnostic.Managers
         BinaryButton _turnOnOffHudButton;
         CheckBox _checkBoxFullHP;
 
-        public HudManager(List<VarXControl> variables, Control tabControl, NoTearFlowLayoutPanel noTearFlowLayoutPanelHud)
+        public HudManager(List<VarXControl> variables, Control tabControl, VariablePanel noTearFlowLayoutPanelHud)
             : base(variables, noTearFlowLayoutPanelHud)
         {
             _tabControl = tabControl;

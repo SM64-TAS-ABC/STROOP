@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.Managers
 {
     public class MarioManager : DataManager
     {
-        public MarioManager(List<VarXControl> variables, Control marioControl, NoTearFlowLayoutPanel variableTable)
+        public MarioManager(List<VarXControl> variables, Control marioControl, VariablePanel variableTable)
             : base(variables, variableTable)
         {
             SplitContainer splitContainerMario = marioControl.Controls["splitContainerMario"] as SplitContainer;

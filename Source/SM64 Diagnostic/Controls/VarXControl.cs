@@ -305,11 +305,5 @@ namespace SM64_Diagnostic.Controls
             if (_showBorder)
                 e.Graphics.DrawRectangle(_borderPen, rec);
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-            _borderPen?.Dispose();
-        }
     }
 }

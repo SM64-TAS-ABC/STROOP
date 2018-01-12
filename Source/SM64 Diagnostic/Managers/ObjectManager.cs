@@ -172,7 +172,7 @@ namespace SM64_Diagnostic.Managers
 
         #endregion
 
-        public ObjectManager(List<VarXControl> variables, Control objectControl, NoTearFlowLayoutPanel variableTable)
+        public ObjectManager(List<VarXControl> variables, Control objectControl, VariablePanel variableTable)
             : base(variables, variableTable)
         {
             Instance = this;

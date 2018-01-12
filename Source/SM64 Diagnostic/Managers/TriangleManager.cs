@@ -56,7 +56,7 @@ namespace SM64_Diagnostic.Managers
         /// <summary>
         /// Manages illumanati
         /// </summary>
-        public TriangleManager(Control tabControl, List<VarXControl> variables, NoTearFlowLayoutPanel noTearFlowLayoutPanel) 
+        public TriangleManager(Control tabControl, List<VarXControl> variables, VariablePanel noTearFlowLayoutPanel) 
             : base(variables, noTearFlowLayoutPanel)
         {
             Instance = this;

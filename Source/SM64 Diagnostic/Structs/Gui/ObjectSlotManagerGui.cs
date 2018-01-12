@@ -34,7 +34,7 @@ namespace SM64_Diagnostic.Structs
         public TabControl TabControl;
         public ComboBox SortMethodComboBox;
         public ComboBox LabelMethodComboBox;
-        public NoTearFlowLayoutPanel FlowLayoutContainer;
+        public VariablePanel FlowLayoutContainer;
 
         ~ObjectSlotManagerGui()
         {
