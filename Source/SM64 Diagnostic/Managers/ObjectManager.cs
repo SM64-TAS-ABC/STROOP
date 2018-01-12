@@ -411,23 +411,6 @@ namespace SM64_Diagnostic.Managers
                         -1 * vOffset,
                         useRelative);
                 });
-
-            GroupBox variableListFilterGroupBox = objPanel.Controls["groupBoxVariableListFilter"] as GroupBox;
-            RadioButton variableListFilterSimpleRadioButton =
-                variableListFilterGroupBox.Controls["radioButtonVariableListFilterSimple"] as RadioButton;
-            variableListFilterSimpleRadioButton.Click +=
-                (sender, e) => ApplyVariableListFilter(
-                    new List<VariableGroup> { VariableGroup.Simple, VariableGroup.ObjectSpecific });
-            RadioButton variableListFilterExpandedRadioButton =
-                variableListFilterGroupBox.Controls["radioButtonVariableListFilterExpanded"] as RadioButton;
-            variableListFilterExpandedRadioButton.Click += 
-                (sender, e) => ApplyVariableListFilter(
-                    new List<VariableGroup> { VariableGroup.Simple, VariableGroup.Expanded, VariableGroup.ObjectSpecific });
-            RadioButton variableListFilterCollisionRadioButton =
-                variableListFilterGroupBox.Controls["radioButtonVariableListFilterCollision"] as RadioButton;
-            variableListFilterCollisionRadioButton.Click +=
-                (sender, e) => ApplyVariableListFilter(
-                    new List<VariableGroup> { VariableGroup.Collision });
         }
 
         private void _objBehaviorLabel_Click(object sender, EventArgs e)
@@ -439,11 +422,6 @@ namespace SM64_Diagnostic.Managers
             var scriptAddress = Config.Stream.GetUInt32(CurrentAddresses[0] + Config.ObjectSlots.BehaviorScriptOffset);
             scriptManager.Go(scriptAddress);
             ManagerContext.Current.StroopMainForm.SwitchTab("tabPageScripts");
-        }
-
-        private void ApplyVariableListFilter(List<VariableGroup> variableGroups)
-        {
-            // TODO implement this
         }
 
         private void AddressChanged()
