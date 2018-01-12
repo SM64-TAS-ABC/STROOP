@@ -383,7 +383,7 @@ namespace SM64_Diagnostic
                 }
 
                 // Delete from xml file
-                XmlConfigParser.DeleteWatchVariablesOtherData(deleteVars);
+                //XmlConfigParser.DeleteWatchVariablesOtherData(deleteVars);
             }
         }
 

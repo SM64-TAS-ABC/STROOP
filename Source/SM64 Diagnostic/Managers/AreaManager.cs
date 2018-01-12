@@ -9,7 +9,6 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
-using static SM64_Diagnostic.Controls.AngleDataContainer;
 using static SM64_Diagnostic.Utilities.ControlUtilities;
 
 namespace SM64_Diagnostic.Managers
@@ -51,37 +50,6 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        protected override List<SpecialWatchVariable> _specialWatchVars { get; } = new List<SpecialWatchVariable>()
-        {
-            new SpecialWatchVariable("CurrentAreaIndexMario"),
-            new SpecialWatchVariable("CurrentAreaIndex"),
-            new SpecialWatchVariable("AreaTerrainDescription"),
-        };
-
-        public void ProcessSpecialVars()
-        {
-            foreach (var specialVar in _specialDataControls)
-            {
-                switch (specialVar.SpecialName)
-                {
-                    case "CurrentAreaIndexMario":
-                        uint currentAreaMario = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.AreaPointerOffset);
-                        (specialVar as DataContainer).Text = AreaUtilities.GetAreaIndex(currentAreaMario).ToString();
-                        break;
-
-                    case "CurrentAreaIndex":
-                        uint currentArea = Config.Stream.GetUInt32(Config.Area.CurrentAreaPointerAddress);
-                        (specialVar as DataContainer).Text = AreaUtilities.GetAreaIndex(currentArea).ToString();
-                        break;
-
-                    case "AreaTerrainDescription":
-                        short terrainType = Config.Stream.GetInt16(_selectedAreaAddress + Config.Area.TerrainTypeOffset);
-                        (specialVar as DataContainer).Text = AreaUtilities.GetTerrainDescription(terrainType);
-                        break;
-                }
-            }
-        }
-
         public override void Update(bool updateView)
         {
             if (_selectCurrentAreaCheckbox.Checked)
@@ -92,7 +60,6 @@ namespace SM64_Diagnostic.Managers
             if (!updateView) return;
 
             base.Update(updateView);
-            ProcessSpecialVars();
 
             int? currentAreaIndex = AreaUtilities.GetAreaIndex(_selectedAreaAddress);
             for (int i = 0; i < _selectedAreaRadioButtons.Count; i++)

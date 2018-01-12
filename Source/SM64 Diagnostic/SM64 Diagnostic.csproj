@@ -133,7 +133,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\AddressHolderLock.cs" />
-    <Compile Include="Controls\AngleDataContainer.cs" />
     <Compile Include="Controls\TransparentTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -149,7 +148,6 @@
     <Compile Include="Controls\DecompilerView.xaml.cs">
       <DependentUpon>DecompilerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\AngleViewModeType.cs" />
     <Compile Include="Controls\AddressHolder.cs" />
     <Compile Include="Controls\VarXPrecursor.cs" />
     <Compile Include="Controls\VarXControl.cs">
@@ -191,7 +189,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\ModelGraphics.cs" />
-    <Compile Include="Controls\IDataContainer.cs" />
     <Compile Include="Controls\IntPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -229,7 +226,6 @@
     <Compile Include="Managers\InputManager.cs" />
     <Compile Include="Managers\MiscManager.cs" />
     <Compile Include="Managers\DataManager.cs" />
-    <Compile Include="Controls\DataContainer.cs" />
     <Compile Include="Managers\DisassemblyManager.cs" />
     <Compile Include="Controls\Map\MapGraphics.cs" />
     <Compile Include="Managers\MapManager.cs" />
@@ -240,7 +236,6 @@
     <Compile Include="Managers\OptionsManager.cs" />
     <Compile Include="Managers\PuManager.cs" />
     <Compile Include="Managers\InjectionManager.cs" />
-    <Compile Include="Controls\WatchVariableControl.cs" />
     <Compile Include="Managers\TriangleManager.cs" />
     <Compile Include="Controls\ObjectSlot.cs">
       <SubType>Component</SubType>
@@ -259,7 +254,6 @@
     <Compile Include="Structs\Gui\FileImageGui.cs" />
     <Compile Include="Structs\Gui\InputImageGui.cs" />
     <Compile Include="Structs\MissionTable.cs" />
-    <Compile Include="Structs\SpecialWatchVariable.cs" />
     <Compile Include="Structs\TriangleClassification.cs" />
     <Compile Include="Structs\TriangleStruct.cs" />
     <Compile Include="Structs\WaypointTable.cs" />
@@ -320,13 +314,10 @@
     <Compile Include="Utilities\ProcessStream.cs" />
     <Compile Include="Utilities\ParsingUtilities.cs" />
     <Compile Include="Structs\Configurations\Config.cs" />
-    <Compile Include="Structs\WatchVariable.cs" />
     <Compile Include="Extensions\RichTextBoxExtensions.cs" />
     <Compile Include="Extensions\SizeExtensions.cs" />
-    <Compile Include="Extensions\WatchVariableExtensions.cs" />
     <Compile Include="Utilities\PuUtilities.cs" />
     <Compile Include="Utilities\RngIndexer.cs" />
-    <Compile Include="Utilities\WatchVariableLock.cs" />
     <Compile Include="Utilities\XmlConfigParser.cs" />
     <Compile Include="TriangleInfoForm.cs">
       <SubType>Form</SubType>

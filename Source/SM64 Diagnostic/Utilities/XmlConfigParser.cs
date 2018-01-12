@@ -2670,22 +2670,7 @@ namespace SM64_Diagnostic.Utilities
 
             return missionTable;
         }
-
-        public static void AddWatchVariableOtherData(WatchVariable watchVar)
-        {
-            
-        }
-
-        public static void ModifyWatchVariableOtherData(int index, WatchVariable modifiedVar)
-        {
-
-        }
-
-        public static void DeleteWatchVariablesOtherData(List<int> indexes)
-        {
-
-        }
-
+        
         private static void Validation(object sender, ValidationEventArgs e)
         {
             throw new Exception(e.Message);

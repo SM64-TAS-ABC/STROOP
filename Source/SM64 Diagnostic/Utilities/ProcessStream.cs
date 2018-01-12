@@ -35,9 +35,6 @@ namespace SM64_Diagnostic.Utilities
         public bool Readonly = false;
         public bool ShowWarning = false;
 
-        public ConcurrentDictionary<WatchVariableLock, WatchVariableLock> LockedVariables = 
-            new ConcurrentDictionary<WatchVariableLock, WatchVariableLock>();
-
         public IntPtr ProcessMemoryOffset
         {
             get
@@ -604,9 +601,6 @@ namespace SM64_Diagnostic.Utilities
                     goto FrameLimitStreamUpdate;
 
                 OnUpdate?.Invoke(this, new EventArgs());
-
-                foreach (var lockVar in LockedVariables)
-                    lockVar.Value.Update();
 
                 FrameLimitStreamUpdate:
 
