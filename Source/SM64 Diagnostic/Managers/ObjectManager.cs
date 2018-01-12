@@ -166,6 +166,10 @@ namespace SM64_Diagnostic.Managers
         {
             Instance = this;
 
+            variableTable.SetVariableGroups(
+                new List<VariableGroup>() { VariableGroup.Simple, VariableGroup.Expanded, VariableGroup.ObjectSpecific, VariableGroup.Collision },
+                new List<VariableGroup>() { VariableGroup.Simple, VariableGroup.Expanded, VariableGroup.ObjectSpecific });
+
             SplitContainer splitContainerObject = objectControl.Controls["splitContainerObject"] as SplitContainer;
 
             _objAddressLabelValue = splitContainerObject.Panel1.Controls["labelObjAddValue"] as Label;

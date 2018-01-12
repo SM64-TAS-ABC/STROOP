@@ -10,20 +10,18 @@ namespace SM64_Diagnostic.Controls
 {
     public class VariablePanel : FlowLayoutPanel
     {
-        private readonly List<VarXControl> _varXControlsList;
         private readonly Object _objectLock;
+        private readonly List<VarXControl> _varXControlsList;
+        private readonly List<VariableGroup> _allGroups;
+        private readonly List<VariableGroup> _visibleGroups;
 
         public VariablePanel()
         {
-            _varXControlsList = new List<VarXControl>();
             _objectLock = new Object();
+            _varXControlsList = new List<VarXControl>();
+            _allGroups = new List<VariableGroup>();
+            _visibleGroups = new List<VariableGroup>();
             ContextMenuStrip = new ContextMenuStrip();
-
-            ToolStripMenuItem item1 = new ToolStripMenuItem("option1");
-            ToolStripMenuItem item2 = new ToolStripMenuItem("option2");
-
-            ContextMenuStrip.Items.Add(item1);
-            ContextMenuStrip.Items.Add(item2);
         }
 
         protected override CreateParams CreateParams
@@ -34,6 +32,14 @@ namespace SM64_Diagnostic.Controls
                 cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
                 return cp;
             }
+        }
+
+        public void SetVariableGroups(List<VariableGroup> allGroups, List<VariableGroup> visibleGroups)
+        {
+            _allGroups.Clear();
+            _allGroups.AddRange(allGroups);
+            _visibleGroups.Clear();
+            _visibleGroups.AddRange(visibleGroups);
         }
 
         public void AddVariables(List<VarXControl> varXControls)

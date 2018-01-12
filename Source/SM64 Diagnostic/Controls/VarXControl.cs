@@ -14,10 +14,11 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarXControl : TableLayoutPanel
     {
-        private VarXPrecursor _varXPrecursor;
         public readonly string VarName;
+        public readonly List<VariableGroup> GroupList;
+
+        private readonly VarXPrecursor _varXPrecursor;
         private readonly VarX _varX;
-        private readonly List<VariableGroup> _groupList;
 
         private readonly Label _nameLabel;
         private readonly TextBox _valueTextBox;
@@ -109,7 +110,7 @@ namespace SM64_Diagnostic.Controls
 
             // Initialize main fields
             VarName = name;
-            _groupList = groupList;
+            GroupList = groupList;
             _showBorder = false;
             _editMode = false;
 
@@ -293,7 +294,7 @@ namespace SM64_Diagnostic.Controls
 
         public bool BelongsToGroup(VariableGroup variableGroup)
         {
-            return _groupList.Contains(variableGroup);
+            return GroupList.Contains(variableGroup);
         }
 
         protected override void OnPaint(PaintEventArgs e)
