@@ -361,14 +361,23 @@ namespace SM64_Diagnostic.Structs
                 case "PendulumAmplitude":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        float pendulumAmplitude = GetPendulumAmplitude(objAddress);
+                        return pendulumAmplitude.ToString();
                     };
                     break;
 
                 case "PendulumSwingIndex":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        string badValue = "Unknown Index";
+                        float pendulumAmplitudeFloat = GetPendulumAmplitude(objAddress);
+                        int? pendulumAmplitudeIntNullable = ParsingUtilities.ParseIntNullable(pendulumAmplitudeFloat);
+                        if (!pendulumAmplitudeIntNullable.HasValue) return badValue;
+                        int pendulumAmplitudeInt = pendulumAmplitudeIntNullable.Value;
+                        int? pendulumSwingIndexNullable = Config.PendulumSwings.GetPendulumSwingIndex(pendulumAmplitudeInt);
+                        if (!pendulumSwingIndexNullable.HasValue) return badValue;
+                        int pendulumSwingIndex = pendulumSwingIndexNullable.Value;
+                        return pendulumSwingIndex.ToString();
                     };
                     break;
 
@@ -1693,6 +1702,152 @@ namespace SM64_Diagnostic.Structs
             if (triStruct.NormX == 0 && triStruct.NormZ == 0) uphillAngleRadians = double.NaN;
             if (triStruct.IsCeiling()) uphillAngleRadians += Math.PI;
             return MoreMath.RadiansToAngleUnits(uphillAngleRadians);
+        }
+
+        // Object specific utilitiy methods
+
+        public static (double dotProduct, double distToWaypointPlane, double distToWaypoint)
+            GetWaypointSpecialVars(uint objAddress)
+        {
+            float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+            float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+            float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+
+            uint prevWaypointAddress = Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset);
+            short prevWaypointIndex = Config.Stream.GetInt16(prevWaypointAddress + Config.Waypoint.IndexOffset);
+            short prevWaypointX = Config.Stream.GetInt16(prevWaypointAddress + Config.Waypoint.XOffset);
+            short prevWaypointY = Config.Stream.GetInt16(prevWaypointAddress + Config.Waypoint.YOffset);
+            short prevWaypointZ = Config.Stream.GetInt16(prevWaypointAddress + Config.Waypoint.ZOffset);
+            uint nextWaypointAddress = prevWaypointAddress + Config.Waypoint.StructSize;
+            short nextWaypointIndex = Config.Stream.GetInt16(nextWaypointAddress + Config.Waypoint.IndexOffset);
+            short nextWaypointX = Config.Stream.GetInt16(nextWaypointAddress + Config.Waypoint.XOffset);
+            short nextWaypointY = Config.Stream.GetInt16(nextWaypointAddress + Config.Waypoint.YOffset);
+            short nextWaypointZ = Config.Stream.GetInt16(nextWaypointAddress + Config.Waypoint.ZOffset);
+
+            float objToWaypointX = nextWaypointX - objX;
+            float objToWaypointY = nextWaypointY - objY;
+            float objToWaypointZ = nextWaypointZ - objZ;
+            float prevToNextX = nextWaypointX - prevWaypointX;
+            float prevToNextY = nextWaypointY - prevWaypointY;
+            float prevToNextZ = nextWaypointZ - prevWaypointZ;
+
+            double dotProduct = MoreMath.GetDotProduct(objToWaypointX, objToWaypointY, objToWaypointZ, prevToNextX, prevToNextY, prevToNextZ);
+            double prevToNextDist = MoreMath.GetDistanceBetween(prevWaypointX, prevWaypointY, prevWaypointZ, nextWaypointX, nextWaypointY, nextWaypointZ);
+            double distToWaypointPlane = dotProduct / prevToNextDist;
+            double distToWaypoint = MoreMath.GetDistanceBetween(objX, objY, objZ, nextWaypointX, nextWaypointY, nextWaypointZ);
+
+            return (dotProduct, distToWaypointPlane, distToWaypoint);
+        }
+
+        public static (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget)
+            GetRacingPenguinSpecialVars(uint racingPenguinAddress)
+        {
+            double marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            double objectY = Config.Stream.GetSingle(racingPenguinAddress + Config.ObjectSlots.ObjectYOffset);
+            double heightDiff = marioY - objectY;
+
+            uint prevWaypointAddress = Config.Stream.GetUInt32(racingPenguinAddress + Config.ObjectSlots.WaypointOffset);
+            short prevWaypointIndex = Config.Stream.GetInt16(prevWaypointAddress);
+            double effort = Config.Stream.GetSingle(racingPenguinAddress + Config.ObjectSlots.RacingPenguinEffortOffset);
+
+            double effortTarget;
+            double effortChange;
+            double minHSpeed = 70;
+            if (heightDiff > -100 || prevWaypointIndex >= 35)
+            {
+                if (prevWaypointIndex >= 35) minHSpeed = 60;
+                effortTarget = -500;
+                effortChange = 100;
+            }
+            else
+            {
+                effortTarget = 1000;
+                effortChange = 30;
+            }
+            effort = MoreMath.MoveNumberTowards(effort, effortTarget, effortChange);
+
+            double hSpeedTarget = (effort - heightDiff) * 0.1;
+            hSpeedTarget = MoreMath.Clamp(hSpeedTarget, minHSpeed, 150);
+
+            return (effortTarget, effortChange, minHSpeed, hSpeedTarget);
+        }
+
+        public static (double hSpeedTarget, double hSpeedChange)
+            GetKoopaTheQuickSpecialVars(uint koopaTheQuickAddress)
+        {
+            double hSpeedMultiplier = Config.Stream.GetSingle(koopaTheQuickAddress + Config.ObjectSlots.KoopaTheQuickHSpeedMultiplierOffset);
+            short pitchToWaypointAngleUnits = Config.Stream.GetInt16(koopaTheQuickAddress + Config.ObjectSlots.PitchToWaypointOffset);
+            double pitchToWaypointRadians = MoreMath.AngleUnitsToRadians(pitchToWaypointAngleUnits);
+
+            double hSpeedTarget = hSpeedMultiplier * (Math.Sin(pitchToWaypointRadians) + 1) * 6;
+            double hSpeedChange = hSpeedMultiplier * 0.1;
+
+            return (hSpeedTarget, hSpeedChange);
+        }
+
+        public static float GetPendulumAmplitude(uint pendulumAddress)
+        {
+            // Get pendulum variables
+            float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationDirection);
+            float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationMagnitude);
+            float angularVelocity = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngularVelocity);
+            float angle = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngle);
+            float acceleration = accelerationDirection * accelerationMagnitude;
+
+            // Calculate one frame forwards to see if pendulum is speeding up or slowing down
+            float nextAccelerationDirection = accelerationDirection;
+            if (angle > 0) nextAccelerationDirection = -1;
+            if (angle < 0) nextAccelerationDirection = 1;
+            float nextAcceleration = nextAccelerationDirection * accelerationMagnitude;
+            float nextAngularVelocity = angularVelocity + nextAcceleration;
+            float nextAngle = angle + nextAngularVelocity;
+            bool speedingUp = Math.Abs(nextAngularVelocity) > Math.Abs(angularVelocity);
+
+            // Calculate duration of speeding up phase
+            float inflectionAngle = angle;
+            float inflectionAngularVelocity = nextAngularVelocity;
+            float speedUpDistance = 0;
+            int speedUpDuration = 0;
+
+            if (speedingUp)
+            {
+                // d = t * v + t(t-1)/2 * a
+                // d = tv + (t^2)a/2-ta/2
+                // d = t(v-a/2) + (t^2)a/2
+                // 0 = (t^2)a/2 + t(v-a/2) + -d
+                // t = (-B +- sqrt(B^2 - 4AC)) / (2A)
+                float tentativeSlowDownStartAngle = nextAccelerationDirection;
+                float tentativeSpeedUpDistance = tentativeSlowDownStartAngle - angle;
+                float A = nextAcceleration / 2;
+                float B = nextAngularVelocity - nextAcceleration / 2;
+                float C = -1 * tentativeSpeedUpDistance;
+                double tentativeSpeedUpDuration = (-B + nextAccelerationDirection * Math.Sqrt(B * B - 4 * A * C)) / (2 * A);
+                speedUpDuration = (int)Math.Ceiling(tentativeSpeedUpDuration);
+
+                // d = t * v + t(t-1)/2 * a
+                speedUpDistance = speedUpDuration * nextAngularVelocity + speedUpDuration * (speedUpDuration - 1) / 2 * nextAcceleration;
+                inflectionAngle = angle + speedUpDistance;
+
+                // v_f = v_i + t * a
+                inflectionAngularVelocity = nextAngularVelocity + (speedUpDuration - 2) * nextAcceleration;
+            }
+
+            // Calculate duration of slowing down phase
+
+            // v_f = v_i + t * a
+            // 0 = v_i + t * a
+            // t = v_i / a
+            int slowDownDuration = (int)Math.Abs(inflectionAngularVelocity / accelerationMagnitude);
+
+            // d = t * (v_i + v_f)/2
+            // d = t * (v_i + 0)/2
+            // d = t * v_i/2
+            float slowDownDistance = (slowDownDuration + 1) * inflectionAngularVelocity / 2;
+
+            // Combine the results from the speeding up phase and the slowing down phase
+            float totalDistance = speedUpDistance + slowDownDistance;
+            float amplitude = angle + totalDistance;
+            return amplitude;
         }
     }
 }

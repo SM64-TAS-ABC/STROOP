@@ -507,71 +507,6 @@ namespace SM64_Diagnostic.Utilities
             return (effectiveX, effectiveY);
         }
 
-        public static float GetPendulumAmplitude(uint pendulumAddress)
-        {
-            // Get pendulum variables
-            float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationDirection);
-            float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationMagnitude);
-            float angularVelocity = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngularVelocity);
-            float angle = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngle);
-            float acceleration = accelerationDirection * accelerationMagnitude;
-
-            // Calculate one frame forwards to see if pendulum is speeding up or slowing down
-            float nextAccelerationDirection = accelerationDirection;
-            if (angle > 0) nextAccelerationDirection = -1;
-            if (angle < 0) nextAccelerationDirection = 1;
-            float nextAcceleration = nextAccelerationDirection * accelerationMagnitude;
-            float nextAngularVelocity = angularVelocity + nextAcceleration;
-            float nextAngle = angle + nextAngularVelocity;
-            bool speedingUp = Math.Abs(nextAngularVelocity) > Math.Abs(angularVelocity);
-
-            // Calculate duration of speeding up phase
-            float inflectionAngle = angle;
-            float inflectionAngularVelocity = nextAngularVelocity;
-            float speedUpDistance = 0;
-            int speedUpDuration = 0;
-
-            if (speedingUp)
-            {
-                // d = t * v + t(t-1)/2 * a
-                // d = tv + (t^2)a/2-ta/2
-                // d = t(v-a/2) + (t^2)a/2
-                // 0 = (t^2)a/2 + t(v-a/2) + -d
-                // t = (-B +- sqrt(B^2 - 4AC)) / (2A)
-                float tentativeSlowDownStartAngle = nextAccelerationDirection;
-                float tentativeSpeedUpDistance = tentativeSlowDownStartAngle - angle;
-                float A = nextAcceleration / 2;
-                float B = nextAngularVelocity - nextAcceleration / 2;
-                float C = -1 * tentativeSpeedUpDistance;
-                double tentativeSpeedUpDuration = (-B + nextAccelerationDirection * Math.Sqrt(B * B - 4 * A * C)) / (2 * A);
-                speedUpDuration = (int)Math.Ceiling(tentativeSpeedUpDuration);
-
-                // d = t * v + t(t-1)/2 * a
-                speedUpDistance = speedUpDuration * nextAngularVelocity + speedUpDuration * (speedUpDuration - 1) / 2 * nextAcceleration;
-                inflectionAngle = angle + speedUpDistance;
-
-                // v_f = v_i + t * a
-                inflectionAngularVelocity = nextAngularVelocity + (speedUpDuration - 2) * nextAcceleration;
-            }
-
-            // Calculate duration of slowing down phase
-
-            // v_f = v_i + t * a
-            // 0 = v_i + t * a
-            // t = v_i / a
-            int slowDownDuration = (int)Math.Abs(inflectionAngularVelocity / accelerationMagnitude);
-
-            // d = t * (v_i + v_f)/2
-            // d = t * (v_i + 0)/2
-            // d = t * v_i/2
-            float slowDownDistance = (slowDownDuration + 1) * inflectionAngularVelocity / 2;
-
-            // Combine the results from the speeding up phase and the slowing down phase
-            float totalDistance = speedUpDistance + slowDownDistance;
-            float amplitude = angle + totalDistance;
-            return amplitude;
-        }
-
         public static byte ApplyValueToMaskedByte(byte currentValue, byte mask, byte valueToSet)
         {
             byte maskedValueToSet = (byte)(valueToSet & mask);
@@ -611,6 +546,7 @@ namespace SM64_Diagnostic.Utilities
             return v1X * v2X + v1Y * v2Y + v1Z * v2Z;
         }
 
+        // TODO remove these methods once var x is the norm
         public static (double dotProduct, double distToWaypointPlane, double distToWaypoint)
             GetWaypointSpecialVars(uint objAddress)
         {
@@ -688,6 +624,71 @@ namespace SM64_Diagnostic.Utilities
             double hSpeedChange = hSpeedMultiplier * 0.1;
 
             return (hSpeedTarget, hSpeedChange);
+        }
+
+        public static float GetPendulumAmplitude(uint pendulumAddress)
+        {
+            // Get pendulum variables
+            float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationDirection);
+            float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationMagnitude);
+            float angularVelocity = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngularVelocity);
+            float angle = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngle);
+            float acceleration = accelerationDirection * accelerationMagnitude;
+
+            // Calculate one frame forwards to see if pendulum is speeding up or slowing down
+            float nextAccelerationDirection = accelerationDirection;
+            if (angle > 0) nextAccelerationDirection = -1;
+            if (angle < 0) nextAccelerationDirection = 1;
+            float nextAcceleration = nextAccelerationDirection * accelerationMagnitude;
+            float nextAngularVelocity = angularVelocity + nextAcceleration;
+            float nextAngle = angle + nextAngularVelocity;
+            bool speedingUp = Math.Abs(nextAngularVelocity) > Math.Abs(angularVelocity);
+
+            // Calculate duration of speeding up phase
+            float inflectionAngle = angle;
+            float inflectionAngularVelocity = nextAngularVelocity;
+            float speedUpDistance = 0;
+            int speedUpDuration = 0;
+
+            if (speedingUp)
+            {
+                // d = t * v + t(t-1)/2 * a
+                // d = tv + (t^2)a/2-ta/2
+                // d = t(v-a/2) + (t^2)a/2
+                // 0 = (t^2)a/2 + t(v-a/2) + -d
+                // t = (-B +- sqrt(B^2 - 4AC)) / (2A)
+                float tentativeSlowDownStartAngle = nextAccelerationDirection;
+                float tentativeSpeedUpDistance = tentativeSlowDownStartAngle - angle;
+                float A = nextAcceleration / 2;
+                float B = nextAngularVelocity - nextAcceleration / 2;
+                float C = -1 * tentativeSpeedUpDistance;
+                double tentativeSpeedUpDuration = (-B + nextAccelerationDirection * Math.Sqrt(B * B - 4 * A * C)) / (2 * A);
+                speedUpDuration = (int)Math.Ceiling(tentativeSpeedUpDuration);
+
+                // d = t * v + t(t-1)/2 * a
+                speedUpDistance = speedUpDuration * nextAngularVelocity + speedUpDuration * (speedUpDuration - 1) / 2 * nextAcceleration;
+                inflectionAngle = angle + speedUpDistance;
+
+                // v_f = v_i + t * a
+                inflectionAngularVelocity = nextAngularVelocity + (speedUpDuration - 2) * nextAcceleration;
+            }
+
+            // Calculate duration of slowing down phase
+
+            // v_f = v_i + t * a
+            // 0 = v_i + t * a
+            // t = v_i / a
+            int slowDownDuration = (int)Math.Abs(inflectionAngularVelocity / accelerationMagnitude);
+
+            // d = t * (v_i + v_f)/2
+            // d = t * (v_i + 0)/2
+            // d = t * v_i/2
+            float slowDownDistance = (slowDownDuration + 1) * inflectionAngularVelocity / 2;
+
+            // Combine the results from the speeding up phase and the slowing down phase
+            float totalDistance = speedUpDistance + slowDownDistance;
+            float amplitude = angle + totalDistance;
+            return amplitude;
         }
     }
 }

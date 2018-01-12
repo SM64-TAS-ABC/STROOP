@@ -77,8 +77,9 @@ namespace SM64_Diagnostic.Utilities
             return true;
         }
 
-        public static int? ParseIntNullable(string text)
+        public static int? ParseIntNullable(object obj)
         {
+            string text = obj?.ToString();
             int parsed;
             if (int.TryParse(text, out parsed))
             {
@@ -87,13 +88,14 @@ namespace SM64_Diagnostic.Utilities
             return null;
         }
 
-        public static int ParseInt(string text)
+        public static int ParseInt(object obj)
         {
-            return ParseIntNullable(text) ?? 0;
+            return ParseIntNullable(obj) ?? 0;
         }
 
-        public static uint? ParseUIntNullable(string text)
+        public static uint? ParseUIntNullable(object obj)
         {
+            string text = obj?.ToString();
             uint parsed;
             if (uint.TryParse(text, out parsed))
             {
@@ -102,13 +104,14 @@ namespace SM64_Diagnostic.Utilities
             return null;
         }
 
-        public static uint ParseUInt(string text)
+        public static uint ParseUInt(object obj)
         {
-            return ParseUIntNullable(text) ?? 0;
+            return ParseUIntNullable(obj) ?? 0;
         }
 
-        public static short? ParseShortNullable(string text)
+        public static short? ParseShortNullable(object obj)
         {
+            string text = obj?.ToString();
             short parsed;
             if (short.TryParse(text, out parsed))
             {
@@ -117,13 +120,14 @@ namespace SM64_Diagnostic.Utilities
             return null;
         }
 
-        public static short ParseShort(string text)
+        public static short ParseShort(object obj)
         {
-            return ParseShortNullable(text) ?? 0;
+            return ParseShortNullable(obj) ?? 0;
         }
 
-        public static ushort? ParseUShortNullable(string text)
+        public static ushort? ParseUShortNullable(object obj)
         {
+            string text = obj?.ToString();
             ushort parsed;
             if (ushort.TryParse(text, out parsed))
             {
@@ -132,13 +136,14 @@ namespace SM64_Diagnostic.Utilities
             return null;
         }
 
-        public static ushort ParseUShort(string text)
+        public static ushort ParseUShort(object obj)
         {
-            return ParseUShortNullable(text) ?? 0;
+            return ParseUShortNullable(obj) ?? 0;
         }
 
-        public static long? ParseLongNullable(string text)
+        public static long? ParseLongNullable(object obj)
         {
+            string text = obj?.ToString();
             long parsed;
             if (long.TryParse(text, out parsed))
             {
@@ -147,13 +152,14 @@ namespace SM64_Diagnostic.Utilities
             return null;
         }
 
-        public static long ParseLong(string text)
+        public static long ParseLong(object obj)
         {
-            return ParseLongNullable(text) ?? 0;
+            return ParseLongNullable(obj) ?? 0;
         }
 
-        public static ulong? ParseULongNullable(string text)
+        public static ulong? ParseULongNullable(object obj)
         {
+            string text = obj?.ToString();
             ulong parsed;
             if (ulong.TryParse(text, out parsed))
             {
@@ -162,13 +168,14 @@ namespace SM64_Diagnostic.Utilities
             return null;
         }
 
-        public static ulong ParseULong(string text)
+        public static ulong ParseULong(object obj)
         {
-            return ParseULongNullable(text) ?? 0;
+            return ParseULongNullable(obj) ?? 0;
         }
 
-        public static byte? ParseByteNullable(string text)
+        public static byte? ParseByteNullable(object obj)
         {
+            string text = obj?.ToString();
             byte parsed;
             if (byte.TryParse(text, out parsed))
             {
@@ -177,13 +184,14 @@ namespace SM64_Diagnostic.Utilities
             return null;
         }
 
-        public static byte ParseByte(string text)
+        public static byte ParseByte(object obj)
         {
-            return ParseByteNullable(text) ?? 0;
+            return ParseByteNullable(obj) ?? 0;
         }
 
-        public static sbyte? ParseSByteNullable(string text)
+        public static sbyte? ParseSByteNullable(object obj)
         {
+            string text = obj?.ToString();
             sbyte parsed;
             if (sbyte.TryParse(text, out parsed))
             {
@@ -192,13 +200,14 @@ namespace SM64_Diagnostic.Utilities
             return null;
         }
 
-        public static sbyte ParseSByte(string text)
+        public static sbyte ParseSByte(object obj)
         {
-            return ParseSByteNullable(text) ?? 0;
+            return ParseSByteNullable(obj) ?? 0;
         }
 
-        public static float? ParseFloatNullable(string text)
+        public static float? ParseFloatNullable(object obj)
         {
+            string text = obj?.ToString();
             float parsed;
             if (float.TryParse(text, out parsed))
             {
@@ -207,13 +216,14 @@ namespace SM64_Diagnostic.Utilities
             return null;
         }
 
-        public static float ParseFloat(string text)
+        public static float ParseFloat(object obj)
         {
-            return ParseFloatNullable(text) ?? 0;
+            return ParseFloatNullable(obj) ?? 0;
         }
 
-        public static double? ParseDoubleNullable(string text)
+        public static double? ParseDoubleNullable(object obj)
         {
+            string text = obj?.ToString();
             double parsed;
             if (double.TryParse(text, out parsed))
             {
@@ -222,13 +232,14 @@ namespace SM64_Diagnostic.Utilities
             return null;
         }
 
-        public static double ParseDouble(string text)
+        public static double ParseDouble(object obj)
         {
-            return ParseDoubleNullable(text) ?? 0;
+            return ParseDoubleNullable(obj) ?? 0;
         }
 
-        public static bool? ParseBoolNullable(string text)
+        public static bool? ParseBoolNullable(object obj)
         {
+            string text = obj?.ToString();
             bool parsed;
             if (bool.TryParse(text, out parsed))
             {
@@ -237,9 +248,9 @@ namespace SM64_Diagnostic.Utilities
             return null;
         }
 
-        public static bool ParseBool(string text)
+        public static bool ParseBool(string obj)
         {
-            return ParseBoolNullable(text) ?? false;
+            return ParseBoolNullable(obj) ?? false;
         }
 
         public static List<string> ParseTextIntoStrings(string text)
