@@ -672,7 +672,10 @@ namespace SM64_Diagnostic.Structs
                 case "ScuttlebugDeltaAngleToTarget":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        ushort facingAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
+                        ushort targetAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.ScuttlebugTargetAngleOffset);
+                        int angleDiff = facingAngle - targetAngle;
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
                     break;
 
