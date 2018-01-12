@@ -451,58 +451,120 @@ namespace SM64_Diagnostic.Structs
                 case "RacingPenguinDiffHSpeedTarget":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
+                            GetRacingPenguinSpecialVars(objAddress);
+                        float hSpeed = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HSpeedOffset);
+                        double hSpeedDiff = hSpeed - hSpeedTarget;
+                        return hSpeedDiff.ToString();
                     };
                     break;
 
                 case "RacingPenguinProgress":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        double progress = Config.RacingPenguinWaypoints.GetProgress(objAddress);
+                        return progress.ToString();
                     };
                     break;
 
+                    /*
                 case "RacingPenguinProgressDiff":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+
+                        TestingManager testingManager = TestingManager.Instance;
+                        Dictionary<int, TestingManager.VarState> dictionary = testingManager.VarStateDictionary;
+                        var currentTimer = Config.Stream.GetInt32(Config.SwitchRomVersion(0x803493DC, 0x803463EC));
+                        if (!dictionary.ContainsKey(currentTimer))
+                        {
+                            newText = "N/A";
+                            break;
+                        }
+                        TestingManager.VarState varState = dictionary[currentTimer];
+                        if (!(varState is TestingManager.VarStatePenguin))
+                        {
+                            newText = "N/A";
+                            break;
+                        }
+                        TestingManager.VarStatePenguin varStatePenguin = varState as TestingManager.VarStatePenguin;
+                        double varStateProgress = varStatePenguin.Progress;
+
+                        double currentProgress = Config.RacingPenguinWaypoints.GetProgress(objAddress);
+                        double progressDiff = currentProgress - varStateProgress;
+                        newText = Math.Round(progressDiff, 3).ToString();
+                        break;
+
                     };
                     break;
-
+                    
                 case "RacingPenguinProgressDiffDelta":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        TestingManager testingManager = TestingManager.Instance;
+                        Dictionary<int, TestingManager.VarState> dictionary = testingManager.VarStateDictionary;
+                        var currentTimer = Config.Stream.GetInt32(Config.SwitchRomVersion(0x803493DC, 0x803463EC));
+                        if (!dictionary.ContainsKey(currentTimer))
+                        {
+                            newText = "N/A";
+                            break;
+                        }
+                        TestingManager.VarState varState = dictionary[currentTimer];
+                        if (!(varState is TestingManager.VarStatePenguin))
+                        {
+                            newText = "N/A";
+                            break;
+                        }
+                        TestingManager.VarStatePenguin varStatePenguin = varState as TestingManager.VarStatePenguin;
+                        double varStateProgress = varStatePenguin.Progress;
+
+                        double currentProgress = Config.RacingPenguinWaypoints.GetProgress(objAddress);
+                        double progressDiff = currentProgress - varStateProgress;
+
+                        if (currentTimer != _racingPenguinCurrentTimer)
+                        {
+                            _racingPenguinPreviousTimer = _racingPenguinCurrentTimer;
+                            _racingPenguinPreviousProgressDiff = _racingPenguinCurrentProgressDiff;
+                            _racingPenguinCurrentTimer = currentTimer;
+                            _racingPenguinCurrentProgressDiff = progressDiff;
+                        }
+
+                        newText = Math.Round(_racingPenguinCurrentProgressDiff - _racingPenguinPreviousProgressDiff, 3).ToString();
+                        break;
                     };
                     break;
+                    */
 
                 // Object specific vars - Koopa the Quick
 
                 case "KoopaTheQuickHSpeedTarget":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        (double hSpeedTarget, double hSpeedChange) = GetKoopaTheQuickSpecialVars(objAddress);
+                        return hSpeedTarget.ToString();
                     };
                     break;
 
                 case "KoopaTheQuickHSpeedChange":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        (double hSpeedTarget, double hSpeedChange) = GetKoopaTheQuickSpecialVars(objAddress);
+                        return hSpeedChange.ToString();
                     };
                     break;
 
                 case "KoopaTheQuick1Progress":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        double progress = Config.KoopaTheQuick1Waypoints.GetProgress(objAddress);
+                        return progress.ToString();
                     };
                     break;
 
                 case "KoopaTheQuick2Progress":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        double progress = Config.KoopaTheQuick2Waypoints.GetProgress(objAddress);
+                        return progress.ToString();
                     };
                     break;
 
