@@ -189,5 +189,36 @@
   <Data groupList="Simple" type="int" offset="0x144" baseAddressType="Object">Subtype</Data>
   <Data groupList="Simple" type="int" offset="0x14C" baseAddressType="Object">State</Data>
   <Data groupList="Simple" type="int" offset="0x154" baseAddressType="Object">Timer</Data>
-  
+
+  <Data groupList="Expanded" baseAddressType="Object" specialType="PendulumAmplitude">PendulumAmplitude</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="PendulumSwingIndex">PendulumSwingIndex</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="ObjectDotProductToWaypoint">ObjectDotProductToWaypoint</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="ObjectDistanceToWaypointPlane">ObjectDistanceToWaypointPlane</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="ObjectDistanceToWaypoint">ObjectDistanceToWaypoint</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="RacingPenguinEffortTarget">RacingPenguinEffortTarget</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="RacingPenguinEffortChange">RacingPenguinEffortChange</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="RacingPenguinMinHSpeed">RacingPenguinMinHSpeed</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="RacingPenguinHSpeedTarget">RacingPenguinHSpeedTarget</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="RacingPenguinDiffHSpeedTarget">RacingPenguinDiffHSpeedTarget</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="RacingPenguinProgress">RacingPenguinProgress</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="RacingPenguinProgressDiff">RacingPenguinProgressDiff</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="RacingPenguinProgressDiffDelta">RacingPenguinProgressDiffDelta</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="KoopaTheQuickHSpeedTarget">KoopaTheQuickHSpeedTarget</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="KoopaTheQuickHSpeedChange">KoopaTheQuickHSpeedChange</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="KoopaTheQuick1Progress">KoopaTheQuick1Progress</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="KoopaTheQuick2Progress">KoopaTheQuick2Progress</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="FlyGuyZone">FlyGuyZone</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="FlyGuyRelativeHeight">FlyGuyRelativeHeight</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="FlyGuyNextHeightDiff">FlyGuyNextHeightDiff</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="FlyGuyMinHeight">FlyGuyMinHeight</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="FlyGuyMaxHeight">FlyGuyMaxHeight</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="BobombBloatSize">BobombBloatSize</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="BobombRadius">BobombRadius</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="BobombSpaceBetween">BobombSpaceBetween</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="ScuttlebugDeltaAngleToTarget">ScuttlebugDeltaAngleToTarget</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioGhostVerticalDistance">MarioGhostVerticalDistance</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioGhostHorizontalDistance">MarioGhostHorizontalDistance</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioGhostForwardsDistance">MarioGhostForwardsDistance</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="MarioGhostSidewaysDistance">MarioGhostSidewaysDistance</Data>
+
 </WaterData>
