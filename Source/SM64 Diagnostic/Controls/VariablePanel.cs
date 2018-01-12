@@ -40,6 +40,46 @@ namespace SM64_Diagnostic.Controls
             _allGroups.AddRange(allGroups);
             _visibleGroups.Clear();
             _visibleGroups.AddRange(visibleGroups);
+            UpdateControlsBasedOnFilters();
+
+            _allGroups.ForEach(varGroup =>
+            {
+                ToolStripMenuItem item = CreateVariableGroupItem(varGroup, _visibleGroups.Contains(varGroup));
+                ContextMenuStrip.Items.Add(item);
+            });
+        }
+
+        private ToolStripMenuItem CreateVariableGroupItem(VariableGroup varGroup, bool visible)
+        {
+            ToolStripMenuItem item = new ToolStripMenuItem(varGroup.ToString());
+            item.Click += (sender, e) =>
+            {
+                item.Checked = !item.Checked;
+                if (item.Checked) // visible
+                {
+                    _visibleGroups.Add(varGroup);
+                }
+                else // hidden
+                {
+                    _visibleGroups.Remove(varGroup);
+                }
+                UpdateControlsBasedOnFilters();
+            };
+            item.Checked = visible;
+            return item;
+        }
+
+        private void UpdateControlsBasedOnFilters()
+        {
+            lock (_objectLock)
+            {
+                Controls.Clear();
+                _varXControlsList.ForEach(varXControl =>
+                {
+                    if (varXControl.BelongsToAnyGroup(_visibleGroups))
+                        Controls.Add(varXControl);
+                });
+            }
         }
 
         public void AddVariables(List<VarXControl> varXControls)
@@ -49,19 +89,21 @@ namespace SM64_Diagnostic.Controls
                 varXControls.ForEach(varXControl =>
                 {
                     _varXControlsList.Add(varXControl);
-                    Controls.Add(varXControl);
+                    if (varXControl.BelongsToAnyGroup(_visibleGroups))
+                        Controls.Add(varXControl);
                 });
             }
         }
 
         public void RemoveVariables(List<VarXControl> varXControls)
         {
-            lock(_objectLock)
+            lock (_objectLock)
             {
                 varXControls.ForEach(varXControl =>
                 {
                     _varXControlsList.Remove(varXControl);
-                    Controls.Remove(varXControl);
+                    if (varXControl.BelongsToAnyGroup(_visibleGroups))
+                        Controls.Remove(varXControl);
                 });
             }
         }
@@ -76,10 +118,7 @@ namespace SM64_Diagnostic.Controls
 
         public void UpdateControls()
         {
-            lock (_objectLock)
-            {
-                _varXControlsList.ForEach(varXControl => varXControl.UpdateControl());
-            }
+            _varXControlsList.ForEach(varXControl => varXControl.UpdateControl());
         }
     }
 }

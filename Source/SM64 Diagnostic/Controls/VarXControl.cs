@@ -297,6 +297,11 @@ namespace SM64_Diagnostic.Controls
             return GroupList.Contains(variableGroup);
         }
 
+        public bool BelongsToAnyGroup(List<VariableGroup> variableGroups)
+        {
+            return variableGroups.Any(varGroup => BelongsToGroup(varGroup));
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
