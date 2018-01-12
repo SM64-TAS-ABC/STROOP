@@ -1708,10 +1708,13 @@ namespace SM64_Diagnostic.Utilities
                         }
 
                         var watchVars = new List<WatchVariable>();
+                        List<VarXPrecursor> precursors = new List<VarXPrecursor>();
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
                         {
                             var watchVar = GetWatchVariableFromElement(subElement);
                             watchVars.Add(watchVar);
+                            VarXPrecursor precursor = null;// GetVarXPrecursorFromElement(subElement);
+                            precursors.Add(precursor);
                         }
 
                         var newBehavior = new ObjectBehaviorAssociation()
@@ -1728,6 +1731,7 @@ namespace SM64_Diagnostic.Utilities
                             Name = name,
                             RotatesOnMap = rotates,
                             WatchVariables = watchVars,
+                            VarXPrecursors = precursors,
                         };
 
                         if (!assoc.AddAssociation(newBehavior))

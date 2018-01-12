@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Controls;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace SM64_Diagnostic.Structs
         public Image TransparentImage;
         public Image MapImage;
         public List<WatchVariable> WatchVariables = new List<WatchVariable>();
+        public List<VarXPrecursor> VarXPrecursors = new List<VarXPrecursor>();
 
         public bool MeetsCriteria(BehaviorCriteria behaviorCriteria)
         {
