@@ -712,7 +712,8 @@ namespace SM64_Diagnostic.Structs
                         double angleFromGhost = MoreMath.AngleTo_AngleUnits(
                             ghostPos.X, ghostPos.Z, marioPos.X, marioPos.Z);
                         (double movementSideways, double movementForwards) =
-                            MoreMath.GetComponentsFromVectorRelatively(hDistToGhost, angleFromGhost, marioPos.Angle.Value);
+                            MoreMath.GetComponentsFromVectorRelatively(
+                                hDistToGhost, angleFromGhost, marioPos.Angle.Value);
                         return movementForwards.ToString();
                     };
                     break;
@@ -727,7 +728,8 @@ namespace SM64_Diagnostic.Structs
                         double angleFromGhost = MoreMath.AngleTo_AngleUnits(
                             ghostPos.X, ghostPos.Z, marioPos.X, marioPos.Z);
                         (double movementSideways, double movementForwards) =
-                            MoreMath.GetComponentsFromVectorRelatively(hDistToGhost, angleFromGhost, marioPos.Angle.Value);
+                            MoreMath.GetComponentsFromVectorRelatively(
+                                hDistToGhost, angleFromGhost, marioPos.Angle.Value);
                         return movementSideways.ToString();
                     };
                     break;
@@ -1856,7 +1858,7 @@ namespace SM64_Diagnostic.Structs
 
         // Object specific utilitiy methods
 
-        public static (double dotProduct, double distToWaypointPlane, double distToWaypoint)
+        private static (double dotProduct, double distToWaypointPlane, double distToWaypoint)
             GetWaypointSpecialVars(uint objAddress)
         {
             float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
@@ -1889,7 +1891,7 @@ namespace SM64_Diagnostic.Structs
             return (dotProduct, distToWaypointPlane, distToWaypoint);
         }
 
-        public static (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget)
+        private static (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget)
             GetRacingPenguinSpecialVars(uint racingPenguinAddress)
         {
             double marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
@@ -1922,7 +1924,7 @@ namespace SM64_Diagnostic.Structs
             return (effortTarget, effortChange, minHSpeed, hSpeedTarget);
         }
 
-        public static (double hSpeedTarget, double hSpeedChange)
+        private static (double hSpeedTarget, double hSpeedChange)
             GetKoopaTheQuickSpecialVars(uint koopaTheQuickAddress)
         {
             double hSpeedMultiplier = Config.Stream.GetSingle(koopaTheQuickAddress + Config.ObjectSlots.KoopaTheQuickHSpeedMultiplierOffset);
@@ -1935,7 +1937,7 @@ namespace SM64_Diagnostic.Structs
             return (hSpeedTarget, hSpeedChange);
         }
 
-        public static float GetPendulumAmplitude(uint pendulumAddress)
+        private static float GetPendulumAmplitude(uint pendulumAddress)
         {
             // Get pendulum variables
             float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationDirection);
