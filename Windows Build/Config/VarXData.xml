@@ -98,13 +98,13 @@
   <Data groupList="Expanded" baseAddressType="Object" specialType="HorizontalObjectDistanceToHome">HDist Obj to Home</Data>
   <Data groupList="Expanded" baseAddressType="Object" specialType="VerticalObjectDistanceToHome">VDist Obj to Home</Data>
   <Data groupList="Expanded" type="ushort" offset="0x0162" baseAddressType="Object" subclass="Angle">"Angle to Mario"</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="AngleObjectToMario">Angle Obj to Mario</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="DeltaAngleObjectToMario">DAngle Obj to Mario</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="AngleMarioToObject">Angle Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="DeltaAngleMarioToObject">DAngle Mario to Obj</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="AngleObjectToHome">Angle Obj to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="DeltaAngleObjectToHome">DAngle Obj to Home</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="AngleHomeToObject">Angle Home to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="AngleObjectToMario" subclass="Angle" type="ushort">Angle Obj to Mario</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" type="short">DAngle Obj to Mario</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="AngleMarioToObject" subclass="Angle" type="ushort">Angle Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="DeltaAngleMarioToObject" subclass="Angle" type="short">DAngle Mario to Obj</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="AngleObjectToHome" subclass="Angle" type="ushort">Angle Obj to Home</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" type="short">DAngle Obj to Home</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="AngleHomeToObject" subclass="Angle" type="ushort">Angle Home to Obj</Data>
   <Data groupList="Expanded" type="uint" offset="0x218" baseAddressType="Object" useHex="true">Hitbox Pointer</Data>
   <Data groupList="Expanded" type="float" offset="0x1f8" baseAddressType="Object">Hitbox Radius</Data>
   <Data groupList="Expanded" type="float" offset="0x1fc" baseAddressType="Object">Hitbox Height</Data>
@@ -215,7 +215,7 @@
   <Data groupList="Expanded" baseAddressType="Object" specialType="BobombBloatSize">BobombBloatSize</Data>
   <Data groupList="Expanded" baseAddressType="Object" specialType="BobombRadius">BobombRadius</Data>
   <Data groupList="Expanded" baseAddressType="Object" specialType="BobombSpaceBetween">BobombSpaceBetween</Data>
-  <Data groupList="Expanded" baseAddressType="Object" specialType="ScuttlebugDeltaAngleToTarget">ScuttlebugDeltaAngleToTarget</Data>
+  <Data groupList="Expanded" baseAddressType="Object" specialType="ScuttlebugDeltaAngleToTarget" subclass="Angle" type="short">ScuttlebugDeltaAngleToTarget</Data>
   <Data groupList="Expanded" baseAddressType="Object" specialType="MarioGhostVerticalDistance">MarioGhostVerticalDistance</Data>
   <Data groupList="Expanded" baseAddressType="Object" specialType="MarioGhostHorizontalDistance">MarioGhostHorizontalDistance</Data>
   <Data groupList="Expanded" baseAddressType="Object" specialType="MarioGhostForwardsDistance">MarioGhostForwardsDistance</Data>

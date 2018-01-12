@@ -29,8 +29,9 @@ namespace SM64_Diagnostic.Structs
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
-                        return MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z).ToString();
+                        double dist = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
+                        return dist.ToString();
                     };
                     setterFunction = (string stringValue, uint objAddress) =>
                     {
@@ -49,17 +50,13 @@ namespace SM64_Diagnostic.Structs
                 case "MarioHorizontalDistanceToObject":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
-                    };
-                        /*
                         Position marioPos = GetMarioPosition();
-                        List<Position> objPoses = GetObjectPositions();
-                        return objPoses.ConvertAll(objPos =>
-                        {
-                            return MoreMath.GetDistanceBetween(
-                                marioPos.X, marioPos.Z, objPos.X, objPos.Z).ToString();
-                        });
+                        Position objPos = GetObjectPosition(objAddress);
+                        double hDist = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                        return hDist.ToString();
                     };
+                    /*
                     setterFunction = (string stringValue) =>
                     {
                         Position marioPos = GetMarioPosition();
@@ -78,16 +75,12 @@ namespace SM64_Diagnostic.Structs
                 case "MarioVerticalDistanceToObject":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                        float yDist = marioY - objY;
+                        return yDist.ToString();
                     };
-                        /*
-                        Position marioPos = GetMarioPosition();
-                        List<Position> objPoses = GetObjectPositions();
-                        return objPoses.ConvertAll(objPos =>
-                        {
-                            return (marioPos.Y - objPos.Y).ToString();
-                        });
-                    };
+                    /*
                     setterFunction = (string stringValue) =>
                     {
                         List<Position> objPoses = GetObjectPositions();
@@ -104,42 +97,64 @@ namespace SM64_Diagnostic.Structs
                 case "MarioDistanceToObjectHome":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        Position marioPos = GetMarioPosition();
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double dist = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, homePos.X, homePos.Y, homePos.Z);
+                        return dist.ToString();
                     };
                     break;
 
                 case "MarioHorizontalDistanceToObjectHome":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        Position marioPos = GetMarioPosition();
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double hDist = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Z, homePos.X, homePos.Z);
+                        return hDist.ToString();
                     };
                     break;
 
                 case "MarioVerticalDistanceToObjectHome":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+                        float homeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                        float yDist = marioY - homeY;
+                        return yDist.ToString();
                     };
                     break;
 
                 case "ObjectDistanceToHome":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        Position objPos = GetObjectPosition(objAddress);
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double dist = MoreMath.GetDistanceBetween(
+                            objPos.X, objPos.Y, objPos.Z, homePos.X, homePos.Y, homePos.Z);
+                        return dist.ToString();
                     };
                     break;
 
                 case "HorizontalObjectDistanceToHome":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        Position objPos = GetObjectPosition(objAddress);
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double hDist = MoreMath.GetDistanceBetween(
+                            objPos.X, objPos.Z, homePos.X, homePos.Z);
+                        return hDist.ToString();
                     };
                     break;
 
                 case "VerticalObjectDistanceToHome":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                        float homeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                        float yDist = objY - homeY;
+                        return yDist.ToString();
                     };
                     break;
 
@@ -205,21 +220,34 @@ namespace SM64_Diagnostic.Structs
                 case "AngleObjectToHome":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        Position objPos = GetObjectPosition(objAddress);
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double angleToHome = MoreMath.AngleTo_AngleUnits(
+                            objPos.X, objPos.Z, homePos.X, homePos.Z);
+                        return MoreMath.NormalizeAngleDouble(angleToHome).ToString();
                     };
                     break;
 
                 case "DeltaAngleObjectToHome":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        Position objPos = GetObjectPosition(objAddress);
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double angleToHome = MoreMath.AngleTo_AngleUnits(
+                            objPos.X, objPos.Z, homePos.X, homePos.Z);
+                        double angleDiff = objPos.Angle.Value - angleToHome;
+                        return MoreMath.NormalizeAngleDouble(angleDiff).ToString();
                     };
                     break;
 
                 case "AngleHomeToObject":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        Position objPos = GetObjectPosition(objAddress);
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double angleHomeToObject = MoreMath.AngleTo_AngleUnits(
+                            homePos.X, homePos.Z, objPos.X, objPos.Z);
+                        return MoreMath.NormalizeAngleDouble(angleHomeToObject).ToString();
                     };
                     break;
 
@@ -1532,6 +1560,14 @@ namespace SM64_Diagnostic.Structs
             if (angle.HasValue) success &= Config.Stream.SetValue((ushort)angle.Value, objAddress + Config.ObjectSlots.YawFacingOffset);
             if (angle.HasValue) success &= Config.Stream.SetValue((ushort)angle.Value, objAddress + Config.ObjectSlots.YawMovingOffset);
             return success;
+        }
+
+        private static Position GetObjectHomePosition(uint objAddress)
+        {
+            float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
+            float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+            float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
+            return new Position(objX, objY, objZ);
         }
 
         private static Position GetCameraPosition()
