@@ -340,7 +340,19 @@ namespace SM64_Diagnostic.Structs
                 case "ObjectRngCallsPerFrame":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "UNIMP2";
+                        uint numberOfRngObjs = Config.Stream.GetUInt32(Config.HackedAreaAddress);
+                        int numOfCalls = 0;
+                        for (int i = 0; i < Math.Min(numberOfRngObjs, Config.ObjectSlots.MaxSlots); i++)
+                        {
+                            uint rngStructAdd = (uint)(Config.HackedAreaAddress + 0x30 + 0x08 * i);
+                            uint address = Config.Stream.GetUInt32(rngStructAdd + 0x04);
+                            if (address != objAddress) continue;
+                            ushort preRng = Config.Stream.GetUInt16(rngStructAdd + 0x00);
+                            ushort postRng = Config.Stream.GetUInt16(rngStructAdd + 0x02);
+                            numOfCalls = RngIndexer.GetRngIndexDiff(preRng, postRng);
+                            break;
+                        }
+                        return numOfCalls.ToString();
                     };
                     break;
 

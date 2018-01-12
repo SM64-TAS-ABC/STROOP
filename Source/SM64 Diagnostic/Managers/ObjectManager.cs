@@ -250,7 +250,7 @@ namespace SM64_Diagnostic.Managers
             new SpecialWatchVariable("MarioGhostSidewaysDistance"),
 
             // Hacked vars
-            new SpecialWatchVariable("RngCallsPerFrame"),
+            new SpecialWatchVariable("ObjectRngCallsPerFrame"),
         };
 
         public ObjectManager(List<WatchVariable> objectData, Control objectControl, NoTearFlowLayoutPanel variableTable)
@@ -1001,7 +1001,7 @@ namespace SM64_Diagnostic.Managers
                                 break;
                             }
                         
-                        case "RngCallsPerFrame":
+                        case "ObjectRngCallsPerFrame":
                             newText = GetNumRngCalls(objAddress).ToString();
                             break;
                     }
