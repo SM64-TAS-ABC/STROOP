@@ -253,8 +253,8 @@ namespace SM64_Diagnostic.Managers
             new SpecialWatchVariable("ObjectRngCallsPerFrame"),
         };
 
-        public ObjectManager(List<WatchVariable> objectData, Control objectControl, NoTearFlowLayoutPanel variableTable)
-            : base(objectData, variableTable)
+        public ObjectManager(List<VarXControl> variables, Control objectControl, NoTearFlowLayoutPanel variableTable)
+            : base(variables, variableTable)
         {
             Instance = this;
 
