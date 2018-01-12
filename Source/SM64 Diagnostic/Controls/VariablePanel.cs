@@ -89,7 +89,7 @@ namespace SM64_Diagnostic.Controls
                 varXControls.ForEach(varXControl =>
                 {
                     _varXControlsList.Add(varXControl);
-                    if (varXControl.BelongsToAnyGroup(_visibleGroups))
+                    if (_allGroups.Count == 0 || varXControl.BelongsToAnyGroup(_visibleGroups))
                         Controls.Add(varXControl);
                 });
             }
@@ -102,7 +102,7 @@ namespace SM64_Diagnostic.Controls
                 varXControls.ForEach(varXControl =>
                 {
                     _varXControlsList.Remove(varXControl);
-                    if (varXControl.BelongsToAnyGroup(_visibleGroups))
+                    if (_allGroups.Count == 0 || varXControl.BelongsToAnyGroup(_visibleGroups))
                         Controls.Remove(varXControl);
                 });
             }

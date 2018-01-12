@@ -34,7 +34,7 @@ namespace SM64_Diagnostic.Managers
         
         public virtual void Update(bool updateView = false)
         {
-            if (!updateView) return;
+            //if (!updateView) return;
             _variablePanel.UpdateControls();
         }
     }
