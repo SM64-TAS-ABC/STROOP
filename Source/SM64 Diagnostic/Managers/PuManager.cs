@@ -71,7 +71,6 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             //base.Update();
-            //ProcessSpecialVars();
 
             _puController.Controls["labelPuConPuValue"].Text = PuUtilities.GetPuPosString();
             _puController.Controls["labelPuConQpuValue"].Text = PuUtilities.GetQpuPosString();
