@@ -2393,8 +2393,7 @@ namespace SM64_Diagnostic.Utilities
 
             List<VariableGroup> groupList = VarXUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
 
-            string specialType = (element.Attribute(XName.Get("specialType")) != null) ?
-                element.Attribute(XName.Get("specialType")).Value : null;
+            string specialType = element.Attribute(XName.Get("specialType"))?.Value;
 
             Color? backgroundColor = (element.Attribute(XName.Get("color")) != null) ?
                 ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
@@ -2415,27 +2414,21 @@ namespace SM64_Diagnostic.Utilities
                     ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value),
                     mask);
 
-            // TODO remove this once var x is the norm
-            if (element.Attribute(XName.Get("isBool")) != null ||
-                element.Attribute(XName.Get("isObject")) != null ||
-                element.Attribute(XName.Get("isAngle")) != null)
-            {
-                throw new ArgumentOutOfRangeException("xml file contained one of: isBool, isObject, isAngle");
-            }
-
             bool? useHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : (bool?)null;
-
-            bool? signed = element.Attribute(XName.Get("signed")) != null ?
-                bool.Parse(element.Attribute(XName.Get("signed")).Value) : (bool?)null;
 
             bool? invertBool = element.Attribute(XName.Get("invertBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : (bool?)null;
 
+            VarXCoordinate? coordinate = element.Attribute(XName.Get("coord")) != null ?
+                VarXUtilities.GetVarXCoordinate(element.Attribute(XName.Get("coord")).Value) : (VarXCoordinate?)null;
+
+
+
             // TODO remove this once var x is the norm
             if (varXSubclass == VarXSubclass.Object && useHex != null)
             {
-                throw new ArgumentOutOfRangeException("xml var is both object and uses hex (redundant)");
+                throw new ArgumentOutOfRangeException("var is both object and uses hex (redundant)");
             }
 
             if (varXSubclass == VarXSubclass.Angle && specialType != null)
@@ -2446,13 +2439,7 @@ namespace SM64_Diagnostic.Utilities
                 }
             }
 
-            if (signed != null)
-            {
-                throw new ArgumentOutOfRangeException("signed is outdated");
-            }
 
-            VarXCoordinate? coordinate = element.Attribute(XName.Get("coord")) != null ?
-                VarXUtilities.GetVarXCoordinate(element.Attribute(XName.Get("coord")).Value) : (VarXCoordinate?)null;
 
             return new VarXPrecursor(
                 name,
