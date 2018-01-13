@@ -66,8 +66,10 @@ namespace SM64_Diagnostic.Controls
             uint uintValue = uintValueNullable.Value;
 
             if (uintValue == 0) return "(no object)";
+            if (uintValue == Config.ObjectSlots.UnusedSlotAddress) return "(unused slot)";
 
             string slotName = ObjectSlotsManager.Instance.GetSlotNameFromAddress(uintValue);
+            if (slotName == null) return "(unrecognized slot)";
             return "Slot " + slotName;
         }
 
@@ -76,6 +78,7 @@ namespace SM64_Diagnostic.Controls
             string slotName = stringValue.ToLower();
 
             if (slotName == "(no object)" || slotName == "no object") return "0";
+            if (slotName == "(unused slot)" || slotName == "unused slot") return Config.ObjectSlots.UnusedSlotAddress.ToString();
 
             if (!slotName.StartsWith("slot")) return stringValue;
             slotName = slotName.Remove(0, "slot".Length);
