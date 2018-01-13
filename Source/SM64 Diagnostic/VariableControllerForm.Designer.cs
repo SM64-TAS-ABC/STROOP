@@ -33,11 +33,11 @@
             this._buttonAdd = new System.Windows.Forms.Button();
             this._buttonGet = new System.Windows.Forms.Button();
             this._buttonSet = new System.Windows.Forms.Button();
-            this._labelVarName = new System.Windows.Forms.Label();
             this._checkBoxFixAddress = new System.Windows.Forms.CheckBox();
             this._textBoxGetSet = new SM64_Diagnostic.BetterTextbox();
             this._textBoxCurrentValue = new SM64_Diagnostic.BetterTextbox();
             this._textBoxAddSubtract = new SM64_Diagnostic.BetterTextbox();
+            this._textBoxVarName = new SM64_Diagnostic.BetterTextbox();
             this.SuspendLayout();
             // 
             // _buttonSubtract
@@ -80,20 +80,10 @@
             this._buttonSet.Text = "Set";
             this._buttonSet.UseVisualStyleBackColor = true;
             // 
-            // _labelVarName
-            // 
-            this._labelVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelVarName.Location = new System.Drawing.Point(19, 5);
-            this._labelVarName.Name = "_labelVarName";
-            this._labelVarName.Size = new System.Drawing.Size(166, 25);
-            this._labelVarName.TabIndex = 10;
-            this._labelVarName.Text = "Variable Name";
-            this._labelVarName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // _checkBoxFixAddress
             // 
             this._checkBoxFixAddress.AutoSize = true;
-            this._checkBoxFixAddress.Location = new System.Drawing.Point(149, 31);
+            this._checkBoxFixAddress.Location = new System.Drawing.Point(149, 32);
             this._checkBoxFixAddress.Name = "_checkBoxFixAddress";
             this._checkBoxFixAddress.Size = new System.Drawing.Size(48, 30);
             this._checkBoxFixAddress.TabIndex = 38;
@@ -130,12 +120,24 @@
             this._textBoxAddSubtract.Text = "100";
             this._textBoxAddSubtract.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // _textBoxVarName
+            // 
+            this._textBoxVarName.BackColor = System.Drawing.SystemColors.Control;
+            this._textBoxVarName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._textBoxVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
+            this._textBoxVarName.Location = new System.Drawing.Point(9, 5);
+            this._textBoxVarName.Name = "_textBoxVarName";
+            this._textBoxVarName.Size = new System.Drawing.Size(186, 24);
+            this._textBoxVarName.TabIndex = 9;
+            this._textBoxVarName.Text = "Variable Name";
+            this._textBoxVarName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // VariableControllerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(204, 142);
-            this.Controls.Add(this._labelVarName);
+            this.Controls.Add(this._textBoxVarName);
             this.Controls.Add(this._textBoxGetSet);
             this.Controls.Add(this._buttonAdd);
             this.Controls.Add(this._buttonSet);
@@ -166,8 +168,8 @@
         private System.Windows.Forms.Button _buttonAdd;
         private System.Windows.Forms.Button _buttonGet;
         private System.Windows.Forms.Button _buttonSet;
-        private System.Windows.Forms.Label _labelVarName;
         private BetterTextbox _textBoxCurrentValue;
         private System.Windows.Forms.CheckBox _checkBoxFixAddress;
+        private BetterTextbox _textBoxVarName;
     }
 }

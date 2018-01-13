@@ -35,7 +35,7 @@ namespace SM64_Diagnostic
 
         private void VariableViewerForm_Load(object sender, EventArgs eventArgs)
         {
-            _labelVarName.Text = _varName;
+            _textBoxVarName.Text = _varName;
             _buttonAdd.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, true, _addresses); };
             _buttonSubtract.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, false, _addresses); };
             _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _varX.GetStringValue(true, true, _addresses); };
