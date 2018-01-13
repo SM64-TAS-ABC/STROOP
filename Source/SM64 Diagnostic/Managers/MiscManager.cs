@@ -14,25 +14,12 @@ namespace SM64_Diagnostic.Managers
 {
     public class MiscManager : DataManager
     {
-        BetterTextbox _betterTextboxRNGIndex;
         CheckBox _checkBoxTurnOffMusic;
 
         public MiscManager(List<WatchVariableControl> variables, WatchVariablePanel variableTable, Control miscControl)
             : base(variables, variableTable)
         {
             SplitContainer splitContainerMisc = miscControl.Controls["splitContainerMisc"] as SplitContainer;
-            GroupBox groupBoxRNGIndex = splitContainerMisc.Panel1.Controls["groupBoxRNGIndex"] as GroupBox;
-            _betterTextboxRNGIndex = groupBoxRNGIndex.Controls["betterTextboxRNGIndex"] as BetterTextbox;
-            _betterTextboxRNGIndex.AddEnterAction(() =>
-            {
-                int? index = ParsingUtilities.ParseIntNullable(_betterTextboxRNGIndex.Text);
-                if (index.HasValue)
-                {
-                    ushort rngValue = RngIndexer.GetRngValue(index.Value);
-                    Config.Stream.SetValue(rngValue, Config.RngAddress);
-                }
-            });
-
             _checkBoxTurnOffMusic = splitContainerMisc.Panel1.Controls["checkBoxTurnOffMusic"] as CheckBox;
         }
 
