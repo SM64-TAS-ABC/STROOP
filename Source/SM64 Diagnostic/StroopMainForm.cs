@@ -101,22 +101,22 @@ namespace SM64_Diagnostic
             currentContext.MapManager = new MapManager(_mapAssoc, mapGui);
             currentContext.ModelManager = new ModelManager(tabPageModel);
 
-            currentContext.ActionsManager = new ActionsManager(_actionsData, noTearFlowLayoutPanelActions, tabPageActions);
-            currentContext.WaterManager = new WaterManager(_waterData, noTearFlowLayoutPanelWater);
-            currentContext.InputManager = new InputManager(_inputData, tabPageInput, NoTearFlowLayoutPanelInput, _inputImageGui);
-            currentContext.MarioManager = new MarioManager(_marioData, tabPageMario, NoTearFlowLayoutPanelMario);
-            currentContext.HudManager = new HudManager(_hudData, tabPageHud, NoTearFlowLayoutPanelHud);
-            currentContext.MiscManager = new MiscManager(_miscData, NoTearFlowLayoutPanelMisc, tabPageMisc);
-            currentContext.CameraManager = new CameraManager(_cameraData, tabPageCamera, NoTearFlowLayoutPanelCamera);
-            currentContext.TriangleManager = new TriangleManager(tabPageTriangles, _triangleData, NoTearFlowLayoutPanelTriangles);
-            currentContext.DebugManager = new DebugManager(_debugData, tabPageDebug, noTearFlowLayoutPanelDebug);
+            currentContext.ActionsManager = new ActionsManager(_actionsData, watchVariablePanelActions, tabPageActions);
+            currentContext.WaterManager = new WaterManager(_waterData, watchVariablePanelWater);
+            currentContext.InputManager = new InputManager(_inputData, tabPageInput, watchVariablePanelInput, _inputImageGui);
+            currentContext.MarioManager = new MarioManager(_marioData, tabPageMario, WatchVariablePanelMario);
+            currentContext.HudManager = new HudManager(_hudData, tabPageHud, watchVariablePanelHud);
+            currentContext.MiscManager = new MiscManager(_miscData, watchVariablePanelMisc, tabPageMisc);
+            currentContext.CameraManager = new CameraManager(_cameraData, tabPageCamera, watchVariablePanelCamera);
+            currentContext.TriangleManager = new TriangleManager(tabPageTriangles, _triangleData, watchVariablePanelTriangles);
+            currentContext.DebugManager = new DebugManager(_debugData, tabPageDebug, watchVariablePanelDebug);
             currentContext.PuManager = new PuManager(groupBoxPuController);
-            currentContext.FileManager = new FileManager(_fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
-            currentContext.AreaManager = new AreaManager(tabPageArea, _areaData, NoTearFlowLayoutPanelArea);
-            currentContext.QuarterFrameManager = new DataManager(_quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
-            currentContext.XManager = new CustomManager(_watchVarControlList, tabPageCustom, noTearFlowLayoutPanelCustom);
-            currentContext.CameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
-            currentContext.ObjectManager = new ObjectManager(_objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
+            currentContext.FileManager = new FileManager(_fileData, tabPageFile, watchVariablePanelFile, _fileImageGui);
+            currentContext.AreaManager = new AreaManager(tabPageArea, _areaData, watchVariablePanelArea);
+            currentContext.QuarterFrameManager = new DataManager(_quarterFrameData, watchVariablePanelQuarterFrame);
+            currentContext.XManager = new CustomManager(_watchVarControlList, tabPageCustom, watchVariablePanelCustom);
+            currentContext.CameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, watchVariablePanelCamHack);
+            currentContext.ObjectManager = new ObjectManager(_objectData, tabPageObjects, WatchVariablePanelObject);
             currentContext.OptionsManager = new OptionsManager(tabPageOptions);
             currentContext.TestingManager = new TestingManager(tabPageTesting);
             currentContext.ScriptManager = new ScriptManager(tabPageScripts);
@@ -124,7 +124,7 @@ namespace SM64_Diagnostic
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
             _slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
-            _slotManagerGui.FlowLayoutContainer = NoTearFlowLayoutPanelObjects;
+            _slotManagerGui.FlowLayoutContainer = WatchVariablePanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
             currentContext.ObjectSlotManager = new ObjectSlotsManager(_slotManagerGui, tabControlMain);
@@ -425,16 +425,16 @@ namespace SM64_Diagnostic
 
         }
 
-        private async void NoTearFlowLayoutPanelObjects_Resize(object sender, EventArgs e)
+        private async void WatchVariablePanelObjects_Resize(object sender, EventArgs e)
         {
             _resizeTimeLeft = 500;
             if (_resizing)
                 return;
 
             _resizing = true;
-            NoTearFlowLayoutPanelObjects.Visible = false;
-            NoTearFlowLayoutPanelObject.Visible = false;
-            NoTearFlowLayoutPanelMario.Visible = false;
+            WatchVariablePanelObjects.Visible = false;
+            WatchVariablePanelObject.Visible = false;
+            WatchVariablePanelMario.Visible = false;
             MapManager mapManager = ManagerContext.Current.MapManager;
             if (mapManager != null && mapManager.IsLoaded)
                 mapManager.Visible = false;
@@ -449,9 +449,9 @@ namespace SM64_Diagnostic
                     _resizeTimeLeft -= 100;
                 }
             });
-            NoTearFlowLayoutPanelObjects.Visible = true;
-            NoTearFlowLayoutPanelObject.Visible = true;
-            NoTearFlowLayoutPanelMario.Visible = true;
+            WatchVariablePanelObjects.Visible = true;
+            WatchVariablePanelObject.Visible = true;
+            WatchVariablePanelMario.Visible = true;
             if (mapManager != null && mapManager.IsLoaded)
                 mapManager.Visible = true;
             if (modelManager != null && modelManager.IsLoaded)
@@ -660,9 +660,9 @@ namespace SM64_Diagnostic
                 }
             });
 
-            NoTearFlowLayoutPanelObjects.Visible = false;
+            WatchVariablePanelObjects.Visible = false;
             ManagerContext.Current.ObjectSlotManager.ChangeSlotSize(trackBarObjSlotSize.Value);
-            NoTearFlowLayoutPanelObjects.Visible = true;
+            WatchVariablePanelObjects.Visible = true;
             _objSlotResizing = false;
         }
 
