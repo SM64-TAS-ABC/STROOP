@@ -42,6 +42,7 @@
             // 
             // _buttonSubtract
             // 
+            this._buttonSubtract.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this._buttonSubtract.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._buttonSubtract.Location = new System.Drawing.Point(9, 63);
             this._buttonSubtract.Name = "_buttonSubtract";
@@ -52,6 +53,7 @@
             // 
             // _buttonAdd
             // 
+            this._buttonAdd.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._buttonAdd.Location = new System.Drawing.Point(145, 63);
             this._buttonAdd.Name = "_buttonAdd";
@@ -62,6 +64,7 @@
             // 
             // _buttonGet
             // 
+            this._buttonGet.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this._buttonGet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._buttonGet.Location = new System.Drawing.Point(9, 101);
             this._buttonGet.Name = "_buttonGet";
@@ -72,6 +75,7 @@
             // 
             // _buttonSet
             // 
+            this._buttonSet.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._buttonSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._buttonSet.Location = new System.Drawing.Point(145, 101);
             this._buttonSet.Name = "_buttonSet";
@@ -82,6 +86,7 @@
             // 
             // _checkBoxFixAddress
             // 
+            this._checkBoxFixAddress.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._checkBoxFixAddress.AutoSize = true;
             this._checkBoxFixAddress.Location = new System.Drawing.Point(149, 32);
             this._checkBoxFixAddress.Name = "_checkBoxFixAddress";
@@ -92,6 +97,7 @@
             // 
             // _textBoxGetSet
             // 
+            this._textBoxGetSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._textBoxGetSet.BackColor = System.Drawing.Color.White;
             this._textBoxGetSet.Location = new System.Drawing.Point(65, 107);
             this._textBoxGetSet.Name = "_textBoxGetSet";
@@ -102,6 +108,7 @@
             // 
             // _textBoxCurrentValue
             // 
+            this._textBoxCurrentValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._textBoxCurrentValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this._textBoxCurrentValue.Location = new System.Drawing.Point(65, 37);
             this._textBoxCurrentValue.Name = "_textBoxCurrentValue";
@@ -112,6 +119,7 @@
             // 
             // _textBoxAddSubtract
             // 
+            this._textBoxAddSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._textBoxAddSubtract.BackColor = System.Drawing.Color.White;
             this._textBoxAddSubtract.Location = new System.Drawing.Point(65, 69);
             this._textBoxAddSubtract.Name = "_textBoxAddSubtract";
@@ -122,6 +130,7 @@
             // 
             // _textBoxVarName
             // 
+            this._textBoxVarName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._textBoxVarName.BackColor = System.Drawing.SystemColors.Control;
             this._textBoxVarName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._textBoxVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
@@ -137,7 +146,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(204, 142);
-            this.Controls.Add(this._textBoxVarName);
             this.Controls.Add(this._textBoxGetSet);
             this.Controls.Add(this._buttonAdd);
             this.Controls.Add(this._buttonSet);
@@ -146,11 +154,11 @@
             this.Controls.Add(this._textBoxCurrentValue);
             this.Controls.Add(this._textBoxAddSubtract);
             this.Controls.Add(this._checkBoxFixAddress);
+            this.Controls.Add(this._textBoxVarName);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(220, 180);
+            this.MaximumSize = new System.Drawing.Size(10000, 10000);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(220, 180);
             this.Name = "VariableControllerForm";
             this.ShowIcon = false;
             this.Text = "Variable Controller";
