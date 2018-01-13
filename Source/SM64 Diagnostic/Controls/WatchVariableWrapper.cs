@@ -292,6 +292,14 @@ namespace SM64_Diagnostic.Controls
             _watchVariablePanel = panel;
         }
 
+        public void NotifyInCustomTab()
+        {
+            _separatorCustom.Visible = true;
+            _itemFixAddress.Visible = true;
+            _itemRename.Visible = true;
+            _itemDelete.Visible = true;
+        }
+
 
 
 

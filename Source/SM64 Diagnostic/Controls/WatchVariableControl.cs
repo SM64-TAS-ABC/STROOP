@@ -307,6 +307,11 @@ namespace SM64_Diagnostic.Controls
             _watchVarWrapper.NotifyPanel(panel);
         }
 
+        public void NotifyInCustomTab()
+        {
+            _watchVarWrapper.NotifyInCustomTab();
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);

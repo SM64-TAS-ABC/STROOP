@@ -26,6 +26,7 @@ namespace SM64_Diagnostic.Managers
         public void AddVariable(WatchVariableControl watchVarControl)
         {
             AddwatchVarControls(new List<WatchVariableControl>() { watchVarControl });
+            watchVarControl.NotifyInCustomTab();
         }
 
         public override void Update(bool updateView)
