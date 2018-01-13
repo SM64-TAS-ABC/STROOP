@@ -33,10 +33,12 @@ namespace SM64_Diagnostic
 
         private void VariableViewerForm_Load(object sender, EventArgs e)
         {
+            /*
             labelVarName.Text = _name;
             labelVarTypeValue.Text = _type;
             textBoxN64AddValue.Text = _n64Address;
-            textBoxEmuAddValue.Text = _processAddress;
+            textBoxAddSubtract.Text = _processAddress;
+            */
         }
     }
 }
