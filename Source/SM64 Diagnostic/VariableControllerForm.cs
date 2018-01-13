@@ -26,15 +26,13 @@ namespace SM64_Diagnostic
 
         public VariableControllerForm(string varName, VarX varX)
         {
-            InitializeComponent();
             _varName = varName;
             _varX = varX;
             _timer = new System.Windows.Forms.Timer { Interval = 30 };
             _addresses = null;
-        }
 
-        private void VariableViewerForm_Load(object sender, EventArgs eventArgs)
-        {
+            InitializeComponent();
+
             _textBoxVarName.Text = _varName;
             _buttonAdd.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, true, _addresses); };
             _buttonSubtract.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, false, _addresses); };

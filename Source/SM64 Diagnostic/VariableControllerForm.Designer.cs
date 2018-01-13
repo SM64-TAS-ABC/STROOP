@@ -190,7 +190,6 @@
             this.Name = "VariableControllerForm";
             this.ShowIcon = false;
             this.Text = "Variable Controller";
-            this.Load += new System.EventHandler(this.VariableViewerForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
