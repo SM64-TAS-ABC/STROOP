@@ -37,6 +37,7 @@
             this._buttonSet = new System.Windows.Forms.Button();
             this._labelVarName = new System.Windows.Forms.Label();
             this._textBoxCurrentValue = new SM64_Diagnostic.BetterTextbox();
+            this.checkBoxFixAddress = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // _buttonSubtract
@@ -119,6 +120,16 @@
             this._textBoxCurrentValue.Text = "100";
             this._textBoxCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // checkBoxFixAddress
+            // 
+            this.checkBoxFixAddress.AutoSize = true;
+            this.checkBoxFixAddress.Location = new System.Drawing.Point(154, 31);
+            this.checkBoxFixAddress.Name = "checkBoxFixAddress";
+            this.checkBoxFixAddress.Size = new System.Drawing.Size(48, 30);
+            this.checkBoxFixAddress.TabIndex = 38;
+            this.checkBoxFixAddress.Text = "Fix\r\nAddr";
+            this.checkBoxFixAddress.UseVisualStyleBackColor = true;
+            // 
             // VariableControllerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,6 +143,7 @@
             this.Controls.Add(this._buttonSubtract);
             this.Controls.Add(this._textBoxCurrentValue);
             this.Controls.Add(this._textBoxAddSubtract);
+            this.Controls.Add(this.checkBoxFixAddress);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(220, 180);
@@ -156,5 +168,6 @@
         private System.Windows.Forms.Button _buttonSet;
         private System.Windows.Forms.Label _labelVarName;
         private BetterTextbox _textBoxCurrentValue;
+        private System.Windows.Forms.CheckBox checkBoxFixAddress;
     }
 }
