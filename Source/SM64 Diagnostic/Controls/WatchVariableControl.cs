@@ -302,6 +302,11 @@ namespace SM64_Diagnostic.Controls
             return variableGroups.Any(varGroup => BelongsToGroup(varGroup));
         }
 
+        public void NotifyPanel(WatchVariablePanel panel)
+        {
+            _watchVarWrapper.NotifyPanel(panel);
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);

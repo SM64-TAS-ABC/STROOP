@@ -23,6 +23,7 @@ namespace SM64_Diagnostic.Controls
         protected readonly WatchVariable _watchVar;
         protected readonly WatchVariableControl _watchVarControl;
         protected readonly BetterContextMenuStrip _contextMenuStrip;
+        protected WatchVariablePanel _watchVariablePanel;
 
         // Lock items
         private ToolStripMenuItem _itemLock;
@@ -284,6 +285,11 @@ namespace SM64_Diagnostic.Controls
         public List<uint> GetCurrentAddresses()
         {
             return _watchVar.AddressList;
+        }
+
+        public void NotifyPanel(WatchVariablePanel panel)
+        {
+            _watchVariablePanel = panel;
         }
 
 

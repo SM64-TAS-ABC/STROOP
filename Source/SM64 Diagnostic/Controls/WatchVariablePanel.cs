@@ -89,8 +89,8 @@ namespace SM64_Diagnostic.Controls
                 watchVarControls.ForEach(watchVarControl =>
                 {
                     _watchVarControlsList.Add(watchVarControl);
-                    if (_allGroups.Count == 0 || watchVarControl.BelongsToAnyGroup(_visibleGroups))
-                        Controls.Add(watchVarControl);
+                    if (ShouldShow(watchVarControl)) Controls.Add(watchVarControl);
+                    watchVarControl.NotifyPanel(this);
                 });
             }
         }
@@ -102,8 +102,8 @@ namespace SM64_Diagnostic.Controls
                 watchVarControls.ForEach(watchVarControl =>
                 {
                     _watchVarControlsList.Remove(watchVarControl);
-                    if (_allGroups.Count == 0 || watchVarControl.BelongsToAnyGroup(_visibleGroups))
-                        Controls.Remove(watchVarControl);
+                    if (ShouldShow(watchVarControl)) Controls.Remove(watchVarControl);
+                    watchVarControl.NotifyPanel(null);
                 });
             }
         }
@@ -119,6 +119,11 @@ namespace SM64_Diagnostic.Controls
         public void UpdateControls()
         {
             _watchVarControlsList.ForEach(watchVarControl => watchVarControl.UpdateControl());
+        }
+
+        private bool ShouldShow(WatchVariableControl watchVarControl)
+        {
+            return _allGroups.Count == 0 || watchVarControl.BelongsToAnyGroup(_visibleGroups);
         }
     }
 }
