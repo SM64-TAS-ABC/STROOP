@@ -332,7 +332,7 @@ namespace SM64_Diagnostic.Utilities
             AddInversionContextMenuStrip(buttonLeft, buttonRight);
         }
 
-        private static void AddInversionContextMenuStrip(
+        public static void AddInversionContextMenuStrip(
             Button buttonLeft,
             Button buttonRight)
         {

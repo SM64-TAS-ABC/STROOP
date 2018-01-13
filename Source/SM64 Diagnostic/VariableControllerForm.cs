@@ -38,6 +38,9 @@ namespace SM64_Diagnostic
             _buttonSubtract.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, false); };
             _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _varX.GetStringValue(); };
             _buttonSet.Click += (s, e) => { _varX.SetStringValue(_textBoxGetSet.Text); };
+
+            ControlUtilities.AddInversionContextMenuStrip(_buttonSubtract, _buttonAdd);
+            ControlUtilities.AddInversionContextMenuStrip(_buttonGet, _buttonSet);
         }
 
         public void UpdateForm()
