@@ -35,5 +35,10 @@ namespace SM64_Diagnostic
             _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _varX.GetStringValue(); };
             _buttonSet.Click += (s, e) => { _varX.SetStringValue(_textBoxGetSet.Text); };
         }
+
+        public void UpdateForm()
+        {
+            _textBoxCurrentValue.Text = _varX.GetStringValue();
+        }
     }
 }
