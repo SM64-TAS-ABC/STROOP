@@ -10,34 +10,30 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Utilities;
+using SM64_Diagnostic.Controls;
 
 namespace SM64_Diagnostic
 {
     public partial class VariableControllerForm : Form
     {
 
-        public VariableControllerForm(string name, string type, string n64Address, string processAddress)
+        private readonly string _varName;
+        private readonly VarX _varX;
+
+        public VariableControllerForm(string varName, VarX varX)
         {
             InitializeComponent();
-
-            /*
-            _buttonAdd.Click += (sender, e) => { };
-            _buttonSubtract.Click += (sender, e) => { };
-            _buttonGet.Click += (sender, e) => { };
-            _buttonSet.Click += (sender, e) => { };
-            */
-
+            _varName = varName;
+            _varX = varX;
         }
-        /*
-        private void buttonOk_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-                */
 
-        private void VariableViewerForm_Load(object sender, EventArgs e)
+        private void VariableViewerForm_Load(object sender, EventArgs eventArgs)
         {
-            
+            _labelVarName.Text = _varName;
+            _buttonAdd.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, true); };
+            _buttonSubtract.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, false); };
+            _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _varX.GetStringValue(); };
+            _buttonSet.Click += (s, e) => { _varX.SetStringValue(_textBoxGetSet.Text); };
         }
     }
 }

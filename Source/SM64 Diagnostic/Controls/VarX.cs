@@ -117,10 +117,10 @@ namespace SM64_Diagnostic.Controls
             itemCopyAsIs.Click += (sender, e) => { Clipboard.SetText(_varXControl.TextBoxValue); };
 
             ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy (Unrounded)");
-            itemCopyUnrounded.Click += (sender, e) => { Clipboard.SetText(GetValueForTextbox(false)); };
+            itemCopyUnrounded.Click += (sender, e) => { Clipboard.SetText(GetStringValue(false)); };
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
-            itemPaste.Click += (sender, e) => { SetValueFromTextbox(Clipboard.GetText()); };
+            itemPaste.Click += (sender, e) => { SetStringValue(Clipboard.GetText()); };
 
             _contextMenuStrip.AddToBeginningList(itemHighlight);
             _contextMenuStrip.AddToBeginningList(_itemLock);
@@ -160,9 +160,7 @@ namespace SM64_Diagnostic.Controls
             VariableControllerForm varController =
                 new VariableControllerForm(
                     _varXControl.VarName,
-                    _addressHolder.GetTypeDescription(),
-                    _addressHolder.GetRamAddressString(),
-                    _addressHolder.GetProcessAddressString());
+                    this);
             varController.Show();
         }
 
@@ -184,7 +182,7 @@ namespace SM64_Diagnostic.Controls
 
 
 
-        public string GetValueForTextbox(
+        public string GetStringValue(
             bool handleRounding = true,
             bool handleFormatting = true)
         {
@@ -202,7 +200,7 @@ namespace SM64_Diagnostic.Controls
             return value;
         }
 
-        public bool SetValueFromTextbox(string value)
+        public bool SetStringValue(string value)
         {
             value = HandleObjectUndisplaying(value);
             value = HandleHexUndisplaying(value);
@@ -214,7 +212,7 @@ namespace SM64_Diagnostic.Controls
             return success;
         }
 
-        public CheckState GetValueForCheckbox()
+        public CheckState GetCheckStateValue()
         {
             List<string> values = _addressHolder.GetValues();
             List<CheckState> checkStates = values.ConvertAll(value => ConvertValueToCheckState(value));
@@ -222,13 +220,33 @@ namespace SM64_Diagnostic.Controls
             return checkState;
         }
 
-        public bool SetValueFromCheckbox(CheckState checkState)
+        public bool SetCheckStateValue(CheckState checkState)
         {
             string value = ConvertCheckStateToValue(checkState);
             bool success = _addressHolder.SetValue(value);
             if (success && GetLockedBool()) VarXLockManager.UpdateLockValues(_addressHolder, value);
             return success;
         }
+
+
+
+
+        public bool AddValue(string stringValue, bool add)
+        {
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            if (!doubleValueNullable.HasValue) return false;
+            double doubleValue = doubleValueNullable.Value;
+
+            string currentValueString = GetStringValue(false, false);
+            double? currentValueNullable = ParsingUtilities.ParseDoubleNullable(currentValueString);
+            if (!currentValueNullable.HasValue) return false;
+            double currentValue = currentValueNullable.Value;
+
+            double newValue = currentValue + doubleValue * (add ? +1 : -1);
+            return SetStringValue(newValue.ToString());
+        }
+
+
 
 
 

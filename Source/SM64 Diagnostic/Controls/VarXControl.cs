@@ -222,7 +222,7 @@ namespace SM64_Diagnostic.Controls
 
             if (e.KeyData == Keys.Enter)
             {
-                bool success = _varX.SetValueFromTextbox(_valueTextBox.Text);
+                bool success = _varX.SetStringValue(_valueTextBox.Text);
                 EditMode = false;
                 if (!success) InvokeFailure();
                 return;
@@ -231,7 +231,7 @@ namespace SM64_Diagnostic.Controls
 
         private void OnCheckboxClick()
         {
-            bool success = _varX.SetValueFromCheckbox(_valueCheckBox.CheckState);
+            bool success = _varX.SetCheckStateValue(_valueCheckBox.CheckState);
             if (!success) InvokeFailure();
         }
 
@@ -239,8 +239,8 @@ namespace SM64_Diagnostic.Controls
         {
             if (!EditMode)
             {
-                if (_valueTextBox.Visible) _valueTextBox.Text = _varX.GetValueForTextbox();
-                if (_valueCheckBox.Visible) _valueCheckBox.CheckState = _varX.GetValueForCheckbox();
+                if (_valueTextBox.Visible) _valueTextBox.Text = _varX.GetStringValue();
+                if (_valueCheckBox.Visible) _valueCheckBox.CheckState = _varX.GetCheckStateValue();
             }
 
             _varX.UpdateItemCheckStates();

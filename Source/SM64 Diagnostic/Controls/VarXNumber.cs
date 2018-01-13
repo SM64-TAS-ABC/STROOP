@@ -105,7 +105,7 @@ namespace SM64_Diagnostic.Controls
             {
                 Clipboard.SetText(
                     String.Join(",", coordinateVarList.ConvertAll(
-                        coord => coord.GetValueForTextbox(false))));
+                        coord => coord.GetStringValue(false))));
             };
 
             _itemPasteCoordinates.Click += (sender, e) =>
@@ -116,7 +116,7 @@ namespace SM64_Diagnostic.Controls
                 Config.Stream.Suspend();
                 for (int i = 0; i < 3; i++)
                 {
-                    coordinateVarList[i].SetValueFromTextbox(stringList[i]);
+                    coordinateVarList[i].SetStringValue(stringList[i]);
                 }
                 Config.Stream.Resume();
             };

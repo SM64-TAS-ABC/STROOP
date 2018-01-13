@@ -39,7 +39,7 @@ namespace SM64_Diagnostic.Controls
             ToolStripMenuItem itemSelectObject = new ToolStripMenuItem("Select Object");
             itemSelectObject.Click += (sender, e) =>
             {
-                string stringValue = GetValueForTextbox(true, false);
+                string stringValue = GetStringValue(true, false);
                 uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
                 if (!uintValueNullable.HasValue) return;
                 uint uintValue = uintValueNullable.Value;
