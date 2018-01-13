@@ -96,7 +96,7 @@
             this._buttonGet.Location = new System.Drawing.Point(0, 108);
             this._buttonGet.Margin = new System.Windows.Forms.Padding(0);
             this._buttonGet.Name = "_buttonGet";
-            this._buttonGet.Size = new System.Drawing.Size(52, 37);
+            this._buttonGet.Size = new System.Drawing.Size(52, 36);
             this._buttonGet.TabIndex = 0;
             this._buttonGet.Text = "Get";
             this._buttonGet.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@
             this._buttonSet.Location = new System.Drawing.Point(127, 108);
             this._buttonSet.Margin = new System.Windows.Forms.Padding(0);
             this._buttonSet.Name = "_buttonSet";
-            this._buttonSet.Size = new System.Drawing.Size(54, 37);
+            this._buttonSet.Size = new System.Drawing.Size(54, 36);
             this._buttonSet.TabIndex = 0;
             this._buttonSet.Text = "Set";
             this._buttonSet.UseVisualStyleBackColor = true;
@@ -133,7 +133,7 @@
             this._checkBoxFixAddress.Name = "_checkBoxFixAddress";
             this._checkBoxFixAddress.Size = new System.Drawing.Size(48, 30);
             this._checkBoxFixAddress.TabIndex = 38;
-            this._checkBoxFixAddress.Text = "Fix Address";
+            this._checkBoxFixAddress.Text = "Fix Addr";
             this._checkBoxFixAddress.UseVisualStyleBackColor = true;
             // 
             // _textBoxVarName
@@ -141,10 +141,11 @@
             this._textBoxVarName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._textBoxVarName.BackColor = System.Drawing.SystemColors.Control;
             this._textBoxVarName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tableLayoutPanel1.SetColumnSpan(this._textBoxVarName, 3);
             this._textBoxVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
-            this._textBoxVarName.Location = new System.Drawing.Point(55, 6);
+            this._textBoxVarName.Location = new System.Drawing.Point(3, 6);
             this._textBoxVarName.Name = "_textBoxVarName";
-            this._textBoxVarName.Size = new System.Drawing.Size(69, 24);
+            this._textBoxVarName.Size = new System.Drawing.Size(175, 24);
             this._textBoxVarName.TabIndex = 9;
             this._textBoxVarName.Text = "Variable Name";
             this._textBoxVarName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -155,7 +156,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.04243F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.91515F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.04242F));
-            this.tableLayoutPanel1.Controls.Add(this._textBoxVarName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this._checkBoxFixAddress, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this._buttonSet, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this._buttonAdd, 2, 2);
@@ -164,6 +164,7 @@
             this.tableLayoutPanel1.Controls.Add(this._buttonSubtract, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this._textBoxAddSubtract, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this._textBoxCurrentValue, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this._textBoxVarName, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -172,14 +173,15 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(181, 145);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(181, 144);
             this.tableLayoutPanel1.TabIndex = 39;
             // 
             // VariableControllerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(181, 145);
+            this.ClientSize = new System.Drawing.Size(181, 144);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
