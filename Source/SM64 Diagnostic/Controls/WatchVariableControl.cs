@@ -20,7 +20,7 @@ namespace SM64_Diagnostic.Controls
         private readonly WatchVariableControlPrecursor _watchVarPrecursor;
         private readonly WatchVariableWrapper _watchVarWrapper;
 
-        private readonly Label _nameLabel;
+        private readonly BetterTextbox _nameTextBox;
         private readonly TextBox _valueTextBox;
         private readonly CheckBox _valueCheckBox;
         private readonly ContextMenuStrip _contextMenuStrip;
@@ -125,10 +125,10 @@ namespace SM64_Diagnostic.Controls
 
             // Initialize control fields
             InitializeBase();
-            _nameLabel = CreateNameLabel();
+            _nameTextBox = CreateNameTextBox();
             _valueTextBox = CreateValueTextBox();
             _valueCheckBox = CreateValueCheckBox();
-            base.Controls.Add(_nameLabel, 0, 0);
+            base.Controls.Add(_nameTextBox, 0, 0);
             base.Controls.Add(_valueTextBox, 1, 0);
             base.Controls.Add(_valueCheckBox, 1, 0);
 
@@ -138,7 +138,7 @@ namespace SM64_Diagnostic.Controls
             // Initialize context menu strip
             _textboxOldContextMenuStrip = _valueTextBox.ContextMenuStrip;
             _contextMenuStrip = _watchVarWrapper.GetContextMenuStrip();
-            _nameLabel.ContextMenuStrip = _contextMenuStrip;
+            _nameTextBox.ContextMenuStrip = _contextMenuStrip;
             _valueTextBox.ContextMenuStrip = _contextMenuStrip;
             base.ContextMenuStrip = _contextMenuStrip;
 
@@ -146,7 +146,7 @@ namespace SM64_Diagnostic.Controls
             SetUseCheckbox(_watchVarWrapper.StartsAsCheckbox());
 
             // Add functions
-            _nameLabel.Click += (sender, e) => _watchVarWrapper.ShowVarInfo();
+            _nameTextBox.Click += (sender, e) => _watchVarWrapper.ShowVarInfo();
             _valueTextBox.KeyDown += (sender, e) => OnTextValueKeyDown(e);
             _valueTextBox.DoubleClick += (sender, e) => { EditMode = true; };
             _valueTextBox.Leave += (sender, e) => { EditMode = false; };
@@ -170,15 +170,17 @@ namespace SM64_Diagnostic.Controls
             base.BackColor = _currentColor;
         }
 
-        private Label CreateNameLabel()
+        private BetterTextbox CreateNameTextBox()
         {
-            Label nameLabel = new Label();
-            nameLabel.Size = new Size(210, nameLabelHeight);
-            nameLabel.Text = VarName;
-            nameLabel.Margin = new Padding(3, 3, 3, 3);
-            nameLabel.ImageAlign = ContentAlignment.MiddleRight;
-            nameLabel.BackColor = Color.Transparent;
-            return nameLabel;
+            BetterTextbox nameTextBox = new BetterTextbox();
+            nameTextBox.Text = VarName;
+            nameTextBox.Cursor = Cursors.Default;
+            nameTextBox.ReadOnly = true;
+            nameTextBox.BorderStyle = BorderStyle.None;
+            nameTextBox.TextAlign = HorizontalAlignment.Left;
+            nameTextBox.Width = 200;
+            nameTextBox.Margin = new Padding(3, 3, 3, 3);
+            return nameTextBox;
         }
 
         private TextBox CreateValueTextBox()
@@ -247,7 +249,7 @@ namespace SM64_Diagnostic.Controls
             }
 
             _watchVarWrapper.UpdateItemCheckStates();
-            _nameLabel.Image = GetImageForCheckState(_watchVarWrapper.GetLockedCheckState(FixedAddressList));
+            //_nameTextBox.Image = GetImageForCheckState(_watchVarWrapper.GetLockedCheckState(FixedAddressList));
 
             UpdateColor();
         }
@@ -286,6 +288,7 @@ namespace SM64_Diagnostic.Controls
             }
 
             BackColor = _currentColor;
+            _nameTextBox.BackColor = _currentColor;
             if (!_editMode) _valueTextBox.BackColor = _currentColor;
         }
 
