@@ -93,7 +93,7 @@
             // _checkBoxFixAddress
             // 
             this._checkBoxFixAddress.AutoSize = true;
-            this._checkBoxFixAddress.Location = new System.Drawing.Point(154, 31);
+            this._checkBoxFixAddress.Location = new System.Drawing.Point(149, 31);
             this._checkBoxFixAddress.Name = "_checkBoxFixAddress";
             this._checkBoxFixAddress.Size = new System.Drawing.Size(48, 30);
             this._checkBoxFixAddress.TabIndex = 38;
