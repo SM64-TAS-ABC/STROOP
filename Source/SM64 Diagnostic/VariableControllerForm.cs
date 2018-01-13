@@ -15,30 +15,29 @@ namespace SM64_Diagnostic
 {
     public partial class VariableControllerForm : Form
     {
-        string _name, _type, _n64Address, _processAddress;
 
         public VariableControllerForm(string name, string type, string n64Address, string processAddress)
         {
             InitializeComponent();
-            _name = name;
-            _type = type;
-            _n64Address = n64Address;
-            _processAddress = processAddress;
-        }
 
+            /*
+            _buttonAdd.Click += (sender, e) => { };
+            _buttonSubtract.Click += (sender, e) => { };
+            _buttonGet.Click += (sender, e) => { };
+            _buttonSet.Click += (sender, e) => { };
+            */
+
+        }
+        /*
         private void buttonOk_Click(object sender, EventArgs e)
         {
             Close();
         }
+                */
 
         private void VariableViewerForm_Load(object sender, EventArgs e)
         {
-            /*
-            labelVarName.Text = _name;
-            labelVarTypeValue.Text = _type;
-            textBoxN64AddValue.Text = _n64Address;
-            textBoxAddSubtract.Text = _processAddress;
-            */
+            
         }
     }
 }
