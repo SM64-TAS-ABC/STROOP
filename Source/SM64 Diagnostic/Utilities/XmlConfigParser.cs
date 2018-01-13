@@ -2403,15 +2403,45 @@ namespace SM64_Diagnostic.Utilities
             uint? mask = element.Attribute(XName.Get("mask")) != null ?
                 (uint?)ParsingUtilities.ParseHex(element.Attribute(XName.Get("mask")).Value) : null;
 
+            uint? offsetUS = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value);
+            uint? offsetJP = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value);
+            uint? offsetPAL = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetPAL"))?.Value);
+            uint? offsetDefault = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value);
+
+            if (offsetDefault.HasValue && (offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue))
+            {
+                throw new ArgumentOutOfRangeException("Can't have both a default offset value and a rom-specific offset value");
+            }
+
+            if (specialType != null)
+            {
+                if (baseAddressType != BaseAddressTypeEnum.None &&
+                    baseAddressType != BaseAddressTypeEnum.Object &&
+                    baseAddressType != BaseAddressTypeEnum.Triangle)
+                {
+                    throw new ArgumentOutOfRangeException("Special var cannot have base address type " + baseAddressType);
+                }
+
+                if (offsetDefault.HasValue || offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue)
+                {
+                    throw new ArgumentOutOfRangeException("Special var cannot have any type of offset");
+                }
+
+                if (mask != null)
+                {
+                    throw new ArgumentOutOfRangeException("Special var cannot have mask");
+                }
+            }
+
             AddressHolder addressHolder =
                 new AddressHolder(
                     typeName,
                     specialType,
                     baseAddressType,
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetPAL"))?.Value),
-                    ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value),
+                    offsetUS,
+                    offsetJP,
+                    offsetPAL,
+                    offsetDefault,
                     mask);
 
             bool? useHex = (element.Attribute(XName.Get("useHex")) != null) ?
@@ -2423,14 +2453,6 @@ namespace SM64_Diagnostic.Utilities
             VarXCoordinate? coordinate = element.Attribute(XName.Get("coord")) != null ?
                 VarXUtilities.GetVarXCoordinate(element.Attribute(XName.Get("coord")).Value) : (VarXCoordinate?)null;
 
-
-
-            // TODO remove this once var x is the norm
-            if (varXSubclass == VarXSubclass.Object && useHex != null)
-            {
-                throw new ArgumentOutOfRangeException("var is both object and uses hex (redundant)");
-            }
-
             if (varXSubclass == VarXSubclass.Angle && specialType != null)
             {
                 if (typeName != "ushort" && typeName != "short" && typeName != "uint" && typeName != "int")
@@ -2439,7 +2461,25 @@ namespace SM64_Diagnostic.Utilities
                 }
             }
 
+            if (useHex.HasValue && (varXSubclass == VarXSubclass.String))
+            {
+                throw new ArgumentOutOfRangeException("useHex cannot be used with var subclass String");
+            }
 
+            if ((useHex == true) && (varXSubclass == VarXSubclass.Object))
+            {
+                throw new ArgumentOutOfRangeException("useHex as true is redundant with var subclass Object");
+            }
+
+            if (invertBool.HasValue && (varXSubclass != VarXSubclass.Boolean))
+            {
+                throw new ArgumentOutOfRangeException("invertBool must be used with var subclass Boolean");
+            }
+
+            if (coordinate.HasValue && (varXSubclass == VarXSubclass.String))
+            {
+                throw new ArgumentOutOfRangeException("coordinate cannot be used with var subclass String");
+            }
 
             return new VarXPrecursor(
                 name,
