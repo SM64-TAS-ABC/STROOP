@@ -16,6 +16,8 @@ namespace SM64_Diagnostic
 {
     public partial class VariableControllerForm : Form
     {
+        private static readonly Color COLOR_BLUE = Color.FromArgb(220, 255, 255);
+        private static readonly Color COLOR_RED = Color.FromArgb(255, 220, 220);
 
         private readonly string _varName;
         private readonly VarX _varX;
@@ -38,6 +40,7 @@ namespace SM64_Diagnostic
             _buttonSubtract.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, false); };
             _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _varX.GetStringValue(); };
             _buttonSet.Click += (s, e) => { _varX.SetStringValue(_textBoxGetSet.Text); };
+            _checkBoxFixAddress.Click += (s, e) => { ToggleFixedAddress(); };
 
             ControlUtilities.AddInversionContextMenuStrip(_buttonSubtract, _buttonAdd);
             ControlUtilities.AddInversionContextMenuStrip(_buttonGet, _buttonSet);
@@ -46,6 +49,19 @@ namespace SM64_Diagnostic
         public void UpdateForm()
         {
             _textBoxCurrentValue.Text = _varX.GetStringValue();
+        }
+
+        public void ToggleFixedAddress()
+        {
+            bool fixedAddress = _checkBoxFixAddress.Checked;
+            if (fixedAddress)
+            {
+                _textBoxCurrentValue.BackColor = COLOR_RED;
+            }
+            else
+            {
+                _textBoxCurrentValue.BackColor = COLOR_BLUE;
+            }
         }
     }
 }

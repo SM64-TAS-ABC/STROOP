@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VariableControllerForm));
             this._buttonSubtract = new System.Windows.Forms.Button();
-            this._textBoxAddSubtract = new SM64_Diagnostic.BetterTextbox();
-            this._textBoxGetSet = new SM64_Diagnostic.BetterTextbox();
             this._buttonAdd = new System.Windows.Forms.Button();
             this._buttonGet = new System.Windows.Forms.Button();
             this._buttonSet = new System.Windows.Forms.Button();
             this._labelVarName = new System.Windows.Forms.Label();
+            this._checkBoxFixAddress = new System.Windows.Forms.CheckBox();
+            this._textBoxGetSet = new SM64_Diagnostic.BetterTextbox();
             this._textBoxCurrentValue = new SM64_Diagnostic.BetterTextbox();
-            this.checkBoxFixAddress = new System.Windows.Forms.CheckBox();
+            this._textBoxAddSubtract = new SM64_Diagnostic.BetterTextbox();
             this.SuspendLayout();
             // 
             // _buttonSubtract
@@ -49,26 +49,6 @@
             this._buttonSubtract.TabIndex = 0;
             this._buttonSubtract.Text = "-";
             this._buttonSubtract.UseVisualStyleBackColor = true;
-            // 
-            // _textBoxAddSubtract
-            // 
-            this._textBoxAddSubtract.BackColor = System.Drawing.Color.White;
-            this._textBoxAddSubtract.Location = new System.Drawing.Point(65, 69);
-            this._textBoxAddSubtract.Name = "_textBoxAddSubtract";
-            this._textBoxAddSubtract.Size = new System.Drawing.Size(74, 20);
-            this._textBoxAddSubtract.TabIndex = 9;
-            this._textBoxAddSubtract.Text = "100";
-            this._textBoxAddSubtract.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // _textBoxGetSet
-            // 
-            this._textBoxGetSet.BackColor = System.Drawing.Color.White;
-            this._textBoxGetSet.Location = new System.Drawing.Point(65, 107);
-            this._textBoxGetSet.Name = "_textBoxGetSet";
-            this._textBoxGetSet.Size = new System.Drawing.Size(74, 20);
-            this._textBoxGetSet.TabIndex = 9;
-            this._textBoxGetSet.Text = "200";
-            this._textBoxGetSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // _buttonAdd
             // 
@@ -110,6 +90,26 @@
             this._labelVarName.Text = "Variable Name";
             this._labelVarName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // _checkBoxFixAddress
+            // 
+            this._checkBoxFixAddress.AutoSize = true;
+            this._checkBoxFixAddress.Location = new System.Drawing.Point(154, 31);
+            this._checkBoxFixAddress.Name = "_checkBoxFixAddress";
+            this._checkBoxFixAddress.Size = new System.Drawing.Size(48, 30);
+            this._checkBoxFixAddress.TabIndex = 38;
+            this._checkBoxFixAddress.Text = "Fix\r\nAddr";
+            this._checkBoxFixAddress.UseVisualStyleBackColor = true;
+            // 
+            // _textBoxGetSet
+            // 
+            this._textBoxGetSet.BackColor = System.Drawing.Color.White;
+            this._textBoxGetSet.Location = new System.Drawing.Point(65, 107);
+            this._textBoxGetSet.Name = "_textBoxGetSet";
+            this._textBoxGetSet.Size = new System.Drawing.Size(74, 20);
+            this._textBoxGetSet.TabIndex = 9;
+            this._textBoxGetSet.Text = "200";
+            this._textBoxGetSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // _textBoxCurrentValue
             // 
             this._textBoxCurrentValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -120,15 +120,15 @@
             this._textBoxCurrentValue.Text = "100";
             this._textBoxCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // checkBoxFixAddress
+            // _textBoxAddSubtract
             // 
-            this.checkBoxFixAddress.AutoSize = true;
-            this.checkBoxFixAddress.Location = new System.Drawing.Point(154, 31);
-            this.checkBoxFixAddress.Name = "checkBoxFixAddress";
-            this.checkBoxFixAddress.Size = new System.Drawing.Size(48, 30);
-            this.checkBoxFixAddress.TabIndex = 38;
-            this.checkBoxFixAddress.Text = "Fix\r\nAddr";
-            this.checkBoxFixAddress.UseVisualStyleBackColor = true;
+            this._textBoxAddSubtract.BackColor = System.Drawing.Color.White;
+            this._textBoxAddSubtract.Location = new System.Drawing.Point(65, 69);
+            this._textBoxAddSubtract.Name = "_textBoxAddSubtract";
+            this._textBoxAddSubtract.Size = new System.Drawing.Size(74, 20);
+            this._textBoxAddSubtract.TabIndex = 9;
+            this._textBoxAddSubtract.Text = "100";
+            this._textBoxAddSubtract.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // VariableControllerForm
             // 
@@ -143,7 +143,7 @@
             this.Controls.Add(this._buttonSubtract);
             this.Controls.Add(this._textBoxCurrentValue);
             this.Controls.Add(this._textBoxAddSubtract);
-            this.Controls.Add(this.checkBoxFixAddress);
+            this.Controls.Add(this._checkBoxFixAddress);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(220, 180);
@@ -168,6 +168,6 @@
         private System.Windows.Forms.Button _buttonSet;
         private System.Windows.Forms.Label _labelVarName;
         private BetterTextbox _textBoxCurrentValue;
-        private System.Windows.Forms.CheckBox checkBoxFixAddress;
+        private System.Windows.Forms.CheckBox _checkBoxFixAddress;
     }
 }
