@@ -21,6 +21,8 @@ namespace SM64_Diagnostic.Managers
             : base(variables, variableTable)
         {
             Instance = this;
+
+            variables.ForEach(variable => variable.NotifyInCustomTab());
         }
 
         public override void AddVariable(WatchVariableControl watchVarControl)

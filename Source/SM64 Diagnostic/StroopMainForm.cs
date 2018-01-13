@@ -114,7 +114,7 @@ namespace SM64_Diagnostic
             currentContext.FileManager = new FileManager(_fileData, tabPageFile, watchVariablePanelFile, _fileImageGui);
             currentContext.AreaManager = new AreaManager(tabPageArea, _areaData, watchVariablePanelArea);
             currentContext.QuarterFrameManager = new DataManager(_quarterFrameData, watchVariablePanelQuarterFrame);
-            currentContext.XManager = new CustomManager(_watchVarControlList, tabPageCustom, watchVariablePanelCustom);
+            currentContext.CustomManager = new CustomManager(_watchVarControlList, tabPageCustom, watchVariablePanelCustom);
             currentContext.CameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, watchVariablePanelCamHack);
             currentContext.ObjectManager = new ObjectManager(_objectData, tabPageObjects, WatchVariablePanelObject);
             currentContext.OptionsManager = new OptionsManager(tabPageOptions);
@@ -270,7 +270,7 @@ namespace SM64_Diagnostic
                 currentContext.InputManager.Update(tabControlMain.SelectedTab == tabPageInput);
                 currentContext.FileManager.Update(tabControlMain.SelectedTab == tabPageFile);
                 currentContext.QuarterFrameManager.Update(tabControlMain.SelectedTab == tabPageQuarterFrame);
-                currentContext.XManager.Update(tabControlMain.SelectedTab == tabPageCustom);
+                currentContext.CustomManager.Update(tabControlMain.SelectedTab == tabPageCustom);
                 currentContext.CameraHackManager.Update(tabControlMain.SelectedTab == tabPageCamHack);
                 currentContext.MiscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
                 currentContext.TriangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);

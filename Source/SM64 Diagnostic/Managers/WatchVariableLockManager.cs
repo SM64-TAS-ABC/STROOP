@@ -15,33 +15,33 @@ namespace SM64_Diagnostic.Structs
     {
         private static List<WatchVariableLock> _lockList = new List<WatchVariableLock>();
 
-        public static void AddLocks(WatchVariable variable)
+        public static void AddLocks(WatchVariable variable, List<uint> addresses = null)
         {
-            List<WatchVariableLock> newLocks = variable.GetLocks();
+            List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
             foreach (WatchVariableLock newLock in newLocks)
             {
                 if (!_lockList.Contains(newLock)) _lockList.Add(newLock);
             }
         }
 
-        public static void RemoveLocks(WatchVariable variable)
+        public static void RemoveLocks(WatchVariable variable, List<uint> addresses = null)
         {
-            List<WatchVariableLock> newLocks = variable.GetLocks();
+            List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
             foreach (WatchVariableLock newLock in newLocks)
             {
                 _lockList.Remove(newLock);
             }
         }
 
-        public static bool ContainsLocksBool(WatchVariable variable)
+        public static bool ContainsLocksBool(WatchVariable variable, List<uint> addresses = null)
         {
-            return ContainsLocksCheckState(variable) != CheckState.Unchecked;
+            return ContainsLocksCheckState(variable, addresses) != CheckState.Unchecked;
         }
 
-        public static CheckState ContainsLocksCheckState(WatchVariable variable)
+        public static CheckState ContainsLocksCheckState(WatchVariable variable, List<uint> addresses = null)
         {
             if (!ContainsAnyLocks()) return CheckState.Unchecked;
-            List<WatchVariableLock> newLocks = variable.GetLocks();
+            List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
 
             if (newLocks.Count == 0) return CheckState.Unchecked;
             CheckState firstCheckState =
@@ -55,9 +55,9 @@ namespace SM64_Diagnostic.Structs
             return firstCheckState;
         }
 
-        public static void UpdateLockValues(WatchVariable variable, string newValue)
+        public static void UpdateLockValues(WatchVariable variable, string newValue, List<uint> addresses = null)
         {
-            List<WatchVariableLock> newLocks = variable.GetLocks();
+            List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
             foreach (WatchVariableLock newLock in newLocks)
             {
                 WatchVariableLock currentLock = _lockList.FirstOrDefault(current => current.Equals(newLock));

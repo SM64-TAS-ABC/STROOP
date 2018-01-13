@@ -129,17 +129,17 @@ namespace SM64_Diagnostic.Controls
             return success;
         }
 
-        public List<WatchVariableLock> GetLocks()
+        public List<WatchVariableLock> GetLocks(List<uint> addresses = null)
         {
             List<string> values = GetValues();
-            List<uint> addresses = AddressList;
-            if (values.Count != addresses.Count) return new List<WatchVariableLock>();
+            List<uint> addressList = addresses ?? AddressList;
+            if (values.Count != addressList.Count) return new List<WatchVariableLock>();
 
             List<WatchVariableLock> locks = new List<WatchVariableLock>();
             for (int i = 0; i < values.Count; i++)
             {
                 locks.Add(new WatchVariableLock(
-                    IsSpecial, MemoryType, ByteCount, Mask, addresses[i], SpecialType, _setterFunction, values[i]));
+                    IsSpecial, MemoryType, ByteCount, Mask, addressList[i], SpecialType, _setterFunction, values[i]));
             }
             return locks;
         }

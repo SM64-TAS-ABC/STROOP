@@ -109,13 +109,13 @@ namespace SM64_Diagnostic.Controls
             _itemLock = new ToolStripMenuItem("Lock");
             _itemLock.Click += (sender, e) =>
             {
-                if (WatchVariableLockManager.ContainsLocksBool(_watchVar))
+                if (WatchVariableLockManager.ContainsLocksBool(_watchVar, _watchVarControl.FixedAddressList))
                 {
-                    WatchVariableLockManager.RemoveLocks(_watchVar);
+                    WatchVariableLockManager.RemoveLocks(_watchVar, _watchVarControl.FixedAddressList);
                 }
                 else
                 {
-                    WatchVariableLockManager.AddLocks(_watchVar);
+                    WatchVariableLockManager.AddLocks(_watchVar, _watchVarControl.FixedAddressList);
                 }
             };
 
@@ -162,7 +162,12 @@ namespace SM64_Diagnostic.Controls
             _separatorCustom.Visible = false;
 
             _itemFixAddress = new ToolStripMenuItem("Fix Address");
-            _itemFixAddress.Click += (sender, e) => { };
+            _itemFixAddress.Click += (sender, e) =>
+            {
+                bool fixAddress = !_itemFixAddress.Checked;
+                _itemFixAddress.Checked = fixAddress;
+                _watchVarControl.FixedAddressList = fixAddress ? _watchVar.AddressList : null;
+            };
             _itemFixAddress.Visible = false;
 
             _itemRename = new ToolStripMenuItem("Rename");
@@ -199,19 +204,19 @@ namespace SM64_Diagnostic.Controls
             varController.Show();
         }
 
-        public CheckState GetLockedCheckState()
+        public CheckState GetLockedCheckState(List<uint> addresses = null)
         {
-            return WatchVariableLockManager.ContainsLocksCheckState(_watchVar);
+            return WatchVariableLockManager.ContainsLocksCheckState(_watchVar, addresses);
         }
 
-        public bool GetLockedBool()
+        public bool GetLockedBool(List<uint> addresses = null)
         {
-            return WatchVariableLockManager.ContainsLocksBool(_watchVar);
+            return WatchVariableLockManager.ContainsLocksBool(_watchVar, addresses);
         }
 
-        public void UpdateItemCheckStates()
+        public void UpdateItemCheckStates(List<uint> addresses = null)
         {
-            _itemLock.Checked = GetLockedBool();
+            _itemLock.Checked = GetLockedBool(addresses);
             _itemRemoveAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
         }
 
@@ -244,7 +249,7 @@ namespace SM64_Diagnostic.Controls
             value = HandleAngleUnconverting(value);
 
             bool success = _watchVar.SetValue(value, addresses);
-            if (success && GetLockedBool()) WatchVariableLockManager.UpdateLockValues(_watchVar, value);
+            if (success && GetLockedBool(addresses)) WatchVariableLockManager.UpdateLockValues(_watchVar, value, addresses);
             return success;
         }
 
@@ -260,7 +265,7 @@ namespace SM64_Diagnostic.Controls
         {
             string value = ConvertCheckStateToValue(checkState);
             bool success = _watchVar.SetValue(value, addresses);
-            if (success && GetLockedBool()) WatchVariableLockManager.UpdateLockValues(_watchVar, value);
+            if (success && GetLockedBool(addresses)) WatchVariableLockManager.UpdateLockValues(_watchVar, value, addresses);
             return success;
         }
 

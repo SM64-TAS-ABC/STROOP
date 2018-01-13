@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Data>
-<!--
+
+  <Data type="float" offset="0x3C" baseAddressType="Mario" coord="X">Mario X</Data>
+  <Data type="float" offset="0x40" baseAddressType="Mario" coord="Y">Mario Y</Data>
+  <Data type="float" offset="0x44" baseAddressType="Mario" coord="Z">Mario Z</Data>
+
+  <Data type="float" offset="0xA0" baseAddressType="Object" coord="X">Object X</Data>
+  <Data type="float" offset="0xA4" baseAddressType="Object" coord="Y">Object Y</Data>
+  <Data type="float" offset="0xA8" baseAddressType="Object" coord="Z">Object Z</Data>
+
+
+  <!--
   <Data type="float" offset="0x3C" baseAddressType="Mario" coord="X">Mario X</Data>
   <Data type="float" offset="0x40" baseAddressType="Mario" coord="Y">Mario Y</Data>
   <Data type="float" offset="0x44" baseAddressType="Mario" coord="Z">Mario Z</Data>

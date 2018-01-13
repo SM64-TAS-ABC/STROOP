@@ -88,6 +88,8 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public List<uint> FixedAddressList;
+
         private static Image _lockedImage = new Bitmap(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SM64_Diagnostic.EmbeddedResources.lock.png")), new Size(16, 16));
         private static Image _someLockedImage = _lockedImage.GetOpaqueImage(0.5f);
 
@@ -113,6 +115,7 @@ namespace SM64_Diagnostic.Controls
             GroupList = groupList;
             _showBorder = false;
             _editMode = false;
+            FixedAddressList = null;
 
             // Initialize color fields
             _baseColor = backgroundColor ?? DEFAULT_COLOR;
@@ -222,7 +225,7 @@ namespace SM64_Diagnostic.Controls
 
             if (e.KeyData == Keys.Enter)
             {
-                bool success = _watchVarWrapper.SetStringValue(_valueTextBox.Text);
+                bool success = _watchVarWrapper.SetStringValue(_valueTextBox.Text, FixedAddressList);
                 EditMode = false;
                 if (!success) InvokeFailure();
                 return;
@@ -231,7 +234,7 @@ namespace SM64_Diagnostic.Controls
 
         private void OnCheckboxClick()
         {
-            bool success = _watchVarWrapper.SetCheckStateValue(_valueCheckBox.CheckState);
+            bool success = _watchVarWrapper.SetCheckStateValue(_valueCheckBox.CheckState, FixedAddressList);
             if (!success) InvokeFailure();
         }
 
@@ -239,17 +242,17 @@ namespace SM64_Diagnostic.Controls
         {
             if (!EditMode)
             {
-                if (_valueTextBox.Visible) _valueTextBox.Text = _watchVarWrapper.GetStringValue();
-                if (_valueCheckBox.Visible) _valueCheckBox.CheckState = _watchVarWrapper.GetCheckStateValue();
+                if (_valueTextBox.Visible) _valueTextBox.Text = _watchVarWrapper.GetStringValue(true, true, FixedAddressList);
+                if (_valueCheckBox.Visible) _valueCheckBox.CheckState = _watchVarWrapper.GetCheckStateValue(FixedAddressList);
             }
 
             _watchVarWrapper.UpdateItemCheckStates();
-            _nameLabel.Image = GetImageForCheckState(_watchVarWrapper.GetLockedCheckState());
+            _nameLabel.Image = GetImageForCheckState(_watchVarWrapper.GetLockedCheckState(FixedAddressList));
 
             UpdateColor();
         }
 
-        private Image GetImageForCheckState(CheckState checkState)
+        private static Image GetImageForCheckState(CheckState checkState)
         {
             switch (checkState)
             {

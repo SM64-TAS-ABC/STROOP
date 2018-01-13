@@ -121,7 +121,7 @@ namespace SM64_Diagnostic.Managers
             }
 
             // TODO remove X
-            TabX = e.TabPage.Text == "X";
+            TabX = e.TabPage.Text == "Custom";
         }
 
         public enum TabType { Map, Model, CamHack, Object, Other };
