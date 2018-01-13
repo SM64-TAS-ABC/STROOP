@@ -25,6 +25,10 @@ namespace SM64_Diagnostic
             InitializeComponent();
             _varName = varName;
             _varX = varX;
+
+            Timer timer = new System.Windows.Forms.Timer { Interval = 30 };
+            timer.Tick += (sender, args) => UpdateForm();
+            timer.Start();
         }
 
         private void VariableViewerForm_Load(object sender, EventArgs eventArgs)
