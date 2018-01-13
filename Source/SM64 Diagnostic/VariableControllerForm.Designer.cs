@@ -101,9 +101,8 @@
             // 
             // _labelVarName
             // 
-            this._labelVarName.AutoSize = true;
             this._labelVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelVarName.Location = new System.Drawing.Point(17, 5);
+            this._labelVarName.Location = new System.Drawing.Point(19, 5);
             this._labelVarName.Name = "_labelVarName";
             this._labelVarName.Size = new System.Drawing.Size(166, 25);
             this._labelVarName.TabIndex = 10;
