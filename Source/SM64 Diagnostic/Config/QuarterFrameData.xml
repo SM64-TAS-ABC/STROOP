@@ -9,9 +9,9 @@
   <Data type="int" offset="0x11C" baseAddressType="HackedArea" useHex="true">#0 ceiling tri</Data>
   <Data type="int" offset="0x120" baseAddressType="HackedArea" useHex="true">#0 low wall tri</Data>
   <Data type="int" offset="0x124" baseAddressType="HackedArea" useHex="true">#0 high wall tri</Data>
-  <Data type="float" offset="0x128" baseAddressType="HackedArea">#0 pos X</Data>
-  <Data type="float" offset="0x12C" baseAddressType="HackedArea">#0 pos Y</Data>
-  <Data type="float" offset="0x130" baseAddressType="HackedArea">#0 pos Z</Data>
+  <Data type="float" offset="0x128" baseAddressType="HackedArea" coord="X">#0 pos X</Data>
+  <Data type="float" offset="0x12C" baseAddressType="HackedArea" coord="Y">#0 pos Y</Data>
+  <Data type="float" offset="0x130" baseAddressType="HackedArea" coord="Z">#0 pos Z</Data>
   <Data type="int" offset="0x138" baseAddressType="HackedArea" color ="#8888ff">#1 result</Data>
   <Data type="float" offset="0x13C" baseAddressType="HackedArea">#1 water Y</Data>
   <Data type="float" offset="0x140" baseAddressType="HackedArea">#1 floor Y</Data>
@@ -20,9 +20,9 @@
   <Data type="int" offset="0x14C" baseAddressType="HackedArea" useHex="true">#1 ceiling tri</Data>
   <Data type="int" offset="0x150" baseAddressType="HackedArea" useHex="true">#1 low wall tri</Data>
   <Data type="int" offset="0x154" baseAddressType="HackedArea" useHex="true">#1 high wall tri</Data>
-  <Data type="float" offset="0x158" baseAddressType="HackedArea">#1 pos X</Data>
-  <Data type="float" offset="0x15C" baseAddressType="HackedArea">#1 pos Y</Data>
-  <Data type="float" offset="0x160" baseAddressType="HackedArea">#1 pos Z</Data>
+  <Data type="float" offset="0x158" baseAddressType="HackedArea" coord="X">#1 pos X</Data>
+  <Data type="float" offset="0x15C" baseAddressType="HackedArea" coord="Y">#1 pos Y</Data>
+  <Data type="float" offset="0x160" baseAddressType="HackedArea" coord="Z">#1 pos Z</Data>
   <Data type="int" offset="0x168" baseAddressType="HackedArea" color ="#8888ff">#2 result</Data>
   <Data type="float" offset="0x16C" baseAddressType="HackedArea">#2 water Y</Data>
   <Data type="float" offset="0x170" baseAddressType="HackedArea">#2 floor Y</Data>
@@ -31,9 +31,9 @@
   <Data type="int" offset="0x17C" baseAddressType="HackedArea" useHex="true">#2 ceiling tri</Data>
   <Data type="int" offset="0x180" baseAddressType="HackedArea" useHex="true">#2 low wall tri</Data>
   <Data type="int" offset="0x184" baseAddressType="HackedArea" useHex="true">#2 high wall tri</Data>
-  <Data type="float" offset="0x188" baseAddressType="HackedArea">#2 pos X</Data>
-  <Data type="float" offset="0x18C" baseAddressType="HackedArea">#2 pos Y</Data>
-  <Data type="float" offset="0x190" baseAddressType="HackedArea">#2 pos Z</Data>
+  <Data type="float" offset="0x188" baseAddressType="HackedArea" coord="X">#2 pos X</Data>
+  <Data type="float" offset="0x18C" baseAddressType="HackedArea" coord="Y">#2 pos Y</Data>
+  <Data type="float" offset="0x190" baseAddressType="HackedArea" coord="Z">#2 pos Z</Data>
   <Data type="int" offset="0x198" baseAddressType="HackedArea" color ="#8888ff">#3 result</Data>
   <Data type="float" offset="0x19C" baseAddressType="HackedArea">#3 water Y</Data>
   <Data type="float" offset="0x1A0" baseAddressType="HackedArea">#3 floor Y</Data>
@@ -42,7 +42,7 @@
   <Data type="int" offset="0x1AC" baseAddressType="HackedArea" useHex="true">#3 ceiling tri</Data>
   <Data type="int" offset="0x1B0" baseAddressType="HackedArea" useHex="true">#3 low wall tri</Data>
   <Data type="int" offset="0x1B4" baseAddressType="HackedArea" useHex="true">#3 high wall tri</Data>
-  <Data type="float" offset="0x1B8" baseAddressType="HackedArea">#3 pos X</Data>
-  <Data type="float" offset="0x1BC" baseAddressType="HackedArea">#3 pos Y</Data>
-  <Data type="float" offset="0x1C0" baseAddressType="HackedArea">#3 pos Z</Data>
+  <Data type="float" offset="0x1B8" baseAddressType="HackedArea" coord="X">#3 pos X</Data>
+  <Data type="float" offset="0x1BC" baseAddressType="HackedArea" coord="Y">#3 pos Y</Data>
+  <Data type="float" offset="0x1C0" baseAddressType="HackedArea" coord="Z">#3 pos Z</Data>
 </QuarterFrameData>

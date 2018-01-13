@@ -5,20 +5,20 @@
   <Data type="byte" offset="0x75" baseAddressType="Camera" subclass="Boolean" mask="0x20">Fixed Cam</Data>
   <Data type="byte" offset="0x231" baseAddressType="Camera" subclass="Boolean" mask="0x02">Far Cam</Data>
   <Data type="byte" offset="0x230" baseAddressType="Camera" subclass="Boolean" mask="0x20">Close Cam</Data>
-  <Data type="float" offset="0x8C" baseAddressType="Camera">Camera X</Data>
-  <Data type="float" offset="0x90" baseAddressType="Camera">Camera Y</Data>
-  <Data type="float" offset="0x94" baseAddressType="Camera">Camera Z</Data>
-  <Data type="float" offset="0xA4" baseAddressType="Camera">Camera Target X</Data>
-  <Data type="float" offset="0xA8" baseAddressType="Camera">Camera Target Y</Data>
-  <Data type="float" offset="0xAC" baseAddressType="Camera">Camera Target Z</Data>
+  <Data type="float" offset="0x8C" baseAddressType="Camera" coord="X">Camera X</Data>
+  <Data type="float" offset="0x90" baseAddressType="Camera" coord="Y">Camera Y</Data>
+  <Data type="float" offset="0x94" baseAddressType="Camera" coord="Z">Camera Z</Data>
+  <Data type="float" offset="0xA4" baseAddressType="Camera" coord="X">Camera Target X</Data>
+  <Data type="float" offset="0xA8" baseAddressType="Camera" coord="Y">Camera Target Y</Data>
+  <Data type="float" offset="0xAC" baseAddressType="Camera" coord="Z">Camera Target Z</Data>
   <Data type="ushort" offset="0xCE" baseAddressType="Camera" subclass="Angle">Camera Yaw</Data>
   <Data type="ushort" offset="0xCC" baseAddressType="Camera" subclass="Angle">Camera Pitch</Data>
   <Data type="ushort" offset="0x160" baseAddressType="Camera" subclass="Angle">Fixed Cent Angle</Data>
   <Data type="ushort" offset="0xFE" baseAddressType="Camera" subclass="Angle">Target Cent Angle</Data>
   <Data type="ushort" offset="0xFC" baseAddressType="Camera" subclass="Angle">Cent Angle</Data>
-  <Data type="float" offset="0x80" baseAddressType="Camera">Camera Focus X</Data>
-  <Data type="float" offset="0x84" baseAddressType="Camera">Camera Focus Y</Data>
-  <Data type="float" offset="0x88" baseAddressType="Camera">Camera Focus Z</Data>
+  <Data type="float" offset="0x80" baseAddressType="Camera" coord="X">Camera Focus X</Data>
+  <Data type="float" offset="0x84" baseAddressType="Camera" coord="Y">Camera Focus Y</Data>
+  <Data type="float" offset="0x88" baseAddressType="Camera" coord="Z">Camera Focus Z</Data>
   <Data type="float" offset="0x164" baseAddressType="Camera">Focus Veer Dist</Data>
   <Data type="float" offset="0xC8" baseAddressType="Camera">Cam Dist from Focus</Data>
   <Data baseAddressType="None" specialType="CameraDistanceToMario">Cam Dist from Mario</Data>

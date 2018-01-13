@@ -22,9 +22,9 @@
 
   <Data type="short" offsetUS="0x80361414" offsetJP="0x803600A4" baseAddressType="Relative">Snow Counter</Data>
   <Data type="short" offsetUS="0x80361416" offsetJP="0x803600A6" baseAddressType="Relative">Snow Max</Data>
-  <Data type="int" offsetUS="0x80361408" offsetJP="0x80360098" baseAddressType="Relative">Snow Center X</Data>
-  <Data type="int" offsetUS="0x8036140C" offsetJP="0x8036009C" baseAddressType="Relative">Snow Center Y</Data>
-  <Data type="int" offsetUS="0x80361410" offsetJP="0x803600A0" baseAddressType="Relative">Snow Center Z</Data>
+  <Data type="int" offsetUS="0x80361408" offsetJP="0x80360098" baseAddressType="Relative" coord="X">Snow Center X</Data>
+  <Data type="int" offsetUS="0x8036140C" offsetJP="0x8036009C" baseAddressType="Relative" coord="Y">Snow Center Y</Data>
+  <Data type="int" offsetUS="0x80361410" offsetJP="0x803600A0" baseAddressType="Relative" coord="Z">Snow Center Z</Data>
   <Data type="short" offsetUS="0x80180B06" offsetJP="0x8017DC86" baseAddressType="Relative">JRB Ship Snow Type</Data>
   <Data type="short" offsetUS="0x80184E8A" offsetJP="0x80181FFA" baseAddressType="Relative">CCM Snow Type</Data>
   <Data type="short" offsetUS="0x80170CF6" offsetJP="0x8016DE76" baseAddressType="Relative">SL Snow Type</Data>

@@ -15,22 +15,22 @@
 
   <Data type="short" offset="0x06" baseAddressType="Triangle">Y Min</Data>
   <Data type="short" offset="0x08" baseAddressType="Triangle">Y Max</Data>
-  <Data type="short" offset="0x0A" baseAddressType="Triangle">X1</Data>
-  <Data type="short" offset="0x0C" baseAddressType="Triangle">Y1</Data>
-  <Data type="short" offset="0x0E" baseAddressType="Triangle">Z1</Data>
-  <Data type="short" offset="0x10" baseAddressType="Triangle">X2</Data>
-  <Data type="short" offset="0x12" baseAddressType="Triangle">Y2</Data>
-  <Data type="short" offset="0x14" baseAddressType="Triangle">Z2</Data>
-  <Data type="short" offset="0x16" baseAddressType="Triangle">X3</Data>
-  <Data type="short" offset="0x18" baseAddressType="Triangle">Y3</Data>
-  <Data type="short" offset="0x1A" baseAddressType="Triangle">Z3</Data>
-  <Data type="float" offset="0x3C" baseAddressType="Mario" color="#ffcccc">Mario X</Data>
-  <Data type="float" offset="0x40" baseAddressType="Mario" color="#ffcccc">Mario Y</Data>
-  <Data type="float" offset="0x44" baseAddressType="Mario" color="#ffcccc">Mario Z</Data>
+  <Data type="short" offset="0x0A" baseAddressType="Triangle" coord="X">X1</Data>
+  <Data type="short" offset="0x0C" baseAddressType="Triangle" coord="Y">Y1</Data>
+  <Data type="short" offset="0x0E" baseAddressType="Triangle" coord="Z">Z1</Data>
+  <Data type="short" offset="0x10" baseAddressType="Triangle" coord="X">X2</Data>
+  <Data type="short" offset="0x12" baseAddressType="Triangle" coord="Y">Y2</Data>
+  <Data type="short" offset="0x14" baseAddressType="Triangle" coord="Z">Z2</Data>
+  <Data type="short" offset="0x16" baseAddressType="Triangle" coord="X">X3</Data>
+  <Data type="short" offset="0x18" baseAddressType="Triangle" coord="Y">Y3</Data>
+  <Data type="short" offset="0x1A" baseAddressType="Triangle" coord="Z">Z3</Data>
+  <Data type="float" offset="0x3C" baseAddressType="Mario" color="#ffcccc" coord="X">Mario X</Data>
+  <Data type="float" offset="0x40" baseAddressType="Mario" color="#ffcccc" coord="Y">Mario Y</Data>
+  <Data type="float" offset="0x44" baseAddressType="Mario" color="#ffcccc" coord="Z">Mario Z</Data>
   <Data baseAddressType="Triangle" specialType="ClosestVertex" subclass="String" color="#e5ccff">Closest Vertex</Data>
-  <Data baseAddressType="Triangle" specialType="ClosestVertexX" color="#e5ccff">Closest Vertex X</Data>
-  <Data baseAddressType="Triangle" specialType="ClosestVertexY" color="#e5ccff">Closest Vertex Y</Data>
-  <Data baseAddressType="Triangle" specialType="ClosestVertexZ" color="#e5ccff">Closest Vertex Z</Data>
+  <Data baseAddressType="Triangle" specialType="ClosestVertexX" color="#e5ccff" coord="X">Closest Vertex X</Data>
+  <Data baseAddressType="Triangle" specialType="ClosestVertexY" color="#e5ccff" coord="Y">Closest Vertex Y</Data>
+  <Data baseAddressType="Triangle" specialType="ClosestVertexZ" color="#e5ccff" coord="Z">Closest Vertex Z</Data>
 
   <Data baseAddressType="Triangle" specialType="Steepness" subclass="Angle" type="ushort" color="#ccd0ff">Steepness</Data>
   <Data baseAddressType="Triangle" specialType="UpHillAngle" subclass="Angle" type="ushort" color="#ccd0ff">Uphill Angle</Data>
@@ -43,9 +43,9 @@
   <Data baseAddressType="Triangle" specialType="DownHillDeltaAngle" subclass="Angle" type="short" color="#e5ccff">Downhill DAngle</Data>
   <Data baseAddressType="Triangle" specialType="LeftHillDeltaAngle" subclass="Angle" type="short" color="#e5ccff">Left Hill DAngle</Data>
   <Data baseAddressType="Triangle" specialType="RightHillDeltaAngle" subclass="Angle" type="short" color="#e5ccff">Right Hill DAngle</Data>
-  <Data type="float" offset="0x1C" baseAddressType="Triangle">Normal X</Data>
-  <Data type="float" offset="0x20" baseAddressType="Triangle">Normal Y</Data>
-  <Data type="float" offset="0x24" baseAddressType="Triangle">Normal Z</Data>
+  <Data type="float" offset="0x1C" baseAddressType="Triangle" coord="X">Normal X</Data>
+  <Data type="float" offset="0x20" baseAddressType="Triangle" coord="Y">Normal Y</Data>
+  <Data type="float" offset="0x24" baseAddressType="Triangle" coord="Z">Normal Z</Data>
   <Data type="float" offset="0x28" baseAddressType="Triangle">Normal Offset</Data>
   <Data type="uint" offset="0x2C" baseAddressType="Triangle" subclass="Object">Associated Object</Data>
 
@@ -72,19 +72,19 @@
   <Data type="int" offsetUS="0x8036116C" offsetJP="0x8035FDFC" baseAddressType="Relative" color="#d0d0d0">Total Node Count</Data>
 
   <Data baseAddressType="Triangle" specialType="DistanceToV1" color="#e5ccff">Dist to V1</Data>
-  <Data baseAddressType="Triangle" specialType="YDistanceToV1" color="#e5ccff">YDist to V1</Data>
-  <Data baseAddressType="Triangle" specialType="XDistanceToV1" color="#e5ccff">XDist to V1</Data>
-  <Data baseAddressType="Triangle" specialType="ZDistanceToV1" color="#e5ccff">ZDist to V1</Data>
+  <Data baseAddressType="Triangle" specialType="XDistanceToV1" color="#e5ccff" coord="X">XDist to V1</Data>
+  <Data baseAddressType="Triangle" specialType="YDistanceToV1" color="#e5ccff" coord="Y">YDist to V1</Data>
+  <Data baseAddressType="Triangle" specialType="ZDistanceToV1" color="#e5ccff" coord="Z">ZDist to V1</Data>
   <Data baseAddressType="Triangle" specialType="HDistanceToV1" color="#e5ccff">HDist to V1</Data>
   <Data baseAddressType="Triangle" specialType="DistanceToV2" color="#e5ccff">Dist to V2</Data>
-  <Data baseAddressType="Triangle" specialType="YDistanceToV2" color="#e5ccff">YDist to V2</Data>
-  <Data baseAddressType="Triangle" specialType="XDistanceToV2" color="#e5ccff">XDist to V2</Data>
-  <Data baseAddressType="Triangle" specialType="ZDistanceToV2" color="#e5ccff">ZDist to V2</Data>
+  <Data baseAddressType="Triangle" specialType="XDistanceToV2" color="#e5ccff" coord="X">XDist to V2</Data>
+  <Data baseAddressType="Triangle" specialType="YDistanceToV2" color="#e5ccff" coord="Y">YDist to V2</Data>
+  <Data baseAddressType="Triangle" specialType="ZDistanceToV2" color="#e5ccff" coord="Z">ZDist to V2</Data>
   <Data baseAddressType="Triangle" specialType="HDistanceToV2" color="#e5ccff">HDist to V2</Data>
   <Data baseAddressType="Triangle" specialType="DistanceToV3" color="#e5ccff">Dist to V3</Data>
-  <Data baseAddressType="Triangle" specialType="YDistanceToV3" color="#e5ccff">YDist to V3</Data>
-  <Data baseAddressType="Triangle" specialType="XDistanceToV3" color="#e5ccff">XDist to V3</Data>
-  <Data baseAddressType="Triangle" specialType="ZDistanceToV3" color="#e5ccff">ZDist to V3</Data>
+  <Data baseAddressType="Triangle" specialType="XDistanceToV3" color="#e5ccff" coord="X">XDist to V3</Data>
+  <Data baseAddressType="Triangle" specialType="YDistanceToV3" color="#e5ccff" coord="Y">YDist to V3</Data>
+  <Data baseAddressType="Triangle" specialType="ZDistanceToV3" color="#e5ccff" coord="Z">ZDist to V3</Data>
   <Data baseAddressType="Triangle" specialType="HDistanceToV3" color="#e5ccff">HDist to V3</Data>
 
   <Data baseAddressType="Triangle" specialType="DistanceToLine12" color="#ccfffa">Dist to Line12</Data>

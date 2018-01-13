@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MarioData>
-  <Data type="float" offset="0x3C" baseAddressType="Mario">X</Data>
-  <Data type="float" offset="0x40" baseAddressType="Mario">Y</Data>
-  <Data type="float" offset="0x44" baseAddressType="Mario">Z</Data>
-  <Data type="float" offset="0x48" baseAddressType="Mario">X Speed</Data>
-  <Data type="float" offset="0x4C" baseAddressType="Mario">Y Speed</Data>
-  <Data type="float" offset="0x50" baseAddressType="Mario">Z Speed</Data>
+  <Data type="float" offset="0x3C" baseAddressType="Mario" coord="X">X</Data>
+  <Data type="float" offset="0x40" baseAddressType="Mario" coord="Y">Y</Data>
+  <Data type="float" offset="0x44" baseAddressType="Mario" coord="Z">Z</Data>
+  <Data type="float" offset="0x48" baseAddressType="Mario" coord="X">X Speed</Data>
+  <Data type="float" offset="0x4C" baseAddressType="Mario" coord="Y">Y Speed</Data>
+  <Data type="float" offset="0x50" baseAddressType="Mario" coord="Z">Z Speed</Data>
   <Data type="float" offset="0x54" baseAddressType="Mario">H Speed</Data>
   <Data baseAddressType="None" specialType="DeFactoSpeed">De Facto Speed</Data>
   <Data type="float" offset="0x58" baseAddressType="Mario">X Sliding Speed</Data>
   <Data type="float" offset="0x5C" baseAddressType="Mario">Z Sliding Speed</Data>
   <Data baseAddressType="None" specialType="SlidingSpeed">H Sliding Speed</Data>
   <Data type="ushort" offset="0x38" baseAddressType="Mario" subclass="Angle">Sliding Yaw</Data>
-  <Data baseAddressType="None" specialType="MovementX">Delta X</Data>
-  <Data baseAddressType="None" specialType="MovementY">Delta Y</Data>
-  <Data baseAddressType="None" specialType="MovementZ">Delta Z</Data>
+  <Data baseAddressType="None" specialType="MovementX" coord="X">Delta X</Data>
+  <Data baseAddressType="None" specialType="MovementY" coord="Y">Delta Y</Data>
+  <Data baseAddressType="None" specialType="MovementZ" coord="Z">Delta Z</Data>
   <Data baseAddressType="None" specialType="MovementForwards">Delta Forwards</Data>
   <Data baseAddressType="None" specialType="MovementSideways">Delta Sideways</Data>
   <Data baseAddressType="None" specialType="MovementHorizontal">Delta Horizontal</Data>
@@ -36,9 +36,9 @@
   <Data type="uint" offset="0x80" baseAddressType="Mario" subclass="Object">Used Object</Data>
   <Data type="uint" offsetUS="0x80330E34" offsetJP="0x8032FED4" baseAddressType="Relative" subclass="Object">Stood On Object</Data>
   <Data type="uint" offset="0x7C" baseAddressType="Mario" subclass="Object">Held Object</Data>
-  <Data type="float" offset="0x258" baseAddressType="Mario">HOLP X</Data>
-  <Data type="float" offset="0x25C" baseAddressType="Mario">HOLP Y</Data>
-  <Data type="float" offset="0x260" baseAddressType="Mario">HOLP Z</Data>
+  <Data type="float" offset="0x258" baseAddressType="Mario" coord="X">HOLP X</Data>
+  <Data type="float" offset="0x25C" baseAddressType="Mario" coord="Y">HOLP Y</Data>
+  <Data type="float" offset="0x260" baseAddressType="Mario" coord="Z">HOLP Z</Data>
   <Data type="byte" offset="0x24A" baseAddressType="Mario">HOLP Type</Data>
   <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x10">Hat on Head</Data>
   <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x20">Hat in Hand</Data>

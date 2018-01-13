@@ -3,12 +3,12 @@
   <Data type="int" offset="0x00" baseAddressType="CamHack">Mode</Data>
   <Data type="ushort" offset="0x1C" baseAddressType="CamHack" subclass="Boolean">Absolute Angle</Data>
   <Data type="uint" offset="0x28" baseAddressType="CamHack" subclass="Object">Object to Follow</Data>
-  <Data type="float" offset="0x04" baseAddressType="CamHack">Camera X</Data>
-  <Data type="float" offset="0x08" baseAddressType="CamHack">Camera Y</Data>
-  <Data type="float" offset="0x0C" baseAddressType="CamHack">Camera Z</Data>
-  <Data type="float" offset="0x10" baseAddressType="CamHack">Focus X</Data>
-  <Data type="float" offset="0x14" baseAddressType="CamHack">Focus Y</Data>
-  <Data type="float" offset="0x18" baseAddressType="CamHack">Focus Z</Data>
+  <Data type="float" offset="0x04" baseAddressType="CamHack" coord="X">Camera X</Data>
+  <Data type="float" offset="0x08" baseAddressType="CamHack" coord="Y">Camera Y</Data>
+  <Data type="float" offset="0x0C" baseAddressType="CamHack" coord="Z">Camera Z</Data>
+  <Data type="float" offset="0x10" baseAddressType="CamHack" coord="X">Focus X</Data>
+  <Data type="float" offset="0x14" baseAddressType="CamHack" coord="Y">Focus Y</Data>
+  <Data type="float" offset="0x18" baseAddressType="CamHack" coord="Z">Focus Z</Data>
   <Data type="float" offset="0x20" baseAddressType="CamHack">Radius</Data>
   <Data type="short" offset="0x1E" baseAddressType="CamHack" subclass="Angle">Theta</Data>
   <Data type="float" offset="0x24" baseAddressType="CamHack">Relative Height</Data>

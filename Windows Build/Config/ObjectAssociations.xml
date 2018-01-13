@@ -2961,13 +2961,13 @@
     <Data groupList="ObjectSpecific" type="uint" offset="0x100" baseAddressType="Object" useHex="true">Current WP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" baseAddressType="Object">Prev WP ID</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x00" baseAddressType="Waypoint">Prev WP Index</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x02" baseAddressType="Waypoint">Prev WP X</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x04" baseAddressType="Waypoint">Prev WP Y</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x06" baseAddressType="Waypoint">Prev WP Z</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x02" baseAddressType="Waypoint" coord="X">Prev WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x04" baseAddressType="Waypoint" coord="Y">Prev WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x06" baseAddressType="Waypoint" coord="Z">Prev WP Z</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x08" baseAddressType="Waypoint">Next WP Index</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint">Next WP X</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint">Next WP Y</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint">Next WP Z</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint" coord="X">Next WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint" coord="Y">Next WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint" coord="Z">Next WP Z</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
@@ -2986,13 +2986,13 @@
     <Data groupList="ObjectSpecific" type="uint" offset="0x100" baseAddressType="Object" useHex="true">Current WP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" baseAddressType="Object">Prev WP ID</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x00" baseAddressType="Waypoint">Prev WP Index</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x02" baseAddressType="Waypoint">Prev WP X</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x04" baseAddressType="Waypoint">Prev WP Y</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x06" baseAddressType="Waypoint">Prev WP Z</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x02" baseAddressType="Waypoint" coord="X">Prev WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x04" baseAddressType="Waypoint" coord="Y">Prev WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x06" baseAddressType="Waypoint" coord="Z">Prev WP Z</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x08" baseAddressType="Waypoint">Next WP Index</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint">Next WP X</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint">Next WP Y</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint">Next WP Z</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint" coord="X">Next WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint" coord="Y">Next WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint" coord="Z">Next WP Z</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
@@ -3033,13 +3033,13 @@
     <Data groupList="ObjectSpecific" type="uint" offset="0x100" baseAddressType="Object" useHex="true">Current WP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" baseAddressType="Object">Prev WP ID</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x00" baseAddressType="Waypoint">Prev WP Index</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x02" baseAddressType="Waypoint">Prev WP X</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x04" baseAddressType="Waypoint">Prev WP Y</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x06" baseAddressType="Waypoint">Prev WP Z</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x02" baseAddressType="Waypoint" coord="X">Prev WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x04" baseAddressType="Waypoint" coord="Y">Prev WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x06" baseAddressType="Waypoint" coord="Z">Prev WP Z</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x08" baseAddressType="Waypoint">Next WP Index</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint">Next WP X</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint">Next WP Y</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint">Next WP Z</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint" coord="X">Next WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint" coord="Y">Next WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint" coord="Z">Next WP Z</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
@@ -3066,13 +3066,13 @@
     <Data groupList="ObjectSpecific" type="uint" offset="0x100" baseAddressType="Object" useHex="true">Current WP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" baseAddressType="Object">Prev WP ID</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x00" baseAddressType="Waypoint">Prev WP Index</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x02" baseAddressType="Waypoint">Prev WP X</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x04" baseAddressType="Waypoint">Prev WP Y</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x06" baseAddressType="Waypoint">Prev WP Z</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x02" baseAddressType="Waypoint" coord="X">Prev WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x04" baseAddressType="Waypoint" coord="Y">Prev WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x06" baseAddressType="Waypoint" coord="Z">Prev WP Z</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x08" baseAddressType="Waypoint">Next WP Index</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint">Next WP X</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint">Next WP Y</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint">Next WP Z</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint" coord="X">Next WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint" coord="Y">Next WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint" coord="Z">Next WP Z</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
@@ -3975,13 +3975,13 @@
     <Data groupList="ObjectSpecific" type="uint" offset="0x100" baseAddressType="Object" useHex="true">Current WP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" baseAddressType="Object">Prev WP ID</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x00" baseAddressType="Waypoint">Prev WP Index</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x02" baseAddressType="Waypoint">Prev WP X</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x04" baseAddressType="Waypoint">Prev WP Y</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x06" baseAddressType="Waypoint">Prev WP Z</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x02" baseAddressType="Waypoint" coord="X">Prev WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x04" baseAddressType="Waypoint" coord="Y">Prev WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x06" baseAddressType="Waypoint" coord="Z">Prev WP Z</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x08" baseAddressType="Waypoint">Next WP Index</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint">Next WP X</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint">Next WP Y</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint">Next WP Z</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0A" baseAddressType="Waypoint" coord="X">Next WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0C" baseAddressType="Waypoint" coord="Y">Next WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0E" baseAddressType="Waypoint" coord="Z">Next WP Z</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" baseAddressType="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>

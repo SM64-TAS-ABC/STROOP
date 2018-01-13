@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ObjectData>
-  <Data groupList="Basic" type="float" offset="0xA0" baseAddressType="Object">X</Data>
-  <Data groupList="Basic" type="float" offset="0xA4" baseAddressType="Object">Y</Data>
-  <Data groupList="Basic" type="float" offset="0xA8" baseAddressType="Object">Z</Data>
-  <Data groupList="Basic" type="float" offset="0xAC" baseAddressType="Object">X Speed</Data>
-  <Data groupList="Basic" type="float" offset="0xB0" baseAddressType="Object">Y Speed</Data>
-  <Data groupList="Basic" type="float" offset="0xB4" baseAddressType="Object">Z Speed</Data>
+  <Data groupList="Basic" type="float" offset="0xA0" baseAddressType="Object" coord="X">X</Data>
+  <Data groupList="Basic" type="float" offset="0xA4" baseAddressType="Object" coord="Y">Y</Data>
+  <Data groupList="Basic" type="float" offset="0xA8" baseAddressType="Object" coord="Z">Z</Data>
+  <Data groupList="Basic" type="float" offset="0xAC" baseAddressType="Object" coord="X">X Speed</Data>
+  <Data groupList="Basic" type="float" offset="0xB0" baseAddressType="Object" coord="Y">Y Speed</Data>
+  <Data groupList="Basic" type="float" offset="0xB4" baseAddressType="Object" coord="Z">Z Speed</Data>
   <Data groupList="Basic" type="float" offset="0xB8" baseAddressType="Object">H Speed</Data>
   <Data groupList="Basic" type="ushort" offset="0xD6" baseAddressType="Object" subclass="Angle">Yaw (Facing)</Data>
   <Data groupList="Basic" type="short" offset="0xD2" baseAddressType="Object" subclass="Angle">Pitch (Facing)</Data>
@@ -17,9 +17,9 @@
   <Data groupList="Basic" type="short" offset="0x116" baseAddressType="Object" subclass="Angle">Pitch Velocity</Data>
   <Data groupList="Basic" type="short" offset="0x11E" baseAddressType="Object" subclass="Angle">Roll Velocity</Data>
 
-  <Data groupList="Advanced" type="float" offset="0x20" baseAddressType="Object">Gfx X</Data>
-  <Data groupList="Advanced" type="float" offset="0x24" baseAddressType="Object">Gfx Y</Data>
-  <Data groupList="Advanced" type="float" offset="0x28" baseAddressType="Object">Gfx Z</Data>
+  <Data groupList="Advanced" type="float" offset="0x20" baseAddressType="Object" coord="X">Gfx X</Data>
+  <Data groupList="Advanced" type="float" offset="0x24" baseAddressType="Object" coord="Y">Gfx Y</Data>
+  <Data groupList="Advanced" type="float" offset="0x28" baseAddressType="Object" coord="Z">Gfx Z</Data>
   <Data groupList="Advanced" type="ushort" offset="0x1C" baseAddressType="Object" subclass="Angle">Gfx Yaw</Data>
   <Data groupList="Advanced" type="short" offset="0x1A" baseAddressType="Object" subclass="Angle">Gfx Pitch</Data>
   <Data groupList="Advanced" type="short" offset="0x1E" baseAddressType="Object" subclass="Angle">Gfx Roll</Data>
@@ -118,9 +118,9 @@
   <Data groupList="Intermediate" type="float" offset="0x2C" baseAddressType="Object">Scale (Width)</Data>
   <Data groupList="Intermediate" type="float" offset="0x30" baseAddressType="Object">Scale (Height)</Data>
   <Data groupList="Intermediate" type="float" offset="0x34" baseAddressType="Object">Scale (Depth)</Data>
-  <Data groupList="Basic" type="float" offset="0x164" baseAddressType="Object">Home X</Data>
-  <Data groupList="Basic" type="float" offset="0x168" baseAddressType="Object">Home Y</Data>
-  <Data groupList="Basic" type="float" offset="0x16C" baseAddressType="Object">Home Z</Data>
+  <Data groupList="Basic" type="float" offset="0x164" baseAddressType="Object" coord="X">Home X</Data>
+  <Data groupList="Basic" type="float" offset="0x168" baseAddressType="Object" coord="Y">Home Y</Data>
+  <Data groupList="Basic" type="float" offset="0x16C" baseAddressType="Object" coord="Z">Home Z</Data>
   <Data groupList="Basic" type="uint" offset="0x1CC" baseAddressType="Object" useHex="true">Release Status</Data>
   <Data groupList="Basic" type="uint" offset="0x134" baseAddressType="Object" useHex="true">Interaction Status</Data>
   <Data groupList="Basic" type="int" offset="0x144" baseAddressType="Object">Subtype</Data>
