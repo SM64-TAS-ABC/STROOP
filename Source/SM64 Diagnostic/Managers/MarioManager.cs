@@ -30,6 +30,7 @@ namespace SM64_Diagnostic.Managers
                 {
                     VariableGroup.Basic,
                     VariableGroup.Intermediate,
+                    VariableGroup.Advanced,
                 });
 
             SplitContainer splitContainerMario = marioControl.Controls["splitContainerMario"] as SplitContainer;
