@@ -14,17 +14,27 @@ namespace SM64_Diagnostic.Controls
 {
     public class WatchVariableWrapper
     {
+        // Defaults
         protected const int DEFAULT_ROUNDING_LIMIT = 3;
         protected const bool DEFAULT_DISPLAY_AS_HEX = false;
         protected const bool DEFAULT_USE_CHECKBOX = false;
 
+        // Main objects
         protected readonly WatchVariable _watchVar;
         protected readonly WatchVariableControl _watchVarControl;
         protected readonly BetterContextMenuStrip _contextMenuStrip;
 
+        // Lock items
         private ToolStripMenuItem _itemLock;
         private ToolStripMenuItem _itemRemoveAllLocks;
 
+        // Custom items
+        private ToolStripSeparator _separatorCustom;
+        private ToolStripMenuItem _itemFixAddress;
+        private ToolStripMenuItem _itemRename;
+        private ToolStripMenuItem _itemDelete;
+
+        // Fields
         private readonly bool _startsAsCheckbox;
 
         public static WatchVariableWrapper CreateWatchVariableWrapper(
@@ -72,6 +82,7 @@ namespace SM64_Diagnostic.Controls
             _contextMenuStrip = new BetterContextMenuStrip();
             AddContextMenuStripItems();
             AddExternalContextMenuStripItems();
+            AddCustomContextMenuStripItems();
         }
 
         public bool StartsAsCheckbox()
@@ -142,6 +153,29 @@ namespace SM64_Diagnostic.Controls
             _contextMenuStrip.AddToEndingList(new ToolStripSeparator());
             _contextMenuStrip.AddToEndingList(itemAddToCustomTab);
             _contextMenuStrip.AddToEndingList(itemOpenController);
+        }
+
+        private void AddCustomContextMenuStripItems()
+        {
+            _separatorCustom = new ToolStripSeparator();
+            _separatorCustom.Visible = false;
+
+            _itemFixAddress = new ToolStripMenuItem("Fix Address");
+            _itemFixAddress.Click += (sender, e) => { };
+            _itemFixAddress.Visible = false;
+
+            _itemRename = new ToolStripMenuItem("Rename");
+            _itemRename.Click += (sender, e) => { };
+            _itemRename.Visible = false;
+
+            _itemDelete = new ToolStripMenuItem("Delete");
+            _itemDelete.Click += (sender, e) => { };
+            _itemDelete.Visible = false;
+
+            _contextMenuStrip.AddToEndingList(_separatorCustom);
+            _contextMenuStrip.AddToEndingList(_itemFixAddress);
+            _contextMenuStrip.AddToEndingList(_itemRename);
+            _contextMenuStrip.AddToEndingList(_itemDelete);
         }
 
         public void ShowVarInfo()
