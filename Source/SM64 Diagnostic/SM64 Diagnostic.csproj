@@ -329,6 +329,12 @@
     <Compile Include="TriangleInfoForm.Designer.cs">
       <DependentUpon>TriangleInfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="VariableControllerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VariableControllerForm.Designer.cs">
+      <DependentUpon>VariableControllerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="VariableViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -427,6 +433,9 @@
     </Content>
     <EmbeddedResource Include="TriangleInfoForm.resx">
       <DependentUpon>TriangleInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VariableControllerForm.resx">
+      <DependentUpon>VariableControllerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VariableViewerForm.resx">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
