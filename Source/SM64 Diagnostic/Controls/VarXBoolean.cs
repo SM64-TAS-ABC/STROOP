@@ -18,10 +18,10 @@ namespace SM64_Diagnostic.Controls
         private bool _displayAsInverted;
 
         public VarXBoolean(
-            AddressHolder addressHolder,
+            WatchVariable watchVar,
             VarXControl varXControl,
             bool? displayAsInverted)
-            : base(addressHolder, varXControl, DEFAULT_ROUNDING_LIMIT, DEFAULT_DISPLAY_AS_HEX, true)
+            : base(watchVar, varXControl, DEFAULT_ROUNDING_LIMIT, DEFAULT_DISPLAY_AS_HEX, true)
         {
             _displayAsCheckbox = true;
             _displayAsInverted = displayAsInverted ?? false;
@@ -66,7 +66,7 @@ namespace SM64_Diagnostic.Controls
             if (checkState == CheckState.Indeterminate) return "";
 
             string offValue = "0";
-            string onValue = _addressHolder.Mask?.ToString() ?? "1";
+            string onValue = _watchVar.Mask?.ToString() ?? "1";
 
             return HandleInverting(checkState == CheckState.Unchecked) ? offValue : onValue;
         }

@@ -23,18 +23,18 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                if (_addressHolder.ByteCount == 2 || _constrainToOneRevolution)
+                if (_watchVar.ByteCount == 2 || _constrainToOneRevolution)
                     return _signed ? typeof(short) : typeof(ushort);
                 else return _signed ? typeof(int) : typeof(uint);
             }
         }
 
         public VarXAngle(
-            AddressHolder addressHolder,
+            WatchVariable watchVar,
             VarXControl varXControl)
-            : base(addressHolder, varXControl, 0)
+            : base(watchVar, varXControl, 0)
         {
-            _signed = _addressHolder.SignedType.Value;
+            _signed = _watchVar.SignedType.Value;
             _angleUnitType = AngleUnitType.InGameUnits;
             _truncateToMultipleOf16 = false;
             _constrainToOneRevolution = false;

@@ -14,7 +14,7 @@ using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Controls
 {
-    public class AddressHolderLock
+    public class WatchVariableLock
     {
         public readonly bool IsSpecial;
         public readonly Type MemoryType;
@@ -27,7 +27,7 @@ namespace SM64_Diagnostic.Controls
         private string _value;
         public string Value { get { return _value; } }
 
-        public AddressHolderLock(
+        public WatchVariableLock(
             bool isSpecial,
             Type memoryType,
             int? byteCount,
@@ -60,8 +60,8 @@ namespace SM64_Diagnostic.Controls
 
         public override bool Equals(object obj)
         {
-            if (!(obj is AddressHolderLock)) return false;
-            AddressHolderLock other = (AddressHolderLock)obj;
+            if (!(obj is WatchVariableLock)) return false;
+            WatchVariableLock other = (WatchVariableLock)obj;
             return this.IsSpecial == other.IsSpecial &&
                    this.MemoryType == other.MemoryType &&
                    this.ByteCount == other.ByteCount &&

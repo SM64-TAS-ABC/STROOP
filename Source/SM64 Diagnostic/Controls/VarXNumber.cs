@@ -25,13 +25,13 @@ namespace SM64_Diagnostic.Controls
         private bool _displayAsNegated;
 
         public VarXNumber(
-            AddressHolder addressHolder,
+            WatchVariable watchVar,
             VarXControl varXControl,
             int? roundingLimit = DEFAULT_ROUNDING_LIMIT,
             bool? displayAsHex = DEFAULT_DISPLAY_AS_HEX,
             bool useCheckbox = DEFAULT_USE_CHECKBOX,
             VarXCoordinate? coordinate = null)
-            : base(addressHolder, varXControl, useCheckbox)
+            : base(watchVar, varXControl, useCheckbox)
         {
             if (roundingLimit.HasValue)
             {
@@ -195,7 +195,7 @@ namespace SM64_Diagnostic.Controls
 
         protected virtual int? GetHexDigitCount()
         {
-            return _addressHolder.NibbleCount;
+            return _watchVar.NibbleCount;
         }
     }
 }

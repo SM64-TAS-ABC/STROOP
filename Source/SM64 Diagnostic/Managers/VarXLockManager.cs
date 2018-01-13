@@ -13,35 +13,35 @@ namespace SM64_Diagnostic.Structs
 {
     public static class VarXLockManager
     {
-        private static List<AddressHolderLock> _lockList = new List<AddressHolderLock>();
+        private static List<WatchVariableLock> _lockList = new List<WatchVariableLock>();
 
-        public static void AddLocks(AddressHolder variable)
+        public static void AddLocks(WatchVariable variable)
         {
-            List<AddressHolderLock> newLocks = variable.GetLocks();
-            foreach (AddressHolderLock newLock in newLocks)
+            List<WatchVariableLock> newLocks = variable.GetLocks();
+            foreach (WatchVariableLock newLock in newLocks)
             {
                 if (!_lockList.Contains(newLock)) _lockList.Add(newLock);
             }
         }
 
-        public static void RemoveLocks(AddressHolder variable)
+        public static void RemoveLocks(WatchVariable variable)
         {
-            List<AddressHolderLock> newLocks = variable.GetLocks();
-            foreach (AddressHolderLock newLock in newLocks)
+            List<WatchVariableLock> newLocks = variable.GetLocks();
+            foreach (WatchVariableLock newLock in newLocks)
             {
                 _lockList.Remove(newLock);
             }
         }
 
-        public static bool ContainsLocksBool(AddressHolder variable)
+        public static bool ContainsLocksBool(WatchVariable variable)
         {
             return ContainsLocksCheckState(variable) != CheckState.Unchecked;
         }
 
-        public static CheckState ContainsLocksCheckState(AddressHolder variable)
+        public static CheckState ContainsLocksCheckState(WatchVariable variable)
         {
             if (!ContainsAnyLocks()) return CheckState.Unchecked;
-            List<AddressHolderLock> newLocks = variable.GetLocks();
+            List<WatchVariableLock> newLocks = variable.GetLocks();
 
             if (newLocks.Count == 0) return CheckState.Unchecked;
             CheckState firstCheckState =
@@ -55,12 +55,12 @@ namespace SM64_Diagnostic.Structs
             return firstCheckState;
         }
 
-        public static void UpdateLockValues(AddressHolder variable, string newValue)
+        public static void UpdateLockValues(WatchVariable variable, string newValue)
         {
-            List<AddressHolderLock> newLocks = variable.GetLocks();
-            foreach (AddressHolderLock newLock in newLocks)
+            List<WatchVariableLock> newLocks = variable.GetLocks();
+            foreach (WatchVariableLock newLock in newLocks)
             {
-                AddressHolderLock currentLock = _lockList.FirstOrDefault(current => current.Equals(newLock));
+                WatchVariableLock currentLock = _lockList.FirstOrDefault(current => current.Equals(newLock));
                 if (currentLock == null) continue;
                 currentLock.UpdateLockValue(newValue);
             }

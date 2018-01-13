@@ -14,7 +14,7 @@ using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Controls
 {
-    public class AddressHolder
+    public class WatchVariable
     {
         public readonly string MemoryTypeName;
         public readonly Type MemoryType;
@@ -70,7 +70,7 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public AddressHolder(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddress,
+        public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddress,
             uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, uint? mask)
         {
             BaseAddressType = baseAddress;
@@ -129,16 +129,16 @@ namespace SM64_Diagnostic.Controls
             return success;
         }
 
-        public List<AddressHolderLock> GetLocks()
+        public List<WatchVariableLock> GetLocks()
         {
             List<string> values = GetValues();
             List<uint> addresses = AddressList;
-            if (values.Count != addresses.Count) return new List<AddressHolderLock>();
+            if (values.Count != addresses.Count) return new List<WatchVariableLock>();
 
-            List<AddressHolderLock> locks = new List<AddressHolderLock>();
+            List<WatchVariableLock> locks = new List<WatchVariableLock>();
             for (int i = 0; i < values.Count; i++)
             {
-                locks.Add(new AddressHolderLock(
+                locks.Add(new WatchVariableLock(
                     IsSpecial, MemoryType, ByteCount, Mask, addresses[i], SpecialType, _setterFunction, values[i]));
             }
             return locks;

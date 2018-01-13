@@ -17,9 +17,9 @@ namespace SM64_Diagnostic.Controls
         private bool _displayAsObject;
 
         public VarXObject(
-            AddressHolder addressHolder,
+            WatchVariable watchVar,
             VarXControl varXControl)
-            : base(addressHolder, varXControl, DEFAULT_ROUNDING_LIMIT, true)
+            : base(watchVar, varXControl, DEFAULT_ROUNDING_LIMIT, true)
         {
             _displayAsObject = true;
 

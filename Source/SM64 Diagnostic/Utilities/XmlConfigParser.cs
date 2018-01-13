@@ -2433,8 +2433,8 @@ namespace SM64_Diagnostic.Utilities
                 }
             }
 
-            AddressHolder addressHolder =
-                new AddressHolder(
+            WatchVariable watchVar =
+                new WatchVariable(
                     typeName,
                     specialType,
                     baseAddressType,
@@ -2483,7 +2483,7 @@ namespace SM64_Diagnostic.Utilities
 
             return new VarXPrecursor(
                 name,
-                addressHolder,
+                watchVar,
                 varXSubclass,
                 backgroundColor,
                 useHex,

@@ -97,7 +97,7 @@ namespace SM64_Diagnostic.Controls
         public VarXControl(
             VarXPrecursor varXPrecursor,
             string name,
-            AddressHolder addressHolder,
+            WatchVariable watchVar,
             VarXSubclass varXSubclass,
             Color? backgroundColor,
             bool? useHex,
@@ -130,7 +130,7 @@ namespace SM64_Diagnostic.Controls
             base.Controls.Add(_valueCheckBox, 1, 0);
 
             // Create var x
-            _varX = VarX.CreateVarX(addressHolder, this, varXSubclass, useHex, invertBool, coordinate);
+            _varX = VarX.CreateVarX(watchVar, this, varXSubclass, useHex, invertBool, coordinate);
 
             // Initialize context menu strip
             _textboxOldContextMenuStrip = _valueTextBox.ContextMenuStrip;

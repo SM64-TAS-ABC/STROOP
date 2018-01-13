@@ -18,7 +18,7 @@ namespace SM64_Diagnostic.Controls
         protected const bool DEFAULT_DISPLAY_AS_HEX = false;
         protected const bool DEFAULT_USE_CHECKBOX = false;
 
-        protected readonly AddressHolder _addressHolder;
+        protected readonly WatchVariable _watchVar;
         protected readonly VarXControl _varXControl;
         protected readonly BetterContextMenuStrip _contextMenuStrip;
 
@@ -28,7 +28,7 @@ namespace SM64_Diagnostic.Controls
         private readonly bool _startsAsCheckbox;
 
         public static VarX CreateVarX(
-            AddressHolder addressHolder,
+            WatchVariable watchVar,
             VarXControl varXControl,
             VarXSubclass varXSubclcass,
             bool? useHex,
@@ -38,11 +38,11 @@ namespace SM64_Diagnostic.Controls
             switch (varXSubclcass)
             {
                 case VarXSubclass.String:
-                    return new VarX(addressHolder, varXControl);
+                    return new VarX(watchVar, varXControl);
 
                 case VarXSubclass.Number:
                     return new VarXNumber(
-                        addressHolder,
+                        watchVar,
                         varXControl,
                         DEFAULT_ROUNDING_LIMIT,
                         useHex,
@@ -50,22 +50,22 @@ namespace SM64_Diagnostic.Controls
                         coordinate);
 
                 case VarXSubclass.Angle:
-                    return new VarXAngle(addressHolder, varXControl);
+                    return new VarXAngle(watchVar, varXControl);
 
                 case VarXSubclass.Object:
-                    return new VarXObject(addressHolder, varXControl);
+                    return new VarXObject(watchVar, varXControl);
 
                 case VarXSubclass.Boolean:
-                    return new VarXBoolean(addressHolder, varXControl, invertBool);
+                    return new VarXBoolean(watchVar, varXControl, invertBool);
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        protected VarX(AddressHolder addressHolder, VarXControl varXControl, bool useCheckbox = false)
+        protected VarX(WatchVariable watchVar, VarXControl varXControl, bool useCheckbox = false)
         {
-            _addressHolder = addressHolder;
+            _watchVar = watchVar;
             _varXControl = varXControl;
 
             _startsAsCheckbox = useCheckbox;
@@ -97,13 +97,13 @@ namespace SM64_Diagnostic.Controls
             _itemLock = new ToolStripMenuItem("Lock");
             _itemLock.Click += (sender, e) =>
             {
-                if (VarXLockManager.ContainsLocksBool(_addressHolder))
+                if (VarXLockManager.ContainsLocksBool(_watchVar))
                 {
-                    VarXLockManager.RemoveLocks(_addressHolder);
+                    VarXLockManager.RemoveLocks(_watchVar);
                 }
                 else
                 {
-                    VarXLockManager.AddLocks(_addressHolder);
+                    VarXLockManager.AddLocks(_watchVar);
                 }
             };
 
@@ -149,9 +149,9 @@ namespace SM64_Diagnostic.Controls
             VariableViewerForm varInfo =
                 new VariableViewerForm(
                     _varXControl.VarName,
-                    _addressHolder.GetTypeDescription(),
-                    _addressHolder.GetRamAddressString(),
-                    _addressHolder.GetProcessAddressString());
+                    _watchVar.GetTypeDescription(),
+                    _watchVar.GetRamAddressString(),
+                    _watchVar.GetProcessAddressString());
             varInfo.ShowDialog();
         }
 
@@ -166,12 +166,12 @@ namespace SM64_Diagnostic.Controls
 
         public CheckState GetLockedCheckState()
         {
-            return VarXLockManager.ContainsLocksCheckState(_addressHolder);
+            return VarXLockManager.ContainsLocksCheckState(_watchVar);
         }
 
         public bool GetLockedBool()
         {
-            return VarXLockManager.ContainsLocksBool(_addressHolder);
+            return VarXLockManager.ContainsLocksBool(_watchVar);
         }
 
         public void UpdateItemCheckStates()
@@ -187,7 +187,7 @@ namespace SM64_Diagnostic.Controls
             bool handleFormatting = true,
             List<uint> addresses = null)
         {
-            List<string> values = _addressHolder.GetValues(addresses);
+            List<string> values = _watchVar.GetValues(addresses);
             (bool meaningfulValue, string value) = CombineValues(values);
             if (!meaningfulValue) return value;
 
@@ -208,14 +208,14 @@ namespace SM64_Diagnostic.Controls
             value = HandleUnnegating(value);
             value = HandleAngleUnconverting(value);
 
-            bool success = _addressHolder.SetValue(value, addresses);
-            if (success && GetLockedBool()) VarXLockManager.UpdateLockValues(_addressHolder, value);
+            bool success = _watchVar.SetValue(value, addresses);
+            if (success && GetLockedBool()) VarXLockManager.UpdateLockValues(_watchVar, value);
             return success;
         }
 
         public CheckState GetCheckStateValue(List<uint> addresses = null)
         {
-            List<string> values = _addressHolder.GetValues(addresses);
+            List<string> values = _watchVar.GetValues(addresses);
             List<CheckState> checkStates = values.ConvertAll(value => ConvertValueToCheckState(value));
             CheckState checkState = CombineCheckStates(checkStates);
             return checkState;
@@ -224,8 +224,8 @@ namespace SM64_Diagnostic.Controls
         public bool SetCheckStateValue(CheckState checkState, List<uint> addresses = null)
         {
             string value = ConvertCheckStateToValue(checkState);
-            bool success = _addressHolder.SetValue(value, addresses);
-            if (success && GetLockedBool()) VarXLockManager.UpdateLockValues(_addressHolder, value);
+            bool success = _watchVar.SetValue(value, addresses);
+            if (success && GetLockedBool()) VarXLockManager.UpdateLockValues(_watchVar, value);
             return success;
         }
 
@@ -249,7 +249,7 @@ namespace SM64_Diagnostic.Controls
 
         public List<uint> GetCurrentAddresses()
         {
-            return _addressHolder.AddressList;
+            return _watchVar.AddressList;
         }
 
 

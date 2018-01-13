@@ -132,7 +132,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\AddressHolderLock.cs" />
+    <Compile Include="Controls\WatchVariableLock.cs" />
     <Compile Include="Controls\BetterContextMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -151,7 +151,7 @@
     <Compile Include="Controls\DecompilerView.xaml.cs">
       <DependentUpon>DecompilerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\AddressHolder.cs" />
+    <Compile Include="Controls\WatchVariable.cs" />
     <Compile Include="Controls\VarXPrecursor.cs" />
     <Compile Include="Controls\VarXControl.cs">
       <SubType>Component</SubType>

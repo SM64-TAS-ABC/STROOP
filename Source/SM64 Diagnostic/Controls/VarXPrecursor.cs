@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.Controls
     public class VarXPrecursor
     {
         private readonly string _name;
-        private readonly AddressHolder _addressHolder;
+        private readonly WatchVariable _watchVar;
         private readonly VarXSubclass _varXSubclass;
         private readonly Color? _backgroundColor;
         private readonly bool? _useHex;
@@ -25,7 +25,7 @@ namespace SM64_Diagnostic.Controls
 
         public VarXPrecursor(
             string name,
-            AddressHolder addressHolder,
+            WatchVariable watchVar,
             VarXSubclass varXSubclass,
             Color? backgroundColor,
             bool? useHex,
@@ -34,7 +34,7 @@ namespace SM64_Diagnostic.Controls
             List<VariableGroup> groupList)
         {
             _name = name;
-            _addressHolder = addressHolder;
+            _watchVar = watchVar;
             _varXSubclass = varXSubclass;
             _backgroundColor = backgroundColor;
             _useHex = useHex;
@@ -48,7 +48,7 @@ namespace SM64_Diagnostic.Controls
             return new VarXControl(
                 this,
                 _name,
-                _addressHolder,
+                _watchVar,
                 _varXSubclass,
                 newColor ?? _backgroundColor,
                 _useHex,
