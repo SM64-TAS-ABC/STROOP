@@ -58,13 +58,13 @@ namespace SM64_Diagnostic.Structs
             return (BaseAddressTypeEnum)Enum.Parse(typeof(BaseAddressTypeEnum), stringValue);
         }
 
-        public static WatchVariableSubclass GetWatchVariableSubclass(string stringValue)
+        public static WatchVariableSubclass GetSubclass(string stringValue)
         {
             if (stringValue == null) return WatchVariableSubclass.Number;
             return (WatchVariableSubclass)Enum.Parse(typeof(WatchVariableSubclass), stringValue);
         }
 
-        public static WatchVariableCoordinate GetVarXCoordinate(string stringValue)
+        public static WatchVariableCoordinate GetCoordinate(string stringValue)
         {
             return (WatchVariableCoordinate)Enum.Parse(typeof(WatchVariableCoordinate), stringValue);
         }

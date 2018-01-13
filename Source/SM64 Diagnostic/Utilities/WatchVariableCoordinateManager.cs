@@ -14,19 +14,19 @@ namespace SM64_Diagnostic.Structs
     {
         private static List<WatchVariableNumberWrapper> coordinateVarList = new List<WatchVariableNumberWrapper>();
 
-        public static void NotifyVarXCoordinate(WatchVariableCoordinate coordinate, WatchVariableNumberWrapper varX)
+        public static void NotifyCoordinate(WatchVariableCoordinate coordinate, WatchVariableNumberWrapper watchVarWrapper)
         {
             switch (coordinate)
             {
                 case WatchVariableCoordinate.X:
                     coordinateVarList.Clear();
-                    coordinateVarList.Add(varX);
+                    coordinateVarList.Add(watchVarWrapper);
                     break;
                 case WatchVariableCoordinate.Y:
-                    if (coordinateVarList.Count == 1) coordinateVarList.Add(varX);
+                    if (coordinateVarList.Count == 1) coordinateVarList.Add(watchVarWrapper);
                     break;
                 case WatchVariableCoordinate.Z:
-                    if (coordinateVarList.Count == 2) coordinateVarList.Add(varX);
+                    if (coordinateVarList.Count == 2) coordinateVarList.Add(watchVarWrapper);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

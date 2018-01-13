@@ -18,8 +18,8 @@ namespace SM64_Diagnostic.Controls
 
         public WatchVariableObjectWrapper(
             WatchVariable watchVar,
-            WatchVariableControl varXControl)
-            : base(watchVar, varXControl, DEFAULT_ROUNDING_LIMIT, true)
+            WatchVariableControl watchVarControl)
+            : base(watchVar, watchVarControl, DEFAULT_ROUNDING_LIMIT, true)
         {
             _displayAsObject = true;
 

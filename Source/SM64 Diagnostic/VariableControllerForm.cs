@@ -20,27 +20,27 @@ namespace SM64_Diagnostic
         private static readonly Color COLOR_RED = Color.FromArgb(255, 220, 220);
 
         private readonly string _varName;
-        private readonly WatchVariableWrapper _varX;
+        private readonly WatchVariableWrapper _watchVarWrapper;
         private readonly Timer _timer;
         private List<uint> _addresses;
 
-        public VariableControllerForm(string varName, WatchVariableWrapper varX)
+        public VariableControllerForm(string varName, WatchVariableWrapper watchVarWrapper)
         {
             _varName = varName;
-            _varX = varX;
+            _watchVarWrapper = watchVarWrapper;
             _timer = new System.Windows.Forms.Timer { Interval = 30 };
             _addresses = null;
 
             InitializeComponent();
 
             _textBoxVarName.Text = _varName;
-            _buttonAdd.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, true, _addresses); };
-            _buttonSubtract.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, false, _addresses); };
-            _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _varX.GetStringValue(true, true, _addresses); };
-            _buttonSet.Click += (s, e) => { _varX.SetStringValue(_textBoxGetSet.Text, _addresses); };
+            _buttonAdd.Click += (s, e) => { _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, true, _addresses); };
+            _buttonSubtract.Click += (s, e) => { _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, false, _addresses); };
+            _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _watchVarWrapper.GetStringValue(true, true, _addresses); };
+            _buttonSet.Click += (s, e) => { _watchVarWrapper.SetStringValue(_textBoxGetSet.Text, _addresses); };
             _checkBoxFixAddress.Click += (s, e) => { ToggleFixedAddress(); };
 
-            _timer.Tick += (s, e) => { _textBoxCurrentValue.Text = _varX.GetStringValue(true, true, _addresses); };
+            _timer.Tick += (s, e) => { _textBoxCurrentValue.Text = _watchVarWrapper.GetStringValue(true, true, _addresses); };
             _timer.Start();
         }
         
@@ -50,7 +50,7 @@ namespace SM64_Diagnostic
             if (fixedAddress)
             {
                 _textBoxCurrentValue.BackColor = COLOR_RED;
-                _addresses = _varX.GetCurrentAddresses();
+                _addresses = _watchVarWrapper.GetCurrentAddresses();
             }
             else
             {

@@ -31,8 +31,8 @@ namespace SM64_Diagnostic.Controls
 
         public WatchVariableAngleWrapper(
             WatchVariable watchVar,
-            WatchVariableControl varXControl)
-            : base(watchVar, varXControl, 0)
+            WatchVariableControl watchVarControl)
+            : base(watchVar, watchVarControl, 0)
         {
             _signed = _watchVar.SignedType.Value;
             _angleUnitType = AngleUnitType.InGameUnits;

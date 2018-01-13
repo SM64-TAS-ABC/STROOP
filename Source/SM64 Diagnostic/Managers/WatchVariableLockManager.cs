@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Structs
 {
-    public static class VarXLockManager
+    public static class WatchVariableLockManager
     {
         private static List<WatchVariableLock> _lockList = new List<WatchVariableLock>();
 

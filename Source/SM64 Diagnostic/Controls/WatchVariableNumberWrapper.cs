@@ -26,12 +26,12 @@ namespace SM64_Diagnostic.Controls
 
         public WatchVariableNumberWrapper(
             WatchVariable watchVar,
-            WatchVariableControl varXControl,
+            WatchVariableControl watchVarControl,
             int? roundingLimit = DEFAULT_ROUNDING_LIMIT,
             bool? displayAsHex = DEFAULT_DISPLAY_AS_HEX,
             bool useCheckbox = DEFAULT_USE_CHECKBOX,
             WatchVariableCoordinate? coordinate = null)
-            : base(watchVar, varXControl, useCheckbox)
+            : base(watchVar, watchVarControl, useCheckbox)
         {
             if (roundingLimit.HasValue)
             {
@@ -45,7 +45,7 @@ namespace SM64_Diagnostic.Controls
             AddCoordinateContextMenuStripItems();
             AddNumberContextMenuStripItems();
 
-            if (coordinate != null) WatchVariableCoordinateManager.NotifyVarXCoordinate(coordinate.Value, this);
+            if (coordinate != null) WatchVariableCoordinateManager.NotifyCoordinate(coordinate.Value, this);
         }
 
         private void AddNumberContextMenuStripItems()

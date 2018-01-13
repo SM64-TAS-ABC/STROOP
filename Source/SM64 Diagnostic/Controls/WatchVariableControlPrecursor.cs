@@ -43,7 +43,7 @@ namespace SM64_Diagnostic.Controls
             _groupList = groupList;
         }
 
-        public WatchVariableControl CreateVarXControl(Color? newColor = null)
+        public WatchVariableControl CreateWatchVariableControl(Color? newColor = null)
         {
             return new WatchVariableControl(
                 this,

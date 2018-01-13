@@ -19,7 +19,7 @@ namespace SM64_Diagnostic.Controls
         protected const bool DEFAULT_USE_CHECKBOX = false;
 
         protected readonly WatchVariable _watchVar;
-        protected readonly WatchVariableControl _varXControl;
+        protected readonly WatchVariableControl _watchVarControl;
         protected readonly BetterContextMenuStrip _contextMenuStrip;
 
         private ToolStripMenuItem _itemLock;
@@ -27,46 +27,46 @@ namespace SM64_Diagnostic.Controls
 
         private readonly bool _startsAsCheckbox;
 
-        public static WatchVariableWrapper CreateVarX(
+        public static WatchVariableWrapper CreateWatchVariableWrapper(
             WatchVariable watchVar,
-            WatchVariableControl varXControl,
-            WatchVariableSubclass varXSubclcass,
+            WatchVariableControl watchVarControl,
+            WatchVariableSubclass subclass,
             bool? useHex,
             bool? invertBool,
             WatchVariableCoordinate? coordinate)
         {
-            switch (varXSubclcass)
+            switch (subclass)
             {
                 case WatchVariableSubclass.String:
-                    return new WatchVariableWrapper(watchVar, varXControl);
+                    return new WatchVariableWrapper(watchVar, watchVarControl);
 
                 case WatchVariableSubclass.Number:
                     return new WatchVariableNumberWrapper(
                         watchVar,
-                        varXControl,
+                        watchVarControl,
                         DEFAULT_ROUNDING_LIMIT,
                         useHex,
                         DEFAULT_USE_CHECKBOX,
                         coordinate);
 
                 case WatchVariableSubclass.Angle:
-                    return new WatchVariableAngleWrapper(watchVar, varXControl);
+                    return new WatchVariableAngleWrapper(watchVar, watchVarControl);
 
                 case WatchVariableSubclass.Object:
-                    return new WatchVariableObjectWrapper(watchVar, varXControl);
+                    return new WatchVariableObjectWrapper(watchVar, watchVarControl);
 
                 case WatchVariableSubclass.Boolean:
-                    return new WatchVariableBooleanWrapper(watchVar, varXControl, invertBool);
+                    return new WatchVariableBooleanWrapper(watchVar, watchVarControl, invertBool);
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        protected WatchVariableWrapper(WatchVariable watchVar, WatchVariableControl varXControl, bool useCheckbox = false)
+        protected WatchVariableWrapper(WatchVariable watchVar, WatchVariableControl watchVarControl, bool useCheckbox = false)
         {
             _watchVar = watchVar;
-            _varXControl = varXControl;
+            _watchVarControl = watchVarControl;
 
             _startsAsCheckbox = useCheckbox;
             _contextMenuStrip = new BetterContextMenuStrip();
@@ -89,32 +89,32 @@ namespace SM64_Diagnostic.Controls
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight");
             itemHighlight.Click += (sender, e) =>
             {
-                _varXControl.ShowBorder = !_varXControl.ShowBorder;
-                itemHighlight.Checked = _varXControl.ShowBorder;
+                _watchVarControl.ShowBorder = !_watchVarControl.ShowBorder;
+                itemHighlight.Checked = _watchVarControl.ShowBorder;
             };
-            itemHighlight.Checked = _varXControl.ShowBorder;
+            itemHighlight.Checked = _watchVarControl.ShowBorder;
 
             _itemLock = new ToolStripMenuItem("Lock");
             _itemLock.Click += (sender, e) =>
             {
-                if (VarXLockManager.ContainsLocksBool(_watchVar))
+                if (WatchVariableLockManager.ContainsLocksBool(_watchVar))
                 {
-                    VarXLockManager.RemoveLocks(_watchVar);
+                    WatchVariableLockManager.RemoveLocks(_watchVar);
                 }
                 else
                 {
-                    VarXLockManager.AddLocks(_watchVar);
+                    WatchVariableLockManager.AddLocks(_watchVar);
                 }
             };
 
             _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
-            _itemRemoveAllLocks.Click += (sender, e) => { VarXLockManager.RemoveAllLocks(); };
+            _itemRemoveAllLocks.Click += (sender, e) => { WatchVariableLockManager.RemoveAllLocks(); };
 
             ToolStripMenuItem itemEdit = new ToolStripMenuItem("Edit");
-            itemEdit.Click += (sender, e) => { _varXControl.EditMode = true; };
+            itemEdit.Click += (sender, e) => { _watchVarControl.EditMode = true; };
 
             ToolStripMenuItem itemCopyAsIs = new ToolStripMenuItem("Copy (As Is)");
-            itemCopyAsIs.Click += (sender, e) => { Clipboard.SetText(_varXControl.TextBoxValue); };
+            itemCopyAsIs.Click += (sender, e) => { Clipboard.SetText(_watchVarControl.TextBoxValue); };
 
             ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy (Unrounded)");
             itemCopyUnrounded.Click += (sender, e) => { Clipboard.SetText(GetStringValue(false)); };
@@ -134,7 +134,7 @@ namespace SM64_Diagnostic.Controls
         private void AddExternalContextMenuStripItems()
         {
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
-            itemAddToCustomTab.Click += (sender, e) => { CustomManager.Instance.AddVariable(_varXControl.CreateCopy()); };
+            itemAddToCustomTab.Click += (sender, e) => { CustomManager.Instance.AddVariable(_watchVarControl.CreateCopy()); };
 
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
             itemOpenController.Click += (sender, e) => { ShowVarController(); };
@@ -148,7 +148,7 @@ namespace SM64_Diagnostic.Controls
         {
             VariableViewerForm varInfo =
                 new VariableViewerForm(
-                    _varXControl.VarName,
+                    _watchVarControl.VarName,
                     _watchVar.GetTypeDescription(),
                     _watchVar.GetRamAddressString(),
                     _watchVar.GetProcessAddressString());
@@ -159,25 +159,25 @@ namespace SM64_Diagnostic.Controls
         {
             VariableControllerForm varController =
                 new VariableControllerForm(
-                    _varXControl.VarName,
+                    _watchVarControl.VarName,
                     this);
             varController.Show();
         }
 
         public CheckState GetLockedCheckState()
         {
-            return VarXLockManager.ContainsLocksCheckState(_watchVar);
+            return WatchVariableLockManager.ContainsLocksCheckState(_watchVar);
         }
 
         public bool GetLockedBool()
         {
-            return VarXLockManager.ContainsLocksBool(_watchVar);
+            return WatchVariableLockManager.ContainsLocksBool(_watchVar);
         }
 
         public void UpdateItemCheckStates()
         {
             _itemLock.Checked = GetLockedBool();
-            _itemRemoveAllLocks.Visible = VarXLockManager.ContainsAnyLocks();
+            _itemRemoveAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
         }
 
 
@@ -209,7 +209,7 @@ namespace SM64_Diagnostic.Controls
             value = HandleAngleUnconverting(value);
 
             bool success = _watchVar.SetValue(value, addresses);
-            if (success && GetLockedBool()) VarXLockManager.UpdateLockValues(_watchVar, value);
+            if (success && GetLockedBool()) WatchVariableLockManager.UpdateLockValues(_watchVar, value);
             return success;
         }
 
@@ -225,7 +225,7 @@ namespace SM64_Diagnostic.Controls
         {
             string value = ConvertCheckStateToValue(checkState);
             bool success = _watchVar.SetValue(value, addresses);
-            if (success && GetLockedBool()) VarXLockManager.UpdateLockValues(_watchVar, value);
+            if (success && GetLockedBool()) WatchVariableLockManager.UpdateLockValues(_watchVar, value);
             return success;
         }
 

@@ -1,13 +1,4 @@
-﻿using SM64_Diagnostic.Extensions;
-using SM64_Diagnostic.Managers;
-using SM64_Diagnostic.Structs;
-using SM64_Diagnostic.Structs.Configurations;
-using SM64_Diagnostic.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
+﻿using SM64_Diagnostic.Utilities;
 using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Controls
@@ -19,9 +10,9 @@ namespace SM64_Diagnostic.Controls
 
         public WatchVariableBooleanWrapper(
             WatchVariable watchVar,
-            WatchVariableControl varXControl,
+            WatchVariableControl watchVarControl,
             bool? displayAsInverted)
-            : base(watchVar, varXControl, DEFAULT_ROUNDING_LIMIT, DEFAULT_DISPLAY_AS_HEX, true)
+            : base(watchVar, watchVarControl, DEFAULT_ROUNDING_LIMIT, DEFAULT_DISPLAY_AS_HEX, true)
         {
             _displayAsCheckbox = true;
             _displayAsInverted = displayAsInverted ?? false;
@@ -36,7 +27,7 @@ namespace SM64_Diagnostic.Controls
             {
                 _displayAsCheckbox = !_displayAsCheckbox;
                 itemDisplayAsCheckbox.Checked = _displayAsCheckbox;
-                _varXControl.SetUseCheckbox(_displayAsCheckbox);
+                _watchVarControl.SetUseCheckbox(_displayAsCheckbox);
             };
             itemDisplayAsCheckbox.Checked = _displayAsCheckbox;
 

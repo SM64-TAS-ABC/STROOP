@@ -11,14 +11,14 @@ namespace SM64_Diagnostic.Controls
     public class WatchVariablePanel : FlowLayoutPanel
     {
         private readonly Object _objectLock;
-        private readonly List<WatchVariableControl> _varXControlsList;
+        private readonly List<WatchVariableControl> _watchVarControlsList;
         private readonly List<VariableGroup> _allGroups;
         private readonly List<VariableGroup> _visibleGroups;
 
         public WatchVariablePanel()
         {
             _objectLock = new Object();
-            _varXControlsList = new List<WatchVariableControl>();
+            _watchVarControlsList = new List<WatchVariableControl>();
             _allGroups = new List<VariableGroup>();
             _visibleGroups = new List<VariableGroup>();
             ContextMenuStrip = new ContextMenuStrip();
@@ -74,51 +74,51 @@ namespace SM64_Diagnostic.Controls
             lock (_objectLock)
             {
                 Controls.Clear();
-                _varXControlsList.ForEach(varXControl =>
+                _watchVarControlsList.ForEach(watchVarControl =>
                 {
-                    if (varXControl.BelongsToAnyGroup(_visibleGroups))
-                        Controls.Add(varXControl);
+                    if (watchVarControl.BelongsToAnyGroup(_visibleGroups))
+                        Controls.Add(watchVarControl);
                 });
             }
         }
 
-        public void AddVariables(List<WatchVariableControl> varXControls)
+        public void AddVariables(List<WatchVariableControl> watchVarControls)
         {
             lock (_objectLock)
             {
-                varXControls.ForEach(varXControl =>
+                watchVarControls.ForEach(watchVarControl =>
                 {
-                    _varXControlsList.Add(varXControl);
-                    if (_allGroups.Count == 0 || varXControl.BelongsToAnyGroup(_visibleGroups))
-                        Controls.Add(varXControl);
+                    _watchVarControlsList.Add(watchVarControl);
+                    if (_allGroups.Count == 0 || watchVarControl.BelongsToAnyGroup(_visibleGroups))
+                        Controls.Add(watchVarControl);
                 });
             }
         }
 
-        public void RemoveVariables(List<WatchVariableControl> varXControls)
+        public void RemoveVariables(List<WatchVariableControl> watchVarControls)
         {
             lock (_objectLock)
             {
-                varXControls.ForEach(varXControl =>
+                watchVarControls.ForEach(watchVarControl =>
                 {
-                    _varXControlsList.Remove(varXControl);
-                    if (_allGroups.Count == 0 || varXControl.BelongsToAnyGroup(_visibleGroups))
-                        Controls.Remove(varXControl);
+                    _watchVarControlsList.Remove(watchVarControl);
+                    if (_allGroups.Count == 0 || watchVarControl.BelongsToAnyGroup(_visibleGroups))
+                        Controls.Remove(watchVarControl);
                 });
             }
         }
 
         public void RemoveVariables(VariableGroup varGroup)
         {
-            List<WatchVariableControl> varXControls =
-                _varXControlsList.FindAll(
-                    varXControl => varXControl.BelongsToGroup(varGroup));
-            RemoveVariables(varXControls);
+            List<WatchVariableControl> watchVarControls =
+                _watchVarControlsList.FindAll(
+                    watchVarControl => watchVarControl.BelongsToGroup(varGroup));
+            RemoveVariables(watchVarControls);
         }
 
         public void UpdateControls()
         {
-            _varXControlsList.ForEach(varXControl => varXControl.UpdateControl());
+            _watchVarControlsList.ForEach(watchVarControl => watchVarControl.UpdateControl());
         }
     }
 }

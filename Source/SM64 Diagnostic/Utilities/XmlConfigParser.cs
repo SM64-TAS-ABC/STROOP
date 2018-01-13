@@ -1439,7 +1439,7 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static List<WatchVariableControl> OpenVarXControls(string path, string schemaFile)
+        public static List<WatchVariableControl> OpenWatchVariableControls(string path, string schemaFile)
         {
             var objectData = new List<WatchVariableControl>();
             var assembly = Assembly.GetExecutingAssembly();
@@ -1459,8 +1459,8 @@ namespace SM64_Diagnostic.Utilities
                 if (element.Name.ToString() != "Data")
                     continue;
 
-                WatchVariableControl varXControl = GetVarXControlFromElement(element);
-                objectData.Add(varXControl);
+                WatchVariableControl watchVarControl = GetWatchVariableControlFromElement(element);
+                objectData.Add(watchVarControl);
             }
 
             return objectData;
@@ -1683,7 +1683,7 @@ namespace SM64_Diagnostic.Utilities
                         List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
                         {
-                            WatchVariableControlPrecursor precursor = GetVarXPrecursorFromElement(subElement);
+                            WatchVariableControlPrecursor precursor = GetWatchVariablePrecursorFromElement(subElement);
                             precursors.Add(precursor);
                         }
 
@@ -1700,7 +1700,7 @@ namespace SM64_Diagnostic.Utilities
                             MapImagePath = mapImagePath,
                             Name = name,
                             RotatesOnMap = rotates,
-                            VarXPrecursors = precursors,
+                            WatchVariablePrecursors = precursors,
                         };
 
                         if (!assoc.AddAssociation(newBehavior))
@@ -2378,18 +2378,18 @@ namespace SM64_Diagnostic.Utilities
             return new Tuple<HackConfig, List<RomHack>>(hackConfig, hacks);
         }
 
-        public static WatchVariableControl GetVarXControlFromElement(XElement element)
+        public static WatchVariableControl GetWatchVariableControlFromElement(XElement element)
         {
-            return GetVarXPrecursorFromElement(element).CreateVarXControl();
+            return GetWatchVariablePrecursorFromElement(element).CreateWatchVariableControl();
         }
 
-        public static WatchVariableControlPrecursor GetVarXPrecursorFromElement(XElement element)
+        public static WatchVariableControlPrecursor GetWatchVariablePrecursorFromElement(XElement element)
         {
             string name = element.Value;
 
             BaseAddressTypeEnum baseAddressType = WatchVariableUtilities.GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
 
-            WatchVariableSubclass subclass = WatchVariableUtilities.GetWatchVariableSubclass(element.Attribute(XName.Get("subclass"))?.Value);
+            WatchVariableSubclass subclass = WatchVariableUtilities.GetSubclass(element.Attribute(XName.Get("subclass"))?.Value);
 
             List<VariableGroup> groupList = WatchVariableUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
 
@@ -2451,7 +2451,7 @@ namespace SM64_Diagnostic.Utilities
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : (bool?)null;
 
             WatchVariableCoordinate? coordinate = element.Attribute(XName.Get("coord")) != null ?
-                WatchVariableUtilities.GetVarXCoordinate(element.Attribute(XName.Get("coord")).Value) : (WatchVariableCoordinate?)null;
+                WatchVariableUtilities.GetCoordinate(element.Attribute(XName.Get("coord")).Value) : (WatchVariableCoordinate?)null;
 
             if (subclass == WatchVariableSubclass.Angle && specialType != null)
             {

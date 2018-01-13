@@ -23,9 +23,9 @@ namespace SM64_Diagnostic.Managers
             Instance = this;
         }
 
-        public void AddVariable(WatchVariableControl varXControl)
+        public void AddVariable(WatchVariableControl watchVarControl)
         {
-            AddVarXControls(new List<WatchVariableControl>() { varXControl });
+            AddwatchVarControls(new List<WatchVariableControl>() { watchVarControl });
         }
 
         public override void Update(bool updateView)

@@ -287,7 +287,7 @@
     <Compile Include="Structs\SpawnHack.cs" />
     <Compile Include="Utilities\AngleUnitType.cs" />
     <Compile Include="Utilities\ColorUtilities.cs" />
-    <Compile Include="Managers\VarXLockManager.cs" />
+    <Compile Include="Managers\WatchVariableLockManager.cs" />
     <Compile Include="Utilities\WatchVariableCoordinate.cs" />
     <Compile Include="Utilities\WatchVariableSubclass.cs" />
     <Compile Include="Utilities\VariableGroup.cs" />

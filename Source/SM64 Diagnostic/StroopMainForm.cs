@@ -25,7 +25,7 @@ namespace SM64_Diagnostic
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         InputImageGui _inputImageGui = new InputImageGui();
         FileImageGui _fileImageGui = new FileImageGui();
-        List<WatchVariableControl> _varXList, _waterData, _miscData, _areaData, _inputData, _fileData,
+        List<WatchVariableControl> _watchVarControlList, _waterData, _miscData, _areaData, _inputData, _fileData,
             _debugData, _camHackData, _hudData, _cameraData, _quarterFrameData, _actionsData,
             _triangleData, _marioData, _objectData;
         MapAssociations _mapAssoc;
@@ -114,7 +114,7 @@ namespace SM64_Diagnostic
             currentContext.FileManager = new FileManager(_fileData, tabPageFile, noTearFlowLayoutPanelFile, _fileImageGui);
             currentContext.AreaManager = new AreaManager(tabPageArea, _areaData, NoTearFlowLayoutPanelArea);
             currentContext.QuarterFrameManager = new DataManager(_quarterFrameData, noTearFlowLayoutPanelQuarterFrame);
-            currentContext.XManager = new CustomManager(_varXList, tabPageX, noTearFlowLayoutPanelX);
+            currentContext.XManager = new CustomManager(_watchVarControlList, tabPageX, noTearFlowLayoutPanelX);
             currentContext.CameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, noTearFlowLayoutPanelCamHack);
             currentContext.ObjectManager = new ObjectManager(_objectData, tabPageObjects, NoTearFlowLayoutPanelObject);
             currentContext.OptionsManager = new OptionsManager(tabPageOptions);
@@ -185,40 +185,40 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading main configuration", statusNum++);
             XmlConfigParser.OpenConfig(@"Config/Config.xml");
             loadingForm.UpdateStatus("Loading Miscellaneous Data", statusNum++);
-            _miscData = XmlConfigParser.OpenVarXControls(@"Config/MiscData.xml", "MiscDataSchema.xsd");
+            _miscData = XmlConfigParser.OpenWatchVariableControls(@"Config/MiscData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Object Data", statusNum++);
-            _objectData = XmlConfigParser.OpenVarXControls(@"Config/ObjectData.xml", "ObjectDataSchema.xsd");
+            _objectData = XmlConfigParser.OpenWatchVariableControls(@"Config/ObjectData.xml", "ObjectDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Object Associations", statusNum++);
             Config.ObjectAssociations = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", _slotManagerGui);
             loadingForm.UpdateStatus("Loading Mario Data", statusNum++);
-            _marioData = XmlConfigParser.OpenVarXControls(@"Config/MarioData.xml", "MarioDataSchema.xsd");
+            _marioData = XmlConfigParser.OpenWatchVariableControls(@"Config/MarioData.xml", "MarioDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Camera Data", statusNum++);
-            _cameraData = XmlConfigParser.OpenVarXControls(@"Config/CameraData.xml", "CameraDataSchema.xsd");
+            _cameraData = XmlConfigParser.OpenWatchVariableControls(@"Config/CameraData.xml", "CameraDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Actions Data", statusNum++);
-            _actionsData = XmlConfigParser.OpenVarXControls(@"Config/ActionsData.xml", "MiscDataSchema.xsd");
+            _actionsData = XmlConfigParser.OpenWatchVariableControls(@"Config/ActionsData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Water Data", statusNum++);
-            _waterData = XmlConfigParser.OpenVarXControls(@"Config/WaterData.xml", "MiscDataSchema.xsd");
-            _varXList = XmlConfigParser.OpenVarXControls(@"Config/CustomData.xml", "MiscDataSchema.xsd");
+            _waterData = XmlConfigParser.OpenWatchVariableControls(@"Config/WaterData.xml", "MiscDataSchema.xsd");
+            _watchVarControlList = XmlConfigParser.OpenWatchVariableControls(@"Config/CustomData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Input Data", statusNum++);
-            _inputData = XmlConfigParser.OpenVarXControls(@"Config/InputData.xml", "MiscDataSchema.xsd");
+            _inputData = XmlConfigParser.OpenWatchVariableControls(@"Config/InputData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Input Image Associations", statusNum++);
             XmlConfigParser.OpenInputImageAssoc(@"Config/InputImageAssociations.xml", _inputImageGui);
             loadingForm.UpdateStatus("Loading File Data", statusNum++);
-            _fileData = XmlConfigParser.OpenVarXControls(@"Config/FileData.xml", "FileDataSchema.xsd");
+            _fileData = XmlConfigParser.OpenWatchVariableControls(@"Config/FileData.xml", "FileDataSchema.xsd");
             loadingForm.UpdateStatus("Loading File Image Associations", statusNum++);
             XmlConfigParser.OpenFileImageAssoc(@"Config/FileImageAssociations.xml", _fileImageGui);
             loadingForm.UpdateStatus("Loading Area Data", statusNum++);
-            _areaData = XmlConfigParser.OpenVarXControls(@"Config/AreaData.xml", "MiscDataSchema.xsd");
+            _areaData = XmlConfigParser.OpenWatchVariableControls(@"Config/AreaData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Quarter Frame Data", statusNum++);
-            _quarterFrameData = XmlConfigParser.OpenVarXControls(@"Config/QuarterFrameData.xml", "MiscDataSchema.xsd");
+            _quarterFrameData = XmlConfigParser.OpenWatchVariableControls(@"Config/QuarterFrameData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Camera Hack Data", statusNum++);
-            _camHackData = XmlConfigParser.OpenVarXControls(@"Config/CamHackData.xml", "MiscDataSchema.xsd");
+            _camHackData = XmlConfigParser.OpenWatchVariableControls(@"Config/CamHackData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Triangles Data", statusNum++);
-            _triangleData = XmlConfigParser.OpenVarXControls(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd");
+            _triangleData = XmlConfigParser.OpenWatchVariableControls(@"Config/TrianglesData.xml", "TrianglesDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Debug Data", statusNum++);
-            _debugData = XmlConfigParser.OpenVarXControls(@"Config/DebugData.xml", "MiscDataSchema.xsd");
+            _debugData = XmlConfigParser.OpenWatchVariableControls(@"Config/DebugData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
-            _hudData = XmlConfigParser.OpenVarXControls(@"Config/HudData.xml", "HudDataSchema.xsd");
+            _hudData = XmlConfigParser.OpenWatchVariableControls(@"Config/HudData.xml", "HudDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Map Associations", statusNum++);
             _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
             loadingForm.UpdateStatus("Loading Scripts", statusNum++);
@@ -282,7 +282,7 @@ namespace SM64_Diagnostic
                 currentContext.ModelManager?.Update();
                 currentContext.InjectionManager.Update();
                 currentContext.HackManager.Update();
-                VarXLockManager.Update();
+                WatchVariableLockManager.Update();
             }));
         }
 

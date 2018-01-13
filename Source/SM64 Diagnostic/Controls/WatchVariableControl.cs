@@ -17,8 +17,8 @@ namespace SM64_Diagnostic.Controls
         public readonly string VarName;
         public readonly List<VariableGroup> GroupList;
 
-        private readonly WatchVariableControlPrecursor _varXPrecursor;
-        private readonly WatchVariableWrapper _varX;
+        private readonly WatchVariableControlPrecursor _watchVarPrecursor;
+        private readonly WatchVariableWrapper _watchVarWrapper;
 
         private readonly Label _nameLabel;
         private readonly TextBox _valueTextBox;
@@ -95,7 +95,7 @@ namespace SM64_Diagnostic.Controls
         private static readonly int nameLabelHeight = 20;
 
         public WatchVariableControl(
-            WatchVariableControlPrecursor varXPrecursor,
+            WatchVariableControlPrecursor watchVarPrecursor,
             string name,
             WatchVariable watchVar,
             WatchVariableSubclass subclass,
@@ -106,7 +106,7 @@ namespace SM64_Diagnostic.Controls
             List<VariableGroup> groupList)
         {
             // Store the precursor
-            _varXPrecursor = varXPrecursor;
+            _watchVarPrecursor = watchVarPrecursor;
 
             // Initialize main fields
             VarName = name;
@@ -130,20 +130,20 @@ namespace SM64_Diagnostic.Controls
             base.Controls.Add(_valueCheckBox, 1, 0);
 
             // Create var x
-            _varX = WatchVariableWrapper.CreateVarX(watchVar, this, subclass, useHex, invertBool, coordinate);
+            _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(watchVar, this, subclass, useHex, invertBool, coordinate);
 
             // Initialize context menu strip
             _textboxOldContextMenuStrip = _valueTextBox.ContextMenuStrip;
-            _contextMenuStrip = _varX.GetContextMenuStrip();
+            _contextMenuStrip = _watchVarWrapper.GetContextMenuStrip();
             _nameLabel.ContextMenuStrip = _contextMenuStrip;
             _valueTextBox.ContextMenuStrip = _contextMenuStrip;
             base.ContextMenuStrip = _contextMenuStrip;
 
             // Set whether to start as a checkbox
-            SetUseCheckbox(_varX.StartsAsCheckbox());
+            SetUseCheckbox(_watchVarWrapper.StartsAsCheckbox());
 
             // Add functions
-            _nameLabel.Click += (sender, e) => _varX.ShowVarInfo();
+            _nameLabel.Click += (sender, e) => _watchVarWrapper.ShowVarInfo();
             _valueTextBox.KeyDown += (sender, e) => OnTextValueKeyDown(e);
             _valueTextBox.DoubleClick += (sender, e) => { EditMode = true; };
             _valueTextBox.Leave += (sender, e) => { EditMode = false; };
@@ -222,7 +222,7 @@ namespace SM64_Diagnostic.Controls
 
             if (e.KeyData == Keys.Enter)
             {
-                bool success = _varX.SetStringValue(_valueTextBox.Text);
+                bool success = _watchVarWrapper.SetStringValue(_valueTextBox.Text);
                 EditMode = false;
                 if (!success) InvokeFailure();
                 return;
@@ -231,7 +231,7 @@ namespace SM64_Diagnostic.Controls
 
         private void OnCheckboxClick()
         {
-            bool success = _varX.SetCheckStateValue(_valueCheckBox.CheckState);
+            bool success = _watchVarWrapper.SetCheckStateValue(_valueCheckBox.CheckState);
             if (!success) InvokeFailure();
         }
 
@@ -239,12 +239,12 @@ namespace SM64_Diagnostic.Controls
         {
             if (!EditMode)
             {
-                if (_valueTextBox.Visible) _valueTextBox.Text = _varX.GetStringValue();
-                if (_valueCheckBox.Visible) _valueCheckBox.CheckState = _varX.GetCheckStateValue();
+                if (_valueTextBox.Visible) _valueTextBox.Text = _watchVarWrapper.GetStringValue();
+                if (_valueCheckBox.Visible) _valueCheckBox.CheckState = _watchVarWrapper.GetCheckStateValue();
             }
 
-            _varX.UpdateItemCheckStates();
-            _nameLabel.Image = GetImageForCheckState(_varX.GetLockedCheckState());
+            _watchVarWrapper.UpdateItemCheckStates();
+            _nameLabel.Image = GetImageForCheckState(_watchVarWrapper.GetLockedCheckState());
 
             UpdateColor();
         }
@@ -314,7 +314,7 @@ namespace SM64_Diagnostic.Controls
 
         public WatchVariableControl CreateCopy()
         {
-            return _varXPrecursor.CreateVarXControl();
+            return _watchVarPrecursor.CreateWatchVariableControl();
         }
     }
 }

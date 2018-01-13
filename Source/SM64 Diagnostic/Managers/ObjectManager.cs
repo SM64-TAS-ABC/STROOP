@@ -41,7 +41,7 @@ namespace SM64_Diagnostic.Managers
         public void SetBehaviorWatchVariables(List<WatchVariableControlPrecursor> precursors, Color color)
         {
             RemoveObjSpecificVars();
-            AddVarXControls(precursors.ConvertAll(precursor => precursor.CreateVarXControl(color)));
+            AddwatchVarControls(precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl(color)));
         }
 
         List<uint> _currentAddresses = new List<uint>();
