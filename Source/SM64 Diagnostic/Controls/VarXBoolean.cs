@@ -53,7 +53,6 @@ namespace SM64_Diagnostic.Controls
             _contextMenuStrip.AddToBeginningList(itemDisplayAsInverted);
         }
 
-
         protected override CheckState ConvertValueToCheckState(string value)
         {
             double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);

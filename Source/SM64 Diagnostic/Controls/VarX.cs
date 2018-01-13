@@ -71,6 +71,7 @@ namespace SM64_Diagnostic.Controls
             _startsAsCheckbox = useCheckbox;
             _contextMenuStrip = new BetterContextMenuStrip();
             AddContextMenuStripItems();
+            AddExternalContextMenuStripItems();
         }
 
         public bool StartsAsCheckbox()
@@ -83,7 +84,7 @@ namespace SM64_Diagnostic.Controls
             return _contextMenuStrip;
         }
 
-        protected void AddContextMenuStripItems()
+        private void AddContextMenuStripItems()
         {
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight");
             itemHighlight.Click += (sender, e) =>
@@ -128,6 +129,19 @@ namespace SM64_Diagnostic.Controls
             _contextMenuStrip.AddToBeginningList(itemCopyAsIs);
             _contextMenuStrip.AddToBeginningList(itemCopyUnrounded);
             _contextMenuStrip.AddToBeginningList(itemPaste);
+        }
+
+        private void AddExternalContextMenuStripItems()
+        {
+            ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
+            itemAddToCustomTab.Click += (sender, e) => {  };
+
+            ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
+            itemOpenController.Click += (sender, e) => {  };
+
+            _contextMenuStrip.AddToEndingList(new ToolStripSeparator());
+            _contextMenuStrip.AddToEndingList(itemAddToCustomTab);
+            _contextMenuStrip.AddToEndingList(itemOpenController);
         }
 
         public void ShowVarInfo()
