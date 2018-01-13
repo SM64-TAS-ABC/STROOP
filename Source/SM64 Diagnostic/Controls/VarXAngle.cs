@@ -76,11 +76,11 @@ namespace SM64_Diagnostic.Controls
             };
             itemConstrainToOneRevolution.Checked = _constrainToOneRevolution;
 
-            _contextMenuStrip.Items.Add(new ToolStripSeparator());
-            _contextMenuStrip.Items.Add(itemSigned);
-            _contextMenuStrip.Items.Add(itemUnits);
-            _contextMenuStrip.Items.Add(itemTruncateToMultipleOf16);
-            _contextMenuStrip.Items.Add(itemConstrainToOneRevolution);
+            _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
+            _contextMenuStrip.AddToBeginningList(itemSigned);
+            _contextMenuStrip.AddToBeginningList(itemUnits);
+            _contextMenuStrip.AddToBeginningList(itemTruncateToMultipleOf16);
+            _contextMenuStrip.AddToBeginningList(itemConstrainToOneRevolution);
         }
 
         private double GetAngleUnitTypeMaxValue(AngleUnitType? angleUnitTypeNullable = null)

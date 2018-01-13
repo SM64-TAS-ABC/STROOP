@@ -48,9 +48,9 @@ namespace SM64_Diagnostic.Controls
             };
             itemDisplayAsInverted.Checked = _displayAsInverted;
 
-            _contextMenuStrip.Items.Add(new ToolStripSeparator());
-            _contextMenuStrip.Items.Add(itemDisplayAsCheckbox);
-            _contextMenuStrip.Items.Add(itemDisplayAsInverted);
+            _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
+            _contextMenuStrip.AddToBeginningList(itemDisplayAsCheckbox);
+            _contextMenuStrip.AddToBeginningList(itemDisplayAsInverted);
         }
 
 

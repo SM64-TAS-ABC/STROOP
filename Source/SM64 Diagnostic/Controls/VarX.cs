@@ -20,7 +20,7 @@ namespace SM64_Diagnostic.Controls
 
         protected readonly AddressHolder _addressHolder;
         protected readonly VarXControl _varXControl;
-        protected readonly ContextMenuStrip _contextMenuStrip;
+        protected readonly BetterContextMenuStrip _contextMenuStrip;
 
         private ToolStripMenuItem _itemLock;
         private ToolStripMenuItem _itemRemoveAllLocks;
@@ -69,7 +69,7 @@ namespace SM64_Diagnostic.Controls
             _varXControl = varXControl;
 
             _startsAsCheckbox = useCheckbox;
-            _contextMenuStrip = new ContextMenuStrip();
+            _contextMenuStrip = new BetterContextMenuStrip();
             AddContextMenuStripItems();
         }
 
@@ -121,13 +121,13 @@ namespace SM64_Diagnostic.Controls
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
             itemPaste.Click += (sender, e) => { SetValueFromTextbox(Clipboard.GetText()); };
 
-            _contextMenuStrip.Items.Add(itemHighlight);
-            _contextMenuStrip.Items.Add(_itemLock);
-            _contextMenuStrip.Items.Add(_itemRemoveAllLocks);
-            _contextMenuStrip.Items.Add(itemEdit);
-            _contextMenuStrip.Items.Add(itemCopyAsIs);
-            _contextMenuStrip.Items.Add(itemCopyUnrounded);
-            _contextMenuStrip.Items.Add(itemPaste);
+            _contextMenuStrip.AddToBeginningList(itemHighlight);
+            _contextMenuStrip.AddToBeginningList(_itemLock);
+            _contextMenuStrip.AddToBeginningList(_itemRemoveAllLocks);
+            _contextMenuStrip.AddToBeginningList(itemEdit);
+            _contextMenuStrip.AddToBeginningList(itemCopyAsIs);
+            _contextMenuStrip.AddToBeginningList(itemCopyUnrounded);
+            _contextMenuStrip.AddToBeginningList(itemPaste);
         }
 
         public void ShowVarInfo()

@@ -23,13 +23,13 @@ namespace SM64_Diagnostic
             numBeginningItems = 0;
         }
 
-        public void AddToBeginningList(ToolStripMenuItem item)
+        public void AddToBeginningList(ToolStripItem item)
         {
             base.Items.Insert(numBeginningItems, item);
             numBeginningItems++;
         }
 
-        public void AddToEndingList(ToolStripMenuItem item)
+        public void AddToEndingList(ToolStripItem item)
         {
             base.Items.Add(item);
         }

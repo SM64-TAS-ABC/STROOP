@@ -46,9 +46,9 @@ namespace SM64_Diagnostic.Controls
                 ObjectSlotsManager.Instance.SelectSlotByAddress(uintValue);
             };
 
-            _contextMenuStrip.Items.Add(new ToolStripSeparator());
-            _contextMenuStrip.Items.Add(itemDisplayAsObject);
-            _contextMenuStrip.Items.Add(itemSelectObject);
+            _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
+            _contextMenuStrip.AddToBeginningList(itemDisplayAsObject);
+            _contextMenuStrip.AddToBeginningList(itemSelectObject);
         }
 
         protected override string HandleHexDisplaying(string value)

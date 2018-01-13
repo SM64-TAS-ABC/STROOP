@@ -75,10 +75,10 @@ namespace SM64_Diagnostic.Controls
             };
             itemDisplayAsNegated.Checked = _displayAsNegated;
 
-            _contextMenuStrip.Items.Add(new ToolStripSeparator());
-            _contextMenuStrip.Items.Add(itemRoundTo);
-            _contextMenuStrip.Items.Add(itemDisplayAsHex);
-            _contextMenuStrip.Items.Add(itemDisplayAsNegated);
+            _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
+            _contextMenuStrip.AddToBeginningList(itemRoundTo);
+            _contextMenuStrip.AddToBeginningList(itemDisplayAsHex);
+            _contextMenuStrip.AddToBeginningList(itemDisplayAsNegated);
         }
 
         private void AddCoordinateContextMenuStripItems()
@@ -92,9 +92,9 @@ namespace SM64_Diagnostic.Controls
             _itemPasteCoordinates = new ToolStripMenuItem("Paste Coordinates");
             _itemPasteCoordinates.Visible = false;
 
-            _contextMenuStrip.Items.Add(_separatorCoordinates);
-            _contextMenuStrip.Items.Add(_itemCopyCoordinates);
-            _contextMenuStrip.Items.Add(_itemPasteCoordinates);
+            _contextMenuStrip.AddToBeginningList(_separatorCoordinates);
+            _contextMenuStrip.AddToBeginningList(_itemCopyCoordinates);
+            _contextMenuStrip.AddToBeginningList(_itemPasteCoordinates);
         }
 
         public void AddCoordinateContextMenuStripItemFunctionality(List<VarXNumber> coordinateVarList)
