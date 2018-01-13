@@ -18,5 +18,6 @@ namespace SM64_Diagnostic.Structs
         ObjectSpecific,
 
         Collision,
+        Hacks,
     };
 }

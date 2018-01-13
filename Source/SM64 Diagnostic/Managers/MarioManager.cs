@@ -18,6 +18,20 @@ namespace SM64_Diagnostic.Managers
         public MarioManager(List<VarXControl> variables, Control marioControl, VariablePanel variableTable)
             : base(variables, variableTable)
         {
+            variableTable.SetVariableGroups(
+                new List<VariableGroup>()
+                {
+                    VariableGroup.Basic,
+                    VariableGroup.Intermediate,
+                    VariableGroup.Advanced,
+                    VariableGroup.Hacks,
+                },
+                new List<VariableGroup>()
+                {
+                    VariableGroup.Basic,
+                    VariableGroup.Intermediate,
+                });
+
             SplitContainer splitContainerMario = marioControl.Controls["splitContainerMario"] as SplitContainer;
 
             Button toggleHandsfree = splitContainerMario.Panel1.Controls["buttonMarioToggleHandsfree"] as Button;
