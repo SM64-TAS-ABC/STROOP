@@ -22,12 +22,17 @@ namespace SM64_Diagnostic.Managers
             _variablePanel.AddVariables(watchVarControlList);
         }
 
-        protected void RemoveObjSpecificVars()
+        public virtual void RemoveObjSpecificVariables()
         {
             _variablePanel.RemoveVariables(VariableGroup.ObjectSpecific);
         }
 
-        protected void AddwatchVarControls(List<WatchVariableControl> watchVarControls)
+        public virtual void AddVariable(WatchVariableControl watchVarControl)
+        {
+            _variablePanel.AddVariable(watchVarControl);
+        }
+
+        public virtual void AddVariables(List<WatchVariableControl> watchVarControls)
         {
             _variablePanel.AddVariables(watchVarControls);
         }

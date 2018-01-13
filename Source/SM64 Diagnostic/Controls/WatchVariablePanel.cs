@@ -82,6 +82,11 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public void AddVariable(WatchVariableControl watchVarControl)
+        {
+            AddVariables(new List<WatchVariableControl>() { watchVarControl });
+        }
+
         public void AddVariables(List<WatchVariableControl> watchVarControls)
         {
             lock (_objectLock)
@@ -93,6 +98,11 @@ namespace SM64_Diagnostic.Controls
                     watchVarControl.NotifyPanel(this);
                 });
             }
+        }
+
+        public void RemoveVariable(WatchVariableControl watchVarControl)
+        {
+            RemoveVariables(new List<WatchVariableControl>() { watchVarControl });
         }
 
         public void RemoveVariables(List<WatchVariableControl> watchVarControls)

@@ -23,9 +23,9 @@ namespace SM64_Diagnostic.Managers
             Instance = this;
         }
 
-        public void AddVariable(WatchVariableControl watchVarControl)
+        public override void AddVariable(WatchVariableControl watchVarControl)
         {
-            AddwatchVarControls(new List<WatchVariableControl>() { watchVarControl });
+            base.AddVariable(watchVarControl);
             watchVarControl.NotifyInCustomTab();
         }
 

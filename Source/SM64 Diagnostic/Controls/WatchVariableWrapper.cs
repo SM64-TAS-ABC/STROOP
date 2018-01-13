@@ -170,7 +170,7 @@ namespace SM64_Diagnostic.Controls
             _itemRename.Visible = false;
 
             _itemDelete = new ToolStripMenuItem("Delete");
-            _itemDelete.Click += (sender, e) => { };
+            _itemDelete.Click += (sender, e) => { _watchVariablePanel?.RemoveVariable(_watchVarControl); };
             _itemDelete.Visible = false;
 
             _contextMenuStrip.AddToEndingList(_separatorCustom);

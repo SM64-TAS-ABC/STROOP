@@ -40,8 +40,8 @@ namespace SM64_Diagnostic.Managers
         #region Fields
         public void SetBehaviorWatchVariables(List<WatchVariableControlPrecursor> precursors, Color color)
         {
-            RemoveObjSpecificVars();
-            AddwatchVarControls(precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl(color)));
+            RemoveObjSpecificVariables();
+            AddVariables(precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl(color)));
         }
 
         List<uint> _currentAddresses = new List<uint>();
