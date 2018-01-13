@@ -619,21 +619,21 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
-                        switch (scale)
-                        {
-                            case 1.0f:
-                                return "B0";
-                            case 1.2f:
-                                return "B1";
-                            case 1.4f:
-                                return "B2";
-                            case 1.6f:
-                                return "B3";
-                            case 1.8f:
-                                return "B4";
-                            default:
-                                return "Unknown Bloat Size";
-                        }
+                        float bloatSize = (scale - 1) * 5;
+                        return bloatSize.ToString();
+                    };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        double? bloatSizeNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!bloatSizeNullable.HasValue) return false;
+                        double bloatSize = bloatSizeNullable.Value;
+                        float scale = (float)(bloatSize / 5 + 1);
+
+                        bool success = true;
+                        success &= Config.Stream.SetValue(scale, objAddress + Config.ObjectSlots.ScaleWidthOffset);
+                        success &= Config.Stream.SetValue(scale, objAddress + Config.ObjectSlots.ScaleHeightOffset);
+                        success &= Config.Stream.SetValue(scale, objAddress + Config.ObjectSlots.ScaleDepthOffset);
+                        return success;
                     };
                     break;
 
