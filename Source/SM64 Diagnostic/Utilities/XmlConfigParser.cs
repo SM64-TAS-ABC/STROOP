@@ -2389,7 +2389,7 @@ namespace SM64_Diagnostic.Utilities
 
             BaseAddressTypeEnum baseAddressType = VarXUtilities.GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
 
-            VarXSubclass varXSubclass = VarXUtilities.GetVarXSubclass(element.Attribute(XName.Get("subclass"))?.Value);
+            WatchVariableSubclass subclass = VarXUtilities.GetWatchVariableSubclass(element.Attribute(XName.Get("subclass"))?.Value);
 
             List<VariableGroup> groupList = VarXUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
 
@@ -2453,7 +2453,7 @@ namespace SM64_Diagnostic.Utilities
             VarXCoordinate? coordinate = element.Attribute(XName.Get("coord")) != null ?
                 VarXUtilities.GetVarXCoordinate(element.Attribute(XName.Get("coord")).Value) : (VarXCoordinate?)null;
 
-            if (varXSubclass == VarXSubclass.Angle && specialType != null)
+            if (subclass == WatchVariableSubclass.Angle && specialType != null)
             {
                 if (typeName != "ushort" && typeName != "short" && typeName != "uint" && typeName != "int")
                 {
@@ -2461,22 +2461,22 @@ namespace SM64_Diagnostic.Utilities
                 }
             }
 
-            if (useHex.HasValue && (varXSubclass == VarXSubclass.String))
+            if (useHex.HasValue && (subclass == WatchVariableSubclass.String))
             {
                 throw new ArgumentOutOfRangeException("useHex cannot be used with var subclass String");
             }
 
-            if ((useHex == true) && (varXSubclass == VarXSubclass.Object))
+            if ((useHex == true) && (subclass == WatchVariableSubclass.Object))
             {
                 throw new ArgumentOutOfRangeException("useHex as true is redundant with var subclass Object");
             }
 
-            if (invertBool.HasValue && (varXSubclass != VarXSubclass.Boolean))
+            if (invertBool.HasValue && (subclass != WatchVariableSubclass.Boolean))
             {
                 throw new ArgumentOutOfRangeException("invertBool must be used with var subclass Boolean");
             }
 
-            if (coordinate.HasValue && (varXSubclass == VarXSubclass.String))
+            if (coordinate.HasValue && (subclass == WatchVariableSubclass.String))
             {
                 throw new ArgumentOutOfRangeException("coordinate cannot be used with var subclass String");
             }
@@ -2484,7 +2484,7 @@ namespace SM64_Diagnostic.Utilities
             return new VarXPrecursor(
                 name,
                 watchVar,
-                varXSubclass,
+                subclass,
                 backgroundColor,
                 useHex,
                 invertBool,

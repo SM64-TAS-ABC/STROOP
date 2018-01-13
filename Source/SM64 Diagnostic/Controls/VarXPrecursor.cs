@@ -16,7 +16,7 @@ namespace SM64_Diagnostic.Controls
     {
         private readonly string _name;
         private readonly WatchVariable _watchVar;
-        private readonly VarXSubclass _varXSubclass;
+        private readonly WatchVariableSubclass _subclass;
         private readonly Color? _backgroundColor;
         private readonly bool? _useHex;
         private readonly bool? _invertBool;
@@ -26,7 +26,7 @@ namespace SM64_Diagnostic.Controls
         public VarXPrecursor(
             string name,
             WatchVariable watchVar,
-            VarXSubclass varXSubclass,
+            WatchVariableSubclass subclass,
             Color? backgroundColor,
             bool? useHex,
             bool? invertBool,
@@ -35,7 +35,7 @@ namespace SM64_Diagnostic.Controls
         {
             _name = name;
             _watchVar = watchVar;
-            _varXSubclass = varXSubclass;
+            _subclass = subclass;
             _backgroundColor = backgroundColor;
             _useHex = useHex;
             _invertBool = invertBool;
@@ -49,7 +49,7 @@ namespace SM64_Diagnostic.Controls
                 this,
                 _name,
                 _watchVar,
-                _varXSubclass,
+                _subclass,
                 newColor ?? _backgroundColor,
                 _useHex,
                 _invertBool,

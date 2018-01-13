@@ -30,17 +30,17 @@ namespace SM64_Diagnostic.Controls
         public static VarX CreateVarX(
             WatchVariable watchVar,
             VarXControl varXControl,
-            VarXSubclass varXSubclcass,
+            WatchVariableSubclass varXSubclcass,
             bool? useHex,
             bool? invertBool,
             VarXCoordinate? coordinate)
         {
             switch (varXSubclcass)
             {
-                case VarXSubclass.String:
+                case WatchVariableSubclass.String:
                     return new VarX(watchVar, varXControl);
 
-                case VarXSubclass.Number:
+                case WatchVariableSubclass.Number:
                     return new VarXNumber(
                         watchVar,
                         varXControl,
@@ -49,13 +49,13 @@ namespace SM64_Diagnostic.Controls
                         DEFAULT_USE_CHECKBOX,
                         coordinate);
 
-                case VarXSubclass.Angle:
+                case WatchVariableSubclass.Angle:
                     return new VarXAngle(watchVar, varXControl);
 
-                case VarXSubclass.Object:
+                case WatchVariableSubclass.Object:
                     return new VarXObject(watchVar, varXControl);
 
-                case VarXSubclass.Boolean:
+                case WatchVariableSubclass.Boolean:
                     return new VarXBoolean(watchVar, varXControl, invertBool);
 
                 default:

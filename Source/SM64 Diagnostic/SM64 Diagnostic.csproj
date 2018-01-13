@@ -289,7 +289,7 @@
     <Compile Include="Utilities\ColorUtilities.cs" />
     <Compile Include="Managers\VarXLockManager.cs" />
     <Compile Include="Utilities\VarXCoordinate.cs" />
-    <Compile Include="Utilities\VarXSubclass.cs" />
+    <Compile Include="Utilities\WatchVariableSubclass.cs" />
     <Compile Include="Utilities\VariableGroup.cs" />
     <Compile Include="Utilities\BaseAddressTypeEnum.cs" />
     <Compile Include="Utilities\VarXSpecialUtilities.cs" />

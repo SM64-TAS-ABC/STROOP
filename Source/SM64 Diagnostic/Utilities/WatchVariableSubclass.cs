@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs
 {
-    public enum VarXSubclass
+    public enum WatchVariableSubclass
     {
         Number,
         String,

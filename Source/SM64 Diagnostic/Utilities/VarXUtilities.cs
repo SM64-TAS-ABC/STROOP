@@ -58,10 +58,10 @@ namespace SM64_Diagnostic.Structs
             return (BaseAddressTypeEnum)Enum.Parse(typeof(BaseAddressTypeEnum), stringValue);
         }
 
-        public static VarXSubclass GetVarXSubclass(string stringValue)
+        public static WatchVariableSubclass GetWatchVariableSubclass(string stringValue)
         {
-            if (stringValue == null) return VarXSubclass.Number;
-            return (VarXSubclass)Enum.Parse(typeof(VarXSubclass), stringValue);
+            if (stringValue == null) return WatchVariableSubclass.Number;
+            return (WatchVariableSubclass)Enum.Parse(typeof(WatchVariableSubclass), stringValue);
         }
 
         public static VarXCoordinate GetVarXCoordinate(string stringValue)
