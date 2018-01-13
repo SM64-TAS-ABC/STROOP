@@ -31,8 +31,9 @@ namespace SM64_Diagnostic
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -48,10 +49,6 @@ namespace SM64_Diagnostic
             this.tabPageObjects = new System.Windows.Forms.TabPage();
             this.splitContainerObject = new System.Windows.Forms.SplitContainer();
             this.panelObj = new System.Windows.Forms.Panel();
-            this.groupBoxVariableListFilter = new System.Windows.Forms.GroupBox();
-            this.radioButtonVariableListFilterExpanded = new System.Windows.Forms.RadioButton();
-            this.radioButtonVariableListFilterSimple = new System.Windows.Forms.RadioButton();
-            this.radioButtonVariableListFilterCollision = new System.Windows.Forms.RadioButton();
             this.buttonObjRelease = new SM64_Diagnostic.BinaryButton();
             this.buttonObjInteract = new SM64_Diagnostic.BinaryButton();
             this.groupBoxObjHome = new System.Windows.Forms.GroupBox();
@@ -532,6 +529,8 @@ namespace SM64_Diagnostic
             this.panelMiscBorder = new System.Windows.Forms.Panel();
             this.pictureBoxMisc = new SM64_Diagnostic.Controls.IntPictureBox();
             this.NoTearFlowLayoutPanelMisc = new SM64_Diagnostic.Controls.WatchVariablePanel();
+            this.tabPageCustom = new System.Windows.Forms.TabPage();
+            this.noTearFlowLayoutPanelCustom = new SM64_Diagnostic.Controls.WatchVariablePanel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
             this.splitContainerDebug = new System.Windows.Forms.SplitContainer();
             this.panelDebugBorder = new System.Windows.Forms.Panel();
@@ -962,7 +961,11 @@ namespace SM64_Diagnostic
             this.labelMetric5Value = new System.Windows.Forms.Label();
             this.labelMetric4Value = new System.Windows.Forms.Label();
             this.tabPageDecompiler = new System.Windows.Forms.TabPage();
+            this.textBoxDecompilerAddress = new System.Windows.Forms.TextBox();
+            this.buttonDecompilerDecompile = new System.Windows.Forms.Button();
+            this.labelDecompilerAddress = new System.Windows.Forms.Label();
             this.splitContainerDecompiler = new System.Windows.Forms.SplitContainer();
+            this.listViewDecompiler = new System.Windows.Forms.ListView();
             this.decompilerViewHost = new System.Windows.Forms.Integration.ElementHost();
             this.decompilerView = new SM64_Diagnostic.Controls.DecompilerView();
             this.labelVersionNumber = new System.Windows.Forms.Label();
@@ -981,12 +984,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.tabPageX = new System.Windows.Forms.TabPage();
-            this.noTearFlowLayoutPanelX = new SM64_Diagnostic.Controls.WatchVariablePanel();
-            this.listViewDecompiler = new System.Windows.Forms.ListView();
-            this.textBoxDecompilerAddress = new System.Windows.Forms.TextBox();
-            this.buttonDecompilerDecompile = new System.Windows.Forms.Button();
-            this.labelDecompilerAddress = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1000,7 +997,6 @@ namespace SM64_Diagnostic
             this.splitContainerObject.Panel2.SuspendLayout();
             this.splitContainerObject.SuspendLayout();
             this.panelObj.SuspendLayout();
-            this.groupBoxVariableListFilter.SuspendLayout();
             this.groupBoxObjHome.SuspendLayout();
             this.groupBoxObjScale.SuspendLayout();
             this.groupBoxObjAngle.SuspendLayout();
@@ -1218,6 +1214,7 @@ namespace SM64_Diagnostic
             this.groupBoxRNGIndex.SuspendLayout();
             this.panelMiscBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
+            this.tabPageCustom.SuspendLayout();
             this.tabPageDebug.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).BeginInit();
             this.splitContainerDebug.Panel1.SuspendLayout();
@@ -1294,13 +1291,12 @@ namespace SM64_Diagnostic
             this.groupBoxObjAtHOLP.SuspendLayout();
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
-            this.panelConnect.SuspendLayout();
-            this.tabPageX.SuspendLayout();
             this.tabPageDecompiler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).BeginInit();
             this.splitContainerDecompiler.Panel1.SuspendLayout();
             this.splitContainerDecompiler.Panel2.SuspendLayout();
             this.splitContainerDecompiler.SuspendLayout();
+            this.panelConnect.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1330,7 +1326,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 336);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 337);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1395,7 +1391,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObjects.Location = new System.Drawing.Point(4, 45);
             this.NoTearFlowLayoutPanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObjects.Name = "NoTearFlowLayoutPanelObjects";
-            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 153);
+            this.NoTearFlowLayoutPanelObjects.Size = new System.Drawing.Size(915, 154);
             this.NoTearFlowLayoutPanelObjects.TabIndex = 0;
             this.NoTearFlowLayoutPanelObjects.Resize += new System.EventHandler(this.NoTearFlowLayoutPanelObjects_Resize);
             // 
@@ -1462,7 +1458,7 @@ namespace SM64_Diagnostic
             this.tabControlMain.Controls.Add(this.tabPageInput);
             this.tabControlMain.Controls.Add(this.tabPageFile);
             this.tabControlMain.Controls.Add(this.tabPageMisc);
-            this.tabControlMain.Controls.Add(this.tabPageX);
+            this.tabControlMain.Controls.Add(this.tabPageCustom);
             this.tabControlMain.Controls.Add(this.tabPageDebug);
             this.tabControlMain.Controls.Add(this.tabPageMap);
             this.tabControlMain.Controls.Add(this.tabPagePu);
@@ -1538,7 +1534,6 @@ namespace SM64_Diagnostic
             this.panelObj.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panelObj.AutoScroll = true;
-            this.panelObj.Controls.Add(this.groupBoxVariableListFilter);
             this.panelObj.Controls.Add(this.buttonObjRelease);
             this.panelObj.Controls.Add(this.buttonObjInteract);
             this.panelObj.Controls.Add(this.groupBoxObjHome);
@@ -1555,50 +1550,6 @@ namespace SM64_Diagnostic
             this.panelObj.Name = "panelObj";
             this.panelObj.Size = new System.Drawing.Size(211, 370);
             this.panelObj.TabIndex = 19;
-            // 
-            // groupBoxVariableListFilter
-            // 
-            this.groupBoxVariableListFilter.Controls.Add(this.radioButtonVariableListFilterExpanded);
-            this.groupBoxVariableListFilter.Controls.Add(this.radioButtonVariableListFilterSimple);
-            this.groupBoxVariableListFilter.Controls.Add(this.radioButtonVariableListFilterCollision);
-            this.groupBoxVariableListFilter.Location = new System.Drawing.Point(3, 610);
-            this.groupBoxVariableListFilter.Name = "groupBoxVariableListFilter";
-            this.groupBoxVariableListFilter.Size = new System.Drawing.Size(185, 80);
-            this.groupBoxVariableListFilter.TabIndex = 40;
-            this.groupBoxVariableListFilter.TabStop = false;
-            this.groupBoxVariableListFilter.Text = "Variable List";
-            // 
-            // radioButtonVariableListFilterExpanded
-            // 
-            this.radioButtonVariableListFilterExpanded.AutoSize = true;
-            this.radioButtonVariableListFilterExpanded.Location = new System.Drawing.Point(11, 37);
-            this.radioButtonVariableListFilterExpanded.Name = "radioButtonVariableListFilterExpanded";
-            this.radioButtonVariableListFilterExpanded.Size = new System.Drawing.Size(73, 17);
-            this.radioButtonVariableListFilterExpanded.TabIndex = 12;
-            this.radioButtonVariableListFilterExpanded.Text = "Expanded";
-            this.radioButtonVariableListFilterExpanded.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonVariableListFilterSimple
-            // 
-            this.radioButtonVariableListFilterSimple.AutoSize = true;
-            this.radioButtonVariableListFilterSimple.Checked = true;
-            this.radioButtonVariableListFilterSimple.Location = new System.Drawing.Point(11, 17);
-            this.radioButtonVariableListFilterSimple.Name = "radioButtonVariableListFilterSimple";
-            this.radioButtonVariableListFilterSimple.Size = new System.Drawing.Size(56, 17);
-            this.radioButtonVariableListFilterSimple.TabIndex = 11;
-            this.radioButtonVariableListFilterSimple.TabStop = true;
-            this.radioButtonVariableListFilterSimple.Text = "Simple";
-            this.radioButtonVariableListFilterSimple.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonVariableListFilterCollision
-            // 
-            this.radioButtonVariableListFilterCollision.AutoSize = true;
-            this.radioButtonVariableListFilterCollision.Location = new System.Drawing.Point(11, 57);
-            this.radioButtonVariableListFilterCollision.Name = "radioButtonVariableListFilterCollision";
-            this.radioButtonVariableListFilterCollision.Size = new System.Drawing.Size(63, 17);
-            this.radioButtonVariableListFilterCollision.TabIndex = 13;
-            this.radioButtonVariableListFilterCollision.Text = "Collision";
-            this.radioButtonVariableListFilterCollision.UseVisualStyleBackColor = true;
             // 
             // buttonObjRelease
             // 
@@ -2398,7 +2349,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelObject.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelObject.Name = "NoTearFlowLayoutPanelObject";
-            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(690, 458);
+            this.NoTearFlowLayoutPanelObject.Size = new System.Drawing.Size(693, 458);
             this.NoTearFlowLayoutPanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -3086,7 +3037,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMario.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMario.Name = "NoTearFlowLayoutPanelMario";
-            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(699, 456);
+            this.NoTearFlowLayoutPanelMario.Size = new System.Drawing.Size(702, 456);
             this.NoTearFlowLayoutPanelMario.TabIndex = 1;
             // 
             // tabPageHud
@@ -3230,7 +3181,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelHud.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelHud.Name = "NoTearFlowLayoutPanelHud";
-            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(791, 457);
+            this.NoTearFlowLayoutPanelHud.Size = new System.Drawing.Size(794, 457);
             this.NoTearFlowLayoutPanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3611,7 +3562,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelCamera.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelCamera.Name = "NoTearFlowLayoutPanelCamera";
-            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(701, 457);
+            this.NoTearFlowLayoutPanelCamera.Size = new System.Drawing.Size(704, 457);
             this.NoTearFlowLayoutPanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -4153,7 +4104,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelTriangles.Name = "NoTearFlowLayoutPanelTriangles";
-            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(698, 453);
+            this.NoTearFlowLayoutPanelTriangles.Size = new System.Drawing.Size(701, 453);
             this.NoTearFlowLayoutPanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -4283,7 +4234,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelInput.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelInput.Name = "NoTearFlowLayoutPanelInput";
-            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(479, 460);
+            this.NoTearFlowLayoutPanelInput.Size = new System.Drawing.Size(482, 460);
             this.NoTearFlowLayoutPanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4646,7 +4597,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 164F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7620,7 +7571,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelFile.Location = new System.Drawing.Point(0, -1);
             this.noTearFlowLayoutPanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelFile.Name = "noTearFlowLayoutPanelFile";
-            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(250, 463);
+            this.noTearFlowLayoutPanelFile.Size = new System.Drawing.Size(253, 463);
             this.noTearFlowLayoutPanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7723,8 +7674,32 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelMisc.Location = new System.Drawing.Point(2, 2);
             this.NoTearFlowLayoutPanelMisc.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelMisc.Name = "NoTearFlowLayoutPanelMisc";
-            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(778, 457);
+            this.NoTearFlowLayoutPanelMisc.Size = new System.Drawing.Size(781, 457);
             this.NoTearFlowLayoutPanelMisc.TabIndex = 5;
+            // 
+            // tabPageCustom
+            // 
+            this.tabPageCustom.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageCustom.Controls.Add(this.noTearFlowLayoutPanelCustom);
+            this.tabPageCustom.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCustom.Name = "tabPageCustom";
+            this.tabPageCustom.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCustom.Size = new System.Drawing.Size(915, 463);
+            this.tabPageCustom.TabIndex = 22;
+            this.tabPageCustom.Text = "Custom";
+            // 
+            // noTearFlowLayoutPanelCustom
+            // 
+            this.noTearFlowLayoutPanelCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTearFlowLayoutPanelCustom.AutoScroll = true;
+            this.noTearFlowLayoutPanelCustom.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.noTearFlowLayoutPanelCustom.Location = new System.Drawing.Point(2, 2);
+            this.noTearFlowLayoutPanelCustom.Margin = new System.Windows.Forms.Padding(2);
+            this.noTearFlowLayoutPanelCustom.Name = "noTearFlowLayoutPanelCustom";
+            this.noTearFlowLayoutPanelCustom.Size = new System.Drawing.Size(909, 457);
+            this.noTearFlowLayoutPanelCustom.TabIndex = 3;
             // 
             // tabPageDebug
             // 
@@ -7984,7 +7959,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelDebug.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelDebug.Name = "noTearFlowLayoutPanelDebug";
-            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(518, 455);
+            this.noTearFlowLayoutPanelDebug.Size = new System.Drawing.Size(521, 455);
             this.noTearFlowLayoutPanelDebug.TabIndex = 26;
             // 
             // tabPageMap
@@ -8196,7 +8171,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(689, 430);
+            this.glControlMap.Size = new System.Drawing.Size(692, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -8633,7 +8608,7 @@ namespace SM64_Diagnostic
             this.NoTearFlowLayoutPanelArea.Location = new System.Drawing.Point(2, 4);
             this.NoTearFlowLayoutPanelArea.Margin = new System.Windows.Forms.Padding(2);
             this.NoTearFlowLayoutPanelArea.Name = "NoTearFlowLayoutPanelArea";
-            this.NoTearFlowLayoutPanelArea.Size = new System.Drawing.Size(753, 453);
+            this.NoTearFlowLayoutPanelArea.Size = new System.Drawing.Size(756, 453);
             this.NoTearFlowLayoutPanelArea.TabIndex = 7;
             // 
             // tabPageModel
@@ -9212,7 +9187,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(309, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(292, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9244,7 +9219,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(303, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(286, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9300,7 +9275,7 @@ namespace SM64_Diagnostic
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(303, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(286, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -9358,7 +9333,7 @@ namespace SM64_Diagnostic
             this.glControlModelView.BackColor = System.Drawing.Color.Black;
             this.glControlModelView.Location = new System.Drawing.Point(3, 5);
             this.glControlModelView.Name = "glControlModelView";
-            this.glControlModelView.Size = new System.Drawing.Size(488, 451);
+            this.glControlModelView.Size = new System.Drawing.Size(491, 451);
             this.glControlModelView.TabIndex = 0;
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
@@ -9431,8 +9406,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9655,7 +9630,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(597, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(600, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -9754,7 +9729,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(585, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(588, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -10617,7 +10592,7 @@ namespace SM64_Diagnostic
             this.noTearFlowLayoutPanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.noTearFlowLayoutPanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.noTearFlowLayoutPanelCamHack.Name = "noTearFlowLayoutPanelCamHack";
-            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(469, 458);
+            this.noTearFlowLayoutPanelCamHack.Size = new System.Drawing.Size(472, 458);
             this.noTearFlowLayoutPanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -12666,6 +12641,33 @@ namespace SM64_Diagnostic
             this.tabPageDecompiler.TabIndex = 23;
             this.tabPageDecompiler.Text = "Decompiler";
             // 
+            // textBoxDecompilerAddress
+            // 
+            this.textBoxDecompilerAddress.Location = new System.Drawing.Point(55, 3);
+            this.textBoxDecompilerAddress.Name = "textBoxDecompilerAddress";
+            this.textBoxDecompilerAddress.Size = new System.Drawing.Size(93, 20);
+            this.textBoxDecompilerAddress.TabIndex = 10;
+            // 
+            // buttonDecompilerDecompile
+            // 
+            this.buttonDecompilerDecompile.Location = new System.Drawing.Point(153, 3);
+            this.buttonDecompilerDecompile.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDecompilerDecompile.Name = "buttonDecompilerDecompile";
+            this.buttonDecompilerDecompile.Size = new System.Drawing.Size(62, 20);
+            this.buttonDecompilerDecompile.TabIndex = 9;
+            this.buttonDecompilerDecompile.Text = "Go";
+            this.buttonDecompilerDecompile.UseVisualStyleBackColor = true;
+            // 
+            // labelDecompilerAddress
+            // 
+            this.labelDecompilerAddress.AutoSize = true;
+            this.labelDecompilerAddress.Location = new System.Drawing.Point(2, 6);
+            this.labelDecompilerAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDecompilerAddress.Name = "labelDecompilerAddress";
+            this.labelDecompilerAddress.Size = new System.Drawing.Size(48, 13);
+            this.labelDecompilerAddress.TabIndex = 8;
+            this.labelDecompilerAddress.Text = "Address:";
+            // 
             // splitContainerDecompiler
             // 
             this.splitContainerDecompiler.Location = new System.Drawing.Point(6, 27);
@@ -12681,6 +12683,14 @@ namespace SM64_Diagnostic
             this.splitContainerDecompiler.Size = new System.Drawing.Size(903, 430);
             this.splitContainerDecompiler.SplitterDistance = 301;
             this.splitContainerDecompiler.TabIndex = 1;
+            // 
+            // listViewDecompiler
+            // 
+            this.listViewDecompiler.Location = new System.Drawing.Point(4, 4);
+            this.listViewDecompiler.Name = "listViewDecompiler";
+            this.listViewDecompiler.Size = new System.Drawing.Size(294, 385);
+            this.listViewDecompiler.TabIndex = 0;
+            this.listViewDecompiler.UseCompatibleStateImageBehavior = false;
             // 
             // decompilerViewHost
             // 
@@ -12881,65 +12891,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // tabPageX
-            // 
-            this.tabPageX.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageX.Controls.Add(this.noTearFlowLayoutPanelX);
-            this.tabPageX.Location = new System.Drawing.Point(4, 22);
-            this.tabPageX.Name = "tabPageX";
-            this.tabPageX.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageX.Size = new System.Drawing.Size(915, 463);
-            this.tabPageX.TabIndex = 22;
-            this.tabPageX.Text = "X";
-            // 
-            // noTearFlowLayoutPanelX
-            // 
-            this.noTearFlowLayoutPanelX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.noTearFlowLayoutPanelX.AutoScroll = true;
-            this.noTearFlowLayoutPanelX.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.noTearFlowLayoutPanelX.Location = new System.Drawing.Point(2, 2);
-            this.noTearFlowLayoutPanelX.Margin = new System.Windows.Forms.Padding(2);
-            this.noTearFlowLayoutPanelX.Name = "noTearFlowLayoutPanelX";
-            this.noTearFlowLayoutPanelX.Size = new System.Drawing.Size(909, 457);
-            this.noTearFlowLayoutPanelX.TabIndex = 3;
-            // 
-            // listViewDecompiler
-            // 
-            this.listViewDecompiler.Location = new System.Drawing.Point(4, 4);
-            this.listViewDecompiler.Name = "listViewDecompiler";
-            this.listViewDecompiler.Size = new System.Drawing.Size(294, 385);
-            this.listViewDecompiler.TabIndex = 0;
-            this.listViewDecompiler.UseCompatibleStateImageBehavior = false;
-            // 
-            // textBoxDecompilerAddress
-            // 
-            this.textBoxDecompilerAddress.Location = new System.Drawing.Point(55, 3);
-            this.textBoxDecompilerAddress.Name = "textBoxDecompilerAddress";
-            this.textBoxDecompilerAddress.Size = new System.Drawing.Size(93, 20);
-            this.textBoxDecompilerAddress.TabIndex = 10;
-            // 
-            // buttonDecompilerDecompile
-            // 
-            this.buttonDecompilerDecompile.Location = new System.Drawing.Point(153, 3);
-            this.buttonDecompilerDecompile.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDecompilerDecompile.Name = "buttonDecompilerDecompile";
-            this.buttonDecompilerDecompile.Size = new System.Drawing.Size(62, 20);
-            this.buttonDecompilerDecompile.TabIndex = 9;
-            this.buttonDecompilerDecompile.Text = "Go";
-            this.buttonDecompilerDecompile.UseVisualStyleBackColor = true;
-            // 
-            // labelDecompilerAddress
-            // 
-            this.labelDecompilerAddress.AutoSize = true;
-            this.labelDecompilerAddress.Location = new System.Drawing.Point(2, 6);
-            this.labelDecompilerAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDecompilerAddress.Name = "labelDecompilerAddress";
-            this.labelDecompilerAddress.Size = new System.Drawing.Size(48, 13);
-            this.labelDecompilerAddress.TabIndex = 8;
-            this.labelDecompilerAddress.Text = "Address:";
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -12980,8 +12931,6 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).EndInit();
             this.splitContainerObject.ResumeLayout(false);
             this.panelObj.ResumeLayout(false);
-            this.groupBoxVariableListFilter.ResumeLayout(false);
-            this.groupBoxVariableListFilter.PerformLayout();
             this.groupBoxObjHome.ResumeLayout(false);
             this.groupBoxObjHome.PerformLayout();
             this.groupBoxObjScale.ResumeLayout(false);
@@ -13222,6 +13171,7 @@ namespace SM64_Diagnostic
             this.groupBoxRNGIndex.PerformLayout();
             this.panelMiscBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
+            this.tabPageCustom.ResumeLayout(false);
             this.tabPageDebug.ResumeLayout(false);
             this.splitContainerDebug.Panel1.ResumeLayout(false);
             this.splitContainerDebug.Panel2.ResumeLayout(false);
@@ -13337,7 +13287,6 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.PerformLayout();
             this.groupBoxRecording.ResumeLayout(false);
             this.groupBoxRecording.PerformLayout();
-            this.tabPageX.ResumeLayout(false);
             this.tabPageDecompiler.ResumeLayout(false);
             this.tabPageDecompiler.PerformLayout();
             this.splitContainerDecompiler.Panel1.ResumeLayout(false);
@@ -13346,7 +13295,6 @@ namespace SM64_Diagnostic
             this.splitContainerDecompiler.ResumeLayout(false);
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.tabPageX.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -14018,10 +13966,6 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonRomVersionJP;
         private RadioButton radioButtonRomVersionUS;
         private RadioButton radioButtonRomVersionPAL;
-        private GroupBox groupBoxVariableListFilter;
-        private RadioButton radioButtonVariableListFilterExpanded;
-        private RadioButton radioButtonVariableListFilterSimple;
-        private RadioButton radioButtonVariableListFilterCollision;
         private BinaryButton buttonTurnOnOffHud;
         private Button buttonFilePaste;
         private Button buttonFileCopy;
@@ -14297,8 +14241,8 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonArea4;
         private RadioButton radioButtonArea5;
         private RadioButton radioButtonArea6;
-        private TabPage tabPageX;
-        private WatchVariablePanel noTearFlowLayoutPanelX;
+        private TabPage tabPageCustom;
+        private WatchVariablePanel noTearFlowLayoutPanelCustom;
         private TabPage tabPageDecompiler;
         private SplitContainer splitContainerDecompiler;
         private System.Windows.Forms.Integration.ElementHost decompilerViewHost;
