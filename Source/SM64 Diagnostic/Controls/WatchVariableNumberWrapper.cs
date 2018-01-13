@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Controls
 {
-    public class VarXNumber : VarX
+    public class WatchVariableNumberWrapper : WatchVariableWrapper
     {
         private ToolStripSeparator _separatorCoordinates;
         private ToolStripMenuItem _itemCopyCoordinates;
@@ -24,13 +24,13 @@ namespace SM64_Diagnostic.Controls
         private bool _displayAsHex;
         private bool _displayAsNegated;
 
-        public VarXNumber(
+        public WatchVariableNumberWrapper(
             WatchVariable watchVar,
-            VarXControl varXControl,
+            WatchVariableControl varXControl,
             int? roundingLimit = DEFAULT_ROUNDING_LIMIT,
             bool? displayAsHex = DEFAULT_DISPLAY_AS_HEX,
             bool useCheckbox = DEFAULT_USE_CHECKBOX,
-            VarXCoordinate? coordinate = null)
+            WatchVariableCoordinate? coordinate = null)
             : base(watchVar, varXControl, useCheckbox)
         {
             if (roundingLimit.HasValue)
@@ -45,7 +45,7 @@ namespace SM64_Diagnostic.Controls
             AddCoordinateContextMenuStripItems();
             AddNumberContextMenuStripItems();
 
-            if (coordinate != null) VarXCoordinateUtilities.NotifyVarXCoordinate(coordinate.Value, this);
+            if (coordinate != null) WatchVariableCoordinateManager.NotifyVarXCoordinate(coordinate.Value, this);
         }
 
         private void AddNumberContextMenuStripItems()
@@ -97,7 +97,7 @@ namespace SM64_Diagnostic.Controls
             _contextMenuStrip.AddToBeginningList(_itemPasteCoordinates);
         }
 
-        public void AddCoordinateContextMenuStripItemFunctionality(List<VarXNumber> coordinateVarList)
+        public void AddCoordinateContextMenuStripItemFunctionality(List<WatchVariableNumberWrapper> coordinateVarList)
         {
             if (coordinateVarList.Count != 3) throw new ArgumentOutOfRangeException();
 

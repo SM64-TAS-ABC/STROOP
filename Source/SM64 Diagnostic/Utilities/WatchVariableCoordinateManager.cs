@@ -10,22 +10,22 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs
 {
-    public static class VarXCoordinateUtilities
+    public static class WatchVariableCoordinateManager
     {
-        private static List<VarXNumber> coordinateVarList = new List<VarXNumber>();
+        private static List<WatchVariableNumberWrapper> coordinateVarList = new List<WatchVariableNumberWrapper>();
 
-        public static void NotifyVarXCoordinate(VarXCoordinate coordinate, VarXNumber varX)
+        public static void NotifyVarXCoordinate(WatchVariableCoordinate coordinate, WatchVariableNumberWrapper varX)
         {
             switch (coordinate)
             {
-                case VarXCoordinate.X:
+                case WatchVariableCoordinate.X:
                     coordinateVarList.Clear();
                     coordinateVarList.Add(varX);
                     break;
-                case VarXCoordinate.Y:
+                case WatchVariableCoordinate.Y:
                     if (coordinateVarList.Count == 1) coordinateVarList.Add(varX);
                     break;
-                case VarXCoordinate.Z:
+                case WatchVariableCoordinate.Z:
                     if (coordinateVarList.Count == 2) coordinateVarList.Add(varX);
                     break;
                 default:
@@ -34,9 +34,9 @@ namespace SM64_Diagnostic.Structs
 
             if (coordinateVarList.Count == 3)
             {
-                foreach (VarXNumber coordinateVar in coordinateVarList)
+                foreach (WatchVariableNumberWrapper coordinateVar in coordinateVarList)
                 {
-                    List<VarXNumber> coordinateVarListCopy = new List<VarXNumber>(coordinateVarList);
+                    List<WatchVariableNumberWrapper> coordinateVarListCopy = new List<WatchVariableNumberWrapper>(coordinateVarList);
                     coordinateVar.AddCoordinateContextMenuStripItemFunctionality(coordinateVarListCopy);
                 }
                 coordinateVarList.Clear();

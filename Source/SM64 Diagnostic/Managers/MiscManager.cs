@@ -17,7 +17,7 @@ namespace SM64_Diagnostic.Managers
         BetterTextbox _betterTextboxRNGIndex;
         CheckBox _checkBoxTurnOffMusic;
 
-        public MiscManager(List<VarXControl> variables, VariablePanel variableTable, Control miscControl)
+        public MiscManager(List<WatchVariableControl> variables, WatchVariablePanel variableTable, Control miscControl)
             : base(variables, variableTable)
         {
             SplitContainer splitContainerMisc = miscControl.Controls["splitContainerMisc"] as SplitContainer;

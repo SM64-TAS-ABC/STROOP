@@ -187,12 +187,12 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        public List<VarXPrecursor> GetWatchVarXPrecursors(BehaviorCriteria behaviorCriteria)
+        public List<WatchVariableControlPrecursor> GetWatchVarXPrecursors(BehaviorCriteria behaviorCriteria)
         {
             var assoc = FindObjectAssociation(behaviorCriteria);
 
             if (assoc == null)
-                return new List<VarXPrecursor>();
+                return new List<WatchVariableControlPrecursor>();
 
             else return assoc.VarXPrecursors;
         }

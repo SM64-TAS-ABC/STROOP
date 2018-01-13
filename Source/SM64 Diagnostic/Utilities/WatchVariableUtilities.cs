@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs
 {
-    public static class VarXUtilities
+    public static class WatchVariableUtilities
     {
         public readonly static Dictionary<String, Type> StringToType = new Dictionary<string, Type>()
         {
@@ -64,9 +64,9 @@ namespace SM64_Diagnostic.Structs
             return (WatchVariableSubclass)Enum.Parse(typeof(WatchVariableSubclass), stringValue);
         }
 
-        public static VarXCoordinate GetVarXCoordinate(string stringValue)
+        public static WatchVariableCoordinate GetVarXCoordinate(string stringValue)
         {
-            return (VarXCoordinate)Enum.Parse(typeof(VarXCoordinate), stringValue);
+            return (WatchVariableCoordinate)Enum.Parse(typeof(WatchVariableCoordinate), stringValue);
         }
 
         public static VariableGroup GetVariableGroup(string stringValue)

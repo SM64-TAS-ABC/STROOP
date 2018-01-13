@@ -65,7 +65,7 @@ namespace SM64_Diagnostic.Controls
         {
             get
             {
-                return VarXUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType)
+                return WatchVariableUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType)
                     .ConvertAll(baseAddress => baseAddress + Offset);
             }
         }
@@ -83,17 +83,17 @@ namespace SM64_Diagnostic.Controls
             SpecialType = specialType;
 
             MemoryTypeName = memoryTypeName;
-            MemoryType = memoryTypeName == null ? null : VarXUtilities.StringToType[MemoryTypeName];
-            ByteCount = memoryTypeName == null ? (int?)null : VarXUtilities.TypeSize[MemoryType];
-            NibbleCount = memoryTypeName == null ? (int?)null : VarXUtilities.TypeSize[MemoryType] * 2;
-            SignedType = memoryTypeName == null ? (bool?)null : VarXUtilities.TypeSign[MemoryType];
+            MemoryType = memoryTypeName == null ? null : WatchVariableUtilities.StringToType[MemoryTypeName];
+            ByteCount = memoryTypeName == null ? (int?)null : WatchVariableUtilities.TypeSize[MemoryType];
+            NibbleCount = memoryTypeName == null ? (int?)null : WatchVariableUtilities.TypeSize[MemoryType] * 2;
+            SignedType = memoryTypeName == null ? (bool?)null : WatchVariableUtilities.TypeSign[MemoryType];
 
             Mask = mask;
             
             // Created getter/setter functions
             if (IsSpecial)
             {
-                (_getterFunction, _setterFunction) = VarXSpecialUtilities.CreateGetterSetterFunctions(SpecialType);
+                (_getterFunction, _setterFunction) = WatchVariableSpecialUtilities.CreateGetterSetterFunctions(SpecialType);
             }
             else
             {

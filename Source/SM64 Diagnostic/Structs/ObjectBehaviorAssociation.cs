@@ -19,7 +19,7 @@ namespace SM64_Diagnostic.Structs
         public Image Image;
         public Image TransparentImage;
         public Image MapImage;
-        public List<VarXPrecursor> VarXPrecursors = new List<VarXPrecursor>();
+        public List<WatchVariableControlPrecursor> VarXPrecursors = new List<WatchVariableControlPrecursor>();
 
         public bool MeetsCriteria(BehaviorCriteria behaviorCriteria)
         {

@@ -17,15 +17,15 @@ namespace SM64_Diagnostic.Managers
     {
         public static CustomManager Instance;
 
-        public CustomManager(List<VarXControl> variables, Control customControl, VariablePanel variableTable)
+        public CustomManager(List<WatchVariableControl> variables, Control customControl, WatchVariablePanel variableTable)
             : base(variables, variableTable)
         {
             Instance = this;
         }
 
-        public void AddVariable(VarXControl varXControl)
+        public void AddVariable(WatchVariableControl varXControl)
         {
-            AddVarXControls(new List<VarXControl>() { varXControl });
+            AddVarXControls(new List<WatchVariableControl>() { varXControl });
         }
 
         public override void Update(bool updateView)

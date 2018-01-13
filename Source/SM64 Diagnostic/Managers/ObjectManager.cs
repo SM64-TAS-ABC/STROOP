@@ -11,7 +11,7 @@ using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
 using static SM64_Diagnostic.Utilities.ControlUtilities;
-using static SM64_Diagnostic.Structs.VarXUtilities;
+using static SM64_Diagnostic.Structs.WatchVariableUtilities;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -38,7 +38,7 @@ namespace SM64_Diagnostic.Managers
         IntPictureBox _objectImagePictureBox;
         
         #region Fields
-        public void SetBehaviorWatchVariables(List<VarXPrecursor> precursors, Color color)
+        public void SetBehaviorWatchVariables(List<WatchVariableControlPrecursor> precursors, Color color)
         {
             RemoveObjSpecificVars();
             AddVarXControls(precursors.ConvertAll(precursor => precursor.CreateVarXControl(color)));
@@ -161,7 +161,7 @@ namespace SM64_Diagnostic.Managers
 
         #endregion
 
-        public ObjectManager(List<VarXControl> variables, Control objectControl, VariablePanel variableTable)
+        public ObjectManager(List<WatchVariableControl> variables, Control objectControl, WatchVariablePanel variableTable)
             : base(variables, variableTable)
         {
             Instance = this;

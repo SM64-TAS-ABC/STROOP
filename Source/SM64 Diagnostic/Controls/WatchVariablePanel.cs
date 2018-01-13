@@ -8,17 +8,17 @@ using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Controls
 {
-    public class VariablePanel : FlowLayoutPanel
+    public class WatchVariablePanel : FlowLayoutPanel
     {
         private readonly Object _objectLock;
-        private readonly List<VarXControl> _varXControlsList;
+        private readonly List<WatchVariableControl> _varXControlsList;
         private readonly List<VariableGroup> _allGroups;
         private readonly List<VariableGroup> _visibleGroups;
 
-        public VariablePanel()
+        public WatchVariablePanel()
         {
             _objectLock = new Object();
-            _varXControlsList = new List<VarXControl>();
+            _varXControlsList = new List<WatchVariableControl>();
             _allGroups = new List<VariableGroup>();
             _visibleGroups = new List<VariableGroup>();
             ContextMenuStrip = new ContextMenuStrip();
@@ -82,7 +82,7 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public void AddVariables(List<VarXControl> varXControls)
+        public void AddVariables(List<WatchVariableControl> varXControls)
         {
             lock (_objectLock)
             {
@@ -95,7 +95,7 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public void RemoveVariables(List<VarXControl> varXControls)
+        public void RemoveVariables(List<WatchVariableControl> varXControls)
         {
             lock (_objectLock)
             {
@@ -110,7 +110,7 @@ namespace SM64_Diagnostic.Controls
 
         public void RemoveVariables(VariableGroup varGroup)
         {
-            List<VarXControl> varXControls =
+            List<WatchVariableControl> varXControls =
                 _varXControlsList.FindAll(
                     varXControl => varXControl.BelongsToGroup(varGroup));
             RemoveVariables(varXControls);

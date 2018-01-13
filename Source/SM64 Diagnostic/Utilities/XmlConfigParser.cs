@@ -1439,9 +1439,9 @@ namespace SM64_Diagnostic.Utilities
             }
         }
 
-        public static List<VarXControl> OpenVarXControls(string path, string schemaFile)
+        public static List<WatchVariableControl> OpenVarXControls(string path, string schemaFile)
         {
-            var objectData = new List<VarXControl>();
+            var objectData = new List<WatchVariableControl>();
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
@@ -1459,7 +1459,7 @@ namespace SM64_Diagnostic.Utilities
                 if (element.Name.ToString() != "Data")
                     continue;
 
-                VarXControl varXControl = GetVarXControlFromElement(element);
+                WatchVariableControl varXControl = GetVarXControlFromElement(element);
                 objectData.Add(varXControl);
             }
 
@@ -1680,10 +1680,10 @@ namespace SM64_Diagnostic.Utilities
                             rotates = bool.Parse(element.Element(XName.Get("MapImage")).Attribute(XName.Get("rotates")).Value);
                         }
 
-                        List<VarXPrecursor> precursors = new List<VarXPrecursor>();
+                        List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
                         {
-                            VarXPrecursor precursor = GetVarXPrecursorFromElement(subElement);
+                            WatchVariableControlPrecursor precursor = GetVarXPrecursorFromElement(subElement);
                             precursors.Add(precursor);
                         }
 
@@ -2378,20 +2378,20 @@ namespace SM64_Diagnostic.Utilities
             return new Tuple<HackConfig, List<RomHack>>(hackConfig, hacks);
         }
 
-        public static VarXControl GetVarXControlFromElement(XElement element)
+        public static WatchVariableControl GetVarXControlFromElement(XElement element)
         {
             return GetVarXPrecursorFromElement(element).CreateVarXControl();
         }
 
-        public static VarXPrecursor GetVarXPrecursorFromElement(XElement element)
+        public static WatchVariableControlPrecursor GetVarXPrecursorFromElement(XElement element)
         {
             string name = element.Value;
 
-            BaseAddressTypeEnum baseAddressType = VarXUtilities.GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
+            BaseAddressTypeEnum baseAddressType = WatchVariableUtilities.GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
 
-            WatchVariableSubclass subclass = VarXUtilities.GetWatchVariableSubclass(element.Attribute(XName.Get("subclass"))?.Value);
+            WatchVariableSubclass subclass = WatchVariableUtilities.GetWatchVariableSubclass(element.Attribute(XName.Get("subclass"))?.Value);
 
-            List<VariableGroup> groupList = VarXUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
+            List<VariableGroup> groupList = WatchVariableUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
 
             string specialType = element.Attribute(XName.Get("specialType"))?.Value;
 
@@ -2450,8 +2450,8 @@ namespace SM64_Diagnostic.Utilities
             bool? invertBool = element.Attribute(XName.Get("invertBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : (bool?)null;
 
-            VarXCoordinate? coordinate = element.Attribute(XName.Get("coord")) != null ?
-                VarXUtilities.GetVarXCoordinate(element.Attribute(XName.Get("coord")).Value) : (VarXCoordinate?)null;
+            WatchVariableCoordinate? coordinate = element.Attribute(XName.Get("coord")) != null ?
+                WatchVariableUtilities.GetVarXCoordinate(element.Attribute(XName.Get("coord")).Value) : (WatchVariableCoordinate?)null;
 
             if (subclass == WatchVariableSubclass.Angle && specialType != null)
             {
@@ -2481,7 +2481,7 @@ namespace SM64_Diagnostic.Utilities
                 throw new ArgumentOutOfRangeException("coordinate cannot be used with var subclass String");
             }
 
-            return new VarXPrecursor(
+            return new WatchVariableControlPrecursor(
                 name,
                 watchVar,
                 subclass,

@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Controls
 {
-    public class VarXObject : VarXNumber
+    public class WatchVariableObjectWrapper : WatchVariableNumberWrapper
     {
         private bool _displayAsObject;
 
-        public VarXObject(
+        public WatchVariableObjectWrapper(
             WatchVariable watchVar,
-            VarXControl varXControl)
+            WatchVariableControl varXControl)
             : base(watchVar, varXControl, DEFAULT_ROUNDING_LIMIT, true)
         {
             _displayAsObject = true;

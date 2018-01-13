@@ -17,7 +17,7 @@ namespace SM64_Diagnostic.Managers
         InputImageGui _gui;
         InputDisplayPanel _inputDisplayPanel;
 
-        public InputManager(List<VarXControl> variables, Control inputControl, VariablePanel variableTable, InputImageGui gui)
+        public InputManager(List<WatchVariableControl> variables, Control inputControl, WatchVariablePanel variableTable, InputImageGui gui)
             : base(variables, variableTable)
         {
             _gui = gui;

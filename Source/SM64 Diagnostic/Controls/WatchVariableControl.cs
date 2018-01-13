@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Controls
 {
-    public class VarXControl : TableLayoutPanel
+    public class WatchVariableControl : TableLayoutPanel
     {
         public readonly string VarName;
         public readonly List<VariableGroup> GroupList;
 
-        private readonly VarXPrecursor _varXPrecursor;
-        private readonly VarX _varX;
+        private readonly WatchVariableControlPrecursor _varXPrecursor;
+        private readonly WatchVariableWrapper _varX;
 
         private readonly Label _nameLabel;
         private readonly TextBox _valueTextBox;
@@ -94,15 +94,15 @@ namespace SM64_Diagnostic.Controls
         // TODO refactor this
         private static readonly int nameLabelHeight = 20;
 
-        public VarXControl(
-            VarXPrecursor varXPrecursor,
+        public WatchVariableControl(
+            WatchVariableControlPrecursor varXPrecursor,
             string name,
             WatchVariable watchVar,
             WatchVariableSubclass subclass,
             Color? backgroundColor,
             bool? useHex,
             bool? invertBool,
-            VarXCoordinate? coordinate,
+            WatchVariableCoordinate? coordinate,
             List<VariableGroup> groupList)
         {
             // Store the precursor
@@ -130,7 +130,7 @@ namespace SM64_Diagnostic.Controls
             base.Controls.Add(_valueCheckBox, 1, 0);
 
             // Create var x
-            _varX = VarX.CreateVarX(watchVar, this, subclass, useHex, invertBool, coordinate);
+            _varX = WatchVariableWrapper.CreateVarX(watchVar, this, subclass, useHex, invertBool, coordinate);
 
             // Initialize context menu strip
             _textboxOldContextMenuStrip = _valueTextBox.ContextMenuStrip;
@@ -312,7 +312,7 @@ namespace SM64_Diagnostic.Controls
                 e.Graphics.DrawRectangle(_borderPen, rec);
         }
 
-        public VarXControl CreateCopy()
+        public WatchVariableControl CreateCopy()
         {
             return _varXPrecursor.CreateVarXControl();
         }

@@ -25,7 +25,7 @@ namespace SM64_Diagnostic
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         InputImageGui _inputImageGui = new InputImageGui();
         FileImageGui _fileImageGui = new FileImageGui();
-        List<VarXControl> _varXList, _waterData, _miscData, _areaData, _inputData, _fileData,
+        List<WatchVariableControl> _varXList, _waterData, _miscData, _areaData, _inputData, _fileData,
             _debugData, _camHackData, _hudData, _cameraData, _quarterFrameData, _actionsData,
             _triangleData, _marioData, _objectData;
         MapAssociations _mapAssoc;

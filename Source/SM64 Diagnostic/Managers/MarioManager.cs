@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.Managers
 {
     public class MarioManager : DataManager
     {
-        public MarioManager(List<VarXControl> variables, Control marioControl, VariablePanel variableTable)
+        public MarioManager(List<WatchVariableControl> variables, Control marioControl, WatchVariablePanel variableTable)
             : base(variables, variableTable)
         {
             variableTable.SetVariableGroups(

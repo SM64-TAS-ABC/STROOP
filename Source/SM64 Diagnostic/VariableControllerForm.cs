@@ -20,11 +20,11 @@ namespace SM64_Diagnostic
         private static readonly Color COLOR_RED = Color.FromArgb(255, 220, 220);
 
         private readonly string _varName;
-        private readonly VarX _varX;
+        private readonly WatchVariableWrapper _varX;
         private readonly Timer _timer;
         private List<uint> _addresses;
 
-        public VariableControllerForm(string varName, VarX varX)
+        public VariableControllerForm(string varName, WatchVariableWrapper varX)
         {
             _varName = varName;
             _varX = varX;

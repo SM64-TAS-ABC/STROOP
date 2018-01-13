@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Controls
 {
-    public class VarXPrecursor
+    public class WatchVariableControlPrecursor
     {
         private readonly string _name;
         private readonly WatchVariable _watchVar;
@@ -20,17 +20,17 @@ namespace SM64_Diagnostic.Controls
         private readonly Color? _backgroundColor;
         private readonly bool? _useHex;
         private readonly bool? _invertBool;
-        private readonly VarXCoordinate? _coordinate;
+        private readonly WatchVariableCoordinate? _coordinate;
         private readonly List<VariableGroup> _groupList;
 
-        public VarXPrecursor(
+        public WatchVariableControlPrecursor(
             string name,
             WatchVariable watchVar,
             WatchVariableSubclass subclass,
             Color? backgroundColor,
             bool? useHex,
             bool? invertBool,
-            VarXCoordinate? coordinate,
+            WatchVariableCoordinate? coordinate,
             List<VariableGroup> groupList)
         {
             _name = name;
@@ -43,9 +43,9 @@ namespace SM64_Diagnostic.Controls
             _groupList = groupList;
         }
 
-        public VarXControl CreateVarXControl(Color? newColor = null)
+        public WatchVariableControl CreateVarXControl(Color? newColor = null)
         {
-            return new VarXControl(
+            return new WatchVariableControl(
                 this,
                 _name,
                 _watchVar,

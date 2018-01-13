@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Controls
 {
-    public class VarXAngle : VarXNumber
+    public class WatchVariableAngleWrapper : WatchVariableNumberWrapper
     {
         private bool _signed;
         private AngleUnitType _angleUnitType;
@@ -29,9 +29,9 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public VarXAngle(
+        public WatchVariableAngleWrapper(
             WatchVariable watchVar,
-            VarXControl varXControl)
+            WatchVariableControl varXControl)
             : base(watchVar, varXControl, 0)
         {
             _signed = _watchVar.SignedType.Value;

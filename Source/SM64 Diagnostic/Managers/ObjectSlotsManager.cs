@@ -521,7 +521,7 @@ namespace SM64_Diagnostic.Managers
                         else
                         {
                             objManager.Behavior = "";
-                            objManager.SetBehaviorWatchVariables(new List<VarXPrecursor>(), Color.White);
+                            objManager.SetBehaviorWatchVariables(new List<WatchVariableControlPrecursor>(), Color.White);
                         }
                         _lastSelectedBehavior = multiBehavior;
                     }

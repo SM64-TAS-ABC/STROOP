@@ -14,9 +14,9 @@ namespace SM64_Diagnostic.Managers
 {
     public class DataManager
     {
-        private VariablePanel _variablePanel;
+        private WatchVariablePanel _variablePanel;
 
-        public DataManager(List<VarXControl> varXControlList, VariablePanel variablePanel)
+        public DataManager(List<WatchVariableControl> varXControlList, WatchVariablePanel variablePanel)
         {
             _variablePanel = variablePanel;
             _variablePanel.AddVariables(varXControlList);
@@ -27,7 +27,7 @@ namespace SM64_Diagnostic.Managers
             _variablePanel.RemoveVariables(VariableGroup.ObjectSpecific);
         }
 
-        protected void AddVarXControls(List<VarXControl> varXControls)
+        protected void AddVarXControls(List<WatchVariableControl> varXControls)
         {
             _variablePanel.AddVariables(varXControls);
         }

@@ -23,7 +23,7 @@ namespace SM64_Diagnostic.Managers
         List<RadioButton> _selectedAreaRadioButtons;
         CheckBox _selectCurrentAreaCheckbox;
 
-        public AreaManager(Control tabControl, List<VarXControl> variables, VariablePanel noTearFlowLayoutPanel) 
+        public AreaManager(Control tabControl, List<WatchVariableControl> variables, WatchVariablePanel noTearFlowLayoutPanel) 
             : base(variables, noTearFlowLayoutPanel)
         {
             Instance = this;

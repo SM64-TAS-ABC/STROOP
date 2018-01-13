@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Controls
 {
-    public class VarXBoolean : VarXNumber
+    public class WatchVariableBooleanWrapper : WatchVariableNumberWrapper
     {
         private bool _displayAsCheckbox;
         private bool _displayAsInverted;
 
-        public VarXBoolean(
+        public WatchVariableBooleanWrapper(
             WatchVariable watchVar,
-            VarXControl varXControl,
+            WatchVariableControl varXControl,
             bool? displayAsInverted)
             : base(watchVar, varXControl, DEFAULT_ROUNDING_LIMIT, DEFAULT_DISPLAY_AS_HEX, true)
         {

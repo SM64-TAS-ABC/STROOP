@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Controls
 {
-    public class VarX
+    public class WatchVariableWrapper
     {
         protected const int DEFAULT_ROUNDING_LIMIT = 3;
         protected const bool DEFAULT_DISPLAY_AS_HEX = false;
         protected const bool DEFAULT_USE_CHECKBOX = false;
 
         protected readonly WatchVariable _watchVar;
-        protected readonly VarXControl _varXControl;
+        protected readonly WatchVariableControl _varXControl;
         protected readonly BetterContextMenuStrip _contextMenuStrip;
 
         private ToolStripMenuItem _itemLock;
@@ -27,21 +27,21 @@ namespace SM64_Diagnostic.Controls
 
         private readonly bool _startsAsCheckbox;
 
-        public static VarX CreateVarX(
+        public static WatchVariableWrapper CreateVarX(
             WatchVariable watchVar,
-            VarXControl varXControl,
+            WatchVariableControl varXControl,
             WatchVariableSubclass varXSubclcass,
             bool? useHex,
             bool? invertBool,
-            VarXCoordinate? coordinate)
+            WatchVariableCoordinate? coordinate)
         {
             switch (varXSubclcass)
             {
                 case WatchVariableSubclass.String:
-                    return new VarX(watchVar, varXControl);
+                    return new WatchVariableWrapper(watchVar, varXControl);
 
                 case WatchVariableSubclass.Number:
-                    return new VarXNumber(
+                    return new WatchVariableNumberWrapper(
                         watchVar,
                         varXControl,
                         DEFAULT_ROUNDING_LIMIT,
@@ -50,20 +50,20 @@ namespace SM64_Diagnostic.Controls
                         coordinate);
 
                 case WatchVariableSubclass.Angle:
-                    return new VarXAngle(watchVar, varXControl);
+                    return new WatchVariableAngleWrapper(watchVar, varXControl);
 
                 case WatchVariableSubclass.Object:
-                    return new VarXObject(watchVar, varXControl);
+                    return new WatchVariableObjectWrapper(watchVar, varXControl);
 
                 case WatchVariableSubclass.Boolean:
-                    return new VarXBoolean(watchVar, varXControl, invertBool);
+                    return new WatchVariableBooleanWrapper(watchVar, varXControl, invertBool);
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        protected VarX(WatchVariable watchVar, VarXControl varXControl, bool useCheckbox = false)
+        protected WatchVariableWrapper(WatchVariable watchVar, WatchVariableControl varXControl, bool useCheckbox = false)
         {
             _watchVar = watchVar;
             _varXControl = varXControl;

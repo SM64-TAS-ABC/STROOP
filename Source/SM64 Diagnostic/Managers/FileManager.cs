@@ -54,7 +54,7 @@ namespace SM64_Diagnostic.Managers
 
         byte[] _copiedFile;
 
-        public FileManager(List<VarXControl> variables, TabPage tabControl, VariablePanel noTearFlowLayoutPanelFile, FileImageGui gui)
+        public FileManager(List<WatchVariableControl> variables, TabPage tabControl, WatchVariablePanel noTearFlowLayoutPanelFile, FileImageGui gui)
             : base(variables, noTearFlowLayoutPanelFile)
         {
             Instance = this;

@@ -152,15 +152,15 @@
       <DependentUpon>DecompilerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\WatchVariable.cs" />
-    <Compile Include="Controls\VarXPrecursor.cs" />
-    <Compile Include="Controls\VarXControl.cs">
+    <Compile Include="Controls\WatchVariableControlPrecursor.cs" />
+    <Compile Include="Controls\WatchVariableControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\VarXBoolean.cs" />
-    <Compile Include="Controls\VarXObject.cs" />
-    <Compile Include="Controls\VarXAngle.cs" />
-    <Compile Include="Controls\VarXNumber.cs" />
-    <Compile Include="Controls\VarX.cs" />
+    <Compile Include="Controls\WatchVariableBooleanWrapper.cs" />
+    <Compile Include="Controls\WatchVariableObjectWrapper.cs" />
+    <Compile Include="Controls\WatchVariableAngleWrapper.cs" />
+    <Compile Include="Controls\WatchVariableNumberWrapper.cs" />
+    <Compile Include="Controls\WatchVariableWrapper.cs" />
     <Compile Include="Controls\InputDisplayPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -196,7 +196,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\Map\MapBaseObject.cs" />
-    <Compile Include="Controls\VariablePanel.cs">
+    <Compile Include="Controls\WatchVariablePanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\RichTextBoxEx.cs">
@@ -288,14 +288,14 @@
     <Compile Include="Utilities\AngleUnitType.cs" />
     <Compile Include="Utilities\ColorUtilities.cs" />
     <Compile Include="Managers\VarXLockManager.cs" />
-    <Compile Include="Utilities\VarXCoordinate.cs" />
+    <Compile Include="Utilities\WatchVariableCoordinate.cs" />
     <Compile Include="Utilities\WatchVariableSubclass.cs" />
     <Compile Include="Utilities\VariableGroup.cs" />
     <Compile Include="Utilities\BaseAddressTypeEnum.cs" />
-    <Compile Include="Utilities\VarXSpecialUtilities.cs" />
-    <Compile Include="Utilities\VarXCoordinateUtilities.cs" />
+    <Compile Include="Utilities\WatchVariableSpecialUtilities.cs" />
+    <Compile Include="Utilities\WatchVariableCoordinateManager.cs" />
     <Compile Include="Utilities\AreaUtilities.cs" />
-    <Compile Include="Utilities\VarXUtilities.cs" />
+    <Compile Include="Utilities\WatchVariableUtilities.cs" />
     <Compile Include="Utilities\BehaviorDecoder.cs" />
     <Compile Include="Utilities\Kernal32NativeMethods.cs" />
     <Compile Include="Utilities\MoreMath.cs" />

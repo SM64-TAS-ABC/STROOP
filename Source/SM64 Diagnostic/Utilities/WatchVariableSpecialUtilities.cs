@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs
 {
-    public static class VarXSpecialUtilities
+    public static class WatchVariableSpecialUtilities
     {
         private readonly static Func<uint, string> DEFAULT_GETTER = (uint address) => "UNIMPLEMENTED";
         private readonly static Func<string, uint, bool> DEFAULT_SETTER = (string value, uint address) => false;
