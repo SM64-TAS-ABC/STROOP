@@ -44,9 +44,6 @@ namespace SM64_Diagnostic
 
             _timer.Tick += (s, e) => { _textBoxCurrentValue.Text = _varX.GetStringValue(true, true, _addresses); };
             _timer.Start();
-
-            ControlUtilities.AddInversionContextMenuStrip(_buttonSubtract, _buttonAdd);
-            ControlUtilities.AddInversionContextMenuStrip(_buttonGet, _buttonSet);
         }
         
         public void ToggleFixedAddress()

@@ -44,7 +44,7 @@
             // 
             // _textBoxCurrentValue
             // 
-            this._textBoxCurrentValue.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this._textBoxCurrentValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._textBoxCurrentValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this._textBoxCurrentValue.Location = new System.Drawing.Point(55, 44);
             this._textBoxCurrentValue.MaximumSize = new System.Drawing.Size(10000, 10000);
@@ -56,7 +56,7 @@
             // 
             // _textBoxAddSubtract
             // 
-            this._textBoxAddSubtract.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this._textBoxAddSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._textBoxAddSubtract.BackColor = System.Drawing.Color.White;
             this._textBoxAddSubtract.Location = new System.Drawing.Point(55, 80);
             this._textBoxAddSubtract.MaximumSize = new System.Drawing.Size(10000, 10000);
@@ -80,7 +80,7 @@
             // 
             // _textBoxGetSet
             // 
-            this._textBoxGetSet.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this._textBoxGetSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this._textBoxGetSet.BackColor = System.Drawing.Color.White;
             this._textBoxGetSet.Location = new System.Drawing.Point(55, 116);
             this._textBoxGetSet.Name = "_textBoxGetSet";
