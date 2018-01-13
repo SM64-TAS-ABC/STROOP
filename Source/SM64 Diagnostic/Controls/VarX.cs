@@ -134,7 +134,7 @@ namespace SM64_Diagnostic.Controls
         private void AddExternalContextMenuStripItems()
         {
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
-            itemAddToCustomTab.Click += (sender, e) => {  };
+            itemAddToCustomTab.Click += (sender, e) => { CustomManager.Instance.AddVariable(_varXControl.CreateCopy()); };
 
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
             itemOpenController.Click += (sender, e) => {  };

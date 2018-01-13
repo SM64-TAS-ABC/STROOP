@@ -311,5 +311,10 @@ namespace SM64_Diagnostic.Controls
             if (_showBorder)
                 e.Graphics.DrawRectangle(_borderPen, rec);
         }
+
+        public VarXControl CreateCopy()
+        {
+            return _varXPrecursor.CreateVarXControl();
+        }
     }
 }

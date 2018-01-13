@@ -27,7 +27,7 @@ namespace SM64_Diagnostic.Managers
             _variablePanel.RemoveVariables(VariableGroup.ObjectSpecific);
         }
 
-        protected void AddTheseVarXControls(List<VarXControl> varXControls)
+        protected void AddVarXControls(List<VarXControl> varXControls)
         {
             _variablePanel.AddVariables(varXControls);
         }

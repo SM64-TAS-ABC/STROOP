@@ -217,6 +217,7 @@
     <Compile Include="Managers\AreaManager.cs" />
     <Compile Include="Managers\CamHackManager.cs" />
     <Compile Include="Managers\DecompilerManager.cs" />
+    <Compile Include="Managers\CustomManager.cs" />
     <Compile Include="Managers\ScriptManager.cs" />
     <Compile Include="Managers\WaterManager.cs" />
     <Compile Include="Managers\ModelManager.cs" />

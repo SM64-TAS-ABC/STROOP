@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<WaterData>
-
+<Data>
+<!--
   <Data type="float" offset="0x3C" baseAddressType="Mario" coord="X">Mario X</Data>
   <Data type="float" offset="0x40" baseAddressType="Mario" coord="Y">Mario Y</Data>
   <Data type="float" offset="0x44" baseAddressType="Mario" coord="Z">Mario Z</Data>
@@ -61,5 +61,5 @@
 
   <Data type="byte" offset="0x3" mask="0x10" baseAddressType="Object" subclass="Boolean" invertBool="true">Visible</Data>
   <Data type="byte" offset="0x3" mask="0x04" baseAddressType="Object" subclass="Boolean">Face Camera</Data>
-  
-</WaterData>
+  -->
+</Data>
