@@ -42,7 +42,7 @@
             // _buttonSubtract
             // 
             this._buttonSubtract.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._buttonSubtract.Location = new System.Drawing.Point(11, 63);
+            this._buttonSubtract.Location = new System.Drawing.Point(9, 63);
             this._buttonSubtract.Name = "_buttonSubtract";
             this._buttonSubtract.Size = new System.Drawing.Size(50, 33);
             this._buttonSubtract.TabIndex = 0;
@@ -52,9 +52,9 @@
             // _textBoxAddSubtract
             // 
             this._textBoxAddSubtract.BackColor = System.Drawing.Color.White;
-            this._textBoxAddSubtract.Location = new System.Drawing.Point(67, 69);
+            this._textBoxAddSubtract.Location = new System.Drawing.Point(65, 69);
             this._textBoxAddSubtract.Name = "_textBoxAddSubtract";
-            this._textBoxAddSubtract.Size = new System.Drawing.Size(67, 20);
+            this._textBoxAddSubtract.Size = new System.Drawing.Size(74, 20);
             this._textBoxAddSubtract.TabIndex = 9;
             this._textBoxAddSubtract.Text = "100";
             this._textBoxAddSubtract.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -62,9 +62,9 @@
             // _textBoxGetSet
             // 
             this._textBoxGetSet.BackColor = System.Drawing.Color.White;
-            this._textBoxGetSet.Location = new System.Drawing.Point(67, 107);
+            this._textBoxGetSet.Location = new System.Drawing.Point(65, 107);
             this._textBoxGetSet.Name = "_textBoxGetSet";
-            this._textBoxGetSet.Size = new System.Drawing.Size(67, 20);
+            this._textBoxGetSet.Size = new System.Drawing.Size(74, 20);
             this._textBoxGetSet.TabIndex = 9;
             this._textBoxGetSet.Text = "200";
             this._textBoxGetSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -72,7 +72,7 @@
             // _buttonAdd
             // 
             this._buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._buttonAdd.Location = new System.Drawing.Point(140, 63);
+            this._buttonAdd.Location = new System.Drawing.Point(145, 63);
             this._buttonAdd.Name = "_buttonAdd";
             this._buttonAdd.Size = new System.Drawing.Size(50, 33);
             this._buttonAdd.TabIndex = 0;
@@ -82,7 +82,7 @@
             // _buttonGet
             // 
             this._buttonGet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._buttonGet.Location = new System.Drawing.Point(11, 101);
+            this._buttonGet.Location = new System.Drawing.Point(9, 101);
             this._buttonGet.Name = "_buttonGet";
             this._buttonGet.Size = new System.Drawing.Size(50, 33);
             this._buttonGet.TabIndex = 0;
@@ -92,7 +92,7 @@
             // _buttonSet
             // 
             this._buttonSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._buttonSet.Location = new System.Drawing.Point(140, 101);
+            this._buttonSet.Location = new System.Drawing.Point(145, 101);
             this._buttonSet.Name = "_buttonSet";
             this._buttonSet.Size = new System.Drawing.Size(50, 33);
             this._buttonSet.TabIndex = 0;
@@ -112,9 +112,9 @@
             // _textBoxCurrentValue
             // 
             this._textBoxCurrentValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this._textBoxCurrentValue.Location = new System.Drawing.Point(67, 37);
+            this._textBoxCurrentValue.Location = new System.Drawing.Point(65, 37);
             this._textBoxCurrentValue.Name = "_textBoxCurrentValue";
-            this._textBoxCurrentValue.Size = new System.Drawing.Size(67, 20);
+            this._textBoxCurrentValue.Size = new System.Drawing.Size(74, 20);
             this._textBoxCurrentValue.TabIndex = 9;
             this._textBoxCurrentValue.Text = "100";
             this._textBoxCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
