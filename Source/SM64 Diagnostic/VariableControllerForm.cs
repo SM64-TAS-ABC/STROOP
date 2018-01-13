@@ -21,46 +21,46 @@ namespace SM64_Diagnostic
 
         private readonly string _varName;
         private readonly VarX _varX;
+        private readonly Timer _timer;
+        private List<uint> _addresses;
 
         public VariableControllerForm(string varName, VarX varX)
         {
             InitializeComponent();
             _varName = varName;
             _varX = varX;
-
-            Timer timer = new System.Windows.Forms.Timer { Interval = 30 };
-            timer.Tick += (sender, args) => UpdateForm();
-            timer.Start();
+            _timer = new System.Windows.Forms.Timer { Interval = 30 };
+            _addresses = null;
         }
 
         private void VariableViewerForm_Load(object sender, EventArgs eventArgs)
         {
             _labelVarName.Text = _varName;
-            _buttonAdd.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, true); };
-            _buttonSubtract.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, false); };
-            _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _varX.GetStringValue(); };
-            _buttonSet.Click += (s, e) => { _varX.SetStringValue(_textBoxGetSet.Text); };
+            _buttonAdd.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, true, _addresses); };
+            _buttonSubtract.Click += (s, e) => { _varX.AddValue(_textBoxAddSubtract.Text, false, _addresses); };
+            _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _varX.GetStringValue(true, true, _addresses); };
+            _buttonSet.Click += (s, e) => { _varX.SetStringValue(_textBoxGetSet.Text, _addresses); };
             _checkBoxFixAddress.Click += (s, e) => { ToggleFixedAddress(); };
+
+            _timer.Tick += (s, e) => { _textBoxCurrentValue.Text = _varX.GetStringValue(true, true, _addresses); };
+            _timer.Start();
 
             ControlUtilities.AddInversionContextMenuStrip(_buttonSubtract, _buttonAdd);
             ControlUtilities.AddInversionContextMenuStrip(_buttonGet, _buttonSet);
         }
-
-        public void UpdateForm()
-        {
-            _textBoxCurrentValue.Text = _varX.GetStringValue();
-        }
-
+        
         public void ToggleFixedAddress()
         {
             bool fixedAddress = _checkBoxFixAddress.Checked;
             if (fixedAddress)
             {
                 _textBoxCurrentValue.BackColor = COLOR_RED;
+                _addresses = _varX.GetCurrentAddresses();
             }
             else
             {
                 _textBoxCurrentValue.BackColor = COLOR_BLUE;
+                _addresses = null;
             }
         }
     }

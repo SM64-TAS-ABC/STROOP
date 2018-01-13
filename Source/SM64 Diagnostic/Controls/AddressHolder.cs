@@ -61,7 +61,7 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        private List<uint> EffectiveAddressList
+        public List<uint> AddressList
         {
             get
             {
@@ -110,17 +110,19 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public List<string> GetValues()
+        public List<string> GetValues(List<uint> addresses = null)
         {
-            return EffectiveAddressList.ConvertAll(
+            List<uint> addressList = addresses ?? AddressList;
+            return addressList.ConvertAll(
                 address => _getterFunction(address));
         }
 
-        public bool SetValue(string value)
+        public bool SetValue(string value, List<uint> addresses = null)
         {
+            List<uint> addressList = addresses ?? AddressList;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
-            bool success = EffectiveAddressList.ConvertAll(
+            bool success = addressList.ConvertAll(
                 address => _setterFunction(value, address))
                     .Aggregate(true, (b1, b2) => b1 && b2);
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -130,14 +132,14 @@ namespace SM64_Diagnostic.Controls
         public List<AddressHolderLock> GetLocks()
         {
             List<string> values = GetValues();
-            List<uint> effectiveAddresses = EffectiveAddressList;
-            if (values.Count != effectiveAddresses.Count) return new List<AddressHolderLock>();
+            List<uint> addresses = AddressList;
+            if (values.Count != addresses.Count) return new List<AddressHolderLock>();
 
             List<AddressHolderLock> locks = new List<AddressHolderLock>();
             for (int i = 0; i < values.Count; i++)
             {
                 locks.Add(new AddressHolderLock(
-                    IsSpecial, MemoryType, ByteCount, Mask, effectiveAddresses[i], SpecialType, _setterFunction, values[i]));
+                    IsSpecial, MemoryType, ByteCount, Mask, addresses[i], SpecialType, _setterFunction, values[i]));
             }
             return locks;
         }
@@ -162,24 +164,24 @@ namespace SM64_Diagnostic.Controls
         public string GetRamAddressString(bool addressArea = true)
         {
             if (IsSpecial) return "(none)";
-            if (EffectiveAddressList.Count == 0) return "(none)";
+            if (AddressList.Count == 0) return "(none)";
             return String.Format("0x{0:X8}", GetRamAddress(addressArea));
         }
 
         public uint GetRamAddress(bool addressArea = true)
         {
-            List<uint> effectiveAddresses = EffectiveAddressList;
-            if (effectiveAddresses.Count == 0) return 0;
+            List<uint> addresses = AddressList;
+            if (addresses.Count == 0) return 0;
 
-            UIntPtr effectiveAddress = new UIntPtr(effectiveAddresses[0]);
+            UIntPtr addressPtr = new UIntPtr(addresses[0]);
             uint address;
 
             if (UseAbsoluteAddressing)
                 address = (uint)Config.Stream.ConvertAddressEndianess(
-                    new UIntPtr(effectiveAddress.ToUInt64() - (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()),
+                    new UIntPtr(addressPtr.ToUInt64() - (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()),
                     ByteCount.Value);
             else
-                address = effectiveAddress.ToUInt32();
+                address = addressPtr.ToUInt32();
 
             return addressArea ? address | 0x80000000 : address & 0x0FFFFFFF;
         }
@@ -187,7 +189,7 @@ namespace SM64_Diagnostic.Controls
         public string GetProcessAddressString()
         {
             if (IsSpecial) return "(none)";
-            if (EffectiveAddressList.Count == 0) return "(none)";
+            if (AddressList.Count == 0) return "(none)";
             return String.Format("0x{0:X8}", GetProcessAddress().ToUInt64());
         }
 

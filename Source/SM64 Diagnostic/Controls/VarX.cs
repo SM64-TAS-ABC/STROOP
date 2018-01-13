@@ -184,9 +184,10 @@ namespace SM64_Diagnostic.Controls
 
         public string GetStringValue(
             bool handleRounding = true,
-            bool handleFormatting = true)
+            bool handleFormatting = true,
+            List<uint> addresses = null)
         {
-            List<string> values = _addressHolder.GetValues();
+            List<string> values = _addressHolder.GetValues(addresses);
             (bool meaningfulValue, string value) = CombineValues(values);
             if (!meaningfulValue) return value;
 
@@ -200,30 +201,30 @@ namespace SM64_Diagnostic.Controls
             return value;
         }
 
-        public bool SetStringValue(string value)
+        public bool SetStringValue(string value, List<uint> addresses = null)
         {
             value = HandleObjectUndisplaying(value);
             value = HandleHexUndisplaying(value);
             value = HandleUnnegating(value);
             value = HandleAngleUnconverting(value);
 
-            bool success = _addressHolder.SetValue(value);
+            bool success = _addressHolder.SetValue(value, addresses);
             if (success && GetLockedBool()) VarXLockManager.UpdateLockValues(_addressHolder, value);
             return success;
         }
 
-        public CheckState GetCheckStateValue()
+        public CheckState GetCheckStateValue(List<uint> addresses = null)
         {
-            List<string> values = _addressHolder.GetValues();
+            List<string> values = _addressHolder.GetValues(addresses);
             List<CheckState> checkStates = values.ConvertAll(value => ConvertValueToCheckState(value));
             CheckState checkState = CombineCheckStates(checkStates);
             return checkState;
         }
 
-        public bool SetCheckStateValue(CheckState checkState)
+        public bool SetCheckStateValue(CheckState checkState, List<uint> addresses = null)
         {
             string value = ConvertCheckStateToValue(checkState);
-            bool success = _addressHolder.SetValue(value);
+            bool success = _addressHolder.SetValue(value, addresses);
             if (success && GetLockedBool()) VarXLockManager.UpdateLockValues(_addressHolder, value);
             return success;
         }
@@ -231,19 +232,24 @@ namespace SM64_Diagnostic.Controls
 
 
 
-        public bool AddValue(string stringValue, bool add)
+        public bool AddValue(string stringValue, bool add, List<uint> addresses = null)
         {
             double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
             if (!doubleValueNullable.HasValue) return false;
             double doubleValue = doubleValueNullable.Value;
 
-            string currentValueString = GetStringValue(false, false);
+            string currentValueString = GetStringValue(false, false, addresses);
             double? currentValueNullable = ParsingUtilities.ParseDoubleNullable(currentValueString);
             if (!currentValueNullable.HasValue) return false;
             double currentValue = currentValueNullable.Value;
 
             double newValue = currentValue + doubleValue * (add ? +1 : -1);
-            return SetStringValue(newValue.ToString());
+            return SetStringValue(newValue.ToString(), addresses);
+        }
+
+        public List<uint> GetCurrentAddresses()
+        {
+            return _addressHolder.AddressList;
         }
 
 
