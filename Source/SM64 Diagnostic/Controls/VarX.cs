@@ -137,7 +137,7 @@ namespace SM64_Diagnostic.Controls
             itemAddToCustomTab.Click += (sender, e) => { CustomManager.Instance.AddVariable(_varXControl.CreateCopy()); };
 
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
-            itemOpenController.Click += (sender, e) => {  };
+            itemOpenController.Click += (sender, e) => { ShowVarController(); };
 
             _contextMenuStrip.AddToEndingList(new ToolStripSeparator());
             _contextMenuStrip.AddToEndingList(itemAddToCustomTab);
@@ -146,13 +146,24 @@ namespace SM64_Diagnostic.Controls
 
         public void ShowVarInfo()
         {
-            VariableViewerForm varInfo;
-            varInfo = new VariableViewerForm(
-                _varXControl.VarName,
-                _addressHolder.GetTypeDescription(),
-                _addressHolder.GetRamAddressString(),
-                _addressHolder.GetProcessAddressString());
+            VariableViewerForm varInfo =
+                new VariableViewerForm(
+                    _varXControl.VarName,
+                    _addressHolder.GetTypeDescription(),
+                    _addressHolder.GetRamAddressString(),
+                    _addressHolder.GetProcessAddressString());
             varInfo.ShowDialog();
+        }
+
+        public void ShowVarController()
+        {
+            VariableControllerForm varController =
+                new VariableControllerForm(
+                    _varXControl.VarName,
+                    _addressHolder.GetTypeDescription(),
+                    _addressHolder.GetRamAddressString(),
+                    _addressHolder.GetProcessAddressString());
+            varController.Show();
         }
 
         public CheckState GetLockedCheckState()
