@@ -133,6 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\AddressHolderLock.cs" />
+    <Compile Include="Controls\BetterContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\TransparentTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
