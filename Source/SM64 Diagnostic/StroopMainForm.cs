@@ -198,7 +198,7 @@ namespace SM64_Diagnostic
             _actionsData = XmlConfigParser.OpenVarXControls(@"Config/ActionsData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Water Data", statusNum++);
             _waterData = XmlConfigParser.OpenVarXControls(@"Config/WaterData.xml", "MiscDataSchema.xsd");
-            _varXList = XmlConfigParser.OpenVarXControls(@"Config/VarXData.xml", "MiscDataSchema.xsd");
+            _varXList = XmlConfigParser.OpenVarXControls(@"Config/CustomData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Input Data", statusNum++);
             _inputData = XmlConfigParser.OpenVarXControls(@"Config/InputData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Input Image Associations", statusNum++);
