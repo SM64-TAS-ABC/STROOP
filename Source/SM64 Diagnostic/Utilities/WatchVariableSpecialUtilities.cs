@@ -644,6 +644,19 @@ namespace SM64_Diagnostic.Structs
                         float radius = 32 + scale * 65;
                         return radius.ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        double? radiusNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!radiusNullable.HasValue) return false;
+                        double radius = radiusNullable.Value;
+                        float scale = (float)((radius -32) / 65);
+
+                        bool success = true;
+                        success &= Config.Stream.SetValue(scale, objAddress + Config.ObjectSlots.ScaleWidthOffset);
+                        success &= Config.Stream.SetValue(scale, objAddress + Config.ObjectSlots.ScaleHeightOffset);
+                        success &= Config.Stream.SetValue(scale, objAddress + Config.ObjectSlots.ScaleDepthOffset);
+                        return success;
+                    };
                     break;
 
                 case "BobombSpaceBetween":
