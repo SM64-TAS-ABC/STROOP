@@ -528,6 +528,29 @@ namespace SM64_Diagnostic
             this.pictureBoxMisc = new SM64_Diagnostic.Controls.IntPictureBox();
             this.watchVariablePanelMisc = new SM64_Diagnostic.Controls.WatchVariablePanel();
             this.tabPageCustom = new System.Windows.Forms.TabPage();
+            this.splitContainerCustom = new System.Windows.Forms.SplitContainer();
+            this.groupBoxVarHeight = new System.Windows.Forms.GroupBox();
+            this.betterTextbox6 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox7 = new SM64_Diagnostic.BetterTextbox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.groupBoxVarValueWidth = new System.Windows.Forms.GroupBox();
+            this.betterTextbox1 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox5 = new SM64_Diagnostic.BetterTextbox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.groupBoxVarNameWidth = new System.Windows.Forms.GroupBox();
+            this.betterTextbox2 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox3 = new SM64_Diagnostic.BetterTextbox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.buttonClearVariables = new System.Windows.Forms.Button();
             this.watchVariablePanelCustom = new SM64_Diagnostic.Controls.WatchVariablePanel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
             this.splitContainerDebug = new System.Windows.Forms.SplitContainer();
@@ -982,29 +1005,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.splitContainerCustom = new System.Windows.Forms.SplitContainer();
-            this.buttonClearVariables = new System.Windows.Forms.Button();
-            this.groupBoxVarNameWidth = new System.Windows.Forms.GroupBox();
-            this.betterTextbox2 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox3 = new SM64_Diagnostic.BetterTextbox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.groupBoxVarValueWidth = new System.Windows.Forms.GroupBox();
-            this.betterTextbox1 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox5 = new SM64_Diagnostic.BetterTextbox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.groupBoxVarHeight = new System.Windows.Forms.GroupBox();
-            this.betterTextbox6 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox7 = new SM64_Diagnostic.BetterTextbox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1235,6 +1235,13 @@ namespace SM64_Diagnostic
             this.panelMiscBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
             this.tabPageCustom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustom)).BeginInit();
+            this.splitContainerCustom.Panel1.SuspendLayout();
+            this.splitContainerCustom.Panel2.SuspendLayout();
+            this.splitContainerCustom.SuspendLayout();
+            this.groupBoxVarHeight.SuspendLayout();
+            this.groupBoxVarValueWidth.SuspendLayout();
+            this.groupBoxVarNameWidth.SuspendLayout();
             this.tabPageDebug.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).BeginInit();
             this.splitContainerDebug.Panel1.SuspendLayout();
@@ -1317,13 +1324,6 @@ namespace SM64_Diagnostic
             this.splitContainerDecompiler.Panel2.SuspendLayout();
             this.splitContainerDecompiler.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustom)).BeginInit();
-            this.splitContainerCustom.Panel1.SuspendLayout();
-            this.splitContainerCustom.Panel2.SuspendLayout();
-            this.splitContainerCustom.SuspendLayout();
-            this.groupBoxVarNameWidth.SuspendLayout();
-            this.groupBoxVarValueWidth.SuspendLayout();
-            this.groupBoxVarHeight.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1353,7 +1353,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 342);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 343);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1418,7 +1418,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 154);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 155);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -2376,7 +2376,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObject.Location = new System.Drawing.Point(2, 2);
             this.WatchVariablePanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObject.Name = "WatchVariablePanelObject";
-            this.WatchVariablePanelObject.Size = new System.Drawing.Size(693, 458);
+            this.WatchVariablePanelObject.Size = new System.Drawing.Size(696, 458);
             this.WatchVariablePanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -3064,7 +3064,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelMario.Location = new System.Drawing.Point(2, 2);
             this.WatchVariablePanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelMario.Name = "WatchVariablePanelMario";
-            this.WatchVariablePanelMario.Size = new System.Drawing.Size(702, 456);
+            this.WatchVariablePanelMario.Size = new System.Drawing.Size(705, 456);
             this.WatchVariablePanelMario.TabIndex = 1;
             // 
             // tabPageHud
@@ -3208,7 +3208,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelHud.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelHud.Name = "watchVariablePanelHud";
-            this.watchVariablePanelHud.Size = new System.Drawing.Size(794, 457);
+            this.watchVariablePanelHud.Size = new System.Drawing.Size(797, 457);
             this.watchVariablePanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3589,7 +3589,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelCamera.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelCamera.Name = "watchVariablePanelCamera";
-            this.watchVariablePanelCamera.Size = new System.Drawing.Size(704, 457);
+            this.watchVariablePanelCamera.Size = new System.Drawing.Size(707, 457);
             this.watchVariablePanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -4131,7 +4131,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.watchVariablePanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelTriangles.Name = "watchVariablePanelTriangles";
-            this.watchVariablePanelTriangles.Size = new System.Drawing.Size(701, 453);
+            this.watchVariablePanelTriangles.Size = new System.Drawing.Size(704, 453);
             this.watchVariablePanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -4261,7 +4261,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelInput.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelInput.Name = "watchVariablePanelInput";
-            this.watchVariablePanelInput.Size = new System.Drawing.Size(482, 460);
+            this.watchVariablePanelInput.Size = new System.Drawing.Size(485, 460);
             this.watchVariablePanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4624,7 +4624,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7598,7 +7598,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelFile.Location = new System.Drawing.Point(0, -1);
             this.watchVariablePanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelFile.Name = "watchVariablePanelFile";
-            this.watchVariablePanelFile.Size = new System.Drawing.Size(253, 463);
+            this.watchVariablePanelFile.Size = new System.Drawing.Size(256, 463);
             this.watchVariablePanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7681,7 +7681,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelMisc.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelMisc.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelMisc.Name = "watchVariablePanelMisc";
-            this.watchVariablePanelMisc.Size = new System.Drawing.Size(781, 457);
+            this.watchVariablePanelMisc.Size = new System.Drawing.Size(784, 457);
             this.watchVariablePanelMisc.TabIndex = 5;
             // 
             // tabPageCustom
@@ -7695,6 +7695,281 @@ namespace SM64_Diagnostic
             this.tabPageCustom.TabIndex = 22;
             this.tabPageCustom.Text = "Custom";
             // 
+            // splitContainerCustom
+            // 
+            this.splitContainerCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainerCustom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerCustom.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerCustom.Location = new System.Drawing.Point(1, 0);
+            this.splitContainerCustom.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainerCustom.Name = "splitContainerCustom";
+            // 
+            // splitContainerCustom.Panel1
+            // 
+            this.splitContainerCustom.Panel1.AutoScroll = true;
+            this.splitContainerCustom.Panel1.Controls.Add(this.groupBoxVarHeight);
+            this.splitContainerCustom.Panel1.Controls.Add(this.groupBoxVarValueWidth);
+            this.splitContainerCustom.Panel1.Controls.Add(this.groupBoxVarNameWidth);
+            this.splitContainerCustom.Panel1.Controls.Add(this.buttonClearVariables);
+            this.splitContainerCustom.Panel1MinSize = 0;
+            // 
+            // splitContainerCustom.Panel2
+            // 
+            this.splitContainerCustom.Panel2.Controls.Add(this.watchVariablePanelCustom);
+            this.splitContainerCustom.Panel2MinSize = 0;
+            this.splitContainerCustom.Size = new System.Drawing.Size(909, 463);
+            this.splitContainerCustom.SplitterDistance = 235;
+            this.splitContainerCustom.SplitterWidth = 1;
+            this.splitContainerCustom.TabIndex = 19;
+            // 
+            // groupBoxVarHeight
+            // 
+            this.groupBoxVarHeight.Controls.Add(this.betterTextbox6);
+            this.groupBoxVarHeight.Controls.Add(this.betterTextbox7);
+            this.groupBoxVarHeight.Controls.Add(this.button11);
+            this.groupBoxVarHeight.Controls.Add(this.button12);
+            this.groupBoxVarHeight.Controls.Add(this.button13);
+            this.groupBoxVarHeight.Controls.Add(this.button14);
+            this.groupBoxVarHeight.Location = new System.Drawing.Point(4, 203);
+            this.groupBoxVarHeight.Name = "groupBoxVarHeight";
+            this.groupBoxVarHeight.Size = new System.Drawing.Size(185, 70);
+            this.groupBoxVarHeight.TabIndex = 30;
+            this.groupBoxVarHeight.TabStop = false;
+            this.groupBoxVarHeight.Text = "Var Height";
+            // 
+            // betterTextbox6
+            // 
+            this.betterTextbox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox6.Location = new System.Drawing.Point(67, 44);
+            this.betterTextbox6.Name = "betterTextbox6";
+            this.betterTextbox6.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox6.TabIndex = 33;
+            this.betterTextbox6.Text = "50";
+            this.betterTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox7
+            // 
+            this.betterTextbox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox7.Location = new System.Drawing.Point(67, 19);
+            this.betterTextbox7.Name = "betterTextbox7";
+            this.betterTextbox7.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox7.TabIndex = 33;
+            this.betterTextbox7.Text = "2";
+            this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button11
+            // 
+            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button11.Location = new System.Drawing.Point(3, 41);
+            this.button11.Margin = new System.Windows.Forms.Padding(0);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(61, 25);
+            this.button11.TabIndex = 35;
+            this.button11.Text = "Get";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button12.Location = new System.Drawing.Point(3, 16);
+            this.button12.Margin = new System.Windows.Forms.Padding(0);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(61, 25);
+            this.button12.TabIndex = 35;
+            this.button12.Text = "Height-";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button13.Location = new System.Drawing.Point(121, 41);
+            this.button13.Margin = new System.Windows.Forms.Padding(0);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(61, 25);
+            this.button13.TabIndex = 35;
+            this.button13.Text = "Set";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button14.Location = new System.Drawing.Point(121, 16);
+            this.button14.Margin = new System.Windows.Forms.Padding(0);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(61, 25);
+            this.button14.TabIndex = 35;
+            this.button14.Text = "Height+";
+            this.button14.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxVarValueWidth
+            // 
+            this.groupBoxVarValueWidth.Controls.Add(this.betterTextbox1);
+            this.groupBoxVarValueWidth.Controls.Add(this.betterTextbox5);
+            this.groupBoxVarValueWidth.Controls.Add(this.button1);
+            this.groupBoxVarValueWidth.Controls.Add(this.button4);
+            this.groupBoxVarValueWidth.Controls.Add(this.button7);
+            this.groupBoxVarValueWidth.Controls.Add(this.button10);
+            this.groupBoxVarValueWidth.Location = new System.Drawing.Point(4, 127);
+            this.groupBoxVarValueWidth.Name = "groupBoxVarValueWidth";
+            this.groupBoxVarValueWidth.Size = new System.Drawing.Size(185, 70);
+            this.groupBoxVarValueWidth.TabIndex = 30;
+            this.groupBoxVarValueWidth.TabStop = false;
+            this.groupBoxVarValueWidth.Text = "Var Value Width";
+            // 
+            // betterTextbox1
+            // 
+            this.betterTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox1.Location = new System.Drawing.Point(67, 44);
+            this.betterTextbox1.Name = "betterTextbox1";
+            this.betterTextbox1.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox1.TabIndex = 33;
+            this.betterTextbox1.Text = "200";
+            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox5
+            // 
+            this.betterTextbox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox5.Location = new System.Drawing.Point(67, 19);
+            this.betterTextbox5.Name = "betterTextbox5";
+            this.betterTextbox5.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox5.TabIndex = 33;
+            this.betterTextbox5.Text = "5";
+            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(3, 41);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(61, 25);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Get";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Location = new System.Drawing.Point(3, 16);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(61, 25);
+            this.button4.TabIndex = 35;
+            this.button4.Text = "Width-";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button7.Location = new System.Drawing.Point(121, 41);
+            this.button7.Margin = new System.Windows.Forms.Padding(0);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(61, 25);
+            this.button7.TabIndex = 35;
+            this.button7.Text = "Set";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button10.Location = new System.Drawing.Point(121, 16);
+            this.button10.Margin = new System.Windows.Forms.Padding(0);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(61, 25);
+            this.button10.TabIndex = 35;
+            this.button10.Text = "Width+";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxVarNameWidth
+            // 
+            this.groupBoxVarNameWidth.Controls.Add(this.betterTextbox2);
+            this.groupBoxVarNameWidth.Controls.Add(this.betterTextbox3);
+            this.groupBoxVarNameWidth.Controls.Add(this.button2);
+            this.groupBoxVarNameWidth.Controls.Add(this.button3);
+            this.groupBoxVarNameWidth.Controls.Add(this.button5);
+            this.groupBoxVarNameWidth.Controls.Add(this.button6);
+            this.groupBoxVarNameWidth.Location = new System.Drawing.Point(4, 51);
+            this.groupBoxVarNameWidth.Name = "groupBoxVarNameWidth";
+            this.groupBoxVarNameWidth.Size = new System.Drawing.Size(185, 70);
+            this.groupBoxVarNameWidth.TabIndex = 30;
+            this.groupBoxVarNameWidth.TabStop = false;
+            this.groupBoxVarNameWidth.Text = "Var Name Width";
+            // 
+            // betterTextbox2
+            // 
+            this.betterTextbox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox2.Location = new System.Drawing.Point(67, 44);
+            this.betterTextbox2.Name = "betterTextbox2";
+            this.betterTextbox2.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox2.TabIndex = 33;
+            this.betterTextbox2.Text = "200";
+            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox3
+            // 
+            this.betterTextbox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox3.Location = new System.Drawing.Point(67, 19);
+            this.betterTextbox3.Name = "betterTextbox3";
+            this.betterTextbox3.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox3.TabIndex = 33;
+            this.betterTextbox3.Text = "5";
+            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(3, 41);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(61, 25);
+            this.button2.TabIndex = 35;
+            this.button2.Text = "Get";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Location = new System.Drawing.Point(3, 16);
+            this.button3.Margin = new System.Windows.Forms.Padding(0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(61, 25);
+            this.button3.TabIndex = 35;
+            this.button3.Text = "Width-";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.Location = new System.Drawing.Point(121, 41);
+            this.button5.Margin = new System.Windows.Forms.Padding(0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(61, 25);
+            this.button5.TabIndex = 35;
+            this.button5.Text = "Set";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.Location = new System.Drawing.Point(121, 16);
+            this.button6.Margin = new System.Windows.Forms.Padding(0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(61, 25);
+            this.button6.TabIndex = 35;
+            this.button6.Text = "Width+";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // buttonClearVariables
+            // 
+            this.buttonClearVariables.Location = new System.Drawing.Point(7, 7);
+            this.buttonClearVariables.Name = "buttonClearVariables";
+            this.buttonClearVariables.Size = new System.Drawing.Size(179, 38);
+            this.buttonClearVariables.TabIndex = 4;
+            this.buttonClearVariables.Text = "Clear Variables";
+            this.buttonClearVariables.UseVisualStyleBackColor = true;
+            // 
             // watchVariablePanelCustom
             // 
             this.watchVariablePanelCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -7705,7 +7980,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelCustom.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelCustom.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelCustom.Name = "watchVariablePanelCustom";
-            this.watchVariablePanelCustom.Size = new System.Drawing.Size(667, 455);
+            this.watchVariablePanelCustom.Size = new System.Drawing.Size(670, 455);
             this.watchVariablePanelCustom.TabIndex = 3;
             // 
             // tabPageDebug
@@ -7966,7 +8241,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelDebug.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelDebug.Name = "watchVariablePanelDebug";
-            this.watchVariablePanelDebug.Size = new System.Drawing.Size(521, 455);
+            this.watchVariablePanelDebug.Size = new System.Drawing.Size(524, 455);
             this.watchVariablePanelDebug.TabIndex = 26;
             // 
             // tabPageMap
@@ -8178,7 +8453,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(692, 430);
+            this.glControlMap.Size = new System.Drawing.Size(695, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -8615,7 +8890,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelArea.Location = new System.Drawing.Point(2, 4);
             this.watchVariablePanelArea.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelArea.Name = "watchVariablePanelArea";
-            this.watchVariablePanelArea.Size = new System.Drawing.Size(756, 453);
+            this.watchVariablePanelArea.Size = new System.Drawing.Size(759, 453);
             this.watchVariablePanelArea.TabIndex = 7;
             // 
             // tabPageModel
@@ -9194,7 +9469,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(207, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(190, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9226,7 +9501,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(201, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(184, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9282,7 +9557,7 @@ namespace SM64_Diagnostic
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(201, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(184, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -9340,7 +9615,7 @@ namespace SM64_Diagnostic
             this.glControlModelView.BackColor = System.Drawing.Color.Black;
             this.glControlModelView.Location = new System.Drawing.Point(3, 5);
             this.glControlModelView.Name = "glControlModelView";
-            this.glControlModelView.Size = new System.Drawing.Size(491, 451);
+            this.glControlModelView.Size = new System.Drawing.Size(494, 451);
             this.glControlModelView.TabIndex = 0;
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
@@ -9637,7 +9912,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(600, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(603, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -9736,7 +10011,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(588, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(591, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -10599,7 +10874,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelCamHack.Name = "watchVariablePanelCamHack";
-            this.watchVariablePanelCamHack.Size = new System.Drawing.Size(472, 458);
+            this.watchVariablePanelCamHack.Size = new System.Drawing.Size(475, 458);
             this.watchVariablePanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -12898,281 +13173,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // splitContainerCustom
-            // 
-            this.splitContainerCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainerCustom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerCustom.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerCustom.Location = new System.Drawing.Point(1, 0);
-            this.splitContainerCustom.Margin = new System.Windows.Forms.Padding(2);
-            this.splitContainerCustom.Name = "splitContainerCustom";
-            // 
-            // splitContainerCustom.Panel1
-            // 
-            this.splitContainerCustom.Panel1.AutoScroll = true;
-            this.splitContainerCustom.Panel1.Controls.Add(this.groupBoxVarHeight);
-            this.splitContainerCustom.Panel1.Controls.Add(this.groupBoxVarValueWidth);
-            this.splitContainerCustom.Panel1.Controls.Add(this.groupBoxVarNameWidth);
-            this.splitContainerCustom.Panel1.Controls.Add(this.buttonClearVariables);
-            this.splitContainerCustom.Panel1MinSize = 0;
-            // 
-            // splitContainerCustom.Panel2
-            // 
-            this.splitContainerCustom.Panel2.Controls.Add(this.watchVariablePanelCustom);
-            this.splitContainerCustom.Panel2MinSize = 0;
-            this.splitContainerCustom.Size = new System.Drawing.Size(909, 463);
-            this.splitContainerCustom.SplitterDistance = 235;
-            this.splitContainerCustom.SplitterWidth = 1;
-            this.splitContainerCustom.TabIndex = 19;
-            // 
-            // buttonClearVariables
-            // 
-            this.buttonClearVariables.Location = new System.Drawing.Point(7, 7);
-            this.buttonClearVariables.Name = "buttonClearVariables";
-            this.buttonClearVariables.Size = new System.Drawing.Size(179, 38);
-            this.buttonClearVariables.TabIndex = 4;
-            this.buttonClearVariables.Text = "Clear Variables";
-            this.buttonClearVariables.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxVarNameWidth
-            // 
-            this.groupBoxVarNameWidth.Controls.Add(this.betterTextbox2);
-            this.groupBoxVarNameWidth.Controls.Add(this.betterTextbox3);
-            this.groupBoxVarNameWidth.Controls.Add(this.button2);
-            this.groupBoxVarNameWidth.Controls.Add(this.button3);
-            this.groupBoxVarNameWidth.Controls.Add(this.button5);
-            this.groupBoxVarNameWidth.Controls.Add(this.button6);
-            this.groupBoxVarNameWidth.Location = new System.Drawing.Point(4, 51);
-            this.groupBoxVarNameWidth.Name = "groupBoxVarNameWidth";
-            this.groupBoxVarNameWidth.Size = new System.Drawing.Size(185, 70);
-            this.groupBoxVarNameWidth.TabIndex = 30;
-            this.groupBoxVarNameWidth.TabStop = false;
-            this.groupBoxVarNameWidth.Text = "Var Name Width";
-            // 
-            // betterTextbox2
-            // 
-            this.betterTextbox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox2.Location = new System.Drawing.Point(67, 44);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox2.TabIndex = 33;
-            this.betterTextbox2.Text = "1024";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // betterTextbox3
-            // 
-            this.betterTextbox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox3.Location = new System.Drawing.Point(67, 19);
-            this.betterTextbox3.Name = "betterTextbox3";
-            this.betterTextbox3.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox3.TabIndex = 33;
-            this.betterTextbox3.Text = "1024";
-            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(3, 41);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(61, 25);
-            this.button2.TabIndex = 35;
-            this.button2.Text = "Pitch-";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(3, 16);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(61, 25);
-            this.button3.TabIndex = 35;
-            this.button3.Text = "Yaw-";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(121, 41);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(61, 25);
-            this.button5.TabIndex = 35;
-            this.button5.Text = "Pitch+";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(121, 16);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(61, 25);
-            this.button6.TabIndex = 35;
-            this.button6.Text = "Yaw+";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxVarValueWidth
-            // 
-            this.groupBoxVarValueWidth.Controls.Add(this.betterTextbox1);
-            this.groupBoxVarValueWidth.Controls.Add(this.betterTextbox5);
-            this.groupBoxVarValueWidth.Controls.Add(this.button1);
-            this.groupBoxVarValueWidth.Controls.Add(this.button4);
-            this.groupBoxVarValueWidth.Controls.Add(this.button7);
-            this.groupBoxVarValueWidth.Controls.Add(this.button10);
-            this.groupBoxVarValueWidth.Location = new System.Drawing.Point(4, 127);
-            this.groupBoxVarValueWidth.Name = "groupBoxVarValueWidth";
-            this.groupBoxVarValueWidth.Size = new System.Drawing.Size(185, 70);
-            this.groupBoxVarValueWidth.TabIndex = 30;
-            this.groupBoxVarValueWidth.TabStop = false;
-            this.groupBoxVarValueWidth.Text = "Var Value Width";
-            // 
-            // betterTextbox1
-            // 
-            this.betterTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox1.Location = new System.Drawing.Point(67, 44);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox1.TabIndex = 33;
-            this.betterTextbox1.Text = "1024";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // betterTextbox5
-            // 
-            this.betterTextbox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox5.Location = new System.Drawing.Point(67, 19);
-            this.betterTextbox5.Name = "betterTextbox5";
-            this.betterTextbox5.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox5.TabIndex = 33;
-            this.betterTextbox5.Text = "1024";
-            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(3, 41);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 25);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Pitch-";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(3, 16);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(61, 25);
-            this.button4.TabIndex = 35;
-            this.button4.Text = "Yaw-";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Location = new System.Drawing.Point(121, 41);
-            this.button7.Margin = new System.Windows.Forms.Padding(0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(61, 25);
-            this.button7.TabIndex = 35;
-            this.button7.Text = "Pitch+";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.Location = new System.Drawing.Point(121, 16);
-            this.button10.Margin = new System.Windows.Forms.Padding(0);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(61, 25);
-            this.button10.TabIndex = 35;
-            this.button10.Text = "Yaw+";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxVarHeight
-            // 
-            this.groupBoxVarHeight.Controls.Add(this.betterTextbox6);
-            this.groupBoxVarHeight.Controls.Add(this.betterTextbox7);
-            this.groupBoxVarHeight.Controls.Add(this.button11);
-            this.groupBoxVarHeight.Controls.Add(this.button12);
-            this.groupBoxVarHeight.Controls.Add(this.button13);
-            this.groupBoxVarHeight.Controls.Add(this.button14);
-            this.groupBoxVarHeight.Location = new System.Drawing.Point(4, 203);
-            this.groupBoxVarHeight.Name = "groupBoxVarHeight";
-            this.groupBoxVarHeight.Size = new System.Drawing.Size(185, 70);
-            this.groupBoxVarHeight.TabIndex = 30;
-            this.groupBoxVarHeight.TabStop = false;
-            this.groupBoxVarHeight.Text = "Var Height";
-            // 
-            // betterTextbox6
-            // 
-            this.betterTextbox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox6.Location = new System.Drawing.Point(67, 44);
-            this.betterTextbox6.Name = "betterTextbox6";
-            this.betterTextbox6.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox6.TabIndex = 33;
-            this.betterTextbox6.Text = "1024";
-            this.betterTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // betterTextbox7
-            // 
-            this.betterTextbox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox7.Location = new System.Drawing.Point(67, 19);
-            this.betterTextbox7.Name = "betterTextbox7";
-            this.betterTextbox7.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox7.TabIndex = 33;
-            this.betterTextbox7.Text = "1024";
-            this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button11
-            // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button11.Location = new System.Drawing.Point(3, 41);
-            this.button11.Margin = new System.Windows.Forms.Padding(0);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(61, 25);
-            this.button11.TabIndex = 35;
-            this.button11.Text = "Pitch-";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button12.Location = new System.Drawing.Point(3, 16);
-            this.button12.Margin = new System.Windows.Forms.Padding(0);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(61, 25);
-            this.button12.TabIndex = 35;
-            this.button12.Text = "Yaw-";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // button13
-            // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button13.Location = new System.Drawing.Point(121, 41);
-            this.button13.Margin = new System.Windows.Forms.Padding(0);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(61, 25);
-            this.button13.TabIndex = 35;
-            this.button13.Text = "Pitch+";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button14.Location = new System.Drawing.Point(121, 16);
-            this.button14.Margin = new System.Windows.Forms.Padding(0);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(61, 25);
-            this.button14.TabIndex = 35;
-            this.button14.Text = "Yaw+";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -13452,6 +13452,16 @@ namespace SM64_Diagnostic
             this.panelMiscBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
             this.tabPageCustom.ResumeLayout(false);
+            this.splitContainerCustom.Panel1.ResumeLayout(false);
+            this.splitContainerCustom.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustom)).EndInit();
+            this.splitContainerCustom.ResumeLayout(false);
+            this.groupBoxVarHeight.ResumeLayout(false);
+            this.groupBoxVarHeight.PerformLayout();
+            this.groupBoxVarValueWidth.ResumeLayout(false);
+            this.groupBoxVarValueWidth.PerformLayout();
+            this.groupBoxVarNameWidth.ResumeLayout(false);
+            this.groupBoxVarNameWidth.PerformLayout();
             this.tabPageDebug.ResumeLayout(false);
             this.splitContainerDebug.Panel1.ResumeLayout(false);
             this.splitContainerDebug.Panel2.ResumeLayout(false);
@@ -13575,16 +13585,6 @@ namespace SM64_Diagnostic
             this.splitContainerDecompiler.ResumeLayout(false);
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.splitContainerCustom.Panel1.ResumeLayout(false);
-            this.splitContainerCustom.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustom)).EndInit();
-            this.splitContainerCustom.ResumeLayout(false);
-            this.groupBoxVarNameWidth.ResumeLayout(false);
-            this.groupBoxVarNameWidth.PerformLayout();
-            this.groupBoxVarValueWidth.ResumeLayout(false);
-            this.groupBoxVarValueWidth.PerformLayout();
-            this.groupBoxVarHeight.ResumeLayout(false);
-            this.groupBoxVarHeight.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
