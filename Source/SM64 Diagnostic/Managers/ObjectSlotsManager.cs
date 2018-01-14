@@ -129,7 +129,7 @@ namespace SM64_Diagnostic.Managers
 
         public TabType ActiveTab;
 
-        private enum ClickType { ObjectClick, MapClick, ModelClick, CustomClick, CamHackClick, MarkClick };
+        private enum ClickType { ObjectClick, MapClick, ModelClick, CamHackClick, MarkClick };
 
         private void OnSlotClick(object sender, EventArgs e)
         {
@@ -160,7 +160,7 @@ namespace SM64_Diagnostic.Managers
             ClickType click = GetClickType(isAltKeyHeld);
             bool shouldToggle = ShouldToggle(isCtrlKeyHeld, isAltKeyHeld);
             bool shouldExtendRange = isShiftKeyHeld;
-            DoSlotClickUsingClickType(selectedSlot, click, shouldToggle, shouldExtendRange);
+            DoSlotClickUsingSpecifications(selectedSlot, click, shouldToggle, shouldExtendRange);
         }
 
         private ClickType GetClickType(bool isAltKeyHeld)
@@ -186,14 +186,8 @@ namespace SM64_Diagnostic.Managers
                         click = ClickType.ModelClick;
                         break;
 
-                    case TabType.Custom:
-                        click = ClickType.CustomClick;
-                        break;
-
                     case TabType.Object:
-                        click = ClickType.ObjectClick;
-                        break;
-
+                    case TabType.Custom:
                     case TabType.Other:
                         click = ClickType.ObjectClick;
                         break;
@@ -217,7 +211,7 @@ namespace SM64_Diagnostic.Managers
             return ActiveTab == TabType.Object || ActiveTab == TabType.Other;
         }
 
-        private void DoSlotClickUsingClickType(
+        private void DoSlotClickUsingSpecifications(
             ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, bool? switchToObjTabNullable = null)
         {
             if (click == ClickType.ModelClick)
@@ -240,7 +234,6 @@ namespace SM64_Diagnostic.Managers
                 switch (click)
                 {
                     case ClickType.ObjectClick:
-                    case ClickType.CustomClick:
                         selection = SelectedSlotsAddresses;
                         break;
                     case ClickType.MapClick:
@@ -286,7 +279,7 @@ namespace SM64_Diagnostic.Managers
                     if (selection.Contains(selectedSlot.Address))
                     {
                         selection.Remove(selectedSlot.Address);
-                        if (click == ClickType.ObjectClick || click == ClickType.CustomClick)
+                        if (click == ClickType.ObjectClick)
                         {
                             _lastSelectedBehavior = null;
                         }
@@ -297,7 +290,7 @@ namespace SM64_Diagnostic.Managers
                     }
                 }
 
-                if (click == ClickType.ObjectClick || click == ClickType.CustomClick)
+                if (click == ClickType.ObjectClick)
                 {
                     ManagerContext.Current.ObjectManager.CurrentAddresses = selection;
                 }
