@@ -44,7 +44,12 @@ namespace SM64_Diagnostic.Managers
         {
             _variablePanel.AddVariables(watchVarControls);
         }
-        
+
+        public virtual void ClearVariables()
+        {
+            _variablePanel.ClearVariables();
+        }
+
         public virtual void Update(bool updateView = false)
         {
             //if (!updateView) return;

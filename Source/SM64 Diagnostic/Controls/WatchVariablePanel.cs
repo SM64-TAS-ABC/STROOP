@@ -160,6 +160,13 @@ namespace SM64_Diagnostic.Controls
             RemoveVariables(watchVarControls);
         }
 
+        public void ClearVariables()
+        {
+            List<WatchVariableControl> watchVarControlListCopy =
+                new List<WatchVariableControl>(_watchVarControlsList);
+            RemoveVariables(watchVarControlListCopy);
+        }
+
         public void UpdateControls()
         {
             _updateItemsFunction?.Invoke();

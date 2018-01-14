@@ -26,6 +26,9 @@ namespace SM64_Diagnostic.Managers
 
             SplitContainer splitContainerCustom = customControl.Controls["splitContainerCustom"] as SplitContainer;
 
+            Button buttonClearVariables = splitContainerCustom.Panel1.Controls["buttonClearVariables"] as Button;
+            buttonClearVariables.Click += (sender, e) => ClearVariables();
+
             GroupBox groupBoxVarNameWidth = splitContainerCustom.Panel1.Controls["groupBoxVarNameWidth"] as GroupBox;
             InitializeAddSubtractGetSetFuncionality(
                 groupBoxVarNameWidth.Controls["buttonVarNameWidthSubtract"] as Button,
