@@ -35,9 +35,10 @@
             this.labelN64Add = new System.Windows.Forms.Label();
             this.textBoxN64AddValue = new System.Windows.Forms.TextBox();
             this.labelVarType = new System.Windows.Forms.Label();
-            this.labelVarTypeValue = new System.Windows.Forms.Label();
             this.labelVarName = new System.Windows.Forms.Label();
             this.textBoxEmuAddValue = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxVarTypeValue = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,8 @@
             this.tableLayoutPanelMain.Controls.Add(this.buttonOk, 1, 5);
             this.tableLayoutPanelMain.Controls.Add(this.labelN64Add, 0, 3);
             this.tableLayoutPanelMain.Controls.Add(this.textBoxN64AddValue, 1, 3);
-            this.tableLayoutPanelMain.Controls.Add(this.labelVarTypeValue, 1, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.textBox1, 1, 2);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxVarTypeValue, 1, 1);
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
             this.tableLayoutPanelMain.RowCount = 6;
@@ -121,15 +123,6 @@
             this.labelVarType.TabIndex = 5;
             this.labelVarType.Text = "Type:";
             // 
-            // labelVarTypeValue
-            // 
-            this.labelVarTypeValue.AutoSize = true;
-            this.labelVarTypeValue.Location = new System.Drawing.Point(103, 39);
-            this.labelVarTypeValue.Name = "labelVarTypeValue";
-            this.labelVarTypeValue.Size = new System.Drawing.Size(72, 13);
-            this.labelVarTypeValue.TabIndex = 7;
-            this.labelVarTypeValue.Text = "Variable Type";
-            // 
             // labelVarName
             // 
             this.labelVarName.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -149,6 +142,24 @@
             this.textBoxEmuAddValue.Size = new System.Drawing.Size(159, 20);
             this.textBoxEmuAddValue.TabIndex = 9;
             this.textBoxEmuAddValue.Text = "Emulator Address";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(103, 81);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(159, 20);
+            this.textBox1.TabIndex = 10;
+            this.textBox1.Text = "N64 Address";
+            // 
+            // textBoxVarTypeValue
+            // 
+            this.textBoxVarTypeValue.Location = new System.Drawing.Point(103, 42);
+            this.textBoxVarTypeValue.Name = "textBoxVarTypeValue";
+            this.textBoxVarTypeValue.ReadOnly = true;
+            this.textBoxVarTypeValue.Size = new System.Drawing.Size(159, 20);
+            this.textBoxVarTypeValue.TabIndex = 11;
+            this.textBoxVarTypeValue.Text = "N64 Address";
             // 
             // VariableViewerForm
             // 
@@ -179,8 +190,9 @@
         private System.Windows.Forms.Label labelN64Add;
         private System.Windows.Forms.TextBox textBoxN64AddValue;
         private System.Windows.Forms.Label labelVarType;
-        private System.Windows.Forms.Label labelVarTypeValue;
         private System.Windows.Forms.Label labelVarName;
         private System.Windows.Forms.TextBox textBoxEmuAddValue;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxVarTypeValue;
     }
 }
