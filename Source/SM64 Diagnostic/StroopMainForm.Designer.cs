@@ -33,7 +33,7 @@ namespace SM64_Diagnostic
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -530,26 +530,26 @@ namespace SM64_Diagnostic
             this.tabPageCustom = new System.Windows.Forms.TabPage();
             this.splitContainerCustom = new System.Windows.Forms.SplitContainer();
             this.groupBoxVarHeight = new System.Windows.Forms.GroupBox();
-            this.betterTextbox6 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox7 = new SM64_Diagnostic.BetterTextbox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.betterTextboxVarHeightGetSet = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextboxVarHeightAddSubtract = new SM64_Diagnostic.BetterTextbox();
+            this.buttonVarHeightGet = new System.Windows.Forms.Button();
+            this.buttonVarHeightSubtract = new System.Windows.Forms.Button();
+            this.buttonVarHeightSet = new System.Windows.Forms.Button();
+            this.buttonVarHeightAdd = new System.Windows.Forms.Button();
             this.groupBoxVarValueWidth = new System.Windows.Forms.GroupBox();
-            this.betterTextbox1 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox5 = new SM64_Diagnostic.BetterTextbox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.betterTextboxVarValueWidthGetSet = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextboxVarValueWidthAddSubtract = new SM64_Diagnostic.BetterTextbox();
+            this.buttonVarValueWidthGet = new System.Windows.Forms.Button();
+            this.buttonVarValueWidthSubtract = new System.Windows.Forms.Button();
+            this.buttonVarValueWidthSet = new System.Windows.Forms.Button();
+            this.buttonVarValueWidthAdd = new System.Windows.Forms.Button();
             this.groupBoxVarNameWidth = new System.Windows.Forms.GroupBox();
-            this.betterTextbox2 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox3 = new SM64_Diagnostic.BetterTextbox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.betterTextboxVarNameWidthGetSet = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextboxVarNameWidthAddSubtract = new SM64_Diagnostic.BetterTextbox();
+            this.buttonVarNameWidthGet = new System.Windows.Forms.Button();
+            this.buttonVarNameWidthSubtract = new System.Windows.Forms.Button();
+            this.buttonVarNameWidthSet = new System.Windows.Forms.Button();
+            this.buttonVarNameWidthAdd = new System.Windows.Forms.Button();
             this.buttonClearVariables = new System.Windows.Forms.Button();
             this.watchVariablePanelCustom = new SM64_Diagnostic.Controls.WatchVariablePanel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
@@ -7726,12 +7726,12 @@ namespace SM64_Diagnostic
             // 
             // groupBoxVarHeight
             // 
-            this.groupBoxVarHeight.Controls.Add(this.betterTextbox6);
-            this.groupBoxVarHeight.Controls.Add(this.betterTextbox7);
-            this.groupBoxVarHeight.Controls.Add(this.button11);
-            this.groupBoxVarHeight.Controls.Add(this.button12);
-            this.groupBoxVarHeight.Controls.Add(this.button13);
-            this.groupBoxVarHeight.Controls.Add(this.button14);
+            this.groupBoxVarHeight.Controls.Add(this.betterTextboxVarHeightGetSet);
+            this.groupBoxVarHeight.Controls.Add(this.betterTextboxVarHeightAddSubtract);
+            this.groupBoxVarHeight.Controls.Add(this.buttonVarHeightGet);
+            this.groupBoxVarHeight.Controls.Add(this.buttonVarHeightSubtract);
+            this.groupBoxVarHeight.Controls.Add(this.buttonVarHeightSet);
+            this.groupBoxVarHeight.Controls.Add(this.buttonVarHeightAdd);
             this.groupBoxVarHeight.Location = new System.Drawing.Point(4, 203);
             this.groupBoxVarHeight.Name = "groupBoxVarHeight";
             this.groupBoxVarHeight.Size = new System.Drawing.Size(185, 70);
@@ -7739,78 +7739,78 @@ namespace SM64_Diagnostic
             this.groupBoxVarHeight.TabStop = false;
             this.groupBoxVarHeight.Text = "Var Height";
             // 
-            // betterTextbox6
+            // betterTextboxVarHeightGetSet
             // 
-            this.betterTextbox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox6.Location = new System.Drawing.Point(67, 44);
-            this.betterTextbox6.Name = "betterTextbox6";
-            this.betterTextbox6.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox6.TabIndex = 33;
-            this.betterTextbox6.Text = "50";
-            this.betterTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextboxVarHeightGetSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextboxVarHeightGetSet.Location = new System.Drawing.Point(67, 44);
+            this.betterTextboxVarHeightGetSet.Name = "betterTextboxVarHeightGetSet";
+            this.betterTextboxVarHeightGetSet.Size = new System.Drawing.Size(51, 20);
+            this.betterTextboxVarHeightGetSet.TabIndex = 33;
+            this.betterTextboxVarHeightGetSet.Text = "50";
+            this.betterTextboxVarHeightGetSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox7
+            // betterTextboxVarHeightAddSubtract
             // 
-            this.betterTextbox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox7.Location = new System.Drawing.Point(67, 19);
-            this.betterTextbox7.Name = "betterTextbox7";
-            this.betterTextbox7.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox7.TabIndex = 33;
-            this.betterTextbox7.Text = "2";
-            this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextboxVarHeightAddSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextboxVarHeightAddSubtract.Location = new System.Drawing.Point(67, 19);
+            this.betterTextboxVarHeightAddSubtract.Name = "betterTextboxVarHeightAddSubtract";
+            this.betterTextboxVarHeightAddSubtract.Size = new System.Drawing.Size(51, 20);
+            this.betterTextboxVarHeightAddSubtract.TabIndex = 33;
+            this.betterTextboxVarHeightAddSubtract.Text = "2";
+            this.betterTextboxVarHeightAddSubtract.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button11
+            // buttonVarHeightGet
             // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button11.Location = new System.Drawing.Point(3, 41);
-            this.button11.Margin = new System.Windows.Forms.Padding(0);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(61, 25);
-            this.button11.TabIndex = 35;
-            this.button11.Text = "Get";
-            this.button11.UseVisualStyleBackColor = true;
+            this.buttonVarHeightGet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarHeightGet.Location = new System.Drawing.Point(3, 41);
+            this.buttonVarHeightGet.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarHeightGet.Name = "buttonVarHeightGet";
+            this.buttonVarHeightGet.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarHeightGet.TabIndex = 35;
+            this.buttonVarHeightGet.Text = "Get";
+            this.buttonVarHeightGet.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // buttonVarHeightSubtract
             // 
-            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button12.Location = new System.Drawing.Point(3, 16);
-            this.button12.Margin = new System.Windows.Forms.Padding(0);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(61, 25);
-            this.button12.TabIndex = 35;
-            this.button12.Text = "Height-";
-            this.button12.UseVisualStyleBackColor = true;
+            this.buttonVarHeightSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarHeightSubtract.Location = new System.Drawing.Point(3, 16);
+            this.buttonVarHeightSubtract.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarHeightSubtract.Name = "buttonVarHeightSubtract";
+            this.buttonVarHeightSubtract.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarHeightSubtract.TabIndex = 35;
+            this.buttonVarHeightSubtract.Text = "Height-";
+            this.buttonVarHeightSubtract.UseVisualStyleBackColor = true;
             // 
-            // button13
+            // buttonVarHeightSet
             // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button13.Location = new System.Drawing.Point(121, 41);
-            this.button13.Margin = new System.Windows.Forms.Padding(0);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(61, 25);
-            this.button13.TabIndex = 35;
-            this.button13.Text = "Set";
-            this.button13.UseVisualStyleBackColor = true;
+            this.buttonVarHeightSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarHeightSet.Location = new System.Drawing.Point(121, 41);
+            this.buttonVarHeightSet.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarHeightSet.Name = "buttonVarHeightSet";
+            this.buttonVarHeightSet.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarHeightSet.TabIndex = 35;
+            this.buttonVarHeightSet.Text = "Set";
+            this.buttonVarHeightSet.UseVisualStyleBackColor = true;
             // 
-            // button14
+            // buttonVarHeightAdd
             // 
-            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button14.Location = new System.Drawing.Point(121, 16);
-            this.button14.Margin = new System.Windows.Forms.Padding(0);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(61, 25);
-            this.button14.TabIndex = 35;
-            this.button14.Text = "Height+";
-            this.button14.UseVisualStyleBackColor = true;
+            this.buttonVarHeightAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarHeightAdd.Location = new System.Drawing.Point(121, 16);
+            this.buttonVarHeightAdd.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarHeightAdd.Name = "buttonVarHeightAdd";
+            this.buttonVarHeightAdd.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarHeightAdd.TabIndex = 35;
+            this.buttonVarHeightAdd.Text = "Height+";
+            this.buttonVarHeightAdd.UseVisualStyleBackColor = true;
             // 
             // groupBoxVarValueWidth
             // 
-            this.groupBoxVarValueWidth.Controls.Add(this.betterTextbox1);
-            this.groupBoxVarValueWidth.Controls.Add(this.betterTextbox5);
-            this.groupBoxVarValueWidth.Controls.Add(this.button1);
-            this.groupBoxVarValueWidth.Controls.Add(this.button4);
-            this.groupBoxVarValueWidth.Controls.Add(this.button7);
-            this.groupBoxVarValueWidth.Controls.Add(this.button10);
+            this.groupBoxVarValueWidth.Controls.Add(this.betterTextboxVarValueWidthGetSet);
+            this.groupBoxVarValueWidth.Controls.Add(this.betterTextboxVarValueWidthAddSubtract);
+            this.groupBoxVarValueWidth.Controls.Add(this.buttonVarValueWidthGet);
+            this.groupBoxVarValueWidth.Controls.Add(this.buttonVarValueWidthSubtract);
+            this.groupBoxVarValueWidth.Controls.Add(this.buttonVarValueWidthSet);
+            this.groupBoxVarValueWidth.Controls.Add(this.buttonVarValueWidthAdd);
             this.groupBoxVarValueWidth.Location = new System.Drawing.Point(4, 127);
             this.groupBoxVarValueWidth.Name = "groupBoxVarValueWidth";
             this.groupBoxVarValueWidth.Size = new System.Drawing.Size(185, 70);
@@ -7818,78 +7818,78 @@ namespace SM64_Diagnostic
             this.groupBoxVarValueWidth.TabStop = false;
             this.groupBoxVarValueWidth.Text = "Var Value Width";
             // 
-            // betterTextbox1
+            // betterTextboxVarValueWidthGetSet
             // 
-            this.betterTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox1.Location = new System.Drawing.Point(67, 44);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox1.TabIndex = 33;
-            this.betterTextbox1.Text = "200";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextboxVarValueWidthGetSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextboxVarValueWidthGetSet.Location = new System.Drawing.Point(67, 44);
+            this.betterTextboxVarValueWidthGetSet.Name = "betterTextboxVarValueWidthGetSet";
+            this.betterTextboxVarValueWidthGetSet.Size = new System.Drawing.Size(51, 20);
+            this.betterTextboxVarValueWidthGetSet.TabIndex = 33;
+            this.betterTextboxVarValueWidthGetSet.Text = "200";
+            this.betterTextboxVarValueWidthGetSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox5
+            // betterTextboxVarValueWidthAddSubtract
             // 
-            this.betterTextbox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox5.Location = new System.Drawing.Point(67, 19);
-            this.betterTextbox5.Name = "betterTextbox5";
-            this.betterTextbox5.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox5.TabIndex = 33;
-            this.betterTextbox5.Text = "5";
-            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextboxVarValueWidthAddSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextboxVarValueWidthAddSubtract.Location = new System.Drawing.Point(67, 19);
+            this.betterTextboxVarValueWidthAddSubtract.Name = "betterTextboxVarValueWidthAddSubtract";
+            this.betterTextboxVarValueWidthAddSubtract.Size = new System.Drawing.Size(51, 20);
+            this.betterTextboxVarValueWidthAddSubtract.TabIndex = 33;
+            this.betterTextboxVarValueWidthAddSubtract.Text = "5";
+            this.betterTextboxVarValueWidthAddSubtract.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button1
+            // buttonVarValueWidthGet
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(3, 41);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 25);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Get";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonVarValueWidthGet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarValueWidthGet.Location = new System.Drawing.Point(3, 41);
+            this.buttonVarValueWidthGet.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarValueWidthGet.Name = "buttonVarValueWidthGet";
+            this.buttonVarValueWidthGet.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarValueWidthGet.TabIndex = 35;
+            this.buttonVarValueWidthGet.Text = "Get";
+            this.buttonVarValueWidthGet.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonVarValueWidthSubtract
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(3, 16);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(61, 25);
-            this.button4.TabIndex = 35;
-            this.button4.Text = "Width-";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonVarValueWidthSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarValueWidthSubtract.Location = new System.Drawing.Point(3, 16);
+            this.buttonVarValueWidthSubtract.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarValueWidthSubtract.Name = "buttonVarValueWidthSubtract";
+            this.buttonVarValueWidthSubtract.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarValueWidthSubtract.TabIndex = 35;
+            this.buttonVarValueWidthSubtract.Text = "Width-";
+            this.buttonVarValueWidthSubtract.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // buttonVarValueWidthSet
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Location = new System.Drawing.Point(121, 41);
-            this.button7.Margin = new System.Windows.Forms.Padding(0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(61, 25);
-            this.button7.TabIndex = 35;
-            this.button7.Text = "Set";
-            this.button7.UseVisualStyleBackColor = true;
+            this.buttonVarValueWidthSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarValueWidthSet.Location = new System.Drawing.Point(121, 41);
+            this.buttonVarValueWidthSet.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarValueWidthSet.Name = "buttonVarValueWidthSet";
+            this.buttonVarValueWidthSet.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarValueWidthSet.TabIndex = 35;
+            this.buttonVarValueWidthSet.Text = "Set";
+            this.buttonVarValueWidthSet.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // buttonVarValueWidthAdd
             // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.Location = new System.Drawing.Point(121, 16);
-            this.button10.Margin = new System.Windows.Forms.Padding(0);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(61, 25);
-            this.button10.TabIndex = 35;
-            this.button10.Text = "Width+";
-            this.button10.UseVisualStyleBackColor = true;
+            this.buttonVarValueWidthAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarValueWidthAdd.Location = new System.Drawing.Point(121, 16);
+            this.buttonVarValueWidthAdd.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarValueWidthAdd.Name = "buttonVarValueWidthAdd";
+            this.buttonVarValueWidthAdd.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarValueWidthAdd.TabIndex = 35;
+            this.buttonVarValueWidthAdd.Text = "Width+";
+            this.buttonVarValueWidthAdd.UseVisualStyleBackColor = true;
             // 
             // groupBoxVarNameWidth
             // 
-            this.groupBoxVarNameWidth.Controls.Add(this.betterTextbox2);
-            this.groupBoxVarNameWidth.Controls.Add(this.betterTextbox3);
-            this.groupBoxVarNameWidth.Controls.Add(this.button2);
-            this.groupBoxVarNameWidth.Controls.Add(this.button3);
-            this.groupBoxVarNameWidth.Controls.Add(this.button5);
-            this.groupBoxVarNameWidth.Controls.Add(this.button6);
+            this.groupBoxVarNameWidth.Controls.Add(this.betterTextboxVarNameWidthGetSet);
+            this.groupBoxVarNameWidth.Controls.Add(this.betterTextboxVarNameWidthAddSubtract);
+            this.groupBoxVarNameWidth.Controls.Add(this.buttonVarNameWidthGet);
+            this.groupBoxVarNameWidth.Controls.Add(this.buttonVarNameWidthSubtract);
+            this.groupBoxVarNameWidth.Controls.Add(this.buttonVarNameWidthSet);
+            this.groupBoxVarNameWidth.Controls.Add(this.buttonVarNameWidthAdd);
             this.groupBoxVarNameWidth.Location = new System.Drawing.Point(4, 51);
             this.groupBoxVarNameWidth.Name = "groupBoxVarNameWidth";
             this.groupBoxVarNameWidth.Size = new System.Drawing.Size(185, 70);
@@ -7897,69 +7897,69 @@ namespace SM64_Diagnostic
             this.groupBoxVarNameWidth.TabStop = false;
             this.groupBoxVarNameWidth.Text = "Var Name Width";
             // 
-            // betterTextbox2
+            // betterTextboxVarNameWidthGetSet
             // 
-            this.betterTextbox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox2.Location = new System.Drawing.Point(67, 44);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox2.TabIndex = 33;
-            this.betterTextbox2.Text = "200";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextboxVarNameWidthGetSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextboxVarNameWidthGetSet.Location = new System.Drawing.Point(67, 44);
+            this.betterTextboxVarNameWidthGetSet.Name = "betterTextboxVarNameWidthGetSet";
+            this.betterTextboxVarNameWidthGetSet.Size = new System.Drawing.Size(51, 20);
+            this.betterTextboxVarNameWidthGetSet.TabIndex = 33;
+            this.betterTextboxVarNameWidthGetSet.Text = "200";
+            this.betterTextboxVarNameWidthGetSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox3
+            // betterTextboxVarNameWidthAddSubtract
             // 
-            this.betterTextbox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox3.Location = new System.Drawing.Point(67, 19);
-            this.betterTextbox3.Name = "betterTextbox3";
-            this.betterTextbox3.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox3.TabIndex = 33;
-            this.betterTextbox3.Text = "5";
-            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextboxVarNameWidthAddSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextboxVarNameWidthAddSubtract.Location = new System.Drawing.Point(67, 19);
+            this.betterTextboxVarNameWidthAddSubtract.Name = "betterTextboxVarNameWidthAddSubtract";
+            this.betterTextboxVarNameWidthAddSubtract.Size = new System.Drawing.Size(51, 20);
+            this.betterTextboxVarNameWidthAddSubtract.TabIndex = 33;
+            this.betterTextboxVarNameWidthAddSubtract.Text = "5";
+            this.betterTextboxVarNameWidthAddSubtract.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button2
+            // buttonVarNameWidthGet
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(3, 41);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(61, 25);
-            this.button2.TabIndex = 35;
-            this.button2.Text = "Get";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonVarNameWidthGet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarNameWidthGet.Location = new System.Drawing.Point(3, 41);
+            this.buttonVarNameWidthGet.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarNameWidthGet.Name = "buttonVarNameWidthGet";
+            this.buttonVarNameWidthGet.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarNameWidthGet.TabIndex = 35;
+            this.buttonVarNameWidthGet.Text = "Get";
+            this.buttonVarNameWidthGet.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonVarNameWidthSubtract
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(3, 16);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(61, 25);
-            this.button3.TabIndex = 35;
-            this.button3.Text = "Width-";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonVarNameWidthSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarNameWidthSubtract.Location = new System.Drawing.Point(3, 16);
+            this.buttonVarNameWidthSubtract.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarNameWidthSubtract.Name = "buttonVarNameWidthSubtract";
+            this.buttonVarNameWidthSubtract.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarNameWidthSubtract.TabIndex = 35;
+            this.buttonVarNameWidthSubtract.Text = "Width-";
+            this.buttonVarNameWidthSubtract.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // buttonVarNameWidthSet
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(121, 41);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(61, 25);
-            this.button5.TabIndex = 35;
-            this.button5.Text = "Set";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonVarNameWidthSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarNameWidthSet.Location = new System.Drawing.Point(121, 41);
+            this.buttonVarNameWidthSet.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarNameWidthSet.Name = "buttonVarNameWidthSet";
+            this.buttonVarNameWidthSet.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarNameWidthSet.TabIndex = 35;
+            this.buttonVarNameWidthSet.Text = "Set";
+            this.buttonVarNameWidthSet.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // buttonVarNameWidthAdd
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(121, 16);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(61, 25);
-            this.button6.TabIndex = 35;
-            this.button6.Text = "Width+";
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonVarNameWidthAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarNameWidthAdd.Location = new System.Drawing.Point(121, 16);
+            this.buttonVarNameWidthAdd.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarNameWidthAdd.Name = "buttonVarNameWidthAdd";
+            this.buttonVarNameWidthAdd.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarNameWidthAdd.TabIndex = 35;
+            this.buttonVarNameWidthAdd.Text = "Width+";
+            this.buttonVarNameWidthAdd.UseVisualStyleBackColor = true;
             // 
             // buttonClearVariables
             // 
@@ -9688,8 +9688,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -14541,26 +14541,26 @@ namespace SM64_Diagnostic
         private ListView listViewDecompiler;
         private SplitContainer splitContainerCustom;
         private GroupBox groupBoxVarHeight;
-        private BetterTextbox betterTextbox6;
-        private BetterTextbox betterTextbox7;
-        private Button button11;
-        private Button button12;
-        private Button button13;
-        private Button button14;
+        private BetterTextbox betterTextboxVarHeightGetSet;
+        private BetterTextbox betterTextboxVarHeightAddSubtract;
+        private Button buttonVarHeightGet;
+        private Button buttonVarHeightSubtract;
+        private Button buttonVarHeightSet;
+        private Button buttonVarHeightAdd;
         private GroupBox groupBoxVarValueWidth;
-        private BetterTextbox betterTextbox1;
-        private BetterTextbox betterTextbox5;
-        private Button button1;
-        private Button button4;
-        private Button button7;
-        private Button button10;
+        private BetterTextbox betterTextboxVarValueWidthGetSet;
+        private BetterTextbox betterTextboxVarValueWidthAddSubtract;
+        private Button buttonVarValueWidthGet;
+        private Button buttonVarValueWidthSubtract;
+        private Button buttonVarValueWidthSet;
+        private Button buttonVarValueWidthAdd;
         private GroupBox groupBoxVarNameWidth;
-        private BetterTextbox betterTextbox2;
-        private BetterTextbox betterTextbox3;
-        private Button button2;
-        private Button button3;
-        private Button button5;
-        private Button button6;
+        private BetterTextbox betterTextboxVarNameWidthGetSet;
+        private BetterTextbox betterTextboxVarNameWidthAddSubtract;
+        private Button buttonVarNameWidthGet;
+        private Button buttonVarNameWidthSubtract;
+        private Button buttonVarNameWidthSet;
+        private Button buttonVarNameWidthAdd;
         private Button buttonClearVariables;
     }
 }
