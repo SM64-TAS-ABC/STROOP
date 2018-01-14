@@ -49,8 +49,8 @@
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
             this.tableLayoutPanelMain.RowCount = 3;
-            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.07692F));
-            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.92308F));
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMain.Size = new System.Drawing.Size(317, 182);
             this.tableLayoutPanelMain.TabIndex = 0;
@@ -71,7 +71,7 @@
             this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(119, 11);
+            this.labelTitle.Location = new System.Drawing.Point(119, 8);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(79, 13);
             this.labelTitle.TabIndex = 8;
@@ -81,12 +81,12 @@
             // 
             this.textBoxTriangleInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxTriangleInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTriangleInfo.Location = new System.Drawing.Point(3, 38);
+            this.textBoxTriangleInfo.Location = new System.Drawing.Point(3, 33);
             this.textBoxTriangleInfo.Multiline = true;
             this.textBoxTriangleInfo.Name = "textBoxTriangleInfo";
             this.textBoxTriangleInfo.ReadOnly = true;
             this.textBoxTriangleInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxTriangleInfo.Size = new System.Drawing.Size(311, 110);
+            this.textBoxTriangleInfo.Size = new System.Drawing.Size(311, 116);
             this.textBoxTriangleInfo.TabIndex = 3;
             this.textBoxTriangleInfo.Text = "\r\n";
             // 
@@ -98,9 +98,8 @@
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(357, 244);
+            this.MaximumSize = new System.Drawing.Size(10000, 10000);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(357, 244);
             this.Name = "TriangleInfoForm";
             this.ShowIcon = false;
             this.Text = "Triangle Info";
