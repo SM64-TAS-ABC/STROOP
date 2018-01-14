@@ -191,8 +191,8 @@ namespace SM64_Diagnostic.Controls
                     _watchVarControl.VarName,
                     _watchVar.GetTypeDescription(),
                     _watchVar.GetBaseOffsetDescription(),
-                    _watchVar.GetRamAddressString(),
-                    _watchVar.GetProcessAddressString());
+                    _watchVar.GetRamAddressString(true, _watchVarControl.FixedAddressList),
+                    _watchVar.GetProcessAddressString(_watchVarControl.FixedAddressList));
             varInfo.Show();
         }
 

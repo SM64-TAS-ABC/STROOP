@@ -167,19 +167,20 @@ namespace SM64_Diagnostic.Controls
             return BaseAddressType + " + " + offsetString;
         }
 
-        public string GetRamAddressString(bool addressArea = true)
+        public string GetRamAddressString(bool addressArea = true, List<uint> addresses = null)
         {
+            List<uint> addressList = addresses ?? AddressList;
             if (IsSpecial) return "(none)";
-            if (AddressList.Count == 0) return "(none)";
-            return String.Format("0x{0:X8}", GetRamAddress(addressArea));
+            if (addressList.Count == 0) return "(none)";
+            return String.Format("0x{0:X8}", GetRamAddress(addressArea, addresses));
         }
 
-        public uint GetRamAddress(bool addressArea = true)
+        public uint GetRamAddress(bool addressArea = true, List<uint> addresses = null)
         {
-            List<uint> addresses = AddressList;
-            if (addresses.Count == 0) return 0;
+            List<uint> addressList = addresses ?? AddressList;
+            if (addressList.Count == 0) return 0;
 
-            UIntPtr addressPtr = new UIntPtr(addresses[0]);
+            UIntPtr addressPtr = new UIntPtr(addressList[0]);
             uint address;
 
             if (UseAbsoluteAddressing)
@@ -192,16 +193,17 @@ namespace SM64_Diagnostic.Controls
             return addressArea ? address | 0x80000000 : address & 0x0FFFFFFF;
         }
 
-        public string GetProcessAddressString()
+        public string GetProcessAddressString(List<uint> addresses = null)
         {
+            List<uint> addressList = addresses ?? AddressList;
             if (IsSpecial) return "(none)";
-            if (AddressList.Count == 0) return "(none)";
-            return String.Format("0x{0:X8}", GetProcessAddress().ToUInt64());
+            if (addressList.Count == 0) return "(none)";
+            return String.Format("0x{0:X8}", GetProcessAddress(addresses).ToUInt64());
         }
 
-        public UIntPtr GetProcessAddress()
+        public UIntPtr GetProcessAddress(List<uint> addresses = null)
         {
-            uint address = GetRamAddress(false);
+            uint address = GetRamAddress(false, addresses);
             return Config.Stream.ConvertAddressEndianess(
                 new UIntPtr(address + (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()), ByteCount.Value);
         }
