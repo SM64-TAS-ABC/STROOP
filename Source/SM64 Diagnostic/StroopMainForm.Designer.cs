@@ -983,6 +983,28 @@ namespace SM64_Diagnostic
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.splitContainerCustom = new System.Windows.Forms.SplitContainer();
+            this.buttonClearVariables = new System.Windows.Forms.Button();
+            this.groupBoxVarNameWidth = new System.Windows.Forms.GroupBox();
+            this.betterTextbox2 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox3 = new SM64_Diagnostic.BetterTextbox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.groupBoxVarValueWidth = new System.Windows.Forms.GroupBox();
+            this.betterTextbox1 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox5 = new SM64_Diagnostic.BetterTextbox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.groupBoxVarHeight = new System.Windows.Forms.GroupBox();
+            this.betterTextbox6 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox7 = new SM64_Diagnostic.BetterTextbox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1296,8 +1318,12 @@ namespace SM64_Diagnostic
             this.splitContainerDecompiler.SuspendLayout();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustom)).BeginInit();
+            this.splitContainerCustom.Panel1.SuspendLayout();
             this.splitContainerCustom.Panel2.SuspendLayout();
             this.splitContainerCustom.SuspendLayout();
+            this.groupBoxVarNameWidth.SuspendLayout();
+            this.groupBoxVarValueWidth.SuspendLayout();
+            this.groupBoxVarHeight.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -7679,7 +7705,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelCustom.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelCustom.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelCustom.Name = "watchVariablePanelCustom";
-            this.watchVariablePanelCustom.Size = new System.Drawing.Size(774, 455);
+            this.watchVariablePanelCustom.Size = new System.Drawing.Size(667, 455);
             this.watchVariablePanelCustom.TabIndex = 3;
             // 
             // tabPageDebug
@@ -12886,6 +12912,10 @@ namespace SM64_Diagnostic
             // splitContainerCustom.Panel1
             // 
             this.splitContainerCustom.Panel1.AutoScroll = true;
+            this.splitContainerCustom.Panel1.Controls.Add(this.groupBoxVarHeight);
+            this.splitContainerCustom.Panel1.Controls.Add(this.groupBoxVarValueWidth);
+            this.splitContainerCustom.Panel1.Controls.Add(this.groupBoxVarNameWidth);
+            this.splitContainerCustom.Panel1.Controls.Add(this.buttonClearVariables);
             this.splitContainerCustom.Panel1MinSize = 0;
             // 
             // splitContainerCustom.Panel2
@@ -12893,9 +12923,255 @@ namespace SM64_Diagnostic
             this.splitContainerCustom.Panel2.Controls.Add(this.watchVariablePanelCustom);
             this.splitContainerCustom.Panel2MinSize = 0;
             this.splitContainerCustom.Size = new System.Drawing.Size(909, 463);
-            this.splitContainerCustom.SplitterDistance = 128;
+            this.splitContainerCustom.SplitterDistance = 235;
             this.splitContainerCustom.SplitterWidth = 1;
             this.splitContainerCustom.TabIndex = 19;
+            // 
+            // buttonClearVariables
+            // 
+            this.buttonClearVariables.Location = new System.Drawing.Point(7, 7);
+            this.buttonClearVariables.Name = "buttonClearVariables";
+            this.buttonClearVariables.Size = new System.Drawing.Size(179, 38);
+            this.buttonClearVariables.TabIndex = 4;
+            this.buttonClearVariables.Text = "Clear Variables";
+            this.buttonClearVariables.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxVarNameWidth
+            // 
+            this.groupBoxVarNameWidth.Controls.Add(this.betterTextbox2);
+            this.groupBoxVarNameWidth.Controls.Add(this.betterTextbox3);
+            this.groupBoxVarNameWidth.Controls.Add(this.button2);
+            this.groupBoxVarNameWidth.Controls.Add(this.button3);
+            this.groupBoxVarNameWidth.Controls.Add(this.button5);
+            this.groupBoxVarNameWidth.Controls.Add(this.button6);
+            this.groupBoxVarNameWidth.Location = new System.Drawing.Point(4, 51);
+            this.groupBoxVarNameWidth.Name = "groupBoxVarNameWidth";
+            this.groupBoxVarNameWidth.Size = new System.Drawing.Size(185, 70);
+            this.groupBoxVarNameWidth.TabIndex = 30;
+            this.groupBoxVarNameWidth.TabStop = false;
+            this.groupBoxVarNameWidth.Text = "Var Name Width";
+            // 
+            // betterTextbox2
+            // 
+            this.betterTextbox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox2.Location = new System.Drawing.Point(67, 44);
+            this.betterTextbox2.Name = "betterTextbox2";
+            this.betterTextbox2.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox2.TabIndex = 33;
+            this.betterTextbox2.Text = "1024";
+            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox3
+            // 
+            this.betterTextbox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox3.Location = new System.Drawing.Point(67, 19);
+            this.betterTextbox3.Name = "betterTextbox3";
+            this.betterTextbox3.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox3.TabIndex = 33;
+            this.betterTextbox3.Text = "1024";
+            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(3, 41);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(61, 25);
+            this.button2.TabIndex = 35;
+            this.button2.Text = "Pitch-";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Location = new System.Drawing.Point(3, 16);
+            this.button3.Margin = new System.Windows.Forms.Padding(0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(61, 25);
+            this.button3.TabIndex = 35;
+            this.button3.Text = "Yaw-";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.Location = new System.Drawing.Point(121, 41);
+            this.button5.Margin = new System.Windows.Forms.Padding(0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(61, 25);
+            this.button5.TabIndex = 35;
+            this.button5.Text = "Pitch+";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.Location = new System.Drawing.Point(121, 16);
+            this.button6.Margin = new System.Windows.Forms.Padding(0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(61, 25);
+            this.button6.TabIndex = 35;
+            this.button6.Text = "Yaw+";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxVarValueWidth
+            // 
+            this.groupBoxVarValueWidth.Controls.Add(this.betterTextbox1);
+            this.groupBoxVarValueWidth.Controls.Add(this.betterTextbox5);
+            this.groupBoxVarValueWidth.Controls.Add(this.button1);
+            this.groupBoxVarValueWidth.Controls.Add(this.button4);
+            this.groupBoxVarValueWidth.Controls.Add(this.button7);
+            this.groupBoxVarValueWidth.Controls.Add(this.button10);
+            this.groupBoxVarValueWidth.Location = new System.Drawing.Point(4, 127);
+            this.groupBoxVarValueWidth.Name = "groupBoxVarValueWidth";
+            this.groupBoxVarValueWidth.Size = new System.Drawing.Size(185, 70);
+            this.groupBoxVarValueWidth.TabIndex = 30;
+            this.groupBoxVarValueWidth.TabStop = false;
+            this.groupBoxVarValueWidth.Text = "Var Value Width";
+            // 
+            // betterTextbox1
+            // 
+            this.betterTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox1.Location = new System.Drawing.Point(67, 44);
+            this.betterTextbox1.Name = "betterTextbox1";
+            this.betterTextbox1.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox1.TabIndex = 33;
+            this.betterTextbox1.Text = "1024";
+            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox5
+            // 
+            this.betterTextbox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox5.Location = new System.Drawing.Point(67, 19);
+            this.betterTextbox5.Name = "betterTextbox5";
+            this.betterTextbox5.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox5.TabIndex = 33;
+            this.betterTextbox5.Text = "1024";
+            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(3, 41);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(61, 25);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Pitch-";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Location = new System.Drawing.Point(3, 16);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(61, 25);
+            this.button4.TabIndex = 35;
+            this.button4.Text = "Yaw-";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button7.Location = new System.Drawing.Point(121, 41);
+            this.button7.Margin = new System.Windows.Forms.Padding(0);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(61, 25);
+            this.button7.TabIndex = 35;
+            this.button7.Text = "Pitch+";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button10.Location = new System.Drawing.Point(121, 16);
+            this.button10.Margin = new System.Windows.Forms.Padding(0);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(61, 25);
+            this.button10.TabIndex = 35;
+            this.button10.Text = "Yaw+";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxVarHeight
+            // 
+            this.groupBoxVarHeight.Controls.Add(this.betterTextbox6);
+            this.groupBoxVarHeight.Controls.Add(this.betterTextbox7);
+            this.groupBoxVarHeight.Controls.Add(this.button11);
+            this.groupBoxVarHeight.Controls.Add(this.button12);
+            this.groupBoxVarHeight.Controls.Add(this.button13);
+            this.groupBoxVarHeight.Controls.Add(this.button14);
+            this.groupBoxVarHeight.Location = new System.Drawing.Point(4, 203);
+            this.groupBoxVarHeight.Name = "groupBoxVarHeight";
+            this.groupBoxVarHeight.Size = new System.Drawing.Size(185, 70);
+            this.groupBoxVarHeight.TabIndex = 30;
+            this.groupBoxVarHeight.TabStop = false;
+            this.groupBoxVarHeight.Text = "Var Height";
+            // 
+            // betterTextbox6
+            // 
+            this.betterTextbox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox6.Location = new System.Drawing.Point(67, 44);
+            this.betterTextbox6.Name = "betterTextbox6";
+            this.betterTextbox6.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox6.TabIndex = 33;
+            this.betterTextbox6.Text = "1024";
+            this.betterTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox7
+            // 
+            this.betterTextbox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox7.Location = new System.Drawing.Point(67, 19);
+            this.betterTextbox7.Name = "betterTextbox7";
+            this.betterTextbox7.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox7.TabIndex = 33;
+            this.betterTextbox7.Text = "1024";
+            this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button11
+            // 
+            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button11.Location = new System.Drawing.Point(3, 41);
+            this.button11.Margin = new System.Windows.Forms.Padding(0);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(61, 25);
+            this.button11.TabIndex = 35;
+            this.button11.Text = "Pitch-";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button12.Location = new System.Drawing.Point(3, 16);
+            this.button12.Margin = new System.Windows.Forms.Padding(0);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(61, 25);
+            this.button12.TabIndex = 35;
+            this.button12.Text = "Yaw-";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button13.Location = new System.Drawing.Point(121, 41);
+            this.button13.Margin = new System.Windows.Forms.Padding(0);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(61, 25);
+            this.button13.TabIndex = 35;
+            this.button13.Text = "Pitch+";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button14.Location = new System.Drawing.Point(121, 16);
+            this.button14.Margin = new System.Windows.Forms.Padding(0);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(61, 25);
+            this.button14.TabIndex = 35;
+            this.button14.Text = "Yaw+";
+            this.button14.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -13299,9 +13575,16 @@ namespace SM64_Diagnostic
             this.splitContainerDecompiler.ResumeLayout(false);
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.splitContainerCustom.Panel1.ResumeLayout(false);
             this.splitContainerCustom.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustom)).EndInit();
             this.splitContainerCustom.ResumeLayout(false);
+            this.groupBoxVarNameWidth.ResumeLayout(false);
+            this.groupBoxVarNameWidth.PerformLayout();
+            this.groupBoxVarValueWidth.ResumeLayout(false);
+            this.groupBoxVarValueWidth.PerformLayout();
+            this.groupBoxVarHeight.ResumeLayout(false);
+            this.groupBoxVarHeight.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -14257,6 +14540,28 @@ namespace SM64_Diagnostic
         private Label labelDecompilerAddress;
         private ListView listViewDecompiler;
         private SplitContainer splitContainerCustom;
+        private GroupBox groupBoxVarHeight;
+        private BetterTextbox betterTextbox6;
+        private BetterTextbox betterTextbox7;
+        private Button button11;
+        private Button button12;
+        private Button button13;
+        private Button button14;
+        private GroupBox groupBoxVarValueWidth;
+        private BetterTextbox betterTextbox1;
+        private BetterTextbox betterTextbox5;
+        private Button button1;
+        private Button button4;
+        private Button button7;
+        private Button button10;
+        private GroupBox groupBoxVarNameWidth;
+        private BetterTextbox betterTextbox2;
+        private BetterTextbox betterTextbox3;
+        private Button button2;
+        private Button button3;
+        private Button button5;
+        private Button button6;
+        private Button buttonClearVariables;
     }
 }
 
