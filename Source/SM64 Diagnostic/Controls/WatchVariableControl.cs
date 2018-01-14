@@ -173,7 +173,7 @@ namespace SM64_Diagnostic.Controls
             SetUseCheckbox(_watchVarWrapper.StartsAsCheckbox());
 
             // Add functions
-            _nameTextBox.Click += (sender, e) => _watchVarWrapper.ShowVarInfo();
+            _nameTextBox.Click += (sender, e) => OnNameTextBoxClick();
             _nameTextBox.Leave += (sender, e) => { RenameMode = false; };
             _nameTextBox.KeyDown += (sender, e) => OnNameTextValueKeyDown(e);
             _valueTextBox.DoubleClick += (sender, e) => { EditMode = true; };
@@ -252,6 +252,7 @@ namespace SM64_Diagnostic.Controls
                 if (e.KeyData == Keys.Escape)
                 {
                     EditMode = false;
+                    this.Focus();
                     return;
                 }
 
@@ -260,9 +261,16 @@ namespace SM64_Diagnostic.Controls
                     bool success = _watchVarWrapper.SetStringValue(_valueTextBox.Text, FixedAddressList);
                     EditMode = false;
                     if (!success) InvokeFailure();
+                    this.Focus();
                     return;
                 }
             }
+        }
+
+        private void OnNameTextBoxClick()
+        {
+            this.Focus();
+            _watchVarWrapper.ShowVarInfo();
         }
 
         private void OnNameTextValueKeyDown(KeyEventArgs e)
@@ -273,6 +281,7 @@ namespace SM64_Diagnostic.Controls
                 {
                     RenameMode = false;
                     _nameTextBox.Text = VarName;
+                    this.Focus();
                     return;
                 }
 
@@ -280,6 +289,7 @@ namespace SM64_Diagnostic.Controls
                 {
                     _varName = _nameTextBox.Text;
                     RenameMode = false;
+                    this.Focus();
                     return;
                 }
             }
