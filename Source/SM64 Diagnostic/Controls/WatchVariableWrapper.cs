@@ -151,6 +151,8 @@ namespace SM64_Diagnostic.Controls
         {
             _itemFilter = new ToolStripMenuItem("Filter...");
             _itemFilter.Visible = false;
+            _itemFilter.DropDown.AutoClose = false;
+            _itemFilter.DropDown.MouseLeave += (sender, e) => { _itemFilter.DropDown.Close(); };
 
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
             itemOpenController.Click += (sender, e) => { ShowVarController(); };
