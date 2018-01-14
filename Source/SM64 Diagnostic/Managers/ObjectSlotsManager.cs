@@ -140,31 +140,35 @@ namespace SM64_Diagnostic.Managers
             _selectedUpdatePending = true;
             ObjectSlot selectedSlot = sender as ObjectSlot;
             selectedSlot.Focus();
-            bool isRightClick = false;// ((System.Windows.Forms.MouseEventArgs)e).Button == MouseButtons.Right;
             KeyboardState keyboardState = Keyboard.GetState();
             bool isCtrlKeyHeld = keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight);
             bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
             bool isAltKeyHeld = keyboardState.IsKeyDown(Key.AltLeft) || keyboardState.IsKeyDown(Key.AltRight);
 
-            DoSlotClick(selectedSlot, isRightClick, isCtrlKeyHeld, isShiftKeyHeld, isAltKeyHeld);
+            DoSlotClickUsingInput(selectedSlot, isCtrlKeyHeld, isShiftKeyHeld, isAltKeyHeld);
         }
 
         public void SelectSlotByAddress(uint address)
         {
             ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.Address == address);
-            if (slot != null) DoSlotClick(slot, false, false, false, false);
+            if (slot != null) DoSlotClickUsingInput(slot, false, false, false);
         }
 
-        private void DoSlotClick(ObjectSlot selectedSlot, bool isRightClick, bool isCtrlKeyHeld, bool isShiftKeyHeld, bool isAltKeyHeld)
-        { 
+        private void DoSlotClickUsingInput(
+            ObjectSlot selectedSlot, bool isCtrlKeyHeld, bool isShiftKeyHeld, bool isAltKeyHeld)
+        {
+            ClickType click = GetClickType(isAltKeyHeld);
+            bool shouldToggle = ShouldToggle(isCtrlKeyHeld, isAltKeyHeld);
+            bool shouldExtendRange = isShiftKeyHeld;
+            DoSlotClickUsingClickType(selectedSlot, click, shouldToggle, shouldExtendRange);
+        }
+
+        private ClickType GetClickType(bool isAltKeyHeld)
+        {
             ClickType click;
             if (isAltKeyHeld)
             {
                 click = ClickType.MarkClick;
-            }
-            else if (isRightClick)
-            {
-                click = ClickType.ObjectClick;
             }
             else
             {
@@ -186,12 +190,36 @@ namespace SM64_Diagnostic.Managers
                         click = ClickType.CustomClick;
                         break;
 
-                    default:
+                    case TabType.Object:
                         click = ClickType.ObjectClick;
                         break;
+
+                    case TabType.Other:
+                        click = ClickType.ObjectClick;
+                        break;
+
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
+            return click;
+        }
 
+        private bool ShouldToggle(bool isCtrlKeyHeld, bool isAltKeyHeld)
+        {
+            bool isTogglingTab = ActiveTab == TabType.Map || ActiveTab == TabType.CamHack;
+            bool isToggleState = isAltKeyHeld ? true : isTogglingTab;
+            return isToggleState != isCtrlKeyHeld;
+        }
+
+        private bool ShouldSwitchToObjTabByDefault()
+        {
+            return ActiveTab == TabType.Object || ActiveTab == TabType.Other;
+        }
+
+        private void DoSlotClickUsingClickType(
+            ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, bool? switchToObjTabNullable = null)
+        {
             if (click == ClickType.ModelClick)
             {
                 ModelManager modelManager = ManagerContext.Current.ModelManager;
@@ -225,12 +253,13 @@ namespace SM64_Diagnostic.Managers
                         throw new ArgumentOutOfRangeException();
                 }
 
-                if (click == ClickType.ObjectClick)
+                bool switchToObjTab = switchToObjTabNullable ?? ShouldSwitchToObjTabByDefault();
+                if (switchToObjTab)
                 {
                     ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
                 }
 
-                if (isShiftKeyHeld && selection.Count > 0)
+                if (shouldExtendRange && selection.Count > 0)
                 {
                     uint startRangeAddress = selection[selection.Count - 1];
                     int startRange = ObjectSlots.First(o => o.Address == startRangeAddress).Index;
@@ -249,8 +278,7 @@ namespace SM64_Diagnostic.Managers
                 }
                 else
                 {
-                    // ctrl functionality is default in map tab
-                    if (isCtrlKeyHeld == (click != ClickType.ObjectClick && click != ClickType.CustomClick))
+                    if (!shouldToggle)
                     {
                         selection.Clear();
                     }
