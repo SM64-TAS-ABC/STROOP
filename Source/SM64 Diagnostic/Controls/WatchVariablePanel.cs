@@ -51,15 +51,17 @@ namespace SM64_Diagnostic.Controls
 
             _allGroups.AddRange(allGroups);
             _visibleGroups.AddRange(visibleGroups);
-
-            _allGroups.ForEach(varGroup =>
-            {
-                ToolStripMenuItem item = CreateVariableGroupItem(varGroup, _visibleGroups.Contains(varGroup));
-                ContextMenuStrip.Items.Add(item);
-            });
+            CreateFilterItems().ForEach(item => ContextMenuStrip.Items.Add(item));
         }
 
-        private ToolStripMenuItem CreateVariableGroupItem(VariableGroup varGroup, bool visible)
+        private List<ToolStripMenuItem> CreateFilterItems()
+        {
+            return _allGroups.ConvertAll(
+                varGroup => CreateFilterItem(
+                    varGroup, _visibleGroups.Contains(varGroup)));
+        }
+
+        private ToolStripMenuItem CreateFilterItem(VariableGroup varGroup, bool visible)
         {
             ToolStripMenuItem item = new ToolStripMenuItem(varGroup.ToString());
             item.Click += (sender, e) =>
