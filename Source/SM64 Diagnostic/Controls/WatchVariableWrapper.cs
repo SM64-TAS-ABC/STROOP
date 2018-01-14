@@ -193,7 +193,7 @@ namespace SM64_Diagnostic.Controls
                     _watchVar.GetBaseOffsetDescription(),
                     _watchVar.GetRamAddressString(),
                     _watchVar.GetProcessAddressString());
-            varInfo.ShowDialog();
+            varInfo.Show();
         }
 
         public void ShowVarController()

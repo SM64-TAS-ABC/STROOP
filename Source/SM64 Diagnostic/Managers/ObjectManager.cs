@@ -460,7 +460,7 @@ namespace SM64_Diagnostic.Managers
             var variableTitle = "Object Address" + (_currentAddresses.Count > 1 ? " (First of Multiple)" : ""); 
             var variableInfo = new VariableViewerForm(variableTitle, "Object", "Object",
                 String.Format("0x{0:X8}", _currentAddresses[0]), String.Format("0x{0:X8}", (_currentAddresses[0] & ~0x80000000) + Config.Stream.ProcessMemoryOffset.ToInt64()));
-            variableInfo.ShowDialog();
+            variableInfo.Show();
         }
       
         public override void Update(bool updateView)
