@@ -171,7 +171,7 @@ namespace SM64_Diagnostic.Controls
             _itemFixAddress.Visible = false;
 
             _itemRename = new ToolStripMenuItem("Rename");
-            _itemRename.Click += (sender, e) => { };
+            _itemRename.Click += (sender, e) => { _watchVarControl.RenameMode = true; };
             _itemRename.Visible = false;
 
             _itemDelete = new ToolStripMenuItem("Delete");

@@ -14,13 +14,12 @@ namespace SM64_Diagnostic.Controls
 {
     public class WatchVariableControl : TableLayoutPanel
     {
-        public readonly string VarName;
         public readonly List<VariableGroup> GroupList;
 
         private readonly WatchVariableControlPrecursor _watchVarPrecursor;
         private readonly WatchVariableWrapper _watchVarWrapper;
 
-        private readonly BetterTextbox _nameTextBox;
+        private readonly TextBox _nameTextBox;
         private readonly TextBox _valueTextBox;
         private readonly CheckBox _valueCheckBox;
         private readonly ContextMenuStrip _valueTextboxOriginalContextMenuStrip;
@@ -46,6 +45,15 @@ namespace SM64_Diagnostic.Controls
         private Color _currentColor;
         private bool _justFailed;
         private DateTime _lastFailureTime;
+
+        private string _varName;
+        public string VarName
+        {
+            get
+            {
+                return _varName;
+            }
+        }
 
         private bool _showBorder;
         public bool ShowBorder
@@ -129,7 +137,7 @@ namespace SM64_Diagnostic.Controls
             _watchVarPrecursor = watchVarPrecursor;
 
             // Initialize main fields
-            VarName = name;
+            _varName = name;
             GroupList = groupList;
             _showBorder = false;
             _editMode = false;
@@ -166,11 +174,12 @@ namespace SM64_Diagnostic.Controls
 
             // Add functions
             _nameTextBox.Click += (sender, e) => _watchVarWrapper.ShowVarInfo();
-            _valueTextBox.KeyDown += (sender, e) => OnTextValueKeyDown(e);
+            _nameTextBox.Leave += (sender, e) => { RenameMode = false; };
+            _nameTextBox.KeyDown += (sender, e) => OnNameTextValueKeyDown(e);
             _valueTextBox.DoubleClick += (sender, e) => { EditMode = true; };
+            _valueTextBox.KeyDown += (sender, e) => OnValueTextValueKeyDown(e);
             _valueTextBox.Leave += (sender, e) => { EditMode = false; };
             _valueCheckBox.Click += (sender, e) => OnCheckboxClick();
-
         }
 
         private void InitializeBase()
@@ -189,9 +198,9 @@ namespace SM64_Diagnostic.Controls
             base.BackColor = _currentColor;
         }
 
-        private BetterTextbox CreateNameTextBox()
+        private TextBox CreateNameTextBox()
         {
-            BetterTextbox nameTextBox = new BetterTextbox();
+            TextBox nameTextBox = new TextBox();
             nameTextBox.Text = VarName;
             nameTextBox.Cursor = Cursors.Default;
             nameTextBox.ReadOnly = true;
@@ -236,20 +245,43 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        private void OnTextValueKeyDown(KeyEventArgs e)
+        private void OnValueTextValueKeyDown(KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Escape)
+            if (_editMode)
             {
-                EditMode = false;
-                return;
-            }
+                if (e.KeyData == Keys.Escape)
+                {
+                    EditMode = false;
+                    return;
+                }
 
-            if (e.KeyData == Keys.Enter)
+                if (e.KeyData == Keys.Enter)
+                {
+                    bool success = _watchVarWrapper.SetStringValue(_valueTextBox.Text, FixedAddressList);
+                    EditMode = false;
+                    if (!success) InvokeFailure();
+                    return;
+                }
+            }
+        }
+
+        private void OnNameTextValueKeyDown(KeyEventArgs e)
+        {
+            if (_renameMode)
             {
-                bool success = _watchVarWrapper.SetStringValue(_valueTextBox.Text, FixedAddressList);
-                EditMode = false;
-                if (!success) InvokeFailure();
-                return;
+                if (e.KeyData == Keys.Escape)
+                {
+                    RenameMode = false;
+                    _nameTextBox.Text = VarName;
+                    return;
+                }
+
+                if (e.KeyData == Keys.Enter)
+                {
+                    _varName = _nameTextBox.Text;
+                    RenameMode = false;
+                    return;
+                }
             }
         }
 
@@ -307,8 +339,8 @@ namespace SM64_Diagnostic.Controls
             }
 
             BackColor = _currentColor;
-            _nameTextBox.BackColor = _currentColor;
             if (!_editMode) _valueTextBox.BackColor = _currentColor;
+            if (!_renameMode) _nameTextBox.BackColor = _currentColor;
         }
 
         private void InvokeFailure()
