@@ -173,7 +173,7 @@ namespace SM64_Diagnostic.Controls
             SetUseCheckbox(_watchVarWrapper.StartsAsCheckbox());
 
             // Add functions
-            _nameTextBox.MouseDown += (sender, e) => OnNameTextBoxMouseDown();
+            _nameTextBox.MouseDown += (sender, e) => OnNameTextBoxMouseDown(e);
             _nameTextBox.Leave += (sender, e) => { RenameMode = false; };
             _nameTextBox.KeyDown += (sender, e) => OnNameTextValueKeyDown(e);
             _valueTextBox.DoubleClick += (sender, e) => { EditMode = true; };
@@ -267,8 +267,9 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        private void OnNameTextBoxMouseDown()
+        private void OnNameTextBoxMouseDown(MouseEventArgs e)
         {
+            if (e.Button != MouseButtons.Left) return;
             this.Focus();
             _watchVarWrapper.ShowVarInfo();
         }
