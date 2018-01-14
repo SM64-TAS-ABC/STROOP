@@ -200,7 +200,8 @@ namespace SM64_Diagnostic.Controls
             VariableControllerForm varController =
                 new VariableControllerForm(
                     _watchVarControl.VarName,
-                    this);
+                    this,
+                    _watchVarControl.FixedAddressList);
             varController.Show();
         }
 

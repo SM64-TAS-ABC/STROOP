@@ -24,12 +24,12 @@ namespace SM64_Diagnostic
         private readonly Timer _timer;
         private List<uint> _addresses;
 
-        public VariableControllerForm(string varName, WatchVariableWrapper watchVarWrapper)
+        public VariableControllerForm(string varName, WatchVariableWrapper watchVarWrapper, List<uint> fixedAddressList)
         {
             _varName = varName;
             _watchVarWrapper = watchVarWrapper;
             _timer = new System.Windows.Forms.Timer { Interval = 30 };
-            _addresses = null;
+            _addresses = fixedAddressList;
 
             InitializeComponent();
 
@@ -39,6 +39,9 @@ namespace SM64_Diagnostic
             _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _watchVarWrapper.GetStringValue(true, true, _addresses); };
             _buttonSet.Click += (s, e) => { _watchVarWrapper.SetStringValue(_textBoxGetSet.Text, _addresses); };
             _checkBoxFixAddress.Click += (s, e) => { ToggleFixedAddress(); };
+
+            _checkBoxFixAddress.Checked = fixedAddressList != null;
+            _textBoxCurrentValue.BackColor = fixedAddressList == null ? COLOR_BLUE : COLOR_RED;
 
             _timer.Tick += (s, e) => { _textBoxCurrentValue.Text = _watchVarWrapper.GetStringValue(true, true, _addresses); };
             _timer.Start();
