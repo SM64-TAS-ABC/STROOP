@@ -120,6 +120,8 @@ namespace SM64_Diagnostic.Controls
         public bool SetValue(string value, List<uint> addresses = null)
         {
             List<uint> addressList = addresses ?? AddressList;
+            if (addressList.Count == 0) return false;
+
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
             bool success = addressList.ConvertAll(
