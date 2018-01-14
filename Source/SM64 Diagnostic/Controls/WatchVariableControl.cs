@@ -23,8 +23,8 @@ namespace SM64_Diagnostic.Controls
         private readonly BetterTextbox _nameTextBox;
         private readonly TextBox _valueTextBox;
         private readonly CheckBox _valueCheckBox;
-        private readonly ContextMenuStrip _contextMenuStrip;
-        private readonly ContextMenuStrip _textboxOldContextMenuStrip;
+        private readonly ContextMenuStrip _valueTextboxOriginalContextMenuStrip;
+        private readonly ContextMenuStrip _nameTextboxOriginalContextMenuStrip;
 
         public string TextBoxValue
         {
@@ -74,16 +74,34 @@ namespace SM64_Diagnostic.Controls
             set
             {
                 _editMode = value;
-                if (_valueTextBox != null)
+                _valueTextBox.ReadOnly = !_editMode;
+                _valueTextBox.BackColor = _editMode ? Color.White : _currentColor;
+                _valueTextBox.ContextMenuStrip = _editMode ? _valueTextboxOriginalContextMenuStrip : ContextMenuStrip;
+                if (_editMode)
                 {
-                    _valueTextBox.ReadOnly = !_editMode;
-                    _valueTextBox.BackColor = _editMode ? Color.White : _currentColor;
-                    _valueTextBox.ContextMenuStrip = _editMode ? _textboxOldContextMenuStrip : _contextMenuStrip;
-                    if (_editMode)
-                    {
-                        _valueTextBox.Focus();
-                        _valueTextBox.SelectAll();
-                    }
+                    _valueTextBox.Focus();
+                    _valueTextBox.SelectAll();
+                }
+            }
+        }
+
+        private bool _renameMode;
+        public bool RenameMode
+        {
+            get
+            {
+                return _renameMode;
+            }
+            set
+            {
+                _renameMode = value;
+                _nameTextBox.ReadOnly = !_renameMode;
+                _nameTextBox.BackColor = _renameMode ? Color.White : _currentColor;
+                _nameTextBox.ContextMenuStrip = _renameMode ? _nameTextboxOriginalContextMenuStrip : ContextMenuStrip;
+                if (_renameMode)
+                {
+                    _nameTextBox.Focus();
+                    _nameTextBox.SelectAll();
                 }
             }
         }
@@ -115,6 +133,7 @@ namespace SM64_Diagnostic.Controls
             GroupList = groupList;
             _showBorder = false;
             _editMode = false;
+            _renameMode = false;
             FixedAddressList = null;
 
             // Initialize color fields
@@ -136,11 +155,11 @@ namespace SM64_Diagnostic.Controls
             _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(watchVar, this, subclass, useHex, invertBool, coordinate);
 
             // Initialize context menu strip
-            _textboxOldContextMenuStrip = _valueTextBox.ContextMenuStrip;
-            _contextMenuStrip = _watchVarWrapper.GetContextMenuStrip();
-            _nameTextBox.ContextMenuStrip = _contextMenuStrip;
-            _valueTextBox.ContextMenuStrip = _contextMenuStrip;
-            base.ContextMenuStrip = _contextMenuStrip;
+            _valueTextboxOriginalContextMenuStrip = _valueTextBox.ContextMenuStrip;
+            _nameTextboxOriginalContextMenuStrip = _nameTextBox.ContextMenuStrip;
+            ContextMenuStrip = _watchVarWrapper.GetContextMenuStrip();
+            _nameTextBox.ContextMenuStrip = ContextMenuStrip;
+            _valueTextBox.ContextMenuStrip = ContextMenuStrip;
 
             // Set whether to start as a checkbox
             SetUseCheckbox(_watchVarWrapper.StartsAsCheckbox());
