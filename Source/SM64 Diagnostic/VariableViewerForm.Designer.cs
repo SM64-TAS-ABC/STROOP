@@ -187,7 +187,6 @@
             this.Name = "VariableViewerForm";
             this.ShowIcon = false;
             this.Text = "Variable Info";
-            this.Load += new System.EventHandler(this.VariableViewerForm_Load);
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.tableLayoutPanelMain.PerformLayout();
             this.ResumeLayout(false);
