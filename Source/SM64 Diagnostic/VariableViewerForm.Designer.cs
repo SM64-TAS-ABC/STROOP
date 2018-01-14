@@ -31,14 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VariableViewerForm));
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.buttonOk = new System.Windows.Forms.Button();
-            this.labelEmuAdd = new System.Windows.Forms.Label();
-            this.labelN64Add = new System.Windows.Forms.Label();
-            this.textBoxN64AddValue = new System.Windows.Forms.TextBox();
-            this.labelVarType = new System.Windows.Forms.Label();
-            this.labelVarName = new System.Windows.Forms.Label();
-            this.textBoxEmuAddValue = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBoxVarTypeValue = new System.Windows.Forms.TextBox();
+            this.textBoxN64AddressValue = new System.Windows.Forms.TextBox();
+            this.labelVariableName = new System.Windows.Forms.Label();
+            this.textBoxEmulatorAddressValue = new System.Windows.Forms.TextBox();
+            this.textBoxBaseOffsetValue = new System.Windows.Forms.TextBox();
+            this.textBoxTypeValue = new System.Windows.Forms.TextBox();
+            this.textBoxN64AddressLabel = new System.Windows.Forms.TextBox();
+            this.textBoxEmulatorAddressLabel = new System.Windows.Forms.TextBox();
+            this.textBoxTypeLabel = new System.Windows.Forms.TextBox();
+            this.textBoxBaseOffsetLabel = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,15 +51,16 @@
             this.tableLayoutPanelMain.ColumnCount = 2;
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.54574F));
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.45426F));
-            this.tableLayoutPanelMain.Controls.Add(this.labelVarType, 0, 1);
-            this.tableLayoutPanelMain.Controls.Add(this.textBoxEmuAddValue, 1, 4);
-            this.tableLayoutPanelMain.Controls.Add(this.labelVarName, 1, 0);
-            this.tableLayoutPanelMain.Controls.Add(this.labelEmuAdd, 0, 4);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxEmulatorAddressValue, 1, 4);
+            this.tableLayoutPanelMain.Controls.Add(this.labelVariableName, 1, 0);
             this.tableLayoutPanelMain.Controls.Add(this.buttonOk, 1, 5);
-            this.tableLayoutPanelMain.Controls.Add(this.labelN64Add, 0, 3);
-            this.tableLayoutPanelMain.Controls.Add(this.textBoxN64AddValue, 1, 3);
-            this.tableLayoutPanelMain.Controls.Add(this.textBox1, 1, 2);
-            this.tableLayoutPanelMain.Controls.Add(this.textBoxVarTypeValue, 1, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxN64AddressValue, 1, 3);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxBaseOffsetValue, 1, 2);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxTypeValue, 1, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxN64AddressLabel, 0, 3);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxEmulatorAddressLabel, 0, 4);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxTypeLabel, 0, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxBaseOffsetLabel, 0, 2);
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
             this.tableLayoutPanelMain.RowCount = 6;
@@ -84,82 +86,92 @@
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
-            // labelEmuAdd
+            // textBoxN64AddressValue
             // 
-            this.labelEmuAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelEmuAdd.AutoSize = true;
-            this.labelEmuAdd.Location = new System.Drawing.Point(5, 156);
-            this.labelEmuAdd.Name = "labelEmuAdd";
-            this.labelEmuAdd.Size = new System.Drawing.Size(92, 13);
-            this.labelEmuAdd.TabIndex = 1;
-            this.labelEmuAdd.Text = "Emulator Address:";
+            this.textBoxN64AddressValue.Location = new System.Drawing.Point(103, 120);
+            this.textBoxN64AddressValue.Name = "textBoxN64AddressValue";
+            this.textBoxN64AddressValue.ReadOnly = true;
+            this.textBoxN64AddressValue.Size = new System.Drawing.Size(159, 20);
+            this.textBoxN64AddressValue.TabIndex = 3;
+            this.textBoxN64AddressValue.Text = "N64 Address";
             // 
-            // labelN64Add
+            // labelVariableName
             // 
-            this.labelN64Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelN64Add.AutoSize = true;
-            this.labelN64Add.Location = new System.Drawing.Point(26, 117);
-            this.labelN64Add.Name = "labelN64Add";
-            this.labelN64Add.Size = new System.Drawing.Size(71, 13);
-            this.labelN64Add.TabIndex = 4;
-            this.labelN64Add.Text = "N64 Address:";
+            this.labelVariableName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelVariableName.AutoSize = true;
+            this.labelVariableName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVariableName.Location = new System.Drawing.Point(103, 13);
+            this.labelVariableName.Name = "labelVariableName";
+            this.labelVariableName.Size = new System.Drawing.Size(89, 13);
+            this.labelVariableName.TabIndex = 8;
+            this.labelVariableName.Text = "Variable Name";
             // 
-            // textBoxN64AddValue
+            // textBoxEmulatorAddressValue
             // 
-            this.textBoxN64AddValue.Location = new System.Drawing.Point(103, 120);
-            this.textBoxN64AddValue.Name = "textBoxN64AddValue";
-            this.textBoxN64AddValue.ReadOnly = true;
-            this.textBoxN64AddValue.Size = new System.Drawing.Size(159, 20);
-            this.textBoxN64AddValue.TabIndex = 3;
-            this.textBoxN64AddValue.Text = "N64 Address";
+            this.textBoxEmulatorAddressValue.Location = new System.Drawing.Point(103, 159);
+            this.textBoxEmulatorAddressValue.Name = "textBoxEmulatorAddressValue";
+            this.textBoxEmulatorAddressValue.ReadOnly = true;
+            this.textBoxEmulatorAddressValue.Size = new System.Drawing.Size(159, 20);
+            this.textBoxEmulatorAddressValue.TabIndex = 9;
+            this.textBoxEmulatorAddressValue.Text = "Emulator Address";
             // 
-            // labelVarType
+            // textBoxBaseOffsetValue
             // 
-            this.labelVarType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelVarType.AutoSize = true;
-            this.labelVarType.Location = new System.Drawing.Point(63, 39);
-            this.labelVarType.Name = "labelVarType";
-            this.labelVarType.Size = new System.Drawing.Size(34, 13);
-            this.labelVarType.TabIndex = 5;
-            this.labelVarType.Text = "Type:";
+            this.textBoxBaseOffsetValue.Location = new System.Drawing.Point(103, 81);
+            this.textBoxBaseOffsetValue.Name = "textBoxBaseOffsetValue";
+            this.textBoxBaseOffsetValue.ReadOnly = true;
+            this.textBoxBaseOffsetValue.Size = new System.Drawing.Size(159, 20);
+            this.textBoxBaseOffsetValue.TabIndex = 10;
+            this.textBoxBaseOffsetValue.Text = "N64 Address";
             // 
-            // labelVarName
+            // textBoxTypeValue
             // 
-            this.labelVarName.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelVarName.AutoSize = true;
-            this.labelVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVarName.Location = new System.Drawing.Point(103, 13);
-            this.labelVarName.Name = "labelVarName";
-            this.labelVarName.Size = new System.Drawing.Size(89, 13);
-            this.labelVarName.TabIndex = 8;
-            this.labelVarName.Text = "Variable Name";
+            this.textBoxTypeValue.Location = new System.Drawing.Point(103, 42);
+            this.textBoxTypeValue.Name = "textBoxTypeValue";
+            this.textBoxTypeValue.ReadOnly = true;
+            this.textBoxTypeValue.Size = new System.Drawing.Size(159, 20);
+            this.textBoxTypeValue.TabIndex = 11;
+            this.textBoxTypeValue.Text = "N64 Address";
             // 
-            // textBoxEmuAddValue
+            // textBoxN64AddressLabel
             // 
-            this.textBoxEmuAddValue.Location = new System.Drawing.Point(103, 159);
-            this.textBoxEmuAddValue.Name = "textBoxEmuAddValue";
-            this.textBoxEmuAddValue.ReadOnly = true;
-            this.textBoxEmuAddValue.Size = new System.Drawing.Size(159, 20);
-            this.textBoxEmuAddValue.TabIndex = 9;
-            this.textBoxEmuAddValue.Text = "Emulator Address";
+            this.textBoxN64AddressLabel.Location = new System.Drawing.Point(3, 120);
+            this.textBoxN64AddressLabel.Name = "textBoxN64AddressLabel";
+            this.textBoxN64AddressLabel.ReadOnly = true;
+            this.textBoxN64AddressLabel.Size = new System.Drawing.Size(94, 20);
+            this.textBoxN64AddressLabel.TabIndex = 12;
+            this.textBoxN64AddressLabel.Text = "N64 Address:";
+            this.textBoxN64AddressLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox1
+            // textBoxEmulatorAddressLabel
             // 
-            this.textBox1.Location = new System.Drawing.Point(103, 81);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(159, 20);
-            this.textBox1.TabIndex = 10;
-            this.textBox1.Text = "N64 Address";
+            this.textBoxEmulatorAddressLabel.Location = new System.Drawing.Point(3, 159);
+            this.textBoxEmulatorAddressLabel.Name = "textBoxEmulatorAddressLabel";
+            this.textBoxEmulatorAddressLabel.ReadOnly = true;
+            this.textBoxEmulatorAddressLabel.Size = new System.Drawing.Size(94, 20);
+            this.textBoxEmulatorAddressLabel.TabIndex = 13;
+            this.textBoxEmulatorAddressLabel.Text = "Emulator Address:";
+            this.textBoxEmulatorAddressLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBoxVarTypeValue
+            // textBoxTypeLabel
             // 
-            this.textBoxVarTypeValue.Location = new System.Drawing.Point(103, 42);
-            this.textBoxVarTypeValue.Name = "textBoxVarTypeValue";
-            this.textBoxVarTypeValue.ReadOnly = true;
-            this.textBoxVarTypeValue.Size = new System.Drawing.Size(159, 20);
-            this.textBoxVarTypeValue.TabIndex = 11;
-            this.textBoxVarTypeValue.Text = "N64 Address";
+            this.textBoxTypeLabel.Location = new System.Drawing.Point(3, 42);
+            this.textBoxTypeLabel.Name = "textBoxTypeLabel";
+            this.textBoxTypeLabel.ReadOnly = true;
+            this.textBoxTypeLabel.Size = new System.Drawing.Size(94, 20);
+            this.textBoxTypeLabel.TabIndex = 14;
+            this.textBoxTypeLabel.Text = "Type:";
+            this.textBoxTypeLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBoxBaseOffsetLabel
+            // 
+            this.textBoxBaseOffsetLabel.Location = new System.Drawing.Point(3, 81);
+            this.textBoxBaseOffsetLabel.Name = "textBoxBaseOffsetLabel";
+            this.textBoxBaseOffsetLabel.ReadOnly = true;
+            this.textBoxBaseOffsetLabel.Size = new System.Drawing.Size(94, 20);
+            this.textBoxBaseOffsetLabel.TabIndex = 15;
+            this.textBoxBaseOffsetLabel.Text = "Base + Offset:";
+            this.textBoxBaseOffsetLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // VariableViewerForm
             // 
@@ -186,13 +198,14 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
         private System.Windows.Forms.Button buttonOk;
-        private System.Windows.Forms.Label labelEmuAdd;
-        private System.Windows.Forms.Label labelN64Add;
-        private System.Windows.Forms.TextBox textBoxN64AddValue;
-        private System.Windows.Forms.Label labelVarType;
-        private System.Windows.Forms.Label labelVarName;
-        private System.Windows.Forms.TextBox textBoxEmuAddValue;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBoxVarTypeValue;
+        private System.Windows.Forms.TextBox textBoxN64AddressValue;
+        private System.Windows.Forms.Label labelVariableName;
+        private System.Windows.Forms.TextBox textBoxEmulatorAddressValue;
+        private System.Windows.Forms.TextBox textBoxBaseOffsetValue;
+        private System.Windows.Forms.TextBox textBoxTypeValue;
+        private System.Windows.Forms.TextBox textBoxN64AddressLabel;
+        private System.Windows.Forms.TextBox textBoxEmulatorAddressLabel;
+        private System.Windows.Forms.TextBox textBoxTypeLabel;
+        private System.Windows.Forms.TextBox textBoxBaseOffsetLabel;
     }
 }
