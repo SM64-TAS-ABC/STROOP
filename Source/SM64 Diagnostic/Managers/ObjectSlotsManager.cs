@@ -111,6 +111,10 @@ namespace SM64_Diagnostic.Managers
                     ActiveTab = TabType.Model;
                     break;
 
+                case "Custom":
+                    ActiveTab = TabType.Custom;
+                    break;
+
                 case "Cam Hack":
                     ActiveTab = TabType.CamHack;
                     break;
@@ -119,19 +123,13 @@ namespace SM64_Diagnostic.Managers
                     ActiveTab = TabType.Other;
                     break;
             }
-
-            // TODO remove X
-            TabX = e.TabPage.Text == "Custom";
         }
 
-        public enum TabType { Map, Model, CamHack, Object, Other };
+        public enum TabType { Object, Map, Model, Custom, CamHack, Other };
 
         public TabType ActiveTab;
 
-        // TODO remove X
-        public bool TabX = false;
-
-        private enum ClickType { ObjectClick, MapClick, ModelClick, CamHackClick, MarkClick };
+        private enum ClickType { ObjectClick, MapClick, ModelClick, CustomClick, CamHackClick, MarkClick };
 
         private void OnSlotClick(object sender, EventArgs e)
         {
@@ -184,6 +182,10 @@ namespace SM64_Diagnostic.Managers
                         click = ClickType.ModelClick;
                         break;
 
+                    case TabType.Custom:
+                        click = ClickType.CustomClick;
+                        break;
+
                     default:
                         click = ClickType.ObjectClick;
                         break;
@@ -210,6 +212,7 @@ namespace SM64_Diagnostic.Managers
                 switch (click)
                 {
                     case ClickType.ObjectClick:
+                    case ClickType.CustomClick:
                         selection = SelectedSlotsAddresses;
                         break;
                     case ClickType.MapClick:
@@ -224,11 +227,7 @@ namespace SM64_Diagnostic.Managers
 
                 if (click == ClickType.ObjectClick)
                 {
-                    // TODO remove X
-                    if (!TabX)
-                    {
-                        ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
-                    }
+                    ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
                 }
 
                 if (isShiftKeyHeld && selection.Count > 0)
@@ -251,7 +250,7 @@ namespace SM64_Diagnostic.Managers
                 else
                 {
                     // ctrl functionality is default in map tab
-                    if (isCtrlKeyHeld == (click != ClickType.ObjectClick))
+                    if (isCtrlKeyHeld == (click != ClickType.ObjectClick && click != ClickType.CustomClick))
                     {
                         selection.Clear();
                     }
@@ -259,7 +258,7 @@ namespace SM64_Diagnostic.Managers
                     if (selection.Contains(selectedSlot.Address))
                     {
                         selection.Remove(selectedSlot.Address);
-                        if (click == ClickType.ObjectClick)
+                        if (click == ClickType.ObjectClick || click == ClickType.CustomClick)
                         {
                             _lastSelectedBehavior = null;
                         }
@@ -270,7 +269,7 @@ namespace SM64_Diagnostic.Managers
                     }
                 }
 
-                if (click == ClickType.ObjectClick)
+                if (click == ClickType.ObjectClick || click == ClickType.CustomClick)
                 {
                     ManagerContext.Current.ObjectManager.CurrentAddresses = selection;
                 }
