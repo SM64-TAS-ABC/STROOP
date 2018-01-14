@@ -150,7 +150,8 @@ namespace SM64_Diagnostic.Controls
         {
             if (IsSpecial)
             {
-                return "special";
+                string memoryTypeString = MemoryTypeName != null ? " (" + MemoryTypeName + ")" : "";
+                return "special" + memoryTypeString;
             }
             else
             {
