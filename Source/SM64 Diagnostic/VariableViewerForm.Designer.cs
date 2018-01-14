@@ -72,22 +72,24 @@
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelMain.Size = new System.Drawing.Size(317, 238);
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(603, 350);
             this.tableLayoutPanelMain.TabIndex = 0;
             // 
             // textBoxEmulatorAddressValue
             // 
-            this.textBoxEmulatorAddressValue.Location = new System.Drawing.Point(102, 159);
+            this.textBoxEmulatorAddressValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxEmulatorAddressValue.Location = new System.Drawing.Point(193, 235);
             this.textBoxEmulatorAddressValue.Name = "textBoxEmulatorAddressValue";
             this.textBoxEmulatorAddressValue.ReadOnly = true;
-            this.textBoxEmulatorAddressValue.Size = new System.Drawing.Size(159, 20);
+            this.textBoxEmulatorAddressValue.Size = new System.Drawing.Size(407, 20);
             this.textBoxEmulatorAddressValue.TabIndex = 9;
             this.textBoxEmulatorAddressValue.Text = "Emulator Address";
             // 
             // buttonOk
             // 
             this.buttonOk.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.buttonOk.Location = new System.Drawing.Point(102, 205);
+            this.buttonOk.Location = new System.Drawing.Point(193, 308);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 0;
@@ -96,67 +98,81 @@
             // 
             // textBoxN64AddressValue
             // 
-            this.textBoxN64AddressValue.Location = new System.Drawing.Point(102, 120);
+            this.textBoxN64AddressValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxN64AddressValue.Location = new System.Drawing.Point(193, 177);
             this.textBoxN64AddressValue.Name = "textBoxN64AddressValue";
             this.textBoxN64AddressValue.ReadOnly = true;
-            this.textBoxN64AddressValue.Size = new System.Drawing.Size(159, 20);
+            this.textBoxN64AddressValue.Size = new System.Drawing.Size(407, 20);
             this.textBoxN64AddressValue.TabIndex = 3;
             this.textBoxN64AddressValue.Text = "N64 Address";
             // 
             // textBoxBaseOffsetValue
             // 
-            this.textBoxBaseOffsetValue.Location = new System.Drawing.Point(102, 81);
+            this.textBoxBaseOffsetValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxBaseOffsetValue.Location = new System.Drawing.Point(193, 119);
             this.textBoxBaseOffsetValue.Name = "textBoxBaseOffsetValue";
             this.textBoxBaseOffsetValue.ReadOnly = true;
-            this.textBoxBaseOffsetValue.Size = new System.Drawing.Size(159, 20);
+            this.textBoxBaseOffsetValue.Size = new System.Drawing.Size(407, 20);
             this.textBoxBaseOffsetValue.TabIndex = 10;
             this.textBoxBaseOffsetValue.Text = "N64 Address";
             // 
             // textBoxTypeValue
             // 
-            this.textBoxTypeValue.Location = new System.Drawing.Point(102, 42);
+            this.textBoxTypeValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTypeValue.Location = new System.Drawing.Point(193, 61);
             this.textBoxTypeValue.Name = "textBoxTypeValue";
             this.textBoxTypeValue.ReadOnly = true;
-            this.textBoxTypeValue.Size = new System.Drawing.Size(159, 20);
+            this.textBoxTypeValue.Size = new System.Drawing.Size(407, 20);
             this.textBoxTypeValue.TabIndex = 11;
             this.textBoxTypeValue.Text = "N64 Address";
             // 
             // textBoxN64AddressLabel
             // 
-            this.textBoxN64AddressLabel.Location = new System.Drawing.Point(3, 120);
+            this.textBoxN64AddressLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxN64AddressLabel.Location = new System.Drawing.Point(3, 177);
             this.textBoxN64AddressLabel.Name = "textBoxN64AddressLabel";
             this.textBoxN64AddressLabel.ReadOnly = true;
-            this.textBoxN64AddressLabel.Size = new System.Drawing.Size(93, 20);
+            this.textBoxN64AddressLabel.Size = new System.Drawing.Size(184, 20);
             this.textBoxN64AddressLabel.TabIndex = 12;
             this.textBoxN64AddressLabel.Text = "N64 Address:";
             this.textBoxN64AddressLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxEmulatorAddressLabel
             // 
-            this.textBoxEmulatorAddressLabel.Location = new System.Drawing.Point(3, 159);
+            this.textBoxEmulatorAddressLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxEmulatorAddressLabel.Location = new System.Drawing.Point(3, 235);
             this.textBoxEmulatorAddressLabel.Name = "textBoxEmulatorAddressLabel";
             this.textBoxEmulatorAddressLabel.ReadOnly = true;
-            this.textBoxEmulatorAddressLabel.Size = new System.Drawing.Size(93, 20);
+            this.textBoxEmulatorAddressLabel.Size = new System.Drawing.Size(184, 20);
             this.textBoxEmulatorAddressLabel.TabIndex = 13;
             this.textBoxEmulatorAddressLabel.Text = "Emulator Address:";
             this.textBoxEmulatorAddressLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxTypeLabel
             // 
-            this.textBoxTypeLabel.Location = new System.Drawing.Point(3, 42);
+            this.textBoxTypeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTypeLabel.Location = new System.Drawing.Point(3, 61);
             this.textBoxTypeLabel.Name = "textBoxTypeLabel";
             this.textBoxTypeLabel.ReadOnly = true;
-            this.textBoxTypeLabel.Size = new System.Drawing.Size(93, 20);
+            this.textBoxTypeLabel.Size = new System.Drawing.Size(184, 20);
             this.textBoxTypeLabel.TabIndex = 14;
             this.textBoxTypeLabel.Text = "Type:";
             this.textBoxTypeLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxBaseOffsetLabel
             // 
-            this.textBoxBaseOffsetLabel.Location = new System.Drawing.Point(3, 81);
+            this.textBoxBaseOffsetLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxBaseOffsetLabel.Location = new System.Drawing.Point(3, 119);
             this.textBoxBaseOffsetLabel.Name = "textBoxBaseOffsetLabel";
             this.textBoxBaseOffsetLabel.ReadOnly = true;
-            this.textBoxBaseOffsetLabel.Size = new System.Drawing.Size(93, 20);
+            this.textBoxBaseOffsetLabel.Size = new System.Drawing.Size(184, 20);
             this.textBoxBaseOffsetLabel.TabIndex = 15;
             this.textBoxBaseOffsetLabel.Text = "Base + Offset:";
             this.textBoxBaseOffsetLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -165,7 +181,7 @@
             // 
             this.textBoxVariableName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxVariableName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxVariableName.Location = new System.Drawing.Point(102, 3);
+            this.textBoxVariableName.Location = new System.Drawing.Point(193, 3);
             this.textBoxVariableName.Name = "textBoxVariableName";
             this.textBoxVariableName.ReadOnly = true;
             this.textBoxVariableName.Size = new System.Drawing.Size(159, 13);
@@ -176,13 +192,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 262);
+            this.ClientSize = new System.Drawing.Size(627, 374);
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(357, 300);
+            this.MaximumSize = new System.Drawing.Size(10000, 10000);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(357, 300);
             this.Name = "VariableViewerForm";
             this.ShowIcon = false;
             this.Text = "Variable Info";
