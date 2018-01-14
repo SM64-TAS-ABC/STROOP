@@ -65,7 +65,6 @@
             this.buttonOk.TabIndex = 0;
             this.buttonOk.Text = "OK";
             this.buttonOk.UseVisualStyleBackColor = true;
-            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // textBoxTriangleInfo
             // 
@@ -107,7 +106,6 @@
             this.Name = "TriangleInfoForm";
             this.ShowIcon = false;
             this.Text = "Triangle Info";
-            this.Load += new System.EventHandler(this.VariableViewerForm_Load);
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.tableLayoutPanelMain.PerformLayout();
             this.ResumeLayout(false);

@@ -18,6 +18,7 @@ namespace SM64_Diagnostic
         public TriangleInfoForm()
         {
             InitializeComponent();
+            buttonOk.Click += (sender, e) => Close();
             textBoxTriangleInfo.Click += (sender, e) => textBoxTriangleInfo.SelectAll();
         }
 
@@ -125,14 +126,5 @@ namespace SM64_Diagnostic
             textBoxTriangleInfo.Text = text;
         }
 
-        private void buttonOk_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void VariableViewerForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
