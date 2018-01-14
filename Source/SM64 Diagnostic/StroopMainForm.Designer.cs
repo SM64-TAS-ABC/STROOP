@@ -33,7 +33,7 @@ namespace SM64_Diagnostic
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -7720,7 +7720,7 @@ namespace SM64_Diagnostic
             this.splitContainerCustom.Panel2.Controls.Add(this.watchVariablePanelCustom);
             this.splitContainerCustom.Panel2MinSize = 0;
             this.splitContainerCustom.Size = new System.Drawing.Size(909, 463);
-            this.splitContainerCustom.SplitterDistance = 235;
+            this.splitContainerCustom.SplitterDistance = 209;
             this.splitContainerCustom.SplitterWidth = 1;
             this.splitContainerCustom.TabIndex = 19;
             // 
@@ -7980,7 +7980,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelCustom.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelCustom.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelCustom.Name = "watchVariablePanelCustom";
-            this.watchVariablePanelCustom.Size = new System.Drawing.Size(670, 455);
+            this.watchVariablePanelCustom.Size = new System.Drawing.Size(696, 455);
             this.watchVariablePanelCustom.TabIndex = 3;
             // 
             // tabPageDebug
@@ -9688,8 +9688,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
