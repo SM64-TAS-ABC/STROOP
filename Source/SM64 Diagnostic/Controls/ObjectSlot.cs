@@ -614,8 +614,7 @@ namespace SM64_Diagnostic
 
         private void OnDrag(object sender, MouseEventArgs e)
         {
-            bool isLeftClick = ((System.Windows.Forms.MouseEventArgs)e).Button == MouseButtons.Left;
-            if (!isLeftClick) return;
+            if (e.Button != MouseButtons.Left) return;
             MouseState = MouseStateType.Down;
             UpdateColors();
             Refresh();
