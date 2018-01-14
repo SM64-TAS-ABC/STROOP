@@ -299,6 +299,11 @@ namespace SM64_Diagnostic.Controls
             _watchVariablePanel = panel;
         }
 
+        public void NotifyFiltering(List<ToolStripMenuItem> items, Action updateFunction)
+        {
+            //_watchVarWrapper.NotifyFiltering(items, updateFunction);
+        }
+
         public void NotifyInCustomTab()
         {
             _separatorCustom.Visible = true;

@@ -21,8 +21,7 @@ namespace SM64_Diagnostic.Managers
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
                 VariableGroup.Advanced,
-                VariableGroup.ObjectSpecific,
-                VariableGroup.Collision,
+                VariableGroup.Hacks,
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
@@ -30,7 +29,7 @@ namespace SM64_Diagnostic.Managers
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
-                VariableGroup.ObjectSpecific,
+                VariableGroup.Advanced,
             };
 
         public MarioManager(List<WatchVariableControl> variables, Control marioControl, WatchVariablePanel variableTable)
