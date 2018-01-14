@@ -15,24 +15,27 @@ namespace SM64_Diagnostic.Managers
 {
     public class MarioManager : DataManager
     {
-        public MarioManager(List<WatchVariableControl> variables, Control marioControl, WatchVariablePanel variableTable)
-            : base(variables, variableTable)
-        {
-            variableTable.SetVariableGroups(
-                new List<VariableGroup>()
-                {
-                    VariableGroup.Basic,
-                    VariableGroup.Intermediate,
-                    VariableGroup.Advanced,
-                    VariableGroup.Hacks,
-                },
-                new List<VariableGroup>()
-                {
-                    VariableGroup.Basic,
-                    VariableGroup.Intermediate,
-                    VariableGroup.Advanced,
-                });
+        private static readonly List<VariableGroup> ALL_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Intermediate,
+                VariableGroup.Advanced,
+                VariableGroup.ObjectSpecific,
+                VariableGroup.Collision,
+            };
 
+        private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Intermediate,
+                VariableGroup.ObjectSpecific,
+            };
+
+        public MarioManager(List<WatchVariableControl> variables, Control marioControl, WatchVariablePanel variableTable)
+            : base(variables, variableTable, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
+        {
             SplitContainer splitContainerMario = marioControl.Controls["splitContainerMario"] as SplitContainer;
 
             Button toggleHandsfree = splitContainerMario.Panel1.Controls["buttonMarioToggleHandsfree"] as Button;

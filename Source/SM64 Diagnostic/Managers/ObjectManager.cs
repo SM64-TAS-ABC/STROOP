@@ -161,26 +161,28 @@ namespace SM64_Diagnostic.Managers
 
         #endregion
 
+        private static readonly List<VariableGroup> ALL_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Intermediate,
+                VariableGroup.Advanced,
+                VariableGroup.ObjectSpecific,
+                VariableGroup.Collision,
+            };
+
+        private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Intermediate,
+                VariableGroup.ObjectSpecific,
+            };
+
         public ObjectManager(List<WatchVariableControl> variables, Control objectControl, WatchVariablePanel variableTable)
-            : base(variables, variableTable)
+            : base(variables, variableTable, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             Instance = this;
-
-            variableTable.SetVariableGroups(
-                new List<VariableGroup>()
-                {
-                    VariableGroup.Basic,
-                    VariableGroup.Intermediate,
-                    VariableGroup.Advanced,
-                    VariableGroup.ObjectSpecific,
-                    VariableGroup.Collision
-                },
-                new List<VariableGroup>()
-                {
-                    VariableGroup.Basic,
-                    VariableGroup.Intermediate,
-                    VariableGroup.ObjectSpecific
-                });
 
             SplitContainer splitContainerObject = objectControl.Controls["splitContainerObject"] as SplitContainer;
 

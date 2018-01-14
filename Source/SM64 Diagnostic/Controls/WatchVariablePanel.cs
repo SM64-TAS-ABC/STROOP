@@ -15,6 +15,9 @@ namespace SM64_Diagnostic.Controls
         private readonly List<VariableGroup> _allGroups;
         private readonly List<VariableGroup> _visibleGroups;
 
+        private bool _hasSetVariableGroups;
+        private bool _hasAddedVariables;
+
         public WatchVariablePanel()
         {
             _objectLock = new Object();
@@ -22,6 +25,9 @@ namespace SM64_Diagnostic.Controls
             _allGroups = new List<VariableGroup>();
             _visibleGroups = new List<VariableGroup>();
             ContextMenuStrip = new ContextMenuStrip();
+
+            _hasSetVariableGroups = false;
+            _hasAddedVariables = false;
         }
 
         protected override CreateParams CreateParams
@@ -36,11 +42,15 @@ namespace SM64_Diagnostic.Controls
 
         public void SetVariableGroups(List<VariableGroup> allGroups, List<VariableGroup> visibleGroups)
         {
-            _allGroups.Clear();
+            if (_hasSetVariableGroups || _hasAddedVariables)
+            {
+                throw new ArgumentOutOfRangeException(
+                    "Can only set var groups once, and must be done before adding vars");
+            }
+            _hasSetVariableGroups = true;
+
             _allGroups.AddRange(allGroups);
-            _visibleGroups.Clear();
             _visibleGroups.AddRange(visibleGroups);
-            UpdateControlsBasedOnFilters();
 
             _allGroups.ForEach(varGroup =>
             {
@@ -89,6 +99,7 @@ namespace SM64_Diagnostic.Controls
 
         public void AddVariables(List<WatchVariableControl> watchVarControls)
         {
+            _hasAddedVariables = true;
             lock (_objectLock)
             {
                 watchVarControls.ForEach(watchVarControl =>

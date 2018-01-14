@@ -16,9 +16,17 @@ namespace SM64_Diagnostic.Managers
     {
         private WatchVariablePanel _variablePanel;
 
-        public DataManager(List<WatchVariableControl> watchVarControlList, WatchVariablePanel variablePanel)
+        public DataManager(
+            List<WatchVariableControl> watchVarControlList,
+            WatchVariablePanel variablePanel,
+            List<VariableGroup> allVariableGroups = null,
+            List<VariableGroup> visibleVariableGroups = null)
         {
             _variablePanel = variablePanel;
+            if (allVariableGroups != null && visibleVariableGroups != null)
+            {
+                _variablePanel.SetVariableGroups(allVariableGroups, visibleVariableGroups);
+            }
             _variablePanel.AddVariables(watchVarControlList);
         }
 
