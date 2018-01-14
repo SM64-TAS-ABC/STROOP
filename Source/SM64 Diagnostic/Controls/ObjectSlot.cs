@@ -412,6 +412,76 @@ namespace SM64_Diagnostic
             };
             this.Cursor = Cursors.Hand;
             this.DoubleBuffered = true;
+
+            SetUpContextMenuStrip();
+        }
+
+        private void SetUpContextMenuStrip()
+        {
+            ToolStripMenuItem itemSelect = new ToolStripMenuItem("Select");
+            itemSelect.Click += (sender, e) => { };
+
+            ToolStripMenuItem itemSelectAndSwitch = new ToolStripMenuItem("Select & Switch to Obj Tab");
+            itemSelectAndSwitch.Click += (sender, e) => { };
+
+            ToolStripMenuItem itemSelectAndDontSwitch = new ToolStripMenuItem("Select & Don't Switch to Obj Tab");
+            itemSelectAndDontSwitch.Click += (sender, e) => { };
+
+            ToolStripMenuItem itemGoto = new ToolStripMenuItem("Go to");
+            itemGoto.Click += (sender, e) => ButtonUtilities.GotoObjects(new List<uint>() { Address });
+
+            ToolStripMenuItem itemRetrieve = new ToolStripMenuItem("Retrieve");
+            itemRetrieve.Click += (sender, e) => ButtonUtilities.RetrieveObjects(new List<uint>() { Address });
+
+            ToolStripMenuItem itemGotoHome = new ToolStripMenuItem("Go to Home");
+            itemGotoHome.Click += (sender, e) => ButtonUtilities.GotoObjectsHome(new List<uint>() { Address });
+
+            ToolStripMenuItem itemRetrieveHome = new ToolStripMenuItem("Retrieve Home");
+            itemRetrieveHome.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(new List<uint>() { Address });
+
+            ToolStripMenuItem itemRelease = new ToolStripMenuItem("Release");
+            itemRelease.Click += (sender, e) => ButtonUtilities.ReleaseObject(new List<uint>() { Address });
+
+            ToolStripMenuItem itemUnRelease = new ToolStripMenuItem("UnRelease");
+            itemUnRelease.Click += (sender, e) => ButtonUtilities.UnReleaseObject(new List<uint>() { Address });
+
+            ToolStripMenuItem itemInteract = new ToolStripMenuItem("Interact");
+            itemInteract.Click += (sender, e) => ButtonUtilities.ReleaseObject(new List<uint>() { Address });
+
+            ToolStripMenuItem itemUnInteract = new ToolStripMenuItem("UnInteract");
+            itemUnInteract.Click += (sender, e) => ButtonUtilities.UnInteractObject(new List<uint>() { Address });
+
+            ToolStripMenuItem itemClone = new ToolStripMenuItem("Clone");
+            itemClone.Click += (sender, e) => ButtonUtilities.CloneObject(Address);
+
+            ToolStripMenuItem itemUnClone = new ToolStripMenuItem("UnClone");
+            itemUnClone.Click += (sender, e) => ButtonUtilities.UnCloneObject();
+
+            ToolStripMenuItem itemUnload = new ToolStripMenuItem("Unload");
+            itemUnload.Click += (sender, e) => ButtonUtilities.UnloadObject(new List<uint>() { Address });
+
+            ToolStripMenuItem itemRevive = new ToolStripMenuItem("Revive");
+            itemRevive.Click += (sender, e) => ButtonUtilities.ReviveObject(new List<uint>() { Address });
+
+            ContextMenuStrip = new ContextMenuStrip();
+            ContextMenuStrip.Items.Add(itemSelect);
+            ContextMenuStrip.Items.Add(itemSelectAndSwitch);
+            ContextMenuStrip.Items.Add(itemSelectAndDontSwitch);
+            ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            ContextMenuStrip.Items.Add(itemGoto);
+            ContextMenuStrip.Items.Add(itemRetrieve);
+            ContextMenuStrip.Items.Add(itemGotoHome);
+            ContextMenuStrip.Items.Add(itemRetrieveHome);
+            ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            ContextMenuStrip.Items.Add(itemRelease);
+            ContextMenuStrip.Items.Add(itemUnRelease);
+            ContextMenuStrip.Items.Add(itemInteract);
+            ContextMenuStrip.Items.Add(itemUnInteract);
+            ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            ContextMenuStrip.Items.Add(itemClone);
+            ContextMenuStrip.Items.Add(itemUnClone);
+            ContextMenuStrip.Items.Add(itemUnload);
+            ContextMenuStrip.Items.Add(itemRevive);
         }
 
         private void RebufferObjectImage()

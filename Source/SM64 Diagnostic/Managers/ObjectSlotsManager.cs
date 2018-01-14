@@ -140,7 +140,7 @@ namespace SM64_Diagnostic.Managers
             _selectedUpdatePending = true;
             ObjectSlot selectedSlot = sender as ObjectSlot;
             selectedSlot.Focus();
-            bool isRightClick = ((System.Windows.Forms.MouseEventArgs)e).Button == MouseButtons.Right;
+            bool isRightClick = false;// ((System.Windows.Forms.MouseEventArgs)e).Button == MouseButtons.Right;
             KeyboardState keyboardState = Keyboard.GetState();
             bool isCtrlKeyHeld = keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight);
             bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
