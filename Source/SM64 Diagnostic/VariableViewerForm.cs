@@ -24,10 +24,5 @@ namespace SM64_Diagnostic
             textBoxN64AddressValue.Text = n64Address;
             textBoxEmulatorAddressValue.Text = processAddress;
         }
-
-        private void buttonOk_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
     }
 }
