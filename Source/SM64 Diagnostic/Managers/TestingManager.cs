@@ -439,7 +439,7 @@ namespace SM64_Diagnostic.Managers
                     throw new ArgumentOutOfRangeException();
             }
             triangleInfoForm.SetDictionary(VarStateDictionary, "Timer", varNamesString);
-            triangleInfoForm.ShowDialog();
+            triangleInfoForm.Show();
         }
 
         public void Update(bool updateView)

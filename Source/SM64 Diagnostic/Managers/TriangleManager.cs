@@ -234,7 +234,7 @@ namespace SM64_Diagnostic.Managers
             if (TriangleAddress == 0) return;
             var triangleInfoForm = new TriangleInfoForm();
             triangleInfoForm.SetCoordinates(GetTriangleCoordinates());
-            triangleInfoForm.ShowDialog();
+            triangleInfoForm.Show();
         }
 
         private void ShowTriangleEquation()
@@ -249,21 +249,21 @@ namespace SM64_Diagnostic.Managers
 
             var triangleInfoForm = new TriangleInfoForm();
             triangleInfoForm.SetEquation(normX, normY, normZ, normOffset);
-            triangleInfoForm.ShowDialog();
+            triangleInfoForm.Show();
         }
 
         private void ShowTriangleData()
         {
             var triangleInfoForm = new TriangleInfoForm();
             triangleInfoForm.SetData(_triangleData, _repeatFirstVertexCheckbox.Checked);
-            triangleInfoForm.ShowDialog();
+            triangleInfoForm.Show();
         }
 
         private void ShowTriangleVertices()
         {
             var triangleInfoForm = new TriangleInfoForm();
             triangleInfoForm.SetVertices(_triangleData);
-            triangleInfoForm.ShowDialog();
+            triangleInfoForm.Show();
         }
 
         private void ClearTriangleData()

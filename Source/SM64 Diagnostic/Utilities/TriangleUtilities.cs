@@ -70,7 +70,7 @@ namespace SM64_Diagnostic.Utilities
         {
             TriangleInfoForm triangleInfoForm = new TriangleInfoForm();
             triangleInfoForm.SetTriangles(triangleList);
-            triangleInfoForm.ShowDialog();
+            triangleInfoForm.Show();
         }
 
         public static void NeutralizeTriangles(TriangleClassification? classification = null)
