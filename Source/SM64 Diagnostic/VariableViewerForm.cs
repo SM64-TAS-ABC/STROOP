@@ -20,6 +20,7 @@ namespace SM64_Diagnostic
             InitializeComponent();
 
             textBoxVariableName.Text = name;
+            textBoxBaseOffsetValue.Text = baseOffset;
             textBoxTypeValue.Text = type;
             textBoxN64AddressValue.Text = n64Address;
             textBoxEmulatorAddressValue.Text = emulatorAddress;

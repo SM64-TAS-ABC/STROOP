@@ -70,7 +70,7 @@
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelMain.Size = new System.Drawing.Size(236, 149);
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(277, 149);
             this.tableLayoutPanelMain.TabIndex = 0;
             // 
             // textBoxEmulatorAddressValue
@@ -80,7 +80,7 @@
             this.textBoxEmulatorAddressValue.Location = new System.Drawing.Point(103, 99);
             this.textBoxEmulatorAddressValue.Name = "textBoxEmulatorAddressValue";
             this.textBoxEmulatorAddressValue.ReadOnly = true;
-            this.textBoxEmulatorAddressValue.Size = new System.Drawing.Size(130, 20);
+            this.textBoxEmulatorAddressValue.Size = new System.Drawing.Size(171, 20);
             this.textBoxEmulatorAddressValue.TabIndex = 9;
             this.textBoxEmulatorAddressValue.Text = "Emulator Address Value";
             // 
@@ -88,7 +88,7 @@
             // 
             this.buttonOk.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tableLayoutPanelMain.SetColumnSpan(this.buttonOk, 2);
-            this.buttonOk.Location = new System.Drawing.Point(80, 123);
+            this.buttonOk.Location = new System.Drawing.Point(101, 123);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 0;
@@ -102,7 +102,7 @@
             this.textBoxN64AddressValue.Location = new System.Drawing.Point(103, 75);
             this.textBoxN64AddressValue.Name = "textBoxN64AddressValue";
             this.textBoxN64AddressValue.ReadOnly = true;
-            this.textBoxN64AddressValue.Size = new System.Drawing.Size(130, 20);
+            this.textBoxN64AddressValue.Size = new System.Drawing.Size(171, 20);
             this.textBoxN64AddressValue.TabIndex = 3;
             this.textBoxN64AddressValue.Text = "N64 Address Value";
             // 
@@ -113,7 +113,7 @@
             this.textBoxBaseOffsetValue.Location = new System.Drawing.Point(103, 51);
             this.textBoxBaseOffsetValue.Name = "textBoxBaseOffsetValue";
             this.textBoxBaseOffsetValue.ReadOnly = true;
-            this.textBoxBaseOffsetValue.Size = new System.Drawing.Size(130, 20);
+            this.textBoxBaseOffsetValue.Size = new System.Drawing.Size(171, 20);
             this.textBoxBaseOffsetValue.TabIndex = 10;
             this.textBoxBaseOffsetValue.Text = "Base + Offset Value";
             // 
@@ -124,7 +124,7 @@
             this.textBoxTypeValue.Location = new System.Drawing.Point(103, 27);
             this.textBoxTypeValue.Name = "textBoxTypeValue";
             this.textBoxTypeValue.ReadOnly = true;
-            this.textBoxTypeValue.Size = new System.Drawing.Size(130, 20);
+            this.textBoxTypeValue.Size = new System.Drawing.Size(171, 20);
             this.textBoxTypeValue.TabIndex = 11;
             this.textBoxTypeValue.Text = "Type Value";
             // 
@@ -186,7 +186,7 @@
             this.textBoxVariableName.Location = new System.Drawing.Point(3, 3);
             this.textBoxVariableName.Name = "textBoxVariableName";
             this.textBoxVariableName.ReadOnly = true;
-            this.textBoxVariableName.Size = new System.Drawing.Size(230, 13);
+            this.textBoxVariableName.Size = new System.Drawing.Size(271, 13);
             this.textBoxVariableName.TabIndex = 16;
             this.textBoxVariableName.Text = "Variable Name";
             this.textBoxVariableName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -195,7 +195,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(260, 173);
+            this.ClientSize = new System.Drawing.Size(301, 173);
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

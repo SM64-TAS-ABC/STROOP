@@ -148,7 +148,7 @@ namespace SM64_Diagnostic.Controls
         {
             if (IsSpecial)
             {
-                return "special (" + SpecialType + ")";
+                return "special";
             }
             else
             {
@@ -163,7 +163,8 @@ namespace SM64_Diagnostic.Controls
 
         public string GetBaseOffsetDescription()
         {
-            return "BASE + OFFSET";
+            string offsetString = IsSpecial ? SpecialType : String.Format("0x{0:X}", Offset);
+            return BaseAddressType + " + " + offsetString;
         }
 
         public string GetRamAddressString(bool addressArea = true)
