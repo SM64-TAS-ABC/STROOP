@@ -190,6 +190,7 @@ namespace SM64_Diagnostic.Controls
                 new VariableViewerForm(
                     _watchVarControl.VarName,
                     _watchVar.GetTypeDescription(),
+                    _watchVar.GetBaseOffsetDescription(),
                     _watchVar.GetRamAddressString(),
                     _watchVar.GetProcessAddressString());
             varInfo.ShowDialog();

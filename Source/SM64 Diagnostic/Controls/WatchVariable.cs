@@ -161,6 +161,11 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public string GetBaseOffsetDescription()
+        {
+            return "BASE + OFFSET";
+        }
+
         public string GetRamAddressString(bool addressArea = true)
         {
             if (IsSpecial) return "(none)";

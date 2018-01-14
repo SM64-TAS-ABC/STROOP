@@ -15,7 +15,7 @@ namespace SM64_Diagnostic
 {
     public partial class VariableViewerForm : Form
     {
-        public VariableViewerForm(string name, string type, string n64Address, string emulatorAddress)
+        public VariableViewerForm(string name, string type, string baseOffset, string n64Address, string emulatorAddress)
         {
             InitializeComponent();
 
