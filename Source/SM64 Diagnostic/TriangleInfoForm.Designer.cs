@@ -41,28 +41,23 @@
             this.tableLayoutPanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanelMain.ColumnCount = 2;
-            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.56467F));
-            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.43533F));
-            this.tableLayoutPanelMain.Controls.Add(this.buttonOk, 1, 3);
+            this.tableLayoutPanelMain.ColumnCount = 1;
+            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxTriangleInfo, 0, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.buttonOk, 0, 2);
             this.tableLayoutPanelMain.Controls.Add(this.labelTitle, 0, 0);
-            this.tableLayoutPanelMain.Controls.Add(this.textBoxTriangleInfo, 1, 1);
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
-            this.tableLayoutPanelMain.RowCount = 4;
-            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelMain.RowCount = 3;
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.07692F));
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.92308F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelMain.Size = new System.Drawing.Size(317, 182);
             this.tableLayoutPanelMain.TabIndex = 0;
             // 
             // buttonOk
             // 
             this.buttonOk.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanelMain.SetColumnSpan(this.buttonOk, 2);
             this.buttonOk.Location = new System.Drawing.Point(121, 155);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
@@ -75,9 +70,8 @@
             // 
             this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTitle.AutoSize = true;
-            this.tableLayoutPanelMain.SetColumnSpan(this.labelTitle, 2);
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(119, 24);
+            this.labelTitle.Location = new System.Drawing.Point(119, 11);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(79, 13);
             this.labelTitle.TabIndex = 8;
@@ -85,14 +79,14 @@
             // 
             // textBoxTriangleInfo
             // 
+            this.textBoxTriangleInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxTriangleInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTriangleInfo.Location = new System.Drawing.Point(46, 65);
+            this.textBoxTriangleInfo.Location = new System.Drawing.Point(3, 38);
             this.textBoxTriangleInfo.Multiline = true;
             this.textBoxTriangleInfo.Name = "textBoxTriangleInfo";
             this.textBoxTriangleInfo.ReadOnly = true;
-            this.tableLayoutPanelMain.SetRowSpan(this.textBoxTriangleInfo, 3);
             this.textBoxTriangleInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxTriangleInfo.Size = new System.Drawing.Size(226, 66);
+            this.textBoxTriangleInfo.Size = new System.Drawing.Size(311, 110);
             this.textBoxTriangleInfo.TabIndex = 3;
             this.textBoxTriangleInfo.Text = "\r\n";
             // 
