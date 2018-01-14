@@ -23,20 +23,20 @@ namespace SM64_Diagnostic
 
         public void SetCoordinates(short[] coordinates)
         {
-            labelTitle.Text = "Triangle Coordinates";
+            textBoxTitle.Text = "Triangle Coordinates";
             textBoxTriangleInfo.Text = StringifyCoordinates(coordinates);
         }
 
         public void SetEquation(float normalX, float normalY, float normalZ, float normalOffset)
         {
-            labelTitle.Text = "Triangle Equation";
+            textBoxTitle.Text = "Triangle Equation";
             textBoxTriangleInfo.Text =
                 normalX + "x + " + normalY + "y + " + normalZ + "z + " + normalOffset + " = 0";
         }
 
         public void SetData(List<short[]> coordinateList, bool repeatFirstVertex)
         {
-            labelTitle.Text = "Triangle Data";
+            textBoxTitle.Text = "Triangle Data";
             textBoxTriangleInfo.Text = String.Join(
                 "\r\n\r\n",
                 coordinateList.ConvertAll(
@@ -45,7 +45,7 @@ namespace SM64_Diagnostic
 
         public void SetVertices(List<short[]> coordinateList)
         {
-            labelTitle.Text = "Triangle Vertices";
+            textBoxTitle.Text = "Triangle Vertices";
             List<short[]> vertexList = new List<short[]>();
             coordinateList.ForEach(
                 coordinates =>
@@ -82,7 +82,7 @@ namespace SM64_Diagnostic
 
         public void SetTriangles(List<TriangleStruct> triangleList)
         {
-            labelTitle.Text = "Triangles";
+            textBoxTitle.Text = "Triangles";
             textBoxTriangleInfo.Text = TriangleStruct.GetFieldNameString() + "\n" + String.Join("\n", triangleList);
         }
 
@@ -112,7 +112,7 @@ namespace SM64_Diagnostic
 
         public void SetDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary, string keyName = null, string valueName = null)
         {
-            labelTitle.Text = "Dictionary";
+            textBoxTitle.Text = "Dictionary";
             String text = "";
             if (keyName != null && valueName != null)
             {

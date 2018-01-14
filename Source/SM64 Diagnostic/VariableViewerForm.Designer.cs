@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VariableViewerForm));
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxEmulatorAddressValue = new System.Windows.Forms.TextBox();
-            this.buttonOk = new System.Windows.Forms.Button();
             this.textBoxN64AddressValue = new System.Windows.Forms.TextBox();
             this.textBoxBaseOffsetValue = new System.Windows.Forms.TextBox();
             this.textBoxTypeValue = new System.Windows.Forms.TextBox();
@@ -40,6 +39,7 @@
             this.textBoxTypeLabel = new System.Windows.Forms.TextBox();
             this.textBoxBaseOffsetLabel = new System.Windows.Forms.TextBox();
             this.textBoxVariableName = new System.Windows.Forms.TextBox();
+            this.buttonOk = new System.Windows.Forms.Button();
             this.tableLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,17 +83,6 @@
             this.textBoxEmulatorAddressValue.Size = new System.Drawing.Size(171, 20);
             this.textBoxEmulatorAddressValue.TabIndex = 9;
             this.textBoxEmulatorAddressValue.Text = "Emulator Address Value";
-            // 
-            // buttonOk
-            // 
-            this.buttonOk.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tableLayoutPanelMain.SetColumnSpan(this.buttonOk, 2);
-            this.buttonOk.Location = new System.Drawing.Point(101, 123);
-            this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
-            this.buttonOk.TabIndex = 0;
-            this.buttonOk.Text = "OK";
-            this.buttonOk.UseVisualStyleBackColor = true;
             // 
             // textBoxN64AddressValue
             // 
@@ -190,6 +179,17 @@
             this.textBoxVariableName.TabIndex = 16;
             this.textBoxVariableName.Text = "Variable Name";
             this.textBoxVariableName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonOk
+            // 
+            this.buttonOk.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tableLayoutPanelMain.SetColumnSpan(this.buttonOk, 2);
+            this.buttonOk.Location = new System.Drawing.Point(101, 123);
+            this.buttonOk.Name = "buttonOk";
+            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.TabIndex = 0;
+            this.buttonOk.Text = "OK";
+            this.buttonOk.UseVisualStyleBackColor = true;
             // 
             // VariableViewerForm
             // 

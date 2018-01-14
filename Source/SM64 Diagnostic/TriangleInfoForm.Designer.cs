@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TriangleInfoForm));
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.buttonOk = new System.Windows.Forms.Button();
-            this.labelTitle = new System.Windows.Forms.Label();
             this.textBoxTriangleInfo = new System.Windows.Forms.TextBox();
+            this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,13 +45,14 @@
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelMain.Controls.Add(this.textBoxTriangleInfo, 0, 1);
             this.tableLayoutPanelMain.Controls.Add(this.buttonOk, 0, 2);
-            this.tableLayoutPanelMain.Controls.Add(this.labelTitle, 0, 0);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxTitle, 0, 0);
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
             this.tableLayoutPanelMain.RowCount = 3;
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelMain.Size = new System.Drawing.Size(317, 182);
             this.tableLayoutPanelMain.TabIndex = 0;
             // 
@@ -66,17 +67,6 @@
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
-            // labelTitle
-            // 
-            this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(119, 8);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(79, 13);
-            this.labelTitle.TabIndex = 8;
-            this.labelTitle.Text = "Triangle Info";
-            // 
             // textBoxTriangleInfo
             // 
             this.textBoxTriangleInfo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -89,6 +79,20 @@
             this.textBoxTriangleInfo.Size = new System.Drawing.Size(311, 116);
             this.textBoxTriangleInfo.TabIndex = 3;
             this.textBoxTriangleInfo.Text = "\r\n";
+            // 
+            // textBoxTitle
+            // 
+            this.textBoxTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTitle.Location = new System.Drawing.Point(3, 3);
+            this.textBoxTitle.Name = "textBoxTitle";
+            this.textBoxTitle.ReadOnly = true;
+            this.textBoxTitle.Size = new System.Drawing.Size(311, 13);
+            this.textBoxTitle.TabIndex = 17;
+            this.textBoxTitle.Text = "Triangle Info";
+            this.textBoxTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TriangleInfoForm
             // 
@@ -114,7 +118,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
         private System.Windows.Forms.Button buttonOk;
-        private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.TextBox textBoxTriangleInfo;
+        private System.Windows.Forms.TextBox textBoxTitle;
     }
 }
