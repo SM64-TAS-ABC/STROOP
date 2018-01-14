@@ -129,7 +129,7 @@ namespace SM64_Diagnostic.Managers
 
         public TabType ActiveTab;
 
-        private enum ClickType { ObjectClick, MapClick, ModelClick, CamHackClick, MarkClick };
+        public enum ClickType { ObjectClick, MapClick, ModelClick, CamHackClick, MarkClick };
 
         private void OnSlotClick(object sender, EventArgs e)
         {
@@ -211,7 +211,7 @@ namespace SM64_Diagnostic.Managers
             return ActiveTab == TabType.Object || ActiveTab == TabType.Other;
         }
 
-        private void DoSlotClickUsingSpecifications(
+        public void DoSlotClickUsingSpecifications(
             ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, bool? switchToObjTabNullable = null)
         {
             if (click == ClickType.ModelClick)
