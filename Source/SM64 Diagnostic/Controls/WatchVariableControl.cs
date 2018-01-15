@@ -121,7 +121,7 @@ namespace SM64_Diagnostic.Controls
 
         public static int VariableHeight = 20;
         public static int VariableNameWidth = 120;
-        public static int VariableValueWidth = 110;
+        public static int VariableValueWidth = 80;
 
         public WatchVariableControl(
             WatchVariableControlPrecursor watchVarPrecursor,
@@ -217,7 +217,6 @@ namespace SM64_Diagnostic.Controls
         {
             TextBox nameTextBox = new TextBox();
             nameTextBox.Text = VarName;
-            nameTextBox.Cursor = Cursors.Default;
             nameTextBox.ReadOnly = true;
             nameTextBox.BorderStyle = BorderStyle.None;
             nameTextBox.TextAlign = HorizontalAlignment.Right;
