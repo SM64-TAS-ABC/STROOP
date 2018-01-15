@@ -119,17 +119,17 @@ namespace SM64_Diagnostic.Controls
         private static Image _lockedImage = new Bitmap(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SM64_Diagnostic.EmbeddedResources.lock.png")), new Size(16, 16));
         private static Image _someLockedImage = _lockedImage.GetOpaqueImage(0.5f);
 
-        public static readonly int DEFAULT_VARIABLE_HEIGHT = 20;
         public static readonly int DEFAULT_VARIABLE_NAME_WIDTH = 120;
         public static readonly int DEFAULT_VARIABLE_VALUE_WIDTH = 80;
+        public static readonly int DEFAULT_VARIABLE_HEIGHT = 20;
 
-        public static int VariableHeight = DEFAULT_VARIABLE_HEIGHT;
         public static int VariableNameWidth = DEFAULT_VARIABLE_NAME_WIDTH;
         public static int VariableValueWidth = DEFAULT_VARIABLE_VALUE_WIDTH;
+        public static int VariableHeight = DEFAULT_VARIABLE_HEIGHT;
 
-        private int _variableHeight;
         private int _variableNameWidth;
         private int _variableValueWidth;
+        private int _variableHeight;
 
         public WatchVariableControl(
             WatchVariableControlPrecursor watchVarPrecursor,
@@ -160,9 +160,9 @@ namespace SM64_Diagnostic.Controls
             _lastFailureTime = DateTime.Now;
 
             // Initialize size fields
-            _variableHeight = VariableHeight;
             _variableNameWidth = VariableNameWidth;
             _variableValueWidth = VariableValueWidth;
+            _variableHeight = VariableHeight;
 
             // Initialize control fields
             InitializeBase();
@@ -375,16 +375,16 @@ namespace SM64_Diagnostic.Controls
             if (!_renameMode) _nameTextBox.BackColor = _currentColor;
         }
 
-        public void UpdateSize()
+        private void UpdateSize()
         {
-            if (_variableHeight == VariableHeight &&
-                _variableNameWidth == VariableNameWidth &&
-                _variableValueWidth == VariableValueWidth)
+            if (_variableNameWidth == VariableNameWidth &&
+                _variableValueWidth == VariableValueWidth &&
+                _variableHeight == VariableHeight)
                 return;
 
-            _variableHeight = VariableHeight;
             _variableNameWidth = VariableNameWidth;
             _variableValueWidth = VariableValueWidth;
+            _variableHeight = VariableHeight;
 
             Size = new Size(_variableNameWidth + _variableValueWidth, _variableHeight + 2);
             RowStyles[0].Height = _variableHeight;
