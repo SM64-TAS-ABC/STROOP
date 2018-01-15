@@ -22,12 +22,12 @@ namespace SM64_Diagnostic.Controls
         // Sub controls
         private readonly Panel _namePanel;
         private readonly TextBox _nameTextBox;
+        private readonly PictureBox _lockPictureBox;
+        private readonly PictureBox _pinPictureBox;
         private readonly TextBox _valueTextBox;
         private readonly CheckBox _valueCheckBox;
         private readonly ContextMenuStrip _valueTextboxOriginalContextMenuStrip;
         private readonly ContextMenuStrip _nameTextboxOriginalContextMenuStrip;
-
-        private readonly PictureBox _lockPictureBox;
 
         public string TextBoxValue
         {
@@ -181,18 +181,23 @@ namespace SM64_Diagnostic.Controls
             _namePanel = CreateNamePanel();
             _nameTextBox = CreateNameTextBox();
             _lockPictureBox = CreateLockPictureBox();
+            _pinPictureBox = CreatePinPictureBox();
             _valueTextBox = CreateValueTextBox();
             _valueCheckBox = CreateValueCheckBox();
             base.Controls.Add(_valueTextBox, 1, 0);
             base.Controls.Add(_valueCheckBox, 1, 0);
             base.Controls.Add(_namePanel, 0, 0);
 
+            _namePanel.Controls.Add(_pinPictureBox);
             _namePanel.Controls.Add(_lockPictureBox);
             _namePanel.Controls.Add(_nameTextBox);
+
+            _pinPictureBox.Visible = false;
             _lockPictureBox.Visible = false;
 
             // Create var x
-            _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(watchVar, this, subclass, useHex, invertBool, coordinate);
+            _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(
+                watchVar, this, subclass, useHex, invertBool, coordinate);
 
             // Initialize context menu strip
             _valueTextboxOriginalContextMenuStrip = _valueTextBox.ContextMenuStrip;
@@ -258,10 +263,22 @@ namespace SM64_Diagnostic.Controls
             PictureBox lockPictureBox = new PictureBox();
             lockPictureBox.Image = Properties.Resources._lock;
             lockPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            lockPictureBox.Size = new Size(18, 18);
+            lockPictureBox.Size = new Size(16, 18);
             lockPictureBox.Margin = new Padding(0, 0, 0, 0);
             lockPictureBox.Anchor = AnchorStyles.Right;
-            lockPictureBox.Location = new Point(_variableNameWidth - 18, _variableHeight / 2 - 9);
+            lockPictureBox.Location = new Point(_variableNameWidth - 16, _variableHeight / 2 - 9);
+            return lockPictureBox;
+        }
+
+        private PictureBox CreatePinPictureBox()
+        {
+            PictureBox lockPictureBox = new PictureBox();
+            lockPictureBox.Image = Properties.Resources.pin;
+            lockPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            lockPictureBox.Size = new Size(10, 17);
+            lockPictureBox.Margin = new Padding(0, 0, 0, 0);
+            lockPictureBox.Anchor = AnchorStyles.Right;
+            lockPictureBox.Location = new Point(_variableNameWidth - 24, _variableHeight / 2 - 8);
             return lockPictureBox;
         }
 
