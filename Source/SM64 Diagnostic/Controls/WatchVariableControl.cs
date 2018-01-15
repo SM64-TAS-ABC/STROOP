@@ -330,6 +330,7 @@ namespace SM64_Diagnostic.Controls
             //_nameTextBox.Image = GetImageForCheckState(_watchVarWrapper.GetLockedCheckState(FixedAddressList));
 
             UpdateColor();
+            UpdateSize();
         }
 
         private static Image GetImageForCheckState(CheckState checkState)
@@ -368,6 +369,29 @@ namespace SM64_Diagnostic.Controls
             BackColor = _currentColor;
             if (!_editMode) _valueTextBox.BackColor = _currentColor;
             if (!_renameMode) _nameTextBox.BackColor = _currentColor;
+        }
+
+        public void UpdateSize()
+        {
+            if (_variableHeight == VariableHeight &&
+                _variableNameWidth == VariableNameWidth &&
+                _variableValueWidth == VariableValueWidth)
+                return;
+
+            _variableHeight = VariableHeight;
+            _variableNameWidth = VariableNameWidth;
+            _variableValueWidth = VariableValueWidth;
+
+            Size = new Size(_variableNameWidth + _variableValueWidth, _variableHeight + 2);
+            RowStyles[0].Height = _variableHeight;
+            ColumnStyles[0].Width = _variableNameWidth;
+            ColumnStyles[1].Width = _variableValueWidth;
+
+            /*
+            RowStyles.Add(new RowStyle(SizeType.Absolute, _variableHeight));
+            ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _variableNameWidth));
+            ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _variableValueWidth));
+            */
         }
 
         private void InvokeFailure()
