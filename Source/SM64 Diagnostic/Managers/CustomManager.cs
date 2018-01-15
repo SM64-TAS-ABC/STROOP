@@ -65,7 +65,7 @@ namespace SM64_Diagnostic.Managers
 
         public static void InitializeAddSubtractGetSetFuncionality(
             Button buttonSubtract,
-            Button butttonAdd,
+            Button buttonAdd,
             Button buttonGet,
             Button buttonSet,
             TextBox textboxAddSubtract,
@@ -73,7 +73,36 @@ namespace SM64_Diagnostic.Managers
             Action<int> setterFunction,
             Func<int> getterFunction)
         {
+            buttonSubtract.Click += (sender, e) =>
+            {
+                int? intValueNullable = ParsingUtilities.ParseIntNullable(textboxAddSubtract.Text);
+                if (!intValueNullable.HasValue) return;
+                int intValue = intValueNullable.Value;
+                int newValue = getterFunction() - intValue;
+                setterFunction(newValue);
+            };
 
+            buttonAdd.Click += (sender, e) =>
+            {
+                int? intValueNullable = ParsingUtilities.ParseIntNullable(textboxAddSubtract.Text);
+                if (!intValueNullable.HasValue) return;
+                int intValue = intValueNullable.Value;
+                int newValue = getterFunction() + intValue;
+                setterFunction(newValue);
+            };
+
+            buttonGet.Click += (sender, e) =>
+            {
+                textboxGetSet.Text = getterFunction().ToString();
+            };
+
+            buttonSet.Click += (sender, e) =>
+            {
+                int? intValueNullable = ParsingUtilities.ParseIntNullable(textboxGetSet.Text);
+                if (!intValueNullable.HasValue) return;
+                int intValue = intValueNullable.Value;
+                setterFunction(intValue);
+            };
         }
 
         public override void AddVariable(WatchVariableControl watchVarControl)
