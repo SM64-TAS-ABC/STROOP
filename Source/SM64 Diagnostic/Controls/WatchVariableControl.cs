@@ -119,9 +119,13 @@ namespace SM64_Diagnostic.Controls
         private static Image _lockedImage = new Bitmap(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SM64_Diagnostic.EmbeddedResources.lock.png")), new Size(16, 16));
         private static Image _someLockedImage = _lockedImage.GetOpaqueImage(0.5f);
 
-        public static int VariableHeight = 20;
-        public static int VariableNameWidth = 120;
-        public static int VariableValueWidth = 80;
+        public static readonly int DEFAULT_VARIABLE_HEIGHT = 20;
+        public static readonly int DEFAULT_VARIABLE_NAME_WIDTH = 120;
+        public static readonly int DEFAULT_VARIABLE_VALUE_WIDTH = 80;
+
+        public static int VariableHeight = DEFAULT_VARIABLE_HEIGHT;
+        public static int VariableNameWidth = DEFAULT_VARIABLE_NAME_WIDTH;
+        public static int VariableValueWidth = DEFAULT_VARIABLE_VALUE_WIDTH;
 
         private int _variableHeight;
         private int _variableNameWidth;
@@ -386,12 +390,6 @@ namespace SM64_Diagnostic.Controls
             RowStyles[0].Height = _variableHeight;
             ColumnStyles[0].Width = _variableNameWidth;
             ColumnStyles[1].Width = _variableValueWidth;
-
-            /*
-            RowStyles.Add(new RowStyle(SizeType.Absolute, _variableHeight));
-            ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _variableNameWidth));
-            ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _variableValueWidth));
-            */
         }
 
         private void InvokeFailure()
