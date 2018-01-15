@@ -180,7 +180,7 @@ namespace SM64_Diagnostic.Controls
             _variableValueWidth = VariableValueWidth;
             _variableHeight = VariableHeight;
 
-            // Initialize control fields
+            // Create controls
             InitializeBase();
             _namePanel = CreateNamePanel();
             _nameTextBox = CreateNameTextBox();
@@ -188,10 +188,11 @@ namespace SM64_Diagnostic.Controls
             _pinPictureBox = CreatePinPictureBox();
             _valueTextBox = CreateValueTextBox();
             _valueCheckBox = CreateValueCheckBox();
+
+            // Add controls to their containers
             base.Controls.Add(_valueTextBox, 1, 0);
             base.Controls.Add(_valueCheckBox, 1, 0);
             base.Controls.Add(_namePanel, 0, 0);
-
             _namePanel.Controls.Add(_pinPictureBox);
             _namePanel.Controls.Add(_lockPictureBox);
             _namePanel.Controls.Add(_nameTextBox);
