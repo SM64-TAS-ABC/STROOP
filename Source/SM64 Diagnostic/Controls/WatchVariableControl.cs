@@ -180,15 +180,16 @@ namespace SM64_Diagnostic.Controls
             InitializeBase();
             _namePanel = CreateNamePanel();
             _nameTextBox = CreateNameTextBox();
-            //_lockPictureBox = CreateLockPictureBox();
+            _lockPictureBox = CreateLockPictureBox();
             _valueTextBox = CreateValueTextBox();
             _valueCheckBox = CreateValueCheckBox();
-            //base.Controls.Add(_lockPictureBox, 0, 0);
             base.Controls.Add(_valueTextBox, 1, 0);
             base.Controls.Add(_valueCheckBox, 1, 0);
-
             base.Controls.Add(_namePanel, 0, 0);
+
+            _namePanel.Controls.Add(_lockPictureBox);
             _namePanel.Controls.Add(_nameTextBox);
+            _lockPictureBox.Visible = false;
 
             // Create var x
             _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(watchVar, this, subclass, useHex, invertBool, coordinate);
@@ -258,8 +259,9 @@ namespace SM64_Diagnostic.Controls
             lockPictureBox.Image = Properties.Resources._lock;
             lockPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             lockPictureBox.Size = new Size(18, 18);
-            lockPictureBox.Margin = new Padding(0, 0, 3, 0);
+            lockPictureBox.Margin = new Padding(0, 0, 0, 0);
             lockPictureBox.Anchor = AnchorStyles.Right;
+            lockPictureBox.Location = new Point(_variableNameWidth - 18, _variableHeight / 2 - 9);
             return lockPictureBox;
         }
 
