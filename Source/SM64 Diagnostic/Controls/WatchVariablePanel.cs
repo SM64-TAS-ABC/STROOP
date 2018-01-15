@@ -124,6 +124,7 @@ namespace SM64_Diagnostic.Controls
                     _watchVarControlsList.Add(watchVarControl);
                     if (ShouldShow(watchVarControl)) Controls.Add(watchVarControl);
                     watchVarControl.NotifyPanel(this);
+                    // This adds delay to clicking on object slots. Consider rethinking it
                     /*
                     if (_hasSetVariableGroups)
                     {
