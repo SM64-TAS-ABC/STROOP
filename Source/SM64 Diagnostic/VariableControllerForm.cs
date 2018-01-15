@@ -22,29 +22,36 @@ namespace SM64_Diagnostic
         private readonly string _varName;
         private readonly WatchVariableWrapper _watchVarWrapper;
         private readonly Timer _timer;
-        private List<uint> _addresses;
+        private List<uint> _fixedAddressList;
 
         public VariableControllerForm(string varName, WatchVariableWrapper watchVarWrapper, List<uint> fixedAddressList)
         {
             _varName = varName;
             _watchVarWrapper = watchVarWrapper;
             _timer = new System.Windows.Forms.Timer { Interval = 30 };
-            _addresses = fixedAddressList;
+            _fixedAddressList = fixedAddressList;
 
             InitializeComponent();
 
             _textBoxVarName.Text = _varName;
-            _buttonAdd.Click += (s, e) => { _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, true, _addresses); };
-            _buttonSubtract.Click += (s, e) => { _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, false, _addresses); };
-            _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _watchVarWrapper.GetStringValue(true, true, _addresses); };
-            _buttonSet.Click += (s, e) => { _watchVarWrapper.SetStringValue(_textBoxGetSet.Text, _addresses); };
-            _checkBoxFixAddress.Click += (s, e) => { ToggleFixedAddress(); };
+            _buttonAdd.Click += (s, e) => _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, true, _fixedAddressList);
+            _buttonSubtract.Click += (s, e) => _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, false, _fixedAddressList);
+            _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _watchVarWrapper.GetStringValue(true, true, _fixedAddressList); };
+            _buttonSet.Click += (s, e) => _watchVarWrapper.SetStringValue(_textBoxGetSet.Text, _fixedAddressList);
+            _checkBoxFixAddress.Click += (s, e) => ToggleFixedAddress();
+            _checkBoxLock.Click += (s, e) => _watchVarWrapper.ToggleLocked(_fixedAddressList);
 
             _checkBoxFixAddress.Checked = fixedAddressList != null;
             _textBoxCurrentValue.BackColor = fixedAddressList == null ? COLOR_BLUE : COLOR_RED;
 
-            _timer.Tick += (s, e) => { _textBoxCurrentValue.Text = _watchVarWrapper.GetStringValue(true, true, _addresses); };
+            _timer.Tick += (s, e) => UpdateForm();
             _timer.Start();
+        }
+
+        private void UpdateForm()
+        {
+            _textBoxCurrentValue.Text = _watchVarWrapper.GetStringValue(true, true, _fixedAddressList);
+            _checkBoxLock.CheckState = _watchVarWrapper.GetLockedCheckState(_fixedAddressList);
         }
         
         public void ToggleFixedAddress()
@@ -53,12 +60,12 @@ namespace SM64_Diagnostic
             if (fixedAddress)
             {
                 _textBoxCurrentValue.BackColor = COLOR_RED;
-                _addresses = _watchVarWrapper.GetCurrentAddresses();
+                _fixedAddressList = _watchVarWrapper.GetCurrentAddresses();
             }
             else
             {
                 _textBoxCurrentValue.BackColor = COLOR_BLUE;
-                _addresses = null;
+                _fixedAddressList = null;
             }
         }
     }
