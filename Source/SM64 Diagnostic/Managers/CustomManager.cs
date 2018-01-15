@@ -29,6 +29,14 @@ namespace SM64_Diagnostic.Managers
             Button buttonClearVariables = splitContainerCustom.Panel1.Controls["buttonClearVariables"] as Button;
             buttonClearVariables.Click += (sender, e) => ClearVariables();
 
+            Button buttonResetVariableSizeToDefault = splitContainerCustom.Panel1.Controls["buttonResetVariableSizeToDefault"] as Button;
+            buttonResetVariableSizeToDefault.Click += (sender, e) =>
+            {
+                WatchVariableControl.VariableNameWidth = WatchVariableControl.DEFAULT_VARIABLE_NAME_WIDTH;
+                WatchVariableControl.VariableValueWidth = WatchVariableControl.DEFAULT_VARIABLE_VALUE_WIDTH;
+                WatchVariableControl.VariableHeight = WatchVariableControl.DEFAULT_VARIABLE_HEIGHT;
+            };
+
             GroupBox groupBoxVarNameWidth = splitContainerCustom.Panel1.Controls["groupBoxVarNameWidth"] as GroupBox;
             InitializeAddSubtractGetSetFuncionality(
                 groupBoxVarNameWidth.Controls["buttonVarNameWidthSubtract"] as Button,
