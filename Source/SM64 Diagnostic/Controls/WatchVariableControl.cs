@@ -119,8 +119,9 @@ namespace SM64_Diagnostic.Controls
         private static Image _lockedImage = new Bitmap(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SM64_Diagnostic.EmbeddedResources.lock.png")), new Size(16, 16));
         private static Image _someLockedImage = _lockedImage.GetOpaqueImage(0.5f);
 
-        // TODO refactor this
-        private static readonly int nameLabelHeight = 20;
+        public static int VariableHeight = 20;
+        public static int VariableNameWidth = 120;
+        public static int VariableValueWidth = 110;
 
         public WatchVariableControl(
             WatchVariableControlPrecursor watchVarPrecursor,
@@ -184,17 +185,17 @@ namespace SM64_Diagnostic.Controls
 
         private void InitializeBase()
         {
-            base.Size = new Size(230, nameLabelHeight + 2);
+            base.Size = new Size(VariableNameWidth + VariableValueWidth, VariableHeight + 2);
             base.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             base.RowCount = 1;
             base.ColumnCount = 2;
             base.RowStyles.Clear();
-            base.RowStyles.Add(new RowStyle(SizeType.Absolute, nameLabelHeight + 3));
+            base.RowStyles.Add(new RowStyle(SizeType.Absolute, VariableHeight + 3));
             base.ColumnStyles.Clear();
             base.Margin = new Padding(0);
             base.Padding = new Padding(0);
-            base.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120));
-            base.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
+            base.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, VariableNameWidth));
+            base.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, VariableValueWidth));
             base.BackColor = _currentColor;
         }
 
