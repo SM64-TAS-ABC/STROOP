@@ -7827,7 +7827,7 @@ namespace SM64_Diagnostic
             this.betterTextboxVarValueWidthGetSet.Name = "betterTextboxVarValueWidthGetSet";
             this.betterTextboxVarValueWidthGetSet.Size = new System.Drawing.Size(51, 20);
             this.betterTextboxVarValueWidthGetSet.TabIndex = 33;
-            this.betterTextboxVarValueWidthGetSet.Text = "80";
+            this.betterTextboxVarValueWidthGetSet.Text = "85";
             this.betterTextboxVarValueWidthGetSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // betterTextboxVarValueWidthAddSubtract

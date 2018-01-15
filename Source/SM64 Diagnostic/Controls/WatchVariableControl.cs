@@ -136,7 +136,7 @@ namespace SM64_Diagnostic.Controls
         private static readonly int PIN_INNER_PADDING = 24;
 
         public static readonly int DEFAULT_VARIABLE_NAME_WIDTH = 120;
-        public static readonly int DEFAULT_VARIABLE_VALUE_WIDTH = 80;
+        public static readonly int DEFAULT_VARIABLE_VALUE_WIDTH = 85;
         public static readonly int DEFAULT_VARIABLE_HEIGHT = 20;
 
         public static int VariableNameWidth = DEFAULT_VARIABLE_NAME_WIDTH;
