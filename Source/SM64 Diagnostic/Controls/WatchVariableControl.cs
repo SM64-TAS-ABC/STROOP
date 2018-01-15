@@ -212,6 +212,34 @@ namespace SM64_Diagnostic.Controls
             return nameTextBox;
         }
 
+        private TextBox CreateNameTextBox2()
+        {
+            TextBox nameTextBox = new TextBox();
+            nameTextBox.Text = VarName;
+            nameTextBox.Cursor = Cursors.Default;
+            nameTextBox.ReadOnly = true;
+            nameTextBox.BorderStyle = BorderStyle.None;
+            nameTextBox.TextAlign = HorizontalAlignment.Left;
+            nameTextBox.Margin = new Padding(5, 0, 0, 0);
+            nameTextBox.Anchor = AnchorStyles.Left;
+            nameTextBox.Size = new Size(200, 20);
+            return nameTextBox;
+        }
+
+        private TextBox CreateValueTextBox2()
+        {
+            TextBox nameTextBox = new TextBox();
+            nameTextBox.Text = VarName;
+            nameTextBox.Cursor = Cursors.Default;
+            nameTextBox.ReadOnly = true;
+            nameTextBox.BorderStyle = BorderStyle.None;
+            nameTextBox.TextAlign = HorizontalAlignment.Right;
+            nameTextBox.Margin = new Padding(0, 0, 6, 0);
+            nameTextBox.Anchor = AnchorStyles.Right;
+            nameTextBox.Size = new Size(200, 20);
+            return nameTextBox;
+        }
+
         private TextBox CreateValueTextBox()
         {
             TextBox valueTextBox = new TextBox();
