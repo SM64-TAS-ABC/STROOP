@@ -36,7 +36,7 @@
             this._buttonGet = new System.Windows.Forms.Button();
             this._buttonAdd = new System.Windows.Forms.Button();
             this._buttonSet = new System.Windows.Forms.Button();
-            this._checkBoxFixAddress = new System.Windows.Forms.CheckBox();
+            this._checkBoxLock = new System.Windows.Forms.CheckBox();
             this._textBoxVarName = new SM64_Diagnostic.BetterTextbox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
@@ -125,16 +125,16 @@
             this._buttonSet.Text = "Set";
             this._buttonSet.UseVisualStyleBackColor = true;
             // 
-            // _checkBoxFixAddress
+            // _checkBoxLock
             // 
-            this._checkBoxFixAddress.AutoSize = true;
-            this._checkBoxFixAddress.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._checkBoxFixAddress.Location = new System.Drawing.Point(130, 39);
-            this._checkBoxFixAddress.Name = "_checkBoxFixAddress";
-            this._checkBoxFixAddress.Size = new System.Drawing.Size(48, 30);
-            this._checkBoxFixAddress.TabIndex = 38;
-            this._checkBoxFixAddress.Text = "Fix Addr";
-            this._checkBoxFixAddress.UseVisualStyleBackColor = true;
+            this._checkBoxLock.AutoSize = true;
+            this._checkBoxLock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._checkBoxLock.Location = new System.Drawing.Point(130, 39);
+            this._checkBoxLock.Name = "_checkBoxLock";
+            this._checkBoxLock.Size = new System.Drawing.Size(48, 30);
+            this._checkBoxLock.TabIndex = 38;
+            this._checkBoxLock.Text = "Lock";
+            this._checkBoxLock.UseVisualStyleBackColor = true;
             // 
             // _textBoxVarName
             // 
@@ -156,7 +156,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.04243F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.91515F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.04242F));
-            this.tableLayoutPanel1.Controls.Add(this._checkBoxFixAddress, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this._checkBoxLock, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this._buttonSet, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this._buttonAdd, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this._buttonGet, 0, 3);
@@ -205,7 +205,7 @@
         private System.Windows.Forms.Button _buttonGet;
         private System.Windows.Forms.Button _buttonAdd;
         private System.Windows.Forms.Button _buttonSet;
-        private System.Windows.Forms.CheckBox _checkBoxFixAddress;
+        private System.Windows.Forms.CheckBox _checkBoxLock;
         private BetterTextbox _textBoxVarName;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
