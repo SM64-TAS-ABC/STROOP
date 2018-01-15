@@ -25,6 +25,8 @@ namespace SM64_Diagnostic.Controls
         private readonly ContextMenuStrip _valueTextboxOriginalContextMenuStrip;
         private readonly ContextMenuStrip _nameTextboxOriginalContextMenuStrip;
 
+        private readonly PictureBox _lockPictureBox;
+
         public string TextBoxValue
         {
             get { return _valueTextBox.Text; }
@@ -175,9 +177,11 @@ namespace SM64_Diagnostic.Controls
             // Initialize control fields
             InitializeBase();
             _nameTextBox = CreateNameTextBox();
+            //_lockPictureBox = CreateLockPictureBox();
             _valueTextBox = CreateValueTextBox();
             _valueCheckBox = CreateValueCheckBox();
             base.Controls.Add(_nameTextBox, 0, 0);
+            //base.Controls.Add(_lockPictureBox, 0, 0);
             base.Controls.Add(_valueTextBox, 1, 0);
             base.Controls.Add(_valueCheckBox, 1, 0);
 
@@ -232,6 +236,17 @@ namespace SM64_Diagnostic.Controls
             nameTextBox.Anchor = AnchorStyles.Left;
             nameTextBox.Size = new Size(200, 20);
             return nameTextBox;
+        }
+
+        private PictureBox CreateLockPictureBox()
+        {
+            PictureBox lockPictureBox = new PictureBox();
+            //lockPictureBox.Size = new Size(20, 20);
+            lockPictureBox.Image = Properties.Resources._lock;
+            lockPictureBox.BorderStyle = BorderStyle.None;
+            lockPictureBox.Margin = new Padding(0, 0, 50, 0);
+            lockPictureBox.Anchor = AnchorStyles.Right;
+            return lockPictureBox;
         }
 
         private TextBox CreateValueTextBox()
