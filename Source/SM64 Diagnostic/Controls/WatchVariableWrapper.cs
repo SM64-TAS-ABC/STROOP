@@ -126,13 +126,7 @@ namespace SM64_Diagnostic.Controls
             _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
             _itemRemoveAllLocks.Click += (sender, e) => { WatchVariableLockManager.RemoveAllLocks(); };
 
-            ToolStripMenuItem itemEdit = new ToolStripMenuItem("Edit");
-            itemEdit.Click += (sender, e) => { _watchVarControl.EditMode = true; };
-
-            ToolStripMenuItem itemCopyAsIs = new ToolStripMenuItem("Copy (As Is)");
-            itemCopyAsIs.Click += (sender, e) => { Clipboard.SetText(_watchVarControl.TextBoxValue); };
-
-            ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy (Unrounded)");
+            ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy");
             itemCopyUnrounded.Click += (sender, e) => { Clipboard.SetText(GetStringValue(false)); };
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
@@ -141,8 +135,6 @@ namespace SM64_Diagnostic.Controls
             _contextMenuStrip.AddToBeginningList(itemHighlight);
             _contextMenuStrip.AddToBeginningList(_itemLock);
             _contextMenuStrip.AddToBeginningList(_itemRemoveAllLocks);
-            _contextMenuStrip.AddToBeginningList(itemEdit);
-            _contextMenuStrip.AddToBeginningList(itemCopyAsIs);
             _contextMenuStrip.AddToBeginningList(itemCopyUnrounded);
             _contextMenuStrip.AddToBeginningList(itemPaste);
         }
