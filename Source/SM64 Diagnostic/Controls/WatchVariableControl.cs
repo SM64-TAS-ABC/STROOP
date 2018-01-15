@@ -248,7 +248,7 @@ namespace SM64_Diagnostic.Controls
             nameTextBox.TextAlign = HorizontalAlignment.Left;
             nameTextBox.Anchor = AnchorStyles.Left;
             nameTextBox.Size = new Size(200, 20);
-            nameTextBox.Location = new Point(4, 3);
+            nameTextBox.Location = new Point(4, _variableHeight / 2 - 7);
             return nameTextBox;
         }
 
