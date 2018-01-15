@@ -187,13 +187,8 @@ namespace SM64_Diagnostic.Controls
             base.Controls.Add(_valueTextBox, 1, 0);
             base.Controls.Add(_valueCheckBox, 1, 0);
 
-
-
-            //base.Controls.Add(_namePanel, 0, 0);
-            //_namePanel.Controls.Add(_nameTextBox);
-            base.Controls.Add(_nameTextBox, 0, 0);
-
-
+            base.Controls.Add(_namePanel, 0, 0);
+            _namePanel.Controls.Add(_nameTextBox);
 
             // Create var x
             _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(watchVar, this, subclass, useHex, invertBool, coordinate);
@@ -238,10 +233,8 @@ namespace SM64_Diagnostic.Controls
         {
             Panel namePanel = new Panel();
             namePanel.Dock = DockStyle.Fill;
-            //namePanel.Location = new System.Drawing.Point(0, 116);
             namePanel.Margin = new Padding(0, 0, 0, 0);
-            namePanel.BackColor = Color.LightPink;
-            //namePanel.Size = new System.Drawing.Size(187, 116);
+            namePanel.BackColor = Color.Transparent;
             return namePanel;
         }
 
@@ -253,9 +246,9 @@ namespace SM64_Diagnostic.Controls
             nameTextBox.ReadOnly = true;
             nameTextBox.BorderStyle = BorderStyle.None;
             nameTextBox.TextAlign = HorizontalAlignment.Left;
-            nameTextBox.Margin = new Padding(4, 0, 0, 0);
             nameTextBox.Anchor = AnchorStyles.Left;
             nameTextBox.Size = new Size(200, 20);
+            nameTextBox.Location = new Point(4, 3);
             return nameTextBox;
         }
 
