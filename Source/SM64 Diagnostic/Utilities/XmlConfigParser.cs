@@ -1680,11 +1680,11 @@ namespace SM64_Diagnostic.Utilities
                             rotates = bool.Parse(element.Element(XName.Get("MapImage")).Attribute(XName.Get("rotates")).Value);
                         }
 
-                        List<WatchVariableControl> watchVarControls = new List<WatchVariableControl>();
+                        List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
                         {
-                            WatchVariableControl watchVarControl = GetWatchVariableControlFromElement(subElement);
-                            watchVarControls.Add(watchVarControl);
+                            WatchVariableControlPrecursor precursor = GetWatchVariablePrecursorFromElement(subElement);
+                            precursors.Add(precursor);
                         }
 
                         var newBehavior = new ObjectBehaviorAssociation()
@@ -1700,7 +1700,7 @@ namespace SM64_Diagnostic.Utilities
                             MapImagePath = mapImagePath,
                             Name = name,
                             RotatesOnMap = rotates,
-                            WatchVariableControls = watchVarControls,
+                            Precursors = precursors,
                         };
 
                         if (!assoc.AddAssociation(newBehavior))

@@ -19,7 +19,22 @@ namespace SM64_Diagnostic.Structs
         public Image Image;
         public Image TransparentImage;
         public Image MapImage;
-        public List<WatchVariableControl> WatchVariableControls = new List<WatchVariableControl>();
+        public List<WatchVariableControlPrecursor> Precursors = new List<WatchVariableControlPrecursor>();
+
+        private List<WatchVariableControl> _watchVariableControls = null;
+        public List<WatchVariableControl> WatchVariableControls
+        {
+            get
+            {
+                if (_watchVariableControls == null)
+                {
+                    _watchVariableControls =
+                        Precursors.ConvertAll(
+                            precursor => precursor.CreateWatchVariableControl());
+                }
+                return _watchVariableControls;
+            }
+        }
 
         public bool MeetsCriteria(BehaviorCriteria behaviorCriteria)
         {
