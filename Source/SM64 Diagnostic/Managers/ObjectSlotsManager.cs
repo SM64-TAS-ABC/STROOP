@@ -537,13 +537,13 @@ namespace SM64_Diagnostic.Managers
                         {
                             objManager.Behavior = String.Format("0x{0}", multiBehavior.Value.BehaviorAddress.ToString("X4"));
                             objManager.SetBehaviorWatchVariables(
-                                Config.ObjectAssociations.GetWatchVarControlPrecursors(multiBehavior.Value),
+                                Config.ObjectAssociations.GetWatchVarControls(multiBehavior.Value),
                                 Config.ObjectGroups.VacantSlotColor.Lighten(0.8));
                         }
                         else
                         {
                             objManager.Behavior = "";
-                            objManager.SetBehaviorWatchVariables(new List<WatchVariableControlPrecursor>(), Color.White);
+                            objManager.SetBehaviorWatchVariables(new List<WatchVariableControl>(), Color.White);
                         }
                         _lastSelectedBehavior = multiBehavior;
                     }
@@ -703,7 +703,7 @@ namespace SM64_Diagnostic.Managers
                 objManager.Behavior = String.Format("0x{0}", (behaviorCriteria.BehaviorAddress & 0xffffff).ToString("X4"));
                 objManager.Name = Config.ObjectAssociations.GetObjectName(behaviorCriteria);
 
-                objManager.SetBehaviorWatchVariables(Config.ObjectAssociations.GetWatchVarControlPrecursors(behaviorCriteria), objSlot.BackColor.Lighten(0.8));
+                objManager.SetBehaviorWatchVariables(Config.ObjectAssociations.GetWatchVarControls(behaviorCriteria), objSlot.BackColor.Lighten(0.8));
                 _lastSelectedBehavior = newBehavior;
             }
             objManager.Image = objSlot.ObjectImage;

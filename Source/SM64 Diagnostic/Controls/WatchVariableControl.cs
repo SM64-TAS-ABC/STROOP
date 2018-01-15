@@ -41,7 +41,14 @@ namespace SM64_Diagnostic.Controls
         private static readonly int FAILURE_DURATION_MS = 1000;
         private static readonly Color FAILURE_COLOR = Color.Red;
         private static readonly Color DEFAULT_COLOR = SystemColors.Control;
-        private readonly Color _baseColor;
+
+        private Color _baseColor;
+        public Color BaseColor
+        {
+            get { return _baseColor; }
+            set { _baseColor = value; _currentColor = value; }
+        }
+
         private Color _currentColor;
         private bool _justFailed;
         private DateTime _lastFailureTime;
@@ -229,7 +236,6 @@ namespace SM64_Diagnostic.Controls
         private TextBox CreateValueTextBox()
         {
             TextBox nameTextBox = new TextBox();
-            nameTextBox.Text = VarName;
             nameTextBox.ReadOnly = true;
             nameTextBox.BorderStyle = BorderStyle.None;
             nameTextBox.TextAlign = HorizontalAlignment.Right;

@@ -38,10 +38,11 @@ namespace SM64_Diagnostic.Managers
         IntPictureBox _objectImagePictureBox;
         
         #region Fields
-        public void SetBehaviorWatchVariables(List<WatchVariableControlPrecursor> precursors, Color color)
+        public void SetBehaviorWatchVariables(List<WatchVariableControl> watchVarControls, Color color)
         {
             RemoveObjSpecificVariables();
-            AddVariables(precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl(color)));
+            watchVarControls.ForEach(watchVarControl => watchVarControl.BaseColor = color);
+            AddVariables(watchVarControls);
         }
 
         List<uint> _currentAddresses = new List<uint>();

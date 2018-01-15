@@ -313,6 +313,7 @@ namespace SM64_Diagnostic.Controls
         public void NotifyFiltering(List<ToolStripMenuItem> items, Action updateFunction)
         {
             _itemFilter.Visible = true;
+            _itemFilter.DropDownItems.Clear();
             items.ForEach(item => _itemFilter.DropDownItems.Add(item));
             _updateFilterItemsFunction = updateFunction;
         }
