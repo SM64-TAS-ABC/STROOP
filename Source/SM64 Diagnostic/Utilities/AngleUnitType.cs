@@ -12,6 +12,7 @@ namespace SM64_Diagnostic.Structs
     public enum AngleUnitType
     {
         InGameUnits,
+        HAU,
         Degrees,
         Radians,
         Revolutions

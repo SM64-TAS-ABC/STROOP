@@ -55,8 +55,15 @@ namespace SM64_Diagnostic.Controls
             ToolStripMenuItem itemUnits = new ToolStripMenuItem("Units...");
             ControlUtilities.AddDropDownItems(
                 itemUnits,
-                new List<string> { "In-Game Units", "Degrees", "Radians", "Revolutions" },
-                new List<object> { AngleUnitType.InGameUnits, AngleUnitType.Degrees, AngleUnitType.Radians, AngleUnitType.Revolutions },
+                new List<string> { "In-Game Units", "HAU", "Degrees", "Radians", "Revolutions" },
+                new List<object>
+                {
+                    AngleUnitType.InGameUnits,
+                    AngleUnitType.HAU,
+                    AngleUnitType.Degrees,
+                    AngleUnitType.Radians,
+                    AngleUnitType.Revolutions,
+                },
                 (object obj) => { _angleUnitType = (AngleUnitType)obj; },
                 _angleUnitType);
 
@@ -90,6 +97,8 @@ namespace SM64_Diagnostic.Controls
             {
                 case AngleUnitType.InGameUnits:
                     return 65536;
+                case AngleUnitType.HAU:
+                    return 4096;
                 case AngleUnitType.Degrees:
                     return 360;
                 case AngleUnitType.Radians:
@@ -123,7 +132,10 @@ namespace SM64_Diagnostic.Controls
             if (!doubleValueNullable.HasValue) return stringValue;
             double doubleValue = doubleValueNullable.Value;
 
-            if (_truncateToMultipleOf16) doubleValue = MoreMath.TruncateToMultipleOf16(doubleValue);
+            if (_truncateToMultipleOf16 || _angleUnitType == AngleUnitType.HAU)
+            {
+                doubleValue = MoreMath.TruncateToMultipleOf16(doubleValue);
+            }
             doubleValue = MoreMath.NormalizeAngleUsingType(doubleValue, _effectiveType);
             doubleValue = (doubleValue / 65536) * GetAngleUnitTypeMaxValue();
 
