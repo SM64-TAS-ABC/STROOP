@@ -33,7 +33,7 @@ namespace SM64_Diagnostic
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -1419,7 +1419,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 154);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -2377,7 +2377,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObject.Location = new System.Drawing.Point(2, 2);
             this.WatchVariablePanelObject.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObject.Name = "WatchVariablePanelObject";
-            this.WatchVariablePanelObject.Size = new System.Drawing.Size(702, 458);
+            this.WatchVariablePanelObject.Size = new System.Drawing.Size(690, 458);
             this.WatchVariablePanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -3065,7 +3065,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelMario.Location = new System.Drawing.Point(2, 2);
             this.WatchVariablePanelMario.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelMario.Name = "WatchVariablePanelMario";
-            this.WatchVariablePanelMario.Size = new System.Drawing.Size(702, 456);
+            this.WatchVariablePanelMario.Size = new System.Drawing.Size(699, 456);
             this.WatchVariablePanelMario.TabIndex = 1;
             // 
             // tabPageHud
@@ -3209,7 +3209,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelHud.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelHud.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelHud.Name = "watchVariablePanelHud";
-            this.watchVariablePanelHud.Size = new System.Drawing.Size(794, 457);
+            this.watchVariablePanelHud.Size = new System.Drawing.Size(791, 457);
             this.watchVariablePanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3590,7 +3590,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelCamera.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelCamera.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelCamera.Name = "watchVariablePanelCamera";
-            this.watchVariablePanelCamera.Size = new System.Drawing.Size(704, 457);
+            this.watchVariablePanelCamera.Size = new System.Drawing.Size(701, 457);
             this.watchVariablePanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -4132,7 +4132,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelTriangles.Location = new System.Drawing.Point(2, 4);
             this.watchVariablePanelTriangles.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelTriangles.Name = "watchVariablePanelTriangles";
-            this.watchVariablePanelTriangles.Size = new System.Drawing.Size(701, 453);
+            this.watchVariablePanelTriangles.Size = new System.Drawing.Size(698, 453);
             this.watchVariablePanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -4262,7 +4262,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelInput.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelInput.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelInput.Name = "watchVariablePanelInput";
-            this.watchVariablePanelInput.Size = new System.Drawing.Size(482, 460);
+            this.watchVariablePanelInput.Size = new System.Drawing.Size(479, 460);
             this.watchVariablePanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -7599,7 +7599,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelFile.Location = new System.Drawing.Point(0, -1);
             this.watchVariablePanelFile.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelFile.Name = "watchVariablePanelFile";
-            this.watchVariablePanelFile.Size = new System.Drawing.Size(253, 463);
+            this.watchVariablePanelFile.Size = new System.Drawing.Size(250, 463);
             this.watchVariablePanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7682,7 +7682,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelMisc.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelMisc.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelMisc.Name = "watchVariablePanelMisc";
-            this.watchVariablePanelMisc.Size = new System.Drawing.Size(781, 457);
+            this.watchVariablePanelMisc.Size = new System.Drawing.Size(778, 457);
             this.watchVariablePanelMisc.TabIndex = 5;
             // 
             // tabPageCustom
@@ -7982,7 +7982,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelCustom.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelCustom.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelCustom.Name = "watchVariablePanelCustom";
-            this.watchVariablePanelCustom.Size = new System.Drawing.Size(696, 455);
+            this.watchVariablePanelCustom.Size = new System.Drawing.Size(693, 455);
             this.watchVariablePanelCustom.TabIndex = 3;
             // 
             // tabPageDebug
@@ -8243,7 +8243,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelDebug.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelDebug.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelDebug.Name = "watchVariablePanelDebug";
-            this.watchVariablePanelDebug.Size = new System.Drawing.Size(521, 455);
+            this.watchVariablePanelDebug.Size = new System.Drawing.Size(518, 455);
             this.watchVariablePanelDebug.TabIndex = 26;
             // 
             // tabPageMap
@@ -8455,7 +8455,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(692, 430);
+            this.glControlMap.Size = new System.Drawing.Size(689, 430);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -8892,7 +8892,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelArea.Location = new System.Drawing.Point(2, 4);
             this.watchVariablePanelArea.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelArea.Name = "watchVariablePanelArea";
-            this.watchVariablePanelArea.Size = new System.Drawing.Size(756, 453);
+            this.watchVariablePanelArea.Size = new System.Drawing.Size(753, 453);
             this.watchVariablePanelArea.TabIndex = 7;
             // 
             // tabPageModel
@@ -9617,7 +9617,7 @@ namespace SM64_Diagnostic
             this.glControlModelView.BackColor = System.Drawing.Color.Black;
             this.glControlModelView.Location = new System.Drawing.Point(3, 5);
             this.glControlModelView.Name = "glControlModelView";
-            this.glControlModelView.Size = new System.Drawing.Size(491, 451);
+            this.glControlModelView.Size = new System.Drawing.Size(488, 451);
             this.glControlModelView.TabIndex = 0;
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
@@ -9690,8 +9690,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9914,7 +9914,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(600, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(597, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -10013,7 +10013,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(588, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(585, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -10876,7 +10876,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelCamHack.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelCamHack.Margin = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelCamHack.Name = "watchVariablePanelCamHack";
-            this.watchVariablePanelCamHack.Size = new System.Drawing.Size(472, 458);
+            this.watchVariablePanelCamHack.Size = new System.Drawing.Size(469, 458);
             this.watchVariablePanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
