@@ -190,7 +190,7 @@ namespace SM64_Diagnostic.Controls
             base.RowCount = 1;
             base.ColumnCount = 2;
             base.RowStyles.Clear();
-            base.RowStyles.Add(new RowStyle(SizeType.Absolute, VariableHeight + 3));
+            base.RowStyles.Add(new RowStyle(SizeType.Absolute, VariableHeight + 0));
             base.ColumnStyles.Clear();
             base.Margin = new Padding(0);
             base.Padding = new Padding(0);
@@ -207,26 +207,13 @@ namespace SM64_Diagnostic.Controls
             nameTextBox.ReadOnly = true;
             nameTextBox.BorderStyle = BorderStyle.None;
             nameTextBox.TextAlign = HorizontalAlignment.Left;
-            nameTextBox.Width = 200;
-            nameTextBox.Margin = new Padding(3, 3, 3, 3);
-            return nameTextBox;
-        }
-
-        private TextBox CreateNameTextBox2()
-        {
-            TextBox nameTextBox = new TextBox();
-            nameTextBox.Text = VarName;
-            nameTextBox.Cursor = Cursors.Default;
-            nameTextBox.ReadOnly = true;
-            nameTextBox.BorderStyle = BorderStyle.None;
-            nameTextBox.TextAlign = HorizontalAlignment.Left;
-            nameTextBox.Margin = new Padding(5, 0, 0, 0);
+            nameTextBox.Margin = new Padding(4, 0, 0, 0);
             nameTextBox.Anchor = AnchorStyles.Left;
             nameTextBox.Size = new Size(200, 20);
             return nameTextBox;
         }
 
-        private TextBox CreateValueTextBox2()
+        private TextBox CreateValueTextBox()
         {
             TextBox nameTextBox = new TextBox();
             nameTextBox.Text = VarName;
@@ -240,23 +227,15 @@ namespace SM64_Diagnostic.Controls
             return nameTextBox;
         }
 
-        private TextBox CreateValueTextBox()
-        {
-            TextBox valueTextBox = new TextBox();
-            valueTextBox.ReadOnly = true;
-            valueTextBox.BorderStyle = BorderStyle.None;
-            valueTextBox.TextAlign = HorizontalAlignment.Right;
-            valueTextBox.Width = 200;
-            valueTextBox.Margin = new Padding(6, 3, 6, 3);
-            return valueTextBox;
-        }
-
         private CheckBox CreateValueCheckBox()
         {
             CheckBox valueCheckBox = new CheckBox();
-            valueCheckBox.CheckAlign = ContentAlignment.MiddleRight;
             valueCheckBox.CheckState = CheckState.Unchecked;
             valueCheckBox.BackColor = Color.Transparent;
+            valueCheckBox.AutoSize = true;
+            valueCheckBox.CheckAlign = ContentAlignment.MiddleRight;
+            valueCheckBox.Dock = DockStyle.Fill;
+            valueCheckBox.Margin = new Padding(0, 0, 5, 0);
             return valueCheckBox;
         }
 
