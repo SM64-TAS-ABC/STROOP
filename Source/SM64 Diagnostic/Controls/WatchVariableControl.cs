@@ -127,9 +127,13 @@ namespace SM64_Diagnostic.Controls
 
         public List<uint> FixedAddressList;
 
-        private static Image _lockedImage = Properties.Resources._lock;
-        private static Image _someLockedImage = Properties.Resources.lock_grey;
-        private static Image _pinnedImage = Properties.Resources.pin;
+        private static readonly Image _lockedImage = Properties.Resources._lock;
+        private static readonly Image _someLockedImage = Properties.Resources.lock_grey;
+        private static readonly Image _pinnedImage = Properties.Resources.pin;
+
+        private static readonly int LOCK_PADDING = 16;
+        private static readonly int PIN_OUTER_PADDING = 11;
+        private static readonly int PIN_INNER_PADDING = 24;
 
         public static readonly int DEFAULT_VARIABLE_NAME_WIDTH = 120;
         public static readonly int DEFAULT_VARIABLE_VALUE_WIDTH = 80;
@@ -191,9 +195,6 @@ namespace SM64_Diagnostic.Controls
             _namePanel.Controls.Add(_pinPictureBox);
             _namePanel.Controls.Add(_lockPictureBox);
             _namePanel.Controls.Add(_nameTextBox);
-
-            _pinPictureBox.Visible = false;
-            _lockPictureBox.Visible = false;
 
             // Create var x
             _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(
@@ -266,7 +267,9 @@ namespace SM64_Diagnostic.Controls
             lockPictureBox.Size = new Size(16, 18);
             lockPictureBox.Margin = new Padding(0, 0, 0, 0);
             lockPictureBox.Anchor = AnchorStyles.Right;
-            lockPictureBox.Location = new Point(_variableNameWidth - 16, _variableHeight / 2 - 9);
+            lockPictureBox.Location =
+                new Point(_variableNameWidth - LOCK_PADDING, _variableHeight / 2 - 9);
+            lockPictureBox.Visible = false;
             return lockPictureBox;
         }
 
@@ -278,7 +281,9 @@ namespace SM64_Diagnostic.Controls
             lockPictureBox.Size = new Size(10, 17);
             lockPictureBox.Margin = new Padding(0, 0, 0, 0);
             lockPictureBox.Anchor = AnchorStyles.Right;
-            lockPictureBox.Location = new Point(_variableNameWidth - 24, _variableHeight / 2 - 8);
+            lockPictureBox.Location =
+                new Point(_variableNameWidth - PIN_OUTER_PADDING, _variableHeight / 2 - 8);
+            lockPictureBox.Visible = false;
             return lockPictureBox;
         }
 
@@ -385,10 +390,31 @@ namespace SM64_Diagnostic.Controls
             }
 
             _watchVarWrapper.UpdateItemCheckStates();
-            //_nameTextBox.Image = GetImageForCheckState(_watchVarWrapper.GetLockedCheckState(FixedAddressList));
 
-            UpdateColor();
             UpdateSize();
+            UpdateColor();
+            UpdatePictureBoxes();
+        }
+
+        private void UpdatePictureBoxes()
+        {
+            Image currentLockImage = GetImageForCheckState(_watchVarWrapper.GetLockedCheckState(FixedAddressList));
+            bool isLocked = currentLockImage != null;
+            bool isFixedAddress = FixedAddressList != null;
+
+            if (_lockPictureBox.Image == currentLockImage &&
+                _lockPictureBox.Visible == isLocked &&
+                _pinPictureBox.Visible == isFixedAddress) return;
+
+            _lockPictureBox.Image = currentLockImage;
+            _lockPictureBox.Visible = isLocked;
+            _pinPictureBox.Visible = isFixedAddress;
+
+            int pinPadding = isLocked ? PIN_INNER_PADDING : PIN_OUTER_PADDING;
+            _pinPictureBox.Location =
+                new Point(
+                    _variableNameWidth - pinPadding,
+                    _pinPictureBox.Location.Y);
         }
 
         private static Image GetImageForCheckState(CheckState checkState)
