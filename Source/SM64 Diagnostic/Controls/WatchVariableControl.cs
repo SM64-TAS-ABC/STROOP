@@ -123,8 +123,9 @@ namespace SM64_Diagnostic.Controls
 
         public List<uint> FixedAddressList;
 
-        private static Image _lockedImage = new Bitmap(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("SM64_Diagnostic.EmbeddedResources.lock.png")), new Size(16, 16));
-        private static Image _someLockedImage = _lockedImage.GetOpaqueImage(0.5f);
+        private static Image _lockedImage = Properties.Resources._lock;
+        private static Image _someLockedImage = Properties.Resources.lock_grey;
+        private static Image _pinnedImage = Properties.Resources.pin;
 
         public static readonly int DEFAULT_VARIABLE_NAME_WIDTH = 120;
         public static readonly int DEFAULT_VARIABLE_VALUE_WIDTH = 80;

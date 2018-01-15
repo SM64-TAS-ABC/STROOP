@@ -579,6 +579,8 @@
     <EmbeddedResource Include="EmbeddedResources\select_bottom.png" />
     <EmbeddedResource Include="EmbeddedResources\select_top.png" />
     <EmbeddedResource Include="EmbeddedResources\decompile.py" />
+    <None Include="EmbeddedResources\pin.png" />
+    <None Include="EmbeddedResources\lock_grey.png" />
     <Content Include="icon.ico" />
     <Content Include="icon2.ico" />
     <Content Include="Lib\abc.py" />
