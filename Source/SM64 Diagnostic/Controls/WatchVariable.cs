@@ -133,7 +133,7 @@ namespace SM64_Diagnostic.Controls
 
         public List<WatchVariableLock> GetLocks(List<uint> addresses = null)
         {
-            List<string> values = GetValues();
+            List<string> values = GetValues(addresses);
             List<uint> addressList = addresses ?? AddressList;
             if (values.Count != addressList.Count) return new List<WatchVariableLock>();
 
