@@ -111,17 +111,7 @@ namespace SM64_Diagnostic.Controls
             itemHighlight.Checked = _watchVarControl.ShowBorder;
 
             _itemLock = new ToolStripMenuItem("Lock");
-            _itemLock.Click += (sender, e) =>
-            {
-                if (WatchVariableLockManager.ContainsLocksBool(_watchVar, _watchVarControl.FixedAddressList))
-                {
-                    WatchVariableLockManager.RemoveLocks(_watchVar, _watchVarControl.FixedAddressList);
-                }
-                else
-                {
-                    WatchVariableLockManager.AddLocks(_watchVar, _watchVarControl.FixedAddressList);
-                }
-            };
+            _itemLock.Click += (sender, e) => ToggleLocked(_watchVarControl.FixedAddressList);
 
             _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
             _itemRemoveAllLocks.Click += (sender, e) => { WatchVariableLockManager.RemoveAllLocks(); };
@@ -226,6 +216,19 @@ namespace SM64_Diagnostic.Controls
             _itemRemoveAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
             //_updateFilterItemsFunction?.Invoke();
         }
+
+        public void ToggleLocked(List<uint> addresses = null)
+        {
+            if (WatchVariableLockManager.ContainsLocksBool(_watchVar, addresses))
+            {
+                WatchVariableLockManager.RemoveLocks(_watchVar, addresses);
+            }
+            else
+            {
+                WatchVariableLockManager.AddLocks(_watchVar, addresses);
+            }
+        }
+
 
 
 
