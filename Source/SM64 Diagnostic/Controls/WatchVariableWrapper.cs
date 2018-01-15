@@ -30,8 +30,8 @@ namespace SM64_Diagnostic.Controls
         private ToolStripMenuItem _itemRemoveAllLocks;
 
         // External items
-        private ToolStripMenuItem _itemFilter;
-        private Action _updateFilterItemsFunction;
+        //private ToolStripMenuItem _itemFilter;
+        //private Action _updateFilterItemsFunction;
 
         // Custom items
         private ToolStripSeparator _separatorCustom;
@@ -141,10 +141,12 @@ namespace SM64_Diagnostic.Controls
 
         private void AddExternalContextMenuStripItems()
         {
+            /*
             _itemFilter = new ToolStripMenuItem("Filter...");
             _itemFilter.Visible = false;
             _itemFilter.DropDown.AutoClose = false;
             _itemFilter.DropDown.MouseLeave += (sender, e) => { _itemFilter.DropDown.Close(); };
+            */
 
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
             itemOpenController.Click += (sender, e) => { ShowVarController(); };
@@ -153,7 +155,7 @@ namespace SM64_Diagnostic.Controls
             itemAddToCustomTab.Click += (sender, e) => { CustomManager.Instance.AddVariable(_watchVarControl.CreateCopy()); };
 
             _contextMenuStrip.AddToEndingList(new ToolStripSeparator());
-            _contextMenuStrip.AddToEndingList(_itemFilter);
+            //_contextMenuStrip.AddToEndingList(_itemFilter);
             _contextMenuStrip.AddToEndingList(itemOpenController);
             _contextMenuStrip.AddToEndingList(itemAddToCustomTab);
         }
@@ -222,7 +224,7 @@ namespace SM64_Diagnostic.Controls
         {
             _itemLock.Checked = GetLockedBool(addresses);
             _itemRemoveAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
-            _updateFilterItemsFunction?.Invoke();
+            //_updateFilterItemsFunction?.Invoke();
         }
 
 
@@ -302,6 +304,7 @@ namespace SM64_Diagnostic.Controls
             _watchVariablePanel = panel;
         }
 
+        /*
         public void NotifyFiltering(List<ToolStripMenuItem> items, Action updateFunction)
         {
             _itemFilter.Visible = true;
@@ -309,6 +312,7 @@ namespace SM64_Diagnostic.Controls
             items.ForEach(item => _itemFilter.DropDownItems.Add(item));
             _updateFilterItemsFunction = updateFunction;
         }
+        */
 
         public void NotifyInCustomTab()
         {

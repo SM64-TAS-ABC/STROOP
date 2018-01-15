@@ -434,10 +434,12 @@ namespace SM64_Diagnostic.Controls
             _watchVarWrapper.NotifyPanel(panel);
         }
 
+        /*
         public void NotifyFiltering(List<ToolStripMenuItem> items, Action updateFunction)
         {
             _watchVarWrapper.NotifyFiltering(items, updateFunction);
         }
+        */
 
         public void NotifyInCustomTab()
         {
