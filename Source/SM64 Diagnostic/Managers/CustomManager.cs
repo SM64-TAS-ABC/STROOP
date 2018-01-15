@@ -37,8 +37,8 @@ namespace SM64_Diagnostic.Managers
                 groupBoxVarNameWidth.Controls["buttonVarNameWidthSet"] as Button,
                 groupBoxVarNameWidth.Controls["betterTextboxVarNameWidthAddSubtract"] as TextBox,
                 groupBoxVarNameWidth.Controls["betterTextboxVarNameWidthGetSet"] as TextBox,
-                (int value) => { },
-                () => 0);
+                (int value) => { WatchVariableControl.VariableNameWidth = value; },
+                () => WatchVariableControl.VariableNameWidth);
 
             GroupBox groupBoxVarValueWidth = splitContainerCustom.Panel1.Controls["groupBoxVarValueWidth"] as GroupBox;
             InitializeAddSubtractGetSetFuncionality(
@@ -48,8 +48,8 @@ namespace SM64_Diagnostic.Managers
                 groupBoxVarValueWidth.Controls["buttonVarValueWidthSet"] as Button,
                 groupBoxVarValueWidth.Controls["betterTextboxVarValueWidthAddSubtract"] as TextBox,
                 groupBoxVarValueWidth.Controls["betterTextboxVarValueWidthGetSet"] as TextBox,
-                (int value) => { },
-                () => 0);
+                (int value) => { WatchVariableControl.VariableValueWidth = value; },
+                () => WatchVariableControl.VariableValueWidth);
 
             GroupBox groupBoxVarHeight = splitContainerCustom.Panel1.Controls["groupBoxVarHeight"] as GroupBox;
             InitializeAddSubtractGetSetFuncionality(
@@ -59,8 +59,8 @@ namespace SM64_Diagnostic.Managers
                 groupBoxVarHeight.Controls["buttonVarHeightSet"] as Button,
                 groupBoxVarHeight.Controls["betterTextboxVarHeightAddSubtract"] as TextBox,
                 groupBoxVarHeight.Controls["betterTextboxVarHeightGetSet"] as TextBox,
-                (int value) => { },
-                () => 0);
+                (int value) => { WatchVariableControl.VariableHeight = value; },
+                () => WatchVariableControl.VariableHeight);
         }
 
         public static void InitializeAddSubtractGetSetFuncionality(
