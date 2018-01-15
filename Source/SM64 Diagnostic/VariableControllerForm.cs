@@ -38,9 +38,9 @@ namespace SM64_Diagnostic
             _buttonSubtract.Click += (s, e) => { _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, false, _addresses); };
             _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _watchVarWrapper.GetStringValue(true, true, _addresses); };
             _buttonSet.Click += (s, e) => { _watchVarWrapper.SetStringValue(_textBoxGetSet.Text, _addresses); };
-            _checkBoxLock.Click += (s, e) => { ToggleFixedAddress(); };
+            _checkBoxFixAddress.Click += (s, e) => { ToggleFixedAddress(); };
 
-            _checkBoxLock.Checked = fixedAddressList != null;
+            _checkBoxFixAddress.Checked = fixedAddressList != null;
             _textBoxCurrentValue.BackColor = fixedAddressList == null ? COLOR_BLUE : COLOR_RED;
 
             _timer.Tick += (s, e) => { _textBoxCurrentValue.Text = _watchVarWrapper.GetStringValue(true, true, _addresses); };
@@ -49,7 +49,7 @@ namespace SM64_Diagnostic
         
         public void ToggleFixedAddress()
         {
-            bool fixedAddress = _checkBoxLock.Checked;
+            bool fixedAddress = _checkBoxFixAddress.Checked;
             if (fixedAddress)
             {
                 _textBoxCurrentValue.BackColor = COLOR_RED;

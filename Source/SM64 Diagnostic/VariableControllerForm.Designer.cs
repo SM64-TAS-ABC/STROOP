@@ -29,74 +29,40 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VariableControllerForm));
-            this._textBoxCurrentValue = new SM64_Diagnostic.BetterTextbox();
-            this._textBoxAddSubtract = new SM64_Diagnostic.BetterTextbox();
             this._buttonSubtract = new System.Windows.Forms.Button();
-            this._textBoxGetSet = new SM64_Diagnostic.BetterTextbox();
             this._buttonGet = new System.Windows.Forms.Button();
             this._buttonAdd = new System.Windows.Forms.Button();
             this._buttonSet = new System.Windows.Forms.Button();
             this._checkBoxLock = new System.Windows.Forms.CheckBox();
-            this._textBoxVarName = new SM64_Diagnostic.BetterTextbox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this._textBoxVarName = new SM64_Diagnostic.BetterTextbox();
+            this._textBoxGetSet = new SM64_Diagnostic.BetterTextbox();
+            this._textBoxAddSubtract = new SM64_Diagnostic.BetterTextbox();
+            this._textBoxCurrentValue = new SM64_Diagnostic.BetterTextbox();
+            this._checkBoxFixAddress = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // _textBoxCurrentValue
-            // 
-            this._textBoxCurrentValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxCurrentValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this._textBoxCurrentValue.Location = new System.Drawing.Point(55, 44);
-            this._textBoxCurrentValue.MaximumSize = new System.Drawing.Size(10000, 10000);
-            this._textBoxCurrentValue.Name = "_textBoxCurrentValue";
-            this._textBoxCurrentValue.Size = new System.Drawing.Size(69, 20);
-            this._textBoxCurrentValue.TabIndex = 9;
-            this._textBoxCurrentValue.Text = "0x12345678";
-            this._textBoxCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // _textBoxAddSubtract
-            // 
-            this._textBoxAddSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxAddSubtract.BackColor = System.Drawing.Color.White;
-            this._textBoxAddSubtract.Location = new System.Drawing.Point(55, 80);
-            this._textBoxAddSubtract.MaximumSize = new System.Drawing.Size(10000, 10000);
-            this._textBoxAddSubtract.Name = "_textBoxAddSubtract";
-            this._textBoxAddSubtract.Size = new System.Drawing.Size(69, 20);
-            this._textBoxAddSubtract.TabIndex = 9;
-            this._textBoxAddSubtract.Text = "100";
-            this._textBoxAddSubtract.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // _buttonSubtract
             // 
             this._buttonSubtract.Dock = System.Windows.Forms.DockStyle.Fill;
             this._buttonSubtract.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._buttonSubtract.Location = new System.Drawing.Point(0, 72);
+            this._buttonSubtract.Location = new System.Drawing.Point(0, 158);
             this._buttonSubtract.Margin = new System.Windows.Forms.Padding(0);
             this._buttonSubtract.Name = "_buttonSubtract";
-            this._buttonSubtract.Size = new System.Drawing.Size(52, 36);
+            this._buttonSubtract.Size = new System.Drawing.Size(141, 79);
             this._buttonSubtract.TabIndex = 0;
             this._buttonSubtract.Text = "-";
             this._buttonSubtract.UseVisualStyleBackColor = true;
-            // 
-            // _textBoxGetSet
-            // 
-            this._textBoxGetSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxGetSet.BackColor = System.Drawing.Color.White;
-            this._textBoxGetSet.Location = new System.Drawing.Point(55, 116);
-            this._textBoxGetSet.Name = "_textBoxGetSet";
-            this._textBoxGetSet.Size = new System.Drawing.Size(69, 20);
-            this._textBoxGetSet.TabIndex = 9;
-            this._textBoxGetSet.Text = "200";
-            this._textBoxGetSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // _buttonGet
             // 
             this._buttonGet.Dock = System.Windows.Forms.DockStyle.Fill;
             this._buttonGet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._buttonGet.Location = new System.Drawing.Point(0, 108);
+            this._buttonGet.Location = new System.Drawing.Point(0, 237);
             this._buttonGet.Margin = new System.Windows.Forms.Padding(0);
             this._buttonGet.Name = "_buttonGet";
-            this._buttonGet.Size = new System.Drawing.Size(52, 36);
+            this._buttonGet.Size = new System.Drawing.Size(141, 80);
             this._buttonGet.TabIndex = 0;
             this._buttonGet.Text = "Get";
             this._buttonGet.UseVisualStyleBackColor = true;
@@ -105,10 +71,10 @@
             // 
             this._buttonAdd.Dock = System.Windows.Forms.DockStyle.Fill;
             this._buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._buttonAdd.Location = new System.Drawing.Point(127, 72);
+            this._buttonAdd.Location = new System.Drawing.Point(345, 158);
             this._buttonAdd.Margin = new System.Windows.Forms.Padding(0);
             this._buttonAdd.Name = "_buttonAdd";
-            this._buttonAdd.Size = new System.Drawing.Size(54, 36);
+            this._buttonAdd.Size = new System.Drawing.Size(142, 79);
             this._buttonAdd.TabIndex = 0;
             this._buttonAdd.Text = "+";
             this._buttonAdd.UseVisualStyleBackColor = true;
@@ -117,38 +83,24 @@
             // 
             this._buttonSet.Dock = System.Windows.Forms.DockStyle.Fill;
             this._buttonSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._buttonSet.Location = new System.Drawing.Point(127, 108);
+            this._buttonSet.Location = new System.Drawing.Point(345, 237);
             this._buttonSet.Margin = new System.Windows.Forms.Padding(0);
             this._buttonSet.Name = "_buttonSet";
-            this._buttonSet.Size = new System.Drawing.Size(54, 36);
+            this._buttonSet.Size = new System.Drawing.Size(142, 80);
             this._buttonSet.TabIndex = 0;
             this._buttonSet.Text = "Set";
             this._buttonSet.UseVisualStyleBackColor = true;
             // 
             // _checkBoxLock
             // 
+            this._checkBoxLock.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this._checkBoxLock.AutoSize = true;
-            this._checkBoxLock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._checkBoxLock.Location = new System.Drawing.Point(130, 39);
+            this._checkBoxLock.Location = new System.Drawing.Point(348, 110);
             this._checkBoxLock.Name = "_checkBoxLock";
-            this._checkBoxLock.Size = new System.Drawing.Size(48, 30);
+            this._checkBoxLock.Size = new System.Drawing.Size(50, 17);
             this._checkBoxLock.TabIndex = 38;
             this._checkBoxLock.Text = "Lock";
             this._checkBoxLock.UseVisualStyleBackColor = true;
-            // 
-            // _textBoxVarName
-            // 
-            this._textBoxVarName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this._textBoxVarName.BackColor = System.Drawing.SystemColors.Control;
-            this._textBoxVarName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tableLayoutPanel1.SetColumnSpan(this._textBoxVarName, 3);
-            this._textBoxVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
-            this._textBoxVarName.Location = new System.Drawing.Point(3, 6);
-            this._textBoxVarName.Name = "_textBoxVarName";
-            this._textBoxVarName.Size = new System.Drawing.Size(175, 24);
-            this._textBoxVarName.TabIndex = 9;
-            this._textBoxVarName.Text = "Variable Name";
-            this._textBoxVarName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel1
             // 
@@ -156,6 +108,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.04243F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.91515F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.04242F));
+            this.tableLayoutPanel1.Controls.Add(this._checkBoxFixAddress, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this._checkBoxLock, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this._buttonSet, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this._buttonAdd, 2, 2);
@@ -174,14 +127,74 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(181, 144);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(487, 317);
             this.tableLayoutPanel1.TabIndex = 39;
+            // 
+            // _textBoxVarName
+            // 
+            this._textBoxVarName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._textBoxVarName.BackColor = System.Drawing.SystemColors.Control;
+            this._textBoxVarName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tableLayoutPanel1.SetColumnSpan(this._textBoxVarName, 3);
+            this._textBoxVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
+            this._textBoxVarName.Location = new System.Drawing.Point(3, 27);
+            this._textBoxVarName.Name = "_textBoxVarName";
+            this._textBoxVarName.Size = new System.Drawing.Size(481, 24);
+            this._textBoxVarName.TabIndex = 9;
+            this._textBoxVarName.Text = "Variable Name";
+            this._textBoxVarName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // _textBoxGetSet
+            // 
+            this._textBoxGetSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._textBoxGetSet.BackColor = System.Drawing.Color.White;
+            this._textBoxGetSet.Location = new System.Drawing.Point(144, 267);
+            this._textBoxGetSet.Name = "_textBoxGetSet";
+            this._textBoxGetSet.Size = new System.Drawing.Size(198, 20);
+            this._textBoxGetSet.TabIndex = 9;
+            this._textBoxGetSet.Text = "200";
+            this._textBoxGetSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // _textBoxAddSubtract
+            // 
+            this._textBoxAddSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._textBoxAddSubtract.BackColor = System.Drawing.Color.White;
+            this._textBoxAddSubtract.Location = new System.Drawing.Point(144, 187);
+            this._textBoxAddSubtract.MaximumSize = new System.Drawing.Size(10000, 10000);
+            this._textBoxAddSubtract.Name = "_textBoxAddSubtract";
+            this._textBoxAddSubtract.Size = new System.Drawing.Size(198, 20);
+            this._textBoxAddSubtract.TabIndex = 9;
+            this._textBoxAddSubtract.Text = "100";
+            this._textBoxAddSubtract.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // _textBoxCurrentValue
+            // 
+            this._textBoxCurrentValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._textBoxCurrentValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this._textBoxCurrentValue.Location = new System.Drawing.Point(144, 108);
+            this._textBoxCurrentValue.MaximumSize = new System.Drawing.Size(10000, 10000);
+            this._textBoxCurrentValue.Name = "_textBoxCurrentValue";
+            this._textBoxCurrentValue.Size = new System.Drawing.Size(198, 20);
+            this._textBoxCurrentValue.TabIndex = 9;
+            this._textBoxCurrentValue.Text = "0x12345678";
+            this._textBoxCurrentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // _checkBoxFixAddress
+            // 
+            this._checkBoxFixAddress.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this._checkBoxFixAddress.AutoSize = true;
+            this._checkBoxFixAddress.Location = new System.Drawing.Point(74, 110);
+            this._checkBoxFixAddress.Name = "_checkBoxFixAddress";
+            this._checkBoxFixAddress.Size = new System.Drawing.Size(64, 17);
+            this._checkBoxFixAddress.TabIndex = 39;
+            this._checkBoxFixAddress.Text = "Fix Addr";
+            this._checkBoxFixAddress.UseVisualStyleBackColor = true;
             // 
             // VariableControllerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(181, 144);
+            this.ClientSize = new System.Drawing.Size(487, 317);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -208,5 +221,6 @@
         private System.Windows.Forms.CheckBox _checkBoxLock;
         private BetterTextbox _textBoxVarName;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.CheckBox _checkBoxFixAddress;
     }
 }
