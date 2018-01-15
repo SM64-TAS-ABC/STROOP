@@ -53,11 +53,23 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
-        /// <summary>
-        /// Manages illumanati
-        /// </summary>
+        private static readonly List<VariableGroup> ALL_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Intermediate,
+                VariableGroup.Advanced,
+            };
+
+        private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Intermediate,
+            };
+
         public TriangleManager(Control tabControl, List<WatchVariableControl> variables, WatchVariablePanel watchVariablePanel) 
-            : base(variables, watchVariablePanel)
+            : base(variables, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             Instance = this;
 
