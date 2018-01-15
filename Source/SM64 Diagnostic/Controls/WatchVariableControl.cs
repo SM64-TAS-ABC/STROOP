@@ -123,6 +123,10 @@ namespace SM64_Diagnostic.Controls
         public static int VariableNameWidth = 120;
         public static int VariableValueWidth = 80;
 
+        private int _variableHeight;
+        private int _variableNameWidth;
+        private int _variableValueWidth;
+
         public WatchVariableControl(
             WatchVariableControlPrecursor watchVarPrecursor,
             string name,
@@ -150,6 +154,11 @@ namespace SM64_Diagnostic.Controls
             _currentColor = _baseColor;
             _justFailed = false;
             _lastFailureTime = DateTime.Now;
+
+            // Initialize size fields
+            _variableHeight = VariableHeight;
+            _variableNameWidth = VariableNameWidth;
+            _variableValueWidth = VariableValueWidth;
 
             // Initialize control fields
             InitializeBase();
@@ -185,17 +194,17 @@ namespace SM64_Diagnostic.Controls
 
         private void InitializeBase()
         {
-            base.Size = new Size(VariableNameWidth + VariableValueWidth, VariableHeight + 2);
+            base.Size = new Size(_variableNameWidth + _variableValueWidth, _variableHeight + 2);
             base.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             base.RowCount = 1;
             base.ColumnCount = 2;
             base.RowStyles.Clear();
-            base.RowStyles.Add(new RowStyle(SizeType.Absolute, VariableHeight + 0));
+            base.RowStyles.Add(new RowStyle(SizeType.Absolute, _variableHeight));
             base.ColumnStyles.Clear();
             base.Margin = new Padding(0);
             base.Padding = new Padding(0);
-            base.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, VariableNameWidth));
-            base.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, VariableValueWidth));
+            base.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _variableNameWidth));
+            base.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _variableValueWidth));
             base.BackColor = _currentColor;
         }
 
