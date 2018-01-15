@@ -14,11 +14,13 @@ namespace SM64_Diagnostic.Controls
 {
     public class WatchVariableControl : TableLayoutPanel
     {
-        public readonly List<VariableGroup> GroupList;
-
+        // Main objects
         private readonly WatchVariableControlPrecursor _watchVarPrecursor;
         private readonly WatchVariableWrapper _watchVarWrapper;
+        public readonly List<VariableGroup> GroupList;
 
+        // Sub controls
+        private readonly Panel _namePanel;
         private readonly TextBox _nameTextBox;
         private readonly TextBox _valueTextBox;
         private readonly CheckBox _valueCheckBox;
@@ -176,14 +178,22 @@ namespace SM64_Diagnostic.Controls
 
             // Initialize control fields
             InitializeBase();
+            _namePanel = CreateNamePanel();
             _nameTextBox = CreateNameTextBox();
             //_lockPictureBox = CreateLockPictureBox();
             _valueTextBox = CreateValueTextBox();
             _valueCheckBox = CreateValueCheckBox();
-            base.Controls.Add(_nameTextBox, 0, 0);
             //base.Controls.Add(_lockPictureBox, 0, 0);
             base.Controls.Add(_valueTextBox, 1, 0);
             base.Controls.Add(_valueCheckBox, 1, 0);
+
+
+
+            //base.Controls.Add(_namePanel, 0, 0);
+            //_namePanel.Controls.Add(_nameTextBox);
+            base.Controls.Add(_nameTextBox, 0, 0);
+
+
 
             // Create var x
             _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(watchVar, this, subclass, useHex, invertBool, coordinate);
@@ -222,6 +232,17 @@ namespace SM64_Diagnostic.Controls
             base.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _variableNameWidth));
             base.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _variableValueWidth));
             base.BackColor = _currentColor;
+        }
+
+        private Panel CreateNamePanel()
+        {
+            Panel namePanel = new Panel();
+            namePanel.Dock = DockStyle.Fill;
+            //namePanel.Location = new System.Drawing.Point(0, 116);
+            namePanel.Margin = new Padding(0, 0, 0, 0);
+            namePanel.BackColor = Color.LightPink;
+            //namePanel.Size = new System.Drawing.Size(187, 116);
+            return namePanel;
         }
 
         private TextBox CreateNameTextBox()
