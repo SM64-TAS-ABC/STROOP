@@ -241,10 +241,10 @@ namespace SM64_Diagnostic.Controls
         private PictureBox CreateLockPictureBox()
         {
             PictureBox lockPictureBox = new PictureBox();
-            //lockPictureBox.Size = new Size(20, 20);
             lockPictureBox.Image = Properties.Resources._lock;
-            lockPictureBox.BorderStyle = BorderStyle.None;
-            lockPictureBox.Margin = new Padding(0, 0, 50, 0);
+            lockPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            lockPictureBox.Size = new Size(18, 18);
+            lockPictureBox.Margin = new Padding(0, 0, 3, 0);
             lockPictureBox.Anchor = AnchorStyles.Right;
             return lockPictureBox;
         }
