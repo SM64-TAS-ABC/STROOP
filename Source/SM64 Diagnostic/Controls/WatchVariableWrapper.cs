@@ -119,7 +119,11 @@ namespace SM64_Diagnostic.Controls
             itemCopyUnrounded.Click += (sender, e) => { Clipboard.SetText(GetStringValue(false)); };
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
-            itemPaste.Click += (sender, e) => { SetStringValue(Clipboard.GetText()); };
+            itemPaste.Click += (sender, e) =>
+            {
+                bool success = SetStringValue(Clipboard.GetText());
+                if (!success) _watchVarControl.FlashColor(WatchVariableControl.FAILURE_COLOR);
+            };
 
             _contextMenuStrip.AddToBeginningList(itemHighlight);
             _contextMenuStrip.AddToBeginningList(_itemLock);
