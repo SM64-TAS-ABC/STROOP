@@ -47,7 +47,7 @@ namespace SM64_Diagnostic.Controls
         }
 
         private static readonly Pen _borderPen = new Pen(Color.Red, 5);
-        private static readonly int FAILURE_DURATION_MS = 1000;
+        private static readonly int FLASH_DURATION_MS = 1000;
         private static readonly Color FAILURE_COLOR = Color.Red;
         private static readonly Color DEFAULT_COLOR = SystemColors.Control;
 
@@ -59,8 +59,9 @@ namespace SM64_Diagnostic.Controls
         }
 
         private Color _currentColor;
-        private bool _justFailed;
-        private DateTime _lastFailureTime;
+        private bool _isFlashing;
+        private DateTime _flashStartTime;
+        private Color _flashColor;
 
         private string _varName;
         public string VarName
@@ -177,8 +178,8 @@ namespace SM64_Diagnostic.Controls
             // Initialize color fields
             _baseColor = backgroundColor ?? DEFAULT_COLOR;
             _currentColor = _baseColor;
-            _justFailed = false;
-            _lastFailureTime = DateTime.Now;
+            _isFlashing = false;
+            _flashStartTime = DateTime.Now;
 
             // Initialize size fields
             _variableNameWidth = VariableNameWidth;
@@ -346,7 +347,7 @@ namespace SM64_Diagnostic.Controls
                 {
                     bool success = _watchVarWrapper.SetStringValue(_valueTextBox.Text, FixedAddressList);
                     EditMode = false;
-                    if (!success) InvokeFailure();
+                    if (!success) FlashColor(FAILURE_COLOR);
                     this.Focus();
                     return;
                 }
@@ -413,7 +414,7 @@ namespace SM64_Diagnostic.Controls
         private void OnCheckboxClick()
         {
             bool success = _watchVarWrapper.SetCheckStateValue(_valueCheckBox.CheckState, FixedAddressList);
-            if (!success) InvokeFailure();
+            if (!success) FlashColor(FAILURE_COLOR);
         }
 
         public void UpdateControl()
@@ -467,29 +468,6 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        private void UpdateColor()
-        {
-            if (_justFailed)
-            {
-                DateTime currentTime = DateTime.Now;
-                double timeSinceLastFailure = currentTime.Subtract(_lastFailureTime).TotalMilliseconds;
-                if (timeSinceLastFailure < FAILURE_DURATION_MS)
-                {
-                    _currentColor = ColorUtilities.InterpolateColor(
-                        FAILURE_COLOR, _baseColor, timeSinceLastFailure / FAILURE_DURATION_MS);
-                }
-                else
-                {
-                    _currentColor = _baseColor;
-                    _justFailed = false;
-                }
-            }
-
-            BackColor = _currentColor;
-            if (!_editMode) _valueTextBox.BackColor = _currentColor;
-            if (!_renameMode) _nameTextBox.BackColor = _currentColor;
-        }
-
         private void UpdateSize()
         {
             if (_variableNameWidth == VariableNameWidth &&
@@ -507,11 +485,39 @@ namespace SM64_Diagnostic.Controls
             ColumnStyles[1].Width = _variableValueWidth;
         }
 
-        private void InvokeFailure()
+        private void UpdateColor()
         {
-            _justFailed = true;
-            _lastFailureTime = DateTime.Now;
+            if (_isFlashing)
+            {
+                DateTime currentTime = DateTime.Now;
+                double timeSinceFlashStart = currentTime.Subtract(_flashStartTime).TotalMilliseconds;
+                if (timeSinceFlashStart < FLASH_DURATION_MS)
+                {
+                    _currentColor = ColorUtilities.InterpolateColor(
+                        _flashColor, _baseColor, timeSinceFlashStart / FLASH_DURATION_MS);
+                }
+                else
+                {
+                    _currentColor = _baseColor;
+                    _isFlashing = false;
+                }
+            }
+
+            BackColor = _currentColor;
+            if (!_editMode) _valueTextBox.BackColor = _currentColor;
+            if (!_renameMode) _nameTextBox.BackColor = _currentColor;
         }
+
+        private void FlashColor(Color color)
+        {
+            _flashStartTime = DateTime.Now;
+            _flashColor = color;
+            _isFlashing = true;
+        }
+
+
+
+
 
         public bool BelongsToGroup(VariableGroup variableGroup)
         {
@@ -552,6 +558,10 @@ namespace SM64_Diagnostic.Controls
             _watchVarWrapper.NotifyFiltering(items, updateFunction);
         }
         */
+
+
+
+
 
         protected override void OnPaint(PaintEventArgs e)
         {
