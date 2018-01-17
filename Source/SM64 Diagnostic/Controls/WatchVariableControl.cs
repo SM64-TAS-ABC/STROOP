@@ -362,32 +362,30 @@ namespace SM64_Diagnostic.Controls
 
             if (isAltKeyHeld)
             {
+                this.Focus();
+                EnableCustomFunctionality();
                 return;
             }
 
             if (isShiftKeyHeld)
             {
+                this.Focus();
                 return;
             }
 
             if (isCtrlKeyHeld)
             {
-                AddToCustomTab();
                 this.Focus();
+                AddCopyToCustomTab();
                 return;
             }
 
             // default
             {
-                _watchVarWrapper.ShowVarInfo();
                 this.Focus();
+                _watchVarWrapper.ShowVarInfo();
                 return;
             }
-        }
-
-        public void AddToCustomTab()
-        {
-
         }
 
         private void OnNameTextValueKeyDown(KeyEventArgs e)
