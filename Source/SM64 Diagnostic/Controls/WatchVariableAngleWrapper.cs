@@ -132,7 +132,7 @@ namespace SM64_Diagnostic.Controls
             if (!doubleValueNullable.HasValue) return stringValue;
             double doubleValue = doubleValueNullable.Value;
 
-            if (_truncateToMultipleOf16 || _angleUnitType == AngleUnitType.HAU)
+            if (_truncateToMultipleOf16 != (_angleUnitType == AngleUnitType.HAU))
             {
                 doubleValue = MoreMath.TruncateToMultipleOf16(doubleValue);
             }
