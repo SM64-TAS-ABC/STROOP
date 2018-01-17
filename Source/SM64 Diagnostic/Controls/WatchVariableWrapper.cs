@@ -161,9 +161,8 @@ namespace SM64_Diagnostic.Controls
             _itemFixAddress = new ToolStripMenuItem("Fix Address");
             _itemFixAddress.Click += (sender, e) =>
             {
-                bool fixAddress = !_itemFixAddress.Checked;
-                _itemFixAddress.Checked = fixAddress;
-                _watchVarControl.FixedAddressList = fixAddress ? _watchVar.AddressList : null;
+                _watchVarControl.ToggleFixedAddress();
+                _itemFixAddress.Checked = _watchVarControl.FixedAddressList != null;
             };
             _itemFixAddress.Visible = false;
 
@@ -217,6 +216,7 @@ namespace SM64_Diagnostic.Controls
         {
             _itemLock.Checked = GetLockedBool(addresses);
             _itemRemoveAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
+            _itemFixAddress.Checked = _watchVarControl.FixedAddressList != null;
             //_updateFilterItemsFunction?.Invoke();
         }
 

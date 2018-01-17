@@ -362,35 +362,64 @@ namespace SM64_Diagnostic.Controls
 
         private void OnNameTextBoxClick()
         {
+            this.Focus();
+
             KeyboardState keyboardState = Keyboard.GetState();
             bool isCtrlKeyHeld = keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight);
             bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
             bool isAltKeyHeld = keyboardState.IsKeyDown(Key.AltLeft) || keyboardState.IsKeyDown(Key.AltRight);
+            bool isFKeyHeld = keyboardState.IsKeyDown(Key.F);
+            bool isRKeyHeld = keyboardState.IsKeyDown(Key.R);
+            bool isDeleteKeyHeld =
+                keyboardState.IsKeyDown(Key.Delete) ||
+                keyboardState.IsKeyDown(Key.BackSpace) ||
+                keyboardState.IsKeyDown(Key.Escape);
 
-            if (isAltKeyHeld)
+            if (isFKeyHeld && isCtrlKeyHeld)
             {
-                this.Focus();
-                EnableCustomFunctionality();
+                WatchVariableControl newControl = AddCopyToCustomTab();
+                newControl.ToggleFixedAddress();
                 return;
             }
 
-            if (isShiftKeyHeld)
+            if (isFKeyHeld)
             {
-                this.Focus();
-                NotifyPanelOfReodering();
+                ToggleFixedAddress();
+                return;
+            }
+
+            if (isRKeyHeld)
+            {
+                RenameMode = true;
+                return;
+            }
+
+            if (isDeleteKeyHeld)
+            {
+                DeleteFromPanel();
                 return;
             }
 
             if (isCtrlKeyHeld)
             {
-                this.Focus();
                 AddCopyToCustomTab();
+                return;
+            }
+
+            if (isShiftKeyHeld)
+            {
+                NotifyPanelOfReodering();
+                return;
+            }
+
+            if (isAltKeyHeld)
+            {
+                EnableCustomFunctionality();
                 return;
             }
 
             // default
             {
-                this.Focus();
                 _watchVarWrapper.ShowVarInfo();
                 return;
             }
@@ -549,10 +578,12 @@ namespace SM64_Diagnostic.Controls
             _watchVariablePanel?.RemoveVariable(this);
         }
 
-        public void AddCopyToCustomTab()
+        public WatchVariableControl AddCopyToCustomTab()
         {
-            CustomManager.Instance.AddVariable(_watchVarPrecursor.CreateWatchVariableControl());
+            WatchVariableControl newControl = _watchVarPrecursor.CreateWatchVariableControl();
+            CustomManager.Instance.AddVariable(newControl);
             FlashColor(ADD_TO_CUSTOM_TAB_COLOR);
+            return newControl;
         }
 
         public void EnableCustomFunctionality()
@@ -564,6 +595,18 @@ namespace SM64_Diagnostic.Controls
         public void NotifyPanelOfReodering()
         {
             _watchVariablePanel.NotifyOfReordering(this);
+        }
+
+        public void ToggleFixedAddress()
+        {
+            if (FixedAddressList == null)
+            {
+                FixedAddressList = _watchVarWrapper.GetCurrentAddresses();
+            }
+            else
+            {
+                FixedAddressList = null;
+            }
         }
 
         /*
