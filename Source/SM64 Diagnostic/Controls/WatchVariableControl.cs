@@ -47,9 +47,12 @@ namespace SM64_Diagnostic.Controls
         }
 
         private static readonly Pen _borderPen = new Pen(Color.Red, 5);
-        private static readonly int FLASH_DURATION_MS = 1000;
-        private static readonly Color FAILURE_COLOR = Color.Red;
+
         private static readonly Color DEFAULT_COLOR = SystemColors.Control;
+        private static readonly Color FAILURE_COLOR = Color.Red;
+        private static readonly Color ENABLE_CUSTOM_FUNCIONALITY_COLOR = Color.Yellow;
+        private static readonly Color ADD_TO_CUSTOM_TAB_COLOR = Color.CornflowerBlue;
+        private static readonly int FLASH_DURATION_MS = 1000;
 
         private Color _baseColor;
         public Color BaseColor
@@ -545,11 +548,13 @@ namespace SM64_Diagnostic.Controls
         public void AddCopyToCustomTab()
         {
             CustomManager.Instance.AddVariable(_watchVarPrecursor.CreateWatchVariableControl());
+            FlashColor(ADD_TO_CUSTOM_TAB_COLOR);
         }
 
         public void EnableCustomFunctionality()
         {
             _watchVarWrapper.EnableCustomFunctionality();
+            FlashColor(ENABLE_CUSTOM_FUNCIONALITY_COLOR);
         }
 
         /*
