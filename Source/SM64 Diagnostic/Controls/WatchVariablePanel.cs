@@ -1,6 +1,7 @@
 ﻿using SM64_Diagnostic.Structs;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace SM64_Diagnostic.Controls
 
         private bool _hasSetVariableGroups;
         private bool _hasAddedVariables;
+        private WatchVariableControl _reorderingWatchVarControl;
 
         public WatchVariablePanel()
         {
@@ -31,6 +33,7 @@ namespace SM64_Diagnostic.Controls
 
             _hasSetVariableGroups = false;
             _hasAddedVariables = false;
+            _reorderingWatchVarControl = null;
         }
 
         protected override CreateParams CreateParams
@@ -123,7 +126,7 @@ namespace SM64_Diagnostic.Controls
                 {
                     _watchVarControlsList.Add(watchVarControl);
                     if (ShouldShow(watchVarControl)) Controls.Add(watchVarControl);
-                    watchVarControl.NotifyPanel(this);
+                    watchVarControl.SetPanel(this);
                     // This adds delay to clicking on object slots. Consider rethinking it
                     /*
                     if (_hasSetVariableGroups)
@@ -150,7 +153,7 @@ namespace SM64_Diagnostic.Controls
                 {
                     _watchVarControlsList.Remove(watchVarControl);
                     if (ShouldShow(watchVarControl)) Controls.Remove(watchVarControl);
-                    watchVarControl.NotifyPanel(null);
+                    watchVarControl.SetPanel(null);
                 });
             }
         }
@@ -168,6 +171,27 @@ namespace SM64_Diagnostic.Controls
             List<WatchVariableControl> watchVarControlListCopy =
                 new List<WatchVariableControl>(_watchVarControlsList);
             RemoveVariables(watchVarControlListCopy);
+        }
+
+        public void NotifyOfReordering(WatchVariableControl watchVarControl)
+        {
+            if (_reorderingWatchVarControl == null)
+            {
+                _reorderingWatchVarControl = watchVarControl;
+                _reorderingWatchVarControl.FlashColor(WatchVariableControl.REORDER_START_COLOR);
+            }
+            else if (watchVarControl == _reorderingWatchVarControl)
+            {
+                _reorderingWatchVarControl.FlashColor(WatchVariableControl.REORDER_RESET_COLOR);
+                _reorderingWatchVarControl = null;
+            }
+            else
+            {
+                int newIndex = Controls.IndexOf(watchVarControl);
+                Controls.SetChildIndex(_reorderingWatchVarControl, newIndex);
+                _reorderingWatchVarControl.FlashColor(WatchVariableControl.REORDER_END_COLOR);
+                _reorderingWatchVarControl = null;
+            }
         }
 
         public void UpdateControls()

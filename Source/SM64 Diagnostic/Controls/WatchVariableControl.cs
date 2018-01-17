@@ -48,10 +48,13 @@ namespace SM64_Diagnostic.Controls
 
         private static readonly Pen _borderPen = new Pen(Color.Red, 5);
 
-        private static readonly Color DEFAULT_COLOR = SystemColors.Control;
-        private static readonly Color FAILURE_COLOR = Color.Red;
-        private static readonly Color ENABLE_CUSTOM_FUNCIONALITY_COLOR = Color.Yellow;
-        private static readonly Color ADD_TO_CUSTOM_TAB_COLOR = Color.CornflowerBlue;
+        public static readonly Color DEFAULT_COLOR = SystemColors.Control;
+        public static readonly Color FAILURE_COLOR = Color.Red;
+        public static readonly Color ENABLE_CUSTOM_FUNCIONALITY_COLOR = Color.Yellow;
+        public static readonly Color ADD_TO_CUSTOM_TAB_COLOR = Color.CornflowerBlue;
+        public static readonly Color REORDER_START_COLOR = Color.DarkGreen;
+        public static readonly Color REORDER_END_COLOR = Color.LightGreen;
+        public static readonly Color REORDER_RESET_COLOR = Color.Black;
         private static readonly int FLASH_DURATION_MS = 1000;
 
         private Color _baseColor;
@@ -374,6 +377,7 @@ namespace SM64_Diagnostic.Controls
             if (isShiftKeyHeld)
             {
                 this.Focus();
+                NotifyPanelOfReodering();
                 return;
             }
 
@@ -511,7 +515,7 @@ namespace SM64_Diagnostic.Controls
             if (!_renameMode) _nameTextBox.BackColor = _currentColor;
         }
 
-        private void FlashColor(Color color)
+        public void FlashColor(Color color)
         {
             _flashStartTime = DateTime.Now;
             _flashColor = color;
@@ -535,7 +539,7 @@ namespace SM64_Diagnostic.Controls
 
 
 
-        public void NotifyPanel(WatchVariablePanel panel)
+        public void SetPanel(WatchVariablePanel panel)
         {
             _watchVariablePanel = panel;
         }
@@ -555,6 +559,11 @@ namespace SM64_Diagnostic.Controls
         {
             _watchVarWrapper.EnableCustomFunctionality();
             FlashColor(ENABLE_CUSTOM_FUNCIONALITY_COLOR);
+        }
+
+        public void NotifyPanelOfReodering()
+        {
+            _watchVariablePanel.NotifyOfReordering(this);
         }
 
         /*
