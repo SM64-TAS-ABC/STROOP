@@ -33,7 +33,7 @@ namespace SM64_Diagnostic
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -550,6 +550,7 @@ namespace SM64_Diagnostic
             this.buttonVarNameWidthSubtract = new System.Windows.Forms.Button();
             this.buttonVarNameWidthSet = new System.Windows.Forms.Button();
             this.buttonVarNameWidthAdd = new System.Windows.Forms.Button();
+            this.buttonResetVariableSizeToDefault = new System.Windows.Forms.Button();
             this.buttonClearVariables = new System.Windows.Forms.Button();
             this.watchVariablePanelCustom = new SM64_Diagnostic.Controls.WatchVariablePanel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
@@ -1005,7 +1006,8 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.buttonResetVariableSizeToDefault = new System.Windows.Forms.Button();
+            this.buttonDecompilerBack = new System.Windows.Forms.Button();
+            this.buttonDecompilerNext = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1494,13 +1496,13 @@ namespace SM64_Diagnostic
             this.tabControlMain.Controls.Add(this.tabPageModel);
             this.tabControlMain.Controls.Add(this.tabPageExpressions);
             this.tabControlMain.Controls.Add(this.tabPageDisassembly);
+            this.tabControlMain.Controls.Add(this.tabPageDecompiler);
             this.tabControlMain.Controls.Add(this.tabPageScripts);
             this.tabControlMain.Controls.Add(this.tabPageHacks);
             this.tabControlMain.Controls.Add(this.tabPageCamHack);
             this.tabControlMain.Controls.Add(this.tabPageQuarterFrame);
             this.tabControlMain.Controls.Add(this.tabPageOptions);
             this.tabControlMain.Controls.Add(this.tabPageTesting);
-            this.tabControlMain.Controls.Add(this.tabPageDecompiler);
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(2, 2);
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(2);
@@ -7963,6 +7965,15 @@ namespace SM64_Diagnostic
             this.buttonVarNameWidthAdd.Text = "Width+";
             this.buttonVarNameWidthAdd.UseVisualStyleBackColor = true;
             // 
+            // buttonResetVariableSizeToDefault
+            // 
+            this.buttonResetVariableSizeToDefault.Location = new System.Drawing.Point(7, 51);
+            this.buttonResetVariableSizeToDefault.Name = "buttonResetVariableSizeToDefault";
+            this.buttonResetVariableSizeToDefault.Size = new System.Drawing.Size(179, 38);
+            this.buttonResetVariableSizeToDefault.TabIndex = 4;
+            this.buttonResetVariableSizeToDefault.Text = "Reset Variable Size to Default";
+            this.buttonResetVariableSizeToDefault.UseVisualStyleBackColor = true;
+            // 
             // buttonClearVariables
             // 
             this.buttonClearVariables.Location = new System.Drawing.Point(7, 7);
@@ -8628,7 +8639,7 @@ namespace SM64_Diagnostic
             // buttonPuConZnPu
             // 
             this.buttonPuConZnPu.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonPuConZnPu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPuConZnPu.BackgroundImage")));
+            this.buttonPuConZnPu.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_arrow_up;
             this.buttonPuConZnPu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonPuConZnPu.Location = new System.Drawing.Point(98, 52);
             this.buttonPuConZnPu.Name = "buttonPuConZnPu";
@@ -8640,7 +8651,7 @@ namespace SM64_Diagnostic
             // buttonPuConXpQpu
             // 
             this.buttonPuConXpQpu.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonPuConXpQpu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPuConXpQpu.BackgroundImage")));
+            this.buttonPuConXpQpu.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_double_arrow_right;
             this.buttonPuConXpQpu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonPuConXpQpu.Location = new System.Drawing.Point(163, 86);
             this.buttonPuConXpQpu.Name = "buttonPuConXpQpu";
@@ -8652,7 +8663,7 @@ namespace SM64_Diagnostic
             // buttonPuConXnQpu
             // 
             this.buttonPuConXnQpu.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonPuConXnQpu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPuConXnQpu.BackgroundImage")));
+            this.buttonPuConXnQpu.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_double_arrow_left;
             this.buttonPuConXnQpu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonPuConXnQpu.Location = new System.Drawing.Point(34, 86);
             this.buttonPuConXnQpu.Name = "buttonPuConXnQpu";
@@ -8664,7 +8675,7 @@ namespace SM64_Diagnostic
             // buttonPuConXnPu
             // 
             this.buttonPuConXnPu.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonPuConXnPu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPuConXnPu.BackgroundImage")));
+            this.buttonPuConXnPu.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_arrow_left;
             this.buttonPuConXnPu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonPuConXnPu.Location = new System.Drawing.Point(65, 86);
             this.buttonPuConXnPu.Name = "buttonPuConXnPu";
@@ -8676,7 +8687,7 @@ namespace SM64_Diagnostic
             // buttonPuConZnQpu
             // 
             this.buttonPuConZnQpu.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonPuConZnQpu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPuConZnQpu.BackgroundImage")));
+            this.buttonPuConZnQpu.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_double_arrow_up;
             this.buttonPuConZnQpu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonPuConZnQpu.Location = new System.Drawing.Point(98, 21);
             this.buttonPuConZnQpu.Name = "buttonPuConZnQpu";
@@ -8688,7 +8699,7 @@ namespace SM64_Diagnostic
             // buttonPuConXpPu
             // 
             this.buttonPuConXpPu.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonPuConXpPu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPuConXpPu.BackgroundImage")));
+            this.buttonPuConXpPu.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_arrow_right;
             this.buttonPuConXpPu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonPuConXpPu.Location = new System.Drawing.Point(132, 86);
             this.buttonPuConXpPu.Name = "buttonPuConXpPu";
@@ -8700,7 +8711,7 @@ namespace SM64_Diagnostic
             // buttonPuConZpPu
             // 
             this.buttonPuConZpPu.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonPuConZpPu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPuConZpPu.BackgroundImage")));
+            this.buttonPuConZpPu.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_arrow_down;
             this.buttonPuConZpPu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonPuConZpPu.Location = new System.Drawing.Point(98, 119);
             this.buttonPuConZpPu.Name = "buttonPuConZpPu";
@@ -8712,7 +8723,7 @@ namespace SM64_Diagnostic
             // buttonPuConZpQpu
             // 
             this.buttonPuConZpQpu.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonPuConZpQpu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPuConZpQpu.BackgroundImage")));
+            this.buttonPuConZpQpu.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_double_arrow_down;
             this.buttonPuConZpQpu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonPuConZpQpu.Location = new System.Drawing.Point(98, 150);
             this.buttonPuConZpQpu.Name = "buttonPuConZpQpu";
@@ -8724,7 +8735,7 @@ namespace SM64_Diagnostic
             // buttonPuConHome
             // 
             this.buttonPuConHome.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonPuConHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPuConHome.BackgroundImage")));
+            this.buttonPuConHome.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_home;
             this.buttonPuConHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonPuConHome.Font = new System.Drawing.Font("Webdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonPuConHome.Location = new System.Drawing.Point(96, 83);
@@ -9690,8 +9701,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9766,11 +9777,11 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBoxDissasembly.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxDissasembly.Location = new System.Drawing.Point(3, 23);
+            this.richTextBoxDissasembly.Location = new System.Drawing.Point(3, 26);
             this.richTextBoxDissasembly.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
             this.richTextBoxDissasembly.ReadOnly = true;
-            this.richTextBoxDissasembly.Size = new System.Drawing.Size(910, 438);
+            this.richTextBoxDissasembly.Size = new System.Drawing.Size(910, 435);
             this.richTextBoxDissasembly.TabIndex = 0;
             this.richTextBoxDissasembly.Text = "";
             // 
@@ -12914,6 +12925,8 @@ namespace SM64_Diagnostic
             // 
             // tabPageDecompiler
             // 
+            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerBack);
+            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerNext);
             this.tabPageDecompiler.Controls.Add(this.textBoxDecompilerAddress);
             this.tabPageDecompiler.Controls.Add(this.buttonDecompilerDecompile);
             this.tabPageDecompiler.Controls.Add(this.labelDecompilerAddress);
@@ -12970,9 +12983,12 @@ namespace SM64_Diagnostic
             // 
             // listViewDecompiler
             // 
+            this.listViewDecompiler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewDecompiler.Location = new System.Drawing.Point(4, 4);
             this.listViewDecompiler.Name = "listViewDecompiler";
-            this.listViewDecompiler.Size = new System.Drawing.Size(294, 385);
+            this.listViewDecompiler.Size = new System.Drawing.Size(294, 423);
             this.listViewDecompiler.TabIndex = 0;
             this.listViewDecompiler.UseCompatibleStateImageBehavior = false;
             // 
@@ -13175,14 +13191,29 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // buttonResetVariableSizeToDefault
+            // buttonDecompilerBack
             // 
-            this.buttonResetVariableSizeToDefault.Location = new System.Drawing.Point(7, 51);
-            this.buttonResetVariableSizeToDefault.Name = "buttonResetVariableSizeToDefault";
-            this.buttonResetVariableSizeToDefault.Size = new System.Drawing.Size(179, 38);
-            this.buttonResetVariableSizeToDefault.TabIndex = 4;
-            this.buttonResetVariableSizeToDefault.Text = "Reset Variable Size to Default";
-            this.buttonResetVariableSizeToDefault.UseVisualStyleBackColor = true;
+            this.buttonDecompilerBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonDecompilerBack.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_arrow_left;
+            this.buttonDecompilerBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDecompilerBack.Location = new System.Drawing.Point(220, 1);
+            this.buttonDecompilerBack.Name = "buttonDecompilerBack";
+            this.buttonDecompilerBack.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonDecompilerBack.Size = new System.Drawing.Size(25, 25);
+            this.buttonDecompilerBack.TabIndex = 13;
+            this.buttonDecompilerBack.UseVisualStyleBackColor = true;
+            // 
+            // buttonDecompilerNext
+            // 
+            this.buttonDecompilerNext.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonDecompilerNext.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_arrow_right;
+            this.buttonDecompilerNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDecompilerNext.Location = new System.Drawing.Point(251, 1);
+            this.buttonDecompilerNext.Name = "buttonDecompilerNext";
+            this.buttonDecompilerNext.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonDecompilerNext.Size = new System.Drawing.Size(25, 25);
+            this.buttonDecompilerNext.TabIndex = 12;
+            this.buttonDecompilerNext.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -14574,6 +14605,8 @@ namespace SM64_Diagnostic
         private Button buttonVarNameWidthAdd;
         private Button buttonClearVariables;
         private Button buttonResetVariableSizeToDefault;
+        private Button buttonDecompilerBack;
+        private Button buttonDecompilerNext;
     }
 }
 
