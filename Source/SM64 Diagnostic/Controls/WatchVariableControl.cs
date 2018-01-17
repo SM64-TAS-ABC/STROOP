@@ -1,4 +1,6 @@
-﻿using SM64_Diagnostic.Extensions;
+﻿using OpenTK.Input;
+using SM64_Diagnostic.Extensions;
+using SM64_Diagnostic.Managers;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Utilities;
 using System;
@@ -28,6 +30,9 @@ namespace SM64_Diagnostic.Controls
         private readonly CheckBox _valueCheckBox;
         private readonly ContextMenuStrip _valueTextboxOriginalContextMenuStrip;
         private readonly ContextMenuStrip _nameTextboxOriginalContextMenuStrip;
+
+        // Parent control
+        private WatchVariablePanel _watchVariablePanel;
 
         public string TextBoxValue
         {
@@ -350,8 +355,39 @@ namespace SM64_Diagnostic.Controls
 
         private void OnNameTextBoxClick()
         {
-            this.Focus();
-            _watchVarWrapper.ShowVarInfo();
+            KeyboardState keyboardState = Keyboard.GetState();
+            bool isCtrlKeyHeld = keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight);
+            bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
+            bool isAltKeyHeld = keyboardState.IsKeyDown(Key.AltLeft) || keyboardState.IsKeyDown(Key.AltRight);
+
+            if (isAltKeyHeld)
+            {
+                return;
+            }
+
+            if (isShiftKeyHeld)
+            {
+                return;
+            }
+
+            if (isCtrlKeyHeld)
+            {
+                AddToCustomTab();
+                this.Focus();
+                return;
+            }
+
+            // default
+            {
+                _watchVarWrapper.ShowVarInfo();
+                this.Focus();
+                return;
+            }
+        }
+
+        public void AddToCustomTab()
+        {
+
         }
 
         private void OnNameTextValueKeyDown(KeyEventArgs e)
@@ -489,9 +525,27 @@ namespace SM64_Diagnostic.Controls
             return variableGroups.Any(varGroup => BelongsToGroup(varGroup));
         }
 
+
+
+
         public void NotifyPanel(WatchVariablePanel panel)
         {
-            _watchVarWrapper.NotifyPanel(panel);
+            _watchVariablePanel = panel;
+        }
+
+        public void DeleteFromPanel()
+        {
+            _watchVariablePanel?.RemoveVariable(this);
+        }
+
+        public void AddCopyToCustomTab()
+        {
+            CustomManager.Instance.AddVariable(_watchVarPrecursor.CreateWatchVariableControl());
+        }
+
+        public void EnableCustomFunctionality()
+        {
+            _watchVarWrapper.EnableCustomFunctionality();
         }
 
         /*
@@ -501,11 +555,6 @@ namespace SM64_Diagnostic.Controls
         }
         */
 
-        public void NotifyInCustomTab()
-        {
-            _watchVarWrapper.NotifyInCustomTab();
-        }
-
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -514,11 +563,6 @@ namespace SM64_Diagnostic.Controls
             rec.Height -= 1;
             if (_showBorder)
                 e.Graphics.DrawRectangle(_borderPen, rec);
-        }
-
-        public WatchVariableControl CreateCopy()
-        {
-            return _watchVarPrecursor.CreateWatchVariableControl();
         }
     }
 }

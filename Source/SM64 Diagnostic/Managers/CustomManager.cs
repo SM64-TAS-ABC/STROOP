@@ -22,7 +22,7 @@ namespace SM64_Diagnostic.Managers
         {
             Instance = this;
 
-            variables.ForEach(variable => variable.NotifyInCustomTab());
+            variables.ForEach(variable => variable.EnableCustomFunctionality());
 
             SplitContainer splitContainerCustom = customControl.Controls["splitContainerCustom"] as SplitContainer;
 
@@ -116,7 +116,7 @@ namespace SM64_Diagnostic.Managers
         public override void AddVariable(WatchVariableControl watchVarControl)
         {
             base.AddVariable(watchVarControl);
-            watchVarControl.NotifyInCustomTab();
+            watchVarControl.EnableCustomFunctionality();
         }
 
         public override void Update(bool updateView)

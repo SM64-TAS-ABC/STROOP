@@ -23,7 +23,6 @@ namespace SM64_Diagnostic.Controls
         protected readonly WatchVariable _watchVar;
         protected readonly WatchVariableControl _watchVarControl;
         protected readonly BetterContextMenuStrip _contextMenuStrip;
-        protected WatchVariablePanel _watchVariablePanel;
 
         // Lock items
         private ToolStripMenuItem _itemLock;
@@ -142,7 +141,7 @@ namespace SM64_Diagnostic.Controls
             itemOpenController.Click += (sender, e) => { ShowVarController(); };
 
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
-            itemAddToCustomTab.Click += (sender, e) => { CustomManager.Instance.AddVariable(_watchVarControl.CreateCopy()); };
+            itemAddToCustomTab.Click += (sender, e) => { _watchVarControl.AddCopyToCustomTab(); };
 
             _contextMenuStrip.AddToEndingList(new ToolStripSeparator());
             //_contextMenuStrip.AddToEndingList(_itemFilter);
@@ -169,7 +168,7 @@ namespace SM64_Diagnostic.Controls
             _itemRename.Visible = false;
 
             _itemDelete = new ToolStripMenuItem("Delete");
-            _itemDelete.Click += (sender, e) => { _watchVariablePanel?.RemoveVariable(_watchVarControl); };
+            _itemDelete.Click += (sender, e) => { _watchVarControl.DeleteFromPanel(); };
             _itemDelete.Visible = false;
 
             _contextMenuStrip.AddToEndingList(_separatorCustom);
@@ -302,11 +301,6 @@ namespace SM64_Diagnostic.Controls
             return _watchVar.AddressList;
         }
 
-        public void NotifyPanel(WatchVariablePanel panel)
-        {
-            _watchVariablePanel = panel;
-        }
-
         /*
         public void NotifyFiltering(List<ToolStripMenuItem> items, Action updateFunction)
         {
@@ -317,7 +311,7 @@ namespace SM64_Diagnostic.Controls
         }
         */
 
-        public void NotifyInCustomTab()
+        public void EnableCustomFunctionality()
         {
             _separatorCustom.Visible = true;
             _itemFixAddress.Visible = true;
