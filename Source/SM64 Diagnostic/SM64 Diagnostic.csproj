@@ -440,7 +440,6 @@
     <EmbeddedResource Include="VariableViewerForm.resx">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmbeddedResources\Python.xshd" />
     <None Include="Lib\ensurepip\_bundled\pip-8.1.1-py2.py3-none-any.whl" />
     <None Include="Lib\ensurepip\_bundled\setuptools-20.10.1-py2.py3-none-any.whl" />
     <None Include="packages.config" />
@@ -566,21 +565,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <EmbeddedResource Include="EmbeddedResources\arrow-down.png" />
-    <EmbeddedResource Include="EmbeddedResources\arrow-left.png" />
-    <EmbeddedResource Include="EmbeddedResources\arrow-right.png" />
-    <EmbeddedResource Include="EmbeddedResources\arrow-up.png" />
-    <EmbeddedResource Include="EmbeddedResources\double-arrow-down.png" />
-    <EmbeddedResource Include="EmbeddedResources\double-arrow-left.png" />
-    <EmbeddedResource Include="EmbeddedResources\double-arrow-right.png" />
-    <EmbeddedResource Include="EmbeddedResources\double-arrow-up.png" />
-    <EmbeddedResource Include="EmbeddedResources\home.png" />
-    <EmbeddedResource Include="EmbeddedResources\lock.png" />
-    <EmbeddedResource Include="EmbeddedResources\select_bottom.png" />
-    <EmbeddedResource Include="EmbeddedResources\select_top.png" />
-    <EmbeddedResource Include="EmbeddedResources\decompile.py" />
-    <None Include="EmbeddedResources\pin.png" />
-    <None Include="EmbeddedResources\lock_grey.png" />
     <Content Include="icon.ico" />
     <Content Include="icon2.ico" />
     <Content Include="Lib\abc.py" />

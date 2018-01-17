@@ -139,9 +139,9 @@ namespace SM64_Diagnostic.Controls
 
         public List<uint> FixedAddressList;
 
-        private static readonly Image _lockedImage = Properties.Resources._lock;
-        private static readonly Image _someLockedImage = Properties.Resources.lock_grey;
-        private static readonly Image _pinnedImage = Properties.Resources.pin;
+        private static readonly Image _lockedImage = Properties.Resources.img_lock;
+        private static readonly Image _someLockedImage = Properties.Resources.img_lock_grey;
+        private static readonly Image _pinnedImage = Properties.Resources.img_pin;
 
         private static readonly int LOCK_PADDING = 16;
         private static readonly int PIN_OUTER_PADDING = 11;
@@ -275,7 +275,7 @@ namespace SM64_Diagnostic.Controls
         private PictureBox CreateLockPictureBox()
         {
             PictureBox lockPictureBox = new PictureBox();
-            lockPictureBox.Image = Properties.Resources._lock;
+            lockPictureBox.Image = Properties.Resources.img_lock;
             lockPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             lockPictureBox.Size = new Size(16, 18);
             lockPictureBox.Margin = new Padding(0, 0, 0, 0);
@@ -289,7 +289,7 @@ namespace SM64_Diagnostic.Controls
         private PictureBox CreatePinPictureBox()
         {
             PictureBox lockPictureBox = new PictureBox();
-            lockPictureBox.Image = Properties.Resources.pin;
+            lockPictureBox.Image = Properties.Resources.img_pin;
             lockPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             lockPictureBox.Size = new Size(10, 17);
             lockPictureBox.Margin = new Padding(0, 0, 0, 0);

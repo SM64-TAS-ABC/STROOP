@@ -10,10 +10,10 @@ using IronPython.Runtime;
 using Microsoft.Scripting.Hosting.Providers;
 using SM64_Diagnostic.Structs.Configurations;
 using System.IO;
-using System.Reflection;
 using SM64_Diagnostic.Controls;
 using System.Windows.Forms.Integration;
 using SM64_Diagnostic.Utilities;
+using SM64_Diagnostic.Properties;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -30,11 +30,10 @@ namespace SM64_Diagnostic.Managers
         static DecompilerManager()
         {
             // Load python script
-            var asm = Assembly.GetExecutingAssembly();
-            using (StreamReader stream = new StreamReader(
-                asm.GetManifestResourceStream("SM64_Diagnostic.EmbeddedResources.decompile.py")))
+            using (Stream stream = new MemoryStream(Resources.decompile_py))
+            using (StreamReader reader = new StreamReader(stream))
             {
-                decompile_py = stream.ReadToEnd();
+                decompile_py = reader.ReadToEnd();
             }
         }
 

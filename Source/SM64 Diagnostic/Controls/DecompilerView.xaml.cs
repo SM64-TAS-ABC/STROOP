@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,9 +29,7 @@ namespace SM64_Diagnostic.Controls
         static DecompilerView()
         {
             // Load python syntax
-            var asm = Assembly.GetExecutingAssembly();
-            using (StreamReader stream = new StreamReader(
-                asm.GetManifestResourceStream("SM64_Diagnostic.EmbeddedResources.Python.xshd")))
+            using (MemoryStream stream = new MemoryStream(Properties.Resources.python_xshd))
             {
                 _pythonSyntax = HighlightingLoader.Load(new XmlTextReader(stream),
                 HighlightingManager.Instance);

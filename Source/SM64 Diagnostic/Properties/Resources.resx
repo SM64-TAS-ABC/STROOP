@@ -118,13 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lock_grey" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="img_pin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EmbeddedResources\pin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_lock_grey" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\EmbeddedResources\lock_grey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="img_lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\EmbeddedResources\lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\EmbeddedResources\pin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="img_arrow_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EmbeddedResources\arrow-down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_arrow_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EmbeddedResources\arrow-left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_arrow_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EmbeddedResources\arrow-right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_arrow_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EmbeddedResources\arrow-up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_double_arrow_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EmbeddedResources\double-arrow-down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_double_arrow_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EmbeddedResources\double-arrow-left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_double_arrow_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EmbeddedResources\double-arrow-right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_double_arrow_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EmbeddedResources\double-arrow-up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_home" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EmbeddedResources\home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="decompile_py" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EmbeddedResources\decompile.py;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="python_xshd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EmbeddedResources\Python.xshd;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
