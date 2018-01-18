@@ -56,20 +56,16 @@ namespace SM64_Diagnostic.Structs
                             marioPos.X, marioPos.Z, objPos.X, objPos.Z);
                         return hDist.ToString();
                     };
-                    /*
-                    setterFunction = (string stringValue) =>
+                    setterFunction = (string stringValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        List<Position> objPoses = GetObjectPositions();
-                        if (objPoses.Count == 0) return false;
-                        Position objPos = objPoses[0];
+                        Position objPos = GetObjectPosition(objAddress);
                         double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAway.HasValue) return false;
                         (double newMarioX, double newMarioZ) =
                             MoreMath.ExtrapolateLineHorizontally(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway.Value);
                         return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
-                    */
                     break;
 
                 case "MarioVerticalDistanceToObject":
@@ -80,18 +76,15 @@ namespace SM64_Diagnostic.Structs
                         float yDist = marioY - objY;
                         return yDist.ToString();
                     };
-                    /*
-                    setterFunction = (string stringValue) =>
+                    setterFunction = (string stringValue, uint objAddress) =>
                     {
-                        List<Position> objPoses = GetObjectPositions();
-                        if (objPoses.Count == 0) return false;
-                        Position objPos = objPoses[0];
+                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
                         double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAbove.HasValue) return false;
-                        double newMarioY = objPos.Y + distAbove.Value;
+                        double newMarioY = objY + distAbove.Value;
+                        Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
                         return SetMarioPosition(null, newMarioY, null);
                     };
-                    */
                     break;
 
                 case "MarioDistanceToObjectHome":
