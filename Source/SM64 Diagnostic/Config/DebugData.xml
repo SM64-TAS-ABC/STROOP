@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <DebugData>
-  <Data type="byte" offsetUS="0x8033D263" offsetJP="0x8033BEF3" baseAddressType="Relative">Advanced Mode</Data>
-  <Data type="byte" offsetUS="0x80330E94" offsetJP="0x8032FF34" baseAddressType="Relative">Advanced Mode Sttg</Data>
-  <Data type="byte" offsetUS="0x8032D594" offsetJP="0x8032C654" baseAddressType="Relative">Resource Meter</Data>
-  <Data type="ushort" offsetUS="0x8032DF10" offsetJP="0x8032CFB0" baseAddressType="Relative">Resource Meter Sttg</Data>
-  <Data type="byte" offsetUS="0x8032D598" offsetJP="0x8032C658" baseAddressType="Relative">Classic Mode</Data>
-  <Data type="byte" offsetUS="0x8033D2DF" offsetJP="0x8033BF6F" baseAddressType="Relative">Spawn Mode</Data>
-  <Data type="byte" offsetUS="0x8032D58C" offsetJP="0x8032C64C" baseAddressType="Relative">Stage Select</Data>
-  <Data type="ushort" offsetUS="0x80269BDA" offsetJP="0x8026976E" baseAddressType="Relative" useHex="true">Free Movement</Data>
+  <Data type="byte" offsetUS="0x8033D263" offsetJP="0x8033BEF3" base="Relative">Advanced Mode</Data>
+  <Data type="byte" offsetUS="0x80330E94" offsetJP="0x8032FF34" base="Relative">Advanced Mode Sttg</Data>
+  <Data type="byte" offsetUS="0x8032D594" offsetJP="0x8032C654" base="Relative">Resource Meter</Data>
+  <Data type="ushort" offsetUS="0x8032DF10" offsetJP="0x8032CFB0" base="Relative">Resource Meter Sttg</Data>
+  <Data type="byte" offsetUS="0x8032D598" offsetJP="0x8032C658" base="Relative">Classic Mode</Data>
+  <Data type="byte" offsetUS="0x8033D2DF" offsetJP="0x8033BF6F" base="Relative">Spawn Mode</Data>
+  <Data type="byte" offsetUS="0x8032D58C" offsetJP="0x8032C64C" base="Relative">Stage Select</Data>
+  <Data type="ushort" offsetUS="0x80269BDA" offsetJP="0x8026976E" base="Relative" useHex="true">Free Movement</Data>
   
-  <Data type="ushort" offsetUS="0x802CB2BE" offsetJP="0x802CABA2" baseAddressType="Relative" useHex="true">D> Spawn 1</Data>
-  <Data type="ushort" offsetUS="0x802CB2C2" offsetJP="0x802CABA6" baseAddressType="Relative" useHex="true">D> Spawn 2</Data>
-  <Data type="ushort" offsetUS="0x802CB30A" offsetJP="0x802CABEE" baseAddressType="Relative" useHex="true">D&lt; Spawn 1</Data>
-  <Data type="ushort" offsetUS="0x802CB30E" offsetJP="0x802CABF2" baseAddressType="Relative" useHex="true">D&lt; Spawn 2</Data>
-  <Data type="ushort" offsetUS="0x802CB356" offsetJP="0x802CAC3A" baseAddressType="Relative" useHex="true">Dv Spawn 1</Data>
-  <Data type="ushort" offsetUS="0x802CB35A" offsetJP="0x802CAC3E" baseAddressType="Relative" useHex="true">Dv Spawn 2</Data>
+  <Data type="ushort" offsetUS="0x802CB2BE" offsetJP="0x802CABA2" base="Relative" useHex="true">D> Spawn 1</Data>
+  <Data type="ushort" offsetUS="0x802CB2C2" offsetJP="0x802CABA6" base="Relative" useHex="true">D> Spawn 2</Data>
+  <Data type="ushort" offsetUS="0x802CB30A" offsetJP="0x802CABEE" base="Relative" useHex="true">D&lt; Spawn 1</Data>
+  <Data type="ushort" offsetUS="0x802CB30E" offsetJP="0x802CABF2" base="Relative" useHex="true">D&lt; Spawn 2</Data>
+  <Data type="ushort" offsetUS="0x802CB356" offsetJP="0x802CAC3A" base="Relative" useHex="true">Dv Spawn 1</Data>
+  <Data type="ushort" offsetUS="0x802CB35A" offsetJP="0x802CAC3E" base="Relative" useHex="true">Dv Spawn 2</Data>
 </DebugData>

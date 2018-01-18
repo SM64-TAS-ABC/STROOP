@@ -1,34 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <HudData>
-  <Data type="sbyte" offset="0xAD" baseAddressType="Mario">Life Count</Data>
-  <Data type="short" offset="0xF0" baseAddressType="Mario">Life Display</Data>
-  <Data type="short" offset="0xAE" baseAddressType="Mario" useHex="true">HP (Hex)</Data>
-  <Data type="short" offset="0xAE" baseAddressType="Mario">HP (Dec)</Data>
-  <Data type="byte" offset="0xAF" baseAddressType="Mario">HP (Remainder)</Data>
-  <Data type="byte" offset="0xAE" baseAddressType="Mario">HP (Integer)</Data>
-  <Data type="short" offset="0xF6" baseAddressType="Mario">HP Display</Data>
-  <Data type="byte" offset="0xB3" baseAddressType="Mario">HP Increase Counter</Data>
-  <Data type="byte" offset="0xB2" baseAddressType="Mario">HP Decrease Counter</Data>
-  <Data type="short" offset="0xA8" baseAddressType="Mario">Coin Count</Data>
-  <Data type="short" offset="0xF2" baseAddressType="Mario">Coin Display</Data>
-  <Data type="ushort" offsetUS="0x803316D2" offsetJP="0x803305CA" baseAddressType="Relative">Coin Counter</Data>
-  <Data type="sbyte" offsetUS="0x803613FE" offsetJP="0x8036008E" baseAddressType="Relative">Red Coin Count</Data>
-  <Data type="short" offset="0xAA" baseAddressType="Mario">Star Count</Data>
-  <Data type="short" offset="0xF4" baseAddressType="Mario">Star Display</Data>
-  <Data type="short" offset="0xB8" baseAddressType="Mario">Checked Star Count</Data>
-  <Data type="byte" offset="0xEE" mask="0x01" baseAddressType="Mario" subclass="Boolean">Time Counting</Data>
-  <Data type="ushort" offset="0xFC" baseAddressType="Mario">Time (Number)</Data>
-  <Data baseAddressType="None" specialType="HudTimeText" subclass="String">Time (Text)</Data>
+  <Data type="sbyte" offset="0xAD" base="Mario">Life Count</Data>
+  <Data type="short" offset="0xF0" base="Mario">Life Display</Data>
+  <Data type="short" offset="0xAE" base="Mario" useHex="true">HP (Hex)</Data>
+  <Data type="short" offset="0xAE" base="Mario">HP (Dec)</Data>
+  <Data type="byte" offset="0xAF" base="Mario">HP (Remainder)</Data>
+  <Data type="byte" offset="0xAE" base="Mario">HP (Integer)</Data>
+  <Data type="short" offset="0xF6" base="Mario">HP Display</Data>
+  <Data type="byte" offset="0xB3" base="Mario">HP Increase Counter</Data>
+  <Data type="byte" offset="0xB2" base="Mario">HP Decrease Counter</Data>
+  <Data type="short" offset="0xA8" base="Mario">Coin Count</Data>
+  <Data type="short" offset="0xF2" base="Mario">Coin Display</Data>
+  <Data type="ushort" offsetUS="0x803316D2" offsetJP="0x803305CA" base="Relative">Coin Counter</Data>
+  <Data type="sbyte" offsetUS="0x803613FE" offsetJP="0x8036008E" base="Relative">Red Coin Count</Data>
+  <Data type="short" offset="0xAA" base="Mario">Star Count</Data>
+  <Data type="short" offset="0xF4" base="Mario">Star Display</Data>
+  <Data type="short" offset="0xB8" base="Mario">Checked Star Count</Data>
+  <Data type="byte" offset="0xEE" mask="0x01" base="Mario" subclass="Boolean">Time Counting</Data>
+  <Data type="ushort" offset="0xFC" base="Mario">Time (Number)</Data>
+  <Data base="None" specialType="HudTimeText" subclass="String">Time (Text)</Data>
 
-  <Data type="byte" offset="0xFB" mask="0x01" baseAddressType="Mario" subclass="Boolean">HUD On Lives</Data>
-  <Data type="byte" offset="0xFB" mask="0x08" baseAddressType="Mario" subclass="Boolean">HUD On HP/Camera</Data>
-  <Data type="byte" offset="0xFB" mask="0x02" baseAddressType="Mario" subclass="Boolean">HUD On Coins</Data>
-  <Data type="byte" offset="0xFB" mask="0x04" baseAddressType="Mario" subclass="Boolean">HUD On Stars</Data>
-  <Data type="byte" offset="0xFB" mask="0x40" baseAddressType="Mario" subclass="Boolean">HUD On Time</Data>
-  <Data type="short" offsetUS="0x8033BAC6" offsetJP="0x8033A756" baseAddressType="Relative">Level Index</Data>
+  <Data type="byte" offset="0xFB" mask="0x01" base="Mario" subclass="Boolean">HUD On Lives</Data>
+  <Data type="byte" offset="0xFB" mask="0x08" base="Mario" subclass="Boolean">HUD On HP/Camera</Data>
+  <Data type="byte" offset="0xFB" mask="0x02" base="Mario" subclass="Boolean">HUD On Coins</Data>
+  <Data type="byte" offset="0xFB" mask="0x04" base="Mario" subclass="Boolean">HUD On Stars</Data>
+  <Data type="byte" offset="0xFB" mask="0x40" base="Mario" subclass="Boolean">HUD On Time</Data>
+  <Data type="short" offsetUS="0x8033BAC6" offsetJP="0x8033A756" base="Relative">Level Index</Data>
 
-  <Data type="byte" offsetUS="0x803325F0" offsetJP="0x803314E0" baseAddressType="Relative">HP HUD State</Data>
-  <Data type="int" offsetUS="0x803325FC" offsetJP="0x803314EC" baseAddressType="Relative">HP HUD Timer</Data>
-  <Data type="short" offsetUS="0x803325F2" offsetJP="0x803314E2" baseAddressType="Relative">HP HUD X</Data>
-  <Data type="short" offsetUS="0x803325F4" offsetJP="0x803314E4" baseAddressType="Relative">HP HUD Y</Data>
+  <Data type="byte" offsetUS="0x803325F0" offsetJP="0x803314E0" base="Relative">HP HUD State</Data>
+  <Data type="int" offsetUS="0x803325FC" offsetJP="0x803314EC" base="Relative">HP HUD Timer</Data>
+  <Data type="short" offsetUS="0x803325F2" offsetJP="0x803314E2" base="Relative">HP HUD X</Data>
+  <Data type="short" offsetUS="0x803325F4" offsetJP="0x803314E4" base="Relative">HP HUD Y</Data>
 </HudData>

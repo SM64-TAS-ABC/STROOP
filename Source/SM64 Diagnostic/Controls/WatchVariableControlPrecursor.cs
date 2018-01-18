@@ -66,7 +66,7 @@ namespace SM64_Diagnostic.Controls
             if (_groupList.Count > 0)
                 xmlBuilder.SetElement("groupList", String.Join(",", _groupList));
 
-            xmlBuilder.SetElement("baseAddressType", _watchVar.BaseAddressType.ToString());
+            xmlBuilder.SetElement("base", _watchVar.BaseAddressType.ToString());
 
             if (_watchVar.OffsetDefault != null)
                 xmlBuilder.SetElement(

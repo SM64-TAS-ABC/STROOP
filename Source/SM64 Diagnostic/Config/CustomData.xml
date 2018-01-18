@@ -1,75 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Data>
 
-  <Data type="float" offset="0x3C" baseAddressType="Mario" coord="X">Mario X</Data>
-  <Data type="float" offset="0x40" baseAddressType="Mario" coord="Y">Mario Y</Data>
-  <Data type="float" offset="0x44" baseAddressType="Mario" coord="Z">Mario Z</Data>
+  <Data type="float" offset="0x3C" base="Mario" coord="X">Mario X</Data>
+  <Data type="float" offset="0x40" base="Mario" coord="Y">Mario Y</Data>
+  <Data type="float" offset="0x44" base="Mario" coord="Z">Mario Z</Data>
 
-  <Data type="float" offset="0xA0" baseAddressType="Object" coord="X">Object X</Data>
-  <Data type="float" offset="0xA4" baseAddressType="Object" coord="Y">Object Y</Data>
-  <Data type="float" offset="0xA8" baseAddressType="Object" coord="Z">Object Z</Data>
+  <Data type="float" offset="0xA0" base="Object" coord="X">Object X</Data>
+  <Data type="float" offset="0xA4" base="Object" coord="Y">Object Y</Data>
+  <Data type="float" offset="0xA8" base="Object" coord="Z">Object Z</Data>
 
-
-  <!--
-  <Data type="float" offset="0x3C" baseAddressType="Mario" coord="X">Mario X</Data>
-  <Data type="float" offset="0x40" baseAddressType="Mario" coord="Y">Mario Y</Data>
-  <Data type="float" offset="0x44" baseAddressType="Mario" coord="Z">Mario Z</Data>
-
-  <Data type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" baseAddressType="Relative">G Timer (S, Rel)</Data>
-  <Data type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" baseAddressType="Relative">G Timer (US, Rel)</Data>
-
-  <Data type="int" offsetUS="0x00C19054" offsetJP="0x00C19054" baseAddressType="Absolute">G Timer (S, Ab)</Data>
-  <Data type="uint" offsetUS="0x00C19054" offsetJP="0x00C19054" baseAddressType="Absolute">G Timer (US, Ab)</Data>
-
-  <Data type="short" offset="0xAE" baseAddressType="Mario">HP (Dec)</Data>
-  <Data type="byte" offset="0xB2" baseAddressType="Mario">HP Dec (US)</Data>
-  <Data type="sbyte" offset="0xB2" baseAddressType="Mario">HP Dec (S)</Data>
-
-  <Data type="float" offset="0xA0" baseAddressType="Object" coord="X">Object X</Data>
-  <Data type="float" offset="0xA4" baseAddressType="Object" coord="Y">Object Y</Data>
-  <Data type="float" offset="0xA8" baseAddressType="Object" coord="Z">Object Z</Data>
-
-  <Data baseAddressType="None" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
-  <Data baseAddressType="None" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
-  <Data baseAddressType="None" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
-
-  <Data type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" baseAddressType="Relative">RNG Value</Data>
-  <Data baseAddressType="None" specialType="RngIndex">RNG Index</Data>
-
-  <Data type="uint" offset="0x0C" baseAddressType="Mario" useHex="true">Action</Data>
-  <Data baseAddressType="None" specialType="ActionDescription" subclass="String">Action Description</Data>
-  <Data type="uint" offset="0x10" baseAddressType="Mario" useHex="true">Previous Action</Data>
-  <Data baseAddressType="None" specialType="PrevActionDescription" subclass="String">Prev. Action Desc.</Data>
-  <Data type="short" offset="0x18" baseAddressType="Mario" color="#ccd0ff">Action Phase</Data>
-  <Data type="short" offset="0x1A" baseAddressType="Mario" color="#abcdef">Action Timer</Data>
-  <Data type="short" offset="0x38" baseAddressType="MarioObj">Animation</Data>
-  <Data baseAddressType="None" specialType="MarioAnimationDescription" subclass="String">Animation Description</Data>
-  <Data type="short" offset="0x40" baseAddressType="MarioObj">Animation Timer</Data>
-
-  <Data type="ushort" offset="0x2E" baseAddressType="Mario" subclass="Angle">Yaw (US)</Data>
-  <Data type="short" offset="0x2E" baseAddressType="Mario" subclass="Angle">Yaw (S)</Data>
-  <Data type="ushort" offset="0xD6" baseAddressType="Object" subclass="Angle">Obj Yaw (Facing)</Data>
-  
-  <Data baseAddressType="Object" specialType="AngleObjectToMario" subclass="Angle" type="ushort">Angle Obj to Mario</Data>
-  <Data baseAddressType="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" type="short">DAngle Obj to Mario</Data>
-  <Data baseAddressType="Object" specialType="AngleMarioToObject" subclass="Angle" type="ushort">Angle Mario to Obj</Data>
-  <Data baseAddressType="Object" specialType="DeltaAngleMarioToObject" subclass="Angle" type="short">DAngle Mario to Obj</Data>
-  
-  <Data type="int" offset="0xF4" baseAddressType="Object" subclass="Angle">Angular Distance</Data>
-
-  <Data type="uint" offset="0x78" baseAddressType="Mario" subclass="Object">Interaction Object</Data>
-  <Data type="uint" offset="0x80" baseAddressType="Mario" subclass="Object">Used Object</Data>
-  <Data type="uint" offsetUS="0x80330E34" offsetJP="0x8032FED4" baseAddressType="Relative" subclass="Object">Stood On Object</Data>
-  <Data type="uint" offset="0x7C" baseAddressType="Mario" subclass="Object">Held Object</Data>
-
-  <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x10">Hat on Head</Data>
-  <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x20">Hat in Hand</Data>
-  <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x08">Wing Cap</Data>
-  <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x04">Metal Cap</Data>
-  <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x02">Vanish Cap</Data>
-  <Data type="uint" offset="0x04" baseAddressType="Mario" subclass="Boolean" mask="0x01">Should Have Hat</Data>
-
-  <Data type="byte" offset="0x3" mask="0x10" baseAddressType="Object" subclass="Boolean" invertBool="true">Visible</Data>
-  <Data type="byte" offset="0x3" mask="0x04" baseAddressType="Object" subclass="Boolean">Face Camera</Data>
-  -->
 </Data>

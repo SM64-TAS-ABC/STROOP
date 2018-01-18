@@ -2393,7 +2393,7 @@ namespace SM64_Diagnostic.Utilities
         {
             string name = element.Value;
 
-            BaseAddressTypeEnum baseAddressType = WatchVariableUtilities.GetBaseAddressType(element.Attribute(XName.Get("baseAddressType")).Value);
+            BaseAddressTypeEnum baseAddressType = WatchVariableUtilities.GetBaseAddressType(element.Attribute(XName.Get("base")).Value);
 
             WatchVariableSubclass subclass = WatchVariableUtilities.GetSubclass(element.Attribute(XName.Get("subclass"))?.Value);
 
