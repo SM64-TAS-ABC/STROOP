@@ -622,5 +622,10 @@ namespace SM64_Diagnostic.Controls
             if (_showBorder)
                 e.Graphics.DrawRectangle(_borderPen, rec);
         }
+
+        public override string ToString()
+        {
+            return _watchVarPrecursor.ToString();
+        }
     }
 }
