@@ -63,11 +63,10 @@ namespace SM64_Diagnostic.Controls
             xmlBuilder.SetRootElement("Data");
             xmlBuilder.SetValue(_name);
 
-            if (_watchVar.MemoryTypeName != null)
-                xmlBuilder.SetElement("type", _watchVar.MemoryTypeName);
+            if (_groupList.Count > 0)
+                xmlBuilder.SetElement("groupList", String.Join(",", _groupList));
 
-            if (_watchVar.SpecialType != null)
-                xmlBuilder.SetElement("special", _watchVar.SpecialType);
+            xmlBuilder.SetElement("baseAddressType", _watchVar.BaseAddressType.ToString());
 
             if (_watchVar.OffsetDefault != null)
                 xmlBuilder.SetElement(
@@ -89,6 +88,12 @@ namespace SM64_Diagnostic.Controls
                     "offsetPAL",
                     String.Format("0x{0:X}", _watchVar.OffsetPAL.Value));
 
+            if (_watchVar.MemoryTypeName != null)
+                xmlBuilder.SetElement("type", _watchVar.MemoryTypeName);
+
+            if (_watchVar.SpecialType != null)
+                xmlBuilder.SetElement("specialType", _watchVar.SpecialType);
+
             if (_watchVar.Mask != null)
                 xmlBuilder.SetElement(
                     "mask",
@@ -97,22 +102,19 @@ namespace SM64_Diagnostic.Controls
             if (_subclass != WatchVariableSubclass.Number)
                 xmlBuilder.SetElement("subclass", _subclass.ToString());
 
+            if (_invertBool.HasValue)
+                xmlBuilder.SetElement("invertBool", _invertBool.Value.ToString().ToLower());
+
             if (_useHex.HasValue)
                 xmlBuilder.SetElement("useHex", _useHex.Value.ToString().ToLower());
+
+            if (_coordinate.HasValue)
+                xmlBuilder.SetElement("coord", _coordinate.Value.ToString());
 
             if (_backgroundColor.HasValue)
                 xmlBuilder.SetElement(
                     "color",
                     "#" + ColorUtilities.ToString(_backgroundColor.Value));
-
-            if (_invertBool.HasValue)
-                xmlBuilder.SetElement("invertBool", _invertBool.Value.ToString().ToLower());
-
-            if (_coordinate.HasValue)
-                xmlBuilder.SetElement("coord", _coordinate.Value.ToString());
-
-            if (_groupList.Count > 0)
-                xmlBuilder.SetElement("groupList", String.Join(",", _groupList));
 
             return xmlBuilder.ToString();
         }
