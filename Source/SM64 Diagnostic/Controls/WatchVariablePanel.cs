@@ -17,10 +17,6 @@ namespace SM64_Diagnostic.Controls
         private readonly List<VariableGroup> _allGroups;
         private readonly List<VariableGroup> _visibleGroups;
 
-        private Action _updateItemsFunction;
-
-        private bool _hasSetVariableGroups;
-        private bool _hasSetPrecursors;
         private WatchVariableControl _reorderingWatchVarControl;
 
         public WatchVariablePanel()
@@ -33,8 +29,6 @@ namespace SM64_Diagnostic.Controls
 
             ContextMenuStrip = new ContextMenuStrip();
 
-            _hasSetVariableGroups = false;
-            _hasSetPrecursors = false;
             _reorderingWatchVarControl = null;
         }
 
@@ -58,29 +52,18 @@ namespace SM64_Diagnostic.Controls
             _precursors.AddRange(precursors);
             AddVariables(_precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
 
-            (List<ToolStripMenuItem> items, Action updateFunction) = CreateFilterItemsAndUpdateFunction();
-            items.ForEach(item => ContextMenuStrip.Items.Add(item));
-            _updateItemsFunction = updateFunction;
+            AddItemsToContextMenuStrip();
         }
 
-        private (List<ToolStripMenuItem> items, Action updateFunction) CreateFilterItemsAndUpdateFunction()
+        private void AddItemsToContextMenuStrip()
         {
             List<ToolStripMenuItem> items =
                 _allGroups.ConvertAll(varGroup =>
-                    CreateFilterItem(varGroup));
-
-            Action updateFunction = () =>
-            {
-                for(int i = 0; i < _allGroups.Count; i++)
-                {
-                    items[i].Checked = _visibleGroups.Contains(_allGroups[i]);
-                }
-            };
-
-            return (items, updateFunction);
+                    CreateFilterItem(varGroup, _visibleGroups.Contains(varGroup)));
+            items.ForEach(item => ContextMenuStrip.Items.Add(item));
         }
 
-        private ToolStripMenuItem CreateFilterItem(VariableGroup varGroup)
+        private ToolStripMenuItem CreateFilterItem(VariableGroup varGroup, bool visible)
         {
             ToolStripMenuItem item = new ToolStripMenuItem(varGroup.ToString());
             item.Click += (sender, e) =>
@@ -94,8 +77,10 @@ namespace SM64_Diagnostic.Controls
                 {
                     _visibleGroups.Remove(varGroup);
                 }
+                item.Checked = newVisibility;
                 UpdateControlsBasedOnFilters();
             };
+            item.Checked = visible;
             return item;
         }
 
@@ -200,7 +185,6 @@ namespace SM64_Diagnostic.Controls
 
         public void UpdateControls()
         {
-            _updateItemsFunction?.Invoke();
             _watchVarControlsList.ForEach(watchVarControl => watchVarControl.UpdateControl());
         }
 
