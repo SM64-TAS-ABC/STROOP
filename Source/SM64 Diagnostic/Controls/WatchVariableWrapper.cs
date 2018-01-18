@@ -28,10 +28,6 @@ namespace SM64_Diagnostic.Controls
         private ToolStripMenuItem _itemLock;
         private ToolStripMenuItem _itemRemoveAllLocks;
 
-        // External items
-        //private ToolStripMenuItem _itemFilter;
-        //private Action _updateFilterItemsFunction;
-
         // Custom items
         private ToolStripSeparator _separatorCustom;
         private ToolStripMenuItem _itemFixAddress;
@@ -134,13 +130,6 @@ namespace SM64_Diagnostic.Controls
 
         private void AddExternalContextMenuStripItems()
         {
-            /*
-            _itemFilter = new ToolStripMenuItem("Filter...");
-            _itemFilter.Visible = false;
-            _itemFilter.DropDown.AutoClose = false;
-            _itemFilter.DropDown.MouseLeave += (sender, e) => { _itemFilter.DropDown.Close(); };
-            */
-
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
             itemOpenController.Click += (sender, e) => { ShowVarController(); };
 
@@ -148,7 +137,6 @@ namespace SM64_Diagnostic.Controls
             itemAddToCustomTab.Click += (sender, e) => { _watchVarControl.AddCopyToCustomTab(); };
 
             _contextMenuStrip.AddToEndingList(new ToolStripSeparator());
-            //_contextMenuStrip.AddToEndingList(_itemFilter);
             _contextMenuStrip.AddToEndingList(itemOpenController);
             _contextMenuStrip.AddToEndingList(itemAddToCustomTab);
         }
@@ -217,7 +205,6 @@ namespace SM64_Diagnostic.Controls
             _itemLock.Checked = GetLockedBool(addresses);
             _itemRemoveAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
             _itemFixAddress.Checked = _watchVarControl.FixedAddressList != null;
-            //_updateFilterItemsFunction?.Invoke();
         }
 
         public void ToggleLocked(List<uint> addresses = null)
@@ -304,16 +291,6 @@ namespace SM64_Diagnostic.Controls
         {
             return _watchVar.AddressList;
         }
-
-        /*
-        public void NotifyFiltering(List<ToolStripMenuItem> items, Action updateFunction)
-        {
-            _itemFilter.Visible = true;
-            _itemFilter.DropDownItems.Clear();
-            items.ForEach(item => _itemFilter.DropDownItems.Add(item));
-            _updateFilterItemsFunction = updateFunction;
-        }
-        */
 
         public void EnableCustomFunctionality()
         {

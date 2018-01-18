@@ -609,13 +609,6 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        /*
-        public void NotifyFiltering(List<ToolStripMenuItem> items, Action updateFunction)
-        {
-            _watchVarWrapper.NotifyFiltering(items, updateFunction);
-        }
-        */
-
 
 
 

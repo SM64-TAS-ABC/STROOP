@@ -111,15 +111,6 @@ namespace SM64_Diagnostic.Controls
                     _watchVarControlsList.Add(watchVarControl);
                     if (ShouldShow(watchVarControl)) Controls.Add(watchVarControl);
                     watchVarControl.SetPanel(this);
-                    // This adds delay to clicking on object slots. Consider rethinking it
-                    /*
-                    if (_hasSetVariableGroups)
-                    {
-                        (List<ToolStripMenuItem> items, Action updateFunction) =
-                            CreateFilterItemsAndUpdateFunction();
-                        watchVarControl.NotifyFiltering(items, updateFunction);
-                    }
-                    */
                 });
             }
         }
