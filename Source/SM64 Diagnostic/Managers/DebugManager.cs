@@ -25,7 +25,7 @@ namespace SM64_Diagnostic.Managers
         CheckBox _stageSelectCheckbox;
         CheckBox _freeMovementCheckbox;
 
-        public DebugManager(List<WatchVariableControl> variables, Control tabControl, WatchVariablePanel variableTable)
+        public DebugManager(List<WatchVariableControlPrecursor> variables, Control tabControl, WatchVariablePanel variableTable)
             : base(variables, variableTable)
         {
             SplitContainer splitContainerDebug = tabControl.Controls["splitContainerDebug"] as SplitContainer;

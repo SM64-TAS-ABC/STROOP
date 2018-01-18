@@ -1441,7 +1441,13 @@ namespace SM64_Diagnostic.Utilities
 
         public static List<WatchVariableControl> OpenWatchVariableControls(string path, string schemaFile)
         {
-            var objectData = new List<WatchVariableControl>();
+            return OpenWatchVariableControlPrecursors(path, schemaFile)
+                .ConvertAll(precursor => precursor.CreateWatchVariableControl());
+        }
+
+        public static List<WatchVariableControlPrecursor> OpenWatchVariableControlPrecursors(string path, string schemaFile)
+        {
+            var objectData = new List<WatchVariableControlPrecursor>();
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
@@ -1459,7 +1465,7 @@ namespace SM64_Diagnostic.Utilities
                 if (element.Name.ToString() != "Data")
                     continue;
 
-                WatchVariableControl watchVarControl = GetWatchVariableControlFromElement(element);
+                WatchVariableControlPrecursor watchVarControl = GetWatchVariablePrecursorFromElement(element);
                 objectData.Add(watchVarControl);
             }
 

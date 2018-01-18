@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.Managers
 {
     public class CameraManager : DataManager
     {
-        public CameraManager(List<WatchVariableControl> cameraData, Control tabControl, WatchVariablePanel variableTable)
+        public CameraManager(List<WatchVariableControlPrecursor> cameraData, Control tabControl, WatchVariablePanel variableTable)
             : base(cameraData, variableTable)
         {
             var splitContainer = tabControl.Controls["splitContainerCamera"] as SplitContainer;

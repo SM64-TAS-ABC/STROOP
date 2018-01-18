@@ -14,7 +14,7 @@ namespace SM64_Diagnostic.Managers
 {
     public class WaterManager : DataManager
     {
-        public WaterManager(List<WatchVariableControl> variables, WatchVariablePanel variableTable)
+        public WaterManager(List<WatchVariableControlPrecursor> variables, WatchVariablePanel variableTable)
             : base(variables, variableTable)
         {
 

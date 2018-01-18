@@ -17,7 +17,7 @@ namespace SM64_Diagnostic.Managers
         Label actionDescriptionLabel;
         Label animationDescriptionLabel;
 
-        public ActionsManager(List<WatchVariableControl> variables, WatchVariablePanel variableTable, Control actionsControl)
+        public ActionsManager(List<WatchVariableControlPrecursor> variables, WatchVariablePanel variableTable, Control actionsControl)
             : base(variables, variableTable)
         {
             actionDescriptionLabel = actionsControl.Controls["labelActionDescription"] as Label;

@@ -17,17 +17,16 @@ namespace SM64_Diagnostic.Managers
         private WatchVariablePanel _variablePanel;
 
         public DataManager(
-            List<WatchVariableControl> watchVarControlList,
+            List<WatchVariableControlPrecursor> variables,
             WatchVariablePanel variablePanel,
             List<VariableGroup> allVariableGroups = null,
             List<VariableGroup> visibleVariableGroups = null)
         {
             _variablePanel = variablePanel;
-            if (allVariableGroups != null && visibleVariableGroups != null)
-            {
-                _variablePanel.SetVariableGroups(allVariableGroups, visibleVariableGroups);
-            }
-            _variablePanel.AddVariables(watchVarControlList);
+            _variablePanel.Initialize(
+                variables,
+                allVariableGroups,
+                visibleVariableGroups);
         }
 
         public virtual void RemoveObjSpecificVariables()
@@ -48,6 +47,11 @@ namespace SM64_Diagnostic.Managers
         public virtual void ClearVariables()
         {
             _variablePanel.ClearVariables();
+        }
+
+        public virtual void EnableCustomVariableFunctionality()
+        {
+            _variablePanel.EnableCustomVariableFunctionality();
         }
 
         public virtual void Update(bool updateView = false)

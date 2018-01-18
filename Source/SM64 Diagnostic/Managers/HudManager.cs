@@ -17,7 +17,7 @@ namespace SM64_Diagnostic.Managers
         BinaryButton _turnOnOffHudButton;
         CheckBox _checkBoxFullHP;
 
-        public HudManager(List<WatchVariableControl> variables, Control tabControl, WatchVariablePanel watchVariablePanelHud)
+        public HudManager(List<WatchVariableControlPrecursor> variables, Control tabControl, WatchVariablePanel watchVariablePanelHud)
             : base(variables, watchVariablePanelHud)
         {
             _tabControl = tabControl;

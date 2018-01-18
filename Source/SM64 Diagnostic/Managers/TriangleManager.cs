@@ -68,7 +68,7 @@ namespace SM64_Diagnostic.Managers
                 VariableGroup.Intermediate,
             };
 
-        public TriangleManager(Control tabControl, List<WatchVariableControl> variables, WatchVariablePanel watchVariablePanel) 
+        public TriangleManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariablePanel watchVariablePanel) 
             : base(variables, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             Instance = this;

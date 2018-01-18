@@ -17,12 +17,12 @@ namespace SM64_Diagnostic.Managers
     {
         public static CustomManager Instance;
 
-        public CustomManager(List<WatchVariableControl> variables, Control customControl, WatchVariablePanel variableTable)
+        public CustomManager(List<WatchVariableControlPrecursor> variables, Control customControl, WatchVariablePanel variableTable)
             : base(variables, variableTable)
         {
             Instance = this;
 
-            variables.ForEach(variable => variable.EnableCustomFunctionality());
+            EnableCustomVariableFunctionality();
 
             SplitContainer splitContainerCustom = customControl.Controls["splitContainerCustom"] as SplitContainer;
 

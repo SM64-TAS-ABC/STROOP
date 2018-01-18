@@ -12,6 +12,7 @@ namespace SM64_Diagnostic.Controls
     public class WatchVariablePanel : FlowLayoutPanel
     {
         private readonly Object _objectLock;
+        private readonly List<WatchVariableControlPrecursor> _precursors;
         private readonly List<WatchVariableControl> _watchVarControlsList;
         private readonly List<VariableGroup> _allGroups;
         private readonly List<VariableGroup> _visibleGroups;
@@ -19,12 +20,13 @@ namespace SM64_Diagnostic.Controls
         private Action _updateItemsFunction;
 
         private bool _hasSetVariableGroups;
-        private bool _hasAddedVariables;
+        private bool _hasSetPrecursors;
         private WatchVariableControl _reorderingWatchVarControl;
 
         public WatchVariablePanel()
         {
             _objectLock = new Object();
+            _precursors = new List<WatchVariableControlPrecursor>();
             _watchVarControlsList = new List<WatchVariableControl>();
             _allGroups = new List<VariableGroup>();
             _visibleGroups = new List<VariableGroup>();
@@ -32,7 +34,7 @@ namespace SM64_Diagnostic.Controls
             ContextMenuStrip = new ContextMenuStrip();
 
             _hasSetVariableGroups = false;
-            _hasAddedVariables = false;
+            _hasSetPrecursors = false;
             _reorderingWatchVarControl = null;
         }
 
@@ -46,17 +48,15 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public void SetVariableGroups(List<VariableGroup> allGroups, List<VariableGroup> visibleGroups)
+        public void Initialize(
+            List<WatchVariableControlPrecursor> precursors,
+            List<VariableGroup> allGroups = null,
+            List<VariableGroup> visibleGroups = null)
         {
-            if (_hasSetVariableGroups || _hasAddedVariables)
-            {
-                throw new ArgumentOutOfRangeException(
-                    "Can only set var groups once, and must be done before adding vars");
-            }
-            _hasSetVariableGroups = true;
-
-            _allGroups.AddRange(allGroups);
-            _visibleGroups.AddRange(visibleGroups);
+            if (allGroups != null) _allGroups.AddRange(allGroups);
+            if (visibleGroups != null) _visibleGroups.AddRange(visibleGroups);
+            _precursors.AddRange(precursors);
+            AddVariables(_precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
 
             (List<ToolStripMenuItem> items, Action updateFunction) = CreateFilterItemsAndUpdateFunction();
             items.ForEach(item => ContextMenuStrip.Items.Add(item));
@@ -119,7 +119,6 @@ namespace SM64_Diagnostic.Controls
 
         public void AddVariables(List<WatchVariableControl> watchVarControls)
         {
-            _hasAddedVariables = true;
             lock (_objectLock)
             {
                 watchVarControls.ForEach(watchVarControl =>
@@ -171,6 +170,11 @@ namespace SM64_Diagnostic.Controls
             List<WatchVariableControl> watchVarControlListCopy =
                 new List<WatchVariableControl>(_watchVarControlsList);
             RemoveVariables(watchVarControlListCopy);
+        }
+
+        public void EnableCustomVariableFunctionality()
+        {
+            _watchVarControlsList.ForEach(control => control.EnableCustomFunctionality());
         }
 
         public void NotifyOfReordering(WatchVariableControl watchVarControl)

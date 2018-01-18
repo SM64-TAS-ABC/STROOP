@@ -32,7 +32,7 @@ namespace SM64_Diagnostic.Managers
                 VariableGroup.Advanced,
             };
 
-        public MarioManager(List<WatchVariableControl> variables, Control marioControl, WatchVariablePanel variableTable)
+        public MarioManager(List<WatchVariableControlPrecursor> variables, Control marioControl, WatchVariablePanel variableTable)
             : base(variables, variableTable, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             SplitContainer splitContainerMario = marioControl.Controls["splitContainerMario"] as SplitContainer;

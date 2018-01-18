@@ -180,7 +180,7 @@ namespace SM64_Diagnostic.Managers
                 VariableGroup.ObjectSpecific,
             };
 
-        public ObjectManager(List<WatchVariableControl> variables, Control objectControl, WatchVariablePanel variableTable)
+        public ObjectManager(List<WatchVariableControlPrecursor> variables, Control objectControl, WatchVariablePanel variableTable)
             : base(variables, variableTable, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             Instance = this;
