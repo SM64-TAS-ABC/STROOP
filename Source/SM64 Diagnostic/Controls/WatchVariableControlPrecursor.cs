@@ -57,5 +57,55 @@ namespace SM64_Diagnostic.Controls
                 _groupList);
         }
 
+        public override string ToString()
+        {
+            XmlBuilder xmlBuilder = new XmlBuilder();
+            xmlBuilder.SetRootElement("Data");
+            xmlBuilder.SetValue(_name);
+
+            if (_watchVar.MemoryTypeName != null)
+                xmlBuilder.SetElement("type", _watchVar.MemoryTypeName);
+
+            if (_watchVar.SpecialType != null)
+                xmlBuilder.SetElement("special", _watchVar.SpecialType);
+
+            if (_watchVar.OffsetDefault != null)
+                xmlBuilder.SetElement("offset", _watchVar.OffsetDefault.Value.ToString());
+
+            if (_watchVar.OffsetUS != null)
+                xmlBuilder.SetElement("offsetUS", _watchVar.OffsetUS.Value.ToString());
+
+            if (_watchVar.OffsetJP != null)
+                xmlBuilder.SetElement("offsetJP", _watchVar.OffsetJP.Value.ToString());
+
+            if (_watchVar.OffsetPAL != null)
+                xmlBuilder.SetElement("offsetPAL", _watchVar.OffsetPAL.Value.ToString());
+
+            if (_watchVar.Mask != null)
+                xmlBuilder.SetElement(
+                    "mask",
+                    String.Format("{0:X" + _watchVar.NibbleCount + "}", _watchVar.Mask.Value));
+
+            if (_subclass != WatchVariableSubclass.Number)
+                xmlBuilder.SetElement("subclass", _subclass.ToString());
+
+            if (_useHex.HasValue)
+                xmlBuilder.SetElement("useHex", _useHex.Value.ToString().ToLower());
+
+            if (_backgroundColor.HasValue)
+                xmlBuilder.SetElement("color", _backgroundColor.Value.ToString());
+
+            if (_invertBool.HasValue)
+                xmlBuilder.SetElement("invertBool", _invertBool.Value.ToString().ToLower());
+
+            if (_coordinate.HasValue)
+                xmlBuilder.SetElement("coord", _coordinate.Value.ToString());
+
+            if (_groupList.Count > 0)
+                xmlBuilder.SetElement("groupList", String.Join(",", _groupList));
+
+            return xmlBuilder.ToString();
+        }
+
     }
 }
