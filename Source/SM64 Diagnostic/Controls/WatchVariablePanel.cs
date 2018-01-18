@@ -57,10 +57,19 @@ namespace SM64_Diagnostic.Controls
 
         private void AddItemsToContextMenuStrip()
         {
-            List<ToolStripMenuItem> items =
+            ToolStripMenuItem resetVariablesItem = new ToolStripMenuItem("Reset");
+            resetVariablesItem.Click += (sender, e) => ResetVariables();
+
+            ToolStripMenuItem filterItem = new ToolStripMenuItem("Filter...");
+            List<ToolStripMenuItem> filteringDropDownItems =
                 _allGroups.ConvertAll(varGroup =>
                     CreateFilterItem(varGroup, _visibleGroups.Contains(varGroup)));
-            items.ForEach(item => ContextMenuStrip.Items.Add(item));
+            filteringDropDownItems.ForEach(item => filterItem.DropDownItems.Add(item));
+            filterItem.DropDown.AutoClose = false;
+            filterItem.DropDown.MouseLeave += (sender, e) => { filterItem.DropDown.Close(); };
+
+            ContextMenuStrip.Items.Add(resetVariablesItem);
+            ContextMenuStrip.Items.Add(filterItem);
         }
 
         private ToolStripMenuItem CreateFilterItem(VariableGroup varGroup, bool visible)
@@ -146,6 +155,11 @@ namespace SM64_Diagnostic.Controls
             List<WatchVariableControl> watchVarControlListCopy =
                 new List<WatchVariableControl>(_watchVarControlsList);
             RemoveVariables(watchVarControlListCopy);
+        }
+
+        public void ResetVariables()
+        {
+
         }
 
         public void EnableCustomVariableFunctionality()
