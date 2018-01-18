@@ -84,7 +84,7 @@ namespace SM64_Diagnostic.Controls
             if (_watchVar.Mask != null)
                 xmlBuilder.SetElement(
                     "mask",
-                    String.Format("{0:X" + _watchVar.NibbleCount + "}", _watchVar.Mask.Value));
+                    String.Format("0x{0:X" + _watchVar.NibbleCount + "}", _watchVar.Mask.Value));
 
             if (_subclass != WatchVariableSubclass.Number)
                 xmlBuilder.SetElement("subclass", _subclass.ToString());
@@ -93,7 +93,9 @@ namespace SM64_Diagnostic.Controls
                 xmlBuilder.SetElement("useHex", _useHex.Value.ToString().ToLower());
 
             if (_backgroundColor.HasValue)
-                xmlBuilder.SetElement("color", _backgroundColor.Value.ToString());
+                xmlBuilder.SetElement(
+                    "color",
+                    "#" + ColorUtilities.ToString(_backgroundColor.Value));
 
             if (_invertBool.HasValue)
                 xmlBuilder.SetElement("invertBool", _invertBool.Value.ToString().ToLower());

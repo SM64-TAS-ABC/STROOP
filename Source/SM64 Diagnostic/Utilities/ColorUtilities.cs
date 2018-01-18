@@ -20,5 +20,13 @@ namespace SM64_Diagnostic.Utilities
             byte b = (byte)((c1.B * (1 - amount)) + c2.B * amount);
             return Color.FromArgb(r, g, b);
         }
+
+        public static string ToString(Color color)
+        {
+            string r = String.Format("{0:X2}", color.R);
+            string g = String.Format("{0:X2}", color.G);
+            string b = String.Format("{0:X2}", color.B);
+            return r + g + b;
+        }
     }
 }
