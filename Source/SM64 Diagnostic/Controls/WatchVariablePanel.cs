@@ -162,6 +162,7 @@ namespace SM64_Diagnostic.Controls
 
         public void ResetVariables()
         {
+            _watchVarControlsList.ForEach(control => System.Diagnostics.Trace.WriteLine(control));
             ClearVariables();
             _visibleGroups.Clear();
             _visibleGroups.AddRange(_initialVisibleGroups);

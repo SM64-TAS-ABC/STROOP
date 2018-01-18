@@ -70,16 +70,24 @@ namespace SM64_Diagnostic.Controls
                 xmlBuilder.SetElement("special", _watchVar.SpecialType);
 
             if (_watchVar.OffsetDefault != null)
-                xmlBuilder.SetElement("offset", _watchVar.OffsetDefault.Value.ToString());
+                xmlBuilder.SetElement(
+                    "offset",
+                    String.Format("0x{0:X}", _watchVar.OffsetDefault.Value));
 
             if (_watchVar.OffsetUS != null)
-                xmlBuilder.SetElement("offsetUS", _watchVar.OffsetUS.Value.ToString());
+                xmlBuilder.SetElement(
+                    "offsetUS",
+                    String.Format("0x{0:X}", _watchVar.OffsetUS.Value));
 
             if (_watchVar.OffsetJP != null)
-                xmlBuilder.SetElement("offsetJP", _watchVar.OffsetJP.Value.ToString());
+                xmlBuilder.SetElement(
+                    "offsetJP",
+                    String.Format("0x{0:X}", _watchVar.OffsetJP.Value));
 
             if (_watchVar.OffsetPAL != null)
-                xmlBuilder.SetElement("offsetPAL", _watchVar.OffsetPAL.Value.ToString());
+                xmlBuilder.SetElement(
+                    "offsetPAL",
+                    String.Format("0x{0:X}", _watchVar.OffsetPAL.Value));
 
             if (_watchVar.Mask != null)
                 xmlBuilder.SetElement(
