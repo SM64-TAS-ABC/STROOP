@@ -15,6 +15,7 @@ namespace SM64_Diagnostic.Controls
         private readonly List<WatchVariableControlPrecursor> _precursors;
         private readonly List<WatchVariableControl> _watchVarControlsList;
         private readonly List<VariableGroup> _allGroups;
+        private readonly List<VariableGroup> _initialVisibleGroups;
         private readonly List<VariableGroup> _visibleGroups;
 
         private WatchVariableControl _reorderingWatchVarControl;
@@ -25,6 +26,7 @@ namespace SM64_Diagnostic.Controls
             _precursors = new List<WatchVariableControlPrecursor>();
             _watchVarControlsList = new List<WatchVariableControl>();
             _allGroups = new List<VariableGroup>();
+            _initialVisibleGroups = new List<VariableGroup>();
             _visibleGroups = new List<VariableGroup>();
 
             ContextMenuStrip = new ContextMenuStrip();
@@ -48,6 +50,7 @@ namespace SM64_Diagnostic.Controls
             List<VariableGroup> visibleGroups = null)
         {
             if (allGroups != null) _allGroups.AddRange(allGroups);
+            if (visibleGroups != null) _initialVisibleGroups.AddRange(visibleGroups);
             if (visibleGroups != null) _visibleGroups.AddRange(visibleGroups);
             _precursors.AddRange(precursors);
             AddVariables(_precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
@@ -159,7 +162,10 @@ namespace SM64_Diagnostic.Controls
 
         public void ResetVariables()
         {
-
+            ClearVariables();
+            _visibleGroups.Clear();
+            _visibleGroups.AddRange(_initialVisibleGroups);
+            AddVariables(_precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
         }
 
         public void EnableCustomVariableFunctionality()
