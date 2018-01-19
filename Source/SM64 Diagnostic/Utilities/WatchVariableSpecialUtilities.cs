@@ -3,10 +3,6 @@ using SM64_Diagnostic.Structs.Configurations;
 using SM64_Diagnostic.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs
 {
@@ -82,8 +78,7 @@ namespace SM64_Diagnostic.Structs
                         double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAbove.HasValue) return false;
                         double newMarioY = objY + distAbove.Value;
-                        Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
-                        return SetMarioPosition(null, newMarioY, null);
+                        return Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
                     };
                     break;
 
@@ -96,6 +91,18 @@ namespace SM64_Diagnostic.Structs
                             marioPos.X, marioPos.Y, marioPos.Z, homePos.X, homePos.Y, homePos.Z);
                         return dist.ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAwayNullable.HasValue) return false;
+                        double distAway = distAwayNullable.Value;
+                        (double newMarioX, double newMarioY, double newMarioZ) =
+                            MoreMath.ExtrapolateLine3D(
+                                homePos.X, homePos.Y, homePos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
+                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
+                    };
                     break;
 
                 case "MarioHorizontalDistanceToObjectHome":
@@ -107,6 +114,16 @@ namespace SM64_Diagnostic.Structs
                             marioPos.X, marioPos.Z, homePos.X, homePos.Z);
                         return hDist.ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAway.HasValue) return false;
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.ExtrapolateLineHorizontally(homePos.X, homePos.Z, marioPos.X, marioPos.Z, distAway.Value);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
                     break;
 
                 case "MarioVerticalDistanceToObjectHome":
@@ -116,6 +133,14 @@ namespace SM64_Diagnostic.Structs
                         float homeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
                         float yDist = marioY - homeY;
                         return yDist.ToString();
+                    };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        float homeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                        double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAbove.HasValue) return false;
+                        double newMarioY = homeY + distAbove.Value;
+                        return Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
                     };
                     break;
 
@@ -128,6 +153,18 @@ namespace SM64_Diagnostic.Structs
                             objPos.X, objPos.Y, objPos.Z, homePos.X, homePos.Y, homePos.Z);
                         return dist.ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        Position objPos = GetObjectPosition(objAddress);
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAwayNullable.HasValue) return false;
+                        double distAway = distAwayNullable.Value;
+                        (double newObjX, double newObjY, double newObjZ) =
+                            MoreMath.ExtrapolateLine3D(
+                                homePos.X, homePos.Y, homePos.Z, objPos.X, objPos.Y, objPos.Z, distAway);
+                        return SetObjectPosition(objAddress, newObjX, newObjY, newObjZ);
+                    };
                     break;
 
                 case "HorizontalObjectDistanceToHome":
@@ -139,6 +176,16 @@ namespace SM64_Diagnostic.Structs
                             objPos.X, objPos.Z, homePos.X, homePos.Z);
                         return hDist.ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        Position objPos = GetObjectPosition(objAddress);
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAway.HasValue) return false;
+                        (double newObjX, double newObjZ) =
+                            MoreMath.ExtrapolateLineHorizontally(homePos.X, homePos.Z, objPos.X, objPos.Z, distAway.Value);
+                        return SetObjectPosition(objAddress, newObjX, null, newObjZ);
+                    };
                     break;
 
                 case "VerticalObjectDistanceToHome":
@@ -148,6 +195,14 @@ namespace SM64_Diagnostic.Structs
                         float homeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
                         float yDist = objY - homeY;
                         return yDist.ToString();
+                    };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        float homeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                        double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAbove.HasValue) return false;
+                        double newObjY = homeY + distAbove.Value;
+                        return Config.Stream.SetValue((float)newObjY, objAddress + Config.ObjectSlots.ObjectYOffset);
                     };
                     break;
 
