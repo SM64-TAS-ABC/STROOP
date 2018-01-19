@@ -19,7 +19,8 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
-        Dictionary<int, PendulumSwingReference> _table = new Dictionary<int, PendulumSwingReference>();
+        Dictionary<int, PendulumSwingReference> _amplitudeDictionary = new Dictionary<int, PendulumSwingReference>();
+        Dictionary<int, PendulumSwingReference> _indexDictionary = new Dictionary<int, PendulumSwingReference>();
 
         public PendulumSwingTable()
         {
@@ -27,13 +28,14 @@ namespace SM64_Diagnostic.Structs
 
         public void Add(PendulumSwingReference pendulumSwingRef)
         {
-            _table.Add(pendulumSwingRef.Amplitude, pendulumSwingRef);
+            _amplitudeDictionary.Add(pendulumSwingRef.Amplitude, pendulumSwingRef);
+            _indexDictionary.Add(pendulumSwingRef.Index, pendulumSwingRef);
         }
 
         public int? GetPendulumSwingIndex(int amplitude)
         {
-            if (_table.ContainsKey(amplitude))
-                return _table[amplitude].Index;
+            if (_amplitudeDictionary.ContainsKey(amplitude))
+                return _amplitudeDictionary[amplitude].Index;
 
             // Short circuit this case, otherwise Math.Abs throws an exception
             if (amplitude == Int32.MinValue)
@@ -56,6 +58,16 @@ namespace SM64_Diagnostic.Structs
             }
 
             return null;
+        }
+
+        public int GetPendulumAmplitude(int index)
+        {
+            if (_indexDictionary.ContainsKey(index)) return _indexDictionary[index].Amplitude;
+
+            int beyondIndex = index > 288 ? index - 288 : -381 - index;
+            int amplitudeMagnitude = 7182 + 777 * beyondIndex + 21 * (beyondIndex * beyondIndex);
+            int sign = index % 2 == 0 ? 1 : -1;
+            return amplitudeMagnitude * sign;
         }
     }
 }

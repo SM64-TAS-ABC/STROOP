@@ -497,6 +497,19 @@ namespace SM64_Diagnostic.Structs
                         float pendulumAmplitude = GetPendulumAmplitude(objAddress);
                         return pendulumAmplitude.ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        double? amplitudeNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!amplitudeNullable.HasValue) return false;
+                        double amplitude = amplitudeNullable.Value;
+                        float accelerationDirection = amplitude > 0 ? -1 : 1;
+
+                        bool success = true;
+                        success |= Config.Stream.SetValue(accelerationDirection, objAddress + Config.ObjectSlots.PendulumAccelerationDirection);
+                        success |= Config.Stream.SetValue(0f, objAddress + Config.ObjectSlots.PendulumAngularVelocity);
+                        success |= Config.Stream.SetValue((float)amplitude, objAddress + Config.ObjectSlots.PendulumAngle);
+                        return success;
+                    };
                     break;
 
                 case "PendulumSwingIndex":
@@ -511,6 +524,20 @@ namespace SM64_Diagnostic.Structs
                         if (!pendulumSwingIndexNullable.HasValue) return badValue;
                         int pendulumSwingIndex = pendulumSwingIndexNullable.Value;
                         return pendulumSwingIndex.ToString();
+                    };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        int? indexNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        if (!indexNullable.HasValue) return false;
+                        int index = indexNullable.Value;
+                        float amplitude = Config.PendulumSwings.GetPendulumAmplitude(index);
+                        float accelerationDirection = amplitude > 0 ? -1 : 1;
+
+                        bool success = true;
+                        success |= Config.Stream.SetValue(accelerationDirection, objAddress + Config.ObjectSlots.PendulumAccelerationDirection);
+                        success |= Config.Stream.SetValue(0f, objAddress + Config.ObjectSlots.PendulumAngularVelocity);
+                        success |= Config.Stream.SetValue(amplitude, objAddress + Config.ObjectSlots.PendulumAngle);
+                        return success;
                     };
                     break;
 
