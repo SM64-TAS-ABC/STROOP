@@ -1140,6 +1140,16 @@ namespace SM64_Diagnostic.Structs
                         float fallHeight = peakHeight - floorY;
                         return fallHeight.ToString();
                     };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? fallHeightNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!fallHeightNullable.HasValue) return false;
+                        double fallHeight = fallHeightNullable.Value;
+
+                        float floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
+                        double newPeakHeight = floorY + fallHeight;
+                        return Config.Stream.SetValue((float)newPeakHeight, Config.Mario.StructAddress + Config.Mario.PeakHeightOffset);
+                    };
                     break;
                     
                 // HUD vars
