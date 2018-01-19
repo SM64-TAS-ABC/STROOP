@@ -263,6 +263,20 @@ namespace SM64_Diagnostic.Structs
                         double angleDiff = marioPos.Angle.Value - angleToObject;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleToObj = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                        double newMarioAngleDouble = angleToObj + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                    };
                     break;
 
                 case "AngleObjectToHome":
