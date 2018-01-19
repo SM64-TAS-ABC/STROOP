@@ -12,6 +12,7 @@
   <Data groupList="Basic" type="float" offset="0x5C" base="Mario">Z Sliding Speed</Data>
   <Data groupList="Basic" base="None" specialType="SlidingSpeed">H Sliding Speed</Data>
   <Data groupList="Basic" type="ushort" offset="0x38" base="Mario" subclass="Angle">Sliding Yaw</Data>
+  <Data groupList="Basic" base="None" specialType="SlidingAngle" type="ushort" subclass="Angle">Sliding Yaw Computed</Data>
   <Data groupList="Hacks" base="None" specialType="MovementX" coord="X">Delta X</Data>
   <Data groupList="Hacks" base="None" specialType="MovementY" coord="Y">Delta Y</Data>
   <Data groupList="Hacks" base="None" specialType="MovementZ" coord="Z">Delta Z</Data>

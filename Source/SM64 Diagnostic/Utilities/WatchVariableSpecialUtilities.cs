@@ -990,6 +990,33 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
+                case "SlidingAngle":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float xSlidingSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+                        float zSlidingSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+                        double slidingAngle = MoreMath.AngleTo_AngleUnits(xSlidingSpeed, zSlidingSpeed);
+                        return slidingAngle.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        float xSlidingSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+                        float zSlidingSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+                        double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
+
+                        double? newHSlidingAngleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newHSlidingAngleNullable.HasValue) return false;
+                        double newHSlidingAngle = newHSlidingAngleNullable.Value;
+                        (double newXSlidingSpeed, double newZSlidingSpeed) =
+                            MoreMath.GetComponentsFromVector(hSlidingSpeed, newHSlidingAngle);
+
+                        bool success = true;
+                        success |= Config.Stream.SetValue((float)newXSlidingSpeed, Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+                        success |= Config.Stream.SetValue((float)newZSlidingSpeed, Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+                        return success;
+                    };
+                    break;
+
                 case "MovementX":
                     getterFunction = (uint dummy) =>
                     {
