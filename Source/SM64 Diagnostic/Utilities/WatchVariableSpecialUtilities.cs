@@ -341,6 +341,28 @@ namespace SM64_Diagnostic.Structs
                         double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
                         return marioHitboxAwayFromObject.ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+                        float mObjX = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectXOffset);
+                        float mObjZ = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectZOffset);
+                        float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxRadius);
+
+                        float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
+                        float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+                        float objHitboxRadius = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxRadius);
+
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double? hitboxDistAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!hitboxDistAwayNullable.HasValue) return false;
+                        double hitboxDistAway = hitboxDistAwayNullable.Value;
+                        double distAway = hitboxDistAway + mObjHitboxRadius + objHitboxRadius;
+
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.ExtrapolateLineHorizontally(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
                     break;
 
                 case "MarioHitboxAboveObject":
@@ -360,6 +382,23 @@ namespace SM64_Diagnostic.Structs
                         double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
                         return marioHitboxAboveObject.ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+                        float mObjY = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
+                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
+
+                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
+                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
+                        float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
+
+                        double? hitboxDistAboveNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!hitboxDistAboveNullable.HasValue) return false;
+                        double hitboxDistAbove = hitboxDistAboveNullable.Value;
+                        double newMarioY = objHitboxTop + mObjHitboxDownOffset + hitboxDistAbove;
+                        return Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
+                    };
                     break;
 
                 case "MarioHitboxBelowObject":
@@ -378,6 +417,25 @@ namespace SM64_Diagnostic.Structs
 
                         double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
                         return marioHitboxBelowObject.ToString();
+                    };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+                        float mObjY = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
+                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxHeight);
+                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
+                        float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
+
+                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
+                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
+                        float objHitboxBottom = objY - objHitboxDownOffset;
+
+                        double? hitboxDistBelowNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!hitboxDistBelowNullable.HasValue) return false;
+                        double hitboxDistBelow = hitboxDistBelowNullable.Value;
+                        double newMarioY = objHitboxBottom - (mObjHitboxTop - mObjY) - hitboxDistBelow;
+                        return Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
                     };
                     break;
 
