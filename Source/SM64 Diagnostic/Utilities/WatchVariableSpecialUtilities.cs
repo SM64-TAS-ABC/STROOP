@@ -831,6 +831,21 @@ namespace SM64_Diagnostic.Structs
                         double spaceBetween = hDist - radius;
                         return spaceBetween.ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        double? spaceBetweenNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!spaceBetweenNullable.HasValue) return false;
+                        double spaceBetween = spaceBetweenNullable.Value;
+                        float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
+                        float radius = 32 + scale * 65;
+                        double distAway = spaceBetween + radius;
+
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.ExtrapolateLineHorizontally(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
                     break;
 
                 // Object specific vars - Scuttlebug
