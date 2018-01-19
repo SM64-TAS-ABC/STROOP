@@ -858,6 +858,16 @@ namespace SM64_Diagnostic.Structs
                         int angleDiff = facingAngle - targetAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        ushort targetAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.ScuttlebugTargetAngleOffset);
+                        double newObjAngleDouble = targetAngle + angleDiff;
+                        ushort newObjAngleUShort = MoreMath.NormalizeAngleUshort(newObjAngleDouble);
+                        return SetObjectPosition(objAddress, null, null, null, newObjAngleUShort);
+                    };
                     break;
 
                 // Object specific vars - Ghost
