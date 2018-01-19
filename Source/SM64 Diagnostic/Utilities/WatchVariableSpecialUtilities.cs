@@ -300,6 +300,19 @@ namespace SM64_Diagnostic.Structs
                         double angleDiff = objPos.Angle.Value - angleToHome;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        Position objPos = GetObjectPosition(objAddress);
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleToHome = MoreMath.AngleTo_AngleUnits(
+                            objPos.X, objPos.Z, homePos.X, homePos.Z);
+                        double newObjAngleDouble = angleToHome + angleDiff;
+                        ushort newObjAngleUShort = MoreMath.NormalizeAngleUshort(newObjAngleDouble);
+                        return SetObjectPosition(objAddress, null, null, null, newObjAngleUShort);
+                    };
                     break;
 
                 case "AngleHomeToObject":
