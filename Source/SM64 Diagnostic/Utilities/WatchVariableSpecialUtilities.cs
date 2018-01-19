@@ -968,6 +968,26 @@ namespace SM64_Diagnostic.Structs
                         double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
                         return hSlidingSpeed.ToString();
                     };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        float xSlidingSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+                        float zSlidingSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+                        if (xSlidingSpeed == 0 && zSlidingSpeed == 0) xSlidingSpeed = 1;
+                        double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
+
+                        double? newHSlidingSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newHSlidingSpeedNullable.HasValue) return false;
+                        double newHSlidingSpeed = newHSlidingSpeedNullable.Value;
+
+                        double multiplier = newHSlidingSpeed / hSlidingSpeed;
+                        double newXSlidingSpeed = xSlidingSpeed * multiplier;
+                        double newZSlidingSpeed = zSlidingSpeed * multiplier;
+
+                        bool success = true;
+                        success |= Config.Stream.SetValue((float)newXSlidingSpeed, Config.Mario.StructAddress + Config.Mario.SlidingSpeedXOffset);
+                        success |= Config.Stream.SetValue((float)newZSlidingSpeed, Config.Mario.StructAddress + Config.Mario.SlidingSpeedZOffset);
+                        return success;
+                    };
                     break;
 
                 case "MovementX":
