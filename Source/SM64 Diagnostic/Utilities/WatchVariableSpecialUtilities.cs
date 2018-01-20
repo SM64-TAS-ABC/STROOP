@@ -1437,6 +1437,16 @@ namespace SM64_Diagnostic.Structs
                             marioPos.Y + (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
                         return verticalDistAway.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? distAboveNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAboveNullable.HasValue) return false;
+                        double distAbove = distAboveNullable.Value;
+                        double newMarioY = distAbove - (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
+                        return Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
+                    };
                     break;
 
                 case "HeightOnSlope":
