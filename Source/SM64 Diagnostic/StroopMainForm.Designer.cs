@@ -33,7 +33,7 @@ namespace SM64_Diagnostic
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -705,6 +705,16 @@ namespace SM64_Diagnostic
             this.buttonDisGo = new System.Windows.Forms.Button();
             this.labelDisStart = new System.Windows.Forms.Label();
             this.richTextBoxDissasembly = new SM64_Diagnostic.Controls.RichTextBoxEx();
+            this.tabPageDecompiler = new System.Windows.Forms.TabPage();
+            this.buttonDecompilerBack = new System.Windows.Forms.Button();
+            this.buttonDecompilerNext = new System.Windows.Forms.Button();
+            this.textBoxDecompilerAddress = new System.Windows.Forms.TextBox();
+            this.buttonDecompilerDecompile = new System.Windows.Forms.Button();
+            this.labelDecompilerAddress = new System.Windows.Forms.Label();
+            this.splitContainerDecompiler = new System.Windows.Forms.SplitContainer();
+            this.listViewDecompiler = new System.Windows.Forms.ListView();
+            this.decompilerViewHost = new System.Windows.Forms.Integration.ElementHost();
+            this.decompilerView = new SM64_Diagnostic.Controls.DecompilerView();
             this.tabPageScripts = new System.Windows.Forms.TabPage();
             this.buttonScriptGo = new System.Windows.Forms.Button();
             this.textBoxScriptAddress = new System.Windows.Forms.TextBox();
@@ -982,14 +992,6 @@ namespace SM64_Diagnostic
             this.labelMetric3Value = new System.Windows.Forms.Label();
             this.labelMetric5Value = new System.Windows.Forms.Label();
             this.labelMetric4Value = new System.Windows.Forms.Label();
-            this.tabPageDecompiler = new System.Windows.Forms.TabPage();
-            this.textBoxDecompilerAddress = new System.Windows.Forms.TextBox();
-            this.buttonDecompilerDecompile = new System.Windows.Forms.Button();
-            this.labelDecompilerAddress = new System.Windows.Forms.Label();
-            this.splitContainerDecompiler = new System.Windows.Forms.SplitContainer();
-            this.listViewDecompiler = new System.Windows.Forms.ListView();
-            this.decompilerViewHost = new System.Windows.Forms.Integration.ElementHost();
-            this.decompilerView = new SM64_Diagnostic.Controls.DecompilerView();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
             this.panelConnect = new System.Windows.Forms.Panel();
@@ -1006,8 +1008,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.buttonDecompilerBack = new System.Windows.Forms.Button();
-            this.buttonDecompilerNext = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1287,6 +1287,11 @@ namespace SM64_Diagnostic
             this.tabPageExpressions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressions)).BeginInit();
             this.tabPageDisassembly.SuspendLayout();
+            this.tabPageDecompiler.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).BeginInit();
+            this.splitContainerDecompiler.Panel1.SuspendLayout();
+            this.splitContainerDecompiler.Panel2.SuspendLayout();
+            this.splitContainerDecompiler.SuspendLayout();
             this.tabPageScripts.SuspendLayout();
             this.tabPageHacks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHacks)).BeginInit();
@@ -1321,11 +1326,6 @@ namespace SM64_Diagnostic
             this.groupBoxObjAtHOLP.SuspendLayout();
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
-            this.tabPageDecompiler.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).BeginInit();
-            this.splitContainerDecompiler.Panel1.SuspendLayout();
-            this.splitContainerDecompiler.Panel2.SuspendLayout();
-            this.splitContainerDecompiler.SuspendLayout();
             this.panelConnect.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1356,7 +1356,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 345);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 347);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1421,7 +1421,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 155);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -2371,15 +2371,14 @@ namespace SM64_Diagnostic
             // 
             // WatchVariablePanelObject
             // 
-            this.WatchVariablePanelObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.WatchVariablePanelObject.AutoScroll = true;
+            this.WatchVariablePanelObject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WatchVariablePanelObject.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.WatchVariablePanelObject.Location = new System.Drawing.Point(2, 2);
-            this.WatchVariablePanelObject.Margin = new System.Windows.Forms.Padding(2);
+            this.WatchVariablePanelObject.Location = new System.Drawing.Point(0, 0);
+            this.WatchVariablePanelObject.Margin = new System.Windows.Forms.Padding(0);
             this.WatchVariablePanelObject.Name = "WatchVariablePanelObject";
-            this.WatchVariablePanelObject.Size = new System.Drawing.Size(690, 458);
+            this.WatchVariablePanelObject.Padding = new System.Windows.Forms.Padding(2);
+            this.WatchVariablePanelObject.Size = new System.Drawing.Size(695, 461);
             this.WatchVariablePanelObject.TabIndex = 3;
             // 
             // tabPageMario
@@ -3059,15 +3058,14 @@ namespace SM64_Diagnostic
             // 
             // WatchVariablePanelMario
             // 
-            this.WatchVariablePanelMario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.WatchVariablePanelMario.AutoScroll = true;
+            this.WatchVariablePanelMario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WatchVariablePanelMario.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.WatchVariablePanelMario.Location = new System.Drawing.Point(2, 2);
-            this.WatchVariablePanelMario.Margin = new System.Windows.Forms.Padding(2);
+            this.WatchVariablePanelMario.Location = new System.Drawing.Point(0, 0);
+            this.WatchVariablePanelMario.Margin = new System.Windows.Forms.Padding(0);
             this.WatchVariablePanelMario.Name = "WatchVariablePanelMario";
-            this.WatchVariablePanelMario.Size = new System.Drawing.Size(699, 456);
+            this.WatchVariablePanelMario.Padding = new System.Windows.Forms.Padding(2);
+            this.WatchVariablePanelMario.Size = new System.Drawing.Size(704, 461);
             this.WatchVariablePanelMario.TabIndex = 1;
             // 
             // tabPageHud
@@ -3203,15 +3201,14 @@ namespace SM64_Diagnostic
             // 
             // watchVariablePanelHud
             // 
-            this.watchVariablePanelHud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.watchVariablePanelHud.AutoScroll = true;
+            this.watchVariablePanelHud.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelHud.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelHud.Location = new System.Drawing.Point(2, 2);
-            this.watchVariablePanelHud.Margin = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelHud.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelHud.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelHud.Name = "watchVariablePanelHud";
-            this.watchVariablePanelHud.Size = new System.Drawing.Size(791, 457);
+            this.watchVariablePanelHud.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelHud.Size = new System.Drawing.Size(795, 461);
             this.watchVariablePanelHud.TabIndex = 3;
             // 
             // tabPageCamera
@@ -3584,15 +3581,14 @@ namespace SM64_Diagnostic
             // 
             // watchVariablePanelCamera
             // 
-            this.watchVariablePanelCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.watchVariablePanelCamera.AutoScroll = true;
+            this.watchVariablePanelCamera.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelCamera.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelCamera.Location = new System.Drawing.Point(2, 2);
-            this.watchVariablePanelCamera.Margin = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelCamera.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelCamera.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelCamera.Name = "watchVariablePanelCamera";
-            this.watchVariablePanelCamera.Size = new System.Drawing.Size(701, 457);
+            this.watchVariablePanelCamera.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelCamera.Size = new System.Drawing.Size(705, 461);
             this.watchVariablePanelCamera.TabIndex = 3;
             // 
             // tabPageTriangles
@@ -4126,15 +4122,14 @@ namespace SM64_Diagnostic
             // 
             // watchVariablePanelTriangles
             // 
-            this.watchVariablePanelTriangles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.watchVariablePanelTriangles.AutoScroll = true;
+            this.watchVariablePanelTriangles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelTriangles.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelTriangles.Location = new System.Drawing.Point(2, 4);
-            this.watchVariablePanelTriangles.Margin = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelTriangles.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelTriangles.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelTriangles.Name = "watchVariablePanelTriangles";
-            this.watchVariablePanelTriangles.Size = new System.Drawing.Size(698, 453);
+            this.watchVariablePanelTriangles.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelTriangles.Size = new System.Drawing.Size(704, 461);
             this.watchVariablePanelTriangles.TabIndex = 7;
             // 
             // tabPageWater
@@ -4150,15 +4145,14 @@ namespace SM64_Diagnostic
             // 
             // watchVariablePanelWater
             // 
-            this.watchVariablePanelWater.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.watchVariablePanelWater.AutoScroll = true;
+            this.watchVariablePanelWater.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelWater.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.watchVariablePanelWater.Location = new System.Drawing.Point(2, 2);
-            this.watchVariablePanelWater.Margin = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelWater.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelWater.Name = "watchVariablePanelWater";
-            this.watchVariablePanelWater.Size = new System.Drawing.Size(909, 457);
+            this.watchVariablePanelWater.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelWater.Size = new System.Drawing.Size(911, 459);
             this.watchVariablePanelWater.TabIndex = 2;
             // 
             // tabPageActions
@@ -4244,27 +4238,25 @@ namespace SM64_Diagnostic
             // 
             // inputDisplayPanel
             // 
-            this.inputDisplayPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.inputDisplayPanel.AutoSize = true;
-            this.inputDisplayPanel.Location = new System.Drawing.Point(3, 3);
-            this.inputDisplayPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.inputDisplayPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputDisplayPanel.Location = new System.Drawing.Point(0, 0);
+            this.inputDisplayPanel.Margin = new System.Windows.Forms.Padding(0);
             this.inputDisplayPanel.Name = "inputDisplayPanel";
-            this.inputDisplayPanel.Size = new System.Drawing.Size(421, 457);
+            this.inputDisplayPanel.Padding = new System.Windows.Forms.Padding(2);
+            this.inputDisplayPanel.Size = new System.Drawing.Size(426, 461);
             this.inputDisplayPanel.TabIndex = 4;
             // 
             // watchVariablePanelInput
             // 
-            this.watchVariablePanelInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.watchVariablePanelInput.AutoScroll = true;
+            this.watchVariablePanelInput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelInput.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelInput.Location = new System.Drawing.Point(2, 2);
-            this.watchVariablePanelInput.Margin = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelInput.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelInput.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelInput.Name = "watchVariablePanelInput";
-            this.watchVariablePanelInput.Size = new System.Drawing.Size(479, 460);
+            this.watchVariablePanelInput.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelInput.Size = new System.Drawing.Size(484, 461);
             this.watchVariablePanelInput.TabIndex = 2;
             // 
             // tabPageFile
@@ -4627,7 +4619,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7593,15 +7585,14 @@ namespace SM64_Diagnostic
             // 
             // watchVariablePanelFile
             // 
-            this.watchVariablePanelFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.watchVariablePanelFile.AutoScroll = true;
+            this.watchVariablePanelFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelFile.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelFile.Location = new System.Drawing.Point(0, -1);
-            this.watchVariablePanelFile.Margin = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelFile.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelFile.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelFile.Name = "watchVariablePanelFile";
-            this.watchVariablePanelFile.Size = new System.Drawing.Size(250, 463);
+            this.watchVariablePanelFile.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelFile.Size = new System.Drawing.Size(256, 461);
             this.watchVariablePanelFile.TabIndex = 2;
             // 
             // tabPageMisc
@@ -7676,15 +7667,14 @@ namespace SM64_Diagnostic
             // 
             // watchVariablePanelMisc
             // 
-            this.watchVariablePanelMisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.watchVariablePanelMisc.AutoScroll = true;
+            this.watchVariablePanelMisc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelMisc.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelMisc.Location = new System.Drawing.Point(2, 2);
-            this.watchVariablePanelMisc.Margin = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelMisc.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelMisc.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMisc.Name = "watchVariablePanelMisc";
-            this.watchVariablePanelMisc.Size = new System.Drawing.Size(778, 457);
+            this.watchVariablePanelMisc.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelMisc.Size = new System.Drawing.Size(782, 461);
             this.watchVariablePanelMisc.TabIndex = 5;
             // 
             // tabPageCustom
@@ -7985,15 +7975,14 @@ namespace SM64_Diagnostic
             // 
             // watchVariablePanelCustom
             // 
-            this.watchVariablePanelCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.watchVariablePanelCustom.AutoScroll = true;
+            this.watchVariablePanelCustom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelCustom.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelCustom.Location = new System.Drawing.Point(2, 2);
-            this.watchVariablePanelCustom.Margin = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelCustom.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelCustom.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelCustom.Name = "watchVariablePanelCustom";
-            this.watchVariablePanelCustom.Size = new System.Drawing.Size(693, 455);
+            this.watchVariablePanelCustom.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelCustom.Size = new System.Drawing.Size(697, 461);
             this.watchVariablePanelCustom.TabIndex = 3;
             // 
             // tabPageDebug
@@ -8246,15 +8235,14 @@ namespace SM64_Diagnostic
             // 
             // watchVariablePanelDebug
             // 
-            this.watchVariablePanelDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.watchVariablePanelDebug.AutoScroll = true;
+            this.watchVariablePanelDebug.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelDebug.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelDebug.Location = new System.Drawing.Point(2, 2);
-            this.watchVariablePanelDebug.Margin = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelDebug.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelDebug.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelDebug.Name = "watchVariablePanelDebug";
-            this.watchVariablePanelDebug.Size = new System.Drawing.Size(518, 455);
+            this.watchVariablePanelDebug.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelDebug.Size = new System.Drawing.Size(524, 461);
             this.watchVariablePanelDebug.TabIndex = 26;
             // 
             // tabPageMap
@@ -8895,15 +8883,14 @@ namespace SM64_Diagnostic
             // 
             // watchVariablePanelArea
             // 
-            this.watchVariablePanelArea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.watchVariablePanelArea.AutoScroll = true;
+            this.watchVariablePanelArea.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelArea.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelArea.Location = new System.Drawing.Point(2, 4);
-            this.watchVariablePanelArea.Margin = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelArea.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelArea.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelArea.Name = "watchVariablePanelArea";
-            this.watchVariablePanelArea.Size = new System.Drawing.Size(753, 453);
+            this.watchVariablePanelArea.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelArea.Size = new System.Drawing.Size(759, 461);
             this.watchVariablePanelArea.TabIndex = 7;
             // 
             // tabPageModel
@@ -9482,7 +9469,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(156, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(122, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9514,7 +9501,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(150, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(116, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9570,7 +9557,7 @@ namespace SM64_Diagnostic
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(150, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(116, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -9622,13 +9609,13 @@ namespace SM64_Diagnostic
             // 
             // glControlModelView
             // 
-            this.glControlModelView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.glControlModelView.BackColor = System.Drawing.Color.Black;
-            this.glControlModelView.Location = new System.Drawing.Point(3, 5);
+            this.glControlModelView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.glControlModelView.Location = new System.Drawing.Point(0, 0);
+            this.glControlModelView.Margin = new System.Windows.Forms.Padding(0);
             this.glControlModelView.Name = "glControlModelView";
-            this.glControlModelView.Size = new System.Drawing.Size(488, 451);
+            this.glControlModelView.Padding = new System.Windows.Forms.Padding(2);
+            this.glControlModelView.Size = new System.Drawing.Size(496, 461);
             this.glControlModelView.TabIndex = 0;
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
@@ -9701,8 +9688,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9784,6 +9771,111 @@ namespace SM64_Diagnostic
             this.richTextBoxDissasembly.Size = new System.Drawing.Size(910, 435);
             this.richTextBoxDissasembly.TabIndex = 0;
             this.richTextBoxDissasembly.Text = "";
+            // 
+            // tabPageDecompiler
+            // 
+            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerBack);
+            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerNext);
+            this.tabPageDecompiler.Controls.Add(this.textBoxDecompilerAddress);
+            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerDecompile);
+            this.tabPageDecompiler.Controls.Add(this.labelDecompilerAddress);
+            this.tabPageDecompiler.Controls.Add(this.splitContainerDecompiler);
+            this.tabPageDecompiler.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDecompiler.Name = "tabPageDecompiler";
+            this.tabPageDecompiler.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDecompiler.Size = new System.Drawing.Size(915, 463);
+            this.tabPageDecompiler.TabIndex = 23;
+            this.tabPageDecompiler.Text = "Decompiler";
+            // 
+            // buttonDecompilerBack
+            // 
+            this.buttonDecompilerBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonDecompilerBack.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_arrow_left;
+            this.buttonDecompilerBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDecompilerBack.Location = new System.Drawing.Point(220, 1);
+            this.buttonDecompilerBack.Name = "buttonDecompilerBack";
+            this.buttonDecompilerBack.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonDecompilerBack.Size = new System.Drawing.Size(25, 25);
+            this.buttonDecompilerBack.TabIndex = 13;
+            this.buttonDecompilerBack.UseVisualStyleBackColor = true;
+            // 
+            // buttonDecompilerNext
+            // 
+            this.buttonDecompilerNext.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonDecompilerNext.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_arrow_right;
+            this.buttonDecompilerNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDecompilerNext.Location = new System.Drawing.Point(251, 1);
+            this.buttonDecompilerNext.Name = "buttonDecompilerNext";
+            this.buttonDecompilerNext.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonDecompilerNext.Size = new System.Drawing.Size(25, 25);
+            this.buttonDecompilerNext.TabIndex = 12;
+            this.buttonDecompilerNext.UseVisualStyleBackColor = true;
+            // 
+            // textBoxDecompilerAddress
+            // 
+            this.textBoxDecompilerAddress.Location = new System.Drawing.Point(55, 3);
+            this.textBoxDecompilerAddress.Name = "textBoxDecompilerAddress";
+            this.textBoxDecompilerAddress.Size = new System.Drawing.Size(93, 20);
+            this.textBoxDecompilerAddress.TabIndex = 10;
+            // 
+            // buttonDecompilerDecompile
+            // 
+            this.buttonDecompilerDecompile.Location = new System.Drawing.Point(153, 3);
+            this.buttonDecompilerDecompile.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDecompilerDecompile.Name = "buttonDecompilerDecompile";
+            this.buttonDecompilerDecompile.Size = new System.Drawing.Size(62, 20);
+            this.buttonDecompilerDecompile.TabIndex = 9;
+            this.buttonDecompilerDecompile.Text = "Go";
+            this.buttonDecompilerDecompile.UseVisualStyleBackColor = true;
+            // 
+            // labelDecompilerAddress
+            // 
+            this.labelDecompilerAddress.AutoSize = true;
+            this.labelDecompilerAddress.Location = new System.Drawing.Point(2, 6);
+            this.labelDecompilerAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDecompilerAddress.Name = "labelDecompilerAddress";
+            this.labelDecompilerAddress.Size = new System.Drawing.Size(48, 13);
+            this.labelDecompilerAddress.TabIndex = 8;
+            this.labelDecompilerAddress.Text = "Address:";
+            // 
+            // splitContainerDecompiler
+            // 
+            this.splitContainerDecompiler.Location = new System.Drawing.Point(6, 27);
+            this.splitContainerDecompiler.Name = "splitContainerDecompiler";
+            // 
+            // splitContainerDecompiler.Panel1
+            // 
+            this.splitContainerDecompiler.Panel1.Controls.Add(this.listViewDecompiler);
+            // 
+            // splitContainerDecompiler.Panel2
+            // 
+            this.splitContainerDecompiler.Panel2.Controls.Add(this.decompilerViewHost);
+            this.splitContainerDecompiler.Size = new System.Drawing.Size(903, 430);
+            this.splitContainerDecompiler.SplitterDistance = 301;
+            this.splitContainerDecompiler.TabIndex = 1;
+            // 
+            // listViewDecompiler
+            // 
+            this.listViewDecompiler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewDecompiler.Location = new System.Drawing.Point(4, 4);
+            this.listViewDecompiler.Name = "listViewDecompiler";
+            this.listViewDecompiler.Size = new System.Drawing.Size(294, 423);
+            this.listViewDecompiler.TabIndex = 0;
+            this.listViewDecompiler.UseCompatibleStateImageBehavior = false;
+            // 
+            // decompilerViewHost
+            // 
+            this.decompilerViewHost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.decompilerViewHost.Location = new System.Drawing.Point(3, 3);
+            this.decompilerViewHost.Name = "decompilerViewHost";
+            this.decompilerViewHost.Size = new System.Drawing.Size(592, 424);
+            this.decompilerViewHost.TabIndex = 0;
+            this.decompilerViewHost.Text = "elementHost1";
+            this.decompilerViewHost.Child = this.decompilerView;
             // 
             // tabPageScripts
             // 
@@ -9925,7 +10017,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(597, 447);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(603, 447);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -10024,7 +10116,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(585, 342);
+            this.listBoxSpawn.Size = new System.Drawing.Size(591, 342);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -10879,15 +10971,14 @@ namespace SM64_Diagnostic
             // 
             // watchVariablePanelCamHack
             // 
-            this.watchVariablePanelCamHack.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.watchVariablePanelCamHack.AutoScroll = true;
+            this.watchVariablePanelCamHack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelCamHack.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelCamHack.Location = new System.Drawing.Point(2, 2);
-            this.watchVariablePanelCamHack.Margin = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelCamHack.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelCamHack.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelCamHack.Name = "watchVariablePanelCamHack";
-            this.watchVariablePanelCamHack.Size = new System.Drawing.Size(469, 458);
+            this.watchVariablePanelCamHack.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelCamHack.Size = new System.Drawing.Size(473, 461);
             this.watchVariablePanelCamHack.TabIndex = 2;
             // 
             // tabPageQuarterFrame
@@ -10902,15 +10993,14 @@ namespace SM64_Diagnostic
             // 
             // watchVariablePanelQuarterFrame
             // 
-            this.watchVariablePanelQuarterFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.watchVariablePanelQuarterFrame.AutoScroll = true;
+            this.watchVariablePanelQuarterFrame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelQuarterFrame.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelQuarterFrame.Location = new System.Drawing.Point(5, 5);
-            this.watchVariablePanelQuarterFrame.Margin = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelQuarterFrame.Location = new System.Drawing.Point(3, 3);
+            this.watchVariablePanelQuarterFrame.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelQuarterFrame.Name = "watchVariablePanelQuarterFrame";
-            this.watchVariablePanelQuarterFrame.Size = new System.Drawing.Size(905, 453);
+            this.watchVariablePanelQuarterFrame.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelQuarterFrame.Size = new System.Drawing.Size(909, 457);
             this.watchVariablePanelQuarterFrame.TabIndex = 2;
             // 
             // tabPageOptions
@@ -12923,87 +13013,6 @@ namespace SM64_Diagnostic
             this.labelMetric4Value.Text = "Value";
             this.labelMetric4Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // tabPageDecompiler
-            // 
-            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerBack);
-            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerNext);
-            this.tabPageDecompiler.Controls.Add(this.textBoxDecompilerAddress);
-            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerDecompile);
-            this.tabPageDecompiler.Controls.Add(this.labelDecompilerAddress);
-            this.tabPageDecompiler.Controls.Add(this.splitContainerDecompiler);
-            this.tabPageDecompiler.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDecompiler.Name = "tabPageDecompiler";
-            this.tabPageDecompiler.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDecompiler.Size = new System.Drawing.Size(915, 463);
-            this.tabPageDecompiler.TabIndex = 23;
-            this.tabPageDecompiler.Text = "Decompiler";
-            // 
-            // textBoxDecompilerAddress
-            // 
-            this.textBoxDecompilerAddress.Location = new System.Drawing.Point(55, 3);
-            this.textBoxDecompilerAddress.Name = "textBoxDecompilerAddress";
-            this.textBoxDecompilerAddress.Size = new System.Drawing.Size(93, 20);
-            this.textBoxDecompilerAddress.TabIndex = 10;
-            // 
-            // buttonDecompilerDecompile
-            // 
-            this.buttonDecompilerDecompile.Location = new System.Drawing.Point(153, 3);
-            this.buttonDecompilerDecompile.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDecompilerDecompile.Name = "buttonDecompilerDecompile";
-            this.buttonDecompilerDecompile.Size = new System.Drawing.Size(62, 20);
-            this.buttonDecompilerDecompile.TabIndex = 9;
-            this.buttonDecompilerDecompile.Text = "Go";
-            this.buttonDecompilerDecompile.UseVisualStyleBackColor = true;
-            // 
-            // labelDecompilerAddress
-            // 
-            this.labelDecompilerAddress.AutoSize = true;
-            this.labelDecompilerAddress.Location = new System.Drawing.Point(2, 6);
-            this.labelDecompilerAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDecompilerAddress.Name = "labelDecompilerAddress";
-            this.labelDecompilerAddress.Size = new System.Drawing.Size(48, 13);
-            this.labelDecompilerAddress.TabIndex = 8;
-            this.labelDecompilerAddress.Text = "Address:";
-            // 
-            // splitContainerDecompiler
-            // 
-            this.splitContainerDecompiler.Location = new System.Drawing.Point(6, 27);
-            this.splitContainerDecompiler.Name = "splitContainerDecompiler";
-            // 
-            // splitContainerDecompiler.Panel1
-            // 
-            this.splitContainerDecompiler.Panel1.Controls.Add(this.listViewDecompiler);
-            // 
-            // splitContainerDecompiler.Panel2
-            // 
-            this.splitContainerDecompiler.Panel2.Controls.Add(this.decompilerViewHost);
-            this.splitContainerDecompiler.Size = new System.Drawing.Size(903, 430);
-            this.splitContainerDecompiler.SplitterDistance = 301;
-            this.splitContainerDecompiler.TabIndex = 1;
-            // 
-            // listViewDecompiler
-            // 
-            this.listViewDecompiler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewDecompiler.Location = new System.Drawing.Point(4, 4);
-            this.listViewDecompiler.Name = "listViewDecompiler";
-            this.listViewDecompiler.Size = new System.Drawing.Size(294, 423);
-            this.listViewDecompiler.TabIndex = 0;
-            this.listViewDecompiler.UseCompatibleStateImageBehavior = false;
-            // 
-            // decompilerViewHost
-            // 
-            this.decompilerViewHost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.decompilerViewHost.Location = new System.Drawing.Point(3, 3);
-            this.decompilerViewHost.Name = "decompilerViewHost";
-            this.decompilerViewHost.Size = new System.Drawing.Size(592, 424);
-            this.decompilerViewHost.TabIndex = 0;
-            this.decompilerViewHost.Text = "elementHost1";
-            this.decompilerViewHost.Child = this.decompilerView;
-            // 
             // labelVersionNumber
             // 
             this.labelVersionNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -13190,30 +13199,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.TabIndex = 20;
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
-            // 
-            // buttonDecompilerBack
-            // 
-            this.buttonDecompilerBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonDecompilerBack.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_arrow_left;
-            this.buttonDecompilerBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDecompilerBack.Location = new System.Drawing.Point(220, 1);
-            this.buttonDecompilerBack.Name = "buttonDecompilerBack";
-            this.buttonDecompilerBack.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonDecompilerBack.Size = new System.Drawing.Size(25, 25);
-            this.buttonDecompilerBack.TabIndex = 13;
-            this.buttonDecompilerBack.UseVisualStyleBackColor = true;
-            // 
-            // buttonDecompilerNext
-            // 
-            this.buttonDecompilerNext.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonDecompilerNext.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.img_arrow_right;
-            this.buttonDecompilerNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDecompilerNext.Location = new System.Drawing.Point(251, 1);
-            this.buttonDecompilerNext.Name = "buttonDecompilerNext";
-            this.buttonDecompilerNext.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonDecompilerNext.Size = new System.Drawing.Size(25, 25);
-            this.buttonDecompilerNext.TabIndex = 12;
-            this.buttonDecompilerNext.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -13562,6 +13547,12 @@ namespace SM64_Diagnostic
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressions)).EndInit();
             this.tabPageDisassembly.ResumeLayout(false);
             this.tabPageDisassembly.PerformLayout();
+            this.tabPageDecompiler.ResumeLayout(false);
+            this.tabPageDecompiler.PerformLayout();
+            this.splitContainerDecompiler.Panel1.ResumeLayout(false);
+            this.splitContainerDecompiler.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).EndInit();
+            this.splitContainerDecompiler.ResumeLayout(false);
             this.tabPageScripts.ResumeLayout(false);
             this.tabPageScripts.PerformLayout();
             this.tabPageHacks.ResumeLayout(false);
@@ -13619,12 +13610,6 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.PerformLayout();
             this.groupBoxRecording.ResumeLayout(false);
             this.groupBoxRecording.PerformLayout();
-            this.tabPageDecompiler.ResumeLayout(false);
-            this.tabPageDecompiler.PerformLayout();
-            this.splitContainerDecompiler.Panel1.ResumeLayout(false);
-            this.splitContainerDecompiler.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).EndInit();
-            this.splitContainerDecompiler.ResumeLayout(false);
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
             this.ResumeLayout(false);
