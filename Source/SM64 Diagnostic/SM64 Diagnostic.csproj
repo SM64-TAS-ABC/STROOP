@@ -216,6 +216,7 @@
     <Compile Include="LoadingHandler.cs" />
     <Compile Include="Managers\AreaManager.cs" />
     <Compile Include="Managers\CamHackManager.cs" />
+    <Compile Include="Managers\VarHackManager.cs" />
     <Compile Include="Managers\DecompilerManager.cs" />
     <Compile Include="Managers\CustomManager.cs" />
     <Compile Include="Managers\ScriptManager.cs" />
