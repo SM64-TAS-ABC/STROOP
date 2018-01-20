@@ -86,20 +86,17 @@ namespace SM64_Diagnostic.Controls
             byte[] usePointerBytes = BitConverter.GetBytes(usePointer);
             WriteBytes(usePointerBytes, bytes, 0x1B, true);
 
-            /*
             if (usePointer)
             {
                 byte[] pointerOffsetBytes = BitConverter.GetBytes(pointerOffset);
-                WriteBytes(pointerOffsetBytes, bytes, 0x1E, false);
+                WriteBytes(pointerOffsetBytes, bytes, 0x1C, true);
             }
 
-
             byte[] signedBytes = BitConverter.GetBytes(signed);
-            WriteBytes(signedBytes, bytes, 0x1D, false);
+            WriteBytes(signedBytes, bytes, 0x1E, true);
 
             byte[] typeBytes = new byte[] { typeByte };
-            WriteBytes(typeBytes, bytes, 0x1C, false);
-            */
+            WriteBytes(typeBytes, bytes, 0x1F, true);
 
 
 
