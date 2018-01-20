@@ -90,7 +90,7 @@
 
   <Data groupList="Advanced" base="Triangle" specialType="DistanceToLine12" color="#ccfffa">Dist to Line12</Data>
   <Data groupList="Advanced" base="Triangle" specialType="DistanceToLine23" color="#ccfffa">Dist to Line23</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="DistanceToLine13" color="#ccfffa">Dist to Line13</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DistanceToLine31" color="#ccfffa">Dist to Line31</Data>
 
   <Data groupList="Advanced" base="Triangle" specialType="AngleMarioToV1" subclass="Angle" type="ushort" color="#e5ccff">Angle Mario to V1</Data>
   <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleMarioToV1" subclass="Angle" type="short" color="#e5ccff">DAngle Mario to V1</Data>

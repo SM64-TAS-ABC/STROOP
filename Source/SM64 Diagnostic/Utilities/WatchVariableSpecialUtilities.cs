@@ -1822,6 +1822,30 @@ namespace SM64_Diagnostic.Structs
                             triStruct.X3, triStruct.Z3, 1, 2);
                         return signedDistToLine12.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
+                            marioPos.X, marioPos.Z,
+                            triStruct.X1, triStruct.Z1,
+                            triStruct.X2, triStruct.Z2,
+                            triStruct.X3, triStruct.Z3, 1, 2);
+
+                        double? distNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distNullable.HasValue) return false;
+                        double dist = distNullable.Value;
+                        double missingDist = dist - signedDistToLine12;
+
+                        double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                        bool floorTri = MoreMath.IsPointLeftOfLine(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                        double inwardAngle = floorTri ? MoreMath.RotateAngleCCW(lineAngle, 16384) : MoreMath.RotateAngleCW(lineAngle, 16384);
+
+                        (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
+                        double newMarioX = marioPos.X + xDiff;
+                        double newMarioZ = marioPos.Z + zDiff;
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
                     break;
 
                 case "DistanceToLine23":
@@ -1836,9 +1860,33 @@ namespace SM64_Diagnostic.Structs
                             triStruct.X3, triStruct.Z3, 2, 3);
                         return signedDistToLine23.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
+                            marioPos.X, marioPos.Z,
+                            triStruct.X1, triStruct.Z1,
+                            triStruct.X2, triStruct.Z2,
+                            triStruct.X3, triStruct.Z3, 2, 3);
+
+                        double? distNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distNullable.HasValue) return false;
+                        double dist = distNullable.Value;
+                        double missingDist = dist - signedDistToLine23;
+
+                        double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
+                        bool floorTri = MoreMath.IsPointLeftOfLine(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                        double inwardAngle = floorTri ? MoreMath.RotateAngleCCW(lineAngle, 16384) : MoreMath.RotateAngleCW(lineAngle, 16384);
+
+                        (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
+                        double newMarioX = marioPos.X + xDiff;
+                        double newMarioZ = marioPos.Z + zDiff;
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
                     break;
 
-                case "DistanceToLine13":
+                case "DistanceToLine31":
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
@@ -1849,6 +1897,30 @@ namespace SM64_Diagnostic.Structs
                             triStruct.X2, triStruct.Z2,
                             triStruct.X3, triStruct.Z3, 3, 1);
                         return signedDistToLine31.ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
+                            marioPos.X, marioPos.Z,
+                            triStruct.X1, triStruct.Z1,
+                            triStruct.X2, triStruct.Z2,
+                            triStruct.X3, triStruct.Z3, 3, 1);
+
+                        double? distNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distNullable.HasValue) return false;
+                        double dist = distNullable.Value;
+                        double missingDist = dist - signedDistToLine31;
+
+                        double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
+                        bool floorTri = MoreMath.IsPointLeftOfLine(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                        double inwardAngle = floorTri ? MoreMath.RotateAngleCCW(lineAngle, 16384) : MoreMath.RotateAngleCW(lineAngle, 16384);
+
+                        (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
+                        double newMarioX = marioPos.X + xDiff;
+                        double newMarioZ = marioPos.Z + zDiff;
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
                     break;
 
