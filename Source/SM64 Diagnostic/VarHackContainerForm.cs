@@ -19,6 +19,7 @@ namespace SM64_Diagnostic
 
         public VarHackContainerForm()
         {
+            InitializeComponent();
 
         }
 

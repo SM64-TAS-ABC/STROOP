@@ -21,20 +21,15 @@ namespace SM64_Diagnostic.Managers
         {
             Instance = this;
 
-            /*
-            SplitContainer splitContainerCustom = varHackControlControl.Controls["splitContainerCustom"] as SplitContainer;
+            SplitContainer splitContainerVarHack = varHackControlControl.Controls["splitContainerVarHack"] as SplitContainer;
 
-            Button buttonClearVariables = splitContainerCustom.Panel1.Controls["buttonClearVariables"] as Button;
-            buttonClearVariables.Click += (sender, e) => ClearVariables();
-
-            Button buttonResetVariableSizeToDefault = splitContainerCustom.Panel1.Controls["buttonResetVariableSizeToDefault"] as Button;
-            buttonResetVariableSizeToDefault.Click += (sender, e) =>
+            Button buttonVarHackApplyVariables = splitContainerVarHack.Panel1.Controls["buttonVarHackApplyVariables"] as Button;
+            buttonVarHackApplyVariables.Click += (sender, e) =>
             {
-                WatchVariableControl.VariableNameWidth = WatchVariableControl.DEFAULT_VARIABLE_NAME_WIDTH;
-                WatchVariableControl.VariableValueWidth = WatchVariableControl.DEFAULT_VARIABLE_VALUE_WIDTH;
-                WatchVariableControl.VariableHeight = WatchVariableControl.DEFAULT_VARIABLE_HEIGHT;
+                VarHackContainerForm varHackContainerForm =
+                    new VarHackContainerForm();
+                varHackContainerForm.Show();
             };
-            */
         }
 
         public void Update(bool updateView)
