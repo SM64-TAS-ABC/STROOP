@@ -349,7 +349,7 @@ namespace SM64_Diagnostic.Controls
             // 
             this.pictureBoxUpArrow.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Up_Arrow;
             this.pictureBoxUpArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxUpArrow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            //this.pictureBoxUpArrow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxUpArrow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxUpArrow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxUpArrow.Location = new System.Drawing.Point(317, 51);
@@ -362,7 +362,7 @@ namespace SM64_Diagnostic.Controls
             // 
             this.pictureBoxDownArrow.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Down_Arrow;
             this.pictureBoxDownArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxDownArrow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            //this.pictureBoxDownArrow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxDownArrow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxDownArrow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxDownArrow.Location = new System.Drawing.Point(317, 75);
@@ -375,7 +375,7 @@ namespace SM64_Diagnostic.Controls
             // 
             this.pictureBoxRedX.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Red_X;
             this.pictureBoxRedX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxRedX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            //this.pictureBoxRedX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxRedX.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxRedX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxRedX.Location = new System.Drawing.Point(353, 51);
