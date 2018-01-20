@@ -73,7 +73,19 @@ namespace SM64_Diagnostic.Controls
 
             byte[] bytes = new byte[32];
 
+            byte[] addressBytes = BitConverter.GetBytes(address);
+            WriteBytes(addressBytes, bytes, 0, true);
+
             return bytes;
+        }
+
+        private void WriteBytes(byte[] bytesToWrite, byte[] byteHolder, int offset, bool reversedOrder)
+        {
+            for (int i = 0; i < bytesToWrite.Length; i++)
+            {
+                int byteHolderOffset = reversedOrder ? offset + bytesToWrite.Length - 1 - i : offset + i;
+                byteHolder[byteHolderOffset] = bytesToWrite[i];
+            }
         }
 
         public override string ToString()
