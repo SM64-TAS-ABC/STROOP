@@ -1267,7 +1267,6 @@ namespace SM64_Diagnostic.Structs
                 case "ClosestVertex":
                     getterFunction = (uint triAddress) =>
                     {
-
                         return "V" + GetClosestTriangleVertexIndex(triAddress);
                     };
                     break;
@@ -1275,7 +1274,6 @@ namespace SM64_Diagnostic.Structs
                 case "ClosestVertexX":
                     getterFunction = (uint triAddress) =>
                     {
-
                         return GetClosestTriangleVertexPosition(triAddress).X.ToString();
                     };
                     break;
@@ -1283,7 +1281,6 @@ namespace SM64_Diagnostic.Structs
                 case "ClosestVertexY":
                     getterFunction = (uint triAddress) =>
                     {
-
                         return GetClosestTriangleVertexPosition(triAddress).Y.ToString();
                     };
                     break;
@@ -1291,7 +1288,6 @@ namespace SM64_Diagnostic.Structs
                 case "ClosestVertexZ":
                     getterFunction = (uint triAddress) =>
                     {
-
                         return GetClosestTriangleVertexPosition(triAddress).Z.ToString();
                     };
                     break;
@@ -1388,6 +1384,15 @@ namespace SM64_Diagnostic.Structs
                         float distAboveFloor = marioY - floorY;
                         return distAboveFloor.ToString();
                     };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        float floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
+                        double? distAboveNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAboveNullable.HasValue) return false;
+                        double distAbove = distAboveNullable.Value;
+                        double newMarioY = floorY + distAbove;
+                        return Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
+                    };
                     break;
 
                 case "DistanceBelowCeiling":
@@ -1397,6 +1402,15 @@ namespace SM64_Diagnostic.Structs
                         float ceilingY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.CeilingYOffset);
                         float distBelowCeiling = ceilingY - marioY;
                         return distBelowCeiling.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        float ceilingY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.CeilingYOffset);
+                        double? distBelowNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distBelowNullable.HasValue) return false;
+                        double distBelow = distBelowNullable.Value;
+                        double newMarioY = ceilingY - distBelow;
+                        return Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
                     };
                     break;
 
