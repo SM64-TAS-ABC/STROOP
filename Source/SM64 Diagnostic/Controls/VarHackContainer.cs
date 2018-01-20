@@ -83,11 +83,10 @@ namespace SM64_Diagnostic.Controls
             byte[] yPosBytes = BitConverter.GetBytes(yPos);
             WriteBytes(yPosBytes, bytes, 0x06, true);
 
-            /*
             byte[] usePointerBytes = BitConverter.GetBytes(usePointer);
-            WriteBytes(usePointerBytes, bytes, 0x18, false);
+            WriteBytes(usePointerBytes, bytes, 0x1B, true);
 
-
+            /*
             if (usePointer)
             {
                 byte[] pointerOffsetBytes = BitConverter.GetBytes(pointerOffset);
