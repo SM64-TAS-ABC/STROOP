@@ -77,13 +77,13 @@ namespace SM64_Diagnostic.Controls
             byte[] addressBytes = BitConverter.GetBytes(address);
             WriteBytes(addressBytes, bytes, 0x00, true);
 
-            /*
             byte[] xPosBytes = BitConverter.GetBytes(xPos);
             WriteBytes(xPosBytes, bytes, 0x04, true);
 
             byte[] yPosBytes = BitConverter.GetBytes(yPos);
             WriteBytes(yPosBytes, bytes, 0x06, true);
 
+            /*
             byte[] usePointerBytes = BitConverter.GetBytes(usePointer);
             WriteBytes(usePointerBytes, bytes, 0x18, false);
 
