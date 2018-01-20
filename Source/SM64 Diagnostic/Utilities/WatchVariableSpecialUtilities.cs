@@ -361,7 +361,7 @@ namespace SM64_Diagnostic.Structs
 
                         (double newMarioX, double newMarioZ) =
                             MoreMath.ExtrapolateLineHorizontally(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                        return SetMarioPositionAndMarioObjectPosition(newMarioX, null, newMarioZ);
                     };
                     break;
 
@@ -397,7 +397,7 @@ namespace SM64_Diagnostic.Structs
                         if (!hitboxDistAboveNullable.HasValue) return false;
                         double hitboxDistAbove = hitboxDistAboveNullable.Value;
                         double newMarioY = objHitboxTop + mObjHitboxDownOffset + hitboxDistAbove;
-                        return Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
+                        return SetMarioPositionAndMarioObjectPosition(null, newMarioY, null);
                     };
                     break;
 
@@ -435,7 +435,7 @@ namespace SM64_Diagnostic.Structs
                         if (!hitboxDistBelowNullable.HasValue) return false;
                         double hitboxDistBelow = hitboxDistBelowNullable.Value;
                         double newMarioY = objHitboxBottom - (mObjHitboxTop - mObjY) - hitboxDistBelow;
-                        return Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
+                        return SetMarioPositionAndMarioObjectPosition(null, newMarioY, null);
                     };
                     break;
 
@@ -2023,6 +2023,15 @@ namespace SM64_Diagnostic.Structs
             if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, Config.Mario.StructAddress + Config.Mario.YOffset);
             if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, Config.Mario.StructAddress + Config.Mario.ZOffset);
             if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+            return success;
+        }
+
+        private static bool SetMarioPositionAndMarioObjectPosition(double? x, double? y, double? z, ushort? angle = null)
+        {
+            uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+            bool success = true;
+            success |= SetMarioPosition(x, y, z, angle);
+            success |= SetObjectPosition(marioObjRef, x, y, z, angle);
             return success;
         }
 
