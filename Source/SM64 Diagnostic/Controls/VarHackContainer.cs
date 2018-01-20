@@ -56,16 +56,17 @@ namespace SM64_Diagnostic.Controls
             string name = GetCurrentName();
             uint? addressNullable = GetCurrentAddress();
             bool usePointer = GetCurrentUsePointer();
-            uint? pointerOffsetNullable = GetCurrentPointerOffset();
-            Type type = GetCurrentType();
+            ushort? pointerOffsetNullable = GetCurrentPointerOffset();
+            byte typeByte = GetCurrentTypeByte();
+            bool signed = GetCurrentSigned();
             bool useHex = GetCurrentUseHex();
             ushort? xPosNullable = GetCurrentXPosition();
             ushort? yPosNullable = GetCurrentYPosition();
 
             if (!addressNullable.HasValue) return null;
             uint address = addressNullable.Value;
-            if (!pointerOffsetNullable.HasValue) return null;
-            uint pointerOffset = pointerOffsetNullable.Value;
+            if (!pointerOffsetNullable.HasValue && usePointer) return null;
+            ushort pointerOffset = usePointer ? pointerOffsetNullable.Value : (ushort)0;
             if (!xPosNullable.HasValue) return null;
             ushort xPos = xPosNullable.Value;
             if (!yPosNullable.HasValue) return null;
@@ -74,23 +75,45 @@ namespace SM64_Diagnostic.Controls
             byte[] bytes = new byte[32];
 
             byte[] addressBytes = BitConverter.GetBytes(address);
-            WriteBytes(addressBytes, bytes, 0, false);
+            WriteBytes(addressBytes, bytes, 0x00, false);
 
             byte[] xPosBytes = BitConverter.GetBytes(xPos);
-            WriteBytes(xPosBytes, bytes, 4, false);
+            WriteBytes(xPosBytes, bytes, 0x04, false);
 
             byte[] yPosBytes = BitConverter.GetBytes(yPos);
-            WriteBytes(yPosBytes, bytes, 6, false);
+            WriteBytes(yPosBytes, bytes, 0x06, false);
+
+
+            byte[] usePointerBytes = BitConverter.GetBytes(usePointer);
+            WriteBytes(usePointerBytes, bytes, 0x18, false);
+
+
+            if (usePointer)
+            {
+                byte[] pointerOffsetBytes = BitConverter.GetBytes(pointerOffset);
+                WriteBytes(pointerOffsetBytes, bytes, 0x1E, false);
+            }
+
+
+            byte[] signedBytes = BitConverter.GetBytes(signed);
+            WriteBytes(signedBytes, bytes, 0x1D, false);
+
+            byte[] typeBytes = new byte[] { typeByte };
+            WriteBytes(typeBytes, bytes, 0x1C, false);
+
+
+
+
 
 
             return bytes;
         }
 
-        private void WriteBytes(byte[] bytesToWrite, byte[] byteHolder, int offset, bool reversedOrder)
+        private void WriteBytes(byte[] bytesToWrite, byte[] byteHolder, uint offset, bool reversedOrder)
         {
             for (int i = 0; i < bytesToWrite.Length; i++)
             {
-                int byteHolderOffset = reversedOrder ? offset + bytesToWrite.Length - 1 - i : offset + i;
+                int byteHolderOffset = (int)(reversedOrder ? offset + bytesToWrite.Length - 1 - i : offset + i);
                 byteHolder[byteHolderOffset] = bytesToWrite[i];
             }
         }
@@ -124,9 +147,36 @@ namespace SM64_Diagnostic.Controls
             return checkBoxUsePointer.Checked;
         }
 
-        private uint? GetCurrentPointerOffset()
+        private ushort? GetCurrentPointerOffset()
         {
-            return ParsingUtilities.ParseHexNullable(textBoxPointerOffsetValue.Text);
+            return ParsingUtilities.ParseUShortNullable(
+                ParsingUtilities.ParseHexNullable(textBoxPointerOffsetValue.Text));
+        }
+
+        private byte GetCurrentTypeByte()
+        {
+            Type type = GetCurrentType();
+            if (type == typeof(sbyte)) return 0x08;
+            if (type == typeof(byte)) return 0x08;
+            if (type == typeof(short)) return 0x10;
+            if (type == typeof(ushort)) return 0x10;
+            if (type == typeof(int)) return 0x20;
+            if (type == typeof(uint)) return 0x20;
+            if (type == typeof(float)) return 0x40;
+            throw new ArgumentOutOfRangeException();
+        }
+
+        private bool GetCurrentSigned()
+        {
+            Type type = GetCurrentType();
+            if (type == typeof(sbyte)) return true;
+            if (type == typeof(byte)) return false;
+            if (type == typeof(short)) return true;
+            if (type == typeof(ushort)) return false;
+            if (type == typeof(int)) return true;
+            if (type == typeof(uint)) return false;
+            if (type == typeof(float)) return true;
+            throw new ArgumentOutOfRangeException();
         }
 
         private Type GetCurrentType()
