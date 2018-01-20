@@ -66,6 +66,7 @@ namespace SM64_Diagnostic.Managers
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
+                VariableGroup.Advanced,
             };
 
         public TriangleManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariablePanel watchVariablePanel) 
