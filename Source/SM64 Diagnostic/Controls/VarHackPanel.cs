@@ -9,9 +9,8 @@ using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Controls
 {
-    public class VarHackPanel : FlowLayoutPanel
+    public class VarHackPanel : NoTearFlowLayoutPanel
     {
-
         public VarHackPanel()
         {
 
@@ -48,16 +47,5 @@ namespace SM64_Diagnostic.Controls
         {
             Controls.Clear();
         }
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
-                return cp;
-            }
-        }
-
     }
 }

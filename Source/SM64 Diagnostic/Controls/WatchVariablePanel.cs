@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace SM64_Diagnostic.Controls
 {
-    public class WatchVariablePanel : FlowLayoutPanel
+    public class WatchVariablePanel : NoTearFlowLayoutPanel
     {
         private readonly Object _objectLock;
         private readonly List<WatchVariableControlPrecursor> _precursors;
@@ -32,16 +32,6 @@ namespace SM64_Diagnostic.Controls
             ContextMenuStrip = new ContextMenuStrip();
 
             _reorderingWatchVarControl = null;
-        }
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
-                return cp;
-            }
         }
 
         public void Initialize(

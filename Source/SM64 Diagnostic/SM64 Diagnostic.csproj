@@ -135,6 +135,9 @@
     <Compile Include="Controls\VarHackContainer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\NoTearFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\WatchVariableLock.cs" />
     <Compile Include="Controls\BetterContextMenuStrip.cs">
       <SubType>Component</SubType>
