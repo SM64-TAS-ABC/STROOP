@@ -1839,6 +1839,20 @@ namespace SM64_Diagnostic.Structs
                         double angleDiff = marioPos.Angle.Value - angleToV1;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleToVertex = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
+                        double newMarioAngleDouble = angleToVertex + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                    };
                     break;
 
                 case "AngleV1ToMario":
@@ -1873,6 +1887,20 @@ namespace SM64_Diagnostic.Structs
                         double angleDiff = marioPos.Angle.Value - angleToV2;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleToVertex = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
+                        double newMarioAngleDouble = angleToVertex + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                    };
                     break;
 
                 case "AngleV2ToMario":
@@ -1906,6 +1934,20 @@ namespace SM64_Diagnostic.Structs
                             marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
                         double angleDiff = marioPos.Angle.Value - angleToV3;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleToVertex = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
+                        double newMarioAngleDouble = angleToVertex + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
                     };
                     break;
 
