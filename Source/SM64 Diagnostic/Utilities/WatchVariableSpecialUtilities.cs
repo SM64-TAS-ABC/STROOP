@@ -1426,6 +1426,30 @@ namespace SM64_Diagnostic.Structs
                             triStruct.NormOffset;
                         return normalDistAway.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAwayNullable.HasValue) return false;
+                        double distAway = distAwayNullable.Value;
+
+                        double missingDist = distAway -
+                            marioPos.X * triStruct.NormX -
+                            marioPos.Y * triStruct.NormY -
+                            marioPos.Z * triStruct.NormZ -
+                            triStruct.NormOffset;
+
+                        double xDiff = missingDist * triStruct.NormX;
+                        double yDiff = missingDist * triStruct.NormY;
+                        double zDiff = missingDist * triStruct.NormZ;
+
+                        double newMarioX = marioPos.X + xDiff;
+                        double newMarioY = marioPos.Y + yDiff;
+                        double newMarioZ = marioPos.Z + zDiff;
+
+                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
+                    };
                     break;
 
                 case "VerticalDistAway":
