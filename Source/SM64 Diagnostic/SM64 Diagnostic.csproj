@@ -160,6 +160,9 @@
     <Compile Include="Controls\WatchVariableObjectWrapper.cs" />
     <Compile Include="Controls\WatchVariableAngleWrapper.cs" />
     <Compile Include="Controls\WatchVariableNumberWrapper.cs" />
+    <Compile Include="Controls\VarHackPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\WatchVariableWrapper.cs" />
     <Compile Include="Controls\InputDisplayPanel.cs">
       <SubType>Component</SubType>
