@@ -74,16 +74,15 @@ namespace SM64_Diagnostic.Controls
 
             byte[] bytes = new byte[32];
 
-            /*
             byte[] addressBytes = BitConverter.GetBytes(address);
-            WriteBytes(addressBytes, bytes, 0x00, false);
+            WriteBytes(addressBytes, bytes, 0x00, true);
 
+            /*
             byte[] xPosBytes = BitConverter.GetBytes(xPos);
-            WriteBytes(xPosBytes, bytes, 0x04, false);
+            WriteBytes(xPosBytes, bytes, 0x04, true);
 
             byte[] yPosBytes = BitConverter.GetBytes(yPos);
-            WriteBytes(yPosBytes, bytes, 0x06, false);
-
+            WriteBytes(yPosBytes, bytes, 0x06, true);
 
             byte[] usePointerBytes = BitConverter.GetBytes(usePointer);
             WriteBytes(usePointerBytes, bytes, 0x18, false);
@@ -116,7 +115,7 @@ namespace SM64_Diagnostic.Controls
             for (int i = 0; i < bigEndianArray.Length; i++)
             {
                 int baseValue = (i / 4) * 4;
-                int offsetValue = i % 4;
+                int offsetValue = 3 - (i % 4);
                 int newIndex = baseValue + offsetValue;
                 littleEndianArray[newIndex] = bigEndianArray[i];
             }
