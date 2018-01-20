@@ -215,6 +215,18 @@ namespace SM64_Diagnostic.Structs
                             objPos.X, objPos.Z, marioPos.X, marioPos.Z);
                         return MoreMath.NormalizeAngleDouble(angleToMario).ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleNullable.HasValue) return false;
+                        double angle = angleNullable.Value;
+                        (double newObjX, double newObjZ) =
+                            MoreMath.RotatePointAboutPointToAngle(
+                                objPos.X, objPos.Z, marioPos.X, marioPos.Z, angle);
+                        return SetObjectPosition(objAddress, newObjX, null, newObjZ);
+                    };
                     break;
 
                 case "DeltaAngleObjectToMario":
@@ -250,6 +262,18 @@ namespace SM64_Diagnostic.Structs
                         double angleToObject = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, objPos.X, objPos.Z);
                         return MoreMath.NormalizeAngleDouble(angleToObject).ToString();
+                    };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleNullable.HasValue) return false;
+                        double angle = angleNullable.Value;
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.RotatePointAboutPointToAngle(
+                                marioPos.X, marioPos.Z, objPos.X, objPos.Z, angle);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
                     break;
 
@@ -288,6 +312,18 @@ namespace SM64_Diagnostic.Structs
                             objPos.X, objPos.Z, homePos.X, homePos.Z);
                         return MoreMath.NormalizeAngleDouble(angleToHome).ToString();
                     };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        Position objPos = GetObjectPosition(objAddress);
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleNullable.HasValue) return false;
+                        double angle = angleNullable.Value;
+                        (double newObjX, double newObjZ) =
+                            MoreMath.RotatePointAboutPointToAngle(
+                                objPos.X, objPos.Z, homePos.X, homePos.Z, angle);
+                        return SetObjectPosition(objAddress, newObjX, null, newObjZ);
+                    };
                     break;
 
                 case "DeltaAngleObjectToHome":
@@ -323,6 +359,18 @@ namespace SM64_Diagnostic.Structs
                         double angleHomeToObject = MoreMath.AngleTo_AngleUnits(
                             homePos.X, homePos.Z, objPos.X, objPos.Z);
                         return MoreMath.NormalizeAngleDouble(angleHomeToObject).ToString();
+                    };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        Position objPos = GetObjectPosition(objAddress);
+                        Position homePos = GetObjectHomePosition(objAddress);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleNullable.HasValue) return false;
+                        double angle = angleNullable.Value;
+                        (double newHomeX, double newHomeZ) =
+                            MoreMath.RotatePointAboutPointToAngle(
+                                homePos.X, homePos.Z, objPos.X, objPos.Z, angle);
+                        return SetObjectHomePosition(objAddress, newHomeX, null, newHomeZ);
                     };
                     break;
 
@@ -2359,6 +2407,15 @@ namespace SM64_Diagnostic.Structs
             float homeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
             float homeZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
             return new Position(homeX, homeY, homeZ);
+        }
+
+        private static bool SetObjectHomePosition(uint objAddress, double? x, double? y, double? z)
+        {
+            bool success = true;
+            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, objAddress + Config.ObjectSlots.HomeXOffset);
+            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, objAddress + Config.ObjectSlots.HomeYOffset);
+            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, objAddress + Config.ObjectSlots.HomeZOffset);
+            return success;
         }
 
         private static Position GetObjectGraphicsPosition(uint objAddress)

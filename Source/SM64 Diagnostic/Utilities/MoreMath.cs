@@ -95,6 +95,15 @@ namespace SM64_Diagnostic.Utilities
             return (p1X + scaledX, p1Z + scaledZ);
         }
 
+        public static (double x, double z) RotatePointAboutPointToAngle(
+            double p1X, double p1Z, double p2X, double p2Z, double finalAngle)
+        {
+            double dist = GetDistanceBetween(p1X, p1Z, p2X, p2Z);
+            double reverseAngle = ReverseAngle(finalAngle);
+            (double xDiff, double zDiff) = GetComponentsFromVector(dist, reverseAngle);
+            return (p2X + xDiff, p2Z + zDiff);
+        }
+
         public static double GetDistanceFromPointToLine(
             double pX, double pZ, double v1X, double v1Z, double v2X, double v2Z)
         {
