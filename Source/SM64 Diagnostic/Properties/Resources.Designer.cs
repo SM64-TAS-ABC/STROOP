@@ -19,7 +19,7 @@ namespace SM64_Diagnostic.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -67,6 +67,16 @@ namespace SM64_Diagnostic.Properties {
             get {
                 object obj = ResourceManager.GetObject("decompile_py", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Down_Arrow {
+            get {
+                object obj = ResourceManager.GetObject("Down_Arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -191,12 +201,52 @@ namespace SM64_Diagnostic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Left_Arrow {
+            get {
+                object obj = ResourceManager.GetObject("Left_Arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] python_xshd {
             get {
                 object obj = ResourceManager.GetObject("python_xshd", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Red_X {
+            get {
+                object obj = ResourceManager.GetObject("Red_X", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Right_Arrow {
+            get {
+                object obj = ResourceManager.GetObject("Right_Arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Up_Arrow {
+            get {
+                object obj = ResourceManager.GetObject("Up_Arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
